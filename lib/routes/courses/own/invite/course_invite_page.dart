@@ -23,6 +23,10 @@ import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+/// Height past which the page stops spreading its sections and centers the
+/// whole block instead (#7900).
+const double _maxContentHeight = 800.0;
+
 class CourseInvitePage extends StatefulWidget {
   final String courseId;
   final Completer<String>? courseCreationCompleter;
@@ -190,259 +194,301 @@ class CourseInvitePageController extends State<CourseInvitePage>
     final client = Matrix.of(context).client;
 
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.all(20.0),
-            constraints: const BoxConstraints(maxWidth: 750),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                course != null
-                    ? Container(
-                        decoration: BoxDecoration(
-                          border: Border.all(color: AppConfig.gold),
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        padding: const EdgeInsets.all(16.0),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          // #7900: the content shrink-wrapped inside the scroll view, so
+          // spaceBetween had no free space to distribute and everything piled
+          // up at the top. The inner minHeight makes the column as tall as the
+          // viewport, so spaceEvenly spreads the leftover room between the
+          // sections — the taller the screen, the more they breathe — up to
+          // _maxContentHeight, past which they would drift so far apart they
+          // stop reading as one page, so the block centers instead. Once the
+          // content outgrows the viewport there is no leftover room, the gaps
+          // fall back to `spacing`, and the scroll view takes over; the extra
+          // breathing room never costs a scroll on a short screen.
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Center(
+                child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  constraints: BoxConstraints(
+                    maxWidth: 750,
+                    minHeight: min(constraints.maxHeight, _maxContentHeight),
+                  ),
+                  child: Column(
+                    spacing: 16.0,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      course != null
+                          ? Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: AppConfig.gold),
+                                borderRadius: BorderRadius.circular(12),
+                              ),
+                              padding: const EdgeInsets.all(16.0),
+                              child: Column(
+                                spacing: 16.0,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Row(
+                                    spacing: 10.0,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.map_outlined,
+                                        size: 40.0,
+                                      ),
+                                      Flexible(
+                                        child: Text(
+                                          course!.title,
+                                          style: theme.textTheme.titleLarge
+                                              ?.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  CourseInfoChips(
+                                    widget.courseId,
+                                    courseRoomId: Matrix.of(context).client
+                                        .getRoomByCourseId(widget.courseId)
+                                        ?.id,
+                                    fontSize: 12.0,
+                                    iconSize: 12.0,
+                                  ),
+                                ],
+                              ),
+                            )
+                          : loadingCourse
+                          ? const CircularProgressIndicator.adaptive()
+                          : const SizedBox(),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
                         child: Column(
                           spacing: 16.0,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Row(
-                              spacing: 10.0,
+                            LayoutBuilder(
+                              builder: (context, constraints) {
+                                const avatarSpace = avatarSize + 8.0;
+                                final availableSpace =
+                                    constraints.maxWidth - 24.0;
+
+                                final visibleAvatars = min(
+                                  3,
+                                  (availableSpace / avatarSpace).floor() - 2,
+                                );
+
+                                return Row(
+                                  spacing: 8.0,
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    FutureBuilder(
+                                      future: client.getProfileFromUserId(
+                                        client.userID!,
+                                      ),
+                                      builder: (context, snapshot) {
+                                        return Avatar(
+                                          size: avatarSize,
+                                          mxContent: snapshot.data?.avatarUrl,
+                                          name:
+                                              snapshot.data?.displayName ??
+                                              client.userID!.localpart,
+                                          userId: client.userID!,
+                                        );
+                                      },
+                                    ),
+                                    Avatar(
+                                      userId: BotName.byEnvironment,
+                                      size: avatarSize,
+                                    ),
+                                    ...List.generate(visibleAvatars, (index) {
+                                      return CircleAvatar(
+                                        radius: avatarSize / 2,
+                                        backgroundColor: AppConfig.gold
+                                            .withAlpha(80),
+                                        child: const Icon(
+                                          Icons.person,
+                                          size: 20.0,
+                                        ),
+                                      );
+                                    }),
+                                    const Icon(Icons.more_horiz, size: 24.0),
+                                  ],
+                                );
+                              },
+                            ),
+                            Text(
+                              L10n.of(context).courseStartDesc,
+                              style: theme.textTheme.titleMedium,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Column(
+                        spacing: 24.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Container(
+                            padding: EdgeInsets.symmetric(horizontal: 16.0),
+                            constraints: BoxConstraints(maxWidth: 400.0),
+                            child: Column(
+                              spacing: 8.0,
+                              children: [
+                                Row(
+                                  spacing: 8.0,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        L10n.of(context).visibilityToggleTitle,
+                                        style: theme.textTheme.bodyMedium,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    FutureBuilder(
+                                      future: _isPublic,
+                                      builder: (context, snapshot) {
+                                        final value = snapshot.data ?? true;
+                                        return Switch(
+                                          value: value,
+                                          onChanged: (v) =>
+                                              showFutureLoadingDialog(
+                                                context: context,
+                                                future: () => _setVisibility(v),
+                                              ),
+                                          activeThumbColor: AppConfig.success,
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  spacing: 8.0,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        L10n.of(
+                                          context,
+                                        ).requireAnalyticsAccessTitle,
+                                        style: theme.textTheme.bodyMedium,
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                    FutureBuilder(
+                                      future: _requireAnalyticsAccess,
+                                      builder: (context, snapshot) {
+                                        final value = snapshot.data ?? true;
+                                        return Switch(
+                                          value: value,
+                                          onChanged: (v) =>
+                                              showFutureLoadingDialog(
+                                                context: context,
+                                                future: () =>
+                                                    _setRequireAnalyticsAccess(
+                                                      v,
+                                                    ),
+                                              ),
+                                          activeThumbColor: AppConfig.success,
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          ElevatedButton(
+                            onPressed: () async {
+                              final resp = await showFutureLoadingDialog(
+                                context: context,
+                                future: getSpaceId,
+                              );
+                              if (mounted && !resp.isError) {
+                                // world_v2: token nav, not the legacy /rooms/spaces
+                                // path. go_router runs the legacy redirect once, but
+                                // that path needs two passes to reach its token form,
+                                // so it stranded on a blank /courses/:id page (#7082).
+                                context.go(
+                                  WorkspaceNav.openCoursePageFor(
+                                    GoRouterState.of(context).uri,
+                                    resp.result!,
+                                    RoomSubpageEnum.invite,
+                                  ),
+                                );
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Row(
+                              spacing: 8.0,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                const Icon(Icons.map_outlined, size: 40.0),
+                                const Icon(Icons.upload_file),
                                 Flexible(
                                   child: Text(
-                                    course!.title,
-                                    style: theme.textTheme.titleLarge?.copyWith(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                    overflow: TextOverflow.ellipsis,
+                                    L10n.of(context).inviteYourFriends,
+                                    textAlign: TextAlign.center,
                                   ),
                                 ),
                               ],
                             ),
-                            CourseInfoChips(
-                              widget.courseId,
-                              courseRoomId: Matrix.of(
-                                context,
-                              ).client.getRoomByCourseId(widget.courseId)?.id,
-                              fontSize: 12.0,
-                              iconSize: 12.0,
-                            ),
-                          ],
-                        ),
-                      )
-                    : loadingCourse
-                    ? const CircularProgressIndicator.adaptive()
-                    : const SizedBox(),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    spacing: 16.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      LayoutBuilder(
-                        builder: (context, constraints) {
-                          const avatarSpace = avatarSize + 8.0;
-                          final availableSpace = constraints.maxWidth - 24.0;
-
-                          final visibleAvatars = min(
-                            3,
-                            (availableSpace / avatarSpace).floor() - 2,
-                          );
-
-                          return Row(
-                            spacing: 8.0,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              FutureBuilder(
-                                future: client.getProfileFromUserId(
-                                  client.userID!,
-                                ),
-                                builder: (context, snapshot) {
-                                  return Avatar(
-                                    size: avatarSize,
-                                    mxContent: snapshot.data?.avatarUrl,
-                                    name:
-                                        snapshot.data?.displayName ??
-                                        client.userID!.localpart,
-                                    userId: client.userID!,
-                                  );
-                                },
-                              ),
-                              Avatar(
-                                userId: BotName.byEnvironment,
-                                size: avatarSize,
-                              ),
-                              ...List.generate(visibleAvatars, (index) {
-                                return CircleAvatar(
-                                  radius: avatarSize / 2,
-                                  backgroundColor: AppConfig.gold.withAlpha(80),
-                                  child: const Icon(Icons.person, size: 20.0),
+                          ),
+                          ElevatedButton(
+                            onPressed: () async {
+                              final resp = await showFutureLoadingDialog(
+                                context: context,
+                                future: getSpaceId,
+                              );
+                              if (mounted && !resp.isError) {
+                                // world_v2: token nav to the course card (see #7082).
+                                context.go(
+                                  WorkspaceNav.openCourse(
+                                    GoRouterState.of(context).uri,
+                                    resp.result!,
+                                    tab: SpaceSettingsTabs.course,
+                                  ),
                                 );
-                              }),
-                              const Icon(Icons.more_horiz, size: 24.0),
-                            ],
-                          );
-                        },
-                      ),
-                      Text(
-                        L10n.of(context).courseStartDesc,
-                        style: theme.textTheme.titleMedium,
+                              }
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                                  theme.colorScheme.primaryContainer,
+                              foregroundColor:
+                                  theme.colorScheme.onPrimaryContainer,
+                            ),
+                            child: Row(
+                              spacing: 8.0,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    L10n.of(context).playWithAI,
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-                Column(
-                  spacing: 24.0,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Container(
-                      padding: EdgeInsets.symmetric(horizontal: 16.0),
-                      constraints: BoxConstraints(maxWidth: 400.0),
-                      child: Column(
-                        spacing: 8.0,
-                        children: [
-                          Row(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  L10n.of(context).visibilityToggleTitle,
-                                  style: theme.textTheme.bodyMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              FutureBuilder(
-                                future: _isPublic,
-                                builder: (context, snapshot) {
-                                  final value = snapshot.data ?? true;
-                                  return Switch(
-                                    value: value,
-                                    onChanged: (v) => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () => _setVisibility(v),
-                                    ),
-                                    activeThumbColor: AppConfig.success,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                          Row(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Flexible(
-                                child: Text(
-                                  L10n.of(context).requireAnalyticsAccessTitle,
-                                  style: theme.textTheme.bodyMedium,
-                                  textAlign: TextAlign.center,
-                                ),
-                              ),
-                              FutureBuilder(
-                                future: _requireAnalyticsAccess,
-                                builder: (context, snapshot) {
-                                  final value = snapshot.data ?? true;
-                                  return Switch(
-                                    value: value,
-                                    onChanged: (v) => showFutureLoadingDialog(
-                                      context: context,
-                                      future: () =>
-                                          _setRequireAnalyticsAccess(v),
-                                    ),
-                                    activeThumbColor: AppConfig.success,
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        final resp = await showFutureLoadingDialog(
-                          context: context,
-                          future: getSpaceId,
-                        );
-                        if (mounted && !resp.isError) {
-                          // world_v2: token nav, not the legacy /rooms/spaces
-                          // path. go_router runs the legacy redirect once, but
-                          // that path needs two passes to reach its token form,
-                          // so it stranded on a blank /courses/:id page (#7082).
-                          context.go(
-                            WorkspaceNav.openCoursePageFor(
-                              GoRouterState.of(context).uri,
-                              resp.result!,
-                              RoomSubpageEnum.invite,
-                            ),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Icon(Icons.upload_file),
-                          Flexible(
-                            child: Text(
-                              L10n.of(context).inviteYourFriends,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    ElevatedButton(
-                      onPressed: () async {
-                        final resp = await showFutureLoadingDialog(
-                          context: context,
-                          future: getSpaceId,
-                        );
-                        if (mounted && !resp.isError) {
-                          // world_v2: token nav to the course card (see #7082).
-                          context.go(
-                            WorkspaceNav.openCourse(
-                              GoRouterState.of(context).uri,
-                              resp.result!,
-                              tab: SpaceSettingsTabs.course,
-                            ),
-                          );
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: theme.colorScheme.primaryContainer,
-                        foregroundColor: theme.colorScheme.onPrimaryContainer,
-                      ),
-                      child: Row(
-                        spacing: 8.0,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Flexible(
-                            child: Text(
-                              L10n.of(context).playWithAI,
-                              textAlign: TextAlign.center,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }
