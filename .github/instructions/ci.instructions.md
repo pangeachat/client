@@ -26,6 +26,25 @@ Branch protection is **non-strict** — a PR need not be rebased onto the latest
 - **On push to `main`:** the above **plus** `build_debug_apk` and `build_debug_ios` (gated by `if: github.event_name == 'push'`). This catches native regressions at merge and — because the debug web build runs here too — writes the debug Rust cache to the `main` scope for PRs to restore.
 - **`concurrency: cancel-in-progress`** for `pull_request` only. Superseded PR-iteration pushes cancel; `merge_group` and `main` runs finish (they gate merges / warm caches).
 
+## Version and build number
+
+Settings shows `Version: <semver>+<build>` as a debugging aid. The two halves come from different places.
+
+**The semantic version** lives in `pubspec.yaml` and is bumped by hand. Pubspec's `+N` is no longer what web users see, but it still gates the release tag, so a release must still bump it. When to bump, and at which level, is part of the release process — see [deployment.instructions.md](deployment.instructions.md).
+
+**The build number is stamped at build time, from three unrelated per-platform sources:**
+
+| Platform | Stamped from |
+|---|---|
+| Web | a UTC `ddHHMM` timestamp, applied identically by both web workflows |
+| Android | the Play Store internal track's highest version code, via fastlane |
+| iOS | the latest TestFlight build number, via fastlane |
+
+- **A build number only identifies a build within its own platform.** Mobile numbers come from store state, web from a clock. They are not comparable, and mobile cannot be folded into the web sequence — the stores own those counters. Capture the platform alongside the number when logging a bug report.
+- **The web stamp identifies a build; it does not order one.** Dropping year and month keeps it short, at the cost of resetting on the 1st — so a later build can carry a smaller number, and web build numbers must not be compared to judge which is newer. Both web workflows share one scheme so staging and production draw from the same sequence; per-workflow run counters were tried first and drifted thousands of builds apart.
+
+**Latent coupling.** [`app_version_util.dart`](../../lib/routes/chat_list/app_version_util.dart) also compares build numbers numerically when deciding whether to prompt an update. That path is inert: the force-upgrade gate is semantic-version-based by design, and the endpoint's build number is vestigial — see [client-version-gating.instructions.md](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/client-version-gating.instructions.md). If that ever changes, the monthly reset would suppress the web update prompt; revisit the stamp format then.
+
 ## Cache scoping
 
 A cache written during a run is scoped to that run's ref: `pull_request` runs write to `refs/pull/<N>/merge` (**isolated per PR**), `push` to main writes to `refs/heads/main`. A run restores from its own ref's scope **plus the default branch**, and can never read another PR's scope.
