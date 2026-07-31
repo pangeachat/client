@@ -205,10 +205,13 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                     : L10n.of(context).activityNeedsOneMember,
                 textAlign: TextAlign.center,
               ),
-              _CTAButton(
-                L10n.of(context).inviteFriendsToCourse,
-                controller.inviteToCourse,
-              ),
+              // Only for learners who can actually invite — without the power
+              // level the invite page just errors out (#7875).
+              if (controller.canInviteToCourse)
+                _CTAButton(
+                  L10n.of(context).inviteFriendsToCourse,
+                  controller.inviteToCourse,
+                ),
               _CTAButton(
                 L10n.of(context).pickDifferentActivity,
                 controller.goToCourse,
