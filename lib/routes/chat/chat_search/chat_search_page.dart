@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/routes/chat/chat_search/chat_search_filter.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_view.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -63,7 +64,10 @@ class ChatSearchController extends State<ChatSearchPage>
           isLoading = true;
         });
         final result = await room!.searchEvents(
-          searchTerm: searchController.text.trim(),
+          // #Pangea
+          // searchTerm: searchController.text.trim(),
+          searchFunc: (event) => ChatSearchFilter.matches(event, searchQuery),
+          // Pangea#
           nextBatch: messagesNextBatch,
         );
         setState(() {
