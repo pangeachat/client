@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_client_extension.dart';
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
@@ -30,7 +31,6 @@ import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/app_version_util.dart';
-import 'package:fluffychat/routes/chat_list/chat_list_search_reveal.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_controller.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_link_repo.dart';
@@ -471,7 +471,14 @@ class ChatListController extends State<ChatList>
   /// (#7941). Closing search leaves the scroll position alone.
   void _onSearchFieldVisibilityChanged() {
     if (widget.searchFieldVisibility?.value != true) return;
-    revealChatListSearchField(scrollController);
+    if (!scrollController.hasClients || scrollController.position.pixels <= 0) {
+      return;
+    }
+    scrollController.animateTo(
+      0,
+      duration: FluffyThemes.animationDuration,
+      curve: FluffyThemes.animationCurve,
+    );
   }
   // Pangea#
 
