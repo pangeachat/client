@@ -20,7 +20,7 @@ class WorldMapFilterBar extends StatelessWidget {
   /// (null = All players), or Status (null = All statuses); [onReset] restores
   /// every pill at once.
   final ValueChanged<LanguageLevelTypeEnum?> onSetLevel;
-  final ValueChanged<MapPartySize?> onSetPartySize;
+  final ValueChanged<int?> onSetPartySize;
   final ValueChanged<ActivityPinState?> onSetStatus;
   final VoidCallback onReset;
 
@@ -64,8 +64,6 @@ class WorldMapFilterBar extends StatelessWidget {
   String _levelLabel(LanguageLevelTypeEnum lvl) =>
       lvl == LanguageLevelTypeEnum.preA1 ? 'Pre-A1' : lvl.string;
 
-  String _partyLabel(MapPartySize p) => '${p.roleCount}';
-
   String _statusLabel(BuildContext context, ActivityPinState s) {
     final l10n = L10n.of(context);
     return switch (s) {
@@ -104,9 +102,9 @@ class WorldMapFilterBar extends StatelessWidget {
         selected: filter.partySize == null,
         onSelected: () => onSetPartySize(null),
       ),
-      for (final p in MapPartySize.values)
+      for (final p in WorldMapFilter.partySizeOptions)
         _FilterMenuEntry(
-          label: _partyLabel(p),
+          label: '$p',
           leading: groups,
           selected: filter.partySize == p,
           onSelected: () => onSetPartySize(p),
@@ -141,7 +139,7 @@ class WorldMapFilterBar extends StatelessWidget {
           _FilterDropdownPill(
             label: filter.partySize == null
                 ? l10n.mapFilterAllPlayers
-                : _partyLabel(filter.partySize!),
+                : '${filter.partySize}',
             icon: groups,
             active: filter.partySize != null,
             entries: partyEntries,

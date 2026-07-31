@@ -32,7 +32,7 @@ class WorldMapSearchOverlay extends StatefulWidget {
   /// All levels), Party size (null = All players), or Status (null = All
   /// statuses).
   final ValueChanged<LanguageLevelTypeEnum?> setCefrLevel;
-  final ValueChanged<MapPartySize?> setPartySize;
+  final ValueChanged<int?> setPartySize;
   final ValueChanged<ActivityPinState?> setStatus;
 
   final List<QuestActivityCard> results;

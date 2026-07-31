@@ -632,7 +632,7 @@ class WorldMapController extends State<WorldMap>
   void setCefrLevel(LanguageLevelTypeEnum? level) =>
       _mutateFilter(() => _filterState.setCefrLevel(level));
 
-  void setPartySize(MapPartySize? size) =>
+  void setPartySize(int? size) =>
       _mutateFilter(() => _filterState.setPartySize(size));
 
   void setStatus(ActivityPinState? status) =>

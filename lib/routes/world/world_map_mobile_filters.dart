@@ -36,7 +36,7 @@ class WorldMapMobileFilters extends StatefulWidget {
   /// The three pills, wired to the controller exactly as the wide overlay wires
   /// them: null clears a category to its "All …" state.
   final ValueChanged<LanguageLevelTypeEnum?> onSetLevel;
-  final ValueChanged<MapPartySize?> onSetPartySize;
+  final ValueChanged<int?> onSetPartySize;
   final ValueChanged<ActivityPinState?> onSetStatus;
   final VoidCallback onReset;
 

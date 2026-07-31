@@ -3,28 +3,6 @@ import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
-/// The party-size filter: how many roles the activity is designed for
-/// (world-map.instructions.md, "Filters"). Filters on the pin's thin
-/// [QuestActivityCard.roleCount] to an **exact** count; an unknown role count is
-/// kept (permissive, mirroring the "unknown level: keep" rule). Activities top
-/// out at 5 roles, so the options are 2 / 3 / 4 / 5 — each an exact match.
-enum MapPartySize {
-  two,
-  three,
-  four,
-  five;
-
-  /// The exact role count this option matches.
-  int get roleCount => switch (this) {
-    MapPartySize.two => 2,
-    MapPartySize.three => 3,
-    MapPartySize.four => 4,
-    MapPartySize.five => 5,
-  };
-
-  bool matches(int? roleCount) => roleCount == null || roleCount == this.roleCount;
-}
-
 /// Why the world map's view shows no matches — the empty-view card's verdict
 /// ([WorldMapEmptyViewCard]), computed by the controller so both layouts read
 /// one diagnosis. The cases are mutually exclusive by construction (checked in
@@ -62,13 +40,18 @@ class WorldMapFilter {
   /// The learner's target language, driven by their **settings** (not a map
   /// pill):
   final LanguageModel? l2;
+
   /// The CEFR level filter, or empty for "All levels" (the default). No pill
   /// is pre-seeded: every filter starts at "All" so the map narrows nothing
   /// until the learner picks a value (world-map.instructions.md, "Filters").
   final Set<LanguageLevelTypeEnum> cefrFilter;
 
-  /// The party-size filter, or null for "All players" (the default).
-  final MapPartySize? partySize;
+  /// The party-size filter: the activity's **designed role count** to match
+  /// exactly, or null for "All players" (the default). One of
+  /// [partySizeOptions] — activities top out at 5 roles (world-map.instructions.md,
+  /// "Filters").
+  final int? partySize;
+  static const List<int> partySizeOptions = [2, 3, 4, 5];
 
   /// The status filter — matched against the activity's resolved
   /// [ActivityPinState] — or null for "All statuses" (the default). The five
@@ -125,7 +108,7 @@ class WorldMapFilter {
     cefrFilter: cefrFilter ?? this.cefrFilter,
     partySize: identical(partySize, _unset)
         ? this.partySize
-        : partySize as MapPartySize?,
+        : partySize as int?,
     status: identical(status, _unset)
         ? this.status
         : status as ActivityPinState?,
@@ -136,7 +119,7 @@ class WorldMapFilter {
     "query": query,
     "l2": l2?.toJson(),
     "cefr_filter": cefrFilter.toList(),
-    "party_size": partySize?.name,
+    "party_size": partySize,
     "status": status?.name,
     "filter_defaults_applied": filterDefaultsApplied,
   };
@@ -178,7 +161,8 @@ class WorldMapFilterState {
 
   bool _partyMatches(QuestActivityCard card) {
     final p = _filter.partySize;
-    return p == null || p.matches(card.roleCount);
+    // Unknown role count is kept (permissive, mirroring "unknown level: keep").
+    return p == null || card.roleCount == null || card.roleCount == p;
   }
 
   bool _statusMatches(ActivityPinState state) {
@@ -208,8 +192,7 @@ class WorldMapFilterState {
     );
   }
 
-  void setPartySize(MapPartySize? p) =>
-      _filter = _filter.copyWith(partySize: p);
+  void setPartySize(int? p) => _filter = _filter.copyWith(partySize: p);
 
   void setStatus(ActivityPinState? s) => _filter = _filter.copyWith(status: s);
 
