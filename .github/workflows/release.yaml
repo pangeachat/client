@@ -60,11 +60,13 @@ jobs:
         run: |
           echo "$WEB_APP_ENV" > .env
       - name: Build Release Web
-        # --build-number overrides the `+N` in pubspec.yaml for this build only
-        # (nothing is committed back), so the version shown in-app identifies the
-        # deploy rather than the last hand-edited pubspec. The release tag still
-        # comes from the pubspec version, unaffected. See ci.instructions.md.
-        run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --release --source-maps --build-number=${{ github.run_number }}
+        # UTC ddHHMM stamp, identical scheme in main_deploy.yaml, so staging and
+        # production share one sequence instead of each workflow's own run_number
+        # (those had drifted to 3890 vs 104). Build-time only — nothing is
+        # committed back, and the release tag still reads pubspec's `+N`.
+        # Resets monthly, so it identifies a build, never orders one.
+        # See ci.instructions.md.
+        run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --release --source-maps --build-number=$(date -u +%d%H%M)
       # The web app fetches /.env from the web root at runtime; it is not a
       # bundled asset, so the build output needs an explicit copy.
       - name: Add env to web root
