@@ -191,6 +191,9 @@ class GrammarErrorTargetGenerator {
             stepIndex: i,
             eventID: event.eventId,
             translation: translation,
+            // The example is shown off the sent message, which is gated to L2
+            // above, so it reads as L2 with every correction applied (#8044).
+            sentText: originalSent?.text ?? event.body,
           ),
         ),
       );
