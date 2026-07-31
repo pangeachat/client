@@ -49,7 +49,9 @@ Settings shows `Version: <semver>+<build>` as a debugging aid. The two halves co
 
 A cache written during a run is scoped to that run's ref: `pull_request` runs write to `refs/pull/<N>/merge` (**isolated per PR**), `push` to main writes to `refs/heads/main`. A run restores from its own ref's scope **plus the default branch**, and can never read another PR's scope.
 
-**So the only way to share a cache across PRs is to write it on `main`.** `integrate.yaml` originally ran only on `pull_request` + `merge_group`, so the Rust cache (`target/debug`, ~425 MB) never restored on any PR and it was recompiled from source on every web/apk/ios build. Running the debug web build on push to `main` is what fixes it. The Flutter SDK and pub caches hit reliably and are left alone.
+**Sharing a cache across PRs takes two things: writing it on `main`, and telling the action to read from there.** `integrate.yaml` originally ran only on `pull_request` + `merge_group`, so nothing wrote to the `main` scope at all. Running the debug web build on push to `main` fixed the write — but `moonrepo/setup-rust` only looks in the current ref's scope, so PRs kept missing a byte-identical key sitting on `main` and recompiled `target/debug` on every build. **`cache-base: main` on every `setup-rust` step is what makes the read happen; without it the write is inert.** `subosito/flutter-action` needs no equivalent — it uses `actions/cache`, which falls back to the default branch on its own, which is why the Flutter and pub caches hit reliably.
+
+A warm cache that is never read looks exactly like a cold one in the build log. To tell them apart, compare `lastAccessedAt` to `createdAt` on the `main`-scope entry (`gh cache list`): if they are equal, nothing has ever restored from it.
 
 ## Gotchas for future edits
 
