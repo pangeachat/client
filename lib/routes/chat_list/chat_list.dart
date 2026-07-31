@@ -30,6 +30,7 @@ import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/app_version_util.dart';
+import 'package:fluffychat/routes/chat_list/chat_list_search_reveal.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_controller.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_link_repo.dart';
@@ -464,6 +465,16 @@ class ChatListController extends State<ChatList>
     }
   }
 
+  // #Pangea
+  /// Opening the header's search toggle mounts the field at the top of the
+  /// list; bring the top back into view so the user can actually use it
+  /// (#7941). Closing search leaves the scroll position alone.
+  void _onSearchFieldVisibilityChanged() {
+    if (widget.searchFieldVisibility?.value != true) return;
+    revealChatListSearchField(scrollController);
+  }
+  // Pangea#
+
   void editSpace(BuildContext context, String spaceId) async {
     await Matrix.of(context).client.getRoomById(spaceId)!.postLoad();
     if (mounted) {
@@ -564,6 +575,9 @@ class ChatListController extends State<ChatList>
     // Pangea#
 
     scrollController.addListener(_onScroll);
+    // #Pangea
+    widget.searchFieldVisibility?.addListener(_onSearchFieldVisibilityChanged);
+    // Pangea#
     _waitForFirstSync();
     _hackyWebRTCFixForWeb();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -747,6 +761,9 @@ class ChatListController extends State<ChatList>
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .removeListener(_onSubscribe);
+    widget.searchFieldVisibility?.removeListener(
+      _onSearchFieldVisibilityChanged,
+    );
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();
