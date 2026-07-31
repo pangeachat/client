@@ -16,8 +16,6 @@ void main() {
     String hintText = 'Search Pangea',
     String query = '',
     ValueChanged<String>? onQueryChanged,
-    bool minimized = false,
-    VoidCallback? onRestore,
     Widget? filtersChild,
   }) async {
     await tester.pumpWidget(
@@ -31,8 +29,6 @@ void main() {
               hintText: hintText,
               query: query,
               onQueryChanged: onQueryChanged ?? (_) {},
-              minimized: minimized,
-              onRestore: onRestore,
               filtersChild: filtersChild,
             ),
           ),
@@ -70,22 +66,6 @@ void main() {
     await pumpBar(tester, query: 'hola', onQueryChanged: changes.add);
     await tester.tap(find.byIcon(Icons.close));
     expect(changes, ['']);
-  });
-
-  testWidgets('minimized renders only the compact icon; tap restores', (
-    tester,
-  ) async {
-    var restored = false;
-    await pumpBar(
-      tester,
-      hintText: 'Search Courses',
-      minimized: true,
-      onRestore: () => restored = true,
-    );
-    expect(find.byType(TextField), findsNothing);
-    expect(find.byTooltip('Search Courses'), findsOneWidget);
-    await tester.tap(find.byIcon(Icons.search));
-    expect(restored, isTrue);
   });
 
   testWidgets('the filters slot renders above the bar and only when given', (

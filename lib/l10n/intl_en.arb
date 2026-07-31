@@ -4550,6 +4550,8 @@
     "mapFilterAllLevels": "All levels",
     "mapFilterAllPlayers": "All players",
     "mapFilterAllStatuses": "All statuses",
+    "mapFiltersShow": "Show filters",
+    "mapFiltersHide": "Hide filters",
     "mapStatusAvailable": "Available",
     "mapStatusOngoing": "Ongoing",
     "mapStatusWaiting": "Waiting",

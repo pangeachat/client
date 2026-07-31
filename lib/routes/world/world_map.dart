@@ -133,6 +133,14 @@ class WorldMapController extends State<WorldMap>
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
 
+  /// Ticks on every gesture-driven camera move (a user pan/pinch) so the
+  /// single-column filter surface can collapse itself out of the way while the
+  /// learner explores the map (see [WorldMapMobileFilters]). It is a bare "an
+  /// interaction happened" signal — listeners read nothing off the value, only
+  /// the change — so it stays independent of the filter state itself. Column
+  /// mode ignores it (its filter bar is always open).
+  final ValueNotifier<int> mapPanTick = ValueNotifier(0);
+
   /// Activities the learner explicitly dismissed from the large-card tier (the
   /// card's X, #7207). A dismissed pin stays fully eligible for mid/small — the
   /// X demotes, it never removes — and without this memory the very next
@@ -287,6 +295,7 @@ class WorldMapController extends State<WorldMap>
     _dismissalExpiryTimer?.cancel();
     _moveSettleTimer?.cancel();
     _mapEventSub?.cancel();
+    mapPanTick.dispose();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
@@ -818,6 +827,10 @@ class WorldMapController extends State<WorldMap>
   /// frames and programmatic glides (which fire `MapEventMove` without a
   /// matching `hasGesture`).
   void onMapPositionChanged(bool hasGesture) {
+    // A gesture-driven move means the learner has gone back to exploring the
+    // map: collapse the single-column filter surface if it is open. Fires every
+    // frame of a pan, but the surface no-ops once already collapsed.
+    if (hasGesture) mapPanTick.value++;
     if (!isWorld) return;
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(

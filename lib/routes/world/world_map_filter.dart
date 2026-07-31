@@ -71,6 +71,18 @@ class WorldMapFilter {
       cefrFilter.length != defaultCefr.length ||
       !cefrFilter.containsAll(defaultCefr);
 
+  /// How many filter categories are narrowed off their "All" state — the count
+  /// shown on the collapsed mobile filter button's badge. Derived from the live
+  /// fields (not a hardcoded maximum) so adding a category extends it for free.
+  /// The free-text [query] is search, not one of the pills, so it is excluded.
+  int get activeFilterCount {
+    var count = 0;
+    if (cefrFilter.isNotEmpty) count++;
+    if (partySize != null) count++;
+    if (status != null) count++;
+    return count;
+  }
+
   WorldMapFilter copyWith({
     String? query,
     LanguageModel? l2,
