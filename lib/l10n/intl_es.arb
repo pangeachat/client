@@ -6537,16 +6537,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Resaltar automáticamente los mensajes de audio",
-    "selectAudioMessagesOnPlayDescription": "Resaltar automáticamente los mensajes de audio cuando se reproducen",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Análisis del aprendizaje",
     "@learningAnalytics": {
         "type": "String",

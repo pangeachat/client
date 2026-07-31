@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Директна порака",
     "notificationRuleDMDescription": "Го известува корисникот за пораки во собите за директни пораки.",
     "enableEmailNotifications": "Овозможи известувања по е-пошта",
-    "selectAudioMessagesOnPlayToolName": "Автоматско истакнување аудио пораки",
-    "selectAudioMessagesOnPlayDescription": "Автоматски истакнувајте аудио пораки кога се репродуцираат",
     "learningAnalytics": "Аналитика за учење",
     "alreadySpeak": "Веќе зборувам...",
     "welcomeBackLogin": "Добредојдовте повторно! Претходно се најавивте со {platform}.",

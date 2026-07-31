@@ -8970,16 +8970,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "অটো-হাইলাইট অডিও বার্তা",
-    "selectAudioMessagesOnPlayDescription": "অডিও বার্তা বাজানোর সময় স্বয়ংক্রিয়ভাবে হাইলাইট করুন",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "শিক্ষণ বিশ্লেষণ",
     "@learningAnalytics": {
         "type": "String",

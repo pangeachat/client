@@ -8697,16 +8697,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Mise en surbrillance automatique des messages audio",
-    "selectAudioMessagesOnPlayDescription": "Mettre automatiquement en surbrillance les messages audio lorsqu'ils sont lus",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analyse de l'apprentissage",
     "@learningAnalytics": {
         "type": "String",

@@ -9111,16 +9111,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "オーディオメッセージを自動ハイライト",
-    "selectAudioMessagesOnPlayDescription": "再生時にオーディオメッセージを自動的にハイライトします",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "学習分析",
     "@learningAnalytics": {
         "type": "String",

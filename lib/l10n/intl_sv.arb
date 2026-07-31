@@ -8860,16 +8860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatiskt markera ljudmeddelanden",
-    "selectAudioMessagesOnPlayDescription": "Automatiskt markera ljudmeddelanden när de spelas",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Lärandeanalys",
     "@learningAnalytics": {
         "type": "String",

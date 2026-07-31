@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "ସିଧାସଳଖ ବାର୍ତ୍ତା",
     "notificationRuleDMDescription": "ସିଧାସଳଖ ବାର୍ତ୍ତା ରୁମରେ ଥିବା ବାର୍ତ୍ତାଗୁଡ଼ିକ ବିଷୟରେ ଉପଭୋକ୍ତାଙ୍କୁ ସୂଚିତ କରେ।",
     "enableEmailNotifications": "ଇମେଲ୍ ନୋଟିଫିକେସନ୍ ସକ୍ଷମ କରନ୍ତୁ",
-    "selectAudioMessagesOnPlayToolName": "ଅଡିଓ ବାର୍ତ୍ତାଗୁଡ଼ିକୁ ସ୍ୱୟଂ-ହାଇଲାଇଟ୍ କରନ୍ତୁ",
-    "selectAudioMessagesOnPlayDescription": "ପ୍ଲେ ହେବା ସମୟରେ ଅଡିଓ ବାର୍ତ୍ତାଗୁଡ଼ିକୁ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ହାଇଲାଇଟ୍ କରନ୍ତୁ",
     "learningAnalytics": "ଶିକ୍ଷଣ ବିଶ୍ଳେଷଣ",
     "alreadySpeak": "ମୁଁ ପୂର୍ବରୁ କହୁଛି...",
     "welcomeBackLogin": "ପୁନର୍ବାର ସ୍ୱାଗତ! ଆପଣ ପୂର୍ବରୁ {platform} ସହିତ ସାଇନ୍ ଇନ୍ କରିଥିଲେ।",

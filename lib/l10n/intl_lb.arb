@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direkt Noriicht",
     "notificationRuleDMDescription": "Informéiert de Benotzer iwwer Noriichten an direkten Noriichte-Raim.",
     "enableEmailNotifications": "E-Mail Notifikatiounen aktivéieren",
-    "selectAudioMessagesOnPlayToolName": "Audio-Noriichten automatesch markéieren",
-    "selectAudioMessagesOnPlayDescription": "Automatesch Audio-Noriichten markéieren wann se ofgespillt ginn",
     "learningAnalytics": "Léieranalysen",
     "alreadySpeak": "Ech schwätze schonn...",
     "welcomeBackLogin": "Wëllkomm zréck! Du hues dech virdrun mat {platform} ugemellt.",

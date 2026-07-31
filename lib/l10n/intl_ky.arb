@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Түз билдирүү",
     "notificationRuleDMDescription": "Колдонуучуга түз билдирүү бөлмөлөрүндөгү билдирүүлөр жөнүндө кабарлайт.",
     "enableEmailNotifications": "Электрондук почта эскертмелерин иштетүү",
-    "selectAudioMessagesOnPlayToolName": "Аудио билдирүүлөрдү автоматтык түрдө бөлүп көрсөтүү",
-    "selectAudioMessagesOnPlayDescription": "Ойнотулганда аудио билдирүүлөрдү автоматтык түрдө бөлүп көрсөтүү",
     "learningAnalytics": "Окуу аналитикасы",
     "alreadySpeak": "Мен буга чейин сүйлөйм...",
     "welcomeBackLogin": "Кош келиңиз! Сиз мурда {platform} аркылуу киргенсиз.",

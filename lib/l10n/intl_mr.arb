@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "थेट संदेश",
     "notificationRuleDMDescription": "थेट संदेश रूममधील संदेशांबद्दल वापरकर्त्याला सूचित करते.",
     "enableEmailNotifications": "ईमेल नोटिफिकेशन्स सक्षम करा",
-    "selectAudioMessagesOnPlayToolName": "ऑडिओ संदेश आपोआप हायलाइट करा",
-    "selectAudioMessagesOnPlayDescription": "प्ले केल्यावर ऑडिओ संदेश आपोआप हायलाइट करा",
     "learningAnalytics": "शिकण्याचे विश्लेषण",
     "alreadySpeak": "मी आधीच बोलतो...",
     "welcomeBackLogin": "पुन्हा स्वागत आहे! तुम्ही यापूर्वी {platform} सह साइन इन केले होते.",

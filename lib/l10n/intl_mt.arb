@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Messaġġ Dirett",
     "notificationRuleDMDescription": "Jinnotifika lill-utent dwar messaġġi fi kmamar ta' messaġġi diretti.",
     "enableEmailNotifications": "Attiva n-notifiki bl-email",
-    "selectAudioMessagesOnPlayToolName": "Awtomatikament enfasizza messaġġi awdjo",
-    "selectAudioMessagesOnPlayDescription": "Awtomatikament enfasizza messaġġi awdjo meta jindaqqu",
     "learningAnalytics": "Analiżi tat-tagħlim",
     "alreadySpeak": "Diġà nitkellem...",
     "welcomeBackLogin": "Merħba lura! Qabel dħalt b' {platform}.",

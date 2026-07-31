@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Pesen Langsung",
     "notificationRuleDMDescription": "Ngasih kabar marang pangguna babagan pesen ing ruang pesen langsung.",
     "enableEmailNotifications": "Aktifake kabar email",
-    "selectAudioMessagesOnPlayToolName": "Otomatis nyorot pesen audio",
-    "selectAudioMessagesOnPlayDescription": "Otomatis nyorot pesen audio nalika diputer",
     "learningAnalytics": "Analitik sinau",
     "alreadySpeak": "Aku wis bisa ngomong...",
     "welcomeBackLogin": "Sugeng rawuh maneh! Sampeyan sadurunge mlebu nganggo {platform}.",

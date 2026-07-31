@@ -8399,16 +8399,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatisk utheving av lydmeldinger",
-    "selectAudioMessagesOnPlayDescription": "Automatisk utheve lydmeldinger når de spilles av",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Læringsanalyse",
     "@learningAnalytics": {
         "type": "String",

@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Ujumbe wa Moja kwa Moja",
     "notificationRuleDMDescription": "Humwarifu mtumiaji kuhusu jumbe katika vyumba vya ujumbe wa moja kwa moja.",
     "enableEmailNotifications": "Washa arifa za barua pepe",
-    "selectAudioMessagesOnPlayToolName": "Angazia kiotomatiki jumbe za sauti",
-    "selectAudioMessagesOnPlayDescription": "Angazia kiotomatiki jumbe za sauti zinapochezwa",
     "learningAnalytics": "Uchanganuzi wa kujifunza",
     "alreadySpeak": "Tayari nazungumza...",
     "welcomeBackLogin": "Karibu tena! Uliingia hapo awali na {platform}.",

@@ -8342,16 +8342,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automātiski izcelt audio ziņojumus",
-    "selectAudioMessagesOnPlayDescription": "Automātiski izcelt audio ziņojumus, kad tie tiek atskaņoti",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Mācību analītika",
     "@learningAnalytics": {
         "type": "String",

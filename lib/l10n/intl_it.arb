@@ -8415,16 +8415,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Evidenzia automaticamente i messaggi audio",
-    "selectAudioMessagesOnPlayDescription": "Evidenzia automaticamente i messaggi audio quando vengono riprodotti",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analisi dell'apprendimento",
     "@learningAnalytics": {
         "type": "String",

@@ -8415,16 +8415,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Sorot otomatis pesan audio",
-    "selectAudioMessagesOnPlayDescription": "Secara otomatis sorot pesan audio saat diputar",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analitik pembelajaran",
     "@learningAnalytics": {
         "type": "String",

@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Hafatra Mivantana",
     "notificationRuleDMDescription": "Mampandre ny mpampiasa momba ny hafatra ao amin'ny efitrano hafatra mivantana.",
     "enableEmailNotifications": "Alefaso ny fampandrenesana mailaka",
-    "selectAudioMessagesOnPlayToolName": "Manasongadina ho azy ny hafatra audio",
-    "selectAudioMessagesOnPlayDescription": "Manasongadina ho azy ny hafatra audio rehefa alefa",
     "learningAnalytics": "Fandalinana fianarana",
     "alreadySpeak": "Efa miteny aho...",
     "welcomeBackLogin": "Tongasoa indray! Niditra tamin'ny {platform} ianao teo aloha.",

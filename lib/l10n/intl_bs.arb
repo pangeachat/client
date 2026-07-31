@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direktna poruka",
     "notificationRuleDMDescription": "Obavještava korisnika o porukama u sobama za direktne poruke.",
     "enableEmailNotifications": "Omogući obavijesti putem e-maila",
-    "selectAudioMessagesOnPlayToolName": "Automatsko isticanje audio poruka",
-    "selectAudioMessagesOnPlayDescription": "Automatski istakni audio poruke prilikom reprodukcije",
     "learningAnalytics": "Analitika učenja",
     "alreadySpeak": "Već govorim...",
     "welcomeBackLogin": "Dobrodošli nazad! Prethodno ste se prijavili putem {platform}.",

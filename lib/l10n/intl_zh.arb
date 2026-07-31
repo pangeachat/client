@@ -8342,16 +8342,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "自动高亮音频消息",
-    "selectAudioMessagesOnPlayDescription": "播放时自动高亮音频消息",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "学习分析",
     "@learningAnalytics": {
         "type": "String",

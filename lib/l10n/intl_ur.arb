@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "براہ راست پیغام",
     "notificationRuleDMDescription": "صارف کو براہ راست پیغام کے کمروں میں پیغامات کے بارے میں مطلع کرتا ہے۔",
     "enableEmailNotifications": "ای میل نوٹیفیکیشنز فعال کریں",
-    "selectAudioMessagesOnPlayToolName": "آڈیو پیغامات کو خودکار طور پر نمایاں کریں",
-    "selectAudioMessagesOnPlayDescription": "چلانے پر آڈیو پیغامات کو خودکار طور پر نمایاں کریں",
     "learningAnalytics": "سیکھنے کے تجزیات",
     "alreadySpeak": "میں پہلے ہی بولتا ہوں...",
     "welcomeBackLogin": "خوش آمدید! آپ نے پہلے {platform} کے ساتھ سائن ان کیا تھا۔",

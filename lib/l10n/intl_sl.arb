@@ -9293,16 +9293,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Samodejno označevanje avdio sporočil",
-    "selectAudioMessagesOnPlayDescription": "Samodejno označite avdio sporočila, ko se predvajajo",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analitika učenja",
     "@learningAnalytics": {
         "type": "String",

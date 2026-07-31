@@ -8974,16 +8974,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "ऑटो-हाइलाइट ऑडियो संदेश",
-    "selectAudioMessagesOnPlayDescription": "जब ऑडियो संदेश चलाए जाएं तो स्वचालित रूप से ऑडियो संदेशों को हाइलाइट करें",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "शिक्षण विश्लेषण",
     "@learningAnalytics": {
         "type": "String",

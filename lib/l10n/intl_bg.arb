@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Директно съобщение",
     "notificationRuleDMDescription": "Уведомява потребителя за съобщения в стаи за директни съобщения.",
     "enableEmailNotifications": "Разрешаване на известия по имейл",
-    "selectAudioMessagesOnPlayToolName": "Автоматично маркиране на аудио съобщения",
-    "selectAudioMessagesOnPlayDescription": "Автоматично маркиране на аудио съобщения при възпроизвеждане",
     "learningAnalytics": "Анализ на обучението",
     "alreadySpeak": "Вече говоря...",
     "welcomeBackLogin": "Добре дошли отново! Преди това влязохте с {platform}.",

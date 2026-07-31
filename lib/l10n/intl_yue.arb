@@ -9305,16 +9305,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "自動突出顯示音頻消息",
-    "selectAudioMessagesOnPlayDescription": "播放時自動突出顯示音頻消息",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "學習分析",
     "@learningAnalytics": {
         "type": "String",

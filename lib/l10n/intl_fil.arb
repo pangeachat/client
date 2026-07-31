@@ -9208,16 +9208,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Awtomatikong i-highlight ang mga mensaheng audio",
-    "selectAudioMessagesOnPlayDescription": "Awtomatikong i-highlight ang mga mensaheng audio kapag pinatugtog",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Pagsusuri ng pagkatuto",
     "@learningAnalytics": {
         "type": "String",

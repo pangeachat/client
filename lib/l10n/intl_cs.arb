@@ -8836,16 +8836,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automaticky zvýraznit audio zprávy",
-    "selectAudioMessagesOnPlayDescription": "Automaticky zvýraznit audio zprávy při přehrávání",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analytika učení",
     "@learningAnalytics": {
         "type": "String",

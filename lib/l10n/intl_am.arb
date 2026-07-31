@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "የቀጥታ መልዕክት",
     "notificationRuleDMDescription": "በቀጥታ የመልዕክት ክፍሎች ውስጥ ስለሚገኙ መልዕክቶች ለተጠቃሚው ያሳውቃል።",
     "enableEmailNotifications": "የኢሜይል ማሳወቂያዎችን አንቃ",
-    "selectAudioMessagesOnPlayToolName": "የድምጽ መልዕክቶችን በራስ-ሰር አጉልት",
-    "selectAudioMessagesOnPlayDescription": "የድምጽ መልዕክቶች ሲጫወቱ በራስ-ሰር ያጉሉ",
     "learningAnalytics": "የመማር ትንታኔ",
     "alreadySpeak": "አስቀድሜ የምናገረው...",
     "welcomeBackLogin": "እንኳን ደህና መጡ! ከዚህ ቀደም በ{platform} ገብተዋል።",

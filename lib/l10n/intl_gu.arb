@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "સીધો સંદેશ",
     "notificationRuleDMDescription": "વપરાશકર્તાને સીધા સંદેશ રૂમમાંના સંદેશાઓ વિશે સૂચિત કરે છે.",
     "enableEmailNotifications": "ઇમેઇલ સૂચનાઓ સક્ષમ કરો",
-    "selectAudioMessagesOnPlayToolName": "ઑડિઓ સંદેશાઓને ઑટો-હાઇલાઇટ કરો",
-    "selectAudioMessagesOnPlayDescription": "જ્યારે ઑડિઓ સંદેશા વગાડવામાં આવે ત્યારે તેને આપમેળે હાઇલાઇટ કરો",
     "learningAnalytics": "શીખવાનું વિશ્લેષણ",
     "alreadySpeak": "હું પહેલેથી જ બોલું છું...",
     "welcomeBackLogin": "ફરી સ્વાગત છે! તમે અગાઉ {platform} વડે સાઇન ઇન કર્યું હતું.",

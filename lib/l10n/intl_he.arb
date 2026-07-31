@@ -9262,16 +9262,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "הדגש אוטומטית הודעות קוליות",
-    "selectAudioMessagesOnPlayDescription": "הדגש אוטומטית הודעות קוליות כאשר הן מנוגנות",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "אנליטיקה של למידה",
     "@learningAnalytics": {
         "type": "String",

@@ -8643,16 +8643,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Sesli mesajları otomatik vurgula",
-    "selectAudioMessagesOnPlayDescription": "Oynatıldığında sesli mesajları otomatik olarak vurgula",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Öğrenme analitiği",
     "@learningAnalytics": {
         "type": "String",

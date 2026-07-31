@@ -9248,16 +9248,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "აუდიო შეტყობინებების ავტომატური ხაზგასმა",
-    "selectAudioMessagesOnPlayDescription": "აუდიო შეტყობინებების ავტომატურად ხაზგასმა მათი დაკვრის დროს",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "სწავლების ანალიტიკა",
     "@learningAnalytics": {
         "type": "String",

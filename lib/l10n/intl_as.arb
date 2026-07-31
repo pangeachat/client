@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "পোনপটীয়া বাৰ্তা",
     "notificationRuleDMDescription": "পোনপটীয়া বাৰ্তাৰ কোঠাত বাৰ্তাবোৰৰ বিষয়ে ব্যৱহাৰকাৰীক অৱগত কৰে।",
     "enableEmailNotifications": "ইমেইল নটিফিকেচন সক্ষম কৰক",
-    "selectAudioMessagesOnPlayToolName": "অডিঅ' বাৰ্তাবোৰ স্বয়ংক্ৰিয়ভাৱে হাইলাইট কৰক",
-    "selectAudioMessagesOnPlayDescription": "অডিঅ' বাৰ্তাবোৰ প্লে কৰিলে স্বয়ংক্ৰিয়ভাৱে হাইলাইট কৰক",
     "learningAnalytics": "শিকাৰ বিশ্লেষণ",
     "alreadySpeak": "মই ইতিমধ্যে কওঁ...",
     "welcomeBackLogin": "পুনৰ স্বাগতম! আপুনি আগতে {platform} ব্যৱহাৰ কৰি ছাইন ইন কৰিছিল।",

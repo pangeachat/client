@@ -8379,16 +8379,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Korosta ääniviestejä automaattisesti",
-    "selectAudioMessagesOnPlayDescription": "Korosta ääniviestejä automaattisesti, kun niitä toistetaan",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Oppimisanalytiikka",
     "@learningAnalytics": {
         "type": "String",

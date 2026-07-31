@@ -8342,16 +8342,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Автоматичне виділення аудіоповідомлень",
-    "selectAudioMessagesOnPlayDescription": "Автоматично виділяти аудіоповідомлення під час відтворення",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Аналітика навчання",
     "@learningAnalytics": {
         "type": "String",

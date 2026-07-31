@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Ուղիղ հաղորդագրություն",
     "notificationRuleDMDescription": "Ծանուցում է օգտատիրոջը ուղիղ հաղորդագրությունների սենյակներում ստացված հաղորդագրությունների մասին։",
     "enableEmailNotifications": "Միացնել էլ. փոստի ծանուցումները",
-    "selectAudioMessagesOnPlayToolName": "Ավտոմատ ընդգծել ձայնային հաղորդագրությունները",
-    "selectAudioMessagesOnPlayDescription": "Ավտոմատ կերպով ընդգծել ձայնային հաղորդագրությունները նվագարկելիս",
     "learningAnalytics": "Ուսուցման վերլուծություն",
     "alreadySpeak": "Ես արդեն խոսում եմ...",
     "welcomeBackLogin": "Բարի վերադարձ։ Դուք նախկինում մուտք եք գործել {platform}-ի միջոցով։",

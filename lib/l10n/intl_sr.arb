@@ -9297,16 +9297,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatski istakni audio poruke",
-    "selectAudioMessagesOnPlayDescription": "Automatski istakni audio poruke kada se reprodukuju",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analitika učenja",
     "@learningAnalytics": {
         "type": "String",

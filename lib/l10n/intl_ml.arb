@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "നേരിട്ടുള്ള സന്ദേശം",
     "notificationRuleDMDescription": "നേരിട്ടുള്ള സന്ദേശ റൂമുകളിലെ സന്ദേശങ്ങളെക്കുറിച്ച് ഉപയോക്താവിനെ അറിയിക്കുന്നു.",
     "enableEmailNotifications": "ഇമെയിൽ അറിയിപ്പുകൾ പ്രവർത്തനക്ഷമമാക്കുക",
-    "selectAudioMessagesOnPlayToolName": "ഓഡിയോ സന്ദേശങ്ങൾ സ്വയമേവ ഹൈലൈറ്റ് ചെയ്യുക",
-    "selectAudioMessagesOnPlayDescription": "പ്ലേ ചെയ്യുമ്പോൾ ഓഡിയോ സന്ദേശങ്ങൾ സ്വയമേവ ഹൈലൈറ്റ് ചെയ്യുക",
     "learningAnalytics": "പഠന വിശകലനം",
     "alreadySpeak": "ഞാൻ ഇതിനകം സംസാരിക്കുന്നു...",
     "welcomeBackLogin": "തിരികെ സ്വാഗതം! നിങ്ങൾ മുമ്പ് {platform} ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്തിരുന്നു.",

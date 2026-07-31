@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "مستقیم پیغام",
     "notificationRuleDMDescription": "کاروونکي ته د مستقیم پیغام خونو کې د پیغامونو په اړه خبر ورکوي.",
     "enableEmailNotifications": "د بریښنالیک خبرتیاوې فعال کړئ",
-    "selectAudioMessagesOnPlayToolName": "د آډیو پیغامونه په اوتومات ډول روښانه کړئ",
-    "selectAudioMessagesOnPlayDescription": "کله چې پلی شي په اوتومات ډول د آډیو پیغامونه روښانه کړئ",
     "learningAnalytics": "د زده کړې تحلیلونه",
     "alreadySpeak": "زه لا دمخه خبرې کوم...",
     "welcomeBackLogin": "ښه راغلاست! تاسو مخکې د {platform} سره ننوتلي یاست.",

@@ -7685,16 +7685,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
-    "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatCapacity": "གླེང་མོལ་ཚད་བཀག",
     "roomFull": "ཁང་མིག་འདི་ཚད་བཀག་ལ་སླེབས་ཟིན།",
     "chatCapacityHasBeenChanged": "གླེང་མོལ་ཚད་བཀག་བསྒྱུར་ཟིན།",

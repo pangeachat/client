@@ -9123,16 +9123,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatiškai paryškinti garso pranešimus",
-    "selectAudioMessagesOnPlayDescription": "Automatiškai paryškinti garso pranešimus, kai jie atkuriami",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Mokymosi analizė",
     "@learningAnalytics": {
         "type": "String",

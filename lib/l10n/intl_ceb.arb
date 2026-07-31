@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direktang Mensahe",
     "notificationRuleDMDescription": "Nagpahibalo sa user bahin sa mga mensahe sa mga direct message room.",
     "enableEmailNotifications": "I-enable ang mga notipikasyon sa email",
-    "selectAudioMessagesOnPlayToolName": "Awtomatikong i-highlight ang mga audio message",
-    "selectAudioMessagesOnPlayDescription": "Awtomatikong i-highlight ang mga audio message kung i-play",
     "learningAnalytics": "Analytics sa pagkat-on",
     "alreadySpeak": "Makahibalo na ko mo-istorya og...",
     "welcomeBackLogin": "Welcome back! Ni-sign in ka kaniadto gamit ang {platform}.",

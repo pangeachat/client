@@ -8430,16 +8430,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "به‌طور خودکار پیام‌های صوتی را هایلایت کنید",
-    "selectAudioMessagesOnPlayDescription": "به‌طور خودکار پیام‌های صوتی را هنگام پخش هایلایت کنید",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "تحلیل یادگیری",
     "@learningAnalytics": {
         "type": "String",

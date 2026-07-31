@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "ຂໍ້ຄວາມໂດຍກົງ",
     "notificationRuleDMDescription": "ແຈ້ງເຕືອນຜູ້ໃຊ້ກ່ຽວກັບຂໍ້ຄວາມໃນຫ້ອງຂໍ້ຄວາມໂດຍກົງ.",
     "enableEmailNotifications": "ເປີດໃຊ້ການແຈ້ງເຕືອນທາງອີເມວ",
-    "selectAudioMessagesOnPlayToolName": "ເນັ້ນຂໍ້ຄວາມສຽງອັດຕະໂນມັດ",
-    "selectAudioMessagesOnPlayDescription": "ເນັ້ນຂໍ້ຄວາມສຽງອັດຕະໂນມັດເມື່ອຫຼິ້ນ",
     "learningAnalytics": "ການວິເຄາະການຮຽນຮູ້",
     "alreadySpeak": "ຂ້ອຍເວົ້າໄດ້ແລ້ວ...",
     "welcomeBackLogin": "ຍິນດີຕ້ອນຮັບກັບມາ! ທ່ານໄດ້ເຂົ້າສູ່ລະບົບກ່ອນໜ້ານີ້ດ້ວຍ {platform}.",

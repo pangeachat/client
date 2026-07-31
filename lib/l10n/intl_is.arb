@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Bein skilaboð",
     "notificationRuleDMDescription": "Tilkynnir notandanum um skilaboð í beinum skilaboðaherbergjum.",
     "enableEmailNotifications": "Virkja tölvupósttilkynningar",
-    "selectAudioMessagesOnPlayToolName": "Sjálfvirk auðkenning hljóðskilaboða",
-    "selectAudioMessagesOnPlayDescription": "Auðkenna hljóðskilaboð sjálfkrafa þegar þau eru spiluð",
     "learningAnalytics": "Námsgreiningar",
     "alreadySpeak": "Ég tala nú þegar...",
     "welcomeBackLogin": "Velkomin(n) aftur! Þú skráðir þig inn síðast með {platform}.",

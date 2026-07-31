@@ -9284,16 +9284,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Auto-sélectionner les messages audio",
-    "selectAudioMessagesOnPlayDescription": "Mettre automatiquement en surbrillance les messages audio lorsqu'ils sont lus",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analytikë e të mësuarit",
     "@learningAnalytics": {
         "type": "String",

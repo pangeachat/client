@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "سڌو پيغام",
     "notificationRuleDMDescription": "صارف کي سڌي پيغام جي ڪمرن ۾ پيغامن بابت اطلاع ڏئي ٿو.",
     "enableEmailNotifications": "اي ميل نوٽيفڪيشن فعال ڪريو",
-    "selectAudioMessagesOnPlayToolName": "آڊيو پيغامن کي خودڪار نمايان ڪريو",
-    "selectAudioMessagesOnPlayDescription": "جڏهن آڊيو پيغام هلائيا وڃن ته انهن کي خودڪار نمايان ڪريو",
     "learningAnalytics": "سکيا جي تجزيا",
     "alreadySpeak": "مان اڳ ۾ ئي ڳالهائي رهيو آهيان...",
     "welcomeBackLogin": "ڀلي ڪري آيا! توهان اڳ ۾ {platform} سان سائن ان ڪيو هو.",

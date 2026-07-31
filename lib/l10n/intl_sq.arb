@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Mesazh i Drejtpërdrejtë",
     "notificationRuleDMDescription": "Njofton përdoruesin për mesazhet në dhomat e mesazheve të drejtpërdrejta.",
     "enableEmailNotifications": "Aktivizo njoftimet me email",
-    "selectAudioMessagesOnPlayToolName": "Auto-thekso mesazhet audio",
-    "selectAudioMessagesOnPlayDescription": "Thekson automatikisht mesazhet audio kur luhen",
     "learningAnalytics": "Analiza e të mësuarit",
     "alreadySpeak": "Unë tashmë flas...",
     "welcomeBackLogin": "Mirë se vini sërish! Ju më parë jeni kyçur me {platform}.",

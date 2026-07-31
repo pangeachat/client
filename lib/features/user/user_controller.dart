@@ -450,8 +450,6 @@ class UserController {
         return profile.toolSettings.enableAutocorrect;
       case ToolSetting.enableTTS:
         return profile.toolSettings.enableTTS;
-      case ToolSetting.selectAudioMessagesOnPlay:
-        return profile.toolSettings.selectAudioMessagesOnPlay;
     }
   }
 

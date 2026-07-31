@@ -8356,16 +8356,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Аўтаматычнае выдзяленне аўдыяпаведамленняў",
-    "selectAudioMessagesOnPlayDescription": "Аўтаматычна выдзяляць аўдыяпаведамленні падчас прайгравання",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Аналіз навучання",
     "@learningAnalytics": {
         "type": "String",

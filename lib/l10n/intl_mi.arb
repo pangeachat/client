@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Karere Tika",
     "notificationRuleDMDescription": "Ka whakamōhio i te kaiwhakamahi mō ngā karere i roto i ngā rūma karere tika.",
     "enableEmailNotifications": "Whakahohe i ngā whakamōhiotanga īmēra",
-    "selectAudioMessagesOnPlayToolName": "Whakanui aunoa i ngā karere oro",
-    "selectAudioMessagesOnPlayDescription": "Whakanui aunoa i ngā karere oro ina purea",
     "learningAnalytics": "Tātari akoranga",
     "alreadySpeak": "Kua mōhio kē ahau ki te kōrero...",
     "welcomeBackLogin": "Nau mai hoki mai! I takiuru koe i mua mā {platform}.",

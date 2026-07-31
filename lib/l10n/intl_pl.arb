@@ -8427,16 +8427,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatyczne podświetlanie wiadomości audio",
-    "selectAudioMessagesOnPlayDescription": "Automatycznie podświetlaj wiadomości audio podczas odtwarzania",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analiza uczenia się",
     "@learningAnalytics": {
         "type": "String",

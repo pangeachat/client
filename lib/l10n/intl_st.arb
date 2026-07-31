@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Molaetsa o tobileng",
     "notificationRuleDMDescription": "E tsebisa mosebelisi ka melaetsa ka likamoreng tsa melaetsa e tobileng.",
     "enableEmailNotifications": "Numella litsebiso tsa imeile",
-    "selectAudioMessagesOnPlayToolName": "Totobatsa melaetsa ea molumo ka bo eona",
-    "selectAudioMessagesOnPlayDescription": "Totobatsa melaetsa ea molumo ka bo eona ha e bapaloa",
     "learningAnalytics": "Tlhahlobo ea ho ithuta",
     "alreadySpeak": "Ke se ke bua...",
     "welcomeBackLogin": "O amohelehile hape! O kene ka {platform} pele.",

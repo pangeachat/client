@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Паёми мустақим",
     "notificationRuleDMDescription": "Истифодабарандаро дар бораи паёмҳо дар ҳуҷраҳои паёмҳои мустақим огоҳ мекунад.",
     "enableEmailNotifications": "Фаъол кардани огоҳиномаҳои почтаи электронӣ",
-    "selectAudioMessagesOnPlayToolName": "Паёмҳои аудиоиро ба таври худкор таъкид кунед",
-    "selectAudioMessagesOnPlayDescription": "Ҳангоми навохтан паёмҳои аудиоиро ба таври худкор таъкид кунед",
     "learningAnalytics": "Таҳлили омӯзиш",
     "alreadySpeak": "Ман аллакай гап мезанам...",
     "welcomeBackLogin": "Хуш омадед! Шумо қаблан бо {platform} ворид шуда будед.",

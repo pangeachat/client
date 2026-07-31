@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Teachdaireachd Dhìreach",
     "notificationRuleDMDescription": "A' cur fios chun an neach-cleachdaidh mu theachdaireachdan ann an seòmraichean teachdaireachd dhìreach.",
     "enableEmailNotifications": "Dèan comas air fiosan post-d",
-    "selectAudioMessagesOnPlayToolName": "Dèan soilleir teachdaireachdan claisneachd gu fèin-obrachail",
-    "selectAudioMessagesOnPlayDescription": "Dèan soilleir teachdaireachdan claisneachd gu fèin-obrachail nuair a thèid an cluich",
     "learningAnalytics": "Anailisean ionnsachaidh",
     "alreadySpeak": "Tha mi mar-thà a' bruidhinn...",
     "welcomeBackLogin": "Fàilte air ais! Chlàraich thu a-steach roimhe le {platform}.",

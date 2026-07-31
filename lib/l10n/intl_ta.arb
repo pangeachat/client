@@ -8434,16 +8434,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "ஆட்டோ-உயர்த்த audio செய்திகள்",
-    "selectAudioMessagesOnPlayDescription": "விளையாடும் போது audio செய்திகளை தானாக உயர்த்தவும்",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "கற்றல் பகுப்பாய்வு",
     "@learningAnalytics": {
         "type": "String",

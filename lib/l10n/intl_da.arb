@@ -9268,16 +9268,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatisk fremhævning af lydbeskeder",
-    "selectAudioMessagesOnPlayDescription": "Fremhæv automatisk lydbeskeder, når de afspilles",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Læring analytics",
     "@learningAnalytics": {
         "type": "String",

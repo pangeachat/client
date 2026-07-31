@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Umlayezo Oqondile",
     "notificationRuleDMDescription": "Yazisa umsebenzisi ngemilayezo emakamelweni emilayezo eqondile.",
     "enableEmailNotifications": "Vumela izaziso ze-imeyili",
-    "selectAudioMessagesOnPlayToolName": "Gqamisa ngokuzenzakalelayo imilayezo yomsindo",
-    "selectAudioMessagesOnPlayDescription": "Gqamisa ngokuzenzakalelayo imilayezo yomsindo uma idlalwa",
     "learningAnalytics": "Izibalo zokufunda",
     "alreadySpeak": "Ngikhuluma kakade...",
     "welcomeBackLogin": "Siyakwamukela futhi! Ngaphambilini ungene ngemvume nge-{platform}.",

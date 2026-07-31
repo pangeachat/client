@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Messagiu direttu",
     "notificationRuleDMDescription": "Avverte l'utilizatore di i messagi in e sale di messagi diretti.",
     "enableEmailNotifications": "Attivà e nutificazioni per currieru elettronicu",
-    "selectAudioMessagesOnPlayToolName": "Mette in risaltu i messagi àudiu in autumàticu",
-    "selectAudioMessagesOnPlayDescription": "Mette in risaltu i messagi àudiu in autumàticu quand'elli sò letti",
     "learningAnalytics": "Analìtiche d'amparera",
     "alreadySpeak": "Parleghju digià...",
     "welcomeBackLogin": "Benturnatu ! Vi site cunnessu nanzu cù {platform}.",

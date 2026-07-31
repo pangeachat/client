@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Mesaj Dirèk",
     "notificationRuleDMDescription": "Notifye itilizatè a sou mesaj nan chanm mesaj dirèk.",
     "enableEmailNotifications": "Aktive notifikasyon imèl",
-    "selectAudioMessagesOnPlayToolName": "Otomatikman make mesaj odyo",
-    "selectAudioMessagesOnPlayDescription": "Otomatikman make mesaj odyo lè yo jwe",
     "learningAnalytics": "Analiz aprantisaj",
     "alreadySpeak": "Mwen deja pale...",
     "welcomeBackLogin": "Byen retounen! Ou te konekte anvan ak {platform}.",

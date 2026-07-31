@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Pesen Langsung",
     "notificationRuleDMDescription": "Ngabéjaan pangguna ngeunaan pesen dina kamar pesen langsung.",
     "enableEmailNotifications": "Aktifkeun béwara email",
-    "selectAudioMessagesOnPlayToolName": "Otomatis nyorot pesen audio",
-    "selectAudioMessagesOnPlayDescription": "Otomatis nyorot pesen audio nalika diputer",
     "learningAnalytics": "Analitik pembelajaran",
     "alreadySpeak": "Abdi parantos tiasa nyarios...",
     "welcomeBackLogin": "Wilujeng sumping deui! Anjeun sateuacanna asup nganggo {platform}.",

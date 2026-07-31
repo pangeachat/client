@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Lus ncaj qha",
     "notificationRuleDMDescription": "Ceeb toom rau tus neeg siv txog cov lus hauv cov chav sib tham ncaj qha.",
     "enableEmailNotifications": "Qhib email ceeb toom",
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight cov lus suab",
-    "selectAudioMessagesOnPlayDescription": "Automatically highlight cov lus suab thaum ua si",
     "learningAnalytics": "Kev kawm analytics",
     "alreadySpeak": "Kuv twb hais tau...",
     "welcomeBackLogin": "Zoo siab tos txais rov qab! Koj tau nkag mus nrog {platform} ua ntej.",

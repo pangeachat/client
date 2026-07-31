@@ -8342,16 +8342,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatisch audio berichten markeren",
-    "selectAudioMessagesOnPlayDescription": "Audio berichten automatisch markeren wanneer ze worden afgespeeld",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Leeranalyses",
     "@learningAnalytics": {
         "type": "String",

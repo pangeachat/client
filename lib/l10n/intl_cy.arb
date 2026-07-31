@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Neges Uniongyrchol",
     "notificationRuleDMDescription": "Yn hysbysu'r defnyddiwr am negeseuon mewn ystafelloedd negeseuon uniongyrchol.",
     "enableEmailNotifications": "Galluogi hysbysiadau e-bost",
-    "selectAudioMessagesOnPlayToolName": "Amllynu negeseuon sain yn awtomatig",
-    "selectAudioMessagesOnPlayDescription": "Amllynu negeseuon sain yn awtomatig pan gânt eu chwarae",
     "learningAnalytics": "Dadansoddeg dysgu",
     "alreadySpeak": "Rwyf eisoes yn siarad...",
     "welcomeBackLogin": "Croeso'n ôl! Fe wnaethoch chi fewngofnodi o'r blaen gyda {platform}.",

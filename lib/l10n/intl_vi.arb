@@ -5608,16 +5608,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Tự động làm nổi bật tin nhắn âm thanh",
-    "selectAudioMessagesOnPlayDescription": "Tự động làm nổi bật tin nhắn âm thanh khi phát",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Phân tích học tập",
     "@learningAnalytics": {
         "type": "String",

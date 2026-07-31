@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Birbaşa Mesaj",
     "notificationRuleDMDescription": "İstifadəçiyə birbaşa mesaj otaqlarındakı mesajlar barədə bildiriş göndərir.",
     "enableEmailNotifications": "E-poçt bildirişlərini aktivləşdirin",
-    "selectAudioMessagesOnPlayToolName": "Səsli mesajları avtomatik vurğula",
-    "selectAudioMessagesOnPlayDescription": "Səsləndirilərkən səsli mesajları avtomatik olaraq vurğulayın",
     "learningAnalytics": "Öyrənmə analitikası",
     "alreadySpeak": "Mən artıq danışıram...",
     "welcomeBackLogin": "Xoş gəlmisiniz! Siz əvvəllər {platform} ilə daxil olmusunuz.",

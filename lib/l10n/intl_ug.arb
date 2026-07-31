@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "بىۋاسىتە ئۇچۇر",
     "notificationRuleDMDescription": "ئىشلەتكۈچىگە بىۋاسىتە ئۇچۇر ئۆيلىرىدىكى ئۇچۇرلار ھەققىدە ئۇقتۇرۇش قىلىدۇ.",
     "enableEmailNotifications": "ئېلخەت ئۇقتۇرۇشلىرىنى قوزغىتىش",
-    "selectAudioMessagesOnPlayToolName": "ئاۋازلىق ئۇچۇرلارنى ئاپتوماتىك گەۋدىلەندۈرۈش",
-    "selectAudioMessagesOnPlayDescription": "ئاۋازلىق ئۇچۇرلارنى قويغاندا ئاپتوماتىك گەۋدىلەندۈرۈش",
     "learningAnalytics": "ئۆگىنىش ئانالىزى",
     "alreadySpeak": "مەن ئاللىبۇرۇن سۆزلەيمەن...",
     "welcomeBackLogin": "قايتىپ كەلگىنىڭىزنى قارشى ئالىمىز! سىز ئىلگىرى {platform} ئارقىلىق كىرگەن ئىدىڭىز.",

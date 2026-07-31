@@ -8342,16 +8342,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Destacar automaticamente os mensaxes de audio",
-    "selectAudioMessagesOnPlayDescription": "Destacar automaticamente os mensaxes de audio cando se reproducen",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analítica de aprendizaxe",
     "@learningAnalytics": {
         "type": "String",

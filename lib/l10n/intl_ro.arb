@@ -9074,16 +9074,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Subliniază automat mesajele audio",
-    "selectAudioMessagesOnPlayDescription": "Subliniază automat mesajele audio atunci când sunt redată",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analitica învățării",
     "@learningAnalytics": {
         "type": "String",

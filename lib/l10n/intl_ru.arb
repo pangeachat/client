@@ -9325,16 +9325,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Автовыделение аудиосообщений",
-    "selectAudioMessagesOnPlayDescription": "Автоматически выделять аудиосообщения при воспроизведении",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "alreadySpeak": "Я уже говорю...",
     "@alreadySpeak": {
         "type": "String",

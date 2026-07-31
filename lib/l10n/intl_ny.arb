@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Mauthenga Achindunji",
     "notificationRuleDMDescription": "Amadziwitsa wogwiritsa ntchito za mauthenga m'zipinda zauthenga wachindunji.",
     "enableEmailNotifications": "Yambitsani zidziwitso za imelo",
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight mauthenga omvera",
-    "selectAudioMessagesOnPlayDescription": "Auto-highlight mauthenga omvera akamaseweredwa",
     "learningAnalytics": "Kusanthula kuphunzira",
     "alreadySpeak": "Ndikulankhula kale...",
     "welcomeBackLogin": "Takulandiraninso! Munalowa kale ndi {platform}.",

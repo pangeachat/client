@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Тікелей хабарлама",
     "notificationRuleDMDescription": "Пайдаланушыға тікелей хабарлама бөлмелеріндегі хабарламалар туралы хабарлайды.",
     "enableEmailNotifications": "Электрондық пошта хабарландыруларын қосу",
-    "selectAudioMessagesOnPlayToolName": "Аудио хабарламаларды автоматты түрде бөлектеу",
-    "selectAudioMessagesOnPlayDescription": "Ойнатылған кезде аудио хабарламаларды автоматты түрде бөлектеу",
     "learningAnalytics": "Оқу аналитикасы",
     "alreadySpeak": "Мен қазірдің өзінде сөйлеймін...",
     "welcomeBackLogin": "Қайта қош келдіңіз! Сіз бұрын {platform} арқылы кірдіңіз.",

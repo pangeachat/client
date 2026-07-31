@@ -8974,16 +8974,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
-    "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Anailísíocht foghlama",
     "@learningAnalytics": {
         "type": "String",

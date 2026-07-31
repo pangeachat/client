@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Meseji Yakananga",
     "notificationRuleDMDescription": "Inozivisa mushandisi nezve mameseji mumakamuri emeseji yakananga.",
     "enableEmailNotifications": "Batidza zviziviso zveemail",
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight mameseji earuzha",
-    "selectAudioMessagesOnPlayDescription": "Otomatically highlight mameseji earuzha kana achiridzwa",
     "learningAnalytics": "Ongororo yekudzidza",
     "alreadySpeak": "Ndototaura...",
     "welcomeBackLogin": "Tikugashirei! Wakambopinda ne {platform}.",

@@ -8445,16 +8445,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatikusan kiemeli az audio üzeneteket",
-    "selectAudioMessagesOnPlayDescription": "Automatikusan kiemeli az audio üzeneteket, amikor lejátszásra kerülnek",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Tanulási analitika",
     "@learningAnalytics": {
         "type": "String",

@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "සෘජු පණිවිඩය",
     "notificationRuleDMDescription": "සෘජු පණිවිඩ කාමරවල පණිවිඩ ගැන පරිශීලකයාට දැනුම් දෙයි.",
     "enableEmailNotifications": "විද්‍යුත් තැපැල් දැනුම්දීම් සක්‍රීය කරන්න",
-    "selectAudioMessagesOnPlayToolName": "ශ්‍රව්‍ය පණිවිඩ ස්වයංක්‍රීයව ඉස්මතු කරන්න",
-    "selectAudioMessagesOnPlayDescription": "ධාවනය කරන විට ශ්‍රව්‍ය පණිවිඩ ස්වයංක්‍රීයව ඉස්මතු කරන්න",
     "learningAnalytics": "ඉගෙනුම් විශ්ලේෂණ",
     "alreadySpeak": "මම දැනටමත් කතා කරනවා...",
     "welcomeBackLogin": "නැවත සාදරයෙන් පිළිගනිමු! ඔබ මීට පෙර {platform} සමඟින් පුරනය විය.",

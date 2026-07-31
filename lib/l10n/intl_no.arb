@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direktemelding",
     "notificationRuleDMDescription": "Varsler brukeren om meldinger i direktemeldingsrom.",
     "enableEmailNotifications": "Aktiver e-postvarsler",
-    "selectAudioMessagesOnPlayToolName": "Fremhev lydmeldinger automatisk",
-    "selectAudioMessagesOnPlayDescription": "Fremhev lydmeldinger automatisk når de spilles av",
     "learningAnalytics": "Læringsanalyse",
     "alreadySpeak": "Jeg snakker allerede...",
     "welcomeBackLogin": "Velkommen tilbake! Du logget inn tidligere med {platform}.",

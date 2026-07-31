@@ -8353,16 +8353,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Bailigh teachtaireachtaí gutháin go huathoibríoch",
-    "selectAudioMessagesOnPlayDescription": "Bailigh teachtaireachtaí gutháin go huathoibríoch nuair a chluineann tú iad",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Anailísíocht foghlama",
     "@learningAnalytics": {
         "type": "String",

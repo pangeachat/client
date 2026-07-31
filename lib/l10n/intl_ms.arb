@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Mesej Langsung",
     "notificationRuleDMDescription": "Memberitahu pengguna tentang mesej dalam bilik mesej langsung.",
     "enableEmailNotifications": "Dayakan pemberitahuan e-mel",
-    "selectAudioMessagesOnPlayToolName": "Serlahkan mesej audio secara automatik",
-    "selectAudioMessagesOnPlayDescription": "Serlahkan mesej audio secara automatik apabila dimainkan",
     "learningAnalytics": "Analitik pembelajaran",
     "alreadySpeak": "Saya sudah bertutur...",
     "welcomeBackLogin": "Selamat kembali! Anda sebelum ini log masuk dengan {platform}.",

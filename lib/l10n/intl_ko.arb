@@ -8535,16 +8535,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "오디오 메시지 자동 강조",
-    "selectAudioMessagesOnPlayDescription": "재생할 때 오디오 메시지를 자동으로 강조 표시합니다",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "학습 분석",
     "@learningAnalytics": {
         "type": "String",

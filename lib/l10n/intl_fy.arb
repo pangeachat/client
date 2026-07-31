@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direkt Berjocht",
     "notificationRuleDMDescription": "Stjoert de brûker in notifikaasje oer berjochten yn direkte berjochtkeamers.",
     "enableEmailNotifications": "E-mailnotifikaasjes ynskeakelje",
-    "selectAudioMessagesOnPlayToolName": "Audioberjochten automatysk markearje",
-    "selectAudioMessagesOnPlayDescription": "Audioberjochten automatysk markearje as se ôfspile wurde",
     "learningAnalytics": "Learanalytics",
     "alreadySpeak": "Ik praat al...",
     "welcomeBackLogin": "Wolkom werom! Jo hawwe jo earder oanmeld mei {platform}.",

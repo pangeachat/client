@@ -8974,16 +8974,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "เน้นข้อความเสียงโดยอัตโนมัติ",
-    "selectAudioMessagesOnPlayDescription": "เน้นข้อความเสียงโดยอัตโนมัติเมื่อเล่น",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "การวิเคราะห์การเรียนรู้",
     "@learningAnalytics": {
         "type": "String",

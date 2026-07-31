@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Direkte Boodskap",
     "notificationRuleDMDescription": "Stel die gebruiker in kennis van boodskappe in direkte boodskapkletse.",
     "enableEmailNotifications": "Aktiveer e-poskennisgewings",
-    "selectAudioMessagesOnPlayToolName": "Merk oudioboodskappe outomaties",
-    "selectAudioMessagesOnPlayDescription": "Merk oudioboodskappe outomaties wanneer dit gespeel word",
     "learningAnalytics": "Leeranalise",
     "alreadySpeak": "Ek praat reeds...",
     "welcomeBackLogin": "Welkom terug! Jy het voorheen met {platform} aangemeld.",

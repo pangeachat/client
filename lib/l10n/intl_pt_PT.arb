@@ -9259,16 +9259,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Realçar automaticamente mensagens de áudio",
-    "selectAudioMessagesOnPlayDescription": "Realçar automaticamente mensagens de áudio quando reproduzidas",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Análise de aprendizagem",
     "@learningAnalytics": {
         "type": "String",

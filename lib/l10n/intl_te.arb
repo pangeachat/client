@@ -9298,16 +9298,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "ఆడియో సందేశాలను ఆటో-హైలైట్ చేయండి",
-    "selectAudioMessagesOnPlayDescription": "ఆడినప్పుడు ఆడియో సందేశాలను ఆటోమేటిక్‌గా హైలైట్ చేయండి",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "అభ్యాస విశ్లేషణ",
     "@learningAnalytics": {
         "type": "String",

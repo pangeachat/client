@@ -204,7 +204,6 @@ class UserToolSettings {
   final bool autoIGC;
   final bool enableTTS;
   final bool enableAutocorrect;
-  final bool selectAudioMessagesOnPlay;
   final bool showDeveloperOptions;
 
   const UserToolSettings({
@@ -215,7 +214,6 @@ class UserToolSettings {
     this.autoIGC = true,
     this.enableTTS = true,
     this.enableAutocorrect = false,
-    this.selectAudioMessagesOnPlay = true,
     this.showDeveloperOptions = false,
   });
 
@@ -230,7 +228,6 @@ class UserToolSettings {
         autoIGC: json[UserConstants.autoIGC] ?? true,
         enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
         enableAutocorrect: json["enableAutocorrect"] ?? false,
-        selectAudioMessagesOnPlay: json["selectAudioMessagesOnPlay"] ?? true,
         showDeveloperOptions: json["showDeveloperOptions"] ?? false,
       );
 
@@ -243,7 +240,6 @@ class UserToolSettings {
     data[UserConstants.autoIGC] = autoIGC;
     data[ToolSetting.enableTTS.toString()] = enableTTS;
     data["enableAutocorrect"] = enableAutocorrect;
-    data["selectAudioMessagesOnPlay"] = selectAudioMessagesOnPlay;
     data["showDeveloperOptions"] = showDeveloperOptions;
     return data;
   }
@@ -286,7 +282,6 @@ class UserToolSettings {
     bool? autoIGC,
     bool? enableTTS,
     bool? enableAutocorrect,
-    bool? selectAudioMessagesOnPlay,
     bool? showDeveloperOptions,
   }) {
     return UserToolSettings(
@@ -298,8 +293,6 @@ class UserToolSettings {
       autoIGC: autoIGC ?? this.autoIGC,
       enableTTS: enableTTS ?? this.enableTTS,
       enableAutocorrect: enableAutocorrect ?? this.enableAutocorrect,
-      selectAudioMessagesOnPlay:
-          selectAudioMessagesOnPlay ?? this.selectAudioMessagesOnPlay,
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
     );
   }
@@ -316,7 +309,6 @@ class UserToolSettings {
         other.autoIGC == autoIGC &&
         other.enableTTS == enableTTS &&
         other.enableAutocorrect == enableAutocorrect &&
-        other.selectAudioMessagesOnPlay == selectAudioMessagesOnPlay &&
         other.showDeveloperOptions == showDeveloperOptions;
   }
 
@@ -329,7 +321,6 @@ class UserToolSettings {
     autoIGC.hashCode,
     enableTTS.hashCode,
     enableAutocorrect.hashCode,
-    selectAudioMessagesOnPlay.hashCode,
     showDeveloperOptions.hashCode,
   ]);
 }

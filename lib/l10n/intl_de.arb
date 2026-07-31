@@ -8329,16 +8329,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Audio-Nachrichten automatisch hervorheben",
-    "selectAudioMessagesOnPlayDescription": "Audio-Nachrichten automatisch hervorheben, wenn sie abgespielt werden",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Lernanalytik",
     "@learningAnalytics": {
         "type": "String",

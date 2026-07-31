@@ -9293,16 +9293,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Aŭtomate emfazi aŭdmesaĝojn",
-    "selectAudioMessagesOnPlayDescription": "Aŭtomate emfazi aŭdmesaĝojn kiam ili estas ludataj",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Lernado-analitiko",
     "@learningAnalytics": {
         "type": "String",

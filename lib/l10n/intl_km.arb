@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "សារផ្ទាល់",
     "notificationRuleDMDescription": "ជូនដំណឹងដល់អ្នកប្រើប្រាស់អំពីសារនៅក្នុងបន្ទប់សារផ្ទាល់។",
     "enableEmailNotifications": "បើកការជូនដំណឹងតាមអ៊ីមែល",
-    "selectAudioMessagesOnPlayToolName": "បន្លិចសារជាសំឡេងដោយស្វ័យប្រវត្តិ",
-    "selectAudioMessagesOnPlayDescription": "បន្លិចសារជាសំឡេងដោយស្វ័យប្រវត្តិនៅពេលចាក់",
     "learningAnalytics": "ការវិភាគការរៀនសូត្រ",
     "alreadySpeak": "ខ្ញុំនិយាយរួចហើយ...",
     "welcomeBackLogin": "សូមស្វាគមន៍! អ្នកបានចូលដោយប្រើ {platform}។",

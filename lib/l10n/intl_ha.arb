@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Saƙon Kai Tsaye",
     "notificationRuleDMDescription": "Yana sanar da mai amfani game da saƙonni a cikin ɗakunan saƙon kai tsaye.",
     "enableEmailNotifications": "Kunna sanarwar imel",
-    "selectAudioMessagesOnPlayToolName": "Haskaka saƙonnin murya ta atomatik",
-    "selectAudioMessagesOnPlayDescription": "Haskaka saƙonnin murya ta atomatik lokacin da aka kunna su",
     "learningAnalytics": "Binciken koyo",
     "alreadySpeak": "Na riga na iya magana da...",
     "welcomeBackLogin": "Barka da dawowa! A baya ka shiga da {platform}.",

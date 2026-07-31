@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "प्रत्यक्ष सन्देश",
     "notificationRuleDMDescription": "प्रत्यक्ष सन्देश कोठाहरूमा सन्देशहरूको बारेमा प्रयोगकर्तालाई सूचित गर्दछ।",
     "enableEmailNotifications": "इमेल सूचनाहरू सक्षम गर्नुहोस्",
-    "selectAudioMessagesOnPlayToolName": "अडियो सन्देशहरू स्वतः हाइलाइट गर्नुहोस्",
-    "selectAudioMessagesOnPlayDescription": "प्ले गर्दा अडियो सन्देशहरू स्वतः हाइलाइट गर्नुहोस्",
     "learningAnalytics": "सिकाई विश्लेषण",
     "alreadySpeak": "म पहिले नै बोल्छु...",
     "welcomeBackLogin": "फेरि स्वागत छ! तपाईंले पहिले {platform} मार्फत साइन इन गर्नुभएको थियो।",

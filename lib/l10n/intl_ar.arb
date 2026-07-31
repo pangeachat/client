@@ -8652,16 +8652,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "تمييز الرسائل الصوتية تلقائيًا",
-    "selectAudioMessagesOnPlayDescription": "تمييز الرسائل الصوتية تلقائيًا عند تشغيلها",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "تحليلات التعلم",
     "@learningAnalytics": {
         "type": "String",

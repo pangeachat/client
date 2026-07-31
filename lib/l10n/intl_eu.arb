@@ -8342,16 +8342,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Audio mezuak automatikoki nabarmentzea",
-    "selectAudioMessagesOnPlayDescription": "Audio mezuak automatikoki nabarmentzea erreproduzitzen direnean",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Ikaskuntza analitika",
     "@learningAnalytics": {
         "type": "String",

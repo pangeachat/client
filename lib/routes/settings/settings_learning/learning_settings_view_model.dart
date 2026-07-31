@@ -111,8 +111,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
             toolSettings.enableTTS;
       case ToolSetting.enableAutocorrect:
         return toolSettings.enableAutocorrect;
-      case ToolSetting.selectAudioMessagesOnPlay:
-        return toolSettings.selectAudioMessagesOnPlay;
     }
   }
 
@@ -147,10 +145,6 @@ class LearningSettingsViewModel extends ChangeNotifier {
         enableAutocorrect: toolSetting == ToolSetting.enableAutocorrect
             ? value
             : _updatedProfile.toolSettings.enableAutocorrect,
-        selectAudioMessagesOnPlay:
-            toolSetting == ToolSetting.selectAudioMessagesOnPlay
-            ? value
-            : _updatedProfile.toolSettings.selectAudioMessagesOnPlay,
       ),
     );
     _updateProfile(updated);
