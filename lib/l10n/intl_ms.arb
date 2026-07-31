@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-30 15:16:50.594748",
+    "@@last_modified": "2026-07-31 10:55:40.242927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Mesej Langsung",
     "notificationRuleDMDescription": "Memberitahu pengguna tentang mesej dalam bilik mesej langsung.",
     "enableEmailNotifications": "Dayakan pemberitahuan e-mel",
-    "selectAudioMessagesOnPlayToolName": "Serlahkan mesej audio secara automatik",
-    "selectAudioMessagesOnPlayDescription": "Serlahkan mesej audio secara automatik apabila dimainkan",
     "learningAnalytics": "Analitik pembelajaran",
     "alreadySpeak": "Saya sudah bertutur...",
     "welcomeBackLogin": "Selamat kembali! Anda sebelum ini log masuk dengan {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
     "newActivityBadge": "BAHARU",
     "exitVocabPracticeSession": "Kemajuan sesi latihan kosa kata anda sekarang tidak akan disimpan.",
-    "exitGrammarPracticeSession": "Kemajuan sesi latihan tatabahasa anda sekarang tidak akan disimpan."
+    "exitGrammarPracticeSession": "Kemajuan sesi latihan tatabahasa anda sekarang tidak akan disimpan.",
+    "autoReadAloudMessagesToolName": "Baca semua mesej yang diterima secara automatik",
+    "autoReadAloudMessagesDescription": "Apabila mesej diterima, suara peranti akan digunakan untuk membaca mesej dengan kuat untuk latihan mendengar."
 }

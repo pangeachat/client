@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-30 15:16:52.937914",
+    "@@last_modified": "2026-07-31 10:55:43.987052",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Mesazh i Drejtpërdrejtë",
     "notificationRuleDMDescription": "Njofton përdoruesin për mesazhet në dhomat e mesazheve të drejtpërdrejta.",
     "enableEmailNotifications": "Aktivizo njoftimet me email",
-    "selectAudioMessagesOnPlayToolName": "Auto-thekso mesazhet audio",
-    "selectAudioMessagesOnPlayDescription": "Thekson automatikisht mesazhet audio kur luhen",
     "learningAnalytics": "Analiza e të mësuarit",
     "alreadySpeak": "Unë tashmë flas...",
     "welcomeBackLogin": "Mirë se vini sërish! Ju më parë jeni kyçur me {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% pozitive ({count, plural, =1{1 vlerësim} other{{count} vlerësime}})",
     "newActivityBadge": "E RE",
     "exitVocabPracticeSession": "Progresi i seancës aktuale të praktikës së fjalorit nuk do të ruhet.",
-    "exitGrammarPracticeSession": "Progresi i seancës aktuale të praktikës së gramatikës nuk do të ruhet."
+    "exitGrammarPracticeSession": "Progresi i seancës aktuale të praktikës së gramatikës nuk do të ruhet.",
+    "autoReadAloudMessagesToolName": "Lexo automatikisht me zë të lartë të gjitha mesazhet e marra",
+    "autoReadAloudMessagesDescription": "Kur merret një mesazh, zëri i pajisjes do të përdoret për të lexuar mesazhin me zë të lartë për praktikë dëgjimi."
 }

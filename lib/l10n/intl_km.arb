@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-07-30 15:16:49.329946",
+    "@@last_modified": "2026-07-31 10:55:38.267522",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "សារផ្ទាល់",
     "notificationRuleDMDescription": "ជូនដំណឹងដល់អ្នកប្រើប្រាស់អំពីសារនៅក្នុងបន្ទប់សារផ្ទាល់។",
     "enableEmailNotifications": "បើកការជូនដំណឹងតាមអ៊ីមែល",
-    "selectAudioMessagesOnPlayToolName": "បន្លិចសារជាសំឡេងដោយស្វ័យប្រវត្តិ",
-    "selectAudioMessagesOnPlayDescription": "បន្លិចសារជាសំឡេងដោយស្វ័យប្រវត្តិនៅពេលចាក់",
     "learningAnalytics": "ការវិភាគការរៀនសូត្រ",
     "alreadySpeak": "ខ្ញុំនិយាយរួចហើយ...",
     "welcomeBackLogin": "សូមស្វាគមន៍! អ្នកបានចូលដោយប្រើ {platform}។",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% វិជ្ជមាន ({count, plural, =1{1 ការ​វាយតម្លៃ} other{{count} ការ​វាយតម្លៃ}})",
     "newActivityBadge": "ថ្មី",
     "exitVocabPracticeSession": "វឌ្ឍនភាពវគ្គហ្វឹកហាត់វាក្យសព្ទបច្ចុប្បន្នរបស់អ្នកនឹងមិនត្រូវបានរក្សាទុកទេ។",
-    "exitGrammarPracticeSession": "វឌ្ឍនភាពវគ្គហ្វឹកហាត់វេយ្យាករណ៍បច្ចុប្បន្នរបស់អ្នកនឹងមិនត្រូវបានរក្សាទុកទេ។"
+    "exitGrammarPracticeSession": "វឌ្ឍនភាពវគ្គហ្វឹកហាត់វេយ្យាករណ៍បច្ចុប្បន្នរបស់អ្នកនឹងមិនត្រូវបានរក្សាទុកទេ។",
+    "autoReadAloudMessagesToolName": "អានសារដែលបានទទួលទាំងអស់ដោយស្វ័យប្រវត្តិ",
+    "autoReadAloudMessagesDescription": "នៅពេលសារត្រូវបានទទួល សំឡេងឧបករណ៍នឹងត្រូវបានប្រើដើម្បីអានសារឮៗសម្រាប់ការអនុវត្តការស្តាប់។"
 }

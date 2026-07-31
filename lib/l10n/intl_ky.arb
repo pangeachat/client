@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-30 15:16:49.763922",
+    "@@last_modified": "2026-07-31 10:55:38.754383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Түз билдирүү",
     "notificationRuleDMDescription": "Колдонуучуга түз билдирүү бөлмөлөрүндөгү билдирүүлөр жөнүндө кабарлайт.",
     "enableEmailNotifications": "Электрондук почта эскертмелерин иштетүү",
-    "selectAudioMessagesOnPlayToolName": "Аудио билдирүүлөрдү автоматтык түрдө бөлүп көрсөтүү",
-    "selectAudioMessagesOnPlayDescription": "Ойнотулганда аудио билдирүүлөрдү автоматтык түрдө бөлүп көрсөтүү",
     "learningAnalytics": "Окуу аналитикасы",
     "alreadySpeak": "Мен буга чейин сүйлөйм...",
     "welcomeBackLogin": "Кош келиңиз! Сиз мурда {platform} аркылуу киргенсиз.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% оң ({count, plural, =1{1 баа} other{{count} баа}})",
     "newActivityBadge": "ЖАҢЫ",
     "exitVocabPracticeSession": "Учурдагы сөз байлыгын үйрөнүү сессияңыздын жүрүшү сакталбайт.",
-    "exitGrammarPracticeSession": "Учурдагы грамматикалык практика сессияңыздын жүрүшү сакталбайт."
+    "exitGrammarPracticeSession": "Учурдагы грамматикалык практика сессияңыздын жүрүшү сакталбайт.",
+    "autoReadAloudMessagesToolName": "Бардык келген билдирүүлөрдү автоматтык түрдө үн чыгарып окуу",
+    "autoReadAloudMessagesDescription": "Билдирүү келгенде, угуу практикасы үчүн билдирүүнү үн чыгарып окуу үчүн аппараттын үнү колдонулат."
 }

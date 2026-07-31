@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-30 15:16:46.399063",
+    "@@last_modified": "2026-07-31 10:55:34.144481",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -6537,16 +6537,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Resaltar automáticamente los mensajes de audio",
-    "selectAudioMessagesOnPlayDescription": "Resaltar automáticamente los mensajes de audio cuando se reproducen",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Análisis del aprendizaje",
     "@learningAnalytics": {
         "type": "String",
@@ -7896,5 +7886,7 @@
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 calificación} other{{count} calificaciones}})",
     "newActivityBadge": "NUEVO",
     "exitVocabPracticeSession": "No se guardará el progreso de tu sesión actual de práctica de vocabulario.",
-    "exitGrammarPracticeSession": "No se guardará el progreso de tu sesión actual de práctica de gramática."
+    "exitGrammarPracticeSession": "No se guardará el progreso de tu sesión actual de práctica de gramática.",
+    "autoReadAloudMessagesToolName": "Leer automáticamente en voz alta todos los mensajes recibidos",
+    "autoReadAloudMessagesDescription": "Cuando se reciba un mensaje, se utilizará la voz del dispositivo para leerlo en voz alta y practicar la escucha."
 }

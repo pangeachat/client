@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-30 15:16:45.247308",
+    "@@last_modified": "2026-07-31 10:55:32.251723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "የቀጥታ መልዕክት",
     "notificationRuleDMDescription": "በቀጥታ የመልዕክት ክፍሎች ውስጥ ስለሚገኙ መልዕክቶች ለተጠቃሚው ያሳውቃል።",
     "enableEmailNotifications": "የኢሜይል ማሳወቂያዎችን አንቃ",
-    "selectAudioMessagesOnPlayToolName": "የድምጽ መልዕክቶችን በራስ-ሰር አጉልት",
-    "selectAudioMessagesOnPlayDescription": "የድምጽ መልዕክቶች ሲጫወቱ በራስ-ሰር ያጉሉ",
     "learningAnalytics": "የመማር ትንታኔ",
     "alreadySpeak": "አስቀድሜ የምናገረው...",
     "welcomeBackLogin": "እንኳን ደህና መጡ! ከዚህ ቀደም በ{platform} ገብተዋል።",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% አዎንታዊ ({count, plural, =1{1 ደረጃ} other{{count} ደረጃዎች}})",
     "newActivityBadge": "አዲስ",
     "exitVocabPracticeSession": "የአሁን የቃላት ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
-    "exitGrammarPracticeSession": "የአሁን የሰዋስው ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።"
+    "exitGrammarPracticeSession": "የአሁን የሰዋስው ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
+    "autoReadAloudMessagesToolName": "ሁሉንም የተቀበሉ መልዕክቶችን በራስ-ሰር ጮክ ብሎ ያንብቡ",
+    "autoReadAloudMessagesDescription": "መልእክት ሲደርስ፣ ለማዳመጥ ልምምድ የመሣሪያ ድምፅ መልእክቱን ጮክ ብሎ ለማንበብ ይጠቅማል።"
 }

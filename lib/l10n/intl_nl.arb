@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:51.184689",
+    "@@last_modified": "2026-07-31 10:55:40.626342",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -8342,16 +8342,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatisch audio berichten markeren",
-    "selectAudioMessagesOnPlayDescription": "Audio berichten automatisch markeren wanneer ze worden afgespeeld",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Leeranalyses",
     "@learningAnalytics": {
         "type": "String",
@@ -9701,5 +9691,7 @@
     "activityRatingMeterLabel": "{percent}% positief ({count, plural, =1{1 beoordeling} other{{count} beoordelingen}})",
     "newActivityBadge": "NIEUW",
     "exitVocabPracticeSession": "De voortgang van je huidige woordenschatoefensessie wordt niet opgeslagen.",
-    "exitGrammarPracticeSession": "De voortgang van je huidige grammaticaoefensessie wordt niet opgeslagen."
+    "exitGrammarPracticeSession": "De voortgang van je huidige grammaticaoefensessie wordt niet opgeslagen.",
+    "autoReadAloudMessagesToolName": "Alle ontvangen berichten automatisch voorlezen",
+    "autoReadAloudMessagesDescription": "Wanneer een bericht wordt ontvangen, wordt de stem van het apparaat gebruikt om het bericht voor te lezen voor luisteroefeningen."
 }

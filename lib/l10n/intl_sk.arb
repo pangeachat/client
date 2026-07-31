@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-30 15:16:52.503966",
+    "@@last_modified": "2026-07-31 10:55:42.609593",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -9293,16 +9293,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automaticky zvýrazniť audio správy",
-    "selectAudioMessagesOnPlayDescription": "Automaticky zvýrazniť audio správy pri prehrávaní",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analytika učenia",
     "@learningAnalytics": {
         "type": "String",
@@ -10652,5 +10642,7 @@
     "activityRatingMeterLabel": "{percent}% pozitívnych ({count, plural, =1{1 hodnotenie} other{{count} hodnotení}})",
     "newActivityBadge": "NOVÉ",
     "exitVocabPracticeSession": "Váš aktuálny pokrok v precvičovaní slovnej zásoby sa neuloží.",
-    "exitGrammarPracticeSession": "Váš aktuálny pokrok v precvičovaní gramatiky sa neuloží."
+    "exitGrammarPracticeSession": "Váš aktuálny pokrok v precvičovaní gramatiky sa neuloží.",
+    "autoReadAloudMessagesToolName": "Automaticky čítať nahlas všetky prijaté správy",
+    "autoReadAloudMessagesDescription": "Keď sa prijme správa, hlas zariadenia sa použije na prečítanie správy nahlas pre cvičenie počúvania."
 }

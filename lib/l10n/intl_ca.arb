@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:46.124596",
+    "@@last_modified": "2026-07-31 10:55:32.630552",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -8469,16 +8469,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Destacar automàticament els missatges d'àudio",
-    "selectAudioMessagesOnPlayDescription": "Destacar automàticament els missatges d'àudio quan es reprodueixin",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Anàlisi de l'aprenentatge",
     "@learningAnalytics": {
         "type": "String",
@@ -9828,5 +9818,7 @@
     "activityRatingMeterLabel": "{percent}% positiu ({count, plural, =1{1 valoració} other{{count} valoracions}})",
     "newActivityBadge": "NOU",
     "exitVocabPracticeSession": "El progrés de la sessió actual de pràctica de vocabulari no es desarà.",
-    "exitGrammarPracticeSession": "El progrés de la sessió actual de pràctica de gramàtica no es desarà."
+    "exitGrammarPracticeSession": "El progrés de la sessió actual de pràctica de gramàtica no es desarà.",
+    "autoReadAloudMessagesToolName": "Llegir en veu alta automàticament tots els missatges rebuts",
+    "autoReadAloudMessagesDescription": "Quan es rep un missatge, la veu del dispositiu s'utilitzarà per llegir el missatge en veu alta per practicar l'escolta."
 }

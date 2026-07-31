@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-30 15:16:50.342354",
+    "@@last_modified": "2026-07-31 10:55:39.960376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Hafatra Mivantana",
     "notificationRuleDMDescription": "Mampandre ny mpampiasa momba ny hafatra ao amin'ny efitrano hafatra mivantana.",
     "enableEmailNotifications": "Alefaso ny fampandrenesana mailaka",
-    "selectAudioMessagesOnPlayToolName": "Manasongadina ho azy ny hafatra audio",
-    "selectAudioMessagesOnPlayDescription": "Manasongadina ho azy ny hafatra audio rehefa alefa",
     "learningAnalytics": "Fandalinana fianarana",
     "alreadySpeak": "Efa miteny aho...",
     "welcomeBackLogin": "Tongasoa indray! Niditra tamin'ny {platform} ianao teo aloha.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% tsara ({count, plural, =1{naoty 1} other{naoty {count}}})",
     "newActivityBadge": "VAOVAO",
     "exitVocabPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana voambolana ity.",
-    "exitGrammarPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana fitsipi-pitenenana ity."
+    "exitGrammarPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana fitsipi-pitenenana ity.",
+    "autoReadAloudMessagesToolName": "Vakio ho azy mafy ny hafatra rehetra voaray",
+    "autoReadAloudMessagesDescription": "Rehefa misy hafatra voaray, dia hampiasaina ny feon'ny fitaovana hamakiana mafy ny hafatra ho an'ny fampiharana fihainoana."
 }

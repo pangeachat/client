@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-30 15:16:49.369889",
+    "@@last_modified": "2026-07-31 10:55:37.843190",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "ನೇರ ಸಂದೇಶ",
     "notificationRuleDMDescription": "ನೇರ ಸಂದೇಶ ಕೊಠಡಿಗಳಲ್ಲಿನ ಸಂದೇಶಗಳ ಬಗ್ಗೆ ಬಳಕೆದಾರರಿಗೆ ತಿಳಿಸುತ್ತದೆ.",
     "enableEmailNotifications": "ಇಮೇಲ್ ಅಧಿಸೂಚನೆಗಳನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಿ",
-    "selectAudioMessagesOnPlayToolName": "ಆಡಿಯೋ ಸಂದೇಶಗಳನ್ನು ಸ್ವಯಂ-ಹೈಲೈಟ್ ಮಾಡಿ",
-    "selectAudioMessagesOnPlayDescription": "ಪ್ಲೇ ಮಾಡಿದಾಗ ಆಡಿಯೋ ಸಂದೇಶಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಹೈಲೈಟ್ ಮಾಡಿ",
     "learningAnalytics": "ಕಲಿಕಾ ವಿಶ್ಲೇಷಣೆಗಳು",
     "alreadySpeak": "ನಾನು ಈಗಾಗಲೇ ಮಾತನಾಡುತ್ತೇನೆ...",
     "welcomeBackLogin": "ಮರಳಿ ಸ್ವಾಗತ! ನೀವು ಈ ಹಿಂದೆ {platform} ಮೂಲಕ ಸೈನ್ ಇನ್ ಮಾಡಿದ್ದೀರಿ.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% ಸಕಾರಾತ್ಮಕ ({count, plural, =1{1 ರೇಟಿಂಗ್} other{{count} ರೇಟಿಂಗ್‌ಗಳು}})",
     "newActivityBadge": "ಹೊಸತು",
     "exitVocabPracticeSession": "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಶಬ್ದಕೋಶ ಅಭ್ಯಾಸದ ಸೆಷನ್ ಪ್ರಗತಿಯನ್ನು ಉಳಿಸಲಾಗುವುದಿಲ್ಲ.",
-    "exitGrammarPracticeSession": "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ವ್ಯಾಕರಣ ಅಭ್ಯಾಸದ ಸೆಷನ್ ಪ್ರಗತಿಯನ್ನು ಉಳಿಸಲಾಗುವುದಿಲ್ಲ."
+    "exitGrammarPracticeSession": "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ವ್ಯಾಕರಣ ಅಭ್ಯಾಸದ ಸೆಷನ್ ಪ್ರಗತಿಯನ್ನು ಉಳಿಸಲಾಗುವುದಿಲ್ಲ.",
+    "autoReadAloudMessagesToolName": "ಸ್ವೀಕರಿಸಿದ ಎಲ್ಲಾ ಸಂದೇಶಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಓದಿ",
+    "autoReadAloudMessagesDescription": "ಸಂದೇಶವನ್ನು ಸ್ವೀಕರಿಸಿದಾಗ, ಕೇಳುವ ಅಭ್ಯಾಸಕ್ಕಾಗಿ ಸಂದೇಶವನ್ನು ಜೋರಾಗಿ ಓದಲು ಸಾಧನದ ಧ್ವನಿಯನ್ನು ಬಳಸಲಾಗುತ್ತದೆ."
 }

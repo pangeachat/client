@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-30 15:16:52.616895",
+    "@@last_modified": "2026-07-31 10:55:43.592129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "سڌو پيغام",
     "notificationRuleDMDescription": "صارف کي سڌي پيغام جي ڪمرن ۾ پيغامن بابت اطلاع ڏئي ٿو.",
     "enableEmailNotifications": "اي ميل نوٽيفڪيشن فعال ڪريو",
-    "selectAudioMessagesOnPlayToolName": "آڊيو پيغامن کي خودڪار نمايان ڪريو",
-    "selectAudioMessagesOnPlayDescription": "جڏهن آڊيو پيغام هلائيا وڃن ته انهن کي خودڪار نمايان ڪريو",
     "learningAnalytics": "سکيا جي تجزيا",
     "alreadySpeak": "مان اڳ ۾ ئي ڳالهائي رهيو آهيان...",
     "welcomeBackLogin": "ڀلي ڪري آيا! توهان اڳ ۾ {platform} سان سائن ان ڪيو هو.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% مثبت ({count, plural, =1{1 درجه بندي} other{{count} درجه بنديون}})",
     "newActivityBadge": "نئون",
     "exitVocabPracticeSession": "توهان جي موجوده لفظن جي مشق سيشن جي ترقي محفوظ نه ٿيندي.",
-    "exitGrammarPracticeSession": "توهان جي موجوده گرامر جي مشق سيشن جي ترقي محفوظ نه ٿيندي."
+    "exitGrammarPracticeSession": "توهان جي موجوده گرامر جي مشق سيشن جي ترقي محفوظ نه ٿيندي.",
+    "autoReadAloudMessagesToolName": "سڀني موصول ٿيل پيغامن کي پاڻمرادو بلند آواز سان پڙهو",
+    "autoReadAloudMessagesDescription": "جڏهن ڪو پيغام موصول ٿيندو، ته ڊوائيس جو آواز ٻڌڻ جي مشق لاءِ پيغام کي بلند آواز سان پڙهڻ لاءِ استعمال ڪيو ويندو."
 }

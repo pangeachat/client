@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-30 15:16:54.466653",
+    "@@last_modified": "2026-07-31 10:55:45.576553",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "بىۋاسىتە ئۇچۇر",
     "notificationRuleDMDescription": "ئىشلەتكۈچىگە بىۋاسىتە ئۇچۇر ئۆيلىرىدىكى ئۇچۇرلار ھەققىدە ئۇقتۇرۇش قىلىدۇ.",
     "enableEmailNotifications": "ئېلخەت ئۇقتۇرۇشلىرىنى قوزغىتىش",
-    "selectAudioMessagesOnPlayToolName": "ئاۋازلىق ئۇچۇرلارنى ئاپتوماتىك گەۋدىلەندۈرۈش",
-    "selectAudioMessagesOnPlayDescription": "ئاۋازلىق ئۇچۇرلارنى قويغاندا ئاپتوماتىك گەۋدىلەندۈرۈش",
     "learningAnalytics": "ئۆگىنىش ئانالىزى",
     "alreadySpeak": "مەن ئاللىبۇرۇن سۆزلەيمەن...",
     "welcomeBackLogin": "قايتىپ كەلگىنىڭىزنى قارشى ئالىمىز! سىز ئىلگىرى {platform} ئارقىلىق كىرگەن ئىدىڭىز.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% ئىجابىي ({count, plural, =1{1 باھا} other{{count} باھا}})",
     "newActivityBadge": "يېڭى",
     "exitVocabPracticeSession": "ھازىرقى سۆزلۈك مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ.",
-    "exitGrammarPracticeSession": "ھازىرقى گرامماتىكا مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ."
+    "exitGrammarPracticeSession": "ھازىرقى گرامماتىكا مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ.",
+    "autoReadAloudMessagesToolName": "قوبۇل قىلىنغان بارلىق ئۇچۇرلارنى ئاپتوماتىك ئوقۇش",
+    "autoReadAloudMessagesDescription": "ئۇچۇر قوبۇل قىلىنغاندا، ئۈسكۈنىنىڭ ئاۋازى ئىشلىتىلىپ، ئاڭلاش مەشىقى ئۈچۈن ئۇچۇرنى ئوقۇيدۇ."
 }

@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-30 15:16:46.871039",
+    "@@last_modified": "2026-07-31 10:55:34.417434",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -8379,16 +8379,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Korosta ääniviestejä automaattisesti",
-    "selectAudioMessagesOnPlayDescription": "Korosta ääniviestejä automaattisesti, kun niitä toistetaan",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Oppimisanalytiikka",
     "@learningAnalytics": {
         "type": "String",
@@ -9738,5 +9728,7 @@
     "activityRatingMeterLabel": "{percent}% positiivisia ({count, plural, =1{1 arvio} other{{count} arviota}})",
     "newActivityBadge": "UUSI",
     "exitVocabPracticeSession": "Nykyisen sanastoharjoittelun edistymistä ei tallenneta.",
-    "exitGrammarPracticeSession": "Nykyisen kielioppiharjoittelun edistymistä ei tallenneta."
+    "exitGrammarPracticeSession": "Nykyisen kielioppiharjoittelun edistymistä ei tallenneta.",
+    "autoReadAloudMessagesToolName": "Lue kaikki vastaanotetut viestit ääneen automaattisesti",
+    "autoReadAloudMessagesDescription": "Kun viesti vastaanotetaan, laitteen ääntä käytetään viestin lukemiseen ääneen kuunteluharjoitusta varten."
 }

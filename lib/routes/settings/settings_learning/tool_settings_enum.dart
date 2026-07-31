@@ -11,7 +11,7 @@ enum ToolSetting {
   autoIGC,
   enableTTS,
   enableAutocorrect,
-  selectAudioMessagesOnPlay;
+  autoReadAloudMessages;
 
   String toolName(BuildContext context) {
     switch (this) {
@@ -29,8 +29,8 @@ enum ToolSetting {
         return L10n.of(context).enableTTSToolName;
       case ToolSetting.enableAutocorrect:
         return L10n.of(context).enableAutocorrectToolName;
-      case ToolSetting.selectAudioMessagesOnPlay:
-        return L10n.of(context).selectAudioMessagesOnPlayToolName;
+      case ToolSetting.autoReadAloudMessages:
+        return L10n.of(context).autoReadAloudMessagesToolName;
     }
   }
 
@@ -51,8 +51,8 @@ enum ToolSetting {
         return L10n.of(context).enableTTSToolDescription;
       case ToolSetting.enableAutocorrect:
         return L10n.of(context).enableAutocorrectDescription;
-      case ToolSetting.selectAudioMessagesOnPlay:
-        return L10n.of(context).selectAudioMessagesOnPlayDescription;
+      case ToolSetting.autoReadAloudMessages:
+        return L10n.of(context).autoReadAloudMessagesDescription;
     }
   }
 
@@ -66,7 +66,7 @@ enum ToolSetting {
         return false;
       case ToolSetting.autoIGC:
       case ToolSetting.enableTTS:
-      case ToolSetting.selectAudioMessagesOnPlay:
+      case ToolSetting.autoReadAloudMessages:
         return true;
     }
   }

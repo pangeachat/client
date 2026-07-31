@@ -14,9 +14,7 @@ import 'package:fluffychat/routes/chat/poll.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/routes/chat/video_player.dart';
-import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import '../../config/app_config.dart';
 import '../../utils/platform_infos.dart';
 import '../../utils/url_launcher.dart';
@@ -196,36 +194,21 @@ class MessageContent extends StatelessWidget {
             // is fixed
             //   || PlatformInfos.isLinux
             ) {
-              // #Pangea
-              return StreamBuilder(
-                stream: MatrixState
-                    .pangeaController
-                    .userController
-                    .settingsUpdateStream
-                    .stream,
-                builder: (context, _) {
-                  // Pangea#
-                  return AudioPlayerWidget(
-                    event,
-                    color: textColor,
-                    linkColor: linkColor,
-                    fontSize: fontSize,
-                    // #Pangea
-                    eventId:
-                        "${event.eventId}${overlayController != null ? '_overlay' : ''}",
-                    roomId: event.room.id,
-                    senderId: event.senderId,
-                    autoplay:
-                        overlayController != null && isTransitionAnimation,
-                    enableClicks:
-                        overlayController != null ||
-                        !MatrixState.pangeaController.userController
-                            .isToolEnabled(
-                              ToolSetting.selectAudioMessagesOnPlay,
-                            ),
-                    // Pangea#
-                  );
-                },
+              return AudioPlayerWidget(
+                event,
+                color: textColor,
+                linkColor: linkColor,
+                fontSize: fontSize,
+                // #Pangea
+                eventId:
+                    "${event.eventId}${overlayController != null ? '_overlay' : ''}",
+                roomId: event.room.id,
+                senderId: event.senderId,
+                autoplay: overlayController != null && isTransitionAnimation,
+                // Audio messages always open the toolbar on tap, so the
+                // in-bubble controls only take clicks inside the overlay.
+                enableClicks: overlayController != null,
+                // Pangea#
               );
             }
             return MessageDownloadContent(

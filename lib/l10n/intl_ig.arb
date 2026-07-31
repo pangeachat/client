@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-30 15:16:48.825502",
+    "@@last_modified": "2026-07-31 10:55:37.424712",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Ozi Ozugbo",
     "notificationRuleDMDescription": "Na-agwa onye ọrụ maka ozi dị na ọnụ ụlọ ozi ozugbo.",
     "enableEmailNotifications": "Kwado ọkwa email",
-    "selectAudioMessagesOnPlayToolName": "Akpaaka-egosipụta ozi ọdịyo",
-    "selectAudioMessagesOnPlayDescription": "Na-egosipụta ozi ọdịyo na-akpaghị aka mgbe a na-egwu ya",
     "learningAnalytics": "Nyocha mmụta",
     "alreadySpeak": "M na-asụlarị...",
     "welcomeBackLogin": "Nnọọ! Ị banyere na mbụ site na {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% dị mma ({count, plural, =1{1 ọkwa} other{{count} ọkwa}})",
     "newActivityBadge": "ỌHỤRỤ",
     "exitVocabPracticeSession": "Ọganihu gị na nnọkọ omume okwu gị ugbu a agaghị echekwa.",
-    "exitGrammarPracticeSession": "Ọganihu gị na nnọkọ omume ụtọasụsụ gị ugbu a agaghị echekwa."
+    "exitGrammarPracticeSession": "Ọganihu gị na nnọkọ omume ụtọasụsụ gị ugbu a agaghị echekwa.",
+    "autoReadAloudMessagesToolName": "Na-agụ ozi niile enwetara n'olu dara ụda na-akpaghị aka",
+    "autoReadAloudMessagesDescription": "Mgbe enwetara ozi, a ga-eji olu ngwaọrụ gụọ ozi ahụ n'olu dara ụda maka omume ige ntị."
 }

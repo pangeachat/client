@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:53.659320",
+    "@@last_modified": "2026-07-31 10:55:44.336530",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -8434,16 +8434,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "ஆட்டோ-உயர்த்த audio செய்திகள்",
-    "selectAudioMessagesOnPlayDescription": "விளையாடும் போது audio செய்திகளை தானாக உயர்த்தவும்",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "கற்றல் பகுப்பாய்வு",
     "@learningAnalytics": {
         "type": "String",
@@ -9793,5 +9783,7 @@
     "activityRatingMeterLabel": "{percent}% நேர்மறை ({count, plural, =1{1 மதிப்பீடு} other{{count} மதிப்பீடுகள்}})",
     "newActivityBadge": "புதியது",
     "exitVocabPracticeSession": "தற்போதைய உங்கள் சொற்களஞ்சியப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
-    "exitGrammarPracticeSession": "தற்போதைய உங்கள் இலக்கணப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது."
+    "exitGrammarPracticeSession": "தற்போதைய உங்கள் இலக்கணப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
+    "autoReadAloudMessagesToolName": "பெறப்பட்ட எல்லாச் செய்திகளையும் தானாகப் படித்துக் காட்டு",
+    "autoReadAloudMessagesDescription": "ஒரு செய்தி பெறப்படும்போது, கேட்கும் பயிற்சிக்குச் செய்தியைப் படித்துக் காட்ட, சாதனத்தின் குரல் பயன்படுத்தப்படும்."
 }

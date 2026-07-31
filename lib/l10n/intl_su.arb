@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-30 15:16:53.241779",
+    "@@last_modified": "2026-07-31 10:55:44.411325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Pesen Langsung",
     "notificationRuleDMDescription": "Ngabéjaan pangguna ngeunaan pesen dina kamar pesen langsung.",
     "enableEmailNotifications": "Aktifkeun béwara email",
-    "selectAudioMessagesOnPlayToolName": "Otomatis nyorot pesen audio",
-    "selectAudioMessagesOnPlayDescription": "Otomatis nyorot pesen audio nalika diputer",
     "learningAnalytics": "Analitik pembelajaran",
     "alreadySpeak": "Abdi parantos tiasa nyarios...",
     "welcomeBackLogin": "Wilujeng sumping deui! Anjeun sateuacanna asup nganggo {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% positip ({count, plural, =1{1 peunteun} other{{count} peunteun}})",
     "newActivityBadge": "ANYAR",
     "exitVocabPracticeSession": "Kamajuan sési latihan kosakata anjeun ayeuna moal disimpen.",
-    "exitGrammarPracticeSession": "Kamajuan sési latihan tata basa anjeun ayeuna moal disimpen."
+    "exitGrammarPracticeSession": "Kamajuan sési latihan tata basa anjeun ayeuna moal disimpen.",
+    "autoReadAloudMessagesToolName": "Otomatis maca tarik sadaya talatah nu ditarima",
+    "autoReadAloudMessagesDescription": "Nalika talatah ditarima, sora alat bakal dipaké pikeun maca talatah tarik pikeun latihan ngaregepkeun."
 }

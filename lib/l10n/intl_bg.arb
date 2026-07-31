@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-07-30 15:16:45.229231",
+    "@@last_modified": "2026-07-31 10:55:32.239518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1773,8 +1773,6 @@
     "notificationRuleDM": "Директно съобщение",
     "notificationRuleDMDescription": "Уведомява потребителя за съобщения в стаи за директни съобщения.",
     "enableEmailNotifications": "Разрешаване на известия по имейл",
-    "selectAudioMessagesOnPlayToolName": "Автоматично маркиране на аудио съобщения",
-    "selectAudioMessagesOnPlayDescription": "Автоматично маркиране на аудио съобщения при възпроизвеждане",
     "learningAnalytics": "Анализ на обучението",
     "alreadySpeak": "Вече говоря...",
     "welcomeBackLogin": "Добре дошли отново! Преди това влязохте с {platform}.",
@@ -2055,5 +2053,7 @@
     "activityRatingMeterLabel": "{percent}% положителни ({count, plural, =1{1 оценка} other{{count} оценки}})",
     "newActivityBadge": "НОВО",
     "exitVocabPracticeSession": "Напредъкът ви в текущата тренировка за лексика няма да бъде запазен.",
-    "exitGrammarPracticeSession": "Напредъкът ви в текущата тренировка за граматика няма да бъде запазен."
+    "exitGrammarPracticeSession": "Напредъкът ви в текущата тренировка за граматика няма да бъде запазен.",
+    "autoReadAloudMessagesToolName": "Автоматично прочитане на глас на всички получени съобщения",
+    "autoReadAloudMessagesDescription": "Когато бъде получено съобщение, гласът на устройството ще бъде използван за прочитане на съобщението на глас за практика на слушане."
 }

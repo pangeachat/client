@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-30 15:16:48.766989",
+    "@@last_modified": "2026-07-31 10:55:37.442285",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -9111,16 +9111,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "オーディオメッセージを自動ハイライト",
-    "selectAudioMessagesOnPlayDescription": "再生時にオーディオメッセージを自動的にハイライトします",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "学習分析",
     "@learningAnalytics": {
         "type": "String",
@@ -10470,5 +10460,7 @@
     "activityRatingMeterLabel": "{percent}% の高評価（{count, plural, =1{1件の評価} other{{count}件の評価}}）",
     "newActivityBadge": "NEW",
     "exitVocabPracticeSession": "現在の語彙練習セッションの進捗は保存されません。",
-    "exitGrammarPracticeSession": "現在の文法練習セッションの進捗は保存されません。"
+    "exitGrammarPracticeSession": "現在の文法練習セッションの進捗は保存されません。",
+    "autoReadAloudMessagesToolName": "受信メッセージをすべて自動で読み上げる",
+    "autoReadAloudMessagesDescription": "メッセージを受信した際、デバイスの音声機能を使ってメッセージを読み上げ、リスニング練習に役立てます。"
 }

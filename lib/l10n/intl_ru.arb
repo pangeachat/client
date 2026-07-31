@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-30 15:16:52.242872",
+    "@@last_modified": "2026-07-31 10:55:42.599185",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -9325,16 +9325,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Автовыделение аудиосообщений",
-    "selectAudioMessagesOnPlayDescription": "Автоматически выделять аудиосообщения при воспроизведении",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "alreadySpeak": "Я уже говорю...",
     "@alreadySpeak": {
         "type": "String",
@@ -10675,5 +10665,7 @@
     "activityRatingMeterLabel": "{percent}% положительных ({count, plural, =1{1 оценка} other{{count} оценок}})",
     "newActivityBadge": "НОВОЕ",
     "exitVocabPracticeSession": "Прогресс текущей сессии по практике словарного запаса не будет сохранен.",
-    "exitGrammarPracticeSession": "Прогресс текущей сессии по практике грамматики не будет сохранен."
+    "exitGrammarPracticeSession": "Прогресс текущей сессии по практике грамматики не будет сохранен.",
+    "autoReadAloudMessagesToolName": "Автоматически читать вслух все полученные сообщения",
+    "autoReadAloudMessagesDescription": "Когда сообщение получено, голос устройства будет использоваться для чтения сообщения вслух для практики аудирования."
 }
