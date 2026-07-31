@@ -1,7 +1,9 @@
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/hex_level_badge.dart';
 
 /// Pins the paint-bounds contract behind #7801: the level badge's hexagon must
@@ -69,5 +71,62 @@ void main() {
         );
       },
     );
+  });
+
+  /// The badge carries hover / open-panel state in its own gold (#8067), and
+  /// the outline tracks the fill so the badge deepens as ONE mark rather than
+  /// keeping a border that no longer relates to it.
+  group('lit badge', () {
+    Future<HexBadgePainter> pumpBadge(
+      WidgetTester tester, {
+      required bool selected,
+    }) async {
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: Scaffold(
+            body: Center(
+              child: HexLevelBadge(level: 4, selected: selected, onTap: () {}),
+            ),
+          ),
+        ),
+      );
+      // The L10n delegates load asynchronously; one pump isn't enough.
+      await tester.pumpAndSettle();
+      return tester
+              .widget<CustomPaint>(
+                find.descendant(
+                  of: find.byType(HexLevelBadge),
+                  matching: find.byType(CustomPaint),
+                ),
+              )
+              .painter!
+          as HexBadgePainter;
+    }
+
+    testWidgets('selected deepens the fill from the default gold', (
+      tester,
+    ) async {
+      final unlit = await pumpBadge(tester, selected: false);
+      final context = tester.element(find.byType(Scaffold));
+      expect(unlit.fill, AppConfig.goldByTheme(context));
+
+      final lit = await pumpBadge(tester, selected: true);
+      expect(lit.fill, AppConfig.goldHighlightByTheme(context));
+    });
+
+    testWidgets('the outline stays a step darker than whatever the fill is', (
+      tester,
+    ) async {
+      for (final selected in [false, true]) {
+        final painter = await pumpBadge(tester, selected: selected);
+        expect(
+          HSLColor.fromColor(painter.border).lightness,
+          lessThan(HSLColor.fromColor(painter.fill).lightness),
+          reason: 'selected: $selected',
+        );
+      }
+    });
   });
 }
