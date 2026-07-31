@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-29 12:08:23.095204",
+    "@@last_modified": "2026-07-31 10:55:44.308585",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1698,7 +1698,6 @@
     "voice": "Lentsoe",
     "youLeftTheChat": "🚪 U tsoile moqoqong",
     "webDownloadPermissionMessage": "Haeba sebatli sa hau se thibela ho jarolla, ka kopo lumella ho jarolla bakeng sa sebaka sena sa marang-rang.",
-    "exitPractice": "Tsoelo-pele ea hau ea boikoetliso e ke ke ea bolokoa.",
     "practiceGrammar": "Itloaetse sebōpeho-puo",
     "notEnoughToPractice": "Romela melaetsa e mengata ho bula boikoetliso",
     "constructUseCorGCDesc": "Tloaelo e nepahetseng ea sehlopha sa sebōpeho-puo",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Molaetsa o tobileng",
     "notificationRuleDMDescription": "E tsebisa mosebelisi ka melaetsa ka likamoreng tsa melaetsa e tobileng.",
     "enableEmailNotifications": "Numella litsebiso tsa imeile",
-    "selectAudioMessagesOnPlayToolName": "Totobatsa melaetsa ea molumo ka bo eona",
-    "selectAudioMessagesOnPlayDescription": "Totobatsa melaetsa ea molumo ka bo eona ha e bapaloa",
     "learningAnalytics": "Tlhahlobo ea ho ithuta",
     "alreadySpeak": "Ke se ke bua...",
     "welcomeBackLogin": "O amohelehile hape! O kene ka {platform} pele.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Maikutlo a hao ha a kgone ho romelwa. Leka ho a ngola botjha, kapa o romelle tekanyetso ya hao ntle le maikutlo.",
     "rateActivityThanks": "Re leboha maikutlo a hao!",
     "activityRatingMeterLabel": "{percent}% e ntle ({count, plural, =1{tekanyetso e 1} other{ditekanyetso tse {count}}})",
-    "newActivityBadge": "E NCHA"
+    "newActivityBadge": "E NCHA",
+    "exitVocabPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa mantsoe a macha e ke ke ea bolokoa.",
+    "exitGrammarPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa sebōpeho-puo e ke ke ea bolokoa.",
+    "autoReadAloudMessagesToolName": "Bala melaetsa yohle e amohetsweng ka boyona",
+    "autoReadAloudMessagesDescription": "Ha molaetsa o amohetswe, lentswe la sesebediswa le tla sebediswa ho bala molaetsa ka lentswe le phahameng bakeng sa tloaelo ya ho mamela."
 }

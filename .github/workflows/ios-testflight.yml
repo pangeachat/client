@@ -1,10 +1,11 @@
 name: Build iOS and upload to TestFlight
 # Signed iOS build via fastlane match, uploaded to TestFlight.
 # - Called from release.yaml with environment=production on every release.
-# - Manually dispatchable for staging (or production) test builds — replaces
-#   the laptop fastlane beta flow. The selected GitHub Environment supplies
-#   GOOGLE_SERVICES_PLIST and WEB_APP_ENV, so the Firebase project always
-#   matches the target environment (see deployment.instructions.md).
+# - Manually dispatchable for staging (or production) test builds. This is the
+#   only supported path to TestFlight; the old laptop fastlane lane is gone.
+#   The selected GitHub Environment supplies GOOGLE_SERVICES_PLIST and
+#   WEB_APP_ENV, so the Firebase project always matches the target environment
+#   (see deployment.instructions.md).
 on:
   workflow_call:
     inputs:
@@ -59,6 +60,8 @@ jobs:
         run: sudo xcode-select --switch /Applications/Xcode_26.3.app
       - run: brew install sqlcipher
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+        with:
+          cache-base: main
       - name: Set up Ruby
         uses: ruby/setup-ruby@6ca151fd1bfcfd6fe0c4eb6837eb0584d0134a0c # v1
         with:

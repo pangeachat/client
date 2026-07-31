@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:22.941956",
+    "@@last_modified": "2026-07-31 10:55:42.734212",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -8478,15 +8478,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Progresul sesiunii tale de practică nu va fi salvat.",
     "practiceGrammar": "Exersează gramatică",
     "notEnoughToPractice": "Trimite mai multe mesaje pentru a debloca practica",
     "constructUseCorGCDesc": "Practică categoria de gramatică corectă",
     "constructUseIncGCDesc": "Practică categoria de gramatică incorectă",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9076,16 +9071,6 @@
     },
     "enableEmailNotifications": "Activează notificările prin email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Subliniază automat mesajele audio",
-    "selectAudioMessagesOnPlayDescription": "Subliniază automat mesajele audio atunci când sunt redată",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10436,5 +10421,9 @@
     "rateActivityCommentRejected": "Comentariul tău nu a putut fi postat. Încearcă să-l reformulezi sau trimite evaluarea fără un comentariu.",
     "rateActivityThanks": "Mulțumim pentru feedback!",
     "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 evaluare} other{{count} evaluări}})",
-    "newActivityBadge": "NOU"
+    "newActivityBadge": "NOU",
+    "exitVocabPracticeSession": "Progresul sesiunii curente de exersare a vocabularului nu va fi salvat.",
+    "exitGrammarPracticeSession": "Progresul sesiunii curente de exersare a gramaticii nu va fi salvat.",
+    "autoReadAloudMessagesToolName": "Citește automat cu voce tare toate mesajele primite",
+    "autoReadAloudMessagesDescription": "Când este primit un mesaj, vocea dispozitivului va fi utilizată pentru a citi mesajul cu voce tare pentru exersarea ascultării."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:18.067216",
+    "@@last_modified": "2026-07-31 10:55:35.848644",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8666,15 +8666,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "ההתקדמות שלך במפגש האימון לא תישמר.",
     "practiceGrammar": "אימון דקדוק",
     "notEnoughToPractice": "שלח יותר הודעות כדי לפתוח אימון",
     "constructUseCorGCDesc": "אימון בקטגוריית דקדוק נכון",
     "constructUseIncGCDesc": "אימון בקטגוריית דקדוק לא נכון",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9264,16 +9259,6 @@
     },
     "enableEmailNotifications": "אפשר התראות דוא\"ל",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "הדגש אוטומטית הודעות קוליות",
-    "selectAudioMessagesOnPlayDescription": "הדגש אוטומטית הודעות קוליות כאשר הן מנוגנות",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10624,5 +10609,9 @@
     "rateActivityCommentRejected": "התגובה שלך לא פורסמה. נסה לנסח אותה מחדש, או שלח את הדירוג שלך ללא תגובה.",
     "rateActivityThanks": "תודה על המשוב!",
     "activityRatingMeterLabel": "{percent}% חיובי ({count, plural, =1{דירוג 1} other{{count} דירוגים}})",
-    "newActivityBadge": "חדש"
+    "newActivityBadge": "חדש",
+    "exitVocabPracticeSession": "ההתקדמות שלך באימון אוצר המילים הנוכחי לא תישמר.",
+    "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
+    "autoReadAloudMessagesToolName": "הקראה אוטומטית של כל ההודעות שהתקבלו",
+    "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה."
 }

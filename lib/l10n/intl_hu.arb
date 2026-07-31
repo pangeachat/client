@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-29 12:08:18.639659",
+    "@@last_modified": "2026-07-31 10:55:36.496632",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -7849,15 +7849,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "A gyakorlási session előrehaladása nem lesz mentve.",
     "practiceGrammar": "Nyelvtan gyakorlása",
     "notEnoughToPractice": "Több üzenetet kell küldeni a gyakorlás feloldásához",
     "constructUseCorGCDesc": "Helyes nyelvtani kategória gyakorlása",
     "constructUseIncGCDesc": "Helytelen nyelvtani kategória gyakorlása",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8447,16 +8442,6 @@
     },
     "enableEmailNotifications": "Engedélyezze az e-mail értesítéseket",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatikusan kiemeli az audio üzeneteket",
-    "selectAudioMessagesOnPlayDescription": "Automatikusan kiemeli az audio üzeneteket, amikor lejátszásra kerülnek",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9807,5 +9792,9 @@
     "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd be az értékelésedet megjegyzés nélkül.",
     "rateActivityThanks": "Köszönjük visszajelzésedet!",
     "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})",
-    "newActivityBadge": "ÚJ"
+    "newActivityBadge": "ÚJ",
+    "exitVocabPracticeSession": "Az aktuális szókincsgyakorló-munkamenet előrehaladása nem lesz elmentve.",
+    "exitGrammarPracticeSession": "Az aktuális nyelvtani gyakorló-munkamenet előrehaladása nem lesz elmentve.",
+    "autoReadAloudMessagesToolName": "Összes beérkező üzenet automatikus felolvasása",
+    "autoReadAloudMessagesDescription": "Üzenet érkezésekor az eszköz hangja felolvassa az üzenetet a hallás utáni gyakorláshoz."
 }

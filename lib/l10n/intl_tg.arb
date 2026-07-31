@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-29 12:08:23.769745",
+    "@@last_modified": "2026-07-31 10:55:45.295170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1698,7 +1698,6 @@
     "voice": "Овоз",
     "youLeftTheChat": "🚪 Шумо чатро тарк кардед",
     "webDownloadPermissionMessage": "Агар браузери шумо зеркашиҳоро маҳкам кунад, лутфан зеркашиҳоро барои ин сайт фаъол созед.",
-    "exitPractice": "Пешрафти ҷаласаи машқи шумо захира карда намешавад.",
     "practiceGrammar": "Грамматикаро машқ кунед",
     "notEnoughToPractice": "Барои кушодани машқ паёмҳои бештар фиристед",
     "constructUseCorGCDesc": "Машқи категорияи грамматикии дуруст",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Паёми мустақим",
     "notificationRuleDMDescription": "Истифодабарандаро дар бораи паёмҳо дар ҳуҷраҳои паёмҳои мустақим огоҳ мекунад.",
     "enableEmailNotifications": "Фаъол кардани огоҳиномаҳои почтаи электронӣ",
-    "selectAudioMessagesOnPlayToolName": "Паёмҳои аудиоиро ба таври худкор таъкид кунед",
-    "selectAudioMessagesOnPlayDescription": "Ҳангоми навохтан паёмҳои аудиоиро ба таври худкор таъкид кунед",
     "learningAnalytics": "Таҳлили омӯзиш",
     "alreadySpeak": "Ман аллакай гап мезанам...",
     "welcomeBackLogin": "Хуш омадед! Шумо қаблан бо {platform} ворид шуда будед.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Шарҳи шумо нашр нашуд. Кӯшиш кунед, ки онро аз нав нависед ё баҳои худро бе шарҳ пешниҳод кунед.",
     "rateActivityThanks": "Ташаккур барои фикру мулоҳизаи шумо!",
     "activityRatingMeterLabel": "{percent}% мусбат ({count, plural, =1{1 баҳо} other{{count} баҳо}})",
-    "newActivityBadge": "НАВ"
+    "newActivityBadge": "НАВ",
+    "exitVocabPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи луғати шумо захира карда намешавад.",
+    "exitGrammarPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи грамматикаи шумо захира карда намешавад.",
+    "autoReadAloudMessagesToolName": "Ҳамаи паёмҳои қабулшударо ба таври худкор бо овози баланд хонед",
+    "autoReadAloudMessagesDescription": "Ҳангоми қабули паём, овози дастгоҳ барои хондани паём бо овози баланд барои машқи гӯш кардан истифода мешавад."
 }

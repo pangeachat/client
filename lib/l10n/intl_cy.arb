@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-29 12:08:16.955955",
+    "@@last_modified": "2026-07-31 10:55:33.841196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1698,7 +1698,6 @@
     "voice": "Llais",
     "youLeftTheChat": "🚪 Fe wnaethoch chi adael y sgwrs",
     "webDownloadPermissionMessage": "Os yw eich porwr yn blocio lawrlwythiadau, galluogwch lawrlwythiadau ar gyfer y wefan hon.",
-    "exitPractice": "Ni fydd cynnydd eich sesiwn ymarfer yn cael ei gadw.",
     "practiceGrammar": "Ymarfer gramadeg",
     "notEnoughToPractice": "Anfonwch fwy o negeseuon i ddatgloi ymarfer",
     "constructUseCorGCDesc": "Ymarfer categori gramadeg cywir",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Neges Uniongyrchol",
     "notificationRuleDMDescription": "Yn hysbysu'r defnyddiwr am negeseuon mewn ystafelloedd negeseuon uniongyrchol.",
     "enableEmailNotifications": "Galluogi hysbysiadau e-bost",
-    "selectAudioMessagesOnPlayToolName": "Amllynu negeseuon sain yn awtomatig",
-    "selectAudioMessagesOnPlayDescription": "Amllynu negeseuon sain yn awtomatig pan gânt eu chwarae",
     "learningAnalytics": "Dadansoddeg dysgu",
     "alreadySpeak": "Rwyf eisoes yn siarad...",
     "welcomeBackLogin": "Croeso'n ôl! Fe wnaethoch chi fewngofnodi o'r blaen gyda {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Ni ellid postio'ch sylw. Ceisiwch ei aildrefnu, neu cyflwynwch eich sgôr heb sylw.",
     "rateActivityThanks": "Diolch am eich adborth!",
     "activityRatingMeterLabel": "{percent}% yn gadarnhaol ({count, plural, =1{1 sgôr} other{{count} sgôr}})",
-    "newActivityBadge": "NEWYDD"
+    "newActivityBadge": "NEWYDD",
+    "exitVocabPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer geirfa gyfredol ei gadw.",
+    "exitGrammarPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer gramadeg gyfredol ei gadw.",
+    "autoReadAloudMessagesToolName": "Darllenwch bob neges a dderbyniwyd yn awtomatig",
+    "autoReadAloudMessagesDescription": "Pan dderbynnir neges, bydd llais y ddyfais yn cael ei ddefnyddio i ddarllen y neges yn uchel ar gyfer ymarfer gwrando."
 }

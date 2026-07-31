@@ -96,6 +96,7 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/message_read_aloud_controller.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
@@ -243,6 +244,8 @@ class ChatController extends State<ChatPageWithRoom>
 
   StreamSubscription? _constructsSubscription;
   StreamSubscription? _tokensSubscription;
+
+  late final MessageReadAloudController readAloudController;
 
   StreamSubscription? _botAudioSubscription;
   StreamSubscription? _readingAssistanceTutorialSubscription;
@@ -925,6 +928,15 @@ class ChatController extends State<ChatPageWithRoom>
 
   void _pangeaInit() {
     choreographer = Choreographer(inputFocus: inputFocus, room: room);
+    // Created before the input listener is attached so a restored draft can't
+    // fire onInputBarChanged against an uninitialized controller.
+    readAloudController = MessageReadAloudController(
+      room: room,
+      currentTimeline: () => timeline,
+      isSuppressed: () =>
+          selectMode || sendController.text.isNotEmpty || !isFocused,
+    );
+    readAloudController.start();
     sendController.addListener(onInputBarChanged);
     final updater = Matrix.of(context).analyticsDataService.updateDispatcher;
 
@@ -1304,6 +1316,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
     choreographer.dispose();
     activityController.dispose();
+    readAloudController.dispose();
     MatrixState.pAnyState.closeAllOverlays(force: true);
     stopMediaStream.close();
     _constructsSubscription?.cancel();
@@ -2376,6 +2389,7 @@ class ChatController extends State<ChatPageWithRoom>
   }
 
   void setSelectedEvent(Event event) {
+    readAloudController.stopAndClear();
     setState(() {
       selectedEvents.clear();
       selectedEvents.add(event);
@@ -2599,6 +2613,7 @@ class ChatController extends State<ChatPageWithRoom>
     //   });
     // }
     final text = sendController.text;
+    if (text.isNotEmpty) readAloudController.stopAndClear();
     // Pangea#
     _storeInputTimeoutTimer?.cancel();
     _storeInputTimeoutTimer = Timer(_storeInputTimeout, () async {

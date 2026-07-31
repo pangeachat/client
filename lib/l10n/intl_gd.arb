@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-29 12:08:18.034367",
+    "@@last_modified": "2026-07-31 10:55:35.484083",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1698,7 +1698,6 @@
     "voice": "Guth",
     "youLeftTheChat": "🚪 Dh'fhàg thu an còmhradh",
     "webDownloadPermissionMessage": "Ma tha do bhrobhsair a' bacadh luchdachadh sìos, feuch an cuir thu an comas luchdachadh sìos airson an làraich seo.",
-    "exitPractice": "Cha tèid adhartas do sheisean cleachdaidh a shàbhaladh.",
     "practiceGrammar": "Cleachd gràmar",
     "notEnoughToPractice": "Cuir barrachd teachdaireachdan gus cleachdadh fhuasgladh",
     "constructUseCorGCDesc": "Cleachdadh ceart de roinn gràmair",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Teachdaireachd Dhìreach",
     "notificationRuleDMDescription": "A' cur fios chun an neach-cleachdaidh mu theachdaireachdan ann an seòmraichean teachdaireachd dhìreach.",
     "enableEmailNotifications": "Dèan comas air fiosan post-d",
-    "selectAudioMessagesOnPlayToolName": "Dèan soilleir teachdaireachdan claisneachd gu fèin-obrachail",
-    "selectAudioMessagesOnPlayDescription": "Dèan soilleir teachdaireachdan claisneachd gu fèin-obrachail nuair a thèid an cluich",
     "learningAnalytics": "Anailisean ionnsachaidh",
     "alreadySpeak": "Tha mi mar-thà a' bruidhinn...",
     "welcomeBackLogin": "Fàilte air ais! Chlàraich thu a-steach roimhe le {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Cha b' urrainn do bheachd a bhith air a phostadh. Feuch ri ath-sgrìobhadh, no cuir a-steach do rangachadh gun bheachd.",
     "rateActivityThanks": "Tapadh leat airson do fhios air ais!",
     "activityRatingMeterLabel": "{percent}% dearbhach ({count, plural, =1{1 rangachadh} other{{count} rangachadh}})",
-    "newActivityBadge": "ÙR"
+    "newActivityBadge": "ÙR",
+    "exitVocabPracticeSession": "Cha tèid adhartas an t-seisein cleachdaidh briathrachais làithreach agad a shàbhaladh.",
+    "exitGrammarPracticeSession": "Cha tèid adhartas an t-seisein cleachdaidh gràmair làithreach agad a shàbhaladh.",
+    "autoReadAloudMessagesToolName": "Leugh a-mach gu fèin-obrachail a h-uile teachdaireachd a gheibhear",
+    "autoReadAloudMessagesDescription": "Nuair a gheibhear teachdaireachd, thèid guth an uidheim a chleachdadh gus an teachdaireachd a leughadh a-mach airson cleachdadh èisteachd."
 }

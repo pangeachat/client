@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-29 12:08:18.466318",
+    "@@last_modified": "2026-07-31 10:55:35.166603",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1698,7 +1698,6 @@
     "voice": "Stim",
     "youLeftTheChat": "🚪 Do hast de chat ferlitten",
     "webDownloadPermissionMessage": "As jo browser downloads blokkearret, skeakelje dan downloads foar dizze side yn.",
-    "exitPractice": "Jo foarútgong yn de oefensesje wurdt net bewarre.",
     "practiceGrammar": "Grammatika oefenje",
     "notEnoughToPractice": "Stjoer mear berjochten om oefeningen te ûntskoatteljen",
     "constructUseCorGCDesc": "Krekte grammatikakategory-oefening",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Direkt Berjocht",
     "notificationRuleDMDescription": "Stjoert de brûker in notifikaasje oer berjochten yn direkte berjochtkeamers.",
     "enableEmailNotifications": "E-mailnotifikaasjes ynskeakelje",
-    "selectAudioMessagesOnPlayToolName": "Audioberjochten automatysk markearje",
-    "selectAudioMessagesOnPlayDescription": "Audioberjochten automatysk markearje as se ôfspile wurde",
     "learningAnalytics": "Learanalytics",
     "alreadySpeak": "Ik praat al...",
     "welcomeBackLogin": "Wolkom werom! Jo hawwe jo earder oanmeld mei {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Jo opmerking koe net pleatst wurde. Besykje it oars te formulearjen, of stjoer jo beoardieling sûnder opmerking yn.",
     "rateActivityThanks": "Tank foar jo feedback!",
     "activityRatingMeterLabel": "{percent}% posityf ({count, plural, =1{1 beoardieling} other{{count} beoardielingen}})",
-    "newActivityBadge": "NIJ"
+    "newActivityBadge": "NIJ",
+    "exitVocabPracticeSession": "De foarútgong fan jo hjoeddeistige wurdskat-oefensesje wurdt net bewarre.",
+    "exitGrammarPracticeSession": "De foarútgong fan jo hjoeddeistige grammatika-oefensesje wurdt net bewarre.",
+    "autoReadAloudMessagesToolName": "Lês alle ûntfongen berjochten automatysk foar",
+    "autoReadAloudMessagesDescription": "As in berjocht ûntfongen wurdt, sil de stim fan it apparaat brûkt wurde om it berjocht foar te lêzen foar harkpraktyk."
 }

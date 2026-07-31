@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-29 12:08:16.201306",
+    "@@last_modified": "2026-07-31 10:55:32.251723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1698,7 +1698,6 @@
     "voice": "ድምፅ",
     "youLeftTheChat": "🚪 ከውይይቱ ወጥተዋል",
     "webDownloadPermissionMessage": "የእርስዎ አሳሽ (browser) ማውረዶችን (downloads) ከከለከለ፣ እባክዎ ለዚህ ድረ-ገጽ ማውረዶችን ይፍቀዱ።",
-    "exitPractice": "የልምምድ ክፍለ-ጊዜዎ ሂደት አይቀመጥም።",
     "practiceGrammar": "የሰዋስው ልምምድ ያድርጉ",
     "notEnoughToPractice": "ልምምድ ለመክፈት ተጨማሪ መልዕክቶችን ይላኩ",
     "constructUseCorGCDesc": "ትክክለኛ የሰዋስው ምድብ ልምምድ",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "የቀጥታ መልዕክት",
     "notificationRuleDMDescription": "በቀጥታ የመልዕክት ክፍሎች ውስጥ ስለሚገኙ መልዕክቶች ለተጠቃሚው ያሳውቃል።",
     "enableEmailNotifications": "የኢሜይል ማሳወቂያዎችን አንቃ",
-    "selectAudioMessagesOnPlayToolName": "የድምጽ መልዕክቶችን በራስ-ሰር አጉልት",
-    "selectAudioMessagesOnPlayDescription": "የድምጽ መልዕክቶች ሲጫወቱ በራስ-ሰር ያጉሉ",
     "learningAnalytics": "የመማር ትንታኔ",
     "alreadySpeak": "አስቀድሜ የምናገረው...",
     "welcomeBackLogin": "እንኳን ደህና መጡ! ከዚህ ቀደም በ{platform} ገብተዋል።",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "አስተያየትዎ ሊለጠፍ አልቻለም። እንደገና ለመጻፍ ይሞክሩ ወይም ያለአስተያየት ደረጃዎን ያስገቡ።",
     "rateActivityThanks": "ለአስተያየትዎ እናመሰግናለን!",
     "activityRatingMeterLabel": "{percent}% አዎንታዊ ({count, plural, =1{1 ደረጃ} other{{count} ደረጃዎች}})",
-    "newActivityBadge": "አዲስ"
+    "newActivityBadge": "አዲስ",
+    "exitVocabPracticeSession": "የአሁን የቃላት ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
+    "exitGrammarPracticeSession": "የአሁን የሰዋስው ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
+    "autoReadAloudMessagesToolName": "ሁሉንም የተቀበሉ መልዕክቶችን በራስ-ሰር ጮክ ብሎ ያንብቡ",
+    "autoReadAloudMessagesDescription": "መልእክት ሲደርስ፣ ለማዳመጥ ልምምድ የመሣሪያ ድምፅ መልእክቱን ጮክ ብሎ ለማንበብ ይጠቅማል።"
 }

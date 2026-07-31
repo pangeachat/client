@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-29 12:08:22.131349",
+    "@@last_modified": "2026-07-31 10:55:41.494255",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8658,15 +8658,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "O progresso da sua sessão de prática não será salvo.",
     "practiceGrammar": "Praticar gramática",
     "notEnoughToPractice": "Envie mais mensagens para desbloquear a prática",
     "constructUseCorGCDesc": "Prática da categoria de gramática correta",
     "constructUseIncGCDesc": "Prática da categoria de gramática incorreta",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9261,16 +9256,6 @@
     },
     "enableEmailNotifications": "Ativar notificações por e-mail",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Realçar automaticamente mensagens de áudio",
-    "selectAudioMessagesOnPlayDescription": "Realçar automaticamente mensagens de áudio quando reproduzidas",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10621,5 +10606,9 @@
     "rateActivityCommentRejected": "O seu comentário não pôde ser publicado. Tente reformulá-lo ou envie a sua avaliação sem um comentário.",
     "rateActivityThanks": "Obrigado pelo seu feedback!",
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "O progresso da sua sessão de prática de vocabulário atual não será guardado.",
+    "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será guardado.",
+    "autoReadAloudMessagesToolName": "Ler automaticamente todas as mensagens recebidas",
+    "autoReadAloudMessagesDescription": "Quando uma mensagem é recebida, a voz do dispositivo será utilizada para ler a mensagem em voz alta para prática de escuta."
 }

@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-29 12:08:22.625156",
+    "@@last_modified": "2026-07-31 10:55:42.748081",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8697,15 +8697,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Napredek vaše seje vadbe ne bo shranjen.",
     "practiceGrammar": "Vadite slovnico",
     "notEnoughToPractice": "Pošljite več sporočil, da odklenete vadbo",
     "constructUseCorGCDesc": "Vadba pravilne slovnice",
     "constructUseIncGCDesc": "Vadba nepravilne slovnice",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9295,16 +9290,6 @@
     },
     "enableEmailNotifications": "Omogoči obvestila po elektronski pošti",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Samodejno označevanje avdio sporočil",
-    "selectAudioMessagesOnPlayDescription": "Samodejno označite avdio sporočila, ko se predvajajo",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10655,5 +10640,9 @@
     "rateActivityCommentRejected": "Vašega komentarja ni bilo mogoče objaviti. Poskusite ga preoblikovati ali oddajte svojo oceno brez komentarja.",
     "rateActivityThanks": "Hvala za vaše povratne informacije!",
     "activityRatingMeterLabel": "{percent}% pozitivnih ({count, plural, =1{1 ocena} other{{count} ocen}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "Napredek trenutne vaje besedišča ne bo shranjen.",
+    "exitGrammarPracticeSession": "Napredek trenutne vaje slovnice ne bo shranjen.",
+    "autoReadAloudMessagesToolName": "Samodejno preberi vsa prejeta sporočila",
+    "autoReadAloudMessagesDescription": "Ko je sporočilo prejeto, bo glas naprave uporabljen za branje sporočila na glas za vajo poslušanja."
 }

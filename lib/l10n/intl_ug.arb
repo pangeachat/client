@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-29 12:08:24.389924",
+    "@@last_modified": "2026-07-31 10:55:45.576553",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1698,7 +1698,6 @@
     "voice": "ئاۋاز",
     "youLeftTheChat": "🚪 سىز پاراڭدىن ئايرىلدىڭىز",
     "webDownloadPermissionMessage": "ئەگەر تور كۆرگۈچىڭىز چۈشۈرۈشنى توسىۋالسا، بۇ تور بېكەت ئۈچۈن چۈشۈرۈشنى قوزغىتىڭ.",
-    "exitPractice": "مەشىق جەريانىڭىز ساقلانمايدۇ.",
     "practiceGrammar": "گرامماتىكا مەشىق قىلىش",
     "notEnoughToPractice": "مەشىقنى ئېچىش ئۈچۈن تېخىمۇ كۆپ ئۇچۇر ئەۋەتىڭ",
     "constructUseCorGCDesc": "توغرا گرامماتىكا تۈرى مەشىقى",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "بىۋاسىتە ئۇچۇر",
     "notificationRuleDMDescription": "ئىشلەتكۈچىگە بىۋاسىتە ئۇچۇر ئۆيلىرىدىكى ئۇچۇرلار ھەققىدە ئۇقتۇرۇش قىلىدۇ.",
     "enableEmailNotifications": "ئېلخەت ئۇقتۇرۇشلىرىنى قوزغىتىش",
-    "selectAudioMessagesOnPlayToolName": "ئاۋازلىق ئۇچۇرلارنى ئاپتوماتىك گەۋدىلەندۈرۈش",
-    "selectAudioMessagesOnPlayDescription": "ئاۋازلىق ئۇچۇرلارنى قويغاندا ئاپتوماتىك گەۋدىلەندۈرۈش",
     "learningAnalytics": "ئۆگىنىش ئانالىزى",
     "alreadySpeak": "مەن ئاللىبۇرۇن سۆزلەيمەن...",
     "welcomeBackLogin": "قايتىپ كەلگىنىڭىزنى قارشى ئالىمىز! سىز ئىلگىرى {platform} ئارقىلىق كىرگەن ئىدىڭىز.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "ئىزاھاتىڭىز يوللانمىدى. قايتا تېكىستلەپ بېقىڭ ياكى باھايىڭىزنى ئىزاھاتسىز يوللاڭ.",
     "rateActivityThanks": "پىكىر-تەكلىپىڭىزگە رەھمەت!",
     "activityRatingMeterLabel": "{percent}% ئىجابىي ({count, plural, =1{1 باھا} other{{count} باھا}})",
-    "newActivityBadge": "يېڭى"
+    "newActivityBadge": "يېڭى",
+    "exitVocabPracticeSession": "ھازىرقى سۆزلۈك مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ.",
+    "exitGrammarPracticeSession": "ھازىرقى گرامماتىكا مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ.",
+    "autoReadAloudMessagesToolName": "قوبۇل قىلىنغان بارلىق ئۇچۇرلارنى ئاپتوماتىك ئوقۇش",
+    "autoReadAloudMessagesDescription": "ئۇچۇر قوبۇل قىلىنغاندا، ئۈسكۈنىنىڭ ئاۋازى ئىشلىتىلىپ، ئاڭلاش مەشىقى ئۈچۈن ئۇچۇرنى ئوقۇيدۇ."
 }

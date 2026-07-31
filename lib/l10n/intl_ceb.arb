@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-29 12:08:17.036057",
+    "@@last_modified": "2026-07-31 10:55:33.261121",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1698,7 +1698,6 @@
     "voice": "Tingog",
     "youLeftTheChat": "🚪 Mibiya ka sa chat",
     "webDownloadPermissionMessage": "Kung gibabagan sa imong browser ang mga pag-download, palihug i-enable ang mga pag-download alang niini nga site.",
-    "exitPractice": "Ang imong pag-uswag sa sesyon sa pagpraktis dili ma-save.",
     "practiceGrammar": "Pagpraktis sa gramatika",
     "notEnoughToPractice": "Pagpadala og dugang mga mensahe aron maablihan ang pagpraktis",
     "constructUseCorGCDesc": "Husto nga pagpraktis sa kategorya sa gramatika",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Direktang Mensahe",
     "notificationRuleDMDescription": "Nagpahibalo sa user bahin sa mga mensahe sa mga direct message room.",
     "enableEmailNotifications": "I-enable ang mga notipikasyon sa email",
-    "selectAudioMessagesOnPlayToolName": "Awtomatikong i-highlight ang mga audio message",
-    "selectAudioMessagesOnPlayDescription": "Awtomatikong i-highlight ang mga audio message kung i-play",
     "learningAnalytics": "Analytics sa pagkat-on",
     "alreadySpeak": "Makahibalo na ko mo-istorya og...",
     "welcomeBackLogin": "Welcome back! Ni-sign in ka kaniadto gamit ang {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Dili ma-post ang imong komento. Sulayi pag-usab ang pag-phrase niini, o isumite ang imong rating nga walay komento.",
     "rateActivityThanks": "Salamat sa imong feedback!",
     "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})",
-    "newActivityBadge": "BAG-O"
+    "newActivityBadge": "BAG-O",
+    "exitVocabPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa bokabularyo dili maluwas.",
+    "exitGrammarPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa gramatika dili maluwas.",
+    "autoReadAloudMessagesToolName": "Awtomatikong basahon og kusog ang tanang nadawat nga mensahe",
+    "autoReadAloudMessagesDescription": "Kung makadawat og mensahe, ang tingog sa device gamiton aron basahon og kusog ang mensahe para sa praktis sa pagpaminaw."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-07-29 12:08:20.595366",
+    "@@last_modified": "2026-07-31 10:55:40.253527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1698,7 +1698,6 @@
     "voice": "आवाज",
     "youLeftTheChat": "🚪 तुम्ही चॅटमधून बाहेर पडलात",
     "webDownloadPermissionMessage": "तुमचा ब्राउझर डाउनलोड्स ब्लॉक करत असल्यास, कृपया या साइटसाठी डाउनलोड्स सक्षम करा.",
-    "exitPractice": "तुमच्या सराव सत्राची प्रगती सेव्ह केली जाणार नाही.",
     "practiceGrammar": "व्याकरणाचा सराव करा",
     "notEnoughToPractice": "सराव अनलॉक करण्यासाठी अधिक संदेश पाठवा",
     "constructUseCorGCDesc": "योग्य व्याकरण श्रेणीचा सराव",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "थेट संदेश",
     "notificationRuleDMDescription": "थेट संदेश रूममधील संदेशांबद्दल वापरकर्त्याला सूचित करते.",
     "enableEmailNotifications": "ईमेल नोटिफिकेशन्स सक्षम करा",
-    "selectAudioMessagesOnPlayToolName": "ऑडिओ संदेश आपोआप हायलाइट करा",
-    "selectAudioMessagesOnPlayDescription": "प्ले केल्यावर ऑडिओ संदेश आपोआप हायलाइट करा",
     "learningAnalytics": "शिकण्याचे विश्लेषण",
     "alreadySpeak": "मी आधीच बोलतो...",
     "welcomeBackLogin": "पुन्हा स्वागत आहे! तुम्ही यापूर्वी {platform} सह साइन इन केले होते.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "तुमची टिप्पणी पोस्ट केली जाऊ शकली नाही. कृपया ती पुन्हा लिहा किंवा टिप्पणीशिवाय तुमचे रेटिंग सबमिट करा.",
     "rateActivityThanks": "तुमच्या प्रतिसादाबद्दल धन्यवाद!",
     "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग्ज}})",
-    "newActivityBadge": "नवीन"
+    "newActivityBadge": "नवीन",
+    "exitVocabPracticeSession": "तुमच्या सध्याच्या शब्दसंग्रह सरावाच्या सत्राची प्रगती सेव्ह केली जाणार नाही.",
+    "exitGrammarPracticeSession": "तुमच्या सध्याच्या व्याकरण सरावाच्या सत्राची प्रगती सेव्ह केली जाणार नाही.",
+    "autoReadAloudMessagesToolName": "सर्व प्राप्त संदेश आपोआप मोठ्याने वाचा",
+    "autoReadAloudMessagesDescription": "जेव्हा एखादा संदेश प्राप्त होतो, तेव्हा ऐकण्याच्या सरावासाठी संदेश मोठ्याने वाचण्यासाठी डिव्हाइस व्हॉइसचा वापर केला जाईल."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:24.905448",
+    "@@last_modified": "2026-07-31 10:55:45.434279",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -5012,15 +5012,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Tiến trình phiên thực hành của bạn sẽ không được lưu.",
     "practiceGrammar": "Thực hành ngữ pháp",
     "notEnoughToPractice": "Gửi thêm tin nhắn để mở khóa thực hành",
     "constructUseCorGCDesc": "Thực hành thể loại ngữ pháp đúng",
     "constructUseIncGCDesc": "Thực hành thể loại ngữ pháp sai",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -5610,16 +5605,6 @@
     },
     "enableEmailNotifications": "Bật thông báo qua email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Tự động làm nổi bật tin nhắn âm thanh",
-    "selectAudioMessagesOnPlayDescription": "Tự động làm nổi bật tin nhắn âm thanh khi phát",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -6970,5 +6955,9 @@
     "rateActivityCommentRejected": "Không thể đăng bình luận của bạn. Hãy thử diễn đạt lại hoặc gửi đánh giá mà không có bình luận.",
     "rateActivityThanks": "Cảm ơn phản hồi của bạn!",
     "activityRatingMeterLabel": "{percent}% tích cực ({count, plural, =1{1 đánh giá} other{{count} đánh giá}})",
-    "newActivityBadge": "MỚI"
+    "newActivityBadge": "MỚI",
+    "exitVocabPracticeSession": "Tiến độ phiên luyện từ vựng hiện tại của bạn sẽ không được lưu.",
+    "exitGrammarPracticeSession": "Tiến độ phiên luyện ngữ pháp hiện tại của bạn sẽ không được lưu.",
+    "autoReadAloudMessagesToolName": "Tự động đọc to tất cả tin nhắn đã nhận",
+    "autoReadAloudMessagesDescription": "Khi nhận được tin nhắn, giọng nói của thiết bị sẽ được sử dụng để đọc to tin nhắn, giúp bạn luyện nghe."
 }

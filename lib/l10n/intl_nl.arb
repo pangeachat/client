@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:21.525682",
+    "@@last_modified": "2026-07-31 10:55:40.626342",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Uw voortgang in de oefensessie wordt niet opgeslagen.",
     "practiceGrammar": "Oefen grammatica",
     "notEnoughToPractice": "Stuur meer berichten om de oefening te ontgrendelen",
     "constructUseCorGCDesc": "Oefening in de juiste grammaticacategorie",
     "constructUseIncGCDesc": "Oefening in de onjuiste grammaticacategorie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8344,16 +8339,6 @@
     },
     "enableEmailNotifications": "Schakel e-mailmeldingen in",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatisch audio berichten markeren",
-    "selectAudioMessagesOnPlayDescription": "Audio berichten automatisch markeren wanneer ze worden afgespeeld",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9704,5 +9689,9 @@
     "rateActivityCommentRejected": "Je opmerking kon niet worden geplaatst. Probeer het anders te formuleren, of verstuur je beoordeling zonder opmerking.",
     "rateActivityThanks": "Bedankt voor je feedback!",
     "activityRatingMeterLabel": "{percent}% positief ({count, plural, =1{1 beoordeling} other{{count} beoordelingen}})",
-    "newActivityBadge": "NIEUW"
+    "newActivityBadge": "NIEUW",
+    "exitVocabPracticeSession": "De voortgang van je huidige woordenschatoefensessie wordt niet opgeslagen.",
+    "exitGrammarPracticeSession": "De voortgang van je huidige grammaticaoefensessie wordt niet opgeslagen.",
+    "autoReadAloudMessagesToolName": "Alle ontvangen berichten automatisch voorlezen",
+    "autoReadAloudMessagesDescription": "Wanneer een bericht wordt ontvangen, wordt de stem van het apparaat gebruikt om het bericht voor te lezen voor luisteroefeningen."
 }

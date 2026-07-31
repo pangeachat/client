@@ -7,13 +7,19 @@ import 'package:fluffychat/l10n/l10n.dart';
 /// top/bottom) with a darker gold border and the level number centered —
 /// unlike the web cluster's tailed shield medal, which hangs its number low
 /// and carries the notched ribbon bottom the mobile design drops. Same
-/// semantics contract as [ClusterLevelMedal] (named button, tap opens Level).
-class HexLevelBadge extends StatelessWidget {
+/// semantics contract as [ClusterLevelMedal] (named button, tap opens Level),
+/// and the same state treatment: hover and the open Level panel deepen the
+/// badge's own gold instead of putting a wash behind or around it (#8067).
+class HexLevelBadge extends StatefulWidget {
   final int level;
   final VoidCallback onTap;
   final double width;
   final double height;
   final double fontSize;
+
+  /// Whether the Level analytics panel is open — then the badge stays in its
+  /// deepened gold, the sticky counterpart of hover (#8062, #8067).
+  final bool selected;
 
   const HexLevelBadge({
     super.key,
@@ -22,12 +28,25 @@ class HexLevelBadge extends StatelessWidget {
     this.width = 48.0,
     this.height = 42.0,
     this.fontSize = 18.0,
+    this.selected = false,
   });
 
   @override
+  State<HexLevelBadge> createState() => _HexLevelBadgeState();
+}
+
+class _HexLevelBadgeState extends State<HexLevelBadge> {
+  bool _hovered = false;
+
+  @override
   Widget build(BuildContext context) {
-    final label = '${L10n.of(context).level} $level';
-    final fill = AppConfig.goldByTheme(context);
+    final label = '${L10n.of(context).level} ${widget.level}';
+    final lit = _hovered || widget.selected;
+    final fill = lit
+        ? AppConfig.goldHighlightByTheme(context)
+        : AppConfig.goldByTheme(context);
+    // The outline is always a step darker than whatever the fill is, so the
+    // lit badge deepens as one mark.
     final hsl = HSLColor.fromColor(fill);
     final border = hsl
         .withLightness((hsl.lightness * 0.72).clamp(0.0, 1.0))
@@ -43,23 +62,28 @@ class HexLevelBadge extends StatelessWidget {
         container: true,
         excludeSemantics: true,
         // Expose the tap on the announced node for assistive tech (#7185).
-        onTap: onTap,
-        child: GestureDetector(
-          behavior: HitTestBehavior.opaque,
-          onTap: onTap,
-          child: CustomPaint(
-            size: Size(width, height),
-            painter: _HexBadgePainter(fill: fill, border: border),
-            child: SizedBox(
-              width: width,
-              height: height,
-              child: Center(
-                child: Text(
-                  '$level',
-                  style: TextStyle(
-                    fontSize: fontSize,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black,
+        onTap: widget.onTap,
+        child: MouseRegion(
+          cursor: SystemMouseCursors.click,
+          onEnter: (_) => setState(() => _hovered = true),
+          onExit: (_) => setState(() => _hovered = false),
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: widget.onTap,
+            child: CustomPaint(
+              size: Size(widget.width, widget.height),
+              painter: HexBadgePainter(fill: fill, border: border),
+              child: SizedBox(
+                width: widget.width,
+                height: widget.height,
+                child: Center(
+                  child: Text(
+                    '${widget.level}',
+                    style: TextStyle(
+                      fontSize: widget.fontSize,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ),
@@ -71,42 +95,58 @@ class HexLevelBadge extends StatelessWidget {
   }
 }
 
-/// Paints the badge hexagon: vertices at the horizontal extremes, flat top and
-/// bottom edges, gold fill with a darker gold outline (the Figma component).
-class _HexBadgePainter extends CustomPainter {
+/// Builds the badge hexagon inside [size]: vertices at the horizontal extremes,
+/// flat top and bottom edges (the Figma component).
+///
+/// The path is inset by half [hexBadgeStrokeWidth] on every side so the
+/// centered outline — and the round joins, which reach exactly half a stroke
+/// past each vertex — paint **entirely inside** the badge's own box. Nothing
+/// may bleed outside: the narrow analytics bar sits the badge flush against
+/// the left edge of a shimmering `Stack`, and `Shimmer`'s mask covers only the
+/// render box, so an escaping pixel keeps its real gold while the rest of the
+/// cluster is gray (#7801). [XpBorderPainter] insets for the same reason.
+@visibleForTesting
+Path hexBadgePath(Size size) {
+  final d = hexBadgeStrokeWidth / 2;
+  final w = size.width - hexBadgeStrokeWidth;
+  final h = size.height - hexBadgeStrokeWidth;
+  return Path()
+    ..moveTo(d, d + h / 2)
+    ..lineTo(d + w * 0.25, d)
+    ..lineTo(d + w * 0.75, d)
+    ..lineTo(d + w, d + h / 2)
+    ..lineTo(d + w * 0.75, d + h)
+    ..lineTo(d + w * 0.25, d + h)
+    ..close();
+}
+
+/// Width of the badge's darker-gold outline.
+const double hexBadgeStrokeWidth = 2.5;
+
+/// Paints the badge hexagon ([hexBadgePath]) with a gold fill and a darker gold
+/// outline (the Figma component). Public so tests can read the gold the badge
+/// is actually wearing — that color IS the hover / open-panel state (#8067).
+class HexBadgePainter extends CustomPainter {
   final Color fill;
   final Color border;
 
-  const _HexBadgePainter({required this.fill, required this.border});
-
-  Path _hex(Size size) {
-    final w = size.width;
-    final h = size.height;
-    return Path()
-      ..moveTo(0, h / 2)
-      ..lineTo(w * 0.25, 0)
-      ..lineTo(w * 0.75, 0)
-      ..lineTo(w, h / 2)
-      ..lineTo(w * 0.75, h)
-      ..lineTo(w * 0.25, h)
-      ..close();
-  }
+  const HexBadgePainter({required this.fill, required this.border});
 
   @override
   void paint(Canvas canvas, Size size) {
-    final path = _hex(size);
+    final path = hexBadgePath(size);
     canvas.drawPath(path, Paint()..color = fill);
     canvas.drawPath(
       path,
       Paint()
         ..style = PaintingStyle.stroke
-        ..strokeWidth = 2.5
+        ..strokeWidth = hexBadgeStrokeWidth
         ..strokeJoin = StrokeJoin.round
         ..color = border,
     );
   }
 
   @override
-  bool shouldRepaint(_HexBadgePainter old) =>
+  bool shouldRepaint(HexBadgePainter old) =>
       old.fill != fill || old.border != border;
 }

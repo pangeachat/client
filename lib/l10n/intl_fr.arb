@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-29 12:08:17.820393",
+    "@@last_modified": "2026-07-31 10:55:34.711115",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -8116,15 +8116,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Les progrès de votre session de pratique ne seront pas enregistrés.",
     "practiceGrammar": "Pratiquer la grammaire",
     "notEnoughToPractice": "Envoyez plus de messages pour débloquer la pratique",
     "constructUseCorGCDesc": "Pratique de la catégorie de grammaire correcte",
     "constructUseIncGCDesc": "Pratique de la catégorie de grammaire incorrecte",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8699,16 +8694,6 @@
     },
     "enableEmailNotifications": "Activer les notifications par e-mail",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Mise en surbrillance automatique des messages audio",
-    "selectAudioMessagesOnPlayDescription": "Mettre automatiquement en surbrillance les messages audio lorsqu'ils sont lus",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10059,5 +10044,9 @@
     "rateActivityCommentRejected": "Votre commentaire n'a pas pu être publié. Essayez de le reformuler ou soumettez votre évaluation sans commentaire.",
     "rateActivityThanks": "Merci pour votre avis !",
     "activityRatingMeterLabel": "{percent} % positif ({count, plural, =1{1 évaluation} other{{count} évaluations}})",
-    "newActivityBadge": "NOUVEAU"
+    "newActivityBadge": "NOUVEAU",
+    "exitVocabPracticeSession": "La progression de votre session d'entraînement de vocabulaire actuelle ne sera pas enregistrée.",
+    "exitGrammarPracticeSession": "La progression de votre session d'entraînement de grammaire actuelle ne sera pas enregistrée.",
+    "autoReadAloudMessagesToolName": "Lire automatiquement à voix haute tous les messages reçus",
+    "autoReadAloudMessagesDescription": "Lorsqu'un message est reçu, la voix de l'appareil sera utilisée pour lire le message à voix haute pour la pratique de l'écoute."
 }

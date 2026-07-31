@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:16.384354",
+    "@@last_modified": "2026-07-31 10:55:32.881120",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8374,15 +8374,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "আপনার অনুশীলন সেশনের অগ্রগতি সংরক্ষিত হবে না।",
     "practiceGrammar": "ব্যাকরণ অনুশীলন করুন",
     "notEnoughToPractice": "অনুশীলন আনলক করতে আরও বার্তা পাঠান",
     "constructUseCorGCDesc": "সঠিক ব্যাকরণ বিভাগ অনুশীলন",
     "constructUseIncGCDesc": "ভুল ব্যাকরণ বিভাগ অনুশীলন",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8972,16 +8967,6 @@
     },
     "enableEmailNotifications": "ইমেইল বিজ্ঞপ্তি সক্রিয় করুন",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "অটো-হাইলাইট অডিও বার্তা",
-    "selectAudioMessagesOnPlayDescription": "অডিও বার্তা বাজানোর সময় স্বয়ংক্রিয়ভাবে হাইলাইট করুন",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10332,5 +10317,9 @@
     "rateActivityCommentRejected": "আপনার মন্তব্য পোস্ট করা যায়নি। এটি অন্যভাবে লেখার চেষ্টা করুন, অথবা মন্তব্য ছাড়াই আপনার রেটিং জমা দিন।",
     "rateActivityThanks": "আপনার মতামতের জন্য ধন্যবাদ!",
     "activityRatingMeterLabel": "{percent}% ইতিবাচক ({count, plural, =1{১টি রেটিং} other{{count}টি রেটিং}})",
-    "newActivityBadge": "নতুন"
+    "newActivityBadge": "নতুন",
+    "exitVocabPracticeSession": "আপনার বর্তমান শব্দভান্ডার অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
+    "exitGrammarPracticeSession": "আপনার বর্তমান ব্যাকরণ অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
+    "autoReadAloudMessagesToolName": "স্বয়ংক্রিয়ভাবে প্রাপ্ত সমস্ত বার্তা জোরে পড়ুন",
+    "autoReadAloudMessagesDescription": "যখন একটি বার্তা প্রাপ্ত হয়, তখন শোনার অনুশীলনের জন্য ডিভাইসের ভয়েস ব্যবহার করে বার্তাটি জোরে পড়া হবে।"
 }

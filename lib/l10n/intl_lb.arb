@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-29 12:08:20.139390",
+    "@@last_modified": "2026-07-31 10:55:39.027821",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -1698,7 +1698,6 @@
     "voice": "Stëmm",
     "youLeftTheChat": "🚪 Dir hutt de Chat verlooss",
     "webDownloadPermissionMessage": "Wann Äre Browser Downloads blockéiert, erlaabt w.e.g. Downloads fir dëse Site.",
-    "exitPractice": "Äre Fortschrëtt an der Übungssessioun gëtt net gespäichert.",
     "practiceGrammar": "Grammaire üben",
     "notEnoughToPractice": "Schéckt méi Messagen fir d'Praxis opzemaachen",
     "constructUseCorGCDesc": "Korrekt Grammaire Kategorie Praxis",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Direkt Noriicht",
     "notificationRuleDMDescription": "Informéiert de Benotzer iwwer Noriichten an direkten Noriichte-Raim.",
     "enableEmailNotifications": "E-Mail Notifikatiounen aktivéieren",
-    "selectAudioMessagesOnPlayToolName": "Audio-Noriichten automatesch markéieren",
-    "selectAudioMessagesOnPlayDescription": "Automatesch Audio-Noriichten markéieren wann se ofgespillt ginn",
     "learningAnalytics": "Léieranalysen",
     "alreadySpeak": "Ech schwätze schonn...",
     "welcomeBackLogin": "Wëllkomm zréck! Du hues dech virdrun mat {platform} ugemellt.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Äre Kommentar konnt net gepost ginn. Probéiert en ëmzeschreiwen, oder schéckt Är Bewäertung ouni Kommentar of.",
     "rateActivityThanks": "Merci fir Äre Feedback!",
     "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewäertung} other{{count} Bewäertungen}})",
-    "newActivityBadge": "NEI"
+    "newActivityBadge": "NEI",
+    "exitVocabPracticeSession": "Däi Fortschrëtt an der aktueller Vokabelübungssessioun gëtt net gespäichert.",
+    "exitGrammarPracticeSession": "Däi Fortschrëtt an der aktueller Grammatikübungssessioun gëtt net gespäichert.",
+    "autoReadAloudMessagesToolName": "All empfaangen Noriichten automatesch virliesen",
+    "autoReadAloudMessagesDescription": "Wann eng Noriicht empfaange gëtt, gëtt d'Stëmm vum Apparat benotzt fir d'Noriicht haart virzeliesen fir d'Nolauschterpraxis."
 }

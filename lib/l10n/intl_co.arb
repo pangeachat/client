@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-29 12:08:17.155990",
+    "@@last_modified": "2026-07-31 10:55:33.867164",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1698,7 +1698,6 @@
     "voice": "Voce",
     "youLeftTheChat": "🚪 Avete lasciatu u chat",
     "webDownloadPermissionMessage": "Sì u vostru navigatore bluccheghja i scaricamenti, per piacè attivateli per stu situ.",
-    "exitPractice": "U vostru prugressu di a sessione di pratica ùn serà micca arregistratu.",
     "practiceGrammar": "Praticà a grammatica",
     "notEnoughToPractice": "Mandate più messaghji per sbluccà a pratica",
     "constructUseCorGCDesc": "Pratica di categuria grammaticale curretta",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Messagiu direttu",
     "notificationRuleDMDescription": "Avverte l'utilizatore di i messagi in e sale di messagi diretti.",
     "enableEmailNotifications": "Attivà e nutificazioni per currieru elettronicu",
-    "selectAudioMessagesOnPlayToolName": "Mette in risaltu i messagi àudiu in autumàticu",
-    "selectAudioMessagesOnPlayDescription": "Mette in risaltu i messagi àudiu in autumàticu quand'elli sò letti",
     "learningAnalytics": "Analìtiche d'amparera",
     "alreadySpeak": "Parleghju digià...",
     "welcomeBackLogin": "Benturnatu ! Vi site cunnessu nanzu cù {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "U vostru cummentu ùn hà pussutu esse publicatu. Pruvate à riformulallu, o inviate a vostra valutazione senza cummentu.",
     "rateActivityThanks": "Grazie per u vostru feedback!",
     "activityRatingMeterLabel": "{percent}% pusitivu ({count, plural, =1{1 valutazione} other{{count} valutazioni}})",
-    "newActivityBadge": "NOVU"
+    "newActivityBadge": "NOVU",
+    "exitVocabPracticeSession": "U prugressu di a vostra sessione di pratica di vucabulariu ùn serà micca salvatu.",
+    "exitGrammarPracticeSession": "U prugressu di a vostra sessione di pratica di grammatica ùn serà micca salvatu.",
+    "autoReadAloudMessagesToolName": "Leghje à voce alta in autumàticu tutti i messagi ricevuti",
+    "autoReadAloudMessagesDescription": "Quandu un messagiu hè ricevutu, a voce di u dispusitivu serà aduprata per leghje u messagiu à voce alta per a pratica d'ascoltu."
 }

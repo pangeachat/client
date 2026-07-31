@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-29 12:08:20.960268",
+    "@@last_modified": "2026-07-31 10:55:40.637761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1698,7 +1698,6 @@
     "voice": "Reo",
     "youLeftTheChat": "🚪 Kua wehe koe i te korerorero",
     "webDownloadPermissionMessage": "Ki te aukati tō pūtirotiro i ngā tikiake, tēnā whakaaetia ngā tikiake mō tēnei pae.",
-    "exitPractice": "E kore e tiakina tō ahunga whakamua o te wā whakaharatau.",
     "practiceGrammar": "Whakaharatau wetereo",
     "notEnoughToPractice": "Tukuna mai ētahi atu karere hei wewete i te whakaharatau",
     "constructUseCorGCDesc": "Mahi whakaharatau kāwai wetereo tika",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Karere Tika",
     "notificationRuleDMDescription": "Ka whakamōhio i te kaiwhakamahi mō ngā karere i roto i ngā rūma karere tika.",
     "enableEmailNotifications": "Whakahohe i ngā whakamōhiotanga īmēra",
-    "selectAudioMessagesOnPlayToolName": "Whakanui aunoa i ngā karere oro",
-    "selectAudioMessagesOnPlayDescription": "Whakanui aunoa i ngā karere oro ina purea",
     "learningAnalytics": "Tātari akoranga",
     "alreadySpeak": "Kua mōhio kē ahau ki te kōrero...",
     "welcomeBackLogin": "Nau mai hoki mai! I takiuru koe i mua mā {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Kāore i taea te tuku i tō kōrero. Whakamātauria te whakahou, te tuku rānei i tō whakatauranga me te kore he kōrero.",
     "rateActivityThanks": "Ngā mihi mō tō urupare!",
     "activityRatingMeterLabel": "{percent}% pai ({count, plural, =1{1 whakatauranga} other{{count} whakatauranga}})",
-    "newActivityBadge": "HOU"
+    "newActivityBadge": "HOU",
+    "exitVocabPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau kupu o nāianei.",
+    "exitGrammarPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau wetereo o nāianei.",
+    "autoReadAloudMessagesToolName": "Pānui aunoa i ngā karere katoa ka tae mai",
+    "autoReadAloudMessagesDescription": "Ka tae mai he karere, ka whakamahia te reo o te pūrere ki te pānui i te karere kia whakaharatau ai te whakarongo."
 }

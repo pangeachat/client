@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-29 12:08:17.430631",
+    "@@last_modified": "2026-07-31 10:55:33.435725",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -8672,15 +8672,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Din praksis session fremskridt vil ikke blive gemt.",
     "practiceGrammar": "Øv grammatik",
     "notEnoughToPractice": "Send flere beskeder for at låse op for praksis",
     "constructUseCorGCDesc": "Korrekt grammatik kategori praksis",
     "constructUseIncGCDesc": "Ukorrrekt grammatik kategori praksis",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9270,16 +9265,6 @@
     },
     "enableEmailNotifications": "Aktivér e-mail-notifikationer",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatisk fremhævning af lydbeskeder",
-    "selectAudioMessagesOnPlayDescription": "Fremhæv automatisk lydbeskeder, når de afspilles",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10630,5 +10615,9 @@
     "rateActivityCommentRejected": "Din kommentar kunne ikke slås op. Prøv at omformulere den, eller send din vurdering uden en kommentar.",
     "rateActivityThanks": "Tak for din feedback!",
     "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
-    "newActivityBadge": "NY"
+    "newActivityBadge": "NY",
+    "exitVocabPracticeSession": "Dine fremskridt i den nuværende ordforrådsøvelse gemmes ikke.",
+    "exitGrammarPracticeSession": "Dine fremskridt i den nuværende grammatikøvelse gemmes ikke.",
+    "autoReadAloudMessagesToolName": "Læs automatisk alle modtagne beskeder højt",
+    "autoReadAloudMessagesDescription": "Når en besked modtages, vil enhedens stemme blive brugt til at læse beskeden højt for at øve lyttefærdigheder."
 }

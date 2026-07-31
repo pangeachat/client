@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-29 12:08:19.770115",
+    "@@last_modified": "2026-07-31 10:55:38.727037",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1698,7 +1698,6 @@
     "voice": "Voys",
     "youLeftTheChat": "🚪 Yu dɔn komɔt na di chat",
     "webDownloadPermissionMessage": "If yu brauza blɔk dawnlod dɛn, pls ɛnebul dawnlod dɛn fɔ dis sayt.",
-    "exitPractice": "Yu praktis seshɔn prɔgrɛs nɔ go sev.",
     "practiceGrammar": "Praktis grama",
     "notEnoughToPractice": "Sɛn mɔ mɛsej dɛn fɔ ɔnlɔk praktis",
     "constructUseCorGCDesc": "Kɔrɛkt grama kategɔri praktis",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Dayrɛkt Mɛsej",
     "notificationRuleDMDescription": "De gi di yusa nɔtifikeshɔn bɔt mɛsej dɛn insay dayrɛkt mɛsej rum dɛn.",
     "enableEmailNotifications": "Mek imel nɔtifikeshɔn dɛn wok",
-    "selectAudioMessagesOnPlayToolName": "Awtomatikali haylayt ɔdyo mɛsej dɛn",
-    "selectAudioMessagesOnPlayDescription": "Awtomatikali haylayt ɔdyo mɛsej dɛn we dɛn de ple",
     "learningAnalytics": "Lɛnin analitiks",
     "alreadySpeak": "Mi dɔn sabi tɔk...",
     "welcomeBackLogin": "Wɛlkɔm bak! Yu bin dɔn sayn in wit {platform} bifo.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Yu komɛnt nɔ bin ebul fɔ post. Tray fɔ chenj di wɔd dɛn, ɔ sɛn yu reting witɔt komɛnt.",
     "rateActivityThanks": "Tɛnki fɔ yu fidbak!",
     "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 reting} other{{count} reting dɛn}})",
-    "newActivityBadge": "FƆNƆN"
+    "newActivityBadge": "FƆNƆN",
+    "exitVocabPracticeSession": "Yu vocab praktis seshɔn we yu de du naw nɔ go sev.",
+    "exitGrammarPracticeSession": "Yu grama praktis seshɔn we yu de du naw nɔ go sev.",
+    "autoReadAloudMessagesToolName": "Rɛd ɔl rɛsiiv mɛsej dɛn bɔtɔmatike",
+    "autoReadAloudMessagesDescription": "Wɛn yu gɛt mɛsej, di divays in vɔys go rid di mɛsej fɔ yu fɔ lisin praktis."
 }

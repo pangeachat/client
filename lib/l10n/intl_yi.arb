@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-29 12:08:25.466925",
+    "@@last_modified": "2026-07-31 10:55:46.009064",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1698,7 +1698,6 @@
     "voice": "קול",
     "youLeftTheChat": "🚪 איר האָט פֿאַרלאָזט דעם שמועס",
     "webDownloadPermissionMessage": "אויב אײַער בלעטערער בלאָקירט אראפקלאַפּונגען, ביטע דערלויבט אראפקלאַפּונגען פֿאַר דעם פּלאַץ.",
-    "exitPractice": "אײַער פּראַקטיק סעסיע פּראָגרעס וועט נישט געראַטעוועט ווערן.",
     "practiceGrammar": "פּראַקטיקירן גראַמאַטיק",
     "notEnoughToPractice": "שיקט מער מעסעדזשעס צו אַנטשליסן פּראַקטיק",
     "constructUseCorGCDesc": "ריכטיקע גראַמאַטיק קאַטעגאָריע פּראַקטיק",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "דירעקטע מעסעדזש",
     "notificationRuleDMDescription": "מעלדט דעם באַניצער וועגן מעסעדזשעס אין דירעקטע מעסעדזש רומז.",
     "enableEmailNotifications": "אַקטיוויזירן אימעיל נאָטיפֿיקאַציעס",
-    "selectAudioMessagesOnPlayToolName": "אויטאָמאַטיש אונטערשטרײַכן אַודיאָ מעסעדזשעס",
-    "selectAudioMessagesOnPlayDescription": "אויטאָמאַטיש אונטערשטרײַכן אַודיאָ מעסעדזשעס ווען זיי ווערן געשפּילט",
     "learningAnalytics": "לערנען אַנאַליטיקס",
     "alreadySpeak": "איך רעד שוין...",
     "welcomeBackLogin": "ברוך הבא! איר האָט זיך פֿריער אַרײַנגעשריבן מיט {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "אײַער קאָמענטאַר האָט ניט געקענט געפּאָסט ווערן. פּרוּווט עס איבערשרײַבן, אָדער שיקט אײַער רייטינג אָן אַ קאָמענטאַר.",
     "rateActivityThanks": "אַ דאַנק פֿאַר אײַער פֿידבעק!",
     "activityRatingMeterLabel": "{percent}% פּאָזיטיוו ({count, plural, =1{1 רייטינג} other{{count} רייטינגען}})",
-    "newActivityBadge": "נײַ"
+    "newActivityBadge": "נײַ",
+    "exitVocabPracticeSession": "דיין איצטיקער וואָקאַבולאַר פּראַקטיש סעסיע פּראָגרעס וועט נישט געראַטעוועט ווערן.",
+    "exitGrammarPracticeSession": "דיין איצטיקער גראַמאַטיק פּראַקטיש סעסיע פּראָגרעס וועט נישט געראַטעוועט ווערן.",
+    "autoReadAloudMessagesToolName": "לייענען אויס אויטאָמאַטיש אַלע באַקומענע מעסעדזשעס",
+    "autoReadAloudMessagesDescription": "ווען אַ מעסעדזש ווערט באַקומען, וועט די שטימע פונעם מיטל ווערן גענוצט צו לייענען דעם מעסעדזש אויס פֿאַר הערן-פּראַקטיק."
 }

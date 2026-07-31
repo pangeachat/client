@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:17.342059",
+    "@@last_modified": "2026-07-31 10:55:34.604585",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8697,15 +8697,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Via praktika sesio progreso ne estos konservita.",
     "practiceGrammar": "Praktiku gramatikon",
     "notEnoughToPractice": "Sendu pli da mesaĝoj por malŝlosi praktikon",
     "constructUseCorGCDesc": "Praktiko de ĝusta gramatika kategorio",
     "constructUseIncGCDesc": "Praktiko de malĝusta gramatika kategorio",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9295,16 +9290,6 @@
     },
     "enableEmailNotifications": "Aktivigi retpoŝtajn sciigojn",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Aŭtomate emfazi aŭdmesaĝojn",
-    "selectAudioMessagesOnPlayDescription": "Aŭtomate emfazi aŭdmesaĝojn kiam ili estas ludataj",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10655,5 +10640,9 @@
     "rateActivityCommentRejected": "Via komento ne povis esti afiŝita. Provu reformuli ĝin, aŭ sendu vian takson sen komento.",
     "rateActivityThanks": "Dankon pro via reagoj!",
     "activityRatingMeterLabel": "{percent}% pozitiva ({count, plural, =1{1 takso} other{{count} taksoj}})",
-    "newActivityBadge": "NOVA"
+    "newActivityBadge": "NOVA",
+    "exitVocabPracticeSession": "Via nuna progreso en la vortopraktika sesio ne estos konservita.",
+    "exitGrammarPracticeSession": "Via nuna progreso en la gramatikpraktika sesio ne estos konservita.",
+    "autoReadAloudMessagesToolName": "Aŭtomate laŭtlegi ĉiujn ricevitajn mesaĝojn",
+    "autoReadAloudMessagesDescription": "Kiam mesaĝo estas ricevita, la voĉo de la aparato estos uzata por laŭtlegi la mesaĝon por aŭskulta praktiko."
 }

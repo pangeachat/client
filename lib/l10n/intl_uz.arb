@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-29 12:08:25.029671",
+    "@@last_modified": "2026-07-31 10:55:45.504129",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3864,7 +3864,6 @@
     "voice": "Ovoz",
     "youLeftTheChat": "🚪 Siz chatdan chiqdingiz",
     "webDownloadPermissionMessage": "Agar brauzeringiz yuklab olishlarni bloklasa, iltimos, bu sayt uchun yuklab olishlarni yoqing.",
-    "exitPractice": "Amaliyot sessiyangizning rivojlanishi saqlanmaydi.",
     "practiceGrammar": "Grammatika amaliyoti",
     "notEnoughToPractice": "Amaliy qilish uchun ko'proq xabar yuboring",
     "constructUseCorGCDesc": "To'g'ri grammatikaga oid amaliyot",
@@ -8011,10 +8010,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8348,16 +8343,6 @@
     },
     "enableEmailNotifications": "Email xabarnomalarini yoqish",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Avtomatik ravishda audio xabarlarni ajratish",
-    "selectAudioMessagesOnPlayDescription": "Ovoz berilganda audio xabarlarni avtomatik ravishda ajratish",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9708,5 +9693,9 @@
     "rateActivityCommentRejected": "Izohingiz joylashtirilmadi. Uni qayta yozib ko'ring yoki izohsiz baholang.",
     "rateActivityThanks": "Fikringiz uchun rahmat!",
     "activityRatingMeterLabel": "{percent}% ijobiy ({count, plural, =1{1 baho} other{{count} baho}})",
-    "newActivityBadge": "YANGI"
+    "newActivityBadge": "YANGI",
+    "exitVocabPracticeSession": "Joriy lugʻat mashgʻuloti jarayoni saqlanmaydi.",
+    "exitGrammarPracticeSession": "Joriy grammatika mashgʻuloti jarayoni saqlanmaydi.",
+    "autoReadAloudMessagesToolName": "Barcha qabul qilingan xabarlarni avtomatik o'qish",
+    "autoReadAloudMessagesDescription": "Xabar qabul qilinganda, tinglash amaliyoti uchun qurilma ovozi xabarni baland ovozda o'qish uchun ishlatiladi."
 }

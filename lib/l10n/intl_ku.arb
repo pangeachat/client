@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-29 12:08:20.081361",
+    "@@last_modified": "2026-07-31 10:55:39.689377",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1698,7 +1698,6 @@
     "voice": "دەنگ",
     "youLeftTheChat": "🚪 چاتەکەت جێهێشت",
     "webDownloadPermissionMessage": "ئەگەر وێبگەڕەکەت داگرتن بلۆک دەکات، تکایە داگرتن بۆ ئەم سایتە چالاک بکە.",
-    "exitPractice": "پێشکەوتنی دانیشتنی ڕاهێنانەکەت پاشەکەوت ناکرێت.",
     "practiceGrammar": "ڕاهێنانی ڕێزمان",
     "notEnoughToPractice": "پەیامی زیاتر بنێرە بۆ کردنەوەی ڕاهێنان",
     "constructUseCorGCDesc": "ڕاهێنانی پۆلی ڕێزمانی دروست",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "نامەی ڕاستەوخۆ",
     "notificationRuleDMDescription": "بەکارهێنەر ئاگادار دەکاتەوە دەربارەی نامەکانی ناو ژوورەکانی نامەی ڕاستەوخۆ.",
     "enableEmailNotifications": "چالاککردنی ئاگادارکردنەوەکانی ئیمەیڵ",
-    "selectAudioMessagesOnPlayToolName": "نامە دەنگییەکان خۆکارانە دیاری بکە",
-    "selectAudioMessagesOnPlayDescription": "نامە دەنگییەکان خۆکارانە دیاری بکە کاتێک لێدەدرێن",
     "learningAnalytics": "شیکاری فێربوون",
     "alreadySpeak": "من پێشتر قسە دەکەم...",
     "welcomeBackLogin": "بەخێربێیتەوە! تۆ پێشتر بە {platform} چوویتە ژوورەوە.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "سەرنجەکەت بڵاونەکرایەوە. هەوڵبدە دووبارە بینووسیتەوە، یان هەڵسەنگاندنەکەت بەبێ سەرنج بنێرە.",
     "rateActivityThanks": "سوپاس بۆ فیدباکەکەت!",
     "activityRatingMeterLabel": "{percent}% ئەرێنی ({count, plural, =1{1 هەڵسەنگاندن} other{{count} هەڵسەنگاندن}})",
-    "newActivityBadge": "نوێ"
+    "newActivityBadge": "نوێ",
+    "exitVocabPracticeSession": "پێشکەوتنی دانیشتنی ئێستای ڕاهێنانی وشەکانت پاشەکەوت ناکرێت.",
+    "exitGrammarPracticeSession": "پێشکەوتنی دانیشتنی ئێستای ڕاهێنانی ڕێزمانت پاشەکەوت ناکرێت.",
+    "autoReadAloudMessagesToolName": "خوێندنەوەی خودکاریی هەموو پەیامە وەرگیراوەکان",
+    "autoReadAloudMessagesDescription": "کاتێک پەیامێک وەردەگیرێت، دەنگی ئامێرەکە بەکاردێت بۆ خوێندنەوەی پەیامەکە بە دەنگی بەرز بۆ مەشقکردن لەسەر گوێگرتن."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-29 12:08:18.258009",
+    "@@last_modified": "2026-07-31 10:55:36.583173",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8182,15 +8182,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Vaš napredak u vježbi neće biti spremljen.",
     "practiceGrammar": "Vježbajte gramatiku",
     "notEnoughToPractice": "Pošaljite više poruka da otključate vježbu",
     "constructUseCorGCDesc": "Vježba ispravne gramatičke kategorije",
     "constructUseIncGCDesc": "Vježba neispravne gramatičke kategorije",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8780,16 +8775,6 @@
     },
     "enableEmailNotifications": "Omogući obavijesti putem e-pošte",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatski istakni audio poruke",
-    "selectAudioMessagesOnPlayDescription": "Automatski istakni audio poruke kada se reproduciraju",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10140,5 +10125,9 @@
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte ga preformulirati ili pošaljite svoju ocjenu bez komentara.",
     "rateActivityThanks": "Hvala na povratnim informacijama!",
     "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocjena} other{{count} ocjena}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja vokabulara neće biti spremljen.",
+    "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti spremljen.",
+    "autoReadAloudMessagesToolName": "Automatski čitaj naglas sve primljene poruke",
+    "autoReadAloudMessagesDescription": "Kada se poruka primi, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja."
 }

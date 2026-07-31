@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-29 12:08:16.369777",
+    "@@last_modified": "2026-07-31 10:55:32.404801",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1698,7 +1698,6 @@
     "voice": "Glas",
     "youLeftTheChat": "🚪 Napustili ste chat",
     "webDownloadPermissionMessage": "Ako vaš preglednik blokira preuzimanja, molimo omogućite preuzimanja za ovu stranicu.",
-    "exitPractice": "Vaš napredak u vježbanju neće biti sačuvan.",
     "practiceGrammar": "Vježbajte gramatiku",
     "notEnoughToPractice": "Pošaljite više poruka da otključate vježbanje",
     "constructUseCorGCDesc": "Vježba tačne gramatičke kategorije",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Direktna poruka",
     "notificationRuleDMDescription": "Obavještava korisnika o porukama u sobama za direktne poruke.",
     "enableEmailNotifications": "Omogući obavijesti putem e-maila",
-    "selectAudioMessagesOnPlayToolName": "Automatsko isticanje audio poruka",
-    "selectAudioMessagesOnPlayDescription": "Automatski istakni audio poruke prilikom reprodukcije",
     "learningAnalytics": "Analitika učenja",
     "alreadySpeak": "Već govorim...",
     "welcomeBackLogin": "Dobrodošli nazad! Prethodno ste se prijavili putem {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte ga preformulisati ili pošaljite svoju ocjenu bez komentara.",
     "rateActivityThanks": "Hvala na povratnim informacijama!",
     "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocjena} other{{count} ocjena}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja rječnika neće biti sačuvan.",
+    "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti sačuvan.",
+    "autoReadAloudMessagesToolName": "Automatski čitaj naglas sve primljene poruke",
+    "autoReadAloudMessagesDescription": "Kada se primi poruka, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja."
 }

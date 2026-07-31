@@ -273,6 +273,13 @@ class TtsController {
 
     /// Morph features for disambiguation when resolving tts_phoneme from cache.
     Map<String, String>? morph,
+
+    /// When false, this request never reaches backend TTS: it plays only if the
+    /// device has a known-good voice for the language, and stays silent
+    /// otherwise. Set by automatic message read-aloud, which fires on every
+    /// eligible incoming message and so must not spend backend calls. See
+    /// message-read-aloud.instructions.md.
+    bool allowChoreoPlay = true,
   }) async {
     final requestId = ++_requestCounter;
     final strippedText = stripEmojis(text);
@@ -324,6 +331,7 @@ class TtsController {
       onStop: onStop,
       tid: transactionId,
       speed: speed,
+      allowChoreoPlay: allowChoreoPlay,
     );
 
     // Only the active request may clear shared request state.
@@ -348,6 +356,7 @@ class TtsController {
     String? ttsPhoneme,
     required String tid,
     double speed = 1.0,
+    bool allowChoreoPlay = true,
   }) async {
     chatController?.stopMediaStream.add(null);
     MatrixState.pangeaController.matrixState.audioPlayer?.stop();
@@ -374,6 +383,18 @@ class TtsController {
         isWeb: kIsWeb,
       );
 
+      // Callers that disallow backend playback stay silent when the device has
+      // no known-good voice, rather than falling back to a poor one. See
+      // message-read-aloud.instructions.md.
+      if (!allowChoreoPlay && !selection.isKnownGood) {
+        _log(
+          'tryToSpeak: silent, no known-good device voice and backend disallowed',
+          tid,
+        );
+        onStop?.call();
+        return;
+      }
+
       final isSubscribed = MatrixState
           .pangeaController
           .subscriptionController
@@ -382,11 +403,13 @@ class TtsController {
       // Routing gate (see word-text-to-speech.instructions.md): a phoneme
       // override needs backend; else device when it has a known-good voice;
       // else backend. Backend is Pro-only, so unsubscribed users stay on device.
-      final useBackend = TtsRouting.useBackend(
-        hasPhoneme: ttsPhoneme != null,
-        selection: selection,
-        isSubscribed: isSubscribed,
-      );
+      final useBackend =
+          allowChoreoPlay &&
+          TtsRouting.useBackend(
+            hasPhoneme: ttsPhoneme != null,
+            selection: selection,
+            isSubscribed: isSubscribed,
+          );
       _log(
         'tryToSpeak: route=${useBackend ? "backend" : "device"} '
         'knownGood=${selection.isKnownGood} hasVoice=${selection.hasVoice} '

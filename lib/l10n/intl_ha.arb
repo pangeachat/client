@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-07-29 12:08:18.663878",
+    "@@last_modified": "2026-07-31 10:55:36.014324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1698,7 +1698,6 @@
     "voice": "Murya",
     "youLeftTheChat": "🚪 Ka bar hirar",
     "webDownloadPermissionMessage": "Idan burauzarka ta toshe saukewa, don Allah ka ba da izinin saukewa ga wannan shafin.",
-    "exitPractice": "Ba za a adana ci gaban aikinka ba.",
     "practiceGrammar": "Aikin nahawu",
     "notEnoughToPractice": "Aika ƙarin saƙonni don buɗe aiki",
     "constructUseCorGCDesc": "Aikin rukunin nahawu daidai",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Saƙon Kai Tsaye",
     "notificationRuleDMDescription": "Yana sanar da mai amfani game da saƙonni a cikin ɗakunan saƙon kai tsaye.",
     "enableEmailNotifications": "Kunna sanarwar imel",
-    "selectAudioMessagesOnPlayToolName": "Haskaka saƙonnin murya ta atomatik",
-    "selectAudioMessagesOnPlayDescription": "Haskaka saƙonnin murya ta atomatik lokacin da aka kunna su",
     "learningAnalytics": "Binciken koyo",
     "alreadySpeak": "Na riga na iya magana da...",
     "welcomeBackLogin": "Barka da dawowa! A baya ka shiga da {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Ba a iya wallafa sharhinka ba. Gwada sake tsarawa, ko aika ƙimar ka ba tare da sharhi ba.",
     "rateActivityThanks": "Godiya da ra'ayinka!",
     "activityRatingMeterLabel": "{percent}% mai kyau ({count, plural, =1{ƙima 1} other{ƙididdiga {count}}})",
-    "newActivityBadge": "SABO"
+    "newActivityBadge": "SABO",
+    "exitVocabPracticeSession": "Ba za a adana ci gaban zaman koyon kalmomin da kake yi yanzu ba.",
+    "exitGrammarPracticeSession": "Ba za a adana ci gaban zaman koyon nahawun da kake yi yanzu ba.",
+    "autoReadAloudMessagesToolName": "Karanta duk saƙonnin da aka karɓa ta atomatik",
+    "autoReadAloudMessagesDescription": "Idan aka karɓi saƙo, za a yi amfani da muryar na'urar don karanta saƙon da babbar murya don aikin sauraro."
 }

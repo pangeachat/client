@@ -226,6 +226,7 @@ class WorldMapController extends State<WorldMap>
       _rebuildObjectiveCache(client);
       _recomputePinged(client);
       _discoverCoursemateSessions(client);
+      _loadSessionParticipants(client);
       _syncSub?.cancel();
       _syncSub = client.onSync.stream
           .where((s) => s.hasRoomUpdate)
@@ -236,6 +237,7 @@ class WorldMapController extends State<WorldMap>
             _maybeRebuildObjectiveCache(client);
             _recomputePinged(client);
             _discoverCoursemateSessions(client);
+            _loadSessionParticipants(client);
             // Keep the "can't start" count live: a new invite/join changes the
             // members available to fill roles, so re-fetch (rate-limited by this
             // handler) — a dimmed pin un-dims once enough people are in.
@@ -417,11 +419,14 @@ class WorldMapController extends State<WorldMap>
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => _pinsManager.progressedActivityIds;
 
-  /// The learner has **no first activity yet** (never started, joined, or
-  /// finished one) — the condition under which the ranking deprioritizes 3+ role
-  /// activities (#7435). Cheap read over `client.rooms`, once per (debounced)
-  /// re-rank. Null client → false (no penalty).
-  bool get isNewLearner => _client?.hasAnyActivitySession == false;
+  /// The learner has **no finished activity yet** — the condition under which
+  /// the ranking deprioritizes 3+ role activities (#7435). Starting or joining
+  /// one is deliberately not enough (#7999): a learner who opens an activity and
+  /// goes back to exploring the map hasn't yet learned what activities are, and
+  /// would otherwise be shown 3+ role pins they can't fill. Cheap read over
+  /// `client.rooms`, once per (debounced) re-rank. Null client → false (no
+  /// penalty).
+  bool get isNewLearner => _client?.hasAnyFinishedActivitySession == false;
 
   void _onPlanHydrate() {
     // A plan landing from CMS fires no room sync, so the sync-driven recompute
@@ -483,6 +488,17 @@ class WorldMapController extends State<WorldMap>
   Future<void> _recomputePinged(Client client) async {
     await _pinsManager.recomputePinged(client);
     if (mounted) setState(() {});
+  }
+
+  /// Refill the member lists the map's seat math and participant rows read —
+  /// see [WorldMapPinsManager.loadSessionParticipants] (#8045). Runs on the
+  /// same triggers as discovery: once on attach, then draining on sync.
+  Future<void> _loadSessionParticipants(Client client) async {
+    if (!await _pinsManager.loadSessionParticipants(client)) return;
+    // Members decide both halves of a live large card — the ongoing
+    // pending/active split (seats remaining) and the avatar row itself — so a
+    // fill has to re-derive signals, not just repaint.
+    if (mounted) _recomputeProgress();
   }
 
   Future<void> _discoverCoursemateSessions(Client client) async {

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-29 12:08:20.057941",
+    "@@last_modified": "2026-07-31 10:55:38.682495",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1698,7 +1698,6 @@
     "voice": "Vox",
     "youLeftTheChat": "🚪 Colloquium reliquisti",
     "webDownloadPermissionMessage": "Si navigatrum tuum demptiones impedit, quaeso demptiones huic situ permitte.",
-    "exitPractice": "Progressus sessionis exercitationis tuae non servabitur.",
     "practiceGrammar": "Exercere grammaticam",
     "notEnoughToPractice": "Mitte plura nuntia ad exercitationem reserandam",
     "constructUseCorGCDesc": "Exercitatio categoriae grammaticae rectae",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Nuntius directus",
     "notificationRuleDMDescription": "Utentem de nuntiis in conclavibus nuntiorum directorum notificat.",
     "enableEmailNotifications": "Permitte notificationes per epistulam",
-    "selectAudioMessagesOnPlayToolName": "Nuntios audibiles sponte designa",
-    "selectAudioMessagesOnPlayDescription": "Nuntios audibiles sponte designa cum canuntur",
     "learningAnalytics": "Analytica discendi",
     "alreadySpeak": "Iam loquor...",
     "welcomeBackLogin": "Salvus sis! Antea cum {platform} inivisti.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Commentarium tuum affigi non potuit. Conare verba mutare, aut aestimationem tuam sine commentario submittere.",
     "rateActivityThanks": "Gratias pro sententia tua!",
     "activityRatingMeterLabel": "{percent}% positivum ({count, plural, =1{1 aestimatio} other{{count} aestimationes}})",
-    "newActivityBadge": "NOVUM"
+    "newActivityBadge": "NOVUM",
+    "exitVocabPracticeSession": "Progressus sessionis praesentis exercitationis vocabulorum non servabitur.",
+    "exitGrammarPracticeSession": "Progressus sessionis praesentis exercitationis grammaticae non servabitur.",
+    "autoReadAloudMessagesToolName": "Sponte legere nuntios acceptos",
+    "autoReadAloudMessagesDescription": "Cum nuntius accipitur, vox machinae ad legendum nuntium adhibebitur ad exercitationem audiendi."
 }

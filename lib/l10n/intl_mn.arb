@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-29 12:08:21.053900",
+    "@@last_modified": "2026-07-31 10:55:39.970521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1698,7 +1698,6 @@
     "voice": "Дуу хоолой",
     "youLeftTheChat": "🚪 Та чатаас гарлаа",
     "webDownloadPermissionMessage": "Хэрэв таны хөтөч татан авалтыг хааж байвал, энэ сайтад татан авалтыг идэвхжүүлнэ үү.",
-    "exitPractice": "Таны дасгалын явц хадгалагдахгүй.",
     "practiceGrammar": "Дүрэм дасгал хийх",
     "notEnoughToPractice": "Дасгал хийх боломжийг нээхийн тулд илүү олон мессеж илгээнэ үү",
     "constructUseCorGCDesc": "Зөв дүрмийн ангиллын дасгал",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Шууд Мессеж",
     "notificationRuleDMDescription": "Шууд мессежийн өрөөн дэх мессежүүдийн талаар хэрэглэгчид мэдэгдэнэ.",
     "enableEmailNotifications": "Имэйл мэдэгдлийг идэвхжүүлэх",
-    "selectAudioMessagesOnPlayToolName": "Дуут мессежийг автоматаар тодруулах",
-    "selectAudioMessagesOnPlayDescription": "Дуут мессежийг тоглуулах үед автоматаар тодруулах",
     "learningAnalytics": "Сургалтын аналитик",
     "alreadySpeak": "Би аль хэдийн ярьдаг...",
     "welcomeBackLogin": "Тавтай морил! Та өмнө нь {platform} ашиглан нэвтэрсэн.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Таны сэтгэгдлийг нийтлэх боломжгүй байсан. Үгээ өөрчлөн бичих эсвэл сэтгэгдэлгүйгээр үнэлгээгээ илгээнэ үү.",
     "rateActivityThanks": "Таны санал хүсэлтэд баярлалаа!",
     "activityRatingMeterLabel": "{percent}% эерэг ({count, plural, =1{1 үнэлгээ} other{{count} үнэлгээ}})",
-    "newActivityBadge": "ШИНЭ"
+    "newActivityBadge": "ШИНЭ",
+    "exitVocabPracticeSession": "Таны одоогийн үгийн сангийн дадлагын явц хадгалагдахгүй.",
+    "exitGrammarPracticeSession": "Таны одоогийн дүрмийн дадлагын явц хадгалагдахгүй.",
+    "autoReadAloudMessagesToolName": "Ирсэн бүх мессежийг автоматаар чангаар унших",
+    "autoReadAloudMessagesDescription": "Мессеж ирэхэд төхөөрөмжийн дуу хоолойг ашиглан мессежийг чангаар уншиж, сонсох дадлага хийнэ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-07-29 12:08:20.996186",
+    "@@last_modified": "2026-07-31 10:55:39.483292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1698,7 +1698,6 @@
     "voice": "വോയിസ്",
     "youLeftTheChat": "🚪 നിങ്ങൾ ചാറ്റിൽ നിന്ന് പുറത്തുപോയി",
     "webDownloadPermissionMessage": "നിങ്ങളുടെ ബ്രൗസർ ഡൗൺലോഡുകൾ തടയുകയാണെങ്കിൽ, ഈ സൈറ്റിനായി ഡൗൺലോഡുകൾ പ്രവർത്തനക്ഷമമാക്കുക.",
-    "exitPractice": "നിങ്ങളുടെ പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല.",
     "practiceGrammar": "വ്യാകരണം പരിശീലിക്കുക",
     "notEnoughToPractice": "പരിശീലനം അൺലോക്ക് ചെയ്യാൻ കൂടുതൽ സന്ദേശങ്ങൾ അയയ്ക്കുക",
     "constructUseCorGCDesc": "ശരിയായ വ്യാകരണ വിഭാഗ പരിശീലനം",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "നേരിട്ടുള്ള സന്ദേശം",
     "notificationRuleDMDescription": "നേരിട്ടുള്ള സന്ദേശ റൂമുകളിലെ സന്ദേശങ്ങളെക്കുറിച്ച് ഉപയോക്താവിനെ അറിയിക്കുന്നു.",
     "enableEmailNotifications": "ഇമെയിൽ അറിയിപ്പുകൾ പ്രവർത്തനക്ഷമമാക്കുക",
-    "selectAudioMessagesOnPlayToolName": "ഓഡിയോ സന്ദേശങ്ങൾ സ്വയമേവ ഹൈലൈറ്റ് ചെയ്യുക",
-    "selectAudioMessagesOnPlayDescription": "പ്ലേ ചെയ്യുമ്പോൾ ഓഡിയോ സന്ദേശങ്ങൾ സ്വയമേവ ഹൈലൈറ്റ് ചെയ്യുക",
     "learningAnalytics": "പഠന വിശകലനം",
     "alreadySpeak": "ഞാൻ ഇതിനകം സംസാരിക്കുന്നു...",
     "welcomeBackLogin": "തിരികെ സ്വാഗതം! നിങ്ങൾ മുമ്പ് {platform} ഉപയോഗിച്ച് സൈൻ ഇൻ ചെയ്തിരുന്നു.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "നിങ്ങളുടെ അഭിപ്രായം പോസ്റ്റ് ചെയ്യാൻ കഴിഞ്ഞില്ല. ദയവായി മാറ്റിയെഴുതുക, അല്ലെങ്കിൽ അഭിപ്രായമില്ലാതെ നിങ്ങളുടെ റേറ്റിംഗ് സമർപ്പിക്കുക.",
     "rateActivityThanks": "നിങ്ങളുടെ പ്രതികരണത്തിന് നന്ദി!",
     "activityRatingMeterLabel": "{percent}% പോസിറ്റീവ് ({count, plural, =1{1 റേറ്റിംഗ്} other{{count} റേറ്റിംഗുകൾ}})",
-    "newActivityBadge": "പുതിയത്"
+    "newActivityBadge": "പുതിയത്",
+    "exitVocabPracticeSession": "നിങ്ങളുടെ നിലവിലെ പദസമ്പത്ത് പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല.",
+    "exitGrammarPracticeSession": "നിങ്ങളുടെ നിലവിലെ വ്യാകരണ പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല.",
+    "autoReadAloudMessagesToolName": "ലഭിച്ച എല്ലാ സന്ദേശങ്ങളും സ്വയമേവ വായിക്കുക",
+    "autoReadAloudMessagesDescription": "ഒരു സന്ദേശം ലഭിക്കുമ്പോൾ, കേൾവി പരിശീലനത്തിനായി സന്ദേശം വായിക്കാൻ ഉപകരണത്തിന്റെ ശബ്ദം ഉപയോഗിക്കും."
 }

@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-29 12:08:17.844119",
+    "@@last_modified": "2026-07-31 10:55:34.921643",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -7933,15 +7933,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh.",
     "practiceGrammar": "Cleachtaigh gramadach",
     "notEnoughToPractice": "Seol níos mó teachtaireachtaí chun cleachtadh a dhíghlasáil",
     "constructUseCorGCDesc": "Cleachtadh catagóir gramadaí ceart",
     "constructUseIncGCDesc": "Cleachtadh catagóir gramadaí mícheart",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8355,16 +8350,6 @@
     },
     "enableEmailNotifications": "Cuir ar siúl fógraí ríomhphoist",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Bailigh teachtaireachtaí gutháin go huathoibríoch",
-    "selectAudioMessagesOnPlayDescription": "Bailigh teachtaireachtaí gutháin go huathoibríoch nuair a chluineann tú iad",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9715,5 +9700,9 @@
     "rateActivityCommentRejected": "Níorbh fhéidir do thrácht a phostáil. Bain triail as é a athfhocail, nó cuir isteach do rátáil gan trácht.",
     "rateActivityThanks": "Go raibh maith agat as d'aiseolas!",
     "activityRatingMeterLabel": "{percent}% dearfach ({count, plural, =1{1 rátáil} other{{count} rátáil}})",
-    "newActivityBadge": "NUA"
+    "newActivityBadge": "NUA",
+    "exitVocabPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh foclóra reatha.",
+    "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha.",
+    "autoReadAloudMessagesToolName": "Léigh gach teachtaireacht a fhaightear os ard go huathoibríoch",
+    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta."
 }

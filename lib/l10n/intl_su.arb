@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-29 12:08:23.495602",
+    "@@last_modified": "2026-07-31 10:55:44.411325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1698,7 +1698,6 @@
     "voice": "Sora",
     "youLeftTheChat": "🚪 Anjeun kaluar tina obrolan",
     "webDownloadPermissionMessage": "Upami panyungsi anjeun meungpeuk unduhan, mangga aktipkeun unduhan pikeun situs ieu.",
-    "exitPractice": "Kamajuan sési latihan anjeun moal disimpen.",
     "practiceGrammar": "Latihan tata basa",
     "notEnoughToPractice": "Kirim langkung seueur pesen pikeun muka konci latihan",
     "constructUseCorGCDesc": "Latihan kategori tata basa anu bener",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Pesen Langsung",
     "notificationRuleDMDescription": "Ngabéjaan pangguna ngeunaan pesen dina kamar pesen langsung.",
     "enableEmailNotifications": "Aktifkeun béwara email",
-    "selectAudioMessagesOnPlayToolName": "Otomatis nyorot pesen audio",
-    "selectAudioMessagesOnPlayDescription": "Otomatis nyorot pesen audio nalika diputer",
     "learningAnalytics": "Analitik pembelajaran",
     "alreadySpeak": "Abdi parantos tiasa nyarios...",
     "welcomeBackLogin": "Wilujeng sumping deui! Anjeun sateuacanna asup nganggo {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Koméntar anjeun teu tiasa dipasang. Cobi robih kecapna, atanapi kirimkeun peunteun anjeun tanpa koméntar.",
     "rateActivityThanks": "Hatur nuhun kana tanggapan anjeun!",
     "activityRatingMeterLabel": "{percent}% positip ({count, plural, =1{1 peunteun} other{{count} peunteun}})",
-    "newActivityBadge": "ANYAR"
+    "newActivityBadge": "ANYAR",
+    "exitVocabPracticeSession": "Kamajuan sési latihan kosakata anjeun ayeuna moal disimpen.",
+    "exitGrammarPracticeSession": "Kamajuan sési latihan tata basa anjeun ayeuna moal disimpen.",
+    "autoReadAloudMessagesToolName": "Otomatis maca tarik sadaya talatah nu ditarima",
+    "autoReadAloudMessagesDescription": "Nalika talatah ditarima, sora alat bakal dipaké pikeun maca talatah tarik pikeun latihan ngaregepkeun."
 }

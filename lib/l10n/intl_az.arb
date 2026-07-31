@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-29 12:08:16.251970",
+    "@@last_modified": "2026-07-31 10:55:32.004791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1698,7 +1698,6 @@
     "voice": "Səs",
     "youLeftTheChat": "🚪 Çatdan çıxdınız",
     "webDownloadPermissionMessage": "Əgər brauzeriniz endirmələri bloklayırsa, lütfən, bu sayt üçün endirmələrə icazə verin.",
-    "exitPractice": "Məşq sessiyanızın gedişatı yadda saxlanılmayacaq.",
     "practiceGrammar": "Qrammatikanı məşq et",
     "notEnoughToPractice": "Məşqi aktivləşdirmək üçün daha çox mesaj göndərin",
     "constructUseCorGCDesc": "Düzgün qrammatik kateqoriya məşqi",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Birbaşa Mesaj",
     "notificationRuleDMDescription": "İstifadəçiyə birbaşa mesaj otaqlarındakı mesajlar barədə bildiriş göndərir.",
     "enableEmailNotifications": "E-poçt bildirişlərini aktivləşdirin",
-    "selectAudioMessagesOnPlayToolName": "Səsli mesajları avtomatik vurğula",
-    "selectAudioMessagesOnPlayDescription": "Səsləndirilərkən səsli mesajları avtomatik olaraq vurğulayın",
     "learningAnalytics": "Öyrənmə analitikası",
     "alreadySpeak": "Mən artıq danışıram...",
     "welcomeBackLogin": "Xoş gəlmisiniz! Siz əvvəllər {platform} ilə daxil olmusunuz.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Şərhiniz göndərilə bilmədi. Yenidən yazmağa çalışın və ya şərhi olmadan qiymətləndirmənizi göndərin.",
     "rateActivityThanks": "Rəyiniz üçün təşəkkür edirik!",
     "activityRatingMeterLabel": "{percent}% müsbət ({count, plural, =1{1 qiymətləndirmə} other{{count} qiymətləndirmə}})",
-    "newActivityBadge": "YENİ"
+    "newActivityBadge": "YENİ",
+    "exitVocabPracticeSession": "Cari lüğət təcrübə sessiyanızın gedişatı yadda saxlanmayacaq.",
+    "exitGrammarPracticeSession": "Cari qrammatika təcrübə sessiyanızın gedişatı yadda saxlanmayacaq.",
+    "autoReadAloudMessagesToolName": "Bütün qəbul edilmiş mesajları avtomatik oxu",
+    "autoReadAloudMessagesDescription": "Mesaj qəbul edildikdə, dinləmə təcrübəsi üçün cihaz səsi mesajı ucadan oxumaq üçün istifadə ediləcək."
 }

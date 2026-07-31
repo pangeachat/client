@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-29 12:08:25.438295",
+    "@@last_modified": "2026-07-31 10:55:47.003625",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -8704,15 +8704,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "您的練習進度將不會被保存。",
     "practiceGrammar": "練習語法",
     "notEnoughToPractice": "發送更多消息以解鎖練習",
     "constructUseCorGCDesc": "正確語法類別練習",
     "constructUseIncGCDesc": "不正確語法類別練習",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9307,16 +9302,6 @@
     },
     "enableEmailNotifications": "啟用電子郵件通知",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "自動突出顯示音頻消息",
-    "selectAudioMessagesOnPlayDescription": "播放時自動突出顯示音頻消息",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10667,5 +10652,9 @@
     "rateActivityCommentRejected": "無法發佈你的評論。請嘗試重新措辭，或不帶評論提交你的評分。",
     "rateActivityThanks": "感謝你的意見！",
     "activityRatingMeterLabel": "{percent}% 正面評價（{count, plural, =1{1 個評分} other{{count} 個評分}}）",
-    "newActivityBadge": "新"
+    "newActivityBadge": "新",
+    "exitVocabPracticeSession": "你目前嘅詞彙練習進度將唔會被儲存。",
+    "exitGrammarPracticeSession": "你目前嘅文法練習進度將唔會被儲存。",
+    "autoReadAloudMessagesToolName": "自動朗讀所有已接收訊息",
+    "autoReadAloudMessagesDescription": "當收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。"
 }

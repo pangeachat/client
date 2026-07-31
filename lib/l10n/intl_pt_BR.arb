@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:25.582003",
+    "@@last_modified": "2026-07-31 10:55:41.800765",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -7921,15 +7921,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "O progresso da sua sessão de prática não será salvo.",
     "practiceGrammar": "Praticar gramática",
     "notEnoughToPractice": "Envie mais mensagens para desbloquear a prática",
     "constructUseCorGCDesc": "Prática da categoria de gramática correta",
     "constructUseIncGCDesc": "Prática da categoria de gramática incorreta",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8344,16 +8339,6 @@
     },
     "enableEmailNotifications": "Ativar notificações por e-mail",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Realçar automaticamente mensagens de áudio",
-    "selectAudioMessagesOnPlayDescription": "Realçar automaticamente mensagens de áudio quando reproduzidas",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9704,5 +9689,9 @@
     "rateActivityCommentRejected": "Não foi possível postar seu comentário. Tente reformulá-lo ou envie sua avaliação sem um comentário.",
     "rateActivityThanks": "Obrigado(a) pelo seu feedback!",
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "O progresso da sua sessão de prática de vocabulário atual não será salvo.",
+    "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será salvo.",
+    "autoReadAloudMessagesToolName": "Ler automaticamente todas as mensagens recebidas",
+    "autoReadAloudMessagesDescription": "Quando uma mensagem for recebida, a voz do dispositivo será usada para ler a mensagem em voz alta para praticar a escuta."
 }

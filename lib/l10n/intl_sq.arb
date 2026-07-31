@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-29 12:08:23.085408",
+    "@@last_modified": "2026-07-31 10:55:43.987052",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1698,7 +1698,6 @@
     "voice": "Zëri",
     "youLeftTheChat": "🚪 Ju u larguat nga biseda",
     "webDownloadPermissionMessage": "Nëse shfletuesi juaj bllokon shkarkimet, ju lutemi aktivizoni shkarkimet për këtë faqe.",
-    "exitPractice": "Progresi i sesionit tuaj të praktikës nuk do të ruhet.",
     "practiceGrammar": "Praktiko gramatikën",
     "notEnoughToPractice": "Dërgoni më shumë mesazhe për të zhbllokuar praktikën",
     "constructUseCorGCDesc": "Praktikë e kategorisë së saktë gramatikore",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Mesazh i Drejtpërdrejtë",
     "notificationRuleDMDescription": "Njofton përdoruesin për mesazhet në dhomat e mesazheve të drejtpërdrejta.",
     "enableEmailNotifications": "Aktivizo njoftimet me email",
-    "selectAudioMessagesOnPlayToolName": "Auto-thekso mesazhet audio",
-    "selectAudioMessagesOnPlayDescription": "Thekson automatikisht mesazhet audio kur luhen",
     "learningAnalytics": "Analiza e të mësuarit",
     "alreadySpeak": "Unë tashmë flas...",
     "welcomeBackLogin": "Mirë se vini sërish! Ju më parë jeni kyçur me {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Komenti juaj nuk mund të postohej. Provoni ta riformuloni, ose dërgoni vlerësimin tuaj pa koment.",
     "rateActivityThanks": "Faleminderit për reagimin tuaj!",
     "activityRatingMeterLabel": "{percent}% pozitive ({count, plural, =1{1 vlerësim} other{{count} vlerësime}})",
-    "newActivityBadge": "E RE"
+    "newActivityBadge": "E RE",
+    "exitVocabPracticeSession": "Progresi i seancës aktuale të praktikës së fjalorit nuk do të ruhet.",
+    "exitGrammarPracticeSession": "Progresi i seancës aktuale të praktikës së gramatikës nuk do të ruhet.",
+    "autoReadAloudMessagesToolName": "Lexo automatikisht me zë të lartë të gjitha mesazhet e marra",
+    "autoReadAloudMessagesDescription": "Kur merret një mesazh, zëri i pajisjes do të përdoret për të lexuar mesazhin me zë të lartë për praktikë dëgjimi."
 }

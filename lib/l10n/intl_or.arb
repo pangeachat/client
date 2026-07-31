@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-07-29 12:08:21.585248",
+    "@@last_modified": "2026-07-31 10:55:42.335948",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1698,7 +1698,6 @@
     "voice": "ଭଏସ୍",
     "youLeftTheChat": "🚪 ଆପଣ ଚାଟ୍ ଛାଡିଛନ୍ତି",
     "webDownloadPermissionMessage": "ଯଦି ଆପଣଙ୍କର ବ୍ରାଉଜର୍ ଡାଉନଲୋଡ୍ ବ୍ଲକ୍ କରେ, ତେବେ ଦୟାକରି ଏହି ସାଇଟ୍ ପାଇଁ ଡାଉନଲୋଡ୍ ସକ୍ଷମ କରନ୍ତୁ।",
-    "exitPractice": "ଆପଣଙ୍କର ଅଭ୍ୟାସ ଅଧିବେଶନର ପ୍ରଗତି ସେଭ୍ ହେବ ନାହିଁ।",
     "practiceGrammar": "ବ୍ୟାକରଣ ଅଭ୍ୟାସ କରନ୍ତୁ",
     "notEnoughToPractice": "ଅଭ୍ୟାସ ଅନଲକ୍ କରିବା ପାଇଁ ଅଧିକ ମେସେଜ୍ ପଠାନ୍ତୁ",
     "constructUseCorGCDesc": "ସଠିକ୍ ବ୍ୟାକରଣ ଶ୍ରେଣୀ ଅଭ୍ୟାସ",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "ସିଧାସଳଖ ବାର୍ତ୍ତା",
     "notificationRuleDMDescription": "ସିଧାସଳଖ ବାର୍ତ୍ତା ରୁମରେ ଥିବା ବାର୍ତ୍ତାଗୁଡ଼ିକ ବିଷୟରେ ଉପଭୋକ୍ତାଙ୍କୁ ସୂଚିତ କରେ।",
     "enableEmailNotifications": "ଇମେଲ୍ ନୋଟିଫିକେସନ୍ ସକ୍ଷମ କରନ୍ତୁ",
-    "selectAudioMessagesOnPlayToolName": "ଅଡିଓ ବାର୍ତ୍ତାଗୁଡ଼ିକୁ ସ୍ୱୟଂ-ହାଇଲାଇଟ୍ କରନ୍ତୁ",
-    "selectAudioMessagesOnPlayDescription": "ପ୍ଲେ ହେବା ସମୟରେ ଅଡିଓ ବାର୍ତ୍ତାଗୁଡ଼ିକୁ ସ୍ୱୟଂଚାଳିତ ଭାବରେ ହାଇଲାଇଟ୍ କରନ୍ତୁ",
     "learningAnalytics": "ଶିକ୍ଷଣ ବିଶ୍ଳେଷଣ",
     "alreadySpeak": "ମୁଁ ପୂର୍ବରୁ କହୁଛି...",
     "welcomeBackLogin": "ପୁନର୍ବାର ସ୍ୱାଗତ! ଆପଣ ପୂର୍ବରୁ {platform} ସହିତ ସାଇନ୍ ଇନ୍ କରିଥିଲେ।",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "ଆପଣଙ୍କ ମନ୍ତବ୍ୟ ପୋଷ୍ଟ ହୋଇପାରିଲା ନାହିଁ। ଏହାକୁ ଅନ୍ୟ ଶବ୍ଦରେ ଲେଖିବାକୁ ଚେଷ୍ଟା କରନ୍ତୁ, କିମ୍ବା ମନ୍ତବ୍ୟ ବିନା ଆପଣଙ୍କ ମୂଲ୍ୟାଙ୍କନ ଦାଖଲ କରନ୍ତୁ।",
     "rateActivityThanks": "ଆପଣଙ୍କ ମତାମତ ପାଇଁ ଧନ୍ୟବାଦ!",
     "activityRatingMeterLabel": "{percent}% ସକାରାତ୍ମକ ({count, plural, =1{1 ମୂଲ୍ୟାଙ୍କନ} other{{count} ମୂଲ୍ୟାଙ୍କନ}})",
-    "newActivityBadge": "ନୂଆ"
+    "newActivityBadge": "ନୂଆ",
+    "exitVocabPracticeSession": "ଆପଣଙ୍କ ବର୍ତ୍ତମାନର ଶବ୍ଦାବଳୀ ଅଭ୍ୟାସ ସେସନ୍‌ର ଅଗ୍ରଗତି ସେଭ୍ କରାଯିବ ନାହିଁ।",
+    "exitGrammarPracticeSession": "ଆପଣଙ୍କ ବର୍ତ୍ତମାନର ବ୍ୟାକରଣ ଅଭ୍ୟାସ ସେସନ୍‌ର ଅଗ୍ରଗତି ସେଭ୍ କରାଯିବ ନାହିଁ।",
+    "autoReadAloudMessagesToolName": "ପ୍ରାପ୍ତ ସମସ୍ତ ବାର୍ତ୍ତା ସ୍ୱୟଂଚାଳିତ ଭାବରେ ପଢ଼ନ୍ତୁ",
+    "autoReadAloudMessagesDescription": "ଯେତେବେଳେ ଏକ ବାର୍ତ୍ତା ଗ୍ରହଣ କରାଯାଏ, ଶୁଣିବା ଅଭ୍ୟାସ ପାଇଁ ବାର୍ତ୍ତାକୁ ଉଚ୍ଚ ସ୍ୱରରେ ପଢ଼ିବା ପାଇଁ ଡିଭାଇସ୍ ଭଏସ୍ ବ୍ୟବହାର କରାଯିବ।"
 }

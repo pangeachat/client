@@ -255,6 +255,9 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
       GoRouterState.of(context).uri,
       page: 'learning',
       closeSections: _closeSections(context),
+      // The flag is a shortcut straight to learning settings, not a drill-in
+      // from the menu, so it opens that page alone (#7961).
+      seatMenu: false,
     ),
   );
 

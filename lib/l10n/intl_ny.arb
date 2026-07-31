@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-29 12:08:21.903302",
+    "@@last_modified": "2026-07-31 10:55:41.924287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1698,7 +1698,6 @@
     "voice": "Mawu",
     "youLeftTheChat": "🚪 Mwatuluka mu macheza",
     "webDownloadPermissionMessage": "Ngati msakatuli wanu atsekereza kutsitsa, chonde yambitsani kutsitsa patsamba lino.",
-    "exitPractice": "Kupita patsogolo kwanu sikudzapulumutsidwa.",
     "practiceGrammar": "Yesetsani galamala",
     "notEnoughToPractice": "Tumizani mauthenga ambiri kuti mutsegule zoyeserera",
     "constructUseCorGCDesc": "Kuchita galamala yolondola",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Mauthenga Achindunji",
     "notificationRuleDMDescription": "Amadziwitsa wogwiritsa ntchito za mauthenga m'zipinda zauthenga wachindunji.",
     "enableEmailNotifications": "Yambitsani zidziwitso za imelo",
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight mauthenga omvera",
-    "selectAudioMessagesOnPlayDescription": "Auto-highlight mauthenga omvera akamaseweredwa",
     "learningAnalytics": "Kusanthula kuphunzira",
     "alreadySpeak": "Ndikulankhula kale...",
     "welcomeBackLogin": "Takulandiraninso! Munalowa kale ndi {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Ndemanga yanu sinathe kutumizidwa. Yesani kusintha mawu, kapena tumizani ndemanga yanu popanda ndemanga.",
     "rateActivityThanks": "Zikomo chifukwa cha malingaliro anu!",
     "activityRatingMeterLabel": "{percent}% yabwino ({count, plural, =1{1 ndemanga} other{{count} ndemanga}})",
-    "newActivityBadge": "CHATSWOPANO"
+    "newActivityBadge": "CHATSWOPANO",
+    "exitVocabPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa mawu sikudzasungidwa.",
+    "exitGrammarPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa galamala sikudzasungidwa.",
+    "autoReadAloudMessagesToolName": "Werengani mauthenga onse olandiridwa okha",
+    "autoReadAloudMessagesDescription": "Mukalandira uthenga, mawu a chipangizo adzagwiritsidwa ntchito kuwerenga uthenga mokweza kuti muphunzire kumvetsera."
 }

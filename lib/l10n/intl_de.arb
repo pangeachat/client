@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-29 12:08:16.831858",
+    "@@last_modified": "2026-07-31 10:55:33.472603",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -7947,15 +7947,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ihr Fortschritt in der Übungssitzung wird nicht gespeichert.",
     "practiceGrammar": "Grammatik üben",
     "notEnoughToPractice": "Senden Sie mehr Nachrichten, um die Übung freizuschalten",
     "constructUseCorGCDesc": "Übung der korrekten Grammatikkategorie",
     "constructUseIncGCDesc": "Übung der inkorrekten Grammatikkategorie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8331,16 +8326,6 @@
     },
     "enableEmailNotifications": "E-Mail-Benachrichtigungen aktivieren",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Audio-Nachrichten automatisch hervorheben",
-    "selectAudioMessagesOnPlayDescription": "Audio-Nachrichten automatisch hervorheben, wenn sie abgespielt werden",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9691,5 +9676,9 @@
     "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",
     "rateActivityThanks": "Danke für Ihr Feedback!",
     "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewertung} other{{count} Bewertungen}})",
-    "newActivityBadge": "NEU"
+    "newActivityBadge": "NEU",
+    "exitVocabPracticeSession": "Ihr aktueller Fortschritt in der Vokabelübung wird nicht gespeichert.",
+    "exitGrammarPracticeSession": "Ihr aktueller Fortschritt in der Grammatikübung wird nicht gespeichert.",
+    "autoReadAloudMessagesToolName": "Alle empfangenen Nachrichten automatisch vorlesen",
+    "autoReadAloudMessagesDescription": "Wenn eine Nachricht empfangen wird, liest die Gerätestimme die Nachricht zur Hörübung vor."
 }

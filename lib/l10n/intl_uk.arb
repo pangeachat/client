@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-29 12:08:26.696865",
+    "@@last_modified": "2026-07-31 10:55:44.785371",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -7926,15 +7926,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ваш прогрес у сесії практики не буде збережено.",
     "practiceGrammar": "Практика граматики",
     "notEnoughToPractice": "Надішліть більше повідомлень, щоб розблокувати практику",
     "constructUseCorGCDesc": "Практика правильної граматичної категорії",
     "constructUseIncGCDesc": "Практика неправильної граматичної категорії",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8344,16 +8339,6 @@
     },
     "enableEmailNotifications": "Увімкнути сповіщення електронною поштою",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Автоматичне виділення аудіоповідомлень",
-    "selectAudioMessagesOnPlayDescription": "Автоматично виділяти аудіоповідомлення під час відтворення",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9704,5 +9689,9 @@
     "rateActivityCommentRejected": "Ваш коментар не вдалося опублікувати. Спробуйте перефразувати його або надішліть свою оцінку без коментаря.",
     "rateActivityThanks": "Дякуємо за ваш відгук!",
     "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})",
-    "newActivityBadge": "НОВЕ"
+    "newActivityBadge": "НОВЕ",
+    "exitVocabPracticeSession": "Ваш поточний прогрес у сесії тренування словникового запасу не буде збережено.",
+    "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено.",
+    "autoReadAloudMessagesToolName": "Автоматично читати вголос усі отримані повідомлення",
+    "autoReadAloudMessagesDescription": "Коли повідомлення отримано, голос пристрою буде використано для читання повідомлення вголос для практики слухання."
 }

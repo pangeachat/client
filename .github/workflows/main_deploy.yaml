@@ -23,18 +23,27 @@ jobs:
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+        with:
+          cache-base: main
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - name: Prepare web
         run: ./scripts/prepare-web.sh
       - run: rm ./assets/vodozemac/.gitignore
       - run: flutter pub get
       - name: Build Release Web
+        # UTC ddHHMM stamp, identical scheme in release.yaml, so staging and
+        # production share one sequence instead of each workflow's own run_number
+        # (those had drifted to 3890 vs 104). Build-time only — nothing is
+        # committed back, and the release tag still reads pubspec's `+N`.
+        # Resets monthly, so it identifies a build, never orders one.
+        # See ci.instructions.md.
         run: |
           flutter config --enable-web
           flutter clean
           flutter pub get
-          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps
+          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps --build-number=$(date -u +%d%H%M)
 
       - name: Version Material Icons font
         run: |
@@ -234,6 +243,7 @@ jobs:
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - name: Download web
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:

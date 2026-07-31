@@ -7,9 +7,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
-import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/chat_details/invite/invite_all_in_space_tile.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/room_settings_constants.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -193,44 +193,17 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                             itemBuilder: (BuildContext context, int i) {
                               if (i == 0) {
                                 return controller.showInviteAllInSpaceButton
-                                    ? ListTile(
-                                        leading: ClipPath(
-                                          clipper: MapClipper(),
-                                          child: Avatar(
-                                            mxContent:
-                                                controller.spaceParent!.avatar,
-                                            name: controller.spaceParent!
-                                                .getLocalizedDisplayname(),
-                                            borderRadius: BorderRadius.circular(
-                                              AppConfig.borderRadius / 4,
-                                            ),
-                                          ),
-                                        ),
-                                        title: Text(
-                                          controller.spaceParent!
-                                              .getLocalizedDisplayname(),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        subtitle: Text(
-                                          L10n.of(context).countParticipants(
+                                    ? InviteAllInSpaceTile(
+                                        avatar: controller.spaceParent!.avatar,
+                                        displayname: controller.spaceParent!
+                                            .getLocalizedDisplayname(),
+                                        memberCount:
                                             controller
-                                                    .spaceParent!
-                                                    .summary
-                                                    .mJoinedMemberCount ??
-                                                1,
-                                          ),
-                                          maxLines: 1,
-                                          overflow: TextOverflow.ellipsis,
-                                        ),
-                                        trailing: TextButton.icon(
-                                          onPressed:
-                                              controller.inviteAllInSpace,
-                                          label: Text(
-                                            L10n.of(context).inviteAllInSpace,
-                                          ),
-                                          icon: const Icon(Icons.add),
-                                        ),
+                                                .spaceParent!
+                                                .summary
+                                                .mJoinedMemberCount ??
+                                            1,
+                                        onPressed: controller.inviteAllInSpace,
                                       )
                                     : const SizedBox();
                               }

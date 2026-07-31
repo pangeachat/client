@@ -3417,7 +3417,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-29 12:08:16.888341",
+    "@@last_modified": "2026-07-31 10:55:33.869084",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -8627,15 +8627,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Η πρόοδος της συνεδρίας πρακτικής σας δεν θα αποθηκευτεί.",
     "practiceGrammar": "Πρακτική γραμματικής",
     "notEnoughToPractice": "Στείλτε περισσότερα μηνύματα για να ξεκλειδώσετε την πρακτική",
     "constructUseCorGCDesc": "Πρακτική κατηγορίας σωστής γραμματικής",
     "constructUseIncGCDesc": "Πρακτική κατηγορίας λανθαστής γραμματικής",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9225,16 +9220,6 @@
     },
     "enableEmailNotifications": "Ενεργοποίηση ειδοποιήσεων μέσω email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Αυτόματη επισήμανση ηχητικών μηνυμάτων",
-    "selectAudioMessagesOnPlayDescription": "Αυτόματα επισήμανση ηχητικών μηνυμάτων κατά την αναπαραγωγή",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10585,5 +10570,9 @@
     "rateActivityCommentRejected": "Το σχόλιό σας δεν μπόρεσε να δημοσιευτεί. Δοκιμάστε να το αναδιατυπώσετε ή υποβάλετε την αξιολόγησή σας χωρίς σχόλιο.",
     "rateActivityThanks": "Ευχαριστούμε για τα σχόλιά σας!",
     "activityRatingMeterLabel": "{percent}% θετικά ({count, plural, =1{1 αξιολόγηση} other{{count} αξιολογήσεις}})",
-    "newActivityBadge": "ΝΕΟ"
+    "newActivityBadge": "ΝΕΟ",
+    "exitVocabPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης λεξιλογίου δεν θα αποθηκευτεί.",
+    "exitGrammarPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης γραμματικής δεν θα αποθηκευτεί.",
+    "autoReadAloudMessagesToolName": "Αυτόματη ανάγνωση όλων των εισερχόμενων μηνυμάτων",
+    "autoReadAloudMessagesDescription": "Όταν λαμβάνεται ένα μήνυμα, η φωνή της συσκευής θα χρησιμοποιείται για την ανάγνωση του μηνύματος δυνατά για εξάσκηση στην ακρόαση."
 }

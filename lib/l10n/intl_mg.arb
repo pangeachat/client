@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-29 12:08:20.304798",
+    "@@last_modified": "2026-07-31 10:55:39.960376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1698,7 +1698,6 @@
     "voice": "Feo",
     "youLeftTheChat": "🚪 Nandao ny resaka ianao",
     "webDownloadPermissionMessage": "Raha manakana ny fampidinana ny navigateur anao, azafady avelao ny fampidinana ho an'ity tranonkala ity.",
-    "exitPractice": "Tsy ho voatahiry ny fandrosoan'ny fampiharana anao.",
     "practiceGrammar": "Mampihatra fitsipi-pitenenana",
     "notEnoughToPractice": "Alefaso hafatra bebe kokoa mba hamahana ny fampiharana",
     "constructUseCorGCDesc": "Fampiharana sokajy fitsipi-pitenenana marina",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Hafatra Mivantana",
     "notificationRuleDMDescription": "Mampandre ny mpampiasa momba ny hafatra ao amin'ny efitrano hafatra mivantana.",
     "enableEmailNotifications": "Alefaso ny fampandrenesana mailaka",
-    "selectAudioMessagesOnPlayToolName": "Manasongadina ho azy ny hafatra audio",
-    "selectAudioMessagesOnPlayDescription": "Manasongadina ho azy ny hafatra audio rehefa alefa",
     "learningAnalytics": "Fandalinana fianarana",
     "alreadySpeak": "Efa miteny aho...",
     "welcomeBackLogin": "Tongasoa indray! Niditra tamin'ny {platform} ianao teo aloha.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Tsy afaka nampidirina ny fanehoan-kevitrao. Andramo ovaina ny teny, na alefaso ny naoty tsy misy fanehoan-kevitra.",
     "rateActivityThanks": "Misaotra anao tamin'ny fanehoan-kevitrao!",
     "activityRatingMeterLabel": "{percent}% tsara ({count, plural, =1{naoty 1} other{naoty {count}}})",
-    "newActivityBadge": "VAOVAO"
+    "newActivityBadge": "VAOVAO",
+    "exitVocabPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana voambolana ity.",
+    "exitGrammarPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana fitsipi-pitenenana ity.",
+    "autoReadAloudMessagesToolName": "Vakio ho azy mafy ny hafatra rehetra voaray",
+    "autoReadAloudMessagesDescription": "Rehefa misy hafatra voaray, dia hampiasaina ny feon'ny fitaovana hamakiana mafy ny hafatra ho an'ny fampiharana fihainoana."
 }

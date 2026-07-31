@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-29 12:08:22.691196",
+    "@@last_modified": "2026-07-31 10:55:43.358551",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1698,7 +1698,6 @@
     "voice": "Izwi",
     "youLeftTheChat": "🚪 Wabuda muchat",
     "webDownloadPermissionMessage": "Kana browser yako ikavharira kudhawunirodha, ndapota bvumira kudhawunirodha kune saiti ino.",
-    "exitPractice": "Kufambira mberi kwako kwechikamu chekudzidzira hakuzochengetedzwe.",
     "practiceGrammar": "Dzidzira girama",
     "notEnoughToPractice": "Tumira mamwe mameseji kuti uvhure kudzidzira",
     "constructUseCorGCDesc": "Kudzidzira girama rechikamu chakarurama",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Meseji Yakananga",
     "notificationRuleDMDescription": "Inozivisa mushandisi nezve mameseji mumakamuri emeseji yakananga.",
     "enableEmailNotifications": "Batidza zviziviso zveemail",
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight mameseji earuzha",
-    "selectAudioMessagesOnPlayDescription": "Otomatically highlight mameseji earuzha kana achiridzwa",
     "learningAnalytics": "Ongororo yekudzidza",
     "alreadySpeak": "Ndototaura...",
     "welcomeBackLogin": "Tikugashirei! Wakambopinda ne {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Chirevo chako hachina kukwanisa kutumirwa. Edza kuchinyora zvakare, kana tumira chiyero chako pasina chirevo.",
     "rateActivityThanks": "Ndatenda nemhinduro yako!",
     "activityRatingMeterLabel": "{percent}% yakanaka ({count, plural, =1{1 chiyero} other{{count} zviero}})",
-    "newActivityBadge": "CHITSVA"
+    "newActivityBadge": "CHITSVA",
+    "exitVocabPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira mazwi hakuzochengetedzwe.",
+    "exitGrammarPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira girama hakuzochengetedzwe.",
+    "autoReadAloudMessagesToolName": "Verenga mameseji ese anogamuchirwa wega",
+    "autoReadAloudMessagesDescription": "Kana meseji yagamuchirwa, izwi remudziyo richashandiswa kuverenga meseji zvinonzwika kuti udzidzire kuteerera."
 }

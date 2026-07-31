@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-29 12:08:17.954090",
+    "@@last_modified": "2026-07-31 10:55:35.540926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -1698,7 +1698,6 @@
     "voice": "Leo",
     "youLeftTheChat": "🚪 Ua haʻalele ʻoe i ke kamaʻilio",
     "webDownloadPermissionMessage": "Inā pale kāu polokalamu kele pūnaewele i nā hoʻoiho, e ʻoluʻolu e ʻae i nā hoʻoiho no kēia pūnaewele.",
-    "exitPractice": "ʻAʻole e mālama ʻia kou holomua ma ke kau hoʻomaʻamaʻa.",
     "practiceGrammar": "Hoʻomaʻamaʻa i ka pilinaʻōlelo",
     "notEnoughToPractice": "E hoʻouna i nā leka hou aʻe no ka wehe ʻana i ka hoʻomaʻamaʻa",
     "constructUseCorGCDesc": "Hoʻomaʻamaʻa māhele pilinaʻōlelo pololei",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Leka Kikoʻī",
     "notificationRuleDMDescription": "Hoʻomaopopo i ka mea hoʻohana no nā leka ma nā lumi leka kikoʻī.",
     "enableEmailNotifications": "Hoʻā i nā leka hoʻomaopopo leka uila",
-    "selectAudioMessagesOnPlayToolName": "Hoʻokāʻoi ʻakomi i nā leka leo",
-    "selectAudioMessagesOnPlayDescription": "Hoʻokāʻoi ʻakomi i nā leka leo ke hoʻokani ʻia",
     "learningAnalytics": "Kaʻanalike aʻo",
     "alreadySpeak": "ʻŌlelo mua wau i ka ʻōlelo...",
     "welcomeBackLogin": "Aloha hou! Ua komo mua ʻoe me {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "ʻAʻole hiki ke kau ʻia kāu manaʻo. E hoʻāʻo e hoʻoponopono hou, a i ʻole e waiho i kāu helu me ka manaʻo ʻole.",
     "rateActivityThanks": "Mahalo no kou manaʻo!",
     "activityRatingMeterLabel": "{percent}% maikaʻi ({count, plural, =1{1 helu} other{{count} helu}})",
-    "newActivityBadge": "HOU"
+    "newActivityBadge": "HOU",
+    "exitVocabPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa huaʻōlelo o kēia manawa.",
+    "exitGrammarPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa grammar o kēia manawa.",
+    "autoReadAloudMessagesToolName": "Heluhelu a leo nui i nā leka i loaʻa a pau",
+    "autoReadAloudMessagesDescription": "Ke loaʻa mai kahi leka, e hoʻohana ʻia ka leo o ka hāmeʻa e heluhelu leo nui i ka leka no ka hoʻomaʻamaʻa hoʻolohe."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-29 12:08:20.044738",
+    "@@last_modified": "2026-07-31 10:55:39.004274",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1698,7 +1698,6 @@
     "voice": "ສຽງ",
     "youLeftTheChat": "🚪 ທ່ານອອກຈາກການສົນທະນາແລ້ວ",
     "webDownloadPermissionMessage": "ຖ້າບຣາວເຊີຂອງທ່ານບລັອກການດາວໂຫຼດ, ກະລຸນາເປີດໃຊ້ການດາວໂຫຼດສຳລັບເວັບໄຊນີ້.",
-    "exitPractice": "ຄວາມຄືບໜ້າຂອງການຝຶກຊ້ອມຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
     "practiceGrammar": "ຝຶກໄວຍາກອນ",
     "notEnoughToPractice": "ສົ່ງຂໍ້ຄວາມເພີ່ມເຕີມເພື່ອປົດລັອກການຝຶກຊ້ອມ",
     "constructUseCorGCDesc": "ການຝຶກຊ້ອມໝວດໄວຍາກອນທີ່ຖືກຕ້ອງ",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "ຂໍ້ຄວາມໂດຍກົງ",
     "notificationRuleDMDescription": "ແຈ້ງເຕືອນຜູ້ໃຊ້ກ່ຽວກັບຂໍ້ຄວາມໃນຫ້ອງຂໍ້ຄວາມໂດຍກົງ.",
     "enableEmailNotifications": "ເປີດໃຊ້ການແຈ້ງເຕືອນທາງອີເມວ",
-    "selectAudioMessagesOnPlayToolName": "ເນັ້ນຂໍ້ຄວາມສຽງອັດຕະໂນມັດ",
-    "selectAudioMessagesOnPlayDescription": "ເນັ້ນຂໍ້ຄວາມສຽງອັດຕະໂນມັດເມື່ອຫຼິ້ນ",
     "learningAnalytics": "ການວິເຄາະການຮຽນຮູ້",
     "alreadySpeak": "ຂ້ອຍເວົ້າໄດ້ແລ້ວ...",
     "welcomeBackLogin": "ຍິນດີຕ້ອນຮັບກັບມາ! ທ່ານໄດ້ເຂົ້າສູ່ລະບົບກ່ອນໜ້ານີ້ດ້ວຍ {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "ບໍ່ສາມາດໂພສຄຳເຫັນຂອງທ່ານໄດ້. ລອງປ່ຽນຄຳເວົ້າໃໝ່, ຫຼືສົ່ງການໃຫ້ຄະແນນຂອງທ່ານໂດຍບໍ່ມີຄຳເຫັນ.",
     "rateActivityThanks": "ຂອບໃຈສຳລັບຄຳຕິຊົມຂອງທ່ານ!",
     "activityRatingMeterLabel": "{percent}% ຖືກໃຈ ({count, plural, =1{1 ການໃຫ້ຄະແນນ} other{{count} ການໃຫ້ຄະແນນ}})",
-    "newActivityBadge": "ໃໝ່"
+    "newActivityBadge": "ໃໝ່",
+    "exitVocabPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກຄຳສັບໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
+    "exitGrammarPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກໄວຍາກອນໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
+    "autoReadAloudMessagesToolName": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບທັງໝົດໂດຍອັດຕະໂນມັດ",
+    "autoReadAloudMessagesDescription": "ເມື່ອໄດ້ຮັບຂໍ້ຄວາມ, ສຽງຂອງອຸປະກອນຈະຖືກນຳໃຊ້ເພື່ອອ່ານຂໍ້ຄວາມອອກສຽງດັງ ເພື່ອຝຶກການຟັງ."
 }

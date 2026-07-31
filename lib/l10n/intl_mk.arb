@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-29 12:08:20.552497",
+    "@@last_modified": "2026-07-31 10:55:39.809505",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1698,7 +1698,6 @@
     "voice": "Глас",
     "youLeftTheChat": "🚪 Го напуштивте разговорот",
     "webDownloadPermissionMessage": "Ако вашиот прелистувач блокира преземања, ве молиме овозможете преземања за оваа страница.",
-    "exitPractice": "Напредокот на вашата сесија за вежбање нема да биде зачуван.",
     "practiceGrammar": "Вежбајте граматика",
     "notEnoughToPractice": "Испратете повеќе пораки за да отклучите вежбање",
     "constructUseCorGCDesc": "Вежбање точна граматичка категорија",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Директна порака",
     "notificationRuleDMDescription": "Го известува корисникот за пораки во собите за директни пораки.",
     "enableEmailNotifications": "Овозможи известувања по е-пошта",
-    "selectAudioMessagesOnPlayToolName": "Автоматско истакнување аудио пораки",
-    "selectAudioMessagesOnPlayDescription": "Автоматски истакнувајте аудио пораки кога се репродуцираат",
     "learningAnalytics": "Аналитика за учење",
     "alreadySpeak": "Веќе зборувам...",
     "welcomeBackLogin": "Добредојдовте повторно! Претходно се најавивте со {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Вашиот коментар не можеше да биде објавен. Обидете се да го преформулирате, или поднесете ја вашата оцена без коментар.",
     "rateActivityThanks": "Ви благодариме за повратните информации!",
     "activityRatingMeterLabel": "{percent}% позитивни ({count, plural, =1{1 оцена} other{{count} оцени}})",
-    "newActivityBadge": "НОВО"
+    "newActivityBadge": "НОВО",
+    "exitVocabPracticeSession": "Напредокот од тековната сесија за вежбање вокабулар нема да биде зачуван.",
+    "exitGrammarPracticeSession": "Напредокот од тековната сесија за вежбање граматика нема да биде зачуван.",
+    "autoReadAloudMessagesToolName": "Автоматско читање на сите примени пораки",
+    "autoReadAloudMessagesDescription": "Кога ќе се прими порака, гласот на уредот ќе се користи за читање на пораката на глас за вежбање слушање."
 }

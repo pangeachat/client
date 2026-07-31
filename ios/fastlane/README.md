@@ -13,26 +13,23 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 # Available Actions
 
-### release
-
-```sh
-[bundle exec] fastlane release
-```
-
-
-
-----
-
-
 ## iOS
 
-### ios beta
+### ios bootstrap_certs
 
 ```sh
-[bundle exec] fastlane ios beta
+[bundle exec] fastlane ios bootstrap_certs
 ```
 
-Push a new beta build to TestFlight
+One-time: mint the App Store distribution cert + profile into the match repo
+
+### ios release_candidate
+
+```sh
+[bundle exec] fastlane ios release_candidate
+```
+
+CI release: sign with match, build IPA, upload to TestFlight
 
 ----
 

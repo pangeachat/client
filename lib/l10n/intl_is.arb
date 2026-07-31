@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-29 12:08:18.936077",
+    "@@last_modified": "2026-07-31 10:55:37.613949",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1698,7 +1698,6 @@
     "voice": "Rödd",
     "youLeftTheChat": "🚪 Þú fórst úr spjallinu",
     "webDownloadPermissionMessage": "Ef vafrinn þinn lokar fyrir niðurhal, vinsamlegast virkjaðu niðurhal fyrir þessa síðu.",
-    "exitPractice": "Framfarir þínar í æfingunni verða ekki vistaðar.",
     "practiceGrammar": "Æfa málfræði",
     "notEnoughToPractice": "Sendu fleiri skilaboð til að opna æfingu",
     "constructUseCorGCDesc": "Rétt málfræðiæfing",
@@ -1774,8 +1773,6 @@
     "notificationRuleDM": "Bein skilaboð",
     "notificationRuleDMDescription": "Tilkynnir notandanum um skilaboð í beinum skilaboðaherbergjum.",
     "enableEmailNotifications": "Virkja tölvupósttilkynningar",
-    "selectAudioMessagesOnPlayToolName": "Sjálfvirk auðkenning hljóðskilaboða",
-    "selectAudioMessagesOnPlayDescription": "Auðkenna hljóðskilaboð sjálfkrafa þegar þau eru spiluð",
     "learningAnalytics": "Námsgreiningar",
     "alreadySpeak": "Ég tala nú þegar...",
     "welcomeBackLogin": "Velkomin(n) aftur! Þú skráðir þig inn síðast með {platform}.",
@@ -2054,5 +2051,9 @@
     "rateActivityCommentRejected": "Ekki tókst að birta athugasemdina þína. Reyndu að orða hana upp á nýtt, eða sendu inn einkunnina þína án athugasemdar.",
     "rateActivityThanks": "Takk fyrir álit þitt!",
     "activityRatingMeterLabel": "{percent}% jákvætt ({count, plural, =1{1 einkunn} other{{count} einkunnir}})",
-    "newActivityBadge": "NÝTT"
+    "newActivityBadge": "NÝTT",
+    "exitVocabPracticeSession": "Framvinda núverandi orðaforðaæfingar verður ekki vistuð.",
+    "exitGrammarPracticeSession": "Framvinda núverandi málfræðiæfingar verður ekki vistuð.",
+    "autoReadAloudMessagesToolName": "Lesa sjálfkrafa upp alla móttekna skilaboð",
+    "autoReadAloudMessagesDescription": "Þegar skilaboð berast verður rödd tækisins notuð til að lesa skilaboðin upphátt til að æfa hlustun."
 }

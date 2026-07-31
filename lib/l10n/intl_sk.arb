@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-29 12:08:22.710179",
+    "@@last_modified": "2026-07-31 10:55:42.609593",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -8697,15 +8697,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Pokrok vo vašej cvičebnej relácii nebude uložený.",
     "practiceGrammar": "Cvičiť gramatiku",
     "notEnoughToPractice": "Odošlite viac správ na odomknutie cvičenia",
     "constructUseCorGCDesc": "Cvičenie správnej gramatickej kategórie",
     "constructUseIncGCDesc": "Cvičenie nesprávnej gramatickej kategórie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9295,16 +9290,6 @@
     },
     "enableEmailNotifications": "Povoliť e-mailové upozornenia",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automaticky zvýrazniť audio správy",
-    "selectAudioMessagesOnPlayDescription": "Automaticky zvýrazniť audio správy pri prehrávaní",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10655,5 +10640,9 @@
     "rateActivityCommentRejected": "Váš komentár sa nepodarilo uverejniť. Skúste ho preformulovať alebo odošlite hodnotenie bez komentára.",
     "rateActivityThanks": "Ďakujeme za vašu spätnú väzbu!",
     "activityRatingMeterLabel": "{percent}% pozitívnych ({count, plural, =1{1 hodnotenie} other{{count} hodnotení}})",
-    "newActivityBadge": "NOVÉ"
+    "newActivityBadge": "NOVÉ",
+    "exitVocabPracticeSession": "Váš aktuálny pokrok v precvičovaní slovnej zásoby sa neuloží.",
+    "exitGrammarPracticeSession": "Váš aktuálny pokrok v precvičovaní gramatiky sa neuloží.",
+    "autoReadAloudMessagesToolName": "Automaticky čítať nahlas všetky prijaté správy",
+    "autoReadAloudMessagesDescription": "Keď sa prijme správa, hlas zariadenia sa použije na prečítanie správy nahlas pre cvičenie počúvania."
 }
