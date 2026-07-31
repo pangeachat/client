@@ -210,8 +210,9 @@ class GrammarErrorPracticeGenerator {
     final spanLength = span.characters.length;
 
     // Reject boundaries that landed inside a grapheme cluster.
-    if (sentText.characters.take(beforeLength).toString() != before)
+    if (sentText.characters.take(beforeLength).toString() != before) {
       return null;
+    }
     if (sentText.characters.skip(beforeLength).take(spanLength).toString() !=
         span) {
       return null;
@@ -246,7 +247,6 @@ class GrammarErrorPracticeGenerator {
   /// diff covers more than this correction). Note the stored match `length` is
   /// no use here — `_applyReplacement` overwrites it with the *corrected*
   /// length on accept.
-  @visibleForTesting
   static String? originalErrorSpan({
     required ChoreoRecordModel choreo,
     required int stepIndex,
