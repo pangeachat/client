@@ -35,6 +35,10 @@ abstract class AppConfig {
   static const double borderRadius = 18.0;
   static const double columnWidth = 360.0;
 
+  /// How many lines a `TextField`'s error message may wrap to before it is
+  /// truncated. Sentence-length errors need several on a narrow screen.
+  static const int inputErrorMaxLines = 4;
+
   static const String website = "https://pangea.chat/";
   static const String appOpenUrlScheme = 'matrix.pangea.chat';
 
