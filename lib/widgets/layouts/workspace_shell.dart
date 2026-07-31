@@ -503,11 +503,21 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
             onQueryChanged: mapController.setQuery,
-            // The live result set for the current query — the map's visiblePins,
-            // the same list the web overlay renders. Read fresh on each rebuild
-            // so the list tracks the query as it is typed.
-            resultsBuilder: () => mapController.visiblePins,
-            onResultTap: mapController.flyTo,
+            // The verdict-driven empty-view card (the web overlay's twin):
+            // when the view shows no matches, the controller diagnoses WHY
+            // (off-screen matches / pill-excluded matches / a dead query) and
+            // the card offers the matching remedy. Builders read the map live
+            // on each bar rebuild; the viewRevision tick triggers those
+            // rebuilds for changes that don't originate in the bar (a pill
+            // tap, a pin load after zooming out).
+            emptyVerdict: () => mapController.emptyVerdict,
+            canZoomOut: () => mapController.canZoomOut,
+            onWidenSearch: mapController.widenFilters,
+            // Resets to the whole-world view (all the way out, re-centered) —
+            // the map's World control — so one tap reveals every off-screen
+            // match, not just the next zoom level.
+            onZoomOut: mapController.resetToWorld,
+            viewRevision: mapController.viewRevision,
             // The collapsible filter surface riding above the bar — the narrow
             // twin of the wide overlay's [WorldMapFilterBar], wired to the same
             // controller callbacks. Reads the filter live (the shell is not
@@ -519,6 +529,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
               onSetStatus: mapController.setStatus,
               onReset: mapController.resetFilters,
               collapseSignal: mapController.mapPanTick,
+              filterRevision: mapController.viewRevision,
             ),
           )
         : null;

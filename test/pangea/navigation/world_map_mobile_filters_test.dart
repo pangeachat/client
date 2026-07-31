@@ -22,12 +22,20 @@ void main() {
   // Stand-in for WorldMapController.mapPanTick: incrementing it is a "pan".
   late ValueNotifier<int> pan;
 
+  // Stand-in for WorldMapController.viewRevision: incrementing it signals a
+  // filter change from OUTSIDE this bar (widen / reset / settings).
+  late ValueNotifier<int> revision;
+
   setUp(() {
     filter = const WorldMapFilter();
     pan = ValueNotifier(0);
+    revision = ValueNotifier(0);
   });
 
-  tearDown(() => pan.dispose());
+  tearDown(() {
+    pan.dispose();
+    revision.dispose();
+  });
 
   Future<void> pump(WidgetTester tester) async {
     await tester.pumpWidget(
@@ -44,6 +52,7 @@ void main() {
               onSetStatus: (_) {},
               onReset: () {},
               collapseSignal: pan,
+              filterRevision: revision,
             ),
           ),
         ),
@@ -77,6 +86,26 @@ void main() {
     await pump(tester); // default filter: empty level, null party, null status
     expect(find.text('0'), findsNothing);
   });
+
+  testWidgets(
+    'an external filter change (widen) refreshes the badge on a revision tick',
+    (tester) async {
+      filter = const WorldMapFilter(
+        cefrFilter: {LanguageLevelTypeEnum.b1},
+        status: ActivityPinState.available,
+      );
+      await pump(tester);
+      expect(find.text('2'), findsOneWidget);
+
+      // Widen clears every pill on the controller (which this bar does not
+      // build), then ticks viewRevision — the bar must re-read and drop to 0.
+      filter = const WorldMapFilter();
+      revision.value++;
+      await tester.pumpAndSettle();
+      expect(find.text('2'), findsNothing);
+      expect(find.text('0'), findsNothing); // no badge at all when all "All"
+    },
+  );
 
   testWidgets('tapping the button expands to the full pill bar', (tester) async {
     await pump(tester);

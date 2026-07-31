@@ -1,9 +1,8 @@
-import 'dart:math' as math;
-
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
+import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// The single-column floating search bar riding above the nav widget
@@ -16,16 +15,19 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// over a selected activity, mirroring the web overlay ([WorldMapSearchOverlay]),
 /// which only renders in world scope.
 ///
-/// The results list rides ABOVE the bar — the vertical mirror of the web
-/// overlay, whose bar is at the top and whose results drop below it (on narrow
-/// layouts the bar sits at the bottom of the screen, so results grow upward).
-/// This gives narrow layouts the same returned list the web overlay has, so a
-/// match that has been panned off-screen is still findable and tappable (a tap
-/// flies the camera to it — the same action as tapping its pin).
+/// Typing filters the map's pins live; there is no results dropdown on narrow —
+/// the pins ARE the results. What rides above the bar instead (in addition to
+/// the filter chips via [filtersChild]) is the verdict-driven empty-view card
+/// ([WorldMapEmptyViewCard], the same one the web overlay shows): when the
+/// view shows no matches it diagnoses WHY (off-screen matches, pill-excluded
+/// matches, a dead query) and offers the one remedy that fixes it.
 ///
-/// Presentational: the shell decides the [hintText] (the scope) and where
-/// [onQueryChanged] / [resultsBuilder] / [onResultTap] route. Map filter chips
-/// ride ABOVE the bar via [filtersChild].
+/// Presentational: the shell decides the [hintText] (the scope) and where the
+/// callbacks route. State is read through BUILDERS ([emptyVerdict],
+/// [canZoomOut]) re-evaluated on every local rebuild, because this bar is
+/// shell-built and the map's own setState never reaches it; [viewRevision]
+/// (the map's filter/pin-load tick) triggers those rebuilds for changes that
+/// don't originate here (a filter pill tap, a pin load after zooming out).
 class MobileSearchBar extends StatefulWidget {
   /// The scope's hint ("Search activities"). Also the bar's semantic label, so
   /// assistive tech hears the scope.
@@ -37,16 +39,24 @@ class MobileSearchBar extends StatefulWidget {
 
   final ValueChanged<String> onQueryChanged;
 
-  /// The live result set for the current query — the map's `visiblePins`, the
-  /// same list the web overlay renders. Read fresh on every (keystroke-driven)
-  /// rebuild so the list tracks the query as it is typed. Null when this scope
-  /// has no result list; the list only shows while the query is non-empty
-  /// (matching the web overlay's dropdown).
-  final List<QuestActivityCard> Function()? resultsBuilder;
+  /// The controller's diagnosis of why the view shows no matches
+  /// ([WorldMapController.emptyVerdict]) — a builder re-read on every local
+  /// rebuild; [MapEmptyVerdict.none] (or null: a scope without the card)
+  /// renders nothing.
+  final MapEmptyVerdict Function()? emptyVerdict;
 
-  /// Fly the camera to a tapped result and open it (the same action as tapping
-  /// its pin). Needed alongside [resultsBuilder] for the list to be tappable.
-  final ValueChanged<QuestActivityCard>? onResultTap;
+  /// The camera is above its zoom-out floor — the card's Zoom out lever is
+  /// live (greyed below it).
+  final bool Function()? canZoomOut;
+
+  /// The card's levers: clear every pill to "All …" / step the camera out one
+  /// zoom level.
+  final VoidCallback? onWidenSearch;
+  final VoidCallback? onZoomOut;
+
+  /// The map's "filtered view may have changed" tick
+  /// ([WorldMapController.viewRevision]); each tick re-reads the builders.
+  final Listenable? viewRevision;
 
   /// Active map filter chips, rendered above the bar (map scope only).
   final Widget? filtersChild;
@@ -55,8 +65,11 @@ class MobileSearchBar extends StatefulWidget {
     required this.hintText,
     required this.query,
     required this.onQueryChanged,
-    this.resultsBuilder,
-    this.onResultTap,
+    this.emptyVerdict,
+    this.canZoomOut,
+    this.onWidenSearch,
+    this.onZoomOut,
+    this.viewRevision,
     this.filtersChild,
     super.key,
   });
@@ -66,16 +79,23 @@ class MobileSearchBar extends StatefulWidget {
 }
 
 class _MobileSearchBarState extends State<MobileSearchBar> {
-  /// Cap on how many results the list draws, matching the web overlay.
-  static const _maxResults = 20;
-
   late final TextEditingController _controller = TextEditingController(
     text: widget.query,
   );
 
   @override
+  void initState() {
+    super.initState();
+    widget.viewRevision?.addListener(_onViewRevision);
+  }
+
+  @override
   void didUpdateWidget(covariant MobileSearchBar oldWidget) {
     super.didUpdateWidget(oldWidget);
+    if (oldWidget.viewRevision != widget.viewRevision) {
+      oldWidget.viewRevision?.removeListener(_onViewRevision);
+      widget.viewRevision?.addListener(_onViewRevision);
+    }
     // Sync only external query changes (reset / scope switch) into the field;
     // normal typing flows out through onQueryChanged and must not re-seat the
     // cursor. Same contract as WorldMapSearchOverlay.
@@ -86,26 +106,27 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
 
   @override
   void dispose() {
+    widget.viewRevision?.removeListener(_onViewRevision);
     _controller.dispose();
     super.dispose();
+  }
+
+  void _onViewRevision() {
+    if (mounted) setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
 
-    // Drive the clear (X) button AND the results visibility off the field's own
-    // controller, not the externally-owned query. This bar is built by the
-    // shell, whose onQueryChanged reaches only the map's State (through a
-    // GlobalKey), so a clear — or any programmatic query change — never rebuilds
-    // this bar with a fresh widget.query. Reading the controller keeps both in
-    // sync. See #7685.
+    // Drive the clear (X) button off the field's own controller, not the
+    // externally-owned query. This bar is built by the shell, whose
+    // onQueryChanged reaches only the map's State (through a GlobalKey), so a
+    // clear — or any programmatic query change — never rebuilds this bar with
+    // a fresh widget.query. Reading the controller keeps both in sync. See #7685.
     final searching = _controller.text.trim().isNotEmpty;
 
-    final showResults = searching && widget.resultsBuilder != null;
-    final results = showResults
-        ? widget.resultsBuilder!()
-        : const <QuestActivityCard>[];
+    final verdict = widget.emptyVerdict?.call() ?? MapEmptyVerdict.none;
 
     return Semantics(
       label: widget.hintText,
@@ -114,19 +135,27 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          if (widget.filtersChild != null) ...[
-            widget.filtersChild!,
+          // Narrow layout stacks bottom-up (field at the bottom, by the nav
+          // rail): the message sits ABOVE the filters here — the reverse of the
+          // web overlay, where the field leads and the filters/message pin
+          // under it — so the diagnosis reads first, then the filters to act on.
+          if (verdict != MapEmptyVerdict.none) ...[
+            // Right-aligned (content-width), so it sits above the filter button
+            // on the same right edge as the rest of the narrow chrome rather
+            // than spanning from the far left.
+            Align(
+              alignment: Alignment.centerRight,
+              child: WorldMapEmptyViewCard(
+                verdict: verdict,
+                canZoomOut: widget.canZoomOut?.call() ?? false,
+                onWidenSearch: () => widget.onWidenSearch?.call(),
+                onZoomOut: () => widget.onZoomOut?.call(),
+              ),
+            ),
             const SizedBox(height: 8),
           ],
-          // The results list rides directly above the bar — the vertical mirror
-          // of the web overlay's below-the-bar dropdown — shown only while a
-          // query is present.
-          if (showResults) ...[
-            _ResultsList(
-              results: results,
-              maxResults: _maxResults,
-              onResultTap: widget.onResultTap,
-            ),
+          if (widget.filtersChild != null) ...[
+            widget.filtersChild!,
             const SizedBox(height: 8),
           ],
           // No Material wrapper here: PangeaSearchBar's own root is a Material
@@ -140,9 +169,9 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
             controller: _controller,
             onChanged: (value) {
               widget.onQueryChanged(value);
-              // Rebuild so [searching] and the results list track the field as
-              // the user types and backspaces — the shell doesn't rebuild this
-              // bar per keystroke.
+              // Rebuild so [searching] and the empty-view card track the field
+              // as the user types and backspaces — the shell doesn't rebuild
+              // this bar per keystroke.
               setState(() {});
             },
             suffixIcon: searching
@@ -161,85 +190,6 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
                 : null,
           ),
         ],
-      ),
-    );
-  }
-}
-
-/// The returned-results dropdown for [MobileSearchBar], rendered above the bar.
-/// The narrow-layout twin of [WorldMapSearchOverlay]'s results list: same star
-/// row (title + `l2 · cefr`), same [_maxResults] cap, same empty-state copy.
-class _ResultsList extends StatelessWidget {
-  final List<QuestActivityCard> results;
-  final int maxResults;
-  final ValueChanged<QuestActivityCard>? onResultTap;
-
-  const _ResultsList({
-    required this.results,
-    required this.maxResults,
-    required this.onResultTap,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final l10n = L10n.of(context);
-
-    // Cap the height so the floating list never climbs into the analytics bar or
-    // off the top of the screen when the keyboard is open; it scrolls past the
-    // cap. Measured against the space left above the keyboard, not the raw
-    // viewport, so an open keyboard shrinks it too.
-    final media = MediaQuery.of(context);
-    final available = media.size.height - media.viewInsets.bottom;
-    final maxHeight = math.min(320.0, available * 0.4);
-
-    return Material(
-      elevation: 4,
-      borderRadius: BorderRadius.circular(12),
-      color: theme.colorScheme.surface,
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: maxHeight),
-        child: results.isEmpty
-            ? Padding(
-                padding: const EdgeInsets.all(16),
-                child: Text(
-                  l10n.mapSearchNoResults,
-                  style: theme.textTheme.bodyMedium,
-                ),
-              )
-            : Semantics(
-                label: l10n.filteredActivitiesLabel,
-                container: true,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  padding: EdgeInsets.zero,
-                  itemCount: results.length > maxResults
-                      ? maxResults
-                      : results.length,
-                  itemBuilder: (context, i) {
-                    final card = results[i];
-                    return ListTile(
-                      dense: true,
-                      leading: const Icon(Icons.star, size: 18),
-                      title: Text(
-                        card.title,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      subtitle: Text(
-                        [card.l2, card.cefr]
-                            .where((s) => s != null && s.isNotEmpty)
-                            .join(' · '),
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      onTap: onResultTap == null
-                          ? null
-                          : () => onResultTap!(card),
-                    );
-                  },
-                ),
-              ),
       ),
     );
   }

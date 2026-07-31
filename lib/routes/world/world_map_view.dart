@@ -1049,17 +1049,21 @@ class _WorldMapViewState extends State<WorldMapView> {
               child: WorldMapSearchOverlay(
                 filter: widget.controller.filter,
                 updateQuery: widget.controller.setQuery,
-                // Widen = broaden the level band to All levels (language is
-                // fixed by settings; zoom-out is the other lever).
-                onWidenSearch: () => widget.controller.setCefrLevel(null),
+                // Widen = clear every pill to All (language is fixed by
+                // settings; zoom-out is the empty card's other lever).
+                onWidenSearch: widget.controller.widenFilters,
                 setCefrLevel: widget.controller.setCefrLevel,
                 setPartySize: widget.controller.setPartySize,
                 setStatus: widget.controller.setStatus,
                 results: render.visible,
                 onResultTap: widget.controller.flyTo,
                 onReset: widget.controller.resetFilters,
-                emptyInView:
-                    !widget.controller.loadingPins && render.visible.isEmpty,
+                emptyVerdict: widget.controller.emptyVerdict,
+                canZoomOut: widget.controller.canZoomOut,
+                // "Zoom out" resets to the whole-world view (all the way out and
+                // re-centered), the same as the map's World control — one tap
+                // guarantees every off-screen match comes into view.
+                onZoomOut: widget.controller.resetToWorld,
               ),
             ),
           controls,

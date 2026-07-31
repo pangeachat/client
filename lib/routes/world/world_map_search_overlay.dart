@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -36,7 +37,16 @@ class WorldMapSearchOverlay extends StatefulWidget {
   final List<QuestActivityCard> results;
   final Function(QuestActivityCard) onResultTap;
 
-  final bool emptyInView;
+  /// The controller's diagnosis of why the view shows no matches
+  /// ([WorldMapController.emptyVerdict]) — drives the [WorldMapEmptyViewCard]
+  /// whenever the results dropdown has no rows to offer instead.
+  final MapEmptyVerdict emptyVerdict;
+
+  /// The camera is above its zoom-out floor, so the card's Zoom out lever is
+  /// live (greyed below it); [onZoomOut] resets to the whole-world view (all
+  /// the way out, re-centered) — the map's World control.
+  final bool canZoomOut;
+  final VoidCallback onZoomOut;
 
   const WorldMapSearchOverlay({
     super.key,
@@ -49,7 +59,9 @@ class WorldMapSearchOverlay extends StatefulWidget {
     required this.results,
     required this.onResultTap,
     required this.onReset,
-    required this.emptyInView,
+    required this.emptyVerdict,
+    required this.canZoomOut,
+    required this.onZoomOut,
   });
 
   @override
@@ -119,7 +131,11 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                   onReset: widget.onReset,
                 ),
               ),
-              if (searching) ...[
+              // The results dropdown renders only when it has rows; an empty
+              // view — searching with no matches OR filters emptying the
+              // viewport — shows the ONE unified card instead (formerly two
+              // separate popups with a text-only no-matches state).
+              if (searching && widget.results.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 Material(
                   elevation: 4,
@@ -127,77 +143,46 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                   color: theme.colorScheme.surface,
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxHeight: 320),
-                    child: widget.results.isEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: Text(
-                              l10n.mapSearchNoResults,
-                              style: theme.textTheme.bodyMedium,
+                    child: Semantics(
+                      label: l10n.filteredActivitiesLabel,
+                      container: true,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        itemCount: widget.results.length > _maxResults
+                            ? _maxResults
+                            : widget.results.length,
+                        itemBuilder: (context, i) {
+                          final card = widget.results[i];
+                          return ListTile(
+                            dense: true,
+                            leading: const Icon(Icons.star, size: 18),
+                            title: Text(
+                              card.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          )
-                        : Semantics(
-                            label: l10n.filteredActivitiesLabel,
-                            container: true,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              padding: EdgeInsets.zero,
-                              itemCount: widget.results.length > _maxResults
-                                  ? _maxResults
-                                  : widget.results.length,
-                              itemBuilder: (context, i) {
-                                final card = widget.results[i];
-                                return ListTile(
-                                  dense: true,
-                                  leading: const Icon(Icons.star, size: 18),
-                                  title: Text(
-                                    card.title,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  subtitle: Text(
-                                    [card.l2, card.cefr]
-                                        .where((s) => s != null && s.isNotEmpty)
-                                        .join(' · '),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  onTap: () => widget.onResultTap(card),
-                                );
-                              },
+                            subtitle: Text(
+                              [card.l2, card.cefr]
+                                  .where((s) => s != null && s.isNotEmpty)
+                                  .join(' · '),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                  ),
-                ),
-              ] else if (widget.emptyInView) ...[
-                const SizedBox(height: 8),
-                Material(
-                  elevation: 4,
-                  borderRadius: BorderRadius.circular(12),
-                  color: theme.colorScheme.surface,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          l10n.mapEmptyInView,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                        const SizedBox(height: 8),
-                        // Language is fixed by settings, so the only in-app widen
-                        // lever is broadening the level band to All levels (zoom
-                        // out is the other, via the map controls). Offered only
-                        // when a level filter is actually narrowing the view.
-                        if (widget.filter.cefrFilter.isNotEmpty)
-                          FilledButton.tonalIcon(
-                            icon: const Icon(Icons.filter_alt_off, size: 16),
-                            label: Text(l10n.widenSearch),
-                            onPressed: widget.onWidenSearch,
-                          ),
-                      ],
+                            onTap: () => widget.onResultTap(card),
+                          );
+                        },
+                      ),
                     ),
                   ),
+                ),
+              ] else if (widget.emptyVerdict != MapEmptyVerdict.none) ...[
+                const SizedBox(height: 8),
+                WorldMapEmptyViewCard(
+                  verdict: widget.emptyVerdict,
+                  canZoomOut: widget.canZoomOut,
+                  onWidenSearch: widget.onWidenSearch,
+                  onZoomOut: widget.onZoomOut,
                 ),
               ],
             ],

@@ -6,10 +6,11 @@ import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// The world-map filter row: one dropdown-pill per category (Level, Party size,
-/// Status), each pre-seeded to its default and cleared via an "All …" option
-/// rather than toggled off — plus a leading reset control that appears whenever
-/// any pill differs from its personalized default (world-map.instructions.md,
-/// "Filters"). Presentational: it renders [filter] and reports intent through the
+/// Status), each defaulting to "All …" (no narrowing) and set via its dropdown
+/// rather than toggled — plus a leading reset control that appears whenever any
+/// pill differs from that default, i.e. whenever any is off "All"
+/// (world-map.instructions.md, "Filters"). Presentational: it renders [filter]
+/// and reports intent through the
 /// callbacks; the controller owns the state. Language is deliberately NOT a pill
 /// (it is fixed by the learner's settings).
 class WorldMapFilterBar extends StatelessWidget {
@@ -22,6 +23,9 @@ class WorldMapFilterBar extends StatelessWidget {
   final ValueChanged<ActivityPinState?> onSetStatus;
   final VoidCallback onReset;
 
+  /// Anchor the pills to the right of the scroll viewport
+  final bool reverse;
+
   const WorldMapFilterBar({
     super.key,
     required this.filter,
@@ -29,6 +33,7 @@ class WorldMapFilterBar extends StatelessWidget {
     required this.onSetPartySize,
     required this.onSetStatus,
     required this.onReset,
+    this.reverse = false,
   });
 
   /// The CEFR levels offered — Pre-A1 through C2. Picking one filters to exactly
@@ -58,11 +63,7 @@ class WorldMapFilterBar extends StatelessWidget {
   String _levelLabel(LanguageLevelTypeEnum lvl) =>
       lvl == LanguageLevelTypeEnum.preA1 ? 'Pre-A1' : lvl.string;
 
-  String _partyLabel(MapPartySize p) => switch (p) {
-    MapPartySize.two => '2',
-    MapPartySize.three => '3',
-    MapPartySize.fourPlus => '4+',
-  };
+  String _partyLabel(MapPartySize p) => '${p.roleCount}';
 
   String _statusLabel(BuildContext context, ActivityPinState s) {
     final l10n = L10n.of(context);
@@ -127,12 +128,11 @@ class WorldMapFilterBar extends StatelessWidget {
 
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
+      reverse: reverse,
       child: Row(
         children: [
           _FilterDropdownPill(
-            label: level == null
-                ? l10n.mapFilterAllLevels
-                : _levelLabel(level),
+            label: level == null ? l10n.mapFilterAllLevels : _levelLabel(level),
             active: filter.cefrFilter.isNotEmpty,
             entries: levelEntries,
           ),

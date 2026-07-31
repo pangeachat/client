@@ -128,7 +128,6 @@ class WorldMapController extends State<WorldMap>
 
   StreamSubscription<dynamic>? _syncSub;
   StreamSubscription? _languageSubscription;
-  StreamSubscription? _cefrLevelSubscription;
 
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
@@ -140,6 +139,13 @@ class WorldMapController extends State<WorldMap>
   /// the change — so it stays independent of the filter state itself. Column
   /// mode ignores it (its filter bar is always open).
   final ValueNotifier<int> mapPanTick = ValueNotifier(0);
+
+  /// Ticks whenever the filtered view could have changed — a filter/query
+  /// mutation or a completed pin load — so the shell-built narrow search bar
+  /// can re-read [visiblePins] for its empty-view card: this State's own
+  /// setState reaches the map and the wide overlay (both built here) but never
+  /// the shell's layer. Same bare-tick contract as [mapPanTick].
+  final ValueNotifier<int> viewRevision = ValueNotifier(0);
 
   /// Activities the learner explicitly dismissed from the large-card tier (the
   /// card's X, #7207). A dismissed pin stays fully eligible for mid/small — the
@@ -195,18 +201,9 @@ class WorldMapController extends State<WorldMap>
       }
     });
 
-    _cefrLevelSubscription?.cancel();
-    _cefrLevelSubscription = user.settingsUpdateStream.stream.listen((update) {
-      // settingsUpdateStream fires on any settings change; only re-seat the
-      // level default when the learner's CEFR actually moved — so unrelated
-      // updates don't clobber a manual level choice or an "All levels" selection.
-      final newLevel = update.userSettings.cefrLevel;
-      final currentDefault = _filterState.filter.defaultCefr;
-      final currentDefaultLevel = currentDefault.isEmpty
-          ? null
-          : currentDefault.first;
-      if (currentDefaultLevel != newLevel) _setDefaultCefrLevel(newLevel);
-    });
+    // No settings-driven level default: the Level pill starts at "All levels"
+    // and only the learner changes it, so a CEFR settings change never re-seats
+    // it (world-map.instructions.md, "Filters").
   }
 
   @override
@@ -246,12 +243,12 @@ class WorldMapController extends State<WorldMap>
           });
     }
 
-    // Personalized default: my CEFR band (at/below my level). Applied once the
-    // user controller is available.
+    // Seed the settings-fixed language filter once the user controller is
+    // available. The three pills are NOT pre-seeded — they start at "All" — so
+    // there is no CEFR default to apply here (world-map.instructions.md).
     if (!_filterState.filter.filterDefaultsApplied) {
       final l2 = MatrixState.pangeaController.userController.userL2;
-      final cefr = MatrixState.pangeaController.userController.userCefrLevel;
-      _filterState.applyDefaults(l2: l2, cefrLevel: cefr);
+      _filterState.applyDefaults(l2: l2);
     }
   }
 
@@ -288,7 +285,6 @@ class WorldMapController extends State<WorldMap>
   void dispose() {
     _syncSub?.cancel();
     _languageSubscription?.cancel();
-    _cefrLevelSubscription?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
     _planHydrateDebounce?.cancel();
@@ -296,6 +292,7 @@ class WorldMapController extends State<WorldMap>
     _moveSettleTimer?.cancel();
     _mapEventSub?.cancel();
     mapPanTick.dispose();
+    viewRevision.dispose();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
@@ -371,6 +368,40 @@ class WorldMapController extends State<WorldMap>
     if (!isWorld) return true;
     return _filterState.include(c, _pinsManager.displayStateOf(c));
   });
+
+  /// Why the view shows no matches — the empty-view card's diagnosis
+  /// ([MapEmptyVerdict]), shared by the wide overlay and the narrow bar so the
+  /// card's message and remedy always agree with the map. Only pins with
+  /// coordinates count anywhere here: a match that can never render can't be
+  /// revealed by any remedy the card offers.
+  MapEmptyVerdict get emptyVerdict {
+    if (!isWorld || loadingPins) return MapEmptyVerdict.none;
+    final loaded = visiblePins.where((c) => c.point != null).toList();
+    if (loaded.isNotEmpty) {
+      // Matches exist under the current filters/query — the verdict is about
+      // WHERE they are: any in the viewport means no card; all off-screen
+      // means zooming out reveals them (the loaded set can exceed the
+      // viewport — the bbox fetch currently returns the whole catalog).
+      final LatLngBounds bounds;
+      try {
+        bounds = mapController.camera.visibleBounds;
+      } catch (_) {
+        return MapEmptyVerdict.none; // camera not laid out: no verdict yet
+      }
+      return loaded.any((c) => bounds.contains(c.point!))
+          ? MapEmptyVerdict.none
+          : MapEmptyVerdict.matchesOffscreen;
+    }
+    // Nothing passes anywhere loaded: diagnose the excluder. If the pills are
+    // it (matches exist ignoring them), widening fixes it by construction.
+    final ignoringPills = _pinsManager.filteredPins(
+      (c) => c.point != null && _filterState.matchesIgnoringPills(c),
+    );
+    if (ignoringPills.isNotEmpty) return MapEmptyVerdict.filtersHideMatches;
+    return filter.query.trim().isNotEmpty
+        ? MapEmptyVerdict.noSearchMatches
+        : MapEmptyVerdict.noActivities;
+  }
 
   int? activityStarsEarned(String activityId) =>
       _pinsManager.activityStarsEarned(activityId);
@@ -554,35 +585,55 @@ class WorldMapController extends State<WorldMap>
         l1: user.userL1?.langCodeShort,
       );
     } finally {
-      if (mounted) setState(() => _loadingPins = false);
+      if (mounted) {
+        setState(() => _loadingPins = false);
+        // Fresh pins change what the narrow empty-view card should show (a
+        // zoom-out can bring matches into view); loading START deliberately
+        // doesn't tick — the card holds steady through a refetch instead of
+        // flickering off and on.
+        viewRevision.value++;
+      }
     }
   }
 
-  void setQuery(String q) => setState(() => _filterState.setQuery(q));
-
-  void _setL2(LanguageModel? l2) {
-    setState(() => _filterState.setL2(l2));
-    loadWorldPins();
+  /// Apply a filter mutation: rebuild this State (the map and the wide
+  /// overlay) and tick [viewRevision] for the shell-built narrow surfaces.
+  void _mutateFilter(VoidCallback mutate) {
+    setState(mutate);
+    viewRevision.value++;
   }
 
-  /// A settings-driven CEFR change: reset the personalized default (and the
-  /// current level) to exactly the new CEFR level.
-  void _setDefaultCefrLevel(LanguageLevelTypeEnum? cefrLevel) =>
-      setState(() => _filterState.setDefaultCefrLevel(cefrLevel));
+  void setQuery(String q) => _mutateFilter(() => _filterState.setQuery(q));
+
+  void _setL2(LanguageModel? l2) {
+    _mutateFilter(() => _filterState.setL2(l2));
+    loadWorldPins();
+  }
 
   // The three map filter pills. All are client-side refinements over the loaded
   // set (level is applied client-side per the Scale boundary; party/status read
   // the pin's own facts), so each is a pure setState — no working-set re-fetch.
   void setCefrLevel(LanguageLevelTypeEnum? level) =>
-      setState(() => _filterState.setCefrLevel(level));
+      _mutateFilter(() => _filterState.setCefrLevel(level));
 
   void setPartySize(MapPartySize? size) =>
-      setState(() => _filterState.setPartySize(size));
+      _mutateFilter(() => _filterState.setPartySize(size));
 
   void setStatus(ActivityPinState? status) =>
-      setState(() => _filterState.setStatus(status));
+      _mutateFilter(() => _filterState.setStatus(status));
 
-  void resetFilters() => setState(() => _filterState.resetFilters());
+  void resetFilters() => _mutateFilter(() => _filterState.resetFilters());
+
+  /// The empty card's widen lever: clear every pill to its "All …" state
+  /// (level, party, status — the query and the settings-fixed language stay).
+  /// ALL pills, not just level: that is what makes
+  /// [MapEmptyVerdict.filtersHideMatches]'s promise true whichever pill was
+  /// the excluder.
+  void widenFilters() => _mutateFilter(() {
+    _filterState.setCefrLevel(null);
+    _filterState.setPartySize(null);
+    _filterState.setStatus(null);
+  });
 
   /// The minimal screen translation that brings [card] fully inside [safe]: zero
   /// on an axis where it already fits, otherwise just enough to clear the
@@ -628,6 +679,18 @@ class WorldMapController extends State<WorldMap>
       return WorldMapConstants.minZoomFor(mapController.camera.nonRotatedSize);
     } catch (_) {
       return WorldMapConstants.fallbackMinZoom;
+    }
+  }
+
+  /// Whether the camera can still zoom out (above the viewport-derived floor,
+  /// #7813) — gates the empty-view card's "Zoom out?" lever on both layouts.
+  /// Reading the camera throws before the map's first layout; treat that as
+  /// "can zoom out", mirroring the zoom controls' default-enabled buttons.
+  bool get canZoomOut {
+    try {
+      return WorldMapConstants.canZoomOut(mapController.camera.zoom, minZoom);
+    } catch (_) {
+      return true;
     }
   }
 
