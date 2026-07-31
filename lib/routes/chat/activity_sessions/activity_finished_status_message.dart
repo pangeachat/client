@@ -13,9 +13,10 @@ import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Bottom status bar for a session the user has finished: shows the waiting
-/// state while others are still going, then the summary's loading/error
-/// states. Saving is automatic (ActivityAutoSaveService) — there is no manual
-/// save step here.
+/// state while others are still going, then the summary's error states.
+/// Generation itself loads in the chat, not here ([ActivityUserSummaries]).
+/// Saving is automatic (ActivityAutoSaveService) — there is no manual save
+/// step here.
 class ActivityFinishedStatusMessage extends StatelessWidget {
   final ChatController controller;
 
@@ -34,8 +35,22 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
     final finished = controller.room.isActivityFinished;
     final summary = controller.room.visibleActivitySummaryByL1;
 
-    final hasContent =
-        !finished || (summary != null && summary.summary == null);
+    // A summary still generating renders in the chat instead, so the bar stays
+    // collapsed and the rating card above it doesn't get pushed around (#8018).
+    final summarySection =
+        finished &&
+            summary != null &&
+            summary.summary == null &&
+            !summary.isLoading
+        ? _SummarySection(
+            summary: summary,
+            fetchSummaries: l1 != null
+                ? () => controller.room.fetchSummaries(l1)
+                : null,
+          )
+        : null;
+
+    final hasContent = !finished || summarySection != null;
 
     return AnimatedSize(
       alignment: Alignment.bottomCenter,
@@ -55,15 +70,9 @@ class ActivityFinishedStatusMessage extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      if (finished) ...[
-                        if (summary != null)
-                          _SummarySection(
-                            summary: summary,
-                            fetchSummaries: l1 != null
-                                ? () => controller.room.fetchSummaries(l1)
-                                : null,
-                          ),
-                      ] else
+                      if (summarySection != null)
+                        summarySection
+                      else if (!finished)
                         _WaitSection(
                           onContinue: controller.room.continueActivity,
                         ),
@@ -85,26 +94,8 @@ class _SummarySection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (summary.summary != null) {
+    if (summary.summary != null || summary.isLoading) {
       return const SizedBox.shrink();
-    }
-
-    if (summary.isLoading) {
-      return Column(
-        spacing: 12,
-        children: [
-          Text(
-            L10n.of(context).generatingSummary,
-            style: const TextStyle(fontStyle: FontStyle.italic),
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(
-            height: 36,
-            width: 36,
-            child: CircularProgressIndicator(),
-          ),
-        ],
-      );
     }
 
     if (!MatrixState
