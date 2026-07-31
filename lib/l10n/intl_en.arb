@@ -4804,5 +4804,7 @@
     "availableLabel": "Create activity",
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
-    "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved."
+    "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
+    "autoReadAloudMessagesToolName": "Automatically read aloud all received messages",
+    "autoReadAloudMessagesDescription": "When a message is received, device voice will be utilized to read message aloud for listening practice."
 }

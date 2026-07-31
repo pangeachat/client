@@ -111,6 +111,8 @@ class LearningSettingsViewModel extends ChangeNotifier {
             toolSettings.enableTTS;
       case ToolSetting.enableAutocorrect:
         return toolSettings.enableAutocorrect;
+      case ToolSetting.autoReadAloudMessages:
+        return toolSettings.autoReadAloudMessages;
     }
   }
 
@@ -145,6 +147,9 @@ class LearningSettingsViewModel extends ChangeNotifier {
         enableAutocorrect: toolSetting == ToolSetting.enableAutocorrect
             ? value
             : _updatedProfile.toolSettings.enableAutocorrect,
+        autoReadAloudMessages: toolSetting == ToolSetting.autoReadAloudMessages
+            ? value
+            : _updatedProfile.toolSettings.autoReadAloudMessages,
       ),
     );
     _updateProfile(updated);

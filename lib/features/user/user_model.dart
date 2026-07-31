@@ -204,6 +204,7 @@ class UserToolSettings {
   final bool autoIGC;
   final bool enableTTS;
   final bool enableAutocorrect;
+  final bool autoReadAloudMessages;
   final bool showDeveloperOptions;
 
   const UserToolSettings({
@@ -214,6 +215,7 @@ class UserToolSettings {
     this.autoIGC = true,
     this.enableTTS = true,
     this.enableAutocorrect = false,
+    this.autoReadAloudMessages = false,
     this.showDeveloperOptions = false,
   });
 
@@ -228,6 +230,7 @@ class UserToolSettings {
         autoIGC: json[UserConstants.autoIGC] ?? true,
         enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
         enableAutocorrect: json["enableAutocorrect"] ?? false,
+        autoReadAloudMessages: json["autoReadAloudMessages"] ?? false,
         showDeveloperOptions: json["showDeveloperOptions"] ?? false,
       );
 
@@ -240,6 +243,7 @@ class UserToolSettings {
     data[UserConstants.autoIGC] = autoIGC;
     data[ToolSetting.enableTTS.toString()] = enableTTS;
     data["enableAutocorrect"] = enableAutocorrect;
+    data["autoReadAloudMessages"] = autoReadAloudMessages;
     data["showDeveloperOptions"] = showDeveloperOptions;
     return data;
   }
@@ -282,6 +286,7 @@ class UserToolSettings {
     bool? autoIGC,
     bool? enableTTS,
     bool? enableAutocorrect,
+    bool? autoReadAloudMessages,
     bool? showDeveloperOptions,
   }) {
     return UserToolSettings(
@@ -293,6 +298,8 @@ class UserToolSettings {
       autoIGC: autoIGC ?? this.autoIGC,
       enableTTS: enableTTS ?? this.enableTTS,
       enableAutocorrect: enableAutocorrect ?? this.enableAutocorrect,
+      autoReadAloudMessages:
+          autoReadAloudMessages ?? this.autoReadAloudMessages,
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
     );
   }
@@ -309,6 +316,7 @@ class UserToolSettings {
         other.autoIGC == autoIGC &&
         other.enableTTS == enableTTS &&
         other.enableAutocorrect == enableAutocorrect &&
+        other.autoReadAloudMessages == autoReadAloudMessages &&
         other.showDeveloperOptions == showDeveloperOptions;
   }
 
@@ -321,6 +329,7 @@ class UserToolSettings {
     autoIGC.hashCode,
     enableTTS.hashCode,
     enableAutocorrect.hashCode,
+    autoReadAloudMessages.hashCode,
     showDeveloperOptions.hashCode,
   ]);
 }
