@@ -133,59 +133,78 @@ class _PhoneticTranscriptionWidgetState
       );
     }
 
-    return HoverBuilder(
-      builder: (context, hovering) {
-        return Tooltip(
-          message: _isPlaying
-              ? L10n.of(context).stop
-              : L10n.of(context).playAudio,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: () => _handleAudioTap(targetId),
-            child: AnimatedContainer(
-              duration: const Duration(milliseconds: 150),
-              decoration: BoxDecoration(
-                color: hovering
-                    ? Colors.grey.withAlpha((0.2 * 255).round())
-                    : Colors.transparent,
-                borderRadius: BorderRadius.circular(6),
-              ),
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-              child: CompositedTransformTarget(
-                link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
-                child: PhoneticTranscriptionBuilder(
-                  key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
-                  textLanguage: widget.textLanguage,
-                  text: widget.text,
-                  reloadNotifier: widget.reloadNotifier,
-                  builder: (context, controller) {
-                    return switch (controller.state) {
-                      AsyncError(error: final error) =>
-                        error is UnsubscribedException
-                            ? ErrorIndicator(
-                                message: L10n.of(
-                                  context,
-                                ).subscribeToUnlockTranscriptions,
-                                onTap: () => context.go(
-                                  WorkspaceNav.openSettings(
-                                    GoRouterState.of(context).uri,
-                                    page: 'subscription',
-                                  ),
-                                ),
-                              )
-                            : ErrorIndicator(
-                                message: L10n.of(
-                                  context,
-                                ).failedToFetchTranscription,
-                              ),
-                      AsyncLoaded<PTResponse>(value: final ptResponse) => Row(
+    return PhoneticTranscriptionBuilder(
+      textLanguage: widget.textLanguage,
+      text: widget.text,
+      reloadNotifier: widget.reloadNotifier,
+      builder: (context, controller) {
+        final state = controller.state;
+
+        // Only a loaded transcription is playable, so the play affordance —
+        // tooltip, hover highlight and tap target — wraps that state alone.
+        // While loading there is no pronunciation yet and on failure there
+        // never will be; either way the audio icon is absent, so a "Play"
+        // tooltip over the shimmer or the error chip promises audio that isn't
+        // there (#7843). Padding matches the container below so the layout
+        // doesn't shift when the transcription lands.
+        if (state is! AsyncLoaded<PTResponse>) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+            child: switch (state) {
+              AsyncError(error: final error) =>
+                error is UnsubscribedException
+                    ? ErrorIndicator(
+                        message: L10n.of(
+                          context,
+                        ).subscribeToUnlockTranscriptions,
+                        onTap: () => context.go(
+                          WorkspaceNav.openSettings(
+                            GoRouterState.of(context).uri,
+                            page: 'subscription',
+                          ),
+                        ),
+                      )
+                    : ErrorIndicator(
+                        message: L10n.of(context).failedToFetchTranscription,
+                      ),
+              _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
+            },
+          );
+        }
+
+        return HoverBuilder(
+          builder: (context, hovering) {
+            return Tooltip(
+              message: _isPlaying
+                  ? L10n.of(context).stop
+                  : L10n.of(context).playAudio,
+              child: GestureDetector(
+                behavior: HitTestBehavior.opaque,
+                onTap: () => _handleAudioTap(targetId),
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 150),
+                  decoration: BoxDecoration(
+                    color: hovering
+                        ? Colors.grey.withAlpha((0.2 * 255).round())
+                        : Colors.transparent,
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 8,
+                    vertical: 4,
+                  ),
+                  child: CompositedTransformTarget(
+                    link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
+                    child: KeyedSubtree(
+                      key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
+                      child: Row(
                         spacing: 8.0,
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Flexible(
                             child: Text(
                               disambiguate(
-                                ptResponse.pronunciations,
+                                state.value.pronunciations,
                                 pos: widget.pos,
                                 morph: widget.morph,
                               ).displayTranscription,
@@ -206,13 +225,12 @@ class _PhoneticTranscriptionWidgetState
                           ),
                         ],
                       ),
-                      _ => const TextLoadingShimmer(width: 125.0, height: 20.0),
-                    };
-                  },
+                    ),
+                  ),
                 ),
               ),
-            ),
-          ),
+            );
+          },
         );
       },
     );
