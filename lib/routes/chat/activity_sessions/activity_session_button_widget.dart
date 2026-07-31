@@ -5,6 +5,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
@@ -70,7 +71,10 @@ class ActivitySessionButtons extends StatelessWidget {
   }
 }
 
-class _CTAButton extends StatelessWidget {
+/// The session page's call-to-action button: a full-width filled button in the
+/// primary container colour. Public because the archived fallback body renders
+/// its own leave CTA outside this footer (#8064).
+class ActivitySessionCTAButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
 
@@ -79,7 +83,12 @@ class _CTAButton extends StatelessWidget {
   /// encouraged choice.
   final bool secondary;
 
-  const _CTAButton(this.text, this.onPressed, {this.secondary = false});
+  const ActivitySessionCTAButton(
+    this.text,
+    this.onPressed, {
+    this.secondary = false,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -140,6 +149,10 @@ class _SessionCTAButtons extends StatelessWidget {
       return _ConfirmedRoleSessionCTAButtons(controller);
     }
 
+    if (controller is ArchivedSessionController) {
+      return _ArchivedSessionCTAButtons(controller);
+    }
+
     return SizedBox();
   }
 }
@@ -150,7 +163,7 @@ class _SelectRoleSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _CTAButton(
+    return ActivitySessionCTAButton(
       L10n.of(context).confirm,
       controller.canConfirmRole ? controller.confirmRoleSelection : null,
     );
@@ -163,7 +176,7 @@ class _FullSessionCTAButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return _CTAButton(
+    return ActivitySessionCTAButton(
       controller.course != null
           ? L10n.of(context).returnToCourse
           : L10n.of(context).returnHome,
@@ -180,7 +193,10 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     // Sub-pages show a single Back button.
     if (controller.subPage != NotStartedSubPage.main) {
-      return _CTAButton(L10n.of(context).back, controller.goToMainPage);
+      return ActivitySessionCTAButton(
+        L10n.of(context).back,
+        controller.goToMainPage,
+      );
     }
 
     return FutureBuilder(
@@ -208,16 +224,16 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
               // Only for learners who can actually invite — without the power
               // level the invite page just errors out (#7875).
               if (controller.canInviteToCourse)
-                _CTAButton(
+                ActivitySessionCTAButton(
                   L10n.of(context).inviteFriendsToCourse,
                   controller.inviteToCourse,
                 ),
-              _CTAButton(
+              ActivitySessionCTAButton(
                 L10n.of(context).pickDifferentActivity,
                 controller.goToCourse,
               ),
             ] else if (controller.joinedActivityRoomId != null) ...[
-              _CTAButton(
+              ActivitySessionCTAButton(
                 L10n.of(context).continueText,
                 controller.goToJoinedActivity,
               ),
@@ -226,20 +242,23 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
               // and "start my own" drops to a de-emphasized option; with none to
               // join, starting is the single primary action.
               if (controller.openSessionCount > 0) ...[
-                _CTAButton(
+                ActivitySessionCTAButton(
                   '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
                   controller.goToJoinPage,
                 ),
-                _CTAButton(
+                ActivitySessionCTAButton(
                   L10n.of(context).startOwn,
                   controller.startNewActivity,
                   secondary: true,
                 ),
               ] else
-                _CTAButton(L10n.of(context).start, controller.startNewActivity),
+                ActivitySessionCTAButton(
+                  L10n.of(context).start,
+                  controller.startNewActivity,
+                ),
               if (controller.course?.isRoomAdmin == true &&
                   controller.hasCurrentOrFinishedSessions)
-                _CTAButton(
+                ActivitySessionCTAButton(
                   '${L10n.of(context).viewCurrentOrFinished} (${controller.currentOrFinishedSessionCount})',
                   controller.goToViewPage,
                 ),
@@ -247,6 +266,24 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
           ],
         );
       },
+    );
+  }
+}
+
+/// A removed activity's session can't be continued or finished and no one else
+/// can be invited into it, so the only action left in the footer is getting it
+/// out of the chat list (#8064).
+class _ArchivedSessionCTAButtons extends StatelessWidget {
+  final ArchivedSessionController controller;
+  const _ArchivedSessionCTAButtons(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    final page = controller.widget.controller;
+    if (!page.canLeaveArchivedSession) return const SizedBox.shrink();
+    return ActivitySessionCTAButton(
+      L10n.of(context).leave,
+      page.leaveArchivedSession,
     );
   }
 }
@@ -263,7 +300,7 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
         if (controller.showPingCourse) ...[
           FutureBuilder(
             future: controller.canPingParticipants,
-            builder: (context, snapshot) => _CTAButton(
+            builder: (context, snapshot) => ActivitySessionCTAButton(
               L10n.of(context).pingParticipants,
               snapshot.data == true ? controller.pingCourse : null,
             ),
@@ -273,13 +310,16 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
         if (controller.showInviteOptions)
           Padding(
             padding: EdgeInsetsGeometry.only(bottom: 16.0),
-            child: _CTAButton(
+            child: ActivitySessionCTAButton(
               L10n.of(context).playWithBot,
               controller.enablePlayWithBot ? controller.playWithBot : null,
             ),
           ),
         if (controller.showInviteOptions)
-          _CTAButton(L10n.of(context).inviteFriends, controller.inviteFriends),
+          ActivitySessionCTAButton(
+            L10n.of(context).inviteFriends,
+            controller.inviteFriends,
+          ),
       ],
     );
   }
