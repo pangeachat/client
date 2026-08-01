@@ -9,6 +9,22 @@ import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
 
+/// Sentence punctuation, Latin and CJK. Any occurrence marks the text as a
+/// phrase rather than an isolated word.
+final RegExp _sentencePunctuation = RegExp(r'[.?!,;:…！？。，、；：「」『』（）《》【】]');
+
+/// True when [text] is a phrase or sentence rather than the isolated word
+/// phonetic transcription is specified for (design doc §5). Sentence
+/// punctuation, or more than three whitespace-separated words, marks a
+/// phrase; short multi-word tokens (phrasal verbs, idioms — "give up") stay
+/// eligible. Callers skip the PT request entirely for phrases: the per-word
+/// heteronym contract is meaningless at sentence length, and every unique
+/// sentence would become a paid LLM call and a permanent cache row (#8077).
+bool isPhraseSurface(String text) {
+  if (_sentencePunctuation.hasMatch(text)) return true;
+  return text.trim().split(RegExp(r'\s+')).length > 3;
+}
+
 class Pronunciation {
   final String transcription;
   final String ttsPhoneme;
