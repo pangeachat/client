@@ -219,6 +219,12 @@ class _PhoneticTranscriptionWidgetState
 
   @override
   Widget build(BuildContext context) {
+    // PT covers isolated words only (design doc §5). Practice hints route
+    // whole example sentences through this widget; requesting those spends
+    // an LLM call per unique sentence and renders a meaningless chain of
+    // per-word transcriptions, so phrases render nothing at all (#8077).
+    if (isPhraseSurface(widget.text)) return const SizedBox.shrink();
+
     if (widget.textOnly) {
       return PhoneticTranscriptionBuilder(
         key: Key(_baseTargetId),
