@@ -9692,5 +9692,6 @@
     "mapMatchesOffscreen": "您的视野外有匹配项。请缩小以查看。",
     "mapFiltersHideMatches": "您的筛选器隐藏了所有匹配项。请放宽搜索范围以查看。",
     "mapNoSearchMatches": "没有符合您搜索条件的活动。",
-    "mapNoActivitiesArea": "此区域没有活动。"
+    "mapNoActivitiesArea": "此区域没有活动。",
+    "practiceSessionTimedOut": "您的练习会话因{minutes}分钟无活动而结束。"
 }

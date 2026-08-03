@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Match dɛn de we yu nɔ de si. Zoom aut fɔ si dɛn.",
     "mapFiltersHideMatches": "Yu fita dɛn de hayd ɔl di match dɛn. Broden di sɛch fɔ si dɛn.",
     "mapNoSearchMatches": "Nɔn aktiviti nɔ match yu sɛch.",
-    "mapNoActivitiesArea": "Nɔn aktiviti nɔ de na dis ples."
+    "mapNoActivitiesArea": "Nɔn aktiviti nɔ de na dis ples.",
+    "practiceSessionTimedOut": "Yu patis seshɔn dɔn dɔn afta {minutes} minit dɛn we yu nɔ du ɛnitin."
 }

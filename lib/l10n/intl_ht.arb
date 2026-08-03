@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Gen match deyò vizyon w. Dekonprese pou wè yo.",
     "mapFiltersHideMatches": "Filtè w yo ap kache tout match. Elaji rechèch la pou wè yo.",
     "mapNoSearchMatches": "Pa gen okenn aktivite ki koresponn ak rechèch ou an.",
-    "mapNoActivitiesArea": "Pa gen okenn aktivite nan zòn sa a."
+    "mapNoActivitiesArea": "Pa gen okenn aktivite nan zòn sa a.",
+    "practiceSessionTimedOut": "Sesyon pratik ou a te fini apre {minutes} minit san aktivite."
 }

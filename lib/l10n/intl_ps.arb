@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "ستاسو له لید څخه بهر لوبې شتون لري. د لیدلو لپاره زوم آوټ کړئ.",
     "mapFiltersHideMatches": "ستاسو فلټرونه ټولې لوبې پټوي. د لیدلو لپاره لټون پراخ کړئ.",
     "mapNoSearchMatches": "ستاسو لټون سره هیڅ فعالیت نه سمون خوري.",
-    "mapNoActivitiesArea": "په دې سیمه کې هیڅ فعالیت نشته."
+    "mapNoActivitiesArea": "په دې سیمه کې هیڅ فعالیت نشته.",
+    "practiceSessionTimedOut": "ستاسو د تمرین ناسته د {minutes} دقیقو بې فعالیتۍ وروسته پای ته ورسېده."
 }

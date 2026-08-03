@@ -9692,5 +9692,6 @@
     "mapMatchesOffscreen": "Er zijn wedstrijden buiten je zicht. Zoom uit om ze te zien.",
     "mapFiltersHideMatches": "Je filters verbergen alle wedstrijden. Verbreed de zoekopdracht om ze te zien.",
     "mapNoSearchMatches": "Geen activiteiten komen overeen met je zoekopdracht.",
-    "mapNoActivitiesArea": "Geen activiteiten in dit gebied."
+    "mapNoActivitiesArea": "Geen activiteiten in dit gebied.",
+    "practiceSessionTimedOut": "Je oefensessie is beëindigd na {minutes} minuten inactiviteit."
 }

@@ -9798,5 +9798,6 @@
     "mapMatchesOffscreen": "您的視野外有配對。請縮小地圖以查看。",
     "mapFiltersHideMatches": "您的篩選條件隱藏了所有配對。請放寬搜尋條件以查看。",
     "mapNoSearchMatches": "沒有符合您搜尋的活動。",
-    "mapNoActivitiesArea": "此區域沒有活動。"
+    "mapNoActivitiesArea": "此區域沒有活動。",
+    "practiceSessionTimedOut": "您的練習時段因 {minutes} 分鐘沒有活動而結束。"
 }

@@ -10634,5 +10634,6 @@
     "mapMatchesOffscreen": "Il ha matches foras de tu vista. Face zoom retro pro vider los.",
     "mapFiltersHideMatches": "Tu filtros cela tote le matches. Allarga le cerca pro vider los.",
     "mapNoSearchMatches": "Nulle activitate corresponde a tu cerca.",
-    "mapNoActivitiesArea": "Nulle activitate in iste area."
+    "mapNoActivitiesArea": "Nulle activitate in iste area.",
+    "practiceSessionTimedOut": "Tu session de practica ha terminate post {minutes} minutas sin activitate."
 }

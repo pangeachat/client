@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Kukho imidlalo ngaphandle kombono wakho. Nciphisa ukubona.",
     "mapFiltersHideMatches": "Izihluzi zakho zifihla yonke imidlalo. Yandisa ukukhangela ukuze uyibone.",
     "mapNoSearchMatches": "Akukho misebenzi ifana nokukhangela kwakho.",
-    "mapNoActivitiesArea": "Akukho misebenzi kule ndawo."
+    "mapNoActivitiesArea": "Akukho misebenzi kule ndawo.",
+    "practiceSessionTimedOut": "Iseshoni yakho yoqheliselo iphele emva kwemizuzu engu-{minutes} ngaphandle komsebenzi."
 }

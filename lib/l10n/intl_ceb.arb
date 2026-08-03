@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Adunay mga duwa sa gawas sa imong panan-aw. Pag-zoom out aron makita kini.",
     "mapFiltersHideMatches": "Gitago sa imong mga filter ang tanan nga duwa. Palapda ang pagpangita aron makita kini.",
     "mapNoSearchMatches": "Walay mga kalihokan nga mohaum sa imong pagpangita.",
-    "mapNoActivitiesArea": "Walay mga kalihokan niining dapita."
+    "mapNoActivitiesArea": "Walay mga kalihokan niining dapita.",
+    "practiceSessionTimedOut": "Natapos ang imong practice session human sa {minutes} ka minuto nga walay kalihokan."
 }

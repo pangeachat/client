@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Aia nā pāʻani ma waho o kou ʻike. Hoʻopuka i waho e ʻike ai.",
     "mapFiltersHideMatches": "Ke hūnā nei kāu mau kānana i nā pāʻani āpau. Hoʻonui i ka huli e ʻike ai.",
     "mapNoSearchMatches": "ʻAʻohe hana e like me kāu huli.",
-    "mapNoActivitiesArea": "ʻAʻohe hana ma kēia wahi."
+    "mapNoActivitiesArea": "ʻAʻohe hana ma kēia wahi.",
+    "practiceSessionTimedOut": "Ua pau kāu kau hoʻomaʻamaʻa ma hope o {minutes} mau minuke me ka hana ʻole."
 }

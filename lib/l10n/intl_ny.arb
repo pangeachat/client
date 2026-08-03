@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Pali masewera kunja kwa mawonekedwe anu. Chepetsani kuti muwaone.",
     "mapFiltersHideMatches": "Zosefera zanu zikubisa masewera onse. Kulitsani kusaka kuti muwaone.",
     "mapNoSearchMatches": "Palibe zochitika zomwe zikugwirizana ndi kusaka kwanu.",
-    "mapNoActivitiesArea": "Palibe zochitika m'derali."
+    "mapNoActivitiesArea": "Palibe zochitika m'derali.",
+    "practiceSessionTimedOut": "Nthawi yanu yochita masewera yatha patatha mphindi {minutes} osachita chilichonse."
 }

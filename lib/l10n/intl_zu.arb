@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Kukhona okufanayo ngaphandle kokubona kwakho. Sondeza ukuze ukubone.",
     "mapFiltersHideMatches": "Izihlungi zakho zifihla konke okufanayo. Nweba usesho ukuze ukubone.",
     "mapNoSearchMatches": "Azikho izinto ezifanayo nosesho lwakho.",
-    "mapNoActivitiesArea": "Azikho izinto kule ndawo."
+    "mapNoActivitiesArea": "Azikho izinto kule ndawo.",
+    "practiceSessionTimedOut": "Iseshini yakho yokuzijwayeza iphele ngemuva kwemizuzu engu-{minutes} ngaphandle komsebenzi."
 }

@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Misy lalao ivelan'ny fijerinao. Ataovy kely kokoa ny fijery mba hahitana azy ireo.",
     "mapFiltersHideMatches": "Manarona ny lalao rehetra ny sivanao. Ataovy mivelatra kokoa ny fikarohana mba hahitana azy ireo.",
     "mapNoSearchMatches": "Tsy misy hetsika mifanaraka amin'ny fikarohanao.",
-    "mapNoActivitiesArea": "Tsy misy hetsika eto amin'ity faritra ity."
+    "mapNoActivitiesArea": "Tsy misy hetsika eto amin'ity faritra ity.",
+    "practiceSessionTimedOut": "Nifarana ny fotoana fanaovanao fanazaran-tena rehefa afaka {minutes} minitra tsy nisy hetsika."
 }

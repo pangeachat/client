@@ -9795,5 +9795,6 @@
     "mapMatchesOffscreen": "Vannak meccsek a látótereden kívül. Nagyíts ki, hogy lásd őket.",
     "mapFiltersHideMatches": "A szűrőid minden meccset elrejtenek. Szélesítsd a keresést, hogy lásd őket.",
     "mapNoSearchMatches": "Nincsenek a keresésnek megfelelő tevékenységek.",
-    "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen."
+    "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen.",
+    "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt."
 }

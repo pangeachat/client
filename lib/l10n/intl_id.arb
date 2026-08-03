@@ -9765,5 +9765,6 @@
     "mapMatchesOffscreen": "Ada pertandingan di luar tampilan Anda. Perkecil untuk melihatnya.",
     "mapFiltersHideMatches": "Filter Anda menyembunyikan semua pertandingan. Perluas pencarian untuk melihatnya.",
     "mapNoSearchMatches": "Tidak ada aktivitas yang cocok dengan pencarian Anda.",
-    "mapNoActivitiesArea": "Tidak ada aktivitas di area ini."
+    "mapNoActivitiesArea": "Tidak ada aktivitas di area ini.",
+    "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas."
 }

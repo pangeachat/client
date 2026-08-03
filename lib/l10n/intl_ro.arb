@@ -10424,5 +10424,6 @@
     "mapMatchesOffscreen": "Există meciuri în afara vizualizării tale. Micșorează pentru a le vedea.",
     "mapFiltersHideMatches": "Filtrele tale ascund toate meciurile. Lărgește căutarea pentru a le vedea.",
     "mapNoSearchMatches": "Nicio activitate nu corespunde căutării tale.",
-    "mapNoActivitiesArea": "Nicio activitate în această zonă."
+    "mapNoActivitiesArea": "Nicio activitate în această zonă.",
+    "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate."
 }

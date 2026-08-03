@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "ከእይታዎ ውጪ ግጥሚያዎች አሉ። እነሱን ለማየት ያሳንሱ።",
     "mapFiltersHideMatches": "የእርስዎ ማጣሪያዎች ሁሉንም ግጥሚያዎች እየደበቁ ነው። እነሱን ለማየት ፍለጋውን ያስፋፉ።",
     "mapNoSearchMatches": "ምንም እንቅስቃሴዎች ከፍለጋዎ ጋር አይዛመዱም።",
-    "mapNoActivitiesArea": "በዚህ አካባቢ ምንም እንቅስቃሴዎች የሉም።"
+    "mapNoActivitiesArea": "በዚህ አካባቢ ምንም እንቅስቃሴዎች የሉም።",
+    "practiceSessionTimedOut": "ምንም እንቅስቃሴ ባለመኖሩ የልምምድ ክፍለ ጊዜዎ ከ{minutes} ደቂቃዎች በኋላ አብቅቷል።"
 }

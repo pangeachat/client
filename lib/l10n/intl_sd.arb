@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "توهان جي نظر کان ٻاهر ميچون آهن. انهن کي ڏسڻ لاءِ زوم آئوٽ ڪريو.",
     "mapFiltersHideMatches": "توهان جا فلٽر سڀ ميچون لڪائي رهيا آهن. انهن کي ڏسڻ لاءِ ڳولا کي وڌايو.",
     "mapNoSearchMatches": "توهان جي ڳولا سان ڪا به سرگرمي نه ملي.",
-    "mapNoActivitiesArea": "هن علائقي ۾ ڪا به سرگرمي ناهي."
+    "mapNoActivitiesArea": "هن علائقي ۾ ڪا به سرگرمي ناهي.",
+    "practiceSessionTimedOut": "توهان جو مشق سيشن {minutes} منٽن جي غير فعاليت کان پوءِ ختم ٿي ويو."
 }

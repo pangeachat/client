@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Kune mitambo kunze kwekuona kwako. Dzikisa kuti uione.",
     "mapFiltersHideMatches": "Mafirita ako arikuvanza mitambo yese. Wedzera kutsvaga kuti uione.",
     "mapNoSearchMatches": "Hapana zviitiko zvinoenderana nekutsvaga kwako.",
-    "mapNoActivitiesArea": "Hapana zviitiko munzvimbo ino."
+    "mapNoActivitiesArea": "Hapana zviitiko munzvimbo ino.",
+    "practiceSessionTimedOut": "Chikamu chako chekudzidzira chapera mushure memaminitsi {minutes} usina kuita chinhu."
 }

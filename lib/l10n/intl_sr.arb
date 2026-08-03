@@ -10647,5 +10647,6 @@
     "mapMatchesOffscreen": "Postoje mečevi izvan vašeg vidokruga. Umanjite prikaz da biste ih videli.",
     "mapFiltersHideMatches": "Vaši filteri skrivaju sve mečeve. Proširite pretragu da biste ih videli.",
     "mapNoSearchMatches": "Nijedna aktivnost ne odgovara vašoj pretrazi.",
-    "mapNoActivitiesArea": "Nema aktivnosti u ovom području."
+    "mapNoActivitiesArea": "Nema aktivnosti u ovom području.",
+    "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti."
 }

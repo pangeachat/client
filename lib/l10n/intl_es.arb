@@ -7887,5 +7887,6 @@
     "mapMatchesOffscreen": "Hay partidas fuera de tu vista. Aleja el zoom para verlas.",
     "mapFiltersHideMatches": "Tus filtros están ocultando todas las partidas. Amplía la búsqueda para verlas.",
     "mapNoSearchMatches": "Ninguna actividad coincide con tu búsqueda.",
-    "mapNoActivitiesArea": "No hay actividades en esta área."
+    "mapNoActivitiesArea": "No hay actividades en esta área.",
+    "practiceSessionTimedOut": "Tu sesión de práctica finalizó después de {minutes} minutos sin actividad."
 }

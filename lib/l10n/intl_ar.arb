@@ -9998,5 +9998,6 @@
     "mapMatchesOffscreen": "توجد مباريات خارج نطاق رؤيتك. صغّر الخريطة لرؤيتها.",
     "mapFiltersHideMatches": "الفلاتر التي اخترتها تخفي جميع المباريات. وسّع نطاق البحث لرؤيتها.",
     "mapNoSearchMatches": "لا توجد أنشطة مطابقة لبحثك.",
-    "mapNoActivitiesArea": "لا توجد أنشطة في هذه المنطقة."
+    "mapNoActivitiesArea": "لا توجد أنشطة في هذه المنطقة.",
+    "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط."
 }

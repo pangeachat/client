@@ -4802,6 +4802,15 @@
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
+    "practiceSessionTimedOut": "Your practice session ended after {minutes} minutes without activity.",
+    "@practiceSessionTimedOut": {
+        "type": "String",
+        "placeholders": {
+            "minutes": {
+                "type": "int"
+            }
+        }
+    },
     "autoReadAloudMessagesToolName": "Automatically read aloud all received messages",
     "autoReadAloudMessagesDescription": "When a message is received, device voice will be utilized to read message aloud for listening practice.",
     "activityFilterButtonsLabel": "Level, players, and status filter buttons",

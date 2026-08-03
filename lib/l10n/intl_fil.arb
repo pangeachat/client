@@ -10558,5 +10558,6 @@
     "mapMatchesOffscreen": "May mga laban sa labas ng iyong view. Mag-zoom out para makita ang mga ito.",
     "mapFiltersHideMatches": "Itinatago ng iyong mga filter ang lahat ng laban. Palawakin ang paghahanap para makita ang mga ito.",
     "mapNoSearchMatches": "Walang aktibidad na tumutugma sa iyong paghahanap.",
-    "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito."
+    "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito.",
+    "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad."
 }

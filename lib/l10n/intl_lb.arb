@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Et gëtt Matcher ausserhalb vun Ärem Siichtfeld. Zoom eraus fir se ze gesinn.",
     "mapFiltersHideMatches": "Är Filtere verstoppen all Matcher. Erweidert d'Sich fir se ze gesinn.",
     "mapNoSearchMatches": "Keng Aktivitéite passen Är Sich.",
-    "mapNoActivitiesArea": "Keng Aktivitéiten an dësem Beräich."
+    "mapNoActivitiesArea": "Keng Aktivitéiten an dësem Beräich.",
+    "practiceSessionTimedOut": "Deng Übungssessioun ass no {minutes} Minutten ouni Aktivitéit ofgelaf."
 }

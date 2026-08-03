@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "O lo'o i ai ta'aloga i fafo atu o lau va'aiga. Fa'aitiitia le va'aiga e va'ai ai.",
     "mapFiltersHideMatches": "O au fa'amama o lo'o natia uma ta'aloga. Fa'alautele le su'esu'ega e va'ai ai.",
     "mapNoSearchMatches": "Leai ni gaioiga e fetaui ma lau su'esu'ega.",
-    "mapNoActivitiesArea": "Leai ni gaioiga i lenei vaega."
+    "mapNoActivitiesArea": "Leai ni gaioiga i lenei vaega.",
+    "practiceSessionTimedOut": "Ua maeʻa lau sauniga faʻataʻitaʻi pe a maeʻa le {minutes} minute e aunoa ma se gaioiga."
 }

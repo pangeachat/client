@@ -10643,5 +10643,6 @@
     "mapMatchesOffscreen": "Mimo vášho zobrazenia sú zápasy. Oddiaľte zobrazenie, aby ste ich videli.",
     "mapFiltersHideMatches": "Vaše filtre skrývajú všetky zápasy. Rozšírte vyhľadávanie, aby ste ich videli.",
     "mapNoSearchMatches": "Žiadne aktivity nezodpovedajú vášmu vyhľadávaniu.",
-    "mapNoActivitiesArea": "V tejto oblasti nie sú žiadne aktivity."
+    "mapNoActivitiesArea": "V tejto oblasti nie sú žiadne aktivity.",
+    "practiceSessionTimedOut": "Vaša cvičná lekcia sa skončila po {minutes} minútach nečinnosti."
 }
