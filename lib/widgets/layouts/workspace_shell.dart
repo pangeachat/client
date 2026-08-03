@@ -485,13 +485,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
 
     // The floating search bar (routing.instructions.md → Single-column search
     // bar), riding the widget's topAttachment slot. WORLD scope only: it drives
-    // the world map's own filter (reached through the persistent map's State)
-    // and shows the same returned results list the web overlay has, mounted
-    // ABOVE the bar since the bar sits at the bottom on narrow layouts. A
+    // the world map's own filter (reached through the persistent map's State).
+    // There is no narrow results list — the pins ARE the results. The
+    // verdict-driven empty-view card and the collapsible filter surface mount
+    // ABOVE the bar, since the bar sits at the bottom on narrow layouts. A
     // course-scoped map has no working query search (its pins are not filtered
     // by the query), so the bar is hidden there entirely, matching the web
-    // overlay (which only renders in world scope). The section re-targets
-    // (Search All chats / Courses) land with the search-wiring pass.
+    // overlay (which only renders in world scope).
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
     // World map only (activeSpaceId is the course scope, `?c=`), and not over a

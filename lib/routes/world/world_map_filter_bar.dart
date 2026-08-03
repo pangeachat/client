@@ -7,7 +7,7 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// The world-map filter row: one dropdown-pill per category (Level, Party size,
 /// Status), each defaulting to "All …" (no narrowing) and set via its dropdown
-/// rather than toggled — plus a leading reset control that appears whenever any
+/// rather than toggled — plus a trailing reset control that appears whenever any
 /// pill differs from that default, i.e. whenever any is off "All"
 /// (world-map.instructions.md, "Filters"). Presentational: it renders [filter]
 /// and reports intent through the
