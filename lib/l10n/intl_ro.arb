@@ -9828,7 +9828,6 @@
     "browsePublicCourses": "Răsfoiți cursurile publice",
     "editProfile": "Editează profilul",
     "mapSearchHint": "Căutați activități",
-    "mapSearchNoResults": "Niciun rezultat în vizualizare",
     "mapFilterAllLanguages": "Toate limbile",
     "mapFilterNotStarted": "Nepornit",
     "mapFilterInProgress": "În desfășurare",
@@ -9837,7 +9836,6 @@
     "activityTypeConversation": "Conversație",
     "playAgain": "Joacă din nou",
     "reviewActivity": "Recenzie",
-    "mapEmptyInView": "Nimic aici la nivelul sau limba ta. Lărgiți filtrele sau faceți zoom out.",
     "welcomeToPangeaChat": "Bine ai venit la Pangea Chat",
     "claimTrial": "Solicită perioada de probă",
     "thanksForSigningUp": "Mulțumim pentru înscriere! Iată",
@@ -9908,10 +9906,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9941,10 +9935,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10165,7 +10155,6 @@
     "analyticsAndSettingsLabel": "Opțiuni de analiză și setări",
     "searchActivitiesLabel": "Caută activități pe hartă",
     "filteredActivitiesLabel": "Lista activităților filtrate",
-    "activityFilterButtonsLabel": "Butonul de filtrare a limbii, dificultății și progresului",
     "mapZoomLabel": "Controale de zoom pentru hartă",
     "activityMapLabel": "Harta activităților",
     "@navOptionsLabel": {
@@ -10185,10 +10174,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

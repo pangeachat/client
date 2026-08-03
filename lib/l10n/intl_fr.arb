@@ -9451,7 +9451,6 @@
     "browsePublicCourses": "Parcourir les cours publics",
     "editProfile": "Modifier le profil",
     "mapSearchHint": "Rechercher des activités",
-    "mapSearchNoResults": "Aucun résultat dans la vue",
     "mapFilterAllLanguages": "Toutes les langues",
     "mapFilterNotStarted": "Pas commencé",
     "mapFilterInProgress": "En cours",
@@ -9460,7 +9459,6 @@
     "activityTypeConversation": "Conversation",
     "playAgain": "Jouer à nouveau",
     "reviewActivity": "Réviser",
-    "mapEmptyInView": "Rien ici à votre niveau ou langue. Élargissez vos filtres ou dézoomez.",
     "welcomeToPangeaChat": "Bienvenue dans Pangea Chat",
     "claimTrial": "Réclamez votre essai",
     "thanksForSigningUp": "Merci de vous être inscrit ! Voici",
@@ -9531,10 +9529,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9564,10 +9558,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9788,7 +9778,6 @@
     "analyticsAndSettingsLabel": "Options d'analyse et de paramètres",
     "searchActivitiesLabel": "Rechercher des activités sur la carte",
     "filteredActivitiesLabel": "Liste des activités filtrées",
-    "activityFilterButtonsLabel": "Boutons de filtre par langue, difficulté et progression",
     "mapZoomLabel": "Contrôles de zoom de la carte",
     "activityMapLabel": "Carte des activités",
     "@navOptionsLabel": {
@@ -9808,10 +9797,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

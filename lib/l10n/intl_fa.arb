@@ -9184,7 +9184,6 @@
     "browsePublicCourses": "دوره‌های عمومی را مرور کنید",
     "editProfile": "ویرایش پروفایل",
     "mapSearchHint": "جستجوی فعالیت‌ها",
-    "mapSearchNoResults": "هیچ تطابقی در نمای فعلی وجود ندارد",
     "mapFilterAllLanguages": "تمام زبان‌ها",
     "mapFilterNotStarted": "شروع نشده",
     "mapFilterInProgress": "در حال پیشرفت",
@@ -9193,7 +9192,6 @@
     "activityTypeConversation": "گفتگو",
     "playAgain": "دوباره بازی کنید",
     "reviewActivity": "بررسی",
-    "mapEmptyInView": "هیچ چیزی در سطح یا زبان شما وجود ندارد. فیلترهای خود را گسترش دهید یا زوم کنید.",
     "welcomeToPangeaChat": "به چت پانژیا خوش آمدید",
     "claimTrial": "دریافت دوره آزمایشی خود",
     "thanksForSigningUp": "از ثبت نام شما متشکریم! اینجا",
@@ -9264,10 +9262,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9297,10 +9291,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9521,7 +9511,6 @@
     "analyticsAndSettingsLabel": "گزینه‌های تجزیه و تحلیل و تنظیمات",
     "searchActivitiesLabel": "جستجوی فعالیت‌ها در نقشه",
     "filteredActivitiesLabel": "لیست فعالیت‌های فیلتر شده",
-    "activityFilterButtonsLabel": "دکمه‌های فیلتر زبان، سختی و پیشرفت",
     "mapZoomLabel": "کنترل‌های زوم نقشه",
     "activityMapLabel": "نقشه فعالیت",
     "@navOptionsLabel": {
@@ -9541,10 +9530,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

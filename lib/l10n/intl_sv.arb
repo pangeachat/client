@@ -9614,7 +9614,6 @@
     "browsePublicCourses": "Bläddra bland offentliga kurser",
     "editProfile": "Redigera profil",
     "mapSearchHint": "Sök aktiviteter",
-    "mapSearchNoResults": "Inga träffar i vyn",
     "mapFilterAllLanguages": "Alla språk",
     "mapFilterNotStarted": "Ej påbörjad",
     "mapFilterInProgress": "Pågår",
@@ -9623,7 +9622,6 @@
     "activityTypeConversation": "Konversation",
     "playAgain": "Spela igen",
     "reviewActivity": "Granska",
-    "mapEmptyInView": "Ingenting här på din nivå eller språk. Bredare dina filter eller zooma ut.",
     "welcomeToPangeaChat": "Välkommen till Pangea Chat",
     "claimTrial": "Kräv din provperiod",
     "thanksForSigningUp": "Tack för att du registrerade dig! Här är",
@@ -9694,10 +9692,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9727,10 +9721,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9951,7 +9941,6 @@
     "analyticsAndSettingsLabel": "Analys- och inställningsalternativ",
     "searchActivitiesLabel": "Sök efter aktiviteter på kartan",
     "filteredActivitiesLabel": "Filtrerad aktivitetslista",
-    "activityFilterButtonsLabel": "Språk-, svårighetsgrad- och progressionsfilterknappar",
     "mapZoomLabel": "Kartzoomkontroller",
     "activityMapLabel": "Aktivitetskarta",
     "@navOptionsLabel": {
@@ -9971,10 +9960,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

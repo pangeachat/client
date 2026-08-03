@@ -9962,7 +9962,6 @@
     "browsePublicCourses": "Mag-browse ng mga pampublikong kurso",
     "editProfile": "I-edit ang profile",
     "mapSearchHint": "Maghanap ng mga aktibidad",
-    "mapSearchNoResults": "Walang tugma sa view",
     "mapFilterAllLanguages": "Lahat ng wika",
     "mapFilterNotStarted": "Hindi pa nagsimula",
     "mapFilterInProgress": "Nasa proseso",
@@ -9971,7 +9970,6 @@
     "activityTypeConversation": "Usapan",
     "playAgain": "Maglaro muli",
     "reviewActivity": "Suriin",
-    "mapEmptyInView": "Walang nandito sa iyong antas o wika. Palawakin ang iyong mga filter o mag-zoom out.",
     "welcomeToPangeaChat": "Maligayang pagdating sa Pangea Chat",
     "claimTrial": "Kunin ang iyong pagsubok",
     "thanksForSigningUp": "Salamat sa pag-sign up! Narito ang",
@@ -10042,10 +10040,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10075,10 +10069,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10299,7 +10289,6 @@
     "analyticsAndSettingsLabel": "Mga pagpipilian sa Analytics at Mga Setting",
     "searchActivitiesLabel": "Maghanap ng mga aktibidad sa mapa",
     "filteredActivitiesLabel": "Listahan ng mga na-filter na aktibidad",
-    "activityFilterButtonsLabel": "Mga pindutan ng filter para sa wika, kahirapan, at progreso",
     "mapZoomLabel": "Mga kontrol sa pag-zoom ng mapa",
     "activityMapLabel": "Mapa ng aktibidad",
     "@navOptionsLabel": {
@@ -10319,10 +10308,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

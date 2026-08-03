@@ -9865,7 +9865,6 @@
     "browsePublicCourses": "公開コースをブラウズ",
     "editProfile": "プロフィールを編集",
     "mapSearchHint": "アクティビティを検索",
-    "mapSearchNoResults": "表示中に一致するものはありません",
     "mapFilterAllLanguages": "すべての言語",
     "mapFilterNotStarted": "未開始",
     "mapFilterInProgress": "進行中",
@@ -9874,7 +9873,6 @@
     "activityTypeConversation": "会話",
     "playAgain": "再度プレイ",
     "reviewActivity": "レビュー",
-    "mapEmptyInView": "あなたのレベルまたは言語では何もありません。フィルターを広げるか、ズームアウトしてください。",
     "welcomeToPangeaChat": "Pangea Chatへようこそ",
     "claimTrial": "トライアルを請求する",
     "thanksForSigningUp": "サインアップありがとうございます！こちらが",
@@ -9945,10 +9943,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9978,10 +9972,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10202,7 +10192,6 @@
     "analyticsAndSettingsLabel": "分析と設定オプション",
     "searchActivitiesLabel": "マップ上のアクティビティを検索",
     "filteredActivitiesLabel": "フィルタリングされたアクティビティリスト",
-    "activityFilterButtonsLabel": "言語、難易度、進捗のフィルターボタン",
     "mapZoomLabel": "マップズームコントロール",
     "activityMapLabel": "アクティビティマップ",
     "@navOptionsLabel": {
@@ -10222,10 +10211,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

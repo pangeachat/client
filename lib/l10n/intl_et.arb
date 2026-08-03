@@ -9093,7 +9093,6 @@
     "browsePublicCourses": "Sirvi avalikke kursusi",
     "editProfile": "Muuda profiili",
     "mapSearchHint": "Otsi tegevusi",
-    "mapSearchNoResults": "Vaates ei ole vasteid",
     "mapFilterAllLanguages": "Kõik keeled",
     "mapFilterNotStarted": "Alustamata",
     "mapFilterInProgress": "Käimas",
@@ -9102,7 +9101,6 @@
     "activityTypeConversation": "Vestlus",
     "playAgain": "Mängi uuesti",
     "reviewActivity": "Ülevaade",
-    "mapEmptyInView": "Sinu tasemel või keeles ei ole siin midagi. Laienda oma filtreid või suumi välja.",
     "welcomeToPangeaChat": "Tere tulemast Pangea Chati",
     "claimTrial": "Nõua oma prooviversioon",
     "thanksForSigningUp": "Aitäh registreerumise eest! Siin on",
@@ -9173,10 +9171,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9206,10 +9200,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9430,7 +9420,6 @@
     "analyticsAndSettingsLabel": "Analüütika ja seadevalikute valikud",
     "searchActivitiesLabel": "Otsi tegevusi kaardilt",
     "filteredActivitiesLabel": "Filtreeritud tegevuste loetelu",
-    "activityFilterButtonsLabel": "Keele, raskuse ja edusamme filtreerimise nupud",
     "mapZoomLabel": "Kaardi suumimise juhtnupud",
     "activityMapLabel": "Tegevuste kaart",
     "@navOptionsLabel": {
@@ -9450,10 +9439,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

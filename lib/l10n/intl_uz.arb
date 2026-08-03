@@ -9100,7 +9100,6 @@
     "browsePublicCourses": "Ommaviy kurslarni ko'ring",
     "editProfile": "Profilni tahrirlash",
     "mapSearchHint": "Faoliyatlarni qidiring",
-    "mapSearchNoResults": "Ko'rinishda hech qanday moslik yo'q",
     "mapFilterAllLanguages": "Barcha tillar",
     "mapFilterNotStarted": "Boshlanmagan",
     "mapFilterInProgress": "Jarayonda",
@@ -9109,7 +9108,6 @@
     "activityTypeConversation": "Muloqot",
     "playAgain": "Yana o'ynang",
     "reviewActivity": "Ko'rib chiqish",
-    "mapEmptyInView": "Sizning darajangizda yoki tilingizda hech narsa yo'q. Filtrlaringizni kengaytiring yoki zoom qiling.",
     "welcomeToPangeaChat": "Pangea Chat'ga xush kelibsiz",
     "claimTrial": "Sinovni talab qiling",
     "thanksForSigningUp": "Ro'yxatdan o'tganingiz uchun rahmat! Bu yerda",
@@ -9180,10 +9178,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9213,10 +9207,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9437,7 +9427,6 @@
     "analyticsAndSettingsLabel": "Tahlil va Sozlamalar variantlari",
     "searchActivitiesLabel": "Xaritada faoliyatlarni qidirish",
     "filteredActivitiesLabel": "Filtrlangan faoliyatlar ro'yxati",
-    "activityFilterButtonsLabel": "Til, qiyinchilik va progress filtr tugmalari",
     "mapZoomLabel": "Xarita zoom boshqaruvlari",
     "activityMapLabel": "Faoliyat xaritasi",
     "@navOptionsLabel": {
@@ -9457,10 +9446,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

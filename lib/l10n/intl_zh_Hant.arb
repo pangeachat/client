@@ -9202,7 +9202,6 @@
     "browsePublicCourses": "瀏覽公共課程",
     "editProfile": "編輯個人資料",
     "mapSearchHint": "搜尋活動",
-    "mapSearchNoResults": "視圖中沒有匹配項",
     "mapFilterAllLanguages": "所有語言",
     "mapFilterNotStarted": "尚未開始",
     "mapFilterInProgress": "進行中",
@@ -9211,7 +9210,6 @@
     "activityTypeConversation": "對話",
     "playAgain": "再玩一次",
     "reviewActivity": "檢視",
-    "mapEmptyInView": "在您的等級或語言中沒有任何內容。擴大您的篩選條件或縮小視圖。",
     "welcomeToPangeaChat": "歡迎來到 Pangea Chat",
     "claimTrial": "索取您的試用",
     "thanksForSigningUp": "感謝您註冊！這裡是",
@@ -9282,10 +9280,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9315,10 +9309,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9539,7 +9529,6 @@
     "analyticsAndSettingsLabel": "分析和設置選項",
     "searchActivitiesLabel": "在地圖上搜索活動",
     "filteredActivitiesLabel": "過濾後的活動列表",
-    "activityFilterButtonsLabel": "語言、難度和進度過濾按鈕",
     "mapZoomLabel": "地圖縮放控制",
     "activityMapLabel": "活動地圖",
     "@navOptionsLabel": {
@@ -9559,10 +9548,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

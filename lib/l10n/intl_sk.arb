@@ -10047,7 +10047,6 @@
     "browsePublicCourses": "Prehľadávať verejné kurzy",
     "editProfile": "Upraviť profil",
     "mapSearchHint": "Hľadať aktivity",
-    "mapSearchNoResults": "Žiadne zhodné výsledky",
     "mapFilterAllLanguages": "Všetky jazyky",
     "mapFilterNotStarted": "Nebol začatý",
     "mapFilterInProgress": "Prebieha",
@@ -10056,7 +10055,6 @@
     "activityTypeConversation": "Konverzácia",
     "playAgain": "Hraj znova",
     "reviewActivity": "Prehľad",
-    "mapEmptyInView": "Tu nie je nič na vašej úrovni alebo jazyku. Rozšírte svoje filtre alebo priblížte.",
     "welcomeToPangeaChat": "Vitajte v Pangea Chate",
     "claimTrial": "Uplatnite svoju skúšobnú verziu",
     "thanksForSigningUp": "Ďakujeme za registráciu! Tu je",
@@ -10127,10 +10125,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10160,10 +10154,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10384,7 +10374,6 @@
     "analyticsAndSettingsLabel": "Možnosti analýzy a nastavení",
     "searchActivitiesLabel": "Hľadať aktivity na mape",
     "filteredActivitiesLabel": "Zoznam filtrovaných aktivít",
-    "activityFilterButtonsLabel": "Tlačidlá filtra jazyka, obtiažnosti a pokroku",
     "mapZoomLabel": "Ovládanie priblíženia mapy",
     "activityMapLabel": "Mapa aktivít",
     "@navOptionsLabel": {
@@ -10404,10 +10393,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

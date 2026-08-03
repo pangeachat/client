@@ -9096,7 +9096,6 @@
     "browsePublicCourses": "浏览公开课程",
     "editProfile": "编辑个人资料",
     "mapSearchHint": "搜索活动",
-    "mapSearchNoResults": "视图中没有匹配项",
     "mapFilterAllLanguages": "所有语言",
     "mapFilterNotStarted": "未开始",
     "mapFilterInProgress": "进行中",
@@ -9105,7 +9104,6 @@
     "activityTypeConversation": "对话",
     "playAgain": "再玩一次",
     "reviewActivity": "回顾",
-    "mapEmptyInView": "在您的级别或语言中没有任何内容。扩大您的过滤器或缩小视图。",
     "welcomeToPangeaChat": "欢迎来到 Pangea Chat",
     "claimTrial": "领取您的试用",
     "thanksForSigningUp": "感谢您的注册！这是",
@@ -9176,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9209,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9433,7 +9423,6 @@
     "analyticsAndSettingsLabel": "分析和设置选项",
     "searchActivitiesLabel": "在地图上搜索活动",
     "filteredActivitiesLabel": "过滤后的活动列表",
-    "activityFilterButtonsLabel": "语言、难度和进度过滤按钮",
     "mapZoomLabel": "地图缩放控件",
     "activityMapLabel": "活动地图",
     "@navOptionsLabel": {
@@ -9453,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

@@ -10047,7 +10047,6 @@
     "browsePublicCourses": "Brskajte po javnih tečajih",
     "editProfile": "Uredi profil",
     "mapSearchHint": "Išči aktivnosti",
-    "mapSearchNoResults": "Brez ujemanj v pogledu",
     "mapFilterAllLanguages": "Vsi jeziki",
     "mapFilterNotStarted": "Ni začeto",
     "mapFilterInProgress": "V teku",
@@ -10056,7 +10055,6 @@
     "activityTypeConversation": "Pogovor",
     "playAgain": "Igraj znova",
     "reviewActivity": "Pregled",
-    "mapEmptyInView": "Tu ni ničesar na vaši ravni ali jeziku. Razširite svoje filtre ali poglejte od daleč.",
     "welcomeToPangeaChat": "Dobrodošli v Pangea Chat",
     "claimTrial": "Zahtevajte svojo preizkusno različico",
     "thanksForSigningUp": "Hvala, da ste se prijavili! Tukaj je",
@@ -10127,10 +10125,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10160,10 +10154,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10384,7 +10374,6 @@
     "analyticsAndSettingsLabel": "Možnosti analitike in nastavitev",
     "searchActivitiesLabel": "Išči aktivnosti na zemljevidu",
     "filteredActivitiesLabel": "Seznam filtriranih aktivnosti",
-    "activityFilterButtonsLabel": "Gumbi za filtriranje po jeziku, težavnosti in napredku",
     "mapZoomLabel": "Nadzor povečave zemljevida",
     "activityMapLabel": "Zemljevid aktivnosti",
     "@navOptionsLabel": {
@@ -10404,10 +10393,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

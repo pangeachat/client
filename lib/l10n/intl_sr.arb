@@ -10051,7 +10051,6 @@
     "browsePublicCourses": "Pretraži javne kurseve",
     "editProfile": "Izmeni profil",
     "mapSearchHint": "Pretraži aktivnosti",
-    "mapSearchNoResults": "Nema podudaranja u pregledu",
     "mapFilterAllLanguages": "Svi jezici",
     "mapFilterNotStarted": "Nije započeto",
     "mapFilterInProgress": "U toku",
@@ -10060,7 +10059,6 @@
     "activityTypeConversation": "Razgovor",
     "playAgain": "Igraj ponovo",
     "reviewActivity": "Pregled",
-    "mapEmptyInView": "Nema ništa ovde na vašem nivou ili jeziku. Proširite svoje filtere ili zumirajte.",
     "welcomeToPangeaChat": "Dobrodošli u Pangea Chat",
     "claimTrial": "Zatražite svoj probni period",
     "thanksForSigningUp": "Hvala što ste se prijavili! Evo",
@@ -10131,10 +10129,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10164,10 +10158,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10388,7 +10378,6 @@
     "analyticsAndSettingsLabel": "Opcije analitike i podešavanja",
     "searchActivitiesLabel": "Pretraži aktivnosti na mapi",
     "filteredActivitiesLabel": "Lista filtriranih aktivnosti",
-    "activityFilterButtonsLabel": "Dugmad za filtriranje jezika, težine i napretka",
     "mapZoomLabel": "Kontrole zumiranja mape",
     "activityMapLabel": "Mapa aktivnosti",
     "@navOptionsLabel": {
@@ -10408,10 +10397,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

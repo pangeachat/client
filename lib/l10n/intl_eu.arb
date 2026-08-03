@@ -9096,7 +9096,6 @@
     "browsePublicCourses": "Arakatu publiko ikastaroak",
     "editProfile": "Editatu profila",
     "mapSearchHint": "Bilatu jarduerak",
-    "mapSearchNoResults": "Ez dago bat etorritakoen ikuspegian",
     "mapFilterAllLanguages": "Hizkuntza guztiak",
     "mapFilterNotStarted": "Hasita ez",
     "mapFilterInProgress": "Prozesuan",
@@ -9105,7 +9104,6 @@
     "activityTypeConversation": "Elkarrizketa",
     "playAgain": "Jolastu berriro",
     "reviewActivity": "Berrikusi",
-    "mapEmptyInView": "Ez dago ezer zure mailan edo hizkuntzan. Zabaldu zure iragazkiak edo hurbildu.",
     "welcomeToPangeaChat": "Ongi etorri Pangea Chat-era",
     "claimTrial": "Eska itzazu zure probak",
     "thanksForSigningUp": "Eskerrik asko izena emateagatik! Hona hemen",
@@ -9176,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9209,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9433,7 +9423,6 @@
     "analyticsAndSettingsLabel": "Analitika eta Ezarpenen aukerak",
     "searchActivitiesLabel": "Bilatu jarduerak mapan",
     "filteredActivitiesLabel": "Iragazitako jardueren zerrenda",
-    "activityFilterButtonsLabel": "Hizkuntza, zailtasuna eta aurrerapen iragazki botoiak",
     "mapZoomLabel": "Maparen zoom kontrolak",
     "activityMapLabel": "Jarduera mapa",
     "@navOptionsLabel": {
@@ -9453,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

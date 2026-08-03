@@ -9724,7 +9724,6 @@
     "browsePublicCourses": "সার্বজনীন কোর্স ব্রাউজ করুন",
     "editProfile": "প্রোফাইল সম্পাদনা করুন",
     "mapSearchHint": "কার্যকলাপ অনুসন্ধান করুন",
-    "mapSearchNoResults": "দৃশ্যে কোন মিল নেই",
     "mapFilterAllLanguages": "সমস্ত ভাষা",
     "mapFilterNotStarted": "শুরু হয়নি",
     "mapFilterInProgress": "চলমান",
@@ -9733,7 +9732,6 @@
     "activityTypeConversation": "আলাপ",
     "playAgain": "পুনরায় খেলুন",
     "reviewActivity": "পর্যালোচনা",
-    "mapEmptyInView": "আপনার স্তর বা ভাষায় এখানে কিছুই নেই। আপনার ফিল্টারগুলি প্রসারিত করুন বা জুম আউট করুন।",
     "welcomeToPangeaChat": "প্যাঙ্গিয়া চ্যাটে স্বাগতম",
     "claimTrial": "আপনার ট্রায়াল দাবি করুন",
     "thanksForSigningUp": "সাইন আপ করার জন্য ধন্যবাদ! এখানে",
@@ -9804,10 +9802,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9837,10 +9831,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10061,7 +10051,6 @@
     "analyticsAndSettingsLabel": "বিশ্লেষণ এবং সেটিংস বিকল্পগুলি",
     "searchActivitiesLabel": "মানচিত্রে কার্যকলাপ অনুসন্ধান করুন",
     "filteredActivitiesLabel": "ছাঁটাই করা কার্যকলাপের তালিকা",
-    "activityFilterButtonsLabel": "ভাষা, কঠিনতা, এবং অগ্রগতি ফিল্টার বোতামগুলি",
     "mapZoomLabel": "মানচিত্র জুম নিয়ন্ত্রণ",
     "activityMapLabel": "কার্যকলাপের মানচিত্র",
     "@navOptionsLabel": {
@@ -10081,10 +10070,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

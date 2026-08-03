@@ -9406,7 +9406,6 @@
     "browsePublicCourses": "تصفح الدورات العامة",
     "editProfile": "تعديل الملف الشخصي",
     "mapSearchHint": "ابحث عن الأنشطة",
-    "mapSearchNoResults": "لا توجد تطابقات في العرض",
     "mapFilterAllLanguages": "جميع اللغات",
     "mapFilterNotStarted": "لم يبدأ بعد",
     "mapFilterInProgress": "قيد التقدم",
@@ -9415,7 +9414,6 @@
     "activityTypeConversation": "محادثة",
     "playAgain": "العب مرة أخرى",
     "reviewActivity": "مراجعة",
-    "mapEmptyInView": "لا شيء هنا بمستواك أو لغتك. قم بتوسيع الفلاتر أو قم بالتكبير للخارج.",
     "welcomeToPangeaChat": "مرحبًا بك في دردشة بانجيا",
     "claimTrial": "احصل على تجربتك",
     "thanksForSigningUp": "شكرًا لتسجيلك! إليك",
@@ -9486,10 +9484,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9519,10 +9513,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9743,7 +9733,6 @@
     "analyticsAndSettingsLabel": "خيارات التحليلات والإعدادات",
     "searchActivitiesLabel": "البحث عن الأنشطة على الخريطة",
     "filteredActivitiesLabel": "قائمة الأنشطة المفلترة",
-    "activityFilterButtonsLabel": "أزرار تصفية اللغة والصعوبة والتقدم",
     "mapZoomLabel": "تحكمات تكبير الخريطة",
     "activityMapLabel": "خريطة الأنشطة",
     "@navOptionsLabel": {
@@ -9763,10 +9752,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

@@ -9188,7 +9188,6 @@
     "browsePublicCourses": "பொது பாடங்களை உலாவவும்",
     "editProfile": "சுயவிவரத்தை திருத்தவும்",
     "mapSearchHint": "செயல்பாடுகளை தேடவும்",
-    "mapSearchNoResults": "காண்பில் பொருத்தங்கள் இல்லை",
     "mapFilterAllLanguages": "எல்லா மொழிகளும்",
     "mapFilterNotStarted": "தொடங்கவில்லை",
     "mapFilterInProgress": "நடந்து கொண்டிருக்கிறது",
@@ -9197,7 +9196,6 @@
     "activityTypeConversation": "சரசரி",
     "playAgain": "மீண்டும் விளையாடவும்",
     "reviewActivity": "மதிப்பீடு",
-    "mapEmptyInView": "உங்கள் நிலை அல்லது மொழியில் இங்கு எதுவும் இல்லை. உங்கள் வடிகட்டிகளை விரிவாக்கவும் அல்லது வெளியே zoom செய்யவும்.",
     "welcomeToPangeaChat": "பாஙேஆ சாட்டிற்கு வரவேற்கிறோம்",
     "claimTrial": "உங்கள் சோதனையை கோருங்கள்",
     "thanksForSigningUp": "பதிவு செய்ததற்கு நன்றி! இதோ",
@@ -9268,10 +9266,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9301,10 +9295,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9525,7 +9515,6 @@
     "analyticsAndSettingsLabel": "அணுகுமுறை மற்றும் அமைப்புகள் விருப்பங்கள்",
     "searchActivitiesLabel": "வரைபடத்தில் செயல்பாடுகளை தேடு",
     "filteredActivitiesLabel": "வடிகட்டப்பட்ட செயல்பாடு பட்டியல்",
-    "activityFilterButtonsLabel": "மொழி, சிரமம், மற்றும் முன்னேற்றம் வடிகட்டும் பொத்தான்கள்",
     "mapZoomLabel": "வரைபட zoom கட்டுப்பாடுகள்",
     "activityMapLabel": "செயல்பாடு வரைபடம்",
     "@navOptionsLabel": {
@@ -9545,10 +9534,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

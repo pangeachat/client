@@ -9977,7 +9977,6 @@
     "browsePublicCourses": "Περιήγηση σε δημόσια μαθήματα",
     "editProfile": "Επεξεργασία προφίλ",
     "mapSearchHint": "Αναζητήστε δραστηριότητες",
-    "mapSearchNoResults": "Δεν υπάρχουν αποτελέσματα στην προβολή",
     "mapFilterAllLanguages": "Όλες οι γλώσσες",
     "mapFilterNotStarted": "Δεν έχει ξεκινήσει",
     "mapFilterInProgress": "Σε εξέλιξη",
@@ -9986,7 +9985,6 @@
     "activityTypeConversation": "Συζήτηση",
     "playAgain": "Παίξτε ξανά",
     "reviewActivity": "Αξιολόγηση",
-    "mapEmptyInView": "Δεν υπάρχει τίποτα εδώ στο επίπεδό σας ή στη γλώσσα σας. Διευρύνετε τα φίλτρα σας ή απομακρυνθείτε.",
     "welcomeToPangeaChat": "Καλώς ήρθατε στο Pangea Chat",
     "claimTrial": "Διεκδικήστε τη δοκιμή σας",
     "thanksForSigningUp": "Ευχαριστούμε που εγγραφήκατε! Να τι είναι",
@@ -10057,10 +10055,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10090,10 +10084,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10314,7 +10304,6 @@
     "analyticsAndSettingsLabel": "Επιλογές ανάλυσης και ρυθμίσεων",
     "searchActivitiesLabel": "Αναζήτηση δραστηριοτήτων στον χάρτη",
     "filteredActivitiesLabel": "Λίστα φιλτραρισμένων δραστηριοτήτων",
-    "activityFilterButtonsLabel": "Κουμπιά φίλτρου γλώσσας, δυσκολίας και προόδου",
     "mapZoomLabel": "Έλεγχοι ζουμ χάρτη",
     "activityMapLabel": "Χάρτης δραστηριοτήτων",
     "@navOptionsLabel": {
@@ -10334,10 +10323,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

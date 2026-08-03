@@ -9110,7 +9110,6 @@
     "browsePublicCourses": "Прагляд публічных курсаў",
     "editProfile": "Рэдагаваць профіль",
     "mapSearchHint": "Шукаць актыўнасці",
-    "mapSearchNoResults": "Супадзенняў не знойдзена",
     "mapFilterAllLanguages": "Усе мовы",
     "mapFilterNotStarted": "Не пачата",
     "mapFilterInProgress": "У працэсе",
@@ -9119,7 +9118,6 @@
     "activityTypeConversation": "Размова",
     "playAgain": "Пагуляць яшчэ раз",
     "reviewActivity": "Агляд",
-    "mapEmptyInView": "Тут нічога няма на вашым узроўні або мове. Распашыце фільтры або аддаляйцеся.",
     "welcomeToPangeaChat": "Сардэчна запрашаем у Pangea Chat",
     "claimTrial": "Атрымаць ваш бясплатны перыяд",
     "thanksForSigningUp": "Дзякуй за рэгістрацыю! Вось",
@@ -9190,10 +9188,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9223,10 +9217,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9447,7 +9437,6 @@
     "analyticsAndSettingsLabel": "Аналітыка і параметры налад",
     "searchActivitiesLabel": "Пошук дзейнасцяў на карце",
     "filteredActivitiesLabel": "Фільтраваны спіс дзейнасцяў",
-    "activityFilterButtonsLabel": "Кнопкі фільтрацыі па мове, складанасці і прагрэсу",
     "mapZoomLabel": "Кіраванне маштабам карты",
     "activityMapLabel": "Карта дзейнасцяў",
     "@navOptionsLabel": {
@@ -9467,10 +9456,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

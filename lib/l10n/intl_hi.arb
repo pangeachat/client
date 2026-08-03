@@ -9728,7 +9728,6 @@
     "browsePublicCourses": "सार्वजनिक पाठ्यक्रम ब्राउज़ करें",
     "editProfile": "प्रोफ़ाइल संपादित करें",
     "mapSearchHint": "गतिविधियों की खोज करें",
-    "mapSearchNoResults": "दृश्य में कोई मेल नहीं",
     "mapFilterAllLanguages": "सभी भाषाएँ",
     "mapFilterNotStarted": "शुरू नहीं हुआ",
     "mapFilterInProgress": "प्रगति पर",
@@ -9737,7 +9736,6 @@
     "activityTypeConversation": "संवाद",
     "playAgain": "फिर से खेलें",
     "reviewActivity": "समीक्षा करें",
-    "mapEmptyInView": "आपके स्तर या भाषा में यहाँ कुछ नहीं है। अपने फ़िल्टर को चौड़ा करें या ज़ूम आउट करें।",
     "welcomeToPangeaChat": "Pangea चैट में आपका स्वागत है",
     "claimTrial": "अपना परीक्षण दावा करें",
     "thanksForSigningUp": "साइन अप करने के लिए धन्यवाद! यहाँ है",
@@ -9808,10 +9806,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9841,10 +9835,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10065,7 +10055,6 @@
     "analyticsAndSettingsLabel": "विश्लेषण और सेटिंग्स विकल्प",
     "searchActivitiesLabel": "मानचित्र पर गतिविधियों के लिए खोजें",
     "filteredActivitiesLabel": "फिल्टर की गई गतिविधियों की सूची",
-    "activityFilterButtonsLabel": "भाषा, कठिनाई, और प्रगति फ़िल्टर बटन",
     "mapZoomLabel": "मानचित्र ज़ूम नियंत्रण",
     "activityMapLabel": "गतिविधि मानचित्र",
     "@navOptionsLabel": {
@@ -10085,10 +10074,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

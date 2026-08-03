@@ -9133,7 +9133,6 @@
     "browsePublicCourses": "Selaa julkisia kursseja",
     "editProfile": "Muokkaa profiilia",
     "mapSearchHint": "Etsi aktiviteetteja",
-    "mapSearchNoResults": "Ei osumia näkymässä",
     "mapFilterAllLanguages": "Kaikki kielet",
     "mapFilterNotStarted": "Ei aloitettu",
     "mapFilterInProgress": "Käynnissä",
@@ -9142,7 +9141,6 @@
     "activityTypeConversation": "Keskustelu",
     "playAgain": "Pelaa uudelleen",
     "reviewActivity": "Arvioi",
-    "mapEmptyInView": "Täällä ei ole mitään tasollasi tai kielelläsi. Laajenna suodattimiasi tai zoomaa ulos.",
     "welcomeToPangeaChat": "Tervetuloa Pangea Chatiin",
     "claimTrial": "Vaatia kokeilujakso",
     "thanksForSigningUp": "Kiitos rekisteröitymisestä! Tässä on",
@@ -9213,10 +9211,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9246,10 +9240,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9470,7 +9460,6 @@
     "analyticsAndSettingsLabel": "Analytiikka- ja asetukset-vaihtoehdot",
     "searchActivitiesLabel": "Etsi aktiviteetteja kartalta",
     "filteredActivitiesLabel": "Suodatettu aktiviteettilista",
-    "activityFilterButtonsLabel": "Kielen, vaikeuden ja edistymisen suodatuspainikkeet",
     "mapZoomLabel": "Karttanäytön zoomausohjaimet",
     "activityMapLabel": "Aktiviteettikartta",
     "@navOptionsLabel": {
@@ -9490,10 +9479,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

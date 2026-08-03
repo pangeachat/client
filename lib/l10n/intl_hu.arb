@@ -9199,7 +9199,6 @@
     "browsePublicCourses": "Böngésszen a nyilvános kurzusok között",
     "editProfile": "Profil szerkesztése",
     "mapSearchHint": "Tevékenységek keresése",
-    "mapSearchNoResults": "Nincsenek találatok a nézetben",
     "mapFilterAllLanguages": "Minden nyelv",
     "mapFilterNotStarted": "Nem indult el",
     "mapFilterInProgress": "Folyamatban",
@@ -9208,7 +9207,6 @@
     "activityTypeConversation": "Beszélgetés",
     "playAgain": "Játssz újra",
     "reviewActivity": "Áttekintés",
-    "mapEmptyInView": "Itt semmi sincs a szintedhez vagy nyelvedhez. Szélesítsd a szűrőidet vagy nagyíts ki.",
     "welcomeToPangeaChat": "Üdvözlünk a Pangea Chatben",
     "claimTrial": "Kérd az ingyenes próbát",
     "thanksForSigningUp": "Köszönjük, hogy regisztráltál! Itt van",
@@ -9279,10 +9277,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9312,10 +9306,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9536,7 +9526,6 @@
     "analyticsAndSettingsLabel": "Elemzési és beállítási lehetőségek",
     "searchActivitiesLabel": "Tevékenységek keresése a térképen",
     "filteredActivitiesLabel": "Szűrt tevékenységek listája",
-    "activityFilterButtonsLabel": "Nyelv, nehézség és előrehaladás szűrőgombok",
     "mapZoomLabel": "Térkép nagyító vezérlők",
     "activityMapLabel": "Tevékenység térkép",
     "@navOptionsLabel": {
@@ -9556,10 +9545,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

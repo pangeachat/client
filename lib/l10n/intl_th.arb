@@ -9728,7 +9728,6 @@
     "browsePublicCourses": "เรียกดูหลักสูตรสาธารณะ",
     "editProfile": "แก้ไขโปรไฟล์",
     "mapSearchHint": "ค้นหากิจกรรม",
-    "mapSearchNoResults": "ไม่มีผลลัพธ์ในมุมมอง",
     "mapFilterAllLanguages": "ทุกภาษา",
     "mapFilterNotStarted": "ยังไม่เริ่ม",
     "mapFilterInProgress": "กำลังดำเนินการ",
@@ -9737,7 +9736,6 @@
     "activityTypeConversation": "การสนทนา",
     "playAgain": "เล่นอีกครั้ง",
     "reviewActivity": "ตรวจสอบ",
-    "mapEmptyInView": "ไม่มีอะไรที่นี่ในระดับหรือภาษาของคุณ ขยายตัวกรองของคุณหรือซูมออก",
     "welcomeToPangeaChat": "ยินดีต้อนรับสู่ Pangea Chat",
     "claimTrial": "ขอรับการทดลองใช้งาน",
     "thanksForSigningUp": "ขอบคุณที่ลงทะเบียน! นี่คือ",
@@ -9808,10 +9806,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9841,10 +9835,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10065,7 +10055,6 @@
     "analyticsAndSettingsLabel": "ตัวเลือกการวิเคราะห์และการตั้งค่า",
     "searchActivitiesLabel": "ค้นหากิจกรรมบนแผนที่",
     "filteredActivitiesLabel": "รายการกิจกรรมที่กรอง",
-    "activityFilterButtonsLabel": "ปุ่มกรองภาษา ความยาก และความก้าวหน้า",
     "mapZoomLabel": "การควบคุมการซูมแผนที่",
     "activityMapLabel": "แผนที่กิจกรรม",
     "@navOptionsLabel": {
@@ -10085,10 +10074,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

@@ -10052,7 +10052,6 @@
     "browsePublicCourses": "ప్రజా కోర్సులను బ్రౌజ్ చేయండి",
     "editProfile": "ప్రొఫైల్ సవరించండి",
     "mapSearchHint": "చర్యలను శోధించండి",
-    "mapSearchNoResults": "చూపులో సరిపోలడం లేదు",
     "mapFilterAllLanguages": "అన్ని భాషలు",
     "mapFilterNotStarted": "ప్రారంభించలేదు",
     "mapFilterInProgress": "జరుగుతోంది",
@@ -10061,7 +10060,6 @@
     "activityTypeConversation": "సంభాషణ",
     "playAgain": "మళ్లీ ఆడండి",
     "reviewActivity": "సమీక్ష",
-    "mapEmptyInView": "మీ స్థాయిలో లేదా భాషలో ఇక్కడ ఏమి లేదు. మీ ఫిల్టర్లను విస్తరించండి లేదా జూమ్ అవుట్ చేయండి.",
     "welcomeToPangeaChat": "పాంజియా చాట్‌కు స్వాగతం",
     "claimTrial": "మీ ట్రయల్‌ను క్లెయిమ్ చేయండి",
     "thanksForSigningUp": "సైన్ అప్ చేసినందుకు ధన్యవాదాలు! ఇది",
@@ -10132,10 +10130,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10165,10 +10159,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10389,7 +10379,6 @@
     "analyticsAndSettingsLabel": "విశ్లేషణ మరియు సెట్టింగ్స్ ఎంపికలు",
     "searchActivitiesLabel": "నకశా పై కార్యకలాపాలను శోధించండి",
     "filteredActivitiesLabel": "ఫిల్టర్ చేసిన కార్యకలాపాల జాబితా",
-    "activityFilterButtonsLabel": "భాష, కష్టత, మరియు పురోగతి ఫిల్టర్ బటన్లు",
     "mapZoomLabel": "నకశా జూమ్ నియంత్రణలు",
     "activityMapLabel": "కార్యకలాపాల నకశా",
     "@navOptionsLabel": {
@@ -10409,10 +10398,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

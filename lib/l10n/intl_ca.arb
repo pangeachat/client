@@ -9223,7 +9223,6 @@
     "browsePublicCourses": "Explora cursos públics",
     "editProfile": "Edita el perfil",
     "mapSearchHint": "Cerca activitats",
-    "mapSearchNoResults": "Sense coincidències a la vista",
     "mapFilterAllLanguages": "Totes les llengües",
     "mapFilterNotStarted": "No iniciat",
     "mapFilterInProgress": "En curs",
@@ -9232,7 +9231,6 @@
     "activityTypeConversation": "Conversació",
     "playAgain": "Juga de nou",
     "reviewActivity": "Revisar",
-    "mapEmptyInView": "No hi ha res aquí al teu nivell o idioma. Ampliu els vostres filtres o allunyeu-vos.",
     "welcomeToPangeaChat": "Benvingut a Pangea Chat",
     "claimTrial": "Reclama la teva prova",
     "thanksForSigningUp": "Gràcies per registrar-te! Aquí tens",
@@ -9303,10 +9301,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9336,10 +9330,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9560,7 +9550,6 @@
     "analyticsAndSettingsLabel": "Opcions d'analítica i configuració",
     "searchActivitiesLabel": "Cerca d'activitats al mapa",
     "filteredActivitiesLabel": "Llista d'activitats filtrades",
-    "activityFilterButtonsLabel": "Botons de filtre de llengua, dificultat i progrés",
     "mapZoomLabel": "Controls de zoom del mapa",
     "activityMapLabel": "Mapa d'activitats",
     "@navOptionsLabel": {
@@ -9580,10 +9569,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

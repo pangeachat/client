@@ -8707,7 +8707,6 @@
     "browsePublicCourses": "Shfletoni kurset publike",
     "editProfile": "Redaktoni profilin",
     "mapSearchHint": "Kërkoni aktivitete",
-    "mapSearchNoResults": "Nuk ka përputhje në pamje",
     "mapFilterAllLanguages": "Të gjitha gjuhët",
     "mapFilterNotStarted": "Nuk ka filluar",
     "mapFilterInProgress": "Në proces",
@@ -8716,7 +8715,6 @@
     "activityTypeConversation": "Konversasi",
     "playAgain": "Main lagi",
     "reviewActivity": "Tinjau",
-    "mapEmptyInView": "Tidak ada di sini pada level atau bahasa Anda. Perluas filter Anda atau perbesar.",
     "welcomeToPangeaChat": "Selamat datang di Pangea Chat",
     "claimTrial": "Klaim percobaan Anda",
     "thanksForSigningUp": "Terima kasih telah mendaftar! Ini dia",
@@ -8787,10 +8785,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -8820,10 +8814,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9044,7 +9034,6 @@
     "analyticsAndSettingsLabel": "Opsi Analitik dan Pengaturan",
     "searchActivitiesLabel": "Cari aktivitas di peta",
     "filteredActivitiesLabel": "Daftar aktivitas yang difilter",
-    "activityFilterButtonsLabel": "Tombol filter bahasa, kesulitan, dan kemajuan",
     "mapZoomLabel": "Kontrol zoom peta",
     "activityMapLabel": "Peta aktivitas",
     "@navOptionsLabel": {
@@ -9064,10 +9053,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

@@ -9096,7 +9096,6 @@
     "browsePublicCourses": "Переглянути публічні курси",
     "editProfile": "Редагувати профіль",
     "mapSearchHint": "Шукати активності",
-    "mapSearchNoResults": "Немає збігів у виді",
     "mapFilterAllLanguages": "Усі мови",
     "mapFilterNotStarted": "Не розпочато",
     "mapFilterInProgress": "В процесі",
@@ -9105,7 +9104,6 @@
     "activityTypeConversation": "Розмова",
     "playAgain": "Грати знову",
     "reviewActivity": "Огляд",
-    "mapEmptyInView": "Тут нічого немає на вашому рівні або мові. Розширте свої фільтри або зменшіть масштаб.",
     "welcomeToPangeaChat": "Ласкаво просимо до Pangea Chat",
     "claimTrial": "Отримайте свій безкоштовний пробний період",
     "thanksForSigningUp": "Дякуємо за реєстрацію! Ось",
@@ -9176,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9209,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9433,7 +9423,6 @@
     "analyticsAndSettingsLabel": "Параметри аналітики та налаштувань",
     "searchActivitiesLabel": "Пошук активностей на карті",
     "filteredActivitiesLabel": "Список відфільтрованих активностей",
-    "activityFilterButtonsLabel": "Кнопки фільтрації за мовою, складністю та прогресом",
     "mapZoomLabel": "Елементи керування масштабом карти",
     "activityMapLabel": "Карта активностей",
     "@navOptionsLabel": {
@@ -9453,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

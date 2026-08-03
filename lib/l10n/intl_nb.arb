@@ -9153,7 +9153,6 @@
     "browsePublicCourses": "Bla gjennom offentlige kurs",
     "editProfile": "Rediger profil",
     "mapSearchHint": "Søk aktiviteter",
-    "mapSearchNoResults": "Ingen treff i visningen",
     "mapFilterAllLanguages": "Alle språk",
     "mapFilterNotStarted": "Ikke startet",
     "mapFilterInProgress": "Pågår",
@@ -9162,7 +9161,6 @@
     "activityTypeConversation": "Samtale",
     "playAgain": "Spill igjen",
     "reviewActivity": "Vurder",
-    "mapEmptyInView": "Ingenting her på ditt nivå eller språk. Utvid filtrene dine eller zoom ut.",
     "welcomeToPangeaChat": "Velkommen til Pangea Chat",
     "claimTrial": "Krev din prøveperiode",
     "thanksForSigningUp": "Takk for at du registrerte deg! Her er",
@@ -9233,10 +9231,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9266,10 +9260,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9490,7 +9480,6 @@
     "analyticsAndSettingsLabel": "Analyse- og innstillingsalternativer",
     "searchActivitiesLabel": "Søk etter aktiviteter på kartet",
     "filteredActivitiesLabel": "Filtrert aktivitetsliste",
-    "activityFilterButtonsLabel": "Språk-, vanskelighetsgrad- og fremdriftsfilterknapper",
     "mapZoomLabel": "Kartzoomkontroller",
     "activityMapLabel": "Aktivitetskart",
     "@navOptionsLabel": {
@@ -9510,10 +9499,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

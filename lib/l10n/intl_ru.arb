@@ -10070,7 +10070,6 @@
     "browsePublicCourses": "Просмотреть публичные курсы",
     "editProfile": "Редактировать профиль",
     "mapSearchHint": "Поиск мероприятий",
-    "mapSearchNoResults": "Нет совпадений в области видимости",
     "mapFilterAllLanguages": "Все языки",
     "mapFilterNotStarted": "Не начато",
     "mapFilterInProgress": "В процессе",
@@ -10079,7 +10078,6 @@
     "activityTypeConversation": "Разговор",
     "playAgain": "Играть снова",
     "reviewActivity": "Обзор",
-    "mapEmptyInView": "Здесь ничего нет на вашем уровне или языке. Расширьте свои фильтры или уменьшите масштаб.",
     "welcomeToPangeaChat": "Добро пожаловать в Pangea Chat",
     "claimTrial": "Получите свою пробную версию",
     "thanksForSigningUp": "Спасибо за регистрацию! Вот",
@@ -10150,10 +10148,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10183,10 +10177,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10407,7 +10397,6 @@
     "analyticsAndSettingsLabel": "Опции аналитики и настроек",
     "searchActivitiesLabel": "Поиск активностей на карте",
     "filteredActivitiesLabel": "Список отфильтрованных активностей",
-    "activityFilterButtonsLabel": "Кнопки фильтрации по языку, сложности и прогрессу",
     "mapZoomLabel": "Элементы управления масштабом карты",
     "activityMapLabel": "Карта активностей",
     "@navOptionsLabel": {
@@ -10427,10 +10416,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

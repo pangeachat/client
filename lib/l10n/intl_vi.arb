@@ -6362,7 +6362,6 @@
     "browsePublicCourses": "Duyệt các khóa học công khai",
     "editProfile": "Chỉnh sửa hồ sơ",
     "mapSearchHint": "Tìm kiếm hoạt động",
-    "mapSearchNoResults": "Không có kết quả nào trong chế độ xem",
     "mapFilterAllLanguages": "Tất cả các ngôn ngữ",
     "mapFilterNotStarted": "Chưa bắt đầu",
     "mapFilterInProgress": "Đang tiến hành",
@@ -6371,7 +6370,6 @@
     "activityTypeConversation": "Cuộc trò chuyện",
     "playAgain": "Chơi lại",
     "reviewActivity": "Xem lại",
-    "mapEmptyInView": "Không có gì ở cấp độ hoặc ngôn ngữ của bạn. Mở rộng bộ lọc của bạn hoặc thu nhỏ.",
     "welcomeToPangeaChat": "Chào mừng đến với Pangea Chat",
     "claimTrial": "Nhận thử nghiệm của bạn",
     "thanksForSigningUp": "Cảm ơn bạn đã đăng ký! Đây là",
@@ -6442,10 +6440,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -6475,10 +6469,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -6699,7 +6689,6 @@
     "analyticsAndSettingsLabel": "Tùy chọn phân tích và cài đặt",
     "searchActivitiesLabel": "Tìm kiếm hoạt động trên bản đồ",
     "filteredActivitiesLabel": "Danh sách hoạt động đã lọc",
-    "activityFilterButtonsLabel": "Nút lọc ngôn ngữ, độ khó và tiến độ",
     "mapZoomLabel": "Điều khiển phóng to bản đồ",
     "activityMapLabel": "Bản đồ hoạt động",
     "@navOptionsLabel": {
@@ -6719,10 +6708,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },

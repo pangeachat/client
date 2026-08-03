@@ -9728,7 +9728,6 @@
     "browsePublicCourses": "Parcourir les cours publics",
     "editProfile": "Modifier le profil",
     "mapSearchHint": "Rechercher des activités",
-    "mapSearchNoResults": "Aucun résultat dans la vue",
     "mapFilterAllLanguages": "Toutes les langues",
     "mapFilterNotStarted": "Pas commencé",
     "mapFilterInProgress": "En cours",
@@ -9737,7 +9736,6 @@
     "activityTypeConversation": "Conversación",
     "playAgain": "Jugar de nuevo",
     "reviewActivity": "Revisar",
-    "mapEmptyInView": "Nada aquí en tu nivel o idioma. Amplía tus filtros o aleja.",
     "welcomeToPangeaChat": "Bienvenido a Pangea Chat",
     "claimTrial": "Reclama tu prueba",
     "thanksForSigningUp": "¡Gracias por registrarte! Aquí está",
@@ -9808,10 +9806,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9841,10 +9835,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10065,7 +10055,6 @@
     "analyticsAndSettingsLabel": "Roghaí anailíse agus socruithe",
     "searchActivitiesLabel": "Cuardaigh gníomhaíochtaí ar an mapa",
     "filteredActivitiesLabel": "Liosta gníomhaíochtaí scagtha",
-    "activityFilterButtonsLabel": "Cnaipí scagtha teanga, deacrachta, agus dul chun cinn",
     "mapZoomLabel": "Rialuithe greamaithe mapa",
     "activityMapLabel": "Mapa gníomhaíochta",
     "@navOptionsLabel": {
@@ -10085,10 +10074,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
