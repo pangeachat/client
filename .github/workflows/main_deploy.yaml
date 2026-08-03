@@ -54,7 +54,7 @@ jobs:
           flutter config --enable-web
           flutter clean
           flutter pub get
-          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps --build-number=$(date -u +%d%H%M)
+          ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile --source-maps --build-number=$(date -u +%d%H%M)
 
       - name: Version Material Icons font
         run: |
@@ -229,9 +229,14 @@ jobs:
               || { echo "::error::.well-known/$f is missing, invalid JSON, or lacks the app id (SPA fallback?)"; exit 1; }
           done
 
-          # 2. Runtime entry scripts serve as JavaScript, not the SPA shell.
-          for f in flutter.js main.dart.js; do
-            head=$(curl -sf "$BASE/$f" | head -c 1)
+          # 2. Runtime entry scripts — and the versioned CanvasKit dir this
+          #    exact build requests (scripts/build-web-versioned-canvaskit.sh)
+          #    — serve as JavaScript, not the SPA shell.
+          CK_REV=$(ls build/web/canvaskit)
+          for f in flutter.js main.dart.js "canvaskit/$CK_REV/canvaskit.js"; do
+            # First non-whitespace byte: canvaskit.js opens with a newline,
+            # which a bare `head -c 1` + command substitution would eat.
+            head=$(curl -sf "$BASE/$f" | tr -d '[:space:]' | head -c 1)
             [ "$head" != "<" ] && [ -n "$head" ] \
               || { echo "::error::$f served HTML or empty — partial deploy?"; exit 1; }
           done
