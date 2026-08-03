@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-31 10:55:39.027821",
+    "@@last_modified": "2026-07-31 12:37:35.266316",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Däi Fortschrëtt an der aktueller Vokabelübungssessioun gëtt net gespäichert.",
     "exitGrammarPracticeSession": "Däi Fortschrëtt an der aktueller Grammatikübungssessioun gëtt net gespäichert.",
     "autoReadAloudMessagesToolName": "All empfaangen Noriichten automatesch virliesen",
-    "autoReadAloudMessagesDescription": "Wann eng Noriicht empfaange gëtt, gëtt d'Stëmm vum Apparat benotzt fir d'Noriicht haart virzeliesen fir d'Nolauschterpraxis."
+    "autoReadAloudMessagesDescription": "Wann eng Noriicht empfaange gëtt, gëtt d'Stëmm vum Apparat benotzt fir d'Noriicht haart virzeliesen fir d'Nolauschterpraxis.",
+    "practiceSessionTimedOut": "Deng Übungssessioun ass no {minutes} Minutten ouni Aktivitéit ofgelaf."
 }

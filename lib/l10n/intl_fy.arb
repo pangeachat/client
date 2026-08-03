@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-07-31 10:55:35.166603",
+    "@@last_modified": "2026-07-31 12:37:32.694923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "De foarútgong fan jo hjoeddeistige wurdskat-oefensesje wurdt net bewarre.",
     "exitGrammarPracticeSession": "De foarútgong fan jo hjoeddeistige grammatika-oefensesje wurdt net bewarre.",
     "autoReadAloudMessagesToolName": "Lês alle ûntfongen berjochten automatysk foar",
-    "autoReadAloudMessagesDescription": "As in berjocht ûntfongen wurdt, sil de stim fan it apparaat brûkt wurde om it berjocht foar te lêzen foar harkpraktyk."
+    "autoReadAloudMessagesDescription": "As in berjocht ûntfongen wurdt, sil de stim fan it apparaat brûkt wurde om it berjocht foar te lêzen foar harkpraktyk.",
+    "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit."
 }

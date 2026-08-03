@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-07-31 10:55:44.411325",
+    "@@last_modified": "2026-07-31 12:37:40.692935",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Kamajuan sési latihan kosakata anjeun ayeuna moal disimpen.",
     "exitGrammarPracticeSession": "Kamajuan sési latihan tata basa anjeun ayeuna moal disimpen.",
     "autoReadAloudMessagesToolName": "Otomatis maca tarik sadaya talatah nu ditarima",
-    "autoReadAloudMessagesDescription": "Nalika talatah ditarima, sora alat bakal dipaké pikeun maca talatah tarik pikeun latihan ngaregepkeun."
+    "autoReadAloudMessagesDescription": "Nalika talatah ditarima, sora alat bakal dipaké pikeun maca talatah tarik pikeun latihan ngaregepkeun.",
+    "practiceSessionTimedOut": "Sési latihan anjeun réngsé saatos {minutes} menit tanpa kagiatan."
 }

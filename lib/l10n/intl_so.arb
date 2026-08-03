@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-31 10:55:44.314043",
+    "@@last_modified": "2026-07-31 12:37:40.257762",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Horumarkaaga fadhiga ku celcelinta erayada hadda lama kaydin doono.",
     "exitGrammarPracticeSession": "Horumarkaaga fadhiga ku celcelinta naxwaha hadda lama kaydin doono.",
     "autoReadAloudMessagesToolName": "Si toos ah u akhri dhammaan fariimaha la helay",
-    "autoReadAloudMessagesDescription": "Marka fariin la helo, codka qalabka ayaa loo isticmaali doonaa inuu si cod ah u akhriyo fariinta si loogu tababarto dhegeysiga."
+    "autoReadAloudMessagesDescription": "Marka fariin la helo, codka qalabka ayaa loo isticmaali doonaa inuu si cod ah u akhriyo fariinta si loogu tababarto dhegeysiga.",
+    "practiceSessionTimedOut": "Fadhigaaga tababarka wuxuu dhammaaday {minutes} daqiiqo ka dib markii aan wax dhaqdhaqaaq ah la samayn."
 }

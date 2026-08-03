@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-07-31 10:55:35.484083",
+    "@@last_modified": "2026-07-31 12:37:31.389848",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Cha tèid adhartas an t-seisein cleachdaidh briathrachais làithreach agad a shàbhaladh.",
     "exitGrammarPracticeSession": "Cha tèid adhartas an t-seisein cleachdaidh gràmair làithreach agad a shàbhaladh.",
     "autoReadAloudMessagesToolName": "Leugh a-mach gu fèin-obrachail a h-uile teachdaireachd a gheibhear",
-    "autoReadAloudMessagesDescription": "Nuair a gheibhear teachdaireachd, thèid guth an uidheim a chleachdadh gus an teachdaireachd a leughadh a-mach airson cleachdadh èisteachd."
+    "autoReadAloudMessagesDescription": "Nuair a gheibhear teachdaireachd, thèid guth an uidheim a chleachdadh gus an teachdaireachd a leughadh a-mach airson cleachdadh èisteachd.",
+    "practiceSessionTimedOut": "Thàinig an seisean cleachdaidh agad gu crìch an dèidh {minutes} mionaid gun ghnìomhachd."
 }

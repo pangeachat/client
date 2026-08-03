@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-31 10:55:33.841196",
+    "@@last_modified": "2026-07-31 12:37:29.748100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer geirfa gyfredol ei gadw.",
     "exitGrammarPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer gramadeg gyfredol ei gadw.",
     "autoReadAloudMessagesToolName": "Darllenwch bob neges a dderbyniwyd yn awtomatig",
-    "autoReadAloudMessagesDescription": "Pan dderbynnir neges, bydd llais y ddyfais yn cael ei ddefnyddio i ddarllen y neges yn uchel ar gyfer ymarfer gwrando."
+    "autoReadAloudMessagesDescription": "Pan dderbynnir neges, bydd llais y ddyfais yn cael ei ddefnyddio i ddarllen y neges yn uchel ar gyfer ymarfer gwrando.",
+    "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch."
 }

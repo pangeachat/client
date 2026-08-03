@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:37.429638",
+    "@@last_modified": "2026-07-31 12:37:33.600563",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9766,5 +9766,6 @@
     "exitVocabPracticeSession": "I progressi della tua attuale sessione di pratica del vocabolario non verranno salvati.",
     "exitGrammarPracticeSession": "I progressi della tua attuale sessione di pratica della grammatica non verranno salvati.",
     "autoReadAloudMessagesToolName": "Leggi automaticamente tutti i messaggi ricevuti",
-    "autoReadAloudMessagesDescription": "Quando un messaggio viene ricevuto, la voce del dispositivo verrà utilizzata per leggere il messaggio ad alta voce per la pratica dell'ascolto."
+    "autoReadAloudMessagesDescription": "Quando un messaggio viene ricevuto, la voce del dispositivo verrà utilizzata per leggere il messaggio ad alta voce per la pratica dell'ascolto.",
+    "practiceSessionTimedOut": "La tua sessione di pratica è terminata dopo {minutes} minuti di inattività."
 }

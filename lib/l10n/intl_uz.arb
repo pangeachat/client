@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-31 10:55:45.504129",
+    "@@last_modified": "2026-07-31 12:37:41.708771",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9697,5 +9697,6 @@
     "exitVocabPracticeSession": "Joriy lugʻat mashgʻuloti jarayoni saqlanmaydi.",
     "exitGrammarPracticeSession": "Joriy grammatika mashgʻuloti jarayoni saqlanmaydi.",
     "autoReadAloudMessagesToolName": "Barcha qabul qilingan xabarlarni avtomatik o'qish",
-    "autoReadAloudMessagesDescription": "Xabar qabul qilinganda, tinglash amaliyoti uchun qurilma ovozi xabarni baland ovozda o'qish uchun ishlatiladi."
+    "autoReadAloudMessagesDescription": "Xabar qabul qilinganda, tinglash amaliyoti uchun qurilma ovozi xabarni baland ovozda o'qish uchun ishlatiladi.",
+    "practiceSessionTimedOut": "Faoliyatsiz {minutes} daqiqadan so‘ng mashg‘ulotingiz tugadi."
 }

@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-31 10:55:42.748081",
+    "@@last_modified": "2026-07-31 12:37:39.882715",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10644,5 +10644,6 @@
     "exitVocabPracticeSession": "Napredek trenutne vaje besedišča ne bo shranjen.",
     "exitGrammarPracticeSession": "Napredek trenutne vaje slovnice ne bo shranjen.",
     "autoReadAloudMessagesToolName": "Samodejno preberi vsa prejeta sporočila",
-    "autoReadAloudMessagesDescription": "Ko je sporočilo prejeto, bo glas naprave uporabljen za branje sporočila na glas za vajo poslušanja."
+    "autoReadAloudMessagesDescription": "Ko je sporočilo prejeto, bo glas naprave uporabljen za branje sporočila na glas za vajo poslušanja.",
+    "practiceSessionTimedOut": "Vaša vaja se je končala po {minutes} minutah neaktivnosti."
 }

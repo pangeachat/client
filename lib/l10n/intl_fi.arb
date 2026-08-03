@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-31 10:55:34.417434",
+    "@@last_modified": "2026-07-31 12:37:30.765002",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9730,5 +9730,6 @@
     "exitVocabPracticeSession": "Nykyisen sanastoharjoittelun edistymistä ei tallenneta.",
     "exitGrammarPracticeSession": "Nykyisen kielioppiharjoittelun edistymistä ei tallenneta.",
     "autoReadAloudMessagesToolName": "Lue kaikki vastaanotetut viestit ääneen automaattisesti",
-    "autoReadAloudMessagesDescription": "Kun viesti vastaanotetaan, laitteen ääntä käytetään viestin lukemiseen ääneen kuunteluharjoitusta varten."
+    "autoReadAloudMessagesDescription": "Kun viesti vastaanotetaan, laitteen ääntä käytetään viestin lukemiseen ääneen kuunteluharjoitusta varten.",
+    "practiceSessionTimedOut": "Harjoitussessiosi päättyi {minutes} minuutin käyttämättömyyden jälkeen."
 }

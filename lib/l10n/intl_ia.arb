@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-31 10:55:37.055548",
+    "@@last_modified": "2026-07-31 12:37:32.553126",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10635,5 +10635,6 @@
     "exitVocabPracticeSession": "Le progresso de tu session actual de practica de vocabulario non essera salvate.",
     "exitGrammarPracticeSession": "Le progresso de tu session actual de practica de grammatica non essera salvate.",
     "autoReadAloudMessagesToolName": "Lege automaticamente a alte voce tote le messages recipite",
-    "autoReadAloudMessagesDescription": "Quando un message es recipite, le voce del apparato essera usate pro leger le message a alte voce pro practica de ascolta."
+    "autoReadAloudMessagesDescription": "Quando un message es recipite, le voce del apparato essera usate pro leger le message a alte voce pro practica de ascolta.",
+    "practiceSessionTimedOut": "Tu session de practica ha terminate post {minutes} minutas sin activitate."
 }

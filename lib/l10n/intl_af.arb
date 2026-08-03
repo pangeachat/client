@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-07-31 10:55:32.572675",
+    "@@last_modified": "2026-07-31 12:37:29.432661",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Jou huidige woordeskat-oefensessie se vordering sal nie gestoor word nie.",
     "exitGrammarPracticeSession": "Jou huidige grammatika-oefensessie se vordering sal nie gestoor word nie.",
     "autoReadAloudMessagesToolName": "Lees outomaties alle ontvangde boodskappe hardop voor",
-    "autoReadAloudMessagesDescription": "Wanneer 'n boodskap ontvang word, sal die toestelstem gebruik word om die boodskap hardop voor te lees vir luisteroefening."
+    "autoReadAloudMessagesDescription": "Wanneer 'n boodskap ontvang word, sal die toestelstem gebruik word om die boodskap hardop voor te lees vir luisteroefening.",
+    "practiceSessionTimedOut": "Jou oefensessie het geëindig na {minutes} minute van onaktiwiteit."
 }

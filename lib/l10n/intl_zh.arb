@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-31 10:55:45.458062",
+    "@@last_modified": "2026-07-31 12:37:42.519828",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,6 @@
     "exitVocabPracticeSession": "您当前词汇练习的进度将不会被保存。",
     "exitGrammarPracticeSession": "您当前语法练习的进度将不会被保存。",
     "autoReadAloudMessagesToolName": "自动朗读所有收到的消息",
-    "autoReadAloudMessagesDescription": "收到消息时，设备语音将朗读消息，以供听力练习。"
+    "autoReadAloudMessagesDescription": "收到消息时，设备语音将朗读消息，以供听力练习。",
+    "practiceSessionTimedOut": "您的练习会话因{minutes}分钟无活动而结束。"
 }

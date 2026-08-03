@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-31 10:55:39.960376",
+    "@@last_modified": "2026-07-31 12:37:36.089785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana voambolana ity.",
     "exitGrammarPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana fitsipi-pitenenana ity.",
     "autoReadAloudMessagesToolName": "Vakio ho azy mafy ny hafatra rehetra voaray",
-    "autoReadAloudMessagesDescription": "Rehefa misy hafatra voaray, dia hampiasaina ny feon'ny fitaovana hamakiana mafy ny hafatra ho an'ny fampiharana fihainoana."
+    "autoReadAloudMessagesDescription": "Rehefa misy hafatra voaray, dia hampiasaina ny feon'ny fitaovana hamakiana mafy ny hafatra ho an'ny fampiharana fihainoana.",
+    "practiceSessionTimedOut": "Nifarana ny fotoana fanaovanao fanazaran-tena rehefa afaka {minutes} minitra tsy nisy hetsika."
 }

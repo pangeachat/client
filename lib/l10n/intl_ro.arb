@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:42.734212",
+    "@@last_modified": "2026-07-31 12:37:39.577608",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10425,5 +10425,6 @@
     "exitVocabPracticeSession": "Progresul sesiunii curente de exersare a vocabularului nu va fi salvat.",
     "exitGrammarPracticeSession": "Progresul sesiunii curente de exersare a gramaticii nu va fi salvat.",
     "autoReadAloudMessagesToolName": "Citește automat cu voce tare toate mesajele primite",
-    "autoReadAloudMessagesDescription": "Când este primit un mesaj, vocea dispozitivului va fi utilizată pentru a citi mesajul cu voce tare pentru exersarea ascultării."
+    "autoReadAloudMessagesDescription": "Când este primit un mesaj, vocea dispozitivului va fi utilizată pentru a citi mesajul cu voce tare pentru exersarea ascultării.",
+    "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate."
 }

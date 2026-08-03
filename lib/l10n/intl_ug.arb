@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-07-31 10:55:45.576553",
+    "@@last_modified": "2026-07-31 12:37:43.738271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "ھازىرقى سۆزلۈك مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ.",
     "exitGrammarPracticeSession": "ھازىرقى گرامماتىكا مەشىق دەرسىڭىزنىڭ ئىلگىرىلەش ئەھۋالى ساقلانمايدۇ.",
     "autoReadAloudMessagesToolName": "قوبۇل قىلىنغان بارلىق ئۇچۇرلارنى ئاپتوماتىك ئوقۇش",
-    "autoReadAloudMessagesDescription": "ئۇچۇر قوبۇل قىلىنغاندا، ئۈسكۈنىنىڭ ئاۋازى ئىشلىتىلىپ، ئاڭلاش مەشىقى ئۈچۈن ئۇچۇرنى ئوقۇيدۇ."
+    "autoReadAloudMessagesDescription": "ئۇچۇر قوبۇل قىلىنغاندا، ئۈسكۈنىنىڭ ئاۋازى ئىشلىتىلىپ، ئاڭلاش مەشىقى ئۈچۈن ئۇچۇرنى ئوقۇيدۇ.",
+    "practiceSessionTimedOut": "مەشقىڭىز {minutes} مىنۇت ھەرىكەتسىز تۇرغاندىن كېيىن ئاخىرلاشتى."
 }

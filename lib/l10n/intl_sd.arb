@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-31 10:55:43.592129",
+    "@@last_modified": "2026-07-31 12:37:39.286013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "توهان جي موجوده لفظن جي مشق سيشن جي ترقي محفوظ نه ٿيندي.",
     "exitGrammarPracticeSession": "توهان جي موجوده گرامر جي مشق سيشن جي ترقي محفوظ نه ٿيندي.",
     "autoReadAloudMessagesToolName": "سڀني موصول ٿيل پيغامن کي پاڻمرادو بلند آواز سان پڙهو",
-    "autoReadAloudMessagesDescription": "جڏهن ڪو پيغام موصول ٿيندو، ته ڊوائيس جو آواز ٻڌڻ جي مشق لاءِ پيغام کي بلند آواز سان پڙهڻ لاءِ استعمال ڪيو ويندو."
+    "autoReadAloudMessagesDescription": "جڏهن ڪو پيغام موصول ٿيندو، ته ڊوائيس جو آواز ٻڌڻ جي مشق لاءِ پيغام کي بلند آواز سان پڙهڻ لاءِ استعمال ڪيو ويندو.",
+    "practiceSessionTimedOut": "توهان جو مشق سيشن {minutes} منٽن جي غير فعاليت کان پوءِ ختم ٿي ويو."
 }

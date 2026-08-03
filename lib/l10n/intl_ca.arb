@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:32.630552",
+    "@@last_modified": "2026-07-31 12:37:29.214007",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9820,5 +9820,6 @@
     "exitVocabPracticeSession": "El progrés de la sessió actual de pràctica de vocabulari no es desarà.",
     "exitGrammarPracticeSession": "El progrés de la sessió actual de pràctica de gramàtica no es desarà.",
     "autoReadAloudMessagesToolName": "Llegir en veu alta automàticament tots els missatges rebuts",
-    "autoReadAloudMessagesDescription": "Quan es rep un missatge, la veu del dispositiu s'utilitzarà per llegir el missatge en veu alta per practicar l'escolta."
+    "autoReadAloudMessagesDescription": "Quan es rep un missatge, la veu del dispositiu s'utilitzarà per llegir el missatge en veu alta per practicar l'escolta.",
+    "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat."
 }

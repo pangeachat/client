@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-31 10:55:44.759546",
+    "@@last_modified": "2026-07-31 12:37:42.774515",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10325,5 +10325,6 @@
     "exitVocabPracticeSession": "ความคืบหน้าของเซสชันฝึกคำศัพท์ปัจจุบันของคุณจะไม่ถูกบันทึก",
     "exitGrammarPracticeSession": "ความคืบหน้าของเซสชันฝึกไวยากรณ์ปัจจุบันของคุณจะไม่ถูกบันทึก",
     "autoReadAloudMessagesToolName": "อ่านออกเสียงข้อความที่ได้รับทั้งหมดโดยอัตโนมัติ",
-    "autoReadAloudMessagesDescription": "เมื่อได้รับข้อความ เสียงของอุปกรณ์จะถูกใช้เพื่ออ่านออกเสียงข้อความสำหรับการฝึกฟัง"
+    "autoReadAloudMessagesDescription": "เมื่อได้รับข้อความ เสียงของอุปกรณ์จะถูกใช้เพื่ออ่านออกเสียงข้อความสำหรับการฝึกฟัง",
+    "practiceSessionTimedOut": "เซสชันฝึกฝนของคุณสิ้นสุดลงหลังจากไม่มีกิจกรรมเป็นเวลา {minutes} นาที"
 }

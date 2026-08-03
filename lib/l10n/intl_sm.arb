@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-31 10:55:43.208617",
+    "@@last_modified": "2026-07-31 12:37:39.889956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i upu o lo'o iai nei o le a le fa'asaoina.",
     "exitGrammarPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i kalama o lo'o iai nei o le a le fa'asaoina.",
     "autoReadAloudMessagesToolName": "Faitau otometi ma le leo tele feʻau uma na maua",
-    "autoReadAloudMessagesDescription": "A maua se feʻau, o le a faʻaaogaina le leo o le masini e faitau leotele ai le feʻau mo le faʻataʻitaʻiga o le faʻalogo."
+    "autoReadAloudMessagesDescription": "A maua se feʻau, o le a faʻaaogaina le leo o le masini e faitau leotele ai le feʻau mo le faʻataʻitaʻiga o le faʻalogo.",
+    "practiceSessionTimedOut": "Ua maeʻa lau sauniga faʻataʻitaʻi pe a maeʻa le {minutes} minute e aunoa ma se gaioiga."
 }

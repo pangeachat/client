@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-31 10:55:38.682495",
+    "@@last_modified": "2026-07-31 12:37:37.311661",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Progressus sessionis praesentis exercitationis vocabulorum non servabitur.",
     "exitGrammarPracticeSession": "Progressus sessionis praesentis exercitationis grammaticae non servabitur.",
     "autoReadAloudMessagesToolName": "Sponte legere nuntios acceptos",
-    "autoReadAloudMessagesDescription": "Cum nuntius accipitur, vox machinae ad legendum nuntium adhibebitur ad exercitationem audiendi."
+    "autoReadAloudMessagesDescription": "Cum nuntius accipitur, vox machinae ad legendum nuntium adhibebitur ad exercitationem audiendi.",
+    "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione."
 }

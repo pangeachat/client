@@ -3104,7 +3104,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-07-31 10:55:37.022970",
+    "@@last_modified": "2026-07-31 12:37:39.733679",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10325,5 +10325,6 @@
     "exitVocabPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh foclóra reatha.",
     "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha.",
     "autoReadAloudMessagesToolName": "Léigh gach teachtaireacht a fhaightear os ard go huathoibríoch",
-    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta."
+    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta.",
+    "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan aon ghníomhaíocht."
 }

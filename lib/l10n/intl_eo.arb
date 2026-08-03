@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:34.604585",
+    "@@last_modified": "2026-07-31 12:37:30.180960",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10644,5 +10644,6 @@
     "exitVocabPracticeSession": "Via nuna progreso en la vortopraktika sesio ne estos konservita.",
     "exitGrammarPracticeSession": "Via nuna progreso en la gramatikpraktika sesio ne estos konservita.",
     "autoReadAloudMessagesToolName": "Aŭtomate laŭtlegi ĉiujn ricevitajn mesaĝojn",
-    "autoReadAloudMessagesDescription": "Kiam mesaĝo estas ricevita, la voĉo de la aparato estos uzata por laŭtlegi la mesaĝon por aŭskulta praktiko."
+    "autoReadAloudMessagesDescription": "Kiam mesaĝo estas ricevita, la voĉo de la aparato estos uzata por laŭtlegi la mesaĝon por aŭskulta praktiko.",
+    "practiceSessionTimedOut": "Via ekzercsesio finiĝis post {minutes} minutoj sen aktiveco."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-31 10:55:47.150192",
+    "@@last_modified": "2026-07-31 12:37:43.333427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza amagama ngeke ilondolozwe.",
     "exitGrammarPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza uhlelo lolimi ngeke ilondolozwe.",
     "autoReadAloudMessagesToolName": "Funda ngokuzenzakalelayo yonke imilayezo etholiwe",
-    "autoReadAloudMessagesDescription": "Uma kutholwa umlayezo, izwi ledivayisi lizosetshenziswa ukufunda umlayezo ukuze kuzilolwe ukulalela."
+    "autoReadAloudMessagesDescription": "Uma kutholwa umlayezo, izwi ledivayisi lizosetshenziswa ukufunda umlayezo ukuze kuzilolwe ukulalela.",
+    "practiceSessionTimedOut": "Iseshini yakho yokuzijwayeza iphele ngemuva kwemizuzu engu-{minutes} ngaphandle komsebenzi."
 }

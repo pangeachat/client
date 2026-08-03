@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-31 10:55:40.637761",
+    "@@last_modified": "2026-07-31 12:37:36.264370",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau kupu o nāianei.",
     "exitGrammarPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau wetereo o nāianei.",
     "autoReadAloudMessagesToolName": "Pānui aunoa i ngā karere katoa ka tae mai",
-    "autoReadAloudMessagesDescription": "Ka tae mai he karere, ka whakamahia te reo o te pūrere ki te pānui i te karere kia whakaharatau ai te whakarongo."
+    "autoReadAloudMessagesDescription": "Ka tae mai he karere, ka whakamahia te reo o te pūrere ki te pānui i te karere kia whakaharatau ai te whakarongo.",
+    "practiceSessionTimedOut": "Kua mutu tō wātū whakaharatau i muri i te {minutes} meneti kāore he mahi."
 }

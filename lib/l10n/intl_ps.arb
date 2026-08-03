@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-31 10:55:42.117775",
+    "@@last_modified": "2026-07-31 12:37:38.657819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "ستاسو د لغتونو د تمرین اوسنۍ ناستې پرمختګ به خوندي نشي.",
     "exitGrammarPracticeSession": "ستاسو د ګرامر د تمرین اوسنۍ ناستې پرمختګ به خوندي نشي.",
     "autoReadAloudMessagesToolName": "په اتوماتيک ډول ټول ترلاسه شوي پیغامونه په لوړ غږ ولولئ",
-    "autoReadAloudMessagesDescription": "کله چې یو پیغام ترلاسه شي، د اوریدلو تمرین لپاره به د وسیلې غږ د پیغام په لوړ غږ لوستلو لپاره وکارول شي."
+    "autoReadAloudMessagesDescription": "کله چې یو پیغام ترلاسه شي، د اوریدلو تمرین لپاره به د وسیلې غږ د پیغام په لوړ غږ لوستلو لپاره وکارول شي.",
+    "practiceSessionTimedOut": "ستاسو د تمرین ناسته د {minutes} دقیقو بې فعالیتۍ وروسته پای ته ورسېده."
 }

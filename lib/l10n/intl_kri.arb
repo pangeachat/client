@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-31 10:55:38.727037",
+    "@@last_modified": "2026-07-31 12:37:34.630200",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Yu vocab praktis seshɔn we yu de du naw nɔ go sev.",
     "exitGrammarPracticeSession": "Yu grama praktis seshɔn we yu de du naw nɔ go sev.",
     "autoReadAloudMessagesToolName": "Rɛd ɔl rɛsiiv mɛsej dɛn bɔtɔmatike",
-    "autoReadAloudMessagesDescription": "Wɛn yu gɛt mɛsej, di divays in vɔys go rid di mɛsej fɔ yu fɔ lisin praktis."
+    "autoReadAloudMessagesDescription": "Wɛn yu gɛt mɛsej, di divays in vɔys go rid di mɛsej fɔ yu fɔ lisin praktis.",
+    "practiceSessionTimedOut": "Yu patis seshɔn dɔn dɔn afta {minutes} minit dɛn we yu nɔ du ɛnitin."
 }

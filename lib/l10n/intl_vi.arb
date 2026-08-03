@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:45.434279",
+    "@@last_modified": "2026-07-31 12:37:41.976068",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6959,5 +6959,6 @@
     "exitVocabPracticeSession": "Tiến độ phiên luyện từ vựng hiện tại của bạn sẽ không được lưu.",
     "exitGrammarPracticeSession": "Tiến độ phiên luyện ngữ pháp hiện tại của bạn sẽ không được lưu.",
     "autoReadAloudMessagesToolName": "Tự động đọc to tất cả tin nhắn đã nhận",
-    "autoReadAloudMessagesDescription": "Khi nhận được tin nhắn, giọng nói của thiết bị sẽ được sử dụng để đọc to tin nhắn, giúp bạn luyện nghe."
+    "autoReadAloudMessagesDescription": "Khi nhận được tin nhắn, giọng nói của thiết bị sẽ được sử dụng để đọc to tin nhắn, giúp bạn luyện nghe.",
+    "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động."
 }

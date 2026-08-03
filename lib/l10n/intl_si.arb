@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-31 10:55:42.817217",
+    "@@last_modified": "2026-07-31 12:37:39.457158",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "ඔබගේ වත්මන් වචන මාලා පුහුණු සැසියේ ප්‍රගතිය සුරැකෙන්නේ නැත.",
     "exitGrammarPracticeSession": "ඔබගේ වත්මන් ව්‍යාකරණ පුහුණු සැසියේ ප්‍රගතිය සුරැකෙන්නේ නැත.",
     "autoReadAloudMessagesToolName": "ලැබෙන සියලුම පණිවිඩ ස්වයංක්‍රීයව ශබ්ද නඟා කියවන්න",
-    "autoReadAloudMessagesDescription": "පණිවිඩයක් ලැබුණු විට, සවන් දීමේ පුහුණුව සඳහා උපාංගයේ හඬ භාවිතයෙන් පණිවිඩය ශබ්ද නඟා කියවනු ඇත."
+    "autoReadAloudMessagesDescription": "පණිවිඩයක් ලැබුණු විට, සවන් දීමේ පුහුණුව සඳහා උපාංගයේ හඬ භාවිතයෙන් පණිවිඩය ශබ්ද නඟා කියවනු ඇත.",
+    "practiceSessionTimedOut": "ඔබගේ පුහුණු සැසිය ක්‍රියාකාරකම් නොමැතිව මිනිත්තු {minutes} කට පසු අවසන් විය."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-07-31 10:55:36.978094",
+    "@@last_modified": "2026-07-31 12:37:32.288423",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Qhov koj tab tom kawm lus tshiab yuav tsis raug cawm.",
     "exitGrammarPracticeSession": "Qhov koj tab tom kawm kev sau ntawv yuav tsis raug cawm.",
     "autoReadAloudMessagesToolName": "Nyeem tag nrho cov lus tau txais kom nrov nrov",
-    "autoReadAloudMessagesDescription": "Thaum tau txais lus, lub cuab yeej lub suab yuav raug siv los nyeem cov lus kom nrov nrov rau kev xyaum mloog."
+    "autoReadAloudMessagesDescription": "Thaum tau txais lus, lub cuab yeej lub suab yuav raug siv los nyeem cov lus kom nrov nrov rau kev xyaum mloog.",
+    "practiceSessionTimedOut": "Koj qhov kev xyaum kawm tau xaus lawm tom qab {minutes} feeb tsis muaj kev ua dab tsi."
 }

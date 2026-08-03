@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:43.823455",
+    "@@last_modified": "2026-07-31 12:37:40.296597",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10648,5 +10648,6 @@
     "exitVocabPracticeSession": "Napredak vaše trenutne sesije vežbanja rečnika neće biti sačuvan.",
     "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vežbanja gramatike neće biti sačuvan.",
     "autoReadAloudMessagesToolName": "Automatski čitaj sve primljene poruke",
-    "autoReadAloudMessagesDescription": "Kada se primi poruka, glas uređaja će biti korišćen za čitanje poruke naglas radi vežbanja slušanja."
+    "autoReadAloudMessagesDescription": "Kada se primi poruka, glas uređaja će biti korišćen za čitanje poruke naglas radi vežbanja slušanja.",
+    "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti."
 }

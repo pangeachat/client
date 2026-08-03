@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-31 10:55:40.460031",
+    "@@last_modified": "2026-07-31 12:37:37.550743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "నంగ్గి కరంన్తగి వోకాబులరీ ప్రాక్టీస్ సెసన్ ప్రోగ్రెస్ సేవ్ తౌరరోయి.",
     "exitGrammarPracticeSession": "నంగ్గి కరంన్తగి గ్రామర్ ప్రాక్టీస్ సెసన్ ప్రోగ్రెస్ సేవ్ తౌరరోయి.",
     "autoReadAloudMessagesToolName": "फांगবা মেসেজ পুম্নমক অটোমেটিক ওইনা লাউড ওইনা পাও",
-    "autoReadAloudMessagesDescription": "মেসেজ অমা ফংলবদি, তারিং প্রেকটিস তৌনবা দিভাইসকী ভয়েস শিজিন্নদুনা মেসেজ অদু লাউড ওইনা পাওগনি।"
+    "autoReadAloudMessagesDescription": "মেসেজ অমা ফংলবদি, তারিং প্রেকটিস তৌনবা দিভাইসকী ভয়েস শিজিন্নদুনা মেসেজ অদু লাউড ওইনা পাওগনি।",
+    "practiceSessionTimedOut": "নখোয়গী প্রেকটিস সেসন অসি {minutes} মিনিট ফাওবা করিগুম্বা থবক তৌদবনা লোইরে।"
 }

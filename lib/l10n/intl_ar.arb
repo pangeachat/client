@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-31 10:55:31.732195",
+    "@@last_modified": "2026-07-31 12:37:28.617601",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9999,5 +9999,6 @@
     "exitVocabPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب المفردات الحالية.",
     "exitGrammarPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب القواعد الحالية.",
     "autoReadAloudMessagesToolName": "قراءة جميع الرسائل المستلمة تلقائيًا بصوت عالٍ",
-    "autoReadAloudMessagesDescription": "عند استلام رسالة، سيتم استخدام صوت الجهاز لقراءة الرسالة بصوت عالٍ لممارسة الاستماع."
+    "autoReadAloudMessagesDescription": "عند استلام رسالة، سيتم استخدام صوت الجهاز لقراءة الرسالة بصوت عالٍ لممارسة الاستماع.",
+    "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط."
 }

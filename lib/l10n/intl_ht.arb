@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-31 10:55:36.895482",
+    "@@last_modified": "2026-07-31 12:37:34.083763",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Pwogrè sesyon pratik vokabilè ou ye kounye a p ap sove.",
     "exitGrammarPracticeSession": "Pwogrè sesyon pratik gramè ou ye kounye a p ap sove.",
     "autoReadAloudMessagesToolName": "Li tout mesaj yo awotvwa otomatikman",
-    "autoReadAloudMessagesDescription": "Lè w resevwa yon mesaj, vwa aparèy la ap li mesaj la awotvwa pou w ka pratike koute."
+    "autoReadAloudMessagesDescription": "Lè w resevwa yon mesaj, vwa aparèy la ap li mesaj la awotvwa pou w ka pratike koute.",
+    "practiceSessionTimedOut": "Sesyon pratik ou a te fini apre {minutes} minit san aktivite."
 }

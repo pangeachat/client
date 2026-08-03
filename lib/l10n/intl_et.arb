@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-31 10:55:34.216853",
+    "@@last_modified": "2026-07-31 12:37:30.463680",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9690,5 +9690,6 @@
     "exitVocabPracticeSession": "Sinu praeguse sõnavara harjutamise seansi edenemist ei salvestata.",
     "exitGrammarPracticeSession": "Sinu praeguse grammatika harjutamise seansi edenemist ei salvestata.",
     "autoReadAloudMessagesToolName": "Loe kõik saabunud sõnumid automaatselt ette",
-    "autoReadAloudMessagesDescription": "Sõnumi saabumisel loeb seadme hääl sõnumi kuulamispraktika jaoks ette."
+    "autoReadAloudMessagesDescription": "Sõnumi saabumisel loeb seadme hääl sõnumi kuulamispraktika jaoks ette.",
+    "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust."
 }

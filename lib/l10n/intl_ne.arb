@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-31 10:55:40.769903",
+    "@@last_modified": "2026-07-31 12:37:37.482152",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "तपाईंको हालको शब्दावली अभ्यास सत्रको प्रगति बचत गरिने छैन।",
     "exitGrammarPracticeSession": "तपाईंको हालको व्याकरण अभ्यास सत्रको प्रगति बचत गरिने छैन।",
     "autoReadAloudMessagesToolName": "प्राप्त भएका सबै सन्देशहरू स्वतः ठूलो स्वरमा पढ्नुहोस्",
-    "autoReadAloudMessagesDescription": "सन्देश प्राप्त हुँदा, सुन्ने अभ्यासका लागि यन्त्रको आवाज प्रयोग गरी सन्देश ठूलो स्वरमा पढिनेछ।"
+    "autoReadAloudMessagesDescription": "सन्देश प्राप्त हुँदा, सुन्ने अभ्यासका लागि यन्त्रको आवाज प्रयोग गरी सन्देश ठूलो स्वरमा पढिनेछ।",
+    "practiceSessionTimedOut": "कुनै गतिविधि नभएकोले {minutes} मिनेटपछि तपाईंको अभ्यास सत्र समाप्त भयो।"
 }

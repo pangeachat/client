@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:35.848644",
+    "@@last_modified": "2026-07-31 12:37:31.754449",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10613,5 +10613,6 @@
     "exitVocabPracticeSession": "ההתקדמות שלך באימון אוצר המילים הנוכחי לא תישמר.",
     "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
     "autoReadAloudMessagesToolName": "הקראה אוטומטית של כל ההודעות שהתקבלו",
-    "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה."
+    "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה.",
+    "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות."
 }

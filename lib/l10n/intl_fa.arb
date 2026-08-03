@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:34.469913",
+    "@@last_modified": "2026-07-31 12:37:30.255572",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9781,5 +9781,6 @@
     "exitVocabPracticeSession": "پیشرفت جلسه تمرین واژگان فعلی شما ذخیره نخواهد شد.",
     "exitGrammarPracticeSession": "پیشرفت جلسه تمرین گرامر فعلی شما ذخیره نخواهد شد.",
     "autoReadAloudMessagesToolName": "خواندن خودکار تمام پیام‌های دریافتی",
-    "autoReadAloudMessagesDescription": "هنگام دریافت پیام، صدای دستگاه برای تمرین شنیداری، پیام را با صدای بلند می‌خواند."
+    "autoReadAloudMessagesDescription": "هنگام دریافت پیام، صدای دستگاه برای تمرین شنیداری، پیام را با صدای بلند می‌خواند.",
+    "practiceSessionTimedOut": "جلسه تمرین شما پس از {minutes} دقیقه عدم فعالیت به پایان رسید."
 }

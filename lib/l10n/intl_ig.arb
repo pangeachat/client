@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-31 10:55:37.424712",
+    "@@last_modified": "2026-07-31 12:37:33.194360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Ọganihu gị na nnọkọ omume okwu gị ugbu a agaghị echekwa.",
     "exitGrammarPracticeSession": "Ọganihu gị na nnọkọ omume ụtọasụsụ gị ugbu a agaghị echekwa.",
     "autoReadAloudMessagesToolName": "Na-agụ ozi niile enwetara n'olu dara ụda na-akpaghị aka",
-    "autoReadAloudMessagesDescription": "Mgbe enwetara ozi, a ga-eji olu ngwaọrụ gụọ ozi ahụ n'olu dara ụda maka omume ige ntị."
+    "autoReadAloudMessagesDescription": "Mgbe enwetara ozi, a ga-eji olu ngwaọrụ gụọ ozi ahụ n'olu dara ụda maka omume ige ntị.",
+    "practiceSessionTimedOut": "Oge omume gị kwụsịrị mgbe {minutes} nkeji na-enweghị ọrụ."
 }

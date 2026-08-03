@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-31 10:55:33.435725",
+    "@@last_modified": "2026-07-31 12:37:30.430333",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10619,5 +10619,6 @@
     "exitVocabPracticeSession": "Dine fremskridt i den nuværende ordforrådsøvelse gemmes ikke.",
     "exitGrammarPracticeSession": "Dine fremskridt i den nuværende grammatikøvelse gemmes ikke.",
     "autoReadAloudMessagesToolName": "Læs automatisk alle modtagne beskeder højt",
-    "autoReadAloudMessagesDescription": "Når en besked modtages, vil enhedens stemme blive brugt til at læse beskeden højt for at øve lyttefærdigheder."
+    "autoReadAloudMessagesDescription": "Når en besked modtages, vil enhedens stemme blive brugt til at læse beskeden højt for at øve lyttefærdigheder.",
+    "practiceSessionTimedOut": "Din træningssession blev afsluttet efter {minutes} minutter uden aktivitet."
 }

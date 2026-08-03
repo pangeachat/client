@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-31 10:55:43.734434",
+    "@@last_modified": "2026-07-31 12:37:40.754816",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Maendeleo yako ya sasa ya kipindi cha mazoezi ya msamiati hayatahifadhiwa.",
     "exitGrammarPracticeSession": "Maendeleo yako ya sasa ya kipindi cha mazoezi ya sarufi hayatahifadhiwa.",
     "autoReadAloudMessagesToolName": "Soma ujumbe wote uliopokelewa kwa sauti kiotomatiki",
-    "autoReadAloudMessagesDescription": "Ujumbe unapopokelewa, sauti ya kifaa itatumika kusoma ujumbe kwa sauti kwa ajili ya mazoezi ya kusikiliza."
+    "autoReadAloudMessagesDescription": "Ujumbe unapopokelewa, sauti ya kifaa itatumika kusoma ujumbe kwa sauti kwa ajili ya mazoezi ya kusikiliza.",
+    "practiceSessionTimedOut": "Kipindi chako cha mazoezi kiliisha baada ya dakika {minutes} bila shughuli."
 }

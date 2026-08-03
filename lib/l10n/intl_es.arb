@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-07-31 10:55:34.144481",
+    "@@last_modified": "2026-07-31 12:37:30.199848",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7888,5 +7888,6 @@
     "exitVocabPracticeSession": "No se guardará el progreso de tu sesión actual de práctica de vocabulario.",
     "exitGrammarPracticeSession": "No se guardará el progreso de tu sesión actual de práctica de gramática.",
     "autoReadAloudMessagesToolName": "Leer automáticamente en voz alta todos los mensajes recibidos",
-    "autoReadAloudMessagesDescription": "Cuando se reciba un mensaje, se utilizará la voz del dispositivo para leerlo en voz alta y practicar la escucha."
+    "autoReadAloudMessagesDescription": "Cuando se reciba un mensaje, se utilizará la voz del dispositivo para leerlo en voz alta y practicar la escucha.",
+    "practiceSessionTimedOut": "Tu sesión de práctica finalizó después de {minutes} minutos sin actividad."
 }

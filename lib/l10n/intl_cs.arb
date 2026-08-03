@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-31 10:55:33.276128",
+    "@@last_modified": "2026-07-31 12:37:30.077650",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10187,5 +10187,6 @@
     "exitVocabPracticeSession": "Váš aktuální pokrok v procvičování slovní zásoby nebude uložen.",
     "exitGrammarPracticeSession": "Váš aktuální pokrok v procvičování gramatiky nebude uložen.",
     "autoReadAloudMessagesToolName": "Automaticky číst nahlas všechny přijaté zprávy",
-    "autoReadAloudMessagesDescription": "Po přijetí zprávy bude hlas zařízení použit k přečtení zprávy nahlas pro cvičení poslechu."
+    "autoReadAloudMessagesDescription": "Po přijetí zprávy bude hlas zařízení použit k přečtení zprávy nahlas pro cvičení poslechu.",
+    "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-07-31 10:55:32.404801",
+    "@@last_modified": "2026-07-31 12:37:29.078893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja rječnika neće biti sačuvan.",
     "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti sačuvan.",
     "autoReadAloudMessagesToolName": "Automatski čitaj naglas sve primljene poruke",
-    "autoReadAloudMessagesDescription": "Kada se primi poruka, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja."
+    "autoReadAloudMessagesDescription": "Kada se primi poruka, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja.",
+    "practiceSessionTimedOut": "Vaša sesija vježbanja je završena nakon {minutes} minuta neaktivnosti."
 }

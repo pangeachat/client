@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-31 10:55:47.003625",
+    "@@last_modified": "2026-07-31 12:37:42.178223",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10656,5 +10656,6 @@
     "exitVocabPracticeSession": "你目前嘅詞彙練習進度將唔會被儲存。",
     "exitGrammarPracticeSession": "你目前嘅文法練習進度將唔會被儲存。",
     "autoReadAloudMessagesToolName": "自動朗讀所有已接收訊息",
-    "autoReadAloudMessagesDescription": "當收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。"
+    "autoReadAloudMessagesDescription": "當收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。",
+    "practiceSessionTimedOut": "你嘅練習環節喺冇活動 {minutes} 分鐘後結束咗。"
 }

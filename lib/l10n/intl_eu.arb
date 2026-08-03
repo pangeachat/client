@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-31 10:55:34.430670",
+    "@@last_modified": "2026-07-31 12:37:30.774675",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,6 @@
     "exitVocabPracticeSession": "Zure egungo hiztegi-praktika saioaren aurrerapena ez da gordeko.",
     "exitGrammarPracticeSession": "Zure egungo gramatika-praktika saioaren aurrerapena ez da gordeko.",
     "autoReadAloudMessagesToolName": "Jasotako mezu guztiak automatikoki ozenki irakurri",
-    "autoReadAloudMessagesDescription": "Mezu bat jasotzen denean, gailuaren ahotsa erabiliko da mezua ozenki irakurtzeko, entzuteko praktika egiteko."
+    "autoReadAloudMessagesDescription": "Mezu bat jasotzen denean, gailuaren ahotsa erabiliko da mezua ozenki irakurtzeko, entzuteko praktika egiteko.",
+    "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren."
 }

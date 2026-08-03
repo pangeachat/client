@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-31 10:55:40.464586",
+    "@@last_modified": "2026-07-31 12:37:36.917756",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Il-progress tas-sessjoni preżenti tiegħek ta' prattika tal-vokabularju ma jiġix salvat.",
     "exitGrammarPracticeSession": "Il-progress tas-sessjoni preżenti tiegħek ta' prattika tal-grammatika ma jiġix salvat.",
     "autoReadAloudMessagesToolName": "Aqra awtomatikament il-messaġġi kollha riċevuti",
-    "autoReadAloudMessagesDescription": "Meta tirċievi messaġġ, il-vuċi tal-apparat tintuża biex taqra l-messaġġ b'leħen għoli għall-prattika tas-smigħ."
+    "autoReadAloudMessagesDescription": "Meta tirċievi messaġġ, il-vuċi tal-apparat tintuża biex taqra l-messaġġ b'leħen għoli għall-prattika tas-smigħ.",
+    "practiceSessionTimedOut": "Is-sessjoni ta' prattika tiegħek intemmet wara {minutes} minuti mingħajr attività."
 }

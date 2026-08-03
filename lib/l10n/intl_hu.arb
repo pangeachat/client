@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-31 10:55:36.496632",
+    "@@last_modified": "2026-07-31 12:37:35.772125",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9796,5 +9796,6 @@
     "exitVocabPracticeSession": "Az aktuális szókincsgyakorló-munkamenet előrehaladása nem lesz elmentve.",
     "exitGrammarPracticeSession": "Az aktuális nyelvtani gyakorló-munkamenet előrehaladása nem lesz elmentve.",
     "autoReadAloudMessagesToolName": "Összes beérkező üzenet automatikus felolvasása",
-    "autoReadAloudMessagesDescription": "Üzenet érkezésekor az eszköz hangja felolvassa az üzenetet a hallás utáni gyakorláshoz."
+    "autoReadAloudMessagesDescription": "Üzenet érkezésekor az eszköz hangja felolvassa az üzenetet a hallás utáni gyakorláshoz.",
+    "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt."
 }

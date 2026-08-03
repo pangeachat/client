@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-31 10:55:39.004274",
+    "@@last_modified": "2026-07-31 12:37:35.656478",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກຄຳສັບໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
     "exitGrammarPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກໄວຍາກອນໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
     "autoReadAloudMessagesToolName": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບທັງໝົດໂດຍອັດຕະໂນມັດ",
-    "autoReadAloudMessagesDescription": "ເມື່ອໄດ້ຮັບຂໍ້ຄວາມ, ສຽງຂອງອຸປະກອນຈະຖືກນຳໃຊ້ເພື່ອອ່ານຂໍ້ຄວາມອອກສຽງດັງ ເພື່ອຝຶກການຟັງ."
+    "autoReadAloudMessagesDescription": "ເມື່ອໄດ້ຮັບຂໍ້ຄວາມ, ສຽງຂອງອຸປະກອນຈະຖືກນຳໃຊ້ເພື່ອອ່ານຂໍ້ຄວາມອອກສຽງດັງ ເພື່ອຝຶກການຟັງ.",
+    "practiceSessionTimedOut": "ເຊສຊັນການຝຶກຊ້ອມຂອງທ່ານສິ້ນສຸດລົງຫຼັງຈາກ {minutes} ນາທີ ໂດຍບໍ່ມີການເຄື່ອນໄຫວ."
 }

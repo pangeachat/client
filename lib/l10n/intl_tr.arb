@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-31 10:55:44.641023",
+    "@@last_modified": "2026-07-31 12:37:41.389660",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9994,5 +9994,6 @@
     "exitVocabPracticeSession": "Mevcut kelime alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
     "exitGrammarPracticeSession": "Mevcut dil bilgisi alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
     "autoReadAloudMessagesToolName": "Alınan tüm mesajları otomatik olarak sesli oku",
-    "autoReadAloudMessagesDescription": "Bir mesaj alındığında, dinleme pratiği için mesajı sesli okumak üzere cihaz sesi kullanılacaktır."
+    "autoReadAloudMessagesDescription": "Bir mesaj alındığında, dinleme pratiği için mesajı sesli okumak üzere cihaz sesi kullanılacaktır.",
+    "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi."
 }

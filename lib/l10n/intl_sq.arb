@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-07-31 10:55:43.987052",
+    "@@last_modified": "2026-07-31 12:37:41.445411",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Progresi i seancës aktuale të praktikës së fjalorit nuk do të ruhet.",
     "exitGrammarPracticeSession": "Progresi i seancës aktuale të praktikës së gramatikës nuk do të ruhet.",
     "autoReadAloudMessagesToolName": "Lexo automatikisht me zë të lartë të gjitha mesazhet e marra",
-    "autoReadAloudMessagesDescription": "Kur merret një mesazh, zëri i pajisjes do të përdoret për të lexuar mesazhin me zë të lartë për praktikë dëgjimi."
+    "autoReadAloudMessagesDescription": "Kur merret një mesazh, zëri i pajisjes do të përdoret për të lexuar mesazhin me zë të lartë për praktikë dëgjimi.",
+    "practiceSessionTimedOut": "Sesioni juaj i praktikës përfundoi pas {minutes} minutash pa aktivitet."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-31 10:55:39.970521",
+    "@@last_modified": "2026-07-31 12:37:36.780986",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Таны одоогийн үгийн сангийн дадлагын явц хадгалагдахгүй.",
     "exitGrammarPracticeSession": "Таны одоогийн дүрмийн дадлагын явц хадгалагдахгүй.",
     "autoReadAloudMessagesToolName": "Ирсэн бүх мессежийг автоматаар чангаар унших",
-    "autoReadAloudMessagesDescription": "Мессеж ирэхэд төхөөрөмжийн дуу хоолойг ашиглан мессежийг чангаар уншиж, сонсох дадлага хийнэ."
+    "autoReadAloudMessagesDescription": "Мессеж ирэхэд төхөөрөмжийн дуу хоолойг ашиглан мессежийг чангаар уншиж, сонсох дадлага хийнэ.",
+    "practiceSessionTimedOut": "Таны дадлагын хичээл {minutes} минут идэвхгүй байсны дараа дууслаа."
 }

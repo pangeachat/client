@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-07-31 10:55:32.004791",
+    "@@last_modified": "2026-07-31 12:37:28.735227",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Cari lüğət təcrübə sessiyanızın gedişatı yadda saxlanmayacaq.",
     "exitGrammarPracticeSession": "Cari qrammatika təcrübə sessiyanızın gedişatı yadda saxlanmayacaq.",
     "autoReadAloudMessagesToolName": "Bütün qəbul edilmiş mesajları avtomatik oxu",
-    "autoReadAloudMessagesDescription": "Mesaj qəbul edildikdə, dinləmə təcrübəsi üçün cihaz səsi mesajı ucadan oxumaq üçün istifadə ediləcək."
+    "autoReadAloudMessagesDescription": "Mesaj qəbul edildikdə, dinləmə təcrübəsi üçün cihaz səsi mesajı ucadan oxumaq üçün istifadə ediləcək.",
+    "practiceSessionTimedOut": "Fəaliyyətsizliyə görə məşq sessiyanız {minutes} dəqiqədən sonra başa çatdı."
 }

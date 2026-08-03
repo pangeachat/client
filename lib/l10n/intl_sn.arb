@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-07-31 10:55:43.358551",
+    "@@last_modified": "2026-07-31 12:37:43.937877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira mazwi hakuzochengetedzwe.",
     "exitGrammarPracticeSession": "Kufambira mberi kwako kwechikamu chekudzidzira girama hakuzochengetedzwe.",
     "autoReadAloudMessagesToolName": "Verenga mameseji ese anogamuchirwa wega",
-    "autoReadAloudMessagesDescription": "Kana meseji yagamuchirwa, izwi remudziyo richashandiswa kuverenga meseji zvinonzwika kuti udzidzire kuteerera."
+    "autoReadAloudMessagesDescription": "Kana meseji yagamuchirwa, izwi remudziyo richashandiswa kuverenga meseji zvinonzwika kuti udzidzire kuteerera.",
+    "practiceSessionTimedOut": "Chikamu chako chekudzidzira chapera mushure memaminitsi {minutes} usina kuita chinhu."
 }

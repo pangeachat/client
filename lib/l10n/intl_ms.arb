@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-07-31 10:55:40.242927",
+    "@@last_modified": "2026-07-31 12:37:36.957896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2055,5 +2055,6 @@
     "exitVocabPracticeSession": "Kemajuan sesi latihan kosa kata anda sekarang tidak akan disimpan.",
     "exitGrammarPracticeSession": "Kemajuan sesi latihan tatabahasa anda sekarang tidak akan disimpan.",
     "autoReadAloudMessagesToolName": "Baca semua mesej yang diterima secara automatik",
-    "autoReadAloudMessagesDescription": "Apabila mesej diterima, suara peranti akan digunakan untuk membaca mesej dengan kuat untuk latihan mendengar."
+    "autoReadAloudMessagesDescription": "Apabila mesej diterima, suara peranti akan digunakan untuk membaca mesej dengan kuat untuk latihan mendengar.",
+    "practiceSessionTimedOut": "Sesi latihan anda tamat selepas {minutes} minit tanpa aktiviti."
 }
