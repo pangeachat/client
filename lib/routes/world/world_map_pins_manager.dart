@@ -47,6 +47,33 @@ bool needsParticipantRefill({
   required bool hasUnresolvedSeats,
 }) => everFilled ? filledAtJoinedCount != joinedCount : hasUnresolvedSeats;
 
+/// Minimum spacing between empty-cache self-heal rebuilds of the objective
+/// cache. A set-change rebuild (course join/leave) is never subject to it —
+/// only the "resolved nothing while courses exist" retry, which would
+/// otherwise re-fire on every rate-limited sync for a learner whose joined
+/// courses are all unresolvable (e.g. orphaned quest plans, #8083).
+const Duration kEmptyObjectiveCacheRetryCooldown = Duration(seconds: 30);
+
+/// The pure rule behind [WorldMapPinsManager.shouldRebuildObjectiveCache]
+/// (#8083). A set change (join/leave) rebuilds immediately; the empty-cache
+/// self-heal retries only once [kEmptyObjectiveCacheRetryCooldown] has passed
+/// since the last completed rebuild ([lastRebuildAt] null means none has run,
+/// so the retry is due). Never while a rebuild is already in flight.
+@visibleForTesting
+bool shouldRebuildObjectiveCacheNow({
+  required bool rebuilding,
+  required bool setChanged,
+  required bool emptyButHasCourses,
+  required DateTime? lastRebuildAt,
+  required DateTime now,
+}) {
+  if (rebuilding) return false;
+  if (setChanged) return true;
+  if (!emptyButHasCourses) return false;
+  return lastRebuildAt == null ||
+      now.difference(lastRebuildAt) >= kEmptyObjectiveCacheRetryCooldown;
+}
+
 class WorldMapPinsManager {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
 
@@ -88,6 +115,12 @@ class WorldMapPinsManager {
   /// Guards against overlapping objective-cache rebuilds (and stops a
   /// persistently-failing course from rebuilding on every single sync).
   bool _objectiveCacheRebuilding = false;
+
+  /// When the last objective-cache rebuild completed — the empty-cache
+  /// self-heal retry waits [kEmptyObjectiveCacheRetryCooldown] from here, so a
+  /// learner whose joined courses all fail to resolve doesn't refetch (and
+  /// re-log) on every rate-limited sync (#8083).
+  DateTime? _lastObjectiveCacheRebuildAt;
 
   /// The course-plan id [_scopedCourseOutline] was resolved for, so a re-scope to
   /// the same course doesn't re-fetch and a re-scope away clears it.
@@ -528,6 +561,9 @@ class WorldMapPinsManager {
   /// Guarded so overlapping syncs don't stack rebuilds. A course whose outline
   /// fails to resolve is logged (not silently dropped): an empty cache means no
   /// relevance banding and a fail-open gate, which is otherwise invisible.
+  /// Logged once per course per session — the self-heal retry re-attempts the
+  /// same failing course for as long as the map is open, and each repeat
+  /// carries no new signal (#8083).
   Future<void> rebuildObjectiveCache(Client client) async {
     if (_objectiveCacheRebuilding) return;
     _objectiveCacheRebuilding = true;
@@ -537,7 +573,8 @@ class WorldMapPinsManager {
           .toList();
       await _objectiveCache.rebuildFromJoinedCourses(
         client,
-        onError: (uuid, e, s) => ErrorHandler.logError(
+        onError: (uuid, e, s) => ErrorHandler.logErrorOnce(
+          key: 'course-outline-resolve:$uuid',
           e: e,
           s: s,
           m: 'JoinedObjectiveCache: course outline failed to resolve',
@@ -548,6 +585,7 @@ class WorldMapPinsManager {
       resolveProgression(); // re-resolve the band with the loaded outlines
     } finally {
       _objectiveCacheRebuilding = false;
+      _lastObjectiveCacheRebuildAt = DateTime.now();
     }
   }
 
@@ -555,10 +593,12 @@ class WorldMapPinsManager {
   /// last build, or when it resolved nothing while courses exist (the rooms or
   /// their outlines weren't ready at the initial build, or a read transiently
   /// failed). Idempotent for an unchanged, already-populated set, so it's safe on
-  /// every sync; the in-flight guard keeps a persistently-failing course from
-  /// rebuilding more than once at a time, and it self-heals once the data is fixed.
+  /// every sync; the in-flight guard keeps overlapping rebuilds from stacking,
+  /// the empty-cache retry is paced by [kEmptyObjectiveCacheRetryCooldown] so a
+  /// persistently-failing course isn't refetched on every sync, and it
+  /// self-heals once the data is fixed (which is why [QuestRepo.outline] must
+  /// never cache errors — see its cache doc, #8083).
   bool shouldRebuildObjectiveCache(Client client) {
-    if (_objectiveCacheRebuilding) return false;
     final uuids = client.joinedCourseRooms
         .map((r) => r.coursePlan!.uuid)
         .toSet();
@@ -567,8 +607,13 @@ class WorldMapPinsManager {
         uuids.length != _objectiveCacheUuids.length ||
         !uuids.containsAll(_objectiveCacheUuids);
 
-    final emptyButHasCourses = _objectiveCache.ids.isEmpty && uuids.isNotEmpty;
-    return setChanged || emptyButHasCourses;
+    return shouldRebuildObjectiveCacheNow(
+      rebuilding: _objectiveCacheRebuilding,
+      setChanged: setChanged,
+      emptyButHasCourses: _objectiveCache.ids.isEmpty && uuids.isNotEmpty,
+      lastRebuildAt: _lastObjectiveCacheRebuildAt,
+      now: DateTime.now(),
+    );
   }
 
   /// Resolve the viewed course's outline for a course-scoped map so the band

@@ -29,7 +29,16 @@ mixin CoursePlanProvider<T extends StatefulWidget> on State<T> {
       }
       course = quest;
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {'courseId': courseId});
+      // Once per course (and error type) per session: the known
+      // orphaned-content case (#7479 — a course space whose quest plan no
+      // longer resolves) re-fails on every visit to the course, and each
+      // repeat carries no new signal (#8083).
+      ErrorHandler.logErrorOnce(
+        key: 'course-plan-load:$courseId:${e.runtimeType}',
+        e: e,
+        s: s,
+        data: {'courseId': courseId},
+      );
       courseError = e;
     } finally {
       if (mounted) setState(() => loadingCourse = false);
