@@ -87,15 +87,17 @@ Each headline is localized text drawn over the carousel image rather than baked 
 | Weight | Semi-bold |
 | Size | 24 |
 | Alignment | Centred |
-| Wrapping | Wraps to a second line rather than shrinking |
+| Wrapping | None — a single line, in every language |
 
 The same size and weight apply in both layouts. A headline that changes weight with window shape reads as a different voice for the same sentence, which is why the two layouts differ on position but not on type.
 
 Colour and outline come from the scheme roles listed under Buttons, dots and colour, so the headline carries no brand value of its own. In the narrow layout the outline does the separating work over the map: because it takes the surface colour, it is near-white in light mode and near-dark in dark, which keeps the type punched out of the backdrop in both without needing a second rule.
 
-**Size the reserved strip for two lines, not one.** Several supported languages run noticeably longer than English, and these headlines are already the longest strings on the screen, so a strip sized to one line of English will clip a translation rather than wrap it. Wrapping is the intended behaviour; shrinking the type to fit is not, because the size is doing legibility work over the carousel image.
+**A headline is one line at 24, and the reserved strip is sized for exactly that.** It neither wraps nor shrinks to fit: the size is doing legibility work over the carousel image, and a second line would push into the slide above or the buttons below.
 
-Text scaling should be capped rather than switched off. The strip cannot absorb unlimited growth, but disabling scaling outright fails the users who most need larger type. The current build disables it entirely — recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294) — so treat that as the constraint to revisit, not as the intended design.
+That makes headline length a constraint on the copy rather than on the layout. **Each headline has to fit one line at 24 in every supported language, not just in English.** Several languages run twenty to thirty per cent longer, so a phrase that only just fits in English is already too long. Check the longest locales before new copy ships.
+
+For the same reason, headlines do not scale with the operating system's text-size setting — a fixed one-line strip cannot absorb growth, so scaling would clip rather than reflow. This is a deliberate accessibility trade-off, recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294).
 
 ### Image assets
 
