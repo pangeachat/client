@@ -11,7 +11,6 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 class PlayWithBotLoadingDialog extends StatefulWidget {
   final Room room;
@@ -33,13 +32,14 @@ class PlayWithBotLoadingDialogState extends State<PlayWithBotLoadingDialog> {
   }
 
   Future<void> _execute() async {
-    final future = widget.room.client.onRoomState.stream
-        .where(
-          (state) =>
-              state.roomId == widget.room.id &&
-              state.state.type == PangeaEventTypes.activityRole &&
-              state.state.senderId == BotName.byEnvironment,
-        )
+    // Success is the bot holding a live seat, not the bot sending a fresh
+    // activity-role event: on the recovery path (#8099 — re-invite after the
+    // bot left mid-session) the bot resumes the role entry it left behind
+    // without writing new role state, so an event-identity wait would time
+    // out on a session that actually recovered. Re-checking seat state per
+    // sync covers both that path and a fresh role claim.
+    final future = widget.room.client.onSync.stream
+        .where((_) => widget.room.botHasActivityRole)
         .first;
 
     try {
