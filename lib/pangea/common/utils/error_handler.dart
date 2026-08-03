@@ -50,6 +50,30 @@ class ErrorHandler {
     };
   }
 
+  /// Keys already reported this session via [logErrorOnce].
+  static final Set<String> _reportedOnceKeys = {};
+
+  @visibleForTesting
+  static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
+
+  /// [logError], capped at one report per app session per [key]. For known
+  /// recurring degrade paths — e.g. a joined course whose quest plan no longer
+  /// resolves, retried on every sync (#8083) — the first event per session
+  /// carries the signal (Sentry tallies affected users per issue); each repeat
+  /// is pure event volume. Returns whether this call reported.
+  static Future<bool> logErrorOnce({
+    required String key,
+    Object? e,
+    StackTrace? s,
+    String? m,
+    required Map<String, dynamic> data,
+    SentryLevel level = SentryLevel.error,
+  }) async {
+    if (!_reportedOnceKeys.add(key)) return false;
+    await logError(e: e, s: s, m: m, data: data, level: level);
+    return true;
+  }
+
   static Future<void> logError({
     Object? e,
     StackTrace? s,

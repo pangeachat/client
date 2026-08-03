@@ -199,7 +199,11 @@ class ProgressionResolution {
     final cache = JoinedObjectiveCache();
     await cache.rebuildFromJoinedCourses(
       client,
-      onError: (uuid, e, s) => ErrorHandler.logError(
+      // Once per course per session, sharing the map rebuild's key: this runs
+      // on every course-panel open, and a course that persistently fails to
+      // resolve (e.g. an orphaned quest plan) re-fails on each of them (#8083).
+      onError: (uuid, e, s) => ErrorHandler.logErrorOnce(
+        key: 'course-outline-resolve:$uuid',
         e: e,
         s: s,
         m: 'course progression failed to resolve',
