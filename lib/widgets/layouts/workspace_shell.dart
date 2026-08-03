@@ -125,6 +125,38 @@ String _recencyKey(PanelToken token) {
   return rootType.name;
 }
 
+/// Whether the narrow rail's 4th slot — the course shortcut — is showing the
+/// surface the cavity currently hosts, which makes its tap the
+/// tap-the-active-item TOGGLE rather than a navigation
+/// (routing.instructions.md → "Collapsing is not closing").
+///
+/// The slot resolves contextually, so "its own surface" does too:
+///
+/// - **A joined course** ([shortcutCourseId] non-null) — the shortcut is that
+///   course's avatar, and its surface is that course's card: hosted exactly
+///   when the cavity is a course panel under that course's context (#7537).
+/// - **No joined courses** — the shortcut is the `+` add-course button, so its
+///   surface is the add-course hub the Courses rail item ALSO opens. Without
+///   this arm the shortcut re-issued a same-URL `setSection(addcourse)` — a
+///   silent no-op — so the button neither opened nor closed the hub once it
+///   was up, while the Courses item beside it toggled fine (#8098).
+///
+/// Pure so it is unit-tested directly, away from the shell's Matrix lookups.
+@visibleForTesting
+bool courseShortcutHostsCavity({
+  required PanelToken? cavityToken,
+  required String? shortcutCourseId,
+  required String? activeSpaceId,
+}) {
+  if (cavityToken == null) return false;
+  if (shortcutCourseId == null) {
+    // The `+` slot: its surface is the add-course family, which is exactly what
+    // `cavitySection` reports as the Courses rail item's own surface.
+    return cavityToken.type.cavitySection == AppSection.courses;
+  }
+  return cavityToken.type.isCoursePanel && shortcutCourseId == activeSpaceId;
+}
+
 /// Sync the back-stack [recency] against the currently open [allTokens] (merged
 /// `[left…, right…]`, the allocator's entry order) and return the allocator
 /// `focusHint` index, or null when nothing is open.
@@ -661,12 +693,14 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
           ),
         }),
         cavitySection: cavitySection,
-        // The shortcut hosts the cavity when the hosted course sheet IS the
-        // shortcut's course (course cavities key by their space id).
-        courseShortcutHostsCavity:
-            isCourseCavity &&
-            shortcutCourse != null &&
-            shortcutCourse.id == activeSpaceId,
+        // The shortcut hosts the cavity when it is showing that surface: the
+        // shortcut's own course sheet, or — with no courses joined, where the
+        // slot is the `+` button — the add-course hub (#8098).
+        courseShortcutHostsCavity: courseShortcutHostsCavity(
+          cavityToken: cavityToken,
+          shortcutCourseId: shortcutCourse?.id,
+          activeSpaceId: activeSpaceId,
+        ),
         cavityChild: cavityToken == null
             ? null
             : FocusTraversalGroup(

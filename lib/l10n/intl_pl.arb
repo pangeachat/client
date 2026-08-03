@@ -9777,5 +9777,6 @@
     "mapMatchesOffscreen": "Poza widokiem są mecze. Oddal, aby je zobaczyć.",
     "mapFiltersHideMatches": "Twoje filtry ukrywają wszystkie mecze. Rozszerz wyszukiwanie, aby je zobaczyć.",
     "mapNoSearchMatches": "Brak aktywności pasujących do wyszukiwania.",
-    "mapNoActivitiesArea": "Brak aktywności w tym obszarze."
+    "mapNoActivitiesArea": "Brak aktywności w tym obszarze.",
+    "practiceSessionTimedOut": "Twoja sesja ćwiczeniowa zakończyła się po {minutes} minutach braku aktywności."
 }

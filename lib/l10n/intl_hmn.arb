@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Muaj kev sib tw nyob sab nraum koj qhov pom. Zoom tawm kom pom lawv.",
     "mapFiltersHideMatches": "Koj cov lim tab tom nkaum tag nrho cov kev sib tw. Nthuav dav qhov kev tshawb nrhiav kom pom lawv.",
     "mapNoSearchMatches": "Tsis muaj kev ua si sib phim koj qhov kev tshawb nrhiav.",
-    "mapNoActivitiesArea": "Tsis muaj kev ua si hauv cheeb tsam no."
+    "mapNoActivitiesArea": "Tsis muaj kev ua si hauv cheeb tsam no.",
+    "practiceSessionTimedOut": "Koj qhov kev xyaum kawm tau xaus lawm tom qab {minutes} feeb tsis muaj kev ua dab tsi."
 }

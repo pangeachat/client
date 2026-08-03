@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Awọn ere wa ni ita wiwo rẹ. Sun jade lati rii wọn.",
     "mapFiltersHideMatches": "Awọn àlẹmọ rẹ nfi gbogbo awọn ere pamọ. Fẹẹrẹ wiwa lati rii wọn.",
     "mapNoSearchMatches": "Ko si awọn iṣẹ ṣiṣe ti o ba wiwa rẹ mu.",
-    "mapNoActivitiesArea": "Ko si awọn iṣẹ ṣiṣe ni agbegbe yii."
+    "mapNoActivitiesArea": "Ko si awọn iṣẹ ṣiṣe ni agbegbe yii.",
+    "practiceSessionTimedOut": "Ìgbà ìdánilẹ́kọ̀ọ́ rẹ parí lẹ́hìn ìṣẹ́jú {minutes} láìsí ìgbòkègbodò kankan."
 }

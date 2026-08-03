@@ -10461,5 +10461,6 @@
     "mapMatchesOffscreen": "画面外にマッチがあります。ズームアウトして表示してください。",
     "mapFiltersHideMatches": "フィルターによりすべてのマッチが非表示になっています。検索範囲を広げてください。",
     "mapNoSearchMatches": "検索条件に一致するアクティビティはありません。",
-    "mapNoActivitiesArea": "このエリアにはアクティビティがありません。"
+    "mapNoActivitiesArea": "このエリアにはアクティビティがありません。",
+    "practiceSessionTimedOut": "{minutes}分間操作がなかったため、練習セッションが終了しました。"
 }

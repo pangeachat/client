@@ -10047,5 +10047,6 @@
     "mapMatchesOffscreen": "Il y a des matchs en dehors de votre vue. Dézoomez pour les voir.",
     "mapFiltersHideMatches": "Vos filtres masquent tous les matchs. Élargissez la recherche pour les voir.",
     "mapNoSearchMatches": "Aucune activité ne correspond à votre recherche.",
-    "mapNoActivitiesArea": "Aucune activité dans cette zone."
+    "mapNoActivitiesArea": "Aucune activité dans cette zone.",
+    "practiceSessionTimedOut": "Votre session d'entraînement s'est terminée après {minutes} minutes d'inactivité."
 }

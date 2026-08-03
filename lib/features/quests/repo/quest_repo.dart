@@ -409,11 +409,33 @@ class QuestRepo {
   /// doesn't, so the two must not share a cache row). In-memory (not
   /// GetStorage) because [QuestOutline] carries session-scoped media CDN URLs —
   /// same reasoning as `ActivityPlanRepo`'s in-memory resolve cache.
+  ///
+  /// Holds SUCCESSES ONLY: caching an error would pin a transient failure (or
+  /// a since-restored quest) for the process lifetime, so every retry — the
+  /// world map's empty-cache self-heal, a panel reopen — would replay the
+  /// stale error instead of ever recovering (#8083).
   static final Map<String, Result<QuestOutline>> _outlineCache = {};
   static final Map<String, Future<Result<QuestOutline>>> _outlineInflight = {};
 
+  /// Test seam for [outline]: replaces [_buildOutline] when set, so the
+  /// cache-on-success / never-cache-errors contract is testable without the
+  /// networked read layer.
+  @visibleForTesting
+  static Future<Result<QuestOutline>> Function(
+    String questId, {
+    String? courseRoomId,
+  })?
+  debugBuildOutline;
+
+  @visibleForTesting
+  static void resetOutlineCacheForTest() {
+    _outlineCache.clear();
+    _outlineInflight.clear();
+  }
+
   /// The full outline: quest + objective groups (LOs in order, each with its
-  /// matching activities). Cached per (quest id, course room); concurrent
+  /// matching activities). Successes are cached per (quest id, course room);
+  /// errors are returned but never cached (see [_outlineCache]). Concurrent
   /// calls for the same key share one in-flight read. [courseRoomId] admits
   /// the quest owner's private activities when the caller is a joined member
   /// of that course. Pass [forceRefresh] to bypass the cache.
@@ -430,12 +452,17 @@ class QuestRepo {
       if (inflight != null) return inflight;
     }
 
-    final future = _buildOutline(questId, courseRoomId: courseRoomId);
+    final future = (debugBuildOutline ?? _buildOutline)(
+      questId,
+      courseRoomId: courseRoomId,
+    );
     _outlineInflight[cacheKey] = future;
 
     final outline = await future;
 
-    _outlineCache[cacheKey] = outline;
+    if (outline.isValue) {
+      _outlineCache[cacheKey] = outline;
+    }
     _outlineInflight.remove(cacheKey);
 
     return outline;

@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Ana cocog ing njaba panjenengan. Zoom out kanggo ndeleng.",
     "mapFiltersHideMatches": "Filter panjenengan ndhelikake kabeh cocog. Ambaake panelusuran kanggo ndeleng.",
     "mapNoSearchMatches": "Ora ana aktivitas sing cocog karo panelusuran panjenengan.",
-    "mapNoActivitiesArea": "Ora ana aktivitas ing wilayah iki."
+    "mapNoActivitiesArea": "Ora ana aktivitas ing wilayah iki.",
+    "practiceSessionTimedOut": "Sesi gladhenmu rampung sawise {minutes} menit tanpa aktivitas."
 }

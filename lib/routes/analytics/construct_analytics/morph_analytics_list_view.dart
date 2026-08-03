@@ -57,7 +57,6 @@ class MorphAnalyticsListView extends StatelessWidget {
                       : const SizedBox.shrink();
                 }, childCount: controller.morphs.features.length),
               ),
-              const SliverToBoxAdapter(child: SizedBox(height: 75.0)),
             ],
           ),
         ),

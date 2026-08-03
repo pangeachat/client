@@ -9692,5 +9692,6 @@
     "mapMatchesOffscreen": "Partidak daude zure ikuspegitik kanpo. Handitu ikusteko.",
     "mapFiltersHideMatches": "Zure iragazkiek partida guztiak ezkutatzen dituzte. Zabaltu bilaketa ikusteko.",
     "mapNoSearchMatches": "Ez dago zure bilaketarekin bat datorren jarduerarik.",
-    "mapNoActivitiesArea": "Ez dago jarduerarik eremu honetan."
+    "mapNoActivitiesArea": "Ez dago jarduerarik eremu honetan.",
+    "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren."
 }

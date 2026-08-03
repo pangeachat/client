@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Der binne wedstriden bûten jo sicht. Zoom út om se te sjen.",
     "mapFiltersHideMatches": "Jo filters ferbergje alle wedstriden. Ferbreedzje de syktocht om se te sjen.",
     "mapNoSearchMatches": "Gjin aktiviteiten komme oerien mei jo syktocht.",
-    "mapNoActivitiesArea": "Gjin aktiviteiten yn dit gebiet."
+    "mapNoActivitiesArea": "Gjin aktiviteiten yn dit gebiet.",
+    "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit."
 }

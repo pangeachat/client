@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Ka ndeshje jashtë pamjes suaj. Zmadhoni për t'i parë ato.",
     "mapFiltersHideMatches": "Filtrat tuaj po fshehin të gjitha ndeshjet. Zgjeroni kërkimin për t'i parë ato.",
     "mapNoSearchMatches": "Asnjë aktivitet nuk përputhet me kërkimin tuaj.",
-    "mapNoActivitiesArea": "Nuk ka aktivitete në këtë zonë."
+    "mapNoActivitiesArea": "Nuk ka aktivitete në këtë zonë.",
+    "practiceSessionTimedOut": "Sesioni juaj i praktikës përfundoi pas {minutes} minutash pa aktivitet."
 }

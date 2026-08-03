@@ -9692,5 +9692,6 @@
     "mapMatchesOffscreen": "Hai partidas fóra da túa vista. Afasta o zoom para velas.",
     "mapFiltersHideMatches": "Os teus filtros están a ocultar todas as partidas. Amplía a busca para velas.",
     "mapNoSearchMatches": "Ningunha actividade coincide coa túa busca.",
-    "mapNoActivitiesArea": "Non hai actividades nesta área."
+    "mapNoActivitiesArea": "Non hai actividades nesta área.",
+    "practiceSessionTimedOut": "A túa sesión de práctica rematou despois de {minutes} minutos sen actividade."
 }

@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Enwere egwuregwu na-anọghị n'anya gị. Bugharịa ka ịhụ ha.",
     "mapFiltersHideMatches": "Nzacha gị na-ezochi egwuregwu niile. Gbasaa ọchụchọ ka ịhụ ha.",
     "mapNoSearchMatches": "Enweghị ihe omume dabara na ọchụchọ gị.",
-    "mapNoActivitiesArea": "Enweghị ihe omume na mpaghara a."
+    "mapNoActivitiesArea": "Enweghị ihe omume na mpaghara a.",
+    "practiceSessionTimedOut": "Oge omume gị kwụsịrị mgbe {minutes} nkeji na-enweghị ọrụ."
 }

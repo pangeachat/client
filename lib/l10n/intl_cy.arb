@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Mae gemau y tu allan i'ch golwg. Chwyddo allan i'w gweld.",
     "mapFiltersHideMatches": "Mae eich hidlwyr yn cuddio pob gêm. Ehangu'r chwiliad i'w gweld.",
     "mapNoSearchMatches": "Nid oes unrhyw weithgareddau'n cyd-fynd â'ch chwiliad.",
-    "mapNoActivitiesArea": "Dim gweithgareddau yn yr ardal hon."
+    "mapNoActivitiesArea": "Dim gweithgareddau yn yr ardal hon.",
+    "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch."
 }

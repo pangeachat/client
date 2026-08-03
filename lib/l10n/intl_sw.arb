@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Kuna mechi nje ya mtazamo wako. Zoom out ili kuziona.",
     "mapFiltersHideMatches": "Vichujio vyako vinaficha mechi zote. Panua utafutaji ili kuziona.",
     "mapNoSearchMatches": "Hakuna shughuli zinazolingana na utafutaji wako.",
-    "mapNoActivitiesArea": "Hakuna shughuli katika eneo hili."
+    "mapNoActivitiesArea": "Hakuna shughuli katika eneo hili.",
+    "practiceSessionTimedOut": "Kipindi chako cha mazoezi kiliisha baada ya dakika {minutes} bila shughuli."
 }

@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Görünüşünüzdən kənarda uyğunluqlar var. Onları görmək üçün kiçildin.",
     "mapFiltersHideMatches": "Filtləriniz bütün uyğunluqları gizlədir. Onları görmək üçün axtarışı genişləndirin.",
     "mapNoSearchMatches": "Axtarışınıza uyğun fəaliyyət yoxdur.",
-    "mapNoActivitiesArea": "Bu ərazidə heç bir fəaliyyət yoxdur."
+    "mapNoActivitiesArea": "Bu ərazidə heç bir fəaliyyət yoxdur.",
+    "practiceSessionTimedOut": "Fəaliyyətsizliyə görə məşq sessiyanız {minutes} dəqiqədən sonra başa çatdı."
 }

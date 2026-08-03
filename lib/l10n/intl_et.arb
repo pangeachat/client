@@ -9689,5 +9689,6 @@
     "mapMatchesOffscreen": "Mõned mängud jäävad vaateväljast välja. Suumi välja, et neid näha.",
     "mapFiltersHideMatches": "Teie filtrid peidavad kõik mängud. Laiendage otsingut, et neid näha.",
     "mapNoSearchMatches": "Teie otsingule ei vasta ühtegi tegevust.",
-    "mapNoActivitiesArea": "Selles piirkonnas pole tegevusi."
+    "mapNoActivitiesArea": "Selles piirkonnas pole tegevusi.",
+    "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust."
 }

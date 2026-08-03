@@ -15,6 +15,7 @@ import 'package:fluffychat/features/activity_sessions/activity_session_constants
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 extension RoomSummaryExtension on Api {
@@ -74,8 +75,21 @@ class RoomSummariesResponse {
   }) {
     final summaries = <String, RoomSummaryResponse>{};
     json["rooms"].forEach((key, value) {
-      if (value.isNotEmpty) {
-        summaries[key] = RoomSummaryResponse.fromJson(value, l1Code: l1Code);
+      // Parse each room independently. Room state is open-ended — a shape one
+      // client version doesn't expect (a newer event schema, a hand-edited
+      // state event) is a normal occurrence, and letting it throw out of here
+      // would reject the whole batched request and drop every other room's
+      // summary along with it. Skip the room we can't read, keep the rest.
+      try {
+        if (value.isNotEmpty) {
+          summaries[key] = RoomSummaryResponse.fromJson(value, l1Code: l1Code);
+        }
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {"message": "Failed to parse room summary", "roomId": key},
+        );
       }
     });
     return RoomSummariesResponse(summaries: summaries);

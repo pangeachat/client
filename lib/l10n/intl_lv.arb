@@ -9692,5 +9692,6 @@
     "mapMatchesOffscreen": "Ārpus redzamības lauka ir spēles. Tuviniet, lai tās redzētu.",
     "mapFiltersHideMatches": "Jūsu filtri slēpj visas spēles. Paplašiniet meklēšanu, lai tās redzētu.",
     "mapNoSearchMatches": "Meklēšanai neatbilst neviena aktivitāte.",
-    "mapNoActivitiesArea": "Šajā apgabalā nav aktivitāšu."
+    "mapNoActivitiesArea": "Šajā apgabalā nav aktivitāšu.",
+    "practiceSessionTimedOut": "Jūsu prakses sesija beidzās pēc {minutes} minūtēm bez aktivitātes."
 }

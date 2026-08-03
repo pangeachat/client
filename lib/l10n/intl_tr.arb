@@ -9993,5 +9993,6 @@
     "mapMatchesOffscreen": "Görüş alanınızın dışında eşleşmeler var. Görmek için uzaklaştırın.",
     "mapFiltersHideMatches": "Filtreleriniz tüm eşleşmeleri gizliyor. Görmek için aramayı genişletin.",
     "mapNoSearchMatches": "Aramanızla eşleşen etkinlik yok.",
-    "mapNoActivitiesArea": "Bu alanda etkinlik yok."
+    "mapNoActivitiesArea": "Bu alanda etkinlik yok.",
+    "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi."
 }

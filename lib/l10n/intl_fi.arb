@@ -9729,5 +9729,6 @@
     "mapMatchesOffscreen": "Näkymäsi ulkopuolella on otteluita. Loitonna nähdäksesi ne.",
     "mapFiltersHideMatches": "Suodattimesi piilottavat kaikki ottelut. Laajenna hakua nähdäksesi ne.",
     "mapNoSearchMatches": "Hakua vastaavia aktiviteetteja ei löytynyt.",
-    "mapNoActivitiesArea": "Tällä alueella ei ole aktiviteetteja."
+    "mapNoActivitiesArea": "Tällä alueella ei ole aktiviteetteja.",
+    "practiceSessionTimedOut": "Harjoitussessiosi päättyi {minutes} minuutin käyttämättömyyden jälkeen."
 }

@@ -9749,5 +9749,6 @@
     "mapMatchesOffscreen": "Det er kamper utenfor synsfeltet ditt. Zoom ut for å se dem.",
     "mapFiltersHideMatches": "Filtrene dine skjuler alle kamper. Utvid søket for å se dem.",
     "mapNoSearchMatches": "Ingen aktiviteter samsvarer med søket ditt.",
-    "mapNoActivitiesArea": "Ingen aktiviteter i dette området."
+    "mapNoActivitiesArea": "Ingen aktiviteter i dette området.",
+    "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet."
 }

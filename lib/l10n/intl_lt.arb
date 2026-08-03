@@ -10473,5 +10473,6 @@
     "mapMatchesOffscreen": "Už ekrano ribų yra atitikmenų. Norėdami juos pamatyti, sumažinkite vaizdą.",
     "mapFiltersHideMatches": "Jūsų filtrai slepia visus atitikmenis. Išplėskite paiešką, kad juos pamatytumėte.",
     "mapNoSearchMatches": "Jūsų paieškai neatitinka jokia veikla.",
-    "mapNoActivitiesArea": "Šioje srityje nėra jokios veiklos."
+    "mapNoActivitiesArea": "Šioje srityje nėra jokios veiklos.",
+    "practiceSessionTimedOut": "Jūsų praktikos sesija baigėsi po {minutes} minučių be veiklos."
 }

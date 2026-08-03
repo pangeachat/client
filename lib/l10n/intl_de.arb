@@ -9679,5 +9679,6 @@
     "mapMatchesOffscreen": "Es gibt Matches außerhalb deines Sichtbereichs. Zoome heraus, um sie zu sehen.",
     "mapFiltersHideMatches": "Deine Filter verbergen alle Matches. Erweitere die Suche, um sie zu sehen.",
     "mapNoSearchMatches": "Keine Aktivitäten entsprechen deiner Suche.",
-    "mapNoActivitiesArea": "Keine Aktivitäten in diesem Bereich."
+    "mapNoActivitiesArea": "Keine Aktivitäten in diesem Bereich.",
+    "practiceSessionTimedOut": "Deine Übungseinheit wurde nach {minutes} Minuten Inaktivität beendet."
 }

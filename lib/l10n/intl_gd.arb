@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Tha geamannan taobh a-muigh do sheallaidh. Dèan lughdachadh gus am faicinn.",
     "mapFiltersHideMatches": "Tha na sìoltachain agad a’ falach a h-uile geama. Leudaich an rannsachadh gus am faicinn.",
     "mapNoSearchMatches": "Chan eil gnìomhachd sam bith a’ freagairt ris an rannsachadh agad.",
-    "mapNoActivitiesArea": "Chan eil gnìomhachd sam bith san sgìre seo."
+    "mapNoActivitiesArea": "Chan eil gnìomhachd sam bith san sgìre seo.",
+    "practiceSessionTimedOut": "Thàinig an seisean cleachdaidh agad gu crìch an dèidh {minutes} mionaid gun ghnìomhachd."
 }

@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -36,7 +37,12 @@ AnalyticsPracticeSessionModel _makeSession(ConstructTypeEnum type) =>
 void main() {
   final holder = PracticeSessionHolder.instance;
 
-  setUp(holder.end);
+  setUp(() {
+    holder.end();
+    // The holder is a singleton; a timeout raised by one test must not leak
+    // into the next.
+    holder.consumeTimeoutNotice();
+  });
 
   group('PracticeSessionHolder', () {
     test('claim returns the same state for the same type (resume)', () {
@@ -103,6 +109,88 @@ void main() {
       // A fresh claim after end starts a new state.
       final fresh = holder.claim(ConstructTypeEnum.vocab);
       expect(identical(fresh, state), isFalse);
+    });
+
+    test('an idle live session is ended and leaves a notice', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout + const Duration(minutes: 1),
+      );
+
+      holder.evaluateIdleTimeout();
+
+      expect(holder.current, isNull);
+      expect(holder.liveType, isNull);
+      expect(holder.hasTimeoutNotice, isTrue);
+      // The notice is one-shot: whoever tells the learner clears it.
+      expect(holder.consumeTimeoutNotice(), isTrue);
+      expect(holder.consumeTimeoutNotice(), isFalse);
+    });
+
+    test('a session idle for less than the limit survives', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout - const Duration(minutes: 1),
+      );
+
+      holder.evaluateIdleTimeout();
+
+      expect(holder.current, same(state));
+      expect(holder.liveType, ConstructTypeEnum.vocab);
+      expect(holder.hasTimeoutNotice, isFalse);
+    });
+
+    test('markInteraction pushes the idle deadline out', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout + const Duration(minutes: 1),
+      );
+
+      holder.markInteraction();
+      holder.evaluateIdleTimeout();
+
+      expect(holder.current, same(state));
+      expect(holder.hasTimeoutNotice, isFalse);
+    });
+
+    test('an idle completed session is left alone — its review stays', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      final session = _makeSession(ConstructTypeEnum.vocab);
+      state.sessionController.session = session;
+      session.finishSession();
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout + const Duration(minutes: 1),
+      );
+
+      holder.evaluateIdleTimeout();
+
+      expect(holder.current, same(state));
+      expect(holder.hasTimeoutNotice, isFalse);
+    });
+
+    test('claim expires a stale session instead of resuming it', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+      state.lastInteractionAt = DateTime.now().subtract(
+        AnalyticsPracticeConstants.idleTimeout + const Duration(minutes: 1),
+      );
+
+      final resumed = holder.claim(ConstructTypeEnum.vocab);
+
+      expect(identical(resumed, state), isFalse);
+      expect(holder.hasTimeoutNotice, isTrue);
+    });
+
+    test('an explicit end leaves no timeout notice', () {
+      final state = holder.claim(ConstructTypeEnum.vocab);
+      state.sessionController.session = _makeSession(ConstructTypeEnum.vocab);
+
+      holder.end();
+
+      expect(holder.hasTimeoutNotice, isFalse);
     });
 
     test('resume keeps mid-session progress intact', () {

@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Aya patandingan di luar pandangan anjeun. Leutikkeun pikeun ningali éta.",
     "mapFiltersHideMatches": "Filter anjeun nyumputkeun sadaya patandingan. Lebarkeun pamilarian pikeun ningali éta.",
     "mapNoSearchMatches": "Teu aya kagiatan anu cocog sareng pamilarian anjeun.",
-    "mapNoActivitiesArea": "Teu aya kagiatan di daérah ieu."
+    "mapNoActivitiesArea": "Teu aya kagiatan di daérah ieu.",
+    "practiceSessionTimedOut": "Sési latihan anjeun réngsé saatos {minutes} menit tanpa kagiatan."
 }

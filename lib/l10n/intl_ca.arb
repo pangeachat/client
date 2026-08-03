@@ -9819,5 +9819,6 @@
     "mapMatchesOffscreen": "Hi ha partides fora de la teva vista. Allunya el zoom per veure-les.",
     "mapFiltersHideMatches": "Els teus filtres estan amagant totes les partides. Amplia la cerca per veure-les.",
     "mapNoSearchMatches": "Cap activitat coincideix amb la teva cerca.",
-    "mapNoActivitiesArea": "No hi ha activitats en aquesta zona."
+    "mapNoActivitiesArea": "No hi ha activitats en aquesta zona.",
+    "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat."
 }

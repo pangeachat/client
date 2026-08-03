@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Hemm logħbiet barra mill-vista tiegħek. Żgura 'l barra biex tarahom.",
     "mapFiltersHideMatches": "Il-filtri tiegħek qed jaħbu l-logħbiet kollha. Wessa' t-tfittxija biex tarahom.",
     "mapNoSearchMatches": "L-ebda attività ma taqbel mat-tfittxija tiegħek.",
-    "mapNoActivitiesArea": "L-ebda attività f'din iż-żona."
+    "mapNoActivitiesArea": "L-ebda attività f'din iż-żona.",
+    "practiceSessionTimedOut": "Is-sessjoni ta' prattika tiegħek intemmet wara {minutes} minuti mingħajr attività."
 }

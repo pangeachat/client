@@ -6,6 +6,10 @@
           {
             "type": "command",
             "command": "python3 \"$HOME/PangeaChat/.github/scripts/sync-copilot-to-claude.py\""
+          },
+          {
+            "type": "command",
+            "command": "python3 \"$HOME/PangeaChat/.github/scripts/workspace-doctor.py\""
           }
         ]
       }

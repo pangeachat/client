@@ -9696,5 +9696,6 @@
     "mapMatchesOffscreen": "Sizning koʻrish doirangizdan tashqarida oʻyinlar mavjud. Ularni koʻrish uchun kichraytiring.",
     "mapFiltersHideMatches": "Filtrlaringiz barcha oʻyinlarni yashirmoqda. Ularni koʻrish uchun qidiruvni kengaytiring.",
     "mapNoSearchMatches": "Qidiruvingizga mos keladigan faoliyat topilmadi.",
-    "mapNoActivitiesArea": "Bu hududda faoliyat yoʻq."
+    "mapNoActivitiesArea": "Bu hududda faoliyat yoʻq.",
+    "practiceSessionTimedOut": "Faoliyatsiz {minutes} daqiqadan so‘ng mashg‘ulotingiz tugadi."
 }

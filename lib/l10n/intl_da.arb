@@ -10618,5 +10618,6 @@
     "mapMatchesOffscreen": "Der er kampe uden for dit synsfelt. Zoom ud for at se dem.",
     "mapFiltersHideMatches": "Dine filtre skjuler alle kampe. Udvid søgningen for at se dem.",
     "mapNoSearchMatches": "Ingen aktiviteter matcher din søgning.",
-    "mapNoActivitiesArea": "Ingen aktiviteter i dette område."
+    "mapNoActivitiesArea": "Ingen aktiviteter i dette område.",
+    "practiceSessionTimedOut": "Din træningssession blev afsluttet efter {minutes} minutter uden aktivitet."
 }

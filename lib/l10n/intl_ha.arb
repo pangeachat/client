@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Akwai wasanni a wajen ganinka. Kankantar da hoton don ganinsu.",
     "mapFiltersHideMatches": "Matatanka suna boye duk wasannin. Fadada binciken don ganinsu.",
     "mapNoSearchMatches": "Babu ayyukan da suka dace da bincikenka.",
-    "mapNoActivitiesArea": "Babu ayyuka a wannan yanki."
+    "mapNoActivitiesArea": "Babu ayyuka a wannan yanki.",
+    "practiceSessionTimedOut": "Zaman horon ka ya ƙare bayan mintuna {minutes} ba tare da aiki ba."
 }

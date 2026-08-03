@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Ho na le dipapadi tse kantle ho pono ya hao. Atolosa ho di bona.",
     "mapFiltersHideMatches": "Disefa tsa hao di pata dipapadi tsohle. Atolosa patlisiso ho di bona.",
     "mapNoSearchMatches": "Ha ho ditshebetso tse tsamaellanang le patlisiso ya hao.",
-    "mapNoActivitiesArea": "Ha ho ditshebetso sebakeng sena."
+    "mapNoActivitiesArea": "Ha ho ditshebetso sebakeng sena.",
+    "practiceSessionTimedOut": "Thuto ea hau ea boikoetliso e felile kamora metsotso e {minutes} ntle le ts'ebetso."
 }

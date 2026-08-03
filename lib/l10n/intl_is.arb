@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Það eru leikir fyrir utan sýnilegt svæði. Minnkaðu útsýnið til að sjá þá.",
     "mapFiltersHideMatches": "Síurnar þínar fela alla leiki. Víkkaðu leitina til að sjá þá.",
     "mapNoSearchMatches": "Engar athafnir passa við leitina þína.",
-    "mapNoActivitiesArea": "Engar athafnir á þessu svæði."
+    "mapNoActivitiesArea": "Engar athafnir á þessu svæði.",
+    "practiceSessionTimedOut": "Æfingalotan þín rann út eftir {minutes} mínútur án virkni."
 }

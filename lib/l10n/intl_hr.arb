@@ -10128,5 +10128,6 @@
     "mapMatchesOffscreen": "Izvan vašeg pogleda postoje podudaranja. Umanjite prikaz da biste ih vidjeli.",
     "mapFiltersHideMatches": "Vaši filtri skrivaju sva podudaranja. Proširite pretraživanje da biste ih vidjeli.",
     "mapNoSearchMatches": "Nema aktivnosti koje odgovaraju vašem pretraživanju.",
-    "mapNoActivitiesArea": "Nema aktivnosti na ovom području."
+    "mapNoActivitiesArea": "Nema aktivnosti na ovom području.",
+    "practiceSessionTimedOut": "Vaša vježba je završila nakon {minutes} minuta neaktivnosti."
 }

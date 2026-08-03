@@ -10643,5 +10643,6 @@
     "mapMatchesOffscreen": "Izven vašega pogleda so ujemanja. Pomanjšajte, da jih vidite.",
     "mapFiltersHideMatches": "Vaši filtri skrivajo vsa ujemanja. Razširite iskanje, da jih vidite.",
     "mapNoSearchMatches": "Nobena dejavnost se ne ujema z vašim iskanjem.",
-    "mapNoActivitiesArea": "Na tem območju ni dejavnosti."
+    "mapNoActivitiesArea": "Na tem območju ni dejavnosti.",
+    "practiceSessionTimedOut": "Vaša vaja se je končala po {minutes} minutah neaktivnosti."
 }

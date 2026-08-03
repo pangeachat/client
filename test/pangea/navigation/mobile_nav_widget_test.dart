@@ -642,6 +642,39 @@ void main() {
     });
 
     testWidgets(
+      'the `+` shortcut toggles the add-course hub it is showing (#8098)',
+      (tester) async {
+        // With no courses joined the 4th slot IS the `+` add-course button, so
+        // the hub is its own surface and the Courses item beside it toggles the
+        // very same cavity. Distinct from the course-sheet case above: a
+        // SECTION cavity is not a peek, so the collapse renders 0px and the
+        // re-expand comes from the remembered content-fit height, not a peek.
+        var shortcutTaps = 0;
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavitySection: AppSection.courses,
+          courseShortcutHostsCavity: true,
+          cavityChild: const Text('Courses hub'),
+          cavityKey: 'addcourse',
+          onCourseShortcutTap: () => shortcutTaps++,
+        );
+        final open = cavityHeightOf(tester);
+        expect(open, greaterThan(0.0));
+
+        await tester.tap(find.byTooltip('Add a course'));
+        await tester.pumpAndSettle();
+        expect(shortcutTaps, 0, reason: 'the active hub tap is a toggle');
+        expect(cavityHeightOf(tester), 0.0);
+
+        await tester.tap(find.byTooltip('Add a course'));
+        await tester.pumpAndSettle();
+        expect(shortcutTaps, 0);
+        expect(cavityHeightOf(tester), closeTo(open, 1.0));
+      },
+    );
+
+    testWidgets(
       'the course shortcut navigates when its course is NOT the hosted sheet',
       (tester) async {
         var shortcutTaps = 0;

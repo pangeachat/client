@@ -6958,5 +6958,6 @@
     "mapMatchesOffscreen": "Có các trận đấu nằm ngoài tầm nhìn của bạn. Hãy thu nhỏ để xem chúng.",
     "mapFiltersHideMatches": "Bộ lọc của bạn đang ẩn tất cả các trận đấu. Hãy mở rộng phạm vi tìm kiếm để xem chúng.",
     "mapNoSearchMatches": "Không có hoạt động nào khớp với tìm kiếm của bạn.",
-    "mapNoActivitiesArea": "Không có hoạt động nào trong khu vực này."
+    "mapNoActivitiesArea": "Không có hoạt động nào trong khu vực này.",
+    "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động."
 }

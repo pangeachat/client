@@ -10612,5 +10612,6 @@
     "mapMatchesOffscreen": "יש התאמות מחוץ לתצוגה שלך. התרחק כדי לראות אותן.",
     "mapFiltersHideMatches": "המסננים שלך מסתירים את כל ההתאמות. הרחב את החיפוש כדי לראות אותן.",
     "mapNoSearchMatches": "אין פעילויות התואמות לחיפוש שלך.",
-    "mapNoActivitiesArea": "אין פעילויות באזור זה."
+    "mapNoActivitiesArea": "אין פעילויות באזור זה.",
+    "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות."
 }

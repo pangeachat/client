@@ -2066,5 +2066,6 @@
     "mapMatchesOffscreen": "Certamina extra conspectum tuum sunt. Minue ut ea videas.",
     "mapFiltersHideMatches": "Tua filtra omnia certamina abscondunt. Amplifica quaestionem ut ea videas.",
     "mapNoSearchMatches": "Nullae actiones quaestioni tuae congruunt.",
-    "mapNoActivitiesArea": "Nullae actiones in hac regione."
+    "mapNoActivitiesArea": "Nullae actiones in hac regione.",
+    "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione."
 }

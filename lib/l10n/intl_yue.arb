@@ -10655,5 +10655,6 @@
     "mapMatchesOffscreen": "有啲配對喺你視野之外。縮細地圖睇吓。",
     "mapFiltersHideMatches": "你嘅篩選條件隱藏咗所有配對。放寬搜尋條件嚟睇吓。",
     "mapNoSearchMatches": "冇活動符合你嘅搜尋。",
-    "mapNoActivitiesArea": "呢個區域冇活動。"
+    "mapNoActivitiesArea": "呢個區域冇活動。",
+    "practiceSessionTimedOut": "你嘅練習環節喺冇活動 {minutes} 分鐘後結束咗。"
 }

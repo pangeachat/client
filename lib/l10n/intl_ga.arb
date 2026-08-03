@@ -9703,5 +9703,6 @@
     "mapMatchesOffscreen": "Tá cluichí lasmuigh de do radharc. Zúmáil amach chun iad a fheiceáil.",
     "mapFiltersHideMatches": "Tá do scagairí ag cur gach cluiche i bhfolach. Leathnaigh an cuardach chun iad a fheiceáil.",
     "mapNoSearchMatches": "Níl aon ghníomhaíochtaí ag teacht le do chuardach.",
-    "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo."
+    "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo.",
+    "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan ghníomhaíocht."
 }

@@ -12,6 +12,13 @@ class CourseInfoChip extends StatelessWidget {
   final double? fontSize;
   final double? iconSize;
   final EdgeInsets? padding;
+
+  /// The chip's pill fill, used as given. It used to be washed with a
+  /// translucent [ColorScheme.surface] first, which in the dark theme dragged
+  /// the invited chip's gold toward the near-black surface and left it muddy
+  /// and visibly off the gold of the `InvitedCourseBadge` sitting right beside
+  /// it on the same tile (#8109). The chip and the badge are one state marker,
+  /// so they wear one color — the same gold the level-up chip wears.
   final Color? highlightColor;
 
   /// Ink for the icon and text. Needed when [highlightColor] is dark or
@@ -50,10 +57,7 @@ class CourseInfoChip extends StatelessWidget {
           : Container(
               padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
               decoration: BoxDecoration(
-                color: Color.alphaBlend(
-                  Theme.of(context).colorScheme.surface.withAlpha(70),
-                  highlightColor!,
-                ),
+                color: highlightColor,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: row,
