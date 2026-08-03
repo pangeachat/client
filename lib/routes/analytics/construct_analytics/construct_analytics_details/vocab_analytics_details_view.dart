@@ -5,13 +5,13 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/analytics_details_usage_content.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/construct_xp_progress_bar.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/word_text_with_audio_button.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
@@ -55,13 +55,17 @@ class VocabDetailsView extends StatelessWidget {
             ? level.color(context)
             : level.darkColor(context));
 
-        final forms =
-            construct?.uses
-                .where((u) => u.form != null)
-                .map((use) => _VocabForm(use.form!, use.category))
-                .toSet()
-                .toList() ??
-            [];
+        // Distinct surface forms, deduped case-insensitively by text. Forms
+        // are display-only here — audio buttons beside individual forms were
+        // removed per phonetic-transcription-v2-design.instructions.md §3.2
+        // (form pronunciation lives in chat), so two forms that differ only
+        // by POS would render as identical duplicate strings.
+        final seenForms = <String>{};
+        final forms = <String>[
+          for (final use in construct?.uses ?? <OneConstructUse>[])
+            if (use.form != null && seenForms.add(use.form!.toLowerCase()))
+              use.form!,
+        ];
 
         final tokenText = PangeaTokenText.fromString(constructId.lemma);
         final token = PangeaToken(
@@ -160,7 +164,7 @@ class VocabDetailsView extends StatelessWidget {
 
 class _VocabForms extends StatelessWidget {
   final String lemma;
-  final List<_VocabForm> forms;
+  final List<String> forms;
   final Color textColor;
 
   const _VocabForms({
@@ -189,15 +193,15 @@ class _VocabForms extends StatelessWidget {
             (i, form) => Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                WordTextWithAudioButton(
-                  text: form.form,
-                  pos: form.pos,
-                  style: Theme.of(
-                    context,
-                  ).textTheme.bodyLarge?.copyWith(color: textColor),
-                  uniqueID: "${form.form}-$lemma-$i",
-                  langCode:
-                      MatrixState.pangeaController.userController.userL2Code!,
+                ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 180),
+                  child: Text(
+                    form,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyLarge?.copyWith(color: textColor),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                 ),
                 if (i != forms.length - 1) const Text(",  "),
               ],
@@ -207,22 +211,4 @@ class _VocabForms extends StatelessWidget {
       ),
     );
   }
-}
-
-class _VocabForm {
-  final String form;
-  final String pos;
-
-  const _VocabForm(this.form, this.pos);
-
-  @override
-  bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is _VocabForm &&
-          runtimeType == other.runtimeType &&
-          form.toLowerCase() == other.form.toLowerCase() &&
-          pos == other.pos;
-
-  @override
-  int get hashCode => form.toLowerCase().hashCode ^ pos.hashCode;
 }

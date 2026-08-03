@@ -67,6 +67,17 @@ class _AudioRequest {
       const DeepCollectionEquality().hash(morph);
 }
 
+/// A backend-TTS fetch starting or ending, scoped to the affordance that
+/// asked for it. [targetId] is the `targetID` the caller passed to
+/// [TtsController.tryToSpeak]; buttons filter on their own id so only the
+/// tapped affordance shows a loading state, not every audio button on screen.
+class TtsLoadingEvent {
+  final String? targetId;
+  final bool isLoading;
+
+  const TtsLoadingEvent(this.targetId, this.isLoading);
+}
+
 class TtsController {
   static List<String> _availableLangCodes = [];
 
@@ -77,8 +88,8 @@ class TtsController {
   static List<Map<String, String>> _voices = [];
 
   static final _tts = flutter_tts.FlutterTts();
-  static final StreamController<bool> loadingChoreoStream =
-      StreamController<bool>.broadcast();
+  static final StreamController<TtsLoadingEvent> loadingChoreoStream =
+      StreamController<TtsLoadingEvent>.broadcast();
 
   static AudioPlayer? audioPlayer;
   static VoidCallback? _onStop;
@@ -432,16 +443,23 @@ class TtsController {
           [token],
           requestId: requestId,
           ttsPhoneme: ttsPhoneme,
-          timeout: selection.hasVoice
-              ? const Duration(seconds: 1)
-              : const Duration(seconds: 10),
+          targetID: targetID,
+          // Phoneme playback gets the full deadline and no device rescue:
+          // the device cannot render the phoneme, so a fast fallback plays a
+          // different reading than the transcription on screen (#8076).
+          timeout: TtsRouting.backendTimeout(
+            hasPhoneme: ttsPhoneme != null,
+            hasVoice: selection.hasVoice,
+          ),
           tid: tid,
           speed: speed,
         );
 
-        // Fall back to a device voice if backend fails (e.g. timeout) and the
-        // device has something to play.
-        if (!success && selection.hasVoice && _isCurrentRequestId(requestId)) {
+        final allowFallback = TtsRouting.allowDeviceFallback(
+          hasPhoneme: ttsPhoneme != null,
+          hasVoice: selection.hasVoice,
+        );
+        if (!success && allowFallback && _isCurrentRequestId(requestId)) {
           _log('tryToSpeak: speaking from device on backend failure', tid);
           await _speakFromDevice(
             text,
@@ -452,8 +470,12 @@ class TtsController {
             speed: speed,
             voice: selection.voice,
           );
-        } else if (!success && !_isCurrentRequestId(requestId)) {
-          _log('tryToSpeak: skipped fallback for superseded request', tid);
+        } else if (!success) {
+          _log(
+            'tryToSpeak: no device fallback '
+            '(allowed=$allowFallback current=${_isCurrentRequestId(requestId)})',
+            tid,
+          );
         }
       } else {
         await _speakFromDevice(
@@ -527,6 +549,7 @@ class TtsController {
     List<PangeaTokenText> tokens, {
     required int requestId,
     String? ttsPhoneme,
+    String? targetID,
     Duration timeout = const Duration(seconds: 10),
     required String tid,
     double speed = 1.0,
@@ -535,7 +558,7 @@ class TtsController {
     TextToSpeechResponseModel? ttsRes;
     AudioPlayer? requestPlayer;
 
-    loadingChoreoStream.add(true);
+    loadingChoreoStream.add(TtsLoadingEvent(targetID, true));
     try {
       final result = await TextToSpeechRepo.instance
           .get(_request(text, langCode, tokens, ttsPhoneme))
@@ -558,7 +581,7 @@ class TtsController {
       );
       return false;
     } finally {
-      loadingChoreoStream.add(false);
+      loadingChoreoStream.add(TtsLoadingEvent(targetID, false));
     }
 
     try {

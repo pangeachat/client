@@ -60,8 +60,6 @@ jobs:
         run: sudo xcode-select --switch /Applications/Xcode_26.3.app
       - run: brew install sqlcipher
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
-        with:
-          cache-base: main
       - name: Set up Ruby
         uses: ruby/setup-ruby@6ca151fd1bfcfd6fe0c4eb6837eb0584d0134a0c # v1
         with:
