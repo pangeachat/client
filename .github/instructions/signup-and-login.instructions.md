@@ -21,7 +21,7 @@ See also: [returning-user-detection.instructions.md](returning-user-detection.in
 
 ### Map backdrop
 
-**The map backdrop belongs to the narrow layout only.** There, the screen sits on the world map rather than a flat surface colour, so the first thing a new user sees is the surface they will land on after onboarding. The wide layout keeps the plain surface background it uses today: the wide crop already carries its own full-bleed artwork, and a map behind it would compete rather than frame.
+**The map backdrop belongs to the narrow layout only.** There, the screen sits on the world map rather than a flat surface colour, so the first thing a new user sees is the surface they will land on after onboarding. The wide layout keeps the plain surface background it uses today: the wide carousel image already fills its own frame, and a map behind it would compete rather than frame.
 
 One consequence to keep in view: the wide layout's empty margin is therefore still empty. Because a slide is capped rather than stretched, there is always area around it on a broad window, and the backdrop is not what fills it. Anything done about that has to come from the cap or the crop, not from this image.
 
@@ -41,14 +41,14 @@ The screen chooses between two layouts from the window's **shape**, not the devi
 | Slide width | Full window width | Capped — see the note below |
 | Slide height | Width times 1.25 | Two thirds of the space below the header |
 | Brand header | None — the first slide carries the name | Pangea logo at 48 beside the wordmark |
-| Headline | Above the artwork | Below the artwork |
+| Headline | Above the carousel image | Below the carousel image |
 | Fallback logo when an image fails | 128 | 256 |
 
 One slide is always full-bleed across the carousel; slides never peek in from the edges, so a partly visible neighbour cannot be mistaken for content.
 
 **The wide cap is still open.** The shipped value is 600. **840 is a suggestion, not a decision** — it appears in the [#7415](https://github.com/pangeachat/client/issues/7415) change list and is worth considering because it matches the point at which [`FluffyThemes`](../../lib/config/themes.dart) already treats a window as wide enough for side-by-side panes, so the screen would change character at the same width as the rest of the app.
 
-What is settled is where the number should *not* come from. The narrower `MaxWidthBody` default in [layout.instructions.md](layout.instructions.md) is a reading measure, sized so a line of prose stays comfortable; a slide is artwork, so that reasoning does not carry over and the cap should not be aligned to it for consistency's sake.
+What is settled is where the number should *not* come from. The narrower `MaxWidthBody` default in [layout.instructions.md](layout.instructions.md) is a reading measure, sized so a line of prose stays comfortable; a slide is an image rather than prose, so that reasoning does not carry over and the cap should not be aligned to it for consistency's sake.
 
 Spacing below is in logical pixels. The three stacked gaps of 24 between carousel, dots and buttons are what keep the dots reading as a group with the carousel rather than with the buttons.
 
@@ -56,10 +56,10 @@ Spacing below is in logical pixels. The three stacked gaps of 24 between carouse
 |---|---|---|
 | Around the carousel group — slides, headline and dots together | 32 above, 24 below | 32 above, 24 below |
 | Above and below the brand header | — | 32 above, 24 below |
-| Strip reserved for the headline above the artwork | 32 | — |
+| Strip reserved for the headline above the carousel image | 32 | — |
 | Headline inset from the top of the slide | 16 | — |
 | Headline side margins | 20 each side | — |
-| Gap between artwork and headline | — | 24 |
+| Gap between carousel image and headline | — | 24 |
 | Carousel to dots | 24 | 24 |
 | Dot size, and gap either side of each dot | 8, with 4 | 8, with 4 |
 | Dots to buttons | 24 | 24 |
@@ -72,9 +72,9 @@ On wide windows the carousel takes twice the vertical space of the button area b
 
 ### Slide text
 
-Each headline is localized text drawn over the artwork rather than baked into it, so it translates and scales independently of the image, and a copy change never means re-exporting six files.
+Each headline is localized text drawn over the carousel image rather than baked into it, so it translates and scales independently of the image, and a copy change never means re-exporting six files.
 
-**Placement differs by layout, and only by layout.** In the narrow layout the headline sits at the top of the slide, above the device mockup, so it is read before the image and stays clear of the buttons. In the wide layout it sits below the artwork, because the wide crop is close to full-bleed and has no clear space at its top edge. The tables above give the measurements for each.
+**Placement differs by layout, and only by layout.** In the narrow layout the headline sits at the top of the slide, above the device mockup, so it is read before the image and stays clear of the buttons. In the wide layout it sits below the carousel image, because the wide crop is close to full-bleed and has no clear space at its top edge. The tables above give the measurements for each.
 
 | Property | Value |
 |---|---|
@@ -88,7 +88,7 @@ The same size and weight apply in both layouts. A headline that changes weight w
 
 Colour and outline come from the scheme roles listed under Buttons, dots and colour, so the headline carries no brand value of its own. In the narrow layout the outline does the separating work over the map: because it takes the surface colour, it is near-white in light mode and near-dark in dark, which keeps the type punched out of the backdrop in both without needing a second rule.
 
-**Size the reserved strip for two lines, not one.** Several supported languages run noticeably longer than English, and these headlines are already the longest strings on the screen, so a strip sized to one line of English will clip a translation rather than wrap it. Wrapping is the intended behaviour; shrinking the type to fit is not, because the size is doing legibility work over the artwork.
+**Size the reserved strip for two lines, not one.** Several supported languages run noticeably longer than English, and these headlines are already the longest strings on the screen, so a strip sized to one line of English will clip a translation rather than wrap it. Wrapping is the intended behaviour; shrinking the type to fit is not, because the size is doing legibility work over the carousel image.
 
 Text scaling should be capped rather than switched off. The strip cannot absorb unlimited growth, but disabling scaling outright fails the users who most need larger type. The current build disables it entirely — recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294) — so treat that as the constraint to revisit, not as the intended design.
 
@@ -100,32 +100,32 @@ Slides are fetched at runtime from the bucket named in [`AppConfig`](../../lib/c
 
 Files are named `Carousel_<number>_<crop>_<version>.png`. The number runs 1 to 6, the crop is `ratio4x5` for the narrow layout or `ratio2x1` for the wide one, and the version marks the design generation — currently `V5`. Twelve files make a full set.
 
-The version suffix means a new set is added alongside the one it replaces rather than overwriting it, so the previous artwork stays retrievable if a slide has to be rolled back or compared. It also makes the files safe to cache forever, since a new generation never reuses an old name.
+The version suffix means a new set is added alongside the one it replaces rather than overwriting it, so the previous carousel images stay retrievable if a slide has to be rolled back or compared. It also makes the files safe to cache forever, since a new generation never reuses an old name.
 
 **Spell the crop and version tokens identically across a whole set.** Bucket keys are case-sensitive and the app builds each filename from one rule, so a set uploaded half as `_V5` and half as `_v5`, or half as `ratio2x1` and half as `ratio2x1_NoPadding`, cannot be addressed at all. The half that does not match the rule returns a not-found and falls back to the Pangea logo, which reads as a loading failure rather than a naming mistake.
 
 `ratio2x1_NoPadding` is the legacy wide name. Its files are 16:9 despite what the token suggests, and they carry padding despite the name; the V5 wide files are a true 2:1. The client still composes that legacy name with no version token, so **it will switch from `ratio2x1_NoPadding` to `ratio2x1_V5`** — tracked as part of [#7415](https://github.com/pangeachat/client/issues/7415) and completing with it. Until then the files linked under Slide inventory are live in the bucket but unused by the app.
 
-**Upload both crops of a slide together.** The app chooses a crop from the window shape, so replacing only one leaves the other layout on older artwork. Nothing fails visibly when this happens; the two layouts simply drift apart, and the gap is only found by opening the app at a different window shape.
+**Upload both crops of a slide together.** The app chooses a crop from the window shape, so replacing only one leaves the other layout on older carousel images. Nothing fails visibly when this happens; the two layouts simply drift apart, and the gap is only found by opening the app at a different window shape.
 
 ### Slide inventory
 
-A slide is two things kept in separate places: **artwork in the bucket, headline in the code.** Carousel slides are images uploaded to AWS S3. A headline is a localized string, so changing one means a code edit, retranslation into every supported language, and a release. Reword a headline only when the wording is worth that; restyle or redraw freely.
+A slide is two things kept in separate places: **the carousel image in the bucket, the headline in the code.** Carousel images are uploaded to AWS S3, so replacing one needs no release. A headline is a localized string, so changing one means a code edit, retranslation into every supported language, and a release. Reword a headline only when the wording is worth that; restyle or redraw a slide freely.
 
-| # | Headline in code today | V5 headline | V5 artwork |
+| # | Headline in code today | V5 headline | V5 carousel image |
 |---|---|---|---|
-| 1 | Learn a language while texting your friends! | none — carried in the artwork | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio2x1_V5.png) |
+| 1 | Learn a language while texting your friends! | none — carried in the carousel image | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_1_ratio2x1_V5.png) |
 | 2 | Write and speak worry-free with Pangea Bot anytime, anywhere! | Explore, play and learn | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_2_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_2_ratio2x1_V5.png) |
 | 3 | Join international learning communities, or start your own! | Conversation from Day One | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_3_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_3_ratio2x1_V5.png) |
 | 4 | Play conversation games with the bot, classmates, and new friends! | Built for connection | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_4_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_4_ratio2x1_V5.png) |
 | 5 | Jump into conversation from Day One with AI writing tools! | AI when you need it | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_5_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_5_ratio2x1_V5.png) |
 | 6 | Play practice games personalized to your vocabulary and grammar needs! | Practice tailored for you | [narrow](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_6_ratio4x5_V5.png) · [wide](https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com/Carousel_6_ratio2x1_V5.png) |
 
-The V5 set is 800 x 1000 narrow and 1200 x 600 wide. Both land at roughly twice their on-screen size, which is what keeps the product UI inside the artwork legible rather than soft — the complaint that opened [#7415](https://github.com/pangeachat/client/issues/7415).
+The V5 set is 800 x 1000 narrow and 1200 x 600 wide. Both land at roughly twice their on-screen size, which is what keeps the product UI inside the carousel image legible rather than soft — the complaint that opened [#7415](https://github.com/pangeachat/client/issues/7415).
 
-Slide number in the filename is the position in this table, so artwork and headline stay paired by number alone. Reordering the carousel therefore means renaming files as well as reordering the strings — cheaper to change what a slide says than where it sits.
+Slide number in the filename is the position in this table, so carousel image and headline stay paired by number alone. Reordering the carousel therefore means renaming files as well as reordering the strings — cheaper to change what a slide says than where it sits.
 
-Two things the V5 column changes beyond wording. **Slide 1 has no headline at all** — it opens on the brand line set inside the artwork, so the layout must allow an empty headline rather than assume six. And **slides 3 and 4 swap subjects** against the current order, so the pairing above is the mapping to build to, not a rename of the existing strings. Both are copy and ordering changes rather than art changes, and both carry the release and translation cost described above.
+Two things the V5 column changes beyond wording. **Slide 1 has no headline at all** — it opens on the brand line set inside the carousel image, so the layout must allow an empty headline rather than assume six. And **slides 3 and 4 swap subjects** against the current order, so the pairing above is the mapping to build to, not a rename of the existing strings. Both are copy and ordering changes rather than image changes, and both carry the release and translation cost described above.
 
 For how a headline is set and how it behaves as the window changes, see Slide text and Layout and responsiveness.
 
