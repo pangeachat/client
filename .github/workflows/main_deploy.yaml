@@ -157,7 +157,7 @@ jobs:
             --exclude "version.json" \
             --exclude "manifest.json" \
             --exclude "assets/FontManifest.json" \
-            --exclude "assets/assets.json" \
+            --exclude "assets/AssetManifest.bin*" \
             --exclude "assets/fonts/*"
 
           # =========================
@@ -192,7 +192,8 @@ jobs:
             "version.json"
             "manifest.json"
             "assets/FontManifest.json"
-            "assets/assets.json"
+            "assets/AssetManifest.bin"
+            "assets/AssetManifest.bin.json"
           )
 
           for f in "${RUNTIME_FILES[@]}"; do
