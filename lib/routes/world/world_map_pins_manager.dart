@@ -23,7 +23,6 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
-import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -61,7 +60,13 @@ class WorldMapPinsManager {
 
   Map<String, PinSignals> _signals = {};
   Map<String, int> _userStars = {};
-  Map<String, MapCompletionFilter> _completion = {};
+
+  // Star-tier inputs, precomputed once per sync (each a single rooms pass) so
+  // resolving a pin's display state / star level is an O(roles) lookup rather
+  // than an O(rooms) rescan per pin (world-map.instructions.md, "Goal Progress").
+  Map<String, List<OwnRoleAwards>> _ownRoleAwards = {};
+  Map<String, Set<String>> _completedRoles = {};
+  Map<String, Set<String>> _allRoles = {};
 
   /// The shared next-Mission resolution the relevance band ranks toward, resolved
   /// from the objective cache's outlines + [_userStars]. Recomputed where its
@@ -171,8 +176,31 @@ class WorldMapPinsManager {
     bool Function(QuestActivityCard) filter,
   ) => _pins.where(filter).toList();
 
-  MapCompletionFilter? activityCompletionStatus(String activityId) =>
-      _completion[activityId];
+  /// The learner's star tier for [card], resolved hydration-free against the
+  /// card's current thin goals, falling back to the room-derived path for cards
+  /// without thin goals (world-map.instructions.md, "Goal Progress"). Reuses the
+  /// precomputed star-input maps so it never rescans rooms.
+  ActivityStarLevel starLevelOf(QuestActivityCard card) {
+    final id = card.activityId;
+    return starLevelForCard(card, _ownRoleAwards[id] ?? const []) ??
+        starLevelFor(
+          _completedRoles[id] ?? const {},
+          _allRoles[id] ?? card.roleIds,
+        );
+  }
+
+  /// The activity's resolved display [ActivityPinState]: a live-session state
+  /// (from [_signals]) wins the colour, else the completed star tier layers in
+  /// `inProgress`, else the plain `available` default. The single source shared
+  /// by the Status filter ([WorldMapFilterState.include]) and the pin renderer
+  /// so the two can never drift (world-map.instructions.md, "Pin state").
+  ActivityPinState displayStateOf(QuestActivityCard card) {
+    final live = _signals[card.activityId]?.state;
+    if (live != null) return live;
+    return starLevelOf(card) == ActivityStarLevel.none
+        ? ActivityPinState.available
+        : ActivityPinState.inProgress;
+  }
 
   int? activityStarsEarned(String activityId) => _userStars[activityId];
 
@@ -473,11 +501,12 @@ class WorldMapPinsManager {
       extraFacts: _discoveredSessionFacts,
     );
     final userStars = client.userStarsByActivity;
-    final completion = client.activityCompletionStatuses;
 
     _signals = signals;
     _userStars = userStars;
-    _completion = completion;
+    _ownRoleAwards = client.ownRoleAwardsByActivity;
+    _completedRoles = client.completedRolesByActivity;
+    _allRoles = client.roleIdsByActivity;
     resolveProgression();
   }
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-07-31 10:55:37.442285",
+    "@@last_modified": "2026-08-03 09:47:25.234967",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -9865,7 +9865,6 @@
     "browsePublicCourses": "公開コースをブラウズ",
     "editProfile": "プロフィールを編集",
     "mapSearchHint": "アクティビティを検索",
-    "mapSearchNoResults": "表示中に一致するものはありません",
     "mapFilterAllLanguages": "すべての言語",
     "mapFilterNotStarted": "未開始",
     "mapFilterInProgress": "進行中",
@@ -9874,7 +9873,6 @@
     "activityTypeConversation": "会話",
     "playAgain": "再度プレイ",
     "reviewActivity": "レビュー",
-    "mapEmptyInView": "あなたのレベルまたは言語では何もありません。フィルターを広げるか、ズームアウトしてください。",
     "welcomeToPangeaChat": "Pangea Chatへようこそ",
     "claimTrial": "トライアルを請求する",
     "thanksForSigningUp": "サインアップありがとうございます！こちらが",
@@ -9945,10 +9943,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9978,10 +9972,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10202,7 +10192,6 @@
     "analyticsAndSettingsLabel": "分析と設定オプション",
     "searchActivitiesLabel": "マップ上のアクティビティを検索",
     "filteredActivitiesLabel": "フィルタリングされたアクティビティリスト",
-    "activityFilterButtonsLabel": "言語、難易度、進捗のフィルターボタン",
     "mapZoomLabel": "マップズームコントロール",
     "activityMapLabel": "アクティビティマップ",
     "@navOptionsLabel": {
@@ -10222,10 +10211,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10462,5 +10447,19 @@
     "exitVocabPracticeSession": "現在の語彙練習セッションの進捗は保存されません。",
     "exitGrammarPracticeSession": "現在の文法練習セッションの進捗は保存されません。",
     "autoReadAloudMessagesToolName": "受信メッセージをすべて自動で読み上げる",
-    "autoReadAloudMessagesDescription": "メッセージを受信した際、デバイスの音声機能を使ってメッセージを読み上げ、リスニング練習に役立てます。"
+    "autoReadAloudMessagesDescription": "メッセージを受信した際、デバイスの音声機能を使ってメッセージを読み上げ、リスニング練習に役立てます。",
+    "activityFilterButtonsLabel": "レベル、プレイヤー、ステータスのフィルターボタン",
+    "mapFilterAllLevels": "すべてのレベル",
+    "mapFilterAllPlayers": "すべてのプレイヤー",
+    "mapFilterAllStatuses": "すべてのステータス",
+    "mapFiltersShow": "フィルターを表示",
+    "mapFiltersHide": "フィルターを非表示",
+    "mapStatusAvailable": "利用可能",
+    "mapStatusOngoing": "進行中",
+    "mapStatusWaiting": "待機中",
+    "mapStatusOpenToJoin": "参加可能",
+    "mapMatchesOffscreen": "画面外にマッチがあります。ズームアウトして表示してください。",
+    "mapFiltersHideMatches": "フィルターによりすべてのマッチが非表示になっています。検索範囲を広げてください。",
+    "mapNoSearchMatches": "検索条件に一致するアクティビティはありません。",
+    "mapNoActivitiesArea": "このエリアにはアクティビティがありません。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-31 10:55:34.430670",
+    "@@last_modified": "2026-08-03 09:47:20.697243",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9096,7 +9096,6 @@
     "browsePublicCourses": "Arakatu publiko ikastaroak",
     "editProfile": "Editatu profila",
     "mapSearchHint": "Bilatu jarduerak",
-    "mapSearchNoResults": "Ez dago bat etorritakoen ikuspegian",
     "mapFilterAllLanguages": "Hizkuntza guztiak",
     "mapFilterNotStarted": "Hasita ez",
     "mapFilterInProgress": "Prozesuan",
@@ -9105,7 +9104,6 @@
     "activityTypeConversation": "Elkarrizketa",
     "playAgain": "Jolastu berriro",
     "reviewActivity": "Berrikusi",
-    "mapEmptyInView": "Ez dago ezer zure mailan edo hizkuntzan. Zabaldu zure iragazkiak edo hurbildu.",
     "welcomeToPangeaChat": "Ongi etorri Pangea Chat-era",
     "claimTrial": "Eska itzazu zure probak",
     "thanksForSigningUp": "Eskerrik asko izena emateagatik! Hona hemen",
@@ -9176,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9209,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9433,7 +9423,6 @@
     "analyticsAndSettingsLabel": "Analitika eta Ezarpenen aukerak",
     "searchActivitiesLabel": "Bilatu jarduerak mapan",
     "filteredActivitiesLabel": "Iragazitako jardueren zerrenda",
-    "activityFilterButtonsLabel": "Hizkuntza, zailtasuna eta aurrerapen iragazki botoiak",
     "mapZoomLabel": "Maparen zoom kontrolak",
     "activityMapLabel": "Jarduera mapa",
     "@navOptionsLabel": {
@@ -9453,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9693,5 +9678,19 @@
     "exitVocabPracticeSession": "Zure egungo hiztegi-praktika saioaren aurrerapena ez da gordeko.",
     "exitGrammarPracticeSession": "Zure egungo gramatika-praktika saioaren aurrerapena ez da gordeko.",
     "autoReadAloudMessagesToolName": "Jasotako mezu guztiak automatikoki ozenki irakurri",
-    "autoReadAloudMessagesDescription": "Mezu bat jasotzen denean, gailuaren ahotsa erabiliko da mezua ozenki irakurtzeko, entzuteko praktika egiteko."
+    "autoReadAloudMessagesDescription": "Mezu bat jasotzen denean, gailuaren ahotsa erabiliko da mezua ozenki irakurtzeko, entzuteko praktika egiteko.",
+    "activityFilterButtonsLabel": "Maila, jokalariak eta egoera iragazteko botoiak",
+    "mapFilterAllLevels": "Maila guztiak",
+    "mapFilterAllPlayers": "Jokalari guztiak",
+    "mapFilterAllStatuses": "Egoera guztiak",
+    "mapFiltersShow": "Erakutsi iragazkiak",
+    "mapFiltersHide": "Ezkutatu iragazkiak",
+    "mapStatusAvailable": "Erabilgarri",
+    "mapStatusOngoing": "Abian",
+    "mapStatusWaiting": "Zain",
+    "mapStatusOpenToJoin": "Ireki daiteke",
+    "mapMatchesOffscreen": "Partidak daude zure ikuspegitik kanpo. Handitu ikusteko.",
+    "mapFiltersHideMatches": "Zure iragazkiek partida guztiak ezkutatzen dituzte. Zabaltu bilaketa ikusteko.",
+    "mapNoSearchMatches": "Ez dago zure bilaketarekin bat datorren jarduerarik.",
+    "mapNoActivitiesArea": "Ez dago jarduerarik eremu honetan."
 }

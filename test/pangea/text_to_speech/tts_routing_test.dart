@@ -272,4 +272,55 @@ void main() {
       },
     );
   });
+
+  group('backendTimeout (#8076)', () {
+    test('plain word with a device voice keeps the short rescue deadline', () {
+      expect(
+        TtsRouting.backendTimeout(hasPhoneme: false, hasVoice: true),
+        const Duration(seconds: 1),
+      );
+    });
+
+    test('phoneme playback gets the full deadline', () {
+      // The device cannot render the phoneme, so racing a 1s deadline just
+      // guarantees the wrong reading whenever the backend is slow.
+      expect(
+        TtsRouting.backendTimeout(hasPhoneme: true, hasVoice: true),
+        const Duration(seconds: 10),
+      );
+    });
+
+    test('no device voice gets the full deadline', () {
+      expect(
+        TtsRouting.backendTimeout(hasPhoneme: false, hasVoice: false),
+        const Duration(seconds: 10),
+      );
+    });
+  });
+
+  group('allowDeviceFallback (#8076)', () {
+    test('plain word with a device voice may fall back', () {
+      expect(
+        TtsRouting.allowDeviceFallback(hasPhoneme: false, hasVoice: true),
+        isTrue,
+      );
+    });
+
+    test('phoneme playback never falls back to device', () {
+      // Device TTS would speak a different reading than the transcription
+      // on screen — silence is honest, mismatched audio teaches the wrong
+      // pronunciation.
+      expect(
+        TtsRouting.allowDeviceFallback(hasPhoneme: true, hasVoice: true),
+        isFalse,
+      );
+    });
+
+    test('no device voice, nothing to fall back to', () {
+      expect(
+        TtsRouting.allowDeviceFallback(hasPhoneme: false, hasVoice: false),
+        isFalse,
+      );
+    });
+  });
 }

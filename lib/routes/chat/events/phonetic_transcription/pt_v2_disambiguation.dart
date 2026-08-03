@@ -77,7 +77,12 @@ bool _matchesConditions(
   final conditions = udConditions.split(';');
   for (final cond in conditions) {
     final parts = cond.split('=');
-    if (parts.length != 2) continue;
+    // Fail CLOSED on a fragment that isn't exactly Key=Value. Skipping it
+    // (the old behavior) made the whole row match every context, so a row
+    // with an unparseable condition string — '|'-joined alternatives, an
+    // IPA string leaked into the column — beat proper disambiguation and
+    // the heteronym never resolved (#8076).
+    if (parts.length != 2) return false;
 
     final feature = parts[0].trim();
     final value = parts[1].trim();
