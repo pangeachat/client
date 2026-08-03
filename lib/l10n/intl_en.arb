@@ -4813,6 +4813,63 @@
     },
     "autoReadAloudMessagesToolName": "Automatically read aloud all received messages",
     "autoReadAloudMessagesDescription": "When a message is received, device voice will be utilized to read message aloud for listening practice.",
+    "readAloudNoVoiceTitle": "No high-quality {language} voice found",
+    "@readAloudNoVoiceTitle": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudNoVoiceDesktopWeb": "This browser doesn't offer a high-quality {language} voice, so messages can't be read aloud well here. Chrome and Edge usually include high-quality voices.",
+    "@readAloudNoVoiceDesktopWeb": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudGetChrome": "Get Chrome",
+    "readAloudNoVoiceMobileWeb": "This browser doesn't offer a high-quality {language} voice, so messages can't be read aloud well here. The Pangea Chat app can use your device's best voices.",
+    "@readAloudNoVoiceMobileWeb": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudGetApp": "Get the app",
+    "readAloudNoVoiceIOS": "Your device doesn't have a high-quality {language} voice downloaded yet. Download one, then try again:",
+    "@readAloudNoVoiceIOS": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Download an Enhanced or Premium voice",
+    "@readAloudNoVoiceIOSSteps": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudNoVoiceAndroid": "Your device doesn't have a high-quality {language} voice yet. Install voice data for your text-to-speech engine, then try again.",
+    "@readAloudNoVoiceAndroid": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudOpenVoiceSettings": "Open voice settings",
     "activityFilterButtonsLabel": "Level, players, and status filter buttons",
     "mapFilterAllLevels": "All levels",
     "mapFilterAllPlayers": "All players",

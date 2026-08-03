@@ -4,10 +4,12 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/enable_autocorrect_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
+import 'package:fluffychat/routes/settings/settings_learning/read_aloud_voice_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/voice_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -28,6 +30,26 @@ class LearningSettingsTiles extends StatelessWidget {
       builder: (context) => EnableAutocorrectDialog(),
     );
     return resp == false ? false : true;
+  }
+
+  /// Auto-read-aloud only enables when the device offers a known-good voice
+  /// for the selected target language; otherwise the toggle stays off and the
+  /// dialog points to where a qualifying voice can be found. See
+  /// message-read-aloud.instructions.md.
+  Future<bool> onEnableReadAloud(BuildContext context) async {
+    final language = viewModel.selectedTargetLanguage;
+    if (language == null) return false;
+    if (await TtsController.hasKnownGoodVoiceFor(language.langCode)) {
+      return true;
+    }
+    if (context.mounted) {
+      await showDialog(
+        context: context,
+        builder: (context) =>
+            ReadAloudVoiceDialog(language: language.displayName),
+      );
+    }
+    return false;
   }
 
   @override
@@ -130,6 +152,28 @@ class LearningSettingsTiles extends StatelessWidget {
                             viewModel.updateToolSetting(setting, v),
                       ),
                     ),
+                SwitchListTile.adaptive(
+                  value: viewModel.getToolSetting(
+                    ToolSetting.autoReadAloudMessages,
+                  ),
+                  title: Text(
+                    ToolSetting.autoReadAloudMessages.toolName(context),
+                  ),
+                  subtitle: Text(
+                    ToolSetting.autoReadAloudMessages.toolDescription(context),
+                  ),
+                  activeThumbColor: AppConfig.activeToggleColor,
+                  onChanged: (v) async {
+                    if (v) {
+                      final enabled = await onEnableReadAloud(context);
+                      if (!enabled) return;
+                    }
+                    viewModel.updateToolSetting(
+                      ToolSetting.autoReadAloudMessages,
+                      v,
+                    );
+                  },
+                ),
                 SwitchListTile.adaptive(
                   value: viewModel.getToolSetting(
                     ToolSetting.enableAutocorrect,

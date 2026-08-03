@@ -63,10 +63,11 @@ enum ToolSetting {
       case ToolSetting.definitions:
       case ToolSetting.immersionMode:
       case ToolSetting.enableAutocorrect:
+      // Rendered manually: enabling is gated on a known-good device voice.
+      case ToolSetting.autoReadAloudMessages:
         return false;
       case ToolSetting.autoIGC:
       case ToolSetting.enableTTS:
-      case ToolSetting.autoReadAloudMessages:
         return true;
     }
   }
