@@ -67,10 +67,10 @@ table, applied by the repo layer:
 | Other 4xx (400, 405, 422)  | error   | We sent something malformed — a code bug                                  |
 | 5xx                        | error   | The only signal the client has that a backend is regressing               |
 
-**404 means gone.** This is a cross-service constraint, not a client-local one: a backend
-that returns 404 for an internal failure breaks the table above and makes a real outage
-invisible on both sides. Choreo endpoints must distinguish "not found" from "lookup
-failed" — the latter is a 5xx with a Sentry capture, never a 404.
+This table leans on what each status actually asserts — 404 meaning the resource is gone,
+5xx meaning the lookup itself failed. Those meanings are a contract every Pangea service
+holds to, not a client-local reading, and they live in
+[error-handling.instructions.md](../../../.github/.github/instructions/error-handling.instructions.md).
 
 ## Adoption
 
