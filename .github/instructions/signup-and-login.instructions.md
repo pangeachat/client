@@ -1,6 +1,6 @@
 ---
 applyTo: "lib/routes/home/**"
-description: "Design for the pre-authentication experience — the intro carousel, its narrow-only map backdrop, responsive layout and type, the slide assets, and the choice between signup and login."
+description: "Design for the pre-authentication experience — the intro carousel, its per-layout backdrops, responsive layout and type, the slide assets, and the choice between signup and login."
 ---
 
 # Signup and Login
@@ -19,17 +19,22 @@ See also: [returning-user-detection.instructions.md](returning-user-detection.in
 
 [`LoginOrSignupView`](../../lib/routes/home/login_or_signup_view.dart) is the landing screen for anyone without a session. Six slides advance on their own every eight seconds and can also be swiped, so the story plays for a passive viewer and stays steerable for an active one.
 
-### Map backdrop
+### Backdrops
 
-**The map backdrop belongs to the narrow layout only.** There, the screen sits on the world map rather than a flat surface colour, so the first thing a new user sees is the surface they will land on after onboarding. The wide layout keeps the plain surface background it uses today: the wide carousel image already fills its own frame, and a map behind it would compete rather than frame.
+**Each layout gets a different backdrop.** The narrow layout sits on the world map, so the first thing a new user sees is the surface they will land on after onboarding. The wide layout sits on a star field instead, because a wide carousel image already fills its own frame and a map behind it would read as a second subject competing with the slide rather than a setting for it.
 
-One consequence to keep in view: the wide layout's empty margin is therefore still empty. Because a slide is capped rather than stretched, there is always area around it on a broad window, and the backdrop is not what fills it. Anything done about that has to come from the cap or the crop, not from this image.
+| Layout | Backdrop | Files |
+|---|---|---|
+| Narrow | World map | [`world_map_background.png`](../../assets/pangea/world_map_background.png) and [`world_map_background_dark.png`](../../assets/pangea/world_map_background_dark.png) |
+| Wide | Stars over a base colour that follows the theme | [`star_background.png`](../../assets/pangea/star_background.png) |
 
-The backdrop is a static image rather than a live tile. This screen has no session, and spending tile requests on decoration would draw down the budget described in [world-map-tiles.instructions.md](world-map-tiles.instructions.md) for people who have not signed up yet.
+The star field needs only one file where the map needs two. It is a transparent image carrying nothing but the stars, so the base colour beneath it flips with the theme while the stars stay as they are. The map fills its whole frame with land and water, so it had to be rendered a second time in dark tones — there is no base showing through to do that work.
 
-There are **two backdrop files, not one** — [`world_map_background.png`](../../assets/pangea/world_map_background.png) for light and [`world_map_background_dark.png`](../../assets/pangea/world_map_background_dark.png) for dark — and the narrow layout picks one by theme brightness. A single light image would glare behind dark-mode UI, and it would defeat the headline outline described under Slide text, which takes the surface colour on the assumption that the backdrop moves with the theme.
+The stars also give the wide layout something to fill the space around a slide with. Because a slide is capped rather than stretched, a broad window always leaves area around it, and that area now reads as part of the product rather than as an empty margin.
 
-Unlike the slides, both are bundled with the app rather than fetched. They do not change when features change, so the tradeoff runs the other way: the backdrop is worth pinning to the release to get an instant, offline-safe first screen, and it keeps signed-out visitors from spending tile requests on decoration.
+Both backdrops are static images rather than live map tiles. This screen has no session, and spending tile requests on decoration would draw down the budget described in [world-map-tiles.instructions.md](world-map-tiles.instructions.md) for people who have not signed up yet.
+
+Unlike the slides, all three files are bundled with the app rather than fetched. They do not change when features change, so the tradeoff runs the other way: a backdrop is worth pinning to the release to get an instant, offline-safe first screen.
 
 ### Layout and responsiveness
 
