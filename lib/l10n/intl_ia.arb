@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-07-31 10:55:37.055548",
+    "@@last_modified": "2026-08-03 09:47:24.210883",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10038,7 +10038,6 @@
     "browsePublicCourses": "Brosu publikajn kursojn",
     "editProfile": "Redaktu profilon",
     "mapSearchHint": "Serĉu aktivecojn",
-    "mapSearchNoResults": "Neniuj kongruoj en vido",
     "mapFilterAllLanguages": "Ĉiuj lingvoj",
     "mapFilterNotStarted": "Ne komencita",
     "mapFilterInProgress": "En progreso",
@@ -10047,7 +10046,6 @@
     "activityTypeConversation": "Conversa",
     "playAgain": "Jogar novamente",
     "reviewActivity": "Revisar",
-    "mapEmptyInView": "Nada aqui no seu nível ou idioma. Amplie seus filtros ou afaste-se.",
     "welcomeToPangeaChat": "Bem-vindo ao Pangea Chat",
     "claimTrial": "Reivindique seu teste",
     "thanksForSigningUp": "Obrigado por se inscrever! Aqui está",
@@ -10118,10 +10116,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10151,10 +10145,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10375,7 +10365,6 @@
     "analyticsAndSettingsLabel": "Opções de análises e configurações",
     "searchActivitiesLabel": "Pesquisar atividades no mapa",
     "filteredActivitiesLabel": "Lista de atividades filtradas",
-    "activityFilterButtonsLabel": "Botões de filtro de idioma, dificuldade e progresso",
     "mapZoomLabel": "Controles de zoom do mapa",
     "activityMapLabel": "Mapa de atividades",
     "@navOptionsLabel": {
@@ -10395,10 +10384,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10635,5 +10620,19 @@
     "exitVocabPracticeSession": "Le progresso de tu session actual de practica de vocabulario non essera salvate.",
     "exitGrammarPracticeSession": "Le progresso de tu session actual de practica de grammatica non essera salvate.",
     "autoReadAloudMessagesToolName": "Lege automaticamente a alte voce tote le messages recipite",
-    "autoReadAloudMessagesDescription": "Quando un message es recipite, le voce del apparato essera usate pro leger le message a alte voce pro practica de ascolta."
+    "autoReadAloudMessagesDescription": "Quando un message es recipite, le voce del apparato essera usate pro leger le message a alte voce pro practica de ascolta.",
+    "activityFilterButtonsLabel": "Botones de filtro de nivello, jocatores e stato",
+    "mapFilterAllLevels": "Tote le nivellos",
+    "mapFilterAllPlayers": "Tote le jocatores",
+    "mapFilterAllStatuses": "Tote le status",
+    "mapFiltersShow": "Monstrar filtros",
+    "mapFiltersHide": "Celar filtros",
+    "mapStatusAvailable": "Disponibile",
+    "mapStatusOngoing": "In curso",
+    "mapStatusWaiting": "Expectante",
+    "mapStatusOpenToJoin": "Aperte pro unir se",
+    "mapMatchesOffscreen": "Il ha matches foras de tu vista. Face zoom retro pro vider los.",
+    "mapFiltersHideMatches": "Tu filtros cela tote le matches. Allarga le cerca pro vider los.",
+    "mapNoSearchMatches": "Nulle activitate corresponde a tu cerca.",
+    "mapNoActivitiesArea": "Nulle activitate in iste area."
 }

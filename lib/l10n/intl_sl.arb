@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-07-31 10:55:42.748081",
+    "@@last_modified": "2026-08-03 09:47:36.413518",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10047,7 +10047,6 @@
     "browsePublicCourses": "Brskajte po javnih tečajih",
     "editProfile": "Uredi profil",
     "mapSearchHint": "Išči aktivnosti",
-    "mapSearchNoResults": "Brez ujemanj v pogledu",
     "mapFilterAllLanguages": "Vsi jeziki",
     "mapFilterNotStarted": "Ni začeto",
     "mapFilterInProgress": "V teku",
@@ -10056,7 +10055,6 @@
     "activityTypeConversation": "Pogovor",
     "playAgain": "Igraj znova",
     "reviewActivity": "Pregled",
-    "mapEmptyInView": "Tu ni ničesar na vaši ravni ali jeziku. Razširite svoje filtre ali poglejte od daleč.",
     "welcomeToPangeaChat": "Dobrodošli v Pangea Chat",
     "claimTrial": "Zahtevajte svojo preizkusno različico",
     "thanksForSigningUp": "Hvala, da ste se prijavili! Tukaj je",
@@ -10127,10 +10125,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10160,10 +10154,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10384,7 +10374,6 @@
     "analyticsAndSettingsLabel": "Možnosti analitike in nastavitev",
     "searchActivitiesLabel": "Išči aktivnosti na zemljevidu",
     "filteredActivitiesLabel": "Seznam filtriranih aktivnosti",
-    "activityFilterButtonsLabel": "Gumbi za filtriranje po jeziku, težavnosti in napredku",
     "mapZoomLabel": "Nadzor povečave zemljevida",
     "activityMapLabel": "Zemljevid aktivnosti",
     "@navOptionsLabel": {
@@ -10404,10 +10393,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10644,5 +10629,19 @@
     "exitVocabPracticeSession": "Napredek trenutne vaje besedišča ne bo shranjen.",
     "exitGrammarPracticeSession": "Napredek trenutne vaje slovnice ne bo shranjen.",
     "autoReadAloudMessagesToolName": "Samodejno preberi vsa prejeta sporočila",
-    "autoReadAloudMessagesDescription": "Ko je sporočilo prejeto, bo glas naprave uporabljen za branje sporočila na glas za vajo poslušanja."
+    "autoReadAloudMessagesDescription": "Ko je sporočilo prejeto, bo glas naprave uporabljen za branje sporočila na glas za vajo poslušanja.",
+    "activityFilterButtonsLabel": "Gumbi za filtriranje po ravni, igralcih in statusu",
+    "mapFilterAllLevels": "Vse ravni",
+    "mapFilterAllPlayers": "Vsi igralci",
+    "mapFilterAllStatuses": "Vsi statusi",
+    "mapFiltersShow": "Prikaži filtre",
+    "mapFiltersHide": "Skrij filtre",
+    "mapStatusAvailable": "Na voljo",
+    "mapStatusOngoing": "Poteka",
+    "mapStatusWaiting": "Čaka",
+    "mapStatusOpenToJoin": "Odprto za pridružitev",
+    "mapMatchesOffscreen": "Izven vašega pogleda so ujemanja. Pomanjšajte, da jih vidite.",
+    "mapFiltersHideMatches": "Vaši filtri skrivajo vsa ujemanja. Razširite iskanje, da jih vidite.",
+    "mapNoSearchMatches": "Nobena dejavnost se ne ujema z vašim iskanjem.",
+    "mapNoActivitiesArea": "Na tem območju ni dejavnosti."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-31 10:55:35.544113",
+    "@@last_modified": "2026-08-03 09:47:22.069829",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9096,7 +9096,6 @@
     "browsePublicCourses": "Explorar cursos públicos",
     "editProfile": "Editar perfil",
     "mapSearchHint": "Buscar actividades",
-    "mapSearchNoResults": "Sen coincidencias na vista",
     "mapFilterAllLanguages": "Todas as linguas",
     "mapFilterNotStarted": "Non comezado",
     "mapFilterInProgress": "En progreso",
@@ -9105,7 +9104,6 @@
     "activityTypeConversation": "Conversación",
     "playAgain": "Xogar de novo",
     "reviewActivity": "Revisión",
-    "mapEmptyInView": "Nada aquí no teu nivel ou idioma. Amplía os teus filtros ou afasta.",
     "welcomeToPangeaChat": "Benvido a Pangea Chat",
     "claimTrial": "Reclama a túa proba",
     "thanksForSigningUp": "Grazas por inscribirte! Aquí está",
@@ -9176,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9209,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9433,7 +9423,6 @@
     "analyticsAndSettingsLabel": "Opcions de análises e configuración",
     "searchActivitiesLabel": "Buscar actividades no mapa",
     "filteredActivitiesLabel": "Lista de actividades filtradas",
-    "activityFilterButtonsLabel": "Botóns de filtro de idioma, dificultade e progreso",
     "mapZoomLabel": "Controis de zoom do mapa",
     "activityMapLabel": "Mapa de actividades",
     "@navOptionsLabel": {
@@ -9453,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9693,5 +9678,19 @@
     "exitVocabPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de vocabulario.",
     "exitGrammarPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de gramática.",
     "autoReadAloudMessagesToolName": "Ler en voz alta automaticamente todas as mensaxes recibidas",
-    "autoReadAloudMessagesDescription": "Cando se reciba unha mensaxe, a voz do dispositivo utilizarase para ler a mensaxe en voz alta para practicar a escoita."
+    "autoReadAloudMessagesDescription": "Cando se reciba unha mensaxe, a voz do dispositivo utilizarase para ler a mensaxe en voz alta para practicar a escoita.",
+    "activityFilterButtonsLabel": "Botóns de filtro de nivel, xogadores e estado",
+    "mapFilterAllLevels": "Todos os niveis",
+    "mapFilterAllPlayers": "Todos os xogadores",
+    "mapFilterAllStatuses": "Todos os estados",
+    "mapFiltersShow": "Mostrar filtros",
+    "mapFiltersHide": "Ocultar filtros",
+    "mapStatusAvailable": "Dispoñible",
+    "mapStatusOngoing": "En curso",
+    "mapStatusWaiting": "Agardando",
+    "mapStatusOpenToJoin": "Aberto a unirse",
+    "mapMatchesOffscreen": "Hai partidas fóra da túa vista. Afasta o zoom para velas.",
+    "mapFiltersHideMatches": "Os teus filtros están a ocultar todas as partidas. Amplía a busca para velas.",
+    "mapNoSearchMatches": "Ningunha actividade coincide coa túa busca.",
+    "mapNoActivitiesArea": "Non hai actividades nesta área."
 }

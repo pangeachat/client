@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-07-31 10:55:34.711115",
+    "@@last_modified": "2026-08-03 09:47:20.897828",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -9451,7 +9451,6 @@
     "browsePublicCourses": "Parcourir les cours publics",
     "editProfile": "Modifier le profil",
     "mapSearchHint": "Rechercher des activités",
-    "mapSearchNoResults": "Aucun résultat dans la vue",
     "mapFilterAllLanguages": "Toutes les langues",
     "mapFilterNotStarted": "Pas commencé",
     "mapFilterInProgress": "En cours",
@@ -9460,7 +9459,6 @@
     "activityTypeConversation": "Conversation",
     "playAgain": "Jouer à nouveau",
     "reviewActivity": "Réviser",
-    "mapEmptyInView": "Rien ici à votre niveau ou langue. Élargissez vos filtres ou dézoomez.",
     "welcomeToPangeaChat": "Bienvenue dans Pangea Chat",
     "claimTrial": "Réclamez votre essai",
     "thanksForSigningUp": "Merci de vous être inscrit ! Voici",
@@ -9531,10 +9529,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9564,10 +9558,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9788,7 +9778,6 @@
     "analyticsAndSettingsLabel": "Options d'analyse et de paramètres",
     "searchActivitiesLabel": "Rechercher des activités sur la carte",
     "filteredActivitiesLabel": "Liste des activités filtrées",
-    "activityFilterButtonsLabel": "Boutons de filtre par langue, difficulté et progression",
     "mapZoomLabel": "Contrôles de zoom de la carte",
     "activityMapLabel": "Carte des activités",
     "@navOptionsLabel": {
@@ -9808,10 +9797,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10048,5 +10033,19 @@
     "exitVocabPracticeSession": "La progression de votre session d'entraînement de vocabulaire actuelle ne sera pas enregistrée.",
     "exitGrammarPracticeSession": "La progression de votre session d'entraînement de grammaire actuelle ne sera pas enregistrée.",
     "autoReadAloudMessagesToolName": "Lire automatiquement à voix haute tous les messages reçus",
-    "autoReadAloudMessagesDescription": "Lorsqu'un message est reçu, la voix de l'appareil sera utilisée pour lire le message à voix haute pour la pratique de l'écoute."
+    "autoReadAloudMessagesDescription": "Lorsqu'un message est reçu, la voix de l'appareil sera utilisée pour lire le message à voix haute pour la pratique de l'écoute.",
+    "activityFilterButtonsLabel": "Boutons de filtre de niveau, de joueurs et de statut",
+    "mapFilterAllLevels": "Tous les niveaux",
+    "mapFilterAllPlayers": "Tous les joueurs",
+    "mapFilterAllStatuses": "Tous les statuts",
+    "mapFiltersShow": "Afficher les filtres",
+    "mapFiltersHide": "Masquer les filtres",
+    "mapStatusAvailable": "Disponible",
+    "mapStatusOngoing": "En cours",
+    "mapStatusWaiting": "En attente",
+    "mapStatusOpenToJoin": "Ouvert à l'adhésion",
+    "mapMatchesOffscreen": "Il y a des matchs en dehors de votre vue. Dézoomez pour les voir.",
+    "mapFiltersHideMatches": "Vos filtres masquent tous les matchs. Élargissez la recherche pour les voir.",
+    "mapNoSearchMatches": "Aucune activité ne correspond à votre recherche.",
+    "mapNoActivitiesArea": "Aucune activité dans cette zone."
 }

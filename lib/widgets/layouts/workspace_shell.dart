@@ -26,6 +26,7 @@ import 'package:fluffychat/routes/world/mobile_search_bar.dart';
 import 'package:fluffychat/routes/world/right_panel/workspace_right_panel.dart';
 import 'package:fluffychat/routes/world/world_analytics_bar.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
+import 'package:fluffychat/routes/world/world_map_mobile_filters.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -444,18 +445,6 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
-  /// The learner tapped the minimized search icon back open over a
-  /// course-scoped map. Ephemeral view state; re-minimizes when the scope
-  /// changes (routing.instructions.md → Single-column search bar).
-  bool _searchRestored = false;
-  String? _lastScopeId;
-
-  /// The nav widget reports when its hosted cavity is pulled to full height
-  /// (latched to the settled rest state). Used to drop the floating map search
-  /// bar over a full COURSE sheet and hand its reserved strip to the course
-  /// content (#7697) — see the searchBar construction below.
-  bool _cavityAtFull = false;
-
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -495,39 +484,53 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final cavitySection = cavityToken?.type.cavitySection;
 
     // The floating search bar (routing.instructions.md → Single-column search
-    // bar), riding the widget's topAttachment slot. This PR wires the MAP
-    // scope: over the bare/scoped map it drives the world map's own filter
-    // (reached through the persistent map's State); minimized to the compact
-    // icon while course-scoped, restorable by tap, re-minimizing when the
-    // scope changes. The section re-targets (Search All chats / Courses) land
-    // with the search-wiring pass.
-    if (_lastScopeId != activeSpaceId) {
-      _lastScopeId = activeSpaceId;
-      _searchRestored = false;
-    }
+    // bar), riding the widget's topAttachment slot. WORLD scope only: it drives
+    // the world map's own filter (reached through the persistent map's State).
+    // There is no narrow results list — the pins ARE the results. The
+    // verdict-driven empty-view card and the collapsible filter surface mount
+    // ABOVE the bar, since the bar sits at the bottom on narrow layouts. A
+    // course-scoped map has no working query search (its pins are not filtered
+    // by the query), so the bar is hidden there entirely, matching the web
+    // overlay (which only renders in world scope).
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
-    // The bar shows over the bare map and the course card (the map is still
-    // the ground behind it, per the Figma course frame's minimized icon).
-    // NOT over a selected activity: its sheet is the focus and the bar only
-    // crowded the exposed map band the camera centers the pin in (#7640).
-    // Section cavities (chats, the hub) re-target it in the follow-up and
-    // mount nothing yet.
-    final showsSearchBar = cavityToken == null || isCourseCavity;
-    // Once a COURSE sheet is pulled to full it covers the map, so the map
-    // search is moot: hide the bar entirely and let its reserved strip (dropped
-    // from the height reservation below, since searchBar is then null) go to the
-    // course content (#7697). The bar stays over a peeking/half course and the
-    // bare/scoped map, so gate strictly on a full course cavity.
-    final hideSearchForFullCourse = isCourseCavity && _cavityAtFull;
-    final searchBar =
-        showsSearchBar && mapController != null && !hideSearchForFullCourse
+    // World map only (activeSpaceId is the course scope, `?c=`), and not over a
+    // selected activity or an open section sheet: the bar only rode the exposed
+    // map band, which those cover (#7640).
+    final showsSearchBar = activeSpaceId == null && cavityToken == null;
+    final searchBar = showsSearchBar && mapController != null
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
             onQueryChanged: mapController.setQuery,
-            minimized: activeSpaceId != null && !_searchRestored,
-            onRestore: () => setState(() => _searchRestored = true),
+            // The verdict-driven empty-view card (the web overlay's twin):
+            // when the view shows no matches, the controller diagnoses WHY
+            // (off-screen matches / pill-excluded matches / a dead query) and
+            // the card offers the matching remedy. Builders read the map live
+            // on each bar rebuild; the viewRevision tick triggers those
+            // rebuilds for changes that don't originate in the bar (a pill
+            // tap, a pin load after zooming out).
+            emptyVerdict: () => mapController.emptyVerdict,
+            canZoomOut: () => mapController.canZoomOut,
+            onWidenSearch: mapController.widenFilters,
+            // Resets to the whole-world view (all the way out, re-centered) —
+            // the map's World control — so one tap reveals every off-screen
+            // match, not just the next zoom level.
+            onZoomOut: mapController.resetToWorld,
+            viewRevision: mapController.viewRevision,
+            // The collapsible filter surface riding above the bar — the narrow
+            // twin of the wide overlay's [WorldMapFilterBar], wired to the same
+            // controller callbacks. Reads the filter live (the shell is not
+            // rebuilt by the map's setState) and collapses on a map pan.
+            filtersChild: WorldMapMobileFilters(
+              filterBuilder: () => mapController.filter,
+              onSetLevel: mapController.setCefrLevel,
+              onSetPartySize: mapController.setPartySize,
+              onSetStatus: mapController.setStatus,
+              onReset: mapController.resetFilters,
+              collapseSignal: mapController.mapPanTick,
+              filterRevision: mapController.viewRevision,
+            ),
           )
         : null;
 
@@ -702,13 +705,6 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // to select it directly; panning never dismisses. Dismissal is the
         // drag-down handle or the sheet's own close control (#7742).
         mapStaysLive: isActivityCavity || isCourseCavity,
-        // Latched full-height reports drive the course-sheet search-bar hide
-        // above (#7697). Guarded so an unchanged report is not a rebuild.
-        onCavityFullChanged: (full) {
-          if (_cavityAtFull != full) {
-            setState(() => _cavityAtFull = full);
-          }
-        },
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,

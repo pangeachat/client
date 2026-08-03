@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-31 10:55:41.769696",
+    "@@last_modified": "2026-08-03 09:47:34.257441",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9181,7 +9181,6 @@
     "browsePublicCourses": "Przeglądaj publiczne kursy",
     "editProfile": "Edytuj profil",
     "mapSearchHint": "Szukaj aktywności",
-    "mapSearchNoResults": "Brak dopasowań w widoku",
     "mapFilterAllLanguages": "Wszystkie języki",
     "mapFilterNotStarted": "Nie rozpoczęto",
     "mapFilterInProgress": "W trakcie",
@@ -9190,7 +9189,6 @@
     "activityTypeConversation": "Rozmowa",
     "playAgain": "Graj ponownie",
     "reviewActivity": "Przegląd",
-    "mapEmptyInView": "Nic tutaj na twoim poziomie lub języku. Poszerz swoje filtry lub oddal widok.",
     "welcomeToPangeaChat": "Witamy w Pangea Chat",
     "claimTrial": "Zgłoś swoją wersję próbną",
     "thanksForSigningUp": "Dziękujemy za rejestrację! Oto",
@@ -9261,10 +9259,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9294,10 +9288,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9518,7 +9508,6 @@
     "analyticsAndSettingsLabel": "Opcje analityki i ustawień",
     "searchActivitiesLabel": "Szukaj aktywności na mapie",
     "filteredActivitiesLabel": "Lista filtrowanych aktywności",
-    "activityFilterButtonsLabel": "Przyciski filtrów: język, trudność i postęp",
     "mapZoomLabel": "Kontrole powiększenia mapy",
     "activityMapLabel": "Mapa aktywności",
     "@navOptionsLabel": {
@@ -9538,10 +9527,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9778,5 +9763,19 @@
     "exitVocabPracticeSession": "Postępy w bieżącej sesji ćwiczenia słownictwa nie zostaną zapisane.",
     "exitGrammarPracticeSession": "Postępy w bieżącej sesji ćwiczenia gramatyki nie zostaną zapisane.",
     "autoReadAloudMessagesToolName": "Automatyczne odczytywanie wszystkich otrzymanych wiadomości",
-    "autoReadAloudMessagesDescription": "Po otrzymaniu wiadomości, głos urządzenia zostanie użyty do odczytania jej na głos w celu ćwiczenia słuchania."
+    "autoReadAloudMessagesDescription": "Po otrzymaniu wiadomości, głos urządzenia zostanie użyty do odczytania jej na głos w celu ćwiczenia słuchania.",
+    "activityFilterButtonsLabel": "Przyciski filtrowania: poziom, gracze i status",
+    "mapFilterAllLevels": "Wszystkie poziomy",
+    "mapFilterAllPlayers": "Wszyscy gracze",
+    "mapFilterAllStatuses": "Wszystkie statusy",
+    "mapFiltersShow": "Pokaż filtry",
+    "mapFiltersHide": "Ukryj filtry",
+    "mapStatusAvailable": "Dostępne",
+    "mapStatusOngoing": "W toku",
+    "mapStatusWaiting": "Oczekujące",
+    "mapStatusOpenToJoin": "Otwarte na dołączenie",
+    "mapMatchesOffscreen": "Poza widokiem są mecze. Oddal, aby je zobaczyć.",
+    "mapFiltersHideMatches": "Twoje filtry ukrywają wszystkie mecze. Rozszerz wyszukiwanie, aby je zobaczyć.",
+    "mapNoSearchMatches": "Brak aktywności pasujących do wyszukiwania.",
+    "mapNoActivitiesArea": "Brak aktywności w tym obszarze."
 }

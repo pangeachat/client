@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-31 10:55:42.609593",
+    "@@last_modified": "2026-08-03 09:47:36.406588",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10047,7 +10047,6 @@
     "browsePublicCourses": "Prehľadávať verejné kurzy",
     "editProfile": "Upraviť profil",
     "mapSearchHint": "Hľadať aktivity",
-    "mapSearchNoResults": "Žiadne zhodné výsledky",
     "mapFilterAllLanguages": "Všetky jazyky",
     "mapFilterNotStarted": "Nebol začatý",
     "mapFilterInProgress": "Prebieha",
@@ -10056,7 +10055,6 @@
     "activityTypeConversation": "Konverzácia",
     "playAgain": "Hraj znova",
     "reviewActivity": "Prehľad",
-    "mapEmptyInView": "Tu nie je nič na vašej úrovni alebo jazyku. Rozšírte svoje filtre alebo priblížte.",
     "welcomeToPangeaChat": "Vitajte v Pangea Chate",
     "claimTrial": "Uplatnite svoju skúšobnú verziu",
     "thanksForSigningUp": "Ďakujeme za registráciu! Tu je",
@@ -10127,10 +10125,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10160,10 +10154,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10384,7 +10374,6 @@
     "analyticsAndSettingsLabel": "Možnosti analýzy a nastavení",
     "searchActivitiesLabel": "Hľadať aktivity na mape",
     "filteredActivitiesLabel": "Zoznam filtrovaných aktivít",
-    "activityFilterButtonsLabel": "Tlačidlá filtra jazyka, obtiažnosti a pokroku",
     "mapZoomLabel": "Ovládanie priblíženia mapy",
     "activityMapLabel": "Mapa aktivít",
     "@navOptionsLabel": {
@@ -10404,10 +10393,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10644,5 +10629,19 @@
     "exitVocabPracticeSession": "Váš aktuálny pokrok v precvičovaní slovnej zásoby sa neuloží.",
     "exitGrammarPracticeSession": "Váš aktuálny pokrok v precvičovaní gramatiky sa neuloží.",
     "autoReadAloudMessagesToolName": "Automaticky čítať nahlas všetky prijaté správy",
-    "autoReadAloudMessagesDescription": "Keď sa prijme správa, hlas zariadenia sa použije na prečítanie správy nahlas pre cvičenie počúvania."
+    "autoReadAloudMessagesDescription": "Keď sa prijme správa, hlas zariadenia sa použije na prečítanie správy nahlas pre cvičenie počúvania.",
+    "activityFilterButtonsLabel": "Tlačidlá filtra úrovne, hráčov a stavu",
+    "mapFilterAllLevels": "Všetky úrovne",
+    "mapFilterAllPlayers": "Všetci hráči",
+    "mapFilterAllStatuses": "Všetky stavy",
+    "mapFiltersShow": "Zobraziť filtre",
+    "mapFiltersHide": "Skryť filtre",
+    "mapStatusAvailable": "Dostupné",
+    "mapStatusOngoing": "Prebiehajúce",
+    "mapStatusWaiting": "Čaká sa",
+    "mapStatusOpenToJoin": "Otvorené pre pripojenie",
+    "mapMatchesOffscreen": "Mimo vášho zobrazenia sú zápasy. Oddiaľte zobrazenie, aby ste ich videli.",
+    "mapFiltersHideMatches": "Vaše filtre skrývajú všetky zápasy. Rozšírte vyhľadávanie, aby ste ich videli.",
+    "mapNoSearchMatches": "Žiadne aktivity nezodpovedajú vášmu vyhľadávaniu.",
+    "mapNoActivitiesArea": "V tejto oblasti nie sú žiadne aktivity."
 }

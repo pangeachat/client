@@ -3546,7 +3546,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-31 10:55:39.358530",
+    "@@last_modified": "2026-08-03 09:47:29.512334",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9096,7 +9096,6 @@
     "browsePublicCourses": "Pārlūkot publiskos kursus",
     "editProfile": "Rediģēt profilu",
     "mapSearchHint": "Meklēt aktivitātes",
-    "mapSearchNoResults": "Nav atbilžu skatā",
     "mapFilterAllLanguages": "Visas valodas",
     "mapFilterNotStarted": "Nav uzsākts",
     "mapFilterInProgress": "Norisinās",
@@ -9105,7 +9104,6 @@
     "activityTypeConversation": "Saruna",
     "playAgain": "Spēlēt vēlreiz",
     "reviewActivity": "Pārskatīt",
-    "mapEmptyInView": "Šeit nav nekas jūsu līmenī vai valodā. Paplašiniet savus filtrus vai tālummaiņu.",
     "welcomeToPangeaChat": "Laipni lūdzam Pangea Čatā",
     "claimTrial": "Pieteikties izmēģinājumam",
     "thanksForSigningUp": "Paldies, ka reģistrējāties! Šeit ir",
@@ -9176,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9209,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9433,7 +9423,6 @@
     "analyticsAndSettingsLabel": "Analītikas un iestatījumu opcijas",
     "searchActivitiesLabel": "Meklēt aktivitātes kartē",
     "filteredActivitiesLabel": "Filtrēto aktivitāšu saraksts",
-    "activityFilterButtonsLabel": "Valodas, grūtības un progresu filtrēšanas pogas",
     "mapZoomLabel": "Kartes tālummaiņas kontroles",
     "activityMapLabel": "Aktivitāšu karte",
     "@navOptionsLabel": {
@@ -9453,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9693,5 +9678,19 @@
     "exitVocabPracticeSession": "Jūsu pašreizējās vārdu krājuma prakses sesijas progress netiks saglabāts.",
     "exitGrammarPracticeSession": "Jūsu pašreizējās gramatikas prakses sesijas progress netiks saglabāts.",
     "autoReadAloudMessagesToolName": "Automātiski nolasīt visas saņemtās ziņas",
-    "autoReadAloudMessagesDescription": "Kad tiek saņemta ziņa, ierīces balss tiks izmantota, lai nolasītu ziņu skaļi klausīšanās prakses nolūkos."
+    "autoReadAloudMessagesDescription": "Kad tiek saņemta ziņa, ierīces balss tiks izmantota, lai nolasītu ziņu skaļi klausīšanās prakses nolūkos.",
+    "activityFilterButtonsLabel": "Līmeņa, spēlētāju un statusa filtra pogas",
+    "mapFilterAllLevels": "Visi līmeņi",
+    "mapFilterAllPlayers": "Visi spēlētāji",
+    "mapFilterAllStatuses": "Visi statusi",
+    "mapFiltersShow": "Rādīt filtrus",
+    "mapFiltersHide": "Paslēpt filtrus",
+    "mapStatusAvailable": "Pieejams",
+    "mapStatusOngoing": "Notiek",
+    "mapStatusWaiting": "Gaida",
+    "mapStatusOpenToJoin": "Atvērts pievienošanai",
+    "mapMatchesOffscreen": "Ārpus redzamības lauka ir spēles. Tuviniet, lai tās redzētu.",
+    "mapFiltersHideMatches": "Jūsu filtri slēpj visas spēles. Paplašiniet meklēšanu, lai tās redzētu.",
+    "mapNoSearchMatches": "Meklēšanai neatbilst neviena aktivitāte.",
+    "mapNoActivitiesArea": "Šajā apgabalā nav aktivitāšu."
 }

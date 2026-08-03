@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-31 10:55:36.583173",
+    "@@last_modified": "2026-08-03 09:47:23.252119",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -9532,7 +9532,6 @@
     "browsePublicCourses": "Pretraži javne tečajeve",
     "editProfile": "Uredi profil",
     "mapSearchHint": "Pretraži aktivnosti",
-    "mapSearchNoResults": "Nema podudaranja u prikazu",
     "mapFilterAllLanguages": "Svi jezici",
     "mapFilterNotStarted": "Nije započeto",
     "mapFilterInProgress": "U tijeku",
@@ -9541,7 +9540,6 @@
     "activityTypeConversation": "Razgovor",
     "playAgain": "Igraj ponovo",
     "reviewActivity": "Pregledaj",
-    "mapEmptyInView": "Nema ništa ovdje na tvojoj razini ili jeziku. Proširi svoje filtre ili odmakni se.",
     "welcomeToPangeaChat": "Dobrodošao u Pangea Chat",
     "claimTrial": "Zatraži svoj probni period",
     "thanksForSigningUp": "Hvala na prijavi! Evo",
@@ -9612,10 +9610,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9645,10 +9639,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9869,7 +9859,6 @@
     "analyticsAndSettingsLabel": "Opcije analitike i postavki",
     "searchActivitiesLabel": "Pretraži aktivnosti na karti",
     "filteredActivitiesLabel": "Popis filtriranih aktivnosti",
-    "activityFilterButtonsLabel": "Gumbi za filtriranje jezika, težine i napretka",
     "mapZoomLabel": "Kontrole zumiranja karte",
     "activityMapLabel": "Karta aktivnosti",
     "@navOptionsLabel": {
@@ -9889,10 +9878,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10129,5 +10114,19 @@
     "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja vokabulara neće biti spremljen.",
     "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti spremljen.",
     "autoReadAloudMessagesToolName": "Automatski čitaj naglas sve primljene poruke",
-    "autoReadAloudMessagesDescription": "Kada se poruka primi, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja."
+    "autoReadAloudMessagesDescription": "Kada se poruka primi, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja.",
+    "activityFilterButtonsLabel": "Gumbi za filtriranje razine, igrača i statusa",
+    "mapFilterAllLevels": "Sve razine",
+    "mapFilterAllPlayers": "Svi igrači",
+    "mapFilterAllStatuses": "Svi statusi",
+    "mapFiltersShow": "Prikaži filtre",
+    "mapFiltersHide": "Sakrij filtre",
+    "mapStatusAvailable": "Dostupno",
+    "mapStatusOngoing": "U tijeku",
+    "mapStatusWaiting": "Čeka",
+    "mapStatusOpenToJoin": "Otvoreno za pridruživanje",
+    "mapMatchesOffscreen": "Izvan vašeg pogleda postoje podudaranja. Umanjite prikaz da biste ih vidjeli.",
+    "mapFiltersHideMatches": "Vaši filtri skrivaju sva podudaranja. Proširite pretraživanje da biste ih vidjeli.",
+    "mapNoSearchMatches": "Nema aktivnosti koje odgovaraju vašem pretraživanju.",
+    "mapNoActivitiesArea": "Nema aktivnosti na ovom području."
 }
