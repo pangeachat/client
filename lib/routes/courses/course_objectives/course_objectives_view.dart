@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
@@ -19,7 +20,9 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
+import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
+import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 
@@ -146,27 +149,47 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     });
   }
 
-  /// The activity's live map-pin state for the card's colour fill + banner, and
-  /// the "Open (N)" count. Mirrors the world map's pins, reusing the same
-  /// resolvers so both surfaces agree:
+  /// The activity's live map-pin state for the card's colour fill + banner, the
+  /// "Open (N)" count, and — for the Waiting state — the roster to draw. Mirrors
+  /// the world map's pins, reusing the same resolvers so both surfaces agree:
   ///  * Ongoing wins over Open (the pin ladder). The course-scoped, first-joined
   ///    resume resolver ([Room.activeActivityRoomId]) already collapses multiple
   ///    ongoing rooms to one, so there is at most one Ongoing and it needs no
-  ///    count. Either ongoing sub-state renders identically (same colour, no
-  ///    count), so [ActivityPinState.ongoingActive] stands in for both.
+  ///    count. It splits into Waiting vs Ongoing on the map's exact
+  ///    discriminator — [Room.numRemainingRoles] > 0 (seats still empty) →
+  ///    [ActivityPinState.ongoingPending] (Waiting), else
+  ///    [ActivityPinState.ongoingActive] — and carries the room's roster
+  ///    ([Room.largeCardParticipants] + remaining seats) so the card can draw
+  ///    the same participant row the map's pending pin does.
   ///  * Otherwise, open sessions others started that the learner can join —
   ///    counted from the map's shared [DiscoveredSessionsCache] (best-effort; the
   ///    persistent map behind this panel keeps it fresh), the same source the
   ///    activity start page seeds its join list from.
   /// A preview (no joined [room]) has no live sessions, so cards stay plain.
-  ({ActivityPinState? state, int openSessions}) _liveStateFor(
-    String activityId,
-  ) {
+  ({
+    ActivityPinState? state,
+    int openSessions,
+    List<LargeCardParticipant> participants,
+    int openSlots,
+  })
+  _liveStateFor(String activityId) {
     final room = widget.room;
-    if (room == null) return (state: null, openSessions: 0);
+    if (room == null) {
+      return (state: null, openSessions: 0, participants: const [], openSlots: 0);
+    }
 
-    if (room.activeActivityRoomId(activityId) != null) {
-      return (state: ActivityPinState.ongoingActive, openSessions: 0);
+    final ongoingId = room.activeActivityRoomId(activityId);
+    if (ongoingId != null) {
+      final live = room.client.getRoomById(ongoingId);
+      final remaining = live?.numRemainingRoles ?? 0;
+      return (
+        state: remaining > 0
+            ? ActivityPinState.ongoingPending
+            : ActivityPinState.ongoingActive,
+        openSessions: 0,
+        participants: live?.largeCardParticipants ?? const [],
+        openSlots: remaining,
+      );
     }
 
     final cached = DiscoveredSessionsCache.instance.forActivity(activityId);
@@ -177,8 +200,13 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             activityId: activityId,
           ).openSessions.length;
     return open > 0
-        ? (state: ActivityPinState.joinable, openSessions: open)
-        : (state: null, openSessions: 0);
+        ? (
+            state: ActivityPinState.joinable,
+            openSessions: open,
+            participants: const [],
+            openSlots: 0,
+          )
+        : (state: null, openSessions: 0, participants: const [], openSlots: 0);
   }
 
   @override

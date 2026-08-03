@@ -1,5 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
@@ -25,18 +27,43 @@ void main() {
         RoomSummaryResponse.defaultReferencePlanResolver;
   });
 
-  RoomSummaryResponse summary(Map<String, String> members) =>
-      RoomSummaryResponse(membershipSummary: members, activityId: 'act-1');
+  RoomSummaryResponse summary(
+    Map<String, String> members, {
+    Map<String, String> roles = const {},
+  }) => RoomSummaryResponse(
+    membershipSummary: members,
+    activityId: 'act-1',
+    activityRoles: ActivityRolesModel({
+      for (final e in roles.entries)
+        e.key: ActivityRoleModel(id: e.key, userId: e.value),
+    }),
+  );
 
   group('WorldMapSummaryExtension — participants from the preview', () {
-    test('joined humans appear by localpart; the bot and invitees do not', () {
-      final s = summary({
-        '@ana:pangea.chat': 'join',
-        bot: 'join',
-        '@ben:pangea.chat': 'invite',
-      });
-      expect(s.largeCardParticipants(botUserId: bot), [
-        (avatar: null, name: 'ana'),
+    test('a circle per joined role holder, including the bot when it holds a '
+        'role; invitees do not appear', () {
+      final s = summary(
+        {
+          '@ana:pangea.chat': 'join',
+          bot: 'join',
+          '@ben:pangea.chat': 'invite',
+        },
+        roles: {'r1': '@ana:pangea.chat', 'r2': bot},
+      );
+      expect(s.largeCardParticipants, [
+        (avatar: null, name: 'ana', userId: '@ana:pangea.chat'),
+        (avatar: null, name: 'bot', userId: bot),
+      ]);
+    });
+
+    test('the moderation bot gets no circle when it holds no role — only role '
+        'holders do', () {
+      final s = summary(
+        {'@ana:pangea.chat': 'join', bot: 'join'},
+        roles: {'r1': '@ana:pangea.chat'},
+      );
+      expect(s.largeCardParticipants, [
+        (avatar: null, name: 'ana', userId: '@ana:pangea.chat'),
       ]);
     });
 

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_media_video_tag.dart';
+import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
@@ -21,6 +22,11 @@ class ActivitySuggestionCard extends StatelessWidget {
   /// The count shown as "Open (N)" when [pinState] is the joinable state.
   final int? openSessions;
   final int starsEarned;
+
+  /// The live roster drawn in the Waiting ([ActivityPinState.ongoingPending])
+  /// state's participant bar
+  final List<LargeCardParticipant> participants;
+  final int openSlots;
 
   /// The activity's live map-pin state, or null for a plain card. Drives the
   /// colour-state fill + bookmark banner so the card matches the map's pins:
@@ -41,6 +47,8 @@ class ActivitySuggestionCard extends StatelessWidget {
     this.openSessions,
     this.starsEarned = 0,
     this.pinState,
+    this.participants = const [],
+    this.openSlots = 0,
   });
 
   // One player's earnable stars — uniform across roles by generation, min
@@ -189,16 +197,70 @@ class ActivitySuggestionCard extends StatelessWidget {
             Positioned(
               top: 8.0,
               right: -_bannerPoke,
-              child: _ActivityStateBanner(
-                color: stateColor,
-                label: pinState!.isOngoing
-                    ? L10n.of(context).ongoing
-                    : "${L10n.of(context).open} (${openSessions ?? 0})",
-                fontSize: fontSizeSmall,
-                width: width / 2 + _bannerPoke,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  _ActivityStateBanner(
+                    color: stateColor,
+                    width: width / 2 + _bannerPoke,
+                    child: Text(
+                      _stateLabel(context),
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: fontSizeSmall ?? 11.0,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                  if (pinState == ActivityPinState.ongoingPending &&
+                      (participants.isNotEmpty || openSlots > 0))
+                    _buildWaitingParticipantBar(stateColor),
+                ],
               ),
             ),
         ],
+      ),
+    );
+  }
+
+  String _stateLabel(BuildContext context) => switch (pinState!) {
+    ActivityPinState.ongoingActive => L10n.of(context).ongoing,
+    ActivityPinState.ongoingPending => L10n.of(context).mapStatusWaiting,
+    _ => "${L10n.of(context).open} (${openSessions ?? 0})",
+  };
+
+  /// The second bookmark bar for the Waiting state. Sizes each avatar down so a
+  /// full roster (up to [ActivityParticipantRow.defaultMaxVisible] seats) fits
+  /// within the card's width
+  Widget _buildWaitingParticipantBar(Color stateColor) {
+    final visible = (participants.length + openSlots).clamp(
+      1,
+      ActivityParticipantRow.defaultMaxVisible,
+    );
+    // The bar's inner padding (matches _ActivityStateBanner) plus the 4px gap
+    // the row leaves after each circle.
+    const hPadding = 16.0 + 10.0;
+    const gapPerAvatar = 4.0;
+    const leftInset = 16.0;
+    final barMaxWidth = width + _bannerPoke - leftInset;
+    final avail = barMaxWidth - hPadding - visible * gapPerAvatar;
+    final avatarSize = (avail / visible).clamp(10.0, 28.0);
+    final barWidth = hPadding + visible * (avatarSize + gapPerAvatar);
+
+    return Padding(
+      padding: const EdgeInsets.only(top: 8.0),
+      child: _ActivityStateBanner(
+        color: stateColor,
+        width: barWidth,
+        child: ActivityParticipantRow(
+          icon: null,
+          accent: Colors.white,
+          participants: participants,
+          openSlots: openSlots,
+          avatarSize: avatarSize,
+        ),
       ),
     );
   }
@@ -206,8 +268,7 @@ class ActivitySuggestionCard extends StatelessWidget {
 
 class _ActivityStateBanner extends StatelessWidget {
   final Color color;
-  final String label;
-  final double? fontSize;
+  final Widget child;
 
   /// Fixed banner width so its bookmark (left) edge lands at ~mid-card while the
   /// straight right edge is right-anchored just past the card.
@@ -215,9 +276,8 @@ class _ActivityStateBanner extends StatelessWidget {
 
   const _ActivityStateBanner({
     required this.color,
-    required this.label,
+    required this.child,
     required this.width,
-    this.fontSize,
   });
 
   @override
@@ -234,15 +294,7 @@ class _ActivityStateBanner extends StatelessWidget {
         child: Padding(
           // Extra left padding clears the bookmark notch.
           padding: const EdgeInsets.fromLTRB(16.0, 3.0, 10.0, 3.0),
-          child: Text(
-            label,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: fontSize ?? 11.0,
-              fontWeight: FontWeight.w600,
-            ),
-          ),
+          child: child,
         ),
       ),
     );
