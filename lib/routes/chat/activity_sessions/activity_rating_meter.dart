@@ -6,9 +6,11 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// The activity plan page's rating indicator, top-right of the header per the
 /// #7194/#7993 designs: a NEW pill while the activity has fewer than
-/// [kNewRatingThreshold] ratings, then a small ring filled to the up-fraction
-/// with the percentage beside it, tinted between light red (all thumbs down)
-/// and light purple (all thumbs up). This is the ONLY surface that shows the
+/// [kNewRatingThreshold] ratings, then a pill carrying a thumbs-up icon and the
+/// up-percentage, tinted between light red (all thumbs down) and light purple
+/// (all thumbs up). The thumb — not a ring or dial — is what reads as "share of
+/// thumbs up" (#8088): a ring at 0% looked like an empty progress meter rather
+/// than an all-negative rating. This is the ONLY surface that shows the
 /// badge/meter — map pins and cards carry neither (the rating enters the map
 /// solely as a score term; world-map.instructions.md).
 class ActivityRatingMeter extends StatelessWidget {
@@ -20,6 +22,10 @@ class ActivityRatingMeter extends StatelessWidget {
 
   static const Color _downColor = Color(0xFFEFB8B8); // light red
   static const Color _upColor = AppConfig.primaryColorLight; // light purple
+
+  /// Both tint endpoints are light, in either theme, so the pill's contents
+  /// stay dark rather than following the theme's onSurface.
+  static const Color _onPillColor = Colors.black87;
 
   @override
   Widget build(BuildContext context) {
@@ -51,22 +57,30 @@ class ActivityRatingMeter extends StatelessWidget {
 
     return Tooltip(
       message: L10n.of(context).activityRatingMeterLabel(percent, count!),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 4.0,
-        children: [
-          SizedBox(
-            height: 18.0,
-            width: 18.0,
-            child: CircularProgressIndicator(
-              value: clamped,
-              strokeWidth: 3.0,
-              color: color,
-              backgroundColor: theme.colorScheme.surfaceContainerHighest,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 4.0,
+          children: [
+            const Icon(
+              Icons.thumb_up_outlined,
+              size: 16.0,
+              color: _onPillColor,
             ),
-          ),
-          Text("$percent%", style: theme.textTheme.labelMedium),
-        ],
+            Text(
+              "$percent%",
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: _onPillColor,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
