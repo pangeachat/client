@@ -107,7 +107,9 @@ void main() {
     },
   );
 
-  testWidgets('tapping the button expands to the full pill bar', (tester) async {
+  testWidgets('tapping the button expands to the full pill bar', (
+    tester,
+  ) async {
     await pump(tester);
     await tester.tap(find.byTooltip('Show filters'));
     await tester.pumpAndSettle();
