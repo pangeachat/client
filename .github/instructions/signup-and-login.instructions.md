@@ -61,7 +61,7 @@ Spacing below is in logical pixels. The three stacked gaps of 24 between carouse
 |---|---|---|
 | Around the carousel group — slides, headline and dots together | 32 above, 24 below | 32 above, 24 below |
 | Above and below the brand header | — | 32 above, 24 below |
-| Strip reserved for the headline above the carousel image | 32 | — |
+| Strip reserved for the headline above the carousel image | 64, growing if scaled text needs it | — |
 | Headline inset from the top of the slide | 16 | — |
 | Headline side margins | 20 each side | — |
 | Gap between carousel image and headline | — | 24 |
@@ -87,17 +87,17 @@ Each headline is localized text drawn over the carousel image rather than baked 
 | Weight | Semi-bold |
 | Size | 24 |
 | Alignment | Centred |
-| Wrapping | None — a single line, in every language |
+| Wrapping | Up to two lines |
 
 The same size and weight apply in both layouts. A headline that changes weight with window shape reads as a different voice for the same sentence, which is why the two layouts differ on position but not on type.
 
 Colour and outline come from the scheme roles listed under Buttons, dots and colour, so the headline carries no brand value of its own. In the narrow layout the outline does the separating work over the map: because it takes the surface colour, it is near-white in light mode and near-dark in dark, which keeps the type punched out of the backdrop in both without needing a second rule.
 
-**A headline is one line at 24, and the reserved strip is sized for exactly that.** It neither wraps nor shrinks to fit: the size is doing legibility work over the carousel image, and a second line would push into the slide above or the buttons below.
+**A headline wraps to a second line rather than shrinking or clipping.** The size is doing legibility work over the carousel image, so shrinking to fit defeats the point, and clipping loses words outright. The reserved strip is therefore sized for two lines: one line at 24 measures 29, so two plus the same breathing room comes to 64.
 
-That makes headline length a constraint on the copy rather than on the layout. **Each headline has to fit one line at 24 in every supported language, not just in English.** Several languages run twenty to thirty per cent longer, so a phrase that only just fits in English is already too long. Check the longest locales before new copy ships.
+**The strip grows rather than clips.** Where the operating system's text-size setting scales the headline past what 64 holds, the strip takes the extra height and the carousel image below it gives up the space. Text scaling stays enabled — the second line and the flexible strip are what absorb it, which is what makes that safe. This replaces the disabled scaling recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294); that issue should close with this work rather than stay a standing exception.
 
-For the same reason, headlines do not scale with the operating system's text-size setting — a fixed one-line strip cannot absorb growth, so scaling would clip rather than reflow. This is a deliberate accessibility trade-off, recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294).
+Two lines is headroom for translation, not a target. **A headline should still read as one line at 24 in English**, so that longer languages have somewhere to go. Several run twenty to thirty per cent longer, so a phrase filling the full width in English will already need both lines elsewhere. If a translation needs a third line, the copy is too long — shorten the string rather than grow the strip again.
 
 ### Image assets
 
