@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-03 09:47:20.897828",
+    "@@last_modified": "2026-08-03 16:07:28.446896",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10048,5 +10048,6 @@
     "mapFiltersHideMatches": "Vos filtres masquent tous les matchs. Élargissez la recherche pour les voir.",
     "mapNoSearchMatches": "Aucune activité ne correspond à votre recherche.",
     "mapNoActivitiesArea": "Aucune activité dans cette zone.",
-    "practiceSessionTimedOut": "Votre session d'entraînement s'est terminée après {minutes} minutes d'inactivité."
+    "practiceSessionTimedOut": "Votre session d'entraînement s'est terminée après {minutes} minutes d'inactivité.",
+    "autocorrectMobileOnly": "Mobile uniquement"
 }

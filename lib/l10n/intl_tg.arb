@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-03 09:47:39.084783",
+    "@@last_modified": "2026-08-03 16:07:32.354725",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Филтрҳои шумо ҳамаи бозиҳоро пинҳон мекунанд. Барои дидани онҳо ҷустуҷӯро васеътар кунед.",
     "mapNoSearchMatches": "Ҳеҷ гуна фаъолият ба ҷустуҷӯи шумо мувофиқат намекунад.",
     "mapNoActivitiesArea": "Дар ин минтақа ҳеҷ гуна фаъолият нест.",
-    "practiceSessionTimedOut": "Сеанси машқи шумо пас аз {minutes} дақиқа бефаъолиятӣ ба охир расид."
+    "practiceSessionTimedOut": "Сеанси машқи шумо пас аз {minutes} дақиқа бефаъолиятӣ ба охир расид.",
+    "autocorrectMobileOnly": "Танҳо мобилӣ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-03 09:47:29.414354",
+    "@@last_modified": "2026-08-03 16:07:30.007387",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Tua filtra omnia certamina abscondunt. Amplifica quaestionem ut ea videas.",
     "mapNoSearchMatches": "Nullae actiones quaestioni tuae congruunt.",
     "mapNoActivitiesArea": "Nullae actiones in hac regione.",
-    "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione."
+    "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione.",
+    "autocorrectMobileOnly": "Solum mobile"
 }

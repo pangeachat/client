@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:38.244840",
+    "@@last_modified": "2026-08-03 16:07:32.077927",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9785,5 +9785,6 @@
     "mapFiltersHideMatches": "உங்கள் வடிப்பான்கள் அனைத்துப் போட்டிகளையும் மறைக்கின்றன. அவற்றைப் பார்க்க தேடலை விரிவாக்குங்கள்.",
     "mapNoSearchMatches": "உங்கள் தேடலுடன் எந்தச் செயல்பாடுகளும் பொருந்தவில்லை.",
     "mapNoActivitiesArea": "இந்த பகுதியில் எந்தச் செயல்பாடுகளும் இல்லை.",
-    "practiceSessionTimedOut": "செயல்பாடு இல்லாமல் {minutes} நிமிடங்களுக்குப் பிறகு உங்கள் பயிற்சி அமர்வு முடிந்தது."
+    "practiceSessionTimedOut": "செயல்பாடு இல்லாமல் {minutes} நிமிடங்களுக்குப் பிறகு உங்கள் பயிற்சி அமர்வு முடிந்தது.",
+    "autocorrectMobileOnly": "மொபைலுக்கு மட்டும்"
 }

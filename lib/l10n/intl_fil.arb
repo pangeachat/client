@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-03 09:47:21.049984",
+    "@@last_modified": "2026-08-03 16:07:28.319990",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10559,5 +10559,6 @@
     "mapFiltersHideMatches": "Itinatago ng iyong mga filter ang lahat ng laban. Palawakin ang paghahanap para makita ang mga ito.",
     "mapNoSearchMatches": "Walang aktibidad na tumutugma sa iyong paghahanap.",
     "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito.",
-    "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad."
+    "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad.",
+    "autocorrectMobileOnly": "Pang-mobile lang"
 }

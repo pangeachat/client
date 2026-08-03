@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:34.660116",
+    "@@last_modified": "2026-08-03 16:07:31.235195",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10425,5 +10425,6 @@
     "mapFiltersHideMatches": "Filtrele tale ascund toate meciurile. Lărgește căutarea pentru a le vedea.",
     "mapNoSearchMatches": "Nicio activitate nu corespunde căutării tale.",
     "mapNoActivitiesArea": "Nicio activitate în această zonă.",
-    "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate."
+    "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate.",
+    "autocorrectMobileOnly": "Doar pe mobil"
 }

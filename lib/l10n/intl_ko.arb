@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:26.730608",
+    "@@last_modified": "2026-08-03 16:07:29.782610",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9886,5 +9886,6 @@
     "mapFiltersHideMatches": "필터가 모든 매치를 숨기고 있습니다. 검색 범위를 넓혀 확인하세요.",
     "mapNoSearchMatches": "검색과 일치하는 활동이 없습니다.",
     "mapNoActivitiesArea": "이 지역에 활동이 없습니다.",
-    "practiceSessionTimedOut": "활동이 없어 {minutes}분 후 연습 세션이 종료되었습니다."
+    "practiceSessionTimedOut": "활동이 없어 {minutes}분 후 연습 세션이 종료되었습니다.",
+    "autocorrectMobileOnly": "모바일 전용"
 }

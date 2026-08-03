@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-03 09:47:36.413518",
+    "@@last_modified": "2026-08-03 16:07:31.496794",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10644,5 +10644,6 @@
     "mapFiltersHideMatches": "Vaši filtri skrivajo vsa ujemanja. Razširite iskanje, da jih vidite.",
     "mapNoSearchMatches": "Nobena dejavnost se ne ujema z vašim iskanjem.",
     "mapNoActivitiesArea": "Na tem območju ni dejavnosti.",
-    "practiceSessionTimedOut": "Vaša vaja se je končala po {minutes} minutah neaktivnosti."
+    "practiceSessionTimedOut": "Vaša vaja se je končala po {minutes} minutah neaktivnosti.",
+    "autocorrectMobileOnly": "Samo za mobilne naprave"
 }

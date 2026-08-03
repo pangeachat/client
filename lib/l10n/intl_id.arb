@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:24.416708",
+    "@@last_modified": "2026-08-03 16:07:29.104041",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9766,5 +9766,6 @@
     "mapFiltersHideMatches": "Filter Anda menyembunyikan semua pertandingan. Perluas pencarian untuk melihatnya.",
     "mapNoSearchMatches": "Tidak ada aktivitas yang cocok dengan pencarian Anda.",
     "mapNoActivitiesArea": "Tidak ada aktivitas di area ini.",
-    "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas."
+    "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
+    "autocorrectMobileOnly": "Khusus seluler"
 }

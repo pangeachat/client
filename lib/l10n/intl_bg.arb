@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-03 09:47:16.829195",
+    "@@last_modified": "2026-08-03 16:07:27.153456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Вашите филтри скриват всички мачове. Разширете търсенето, за да ги видите.",
     "mapNoSearchMatches": "Няма дейности, които да отговарят на вашето търсене.",
     "mapNoActivitiesArea": "Няма дейности в тази област.",
-    "practiceSessionTimedOut": "Вашата тренировъчна сесия приключи след {minutes} минути без активност."
+    "practiceSessionTimedOut": "Вашата тренировъчна сесия приключи след {minutes} минути без активност.",
+    "autocorrectMobileOnly": "Само за мобилни устройства"
 }

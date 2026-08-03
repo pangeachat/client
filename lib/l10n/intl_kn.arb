@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-03 09:47:27.775901",
+    "@@last_modified": "2026-08-03 16:07:29.833197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "ನಿಮ್ಮ ಫಿಲ್ಟರ್‌ಗಳು ಎಲ್ಲಾ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ಮರೆಮಾಡುತ್ತಿವೆ. ಅವುಗಳನ್ನು ನೋಡಲು ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸಿ.",
     "mapNoSearchMatches": "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ.",
     "mapNoActivitiesArea": "ಈ ಪ್ರದೇಶದಲ್ಲಿ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳಿಲ್ಲ.",
-    "practiceSessionTimedOut": "ಯಾವುದೇ ಚಟುವಟಿಕೆ ಇಲ್ಲದೆ {minutes} ನಿಮಿಷಗಳ ನಂತರ ನಿಮ್ಮ ಅಭ್ಯಾಸದ ಅವಧಿ ಮುಗಿದಿದೆ."
+    "practiceSessionTimedOut": "ಯಾವುದೇ ಚಟುವಟಿಕೆ ಇಲ್ಲದೆ {minutes} ನಿಮಿಷಗಳ ನಂತರ ನಿಮ್ಮ ಅಭ್ಯಾಸದ ಅವಧಿ ಮುಗಿದಿದೆ.",
+    "autocorrectMobileOnly": "ಮೊಬೈಲ್ ಮಾತ್ರ"
 }

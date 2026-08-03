@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-03 09:47:25.265785",
+    "@@last_modified": "2026-08-03 16:07:29.487655",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Síurnar þínar fela alla leiki. Víkkaðu leitina til að sjá þá.",
     "mapNoSearchMatches": "Engar athafnir passa við leitina þína.",
     "mapNoActivitiesArea": "Engar athafnir á þessu svæði.",
-    "practiceSessionTimedOut": "Æfingalotan þín rann út eftir {minutes} mínútur án virkni."
+    "practiceSessionTimedOut": "Æfingalotan þín rann út eftir {minutes} mínútur án virkni.",
+    "autocorrectMobileOnly": "Aðeins í farsíma"
 }

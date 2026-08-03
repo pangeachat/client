@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-03 09:47:21.128748",
+    "@@last_modified": "2026-08-03 16:07:28.256545",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Jo filters ferbergje alle wedstriden. Ferbreedzje de syktocht om se te sjen.",
     "mapNoSearchMatches": "Gjin aktiviteiten komme oerien mei jo syktocht.",
     "mapNoActivitiesArea": "Gjin aktiviteiten yn dit gebiet.",
-    "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit."
+    "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit.",
+    "autocorrectMobileOnly": "Allinne mobyl"
 }

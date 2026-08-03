@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-03 09:47:23.496288",
+    "@@last_modified": "2026-08-03 16:07:28.922625",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9796,5 +9796,6 @@
     "mapFiltersHideMatches": "A szűrőid minden meccset elrejtenek. Szélesítsd a keresést, hogy lásd őket.",
     "mapNoSearchMatches": "Nincsenek a keresésnek megfelelő tevékenységek.",
     "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen.",
-    "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt."
+    "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt.",
+    "autocorrectMobileOnly": "Csak mobilon"
 }

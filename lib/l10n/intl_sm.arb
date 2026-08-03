@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-03 09:47:37.015575",
+    "@@last_modified": "2026-08-03 16:07:31.857554",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "O au fa'amama o lo'o natia uma ta'aloga. Fa'alautele le su'esu'ega e va'ai ai.",
     "mapNoSearchMatches": "Leai ni gaioiga e fetaui ma lau su'esu'ega.",
     "mapNoActivitiesArea": "Leai ni gaioiga i lenei vaega.",
-    "practiceSessionTimedOut": "Ua maeʻa lau sauniga faʻataʻitaʻi pe a maeʻa le {minutes} minute e aunoa ma se gaioiga."
+    "practiceSessionTimedOut": "Ua maeʻa lau sauniga faʻataʻitaʻi pe a maeʻa le {minutes} minute e aunoa ma se gaioiga.",
+    "autocorrectMobileOnly": "Na'o le telefoni feavea'i"
 }

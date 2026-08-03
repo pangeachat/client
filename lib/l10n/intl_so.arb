@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-03 09:47:37.020155",
+    "@@last_modified": "2026-08-03 16:07:31.876548",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Shaandhooyinkaagu waxay qarinayaan dhammaan ciyaaraha. Ballari raadinta si aad u aragto.",
     "mapNoSearchMatches": "Ma jiraan wax hawlo ah oo u dhigma raadintaada.",
     "mapNoActivitiesArea": "Ma jiraan wax hawlo ah aaggan.",
-    "practiceSessionTimedOut": "Fadhigaaga tababarka wuxuu dhammaaday {minutes} daqiiqo ka dib markii aan wax dhaqdhaqaaq ah la samayn."
+    "practiceSessionTimedOut": "Fadhigaaga tababarka wuxuu dhammaaday {minutes} daqiiqo ka dib markii aan wax dhaqdhaqaaq ah la samayn.",
+    "autocorrectMobileOnly": "Kaliya moobilka"
 }

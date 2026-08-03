@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-03 09:47:23.721595",
+    "@@last_modified": "2026-08-03 16:07:28.943570",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Koj cov lim tab tom nkaum tag nrho cov kev sib tw. Nthuav dav qhov kev tshawb nrhiav kom pom lawv.",
     "mapNoSearchMatches": "Tsis muaj kev ua si sib phim koj qhov kev tshawb nrhiav.",
     "mapNoActivitiesArea": "Tsis muaj kev ua si hauv cheeb tsam no.",
-    "practiceSessionTimedOut": "Koj qhov kev xyaum kawm tau xaus lawm tom qab {minutes} feeb tsis muaj kev ua dab tsi."
+    "practiceSessionTimedOut": "Koj qhov kev xyaum kawm tau xaus lawm tom qab {minutes} feeb tsis muaj kev ua dab tsi.",
+    "autocorrectMobileOnly": "Tsuas yog hauv xov tooj"
 }

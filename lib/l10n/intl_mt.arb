@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-03 09:47:31.792165",
+    "@@last_modified": "2026-08-03 16:07:30.514240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Il-filtri tiegħek qed jaħbu l-logħbiet kollha. Wessa' t-tfittxija biex tarahom.",
     "mapNoSearchMatches": "L-ebda attività ma taqbel mat-tfittxija tiegħek.",
     "mapNoActivitiesArea": "L-ebda attività f'din iż-żona.",
-    "practiceSessionTimedOut": "Is-sessjoni ta' prattika tiegħek intemmet wara {minutes} minuti mingħajr attività."
+    "practiceSessionTimedOut": "Is-sessjoni ta' prattika tiegħek intemmet wara {minutes} minuti mingħajr attività.",
+    "autocorrectMobileOnly": "Mobile biss"
 }

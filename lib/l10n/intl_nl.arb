@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:31.922325",
+    "@@last_modified": "2026-08-03 16:07:30.803825",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,6 @@
     "mapFiltersHideMatches": "Je filters verbergen alle wedstrijden. Verbreed de zoekopdracht om ze te zien.",
     "mapNoSearchMatches": "Geen activiteiten komen overeen met je zoekopdracht.",
     "mapNoActivitiesArea": "Geen activiteiten in dit gebied.",
-    "practiceSessionTimedOut": "Je oefensessie is beëindigd na {minutes} minuten inactiviteit."
+    "practiceSessionTimedOut": "Je oefensessie is beëindigd na {minutes} minuten inactiviteit.",
+    "autocorrectMobileOnly": "Alleen mobiel"
 }

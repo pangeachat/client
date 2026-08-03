@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-03 09:47:34.798155",
+    "@@last_modified": "2026-08-03 16:07:31.329300",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10667,5 +10667,6 @@
     "mapFiltersHideMatches": "Ваши фильтры скрывают все матчи. Расширьте поиск, чтобы увидеть их.",
     "mapNoSearchMatches": "По вашему запросу не найдено ни одной активности.",
     "mapNoActivitiesArea": "В этой области нет активностей.",
-    "practiceSessionTimedOut": "Ваша тренировка завершилась после {minutes} минут бездействия."
+    "practiceSessionTimedOut": "Ваша тренировка завершилась после {minutes} минут бездействия.",
+    "autocorrectMobileOnly": "Только для мобильных"
 }

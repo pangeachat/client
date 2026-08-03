@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:22.580278",
+    "@@last_modified": "2026-08-03 16:07:28.807739",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10613,5 +10613,6 @@
     "mapFiltersHideMatches": "המסננים שלך מסתירים את כל ההתאמות. הרחב את החיפוש כדי לראות אותן.",
     "mapNoSearchMatches": "אין פעילויות התואמות לחיפוש שלך.",
     "mapNoActivitiesArea": "אין פעילויות באזור זה.",
-    "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות."
+    "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות.",
+    "autocorrectMobileOnly": "נייד בלבד"
 }

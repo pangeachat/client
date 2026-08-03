@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-03 09:47:36.406588",
+    "@@last_modified": "2026-08-03 16:07:31.480514",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10644,5 +10644,6 @@
     "mapFiltersHideMatches": "Vaše filtre skrývajú všetky zápasy. Rozšírte vyhľadávanie, aby ste ich videli.",
     "mapNoSearchMatches": "Žiadne aktivity nezodpovedajú vášmu vyhľadávaniu.",
     "mapNoActivitiesArea": "V tejto oblasti nie sú žiadne aktivity.",
-    "practiceSessionTimedOut": "Vaša cvičná lekcia sa skončila po {minutes} minútach nečinnosti."
+    "practiceSessionTimedOut": "Vaša cvičná lekcia sa skončila po {minutes} minútach nečinnosti.",
+    "autocorrectMobileOnly": "Iba mobil"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:18.245986",
+    "@@last_modified": "2026-08-03 16:07:27.665914",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9820,5 +9820,6 @@
     "mapFiltersHideMatches": "Els teus filtres estan amagant totes les partides. Amplia la cerca per veure-les.",
     "mapNoSearchMatches": "Cap activitat coincideix amb la teva cerca.",
     "mapNoActivitiesArea": "No hi ha activitats en aquesta zona.",
-    "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat."
+    "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat.",
+    "autocorrectMobileOnly": "Només mòbil"
 }

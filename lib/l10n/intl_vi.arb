@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:40.424630",
+    "@@last_modified": "2026-08-03 16:07:32.648249",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6959,5 +6959,6 @@
     "mapFiltersHideMatches": "Bộ lọc của bạn đang ẩn tất cả các trận đấu. Hãy mở rộng phạm vi tìm kiếm để xem chúng.",
     "mapNoSearchMatches": "Không có hoạt động nào khớp với tìm kiếm của bạn.",
     "mapNoActivitiesArea": "Không có hoạt động nào trong khu vực này.",
-    "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động."
+    "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động.",
+    "autocorrectMobileOnly": "Chỉ trên di động"
 }

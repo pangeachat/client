@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-03 09:47:42.346368",
+    "@@last_modified": "2026-08-03 16:07:33.057745",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Izihlungi zakho zifihla konke okufanayo. Nweba usesho ukuze ukubone.",
     "mapNoSearchMatches": "Azikho izinto ezifanayo nosesho lwakho.",
     "mapNoActivitiesArea": "Azikho izinto kule ndawo.",
-    "practiceSessionTimedOut": "Iseshini yakho yokuzijwayeza iphele ngemuva kwemizuzu engu-{minutes} ngaphandle komsebenzi."
+    "practiceSessionTimedOut": "Iseshini yakho yokuzijwayeza iphele ngemuva kwemizuzu engu-{minutes} ngaphandle komsebenzi.",
+    "autocorrectMobileOnly": "Okweselula kuphela"
 }

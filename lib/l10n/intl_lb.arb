@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-03 09:47:28.557216",
+    "@@last_modified": "2026-08-03 16:07:29.961919",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Är Filtere verstoppen all Matcher. Erweidert d'Sich fir se ze gesinn.",
     "mapNoSearchMatches": "Keng Aktivitéite passen Är Sich.",
     "mapNoActivitiesArea": "Keng Aktivitéiten an dësem Beräich.",
-    "practiceSessionTimedOut": "Deng Übungssessioun ass no {minutes} Minutten ouni Aktivitéit ofgelaf."
+    "practiceSessionTimedOut": "Deng Übungssessioun ass no {minutes} Minutten ouni Aktivitéit ofgelaf.",
+    "autocorrectMobileOnly": "Nëmme mobil"
 }

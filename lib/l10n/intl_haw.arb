@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-03 09:47:23.187145",
+    "@@last_modified": "2026-08-03 16:07:28.756234",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Ke hūnā nei kāu mau kānana i nā pāʻani āpau. Hoʻonui i ka huli e ʻike ai.",
     "mapNoSearchMatches": "ʻAʻohe hana e like me kāu huli.",
     "mapNoActivitiesArea": "ʻAʻohe hana ma kēia wahi.",
-    "practiceSessionTimedOut": "Ua pau kāu kau hoʻomaʻamaʻa ma hope o {minutes} mau minuke me ka hana ʻole."
+    "practiceSessionTimedOut": "Ua pau kāu kau hoʻomaʻamaʻa ma hope o {minutes} mau minuke me ka hana ʻole.",
+    "autocorrectMobileOnly": "Kelepona paʻa wale nō"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-03 09:47:20.697243",
+    "@@last_modified": "2026-08-03 16:07:28.126496",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,6 @@
     "mapFiltersHideMatches": "Zure iragazkiek partida guztiak ezkutatzen dituzte. Zabaltu bilaketa ikusteko.",
     "mapNoSearchMatches": "Ez dago zure bilaketarekin bat datorren jarduerarik.",
     "mapNoActivitiesArea": "Ez dago jarduerarik eremu honetan.",
-    "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren."
+    "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren.",
+    "autocorrectMobileOnly": "Mugikorrean bakarrik"
 }

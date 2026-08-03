@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-03 09:47:27.948080",
+    "@@last_modified": "2026-08-03 16:07:29.927016",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Сиздин чыпкаларыңыз бардык дал келүүлөрдү жашырууда. Аларды көрүү үчүн издөөнү кеңейтиңиз.",
     "mapNoSearchMatches": "Издөөңүзгө эч кандай иш-аракеттер дал келген жок.",
     "mapNoActivitiesArea": "Бул аймакта эч кандай иш-аракеттер жок.",
-    "practiceSessionTimedOut": "Сиздин машыгуу сессияңыз {minutes} мүнөт аракетсиздиктен кийин аяктады."
+    "practiceSessionTimedOut": "Сиздин машыгуу сессияңыз {minutes} мүнөт аракетсиздиктен кийин аяктады.",
+    "autocorrectMobileOnly": "Мобилдик түзмөктөр үчүн гана"
 }

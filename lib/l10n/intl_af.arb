@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-03 09:47:17.145475",
+    "@@last_modified": "2026-08-03 16:07:27.126730",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Jou filters versteek alle wedstryde. Verbreed die soektog om dit te sien.",
     "mapNoSearchMatches": "Geen aktiwiteite stem ooreen met jou soektog nie.",
     "mapNoActivitiesArea": "Geen aktiwiteite in hierdie area nie.",
-    "practiceSessionTimedOut": "Jou oefensessie het geëindig na {minutes} minute van onaktiwiteit."
+    "practiceSessionTimedOut": "Jou oefensessie het geëindig na {minutes} minute van onaktiwiteit.",
+    "autocorrectMobileOnly": "Slegs mobiel"
 }

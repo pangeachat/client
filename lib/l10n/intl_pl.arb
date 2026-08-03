@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-03 09:47:34.257441",
+    "@@last_modified": "2026-08-03 16:07:31.223566",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9778,5 +9778,6 @@
     "mapFiltersHideMatches": "Twoje filtry ukrywają wszystkie mecze. Rozszerz wyszukiwanie, aby je zobaczyć.",
     "mapNoSearchMatches": "Brak aktywności pasujących do wyszukiwania.",
     "mapNoActivitiesArea": "Brak aktywności w tym obszarze.",
-    "practiceSessionTimedOut": "Twoja sesja ćwiczeniowa zakończyła się po {minutes} minutach braku aktywności."
+    "practiceSessionTimedOut": "Twoja sesja ćwiczeniowa zakończyła się po {minutes} minutach braku aktywności.",
+    "autocorrectMobileOnly": "Tylko na urządzenia mobilne"
 }

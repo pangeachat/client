@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-03 09:47:21.565590",
+    "@@last_modified": "2026-08-03 16:07:28.563757",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "તમારા ફિલ્ટર્સ બધી મેચો છુપાવી રહ્યા છે. તેમને જોવા માટે શોધને વિસ્તૃત કરો.",
     "mapNoSearchMatches": "તમારી શોધ સાથે કોઈ પ્રવૃત્તિઓ મેળ ખાતી નથી.",
     "mapNoActivitiesArea": "આ વિસ્તારમાં કોઈ પ્રવૃત્તિઓ નથી.",
-    "practiceSessionTimedOut": "પ્રવૃત્તિ વિના {minutes} મિનિટ પછી તમારું પ્રેક્ટિસ સત્ર સમાપ્ત થયું."
+    "practiceSessionTimedOut": "પ્રવૃત્તિ વિના {minutes} મિનિટ પછી તમારું પ્રેક્ટિસ સત્ર સમાપ્ત થયું.",
+    "autocorrectMobileOnly": "ફક્ત મોબાઇલ"
 }

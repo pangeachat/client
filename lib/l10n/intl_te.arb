@@ -1333,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-03 09:47:38.668793",
+    "@@last_modified": "2026-08-03 16:07:32.315805",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10649,5 +10649,6 @@
     "mapFiltersHideMatches": "మీ ఫిల్టర్‌లు అన్ని మ్యాచ్‌లను దాచిపెడుతున్నాయి. వాటిని చూడటానికి శోధనను విస్తరించండి.",
     "mapNoSearchMatches": "మీ శోధనకు సరిపోలే కార్యకలాపాలు లేవు.",
     "mapNoActivitiesArea": "ఈ ప్రాంతంలో కార్యకలాపాలు లేవు.",
-    "practiceSessionTimedOut": "మీరు {minutes} నిమిషాలు నిష్క్రియంగా ఉన్నందున మీ అభ్యాస సెషన్ ముగిసింది."
+    "practiceSessionTimedOut": "మీరు {minutes} నిమిషాలు నిష్క్రియంగా ఉన్నందున మీ అభ్యాస సెషన్ ముగిసింది.",
+    "autocorrectMobileOnly": "మొబైల్ మాత్రమే"
 }

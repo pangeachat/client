@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-03 09:47:17.278289",
+    "@@last_modified": "2026-08-03 16:07:27.180505",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "আপোনাৰ ফিল্টাৰসমূহে সকলো মেচ লুকুৱাই ৰাখিছে। সেইবোৰ চাবলৈ অনুসন্ধান বহল কৰক।",
     "mapNoSearchMatches": "আপোনাৰ অনুসন্ধানৰ সৈতে কোনো কাৰ্যকলাপ মিল খোৱা নাই।",
     "mapNoActivitiesArea": "এই অঞ্চলত কোনো কাৰ্যকলাপ নাই।",
-    "practiceSessionTimedOut": "আপোনাৰ অনুশীলন অধিৱেশন {minutes} মিনিটৰ পিছত কোনো কাৰ্যকলাপ নোহোৱাকৈ শেষ হৈছে।"
+    "practiceSessionTimedOut": "আপোনাৰ অনুশীলন অধিৱেশন {minutes} মিনিটৰ পিছত কোনো কাৰ্যকলাপ নোহোৱাকৈ শেষ হৈছে।",
+    "autocorrectMobileOnly": "কেৱল ম'বাইল"
 }

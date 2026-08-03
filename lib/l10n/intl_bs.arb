@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-03 09:47:16.602260",
+    "@@last_modified": "2026-08-03 16:07:27.160814",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Vaši filteri skrivaju sva podudaranja. Proširite pretragu da ih vidite.",
     "mapNoSearchMatches": "Nijedna aktivnost ne odgovara vašoj pretrazi.",
     "mapNoActivitiesArea": "Nema aktivnosti u ovom području.",
-    "practiceSessionTimedOut": "Vaša sesija vježbanja je završena nakon {minutes} minuta neaktivnosti."
+    "practiceSessionTimedOut": "Vaša sesija vježbanja je završena nakon {minutes} minuta neaktivnosti.",
+    "autocorrectMobileOnly": "Samo za mobilne uređaje"
 }

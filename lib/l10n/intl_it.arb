@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:25.068098",
+    "@@last_modified": "2026-08-03 16:07:29.306700",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9766,5 +9766,6 @@
     "mapFiltersHideMatches": "I tuoi filtri nascondono tutte le partite. Amplia la ricerca per vederle.",
     "mapNoSearchMatches": "Nessuna attività corrisponde alla tua ricerca.",
     "mapNoActivitiesArea": "Nessuna attività in quest'area.",
-    "practiceSessionTimedOut": "La tua sessione di pratica è terminata dopo {minutes} minuti di inattività."
+    "practiceSessionTimedOut": "La tua sessione di pratica è terminata dopo {minutes} minuti di inattività.",
+    "autocorrectMobileOnly": "Solo mobile"
 }

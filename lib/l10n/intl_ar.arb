@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-03 09:47:17.173244",
+    "@@last_modified": "2026-08-03 16:07:27.129846",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9999,5 +9999,6 @@
     "mapFiltersHideMatches": "الفلاتر التي اخترتها تخفي جميع المباريات. وسّع نطاق البحث لرؤيتها.",
     "mapNoSearchMatches": "لا توجد أنشطة مطابقة لبحثك.",
     "mapNoActivitiesArea": "لا توجد أنشطة في هذه المنطقة.",
-    "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط."
+    "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط.",
+    "autocorrectMobileOnly": "للجوال فقط"
 }

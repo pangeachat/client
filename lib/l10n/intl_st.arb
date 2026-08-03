@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-03 09:47:37.922105",
+    "@@last_modified": "2026-08-03 16:07:32.749761",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Disefa tsa hao di pata dipapadi tsohle. Atolosa patlisiso ho di bona.",
     "mapNoSearchMatches": "Ha ho ditshebetso tse tsamaellanang le patlisiso ya hao.",
     "mapNoActivitiesArea": "Ha ho ditshebetso sebakeng sena.",
-    "practiceSessionTimedOut": "Thuto ea hau ea boikoetliso e felile kamora metsotso e {minutes} ntle le ts'ebetso."
+    "practiceSessionTimedOut": "Thuto ea hau ea boikoetliso e felile kamora metsotso e {minutes} ntle le ts'ebetso.",
+    "autocorrectMobileOnly": "Fono feela"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-03 09:47:19.935360",
+    "@@last_modified": "2026-08-03 16:07:28.088534",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9690,5 +9690,6 @@
     "mapFiltersHideMatches": "Teie filtrid peidavad kõik mängud. Laiendage otsingut, et neid näha.",
     "mapNoSearchMatches": "Teie otsingule ei vasta ühtegi tegevust.",
     "mapNoActivitiesArea": "Selles piirkonnas pole tegevusi.",
-    "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust."
+    "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust.",
+    "autocorrectMobileOnly": "Ainult mobiilis"
 }

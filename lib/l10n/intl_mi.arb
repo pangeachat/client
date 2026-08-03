@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-03 09:47:30.355492",
+    "@@last_modified": "2026-08-03 16:07:30.292360",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Kei te huna ō tātari i ngā kēmu katoa. Whakarōrahi i te rapu kia kite koe.",
     "mapNoSearchMatches": "Kāore he mahi e ōrite ana ki tāu rapu.",
     "mapNoActivitiesArea": "Kāore he mahi i tēnei wāhi.",
-    "practiceSessionTimedOut": "Kua mutu tō wātū whakaharatau i muri i te {minutes} meneti kāore he mahi."
+    "practiceSessionTimedOut": "Kua mutu tō wātū whakaharatau i muri i te {minutes} meneti kāore he mahi.",
+    "autocorrectMobileOnly": "Waea pūkoro anake"
 }

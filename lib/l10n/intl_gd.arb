@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-03 09:47:22.065478",
+    "@@last_modified": "2026-08-03 16:07:28.438024",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Tha na sìoltachain agad a’ falach a h-uile geama. Leudaich an rannsachadh gus am faicinn.",
     "mapNoSearchMatches": "Chan eil gnìomhachd sam bith a’ freagairt ris an rannsachadh agad.",
     "mapNoActivitiesArea": "Chan eil gnìomhachd sam bith san sgìre seo.",
-    "practiceSessionTimedOut": "Thàinig an seisean cleachdaidh agad gu crìch an dèidh {minutes} mionaid gun ghnìomhachd."
+    "practiceSessionTimedOut": "Thàinig an seisean cleachdaidh agad gu crìch an dèidh {minutes} mionaid gun ghnìomhachd.",
+    "autocorrectMobileOnly": "Fòn-làimhe a-mhàin"
 }

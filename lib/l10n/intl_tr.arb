@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-03 09:47:39.215891",
+    "@@last_modified": "2026-08-03 16:07:32.303530",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9994,5 +9994,6 @@
     "mapFiltersHideMatches": "Filtreleriniz tüm eşleşmeleri gizliyor. Görmek için aramayı genişletin.",
     "mapNoSearchMatches": "Aramanızla eşleşen etkinlik yok.",
     "mapNoActivitiesArea": "Bu alanda etkinlik yok.",
-    "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi."
+    "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi.",
+    "autocorrectMobileOnly": "Yalnızca mobil"
 }

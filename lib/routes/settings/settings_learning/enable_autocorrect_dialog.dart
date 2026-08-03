@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:app_settings/app_settings.dart';
@@ -9,44 +8,19 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 
+/// Platform-specific instructions for enabling device autocorrect. Only shown
+/// on mobile — on web the autocorrect toggle is disabled entirely (see
+/// AutocorrectSettingsTile).
 class EnableAutocorrectDialog extends StatelessWidget {
   const EnableAutocorrectDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
-    if (kIsWeb) {
-      return WebEnableAutocorrectDialog();
-    }
-
     if (Platform.isIOS) {
       return IOSEnableAutocorrectDialog();
     }
 
     return AndroidEnableAutocorrectDialog();
-  }
-}
-
-class WebEnableAutocorrectDialog extends StatelessWidget {
-  const WebEnableAutocorrectDialog({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog.adaptive(
-      title: Text(L10n.of(context).notAvailable),
-      content: SingleChildScrollView(
-        child: Column(
-          spacing: 8.0,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [Text(L10n.of(context).autocorrectNotAvailable)],
-        ),
-      ),
-      actions: [
-        AdaptiveDialogAction(
-          onPressed: () => Navigator.of(context).pop(false),
-          child: Text(L10n.of(context).close),
-        ),
-      ],
-    );
   }
 }
 

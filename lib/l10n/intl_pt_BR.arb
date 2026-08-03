@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:34.281521",
+    "@@last_modified": "2026-08-03 16:07:31.303741",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,6 @@
     "mapFiltersHideMatches": "Seus filtros estão ocultando todas as partidas. Amplie a pesquisa para vê-las.",
     "mapNoSearchMatches": "Nenhuma atividade corresponde à sua pesquisa.",
     "mapNoActivitiesArea": "Nenhuma atividade nesta área.",
-    "practiceSessionTimedOut": "Sua sessão de prática terminou após {minutes} minutos sem atividade."
+    "practiceSessionTimedOut": "Sua sessão de prática terminou após {minutes} minutos sem atividade.",
+    "autocorrectMobileOnly": "Somente para celular"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-03 09:47:35.077267",
+    "@@last_modified": "2026-08-03 16:07:30.983896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "ଆପଣଙ୍କ ଫିଲ୍ଟର ସମସ୍ତ ମ୍ୟାଚ୍ ଲୁଚାଉଛି। ସେଗୁଡ଼ିକୁ ଦେଖିବା ପାଇଁ ସନ୍ଧାନକୁ ବଡ଼ କରନ୍ତୁ।",
     "mapNoSearchMatches": "ଆପଣଙ୍କ ସନ୍ଧାନ ସହିତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ମେଳ ଖାଉ ନାହିଁ।",
     "mapNoActivitiesArea": "ଏହି ଅଞ୍ଚଳରେ କୌଣସି କାର୍ଯ୍ୟକଳାପ ନାହିଁ।",
-    "practiceSessionTimedOut": "ଆପଣଙ୍କ ଅଭ୍ୟାସ ଅଧିବେଶନ {minutes} ମିନିଟ୍ ପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ବିନା ଶେଷ ହୋଇଛି।"
+    "practiceSessionTimedOut": "ଆପଣଙ୍କ ଅଭ୍ୟାସ ଅଧିବେଶନ {minutes} ମିନିଟ୍ ପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ବିନା ଶେଷ ହୋଇଛି।",
+    "autocorrectMobileOnly": "କେବଳ ମୋବାଇଲ୍"
 }

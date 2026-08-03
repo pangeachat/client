@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-03 09:47:32.761485",
+    "@@last_modified": "2026-08-03 16:07:30.836309",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "तपाईंको फिल्टरहरूले सबै मिल्दोजुल्दो लुकाइरहेका छन्। तिनीहरूलाई हेर्न खोज फराकिलो बनाउनुहोस्।",
     "mapNoSearchMatches": "तपाईंको खोजसँग कुनै गतिविधिहरू मिल्दैनन्।",
     "mapNoActivitiesArea": "यस क्षेत्रमा कुनै गतिविधिहरू छैनन्।",
-    "practiceSessionTimedOut": "कुनै गतिविधि नभएकोले {minutes} मिनेटपछि तपाईंको अभ्यास सत्र समाप्त भयो।"
+    "practiceSessionTimedOut": "कुनै गतिविधि नभएकोले {minutes} मिनेटपछि तपाईंको अभ्यास सत्र समाप्त भयो।",
+    "autocorrectMobileOnly": "मोबाइल मात्र"
 }

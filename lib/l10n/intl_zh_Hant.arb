@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:40.906067",
+    "@@last_modified": "2026-08-03 16:07:32.938143",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9799,5 +9799,6 @@
     "mapFiltersHideMatches": "您的篩選條件隱藏了所有配對。請放寬搜尋條件以查看。",
     "mapNoSearchMatches": "沒有符合您搜尋的活動。",
     "mapNoActivitiesArea": "此區域沒有活動。",
-    "practiceSessionTimedOut": "您的練習時段因 {minutes} 分鐘沒有活動而結束。"
+    "practiceSessionTimedOut": "您的練習時段因 {minutes} 分鐘沒有活動而結束。",
+    "autocorrectMobileOnly": "僅限行動裝置"
 }

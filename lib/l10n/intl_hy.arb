@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-03 09:47:25.013975",
+    "@@last_modified": "2026-08-03 16:07:28.970780",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Ձեր զտիչները թաքցնում են բոլոր խաղերը։ Ընդլայնեք որոնումը՝ դրանք տեսնելու համար։",
     "mapNoSearchMatches": "Ձեր որոնմանը համապատասխանող գործողություններ չկան։",
     "mapNoActivitiesArea": "Այս տարածքում գործողություններ չկան։",
-    "practiceSessionTimedOut": "Ձեր պրակտիկայի սեսիան ավարտվեց {minutes} րոպե անգործությունից հետո:"
+    "practiceSessionTimedOut": "Ձեր պրակտիկայի սեսիան ավարտվեց {minutes} րոպե անգործությունից հետո:",
+    "autocorrectMobileOnly": "Միայն բջջայինի համար"
 }

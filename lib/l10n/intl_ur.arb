@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-03 09:47:40.232012",
+    "@@last_modified": "2026-08-03 16:07:32.570494",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "آپ کے فلٹرز تمام میچز چھپا رہے ہیں۔ انہیں دیکھنے کے لیے تلاش کو وسیع کریں۔",
     "mapNoSearchMatches": "آپ کی تلاش سے کوئی سرگرمی مماثل نہیں ہے۔",
     "mapNoActivitiesArea": "اس علاقے میں کوئی سرگرمیاں نہیں ہیں۔",
-    "practiceSessionTimedOut": "آپ کا پریکٹس سیشن {minutes} منٹ کی غیرفعالی کے بعد ختم ہو گیا ہے۔"
+    "practiceSessionTimedOut": "آپ کا پریکٹس سیشن {minutes} منٹ کی غیرفعالی کے بعد ختم ہو گیا ہے۔",
+    "autocorrectMobileOnly": "صرف موبائل"
 }

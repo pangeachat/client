@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-03 09:47:31.386884",
+    "@@last_modified": "2026-08-03 16:07:30.539467",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2067,5 +2067,6 @@
     "mapFiltersHideMatches": "Таны шүүлтүүрүүд бүх тоглолтыг нууж байна. Тэдгээрийг харахын тулд хайлтыг өргөсгөнө үү.",
     "mapNoSearchMatches": "Таны хайлтад тохирох үйл ажиллагаа байхгүй байна.",
     "mapNoActivitiesArea": "Энэ хэсэгт үйл ажиллагаа байхгүй байна.",
-    "practiceSessionTimedOut": "Таны дадлагын хичээл {minutes} минут идэвхгүй байсны дараа дууслаа."
+    "practiceSessionTimedOut": "Таны дадлагын хичээл {minutes} минут идэвхгүй байсны дараа дууслаа.",
+    "autocorrectMobileOnly": "Зөвхөн гар утсанд"
 }

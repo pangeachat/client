@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-03 09:47:26.974897",
+    "@@last_modified": "2026-08-03 16:07:29.493874",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10599,5 +10599,6 @@
     "mapFiltersHideMatches": "თქვენი ფილტრები მალავს ყველა მატჩს. მათი სანახავად გააფართოვეთ ძებნა.",
     "mapNoSearchMatches": "თქვენს ძიებას არ ემთხვევა არცერთი აქტივობა.",
     "mapNoActivitiesArea": "ამ ტერიტორიაზე არ არის აქტივობები.",
-    "practiceSessionTimedOut": "თქვენი სავარჯიშო სესია დასრულდა {minutes} წუთის უმოქმედობის შემდეგ."
+    "practiceSessionTimedOut": "თქვენი სავარჯიშო სესია დასრულდა {minutes} წუთის უმოქმედობის შემდეგ.",
+    "autocorrectMobileOnly": "მხოლოდ მობილური"
 }
