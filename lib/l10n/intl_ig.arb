@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-07-31 10:55:37.424712",
+    "@@last_modified": "2026-08-03 09:47:28.311401",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Ọganihu gị na nnọkọ omume okwu gị ugbu a agaghị echekwa.",
     "exitGrammarPracticeSession": "Ọganihu gị na nnọkọ omume ụtọasụsụ gị ugbu a agaghị echekwa.",
     "autoReadAloudMessagesToolName": "Na-agụ ozi niile enwetara n'olu dara ụda na-akpaghị aka",
-    "autoReadAloudMessagesDescription": "Mgbe enwetara ozi, a ga-eji olu ngwaọrụ gụọ ozi ahụ n'olu dara ụda maka omume ige ntị."
+    "autoReadAloudMessagesDescription": "Mgbe enwetara ozi, a ga-eji olu ngwaọrụ gụọ ozi ahụ n'olu dara ụda maka omume ige ntị.",
+    "activityFilterButtonsLabel": "Ọkwa, ndị egwuregwu, na bọtịnụ nzacha ọnọdụ",
+    "mapFilterAllLevels": "Ọkwa niile",
+    "mapFilterAllPlayers": "Ndị egwuregwu niile",
+    "mapFilterAllStatuses": "Ọnọdụ niile",
+    "mapFiltersShow": "Gosi nzacha",
+    "mapFiltersHide": "Zoo nzacha",
+    "mapStatusAvailable": "Dị",
+    "mapStatusOngoing": "Na-aga n'ihu",
+    "mapStatusWaiting": "Na-eche",
+    "mapStatusOpenToJoin": "Mepee isonye",
+    "mapMatchesOffscreen": "Enwere egwuregwu na-anọghị n'anya gị. Bugharịa ka ịhụ ha.",
+    "mapFiltersHideMatches": "Nzacha gị na-ezochi egwuregwu niile. Gbasaa ọchụchọ ka ịhụ ha.",
+    "mapNoSearchMatches": "Enweghị ihe omume dabara na ọchụchọ gị.",
+    "mapNoActivitiesArea": "Enweghị ihe omume na mpaghara a."
 }

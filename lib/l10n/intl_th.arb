@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-31 10:55:44.759546",
+    "@@last_modified": "2026-08-03 09:47:39.573015",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10310,5 +10310,19 @@
     "exitVocabPracticeSession": "ความคืบหน้าของเซสชันฝึกคำศัพท์ปัจจุบันของคุณจะไม่ถูกบันทึก",
     "exitGrammarPracticeSession": "ความคืบหน้าของเซสชันฝึกไวยากรณ์ปัจจุบันของคุณจะไม่ถูกบันทึก",
     "autoReadAloudMessagesToolName": "อ่านออกเสียงข้อความที่ได้รับทั้งหมดโดยอัตโนมัติ",
-    "autoReadAloudMessagesDescription": "เมื่อได้รับข้อความ เสียงของอุปกรณ์จะถูกใช้เพื่ออ่านออกเสียงข้อความสำหรับการฝึกฟัง"
+    "autoReadAloudMessagesDescription": "เมื่อได้รับข้อความ เสียงของอุปกรณ์จะถูกใช้เพื่ออ่านออกเสียงข้อความสำหรับการฝึกฟัง",
+    "activityFilterButtonsLabel": "ปุ่มตัวกรองระดับ, ผู้เล่น และสถานะ",
+    "mapFilterAllLevels": "ทุกระดับ",
+    "mapFilterAllPlayers": "ผู้เล่นทั้งหมด",
+    "mapFilterAllStatuses": "ทุกสถานะ",
+    "mapFiltersShow": "แสดงตัวกรอง",
+    "mapFiltersHide": "ซ่อนตัวกรอง",
+    "mapStatusAvailable": "พร้อมใช้งาน",
+    "mapStatusOngoing": "กำลังดำเนินการ",
+    "mapStatusWaiting": "กำลังรอ",
+    "mapStatusOpenToJoin": "เปิดให้เข้าร่วม",
+    "mapMatchesOffscreen": "มีการแข่งขันอยู่นอกมุมมองของคุณ ซูมออกเพื่อดู",
+    "mapFiltersHideMatches": "ตัวกรองของคุณกำลังซ่อนการแข่งขันทั้งหมด ขยายการค้นหาเพื่อดู",
+    "mapNoSearchMatches": "ไม่มีกิจกรรมที่ตรงกับการค้นหาของคุณ",
+    "mapNoActivitiesArea": "ไม่มีกิจกรรมในพื้นที่นี้"
 }

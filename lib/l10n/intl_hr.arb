@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-07-31 10:55:36.583173",
+    "@@last_modified": "2026-08-03 09:47:23.252119",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10114,5 +10114,19 @@
     "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja vokabulara neće biti spremljen.",
     "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti spremljen.",
     "autoReadAloudMessagesToolName": "Automatski čitaj naglas sve primljene poruke",
-    "autoReadAloudMessagesDescription": "Kada se poruka primi, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja."
+    "autoReadAloudMessagesDescription": "Kada se poruka primi, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja.",
+    "activityFilterButtonsLabel": "Gumbi za filtriranje razine, igrača i statusa",
+    "mapFilterAllLevels": "Sve razine",
+    "mapFilterAllPlayers": "Svi igrači",
+    "mapFilterAllStatuses": "Svi statusi",
+    "mapFiltersShow": "Prikaži filtre",
+    "mapFiltersHide": "Sakrij filtre",
+    "mapStatusAvailable": "Dostupno",
+    "mapStatusOngoing": "U tijeku",
+    "mapStatusWaiting": "Čeka",
+    "mapStatusOpenToJoin": "Otvoreno za pridruživanje",
+    "mapMatchesOffscreen": "Izvan vašeg pogleda postoje podudaranja. Umanjite prikaz da biste ih vidjeli.",
+    "mapFiltersHideMatches": "Vaši filtri skrivaju sva podudaranja. Proširite pretraživanje da biste ih vidjeli.",
+    "mapNoSearchMatches": "Nema aktivnosti koje odgovaraju vašem pretraživanju.",
+    "mapNoActivitiesArea": "Nema aktivnosti na ovom području."
 }

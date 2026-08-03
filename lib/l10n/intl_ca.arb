@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:32.630552",
+    "@@last_modified": "2026-08-03 09:47:18.245986",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9805,5 +9805,19 @@
     "exitVocabPracticeSession": "El progrés de la sessió actual de pràctica de vocabulari no es desarà.",
     "exitGrammarPracticeSession": "El progrés de la sessió actual de pràctica de gramàtica no es desarà.",
     "autoReadAloudMessagesToolName": "Llegir en veu alta automàticament tots els missatges rebuts",
-    "autoReadAloudMessagesDescription": "Quan es rep un missatge, la veu del dispositiu s'utilitzarà per llegir el missatge en veu alta per practicar l'escolta."
+    "autoReadAloudMessagesDescription": "Quan es rep un missatge, la veu del dispositiu s'utilitzarà per llegir el missatge en veu alta per practicar l'escolta.",
+    "activityFilterButtonsLabel": "Botons de filtre de nivell, jugadors i estat",
+    "mapFilterAllLevels": "Tots els nivells",
+    "mapFilterAllPlayers": "Tots els jugadors",
+    "mapFilterAllStatuses": "Tots els estats",
+    "mapFiltersShow": "Mostrar filtres",
+    "mapFiltersHide": "Amagar filtres",
+    "mapStatusAvailable": "Disponible",
+    "mapStatusOngoing": "En curs",
+    "mapStatusWaiting": "Esperant",
+    "mapStatusOpenToJoin": "Obert a unir-se",
+    "mapMatchesOffscreen": "Hi ha partides fora de la teva vista. Allunya el zoom per veure-les.",
+    "mapFiltersHideMatches": "Els teus filtres estan amagant totes les partides. Amplia la cerca per veure-les.",
+    "mapNoSearchMatches": "Cap activitat coincideix amb la teva cerca.",
+    "mapNoActivitiesArea": "No hi ha activitats en aquesta zona."
 }

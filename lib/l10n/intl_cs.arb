@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-31 10:55:33.276128",
+    "@@last_modified": "2026-08-03 09:47:18.386222",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10172,5 +10172,19 @@
     "exitVocabPracticeSession": "Váš aktuální pokrok v procvičování slovní zásoby nebude uložen.",
     "exitGrammarPracticeSession": "Váš aktuální pokrok v procvičování gramatiky nebude uložen.",
     "autoReadAloudMessagesToolName": "Automaticky číst nahlas všechny přijaté zprávy",
-    "autoReadAloudMessagesDescription": "Po přijetí zprávy bude hlas zařízení použit k přečtení zprávy nahlas pro cvičení poslechu."
+    "autoReadAloudMessagesDescription": "Po přijetí zprávy bude hlas zařízení použit k přečtení zprávy nahlas pro cvičení poslechu.",
+    "activityFilterButtonsLabel": "Tlačítka filtru úrovně, hráčů a stavu",
+    "mapFilterAllLevels": "Všechny úrovně",
+    "mapFilterAllPlayers": "Všichni hráči",
+    "mapFilterAllStatuses": "Všechny stavy",
+    "mapFiltersShow": "Zobrazit filtry",
+    "mapFiltersHide": "Skrýt filtry",
+    "mapStatusAvailable": "K dispozici",
+    "mapStatusOngoing": "Probíhá",
+    "mapStatusWaiting": "Čeká se",
+    "mapStatusOpenToJoin": "Otevřeno pro připojení",
+    "mapMatchesOffscreen": "Mimo zobrazení jsou zápasy. Oddalte zobrazení, abyste je viděli.",
+    "mapFiltersHideMatches": "Vaše filtry skrývají všechny zápasy. Rozšiřte vyhledávání, abyste je viděli.",
+    "mapNoSearchMatches": "Žádné aktivity neodpovídají vašemu vyhledávání.",
+    "mapNoActivitiesArea": "V této oblasti nejsou žádné aktivity."
 }

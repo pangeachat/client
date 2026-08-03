@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-31 10:55:33.435725",
+    "@@last_modified": "2026-08-03 09:47:19.301134",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10604,5 +10604,19 @@
     "exitVocabPracticeSession": "Dine fremskridt i den nuværende ordforrådsøvelse gemmes ikke.",
     "exitGrammarPracticeSession": "Dine fremskridt i den nuværende grammatikøvelse gemmes ikke.",
     "autoReadAloudMessagesToolName": "Læs automatisk alle modtagne beskeder højt",
-    "autoReadAloudMessagesDescription": "Når en besked modtages, vil enhedens stemme blive brugt til at læse beskeden højt for at øve lyttefærdigheder."
+    "autoReadAloudMessagesDescription": "Når en besked modtages, vil enhedens stemme blive brugt til at læse beskeden højt for at øve lyttefærdigheder.",
+    "activityFilterButtonsLabel": "Filterknapper for niveau, spillere og status",
+    "mapFilterAllLevels": "Alle niveauer",
+    "mapFilterAllPlayers": "Alle spillere",
+    "mapFilterAllStatuses": "Alle statusser",
+    "mapFiltersShow": "Vis filtre",
+    "mapFiltersHide": "Skjul filtre",
+    "mapStatusAvailable": "Tilgængelig",
+    "mapStatusOngoing": "I gang",
+    "mapStatusWaiting": "Venter",
+    "mapStatusOpenToJoin": "Åben for deltagelse",
+    "mapMatchesOffscreen": "Der er kampe uden for dit synsfelt. Zoom ud for at se dem.",
+    "mapFiltersHideMatches": "Dine filtre skjuler alle kampe. Udvid søgningen for at se dem.",
+    "mapNoSearchMatches": "Ingen aktiviteter matcher din søgning.",
+    "mapNoActivitiesArea": "Ingen aktiviteter i dette område."
 }

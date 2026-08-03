@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-07-31 10:55:41.924287",
+    "@@last_modified": "2026-08-03 09:47:33.720469",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa mawu sikudzasungidwa.",
     "exitGrammarPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa galamala sikudzasungidwa.",
     "autoReadAloudMessagesToolName": "Werengani mauthenga onse olandiridwa okha",
-    "autoReadAloudMessagesDescription": "Mukalandira uthenga, mawu a chipangizo adzagwiritsidwa ntchito kuwerenga uthenga mokweza kuti muphunzire kumvetsera."
+    "autoReadAloudMessagesDescription": "Mukalandira uthenga, mawu a chipangizo adzagwiritsidwa ntchito kuwerenga uthenga mokweza kuti muphunzire kumvetsera.",
+    "activityFilterButtonsLabel": "Mabatani osefera a mulingo, osewera, ndi momwe zinthu zilili",
+    "mapFilterAllLevels": "Milango yonse",
+    "mapFilterAllPlayers": "Osewera onse",
+    "mapFilterAllStatuses": "Zochitika zonse",
+    "mapFiltersShow": "Onetsani zosefera",
+    "mapFiltersHide": "Bisani zosefera",
+    "mapStatusAvailable": "Kupezeka",
+    "mapStatusOngoing": "Zikuchitika",
+    "mapStatusWaiting": "Kudikirira",
+    "mapStatusOpenToJoin": "Zotseguka kuti mulowe",
+    "mapMatchesOffscreen": "Pali masewera kunja kwa mawonekedwe anu. Chepetsani kuti muwaone.",
+    "mapFiltersHideMatches": "Zosefera zanu zikubisa masewera onse. Kulitsani kusaka kuti muwaone.",
+    "mapNoSearchMatches": "Palibe zochitika zomwe zikugwirizana ndi kusaka kwanu.",
+    "mapNoActivitiesArea": "Palibe zochitika m'derali."
 }

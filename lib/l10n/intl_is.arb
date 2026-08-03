@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-07-31 10:55:37.613949",
+    "@@last_modified": "2026-08-03 09:47:25.265785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Framvinda núverandi orðaforðaæfingar verður ekki vistuð.",
     "exitGrammarPracticeSession": "Framvinda núverandi málfræðiæfingar verður ekki vistuð.",
     "autoReadAloudMessagesToolName": "Lesa sjálfkrafa upp alla móttekna skilaboð",
-    "autoReadAloudMessagesDescription": "Þegar skilaboð berast verður rödd tækisins notuð til að lesa skilaboðin upphátt til að æfa hlustun."
+    "autoReadAloudMessagesDescription": "Þegar skilaboð berast verður rödd tækisins notuð til að lesa skilaboðin upphátt til að æfa hlustun.",
+    "activityFilterButtonsLabel": "Síuhnappar fyrir stig, spilara og stöðu",
+    "mapFilterAllLevels": "Öll stig",
+    "mapFilterAllPlayers": "Allir spilarar",
+    "mapFilterAllStatuses": "Öll staða",
+    "mapFiltersShow": "Sýna síur",
+    "mapFiltersHide": "Fela síur",
+    "mapStatusAvailable": "Í boði",
+    "mapStatusOngoing": "Í gangi",
+    "mapStatusWaiting": "Bíður",
+    "mapStatusOpenToJoin": "Opið fyrir þátttöku",
+    "mapMatchesOffscreen": "Það eru leikir fyrir utan sýnilegt svæði. Minnkaðu útsýnið til að sjá þá.",
+    "mapFiltersHideMatches": "Síurnar þínar fela alla leiki. Víkkaðu leitina til að sjá þá.",
+    "mapNoSearchMatches": "Engar athafnir passa við leitina þína.",
+    "mapNoActivitiesArea": "Engar athafnir á þessu svæði."
 }

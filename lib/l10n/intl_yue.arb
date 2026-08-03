@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-31 10:55:47.003625",
+    "@@last_modified": "2026-08-03 09:47:40.926494",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10641,5 +10641,19 @@
     "exitVocabPracticeSession": "你目前嘅詞彙練習進度將唔會被儲存。",
     "exitGrammarPracticeSession": "你目前嘅文法練習進度將唔會被儲存。",
     "autoReadAloudMessagesToolName": "自動朗讀所有已接收訊息",
-    "autoReadAloudMessagesDescription": "當收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。"
+    "autoReadAloudMessagesDescription": "當收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。",
+    "activityFilterButtonsLabel": "等級、玩家同狀態篩選按鈕",
+    "mapFilterAllLevels": "所有等級",
+    "mapFilterAllPlayers": "所有玩家",
+    "mapFilterAllStatuses": "所有狀態",
+    "mapFiltersShow": "顯示篩選",
+    "mapFiltersHide": "隱藏篩選",
+    "mapStatusAvailable": "可用",
+    "mapStatusOngoing": "進行中",
+    "mapStatusWaiting": "等候中",
+    "mapStatusOpenToJoin": "開放加入",
+    "mapMatchesOffscreen": "有啲配對喺你視野之外。縮細地圖睇吓。",
+    "mapFiltersHideMatches": "你嘅篩選條件隱藏咗所有配對。放寬搜尋條件嚟睇吓。",
+    "mapNoSearchMatches": "冇活動符合你嘅搜尋。",
+    "mapNoActivitiesArea": "呢個區域冇活動。"
 }

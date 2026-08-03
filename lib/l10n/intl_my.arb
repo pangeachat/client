@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-07-31 10:55:40.762218",
+    "@@last_modified": "2026-08-03 09:47:32.278698",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "သင်၏ လက်ရှိဝေါဟာရလေ့ကျင့်ခန်းအခြေအနေကို သိမ်းဆည်းမည်မဟုတ်ပါ။",
     "exitGrammarPracticeSession": "သင်၏ လက်ရှိသဒ္ဒါလေ့ကျင့်ခန်းအခြေအနေကို သိမ်းဆည်းမည်မဟုတ်ပါ။",
     "autoReadAloudMessagesToolName": "လက်ခံရရှိသည့် မက်ဆေ့ချ်အားလုံးကို အလိုအလျောက် အသံထွက်ဖတ်ပါ",
-    "autoReadAloudMessagesDescription": "မက်ဆေ့ချ်လက်ခံရရှိသည့်အခါ နားထောင်လေ့ကျင့်ရန်အတွက် စက်၏အသံကို အသုံးပြု၍ မက်ဆေ့ချ်ကို အသံထွက်ဖတ်ပါမည်။"
+    "autoReadAloudMessagesDescription": "မက်ဆေ့ချ်လက်ခံရရှိသည့်အခါ နားထောင်လေ့ကျင့်ရန်အတွက် စက်၏အသံကို အသုံးပြု၍ မက်ဆေ့ချ်ကို အသံထွက်ဖတ်ပါမည်။",
+    "activityFilterButtonsLabel": "အဆင့်၊ ကစားသမားများနှင့် အခြေအနေ စစ်ထုတ်ရန် ခလုတ်များ",
+    "mapFilterAllLevels": "အဆင့်အားလုံး",
+    "mapFilterAllPlayers": "ကစားသမားအားလုံး",
+    "mapFilterAllStatuses": "အခြေအနေအားလုံး",
+    "mapFiltersShow": "စစ်ထုတ်မှုများ ပြသရန်",
+    "mapFiltersHide": "စစ်ထုတ်မှုများ ဝှက်ရန်",
+    "mapStatusAvailable": "ရရှိနိုင်သည်",
+    "mapStatusOngoing": "ဆက်လက်လုပ်ဆောင်နေသည်",
+    "mapStatusWaiting": "စောင့်ဆိုင်းနေသည်",
+    "mapStatusOpenToJoin": "ပူးပေါင်းရန် ဖွင့်ထားသည်",
+    "mapMatchesOffscreen": "သင်၏မြင်ကွင်းပြင်ပတွင် ပွဲစဉ်များရှိပါသည်။ ၎င်းတို့ကိုကြည့်ရှုရန် ချုံ့ပါ။",
+    "mapFiltersHideMatches": "သင်၏စစ်ထုတ်မှုများသည် ပွဲစဉ်အားလုံးကို ဝှက်ထားသည်။ ၎င်းတို့ကိုကြည့်ရှုရန် ရှာဖွေမှုကို ချဲ့ပါ။",
+    "mapNoSearchMatches": "သင်၏ရှာဖွေမှုနှင့် ကိုက်ညီသော လုပ်ဆောင်ချက်များ မရှိပါ။",
+    "mapNoActivitiesArea": "ဤဧရိယာတွင် လုပ်ဆောင်ချက်များ မရှိပါ။"
 }

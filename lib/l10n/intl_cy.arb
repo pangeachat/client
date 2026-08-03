@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-07-31 10:55:33.841196",
+    "@@last_modified": "2026-08-03 09:47:19.121164",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer geirfa gyfredol ei gadw.",
     "exitGrammarPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer gramadeg gyfredol ei gadw.",
     "autoReadAloudMessagesToolName": "Darllenwch bob neges a dderbyniwyd yn awtomatig",
-    "autoReadAloudMessagesDescription": "Pan dderbynnir neges, bydd llais y ddyfais yn cael ei ddefnyddio i ddarllen y neges yn uchel ar gyfer ymarfer gwrando."
+    "autoReadAloudMessagesDescription": "Pan dderbynnir neges, bydd llais y ddyfais yn cael ei ddefnyddio i ddarllen y neges yn uchel ar gyfer ymarfer gwrando.",
+    "activityFilterButtonsLabel": "Botymau hidlo lefel, chwaraewyr a statws",
+    "mapFilterAllLevels": "Pob lefel",
+    "mapFilterAllPlayers": "Pob chwaraewr",
+    "mapFilterAllStatuses": "Pob statws",
+    "mapFiltersShow": "Dangos hidlwyr",
+    "mapFiltersHide": "Cuddio hidlwyr",
+    "mapStatusAvailable": "Ar gael",
+    "mapStatusOngoing": "Yn parhau",
+    "mapStatusWaiting": "Yn aros",
+    "mapStatusOpenToJoin": "Ar agor i ymuno",
+    "mapMatchesOffscreen": "Mae gemau y tu allan i'ch golwg. Chwyddo allan i'w gweld.",
+    "mapFiltersHideMatches": "Mae eich hidlwyr yn cuddio pob gêm. Ehangu'r chwiliad i'w gweld.",
+    "mapNoSearchMatches": "Nid oes unrhyw weithgareddau'n cyd-fynd â'ch chwiliad.",
+    "mapNoActivitiesArea": "Dim gweithgareddau yn yr ardal hon."
 }

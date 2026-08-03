@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-07-31 10:55:46.009064",
+    "@@last_modified": "2026-08-03 09:47:41.314570",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "דיין איצטיקער וואָקאַבולאַר פּראַקטיש סעסיע פּראָגרעס וועט נישט געראַטעוועט ווערן.",
     "exitGrammarPracticeSession": "דיין איצטיקער גראַמאַטיק פּראַקטיש סעסיע פּראָגרעס וועט נישט געראַטעוועט ווערן.",
     "autoReadAloudMessagesToolName": "לייענען אויס אויטאָמאַטיש אַלע באַקומענע מעסעדזשעס",
-    "autoReadAloudMessagesDescription": "ווען אַ מעסעדזש ווערט באַקומען, וועט די שטימע פונעם מיטל ווערן גענוצט צו לייענען דעם מעסעדזש אויס פֿאַר הערן-פּראַקטיק."
+    "autoReadAloudMessagesDescription": "ווען אַ מעסעדזש ווערט באַקומען, וועט די שטימע פונעם מיטל ווערן גענוצט צו לייענען דעם מעסעדזש אויס פֿאַר הערן-פּראַקטיק.",
+    "activityFilterButtonsLabel": "פֿילטער קנעפּלעך פֿאַר ניוואָ, שפּילערס און סטאַטוס",
+    "mapFilterAllLevels": "אַלע ניוואָען",
+    "mapFilterAllPlayers": "אַלע שפּילערס",
+    "mapFilterAllStatuses": "אַלע סטאַטוסן",
+    "mapFiltersShow": "ווייַזן פֿילטערס",
+    "mapFiltersHide": "באַהאַלטן פֿילטערס",
+    "mapStatusAvailable": "פאַראַנען",
+    "mapStatusOngoing": "אויף-גייענדיק",
+    "mapStatusWaiting": "וואַרטן",
+    "mapStatusOpenToJoin": "אָפֿן צו מיטמאַכן",
+    "mapMatchesOffscreen": "עס זענען דאָ שפּילן אַרויס דיין מיינונג. פאַרקלענער צו זען זיי.",
+    "mapFiltersHideMatches": "דיין פֿילטערס באַהאַלטן אַלע שפּילן. פאַרברייטער די זוך צו זען זיי.",
+    "mapNoSearchMatches": "קיין אַקטיוויטעטן שטימען נישט צו דיין זוך.",
+    "mapNoActivitiesArea": "קיין אַקטיוויטעטן אין דעם געגנט."
 }

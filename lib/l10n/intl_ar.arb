@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-31 10:55:31.732195",
+    "@@last_modified": "2026-08-03 09:47:17.173244",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9984,5 +9984,19 @@
     "exitVocabPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب المفردات الحالية.",
     "exitGrammarPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب القواعد الحالية.",
     "autoReadAloudMessagesToolName": "قراءة جميع الرسائل المستلمة تلقائيًا بصوت عالٍ",
-    "autoReadAloudMessagesDescription": "عند استلام رسالة، سيتم استخدام صوت الجهاز لقراءة الرسالة بصوت عالٍ لممارسة الاستماع."
+    "autoReadAloudMessagesDescription": "عند استلام رسالة، سيتم استخدام صوت الجهاز لقراءة الرسالة بصوت عالٍ لممارسة الاستماع.",
+    "activityFilterButtonsLabel": "أزرار تصفية المستوى واللاعبين والحالة",
+    "mapFilterAllLevels": "جميع المستويات",
+    "mapFilterAllPlayers": "جميع اللاعبين",
+    "mapFilterAllStatuses": "جميع الحالات",
+    "mapFiltersShow": "إظهار الفلاتر",
+    "mapFiltersHide": "إخفاء الفلاتر",
+    "mapStatusAvailable": "متاح",
+    "mapStatusOngoing": "جارٍ",
+    "mapStatusWaiting": "في الانتظار",
+    "mapStatusOpenToJoin": "مفتوح للانضمام",
+    "mapMatchesOffscreen": "توجد مباريات خارج نطاق رؤيتك. صغّر الخريطة لرؤيتها.",
+    "mapFiltersHideMatches": "الفلاتر التي اخترتها تخفي جميع المباريات. وسّع نطاق البحث لرؤيتها.",
+    "mapNoSearchMatches": "لا توجد أنشطة مطابقة لبحثك.",
+    "mapNoActivitiesArea": "لا توجد أنشطة في هذه المنطقة."
 }

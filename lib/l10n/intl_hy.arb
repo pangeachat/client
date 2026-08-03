@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-07-31 10:55:36.773241",
+    "@@last_modified": "2026-08-03 09:47:25.013975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Բառապաշարի մարզման ընթացիկ նիստի ձեր առաջընթացը չի պահպանվի։",
     "exitGrammarPracticeSession": "Քերականության մարզման ընթացիկ նիստի ձեր առաջընթացը չի պահպանվի։",
     "autoReadAloudMessagesToolName": "Ավտոմատ կարդալ բոլոր ստացված հաղորդագրությունները",
-    "autoReadAloudMessagesDescription": "Հաղորդագրություն ստանալիս սարքի ձայնը կօգտագործվի հաղորդագրությունը բարձրաձայն կարդալու համար՝ ունկնդրման պրակտիկայի համար։"
+    "autoReadAloudMessagesDescription": "Հաղորդագրություն ստանալիս սարքի ձայնը կօգտագործվի հաղորդագրությունը բարձրաձայն կարդալու համար՝ ունկնդրման պրակտիկայի համար։",
+    "activityFilterButtonsLabel": "Մակարդակ, խաղացողներ և կարգավիճակի զտիչ կոճակներ",
+    "mapFilterAllLevels": "Բոլոր մակարդակները",
+    "mapFilterAllPlayers": "Բոլոր խաղացողները",
+    "mapFilterAllStatuses": "Բոլոր կարգավիճակները",
+    "mapFiltersShow": "Ցուցադրել զտիչները",
+    "mapFiltersHide": "Թաքցնել զտիչները",
+    "mapStatusAvailable": "Մատչելի է",
+    "mapStatusOngoing": "Ընթացքի մեջ է",
+    "mapStatusWaiting": "Սպասում է",
+    "mapStatusOpenToJoin": "Բաց է միանալու համար",
+    "mapMatchesOffscreen": "Ձեր տեսադաշտից դուրս կան խաղեր։ Մեծացրեք, որպեսզի տեսնեք դրանք։",
+    "mapFiltersHideMatches": "Ձեր զտիչները թաքցնում են բոլոր խաղերը։ Ընդլայնեք որոնումը՝ դրանք տեսնելու համար։",
+    "mapNoSearchMatches": "Ձեր որոնմանը համապատասխանող գործողություններ չկան։",
+    "mapNoActivitiesArea": "Այս տարածքում գործողություններ չկան։"
 }

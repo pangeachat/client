@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-07-31 10:55:39.689377",
+    "@@last_modified": "2026-08-03 09:47:28.445210",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "پێشکەوتنی دانیشتنی ئێستای ڕاهێنانی وشەکانت پاشەکەوت ناکرێت.",
     "exitGrammarPracticeSession": "پێشکەوتنی دانیشتنی ئێستای ڕاهێنانی ڕێزمانت پاشەکەوت ناکرێت.",
     "autoReadAloudMessagesToolName": "خوێندنەوەی خودکاریی هەموو پەیامە وەرگیراوەکان",
-    "autoReadAloudMessagesDescription": "کاتێک پەیامێک وەردەگیرێت، دەنگی ئامێرەکە بەکاردێت بۆ خوێندنەوەی پەیامەکە بە دەنگی بەرز بۆ مەشقکردن لەسەر گوێگرتن."
+    "autoReadAloudMessagesDescription": "کاتێک پەیامێک وەردەگیرێت، دەنگی ئامێرەکە بەکاردێت بۆ خوێندنەوەی پەیامەکە بە دەنگی بەرز بۆ مەشقکردن لەسەر گوێگرتن.",
+    "activityFilterButtonsLabel": "ئاست، یاریزانەکان، و دوگمەکانی فلتەری دۆخ",
+    "mapFilterAllLevels": "هەموو ئاستەکان",
+    "mapFilterAllPlayers": "هەموو یاریزانەکان",
+    "mapFilterAllStatuses": "هەموو دۆخەکان",
+    "mapFiltersShow": "پیشاندانی فلتەرەکان",
+    "mapFiltersHide": "شاردنەوەی فلتەرەکان",
+    "mapStatusAvailable": "بەردەستە",
+    "mapStatusOngoing": "بەردەوامە",
+    "mapStatusWaiting": "چاوەڕوانکردن",
+    "mapStatusOpenToJoin": "کراوەیە بۆ بەشداریکردن",
+    "mapMatchesOffscreen": "یارییەکان لە دەرەوەی بینینتدان. بچووکبکەرەوە بۆ بینینیان.",
+    "mapFiltersHideMatches": "فلتەرەکانت هەموو یارییەکان دەشارنەوە. گەڕانەکە فراوان بکە بۆ بینینیان.",
+    "mapNoSearchMatches": "هیچ چالاکییەک لەگەڵ گەڕانەکەت ناگونجێت.",
+    "mapNoActivitiesArea": "هیچ چالاکییەک لەم ناوچەیەدا نییە."
 }

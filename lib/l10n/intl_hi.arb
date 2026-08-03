@@ -3104,7 +3104,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-07-31 10:55:38.257454",
+    "@@last_modified": "2026-08-03 09:47:22.593374",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10310,5 +10310,19 @@
     "exitVocabPracticeSession": "आपकी मौजूदा शब्दावली अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।",
     "exitGrammarPracticeSession": "आपकी मौजूदा व्याकरण अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।",
     "autoReadAloudMessagesToolName": "सभी प्राप्त संदेशों को अपने आप ज़ोर से पढ़ें",
-    "autoReadAloudMessagesDescription": "जब कोई संदेश प्राप्त होता है, तो सुनने के अभ्यास के लिए डिवाइस की आवाज़ का उपयोग करके संदेश को ज़ोर से पढ़ा जाएगा।"
+    "autoReadAloudMessagesDescription": "जब कोई संदेश प्राप्त होता है, तो सुनने के अभ्यास के लिए डिवाइस की आवाज़ का उपयोग करके संदेश को ज़ोर से पढ़ा जाएगा।",
+    "activityFilterButtonsLabel": "स्तर, खिलाड़ी और स्थिति फ़िल्टर बटन",
+    "mapFilterAllLevels": "सभी स्तर",
+    "mapFilterAllPlayers": "सभी खिलाड़ी",
+    "mapFilterAllStatuses": "सभी स्थितियाँ",
+    "mapFiltersShow": "फ़िल्टर दिखाएँ",
+    "mapFiltersHide": "फ़िल्टर छिपाएँ",
+    "mapStatusAvailable": "उपलब्ध",
+    "mapStatusOngoing": "जारी है",
+    "mapStatusWaiting": "प्रतीक्षा कर रहा है",
+    "mapStatusOpenToJoin": "शामिल होने के लिए खुला",
+    "mapMatchesOffscreen": "आपकी दृष्टि से बाहर मैच हैं। उन्हें देखने के लिए ज़ूम आउट करें।",
+    "mapFiltersHideMatches": "आपके फ़िल्टर सभी मैचों को छिपा रहे हैं। उन्हें देखने के लिए खोज का दायरा बढ़ाएँ।",
+    "mapNoSearchMatches": "आपकी खोज से कोई गतिविधि मेल नहीं खाती।",
+    "mapNoActivitiesArea": "इस क्षेत्र में कोई गतिविधि नहीं है।"
 }

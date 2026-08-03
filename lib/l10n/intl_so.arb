@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-07-31 10:55:44.314043",
+    "@@last_modified": "2026-08-03 09:47:37.020155",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Horumarkaaga fadhiga ku celcelinta erayada hadda lama kaydin doono.",
     "exitGrammarPracticeSession": "Horumarkaaga fadhiga ku celcelinta naxwaha hadda lama kaydin doono.",
     "autoReadAloudMessagesToolName": "Si toos ah u akhri dhammaan fariimaha la helay",
-    "autoReadAloudMessagesDescription": "Marka fariin la helo, codka qalabka ayaa loo isticmaali doonaa inuu si cod ah u akhriyo fariinta si loogu tababarto dhegeysiga."
+    "autoReadAloudMessagesDescription": "Marka fariin la helo, codka qalabka ayaa loo isticmaali doonaa inuu si cod ah u akhriyo fariinta si loogu tababarto dhegeysiga.",
+    "activityFilterButtonsLabel": "Badhamada shaandhaynta heerka, ciyaartoyda, iyo heerka",
+    "mapFilterAllLevels": "Dhammaan heerarka",
+    "mapFilterAllPlayers": "Dhammaan ciyaartoyda",
+    "mapFilterAllStatuses": "Dhammaan heerarka",
+    "mapFiltersShow": "Muuji shaandhooyinka",
+    "mapFiltersHide": "Qari shaandhooyinka",
+    "mapStatusAvailable": "Diyaar ah",
+    "mapStatusOngoing": "Socda",
+    "mapStatusWaiting": "Sugaya",
+    "mapStatusOpenToJoin": "U furan in lagu soo biiro",
+    "mapMatchesOffscreen": "Waxaa jira ciyaaro ka baxsan aragtidaada. Yaree si aad u aragto.",
+    "mapFiltersHideMatches": "Shaandhooyinkaagu waxay qarinayaan dhammaan ciyaaraha. Ballari raadinta si aad u aragto.",
+    "mapNoSearchMatches": "Ma jiraan wax hawlo ah oo u dhigma raadintaada.",
+    "mapNoActivitiesArea": "Ma jiraan wax hawlo ah aaggan."
 }

@@ -2978,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-31 10:55:39.216312",
+    "@@last_modified": "2026-08-03 09:47:29.383819",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10459,5 +10459,19 @@
     "exitVocabPracticeSession": "Dabartinė žodyno praktikos sesijos eiga nebus išsaugota.",
     "exitGrammarPracticeSession": "Dabartinė gramatikos praktikos sesijos eiga nebus išsaugota.",
     "autoReadAloudMessagesToolName": "Automatiškai perskaityti visus gautus pranešimus",
-    "autoReadAloudMessagesDescription": "Kai gaunamas pranešimas, įrenginio balsas bus naudojamas pranešimui perskaityti, kad būtų galima praktikuotis klausytis."
+    "autoReadAloudMessagesDescription": "Kai gaunamas pranešimas, įrenginio balsas bus naudojamas pranešimui perskaityti, kad būtų galima praktikuotis klausytis.",
+    "activityFilterButtonsLabel": "Lygio, žaidėjų ir būsenos filtro mygtukai",
+    "mapFilterAllLevels": "Visi lygiai",
+    "mapFilterAllPlayers": "Visi žaidėjai",
+    "mapFilterAllStatuses": "Visos būsenos",
+    "mapFiltersShow": "Rodyti filtrus",
+    "mapFiltersHide": "Slėpti filtrus",
+    "mapStatusAvailable": "Pasiekiama",
+    "mapStatusOngoing": "Vyksta",
+    "mapStatusWaiting": "Laukiama",
+    "mapStatusOpenToJoin": "Galima prisijungti",
+    "mapMatchesOffscreen": "Už ekrano ribų yra atitikmenų. Norėdami juos pamatyti, sumažinkite vaizdą.",
+    "mapFiltersHideMatches": "Jūsų filtrai slepia visus atitikmenis. Išplėskite paiešką, kad juos pamatytumėte.",
+    "mapNoSearchMatches": "Jūsų paieškai neatitinka jokia veikla.",
+    "mapNoActivitiesArea": "Šioje srityje nėra jokios veiklos."
 }

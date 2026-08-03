@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-07-31 10:55:38.267522",
+    "@@last_modified": "2026-08-03 09:47:27.225543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "វឌ្ឍនភាពវគ្គហ្វឹកហាត់វាក្យសព្ទបច្ចុប្បន្នរបស់អ្នកនឹងមិនត្រូវបានរក្សាទុកទេ។",
     "exitGrammarPracticeSession": "វឌ្ឍនភាពវគ្គហ្វឹកហាត់វេយ្យាករណ៍បច្ចុប្បន្នរបស់អ្នកនឹងមិនត្រូវបានរក្សាទុកទេ។",
     "autoReadAloudMessagesToolName": "អានសារដែលបានទទួលទាំងអស់ដោយស្វ័យប្រវត្តិ",
-    "autoReadAloudMessagesDescription": "នៅពេលសារត្រូវបានទទួល សំឡេងឧបករណ៍នឹងត្រូវបានប្រើដើម្បីអានសារឮៗសម្រាប់ការអនុវត្តការស្តាប់។"
+    "autoReadAloudMessagesDescription": "នៅពេលសារត្រូវបានទទួល សំឡេងឧបករណ៍នឹងត្រូវបានប្រើដើម្បីអានសារឮៗសម្រាប់ការអនុវត្តការស្តាប់។",
+    "activityFilterButtonsLabel": "ប៊ូតុង​ត្រង​កម្រិត អ្នកលេង និង​ស្ថានភាព",
+    "mapFilterAllLevels": "គ្រប់​កម្រិត",
+    "mapFilterAllPlayers": "គ្រប់​អ្នកលេង",
+    "mapFilterAllStatuses": "គ្រប់​ស្ថានភាព",
+    "mapFiltersShow": "បង្ហាញ​កម្មវិធី​ត្រង",
+    "mapFiltersHide": "លាក់​កម្មវិធី​ត្រង",
+    "mapStatusAvailable": "អាច​ប្រើ​បាន",
+    "mapStatusOngoing": "កំពុង​ដំណើរការ",
+    "mapStatusWaiting": "កំពុង​រង់ចាំ",
+    "mapStatusOpenToJoin": "បើក​សម្រាប់​ការ​ចូលរួម",
+    "mapMatchesOffscreen": "មាន​ការ​ប្រកួត​នៅ​ក្រៅ​ទិដ្ឋភាព​របស់​អ្នក។ ពង្រីក​ចេញ​ដើម្បី​មើល​ពួកវា។",
+    "mapFiltersHideMatches": "កម្មវិធី​ត្រង​របស់​អ្នក​កំពុង​លាក់​ការ​ប្រកួត​ទាំងអស់។ ពង្រីក​ការ​ស្វែងរក​ដើម្បី​មើល​ពួកវា។",
+    "mapNoSearchMatches": "គ្មាន​សកម្មភាព​ណា​ត្រូវ​នឹង​ការ​ស្វែងរក​របស់​អ្នក​ទេ។",
+    "mapNoActivitiesArea": "គ្មាន​សកម្មភាព​នៅ​ក្នុង​តំបន់​នេះ​ទេ។"
 }

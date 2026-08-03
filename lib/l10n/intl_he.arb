@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:35.848644",
+    "@@last_modified": "2026-08-03 09:47:22.580278",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10598,5 +10598,19 @@
     "exitVocabPracticeSession": "ההתקדמות שלך באימון אוצר המילים הנוכחי לא תישמר.",
     "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
     "autoReadAloudMessagesToolName": "הקראה אוטומטית של כל ההודעות שהתקבלו",
-    "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה."
+    "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה.",
+    "activityFilterButtonsLabel": "לחצני סינון לפי רמה, שחקנים וסטטוס",
+    "mapFilterAllLevels": "כל הרמות",
+    "mapFilterAllPlayers": "כל השחקנים",
+    "mapFilterAllStatuses": "כל הסטטוסים",
+    "mapFiltersShow": "הצג מסננים",
+    "mapFiltersHide": "הסתר מסננים",
+    "mapStatusAvailable": "זמין",
+    "mapStatusOngoing": "מתבצע",
+    "mapStatusWaiting": "ממתין",
+    "mapStatusOpenToJoin": "פתוח להצטרפות",
+    "mapMatchesOffscreen": "יש התאמות מחוץ לתצוגה שלך. התרחק כדי לראות אותן.",
+    "mapFiltersHideMatches": "המסננים שלך מסתירים את כל ההתאמות. הרחב את החיפוש כדי לראות אותן.",
+    "mapNoSearchMatches": "אין פעילויות התואמות לחיפוש שלך.",
+    "mapNoActivitiesArea": "אין פעילויות באזור זה."
 }

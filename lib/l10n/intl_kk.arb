@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-07-31 10:55:38.045818",
+    "@@last_modified": "2026-08-03 09:47:26.697091",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Сіздің ағымдағы сөздік қорын жаттығу сессиясының үлгерімі сақталмайды.",
     "exitGrammarPracticeSession": "Сіздің ағымдағы грамматикалық жаттығу сессиясының үлгерімі сақталмайды.",
     "autoReadAloudMessagesToolName": "Барлық алынған хабарламаларды автоматты түрде дауыстап оқу",
-    "autoReadAloudMessagesDescription": "Хабарлама алынған кезде, тыңдау тәжірибесі үшін құрылғы дауысы хабарламаны дауыстап оқу үшін пайдаланылады."
+    "autoReadAloudMessagesDescription": "Хабарлама алынған кезде, тыңдау тәжірибесі үшін құрылғы дауысы хабарламаны дауыстап оқу үшін пайдаланылады.",
+    "activityFilterButtonsLabel": "Деңгей, ойыншылар және күй сүзгісі түймелері",
+    "mapFilterAllLevels": "Барлық деңгейлер",
+    "mapFilterAllPlayers": "Барлық ойыншылар",
+    "mapFilterAllStatuses": "Барлық күйлер",
+    "mapFiltersShow": "Сүзгілерді көрсету",
+    "mapFiltersHide": "Сүзгілерді жасыру",
+    "mapStatusAvailable": "Қолжетімді",
+    "mapStatusOngoing": "Жалғасуда",
+    "mapStatusWaiting": "Күтуде",
+    "mapStatusOpenToJoin": "Қосылуға ашық",
+    "mapMatchesOffscreen": "Сіздің көру аймағыңыздан тыс матчтар бар. Оларды көру үшін кішірейтіңіз.",
+    "mapFiltersHideMatches": "Сүзгілеріңіз барлық матчтарды жасырып тұр. Оларды көру үшін іздеуді кеңейтіңіз.",
+    "mapNoSearchMatches": "Іздеуіңізге сәйкес келетін әрекеттер жоқ.",
+    "mapNoActivitiesArea": "Бұл аймақта әрекеттер жоқ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-07-31 10:55:33.867164",
+    "@@last_modified": "2026-08-03 09:47:18.867736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "U prugressu di a vostra sessione di pratica di vucabulariu ùn serà micca salvatu.",
     "exitGrammarPracticeSession": "U prugressu di a vostra sessione di pratica di grammatica ùn serà micca salvatu.",
     "autoReadAloudMessagesToolName": "Leghje à voce alta in autumàticu tutti i messagi ricevuti",
-    "autoReadAloudMessagesDescription": "Quandu un messagiu hè ricevutu, a voce di u dispusitivu serà aduprata per leghje u messagiu à voce alta per a pratica d'ascoltu."
+    "autoReadAloudMessagesDescription": "Quandu un messagiu hè ricevutu, a voce di u dispusitivu serà aduprata per leghje u messagiu à voce alta per a pratica d'ascoltu.",
+    "activityFilterButtonsLabel": "Buttone di filtru di livellu, ghjucadori è statutu",
+    "mapFilterAllLevels": "Tutti i livelli",
+    "mapFilterAllPlayers": "Tutti i ghjucadori",
+    "mapFilterAllStatuses": "Tutti i statuti",
+    "mapFiltersShow": "Mostra i filtri",
+    "mapFiltersHide": "Ammuccià i filtri",
+    "mapStatusAvailable": "Dispunibule",
+    "mapStatusOngoing": "In corsu",
+    "mapStatusWaiting": "Aspittendu",
+    "mapStatusOpenToJoin": "Apertu à l'adesione",
+    "mapMatchesOffscreen": "Ci sò partite fora di a vostra vista. Zoomate per vedeli.",
+    "mapFiltersHideMatches": "I vostri filtri stanu ammucciendu tutte e partite. Allargate a ricerca per vedeli.",
+    "mapNoSearchMatches": "Nisuna attività currisponde à a vostra ricerca.",
+    "mapNoActivitiesArea": "Nisuna attività in sta zona."
 }

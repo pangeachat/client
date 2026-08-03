@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:41.515408",
+    "@@last_modified": "2026-08-03 09:47:33.528906",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10628,5 +10628,19 @@
     "exitVocabPracticeSession": "O progresso da sua sessão de prática de vocabulário atual não será salvo.",
     "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será salvo.",
     "autoReadAloudMessagesToolName": "Ler automaticamente todas as mensagens recebidas em voz alta",
-    "autoReadAloudMessagesDescription": "Quando uma mensagem é recebida, a voz do dispositivo será utilizada para ler a mensagem em voz alta para prática de escuta."
+    "autoReadAloudMessagesDescription": "Quando uma mensagem é recebida, a voz do dispositivo será utilizada para ler a mensagem em voz alta para prática de escuta.",
+    "activityFilterButtonsLabel": "Botões de filtro de nível, jogadores e status",
+    "mapFilterAllLevels": "Todos os níveis",
+    "mapFilterAllPlayers": "Todos os jogadores",
+    "mapFilterAllStatuses": "Todos os status",
+    "mapFiltersShow": "Mostrar filtros",
+    "mapFiltersHide": "Ocultar filtros",
+    "mapStatusAvailable": "Disponível",
+    "mapStatusOngoing": "Em andamento",
+    "mapStatusWaiting": "Aguardando",
+    "mapStatusOpenToJoin": "Aberto para participar",
+    "mapMatchesOffscreen": "Há partidas fora da sua visualização. Diminua o zoom para vê-las.",
+    "mapFiltersHideMatches": "Seus filtros estão ocultando todas as partidas. Amplie a pesquisa para vê-las.",
+    "mapNoSearchMatches": "Nenhuma atividade corresponde à sua pesquisa.",
+    "mapNoActivitiesArea": "Nenhuma atividade nesta área."
 }

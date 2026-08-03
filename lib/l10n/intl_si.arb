@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-07-31 10:55:42.817217",
+    "@@last_modified": "2026-08-03 09:47:36.397095",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "ඔබගේ වත්මන් වචන මාලා පුහුණු සැසියේ ප්‍රගතිය සුරැකෙන්නේ නැත.",
     "exitGrammarPracticeSession": "ඔබගේ වත්මන් ව්‍යාකරණ පුහුණු සැසියේ ප්‍රගතිය සුරැකෙන්නේ නැත.",
     "autoReadAloudMessagesToolName": "ලැබෙන සියලුම පණිවිඩ ස්වයංක්‍රීයව ශබ්ද නඟා කියවන්න",
-    "autoReadAloudMessagesDescription": "පණිවිඩයක් ලැබුණු විට, සවන් දීමේ පුහුණුව සඳහා උපාංගයේ හඬ භාවිතයෙන් පණිවිඩය ශබ්ද නඟා කියවනු ඇත."
+    "autoReadAloudMessagesDescription": "පණිවිඩයක් ලැබුණු විට, සවන් දීමේ පුහුණුව සඳහා උපාංගයේ හඬ භාවිතයෙන් පණිවිඩය ශබ්ද නඟා කියවනු ඇත.",
+    "activityFilterButtonsLabel": "මට්ටම, ක්‍රීඩකයින් සහ තත්ත්ව පෙරහන් බොත්තම්",
+    "mapFilterAllLevels": "සියලුම මට්ටම්",
+    "mapFilterAllPlayers": "සියලුම ක්‍රීඩකයින්",
+    "mapFilterAllStatuses": "සියලුම තත්ත්වයන්",
+    "mapFiltersShow": "පෙරහන් පෙන්වන්න",
+    "mapFiltersHide": "පෙරහන් සඟවන්න",
+    "mapStatusAvailable": "ලබා ගත හැක",
+    "mapStatusOngoing": "සිදුවෙමින් පවතී",
+    "mapStatusWaiting": "බලා සිටී",
+    "mapStatusOpenToJoin": "එක්වීමට විවෘතයි",
+    "mapMatchesOffscreen": "ඔබේ දර්ශනයෙන් පිටත තරඟ තිබේ. ඒවා බැලීමට විශාලනය අඩු කරන්න.",
+    "mapFiltersHideMatches": "ඔබේ පෙරහන් සියලුම තරඟ සඟවා ඇත. ඒවා බැලීමට සෙවීම පුළුල් කරන්න.",
+    "mapNoSearchMatches": "ඔබේ සෙවුමට ගැළපෙන ක්‍රියාකාරකම් නොමැත.",
+    "mapNoActivitiesArea": "මෙම ප්‍රදේශයේ ක්‍රියාකාරකම් නොමැත."
 }

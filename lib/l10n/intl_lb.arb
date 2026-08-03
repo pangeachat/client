@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-07-31 10:55:39.027821",
+    "@@last_modified": "2026-08-03 09:47:28.557216",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Däi Fortschrëtt an der aktueller Vokabelübungssessioun gëtt net gespäichert.",
     "exitGrammarPracticeSession": "Däi Fortschrëtt an der aktueller Grammatikübungssessioun gëtt net gespäichert.",
     "autoReadAloudMessagesToolName": "All empfaangen Noriichten automatesch virliesen",
-    "autoReadAloudMessagesDescription": "Wann eng Noriicht empfaange gëtt, gëtt d'Stëmm vum Apparat benotzt fir d'Noriicht haart virzeliesen fir d'Nolauschterpraxis."
+    "autoReadAloudMessagesDescription": "Wann eng Noriicht empfaange gëtt, gëtt d'Stëmm vum Apparat benotzt fir d'Noriicht haart virzeliesen fir d'Nolauschterpraxis.",
+    "activityFilterButtonsLabel": "Niveau, Spiller a Statusfilterknäppercher",
+    "mapFilterAllLevels": "All Niveauen",
+    "mapFilterAllPlayers": "All Spiller",
+    "mapFilterAllStatuses": "All Statusen",
+    "mapFiltersShow": "Filter weisen",
+    "mapFiltersHide": "Filter verstoppen",
+    "mapStatusAvailable": "Disponibel",
+    "mapStatusOngoing": "Am Gaang",
+    "mapStatusWaiting": "Waarden",
+    "mapStatusOpenToJoin": "Oppene Bäitrëtt",
+    "mapMatchesOffscreen": "Et gëtt Matcher ausserhalb vun Ärem Siichtfeld. Zoom eraus fir se ze gesinn.",
+    "mapFiltersHideMatches": "Är Filtere verstoppen all Matcher. Erweidert d'Sich fir se ze gesinn.",
+    "mapNoSearchMatches": "Keng Aktivitéite passen Är Sich.",
+    "mapNoActivitiesArea": "Keng Aktivitéiten an dësem Beräich."
 }

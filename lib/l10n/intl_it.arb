@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:37.429638",
+    "@@last_modified": "2026-08-03 09:47:25.068098",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9751,5 +9751,19 @@
     "exitVocabPracticeSession": "I progressi della tua attuale sessione di pratica del vocabolario non verranno salvati.",
     "exitGrammarPracticeSession": "I progressi della tua attuale sessione di pratica della grammatica non verranno salvati.",
     "autoReadAloudMessagesToolName": "Leggi automaticamente tutti i messaggi ricevuti",
-    "autoReadAloudMessagesDescription": "Quando un messaggio viene ricevuto, la voce del dispositivo verrà utilizzata per leggere il messaggio ad alta voce per la pratica dell'ascolto."
+    "autoReadAloudMessagesDescription": "Quando un messaggio viene ricevuto, la voce del dispositivo verrà utilizzata per leggere il messaggio ad alta voce per la pratica dell'ascolto.",
+    "activityFilterButtonsLabel": "Pulsanti filtro per livello, giocatori e stato",
+    "mapFilterAllLevels": "Tutti i livelli",
+    "mapFilterAllPlayers": "Tutti i giocatori",
+    "mapFilterAllStatuses": "Tutti gli stati",
+    "mapFiltersShow": "Mostra filtri",
+    "mapFiltersHide": "Nascondi filtri",
+    "mapStatusAvailable": "Disponibile",
+    "mapStatusOngoing": "In corso",
+    "mapStatusWaiting": "In attesa",
+    "mapStatusOpenToJoin": "Apri per unirti",
+    "mapMatchesOffscreen": "Ci sono partite fuori dalla tua visuale. Rimpicciolisci per vederle.",
+    "mapFiltersHideMatches": "I tuoi filtri nascondono tutte le partite. Amplia la ricerca per vederle.",
+    "mapNoSearchMatches": "Nessuna attività corrisponde alla tua ricerca.",
+    "mapNoActivitiesArea": "Nessuna attività in quest'area."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-07-31 10:55:39.970521",
+    "@@last_modified": "2026-08-03 09:47:31.386884",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Таны одоогийн үгийн сангийн дадлагын явц хадгалагдахгүй.",
     "exitGrammarPracticeSession": "Таны одоогийн дүрмийн дадлагын явц хадгалагдахгүй.",
     "autoReadAloudMessagesToolName": "Ирсэн бүх мессежийг автоматаар чангаар унших",
-    "autoReadAloudMessagesDescription": "Мессеж ирэхэд төхөөрөмжийн дуу хоолойг ашиглан мессежийг чангаар уншиж, сонсох дадлага хийнэ."
+    "autoReadAloudMessagesDescription": "Мессеж ирэхэд төхөөрөмжийн дуу хоолойг ашиглан мессежийг чангаар уншиж, сонсох дадлага хийнэ.",
+    "activityFilterButtonsLabel": "Түвшин, тоглогчид, болон төлөвийн шүүлтүүр товчлуурууд",
+    "mapFilterAllLevels": "Бүх түвшин",
+    "mapFilterAllPlayers": "Бүх тоглогчид",
+    "mapFilterAllStatuses": "Бүх төлөв",
+    "mapFiltersShow": "Шүүлтүүр харуулах",
+    "mapFiltersHide": "Шүүлтүүр нуух",
+    "mapStatusAvailable": "Боломжтой",
+    "mapStatusOngoing": "Үргэлжилж байна",
+    "mapStatusWaiting": "Хүлээгдэж байна",
+    "mapStatusOpenToJoin": "Нээлттэй",
+    "mapMatchesOffscreen": "Таны харагдах хэсгээс гадуур тоглолтууд байна. Тэдгээрийг харахын тулд томруулна уу.",
+    "mapFiltersHideMatches": "Таны шүүлтүүрүүд бүх тоглолтыг нууж байна. Тэдгээрийг харахын тулд хайлтыг өргөсгөнө үү.",
+    "mapNoSearchMatches": "Таны хайлтад тохирох үйл ажиллагаа байхгүй байна.",
+    "mapNoActivitiesArea": "Энэ хэсэгт үйл ажиллагаа байхгүй байна."
 }

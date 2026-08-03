@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-31 10:55:36.496632",
+    "@@last_modified": "2026-08-03 09:47:23.496288",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9781,5 +9781,19 @@
     "exitVocabPracticeSession": "Az aktuális szókincsgyakorló-munkamenet előrehaladása nem lesz elmentve.",
     "exitGrammarPracticeSession": "Az aktuális nyelvtani gyakorló-munkamenet előrehaladása nem lesz elmentve.",
     "autoReadAloudMessagesToolName": "Összes beérkező üzenet automatikus felolvasása",
-    "autoReadAloudMessagesDescription": "Üzenet érkezésekor az eszköz hangja felolvassa az üzenetet a hallás utáni gyakorláshoz."
+    "autoReadAloudMessagesDescription": "Üzenet érkezésekor az eszköz hangja felolvassa az üzenetet a hallás utáni gyakorláshoz.",
+    "activityFilterButtonsLabel": "Szint, játékosok és állapot szűrőgombok",
+    "mapFilterAllLevels": "Minden szint",
+    "mapFilterAllPlayers": "Minden játékos",
+    "mapFilterAllStatuses": "Minden állapot",
+    "mapFiltersShow": "Szűrők mutatása",
+    "mapFiltersHide": "Szűrők elrejtése",
+    "mapStatusAvailable": "Elérhető",
+    "mapStatusOngoing": "Folyamatban",
+    "mapStatusWaiting": "Várakozás",
+    "mapStatusOpenToJoin": "Nyitott a csatlakozásra",
+    "mapMatchesOffscreen": "Vannak meccsek a látótereden kívül. Nagyíts ki, hogy lásd őket.",
+    "mapFiltersHideMatches": "A szűrőid minden meccset elrejtenek. Szélesítsd a keresést, hogy lásd őket.",
+    "mapNoSearchMatches": "Nincsenek a keresésnek megfelelő tevékenységek.",
+    "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen."
 }

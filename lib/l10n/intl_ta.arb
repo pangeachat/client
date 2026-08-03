@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:44.336530",
+    "@@last_modified": "2026-08-03 09:47:38.244840",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9770,5 +9770,19 @@
     "exitVocabPracticeSession": "தற்போதைய உங்கள் சொற்களஞ்சியப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
     "exitGrammarPracticeSession": "தற்போதைய உங்கள் இலக்கணப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
     "autoReadAloudMessagesToolName": "பெறப்பட்ட எல்லாச் செய்திகளையும் தானாகப் படித்துக் காட்டு",
-    "autoReadAloudMessagesDescription": "ஒரு செய்தி பெறப்படும்போது, கேட்கும் பயிற்சிக்குச் செய்தியைப் படித்துக் காட்ட, சாதனத்தின் குரல் பயன்படுத்தப்படும்."
+    "autoReadAloudMessagesDescription": "ஒரு செய்தி பெறப்படும்போது, கேட்கும் பயிற்சிக்குச் செய்தியைப் படித்துக் காட்ட, சாதனத்தின் குரல் பயன்படுத்தப்படும்.",
+    "activityFilterButtonsLabel": "நிலை, வீரர்கள் மற்றும் நிலை வடிகட்டி பொத்தான்கள்",
+    "mapFilterAllLevels": "அனைத்து நிலைகளும்",
+    "mapFilterAllPlayers": "அனைத்து வீரர்களும்",
+    "mapFilterAllStatuses": "அனைத்து நிலைகளும்",
+    "mapFiltersShow": "வடிப்பான்களைக் காட்டு",
+    "mapFiltersHide": "வடிப்பான்களை மறை",
+    "mapStatusAvailable": "கிடைக்கிறது",
+    "mapStatusOngoing": "தொடர்கிறது",
+    "mapStatusWaiting": "காத்திருக்கிறது",
+    "mapStatusOpenToJoin": "சேர திறந்திருக்கும்",
+    "mapMatchesOffscreen": "உங்கள் பார்வைக்கு வெளியே போட்டிகள் உள்ளன. அவற்றைப் பார்க்க பெரிதாக்கவும்.",
+    "mapFiltersHideMatches": "உங்கள் வடிப்பான்கள் அனைத்துப் போட்டிகளையும் மறைக்கின்றன. அவற்றைப் பார்க்க தேடலை விரிவாக்குங்கள்.",
+    "mapNoSearchMatches": "உங்கள் தேடலுடன் எந்தச் செயல்பாடுகளும் பொருந்தவில்லை.",
+    "mapNoActivitiesArea": "இந்த பகுதியில் எந்தச் செயல்பாடுகளும் இல்லை."
 }

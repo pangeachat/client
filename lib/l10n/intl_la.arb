@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-07-31 10:55:38.682495",
+    "@@last_modified": "2026-08-03 09:47:29.414354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Progressus sessionis praesentis exercitationis vocabulorum non servabitur.",
     "exitGrammarPracticeSession": "Progressus sessionis praesentis exercitationis grammaticae non servabitur.",
     "autoReadAloudMessagesToolName": "Sponte legere nuntios acceptos",
-    "autoReadAloudMessagesDescription": "Cum nuntius accipitur, vox machinae ad legendum nuntium adhibebitur ad exercitationem audiendi."
+    "autoReadAloudMessagesDescription": "Cum nuntius accipitur, vox machinae ad legendum nuntium adhibebitur ad exercitationem audiendi.",
+    "activityFilterButtonsLabel": "Gradus, lusores, et status globuli colum",
+    "mapFilterAllLevels": "Omnes gradus",
+    "mapFilterAllPlayers": "Omnes lusores",
+    "mapFilterAllStatuses": "Omnes status",
+    "mapFiltersShow": "Ostende filtra",
+    "mapFiltersHide": "Absconde filtra",
+    "mapStatusAvailable": "Praesto",
+    "mapStatusOngoing": "In cursu",
+    "mapStatusWaiting": "Exspectans",
+    "mapStatusOpenToJoin": "Apertum ad coniungendum",
+    "mapMatchesOffscreen": "Certamina extra conspectum tuum sunt. Minue ut ea videas.",
+    "mapFiltersHideMatches": "Tua filtra omnia certamina abscondunt. Amplifica quaestionem ut ea videas.",
+    "mapNoSearchMatches": "Nullae actiones quaestioni tuae congruunt.",
+    "mapNoActivitiesArea": "Nullae actiones in hac regione."
 }

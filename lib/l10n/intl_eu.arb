@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-31 10:55:34.430670",
+    "@@last_modified": "2026-08-03 09:47:20.697243",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9678,5 +9678,19 @@
     "exitVocabPracticeSession": "Zure egungo hiztegi-praktika saioaren aurrerapena ez da gordeko.",
     "exitGrammarPracticeSession": "Zure egungo gramatika-praktika saioaren aurrerapena ez da gordeko.",
     "autoReadAloudMessagesToolName": "Jasotako mezu guztiak automatikoki ozenki irakurri",
-    "autoReadAloudMessagesDescription": "Mezu bat jasotzen denean, gailuaren ahotsa erabiliko da mezua ozenki irakurtzeko, entzuteko praktika egiteko."
+    "autoReadAloudMessagesDescription": "Mezu bat jasotzen denean, gailuaren ahotsa erabiliko da mezua ozenki irakurtzeko, entzuteko praktika egiteko.",
+    "activityFilterButtonsLabel": "Maila, jokalariak eta egoera iragazteko botoiak",
+    "mapFilterAllLevels": "Maila guztiak",
+    "mapFilterAllPlayers": "Jokalari guztiak",
+    "mapFilterAllStatuses": "Egoera guztiak",
+    "mapFiltersShow": "Erakutsi iragazkiak",
+    "mapFiltersHide": "Ezkutatu iragazkiak",
+    "mapStatusAvailable": "Erabilgarri",
+    "mapStatusOngoing": "Abian",
+    "mapStatusWaiting": "Zain",
+    "mapStatusOpenToJoin": "Ireki daiteke",
+    "mapMatchesOffscreen": "Partidak daude zure ikuspegitik kanpo. Handitu ikusteko.",
+    "mapFiltersHideMatches": "Zure iragazkiek partida guztiak ezkutatzen dituzte. Zabaltu bilaketa ikusteko.",
+    "mapNoSearchMatches": "Ez dago zure bilaketarekin bat datorren jarduerarik.",
+    "mapNoActivitiesArea": "Ez dago jarduerarik eremu honetan."
 }

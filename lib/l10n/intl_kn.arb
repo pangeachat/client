@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-07-31 10:55:37.843190",
+    "@@last_modified": "2026-08-03 09:47:27.775901",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ಶಬ್ದಕೋಶ ಅಭ್ಯಾಸದ ಸೆಷನ್ ಪ್ರಗತಿಯನ್ನು ಉಳಿಸಲಾಗುವುದಿಲ್ಲ.",
     "exitGrammarPracticeSession": "ನಿಮ್ಮ ಪ್ರಸ್ತುತ ವ್ಯಾಕರಣ ಅಭ್ಯಾಸದ ಸೆಷನ್ ಪ್ರಗತಿಯನ್ನು ಉಳಿಸಲಾಗುವುದಿಲ್ಲ.",
     "autoReadAloudMessagesToolName": "ಸ್ವೀಕರಿಸಿದ ಎಲ್ಲಾ ಸಂದೇಶಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಓದಿ",
-    "autoReadAloudMessagesDescription": "ಸಂದೇಶವನ್ನು ಸ್ವೀಕರಿಸಿದಾಗ, ಕೇಳುವ ಅಭ್ಯಾಸಕ್ಕಾಗಿ ಸಂದೇಶವನ್ನು ಜೋರಾಗಿ ಓದಲು ಸಾಧನದ ಧ್ವನಿಯನ್ನು ಬಳಸಲಾಗುತ್ತದೆ."
+    "autoReadAloudMessagesDescription": "ಸಂದೇಶವನ್ನು ಸ್ವೀಕರಿಸಿದಾಗ, ಕೇಳುವ ಅಭ್ಯಾಸಕ್ಕಾಗಿ ಸಂದೇಶವನ್ನು ಜೋರಾಗಿ ಓದಲು ಸಾಧನದ ಧ್ವನಿಯನ್ನು ಬಳಸಲಾಗುತ್ತದೆ.",
+    "activityFilterButtonsLabel": "ಮಟ್ಟ, ಆಟಗಾರರು ಮತ್ತು ಸ್ಥಿತಿ ಫಿಲ್ಟರ್ ಬಟನ್‌ಗಳು",
+    "mapFilterAllLevels": "ಎಲ್ಲಾ ಹಂತಗಳು",
+    "mapFilterAllPlayers": "ಎಲ್ಲಾ ಆಟಗಾರರು",
+    "mapFilterAllStatuses": "ಎಲ್ಲಾ ಸ್ಥಿತಿಗಳು",
+    "mapFiltersShow": "ಫಿಲ್ಟರ್‌ಗಳನ್ನು ತೋರಿಸಿ",
+    "mapFiltersHide": "ಫಿಲ್ಟರ್‌ಗಳನ್ನು ಮರೆಮಾಡಿ",
+    "mapStatusAvailable": "ಲಭ್ಯವಿದೆ",
+    "mapStatusOngoing": "ಪ್ರಗತಿಯಲ್ಲಿದೆ",
+    "mapStatusWaiting": "ಕಾಯಲಾಗುತ್ತಿದೆ",
+    "mapStatusOpenToJoin": "ಸೇರಲು ಮುಕ್ತವಾಗಿದೆ",
+    "mapMatchesOffscreen": "ನಿಮ್ಮ ವೀಕ್ಷಣೆಯ ಹೊರಗೆ ಹೊಂದಾಣಿಕೆಗಳಿವೆ. ಅವುಗಳನ್ನು ನೋಡಲು ಜೂಮ್ ಔಟ್ ಮಾಡಿ.",
+    "mapFiltersHideMatches": "ನಿಮ್ಮ ಫಿಲ್ಟರ್‌ಗಳು ಎಲ್ಲಾ ಹೊಂದಾಣಿಕೆಗಳನ್ನು ಮರೆಮಾಡುತ್ತಿವೆ. ಅವುಗಳನ್ನು ನೋಡಲು ಹುಡುಕಾಟವನ್ನು ವಿಸ್ತರಿಸಿ.",
+    "mapNoSearchMatches": "ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳು ಹೊಂದಿಕೆಯಾಗುವುದಿಲ್ಲ.",
+    "mapNoActivitiesArea": "ಈ ಪ್ರದೇಶದಲ್ಲಿ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳಿಲ್ಲ."
 }

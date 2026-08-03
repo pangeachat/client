@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-31 10:55:42.599185",
+    "@@last_modified": "2026-08-03 09:47:34.798155",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10652,5 +10652,19 @@
     "exitVocabPracticeSession": "Прогресс текущей сессии по практике словарного запаса не будет сохранен.",
     "exitGrammarPracticeSession": "Прогресс текущей сессии по практике грамматики не будет сохранен.",
     "autoReadAloudMessagesToolName": "Автоматически читать вслух все полученные сообщения",
-    "autoReadAloudMessagesDescription": "Когда сообщение получено, голос устройства будет использоваться для чтения сообщения вслух для практики аудирования."
+    "autoReadAloudMessagesDescription": "Когда сообщение получено, голос устройства будет использоваться для чтения сообщения вслух для практики аудирования.",
+    "activityFilterButtonsLabel": "Кнопки фильтра по уровню, игрокам и статусу",
+    "mapFilterAllLevels": "Все уровни",
+    "mapFilterAllPlayers": "Все игроки",
+    "mapFilterAllStatuses": "Все статусы",
+    "mapFiltersShow": "Показать фильтры",
+    "mapFiltersHide": "Скрыть фильтры",
+    "mapStatusAvailable": "Доступно",
+    "mapStatusOngoing": "В процессе",
+    "mapStatusWaiting": "Ожидание",
+    "mapStatusOpenToJoin": "Открыто для присоединения",
+    "mapMatchesOffscreen": "Есть матчи за пределами вашей видимости. Уменьшите масштаб, чтобы увидеть их.",
+    "mapFiltersHideMatches": "Ваши фильтры скрывают все матчи. Расширьте поиск, чтобы увидеть их.",
+    "mapNoSearchMatches": "По вашему запросу не найдено ни одной активности.",
+    "mapNoActivitiesArea": "В этой области нет активностей."
 }

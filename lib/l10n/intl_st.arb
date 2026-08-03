@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-07-31 10:55:44.308585",
+    "@@last_modified": "2026-08-03 09:47:37.922105",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa mantsoe a macha e ke ke ea bolokoa.",
     "exitGrammarPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa sebōpeho-puo e ke ke ea bolokoa.",
     "autoReadAloudMessagesToolName": "Bala melaetsa yohle e amohetsweng ka boyona",
-    "autoReadAloudMessagesDescription": "Ha molaetsa o amohetswe, lentswe la sesebediswa le tla sebediswa ho bala molaetsa ka lentswe le phahameng bakeng sa tloaelo ya ho mamela."
+    "autoReadAloudMessagesDescription": "Ha molaetsa o amohetswe, lentswe la sesebediswa le tla sebediswa ho bala molaetsa ka lentswe le phahameng bakeng sa tloaelo ya ho mamela.",
+    "activityFilterButtonsLabel": "Maemo, libapali, le likonopo tsa ho sefa boemo",
+    "mapFilterAllLevels": "Maemo ohle",
+    "mapFilterAllPlayers": "Libapali tsohle",
+    "mapFilterAllStatuses": "Maemo ohle",
+    "mapFiltersShow": "Bontsha disefa",
+    "mapFiltersHide": "Pata disefa",
+    "mapStatusAvailable": "E fumaneha",
+    "mapStatusOngoing": "E ntse e tswela pele",
+    "mapStatusWaiting": "E letile",
+    "mapStatusOpenToJoin": "E bulehetse ho kenela",
+    "mapMatchesOffscreen": "Ho na le dipapadi tse kantle ho pono ya hao. Atolosa ho di bona.",
+    "mapFiltersHideMatches": "Disefa tsa hao di pata dipapadi tsohle. Atolosa patlisiso ho di bona.",
+    "mapNoSearchMatches": "Ha ho ditshebetso tse tsamaellanang le patlisiso ya hao.",
+    "mapNoActivitiesArea": "Ha ho ditshebetso sebakeng sena."
 }

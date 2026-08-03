@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-07-31 10:55:36.895482",
+    "@@last_modified": "2026-08-03 09:47:23.699329",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Pwogrè sesyon pratik vokabilè ou ye kounye a p ap sove.",
     "exitGrammarPracticeSession": "Pwogrè sesyon pratik gramè ou ye kounye a p ap sove.",
     "autoReadAloudMessagesToolName": "Li tout mesaj yo awotvwa otomatikman",
-    "autoReadAloudMessagesDescription": "Lè w resevwa yon mesaj, vwa aparèy la ap li mesaj la awotvwa pou w ka pratike koute."
+    "autoReadAloudMessagesDescription": "Lè w resevwa yon mesaj, vwa aparèy la ap li mesaj la awotvwa pou w ka pratike koute.",
+    "activityFilterButtonsLabel": "Nivo, jwè, ak bouton filtè estati",
+    "mapFilterAllLevels": "Tout nivo",
+    "mapFilterAllPlayers": "Tout jwè",
+    "mapFilterAllStatuses": "Tout estati",
+    "mapFiltersShow": "Montre filtè yo",
+    "mapFiltersHide": "Kache filtè yo",
+    "mapStatusAvailable": "Disponib",
+    "mapStatusOngoing": "An kous",
+    "mapStatusWaiting": "An apant",
+    "mapStatusOpenToJoin": "Louvri pou rantre",
+    "mapMatchesOffscreen": "Gen match deyò vizyon w. Dekonprese pou wè yo.",
+    "mapFiltersHideMatches": "Filtè w yo ap kache tout match. Elaji rechèch la pou wè yo.",
+    "mapNoSearchMatches": "Pa gen okenn aktivite ki koresponn ak rechèch ou an.",
+    "mapNoActivitiesArea": "Pa gen okenn aktivite nan zòn sa a."
 }

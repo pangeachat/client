@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-07-31 10:55:40.769903",
+    "@@last_modified": "2026-08-03 09:47:32.761485",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "तपाईंको हालको शब्दावली अभ्यास सत्रको प्रगति बचत गरिने छैन।",
     "exitGrammarPracticeSession": "तपाईंको हालको व्याकरण अभ्यास सत्रको प्रगति बचत गरिने छैन।",
     "autoReadAloudMessagesToolName": "प्राप्त भएका सबै सन्देशहरू स्वतः ठूलो स्वरमा पढ्नुहोस्",
-    "autoReadAloudMessagesDescription": "सन्देश प्राप्त हुँदा, सुन्ने अभ्यासका लागि यन्त्रको आवाज प्रयोग गरी सन्देश ठूलो स्वरमा पढिनेछ।"
+    "autoReadAloudMessagesDescription": "सन्देश प्राप्त हुँदा, सुन्ने अभ्यासका लागि यन्त्रको आवाज प्रयोग गरी सन्देश ठूलो स्वरमा पढिनेछ।",
+    "activityFilterButtonsLabel": "स्तर, खेलाडी र स्थिति फिल्टर बटनहरू",
+    "mapFilterAllLevels": "सबै स्तरहरू",
+    "mapFilterAllPlayers": "सबै खेलाडीहरू",
+    "mapFilterAllStatuses": "सबै स्थितिहरू",
+    "mapFiltersShow": "फिल्टरहरू देखाउनुहोस्",
+    "mapFiltersHide": "फिल्टरहरू लुकाउनुहोस्",
+    "mapStatusAvailable": "उपलब्ध",
+    "mapStatusOngoing": "जारी",
+    "mapStatusWaiting": "प्रतीक्षा गर्दै",
+    "mapStatusOpenToJoin": "सामेल हुन खुला",
+    "mapMatchesOffscreen": "तपाईंको दृश्य बाहिर मिल्दोजुल्दो छ। तिनीहरूलाई हेर्न जुम आउट गर्नुहोस्।",
+    "mapFiltersHideMatches": "तपाईंको फिल्टरहरूले सबै मिल्दोजुल्दो लुकाइरहेका छन्। तिनीहरूलाई हेर्न खोज फराकिलो बनाउनुहोस्।",
+    "mapNoSearchMatches": "तपाईंको खोजसँग कुनै गतिविधिहरू मिल्दैनन्।",
+    "mapNoActivitiesArea": "यस क्षेत्रमा कुनै गतिविधिहरू छैनन्।"
 }

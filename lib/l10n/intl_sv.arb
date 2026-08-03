@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:43.596611",
+    "@@last_modified": "2026-08-03 09:47:38.113075",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10196,5 +10196,19 @@
     "exitVocabPracticeSession": "Dina framsteg i den nuvarande ordövningssessionen sparas inte.",
     "exitGrammarPracticeSession": "Dina framsteg i den nuvarande grammatikövningssessionen sparas inte.",
     "autoReadAloudMessagesToolName": "Läs automatiskt upp alla mottagna meddelanden",
-    "autoReadAloudMessagesDescription": "När ett meddelande tas emot kommer enhetens röst att användas för att läsa upp meddelandet för lyssningsövning."
+    "autoReadAloudMessagesDescription": "När ett meddelande tas emot kommer enhetens röst att användas för att läsa upp meddelandet för lyssningsövning.",
+    "activityFilterButtonsLabel": "Nivå, spelare och statusfilterknappar",
+    "mapFilterAllLevels": "Alla nivåer",
+    "mapFilterAllPlayers": "Alla spelare",
+    "mapFilterAllStatuses": "Alla statusar",
+    "mapFiltersShow": "Visa filter",
+    "mapFiltersHide": "Dölj filter",
+    "mapStatusAvailable": "Tillgänglig",
+    "mapStatusOngoing": "Pågående",
+    "mapStatusWaiting": "Väntar",
+    "mapStatusOpenToJoin": "Öppen för anslutning",
+    "mapMatchesOffscreen": "Det finns matcher utanför din vy. Zooma ut för att se dem.",
+    "mapFiltersHideMatches": "Dina filter döljer alla matcher. Utöka sökningen för att se dem.",
+    "mapNoSearchMatches": "Inga aktiviteter matchar din sökning.",
+    "mapNoActivitiesArea": "Inga aktiviteter i detta område."
 }

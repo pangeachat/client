@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:46.096496",
+    "@@last_modified": "2026-08-03 09:47:40.906067",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9784,5 +9784,19 @@
     "exitVocabPracticeSession": "您目前的詞彙練習進度將不會被儲存。",
     "exitGrammarPracticeSession": "您目前的文法練習進度將不會被儲存。",
     "autoReadAloudMessagesToolName": "自動朗讀所有收到的訊息",
-    "autoReadAloudMessagesDescription": "收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。"
+    "autoReadAloudMessagesDescription": "收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。",
+    "activityFilterButtonsLabel": "等級、玩家和狀態篩選按鈕",
+    "mapFilterAllLevels": "所有等級",
+    "mapFilterAllPlayers": "所有玩家",
+    "mapFilterAllStatuses": "所有狀態",
+    "mapFiltersShow": "顯示篩選",
+    "mapFiltersHide": "隱藏篩選",
+    "mapStatusAvailable": "可用",
+    "mapStatusOngoing": "進行中",
+    "mapStatusWaiting": "等待中",
+    "mapStatusOpenToJoin": "開放加入",
+    "mapMatchesOffscreen": "您的視野外有配對。請縮小地圖以查看。",
+    "mapFiltersHideMatches": "您的篩選條件隱藏了所有配對。請放寬搜尋條件以查看。",
+    "mapNoSearchMatches": "沒有符合您搜尋的活動。",
+    "mapNoActivitiesArea": "此區域沒有活動。"
 }

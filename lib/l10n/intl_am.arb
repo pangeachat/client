@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-07-31 10:55:32.251723",
+    "@@last_modified": "2026-08-03 09:47:17.147213",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "የአሁን የቃላት ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
     "exitGrammarPracticeSession": "የአሁን የሰዋስው ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
     "autoReadAloudMessagesToolName": "ሁሉንም የተቀበሉ መልዕክቶችን በራስ-ሰር ጮክ ብሎ ያንብቡ",
-    "autoReadAloudMessagesDescription": "መልእክት ሲደርስ፣ ለማዳመጥ ልምምድ የመሣሪያ ድምፅ መልእክቱን ጮክ ብሎ ለማንበብ ይጠቅማል።"
+    "autoReadAloudMessagesDescription": "መልእክት ሲደርስ፣ ለማዳመጥ ልምምድ የመሣሪያ ድምፅ መልእክቱን ጮክ ብሎ ለማንበብ ይጠቅማል።",
+    "activityFilterButtonsLabel": "ደረጃ፣ ተጫዋቾች እና የሁኔታ ማጣሪያ አዝራሮች",
+    "mapFilterAllLevels": "ሁሉም ደረጃዎች",
+    "mapFilterAllPlayers": "ሁሉም ተጫዋቾች",
+    "mapFilterAllStatuses": "ሁሉም ሁኔታዎች",
+    "mapFiltersShow": "ማጣሪያዎችን አሳይ",
+    "mapFiltersHide": "ማጣሪያዎችን ደብቅ",
+    "mapStatusAvailable": "ይገኛል",
+    "mapStatusOngoing": "በሂደት ላይ",
+    "mapStatusWaiting": "በመጠባበቅ ላይ",
+    "mapStatusOpenToJoin": "ለመቀላቀል ክፍት",
+    "mapMatchesOffscreen": "ከእይታዎ ውጪ ግጥሚያዎች አሉ። እነሱን ለማየት ያሳንሱ።",
+    "mapFiltersHideMatches": "የእርስዎ ማጣሪያዎች ሁሉንም ግጥሚያዎች እየደበቁ ነው። እነሱን ለማየት ፍለጋውን ያስፋፉ።",
+    "mapNoSearchMatches": "ምንም እንቅስቃሴዎች ከፍለጋዎ ጋር አይዛመዱም።",
+    "mapNoActivitiesArea": "በዚህ አካባቢ ምንም እንቅስቃሴዎች የሉም።"
 }

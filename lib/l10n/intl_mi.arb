@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-07-31 10:55:40.637761",
+    "@@last_modified": "2026-08-03 09:47:30.355492",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau kupu o nāianei.",
     "exitGrammarPracticeSession": "Kāore e tiakina te ahunga whakamua o tō wātū whakaharatau wetereo o nāianei.",
     "autoReadAloudMessagesToolName": "Pānui aunoa i ngā karere katoa ka tae mai",
-    "autoReadAloudMessagesDescription": "Ka tae mai he karere, ka whakamahia te reo o te pūrere ki te pānui i te karere kia whakaharatau ai te whakarongo."
+    "autoReadAloudMessagesDescription": "Ka tae mai he karere, ka whakamahia te reo o te pūrere ki te pānui i te karere kia whakaharatau ai te whakarongo.",
+    "activityFilterButtonsLabel": "Ngā pātene tātari taumata, kaitākaro, me te tūnga",
+    "mapFilterAllLevels": "Ngā taumata katoa",
+    "mapFilterAllPlayers": "Ngā kaitākaro katoa",
+    "mapFilterAllStatuses": "Ngā tūnga katoa",
+    "mapFiltersShow": "Whakaatu tātari",
+    "mapFiltersHide": "Huna tātari",
+    "mapStatusAvailable": "Wātea",
+    "mapStatusOngoing": "Kei te haere",
+    "mapStatusWaiting": "E tatari ana",
+    "mapStatusOpenToJoin": "Wātea ki te uru mai",
+    "mapMatchesOffscreen": "He kēmu kei waho o tō tirohanga. Whakahekea te topa kia kite koe.",
+    "mapFiltersHideMatches": "Kei te huna ō tātari i ngā kēmu katoa. Whakarōrahi i te rapu kia kite koe.",
+    "mapNoSearchMatches": "Kāore he mahi e ōrite ana ki tāu rapu.",
+    "mapNoActivitiesArea": "Kāore he mahi i tēnei wāhi."
 }

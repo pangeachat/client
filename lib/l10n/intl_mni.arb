@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-07-31 10:55:40.460031",
+    "@@last_modified": "2026-08-03 09:47:34.361383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "నంగ్గి కరంన్తగి వోకాబులరీ ప్రాక్టీస్ సెసన్ ప్రోగ్రెస్ సేవ్ తౌరరోయి.",
     "exitGrammarPracticeSession": "నంగ్గి కరంన్తగి గ్రామర్ ప్రాక్టీస్ సెసన్ ప్రోగ్రెస్ సేవ్ తౌరరోయి.",
     "autoReadAloudMessagesToolName": "फांगবা মেসেজ পুম্নমক অটোমেটিক ওইনা লাউড ওইনা পাও",
-    "autoReadAloudMessagesDescription": "মেসেজ অমা ফংলবদি, তারিং প্রেকটিস তৌনবা দিভাইসকী ভয়েস শিজিন্নদুনা মেসেজ অদু লাউড ওইনা পাওগনি।"
+    "autoReadAloudMessagesDescription": "মেসেজ অমা ফংলবদি, তারিং প্রেকটিস তৌনবা দিভাইসকী ভয়েস শিজিন্নদুনা মেসেজ অদু লাউড ওইনা পাওগনি।",
+    "activityFilterButtonsLabel": "থাকল, প্লেয়র্স, অমসুং স্তেতস ফিল্তর বতনশিং",
+    "mapFilterAllLevels": "পুম্নমক থাকশিং",
+    "mapFilterAllPlayers": "পুম্নমক প্লেয়র্স",
+    "mapFilterAllStatuses": "পুম্নমক স্তেতসশিং",
+    "mapFiltersShow": "ফিল্তরশিং উৎনবা",
+    "mapFiltersHide": "ফিল্তরশিং লুচিনবা",
+    "mapStatusAvailable": "ফংবা",
+    "mapStatusOngoing": "চত্থরি",
+    "mapStatusWaiting": "ঙাইরি",
+    "mapStatusOpenToJoin": "শম্ননবা হাংদোকপা",
+    "mapMatchesOffscreen": "নখোয়গী উবা ফংদ্রিবা মেচশিং লৈরি। মখোয় উনবা জুম আউৎ তৌবীয়ু।",
+    "mapFiltersHideMatches": "নখোয়গী ফিল্তরশিংনা পুম্নমক মেচশিং লুচিনখ্রে। মখোয় উনবা শিংনবা অমা হেন্না চাওথোকবীয়ু।",
+    "mapNoSearchMatches": "নখোয়গী শিংনবগা চুনবা এক্তিবিতী অমত্তা লৈতে।",
+    "mapNoActivitiesArea": "অতোপ্পা এক্তিবিতী অমত্তা লৈতে।"
 }

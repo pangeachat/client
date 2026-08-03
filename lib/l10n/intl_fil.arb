@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-31 10:55:34.491056",
+    "@@last_modified": "2026-08-03 09:47:21.049984",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10544,5 +10544,19 @@
     "exitVocabPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng bokabularyo.",
     "exitGrammarPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng gramatika.",
     "autoReadAloudMessagesToolName": "Awtomatikong basahin nang malakas ang lahat ng natanggap na mensahe",
-    "autoReadAloudMessagesDescription": "Kapag nakatanggap ng mensahe, gagamitin ang boses ng device para basahin nang malakas ang mensahe para sa pagsasanay sa pakikinig."
+    "autoReadAloudMessagesDescription": "Kapag nakatanggap ng mensahe, gagamitin ang boses ng device para basahin nang malakas ang mensahe para sa pagsasanay sa pakikinig.",
+    "activityFilterButtonsLabel": "Mga button ng filter para sa antas, manlalaro, at status",
+    "mapFilterAllLevels": "Lahat ng antas",
+    "mapFilterAllPlayers": "Lahat ng manlalaro",
+    "mapFilterAllStatuses": "Lahat ng status",
+    "mapFiltersShow": "Ipakita ang mga filter",
+    "mapFiltersHide": "Itago ang mga filter",
+    "mapStatusAvailable": "Available",
+    "mapStatusOngoing": "Kasalukuyan",
+    "mapStatusWaiting": "Naghihintay",
+    "mapStatusOpenToJoin": "Bukas para salihan",
+    "mapMatchesOffscreen": "May mga laban sa labas ng iyong view. Mag-zoom out para makita ang mga ito.",
+    "mapFiltersHideMatches": "Itinatago ng iyong mga filter ang lahat ng laban. Palawakin ang paghahanap para makita ang mga ito.",
+    "mapNoSearchMatches": "Walang aktibidad na tumutugma sa iyong paghahanap.",
+    "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito."
 }

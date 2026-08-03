@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-07-31 10:55:42.571344",
+    "@@last_modified": "2026-08-03 09:47:33.534142",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਸ਼ਬਦਾਵਲੀ ਅਭਿਆਸ ਸੈਸ਼ਨ ਦੀ ਪ੍ਰਗਤੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤੀ ਜਾਵੇਗੀ।",
     "exitGrammarPracticeSession": "ਤੁਹਾਡੇ ਮੌਜੂਦਾ ਵਿਆਕਰਨ ਅਭਿਆਸ ਸੈਸ਼ਨ ਦੀ ਪ੍ਰਗਤੀ ਸੁਰੱਖਿਅਤ ਨਹੀਂ ਕੀਤੀ ਜਾਵੇਗੀ।",
     "autoReadAloudMessagesToolName": "ਪ੍ਰਾਪਤ ਹੋਏ ਸਾਰੇ ਸੁਨੇਹਿਆਂ ਨੂੰ ਆਪਣੇ ਆਪ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ",
-    "autoReadAloudMessagesDescription": "ਜਦੋਂ ਕੋਈ ਸੁਨੇਹਾ ਪ੍ਰਾਪਤ ਹੁੰਦਾ ਹੈ, ਤਾਂ ਸੁਣਨ ਦੇ ਅਭਿਆਸ ਲਈ ਸੁਨੇਹੇ ਨੂੰ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਨ ਲਈ ਡਿਵਾਈਸ ਦੀ ਆਵਾਜ਼ ਦੀ ਵਰਤੋਂ ਕੀਤੀ ਜਾਵੇਗੀ।"
+    "autoReadAloudMessagesDescription": "ਜਦੋਂ ਕੋਈ ਸੁਨੇਹਾ ਪ੍ਰਾਪਤ ਹੁੰਦਾ ਹੈ, ਤਾਂ ਸੁਣਨ ਦੇ ਅਭਿਆਸ ਲਈ ਸੁਨੇਹੇ ਨੂੰ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹਨ ਲਈ ਡਿਵਾਈਸ ਦੀ ਆਵਾਜ਼ ਦੀ ਵਰਤੋਂ ਕੀਤੀ ਜਾਵੇਗੀ।",
+    "activityFilterButtonsLabel": "ਪੱਧਰ, ਖਿਡਾਰੀ, ਅਤੇ ਸਥਿਤੀ ਫਿਲਟਰ ਬਟਨ",
+    "mapFilterAllLevels": "ਸਾਰੇ ਪੱਧਰ",
+    "mapFilterAllPlayers": "ਸਾਰੇ ਖਿਡਾਰੀ",
+    "mapFilterAllStatuses": "ਸਾਰੀਆਂ ਸਥਿਤੀਆਂ",
+    "mapFiltersShow": "ਫਿਲਟਰ ਦਿਖਾਓ",
+    "mapFiltersHide": "ਫਿਲਟਰ ਲੁਕਾਓ",
+    "mapStatusAvailable": "ਉਪਲਬਧ",
+    "mapStatusOngoing": "ਚੱਲ ਰਿਹਾ ਹੈ",
+    "mapStatusWaiting": "ਉਡੀਕ ਕਰ ਰਿਹਾ ਹੈ",
+    "mapStatusOpenToJoin": "ਸ਼ਾਮਲ ਹੋਣ ਲਈ ਖੁੱਲ੍ਹਾ",
+    "mapMatchesOffscreen": "ਤੁਹਾਡੇ ਦ੍ਰਿਸ਼ ਤੋਂ ਬਾਹਰ ਮੈਚ ਹਨ। ਉਹਨਾਂ ਨੂੰ ਦੇਖਣ ਲਈ ਜ਼ੂਮ ਆਊਟ ਕਰੋ।",
+    "mapFiltersHideMatches": "ਤੁਹਾਡੇ ਫਿਲਟਰ ਸਾਰੇ ਮੈਚਾਂ ਨੂੰ ਲੁਕਾ ਰਹੇ ਹਨ। ਉਹਨਾਂ ਨੂੰ ਦੇਖਣ ਲਈ ਖੋਜ ਦਾ ਘੇਰਾ ਵਧਾਓ।",
+    "mapNoSearchMatches": "ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਕੋਈ ਗਤੀਵਿਧੀਆਂ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀਆਂ।",
+    "mapNoActivitiesArea": "ਇਸ ਖੇਤਰ ਵਿੱਚ ਕੋਈ ਗਤੀਵਿਧੀਆਂ ਨਹੀਂ ਹਨ।"
 }

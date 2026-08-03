@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-07-31 10:55:39.004274",
+    "@@last_modified": "2026-08-03 09:47:29.399503",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກຄຳສັບໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
     "exitGrammarPracticeSession": "ຄວາມຄືບໜ້າຂອງການຝຶກໄວຍາກອນໃນປັດຈຸບັນຂອງທ່ານຈະບໍ່ຖືກບັນທຶກ.",
     "autoReadAloudMessagesToolName": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບທັງໝົດໂດຍອັດຕະໂນມັດ",
-    "autoReadAloudMessagesDescription": "ເມື່ອໄດ້ຮັບຂໍ້ຄວາມ, ສຽງຂອງອຸປະກອນຈະຖືກນຳໃຊ້ເພື່ອອ່ານຂໍ້ຄວາມອອກສຽງດັງ ເພື່ອຝຶກການຟັງ."
+    "autoReadAloudMessagesDescription": "ເມື່ອໄດ້ຮັບຂໍ້ຄວາມ, ສຽງຂອງອຸປະກອນຈະຖືກນຳໃຊ້ເພື່ອອ່ານຂໍ້ຄວາມອອກສຽງດັງ ເພື່ອຝຶກການຟັງ.",
+    "activityFilterButtonsLabel": "ປຸ່ມຕົວກອງລະດັບ, ຜູ້ຫຼິ້ນ, ແລະສະຖານະ",
+    "mapFilterAllLevels": "ທຸກລະດັບ",
+    "mapFilterAllPlayers": "ຜູ້ຫຼິ້ນທັງໝົດ",
+    "mapFilterAllStatuses": "ທຸກສະຖານະ",
+    "mapFiltersShow": "ສະແດງຕົວກອງ",
+    "mapFiltersHide": "ເຊື່ອງຕົວກອງ",
+    "mapStatusAvailable": "ມີໃຫ້ບໍລິການ",
+    "mapStatusOngoing": "ກຳລັງດຳເນີນ",
+    "mapStatusWaiting": "ກຳລັງລໍຖ້າ",
+    "mapStatusOpenToJoin": "ເປີດໃຫ້ເຂົ້າຮ່ວມ",
+    "mapMatchesOffscreen": "ມີການແຂ່ງຂັນຢູ່ນອກຂອບເຂດທີ່ທ່ານເຫັນ. ຫຍໍ້ໜ້າຈໍອອກເພື່ອເບິ່ງ.",
+    "mapFiltersHideMatches": "ຕົວກອງຂອງທ່ານກຳລັງເຊື່ອງການແຂ່ງຂັນທັງໝົດ. ຂະຫຍາຍການຄົ້ນຫາເພື່ອເບິ່ງ.",
+    "mapNoSearchMatches": "ບໍ່ມີກິດຈະກຳໃດກົງກັບການຄົ້ນຫາຂອງທ່ານ.",
+    "mapNoActivitiesArea": "ບໍ່ມີກິດຈະກຳໃນພື້ນທີ່ນີ້."
 }

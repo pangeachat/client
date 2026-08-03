@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-07-31 10:55:43.208617",
+    "@@last_modified": "2026-08-03 09:47:37.015575",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i upu o lo'o iai nei o le a le fa'asaoina.",
     "exitGrammarPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i kalama o lo'o iai nei o le a le fa'asaoina.",
     "autoReadAloudMessagesToolName": "Faitau otometi ma le leo tele feʻau uma na maua",
-    "autoReadAloudMessagesDescription": "A maua se feʻau, o le a faʻaaogaina le leo o le masini e faitau leotele ai le feʻau mo le faʻataʻitaʻiga o le faʻalogo."
+    "autoReadAloudMessagesDescription": "A maua se feʻau, o le a faʻaaogaina le leo o le masini e faitau leotele ai le feʻau mo le faʻataʻitaʻiga o le faʻalogo.",
+    "activityFilterButtonsLabel": "Fa'amau fa'amama tulaga, tagata ta'alo, ma le tulaga",
+    "mapFilterAllLevels": "Tulaga uma",
+    "mapFilterAllPlayers": "Tagata ta'alo uma",
+    "mapFilterAllStatuses": "Tulaga uma",
+    "mapFiltersShow": "Fa'aali fa'amama",
+    "mapFiltersHide": "Nana fa'amama",
+    "mapStatusAvailable": "Avanoa",
+    "mapStatusOngoing": "O lo'o fa'agasolo",
+    "mapStatusWaiting": "O lo'o fa'atali",
+    "mapStatusOpenToJoin": "Tatala mo le auai",
+    "mapMatchesOffscreen": "O lo'o i ai ta'aloga i fafo atu o lau va'aiga. Fa'aitiitia le va'aiga e va'ai ai.",
+    "mapFiltersHideMatches": "O au fa'amama o lo'o natia uma ta'aloga. Fa'alautele le su'esu'ega e va'ai ai.",
+    "mapNoSearchMatches": "Leai ni gaioiga e fetaui ma lau su'esu'ega.",
+    "mapNoActivitiesArea": "Leai ni gaioiga i lenei vaega."
 }

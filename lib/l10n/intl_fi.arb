@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-07-31 10:55:34.417434",
+    "@@last_modified": "2026-08-03 09:47:20.630574",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9715,5 +9715,19 @@
     "exitVocabPracticeSession": "Nykyisen sanastoharjoittelun edistymistä ei tallenneta.",
     "exitGrammarPracticeSession": "Nykyisen kielioppiharjoittelun edistymistä ei tallenneta.",
     "autoReadAloudMessagesToolName": "Lue kaikki vastaanotetut viestit ääneen automaattisesti",
-    "autoReadAloudMessagesDescription": "Kun viesti vastaanotetaan, laitteen ääntä käytetään viestin lukemiseen ääneen kuunteluharjoitusta varten."
+    "autoReadAloudMessagesDescription": "Kun viesti vastaanotetaan, laitteen ääntä käytetään viestin lukemiseen ääneen kuunteluharjoitusta varten.",
+    "activityFilterButtonsLabel": "Tason, pelaajien ja tilan suodatuspainikkeet",
+    "mapFilterAllLevels": "Kaikki tasot",
+    "mapFilterAllPlayers": "Kaikki pelaajat",
+    "mapFilterAllStatuses": "Kaikki tilat",
+    "mapFiltersShow": "Näytä suodattimet",
+    "mapFiltersHide": "Piilota suodattimet",
+    "mapStatusAvailable": "Saatavilla",
+    "mapStatusOngoing": "Käynnissä",
+    "mapStatusWaiting": "Odottaa",
+    "mapStatusOpenToJoin": "Avoin liittymiselle",
+    "mapMatchesOffscreen": "Näkymäsi ulkopuolella on otteluita. Loitonna nähdäksesi ne.",
+    "mapFiltersHideMatches": "Suodattimesi piilottavat kaikki ottelut. Laajenna hakua nähdäksesi ne.",
+    "mapNoSearchMatches": "Hakua vastaavia aktiviteetteja ei löytynyt.",
+    "mapNoActivitiesArea": "Tällä alueella ei ole aktiviteetteja."
 }

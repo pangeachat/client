@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-31 10:55:33.472603",
+    "@@last_modified": "2026-08-03 09:47:19.114284",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9665,5 +9665,19 @@
     "exitVocabPracticeSession": "Ihr aktueller Fortschritt in der Vokabelübung wird nicht gespeichert.",
     "exitGrammarPracticeSession": "Ihr aktueller Fortschritt in der Grammatikübung wird nicht gespeichert.",
     "autoReadAloudMessagesToolName": "Alle empfangenen Nachrichten automatisch vorlesen",
-    "autoReadAloudMessagesDescription": "Wenn eine Nachricht empfangen wird, liest die Gerätestimme die Nachricht zur Hörübung vor."
+    "autoReadAloudMessagesDescription": "Wenn eine Nachricht empfangen wird, liest die Gerätestimme die Nachricht zur Hörübung vor.",
+    "activityFilterButtonsLabel": "Filter-Schaltflächen für Level, Spieler und Status",
+    "mapFilterAllLevels": "Alle Level",
+    "mapFilterAllPlayers": "Alle Spieler",
+    "mapFilterAllStatuses": "Alle Status",
+    "mapFiltersShow": "Filter anzeigen",
+    "mapFiltersHide": "Filter ausblenden",
+    "mapStatusAvailable": "Verfügbar",
+    "mapStatusOngoing": "Laufend",
+    "mapStatusWaiting": "Wartend",
+    "mapStatusOpenToJoin": "Offen zum Beitreten",
+    "mapMatchesOffscreen": "Es gibt Matches außerhalb deines Sichtbereichs. Zoome heraus, um sie zu sehen.",
+    "mapFiltersHideMatches": "Deine Filter verbergen alle Matches. Erweitere die Suche, um sie zu sehen.",
+    "mapNoSearchMatches": "Keine Aktivitäten entsprechen deiner Suche.",
+    "mapNoActivitiesArea": "Keine Aktivitäten in diesem Bereich."
 }

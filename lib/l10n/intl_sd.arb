@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-07-31 10:55:43.592129",
+    "@@last_modified": "2026-08-03 09:47:36.430142",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "توهان جي موجوده لفظن جي مشق سيشن جي ترقي محفوظ نه ٿيندي.",
     "exitGrammarPracticeSession": "توهان جي موجوده گرامر جي مشق سيشن جي ترقي محفوظ نه ٿيندي.",
     "autoReadAloudMessagesToolName": "سڀني موصول ٿيل پيغامن کي پاڻمرادو بلند آواز سان پڙهو",
-    "autoReadAloudMessagesDescription": "جڏهن ڪو پيغام موصول ٿيندو، ته ڊوائيس جو آواز ٻڌڻ جي مشق لاءِ پيغام کي بلند آواز سان پڙهڻ لاءِ استعمال ڪيو ويندو."
+    "autoReadAloudMessagesDescription": "جڏهن ڪو پيغام موصول ٿيندو، ته ڊوائيس جو آواز ٻڌڻ جي مشق لاءِ پيغام کي بلند آواز سان پڙهڻ لاءِ استعمال ڪيو ويندو.",
+    "activityFilterButtonsLabel": "سطح، رانديگر، ۽ اسٽيٽس فلٽر بٽڻ",
+    "mapFilterAllLevels": "سڀ سطحون",
+    "mapFilterAllPlayers": "سڀ رانديگر",
+    "mapFilterAllStatuses": "سڀ اسٽيٽس",
+    "mapFiltersShow": "فلٽر ڏيکاريو",
+    "mapFiltersHide": "فلٽر لڪايو",
+    "mapStatusAvailable": "دستياب",
+    "mapStatusOngoing": "جاري",
+    "mapStatusWaiting": "انتظار ۾",
+    "mapStatusOpenToJoin": "شامل ٿيڻ لاءِ کليل",
+    "mapMatchesOffscreen": "توهان جي نظر کان ٻاهر ميچون آهن. انهن کي ڏسڻ لاءِ زوم آئوٽ ڪريو.",
+    "mapFiltersHideMatches": "توهان جا فلٽر سڀ ميچون لڪائي رهيا آهن. انهن کي ڏسڻ لاءِ ڳولا کي وڌايو.",
+    "mapNoSearchMatches": "توهان جي ڳولا سان ڪا به سرگرمي نه ملي.",
+    "mapNoActivitiesArea": "هن علائقي ۾ ڪا به سرگرمي ناهي."
 }

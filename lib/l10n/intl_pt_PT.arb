@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-31 10:55:41.494255",
+    "@@last_modified": "2026-08-03 09:47:34.270928",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10595,5 +10595,19 @@
     "exitVocabPracticeSession": "O progresso da sua sessão de prática de vocabulário atual não será guardado.",
     "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será guardado.",
     "autoReadAloudMessagesToolName": "Ler automaticamente todas as mensagens recebidas",
-    "autoReadAloudMessagesDescription": "Quando uma mensagem é recebida, a voz do dispositivo será utilizada para ler a mensagem em voz alta para prática de escuta."
+    "autoReadAloudMessagesDescription": "Quando uma mensagem é recebida, a voz do dispositivo será utilizada para ler a mensagem em voz alta para prática de escuta.",
+    "activityFilterButtonsLabel": "Botões de filtro de nível, jogadores e estado",
+    "mapFilterAllLevels": "Todos os níveis",
+    "mapFilterAllPlayers": "Todos os jogadores",
+    "mapFilterAllStatuses": "Todos os estados",
+    "mapFiltersShow": "Mostrar filtros",
+    "mapFiltersHide": "Ocultar filtros",
+    "mapStatusAvailable": "Disponível",
+    "mapStatusOngoing": "Em curso",
+    "mapStatusWaiting": "À espera",
+    "mapStatusOpenToJoin": "Aberto para entrar",
+    "mapMatchesOffscreen": "Existem partidas fora da sua vista. Reduza o zoom para as ver.",
+    "mapFiltersHideMatches": "Os seus filtros estão a ocultar todas as partidas. Alargue a pesquisa para as ver.",
+    "mapNoSearchMatches": "Nenhuma atividade corresponde à sua pesquisa.",
+    "mapNoActivitiesArea": "Nenhuma atividade nesta área."
 }

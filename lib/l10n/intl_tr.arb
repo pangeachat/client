@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-31 10:55:44.641023",
+    "@@last_modified": "2026-08-03 09:47:39.215891",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9979,5 +9979,19 @@
     "exitVocabPracticeSession": "Mevcut kelime alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
     "exitGrammarPracticeSession": "Mevcut dil bilgisi alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
     "autoReadAloudMessagesToolName": "Alınan tüm mesajları otomatik olarak sesli oku",
-    "autoReadAloudMessagesDescription": "Bir mesaj alındığında, dinleme pratiği için mesajı sesli okumak üzere cihaz sesi kullanılacaktır."
+    "autoReadAloudMessagesDescription": "Bir mesaj alındığında, dinleme pratiği için mesajı sesli okumak üzere cihaz sesi kullanılacaktır.",
+    "activityFilterButtonsLabel": "Seviye, oyuncu ve durum filtre düğmeleri",
+    "mapFilterAllLevels": "Tüm seviyeler",
+    "mapFilterAllPlayers": "Tüm oyuncular",
+    "mapFilterAllStatuses": "Tüm durumlar",
+    "mapFiltersShow": "Filtreleri göster",
+    "mapFiltersHide": "Filtreleri gizle",
+    "mapStatusAvailable": "Müsait",
+    "mapStatusOngoing": "Devam ediyor",
+    "mapStatusWaiting": "Bekliyor",
+    "mapStatusOpenToJoin": "Katılmaya açık",
+    "mapMatchesOffscreen": "Görüş alanınızın dışında eşleşmeler var. Görmek için uzaklaştırın.",
+    "mapFiltersHideMatches": "Filtreleriniz tüm eşleşmeleri gizliyor. Görmek için aramayı genişletin.",
+    "mapNoSearchMatches": "Aramanızla eşleşen etkinlik yok.",
+    "mapNoActivitiesArea": "Bu alanda etkinlik yok."
 }

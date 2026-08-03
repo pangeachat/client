@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-07-31 10:55:40.464586",
+    "@@last_modified": "2026-08-03 09:47:31.792165",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Il-progress tas-sessjoni preżenti tiegħek ta' prattika tal-vokabularju ma jiġix salvat.",
     "exitGrammarPracticeSession": "Il-progress tas-sessjoni preżenti tiegħek ta' prattika tal-grammatika ma jiġix salvat.",
     "autoReadAloudMessagesToolName": "Aqra awtomatikament il-messaġġi kollha riċevuti",
-    "autoReadAloudMessagesDescription": "Meta tirċievi messaġġ, il-vuċi tal-apparat tintuża biex taqra l-messaġġ b'leħen għoli għall-prattika tas-smigħ."
+    "autoReadAloudMessagesDescription": "Meta tirċievi messaġġ, il-vuċi tal-apparat tintuża biex taqra l-messaġġ b'leħen għoli għall-prattika tas-smigħ.",
+    "activityFilterButtonsLabel": "Livell, plejers, u buttuni tal-filtru tal-istatus",
+    "mapFilterAllLevels": "Il-livelli kollha",
+    "mapFilterAllPlayers": "Il-plejers kollha",
+    "mapFilterAllStatuses": "L-istatusijiet kollha",
+    "mapFiltersShow": "Uri l-filtri",
+    "mapFiltersHide": "Aħbi l-filtri",
+    "mapStatusAvailable": "Disponibbli",
+    "mapStatusOngoing": "Għaddej",
+    "mapStatusWaiting": "Qed jistenna",
+    "mapStatusOpenToJoin": "Miftuħ biex tingħaqad",
+    "mapMatchesOffscreen": "Hemm logħbiet barra mill-vista tiegħek. Żgura 'l barra biex tarahom.",
+    "mapFiltersHideMatches": "Il-filtri tiegħek qed jaħbu l-logħbiet kollha. Wessa' t-tfittxija biex tarahom.",
+    "mapNoSearchMatches": "L-ebda attività ma taqbel mat-tfittxija tiegħek.",
+    "mapNoActivitiesArea": "L-ebda attività f'din iż-żona."
 }

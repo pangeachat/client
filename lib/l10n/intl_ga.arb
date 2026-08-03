@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-31 10:55:34.921643",
+    "@@last_modified": "2026-08-03 09:47:21.551534",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9689,5 +9689,19 @@
     "exitVocabPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh foclóra reatha.",
     "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha.",
     "autoReadAloudMessagesToolName": "Léigh gach teachtaireacht a fhaightear os ard go huathoibríoch",
-    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta."
+    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta.",
+    "activityFilterButtonsLabel": "Cnaipí scagaire leibhéil, imreoirí, agus stádais",
+    "mapFilterAllLevels": "Gach leibhéal",
+    "mapFilterAllPlayers": "Gach imreoir",
+    "mapFilterAllStatuses": "Gach stádas",
+    "mapFiltersShow": "Taispeáin scagairí",
+    "mapFiltersHide": "Folaigh scagairí",
+    "mapStatusAvailable": "Ar fáil",
+    "mapStatusOngoing": "Ar siúl",
+    "mapStatusWaiting": "Ag fanacht",
+    "mapStatusOpenToJoin": "Oscailte le bheith páirteach",
+    "mapMatchesOffscreen": "Tá cluichí lasmuigh de do radharc. Zúmáil amach chun iad a fheiceáil.",
+    "mapFiltersHideMatches": "Tá do scagairí ag cur gach cluiche i bhfolach. Leathnaigh an cuardach chun iad a fheiceáil.",
+    "mapNoSearchMatches": "Níl aon ghníomhaíochtaí ag teacht le do chuardach.",
+    "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo."
 }

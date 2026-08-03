@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-07-31 10:55:38.754383",
+    "@@last_modified": "2026-08-03 09:47:27.948080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Учурдагы сөз байлыгын үйрөнүү сессияңыздын жүрүшү сакталбайт.",
     "exitGrammarPracticeSession": "Учурдагы грамматикалык практика сессияңыздын жүрүшү сакталбайт.",
     "autoReadAloudMessagesToolName": "Бардык келген билдирүүлөрдү автоматтык түрдө үн чыгарып окуу",
-    "autoReadAloudMessagesDescription": "Билдирүү келгенде, угуу практикасы үчүн билдирүүнү үн чыгарып окуу үчүн аппараттын үнү колдонулат."
+    "autoReadAloudMessagesDescription": "Билдирүү келгенде, угуу практикасы үчүн билдирүүнү үн чыгарып окуу үчүн аппараттын үнү колдонулат.",
+    "activityFilterButtonsLabel": "Деңгээл, оюнчулар жана абал чыпкалоо баскычтары",
+    "mapFilterAllLevels": "Бардык деңгээлдер",
+    "mapFilterAllPlayers": "Бардык оюнчулар",
+    "mapFilterAllStatuses": "Бардык абалдар",
+    "mapFiltersShow": "Чыпкаларды көрсөтүү",
+    "mapFiltersHide": "Чыпкаларды жашыруу",
+    "mapStatusAvailable": "Жеткиликтүү",
+    "mapStatusOngoing": "Учурда",
+    "mapStatusWaiting": "Күтүүдө",
+    "mapStatusOpenToJoin": "Кошулууга ачык",
+    "mapMatchesOffscreen": "Сиздин көрүү аймагыңыздан тышкары дал келүүлөр бар. Аларды көрүү үчүн кичирейтиңиз.",
+    "mapFiltersHideMatches": "Сиздин чыпкаларыңыз бардык дал келүүлөрдү жашырууда. Аларды көрүү үчүн издөөнү кеңейтиңиз.",
+    "mapNoSearchMatches": "Издөөңүзгө эч кандай иш-аракеттер дал келген жок.",
+    "mapNoActivitiesArea": "Бул аймакта эч кандай иш-аракеттер жок."
 }

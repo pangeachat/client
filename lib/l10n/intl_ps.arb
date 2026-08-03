@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-07-31 10:55:42.117775",
+    "@@last_modified": "2026-08-03 09:47:34.289490",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "ستاسو د لغتونو د تمرین اوسنۍ ناستې پرمختګ به خوندي نشي.",
     "exitGrammarPracticeSession": "ستاسو د ګرامر د تمرین اوسنۍ ناستې پرمختګ به خوندي نشي.",
     "autoReadAloudMessagesToolName": "په اتوماتيک ډول ټول ترلاسه شوي پیغامونه په لوړ غږ ولولئ",
-    "autoReadAloudMessagesDescription": "کله چې یو پیغام ترلاسه شي، د اوریدلو تمرین لپاره به د وسیلې غږ د پیغام په لوړ غږ لوستلو لپاره وکارول شي."
+    "autoReadAloudMessagesDescription": "کله چې یو پیغام ترلاسه شي، د اوریدلو تمرین لپاره به د وسیلې غږ د پیغام په لوړ غږ لوستلو لپاره وکارول شي.",
+    "activityFilterButtonsLabel": "د کچې، لوبغاړو، او حالت فلټر بټنونه",
+    "mapFilterAllLevels": "ټولې کچې",
+    "mapFilterAllPlayers": "ټول لوبغاړي",
+    "mapFilterAllStatuses": "ټول حالتونه",
+    "mapFiltersShow": "فلټرونه ښکاره کړئ",
+    "mapFiltersHide": "فلټرونه پټ کړئ",
+    "mapStatusAvailable": "شتون لري",
+    "mapStatusOngoing": "روان",
+    "mapStatusWaiting": "انتظار",
+    "mapStatusOpenToJoin": "د ګډون لپاره خلاص",
+    "mapMatchesOffscreen": "ستاسو له لید څخه بهر لوبې شتون لري. د لیدلو لپاره زوم آوټ کړئ.",
+    "mapFiltersHideMatches": "ستاسو فلټرونه ټولې لوبې پټوي. د لیدلو لپاره لټون پراخ کړئ.",
+    "mapNoSearchMatches": "ستاسو لټون سره هیڅ فعالیت نه سمون خوري.",
+    "mapNoActivitiesArea": "په دې سیمه کې هیڅ فعالیت نشته."
 }

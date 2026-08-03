@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-07-31 10:55:41.769696",
+    "@@last_modified": "2026-08-03 09:47:34.257441",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9763,5 +9763,19 @@
     "exitVocabPracticeSession": "Postępy w bieżącej sesji ćwiczenia słownictwa nie zostaną zapisane.",
     "exitGrammarPracticeSession": "Postępy w bieżącej sesji ćwiczenia gramatyki nie zostaną zapisane.",
     "autoReadAloudMessagesToolName": "Automatyczne odczytywanie wszystkich otrzymanych wiadomości",
-    "autoReadAloudMessagesDescription": "Po otrzymaniu wiadomości, głos urządzenia zostanie użyty do odczytania jej na głos w celu ćwiczenia słuchania."
+    "autoReadAloudMessagesDescription": "Po otrzymaniu wiadomości, głos urządzenia zostanie użyty do odczytania jej na głos w celu ćwiczenia słuchania.",
+    "activityFilterButtonsLabel": "Przyciski filtrowania: poziom, gracze i status",
+    "mapFilterAllLevels": "Wszystkie poziomy",
+    "mapFilterAllPlayers": "Wszyscy gracze",
+    "mapFilterAllStatuses": "Wszystkie statusy",
+    "mapFiltersShow": "Pokaż filtry",
+    "mapFiltersHide": "Ukryj filtry",
+    "mapStatusAvailable": "Dostępne",
+    "mapStatusOngoing": "W toku",
+    "mapStatusWaiting": "Oczekujące",
+    "mapStatusOpenToJoin": "Otwarte na dołączenie",
+    "mapMatchesOffscreen": "Poza widokiem są mecze. Oddal, aby je zobaczyć.",
+    "mapFiltersHideMatches": "Twoje filtry ukrywają wszystkie mecze. Rozszerz wyszukiwanie, aby je zobaczyć.",
+    "mapNoSearchMatches": "Brak aktywności pasujących do wyszukiwania.",
+    "mapNoActivitiesArea": "Brak aktywności w tym obszarze."
 }

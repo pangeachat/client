@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-07-31 10:55:33.261121",
+    "@@last_modified": "2026-08-03 09:47:18.769439",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa bokabularyo dili maluwas.",
     "exitGrammarPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa gramatika dili maluwas.",
     "autoReadAloudMessagesToolName": "Awtomatikong basahon og kusog ang tanang nadawat nga mensahe",
-    "autoReadAloudMessagesDescription": "Kung makadawat og mensahe, ang tingog sa device gamiton aron basahon og kusog ang mensahe para sa praktis sa pagpaminaw."
+    "autoReadAloudMessagesDescription": "Kung makadawat og mensahe, ang tingog sa device gamiton aron basahon og kusog ang mensahe para sa praktis sa pagpaminaw.",
+    "activityFilterButtonsLabel": "Mga butones sa filter sa lebel, magdudula, ug status",
+    "mapFilterAllLevels": "Tanan nga lebel",
+    "mapFilterAllPlayers": "Tanan nga magdudula",
+    "mapFilterAllStatuses": "Tanan nga status",
+    "mapFiltersShow": "Ipakita ang mga filter",
+    "mapFiltersHide": "Itago ang mga filter",
+    "mapStatusAvailable": "Anaa",
+    "mapStatusOngoing": "Nagpadayon",
+    "mapStatusWaiting": "Nagahulat",
+    "mapStatusOpenToJoin": "Bukas para sa pag-apil",
+    "mapMatchesOffscreen": "Adunay mga duwa sa gawas sa imong panan-aw. Pag-zoom out aron makita kini.",
+    "mapFiltersHideMatches": "Gitago sa imong mga filter ang tanan nga duwa. Palapda ang pagpangita aron makita kini.",
+    "mapNoSearchMatches": "Walay mga kalihokan nga mohaum sa imong pagpangita.",
+    "mapNoActivitiesArea": "Walay mga kalihokan niining dapita."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-07-31 10:55:43.734434",
+    "@@last_modified": "2026-08-03 09:47:38.260236",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Maendeleo yako ya sasa ya kipindi cha mazoezi ya msamiati hayatahifadhiwa.",
     "exitGrammarPracticeSession": "Maendeleo yako ya sasa ya kipindi cha mazoezi ya sarufi hayatahifadhiwa.",
     "autoReadAloudMessagesToolName": "Soma ujumbe wote uliopokelewa kwa sauti kiotomatiki",
-    "autoReadAloudMessagesDescription": "Ujumbe unapopokelewa, sauti ya kifaa itatumika kusoma ujumbe kwa sauti kwa ajili ya mazoezi ya kusikiliza."
+    "autoReadAloudMessagesDescription": "Ujumbe unapopokelewa, sauti ya kifaa itatumika kusoma ujumbe kwa sauti kwa ajili ya mazoezi ya kusikiliza.",
+    "activityFilterButtonsLabel": "Kiwango, wachezaji, na vitufe vya kuchuja hali",
+    "mapFilterAllLevels": "Ngazi zote",
+    "mapFilterAllPlayers": "Wachezaji wote",
+    "mapFilterAllStatuses": "Hali zote",
+    "mapFiltersShow": "Onyesha vichujio",
+    "mapFiltersHide": "Ficha vichujio",
+    "mapStatusAvailable": "Inapatikana",
+    "mapStatusOngoing": "Inaendelea",
+    "mapStatusWaiting": "Inasubiri",
+    "mapStatusOpenToJoin": "Wazi kujiunga",
+    "mapMatchesOffscreen": "Kuna mechi nje ya mtazamo wako. Zoom out ili kuziona.",
+    "mapFiltersHideMatches": "Vichujio vyako vinaficha mechi zote. Panua utafutaji ili kuziona.",
+    "mapNoSearchMatches": "Hakuna shughuli zinazolingana na utafutaji wako.",
+    "mapNoActivitiesArea": "Hakuna shughuli katika eneo hili."
 }

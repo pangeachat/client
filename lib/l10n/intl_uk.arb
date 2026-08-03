@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-31 10:55:44.785371",
+    "@@last_modified": "2026-08-03 09:47:39.628288",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9678,5 +9678,19 @@
     "exitVocabPracticeSession": "Ваш поточний прогрес у сесії тренування словникового запасу не буде збережено.",
     "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено.",
     "autoReadAloudMessagesToolName": "Автоматично читати вголос усі отримані повідомлення",
-    "autoReadAloudMessagesDescription": "Коли повідомлення отримано, голос пристрою буде використано для читання повідомлення вголос для практики слухання."
+    "autoReadAloudMessagesDescription": "Коли повідомлення отримано, голос пристрою буде використано для читання повідомлення вголос для практики слухання.",
+    "activityFilterButtonsLabel": "Кнопки фільтру за рівнем, гравцями та статусом",
+    "mapFilterAllLevels": "Усі рівні",
+    "mapFilterAllPlayers": "Усі гравці",
+    "mapFilterAllStatuses": "Усі статуси",
+    "mapFiltersShow": "Показати фільтри",
+    "mapFiltersHide": "Приховати фільтри",
+    "mapStatusAvailable": "Доступно",
+    "mapStatusOngoing": "Триває",
+    "mapStatusWaiting": "Очікування",
+    "mapStatusOpenToJoin": "Відкрито для приєднання",
+    "mapMatchesOffscreen": "Є матчі поза вашим полем зору. Зменште масштаб, щоб їх побачити.",
+    "mapFiltersHideMatches": "Ваші фільтри приховують усі матчі. Розширте пошук, щоб їх побачити.",
+    "mapNoSearchMatches": "Жодна діяльність не відповідає вашому пошуку.",
+    "mapNoActivitiesArea": "У цій області немає активностей."
 }

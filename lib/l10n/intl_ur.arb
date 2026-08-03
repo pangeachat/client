@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-07-31 10:55:46.036308",
+    "@@last_modified": "2026-08-03 09:47:40.232012",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "آپ کے موجودہ الفاظ کی مشق سیشن کی پیشرفت محفوظ نہیں کی جائے گی۔",
     "exitGrammarPracticeSession": "آپ کے موجودہ گرامر کی مشق سیشن کی پیشرفت محفوظ نہیں کی جائے گی۔",
     "autoReadAloudMessagesToolName": "تمام موصولہ پیغامات خود بخود بلند آواز میں پڑھیں",
-    "autoReadAloudMessagesDescription": "جب کوئی پیغام موصول ہوتا ہے، تو سننے کی مشق کے لیے پیغام کو بلند آواز میں پڑھنے کے لیے ڈیوائس کی آواز کا استعمال کیا جائے گا۔"
+    "autoReadAloudMessagesDescription": "جب کوئی پیغام موصول ہوتا ہے، تو سننے کی مشق کے لیے پیغام کو بلند آواز میں پڑھنے کے لیے ڈیوائس کی آواز کا استعمال کیا جائے گا۔",
+    "activityFilterButtonsLabel": "سطح، کھلاڑی، اور اسٹیٹس فلٹر بٹن",
+    "mapFilterAllLevels": "تمام سطحیں",
+    "mapFilterAllPlayers": "تمام کھلاڑی",
+    "mapFilterAllStatuses": "تمام اسٹیٹس",
+    "mapFiltersShow": "فلٹرز دکھائیں",
+    "mapFiltersHide": "فلٹرز چھپائیں",
+    "mapStatusAvailable": "دستیاب",
+    "mapStatusOngoing": "جاری ہے",
+    "mapStatusWaiting": "انتظار کر رہا ہے",
+    "mapStatusOpenToJoin": "شمولیت کے لیے کھلا ہے",
+    "mapMatchesOffscreen": "آپ کے منظر سے باہر میچز ہیں۔ انہیں دیکھنے کے لیے زوم آؤٹ کریں۔",
+    "mapFiltersHideMatches": "آپ کے فلٹرز تمام میچز چھپا رہے ہیں۔ انہیں دیکھنے کے لیے تلاش کو وسیع کریں۔",
+    "mapNoSearchMatches": "آپ کی تلاش سے کوئی سرگرمی مماثل نہیں ہے۔",
+    "mapNoActivitiesArea": "اس علاقے میں کوئی سرگرمیاں نہیں ہیں۔"
 }

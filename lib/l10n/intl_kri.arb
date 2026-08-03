@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-07-31 10:55:38.727037",
+    "@@last_modified": "2026-08-03 09:47:27.594240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Yu vocab praktis seshɔn we yu de du naw nɔ go sev.",
     "exitGrammarPracticeSession": "Yu grama praktis seshɔn we yu de du naw nɔ go sev.",
     "autoReadAloudMessagesToolName": "Rɛd ɔl rɛsiiv mɛsej dɛn bɔtɔmatike",
-    "autoReadAloudMessagesDescription": "Wɛn yu gɛt mɛsej, di divays in vɔys go rid di mɛsej fɔ yu fɔ lisin praktis."
+    "autoReadAloudMessagesDescription": "Wɛn yu gɛt mɛsej, di divays in vɔys go rid di mɛsej fɔ yu fɔ lisin praktis.",
+    "activityFilterButtonsLabel": "Level, pleya, ɛn status fita bɔtin dɛn",
+    "mapFilterAllLevels": "Ɔl level dɛn",
+    "mapFilterAllPlayers": "Ɔl pleya dɛn",
+    "mapFilterAllStatuses": "Ɔl status dɛn",
+    "mapFiltersShow": "Sho fita dɛn",
+    "mapFiltersHide": "Hayd fita dɛn",
+    "mapStatusAvailable": "De fɔ yuz",
+    "mapStatusOngoing": "De go bifo",
+    "mapStatusWaiting": "De wet",
+    "mapStatusOpenToJoin": "Ɔpen fɔ jɔyn",
+    "mapMatchesOffscreen": "Match dɛn de we yu nɔ de si. Zoom aut fɔ si dɛn.",
+    "mapFiltersHideMatches": "Yu fita dɛn de hayd ɔl di match dɛn. Broden di sɛch fɔ si dɛn.",
+    "mapNoSearchMatches": "Nɔn aktiviti nɔ match yu sɛch.",
+    "mapNoActivitiesArea": "Nɔn aktiviti nɔ de na dis ples."
 }

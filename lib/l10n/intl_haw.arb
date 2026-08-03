@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-07-31 10:55:35.540926",
+    "@@last_modified": "2026-08-03 09:47:23.187145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa huaʻōlelo o kēia manawa.",
     "exitGrammarPracticeSession": "ʻAʻole e mālama ʻia kāu holomua o ka hālāwai hoʻomaʻamaʻa grammar o kēia manawa.",
     "autoReadAloudMessagesToolName": "Heluhelu a leo nui i nā leka i loaʻa a pau",
-    "autoReadAloudMessagesDescription": "Ke loaʻa mai kahi leka, e hoʻohana ʻia ka leo o ka hāmeʻa e heluhelu leo nui i ka leka no ka hoʻomaʻamaʻa hoʻolohe."
+    "autoReadAloudMessagesDescription": "Ke loaʻa mai kahi leka, e hoʻohana ʻia ka leo o ka hāmeʻa e heluhelu leo nui i ka leka no ka hoʻomaʻamaʻa hoʻolohe.",
+    "activityFilterButtonsLabel": "Nā pihi kānana pae, mea pāʻani, a me ke kūlana",
+    "mapFilterAllLevels": "Nā pae āpau",
+    "mapFilterAllPlayers": "Nā mea pāʻani āpau",
+    "mapFilterAllStatuses": "Nā kūlana āpau",
+    "mapFiltersShow": "Hōʻike i nā kānana",
+    "mapFiltersHide": "Hūnā i nā kānana",
+    "mapStatusAvailable": "Loaʻa",
+    "mapStatusOngoing": "Ke hoʻomau nei",
+    "mapStatusWaiting": "Ke kali nei",
+    "mapStatusOpenToJoin": "Wehe e hui",
+    "mapMatchesOffscreen": "Aia nā pāʻani ma waho o kou ʻike. Hoʻopuka i waho e ʻike ai.",
+    "mapFiltersHideMatches": "Ke hūnā nei kāu mau kānana i nā pāʻani āpau. Hoʻonui i ka huli e ʻike ai.",
+    "mapNoSearchMatches": "ʻAʻohe hana e like me kāu huli.",
+    "mapNoActivitiesArea": "ʻAʻohe hana ma kēia wahi."
 }

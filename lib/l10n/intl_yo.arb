@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-07-31 10:55:46.334239",
+    "@@last_modified": "2026-08-03 09:47:41.617836",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ fóńká rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́.",
     "exitGrammarPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ gírámà rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́.",
     "autoReadAloudMessagesToolName": "Fúnra rẹ̀ ka gbogbo àwọn ìránṣẹ́ tí a gbà jáde",
-    "autoReadAloudMessagesDescription": "Nígbà tí a bá gba ìránṣẹ́ kan, ohùn ẹ̀rọ yóò ṣee lò láti ka ìránṣẹ́ náà jáde fún ìdánilẹ́kọ̀ọ́ gbígbọ́."
+    "autoReadAloudMessagesDescription": "Nígbà tí a bá gba ìránṣẹ́ kan, ohùn ẹ̀rọ yóò ṣee lò láti ka ìránṣẹ́ náà jáde fún ìdánilẹ́kọ̀ọ́ gbígbọ́.",
+    "activityFilterButtonsLabel": "Ipele, awọn oṣere, ati awọn bọtini àlẹmọ ipo",
+    "mapFilterAllLevels": "Gbogbo awọn ipele",
+    "mapFilterAllPlayers": "Gbogbo awọn oṣere",
+    "mapFilterAllStatuses": "Gbogbo awọn ipo",
+    "mapFiltersShow": "Fi awọn àlẹmọ han",
+    "mapFiltersHide": "Tọju awọn àlẹmọ",
+    "mapStatusAvailable": "Wa",
+    "mapStatusOngoing": "Lọwọlọwọ",
+    "mapStatusWaiting": "Nduro",
+    "mapStatusOpenToJoin": "Ṣii lati darapọ",
+    "mapMatchesOffscreen": "Awọn ere wa ni ita wiwo rẹ. Sun jade lati rii wọn.",
+    "mapFiltersHideMatches": "Awọn àlẹmọ rẹ nfi gbogbo awọn ere pamọ. Fẹẹrẹ wiwa lati rii wọn.",
+    "mapNoSearchMatches": "Ko si awọn iṣẹ ṣiṣe ti o ba wiwa rẹ mu.",
+    "mapNoActivitiesArea": "Ko si awọn iṣẹ ṣiṣe ni agbegbe yii."
 }

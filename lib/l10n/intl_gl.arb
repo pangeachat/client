@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-07-31 10:55:35.544113",
+    "@@last_modified": "2026-08-03 09:47:22.069829",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9678,5 +9678,19 @@
     "exitVocabPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de vocabulario.",
     "exitGrammarPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de gramática.",
     "autoReadAloudMessagesToolName": "Ler en voz alta automaticamente todas as mensaxes recibidas",
-    "autoReadAloudMessagesDescription": "Cando se reciba unha mensaxe, a voz do dispositivo utilizarase para ler a mensaxe en voz alta para practicar a escoita."
+    "autoReadAloudMessagesDescription": "Cando se reciba unha mensaxe, a voz do dispositivo utilizarase para ler a mensaxe en voz alta para practicar a escoita.",
+    "activityFilterButtonsLabel": "Botóns de filtro de nivel, xogadores e estado",
+    "mapFilterAllLevels": "Todos os niveis",
+    "mapFilterAllPlayers": "Todos os xogadores",
+    "mapFilterAllStatuses": "Todos os estados",
+    "mapFiltersShow": "Mostrar filtros",
+    "mapFiltersHide": "Ocultar filtros",
+    "mapStatusAvailable": "Dispoñible",
+    "mapStatusOngoing": "En curso",
+    "mapStatusWaiting": "Agardando",
+    "mapStatusOpenToJoin": "Aberto a unirse",
+    "mapMatchesOffscreen": "Hai partidas fóra da túa vista. Afasta o zoom para velas.",
+    "mapFiltersHideMatches": "Os teus filtros están a ocultar todas as partidas. Amplía a busca para velas.",
+    "mapNoSearchMatches": "Ningunha actividade coincide coa túa busca.",
+    "mapNoActivitiesArea": "Non hai actividades nesta área."
 }

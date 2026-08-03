@@ -1333,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-31 10:55:44.346445",
+    "@@last_modified": "2026-08-03 09:47:38.668793",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10634,5 +10634,19 @@
     "exitVocabPracticeSession": "మీ ప్రస్తుత పదజాల అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు.",
     "exitGrammarPracticeSession": "మీ ప్రస్తుత వ్యాకరణ అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు.",
     "autoReadAloudMessagesToolName": "స్వీకరించిన అన్ని సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి",
-    "autoReadAloudMessagesDescription": "సందేశం అందినప్పుడు, వినడం సాధన కోసం పరికర వాయిస్ సందేశాన్ని బిగ్గరగా చదవడానికి ఉపయోగించబడుతుంది."
+    "autoReadAloudMessagesDescription": "సందేశం అందినప్పుడు, వినడం సాధన కోసం పరికర వాయిస్ సందేశాన్ని బిగ్గరగా చదవడానికి ఉపయోగించబడుతుంది.",
+    "activityFilterButtonsLabel": "స్థాయి, ఆటగాళ్ళు మరియు స్థితి ఫిల్టర్ బటన్లు",
+    "mapFilterAllLevels": "అన్ని స్థాయిలు",
+    "mapFilterAllPlayers": "అన్ని ఆటగాళ్ళు",
+    "mapFilterAllStatuses": "అన్ని స్థితులు",
+    "mapFiltersShow": "ఫిల్టర్‌లను చూపించు",
+    "mapFiltersHide": "ఫిల్టర్‌లను దాచు",
+    "mapStatusAvailable": "అందుబాటులో ఉంది",
+    "mapStatusOngoing": "కొనసాగుతోంది",
+    "mapStatusWaiting": "వేచి ఉంది",
+    "mapStatusOpenToJoin": "చేరడానికి సిద్ధంగా ఉంది",
+    "mapMatchesOffscreen": "మీ వీక్షణకు వెలుపల మ్యాచ్‌లు ఉన్నాయి. వాటిని చూడటానికి జూమ్ అవుట్ చేయండి.",
+    "mapFiltersHideMatches": "మీ ఫిల్టర్‌లు అన్ని మ్యాచ్‌లను దాచిపెడుతున్నాయి. వాటిని చూడటానికి శోధనను విస్తరించండి.",
+    "mapNoSearchMatches": "మీ శోధనకు సరిపోలే కార్యకలాపాలు లేవు.",
+    "mapNoActivitiesArea": "ఈ ప్రాంతంలో కార్యకలాపాలు లేవు."
 }

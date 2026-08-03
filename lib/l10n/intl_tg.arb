@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-07-31 10:55:45.295170",
+    "@@last_modified": "2026-08-03 09:47:39.084783",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи луғати шумо захира карда намешавад.",
     "exitGrammarPracticeSession": "Пешрафти ҷаласаи ҳозираи машқи грамматикаи шумо захира карда намешавад.",
     "autoReadAloudMessagesToolName": "Ҳамаи паёмҳои қабулшударо ба таври худкор бо овози баланд хонед",
-    "autoReadAloudMessagesDescription": "Ҳангоми қабули паём, овози дастгоҳ барои хондани паём бо овози баланд барои машқи гӯш кардан истифода мешавад."
+    "autoReadAloudMessagesDescription": "Ҳангоми қабули паём, овози дастгоҳ барои хондани паём бо овози баланд барои машқи гӯш кардан истифода мешавад.",
+    "activityFilterButtonsLabel": "Тугмаҳои филтр барои сатҳ, бозигарон ва ҳолат",
+    "mapFilterAllLevels": "Ҳама сатҳҳо",
+    "mapFilterAllPlayers": "Ҳама бозигарон",
+    "mapFilterAllStatuses": "Ҳама ҳолатҳо",
+    "mapFiltersShow": "Филтрҳоро нишон додан",
+    "mapFiltersHide": "Филтрҳоро пинҳон кардан",
+    "mapStatusAvailable": "Дастрас",
+    "mapStatusOngoing": "Дар ҳоли иҷро",
+    "mapStatusWaiting": "Интизорӣ",
+    "mapStatusOpenToJoin": "Барои ҳамроҳ шудан кушода аст",
+    "mapMatchesOffscreen": "Бозиҳо берун аз назари шумо ҳастанд. Барои дидани онҳо хурдтар кунед.",
+    "mapFiltersHideMatches": "Филтрҳои шумо ҳамаи бозиҳоро пинҳон мекунанд. Барои дидани онҳо ҷустуҷӯро васеътар кунед.",
+    "mapNoSearchMatches": "Ҳеҷ гуна фаъолият ба ҷустуҷӯи шумо мувофиқат намекунад.",
+    "mapNoActivitiesArea": "Дар ин минтақа ҳеҷ гуна фаъолият нест."
 }

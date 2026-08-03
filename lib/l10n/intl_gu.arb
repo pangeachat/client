@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-07-31 10:55:35.358349",
+    "@@last_modified": "2026-08-03 09:47:21.565590",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "તમારી વર્તમાન શબ્દભંડોળ પ્રેક્ટિસ સત્રની પ્રગતિ સાચવવામાં આવશે નહીં.",
     "exitGrammarPracticeSession": "તમારી વર્તમાન વ્યાકરણ પ્રેક્ટિસ સત્રની પ્રગતિ સાચવવામાં આવશે નહીં.",
     "autoReadAloudMessagesToolName": "આપમેળે પ્રાપ્ત થયેલા બધા સંદેશાઓ મોટેથી વાંચો",
-    "autoReadAloudMessagesDescription": "જ્યારે કોઈ સંદેશ પ્રાપ્ત થાય છે, ત્યારે સાંભળવાની પ્રેક્ટિસ માટે ડિવાઇસનો અવાજ સંદેશ મોટેથી વાંચવા માટે ઉપયોગમાં લેવાશે."
+    "autoReadAloudMessagesDescription": "જ્યારે કોઈ સંદેશ પ્રાપ્ત થાય છે, ત્યારે સાંભળવાની પ્રેક્ટિસ માટે ડિવાઇસનો અવાજ સંદેશ મોટેથી વાંચવા માટે ઉપયોગમાં લેવાશે.",
+    "activityFilterButtonsLabel": "સ્તર, ખેલાડીઓ અને સ્થિતિ ફિલ્ટર બટનો",
+    "mapFilterAllLevels": "બધા સ્તરો",
+    "mapFilterAllPlayers": "બધા ખેલાડીઓ",
+    "mapFilterAllStatuses": "બધી સ્થિતિઓ",
+    "mapFiltersShow": "ફિલ્ટર્સ બતાવો",
+    "mapFiltersHide": "ફિલ્ટર્સ છુપાવો",
+    "mapStatusAvailable": "ઉપલબ્ધ",
+    "mapStatusOngoing": "ચાલુ",
+    "mapStatusWaiting": "પ્રતીક્ષામાં",
+    "mapStatusOpenToJoin": "જોડાવા માટે ખુલ્લું",
+    "mapMatchesOffscreen": "તમારી દૃષ્ટિની બહાર મેચો છે. તેમને જોવા માટે ઝૂમ આઉટ કરો.",
+    "mapFiltersHideMatches": "તમારા ફિલ્ટર્સ બધી મેચો છુપાવી રહ્યા છે. તેમને જોવા માટે શોધને વિસ્તૃત કરો.",
+    "mapNoSearchMatches": "તમારી શોધ સાથે કોઈ પ્રવૃત્તિઓ મેળ ખાતી નથી.",
+    "mapNoActivitiesArea": "આ વિસ્તારમાં કોઈ પ્રવૃત્તિઓ નથી."
 }

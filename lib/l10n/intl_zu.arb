@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-07-31 10:55:47.150192",
+    "@@last_modified": "2026-08-03 09:47:42.346368",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza amagama ngeke ilondolozwe.",
     "exitGrammarPracticeSession": "Inqubekelaphambili yakho yamanje yeseshini yokuzijwayeza uhlelo lolimi ngeke ilondolozwe.",
     "autoReadAloudMessagesToolName": "Funda ngokuzenzakalelayo yonke imilayezo etholiwe",
-    "autoReadAloudMessagesDescription": "Uma kutholwa umlayezo, izwi ledivayisi lizosetshenziswa ukufunda umlayezo ukuze kuzilolwe ukulalela."
+    "autoReadAloudMessagesDescription": "Uma kutholwa umlayezo, izwi ledivayisi lizosetshenziswa ukufunda umlayezo ukuze kuzilolwe ukulalela.",
+    "activityFilterButtonsLabel": "Izinga, abadlali, nezinkinobho zokuhlunga isimo",
+    "mapFilterAllLevels": "Wonke amazinga",
+    "mapFilterAllPlayers": "Bonke abadlali",
+    "mapFilterAllStatuses": "Zonke izimo",
+    "mapFiltersShow": "Bonisa izihlungi",
+    "mapFiltersHide": "Fihla izihlungi",
+    "mapStatusAvailable": "Ikhona",
+    "mapStatusOngoing": "Iyaqhubeka",
+    "mapStatusWaiting": "Ilindile",
+    "mapStatusOpenToJoin": "Ikhona ukuze ujoyine",
+    "mapMatchesOffscreen": "Kukhona okufanayo ngaphandle kokubona kwakho. Sondeza ukuze ukubone.",
+    "mapFiltersHideMatches": "Izihlungi zakho zifihla konke okufanayo. Nweba usesho ukuze ukubone.",
+    "mapNoSearchMatches": "Azikho izinto ezifanayo nosesho lwakho.",
+    "mapNoActivitiesArea": "Azikho izinto kule ndawo."
 }

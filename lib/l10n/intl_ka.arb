@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-31 10:55:38.243408",
+    "@@last_modified": "2026-08-03 09:47:26.974897",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10584,5 +10584,19 @@
     "exitVocabPracticeSession": "თქვენი მიმდინარე ლექსიკის სავარჯიშო სესიის პროგრესი არ შეინახება.",
     "exitGrammarPracticeSession": "თქვენი მიმდინარე გრამატიკის სავარჯიშო სესიის პროგრესი არ შეინახება.",
     "autoReadAloudMessagesToolName": "ყველა მიღებული შეტყობინების ავტომატურად ხმამაღლა წაკითხვა",
-    "autoReadAloudMessagesDescription": "შეტყობინების მიღებისას, მოწყობილობის ხმა გამოყენებული იქნება შეტყობინების ხმამაღლა წასაკითხად მოსმენის პრაქტიკისთვის."
+    "autoReadAloudMessagesDescription": "შეტყობინების მიღებისას, მოწყობილობის ხმა გამოყენებული იქნება შეტყობინების ხმამაღლა წასაკითხად მოსმენის პრაქტიკისთვის.",
+    "activityFilterButtonsLabel": "დონე, მოთამაშეები და სტატუსის ფილტრის ღილაკები",
+    "mapFilterAllLevels": "ყველა დონე",
+    "mapFilterAllPlayers": "ყველა მოთამაშე",
+    "mapFilterAllStatuses": "ყველა სტატუსი",
+    "mapFiltersShow": "ფილტრების ჩვენება",
+    "mapFiltersHide": "ფილტრების დამალვა",
+    "mapStatusAvailable": "ხელმისაწვდომია",
+    "mapStatusOngoing": "მიმდინარეობს",
+    "mapStatusWaiting": "ელოდება",
+    "mapStatusOpenToJoin": "გახსნილია შესაერთებლად",
+    "mapMatchesOffscreen": "თქვენი ხედვის არეალის მიღმა არის მატჩები. მათი სანახავად დააპატარავეთ ხედი.",
+    "mapFiltersHideMatches": "თქვენი ფილტრები მალავს ყველა მატჩს. მათი სანახავად გააფართოვეთ ძებნა.",
+    "mapNoSearchMatches": "თქვენს ძიებას არ ემთხვევა არცერთი აქტივობა.",
+    "mapNoActivitiesArea": "ამ ტერიტორიაზე არ არის აქტივობები."
 }

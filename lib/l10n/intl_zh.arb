@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-31 10:55:45.458062",
+    "@@last_modified": "2026-08-03 09:47:41.059168",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9678,5 +9678,19 @@
     "exitVocabPracticeSession": "您当前词汇练习的进度将不会被保存。",
     "exitGrammarPracticeSession": "您当前语法练习的进度将不会被保存。",
     "autoReadAloudMessagesToolName": "自动朗读所有收到的消息",
-    "autoReadAloudMessagesDescription": "收到消息时，设备语音将朗读消息，以供听力练习。"
+    "autoReadAloudMessagesDescription": "收到消息时，设备语音将朗读消息，以供听力练习。",
+    "activityFilterButtonsLabel": "等级、玩家和状态筛选按钮",
+    "mapFilterAllLevels": "所有等级",
+    "mapFilterAllPlayers": "所有玩家",
+    "mapFilterAllStatuses": "所有状态",
+    "mapFiltersShow": "显示筛选器",
+    "mapFiltersHide": "隐藏筛选器",
+    "mapStatusAvailable": "可用",
+    "mapStatusOngoing": "进行中",
+    "mapStatusWaiting": "等待中",
+    "mapStatusOpenToJoin": "开放加入",
+    "mapMatchesOffscreen": "您的视野外有匹配项。请缩小以查看。",
+    "mapFiltersHideMatches": "您的筛选器隐藏了所有匹配项。请放宽搜索范围以查看。",
+    "mapNoSearchMatches": "没有符合您搜索条件的活动。",
+    "mapNoActivitiesArea": "此区域没有活动。"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-07-31 10:55:39.960376",
+    "@@last_modified": "2026-08-03 09:47:31.613270",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana voambolana ity.",
     "exitGrammarPracticeSession": "Tsy ho voatahiry ny fandrosoanao amin'ity fampiharana fitsipi-pitenenana ity.",
     "autoReadAloudMessagesToolName": "Vakio ho azy mafy ny hafatra rehetra voaray",
-    "autoReadAloudMessagesDescription": "Rehefa misy hafatra voaray, dia hampiasaina ny feon'ny fitaovana hamakiana mafy ny hafatra ho an'ny fampiharana fihainoana."
+    "autoReadAloudMessagesDescription": "Rehefa misy hafatra voaray, dia hampiasaina ny feon'ny fitaovana hamakiana mafy ny hafatra ho an'ny fampiharana fihainoana.",
+    "activityFilterButtonsLabel": "Sivana araka ny ambaratonga, mpilalao, ary sata",
+    "mapFilterAllLevels": "Ambaratonga rehetra",
+    "mapFilterAllPlayers": "Mpilalao rehetra",
+    "mapFilterAllStatuses": "Sata rehetra",
+    "mapFiltersShow": "Asehoy ny sivana",
+    "mapFiltersHide": "Afeno ny sivana",
+    "mapStatusAvailable": "Misy",
+    "mapStatusOngoing": "Mandeha",
+    "mapStatusWaiting": "Miandry",
+    "mapStatusOpenToJoin": "Misokatra ho an'ny fidirana",
+    "mapMatchesOffscreen": "Misy lalao ivelan'ny fijerinao. Ataovy kely kokoa ny fijery mba hahitana azy ireo.",
+    "mapFiltersHideMatches": "Manarona ny lalao rehetra ny sivanao. Ataovy mivelatra kokoa ny fikarohana mba hahitana azy ireo.",
+    "mapNoSearchMatches": "Tsy misy hetsika mifanaraka amin'ny fikarohanao.",
+    "mapNoActivitiesArea": "Tsy misy hetsika eto amin'ity faritra ity."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-07-31 10:55:39.809505",
+    "@@last_modified": "2026-08-03 09:47:29.720663",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2052,5 +2052,19 @@
     "exitVocabPracticeSession": "Напредокот од тековната сесија за вежбање вокабулар нема да биде зачуван.",
     "exitGrammarPracticeSession": "Напредокот од тековната сесија за вежбање граматика нема да биде зачуван.",
     "autoReadAloudMessagesToolName": "Автоматско читање на сите примени пораки",
-    "autoReadAloudMessagesDescription": "Кога ќе се прими порака, гласот на уредот ќе се користи за читање на пораката на глас за вежбање слушање."
+    "autoReadAloudMessagesDescription": "Кога ќе се прими порака, гласот на уредот ќе се користи за читање на пораката на глас за вежбање слушање.",
+    "activityFilterButtonsLabel": "Копчиња за филтрирање ниво, играчи и статус",
+    "mapFilterAllLevels": "Сите нивоа",
+    "mapFilterAllPlayers": "Сите играчи",
+    "mapFilterAllStatuses": "Сите статуси",
+    "mapFiltersShow": "Прикажи филтри",
+    "mapFiltersHide": "Сокриј филтри",
+    "mapStatusAvailable": "Достапно",
+    "mapStatusOngoing": "Во тек",
+    "mapStatusWaiting": "Чекање",
+    "mapStatusOpenToJoin": "Отворено за приклучување",
+    "mapMatchesOffscreen": "Има натпревари надвор од вашиот поглед. Одзумирајте за да ги видите.",
+    "mapFiltersHideMatches": "Вашите филтри ги кријат сите натпревари. Проширете го пребарувањето за да ги видите.",
+    "mapNoSearchMatches": "Нема активности што одговараат на вашето пребарување.",
+    "mapNoActivitiesArea": "Нема активности во оваа област."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 10:55:40.626342",
+    "@@last_modified": "2026-08-03 09:47:31.922325",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9678,5 +9678,19 @@
     "exitVocabPracticeSession": "De voortgang van je huidige woordenschatoefensessie wordt niet opgeslagen.",
     "exitGrammarPracticeSession": "De voortgang van je huidige grammaticaoefensessie wordt niet opgeslagen.",
     "autoReadAloudMessagesToolName": "Alle ontvangen berichten automatisch voorlezen",
-    "autoReadAloudMessagesDescription": "Wanneer een bericht wordt ontvangen, wordt de stem van het apparaat gebruikt om het bericht voor te lezen voor luisteroefeningen."
+    "autoReadAloudMessagesDescription": "Wanneer een bericht wordt ontvangen, wordt de stem van het apparaat gebruikt om het bericht voor te lezen voor luisteroefeningen.",
+    "activityFilterButtonsLabel": "Filterknoppen voor niveau, spelers en status",
+    "mapFilterAllLevels": "Alle niveaus",
+    "mapFilterAllPlayers": "Alle spelers",
+    "mapFilterAllStatuses": "Alle statussen",
+    "mapFiltersShow": "Filters tonen",
+    "mapFiltersHide": "Filters verbergen",
+    "mapStatusAvailable": "Beschikbaar",
+    "mapStatusOngoing": "Bezig",
+    "mapStatusWaiting": "Wachtend",
+    "mapStatusOpenToJoin": "Open om deel te nemen",
+    "mapMatchesOffscreen": "Er zijn wedstrijden buiten je zicht. Zoom uit om ze te zien.",
+    "mapFiltersHideMatches": "Je filters verbergen alle wedstrijden. Verbreed de zoekopdracht om ze te zien.",
+    "mapNoSearchMatches": "Geen activiteiten komen overeen met je zoekopdracht.",
+    "mapNoActivitiesArea": "Geen activiteiten in dit gebied."
 }
