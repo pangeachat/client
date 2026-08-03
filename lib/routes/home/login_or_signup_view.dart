@@ -72,16 +72,21 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
               child: Column(
                 children: [
                   const SizedBox(height: 32.0),
-                  _LoginCarousel(
-                    isMobile: isMobile,
-                    imageUrls: imageUrls,
-                    labels: _labels,
-                    onPageChange: (index) {
-                      if (mounted) {
-                        setState(() => _currentIndex = index);
-                      }
-                    },
-                    controller: _carouselController,
+                  // The carousel is the flexible element: it absorbs whatever
+                  // height is left after the buttons, which are laid out at
+                  // their natural size so they can never be pushed off screen.
+                  Expanded(
+                    child: _LoginCarousel(
+                      isMobile: isMobile,
+                      imageUrls: imageUrls,
+                      labels: _labels,
+                      onPageChange: (index) {
+                        if (mounted) {
+                          setState(() => _currentIndex = index);
+                        }
+                      },
+                      controller: _carouselController,
+                    ),
                   ),
                   const SizedBox(height: 24.0),
                   Row(
@@ -103,58 +108,55 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
                     ),
                   ),
                   const SizedBox(height: 24.0),
-                  Expanded(
-                    flex: 1,
-                    child: Center(
-                      child: Container(
-                        constraints: const BoxConstraints(maxWidth: 300),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 24),
-                          child: Column(
-                            spacing: 8.0,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              ElevatedButton(
-                                onPressed: () => context.go('/home/signup'),
-                                style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      theme.colorScheme.primaryContainer,
-                                  foregroundColor:
-                                      theme.colorScheme.onPrimaryContainer,
-                                ),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      L10n.of(context).getStarted,
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                  Center(
+                    child: Container(
+                      constraints: const BoxConstraints(maxWidth: 300),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(24, 0, 24, 24),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          spacing: 8.0,
+                          children: [
+                            ElevatedButton(
+                              onPressed: () => context.go('/home/signup'),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                                foregroundColor:
+                                    theme.colorScheme.onPrimaryContainer,
                               ),
-                              ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                  foregroundColor: theme.colorScheme.onSurface,
-                                  backgroundColor: theme.colorScheme.surface
-                                      .withValues(alpha: 0.4),
-                                ),
-                                onPressed: () => context.go('/home/login'),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      L10n.of(context).loginToAccount,
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.w600,
-                                      ),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    L10n.of(context).getStarted,
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
                                     ),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
-                            ],
-                          ),
+                            ),
+                            ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                foregroundColor: theme.colorScheme.onSurface,
+                                backgroundColor: theme.colorScheme.surface
+                                    .withValues(alpha: 0.4),
+                              ),
+                              onPressed: () => context.go('/home/login'),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    L10n.of(context).loginToAccount,
+                                    style: const TextStyle(
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -199,93 +201,99 @@ class _LoginCarousel extends StatelessWidget {
     final screenWidth = MediaQuery.widthOf(context);
 
     if (isMobile) {
-      return SizedBox(
-        width: screenWidth,
-        height: screenWidth * 1.25 + _headlineStripHeight,
-        child: CarouselSlider(
-          items: imageUrls
-              .mapIndexed(
-                (index, imageUrl) => Column(
-                  children: [
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(
-                        minHeight: _headlineStripHeight,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
-                        child: labels[index] == null
-                            ? const SizedBox.shrink()
-                            : _SlideHeadline(labels[index]!),
-                      ),
+      // Natural height is the full-width 4:5 slide plus the headline strip.
+      // When the window is shorter than that, the cap lets the carousel
+      // shrink and the slide image scales down instead of hiding the buttons.
+      return Center(
+        child: ConstrainedBox(
+          constraints: BoxConstraints(
+            maxHeight: screenWidth * 1.25 + _headlineStripHeight,
+          ),
+          child: SizedBox(
+            width: screenWidth,
+            child: CarouselSlider(
+              items: imageUrls
+                  .mapIndexed(
+                    (index, imageUrl) => Column(
+                      children: [
+                        ConstrainedBox(
+                          constraints: const BoxConstraints(
+                            minHeight: _headlineStripHeight,
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+                            child: labels[index] == null
+                                ? const SizedBox.shrink()
+                                : _SlideHeadline(labels[index]!),
+                          ),
+                        ),
+                        Expanded(
+                          child: CachedNetworkImage(
+                            imageUrl: imageUrl,
+                            width: double.infinity,
+                            fit: BoxFit.contain,
+                            errorWidget: (context, url, error) =>
+                                Center(child: PangeaLogoSvg(width: 128.0)),
+                          ),
+                        ),
+                      ],
                     ),
-                    Expanded(
-                      child: CachedNetworkImage(
-                        imageUrl: imageUrl,
-                        width: double.infinity,
-                        fit: BoxFit.contain,
-                        errorWidget: (context, url, error) =>
-                            Center(child: PangeaLogoSvg(width: 128.0)),
-                      ),
-                    ),
-                  ],
-                ),
-              )
-              .toList(),
-          carouselController: controller,
-          options: CarouselOptions(
-            height: double.infinity,
-            viewportFraction: 1.0,
-            autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 8),
-            onPageChanged: (index, _) => onPageChange(index),
+                  )
+                  .toList(),
+              carouselController: controller,
+              options: CarouselOptions(
+                height: double.infinity,
+                viewportFraction: 1.0,
+                autoPlay: true,
+                autoPlayInterval: const Duration(seconds: 8),
+                onPageChanged: (index, _) => onPageChange(index),
+              ),
+            ),
           ),
         ),
       );
     }
 
     // Desktop
-    return Expanded(
-      flex: 2,
-      child: CarouselSlider(
-        items: imageUrls
-            .mapIndexed(
-              (index, imageUrl) => ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: _wideSlideMaxWidth),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      child: CachedNetworkImage(
-                        imageUrl: imageUrl,
-                        width: double.infinity,
-                        fit: BoxFit.contain,
-                        errorWidget: (context, url, error) =>
-                            Center(child: PangeaLogoSvg(width: 256.0)),
-                      ),
+    return CarouselSlider(
+      items: imageUrls
+          .mapIndexed(
+            (index, imageUrl) => ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: _wideSlideMaxWidth),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      width: double.infinity,
+                      fit: BoxFit.contain,
+                      errorWidget: (context, url, error) =>
+                          Center(child: PangeaLogoSvg(width: 256.0)),
                     ),
-                    const SizedBox(height: 24.0),
-                    // Reserve roughly one headline line so slide 1, which has
-                    // no headline, keeps its image aligned with the others.
-                    ConstrainedBox(
-                      constraints: const BoxConstraints(minHeight: 30.0),
-                      child: labels[index] == null
-                          ? const SizedBox.shrink()
-                          : _SlideHeadline(labels[index]!),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(height: 24.0),
+                  // Reserve roughly one headline line so slide 1, which has
+                  // no headline, keeps its image aligned with the others.
+                  ConstrainedBox(
+                    constraints: const BoxConstraints(minHeight: 30.0),
+                    child: labels[index] == null
+                        ? const SizedBox.shrink()
+                        : _SlideHeadline(labels[index]!),
+                  ),
+                ],
               ),
-            )
-            .toList(),
-        carouselController: controller,
-        options: CarouselOptions(
-          viewportFraction: 1.0,
-          autoPlay: true,
-          autoPlayInterval: const Duration(seconds: 8),
-          onPageChanged: (index, _) {
-            onPageChange(index);
-          },
-        ),
+            ),
+          )
+          .toList(),
+      carouselController: controller,
+      options: CarouselOptions(
+        viewportFraction: 1.0,
+        autoPlay: true,
+        autoPlayInterval: const Duration(seconds: 8),
+        onPageChanged: (index, _) {
+          onPageChange(index);
+        },
       ),
     );
   }
