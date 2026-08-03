@@ -6,7 +6,6 @@ import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
@@ -72,31 +71,7 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
             SafeArea(
               child: Column(
                 children: [
-                  if (!isMobile)
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 24.0, top: 32.0),
-                      child: Row(
-                        spacing: 12.0,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          ExcludeSemantics(
-                            child: PangeaLogoSvg(
-                              width: 48.0,
-                              forceColor: theme.colorScheme.onSurface,
-                            ),
-                          ),
-                          Text(
-                            AppSettings.applicationName.value,
-                            style: theme.textTheme.displayMedium?.copyWith(
-                              color: theme.colorScheme.onSurface,
-                              fontWeight: FontWeight.w800,
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  else
-                    const SizedBox(height: 32.0),
+                  const SizedBox(height: 32.0),
                   _LoginCarousel(
                     isMobile: isMobile,
                     imageUrls: imageUrls,
