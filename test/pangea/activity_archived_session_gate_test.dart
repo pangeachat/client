@@ -1,4 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 
@@ -40,6 +41,45 @@ void main() {
         archivedSessionGate(activityRemoved: false, hasSessionRoom: false),
         isFalse,
       );
+    });
+  });
+
+  /// The gate deciding whether the archived view offers a Leave button.
+  ///
+  /// A removed activity's session can never be continued or finished and no
+  /// one else can be invited into it, so before #8064 a joined learner had no
+  /// exit at all: the session sat in their chat list forever. Leaving is the
+  /// one action still available on this dead room — but only to someone
+  /// actually in it.
+  group('archivedLeaveGate', () {
+    test('a joined learner on an archived session can leave', () {
+      expect(
+        archivedLeaveGate(isArchived: true, membership: Membership.join),
+        isTrue,
+      );
+    });
+
+    test('a live activity never offers leave here — its session is still '
+        'playable and the ⋮ menu owns that action', () {
+      expect(
+        archivedLeaveGate(isArchived: false, membership: Membership.join),
+        isFalse,
+      );
+    });
+
+    test('nothing to leave without a joined membership', () {
+      for (final membership in [
+        Membership.invite,
+        Membership.leave,
+        Membership.ban,
+        null,
+      ]) {
+        expect(
+          archivedLeaveGate(isArchived: true, membership: membership),
+          isFalse,
+          reason: 'membership $membership should not offer leave',
+        );
+      }
     });
   });
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 12:37:30.180960",
+    "@@last_modified": "2026-08-03 09:47:19.176754",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10047,7 +10047,6 @@
     "browsePublicCourses": "Serĉu publikajn kursojn",
     "editProfile": "Redaktu profilon",
     "mapSearchHint": "Serĉu aktivecojn",
-    "mapSearchNoResults": "Neniuj kongruoj en vido",
     "mapFilterAllLanguages": "Ĉiuj lingvoj",
     "mapFilterNotStarted": "Ne komencita",
     "mapFilterInProgress": "En progreso",
@@ -10056,7 +10055,6 @@
     "activityTypeConversation": "Konversacio",
     "playAgain": "Ludi denove",
     "reviewActivity": "Revizii",
-    "mapEmptyInView": "Nenio ĉi tie ĉe via nivelo aŭ lingvo. Larĝigu viajn filtrilojn aŭ malproksimiĝu.",
     "welcomeToPangeaChat": "Bonvenon al Pangea Ĉat",
     "claimTrial": "Postuli vian provon",
     "thanksForSigningUp": "Dankon pro aliĝi! Jen",
@@ -10127,10 +10125,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10160,10 +10154,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10384,7 +10374,6 @@
     "analyticsAndSettingsLabel": "Analitiko kaj Agordoj opcioj",
     "searchActivitiesLabel": "Serĉi aktivadojn sur mapo",
     "filteredActivitiesLabel": "Filtrita aktivado-listo",
-    "activityFilterButtonsLabel": "Lingvo, malfacileco, kaj progreso filtraj butonoj",
     "mapZoomLabel": "Mapo zoom-kontroloj",
     "activityMapLabel": "Aktivado-mapo",
     "@navOptionsLabel": {
@@ -10404,10 +10393,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10645,5 +10630,19 @@
     "exitGrammarPracticeSession": "Via nuna progreso en la gramatikpraktika sesio ne estos konservita.",
     "autoReadAloudMessagesToolName": "Aŭtomate laŭtlegi ĉiujn ricevitajn mesaĝojn",
     "autoReadAloudMessagesDescription": "Kiam mesaĝo estas ricevita, la voĉo de la aparato estos uzata por laŭtlegi la mesaĝon por aŭskulta praktiko.",
+    "activityFilterButtonsLabel": "Filtraj butonoj por nivelo, ludantoj kaj stato",
+    "mapFilterAllLevels": "Ĉiuj niveloj",
+    "mapFilterAllPlayers": "Ĉiuj ludantoj",
+    "mapFilterAllStatuses": "Ĉiuj statoj",
+    "mapFiltersShow": "Montri filtrilojn",
+    "mapFiltersHide": "Kaŝi filtrilojn",
+    "mapStatusAvailable": "Disponebla",
+    "mapStatusOngoing": "Daŭranta",
+    "mapStatusWaiting": "Atendante",
+    "mapStatusOpenToJoin": "Malfermita por aliĝi",
+    "mapMatchesOffscreen": "Estas matĉoj ekster via vido. Malgrandigu por vidi ilin.",
+    "mapFiltersHideMatches": "Viaj filtriloj kaŝas ĉiujn matĉojn. Plilarĝigu la serĉon por vidi ilin.",
+    "mapNoSearchMatches": "Neniuj agadoj kongruas kun via serĉo.",
+    "mapNoActivitiesArea": "Neniuj agadoj en ĉi tiu areo.",
     "practiceSessionTimedOut": "Via ekzercsesio finiĝis post {minutes} minutoj sen aktiveco."
 }

@@ -6,6 +6,7 @@ import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_practice_generator.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
@@ -133,17 +134,28 @@ class GrammarErrorTargetGenerator {
       final igcMatch = step.acceptedOrIgnoredMatch;
 
       final stepText = choreo.stepText(stepIndex: i - 1);
-      final errorSpan = stepText.characters
-          .skip(igcMatch!.match.offset)
-          .take(igcMatch.match.length)
-          .toString();
+      // The stored `length` is the *corrected* span's length —
+      // `IgcController._applyReplacement` overwrites it on accept — so slicing
+      // the pre-correction text with it drifts by the correction's length delta
+      // and can hide an accent-only fix from the normalization check below.
+      final errorSpan =
+          GrammarErrorPracticeGenerator.originalErrorSpan(
+            choreo: choreo,
+            stepIndex: i,
+            matchOffset: igcMatch!.match.offset,
+            correctChoice: igcMatch.match.bestChoice!.value,
+          ) ??
+          stepText.characters
+              .skip(igcMatch.match.offset)
+              .take(igcMatch.match.length)
+              .toString();
 
       if (igcMatch.match.isNormalizationError(errorSpanOverride: errorSpan)) {
         continue;
       }
 
       if (igcMatch.match.offset == 0 &&
-          igcMatch.match.length >= stepText.trim().characters.length) {
+          errorSpan.characters.length >= stepText.trim().characters.length) {
         continue;
       }
 
@@ -191,6 +203,9 @@ class GrammarErrorTargetGenerator {
             stepIndex: i,
             eventID: event.eventId,
             translation: translation,
+            // The example is shown off the sent message, which is gated to L2
+            // above, so it reads as L2 with every correction applied (#8044).
+            sentText: originalSent?.text ?? event.body,
           ),
         ),
       );

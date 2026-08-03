@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 12:37:41.976068",
+    "@@last_modified": "2026-08-03 09:47:40.424630",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6362,7 +6362,6 @@
     "browsePublicCourses": "Duyệt các khóa học công khai",
     "editProfile": "Chỉnh sửa hồ sơ",
     "mapSearchHint": "Tìm kiếm hoạt động",
-    "mapSearchNoResults": "Không có kết quả nào trong chế độ xem",
     "mapFilterAllLanguages": "Tất cả các ngôn ngữ",
     "mapFilterNotStarted": "Chưa bắt đầu",
     "mapFilterInProgress": "Đang tiến hành",
@@ -6371,7 +6370,6 @@
     "activityTypeConversation": "Cuộc trò chuyện",
     "playAgain": "Chơi lại",
     "reviewActivity": "Xem lại",
-    "mapEmptyInView": "Không có gì ở cấp độ hoặc ngôn ngữ của bạn. Mở rộng bộ lọc của bạn hoặc thu nhỏ.",
     "welcomeToPangeaChat": "Chào mừng đến với Pangea Chat",
     "claimTrial": "Nhận thử nghiệm của bạn",
     "thanksForSigningUp": "Cảm ơn bạn đã đăng ký! Đây là",
@@ -6442,10 +6440,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -6475,10 +6469,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -6699,7 +6689,6 @@
     "analyticsAndSettingsLabel": "Tùy chọn phân tích và cài đặt",
     "searchActivitiesLabel": "Tìm kiếm hoạt động trên bản đồ",
     "filteredActivitiesLabel": "Danh sách hoạt động đã lọc",
-    "activityFilterButtonsLabel": "Nút lọc ngôn ngữ, độ khó và tiến độ",
     "mapZoomLabel": "Điều khiển phóng to bản đồ",
     "activityMapLabel": "Bản đồ hoạt động",
     "@navOptionsLabel": {
@@ -6719,10 +6708,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6960,5 +6945,19 @@
     "exitGrammarPracticeSession": "Tiến độ phiên luyện ngữ pháp hiện tại của bạn sẽ không được lưu.",
     "autoReadAloudMessagesToolName": "Tự động đọc to tất cả tin nhắn đã nhận",
     "autoReadAloudMessagesDescription": "Khi nhận được tin nhắn, giọng nói của thiết bị sẽ được sử dụng để đọc to tin nhắn, giúp bạn luyện nghe.",
+    "activityFilterButtonsLabel": "Các nút lọc cấp độ, người chơi và trạng thái",
+    "mapFilterAllLevels": "Tất cả cấp độ",
+    "mapFilterAllPlayers": "Tất cả người chơi",
+    "mapFilterAllStatuses": "Tất cả trạng thái",
+    "mapFiltersShow": "Hiện bộ lọc",
+    "mapFiltersHide": "Ẩn bộ lọc",
+    "mapStatusAvailable": "Có sẵn",
+    "mapStatusOngoing": "Đang diễn ra",
+    "mapStatusWaiting": "Đang chờ",
+    "mapStatusOpenToJoin": "Mở để tham gia",
+    "mapMatchesOffscreen": "Có các trận đấu nằm ngoài tầm nhìn của bạn. Hãy thu nhỏ để xem chúng.",
+    "mapFiltersHideMatches": "Bộ lọc của bạn đang ẩn tất cả các trận đấu. Hãy mở rộng phạm vi tìm kiếm để xem chúng.",
+    "mapNoSearchMatches": "Không có hoạt động nào khớp với tìm kiếm của bạn.",
+    "mapNoActivitiesArea": "Không có hoạt động nào trong khu vực này.",
     "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động."
 }

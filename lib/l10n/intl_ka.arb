@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-31 12:37:34.087729",
+    "@@last_modified": "2026-08-03 09:47:26.974897",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10002,7 +10002,6 @@
     "browsePublicCourses": "გადახედეთ საჯარო კურსებს",
     "editProfile": "რედაქტირება პროფილში",
     "mapSearchHint": "ძებნა აქტივობებში",
-    "mapSearchNoResults": "არ არის შესაბამისი შედეგები",
     "mapFilterAllLanguages": "ყველა ენა",
     "mapFilterNotStarted": "არ დაწყებულა",
     "mapFilterInProgress": "მიმდინარეა",
@@ -10011,7 +10010,6 @@
     "activityTypeConversation": "საუბარი",
     "playAgain": "მორიგე თამაში",
     "reviewActivity": "მიმოხილვა",
-    "mapEmptyInView": "აქ არაფერია თქვენს დონეზე ან ენაზე. გააფართოვეთ თქვენი ფილტრები ან დააკლებეთ ზუმი.",
     "welcomeToPangeaChat": "კეთილი იყოს თქვენი მობრძანება Pangea Chat-ში",
     "claimTrial": "მიითვისეთ თქვენი საცდელი ვადა",
     "thanksForSigningUp": "გმადლობთ რეგისტრაციისთვის! აი",
@@ -10082,10 +10080,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10115,10 +10109,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10339,7 +10329,6 @@
     "analyticsAndSettingsLabel": "ანალიტიკა და პარამეტრები",
     "searchActivitiesLabel": "ძებნა აქტივობების რუკაზე",
     "filteredActivitiesLabel": "ფილტრირებული აქტივობების სია",
-    "activityFilterButtonsLabel": "ენას, სირთულეს და პროგრესს ფილტრების ღილაკები",
     "mapZoomLabel": "რუკის ზუმის კონტროლი",
     "activityMapLabel": "აქტივობის რუკა",
     "@navOptionsLabel": {
@@ -10359,10 +10348,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10600,5 +10585,19 @@
     "exitGrammarPracticeSession": "თქვენი მიმდინარე გრამატიკის სავარჯიშო სესიის პროგრესი არ შეინახება.",
     "autoReadAloudMessagesToolName": "ყველა მიღებული შეტყობინების ავტომატურად ხმამაღლა წაკითხვა",
     "autoReadAloudMessagesDescription": "შეტყობინების მიღებისას, მოწყობილობის ხმა გამოყენებული იქნება შეტყობინების ხმამაღლა წასაკითხად მოსმენის პრაქტიკისთვის.",
+    "activityFilterButtonsLabel": "დონე, მოთამაშეები და სტატუსის ფილტრის ღილაკები",
+    "mapFilterAllLevels": "ყველა დონე",
+    "mapFilterAllPlayers": "ყველა მოთამაშე",
+    "mapFilterAllStatuses": "ყველა სტატუსი",
+    "mapFiltersShow": "ფილტრების ჩვენება",
+    "mapFiltersHide": "ფილტრების დამალვა",
+    "mapStatusAvailable": "ხელმისაწვდომია",
+    "mapStatusOngoing": "მიმდინარეობს",
+    "mapStatusWaiting": "ელოდება",
+    "mapStatusOpenToJoin": "გახსნილია შესაერთებლად",
+    "mapMatchesOffscreen": "თქვენი ხედვის არეალის მიღმა არის მატჩები. მათი სანახავად დააპატარავეთ ხედი.",
+    "mapFiltersHideMatches": "თქვენი ფილტრები მალავს ყველა მატჩს. მათი სანახავად გააფართოვეთ ძებნა.",
+    "mapNoSearchMatches": "თქვენს ძიებას არ ემთხვევა არცერთი აქტივობა.",
+    "mapNoActivitiesArea": "ამ ტერიტორიაზე არ არის აქტივობები.",
     "practiceSessionTimedOut": "თქვენი სავარჯიშო სესია დასრულდა {minutes} წუთის უმოქმედობის შემდეგ."
 }

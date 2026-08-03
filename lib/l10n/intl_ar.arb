@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-31 12:37:28.617601",
+    "@@last_modified": "2026-08-03 09:47:17.173244",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9406,7 +9406,6 @@
     "browsePublicCourses": "تصفح الدورات العامة",
     "editProfile": "تعديل الملف الشخصي",
     "mapSearchHint": "ابحث عن الأنشطة",
-    "mapSearchNoResults": "لا توجد تطابقات في العرض",
     "mapFilterAllLanguages": "جميع اللغات",
     "mapFilterNotStarted": "لم يبدأ بعد",
     "mapFilterInProgress": "قيد التقدم",
@@ -9415,7 +9414,6 @@
     "activityTypeConversation": "محادثة",
     "playAgain": "العب مرة أخرى",
     "reviewActivity": "مراجعة",
-    "mapEmptyInView": "لا شيء هنا بمستواك أو لغتك. قم بتوسيع الفلاتر أو قم بالتكبير للخارج.",
     "welcomeToPangeaChat": "مرحبًا بك في دردشة بانجيا",
     "claimTrial": "احصل على تجربتك",
     "thanksForSigningUp": "شكرًا لتسجيلك! إليك",
@@ -9486,10 +9484,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9519,10 +9513,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9743,7 +9733,6 @@
     "analyticsAndSettingsLabel": "خيارات التحليلات والإعدادات",
     "searchActivitiesLabel": "البحث عن الأنشطة على الخريطة",
     "filteredActivitiesLabel": "قائمة الأنشطة المفلترة",
-    "activityFilterButtonsLabel": "أزرار تصفية اللغة والصعوبة والتقدم",
     "mapZoomLabel": "تحكمات تكبير الخريطة",
     "activityMapLabel": "خريطة الأنشطة",
     "@navOptionsLabel": {
@@ -9763,10 +9752,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10000,5 +9985,19 @@
     "exitGrammarPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب القواعد الحالية.",
     "autoReadAloudMessagesToolName": "قراءة جميع الرسائل المستلمة تلقائيًا بصوت عالٍ",
     "autoReadAloudMessagesDescription": "عند استلام رسالة، سيتم استخدام صوت الجهاز لقراءة الرسالة بصوت عالٍ لممارسة الاستماع.",
+    "activityFilterButtonsLabel": "أزرار تصفية المستوى واللاعبين والحالة",
+    "mapFilterAllLevels": "جميع المستويات",
+    "mapFilterAllPlayers": "جميع اللاعبين",
+    "mapFilterAllStatuses": "جميع الحالات",
+    "mapFiltersShow": "إظهار الفلاتر",
+    "mapFiltersHide": "إخفاء الفلاتر",
+    "mapStatusAvailable": "متاح",
+    "mapStatusOngoing": "جارٍ",
+    "mapStatusWaiting": "في الانتظار",
+    "mapStatusOpenToJoin": "مفتوح للانضمام",
+    "mapMatchesOffscreen": "توجد مباريات خارج نطاق رؤيتك. صغّر الخريطة لرؤيتها.",
+    "mapFiltersHideMatches": "الفلاتر التي اخترتها تخفي جميع المباريات. وسّع نطاق البحث لرؤيتها.",
+    "mapNoSearchMatches": "لا توجد أنشطة مطابقة لبحثك.",
+    "mapNoActivitiesArea": "لا توجد أنشطة في هذه المنطقة.",
     "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط."
 }

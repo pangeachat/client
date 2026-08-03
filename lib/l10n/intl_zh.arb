@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-31 12:37:42.519828",
+    "@@last_modified": "2026-08-03 09:47:41.059168",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9096,7 +9096,6 @@
     "browsePublicCourses": "浏览公开课程",
     "editProfile": "编辑个人资料",
     "mapSearchHint": "搜索活动",
-    "mapSearchNoResults": "视图中没有匹配项",
     "mapFilterAllLanguages": "所有语言",
     "mapFilterNotStarted": "未开始",
     "mapFilterInProgress": "进行中",
@@ -9105,7 +9104,6 @@
     "activityTypeConversation": "对话",
     "playAgain": "再玩一次",
     "reviewActivity": "回顾",
-    "mapEmptyInView": "在您的级别或语言中没有任何内容。扩大您的过滤器或缩小视图。",
     "welcomeToPangeaChat": "欢迎来到 Pangea Chat",
     "claimTrial": "领取您的试用",
     "thanksForSigningUp": "感谢您的注册！这是",
@@ -9176,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9209,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9433,7 +9423,6 @@
     "analyticsAndSettingsLabel": "分析和设置选项",
     "searchActivitiesLabel": "在地图上搜索活动",
     "filteredActivitiesLabel": "过滤后的活动列表",
-    "activityFilterButtonsLabel": "语言、难度和进度过滤按钮",
     "mapZoomLabel": "地图缩放控件",
     "activityMapLabel": "活动地图",
     "@navOptionsLabel": {
@@ -9453,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9694,5 +9679,19 @@
     "exitGrammarPracticeSession": "您当前语法练习的进度将不会被保存。",
     "autoReadAloudMessagesToolName": "自动朗读所有收到的消息",
     "autoReadAloudMessagesDescription": "收到消息时，设备语音将朗读消息，以供听力练习。",
+    "activityFilterButtonsLabel": "等级、玩家和状态筛选按钮",
+    "mapFilterAllLevels": "所有等级",
+    "mapFilterAllPlayers": "所有玩家",
+    "mapFilterAllStatuses": "所有状态",
+    "mapFiltersShow": "显示筛选器",
+    "mapFiltersHide": "隐藏筛选器",
+    "mapStatusAvailable": "可用",
+    "mapStatusOngoing": "进行中",
+    "mapStatusWaiting": "等待中",
+    "mapStatusOpenToJoin": "开放加入",
+    "mapMatchesOffscreen": "您的视野外有匹配项。请缩小以查看。",
+    "mapFiltersHideMatches": "您的筛选器隐藏了所有匹配项。请放宽搜索范围以查看。",
+    "mapNoSearchMatches": "没有符合您搜索条件的活动。",
+    "mapNoActivitiesArea": "此区域没有活动。",
     "practiceSessionTimedOut": "您的练习会话因{minutes}分钟无活动而结束。"
 }

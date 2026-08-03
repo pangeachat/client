@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 12:37:29.214007",
+    "@@last_modified": "2026-08-03 09:47:18.245986",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9223,7 +9223,6 @@
     "browsePublicCourses": "Explora cursos públics",
     "editProfile": "Edita el perfil",
     "mapSearchHint": "Cerca activitats",
-    "mapSearchNoResults": "Sense coincidències a la vista",
     "mapFilterAllLanguages": "Totes les llengües",
     "mapFilterNotStarted": "No iniciat",
     "mapFilterInProgress": "En curs",
@@ -9232,7 +9231,6 @@
     "activityTypeConversation": "Conversació",
     "playAgain": "Juga de nou",
     "reviewActivity": "Revisar",
-    "mapEmptyInView": "No hi ha res aquí al teu nivell o idioma. Ampliu els vostres filtres o allunyeu-vos.",
     "welcomeToPangeaChat": "Benvingut a Pangea Chat",
     "claimTrial": "Reclama la teva prova",
     "thanksForSigningUp": "Gràcies per registrar-te! Aquí tens",
@@ -9303,10 +9301,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9336,10 +9330,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9560,7 +9550,6 @@
     "analyticsAndSettingsLabel": "Opcions d'analítica i configuració",
     "searchActivitiesLabel": "Cerca d'activitats al mapa",
     "filteredActivitiesLabel": "Llista d'activitats filtrades",
-    "activityFilterButtonsLabel": "Botons de filtre de llengua, dificultat i progrés",
     "mapZoomLabel": "Controls de zoom del mapa",
     "activityMapLabel": "Mapa d'activitats",
     "@navOptionsLabel": {
@@ -9580,10 +9569,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9821,5 +9806,19 @@
     "exitGrammarPracticeSession": "El progrés de la sessió actual de pràctica de gramàtica no es desarà.",
     "autoReadAloudMessagesToolName": "Llegir en veu alta automàticament tots els missatges rebuts",
     "autoReadAloudMessagesDescription": "Quan es rep un missatge, la veu del dispositiu s'utilitzarà per llegir el missatge en veu alta per practicar l'escolta.",
+    "activityFilterButtonsLabel": "Botons de filtre de nivell, jugadors i estat",
+    "mapFilterAllLevels": "Tots els nivells",
+    "mapFilterAllPlayers": "Tots els jugadors",
+    "mapFilterAllStatuses": "Tots els estats",
+    "mapFiltersShow": "Mostrar filtres",
+    "mapFiltersHide": "Amagar filtres",
+    "mapStatusAvailable": "Disponible",
+    "mapStatusOngoing": "En curs",
+    "mapStatusWaiting": "Esperant",
+    "mapStatusOpenToJoin": "Obert a unir-se",
+    "mapMatchesOffscreen": "Hi ha partides fora de la teva vista. Allunya el zoom per veure-les.",
+    "mapFiltersHideMatches": "Els teus filtres estan amagant totes les partides. Amplia la cerca per veure-les.",
+    "mapNoSearchMatches": "Cap activitat coincideix amb la teva cerca.",
+    "mapNoActivitiesArea": "No hi ha activitats en aquesta zona.",
     "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat."
 }

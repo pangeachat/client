@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-07-31 12:37:42.178223",
+    "@@last_modified": "2026-08-03 09:47:40.926494",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10059,7 +10059,6 @@
     "browsePublicCourses": "瀏覽公共課程",
     "editProfile": "編輯個人資料",
     "mapSearchHint": "搜索活動",
-    "mapSearchNoResults": "視圖中沒有匹配項",
     "mapFilterAllLanguages": "所有語言",
     "mapFilterNotStarted": "尚未開始",
     "mapFilterInProgress": "進行中",
@@ -10068,7 +10067,6 @@
     "activityTypeConversation": "對話",
     "playAgain": "再玩一次",
     "reviewActivity": "檢視",
-    "mapEmptyInView": "在你的級別或語言中沒有任何東西。擴大你的篩選或縮小視圖。",
     "welcomeToPangeaChat": "歡迎來到 Pangea Chat",
     "claimTrial": "索取你的試用",
     "thanksForSigningUp": "感謝你註冊！這裡是",
@@ -10139,10 +10137,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10172,10 +10166,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10396,7 +10386,6 @@
     "analyticsAndSettingsLabel": "分析和設置選項",
     "searchActivitiesLabel": "在地圖上搜索活動",
     "filteredActivitiesLabel": "過濾後的活動列表",
-    "activityFilterButtonsLabel": "語言、難度和進度過濾按鈕",
     "mapZoomLabel": "地圖縮放控制",
     "activityMapLabel": "活動地圖",
     "@navOptionsLabel": {
@@ -10416,10 +10405,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10657,5 +10642,19 @@
     "exitGrammarPracticeSession": "你目前嘅文法練習進度將唔會被儲存。",
     "autoReadAloudMessagesToolName": "自動朗讀所有已接收訊息",
     "autoReadAloudMessagesDescription": "當收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。",
+    "activityFilterButtonsLabel": "等級、玩家同狀態篩選按鈕",
+    "mapFilterAllLevels": "所有等級",
+    "mapFilterAllPlayers": "所有玩家",
+    "mapFilterAllStatuses": "所有狀態",
+    "mapFiltersShow": "顯示篩選",
+    "mapFiltersHide": "隱藏篩選",
+    "mapStatusAvailable": "可用",
+    "mapStatusOngoing": "進行中",
+    "mapStatusWaiting": "等候中",
+    "mapStatusOpenToJoin": "開放加入",
+    "mapMatchesOffscreen": "有啲配對喺你視野之外。縮細地圖睇吓。",
+    "mapFiltersHideMatches": "你嘅篩選條件隱藏咗所有配對。放寬搜尋條件嚟睇吓。",
+    "mapNoSearchMatches": "冇活動符合你嘅搜尋。",
+    "mapNoActivitiesArea": "呢個區域冇活動。",
     "practiceSessionTimedOut": "你嘅練習環節喺冇活動 {minutes} 分鐘後結束咗。"
 }

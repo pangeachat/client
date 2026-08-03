@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 12:37:34.146257",
+    "@@last_modified": "2026-08-03 09:47:26.730608",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9289,7 +9289,6 @@
     "browsePublicCourses": "공개 과정 탐색",
     "editProfile": "프로필 수정",
     "mapSearchHint": "활동 검색",
-    "mapSearchNoResults": "일치하는 항목이 없습니다",
     "mapFilterAllLanguages": "모든 언어",
     "mapFilterNotStarted": "시작하지 않음",
     "mapFilterInProgress": "진행 중",
@@ -9298,7 +9297,6 @@
     "activityTypeConversation": "대화",
     "playAgain": "다시 플레이",
     "reviewActivity": "검토",
-    "mapEmptyInView": "귀하의 수준이나 언어에 해당하는 내용이 없습니다. 필터를 넓히거나 축소하세요.",
     "welcomeToPangeaChat": "Pangea Chat에 오신 것을 환영합니다",
     "claimTrial": "체험판을 신청하세요",
     "thanksForSigningUp": "가입해 주셔서 감사합니다! 여기에",
@@ -9369,10 +9367,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9402,10 +9396,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9626,7 +9616,6 @@
     "analyticsAndSettingsLabel": "분석 및 설정 옵션",
     "searchActivitiesLabel": "지도에서 활동 검색",
     "filteredActivitiesLabel": "필터링된 활동 목록",
-    "activityFilterButtonsLabel": "언어, 난이도 및 진행 필터 버튼",
     "mapZoomLabel": "지도 확대/축소 제어",
     "activityMapLabel": "활동 지도",
     "@navOptionsLabel": {
@@ -9646,10 +9635,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9887,5 +9872,19 @@
     "exitGrammarPracticeSession": "현재 문법 연습 세션 진행 상황은 저장되지 않습니다.",
     "autoReadAloudMessagesToolName": "수신 메시지 자동 소리 내어 읽기",
     "autoReadAloudMessagesDescription": "메시지를 받으면 기기 음성으로 메시지를 소리 내어 읽어 듣기 연습을 할 수 있습니다.",
+    "activityFilterButtonsLabel": "레벨, 플레이어, 상태 필터 버튼",
+    "mapFilterAllLevels": "모든 레벨",
+    "mapFilterAllPlayers": "모든 플레이어",
+    "mapFilterAllStatuses": "모든 상태",
+    "mapFiltersShow": "필터 표시",
+    "mapFiltersHide": "필터 숨기기",
+    "mapStatusAvailable": "이용 가능",
+    "mapStatusOngoing": "진행 중",
+    "mapStatusWaiting": "대기 중",
+    "mapStatusOpenToJoin": "참여 가능",
+    "mapMatchesOffscreen": "화면 밖에 매치가 있습니다. 축소하여 확인하세요.",
+    "mapFiltersHideMatches": "필터가 모든 매치를 숨기고 있습니다. 검색 범위를 넓혀 확인하세요.",
+    "mapNoSearchMatches": "검색과 일치하는 활동이 없습니다.",
+    "mapNoActivitiesArea": "이 지역에 활동이 없습니다.",
     "practiceSessionTimedOut": "활동이 없어 {minutes}분 후 연습 세션이 종료되었습니다."
 }

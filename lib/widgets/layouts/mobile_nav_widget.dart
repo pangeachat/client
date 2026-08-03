@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -202,6 +204,15 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const double _peekHeight = 128.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
+  /// The least the keyboard trim may leave of a cavity that HOLDS FOCUS — the
+  /// drag handle plus one text-field row. Trimming past it drops the hosted
+  /// surface entirely (see `showContent` in [build]), which disposes the
+  /// focused field's node, which closes the keyboard, which un-trims the
+  /// cavity, which remounts the field: the #8072 loop where a tapped input
+  /// deselects itself. Applies only while something inside the cavity is
+  /// focused, so the plain keyboard trim of #7754 is unchanged.
+  static const double _focusedKeyboardFloor = 96.0;
+
   /// The rest stop the cavity currently sits at. Non-null means the drawn
   /// fraction is DERIVED from this each build ([_currentFraction]), so it
   /// tracks the live max height and content-fit hint — a cold mount, a
@@ -224,6 +235,16 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// Last value handed to [MobileNavWidget.onCavityFullChanged]; the post-frame
   /// notify in [build] fires only on a real change.
   bool _reportedFull = false;
+
+  /// Something inside [MobileNavWidget.cavityChild] holds focus — in practice a
+  /// text input the learner just tapped. Drives both the grow-to-full below and
+  /// the [_focusedKeyboardFloor] in [build].
+  bool _cavityHasFocus = false;
+
+  /// The grow-to-full has already fired for the current focus/keyboard episode,
+  /// so a later rebuild does not undo a height the learner chose by dragging
+  /// while the keyboard is still up. Cleared when focus or the keyboard leaves.
+  bool _grewForKeyboard = false;
 
   @override
   void initState() {
@@ -270,8 +291,40 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       setState(() => _restState = restored);
       _fullLatched = restored == NavCavityHeight.full;
     }
+    // The keyboard arrives a frame or two after the focus that summoned it, so
+    // this — not [_onCavityFocusChanged] alone — is where the grow usually
+    // fires.
+    _growForKeyboardIfNeeded();
     // A preferredCavityHeightPx change needs no handling: a resting sheet
     // derives its fraction from the current hint every build.
+  }
+
+  void _onCavityFocusChanged(bool hasFocus) {
+    if (!mounted || _cavityHasFocus == hasFocus) return;
+    setState(() => _cavityHasFocus = hasFocus);
+    _growForKeyboardIfNeeded();
+  }
+
+  /// Grow the cavity to full while a hosted input holds focus and the software
+  /// keyboard is up. At peek — or at a short content-fit half — the keyboard
+  /// covers the whole cavity, leaving the learner typing into a field they
+  /// cannot see, so full (the most room the widget has) is the only height that
+  /// works. It mirrors the peek's own tap-to-expand (#7609), which a text
+  /// field's tap otherwise claims for itself. Deliberately NOT remembered: the
+  /// keyboard picked this height, not the learner, so the next open still uses
+  /// the height they left it at (#7332, #7510). #8072.
+  void _growForKeyboardIfNeeded() {
+    if (!_cavityHasFocus || widget.keyboardInset <= 0) {
+      _grewForKeyboard = false;
+      return;
+    }
+    if (_grewForKeyboard ||
+        widget.cavityChild == null ||
+        _restState == NavCavityHeight.full) {
+      return;
+    }
+    _grewForKeyboard = true;
+    _openAt(NavCavityHeight.full, remember: false);
   }
 
   /// The fraction actually drawn this frame: derived from the rest state
@@ -347,8 +400,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   // value between frames.
   double _lastMaxHeightPx = 0.0;
 
-  void _openAt(NavCavityHeight height) {
-    _remember(height);
+  void _openAt(NavCavityHeight height, {bool remember = true}) {
+    if (remember) _remember(height);
     _fullLatched = height == NavCavityHeight.full;
     setState(() => _restState = height);
   }
@@ -576,14 +629,37 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                               onDragStart: _onDragStart,
                               onDragUpdate: _onDragUpdate,
                               onDragEnd: _onDragEnd,
-                              child: widget.cavityChild!,
+                              // Watches the hosted surface for a focused text
+                              // input (#8072). Focusable itself only as an
+                              // ancestor — it never takes focus or a traversal
+                              // stop of its own.
+                              child: Focus(
+                                canRequestFocus: false,
+                                skipTraversal: true,
+                                onFocusChange: _onCavityFocusChanged,
+                                child: widget.cavityChild!,
+                              ),
                             ),
                             builder: (context, animatedHeight, child) {
-                              final visible =
+                              final trimmed =
                                   (animatedHeight - widget.keyboardInset).clamp(
                                     0.0,
                                     animatedHeight,
                                   );
+                              // Hold the floor while the cavity holds focus, so
+                              // the grow-to-full above has frames to run in
+                              // without the trim unmounting the very field that
+                              // triggered it (#8072).
+                              final visible =
+                                  _cavityHasFocus && baseCavityPx > 0
+                                  ? max(
+                                      trimmed,
+                                      min(
+                                        animatedHeight,
+                                        _focusedKeyboardFloor,
+                                      ),
+                                    )
+                                  : trimmed;
                               // Drop the content the instant the cavity is
                               // TARGETED shut (baseCavityPx), not when the
                               // ANIMATED height reaches 0 — otherwise a

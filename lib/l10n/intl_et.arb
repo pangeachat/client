@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-31 12:37:30.463680",
+    "@@last_modified": "2026-08-03 09:47:19.935360",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9093,7 +9093,6 @@
     "browsePublicCourses": "Sirvi avalikke kursusi",
     "editProfile": "Muuda profiili",
     "mapSearchHint": "Otsi tegevusi",
-    "mapSearchNoResults": "Vaates ei ole vasteid",
     "mapFilterAllLanguages": "Kõik keeled",
     "mapFilterNotStarted": "Alustamata",
     "mapFilterInProgress": "Käimas",
@@ -9102,7 +9101,6 @@
     "activityTypeConversation": "Vestlus",
     "playAgain": "Mängi uuesti",
     "reviewActivity": "Ülevaade",
-    "mapEmptyInView": "Sinu tasemel või keeles ei ole siin midagi. Laienda oma filtreid või suumi välja.",
     "welcomeToPangeaChat": "Tere tulemast Pangea Chati",
     "claimTrial": "Nõua oma prooviversioon",
     "thanksForSigningUp": "Aitäh registreerumise eest! Siin on",
@@ -9173,10 +9171,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9206,10 +9200,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9430,7 +9420,6 @@
     "analyticsAndSettingsLabel": "Analüütika ja seadevalikute valikud",
     "searchActivitiesLabel": "Otsi tegevusi kaardilt",
     "filteredActivitiesLabel": "Filtreeritud tegevuste loetelu",
-    "activityFilterButtonsLabel": "Keele, raskuse ja edusamme filtreerimise nupud",
     "mapZoomLabel": "Kaardi suumimise juhtnupud",
     "activityMapLabel": "Tegevuste kaart",
     "@navOptionsLabel": {
@@ -9450,10 +9439,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9691,5 +9676,19 @@
     "exitGrammarPracticeSession": "Sinu praeguse grammatika harjutamise seansi edenemist ei salvestata.",
     "autoReadAloudMessagesToolName": "Loe kõik saabunud sõnumid automaatselt ette",
     "autoReadAloudMessagesDescription": "Sõnumi saabumisel loeb seadme hääl sõnumi kuulamispraktika jaoks ette.",
+    "activityFilterButtonsLabel": "Taseme, mängijate ja oleku filtri nupud",
+    "mapFilterAllLevels": "Kõik tasemed",
+    "mapFilterAllPlayers": "Kõik mängijad",
+    "mapFilterAllStatuses": "Kõik olekud",
+    "mapFiltersShow": "Näita filtreid",
+    "mapFiltersHide": "Peida filtrid",
+    "mapStatusAvailable": "Saadaval",
+    "mapStatusOngoing": "Käimas",
+    "mapStatusWaiting": "Ootel",
+    "mapStatusOpenToJoin": "Liitumiseks avatud",
+    "mapMatchesOffscreen": "Mõned mängud jäävad vaateväljast välja. Suumi välja, et neid näha.",
+    "mapFiltersHideMatches": "Teie filtrid peidavad kõik mängud. Laiendage otsingut, et neid näha.",
+    "mapNoSearchMatches": "Teie otsingule ei vasta ühtegi tegevust.",
+    "mapNoActivitiesArea": "Selles piirkonnas pole tegevusi.",
     "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust."
 }

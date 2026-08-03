@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/bot/utils/bot_style.dart';
+import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -56,6 +56,11 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
   static const double _particleSpeed = 50;
   static const double gravity = 15;
   static const int duration = 2000;
+
+  /// Size of the "+" / "-" particles. Deliberately independent of
+  /// [AppSettings.fontSizeFactor] — these are decorative animation particles,
+  /// not readable text, so they stay the same size at every font size setting.
+  static const double _particleFontSize = AppConfig.messageFontSize * 1.2;
 
   @override
   void initState() {
@@ -132,11 +137,10 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
 
     final plusWidget = Text(
       _points > 0 ? "+" : "-",
-      style: BotStyle.text(
-        context,
-        big: true,
-        setColor: textColor == null,
-        existingStyle: TextStyle(color: textColor),
+      style: TextStyle(
+        fontSize: _particleFontSize,
+        color: textColor ?? Theme.of(context).colorScheme.primary,
+        height: 1.3,
       ),
     );
 

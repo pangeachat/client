@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-31 12:37:39.729078",
+    "@@last_modified": "2026-08-03 09:47:34.798155",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10070,7 +10070,6 @@
     "browsePublicCourses": "Просмотреть публичные курсы",
     "editProfile": "Редактировать профиль",
     "mapSearchHint": "Поиск мероприятий",
-    "mapSearchNoResults": "Нет совпадений в области видимости",
     "mapFilterAllLanguages": "Все языки",
     "mapFilterNotStarted": "Не начато",
     "mapFilterInProgress": "В процессе",
@@ -10079,7 +10078,6 @@
     "activityTypeConversation": "Разговор",
     "playAgain": "Играть снова",
     "reviewActivity": "Обзор",
-    "mapEmptyInView": "Здесь ничего нет на вашем уровне или языке. Расширьте свои фильтры или уменьшите масштаб.",
     "welcomeToPangeaChat": "Добро пожаловать в Pangea Chat",
     "claimTrial": "Получите свою пробную версию",
     "thanksForSigningUp": "Спасибо за регистрацию! Вот",
@@ -10150,10 +10148,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10183,10 +10177,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10407,7 +10397,6 @@
     "analyticsAndSettingsLabel": "Опции аналитики и настроек",
     "searchActivitiesLabel": "Поиск активностей на карте",
     "filteredActivitiesLabel": "Список отфильтрованных активностей",
-    "activityFilterButtonsLabel": "Кнопки фильтрации по языку, сложности и прогрессу",
     "mapZoomLabel": "Элементы управления масштабом карты",
     "activityMapLabel": "Карта активностей",
     "@navOptionsLabel": {
@@ -10427,10 +10416,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10668,5 +10653,19 @@
     "exitGrammarPracticeSession": "Прогресс текущей сессии по практике грамматики не будет сохранен.",
     "autoReadAloudMessagesToolName": "Автоматически читать вслух все полученные сообщения",
     "autoReadAloudMessagesDescription": "Когда сообщение получено, голос устройства будет использоваться для чтения сообщения вслух для практики аудирования.",
+    "activityFilterButtonsLabel": "Кнопки фильтра по уровню, игрокам и статусу",
+    "mapFilterAllLevels": "Все уровни",
+    "mapFilterAllPlayers": "Все игроки",
+    "mapFilterAllStatuses": "Все статусы",
+    "mapFiltersShow": "Показать фильтры",
+    "mapFiltersHide": "Скрыть фильтры",
+    "mapStatusAvailable": "Доступно",
+    "mapStatusOngoing": "В процессе",
+    "mapStatusWaiting": "Ожидание",
+    "mapStatusOpenToJoin": "Открыто для присоединения",
+    "mapMatchesOffscreen": "Есть матчи за пределами вашей видимости. Уменьшите масштаб, чтобы увидеть их.",
+    "mapFiltersHideMatches": "Ваши фильтры скрывают все матчи. Расширьте поиск, чтобы увидеть их.",
+    "mapNoSearchMatches": "По вашему запросу не найдено ни одной активности.",
+    "mapNoActivitiesArea": "В этой области нет активностей.",
     "practiceSessionTimedOut": "Ваша тренировка завершилась после {minutes} минут бездействия."
 }

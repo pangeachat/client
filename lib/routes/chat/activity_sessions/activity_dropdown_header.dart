@@ -80,14 +80,14 @@ class ActivityDropdownHeader extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         // Only this top row toggles the menu; InkWell gives it a hover/ripple.
+        // Its padding is equal above and below so the highlight reads as a
+        // symmetric band rather than stopping flush under the stars.
         InkWell(
           onTap: onToggle,
           child: Padding(
-            padding: EdgeInsets.fromLTRB(
-              12.0,
-              GoalHeaderConstants.topPadding,
-              12.0,
-              subtitle != null ? 0.0 : GoalHeaderConstants.topPadding,
+            padding: const EdgeInsets.symmetric(
+              horizontal: 12.0,
+              vertical: GoalHeaderConstants.topPadding,
             ),
             child: Row(
               children: [
@@ -102,6 +102,8 @@ class ActivityDropdownHeader extends StatelessWidget {
           ),
         ),
         if (subtitle != null)
+          // No top padding: the toggle row's own bottom padding already
+          // separates the subtitle from the stars.
           Padding(
             padding: const EdgeInsets.fromLTRB(
               16.0,

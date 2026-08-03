@@ -1333,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-31 12:37:40.749567",
+    "@@last_modified": "2026-08-03 09:47:38.668793",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10052,7 +10052,6 @@
     "browsePublicCourses": "ప్రజా కోర్సులను బ్రౌజ్ చేయండి",
     "editProfile": "ప్రొఫైల్ సవరించండి",
     "mapSearchHint": "చర్యలను శోధించండి",
-    "mapSearchNoResults": "చూపులో సరిపోలడం లేదు",
     "mapFilterAllLanguages": "అన్ని భాషలు",
     "mapFilterNotStarted": "ప్రారంభించలేదు",
     "mapFilterInProgress": "జరుగుతోంది",
@@ -10061,7 +10060,6 @@
     "activityTypeConversation": "సంభాషణ",
     "playAgain": "మళ్లీ ఆడండి",
     "reviewActivity": "సమీక్ష",
-    "mapEmptyInView": "మీ స్థాయిలో లేదా భాషలో ఇక్కడ ఏమి లేదు. మీ ఫిల్టర్లను విస్తరించండి లేదా జూమ్ అవుట్ చేయండి.",
     "welcomeToPangeaChat": "పాంజియా చాట్‌కు స్వాగతం",
     "claimTrial": "మీ ట్రయల్‌ను క్లెయిమ్ చేయండి",
     "thanksForSigningUp": "సైన్ అప్ చేసినందుకు ధన్యవాదాలు! ఇది",
@@ -10132,10 +10130,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10165,10 +10159,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10389,7 +10379,6 @@
     "analyticsAndSettingsLabel": "విశ్లేషణ మరియు సెట్టింగ్స్ ఎంపికలు",
     "searchActivitiesLabel": "నకశా పై కార్యకలాపాలను శోధించండి",
     "filteredActivitiesLabel": "ఫిల్టర్ చేసిన కార్యకలాపాల జాబితా",
-    "activityFilterButtonsLabel": "భాష, కష్టత, మరియు పురోగతి ఫిల్టర్ బటన్లు",
     "mapZoomLabel": "నకశా జూమ్ నియంత్రణలు",
     "activityMapLabel": "కార్యకలాపాల నకశా",
     "@navOptionsLabel": {
@@ -10409,10 +10398,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10650,5 +10635,19 @@
     "exitGrammarPracticeSession": "మీ ప్రస్తుత వ్యాకరణ అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు.",
     "autoReadAloudMessagesToolName": "స్వీకరించిన అన్ని సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి",
     "autoReadAloudMessagesDescription": "సందేశం అందినప్పుడు, వినడం సాధన కోసం పరికర వాయిస్ సందేశాన్ని బిగ్గరగా చదవడానికి ఉపయోగించబడుతుంది.",
+    "activityFilterButtonsLabel": "స్థాయి, ఆటగాళ్ళు మరియు స్థితి ఫిల్టర్ బటన్లు",
+    "mapFilterAllLevels": "అన్ని స్థాయిలు",
+    "mapFilterAllPlayers": "అన్ని ఆటగాళ్ళు",
+    "mapFilterAllStatuses": "అన్ని స్థితులు",
+    "mapFiltersShow": "ఫిల్టర్‌లను చూపించు",
+    "mapFiltersHide": "ఫిల్టర్‌లను దాచు",
+    "mapStatusAvailable": "అందుబాటులో ఉంది",
+    "mapStatusOngoing": "కొనసాగుతోంది",
+    "mapStatusWaiting": "వేచి ఉంది",
+    "mapStatusOpenToJoin": "చేరడానికి సిద్ధంగా ఉంది",
+    "mapMatchesOffscreen": "మీ వీక్షణకు వెలుపల మ్యాచ్‌లు ఉన్నాయి. వాటిని చూడటానికి జూమ్ అవుట్ చేయండి.",
+    "mapFiltersHideMatches": "మీ ఫిల్టర్‌లు అన్ని మ్యాచ్‌లను దాచిపెడుతున్నాయి. వాటిని చూడటానికి శోధనను విస్తరించండి.",
+    "mapNoSearchMatches": "మీ శోధనకు సరిపోలే కార్యకలాపాలు లేవు.",
+    "mapNoActivitiesArea": "ఈ ప్రాంతంలో కార్యకలాపాలు లేవు.",
     "practiceSessionTimedOut": "మీరు {minutes} నిమిషాలు నిష్క్రియంగా ఉన్నందున మీ అభ్యాస సెషన్ ముగిసింది."
 }

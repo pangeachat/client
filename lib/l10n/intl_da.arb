@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-07-31 12:37:30.430333",
+    "@@last_modified": "2026-08-03 09:47:19.301134",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10022,7 +10022,6 @@
     "browsePublicCourses": "Gennemse offentlige kurser",
     "editProfile": "Rediger profil",
     "mapSearchHint": "Søg aktiviteter",
-    "mapSearchNoResults": "Ingen matches i visningen",
     "mapFilterAllLanguages": "Alle sprog",
     "mapFilterNotStarted": "Ikke startet",
     "mapFilterInProgress": "I gang",
@@ -10031,7 +10030,6 @@
     "activityTypeConversation": "Samtale",
     "playAgain": "Spil igen",
     "reviewActivity": "Gennemgå",
-    "mapEmptyInView": "Der er intet her på dit niveau eller sprog. Udvid dine filtre eller zoom ud.",
     "welcomeToPangeaChat": "Velkommen til Pangea Chat",
     "claimTrial": "Gør krav på din prøve",
     "thanksForSigningUp": "Tak for tilmeldingen! Her er",
@@ -10102,10 +10100,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10135,10 +10129,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10359,7 +10349,6 @@
     "analyticsAndSettingsLabel": "Analyse- og indstillingsmuligheder",
     "searchActivitiesLabel": "Søg efter aktiviteter på kortet",
     "filteredActivitiesLabel": "Filtreret aktivitetsliste",
-    "activityFilterButtonsLabel": "Sprog-, sværhedsgrad- og fremskridtsfilterknapper",
     "mapZoomLabel": "Kort zoomkontroller",
     "activityMapLabel": "Aktivitetskort",
     "@navOptionsLabel": {
@@ -10379,10 +10368,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10620,5 +10605,19 @@
     "exitGrammarPracticeSession": "Dine fremskridt i den nuværende grammatikøvelse gemmes ikke.",
     "autoReadAloudMessagesToolName": "Læs automatisk alle modtagne beskeder højt",
     "autoReadAloudMessagesDescription": "Når en besked modtages, vil enhedens stemme blive brugt til at læse beskeden højt for at øve lyttefærdigheder.",
+    "activityFilterButtonsLabel": "Filterknapper for niveau, spillere og status",
+    "mapFilterAllLevels": "Alle niveauer",
+    "mapFilterAllPlayers": "Alle spillere",
+    "mapFilterAllStatuses": "Alle statusser",
+    "mapFiltersShow": "Vis filtre",
+    "mapFiltersHide": "Skjul filtre",
+    "mapStatusAvailable": "Tilgængelig",
+    "mapStatusOngoing": "I gang",
+    "mapStatusWaiting": "Venter",
+    "mapStatusOpenToJoin": "Åben for deltagelse",
+    "mapMatchesOffscreen": "Der er kampe uden for dit synsfelt. Zoom ud for at se dem.",
+    "mapFiltersHideMatches": "Dine filtre skjuler alle kampe. Udvid søgningen for at se dem.",
+    "mapNoSearchMatches": "Ingen aktiviteter matcher din søgning.",
+    "mapNoActivitiesArea": "Ingen aktiviteter i dette område.",
     "practiceSessionTimedOut": "Din træningssession blev afsluttet efter {minutes} minutter uden aktivitet."
 }

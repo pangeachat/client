@@ -323,6 +323,16 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
               style: theme.textTheme.bodyLarge,
             ),
             const SizedBox(height: 16.0),
+            // This rung has no CTA footer to hang the leave action off, so the
+            // way out sits with the notice that explains why there is no way
+            // forward (#8064).
+            if (controller.canLeaveArchivedSession) ...[
+              ActivitySessionCTAButton(
+                L10n.of(context).leave,
+                controller.leaveArchivedSession,
+              ),
+              const SizedBox(height: 16.0),
+            ],
             ...roles.map((role) {
               final user = room!.unsafeGetUserFromMemoryOrFallback(role.userId);
               final stars = awards?.awards[role.id]?.length ?? 0;

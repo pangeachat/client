@@ -109,6 +109,32 @@ class TtsRouting {
     return isSubscribed;
   }
 
+  /// Deadline for the backend TTS fetch.
+  ///
+  /// The short deadline exists so a device voice can rescue slow backend
+  /// responses. The phoneme path gets the full timeout instead: it is taken
+  /// precisely because the device cannot render the phoneme, so racing it
+  /// against one second only guarantees the wrong reading whenever the
+  /// backend is slow — the "plays huán while showing hái on first tap"
+  /// reports in #8076.
+  static Duration backendTimeout({
+    required bool hasPhoneme,
+    required bool hasVoice,
+  }) => hasPhoneme || !hasVoice
+      ? const Duration(seconds: 10)
+      : const Duration(seconds: 1);
+
+  /// Whether a failed backend fetch may fall back to a device voice.
+  ///
+  /// Never for phoneme playback — device TTS would speak a different reading
+  /// than the transcription on screen (word-text-to-speech.instructions.md
+  /// grants the phoneme route no device fallback). Silence is honest;
+  /// mismatched audio teaches the wrong pronunciation.
+  static bool allowDeviceFallback({
+    required bool hasPhoneme,
+    required bool hasVoice,
+  }) => !hasPhoneme && hasVoice;
+
   static bool isGoodWebVoiceName(String name) {
     final lower = name.toLowerCase();
     if (webExcludedVoiceNames.any((n) => n.toLowerCase() == lower)) {

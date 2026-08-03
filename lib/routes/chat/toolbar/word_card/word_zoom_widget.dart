@@ -164,7 +164,6 @@ class WordZoomWidget extends StatelessWidget {
                         pos: pos,
                         morph: morph,
                         style: const TextStyle(fontSize: 14.0),
-                        iconSize: 24.0,
                         maxLines: 2,
                         reloadNotifier: reloadNotifier,
                       ),

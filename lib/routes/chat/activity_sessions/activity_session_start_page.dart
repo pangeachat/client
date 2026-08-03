@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -25,6 +26,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -63,6 +65,17 @@ bool archivedSessionGate({
   required bool activityRemoved,
   required bool hasSessionRoom,
 }) => activityRemoved && hasSessionRoom;
+
+/// Whether the archived view offers a way out of the session room.
+///
+/// A removed activity's session can never be continued or finished — no one
+/// else can be invited into it — so without this the room sits in the chat
+/// list forever with no exit (#8064). Offered only to a learner actually
+/// joined: an observer previewing the room has nothing to leave.
+bool archivedLeaveGate({
+  required bool isArchived,
+  required Membership? membership,
+}) => isArchived && membership == Membership.join;
 
 class ActivitySessionStartPage extends StatefulWidget {
   final String activityId;
@@ -355,6 +368,45 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     activityRemoved: activityRemoved,
     hasSessionRoom: widget.roomId != null,
   );
+
+  /// See [archivedLeaveGate].
+  bool get canLeaveArchivedSession => archivedLeaveGate(
+    isArchived: isArchived,
+    membership: activityRoom?.membership,
+  );
+
+  /// Leave the session room of a removed activity and close its panel — the
+  /// only exit for a session that can never be continued (#8064). Same
+  /// confirm-then-wait-for-sync flow as the chat's own leave, so the room is
+  /// gone from the list before the panel closes.
+  Future<void> leaveArchivedSession() async {
+    final room = activityRoom;
+    if (room == null) return;
+
+    final confirmed = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).areYouSure,
+      message: L10n.of(context).leaveRoomDescription,
+      okLabel: L10n.of(context).leave,
+      cancelLabel: L10n.of(context).cancel,
+      isDestructive: true,
+    );
+    if (confirmed != OkCancelResult.ok || !mounted) return;
+
+    final result = await showFutureLoadingDialog(
+      context: context,
+      future: room.leave,
+    );
+    if (result.isError || !mounted) return;
+
+    final left = Matrix.of(context).client.getRoomById(room.id);
+    if (left != null && left.membership != Membership.leave) {
+      await Matrix.of(context).client.waitForRoomInSync(room.id, leave: true);
+    }
+
+    if (!mounted) return;
+    closeOwnRoomPanel(context, room.id);
+  }
 
   SessionState get _sessionState {
     if (isArchived) return SessionState.archived;

@@ -23,8 +23,22 @@ jobs:
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+      # prepare-web spends ~4m cloning dart-vodozemac, compiling
+      # flutter_rust_bridge_codegen, and building wasm — to produce two files.
+      # The output depends only on the pinned flutter_vodozemac version and the
+      # script, so an exact-key cache (no restore-keys — a stale binding would be
+      # wrong) makes it a restore. See ci.instructions.md.
+      - name: Resolve vodozemac version
+        id: vodozemac
+        run: echo "version=$(yq '.dependencies.flutter_vodozemac' pubspec.yaml | tr -d '^')" >> $GITHUB_OUTPUT
+      - name: Cache vodozemac bindings
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: assets/vodozemac/vodozemac_bindings_dart*
+          key: vodozemac-bindings-v1-${{ runner.os }}-${{ steps.vodozemac.outputs.version }}-${{ hashFiles('scripts/prepare-web.sh') }}
       - name: Prepare web
         run: ./scripts/prepare-web.sh
       - run: rm ./assets/vodozemac/.gitignore
@@ -240,6 +254,7 @@ jobs:
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - name: Download web
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:

@@ -78,6 +78,12 @@ abstract class FluffyThemes {
           borderRadius: BorderRadius.circular(AppConfig.borderRadius),
         ),
         contentPadding: const EdgeInsets.all(12),
+        // #Pangea
+        // Flutter truncates errorText to a single line by default, so a
+        // sentence-length error (server errors especially) is unreadable on a
+        // narrow screen. Let it wrap app-wide.
+        errorMaxLines: AppConfig.inputErrorMaxLines,
+        // Pangea#
       ),
       chipTheme: ChipThemeData(
         showCheckmark: false,

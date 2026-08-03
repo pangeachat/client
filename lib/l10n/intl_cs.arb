@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-31 12:37:30.077650",
+    "@@last_modified": "2026-08-03 09:47:18.386222",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -9590,7 +9590,6 @@
     "browsePublicCourses": "Procházet veřejné kurzy",
     "editProfile": "Upravit profil",
     "mapSearchHint": "Hledat aktivity",
-    "mapSearchNoResults": "Žádné shody v zobrazení",
     "mapFilterAllLanguages": "Všechny jazyky",
     "mapFilterNotStarted": "Nebylo zahájeno",
     "mapFilterInProgress": "Probíhá",
@@ -9599,7 +9598,6 @@
     "activityTypeConversation": "Konverzace",
     "playAgain": "Hrát znovu",
     "reviewActivity": "Přehled",
-    "mapEmptyInView": "Na vaší úrovni nebo jazyce není nic. Rozšiřte své filtry nebo se přiblížte.",
     "welcomeToPangeaChat": "Vítejte v Pangea Chatu",
     "claimTrial": "Uplatněte svou zkušební verzi",
     "thanksForSigningUp": "Děkujeme za registraci! Tady je",
@@ -9670,10 +9668,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9703,10 +9697,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9927,7 +9917,6 @@
     "analyticsAndSettingsLabel": "Možnosti analýzy a nastavení",
     "searchActivitiesLabel": "Hledat aktivity na mapě",
     "filteredActivitiesLabel": "Seznam filtrovaných aktivit",
-    "activityFilterButtonsLabel": "Tlačítka filtru jazyka, obtížnosti a pokroku",
     "mapZoomLabel": "Ovládání přiblížení mapy",
     "activityMapLabel": "Mapa aktivit",
     "@navOptionsLabel": {
@@ -9947,10 +9936,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10188,5 +10173,19 @@
     "exitGrammarPracticeSession": "Váš aktuální pokrok v procvičování gramatiky nebude uložen.",
     "autoReadAloudMessagesToolName": "Automaticky číst nahlas všechny přijaté zprávy",
     "autoReadAloudMessagesDescription": "Po přijetí zprávy bude hlas zařízení použit k přečtení zprávy nahlas pro cvičení poslechu.",
+    "activityFilterButtonsLabel": "Tlačítka filtru úrovně, hráčů a stavu",
+    "mapFilterAllLevels": "Všechny úrovně",
+    "mapFilterAllPlayers": "Všichni hráči",
+    "mapFilterAllStatuses": "Všechny stavy",
+    "mapFiltersShow": "Zobrazit filtry",
+    "mapFiltersHide": "Skrýt filtry",
+    "mapStatusAvailable": "K dispozici",
+    "mapStatusOngoing": "Probíhá",
+    "mapStatusWaiting": "Čeká se",
+    "mapStatusOpenToJoin": "Otevřeno pro připojení",
+    "mapMatchesOffscreen": "Mimo zobrazení jsou zápasy. Oddalte zobrazení, abyste je viděli.",
+    "mapFiltersHideMatches": "Vaše filtry skrývají všechny zápasy. Rozšiřte vyhledávání, abyste je viděli.",
+    "mapNoSearchMatches": "Žádné aktivity neodpovídají vašemu vyhledávání.",
+    "mapNoActivitiesArea": "V této oblasti nejsou žádné aktivity.",
     "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti."
 }

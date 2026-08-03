@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 12:37:37.670032",
+    "@@last_modified": "2026-08-03 09:47:31.922325",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9096,7 +9096,6 @@
     "browsePublicCourses": "Blader door openbare cursussen",
     "editProfile": "Bewerk profiel",
     "mapSearchHint": "Zoek activiteiten",
-    "mapSearchNoResults": "Geen overeenkomsten in weergave",
     "mapFilterAllLanguages": "Alle talen",
     "mapFilterNotStarted": "Niet gestart",
     "mapFilterInProgress": "Bezig",
@@ -9105,7 +9104,6 @@
     "activityTypeConversation": "Gesprek",
     "playAgain": "Speel opnieuw",
     "reviewActivity": "Beoordelen",
-    "mapEmptyInView": "Niets hier op jouw niveau of taal. Verbreed je filters of zoom uit.",
     "welcomeToPangeaChat": "Welkom bij Pangea Chat",
     "claimTrial": "Claim je proefperiode",
     "thanksForSigningUp": "Bedankt voor je aanmelding! Hier is",
@@ -9176,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9209,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9433,7 +9423,6 @@
     "analyticsAndSettingsLabel": "Analytics- en instellingenopties",
     "searchActivitiesLabel": "Zoek naar activiteiten op de kaart",
     "filteredActivitiesLabel": "Gefilterde activiteitenlijst",
-    "activityFilterButtonsLabel": "Taal-, moeilijkheidsgraad- en voortgangsfilterknoppen",
     "mapZoomLabel": "Kaartzoombediening",
     "activityMapLabel": "Activiteitenkaart",
     "@navOptionsLabel": {
@@ -9453,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9694,5 +9679,19 @@
     "exitGrammarPracticeSession": "De voortgang van je huidige grammaticaoefensessie wordt niet opgeslagen.",
     "autoReadAloudMessagesToolName": "Alle ontvangen berichten automatisch voorlezen",
     "autoReadAloudMessagesDescription": "Wanneer een bericht wordt ontvangen, wordt de stem van het apparaat gebruikt om het bericht voor te lezen voor luisteroefeningen.",
+    "activityFilterButtonsLabel": "Filterknoppen voor niveau, spelers en status",
+    "mapFilterAllLevels": "Alle niveaus",
+    "mapFilterAllPlayers": "Alle spelers",
+    "mapFilterAllStatuses": "Alle statussen",
+    "mapFiltersShow": "Filters tonen",
+    "mapFiltersHide": "Filters verbergen",
+    "mapStatusAvailable": "Beschikbaar",
+    "mapStatusOngoing": "Bezig",
+    "mapStatusWaiting": "Wachtend",
+    "mapStatusOpenToJoin": "Open om deel te nemen",
+    "mapMatchesOffscreen": "Er zijn wedstrijden buiten je zicht. Zoom uit om ze te zien.",
+    "mapFiltersHideMatches": "Je filters verbergen alle wedstrijden. Verbreed de zoekopdracht om ze te zien.",
+    "mapNoSearchMatches": "Geen activiteiten komen overeen met je zoekopdracht.",
+    "mapNoActivitiesArea": "Geen activiteiten in dit gebied.",
     "practiceSessionTimedOut": "Je oefensessie is beëindigd na {minutes} minuten inactiviteit."
 }

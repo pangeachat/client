@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-31 12:37:31.754449",
+    "@@last_modified": "2026-08-03 09:47:22.580278",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10016,7 +10016,6 @@
     "browsePublicCourses": "עיין בקורסים ציבוריים",
     "editProfile": "ערוך פרופיל",
     "mapSearchHint": "חפש פעילויות",
-    "mapSearchNoResults": "אין תוצאות בתצוגה",
     "mapFilterAllLanguages": "כל השפות",
     "mapFilterNotStarted": "לא התחיל",
     "mapFilterInProgress": "בתהליך",
@@ -10025,7 +10024,6 @@
     "activityTypeConversation": "שיחה",
     "playAgain": "שחק שוב",
     "reviewActivity": "סקירה",
-    "mapEmptyInView": "אין כאן כלום ברמתך או בשפתך. הרחב את המסננים שלך או התקרב.",
     "welcomeToPangeaChat": "ברוך הבא לפנגיאה צ'אט",
     "claimTrial": "דרוש את הניסיון שלך",
     "thanksForSigningUp": "תודה על ההרשמה! הנה",
@@ -10096,10 +10094,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10129,10 +10123,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10353,7 +10343,6 @@
     "analyticsAndSettingsLabel": "אפשרויות ניתוח והגדרות",
     "searchActivitiesLabel": "חפש פעילויות על המפה",
     "filteredActivitiesLabel": "רשימת פעילויות מסוננות",
-    "activityFilterButtonsLabel": "כפתורי סינון שפה, קושי והתקדמות",
     "mapZoomLabel": "בקרות זום במפה",
     "activityMapLabel": "מפת פעילויות",
     "@navOptionsLabel": {
@@ -10373,10 +10362,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10614,5 +10599,19 @@
     "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
     "autoReadAloudMessagesToolName": "הקראה אוטומטית של כל ההודעות שהתקבלו",
     "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה.",
+    "activityFilterButtonsLabel": "לחצני סינון לפי רמה, שחקנים וסטטוס",
+    "mapFilterAllLevels": "כל הרמות",
+    "mapFilterAllPlayers": "כל השחקנים",
+    "mapFilterAllStatuses": "כל הסטטוסים",
+    "mapFiltersShow": "הצג מסננים",
+    "mapFiltersHide": "הסתר מסננים",
+    "mapStatusAvailable": "זמין",
+    "mapStatusOngoing": "מתבצע",
+    "mapStatusWaiting": "ממתין",
+    "mapStatusOpenToJoin": "פתוח להצטרפות",
+    "mapMatchesOffscreen": "יש התאמות מחוץ לתצוגה שלך. התרחק כדי לראות אותן.",
+    "mapFiltersHideMatches": "המסננים שלך מסתירים את כל ההתאמות. הרחב את החיפוש כדי לראות אותן.",
+    "mapNoSearchMatches": "אין פעילויות התואמות לחיפוש שלך.",
+    "mapNoActivitiesArea": "אין פעילויות באזור זה.",
     "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות."
 }

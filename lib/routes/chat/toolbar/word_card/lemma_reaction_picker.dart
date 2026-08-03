@@ -203,110 +203,98 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
       builder: (context, controller) {
         return switch (controller.state) {
           AsyncError() => const SizedBox.shrink(),
-          AsyncLoaded(value: final lemmaInfo) => SizedBox(
-            height: 70.0,
-            child: Row(
-              spacing: 4.0,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                ...lemmaInfo.emoji.map((emoji) {
-                  final selected = _selectedEmoji == emoji;
-                  final targetId = "$targetIdBase-$emoji";
+          AsyncLoaded(value: final lemmaInfo) => ScrollableEmojiRow(
+            children: [
+              ...lemmaInfo.emoji.map((emoji) {
+                final selected = _selectedEmoji == emoji;
+                final targetId = "$targetIdBase-$emoji";
 
-                  final showReactionBadge = canShowReactionBadge && selected;
-                  final badge = showReactionBadge
-                      ? const Icon(Icons.add_reaction, size: 12.0)
-                      : null;
+                final showReactionBadge = canShowReactionBadge && selected;
+                final badge = showReactionBadge
+                    ? const Icon(Icons.add_reaction, size: 12.0)
+                    : null;
 
-                  final enabled = selected
-                      ? globallyEnableReactions
-                      : globallyEnableSelection;
+                final enabled = selected
+                    ? globallyEnableReactions
+                    : globallyEnableSelection;
 
-                  return HoverBuilder(
-                    builder: (context, hovered) => MouseRegion(
-                      cursor: enabled
-                          ? SystemMouseCursors.click
-                          : SystemMouseCursors.basic,
-                      child: GestureDetector(
-                        onTap: enabled
-                            ? () => emoji != _selectedEmoji
-                                  ? _setLemmaEmoji(emoji, targetId)
-                                  : _sendOrRedactReaction(emoji)
-                            : null,
-                        child: Stack(
-                          children: [
-                            ShimmerBackground(
-                              enabled: enabled && _selectedEmoji == null,
-                              delayBetweenPulses: const Duration(seconds: 5),
-                              child: CompositedTransformTarget(
-                                link: MatrixState.pAnyState
+                return HoverBuilder(
+                  builder: (context, hovered) => MouseRegion(
+                    cursor: enabled
+                        ? SystemMouseCursors.click
+                        : SystemMouseCursors.basic,
+                    child: GestureDetector(
+                      onTap: enabled
+                          ? () => emoji != _selectedEmoji
+                                ? _setLemmaEmoji(emoji, targetId)
+                                : _sendOrRedactReaction(emoji)
+                          : null,
+                      child: Stack(
+                        children: [
+                          ShimmerBackground(
+                            enabled: enabled && _selectedEmoji == null,
+                            delayBetweenPulses: const Duration(seconds: 5),
+                            child: CompositedTransformTarget(
+                              link: MatrixState.pAnyState
+                                  .layerLinkAndKey(targetId)
+                                  .link,
+                              child: AnimatedContainer(
+                                key: MatrixState.pAnyState
                                     .layerLinkAndKey(targetId)
-                                    .link,
-                                child: AnimatedContainer(
-                                  key: MatrixState.pAnyState
-                                      .layerLinkAndKey(targetId)
-                                      .key,
-                                  duration: const Duration(milliseconds: 200),
-                                  padding: const EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                    color:
-                                        globallyEnableSelection &&
-                                            (hovered || selected)
-                                        ? Theme.of(
-                                            context,
-                                          ).colorScheme.secondary.withAlpha(30)
-                                        : Colors.transparent,
-                                    borderRadius: BorderRadius.circular(
-                                      AppConfig.borderRadius,
-                                    ),
-                                    border: selected
-                                        ? Border.all(
-                                            color: Colors.transparent,
-                                            width: 4,
-                                          )
-                                        : null,
+                                    .key,
+                                duration: const Duration(milliseconds: 200),
+                                padding: const EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color:
+                                      globallyEnableSelection &&
+                                          (hovered || selected)
+                                      ? Theme.of(
+                                          context,
+                                        ).colorScheme.secondary.withAlpha(30)
+                                      : Colors.transparent,
+                                  borderRadius: BorderRadius.circular(
+                                    AppConfig.borderRadius,
                                   ),
-                                  child: Text(
-                                    emoji,
-                                    style: Theme.of(
-                                      context,
-                                    ).textTheme.headlineSmall,
-                                  ),
+                                  border: selected
+                                      ? Border.all(
+                                          color: Colors.transparent,
+                                          width: 4,
+                                        )
+                                      : null,
+                                ),
+                                child: Text(
+                                  emoji,
+                                  style: Theme.of(
+                                    context,
+                                  ).textTheme.headlineSmall,
                                 ),
                               ),
                             ),
-                            if (badge != null)
-                              Positioned(right: 6, bottom: 6, child: badge),
-                          ],
-                        ),
+                          ),
+                          if (badge != null)
+                            Positioned(right: 6, bottom: 6, child: badge),
+                        ],
                       ),
                     ),
-                  );
-                }),
-              ],
-            ),
+                  ),
+                );
+              }),
+            ],
           ),
-          _ => SizedBox(
-            height: 70.0,
-            child: Row(
-              spacing: 4.0,
-              mainAxisSize: MainAxisSize.min,
-              children: List.generate(
-                3,
-                (_) => Shimmer.fromColors(
-                  baseColor: Colors.transparent,
-                  highlightColor: Theme.of(
-                    context,
-                  ).colorScheme.primary.withAlpha(70),
-                  child: Container(
-                    height: 55.0,
-                    width: 55.0,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.primary,
-                      borderRadius: BorderRadius.circular(
-                        AppConfig.borderRadius,
-                      ),
-                    ),
+          _ => ScrollableEmojiRow(
+            children: List.generate(
+              3,
+              (_) => Shimmer.fromColors(
+                baseColor: Colors.transparent,
+                highlightColor: Theme.of(
+                  context,
+                ).colorScheme.primary.withAlpha(70),
+                child: Container(
+                  height: 55.0,
+                  width: 55.0,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
                   ),
                 ),
               ),
@@ -314,6 +302,39 @@ class LemmaReactionPickerState extends State<LemmaReactionPicker>
           ),
         };
       },
+    );
+  }
+}
+
+/// Lays the emoji choices out in a centered row that scrolls horizontally
+/// when there are too many of them to fit the width of the word card.
+class ScrollableEmojiRow extends StatelessWidget {
+  final List<Widget> children;
+
+  const ScrollableEmojiRow({super.key, required this.children});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 70.0,
+      child: LayoutBuilder(
+        builder: (context, constraints) => SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: constraints.hasBoundedWidth
+                  ? constraints.maxWidth
+                  : 0.0,
+            ),
+            child: Row(
+              spacing: 4.0,
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: children,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

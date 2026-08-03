@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-31 12:37:41.389660",
+    "@@last_modified": "2026-08-03 09:47:39.215891",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9397,7 +9397,6 @@
     "browsePublicCourses": "Açık kursları göz atın",
     "editProfile": "Profili düzenle",
     "mapSearchHint": "Aktiviteleri ara",
-    "mapSearchNoResults": "Görüntüde eşleşme yok",
     "mapFilterAllLanguages": "Tüm diller",
     "mapFilterNotStarted": "Başlamadı",
     "mapFilterInProgress": "Devam ediyor",
@@ -9406,7 +9405,6 @@
     "activityTypeConversation": "Konuşma",
     "playAgain": "Tekrar oyna",
     "reviewActivity": "Gözden geçir",
-    "mapEmptyInView": "Seviyenizde veya dilinizde burada hiçbir şey yok. Filtrelerinizi genişletin veya uzaklaştırın.",
     "welcomeToPangeaChat": "Pangea Chat'e hoş geldiniz",
     "claimTrial": "Denemenizi talep edin",
     "thanksForSigningUp": "Kaydolduğunuz için teşekkürler! İşte",
@@ -9477,10 +9475,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9510,10 +9504,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9734,7 +9724,6 @@
     "analyticsAndSettingsLabel": "Analitik ve Ayarlar seçenekleri",
     "searchActivitiesLabel": "Haritada etkinlikleri ara",
     "filteredActivitiesLabel": "Filtrelenmiş etkinlik listesi",
-    "activityFilterButtonsLabel": "Dil, zorluk ve ilerleme filtre butonları",
     "mapZoomLabel": "Harita yakınlaştırma kontrolleri",
     "activityMapLabel": "Etkinlik haritası",
     "@navOptionsLabel": {
@@ -9754,10 +9743,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9995,5 +9980,19 @@
     "exitGrammarPracticeSession": "Mevcut dil bilgisi alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
     "autoReadAloudMessagesToolName": "Alınan tüm mesajları otomatik olarak sesli oku",
     "autoReadAloudMessagesDescription": "Bir mesaj alındığında, dinleme pratiği için mesajı sesli okumak üzere cihaz sesi kullanılacaktır.",
+    "activityFilterButtonsLabel": "Seviye, oyuncu ve durum filtre düğmeleri",
+    "mapFilterAllLevels": "Tüm seviyeler",
+    "mapFilterAllPlayers": "Tüm oyuncular",
+    "mapFilterAllStatuses": "Tüm durumlar",
+    "mapFiltersShow": "Filtreleri göster",
+    "mapFiltersHide": "Filtreleri gizle",
+    "mapStatusAvailable": "Müsait",
+    "mapStatusOngoing": "Devam ediyor",
+    "mapStatusWaiting": "Bekliyor",
+    "mapStatusOpenToJoin": "Katılmaya açık",
+    "mapMatchesOffscreen": "Görüş alanınızın dışında eşleşmeler var. Görmek için uzaklaştırın.",
+    "mapFiltersHideMatches": "Filtreleriniz tüm eşleşmeleri gizliyor. Görmek için aramayı genişletin.",
+    "mapNoSearchMatches": "Aramanızla eşleşen etkinlik yok.",
+    "mapNoActivitiesArea": "Bu alanda etkinlik yok.",
     "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi."
 }

@@ -3417,7 +3417,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-31 12:37:30.551946",
+    "@@last_modified": "2026-08-03 09:47:19.045225",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -9977,7 +9977,6 @@
     "browsePublicCourses": "Περιήγηση σε δημόσια μαθήματα",
     "editProfile": "Επεξεργασία προφίλ",
     "mapSearchHint": "Αναζητήστε δραστηριότητες",
-    "mapSearchNoResults": "Δεν υπάρχουν αποτελέσματα στην προβολή",
     "mapFilterAllLanguages": "Όλες οι γλώσσες",
     "mapFilterNotStarted": "Δεν έχει ξεκινήσει",
     "mapFilterInProgress": "Σε εξέλιξη",
@@ -9986,7 +9985,6 @@
     "activityTypeConversation": "Συζήτηση",
     "playAgain": "Παίξτε ξανά",
     "reviewActivity": "Αξιολόγηση",
-    "mapEmptyInView": "Δεν υπάρχει τίποτα εδώ στο επίπεδό σας ή στη γλώσσα σας. Διευρύνετε τα φίλτρα σας ή απομακρυνθείτε.",
     "welcomeToPangeaChat": "Καλώς ήρθατε στο Pangea Chat",
     "claimTrial": "Διεκδικήστε τη δοκιμή σας",
     "thanksForSigningUp": "Ευχαριστούμε που εγγραφήκατε! Να τι είναι",
@@ -10057,10 +10055,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10090,10 +10084,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10314,7 +10304,6 @@
     "analyticsAndSettingsLabel": "Επιλογές ανάλυσης και ρυθμίσεων",
     "searchActivitiesLabel": "Αναζήτηση δραστηριοτήτων στον χάρτη",
     "filteredActivitiesLabel": "Λίστα φιλτραρισμένων δραστηριοτήτων",
-    "activityFilterButtonsLabel": "Κουμπιά φίλτρου γλώσσας, δυσκολίας και προόδου",
     "mapZoomLabel": "Έλεγχοι ζουμ χάρτη",
     "activityMapLabel": "Χάρτης δραστηριοτήτων",
     "@navOptionsLabel": {
@@ -10334,10 +10323,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10575,5 +10560,19 @@
     "exitGrammarPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης γραμματικής δεν θα αποθηκευτεί.",
     "autoReadAloudMessagesToolName": "Αυτόματη ανάγνωση όλων των εισερχόμενων μηνυμάτων",
     "autoReadAloudMessagesDescription": "Όταν λαμβάνεται ένα μήνυμα, η φωνή της συσκευής θα χρησιμοποιείται για την ανάγνωση του μηνύματος δυνατά για εξάσκηση στην ακρόαση.",
+    "activityFilterButtonsLabel": "Κουμπιά φίλτρου επιπέδου, παικτών και κατάστασης",
+    "mapFilterAllLevels": "Όλα τα επίπεδα",
+    "mapFilterAllPlayers": "Όλοι οι παίκτες",
+    "mapFilterAllStatuses": "Όλες οι καταστάσεις",
+    "mapFiltersShow": "Εμφάνιση φίλτρων",
+    "mapFiltersHide": "Απόκρυψη φίλτρων",
+    "mapStatusAvailable": "Διαθέσιμο",
+    "mapStatusOngoing": "Σε εξέλιξη",
+    "mapStatusWaiting": "Σε αναμονή",
+    "mapStatusOpenToJoin": "Ανοιχτό για συμμετοχή",
+    "mapMatchesOffscreen": "Υπάρχουν αγώνες εκτός της οθόνης σας. Σμικρύνετε για να τους δείτε.",
+    "mapFiltersHideMatches": "Τα φίλτρα σας αποκρύπτουν όλους τους αγώνες. Διευρύνετε την αναζήτηση για να τους δείτε.",
+    "mapNoSearchMatches": "Δεν υπάρχουν δραστηριότητες που να ταιριάζουν με την αναζήτησή σας.",
+    "mapNoActivitiesArea": "Δεν υπάρχουν δραστηριότητες σε αυτήν την περιοχή.",
     "practiceSessionTimedOut": "Η συνεδρία εξάσκησής σας έληξε μετά από {minutes} λεπτά αδράνειας."
 }
