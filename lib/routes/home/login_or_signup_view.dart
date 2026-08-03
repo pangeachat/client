@@ -7,9 +7,9 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
-import 'package:fluffychat/utils/platform_infos.dart';
 
 class LoginOrSignupView extends StatefulWidget {
   const LoginOrSignupView({super.key});
@@ -24,180 +24,170 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
   final CarouselSliderController _carouselController =
       CarouselSliderController();
 
-  bool _isMobile = PlatformInfos.isMobile;
   int _currentIndex = 0;
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final size = MediaQuery.sizeOf(context);
-      final ratio = size.height / size.width;
-      _isMobile = ratio > _mobileRatioBreakpoint;
-    });
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-
-    final size = MediaQuery.sizeOf(context);
-    final ratio = size.height / size.width;
-    final isMobile = ratio > _mobileRatioBreakpoint;
-
-    final breakpointChanged = _isMobile != isMobile;
-    if (breakpointChanged) {
-      _isMobile = isMobile;
-    }
-  }
-
-  List<String> get _imageFileNames {
-    final ratio = _isMobile ? 'ratio4x5' : 'ratio2x1_NoPadding';
-    return List.generate(6, (i) => 'Carousel_${i + 1}_$ratio.png');
-  }
-
-  List<String> get imageUrls => _imageFileNames
-      .map((name) => '${AppConfig.assetsBaseURL}/$name')
-      .toList();
-
-  List<String> get _labels => [
-    L10n.of(context).learnLanguageWhileTexting,
-    L10n.of(context).writeAndSpeakWorryFree,
-    L10n.of(context).joinLearningCommunities,
-    L10n.of(context).playConversationGames,
-    L10n.of(context).jumpIntoConversation,
-    L10n.of(context).playPersonalizedGames,
+  /// Slide 1 carries the brand line inside its image, so it has no headline.
+  List<String?> get _labels => [
+    null,
+    L10n.of(context).explorePlayAndLearn,
+    L10n.of(context).conversationFromDayOne,
+    L10n.of(context).builtForConnection,
+    L10n.of(context).aiWhenYouNeedIt,
+    L10n.of(context).practiceTailoredForYou,
   ];
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final size = MediaQuery.sizeOf(context);
+    final isMobile = size.height / size.width > _mobileRatioBreakpoint;
+    final imageUrls = List.generate(
+      6,
+      (i) =>
+          '${AppConfig.assetsBaseURL}/Carousel_${i + 1}_${isMobile ? 'ratio4x5' : 'ratio2x1'}_V5.png',
+    );
+
     return Semantics(
       label: L10n.of(context).pageLabel(L10n.of(context).welcome),
       child: Scaffold(
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            final size = MediaQuery.sizeOf(context);
-            final ratio = size.height / size.width;
-            final isMobile = ratio > _mobileRatioBreakpoint;
-            final imageUrls = _imageFileNames
-                .map((name) => '${AppConfig.assetsBaseURL}/$name')
-                .toList();
-
-            return Column(
-              children: [
-                if (!isMobile)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 24.0, top: 32.0),
-                    child: Row(
-                      spacing: 12.0,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        ExcludeSemantics(
-                          child: PangeaLogoSvg(
-                            width: 48.0,
-                            forceColor: theme.colorScheme.onSurface,
+        body: Stack(
+          fit: StackFit.expand,
+          children: [
+            if (isMobile)
+              Image.asset(
+                theme.brightness == Brightness.dark
+                    ? 'assets/pangea/world_map_background_dark.png'
+                    : 'assets/pangea/world_map_background.png',
+                fit: BoxFit.cover,
+                excludeFromSemantics: true,
+              )
+            else ...[
+              ColoredBox(color: theme.colorScheme.surface),
+              Image.asset(
+                'assets/pangea/star_background.png',
+                fit: BoxFit.cover,
+                excludeFromSemantics: true,
+              ),
+            ],
+            SafeArea(
+              child: Column(
+                children: [
+                  if (!isMobile)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 24.0, top: 32.0),
+                      child: Row(
+                        spacing: 12.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ExcludeSemantics(
+                            child: PangeaLogoSvg(
+                              width: 48.0,
+                              forceColor: theme.colorScheme.onSurface,
+                            ),
                           ),
-                        ),
-                        Text(
-                          AppSettings.applicationName.value,
-                          style: theme.textTheme.displayMedium?.copyWith(
-                            color: theme.colorScheme.onSurface,
-                            fontWeight: FontWeight.w800,
+                          Text(
+                            AppSettings.applicationName.value,
+                            style: theme.textTheme.displayMedium?.copyWith(
+                              color: theme.colorScheme.onSurface,
+                              fontWeight: FontWeight.w800,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                _LoginCarousel(
-                  isMobile: isMobile,
-                  imageUrls: imageUrls,
-                  labels: _labels,
-                  onPageChange: (index) {
-                    if (mounted) {
-                      setState(() => _currentIndex = index);
-                    }
-                  },
-                  controller: _carouselController,
-                ),
-                const SizedBox(height: 24.0),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    imageUrls.length,
-                    (index) => AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      margin: const EdgeInsets.symmetric(horizontal: 4),
-                      height: 8,
-                      width: 8,
-                      decoration: BoxDecoration(
-                        color: _currentIndex == index
-                            ? theme.colorScheme.primary
-                            : theme.colorScheme.outlineVariant,
-                        borderRadius: BorderRadius.circular(12),
+                        ],
                       ),
-                    ),
+                    )
+                  else
+                    const SizedBox(height: 32.0),
+                  _LoginCarousel(
+                    isMobile: isMobile,
+                    imageUrls: imageUrls,
+                    labels: _labels,
+                    onPageChange: (index) {
+                      if (mounted) {
+                        setState(() => _currentIndex = index);
+                      }
+                    },
+                    controller: _carouselController,
                   ),
-                ),
-                const SizedBox(height: 24.0),
-                Expanded(
-                  flex: 1,
-                  child: Center(
-                    child: Container(
-                      constraints: const BoxConstraints(maxWidth: 300),
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 24),
-                        child: Column(
-                          spacing: 8.0,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ElevatedButton(
-                              onPressed: () => context.go('/home/signup'),
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                foregroundColor:
-                                    theme.colorScheme.onPrimaryContainer,
-                              ),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    L10n.of(context).getStarted,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                foregroundColor: theme.colorScheme.onSurface,
-                                backgroundColor: theme.colorScheme.surface,
-                              ),
-                              onPressed: () => context.go('/home/login'),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    L10n.of(context).loginToAccount,
-                                    style: const TextStyle(
-                                      fontWeight: FontWeight.w600,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                  const SizedBox(height: 24.0),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: List.generate(
+                      imageUrls.length,
+                      (index) => AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        margin: const EdgeInsets.symmetric(horizontal: 4),
+                        height: 8,
+                        width: 8,
+                        decoration: BoxDecoration(
+                          color: _currentIndex == index
+                              ? theme.colorScheme.primary
+                              : theme.colorScheme.outlineVariant,
+                          borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                     ),
                   ),
-                ),
-              ],
-            );
-          },
+                  const SizedBox(height: 24.0),
+                  Expanded(
+                    flex: 1,
+                    child: Center(
+                      child: Container(
+                        constraints: const BoxConstraints(maxWidth: 300),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 24),
+                          child: Column(
+                            spacing: 8.0,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              ElevatedButton(
+                                onPressed: () => context.go('/home/signup'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      theme.colorScheme.primaryContainer,
+                                  foregroundColor:
+                                      theme.colorScheme.onPrimaryContainer,
+                                ),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      L10n.of(context).getStarted,
+                                      style: TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: theme.colorScheme.onSurface,
+                                  backgroundColor: theme.colorScheme.surface
+                                      .withValues(alpha: 0.4),
+                                ),
+                                onPressed: () => context.go('/home/login'),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      L10n.of(context).loginToAccount,
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );
@@ -205,9 +195,19 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
 }
 
 class _LoginCarousel extends StatelessWidget {
+  /// Reserved space above the narrow slide image for a two-line headline:
+  /// one line at size 24 measures 29, so two plus breathing room comes to 64.
+  /// The strip grows past this when scaled text needs it, rather than clipping.
+  static const double _headlineStripHeight = 64.0;
+
+  /// Wide slides cap at the width where FluffyThemes switches to column mode,
+  /// so this screen changes character at the same width as the rest of the app.
+  static const double _wideSlideMaxWidth =
+      FluffyThemes.columnWidth * 2 + FluffyThemes.navRailWidth;
+
   final bool isMobile;
   final List<String> imageUrls;
-  final List<String> labels;
+  final List<String?> labels;
   final Function(int) onPageChange;
   final CarouselSliderController controller;
 
@@ -221,41 +221,35 @@ class _LoginCarousel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     final screenWidth = MediaQuery.widthOf(context);
 
     if (isMobile) {
       return SizedBox(
         width: screenWidth,
-        height: screenWidth * 1.25,
+        height: screenWidth * 1.25 + _headlineStripHeight,
         child: CarouselSlider(
           items: imageUrls
               .mapIndexed(
-                (index, imageUrl) => Stack(
+                (index, imageUrl) => Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 32),
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(
+                        minHeight: _headlineStripHeight,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+                        child: labels[index] == null
+                            ? const SizedBox.shrink()
+                            : _SlideHeadline(labels[index]!),
+                      ),
+                    ),
+                    Expanded(
                       child: CachedNetworkImage(
                         imageUrl: imageUrl,
                         width: double.infinity,
-                        height: double.infinity,
+                        fit: BoxFit.contain,
                         errorWidget: (context, url, error) =>
                             Center(child: PangeaLogoSvg(width: 128.0)),
-                      ),
-                    ),
-                    Positioned(
-                      bottom: 10,
-                      left: 20,
-                      right: 20,
-                      child: Text(
-                        labels[index],
-                        textAlign: TextAlign.center,
-                        style: theme.textTheme.titleMedium?.copyWith(
-                          color: theme.colorScheme.onSurface,
-                          fontWeight: FontWeight.w800,
-                        ),
-                        // https://github.com/pangeachat/client/issues/6294
-                        textScaler: TextScaler.noScaling,
                       ),
                     ),
                   ],
@@ -281,7 +275,7 @@ class _LoginCarousel extends StatelessWidget {
         items: imageUrls
             .mapIndexed(
               (index, imageUrl) => ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 600),
+                constraints: const BoxConstraints(maxWidth: _wideSlideMaxWidth),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -294,15 +288,14 @@ class _LoginCarousel extends StatelessWidget {
                             Center(child: PangeaLogoSvg(width: 256.0)),
                       ),
                     ),
-                    SizedBox(height: 24.0),
-                    Text(
-                      labels[index],
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.headlineSmall?.copyWith(
-                        color: theme.colorScheme.onSurface,
-                      ),
-                      // https://github.com/pangeachat/client/issues/6294
-                      textScaler: TextScaler.noScaling,
+                    const SizedBox(height: 24.0),
+                    // Reserve roughly one headline line so slide 1, which has
+                    // no headline, keeps its image aligned with the others.
+                    ConstrainedBox(
+                      constraints: const BoxConstraints(minHeight: 30.0),
+                      child: labels[index] == null
+                          ? const SizedBox.shrink()
+                          : _SlideHeadline(labels[index]!),
                     ),
                   ],
                 ),
@@ -319,6 +312,53 @@ class _LoginCarousel extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+/// A slide headline punched out of the backdrop: a fill in the darkest brand
+/// tone over a stroke in the surface colour, so it stays legible over the map
+/// in light mode and dark mode alike.
+class _SlideHeadline extends StatelessWidget {
+  final String text;
+
+  const _SlideHeadline(this.text);
+
+  static const _style = TextStyle(
+    fontSize: 24.0,
+    fontWeight: FontWeight.w600,
+    height: 29 / 24,
+  );
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return Stack(
+      alignment: Alignment.center,
+      children: [
+        ExcludeSemantics(
+          child: Text(
+            text,
+            textAlign: TextAlign.center,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: _style.copyWith(
+              foreground: Paint()
+                ..style = PaintingStyle.stroke
+                ..strokeWidth = 3
+                ..strokeJoin = StrokeJoin.round
+                ..color = colorScheme.surface,
+            ),
+          ),
+        ),
+        Text(
+          text,
+          textAlign: TextAlign.center,
+          maxLines: 2,
+          overflow: TextOverflow.ellipsis,
+          style: _style.copyWith(color: colorScheme.onPrimaryContainer),
+        ),
+      ],
     );
   }
 }
