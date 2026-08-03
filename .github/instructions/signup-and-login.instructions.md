@@ -140,7 +140,7 @@ Colour comes from the Material 3 scheme built in [`FluffyThemes`](../../lib/conf
 | Element | Scheme role | Why |
 |---|---|---|
 | Get started | `primaryContainer` on `onPrimaryContainer` | Filled and highest contrast — the path most visitors should take |
-| Login to my account | `surface` on `onSurface` | Present on every slide but quieter. Tinted rather than plain, because an untinted button on a pale map reads as a floating rectangle with no edge |
+| Login to my account | `surface` at 40% opacity, label `onSurface` | Present on every slide but quieter. Translucent in both layouts, so whatever sits behind it reads through and it does not float as a solid rectangle with no edge. Taking `surface` rather than a fixed white keeps it pale-translucent in light mode and dark-translucent in dark, so one value serves both themes |
 | Active dot | `primary` | Matches the brand accent so position is readable at a glance |
 | Remaining dots | `outlineVariant` | Visible enough to count, quiet enough not to compete with the buttons |
 | Headline | `onPrimaryContainer` | The darkest tone of the brand hue, so the type holds against the map without introducing a colour outside the scheme |
@@ -150,9 +150,9 @@ Both buttons share the corner radius defined in `AppConfig`, so they read as one
 
 ## Design refer in Figma
 
-[Signup and Login](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=14378-43729)
+[Signup and Login](https://www.figma.com/design/n2qX4WsnVhYqT2KV6pMVbl/Everything-outside-of-Chat?node-id=14478-25709)
 
-The comps cover the narrow layout only. The wide layout follows the rules in the tables above, which stand as its specification until a comp exists.
+That section holds both layouts — six narrow frames and six wide ones — so the wide layout is no longer specified by this doc alone.
 
 The headline in the comps is drawn in a lighter purple than the role chosen above. Where the two disagree, the role wins — it keeps the screen inside one derived palette, and it follows the theme into dark mode on its own.
 
