@@ -13,10 +13,12 @@ void main() {
     String courseId,
     List<String> seq,
     Map<String, Set<String>> acts, {
+    String? questId,
     int threshold = kDefaultStarsToUnlockObjective,
     Map<String, int> earnable = const {},
   }) => CourseLoOutline(
     courseId: courseId,
+    questId: questId ?? courseId,
     orderedLoIds: seq,
     activityIdsByLo: acts,
     starsToUnlock: threshold,
@@ -280,6 +282,100 @@ void main() {
       );
 
       expect(r.missionGradient(['m1']), 0.0);
+    });
+  });
+
+  group('two courses built from the same quest (#8087)', () {
+    // Course R1 and course R2 are distinct courses (distinct room ids) that
+    // realize the SAME quest 'Q', each with its own activity under Mission m1.
+    // The identity is the course (room id), not the shared quest uuid — so the
+    // two must not collapse into one another.
+    List<CourseLoOutline> twoRoomsOneQuest() => [
+      outline(
+        'R1',
+        ['m1'],
+        {
+          'm1': {'a1'},
+        },
+        questId: 'Q',
+        earnable: {'a1': 4},
+      ),
+      outline(
+        'R2',
+        ['m1'],
+        {
+          'm1': {'b1'},
+        },
+        questId: 'Q',
+        earnable: {'b1': 4},
+      ),
+    ];
+
+    test('resolve to two distinct courses, not one collapsed entry', () {
+      final r = resolveProgression(
+        outlines: twoRoomsOneQuest(),
+        starsByActivity: const {},
+      );
+      expect(r.quests.length, 2);
+      expect(r.forCourse('R1'), isNotNull);
+      expect(r.forCourse('R2'), isNotNull);
+    });
+
+    test("each course counts only ITS OWN stars — TigToggle's inversion", () {
+      // Play R1's own activity: R1 reflects it, R2 does not.
+      final afterR1 = resolveProgression(
+        outlines: twoRoomsOneQuest(),
+        starsByActivity: const {'a1': 3},
+      );
+      expect(afterR1.forCourse('R1')!.rollup['m1']!.stars, 3);
+      expect(afterR1.forCourse('R2')!.rollup['m1']!.stars, 0);
+
+      // Play R2's own activity: R2 reflects it, R1 is untouched. (Before the
+      // fix R1 showed 0 for its own play, then 2 after R2's — inverted.)
+      final afterR2 = resolveProgression(
+        outlines: twoRoomsOneQuest(),
+        starsByActivity: const {'b1': 2},
+      );
+      expect(afterR2.forCourse('R1')!.rollup['m1']!.stars, 0);
+      expect(afterR2.forCourse('R2')!.rollup['m1']!.stars, 2);
+    });
+
+    test('each course clamps its threshold to its own content', () {
+      final r = resolveProgression(
+        outlines: twoRoomsOneQuest(),
+        starsByActivity: const {},
+      );
+      // Each has one 4-star activity — not the union (8).
+      expect(r.questStars('R1')!.total, 4);
+      expect(r.questStars('R2')!.total, 4);
+    });
+
+    test('the band counts the shared quest ONCE, not once per room', () {
+      // Both rooms carry the same anchor Mission via activity 'x'. A distinct
+      // second quest would accumulate to 2.0 (tested above); the SAME quest in
+      // two rooms is one quest, so it saturates at a single 1.0.
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            'R1',
+            ['m1'],
+            {
+              'm1': {'x'},
+            },
+            questId: 'Q',
+          ),
+          outline(
+            'R2',
+            ['m1'],
+            {
+              'm1': {'x'},
+            },
+            questId: 'Q',
+          ),
+        ],
+        starsByActivity: const {},
+      );
+      expect(r.missionGradient(['m1']), 1.0);
     });
   });
 }

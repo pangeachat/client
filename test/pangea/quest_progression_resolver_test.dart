@@ -8,10 +8,12 @@ void main() {
     List<String> seq,
     Map<String, Set<String>> acts, {
     String courseId = 'c1',
+    String? questId,
     int threshold = kDefaultStarsToUnlockObjective,
     Map<String, int> earnable = const {},
   }) => CourseLoOutline(
     courseId: courseId,
+    questId: questId ?? courseId,
     orderedLoIds: seq,
     activityIdsByLo: acts,
     starsToUnlock: threshold,

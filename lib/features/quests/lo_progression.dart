@@ -13,12 +13,21 @@ const int kDefaultStarsToUnlockObjective = 10;
 /// objective, plus the star threshold that unlocks the next objective. Built
 /// from a quest outline (the ordered sequence and its per-objective activities).
 class CourseLoOutline {
-  /// The course-plan uuid (v3: also the quest-plans id) this outline was
-  /// resolved for. Identity, not decoration: Missions are a shared catalog
-  /// reused across quests, so a resolution spanning several joined courses can
-  /// hold the same Mission more than once — this is how a per-course surface
-  /// finds ITS rollup instead of a cross-course blend.
+  /// The course's unique identity — its Matrix **room id** for a joined course.
+  /// A per-course surface looks its own rollup up by this ([forCourse]).
+  ///
+  /// NOT the quest uuid: one quest can back several courses (launched into
+  /// several rooms), so the quest uuid is shared and would collapse two courses
+  /// that share a quest into one — the exact cross-contamination #8087 fixes.
+  /// The room id is the thing that is one-per-course. (For the world map's
+  /// scoped outline of a course the learner hasn't joined there is no room, so
+  /// it falls back to [questId] — never a [forCourse] key, only banded.)
   final String courseId;
+
+  /// The quest this course realizes (the quest-plans uuid). Shared across every
+  /// course built from the same quest, so the world-map band can dedupe a quest
+  /// the learner joined in two rooms instead of double-counting its gradient.
+  final String questId;
 
   final List<String> orderedLoIds;
   final Map<String, Set<String>> activityIdsByLo;
@@ -33,6 +42,7 @@ class CourseLoOutline {
 
   const CourseLoOutline({
     required this.courseId,
+    required this.questId,
     required this.orderedLoIds,
     required this.activityIdsByLo,
     this.starsToUnlock = kDefaultStarsToUnlockObjective,

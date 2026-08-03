@@ -4,7 +4,6 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
-import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -46,36 +45,46 @@ class JoinedObjectiveCache {
     starsByActivity: starsByActivity,
   );
 
-  /// Rebuild from the joined courses' quest outlines. [outlineOf] resolves a
-  /// course-plan uuid to its outline (defaults to the v3 quest read layer);
-  /// [starsToUnlockOf] supplies the per-course teacher override (defaults to the
-  /// standard threshold). A course that fails to resolve is skipped (rather than
-  /// failing the whole set) and reported to [onError] — it must NOT be swallowed
-  /// silently: a dropped course contributes no objective ids, and a fully empty
-  /// cache blanks relevance banding and fail-opens the progression gate with no
-  /// visible signal. [onError] is injectable so the rebuild stays unit-testable
-  /// without Matrix, the network, or Sentry.
+  /// Rebuild from one outline per identity key. A key is the course's identity
+  /// ([CourseLoOutline.courseId]) — the Matrix room id for a joined course; the
+  /// produced outline's [courseId] IS that key. [outlineOf] resolves a key to
+  /// its outline (default assumes the key is itself a quest uuid — the degenerate
+  /// courseId==questId case, used by direct tests and the not-joined scoped
+  /// read); the resolved outline's own [questId] is preserved so the band can
+  /// dedupe courses that share a quest. [starsToUnlockOf] supplies the per-course
+  /// teacher override (defaults to the standard threshold). A course that fails
+  /// to resolve is skipped (rather than failing the whole set) and reported to
+  /// [onError] — it must NOT be swallowed silently: a dropped course contributes
+  /// no objective ids, and a fully empty cache blanks relevance banding and
+  /// fail-opens the progression gate with no visible signal. [onError] is
+  /// injectable so the rebuild stays unit-testable without Matrix or the network.
   Future<void> rebuild(
-    List<String> courseUuids, {
-    Future<CourseLoOutline> Function(String uuid)? outlineOf,
-    int Function(String uuid)? starsToUnlockOf,
-    void Function(String uuid, Object error, StackTrace stack)? onError,
+    List<String> courseIds, {
+    Future<CourseLoOutline> Function(String courseId)? outlineOf,
+    int Function(String courseId)? starsToUnlockOf,
+    void Function(String courseId, Object error, StackTrace stack)? onError,
   }) async {
     final resolve = outlineOf ?? _outlineFromQuest;
     final next = <CourseLoOutline>[];
     await Future.wait(
-      courseUuids.map((uuid) async {
+      courseIds.map((courseId) async {
         try {
-          final o = await resolve(uuid);
+          final o = await resolve(courseId);
           next.add(
             CourseLoOutline(
-              // The uuid the caller asked for, not the resolved outline's own
-              // id: this is the key the course panel scopes its rollup by.
-              courseId: uuid,
+              // The identity key the caller asked for (a room id for a joined
+              // course), NOT the resolved outline's own id: this is what the
+              // course panel scopes its rollup by, and it must stay unique per
+              // course even when two courses share one quest (#8087).
+              courseId: courseId,
+              // ...but the quest identity travels through from the outline, so
+              // the band still treats two rooms of one quest as one quest.
+              questId: o.questId,
               orderedLoIds: o.orderedLoIds,
               activityIdsByLo: o.activityIdsByLo,
               starsToUnlock:
-                  starsToUnlockOf?.call(uuid) ?? kDefaultStarsToUnlockObjective,
+                  starsToUnlockOf?.call(courseId) ??
+                  kDefaultStarsToUnlockObjective,
               earnableByActivity: o.earnableByActivity,
             ),
           );
@@ -83,7 +92,7 @@ class JoinedObjectiveCache {
           // Skip a course that won't resolve; the rest still band and gate. But
           // report it — a silently-empty cache is exactly how banding and the
           // gate go dark unnoticed.
-          onError?.call(uuid, e, s);
+          onError?.call(courseId, e, s);
         }
       }),
     );
@@ -91,38 +100,39 @@ class JoinedObjectiveCache {
     _ids = {for (final o in next) ...o.orderedLoIds};
   }
 
-  /// [rebuild] from the client's joined courses — each course's quest uuid with
-  /// its teacher config (stars-to-unlock override + per-Mission activity pins).
+  /// [rebuild] from the client's joined courses — one outline per course ROOM,
+  /// keyed by room id, resolving each room's quest with its teacher config
+  /// (stars-to-unlock override + per-Mission activity pins). Keying by room id,
+  /// not quest uuid, is the fix for #8087: one quest can back several courses,
+  /// and a quest-keyed map collapses them so one course's rollup serves both.
   /// The single home for that mapping: the world map's pins manager and the
   /// course panel's star display both rebuild through here, so every surface
-  /// resolves identical outlines. Pins are applied as a pure copy per course
-  /// (never to the shared quest-outline cache), so two courses sharing a quest
-  /// can restrict differently.
+  /// resolves identical outlines.
   Future<void> rebuildFromJoinedCourses(
     Client client, {
-    void Function(String uuid, Object error, StackTrace stack)? onError,
+    void Function(String courseId, Object error, StackTrace stack)? onError,
   }) {
-    final modes = <String, TeacherModeModel>{
-      for (final room in client.joinedCourseRooms)
-        room.coursePlan!.uuid: room.teacherMode,
-    };
-    // A joined member's outline read carries the course room id, so the quest
-    // owner's private activities are included (membership-verified
-    // server-side; activities.instructions.md § Ownership, visibility, and
-    // removal).
-    final roomIds = <String, String>{
-      for (final room in client.joinedCourseRooms)
-        room.coursePlan!.uuid: room.id,
+    // Keyed by room id — the course's identity. Two rooms built from the same
+    // quest are two distinct courses and must both survive here.
+    final roomsById = <String, Room>{
+      for (final room in client.joinedCourseRooms) room.id: room,
     };
     return rebuild(
-      modes.keys.toList(),
-      outlineOf: (uuid) => _outlineFromQuest(
-        uuid,
-        pinnedByObjective: modes[uuid]?.pinnedActivitiesByObjective,
-        courseRoomId: roomIds[uuid],
-      ),
-      starsToUnlockOf: (uuid) =>
-          modes[uuid]?.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective,
+      roomsById.keys.toList(),
+      outlineOf: (courseId) {
+        final room = roomsById[courseId]!;
+        return _outlineFromQuest(
+          room.coursePlan!.uuid,
+          pinnedByObjective: room.teacherMode.pinnedActivitiesByObjective,
+          // The course room id admits the quest owner's private activities
+          // (membership-verified server-side; activities.instructions.md
+          // § Ownership, visibility, and removal).
+          courseRoomId: room.id,
+        );
+      },
+      starsToUnlockOf: (courseId) =>
+          roomsById[courseId]!.teacherMode.starsToUnlockObjective ??
+          kDefaultStarsToUnlockObjective,
       onError: onError,
     );
   }

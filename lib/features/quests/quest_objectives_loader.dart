@@ -37,9 +37,13 @@ class QuestObjectivesLoader {
   int _loadGeneration = 0;
   bool _disposed = false;
 
-  /// The course this loader is showing. The shared resolution spans every
-  /// joined course, so every progress read below scopes through it — a course
-  /// panel must never show another course's star totals (#7771).
+  /// The course this loader is showing — its Matrix ROOM id, the course's
+  /// identity ([ProgressionResolution.forCourse]). The shared resolution spans
+  /// every joined course, so every progress read below scopes through it: a
+  /// course panel must never show another course's star totals (#7771). Keyed
+  /// by room id, not the quest uuid, so two courses built from one quest don't
+  /// collapse into each other (#8087). Null for a preview (no room) → no star
+  /// display, the fail-soft default.
   String? _courseId;
 
   void dispose() {
@@ -110,7 +114,10 @@ class QuestObjectivesLoader {
 
     _loadGeneration++;
     final loadGen = _loadGeneration;
-    _courseId = questId;
+    // Identity is the room, not the quest: [forCourse] keys by room id so two
+    // courses sharing a quest stay distinct (#8087). A preview has no room, so
+    // this is null and the panel shows no star display.
+    _courseId = courseRoomId;
     _updateProgression(ProgressionResolution.empty, loadGen);
 
     // world_v2 → v3: the course space's coursePlan.uuid (or the previewed

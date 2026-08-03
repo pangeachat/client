@@ -537,11 +537,11 @@ class WorldMapPinsManager {
           .toList();
       await _objectiveCache.rebuildFromJoinedCourses(
         client,
-        onError: (uuid, e, s) => ErrorHandler.logError(
+        onError: (courseId, e, s) => ErrorHandler.logError(
           e: e,
           s: s,
           m: 'JoinedObjectiveCache: course outline failed to resolve',
-          data: {'courseUuid': uuid},
+          data: {'courseRoomId': courseId},
         ),
       );
       _objectiveCacheUuids = uuids.toSet();

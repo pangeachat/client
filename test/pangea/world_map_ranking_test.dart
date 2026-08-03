@@ -29,6 +29,7 @@ ProgressionResolution _progressionWithAnchor(String anchor) =>
       outlines: [
         CourseLoOutline(
           courseId: 'c1',
+          questId: 'c1',
           orderedLoIds: [anchor],
           activityIdsByLo: {
             anchor: const {'someActivity'},
@@ -82,6 +83,7 @@ void main() {
         outlines: [
           CourseLoOutline(
             courseId: 'c1',
+            questId: 'c1',
             orderedLoIds: ['q1'],
             activityIdsByLo: {
               'q1': const {'x'},
@@ -89,6 +91,7 @@ void main() {
           ),
           CourseLoOutline(
             courseId: 'c2',
+            questId: 'c2',
             orderedLoIds: ['q2'],
             activityIdsByLo: {
               'q2': const {'y'},
@@ -516,6 +519,7 @@ void main() {
         outlines: [
           CourseLoOutline(
             courseId: 'c1',
+            questId: 'c1',
             orderedLoIds: ['q1'],
             activityIdsByLo: {
               'q1': const {'topAvailable'},
@@ -523,6 +527,7 @@ void main() {
           ),
           CourseLoOutline(
             courseId: 'c2',
+            questId: 'c2',
             orderedLoIds: ['q2'],
             activityIdsByLo: {
               'q2': const {'topAvailable'},

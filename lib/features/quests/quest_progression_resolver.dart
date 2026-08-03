@@ -59,9 +59,16 @@ class QuestStarSummary {
 /// One in-scope quest: its ordered Mission sequence, the resolved anchor (the
 /// Mission the learner most needs next), and a position lookup for the gradient.
 class QuestProgress {
-  /// The course-plan uuid this quest was resolved from — the key a per-course
-  /// surface looks itself up by ([ProgressionResolution.forCourse]).
+  /// The course's unique identity — its Matrix room id for a joined course —
+  /// the key a per-course surface looks itself up by
+  /// ([ProgressionResolution.forCourse]). NOT the quest uuid: one quest can
+  /// back several courses, so keying by the quest would collapse them (#8087).
   final String courseId;
+
+  /// The quest this course realizes (shared across courses built from the same
+  /// quest). [missionGradient] dedupes by it so a quest joined in two rooms
+  /// contributes to the band once, not twice.
+  final String questId;
 
   final List<String> orderedMissionIds;
 
@@ -92,6 +99,7 @@ class QuestProgress {
 
   const QuestProgress({
     required this.courseId,
+    required this.questId,
     required this.orderedMissionIds,
     required this.anchorMissionId,
     required this.indexByMission,
@@ -161,13 +169,22 @@ class ProgressionResolution {
   /// Missions ranks higher) and saturate at the ceiling. Outside any quest the
   /// activity's refs match nothing and this is 0 — the consumer then ranks it on
   /// plain level/L2 fit. See world-map.instructions.md Priority matrix.
+  ///
+  /// Distinct quests accumulate; the SAME quest joined in two rooms does not —
+  /// it is one quest, so it contributes once (deduped by [QuestProgress.questId],
+  /// #8087). Per-course star totals ([forCourse]) still see both rooms; only the
+  /// band, whose unit is the quest, collapses them.
   double missionGradient(Iterable<String> objectiveRefs) {
     if (quests.isEmpty) return 0;
     final refs = objectiveRefs.toSet();
     if (refs.isEmpty) return 0;
 
+    final countedQuests = <String>{};
     var total = 0.0;
     for (final quest in quests) {
+      // Same quest in another room → already counted; the band's unit is the
+      // quest, so it contributes once (#8087).
+      if (!countedQuests.add(quest.questId)) continue;
       final anchor = quest.anchorMissionId;
       if (anchor == null) continue;
       final anchorIdx = quest.indexByMission[anchor];
@@ -199,11 +216,11 @@ class ProgressionResolution {
     final cache = JoinedObjectiveCache();
     await cache.rebuildFromJoinedCourses(
       client,
-      onError: (uuid, e, s) => ErrorHandler.logError(
+      onError: (courseId, e, s) => ErrorHandler.logError(
         e: e,
         s: s,
         m: 'course progression failed to resolve',
-        data: {'courseUuid': uuid},
+        data: {'courseRoomId': courseId},
       ),
     );
     return cache.resolution(client.userStarsByActivity);
@@ -266,6 +283,7 @@ ProgressionResolution resolveProgression({
     quests.add(
       QuestProgress(
         courseId: outline.courseId,
+        questId: outline.questId,
         orderedMissionIds: seq,
         anchorMissionId: _anchorFor(seq, rollup),
         indexByMission: {for (var i = 0; i < seq.length; i++) seq[i]: i},

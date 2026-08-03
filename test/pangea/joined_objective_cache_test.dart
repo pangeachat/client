@@ -3,12 +3,16 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 
-CourseLoOutline _outline(List<String> los, {String courseId = 'c1'}) =>
-    CourseLoOutline(
-      courseId: courseId,
-      orderedLoIds: los,
-      activityIdsByLo: const {},
-    );
+CourseLoOutline _outline(
+  List<String> los, {
+  String courseId = 'c1',
+  String? questId,
+}) => CourseLoOutline(
+  courseId: courseId,
+  questId: questId ?? courseId,
+  orderedLoIds: los,
+  activityIdsByLo: const {},
+);
 
 void main() {
   group('JoinedObjectiveCache.rebuild', () {
@@ -83,5 +87,26 @@ void main() {
       expect(cache.ids, isEmpty);
       expect(cache.outlines, isEmpty);
     });
+
+    test(
+      'keys each outline by the identity passed, preserving questId (#8087)',
+      () async {
+        // Two courses (room ids R1, R2) that realize the same quest 'Q'. rebuild
+        // stamps courseId with the identity key it was given (the room id) while
+        // the quest identity travels through from the resolved outline — so the
+        // two stay distinct courses, and the band can still tell they are one
+        // quest.
+        final cache = JoinedObjectiveCache();
+        await cache.rebuild(
+          ['R1', 'R2'],
+          outlineOf: (roomId) async =>
+              _outline(['lo-a'], courseId: roomId, questId: 'Q'),
+        );
+        final byCourse = {for (final o in cache.outlines) o.courseId: o};
+        expect(byCourse.keys, {'R1', 'R2'});
+        expect(byCourse['R1']!.questId, 'Q');
+        expect(byCourse['R2']!.questId, 'Q');
+      },
+    );
   });
 }
