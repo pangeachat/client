@@ -78,12 +78,16 @@ class WorldMapPinsManager {
   /// banding. Rebuilt async on course join/leave (see [_maybeRebuildObjectiveCache]).
   final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
 
-  /// The joined-course uuids [_objectiveCache] was last (re)built from. The
-  /// initial build happens on client-set, but the joined-course rooms (or their
-  /// outlines) may not be ready yet; tracking the set lets the sync listener
-  /// rebuild when it changes — or when a prior build resolved nothing — instead
-  /// of the banding + gate staying blank for the whole session.
-  Set<String> _objectiveCacheUuids = const {};
+  /// The joined-course ROOM ids [_objectiveCache] was last (re)built from —
+  /// room ids because that is the cache's own key: one quest can back several
+  /// course rooms, so a quest-uuid set wouldn't change when a second room of an
+  /// already-joined quest joins or leaves, and the cache would silently stay
+  /// stale (#8087). The initial build happens on client-set, but the
+  /// joined-course rooms (or their outlines) may not be ready yet; tracking the
+  /// set lets the sync listener rebuild when it changes — or when a prior build
+  /// resolved nothing — instead of the banding + gate staying blank for the
+  /// whole session.
+  Set<String> _objectiveCacheRoomIds = const {};
 
   /// Guards against overlapping objective-cache rebuilds (and stops a
   /// persistently-failing course from rebuilding on every single sync).
@@ -532,9 +536,7 @@ class WorldMapPinsManager {
     if (_objectiveCacheRebuilding) return;
     _objectiveCacheRebuilding = true;
     try {
-      final uuids = client.joinedCourseRooms
-          .map((r) => r.coursePlan!.uuid)
-          .toList();
+      final roomIds = client.joinedCourseRooms.map((r) => r.id).toList();
       await _objectiveCache.rebuildFromJoinedCourses(
         client,
         onError: (courseId, e, s) => ErrorHandler.logError(
@@ -544,7 +546,7 @@ class WorldMapPinsManager {
           data: {'courseRoomId': courseId},
         ),
       );
-      _objectiveCacheUuids = uuids.toSet();
+      _objectiveCacheRoomIds = roomIds.toSet();
       resolveProgression(); // re-resolve the band with the loaded outlines
     } finally {
       _objectiveCacheRebuilding = false;
@@ -559,15 +561,14 @@ class WorldMapPinsManager {
   /// rebuilding more than once at a time, and it self-heals once the data is fixed.
   bool shouldRebuildObjectiveCache(Client client) {
     if (_objectiveCacheRebuilding) return false;
-    final uuids = client.joinedCourseRooms
-        .map((r) => r.coursePlan!.uuid)
-        .toSet();
+    final roomIds = client.joinedCourseRooms.map((r) => r.id).toSet();
 
     final setChanged =
-        uuids.length != _objectiveCacheUuids.length ||
-        !uuids.containsAll(_objectiveCacheUuids);
+        roomIds.length != _objectiveCacheRoomIds.length ||
+        !roomIds.containsAll(_objectiveCacheRoomIds);
 
-    final emptyButHasCourses = _objectiveCache.ids.isEmpty && uuids.isNotEmpty;
+    final emptyButHasCourses =
+        _objectiveCache.ids.isEmpty && roomIds.isNotEmpty;
     return setChanged || emptyButHasCourses;
   }
 
@@ -579,7 +580,9 @@ class WorldMapPinsManager {
     if (_scopedCourseOutlineId == coursePlanId) return;
     _scopedCourseOutlineId = coursePlanId;
     _scopedCourseOutline = null;
-    if (_objectiveCacheUuids.contains(coursePlanId)) {
+    // The cache is keyed by room, so ask its outlines' quest identity — any
+    // joined room realizing this quest means the cache already carries it.
+    if (_objectiveCache.outlines.any((o) => o.questId == coursePlanId)) {
       resolveProgression(); // joined: the cache already carries it
       return;
     }
