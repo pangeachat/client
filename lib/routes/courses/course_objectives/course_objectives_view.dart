@@ -175,7 +175,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   _liveStateFor(String activityId) {
     final room = widget.room;
     if (room == null) {
-      return (state: null, openSessions: 0, participants: const [], openSlots: 0);
+      return (
+        state: null,
+        openSessions: 0,
+        participants: const [],
+        openSlots: 0,
+      );
     }
 
     final ongoingId = room.activeActivityRoomId(activityId);

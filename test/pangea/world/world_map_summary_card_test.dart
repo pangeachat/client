@@ -43,11 +43,7 @@ void main() {
     test('a circle per joined role holder, including the bot when it holds a '
         'role; invitees do not appear', () {
       final s = summary(
-        {
-          '@ana:pangea.chat': 'join',
-          bot: 'join',
-          '@ben:pangea.chat': 'invite',
-        },
+        {'@ana:pangea.chat': 'join', bot: 'join', '@ben:pangea.chat': 'invite'},
         roles: {'r1': '@ana:pangea.chat', 'r2': bot},
       );
       expect(s.largeCardParticipants, [

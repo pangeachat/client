@@ -216,7 +216,12 @@ class ActivitySuggestionCard extends StatelessWidget {
                   ),
                   if (pinState == ActivityPinState.ongoingPending &&
                       (participants.isNotEmpty || openSlots > 0))
-                    _buildWaitingParticipantBar(stateColor),
+                    _WaitingParticipantBar(
+                      color: stateColor,
+                      cardWidth: width,
+                      participants: participants,
+                      openSlots: openSlots,
+                    ),
                 ],
               ),
             ),
@@ -230,11 +235,29 @@ class ActivitySuggestionCard extends StatelessWidget {
     ActivityPinState.ongoingPending => L10n.of(context).mapStatusWaiting,
     _ => "${L10n.of(context).open} (${openSessions ?? 0})",
   };
+}
 
-  /// The second bookmark bar for the Waiting state. Sizes each avatar down so a
-  /// full roster (up to [ActivityParticipantRow.defaultMaxVisible] seats) fits
-  /// within the card's width
-  Widget _buildWaitingParticipantBar(Color stateColor) {
+/// The second bookmark bar for the Waiting state. Sizes each avatar down so a
+/// full roster (up to [ActivityParticipantRow.defaultMaxVisible] seats) fits
+/// within the card's width
+class _WaitingParticipantBar extends StatelessWidget {
+  final Color color;
+
+  /// The width of the card this bar hangs off, used to size the avatars down.
+  final double cardWidth;
+
+  final List<LargeCardParticipant> participants;
+  final int openSlots;
+
+  const _WaitingParticipantBar({
+    required this.color,
+    required this.cardWidth,
+    required this.participants,
+    required this.openSlots,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final visible = (participants.length + openSlots).clamp(
       1,
       ActivityParticipantRow.defaultMaxVisible,
@@ -244,7 +267,8 @@ class ActivitySuggestionCard extends StatelessWidget {
     const hPadding = 16.0 + 10.0;
     const gapPerAvatar = 4.0;
     const leftInset = 16.0;
-    final barMaxWidth = width + _bannerPoke - leftInset;
+    final barMaxWidth =
+        cardWidth + ActivitySuggestionCard._bannerPoke - leftInset;
     final avail = barMaxWidth - hPadding - visible * gapPerAvatar;
     final avatarSize = (avail / visible).clamp(10.0, 28.0);
     final barWidth = hPadding + visible * (avatarSize + gapPerAvatar);
@@ -252,7 +276,7 @@ class ActivitySuggestionCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0),
       child: _ActivityStateBanner(
-        color: stateColor,
+        color: color,
         width: barWidth,
         child: ActivityParticipantRow(
           icon: null,

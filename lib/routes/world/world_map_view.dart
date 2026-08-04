@@ -14,12 +14,12 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/mid_size_pin_labels_layer.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
