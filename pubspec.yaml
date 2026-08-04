@@ -133,6 +133,10 @@ dependencies:
   # SHA-256 content digest for the STT request cache key
   # (speech_to_text_request_model.dart) and the golden fixture checksum test.
   crypto: ^3.0.6
+  # Promoted from transitive: the streaming-STT client transport
+  # (routes/chat/events/streaming_stt/) connects the choreo WS relay with the
+  # access_token subprotocol via WebSocketChannel.
+  web_socket_channel: ^3.0.3
   # Pangea#
 
 dev_dependencies:
@@ -145,7 +149,16 @@ dev_dependencies:
     sdk: flutter
   license_checker: ^1.6.2
   pedantic: ^1.11.0
+  # Test-only: the streaming-STT recorder widget test fakes the wakelock plugin
+  # via its platform interface (MockPlatformInterfaceMixin) so the recorder's
+  # reset path does not hit a real platform channel.
+  plugin_platform_interface: ^2.1.8
   sentry_dart_plugin: ^1.0.0
+  # Test-only: the streaming-STT transport tests build a fake WebSocketChannel
+  # on StreamChannelMixin (routes/chat/events/streaming_stt/).
+  stream_channel: ^2.1.4
+  # Test-only: fakes the wakelock plugin in the streaming-STT recorder test.
+  wakelock_plus_platform_interface: ^1.3.0
   translations_cleaner: ^0.1.0
 
 import_sorter:

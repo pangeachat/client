@@ -55,6 +55,22 @@ class PApiUrls {
 
   static String textToSpeech = "${PApiUrls._choreoRoute}/text_to_speech";
   static String speechToText = "${PApiUrls._choreoRoute}/speech_to_text";
+
+  /// Streaming-STT relay WebSocket (`/choreo/speech_to_text/stream`), as the
+  /// `wss://`/`ws://` form of the choreo route so `WebSocketChannel.connect`
+  /// gets a valid ws scheme. `https` → `wss`, `http` → `ws`; anything else is
+  /// returned unchanged.
+  static String get speechToTextStream {
+    final route = "${PApiUrls._choreoRoute}/speech_to_text/stream";
+    if (route.startsWith("https://")) {
+      return route.replaceFirst("https://", "wss://");
+    }
+    if (route.startsWith("http://")) {
+      return route.replaceFirst("http://", "ws://");
+    }
+    return route;
+  }
+
   static String phoneticTranscriptionV2 =
       "${PApiUrls._choreoRoute}/phonetic_transcription_v2";
 

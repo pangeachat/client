@@ -4826,5 +4826,8 @@
     "mapMatchesOffscreen": "There are matches outside your view. Zoom out to see them.",
     "mapFiltersHideMatches": "Your filters are hiding all matches. Widen the search to see them.",
     "mapNoSearchMatches": "No activities match your search.",
-    "mapNoActivitiesArea": "No activities in this area."
+    "mapNoActivitiesArea": "No activities in this area.",
+    "streamingSttDegradedLiveBanner": "Live transcription is running on a backup service. Quality may vary, please check the text.",
+    "streamingSttDegradedToBatchBanner": "Live transcription is unavailable right now. Your message was transcribed the standard way, without live editing. We're working to restore it.",
+    "streamingSttLanguageUnsupportedBanner": "Live transcription isn't available for this language yet. We're working on it."
 }
