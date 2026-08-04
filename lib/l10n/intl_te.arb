@@ -1063,8 +1063,6 @@
     "constructUseCollected": "చాట్‌లో సేకరించబడింది",
     "constructUseNanDesc": "అన్వయించదు",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "టెక్స్ట్-టు-స్పీచ్ సదుపాయం ప్రారంభించబడింది",
-    "enableTTSToolDescription": "మీ లక్ష్య భాషలో భాగాల టెక్స్ట్-టు-స్పీచ్ అవుట్పుట్ ఉత్పత్తి చేయడానికి యాప్‌కు అనుమతి ఇవ్వండి.",
     "yourUsername": "మీ వినియోగదారు పేరు",
     "yourEmail": "మీ ఇమెయిల్",
     "iWantToLearn": "నేను నేర్చుకోవాలనుకుంటున్నాను",
@@ -1333,7 +1331,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-03 09:47:38.668793",
+    "@@last_modified": "2026-08-04 10:31:34.582209",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6080,14 +6078,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -10633,8 +10623,6 @@
     "newActivityBadge": "కొత్త",
     "exitVocabPracticeSession": "మీ ప్రస్తుత పదజాల అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు.",
     "exitGrammarPracticeSession": "మీ ప్రస్తుత వ్యాకరణ అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు.",
-    "autoReadAloudMessagesToolName": "స్వీకరించిన అన్ని సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి",
-    "autoReadAloudMessagesDescription": "సందేశం అందినప్పుడు, వినడం సాధన కోసం పరికర వాయిస్ సందేశాన్ని బిగ్గరగా చదవడానికి ఉపయోగించబడుతుంది.",
     "activityFilterButtonsLabel": "స్థాయి, ఆటగాళ్ళు మరియు స్థితి ఫిల్టర్ బటన్లు",
     "mapFilterAllLevels": "అన్ని స్థాయిలు",
     "mapFilterAllPlayers": "అన్ని ఆటగాళ్ళు",
@@ -10649,5 +10637,24 @@
     "mapFiltersHideMatches": "మీ ఫిల్టర్‌లు అన్ని మ్యాచ్‌లను దాచిపెడుతున్నాయి. వాటిని చూడటానికి శోధనను విస్తరించండి.",
     "mapNoSearchMatches": "మీ శోధనకు సరిపోలే కార్యకలాపాలు లేవు.",
     "mapNoActivitiesArea": "ఈ ప్రాంతంలో కార్యకలాపాలు లేవు.",
-    "practiceSessionTimedOut": "మీరు {minutes} నిమిషాలు నిష్క్రియంగా ఉన్నందున మీ అభ్యాస సెషన్ ముగిసింది."
+    "practiceSessionTimedOut": "మీరు {minutes} నిమిషాలు నిష్క్రియంగా ఉన్నందున మీ అభ్యాస సెషన్ ముగిసింది.",
+    "autocorrectMobileOnly": "మొబైల్ మాత్రమే",
+    "autocorrectMobileOnlyWarning": "పరికర స్వీయ దిద్దుబాటు మొబైల్ యాప్‌లో మాత్రమే అందుబాటులో ఉంటుంది.",
+    "audioSectionTitle": "ఆడియో",
+    "audioWordsToolName": "పదాలు",
+    "audioWordsDescription": "పదంపై నొక్కినప్పుడు దాని ఆడియోను ప్లే చేయండి.",
+    "audioChoicesToolName": "ఎంపికలు",
+    "audioChoicesDescription": "అభ్యాస కార్యకలాపాలలో సమాధాన ఎంపికల కోసం ఆడియోను ప్లే చేయండి.",
+    "audioIncomingMessagesToolName": "ఇన్‌కమింగ్ సందేశాలు",
+    "audioIncomingMessagesDescription": "వినే అభ్యాసం కోసం మీ లక్ష్య భాషలో స్వీకరించిన సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి.",
+    "choosePangeaAvatar": "పంగేయా అవతార్‌ను ఎంచుకోండి",
+    "readAloudNoVoiceTitle": "అధిక-నాణ్యత గల {language} వాయిస్ కనుగొనబడలేదు",
+    "readAloudNoVoiceDesktopWeb": "ఈ బ్రౌజర్ అధిక-నాణ్యత గల {language} వాయిస్‌ను అందించదు, కాబట్టి సందేశాలను ఇక్కడ సరిగ్గా చదవలేము. Chrome మరియు Edge సాధారణంగా అధిక-నాణ్యత గల వాయిస్‌లను కలిగి ఉంటాయి.",
+    "readAloudGetChrome": "Chrome పొందండి",
+    "readAloudNoVoiceMobileWeb": "ఈ బ్రౌజర్ అధిక-నాణ్యత గల {language} వాయిస్‌ను అందించదు, కాబట్టి సందేశాలను ఇక్కడ సరిగ్గా చదవలేము. Pangea Chat యాప్ మీ పరికరం యొక్క ఉత్తమ వాయిస్‌లను ఉపయోగించగలదు.",
+    "readAloudGetApp": "యాప్‌ను పొందండి",
+    "readAloudNoVoiceIOS": "మీ పరికరంలో అధిక-నాణ్యత గల {language} వాయిస్ ఇంకా డౌన్‌లోడ్ చేయబడలేదు. ఒకదాన్ని డౌన్‌లోడ్ చేసి, మళ్లీ ప్రయత్నించండి:",
+    "readAloudNoVoiceIOSSteps": "  • సెట్టింగ్‌లు\n  • యాక్సెసిబిలిటీ\n  • స్పోకెన్ కంటెంట్\n  • వాయిస్‌లు\n  • {language}\n  • మెరుగుపరచబడిన లేదా ప్రీమియం వాయిస్‌ను డౌన్‌లోడ్ చేయండి",
+    "readAloudNoVoiceAndroid": "మీ పరికరంలో అధిక-నాణ్యత గల {language} వాయిస్ ఇంకా లేదు. మీ టెక్స్ట్-టు-స్పీచ్ ఇంజిన్ కోసం వాయిస్ డేటాను ఇన్‌స్టాల్ చేసి, మళ్లీ ప్రయత్నించండి.",
+    "readAloudOpenVoiceSettings": "వాయిస్ సెట్టింగ్‌లను తెరవండి"
 }

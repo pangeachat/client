@@ -156,7 +156,7 @@ Re-ranking is debounced on pan and zoom (as the working-set re-fetch already is)
 | [MapEmptyVerdict.noSearchMatches](../../lib/routes/world/world_map_filter.dart) | the query matches nothing loaded | no lever |
 | [MapEmptyVerdict.noActivities](../../lib/routes/world/world_map_filter.dart) | empty area, no query | *Zoom out* | 
 
-Zoom out **greys out at the [zoom floor](#what-appears-on-the-map)** rather than hiding, so the advice stays visible. 
+Zoom out **greys out at the [zoom floor](#what-appears-on-the-map)** rather than hiding, so the advice stays visible. On narrow, fully zooming out does not make the full map visible. When zooming out, attempt to zoom to a view of the map that shows the maximum number of possible visibile activities ([#8121](https://github.com/pangeachat/client/issues/8121)).
 
 On narrow, the card rides above the filter row (message first, then filters to act on); on the wide overlay it pins under the bar/filters. 
 

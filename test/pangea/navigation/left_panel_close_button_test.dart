@@ -75,4 +75,67 @@ void main() {
       );
     },
   );
+
+  testWidgets(
+    'a stale-token room close still drops the LIVE token for that room (#8142)',
+    (tester) async {
+      // A room panel's chat renders inside a room-keyed nested Navigator whose
+      // route captures the close button built at open time. When the same room
+      // reopens under a DIFFERENT token — `room:!x` from the chat list, then
+      // `session:!x` from the Stars archive after the activity ends — the
+      // reparented Navigator can surface a close button still holding the
+      // departed `room` token. Dropping that token from the live URL is a
+      // no-op: the back button did nothing. The close must resolve what to
+      // drop by ROOM ID against the live URL instead.
+      const liveLocation = '/?left=chats,session:!x&right=analytics:sessions';
+
+      final router = GoRouter(
+        initialLocation: liveLocation,
+        routes: [
+          GoRoute(
+            path: '/',
+            builder: (context, state) => Scaffold(
+              body: LeftPanelCloseButton(
+                // STALE on purpose: the token the room was first opened under,
+                // captured before the swap to `session:!x`.
+                token: RoomPanelToken(RoomTokenParam.parse('!x')),
+                currentUri: Uri.parse(liveLocation),
+                foldedOver: false,
+                isColumnMode: true,
+              ),
+            ),
+          ),
+        ],
+      );
+
+      await tester.pumpWidget(
+        MaterialApp.router(
+          routerConfig: router,
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byIcon(Icons.close));
+      await tester.pumpAndSettle();
+
+      final result = router.routerDelegate.currentConfiguration.uri;
+      final panels = parseOpenPanels(result);
+
+      expect(
+        panels.left.any((t) => t.type == PanelTypesEnum.session),
+        isFalse,
+        reason:
+            'the close must drop the live session token for the room, even '
+            'when the button captured the stale room token: got $result',
+      );
+      // Only the room's own token is dropped — the chat list beneath survives.
+      expect(
+        panels.left.any((t) => t.type == PanelTypesEnum.chats),
+        isTrue,
+        reason: 'closing the room panel must not close the chat list beneath',
+      );
+    },
+  );
 }

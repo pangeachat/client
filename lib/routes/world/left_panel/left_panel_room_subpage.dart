@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
@@ -12,13 +13,29 @@ import 'package:fluffychat/routes/world/left_panel/left_panel_room_details_subpa
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/share_scaffold_dialog.dart';
 
+/// The pAnyState id of the nested [Navigator] that hosts a room panel's chat.
+/// Keyed by the panel's TOKEN TYPE as well as the room id: the same room can
+/// reopen under a different token — `room:X` from the chat list, then
+/// `session:X` from the Stars archive once the activity ends — and a shared id
+/// would GlobalKey-reparent the old Navigator into the new panel, preserving
+/// the stale route whose close button drops the departed token (a no-op on the
+/// live URL — the dead back button of #8142). Same-type moves still share one
+/// id, so the ChatController repositions rather than remounts when its slot
+/// moves.
+String chatPanelNavigatorId(PanelTypesEnum tokenType, String roomId) =>
+    "chat_page_with_room_${tokenType.name}_$roomId";
+
 class LeftPanelRoomSubpage extends StatelessWidget {
+  /// The panel's token type (`room`, `session`, or `archivedroom`) — part of
+  /// the nested Navigator's identity, see [chatPanelNavigatorId].
+  final PanelTypesEnum tokenType;
   final RoomTokenParam? param;
   final List<ShareItem>? shareItems;
   final Widget closeButton;
 
   const LeftPanelRoomSubpage({
     super.key,
+    required this.tokenType,
     required this.param,
     required this.shareItems,
     required this.closeButton,
@@ -50,6 +67,8 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
     // A space has no timeline, so it must never render as a chat — drop to a
     // graceful empty state instead of spinning up a ChatController on it.
+    // A LEFT room deliberately does NOT drop here: getRoomById also returns
+    // archived rooms, and those stay viewable as read-only chats (#8148).
     if (room == null || room.isSpace) {
       return emptyPage;
     }
@@ -97,7 +116,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
     // read. A bare room and a jump-to-message both render here (no sub-page).
     return Navigator(
       key: MatrixState.pAnyState
-          .layerLinkAndKey("chat_page_with_room_$roomId")
+          .layerLinkAndKey(chatPanelNavigatorId(tokenType, roomId))
           .key,
       onGenerateRoute: (_) => MaterialPageRoute(
         builder: (_) => ChatPage(

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:20.644701",
+    "@@last_modified": "2026-08-04 10:31:20.128300",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -3207,8 +3207,6 @@
     "constructUseCollected": "در چت جمع‌آوری شده است",
     "constructUseNanDesc": "قابل اجرا نیست",
     "xpIntoLevel": "{currentXP} / {maxXP} امتیاز تجربه",
-    "enableTTSToolName": "فعال کردن تبدیل متن به گفتار",
-    "enableTTSToolDescription": "اجازه دهید برنامه خروجی تبدیل متن به گفتار برای بخش‌هایی از متن در زبان هدف شما تولید کند.",
     "yourUsername": "نام کاربری شما",
     "yourEmail": "ایمیل شما",
     "iWantToLearn": "می‌خواهم یاد بگیرم",
@@ -5216,14 +5214,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9765,8 +9755,6 @@
     "newActivityBadge": "جدید",
     "exitVocabPracticeSession": "پیشرفت جلسه تمرین واژگان فعلی شما ذخیره نخواهد شد.",
     "exitGrammarPracticeSession": "پیشرفت جلسه تمرین گرامر فعلی شما ذخیره نخواهد شد.",
-    "autoReadAloudMessagesToolName": "خواندن خودکار تمام پیام‌های دریافتی",
-    "autoReadAloudMessagesDescription": "هنگام دریافت پیام، صدای دستگاه برای تمرین شنیداری، پیام را با صدای بلند می‌خواند.",
     "activityFilterButtonsLabel": "دکمه‌های فیلتر سطح، بازیکنان و وضعیت",
     "mapFilterAllLevels": "همه سطوح",
     "mapFilterAllPlayers": "همه بازیکنان",
@@ -9781,5 +9769,24 @@
     "mapFiltersHideMatches": "فیلترهای شما همه مسابقات را پنهان کرده‌اند. برای دیدن آنها جستجو را گسترش دهید.",
     "mapNoSearchMatches": "هیچ فعالیتی با جستجوی شما مطابقت ندارد.",
     "mapNoActivitiesArea": "هیچ فعالیتی در این منطقه وجود ندارد.",
-    "practiceSessionTimedOut": "جلسه تمرین شما پس از {minutes} دقیقه عدم فعالیت به پایان رسید."
+    "practiceSessionTimedOut": "جلسه تمرین شما پس از {minutes} دقیقه عدم فعالیت به پایان رسید.",
+    "autocorrectMobileOnly": "فقط موبایل",
+    "autocorrectMobileOnlyWarning": "تصحیح خودکار دستگاه فقط در برنامه موبایل در دسترس است.",
+    "audioSectionTitle": "صدا",
+    "audioWordsToolName": "کلمات",
+    "audioWordsDescription": "با ضربه زدن روی کلمه، صدای آن را پخش کنید.",
+    "audioChoicesToolName": "گزینه‌ها",
+    "audioChoicesDescription": "پخش صدا برای گزینه‌های پاسخ در فعالیت‌های تمرینی.",
+    "audioIncomingMessagesToolName": "پیام‌های ورودی",
+    "audioIncomingMessagesDescription": "برای تمرین شنیداری، پیام‌های دریافتی را به صورت خودکار با صدای بلند به زبان مقصد شما بخواند.",
+    "choosePangeaAvatar": "یک آواتار Pangea انتخاب کنید",
+    "readAloudNoVoiceTitle": "صدای با کیفیت بالا برای {language} یافت نشد",
+    "readAloudNoVoiceDesktopWeb": "این مرورگر صدای با کیفیت بالا برای {language} ارائه نمی‌دهد، بنابراین پیام‌ها به خوبی در اینجا خوانده نمی‌شوند. کروم و اج معمولاً شامل صداهای با کیفیت بالا هستند.",
+    "readAloudGetChrome": "کروم را دریافت کنید",
+    "readAloudNoVoiceMobileWeb": "این مرورگر صدای با کیفیت بالا برای {language} ارائه نمی‌دهد، بنابراین پیام‌ها به خوبی در اینجا خوانده نمی‌شوند. برنامه چت Pangea می‌تواند از بهترین صداهای دستگاه شما استفاده کند.",
+    "readAloudGetApp": "برنامه را دریافت کنید",
+    "readAloudNoVoiceIOS": "دستگاه شما هنوز صدای با کیفیت بالا برای {language} را دانلود نکرده است. یکی را دانلود کنید، سپس دوباره امتحان کنید:",
+    "readAloudNoVoiceIOSSteps": "  • تنظیمات\n  • دسترسی‌پذیری\n  • محتوای گفتاری\n  • صداها\n  • {language}\n  • یک صدای پیشرفته یا پریمیوم را دانلود کنید",
+    "readAloudNoVoiceAndroid": "دستگاه شما هنوز صدای با کیفیت بالا برای {language} ندارد. داده‌های صوتی را برای موتور تبدیل متن به گفتار خود نصب کنید، سپس دوباره امتحان کنید.",
+    "readAloudOpenVoiceSettings": "تنظیمات صدا را باز کنید"
 }

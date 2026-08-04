@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-03 09:47:19.935360",
+    "@@last_modified": "2026-08-04 10:31:19.924475",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -3309,8 +3309,6 @@
     "constructUseCollected": "Kogutud vestluses",
     "constructUseNanDesc": "Ei kehti",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Lülita sisse teksti kõneks",
-    "enableTTSToolDescription": "Luba rakendusel genereerida teksti kõneks väljund teie sihtkeele osas.",
     "yourUsername": "Sinu kasutajanimi",
     "yourEmail": "Sinu e-post",
     "iWantToLearn": "Ma tahan õppida",
@@ -5216,14 +5214,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9674,8 +9664,6 @@
     "newActivityBadge": "UUS",
     "exitVocabPracticeSession": "Sinu praeguse sõnavara harjutamise seansi edenemist ei salvestata.",
     "exitGrammarPracticeSession": "Sinu praeguse grammatika harjutamise seansi edenemist ei salvestata.",
-    "autoReadAloudMessagesToolName": "Loe kõik saabunud sõnumid automaatselt ette",
-    "autoReadAloudMessagesDescription": "Sõnumi saabumisel loeb seadme hääl sõnumi kuulamispraktika jaoks ette.",
     "activityFilterButtonsLabel": "Taseme, mängijate ja oleku filtri nupud",
     "mapFilterAllLevels": "Kõik tasemed",
     "mapFilterAllPlayers": "Kõik mängijad",
@@ -9690,5 +9678,24 @@
     "mapFiltersHideMatches": "Teie filtrid peidavad kõik mängud. Laiendage otsingut, et neid näha.",
     "mapNoSearchMatches": "Teie otsingule ei vasta ühtegi tegevust.",
     "mapNoActivitiesArea": "Selles piirkonnas pole tegevusi.",
-    "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust."
+    "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust.",
+    "autocorrectMobileOnly": "Ainult mobiilis",
+    "autocorrectMobileOnlyWarning": "Seadme automaatkorrektuur on saadaval ainult mobiilirakenduses.",
+    "audioSectionTitle": "Heli",
+    "audioWordsToolName": "Sõnad",
+    "audioWordsDescription": "Esita sõna heli, kui sellele koputad.",
+    "audioChoicesToolName": "Valikud",
+    "audioChoicesDescription": "Esita harjutuste vastusevalikute heli.",
+    "audioIncomingMessagesToolName": "Sissetulevad sõnumid",
+    "audioIncomingMessagesDescription": "Loe vastuvõetud sõnumid automaatselt sihtkeeles ette kuulamisharjutuste jaoks.",
+    "choosePangeaAvatar": "Vali Pangea avatar",
+    "readAloudNoVoiceTitle": "Kvaliteetset {language} häält ei leitud",
+    "readAloudNoVoiceDesktopWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Chrome ja Edge sisaldavad tavaliselt kvaliteetseid hääli.",
+    "readAloudGetChrome": "Hangi Chrome",
+    "readAloudNoVoiceMobileWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Pangea vestlusrakendus saab kasutada teie seadme parimaid hääli.",
+    "readAloudGetApp": "Hangi rakendus",
+    "readAloudNoVoiceIOS": "Teie seadmesse pole veel kvaliteetset {language} häält alla laaditud. Laadige see alla ja proovige uuesti:",
+    "readAloudNoVoiceIOSSteps": "  • Seaded\n  • Hõlbustus\n  • Räägitav sisu\n  • Hääled\n  • {language}\n  • Laadige alla täiustatud või Premium hääl",
+    "readAloudNoVoiceAndroid": "Teie seadmes pole veel kvaliteetset {language} häält. Installige oma kõnesünteesi mootori jaoks häälandmed ja proovige uuesti.",
+    "readAloudOpenVoiceSettings": "Ava hääleseaded"
 }

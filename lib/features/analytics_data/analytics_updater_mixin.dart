@@ -43,7 +43,9 @@ mixin AnalyticsUpdater<T extends StatefulWidget> on State<T> {
 
   void _onAnalyticsUpdate(AnalyticsStreamUpdate update) {
     if (update.targetID != null) {
-      PointsGainedAnimation.show(update.targetID!, update.points, context);
+      // totalPoints, not points: the animation shows the action's own value,
+      // so uses on flower-level (capped) constructs still animate (#7756).
+      PointsGainedAnimation.show(update.targetID!, update.totalPoints, context);
     }
   }
 

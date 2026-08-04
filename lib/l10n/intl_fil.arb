@@ -1808,8 +1808,6 @@
     "constructUseCollected": "Nakalap sa chat",
     "constructUseNanDesc": "Hindi naaangkop",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Pinagana ang text-to-speech",
-    "enableTTSToolDescription": "Payagan ang app na lumikha ng output na text-to-speech para sa mga bahagi ng teksto sa iyong target na wika.",
     "yourUsername": "Ang iyong username",
     "yourEmail": "Ang iyong email",
     "iWantToLearn": "Gusto kong matuto",
@@ -2089,7 +2087,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-03 09:47:21.049984",
+    "@@last_modified": "2026-08-04 10:31:21.203143",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6000,14 +5998,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10543,8 +10533,6 @@
     "newActivityBadge": "BAGO",
     "exitVocabPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng bokabularyo.",
     "exitGrammarPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng gramatika.",
-    "autoReadAloudMessagesToolName": "Awtomatikong basahin nang malakas ang lahat ng natanggap na mensahe",
-    "autoReadAloudMessagesDescription": "Kapag nakatanggap ng mensahe, gagamitin ang boses ng device para basahin nang malakas ang mensahe para sa pagsasanay sa pakikinig.",
     "activityFilterButtonsLabel": "Mga button ng filter para sa antas, manlalaro, at status",
     "mapFilterAllLevels": "Lahat ng antas",
     "mapFilterAllPlayers": "Lahat ng manlalaro",
@@ -10559,5 +10547,24 @@
     "mapFiltersHideMatches": "Itinatago ng iyong mga filter ang lahat ng laban. Palawakin ang paghahanap para makita ang mga ito.",
     "mapNoSearchMatches": "Walang aktibidad na tumutugma sa iyong paghahanap.",
     "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito.",
-    "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad."
+    "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad.",
+    "autocorrectMobileOnly": "Pang-mobile lang",
+    "autocorrectMobileOnlyWarning": "Available lang ang autocorrect ng device sa mobile app.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Mga Salita",
+    "audioWordsDescription": "I-play ang audio ng salita kapag tinap mo ito.",
+    "audioChoicesToolName": "Mga Pagpipilian",
+    "audioChoicesDescription": "I-play ang audio para sa mga pagpipilian sa sagot sa mga aktibidad sa pagsasanay.",
+    "audioIncomingMessagesToolName": "Mga Papasok na Mensahe",
+    "audioIncomingMessagesDescription": "Awtomatikong basahin nang malakas ang mga natanggap na mensahe sa iyong target na wika para sa pagsasanay sa pakikinig.",
+    "choosePangeaAvatar": "Pumili ng Pangea avatar",
+    "readAloudNoVoiceTitle": "Walang nakitang de-kalidad na boses sa {language}",
+    "readAloudNoVoiceDesktopWeb": "Hindi nag-aalok ang browser na ito ng de-kalidad na boses sa {language}, kaya hindi mababasa nang maayos ang mga mensahe dito. Karaniwang may kasamang de-kalidad na boses ang Chrome at Edge.",
+    "readAloudGetChrome": "Kunin ang Chrome",
+    "readAloudNoVoiceMobileWeb": "Hindi nag-aalok ang browser na ito ng de-kalidad na boses sa {language}, kaya hindi mababasa nang maayos ang mga mensahe dito. Magagamit ng Pangea Chat app ang pinakamahusay na boses ng iyong device.",
+    "readAloudGetApp": "Kunin ang app",
+    "readAloudNoVoiceIOS": "Wala pang na-download na de-kalidad na boses sa {language} ang iyong device. Mag-download ng isa, pagkatapos ay subukang muli:",
+    "readAloudNoVoiceIOSSteps": "  • Mga Setting\n  • Accessibility\n  • Spoken Content\n  • Mga Boses\n  • {language}\n  • Mag-download ng Enhanced o Premium na boses",
+    "readAloudNoVoiceAndroid": "Wala pang de-kalidad na boses sa {language} ang iyong device. Mag-install ng data ng boses para sa iyong text-to-speech engine, pagkatapos ay subukang muli.",
+    "readAloudOpenVoiceSettings": "Buksan ang mga setting ng boses"
 }

@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -14,6 +13,7 @@ import 'package:fluffychat/routes/chat/events/streaming_stt/transcript_edited_fl
 import 'package:fluffychat/routes/chat/poll.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/video_player.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import '../../config/app_config.dart';
@@ -41,11 +41,19 @@ class MessageContent extends StatelessWidget {
   //here rather than passing the choreographer? pangea rich text, a widget
   //further down in the chain is also using pangeaController so its not constant
   final MessageOverlayController? overlayController;
-  final ChatController controller;
+  final MessageToolbarHost controller;
   final Event? nextEvent;
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
+
+  /// Overrides the default token-tap behavior (select in the open overlay,
+  /// else open the chat toolbar). The analytics example messages use this to
+  /// open the toolbar overlay preselecting the tapped token.
+  final void Function(PangeaToken)? onTokenClick;
+
+  /// Gold-highlight lemma set override for [HtmlMessage] (lower-cased).
+  final Set<String>? vocabLemmas;
   // Pangea#
 
   const MessageContent(
@@ -65,6 +73,8 @@ class MessageContent extends StatelessWidget {
     this.prevEvent,
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
+    this.onTokenClick,
+    this.vocabLemmas,
     // Pangea#
   });
 
@@ -131,7 +141,7 @@ class MessageContent extends StatelessWidget {
       return;
     }
 
-    controller.showToolbar(
+    controller.chatController?.showToolbar(
       pangeaMessageEvent!.event,
       pangeaMessageEvent: pangeaMessageEvent,
       selectedToken: token,
@@ -369,7 +379,8 @@ class MessageContent extends StatelessWidget {
                           readingAssistanceMode ==
                               ReadingAssistanceMode.practiceMode
                       ? null
-                      : onClick,
+                      : (onTokenClick ?? onClick),
+                  vocabLemmas: vocabLemmas,
                   isTransitionAnimation: isTransitionAnimation,
                   isPracticeMode:
                       readingAssistanceMode ==

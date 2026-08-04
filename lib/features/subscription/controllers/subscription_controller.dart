@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 
@@ -22,6 +23,7 @@ class SubscriptionController {
     SubscriptionLoading(),
   );
   Completer<void>? _initCompleter;
+  bool _refreshingOnResume = false;
   final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
 
   ValueNotifier<SubscriptionState> get state => _state;
@@ -118,17 +120,65 @@ class SubscriptionController {
         await _activateNewUserTrial(userID);
       }
 
-      final isSubscribed = _state.value is SubscriptionActive;
-      final beganPayment = SubscriptionManagementRepo.getBeganPayment();
-      if (beganPayment && isSubscribed) {
-        final planId = SubscriptionManagementRepo.getBeganPaymentPlanId();
-        await SubscriptionManagementRepo.removeBeganPayment();
-        GoogleAnalytics.purchaseSubscription(planId);
-        _onSubscribe();
-      }
+      await _completeBeganPayment();
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
       _state.value = SubscriptionError(error: e);
+    }
+  }
+
+  Future<void> _completeBeganPayment() async {
+    final isSubscribed = _state.value is SubscriptionActive;
+    final beganPayment = SubscriptionManagementRepo.getBeganPayment();
+    if (beganPayment && isSubscribed) {
+      final planId = SubscriptionManagementRepo.getBeganPaymentPlanId();
+      await SubscriptionManagementRepo.removeBeganPayment();
+      GoogleAnalytics.purchaseSubscription(planId);
+      _onSubscribe();
+    }
+  }
+
+  /// App-resume refresh: when a checkout or billing-portal round trip may
+  /// have changed the subscription, poll the status endpoint until the
+  /// server reflects a change from the cached value. The portal flag is
+  /// consumed after one round either way — portal visits that change
+  /// nothing must not leave the app re-polling on every resume — while
+  /// [SubscriptionManagementRepo.getBeganPayment] persists until a
+  /// subscription is observed, so a checkout completed after an early
+  /// bounce back to the app is still picked up.
+  Future<void> refreshOnAppResume(String? userID) async {
+    if (userID == null || _refreshingOnResume) return;
+    if (_initCompleter?.isCompleted != true) return;
+
+    final beganPayment = SubscriptionManagementRepo.getBeganPayment();
+    final launchedBillingPortal =
+        SubscriptionManagementRepo.getLaunchedBillingPortal();
+    if (!beganPayment && !launchedBillingPortal) return;
+
+    _refreshingOnResume = true;
+    try {
+      final previous = subscriptionStatus;
+      final previousJson = previous == null
+          ? null
+          : jsonEncode(previous.toJson());
+      final response = await SubscriptionStatusRepo.instance
+          .pollSubscriptionStatus(
+            SubscriptionStatusRequest(userID: userID),
+            (r) =>
+                previousJson == null || jsonEncode(r.toJson()) != previousJson,
+          );
+
+      if (response != null) {
+        _state.value = SubscriptionState.fromSubscriptionStatus(response);
+        await _completeBeganPayment();
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    } finally {
+      if (launchedBillingPortal) {
+        await SubscriptionManagementRepo.removeLaunchedBillingPortal();
+      }
+      _refreshingOnResume = false;
     }
   }
 

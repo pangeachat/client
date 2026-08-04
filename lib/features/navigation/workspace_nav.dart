@@ -298,16 +298,21 @@ abstract class WorkspaceNav {
   /// list), a section switch replaces the left column
   /// (routing.instructions.md). This is the token-native replacement for the
   /// old `setSection(uri, PRoutes.course(id), …)` hybrid that bounced through
-  /// the legacy redirect.
+  /// the legacy redirect. [tab] seats the card on a specific tab instead of
+  /// its default — e.g. a knock-badged course opens on Chats so the admin
+  /// lands on the pending knock (#8139).
   static String openCourseSection(
     Uri current,
     String spaceId, {
     bool keepRoom = true,
     bool clearRight = false,
+    SpaceSettingsTabs? tab,
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      CoursePanelToken(),
+      CoursePanelToken(
+        tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
+      ),
       if (keepRoom) ...lists.left.where((t) => t.type == PanelTypesEnum.room),
     ];
     final parts = WorkspaceQuery.parts(current.query);

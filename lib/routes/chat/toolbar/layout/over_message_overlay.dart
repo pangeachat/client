@@ -23,7 +23,7 @@ class OverMessageOverlay extends StatelessWidget {
           right: controller.messageRightOffset ?? 0.0,
         ),
         child: GestureDetector(
-          onTap: controller.widget.chatController.clearSelectedEvents,
+          onTap: controller.widget.host.clearSelectedEvents,
           child: SingleChildScrollView(
             controller: controller.scrollController,
             child: Column(
@@ -56,7 +56,7 @@ class OverMessageOverlay extends StatelessWidget {
                           ? null
                           : controller.originalMessageSize.width,
                       overlayController: controller.widget.overlayController,
-                      chatController: controller.widget.chatController,
+                      host: controller.widget.host,
                       nextEvent: controller.widget.nextEvent,
                       prevEvent: controller.widget.prevEvent,
                       hasReactions: controller.hasReactions,
@@ -70,7 +70,7 @@ class OverMessageOverlay extends StatelessWidget {
                 ),
                 const SizedBox(height: 4.0),
                 SelectModeButtons(
-                  controller: controller.widget.chatController,
+                  controller: controller.widget.host,
                   overlayController: controller.widget.overlayController,
                   launchPractice: () => controller.launchPractice(
                     ReadingAssistanceMode.practiceMode,

@@ -99,6 +99,13 @@ class RecordingViewModelState extends State<RecordingViewModel> {
   bool isSending = false;
 
   // #Pangea
+  /// Whether a voice recording is in progress. Mirrors [isRecording], but
+  /// readable without a reference to this widget so [ChatController.isSuppressed]
+  /// can silence automatic read-aloud while the mic is hot: recording is inline
+  /// rather than modal, so device TTS would otherwise play out loud, be captured
+  /// by the recorder, and get uploaded to speech-to-text.
+  static bool isRecordingAnywhere = false;
+
   // bool get isRecording => _audioRecorder != null;
   bool get isRecording => _audioRecorder != null || _streaming != null;
   // Pangea#
@@ -305,6 +312,9 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     // Pangea#
 
     final audioRecorder = _audioRecorder ??= AudioRecorder();
+    // #Pangea
+    isRecordingAnywhere = true;
+    // Pangea#
     setState(() {});
 
     try {
@@ -804,6 +814,7 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     _degradedToBatch = false;
     _languageUnsupported = false;
     _dismissedBannerKind = null;
+    isRecordingAnywhere = false;
     // Pangea#
     isSending = false;
     fileName = null;

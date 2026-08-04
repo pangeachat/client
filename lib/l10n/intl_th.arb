@@ -2835,8 +2835,6 @@
     "constructUseCollected": "เก็บรวบรวมในแชท",
     "constructUseNanDesc": "ไม่สามารถใช้ได้",
     "xpIntoLevel": "{currentXP} / {maxXP} คะแนนประสบการณ์",
-    "enableTTSToolName": "เปิดใช้งานการแปลงข้อความเป็นเสียง",
-    "enableTTSToolDescription": "อนุญาตให้แอปพลิเคชันสร้างผลลัพธ์การแปลงข้อความเป็นเสียงสำหรับส่วนของข้อความในภาษาที่คุณตั้งเป้าไว้",
     "yourUsername": "ชื่อผู้ใช้ของคุณ",
     "yourEmail": "อีเมลของคุณ",
     "iWantToLearn": "ฉันต้องการเรียนรู้",
@@ -3104,7 +3102,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-03 09:47:39.573015",
+    "@@last_modified": "2026-08-04 10:31:33.904216",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5755,14 +5753,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10309,8 +10299,6 @@
     "newActivityBadge": "ใหม่",
     "exitVocabPracticeSession": "ความคืบหน้าของเซสชันฝึกคำศัพท์ปัจจุบันของคุณจะไม่ถูกบันทึก",
     "exitGrammarPracticeSession": "ความคืบหน้าของเซสชันฝึกไวยากรณ์ปัจจุบันของคุณจะไม่ถูกบันทึก",
-    "autoReadAloudMessagesToolName": "อ่านออกเสียงข้อความที่ได้รับทั้งหมดโดยอัตโนมัติ",
-    "autoReadAloudMessagesDescription": "เมื่อได้รับข้อความ เสียงของอุปกรณ์จะถูกใช้เพื่ออ่านออกเสียงข้อความสำหรับการฝึกฟัง",
     "activityFilterButtonsLabel": "ปุ่มตัวกรองระดับ, ผู้เล่น และสถานะ",
     "mapFilterAllLevels": "ทุกระดับ",
     "mapFilterAllPlayers": "ผู้เล่นทั้งหมด",
@@ -10325,5 +10313,24 @@
     "mapFiltersHideMatches": "ตัวกรองของคุณกำลังซ่อนการแข่งขันทั้งหมด ขยายการค้นหาเพื่อดู",
     "mapNoSearchMatches": "ไม่มีกิจกรรมที่ตรงกับการค้นหาของคุณ",
     "mapNoActivitiesArea": "ไม่มีกิจกรรมในพื้นที่นี้",
-    "practiceSessionTimedOut": "เซสชันฝึกฝนของคุณสิ้นสุดลงหลังจากไม่มีกิจกรรมเป็นเวลา {minutes} นาที"
+    "practiceSessionTimedOut": "เซสชันฝึกฝนของคุณสิ้นสุดลงหลังจากไม่มีกิจกรรมเป็นเวลา {minutes} นาที",
+    "autocorrectMobileOnly": "สำหรับมือถือเท่านั้น",
+    "autocorrectMobileOnlyWarning": "การแก้ไขอัตโนมัติของอุปกรณ์มีให้ใช้งานเฉพาะในแอปบนมือถือเท่านั้น",
+    "audioSectionTitle": "เสียง",
+    "audioWordsToolName": "คำ",
+    "audioWordsDescription": "เล่นเสียงของคำเมื่อคุณแตะ",
+    "audioChoicesToolName": "ตัวเลือก",
+    "audioChoicesDescription": "เล่นเสียงสำหรับตัวเลือกคำตอบในกิจกรรมฝึกหัด",
+    "audioIncomingMessagesToolName": "ข้อความขาเข้า",
+    "audioIncomingMessagesDescription": "อ่านข้อความที่ได้รับโดยอัตโนมัติในภาษาเป้าหมายของคุณเพื่อฝึกการฟัง",
+    "choosePangeaAvatar": "เลือกอวตาร Pangea",
+    "readAloudNoVoiceTitle": "ไม่พบเสียงคุณภาพสูงสำหรับภาษา {language}",
+    "readAloudNoVoiceDesktopWeb": "เบราว์เซอร์นี้ไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดังนั้นจึงไม่สามารถอ่านข้อความออกเสียงได้ดีที่นี่ โดยปกติแล้ว Chrome และ Edge จะมีเสียงคุณภาพสูงให้ใช้งาน",
+    "readAloudGetChrome": "รับ Chrome",
+    "readAloudNoVoiceMobileWeb": "เบราว์เซอร์นี้ไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดังนั้นจึงไม่สามารถอ่านข้อความออกเสียงได้ดีที่นี่ แอป Pangea Chat สามารถใช้เสียงที่ดีที่สุดของอุปกรณ์ของคุณได้",
+    "readAloudGetApp": "รับแอป",
+    "readAloudNoVoiceIOS": "อุปกรณ์ของคุณยังไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดาวน์โหลดเสียงแล้วลองอีกครั้ง:",
+    "readAloudNoVoiceIOSSteps": "  • การตั้งค่า\n  • การช่วยการเข้าถึง\n  • เนื้อหาที่พูด\n  • เสียง\n  • {language}\n  • ดาวน์โหลดเสียง Enhanced หรือ Premium",
+    "readAloudNoVoiceAndroid": "อุปกรณ์ของคุณยังไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ติดตั้งข้อมูลเสียงสำหรับกลไกการแปลงข้อความเป็นคำพูดของคุณ แล้วลองอีกครั้ง",
+    "readAloudOpenVoiceSettings": "เปิดการตั้งค่าเสียง"
 }

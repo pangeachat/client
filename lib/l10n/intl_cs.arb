@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-03 09:47:18.386222",
+    "@@last_modified": "2026-08-04 10:31:18.468935",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -2904,8 +2904,6 @@
     "constructUseCollected": "Sebráno v chatu",
     "constructUseNanDesc": "Nepoužitelné",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Povolený převod textu na řeč",
-    "enableTTSToolDescription": "Umožněte aplikaci generovat výstup z textu na řeč pro části textu ve vašem cílovém jazyce.",
     "yourUsername": "Vaše uživatelské jméno",
     "yourEmail": "Váš e-mail",
     "iWantToLearn": "Chci se naučit",
@@ -5631,14 +5629,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10171,8 +10161,6 @@
     "newActivityBadge": "NOVÉ",
     "exitVocabPracticeSession": "Váš aktuální pokrok v procvičování slovní zásoby nebude uložen.",
     "exitGrammarPracticeSession": "Váš aktuální pokrok v procvičování gramatiky nebude uložen.",
-    "autoReadAloudMessagesToolName": "Automaticky číst nahlas všechny přijaté zprávy",
-    "autoReadAloudMessagesDescription": "Po přijetí zprávy bude hlas zařízení použit k přečtení zprávy nahlas pro cvičení poslechu.",
     "activityFilterButtonsLabel": "Tlačítka filtru úrovně, hráčů a stavu",
     "mapFilterAllLevels": "Všechny úrovně",
     "mapFilterAllPlayers": "Všichni hráči",
@@ -10187,5 +10175,24 @@
     "mapFiltersHideMatches": "Vaše filtry skrývají všechny zápasy. Rozšiřte vyhledávání, abyste je viděli.",
     "mapNoSearchMatches": "Žádné aktivity neodpovídají vašemu vyhledávání.",
     "mapNoActivitiesArea": "V této oblasti nejsou žádné aktivity.",
-    "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti."
+    "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti.",
+    "autocorrectMobileOnly": "Pouze mobilní",
+    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci.",
+    "audioSectionTitle": "Zvuk",
+    "audioWordsToolName": "Slova",
+    "audioWordsDescription": "Přehrát zvuk slova po klepnutí.",
+    "audioChoicesToolName": "Možnosti",
+    "audioChoicesDescription": "Přehrát zvuk pro možnosti odpovědí v procvičovacích aktivitách.",
+    "audioIncomingMessagesToolName": "Příchozí zprávy",
+    "audioIncomingMessagesDescription": "Automaticky nahlas přečíst přijaté zprávy ve vašem cílovém jazyce pro poslechové cvičení.",
+    "choosePangeaAvatar": "Vyberte si avatara Pangea",
+    "readAloudNoVoiceTitle": "Nenalezena žádná vysoce kvalitní hlasová syntéza pro jazyk {language}",
+    "readAloudNoVoiceDesktopWeb": "Tento prohlížeč nenabízí vysoce kvalitní hlasovou syntézu pro jazyk {language}, takže zprávy zde nelze dobře přečíst nahlas. Chrome a Edge obvykle obsahují vysoce kvalitní hlasy.",
+    "readAloudGetChrome": "Získat Chrome",
+    "readAloudNoVoiceMobileWeb": "Tento prohlížeč nenabízí vysoce kvalitní hlasovou syntézu pro jazyk {language}, takže zprávy zde nelze dobře přečíst nahlas. Aplikace Pangea Chat může používat nejlepší hlasy vašeho zařízení.",
+    "readAloudGetApp": "Získat aplikaci",
+    "readAloudNoVoiceIOS": "Vaše zařízení ještě nemá staženou vysoce kvalitní hlasovou syntézu pro jazyk {language}. Stáhněte si ji a zkuste to znovu:",
+    "readAloudNoVoiceIOSSteps": "  • Nastavení\n  • Zpřístupnění\n  • Mluvený obsah\n  • Hlasy\n  • {language}\n  • Stáhněte si vylepšený nebo prémiový hlas",
+    "readAloudNoVoiceAndroid": "Vaše zařízení ještě nemá vysoce kvalitní hlasovou syntézu pro jazyk {language}. Nainstalujte hlasová data pro váš modul převodu textu na řeč a zkuste to znovu.",
+    "readAloudOpenVoiceSettings": "Otevřít nastavení hlasu"
 }

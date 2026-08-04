@@ -9,9 +9,10 @@ enum ToolSetting {
   immersionMode,
   definitions,
   autoIGC,
-  enableTTS,
-  enableAutocorrect,
-  autoReadAloudMessages;
+  audioWords,
+  audioChoices,
+  audioIncomingMessages,
+  enableAutocorrect;
 
   String toolName(BuildContext context) {
     switch (this) {
@@ -25,12 +26,14 @@ enum ToolSetting {
         return L10n.of(context).definitionsToolName;
       case ToolSetting.autoIGC:
         return L10n.of(context).autoIGCToolName;
-      case ToolSetting.enableTTS:
-        return L10n.of(context).enableTTSToolName;
+      case ToolSetting.audioWords:
+        return L10n.of(context).audioWordsToolName;
+      case ToolSetting.audioChoices:
+        return L10n.of(context).audioChoicesToolName;
+      case ToolSetting.audioIncomingMessages:
+        return L10n.of(context).audioIncomingMessagesToolName;
       case ToolSetting.enableAutocorrect:
         return L10n.of(context).enableAutocorrectToolName;
-      case ToolSetting.autoReadAloudMessages:
-        return L10n.of(context).autoReadAloudMessagesToolName;
     }
   }
 
@@ -47,12 +50,14 @@ enum ToolSetting {
         return L10n.of(context).definitionsToolDescription;
       case ToolSetting.autoIGC:
         return L10n.of(context).autoIGCToolDescription;
-      case ToolSetting.enableTTS:
-        return L10n.of(context).enableTTSToolDescription;
+      case ToolSetting.audioWords:
+        return L10n.of(context).audioWordsDescription;
+      case ToolSetting.audioChoices:
+        return L10n.of(context).audioChoicesDescription;
+      case ToolSetting.audioIncomingMessages:
+        return L10n.of(context).audioIncomingMessagesDescription;
       case ToolSetting.enableAutocorrect:
         return L10n.of(context).enableAutocorrectDescription;
-      case ToolSetting.autoReadAloudMessages:
-        return L10n.of(context).autoReadAloudMessagesDescription;
     }
   }
 
@@ -65,11 +70,26 @@ enum ToolSetting {
       case ToolSetting.enableAutocorrect:
         return false;
       case ToolSetting.autoIGC:
-      case ToolSetting.enableTTS:
-      case ToolSetting.autoReadAloudMessages:
+      case ToolSetting.audioWords:
+      case ToolSetting.audioChoices:
+      case ToolSetting.audioIncomingMessages:
         return true;
     }
   }
+
+  bool get isAudioSetting {
+    switch (this) {
+      case ToolSetting.audioWords:
+      case ToolSetting.audioChoices:
+      case ToolSetting.audioIncomingMessages:
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  static List<ToolSetting> get audioSettings =>
+      values.where((setting) => setting.isAudioSetting).toList();
 
   bool get enabled =>
       MatrixState.pangeaController.userController.isToolEnabled(this);

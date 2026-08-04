@@ -132,7 +132,7 @@ class PracticeModeTransitionAnimationState
                     event: widget.controller.widget.event,
                     overlayController:
                         widget.controller.widget.overlayController,
-                    chatController: widget.controller.widget.chatController,
+                    host: widget.controller.widget.host,
                     nextEvent: widget.controller.widget.nextEvent,
                     prevEvent: widget.controller.widget.prevEvent,
                     hasReactions: widget.controller.hasReactions,
@@ -169,7 +169,7 @@ class CenteredMessage extends StatelessWidget {
         return Opacity(
           opacity: finished ? 1.0 : 0.0,
           child: GestureDetector(
-            onTap: controller.widget.chatController.clearSelectedEvents,
+            onTap: controller.widget.host.clearSelectedEvents,
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -180,7 +180,7 @@ class CenteredMessage extends StatelessWidget {
                     child: OverlayCenterContent(
                       event: controller.widget.event,
                       overlayController: controller.widget.overlayController,
-                      chatController: controller.widget.chatController,
+                      host: controller.widget.host,
                       nextEvent: controller.widget.nextEvent,
                       prevEvent: controller.widget.prevEvent,
                       hasReactions: controller.hasReactions,

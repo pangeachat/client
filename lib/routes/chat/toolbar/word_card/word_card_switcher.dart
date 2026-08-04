@@ -12,6 +12,8 @@ class WordCardSwitcher extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final chat = controller.widget.host.chatController;
+    final config = controller.widget.overlayController.config;
     return ValueListenableBuilder(
       valueListenable: controller.widget.overlayController.selectedMode,
       builder: (context, mode, _) {
@@ -25,12 +27,13 @@ class WordCardSwitcher extends StatelessWidget {
                   overlayController: controller.widget.overlayController,
                 )
               : mode != SelectMode.emoji &&
+                    config.showReactionPicker &&
+                    chat != null &&
                     !controller.pangeaMessageEvent.room.isActivityFinished
               ? ValueListenableBuilder(
                   valueListenable: controller.reactionNotifier,
-                  builder: (context, _, _) => MessageReactionPicker(
-                    chatController: controller.widget.chatController,
-                  ),
+                  builder: (context, _, _) =>
+                      MessageReactionPicker(chatController: chat),
                 )
               : const SizedBox.shrink(),
         );

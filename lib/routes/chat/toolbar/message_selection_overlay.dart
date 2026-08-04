@@ -13,24 +13,39 @@ import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart'
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_representation_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/events/tokens/collectable_tokens_mixin.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/message_selection_positioner.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_controller.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Controls data at the top level of the toolbar (mainly token / toolbar mode selection)
 class MessageSelectionOverlay extends StatefulWidget {
-  final ChatController chatController;
+  final MessageToolbarHost host;
+  final MessageToolbarConfig config;
+
+  /// Registry id of the render box the overlay anchors over. Defaults to the
+  /// event id, which chat's Message widget registers; non-chat hosts must
+  /// register their own source widget under a distinct id (the raw event id
+  /// may already be claimed by a chat panel showing the same message).
+  final String? messageTargetId;
+
+  /// Gold-highlight lemma set override for the overlay message (lower-cased).
+  /// The analytics example messages pass their construct's lemma so the
+  /// overlay bubble highlights the same forms as the chip beneath it; null in
+  /// chat, where the highlight comes from the room's activity plan.
+  final Set<String>? highlightVocabLemmas;
+
   final Event _event;
   final Event? _nextEvent;
   final Event? _prevEvent;
@@ -38,12 +53,15 @@ class MessageSelectionOverlay extends StatefulWidget {
   final Timeline _timeline;
 
   const MessageSelectionOverlay({
-    required this.chatController,
+    required this.host,
     required Event event,
     required PangeaToken? initialSelectedToken,
     required Event? nextEvent,
     required Event? prevEvent,
     required Timeline timeline,
+    this.config = MessageToolbarConfig.chat,
+    this.messageTargetId,
+    this.highlightVocabLemmas,
     super.key,
   }) : _initialSelectedToken = initialSelectedToken,
        _nextEvent = nextEvent,
@@ -61,6 +79,10 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         AnalyticsUpdater,
         CollectableTokensMixin {
   Event get event => widget._event;
+
+  MessageToolbarConfig get config => widget.config;
+
+  Set<String>? get highlightVocabLemmas => widget.highlightVocabLemmas;
 
   PangeaTokenText? _selectedSpan;
   ValueNotifier<PangeaToken?> selectedTokenNotifier = ValueNotifier(null);
@@ -92,7 +114,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     practiceController = PracticeController(pangeaMessageEvent);
     _initializeTokensAndMode();
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => widget.chatController.setSelectedEvent(event),
+      (_) => widget.host.setSelectedEvent(event),
     );
   }
 
@@ -102,7 +124,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     final newWidth = MediaQuery.widthOf(context);
     if (screenWidth != null && screenWidth != newWidth) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
-        if (mounted) widget.chatController.clearSelectedEvents();
+        if (mounted) widget.host.clearSelectedEvents();
       });
       return;
     }
@@ -112,7 +134,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   @override
   void dispose() {
     WidgetsBinding.instance.addPostFrameCallback(
-      (_) => widget.chatController.clearSelectedEvents(),
+      (_) => widget.host.clearSelectedEvents(),
     );
     selectModeController.dispose();
     practiceController.dispose();
@@ -217,6 +239,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       TtsController.tryToSpeak(
         selectedToken!.text.content,
         langCode: pangeaMessageEvent.messageDisplayLangCode,
+        useCase: TtsUseCase.words,
         pos: selectedToken!.pos,
         morph: selectedToken!.morph.map((k, v) => MapEntry(k.name, v)),
       );
@@ -339,7 +362,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   Widget build(BuildContext context) {
     return MessageSelectionPositioner(
       overlayController: this,
-      chatController: widget.chatController,
+      host: widget.host,
+      messageTargetId: widget.messageTargetId,
       event: widget._event,
       nextEvent: widget._nextEvent,
       prevEvent: widget._prevEvent,

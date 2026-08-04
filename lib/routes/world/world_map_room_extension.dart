@@ -2,19 +2,27 @@ import 'dart:math';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
-import 'package:fluffychat/routes/world/world_map_large_card.dart';
+import 'package:fluffychat/routes/world/activity_participant_row.dart';
 
 extension WorldMapRoomExtension on Room {
-  List<LargeCardParticipant> get largeCardParticipants => getParticipants()
-      .where(
-        (u) => u.membership == Membership.join && u.id != BotName.byEnvironment,
-      )
-      .map<LargeCardParticipant>(
-        (u) => (avatar: u.avatarUrl, name: u.calcDisplayname()),
-      )
-      .toList();
+  /// One filled circle per *role holder* — a user who currently holds a seat
+  /// ([assignedRoles], which drops holders who provably left) — NOT every joined
+  /// member. T
+  List<LargeCardParticipant> get largeCardParticipants {
+    final assigned = assignedRoles;
+    if (assigned == null || assigned.isEmpty) return const [];
+    final byId = {for (final u in getParticipants()) u.id: u};
+    return assigned.values.map<LargeCardParticipant>((role) {
+      final user = byId[role.userId];
+      return (
+        avatar: user?.avatarUrl,
+        name: user?.calcDisplayname() ?? role.userId.localpart ?? role.userId,
+        userId: role.userId,
+      );
+    }).toList();
+  }
 }
 
 /// The large card's participant/seat source for a session the learner has NOT
@@ -23,19 +31,20 @@ extension WorldMapRoomExtension on Room {
 /// (#7488). The preview carries member ids without profiles, so participants
 /// render by localpart with no avatar image.
 extension WorldMapSummaryExtension on RoomSummaryResponse {
-  /// [botUserId] is injectable for tests only ([BotName.byEnvironment] reads
-  /// env/storage that unit tests don't initialize); production callers omit it.
-  List<LargeCardParticipant> largeCardParticipants({String? botUserId}) =>
-      membershipSummary.entries
-          .where(
-            (e) =>
-                e.value == Membership.join.name &&
-                e.key != (botUserId ?? BotName.byEnvironment),
-          )
-          .map<LargeCardParticipant>(
-            (e) => (avatar: null, name: e.key.localpart ?? e.key),
-          )
-          .toList();
+  /// One filled circle per *joined role holder* ([joinedUsersWithRoles]) — like
+  /// the live-room getter, only users who hold a seat, so the moderation bot
+  /// shows only when it has a role. Pairs with [openSlots] (empty seats) for a
+  /// total of the plan's role count.
+  List<LargeCardParticipant> get largeCardParticipants => joinedUsersWithRoles
+      .values
+      .map<LargeCardParticipant>(
+        (role) => (
+          avatar: null,
+          name: role.userId.localpart ?? role.userId,
+          userId: role.userId,
+        ),
+      )
+      .toList();
 
   /// Free seats: the plan's role count minus seats verifiably taken (assigned
   /// AND joined). Thin v3 refs resolve through [resolvedActivityPlan]; 0 while

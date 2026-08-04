@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_choice.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -77,6 +78,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
             context: context,
             targetID: 'word-audio-button',
             langCode: l2,
+            useCase: TtsUseCase.choices,
             pos: widget.token?.pos,
             morph: widget.token?.morph.map((k, v) => MapEntry(k.name, v)),
             speed: widget.playbackSpeedController.playbackSpeed.value,

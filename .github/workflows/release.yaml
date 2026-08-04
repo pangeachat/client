@@ -75,7 +75,7 @@ jobs:
         # committed back, and the release tag still reads pubspec's `+N`.
         # Resets monthly, so it identifies a build, never orders one.
         # See ci.instructions.md.
-        run: flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --release --source-maps --build-number=$(date -u +%d%H%M)
+        run: ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --release --source-maps --build-number=$(date -u +%d%H%M)
       # The web app fetches /.env from the web root at runtime; it is not a
       # bundled asset, so the build output needs an explicit copy.
       - name: Add env to web root
@@ -227,6 +227,14 @@ jobs:
         with:
           name: web
           path: build/web
+      - name: Update Website files
+        # Rebuild .env here, mirroring main_deploy.yaml: upload-artifact v4
+        # defaults include-hidden-files to false, so a .env baked into
+        # build/web at build time never survives into the web artifact.
+        # Writing it in the deploy job keeps config resolution in the job
+        # that owns the environment.
+        run: |
+          echo "$WEB_APP_ENV" > build/web/.env
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
         with:
@@ -243,6 +251,7 @@ jobs:
           aws s3 sync ./build/web s3://$WEBAPP_S3_BUCKET \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "index.html" \
+            --exclude ".env" \
             --exclude "main.dart.js" \
             --exclude "*.part.js" \
             --exclude "flutter.js" \
@@ -251,7 +260,7 @@ jobs:
             --exclude "version.json" \
             --exclude "manifest.json" \
             --exclude "assets/FontManifest.json" \
-            --exclude "assets/assets.json" \
+            --exclude "assets/AssetManifest.bin*" \
             --exclude "assets/fonts/*"
 
           # =========================
@@ -273,11 +282,12 @@ jobs:
             --cache-control "no-cache, must-revalidate"
 
           # =========================
-          # 4. FLUTTER RUNTIME ENTRY FILES
+          # 4. FLUTTER RUNTIME ENTRY FILES + .env (config must propagate every deploy)
           # Must always stay fresh
           # =========================
           RUNTIME_FILES=(
             "index.html"
+            ".env"
             "main.dart.js"
             "flutter.js"
             "flutter_bootstrap.js"
@@ -285,15 +295,19 @@ jobs:
             "version.json"
             "manifest.json"
             "assets/FontManifest.json"
-            "assets/assets.json"
+            "assets/AssetManifest.bin"
+            "assets/AssetManifest.bin.json"
           )
 
+          # Every entry is required: a missing runtime file is a partial
+          # deploy (same silent-failure class the post-deploy smoke exists
+          # for, #7862) and must fail the run, not skip quietly.
           for f in "${RUNTIME_FILES[@]}"; do
-            if [ -f "./build/web/$f" ]; then
-              aws s3 cp "./build/web/$f" \
-                "s3://$WEBAPP_S3_BUCKET/$f" \
-                --cache-control "no-cache, must-revalidate"
-            fi
+            [ -f "./build/web/$f" ] \
+              || { echo "::error::runtime file $f missing from build output"; exit 1; }
+            aws s3 cp "./build/web/$f" \
+              "s3://$WEBAPP_S3_BUCKET/$f" \
+              --cache-control "no-cache, must-revalidate"
           done
       - name: Invalidate CloudFront cache
         run: |
@@ -322,9 +336,14 @@ jobs:
               || { echo "::error::.well-known/$f is missing, invalid JSON, or lacks the app id (SPA fallback?)"; exit 1; }
           done
 
-          # 2. Runtime entry scripts serve as JavaScript, not the SPA shell.
-          for f in flutter.js main.dart.js; do
-            head=$(curl -sf "$BASE/$f" | head -c 1)
+          # 2. Runtime entry scripts — and the versioned CanvasKit dir this
+          #    exact build requests (scripts/build-web-versioned-canvaskit.sh)
+          #    — serve as JavaScript, not the SPA shell.
+          CK_REV=$(ls build/web/canvaskit)
+          for f in flutter.js main.dart.js "canvaskit/$CK_REV/canvaskit.js"; do
+            # First non-whitespace byte: canvaskit.js opens with a newline,
+            # which a bare `head -c 1` + command substitution would eat.
+            head=$(curl -sf "$BASE/$f" | tr -d '[:space:]' | head -c 1)
             [ "$head" != "<" ] && [ -n "$head" ] \
               || { echo "::error::$f served HTML or empty — partial deploy?"; exit 1; }
           done

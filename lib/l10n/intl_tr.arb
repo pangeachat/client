@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-03 09:47:39.215891",
+    "@@last_modified": "2026-08-04 10:31:34.712988",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3117,8 +3117,6 @@
     "constructUseCollected": "Sohbette toplandı",
     "constructUseNanDesc": "Uygulanamaz",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Metinden sese özelliği etkinleştirildi",
-    "enableTTSToolDescription": "Uygulamanın hedef dilinizdeki metin parçaları için metinden sese çıkış üretmesine izin verin.",
     "yourUsername": "Kullanıcı adınız",
     "yourEmail": "E-posta adresiniz",
     "iWantToLearn": "Öğrenmek istiyorum",
@@ -5424,14 +5422,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9978,8 +9968,6 @@
     "newActivityBadge": "YENİ",
     "exitVocabPracticeSession": "Mevcut kelime alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
     "exitGrammarPracticeSession": "Mevcut dil bilgisi alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
-    "autoReadAloudMessagesToolName": "Alınan tüm mesajları otomatik olarak sesli oku",
-    "autoReadAloudMessagesDescription": "Bir mesaj alındığında, dinleme pratiği için mesajı sesli okumak üzere cihaz sesi kullanılacaktır.",
     "activityFilterButtonsLabel": "Seviye, oyuncu ve durum filtre düğmeleri",
     "mapFilterAllLevels": "Tüm seviyeler",
     "mapFilterAllPlayers": "Tüm oyuncular",
@@ -9994,5 +9982,24 @@
     "mapFiltersHideMatches": "Filtreleriniz tüm eşleşmeleri gizliyor. Görmek için aramayı genişletin.",
     "mapNoSearchMatches": "Aramanızla eşleşen etkinlik yok.",
     "mapNoActivitiesArea": "Bu alanda etkinlik yok.",
-    "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi."
+    "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi.",
+    "autocorrectMobileOnly": "Yalnızca mobil",
+    "autocorrectMobileOnlyWarning": "Cihaz otomatik düzeltme özelliği yalnızca mobil uygulamada mevcuttur.",
+    "audioSectionTitle": "Ses",
+    "audioWordsToolName": "Kelimeler",
+    "audioWordsDescription": "Bir kelimeye dokunduğunuzda sesini çalın.",
+    "audioChoicesToolName": "Seçenekler",
+    "audioChoicesDescription": "Alıştırma etkinliklerindeki cevap seçenekleri için ses çalın.",
+    "audioIncomingMessagesToolName": "Gelen mesajlar",
+    "audioIncomingMessagesDescription": "Dinleme pratiği için alınan mesajları hedef dilinizde otomatik olarak yüksek sesle okuyun.",
+    "choosePangeaAvatar": "Pangea avatarı seç",
+    "readAloudNoVoiceTitle": "Yüksek kaliteli {language} sesi bulunamadı",
+    "readAloudNoVoiceDesktopWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Chrome ve Edge genellikle yüksek kaliteli sesler içerir.",
+    "readAloudGetChrome": "Chrome'u Edinin",
+    "readAloudNoVoiceMobileWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Pangea Sohbet uygulaması cihazınızın en iyi seslerini kullanabilir.",
+    "readAloudGetApp": "Uygulamayı edinin",
+    "readAloudNoVoiceIOS": "Cihazınızda henüz yüksek kaliteli bir {language} sesi indirilmemiş. Bir tane indirin, sonra tekrar deneyin:",
+    "readAloudNoVoiceIOSSteps": "  • Ayarlar\n  • Erişilebilirlik\n  • Konuşulan İçerik\n  • Sesler\n  • {language}\n  • Gelişmiş veya Premium bir ses indirin",
+    "readAloudNoVoiceAndroid": "Cihazınızda henüz yüksek kaliteli bir {language} sesi yok. Metin okuma motorunuz için ses verilerini yükleyin, sonra tekrar deneyin.",
+    "readAloudOpenVoiceSettings": "Ses ayarlarını aç"
 }

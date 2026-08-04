@@ -105,14 +105,18 @@ class LearningSettingsViewModel extends ChangeNotifier {
         return toolSettings.definitions;
       case ToolSetting.autoIGC:
         return toolSettings.autoIGC;
-      case ToolSetting.enableTTS:
+      case ToolSetting.audioWords:
         return _updatedProfile.userSettings.targetLanguage != null &&
             _selectedTargetLanguage != null &&
-            toolSettings.enableTTS;
+            toolSettings.audioWords;
+      case ToolSetting.audioChoices:
+        return _updatedProfile.userSettings.targetLanguage != null &&
+            _selectedTargetLanguage != null &&
+            toolSettings.audioChoices;
+      case ToolSetting.audioIncomingMessages:
+        return toolSettings.audioIncomingMessages;
       case ToolSetting.enableAutocorrect:
         return toolSettings.enableAutocorrect;
-      case ToolSetting.autoReadAloudMessages:
-        return toolSettings.autoReadAloudMessages;
     }
   }
 
@@ -141,15 +145,18 @@ class LearningSettingsViewModel extends ChangeNotifier {
         autoIGC: toolSetting == ToolSetting.autoIGC
             ? value
             : _updatedProfile.toolSettings.autoIGC,
-        enableTTS: toolSetting == ToolSetting.enableTTS
+        audioWords: toolSetting == ToolSetting.audioWords
             ? value
-            : _updatedProfile.toolSettings.enableTTS,
+            : _updatedProfile.toolSettings.audioWords,
+        audioChoices: toolSetting == ToolSetting.audioChoices
+            ? value
+            : _updatedProfile.toolSettings.audioChoices,
+        audioIncomingMessages: toolSetting == ToolSetting.audioIncomingMessages
+            ? value
+            : _updatedProfile.toolSettings.audioIncomingMessages,
         enableAutocorrect: toolSetting == ToolSetting.enableAutocorrect
             ? value
             : _updatedProfile.toolSettings.enableAutocorrect,
-        autoReadAloudMessages: toolSetting == ToolSetting.autoReadAloudMessages
-            ? value
-            : _updatedProfile.toolSettings.autoReadAloudMessages,
       ),
     );
     _updateProfile(updated);
@@ -195,7 +202,10 @@ class LearningSettingsViewModel extends ChangeNotifier {
           voice: null,
           setVoiceNull: true,
         ),
-        toolSettings: _updatedProfile.toolSettings.copyWith(enableTTS: true),
+        toolSettings: _updatedProfile.toolSettings.copyWith(
+          audioWords: true,
+          audioChoices: true,
+        ),
       );
     }
 
