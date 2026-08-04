@@ -2963,15 +2963,41 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     if (!isSpanCardOpen) {
+      // Size the popup to the chat's available space: as wide as the input
+      // field, and as tall as the space above it, so choices are visible
+      // without scrolling (#8130). The card itself sizes to its content.
+      final inputRenderBox = MatrixState.pAnyState.getRenderBox(
+        ChoreoConstants.inputTransformTargetKey,
+      );
+      final overlayRenderBox = OverlayUtil.overlayRenderBox(context);
+
+      double maxWidth = 325;
+      double maxHeight = 325;
+      if (inputRenderBox != null && overlayRenderBox != null) {
+        maxWidth = inputRenderBox.size.width;
+        final spaceAboveInput = OverlayUtil.localOffset(
+          inputRenderBox,
+          overlayRenderBox,
+        ).dy;
+        maxHeight = (spaceAboveInput - kToolbarHeight - 16.0).clamp(
+          200.0,
+          double.infinity,
+        );
+      }
+
       _spanCardOverlayController.open(
         context,
         openOverlay: (overlayKey) => OverlayUtil.showPositionedCard(
           context: context,
-          cardToShow: SpanCard(controller: _spanCardOverlayController),
+          cardToShow: SpanCard(
+            controller: _spanCardOverlayController,
+            // Leave room for the OverlayContainer's padding and border.
+            maxHeight: maxHeight - 24.0,
+          ),
           displayDetails: PositionedOverlayDisplayDetails(
             overlayKey: overlayKey,
-            maxHeight: 325,
-            maxWidth: 325,
+            maxHeight: maxHeight,
+            maxWidth: maxWidth,
             transformTargetId: ChoreoConstants.inputTransformTargetKey,
             ignorePointer: true,
             isScrollable: false,
