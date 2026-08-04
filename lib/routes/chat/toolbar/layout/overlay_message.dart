@@ -13,7 +13,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
-import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/tokens/stt_transcript_tokens.dart';
@@ -21,6 +20,7 @@ import 'package:fluffychat/routes/chat/message_content.dart';
 import 'package:fluffychat/routes/chat/reply_content.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
@@ -31,7 +31,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 class OverlayMessage extends StatelessWidget {
   final Event event;
   final MessageOverlayController overlayController;
-  final ChatController controller;
+  final MessageToolbarHost controller;
   final Event? nextEvent;
   final Event? previousEvent;
   final Timeline timeline;
@@ -185,8 +185,9 @@ class OverlayMessage extends StatelessWidget {
                     borderRadius: ReplyContent.borderRadius,
                     child: InkWell(
                       borderRadius: ReplyContent.borderRadius,
-                      onTap: () =>
-                          controller.scrollToEventId(replyEvent.eventId),
+                      onTap: () => controller.chatController?.scrollToEventId(
+                        replyEvent.eventId,
+                      ),
                       child: AbsorbPointer(
                         child: ReplyContent(
                           replyEvent,

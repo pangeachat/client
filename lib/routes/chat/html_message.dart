@@ -12,7 +12,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
-import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
@@ -22,6 +21,7 @@ import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart'
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/token_practice_button.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/token_emoji_button.dart';
 import 'package:fluffychat/utils/code_highlight_theme.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
@@ -46,7 +46,7 @@ class HtmlMessage extends StatelessWidget {
   // #Pangea
   final MessageOverlayController? overlayController;
   final PangeaMessageEvent? pangeaMessageEvent;
-  final ChatController controller;
+  final MessageToolbarHost controller;
   final Event event;
   final Event? nextEvent;
   final Event? prevEvent;
@@ -469,7 +469,7 @@ class HtmlMessage extends StatelessWidget {
         final isNew = token != null && newTokens.contains(token.text);
         final isFirstNewToken =
             isNew &&
-            controller.buttonEventID == event.eventId &&
+            controller.chatController?.buttonEventID == event.eventId &&
             newTokens.first == token.text;
         final showShimmer =
             !InstructionsEnum.shimmerNewToken.isToggledOff &&
@@ -1080,7 +1080,7 @@ class HtmlMessage extends StatelessWidget {
     return GestureDetector(
       onTap: () {
         if (overlayController == null) {
-          controller.showToolbar(
+          controller.chatController?.showToolbar(
             pangeaMessageEvent?.event ?? event,
             pangeaMessageEvent: pangeaMessageEvent,
             nextEvent: nextEvent,

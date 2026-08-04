@@ -105,6 +105,7 @@ import 'package:fluffychat/routes/chat/message_analytics_feedback.dart';
 import 'package:fluffychat/routes/chat/start_poll_bottom_sheet.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/voice_analytics_feedback.dart';
 import 'package:fluffychat/routes/settings/settings_learning/disable_language_tools_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
@@ -236,8 +237,12 @@ class ChatPageWithRoom extends StatefulWidget {
 }
 
 class ChatController extends State<ChatPageWithRoom>
-    with WidgetsBindingObserver, AnalyticsUpdater {
+    with WidgetsBindingObserver, AnalyticsUpdater
+    implements MessageToolbarHost {
   // #Pangea
+  @override
+  ChatController? get chatController => this;
+
   final PangeaController pangeaController = MatrixState.pangeaController;
   late Choreographer choreographer;
   late GoRouter _router;
@@ -269,10 +274,12 @@ class ChatController extends State<ChatPageWithRoom>
   late final WritingAssistancePopupManager _spanCardOverlayController;
   final ValueNotifier<bool> scrollableNotifier = ValueNotifier(false);
   // Pangea#
+  @override
   Room get room => sendingClient.getRoomById(roomId) ?? widget.room;
 
   late Client sendingClient;
 
+  @override
   Timeline? timeline;
 
   /// True while this room's timeline subscriptions are cancelled but the
@@ -2376,6 +2383,7 @@ class ChatController extends State<ChatPageWithRoom>
   //     clearSelectedEvents();
   //   }
   // }
+  @override
   void clearSelectedEvents() {
     if (!mounted) return;
     if (!isToolbarOpen && selectedEvents.isEmpty) return;
@@ -2388,6 +2396,7 @@ class ChatController extends State<ChatPageWithRoom>
     });
   }
 
+  @override
   void setSelectedEvent(Event event) {
     readAloudController.stopAndClear();
     setState(() {
@@ -2755,7 +2764,7 @@ class ChatController extends State<ChatPageWithRoom>
     }
 
     final overlayEntry = MessageSelectionOverlay(
-      chatController: this,
+      host: this,
       event: event,
       timeline: timeline!,
       initialSelectedToken: selectedToken,
@@ -3247,6 +3256,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
   }
 
+  @override
   Future<void> showTokenFeedbackDialog(
     TokenInfoFeedbackRequestData requestData,
     String langCode,
