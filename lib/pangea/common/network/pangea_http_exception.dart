@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -45,7 +46,7 @@ class PangeaHttpException implements Exception {
       statusCode: response.statusCode,
       method: request?.method ?? 'UNKNOWN',
       path: request == null ? 'unknown' : normalizePath(request.url),
-      detail: detail,
+      detail: detail ?? detailFromResponse(response),
     );
   }
 
@@ -77,6 +78,17 @@ class PangeaHttpException implements Exception {
     if (error is PangeaHttpException) return error.statusCode;
     if (error is http.Response) return error.statusCode;
     return null;
+  }
+
+  static String? detailFromResponse(http.Response response) {
+    try {
+      final decoded = jsonDecode(utf8.decode(response.bodyBytes));
+      if (decoded is! Map<String, dynamic>) return null;
+      final detail = decoded['detail'];
+      return detail is String ? detail : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   /// The one severity table for a repo-layer fetch failure

@@ -322,6 +322,9 @@ class QuestRepo {
           : null;
       return Result.value((refs ?? const []).map((e) => e as String).toList());
     } catch (e, s) {
+      if (PangeaHttpException.statusCodeOf(e) == 404) {
+        return Result.value(const []);
+      }
       ErrorHandler.logError(
         e: e,
         s: s,
