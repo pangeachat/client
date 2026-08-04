@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:22.965990",
+    "@@last_modified": "2026-08-04 10:46:05.122333",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10646,5 +10646,14 @@
     "mapNoActivitiesArea": "Neniuj agadoj en ĉi tiu areo.",
     "practiceSessionTimedOut": "Via ekzercsesio finiĝis post {minutes} minutoj sen aktiveco.",
     "autocorrectMobileOnly": "Nur poŝtelefono",
-    "autocorrectMobileOnlyWarning": "Aŭtomata korekto de aparato disponeblas nur en la poŝtelefona aplikaĵo."
+    "autocorrectMobileOnlyWarning": "Aŭtomata korekto de aparato disponeblas nur en la poŝtelefona aplikaĵo.",
+    "readAloudNoVoiceTitle": "Neniu altkvalita {language} voĉo trovita",
+    "readAloudNoVoiceDesktopWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. Chrome kaj Edge kutime inkluzivas altkvalitajn voĉojn.",
+    "readAloudGetChrome": "Akiri Chrome",
+    "readAloudNoVoiceMobileWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. La aplikaĵo Pangea Chat povas uzi la plej bonajn voĉojn de via aparato.",
+    "readAloudGetApp": "Akiri la aplikaĵon",
+    "readAloudNoVoiceIOS": "Via aparato ankoraŭ ne havas altkvalitan {language} voĉon elŝutitan. Elŝutu unu, poste reprovu:",
+    "readAloudNoVoiceIOSSteps": "  • Agordoj\n  • Alirebleco\n  • Parolita Enhavo\n  • Voĉoj\n  • {language}\n  • Elŝutu Plibonigitan aŭ Premium-voĉon",
+    "readAloudNoVoiceAndroid": "Via aparato ankoraŭ ne havas altkvalitan {language} voĉon. Instalu voĉajn datumojn por via tekst-al-parola motoro, poste reprovu.",
+    "readAloudOpenVoiceSettings": "Malfermi voĉajn agordojn"
 }

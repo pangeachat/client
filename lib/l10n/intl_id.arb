@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:24.612951",
+    "@@last_modified": "2026-08-04 10:46:10.532326",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9768,5 +9768,14 @@
     "mapNoActivitiesArea": "Tidak ada aktivitas di area ini.",
     "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
     "autocorrectMobileOnly": "Khusus seluler",
-    "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler."
+    "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler.",
+    "readAloudNoVoiceTitle": "Tidak ditemukan suara {language} berkualitas tinggi",
+    "readAloudNoVoiceDesktopWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Chrome dan Edge biasanya menyertakan suara berkualitas tinggi.",
+    "readAloudGetChrome": "Dapatkan Chrome",
+    "readAloudNoVoiceMobileWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Aplikasi Pangea Chat dapat menggunakan suara terbaik perangkat Anda.",
+    "readAloudGetApp": "Dapatkan aplikasi",
+    "readAloudNoVoiceIOS": "Perangkat Anda belum mengunduh suara {language} berkualitas tinggi. Unduh satu, lalu coba lagi:",
+    "readAloudNoVoiceIOSSteps": "  • Pengaturan\n  • Aksesibilitas\n  • Konten Lisan\n  • Suara\n  • {language}\n  • Unduh suara yang Ditingkatkan atau Premium",
+    "readAloudNoVoiceAndroid": "Perangkat Anda belum memiliki suara {language} berkualitas tinggi. Instal data suara untuk mesin text-to-speech Anda, lalu coba lagi.",
+    "readAloudOpenVoiceSettings": "Buka pengaturan suara"
 }

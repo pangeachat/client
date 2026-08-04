@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-04 09:29:30.501970",
+    "@@last_modified": "2026-08-04 10:46:26.832190",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9996,5 +9996,14 @@
     "mapNoActivitiesArea": "Bu alanda etkinlik yok.",
     "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi.",
     "autocorrectMobileOnly": "Yalnızca mobil",
-    "autocorrectMobileOnlyWarning": "Cihaz otomatik düzeltme özelliği yalnızca mobil uygulamada mevcuttur."
+    "autocorrectMobileOnlyWarning": "Cihaz otomatik düzeltme özelliği yalnızca mobil uygulamada mevcuttur.",
+    "readAloudNoVoiceTitle": "Yüksek kaliteli {language} sesi bulunamadı",
+    "readAloudNoVoiceDesktopWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Chrome ve Edge genellikle yüksek kaliteli sesler içerir.",
+    "readAloudGetChrome": "Chrome'u Edinin",
+    "readAloudNoVoiceMobileWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Pangea Sohbet uygulaması cihazınızın en iyi seslerini kullanabilir.",
+    "readAloudGetApp": "Uygulamayı edinin",
+    "readAloudNoVoiceIOS": "Cihazınızda henüz yüksek kaliteli bir {language} sesi indirilmemiş. Bir tane indirin, sonra tekrar deneyin:",
+    "readAloudNoVoiceIOSSteps": "  • Ayarlar\n  • Erişilebilirlik\n  • Konuşulan İçerik\n  • Sesler\n  • {language}\n  • Gelişmiş veya Premium bir ses indirin",
+    "readAloudNoVoiceAndroid": "Cihazınızda henüz yüksek kaliteli bir {language} sesi yok. Metin okuma motorunuz için ses verilerini yükleyin, sonra tekrar deneyin.",
+    "readAloudOpenVoiceSettings": "Ses ayarlarını aç"
 }

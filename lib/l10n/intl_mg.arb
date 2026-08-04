@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-04 09:29:26.829606",
+    "@@last_modified": "2026-08-04 10:46:16.199533",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Tsy misy hetsika eto amin'ity faritra ity.",
     "practiceSessionTimedOut": "Nifarana ny fotoana fanaovanao fanazaran-tena rehefa afaka {minutes} minitra tsy nisy hetsika.",
     "autocorrectMobileOnly": "Finday ihany",
-    "autocorrectMobileOnlyWarning": "Ny fanitsiana mandeha ho azy amin'ny fitaovana dia tsy misy afa-tsy amin'ny fampiharana finday."
+    "autocorrectMobileOnlyWarning": "Ny fanitsiana mandeha ho azy amin'ny fitaovana dia tsy misy afa-tsy amin'ny fampiharana finday.",
+    "readAloudNoVoiceTitle": "Tsy misy feo {language} avo lenta hita",
+    "readAloudNoVoiceDesktopWeb": "Ity navigateur ity dia tsy manolotra feo {language} avo lenta, ka tsy azo vakiana tsara eto ny hafatra. Matetika ny Chrome sy Edge dia ahitana feo avo lenta.",
+    "readAloudGetChrome": "Raiso ny Chrome",
+    "readAloudNoVoiceMobileWeb": "Ity navigateur ity dia tsy manolotra feo {language} avo lenta, ka tsy azo vakiana tsara eto ny hafatra. Ny fampiharana Pangea Chat dia afaka mampiasa ny feo tsara indrindra amin'ny fitaovanao.",
+    "readAloudGetApp": "Raiso ny fampiharana",
+    "readAloudNoVoiceIOS": "Mbola tsy misy feo {language} avo lenta alaina ao amin'ny fitaovanao. Misintona iray, ary andramo indray:",
+    "readAloudNoVoiceIOSSteps": "  • Fikirana\n  • Fidirana\n  • Votoaty Tenenina\n  • Feo\n  • {language}\n  • Misintona feo Enhanced na Premium",
+    "readAloudNoVoiceAndroid": "Mbola tsy misy feo {language} avo lenta ao amin'ny fitaovanao. Mametraka angona feo ho an'ny motera lahatsoratra-ho-feo anao, ary andramo indray.",
+    "readAloudOpenVoiceSettings": "Sokafy ny firafitry ny feo"
 }

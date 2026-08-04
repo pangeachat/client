@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-04 09:29:22.343458",
+    "@@last_modified": "2026-08-04 10:46:03.637027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Nisuna attività in sta zona.",
     "practiceSessionTimedOut": "A vostra sessione di pratica hè finita dopu à {minutes} minuti senza attività.",
     "autocorrectMobileOnly": "Solu mobile",
-    "autocorrectMobileOnlyWarning": "L'autucurrezzione di u dispusitivu hè dispunibule solu nant'à l'app mobile."
+    "autocorrectMobileOnlyWarning": "L'autucurrezzione di u dispusitivu hè dispunibule solu nant'à l'app mobile.",
+    "readAloudNoVoiceTitle": "Nisuna voce di alta qualità in {language} truvata",
+    "readAloudNoVoiceDesktopWeb": "Stu navigatore ùn offre micca una voce di alta qualità in {language}, dunque i messaghji ùn ponu micca esse letti bè quì. Chrome è Edge includenu di solitu voci di alta qualità.",
+    "readAloudGetChrome": "Scaricate Chrome",
+    "readAloudNoVoiceMobileWeb": "Stu navigatore ùn offre micca una voce di alta qualità in {language}, dunque i messaghji ùn ponu micca esse letti bè quì. L'app Pangea Chat pò aduprà e migliori voci di u vostru dispositivu.",
+    "readAloudGetApp": "Scaricate l'app",
+    "readAloudNoVoiceIOS": "U vostru dispositivu ùn hà ancu scaricatu una voce di alta qualità in {language}. Scaricate una, dopu riprovate:",
+    "readAloudNoVoiceIOSSteps": "  • Impostazioni\n  • Accessibilità\n  • Cuntenutu Parlatu\n  • Voci\n  • {language}\n  • Scaricate una voce Migliurata o Premium",
+    "readAloudNoVoiceAndroid": "U vostru dispositivu ùn hà ancu una voce di alta qualità in {language}. Installate i dati di voce per u vostru mutore di sintesi vocale, dopu riprovate.",
+    "readAloudOpenVoiceSettings": "Aprite e impostazioni di voce"
 }

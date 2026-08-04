@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:28.529096",
+    "@@last_modified": "2026-08-04 10:46:22.023979",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10427,5 +10427,14 @@
     "mapNoActivitiesArea": "Nicio activitate în această zonă.",
     "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate.",
     "autocorrectMobileOnly": "Doar pe mobil",
-    "autocorrectMobileOnlyWarning": "Corectarea automată a dispozitivului este disponibilă doar în aplicația mobilă."
+    "autocorrectMobileOnlyWarning": "Corectarea automată a dispozitivului este disponibilă doar în aplicația mobilă.",
+    "readAloudNoVoiceTitle": "Nu s-a găsit o voce {language} de înaltă calitate",
+    "readAloudNoVoiceDesktopWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Chrome și Edge includ de obicei voci de înaltă calitate.",
+    "readAloudGetChrome": "Obțineți Chrome",
+    "readAloudNoVoiceMobileWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Aplicația Pangea Chat poate utiliza cele mai bune voci ale dispozitivului dvs.",
+    "readAloudGetApp": "Obțineți aplicația",
+    "readAloudNoVoiceIOS": "Dispozitivul dvs. nu are încă o voce {language} de înaltă calitate descărcată. Descărcați una, apoi încercați din nou:",
+    "readAloudNoVoiceIOSSteps": "  • Setări\n  • Accesibilitate\n  • Conținut vorbit\n  • Voci\n  • {language}\n  • Descărcați o voce îmbunătățită sau premium",
+    "readAloudNoVoiceAndroid": "Dispozitivul dvs. nu are încă o voce {language} de înaltă calitate. Instalați date vocale pentru motorul dvs. text-to-speech, apoi încercați din nou.",
+    "readAloudOpenVoiceSettings": "Deschideți setările vocale"
 }

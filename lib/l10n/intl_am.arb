@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-04 09:29:22.238145",
+    "@@last_modified": "2026-08-04 10:46:02.400204",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "በዚህ አካባቢ ምንም እንቅስቃሴዎች የሉም።",
     "practiceSessionTimedOut": "ምንም እንቅስቃሴ ባለመኖሩ የልምምድ ክፍለ ጊዜዎ ከ{minutes} ደቂቃዎች በኋላ አብቅቷል።",
     "autocorrectMobileOnly": "ሞባይል ብቻ",
-    "autocorrectMobileOnlyWarning": "የመሣሪያ ራስ-አስተካክል በሞባይል መተግበሪያ ላይ ብቻ ይገኛል።"
+    "autocorrectMobileOnlyWarning": "የመሣሪያ ራስ-አስተካክል በሞባይል መተግበሪያ ላይ ብቻ ይገኛል።",
+    "readAloudNoVoiceTitle": "ከፍተኛ ጥራት ያለው የ{language} ድምጽ አልተገኘም",
+    "readAloudNoVoiceDesktopWeb": "ይህ አሳሽ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይሰጥም፣ ስለዚህ መልዕክቶች እዚህ በደንብ ሊነበቡ አይችሉም። Chrome እና Edge ብዙውን ጊዜ ከፍተኛ ጥራት ያላቸውን ድምፆች ያካትታሉ።",
+    "readAloudGetChrome": "Chrome ያግኙ",
+    "readAloudNoVoiceMobileWeb": "ይህ አሳሽ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይሰጥም፣ ስለዚህ መልዕክቶች እዚህ በደንብ ሊነበቡ አይችሉም። የPangea Chat መተግበሪያ የመሳሪያዎን ምርጥ ድምፆች መጠቀም ይችላል።",
+    "readAloudGetApp": "መተግበሪያውን ያግኙ",
+    "readAloudNoVoiceIOS": "የእርስዎ መሣሪያ እስካሁን ከፍተኛ ጥራት ያለው የ{language} ድምጽ አላወረደም። አንዱን ያውርዱ፣ ከዚያ እንደገና ይሞክሩ፦",
+    "readAloudNoVoiceIOSSteps": "  • ቅንብሮች\n  • ተደራሽነት\n  • የተነገረ ይዘት\n  • ድምፆች\n  • {language}\n  • የተሻሻለ ወይም ፕሪሚየም ድምጽ ያውርዱ",
+    "readAloudNoVoiceAndroid": "የእርስዎ መሣሪያ እስካሁን ከፍተኛ ጥራት ያለው የ{language} ድምጽ የለውም። ለጽሑፍ-ወደ-ንግግር ሞተርዎ የድምጽ ውሂብ ይጫኑ፣ ከዚያ እንደገና ይሞክሩ።",
+    "readAloudOpenVoiceSettings": "የድምጽ ቅንብሮችን ክፈት"
 }

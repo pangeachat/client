@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-04 09:29:25.521883",
+    "@@last_modified": "2026-08-04 10:46:13.845987",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Nɔn aktiviti nɔ de na dis ples.",
     "practiceSessionTimedOut": "Yu patis seshɔn dɔn dɔn afta {minutes} minit dɛn we yu nɔ du ɛnitin.",
     "autocorrectMobileOnly": "Fɔ mobile nɔmɔ",
-    "autocorrectMobileOnlyWarning": "Di divays in autocorrect de on di mobile app nɔmɔ."
+    "autocorrectMobileOnlyWarning": "Di divays in autocorrect de on di mobile app nɔmɔ.",
+    "readAloudNoVoiceTitle": "No gɛt kwaliti {language} vɔys",
+    "readAloudNoVoiceDesktopWeb": "Dis brauza nɔ gɛt kwaliti {language} vɔys, so dɛn nɔ go ebul rid mɛsej dɛn gud wan. Chrome ɛn Edge kin gɛt kwaliti vɔys dɛn.",
+    "readAloudGetChrome": "Gɛt Chrome",
+    "readAloudNoVoiceMobileWeb": "Dis brauza nɔ gɛt kwaliti {language} vɔys, so dɛn nɔ go ebul rid mɛsej dɛn gud wan. Di Pangea Chat app kin yuz yu divays in bɛst vɔys dɛn.",
+    "readAloudGetApp": "Gɛt di app",
+    "readAloudNoVoiceIOS": "Yu divays nɔ gɛt kwaliti {language} vɔys dɔŋlod yet. Dɔŋlod wan, dɛn tray bak:",
+    "readAloudNoVoiceIOSSteps": "  • Sɛtin dɛn\n  • Aksɛsibiliti\n  • Spoken Kɔntɛnt\n  • Vɔys dɛn\n  • {language}\n  • Dɔŋlod wan Ɛnhans ɔ Premiɔm vɔys",
+    "readAloudNoVoiceAndroid": "Yu divays nɔ gɛt kwaliti {language} vɔys yet. Instɔl vɔys data fɔ yu tɛks-to-spich ɛnjin, dɛn tray bak.",
+    "readAloudOpenVoiceSettings": "Ɔpen vɔys sɛtin dɛn"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-04 09:29:25.794384",
+    "@@last_modified": "2026-08-04 10:46:14.494031",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Nullae actiones in hac regione.",
     "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione.",
     "autocorrectMobileOnly": "Solum mobile",
-    "autocorrectMobileOnlyWarning": "Autocorrectio machinalis tantum in app mobili praesto est."
+    "autocorrectMobileOnlyWarning": "Autocorrectio machinalis tantum in app mobili praesto est.",
+    "readAloudNoVoiceTitle": "Nulla vox {language} optima reperta",
+    "readAloudNoVoiceDesktopWeb": "Hic navigatrum nullam vocem {language} optimam praebet, ergo nuntii hic bene legi non possunt. Chrome et Edge plerumque voces optimas includunt.",
+    "readAloudGetChrome": "Accipe Chrome",
+    "readAloudNoVoiceMobileWeb": "Hic navigatrum nullam vocem {language} optimam praebet, ergo nuntii hic bene legi non possunt. Applicatio Pangea Chat optimis vocibus machinae tuae uti potest.",
+    "readAloudGetApp": "Accipe applicationem",
+    "readAloudNoVoiceIOS": "Machina tua nullam vocem {language} optimam adhuc receptam habet. Recipe unam, deinde iterum conare:",
+    "readAloudNoVoiceIOSSteps": "  • Optiones\n  • Aditus\n  • Contentum Dictum\n  • Voces\n  • {language}\n  • Recipe vocem Amplificatam vel Praemium",
+    "readAloudNoVoiceAndroid": "Machina tua nullam vocem {language} optimam adhuc habet. Instrue data vocis pro machina tua textus-ad-orationem, deinde iterum conare.",
+    "readAloudOpenVoiceSettings": "Aperi optiones vocis"
 }

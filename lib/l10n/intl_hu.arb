@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-04 09:29:24.528849",
+    "@@last_modified": "2026-08-04 10:46:10.345880",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9798,5 +9798,14 @@
     "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen.",
     "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt.",
     "autocorrectMobileOnly": "Csak mobilon",
-    "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el."
+    "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el.",
+    "readAloudNoVoiceTitle": "Nincs kiváló minőségű {language} hang",
+    "readAloudNoVoiceDesktopWeb": "Ez a böngésző nem kínál kiváló minőségű {language} hangot, így az üzenetek nem olvashatók fel jól. A Chrome és az Edge általában tartalmaz kiváló minőségű hangokat.",
+    "readAloudGetChrome": "Chrome letöltése",
+    "readAloudNoVoiceMobileWeb": "Ez a böngésző nem kínál kiváló minőségű {language} hangot, így az üzenetek nem olvashatók fel jól. A Pangea Chat alkalmazás használhatja az eszközöd legjobb hangjait.",
+    "readAloudGetApp": "Alkalmazás letöltése",
+    "readAloudNoVoiceIOS": "Az eszközödön még nincs letöltve kiváló minőségű {language} hang. Tölts le egyet, majd próbáld újra:",
+    "readAloudNoVoiceIOSSteps": "  • Beállítások\n  • Kisegítő lehetőségek\n  • Felolvasott tartalom\n  • Hangok\n  • {language}\n  • Tölts le egy továbbfejlesztett vagy prémium hangot",
+    "readAloudNoVoiceAndroid": "Az eszközödön még nincs kiváló minőségű {language} hang. Telepíts hangadatokat a szövegfelolvasó motorodhoz, majd próbáld újra.",
+    "readAloudOpenVoiceSettings": "Hangbeállítások megnyitása"
 }

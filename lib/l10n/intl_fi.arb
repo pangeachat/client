@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-04 09:29:23.022405",
+    "@@last_modified": "2026-08-04 10:46:06.158482",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9732,5 +9732,14 @@
     "mapNoActivitiesArea": "Tällä alueella ei ole aktiviteetteja.",
     "practiceSessionTimedOut": "Harjoitussessiosi päättyi {minutes} minuutin käyttämättömyyden jälkeen.",
     "autocorrectMobileOnly": "Vain mobiililaitteille",
-    "autocorrectMobileOnlyWarning": "Laitteen automaattinen korjaus on käytettävissä vain mobiilisovelluksessa."
+    "autocorrectMobileOnlyWarning": "Laitteen automaattinen korjaus on käytettävissä vain mobiilisovelluksessa.",
+    "readAloudNoVoiceTitle": "Laadukasta {language}-ääntä ei löydy",
+    "readAloudNoVoiceDesktopWeb": "Tämä selain ei tarjoa laadukasta {language}-ääntä, joten viestejä ei voida lukea ääneen kunnolla. Chrome ja Edge sisältävät yleensä laadukkaita ääniä.",
+    "readAloudGetChrome": "Hanki Chrome",
+    "readAloudNoVoiceMobileWeb": "Tämä selain ei tarjoa laadukasta {language}-ääntä, joten viestejä ei voida lukea ääneen kunnolla. Pangea Chat -sovellus voi käyttää laitteesi parhaita ääniä.",
+    "readAloudGetApp": "Hanki sovellus",
+    "readAloudNoVoiceIOS": "Laitteellesi ei ole vielä ladattu laadukasta {language}-ääntä. Lataa sellainen ja yritä sitten uudelleen:",
+    "readAloudNoVoiceIOSSteps": "  • Asetukset\n  • Käyttöapu\n  • Puhuttu sisältö\n  • Äänet\n  • {language}\n  • Lataa parannettu tai Premium-ääni",
+    "readAloudNoVoiceAndroid": "Laitteellasi ei ole vielä laadukasta {language}-ääntä. Asenna äänidata tekstistä puheeksi -moottorillesi ja yritä sitten uudelleen.",
+    "readAloudOpenVoiceSettings": "Avaa ääniasetukset"
 }

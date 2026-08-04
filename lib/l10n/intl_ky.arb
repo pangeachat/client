@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-04 09:29:25.564330",
+    "@@last_modified": "2026-08-04 10:46:15.069051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Бул аймакта эч кандай иш-аракеттер жок.",
     "practiceSessionTimedOut": "Сиздин машыгуу сессияңыз {minutes} мүнөт аракетсиздиктен кийин аяктады.",
     "autocorrectMobileOnly": "Мобилдик түзмөктөр үчүн гана",
-    "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү."
+    "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү.",
+    "readAloudNoVoiceTitle": "{language} тилинде жогорку сапаттагы үн табылган жок",
+    "readAloudNoVoiceDesktopWeb": "Бул браузер жогорку сапаттагы {language} үнүн сунуштабайт, андыктан билдирүүлөр бул жерде жакшы окулбайт. Chrome жана Edge адатта жогорку сапаттагы үндөрдү камтыйт.",
+    "readAloudGetChrome": "Chrome'ду алуу",
+    "readAloudNoVoiceMobileWeb": "Бул браузер жогорку сапаттагы {language} үнүн сунуштабайт, андыктан билдирүүлөр бул жерде жакшы окулбайт. Pangea Chat колдонмосу түзмөгүңүздүн мыкты үндөрүн колдоно алат.",
+    "readAloudGetApp": "Колдонмону алуу",
+    "readAloudNoVoiceIOS": "Түзмөгүңүзгө жогорку сапаттагы {language} үнү жүктөлө элек. Бирин жүктөп алып, кайра аракет кылыңыз:",
+    "readAloudNoVoiceIOSSteps": "  • Жөндөөлөр\n  • Атайын мүмкүнчүлүктөр\n  • Сүйлөө мазмуну\n  • Үндөр\n  • {language}\n  • Жакшыртылган же Премиум үндү жүктөп алыңыз",
+    "readAloudNoVoiceAndroid": "Түзмөгүңүздө жогорку сапаттагы {language} үнү жок. Текстти кепке айландыруу кыймылдаткычыңыз үчүн үн дайындарын орнотуп, кайра аракет кылыңыз.",
+    "readAloudOpenVoiceSettings": "Үн жөндөөлөрүн ачуу"
 }

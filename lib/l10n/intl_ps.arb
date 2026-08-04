@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-04 09:29:28.252963",
+    "@@last_modified": "2026-08-04 10:46:21.200172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "په دې سیمه کې هیڅ فعالیت نشته.",
     "practiceSessionTimedOut": "ستاسو د تمرین ناسته د {minutes} دقیقو بې فعالیتۍ وروسته پای ته ورسېده.",
     "autocorrectMobileOnly": "یوازې موبایل",
-    "autocorrectMobileOnlyWarning": "د وسیلې اتومات سمون یوازې په موبایل اپلیکیشن کې شتون لري."
+    "autocorrectMobileOnlyWarning": "د وسیلې اتومات سمون یوازې په موبایل اپلیکیشن کې شتون لري.",
+    "readAloudNoVoiceTitle": "د {language} لوړ کیفیت غږ ونه موندل شو",
+    "readAloudNoVoiceDesktopWeb": "دا براوزر د {language} لوړ کیفیت غږ نه وړاندې کوي، نو پیغامونه دلته په ښه توګه لوستل کیدی نشي. کروم او ایج معمولا لوړ کیفیت غږونه لري.",
+    "readAloudGetChrome": "کروم ترلاسه کړئ",
+    "readAloudNoVoiceMobileWeb": "دا براوزر د {language} لوړ کیفیت غږ نه وړاندې کوي، نو پیغامونه دلته په ښه توګه لوستل کیدی نشي. د پانګیا چیټ اپلیکیشن کولی شي ستاسو د وسیلې غوره غږونه وکاروي.",
+    "readAloudGetApp": "اپلیکیشن ترلاسه کړئ",
+    "readAloudNoVoiceIOS": "ستاسو وسیله لا تر اوسه د {language} لوړ کیفیت غږ نه دی ډاونلوډ کړی. یو ډاونلوډ کړئ، بیا بیا هڅه وکړئ:",
+    "readAloudNoVoiceIOSSteps": "  • ترتیبات\n  • لاسرسی\n  • ویل شوي مینځپانګه\n  • غږونه\n  • {language}\n  • یو پرمختللی یا پریمیم غږ ډاونلوډ کړئ",
+    "readAloudNoVoiceAndroid": "ستاسو وسیله لا تر اوسه د {language} لوړ کیفیت غږ نه لري. د خپل متن څخه وینا انجن لپاره د غږ ډاټا نصب کړئ، بیا بیا هڅه وکړئ.",
+    "readAloudOpenVoiceSettings": "د غږ ترتیبات خلاص کړئ"
 }

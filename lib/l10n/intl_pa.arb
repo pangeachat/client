@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-04 09:29:27.776574",
+    "@@last_modified": "2026-08-04 10:46:21.417134",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "ਇਸ ਖੇਤਰ ਵਿੱਚ ਕੋਈ ਗਤੀਵਿਧੀਆਂ ਨਹੀਂ ਹਨ।",
     "practiceSessionTimedOut": "ਤੁਹਾਡਾ ਅਭਿਆਸ ਸੈਸ਼ਨ {minutes} ਮਿੰਟਾਂ ਦੀ ਗਤੀਵਿਧੀ ਤੋਂ ਬਿਨਾਂ ਖਤਮ ਹੋ ਗਿਆ।",
     "autocorrectMobileOnly": "ਸਿਰਫ਼ ਮੋਬਾਈਲ",
-    "autocorrectMobileOnlyWarning": "ਡਿਵਾਈਸ ਆਟੋਕਰੈਕਟ ਸਿਰਫ਼ ਮੋਬਾਈਲ ਐਪ 'ਤੇ ਉਪਲਬਧ ਹੈ।"
+    "autocorrectMobileOnlyWarning": "ਡਿਵਾਈਸ ਆਟੋਕਰੈਕਟ ਸਿਰਫ਼ ਮੋਬਾਈਲ ਐਪ 'ਤੇ ਉਪਲਬਧ ਹੈ।",
+    "readAloudNoVoiceTitle": "ਕੋਈ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਨਹੀਂ ਮਿਲੀ",
+    "readAloudNoVoiceDesktopWeb": "ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਦੀ ਪੇਸ਼ਕਸ਼ ਨਹੀਂ ਕਰਦਾ, ਇਸ ਲਈ ਸੁਨੇਹੇ ਇੱਥੇ ਚੰਗੀ ਤਰ੍ਹਾਂ ਪੜ੍ਹੇ ਨਹੀਂ ਜਾ ਸਕਦੇ। Chrome ਅਤੇ Edge ਵਿੱਚ ਆਮ ਤੌਰ 'ਤੇ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀਆਂ ਆਵਾਜ਼ਾਂ ਸ਼ਾਮਲ ਹੁੰਦੀਆਂ ਹਨ।",
+    "readAloudGetChrome": "Chrome ਪ੍ਰਾਪਤ ਕਰੋ",
+    "readAloudNoVoiceMobileWeb": "ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਦੀ ਪੇਸ਼ਕਸ਼ ਨਹੀਂ ਕਰਦਾ, ਇਸ ਲਈ ਸੁਨੇਹੇ ਇੱਥੇ ਚੰਗੀ ਤਰ੍ਹਾਂ ਪੜ੍ਹੇ ਨਹੀਂ ਜਾ ਸਕਦੇ। Pangea Chat ਐਪ ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਦੀਆਂ ਸਭ ਤੋਂ ਵਧੀਆ ਆਵਾਜ਼ਾਂ ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੀ ਹੈ।",
+    "readAloudGetApp": "ਐਪ ਪ੍ਰਾਪਤ ਕਰੋ",
+    "readAloudNoVoiceIOS": "ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਵਿੱਚ ਅਜੇ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਡਾਊਨਲੋਡ ਨਹੀਂ ਹੋਈ ਹੈ। ਇੱਕ ਡਾਊਨਲੋਡ ਕਰੋ, ਫਿਰ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ:",
+    "readAloudNoVoiceIOSSteps": "  • ਸੈਟਿੰਗਾਂ\n  • ਪਹੁੰਚਯੋਗਤਾ\n  • ਬੋਲੀ ਗਈ ਸਮੱਗਰੀ\n  • ਆਵਾਜ਼ਾਂ\n  • {language}\n  • ਇੱਕ ਵਿਸਤ੍ਰਿਤ ਜਾਂ ਪ੍ਰੀਮੀਅਮ ਆਵਾਜ਼ ਡਾਊਨਲੋਡ ਕਰੋ",
+    "readAloudNoVoiceAndroid": "ਤੁਹਾਡੀ ਡਿਵਾਈਸ ਵਿੱਚ ਅਜੇ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਨਹੀਂ ਹੈ। ਆਪਣੇ ਟੈਕਸਟ-ਟੂ-ਸਪੀਚ ਇੰਜਣ ਲਈ ਵੌਇਸ ਡਾਟਾ ਸਥਾਪਤ ਕਰੋ, ਫਿਰ ਦੁਬਾਰਾ ਕੋਸ਼ਿਸ਼ ਕਰੋ।",
+    "readAloudOpenVoiceSettings": "ਵੌਇਸ ਸੈਟਿੰਗਾਂ ਖੋਲ੍ਹੋ"
 }

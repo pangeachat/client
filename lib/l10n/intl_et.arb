@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-04 09:29:22.945565",
+    "@@last_modified": "2026-08-04 10:46:06.163113",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,14 @@
     "mapNoActivitiesArea": "Selles piirkonnas pole tegevusi.",
     "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust.",
     "autocorrectMobileOnly": "Ainult mobiilis",
-    "autocorrectMobileOnlyWarning": "Seadme automaatkorrektuur on saadaval ainult mobiilirakenduses."
+    "autocorrectMobileOnlyWarning": "Seadme automaatkorrektuur on saadaval ainult mobiilirakenduses.",
+    "readAloudNoVoiceTitle": "Kvaliteetset {language} häält ei leitud",
+    "readAloudNoVoiceDesktopWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Chrome ja Edge sisaldavad tavaliselt kvaliteetseid hääli.",
+    "readAloudGetChrome": "Hangi Chrome",
+    "readAloudNoVoiceMobileWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Pangea vestlusrakendus saab kasutada teie seadme parimaid hääli.",
+    "readAloudGetApp": "Hangi rakendus",
+    "readAloudNoVoiceIOS": "Teie seadmesse pole veel kvaliteetset {language} häält alla laaditud. Laadige see alla ja proovige uuesti:",
+    "readAloudNoVoiceIOSSteps": "  • Seaded\n  • Hõlbustus\n  • Räägitav sisu\n  • Hääled\n  • {language}\n  • Laadige alla täiustatud või Premium hääl",
+    "readAloudNoVoiceAndroid": "Teie seadmes pole veel kvaliteetset {language} häält. Installige oma kõnesünteesi mootori jaoks häälandmed ja proovige uuesti.",
+    "readAloudOpenVoiceSettings": "Ava hääleseaded"
 }

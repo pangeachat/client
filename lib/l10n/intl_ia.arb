@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-04 09:29:24.558129",
+    "@@last_modified": "2026-08-04 10:46:10.663097",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10637,5 +10637,14 @@
     "mapNoActivitiesArea": "Nulle activitate in iste area.",
     "practiceSessionTimedOut": "Tu session de practica ha terminate post {minutes} minutas sin activitate.",
     "autocorrectMobileOnly": "Solmente mobile",
-    "autocorrectMobileOnlyWarning": "Le autocorrection del apparato es solmente disponibile in le application mobile."
+    "autocorrectMobileOnlyWarning": "Le autocorrection del apparato es solmente disponibile in le application mobile.",
+    "readAloudNoVoiceTitle": "Nulle voce de alte qualitate pro {language} trovate",
+    "readAloudNoVoiceDesktopWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Chrome e Edge usualmente include voces de alte qualitate.",
+    "readAloudGetChrome": "Obtene Chrome",
+    "readAloudNoVoiceMobileWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Le app Pangea Chat pote usar le melior voces de tu apparato.",
+    "readAloudGetApp": "Obtene le app",
+    "readAloudNoVoiceIOS": "Tu apparato non ha ancora un voce de alte qualitate pro {language} discargate. Discarga un, e postea reproba:",
+    "readAloudNoVoiceIOSSteps": "  • Parametros\n  • Accessibilitate\n  • Contento Parlate\n  • Voces\n  • {language}\n  • Discarga un voce Meliorate o Premium",
+    "readAloudNoVoiceAndroid": "Tu apparato non ha ancora un voce de alte qualitate pro {language}. Installar datos de voce pro tu motor de synthese vocal, e postea reproba.",
+    "readAloudOpenVoiceSettings": "Aperi le parametros de voce"
 }

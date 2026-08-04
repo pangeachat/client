@@ -3104,7 +3104,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-04 09:29:24.694446",
+    "@@last_modified": "2026-08-04 10:46:11.882042",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10327,5 +10327,14 @@
     "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo.",
     "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan aon ghníomhaíocht.",
     "autocorrectMobileOnly": "Fón póca amháin",
-    "autocorrectMobileOnlyWarning": "Níl ceartú uathoibríoch gléis ar fáil ach ar an aip shoghluaiste."
+    "autocorrectMobileOnlyWarning": "Níl ceartú uathoibríoch gléis ar fáil ach ar an aip shoghluaiste.",
+    "readAloudNoVoiceTitle": "Níor aimsíodh guth {language} ardchaighdeáin",
+    "readAloudNoVoiceDesktopWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. De ghnáth bíonn guthanna ardchaighdeáin san áireamh i Chrome agus Edge.",
+    "readAloudGetChrome": "Faigh Chrome",
+    "readAloudNoVoiceMobileWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. Is féidir le haip Pangea Chat na guthanna is fearr de do ghléas a úsáid.",
+    "readAloudGetApp": "Faigh an aip",
+    "readAloudNoVoiceIOS": "Níl guth {language} ardchaighdeáin íoslódáilte ag do ghléas fós. Íoslódáil ceann, ansin bain triail as arís:",
+    "readAloudNoVoiceIOSSteps": "  • Socruithe\n  • Inrochtaineacht\n  • Ábhar Labhartha\n  • Guthanna\n  • {language}\n  • Íoslódáil guth Feabhsaithe nó Préimhe",
+    "readAloudNoVoiceAndroid": "Níl guth {language} ardchaighdeáin ag do ghléas fós. Suiteáil sonraí guth do d'inneall téacs-go-caint, ansin bain triail as arís.",
+    "readAloudOpenVoiceSettings": "Oscail socruithe guth"
 }

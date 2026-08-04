@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:21.629699",
+    "@@last_modified": "2026-08-04 10:46:01.162678",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10323,5 +10323,14 @@
     "mapNoActivitiesArea": "এই এলাকায় কোনো কার্যকলাপ নেই।",
     "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।",
     "autocorrectMobileOnly": "শুধুমাত্র মোবাইল",
-    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।"
+    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।",
+    "readAloudNoVoiceTitle": "উচ্চ-মানের {language} ভয়েস পাওয়া যায়নি",
+    "readAloudNoVoiceDesktopWeb": "এই ব্রাউজারে উচ্চ-মানের {language} ভয়েস নেই, তাই এখানে বার্তাগুলি ভালোভাবে পড়ে শোনানো যাবে না। Chrome এবং Edge-এ সাধারণত উচ্চ-মানের ভয়েস থাকে।",
+    "readAloudGetChrome": "Chrome পান",
+    "readAloudNoVoiceMobileWeb": "এই ব্রাউজারে উচ্চ-মানের {language} ভয়েস নেই, তাই এখানে বার্তাগুলি ভালোভাবে পড়ে শোনানো যাবে না। Pangea Chat অ্যাপ আপনার ডিভাইসের সেরা ভয়েস ব্যবহার করতে পারে।",
+    "readAloudGetApp": "অ্যাপটি পান",
+    "readAloudNoVoiceIOS": "আপনার ডিভাইসে এখনও উচ্চ-মানের {language} ভয়েস ডাউনলোড করা হয়নি। একটি ডাউনলোড করুন, তারপর আবার চেষ্টা করুন:",
+    "readAloudNoVoiceIOSSteps": "  • সেটিংস\n  • অ্যাক্সেসিবিলিটি\n  • স্পোকেন কন্টেন্ট\n  • ভয়েসেস\n  • {language}\n  • একটি এনহ্যান্সড বা প্রিমিয়াম ভয়েস ডাউনলোড করুন",
+    "readAloudNoVoiceAndroid": "আপনার ডিভাইসে এখনও উচ্চ-মানের {language} ভয়েস নেই। আপনার টেক্সট-টু-স্পিচ ইঞ্জিনের জন্য ভয়েস ডেটা ইনস্টল করুন, তারপর আবার চেষ্টা করুন।",
+    "readAloudOpenVoiceSettings": "ভয়েস সেটিংস খুলুন"
 }

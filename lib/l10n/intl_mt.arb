@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-04 09:29:27.428376",
+    "@@last_modified": "2026-08-04 10:46:18.943431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "L-ebda attività f'din iż-żona.",
     "practiceSessionTimedOut": "Is-sessjoni ta' prattika tiegħek intemmet wara {minutes} minuti mingħajr attività.",
     "autocorrectMobileOnly": "Mobile biss",
-    "autocorrectMobileOnlyWarning": "L-autocorrect tal-apparat huwa disponibbli biss fuq l-app mobbli."
+    "autocorrectMobileOnlyWarning": "L-autocorrect tal-apparat huwa disponibbli biss fuq l-app mobbli.",
+    "readAloudNoVoiceTitle": "Ma nstabet l-ebda vuċi ta' kwalità għolja bil-{language}",
+    "readAloudNoVoiceDesktopWeb": "Dan il-browser ma joffrix vuċi ta' kwalità għolja bil-{language}, għalhekk il-messaġġi ma jistgħux jinqraw b'leħen għoli sew hawn. Chrome u Edge normalment jinkludu vuċijiet ta' kwalità għolja.",
+    "readAloudGetChrome": "Ikseb Chrome",
+    "readAloudNoVoiceMobileWeb": "Dan il-browser ma joffrix vuċi ta' kwalità għolja bil-{language}, għalhekk il-messaġġi ma jistgħux jinqraw b'leħen għoli sew hawn. L-app Pangea Chat tista' tuża l-aqwa vuċijiet tat-tagħmir tiegħek.",
+    "readAloudGetApp": "Ikseb l-app",
+    "readAloudNoVoiceIOS": "It-tagħmir tiegħek għad m'għandux vuċi ta' kwalità għolja bil-{language} imniżżla. Niżżel waħda, imbagħad erġa' pprova:",
+    "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Niżżel vuċi Mtejba jew Premium",
+    "readAloudNoVoiceAndroid": "It-tagħmir tiegħek għad m'għandux vuċi ta' kwalità għolja bil-{language}. Installa d-data tal-vuċi għall-magna text-to-speech tiegħek, imbagħad erġa' pprova.",
+    "readAloudOpenVoiceSettings": "Iftaħ is-settings tal-vuċi"
 }

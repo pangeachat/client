@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-04 09:29:29.903005",
+    "@@last_modified": "2026-08-04 10:46:24.520708",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Hapana zviitiko munzvimbo ino.",
     "practiceSessionTimedOut": "Chikamu chako chekudzidzira chapera mushure memaminitsi {minutes} usina kuita chinhu.",
     "autocorrectMobileOnly": "Pamafoni chete",
-    "autocorrectMobileOnlyWarning": "Autocorrect yefoni inongowanikwa pafoni app chete."
+    "autocorrectMobileOnlyWarning": "Autocorrect yefoni inongowanikwa pafoni app chete.",
+    "readAloudNoVoiceTitle": "Hapana izwi remhando yepamusoro re {language} rawawanikwa",
+    "readAloudNoVoiceDesktopWeb": "Bhurausa iri haripi izwi remhando yepamusoro re {language}, saka mameseji haagoni kuverengwa zvakanaka pano. Chrome ne Edge kazhinji zvine mazwi emhando yepamusoro.",
+    "readAloudGetChrome": "Tora Chrome",
+    "readAloudNoVoiceMobileWeb": "Bhurausa iri haripi izwi remhando yepamusoro re {language}, saka mameseji haagoni kuverengwa zvakanaka pano. Iyo Pangea Chat app inogona kushandisa mazwi emhando yepamusoro efoni yako.",
+    "readAloudGetApp": "Tora app",
+    "readAloudNoVoiceIOS": "Foni yako haina izwi remhando yepamusoro re {language} rakadhawunirodwa. Dhawunirodha rimwe, wobva waedza zvakare:",
+    "readAloudNoVoiceIOSSteps": "  • Zvirongwa\n  • Kuwanika\n  • Zvinyorwa Zvinotaurwa\n  • Mazwi\n  • {language}\n  • Dhawunirodha izwi reEnhanced kana Premium",
+    "readAloudNoVoiceAndroid": "Foni yako haina izwi remhando yepamusoro re {language} parizvino. Isa data reizwi reinjini yako yekutaura-kubva-kumavara, wobva waedza zvakare.",
+    "readAloudOpenVoiceSettings": "Vhura zvirongwa zveizwi"
 }

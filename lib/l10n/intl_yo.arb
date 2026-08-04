@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-04 09:29:31.589104",
+    "@@last_modified": "2026-08-04 10:46:30.654787",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Ko si awọn iṣẹ ṣiṣe ni agbegbe yii.",
     "practiceSessionTimedOut": "Ìgbà ìdánilẹ́kọ̀ọ́ rẹ parí lẹ́hìn ìṣẹ́jú {minutes} láìsí ìgbòkègbodò kankan.",
     "autocorrectMobileOnly": "Fún àwọn fóònù nìkan",
-    "autocorrectMobileOnlyWarning": "Atunṣe aifọwọyi ẹrọ wa fun ohun elo alagbeka nikan."
+    "autocorrectMobileOnlyWarning": "Atunṣe aifọwọyi ẹrọ wa fun ohun elo alagbeka nikan.",
+    "readAloudNoVoiceTitle": "Kò sí ohùn {language} tó dára tó rárá",
+    "readAloudNoVoiceDesktopWeb": "Ẹrọ aṣawakiri yii kò ní ohùn {language} tó dára tó, nítorí náà a kò lè ka àwọn ìfiranṣẹ jáde dáadáa níbí. Chrome àti Edge sábà máa ń ní àwọn ohùn tó dára tó.",
+    "readAloudGetChrome": "Gba Chrome",
+    "readAloudNoVoiceMobileWeb": "Ẹrọ aṣawakiri yii kò ní ohùn {language} tó dára tó, nítorí náà a kò lè ka àwọn ìfiranṣẹ jáde dáadáa níbí. Ohùn tó dára jù lọ lórí ẹ̀rọ rẹ ni Pangea Chat app lè lò.",
+    "readAloudGetApp": "Gba app náà",
+    "readAloudNoVoiceIOS": "Ẹrọ rẹ kò tíì ní ohùn {language} tó dára tó tí a ti gba sílẹ̀. Gba ọ̀kan sílẹ̀, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí:",
+    "readAloudNoVoiceIOSSteps": "  • Ètò\n  • Ìrọ̀rùn\n  • Ohun Tí A Sọ\n  • Àwọn Ohùn\n  • {language}\n  • Gba ohùn Enhanced tàbí Premium sílẹ̀",
+    "readAloudNoVoiceAndroid": "Ẹrọ rẹ kò tíì ní ohùn {language} tó dára tó. Fi data ohùn sori ẹrọ fún ẹ̀rọ text-to-speech rẹ, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí.",
+    "readAloudOpenVoiceSettings": "Ṣí àwọn ètò ohùn"
 }

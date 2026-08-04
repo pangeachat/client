@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:30.931929",
+    "@@last_modified": "2026-08-04 10:46:28.216125",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6961,5 +6961,14 @@
     "mapNoActivitiesArea": "Không có hoạt động nào trong khu vực này.",
     "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động.",
     "autocorrectMobileOnly": "Chỉ trên di động",
-    "autocorrectMobileOnlyWarning": "Tự động sửa lỗi chỉ khả dụng trên ứng dụng di động."
+    "autocorrectMobileOnlyWarning": "Tự động sửa lỗi chỉ khả dụng trên ứng dụng di động.",
+    "readAloudNoVoiceTitle": "Không tìm thấy giọng đọc {language} chất lượng cao",
+    "readAloudNoVoiceDesktopWeb": "Trình duyệt này không cung cấp giọng đọc {language} chất lượng cao, nên không thể đọc to tin nhắn tốt ở đây. Chrome và Edge thường có giọng đọc chất lượng cao.",
+    "readAloudGetChrome": "Tải Chrome",
+    "readAloudNoVoiceMobileWeb": "Trình duyệt này không cung cấp giọng đọc {language} chất lượng cao, nên không thể đọc to tin nhắn tốt ở đây. Ứng dụng Pangea Chat có thể sử dụng giọng đọc tốt nhất của thiết bị bạn.",
+    "readAloudGetApp": "Tải ứng dụng",
+    "readAloudNoVoiceIOS": "Thiết bị của bạn chưa tải giọng đọc {language} chất lượng cao. Hãy tải xuống rồi thử lại:",
+    "readAloudNoVoiceIOSSteps": "  • Cài đặt\n  • Trợ năng\n  • Nội dung được đọc\n  • Giọng nói\n  • {language}\n  • Tải xuống giọng nói Nâng cao hoặc Cao cấp",
+    "readAloudNoVoiceAndroid": "Thiết bị của bạn chưa có giọng đọc {language} chất lượng cao. Hãy cài đặt dữ liệu giọng nói cho công cụ chuyển văn bản thành giọng nói của bạn, sau đó thử lại.",
+    "readAloudOpenVoiceSettings": "Mở cài đặt giọng nói"
 }
