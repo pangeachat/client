@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:22.170504",
+    "@@last_modified": "2026-08-04 10:40:26.994966",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9822,5 +9822,10 @@
     "mapNoActivitiesArea": "No hi ha activitats en aquesta zona.",
     "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat.",
     "autocorrectMobileOnly": "Només mòbil",
-    "autocorrectMobileOnlyWarning": "L'autocorrecció del dispositiu només està disponible a l'aplicació mòbil."
+    "autocorrectMobileOnlyWarning": "L'autocorrecció del dispositiu només està disponible a l'aplicació mòbil.",
+    "explorePlayAndLearn": "Explora, juga i aprèn",
+    "conversationFromDayOne": "Conversa des del primer dia",
+    "builtForConnection": "Dissenyat per a la connexió",
+    "aiWhenYouNeedIt": "IA quan la necessitis",
+    "practiceTailoredForYou": "Pràctica personalitzada per a tu"
 }

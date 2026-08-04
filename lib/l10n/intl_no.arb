@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-04 09:29:27.569366",
+    "@@last_modified": "2026-08-04 10:40:33.762421",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Ingen aktiviteter i dette området.",
     "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet.",
     "autocorrectMobileOnly": "Kun mobil",
-    "autocorrectMobileOnlyWarning": "Enhetens autokorrigering er kun tilgjengelig i mobilappen."
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrigering er kun tilgjengelig i mobilappen.",
+    "explorePlayAndLearn": "Utforsk, lek og lær",
+    "conversationFromDayOne": "Samtale fra første dag",
+    "builtForConnection": "Bygget for tilknytning",
+    "aiWhenYouNeedIt": "AI når du trenger det",
+    "practiceTailoredForYou": "Øvelse skreddersydd for deg"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-04 09:29:31.167670",
+    "@@last_modified": "2026-08-04 10:40:37.829356",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9695,5 +9695,10 @@
     "mapNoActivitiesArea": "此区域没有活动。",
     "practiceSessionTimedOut": "您的练习会话因{minutes}分钟无活动而结束。",
     "autocorrectMobileOnly": "仅限移动设备",
-    "autocorrectMobileOnlyWarning": "设备自动更正功能仅在移动应用中可用。"
+    "autocorrectMobileOnlyWarning": "设备自动更正功能仅在移动应用中可用。",
+    "explorePlayAndLearn": "探索、玩耍和学习",
+    "conversationFromDayOne": "从第一天就开始对话",
+    "builtForConnection": "为连接而生",
+    "aiWhenYouNeedIt": "随时随地，AI相伴",
+    "practiceTailoredForYou": "为你量身定制的练习"
 }

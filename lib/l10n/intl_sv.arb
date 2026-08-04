@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:29.860954",
+    "@@last_modified": "2026-08-04 10:40:36.931794",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10213,5 +10213,10 @@
     "mapNoActivitiesArea": "Inga aktiviteter i detta område.",
     "practiceSessionTimedOut": "Din övningssession avslutades efter {minutes} minuters inaktivitet.",
     "autocorrectMobileOnly": "Endast mobil",
-    "autocorrectMobileOnlyWarning": "Enhetens autokorrigering är endast tillgänglig i mobilappen."
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrigering är endast tillgänglig i mobilappen.",
+    "explorePlayAndLearn": "Utforska, spela och lär dig",
+    "conversationFromDayOne": "Konversation från första dagen",
+    "builtForConnection": "Byggd för anslutning",
+    "aiWhenYouNeedIt": "AI när du behöver det",
+    "practiceTailoredForYou": "Övning anpassad för dig"
 }

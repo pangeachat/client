@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-04 09:29:27.776574",
+    "@@last_modified": "2026-08-04 10:40:34.167210",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "ਇਸ ਖੇਤਰ ਵਿੱਚ ਕੋਈ ਗਤੀਵਿਧੀਆਂ ਨਹੀਂ ਹਨ।",
     "practiceSessionTimedOut": "ਤੁਹਾਡਾ ਅਭਿਆਸ ਸੈਸ਼ਨ {minutes} ਮਿੰਟਾਂ ਦੀ ਗਤੀਵਿਧੀ ਤੋਂ ਬਿਨਾਂ ਖਤਮ ਹੋ ਗਿਆ।",
     "autocorrectMobileOnly": "ਸਿਰਫ਼ ਮੋਬਾਈਲ",
-    "autocorrectMobileOnlyWarning": "ਡਿਵਾਈਸ ਆਟੋਕਰੈਕਟ ਸਿਰਫ਼ ਮੋਬਾਈਲ ਐਪ 'ਤੇ ਉਪਲਬਧ ਹੈ।"
+    "autocorrectMobileOnlyWarning": "ਡਿਵਾਈਸ ਆਟੋਕਰੈਕਟ ਸਿਰਫ਼ ਮੋਬਾਈਲ ਐਪ 'ਤੇ ਉਪਲਬਧ ਹੈ।",
+    "explorePlayAndLearn": "ਖੋਜੋ, ਖੇਡੋ ਅਤੇ ਸਿੱਖੋ",
+    "conversationFromDayOne": "ਪਹਿਲੇ ਦਿਨ ਤੋਂ ਗੱਲਬਾਤ",
+    "builtForConnection": "ਕਨੈਕਸ਼ਨ ਲਈ ਬਣਾਇਆ ਗਿਆ",
+    "aiWhenYouNeedIt": "ਜਦੋਂ ਤੁਹਾਨੂੰ ਲੋੜ ਹੋਵੇ AI",
+    "practiceTailoredForYou": "ਤੁਹਾਡੇ ਲਈ ਤਿਆਰ ਕੀਤਾ ਅਭਿਆਸ"
 }

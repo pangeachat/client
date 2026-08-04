@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-04 09:29:28.583927",
+    "@@last_modified": "2026-08-04 10:40:34.166026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Palibe zochitika m'derali.",
     "practiceSessionTimedOut": "Nthawi yanu yochita masewera yatha patatha mphindi {minutes} osachita chilichonse.",
     "autocorrectMobileOnly": "Pa foni yokha",
-    "autocorrectMobileOnlyWarning": "Kukonza zolakwika zokha kumapezeka pa pulogalamu yam'manja."
+    "autocorrectMobileOnlyWarning": "Kukonza zolakwika zokha kumapezeka pa pulogalamu yam'manja.",
+    "explorePlayAndLearn": "Fufuzani, sewerani ndi kuphunzira",
+    "conversationFromDayOne": "Kukambirana kuyambira Tsiku Loyamba",
+    "builtForConnection": "Yopangidwira kulumikizana",
+    "aiWhenYouNeedIt": "AI mukafuna",
+    "practiceTailoredForYou": "Zochita zopangidwira inu"
 }

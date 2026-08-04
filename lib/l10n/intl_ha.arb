@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-04 09:29:23.839048",
+    "@@last_modified": "2026-08-04 10:40:29.488343",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Babu ayyuka a wannan yanki.",
     "practiceSessionTimedOut": "Zaman horon ka ya ƙare bayan mintuna {minutes} ba tare da aiki ba.",
     "autocorrectMobileOnly": "Wayar hannu kawai",
-    "autocorrectMobileOnlyWarning": "Gyaran rubutu ta atomatik yana samuwa ne kawai a kan manhajar wayar hannu."
+    "autocorrectMobileOnlyWarning": "Gyaran rubutu ta atomatik yana samuwa ne kawai a kan manhajar wayar hannu.",
+    "explorePlayAndLearn": "Bincika, yi wasa kuma ka koya",
+    "conversationFromDayOne": "Tattaunawa daga Rana ta Farko",
+    "builtForConnection": "An gina shi don haɗi",
+    "aiWhenYouNeedIt": "AI lokacin da kake buƙata",
+    "practiceTailoredForYou": "Aiwatar da aka keɓance maka"
 }

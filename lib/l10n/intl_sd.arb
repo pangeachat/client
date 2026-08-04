@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-04 09:29:29.129320",
+    "@@last_modified": "2026-08-04 10:40:35.489321",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "هن علائقي ۾ ڪا به سرگرمي ناهي.",
     "practiceSessionTimedOut": "توهان جو مشق سيشن {minutes} منٽن جي غير فعاليت کان پوءِ ختم ٿي ويو.",
     "autocorrectMobileOnly": "صرف موبائل",
-    "autocorrectMobileOnlyWarning": "ڊيوائس آٽوڪرڪٽ صرف موبائل ايپ تي موجود آهي."
+    "autocorrectMobileOnlyWarning": "ڊيوائس آٽوڪرڪٽ صرف موبائل ايپ تي موجود آهي.",
+    "explorePlayAndLearn": "ڳوليو، کيڏيو ۽ سکو",
+    "conversationFromDayOne": "پهرين ڏينهن کان ڳالهه ٻولهه",
+    "builtForConnection": "رابطي لاءِ ٺهيل",
+    "aiWhenYouNeedIt": "جڏهن توهان کي ضرورت هجي ته AI",
+    "practiceTailoredForYou": "توهان لاءِ تيار ڪيل مشق"
 }

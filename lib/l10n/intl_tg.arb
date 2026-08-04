@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-04 09:29:30.401970",
+    "@@last_modified": "2026-08-04 10:40:37.050352",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Дар ин минтақа ҳеҷ гуна фаъолият нест.",
     "practiceSessionTimedOut": "Сеанси машқи шумо пас аз {minutes} дақиқа бефаъолиятӣ ба охир расид.",
     "autocorrectMobileOnly": "Танҳо мобилӣ",
-    "autocorrectMobileOnlyWarning": "Худкор ислоҳкунӣ танҳо дар барномаи мобилӣ дастрас аст."
+    "autocorrectMobileOnlyWarning": "Худкор ислоҳкунӣ танҳо дар барномаи мобилӣ дастрас аст.",
+    "explorePlayAndLearn": "Кашф кунед, бозӣ кунед ва омӯзед",
+    "conversationFromDayOne": "Муколама аз рӯзи аввал",
+    "builtForConnection": "Барои пайвастшавӣ сохта шудааст",
+    "aiWhenYouNeedIt": "AI вақте ки ба шумо лозим аст",
+    "practiceTailoredForYou": "Машқ барои шумо мутобиқ карда шудааст"
 }

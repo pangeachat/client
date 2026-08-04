@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-04 09:29:30.941265",
+    "@@last_modified": "2026-08-04 10:40:37.340168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "بۇ رايوندا ھېچقانداق پائالىيەت يوق.",
     "practiceSessionTimedOut": "مەشقىڭىز {minutes} مىنۇت ھەرىكەتسىز تۇرغاندىن كېيىن ئاخىرلاشتى.",
     "autocorrectMobileOnly": "پەقەت يانفوندا",
-    "autocorrectMobileOnlyWarning": "ئاپتوماتىك تۈزىتىش ئىقتىدارى پەقەت يانفون ئەپچىكىدە بار."
+    "autocorrectMobileOnlyWarning": "ئاپتوماتىك تۈزىتىش ئىقتىدارى پەقەت يانفون ئەپچىكىدە بار.",
+    "explorePlayAndLearn": "ئىزدە، ئوينا ۋە ئۆگەن",
+    "conversationFromDayOne": "بىرىنچى كۈندىن باشلاپ پاراڭلىشىش",
+    "builtForConnection": "ئالاقە ئۈچۈن ياسالغان",
+    "aiWhenYouNeedIt": "سىزگە لازىم بولغاندا سۈنئىي ئىدراك",
+    "practiceTailoredForYou": "سىز ئۈچۈن خاسلاشتۇرۇلغان مەشىق"
 }

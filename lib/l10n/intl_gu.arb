@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-04 09:29:23.588316",
+    "@@last_modified": "2026-08-04 10:40:29.154247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "આ વિસ્તારમાં કોઈ પ્રવૃત્તિઓ નથી.",
     "practiceSessionTimedOut": "પ્રવૃત્તિ વિના {minutes} મિનિટ પછી તમારું પ્રેક્ટિસ સત્ર સમાપ્ત થયું.",
     "autocorrectMobileOnly": "ફક્ત મોબાઇલ",
-    "autocorrectMobileOnlyWarning": "ડિવાઇસ ઑટોકરેક્ટ ફક્ત મોબાઇલ ઍપ પર ઉપલબ્ધ છે."
+    "autocorrectMobileOnlyWarning": "ડિવાઇસ ઑટોકરેક્ટ ફક્ત મોબાઇલ ઍપ પર ઉપલબ્ધ છે.",
+    "explorePlayAndLearn": "અન્વેષણ કરો, રમો અને શીખો",
+    "conversationFromDayOne": "પહેલા દિવસથી જ વાતચીત",
+    "builtForConnection": "કનેક્શન માટે બનાવેલ",
+    "aiWhenYouNeedIt": "જ્યારે તમને જરૂર હોય ત્યારે AI",
+    "practiceTailoredForYou": "તમારા માટે તૈયાર કરેલી પ્રેક્ટિસ"
 }

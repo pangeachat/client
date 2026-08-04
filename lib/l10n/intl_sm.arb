@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-04 09:29:29.360369",
+    "@@last_modified": "2026-08-04 10:40:35.628048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Leai ni gaioiga i lenei vaega.",
     "practiceSessionTimedOut": "Ua maeʻa lau sauniga faʻataʻitaʻi pe a maeʻa le {minutes} minute e aunoa ma se gaioiga.",
     "autocorrectMobileOnly": "Na'o le telefoni feavea'i",
-    "autocorrectMobileOnlyWarning": "O le autocorrect o le masini e na'o le app feavea'i e maua."
+    "autocorrectMobileOnlyWarning": "O le autocorrect o le masini e na'o le app feavea'i e maua.",
+    "explorePlayAndLearn": "Su'esu'e, ta'alo ma a'oa'o",
+    "conversationFromDayOne": "Talanoaga mai le Aso Muamua",
+    "builtForConnection": "Fausia mo feso'ota'iga",
+    "aiWhenYouNeedIt": "AI pe a e mana'omia",
+    "practiceTailoredForYou": "Fa'ata'ita'iga fa'apitoa mo oe"
 }

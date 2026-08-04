@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-04 09:29:30.573178",
+    "@@last_modified": "2026-08-04 10:40:36.991777",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9695,5 +9695,10 @@
     "mapNoActivitiesArea": "У цій області немає активностей.",
     "practiceSessionTimedOut": "Ваш сеанс практики завершився після {minutes} хвилин бездіяльності.",
     "autocorrectMobileOnly": "Лише для мобільних пристроїв",
-    "autocorrectMobileOnlyWarning": "Автовиправлення доступне лише в мобільному застосунку."
+    "autocorrectMobileOnlyWarning": "Автовиправлення доступне лише в мобільному застосунку.",
+    "explorePlayAndLearn": "Досліджуйте, грайте та навчайтесь",
+    "conversationFromDayOne": "Розмова з першого дня",
+    "builtForConnection": "Створено для спілкування",
+    "aiWhenYouNeedIt": "ШІ, коли він вам потрібен",
+    "practiceTailoredForYou": "Практика, адаптована для вас"
 }

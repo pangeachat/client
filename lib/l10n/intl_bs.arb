@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-04 09:29:21.665704",
+    "@@last_modified": "2026-08-04 10:40:26.315170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Nema aktivnosti u ovom području.",
     "practiceSessionTimedOut": "Vaša sesija vježbanja je završena nakon {minutes} minuta neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne uređaje",
-    "autocorrectMobileOnlyWarning": "Automatska ispravka uređaja dostupna je samo u mobilnoj aplikaciji."
+    "autocorrectMobileOnlyWarning": "Automatska ispravka uređaja dostupna je samo u mobilnoj aplikaciji.",
+    "explorePlayAndLearn": "Istražujte, igrajte se i učite",
+    "conversationFromDayOne": "Razgovor od prvog dana",
+    "builtForConnection": "Kreirano za povezivanje",
+    "aiWhenYouNeedIt": "AI kada vam zatreba",
+    "practiceTailoredForYou": "Praksa prilagođena vama"
 }

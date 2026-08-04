@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:30.215270",
+    "@@last_modified": "2026-08-04 10:40:36.549436",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9787,5 +9787,10 @@
     "mapNoActivitiesArea": "இந்த பகுதியில் எந்தச் செயல்பாடுகளும் இல்லை.",
     "practiceSessionTimedOut": "செயல்பாடு இல்லாமல் {minutes} நிமிடங்களுக்குப் பிறகு உங்கள் பயிற்சி அமர்வு முடிந்தது.",
     "autocorrectMobileOnly": "மொபைலுக்கு மட்டும்",
-    "autocorrectMobileOnlyWarning": "சாதனத் தானியங்கு திருத்தம் மொபைல் பயன்பாட்டில் மட்டுமே கிடைக்கும்."
+    "autocorrectMobileOnlyWarning": "சாதனத் தானியங்கு திருத்தம் மொபைல் பயன்பாட்டில் மட்டுமே கிடைக்கும்.",
+    "explorePlayAndLearn": "ஆராய்ந்து, விளையாடி, கற்றுக்கொள்ளுங்கள்",
+    "conversationFromDayOne": "முதல் நாளிலிருந்தே உரையாடல்",
+    "builtForConnection": "இணைப்பிற்காக உருவாக்கப்பட்டது",
+    "aiWhenYouNeedIt": "உங்களுக்குத் தேவைப்படும்போது AI",
+    "practiceTailoredForYou": "உங்களுக்காக வடிவமைக்கப்பட்ட பயிற்சி"
 }

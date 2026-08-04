@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:30.931929",
+    "@@last_modified": "2026-08-04 10:40:37.325535",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6961,5 +6961,10 @@
     "mapNoActivitiesArea": "Không có hoạt động nào trong khu vực này.",
     "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động.",
     "autocorrectMobileOnly": "Chỉ trên di động",
-    "autocorrectMobileOnlyWarning": "Tự động sửa lỗi chỉ khả dụng trên ứng dụng di động."
+    "autocorrectMobileOnlyWarning": "Tự động sửa lỗi chỉ khả dụng trên ứng dụng di động.",
+    "explorePlayAndLearn": "Khám phá, vui chơi và học hỏi",
+    "conversationFromDayOne": "Trò chuyện ngay từ ngày đầu tiên",
+    "builtForConnection": "Được xây dựng để kết nối",
+    "aiWhenYouNeedIt": "AI khi bạn cần",
+    "practiceTailoredForYou": "Thực hành phù hợp với bạn"
 }

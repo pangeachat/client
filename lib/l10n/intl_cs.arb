@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-04 09:29:22.405069",
+    "@@last_modified": "2026-08-04 10:40:27.628309",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10189,5 +10189,10 @@
     "mapNoActivitiesArea": "V této oblasti nejsou žádné aktivity.",
     "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti.",
     "autocorrectMobileOnly": "Pouze mobilní",
-    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci."
+    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci.",
+    "explorePlayAndLearn": "Objevujte, hrajte si a učte se",
+    "conversationFromDayOne": "Konverzace od prvního dne",
+    "builtForConnection": "Stvořeno pro spojení",
+    "aiWhenYouNeedIt": "AI, když ji potřebujete",
+    "practiceTailoredForYou": "Praxe šitá na míru"
 }

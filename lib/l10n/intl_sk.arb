@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-04 09:29:28.893359",
+    "@@last_modified": "2026-08-04 10:40:35.031023",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10646,5 +10646,10 @@
     "mapNoActivitiesArea": "V tejto oblasti nie sú žiadne aktivity.",
     "practiceSessionTimedOut": "Vaša cvičná lekcia sa skončila po {minutes} minútach nečinnosti.",
     "autocorrectMobileOnly": "Iba mobil",
-    "autocorrectMobileOnlyWarning": "Automatické opravy sú dostupné iba v mobilnej aplikácii."
+    "autocorrectMobileOnlyWarning": "Automatické opravy sú dostupné iba v mobilnej aplikácii.",
+    "explorePlayAndLearn": "Objavuj, hraj sa a uč sa",
+    "conversationFromDayOne": "Konverzácia od prvého dňa",
+    "builtForConnection": "Stvorené pre spojenie",
+    "aiWhenYouNeedIt": "AI, keď ju potrebuješ",
+    "practiceTailoredForYou": "Cvičenie šité na mieru"
 }

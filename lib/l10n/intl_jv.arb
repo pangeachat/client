@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-04 09:29:25.069425",
+    "@@last_modified": "2026-08-04 10:40:30.832425",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Ora ana aktivitas ing wilayah iki.",
     "practiceSessionTimedOut": "Sesi gladhenmu rampung sawise {minutes} menit tanpa aktivitas.",
     "autocorrectMobileOnly": "Mung seluler",
-    "autocorrectMobileOnlyWarning": "Autocorrect piranti mung kasedhiya ing aplikasi seluler."
+    "autocorrectMobileOnlyWarning": "Autocorrect piranti mung kasedhiya ing aplikasi seluler.",
+    "explorePlayAndLearn": "Jelajahi, dolanan, lan sinau",
+    "conversationFromDayOne": "Pacelathon wiwit dina kapisan",
+    "builtForConnection": "Digawe kanggo sesambungan",
+    "aiWhenYouNeedIt": "AI nalika sampeyan butuh",
+    "practiceTailoredForYou": "Latihan sing cocog kanggo sampeyan"
 }

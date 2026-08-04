@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-04 09:29:26.046945",
+    "@@last_modified": "2026-08-04 10:40:31.170262",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Бұл аймақта әрекеттер жоқ.",
     "practiceSessionTimedOut": "Белсенділік болмағандықтан, жаттығу сеансы {minutes} минуттан кейін аяқталды.",
     "autocorrectMobileOnly": "Тек мобильді",
-    "autocorrectMobileOnlyWarning": "Құрылғыдағы автотүзету тек мобильді қосымшада қолжетімді."
+    "autocorrectMobileOnlyWarning": "Құрылғыдағы автотүзету тек мобильді қосымшада қолжетімді.",
+    "explorePlayAndLearn": "Зерттеңіз, ойнаңыз және үйреніңіз",
+    "conversationFromDayOne": "Бірінші күннен бастап сөйлесу",
+    "builtForConnection": "Байланыс үшін жасалған",
+    "aiWhenYouNeedIt": "Қажет болғанда AI",
+    "practiceTailoredForYou": "Сізге арналған жаттығу"
 }

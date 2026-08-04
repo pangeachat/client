@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-04 09:29:28.449786",
+    "@@last_modified": "2026-08-04 10:40:34.678521",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10669,5 +10669,10 @@
     "mapNoActivitiesArea": "В этой области нет активностей.",
     "practiceSessionTimedOut": "Ваша тренировка завершилась после {minutes} минут бездействия.",
     "autocorrectMobileOnly": "Только для мобильных",
-    "autocorrectMobileOnlyWarning": "Автокоррекция доступна только в мобильном приложении."
+    "autocorrectMobileOnlyWarning": "Автокоррекция доступна только в мобильном приложении.",
+    "explorePlayAndLearn": "Исследуйте, играйте и учитесь",
+    "conversationFromDayOne": "Общение с первого дня",
+    "builtForConnection": "Создано для общения",
+    "aiWhenYouNeedIt": "ИИ, когда он вам нужен",
+    "practiceTailoredForYou": "Практика, адаптированная для вас"
 }

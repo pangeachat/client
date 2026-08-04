@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-04 09:29:24.528849",
+    "@@last_modified": "2026-08-04 10:40:29.979905",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9798,5 +9798,10 @@
     "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen.",
     "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt.",
     "autocorrectMobileOnly": "Csak mobilon",
-    "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el."
+    "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el.",
+    "explorePlayAndLearn": "Felfedezés, játék és tanulás",
+    "conversationFromDayOne": "Beszélgetés az első naptól",
+    "builtForConnection": "Kapcsolatra tervezve",
+    "aiWhenYouNeedIt": "MI, amikor szükséged van rá",
+    "practiceTailoredForYou": "Rád szabott gyakorlás"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-04 09:29:21.566896",
+    "@@last_modified": "2026-08-04 10:40:26.199245",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Няма дейности в тази област.",
     "practiceSessionTimedOut": "Вашата тренировъчна сесия приключи след {minutes} минути без активност.",
     "autocorrectMobileOnly": "Само за мобилни устройства",
-    "autocorrectMobileOnlyWarning": "Автокорекцията на устройството е налична само в мобилното приложение."
+    "autocorrectMobileOnlyWarning": "Автокорекцията на устройството е налична само в мобилното приложение.",
+    "explorePlayAndLearn": "Изследвай, играй и учи",
+    "conversationFromDayOne": "Разговор от първия ден",
+    "builtForConnection": "Създадено за връзка",
+    "aiWhenYouNeedIt": "Изкуствен интелект, когато имаш нужда",
+    "practiceTailoredForYou": "Практика, съобразена с теб"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-04 09:29:24.652597",
+    "@@last_modified": "2026-08-04 10:40:30.493752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Այս տարածքում գործողություններ չկան։",
     "practiceSessionTimedOut": "Ձեր պրակտիկայի սեսիան ավարտվեց {minutes} րոպե անգործությունից հետո:",
     "autocorrectMobileOnly": "Միայն բջջայինի համար",
-    "autocorrectMobileOnlyWarning": "Սարքի ավտոուղղումը հասանելի է միայն բջջային հավելվածում։"
+    "autocorrectMobileOnlyWarning": "Սարքի ավտոուղղումը հասանելի է միայն բջջային հավելվածում։",
+    "explorePlayAndLearn": "Բացահայտեք, խաղացեք և սովորեք",
+    "conversationFromDayOne": "Զրույց առաջին իսկ օրվանից",
+    "builtForConnection": "Ստեղծված կապի համար",
+    "aiWhenYouNeedIt": "AI-ն, երբ ձեզ անհրաժեշտ է",
+    "practiceTailoredForYou": "Ձեզ համար հարմարեցված պրակտիկա"
 }

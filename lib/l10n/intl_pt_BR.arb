@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:29.121918",
+    "@@last_modified": "2026-08-04 10:40:35.292880",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9695,5 +9695,10 @@
     "mapNoActivitiesArea": "Nenhuma atividade nesta área.",
     "practiceSessionTimedOut": "Sua sessão de prática terminou após {minutes} minutos sem atividade.",
     "autocorrectMobileOnly": "Somente para celular",
-    "autocorrectMobileOnlyWarning": "A correção automática do dispositivo está disponível apenas no aplicativo móvel."
+    "autocorrectMobileOnlyWarning": "A correção automática do dispositivo está disponível apenas no aplicativo móvel.",
+    "explorePlayAndLearn": "Explore, jogue e aprenda",
+    "conversationFromDayOne": "Conversação desde o primeiro dia",
+    "builtForConnection": "Feito para conexão",
+    "aiWhenYouNeedIt": "IA quando você precisar",
+    "practiceTailoredForYou": "Prática personalizada para você"
 }

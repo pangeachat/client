@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-04 09:29:21.669245",
+    "@@last_modified": "2026-08-04 10:40:26.389652",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Bu ərazidə heç bir fəaliyyət yoxdur.",
     "practiceSessionTimedOut": "Fəaliyyətsizliyə görə məşq sessiyanız {minutes} dəqiqədən sonra başa çatdı.",
     "autocorrectMobileOnly": "Yalnız mobil",
-    "autocorrectMobileOnlyWarning": "Cihazın avtodüzəlişi yalnız mobil tətbiqdə mövcuddur."
+    "autocorrectMobileOnlyWarning": "Cihazın avtodüzəlişi yalnız mobil tətbiqdə mövcuddur.",
+    "explorePlayAndLearn": "Kəşf edin, oynayın və öyrənin",
+    "conversationFromDayOne": "İlk gündən söhbət",
+    "builtForConnection": "Əlaqə üçün qurulub",
+    "aiWhenYouNeedIt": "Ehtiyacınız olanda süni intellekt",
+    "practiceTailoredForYou": "Sizin üçün fərdi təcrübə"
 }

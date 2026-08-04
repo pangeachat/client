@@ -3547,7 +3547,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-04 09:29:23.022405",
+    "@@last_modified": "2026-08-04 10:40:28.240435",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9732,5 +9732,10 @@
     "mapNoActivitiesArea": "Tällä alueella ei ole aktiviteetteja.",
     "practiceSessionTimedOut": "Harjoitussessiosi päättyi {minutes} minuutin käyttämättömyyden jälkeen.",
     "autocorrectMobileOnly": "Vain mobiililaitteille",
-    "autocorrectMobileOnlyWarning": "Laitteen automaattinen korjaus on käytettävissä vain mobiilisovelluksessa."
+    "autocorrectMobileOnlyWarning": "Laitteen automaattinen korjaus on käytettävissä vain mobiilisovelluksessa.",
+    "explorePlayAndLearn": "Tutki, pelaa ja opi",
+    "conversationFromDayOne": "Keskustelua heti alusta alkaen",
+    "builtForConnection": "Rakennettu yhteydenpitoa varten",
+    "aiWhenYouNeedIt": "Tekoälyä tarvittaessa",
+    "practiceTailoredForYou": "Räätälöityä harjoittelua sinulle"
 }

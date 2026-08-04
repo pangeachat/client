@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-04 09:29:21.849335",
+    "@@last_modified": "2026-08-04 10:40:26.565672",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "এই অঞ্চলত কোনো কাৰ্যকলাপ নাই।",
     "practiceSessionTimedOut": "আপোনাৰ অনুশীলন অধিৱেশন {minutes} মিনিটৰ পিছত কোনো কাৰ্যকলাপ নোহোৱাকৈ শেষ হৈছে।",
     "autocorrectMobileOnly": "কেৱল ম'বাইল",
-    "autocorrectMobileOnlyWarning": "ডিভাইচ স্বয়ংক্ৰিয় সংশোধন কেৱল মোবাইল এপ্লিকেচনত উপলব্ধ।"
+    "autocorrectMobileOnlyWarning": "ডিভাইচ স্বয়ংক্ৰিয় সংশোধন কেৱল মোবাইল এপ্লিকেচনত উপলব্ধ।",
+    "explorePlayAndLearn": "অন্বেষণ কৰক, খেলক আৰু শিকক",
+    "conversationFromDayOne": "প্ৰথম দিনৰ পৰাই কথা-বতৰা",
+    "builtForConnection": "সংযোগৰ বাবে নিৰ্মিত",
+    "aiWhenYouNeedIt": "আপোনাক প্ৰয়োজন হ’লে AI",
+    "practiceTailoredForYou": "আপোনাৰ বাবে উপযোগী অনুশীলন"
 }

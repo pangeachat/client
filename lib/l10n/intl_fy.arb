@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-04 09:29:23.606297",
+    "@@last_modified": "2026-08-04 10:40:28.410264",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Gjin aktiviteiten yn dit gebiet.",
     "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit.",
     "autocorrectMobileOnly": "Allinne mobyl",
-    "autocorrectMobileOnlyWarning": "Apparaat-autokorreksje is allinnich beskikber yn de mobile app."
+    "autocorrectMobileOnlyWarning": "Apparaat-autokorreksje is allinnich beskikber yn de mobile app.",
+    "explorePlayAndLearn": "Ferkenne, boartsje en lear",
+    "conversationFromDayOne": "Konversaasje fan dei ien ôf",
+    "builtForConnection": "Boud foar ferbining",
+    "aiWhenYouNeedIt": "AI as jo it nedich hawwe",
+    "practiceTailoredForYou": "Oefenje op maat foar jo"
 }

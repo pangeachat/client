@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-04 09:29:22.376288",
+    "@@last_modified": "2026-08-04 10:40:27.626754",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Dim gweithgareddau yn yr ardal hon.",
     "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch.",
     "autocorrectMobileOnly": "Symudol yn unig",
-    "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig."
+    "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig.",
+    "explorePlayAndLearn": "Archwilio, chwarae a dysgu",
+    "conversationFromDayOne": "Sgwrs o Ddydd Un",
+    "builtForConnection": "Wedi'i adeiladu ar gyfer cysylltiad",
+    "aiWhenYouNeedIt": "AI pan fydd ei angen arnoch chi",
+    "practiceTailoredForYou": "Ymarfer wedi'i deilwra ar eich cyfer chi"
 }

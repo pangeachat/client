@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-04 09:29:25.794384",
+    "@@last_modified": "2026-08-04 10:40:31.695254",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Nullae actiones in hac regione.",
     "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione.",
     "autocorrectMobileOnly": "Solum mobile",
-    "autocorrectMobileOnlyWarning": "Autocorrectio machinalis tantum in app mobili praesto est."
+    "autocorrectMobileOnlyWarning": "Autocorrectio machinalis tantum in app mobili praesto est.",
+    "explorePlayAndLearn": "Explora, lude et disce",
+    "conversationFromDayOne": "Sermo ab initio",
+    "builtForConnection": "Ad coniunctionem aedificatum",
+    "aiWhenYouNeedIt": "AI cum opus est",
+    "practiceTailoredForYou": "Exercitatio tibi aptata"
 }

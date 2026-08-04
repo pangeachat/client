@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-04 09:29:22.238145",
+    "@@last_modified": "2026-08-04 10:40:26.615829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "በዚህ አካባቢ ምንም እንቅስቃሴዎች የሉም።",
     "practiceSessionTimedOut": "ምንም እንቅስቃሴ ባለመኖሩ የልምምድ ክፍለ ጊዜዎ ከ{minutes} ደቂቃዎች በኋላ አብቅቷል።",
     "autocorrectMobileOnly": "ሞባይል ብቻ",
-    "autocorrectMobileOnlyWarning": "የመሣሪያ ራስ-አስተካክል በሞባይል መተግበሪያ ላይ ብቻ ይገኛል።"
+    "autocorrectMobileOnlyWarning": "የመሣሪያ ራስ-አስተካክል በሞባይል መተግበሪያ ላይ ብቻ ይገኛል።",
+    "explorePlayAndLearn": "አስስ፣ ተጫወት እና ተማር",
+    "conversationFromDayOne": "ከመጀመሪያው ቀን ጀምሮ ውይይት",
+    "builtForConnection": "ለመገናኘት የተሰራ",
+    "aiWhenYouNeedIt": "ሲያስፈልግህ AI",
+    "practiceTailoredForYou": "ለእርስዎ የተበጀ ልምምድ"
 }

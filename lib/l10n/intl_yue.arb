@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-04 09:29:31.131004",
+    "@@last_modified": "2026-08-04 10:40:38.336905",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10658,5 +10658,10 @@
     "mapNoActivitiesArea": "呢個區域冇活動。",
     "practiceSessionTimedOut": "你嘅練習環節喺冇活動 {minutes} 分鐘後結束咗。",
     "autocorrectMobileOnly": "僅限流動裝置",
-    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於流動應用程式。"
+    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於流動應用程式。",
+    "explorePlayAndLearn": "探索、玩樂、學習",
+    "conversationFromDayOne": "從第一日開始對話",
+    "builtForConnection": "為連結而生",
+    "aiWhenYouNeedIt": "隨時為你提供AI",
+    "practiceTailoredForYou": "為你度身訂造的練習"
 }

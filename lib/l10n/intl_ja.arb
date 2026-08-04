@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-04 09:29:25.574662",
+    "@@last_modified": "2026-08-04 10:40:30.416976",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10464,5 +10464,10 @@
     "mapNoActivitiesArea": "このエリアにはアクティビティがありません。",
     "practiceSessionTimedOut": "{minutes}分間操作がなかったため、練習セッションが終了しました。",
     "autocorrectMobileOnly": "モバイルのみ",
-    "autocorrectMobileOnlyWarning": "デバイスの自動修正はモバイルアプリでのみ利用可能です。"
+    "autocorrectMobileOnlyWarning": "デバイスの自動修正はモバイルアプリでのみ利用可能です。",
+    "explorePlayAndLearn": "探して、遊んで、学ぶ",
+    "conversationFromDayOne": "初日から会話",
+    "builtForConnection": "つながりのために作られました",
+    "aiWhenYouNeedIt": "必要なときにAIを",
+    "practiceTailoredForYou": "あなたに合わせた練習"
 }

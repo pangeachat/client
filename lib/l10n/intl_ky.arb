@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-04 09:29:25.564330",
+    "@@last_modified": "2026-08-04 10:40:31.664994",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Бул аймакта эч кандай иш-аракеттер жок.",
     "practiceSessionTimedOut": "Сиздин машыгуу сессияңыз {minutes} мүнөт аракетсиздиктен кийин аяктады.",
     "autocorrectMobileOnly": "Мобилдик түзмөктөр үчүн гана",
-    "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү."
+    "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү.",
+    "explorePlayAndLearn": "Изилдөө, ойноо жана үйрөнүү",
+    "conversationFromDayOne": "Биринчи күндөн баштап баарлашуу",
+    "builtForConnection": "Байланыш үчүн курулган",
+    "aiWhenYouNeedIt": "Керек болгондо жасалма интеллект",
+    "practiceTailoredForYou": "Сизге ылайыкташтырылган практика"
 }

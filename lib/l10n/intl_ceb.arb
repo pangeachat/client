@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-04 09:29:22.355174",
+    "@@last_modified": "2026-08-04 10:40:27.217693",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Walay mga kalihokan niining dapita.",
     "practiceSessionTimedOut": "Natapos ang imong practice session human sa {minutes} ka minuto nga walay kalihokan.",
     "autocorrectMobileOnly": "Mobile lang",
-    "autocorrectMobileOnlyWarning": "Ang autocorrect sa device anaa lang sa mobile app."
+    "autocorrectMobileOnlyWarning": "Ang autocorrect sa device anaa lang sa mobile app.",
+    "explorePlayAndLearn": "Pagsuhid, pagdula, ug pagkat-on",
+    "conversationFromDayOne": "Panag-istoryahanay gikan sa Unang Adlaw",
+    "builtForConnection": "Gibuhat para sa koneksyon",
+    "aiWhenYouNeedIt": "AI kung kinahanglan nimo",
+    "practiceTailoredForYou": "Praktis nga gipahaum para kanimo"
 }

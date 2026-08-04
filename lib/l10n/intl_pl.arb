@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-04 09:29:28.031787",
+    "@@last_modified": "2026-08-04 10:40:34.168260",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9780,5 +9780,10 @@
     "mapNoActivitiesArea": "Brak aktywności w tym obszarze.",
     "practiceSessionTimedOut": "Twoja sesja ćwiczeniowa zakończyła się po {minutes} minutach braku aktywności.",
     "autocorrectMobileOnly": "Tylko na urządzenia mobilne",
-    "autocorrectMobileOnlyWarning": "Autokorekta urządzenia jest dostępna tylko w aplikacji mobilnej."
+    "autocorrectMobileOnlyWarning": "Autokorekta urządzenia jest dostępna tylko w aplikacji mobilnej.",
+    "explorePlayAndLearn": "Odkrywaj, graj i ucz się",
+    "conversationFromDayOne": "Rozmowa od pierwszego dnia",
+    "builtForConnection": "Stworzone do nawiązywania kontaktów",
+    "aiWhenYouNeedIt": "AI, kiedy jej potrzebujesz",
+    "practiceTailoredForYou": "Praktyka dopasowana do Ciebie"
 }

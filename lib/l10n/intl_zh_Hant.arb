@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:31.315660",
+    "@@last_modified": "2026-08-04 10:40:37.942800",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9801,5 +9801,10 @@
     "mapNoActivitiesArea": "此區域沒有活動。",
     "practiceSessionTimedOut": "您的練習時段因 {minutes} 分鐘沒有活動而結束。",
     "autocorrectMobileOnly": "僅限行動裝置",
-    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於行動應用程式。"
+    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於行動應用程式。",
+    "explorePlayAndLearn": "探索、玩樂和學習",
+    "conversationFromDayOne": "從第一天起就開始對話",
+    "builtForConnection": "為連結而生",
+    "aiWhenYouNeedIt": "隨時隨地為您提供 AI",
+    "practiceTailoredForYou": "為您量身打造的練習"
 }

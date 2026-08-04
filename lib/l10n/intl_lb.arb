@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-04 09:29:26.035298",
+    "@@last_modified": "2026-08-04 10:40:32.202218",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Keng Aktivitéiten an dësem Beräich.",
     "practiceSessionTimedOut": "Deng Übungssessioun ass no {minutes} Minutten ouni Aktivitéit ofgelaf.",
     "autocorrectMobileOnly": "Nëmme mobil",
-    "autocorrectMobileOnlyWarning": "D'Autokorrektur vum Apparat ass nëmmen an der mobiler App verfügbar."
+    "autocorrectMobileOnlyWarning": "D'Autokorrektur vum Apparat ass nëmmen an der mobiler App verfügbar.",
+    "explorePlayAndLearn": "Entdeckt, spillt a léiert",
+    "conversationFromDayOne": "Gespréicher vum éischten Dag un",
+    "builtForConnection": "Gemaach fir Verbindung",
+    "aiWhenYouNeedIt": "AI wann Dir se braucht",
+    "practiceTailoredForYou": "Praxis op Iech ugepasst"
 }

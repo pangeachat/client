@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-04 09:29:29.903005",
+    "@@last_modified": "2026-08-04 10:40:35.957189",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Hapana zviitiko munzvimbo ino.",
     "practiceSessionTimedOut": "Chikamu chako chekudzidzira chapera mushure memaminitsi {minutes} usina kuita chinhu.",
     "autocorrectMobileOnly": "Pamafoni chete",
-    "autocorrectMobileOnlyWarning": "Autocorrect yefoni inongowanikwa pafoni app chete."
+    "autocorrectMobileOnlyWarning": "Autocorrect yefoni inongowanikwa pafoni app chete.",
+    "explorePlayAndLearn": "Ongorora, tamba uye dzidza",
+    "conversationFromDayOne": "Kukurukurirana kubva pazuva rekutanga",
+    "builtForConnection": "Yakavakwa yekubatanidza",
+    "aiWhenYouNeedIt": "AI paunenge uchiida",
+    "practiceTailoredForYou": "Kudzidzira kwakagadzirirwa iwe"
 }

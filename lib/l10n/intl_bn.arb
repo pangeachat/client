@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:21.629699",
+    "@@last_modified": "2026-08-04 10:40:26.228278",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10323,5 +10323,10 @@
     "mapNoActivitiesArea": "এই এলাকায় কোনো কার্যকলাপ নেই।",
     "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।",
     "autocorrectMobileOnly": "শুধুমাত্র মোবাইল",
-    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।"
+    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।",
+    "explorePlayAndLearn": "অনুসন্ধান করুন, খেলুন এবং শিখুন",
+    "conversationFromDayOne": "প্রথম দিন থেকেই কথোপকথন",
+    "builtForConnection": "সংযোগের জন্য তৈরি",
+    "aiWhenYouNeedIt": "আপনার যখন প্রয়োজন তখন AI",
+    "practiceTailoredForYou": "আপনার জন্য তৈরি অনুশীলন"
 }

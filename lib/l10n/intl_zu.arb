@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-04 09:29:31.347926",
+    "@@last_modified": "2026-08-04 10:40:38.243709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Azikho izinto kule ndawo.",
     "practiceSessionTimedOut": "Iseshini yakho yokuzijwayeza iphele ngemuva kwemizuzu engu-{minutes} ngaphandle komsebenzi.",
     "autocorrectMobileOnly": "Okweselula kuphela",
-    "autocorrectMobileOnlyWarning": "Ukulungisa okuzenzakalelayo kwedivayisi kutholakala kuphela kuhlelo lokusebenza lweselula."
+    "autocorrectMobileOnlyWarning": "Ukulungisa okuzenzakalelayo kwedivayisi kutholakala kuphela kuhlelo lokusebenza lweselula.",
+    "explorePlayAndLearn": "Hlola, dlala futhi ufunde",
+    "conversationFromDayOne": "Ingxoxo kusukela osukwini lokuqala",
+    "builtForConnection": "Yakhelwe ukuxhumana",
+    "aiWhenYouNeedIt": "I-AI uma uyidinga",
+    "practiceTailoredForYou": "Ukuzijwayeza okuklanyelwe wena"
 }

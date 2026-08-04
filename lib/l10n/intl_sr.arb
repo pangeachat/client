@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:29.876229",
+    "@@last_modified": "2026-08-04 10:40:35.616825",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10650,5 +10650,10 @@
     "mapNoActivitiesArea": "Nema aktivnosti u ovom području.",
     "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne uređaje",
-    "autocorrectMobileOnlyWarning": "Automatska ispravka je dostupna samo u mobilnoj aplikaciji."
+    "autocorrectMobileOnlyWarning": "Automatska ispravka je dostupna samo u mobilnoj aplikaciji.",
+    "explorePlayAndLearn": "Istražujte, igrajte se i učite",
+    "conversationFromDayOne": "Razgovor od prvog dana",
+    "builtForConnection": "Napravljeno za povezivanje",
+    "aiWhenYouNeedIt": "AI kada vam zatreba",
+    "practiceTailoredForYou": "Vežba krojena po vašoj meri"
 }

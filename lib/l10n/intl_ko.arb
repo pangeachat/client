@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:26.246989",
+    "@@last_modified": "2026-08-04 10:40:31.479102",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9888,5 +9888,10 @@
     "mapNoActivitiesArea": "이 지역에 활동이 없습니다.",
     "practiceSessionTimedOut": "활동이 없어 {minutes}분 후 연습 세션이 종료되었습니다.",
     "autocorrectMobileOnly": "모바일 전용",
-    "autocorrectMobileOnlyWarning": "기기 자동 고침은 모바일 앱에서만 사용할 수 있습니다."
+    "autocorrectMobileOnlyWarning": "기기 자동 고침은 모바일 앱에서만 사용할 수 있습니다.",
+    "explorePlayAndLearn": "탐색하고, 플레이하고, 배우세요",
+    "conversationFromDayOne": "첫날부터 대화 시작",
+    "builtForConnection": "연결을 위해 구축",
+    "aiWhenYouNeedIt": "필요할 때 AI",
+    "practiceTailoredForYou": "나만을 위한 맞춤 연습"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-04 09:29:26.277046",
+    "@@last_modified": "2026-08-04 10:40:31.733550",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "ಈ ಪ್ರದೇಶದಲ್ಲಿ ಯಾವುದೇ ಚಟುವಟಿಕೆಗಳಿಲ್ಲ.",
     "practiceSessionTimedOut": "ಯಾವುದೇ ಚಟುವಟಿಕೆ ಇಲ್ಲದೆ {minutes} ನಿಮಿಷಗಳ ನಂತರ ನಿಮ್ಮ ಅಭ್ಯಾಸದ ಅವಧಿ ಮುಗಿದಿದೆ.",
     "autocorrectMobileOnly": "ಮೊಬೈಲ್ ಮಾತ್ರ",
-    "autocorrectMobileOnlyWarning": "ಸಾಧನದ ಸ್ವಯಂ ತಿದ್ದುಪಡಿ ಮೊಬೈಲ್ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಮಾತ್ರ ಲಭ್ಯವಿದೆ."
+    "autocorrectMobileOnlyWarning": "ಸಾಧನದ ಸ್ವಯಂ ತಿದ್ದುಪಡಿ ಮೊಬೈಲ್ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಮಾತ್ರ ಲಭ್ಯವಿದೆ.",
+    "explorePlayAndLearn": "ಅನ್ವೇಷಿಸಿ, ಆಟವಾಡಿ ಮತ್ತು ಕಲಿಯಿರಿ",
+    "conversationFromDayOne": "ಮೊದಲ ದಿನದಿಂದಲೇ ಸಂಭಾಷಣೆ",
+    "builtForConnection": "ಸಂಪರ್ಕಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ",
+    "aiWhenYouNeedIt": "ನಿಮಗೆ ಬೇಕಾದಾಗ AI",
+    "practiceTailoredForYou": "ನಿಮಗಾಗಿ ರೂಪಿಸಿದ ಅಭ್ಯಾಸ"
 }

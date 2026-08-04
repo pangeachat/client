@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-04 09:29:27.053970",
+    "@@last_modified": "2026-08-04 10:40:33.589870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "অতোপ্পা এক্তিবিতী অমত্তা লৈতে।",
     "practiceSessionTimedOut": "নখোয়গী প্রেকটিস সেসন অসি {minutes} মিনিট ফাওবা করিগুম্বা থবক তৌদবনা লোইরে।",
     "autocorrectMobileOnly": "মোবাইলদা খক্তা",
-    "autocorrectMobileOnlyWarning": "মোবাইল এপ্লিকেসনদা খক্তা ডিভাইস অটোকরেক্ট ফংগনি।"
+    "autocorrectMobileOnlyWarning": "মোবাইল এপ্লিকেসনদা খক্তা ডিভাইস অটোকরেক্ট ফংগনি।",
+    "explorePlayAndLearn": "থিজিনবীয়ু, শান্নবীয়ু অমসুং তম্মবীয়ু",
+    "conversationFromDayOne": "অহানবা নুমিত্তা ৱারী শান্নবা",
+    "builtForConnection": "শম্ননবা শাবা",
+    "aiWhenYouNeedIt": "নাংনা দরকার ওইবা মতমদা AI",
+    "practiceTailoredForYou": "নঙগীদমক শেমগৎলবা প্রেকটিস"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-04 09:29:28.252963",
+    "@@last_modified": "2026-08-04 10:40:34.694725",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "په دې سیمه کې هیڅ فعالیت نشته.",
     "practiceSessionTimedOut": "ستاسو د تمرین ناسته د {minutes} دقیقو بې فعالیتۍ وروسته پای ته ورسېده.",
     "autocorrectMobileOnly": "یوازې موبایل",
-    "autocorrectMobileOnlyWarning": "د وسیلې اتومات سمون یوازې په موبایل اپلیکیشن کې شتون لري."
+    "autocorrectMobileOnlyWarning": "د وسیلې اتومات سمون یوازې په موبایل اپلیکیشن کې شتون لري.",
+    "explorePlayAndLearn": "پلټنه وکړئ، لوبې وکړئ او زده کړئ",
+    "conversationFromDayOne": "له لومړۍ ورځې څخه خبرې اترې",
+    "builtForConnection": "د اړیکو لپاره جوړ شوی",
+    "aiWhenYouNeedIt": "مصنوعي استخبارات کله چې ورته اړتیا لرئ",
+    "practiceTailoredForYou": "ستاسو لپاره چمتو شوی تمرین"
 }

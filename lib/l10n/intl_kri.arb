@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-04 09:29:25.521883",
+    "@@last_modified": "2026-08-04 10:40:31.605877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2069,5 +2069,10 @@
     "mapNoActivitiesArea": "Nɔn aktiviti nɔ de na dis ples.",
     "practiceSessionTimedOut": "Yu patis seshɔn dɔn dɔn afta {minutes} minit dɛn we yu nɔ du ɛnitin.",
     "autocorrectMobileOnly": "Fɔ mobile nɔmɔ",
-    "autocorrectMobileOnlyWarning": "Di divays in autocorrect de on di mobile app nɔmɔ."
+    "autocorrectMobileOnlyWarning": "Di divays in autocorrect de on di mobile app nɔmɔ.",
+    "explorePlayAndLearn": "Go, ple, ɛn lan",
+    "conversationFromDayOne": "Tɔk frɔm di fɔs de",
+    "builtForConnection": "Mek fɔ kɔnɛkshɔn",
+    "aiWhenYouNeedIt": "AI we yu nid am",
+    "practiceTailoredForYou": "Pratkis we dɛn mek fɔ yu"
 }

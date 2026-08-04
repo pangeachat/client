@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-04 09:29:22.618127",
+    "@@last_modified": "2026-08-04 10:40:27.222311",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9682,5 +9682,10 @@
     "mapNoActivitiesArea": "Keine Aktivitäten in diesem Bereich.",
     "practiceSessionTimedOut": "Deine Übungseinheit wurde nach {minutes} Minuten Inaktivität beendet.",
     "autocorrectMobileOnly": "Nur Mobilgeräte",
-    "autocorrectMobileOnlyWarning": "Die Autokorrektur des Geräts ist nur in der mobilen App verfügbar."
+    "autocorrectMobileOnlyWarning": "Die Autokorrektur des Geräts ist nur in der mobilen App verfügbar.",
+    "explorePlayAndLearn": "Entdecken, spielen und lernen",
+    "conversationFromDayOne": "Konversation vom ersten Tag an",
+    "builtForConnection": "Für Verbindung gemacht",
+    "aiWhenYouNeedIt": "KI, wenn du sie brauchst",
+    "practiceTailoredForYou": "Maßgeschneiderte Übungen für dich"
 }

@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-04 09:29:29.215708",
+    "@@last_modified": "2026-08-04 10:40:35.125428",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10646,5 +10646,10 @@
     "mapNoActivitiesArea": "Na tem območju ni dejavnosti.",
     "practiceSessionTimedOut": "Vaša vaja se je končala po {minutes} minutah neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne naprave",
-    "autocorrectMobileOnlyWarning": "Samodejno popravljanje je na voljo samo v mobilni aplikaciji."
+    "autocorrectMobileOnlyWarning": "Samodejno popravljanje je na voljo samo v mobilni aplikaciji.",
+    "explorePlayAndLearn": "Raziskuj, igraj se in se uči",
+    "conversationFromDayOne": "Pogovor od prvega dne",
+    "builtForConnection": "Ustvarjeno za povezovanje",
+    "aiWhenYouNeedIt": "AI, ko ga potrebuješ",
+    "practiceTailoredForYou": "Praksa, prilagojena tebi"
 }
