@@ -10,11 +10,12 @@ import 'package:fluffychat/features/analytics_data/analytics_update_events.dart'
 /// Regression test for #7756: XP gain/loss animations stopped showing on
 /// practice exercises whose construct had already reached the flower XP cap.
 ///
-/// The animation is driven by [XPGainedEvent.points]. It used to carry the
-/// capped per-construct XP delta, which is 0 for a flower-level construct, so
+/// The animation used to be driven by [XPGainedEvent.points] — the capped
+/// per-construct XP delta, which is 0 for a flower-level construct — so
 /// answering an exercise on a maxed-out word animated nothing. The event now
-/// carries the raw point value of the added uses ([XPGainedEvent.fromUses]),
-/// while total XP still uses the capped delta.
+/// also carries [XPGainedEvent.totalPoints], the raw point value of the added
+/// uses, which only the animation reads. [XPGainedEvent.points] keeps the
+/// capped delta for everything else (total XP / level math).
 void main() {
   OneConstructUse use(ConstructUseTypeEnum useType) => OneConstructUse(
     useType: useType,
@@ -27,62 +28,84 @@ void main() {
   );
 
   group('XPGainedEvent.fromUses', () {
-    test('carries the raw XP of a correct answer', () {
-      final event = XPGainedEvent.fromUses([
-        use(ConstructUseTypeEnum.corLM),
-      ], 'target-id');
-      expect(event.points, ConstructUseTypeEnum.corLM.pointValue);
-      expect(event.points, greaterThan(0));
+    test('totalPoints carries the raw XP of a correct answer', () {
+      final event = XPGainedEvent.fromUses(
+        [use(ConstructUseTypeEnum.corLM)],
+        3,
+        'target-id',
+      );
+      expect(event.totalPoints, ConstructUseTypeEnum.corLM.pointValue);
+      expect(event.totalPoints, greaterThan(0));
       expect(event.targetID, 'target-id');
     });
 
-    test('carries the raw XP of an incorrect answer', () {
-      final event = XPGainedEvent.fromUses([
-        use(ConstructUseTypeEnum.incLM),
-      ], 'target-id');
-      expect(event.points, ConstructUseTypeEnum.incLM.pointValue);
-      expect(event.points, lessThan(0));
+    test('totalPoints carries the raw XP of an incorrect answer', () {
+      final event = XPGainedEvent.fromUses(
+        [use(ConstructUseTypeEnum.incLM)],
+        0,
+        'target-id',
+      );
+      expect(event.totalPoints, ConstructUseTypeEnum.incLM.pointValue);
+      expect(event.totalPoints, lessThan(0));
     });
 
-    test('sums the XP of multiple added uses', () {
-      final event = XPGainedEvent.fromUses([
-        use(ConstructUseTypeEnum.corLM),
-        use(ConstructUseTypeEnum.incLM),
-      ], null);
+    test('totalPoints sums the raw XP of multiple added uses', () {
+      final event = XPGainedEvent.fromUses(
+        [use(ConstructUseTypeEnum.corLM), use(ConstructUseTypeEnum.incLM)],
+        0,
+        null,
+      );
       expect(
-        event.points,
+        event.totalPoints,
         ConstructUseTypeEnum.corLM.pointValue +
             ConstructUseTypeEnum.incLM.pointValue,
       );
     });
 
-    test('is nonzero for answers on a flower-level (capped) construct', () {
-      // Enough correct uses to push the construct past the flower cap.
-      final pastCap = List.generate(
-        (AnalyticsConstants.xpForFlower ~/
-                ConstructUseTypeEnum.corLM.pointValue) +
-            2,
-        (_) => use(ConstructUseTypeEnum.corLM),
+    test('points keeps the capped delta the caller computed', () {
+      final event = XPGainedEvent.fromUses(
+        [use(ConstructUseTypeEnum.corLM)],
+        0,
+        'target-id',
       );
-      final construct = ConstructUses(
-        uses: pastCap,
-        constructType: ConstructTypeEnum.vocab,
-        lemma: 'gato',
-        category: 'noun',
-      );
-
-      // The construct's points are capped, so one more use changes the capped
-      // total by 0 — the delta the animation used to (wrongly) show.
-      expect(construct.points, AnalyticsConstants.xpForFlower);
-      final before = construct.points;
-      construct.addUses([use(ConstructUseTypeEnum.corLM)]);
-      expect(construct.points - before, 0);
-
-      // The event for that same use still animates.
-      final event = XPGainedEvent.fromUses([
-        use(ConstructUseTypeEnum.corLM),
-      ], 'target-id');
-      expect(event.points, isNot(0));
+      expect(event.points, 0);
+      expect(event.totalPoints, ConstructUseTypeEnum.corLM.pointValue);
     });
+
+    test(
+      'totalPoints is nonzero for answers on a flower-level (capped) construct',
+      () {
+        // Enough correct uses to push the construct past the flower cap.
+        final pastCap = List.generate(
+          (AnalyticsConstants.xpForFlower ~/
+                  ConstructUseTypeEnum.corLM.pointValue) +
+              2,
+          (_) => use(ConstructUseTypeEnum.corLM),
+        );
+        final construct = ConstructUses(
+          uses: pastCap,
+          constructType: ConstructTypeEnum.vocab,
+          lemma: 'gato',
+          category: 'noun',
+        );
+
+        // The construct's points are capped, so one more use changes the
+        // capped total by 0 — the delta the animation used to (wrongly) show.
+        expect(construct.points, AnalyticsConstants.xpForFlower);
+        final before = construct.points;
+        construct.addUses([use(ConstructUseTypeEnum.corLM)]);
+        final cappedDelta = construct.points - before;
+        expect(cappedDelta, 0);
+
+        // The event for that same use still animates via totalPoints.
+        final event = XPGainedEvent.fromUses(
+          [use(ConstructUseTypeEnum.corLM)],
+          cappedDelta,
+          'target-id',
+        );
+        expect(event.points, 0);
+        expect(event.totalPoints, isNot(0));
+      },
+    );
   });
 }

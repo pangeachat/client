@@ -153,7 +153,7 @@ class AnalyticsUpdateDispatcher {
         _onUnlockMorphLemmas(e.unlocked, e.targetId);
         break;
       case final XPGainedEvent e:
-        _onXPGained(e.points, e.targetID);
+        _onXPGained(e.points, e.totalPoints, e.targetID);
         break;
       case final ConstructLevelUpEvent e:
         _onConstructLevelUp(e.constructId, e.level, e.targetID);
@@ -190,8 +190,12 @@ class AnalyticsUpdateDispatcher {
     }
   }
 
-  void _onXPGained(int points, String? targetID) {
-    final update = AnalyticsStreamUpdate(points: points, targetID: targetID);
+  void _onXPGained(int points, int totalPoints, String? targetID) {
+    final update = AnalyticsStreamUpdate(
+      points: points,
+      totalPoints: totalPoints,
+      targetID: targetID,
+    );
     constructUpdateStream.add(update);
   }
 

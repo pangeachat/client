@@ -29,20 +29,27 @@ class ConstructLevelUpEvent extends AnalyticsUpdateEvent {
 }
 
 class XPGainedEvent extends AnalyticsUpdateEvent {
+  /// XP actually gained: the per-construct delta, capped at the flower
+  /// threshold. This is what total XP / level math is based on.
   final int points;
+
+  /// Raw point value of the uses the update added, ignoring the flower cap.
+  /// Only the XP gain/loss animation reads this — a use on a flower-level
+  /// (capped) construct has [points] of 0 but still animates (#7756).
+  final int totalPoints;
+
   final String? targetID;
 
-  const XPGainedEvent(this.points, this.targetID);
+  const XPGainedEvent(this.points, this.totalPoints, this.targetID);
 
-  /// Build the event for one analytics update from the uses just added.
-  ///
-  /// Carries the raw point value of the action itself rather than the capped
-  /// per-construct XP delta — a use on a flower-level (capped) construct still
-  /// animates even though it changes total XP by 0 (#7756).
+  /// Build the event for one analytics update: [points] is the capped delta
+  /// computed by the caller; [totalPoints] is summed from the added uses.
   factory XPGainedEvent.fromUses(
     List<OneConstructUse> addedUses,
+    int cappedPoints,
     String? targetID,
   ) => XPGainedEvent(
+    cappedPoints,
     addedUses.fold<int>(0, (sum, use) => sum + use.xp),
     targetID,
   );
