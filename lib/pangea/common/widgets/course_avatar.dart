@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 
@@ -21,6 +22,12 @@ class CourseAvatar extends StatelessWidget {
   final Set<String?>? courseChildrenIds;
   final bool invite;
 
+  /// Someone is knocking on this course and the viewer is an admin who can
+  /// act on it: show the red "!" knock badge in the notification slot,
+  /// outranking the course-ping bell — a waiting user needs attention first
+  /// (#8139). The badge clears when the knock is accepted or denied.
+  final bool hasKnockingUsers;
+
   final Widget? child;
 
   const CourseAvatar({
@@ -31,6 +38,7 @@ class CourseAvatar extends StatelessWidget {
     this.unreadCoursePingEvent,
     this.courseChildrenIds,
     this.invite = false,
+    this.hasKnockingUsers = false,
     this.child,
   });
 
@@ -60,6 +68,14 @@ class CourseAvatar extends StatelessWidget {
     final courseChildrenIds = this.courseChildrenIds;
     if (unreadCoursePingEvent == null || courseChildrenIds == null) {
       return child;
+    }
+
+    if (hasKnockingUsers) {
+      return UnreadRoomsBadge(
+        filter: (room) => courseChildrenIds.contains(room.id),
+        badgePosition: position,
+        child: KnockingUsersBadge(position: position, child: child),
+      );
     }
 
     return UnreadRoomsBadge(

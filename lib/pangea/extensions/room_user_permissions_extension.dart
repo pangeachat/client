@@ -6,6 +6,13 @@ extension UserPermissionsRoomExtension on Room {
 
   bool get isRoomAdmin => ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
+  /// The users currently knocking on this room, from the locally loaded member
+  /// list. Empty for non-admins: only an admin can accept/deny a knock, so
+  /// knock indicators are admin-only by design (#8139). Callers that need the
+  /// full member list loaded should sit under a `KnockingUsersBuilder`.
+  List<User> get knockingUsers =>
+      isRoomAdmin ? getParticipants([Membership.knock]) : [];
+
   List<User> get nonBotRoomAdminsLocal {
     final List<User> participants = getParticipants();
     return participants
