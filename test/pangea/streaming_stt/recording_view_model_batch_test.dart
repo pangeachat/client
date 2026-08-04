@@ -232,6 +232,9 @@ void main() {
     final wakelock = _FakeWakelock();
     WakelockPlusPlatformInterface.instance = wakelock;
     wakelockPlusPlatformInstance = wakelock;
+    // Process-wide static (main reads it to suppress read-aloud while the mic is
+    // hot); reset so one test cannot leak the flag into the next.
+    RecordingViewModelState.isRecordingAnywhere = false;
   });
 
   tearDown(() {
@@ -417,6 +420,62 @@ void main() {
       expect(state.isStreaming, isFalse);
 
       state.cancel();
+    },
+  );
+
+  testWidgets(
+    'PRODUCTION PATH: a successful live streaming start via startRecording sets '
+    'isRecordingAnywhere (read-aloud suppression), and cancel/_reset clears it',
+    (tester) async {
+      final capture = _FakeCapture();
+      final channel = _OkChannel();
+      final session = StreamingSttSession(
+        capture: capture,
+        repo: SttStreamRepo(
+          wsUrl: 'wss://api.example/choreo/speech_to_text/stream',
+          accessToken: 'TOKEN',
+          connector: (uri, {protocols}) => channel,
+        ),
+      );
+
+      late RecordingViewModelState state;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: RecordingViewModel(
+            streamingSessionFactory: () => session,
+            builder: (context, s) {
+              state = s;
+              return const SizedBox.shrink();
+            },
+          ),
+        ),
+      );
+
+      expect(RecordingViewModelState.isRecordingAnywhere, isFalse);
+
+      // Drive the REAL startRecording -> _startStreaming -> _StreamStartOutcome
+      // .started path (NO debug seam). This is the teeth on the merge fix: if the
+      // production `isRecordingAnywhere = true` on the streaming branch is
+      // removed, main's read-aloud suppression breaks while live-streaming and
+      // this expectation fails.
+      await tester.runAsync(() async {
+        await state.startRecording(room);
+        await Future<void>.delayed(const Duration(milliseconds: 20));
+      });
+      await tester.pump();
+
+      expect(capture.started, isTrue);
+      expect(state.isStreaming, isTrue);
+      expect(RecordingViewModelState.isRecordingAnywhere, isTrue);
+
+      // cancel routes through _reset(), which must clear the flag.
+      await tester.runAsync(() async {
+        state.cancel();
+        await Future<void>.delayed(const Duration(milliseconds: 20));
+      });
+      await tester.pump();
+      expect(state.isStreaming, isFalse);
+      expect(RecordingViewModelState.isRecordingAnywhere, isFalse);
     },
   );
 
