@@ -40,10 +40,17 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
     final theme = Theme.of(context);
     final size = MediaQuery.sizeOf(context);
     final isMobile = size.height / size.width > _mobileRatioBreakpoint;
+    // The wide slide 1 bakes its brand text into the artwork, so it ships in
+    // a per-theme variant: dark text for light mode, light text for dark.
+    final slide1Suffix = isMobile
+        ? ''
+        : theme.brightness == Brightness.dark
+        ? '_Dark'
+        : '_Light';
     final imageUrls = List.generate(
       6,
       (i) =>
-          '${AppConfig.assetsBaseURL}/Carousel_${i + 1}_${isMobile ? 'ratio4x5' : 'ratio2x1'}_V5.png',
+          '${AppConfig.assetsBaseURL}/Carousel_${i + 1}_${isMobile ? 'ratio4x5' : 'ratio2x1'}_V5${i == 0 ? slide1Suffix : ''}.png',
     );
 
     return Semantics(
