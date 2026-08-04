@@ -11,6 +11,7 @@ import 'package:fluffychat/features/subscription/repo_v2/products_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/products_response.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_cancel_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_cancel_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_repo.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
 import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
@@ -197,7 +198,11 @@ class SubscriptionHistoryState extends State<SubscriptionHistory> {
       throw "Cannot manage subscription without billing portal link";
     }
 
-    await launchUrlString(billingPortal);
+    await SubscriptionManagementRepo.setLaunchedBillingPortal();
+    final success = await launchUrlString(billingPortal);
+    if (!success) {
+      await SubscriptionManagementRepo.removeLaunchedBillingPortal();
+    }
   }
 
   @override
