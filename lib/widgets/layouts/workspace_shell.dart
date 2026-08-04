@@ -688,7 +688,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
               .rateLimit(const Duration(seconds: 1)),
           builder: (context, _) => UnreadRoomsBadge(
             filter: (room) => room.firstSpaceParent == null,
-            badgePosition: BadgePosition.topEnd(top: 4, end: 4),
+            // Sits at the icon's corner with the web rail's proportions: the
+            // rail badge covers ~30% of its 41px icon, so over this 24px icon
+            // the badge must ride further up-and-out — at (4,4) it covered
+            // half the glyph and read as touching it. The badge Stack is
+            // Clip.none and the rail row leaves 8px above the 48px button, so
+            // the small negative overhang stays fully visible.
+            badgePosition: BadgePosition.topEnd(top: -1, end: -1),
             child: child,
           ),
         ),
