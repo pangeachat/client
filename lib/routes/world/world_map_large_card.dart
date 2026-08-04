@@ -34,11 +34,19 @@ class WorldMapLargeCardAnimated extends StatefulWidget {
   final bool dying;
   final VoidCallback? onExited;
 
+  /// Whether a freshly created state plays the entry grow-in. False for cards
+  /// already on screen at the last settle — MarkerLayer's per-frame positional
+  /// reconciliation can discard and recreate this State mid-gesture, and such
+  /// a card must render at full scale instead of replaying its pop-in (#8136).
+  /// Mirrors [WorldMapDot.animateIn].
+  final bool animateIn;
+
   const WorldMapLargeCardAnimated({
     super.key,
     required this.child,
     this.dying = false,
     this.onExited,
+    this.animateIn = true,
   });
 
   @override
@@ -56,7 +64,18 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
   void initState() {
     super.initState();
     _ctrl = AnimationController(vsync: this, duration: _duration);
-    if (!widget.dying) _ctrl.forward();
+    if (widget.dying) {
+      // Built fresh by ExitingLargeMarkersLayer, so didUpdateWidget's
+      // false→true arm never runs — play the exit from here or onExited never
+      // fires and the card leaks into _exitingLarge (#8136). Mirrors
+      // WorldMapDot.
+      _ctrl.value = 1.0;
+      _ctrl.reverse().then((_) => widget.onExited?.call());
+    } else if (widget.animateIn) {
+      _ctrl.forward();
+    } else {
+      _ctrl.value = 1.0;
+    }
   }
 
   @override

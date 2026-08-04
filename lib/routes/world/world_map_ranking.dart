@@ -346,26 +346,34 @@ RankingResult rankPins({
 }) {
   PinSignals sig(String id) => signals[id] ?? const PinSignals();
 
-  final scored = inViewPins.map((p) {
-    final band = relevanceBand(
-      p,
-      userL2: userL2,
-      userCefr: userCefr,
-      progression: progression,
-    );
-    return _Scored(
-      p,
-      pinScore(
-        band: band,
-        s: sig(p.activityId),
-        roleCount: p.roleCount,
-        isNewLearner: isNewLearner,
-        isDismissed: dismissedIds.contains(p.activityId),
-        ratingAverage: p.ratingAverage,
-        ratingCount: p.ratingCount,
-      ),
-    );
-  }).toList()..sort((a, b) => b.score.compareTo(a.score));
+  final scored =
+      inViewPins.map((p) {
+        final band = relevanceBand(
+          p,
+          userL2: userL2,
+          userCefr: userCefr,
+          progression: progression,
+        );
+        return _Scored(
+          p,
+          pinScore(
+            band: band,
+            s: sig(p.activityId),
+            roleCount: p.roleCount,
+            isNewLearner: isNewLearner,
+            isDismissed: dismissedIds.contains(p.activityId),
+            ratingAverage: p.ratingAverage,
+            ratingCount: p.ratingCount,
+          ),
+        );
+      }).toList()..sort((a, b) {
+        // activityId tiebreaker: List.sort is unstable, so without it equal-score
+        // pins can swap order between settles and flip mid<->small tiers (#8136).
+        final byScore = b.score.compareTo(a.score);
+        return byScore != 0
+            ? byScore
+            : a.pin.activityId.compareTo(b.pin.activityId);
+      });
 
   // The full score-ranked list with the per-objective diversity cap applied (not
   // yet truncated to N — the trail reservation needs the tail). Splitting it into
