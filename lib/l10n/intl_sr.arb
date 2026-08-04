@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:36.398833",
+    "@@last_modified": "2026-08-04 09:29:29.876229",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10648,5 +10648,7 @@
     "mapFiltersHideMatches": "Vaši filteri skrivaju sve mečeve. Proširite pretragu da biste ih videli.",
     "mapNoSearchMatches": "Nijedna aktivnost ne odgovara vašoj pretrazi.",
     "mapNoActivitiesArea": "Nema aktivnosti u ovom području.",
-    "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti."
+    "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti.",
+    "autocorrectMobileOnly": "Samo za mobilne uređaje",
+    "autocorrectMobileOnlyWarning": "Automatska ispravka je dostupna samo u mobilnoj aplikaciji."
 }

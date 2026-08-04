@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-03 09:47:31.382573",
+    "@@last_modified": "2026-08-04 09:29:27.894476",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "Penapis anda menyembunyikan semua perlawanan. Luaskan carian untuk melihatnya.",
     "mapNoSearchMatches": "Tiada aktiviti sepadan dengan carian anda.",
     "mapNoActivitiesArea": "Tiada aktiviti di kawasan ini.",
-    "practiceSessionTimedOut": "Sesi latihan anda tamat selepas {minutes} minit tanpa aktiviti."
+    "practiceSessionTimedOut": "Sesi latihan anda tamat selepas {minutes} minit tanpa aktiviti.",
+    "autocorrectMobileOnly": "Mudah alih sahaja",
+    "autocorrectMobileOnlyWarning": "Pembetulan automatik peranti hanya tersedia pada aplikasi mudah alih."
 }

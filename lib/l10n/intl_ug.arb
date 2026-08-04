@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-03 09:47:40.804476",
+    "@@last_modified": "2026-08-04 09:29:30.941265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "سۈزگۈچلىرىڭىز بارلىق ماسلىشىشلارنى يوشۇرۇۋاتىدۇ. ئۇلارنى كۆرۈش ئۈچۈن ئىزدەش دائىرىسىنى كېڭەيتىڭ.",
     "mapNoSearchMatches": "ئىزدەش دائىرىڭىزدە ھېچقانداق پائالىيەت يوق.",
     "mapNoActivitiesArea": "بۇ رايوندا ھېچقانداق پائالىيەت يوق.",
-    "practiceSessionTimedOut": "مەشقىڭىز {minutes} مىنۇت ھەرىكەتسىز تۇرغاندىن كېيىن ئاخىرلاشتى."
+    "practiceSessionTimedOut": "مەشقىڭىز {minutes} مىنۇت ھەرىكەتسىز تۇرغاندىن كېيىن ئاخىرلاشتى.",
+    "autocorrectMobileOnly": "پەقەت يانفوندا",
+    "autocorrectMobileOnlyWarning": "ئاپتوماتىك تۈزىتىش ئىقتىدارى پەقەت يانفون ئەپچىكىدە بار."
 }

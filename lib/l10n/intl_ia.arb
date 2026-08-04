@@ -1371,7 +1371,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-03 09:47:24.210883",
+    "@@last_modified": "2026-08-04 09:29:24.558129",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10635,5 +10635,7 @@
     "mapFiltersHideMatches": "Tu filtros cela tote le matches. Allarga le cerca pro vider los.",
     "mapNoSearchMatches": "Nulle activitate corresponde a tu cerca.",
     "mapNoActivitiesArea": "Nulle activitate in iste area.",
-    "practiceSessionTimedOut": "Tu session de practica ha terminate post {minutes} minutas sin activitate."
+    "practiceSessionTimedOut": "Tu session de practica ha terminate post {minutes} minutas sin activitate.",
+    "autocorrectMobileOnly": "Solmente mobile",
+    "autocorrectMobileOnlyWarning": "Le autocorrection del apparato es solmente disponibile in le application mobile."
 }

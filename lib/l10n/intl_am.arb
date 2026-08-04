@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-03 09:47:17.147213",
+    "@@last_modified": "2026-08-04 09:29:22.238145",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "የእርስዎ ማጣሪያዎች ሁሉንም ግጥሚያዎች እየደበቁ ነው። እነሱን ለማየት ፍለጋውን ያስፋፉ።",
     "mapNoSearchMatches": "ምንም እንቅስቃሴዎች ከፍለጋዎ ጋር አይዛመዱም።",
     "mapNoActivitiesArea": "በዚህ አካባቢ ምንም እንቅስቃሴዎች የሉም።",
-    "practiceSessionTimedOut": "ምንም እንቅስቃሴ ባለመኖሩ የልምምድ ክፍለ ጊዜዎ ከ{minutes} ደቂቃዎች በኋላ አብቅቷል።"
+    "practiceSessionTimedOut": "ምንም እንቅስቃሴ ባለመኖሩ የልምምድ ክፍለ ጊዜዎ ከ{minutes} ደቂቃዎች በኋላ አብቅቷል።",
+    "autocorrectMobileOnly": "ሞባይል ብቻ",
+    "autocorrectMobileOnlyWarning": "የመሣሪያ ራስ-አስተካክል በሞባይል መተግበሪያ ላይ ብቻ ይገኛል።"
 }

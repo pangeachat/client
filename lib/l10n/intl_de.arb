@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-03 09:47:19.114284",
+    "@@last_modified": "2026-08-04 09:29:22.618127",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9680,5 +9680,7 @@
     "mapFiltersHideMatches": "Deine Filter verbergen alle Matches. Erweitere die Suche, um sie zu sehen.",
     "mapNoSearchMatches": "Keine Aktivitäten entsprechen deiner Suche.",
     "mapNoActivitiesArea": "Keine Aktivitäten in diesem Bereich.",
-    "practiceSessionTimedOut": "Deine Übungseinheit wurde nach {minutes} Minuten Inaktivität beendet."
+    "practiceSessionTimedOut": "Deine Übungseinheit wurde nach {minutes} Minuten Inaktivität beendet.",
+    "autocorrectMobileOnly": "Nur Mobilgeräte",
+    "autocorrectMobileOnlyWarning": "Die Autokorrektur des Geräts ist nur in der mobilen App verfügbar."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-03 09:47:33.534142",
+    "@@last_modified": "2026-08-04 09:29:27.776574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "ਤੁਹਾਡੇ ਫਿਲਟਰ ਸਾਰੇ ਮੈਚਾਂ ਨੂੰ ਲੁਕਾ ਰਹੇ ਹਨ। ਉਹਨਾਂ ਨੂੰ ਦੇਖਣ ਲਈ ਖੋਜ ਦਾ ਘੇਰਾ ਵਧਾਓ।",
     "mapNoSearchMatches": "ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਕੋਈ ਗਤੀਵਿਧੀਆਂ ਮੇਲ ਨਹੀਂ ਖਾਂਦੀਆਂ।",
     "mapNoActivitiesArea": "ਇਸ ਖੇਤਰ ਵਿੱਚ ਕੋਈ ਗਤੀਵਿਧੀਆਂ ਨਹੀਂ ਹਨ।",
-    "practiceSessionTimedOut": "ਤੁਹਾਡਾ ਅਭਿਆਸ ਸੈਸ਼ਨ {minutes} ਮਿੰਟਾਂ ਦੀ ਗਤੀਵਿਧੀ ਤੋਂ ਬਿਨਾਂ ਖਤਮ ਹੋ ਗਿਆ।"
+    "practiceSessionTimedOut": "ਤੁਹਾਡਾ ਅਭਿਆਸ ਸੈਸ਼ਨ {minutes} ਮਿੰਟਾਂ ਦੀ ਗਤੀਵਿਧੀ ਤੋਂ ਬਿਨਾਂ ਖਤਮ ਹੋ ਗਿਆ।",
+    "autocorrectMobileOnly": "ਸਿਰਫ਼ ਮੋਬਾਈਲ",
+    "autocorrectMobileOnlyWarning": "ਡਿਵਾਈਸ ਆਟੋਕਰੈਕਟ ਸਿਰਫ਼ ਮੋਬਾਈਲ ਐਪ 'ਤੇ ਉਪਲਬਧ ਹੈ।"
 }

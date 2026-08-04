@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-03 09:47:23.252119",
+    "@@last_modified": "2026-08-04 09:29:24.330602",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10129,5 +10129,7 @@
     "mapFiltersHideMatches": "Vaši filtri skrivaju sva podudaranja. Proširite pretraživanje da biste ih vidjeli.",
     "mapNoSearchMatches": "Nema aktivnosti koje odgovaraju vašem pretraživanju.",
     "mapNoActivitiesArea": "Nema aktivnosti na ovom području.",
-    "practiceSessionTimedOut": "Vaša vježba je završila nakon {minutes} minuta neaktivnosti."
+    "practiceSessionTimedOut": "Vaša vježba je završila nakon {minutes} minuta neaktivnosti.",
+    "autocorrectMobileOnly": "Samo za mobilne uređaje",
+    "autocorrectMobileOnlyWarning": "Automatska ispravka dostupna je samo u mobilnoj aplikaciji."
 }

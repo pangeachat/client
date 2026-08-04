@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:20.644701",
+    "@@last_modified": "2026-08-04 09:29:22.919641",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9781,5 +9781,7 @@
     "mapFiltersHideMatches": "فیلترهای شما همه مسابقات را پنهان کرده‌اند. برای دیدن آنها جستجو را گسترش دهید.",
     "mapNoSearchMatches": "هیچ فعالیتی با جستجوی شما مطابقت ندارد.",
     "mapNoActivitiesArea": "هیچ فعالیتی در این منطقه وجود ندارد.",
-    "practiceSessionTimedOut": "جلسه تمرین شما پس از {minutes} دقیقه عدم فعالیت به پایان رسید."
+    "practiceSessionTimedOut": "جلسه تمرین شما پس از {minutes} دقیقه عدم فعالیت به پایان رسید.",
+    "autocorrectMobileOnly": "فقط موبایل",
+    "autocorrectMobileOnlyWarning": "تصحیح خودکار دستگاه فقط در برنامه موبایل در دسترس است."
 }
