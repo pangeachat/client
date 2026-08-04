@@ -105,12 +105,20 @@ class WorldMapPinsManager {
   /// banding. Rebuilt async on course join/leave (see [_maybeRebuildObjectiveCache]).
   final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
 
-  /// The joined-course uuids [_objectiveCache] was last (re)built from. The
+  /// The joined-course ROOM ids [_objectiveCache] was last (re)built from. The
   /// initial build happens on client-set, but the joined-course rooms (or their
   /// outlines) may not be ready yet; tracking the set lets the sync listener
   /// rebuild when it changes — or when a prior build resolved nothing — instead
-  /// of the banding + gate staying blank for the whole session.
-  Set<String> _objectiveCacheUuids = const {};
+  /// of the banding + gate staying blank for the whole session. Room ids, not
+  /// quest uuids: a second room of an already-joined quest leaves the uuid set
+  /// unchanged and would silently skip the rebuild (#8087).
+  Set<String> _objectiveCacheRoomIds = const {};
+
+  /// The quest uuids of those same joined courses, kept solely for
+  /// [ensureScopedCourseOutline]: the map's course scope carries a quest uuid
+  /// (CourseMapContext), so "is this course already in the cache?" is a
+  /// quest-uuid question even though the cache itself keys by room id.
+  Set<String> _objectiveCacheQuestIds = const {};
 
   /// Guards against overlapping objective-cache rebuilds (and stops a
   /// persistently-failing course from rebuilding on every single sync).
@@ -568,20 +576,21 @@ class WorldMapPinsManager {
     if (_objectiveCacheRebuilding) return;
     _objectiveCacheRebuilding = true;
     try {
-      final uuids = client.joinedCourseRooms
-          .map((r) => r.coursePlan!.uuid)
-          .toList();
+      final rooms = client.joinedCourseRooms;
       await _objectiveCache.rebuildFromJoinedCourses(
         client,
-        onError: (uuid, e, s) => ErrorHandler.logErrorOnce(
-          key: 'course-outline-resolve:$uuid',
+        // Keyed per course ROOM — two rooms of one quest can fail
+        // independently; questId keeps orphaned-quest reports diagnosable.
+        onError: (roomId, questId, e, s) => ErrorHandler.logErrorOnce(
+          key: 'course-outline-resolve:$roomId',
           e: e,
           s: s,
           m: 'JoinedObjectiveCache: course outline failed to resolve',
-          data: {'courseUuid': uuid},
+          data: {'courseRoomId': roomId, 'questId': questId},
         ),
       );
-      _objectiveCacheUuids = uuids.toSet();
+      _objectiveCacheRoomIds = rooms.map((r) => r.id).toSet();
+      _objectiveCacheQuestIds = rooms.map((r) => r.coursePlan!.uuid).toSet();
       resolveProgression(); // re-resolve the band with the loaded outlines
     } finally {
       _objectiveCacheRebuilding = false;
@@ -599,18 +608,18 @@ class WorldMapPinsManager {
   /// self-heals once the data is fixed (which is why [QuestRepo.outline] must
   /// never cache errors — see its cache doc, #8083).
   bool shouldRebuildObjectiveCache(Client client) {
-    final uuids = client.joinedCourseRooms
-        .map((r) => r.coursePlan!.uuid)
-        .toSet();
+    // Room ids, not quest uuids: joining a second room of an already-joined
+    // quest must register as a change (#8087).
+    final roomIds = client.joinedCourseRooms.map((r) => r.id).toSet();
 
     final setChanged =
-        uuids.length != _objectiveCacheUuids.length ||
-        !uuids.containsAll(_objectiveCacheUuids);
+        roomIds.length != _objectiveCacheRoomIds.length ||
+        !roomIds.containsAll(_objectiveCacheRoomIds);
 
     return shouldRebuildObjectiveCacheNow(
       rebuilding: _objectiveCacheRebuilding,
       setChanged: setChanged,
-      emptyButHasCourses: _objectiveCache.ids.isEmpty && uuids.isNotEmpty,
+      emptyButHasCourses: _objectiveCache.ids.isEmpty && roomIds.isNotEmpty,
       lastRebuildAt: _lastObjectiveCacheRebuildAt,
       now: DateTime.now(),
     );
@@ -624,7 +633,7 @@ class WorldMapPinsManager {
     if (_scopedCourseOutlineId == coursePlanId) return;
     _scopedCourseOutlineId = coursePlanId;
     _scopedCourseOutline = null;
-    if (_objectiveCacheUuids.contains(coursePlanId)) {
+    if (_objectiveCacheQuestIds.contains(coursePlanId)) {
       resolveProgression(); // joined: the cache already carries it
       return;
     }
