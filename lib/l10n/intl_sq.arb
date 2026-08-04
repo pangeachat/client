@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-03 09:47:36.587015",
+    "@@last_modified": "2026-08-04 09:29:29.332240",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "Filtrat tuaj po fshehin të gjitha ndeshjet. Zgjeroni kërkimin për t'i parë ato.",
     "mapNoSearchMatches": "Asnjë aktivitet nuk përputhet me kërkimin tuaj.",
     "mapNoActivitiesArea": "Nuk ka aktivitete në këtë zonë.",
-    "practiceSessionTimedOut": "Sesioni juaj i praktikës përfundoi pas {minutes} minutash pa aktivitet."
+    "practiceSessionTimedOut": "Sesioni juaj i praktikës përfundoi pas {minutes} minutash pa aktivitet.",
+    "autocorrectMobileOnly": "Vetëm celular",
+    "autocorrectMobileOnlyWarning": "Autokorrektimi i pajisjes është i disponueshëm vetëm në aplikacionin celular."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-03 09:47:25.234967",
+    "@@last_modified": "2026-08-04 09:29:25.574662",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10462,5 +10462,7 @@
     "mapFiltersHideMatches": "フィルターによりすべてのマッチが非表示になっています。検索範囲を広げてください。",
     "mapNoSearchMatches": "検索条件に一致するアクティビティはありません。",
     "mapNoActivitiesArea": "このエリアにはアクティビティがありません。",
-    "practiceSessionTimedOut": "{minutes}分間操作がなかったため、練習セッションが終了しました。"
+    "practiceSessionTimedOut": "{minutes}分間操作がなかったため、練習セッションが終了しました。",
+    "autocorrectMobileOnly": "モバイルのみ",
+    "autocorrectMobileOnlyWarning": "デバイスの自動修正はモバイルアプリでのみ利用可能です。"
 }

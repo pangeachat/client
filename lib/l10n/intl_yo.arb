@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-03 09:47:41.617836",
+    "@@last_modified": "2026-08-04 09:29:31.589104",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "Awọn àlẹmọ rẹ nfi gbogbo awọn ere pamọ. Fẹẹrẹ wiwa lati rii wọn.",
     "mapNoSearchMatches": "Ko si awọn iṣẹ ṣiṣe ti o ba wiwa rẹ mu.",
     "mapNoActivitiesArea": "Ko si awọn iṣẹ ṣiṣe ni agbegbe yii.",
-    "practiceSessionTimedOut": "Ìgbà ìdánilẹ́kọ̀ọ́ rẹ parí lẹ́hìn ìṣẹ́jú {minutes} láìsí ìgbòkègbodò kankan."
+    "practiceSessionTimedOut": "Ìgbà ìdánilẹ́kọ̀ọ́ rẹ parí lẹ́hìn ìṣẹ́jú {minutes} láìsí ìgbòkègbodò kankan.",
+    "autocorrectMobileOnly": "Fún àwọn fóònù nìkan",
+    "autocorrectMobileOnlyWarning": "Atunṣe aifọwọyi ẹrọ wa fun ohun elo alagbeka nikan."
 }

@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-03 09:47:21.551534",
+    "@@last_modified": "2026-08-04 09:29:23.722886",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9704,5 +9704,7 @@
     "mapFiltersHideMatches": "Tá do scagairí ag cur gach cluiche i bhfolach. Leathnaigh an cuardach chun iad a fheiceáil.",
     "mapNoSearchMatches": "Níl aon ghníomhaíochtaí ag teacht le do chuardach.",
     "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo.",
-    "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan ghníomhaíocht."
+    "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan ghníomhaíocht.",
+    "autocorrectMobileOnly": "Fón póca amháin",
+    "autocorrectMobileOnlyWarning": "Níl uathcheartú gléis ar fáil ach ar an aip shoghluaiste."
 }

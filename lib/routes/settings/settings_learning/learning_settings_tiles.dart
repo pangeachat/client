@@ -5,7 +5,7 @@ import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
-import 'package:fluffychat/routes/settings/settings_learning/enable_autocorrect_dialog.dart';
+import 'package:fluffychat/routes/settings/settings_learning/autocorrect_settings_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
@@ -23,14 +23,6 @@ class LearningSettingsTiles extends StatelessWidget {
     required this.viewModel,
     required this.languageErrorNotifier,
   });
-
-  Future<bool> onEnableAutocorrect(BuildContext context) async {
-    final resp = await showDialog(
-      context: context,
-      builder: (context) => EnableAutocorrectDialog(),
-    );
-    return resp == false ? false : true;
-  }
 
   /// Auto-read-aloud only enables when the device offers a known-good voice
   /// for the selected target language; otherwise the toggle stays off and the
@@ -174,26 +166,7 @@ class LearningSettingsTiles extends StatelessWidget {
                     );
                   },
                 ),
-                SwitchListTile.adaptive(
-                  value: viewModel.getToolSetting(
-                    ToolSetting.enableAutocorrect,
-                  ),
-                  title: Text(ToolSetting.enableAutocorrect.toolName(context)),
-                  subtitle: Text(
-                    ToolSetting.enableAutocorrect.toolDescription(context),
-                  ),
-                  activeThumbColor: AppConfig.activeToggleColor,
-                  onChanged: (v) async {
-                    if (v) {
-                      final enabled = await onEnableAutocorrect(context);
-                      if (!enabled) return;
-                    }
-                    viewModel.updateToolSetting(
-                      ToolSetting.enableAutocorrect,
-                      v,
-                    );
-                  },
-                ),
+                AutocorrectSettingsTile(viewModel: viewModel),
                 SwitchListTile.adaptive(
                   value: viewModel.appLanguageIsTarget,
                   title: Text(L10n.of(context).appInTargetLanguageTitle),

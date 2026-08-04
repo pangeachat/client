@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-03 09:47:25.952264",
+    "@@last_modified": "2026-08-04 09:29:25.069425",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "Filter panjenengan ndhelikake kabeh cocog. Ambaake panelusuran kanggo ndeleng.",
     "mapNoSearchMatches": "Ora ana aktivitas sing cocog karo panelusuran panjenengan.",
     "mapNoActivitiesArea": "Ora ana aktivitas ing wilayah iki.",
-    "practiceSessionTimedOut": "Sesi gladhenmu rampung sawise {minutes} menit tanpa aktivitas."
+    "practiceSessionTimedOut": "Sesi gladhenmu rampung sawise {minutes} menit tanpa aktivitas.",
+    "autocorrectMobileOnly": "Mung seluler",
+    "autocorrectMobileOnlyWarning": "Autocorrect piranti mung kasedhiya ing aplikasi seluler."
 }

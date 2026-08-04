@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-03 09:47:39.628288",
+    "@@last_modified": "2026-08-04 09:29:30.573178",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9693,5 +9693,7 @@
     "mapFiltersHideMatches": "Ваші фільтри приховують усі матчі. Розширте пошук, щоб їх побачити.",
     "mapNoSearchMatches": "Жодна діяльність не відповідає вашому пошуку.",
     "mapNoActivitiesArea": "У цій області немає активностей.",
-    "practiceSessionTimedOut": "Ваш сеанс практики завершився після {minutes} хвилин бездіяльності."
+    "practiceSessionTimedOut": "Ваш сеанс практики завершився після {minutes} хвилин бездіяльності.",
+    "autocorrectMobileOnly": "Лише для мобільних пристроїв",
+    "autocorrectMobileOnlyWarning": "Автовиправлення доступне лише в мобільному застосунку."
 }

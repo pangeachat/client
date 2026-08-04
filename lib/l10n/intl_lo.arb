@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-03 09:47:29.399503",
+    "@@last_modified": "2026-08-04 09:29:26.530750",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "ຕົວກອງຂອງທ່ານກຳລັງເຊື່ອງການແຂ່ງຂັນທັງໝົດ. ຂະຫຍາຍການຄົ້ນຫາເພື່ອເບິ່ງ.",
     "mapNoSearchMatches": "ບໍ່ມີກິດຈະກຳໃດກົງກັບການຄົ້ນຫາຂອງທ່ານ.",
     "mapNoActivitiesArea": "ບໍ່ມີກິດຈະກຳໃນພື້ນທີ່ນີ້.",
-    "practiceSessionTimedOut": "ເຊສຊັນການຝຶກຊ້ອມຂອງທ່ານສິ້ນສຸດລົງຫຼັງຈາກ {minutes} ນາທີ ໂດຍບໍ່ມີການເຄື່ອນໄຫວ."
+    "practiceSessionTimedOut": "ເຊສຊັນການຝຶກຊ້ອມຂອງທ່ານສິ້ນສຸດລົງຫຼັງຈາກ {minutes} ນາທີ ໂດຍບໍ່ມີການເຄື່ອນໄຫວ.",
+    "autocorrectMobileOnly": "ສະເພາະມືຖື",
+    "autocorrectMobileOnlyWarning": "ການແກ້ໄຂອັດຕະໂນມັດຂອງອຸປະກອນໃຊ້ໄດ້ສະເພາະໃນແອັບມືຖືເທົ່ານັ້ນ."
 }

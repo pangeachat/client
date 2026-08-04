@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-03 09:47:19.121164",
+    "@@last_modified": "2026-08-04 09:29:22.376288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "Mae eich hidlwyr yn cuddio pob gêm. Ehangu'r chwiliad i'w gweld.",
     "mapNoSearchMatches": "Nid oes unrhyw weithgareddau'n cyd-fynd â'ch chwiliad.",
     "mapNoActivitiesArea": "Dim gweithgareddau yn yr ardal hon.",
-    "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch."
+    "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch.",
+    "autocorrectMobileOnly": "Symudol yn unig",
+    "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig."
 }

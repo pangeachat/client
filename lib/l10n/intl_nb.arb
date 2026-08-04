@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:31.400070",
+    "@@last_modified": "2026-08-04 09:29:27.347737",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9750,5 +9750,7 @@
     "mapFiltersHideMatches": "Filtrene dine skjuler alle kamper. Utvid søket for å se dem.",
     "mapNoSearchMatches": "Ingen aktiviteter samsvarer med søket ditt.",
     "mapNoActivitiesArea": "Ingen aktiviteter i dette området.",
-    "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet."
+    "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet.",
+    "autocorrectMobileOnly": "Kun mobil",
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrektur er kun tilgjengelig i mobilappen."
 }

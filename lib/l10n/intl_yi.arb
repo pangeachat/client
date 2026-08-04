@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-03 09:47:41.314570",
+    "@@last_modified": "2026-08-04 09:29:31.391175",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "דיין פֿילטערס באַהאַלטן אַלע שפּילן. פאַרברייטער די זוך צו זען זיי.",
     "mapNoSearchMatches": "קיין אַקטיוויטעטן שטימען נישט צו דיין זוך.",
     "mapNoActivitiesArea": "קיין אַקטיוויטעטן אין דעם געגנט.",
-    "practiceSessionTimedOut": "אײַער פּראַקטיק סעסיע האָט זיך געענדיקט נאָך {minutes} מינוט אָן אַקטיוויטעט."
+    "practiceSessionTimedOut": "אײַער פּראַקטיק סעסיע האָט זיך געענדיקט נאָך {minutes} מינוט אָן אַקטיוויטעט.",
+    "autocorrectMobileOnly": "בלויז מאָביל",
+    "autocorrectMobileOnlyWarning": "די אַוטאָקאָררעקט פֿונקציע איז נאָר פֿאַראַן אויף דער מאָבילער אַפּ."
 }

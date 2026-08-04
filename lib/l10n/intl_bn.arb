@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 09:47:16.567449",
+    "@@last_modified": "2026-08-04 09:29:21.629699",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10321,5 +10321,7 @@
     "mapFiltersHideMatches": "আপনার ফিল্টারগুলি সমস্ত ম্যাচ লুকিয়ে রাখছে। সেগুলি দেখতে অনুসন্ধান প্রসারিত করুন।",
     "mapNoSearchMatches": "আপনার অনুসন্ধানের সাথে কোনো কার্যকলাপ মেলে না।",
     "mapNoActivitiesArea": "এই এলাকায় কোনো কার্যকলাপ নেই।",
-    "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।"
+    "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।",
+    "autocorrectMobileOnly": "শুধুমাত্র মোবাইল",
+    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।"
 }

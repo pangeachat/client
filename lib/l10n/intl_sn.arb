@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-03 09:47:36.580236",
+    "@@last_modified": "2026-08-04 09:29:29.903005",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "Mafirita ako arikuvanza mitambo yese. Wedzera kutsvaga kuti uione.",
     "mapNoSearchMatches": "Hapana zviitiko zvinoenderana nekutsvaga kwako.",
     "mapNoActivitiesArea": "Hapana zviitiko munzvimbo ino.",
-    "practiceSessionTimedOut": "Chikamu chako chekudzidzira chapera mushure memaminitsi {minutes} usina kuita chinhu."
+    "practiceSessionTimedOut": "Chikamu chako chekudzidzira chapera mushure memaminitsi {minutes} usina kuita chinhu.",
+    "autocorrectMobileOnly": "Pamafoni chete",
+    "autocorrectMobileOnlyWarning": "Autocorrect yefoni inongowanikwa pafoni app chete."
 }

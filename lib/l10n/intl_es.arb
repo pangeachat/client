@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-03 09:47:19.455048",
+    "@@last_modified": "2026-08-04 09:29:22.852738",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7888,5 +7888,7 @@
     "mapFiltersHideMatches": "Tus filtros están ocultando todas las partidas. Amplía la búsqueda para verlas.",
     "mapNoSearchMatches": "Ninguna actividad coincide con tu búsqueda.",
     "mapNoActivitiesArea": "No hay actividades en esta área.",
-    "practiceSessionTimedOut": "Tu sesión de práctica finalizó después de {minutes} minutos sin actividad."
+    "practiceSessionTimedOut": "Tu sesión de práctica finalizó después de {minutes} minutos sin actividad.",
+    "autocorrectMobileOnly": "Solo móvil",
+    "autocorrectMobileOnlyWarning": "La autocorrección del dispositivo solo está disponible en la aplicación móvil."
 }

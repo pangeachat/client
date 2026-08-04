@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-03 09:47:26.697091",
+    "@@last_modified": "2026-08-04 09:29:26.046945",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2067,5 +2067,7 @@
     "mapFiltersHideMatches": "Сүзгілеріңіз барлық матчтарды жасырып тұр. Оларды көру үшін іздеуді кеңейтіңіз.",
     "mapNoSearchMatches": "Іздеуіңізге сәйкес келетін әрекеттер жоқ.",
     "mapNoActivitiesArea": "Бұл аймақта әрекеттер жоқ.",
-    "practiceSessionTimedOut": "Белсенділік болмағандықтан, жаттығу сеансы {minutes} минуттан кейін аяқталды."
+    "practiceSessionTimedOut": "Белсенділік болмағандықтан, жаттығу сеансы {minutes} минуттан кейін аяқталды.",
+    "autocorrectMobileOnly": "Тек мобильді",
+    "autocorrectMobileOnlyWarning": "Құрылғыдағы автотүзету тек мобильді қосымшада қолжетімді."
 }
