@@ -69,6 +69,11 @@ class WorldMapConstants {
   /// chain of scroll-wheel ticks) coalesces into one continuous freeze.
   static const Duration moveSettle = Duration(milliseconds: 300);
 
+  /// Fallback cap for the L1-change pin shimmer window: it normally clears the
+  /// moment a plan re-hydrates, but nothing re-hydrates when no reference-shape
+  /// sessions are in view, so this bounds it. See `WorldMapController`.
+  static const Duration l1WarmupMax = Duration(seconds: 4);
+
   // #7239 — gentler combined pan/zoom glide.
 
   /// A glide's length scales with how far the zoom travels: a single +/- step

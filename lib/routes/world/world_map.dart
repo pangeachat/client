@@ -174,6 +174,15 @@ class WorldMapController extends State<WorldMap>
   bool _loadingPins = false;
   Timer? _refetchDebounce;
 
+  /// True from an L1 (base-language) change until the activity plans re-hydrate
+  /// at the new L1. While true the view freezes the pins on their last-settled
+  /// tiers and paints them as a shimmer skeleton (see [WorldMapView]) instead of
+  /// letting them flash to `available` and snap back as the signals re-derive.
+  /// Cleared by the first plan hydrate ([_onPlanHydrate]) or the
+  /// [WorldMapConstants.l1WarmupMax] fallback so it can never stick.
+  bool _warmingL1 = false;
+  Timer? _warmingTimer;
+
   @override
   void initState() {
     super.initState();
@@ -198,6 +207,10 @@ class WorldMapController extends State<WorldMap>
     _languageSubscription = user.languageStream.stream.listen((update) {
       if (update.targetLang != _filterState.filter.l2) {
         _setL2(update.targetLang);
+      }
+      // L1 (base-language) change → open the shimmer window (see [_warmingL1]).
+      if (update.prevBaseLang != update.baseLang) {
+        _beginL1Warmup();
       }
     });
 
@@ -288,6 +301,7 @@ class WorldMapController extends State<WorldMap>
     _syncSub?.cancel();
     _languageSubscription?.cancel();
     _refetchDebounce?.cancel();
+    _warmingTimer?.cancel();
     _fitDebounce?.cancel();
     _planHydrateDebounce?.cancel();
     _dismissalExpiryTimer?.cancel();
@@ -356,6 +370,9 @@ class WorldMapController extends State<WorldMap>
 
   Client? get client => _client;
   bool get loadingPins => _loadingPins;
+
+  /// Whether the L1 shimmer window is active.
+  bool get warmingPins => _warmingL1;
 
   WorldMapFilter get filter => _filterState.filter;
   Map<String, PinSignals> get signals => _pinsManager.signals;
@@ -435,8 +452,23 @@ class WorldMapController extends State<WorldMap>
     // signals, debounced so a burst of hydrations coalesces into one pass.
     _planHydrateDebounce?.cancel();
     _planHydrateDebounce = Timer(const Duration(milliseconds: 500), () {
-      if (mounted) _recomputeProgress();
+      if (!mounted) return;
+      _recomputeProgress();
+      // Signals are fresh now, so end any open L1 shimmer window (no-op else).
+      _endL1Warmup();
     });
+  }
+
+  /// Open the shimmer window and arm its fallback timer.
+  void _beginL1Warmup() {
+    _warmingTimer?.cancel();
+    _warmingTimer = Timer(WorldMapConstants.l1WarmupMax, _endL1Warmup);
+    if (!_warmingL1 && mounted) setState(() => _warmingL1 = true);
+  }
+
+  void _endL1Warmup() {
+    _warmingTimer?.cancel();
+    if (_warmingL1 && mounted) setState(() => _warmingL1 = false);
   }
 
   void _recomputeProgress() {
