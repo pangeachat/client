@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Seçimlər",
     "audioChoicesDescription": "Təcrübə fəaliyyətlərində cavab seçimləri üçün audio səsləndirin.",
     "audioIncomingMessagesToolName": "Gələn mesajlar",
-    "audioIncomingMessagesDescription": "Dinləmə təcrübəsi üçün qəbul edilmiş mesajları hədəf dilinizdə avtomatik olaraq yüksək səslə oxuyun."
+    "audioIncomingMessagesDescription": "Dinləmə təcrübəsi üçün qəbul edilmiş mesajları hədəf dilinizdə avtomatik olaraq yüksək səslə oxuyun.",
+    "readAloudNoVoiceTitle": "{language} üçün yüksək keyfiyyətli səs tapılmadı",
+    "readAloudNoVoiceDesktopWeb": "Bu brauzer yüksək keyfiyyətli {language} səsi təklif etmir, ona görə də mesajlar burada yaxşı oxuna bilməz. Chrome və Edge adətən yüksək keyfiyyətli səslərə malikdir.",
+    "readAloudGetChrome": "Chrome əldə edin",
+    "readAloudNoVoiceMobileWeb": "Bu brauzer yüksək keyfiyyətli {language} səsi təklif etmir, ona görə də mesajlar burada yaxşı oxuna bilməz. Pangea Chat tətbiqi cihazınızın ən yaxşı səslərindən istifadə edə bilər.",
+    "readAloudGetApp": "Tətbiqi əldə edin",
+    "readAloudNoVoiceIOS": "Cihazınızda hələ yüksək keyfiyyətli {language} səsi yüklənməyib. Birini yükləyin, sonra yenidən cəhd edin:",
+    "readAloudNoVoiceIOSSteps": "  • Parametrlər\n  • Əlçatanlıq\n  • Danışıq Məzmunu\n  • Səslər\n  • {language}\n  • Təkmilləşdirilmiş və ya Premium səs yükləyin",
+    "readAloudNoVoiceAndroid": "Cihazınızda hələ yüksək keyfiyyətli {language} səsi yoxdur. Mətn-nitq mühərrikiniz üçün səs məlumatlarını quraşdırın, sonra yenidən cəhd edin.",
+    "readAloudOpenVoiceSettings": "Səs parametrlərini açın"
 }

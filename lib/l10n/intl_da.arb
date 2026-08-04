@@ -10616,5 +10616,14 @@
     "audioChoicesToolName": "Valgmuligheder",
     "audioChoicesDescription": "Afspil lyd for svarmuligheder i øvelsesaktiviteter.",
     "audioIncomingMessagesToolName": "Indgående beskeder",
-    "audioIncomingMessagesDescription": "Læs automatisk modtagne beskeder højt på dit målsprog for lytteøvelse."
+    "audioIncomingMessagesDescription": "Læs automatisk modtagne beskeder højt på dit målsprog for lytteøvelse.",
+    "readAloudNoVoiceTitle": "Ingen {language}-stemme af høj kvalitet fundet",
+    "readAloudNoVoiceDesktopWeb": "Denne browser tilbyder ikke en {language}-stemme af høj kvalitet, så beskeder kan ikke læses højt her. Chrome og Edge inkluderer normalt stemmer af høj kvalitet.",
+    "readAloudGetChrome": "Hent Chrome",
+    "readAloudNoVoiceMobileWeb": "Denne browser tilbyder ikke en {language}-stemme af høj kvalitet, så beskeder kan ikke læses højt her. Pangea Chat-appen kan bruge din enheds bedste stemmer.",
+    "readAloudGetApp": "Hent appen",
+    "readAloudNoVoiceIOS": "Din enhed har endnu ikke downloadet en {language}-stemme af høj kvalitet. Download en, og prøv derefter igen:",
+    "readAloudNoVoiceIOSSteps": "  • Indstillinger\n  • Tilgængelighed\n  • Oplæst indhold\n  • Stemmer\n  • {language}\n  • Download en forbedret eller premium-stemme",
+    "readAloudNoVoiceAndroid": "Din enhed har endnu ikke en {language}-stemme af høj kvalitet. Installer stemmedata til din tekst-til-tale-motor, og prøv derefter igen.",
+    "readAloudOpenVoiceSettings": "Åbn stemmeindstillinger"
 }

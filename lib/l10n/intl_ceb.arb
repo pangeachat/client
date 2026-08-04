@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Mga Pagpili",
     "audioChoicesDescription": "I-play ang audio para sa mga pagpili sa tubag sa mga kalihokan sa pagpraktis.",
     "audioIncomingMessagesToolName": "Mga umaabot nga mensahe",
-    "audioIncomingMessagesDescription": "Awtomatikong basahon og kusog ang nadawat nga mga mensahe sa imong target nga pinulongan para sa pagpraktis sa pagpaminaw."
+    "audioIncomingMessagesDescription": "Awtomatikong basahon og kusog ang nadawat nga mga mensahe sa imong target nga pinulongan para sa pagpraktis sa pagpaminaw.",
+    "readAloudNoVoiceTitle": "Walay nakit-an nga taas og kalidad nga tingog sa {language}",
+    "readAloudNoVoiceDesktopWeb": "Kini nga browser walay gitanyag nga taas og kalidad nga tingog sa {language}, busa dili maayo nga mabasa og kusog ang mga mensahe dinhi. Ang Chrome ug Edge kasagaran naglakip og taas og kalidad nga mga tingog.",
+    "readAloudGetChrome": "Kuhaa ang Chrome",
+    "readAloudNoVoiceMobileWeb": "Kini nga browser walay gitanyag nga taas og kalidad nga tingog sa {language}, busa dili maayo nga mabasa og kusog ang mga mensahe dinhi. Ang Pangea Chat app makagamit sa labing maayo nga mga tingog sa imong device.",
+    "readAloudGetApp": "Kuhaa ang app",
+    "readAloudNoVoiceIOS": "Ang imong device wala pa'y na-download nga taas og kalidad nga tingog sa {language}. Pag-download usa, unya sulayi pag-usab:",
+    "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Pag-download og Enhanced o Premium nga tingog",
+    "readAloudNoVoiceAndroid": "Ang imong device wala pa'y taas og kalidad nga tingog sa {language}. Pag-instalar og data sa tingog para sa imong text-to-speech engine, unya sulayi pag-usab.",
+    "readAloudOpenVoiceSettings": "Ablihi ang mga setting sa tingog"
 }

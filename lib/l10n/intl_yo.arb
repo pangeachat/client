@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Àwọn Àṣàyàn",
     "audioChoicesDescription": "Ṣí ohùn fún àwọn àṣàyàn ìdáhùn nínú àwọn iṣẹ́ ìdánilẹ́kọ̀ọ́.",
     "audioIncomingMessagesToolName": "Àwọn ìránṣẹ́ tí ń wọlé",
-    "audioIncomingMessagesDescription": "Ka àwọn ìránṣẹ́ tí o gbà jáde fúnra rẹ ní èdè tí o fẹ́ kọ́ fún ìdánilẹ́kọ̀ọ́ gbígbọ́."
+    "audioIncomingMessagesDescription": "Ka àwọn ìránṣẹ́ tí o gbà jáde fúnra rẹ ní èdè tí o fẹ́ kọ́ fún ìdánilẹ́kọ̀ọ́ gbígbọ́.",
+    "readAloudNoVoiceTitle": "Kò sí ohùn {language} tó dára tó rárá",
+    "readAloudNoVoiceDesktopWeb": "Ẹrọ aṣawakiri yii kò ní ohùn {language} tó dára tó, nítorí náà a kò lè ka àwọn ìfiranṣẹ jáde dáadáa níbí. Chrome àti Edge sábà máa ń ní àwọn ohùn tó dára tó.",
+    "readAloudGetChrome": "Gba Chrome",
+    "readAloudNoVoiceMobileWeb": "Ẹrọ aṣawakiri yii kò ní ohùn {language} tó dára tó, nítorí náà a kò lè ka àwọn ìfiranṣẹ jáde dáadáa níbí. Ohùn tó dára jù lọ lórí ẹ̀rọ rẹ ni Pangea Chat app lè lò.",
+    "readAloudGetApp": "Gba app náà",
+    "readAloudNoVoiceIOS": "Ẹrọ rẹ kò tíì ní ohùn {language} tó dára tó tí a ti gba sílẹ̀. Gba ọ̀kan sílẹ̀, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí:",
+    "readAloudNoVoiceIOSSteps": "  • Ètò\n  • Ìrọ̀rùn\n  • Ohun Tí A Sọ\n  • Àwọn Ohùn\n  • {language}\n  • Gba ohùn Enhanced tàbí Premium sílẹ̀",
+    "readAloudNoVoiceAndroid": "Ẹrọ rẹ kò tíì ní ohùn {language} tó dára tó. Fi data ohùn sori ẹrọ fún ẹ̀rọ text-to-speech rẹ, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí.",
+    "readAloudOpenVoiceSettings": "Ṣí àwọn ètò ohùn"
 }

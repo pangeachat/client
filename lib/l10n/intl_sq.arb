@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Zgjedhjet",
     "audioChoicesDescription": "Luaj audion për zgjedhjet e përgjigjeve në aktivitetet praktike.",
     "audioIncomingMessagesToolName": "Mesazhet hyrëse",
-    "audioIncomingMessagesDescription": "Lexo automatikisht me zë të lartë mesazhet e marra në gjuhën tuaj të synuar për praktikë dëgjimi."
+    "audioIncomingMessagesDescription": "Lexo automatikisht me zë të lartë mesazhet e marra në gjuhën tuaj të synuar për praktikë dëgjimi.",
+    "readAloudNoVoiceTitle": "Nuk u gjet asnjë zë me cilësi të lartë {language}",
+    "readAloudNoVoiceDesktopWeb": "Ky shfletues nuk ofron një zë me cilësi të lartë {language}, kështu që mesazhet nuk mund të lexohen me zë të lartë mirë këtu. Chrome dhe Edge zakonisht përfshijnë zëra me cilësi të lartë.",
+    "readAloudGetChrome": "Merrni Chrome",
+    "readAloudNoVoiceMobileWeb": "Ky shfletues nuk ofron një zë me cilësi të lartë {language}, kështu që mesazhet nuk mund të lexohen me zë të lartë mirë këtu. Aplikacioni Pangea Chat mund të përdorë zërat më të mirë të pajisjes suaj.",
+    "readAloudGetApp": "Merrni aplikacionin",
+    "readAloudNoVoiceIOS": "Pajisja juaj nuk ka ende një zë me cilësi të lartë {language} të shkarkuar. Shkarkoni një, pastaj provoni përsëri:",
+    "readAloudNoVoiceIOSSteps": "  • Cilësimet\n  • Aksesueshmëria\n  • Përmbajtja e folur\n  • Zërat\n  • {language}\n  • Shkarkoni një zë të përmirësuar ose Premium",
+    "readAloudNoVoiceAndroid": "Pajisja juaj nuk ka ende një zë me cilësi të lartë {language}. Instaloni të dhënat e zërit për motorin tuaj të tekstit në të folur, pastaj provoni përsëri.",
+    "readAloudOpenVoiceSettings": "Hap cilësimet e zërit"
 }

@@ -9687,5 +9687,14 @@
     "audioChoicesToolName": "Valikud",
     "audioChoicesDescription": "Esita harjutuste vastusevalikute heli.",
     "audioIncomingMessagesToolName": "Sissetulevad sõnumid",
-    "audioIncomingMessagesDescription": "Loe vastuvõetud sõnumid automaatselt sihtkeeles ette kuulamisharjutuste jaoks."
+    "audioIncomingMessagesDescription": "Loe vastuvõetud sõnumid automaatselt sihtkeeles ette kuulamisharjutuste jaoks.",
+    "readAloudNoVoiceTitle": "Kvaliteetset {language} häält ei leitud",
+    "readAloudNoVoiceDesktopWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Chrome ja Edge sisaldavad tavaliselt kvaliteetseid hääli.",
+    "readAloudGetChrome": "Hangi Chrome",
+    "readAloudNoVoiceMobileWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Pangea vestlusrakendus saab kasutada teie seadme parimaid hääli.",
+    "readAloudGetApp": "Hangi rakendus",
+    "readAloudNoVoiceIOS": "Teie seadmesse pole veel kvaliteetset {language} häält alla laaditud. Laadige see alla ja proovige uuesti:",
+    "readAloudNoVoiceIOSSteps": "  • Seaded\n  • Hõlbustus\n  • Räägitav sisu\n  • Hääled\n  • {language}\n  • Laadige alla täiustatud või Premium hääl",
+    "readAloudNoVoiceAndroid": "Teie seadmes pole veel kvaliteetset {language} häält. Installige oma kõnesünteesi mootori jaoks häälandmed ja proovige uuesti.",
+    "readAloudOpenVoiceSettings": "Ava hääleseaded"
 }

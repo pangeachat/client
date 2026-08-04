@@ -10045,5 +10045,14 @@
     "audioChoicesToolName": "Choix",
     "audioChoicesDescription": "Écoutez l'audio des choix de réponse dans les activités pratiques.",
     "audioIncomingMessagesToolName": "Messages entrants",
-    "audioIncomingMessagesDescription": "Lisez automatiquement les messages reçus à voix haute dans votre langue cible pour la pratique de l'écoute."
+    "audioIncomingMessagesDescription": "Lisez automatiquement les messages reçus à voix haute dans votre langue cible pour la pratique de l'écoute.",
+    "readAloudNoVoiceTitle": "Aucune voix {language} de haute qualité trouvée",
+    "readAloudNoVoiceDesktopWeb": "Ce navigateur n'offre pas de voix {language} de haute qualité, les messages ne peuvent donc pas être lus correctement ici. Chrome et Edge incluent généralement des voix de haute qualité.",
+    "readAloudGetChrome": "Obtenir Chrome",
+    "readAloudNoVoiceMobileWeb": "Ce navigateur n'offre pas de voix {language} de haute qualité, les messages ne peuvent donc pas être lus correctement ici. L'application Pangea Chat peut utiliser les meilleures voix de votre appareil.",
+    "readAloudGetApp": "Obtenir l'application",
+    "readAloudNoVoiceIOS": "Votre appareil n'a pas encore téléchargé de voix {language} de haute qualité. Téléchargez-en une, puis réessayez :",
+    "readAloudNoVoiceIOSSteps": "  • Réglages\n  • Accessibilité\n  • Contenu énoncé\n  • Voix\n  • {language}\n  • Télécharger une voix améliorée ou premium",
+    "readAloudNoVoiceAndroid": "Votre appareil n'a pas encore de voix {language} de haute qualité. Installez les données vocales pour votre moteur de synthèse vocale, puis réessayez.",
+    "readAloudOpenVoiceSettings": "Ouvrir les paramètres vocaux"
 }

@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "انتخابونه",
     "audioChoicesDescription": "د تمرین فعالیتونو کې د ځواب انتخابونو لپاره آډیو غږول.",
     "audioIncomingMessagesToolName": "راتلونکي پیغامونه",
-    "audioIncomingMessagesDescription": "د اوریدلو تمرین لپاره په اتوماتيک ډول ستاسو په هدف ژبه کې ترلاسه شوي پیغامونه په لوړ غږ ولولئ."
+    "audioIncomingMessagesDescription": "د اوریدلو تمرین لپاره په اتوماتيک ډول ستاسو په هدف ژبه کې ترلاسه شوي پیغامونه په لوړ غږ ولولئ.",
+    "readAloudNoVoiceTitle": "د {language} لوړ کیفیت غږ ونه موندل شو",
+    "readAloudNoVoiceDesktopWeb": "دا براوزر د {language} لوړ کیفیت غږ نه وړاندې کوي، نو پیغامونه دلته په ښه توګه لوستل کیدی نشي. کروم او ایج معمولا لوړ کیفیت غږونه لري.",
+    "readAloudGetChrome": "کروم ترلاسه کړئ",
+    "readAloudNoVoiceMobileWeb": "دا براوزر د {language} لوړ کیفیت غږ نه وړاندې کوي، نو پیغامونه دلته په ښه توګه لوستل کیدی نشي. د پانګیا چیټ اپلیکیشن کولی شي ستاسو د وسیلې غوره غږونه وکاروي.",
+    "readAloudGetApp": "اپلیکیشن ترلاسه کړئ",
+    "readAloudNoVoiceIOS": "ستاسو وسیله لا تر اوسه د {language} لوړ کیفیت غږ نه دی ډاونلوډ کړی. یو ډاونلوډ کړئ، بیا بیا هڅه وکړئ:",
+    "readAloudNoVoiceIOSSteps": "  • ترتیبات\n  • لاسرسی\n  • ویل شوي مینځپانګه\n  • غږونه\n  • {language}\n  • یو پرمختللی یا پریمیم غږ ډاونلوډ کړئ",
+    "readAloudNoVoiceAndroid": "ستاسو وسیله لا تر اوسه د {language} لوړ کیفیت غږ نه لري. د خپل متن څخه وینا انجن لپاره د غږ ډاټا نصب کړئ، بیا بیا هڅه وکړئ.",
+    "readAloudOpenVoiceSettings": "د غږ ترتیبات خلاص کړئ"
 }

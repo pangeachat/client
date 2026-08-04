@@ -9996,5 +9996,14 @@
     "audioChoicesToolName": "الخيارات",
     "audioChoicesDescription": "شغّل الصوت لخيارات الإجابة في أنشطة التدريب.",
     "audioIncomingMessagesToolName": "الرسائل الواردة",
-    "audioIncomingMessagesDescription": "اقرأ الرسائل المستلمة تلقائيًا بصوت عالٍ بلغتك المستهدفة لممارسة الاستماع."
+    "audioIncomingMessagesDescription": "اقرأ الرسائل المستلمة تلقائيًا بصوت عالٍ بلغتك المستهدفة لممارسة الاستماع.",
+    "readAloudNoVoiceTitle": "لم يتم العثور على صوت عالي الجودة لـ {language}",
+    "readAloudNoVoiceDesktopWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يتضمن Chrome و Edge عادةً أصواتًا عالية الجودة.",
+    "readAloudGetChrome": "احصل على Chrome",
+    "readAloudNoVoiceMobileWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يمكن لتطبيق Pangea Chat استخدام أفضل الأصوات المتوفرة في جهازك.",
+    "readAloudGetApp": "احصل على التطبيق",
+    "readAloudNoVoiceIOS": "لم يتم تنزيل صوت عالي الجودة لـ {language} على جهازك بعد. قم بتنزيل واحد، ثم حاول مرة أخرى:",
+    "readAloudNoVoiceIOSSteps": "  • الإعدادات\n  • تسهيلات الاستخدام\n  • المحتوى المنطوق\n  • الأصوات\n  • {language}\n  • تنزيل صوت محسّن أو مميز",
+    "readAloudNoVoiceAndroid": "لا يحتوي جهازك على صوت عالي الجودة لـ {language} بعد. قم بتثبيت بيانات الصوت لمحرك تحويل النص إلى كلام، ثم حاول مرة أخرى.",
+    "readAloudOpenVoiceSettings": "افتح إعدادات الصوت"
 }

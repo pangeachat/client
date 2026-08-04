@@ -10208,5 +10208,14 @@
     "audioChoicesToolName": "Val",
     "audioChoicesDescription": "Spela upp ljud för svarsalternativ i övningsaktiviteter.",
     "audioIncomingMessagesToolName": "Inkommande meddelanden",
-    "audioIncomingMessagesDescription": "Läs automatiskt upp mottagna meddelanden på ditt målspråk för lyssningsövning."
+    "audioIncomingMessagesDescription": "Läs automatiskt upp mottagna meddelanden på ditt målspråk för lyssningsövning.",
+    "readAloudNoVoiceTitle": "Ingen högkvalitativ {language}-röst hittades",
+    "readAloudNoVoiceDesktopWeb": "Den här webbläsaren erbjuder ingen högkvalitativ {language}-röst, så meddelanden kan inte läsas upp ordentligt här. Chrome och Edge inkluderar vanligtvis högkvalitativa röster.",
+    "readAloudGetChrome": "Skaffa Chrome",
+    "readAloudNoVoiceMobileWeb": "Den här webbläsaren erbjuder ingen högkvalitativ {language}-röst, så meddelanden kan inte läsas upp ordentligt här. Pangea Chat-appen kan använda enhetens bästa röster.",
+    "readAloudGetApp": "Skaffa appen",
+    "readAloudNoVoiceIOS": "Din enhet har ingen högkvalitativ {language}-röst nedladdad ännu. Ladda ner en och försök sedan igen:",
+    "readAloudNoVoiceIOSSteps": "  • Inställningar\n  • Hjälpmedel\n  • Talat innehåll\n  • Röster\n  • {language}\n  • Ladda ner en förbättrad eller premiumröst",
+    "readAloudNoVoiceAndroid": "Din enhet har ingen högkvalitativ {language}-röst ännu. Installera röstdata för din text-till-tal-motor och försök sedan igen.",
+    "readAloudOpenVoiceSettings": "Öppna röstinställningar"
 }

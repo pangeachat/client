@@ -10322,5 +10322,14 @@
     "audioChoicesToolName": "Roghanna",
     "audioChoicesDescription": "Seinn fuaim do roghanna freagraí i ngníomhaíochtaí cleachtaidh.",
     "audioIncomingMessagesToolName": "Teachtaireachtaí isteach",
-    "audioIncomingMessagesDescription": "Léigh teachtaireachtaí a fhaightear os ard go huathoibríoch i do sprioc-theanga le haghaidh cleachtadh éisteachta."
+    "audioIncomingMessagesDescription": "Léigh teachtaireachtaí a fhaightear os ard go huathoibríoch i do sprioc-theanga le haghaidh cleachtadh éisteachta.",
+    "readAloudNoVoiceTitle": "Níor aimsíodh guth {language} ardchaighdeáin",
+    "readAloudNoVoiceDesktopWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. De ghnáth bíonn guthanna ardchaighdeáin san áireamh i Chrome agus Edge.",
+    "readAloudGetChrome": "Faigh Chrome",
+    "readAloudNoVoiceMobileWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. Is féidir le haip Pangea Chat na guthanna is fearr de do ghléas a úsáid.",
+    "readAloudGetApp": "Faigh an aip",
+    "readAloudNoVoiceIOS": "Níl guth {language} ardchaighdeáin íoslódáilte ag do ghléas fós. Íoslódáil ceann, ansin bain triail as arís:",
+    "readAloudNoVoiceIOSSteps": "  • Socruithe\n  • Inrochtaineacht\n  • Ábhar Labhartha\n  • Guthanna\n  • {language}\n  • Íoslódáil guth Feabhsaithe nó Préimhe",
+    "readAloudNoVoiceAndroid": "Níl guth {language} ardchaighdeáin ag do ghléas fós. Suiteáil sonraí guth do d'inneall téacs-go-caint, ansin bain triail as arís.",
+    "readAloudOpenVoiceSettings": "Oscail socruithe guth"
 }

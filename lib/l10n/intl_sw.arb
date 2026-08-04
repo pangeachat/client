@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Chaguzi",
     "audioChoicesDescription": "Cheza sauti kwa chaguzi za majibu katika shughuli za mazoezi.",
     "audioIncomingMessagesToolName": "Ujumbe zinazoingia",
-    "audioIncomingMessagesDescription": "Soma kiotomatiki ujumbe uliopokelewa kwa sauti katika lugha unayolenga kwa mazoezi ya kusikiliza."
+    "audioIncomingMessagesDescription": "Soma kiotomatiki ujumbe uliopokelewa kwa sauti katika lugha unayolenga kwa mazoezi ya kusikiliza.",
+    "readAloudNoVoiceTitle": "Hakuna sauti ya hali ya juu ya {language} iliyopatikana",
+    "readAloudNoVoiceDesktopWeb": "Kivinjari hiki hakitoi sauti ya hali ya juu ya {language}, kwa hivyo jumbe haziwezi kusomwa vizuri hapa. Chrome na Edge kwa kawaida hujumuisha sauti za hali ya juu.",
+    "readAloudGetChrome": "Pata Chrome",
+    "readAloudNoVoiceMobileWeb": "Kivinjari hiki hakitoi sauti ya hali ya juu ya {language}, kwa hivyo jumbe haziwezi kusomwa vizuri hapa. Programu ya Pangea Chat inaweza kutumia sauti bora za kifaa chako.",
+    "readAloudGetApp": "Pata programu",
+    "readAloudNoVoiceIOS": "Kifaa chako hakina sauti ya hali ya juu ya {language} iliyopakuliwa bado. Pakua moja, kisha ujaribu tena:",
+    "readAloudNoVoiceIOSSteps": "  • Mipangilio\n  • Ufikiaji\n  • Maudhui Yanayozungumzwa\n  • Sauti\n  • {language}\n  • Pakua sauti ya Kuboreshwa au Premium",
+    "readAloudNoVoiceAndroid": "Kifaa chako hakina sauti ya hali ya juu ya {language} bado. Sakinisha data ya sauti kwa injini yako ya maandishi-kwa-sauti, kisha ujaribu tena.",
+    "readAloudOpenVoiceSettings": "Fungua mipangilio ya sauti"
 }

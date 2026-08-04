@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "ꯈꯟꯗꯣꯛꯄꯁꯤꯡ",
     "audioChoicesDescription": "ꯄ꯭ꯔꯦꯛꯇꯤꯁ ꯑꯦꯛꯇꯤꯕꯤꯇꯤꯁꯤꯡꯗꯥ ꯑꯦꯟꯁꯔ ꯆꯣꯏꯁꯁꯤꯡꯒꯤꯗꯃꯛ ꯑꯣꯗꯤꯑꯣ ꯊꯥꯡꯒꯅꯤ꯫",
     "audioIncomingMessagesToolName": "ꯂꯥꯛꯂꯤꯕ ꯃꯦꯁꯦꯖꯁꯤꯡ",
-    "audioIncomingMessagesDescription": "ꯅꯍꯥꯛꯅ ꯐꯪꯂꯤꯕ ꯃꯦꯁꯦꯖꯁꯤꯡ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯑꯣꯏꯅ ꯅꯍꯥꯛꯀꯤ ꯇꯥꯔꯒꯦꯠ ꯂꯣꯟꯗ ꯂꯤꯁ꯭ꯇꯦꯅꯤꯡ ꯄ꯭ꯔꯦꯛꯇꯤꯁꯀꯤꯗꯃꯛ ꯈꯣꯟꯊꯥ ꯊꯣꯀꯍꯅꯕꯤꯌꯨ꯫"
+    "audioIncomingMessagesDescription": "ꯅꯍꯥꯛꯅ ꯐꯪꯂꯤꯕ ꯃꯦꯁꯦꯖꯁꯤꯡ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯑꯣꯏꯅ ꯅꯍꯥꯛꯀꯤ ꯇꯥꯔꯒꯦꯠ ꯂꯣꯟꯗ ꯂꯤꯁ꯭ꯇꯦꯅꯤꯡ ꯄ꯭ꯔꯦꯛꯇꯤꯁꯀꯤꯗꯃꯛ ꯈꯣꯟꯊꯥ ꯊꯣꯀꯍꯅꯕꯤꯌꯨ꯫",
+    "readAloudNoVoiceTitle": "ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯐꯪꯗꯦ",
+    "readAloudNoVoiceDesktopWeb": "ꯁꯤꯅꯥ ꯕ꯭ꯔꯥꯎꯖꯔ ꯑꯁꯤꯗꯥ ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯑꯃꯠꯇꯥ ꯐꯪꯗꯦ, ꯃꯔꯝ ꯑꯗꯨꯅꯥ ꯃꯦꯁꯦꯖꯁꯤꯡ ꯑꯁꯤ ꯌꯥꯝꯅꯥ ꯐꯖꯅꯥ ꯈꯣꯡꯎꯝ ꯊꯤꯕꯥ ꯉꯃꯗꯦ. Chrome ꯑꯃꯁꯨꯡ Edge ꯅꯥ ꯈ꯭ꯕꯥꯏꯗꯒꯤ ꯐꯖꯕꯥ ꯈꯣꯡꯎꯝꯁꯤꯡ ꯂꯧꯊꯣꯛꯏ.",
+    "readAloudGetChrome": "Chrome ꯐꯪꯎ",
+    "readAloudNoVoiceMobileWeb": "ꯁꯤꯅꯥ ꯕ꯭ꯔꯥꯎꯖꯔ ꯑꯁꯤꯗꯥ ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯑꯃꯠꯇꯥ ꯐꯪꯗꯦ, ꯃꯔꯝ ꯑꯗꯨꯅꯥ ꯃꯦꯁꯦꯖꯁꯤꯡ ꯑꯁꯤ ꯌꯥꯝꯅꯥ ꯐꯖꯅꯥ ꯈꯣꯡꯎꯝ ꯊꯤꯕꯥ ꯉꯃꯗꯦ. Pangea Chat ꯑꯦꯞ ꯑꯁꯤꯅꯥ ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁꯀꯤ ꯈ꯭ꯕꯥꯏꯗꯒꯤ ꯐꯖꯕꯥ ꯈꯣꯡꯎꯝꯁꯤꯡ ꯁꯤꯖꯤꯟꯅꯕꯥ ꯌꯥꯏ.",
+    "readAloudGetApp": "ꯑꯦꯞ ꯑꯁꯤ ꯐꯪꯎ",
+    "readAloudNoVoiceIOS": "ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯗꯥ ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯑꯃꯠꯇꯥ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤꯉꯥꯏꯗꯥ ꯂꯩꯇꯦ. ꯑꯃꯥ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯒꯥ, ꯑꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯍꯟꯅꯥ ꯊꯤꯡꯖꯤꯜꯂꯨ:",
+    "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Enhanced ꯅꯠꯠꯔꯒꯥ Premium ꯈꯣꯡꯎꯝ ꯑꯃꯥ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧ",
+    "readAloudNoVoiceAndroid": "ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯗꯥ ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ. ꯅꯍꯥꯛꯀꯤ text-to-speech engine ꯒꯤꯗꯃꯛ ꯈꯣꯡꯎꯝ ꯗꯦꯇꯥ ꯏꯟꯁꯇꯣꯜ ꯇꯧꯔꯒꯥ, ꯑꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯍꯟꯅꯥ ꯊꯤꯡꯖꯤꯜꯂꯨ.",
+    "readAloudOpenVoiceSettings": "ꯈꯣꯡꯎꯝ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯍꯣꯡꯗꯣꯛꯎ"
 }

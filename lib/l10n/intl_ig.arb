@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Nhọrọ",
     "audioChoicesDescription": "Kpọọ ọdịyo maka nhọrọ azịza n'ime mmemme omume.",
     "audioIncomingMessagesToolName": "Ozi na-abata",
-    "audioIncomingMessagesDescription": "Gụọ ozi enwetara na-akpaghị aka n'olu dara ụda n'asụsụ ebumnuche gị maka omume ige ntị."
+    "audioIncomingMessagesDescription": "Gụọ ozi enwetara na-akpaghị aka n'olu dara ụda n'asụsụ ebumnuche gị maka omume ige ntị.",
+    "readAloudNoVoiceTitle": "Achọtaghị olu {language} dị elu",
+    "readAloudNoVoiceDesktopWeb": "Ihe nchọgharị a anaghị enye olu {language} dị elu, yabụ enweghị ike ịgụ ozi n'olu dara ụda ebe a. Chrome na Edge na-enwekarị olu dị elu.",
+    "readAloudGetChrome": "Nweta Chrome",
+    "readAloudNoVoiceMobileWeb": "Ihe nchọgharị a anaghị enye olu {language} dị elu, yabụ enweghị ike ịgụ ozi n'olu dara ụda ebe a. Ngwa Pangea Chat nwere ike iji olu kacha mma nke ngwaọrụ gị.",
+    "readAloudGetApp": "Nweta ngwa ahụ",
+    "readAloudNoVoiceIOS": "Ngwaọrụ gị enwebeghị olu {language} dị elu ebudatara. Budata otu, wee nwaa ọzọ:",
+    "readAloudNoVoiceIOSSteps": "  • Ntọala\n  • Nnweta\n  • Ọdịnaya a na-ekwu okwu\n  • Olu\n  • {language}\n  • Budata olu emelitere ma ọ bụ nke adịchaghị mma",
+    "readAloudNoVoiceAndroid": "Ngwaọrụ gị enwebeghị olu {language} dị elu. Wụnye data olu maka injin ederede-na-okwu gị, wee nwaa ọzọ.",
+    "readAloudOpenVoiceSettings": "Mepee ntọala olu"
 }

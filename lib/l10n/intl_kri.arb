@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Chɔys dɛn",
     "audioChoicesDescription": "Ple di sound fɔ di ansa chɔys dɛn insay di praktis gem dɛn.",
     "audioIncomingMessagesToolName": "Mɛsej dɛn we de kam",
-    "audioIncomingMessagesDescription": "Rɛd di mɛsej dɛn we yu gɛt ɔtomatikal wan insay di langwej we yu de lan fɔ praktis lisin."
+    "audioIncomingMessagesDescription": "Rɛd di mɛsej dɛn we yu gɛt ɔtomatikal wan insay di langwej we yu de lan fɔ praktis lisin.",
+    "readAloudNoVoiceTitle": "No gɛt kwaliti {language} vɔys",
+    "readAloudNoVoiceDesktopWeb": "Dis brauza nɔ gɛt kwaliti {language} vɔys, so dɛn nɔ go ebul rid mɛsej dɛn gud wan. Chrome ɛn Edge kin gɛt kwaliti vɔys dɛn.",
+    "readAloudGetChrome": "Gɛt Chrome",
+    "readAloudNoVoiceMobileWeb": "Dis brauza nɔ gɛt kwaliti {language} vɔys, so dɛn nɔ go ebul rid mɛsej dɛn gud wan. Di Pangea Chat app kin yuz yu divays in bɛst vɔys dɛn.",
+    "readAloudGetApp": "Gɛt di app",
+    "readAloudNoVoiceIOS": "Yu divays nɔ gɛt kwaliti {language} vɔys dɔŋlod yet. Dɔŋlod wan, dɛn tray bak:",
+    "readAloudNoVoiceIOSSteps": "  • Sɛtin dɛn\n  • Aksɛsibiliti\n  • Spoken Kɔntɛnt\n  • Vɔys dɛn\n  • {language}\n  • Dɔŋlod wan Ɛnhans ɔ Premiɔm vɔys",
+    "readAloudNoVoiceAndroid": "Yu divays nɔ gɛt kwaliti {language} vɔys yet. Instɔl vɔys data fɔ yu tɛks-to-spich ɛnjin, dɛn tray bak.",
+    "readAloudOpenVoiceSettings": "Ɔpen vɔys sɛtin dɛn"
 }

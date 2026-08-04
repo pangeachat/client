@@ -10610,5 +10610,14 @@
     "audioChoicesToolName": "אפשרויות",
     "audioChoicesDescription": "השמעת אודיו עבור אפשרויות התשובה בפעילויות תרגול.",
     "audioIncomingMessagesToolName": "הודעות נכנסות",
-    "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה."
+    "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה.",
+    "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
+    "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
+    "readAloudGetChrome": "קבל את Chrome",
+    "readAloudNoVoiceMobileWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. אפליקציית Pangea Chat יכולה להשתמש בקולות הטובים ביותר של המכשיר שלך.",
+    "readAloudGetApp": "קבל את האפליקציה",
+    "readAloudNoVoiceIOS": "המכשיר שלך עדיין לא הוריד קול {language} באיכות גבוהה. הורד אחד, ואז נסה שוב:",
+    "readAloudNoVoiceIOSSteps": "  • הגדרות\n  • נגישות\n  • תוכן מדובר\n  • קולות\n  • {language}\n  • הורד קול משופר או פרימיום",
+    "readAloudNoVoiceAndroid": "המכשיר שלך עדיין לא כולל קול {language} באיכות גבוהה. התקן נתוני קול עבור מנוע הטקסט לדיבור שלך, ואז נסה שוב.",
+    "readAloudOpenVoiceSettings": "פתח את הגדרות הקול"
 }

@@ -9883,5 +9883,14 @@
     "audioChoicesToolName": "선택지",
     "audioChoicesDescription": "연습 활동에서 답변 선택지에 대한 오디오를 재생합니다.",
     "audioIncomingMessagesToolName": "수신 메시지",
-    "audioIncomingMessagesDescription": "듣기 연습을 위해 수신된 메시지를 학습 언어로 자동으로 소리 내어 읽습니다."
+    "audioIncomingMessagesDescription": "듣기 연습을 위해 수신된 메시지를 학습 언어로 자동으로 소리 내어 읽습니다.",
+    "readAloudNoVoiceTitle": "고품질 {language} 음성을 찾을 수 없음",
+    "readAloudNoVoiceDesktopWeb": "이 브라우저는 고품질 {language} 음성을 제공하지 않아 메시지를 제대로 읽어줄 수 없습니다. Chrome 및 Edge는 일반적으로 고품질 음성을 포함합니다.",
+    "readAloudGetChrome": "Chrome 다운로드",
+    "readAloudNoVoiceMobileWeb": "이 브라우저는 고품질 {language} 음성을 제공하지 않아 메시지를 제대로 읽어줄 수 없습니다. Pangea Chat 앱은 기기의 최적 음성을 사용할 수 있습니다.",
+    "readAloudGetApp": "앱 다운로드",
+    "readAloudNoVoiceIOS": "기기에 고품질 {language} 음성이 아직 다운로드되지 않았습니다. 다운로드한 후 다시 시도하세요:",
+    "readAloudNoVoiceIOSSteps": "  • 설정\n  • 손쉬운 사용\n  • 말하기 콘텐츠\n  • 음성\n  • {language}\n  • 향상 또는 프리미엄 음성 다운로드",
+    "readAloudNoVoiceAndroid": "기기에 고품질 {language} 음성이 아직 없습니다. 텍스트 음성 변환 엔진용 음성 데이터를 설치한 후 다시 시도하세요.",
+    "readAloudOpenVoiceSettings": "음성 설정 열기"
 }

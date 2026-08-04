@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Keuzes",
     "audioChoicesDescription": "Spielje audio ôf foar antwurdopsjes yn oefenaktiviteiten.",
     "audioIncomingMessagesToolName": "Ynkommende berjochten",
-    "audioIncomingMessagesDescription": "Lês ûntfongen berjochten automatysk lûdop foar yn jo doeltaal foar harkûefening."
+    "audioIncomingMessagesDescription": "Lês ûntfongen berjochten automatysk lûdop foar yn jo doeltaal foar harkûefening.",
+    "readAloudNoVoiceTitle": "Gjin {language} stim fan hege kwaliteit fûn",
+    "readAloudNoVoiceDesktopWeb": "Dizze browser biedt gjin {language} stim fan hege kwaliteit, dus berjochten kinne hjir net goed foarlêzen wurde. Chrome en Edge befetsje meastentiids stimmen fan hege kwaliteit.",
+    "readAloudGetChrome": "Chrome downloade",
+    "readAloudNoVoiceMobileWeb": "Dizze browser biedt gjin {language} stim fan hege kwaliteit, dus berjochten kinne hjir net goed foarlêzen wurde. De Pangea Chat-app kin de bêste stimmen fan jo apparaat brûke.",
+    "readAloudGetApp": "De app downloade",
+    "readAloudNoVoiceIOS": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit downloade. Download ien, en besykje it dan opnij:",
+    "readAloudNoVoiceIOSSteps": "  • Ynstellings\n  • Tagong\n  • Sprutsen ynhâld\n  • Stimmen\n  • {language}\n  • Download in Ferbettere of Premium stim",
+    "readAloudNoVoiceAndroid": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit. Ynstallearje stimgegevens foar jo tekst-nei-spraak-motor, en besykje it dan opnij.",
+    "readAloudOpenVoiceSettings": "Stimynstellings iepenje"
 }

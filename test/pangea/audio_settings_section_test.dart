@@ -58,22 +58,36 @@ void main() {
     );
   });
 
-  testWidgets('flipping the incoming messages toggle updates the view model', (
-    tester,
-  ) async {
-    final viewModel = makeViewModel();
+  testWidgets('turning off the incoming messages toggle updates the view '
+      'model', (tester) async {
+    final viewModel = makeViewModel(
+      toolSettings: const UserToolSettings(audioIncomingMessages: true),
+    );
     await pumpSection(tester, viewModel);
+
+    expect(viewModel.getToolSetting(ToolSetting.audioIncomingMessages), isTrue);
+
+    // Disabling is ungated (the known-good-voice gate only guards enabling).
+    await tester.tap(find.text('Incoming messages'));
+    await tester.pumpAndSettle();
 
     expect(
       viewModel.getToolSetting(ToolSetting.audioIncomingMessages),
       isFalse,
     );
+  });
 
-    // Words/choices are gated on a target language, which the bare test
-    // profile lacks; the incoming messages toggle is ungated.
+  testWidgets('enabling incoming messages without a target language is '
+      'blocked by the voice gate', (tester) async {
+    final viewModel = makeViewModel();
+    await pumpSection(tester, viewModel);
+
     await tester.tap(find.text('Incoming messages'));
     await tester.pumpAndSettle();
 
-    expect(viewModel.getToolSetting(ToolSetting.audioIncomingMessages), isTrue);
+    expect(
+      viewModel.getToolSetting(ToolSetting.audioIncomingMessages),
+      isFalse,
+    );
   });
 }

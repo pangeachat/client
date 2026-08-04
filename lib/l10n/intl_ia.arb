@@ -10632,5 +10632,14 @@
     "audioChoicesToolName": "Optiones",
     "audioChoicesDescription": "Reproducer audio pro le optiones de responsa in activitates de practica.",
     "audioIncomingMessagesToolName": "Messages entrante",
-    "audioIncomingMessagesDescription": "Leger automaticamente le messages recipite a alte voce in tu lingua de destination pro practica de ascolta."
+    "audioIncomingMessagesDescription": "Leger automaticamente le messages recipite a alte voce in tu lingua de destination pro practica de ascolta.",
+    "readAloudNoVoiceTitle": "Nulle voce de alte qualitate pro {language} trovate",
+    "readAloudNoVoiceDesktopWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Chrome e Edge usualmente include voces de alte qualitate.",
+    "readAloudGetChrome": "Obtene Chrome",
+    "readAloudNoVoiceMobileWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Le app Pangea Chat pote usar le melior voces de tu apparato.",
+    "readAloudGetApp": "Obtene le app",
+    "readAloudNoVoiceIOS": "Tu apparato non ha ancora un voce de alte qualitate pro {language} discargate. Discarga un, e postea reproba:",
+    "readAloudNoVoiceIOSSteps": "  • Parametros\n  • Accessibilitate\n  • Contento Parlate\n  • Voces\n  • {language}\n  • Discarga un voce Meliorate o Premium",
+    "readAloudNoVoiceAndroid": "Tu apparato non ha ancora un voce de alte qualitate pro {language}. Installar datos de voce pro tu motor de synthese vocal, e postea reproba.",
+    "readAloudOpenVoiceSettings": "Aperi le parametros de voce"
 }

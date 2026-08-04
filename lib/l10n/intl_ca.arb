@@ -9817,5 +9817,14 @@
     "audioChoicesToolName": "Opcions",
     "audioChoicesDescription": "Reprodueix l'àudio de les opcions de resposta en les activitats de pràctica.",
     "audioIncomingMessagesToolName": "Missatges entrants",
-    "audioIncomingMessagesDescription": "Llegeix automàticament els missatges rebuts en veu alta en el teu idioma objectiu per practicar l'escolta."
+    "audioIncomingMessagesDescription": "Llegeix automàticament els missatges rebuts en veu alta en el teu idioma objectiu per practicar l'escolta.",
+    "readAloudNoVoiceTitle": "No s'ha trobat cap veu d'alta qualitat per a {language}",
+    "readAloudNoVoiceDesktopWeb": "Aquest navegador no ofereix una veu d'alta qualitat per a {language}, així que els missatges no es poden llegir en veu alta correctament aquí. Chrome i Edge solen incloure veus d'alta qualitat.",
+    "readAloudGetChrome": "Obtén Chrome",
+    "readAloudNoVoiceMobileWeb": "Aquest navegador no ofereix una veu d'alta qualitat per a {language}, així que els missatges no es poden llegir en veu alta correctament aquí. L'aplicació Pangea Chat pot utilitzar les millors veus del teu dispositiu.",
+    "readAloudGetApp": "Obtén l'aplicació",
+    "readAloudNoVoiceIOS": "El teu dispositiu encara no té una veu d'alta qualitat per a {language} descarregada. Descarrega'n una i torna-ho a provar:",
+    "readAloudNoVoiceIOSSteps": "  • Configuració\n  • Accessibilitat\n  • Contingut parlat\n  • Veus\n  • {language}\n  • Descarrega una veu millorada o Premium",
+    "readAloudNoVoiceAndroid": "El teu dispositiu encara no té una veu d'alta qualitat per a {language}. Instal·la les dades de veu per al teu motor de text a veu i torna-ho a provar.",
+    "readAloudOpenVoiceSettings": "Obre la configuració de veu"
 }

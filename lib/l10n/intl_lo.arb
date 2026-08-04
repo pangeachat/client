@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "ຕົວເລືອກ",
     "audioChoicesDescription": "ເປີດສຽງສຳລັບຕົວເລືອກຄຳຕອບໃນກິດຈະກຳການຝຶກຊ້ອມ.",
     "audioIncomingMessagesToolName": "ຂໍ້ຄວາມທີ່ເຂົ້າມາ",
-    "audioIncomingMessagesDescription": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບໂດຍອັດຕະໂນມັດອອກສຽງດັງໃນພາສາເປົ້າໝາຍຂອງທ່ານສຳລັບການຝຶກຟັງ."
+    "audioIncomingMessagesDescription": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບໂດຍອັດຕະໂນມັດອອກສຽງດັງໃນພາສາເປົ້າໝາຍຂອງທ່ານສຳລັບການຝຶກຟັງ.",
+    "readAloudNoVoiceTitle": "ບໍ່ພົບສຽງ {language} ຄຸນນະພາບສູງ",
+    "readAloudNoVoiceDesktopWeb": "ບຣາວເຊີນີ້ບໍ່ມີສຽງ {language} ທີ່ມີຄຸນນະພາບສູງ, ສະນັ້ນຂໍ້ຄວາມຈຶ່ງບໍ່ສາມາດອ່ານອອກສຽງໄດ້ດີຢູ່ບ່ອນນີ້. ປົກກະຕິແລ້ວ Chrome ແລະ Edge ຈະມີສຽງທີ່ມີຄຸນນະພາບສູງ.",
+    "readAloudGetChrome": "ເອົາ Chrome",
+    "readAloudNoVoiceMobileWeb": "ບຣາວເຊີນີ້ບໍ່ມີສຽງ {language} ທີ່ມີຄຸນນະພາບສູງ, ສະນັ້ນຂໍ້ຄວາມຈຶ່ງບໍ່ສາມາດອ່ານອອກສຽງໄດ້ດີຢູ່ບ່ອນນີ້. ແອັບ Pangea Chat ສາມາດໃຊ້ສຽງທີ່ດີທີ່ສຸດຂອງອຸປະກອນຂອງທ່ານໄດ້.",
+    "readAloudGetApp": "ເອົາແອັບ",
+    "readAloudNoVoiceIOS": "ອຸປະກອນຂອງທ່ານຍັງບໍ່ໄດ້ດາວໂຫຼດສຽງ {language} ທີ່ມີຄຸນນະພາບສູງເທື່ອ. ດາວໂຫຼດແລ້ວລອງໃໝ່ອີກຄັ້ງ:",
+    "readAloudNoVoiceIOSSteps": "  • ການຕັ້ງຄ່າ\n  • ການຊ່ວຍເຫຼືອການເຂົ້າເຖິງ\n  • ເນື້ອຫາທີ່ເວົ້າ\n  • ສຽງ\n  • {language}\n  • ດາວໂຫຼດສຽງທີ່ປັບປຸງ ຫຼື ພຣີມຽມ",
+    "readAloudNoVoiceAndroid": "ອຸປະກອນຂອງທ່ານຍັງບໍ່ມີສຽງ {language} ທີ່ມີຄຸນນະພາບສູງເທື່ອ. ຕິດຕັ້ງຂໍ້ມູນສຽງສຳລັບເຄື່ອງຈັກການປ່ຽນຂໍ້ຄວາມເປັນສຽງເວົ້າຂອງທ່ານ, ແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
+    "readAloudOpenVoiceSettings": "ເປີດການຕັ້ງຄ່າສຽງ"
 }

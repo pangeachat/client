@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Keuses",
     "audioChoicesDescription": "Speel oudio vir antwoordkeuses in oefenaktiwiteite.",
     "audioIncomingMessagesToolName": "Inkomende boodskappe",
-    "audioIncomingMessagesDescription": "Lees outomaties ontvangde boodskappe hardop in jou doeltaal vir luisteroefening."
+    "audioIncomingMessagesDescription": "Lees outomaties ontvangde boodskappe hardop in jou doeltaal vir luisteroefening.",
+    "readAloudNoVoiceTitle": "Geen hoëgehalte {language}-stem gevind nie",
+    "readAloudNoVoiceDesktopWeb": "Hierdie blaaier bied nie 'n hoëgehalte {language}-stem nie, so boodskappe kan nie goed hier voorgelees word nie. Chrome en Edge sluit gewoonlik hoëgehalte stemme in.",
+    "readAloudGetChrome": "Kry Chrome",
+    "readAloudNoVoiceMobileWeb": "Hierdie blaaier bied nie 'n hoëgehalte {language}-stem nie, so boodskappe kan nie goed hier voorgelees word nie. Die Pangea Chat-toepassing kan jou toestel se beste stemme gebruik.",
+    "readAloudGetApp": "Kry die toepassing",
+    "readAloudNoVoiceIOS": "Jou toestel het nog nie 'n hoëgehalte {language}-stem afgelaai nie. Laai een af, en probeer dan weer:",
+    "readAloudNoVoiceIOSSteps": "  • Instellings\n  • Toeganklikheid\n  • Gesproke Inhoud\n  • Stemme\n  • {language}\n  • Laai 'n Verbeterde of Premium stem af",
+    "readAloudNoVoiceAndroid": "Jou toestel het nog nie 'n hoëgehalte {language}-stem nie. Installeer stemdata vir jou teks-na-spraak-enjin, en probeer dan weer.",
+    "readAloudOpenVoiceSettings": "Maak steminstellings oop"
 }

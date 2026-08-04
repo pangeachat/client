@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Roghainnean",
     "audioChoicesDescription": "Cluich fuaim airson roghainnean freagairt ann an gnìomhachdan cleachdaidh.",
     "audioIncomingMessagesToolName": "Teachdaireachdan a tha a' tighinn a-steach",
-    "audioIncomingMessagesDescription": "Leugh teachdaireachdan a fhuaireadh gu fèin-obrachail a-mach anns an targaid-chànain agad airson cleachdadh èisteachd."
+    "audioIncomingMessagesDescription": "Leugh teachdaireachdan a fhuaireadh gu fèin-obrachail a-mach anns an targaid-chànain agad airson cleachdadh èisteachd.",
+    "readAloudNoVoiceTitle": "Cha deach guth {language} de chàileachd àrd a lorg",
+    "readAloudNoVoiceDesktopWeb": "Chan eil an brabhsair seo a’ tabhann guth {language} de chàileachd àrd, is mar sin chan urrainnear teachdaireachdan a leughadh a-mach gu math an seo. Mar as trice bidh Chrome is Edge a’ toirt a-steach guthan de chàileachd àrd.",
+    "readAloudGetChrome": "Faigh Chrome",
+    "readAloudNoVoiceMobileWeb": "Chan eil an brabhsair seo a’ tabhann guth {language} de chàileachd àrd, is mar sin chan urrainnear teachdaireachdan a leughadh a-mach gu math an seo. Faodaidh app Pangea Chat na guthan as fheàrr aig an inneal agad a chleachdadh.",
+    "readAloudGetApp": "Faigh an aplacaid",
+    "readAloudNoVoiceIOS": "Chan eil guth {language} de chàileachd àrd air a luchdachadh sìos chun inneal agad fhathast. Luchdaich sìos fear, an uair sin feuch ris a-rithist:",
+    "readAloudNoVoiceIOSSteps": "  • Roghainnean\n  • Ruigsinneachd\n  • Susbaint Labhairteach\n  • Guthan\n  • {language}\n  • Luchdaich sìos guth Leasaichte no Premium",
+    "readAloudNoVoiceAndroid": "Chan eil guth {language} de chàileachd àrd aig an inneal agad fhathast. Stàlaich dàta guth airson an einnsean teacsa-gu-cainnt agad, an uair sin feuch ris a-rithist.",
+    "readAloudOpenVoiceSettings": "Fosgail roghainnean guth"
 }

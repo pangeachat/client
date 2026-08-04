@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Kōwhiringa",
     "audioChoicesDescription": "Whakatangihia te oro mō ngā kōwhiringa whakautu i roto i ngā mahi whakaharatau.",
     "audioIncomingMessagesToolName": "Karere taumai",
-    "audioIncomingMessagesDescription": "Pānuitia aunoatia ngā karere kua tae mai i tō reo whāinga mō te whakaharatau whakarongo."
+    "audioIncomingMessagesDescription": "Pānuitia aunoatia ngā karere kua tae mai i tō reo whāinga mō te whakaharatau whakarongo.",
+    "readAloudNoVoiceTitle": "Kāore i kitea he reo {language} kounga teitei",
+    "readAloudNoVoiceDesktopWeb": "Kāore tēnei pūtirotiro e tuku reo {language} kounga teitei, nō reira kāore e pai te pānui nui i ngā karere i konei. Ko Chrome me Edge te tikanga he reo kounga teitei.",
+    "readAloudGetChrome": "Tikiake Chrome",
+    "readAloudNoVoiceMobileWeb": "Kāore tēnei pūtirotiro e tuku reo {language} kounga teitei, nō reira kāore e pai te pānui nui i ngā karere i konei. Ka taea e te taupānga Pangea Chat te whakamahi i ngā reo pai rawa atu o tō pūrere.",
+    "readAloudGetApp": "Tikiake i te taupānga",
+    "readAloudNoVoiceIOS": "Kāore anō kia tikiakehia he reo {language} kounga teitei ki tō pūrere. Tikiakehia tētahi, kātahi ka ngana anō:",
+    "readAloudNoVoiceIOSSteps": "  • Ngā Tautuhinga\n  • Whakaaetanga\n  • Ihirangi Kōrero\n  • Ngā Reo\n  • {language}\n  • Tikiake i tētahi reo Whakarei, Moni rānei",
+    "readAloudNoVoiceAndroid": "Kāore anō kia whai reo {language} kounga teitei tō pūrere. Tāutahia ngā raraunga reo mō tō pūkaha kuputuhi-ki-reo, kātahi ka ngana anō.",
+    "readAloudOpenVoiceSettings": "Whakatuwhera i ngā tautuhinga reo"
 }

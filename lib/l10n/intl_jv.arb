@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Pilihan",
     "audioChoicesDescription": "Putar audio kanggo pilihan jawaban ing aktivitas latihan.",
     "audioIncomingMessagesToolName": "Pesen mlebu",
-    "audioIncomingMessagesDescription": "Otomatis maca pesen sing ditampa kanthi banter ing basa target sampeyan kanggo latihan ngrungokake."
+    "audioIncomingMessagesDescription": "Otomatis maca pesen sing ditampa kanthi banter ing basa target sampeyan kanggo latihan ngrungokake.",
+    "readAloudNoVoiceTitle": "Swara {language} kualitas dhuwur ora ditemokake",
+    "readAloudNoVoiceDesktopWeb": "Browser iki ora nyedhiyakake swara {language} kualitas dhuwur, mula pesen ora bisa diwaca kanthi apik ing kene. Chrome lan Edge biasane nyakup swara kualitas dhuwur.",
+    "readAloudGetChrome": "Entuk Chrome",
+    "readAloudNoVoiceMobileWeb": "Browser iki ora nyedhiyakake swara {language} kualitas dhuwur, mula pesen ora bisa diwaca kanthi apik ing kene. Aplikasi Pangea Chat bisa nggunakake swara paling apik ing piranti sampeyan.",
+    "readAloudGetApp": "Entuk aplikasi",
+    "readAloudNoVoiceIOS": "Piranti sampeyan durung ngundhuh swara {language} kualitas dhuwur. Undhuh siji, banjur coba maneh:",
+    "readAloudNoVoiceIOSSteps": "  • Setelan\n  • Aksesibilitas\n  • Konten sing Diucapake\n  • Swara\n  • {language}\n  • Undhuh swara sing Ditingkatake utawa Premium",
+    "readAloudNoVoiceAndroid": "Piranti sampeyan durung duwe swara {language} kualitas dhuwur. Instal data swara kanggo mesin teks-menyang-swara sampeyan, banjur coba maneh.",
+    "readAloudOpenVoiceSettings": "Bukak setelan swara"
 }

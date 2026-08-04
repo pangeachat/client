@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Sarudzo",
     "audioChoicesDescription": "Ridza odhiyo yezvisarudzo zvemhinduro mumabasa ekudzidzira.",
     "audioIncomingMessagesToolName": "Mameseji anouya",
-    "audioIncomingMessagesDescription": "Verenga mameseji anogamuchirwa zvega zvega nezwi guru mumutauro wako wechinangwa kuti udzidzire kuteerera."
+    "audioIncomingMessagesDescription": "Verenga mameseji anogamuchirwa zvega zvega nezwi guru mumutauro wako wechinangwa kuti udzidzire kuteerera.",
+    "readAloudNoVoiceTitle": "Hapana izwi remhando yepamusoro re {language} rawawanikwa",
+    "readAloudNoVoiceDesktopWeb": "Bhurausa iri haripi izwi remhando yepamusoro re {language}, saka mameseji haagoni kuverengwa zvakanaka pano. Chrome ne Edge kazhinji zvine mazwi emhando yepamusoro.",
+    "readAloudGetChrome": "Tora Chrome",
+    "readAloudNoVoiceMobileWeb": "Bhurausa iri haripi izwi remhando yepamusoro re {language}, saka mameseji haagoni kuverengwa zvakanaka pano. Iyo Pangea Chat app inogona kushandisa mazwi emhando yepamusoro efoni yako.",
+    "readAloudGetApp": "Tora app",
+    "readAloudNoVoiceIOS": "Foni yako haina izwi remhando yepamusoro re {language} rakadhawunirodwa. Dhawunirodha rimwe, wobva waedza zvakare:",
+    "readAloudNoVoiceIOSSteps": "  • Zvirongwa\n  • Kuwanika\n  • Zvinyorwa Zvinotaurwa\n  • Mazwi\n  • {language}\n  • Dhawunirodha izwi reEnhanced kana Premium",
+    "readAloudNoVoiceAndroid": "Foni yako haina izwi remhando yepamusoro re {language} parizvino. Isa data reizwi reinjini yako yekutaura-kubva-kumavara, wobva waedza zvakare.",
+    "readAloudOpenVoiceSettings": "Vhura zvirongwa zveizwi"
 }

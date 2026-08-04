@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Kev xaiv",
     "audioChoicesDescription": "Ua si suab rau cov lus teb hauv kev xyaum ua haujlwm.",
     "audioIncomingMessagesToolName": "Cov lus tuaj",
-    "audioIncomingMessagesDescription": "Nyeem cov lus tau txais nrov nrov hauv koj hom lus rau kev xyaum mloog."
+    "audioIncomingMessagesDescription": "Nyeem cov lus tau txais nrov nrov hauv koj hom lus rau kev xyaum mloog.",
+    "readAloudNoVoiceTitle": "Tsis muaj lub suab zoo {language} pom",
+    "readAloudNoVoiceDesktopWeb": "Qhov browser no tsis muaj lub suab zoo {language}, yog li cov lus tsis tuaj yeem nyeem tau zoo ntawm no. Chrome thiab Edge feem ntau muaj lub suab zoo.",
+    "readAloudGetChrome": "Tau Chrome",
+    "readAloudNoVoiceMobileWeb": "Qhov browser no tsis muaj lub suab zoo {language}, yog li cov lus tsis tuaj yeem nyeem tau zoo ntawm no. Pangea Chat app tuaj yeem siv koj lub cuab yeej lub suab zoo tshaj plaws.",
+    "readAloudGetApp": "Tau lub app",
+    "readAloudNoVoiceIOS": "Koj lub cuab yeej tseem tsis tau rub lub suab zoo {language}. Rub ib lub, ces sim dua:",
+    "readAloudNoVoiceIOSSteps": "  • Chaw\n  • Kev nkag tau yooj yim\n  • Cov Lus Hais\n  • Suab\n  • {language}\n  • Rub lub suab Txhim Kho lossis Premium",
+    "readAloudNoVoiceAndroid": "Koj lub cuab yeej tseem tsis tau muaj lub suab zoo {language}. Nruab cov ntaub ntawv suab rau koj lub tshuab hais lus, ces sim dua.",
+    "readAloudOpenVoiceSettings": "Qhib chaw suab"
 }

@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Ukukhetha",
     "audioChoicesDescription": "Dlala isandi sokukhetha iimpendulo kwimisebenzi yokuziqhelanisa.",
     "audioIncomingMessagesToolName": "Imiyalezo engenayo",
-    "audioIncomingMessagesDescription": "Funda ngokuzenzekelayo imiyalezo efumanekileyo ngelizwi elikhulu ngolwimi olujoliswe kulo ukuze uziqhelanise nokuphulaphula."
+    "audioIncomingMessagesDescription": "Funda ngokuzenzekelayo imiyalezo efumanekileyo ngelizwi elikhulu ngolwimi olujoliswe kulo ukuze uziqhelanise nokuphulaphula.",
+    "readAloudNoVoiceTitle": "Akukho lizwi {language} elikumgangatho ophezulu elifunyenweyo",
+    "readAloudNoVoiceDesktopWeb": "Le bhrawuza ayiliniki ilizwi {language} elikumgangatho ophezulu, ngoko ke imiyalezo ayinakufundwa kakuhle apha. I-Chrome kunye ne-Edge zihlala zibandakanya amazwi akumgangatho ophezulu.",
+    "readAloudGetChrome": "Fumana i-Chrome",
+    "readAloudNoVoiceMobileWeb": "Le bhrawuza ayiliniki ilizwi {language} elikumgangatho ophezulu, ngoko ke imiyalezo ayinakufundwa kakuhle apha. I-Pangea Chat app ingasebenzisa amazwi angcono esixhobo sakho.",
+    "readAloudGetApp": "Fumana i-app",
+    "readAloudNoVoiceIOS": "Isixhobo sakho asikakhupheli ilizwi {language} elikumgangatho ophezulu okwangoku. Khuphela elinye, emva koko zama kwakhona:",
+    "readAloudNoVoiceIOSSteps": "  • Izicwangciso\n  • Ukufikeleleka\n  • Umxholo othethwayo\n  • Amazwi\n  • {language}\n  • Khuphela ilizwi eliphuculweyo okanye eliyi-Premium",
+    "readAloudNoVoiceAndroid": "Isixhobo sakho asinalo ilizwi {language} elikumgangatho ophezulu okwangoku. Faka idatha yelizwi ye-injini yakho yokuguqula umbhalo ube yintetho, emva koko zama kwakhona.",
+    "readAloudOpenVoiceSettings": "Vula izicwangciso zezwi"
 }

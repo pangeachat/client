@@ -9727,5 +9727,14 @@
     "audioChoicesToolName": "Vaihtoehdot",
     "audioChoicesDescription": "Toista vastausvaihtoehtojen ääni harjoitustehtävissä.",
     "audioIncomingMessagesToolName": "Saapuvat viestit",
-    "audioIncomingMessagesDescription": "Lue vastaanotetut viestit automaattisesti ääneen kohdekielellä kuunteluharjoitusta varten."
+    "audioIncomingMessagesDescription": "Lue vastaanotetut viestit automaattisesti ääneen kohdekielellä kuunteluharjoitusta varten.",
+    "readAloudNoVoiceTitle": "Laadukasta {language}-ääntä ei löydy",
+    "readAloudNoVoiceDesktopWeb": "Tämä selain ei tarjoa laadukasta {language}-ääntä, joten viestejä ei voida lukea ääneen kunnolla. Chrome ja Edge sisältävät yleensä laadukkaita ääniä.",
+    "readAloudGetChrome": "Hanki Chrome",
+    "readAloudNoVoiceMobileWeb": "Tämä selain ei tarjoa laadukasta {language}-ääntä, joten viestejä ei voida lukea ääneen kunnolla. Pangea Chat -sovellus voi käyttää laitteesi parhaita ääniä.",
+    "readAloudGetApp": "Hanki sovellus",
+    "readAloudNoVoiceIOS": "Laitteellesi ei ole vielä ladattu laadukasta {language}-ääntä. Lataa sellainen ja yritä sitten uudelleen:",
+    "readAloudNoVoiceIOSSteps": "  • Asetukset\n  • Käyttöapu\n  • Puhuttu sisältö\n  • Äänet\n  • {language}\n  • Lataa parannettu tai Premium-ääni",
+    "readAloudNoVoiceAndroid": "Laitteellasi ei ole vielä laadukasta {language}-ääntä. Asenna äänidata tekstistä puheeksi -moottorillesi ja yritä sitten uudelleen.",
+    "readAloudOpenVoiceSettings": "Avaa ääniasetukset"
 }

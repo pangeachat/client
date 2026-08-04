@@ -9991,5 +9991,14 @@
     "audioChoicesToolName": "Seçenekler",
     "audioChoicesDescription": "Alıştırma etkinliklerindeki cevap seçenekleri için ses çalın.",
     "audioIncomingMessagesToolName": "Gelen mesajlar",
-    "audioIncomingMessagesDescription": "Dinleme pratiği için alınan mesajları hedef dilinizde otomatik olarak yüksek sesle okuyun."
+    "audioIncomingMessagesDescription": "Dinleme pratiği için alınan mesajları hedef dilinizde otomatik olarak yüksek sesle okuyun.",
+    "readAloudNoVoiceTitle": "Yüksek kaliteli {language} sesi bulunamadı",
+    "readAloudNoVoiceDesktopWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Chrome ve Edge genellikle yüksek kaliteli sesler içerir.",
+    "readAloudGetChrome": "Chrome'u Edinin",
+    "readAloudNoVoiceMobileWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Pangea Sohbet uygulaması cihazınızın en iyi seslerini kullanabilir.",
+    "readAloudGetApp": "Uygulamayı edinin",
+    "readAloudNoVoiceIOS": "Cihazınızda henüz yüksek kaliteli bir {language} sesi indirilmemiş. Bir tane indirin, sonra tekrar deneyin:",
+    "readAloudNoVoiceIOSSteps": "  • Ayarlar\n  • Erişilebilirlik\n  • Konuşulan İçerik\n  • Sesler\n  • {language}\n  • Gelişmiş veya Premium bir ses indirin",
+    "readAloudNoVoiceAndroid": "Cihazınızda henüz yüksek kaliteli bir {language} sesi yok. Metin okuma motorunuz için ses verilerini yükleyin, sonra tekrar deneyin.",
+    "readAloudOpenVoiceSettings": "Ses ayarlarını aç"
 }

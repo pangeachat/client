@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "પસંદગીઓ",
     "audioChoicesDescription": "પ્રેક્ટિસ પ્રવૃત્તિઓમાં જવાબની પસંદગીઓ માટે ઑડિયો ચલાવો.",
     "audioIncomingMessagesToolName": "આવનારા સંદેશા",
-    "audioIncomingMessagesDescription": "સાંભળવાની પ્રેક્ટિસ માટે તમારી લક્ષ્ય ભાષામાં પ્રાપ્ત થયેલા સંદેશાઓને આપમેળે મોટેથી વાંચો."
+    "audioIncomingMessagesDescription": "સાંભળવાની પ્રેક્ટિસ માટે તમારી લક્ષ્ય ભાષામાં પ્રાપ્ત થયેલા સંદેશાઓને આપમેળે મોટેથી વાંચો.",
+    "readAloudNoVoiceTitle": "ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ મળ્યો નથી",
+    "readAloudNoVoiceDesktopWeb": "આ બ્રાઉઝર ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ પ્રદાન કરતું નથી, તેથી અહીં સંદેશાઓ સારી રીતે વાંચી શકાતા નથી. Chrome અને Edge માં સામાન્ય રીતે ઉચ્ચ-ગુણવત્તાવાળા અવાજો શામેલ હોય છે.",
+    "readAloudGetChrome": "Chrome મેળવો",
+    "readAloudNoVoiceMobileWeb": "આ બ્રાઉઝર ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ પ્રદાન કરતું નથી, તેથી અહીં સંદેશાઓ સારી રીતે વાંચી શકાતા નથી. Pangea Chat એપ્લિકેશન તમારા ઉપકરણના શ્રેષ્ઠ અવાજોનો ઉપયોગ કરી શકે છે.",
+    "readAloudGetApp": "એપ્લિકેશન મેળવો",
+    "readAloudNoVoiceIOS": "તમારા ઉપકરણમાં હજી સુધી ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ ડાઉનલોડ થયો નથી. એક ડાઉનલોડ કરો, પછી ફરી પ્રયાસ કરો:",
+    "readAloudNoVoiceIOSSteps": "  • સેટિંગ્સ\n  • ઍક્સેસિબિલિટી\n  • બોલાયેલી સામગ્રી\n  • અવાજો\n  • {language}\n  • ઉન્નત અથવા પ્રીમિયમ અવાજ ડાઉનલોડ કરો",
+    "readAloudNoVoiceAndroid": "તમારા ઉપકરણમાં હજી સુધી ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ નથી. તમારા ટેક્સ્ટ-ટુ-સ્પીચ એન્જિન માટે વૉઇસ ડેટા ઇન્સ્ટોલ કરો, પછી ફરી પ્રયાસ કરો.",
+    "readAloudOpenVoiceSettings": "વૉઇસ સેટિંગ્સ ખોલો"
 }

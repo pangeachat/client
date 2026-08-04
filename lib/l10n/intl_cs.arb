@@ -10184,5 +10184,14 @@
     "audioChoicesToolName": "Možnosti",
     "audioChoicesDescription": "Přehrát zvuk pro možnosti odpovědí v procvičovacích aktivitách.",
     "audioIncomingMessagesToolName": "Příchozí zprávy",
-    "audioIncomingMessagesDescription": "Automaticky nahlas přečíst přijaté zprávy ve vašem cílovém jazyce pro poslechové cvičení."
+    "audioIncomingMessagesDescription": "Automaticky nahlas přečíst přijaté zprávy ve vašem cílovém jazyce pro poslechové cvičení.",
+    "readAloudNoVoiceTitle": "Nenalezena žádná vysoce kvalitní hlasová syntéza pro jazyk {language}",
+    "readAloudNoVoiceDesktopWeb": "Tento prohlížeč nenabízí vysoce kvalitní hlasovou syntézu pro jazyk {language}, takže zprávy zde nelze dobře přečíst nahlas. Chrome a Edge obvykle obsahují vysoce kvalitní hlasy.",
+    "readAloudGetChrome": "Získat Chrome",
+    "readAloudNoVoiceMobileWeb": "Tento prohlížeč nenabízí vysoce kvalitní hlasovou syntézu pro jazyk {language}, takže zprávy zde nelze dobře přečíst nahlas. Aplikace Pangea Chat může používat nejlepší hlasy vašeho zařízení.",
+    "readAloudGetApp": "Získat aplikaci",
+    "readAloudNoVoiceIOS": "Vaše zařízení ještě nemá staženou vysoce kvalitní hlasovou syntézu pro jazyk {language}. Stáhněte si ji a zkuste to znovu:",
+    "readAloudNoVoiceIOSSteps": "  • Nastavení\n  • Zpřístupnění\n  • Mluvený obsah\n  • Hlasy\n  • {language}\n  • Stáhněte si vylepšený nebo prémiový hlas",
+    "readAloudNoVoiceAndroid": "Vaše zařízení ještě nemá vysoce kvalitní hlasovou syntézu pro jazyk {language}. Nainstalujte hlasová data pro váš modul převodu textu na řeč a zkuste to znovu.",
+    "readAloudOpenVoiceSettings": "Otevřít nastavení hlasu"
 }

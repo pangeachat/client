@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Zaɓuɓɓuka",
     "audioChoicesDescription": "Kunna sauti don zaɓuɓɓukan amsa a ayyukan aiki.",
     "audioIncomingMessagesToolName": "Saƙonni masu shigowa",
-    "audioIncomingMessagesDescription": "Karanta saƙonnin da aka karɓa ta atomatik da babbar murya a cikin harshen da kake so don aikin sauraro."
+    "audioIncomingMessagesDescription": "Karanta saƙonnin da aka karɓa ta atomatik da babbar murya a cikin harshen da kake so don aikin sauraro.",
+    "readAloudNoVoiceTitle": "Ba a sami ingantacciyar murya ta {language} ba",
+    "readAloudNoVoiceDesktopWeb": "Wannan burauzar ba ta samar da ingantacciyar murya ta {language} ba, don haka ba za a iya karanta saƙonni da kyau a nan ba. Chrome da Edge galibi suna haɗa da ingantattun muryoyi.",
+    "readAloudGetChrome": "Samu Chrome",
+    "readAloudNoVoiceMobileWeb": "Wannan burauzar ba ta samar da ingantacciyar murya ta {language} ba, don haka ba za a iya karanta saƙonni da kyau a nan ba. Manhajar Pangea Chat na iya amfani da mafi kyawun muryoyin na'urarka.",
+    "readAloudGetApp": "Samu manhajar",
+    "readAloudNoVoiceIOS": "Har yanzu na'urarka ba ta sauke ingantacciyar murya ta {language} ba. Sauke ɗaya, sannan ka sake gwadawa:",
+    "readAloudNoVoiceIOSSteps": "  • Saituna\n  • Samun dama\n  • Abun da aka faɗa\n  • Muryoyi\n  • {language}\n  • Sauke murya mai inganci ko ta Premium",
+    "readAloudNoVoiceAndroid": "Har yanzu na'urarka ba ta da ingantacciyar murya ta {language} ba. Shigar da bayanan murya don injin rubutu-zuwa-magana, sannan ka sake gwadawa.",
+    "readAloudOpenVoiceSettings": "Bude saitunan murya"
 }

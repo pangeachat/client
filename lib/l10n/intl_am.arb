@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "ምርጫዎች",
     "audioChoicesDescription": "በልምምድ እንቅስቃሴዎች ውስጥ ለመልስ ምርጫዎች ድምጽ ያጫውቱ።",
     "audioIncomingMessagesToolName": "ገቢ መልዕክቶች",
-    "audioIncomingMessagesDescription": "ለማዳመጥ ልምምድ የተቀበሉ መልዕክቶችን በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብለው ያንብቡ።"
+    "audioIncomingMessagesDescription": "ለማዳመጥ ልምምድ የተቀበሉ መልዕክቶችን በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብለው ያንብቡ።",
+    "readAloudNoVoiceTitle": "ከፍተኛ ጥራት ያለው የ{language} ድምጽ አልተገኘም",
+    "readAloudNoVoiceDesktopWeb": "ይህ አሳሽ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይሰጥም፣ ስለዚህ መልዕክቶች እዚህ በደንብ ሊነበቡ አይችሉም። Chrome እና Edge ብዙውን ጊዜ ከፍተኛ ጥራት ያላቸውን ድምፆች ያካትታሉ።",
+    "readAloudGetChrome": "Chrome ያግኙ",
+    "readAloudNoVoiceMobileWeb": "ይህ አሳሽ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይሰጥም፣ ስለዚህ መልዕክቶች እዚህ በደንብ ሊነበቡ አይችሉም። የPangea Chat መተግበሪያ የመሳሪያዎን ምርጥ ድምፆች መጠቀም ይችላል።",
+    "readAloudGetApp": "መተግበሪያውን ያግኙ",
+    "readAloudNoVoiceIOS": "የእርስዎ መሣሪያ እስካሁን ከፍተኛ ጥራት ያለው የ{language} ድምጽ አላወረደም። አንዱን ያውርዱ፣ ከዚያ እንደገና ይሞክሩ፦",
+    "readAloudNoVoiceIOSSteps": "  • ቅንብሮች\n  • ተደራሽነት\n  • የተነገረ ይዘት\n  • ድምፆች\n  • {language}\n  • የተሻሻለ ወይም ፕሪሚየም ድምጽ ያውርዱ",
+    "readAloudNoVoiceAndroid": "የእርስዎ መሣሪያ እስካሁን ከፍተኛ ጥራት ያለው የ{language} ድምጽ የለውም። ለጽሑፍ-ወደ-ንግግር ሞተርዎ የድምጽ ውሂብ ይጫኑ፣ ከዚያ እንደገና ይሞክሩ።",
+    "readAloudOpenVoiceSettings": "የድምጽ ቅንብሮችን ክፈት"
 }

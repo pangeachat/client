@@ -10471,5 +10471,14 @@
     "audioChoicesToolName": "Pasirinkimai",
     "audioChoicesDescription": "Paleiskite atsakymų variantų garsą praktikos veiklose.",
     "audioIncomingMessagesToolName": "Gaunami pranešimai",
-    "audioIncomingMessagesDescription": "Automatiškai garsiai perskaitykite gautus pranešimus jūsų tiksline kalba, kad lavintumėte klausymą."
+    "audioIncomingMessagesDescription": "Automatiškai garsiai perskaitykite gautus pranešimus jūsų tiksline kalba, kad lavintumėte klausymą.",
+    "readAloudNoVoiceTitle": "Nerasta aukštos kokybės {language} balso",
+    "readAloudNoVoiceDesktopWeb": "Ši naršyklė nepasiūlo aukštos kokybės {language} balso, todėl pranešimai čia negali būti gerai perskaityti. „Chrome“ ir „Edge“ paprastai turi aukštos kokybės balsus.",
+    "readAloudGetChrome": "Gauti „Chrome“",
+    "readAloudNoVoiceMobileWeb": "Ši naršyklė nepasiūlo aukštos kokybės {language} balso, todėl pranešimai čia negali būti gerai perskaityti. „Pangea Chat“ programa gali naudoti geriausius jūsų įrenginio balsus.",
+    "readAloudGetApp": "Gauti programą",
+    "readAloudNoVoiceIOS": "Jūsų įrenginyje dar neatsisiųstas aukštos kokybės {language} balsas. Atsisiųskite jį ir bandykite dar kartą:",
+    "readAloudNoVoiceIOSSteps": "  • Nustatymai\n  • Pritaikymas neįgaliesiems\n  • Sakytinis turinys\n  • Balsai\n  • {language}\n  • Atsisiųskite patobulintą arba „Premium“ balsą",
+    "readAloudNoVoiceAndroid": "Jūsų įrenginyje dar nėra aukštos kokybės {language} balso. Įdiekite balso duomenis savo teksto į kalbą varikliui, tada bandykite dar kartą.",
+    "readAloudOpenVoiceSettings": "Atidaryti balso nustatymus"
 }

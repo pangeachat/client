@@ -9690,5 +9690,14 @@
     "audioChoicesToolName": "Izvēles",
     "audioChoicesDescription": "Atskaņojiet audio atbilžu variantiem prakses aktivitātēs.",
     "audioIncomingMessagesToolName": "Ienākošās ziņas",
-    "audioIncomingMessagesDescription": "Automātiski nolasīt saņemtās ziņas skaļi jūsu mērķa valodā, lai praktizētu klausīšanos."
+    "audioIncomingMessagesDescription": "Automātiski nolasīt saņemtās ziņas skaļi jūsu mērķa valodā, lai praktizētu klausīšanos.",
+    "readAloudNoVoiceTitle": "Nav atrasta augstas kvalitātes {language} balss",
+    "readAloudNoVoiceDesktopWeb": "Šī pārlūkprogramma nepiedāvā augstas kvalitātes {language} balsi, tāpēc ziņojumus šeit nevar labi nolasīt. Chrome un Edge parasti ietver augstas kvalitātes balsis.",
+    "readAloudGetChrome": "Iegūt Chrome",
+    "readAloudNoVoiceMobileWeb": "Šī pārlūkprogramma nepiedāvā augstas kvalitātes {language} balsi, tāpēc ziņojumus šeit nevar labi nolasīt. Lietotne Pangea Chat var izmantot jūsu ierīces labākās balsis.",
+    "readAloudGetApp": "Iegūt lietotni",
+    "readAloudNoVoiceIOS": "Jūsu ierīcē vēl nav lejupielādēta augstas kvalitātes {language} balss. Lejupielādējiet to un mēģiniet vēlreiz:",
+    "readAloudNoVoiceIOSSteps": "  • Iestatījumi\n  • Pieejamība\n  • Runātais saturs\n  • Balsis\n  • {language}\n  • Lejupielādēt uzlabotu vai premium balsi",
+    "readAloudNoVoiceAndroid": "Jūsu ierīcē vēl nav augstas kvalitātes {language} balss. Instalējiet balss datus savam teksta-runas dzinējam un mēģiniet vēlreiz.",
+    "readAloudOpenVoiceSettings": "Atvērt balss iestatījumus"
 }

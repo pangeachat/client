@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Dikgetho",
     "audioChoicesDescription": "Bapala modumo bakeng sa dikgetho tsa dikarabo ditshebedisong tsa boitsebelo.",
     "audioIncomingMessagesToolName": "Melaetsa e kenang",
-    "audioIncomingMessagesDescription": "Bala melaetsa e amohetsweng ka boyona ka lentswe le phahameng ka puo eo o e ithutang bakeng sa boitsebelo ba ho mamela."
+    "audioIncomingMessagesDescription": "Bala melaetsa e amohetsweng ka boyona ka lentswe le phahameng ka puo eo o e ithutang bakeng sa boitsebelo ba ho mamela.",
+    "readAloudNoVoiceTitle": "Ha ho lentsoe la boleng bo holimo la {language} le fumanoeng",
+    "readAloudNoVoiceDesktopWeb": "Sebatli sena ha se fane ka lentsoe la boleng bo holimo la {language}, kahoo melaetsa e ke ke ea baloa hantle mona. Chrome le Edge hangata li kenyelletsa mantsoe a boleng bo holimo.",
+    "readAloudGetChrome": "Fumana Chrome",
+    "readAloudNoVoiceMobileWeb": "Sebatli sena ha se fane ka lentsoe la boleng bo holimo la {language}, kahoo melaetsa e ke ke ea baloa hantle mona. Sesebelisoa sa Pangea Chat se ka sebelisa mantsoe a matle ka ho fetisisa a sesebelisoa sa hau.",
+    "readAloudGetApp": "Fumana sesebelisoa",
+    "readAloudNoVoiceIOS": "Sesebelisoa sa hau ha se so be le lentsoe la boleng bo holimo la {language} le jarollotsoeng. Jarolla le leng, ebe u leka hape:",
+    "readAloudNoVoiceIOSSteps": "  • Litlhophiso\n  • Phihlello\n  • Litaba tse Baloang\n  • Mantsoe\n  • {language}\n  • Jarolla lentsoe le Ntlafalitsoeng kapa la Premium",
+    "readAloudNoVoiceAndroid": "Sesebelisoa sa hau ha se so be le lentsoe la boleng bo holimo la {language}. Kenya data ea lentsoe bakeng sa enjene ea hau ea mongolo-ho-puo, ebe u leka hape.",
+    "readAloudOpenVoiceSettings": "Bula litlhophiso tsa lentsoe"
 }

@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Zosankha",
     "audioChoicesDescription": "Sewerani mawu a mayankho omwe mungasankhe pochita masewera olimbitsa thupi.",
     "audioIncomingMessagesToolName": "Mauthenga obwera",
-    "audioIncomingMessagesDescription": "Werengani mauthenga omwe mwalandira mokweza m'chilankhulo chanu chofuna kumvetsera kuti muzolowere kumvetsera."
+    "audioIncomingMessagesDescription": "Werengani mauthenga omwe mwalandira mokweza m'chilankhulo chanu chofuna kumvetsera kuti muzolowere kumvetsera.",
+    "readAloudNoVoiceTitle": "Palibe mawu apamwamba a {language} omwe apezedwa",
+    "readAloudNoVoiceDesktopWeb": "Msakatuli uyu alibe mawu apamwamba a {language}, kotero mauthenga sangawerengedwe bwino pano. Chrome ndi Edge nthawi zambiri amakhala ndi mawu apamwamba.",
+    "readAloudGetChrome": "Pezani Chrome",
+    "readAloudNoVoiceMobileWeb": "Msakatuli uyu alibe mawu apamwamba a {language}, kotero mauthenga sangawerengedwe bwino pano. Pulogalamu ya Pangea Chat ingagwiritse ntchito mawu abwino kwambiri a chipangizo chanu.",
+    "readAloudGetApp": "Pezani pulogalamuyi",
+    "readAloudNoVoiceIOS": "Chipangizo chanu chilibe mawu apamwamba a {language} omwe adatsitsidwa. Tsitsani imodzi, kenako yesaninso:",
+    "readAloudNoVoiceIOSSteps": "  • Zokonda\n  • Kufikika\n  • Zomwe Zayankhulidwa\n  • Mawu\n  • {language}\n  • Tsitsani mawu a Enhanced kapena Premium",
+    "readAloudNoVoiceAndroid": "Chipangizo chanu chilibe mawu apamwamba a {language}. Ikani deta ya mawu a injini yanu yoyankhulira, kenako yesaninso.",
+    "readAloudOpenVoiceSettings": "Tsegulani zokonda za mawu"
 }

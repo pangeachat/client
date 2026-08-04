@@ -163,6 +163,17 @@ class TtsController {
         .toList();
   }
 
+  /// Whether the device currently offers a known-good voice for [langCode] —
+  /// the same gate `tryToSpeak` applies before read-aloud playback, so a
+  /// caller checking upfront (the settings toggle) can never disagree with
+  /// what playback will do. See message-read-aloud.instructions.md.
+  static Future<bool> hasKnownGoodVoiceFor(String langCode) async {
+    if (_availableLangCodes.isEmpty || kIsWeb) {
+      await setAvailableLanguages();
+    }
+    return TtsRouting.selectVoice(_voices, langCode, isWeb: kIsWeb).isKnownGood;
+  }
+
   static Future<void> _setSpeakingLanguage(String langCode, String tid) async {
     String? selectedLangCode;
     final langCodeShort = langCode.split("-").first;

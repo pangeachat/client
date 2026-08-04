@@ -10641,5 +10641,14 @@
     "audioChoicesToolName": "Elektoj",
     "audioChoicesDescription": "Ludu aŭdion por respondaj elektoj en praktikaj agadoj.",
     "audioIncomingMessagesToolName": "Alvenantaj mesaĝoj",
-    "audioIncomingMessagesDescription": "Aŭtomate laŭtlegi ricevitajn mesaĝojn en via cellingvo por aŭskulta praktiko."
+    "audioIncomingMessagesDescription": "Aŭtomate laŭtlegi ricevitajn mesaĝojn en via cellingvo por aŭskulta praktiko.",
+    "readAloudNoVoiceTitle": "Neniu altkvalita {language} voĉo trovita",
+    "readAloudNoVoiceDesktopWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. Chrome kaj Edge kutime inkluzivas altkvalitajn voĉojn.",
+    "readAloudGetChrome": "Akiri Chrome",
+    "readAloudNoVoiceMobileWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. La aplikaĵo Pangea Chat povas uzi la plej bonajn voĉojn de via aparato.",
+    "readAloudGetApp": "Akiri la aplikaĵon",
+    "readAloudNoVoiceIOS": "Via aparato ankoraŭ ne havas altkvalitan {language} voĉon elŝutitan. Elŝutu unu, poste reprovu:",
+    "readAloudNoVoiceIOSSteps": "  • Agordoj\n  • Alirebleco\n  • Parolita Enhavo\n  • Voĉoj\n  • {language}\n  • Elŝutu Plibonigitan aŭ Premium-voĉon",
+    "readAloudNoVoiceAndroid": "Via aparato ankoraŭ ne havas altkvalitan {language} voĉon. Instalu voĉajn datumojn por via tekst-al-parola motoro, poste reprovu.",
+    "readAloudOpenVoiceSettings": "Malfermi voĉajn agordojn"
 }

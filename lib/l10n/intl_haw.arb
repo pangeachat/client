@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Nā Koho",
     "audioChoicesDescription": "Hoʻokani i ka leo no nā koho pane i nā hana hoʻomaʻamaʻa.",
     "audioIncomingMessagesToolName": "Nā Leho E Hiki Mai Ana",
-    "audioIncomingMessagesDescription": "Heluhelu ʻakomi i nā leka i loaʻa me ka leo nui ma kāu ʻōlelo i manaʻo ʻia no ka hoʻomaʻamaʻa hoʻolohe."
+    "audioIncomingMessagesDescription": "Heluhelu ʻakomi i nā leka i loaʻa me ka leo nui ma kāu ʻōlelo i manaʻo ʻia no ka hoʻomaʻamaʻa hoʻolohe.",
+    "readAloudNoVoiceTitle": "ʻAʻohe leo {language} maikaʻi i loaʻa",
+    "readAloudNoVoiceDesktopWeb": "ʻAʻole hāʻawi kēia polokalamu kele pūnaewele i kahi leo {language} maikaʻi, no laila ʻaʻole hiki ke heluhelu maikaʻi ʻia nā leka ma ʻaneʻi. Hoʻokomo pinepine ʻo Chrome a me Edge i nā leo maikaʻi.",
+    "readAloudGetChrome": "E kiʻi iā Chrome",
+    "readAloudNoVoiceMobileWeb": "ʻAʻole hāʻawi kēia polokalamu kele pūnaewele i kahi leo {language} maikaʻi, no laila ʻaʻole hiki ke heluhelu maikaʻi ʻia nā leka ma ʻaneʻi. Hiki i ka polokalamu Pangea Chat ke hoʻohana i nā leo maikaʻi loa o kāu hāmeʻa.",
+    "readAloudGetApp": "E kiʻi i ka polokalamu",
+    "readAloudNoVoiceIOS": "ʻAʻole i hoʻoiho ʻia kahi leo {language} maikaʻi ma kāu hāmeʻa. E hoʻoiho i hoʻokahi, a laila e hoʻāʻo hou:",
+    "readAloudNoVoiceIOSSteps": "  • Nā hoʻonohonoho\n  • Hiki ke komo\n  • ʻIke i ʻōlelo ʻia\n  • Nā leo\n  • {language}\n  • Hoʻoiho i kahi leo Hoʻonui a Premium paha",
+    "readAloudNoVoiceAndroid": "ʻAʻohe leo {language} maikaʻi ma kāu hāmeʻa. E hoʻokomo i ka ʻikepili leo no kāu ʻenekini kikokikona-i-leo, a laila e hoʻāʻo hou.",
+    "readAloudOpenVoiceSettings": "E wehe i nā hoʻonohonoho leo"
 }

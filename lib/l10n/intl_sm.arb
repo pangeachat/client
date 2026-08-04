@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Filifiliga",
     "audioChoicesDescription": "Faʻalogologo i le leo mo filifiliga tali i galuega faʻataʻitaʻi.",
     "audioIncomingMessagesToolName": "Feʻau o loʻo oʻo mai",
-    "audioIncomingMessagesDescription": "Faitau otometi feʻau na maua i lau gagana e aʻoaʻoina mo le faʻataʻitaʻiga faʻalogologo."
+    "audioIncomingMessagesDescription": "Faitau otometi feʻau na maua i lau gagana e aʻoaʻoina mo le faʻataʻitaʻiga faʻalogologo.",
+    "readAloudNoVoiceTitle": "E le'i maua se leo maualuga {language}",
+    "readAloudNoVoiceDesktopWeb": "E le ofoina mai e lenei su'esu'ega se leo maualuga {language}, o lea e le mafai ai ona faitau lelei fe'au iinei. E masani ona aofia ai e le Chrome ma le Edge leo maualuga.",
+    "readAloudGetChrome": "Maua le Chrome",
+    "readAloudNoVoiceMobileWeb": "E le ofoina mai e lenei su'esu'ega se leo maualuga {language}, o lea e le mafai ai ona faitau lelei fe'au iinei. E mafai e le Pangea Chat app ona fa'aoga leo sili ona lelei a lau masini.",
+    "readAloudGetApp": "Maua le app",
+    "readAloudNoVoiceIOS": "E le'i la'uina mai e lau masini se leo maualuga {language}. La'u mai se tasi, ona toe taumafai lea:",
+    "readAloudNoVoiceIOSSteps": "  • Fa'atonu\n  • Avanoa\n  • Mataupu Fetalai\n  • Leo\n  • {language}\n  • La'u mai se leo Fa'aleleia po'o le Premium",
+    "readAloudNoVoiceAndroid": "E le'i maua e lau masini se leo maualuga {language}. Fa'apipi'i fa'amaumauga leo mo lau afi tusitusiga-i-leo, ona toe taumafai lea.",
+    "readAloudOpenVoiceSettings": "Tatala fa'atonuga leo"
 }

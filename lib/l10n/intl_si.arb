@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "තේරීම්",
     "audioChoicesDescription": "පුහුණු ක්‍රියාකාරකම්වලදී පිළිතුරු තේරීම් සඳහා ශ්‍රව්‍ය වාදනය කරන්න.",
     "audioIncomingMessagesToolName": "එන පණිවිඩ",
-    "audioIncomingMessagesDescription": "සවන් දීමේ පුහුණුව සඳහා ලැබුණු පණිවිඩ ස්වයංක්‍රීයව ඔබේ ඉලක්ක භාෂාවෙන් ශබ්ද නඟා කියවන්න."
+    "audioIncomingMessagesDescription": "සවන් දීමේ පුහුණුව සඳහා ලැබුණු පණිවිඩ ස්වයංක්‍රීයව ඔබේ ඉලක්ක භාෂාවෙන් ශබ්ද නඟා කියවන්න.",
+    "readAloudNoVoiceTitle": "උසස් තත්ත්වයේ {language} හඬක් හමු නොවීය",
+    "readAloudNoVoiceDesktopWeb": "මෙම බ්‍රවුසරය උසස් තත්ත්වයේ {language} හඬක් ලබා නොදෙන නිසා, මෙහිදී පණිවිඩ හොඳින් කියවිය නොහැක. Chrome සහ Edge සාමාන්‍යයෙන් උසස් තත්ත්වයේ හඬවල් ඇතුළත් කරයි.",
+    "readAloudGetChrome": "Chrome ලබා ගන්න",
+    "readAloudNoVoiceMobileWeb": "මෙම බ්‍රවුසරය උසස් තත්ත්වයේ {language} හඬක් ලබා නොදෙන නිසා, මෙහිදී පණිවිඩ හොඳින් කියවිය නොහැක. Pangea Chat යෙදුමට ඔබගේ උපාංගයේ හොඳම හඬවල් භාවිතා කළ හැක.",
+    "readAloudGetApp": "යෙදුම ලබා ගන්න",
+    "readAloudNoVoiceIOS": "ඔබගේ උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් තවමත් බාගත කර නොමැත. එකක් බාගත කර, නැවත උත්සාහ කරන්න:",
+    "readAloudNoVoiceIOSSteps": "  • සැකසීම්\n  • ප්‍රවේශ්‍යතාව\n  • කථා කරන අන්තර්ගතය\n  • හඬවල්\n  • {language}\n  • වැඩි දියුණු කළ හෝ වාරික හඬක් බාගත කරන්න",
+    "readAloudNoVoiceAndroid": "ඔබගේ උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් තවමත් නොමැත. ඔබගේ පෙළ-කට-කථන එන්ජිම සඳහා හඬ දත්ත ස්ථාපනය කර, නැවත උත්සාහ කරන්න.",
+    "readAloudOpenVoiceSettings": "හඬ සැකසීම් විවෘත කරන්න"
 }

@@ -9690,5 +9690,14 @@
     "audioChoicesToolName": "Keuzes",
     "audioChoicesDescription": "Speel audio af voor antwoordkeuzes in oefenactiviteiten.",
     "audioIncomingMessagesToolName": "Inkomende berichten",
-    "audioIncomingMessagesDescription": "Lees ontvangen berichten automatisch hardop voor in je doeltaal voor luisteroefeningen."
+    "audioIncomingMessagesDescription": "Lees ontvangen berichten automatisch hardop voor in je doeltaal voor luisteroefeningen.",
+    "readAloudNoVoiceTitle": "Geen hoogwaardige {language}-stem gevonden",
+    "readAloudNoVoiceDesktopWeb": "Deze browser biedt geen hoogwaardige {language}-stem, dus berichten kunnen hier niet goed worden voorgelezen. Chrome en Edge bevatten meestal hoogwaardige stemmen.",
+    "readAloudGetChrome": "Download Chrome",
+    "readAloudNoVoiceMobileWeb": "Deze browser biedt geen hoogwaardige {language}-stem, dus berichten kunnen hier niet goed worden voorgelezen. De Pangea Chat-app kan de beste stemmen van je apparaat gebruiken.",
+    "readAloudGetApp": "Download de app",
+    "readAloudNoVoiceIOS": "Je apparaat heeft nog geen hoogwaardige {language}-stem gedownload. Download er een en probeer het opnieuw:",
+    "readAloudNoVoiceIOSSteps": "  • Instellingen\n  • Toegankelijkheid\n  • Gesproken inhoud\n  • Stemmen\n  • {language}\n  • Download een verbeterde of premium stem",
+    "readAloudNoVoiceAndroid": "Je apparaat heeft nog geen hoogwaardige {language}-stem. Installeer stemgegevens voor je tekst-naar-spraak-engine en probeer het opnieuw.",
+    "readAloudOpenVoiceSettings": "Open steminstellingen"
 }

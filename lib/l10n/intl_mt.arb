@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Għażliet",
     "audioChoicesDescription": "Iddoqq awdjo għall-għażliet tat-tweġibiet f'attivitajiet ta' prattika.",
     "audioIncomingMessagesToolName": "Messaġġi deħlin",
-    "audioIncomingMessagesDescription": "Awtomatikament aqra messaġġi riċevuti b'leħen għoli fil-lingwa fil-mira tiegħek għall-prattika tas-smigħ."
+    "audioIncomingMessagesDescription": "Awtomatikament aqra messaġġi riċevuti b'leħen għoli fil-lingwa fil-mira tiegħek għall-prattika tas-smigħ.",
+    "readAloudNoVoiceTitle": "Ma nstabet l-ebda vuċi ta' kwalità għolja bil-{language}",
+    "readAloudNoVoiceDesktopWeb": "Dan il-browser ma joffrix vuċi ta' kwalità għolja bil-{language}, għalhekk il-messaġġi ma jistgħux jinqraw b'leħen għoli sew hawn. Chrome u Edge normalment jinkludu vuċijiet ta' kwalità għolja.",
+    "readAloudGetChrome": "Ikseb Chrome",
+    "readAloudNoVoiceMobileWeb": "Dan il-browser ma joffrix vuċi ta' kwalità għolja bil-{language}, għalhekk il-messaġġi ma jistgħux jinqraw b'leħen għoli sew hawn. L-app Pangea Chat tista' tuża l-aqwa vuċijiet tat-tagħmir tiegħek.",
+    "readAloudGetApp": "Ikseb l-app",
+    "readAloudNoVoiceIOS": "It-tagħmir tiegħek għad m'għandux vuċi ta' kwalità għolja bil-{language} imniżżla. Niżżel waħda, imbagħad erġa' pprova:",
+    "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Niżżel vuċi Mtejba jew Premium",
+    "readAloudNoVoiceAndroid": "It-tagħmir tiegħek għad m'għandux vuċi ta' kwalità għolja bil-{language}. Installa d-data tal-vuċi għall-magna text-to-speech tiegħek, imbagħad erġa' pprova.",
+    "readAloudOpenVoiceSettings": "Iftaħ is-settings tal-vuċi"
 }

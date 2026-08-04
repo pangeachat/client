@@ -9775,5 +9775,14 @@
     "audioChoicesToolName": "Wybory",
     "audioChoicesDescription": "Odtwarzaj dźwięk dla opcji odpowiedzi w ćwiczeniach praktycznych.",
     "audioIncomingMessagesToolName": "Wiadomości przychodzące",
-    "audioIncomingMessagesDescription": "Automatycznie czytaj otrzymane wiadomości na głos w języku docelowym, aby ćwiczyć słuchanie."
+    "audioIncomingMessagesDescription": "Automatycznie czytaj otrzymane wiadomości na głos w języku docelowym, aby ćwiczyć słuchanie.",
+    "readAloudNoVoiceTitle": "Nie znaleziono wysokiej jakości głosu {language}",
+    "readAloudNoVoiceDesktopWeb": "Ta przeglądarka nie oferuje wysokiej jakości głosu {language}, więc wiadomości nie mogą być tu dobrze odczytywane. Chrome i Edge zazwyczaj zawierają wysokiej jakości głosy.",
+    "readAloudGetChrome": "Pobierz Chrome",
+    "readAloudNoVoiceMobileWeb": "Ta przeglądarka nie oferuje wysokiej jakości głosu {language}, więc wiadomości nie mogą być tu dobrze odczytywane. Aplikacja Pangea Chat może używać najlepszych głosów Twojego urządzenia.",
+    "readAloudGetApp": "Pobierz aplikację",
+    "readAloudNoVoiceIOS": "Twoje urządzenie nie ma jeszcze pobranego wysokiej jakości głosu {language}. Pobierz go, a następnie spróbuj ponownie:",
+    "readAloudNoVoiceIOSSteps": "  • Ustawienia\n  • Dostępność\n  • Treści mówione\n  • Głosy\n  • {language}\n  • Pobierz głos ulepszony lub premium",
+    "readAloudNoVoiceAndroid": "Twoje urządzenie nie ma jeszcze wysokiej jakości głosu {language}. Zainstaluj dane głosowe dla swojego silnika zamiany tekstu na mowę, a następnie spróbuj ponownie.",
+    "readAloudOpenVoiceSettings": "Otwórz ustawienia głosu"
 }

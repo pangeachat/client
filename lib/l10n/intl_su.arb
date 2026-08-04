@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Pilihan",
     "audioChoicesDescription": "Putar audio pikeun pilihan jawaban dina kagiatan latihan.",
     "audioIncomingMessagesToolName": "Pesen asup",
-    "audioIncomingMessagesDescription": "Otomatis maca pesen anu ditampi kalayan tarik dina basa target anjeun pikeun latihan ngupingkeun."
+    "audioIncomingMessagesDescription": "Otomatis maca pesen anu ditampi kalayan tarik dina basa target anjeun pikeun latihan ngupingkeun.",
+    "readAloudNoVoiceTitle": "Teu kapanggih sora {language} nu kualitasna luhur",
+    "readAloudNoVoiceDesktopWeb": "Panyungsi ieu teu nyadiakeun sora {language} nu kualitasna luhur, jadi pesen moal bisa dibacakeun kalawan hadé di dieu. Chrome jeung Edge biasana nyadiakeun sora nu kualitasna luhur.",
+    "readAloudGetChrome": "Meunangkeun Chrome",
+    "readAloudNoVoiceMobileWeb": "Panyungsi ieu teu nyadiakeun sora {language} nu kualitasna luhur, jadi pesen moal bisa dibacakeun kalawan hadé di dieu. Aplikasi Pangea Chat bisa ngagunakeun sora panghadéna dina alat anjeun.",
+    "readAloudGetApp": "Meunangkeun aplikasi",
+    "readAloudNoVoiceIOS": "Alat anjeun can boga sora {language} nu kualitasna luhur nu diunduh. Unduh heula, tuluy cobian deui:",
+    "readAloudNoVoiceIOSSteps": "  • Setélan\n  • Aksesibilitas\n  • Kontén Diucapkeun\n  • Sora\n  • {language}\n  • Unduh sora Enhanced atawa Premium",
+    "readAloudNoVoiceAndroid": "Alat anjeun can boga sora {language} nu kualitasna luhur. Pasang data sora pikeun mesin téks-ka-sora anjeun, tuluy cobian deui.",
+    "readAloudOpenVoiceSettings": "Buka setélan sora"
 }

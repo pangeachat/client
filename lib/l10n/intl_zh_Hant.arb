@@ -9796,5 +9796,14 @@
     "audioChoicesToolName": "選項",
     "audioChoicesDescription": "在練習活動中播放答案選項的音訊。",
     "audioIncomingMessagesToolName": "接收訊息",
-    "audioIncomingMessagesDescription": "自動朗讀以您的目標語言接收的訊息，以進行聽力練習。"
+    "audioIncomingMessagesDescription": "自動朗讀以您的目標語言接收的訊息，以進行聽力練習。",
+    "readAloudNoVoiceTitle": "找不到高品質的{language}語音",
+    "readAloudNoVoiceDesktopWeb": "此瀏覽器不提供高品質的{language}語音，因此無法在此處良好地朗讀訊息。Chrome 和 Edge 通常包含高品質的語音。",
+    "readAloudGetChrome": "取得 Chrome",
+    "readAloudNoVoiceMobileWeb": "此瀏覽器不提供高品質的{language}語音，因此無法在此處良好地朗讀訊息。Pangea Chat 應用程式可以使用您裝置上最好的語音。",
+    "readAloudGetApp": "取得應用程式",
+    "readAloudNoVoiceIOS": "您的裝置尚未下載高品質的{language}語音。請下載一個，然後再試一次：",
+    "readAloudNoVoiceIOSSteps": "  • 設定\n  • 輔助使用\n  • 語音內容\n  • 語音\n  • {language}\n  • 下載增強型或進階語音",
+    "readAloudNoVoiceAndroid": "您的裝置尚未有高品質的{language}語音。請為您的文字轉語音引擎安裝語音資料，然後再試一次。",
+    "readAloudOpenVoiceSettings": "開啟語音設定"
 }

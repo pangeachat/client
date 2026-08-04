@@ -2072,5 +2072,14 @@
     "audioChoicesToolName": "Izbori",
     "audioChoicesDescription": "Reproducirajte audiozapis za opcije odgovora u vježbama.",
     "audioIncomingMessagesToolName": "Dolazne poruke",
-    "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na vašem ciljnom jeziku za vježbanje slušanja."
+    "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na vašem ciljnom jeziku za vježbanje slušanja.",
+    "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
+    "readAloudNoVoiceDesktopWeb": "Ovaj preglednik ne nudi visokokvalitetan glas za {language}, tako da se poruke ovdje ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
+    "readAloudGetChrome": "Preuzmite Chrome",
+    "readAloudNoVoiceMobileWeb": "Ovaj preglednik ne nudi visokokvalitetan glas za {language}, tako da se poruke ovdje ne mogu dobro čitati naglas. Aplikacija Pangea Chat može koristiti najbolje glasove vašeg uređaja.",
+    "readAloudGetApp": "Preuzmite aplikaciju",
+    "readAloudNoVoiceIOS": "Vaš uređaj još nema preuzet visokokvalitetan glas za {language}. Preuzmite ga, a zatim pokušajte ponovo:",
+    "readAloudNoVoiceIOSSteps": "  • Postavke\n  • Pristupačnost\n  • Izgovoreni sadržaj\n  • Glasovi\n  • {language}\n  • Preuzmite poboljšani ili premium glas",
+    "readAloudNoVoiceAndroid": "Vaš uređaj još nema visokokvalitetan glas za {language}. Instalirajte podatke o glasu za vašu tekst-u-govor mašinu, a zatim pokušajte ponovo.",
+    "readAloudOpenVoiceSettings": "Otvori postavke glasa"
 }
