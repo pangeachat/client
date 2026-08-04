@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
@@ -666,7 +667,7 @@ class _WorldMapViewState extends State<WorldMapView> {
         return (
           participants:
               joinableActivity?.largeCardParticipants ??
-              discoveredSummary?.largeCardParticipants() ??
+              discoveredSummary?.largeCardParticipants ??
               const <LargeCardParticipant>[],
           openSlots:
               joinableActivity?.numRemainingRoles ??
