@@ -178,9 +178,9 @@ badge, and the same-section analytics block — live in
   restart starts fresh.
 - **One session at a time**, across vocab and grammar. Starting a new session
   while an unfinished one is held confirms first, then replaces it.
-- **A session ends three ways**: finishing all exercises (completion view,
+- **A session ends four ways**: finishing all exercises (completion view,
   XP awarded), the explicit **End session** control (confirms, discards
-  progress), or being replaced by a newly started session (confirms). Ending
+  progress), being replaced by a newly started session (confirms), or by automatically closing after [AnalyticsPracticeConstants.idleTimeout](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart) inactivity. Ending
   clears the holder and the cluster badge.
 - **Elapsed time is wall-clock from session start**, not time-on-screen. The
   timer keeps counting while the panel is closed — an anti-cheat mechanism in

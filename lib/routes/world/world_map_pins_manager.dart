@@ -4,6 +4,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
@@ -15,14 +17,62 @@ import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/quests_client_extension.dart';
 import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
-import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_signals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+
+/// The pure rule behind [WorldMapPinsManager.loadSessionParticipants]'s room
+/// selection (#8045).
+///
+/// A room never filled ([everFilled] false) earns a refill while its seats are
+/// still resting on unloaded membership ([hasUnresolvedSeats]) — the startup
+/// case, where no `m.room.member` event has been read back into room state at
+/// all. A room already filled earns one only when its joined-member count has
+/// *moved* ([filledAtJoinedCount] vs [joinedCount]): sync merges the room
+/// summary even for the partial rooms whose member events it skips, so a moved
+/// count is real evidence that someone joined or left since. Comparing against
+/// the count at fill time — rather than asking whether the loaded list looks
+/// complete — is what keeps this loop-free: a room whose count the server
+/// reports inconsistently re-qualifies once and then never again.
+@visibleForTesting
+bool needsParticipantRefill({
+  required bool everFilled,
+  required int? filledAtJoinedCount,
+  required int? joinedCount,
+  required bool hasUnresolvedSeats,
+}) => everFilled ? filledAtJoinedCount != joinedCount : hasUnresolvedSeats;
+
+/// Minimum spacing between empty-cache self-heal rebuilds of the objective
+/// cache. A set-change rebuild (course join/leave) is never subject to it —
+/// only the "resolved nothing while courses exist" retry, which would
+/// otherwise re-fire on every rate-limited sync for a learner whose joined
+/// courses are all unresolvable (e.g. orphaned quest plans, #8083).
+const Duration kEmptyObjectiveCacheRetryCooldown = Duration(seconds: 30);
+
+/// The pure rule behind [WorldMapPinsManager.shouldRebuildObjectiveCache]
+/// (#8083). A set change (join/leave) rebuilds immediately; the empty-cache
+/// self-heal retries only once [kEmptyObjectiveCacheRetryCooldown] has passed
+/// since the last completed rebuild ([lastRebuildAt] null means none has run,
+/// so the retry is due). Never while a rebuild is already in flight.
+@visibleForTesting
+bool shouldRebuildObjectiveCacheNow({
+  required bool rebuilding,
+  required bool setChanged,
+  required bool emptyButHasCourses,
+  required DateTime? lastRebuildAt,
+  required DateTime now,
+}) {
+  if (rebuilding) return false;
+  if (setChanged) return true;
+  if (!emptyButHasCourses) return false;
+  return lastRebuildAt == null ||
+      now.difference(lastRebuildAt) >= kEmptyObjectiveCacheRetryCooldown;
+}
 
 class WorldMapPinsManager {
   static final ValueNotifier<bool> notifier = ValueNotifier<bool>(false);
@@ -37,7 +87,13 @@ class WorldMapPinsManager {
 
   Map<String, PinSignals> _signals = {};
   Map<String, int> _userStars = {};
-  Map<String, MapCompletionFilter> _completion = {};
+
+  // Star-tier inputs, precomputed once per sync (each a single rooms pass) so
+  // resolving a pin's display state / star level is an O(roles) lookup rather
+  // than an O(rooms) rescan per pin (world-map.instructions.md, "Goal Progress").
+  Map<String, List<OwnRoleAwards>> _ownRoleAwards = {};
+  Map<String, Set<String>> _completedRoles = {};
+  Map<String, Set<String>> _allRoles = {};
 
   /// The shared next-Mission resolution the relevance band ranks toward, resolved
   /// from the objective cache's outlines + [_userStars]. Recomputed where its
@@ -59,6 +115,12 @@ class WorldMapPinsManager {
   /// Guards against overlapping objective-cache rebuilds (and stops a
   /// persistently-failing course from rebuilding on every single sync).
   bool _objectiveCacheRebuilding = false;
+
+  /// When the last objective-cache rebuild completed — the empty-cache
+  /// self-heal retry waits [kEmptyObjectiveCacheRetryCooldown] from here, so a
+  /// learner whose joined courses all fail to resolve doesn't refetch (and
+  /// re-log) on every rate-limited sync (#8083).
+  DateTime? _lastObjectiveCacheRebuildAt;
 
   /// The course-plan id [_scopedCourseOutline] was resolved for, so a re-scope to
   /// the same course doesn't re-fetch and a re-scope away clears it.
@@ -89,6 +151,28 @@ class WorldMapPinsManager {
   /// (the learner is not a member). Folded into [Client.deriveActivitySignals] as
   /// extra facts. See world-map.instructions.md ("Discovering joinable sessions").
   List<ActivitySessionFacts> _discoveredSessionFacts = const [];
+
+  /// Room id → the joined-member count its member list was last filled at, so
+  /// [loadSessionParticipants] sweeps a room once rather than on every sync
+  /// tick. A *changed* count re-qualifies it: sync merges the room summary even
+  /// for the partial rooms whose member events it skips, so a count that no
+  /// longer matches means someone joined or left since the fill. An unchanged
+  /// count never re-triggers, so a room the server reports inconsistently can't
+  /// put the sweep in a loop.
+  final Map<String, int?> _participantsLoadedAtCount = {};
+
+  /// Guards against overlapping member-refill sweeps.
+  bool _loadingParticipants = false;
+
+  /// Epoch ms of the last member-refill sweep. A filled room is skipped by
+  /// [_participantsLoadedAtCount], so this only paces retries of rooms the
+  /// sweep failed to fill and the drain of a long backlog.
+  int _lastParticipantLoadMs = 0;
+
+  /// Rooms filled per sweep. Most fills resolve from the local database with no
+  /// network at all, but a learner with a long activity history shouldn't do
+  /// them all at once; the sync listener drains the remainder.
+  static const int _participantLoadBatch = 25;
 
   /// Course members available to fill activity roles in the currently
   /// course-scoped map (the start page's invite math via
@@ -125,8 +209,31 @@ class WorldMapPinsManager {
     bool Function(QuestActivityCard) filter,
   ) => _pins.where(filter).toList();
 
-  MapCompletionFilter? activityCompletionStatus(String activityId) =>
-      _completion[activityId];
+  /// The learner's star tier for [card], resolved hydration-free against the
+  /// card's current thin goals, falling back to the room-derived path for cards
+  /// without thin goals (world-map.instructions.md, "Goal Progress"). Reuses the
+  /// precomputed star-input maps so it never rescans rooms.
+  ActivityStarLevel starLevelOf(QuestActivityCard card) {
+    final id = card.activityId;
+    return starLevelForCard(card, _ownRoleAwards[id] ?? const []) ??
+        starLevelFor(
+          _completedRoles[id] ?? const {},
+          _allRoles[id] ?? card.roleIds,
+        );
+  }
+
+  /// The activity's resolved display [ActivityPinState]: a live-session state
+  /// (from [_signals]) wins the colour, else the completed star tier layers in
+  /// `inProgress`, else the plain `available` default. The single source shared
+  /// by the Status filter ([WorldMapFilterState.include]) and the pin renderer
+  /// so the two can never drift (world-map.instructions.md, "Pin state").
+  ActivityPinState displayStateOf(QuestActivityCard card) {
+    final live = _signals[card.activityId]?.state;
+    if (live != null) return live;
+    return starLevelOf(card) == ActivityStarLevel.none
+        ? ActivityPinState.available
+        : ActivityPinState.inProgress;
+  }
 
   int? activityStarsEarned(String activityId) => _userStars[activityId];
 
@@ -194,22 +301,104 @@ class WorldMapPinsManager {
     );
   }
 
+  /// Whether [room] earns a member refill this sweep — the Matrix-reading shell
+  /// over [needsParticipantRefill].
+  bool _needsParticipantRefill(Room room) => needsParticipantRefill(
+    everFilled: _participantsLoadedAtCount.containsKey(room.id),
+    filledAtJoinedCount: _participantsLoadedAtCount[room.id],
+    joinedCount: room.summary.mJoinedMemberCount,
+    hasUnresolvedSeats: room.hasUnresolvedSeats,
+  );
+
+  /// Refill the member lists behind the map's seat math and participant rows.
+  ///
+  /// `m.room.member` events never ride the SDK's preloaded-state path (they
+  /// live in their own store and return to room state only through
+  /// [Room.requestParticipants]), so at startup `Room.getParticipants()` is
+  /// empty for every session room the learner hasn't opened this session. That
+  /// left large cards rendering on guesses (#8045): the avatar row read empty,
+  /// and [Room.assignedRoles] scored every seat on the "unknown membership =
+  /// still occupied" fallback ([roleHolderVacated]) rather than on evidence —
+  /// so the pending/active split and the seat row were both decided without the
+  /// facts they are supposed to read.
+  ///
+  /// Cheap by construction: [Room.requestParticipants] refills from the local
+  /// database first and reaches the network only when that is still short of
+  /// the room's summary counts, and a room is swept once until its member count
+  /// moves ([_needsParticipantRefill]). Returns true when it filled anything,
+  /// so the caller re-derives signals.
+  Future<bool> loadSessionParticipants(Client client) async {
+    if (_loadingParticipants) return false;
+    final nowMs = DateTime.now().millisecondsSinceEpoch;
+    if (nowMs - _lastParticipantLoadMs < 3000) return false;
+
+    final pending = client.rooms
+        .where(
+          (r) =>
+              r.membership == Membership.join &&
+              r.activityId != null &&
+              // A finished session produces no live pin state and renders no
+              // participant row, so its seats never reach the screen.
+              !r.hasCompletedRole &&
+              _needsParticipantRefill(r),
+        )
+        .take(_participantLoadBatch)
+        .toList();
+    if (pending.isEmpty) return false;
+
+    _loadingParticipants = true;
+    _lastParticipantLoadMs = nowMs;
+    var filled = false;
+    try {
+      for (final room in pending) {
+        try {
+          // `cache: true` is load-bearing: it defaults to `encrypted`, and
+          // without it the SDK returns the members without writing them into
+          // room state — leaving `getParticipants()`, which the seat math and
+          // the avatar row actually read, exactly as empty as before.
+          await room.requestParticipants(
+            const [Membership.join, Membership.invite, Membership.knock],
+            false,
+            true,
+          );
+          _participantsLoadedAtCount[room.id] = room.summary.mJoinedMemberCount;
+          filled = true;
+        } catch (e, s) {
+          // A room that won't load its members keeps the fallback seats it
+          // already had; the throttle above paces the retry.
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            m: 'session participant refill failed',
+            data: {'roomId': room.id},
+          );
+        }
+      }
+    } finally {
+      _loadingParticipants = false;
+    }
+    return filled;
+  }
+
   /// Discover open sessions the learner is not yet in — BOTH reads of
   /// world-map.instructions.md ("Discovering joinable sessions"):
   ///
-  ///  * **coursemate sessions** — for each joined course space, enumerate its
-  ///    activity-session children from the **server-side** space hierarchy;
-  ///    these are not in `client.rooms`, so the hierarchy is the only way the
-  ///    map sees them;
+  ///  * **coursemate sessions** — one batched read of the joined course spaces
+  ///    against the space-scoped activity_session_previews module, which
+  ///    returns previews for only their activity-session children, complete
+  ///    regardless of how many rooms a course holds (#7982); these rooms are
+  ///    not in `client.rooms`, so the server is the only way the map sees them;
   ///  * **invited sessions** — session rooms the learner was invited to
   ///    (any course, or none): they ARE in `client.rooms`, but the invite's
   ///    stripped state carries no `pangea.activity_roles`, so seats read from
-  ///    local state are phantoms (#7488) — only a preview is accurate.
+  ///    local state are phantoms (#7488) — only a preview is accurate. The
+  ///    space-scoped module can't see them, so they keep the per-room
+  ///    room_preview read.
   ///
-  /// Each candidate is room_preview'd and emits a joinable fact while it is
-  /// live, unfinished, and has a free seat. Best-effort, networked, and
-  /// throttled — triggered off sync ticks AND camera settles (panning to a new
-  /// viewport should rank against current live facts, not wait for a sync).
+  /// A previewed candidate emits a joinable fact while it is live, unfinished,
+  /// and has a free seat. Best-effort, networked, and throttled — triggered off
+  /// sync ticks AND camera settles (panning to a new viewport should rank
+  /// against current live facts, not wait for a sync).
   Future<void> discoverCoursemateSessions(Client client) async {
     if (_discovering) return;
     final invitedSessionIds = client.invitedActivitySessionRoomIds;
@@ -220,19 +409,61 @@ class WorldMapPinsManager {
     _discovering = true;
     _lastDiscoveryMs = nowMs;
     try {
-      // Session rooms across the learner's joined courses, from the server
-      // hierarchy (shared with the activity start page's join list). Rooms the
-      // learner is already in flow through the client.rooms path, so drop those.
-      final candidateIds = <String>{...invitedSessionIds};
-      for (final id in await client.courseActivitySessionRoomIds()) {
-        final existing = client.getRoomById(id);
-        if (existing != null && existing.membership == Membership.join) {
-          continue;
-        }
-        candidateIds.add(id);
-      }
+      final courseSpaceIds = client.joinedCourseRooms.map((r) => r.id).toList();
+      // The two reads fail independently — a module error must not cost this
+      // cycle's invited previews (nor vice versa). A FAILED course read leaves
+      // [courseSessions] null so the clear branch below is skipped: only a
+      // successful read that finds nothing may drop last-known facts.
+      Map<String, RoomSummaryResponse>? courseSessions;
+      Map<String, RoomSummaryResponse> invitedPreviews = const {};
+      await Future.wait([
+        () async {
+          if (courseSpaceIds.isEmpty) {
+            courseSessions = const {};
+            return;
+          }
+          try {
+            courseSessions = await client.loadActivitySessionPreviews(
+              courseSpaceIds,
+              l1Code: null,
+            );
+          } catch (e, s) {
+            ErrorHandler.logError(
+              e: e,
+              s: s,
+              m: 'activity_session_previews read failed',
+              data: const {},
+            );
+          }
+        }(),
+        () async {
+          if (invitedSessionIds.isEmpty) return;
+          try {
+            invitedPreviews = await client.loadRoomSummaries(
+              invitedSessionIds.toList(),
+              l1Code: null,
+            );
+          } catch (e, s) {
+            ErrorHandler.logError(
+              e: e,
+              s: s,
+              m: 'invited-session preview read failed',
+              data: const {},
+            );
+          }
+        }(),
+      ]);
+      // Rooms the learner is already in flow through the client.rooms path, so
+      // drop those from the module's course-wide result.
+      final summaries = <String, RoomSummaryResponse>{
+        for (final entry in (courseSessions ?? const {}).entries)
+          if (client.getRoomById(entry.key)?.membership != Membership.join)
+            entry.key: entry.value,
+        ...invitedPreviews,
+      };
 
-      if (candidateIds.isEmpty) {
+      if (summaries.isEmpty) {
+        if (courseSessions == null) return; // failed read — keep stale facts
         if (_discoveredSessionFacts.isNotEmpty) {
           _discoveredSessionFacts = const [];
         }
@@ -245,10 +476,6 @@ class WorldMapPinsManager {
       // A session is surfaced as joinable while it is live and not finished.
       // Precise open-seat filtering (the activity's total roles live on the CMS
       // plan, which the preview does not carry for v3) is a later refinement.
-      final summaries = await client.loadRoomSummaries(
-        candidateIds.toList(),
-        l1Code: null,
-      );
       // Group every previewed session by activity id so the activity start page
       // can reuse this fetch instead of round-tripping again (it applies its own
       // open-to-join filter). See DiscoveredSessionsCache.
@@ -307,11 +534,12 @@ class WorldMapPinsManager {
       extraFacts: _discoveredSessionFacts,
     );
     final userStars = client.userStarsByActivity;
-    final completion = client.activityCompletionStatuses;
 
     _signals = signals;
     _userStars = userStars;
-    _completion = completion;
+    _ownRoleAwards = client.ownRoleAwardsByActivity;
+    _completedRoles = client.completedRolesByActivity;
+    _allRoles = client.roleIdsByActivity;
     resolveProgression();
   }
 
@@ -333,6 +561,9 @@ class WorldMapPinsManager {
   /// Guarded so overlapping syncs don't stack rebuilds. A course whose outline
   /// fails to resolve is logged (not silently dropped): an empty cache means no
   /// relevance banding and a fail-open gate, which is otherwise invisible.
+  /// Logged once per course per session — the self-heal retry re-attempts the
+  /// same failing course for as long as the map is open, and each repeat
+  /// carries no new signal (#8083).
   Future<void> rebuildObjectiveCache(Client client) async {
     if (_objectiveCacheRebuilding) return;
     _objectiveCacheRebuilding = true;
@@ -342,7 +573,8 @@ class WorldMapPinsManager {
           .toList();
       await _objectiveCache.rebuildFromJoinedCourses(
         client,
-        onError: (uuid, e, s) => ErrorHandler.logError(
+        onError: (uuid, e, s) => ErrorHandler.logErrorOnce(
+          key: 'course-outline-resolve:$uuid',
           e: e,
           s: s,
           m: 'JoinedObjectiveCache: course outline failed to resolve',
@@ -353,6 +585,7 @@ class WorldMapPinsManager {
       resolveProgression(); // re-resolve the band with the loaded outlines
     } finally {
       _objectiveCacheRebuilding = false;
+      _lastObjectiveCacheRebuildAt = DateTime.now();
     }
   }
 
@@ -360,10 +593,12 @@ class WorldMapPinsManager {
   /// last build, or when it resolved nothing while courses exist (the rooms or
   /// their outlines weren't ready at the initial build, or a read transiently
   /// failed). Idempotent for an unchanged, already-populated set, so it's safe on
-  /// every sync; the in-flight guard keeps a persistently-failing course from
-  /// rebuilding more than once at a time, and it self-heals once the data is fixed.
+  /// every sync; the in-flight guard keeps overlapping rebuilds from stacking,
+  /// the empty-cache retry is paced by [kEmptyObjectiveCacheRetryCooldown] so a
+  /// persistently-failing course isn't refetched on every sync, and it
+  /// self-heals once the data is fixed (which is why [QuestRepo.outline] must
+  /// never cache errors — see its cache doc, #8083).
   bool shouldRebuildObjectiveCache(Client client) {
-    if (_objectiveCacheRebuilding) return false;
     final uuids = client.joinedCourseRooms
         .map((r) => r.coursePlan!.uuid)
         .toSet();
@@ -372,8 +607,13 @@ class WorldMapPinsManager {
         uuids.length != _objectiveCacheUuids.length ||
         !uuids.containsAll(_objectiveCacheUuids);
 
-    final emptyButHasCourses = _objectiveCache.ids.isEmpty && uuids.isNotEmpty;
-    return setChanged || emptyButHasCourses;
+    return shouldRebuildObjectiveCacheNow(
+      rebuilding: _objectiveCacheRebuilding,
+      setChanged: setChanged,
+      emptyButHasCourses: _objectiveCache.ids.isEmpty && uuids.isNotEmpty,
+      lastRebuildAt: _lastObjectiveCacheRebuildAt,
+      now: DateTime.now(),
+    );
   }
 
   /// Resolve the viewed course's outline for a course-scoped map so the band

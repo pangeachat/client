@@ -44,11 +44,19 @@ class GrammarErrorRequestInfo {
   final String eventID;
   final String translation;
 
+  /// The message as it was actually sent — every accepted writing-assistance
+  /// correction applied. The example sentence is rendered off this, not off the
+  /// choreo step's own text, which only carries the corrections made up to that
+  /// step and so can still read as L1 (#8044). Null on sessions restored from
+  /// storage that predate this field; the generator falls back in that case.
+  final String? sentText;
+
   const GrammarErrorRequestInfo({
     required this.choreo,
     required this.stepIndex,
     required this.eventID,
     required this.translation,
+    this.sentText,
   });
 
   Map<String, dynamic> toJson() {
@@ -57,6 +65,7 @@ class GrammarErrorRequestInfo {
       'step_index': stepIndex,
       'event_id': eventID,
       'translation': translation,
+      'sent_text': sentText,
     };
   }
 
@@ -66,6 +75,7 @@ class GrammarErrorRequestInfo {
       stepIndex: json['step_index'] as int,
       eventID: json['event_id'] as String,
       translation: json['translation'] as String,
+      sentText: json['sent_text'] as String?,
     );
   }
 }

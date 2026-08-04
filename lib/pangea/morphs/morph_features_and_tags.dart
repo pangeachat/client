@@ -24,23 +24,30 @@ class MorphFeaturesAndTags {
 
   factory MorphFeaturesAndTags.fromGrammarConstructsResponse({
     required GrammarConstructsResponse response,
+    bool applyDisplayFilter = true,
+    String? targetLanguage,
+    String? userL1,
   }) {
     final List<MorphFeatureTags> sortedFeatures = [];
     for (final feature in response.features) {
       final tags = List<GrammarTag>.from(
         feature.tags,
-      ).where((t) => t.display).toList();
+      ).where((t) => !applyDisplayFilter || t.display).toList();
 
       tags.sort((a, b) => a.sequencePosition.compareTo(b.sequencePosition));
       sortedFeatures.add(MorphFeatureTags(feature: feature, tags: tags));
     }
     return MorphFeaturesAndTags(
-      targetLanguage: response.targetLanguage,
-      userL1: response.userL1,
+      targetLanguage: targetLanguage ?? response.targetLanguage,
+      userL1: userL1 ?? response.userL1,
       features: sortedFeatures,
     );
   }
 
+  /// Offline fallback. The default bundle is English-targeted, so its
+  /// `display` flags only describe English — filtering by them for another L2
+  /// hides real grammar (Russian `Case=Ins`). Non-English L2s get the
+  /// unfiltered superset until the server bundle loads (#2931).
   factory MorphFeaturesAndTags.defaultFeaturesAndTags({
     required String targetLanguage,
     required String userL1,
@@ -48,7 +55,13 @@ class MorphFeaturesAndTags {
     response: GrammarConstructsResponse.fromJson(
       defaultGrammarConstructsResponse,
     ),
+    applyDisplayFilter: _isEnglish(targetLanguage),
+    targetLanguage: targetLanguage,
+    userL1: userL1,
   );
+
+  static bool _isEnglish(String languageCode) =>
+      languageCode.split(RegExp(r'[-_]')).first.toLowerCase() == 'en';
 
   String get _langKey => "$_targetLanguage-$_userL1";
 

@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-07-30 15:16:45.358123",
+    "@@last_modified": "2026-08-04 09:29:21.714279",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -8356,16 +8356,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Аўтаматычнае выдзяленне аўдыяпаведамленняў",
-    "selectAudioMessagesOnPlayDescription": "Аўтаматычна выдзяляць аўдыяпаведамленні падчас прайгравання",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Аналіз навучання",
     "@learningAnalytics": {
         "type": "String",
@@ -9120,7 +9110,6 @@
     "browsePublicCourses": "Прагляд публічных курсаў",
     "editProfile": "Рэдагаваць профіль",
     "mapSearchHint": "Шукаць актыўнасці",
-    "mapSearchNoResults": "Супадзенняў не знойдзена",
     "mapFilterAllLanguages": "Усе мовы",
     "mapFilterNotStarted": "Не пачата",
     "mapFilterInProgress": "У працэсе",
@@ -9129,7 +9118,6 @@
     "activityTypeConversation": "Размова",
     "playAgain": "Пагуляць яшчэ раз",
     "reviewActivity": "Агляд",
-    "mapEmptyInView": "Тут нічога няма на вашым узроўні або мове. Распашыце фільтры або аддаляйцеся.",
     "welcomeToPangeaChat": "Сардэчна запрашаем у Pangea Chat",
     "claimTrial": "Атрымаць ваш бясплатны перыяд",
     "thanksForSigningUp": "Дзякуй за рэгістрацыю! Вось",
@@ -9200,10 +9188,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9233,10 +9217,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9457,7 +9437,6 @@
     "analyticsAndSettingsLabel": "Аналітыка і параметры налад",
     "searchActivitiesLabel": "Пошук дзейнасцяў на карце",
     "filteredActivitiesLabel": "Фільтраваны спіс дзейнасцяў",
-    "activityFilterButtonsLabel": "Кнопкі фільтрацыі па мове, складанасці і прагрэсу",
     "mapZoomLabel": "Кіраванне маштабам карты",
     "activityMapLabel": "Карта дзейнасцяў",
     "@navOptionsLabel": {
@@ -9477,10 +9456,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9715,5 +9690,24 @@
     "activityRatingMeterLabel": "{percent}% станоўчых ({count, plural, =1{1 ацэнка} other{{count} ацэнак}})",
     "newActivityBadge": "НОВАЕ",
     "exitVocabPracticeSession": "Ваш бягучы прагрэс у практыцы слоўнікавага запасу не будзе захаваны.",
-    "exitGrammarPracticeSession": "Ваш бягучы прагрэс у практыцы граматыкі не будзе захаваны."
+    "exitGrammarPracticeSession": "Ваш бягучы прагрэс у практыцы граматыкі не будзе захаваны.",
+    "autoReadAloudMessagesToolName": "Аўтаматычна чытаць услых усе атрыманыя паведамленні",
+    "autoReadAloudMessagesDescription": "Калі паведамленне атрымана, голас прылады будзе выкарыстаны для чытання паведамлення ўслых для практыкі праслухоўвання.",
+    "activityFilterButtonsLabel": "Кнопкі фільтра ўзроўню, гульцоў і статусу",
+    "mapFilterAllLevels": "Усе ўзроўні",
+    "mapFilterAllPlayers": "Усе гульцы",
+    "mapFilterAllStatuses": "Усе статусы",
+    "mapFiltersShow": "Паказаць фільтры",
+    "mapFiltersHide": "Схаваць фільтры",
+    "mapStatusAvailable": "Даступна",
+    "mapStatusOngoing": "Працягваецца",
+    "mapStatusWaiting": "Чакае",
+    "mapStatusOpenToJoin": "Адкрыта для далучэння",
+    "mapMatchesOffscreen": "Ёсць супадзенні па-за вашым полем зроку. Паменшыце маштаб, каб убачыць іх.",
+    "mapFiltersHideMatches": "Вашы фільтры хаваюць усе супадзенні. Пашырце пошук, каб убачыць іх.",
+    "mapNoSearchMatches": "Няма дзеянняў, якія адпавядаюць вашаму пошуку.",
+    "mapNoActivitiesArea": "Няма дзеянняў у гэтай вобласці.",
+    "practiceSessionTimedOut": "Ваша практычная сесія скончылася праз {minutes} хвілін без актыўнасці.",
+    "autocorrectMobileOnly": "Толькі мабільны",
+    "autocorrectMobileOnlyWarning": "Аўтавыпраўленне даступна толькі ў мабільнай праграме."
 }

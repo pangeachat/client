@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-30 15:16:46.996835",
+    "@@last_modified": "2026-08-04 09:29:23.187820",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -9208,16 +9208,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Awtomatikong i-highlight ang mga mensaheng audio",
-    "selectAudioMessagesOnPlayDescription": "Awtomatikong i-highlight ang mga mensaheng audio kapag pinatugtog",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Pagsusuri ng pagkatuto",
     "@learningAnalytics": {
         "type": "String",
@@ -9972,7 +9962,6 @@
     "browsePublicCourses": "Mag-browse ng mga pampublikong kurso",
     "editProfile": "I-edit ang profile",
     "mapSearchHint": "Maghanap ng mga aktibidad",
-    "mapSearchNoResults": "Walang tugma sa view",
     "mapFilterAllLanguages": "Lahat ng wika",
     "mapFilterNotStarted": "Hindi pa nagsimula",
     "mapFilterInProgress": "Nasa proseso",
@@ -9981,7 +9970,6 @@
     "activityTypeConversation": "Usapan",
     "playAgain": "Maglaro muli",
     "reviewActivity": "Suriin",
-    "mapEmptyInView": "Walang nandito sa iyong antas o wika. Palawakin ang iyong mga filter o mag-zoom out.",
     "welcomeToPangeaChat": "Maligayang pagdating sa Pangea Chat",
     "claimTrial": "Kunin ang iyong pagsubok",
     "thanksForSigningUp": "Salamat sa pag-sign up! Narito ang",
@@ -10052,10 +10040,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10085,10 +10069,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10309,7 +10289,6 @@
     "analyticsAndSettingsLabel": "Mga pagpipilian sa Analytics at Mga Setting",
     "searchActivitiesLabel": "Maghanap ng mga aktibidad sa mapa",
     "filteredActivitiesLabel": "Listahan ng mga na-filter na aktibidad",
-    "activityFilterButtonsLabel": "Mga pindutan ng filter para sa wika, kahirapan, at progreso",
     "mapZoomLabel": "Mga kontrol sa pag-zoom ng mapa",
     "activityMapLabel": "Mapa ng aktibidad",
     "@navOptionsLabel": {
@@ -10329,10 +10308,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10567,5 +10542,24 @@
     "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})",
     "newActivityBadge": "BAGO",
     "exitVocabPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng bokabularyo.",
-    "exitGrammarPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng gramatika."
+    "exitGrammarPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng gramatika.",
+    "autoReadAloudMessagesToolName": "Awtomatikong basahin nang malakas ang lahat ng natanggap na mensahe",
+    "autoReadAloudMessagesDescription": "Kapag nakatanggap ng mensahe, gagamitin ang boses ng device para basahin nang malakas ang mensahe para sa pagsasanay sa pakikinig.",
+    "activityFilterButtonsLabel": "Mga button ng filter para sa antas, manlalaro, at status",
+    "mapFilterAllLevels": "Lahat ng antas",
+    "mapFilterAllPlayers": "Lahat ng manlalaro",
+    "mapFilterAllStatuses": "Lahat ng status",
+    "mapFiltersShow": "Ipakita ang mga filter",
+    "mapFiltersHide": "Itago ang mga filter",
+    "mapStatusAvailable": "Available",
+    "mapStatusOngoing": "Kasalukuyan",
+    "mapStatusWaiting": "Naghihintay",
+    "mapStatusOpenToJoin": "Bukas para salihan",
+    "mapMatchesOffscreen": "May mga laban sa labas ng iyong view. Mag-zoom out para makita ang mga ito.",
+    "mapFiltersHideMatches": "Itinatago ng iyong mga filter ang lahat ng laban. Palawakin ang paghahanap para makita ang mga ito.",
+    "mapNoSearchMatches": "Walang aktibidad na tumutugma sa iyong paghahanap.",
+    "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito.",
+    "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad.",
+    "autocorrectMobileOnly": "Pang-mobile lang",
+    "autocorrectMobileOnlyWarning": "Available lang ang autocorrect ng device sa mobile app."
 }

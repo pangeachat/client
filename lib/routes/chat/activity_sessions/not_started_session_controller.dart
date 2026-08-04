@@ -217,9 +217,13 @@ class NotStartedSessionController extends State<NotStartedSession>
     );
   }
 
+  /// Inviting to the course is power-gated. A learner without invite rights can
+  /// only fail on the invite page, so the CTA isn't offered to them (#7875).
+  bool get canInviteToCourse => widget.course?.canInvite == true;
+
   void inviteToCourse() {
     final course = widget.course;
-    if (course == null) return;
+    if (course == null || !course.canInvite) return;
     // world_v2: token nav to the course's invite page (no stacked route push).
     context.go(
       WorkspaceNav.openCoursePageFor(

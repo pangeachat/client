@@ -10,6 +10,7 @@ import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 import 'package:receive_sharing_intent/receive_sharing_intent.dart';
 
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_preview_client_extension.dart';
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
@@ -464,6 +465,23 @@ class ChatListController extends State<ChatList>
     }
   }
 
+  // #Pangea
+  /// Opening the header's search toggle mounts the field at the top of the
+  /// list; bring the top back into view so the user can actually use it
+  /// (#7941). Closing search leaves the scroll position alone.
+  void _onSearchFieldVisibilityChanged() {
+    if (widget.searchFieldVisibility?.value != true) return;
+    if (!scrollController.hasClients || scrollController.position.pixels <= 0) {
+      return;
+    }
+    scrollController.animateTo(
+      0,
+      duration: FluffyThemes.animationDuration,
+      curve: FluffyThemes.animationCurve,
+    );
+  }
+  // Pangea#
+
   void editSpace(BuildContext context, String spaceId) async {
     await Matrix.of(context).client.getRoomById(spaceId)!.postLoad();
     if (mounted) {
@@ -564,6 +582,9 @@ class ChatListController extends State<ChatList>
     // Pangea#
 
     scrollController.addListener(_onScroll);
+    // #Pangea
+    widget.searchFieldVisibility?.addListener(_onSearchFieldVisibilityChanged);
+    // Pangea#
     _waitForFirstSync();
     _hackyWebRTCFixForWeb();
     WidgetsBinding.instance.addPostFrameCallback((_) async {
@@ -747,6 +768,9 @@ class ChatListController extends State<ChatList>
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
         .removeListener(_onSubscribe);
+    widget.searchFieldVisibility?.removeListener(
+      _onSearchFieldVisibilityChanged,
+    );
     //Pangea#
     scrollController.removeListener(_onScroll);
     super.dispose();

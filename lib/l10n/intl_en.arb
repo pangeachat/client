@@ -3579,6 +3579,8 @@
     "dontForgetPassword": "Don't forget your password!",
     "enableAutocorrectToolName": "Enable device autocorrect",
     "enableAutocorrectDescription": "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.",
+    "autocorrectMobileOnly": "Mobile only",
+    "autocorrectMobileOnlyWarning": "Device autocorrect is only available on the mobile app.",
     "ttsDisbledTitle": "Text-to-speech disabled",
     "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
     "noSpaceDescriptionYet": "No course description created yet.",
@@ -4372,8 +4374,6 @@
     "notificationRuleDM": "Direct Message",
     "notificationRuleDMDescription": "Notifies the user about messages in direct message rooms.",
     "enableEmailNotifications": "Enable email notifications",
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
-    "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
     "learningAnalytics": "Learning analytics",
     "searchLanguagesHint": "Search languages",
     "alreadySpeak": "I already speak...",
@@ -4536,7 +4536,6 @@
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
     "mapSearchHint": "Search activities",
-    "mapSearchNoResults": "No matches in view",
     "mapFilterAllLanguages": "All languages",
     "mapFilterNotStarted": "Not started",
     "mapFilterInProgress": "In progress",
@@ -4545,7 +4544,6 @@
     "activityTypeConversation": "Conversation",
     "playAgain": "Play again",
     "reviewActivity": "Review",
-    "mapEmptyInView": "Nothing here at your level or language. Widen your filters or zoom out.",
     "back": "Back",
     "viewCurrentOrFinished": "View current or finished",
     "pronunciationTools": "Pronunciation tools",
@@ -4629,7 +4627,6 @@
     "analyticsAndSettingsLabel": "Analytics and Settings options",
     "searchActivitiesLabel": "Search for activities on map",
     "filteredActivitiesLabel": "Filtered activity list",
-    "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons",
     "mapZoomLabel": "Map zoom controls",
     "activityMapLabel": "Activity map",
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
@@ -4805,5 +4802,30 @@
     "conversationFromDayOne": "Conversation from Day One",
     "builtForConnection": "Built for connection",
     "aiWhenYouNeedIt": "AI when you need it",
-    "practiceTailoredForYou": "Practice tailored for you"
+    "practiceTailoredForYou": "Practice tailored for you",
+    "practiceSessionTimedOut": "Your practice session ended after {minutes} minutes without activity.",
+    "@practiceSessionTimedOut": {
+        "type": "String",
+        "placeholders": {
+            "minutes": {
+                "type": "int"
+            }
+        }
+    },
+    "autoReadAloudMessagesToolName": "Automatically read aloud all received messages",
+    "autoReadAloudMessagesDescription": "When a message is received, device voice will be utilized to read message aloud for listening practice.",
+    "activityFilterButtonsLabel": "Level, players, and status filter buttons",
+    "mapFilterAllLevels": "All levels",
+    "mapFilterAllPlayers": "All players",
+    "mapFilterAllStatuses": "All statuses",
+    "mapFiltersShow": "Show filters",
+    "mapFiltersHide": "Hide filters",
+    "mapStatusAvailable": "Available",
+    "mapStatusOngoing": "Ongoing",
+    "mapStatusWaiting": "Waiting",
+    "mapStatusOpenToJoin": "Open to join",
+    "mapMatchesOffscreen": "There are matches outside your view. Zoom out to see them.",
+    "mapFiltersHideMatches": "Your filters are hiding all matches. Widen the search to see them.",
+    "mapNoSearchMatches": "No activities match your search.",
+    "mapNoActivitiesArea": "No activities in this area."
 }

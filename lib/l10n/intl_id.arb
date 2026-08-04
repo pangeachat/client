@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:48.309147",
+    "@@last_modified": "2026-08-04 09:29:24.612951",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -8415,16 +8415,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Sorot otomatis pesan audio",
-    "selectAudioMessagesOnPlayDescription": "Secara otomatis sorot pesan audio saat diputar",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analitik pembelajaran",
     "@learningAnalytics": {
         "type": "String",
@@ -9179,7 +9169,6 @@
     "browsePublicCourses": "Jelajahi kursus publik",
     "editProfile": "Edit profil",
     "mapSearchHint": "Cari aktivitas",
-    "mapSearchNoResults": "Tidak ada kecocokan dalam tampilan",
     "mapFilterAllLanguages": "Semua bahasa",
     "mapFilterNotStarted": "Belum dimulai",
     "mapFilterInProgress": "Sedang berlangsung",
@@ -9188,7 +9177,6 @@
     "activityTypeConversation": "Percakapan",
     "playAgain": "Main lagi",
     "reviewActivity": "Tinjau",
-    "mapEmptyInView": "Tidak ada di sini pada level atau bahasa Anda. Perluas filter Anda atau perbesar.",
     "welcomeToPangeaChat": "Selamat datang di Pangea Chat",
     "claimTrial": "Klaim percobaan Anda",
     "thanksForSigningUp": "Terima kasih telah mendaftar! Ini dia",
@@ -9259,10 +9247,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9292,10 +9276,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9516,7 +9496,6 @@
     "analyticsAndSettingsLabel": "Opsi Analitik dan Pengaturan",
     "searchActivitiesLabel": "Cari aktivitas di peta",
     "filteredActivitiesLabel": "Daftar aktivitas yang difilter",
-    "activityFilterButtonsLabel": "Tombol filter bahasa, kesulitan, dan kemajuan",
     "mapZoomLabel": "Kontrol zoom peta",
     "activityMapLabel": "Peta aktivitas",
     "@navOptionsLabel": {
@@ -9536,10 +9515,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9774,5 +9749,24 @@
     "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
     "newActivityBadge": "BARU",
     "exitVocabPracticeSession": "Progres sesi latihan kosakata Anda saat ini tidak akan disimpan.",
-    "exitGrammarPracticeSession": "Progres sesi latihan tata bahasa Anda saat ini tidak akan disimpan."
+    "exitGrammarPracticeSession": "Progres sesi latihan tata bahasa Anda saat ini tidak akan disimpan.",
+    "autoReadAloudMessagesToolName": "Otomatis membaca semua pesan yang diterima",
+    "autoReadAloudMessagesDescription": "Saat pesan diterima, suara perangkat akan digunakan untuk membaca pesan dengan lantang untuk latihan mendengarkan.",
+    "activityFilterButtonsLabel": "Tombol filter level, pemain, dan status",
+    "mapFilterAllLevels": "Semua level",
+    "mapFilterAllPlayers": "Semua pemain",
+    "mapFilterAllStatuses": "Semua status",
+    "mapFiltersShow": "Tampilkan filter",
+    "mapFiltersHide": "Sembunyikan filter",
+    "mapStatusAvailable": "Tersedia",
+    "mapStatusOngoing": "Sedang berlangsung",
+    "mapStatusWaiting": "Menunggu",
+    "mapStatusOpenToJoin": "Terbuka untuk bergabung",
+    "mapMatchesOffscreen": "Ada pertandingan di luar tampilan Anda. Perkecil untuk melihatnya.",
+    "mapFiltersHideMatches": "Filter Anda menyembunyikan semua pertandingan. Perluas pencarian untuk melihatnya.",
+    "mapNoSearchMatches": "Tidak ada aktivitas yang cocok dengan pencarian Anda.",
+    "mapNoActivitiesArea": "Tidak ada aktivitas di area ini.",
+    "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
+    "autocorrectMobileOnly": "Khusus seluler",
+    "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler."
 }

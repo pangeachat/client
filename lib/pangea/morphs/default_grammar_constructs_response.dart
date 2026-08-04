@@ -217,15 +217,6 @@ const Map<String, dynamic> defaultGrammarConstructsResponse = {
       "feature_title": "Adverb type",
       "values": [
         {
-          "value": "Adverbial",
-          "display": true,
-          "sequence_position": 2.5,
-          "example": "she ran *fast*",
-          "title": "Adverbial",
-          "description":
-              "An adverbial word or phrase modifying a verb or sentence.",
-        },
-        {
           "value": "Tim",
           "display": true,
           "sequence_position": 1.5,
@@ -388,14 +379,6 @@ const Map<String, dynamic> defaultGrammarConstructsResponse = {
           "description": "The case marking a part of a whole.",
         },
         {
-          "value": "Adv",
-          "display": false,
-          "sequence_position": 5.5,
-          "example": "adverbial form",
-          "title": "Adverbial",
-          "description": "A case used to form adverbial expressions.",
-        },
-        {
           "value": "Ref",
           "display": false,
           "sequence_position": 6.0,
@@ -512,47 +495,6 @@ const Map<String, dynamic> defaultGrammarConstructsResponse = {
           "title": "Accusative/Nominative",
           "description":
               "A form that serves as both accusative and nominative.",
-        },
-        {
-          "value": "Pre",
-          "display": false,
-          "sequence_position": 5.5,
-          "example": "prepositional form",
-          "title": "Prepositional",
-          "description":
-              "A case used after prepositions, common in some Slavic languages.",
-        },
-      ],
-    },
-    {
-      "feature": "conjtype",
-      "feature_title": "Conjunction type",
-      "values": [
-        {
-          "value": "Coord",
-          "display": true,
-          "sequence_position": 1.5,
-          "example": "bread *and* butter",
-          "title": "Coordinating",
-          "description":
-              "Joins equal parts of a sentence, like 'and' or 'but'.",
-        },
-        {
-          "value": "Sub",
-          "display": true,
-          "sequence_position": 2.5,
-          "example": "*because* it rained",
-          "title": "Subordinating",
-          "description":
-              "Connects a dependent clause to a main clause, like 'because'.",
-        },
-        {
-          "value": "Cmp",
-          "display": true,
-          "sequence_position": 3.5,
-          "example": "taller *than* me",
-          "title": "Comparative",
-          "description": "Used in comparisons, like 'than' or 'as'.",
         },
       ],
     },
@@ -813,37 +755,6 @@ const Map<String, dynamic> defaultGrammarConstructsResponse = {
           "example": "*do* you run?",
           "title": "Interrogative",
           "description": "Forms a question, like 'do you run?'",
-        },
-      ],
-    },
-    {
-      "feature": "nountype",
-      "feature_title": "Noun type",
-      "values": [
-        {
-          "value": "Prop",
-          "display": true,
-          "sequence_position": 1.5,
-          "example": "*Paris*",
-          "title": "Proper noun",
-          "description":
-              "A name of a specific person, place, or thing, like 'Paris'.",
-        },
-        {
-          "value": "Comm",
-          "display": true,
-          "sequence_position": 1.5,
-          "example": "*city*",
-          "title": "Common noun",
-          "description": "A general noun, like 'city' or 'book'.",
-        },
-        {
-          "value": "Not_proper",
-          "display": false,
-          "sequence_position": 1.5,
-          "example": "*book*",
-          "title": "Not proper",
-          "description": "A noun that is not a proper name.",
         },
       ],
     },
@@ -1462,14 +1373,6 @@ const Map<String, dynamic> defaultGrammarConstructsResponse = {
               "A simple past action viewed as a whole, common in Greek and Slavic.",
         },
         {
-          "value": "Eps",
-          "display": false,
-          "sequence_position": 6.0,
-          "example": "episodic past form",
-          "title": "Episodic past",
-          "description": "A specific past episode, used in some languages.",
-        },
-        {
           "value": "Prosp",
           "display": false,
           "sequence_position": 4.5,
@@ -1545,24 +1448,6 @@ const Map<String, dynamic> defaultGrammarConstructsResponse = {
           "description":
               "An '-ing' verb form used as a noun, like 'running is fun'.",
         },
-        {
-          "value": "Adn",
-          "display": false,
-          "sequence_position": 6.0,
-          "example": "adnominal form",
-          "title": "Adnominal",
-          "description":
-              "A verb form modifying a noun, like Korean adnominal endings.",
-        },
-        {
-          "value": "Lng",
-          "display": false,
-          "sequence_position": 6.0,
-          "example": "long verb form",
-          "title": "Long form",
-          "description":
-              "A longer or fuller form of a verb, used in some languages.",
-        },
       ],
     },
     {
@@ -1577,15 +1462,6 @@ const Map<String, dynamic> defaultGrammarConstructsResponse = {
           "title": "Modal",
           "description":
               "Expresses possibility, necessity, or permission, like 'can' or 'must'.",
-        },
-        {
-          "value": "Caus",
-          "display": false,
-          "sequence_position": 4.5,
-          "example": "*made* him run",
-          "title": "Causative",
-          "description":
-              "Indicates causing an action, like 'make someone do' something.",
         },
       ],
     },
@@ -1663,14 +1539,6 @@ const Map<String, dynamic> defaultGrammarConstructsResponse = {
           "title": "Reciprocal",
           "description":
               "The participants act on each other, like 'they hugged each other'.",
-        },
-        {
-          "value": "Caus",
-          "display": false,
-          "sequence_position": 5.5,
-          "example": "*made* him run",
-          "title": "Causative",
-          "description": "Indicates causing an action, like 'made him run'.",
         },
       ],
     },

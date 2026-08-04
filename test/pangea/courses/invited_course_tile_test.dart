@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:badges/badges.dart' as b;
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
@@ -41,11 +42,16 @@ void main() {
     dotenv.testLoad(fileInput: 'BOT_NAME=@bot:example.org');
   });
 
-  Future<void> pumpTile(WidgetTester tester, {required bool invited}) async {
+  Future<void> pumpTile(
+    WidgetTester tester, {
+    required bool invited,
+    Brightness brightness = Brightness.light,
+  }) async {
     await tester.pumpWidget(
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
+        theme: ThemeData(brightness: brightness),
         home: Scaffold(
           body: Align(
             alignment: Alignment.topCenter,
@@ -111,6 +117,58 @@ void main() {
       );
     },
   );
+
+  /// #8109: the chip and the badge are one state marker on one tile, so they
+  /// must paint the *same* gold. Asserting `highlightColor` alone was not
+  /// enough — the chip used to wash that gold with the surface before painting
+  /// it, which in the dark theme dragged it toward the near-black surface and
+  /// left a muddy pill beside a bright badge.
+  for (final brightness in Brightness.values) {
+    testWidgets(
+      'invited chip paints the same gold as the badge ($brightness)',
+      (tester) async {
+        await pumpTile(tester, invited: true, brightness: brightness);
+
+        final context = tester.element(find.byType(AddCourseTile));
+        final gold = AppConfig.goldByTheme(context);
+
+        final pill = tester.widget<Container>(
+          find.descendant(
+            of: find.byType(CourseInfoChip),
+            matching: find.byType(Container),
+          ),
+        );
+        final badge = tester.widget<b.Badge>(
+          find.descendant(
+            of: find.byType(InvitedCourseBadge),
+            matching: find.byType(b.Badge),
+          ),
+        );
+
+        expect((pill.decoration! as BoxDecoration).color, gold);
+        expect(badge.badgeStyle.badgeColor, gold);
+      },
+    );
+  }
+
+  testWidgets('the dark theme wears the lighter gold the level-up chip wears', (
+    tester,
+  ) async {
+    await pumpTile(tester, invited: true, brightness: Brightness.dark);
+
+    final pill = tester.widget<Container>(
+      find.descendant(
+        of: find.byType(CourseInfoChip),
+        matching: find.byType(Container),
+      ),
+    );
+
+    expect(
+      (pill.decoration! as BoxDecoration).color,
+      AppConfig.goldLight,
+      reason: 'the hue named in #8109 — #FEDF49, shared with the level-up chip',
+    );
+  });
 
   testWidgets('invited state is announced instead of the participant count', (
     tester,

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:53.431403",
+    "@@last_modified": "2026-08-04 09:29:29.860954",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8860,16 +8860,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatiskt markera ljudmeddelanden",
-    "selectAudioMessagesOnPlayDescription": "Automatiskt markera ljudmeddelanden när de spelas",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Lärandeanalys",
     "@learningAnalytics": {
         "type": "String",
@@ -9624,7 +9614,6 @@
     "browsePublicCourses": "Bläddra bland offentliga kurser",
     "editProfile": "Redigera profil",
     "mapSearchHint": "Sök aktiviteter",
-    "mapSearchNoResults": "Inga träffar i vyn",
     "mapFilterAllLanguages": "Alla språk",
     "mapFilterNotStarted": "Ej påbörjad",
     "mapFilterInProgress": "Pågår",
@@ -9633,7 +9622,6 @@
     "activityTypeConversation": "Konversation",
     "playAgain": "Spela igen",
     "reviewActivity": "Granska",
-    "mapEmptyInView": "Ingenting här på din nivå eller språk. Bredare dina filter eller zooma ut.",
     "welcomeToPangeaChat": "Välkommen till Pangea Chat",
     "claimTrial": "Kräv din provperiod",
     "thanksForSigningUp": "Tack för att du registrerade dig! Här är",
@@ -9704,10 +9692,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9737,10 +9721,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9961,7 +9941,6 @@
     "analyticsAndSettingsLabel": "Analys- och inställningsalternativ",
     "searchActivitiesLabel": "Sök efter aktiviteter på kartan",
     "filteredActivitiesLabel": "Filtrerad aktivitetslista",
-    "activityFilterButtonsLabel": "Språk-, svårighetsgrad- och progressionsfilterknappar",
     "mapZoomLabel": "Kartzoomkontroller",
     "activityMapLabel": "Aktivitetskarta",
     "@navOptionsLabel": {
@@ -9981,10 +9960,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10219,5 +10194,24 @@
     "activityRatingMeterLabel": "{percent}% positiva ({count, plural, =1{1 betyg} other{{count} betyg}})",
     "newActivityBadge": "NY",
     "exitVocabPracticeSession": "Dina framsteg i den nuvarande ordövningssessionen sparas inte.",
-    "exitGrammarPracticeSession": "Dina framsteg i den nuvarande grammatikövningssessionen sparas inte."
+    "exitGrammarPracticeSession": "Dina framsteg i den nuvarande grammatikövningssessionen sparas inte.",
+    "autoReadAloudMessagesToolName": "Läs automatiskt upp alla mottagna meddelanden",
+    "autoReadAloudMessagesDescription": "När ett meddelande tas emot kommer enhetens röst att användas för att läsa upp meddelandet för lyssningsövning.",
+    "activityFilterButtonsLabel": "Nivå, spelare och statusfilterknappar",
+    "mapFilterAllLevels": "Alla nivåer",
+    "mapFilterAllPlayers": "Alla spelare",
+    "mapFilterAllStatuses": "Alla statusar",
+    "mapFiltersShow": "Visa filter",
+    "mapFiltersHide": "Dölj filter",
+    "mapStatusAvailable": "Tillgänglig",
+    "mapStatusOngoing": "Pågående",
+    "mapStatusWaiting": "Väntar",
+    "mapStatusOpenToJoin": "Öppen för anslutning",
+    "mapMatchesOffscreen": "Det finns matcher utanför din vy. Zooma ut för att se dem.",
+    "mapFiltersHideMatches": "Dina filter döljer alla matcher. Utöka sökningen för att se dem.",
+    "mapNoSearchMatches": "Inga aktiviteter matchar din sökning.",
+    "mapNoActivitiesArea": "Inga aktiviteter i detta område.",
+    "practiceSessionTimedOut": "Din övningssession avslutades efter {minutes} minuters inaktivitet.",
+    "autocorrectMobileOnly": "Endast mobil",
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrigering är endast tillgänglig i mobilappen."
 }

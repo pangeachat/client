@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-07-30 15:16:51.835983",
+    "@@last_modified": "2026-08-04 09:29:28.207174",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9259,16 +9259,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Realçar automaticamente mensagens de áudio",
-    "selectAudioMessagesOnPlayDescription": "Realçar automaticamente mensagens de áudio quando reproduzidas",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Análise de aprendizagem",
     "@learningAnalytics": {
         "type": "String",
@@ -10023,7 +10013,6 @@
     "browsePublicCourses": "Navegar por cursos públicos",
     "editProfile": "Editar perfil",
     "mapSearchHint": "Pesquisar atividades",
-    "mapSearchNoResults": "Nenhuma correspondência na visualização",
     "mapFilterAllLanguages": "Todos os idiomas",
     "mapFilterNotStarted": "Não iniciado",
     "mapFilterInProgress": "Em andamento",
@@ -10032,7 +10021,6 @@
     "activityTypeConversation": "Conversa",
     "playAgain": "Jogar novamente",
     "reviewActivity": "Revisar",
-    "mapEmptyInView": "Nada aqui no seu nível ou idioma. Amplie seus filtros ou afaste-se.",
     "welcomeToPangeaChat": "Bem-vindo ao Pangea Chat",
     "claimTrial": "Reivindique seu teste",
     "thanksForSigningUp": "Obrigado por se inscrever! Aqui está",
@@ -10103,10 +10091,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10136,10 +10120,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10360,7 +10340,6 @@
     "analyticsAndSettingsLabel": "Opções de Análise e Configurações",
     "searchActivitiesLabel": "Pesquisar atividades no mapa",
     "filteredActivitiesLabel": "Lista de atividades filtradas",
-    "activityFilterButtonsLabel": "Botões de filtro de idioma, dificuldade e progresso",
     "mapZoomLabel": "Controles de zoom do mapa",
     "activityMapLabel": "Mapa de atividades",
     "@navOptionsLabel": {
@@ -10380,10 +10359,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10618,5 +10593,24 @@
     "activityRatingMeterLabel": "{percent}% positivo ({count, plural, =1{1 avaliação} other{{count} avaliações}})",
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "O progresso da sua sessão de prática de vocabulário atual não será guardado.",
-    "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será guardado."
+    "exitGrammarPracticeSession": "O progresso da sua sessão de prática de gramática atual não será guardado.",
+    "autoReadAloudMessagesToolName": "Ler automaticamente todas as mensagens recebidas",
+    "autoReadAloudMessagesDescription": "Quando uma mensagem é recebida, a voz do dispositivo será utilizada para ler a mensagem em voz alta para prática de escuta.",
+    "activityFilterButtonsLabel": "Botões de filtro de nível, jogadores e estado",
+    "mapFilterAllLevels": "Todos os níveis",
+    "mapFilterAllPlayers": "Todos os jogadores",
+    "mapFilterAllStatuses": "Todos os estados",
+    "mapFiltersShow": "Mostrar filtros",
+    "mapFiltersHide": "Ocultar filtros",
+    "mapStatusAvailable": "Disponível",
+    "mapStatusOngoing": "Em curso",
+    "mapStatusWaiting": "À espera",
+    "mapStatusOpenToJoin": "Aberto para entrar",
+    "mapMatchesOffscreen": "Existem partidas fora da sua vista. Reduza o zoom para as ver.",
+    "mapFiltersHideMatches": "Os seus filtros estão a ocultar todas as partidas. Alargue a pesquisa para as ver.",
+    "mapNoSearchMatches": "Nenhuma atividade corresponde à sua pesquisa.",
+    "mapNoActivitiesArea": "Nenhuma atividade nesta área.",
+    "practiceSessionTimedOut": "A sua sessão de prática terminou após {minutes} minutos de inatividade.",
+    "autocorrectMobileOnly": "Apenas para telemóvel",
+    "autocorrectMobileOnlyWarning": "A correção automática do dispositivo só está disponível na aplicação móvel."
 }

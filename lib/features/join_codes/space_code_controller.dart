@@ -11,11 +11,15 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/join_codes/too_many_requests_dialog.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -62,13 +66,16 @@ class SpaceCodeController {
   /// user on the join page as a secret member of the course (#7579); the
   /// consent notice, skipped there, resurfaces through the course-settings
   /// listener.
-  static Future<({String roomId, bool isSpace})?> resolveJoinedTarget(
+  static Future<({String roomId, bool isSpace, String? activityId})?>
+  resolveJoinedTarget(
     BuildContext context,
     Client client,
     JoinResponse joinResp,
   ) async {
     final room = client.getRoomById(joinResp.roomId);
-    if (room == null) return (roomId: joinResp.roomId, isSpace: true);
+    if (room == null) {
+      return (roomId: joinResp.roomId, isSpace: true, activityId: null);
+    }
 
     // Recompute the notice from the room as it stands NOW: when the join-time
     // sync-wait timed out, [joinResp.shouldShowNotice] is a false fallback,
@@ -83,22 +90,45 @@ class SpaceCodeController {
     );
     final joinedRoomId = await handler.handle(context);
     if (joinedRoomId == null) return null;
-    if (room.isSpace) return (roomId: joinedRoomId, isSpace: true);
+    if (room.isSpace) {
+      return (roomId: joinedRoomId, isSpace: true, activityId: null);
+    }
 
-    // A code can attach to a room WITHIN a course (an activity session, an
-    // announcements chat). A join still lands on the course plan page, not
-    // inside that room: resolve to the room's joined parent course when one
-    // exists. Only without any joined parent (a standalone coded chat) does
-    // the join open the room itself.
+    // An activity-session code is an invite INTO that session: land on the
+    // activity page with the session room bound (join/resume), never the
+    // parent course. Routing a shared-course invitee to the course hid the
+    // activity entirely, and a no-shared-course invitee dragged an
+    // unjoinable course panel open beside it (#8047).
+    final activityId = room.activityId;
+    if (room.isActivitySession && activityId != null) {
+      return (roomId: joinedRoomId, isSpace: false, activityId: activityId);
+    }
+
+    // A code can attach to a CHAT within a course (announcements,
+    // introductions). A join still lands on the course plan page, not inside
+    // that chat: resolve to the room's joined parent course when one exists.
+    // Only without any joined parent (a standalone coded chat) does the join
+    // open the room itself.
     final parentCourse = room.spaceParents
         .map((p) => p.roomId == null ? null : client.getRoomById(p.roomId!))
         .whereType<Room>()
         .firstWhereOrNull(
           (parent) => parent.isSpace && parent.membership == Membership.join,
         );
-    if (parentCourse != null) return (roomId: parentCourse.id, isSpace: true);
-    return (roomId: joinedRoomId, isSpace: false);
+    if (parentCourse != null) {
+      return (roomId: parentCourse.id, isSpace: true, activityId: null);
+    }
+    return (roomId: joinedRoomId, isSpace: false, activityId: null);
   }
+
+  /// The landing for an activity-session code join: the activity plan page
+  /// with the joined session room bound in the token (`activity:<id>.r<room>`),
+  /// so the page offers that session's join/resume. No course context rides
+  /// along — the plan resolves a JOINED parent itself, and forcing an
+  /// unjoined one open was the endless-spinner half of #8047. Pure —
+  /// unit-tested (join_code_login_bounce_test.dart).
+  static String activitySessionLanding(String activityId, String roomId) =>
+      '${PRoutes.world}?left=${ActivityPanelToken(ActivityTokenParam(activityId: activityId, roomId: roomId)).encode()}';
 
   /// The synchronous half of the post-join hop, split from
   /// [resolveJoinedTarget] so a caller that must rewrite its own URL first
@@ -106,8 +136,13 @@ class SpaceCodeController {
   /// in one tick — before the rebuild the rewrite schedules can dispose it.
   static void goToJoinedTarget(
     BuildContext context,
-    ({String roomId, bool isSpace}) target,
+    ({String roomId, bool isSpace, String? activityId}) target,
   ) {
+    final activityId = target.activityId;
+    if (activityId != null) {
+      context.go(activitySessionLanding(activityId, target.roomId));
+      return;
+    }
     target.isSpace
         ? context.go(
             WorkspaceNav.openCourse(

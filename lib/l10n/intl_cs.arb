@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-07-30 15:16:45.965747",
+    "@@last_modified": "2026-08-04 09:29:22.405069",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -8836,16 +8836,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automaticky zvýraznit audio zprávy",
-    "selectAudioMessagesOnPlayDescription": "Automaticky zvýraznit audio zprávy při přehrávání",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analytika učení",
     "@learningAnalytics": {
         "type": "String",
@@ -9600,7 +9590,6 @@
     "browsePublicCourses": "Procházet veřejné kurzy",
     "editProfile": "Upravit profil",
     "mapSearchHint": "Hledat aktivity",
-    "mapSearchNoResults": "Žádné shody v zobrazení",
     "mapFilterAllLanguages": "Všechny jazyky",
     "mapFilterNotStarted": "Nebylo zahájeno",
     "mapFilterInProgress": "Probíhá",
@@ -9609,7 +9598,6 @@
     "activityTypeConversation": "Konverzace",
     "playAgain": "Hrát znovu",
     "reviewActivity": "Přehled",
-    "mapEmptyInView": "Na vaší úrovni nebo jazyce není nic. Rozšiřte své filtry nebo se přiblížte.",
     "welcomeToPangeaChat": "Vítejte v Pangea Chatu",
     "claimTrial": "Uplatněte svou zkušební verzi",
     "thanksForSigningUp": "Děkujeme za registraci! Tady je",
@@ -9680,10 +9668,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9713,10 +9697,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9937,7 +9917,6 @@
     "analyticsAndSettingsLabel": "Možnosti analýzy a nastavení",
     "searchActivitiesLabel": "Hledat aktivity na mapě",
     "filteredActivitiesLabel": "Seznam filtrovaných aktivit",
-    "activityFilterButtonsLabel": "Tlačítka filtru jazyka, obtížnosti a pokroku",
     "mapZoomLabel": "Ovládání přiblížení mapy",
     "activityMapLabel": "Mapa aktivit",
     "@navOptionsLabel": {
@@ -9957,10 +9936,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10195,5 +10170,24 @@
     "activityRatingMeterLabel": "{percent}% pozitivních ({count, plural, =1{1 hodnocení} few{{count} hodnocení} other{{count} hodnocení}})",
     "newActivityBadge": "NOVÉ",
     "exitVocabPracticeSession": "Váš aktuální pokrok v procvičování slovní zásoby nebude uložen.",
-    "exitGrammarPracticeSession": "Váš aktuální pokrok v procvičování gramatiky nebude uložen."
+    "exitGrammarPracticeSession": "Váš aktuální pokrok v procvičování gramatiky nebude uložen.",
+    "autoReadAloudMessagesToolName": "Automaticky číst nahlas všechny přijaté zprávy",
+    "autoReadAloudMessagesDescription": "Po přijetí zprávy bude hlas zařízení použit k přečtení zprávy nahlas pro cvičení poslechu.",
+    "activityFilterButtonsLabel": "Tlačítka filtru úrovně, hráčů a stavu",
+    "mapFilterAllLevels": "Všechny úrovně",
+    "mapFilterAllPlayers": "Všichni hráči",
+    "mapFilterAllStatuses": "Všechny stavy",
+    "mapFiltersShow": "Zobrazit filtry",
+    "mapFiltersHide": "Skrýt filtry",
+    "mapStatusAvailable": "K dispozici",
+    "mapStatusOngoing": "Probíhá",
+    "mapStatusWaiting": "Čeká se",
+    "mapStatusOpenToJoin": "Otevřeno pro připojení",
+    "mapMatchesOffscreen": "Mimo zobrazení jsou zápasy. Oddalte zobrazení, abyste je viděli.",
+    "mapFiltersHideMatches": "Vaše filtry skrývají všechny zápasy. Rozšiřte vyhledávání, abyste je viděli.",
+    "mapNoSearchMatches": "Žádné aktivity neodpovídají vašemu vyhledávání.",
+    "mapNoActivitiesArea": "V této oblasti nejsou žádné aktivity.",
+    "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti.",
+    "autocorrectMobileOnly": "Pouze mobilní",
+    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci."
 }

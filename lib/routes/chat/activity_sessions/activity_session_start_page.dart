@@ -13,6 +13,8 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
+import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -24,6 +26,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -62,6 +65,17 @@ bool archivedSessionGate({
   required bool activityRemoved,
   required bool hasSessionRoom,
 }) => activityRemoved && hasSessionRoom;
+
+/// Whether the archived view offers a way out of the session room.
+///
+/// A removed activity's session can never be continued or finished — no one
+/// else can be invited into it — so without this the room sits in the chat
+/// list forever with no exit (#8064). Offered only to a learner actually
+/// joined: an observer previewing the room has nothing to leave.
+bool archivedLeaveGate({
+  required bool isArchived,
+  required Membership? membership,
+}) => isArchived && membership == Membership.join;
 
 class ActivitySessionStartPage extends StatefulWidget {
   final String activityId;
@@ -212,55 +226,62 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     if (!mounted) return;
     // Already satisfied from the map's discovery cache — no server round-trip.
     if (!_summariesLoading) return;
-    final Set<String> roomIds = {};
-    if (widget.roomId != null) {
-      roomIds.add(widget.roomId!);
-    }
+    final client = Matrix.of(context).client;
 
     // This activity's session rooms across ALL the learner's joined courses —
     // not just a course in scope, since a bare map pin carries no course
-    // context. Shared with the world-map pin discovery so both surface the same
-    // sessions. See world-map.instructions.md ("Discovering joinable sessions").
-    final client = Matrix.of(context).client;
-    // Sessions the learner is invited to (possibly outside any shared course):
-    // in the room list, but only a preview carries accurate seats, and without
-    // this a green invited pin dead-ends at a joinless start page (#7488).
-    roomIds.addAll(
-      client.rooms
+    // context. Discovered server-side by the space-scoped
+    // activity_session_previews module: one batched read of the joined course
+    // spaces returns previews for only this activity's session rooms, complete
+    // regardless of how many rooms a course holds (#7982). See
+    // world-map.instructions.md ("Discovering joinable sessions").
+    final courseSpaceIds = client.joinedCourseSpaces.map((r) => r.id).toList();
+
+    // Rooms the module can't see: the deep-linked room itself, and sessions the
+    // learner is invited to (possibly outside any shared course) — in the room
+    // list, but only a preview carries accurate seats, and without this a green
+    // invited pin dead-ends at a joinless start page (#7488). These keep the
+    // per-room room_preview read.
+    final Set<String> extraRoomIds = {
+      ?widget.roomId,
+      ...client.rooms
           .where(
             (r) =>
                 r.membership == Membership.invite &&
                 r.activityId == widget.activityId,
           )
           .map((r) => r.id),
-    );
-    roomIds.addAll(
-      await client.courseActivitySessionRoomIds(activityId: widget.activityId),
-    );
-    if (!mounted) return;
+    };
 
-    if (roomIds.isEmpty) {
+    if (courseSpaceIds.isEmpty && extraRoomIds.isEmpty) {
       if (mounted) setState(() => _summariesLoading = false);
       return;
     }
     try {
-      final roomSummariesResponse = await Matrix.of(context).client
-          .loadRoomSummaries(
-            roomIds.toList(),
-            l1Code: MatrixState.pangeaController.userController.userL1Code,
-          )
-          .timeout(const Duration(seconds: 30));
+      final l1Code = MatrixState.pangeaController.userController.userL1Code;
+      final results = await Future.wait([
+        courseSpaceIds.isNotEmpty
+            ? client.loadActivitySessionPreviews(
+                courseSpaceIds,
+                activityId: widget.activityId,
+                l1Code: l1Code,
+              )
+            : Future.value(<String, RoomSummaryResponse>{}),
+        extraRoomIds.isNotEmpty
+            ? client.loadRoomSummaries(extraRoomIds.toList(), l1Code: l1Code)
+            : Future.value(<String, RoomSummaryResponse>{}),
+      ]).timeout(const Duration(seconds: 30));
       if (!mounted) return;
       setState(() {
-        _roomSummariesModel = ActivitySessionSummariesModel(
-          roomSummariesResponse,
-          activityId: widget.activityId,
-        );
+        _roomSummariesModel = ActivitySessionSummariesModel({
+          ...results[0],
+          ...results[1],
+        }, activityId: widget.activityId);
         _summariesLoading = false;
       });
     } catch (e, s) {
       // Summaries are non-essential (member counts / role availability); a slow
-      // or stalled /room_preview must not block or fail the activity render, so
+      // or stalled preview read must not block or fail the activity render, so
       // degrade to the empty model initialized in initState (#7085, #7159).
       ErrorHandler.logError(
         e: e,
@@ -347,6 +368,45 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     activityRemoved: activityRemoved,
     hasSessionRoom: widget.roomId != null,
   );
+
+  /// See [archivedLeaveGate].
+  bool get canLeaveArchivedSession => archivedLeaveGate(
+    isArchived: isArchived,
+    membership: activityRoom?.membership,
+  );
+
+  /// Leave the session room of a removed activity and close its panel — the
+  /// only exit for a session that can never be continued (#8064). Same
+  /// confirm-then-wait-for-sync flow as the chat's own leave, so the room is
+  /// gone from the list before the panel closes.
+  Future<void> leaveArchivedSession() async {
+    final room = activityRoom;
+    if (room == null) return;
+
+    final confirmed = await showOkCancelAlertDialog(
+      context: context,
+      title: L10n.of(context).areYouSure,
+      message: L10n.of(context).leaveRoomDescription,
+      okLabel: L10n.of(context).leave,
+      cancelLabel: L10n.of(context).cancel,
+      isDestructive: true,
+    );
+    if (confirmed != OkCancelResult.ok || !mounted) return;
+
+    final result = await showFutureLoadingDialog(
+      context: context,
+      future: room.leave,
+    );
+    if (result.isError || !mounted) return;
+
+    final left = Matrix.of(context).client.getRoomById(room.id);
+    if (left != null && left.membership != Membership.leave) {
+      await Matrix.of(context).client.waitForRoomInSync(room.id, leave: true);
+    }
+
+    if (!mounted) return;
+    closeOwnRoomPanel(context, room.id);
+  }
 
   SessionState get _sessionState {
     if (isArchived) return SessionState.archived;

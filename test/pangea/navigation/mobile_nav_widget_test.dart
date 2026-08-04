@@ -34,6 +34,7 @@ void main() {
     VoidCallback? onDismissed,
     ValueChanged<bool>? onCavityFullChanged,
     double keyboardInset = 0.0,
+    bool settle = true,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -64,7 +65,7 @@ void main() {
         ),
       ),
     );
-    await tester.pumpAndSettle();
+    if (settle) await tester.pumpAndSettle();
   }
 
   // Drop the widget from the tree (as a full-screen surface mounting over it
@@ -641,6 +642,39 @@ void main() {
     });
 
     testWidgets(
+      'the `+` shortcut toggles the add-course hub it is showing (#8098)',
+      (tester) async {
+        // With no courses joined the 4th slot IS the `+` add-course button, so
+        // the hub is its own surface and the Courses item beside it toggles the
+        // very same cavity. Distinct from the course-sheet case above: a
+        // SECTION cavity is not a peek, so the collapse renders 0px and the
+        // re-expand comes from the remembered content-fit height, not a peek.
+        var shortcutTaps = 0;
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavitySection: AppSection.courses,
+          courseShortcutHostsCavity: true,
+          cavityChild: const Text('Courses hub'),
+          cavityKey: 'addcourse',
+          onCourseShortcutTap: () => shortcutTaps++,
+        );
+        final open = cavityHeightOf(tester);
+        expect(open, greaterThan(0.0));
+
+        await tester.tap(find.byTooltip('Add a course'));
+        await tester.pumpAndSettle();
+        expect(shortcutTaps, 0, reason: 'the active hub tap is a toggle');
+        expect(cavityHeightOf(tester), 0.0);
+
+        await tester.tap(find.byTooltip('Add a course'));
+        await tester.pumpAndSettle();
+        expect(shortcutTaps, 0);
+        expect(cavityHeightOf(tester), closeTo(open, 1.0));
+      },
+    );
+
+    testWidgets(
       'the course shortcut navigates when its course is NOT the hosted sheet',
       (tester) async {
         var shortcutTaps = 0;
@@ -964,6 +998,102 @@ void main() {
         // Half height is 300px; a 500px inset would drive it negative.
         keyboardInset: 500.0,
       );
+      expect(cavityHeightOf(tester), 0.0);
+    });
+  });
+
+  group('keyboard over a focused cavity input (#8072)', () {
+    // A course card rests at peek and the add-course steps at a short half —
+    // both shorter than the software keyboard. Tapping an input inside one used
+    // to trim the cavity to nothing, which unmounted the field, dropped its
+    // focus and closed the keyboard again. It must instead grow to full.
+    const field = TextField(decoration: InputDecoration(hintText: 'Code'));
+
+    Future<void> pumpCourseCavity(
+      WidgetTester tester, {
+      double keyboardInset = 0.0,
+      bool settle = true,
+    }) => pumpNav(
+      tester,
+      cavityChild: field,
+      cavityKey: 'course-a',
+      cavityContextId: 'course-a',
+      cavityDefaultsToPeek: true,
+      maxHeightFraction: 0.75,
+      keyboardInset: keyboardInset,
+      settle: settle,
+    );
+
+    bool inputHasFocus(WidgetTester tester) => tester
+        .widget<EditableText>(find.byType(EditableText))
+        .focusNode
+        .hasFocus;
+
+    testWidgets('grows a peeking cavity to full so the input stays visible', (
+      tester,
+    ) async {
+      await pumpCourseCavity(tester);
+      expect(cavityHeightOf(tester), closeTo(128.0, 1.0));
+
+      // Tap the field, then let the keyboard the tap summoned arrive.
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await pumpCourseCavity(tester, keyboardInset: 300.0);
+
+      final maxHeightPx = 800.0 * 0.75;
+      expect(
+        cavityHeightOf(tester),
+        closeTo(maxHeightPx - 300.0, 1.0),
+        reason: 'full height, minus the keyboard trim of #7754',
+      );
+      expect(
+        inputHasFocus(tester),
+        isTrue,
+        reason: 'the field the learner tapped keeps its focus',
+      );
+    });
+
+    testWidgets('keeps the focused input mounted while the cavity grows', (
+      tester,
+    ) async {
+      await pumpCourseCavity(tester);
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+
+      // A keyboard taller than the peek, observed on the FIRST frame — before
+      // the grow has animated anywhere. Without the focused floor the cavity is
+      // 0px here and the field is gone from the tree.
+      await pumpCourseCavity(tester, keyboardInset: 500.0, settle: false);
+      expect(cavityHeightOf(tester), greaterThan(0.0));
+      expect(find.byType(TextField), findsOneWidget);
+      expect(inputHasFocus(tester), isTrue);
+
+      await tester.pumpAndSettle();
+      expect(find.byType(TextField), findsOneWidget);
+      expect(inputHasFocus(tester), isTrue);
+    });
+
+    testWidgets('does not remember the keyboard height for the next open', (
+      tester,
+    ) async {
+      await pumpCourseCavity(tester);
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await pumpCourseCavity(tester, keyboardInset: 300.0);
+
+      // The course reopens at the height the LEARNER left it at — the peek —
+      // not the full the keyboard forced (#7332, #7609).
+      await unmountNav(tester);
+      await pumpCourseCavity(tester);
+      expect(cavityHeightOf(tester), closeTo(128.0, 1.0));
+    });
+
+    testWidgets('leaves an unfocused cavity to the plain #7754 trim', (
+      tester,
+    ) async {
+      // The search bar riding ABOVE the widget owns this keyboard; nothing in
+      // the cavity is focused, so the cavity neither grows nor holds a floor.
+      await pumpCourseCavity(tester, keyboardInset: 300.0);
       expect(cavityHeightOf(tester), 0.0);
     });
   });

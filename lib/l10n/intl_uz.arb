@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-07-30 15:16:54.244187",
+    "@@last_modified": "2026-08-04 09:29:30.583989",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -8346,16 +8346,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Avtomatik ravishda audio xabarlarni ajratish",
-    "selectAudioMessagesOnPlayDescription": "Ovoz berilganda audio xabarlarni avtomatik ravishda ajratish",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "O'qitish tahlillari",
     "@learningAnalytics": {
         "type": "String",
@@ -9110,7 +9100,6 @@
     "browsePublicCourses": "Ommaviy kurslarni ko'ring",
     "editProfile": "Profilni tahrirlash",
     "mapSearchHint": "Faoliyatlarni qidiring",
-    "mapSearchNoResults": "Ko'rinishda hech qanday moslik yo'q",
     "mapFilterAllLanguages": "Barcha tillar",
     "mapFilterNotStarted": "Boshlanmagan",
     "mapFilterInProgress": "Jarayonda",
@@ -9119,7 +9108,6 @@
     "activityTypeConversation": "Muloqot",
     "playAgain": "Yana o'ynang",
     "reviewActivity": "Ko'rib chiqish",
-    "mapEmptyInView": "Sizning darajangizda yoki tilingizda hech narsa yo'q. Filtrlaringizni kengaytiring yoki zoom qiling.",
     "welcomeToPangeaChat": "Pangea Chat'ga xush kelibsiz",
     "claimTrial": "Sinovni talab qiling",
     "thanksForSigningUp": "Ro'yxatdan o'tganingiz uchun rahmat! Bu yerda",
@@ -9190,10 +9178,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9223,10 +9207,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9447,7 +9427,6 @@
     "analyticsAndSettingsLabel": "Tahlil va Sozlamalar variantlari",
     "searchActivitiesLabel": "Xaritada faoliyatlarni qidirish",
     "filteredActivitiesLabel": "Filtrlangan faoliyatlar ro'yxati",
-    "activityFilterButtonsLabel": "Til, qiyinchilik va progress filtr tugmalari",
     "mapZoomLabel": "Xarita zoom boshqaruvlari",
     "activityMapLabel": "Faoliyat xaritasi",
     "@navOptionsLabel": {
@@ -9467,10 +9446,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9705,5 +9680,24 @@
     "activityRatingMeterLabel": "{percent}% ijobiy ({count, plural, =1{1 baho} other{{count} baho}})",
     "newActivityBadge": "YANGI",
     "exitVocabPracticeSession": "Joriy lugʻat mashgʻuloti jarayoni saqlanmaydi.",
-    "exitGrammarPracticeSession": "Joriy grammatika mashgʻuloti jarayoni saqlanmaydi."
+    "exitGrammarPracticeSession": "Joriy grammatika mashgʻuloti jarayoni saqlanmaydi.",
+    "autoReadAloudMessagesToolName": "Barcha qabul qilingan xabarlarni avtomatik o'qish",
+    "autoReadAloudMessagesDescription": "Xabar qabul qilinganda, tinglash amaliyoti uchun qurilma ovozi xabarni baland ovozda o'qish uchun ishlatiladi.",
+    "activityFilterButtonsLabel": "Daraja, oʻyinchilar va holat filtri tugmalari",
+    "mapFilterAllLevels": "Barcha darajalar",
+    "mapFilterAllPlayers": "Barcha oʻyinchilar",
+    "mapFilterAllStatuses": "Barcha holatlar",
+    "mapFiltersShow": "Filtrlarni koʻrsatish",
+    "mapFiltersHide": "Filtrlarni yashirish",
+    "mapStatusAvailable": "Mavjud",
+    "mapStatusOngoing": "Davom etmoqda",
+    "mapStatusWaiting": "Kutilmoqda",
+    "mapStatusOpenToJoin": "Qoʻshilish uchun ochiq",
+    "mapMatchesOffscreen": "Sizning koʻrish doirangizdan tashqarida oʻyinlar mavjud. Ularni koʻrish uchun kichraytiring.",
+    "mapFiltersHideMatches": "Filtrlaringiz barcha oʻyinlarni yashirmoqda. Ularni koʻrish uchun qidiruvni kengaytiring.",
+    "mapNoSearchMatches": "Qidiruvingizga mos keladigan faoliyat topilmadi.",
+    "mapNoActivitiesArea": "Bu hududda faoliyat yoʻq.",
+    "practiceSessionTimedOut": "Faoliyatsiz {minutes} daqiqadan so‘ng mashg‘ulotingiz tugadi.",
+    "autocorrectMobileOnly": "Faqat mobil qurilmalar uchun",
+    "autocorrectMobileOnlyWarning": "Qurilma avtokorreksiyasi faqat mobil ilovada mavjud."
 }

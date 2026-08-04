@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-30 15:16:54.042505",
+    "@@last_modified": "2026-08-04 09:29:30.573178",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -8342,16 +8342,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Автоматичне виділення аудіоповідомлень",
-    "selectAudioMessagesOnPlayDescription": "Автоматично виділяти аудіоповідомлення під час відтворення",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Аналітика навчання",
     "@learningAnalytics": {
         "type": "String",
@@ -9106,7 +9096,6 @@
     "browsePublicCourses": "Переглянути публічні курси",
     "editProfile": "Редагувати профіль",
     "mapSearchHint": "Шукати активності",
-    "mapSearchNoResults": "Немає збігів у виді",
     "mapFilterAllLanguages": "Усі мови",
     "mapFilterNotStarted": "Не розпочато",
     "mapFilterInProgress": "В процесі",
@@ -9115,7 +9104,6 @@
     "activityTypeConversation": "Розмова",
     "playAgain": "Грати знову",
     "reviewActivity": "Огляд",
-    "mapEmptyInView": "Тут нічого немає на вашому рівні або мові. Розширте свої фільтри або зменшіть масштаб.",
     "welcomeToPangeaChat": "Ласкаво просимо до Pangea Chat",
     "claimTrial": "Отримайте свій безкоштовний пробний період",
     "thanksForSigningUp": "Дякуємо за реєстрацію! Ось",
@@ -9186,10 +9174,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9219,10 +9203,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9443,7 +9423,6 @@
     "analyticsAndSettingsLabel": "Параметри аналітики та налаштувань",
     "searchActivitiesLabel": "Пошук активностей на карті",
     "filteredActivitiesLabel": "Список відфільтрованих активностей",
-    "activityFilterButtonsLabel": "Кнопки фільтрації за мовою, складністю та прогресом",
     "mapZoomLabel": "Елементи керування масштабом карти",
     "activityMapLabel": "Карта активностей",
     "@navOptionsLabel": {
@@ -9463,10 +9442,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9701,5 +9676,24 @@
     "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})",
     "newActivityBadge": "НОВЕ",
     "exitVocabPracticeSession": "Ваш поточний прогрес у сесії тренування словникового запасу не буде збережено.",
-    "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено."
+    "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено.",
+    "autoReadAloudMessagesToolName": "Автоматично читати вголос усі отримані повідомлення",
+    "autoReadAloudMessagesDescription": "Коли повідомлення отримано, голос пристрою буде використано для читання повідомлення вголос для практики слухання.",
+    "activityFilterButtonsLabel": "Кнопки фільтру за рівнем, гравцями та статусом",
+    "mapFilterAllLevels": "Усі рівні",
+    "mapFilterAllPlayers": "Усі гравці",
+    "mapFilterAllStatuses": "Усі статуси",
+    "mapFiltersShow": "Показати фільтри",
+    "mapFiltersHide": "Приховати фільтри",
+    "mapStatusAvailable": "Доступно",
+    "mapStatusOngoing": "Триває",
+    "mapStatusWaiting": "Очікування",
+    "mapStatusOpenToJoin": "Відкрито для приєднання",
+    "mapMatchesOffscreen": "Є матчі поза вашим полем зору. Зменште масштаб, щоб їх побачити.",
+    "mapFiltersHideMatches": "Ваші фільтри приховують усі матчі. Розширте пошук, щоб їх побачити.",
+    "mapNoSearchMatches": "Жодна діяльність не відповідає вашому пошуку.",
+    "mapNoActivitiesArea": "У цій області немає активностей.",
+    "practiceSessionTimedOut": "Ваш сеанс практики завершився після {minutes} хвилин бездіяльності.",
+    "autocorrectMobileOnly": "Лише для мобільних пристроїв",
+    "autocorrectMobileOnlyWarning": "Автовиправлення доступне лише в мобільному застосунку."
 }

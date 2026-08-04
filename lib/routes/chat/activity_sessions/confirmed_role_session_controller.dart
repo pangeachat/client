@@ -64,8 +64,11 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
 
   bool get showInviteOptions => widget.room.isRoomAdmin;
 
+  // Gate on the bot's live seat, not the sticky pangea.bot_participant
+  // marker: the marker survives the bot leaving, and the button must come
+  // back whenever the bot holds no role (#8099).
   bool get enablePlayWithBot =>
-      showInviteOptions && !widget.room.botAddedToActivity;
+      showInviteOptions && !widget.room.botHasActivityRole;
 
   @override
   String get descriptionText {

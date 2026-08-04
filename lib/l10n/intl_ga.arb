@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-07-30 15:16:47.285877",
+    "@@last_modified": "2026-08-04 09:29:23.722886",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -8353,16 +8353,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Bailigh teachtaireachtaí gutháin go huathoibríoch",
-    "selectAudioMessagesOnPlayDescription": "Bailigh teachtaireachtaí gutháin go huathoibríoch nuair a chluineann tú iad",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Anailísíocht foghlama",
     "@learningAnalytics": {
         "type": "String",
@@ -9117,7 +9107,6 @@
     "browsePublicCourses": "Brabhsáil cúrsaí poiblí",
     "editProfile": "Cuir in eagar próifíl",
     "mapSearchHint": "Cuardaigh gníomhaíochtaí",
-    "mapSearchNoResults": "Níl aon comhoiriúnachtaí le feiceáil",
     "mapFilterAllLanguages": "Gach teanga",
     "mapFilterNotStarted": "Níl tosaithe",
     "mapFilterInProgress": "I gcion",
@@ -9126,7 +9115,6 @@
     "activityTypeConversation": "Comhrá",
     "playAgain": "Imir arís",
     "reviewActivity": "Athbhreithniú",
-    "mapEmptyInView": "Níl aon rud anseo ag do leibhéal nó do theanga. Leathnaigh do scagairí nó déan an radharc níos mó.",
     "welcomeToPangeaChat": "Fáilte go Pangea Chat",
     "claimTrial": "Éiligh do thriail",
     "thanksForSigningUp": "Go raibh maith agat as clárú! Seo",
@@ -9197,10 +9185,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9230,10 +9214,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9454,7 +9434,6 @@
     "analyticsAndSettingsLabel": "Roghaí anailíse agus socruithe",
     "searchActivitiesLabel": "Cuardaigh gníomhaíochtaí ar an mapa",
     "filteredActivitiesLabel": "Liosta gníomhaíochtaí scagtha",
-    "activityFilterButtonsLabel": "Cnaipí scagtha teanga, deacrachta, agus dul chun cinn",
     "mapZoomLabel": "Rialuithe greamaithe ar an mapa",
     "activityMapLabel": "Mapa gníomhaíochta",
     "@navOptionsLabel": {
@@ -9474,10 +9453,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9712,5 +9687,24 @@
     "activityRatingMeterLabel": "{percent}% dearfach ({count, plural, =1{1 rátáil} other{{count} rátáil}})",
     "newActivityBadge": "NUA",
     "exitVocabPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh foclóra reatha.",
-    "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha."
+    "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha.",
+    "autoReadAloudMessagesToolName": "Léigh gach teachtaireacht a fhaightear os ard go huathoibríoch",
+    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta.",
+    "activityFilterButtonsLabel": "Cnaipí scagaire leibhéil, imreoirí, agus stádais",
+    "mapFilterAllLevels": "Gach leibhéal",
+    "mapFilterAllPlayers": "Gach imreoir",
+    "mapFilterAllStatuses": "Gach stádas",
+    "mapFiltersShow": "Taispeáin scagairí",
+    "mapFiltersHide": "Folaigh scagairí",
+    "mapStatusAvailable": "Ar fáil",
+    "mapStatusOngoing": "Ar siúl",
+    "mapStatusWaiting": "Ag fanacht",
+    "mapStatusOpenToJoin": "Oscailte le bheith páirteach",
+    "mapMatchesOffscreen": "Tá cluichí lasmuigh de do radharc. Zúmáil amach chun iad a fheiceáil.",
+    "mapFiltersHideMatches": "Tá do scagairí ag cur gach cluiche i bhfolach. Leathnaigh an cuardach chun iad a fheiceáil.",
+    "mapNoSearchMatches": "Níl aon ghníomhaíochtaí ag teacht le do chuardach.",
+    "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo.",
+    "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan ghníomhaíocht.",
+    "autocorrectMobileOnly": "Fón póca amháin",
+    "autocorrectMobileOnlyWarning": "Níl uathcheartú gléis ar fáil ach ar an aip shoghluaiste."
 }

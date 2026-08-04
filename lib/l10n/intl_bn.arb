@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:45.075695",
+    "@@last_modified": "2026-08-04 09:29:21.629699",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -8970,16 +8970,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "অটো-হাইলাইট অডিও বার্তা",
-    "selectAudioMessagesOnPlayDescription": "অডিও বার্তা বাজানোর সময় স্বয়ংক্রিয়ভাবে হাইলাইট করুন",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "শিক্ষণ বিশ্লেষণ",
     "@learningAnalytics": {
         "type": "String",
@@ -9734,7 +9724,6 @@
     "browsePublicCourses": "সার্বজনীন কোর্স ব্রাউজ করুন",
     "editProfile": "প্রোফাইল সম্পাদনা করুন",
     "mapSearchHint": "কার্যকলাপ অনুসন্ধান করুন",
-    "mapSearchNoResults": "দৃশ্যে কোন মিল নেই",
     "mapFilterAllLanguages": "সমস্ত ভাষা",
     "mapFilterNotStarted": "শুরু হয়নি",
     "mapFilterInProgress": "চলমান",
@@ -9743,7 +9732,6 @@
     "activityTypeConversation": "আলাপ",
     "playAgain": "পুনরায় খেলুন",
     "reviewActivity": "পর্যালোচনা",
-    "mapEmptyInView": "আপনার স্তর বা ভাষায় এখানে কিছুই নেই। আপনার ফিল্টারগুলি প্রসারিত করুন বা জুম আউট করুন।",
     "welcomeToPangeaChat": "প্যাঙ্গিয়া চ্যাটে স্বাগতম",
     "claimTrial": "আপনার ট্রায়াল দাবি করুন",
     "thanksForSigningUp": "সাইন আপ করার জন্য ধন্যবাদ! এখানে",
@@ -9814,10 +9802,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9847,10 +9831,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10071,7 +10051,6 @@
     "analyticsAndSettingsLabel": "বিশ্লেষণ এবং সেটিংস বিকল্পগুলি",
     "searchActivitiesLabel": "মানচিত্রে কার্যকলাপ অনুসন্ধান করুন",
     "filteredActivitiesLabel": "ছাঁটাই করা কার্যকলাপের তালিকা",
-    "activityFilterButtonsLabel": "ভাষা, কঠিনতা, এবং অগ্রগতি ফিল্টার বোতামগুলি",
     "mapZoomLabel": "মানচিত্র জুম নিয়ন্ত্রণ",
     "activityMapLabel": "কার্যকলাপের মানচিত্র",
     "@navOptionsLabel": {
@@ -10091,10 +10070,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10329,5 +10304,24 @@
     "activityRatingMeterLabel": "{percent}% ইতিবাচক ({count, plural, =1{১টি রেটিং} other{{count}টি রেটিং}})",
     "newActivityBadge": "নতুন",
     "exitVocabPracticeSession": "আপনার বর্তমান শব্দভান্ডার অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
-    "exitGrammarPracticeSession": "আপনার বর্তমান ব্যাকরণ অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।"
+    "exitGrammarPracticeSession": "আপনার বর্তমান ব্যাকরণ অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
+    "autoReadAloudMessagesToolName": "স্বয়ংক্রিয়ভাবে প্রাপ্ত সমস্ত বার্তা জোরে পড়ুন",
+    "autoReadAloudMessagesDescription": "যখন একটি বার্তা প্রাপ্ত হয়, তখন শোনার অনুশীলনের জন্য ডিভাইসের ভয়েস ব্যবহার করে বার্তাটি জোরে পড়া হবে।",
+    "activityFilterButtonsLabel": "স্তর, খেলোয়াড় এবং স্থিতি ফিল্টার বোতাম",
+    "mapFilterAllLevels": "সব স্তর",
+    "mapFilterAllPlayers": "সব খেলোয়াড়",
+    "mapFilterAllStatuses": "সব স্থিতি",
+    "mapFiltersShow": "ফিল্টার দেখান",
+    "mapFiltersHide": "ফিল্টার লুকান",
+    "mapStatusAvailable": "উপলব্ধ",
+    "mapStatusOngoing": "চলমান",
+    "mapStatusWaiting": "অপেক্ষা করছে",
+    "mapStatusOpenToJoin": "যোগদানের জন্য উন্মুক্ত",
+    "mapMatchesOffscreen": "আপনার দৃশ্যের বাইরে ম্যাচ আছে। সেগুলি দেখতে জুম আউট করুন।",
+    "mapFiltersHideMatches": "আপনার ফিল্টারগুলি সমস্ত ম্যাচ লুকিয়ে রাখছে। সেগুলি দেখতে অনুসন্ধান প্রসারিত করুন।",
+    "mapNoSearchMatches": "আপনার অনুসন্ধানের সাথে কোনো কার্যকলাপ মেলে না।",
+    "mapNoActivitiesArea": "এই এলাকায় কোনো কার্যকলাপ নেই।",
+    "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।",
+    "autocorrectMobileOnly": "শুধুমাত্র মোবাইল",
+    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।"
 }

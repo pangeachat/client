@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-30 15:16:51.982344",
+    "@@last_modified": "2026-08-04 09:29:28.529096",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -9074,16 +9074,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Subliniază automat mesajele audio",
-    "selectAudioMessagesOnPlayDescription": "Subliniază automat mesajele audio atunci când sunt redată",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Analitica învățării",
     "@learningAnalytics": {
         "type": "String",
@@ -9838,7 +9828,6 @@
     "browsePublicCourses": "Răsfoiți cursurile publice",
     "editProfile": "Editează profilul",
     "mapSearchHint": "Căutați activități",
-    "mapSearchNoResults": "Niciun rezultat în vizualizare",
     "mapFilterAllLanguages": "Toate limbile",
     "mapFilterNotStarted": "Nepornit",
     "mapFilterInProgress": "În desfășurare",
@@ -9847,7 +9836,6 @@
     "activityTypeConversation": "Conversație",
     "playAgain": "Joacă din nou",
     "reviewActivity": "Recenzie",
-    "mapEmptyInView": "Nimic aici la nivelul sau limba ta. Lărgiți filtrele sau faceți zoom out.",
     "welcomeToPangeaChat": "Bine ai venit la Pangea Chat",
     "claimTrial": "Solicită perioada de probă",
     "thanksForSigningUp": "Mulțumim pentru înscriere! Iată",
@@ -9918,10 +9906,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9951,10 +9935,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10175,7 +10155,6 @@
     "analyticsAndSettingsLabel": "Opțiuni de analiză și setări",
     "searchActivitiesLabel": "Caută activități pe hartă",
     "filteredActivitiesLabel": "Lista activităților filtrate",
-    "activityFilterButtonsLabel": "Butonul de filtrare a limbii, dificultății și progresului",
     "mapZoomLabel": "Controale de zoom pentru hartă",
     "activityMapLabel": "Harta activităților",
     "@navOptionsLabel": {
@@ -10195,10 +10174,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10433,5 +10408,24 @@
     "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 evaluare} other{{count} evaluări}})",
     "newActivityBadge": "NOU",
     "exitVocabPracticeSession": "Progresul sesiunii curente de exersare a vocabularului nu va fi salvat.",
-    "exitGrammarPracticeSession": "Progresul sesiunii curente de exersare a gramaticii nu va fi salvat."
+    "exitGrammarPracticeSession": "Progresul sesiunii curente de exersare a gramaticii nu va fi salvat.",
+    "autoReadAloudMessagesToolName": "Citește automat cu voce tare toate mesajele primite",
+    "autoReadAloudMessagesDescription": "Când este primit un mesaj, vocea dispozitivului va fi utilizată pentru a citi mesajul cu voce tare pentru exersarea ascultării.",
+    "activityFilterButtonsLabel": "Butoane de filtrare pentru nivel, jucători și stare",
+    "mapFilterAllLevels": "Toate nivelurile",
+    "mapFilterAllPlayers": "Toți jucătorii",
+    "mapFilterAllStatuses": "Toate stările",
+    "mapFiltersShow": "Afișează filtrele",
+    "mapFiltersHide": "Ascunde filtrele",
+    "mapStatusAvailable": "Disponibil",
+    "mapStatusOngoing": "În desfășurare",
+    "mapStatusWaiting": "În așteptare",
+    "mapStatusOpenToJoin": "Deschis pentru alăturare",
+    "mapMatchesOffscreen": "Există meciuri în afara vizualizării tale. Micșorează pentru a le vedea.",
+    "mapFiltersHideMatches": "Filtrele tale ascund toate meciurile. Lărgește căutarea pentru a le vedea.",
+    "mapNoSearchMatches": "Nicio activitate nu corespunde căutării tale.",
+    "mapNoActivitiesArea": "Nicio activitate în această zonă.",
+    "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate.",
+    "autocorrectMobileOnly": "Doar pe mobil",
+    "autocorrectMobileOnlyWarning": "Corectarea automată a dispozitivului este disponibilă doar în aplicația mobilă."
 }

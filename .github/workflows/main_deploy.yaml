@@ -23,18 +23,38 @@ jobs:
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+      # prepare-web spends ~4m cloning dart-vodozemac, compiling
+      # flutter_rust_bridge_codegen, and building wasm — to produce two files.
+      # The output depends only on the pinned flutter_vodozemac version and the
+      # script, so an exact-key cache (no restore-keys — a stale binding would be
+      # wrong) makes it a restore. See ci.instructions.md.
+      - name: Resolve vodozemac version
+        id: vodozemac
+        run: echo "version=$(yq '.dependencies.flutter_vodozemac' pubspec.yaml | tr -d '^')" >> $GITHUB_OUTPUT
+      - name: Cache vodozemac bindings
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: assets/vodozemac/vodozemac_bindings_dart*
+          key: vodozemac-bindings-v1-${{ runner.os }}-${{ steps.vodozemac.outputs.version }}-${{ hashFiles('scripts/prepare-web.sh') }}
       - name: Prepare web
         run: ./scripts/prepare-web.sh
       - run: rm ./assets/vodozemac/.gitignore
       - run: flutter pub get
       - name: Build Release Web
+        # UTC ddHHMM stamp, identical scheme in release.yaml, so staging and
+        # production share one sequence instead of each workflow's own run_number
+        # (those had drifted to 3890 vs 104). Build-time only — nothing is
+        # committed back, and the release tag still reads pubspec's `+N`.
+        # Resets monthly, so it identifies a build, never orders one.
+        # See ci.instructions.md.
         run: |
           flutter config --enable-web
           flutter clean
           flutter pub get
-          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps
+          ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile --source-maps --build-number=$(date -u +%d%H%M)
 
       - name: Version Material Icons font
         run: |
@@ -137,7 +157,7 @@ jobs:
             --exclude "version.json" \
             --exclude "manifest.json" \
             --exclude "assets/FontManifest.json" \
-            --exclude "assets/assets.json" \
+            --exclude "assets/AssetManifest.bin*" \
             --exclude "assets/fonts/*"
 
           # =========================
@@ -172,15 +192,19 @@ jobs:
             "version.json"
             "manifest.json"
             "assets/FontManifest.json"
-            "assets/assets.json"
+            "assets/AssetManifest.bin"
+            "assets/AssetManifest.bin.json"
           )
 
+          # Every entry is required: a missing runtime file is a partial
+          # deploy (same silent-failure class the post-deploy smoke exists
+          # for, #7862) and must fail the run, not skip quietly.
           for f in "${RUNTIME_FILES[@]}"; do
-            if [ -f "./build/web/$f" ]; then
-              aws s3 cp "./build/web/$f" \
-                "s3://$WEBAPP_S3_BUCKET/$f" \
-                --cache-control "no-cache, must-revalidate"
-            fi
+            [ -f "./build/web/$f" ] \
+              || { echo "::error::runtime file $f missing from build output"; exit 1; }
+            aws s3 cp "./build/web/$f" \
+              "s3://$WEBAPP_S3_BUCKET/$f" \
+              --cache-control "no-cache, must-revalidate"
           done
       - name: Invalidate CloudFront cache
         run: |
@@ -209,9 +233,14 @@ jobs:
               || { echo "::error::.well-known/$f is missing, invalid JSON, or lacks the app id (SPA fallback?)"; exit 1; }
           done
 
-          # 2. Runtime entry scripts serve as JavaScript, not the SPA shell.
-          for f in flutter.js main.dart.js; do
-            head=$(curl -sf "$BASE/$f" | head -c 1)
+          # 2. Runtime entry scripts — and the versioned CanvasKit dir this
+          #    exact build requests (scripts/build-web-versioned-canvaskit.sh)
+          #    — serve as JavaScript, not the SPA shell.
+          CK_REV=$(ls build/web/canvaskit)
+          for f in flutter.js main.dart.js "canvaskit/$CK_REV/canvaskit.js"; do
+            # First non-whitespace byte: canvaskit.js opens with a newline,
+            # which a bare `head -c 1` + command substitution would eat.
+            head=$(curl -sf "$BASE/$f" | tr -d '[:space:]' | head -c 1)
             [ "$head" != "<" ] && [ -n "$head" ] \
               || { echo "::error::$f served HTML or empty — partial deploy?"; exit 1; }
           done
@@ -234,6 +263,7 @@ jobs:
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - name: Download web
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:

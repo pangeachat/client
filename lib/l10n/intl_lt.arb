@@ -2978,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-30 15:16:50.110131",
+    "@@last_modified": "2026-08-04 09:29:26.203906",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9123,16 +9123,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "selectAudioMessagesOnPlayToolName": "Automatiškai paryškinti garso pranešimus",
-    "selectAudioMessagesOnPlayDescription": "Automatiškai paryškinti garso pranešimus, kai jie atkuriami",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "learningAnalytics": "Mokymosi analizė",
     "@learningAnalytics": {
         "type": "String",
@@ -9887,7 +9877,6 @@
     "browsePublicCourses": "Naršyti viešus kursus",
     "editProfile": "Redaguoti profilį",
     "mapSearchHint": "Ieškoti veiklų",
-    "mapSearchNoResults": "Nėra atitikmenų",
     "mapFilterAllLanguages": "Visos kalbos",
     "mapFilterNotStarted": "Nepradėta",
     "mapFilterInProgress": "Vyksta",
@@ -9896,7 +9885,6 @@
     "activityTypeConversation": "Pokalbis",
     "playAgain": "Žaisti vėl",
     "reviewActivity": "Peržiūrėti",
-    "mapEmptyInView": "Čia nieko nėra jūsų lygyje ar kalba. Išplėskite filtrus arba priartinkite.",
     "welcomeToPangeaChat": "Sveiki atvykę į Pangea Chat",
     "claimTrial": "Prašome gauti savo bandomąją versiją",
     "thanksForSigningUp": "Ačiū, kad užsiregistravote! Štai",
@@ -9967,10 +9955,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10000,10 +9984,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10224,7 +10204,6 @@
     "analyticsAndSettingsLabel": "Analizės ir nustatymų parinktys",
     "searchActivitiesLabel": "Ieškoti veiklų žemėlapyje",
     "filteredActivitiesLabel": "Filtruotų veiklų sąrašas",
-    "activityFilterButtonsLabel": "Kalbos, sunkumo ir progreso filtravimo mygtukai",
     "mapZoomLabel": "Žemėlapio priartinimo valdikliai",
     "activityMapLabel": "Veiklų žemėlapis",
     "@navOptionsLabel": {
@@ -10244,10 +10223,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10482,5 +10457,24 @@
     "activityRatingMeterLabel": "{percent}% teigiamų ({count, plural, =1{1 įvertinimas} other{{count} įvertinimai}})",
     "newActivityBadge": "NAUJAS",
     "exitVocabPracticeSession": "Dabartinė žodyno praktikos sesijos eiga nebus išsaugota.",
-    "exitGrammarPracticeSession": "Dabartinė gramatikos praktikos sesijos eiga nebus išsaugota."
+    "exitGrammarPracticeSession": "Dabartinė gramatikos praktikos sesijos eiga nebus išsaugota.",
+    "autoReadAloudMessagesToolName": "Automatiškai perskaityti visus gautus pranešimus",
+    "autoReadAloudMessagesDescription": "Kai gaunamas pranešimas, įrenginio balsas bus naudojamas pranešimui perskaityti, kad būtų galima praktikuotis klausytis.",
+    "activityFilterButtonsLabel": "Lygio, žaidėjų ir būsenos filtro mygtukai",
+    "mapFilterAllLevels": "Visi lygiai",
+    "mapFilterAllPlayers": "Visi žaidėjai",
+    "mapFilterAllStatuses": "Visos būsenos",
+    "mapFiltersShow": "Rodyti filtrus",
+    "mapFiltersHide": "Slėpti filtrus",
+    "mapStatusAvailable": "Pasiekiama",
+    "mapStatusOngoing": "Vyksta",
+    "mapStatusWaiting": "Laukiama",
+    "mapStatusOpenToJoin": "Galima prisijungti",
+    "mapMatchesOffscreen": "Už ekrano ribų yra atitikmenų. Norėdami juos pamatyti, sumažinkite vaizdą.",
+    "mapFiltersHideMatches": "Jūsų filtrai slepia visus atitikmenis. Išplėskite paiešką, kad juos pamatytumėte.",
+    "mapNoSearchMatches": "Jūsų paieškai neatitinka jokia veikla.",
+    "mapNoActivitiesArea": "Šioje srityje nėra jokios veiklos.",
+    "practiceSessionTimedOut": "Jūsų praktikos sesija baigėsi po {minutes} minučių be veiklos.",
+    "autocorrectMobileOnly": "Tik mobiliesiems",
+    "autocorrectMobileOnlyWarning": "Įrenginio automatinis taisymas galimas tik mobiliojoje programėlėje."
 }

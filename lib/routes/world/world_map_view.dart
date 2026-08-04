@@ -14,6 +14,7 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
@@ -576,56 +577,22 @@ class _WorldMapViewState extends State<WorldMapView> {
     // only; null on the world map or an unjoined course → nothing dims).
     final int? available = widget.controller.courseAvailableParticipants;
     final Set<String> nonStartableIds = {};
-    // Precomputed once (a single rooms pass each) so the per-pin star tier is
-    // an O(roles) lookup, not an O(rooms) rescan per pin.
-    final ownRoleAwards =
-        widget.controller.client?.ownRoleAwardsByActivity ??
-        const <String, List<OwnRoleAwards>>{};
-    // Room-derived fallback inputs for cards that carry no thin goals (an
-    // older choreo): per-room own-role completion + the role set unioned from
-    // the session rooms' plan snapshots.
-    final completedRoles =
-        widget.controller.client?.completedRolesByActivity ??
-        const <String, Set<String>>{};
-    final allRoles =
-        widget.controller.client?.roleIdsByActivity ??
-        const <String, Set<String>>{};
-
     for (final c in visible) {
       final id = c.activityId;
       if (!tiers.containsKey(id)) continue; // beyond the cap N — not drawn
 
-      final signal = signals[id];
-      pings[id] = signal?.pinged ?? false;
+      pings[id] = signals[id]?.pinged ?? false;
 
-      // The learner's completion tier — computed regardless of any live session,
-      // so a prior completion stays visible even under a joinable/ongoing pin.
-      // A gold star appears ONLY once a full role is done — a plain star (≥1
-      // role) or a super star (all roles); partial progress is never shown on a
-      // pin. Resolved against the card's CURRENT thin goals (slug-matched,
-      // hydration-free — #7602), so an owner edit re-derives completion; the
-      // room-derived path is the fallback for cards without thin goals
-      // (world-map.instructions.md, "Goal Progress").
-      final starLevel =
-          starLevelForCard(c, ownRoleAwards[id] ?? const []) ??
-          starLevelFor(
-            completedRoles[id] ?? const {},
-            allRoles[id] ?? c.roleIds,
-          );
-      starLevels[id] = starLevel;
-
-      final sessionState = signal?.state;
-      if (sessionState != null) {
-        // A live-session state (joinable/joined) wins the colour; the completion
-        // star (if any) rides behind the live pin — see WorldMapDot.
-        states[id] = sessionState;
-      } else {
-        // No live session: a completed activity renders AS the star dot (it
-        // replaces the plain `available` pin); otherwise the available default.
-        states[id] = starLevel == ActivityStarLevel.none
-            ? ActivityPinState.available
-            : ActivityPinState.inProgress;
-      }
+      // The learner's completion tier and the pin's resolved display state come
+      // from the shared resolver in the pins manager (reuse), so the Status
+      // filter and this renderer never drift: a live-session state wins the
+      // colour, else the completed star tier layers in (the star rides behind a
+      // live pin), else the plain `available` default. A gold star appears ONLY
+      // once a full role is done — a plain star (≥1 role) or super star (all
+      // roles); partial progress is never shown (world-map.instructions.md,
+      // "Goal Progress" / "Pin state").
+      starLevels[id] = widget.controller.starLevelOf(c);
+      states[id] = widget.controller.displayStateOf(c);
 
       // Dim only plain `available` pins whose role count outruns the course's
       // members
@@ -700,7 +667,7 @@ class _WorldMapViewState extends State<WorldMapView> {
         return (
           participants:
               joinableActivity?.largeCardParticipants ??
-              discoveredSummary?.largeCardParticipants() ??
+              discoveredSummary?.largeCardParticipants ??
               const <LargeCardParticipant>[],
           openSlots:
               joinableActivity?.numRemainingRoles ??
@@ -1049,7 +1016,6 @@ class _WorldMapViewState extends State<WorldMapView> {
         ),
       );
     }
-    final l2 = MatrixState.pangeaController.userController.userL2Code;
     // The overlay lives in the EXPOSED map sliver: right of the open left
     // panels, clear of the right column / the top-right cluster gutter (a fixed
     // 360 slid under the cluster and off-screen whenever panels squeezed the
@@ -1084,17 +1050,21 @@ class _WorldMapViewState extends State<WorldMapView> {
               child: WorldMapSearchOverlay(
                 filter: widget.controller.filter,
                 updateQuery: widget.controller.setQuery,
-                l2Label: l2?.toUpperCase(),
-                onToggleL2: widget.controller.toggleL2,
-                onWidenSearch: () =>
-                    widget.controller.resetFilters(l2Only: false),
-                toggleCefr: widget.controller.toggleCefr,
-                toggleCompletion: widget.controller.toggleCompletion,
+                // Widen = clear every pill to All (language is fixed by
+                // settings; zoom-out is the empty card's other lever).
+                onWidenSearch: widget.controller.widenFilters,
+                setCefrLevel: widget.controller.setCefrLevel,
+                setPartySize: widget.controller.setPartySize,
+                setStatus: widget.controller.setStatus,
                 results: render.visible,
                 onResultTap: widget.controller.flyTo,
                 onReset: widget.controller.resetFilters,
-                emptyInView:
-                    !widget.controller.loadingPins && render.visible.isEmpty,
+                emptyVerdict: widget.controller.emptyVerdict,
+                canZoomOut: widget.controller.canZoomOut,
+                // "Zoom out" resets to the whole-world view (all the way out and
+                // re-centered), the same as the map's World control — one tap
+                // guarantees every off-screen match comes into view.
+                onZoomOut: widget.controller.resetToWorld,
               ),
             ),
           controls,
