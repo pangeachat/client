@@ -551,9 +551,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             emptyVerdict: () => mapController.emptyVerdict,
             canZoomOut: () => mapController.canZoomOut,
             onWidenSearch: mapController.widenFilters,
-            // Resets to the whole-world view (all the way out, re-centered) —
-            // the map's World control — so one tap reveals every off-screen
-            // match, not just the next zoom level.
+            // Resets to the whole-world view (all the way out, centered over
+            // the fullest window of matching pins, #8121) — the map's World
+            // control — so one tap reveals the most matches a floor-zoomed
+            // narrow viewport can show, not just the next zoom level.
             onZoomOut: mapController.resetToWorld,
             viewRevision: mapController.viewRevision,
             // The collapsible filter surface riding above the bar — the narrow

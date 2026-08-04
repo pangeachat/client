@@ -679,12 +679,35 @@ class WorldMapController extends State<WorldMap>
   /// step — a deliberate tap goes straight to focus, no peek.
   void flyTo(QuestActivityCard card) => openActivity(card);
 
-  /// Glide back to the whole-world view (the initial camera). Pins and search
-  /// only ever zoom the camera IN, so this is the one explicit "zoom out to
-  /// everything" affordance (#7086). Camera-only: the course scope, focus, and
-  /// open panels are untouched.
+  /// Glide back to the whole-world view. Pins and search only ever zoom the
+  /// camera IN, so this is the one explicit "zoom out to everything"
+  /// affordance (#7086). Camera-only: the course scope, focus, and open panels
+  /// are untouched.
+  ///
+  /// The center is not fixed (#8121): at the zoom floor a narrow viewport
+  /// shows only a slice of the world's longitudes, so a fixed (Europe-ish)
+  /// center could leave every matching activity off-screen with nothing left
+  /// to zoom. Center instead on the fullest viewport-sized window of the
+  /// currently-matching pins ([WorldMapConstants.worldResetCenter]), falling
+  /// back to the old fixed center when nothing is loaded.
   void resetToWorld() {
-    _animateCameraTo(const LatLng(20, 0), minZoom);
+    _animateCameraTo(_worldResetCenter(), minZoom);
+  }
+
+  /// The reset's target center: the view showing the maximum number of the
+  /// currently-matching pins (#8121) — the same [visiblePins] set the
+  /// empty-view card's matches-offscreen verdict counts, so its "Zoom out"
+  /// lever reveals the matches it promised.
+  LatLng _worldResetCenter() {
+    const fallback = LatLng(20, 0);
+    final Size viewport;
+    try {
+      viewport = mapController.camera.nonRotatedSize;
+    } catch (_) {
+      return fallback; // camera not laid out yet
+    }
+    final points = visiblePins.map((c) => c.point).whereType<LatLng>().toList();
+    return WorldMapConstants.worldResetCenter(viewport, points) ?? fallback;
   }
 
   /// The viewport-derived zoom-out floor (#7813, [WorldMapConstants.minZoomFor])

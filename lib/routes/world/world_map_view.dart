@@ -1086,9 +1086,10 @@ class _WorldMapViewState extends State<WorldMapView> {
                 onReset: widget.controller.resetFilters,
                 emptyVerdict: widget.controller.emptyVerdict,
                 canZoomOut: widget.controller.canZoomOut,
-                // "Zoom out" resets to the whole-world view (all the way out and
-                // re-centered), the same as the map's World control — one tap
-                // guarantees every off-screen match comes into view.
+                // "Zoom out" resets to the whole-world view (all the way out,
+                // centered over the fullest window of matching pins, #8121),
+                // the same as the map's World control — one tap brings the
+                // most matches a floor-zoomed viewport can show into view.
                 onZoomOut: widget.controller.resetToWorld,
               ),
             ),
