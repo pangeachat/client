@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Thuto ea hau ea boikoetliso e felile kamora metsotso e {minutes} ntle le ts'ebetso.",
     "autocorrectMobileOnly": "Fono feela",
     "autocorrectMobileOnlyWarning": "Ho lokisa ka bo ho bona ho fumaneha feela ho app ea mohala.",
+    "choosePangeaAvatar": "Kgetha avatar ya Pangea",
     "readAloudNoVoiceTitle": "Ha ho lentsoe la boleng bo holimo la {language} le fumanoeng",
     "readAloudNoVoiceDesktopWeb": "Sebatli sena ha se fane ka lentsoe la boleng bo holimo la {language}, kahoo melaetsa e ke ke ea baloa hantle mona. Chrome le Edge hangata li kenyelletsa mantsoe a boleng bo holimo.",
     "readAloudGetChrome": "Fumana Chrome",

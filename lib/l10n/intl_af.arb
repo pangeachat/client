@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Jou oefensessie het geëindig na {minutes} minute van onaktiwiteit.",
     "autocorrectMobileOnly": "Slegs mobiel",
     "autocorrectMobileOnlyWarning": "Toestel-outokorreksie is slegs op die mobiele toepassing beskikbaar.",
+    "choosePangeaAvatar": "Kies 'n Pangea-avatar",
     "readAloudNoVoiceTitle": "Geen hoëgehalte {language}-stem gevind nie",
     "readAloudNoVoiceDesktopWeb": "Hierdie blaaier bied nie 'n hoëgehalte {language}-stem nie, so boodskappe kan nie goed hier voorgelees word nie. Chrome en Edge sluit gewoonlik hoëgehalte stemme in.",
     "readAloudGetChrome": "Kry Chrome",

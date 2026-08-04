@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Ձեր պրակտիկայի սեսիան ավարտվեց {minutes} րոպե անգործությունից հետո:",
     "autocorrectMobileOnly": "Միայն բջջայինի համար",
     "autocorrectMobileOnlyWarning": "Սարքի ավտոուղղումը հասանելի է միայն բջջային հավելվածում։",
+    "choosePangeaAvatar": "Ընտրեք Pangea ավատար",
     "readAloudNoVoiceTitle": "Բարձրորակ {language} ձայն չի գտնվել",
     "readAloudNoVoiceDesktopWeb": "Այս բրաուզերը չի առաջարկում բարձրորակ {language} ձայն, ուստի հաղորդագրությունները լավ չեն կարող բարձրաձայն կարդացվել այստեղ։ Chrome-ը և Edge-ը սովորաբար ներառում են բարձրորակ ձայներ։",
     "readAloudGetChrome": "Ստանալ Chrome",

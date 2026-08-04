@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Nthawi yanu yochita masewera yatha patatha mphindi {minutes} osachita chilichonse.",
     "autocorrectMobileOnly": "Pa foni yokha",
     "autocorrectMobileOnlyWarning": "Kukonza zolakwika zokha kumapezeka pa pulogalamu yam'manja.",
+    "choosePangeaAvatar": "Sankhani chithunzi cha Pangea",
     "readAloudNoVoiceTitle": "Palibe mawu apamwamba a {language} omwe apezedwa",
     "readAloudNoVoiceDesktopWeb": "Msakatuli uyu alibe mawu apamwamba a {language}, kotero mauthenga sangawerengedwe bwino pano. Chrome ndi Edge nthawi zambiri amakhala ndi mawu apamwamba.",
     "readAloudGetChrome": "Pezani Chrome",

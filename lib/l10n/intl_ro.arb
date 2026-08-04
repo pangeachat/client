@@ -10428,6 +10428,7 @@
     "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate.",
     "autocorrectMobileOnly": "Doar pe mobil",
     "autocorrectMobileOnlyWarning": "Corectarea automată a dispozitivului este disponibilă doar în aplicația mobilă.",
+    "choosePangeaAvatar": "Alege un avatar Pangea",
     "readAloudNoVoiceTitle": "Nu s-a găsit o voce {language} de înaltă calitate",
     "readAloudNoVoiceDesktopWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Chrome și Edge includ de obicei voci de înaltă calitate.",
     "readAloudGetChrome": "Obțineți Chrome",

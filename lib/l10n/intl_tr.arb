@@ -9997,6 +9997,7 @@
     "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi.",
     "autocorrectMobileOnly": "Yalnızca mobil",
     "autocorrectMobileOnlyWarning": "Cihaz otomatik düzeltme özelliği yalnızca mobil uygulamada mevcuttur.",
+    "choosePangeaAvatar": "Pangea avatarı seç",
     "readAloudNoVoiceTitle": "Yüksek kaliteli {language} sesi bulunamadı",
     "readAloudNoVoiceDesktopWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Chrome ve Edge genellikle yüksek kaliteli sesler içerir.",
     "readAloudGetChrome": "Chrome'u Edinin",

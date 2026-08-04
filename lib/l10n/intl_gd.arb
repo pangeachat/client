@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Thàinig an seisean cleachdaidh agad gu crìch an dèidh {minutes} mionaid gun ghnìomhachd.",
     "autocorrectMobileOnly": "Fòn-làimhe a-mhàin",
     "autocorrectMobileOnlyWarning": "Chan eil fèin-cheartachadh inneal ri fhaighinn ach air an aplacaid fòn-làimhe.",
+    "choosePangeaAvatar": "Tagh avatar Pangea",
     "readAloudNoVoiceTitle": "Cha deach guth {language} de chàileachd àrd a lorg",
     "readAloudNoVoiceDesktopWeb": "Chan eil an brabhsair seo a’ tabhann guth {language} de chàileachd àrd, is mar sin chan urrainnear teachdaireachdan a leughadh a-mach gu math an seo. Mar as trice bidh Chrome is Edge a’ toirt a-steach guthan de chàileachd àrd.",
     "readAloudGetChrome": "Faigh Chrome",

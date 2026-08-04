@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Fadhigaaga tababarka wuxuu dhammaaday {minutes} daqiiqo ka dib markii aan wax dhaqdhaqaaq ah la samayn.",
     "autocorrectMobileOnly": "Kaliya moobilka",
     "autocorrectMobileOnlyWarning": "Sixitaanka tooska ah ee aaladda waxa kaliya oo laga heli karaa abka mobaylka.",
+    "choosePangeaAvatar": "Dooro sawirka Pangea",
     "readAloudNoVoiceTitle": "Lama helin cod tayo sare leh oo {language} ah",
     "readAloudNoVoiceDesktopWeb": "Browser-kani ma bixiyo cod tayo sare leh oo {language} ah, sidaa darteed fariimaha si fiican looma akhrin karo halkan. Chrome iyo Edge inta badan waxaa ku jira codad tayo sare leh.",
     "readAloudGetChrome": "Soo deji Chrome",

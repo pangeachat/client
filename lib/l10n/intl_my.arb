@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "သင်၏လေ့ကျင့်မှုအစည်းအဝေးသည် {minutes} မိနစ်ကြာ လှုပ်ရှားမှုမရှိဘဲ အဆုံးသတ်သွားပါပြီ။",
     "autocorrectMobileOnly": "မိုဘိုင်းလ်အတွက်သာ",
     "autocorrectMobileOnlyWarning": "စက်၏အလိုအလျောက်ပြင်ဆင်ခြင်းကို မိုဘိုင်းအက်ပ်တွင်သာ ရရှိနိုင်ပါသည်။",
+    "choosePangeaAvatar": "Pangea အသားပေးပုံ ရွေးပါ",
     "readAloudNoVoiceTitle": "အရည်အသွေးမြင့် {language} အသံ မတွေ့ရှိပါ",
     "readAloudNoVoiceDesktopWeb": "ဤဘရောက်ဆာတွင် အရည်အသွေးမြင့် {language} အသံ မရှိသောကြောင့် မက်ဆေ့ချ်များကို ကောင်းစွာ ဖတ်၍မရပါ။ Chrome နှင့် Edge တွင် အရည်အသွေးမြင့် အသံများ ပါဝင်လေ့ရှိပါသည်။",
     "readAloudGetChrome": "Chrome ကို ရယူပါ",

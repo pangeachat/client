@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "പ്രവർത്തനരഹിതമായി {minutes} മിനിറ്റിന് ശേഷം നിങ്ങളുടെ പരിശീലന സെഷൻ അവസാനിച്ചു.",
     "autocorrectMobileOnly": "മൊബൈലിൽ മാത്രം",
     "autocorrectMobileOnlyWarning": "ഉപകരണ ഓട്ടോകറക്റ്റ് മൊബൈൽ ആപ്പിൽ മാത്രമേ ലഭ്യമാകൂ.",
+    "choosePangeaAvatar": "ഒരു പാഞ്ജിയ അവതാർ തിരഞ്ഞെടുക്കുക",
     "readAloudNoVoiceTitle": "ഉയർന്ന നിലവാരമുള്ള {language} വോയിസ് കണ്ടെത്തിയില്ല",
     "readAloudNoVoiceDesktopWeb": "ഈ ബ്രൗസർ ഉയർന്ന നിലവാരമുള്ള {language} വോയിസ് നൽകുന്നില്ല, അതിനാൽ സന്ദേശങ്ങൾ ഇവിടെ നന്നായി വായിക്കാൻ കഴിയില്ല. Chrome-ലും Edge-ലും സാധാരണയായി ഉയർന്ന നിലവാരമുള്ള വോയിസുകൾ ഉൾപ്പെടുന്നു.",
     "readAloudGetChrome": "Chrome നേടുക",

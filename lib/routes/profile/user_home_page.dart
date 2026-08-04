@@ -9,6 +9,7 @@ import 'package:mime/mime.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/widgets/preset_avatar_picker.dart';
 import 'package:fluffychat/routes/settings/settings.dart';
 import 'package:fluffychat/routes/settings/settings_learning/country_picker_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/gender_dropdown.dart';
@@ -77,6 +78,11 @@ class _UserHomePageState extends State<UserHomePage> {
         label: L10n.of(context).openGallery,
         icon: const Icon(Icons.photo_outlined),
       ),
+      AdaptiveModalAction(
+        value: AvatarAction.preset,
+        label: L10n.of(context).choosePangeaAvatar,
+        icon: const Icon(Icons.emoji_emotions_outlined),
+      ),
       if (profile?.avatarUrl != null)
         AdaptiveModalAction(
           value: AvatarAction.remove,
@@ -99,6 +105,22 @@ class _UserHomePageState extends State<UserHomePage> {
       final success = await showFutureLoadingDialog(
         context: context,
         future: () => matrix.client.setAvatar(null),
+      );
+      if (success.error == null) {
+        updateProfileFuture();
+      }
+      return;
+    }
+    if (action == AvatarAction.preset) {
+      final url = await showPresetAvatarPickerDialog(context);
+      if (url == null) return;
+      final success = await showFutureLoadingDialog(
+        context: context,
+        future: () => matrix.client.setProfileField(
+          matrix.client.userID!,
+          'avatar_url',
+          {'avatar_url': url.toString()},
+        ),
       );
       if (success.error == null) {
         updateProfileFuture();

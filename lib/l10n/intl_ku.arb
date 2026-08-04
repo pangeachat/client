@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "کاتی ڕاهێنانەکەت دوای {minutes} خولەک بەبێ چالاکی کۆتایی هات.",
     "autocorrectMobileOnly": "تەنیا مۆبایل",
     "autocorrectMobileOnlyWarning": "خۆکارڕاستکردنەوەی ئامێر تەنیا لە ئەپی مۆبایل بەردەستە.",
+    "choosePangeaAvatar": "وێنەیەکی پەنجه‌ئا هەڵبژێرە",
     "readAloudNoVoiceTitle": "هیچ دەنگێکی {language}ی کوالیتی بەرز نەدۆزرایەوە",
     "readAloudNoVoiceDesktopWeb": "ئەم وێبگەڕە دەنگێکی {language}ی کوالیتی بەرزی تێدا نییە، بۆیە نامەکان لێرە بە باشی ناخوێندرێنەوە. کرۆم و ئێدج بەزۆری دەنگی کوالیتی بەرزیان تێدایە.",
     "readAloudGetChrome": "کرۆم دابگرە",

@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Æfingalotan þín rann út eftir {minutes} mínútur án virkni.",
     "autocorrectMobileOnly": "Aðeins í farsíma",
     "autocorrectMobileOnlyWarning": "Sjálfvirk leiðrétting er aðeins í boði í farsímaforritinu.",
+    "choosePangeaAvatar": "Veldu Pangea avatar",
     "readAloudNoVoiceTitle": "Engin hágæða {language} rödd fannst",
     "readAloudNoVoiceDesktopWeb": "Þessi vafri býður ekki upp á hágæða {language} rödd, svo ekki er hægt að lesa upp skilaboð vel hér. Chrome og Edge innihalda venjulega hágæða raddir.",
     "readAloudGetChrome": "Sækja Chrome",

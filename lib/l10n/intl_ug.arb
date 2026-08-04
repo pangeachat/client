@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "مەشقىڭىز {minutes} مىنۇت ھەرىكەتسىز تۇرغاندىن كېيىن ئاخىرلاشتى.",
     "autocorrectMobileOnly": "پەقەت يانفوندا",
     "autocorrectMobileOnlyWarning": "ئاپتوماتىك تۈزىتىش ئىقتىدارى پەقەت يانفون ئەپچىكىدە بار.",
+    "choosePangeaAvatar": "Pangea ئاۋاتار تاللاڭ",
     "readAloudNoVoiceTitle": "يۇقىرى سۈپەتلىك {language} ئاۋازى تېپىلمىدى",
     "readAloudNoVoiceDesktopWeb": "بۇ تور كۆرگۈچتە يۇقىرى سۈپەتلىك {language} ئاۋازى يوق، شۇڭا بۇ يەردە ئۇچۇرلارنى ياخشى ئوقۇغىلى بولمايدۇ. Chrome ۋە Edge ئادەتتە يۇقىرى سۈپەتلىك ئاۋازلارنى ئۆز ئىچىگە ئالىدۇ.",
     "readAloudGetChrome": "Chrome نى ئېلىڭ",

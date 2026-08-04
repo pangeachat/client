@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Sesioni juaj i praktikës përfundoi pas {minutes} minutash pa aktivitet.",
     "autocorrectMobileOnly": "Vetëm celular",
     "autocorrectMobileOnlyWarning": "Autokorrektimi i pajisjes është i disponueshëm vetëm në aplikacionin celular.",
+    "choosePangeaAvatar": "Zgjidh një avatar Pangea",
     "readAloudNoVoiceTitle": "Nuk u gjet asnjë zë me cilësi të lartë {language}",
     "readAloudNoVoiceDesktopWeb": "Ky shfletues nuk ofron një zë me cilësi të lartë {language}, kështu që mesazhet nuk mund të lexohen me zë të lartë mirë këtu. Chrome dhe Edge zakonisht përfshijnë zëra me cilësi të lartë.",
     "readAloudGetChrome": "Merrni Chrome",

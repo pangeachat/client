@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "វគ្គហ្វឹកហាត់របស់អ្នកបានបញ្ចប់បន្ទាប់ពី {minutes} នាទីដោយគ្មានសកម្មភាព។",
     "autocorrectMobileOnly": "សម្រាប់តែទូរសព្ទ",
     "autocorrectMobileOnlyWarning": "ការកែស្វ័យប្រវត្តិរបស់ឧបករណ៍អាចប្រើបានតែនៅលើកម្មវិធីទូរសព្ទប៉ុណ្ណោះ។",
+    "choosePangeaAvatar": "ជ្រើសរើសរូបតំណាង Pangea",
     "readAloudNoVoiceTitle": "រកមិនឃើញសំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ",
     "readAloudNoVoiceDesktopWeb": "កម្មវិធីរុករកនេះមិនផ្ដល់សំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ ដូច្នេះសារមិនអាចអានឮបានល្អនៅទីនេះទេ។ ជាទូទៅ Chrome និង Edge រួមបញ្ចូលសំឡេងដែលមានគុណភាពខ្ពស់។",
     "readAloudGetChrome": "ទាញយក Chrome",

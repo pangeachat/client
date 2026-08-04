@@ -10465,6 +10465,7 @@
     "practiceSessionTimedOut": "{minutes}分間操作がなかったため、練習セッションが終了しました。",
     "autocorrectMobileOnly": "モバイルのみ",
     "autocorrectMobileOnlyWarning": "デバイスの自動修正はモバイルアプリでのみ利用可能です。",
+    "choosePangeaAvatar": "パンゲアのアバターを選択",
     "readAloudNoVoiceTitle": "高品質な{language}の音声が見つかりません",
     "readAloudNoVoiceDesktopWeb": "このブラウザでは高品質な{language}の音声が提供されていないため、ここではメッセージをうまく読み上げることができません。通常、ChromeとEdgeには高品質な音声が含まれています。",
     "readAloudGetChrome": "Chromeを入手",

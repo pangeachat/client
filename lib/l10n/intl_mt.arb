@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Is-sessjoni ta' prattika tiegħek intemmet wara {minutes} minuti mingħajr attività.",
     "autocorrectMobileOnly": "Mobile biss",
     "autocorrectMobileOnlyWarning": "L-autocorrect tal-apparat huwa disponibbli biss fuq l-app mobbli.",
+    "choosePangeaAvatar": "Agħżel avatar ta' Pangea",
     "readAloudNoVoiceTitle": "Ma nstabet l-ebda vuċi ta' kwalità għolja bil-{language}",
     "readAloudNoVoiceDesktopWeb": "Dan il-browser ma joffrix vuċi ta' kwalità għolja bil-{language}, għalhekk il-messaġġi ma jistgħux jinqraw b'leħen għoli sew hawn. Chrome u Edge normalment jinkludu vuċijiet ta' kwalità għolja.",
     "readAloudGetChrome": "Ikseb Chrome",

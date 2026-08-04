@@ -9733,6 +9733,7 @@
     "practiceSessionTimedOut": "Harjoitussessiosi päättyi {minutes} minuutin käyttämättömyyden jälkeen.",
     "autocorrectMobileOnly": "Vain mobiililaitteille",
     "autocorrectMobileOnlyWarning": "Laitteen automaattinen korjaus on käytettävissä vain mobiilisovelluksessa.",
+    "choosePangeaAvatar": "Valitse Pangea-avatar",
     "readAloudNoVoiceTitle": "Laadukasta {language}-ääntä ei löydy",
     "readAloudNoVoiceDesktopWeb": "Tämä selain ei tarjoa laadukasta {language}-ääntä, joten viestejä ei voida lukea ääneen kunnolla. Chrome ja Edge sisältävät yleensä laadukkaita ääniä.",
     "readAloudGetChrome": "Hanki Chrome",

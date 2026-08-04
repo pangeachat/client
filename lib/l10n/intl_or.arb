@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "ଆପଣଙ୍କ ଅଭ୍ୟାସ ଅଧିବେଶନ {minutes} ମିନିଟ୍ ପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ବିନା ଶେଷ ହୋଇଛି।",
     "autocorrectMobileOnly": "କେବଳ ମୋବାଇଲ୍",
     "autocorrectMobileOnlyWarning": "ଡିଭାଇସ୍ ଅଟୋକରେକ୍ଟ କେବଳ ମୋବାଇଲ୍ ଆପ୍‌ରେ ଉପଲବ୍ଧ ଅଛି।",
+    "choosePangeaAvatar": "ଏକ ପାଙ୍ଗିଆ ଅବତାର ବାଛନ୍ତୁ",
     "readAloudNoVoiceTitle": "ଉଚ୍ଚ-ଗୁଣବତ୍ତା ବିଶିଷ୍ଟ {language} ଭଏସ୍ ମିଳିଲା ନାହିଁ",
     "readAloudNoVoiceDesktopWeb": "ଏହି ବ୍ରାଉଜର୍ ଉଚ୍ଚ-ଗୁଣବତ୍ତା ବିଶିଷ୍ଟ {language} ଭଏସ୍ ପ୍ରଦାନ କରୁନାହିଁ, ତେଣୁ ଏଠାରେ ମେସେଜ୍‌ଗୁଡ଼ିକୁ ଭଲ ଭାବରେ ପଢ଼ାଯାଇପାରିବ ନାହିଁ। Chrome ଏବଂ Edge ସାଧାରଣତଃ ଉଚ୍ଚ-ଗୁଣବତ୍ତା ବିଶିଷ୍ଟ ଭଏସ୍ ଅନ୍ତର୍ଭୁକ୍ତ କରିଥାନ୍ତି।",
     "readAloudGetChrome": "Chrome ପାଆନ୍ତୁ",

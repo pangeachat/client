@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Deng Übungssessioun ass no {minutes} Minutten ouni Aktivitéit ofgelaf.",
     "autocorrectMobileOnly": "Nëmme mobil",
     "autocorrectMobileOnlyWarning": "D'Autokorrektur vum Apparat ass nëmmen an der mobiler App verfügbar.",
+    "choosePangeaAvatar": "Wielt en Pangea Avatar",
     "readAloudNoVoiceTitle": "Keng héichqualitativ {language} Stëmm fonnt",
     "readAloudNoVoiceDesktopWeb": "Dëse Browser bitt keng héichqualitativ {language} Stëmm un, sou datt Messagen hei net gutt virgelies kënne ginn. Chrome an Edge enthalen normalerweis héichqualitativ Stëmmen.",
     "readAloudGetChrome": "Chrome kréien",

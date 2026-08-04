@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Ua maeʻa lau sauniga faʻataʻitaʻi pe a maeʻa le {minutes} minute e aunoa ma se gaioiga.",
     "autocorrectMobileOnly": "Na'o le telefoni feavea'i",
     "autocorrectMobileOnlyWarning": "O le autocorrect o le masini e na'o le app feavea'i e maua.",
+    "choosePangeaAvatar": "Filifili se ata Pangea",
     "readAloudNoVoiceTitle": "E le'i maua se leo maualuga {language}",
     "readAloudNoVoiceDesktopWeb": "E le ofoina mai e lenei su'esu'ega se leo maualuga {language}, o lea e le mafai ai ona faitau lelei fe'au iinei. E masani ona aofia ai e le Chrome ma le Edge leo maualuga.",
     "readAloudGetChrome": "Maua le Chrome",

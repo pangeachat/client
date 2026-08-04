@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Сеанси машқи шумо пас аз {minutes} дақиқа бефаъолиятӣ ба охир расид.",
     "autocorrectMobileOnly": "Танҳо мобилӣ",
     "autocorrectMobileOnlyWarning": "Худкор ислоҳкунӣ танҳо дар барномаи мобилӣ дастрас аст.",
+    "choosePangeaAvatar": "Аватар Pangea-ро интихоб кунед",
     "readAloudNoVoiceTitle": "Овози баландсифати {language} ёфт нашуд",
     "readAloudNoVoiceDesktopWeb": "Ин браузер овози баландсифати {language}-ро пешниҳод намекунад, аз ин рӯ паёмҳоро дар ин ҷо хуб хондан мумкин нест. Chrome ва Edge одатан овозҳои баландсифатро дар бар мегиранд.",
     "readAloudGetChrome": "Chrome-ро гиред",

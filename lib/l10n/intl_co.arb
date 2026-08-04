@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "A vostra sessione di pratica hè finita dopu à {minutes} minuti senza attività.",
     "autocorrectMobileOnly": "Solu mobile",
     "autocorrectMobileOnlyWarning": "L'autucurrezzione di u dispusitivu hè dispunibule solu nant'à l'app mobile.",
+    "choosePangeaAvatar": "Sceglite un avatar Pangea",
     "readAloudNoVoiceTitle": "Nisuna voce di alta qualità in {language} truvata",
     "readAloudNoVoiceDesktopWeb": "Stu navigatore ùn offre micca una voce di alta qualità in {language}, dunque i messaghji ùn ponu micca esse letti bè quì. Chrome è Edge includenu di solitu voci di alta qualità.",
     "readAloudGetChrome": "Scaricate Chrome",

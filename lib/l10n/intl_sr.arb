@@ -10651,6 +10651,7 @@
     "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne uređaje",
     "autocorrectMobileOnlyWarning": "Automatska ispravka je dostupna samo u mobilnoj aplikaciji.",
+    "choosePangeaAvatar": "Izaberite Pangea avatar",
     "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
     "readAloudNoVoiceDesktopWeb": "Ovaj pregledač ne nudi visokokvalitetan glas za {language}, tako da se poruke ovde ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
     "readAloudGetChrome": "Preuzmite Chrome",

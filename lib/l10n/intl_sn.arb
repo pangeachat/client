@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Chikamu chako chekudzidzira chapera mushure memaminitsi {minutes} usina kuita chinhu.",
     "autocorrectMobileOnly": "Pamafoni chete",
     "autocorrectMobileOnlyWarning": "Autocorrect yefoni inongowanikwa pafoni app chete.",
+    "choosePangeaAvatar": "Sarudza Pangea avatar",
     "readAloudNoVoiceTitle": "Hapana izwi remhando yepamusoro re {language} rawawanikwa",
     "readAloudNoVoiceDesktopWeb": "Bhurausa iri haripi izwi remhando yepamusoro re {language}, saka mameseji haagoni kuverengwa zvakanaka pano. Chrome ne Edge kazhinji zvine mazwi emhando yepamusoro.",
     "readAloudGetChrome": "Tora Chrome",

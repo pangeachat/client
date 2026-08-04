@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Fəaliyyətsizliyə görə məşq sessiyanız {minutes} dəqiqədən sonra başa çatdı.",
     "autocorrectMobileOnly": "Yalnız mobil",
     "autocorrectMobileOnlyWarning": "Cihazın avtodüzəlişi yalnız mobil tətbiqdə mövcuddur.",
+    "choosePangeaAvatar": "Pangea avatarı seçin",
     "readAloudNoVoiceTitle": "{language} üçün yüksək keyfiyyətli səs tapılmadı",
     "readAloudNoVoiceDesktopWeb": "Bu brauzer yüksək keyfiyyətli {language} səsi təklif etmir, ona görə də mesajlar burada yaxşı oxuna bilməz. Chrome və Edge adətən yüksək keyfiyyətli səslərə malikdir.",
     "readAloudGetChrome": "Chrome əldə edin",

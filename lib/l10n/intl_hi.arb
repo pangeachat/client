@@ -10328,6 +10328,7 @@
     "practiceSessionTimedOut": "आपकी अभ्यास सत्र {minutes} मिनट तक कोई गतिविधि न होने के बाद समाप्त हो गया।",
     "autocorrectMobileOnly": "केवल मोबाइल",
     "autocorrectMobileOnlyWarning": "डिवाइस ऑटोकरेक्ट केवल मोबाइल ऐप पर उपलब्ध है।",
+    "choosePangeaAvatar": "पेंजिया अवतार चुनें",
     "readAloudNoVoiceTitle": "{language} की कोई उच्च-गुणवत्ता वाली आवाज़ नहीं मिली",
     "readAloudNoVoiceDesktopWeb": "यह ब्राउज़र उच्च-गुणवत्ता वाली {language} आवाज़ प्रदान नहीं करता है, इसलिए संदेशों को यहां अच्छी तरह से पढ़ा नहीं जा सकता है। Chrome और Edge में आमतौर पर उच्च-गुणवत्ता वाली आवाज़ें शामिल होती हैं।",
     "readAloudGetChrome": "Chrome प्राप्त करें",

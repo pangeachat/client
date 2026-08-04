@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Natapos ang imong practice session human sa {minutes} ka minuto nga walay kalihokan.",
     "autocorrectMobileOnly": "Mobile lang",
     "autocorrectMobileOnlyWarning": "Ang autocorrect sa device anaa lang sa mobile app.",
+    "choosePangeaAvatar": "Pagpili og Pangea avatar",
     "readAloudNoVoiceTitle": "Walay nakit-an nga taas og kalidad nga tingog sa {language}",
     "readAloudNoVoiceDesktopWeb": "Kini nga browser walay gitanyag nga taas og kalidad nga tingog sa {language}, busa dili maayo nga mabasa og kusog ang mga mensahe dinhi. Ang Chrome ug Edge kasagaran naglakip og taas og kalidad nga mga tingog.",
     "readAloudGetChrome": "Kuhaa ang Chrome",

@@ -9799,6 +9799,7 @@
     "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt.",
     "autocorrectMobileOnly": "Csak mobilon",
     "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el.",
+    "choosePangeaAvatar": "Válassz Pangea avatart",
     "readAloudNoVoiceTitle": "Nincs kiváló minőségű {language} hang",
     "readAloudNoVoiceDesktopWeb": "Ez a böngésző nem kínál kiváló minőségű {language} hangot, így az üzenetek nem olvashatók fel jól. A Chrome és az Edge általában tartalmaz kiváló minőségű hangokat.",
     "readAloudGetChrome": "Chrome letöltése",

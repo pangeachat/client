@@ -9700,6 +9700,7 @@
     "practiceSessionTimedOut": "Faoliyatsiz {minutes} daqiqadan so‘ng mashg‘ulotingiz tugadi.",
     "autocorrectMobileOnly": "Faqat mobil qurilmalar uchun",
     "autocorrectMobileOnlyWarning": "Qurilma avtokorreksiyasi faqat mobil ilovada mavjud.",
+    "choosePangeaAvatar": "Pangea avatarini tanlang",
     "readAloudNoVoiceTitle": "Yuqori sifatli {language} ovozi topilmadi",
     "readAloudNoVoiceDesktopWeb": "Bu brauzer yuqori sifatli {language} ovozini taklif qilmaydi, shuning uchun xabarlar bu yerda yaxshi o'qilmaydi. Chrome va Edge odatda yuqori sifatli ovozlarni o'z ichiga oladi.",
     "readAloudGetChrome": "Chrome'ni yuklab olish",

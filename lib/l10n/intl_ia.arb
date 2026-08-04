@@ -10638,6 +10638,7 @@
     "practiceSessionTimedOut": "Tu session de practica ha terminate post {minutes} minutas sin activitate.",
     "autocorrectMobileOnly": "Solmente mobile",
     "autocorrectMobileOnlyWarning": "Le autocorrection del apparato es solmente disponibile in le application mobile.",
+    "choosePangeaAvatar": "Selige un avatar de Pangea",
     "readAloudNoVoiceTitle": "Nulle voce de alte qualitate pro {language} trovate",
     "readAloudNoVoiceDesktopWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Chrome e Edge usualmente include voces de alte qualitate.",
     "readAloudGetChrome": "Obtene Chrome",

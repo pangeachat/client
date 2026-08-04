@@ -9696,6 +9696,7 @@
     "practiceSessionTimedOut": "Ваш сеанс практики завершився після {minutes} хвилин бездіяльності.",
     "autocorrectMobileOnly": "Лише для мобільних пристроїв",
     "autocorrectMobileOnlyWarning": "Автовиправлення доступне лише в мобільному застосунку.",
+    "choosePangeaAvatar": "Виберіть аватар Pangea",
     "readAloudNoVoiceTitle": "Не знайдено високоякісного голосу {language}",
     "readAloudNoVoiceDesktopWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Chrome та Edge зазвичай мають високоякісні голоси.",
     "readAloudGetChrome": "Завантажити Chrome",

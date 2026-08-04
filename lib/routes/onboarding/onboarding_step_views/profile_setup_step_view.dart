@@ -10,6 +10,7 @@ import 'package:mime/mime.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/preset_avatar_picker.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/profile_setup_onboarding_step.dart';
 import 'package:fluffychat/utils/file_selector.dart';
@@ -59,29 +60,6 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
     _displayNameController.dispose();
     _avatarNotifier.dispose();
     super.dispose();
-  }
-
-  List<Uri> get _avatarOptions =>
-      List.generate(5, (index) => Uri.parse(_avatarUrlString(index + 1)));
-
-  String _avatarUrlString(int index) =>
-      "${AppConfig.assetsBaseURL}/avatar_$index.png";
-
-  String _avatarDescription(int index) {
-    switch (index) {
-      case 0:
-        return L10n.of(context).dinoAvatarLabel;
-      case 1:
-        return L10n.of(context).bearAvatarLabel;
-      case 2:
-        return L10n.of(context).squidAvatarLabel;
-      case 3:
-        return L10n.of(context).cartoonAvatarLabel;
-      case 4:
-        return L10n.of(context).robotAvatarLabel;
-      default:
-        return L10n.of(context).defaultOption;
-    }
   }
 
   void _setDisplayName() {
@@ -247,33 +225,7 @@ class ProfileSetupStepViewState extends State<ProfileSetupStepView> {
                                 ),
                               ),
                               SizedBox(height: 20.0),
-                              Row(
-                                spacing: 6.0,
-                                mainAxisSize: MainAxisSize.min,
-                                children: _avatarOptions
-                                    .mapIndexed(
-                                      (index, avatarUrl) => Semantics(
-                                        label: _avatarDescription(index),
-                                        child: InkWell(
-                                          borderRadius: BorderRadius.circular(
-                                            100.0,
-                                          ),
-                                          onTap: () => _setAvatarUrl(avatarUrl),
-                                          child: SizedBox(
-                                            height: 32.0,
-                                            width: 32.0,
-                                            child: ImageByUrl(
-                                              width: 32.0,
-                                              imageUrl: avatarUrl,
-                                              borderRadius:
-                                                  BorderRadius.circular(100.0),
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
-                                    .toList(),
-                              ),
+                              PresetAvatarRow(onSelected: _setAvatarUrl),
                             ],
                           );
                         },

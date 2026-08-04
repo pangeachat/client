@@ -10616,6 +10616,7 @@
     "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות.",
     "autocorrectMobileOnly": "נייד בלבד",
     "autocorrectMobileOnlyWarning": "התיקון האוטומטי זמין רק באפליקציה לנייד.",
+    "choosePangeaAvatar": "בחר אווטאר של Pangea",
     "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
     "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
     "readAloudGetChrome": "קבל את Chrome",

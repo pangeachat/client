@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Iseshini yakho yokuzijwayeza iphele ngemuva kwemizuzu engu-{minutes} ngaphandle komsebenzi.",
     "autocorrectMobileOnly": "Okweselula kuphela",
     "autocorrectMobileOnlyWarning": "Ukulungisa okuzenzakalelayo kwedivayisi kutholakala kuphela kuhlelo lokusebenza lweselula.",
+    "choosePangeaAvatar": "Khetha i-avatar yePangea",
     "readAloudNoVoiceTitle": "Ayikho izwi lekhwalithi ephezulu lesi-{language} elitholakele",
     "readAloudNoVoiceDesktopWeb": "Lesi siphequluli asihlinzeki ngezwi lesi-{language} elisezingeni eliphezulu, ngakho-ke imilayezo ayikwazi ukufundwa kahle lapha. I-Chrome ne-Edge ngokuvamile zifaka amazwi asezingeni eliphezulu.",
     "readAloudGetChrome": "Thola i-Chrome",

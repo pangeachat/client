@@ -10647,6 +10647,7 @@
     "practiceSessionTimedOut": "Via ekzercsesio finiĝis post {minutes} minutoj sen aktiveco.",
     "autocorrectMobileOnly": "Nur poŝtelefono",
     "autocorrectMobileOnlyWarning": "Aŭtomata korekto de aparato disponeblas nur en la poŝtelefona aplikaĵo.",
+    "choosePangeaAvatar": "Elektu Pangean avataron",
     "readAloudNoVoiceTitle": "Neniu altkvalita {language} voĉo trovita",
     "readAloudNoVoiceDesktopWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. Chrome kaj Edge kutime inkluzivas altkvalitajn voĉojn.",
     "readAloudGetChrome": "Akiri Chrome",

@@ -10647,6 +10647,7 @@
     "practiceSessionTimedOut": "Vaša vaja se je končala po {minutes} minutah neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne naprave",
     "autocorrectMobileOnlyWarning": "Samodejno popravljanje je na voljo samo v mobilni aplikaciji.",
+    "choosePangeaAvatar": "Izberite avatar Pangea",
     "readAloudNoVoiceTitle": "Ni najdenega visokokakovostnega glasu za {language}",
     "readAloudNoVoiceDesktopWeb": "Ta brskalnik ne ponuja visokokakovostnega glasu za {language}, zato sporočil ni mogoče dobro prebrati na glas. Chrome in Edge običajno vključujeta visokokakovostne glasove.",
     "readAloudGetChrome": "Prenesite Chrome",

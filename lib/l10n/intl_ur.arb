@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "آپ کا پریکٹس سیشن {minutes} منٹ کی غیرفعالی کے بعد ختم ہو گیا ہے۔",
     "autocorrectMobileOnly": "صرف موبائل",
     "autocorrectMobileOnlyWarning": "ڈیوائس آٹو کریکٹ صرف موبائل ایپ پر دستیاب ہے۔",
+    "choosePangeaAvatar": "پینجیا اوتار منتخب کریں",
     "readAloudNoVoiceTitle": "اعلیٰ معیار کی {language} آواز نہیں ملی",
     "readAloudNoVoiceDesktopWeb": "یہ براؤزر اعلیٰ معیار کی {language} آواز پیش نہیں کرتا، لہذا یہاں پیغامات کو اچھی طرح سے پڑھا نہیں جا سکتا۔ کروم اور ایج میں عام طور پر اعلیٰ معیار کی آوازیں شامل ہوتی ہیں۔",
     "readAloudGetChrome": "کروم حاصل کریں",

@@ -9696,6 +9696,7 @@
     "practiceSessionTimedOut": "Jūsu prakses sesija beidzās pēc {minutes} minūtēm bez aktivitātes.",
     "autocorrectMobileOnly": "Tikai mobilajām ierīcēm",
     "autocorrectMobileOnlyWarning": "Ierīces automātiskā labošana ir pieejama tikai mobilajā lietotnē.",
+    "choosePangeaAvatar": "Izvēlieties Pangea iemiesojumu",
     "readAloudNoVoiceTitle": "Nav atrasta augstas kvalitātes {language} balss",
     "readAloudNoVoiceDesktopWeb": "Šī pārlūkprogramma nepiedāvā augstas kvalitātes {language} balsi, tāpēc ziņojumus šeit nevar labi nolasīt. Chrome un Edge parasti ietver augstas kvalitātes balsis.",
     "readAloudGetChrome": "Iegūt Chrome",

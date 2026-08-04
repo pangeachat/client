@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit.",
     "autocorrectMobileOnly": "Allinne mobyl",
     "autocorrectMobileOnlyWarning": "Apparaat-autokorreksje is allinnich beskikber yn de mobile app.",
+    "choosePangeaAvatar": "Kies in Pangea-avatar",
     "readAloudNoVoiceTitle": "Gjin {language} stim fan hege kwaliteit fûn",
     "readAloudNoVoiceDesktopWeb": "Dizze browser biedt gjin {language} stim fan hege kwaliteit, dus berjochten kinne hjir net goed foarlêzen wurde. Chrome en Edge befetsje meastentiids stimmen fan hege kwaliteit.",
     "readAloudGetChrome": "Chrome downloade",

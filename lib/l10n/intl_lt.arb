@@ -10477,6 +10477,7 @@
     "practiceSessionTimedOut": "Jūsų praktikos sesija baigėsi po {minutes} minučių be veiklos.",
     "autocorrectMobileOnly": "Tik mobiliesiems",
     "autocorrectMobileOnlyWarning": "Įrenginio automatinis taisymas galimas tik mobiliojoje programėlėje.",
+    "choosePangeaAvatar": "Pasirinkite „Pangea“ pseudoportretą",
     "readAloudNoVoiceTitle": "Nerasta aukštos kokybės {language} balso",
     "readAloudNoVoiceDesktopWeb": "Ši naršyklė nepasiūlo aukštos kokybės {language} balso, todėl pranešimai čia negali būti gerai perskaityti. „Chrome“ ir „Edge“ paprastai turi aukštos kokybės balsus.",
     "readAloudGetChrome": "Gauti „Chrome“",

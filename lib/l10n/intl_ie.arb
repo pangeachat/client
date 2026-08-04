@@ -10328,6 +10328,7 @@
     "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan aon ghníomhaíocht.",
     "autocorrectMobileOnly": "Fón póca amháin",
     "autocorrectMobileOnlyWarning": "Níl ceartú uathoibríoch gléis ar fáil ach ar an aip shoghluaiste.",
+    "choosePangeaAvatar": "Roghnaigh avatar Pangea",
     "readAloudNoVoiceTitle": "Níor aimsíodh guth {language} ardchaighdeáin",
     "readAloudNoVoiceDesktopWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. De ghnáth bíonn guthanna ardchaighdeáin san áireamh i Chrome agus Edge.",
     "readAloudGetChrome": "Faigh Chrome",

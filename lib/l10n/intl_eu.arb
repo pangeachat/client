@@ -9696,6 +9696,7 @@
     "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren.",
     "autocorrectMobileOnly": "Mugikorrean bakarrik",
     "autocorrectMobileOnlyWarning": "Gailuaren zuzenketa automatikoa mugikorreko aplikazioan bakarrik dago erabilgarri.",
+    "choosePangeaAvatar": "Aukeratu Pangea avatar bat",
     "readAloudNoVoiceTitle": "Ez da kalitate handiko {language} ahotsik aurkitu",
     "readAloudNoVoiceDesktopWeb": "Nabigatzaile honek ez du kalitate handiko {language} ahotsik eskaintzen, beraz, mezuak ezin dira ondo irakurri hemen. Chrome eta Edge-k kalitate handiko ahotsak izan ohi dituzte.",
     "readAloudGetChrome": "Lortu Chrome",

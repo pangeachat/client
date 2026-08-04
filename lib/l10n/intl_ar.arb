@@ -10002,6 +10002,7 @@
     "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط.",
     "autocorrectMobileOnly": "للجوال فقط",
     "autocorrectMobileOnlyWarning": "التصحيح التلقائي للجهاز متاح فقط في تطبيق الجوال.",
+    "choosePangeaAvatar": "اختر صورة بانجيا الرمزية",
     "readAloudNoVoiceTitle": "لم يتم العثور على صوت عالي الجودة لـ {language}",
     "readAloudNoVoiceDesktopWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يتضمن Chrome و Edge عادةً أصواتًا عالية الجودة.",
     "readAloudGetChrome": "احصل على Chrome",

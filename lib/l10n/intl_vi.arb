@@ -6962,6 +6962,7 @@
     "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động.",
     "autocorrectMobileOnly": "Chỉ trên di động",
     "autocorrectMobileOnlyWarning": "Tự động sửa lỗi chỉ khả dụng trên ứng dụng di động.",
+    "choosePangeaAvatar": "Chọn ảnh đại diện Pangea",
     "readAloudNoVoiceTitle": "Không tìm thấy giọng đọc {language} chất lượng cao",
     "readAloudNoVoiceDesktopWeb": "Trình duyệt này không cung cấp giọng đọc {language} chất lượng cao, nên không thể đọc to tin nhắn tốt ở đây. Chrome và Edge thường có giọng đọc chất lượng cao.",
     "readAloudGetChrome": "Tải Chrome",

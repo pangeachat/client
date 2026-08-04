@@ -9307,6 +9307,7 @@
     "practiceSessionTimedOut": "སྦྱོང་བརྡར་གྱི་དུས་ཡུན་སྐར་མ་ {minutes} རིང་ལ་བྱེད་སྒོ་མེད་པར་མཇུག་སྒྲིལ་སོང་།",
     "autocorrectMobileOnly": "སྒུལ་འཕྲིན་ཁོ་ན།",
     "autocorrectMobileOnlyWarning": "སྒྲིག་ཆས་ཀྱི་རང་འགུལ་ཡིག་བཅོས་ནི་ལག་ཐོགས་ཁ་པར་གྱི་ཉེར་སྤྱོད་ནང་ཁོ་ན་ལས་མེད།",
+    "choosePangeaAvatar": "པན་གྷི་ཡ་གི་མི་སྣ་ཞིག་འདེམས་",
     "readAloudNoVoiceTitle": "སྤུས་ཚད་མཐོ་བའི་{language}སྐད་མི་འདུག",
     "readAloudNoVoiceDesktopWeb": "བརའུ་ཟར་འདིའི་ནང་སྤུས་ཚད་མཐོ་བའི་{language}སྐད་མེད་པས། འདིར་བརྡ་ལན་རྣམས་ཡག་པོ་ཀློག་མི་ཐུབ། ཁོ་རོམ་དང་ཨེ་ཇི་ནང་སྤུས་ཚད་མཐོ་བའི་སྐད་ཡོད།",
     "readAloudGetChrome": "ཁོ་རོམ་ལེན།",

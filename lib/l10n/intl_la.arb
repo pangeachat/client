@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione.",
     "autocorrectMobileOnly": "Solum mobile",
     "autocorrectMobileOnlyWarning": "Autocorrectio machinalis tantum in app mobili praesto est.",
+    "choosePangeaAvatar": "Elige imaginem Pangeae",
     "readAloudNoVoiceTitle": "Nulla vox {language} optima reperta",
     "readAloudNoVoiceDesktopWeb": "Hic navigatrum nullam vocem {language} optimam praebet, ergo nuntii hic bene legi non possunt. Chrome et Edge plerumque voces optimas includunt.",
     "readAloudGetChrome": "Accipe Chrome",

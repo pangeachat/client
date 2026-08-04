@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Kipindi chako cha mazoezi kiliisha baada ya dakika {minutes} bila shughuli.",
     "autocorrectMobileOnly": "Simu pekee",
     "autocorrectMobileOnlyWarning": "Kirekebishaji kiotomatiki cha kifaa kinapatikana tu kwenye programu ya simu.",
+    "choosePangeaAvatar": "Chagua avatari ya Pangea",
     "readAloudNoVoiceTitle": "Hakuna sauti ya hali ya juu ya {language} iliyopatikana",
     "readAloudNoVoiceDesktopWeb": "Kivinjari hiki hakitoi sauti ya hali ya juu ya {language}, kwa hivyo jumbe haziwezi kusomwa vizuri hapa. Chrome na Edge kwa kawaida hujumuisha sauti za hali ya juu.",
     "readAloudGetChrome": "Pata Chrome",

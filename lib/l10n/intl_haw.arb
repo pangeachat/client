@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Ua pau kāu kau hoʻomaʻamaʻa ma hope o {minutes} mau minuke me ka hana ʻole.",
     "autocorrectMobileOnly": "Kelepona paʻa wale nō",
     "autocorrectMobileOnlyWarning": "Loaʻa wale ka hoʻoponopono ʻakomi o ka hāmeʻa ma ka polokalamu kelepona.",
+    "choosePangeaAvatar": "E koho i kiʻi avatar Pangea",
     "readAloudNoVoiceTitle": "ʻAʻohe leo {language} maikaʻi i loaʻa",
     "readAloudNoVoiceDesktopWeb": "ʻAʻole hāʻawi kēia polokalamu kele pūnaewele i kahi leo {language} maikaʻi, no laila ʻaʻole hiki ke heluhelu maikaʻi ʻia nā leka ma ʻaneʻi. Hoʻokomo pinepine ʻo Chrome a me Edge i nā leo maikaʻi.",
     "readAloudGetChrome": "E kiʻi iā Chrome",

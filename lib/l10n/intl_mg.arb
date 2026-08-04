@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Nifarana ny fotoana fanaovanao fanazaran-tena rehefa afaka {minutes} minitra tsy nisy hetsika.",
     "autocorrectMobileOnly": "Finday ihany",
     "autocorrectMobileOnlyWarning": "Ny fanitsiana mandeha ho azy amin'ny fitaovana dia tsy misy afa-tsy amin'ny fampiharana finday.",
+    "choosePangeaAvatar": "Fidio ny avatar Pangea",
     "readAloudNoVoiceTitle": "Tsy misy feo {language} avo lenta hita",
     "readAloudNoVoiceDesktopWeb": "Ity navigateur ity dia tsy manolotra feo {language} avo lenta, ka tsy azo vakiana tsara eto ny hafatra. Matetika ny Chrome sy Edge dia ahitana feo avo lenta.",
     "readAloudGetChrome": "Raiso ny Chrome",

@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Kua mutu tō wātū whakaharatau i muri i te {minutes} meneti kāore he mahi.",
     "autocorrectMobileOnly": "Waea pūkoro anake",
     "autocorrectMobileOnlyWarning": "Kei te wātea noa te whakatikatika-aunoa pūrere i runga i te taupānga pūkoro.",
+    "choosePangeaAvatar": "Kōwhiria tētahi avata Pangea",
     "readAloudNoVoiceTitle": "Kāore i kitea he reo {language} kounga teitei",
     "readAloudNoVoiceDesktopWeb": "Kāore tēnei pūtirotiro e tuku reo {language} kounga teitei, nō reira kāore e pai te pānui nui i ngā karere i konei. Ko Chrome me Edge te tikanga he reo kounga teitei.",
     "readAloudGetChrome": "Tikiake Chrome",

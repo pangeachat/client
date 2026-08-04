@@ -10647,6 +10647,7 @@
     "practiceSessionTimedOut": "Vaša cvičná lekcia sa skončila po {minutes} minútach nečinnosti.",
     "autocorrectMobileOnly": "Iba mobil",
     "autocorrectMobileOnlyWarning": "Automatické opravy sú dostupné iba v mobilnej aplikácii.",
+    "choosePangeaAvatar": "Vyberte si avatara Pangea",
     "readAloudNoVoiceTitle": "Nenašiel sa kvalitný hlas pre jazyk {language}",
     "readAloudNoVoiceDesktopWeb": "Tento prehliadač neponúka kvalitný hlas pre jazyk {language}, takže správy tu nemožno dobre nahlas prečítať. Prehliadače Chrome a Edge zvyčajne obsahujú kvalitné hlasy.",
     "readAloudGetChrome": "Získať Chrome",

@@ -9823,6 +9823,7 @@
     "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat.",
     "autocorrectMobileOnly": "Només mòbil",
     "autocorrectMobileOnlyWarning": "L'autocorrecció del dispositiu només està disponible a l'aplicació mòbil.",
+    "choosePangeaAvatar": "Tria un avatar de Pangea",
     "readAloudNoVoiceTitle": "No s'ha trobat cap veu d'alta qualitat per a {language}",
     "readAloudNoVoiceDesktopWeb": "Aquest navegador no ofereix una veu d'alta qualitat per a {language}, així que els missatges no es poden llegir en veu alta correctament aquí. Chrome i Edge solen incloure veus d'alta qualitat.",
     "readAloudGetChrome": "Obtén Chrome",

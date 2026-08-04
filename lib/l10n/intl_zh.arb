@@ -9696,6 +9696,7 @@
     "practiceSessionTimedOut": "您的练习会话因{minutes}分钟无活动而结束。",
     "autocorrectMobileOnly": "仅限移动设备",
     "autocorrectMobileOnlyWarning": "设备自动更正功能仅在移动应用中可用。",
+    "choosePangeaAvatar": "选择 Pangea 头像",
     "readAloudNoVoiceTitle": "未找到高质量的{language}语音",
     "readAloudNoVoiceDesktopWeb": "此浏览器不提供高质量的{language}语音，因此无法很好地朗读消息。Chrome和Edge通常包含高质量的语音。",
     "readAloudGetChrome": "获取Chrome",

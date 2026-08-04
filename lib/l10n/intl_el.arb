@@ -10577,6 +10577,7 @@
     "practiceSessionTimedOut": "Η συνεδρία εξάσκησής σας έληξε μετά από {minutes} λεπτά αδράνειας.",
     "autocorrectMobileOnly": "Μόνο για κινητά",
     "autocorrectMobileOnlyWarning": "Η αυτόματη διόρθωση συσκευής είναι διαθέσιμη μόνο στην εφαρμογή για κινητά.",
+    "choosePangeaAvatar": "Επιλέξτε ένα avatar Pangea",
     "readAloudNoVoiceTitle": "Δεν βρέθηκε φωνή υψηλής ποιότητας για {language}",
     "readAloudNoVoiceDesktopWeb": "Αυτό το πρόγραμμα περιήγησης δεν προσφέρει φωνή υψηλής ποιότητας για {language}, επομένως τα μηνύματα δεν μπορούν να διαβαστούν καλά εδώ. Το Chrome και το Edge συνήθως περιλαμβάνουν φωνές υψηλής ποιότητας.",
     "readAloudGetChrome": "Αποκτήστε το Chrome",

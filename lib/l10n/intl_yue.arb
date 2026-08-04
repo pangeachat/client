@@ -10659,6 +10659,7 @@
     "practiceSessionTimedOut": "你嘅練習環節喺冇活動 {minutes} 分鐘後結束咗。",
     "autocorrectMobileOnly": "僅限流動裝置",
     "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於流動應用程式。",
+    "choosePangeaAvatar": "揀一個 Pangea 頭像",
     "readAloudNoVoiceTitle": "搵唔到高質素嘅{language}語音",
     "readAloudNoVoiceDesktopWeb": "呢個瀏覽器冇提供高質素嘅{language}語音，所以喺度讀出訊息嘅效果唔好。Chrome同Edge通常都有高質素嘅語音。",
     "readAloudGetChrome": "下載Chrome",

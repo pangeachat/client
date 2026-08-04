@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch.",
     "autocorrectMobileOnly": "Symudol yn unig",
     "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig.",
+    "choosePangeaAvatar": "Dewiswch avatar Pangea",
     "readAloudNoVoiceTitle": "Heb ddarganfod llais {language} o ansawdd uchel",
     "readAloudNoVoiceDesktopWeb": "Nid yw'r porwr hwn yn cynnig llais {language} o ansawdd uchel, felly ni ellir darllen negeseuon yn uchel yn dda yma. Mae Chrome ac Edge fel arfer yn cynnwys lleisiau o ansawdd uchel.",
     "readAloudGetChrome": "Cael Chrome",

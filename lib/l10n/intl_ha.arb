@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Zaman horon ka ya ƙare bayan mintuna {minutes} ba tare da aiki ba.",
     "autocorrectMobileOnly": "Wayar hannu kawai",
     "autocorrectMobileOnlyWarning": "Gyaran rubutu ta atomatik yana samuwa ne kawai a kan manhajar wayar hannu.",
+    "choosePangeaAvatar": "Zaɓi hoton Pangea",
     "readAloudNoVoiceTitle": "Ba a sami ingantacciyar murya ta {language} ba",
     "readAloudNoVoiceDesktopWeb": "Wannan burauzar ba ta samar da ingantacciyar murya ta {language} ba, don haka ba za a iya karanta saƙonni da kyau a nan ba. Chrome da Edge galibi suna haɗa da ingantattun muryoyi.",
     "readAloudGetChrome": "Samu Chrome",

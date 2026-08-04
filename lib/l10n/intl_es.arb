@@ -7891,6 +7891,7 @@
     "practiceSessionTimedOut": "Tu sesión de práctica finalizó después de {minutes} minutos sin actividad.",
     "autocorrectMobileOnly": "Solo móvil",
     "autocorrectMobileOnlyWarning": "La autocorrección del dispositivo solo está disponible en la aplicación móvil.",
+    "choosePangeaAvatar": "Elige un avatar de Pangea",
     "readAloudNoVoiceTitle": "No se encontró una voz de {language} de alta calidad",
     "readAloudNoVoiceDesktopWeb": "Este navegador no ofrece una voz de {language} de alta calidad, por lo que los mensajes no se pueden leer en voz alta correctamente aquí. Chrome y Edge suelen incluir voces de alta calidad.",
     "readAloudGetChrome": "Obtener Chrome",

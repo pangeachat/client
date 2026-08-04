@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "আপোনাৰ অনুশীলন অধিৱেশন {minutes} মিনিটৰ পিছত কোনো কাৰ্যকলাপ নোহোৱাকৈ শেষ হৈছে।",
     "autocorrectMobileOnly": "কেৱল ম'বাইল",
     "autocorrectMobileOnlyWarning": "ডিভাইচ স্বয়ংক্ৰিয় সংশোধন কেৱল মোবাইল এপ্লিকেচনত উপলব্ধ।",
+    "choosePangeaAvatar": "পেঞ্জিয়াৰ এটা আৱতাৰ বাছনি কৰক",
     "readAloudNoVoiceTitle": "উচ্চ মানদণ্ডৰ {language} ভইচ পোৱা নগ'ল",
     "readAloudNoVoiceDesktopWeb": "এই ব্ৰাউজাৰটোৱে উচ্চ মানদণ্ডৰ {language} ভইচ আগবঢ়োৱা নাই, সেয়েহে ইয়াত বাৰ্তাবোৰ ভালদৰে পঢ়িব নোৱাৰি। ক্ৰোম আৰু এজত সাধাৰণতে উচ্চ মানদণ্ডৰ ভইচ থাকে।",
     "readAloudGetChrome": "ক্ৰোম পাওক",

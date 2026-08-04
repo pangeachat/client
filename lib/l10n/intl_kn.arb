@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "ಯಾವುದೇ ಚಟುವಟಿಕೆ ಇಲ್ಲದೆ {minutes} ನಿಮಿಷಗಳ ನಂತರ ನಿಮ್ಮ ಅಭ್ಯಾಸದ ಅವಧಿ ಮುಗಿದಿದೆ.",
     "autocorrectMobileOnly": "ಮೊಬೈಲ್ ಮಾತ್ರ",
     "autocorrectMobileOnlyWarning": "ಸಾಧನದ ಸ್ವಯಂ ತಿದ್ದುಪಡಿ ಮೊಬೈಲ್ ಅಪ್ಲಿಕೇಶನ್‌ನಲ್ಲಿ ಮಾತ್ರ ಲಭ್ಯವಿದೆ.",
+    "choosePangeaAvatar": "ಪ್ಯಾಂಗಿಯಾ ಅವತಾರವನ್ನು ಆರಿಸಿ",
     "readAloudNoVoiceTitle": "ಉತ್ತಮ ಗುಣಮಟ್ಟದ {language} ಧ್ವನಿ ಕಂಡುಬಂದಿಲ್ಲ",
     "readAloudNoVoiceDesktopWeb": "ಈ ಬ್ರೌಸರ್ ಉತ್ತಮ ಗುಣಮಟ್ಟದ {language} ಧ್ವನಿಯನ್ನು ನೀಡುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಸಂದೇಶಗಳನ್ನು ಇಲ್ಲಿ ಸರಿಯಾಗಿ ಓದಲು ಸಾಧ್ಯವಿಲ್ಲ. Chrome ಮತ್ತು Edge ಸಾಮಾನ್ಯವಾಗಿ ಉತ್ತಮ ಗುಣಮಟ್ಟದ ಧ್ವನಿಗಳನ್ನು ಒಳಗೊಂಡಿರುತ್ತವೆ.",
     "readAloudGetChrome": "Chrome ಪಡೆಯಿರಿ",

@@ -10214,6 +10214,7 @@
     "practiceSessionTimedOut": "Din övningssession avslutades efter {minutes} minuters inaktivitet.",
     "autocorrectMobileOnly": "Endast mobil",
     "autocorrectMobileOnlyWarning": "Enhetens autokorrigering är endast tillgänglig i mobilappen.",
+    "choosePangeaAvatar": "Välj en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen högkvalitativ {language}-röst hittades",
     "readAloudNoVoiceDesktopWeb": "Den här webbläsaren erbjuder ingen högkvalitativ {language}-röst, så meddelanden kan inte läsas upp ordentligt här. Chrome och Edge inkluderar vanligtvis högkvalitativa röster.",
     "readAloudGetChrome": "Skaffa Chrome",

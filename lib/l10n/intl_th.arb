@@ -10328,6 +10328,7 @@
     "practiceSessionTimedOut": "เซสชันฝึกฝนของคุณสิ้นสุดลงหลังจากไม่มีกิจกรรมเป็นเวลา {minutes} นาที",
     "autocorrectMobileOnly": "สำหรับมือถือเท่านั้น",
     "autocorrectMobileOnlyWarning": "การแก้ไขอัตโนมัติของอุปกรณ์มีให้ใช้งานเฉพาะในแอปบนมือถือเท่านั้น",
+    "choosePangeaAvatar": "เลือกอวตาร Pangea",
     "readAloudNoVoiceTitle": "ไม่พบเสียงคุณภาพสูงสำหรับภาษา {language}",
     "readAloudNoVoiceDesktopWeb": "เบราว์เซอร์นี้ไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดังนั้นจึงไม่สามารถอ่านข้อความออกเสียงได้ดีที่นี่ โดยปกติแล้ว Chrome และ Edge จะมีเสียงคุณภาพสูงให้ใช้งาน",
     "readAloudGetChrome": "รับ Chrome",

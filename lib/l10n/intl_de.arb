@@ -9683,6 +9683,7 @@
     "practiceSessionTimedOut": "Deine Übungseinheit wurde nach {minutes} Minuten Inaktivität beendet.",
     "autocorrectMobileOnly": "Nur Mobilgeräte",
     "autocorrectMobileOnlyWarning": "Die Autokorrektur des Geräts ist nur in der mobilen App verfügbar.",
+    "choosePangeaAvatar": "Wähle einen Pangea-Avatar",
     "readAloudNoVoiceTitle": "Keine hochwertige {language}-Stimme gefunden",
     "readAloudNoVoiceDesktopWeb": "Dieser Browser bietet keine hochwertige {language}-Stimme, daher können Nachrichten hier nicht gut vorgelesen werden. Chrome und Edge enthalten normalerweise hochwertige Stimmen.",
     "readAloudGetChrome": "Chrome herunterladen",

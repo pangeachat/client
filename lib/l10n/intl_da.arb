@@ -10622,6 +10622,7 @@
     "practiceSessionTimedOut": "Din træningssession blev afsluttet efter {minutes} minutter uden aktivitet.",
     "autocorrectMobileOnly": "Kun mobil",
     "autocorrectMobileOnlyWarning": "Enhedens autokorrektur er kun tilgængelig i mobilappen.",
+    "choosePangeaAvatar": "Vælg en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen {language}-stemme af høj kvalitet fundet",
     "readAloudNoVoiceDesktopWeb": "Denne browser tilbyder ikke en {language}-stemme af høj kvalitet, så beskeder kan ikke læses højt her. Chrome og Edge inkluderer normalt stemmer af høj kvalitet.",
     "readAloudGetChrome": "Hent Chrome",

@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Ìgbà ìdánilẹ́kọ̀ọ́ rẹ parí lẹ́hìn ìṣẹ́jú {minutes} láìsí ìgbòkègbodò kankan.",
     "autocorrectMobileOnly": "Fún àwọn fóònù nìkan",
     "autocorrectMobileOnlyWarning": "Atunṣe aifọwọyi ẹrọ wa fun ohun elo alagbeka nikan.",
+    "choosePangeaAvatar": "Yan aworan Pangea",
     "readAloudNoVoiceTitle": "Kò sí ohùn {language} tó dára tó rárá",
     "readAloudNoVoiceDesktopWeb": "Ẹrọ aṣawakiri yii kò ní ohùn {language} tó dára tó, nítorí náà a kò lè ka àwọn ìfiranṣẹ jáde dáadáa níbí. Chrome àti Edge sábà máa ń ní àwọn ohùn tó dára tó.",
     "readAloudGetChrome": "Gba Chrome",

@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Сиздин машыгуу сессияңыз {minutes} мүнөт аракетсиздиктен кийин аяктады.",
     "autocorrectMobileOnly": "Мобилдик түзмөктөр үчүн гана",
     "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү.",
+    "choosePangeaAvatar": "Pangea аватарын тандаңыз",
     "readAloudNoVoiceTitle": "{language} тилинде жогорку сапаттагы үн табылган жок",
     "readAloudNoVoiceDesktopWeb": "Бул браузер жогорку сапаттагы {language} үнүн сунуштабайт, андыктан билдирүүлөр бул жерде жакшы окулбайт. Chrome жана Edge адатта жогорку сапаттагы үндөрдү камтыйт.",
     "readAloudGetChrome": "Chrome'ду алуу",

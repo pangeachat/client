@@ -10652,6 +10652,7 @@
     "practiceSessionTimedOut": "మీరు {minutes} నిమిషాలు నిష్క్రియంగా ఉన్నందున మీ అభ్యాస సెషన్ ముగిసింది.",
     "autocorrectMobileOnly": "మొబైల్ మాత్రమే",
     "autocorrectMobileOnlyWarning": "పరికర స్వీయ దిద్దుబాటు మొబైల్ యాప్‌లో మాత్రమే అందుబాటులో ఉంటుంది.",
+    "choosePangeaAvatar": "పంగేయా అవతార్‌ను ఎంచుకోండి",
     "readAloudNoVoiceTitle": "అధిక-నాణ్యత గల {language} వాయిస్ కనుగొనబడలేదు",
     "readAloudNoVoiceDesktopWeb": "ఈ బ్రౌజర్ అధిక-నాణ్యత గల {language} వాయిస్‌ను అందించదు, కాబట్టి సందేశాలను ఇక్కడ సరిగ్గా చదవలేము. Chrome మరియు Edge సాధారణంగా అధిక-నాణ్యత గల వాయిస్‌లను కలిగి ఉంటాయి.",
     "readAloudGetChrome": "Chrome పొందండి",

@@ -9769,6 +9769,7 @@
     "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
     "autocorrectMobileOnly": "Khusus seluler",
     "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler.",
+    "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Tidak ditemukan suara {language} berkualitas tinggi",
     "readAloudNoVoiceDesktopWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Chrome dan Edge biasanya menyertakan suara berkualitas tinggi.",
     "readAloudGetChrome": "Dapatkan Chrome",

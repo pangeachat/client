@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "ਤੁਹਾਡਾ ਅਭਿਆਸ ਸੈਸ਼ਨ {minutes} ਮਿੰਟਾਂ ਦੀ ਗਤੀਵਿਧੀ ਤੋਂ ਬਿਨਾਂ ਖਤਮ ਹੋ ਗਿਆ।",
     "autocorrectMobileOnly": "ਸਿਰਫ਼ ਮੋਬਾਈਲ",
     "autocorrectMobileOnlyWarning": "ਡਿਵਾਈਸ ਆਟੋਕਰੈਕਟ ਸਿਰਫ਼ ਮੋਬਾਈਲ ਐਪ 'ਤੇ ਉਪਲਬਧ ਹੈ।",
+    "choosePangeaAvatar": "ਇੱਕ ਪੈਂਜੀਆ ਅਵਤਾਰ ਚੁਣੋ",
     "readAloudNoVoiceTitle": "ਕੋਈ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਨਹੀਂ ਮਿਲੀ",
     "readAloudNoVoiceDesktopWeb": "ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਦੀ ਪੇਸ਼ਕਸ਼ ਨਹੀਂ ਕਰਦਾ, ਇਸ ਲਈ ਸੁਨੇਹੇ ਇੱਥੇ ਚੰਗੀ ਤਰ੍ਹਾਂ ਪੜ੍ਹੇ ਨਹੀਂ ਜਾ ਸਕਦੇ। Chrome ਅਤੇ Edge ਵਿੱਚ ਆਮ ਤੌਰ 'ਤੇ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀਆਂ ਆਵਾਜ਼ਾਂ ਸ਼ਾਮਲ ਹੁੰਦੀਆਂ ਹਨ।",
     "readAloudGetChrome": "Chrome ਪ੍ਰਾਪਤ ਕਰੋ",

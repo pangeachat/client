@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "तुमचे सराव सत्र {minutes} मिनिटांपर्यंत कोणतीही हालचाल न झाल्यामुळे संपले.",
     "autocorrectMobileOnly": "फक्त मोबाइल",
     "autocorrectMobileOnlyWarning": "डिव्हाइस ऑटोकरेक्ट फक्त मोबाइल ॲपवर उपलब्ध आहे.",
+    "choosePangeaAvatar": "पँजिया अवतार निवडा",
     "readAloudNoVoiceTitle": "उच्च-गुणवत्तेचा {language} आवाज सापडला नाही",
     "readAloudNoVoiceDesktopWeb": "हा ब्राउझर उच्च-गुणवत्तेचा {language} आवाज देत नाही, त्यामुळे येथे संदेश चांगल्या प्रकारे वाचले जाऊ शकत नाहीत. Chrome आणि Edge मध्ये सहसा उच्च-गुणवत्तेचे आवाज समाविष्ट असतात.",
     "readAloudGetChrome": "Chrome मिळवा",

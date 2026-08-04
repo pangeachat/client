@@ -2070,6 +2070,7 @@
     "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet.",
     "autocorrectMobileOnly": "Kun mobil",
     "autocorrectMobileOnlyWarning": "Enhetens autokorrigering er kun tilgjengelig i mobilappen.",
+    "choosePangeaAvatar": "Velg en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen {language}-stemme av høy kvalitet funnet",
     "readAloudNoVoiceDesktopWeb": "Denne nettleseren tilbyr ikke en {language}-stemme av høy kvalitet, så meldinger kan ikke leses høyt her. Chrome og Edge inkluderer vanligvis stemmer av høy kvalitet.",
     "readAloudGetChrome": "Skaff deg Chrome",

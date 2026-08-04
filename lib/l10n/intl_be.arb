@@ -9710,6 +9710,7 @@
     "practiceSessionTimedOut": "Ваша практычная сесія скончылася праз {minutes} хвілін без актыўнасці.",
     "autocorrectMobileOnly": "Толькі мабільны",
     "autocorrectMobileOnlyWarning": "Аўтавыпраўленне даступна толькі ў мабільнай праграме.",
+    "choosePangeaAvatar": "Выберыце аватар Pangea",
     "readAloudNoVoiceTitle": "Не знойдзены высакаякасны голас {language}",
     "readAloudNoVoiceDesktopWeb": "Гэты браўзер не прапануе высакаякасны голас {language}, таму паведамленні не могуць быць добра прачытаны ўслых. Chrome і Edge звычайна ўключаюць высакаякасныя галасы.",
     "readAloudGetChrome": "Спампаваць Chrome",
