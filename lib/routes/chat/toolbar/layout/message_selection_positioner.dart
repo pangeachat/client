@@ -19,6 +19,7 @@ import 'package:fluffychat/routes/chat/toolbar/layout/practice_mode_transition_a
 import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/reading_assistance_input_bar.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/word_card_switcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -26,19 +27,24 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Controls positioning of the message overlay.
 class MessageSelectionPositioner extends StatefulWidget {
   final MessageOverlayController overlayController;
-  final ChatController chatController;
+  final MessageToolbarHost host;
   final Event event;
   final PangeaToken? initialSelectedToken;
   final Event? nextEvent;
   final Event? prevEvent;
 
+  /// Registry id of the render box the overlay anchors over.
+  /// Defaults to the event id (registered by chat's Message widget).
+  final String? messageTargetId;
+
   const MessageSelectionPositioner({
     required this.overlayController,
-    required this.chatController,
+    required this.host,
     required this.event,
     this.initialSelectedToken,
     this.nextEvent,
     this.prevEvent,
+    this.messageTargetId,
     super.key,
   });
 
@@ -122,7 +128,7 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
 
   bool get hasReactions {
     final reactionsEvents = widget.event.aggregatedEvents(
-      widget.chatController.timeline!,
+      widget.host.timeline!,
       RelationshipTypes.reaction,
     );
     return reactionsEvents.where((e) => !e.redacted).isNotEmpty;
@@ -172,7 +178,9 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   );
 
   RenderBox? get _messageRenderBox => _runWithLogging<RenderBox?>(
-    () => MatrixState.pAnyState.getRenderBox(widget.event.eventId),
+    () => MatrixState.pAnyState.getRenderBox(
+      widget.messageTargetId ?? widget.event.eventId,
+    ),
     "Error getting message render box",
     null,
   );
