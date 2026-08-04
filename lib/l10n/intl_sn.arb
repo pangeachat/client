@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Ridza odhiyo yezvisarudzo zvemhinduro mumabasa ekudzidzira.",
     "audioIncomingMessagesToolName": "Mameseji anouya",
     "audioIncomingMessagesDescription": "Verenga mameseji anogamuchirwa zvega zvega nezwi guru mumutauro wako wechinangwa kuti udzidzire kuteerera.",
+    "choosePangeaAvatar": "Sarudza Pangea avatar",
     "readAloudNoVoiceTitle": "Hapana izwi remhando yepamusoro re {language} rawawanikwa",
     "readAloudNoVoiceDesktopWeb": "Bhurausa iri haripi izwi remhando yepamusoro re {language}, saka mameseji haagoni kuverengwa zvakanaka pano. Chrome ne Edge kazhinji zvine mazwi emhando yepamusoro.",
     "readAloudGetChrome": "Tora Chrome",

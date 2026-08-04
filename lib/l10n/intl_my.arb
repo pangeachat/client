@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "လေ့ကျင့်ခန်းများတွင် အဖြေရွေးချယ်စရာများအတွက် အသံဖွင့်ပါ။",
     "audioIncomingMessagesToolName": "ဝင်လာသော မက်ဆေ့ချ်များ",
     "audioIncomingMessagesDescription": "နားထောင်လေ့ကျင့်ရန်အတွက် သင်၏ပစ်မှတ်ဘာသာစကားဖြင့် လက်ခံရရှိသော မက်ဆေ့ချ်များကို အလိုအလျောက် ဖတ်ပြပါ။",
+    "choosePangeaAvatar": "Pangea အသားပေးပုံ ရွေးပါ",
     "readAloudNoVoiceTitle": "အရည်အသွေးမြင့် {language} အသံ မတွေ့ရှိပါ",
     "readAloudNoVoiceDesktopWeb": "ဤဘရောက်ဆာတွင် အရည်အသွေးမြင့် {language} အသံ မရှိသောကြောင့် မက်ဆေ့ချ်များကို ကောင်းစွာ ဖတ်၍မရပါ။ Chrome နှင့် Edge တွင် အရည်အသွေးမြင့် အသံများ ပါဝင်လေ့ရှိပါသည်။",
     "readAloudGetChrome": "Chrome ကို ရယူပါ",

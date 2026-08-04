@@ -10472,6 +10472,7 @@
     "audioChoicesDescription": "Paleiskite atsakymų variantų garsą praktikos veiklose.",
     "audioIncomingMessagesToolName": "Gaunami pranešimai",
     "audioIncomingMessagesDescription": "Automatiškai garsiai perskaitykite gautus pranešimus jūsų tiksline kalba, kad lavintumėte klausymą.",
+    "choosePangeaAvatar": "Pasirinkite „Pangea“ pseudoportretą",
     "readAloudNoVoiceTitle": "Nerasta aukštos kokybės {language} balso",
     "readAloudNoVoiceDesktopWeb": "Ši naršyklė nepasiūlo aukštos kokybės {language} balso, todėl pranešimai čia negali būti gerai perskaityti. „Chrome“ ir „Edge“ paprastai turi aukštos kokybės balsus.",
     "readAloudGetChrome": "Gauti „Chrome“",

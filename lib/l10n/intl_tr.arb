@@ -9992,6 +9992,7 @@
     "audioChoicesDescription": "Alıştırma etkinliklerindeki cevap seçenekleri için ses çalın.",
     "audioIncomingMessagesToolName": "Gelen mesajlar",
     "audioIncomingMessagesDescription": "Dinleme pratiği için alınan mesajları hedef dilinizde otomatik olarak yüksek sesle okuyun.",
+    "choosePangeaAvatar": "Pangea avatarı seç",
     "readAloudNoVoiceTitle": "Yüksek kaliteli {language} sesi bulunamadı",
     "readAloudNoVoiceDesktopWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Chrome ve Edge genellikle yüksek kaliteli sesler içerir.",
     "readAloudGetChrome": "Chrome'u Edinin",

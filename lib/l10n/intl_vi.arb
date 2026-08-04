@@ -6965,6 +6965,7 @@
     "audioChoicesDescription": "Phát âm thanh cho các lựa chọn trả lời trong các hoạt động luyện tập.",
     "audioIncomingMessagesToolName": "Tin nhắn đến",
     "audioIncomingMessagesDescription": "Tự động đọc to các tin nhắn đã nhận bằng ngôn ngữ mục tiêu của bạn để luyện nghe.",
+    "choosePangeaAvatar": "Chọn ảnh đại diện Pangea",
     "readAloudNoVoiceTitle": "Không tìm thấy giọng đọc {language} chất lượng cao",
     "readAloudNoVoiceDesktopWeb": "Trình duyệt này không cung cấp giọng đọc {language} chất lượng cao, nên không thể đọc to tin nhắn tốt ở đây. Chrome và Edge thường có giọng đọc chất lượng cao.",
     "readAloudGetChrome": "Tải Chrome",

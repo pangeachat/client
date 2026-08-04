@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "सराव क्रियाकलापांमध्ये उत्तरांच्या पर्यायांसाठी ऑडिओ प्ले करा.",
     "audioIncomingMessagesToolName": "येणारे संदेश",
     "audioIncomingMessagesDescription": "ऐकण्याच्या सरावासाठी प्राप्त झालेले संदेश तुमच्या लक्ष्यित भाषेत आपोआप मोठ्याने वाचा.",
+    "choosePangeaAvatar": "पँजिया अवतार निवडा",
     "readAloudNoVoiceTitle": "उच्च-गुणवत्तेचा {language} आवाज सापडला नाही",
     "readAloudNoVoiceDesktopWeb": "हा ब्राउझर उच्च-गुणवत्तेचा {language} आवाज देत नाही, त्यामुळे येथे संदेश चांगल्या प्रकारे वाचले जाऊ शकत नाहीत. Chrome आणि Edge मध्ये सहसा उच्च-गुणवत्तेचे आवाज समाविष्ट असतात.",
     "readAloudGetChrome": "Chrome मिळवा",

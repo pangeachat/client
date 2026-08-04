@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Аудиоро барои интихоби ҷавобҳо дар машқҳо навозед.",
     "audioIncomingMessagesToolName": "Паёмҳои воридотӣ",
     "audioIncomingMessagesDescription": "Барои машқи гӯш кардан паёмҳои қабулшударо ба таври худкор бо забони мақсадноки худ баланд хонед.",
+    "choosePangeaAvatar": "Аватар Pangea-ро интихоб кунед",
     "readAloudNoVoiceTitle": "Овози баландсифати {language} ёфт нашуд",
     "readAloudNoVoiceDesktopWeb": "Ин браузер овози баландсифати {language}-ро пешниҳод намекунад, аз ин рӯ паёмҳоро дар ин ҷо хуб хондан мумкин нест. Chrome ва Edge одатан овозҳои баландсифатро дар бар мегиранд.",
     "readAloudGetChrome": "Chrome-ро гиред",

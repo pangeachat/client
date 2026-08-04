@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Тәжірибелік әрекеттерде жауап таңдаулары үшін аудио ойнатыңыз.",
     "audioIncomingMessagesToolName": "Кіріс хабарламалар",
     "audioIncomingMessagesDescription": "Тыңдау тәжірибесі үшін алынған хабарламаларды мақсатты тіліңізде автоматты түрде дауыстап оқыңыз.",
+    "choosePangeaAvatar": "Pangea аватарын таңдаңыз",
     "readAloudNoVoiceTitle": "Жоғары сапалы {language} дауысы табылмады",
     "readAloudNoVoiceDesktopWeb": "Бұл браузер жоғары сапалы {language} дауысын ұсынбайды, сондықтан хабарламаларды мұнда жақсы оқу мүмкін емес. Chrome және Edge әдетте жоғары сапалы дауыстарды қамтиды.",
     "readAloudGetChrome": "Chrome алу",

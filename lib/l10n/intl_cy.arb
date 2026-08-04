@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Chwarae sain ar gyfer dewisiadau ateb mewn gweithgareddau ymarfer.",
     "audioIncomingMessagesToolName": "Negeseuon sy'n dod i mewn",
     "audioIncomingMessagesDescription": "Darllenwch negeseuon a dderbyniwyd yn awtomatig yn uchel yn eich iaith darged ar gyfer ymarfer gwrando.",
+    "choosePangeaAvatar": "Dewiswch avatar Pangea",
     "readAloudNoVoiceTitle": "Heb ddarganfod llais {language} o ansawdd uchel",
     "readAloudNoVoiceDesktopWeb": "Nid yw'r porwr hwn yn cynnig llais {language} o ansawdd uchel, felly ni ellir darllen negeseuon yn uchel yn dda yma. Mae Chrome ac Edge fel arfer yn cynnwys lleisiau o ansawdd uchel.",
     "readAloudGetChrome": "Cael Chrome",

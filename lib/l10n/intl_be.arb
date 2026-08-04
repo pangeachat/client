@@ -9705,6 +9705,7 @@
     "audioChoicesDescription": "Прайгравайце аўдыя для варыянтаў адказаў у практычных заданнях.",
     "audioIncomingMessagesToolName": "Уваходныя паведамленні",
     "audioIncomingMessagesDescription": "Аўтаматычна чытайце ўслых атрыманыя паведамленні на вашай мэтавай мове для практыкі аўдзіравання.",
+    "choosePangeaAvatar": "Выберыце аватар Pangea",
     "readAloudNoVoiceTitle": "Не знойдзены высакаякасны голас {language}",
     "readAloudNoVoiceDesktopWeb": "Гэты браўзер не прапануе высакаякасны голас {language}, таму паведамленні не могуць быць добра прачытаны ўслых. Chrome і Edge звычайна ўключаюць высакаякасныя галасы.",
     "readAloudGetChrome": "Спампаваць Chrome",

@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Luaj audion për zgjedhjet e përgjigjeve në aktivitetet praktike.",
     "audioIncomingMessagesToolName": "Mesazhet hyrëse",
     "audioIncomingMessagesDescription": "Lexo automatikisht me zë të lartë mesazhet e marra në gjuhën tuaj të synuar për praktikë dëgjimi.",
+    "choosePangeaAvatar": "Zgjidh një avatar Pangea",
     "readAloudNoVoiceTitle": "Nuk u gjet asnjë zë me cilësi të lartë {language}",
     "readAloudNoVoiceDesktopWeb": "Ky shfletues nuk ofron një zë me cilësi të lartë {language}, kështu që mesazhet nuk mund të lexohen me zë të lartë mirë këtu. Chrome dhe Edge zakonisht përfshijnë zëra me cilësi të lartë.",
     "readAloudGetChrome": "Merrni Chrome",

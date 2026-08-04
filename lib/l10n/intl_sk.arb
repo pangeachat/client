@@ -10642,6 +10642,7 @@
     "audioChoicesDescription": "Prehrajte zvuk pre možnosti odpovedí v cvičeniach.",
     "audioIncomingMessagesToolName": "Prichádzajúce správy",
     "audioIncomingMessagesDescription": "Automaticky čítajte prijaté správy nahlas vo vašom cieľovom jazyku pre cvičenie počúvania.",
+    "choosePangeaAvatar": "Vyberte si avatara Pangea",
     "readAloudNoVoiceTitle": "Nenašiel sa kvalitný hlas pre jazyk {language}",
     "readAloudNoVoiceDesktopWeb": "Tento prehliadač neponúka kvalitný hlas pre jazyk {language}, takže správy tu nemožno dobre nahlas prečítať. Prehliadače Chrome a Edge zvyčajne obsahujú kvalitné hlasy.",
     "readAloudGetChrome": "Získať Chrome",

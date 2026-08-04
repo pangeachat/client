@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "በልምምድ እንቅስቃሴዎች ውስጥ ለመልስ ምርጫዎች ድምጽ ያጫውቱ።",
     "audioIncomingMessagesToolName": "ገቢ መልዕክቶች",
     "audioIncomingMessagesDescription": "ለማዳመጥ ልምምድ የተቀበሉ መልዕክቶችን በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብለው ያንብቡ።",
+    "choosePangeaAvatar": "የፓንጋያ አቫታር ይምረጡ",
     "readAloudNoVoiceTitle": "ከፍተኛ ጥራት ያለው የ{language} ድምጽ አልተገኘም",
     "readAloudNoVoiceDesktopWeb": "ይህ አሳሽ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይሰጥም፣ ስለዚህ መልዕክቶች እዚህ በደንብ ሊነበቡ አይችሉም። Chrome እና Edge ብዙውን ጊዜ ከፍተኛ ጥራት ያላቸውን ድምፆች ያካትታሉ።",
     "readAloudGetChrome": "Chrome ያግኙ",

@@ -9695,6 +9695,7 @@
     "audioChoicesDescription": "Mashq faoliyatlarida javob tanlovlari uchun audio ijro eting.",
     "audioIncomingMessagesToolName": "Kiruvchi xabarlar",
     "audioIncomingMessagesDescription": "Tinglash amaliyoti uchun qabul qilingan xabarlarni avtomatik ravishda maqsadli tilingizda ovoz chiqarib o'qing.",
+    "choosePangeaAvatar": "Pangea avatarini tanlang",
     "readAloudNoVoiceTitle": "Yuqori sifatli {language} ovozi topilmadi",
     "readAloudNoVoiceDesktopWeb": "Bu brauzer yuqori sifatli {language} ovozini taklif qilmaydi, shuning uchun xabarlar bu yerda yaxshi o'qilmaydi. Chrome va Edge odatda yuqori sifatli ovozlarni o'z ichiga oladi.",
     "readAloudGetChrome": "Chrome'ni yuklab olish",

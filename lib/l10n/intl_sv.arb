@@ -10209,6 +10209,7 @@
     "audioChoicesDescription": "Spela upp ljud för svarsalternativ i övningsaktiviteter.",
     "audioIncomingMessagesToolName": "Inkommande meddelanden",
     "audioIncomingMessagesDescription": "Läs automatiskt upp mottagna meddelanden på ditt målspråk för lyssningsövning.",
+    "choosePangeaAvatar": "Välj en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen högkvalitativ {language}-röst hittades",
     "readAloudNoVoiceDesktopWeb": "Den här webbläsaren erbjuder ingen högkvalitativ {language}-röst, så meddelanden kan inte läsas upp ordentligt här. Chrome och Edge inkluderar vanligtvis högkvalitativa röster.",
     "readAloudGetChrome": "Skaffa Chrome",

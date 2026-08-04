@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "ចាក់​សំឡេង​សម្រាប់​ជម្រើស​ចម្លើយ​ក្នុង​សកម្មភាព​អនុវត្ត។",
     "audioIncomingMessagesToolName": "សារ​ចូល",
     "audioIncomingMessagesDescription": "អាន​សារ​ដែល​បាន​ទទួល​ដោយ​ស្វ័យ​ប្រវត្តិ​ឮៗ​ជា​ភាសា​គោលដៅ​របស់​អ្នក​សម្រាប់​ការ​អនុវត្ត​ការ​ស្ដាប់។",
+    "choosePangeaAvatar": "ជ្រើសរើសរូបតំណាង Pangea",
     "readAloudNoVoiceTitle": "រកមិនឃើញសំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ",
     "readAloudNoVoiceDesktopWeb": "កម្មវិធីរុករកនេះមិនផ្ដល់សំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ ដូច្នេះសារមិនអាចអានឮបានល្អនៅទីនេះទេ។ ជាទូទៅ Chrome និង Edge រួមបញ្ចូលសំឡេងដែលមានគុណភាពខ្ពស់។",
     "readAloudGetChrome": "ទាញយក Chrome",

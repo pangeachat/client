@@ -9691,6 +9691,7 @@
     "audioChoicesDescription": "Відтворювати аудіо для варіантів відповідей у практичних завданнях.",
     "audioIncomingMessagesToolName": "Вхідні повідомлення",
     "audioIncomingMessagesDescription": "Автоматично читати отримані повідомлення вголос вашою цільовою мовою для практики слухання.",
+    "choosePangeaAvatar": "Виберіть аватар Pangea",
     "readAloudNoVoiceTitle": "Не знайдено високоякісного голосу {language}",
     "readAloudNoVoiceDesktopWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Chrome та Edge зазвичай мають високоякісні голоси.",
     "readAloudGetChrome": "Завантажити Chrome",

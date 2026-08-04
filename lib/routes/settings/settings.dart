@@ -270,4 +270,4 @@ class SettingsController extends State<Settings> {
   }
 }
 
-enum AvatarAction { camera, file, remove }
+enum AvatarAction { camera, file, preset, remove }

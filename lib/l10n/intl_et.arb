@@ -9688,6 +9688,7 @@
     "audioChoicesDescription": "Esita harjutuste vastusevalikute heli.",
     "audioIncomingMessagesToolName": "Sissetulevad sõnumid",
     "audioIncomingMessagesDescription": "Loe vastuvõetud sõnumid automaatselt sihtkeeles ette kuulamisharjutuste jaoks.",
+    "choosePangeaAvatar": "Vali Pangea avatar",
     "readAloudNoVoiceTitle": "Kvaliteetset {language} häält ei leitud",
     "readAloudNoVoiceDesktopWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Chrome ja Edge sisaldavad tavaliselt kvaliteetseid hääli.",
     "readAloudGetChrome": "Hangi Chrome",

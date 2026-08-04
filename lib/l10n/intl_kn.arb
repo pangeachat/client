@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "ಅಭ್ಯಾಸ ಚಟುವಟಿಕೆಗಳಲ್ಲಿ ಉತ್ತರ ಆಯ್ಕೆಗಳಿಗಾಗಿ ಆಡಿಯೋ ಪ್ಲೇ ಮಾಡಿ.",
     "audioIncomingMessagesToolName": "ಒಳಬರುವ ಸಂದೇಶಗಳು",
     "audioIncomingMessagesDescription": "ಕೇಳುವ ಅಭ್ಯಾಸಕ್ಕಾಗಿ ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯಲ್ಲಿ ಸ್ವೀಕರಿಸಿದ ಸಂದೇಶಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಗಟ್ಟಿಯಾಗಿ ಓದಿ.",
+    "choosePangeaAvatar": "ಪ್ಯಾಂಗಿಯಾ ಅವತಾರವನ್ನು ಆರಿಸಿ",
     "readAloudNoVoiceTitle": "ಉತ್ತಮ ಗುಣಮಟ್ಟದ {language} ಧ್ವನಿ ಕಂಡುಬಂದಿಲ್ಲ",
     "readAloudNoVoiceDesktopWeb": "ಈ ಬ್ರೌಸರ್ ಉತ್ತಮ ಗುಣಮಟ್ಟದ {language} ಧ್ವನಿಯನ್ನು ನೀಡುವುದಿಲ್ಲ, ಆದ್ದರಿಂದ ಸಂದೇಶಗಳನ್ನು ಇಲ್ಲಿ ಸರಿಯಾಗಿ ಓದಲು ಸಾಧ್ಯವಿಲ್ಲ. Chrome ಮತ್ತು Edge ಸಾಮಾನ್ಯವಾಗಿ ಉತ್ತಮ ಗುಣಮಟ್ಟದ ಧ್ವನಿಗಳನ್ನು ಒಳಗೊಂಡಿರುತ್ತವೆ.",
     "readAloudGetChrome": "Chrome ಪಡೆಯಿರಿ",

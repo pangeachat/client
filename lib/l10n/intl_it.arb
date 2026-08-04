@@ -9764,6 +9764,7 @@
     "audioChoicesDescription": "Riproduci l'audio per le scelte di risposta nelle attività di pratica.",
     "audioIncomingMessagesToolName": "Messaggi in arrivo",
     "audioIncomingMessagesDescription": "Leggi automaticamente i messaggi ricevuti ad alta voce nella tua lingua di destinazione per la pratica dell'ascolto.",
+    "choosePangeaAvatar": "Scegli un avatar Pangea",
     "readAloudNoVoiceTitle": "Nessuna voce {language} di alta qualità trovata",
     "readAloudNoVoiceDesktopWeb": "Questo browser non offre una voce {language} di alta qualità, quindi i messaggi non possono essere letti ad alta voce correttamente qui. Chrome ed Edge di solito includono voci di alta qualità.",
     "readAloudGetChrome": "Scarica Chrome",

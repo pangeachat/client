@@ -9678,6 +9678,7 @@
     "audioChoicesDescription": "Spielt Audio für Antwortmöglichkeiten in Übungsaktivitäten ab.",
     "audioIncomingMessagesToolName": "Eingehende Nachrichten",
     "audioIncomingMessagesDescription": "Liest empfangene Nachrichten in Ihrer Zielsprache automatisch vor, um das Hörverständnis zu üben.",
+    "choosePangeaAvatar": "Wähle einen Pangea-Avatar",
     "readAloudNoVoiceTitle": "Keine hochwertige {language}-Stimme gefunden",
     "readAloudNoVoiceDesktopWeb": "Dieser Browser bietet keine hochwertige {language}-Stimme, daher können Nachrichten hier nicht gut vorgelesen werden. Chrome und Edge enthalten normalerweise hochwertige Stimmen.",
     "readAloudGetChrome": "Chrome herunterladen",

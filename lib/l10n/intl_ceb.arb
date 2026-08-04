@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "I-play ang audio para sa mga pagpili sa tubag sa mga kalihokan sa pagpraktis.",
     "audioIncomingMessagesToolName": "Mga umaabot nga mensahe",
     "audioIncomingMessagesDescription": "Awtomatikong basahon og kusog ang nadawat nga mga mensahe sa imong target nga pinulongan para sa pagpraktis sa pagpaminaw.",
+    "choosePangeaAvatar": "Pagpili og Pangea avatar",
     "readAloudNoVoiceTitle": "Walay nakit-an nga taas og kalidad nga tingog sa {language}",
     "readAloudNoVoiceDesktopWeb": "Kini nga browser walay gitanyag nga taas og kalidad nga tingog sa {language}, busa dili maayo nga mabasa og kusog ang mga mensahe dinhi. Ang Chrome ug Edge kasagaran naglakip og taas og kalidad nga mga tingog.",
     "readAloudGetChrome": "Kuhaa ang Chrome",

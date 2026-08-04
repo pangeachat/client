@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Cheza sauti kwa chaguzi za majibu katika shughuli za mazoezi.",
     "audioIncomingMessagesToolName": "Ujumbe zinazoingia",
     "audioIncomingMessagesDescription": "Soma kiotomatiki ujumbe uliopokelewa kwa sauti katika lugha unayolenga kwa mazoezi ya kusikiliza.",
+    "choosePangeaAvatar": "Chagua avatari ya Pangea",
     "readAloudNoVoiceTitle": "Hakuna sauti ya hali ya juu ya {language} iliyopatikana",
     "readAloudNoVoiceDesktopWeb": "Kivinjari hiki hakitoi sauti ya hali ya juu ya {language}, kwa hivyo jumbe haziwezi kusomwa vizuri hapa. Chrome na Edge kwa kawaida hujumuisha sauti za hali ya juu.",
     "readAloudGetChrome": "Pata Chrome",

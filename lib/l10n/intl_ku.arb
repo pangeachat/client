@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "دەنگ بۆ هەڵبژاردنەکانی وەڵام لە چالاکییەکانی ڕاهێناندا لێبدە.",
     "audioIncomingMessagesToolName": "نامە وەرگیراوەکان",
     "audioIncomingMessagesDescription": "بە شێوەیەکی خۆکارانە نامە وەرگیراوەکان بە دەنگی بەرز بە زمانی ئامانجەکەت بخوێنەرەوە بۆ ڕاهێنانی گوێگرتن.",
+    "choosePangeaAvatar": "وێنەیەکی پەنجه‌ئا هەڵبژێرە",
     "readAloudNoVoiceTitle": "هیچ دەنگێکی {language}ی کوالیتی بەرز نەدۆزرایەوە",
     "readAloudNoVoiceDesktopWeb": "ئەم وێبگەڕە دەنگێکی {language}ی کوالیتی بەرزی تێدا نییە، بۆیە نامەکان لێرە بە باشی ناخوێندرێنەوە. کرۆم و ئێدج بەزۆری دەنگی کوالیتی بەرزیان تێدایە.",
     "readAloudGetChrome": "کرۆم دابگرە",

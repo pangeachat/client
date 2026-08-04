@@ -10323,6 +10323,7 @@
     "audioChoicesDescription": "เล่นเสียงสำหรับตัวเลือกคำตอบในกิจกรรมฝึกหัด",
     "audioIncomingMessagesToolName": "ข้อความขาเข้า",
     "audioIncomingMessagesDescription": "อ่านข้อความที่ได้รับโดยอัตโนมัติในภาษาเป้าหมายของคุณเพื่อฝึกการฟัง",
+    "choosePangeaAvatar": "เลือกอวตาร Pangea",
     "readAloudNoVoiceTitle": "ไม่พบเสียงคุณภาพสูงสำหรับภาษา {language}",
     "readAloudNoVoiceDesktopWeb": "เบราว์เซอร์นี้ไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดังนั้นจึงไม่สามารถอ่านข้อความออกเสียงได้ดีที่นี่ โดยปกติแล้ว Chrome และ Edge จะมีเสียงคุณภาพสูงให้ใช้งาน",
     "readAloudGetChrome": "รับ Chrome",

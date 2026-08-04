@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Ua si suab rau cov lus teb hauv kev xyaum ua haujlwm.",
     "audioIncomingMessagesToolName": "Cov lus tuaj",
     "audioIncomingMessagesDescription": "Nyeem cov lus tau txais nrov nrov hauv koj hom lus rau kev xyaum mloog.",
+    "choosePangeaAvatar": "Xaiv ib tus Pangea avatar",
     "readAloudNoVoiceTitle": "Tsis muaj lub suab zoo {language} pom",
     "readAloudNoVoiceDesktopWeb": "Qhov browser no tsis muaj lub suab zoo {language}, yog li cov lus tsis tuaj yeem nyeem tau zoo ntawm no. Chrome thiab Edge feem ntau muaj lub suab zoo.",
     "readAloudGetChrome": "Tau Chrome",

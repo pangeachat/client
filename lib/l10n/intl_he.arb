@@ -10611,6 +10611,7 @@
     "audioChoicesDescription": "השמעת אודיו עבור אפשרויות התשובה בפעילויות תרגול.",
     "audioIncomingMessagesToolName": "הודעות נכנסות",
     "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה.",
+    "choosePangeaAvatar": "בחר אווטאר של Pangea",
     "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
     "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
     "readAloudGetChrome": "קבל את Chrome",

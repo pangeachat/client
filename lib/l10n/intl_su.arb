@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Putar audio pikeun pilihan jawaban dina kagiatan latihan.",
     "audioIncomingMessagesToolName": "Pesen asup",
     "audioIncomingMessagesDescription": "Otomatis maca pesen anu ditampi kalayan tarik dina basa target anjeun pikeun latihan ngupingkeun.",
+    "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Teu kapanggih sora {language} nu kualitasna luhur",
     "readAloudNoVoiceDesktopWeb": "Panyungsi ieu teu nyadiakeun sora {language} nu kualitasna luhur, jadi pesen moal bisa dibacakeun kalawan hadé di dieu. Chrome jeung Edge biasana nyadiakeun sora nu kualitasna luhur.",
     "readAloudGetChrome": "Meunangkeun Chrome",

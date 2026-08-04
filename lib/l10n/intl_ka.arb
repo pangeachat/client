@@ -10597,6 +10597,7 @@
     "audioChoicesDescription": "დაუკარით აუდიო სავარჯიშო აქტივობებში პასუხის ვარიანტებისთვის.",
     "audioIncomingMessagesToolName": "შემომავალი შეტყობინებები",
     "audioIncomingMessagesDescription": "ავტომატურად წაიკითხეთ მიღებული შეტყობინებები ხმამაღლა თქვენს სამიზნე ენაზე მოსმენის პრაქტიკისთვის.",
+    "choosePangeaAvatar": "აირჩიეთ Pangea-ს ავატარი",
     "readAloudNoVoiceTitle": "ვერ მოიძებნა მაღალი ხარისხის {language} ხმა",
     "readAloudNoVoiceDesktopWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Chrome და Edge, როგორც წესი, მოიცავს მაღალი ხარისხის ხმებს.",
     "readAloudGetChrome": "მიიღეთ Chrome",

@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Alefaso ny feon'ireo safidy valiny amin'ny hetsika fampiharana.",
     "audioIncomingMessagesToolName": "Hafatra miditra",
     "audioIncomingMessagesDescription": "Vakio ho azy amin'ny feo avo ireo hafatra voaray amin'ny fiteny kendrenao mba hanaovana fampiharana fihainoana.",
+    "choosePangeaAvatar": "Fidio ny avatar Pangea",
     "readAloudNoVoiceTitle": "Tsy misy feo {language} avo lenta hita",
     "readAloudNoVoiceDesktopWeb": "Ity navigateur ity dia tsy manolotra feo {language} avo lenta, ka tsy azo vakiana tsara eto ny hafatra. Matetika ny Chrome sy Edge dia ahitana feo avo lenta.",
     "readAloudGetChrome": "Raiso ny Chrome",

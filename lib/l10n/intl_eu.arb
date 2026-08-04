@@ -9691,6 +9691,7 @@
     "audioChoicesDescription": "Praktikatzeko jardueretan erantzun-aukerei dagokien audioa erreproduzitu.",
     "audioIncomingMessagesToolName": "Jasotako mezuak",
     "audioIncomingMessagesDescription": "Jasotako mezuak automatikoki irakurri ozenki zure xede-hizkuntzan, entzuteko praktikatzeko.",
+    "choosePangeaAvatar": "Aukeratu Pangea avatar bat",
     "readAloudNoVoiceTitle": "Ez da kalitate handiko {language} ahotsik aurkitu",
     "readAloudNoVoiceDesktopWeb": "Nabigatzaile honek ez du kalitate handiko {language} ahotsik eskaintzen, beraz, mezuak ezin dira ondo irakurri hemen. Chrome eta Edge-k kalitate handiko ahotsak izan ohi dituzte.",
     "readAloudGetChrome": "Lortu Chrome",

@@ -9691,6 +9691,7 @@
     "audioChoicesDescription": "Speel audio af voor antwoordkeuzes in oefenactiviteiten.",
     "audioIncomingMessagesToolName": "Inkomende berichten",
     "audioIncomingMessagesDescription": "Lees ontvangen berichten automatisch hardop voor in je doeltaal voor luisteroefeningen.",
+    "choosePangeaAvatar": "Kies een Pangea-avatar",
     "readAloudNoVoiceTitle": "Geen hoogwaardige {language}-stem gevonden",
     "readAloudNoVoiceDesktopWeb": "Deze browser biedt geen hoogwaardige {language}-stem, dus berichten kunnen hier niet goed worden voorgelezen. Chrome en Edge bevatten meestal hoogwaardige stemmen.",
     "readAloudGetChrome": "Download Chrome",

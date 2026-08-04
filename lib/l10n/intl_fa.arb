@@ -9779,6 +9779,7 @@
     "audioChoicesDescription": "پخش صدا برای گزینه‌های پاسخ در فعالیت‌های تمرینی.",
     "audioIncomingMessagesToolName": "پیام‌های ورودی",
     "audioIncomingMessagesDescription": "برای تمرین شنیداری، پیام‌های دریافتی را به صورت خودکار با صدای بلند به زبان مقصد شما بخواند.",
+    "choosePangeaAvatar": "یک آواتار Pangea انتخاب کنید",
     "readAloudNoVoiceTitle": "صدای با کیفیت بالا برای {language} یافت نشد",
     "readAloudNoVoiceDesktopWeb": "این مرورگر صدای با کیفیت بالا برای {language} ارائه نمی‌دهد، بنابراین پیام‌ها به خوبی در اینجا خوانده نمی‌شوند. کروم و اج معمولاً شامل صداهای با کیفیت بالا هستند.",
     "readAloudGetChrome": "کروم را دریافت کنید",

@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Пуштете аудио за изборите на одговори во вежбите за вежбање.",
     "audioIncomingMessagesToolName": "Дојдовни пораки",
     "audioIncomingMessagesDescription": "Автоматски читајте ги примените пораки на глас на вашиот целен јазик за вежбање слушање.",
+    "choosePangeaAvatar": "Изберете Pangea аватар",
     "readAloudNoVoiceTitle": "Не е пронајден висококвалитетен глас за {language}",
     "readAloudNoVoiceDesktopWeb": "Овој прелистувач не нуди висококвалитетен глас за {language}, па пораките не може добро да се читаат на глас овде. Chrome и Edge обично вклучуваат висококвалитетни гласови.",
     "readAloudGetChrome": "Преземи Chrome",

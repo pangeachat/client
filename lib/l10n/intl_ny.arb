@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Sewerani mawu a mayankho omwe mungasankhe pochita masewera olimbitsa thupi.",
     "audioIncomingMessagesToolName": "Mauthenga obwera",
     "audioIncomingMessagesDescription": "Werengani mauthenga omwe mwalandira mokweza m'chilankhulo chanu chofuna kumvetsera kuti muzolowere kumvetsera.",
+    "choosePangeaAvatar": "Sankhani chithunzi cha Pangea",
     "readAloudNoVoiceTitle": "Palibe mawu apamwamba a {language} omwe apezedwa",
     "readAloudNoVoiceDesktopWeb": "Msakatuli uyu alibe mawu apamwamba a {language}, kotero mauthenga sangawerengedwe bwino pano. Chrome ndi Edge nthawi zambiri amakhala ndi mawu apamwamba.",
     "readAloudGetChrome": "Pezani Chrome",

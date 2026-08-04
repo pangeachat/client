@@ -9884,6 +9884,7 @@
     "audioChoicesDescription": "연습 활동에서 답변 선택지에 대한 오디오를 재생합니다.",
     "audioIncomingMessagesToolName": "수신 메시지",
     "audioIncomingMessagesDescription": "듣기 연습을 위해 수신된 메시지를 학습 언어로 자동으로 소리 내어 읽습니다.",
+    "choosePangeaAvatar": "판게아 아바타 선택",
     "readAloudNoVoiceTitle": "고품질 {language} 음성을 찾을 수 없음",
     "readAloudNoVoiceDesktopWeb": "이 브라우저는 고품질 {language} 음성을 제공하지 않아 메시지를 제대로 읽어줄 수 없습니다. Chrome 및 Edge는 일반적으로 고품질 음성을 포함합니다.",
     "readAloudGetChrome": "Chrome 다운로드",

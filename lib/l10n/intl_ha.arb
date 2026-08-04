@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Kunna sauti don zaɓuɓɓukan amsa a ayyukan aiki.",
     "audioIncomingMessagesToolName": "Saƙonni masu shigowa",
     "audioIncomingMessagesDescription": "Karanta saƙonnin da aka karɓa ta atomatik da babbar murya a cikin harshen da kake so don aikin sauraro.",
+    "choosePangeaAvatar": "Zaɓi hoton Pangea",
     "readAloudNoVoiceTitle": "Ba a sami ingantacciyar murya ta {language} ba",
     "readAloudNoVoiceDesktopWeb": "Wannan burauzar ba ta samar da ingantacciyar murya ta {language} ba, don haka ba za a iya karanta saƙonni da kyau a nan ba. Chrome da Edge galibi suna haɗa da ingantattun muryoyi.",
     "readAloudGetChrome": "Samu Chrome",

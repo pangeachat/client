@@ -9794,6 +9794,7 @@
     "audioChoicesDescription": "A gyakorló feladatokban a válaszlehetőségek hangjának lejátszása.",
     "audioIncomingMessagesToolName": "Bejövő üzenetek",
     "audioIncomingMessagesDescription": "A bejövő üzenetek automatikus felolvasása a célnyelven a hallásgyakorláshoz.",
+    "choosePangeaAvatar": "Válassz Pangea avatart",
     "readAloudNoVoiceTitle": "Nincs kiváló minőségű {language} hang",
     "readAloudNoVoiceDesktopWeb": "Ez a böngésző nem kínál kiváló minőségű {language} hangot, így az üzenetek nem olvashatók fel jól. A Chrome és az Edge általában tartalmaz kiváló minőségű hangokat.",
     "readAloudGetChrome": "Chrome letöltése",

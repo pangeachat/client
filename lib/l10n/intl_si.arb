@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "පුහුණු ක්‍රියාකාරකම්වලදී පිළිතුරු තේරීම් සඳහා ශ්‍රව්‍ය වාදනය කරන්න.",
     "audioIncomingMessagesToolName": "එන පණිවිඩ",
     "audioIncomingMessagesDescription": "සවන් දීමේ පුහුණුව සඳහා ලැබුණු පණිවිඩ ස්වයංක්‍රීයව ඔබේ ඉලක්ක භාෂාවෙන් ශබ්ද නඟා කියවන්න.",
+    "choosePangeaAvatar": "Pangea අවතාරයක් තෝරන්න",
     "readAloudNoVoiceTitle": "උසස් තත්ත්වයේ {language} හඬක් හමු නොවීය",
     "readAloudNoVoiceDesktopWeb": "මෙම බ්‍රවුසරය උසස් තත්ත්වයේ {language} හඬක් ලබා නොදෙන නිසා, මෙහිදී පණිවිඩ හොඳින් කියවිය නොහැක. Chrome සහ Edge සාමාන්‍යයෙන් උසස් තත්ත්වයේ හඬවල් ඇතුළත් කරයි.",
     "readAloudGetChrome": "Chrome ලබා ගන්න",

@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "ਅਭਿਆਸ ਗਤੀਵਿਧੀਆਂ ਵਿੱਚ ਜਵਾਬ ਚੋਣਾਂ ਲਈ ਆਡੀਓ ਚਲਾਓ।",
     "audioIncomingMessagesToolName": "ਆਉਣ ਵਾਲੇ ਸੁਨੇਹੇ",
     "audioIncomingMessagesDescription": "ਸੁਣਨ ਦੇ ਅਭਿਆਸ ਲਈ ਆਪਣੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਪ੍ਰਾਪਤ ਸੁਨੇਹਿਆਂ ਨੂੰ ਆਪਣੇ ਆਪ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ।",
+    "choosePangeaAvatar": "ਇੱਕ ਪੈਂਜੀਆ ਅਵਤਾਰ ਚੁਣੋ",
     "readAloudNoVoiceTitle": "ਕੋਈ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਨਹੀਂ ਮਿਲੀ",
     "readAloudNoVoiceDesktopWeb": "ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਦੀ ਪੇਸ਼ਕਸ਼ ਨਹੀਂ ਕਰਦਾ, ਇਸ ਲਈ ਸੁਨੇਹੇ ਇੱਥੇ ਚੰਗੀ ਤਰ੍ਹਾਂ ਪੜ੍ਹੇ ਨਹੀਂ ਜਾ ਸਕਦੇ। Chrome ਅਤੇ Edge ਵਿੱਚ ਆਮ ਤੌਰ 'ਤੇ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀਆਂ ਆਵਾਜ਼ਾਂ ਸ਼ਾਮਲ ਹੁੰਦੀਆਂ ਹਨ।",
     "readAloudGetChrome": "Chrome ਪ੍ਰਾਪਤ ਕਰੋ",

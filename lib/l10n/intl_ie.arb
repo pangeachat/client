@@ -10323,6 +10323,7 @@
     "audioChoicesDescription": "Seinn fuaim do roghanna freagraí i ngníomhaíochtaí cleachtaidh.",
     "audioIncomingMessagesToolName": "Teachtaireachtaí isteach",
     "audioIncomingMessagesDescription": "Léigh teachtaireachtaí a fhaightear os ard go huathoibríoch i do sprioc-theanga le haghaidh cleachtadh éisteachta.",
+    "choosePangeaAvatar": "Roghnaigh avatar Pangea",
     "readAloudNoVoiceTitle": "Níor aimsíodh guth {language} ardchaighdeáin",
     "readAloudNoVoiceDesktopWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. De ghnáth bíonn guthanna ardchaighdeáin san áireamh i Chrome agus Edge.",
     "readAloudGetChrome": "Faigh Chrome",

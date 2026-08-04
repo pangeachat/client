@@ -10646,6 +10646,7 @@
     "audioChoicesDescription": "Reprodukujte zvuk za ponuđene odgovore u vežbama.",
     "audioIncomingMessagesToolName": "Dolazne poruke",
     "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na ciljnom jeziku radi vežbanja slušanja.",
+    "choosePangeaAvatar": "Izaberite Pangea avatar",
     "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
     "readAloudNoVoiceDesktopWeb": "Ovaj pregledač ne nudi visokokvalitetan glas za {language}, tako da se poruke ovde ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
     "readAloudGetChrome": "Preuzmite Chrome",

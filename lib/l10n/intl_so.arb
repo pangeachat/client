@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Ku ciyaar maqal xulashooyinka jawaabaha ee hawlaha tababarka.",
     "audioIncomingMessagesToolName": "Fariimaha soo galaya",
     "audioIncomingMessagesDescription": "Si toos ah u akhri fariimaha la helay si cod ah luqadda aad bartayso si aad u tababarto dhageysiga.",
+    "choosePangeaAvatar": "Dooro sawirka Pangea",
     "readAloudNoVoiceTitle": "Lama helin cod tayo sare leh oo {language} ah",
     "readAloudNoVoiceDesktopWeb": "Browser-kani ma bixiyo cod tayo sare leh oo {language} ah, sidaa darteed fariimaha si fiican looma akhrin karo halkan. Chrome iyo Edge inta badan waxaa ku jira codad tayo sare leh.",
     "readAloudGetChrome": "Soo deji Chrome",

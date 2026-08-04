@@ -7894,6 +7894,7 @@
     "audioChoicesDescription": "Reproduce el audio de las opciones de respuesta en las actividades de práctica.",
     "audioIncomingMessagesToolName": "Mensajes entrantes",
     "audioIncomingMessagesDescription": "Lee automáticamente en voz alta los mensajes recibidos en tu idioma objetivo para practicar la escucha.",
+    "choosePangeaAvatar": "Elige un avatar de Pangea",
     "readAloudNoVoiceTitle": "No se encontró una voz de {language} de alta calidad",
     "readAloudNoVoiceDesktopWeb": "Este navegador no ofrece una voz de {language} de alta calidad, por lo que los mensajes no se pueden leer en voz alta correctamente aquí. Chrome y Edge suelen incluir voces de alta calidad.",
     "readAloudGetChrome": "Obtener Chrome",

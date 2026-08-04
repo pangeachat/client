@@ -10557,6 +10557,7 @@
     "audioChoicesDescription": "I-play ang audio para sa mga pagpipilian sa sagot sa mga aktibidad sa pagsasanay.",
     "audioIncomingMessagesToolName": "Mga Papasok na Mensahe",
     "audioIncomingMessagesDescription": "Awtomatikong basahin nang malakas ang mga natanggap na mensahe sa iyong target na wika para sa pagsasanay sa pakikinig.",
+    "choosePangeaAvatar": "Pumili ng Pangea avatar",
     "readAloudNoVoiceTitle": "Walang nakitang de-kalidad na boses sa {language}",
     "readAloudNoVoiceDesktopWeb": "Hindi nag-aalok ang browser na ito ng de-kalidad na boses sa {language}, kaya hindi mababasa nang maayos ang mga mensahe dito. Karaniwang may kasamang de-kalidad na boses ang Chrome at Edge.",
     "readAloudGetChrome": "Kunin ang Chrome",

@@ -9797,6 +9797,7 @@
     "audioChoicesDescription": "在練習活動中播放答案選項的音訊。",
     "audioIncomingMessagesToolName": "接收訊息",
     "audioIncomingMessagesDescription": "自動朗讀以您的目標語言接收的訊息，以進行聽力練習。",
+    "choosePangeaAvatar": "選擇 Pangea 頭像",
     "readAloudNoVoiceTitle": "找不到高品質的{language}語音",
     "readAloudNoVoiceDesktopWeb": "此瀏覽器不提供高品質的{language}語音，因此無法在此處良好地朗讀訊息。Chrome 和 Edge 通常包含高品質的語音。",
     "readAloudGetChrome": "取得 Chrome",

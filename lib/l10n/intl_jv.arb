@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Putar audio kanggo pilihan jawaban ing aktivitas latihan.",
     "audioIncomingMessagesToolName": "Pesen mlebu",
     "audioIncomingMessagesDescription": "Otomatis maca pesen sing ditampa kanthi banter ing basa target sampeyan kanggo latihan ngrungokake.",
+    "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Swara {language} kualitas dhuwur ora ditemokake",
     "readAloudNoVoiceDesktopWeb": "Browser iki ora nyedhiyakake swara {language} kualitas dhuwur, mula pesen ora bisa diwaca kanthi apik ing kene. Chrome lan Edge biasane nyakup swara kualitas dhuwur.",
     "readAloudGetChrome": "Entuk Chrome",

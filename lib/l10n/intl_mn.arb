@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Дасгалын хариултын сонголтуудын дууг тоглуулна.",
     "audioIncomingMessagesToolName": "Ирж буй мессежүүд",
     "audioIncomingMessagesDescription": "Сонсох дасгал хийх зорилгоор хүлээн авсан мессежүүдийг таны сурч буй хэлээр автоматаар чангаар уншина.",
+    "choosePangeaAvatar": "Пангеагийн аватар сонгох",
     "readAloudNoVoiceTitle": "Өндөр чанартай {language} дуу хоолой олдсонгүй",
     "readAloudNoVoiceDesktopWeb": "Энэ хөтөч өндөр чанартай {language} дуу хоолой санал болгохгүй тул энд мессежийг сайн унших боломжгүй. Chrome болон Edge ихэвчлэн өндөр чанартай дуу хоолойг агуулдаг.",
     "readAloudGetChrome": "Chrome татаж авах",

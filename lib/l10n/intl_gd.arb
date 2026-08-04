@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Cluich fuaim airson roghainnean freagairt ann an gnìomhachdan cleachdaidh.",
     "audioIncomingMessagesToolName": "Teachdaireachdan a tha a' tighinn a-steach",
     "audioIncomingMessagesDescription": "Leugh teachdaireachdan a fhuaireadh gu fèin-obrachail a-mach anns an targaid-chànain agad airson cleachdadh èisteachd.",
+    "choosePangeaAvatar": "Tagh avatar Pangea",
     "readAloudNoVoiceTitle": "Cha deach guth {language} de chàileachd àrd a lorg",
     "readAloudNoVoiceDesktopWeb": "Chan eil an brabhsair seo a’ tabhann guth {language} de chàileachd àrd, is mar sin chan urrainnear teachdaireachdan a leughadh a-mach gu math an seo. Mar as trice bidh Chrome is Edge a’ toirt a-steach guthan de chàileachd àrd.",
     "readAloudGetChrome": "Faigh Chrome",

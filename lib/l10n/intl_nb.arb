@@ -9748,6 +9748,7 @@
     "audioChoicesDescription": "Spill av lyd for svaralternativer i øvelser.",
     "audioIncomingMessagesToolName": "Innkommende meldinger",
     "audioIncomingMessagesDescription": "Les automatisk mottatte meldinger høyt på målspråket ditt for lytteøvelser.",
+    "choosePangeaAvatar": "Velg en Pangea-avatar",
     "readAloudNoVoiceTitle": "Fant ingen {language}-stemme av høy kvalitet",
     "readAloudNoVoiceDesktopWeb": "Denne nettleseren tilbyr ikke en {language}-stemme av høy kvalitet, så meldinger kan ikke leses høyt på en god måte her. Chrome og Edge inkluderer vanligvis stemmer av høy kvalitet.",
     "readAloudGetChrome": "Skaff deg Chrome",

@@ -10423,6 +10423,7 @@
     "audioChoicesDescription": "Redă sunetul pentru opțiunile de răspuns în activitățile de exersare.",
     "audioIncomingMessagesToolName": "Mesaje primite",
     "audioIncomingMessagesDescription": "Citește automat mesajele primite cu voce tare în limba țintă pentru exersarea ascultării.",
+    "choosePangeaAvatar": "Alege un avatar Pangea",
     "readAloudNoVoiceTitle": "Nu s-a găsit o voce {language} de înaltă calitate",
     "readAloudNoVoiceDesktopWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Chrome și Edge includ de obicei voci de înaltă calitate.",
     "readAloudGetChrome": "Obțineți Chrome",

@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Spila hljóð fyrir svarmöguleika í æfingum.",
     "audioIncomingMessagesToolName": "Móttekin skilaboð",
     "audioIncomingMessagesDescription": "Lesa móttekin skilaboð sjálfkrafa upphátt á markmálinu þínu til að æfa hlustun.",
+    "choosePangeaAvatar": "Veldu Pangea avatar",
     "readAloudNoVoiceTitle": "Engin hágæða {language} rödd fannst",
     "readAloudNoVoiceDesktopWeb": "Þessi vafri býður ekki upp á hágæða {language} rödd, svo ekki er hægt að lesa upp skilaboð vel hér. Chrome og Edge innihalda venjulega hágæða raddir.",
     "readAloudGetChrome": "Sækja Chrome",

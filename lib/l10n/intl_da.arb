@@ -10617,6 +10617,7 @@
     "audioChoicesDescription": "Afspil lyd for svarmuligheder i øvelsesaktiviteter.",
     "audioIncomingMessagesToolName": "Indgående beskeder",
     "audioIncomingMessagesDescription": "Læs automatisk modtagne beskeder højt på dit målsprog for lytteøvelse.",
+    "choosePangeaAvatar": "Vælg en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen {language}-stemme af høj kvalitet fundet",
     "readAloudNoVoiceDesktopWeb": "Denne browser tilbyder ikke en {language}-stemme af høj kvalitet, så beskeder kan ikke læses højt her. Chrome og Edge inkluderer normalt stemmer af høj kvalitet.",
     "readAloudGetChrome": "Hent Chrome",

@@ -10647,6 +10647,7 @@
     "audioChoicesDescription": "అభ్యాస కార్యకలాపాలలో సమాధాన ఎంపికల కోసం ఆడియోను ప్లే చేయండి.",
     "audioIncomingMessagesToolName": "ఇన్‌కమింగ్ సందేశాలు",
     "audioIncomingMessagesDescription": "వినే అభ్యాసం కోసం మీ లక్ష్య భాషలో స్వీకరించిన సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి.",
+    "choosePangeaAvatar": "పంగేయా అవతార్‌ను ఎంచుకోండి",
     "readAloudNoVoiceTitle": "అధిక-నాణ్యత గల {language} వాయిస్ కనుగొనబడలేదు",
     "readAloudNoVoiceDesktopWeb": "ఈ బ్రౌజర్ అధిక-నాణ్యత గల {language} వాయిస్‌ను అందించదు, కాబట్టి సందేశాలను ఇక్కడ సరిగ్గా చదవలేము. Chrome మరియు Edge సాధారణంగా అధిక-నాణ్యత గల వాయిస్‌లను కలిగి ఉంటాయి.",
     "readAloudGetChrome": "Chrome పొందండి",

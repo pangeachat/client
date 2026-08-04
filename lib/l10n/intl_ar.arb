@@ -9997,6 +9997,7 @@
     "audioChoicesDescription": "شغّل الصوت لخيارات الإجابة في أنشطة التدريب.",
     "audioIncomingMessagesToolName": "الرسائل الواردة",
     "audioIncomingMessagesDescription": "اقرأ الرسائل المستلمة تلقائيًا بصوت عالٍ بلغتك المستهدفة لممارسة الاستماع.",
+    "choosePangeaAvatar": "اختر صورة بانجيا الرمزية",
     "readAloudNoVoiceTitle": "لم يتم العثور على صوت عالي الجودة لـ {language}",
     "readAloudNoVoiceDesktopWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يتضمن Chrome و Edge عادةً أصواتًا عالية الجودة.",
     "readAloudGetChrome": "احصل على Chrome",

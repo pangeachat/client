@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Մարզումների ժամանակ պատասխանների ընտրությունների համար աուդիո միացնել։",
     "audioIncomingMessagesToolName": "Մուտքային հաղորդագրություններ",
     "audioIncomingMessagesDescription": "Լսելու պրակտիկայի համար ավտոմատ կերպով բարձրաձայն կարդալ ստացված հաղորդագրությունները ձեր թիրախ լեզվով։",
+    "choosePangeaAvatar": "Ընտրեք Pangea ավատար",
     "readAloudNoVoiceTitle": "Բարձրորակ {language} ձայն չի գտնվել",
     "readAloudNoVoiceDesktopWeb": "Այս բրաուզերը չի առաջարկում բարձրորակ {language} ձայն, ուստի հաղորդագրությունները լավ չեն կարող բարձրաձայն կարդացվել այստեղ։ Chrome-ը և Edge-ը սովորաբար ներառում են բարձրորակ ձայներ։",
     "readAloudGetChrome": "Ստանալ Chrome",

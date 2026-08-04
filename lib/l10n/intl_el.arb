@@ -10572,6 +10572,7 @@
     "audioChoicesDescription": "Αναπαραγωγή ήχου για τις επιλογές απάντησης σε δραστηριότητες εξάσκησης.",
     "audioIncomingMessagesToolName": "Εισερχόμενα μηνύματα",
     "audioIncomingMessagesDescription": "Αυτόματη ανάγνωση των εισερχόμενων μηνυμάτων δυνατά στη γλώσσα-στόχο σας για εξάσκηση στην ακρόαση.",
+    "choosePangeaAvatar": "Επιλέξτε ένα avatar Pangea",
     "readAloudNoVoiceTitle": "Δεν βρέθηκε φωνή υψηλής ποιότητας για {language}",
     "readAloudNoVoiceDesktopWeb": "Αυτό το πρόγραμμα περιήγησης δεν προσφέρει φωνή υψηλής ποιότητας για {language}, επομένως τα μηνύματα δεν μπορούν να διαβαστούν καλά εδώ. Το Chrome και το Edge συνήθως περιλαμβάνουν φωνές υψηλής ποιότητας.",
     "readAloudGetChrome": "Αποκτήστε το Chrome",

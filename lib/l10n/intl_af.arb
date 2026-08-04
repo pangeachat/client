@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Speel oudio vir antwoordkeuses in oefenaktiwiteite.",
     "audioIncomingMessagesToolName": "Inkomende boodskappe",
     "audioIncomingMessagesDescription": "Lees outomaties ontvangde boodskappe hardop in jou doeltaal vir luisteroefening.",
+    "choosePangeaAvatar": "Kies 'n Pangea-avatar",
     "readAloudNoVoiceTitle": "Geen hoëgehalte {language}-stem gevind nie",
     "readAloudNoVoiceDesktopWeb": "Hierdie blaaier bied nie 'n hoëgehalte {language}-stem nie, so boodskappe kan nie goed hier voorgelees word nie. Chrome en Edge sluit gewoonlik hoëgehalte stemme in.",
     "readAloudGetChrome": "Kry Chrome",

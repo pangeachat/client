@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "ເປີດສຽງສຳລັບຕົວເລືອກຄຳຕອບໃນກິດຈະກຳການຝຶກຊ້ອມ.",
     "audioIncomingMessagesToolName": "ຂໍ້ຄວາມທີ່ເຂົ້າມາ",
     "audioIncomingMessagesDescription": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບໂດຍອັດຕະໂນມັດອອກສຽງດັງໃນພາສາເປົ້າໝາຍຂອງທ່ານສຳລັບການຝຶກຟັງ.",
+    "choosePangeaAvatar": "ເລືອກຮູບແທນຕົວ Pangea",
     "readAloudNoVoiceTitle": "ບໍ່ພົບສຽງ {language} ຄຸນນະພາບສູງ",
     "readAloudNoVoiceDesktopWeb": "ບຣາວເຊີນີ້ບໍ່ມີສຽງ {language} ທີ່ມີຄຸນນະພາບສູງ, ສະນັ້ນຂໍ້ຄວາມຈຶ່ງບໍ່ສາມາດອ່ານອອກສຽງໄດ້ດີຢູ່ບ່ອນນີ້. ປົກກະຕິແລ້ວ Chrome ແລະ Edge ຈະມີສຽງທີ່ມີຄຸນນະພາບສູງ.",
     "readAloudGetChrome": "ເອົາ Chrome",

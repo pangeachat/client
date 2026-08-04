@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Sonum optionum responsionis in exercitationibus audi.",
     "audioIncomingMessagesToolName": "Nuntii advenientes",
     "audioIncomingMessagesDescription": "Nuntios acceptos sponte legere voce clara in lingua tua discenda ad audiendum exercendum.",
+    "choosePangeaAvatar": "Elige imaginem Pangeae",
     "readAloudNoVoiceTitle": "Nulla vox {language} optima reperta",
     "readAloudNoVoiceDesktopWeb": "Hic navigatrum nullam vocem {language} optimam praebet, ergo nuntii hic bene legi non possunt. Chrome et Edge plerumque voces optimas includunt.",
     "readAloudGetChrome": "Accipe Chrome",

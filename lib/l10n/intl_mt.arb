@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Iddoqq awdjo għall-għażliet tat-tweġibiet f'attivitajiet ta' prattika.",
     "audioIncomingMessagesToolName": "Messaġġi deħlin",
     "audioIncomingMessagesDescription": "Awtomatikament aqra messaġġi riċevuti b'leħen għoli fil-lingwa fil-mira tiegħek għall-prattika tas-smigħ.",
+    "choosePangeaAvatar": "Agħżel avatar ta' Pangea",
     "readAloudNoVoiceTitle": "Ma nstabet l-ebda vuċi ta' kwalità għolja bil-{language}",
     "readAloudNoVoiceDesktopWeb": "Dan il-browser ma joffrix vuċi ta' kwalità għolja bil-{language}, għalhekk il-messaġġi ma jistgħux jinqraw b'leħen għoli sew hawn. Chrome u Edge normalment jinkludu vuċijiet ta' kwalità għolja.",
     "readAloudGetChrome": "Ikseb Chrome",

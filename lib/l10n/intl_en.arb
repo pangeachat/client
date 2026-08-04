@@ -461,6 +461,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "choosePangeaAvatar": "Choose a Pangea avatar",
+    "@choosePangeaAvatar": {
+        "type": "String",
+        "placeholders": {}
+    },
     "channelCorruptedDecryptError": "The encryption has been corrupted",
     "@channelCorruptedDecryptError": {
         "type": "String",

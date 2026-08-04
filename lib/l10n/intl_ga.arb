@@ -9702,6 +9702,7 @@
     "audioChoicesDescription": "Seinn fuaim do roghanna freagraí i ngníomhaíochtaí cleachtaidh.",
     "audioIncomingMessagesToolName": "Teachtaireachtaí isteach",
     "audioIncomingMessagesDescription": "Léigh teachtaireachtaí a fhaightear os ard go huathoibríoch i do sprioctheanga le haghaidh cleachtadh éisteachta.",
+    "choosePangeaAvatar": "Roghnaigh avatar Pangea",
     "readAloudNoVoiceTitle": "Níor aimsíodh guth ardcháilíochta {language}",
     "readAloudNoVoiceDesktopWeb": "Níl guth ardcháilíochta {language} ar fáil sa bhrabhsálaí seo, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. De ghnáth bíonn guthanna ardcháilíochta san áireamh le Chrome agus Edge.",
     "readAloudGetChrome": "Faigh Chrome",

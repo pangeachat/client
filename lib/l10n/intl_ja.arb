@@ -10460,6 +10460,7 @@
     "audioChoicesDescription": "練習問題の解答選択肢の音声を再生します。",
     "audioIncomingMessagesToolName": "受信メッセージ",
     "audioIncomingMessagesDescription": "リスニング練習のため、受信メッセージを目標言語で自動的に読み上げます。",
+    "choosePangeaAvatar": "パンゲアのアバターを選択",
     "readAloudNoVoiceTitle": "高品質な{language}の音声が見つかりません",
     "readAloudNoVoiceDesktopWeb": "このブラウザでは高品質な{language}の音声が提供されていないため、ここではメッセージをうまく読み上げることができません。通常、ChromeとEdgeには高品質な音声が含まれています。",
     "readAloudGetChrome": "Chromeを入手",

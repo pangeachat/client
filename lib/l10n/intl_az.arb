@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Təcrübə fəaliyyətlərində cavab seçimləri üçün audio səsləndirin.",
     "audioIncomingMessagesToolName": "Gələn mesajlar",
     "audioIncomingMessagesDescription": "Dinləmə təcrübəsi üçün qəbul edilmiş mesajları hədəf dilinizdə avtomatik olaraq yüksək səslə oxuyun.",
+    "choosePangeaAvatar": "Pangea avatarı seçin",
     "readAloudNoVoiceTitle": "{language} üçün yüksək keyfiyyətli səs tapılmadı",
     "readAloudNoVoiceDesktopWeb": "Bu brauzer yüksək keyfiyyətli {language} səsi təklif etmir, ona görə də mesajlar burada yaxşı oxuna bilməz. Chrome və Edge adətən yüksək keyfiyyətli səslərə malikdir.",
     "readAloudGetChrome": "Chrome əldə edin",

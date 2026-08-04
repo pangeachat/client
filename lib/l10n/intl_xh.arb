@@ -2073,6 +2073,7 @@
     "audioChoicesDescription": "Dlala isandi sokukhetha iimpendulo kwimisebenzi yokuziqhelanisa.",
     "audioIncomingMessagesToolName": "Imiyalezo engenayo",
     "audioIncomingMessagesDescription": "Funda ngokuzenzekelayo imiyalezo efumanekileyo ngelizwi elikhulu ngolwimi olujoliswe kulo ukuze uziqhelanise nokuphulaphula.",
+    "choosePangeaAvatar": "Khetha i-avatar yePangea",
     "readAloudNoVoiceTitle": "Akukho lizwi {language} elikumgangatho ophezulu elifunyenweyo",
     "readAloudNoVoiceDesktopWeb": "Le bhrawuza ayiliniki ilizwi {language} elikumgangatho ophezulu, ngoko ke imiyalezo ayinakufundwa kakuhle apha. I-Chrome kunye ne-Edge zihlala zibandakanya amazwi akumgangatho ophezulu.",
     "readAloudGetChrome": "Fumana i-Chrome",

@@ -9776,6 +9776,7 @@
     "audioChoicesDescription": "Odtwarzaj dźwięk dla opcji odpowiedzi w ćwiczeniach praktycznych.",
     "audioIncomingMessagesToolName": "Wiadomości przychodzące",
     "audioIncomingMessagesDescription": "Automatycznie czytaj otrzymane wiadomości na głos w języku docelowym, aby ćwiczyć słuchanie.",
+    "choosePangeaAvatar": "Wybierz awatar Pangea",
     "readAloudNoVoiceTitle": "Nie znaleziono wysokiej jakości głosu {language}",
     "readAloudNoVoiceDesktopWeb": "Ta przeglądarka nie oferuje wysokiej jakości głosu {language}, więc wiadomości nie mogą być tu dobrze odczytywane. Chrome i Edge zazwyczaj zawierają wysokiej jakości głosy.",
     "readAloudGetChrome": "Pobierz Chrome",
