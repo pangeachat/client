@@ -181,6 +181,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
         widget.room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
       ),
       activityId: widget.activityId,
+      sessionRoomId: widget.room.id,
     );
 
     if (mounted) {
