@@ -7,10 +7,9 @@ import 'package:fluffychat/routes/settings/settings_learning/learning_settings_v
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/read_aloud_voice_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
-import 'package:fluffychat/routes/settings/settings_learning/voice_dropdown.dart';
 
-/// The audio section of the learning settings page: the bot voice dropdown
-/// plus the per-surface audio toggles (words, choices, incoming messages).
+/// The audio section of the learning settings page: the per-surface audio
+/// toggles (words, choices, incoming messages).
 class AudioSettingsSection extends StatelessWidget {
   final LearningSettingsViewModel viewModel;
 
@@ -48,14 +47,6 @@ class AudioSettingsSection extends StatelessWidget {
               color: theme.colorScheme.secondary,
               fontWeight: FontWeight.bold,
             ),
-          ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-          child: VoiceDropdown(
-            value: viewModel.selectedVoice,
-            language: viewModel.selectedTargetLanguage,
-            onChanged: viewModel.setVoice,
           ),
         ),
         ...ToolSetting.audioSettings

@@ -8,8 +8,8 @@ import 'package:fluffychat/routes/settings/settings_learning/audio_settings_sect
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 
-/// #8117 — the Audio section of learning settings: voice dropdown plus the
-/// three per-surface audio toggles (Words, Choices, Incoming messages).
+/// #8117 — the Audio section of learning settings: the three per-surface audio
+/// toggles (Words, Choices, Incoming messages).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -38,13 +38,13 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('renders the section header, voice dropdown, and three toggles', (
-    tester,
-  ) async {
+  testWidgets('renders the section header and three toggles', (tester) async {
     await pumpSection(tester, makeViewModel());
 
     expect(find.text('Audio'), findsOneWidget);
-    expect(find.text('Pangea Bot audio message voice'), findsOneWidget);
+    // The bot voice picker is gone: the bot no longer generates TTS, so the
+    // control did nothing. See message-read-aloud.instructions.md.
+    expect(find.text('Pangea Bot audio message voice'), findsNothing);
     expect(find.text('Words'), findsOneWidget);
     expect(find.text('Choices'), findsOneWidget);
     expect(find.text('Incoming messages'), findsOneWidget);
