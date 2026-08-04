@@ -537,7 +537,7 @@ class AnalyticsDataService {
         final newPoints = newConstructs[id]?.points ?? 0;
         points += (newPoints - prevPoints);
       }
-      events.add(XPGainedEvent(points, update.targetID));
+      events.add(XPGainedEvent.fromUses(addedConstructs, update.targetID));
     }
 
     final newData = prevData.addXP(points);
