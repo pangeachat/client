@@ -5,6 +5,7 @@ import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/models/base_request_model.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_response_parser.dart';
 
 class Requests {
@@ -73,7 +74,8 @@ class Requests {
     String? message;
     try {
       final responseBody = jsonDecode(utf8.decode(response.bodyBytes));
-      message = responseBody['detail'];
+      final detail = responseBody['detail'];
+      message = detail is String ? detail : null;
     } catch (e) {
       Logs().w("Failed to parse error response body");
       message = null;
@@ -85,7 +87,8 @@ class Requests {
     }
 
     _addBreadcrumb(response, body: body);
-    throw errorResponseParser?.parse(response) ?? response;
+    throw errorResponseParser?.parse(response) ??
+        PangeaHttpException.fromResponse(response, detail: message);
   }
 
   Map<String, String> get _headers {
