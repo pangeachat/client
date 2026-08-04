@@ -5,12 +5,12 @@ import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 import 'package:wakelock_plus_platform_interface/wakelock_plus_platform_interface.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/degradation_banner.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/editable_transcript.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/streamed_stt_embed.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/streaming_stt_session.dart';
 import 'package:fluffychat/routes/chat/events/streaming_stt/stt_provenance.dart';
-import 'package:fluffychat/routes/chat/degradation_banner.dart';
 import 'package:fluffychat/routes/chat/recording_input_row.dart';
 import 'package:fluffychat/routes/chat/recording_view_model.dart';
 
