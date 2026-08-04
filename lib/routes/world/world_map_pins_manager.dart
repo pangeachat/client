@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -46,6 +47,18 @@ bool needsParticipantRefill({
   required int? joinedCount,
   required bool hasUnresolvedSeats,
 }) => everFilled ? filledAtJoinedCount != joinedCount : hasUnresolvedSeats;
+
+/// Severity for a course outline that failed to resolve during the objective
+/// cache rebuild. [MissingQuestException] is a state the repo already
+/// classified benign — [QuestRepo.quest] returns it without reporting, and the
+/// course panel renders it as a known state — so re-reporting it at `error`
+/// re-severitized a handled condition (CLIENT-DQC, #8094). It still reports at
+/// `warning` (once per course per session) because a dropped course blanks
+/// relevance banding with no other visible signal. Everything else keeps
+/// `error`: the outline read failing for any other reason is real breakage.
+@visibleForTesting
+SentryLevel courseOutlineErrorLevel(Object error) =>
+    error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
 
 /// Minimum spacing between empty-cache self-heal rebuilds of the objective
 /// cache. A set-change rebuild (course join/leave) is never subject to it —
@@ -587,6 +600,7 @@ class WorldMapPinsManager {
           s: s,
           m: 'JoinedObjectiveCache: course outline failed to resolve',
           data: {'courseRoomId': roomId, 'questId': questId},
+          level: courseOutlineErrorLevel(e),
         ),
       );
       _objectiveCacheRoomIds = rooms.map((r) => r.id).toSet();

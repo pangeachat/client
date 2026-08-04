@@ -9,6 +9,7 @@ import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
@@ -153,7 +154,7 @@ class ActivityPlanRepo
 
   @visibleForTesting
   static ActivityPlanLookupStatus classifyLookupError(Object error) =>
-      error is Response && error.statusCode == 404
+      PangeaHttpException.statusCodeOf(error) == 404
       ? ActivityPlanLookupStatus.removed
       : ActivityPlanLookupStatus.failed;
 
