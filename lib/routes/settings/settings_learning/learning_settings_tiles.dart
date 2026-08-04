@@ -97,10 +97,17 @@ class LearningSettingsTiles extends StatelessWidget {
                 ),
               ],
             ),
-            Divider(height: 1),
             Column(
               children: [
-                AudioSettingsSection(viewModel: viewModel),
+                Divider(height: 1),
+                AutocorrectSettingsTile(viewModel: viewModel),
+                SwitchListTile.adaptive(
+                  value: viewModel.appLanguageIsTarget,
+                  title: Text(L10n.of(context).appInTargetLanguageTitle),
+                  subtitle: Text(L10n.of(context).appInTargetLanguageDesc),
+                  activeThumbColor: AppConfig.activeToggleColor,
+                  onChanged: viewModel.setAppLanguageIsTarget,
+                ),
                 ...ToolSetting.values
                     .where(
                       (tool) => tool.isAvailableSetting && !tool.isAudioSetting,
@@ -114,14 +121,6 @@ class LearningSettingsTiles extends StatelessWidget {
                             viewModel.updateToolSetting(setting, v),
                       ),
                     ),
-                AutocorrectSettingsTile(viewModel: viewModel),
-                SwitchListTile.adaptive(
-                  value: viewModel.appLanguageIsTarget,
-                  title: Text(L10n.of(context).appInTargetLanguageTitle),
-                  subtitle: Text(L10n.of(context).appInTargetLanguageDesc),
-                  activeThumbColor: AppConfig.activeToggleColor,
-                  onChanged: viewModel.setAppLanguageIsTarget,
-                ),
                 ListTile(
                   leading: const Icon(Icons.lightbulb),
                   title: Text(L10n.of(context).resetInstructionTooltipsTitle),
@@ -131,6 +130,12 @@ class LearningSettingsTiles extends StatelessWidget {
                       ? null
                       : viewModel.resetInstructionTooltips,
                 ),
+              ],
+            ),
+            Column(
+              children: [
+                Divider(height: 1),
+                AudioSettingsSection(viewModel: viewModel),
               ],
             ),
           ],
