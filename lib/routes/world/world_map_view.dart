@@ -207,13 +207,6 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// (#7245).
   _PinRenderer? _lastSettledRenderer;
 
-  /// Stable keys for the two pin layers the L1 shimmer wraps. Without them,
-  /// toggling the `Shimmer` wrapper changes the widget type at that slot in the
-  /// map's children, so Flutter remounts the marker layer — which drops it for a
-  /// frame.
-  final GlobalKey _dotLayerKey = GlobalKey();
-  final GlobalKey _largeLayerKey = GlobalKey();
-
   /// The marker box for a pin: the tier size, except an inProgress pin renders a
   /// gold star that can exceed a tiny dot's box, so its box is sized to hold the
   /// largest star (the super star, [PinSize.superStarDotDiameter]).
@@ -849,36 +842,30 @@ class _WorldMapViewState extends State<WorldMapView> {
               // or panning freezes exactly as above.
               final minZoom = WorldMapConstants.minZoomFor(constraints.biggest);
               _reclampCameraIfBelow(minZoom);
-              // Stable-keyed so the shimmer wrap reparents rather than remounts
-              // these layers
-              final Widget dotLayer = KeyedSubtree(
-                key: _dotLayerKey,
-                child: DotMarkersLayer(
-                  nonLargeCards: render.nonLargeCards,
-                  stateOf: render.stateOf,
-                  nonStartableOf: render.nonStartableOf,
-                  tierOf: render.tierOf,
-                  starLevelOf: render.starLevelOf,
-                  pingedOf: render.pingedOf,
-                  activeActivityInstance:
-                      widget.controller.client?.activeActivityInstance,
-                  markerBox: _markerBox,
-                  markerAlignment: _markerAlignment,
-                  sessionParticipants: (a, b) => _sessionParticipants(a, b),
-                  focusedId: render.focusedId,
-                  onTap: widget.controller.openActivity,
-                ).layer(),
-              );
-              final Widget largeLayer = KeyedSubtree(
-                key: _largeLayerKey,
-                child: LargeMarkersLayer(
-                  largeCards: render.largeCards,
-                  currentLarge: currentLarge,
-                  focusedId: render.focusedId,
-                  onTap: widget.controller.openActivity,
-                  onClose: widget.controller.dismissLargeCard,
-                ).layer(),
-              );
+              // Locals so _ShimmerLayer can wrap them without duplicating their
+              // construction.
+              final Widget dotLayer = DotMarkersLayer(
+                nonLargeCards: render.nonLargeCards,
+                stateOf: render.stateOf,
+                nonStartableOf: render.nonStartableOf,
+                tierOf: render.tierOf,
+                starLevelOf: render.starLevelOf,
+                pingedOf: render.pingedOf,
+                activeActivityInstance:
+                    widget.controller.client?.activeActivityInstance,
+                markerBox: _markerBox,
+                markerAlignment: _markerAlignment,
+                sessionParticipants: (a, b) => _sessionParticipants(a, b),
+                focusedId: render.focusedId,
+                onTap: widget.controller.openActivity,
+              ).layer();
+              final Widget largeLayer = LargeMarkersLayer(
+                largeCards: render.largeCards,
+                currentLarge: currentLarge,
+                focusedId: render.focusedId,
+                onTap: widget.controller.openActivity,
+                onClose: widget.controller.dismissLargeCard,
+              ).layer();
               return FlutterMap(
                 mapController: widget.controller.mapController,
                 options: MapOptions(
@@ -1098,8 +1085,7 @@ class _WorldMapViewState extends State<WorldMapView> {
 }
 
 /// Wraps a pin layer in the app's shimmer palette while [active] (the L1 warmup
-/// — see [WorldMapController.warmingPins]), else renders it untouched. The child
-/// must be stable-keyed so toggling [active] reparents rather than remounts it.
+/// — see [WorldMapController.warmingPins]), else renders it untouched.
 class _ShimmerLayer extends StatelessWidget {
   final bool active;
   final Widget child;
