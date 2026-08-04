@@ -226,24 +226,22 @@ class UserToolSettings {
     this.showDeveloperOptions = false,
   });
 
-  factory UserToolSettings.fromJson(Map<String, dynamic> json) =>
-      UserToolSettings(
-        interactiveTranslator:
-            json[ToolSetting.interactiveTranslator.toString()] ?? true,
-        interactiveGrammar:
-            json[ToolSetting.interactiveGrammar.toString()] ?? true,
-        immersionMode: false,
-        definitions: json[ToolSetting.definitions.toString()] ?? true,
-        autoIGC: json[UserConstants.autoIGC] ?? true,
-        audioWords: json["audioWords"] ?? json[_legacyEnableTTSKey] ?? true,
-        audioChoices: json["audioChoices"] ?? json[_legacyEnableTTSKey] ?? true,
-        audioIncomingMessages:
-            json["audioIncomingMessages"] ??
-            json[_legacyAutoReadAloudKey] ??
-            false,
-        enableAutocorrect: json["enableAutocorrect"] ?? false,
-        showDeveloperOptions: json["showDeveloperOptions"] ?? false,
-      );
+  factory UserToolSettings.fromJson(
+    Map<String, dynamic> json,
+  ) => UserToolSettings(
+    interactiveTranslator:
+        json[ToolSetting.interactiveTranslator.toString()] ?? true,
+    interactiveGrammar: json[ToolSetting.interactiveGrammar.toString()] ?? true,
+    immersionMode: false,
+    definitions: json[ToolSetting.definitions.toString()] ?? true,
+    autoIGC: json[UserConstants.autoIGC] ?? true,
+    audioWords: json["audioWords"] ?? json[_legacyEnableTTSKey] ?? true,
+    audioChoices: json["audioChoices"] ?? json[_legacyEnableTTSKey] ?? true,
+    audioIncomingMessages:
+        json["audioIncomingMessages"] ?? json[_legacyAutoReadAloudKey] ?? false,
+    enableAutocorrect: json["enableAutocorrect"] ?? false,
+    showDeveloperOptions: json["showDeveloperOptions"] ?? false,
+  );
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
