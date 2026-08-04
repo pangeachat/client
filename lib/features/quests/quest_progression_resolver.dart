@@ -59,9 +59,17 @@ class QuestStarSummary {
 /// One in-scope quest: its ordered Mission sequence, the resolved anchor (the
 /// Mission the learner most needs next), and a position lookup for the gradient.
 class QuestProgress {
-  /// The course-plan uuid this quest was resolved from — the key a per-course
-  /// surface looks itself up by ([ProgressionResolution.forCourse]).
+  /// The key a per-course surface looks itself up by
+  /// ([ProgressionResolution.forCourse]) — the course ROOM id for joined
+  /// courses, or the quest uuid for scoped/preview outlines with no room. Two
+  /// courses built from one quest carry distinct room ids, which is what keeps
+  /// their rollups from crossing (#8087).
   final String courseId;
+
+  /// The quest (course-plan) uuid this entry resolved from. The second key:
+  /// entries for two rooms of ONE quest share it, and [missionGradient] counts
+  /// each quest once by grouping on it.
+  final String questId;
 
   final List<String> orderedMissionIds;
 
@@ -92,6 +100,7 @@ class QuestProgress {
 
   const QuestProgress({
     required this.courseId,
+    required this.questId,
     required this.orderedMissionIds,
     required this.anchorMissionId,
     required this.indexByMission,
@@ -157,21 +166,29 @@ class ProgressionResolution {
   /// [objectiveRefs]: 1.0 at a quest's anchor Mission, decaying linearly to 0
   /// over [kBandFalloffMissions] Missions further along, ~0 for an already
   /// satisfied Mission or a Mission before the anchor. Contributions SUM across
-  /// every in-scope quest (so an activity advancing several quests' unfinished
-  /// Missions ranks higher) and saturate at the ceiling. Outside any quest the
-  /// activity's refs match nothing and this is 0 — the consumer then ranks it on
-  /// plain level/L2 fit. See world-map.instructions.md Priority matrix.
+  /// every in-scope QUEST (so an activity advancing several quests' unfinished
+  /// Missions ranks higher) and saturate at the ceiling — a quest joined in
+  /// more than one course room contributes once, at its strongest per-room
+  /// value, never once per room (#8087). Outside any quest the activity's refs
+  /// match nothing and this is 0 — the consumer then ranks it on plain
+  /// level/L2 fit. See world-map.instructions.md Priority matrix.
   double missionGradient(Iterable<String> objectiveRefs) {
     if (quests.isEmpty) return 0;
     final refs = objectiveRefs.toSet();
     if (refs.isEmpty) return 0;
 
-    var total = 0.0;
+    // Grouped by questId so two rooms of one quest can't double-count. MAX
+    // (not first-wins) because the rooms can diverge via pins: a Mission
+    // satisfied in room A may still be room B's genuine next step, so the
+    // strongest signal stands — and max is order-independent, where [quests]
+    // order (rebuild completion order) is not.
+    final bestByQuest = <String, double>{};
     for (final quest in quests) {
       final anchor = quest.anchorMissionId;
       if (anchor == null) continue;
       final anchorIdx = quest.indexByMission[anchor];
       if (anchorIdx == null) continue;
+      var contribution = 0.0;
       for (final ref in refs) {
         final idx = quest.indexByMission[ref];
         if (idx == null) continue; // ref not part of this quest
@@ -180,9 +197,17 @@ class ProgressionResolution {
         if (quest.rollup[ref]?.satisfied ?? false) continue;
         final distance = idx - anchorIdx;
         if (distance < 0) continue; // a Mission before the anchor
-        final contribution = 1.0 - distance / kBandFalloffMissions;
-        if (contribution > 0) total += contribution;
+        final refContribution = 1.0 - distance / kBandFalloffMissions;
+        if (refContribution > 0) contribution += refContribution;
       }
+      final best = bestByQuest[quest.questId];
+      if (best == null || contribution > best) {
+        bestByQuest[quest.questId] = contribution;
+      }
+    }
+    var total = 0.0;
+    for (final contribution in bestByQuest.values) {
+      total += contribution;
     }
     return total.clamp(0.0, kBandCeiling);
   }
@@ -202,12 +227,15 @@ class ProgressionResolution {
       // Once per course per session, sharing the map rebuild's key: this runs
       // on every course-panel open, and a course that persistently fails to
       // resolve (e.g. an orphaned quest plan) re-fails on each of them (#8083).
-      onError: (uuid, e, s) => ErrorHandler.logErrorOnce(
-        key: 'course-outline-resolve:$uuid',
+      // Keyed per course ROOM — two rooms of one quest can fail independently
+      // (e.g. a per-room private-activity read); questId keeps orphaned-quest
+      // reports diagnosable.
+      onError: (roomId, questId, e, s) => ErrorHandler.logErrorOnce(
+        key: 'course-outline-resolve:$roomId',
         e: e,
         s: s,
         m: 'course progression failed to resolve',
-        data: {'courseUuid': uuid},
+        data: {'courseRoomId': roomId, 'questId': questId},
       ),
     );
     return cache.resolution(client.userStarsByActivity);
@@ -270,6 +298,10 @@ ProgressionResolution resolveProgression({
     quests.add(
       QuestProgress(
         courseId: outline.courseId,
+        // Legacy/scoped outlines carry no separate questId; falling back to
+        // courseId gives each its own dedupe group — exactly the pre-#8087
+        // behavior.
+        questId: outline.questId ?? outline.courseId,
         orderedMissionIds: seq,
         anchorMissionId: _anchorFor(seq, rollup),
         indexByMission: {for (var i = 0; i < seq.length; i++) seq[i]: i},

@@ -3,12 +3,16 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 
-CourseLoOutline _outline(List<String> los, {String courseId = 'c1'}) =>
-    CourseLoOutline(
-      courseId: courseId,
-      orderedLoIds: los,
-      activityIdsByLo: const {},
-    );
+CourseLoOutline _outline(
+  List<String> los, {
+  String courseId = 'c1',
+  String? questId,
+}) => CourseLoOutline(
+  courseId: courseId,
+  questId: questId,
+  orderedLoIds: los,
+  activityIdsByLo: const {},
+);
 
 void main() {
   group('JoinedObjectiveCache.rebuild', () {
@@ -74,6 +78,28 @@ void main() {
         // The failure is surfaced, not swallowed (a silently-empty cache is the
         // exact failure mode this guards against).
         expect(failed, ['bad']);
+      },
+    );
+
+    test(
+      'two rooms of one quest stay distinct entries, questId preserved (#8087)',
+      () async {
+        // The #8087 collapse happened upstream of rebuild (uuid-keyed maps in
+        // rebuildFromJoinedCourses); this pins the contract that makes the
+        // room-id keying work: each key gets its own entry with courseId = the
+        // key, and the resolved outline's questId survives for band dedupe.
+        final cache = JoinedObjectiveCache();
+        await cache.rebuild(
+          ['!r1:x', '!r2:x'],
+          outlineOf: (roomId) async =>
+              _outline(roomId == '!r1:x' ? ['lo-a'] : ['lo-b'], questId: 'q1'),
+        );
+        expect(cache.outlines.length, 2);
+        expect(cache.outlines.map((o) => o.courseId).toSet(), {
+          '!r1:x',
+          '!r2:x',
+        });
+        expect(cache.outlines.map((o) => o.questId).toSet(), {'q1'});
       },
     );
 

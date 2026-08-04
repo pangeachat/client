@@ -108,9 +108,13 @@ class QuestOutline {
   CourseLoOutline toCourseLoOutline({
     int starsToUnlock = kDefaultStarsToUnlockObjective,
   }) => CourseLoOutline(
-    // v3: the quest-plans id IS the course-plan uuid callers resolved by, so
-    // this is the key a per-course surface looks its own rollup up under.
+    // The quest id serves as the scoping key here — right for scoped/preview
+    // outlines that have no room. The joined-course cache re-keys courseId to
+    // the course room id (unique per course) so two courses built from one
+    // quest stay distinct (#8087); questId survives that re-key for the
+    // world-map band's per-quest dedupe.
     courseId: quest.id,
+    questId: quest.id,
     orderedLoIds: quest.learningObjectiveIds,
     activityIdsByLo: {
       for (final group in groups)
