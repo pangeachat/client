@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-04 09:29:23.156083",
+    "@@last_modified": "2026-08-04 10:08:15.635347",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9695,5 +9695,6 @@
     "mapNoActivitiesArea": "Ez dago jarduerarik eremu honetan.",
     "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren.",
     "autocorrectMobileOnly": "Mugikorrean bakarrik",
-    "autocorrectMobileOnlyWarning": "Gailuaren zuzenketa automatikoa mugikorreko aplikazioan bakarrik dago erabilgarri."
+    "autocorrectMobileOnlyWarning": "Gailuaren zuzenketa automatikoa mugikorreko aplikazioan bakarrik dago erabilgarri.",
+    "choosePangeaAvatar": "Aukeratu Pangea avatar bat"
 }

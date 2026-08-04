@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-04 09:29:22.376288",
+    "@@last_modified": "2026-08-04 10:08:15.250790",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Dim gweithgareddau yn yr ardal hon.",
     "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch.",
     "autocorrectMobileOnly": "Symudol yn unig",
-    "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig."
+    "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig.",
+    "choosePangeaAvatar": "Dewiswch avatar Pangea"
 }

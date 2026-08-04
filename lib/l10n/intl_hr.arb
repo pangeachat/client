@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-04 09:29:24.330602",
+    "@@last_modified": "2026-08-04 10:08:16.475086",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10131,5 +10131,6 @@
     "mapNoActivitiesArea": "Nema aktivnosti na ovom području.",
     "practiceSessionTimedOut": "Vaša vježba je završila nakon {minutes} minuta neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne uređaje",
-    "autocorrectMobileOnlyWarning": "Automatska ispravka dostupna je samo u mobilnoj aplikaciji."
+    "autocorrectMobileOnlyWarning": "Automatska ispravka dostupna je samo u mobilnoj aplikaciji.",
+    "choosePangeaAvatar": "Odaberite Pangea avatar"
 }

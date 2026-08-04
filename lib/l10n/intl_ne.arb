@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-04 09:29:28.540851",
+    "@@last_modified": "2026-08-04 10:08:19.574815",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "यस क्षेत्रमा कुनै गतिविधिहरू छैनन्।",
     "practiceSessionTimedOut": "कुनै गतिविधि नभएकोले {minutes} मिनेटपछि तपाईंको अभ्यास सत्र समाप्त भयो।",
     "autocorrectMobileOnly": "मोबाइल मात्र",
-    "autocorrectMobileOnlyWarning": "उपकरणको स्वतः सच्याउने सुविधा मोबाइल एपमा मात्र उपलब्ध छ।"
+    "autocorrectMobileOnlyWarning": "उपकरणको स्वतः सच्याउने सुविधा मोबाइल एपमा मात्र उपलब्ध छ।",
+    "choosePangeaAvatar": "पान्गेया अवतार छान्नुहोस्"
 }

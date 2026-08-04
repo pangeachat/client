@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-04 09:29:23.737319",
+    "@@last_modified": "2026-08-04 10:08:16.022136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Chan eil gnìomhachd sam bith san sgìre seo.",
     "practiceSessionTimedOut": "Thàinig an seisean cleachdaidh agad gu crìch an dèidh {minutes} mionaid gun ghnìomhachd.",
     "autocorrectMobileOnly": "Fòn-làimhe a-mhàin",
-    "autocorrectMobileOnlyWarning": "Chan eil fèin-cheartachadh inneal ri fhaighinn ach air an aplacaid fòn-làimhe."
+    "autocorrectMobileOnlyWarning": "Chan eil fèin-cheartachadh inneal ri fhaighinn ach air an aplacaid fòn-làimhe.",
+    "choosePangeaAvatar": "Tagh avatar Pangea"
 }

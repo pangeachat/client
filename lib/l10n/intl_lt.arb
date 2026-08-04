@@ -2978,7 +2978,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-04 09:29:26.203906",
+    "@@last_modified": "2026-08-04 10:08:18.703532",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10476,5 +10476,6 @@
     "mapNoActivitiesArea": "Šioje srityje nėra jokios veiklos.",
     "practiceSessionTimedOut": "Jūsų praktikos sesija baigėsi po {minutes} minučių be veiklos.",
     "autocorrectMobileOnly": "Tik mobiliesiems",
-    "autocorrectMobileOnlyWarning": "Įrenginio automatinis taisymas galimas tik mobiliojoje programėlėje."
+    "autocorrectMobileOnlyWarning": "Įrenginio automatinis taisymas galimas tik mobiliojoje programėlėje.",
+    "choosePangeaAvatar": "Pasirinkite „Pangea“ pseudoportretą"
 }

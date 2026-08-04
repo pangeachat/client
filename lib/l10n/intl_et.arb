@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-04 09:29:22.945565",
+    "@@last_modified": "2026-08-04 10:08:16.186560",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9692,5 +9692,6 @@
     "mapNoActivitiesArea": "Selles piirkonnas pole tegevusi.",
     "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust.",
     "autocorrectMobileOnly": "Ainult mobiilis",
-    "autocorrectMobileOnlyWarning": "Seadme automaatkorrektuur on saadaval ainult mobiilirakenduses."
+    "autocorrectMobileOnlyWarning": "Seadme automaatkorrektuur on saadaval ainult mobiilirakenduses.",
+    "choosePangeaAvatar": "Vali Pangea avatar"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-04 09:29:29.332240",
+    "@@last_modified": "2026-08-04 10:08:21.214325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Nuk ka aktivitete në këtë zonë.",
     "practiceSessionTimedOut": "Sesioni juaj i praktikës përfundoi pas {minutes} minutash pa aktivitet.",
     "autocorrectMobileOnly": "Vetëm celular",
-    "autocorrectMobileOnlyWarning": "Autokorrektimi i pajisjes është i disponueshëm vetëm në aplikacionin celular."
+    "autocorrectMobileOnlyWarning": "Autokorrektimi i pajisjes është i disponueshëm vetëm në aplikacionin celular.",
+    "choosePangeaAvatar": "Zgjidh një avatar Pangea"
 }

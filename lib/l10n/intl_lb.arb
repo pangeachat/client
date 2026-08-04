@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-04 09:29:26.035298",
+    "@@last_modified": "2026-08-04 10:08:18.188694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Keng Aktivitéiten an dësem Beräich.",
     "practiceSessionTimedOut": "Deng Übungssessioun ass no {minutes} Minutten ouni Aktivitéit ofgelaf.",
     "autocorrectMobileOnly": "Nëmme mobil",
-    "autocorrectMobileOnlyWarning": "D'Autokorrektur vum Apparat ass nëmmen an der mobiler App verfügbar."
+    "autocorrectMobileOnlyWarning": "D'Autokorrektur vum Apparat ass nëmmen an der mobiler App verfügbar.",
+    "choosePangeaAvatar": "Wielt en Pangea Avatar"
 }

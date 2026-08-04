@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-04 09:29:25.574662",
+    "@@last_modified": "2026-08-04 10:08:18.250884",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10464,5 +10464,6 @@
     "mapNoActivitiesArea": "このエリアにはアクティビティがありません。",
     "practiceSessionTimedOut": "{minutes}分間操作がなかったため、練習セッションが終了しました。",
     "autocorrectMobileOnly": "モバイルのみ",
-    "autocorrectMobileOnlyWarning": "デバイスの自動修正はモバイルアプリでのみ利用可能です。"
+    "autocorrectMobileOnlyWarning": "デバイスの自動修正はモバイルアプリでのみ利用可能です。",
+    "choosePangeaAvatar": "パンゲアのアバターを選択"
 }

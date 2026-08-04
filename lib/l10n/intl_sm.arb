@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-04 09:29:29.360369",
+    "@@last_modified": "2026-08-04 10:08:20.978736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Leai ni gaioiga i lenei vaega.",
     "practiceSessionTimedOut": "Ua maeʻa lau sauniga faʻataʻitaʻi pe a maeʻa le {minutes} minute e aunoa ma se gaioiga.",
     "autocorrectMobileOnly": "Na'o le telefoni feavea'i",
-    "autocorrectMobileOnlyWarning": "O le autocorrect o le masini e na'o le app feavea'i e maua."
+    "autocorrectMobileOnlyWarning": "O le autocorrect o le masini e na'o le app feavea'i e maua.",
+    "choosePangeaAvatar": "Filifili se ata Pangea"
 }

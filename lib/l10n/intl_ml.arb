@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-04 09:29:26.649591",
+    "@@last_modified": "2026-08-04 10:08:18.911659",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "ഈ പ്രദേശത്ത് പ്രവർത്തനങ്ങളൊന്നുമില്ല.",
     "practiceSessionTimedOut": "പ്രവർത്തനരഹിതമായി {minutes} മിനിറ്റിന് ശേഷം നിങ്ങളുടെ പരിശീലന സെഷൻ അവസാനിച്ചു.",
     "autocorrectMobileOnly": "മൊബൈലിൽ മാത്രം",
-    "autocorrectMobileOnlyWarning": "ഉപകരണ ഓട്ടോകറക്റ്റ് മൊബൈൽ ആപ്പിൽ മാത്രമേ ലഭ്യമാകൂ."
+    "autocorrectMobileOnlyWarning": "ഉപകരണ ഓട്ടോകറക്റ്റ് മൊബൈൽ ആപ്പിൽ മാത്രമേ ലഭ്യമാകൂ.",
+    "choosePangeaAvatar": "ഒരു പാഞ്ജിയ അവതാർ തിരഞ്ഞെടുക്കുക"
 }

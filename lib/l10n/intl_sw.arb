@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-04 09:29:30.438358",
+    "@@last_modified": "2026-08-04 10:08:21.179001",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Hakuna shughuli katika eneo hili.",
     "practiceSessionTimedOut": "Kipindi chako cha mazoezi kiliisha baada ya dakika {minutes} bila shughuli.",
     "autocorrectMobileOnly": "Simu pekee",
-    "autocorrectMobileOnlyWarning": "Kirekebishaji kiotomatiki cha kifaa kinapatikana tu kwenye programu ya simu."
+    "autocorrectMobileOnlyWarning": "Kirekebishaji kiotomatiki cha kifaa kinapatikana tu kwenye programu ya simu.",
+    "choosePangeaAvatar": "Chagua avatari ya Pangea"
 }

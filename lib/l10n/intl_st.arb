@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-04 09:29:29.948129",
+    "@@last_modified": "2026-08-04 10:08:21.016908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Ha ho ditshebetso sebakeng sena.",
     "practiceSessionTimedOut": "Thuto ea hau ea boikoetliso e felile kamora metsotso e {minutes} ntle le ts'ebetso.",
     "autocorrectMobileOnly": "Fono feela",
-    "autocorrectMobileOnlyWarning": "Ho lokisa ka bo ho bona ho fumaneha feela ho app ea mohala."
+    "autocorrectMobileOnlyWarning": "Ho lokisa ka bo ho bona ho fumaneha feela ho app ea mohala.",
+    "choosePangeaAvatar": "Kgetha avatar ya Pangea"
 }

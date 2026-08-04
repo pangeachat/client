@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-04 09:29:23.348447",
+    "@@last_modified": "2026-08-04 10:08:15.981580",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10050,5 +10050,6 @@
     "mapNoActivitiesArea": "Aucune activité dans cette zone.",
     "practiceSessionTimedOut": "Votre session d'entraînement s'est terminée après {minutes} minutes d'inactivité.",
     "autocorrectMobileOnly": "Mobile uniquement",
-    "autocorrectMobileOnlyWarning": "La correction automatique de l'appareil n'est disponible que sur l'application mobile."
+    "autocorrectMobileOnlyWarning": "La correction automatique de l'appareil n'est disponible que sur l'application mobile.",
+    "choosePangeaAvatar": "Choisir un avatar Pangea"
 }

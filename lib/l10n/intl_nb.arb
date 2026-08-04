@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:27.347737",
+    "@@last_modified": "2026-08-04 10:08:19.631570",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,6 @@
     "mapNoActivitiesArea": "Ingen aktiviteter i dette området.",
     "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet.",
     "autocorrectMobileOnly": "Kun mobil",
-    "autocorrectMobileOnlyWarning": "Enhetens autokorrektur er kun tilgjengelig i mobilappen."
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrektur er kun tilgjengelig i mobilappen.",
+    "choosePangeaAvatar": "Velg en Pangea-avatar"
 }

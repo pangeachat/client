@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-04 09:29:27.428376",
+    "@@last_modified": "2026-08-04 10:08:19.076569",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "L-ebda attività f'din iż-żona.",
     "practiceSessionTimedOut": "Is-sessjoni ta' prattika tiegħek intemmet wara {minutes} minuti mingħajr attività.",
     "autocorrectMobileOnly": "Mobile biss",
-    "autocorrectMobileOnlyWarning": "L-autocorrect tal-apparat huwa disponibbli biss fuq l-app mobbli."
+    "autocorrectMobileOnlyWarning": "L-autocorrect tal-apparat huwa disponibbli biss fuq l-app mobbli.",
+    "choosePangeaAvatar": "Agħżel avatar ta' Pangea"
 }

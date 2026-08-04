@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-04 09:29:31.589104",
+    "@@last_modified": "2026-08-04 10:08:21.963252",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Ko si awọn iṣẹ ṣiṣe ni agbegbe yii.",
     "practiceSessionTimedOut": "Ìgbà ìdánilẹ́kọ̀ọ́ rẹ parí lẹ́hìn ìṣẹ́jú {minutes} láìsí ìgbòkègbodò kankan.",
     "autocorrectMobileOnly": "Fún àwọn fóònù nìkan",
-    "autocorrectMobileOnlyWarning": "Atunṣe aifọwọyi ẹrọ wa fun ohun elo alagbeka nikan."
+    "autocorrectMobileOnlyWarning": "Atunṣe aifọwọyi ẹrọ wa fun ohun elo alagbeka nikan.",
+    "choosePangeaAvatar": "Yan aworan Pangea"
 }

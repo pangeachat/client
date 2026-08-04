@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-04 09:29:22.343458",
+    "@@last_modified": "2026-08-04 10:08:15.252714",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Nisuna attività in sta zona.",
     "practiceSessionTimedOut": "A vostra sessione di pratica hè finita dopu à {minutes} minuti senza attività.",
     "autocorrectMobileOnly": "Solu mobile",
-    "autocorrectMobileOnlyWarning": "L'autucurrezzione di u dispusitivu hè dispunibule solu nant'à l'app mobile."
+    "autocorrectMobileOnlyWarning": "L'autucurrezzione di u dispusitivu hè dispunibule solu nant'à l'app mobile.",
+    "choosePangeaAvatar": "Sceglite un avatar Pangea"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-04 09:29:25.794384",
+    "@@last_modified": "2026-08-04 10:08:18.089381",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Nullae actiones in hac regione.",
     "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione.",
     "autocorrectMobileOnly": "Solum mobile",
-    "autocorrectMobileOnlyWarning": "Autocorrectio machinalis tantum in app mobili praesto est."
+    "autocorrectMobileOnlyWarning": "Autocorrectio machinalis tantum in app mobili praesto est.",
+    "choosePangeaAvatar": "Elige imaginem Pangeae"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:24.612951",
+    "@@last_modified": "2026-08-04 10:08:17.093759",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9768,5 +9768,6 @@
     "mapNoActivitiesArea": "Tidak ada aktivitas di area ini.",
     "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
     "autocorrectMobileOnly": "Khusus seluler",
-    "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler."
+    "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler.",
+    "choosePangeaAvatar": "Pilih avatar Pangea"
 }

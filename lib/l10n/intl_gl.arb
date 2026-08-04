@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-04 09:29:24.084739",
+    "@@last_modified": "2026-08-04 10:08:16.178131",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9695,5 +9695,6 @@
     "mapNoActivitiesArea": "Non hai actividades nesta área.",
     "practiceSessionTimedOut": "A túa sesión de práctica rematou despois de {minutes} minutos sen actividade.",
     "autocorrectMobileOnly": "Só para móbil",
-    "autocorrectMobileOnlyWarning": "O autocorrector do dispositivo só está dispoñible na aplicación móbil."
+    "autocorrectMobileOnlyWarning": "O autocorrector do dispositivo só está dispoñible na aplicación móbil.",
+    "choosePangeaAvatar": "Escolle un avatar de Pangea"
 }

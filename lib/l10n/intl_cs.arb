@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-04 09:29:22.405069",
+    "@@last_modified": "2026-08-04 10:08:15.237107",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10189,5 +10189,6 @@
     "mapNoActivitiesArea": "V této oblasti nejsou žádné aktivity.",
     "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti.",
     "autocorrectMobileOnly": "Pouze mobilní",
-    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci."
+    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci.",
+    "choosePangeaAvatar": "Vyberte si avatara Pangea"
 }

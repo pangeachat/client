@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-04 09:29:26.530750",
+    "@@last_modified": "2026-08-04 10:08:18.477338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "ບໍ່ມີກິດຈະກຳໃນພື້ນທີ່ນີ້.",
     "practiceSessionTimedOut": "ເຊສຊັນການຝຶກຊ້ອມຂອງທ່ານສິ້ນສຸດລົງຫຼັງຈາກ {minutes} ນາທີ ໂດຍບໍ່ມີການເຄື່ອນໄຫວ.",
     "autocorrectMobileOnly": "ສະເພາະມືຖື",
-    "autocorrectMobileOnlyWarning": "ການແກ້ໄຂອັດຕະໂນມັດຂອງອຸປະກອນໃຊ້ໄດ້ສະເພາະໃນແອັບມືຖືເທົ່ານັ້ນ."
+    "autocorrectMobileOnlyWarning": "ການແກ້ໄຂອັດຕະໂນມັດຂອງອຸປະກອນໃຊ້ໄດ້ສະເພາະໃນແອັບມືຖືເທົ່ານັ້ນ.",
+    "choosePangeaAvatar": "ເລືອກຮູບແທນຕົວ Pangea"
 }

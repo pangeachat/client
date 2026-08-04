@@ -2570,7 +2570,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-04 09:29:28.207174",
+    "@@last_modified": "2026-08-04 10:08:20.109810",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10612,5 +10612,6 @@
     "mapNoActivitiesArea": "Nenhuma atividade nesta área.",
     "practiceSessionTimedOut": "A sua sessão de prática terminou após {minutes} minutos de inatividade.",
     "autocorrectMobileOnly": "Apenas para telemóvel",
-    "autocorrectMobileOnlyWarning": "A correção automática do dispositivo só está disponível na aplicação móvel."
+    "autocorrectMobileOnlyWarning": "A correção automática do dispositivo só está disponível na aplicação móvel.",
+    "choosePangeaAvatar": "Escolher um avatar Pangea"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:22.965990",
+    "@@last_modified": "2026-08-04 10:08:15.502855",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10646,5 +10646,6 @@
     "mapNoActivitiesArea": "Neniuj agadoj en ĉi tiu areo.",
     "practiceSessionTimedOut": "Via ekzercsesio finiĝis post {minutes} minutoj sen aktiveco.",
     "autocorrectMobileOnly": "Nur poŝtelefono",
-    "autocorrectMobileOnlyWarning": "Aŭtomata korekto de aparato disponeblas nur en la poŝtelefona aplikaĵo."
+    "autocorrectMobileOnlyWarning": "Aŭtomata korekto de aparato disponeblas nur en la poŝtelefona aplikaĵo.",
+    "choosePangeaAvatar": "Elektu Pangean avataron"
 }

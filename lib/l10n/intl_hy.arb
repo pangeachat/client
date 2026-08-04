@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-04 09:29:24.652597",
+    "@@last_modified": "2026-08-04 10:08:16.812338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Այս տարածքում գործողություններ չկան։",
     "practiceSessionTimedOut": "Ձեր պրակտիկայի սեսիան ավարտվեց {minutes} րոպե անգործությունից հետո:",
     "autocorrectMobileOnly": "Միայն բջջայինի համար",
-    "autocorrectMobileOnlyWarning": "Սարքի ավտոուղղումը հասանելի է միայն բջջային հավելվածում։"
+    "autocorrectMobileOnlyWarning": "Սարքի ավտոուղղումը հասանելի է միայն բջջային հավելվածում։",
+    "choosePangeaAvatar": "Ընտրեք Pangea ավատար"
 }

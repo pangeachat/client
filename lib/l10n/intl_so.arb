@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-04 09:29:29.451498",
+    "@@last_modified": "2026-08-04 10:08:20.809401",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Ma jiraan wax hawlo ah aaggan.",
     "practiceSessionTimedOut": "Fadhigaaga tababarka wuxuu dhammaaday {minutes} daqiiqo ka dib markii aan wax dhaqdhaqaaq ah la samayn.",
     "autocorrectMobileOnly": "Kaliya moobilka",
-    "autocorrectMobileOnlyWarning": "Sixitaanka tooska ah ee aaladda waxa kaliya oo laga heli karaa abka mobaylka."
+    "autocorrectMobileOnlyWarning": "Sixitaanka tooska ah ee aaladda waxa kaliya oo laga heli karaa abka mobaylka.",
+    "choosePangeaAvatar": "Dooro sawirka Pangea"
 }

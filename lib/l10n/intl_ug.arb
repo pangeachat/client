@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-04 09:29:30.941265",
+    "@@last_modified": "2026-08-04 10:08:22.385790",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "بۇ رايوندا ھېچقانداق پائالىيەت يوق.",
     "practiceSessionTimedOut": "مەشقىڭىز {minutes} مىنۇت ھەرىكەتسىز تۇرغاندىن كېيىن ئاخىرلاشتى.",
     "autocorrectMobileOnly": "پەقەت يانفوندا",
-    "autocorrectMobileOnlyWarning": "ئاپتوماتىك تۈزىتىش ئىقتىدارى پەقەت يانفون ئەپچىكىدە بار."
+    "autocorrectMobileOnlyWarning": "ئاپتوماتىك تۈزىتىش ئىقتىدارى پەقەت يانفون ئەپچىكىدە بار.",
+    "choosePangeaAvatar": "Pangea ئاۋاتار تاللاڭ"
 }

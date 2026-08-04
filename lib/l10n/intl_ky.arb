@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-04 09:29:25.564330",
+    "@@last_modified": "2026-08-04 10:08:17.860105",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Бул аймакта эч кандай иш-аракеттер жок.",
     "practiceSessionTimedOut": "Сиздин машыгуу сессияңыз {minutes} мүнөт аракетсиздиктен кийин аяктады.",
     "autocorrectMobileOnly": "Мобилдик түзмөктөр үчүн гана",
-    "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү."
+    "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү.",
+    "choosePangeaAvatar": "Pangea аватарын тандаңыз"
 }

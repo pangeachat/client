@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:28.529096",
+    "@@last_modified": "2026-08-04 10:08:20.218174",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10427,5 +10427,6 @@
     "mapNoActivitiesArea": "Nicio activitate în această zonă.",
     "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate.",
     "autocorrectMobileOnly": "Doar pe mobil",
-    "autocorrectMobileOnlyWarning": "Corectarea automată a dispozitivului este disponibilă doar în aplicația mobilă."
+    "autocorrectMobileOnlyWarning": "Corectarea automată a dispozitivului este disponibilă doar în aplicația mobilă.",
+    "choosePangeaAvatar": "Alege un avatar Pangea"
 }

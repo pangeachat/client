@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-04 09:29:25.224325",
+    "@@last_modified": "2026-08-04 10:08:18.144189",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10601,5 +10601,6 @@
     "mapNoActivitiesArea": "ამ ტერიტორიაზე არ არის აქტივობები.",
     "practiceSessionTimedOut": "თქვენი სავარჯიშო სესია დასრულდა {minutes} წუთის უმოქმედობის შემდეგ.",
     "autocorrectMobileOnly": "მხოლოდ მობილური",
-    "autocorrectMobileOnlyWarning": "მოწყობილობის ავტოკორექცია ხელმისაწვდომია მხოლოდ მობილურ აპლიკაციაში."
+    "autocorrectMobileOnlyWarning": "მოწყობილობის ავტოკორექცია ხელმისაწვდომია მხოლოდ მობილურ აპლიკაციაში.",
+    "choosePangeaAvatar": "აირჩიეთ Pangea-ს ავატარი"
 }

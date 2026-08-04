@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:21.629699",
+    "@@last_modified": "2026-08-04 10:08:14.451721",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10323,5 +10323,6 @@
     "mapNoActivitiesArea": "এই এলাকায় কোনো কার্যকলাপ নেই।",
     "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।",
     "autocorrectMobileOnly": "শুধুমাত্র মোবাইল",
-    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।"
+    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।",
+    "choosePangeaAvatar": "একটি প্যানজিয়া অবতার চয়ন করুন"
 }

@@ -3104,7 +3104,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-04 09:29:30.139704",
+    "@@last_modified": "2026-08-04 10:08:21.982703",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10327,5 +10327,6 @@
     "mapNoActivitiesArea": "ไม่มีกิจกรรมในพื้นที่นี้",
     "practiceSessionTimedOut": "เซสชันฝึกฝนของคุณสิ้นสุดลงหลังจากไม่มีกิจกรรมเป็นเวลา {minutes} นาที",
     "autocorrectMobileOnly": "สำหรับมือถือเท่านั้น",
-    "autocorrectMobileOnlyWarning": "การแก้ไขอัตโนมัติของอุปกรณ์มีให้ใช้งานเฉพาะในแอปบนมือถือเท่านั้น"
+    "autocorrectMobileOnlyWarning": "การแก้ไขอัตโนมัติของอุปกรณ์มีให้ใช้งานเฉพาะในแอปบนมือถือเท่านั้น",
+    "choosePangeaAvatar": "เลือกอวตาร Pangea"
 }

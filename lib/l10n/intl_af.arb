@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-04 09:29:21.481446",
+    "@@last_modified": "2026-08-04 10:08:14.408740",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Geen aktiwiteite in hierdie area nie.",
     "practiceSessionTimedOut": "Jou oefensessie het geëindig na {minutes} minute van onaktiwiteit.",
     "autocorrectMobileOnly": "Slegs mobiel",
-    "autocorrectMobileOnlyWarning": "Toestel-outokorreksie is slegs op die mobiele toepassing beskikbaar."
+    "autocorrectMobileOnlyWarning": "Toestel-outokorreksie is slegs op die mobiele toepassing beskikbaar.",
+    "choosePangeaAvatar": "Kies 'n Pangea-avatar"
 }

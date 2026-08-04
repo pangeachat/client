@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-04 09:29:28.031787",
+    "@@last_modified": "2026-08-04 10:08:19.764996",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9780,5 +9780,6 @@
     "mapNoActivitiesArea": "Brak aktywności w tym obszarze.",
     "practiceSessionTimedOut": "Twoja sesja ćwiczeniowa zakończyła się po {minutes} minutach braku aktywności.",
     "autocorrectMobileOnly": "Tylko na urządzenia mobilne",
-    "autocorrectMobileOnlyWarning": "Autokorekta urządzenia jest dostępna tylko w aplikacji mobilnej."
+    "autocorrectMobileOnlyWarning": "Autokorekta urządzenia jest dostępna tylko w aplikacji mobilnej.",
+    "choosePangeaAvatar": "Wybierz awatar Pangea"
 }

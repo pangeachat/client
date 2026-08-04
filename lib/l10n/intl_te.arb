@@ -1333,7 +1333,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-04 09:29:30.561166",
+    "@@last_modified": "2026-08-04 10:08:21.243320",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10651,5 +10651,6 @@
     "mapNoActivitiesArea": "ఈ ప్రాంతంలో కార్యకలాపాలు లేవు.",
     "practiceSessionTimedOut": "మీరు {minutes} నిమిషాలు నిష్క్రియంగా ఉన్నందున మీ అభ్యాస సెషన్ ముగిసింది.",
     "autocorrectMobileOnly": "మొబైల్ మాత్రమే",
-    "autocorrectMobileOnlyWarning": "పరికర స్వీయ దిద్దుబాటు మొబైల్ యాప్‌లో మాత్రమే అందుబాటులో ఉంటుంది."
+    "autocorrectMobileOnlyWarning": "పరికర స్వీయ దిద్దుబాటు మొబైల్ యాప్‌లో మాత్రమే అందుబాటులో ఉంటుంది.",
+    "choosePangeaAvatar": "పంగేయా అవతార్‌ను ఎంచుకోండి"
 }

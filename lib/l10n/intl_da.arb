@@ -1343,7 +1343,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-04 09:29:22.741580",
+    "@@last_modified": "2026-08-04 10:08:15.350789",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10621,5 +10621,6 @@
     "mapNoActivitiesArea": "Ingen aktiviteter i dette område.",
     "practiceSessionTimedOut": "Din træningssession blev afsluttet efter {minutes} minutter uden aktivitet.",
     "autocorrectMobileOnly": "Kun mobil",
-    "autocorrectMobileOnlyWarning": "Enhedens autokorrektur er kun tilgængelig i mobilappen."
+    "autocorrectMobileOnlyWarning": "Enhedens autokorrektur er kun tilgængelig i mobilappen.",
+    "choosePangeaAvatar": "Vælg en Pangea-avatar"
 }

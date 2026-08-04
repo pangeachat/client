@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-04 09:29:21.566896",
+    "@@last_modified": "2026-08-04 10:08:14.438023",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Няма дейности в тази област.",
     "practiceSessionTimedOut": "Вашата тренировъчна сесия приключи след {minutes} минути без активност.",
     "autocorrectMobileOnly": "Само за мобилни устройства",
-    "autocorrectMobileOnlyWarning": "Автокорекцията на устройството е налична само в мобилното приложение."
+    "autocorrectMobileOnlyWarning": "Автокорекцията на устройството е налична само в мобилното приложение.",
+    "choosePangeaAvatar": "Изберете аватар на Pangea"
 }

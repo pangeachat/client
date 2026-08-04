@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-04 09:29:31.167670",
+    "@@last_modified": "2026-08-04 10:08:22.518959",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9695,5 +9695,6 @@
     "mapNoActivitiesArea": "此区域没有活动。",
     "practiceSessionTimedOut": "您的练习会话因{minutes}分钟无活动而结束。",
     "autocorrectMobileOnly": "仅限移动设备",
-    "autocorrectMobileOnlyWarning": "设备自动更正功能仅在移动应用中可用。"
+    "autocorrectMobileOnlyWarning": "设备自动更正功能仅在移动应用中可用。",
+    "choosePangeaAvatar": "选择 Pangea 头像"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-04 09:29:24.249801",
+    "@@last_modified": "2026-08-04 10:08:16.581509",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Tsis muaj kev ua si hauv cheeb tsam no.",
     "practiceSessionTimedOut": "Koj qhov kev xyaum kawm tau xaus lawm tom qab {minutes} feeb tsis muaj kev ua dab tsi.",
     "autocorrectMobileOnly": "Tsuas yog hauv xov tooj",
-    "autocorrectMobileOnlyWarning": "Kev kho lus yuam kev tsuas muaj nyob rau hauv lub xov tooj app xwb."
+    "autocorrectMobileOnlyWarning": "Kev kho lus yuam kev tsuas muaj nyob rau hauv lub xov tooj app xwb.",
+    "choosePangeaAvatar": "Xaiv ib tus Pangea avatar"
 }

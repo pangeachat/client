@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-04 09:29:30.583989",
+    "@@last_modified": "2026-08-04 10:08:21.776601",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9699,5 +9699,6 @@
     "mapNoActivitiesArea": "Bu hududda faoliyat yoʻq.",
     "practiceSessionTimedOut": "Faoliyatsiz {minutes} daqiqadan so‘ng mashg‘ulotingiz tugadi.",
     "autocorrectMobileOnly": "Faqat mobil qurilmalar uchun",
-    "autocorrectMobileOnlyWarning": "Qurilma avtokorreksiyasi faqat mobil ilovada mavjud."
+    "autocorrectMobileOnlyWarning": "Qurilma avtokorreksiyasi faqat mobil ilovada mavjud.",
+    "choosePangeaAvatar": "Pangea avatarini tanlang"
 }

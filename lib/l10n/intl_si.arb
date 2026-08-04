@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-04 09:29:29.330321",
+    "@@last_modified": "2026-08-04 10:08:20.624964",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "මෙම ප්‍රදේශයේ ක්‍රියාකාරකම් නොමැත.",
     "practiceSessionTimedOut": "ඔබගේ පුහුණු සැසිය ක්‍රියාකාරකම් නොමැතිව මිනිත්තු {minutes} කට පසු අවසන් විය.",
     "autocorrectMobileOnly": "ජංගම දුරකථන සඳහා පමණි",
-    "autocorrectMobileOnlyWarning": "උපාංග ස්වයං නිවැරදි කිරීම ජංගම යෙදුමෙන් පමණක් ලබා ගත හැක."
+    "autocorrectMobileOnlyWarning": "උපාංග ස්වයං නිවැරදි කිරීම ජංගම යෙදුමෙන් පමණක් ලබා ගත හැක.",
+    "choosePangeaAvatar": "Pangea අවතාරයක් තෝරන්න"
 }

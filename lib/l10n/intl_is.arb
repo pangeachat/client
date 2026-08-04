@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-04 09:29:24.709647",
+    "@@last_modified": "2026-08-04 10:08:17.345192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Engar athafnir á þessu svæði.",
     "practiceSessionTimedOut": "Æfingalotan þín rann út eftir {minutes} mínútur án virkni.",
     "autocorrectMobileOnly": "Aðeins í farsíma",
-    "autocorrectMobileOnlyWarning": "Sjálfvirk leiðrétting er aðeins í boði í farsímaforritinu."
+    "autocorrectMobileOnlyWarning": "Sjálfvirk leiðrétting er aðeins í boði í farsímaforritinu.",
+    "choosePangeaAvatar": "Veldu Pangea avatar"
 }

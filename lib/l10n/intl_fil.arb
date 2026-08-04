@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-04 09:29:23.187820",
+    "@@last_modified": "2026-08-04 10:08:15.872416",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10561,5 +10561,6 @@
     "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito.",
     "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad.",
     "autocorrectMobileOnly": "Pang-mobile lang",
-    "autocorrectMobileOnlyWarning": "Available lang ang autocorrect ng device sa mobile app."
+    "autocorrectMobileOnlyWarning": "Available lang ang autocorrect ng device sa mobile app.",
+    "choosePangeaAvatar": "Pumili ng Pangea avatar"
 }

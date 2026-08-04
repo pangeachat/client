@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:31.315660",
+    "@@last_modified": "2026-08-04 10:08:22.416296",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9801,5 +9801,6 @@
     "mapNoActivitiesArea": "此區域沒有活動。",
     "practiceSessionTimedOut": "您的練習時段因 {minutes} 分鐘沒有活動而結束。",
     "autocorrectMobileOnly": "僅限行動裝置",
-    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於行動應用程式。"
+    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於行動應用程式。",
+    "choosePangeaAvatar": "選擇 Pangea 頭像"
 }

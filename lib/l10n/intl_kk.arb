@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-04 09:29:26.046945",
+    "@@last_modified": "2026-08-04 10:08:17.509436",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Бұл аймақта әрекеттер жоқ.",
     "practiceSessionTimedOut": "Белсенділік болмағандықтан, жаттығу сеансы {minutes} минуттан кейін аяқталды.",
     "autocorrectMobileOnly": "Тек мобильді",
-    "autocorrectMobileOnlyWarning": "Құрылғыдағы автотүзету тек мобильді қосымшада қолжетімді."
+    "autocorrectMobileOnlyWarning": "Құрылғыдағы автотүзету тек мобильді қосымшада қолжетімді.",
+    "choosePangeaAvatar": "Pangea аватарын таңдаңыз"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-04 09:29:26.871566",
+    "@@last_modified": "2026-08-04 10:08:18.778765",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2069,5 +2069,6 @@
     "mapNoActivitiesArea": "Kāore he mahi i tēnei wāhi.",
     "practiceSessionTimedOut": "Kua mutu tō wātū whakaharatau i muri i te {minutes} meneti kāore he mahi.",
     "autocorrectMobileOnly": "Waea pūkoro anake",
-    "autocorrectMobileOnlyWarning": "Kei te wātea noa te whakatikatika-aunoa pūrere i runga i te taupānga pūkoro."
+    "autocorrectMobileOnlyWarning": "Kei te wātea noa te whakatikatika-aunoa pūrere i runga i te taupānga pūkoro.",
+    "choosePangeaAvatar": "Kōwhiria tētahi avata Pangea"
 }
