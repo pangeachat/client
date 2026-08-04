@@ -9,7 +9,6 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -507,23 +506,15 @@ class WorldMapPinsManager {
         final activityId = summary.activityId;
         if (activityId == null) continue; // not an activity session
         (byActivity[activityId] ??= {})[entry.key] = summary;
-        // Not joinable if finished OR full (all roles taken): the same
-        // `isStarted` the start page's open-to-join gate uses, so a pin the map
-        // shows joinable is one the start page will actually offer a Join for,
-        // never a green pin that dead-ends at "Start". `isStarted` is finished ||
-        // (plan-carries-roles && no free seat); a thin-ref preview (no role plan)
-        // leaves it false, so seat-unknown sessions stay permissive as before.
-        if (summary.isStarted) continue;
-        // "Live" means someone is actually present — filters stale rooms that
-        // were never marked finished but everyone has since left.
-        final presentNonBot = summary.membershipSummary.entries
-            .where(
-              (e) =>
-                  e.value == Membership.join.name &&
-                  e.key != BotName.byEnvironment,
-            )
-            .length;
-        if (presentNonBot < 1) continue;
+        // Not joinable if finished, full (all roles taken), or abandoned
+        // (no non-bot member still present): the same `isActivityOpenToJoin`
+        // every other surface gates on, so a pin the map shows joinable is one
+        // the start page will actually offer a Join for, never a green pin
+        // that dead-ends at "Start" or a join error. A thin-ref preview (no
+        // role plan) leaves `isStarted` false, so seat-unknown sessions stay
+        // permissive as before; the presence check filters stale rooms that
+        // were never marked finished but everyone has since left (#8150).
+        if (!summary.isActivityOpenToJoin) continue;
         facts.add(
           ActivitySessionFacts(
             activityId: activityId,
