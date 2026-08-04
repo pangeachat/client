@@ -304,7 +304,17 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     // cancel/dispose, stop here — do NOT start a recorder after teardown.
     if (widget.streamingSessionFactory != null) {
       final outcome = await _startStreaming(gen);
-      if (outcome != _StreamStartOutcome.failed) return;
+      if (outcome != _StreamStartOutcome.failed) {
+        // On a live streaming start the mic is hot, so mark recording-anywhere
+        // for parity with the batch path below: main's read-aloud suppression
+        // (ChatController.isSuppressed) reads this static flag to silence device
+        // TTS that would otherwise play out loud, be captured by the recorder,
+        // and get uploaded to speech-to-text. `aborted` means the capture was
+        // torn down (its cancel/dispose ran _reset), so only flag `started`.
+        // _reset() clears it when the streaming session ends.
+        if (outcome == _StreamStartOutcome.started) isRecordingAnywhere = true;
+        return;
+      }
     }
     // Aborted (cancel/dispose) before reaching the batch recorder, or the
     // widget is gone: never start a recorder / setState after teardown.
@@ -490,9 +500,13 @@ class RecordingViewModelState extends State<RecordingViewModel> {
   /// Test-only seam: attach an already-started [StreamingSttSession] (built with
   /// fakes) so the streaming lifecycle can be widget-tested without the mic /
   /// wakelock / path_provider platform plugins that [_startStreaming] touches.
+  /// Mirrors the production effect of a successful ([_StreamStartOutcome.started])
+  /// streaming start, including marking [isRecordingAnywhere] so tests observe
+  /// the same read-aloud-suppression state a live stream produces.
   @visibleForTesting
   void debugAttachStreamingSession(StreamingSttSession session) {
     _streaming = session;
+    isRecordingAnywhere = true;
     _wireStreamingCallbacks(session);
     _subscribeStreaming();
   }

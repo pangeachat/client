@@ -124,6 +124,9 @@ void main() {
   setUp(() {
     TestWidgetsFlutterBinding.ensureInitialized();
     WakelockPlusPlatformInterface.instance = _FakeWakelock();
+    // isRecordingAnywhere is a process-wide static (main reads it to suppress
+    // read-aloud while the mic is hot); reset it so a prior test cannot leak in.
+    RecordingViewModelState.isRecordingAnywhere = false;
   });
 
   testWidgets(
@@ -171,6 +174,55 @@ void main() {
       expect(capture.stopped, isTrue);
       expect(channel.isClosed, isTrue);
       expect(state.isStreaming, isFalse);
+    },
+  );
+
+  testWidgets(
+    'a live streaming start marks isRecordingAnywhere and _reset() clears it '
+    '(read-aloud suppression parity with the batch path)',
+    (tester) async {
+      final capture = _FakeCapture();
+      final channel = _FakeWebSocketChannel();
+      final repo = SttStreamRepo(
+        wsUrl: 'wss://api.example/choreo/speech_to_text/stream',
+        accessToken: 'TOKEN',
+        connector: (uri, {protocols}) => channel,
+      );
+      final session = StreamingSttSession(capture: capture, repo: repo);
+
+      late RecordingViewModelState state;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: RecordingViewModel(
+            streamingSessionFactory: () => session,
+            builder: (context, s) {
+              state = s;
+              return const SizedBox.shrink();
+            },
+          ),
+        ),
+      );
+
+      expect(RecordingViewModelState.isRecordingAnywhere, isFalse);
+
+      // A live streaming start => the mic is hot. main reads this static in
+      // ChatController.isSuppressed to silence device TTS that would otherwise
+      // be captured + uploaded. The merge auto-placed main's `= true` on the
+      // batch-only path; a live stream must set it too.
+      await tester.runAsync(() => session.start());
+      state.debugAttachStreamingSession(session);
+      expect(capture.started, isTrue);
+      expect(RecordingViewModelState.isRecordingAnywhere, isTrue);
+
+      // Teeth on the merge resolution: our streaming teardown in _reset() must
+      // STILL clear main's flag. pause() routes through cancel/_reset.
+      await tester.runAsync(() async {
+        state.pause();
+        await Future<void>.delayed(const Duration(milliseconds: 50));
+      });
+      await tester.pump();
+      expect(state.isStreaming, isFalse);
+      expect(RecordingViewModelState.isRecordingAnywhere, isFalse);
     },
   );
 
