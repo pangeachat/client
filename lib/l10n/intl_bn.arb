@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:46:01.162678",
+    "@@last_modified": "2026-08-04 10:31:16.950637",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -2839,8 +2839,6 @@
     "constructUseCollected": "চ্যাটে সংগৃহীত",
     "constructUseNanDesc": "প্রযোজ্য নয়",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "টেক্সট-টু-স্পিচ সক্ষম করা হয়েছে",
-    "enableTTSToolDescription": "অ্যাপটিকে আপনার লক্ষ্য ভাষায় টেক্সট-টু-স্পিচ আউটপুট তৈরি করতে অনুমতি দিন।",
     "yourUsername": "আপনার ব্যবহারকারীর নাম",
     "yourEmail": "আপনার ইমেল",
     "iWantToLearn": "আমি শিখতে চাই",
@@ -5751,14 +5749,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10305,8 +10295,6 @@
     "newActivityBadge": "নতুন",
     "exitVocabPracticeSession": "আপনার বর্তমান শব্দভান্ডার অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
     "exitGrammarPracticeSession": "আপনার বর্তমান ব্যাকরণ অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
-    "autoReadAloudMessagesToolName": "স্বয়ংক্রিয়ভাবে প্রাপ্ত সমস্ত বার্তা জোরে পড়ুন",
-    "autoReadAloudMessagesDescription": "যখন একটি বার্তা প্রাপ্ত হয়, তখন শোনার অনুশীলনের জন্য ডিভাইসের ভয়েস ব্যবহার করে বার্তাটি জোরে পড়া হবে।",
     "activityFilterButtonsLabel": "স্তর, খেলোয়াড় এবং স্থিতি ফিল্টার বোতাম",
     "mapFilterAllLevels": "সব স্তর",
     "mapFilterAllPlayers": "সব খেলোয়াড়",
@@ -10324,6 +10312,13 @@
     "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।",
     "autocorrectMobileOnly": "শুধুমাত্র মোবাইল",
     "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।",
+    "audioSectionTitle": "অডিও",
+    "audioWordsToolName": "শব্দ",
+    "audioWordsDescription": "একটি শব্দে ট্যাপ করলে সেটির অডিও বাজান।",
+    "audioChoicesToolName": "পছন্দ",
+    "audioChoicesDescription": "অনুশীলন কার্যক্রমে উত্তরের পছন্দের জন্য অডিও বাজান।",
+    "audioIncomingMessagesToolName": "আগত বার্তা",
+    "audioIncomingMessagesDescription": "শোনার অনুশীলনের জন্য আপনার লক্ষ্য ভাষায় প্রাপ্ত বার্তাগুলো স্বয়ংক্রিয়ভাবে জোরে পড়ুন।",
     "choosePangeaAvatar": "একটি প্যানজিয়া অবতার চয়ন করুন",
     "readAloudNoVoiceTitle": "উচ্চ-মানের {language} ভয়েস পাওয়া যায়নি",
     "readAloudNoVoiceDesktopWeb": "এই ব্রাউজারে উচ্চ-মানের {language} ভয়েস নেই, তাই এখানে বার্তাগুলি ভালোভাবে পড়ে শোনানো যাবে না। Chrome এবং Edge-এ সাধারণত উচ্চ-মানের ভয়েস থাকে।",

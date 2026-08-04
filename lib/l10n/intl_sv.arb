@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:46:25.692190",
+    "@@last_modified": "2026-08-04 10:31:33.377072",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2933,8 +2933,6 @@
     "constructUseCollected": "Samlad i chatt",
     "constructUseNanDesc": "Ej tillämpligt",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktiverad text-till-tal",
-    "enableTTSToolDescription": "Tillåt appen att generera text-till-tal-utdata för delar av texten på ditt målspråk.",
     "yourUsername": "Ditt användarnamn",
     "yourEmail": "Din e-post",
     "iWantToLearn": "Jag vill lära mig",
@@ -5641,14 +5639,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10195,8 +10185,6 @@
     "newActivityBadge": "NY",
     "exitVocabPracticeSession": "Dina framsteg i den nuvarande ordövningssessionen sparas inte.",
     "exitGrammarPracticeSession": "Dina framsteg i den nuvarande grammatikövningssessionen sparas inte.",
-    "autoReadAloudMessagesToolName": "Läs automatiskt upp alla mottagna meddelanden",
-    "autoReadAloudMessagesDescription": "När ett meddelande tas emot kommer enhetens röst att användas för att läsa upp meddelandet för lyssningsövning.",
     "activityFilterButtonsLabel": "Nivå, spelare och statusfilterknappar",
     "mapFilterAllLevels": "Alla nivåer",
     "mapFilterAllPlayers": "Alla spelare",
@@ -10214,6 +10202,13 @@
     "practiceSessionTimedOut": "Din övningssession avslutades efter {minutes} minuters inaktivitet.",
     "autocorrectMobileOnly": "Endast mobil",
     "autocorrectMobileOnlyWarning": "Enhetens autokorrigering är endast tillgänglig i mobilappen.",
+    "audioSectionTitle": "Ljud",
+    "audioWordsToolName": "Ord",
+    "audioWordsDescription": "Spela upp ljud för ett ord när du trycker på det.",
+    "audioChoicesToolName": "Val",
+    "audioChoicesDescription": "Spela upp ljud för svarsalternativ i övningsaktiviteter.",
+    "audioIncomingMessagesToolName": "Inkommande meddelanden",
+    "audioIncomingMessagesDescription": "Läs automatiskt upp mottagna meddelanden på ditt målspråk för lyssningsövning.",
     "choosePangeaAvatar": "Välj en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen högkvalitativ {language}-röst hittades",
     "readAloudNoVoiceDesktopWeb": "Den här webbläsaren erbjuder ingen högkvalitativ {language}-röst, så meddelanden kan inte läsas upp ordentligt här. Chrome och Edge inkluderar vanligtvis högkvalitativa röster.",

@@ -10,7 +10,7 @@ A boolean learning setting that controls auto-read-aloud for received messages.
 Incoming messages in the learner's target language are spoken automatically, turning an ordinary chat into listening practice with nothing to tap. Pronunciation audio for a single tapped word is a separate feature — see [word-text-to-speech.instructions.md](word-text-to-speech.instructions.md).
 
 ## The setting
-Off by default, opt-in per learner: Automatically read aloud all received messages in learning settings, stored as autoReadAloudMessages on ToolSetting. Default off because unprompted audio in a messaging app is intrusive for anyone who didn't ask for it.
+Off by default, opt-in per learner: the **Incoming messages** toggle in the Audio section of learning settings, stored as `audioIncomingMessages` (`ToolSetting.audioIncomingMessages`). Default off because unprompted audio in a messaging app is intrusive for anyone who didn't ask for it. Changing the target language never flips this toggle — the opt-in rationale is language-independent, unlike the words/choices audio toggles which reset to on.
 
 ### Enabling requires a qualifying voice
 Turning the toggle on first runs the same known-good-voice gate playback uses (see Audio source below), against the learner's selected L2. When no known-good voice exists, the toggle stays off and a popup explains how to get one where the learner currently is (#8113):

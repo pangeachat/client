@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:46:28.216125",
+    "@@last_modified": "2026-08-04 10:31:35.344192",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2170,8 +2170,6 @@
             }
         }
     },
-    "enableTTSToolName": "Bật đọc văn bản (text-to-speech)",
-    "enableTTSToolDescription": "Cho phép ứng dụng tạo âm thanh đọc văn bản của ngôn ngữ đích",
     "yourUsername": "Tên người dùng của bạn",
     "yourEmail": "Email của bạn",
     "iWantToLearn": "Tôi muốn học",
@@ -6943,8 +6941,6 @@
     "newActivityBadge": "MỚI",
     "exitVocabPracticeSession": "Tiến độ phiên luyện từ vựng hiện tại của bạn sẽ không được lưu.",
     "exitGrammarPracticeSession": "Tiến độ phiên luyện ngữ pháp hiện tại của bạn sẽ không được lưu.",
-    "autoReadAloudMessagesToolName": "Tự động đọc to tất cả tin nhắn đã nhận",
-    "autoReadAloudMessagesDescription": "Khi nhận được tin nhắn, giọng nói của thiết bị sẽ được sử dụng để đọc to tin nhắn, giúp bạn luyện nghe.",
     "activityFilterButtonsLabel": "Các nút lọc cấp độ, người chơi và trạng thái",
     "mapFilterAllLevels": "Tất cả cấp độ",
     "mapFilterAllPlayers": "Tất cả người chơi",
@@ -6962,6 +6958,13 @@
     "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động.",
     "autocorrectMobileOnly": "Chỉ trên di động",
     "autocorrectMobileOnlyWarning": "Tự động sửa lỗi chỉ khả dụng trên ứng dụng di động.",
+    "audioSectionTitle": "Âm thanh",
+    "audioWordsToolName": "Từ vựng",
+    "audioWordsDescription": "Phát âm thanh của một từ khi bạn chạm vào từ đó.",
+    "audioChoicesToolName": "Lựa chọn",
+    "audioChoicesDescription": "Phát âm thanh cho các lựa chọn trả lời trong các hoạt động luyện tập.",
+    "audioIncomingMessagesToolName": "Tin nhắn đến",
+    "audioIncomingMessagesDescription": "Tự động đọc to các tin nhắn đã nhận bằng ngôn ngữ mục tiêu của bạn để luyện nghe.",
     "choosePangeaAvatar": "Chọn ảnh đại diện Pangea",
     "readAloudNoVoiceTitle": "Không tìm thấy giọng đọc {language} chất lượng cao",
     "readAloudNoVoiceDesktopWeb": "Trình duyệt này không cung cấp giọng đọc {language} chất lượng cao, nên không thể đọc to tin nhắn tốt ở đây. Chrome và Edge thường có giọng đọc chất lượng cao.",

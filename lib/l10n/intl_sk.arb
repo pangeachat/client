@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-04 10:46:23.046991",
+    "@@last_modified": "2026-08-04 10:31:32.060549",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2130,8 +2130,6 @@
     "constructUseCollected": "Zbierka v chate",
     "constructUseNanDesc": "Nepoužiteľné",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Povolené text-to-speech",
-    "enableTTSToolDescription": "Povoľte aplikácii generovať výstup text-to-speech pre časti textu vo vašom cieľovom jazyku.",
     "yourUsername": "Vaše používateľské meno",
     "yourEmail": "Váš e-mail",
     "iWantToLearn": "Chcem sa naučiť",
@@ -6074,14 +6072,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10628,8 +10618,6 @@
     "newActivityBadge": "NOVÉ",
     "exitVocabPracticeSession": "Váš aktuálny pokrok v precvičovaní slovnej zásoby sa neuloží.",
     "exitGrammarPracticeSession": "Váš aktuálny pokrok v precvičovaní gramatiky sa neuloží.",
-    "autoReadAloudMessagesToolName": "Automaticky čítať nahlas všetky prijaté správy",
-    "autoReadAloudMessagesDescription": "Keď sa prijme správa, hlas zariadenia sa použije na prečítanie správy nahlas pre cvičenie počúvania.",
     "activityFilterButtonsLabel": "Tlačidlá filtra úrovne, hráčov a stavu",
     "mapFilterAllLevels": "Všetky úrovne",
     "mapFilterAllPlayers": "Všetci hráči",
@@ -10647,6 +10635,13 @@
     "practiceSessionTimedOut": "Vaša cvičná lekcia sa skončila po {minutes} minútach nečinnosti.",
     "autocorrectMobileOnly": "Iba mobil",
     "autocorrectMobileOnlyWarning": "Automatické opravy sú dostupné iba v mobilnej aplikácii.",
+    "audioSectionTitle": "Zvuk",
+    "audioWordsToolName": "Slová",
+    "audioWordsDescription": "Prehrajte zvuk slova, keď naň ťuknete.",
+    "audioChoicesToolName": "Možnosti",
+    "audioChoicesDescription": "Prehrajte zvuk pre možnosti odpovedí v cvičeniach.",
+    "audioIncomingMessagesToolName": "Prichádzajúce správy",
+    "audioIncomingMessagesDescription": "Automaticky čítajte prijaté správy nahlas vo vašom cieľovom jazyku pre cvičenie počúvania.",
     "choosePangeaAvatar": "Vyberte si avatara Pangea",
     "readAloudNoVoiceTitle": "Nenašiel sa kvalitný hlas pre jazyk {language}",
     "readAloudNoVoiceDesktopWeb": "Tento prehliadač neponúka kvalitný hlas pre jazyk {language}, takže správy tu nemožno dobre nahlas prečítať. Prehliadače Chrome a Edge zvyčajne obsahujú kvalitné hlasy.",

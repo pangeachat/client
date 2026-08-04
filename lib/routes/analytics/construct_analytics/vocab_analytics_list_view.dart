@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
@@ -297,6 +298,7 @@ class VocabAnalyticsListView extends StatelessWidget {
                                         .pangeaController
                                         .userController
                                         .userL2Code!,
+                                    useCase: TtsUseCase.words,
                                     pos: vocabItem.id.category,
                                   );
                                   AnalyticsNavigationUtil.navigateToAnalytics(

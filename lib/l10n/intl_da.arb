@@ -1073,8 +1073,6 @@
     "constructUseCollected": "Indsamlet i chat",
     "constructUseNanDesc": "Ikke relevant",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktiveret tekst-til-tale",
-    "enableTTSToolDescription": "Tillad appen at generere tekst-til-tale output for dele af teksten på dit målsprog.",
     "yourUsername": "Dit brugernavn",
     "yourEmail": "Din e-mail",
     "iWantToLearn": "Jeg vil gerne lære",
@@ -1343,7 +1341,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-04 10:46:03.616866",
+    "@@last_modified": "2026-08-04 10:31:22.876543",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -6050,14 +6048,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -10603,8 +10593,6 @@
     "newActivityBadge": "NY",
     "exitVocabPracticeSession": "Dine fremskridt i den nuværende ordforrådsøvelse gemmes ikke.",
     "exitGrammarPracticeSession": "Dine fremskridt i den nuværende grammatikøvelse gemmes ikke.",
-    "autoReadAloudMessagesToolName": "Læs automatisk alle modtagne beskeder højt",
-    "autoReadAloudMessagesDescription": "Når en besked modtages, vil enhedens stemme blive brugt til at læse beskeden højt for at øve lyttefærdigheder.",
     "activityFilterButtonsLabel": "Filterknapper for niveau, spillere og status",
     "mapFilterAllLevels": "Alle niveauer",
     "mapFilterAllPlayers": "Alle spillere",
@@ -10622,6 +10610,13 @@
     "practiceSessionTimedOut": "Din træningssession blev afsluttet efter {minutes} minutter uden aktivitet.",
     "autocorrectMobileOnly": "Kun mobil",
     "autocorrectMobileOnlyWarning": "Enhedens autokorrektur er kun tilgængelig i mobilappen.",
+    "audioSectionTitle": "Lyd",
+    "audioWordsToolName": "Ord",
+    "audioWordsDescription": "Afspil et ords lyd, når du trykker på det.",
+    "audioChoicesToolName": "Valgmuligheder",
+    "audioChoicesDescription": "Afspil lyd for svarmuligheder i øvelsesaktiviteter.",
+    "audioIncomingMessagesToolName": "Indgående beskeder",
+    "audioIncomingMessagesDescription": "Læs automatisk modtagne beskeder højt på dit målsprog for lytteøvelse.",
     "choosePangeaAvatar": "Vælg en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen {language}-stemme af høj kvalitet fundet",
     "readAloudNoVoiceDesktopWeb": "Denne browser tilbyder ikke en {language}-stemme af høj kvalitet, så beskeder kan ikke læses højt her. Chrome og Edge inkluderer normalt stemmer af høj kvalitet.",

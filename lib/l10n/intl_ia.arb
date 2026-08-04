@@ -1101,8 +1101,6 @@
     "constructUseCollected": " Collected in chat",
     "constructUseNanDesc": " Non applicabile",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "TTS activate",
-    "enableTTSToolDescription": "Permitte al application de generar output de texto-a-vocala pro partes del texto in tu lingua de destino.",
     "yourUsername": "Tu nomine de usator",
     "yourEmail": "Tuo e-mail",
     "iWantToLearn": "Io vole aprender",
@@ -1371,7 +1369,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-04 10:46:10.663097",
+    "@@last_modified": "2026-08-04 10:31:24.493380",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6066,14 +6064,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -10619,8 +10609,6 @@
     "newActivityBadge": "NOVE",
     "exitVocabPracticeSession": "Le progresso de tu session actual de practica de vocabulario non essera salvate.",
     "exitGrammarPracticeSession": "Le progresso de tu session actual de practica de grammatica non essera salvate.",
-    "autoReadAloudMessagesToolName": "Lege automaticamente a alte voce tote le messages recipite",
-    "autoReadAloudMessagesDescription": "Quando un message es recipite, le voce del apparato essera usate pro leger le message a alte voce pro practica de ascolta.",
     "activityFilterButtonsLabel": "Botones de filtro de nivello, jocatores e stato",
     "mapFilterAllLevels": "Tote le nivellos",
     "mapFilterAllPlayers": "Tote le jocatores",
@@ -10638,6 +10626,13 @@
     "practiceSessionTimedOut": "Tu session de practica ha terminate post {minutes} minutas sin activitate.",
     "autocorrectMobileOnly": "Solmente mobile",
     "autocorrectMobileOnlyWarning": "Le autocorrection del apparato es solmente disponibile in le application mobile.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Parolas",
+    "audioWordsDescription": "Reproducer le audio de un parola quando tu lo tocca.",
+    "audioChoicesToolName": "Optiones",
+    "audioChoicesDescription": "Reproducer audio pro le optiones de responsa in activitates de practica.",
+    "audioIncomingMessagesToolName": "Messages entrante",
+    "audioIncomingMessagesDescription": "Leger automaticamente le messages recipite a alte voce in tu lingua de destination pro practica de ascolta.",
     "choosePangeaAvatar": "Selige un avatar de Pangea",
     "readAloudNoVoiceTitle": "Nulle voce de alte qualitate pro {language} trovate",
     "readAloudNoVoiceDesktopWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Chrome e Edge usualmente include voces de alte qualitate.",

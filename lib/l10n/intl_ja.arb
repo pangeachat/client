@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-04 10:46:11.050681",
+    "@@last_modified": "2026-08-04 10:31:25.153075",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -2690,8 +2690,6 @@
     "constructUseCollected": "チャットで収集済み",
     "constructUseNanDesc": "該当なし",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "テキスト読み上げを有効にしました",
-    "enableTTSToolDescription": "アプリがターゲット言語の一部のテキストに対してテキスト読み上げ出力を生成できるようにします。",
     "yourUsername": "あなたのユーザー名",
     "yourEmail": "あなたのメールアドレス",
     "iWantToLearn": "学びたい",
@@ -5892,14 +5890,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10446,8 +10436,6 @@
     "newActivityBadge": "NEW",
     "exitVocabPracticeSession": "現在の語彙練習セッションの進捗は保存されません。",
     "exitGrammarPracticeSession": "現在の文法練習セッションの進捗は保存されません。",
-    "autoReadAloudMessagesToolName": "受信メッセージをすべて自動で読み上げる",
-    "autoReadAloudMessagesDescription": "メッセージを受信した際、デバイスの音声機能を使ってメッセージを読み上げ、リスニング練習に役立てます。",
     "activityFilterButtonsLabel": "レベル、プレイヤー、ステータスのフィルターボタン",
     "mapFilterAllLevels": "すべてのレベル",
     "mapFilterAllPlayers": "すべてのプレイヤー",
@@ -10465,6 +10453,13 @@
     "practiceSessionTimedOut": "{minutes}分間操作がなかったため、練習セッションが終了しました。",
     "autocorrectMobileOnly": "モバイルのみ",
     "autocorrectMobileOnlyWarning": "デバイスの自動修正はモバイルアプリでのみ利用可能です。",
+    "audioSectionTitle": "音声",
+    "audioWordsToolName": "単語",
+    "audioWordsDescription": "単語をタップすると音声が再生されます。",
+    "audioChoicesToolName": "選択肢",
+    "audioChoicesDescription": "練習問題の解答選択肢の音声を再生します。",
+    "audioIncomingMessagesToolName": "受信メッセージ",
+    "audioIncomingMessagesDescription": "リスニング練習のため、受信メッセージを目標言語で自動的に読み上げます。",
     "choosePangeaAvatar": "パンゲアのアバターを選択",
     "readAloudNoVoiceTitle": "高品質な{language}の音声が見つかりません",
     "readAloudNoVoiceDesktopWeb": "このブラウザでは高品質な{language}の音声が提供されていないため、ここではメッセージをうまく読み上げることができません。通常、ChromeとEdgeには高品質な音声が含まれています。",

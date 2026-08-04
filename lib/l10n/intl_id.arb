@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:46:10.532326",
+    "@@last_modified": "2026-08-04 10:31:23.970396",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3217,8 +3217,6 @@
     "constructUseCollected": "Terkumpul dalam obrolan",
     "constructUseNanDesc": "Tidak berlaku",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktifkan teks-ke-ucapan",
-    "enableTTSToolDescription": "Izinkan aplikasi menghasilkan keluaran teks-ke-ucapan untuk bagian teks dalam bahasa target Anda.",
     "yourUsername": "Nama pengguna Anda",
     "yourEmail": "Email Anda",
     "iWantToLearn": "Saya ingin belajar",
@@ -5226,14 +5224,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9750,8 +9740,6 @@
     "newActivityBadge": "BARU",
     "exitVocabPracticeSession": "Progres sesi latihan kosakata Anda saat ini tidak akan disimpan.",
     "exitGrammarPracticeSession": "Progres sesi latihan tata bahasa Anda saat ini tidak akan disimpan.",
-    "autoReadAloudMessagesToolName": "Otomatis membaca semua pesan yang diterima",
-    "autoReadAloudMessagesDescription": "Saat pesan diterima, suara perangkat akan digunakan untuk membaca pesan dengan lantang untuk latihan mendengarkan.",
     "activityFilterButtonsLabel": "Tombol filter level, pemain, dan status",
     "mapFilterAllLevels": "Semua level",
     "mapFilterAllPlayers": "Semua pemain",
@@ -9769,6 +9757,13 @@
     "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
     "autocorrectMobileOnly": "Khusus seluler",
     "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Kata",
+    "audioWordsDescription": "Putar audio kata saat Anda mengetuknya.",
+    "audioChoicesToolName": "Pilihan",
+    "audioChoicesDescription": "Putar audio untuk pilihan jawaban dalam aktivitas latihan.",
+    "audioIncomingMessagesToolName": "Pesan masuk",
+    "audioIncomingMessagesDescription": "Secara otomatis membacakan pesan yang diterima dalam bahasa target Anda untuk latihan mendengarkan.",
     "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Tidak ditemukan suara {language} berkualitas tinggi",
     "readAloudNoVoiceDesktopWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Chrome dan Edge biasanya menyertakan suara berkualitas tinggi.",

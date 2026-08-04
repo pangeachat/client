@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-04 10:46:27.787632",
+    "@@last_modified": "2026-08-04 10:31:34.655315",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3299,8 +3299,6 @@
     "constructUseCollected": "Зібрано у чаті",
     "constructUseNanDesc": "Не застосовується",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Увімкнено текст у мову",
-    "enableTTSToolDescription": "Дозвольте додатку генерувати вихідний текст у мову для частин тексту вашої цільової мови.",
     "yourUsername": "Ваше ім'я користувача",
     "yourEmail": "Ваша електронна пошта",
     "iWantToLearn": "Я хочу навчитися",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9677,8 +9667,6 @@
     "newActivityBadge": "НОВЕ",
     "exitVocabPracticeSession": "Ваш поточний прогрес у сесії тренування словникового запасу не буде збережено.",
     "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено.",
-    "autoReadAloudMessagesToolName": "Автоматично читати вголос усі отримані повідомлення",
-    "autoReadAloudMessagesDescription": "Коли повідомлення отримано, голос пристрою буде використано для читання повідомлення вголос для практики слухання.",
     "activityFilterButtonsLabel": "Кнопки фільтру за рівнем, гравцями та статусом",
     "mapFilterAllLevels": "Усі рівні",
     "mapFilterAllPlayers": "Усі гравці",
@@ -9696,6 +9684,13 @@
     "practiceSessionTimedOut": "Ваш сеанс практики завершився після {minutes} хвилин бездіяльності.",
     "autocorrectMobileOnly": "Лише для мобільних пристроїв",
     "autocorrectMobileOnlyWarning": "Автовиправлення доступне лише в мобільному застосунку.",
+    "audioSectionTitle": "Аудіо",
+    "audioWordsToolName": "Слова",
+    "audioWordsDescription": "Відтворювати аудіо слова, коли ви натискаєте на нього.",
+    "audioChoicesToolName": "Варіанти",
+    "audioChoicesDescription": "Відтворювати аудіо для варіантів відповідей у практичних завданнях.",
+    "audioIncomingMessagesToolName": "Вхідні повідомлення",
+    "audioIncomingMessagesDescription": "Автоматично читати отримані повідомлення вголос вашою цільовою мовою для практики слухання.",
     "choosePangeaAvatar": "Виберіть аватар Pangea",
     "readAloudNoVoiceTitle": "Не знайдено високоякісного голосу {language}",
     "readAloudNoVoiceDesktopWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Chrome та Edge зазвичай мають високоякісні голоси.",
