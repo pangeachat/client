@@ -22,24 +22,28 @@ class PresetAvatarRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Wrap(
       spacing: spacing,
-      mainAxisSize: MainAxisSize.min,
+      runSpacing: spacing,
+      alignment: WrapAlignment.center,
       children: PresetAvatars.all
           .mapIndexed(
-            (index, avatarUrl) => Semantics(
-              label: PresetAvatars.description(L10n.of(context), index),
-              button: true,
-              child: InkWell(
-                borderRadius: BorderRadius.circular(100.0),
-                onTap: () => onSelected(avatarUrl),
-                child: SizedBox(
-                  height: size,
-                  width: size,
-                  child: ImageByUrl(
+            (index, avatarUrl) => Material(
+              type: MaterialType.transparency,
+              child: Semantics(
+                label: PresetAvatars.description(L10n.of(context), index),
+                button: true,
+                child: InkWell(
+                  borderRadius: BorderRadius.circular(100.0),
+                  onTap: () => onSelected(avatarUrl),
+                  child: SizedBox(
+                    height: size,
                     width: size,
-                    imageUrl: avatarUrl,
-                    borderRadius: BorderRadius.circular(100.0),
+                    child: ImageByUrl(
+                      width: size,
+                      imageUrl: avatarUrl,
+                      borderRadius: BorderRadius.circular(100.0),
+                    ),
                   ),
                 ),
               ),
@@ -58,9 +62,12 @@ Future<Uri?> showPresetAvatarPickerDialog(BuildContext context) =>
       useRootNavigator: false,
       builder: (context) => AlertDialog.adaptive(
         title: Text(L10n.of(context).choosePangeaAvatar),
-        content: PresetAvatarRow(
-          size: 48.0,
-          onSelected: (url) => Navigator.of(context).pop<Uri>(url),
+        content: Padding(
+          padding: EdgeInsetsGeometry.all(8.0),
+          child: PresetAvatarRow(
+            size: 48.0,
+            onSelected: (url) => Navigator.of(context).pop<Uri>(url),
+          ),
         ),
         actions: [
           TextButton(
