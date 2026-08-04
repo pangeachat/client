@@ -79,6 +79,7 @@ class WorkspaceLeftPanel extends StatelessWidget {
       RoomPanelToken(param: final param) ||
       SessionPanelToken(param: final param) ||
       ArchivedRoomPanelToken(param: final param) => LeftPanelRoomSubpage(
+        tokenType: token.type,
         param: param,
         shareItems: shareItems,
         closeButton: closeButton,
