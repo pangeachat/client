@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/read_aloud_queue.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -65,7 +66,7 @@ class MessageReadAloudController {
   }
 
   bool get _isEnabled => MatrixState.pangeaController.userController
-      .isToolEnabled(ToolSetting.autoReadAloudMessages);
+      .isToolEnabled(ToolSetting.audioIncomingMessages);
 
   void _onSync(SyncUpdate update) {
     if (!_isEnabled) return;
@@ -114,6 +115,7 @@ class MessageReadAloudController {
   Future<void> _speak(PangeaMessageEvent message) => TtsController.tryToSpeak(
     message.messageDisplayText,
     langCode: message.messageDisplayLangCode,
+    useCase: TtsUseCase.incomingMessage,
     allowChoreoPlay: false,
   );
 }

@@ -34,6 +34,7 @@ void main() {
     VoidCallback? onDismissed,
     ValueChanged<bool>? onCavityFullChanged,
     double keyboardInset = 0.0,
+    Widget Function(Widget child)? chatsBadgeBuilder,
     bool settle = true,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
@@ -61,6 +62,7 @@ void main() {
             onDismissed: onDismissed,
             onCavityFullChanged: onCavityFullChanged,
             keyboardInset: keyboardInset,
+            chatsBadgeBuilder: chatsBadgeBuilder,
           ),
         ),
       ),
@@ -159,6 +161,61 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(tapped, isTrue);
+    });
+
+    testWidgets(
+      'the injected badge wraps the Chats item — and only the Chats item '
+      '(#8129)',
+      (tester) async {
+        // The shell injects the all-chats unread badge (UnreadRoomsBadge over
+        // its sync stream) through this seam so the widget itself stays free
+        // of Matrix lookups. The contract here: whatever is injected must
+        // enclose exactly the Chats rail button.
+        const badgeKey = ValueKey('chatsUnreadBadge');
+        await pumpNav(
+          tester,
+          chatsBadgeBuilder: (child) =>
+              KeyedSubtree(key: badgeKey, child: child),
+        );
+
+        expect(
+          find.descendant(
+            of: find.byKey(badgeKey),
+            matching: find.byTooltip('All chats'),
+          ),
+          findsOneWidget,
+          reason: 'the badge must enclose the Chats rail item',
+        );
+        for (final other in ['World', 'Courses', 'Add a course']) {
+          expect(
+            find.descendant(
+              of: find.byKey(badgeKey),
+              matching: find.byTooltip(other),
+            ),
+            findsNothing,
+            reason: 'only the Chats item carries the unread badge',
+          );
+        }
+      },
+    );
+
+    testWidgets('a badged Chats item still taps through to onSectionTap', (
+      tester,
+    ) async {
+      final tapped = <AppSection>[];
+      await pumpNav(
+        tester,
+        onSectionTap: tapped.add,
+        // A wrapper that adds real chrome around the button, like the badge
+        // Stack does — the tap must reach the button through it.
+        chatsBadgeBuilder: (child) =>
+            Padding(padding: const EdgeInsets.all(2.0), child: child),
+      );
+
+      await tester.tap(find.byTooltip('All chats'));
+      await tester.pumpAndSettle();
+
+      expect(tapped, [AppSection.chats]);
     });
   });
 

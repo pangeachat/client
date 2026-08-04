@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:30.215270",
+    "@@last_modified": "2026-08-04 10:31:34.043732",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3208,8 +3208,6 @@
     "constructUseCollected": "செயலியில் சேகரிக்கப்பட்டது",
     "constructUseNanDesc": "பயன்படாது",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "உயர்த்தப்பட்ட உரை-தொடர்பு இயக்கு",
-    "enableTTSToolDescription": "உங்கள் இலக்கு மொழியில் உரை-தொடர்பு வெளியீட்டை உருவாக்க அனுமதி அளிக்கவும்.",
     "yourUsername": "உங்கள் பயனர்பெயர்",
     "yourEmail": "உங்கள் மின்னஞ்சல்",
     "iWantToLearn": "நான் கற்றுக்கொள்ள விரும்புகிறேன்",
@@ -5225,14 +5223,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9769,8 +9759,6 @@
     "newActivityBadge": "புதியது",
     "exitVocabPracticeSession": "தற்போதைய உங்கள் சொற்களஞ்சியப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
     "exitGrammarPracticeSession": "தற்போதைய உங்கள் இலக்கணப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
-    "autoReadAloudMessagesToolName": "பெறப்பட்ட எல்லாச் செய்திகளையும் தானாகப் படித்துக் காட்டு",
-    "autoReadAloudMessagesDescription": "ஒரு செய்தி பெறப்படும்போது, கேட்கும் பயிற்சிக்குச் செய்தியைப் படித்துக் காட்ட, சாதனத்தின் குரல் பயன்படுத்தப்படும்.",
     "activityFilterButtonsLabel": "நிலை, வீரர்கள் மற்றும் நிலை வடிகட்டி பொத்தான்கள்",
     "mapFilterAllLevels": "அனைத்து நிலைகளும்",
     "mapFilterAllPlayers": "அனைத்து வீரர்களும்",
@@ -9787,5 +9775,22 @@
     "mapNoActivitiesArea": "இந்த பகுதியில் எந்தச் செயல்பாடுகளும் இல்லை.",
     "practiceSessionTimedOut": "செயல்பாடு இல்லாமல் {minutes} நிமிடங்களுக்குப் பிறகு உங்கள் பயிற்சி அமர்வு முடிந்தது.",
     "autocorrectMobileOnly": "மொபைலுக்கு மட்டும்",
-    "autocorrectMobileOnlyWarning": "சாதனத் தானியங்கு திருத்தம் மொபைல் பயன்பாட்டில் மட்டுமே கிடைக்கும்."
+    "autocorrectMobileOnlyWarning": "சாதனத் தானியங்கு திருத்தம் மொபைல் பயன்பாட்டில் மட்டுமே கிடைக்கும்.",
+    "audioSectionTitle": "ஆடியோ",
+    "audioWordsToolName": "வார்த்தைகள்",
+    "audioWordsDescription": "ஒரு வார்த்தையைத் தட்டும்போது அதன் ஆடியோவை இயக்கவும்.",
+    "audioChoicesToolName": "தேர்வுகள்",
+    "audioChoicesDescription": "பயிற்சி நடவடிக்கைகளில் பதில்களுக்கான ஆடியோவை இயக்கவும்.",
+    "audioIncomingMessagesToolName": "உள்வரும் செய்திகள்",
+    "audioIncomingMessagesDescription": "கேட்கும் பயிற்சிக்காக உங்கள் இலக்கு மொழியில் பெறப்பட்ட செய்திகளை தானாகவே சத்தமாகப் படிக்கவும்.",
+    "choosePangeaAvatar": "பங்கேயா அவதாரத்தைத் தேர்வுசெய்யவும்",
+    "readAloudNoVoiceTitle": "உயர்தரமான {language} குரல் கண்டறியப்படவில்லை",
+    "readAloudNoVoiceDesktopWeb": "இந்த உலாவியில் உயர்தரமான {language} குரல் இல்லை, எனவே செய்திகளை இங்கே நன்றாகப் படிக்க முடியாது. Chrome மற்றும் Edge பொதுவாக உயர்தரமான குரல்களைக் கொண்டுள்ளன.",
+    "readAloudGetChrome": "Chrome ஐப் பெறவும்",
+    "readAloudNoVoiceMobileWeb": "இந்த உலாவியில் உயர்தரமான {language} குரல் இல்லை, எனவே செய்திகளை இங்கே நன்றாகப் படிக்க முடியாது. Pangea Chat செயலி உங்கள் சாதனத்தின் சிறந்த குரல்களைப் பயன்படுத்தலாம்.",
+    "readAloudGetApp": "செயலியைப் பெறவும்",
+    "readAloudNoVoiceIOS": "உங்கள் சாதனத்தில் உயர்தரமான {language} குரல் இன்னும் பதிவிறக்கப்படவில்லை. ஒன்றைப் பதிவிறக்கி, மீண்டும் முயற்சிக்கவும்:",
+    "readAloudNoVoiceIOSSteps": "  • அமைப்புகள்\n  • அணுகல்தன்மை\n  • பேசப்படும் உள்ளடக்கம்\n  • குரல்கள்\n  • {language}\n  • மேம்படுத்தப்பட்ட அல்லது பிரீமியம் குரலைப் பதிவிறக்கவும்",
+    "readAloudNoVoiceAndroid": "உங்கள் சாதனத்தில் உயர்தரமான {language} குரல் இன்னும் இல்லை. உங்கள் உரை-பேச்சு இயந்திரத்திற்கான குரல் தரவை நிறுவி, மீண்டும் முயற்சிக்கவும்.",
+    "readAloudOpenVoiceSettings": "குரல் அமைப்புகளைத் திறக்கவும்"
 }

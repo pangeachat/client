@@ -219,7 +219,7 @@ Token priority within each message uses the scoring formula described in [Target
 - Fetches `PracticeSelection` on construction
 - Generates activities on demand via [`PracticeRepo`](../../lib/pangea/practice_activities/practice_generation_repo.dart)
 - Records answers via [`PracticeRecordController`](../../lib/pangea/toolbar/message_practice/practice_record_controller.dart)
-- Plays TTS on correct answers for audio reinforcement
+- Plays TTS on correct answers for audio reinforcement (gated by the **Choices** audio setting)
 
 ---
 

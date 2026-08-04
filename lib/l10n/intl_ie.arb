@@ -2834,8 +2834,6 @@
     "constructUseCollected": "Collectate in le chat",
     "constructUseNanDesc": "Nulle applicabilitate",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Text-to-speech activate",
-    "enableTTSToolDescription": "Permitte al app de generar output de text-to-speech pro partes del texto in tu lingua de destino.",
     "yourUsername": "Tu nomine de usator",
     "yourEmail": "Tu email",
     "iWantToLearn": "Io vole aprender",
@@ -3104,7 +3102,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-04 09:29:24.694446",
+    "@@last_modified": "2026-08-04 10:31:24.902231",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5755,14 +5753,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10309,8 +10299,6 @@
     "newActivityBadge": "NUA",
     "exitVocabPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh foclóra reatha.",
     "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha.",
-    "autoReadAloudMessagesToolName": "Léigh gach teachtaireacht a fhaightear os ard go huathoibríoch",
-    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta.",
     "activityFilterButtonsLabel": "Cnaipí scagaire leibhéil, imreoirí agus stádais",
     "mapFilterAllLevels": "Gach leibhéal",
     "mapFilterAllPlayers": "Gach imreoir",
@@ -10327,5 +10315,22 @@
     "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo.",
     "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan aon ghníomhaíocht.",
     "autocorrectMobileOnly": "Fón póca amháin",
-    "autocorrectMobileOnlyWarning": "Níl ceartú uathoibríoch gléis ar fáil ach ar an aip shoghluaiste."
+    "autocorrectMobileOnlyWarning": "Níl ceartú uathoibríoch gléis ar fáil ach ar an aip shoghluaiste.",
+    "audioSectionTitle": "Fuaim",
+    "audioWordsToolName": "Focail",
+    "audioWordsDescription": "Seinn fuaim focal nuair a thapálann tú air.",
+    "audioChoicesToolName": "Roghanna",
+    "audioChoicesDescription": "Seinn fuaim do roghanna freagraí i ngníomhaíochtaí cleachtaidh.",
+    "audioIncomingMessagesToolName": "Teachtaireachtaí isteach",
+    "audioIncomingMessagesDescription": "Léigh teachtaireachtaí a fhaightear os ard go huathoibríoch i do sprioc-theanga le haghaidh cleachtadh éisteachta.",
+    "choosePangeaAvatar": "Roghnaigh avatar Pangea",
+    "readAloudNoVoiceTitle": "Níor aimsíodh guth {language} ardchaighdeáin",
+    "readAloudNoVoiceDesktopWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. De ghnáth bíonn guthanna ardchaighdeáin san áireamh i Chrome agus Edge.",
+    "readAloudGetChrome": "Faigh Chrome",
+    "readAloudNoVoiceMobileWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. Is féidir le haip Pangea Chat na guthanna is fearr de do ghléas a úsáid.",
+    "readAloudGetApp": "Faigh an aip",
+    "readAloudNoVoiceIOS": "Níl guth {language} ardchaighdeáin íoslódáilte ag do ghléas fós. Íoslódáil ceann, ansin bain triail as arís:",
+    "readAloudNoVoiceIOSSteps": "  • Socruithe\n  • Inrochtaineacht\n  • Ábhar Labhartha\n  • Guthanna\n  • {language}\n  • Íoslódáil guth Feabhsaithe nó Préimhe",
+    "readAloudNoVoiceAndroid": "Níl guth {language} ardchaighdeáin ag do ghléas fós. Suiteáil sonraí guth do d'inneall téacs-go-caint, ansin bain triail as arís.",
+    "readAloudOpenVoiceSettings": "Oscail socruithe guth"
 }

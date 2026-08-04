@@ -7,6 +7,8 @@ description: "Client word-level TTS — Pro gate, known-good-voice gate (native 
 
 Word- and token-level pronunciation audio: the learner taps a word (word card, token overlay, vocab details) and hears it spoken. Owned by [`TtsController`](../../lib/pangea/text_to_speech/tts_controller.dart); triggered from [`word_audio_button.dart`](../../lib/pangea/common/widgets/word_audio_button.dart). Scope is isolated word/token playback.
 
+Every `TtsController.tryToSpeak` call declares a `TtsUseCase` (words / choices / incomingMessage) mapping it to a per-surface audio toggle in the Audio section of learning settings. When the toggle is off, nothing plays; explicit audio buttons (those passing a `targetID` + context) show `TtsDisabledPopup` pointing to settings.
+
 Two audio sources back the feature:
 
 - **Device TTS** — `flutter_tts` (the OS/browser speech engine). Free, offline, instant, but quality varies wildly by language and platform.

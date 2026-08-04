@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-04 09:29:23.348447",
+    "@@last_modified": "2026-08-04 10:31:21.337745",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -3102,8 +3102,6 @@
     "constructUseCollected": "Collecté dans le chat",
     "constructUseNanDesc": "Non applicable",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Activation de la synthèse vocale",
-    "enableTTSToolDescription": "Permet à l'application de générer une sortie de synthèse vocale pour des parties du texte dans votre langue cible.",
     "yourUsername": "Votre nom d'utilisateur",
     "yourEmail": "Votre e-mail",
     "iWantToLearn": "Je veux apprendre",
@@ -5493,14 +5491,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10032,8 +10022,6 @@
     "newActivityBadge": "NOUVEAU",
     "exitVocabPracticeSession": "La progression de votre session d'entraînement de vocabulaire actuelle ne sera pas enregistrée.",
     "exitGrammarPracticeSession": "La progression de votre session d'entraînement de grammaire actuelle ne sera pas enregistrée.",
-    "autoReadAloudMessagesToolName": "Lire automatiquement à voix haute tous les messages reçus",
-    "autoReadAloudMessagesDescription": "Lorsqu'un message est reçu, la voix de l'appareil sera utilisée pour lire le message à voix haute pour la pratique de l'écoute.",
     "activityFilterButtonsLabel": "Boutons de filtre de niveau, de joueurs et de statut",
     "mapFilterAllLevels": "Tous les niveaux",
     "mapFilterAllPlayers": "Tous les joueurs",
@@ -10050,5 +10038,22 @@
     "mapNoActivitiesArea": "Aucune activité dans cette zone.",
     "practiceSessionTimedOut": "Votre session d'entraînement s'est terminée après {minutes} minutes d'inactivité.",
     "autocorrectMobileOnly": "Mobile uniquement",
-    "autocorrectMobileOnlyWarning": "La correction automatique de l'appareil n'est disponible que sur l'application mobile."
+    "autocorrectMobileOnlyWarning": "La correction automatique de l'appareil n'est disponible que sur l'application mobile.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Mots",
+    "audioWordsDescription": "Écoutez l'audio d'un mot en appuyant dessus.",
+    "audioChoicesToolName": "Choix",
+    "audioChoicesDescription": "Écoutez l'audio des choix de réponse dans les activités pratiques.",
+    "audioIncomingMessagesToolName": "Messages entrants",
+    "audioIncomingMessagesDescription": "Lisez automatiquement les messages reçus à voix haute dans votre langue cible pour la pratique de l'écoute.",
+    "choosePangeaAvatar": "Choisir un avatar Pangea",
+    "readAloudNoVoiceTitle": "Aucune voix {language} de haute qualité trouvée",
+    "readAloudNoVoiceDesktopWeb": "Ce navigateur n'offre pas de voix {language} de haute qualité, les messages ne peuvent donc pas être lus correctement ici. Chrome et Edge incluent généralement des voix de haute qualité.",
+    "readAloudGetChrome": "Obtenir Chrome",
+    "readAloudNoVoiceMobileWeb": "Ce navigateur n'offre pas de voix {language} de haute qualité, les messages ne peuvent donc pas être lus correctement ici. L'application Pangea Chat peut utiliser les meilleures voix de votre appareil.",
+    "readAloudGetApp": "Obtenir l'application",
+    "readAloudNoVoiceIOS": "Votre appareil n'a pas encore téléchargé de voix {language} de haute qualité. Téléchargez-en une, puis réessayez :",
+    "readAloudNoVoiceIOSSteps": "  • Réglages\n  • Accessibilité\n  • Contenu énoncé\n  • Voix\n  • {language}\n  • Télécharger une voix améliorée ou premium",
+    "readAloudNoVoiceAndroid": "Votre appareil n'a pas encore de voix {language} de haute qualité. Installez les données vocales pour votre moteur de synthèse vocale, puis réessayez.",
+    "readAloudOpenVoiceSettings": "Ouvrir les paramètres vocaux"
 }

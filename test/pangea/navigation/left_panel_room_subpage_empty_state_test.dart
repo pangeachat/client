@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/world/left_panel/left_panel_room_subpage.dart';
 
@@ -21,6 +22,7 @@ void main() {
           supportedLocales: L10n.supportedLocales,
           home: const Scaffold(
             body: LeftPanelRoomSubpage(
+              tokenType: PanelTypesEnum.room,
               param: null,
               shareItems: null,
               closeButton: IconButton(

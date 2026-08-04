@@ -130,7 +130,11 @@ class NotificationTapUtil {
   }) {
     try {
       final session = client.getRoomById(sessionRoomId);
-      if (session?.membership == Membership.join) {
+      // Pings sent before #8138 carry the course space id instead of the
+      // session room id, so a space here falls through to the activity page.
+      if (session != null &&
+          !session.isSpace &&
+          session.membership == Membership.join) {
         router.go(
           WorkspaceNav.openRoomById(
             router.routeInformationProvider.value.uri,

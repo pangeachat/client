@@ -4,7 +4,9 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/features/navigation/close_affordance.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
@@ -66,13 +68,28 @@ class LeftPanelCloseButton extends StatelessWidget {
   // A `room`/`session` is a token-only panel, so dropping its token closes it.
   // A section panel (a course) is also addressable by its map filter, so
   // closing it returns to the world map. See WorkspaceNav.closeSection.
+  //
+  // Like [currentUri], the CAPTURED token can be stale for a room panel: the
+  // chat renders inside a room-keyed nested Navigator whose route holds the
+  // close button built at open time, so when the same room reopens under a
+  // different token (`room:X` from the chat list, then `session:X` from the
+  // Stars archive after the activity ends) a surviving stale button would try
+  // to drop the departed token — a no-op, i.e. a dead back button (#8142).
+  // Resolve the token to drop by ROOM ID against the live URL instead, so the
+  // close always drops whatever room-panel token is actually open for this
+  // room.
   void _close(BuildContext context) {
     final uri = _liveUri(context);
-    context.go(
-      token.type.isRoomPanel
-          ? WorkspaceNav.closeLeft(uri, token)
-          : WorkspaceNav.closeSection(uri, token),
-    );
+    if (token.type.isRoomPanel) {
+      final param = token.param;
+      final close = roomTokenCloseLocation(
+        uri,
+        param is RoomTokenParam ? param.id : null,
+      );
+      context.go(close ?? WorkspaceNav.closeLeft(uri, token));
+      return;
+    }
+    context.go(WorkspaceNav.closeSection(uri, token));
   }
 
   @override

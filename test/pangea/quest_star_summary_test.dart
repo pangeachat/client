@@ -26,6 +26,7 @@ void main() {
           quests: [
             QuestProgress(
               courseId: 'c1',
+              questId: 'c1',
               orderedMissionIds: rollup.keys.toList(),
               anchorMissionId: null,
               indexByMission: const {},

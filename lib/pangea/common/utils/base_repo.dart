@@ -8,6 +8,7 @@ import 'package:http/http.dart' hide BaseRequest, BaseResponse;
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/common/utils/base_response.dart';
@@ -102,23 +103,19 @@ abstract class BaseRepo<
     accessToken: MatrixState.pangeaController.userController.accessToken,
   );
 
-  /// Sentry level for a fetch failure. Timeouts and confirmed 404s are
-  /// warnings — a 404 means the resource is gone (expected for e.g. removed
-  /// activities referenced by old rooms), not that code broke.
+  /// Sentry level for a fetch failure — the shared severity table
+  /// ([PangeaHttpException.severityOf]): timeouts and gone/routine statuses
+  /// (401, 404, 410, 429) are warnings; everything else is an error.
   @visibleForTesting
-  static SentryLevel errorLevel(Object e) =>
-      e is TimeoutException || (e is Response && e.statusCode == 404)
-      ? SentryLevel.warning
-      : SentryLevel.error;
+  static SentryLevel errorLevel(Object e) => PangeaHttpException.severityOf(e);
 
   Future<Result<TResponse>> _fetch(TRequest request) async {
     try {
       final Requests req = createRequests();
 
+      // No ≥400 check here: [fetch] goes through [Requests], which already
+      // threw a typed error for any failing status.
       final Response res = await fetch(req, request).timeout(timeout);
-      if (res.statusCode >= 400) {
-        throw errorResponseParser?.parse(res) ?? res;
-      }
 
       final Map<String, dynamic> json = jsonDecode(
         utf8.decode(res.bodyBytes).toString(),

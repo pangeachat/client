@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:31.315660",
+    "@@last_modified": "2026-08-04 10:31:35.728824",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -3189,8 +3189,6 @@
     "constructUseCollected": "在聊天中收集",
     "constructUseNanDesc": "不適用",
     "xpIntoLevel": "{currentXP} / {maxXP} 經驗值",
-    "enableTTSToolName": "啟用文字轉語音",
-    "enableTTSToolDescription": "允許應用程序為您目標語言的部分文本生成文字轉語音輸出。",
     "yourUsername": "您的用戶名",
     "yourEmail": "您的電子郵件",
     "iWantToLearn": "我想學習",
@@ -5240,14 +5238,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9783,8 +9773,6 @@
     "newActivityBadge": "新活動",
     "exitVocabPracticeSession": "您目前的詞彙練習進度將不會被儲存。",
     "exitGrammarPracticeSession": "您目前的文法練習進度將不會被儲存。",
-    "autoReadAloudMessagesToolName": "自動朗讀所有收到的訊息",
-    "autoReadAloudMessagesDescription": "收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。",
     "activityFilterButtonsLabel": "等級、玩家和狀態篩選按鈕",
     "mapFilterAllLevels": "所有等級",
     "mapFilterAllPlayers": "所有玩家",
@@ -9801,5 +9789,22 @@
     "mapNoActivitiesArea": "此區域沒有活動。",
     "practiceSessionTimedOut": "您的練習時段因 {minutes} 分鐘沒有活動而結束。",
     "autocorrectMobileOnly": "僅限行動裝置",
-    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於行動應用程式。"
+    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於行動應用程式。",
+    "audioSectionTitle": "音訊",
+    "audioWordsToolName": "單字",
+    "audioWordsDescription": "點擊單字時播放其音訊。",
+    "audioChoicesToolName": "選項",
+    "audioChoicesDescription": "在練習活動中播放答案選項的音訊。",
+    "audioIncomingMessagesToolName": "接收訊息",
+    "audioIncomingMessagesDescription": "自動朗讀以您的目標語言接收的訊息，以進行聽力練習。",
+    "choosePangeaAvatar": "選擇 Pangea 頭像",
+    "readAloudNoVoiceTitle": "找不到高品質的{language}語音",
+    "readAloudNoVoiceDesktopWeb": "此瀏覽器不提供高品質的{language}語音，因此無法在此處良好地朗讀訊息。Chrome 和 Edge 通常包含高品質的語音。",
+    "readAloudGetChrome": "取得 Chrome",
+    "readAloudNoVoiceMobileWeb": "此瀏覽器不提供高品質的{language}語音，因此無法在此處良好地朗讀訊息。Pangea Chat 應用程式可以使用您裝置上最好的語音。",
+    "readAloudGetApp": "取得應用程式",
+    "readAloudNoVoiceIOS": "您的裝置尚未下載高品質的{language}語音。請下載一個，然後再試一次：",
+    "readAloudNoVoiceIOSSteps": "  • 設定\n  • 輔助使用\n  • 語音內容\n  • 語音\n  • {language}\n  • 下載增強型或進階語音",
+    "readAloudNoVoiceAndroid": "您的裝置尚未有高品質的{language}語音。請為您的文字轉語音引擎安裝語音資料，然後再試一次。",
+    "readAloudOpenVoiceSettings": "開啟語音設定"
 }

@@ -1,5 +1,6 @@
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 
 class AnalyticsPracticeUiController {
@@ -17,6 +18,7 @@ class AnalyticsPracticeUiController {
     TtsController.tryToSpeak(
       token.vocabConstructID.lemma,
       langCode: language,
+      useCase: TtsUseCase.choices,
       pos: token.pos,
       morph: token.morph.map((k, v) => MapEntry(k.name, v)),
     );

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-04 09:29:24.084739",
+    "@@last_modified": "2026-08-04 10:31:21.553427",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3299,8 +3299,6 @@
     "constructUseCollected": "Recollido no chat",
     "constructUseNanDesc": "Non aplicable",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Texto a fala activado",
-    "enableTTSToolDescription": "Permite que a aplicación xere saída de texto a fala para partes do texto na túa lingua obxectivo.",
     "yourUsername": "O teu nome de usuario",
     "yourEmail": "O teu correo electrónico",
     "iWantToLearn": "Quero aprender",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9677,8 +9667,6 @@
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de vocabulario.",
     "exitGrammarPracticeSession": "Non se gardará o progreso da túa sesión actual de práctica de gramática.",
-    "autoReadAloudMessagesToolName": "Ler en voz alta automaticamente todas as mensaxes recibidas",
-    "autoReadAloudMessagesDescription": "Cando se reciba unha mensaxe, a voz do dispositivo utilizarase para ler a mensaxe en voz alta para practicar a escoita.",
     "activityFilterButtonsLabel": "Botóns de filtro de nivel, xogadores e estado",
     "mapFilterAllLevels": "Todos os niveis",
     "mapFilterAllPlayers": "Todos os xogadores",
@@ -9695,5 +9683,22 @@
     "mapNoActivitiesArea": "Non hai actividades nesta área.",
     "practiceSessionTimedOut": "A túa sesión de práctica rematou despois de {minutes} minutos sen actividade.",
     "autocorrectMobileOnly": "Só para móbil",
-    "autocorrectMobileOnlyWarning": "O autocorrector do dispositivo só está dispoñible na aplicación móbil."
+    "autocorrectMobileOnlyWarning": "O autocorrector do dispositivo só está dispoñible na aplicación móbil.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Palabras",
+    "audioWordsDescription": "Reproducir o audio dunha palabra ao tocala.",
+    "audioChoicesToolName": "Opcións",
+    "audioChoicesDescription": "Reproducir o audio das opcións de resposta nas actividades de práctica.",
+    "audioIncomingMessagesToolName": "Mensaxes entrantes",
+    "audioIncomingMessagesDescription": "Ler automaticamente en voz alta as mensaxes recibidas no teu idioma obxectivo para practicar a escoita.",
+    "choosePangeaAvatar": "Escolle un avatar de Pangea",
+    "readAloudNoVoiceTitle": "Non se atopou unha voz de {language} de alta calidade",
+    "readAloudNoVoiceDesktopWeb": "Este navegador non ofrece unha voz de {language} de alta calidade, polo que as mensaxes non se poden ler en voz alta correctamente aquí. Chrome e Edge adoitan incluír voces de alta calidade.",
+    "readAloudGetChrome": "Obter Chrome",
+    "readAloudNoVoiceMobileWeb": "Este navegador non ofrece unha voz de {language} de alta calidade, polo que as mensaxes non se poden ler en voz alta correctamente aquí. A aplicación Pangea Chat pode usar as mellores voces do teu dispositivo.",
+    "readAloudGetApp": "Obter a aplicación",
+    "readAloudNoVoiceIOS": "O teu dispositivo aínda non ten descargada unha voz de {language} de alta calidade. Descarga unha e téntao de novo:",
+    "readAloudNoVoiceIOSSteps": "  • Axustes\n  • Accesibilidade\n  • Contido falado\n  • Voces\n  • {language}\n  • Descarga unha voz mellorada ou Premium",
+    "readAloudNoVoiceAndroid": "O teu dispositivo aínda non ten unha voz de {language} de alta calidade. Instala os datos de voz para o teu motor de texto a voz e téntao de novo.",
+    "readAloudOpenVoiceSettings": "Abrir a configuración de voz"
 }
