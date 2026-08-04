@@ -14,7 +14,7 @@ description: >-
 
 ## Step Two: Categorize by actionability
 
-Read every remaining issue's body — and its comments when the body is ambiguous or the ticket is old — then assign each to exactly one category:
+Read every remaining issue's body and its comments — then assign each to exactly one category:
 
 1. **Can move forward easily without much input.** Concrete spec or reproduction, clear expected behavior, work is contained to the repo, and the agent can implement and verify it locally.
 2. **Can move forward given moderate input.** One of: an explicit open decision in the ticket (pick option A or B, default on/off), a needed asset or approval, a diagnosis that may cross into another service, or verification the agent can't do alone (multi-account staging flows, physical devices, screen readers).
