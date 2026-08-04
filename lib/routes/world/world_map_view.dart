@@ -1047,24 +1047,33 @@ class _WorldMapViewState extends State<WorldMapView> {
               top: 12,
               left: searchLeft,
               width: searchWidth,
-              child: WorldMapSearchOverlay(
-                filter: widget.controller.filter,
-                updateQuery: widget.controller.setQuery,
-                // Widen = clear every pill to All (language is fixed by
-                // settings; zoom-out is the empty card's other lever).
-                onWidenSearch: widget.controller.widenFilters,
-                setCefrLevel: widget.controller.setCefrLevel,
-                setPartySize: widget.controller.setPartySize,
-                setStatus: widget.controller.setStatus,
-                results: render.visible,
-                onResultTap: widget.controller.flyTo,
-                onReset: widget.controller.resetFilters,
-                emptyVerdict: widget.controller.emptyVerdict,
-                canZoomOut: widget.controller.canZoomOut,
-                // "Zoom out" resets to the whole-world view (all the way out and
-                // re-centered), the same as the map's World control — one tap
-                // guarantees every off-screen match comes into view.
-                onZoomOut: widget.controller.resetToWorld,
+              // Tab stop 2 of the shell's ordered traversal (#7219): the
+              // search bar and its filter pills come right after the nav rail
+              // (stop 1) and before the top-right cluster (stop 3) — both
+              // pinned in workspace_shell.dart. Without an explicit order the
+              // overlay (mounted deep in the map base layer) lost to reading
+              // order and was effectively unreachable via Tab.
+              child: FocusTraversalOrder(
+                order: const NumericFocusOrder(2),
+                child: WorldMapSearchOverlay(
+                  filter: widget.controller.filter,
+                  updateQuery: widget.controller.setQuery,
+                  // Widen = clear every pill to All (language is fixed by
+                  // settings; zoom-out is the empty card's other lever).
+                  onWidenSearch: widget.controller.widenFilters,
+                  setCefrLevel: widget.controller.setCefrLevel,
+                  setPartySize: widget.controller.setPartySize,
+                  setStatus: widget.controller.setStatus,
+                  results: render.visible,
+                  onResultTap: widget.controller.flyTo,
+                  onReset: widget.controller.resetFilters,
+                  emptyVerdict: widget.controller.emptyVerdict,
+                  canZoomOut: widget.controller.canZoomOut,
+                  // "Zoom out" resets to the whole-world view (all the way out and
+                  // re-centered), the same as the map's World control — one tap
+                  // guarantees every off-screen match comes into view.
+                  onZoomOut: widget.controller.resetToWorld,
+                ),
               ),
             ),
           controls,

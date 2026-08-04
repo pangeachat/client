@@ -115,7 +115,7 @@ class WorldUserClusterInternal extends StatelessWidget {
 /// mechanical visibility change made to this file for that reuse; no behavior
 /// changed for the cluster's own usage (the default matches the old fixed
 /// `_size`).
-class ClusterAvatar extends StatelessWidget {
+class ClusterAvatar extends StatefulWidget {
   final Uri? avatarUrl;
   final String? name;
   final VoidCallback onTap;
@@ -132,32 +132,58 @@ class ClusterAvatar extends StatelessWidget {
   static const double _defaultSize = 56.0;
 
   @override
+  State<ClusterAvatar> createState() => _ClusterAvatarState();
+}
+
+class _ClusterAvatarState extends State<ClusterAvatar> {
+  /// Keyboard focus, made visible as a gold ring over the avatar: the InkWell's
+  /// own focus highlight paints BEHIND the child, and the avatar is opaque, so
+  /// without the ring a keyboard user gets no indication this stop is selected
+  /// (#7219).
+  bool _focused = false;
+
+  @override
   Widget build(BuildContext context) {
     final label = L10n.of(context).settings;
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: Tooltip(
-        message: label,
-        // The Semantics below already names this control; without this the
-        // Tooltip's own message is announced too, doubling the accessible name
-        // ("Account Account"). See accessibility.instructions.md.
-        excludeFromSemantics: true,
-        child: Semantics(
-          button: true,
-          label: label,
-          excludeSemantics: true,
-          // Expose the tap on the announced node so screen-reader users can
-          // activate it (e.g. open Settings); GestureDetector alone leaves the
-          // button unactivatable via assistive tech. See issue #7185.
-          onTap: onTap,
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: onTap,
-            child: Avatar(
-              mxContent: avatarUrl,
-              name: name,
-              size: size,
-              showPresence: false,
+    return Tooltip(
+      message: label,
+      // The Semantics below already names this control; without this the
+      // Tooltip's own message is announced too, doubling the accessible name
+      // ("Account Account"). See accessibility.instructions.md.
+      excludeFromSemantics: true,
+      // An InkWell (not a bare GestureDetector) so the avatar has a focus node:
+      // it was unreachable via Tab and unactivatable by keyboard (#7219). The
+      // Material is required by InkWell and paints nothing.
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: widget.onTap,
+          customBorder: const CircleBorder(),
+          onFocusChange: (focused) => setState(() => _focused = focused),
+          child: Semantics(
+            button: true,
+            label: label,
+            excludeSemantics: true,
+            // Expose the tap on the announced node so screen-reader users can
+            // activate it (e.g. open Settings); GestureDetector alone leaves the
+            // button unactivatable via assistive tech. See issue #7185.
+            onTap: widget.onTap,
+            child: Container(
+              foregroundDecoration: _focused
+                  ? BoxDecoration(
+                      shape: BoxShape.circle,
+                      border: Border.all(
+                        color: AppConfig.goldByTheme(context),
+                        width: 3,
+                      ),
+                    )
+                  : null,
+              child: Avatar(
+                mxContent: widget.avatarUrl,
+                name: widget.name,
+                size: widget.size,
+                showPresence: false,
+              ),
             ),
           ),
         ),
@@ -540,7 +566,7 @@ class _ClusterLevelMedalState extends State<ClusterLevelMedal> {
 /// can reuse it at the "slightly smaller than web" size the mobile chrome
 /// calls for (routing.instructions.md, "Single-column analytics nav bar") without
 /// duplicating the flag/outline/tooltip logic.
-class ClusterLanguageFlag extends StatelessWidget {
+class ClusterLanguageFlag extends StatefulWidget {
   final LanguageModel language;
   final VoidCallback onTap;
   final double width;
@@ -561,6 +587,24 @@ class ClusterLanguageFlag extends StatelessWidget {
   static const double _defaultFontSize = 18.0;
   static const double _radius = 6.0;
   static const double _borderWidth = 2.0;
+
+  @override
+  State<ClusterLanguageFlag> createState() => _ClusterLanguageFlagState();
+}
+
+class _ClusterLanguageFlagState extends State<ClusterLanguageFlag> {
+  LanguageModel get language => widget.language;
+  double get width => widget.width;
+  double get height => widget.height;
+  double get fontSize => widget.fontSize;
+
+  static const double _radius = ClusterLanguageFlag._radius;
+  static const double _borderWidth = ClusterLanguageFlag._borderWidth;
+
+  /// Keyboard focus, made visible as a gold ring over the chip: the InkWell's
+  /// focus highlight paints behind the chip's solid fill, so without the ring
+  /// a keyboard user gets no indication this stop is selected (#7219).
+  bool _focused = false;
 
   @override
   Widget build(BuildContext context) {
@@ -586,24 +630,27 @@ class ClusterLanguageFlag extends StatelessWidget {
       ],
     );
 
-    return MouseRegion(
-      cursor: SystemMouseCursors.click,
-      child: Tooltip(
-        message: l10n.learningSettings,
-        // Semantics below names this (language + settings); exclude the Tooltip
-        // so its message isn't appended again.
-        excludeFromSemantics: true,
-        child: Semantics(
-          button: true,
-          label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
-          excludeSemantics: true,
-          // Expose the tap on the announced node for assistive tech (#7185).
-          onTap: onTap,
-          // Opaque so the whole chip is tappable — not just the painted glyphs
-          // / flag pixels (a transparent-interior box defers the hit test).
-          child: GestureDetector(
-            behavior: HitTestBehavior.opaque,
-            onTap: onTap,
+    return Tooltip(
+      message: l10n.learningSettings,
+      // Semantics below names this (language + settings); exclude the Tooltip
+      // so its message isn't appended again.
+      excludeFromSemantics: true,
+      // An InkWell (not a bare GestureDetector) so the flag has a focus node:
+      // it was unreachable via Tab and unactivatable by keyboard (#7219). The
+      // Material is required by InkWell and paints nothing; the chip's own
+      // opaque Container keeps the whole surface tappable.
+      child: Material(
+        type: MaterialType.transparency,
+        child: InkWell(
+          onTap: widget.onTap,
+          borderRadius: BorderRadius.circular(_radius + _borderWidth),
+          onFocusChange: (focused) => setState(() => _focused = focused),
+          child: Semantics(
+            button: true,
+            label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
+            excludeSemantics: true,
+            // Expose the tap on the announced node for assistive tech (#7185).
+            onTap: widget.onTap,
             child: Container(
               width: width,
               height: height,
@@ -613,6 +660,17 @@ class ClusterLanguageFlag extends StatelessWidget {
                 color: theme.colorScheme.primary,
                 borderRadius: BorderRadius.circular(_radius + _borderWidth),
               ),
+              foregroundDecoration: _focused
+                  ? BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        _radius + _borderWidth,
+                      ),
+                      border: Border.all(
+                        color: AppConfig.goldByTheme(context),
+                        width: 2,
+                      ),
+                    )
+                  : null,
               child: language.shouldShowFlag
                   ? ClipRRect(
                       borderRadius: BorderRadius.circular(_radius),
