@@ -21,8 +21,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class SpanCard extends StatefulWidget {
   final WritingAssistancePopupManager controller;
+  final double maxHeight;
 
-  const SpanCard({super.key, required this.controller});
+  const SpanCard({
+    super.key,
+    required this.controller,
+    required this.maxHeight,
+  });
 
   @override
   State<SpanCard> createState() => SpanCardState();
@@ -135,7 +140,7 @@ class SpanCardState extends State<SpanCard> {
         stream: _choreographer.igcController.matchUpdateStream.stream,
         builder: (context, _) {
           final match = _activeMatch.value;
-          if (match == null) return SizedBox(height: 200.0);
+          if (match == null) return const SizedBox.shrink();
 
           final newOffset = match.updatedMatch.match.offset.toDouble();
           if (_previousOffset != null) {
@@ -150,8 +155,10 @@ class SpanCardState extends State<SpanCard> {
           _previousOffset = newOffset;
           final theme = Theme.of(context);
 
-          return SizedBox(
-            height: 200.0,
+          // Size to content so all choices are visible without scrolling,
+          // up to the available space above the input field.
+          return ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: widget.maxHeight),
             child: Column(
               mainAxisSize: .min,
               children: [
@@ -185,31 +192,36 @@ class SpanCardState extends State<SpanCard> {
                     ),
                   ],
                 ),
-                Expanded(
-                  child: AnimatedSwitcher(
-                    duration: const Duration(milliseconds: 300),
-                    switchInCurve: Curves.easeOut,
-                    switchOutCurve: Curves.easeIn,
-                    transitionBuilder: (child, animation) {
-                      final slideAnimation = Tween<Offset>(
-                        begin: _slideFrom,
-                        end: Offset.zero,
-                      ).animate(animation);
+                Flexible(
+                  child: AnimatedSize(
+                    duration: const Duration(milliseconds: 200),
+                    curve: Curves.easeOut,
+                    alignment: Alignment.topCenter,
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 300),
+                      switchInCurve: Curves.easeOut,
+                      switchOutCurve: Curves.easeIn,
+                      transitionBuilder: (child, animation) {
+                        final slideAnimation = Tween<Offset>(
+                          begin: _slideFrom,
+                          end: Offset.zero,
+                        ).animate(animation);
 
-                      return FadeTransition(
-                        opacity: animation,
-                        child: SlideTransition(
-                          position: slideAnimation,
-                          child: child,
-                        ),
-                      );
-                    },
-                    child: _MatchContent(
-                      key: ValueKey(match.hashCode),
-                      match: match,
-                      scrollController: scrollController,
-                      onChoiceSelect: _onChoiceSelect,
-                      onUpdateMatch: _updateMatch,
+                        return FadeTransition(
+                          opacity: animation,
+                          child: SlideTransition(
+                            position: slideAnimation,
+                            child: child,
+                          ),
+                        );
+                      },
+                      child: _MatchContent(
+                        key: ValueKey(match.hashCode),
+                        match: match,
+                        scrollController: scrollController,
+                        onChoiceSelect: _onChoiceSelect,
+                        onUpdateMatch: _updateMatch,
+                      ),
                     ),
                   ),
                 ),
