@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-04 10:08:22.798893",
+    "@@last_modified": "2026-08-04 10:46:31.295063",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "Iseshini yakho yokuzijwayeza iphele ngemuva kwemizuzu engu-{minutes} ngaphandle komsebenzi.",
     "autocorrectMobileOnly": "Okweselula kuphela",
     "autocorrectMobileOnlyWarning": "Ukulungisa okuzenzakalelayo kwedivayisi kutholakala kuphela kuhlelo lokusebenza lweselula.",
-    "choosePangeaAvatar": "Khetha i-avatar yePangea"
+    "choosePangeaAvatar": "Khetha i-avatar yePangea",
+    "readAloudNoVoiceTitle": "Ayikho izwi lekhwalithi ephezulu lesi-{language} elitholakele",
+    "readAloudNoVoiceDesktopWeb": "Lesi siphequluli asihlinzeki ngezwi lesi-{language} elisezingeni eliphezulu, ngakho-ke imilayezo ayikwazi ukufundwa kahle lapha. I-Chrome ne-Edge ngokuvamile zifaka amazwi asezingeni eliphezulu.",
+    "readAloudGetChrome": "Thola i-Chrome",
+    "readAloudNoVoiceMobileWeb": "Lesi siphequluli asihlinzeki ngezwi lesi-{language} elisezingeni eliphezulu, ngakho-ke imilayezo ayikwazi ukufundwa kahle lapha. Uhlelo lokusebenza lwe-Pangea Chat lungasebenzisa amazwi angcono kakhulu edivayisi yakho.",
+    "readAloudGetApp": "Thola uhlelo lokusebenza",
+    "readAloudNoVoiceIOS": "Idivayisi yakho ayinalo izwi lesi-{language} elisezingeni eliphezulu elilandiwe okwamanje. Landa elilodwa, bese uzama futhi:",
+    "readAloudNoVoiceIOSSteps": "  • Izilungiselelo\n  • Ukufinyeleleka\n  • Okuqukethwe Okukhulunywayo\n  • Amazwi\n  • {language}\n  • Landa izwi Elithuthukisiwe noma Le-Premium",
+    "readAloudNoVoiceAndroid": "Idivayisi yakho ayinalo izwi lesi-{language} elisezingeni eliphezulu okwamanje. Faka idatha yezwi yenjini yakho yokuguqula umbhalo ube yizwi, bese uzama futhi.",
+    "readAloudOpenVoiceSettings": "Vula izilungiselelo zezwi"
 }

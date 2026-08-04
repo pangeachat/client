@@ -3104,7 +3104,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-04 10:08:16.882592",
+    "@@last_modified": "2026-08-04 10:46:08.288234",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10328,5 +10328,14 @@
     "practiceSessionTimedOut": "आपकी अभ्यास सत्र {minutes} मिनट तक कोई गतिविधि न होने के बाद समाप्त हो गया।",
     "autocorrectMobileOnly": "केवल मोबाइल",
     "autocorrectMobileOnlyWarning": "डिवाइस ऑटोकरेक्ट केवल मोबाइल ऐप पर उपलब्ध है।",
-    "choosePangeaAvatar": "पेंजिया अवतार चुनें"
+    "choosePangeaAvatar": "पेंजिया अवतार चुनें",
+    "readAloudNoVoiceTitle": "{language} की कोई उच्च-गुणवत्ता वाली आवाज़ नहीं मिली",
+    "readAloudNoVoiceDesktopWeb": "यह ब्राउज़र उच्च-गुणवत्ता वाली {language} आवाज़ प्रदान नहीं करता है, इसलिए संदेशों को यहां अच्छी तरह से पढ़ा नहीं जा सकता है। Chrome और Edge में आमतौर पर उच्च-गुणवत्ता वाली आवाज़ें शामिल होती हैं।",
+    "readAloudGetChrome": "Chrome प्राप्त करें",
+    "readAloudNoVoiceMobileWeb": "यह ब्राउज़र उच्च-गुणवत्ता वाली {language} आवाज़ प्रदान नहीं करता है, इसलिए संदेशों को यहां अच्छी तरह से पढ़ा नहीं जा सकता है। Pangea Chat ऐप आपके डिवाइस की सबसे अच्छी आवाज़ों का उपयोग कर सकता है।",
+    "readAloudGetApp": "ऐप प्राप्त करें",
+    "readAloudNoVoiceIOS": "आपके डिवाइस में अभी तक उच्च-गुणवत्ता वाली {language} आवाज़ डाउनलोड नहीं हुई है। एक डाउनलोड करें, फिर से प्रयास करें:",
+    "readAloudNoVoiceIOSSteps": "  • सेटिंग्स\n  • एक्सेसिबिलिटी\n  • बोले गए कंटेंट\n  • आवाज़ें\n  • {language}\n  • एक एन्हांस्ड या प्रीमियम आवाज़ डाउनलोड करें",
+    "readAloudNoVoiceAndroid": "आपके डिवाइस में अभी तक उच्च-गुणवत्ता वाली {language} आवाज़ नहीं है। अपने टेक्स्ट-टू-स्पीच इंजन के लिए आवाज़ डेटा इंस्टॉल करें, फिर से प्रयास करें।",
+    "readAloudOpenVoiceSettings": "आवाज़ सेटिंग्स खोलें"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-04 10:08:20.809401",
+    "@@last_modified": "2026-08-04 10:46:24.763513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "Fadhigaaga tababarka wuxuu dhammaaday {minutes} daqiiqo ka dib markii aan wax dhaqdhaqaaq ah la samayn.",
     "autocorrectMobileOnly": "Kaliya moobilka",
     "autocorrectMobileOnlyWarning": "Sixitaanka tooska ah ee aaladda waxa kaliya oo laga heli karaa abka mobaylka.",
-    "choosePangeaAvatar": "Dooro sawirka Pangea"
+    "choosePangeaAvatar": "Dooro sawirka Pangea",
+    "readAloudNoVoiceTitle": "Lama helin cod tayo sare leh oo {language} ah",
+    "readAloudNoVoiceDesktopWeb": "Browser-kani ma bixiyo cod tayo sare leh oo {language} ah, sidaa darteed fariimaha si fiican looma akhrin karo halkan. Chrome iyo Edge inta badan waxaa ku jira codad tayo sare leh.",
+    "readAloudGetChrome": "Soo deji Chrome",
+    "readAloudNoVoiceMobileWeb": "Browser-kani ma bixiyo cod tayo sare leh oo {language} ah, sidaa darteed fariimaha si fiican looma akhrin karo halkan. App-ka Pangea Chat wuxuu isticmaali karaa codadka ugu fiican ee qalabkaaga.",
+    "readAloudGetApp": "Soo deji app-ka",
+    "readAloudNoVoiceIOS": "Qalabkaagu wali ma laha cod tayo sare leh oo {language} ah oo la soo dejiyay. Soo deji mid, ka dibna isku day mar kale:",
+    "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Soo deji cod la xoojiyay ama Premium ah",
+    "readAloudNoVoiceAndroid": "Qalabkaagu wali ma laha cod tayo sare leh oo {language} ah. Ku rakib xogta codka ee mashiinkaaga qoraalka-ilaa-hadalka, ka dibna isku day mar kale.",
+    "readAloudOpenVoiceSettings": "Fur goobaha codka"
 }

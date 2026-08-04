@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-04 10:08:15.250790",
+    "@@last_modified": "2026-08-04 10:46:04.755295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch.",
     "autocorrectMobileOnly": "Symudol yn unig",
     "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig.",
-    "choosePangeaAvatar": "Dewiswch avatar Pangea"
+    "choosePangeaAvatar": "Dewiswch avatar Pangea",
+    "readAloudNoVoiceTitle": "Heb ddarganfod llais {language} o ansawdd uchel",
+    "readAloudNoVoiceDesktopWeb": "Nid yw'r porwr hwn yn cynnig llais {language} o ansawdd uchel, felly ni ellir darllen negeseuon yn uchel yn dda yma. Mae Chrome ac Edge fel arfer yn cynnwys lleisiau o ansawdd uchel.",
+    "readAloudGetChrome": "Cael Chrome",
+    "readAloudNoVoiceMobileWeb": "Nid yw'r porwr hwn yn cynnig llais {language} o ansawdd uchel, felly ni ellir darllen negeseuon yn uchel yn dda yma. Gall ap Pangea Chat ddefnyddio lleisiau gorau eich dyfais.",
+    "readAloudGetApp": "Cael yr ap",
+    "readAloudNoVoiceIOS": "Nid oes llais {language} o ansawdd uchel wedi'i lawrlwytho i'ch dyfais eto. Lawrlwythwch un, yna ceisiwch eto:",
+    "readAloudNoVoiceIOSSteps": "  • Gosodiadau\n  • Hygyrchedd\n  • Cynnwys Llafar\n  • Lleisiau\n  • {language}\n  • Lawrlwytho llais Gwell neu Premiwm",
+    "readAloudNoVoiceAndroid": "Nid oes llais {language} o ansawdd uchel gan eich dyfais eto. Gosodwch ddata llais ar gyfer eich injan testun-i-leferydd, yna ceisiwch eto.",
+    "readAloudOpenVoiceSettings": "Agor gosodiadau llais"
 }

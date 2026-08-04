@@ -1946,7 +1946,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-04 10:08:18.144189",
+    "@@last_modified": "2026-08-04 10:46:13.492324",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10602,5 +10602,14 @@
     "practiceSessionTimedOut": "თქვენი სავარჯიშო სესია დასრულდა {minutes} წუთის უმოქმედობის შემდეგ.",
     "autocorrectMobileOnly": "მხოლოდ მობილური",
     "autocorrectMobileOnlyWarning": "მოწყობილობის ავტოკორექცია ხელმისაწვდომია მხოლოდ მობილურ აპლიკაციაში.",
-    "choosePangeaAvatar": "აირჩიეთ Pangea-ს ავატარი"
+    "choosePangeaAvatar": "აირჩიეთ Pangea-ს ავატარი",
+    "readAloudNoVoiceTitle": "ვერ მოიძებნა მაღალი ხარისხის {language} ხმა",
+    "readAloudNoVoiceDesktopWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Chrome და Edge, როგორც წესი, მოიცავს მაღალი ხარისხის ხმებს.",
+    "readAloudGetChrome": "მიიღეთ Chrome",
+    "readAloudNoVoiceMobileWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Pangea Chat აპს შეუძლია გამოიყენოს თქვენი მოწყობილობის საუკეთესო ხმები.",
+    "readAloudGetApp": "მიიღეთ აპი",
+    "readAloudNoVoiceIOS": "თქვენს მოწყობილობას ჯერ არ აქვს გადმოწერილი მაღალი ხარისხის {language} ხმა. გადმოწერეთ ერთი, შემდეგ სცადეთ ხელახლა:",
+    "readAloudNoVoiceIOSSteps": "  • პარამეტრები\n  • ხელმისაწვდომობა\n  • ნათქვამი კონტენტი\n  • ხმები\n  • {language}\n  • გადმოწერეთ გაუმჯობესებული ან პრემიუმ ხმა",
+    "readAloudNoVoiceAndroid": "თქვენს მოწყობილობას ჯერ არ აქვს მაღალი ხარისხის {language} ხმა. დააინსტალირეთ ხმოვანი მონაცემები თქვენი ტექსტიდან მეტყველების ძრავისთვის, შემდეგ სცადეთ ხელახლა.",
+    "readAloudOpenVoiceSettings": "ხმოვანი პარამეტრების გახსნა"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-04 10:08:18.188694",
+    "@@last_modified": "2026-08-04 10:46:15.283327",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "Deng Übungssessioun ass no {minutes} Minutten ouni Aktivitéit ofgelaf.",
     "autocorrectMobileOnly": "Nëmme mobil",
     "autocorrectMobileOnlyWarning": "D'Autokorrektur vum Apparat ass nëmmen an der mobiler App verfügbar.",
-    "choosePangeaAvatar": "Wielt en Pangea Avatar"
+    "choosePangeaAvatar": "Wielt en Pangea Avatar",
+    "readAloudNoVoiceTitle": "Keng héichqualitativ {language} Stëmm fonnt",
+    "readAloudNoVoiceDesktopWeb": "Dëse Browser bitt keng héichqualitativ {language} Stëmm un, sou datt Messagen hei net gutt virgelies kënne ginn. Chrome an Edge enthalen normalerweis héichqualitativ Stëmmen.",
+    "readAloudGetChrome": "Chrome kréien",
+    "readAloudNoVoiceMobileWeb": "Dëse Browser bitt keng héichqualitativ {language} Stëmm un, sou datt Messagen hei net gutt virgelies kënne ginn. D'Pangea Chat App kann déi bescht Stëmme vun Ärem Apparat benotzen.",
+    "readAloudGetApp": "D'App kréien",
+    "readAloudNoVoiceIOS": "Ären Apparat huet nach keng héichqualitativ {language} Stëmm erofgelueden. Luet eng erof, a probéiert et dann nach eng Kéier:",
+    "readAloudNoVoiceIOSSteps": "  • Astellungen\n  • Accessibilitéit\n  • Geschwaten Inhalt\n  • Stëmmen\n  • {language}\n  • Eng verbessert oder Premium Stëmm eroflueden",
+    "readAloudNoVoiceAndroid": "Ären Apparat huet nach keng héichqualitativ {language} Stëmm. Installéiert Stëmmdaten fir Ären Text-zu-Sprooch-Motor, a probéiert et dann nach eng Kéier.",
+    "readAloudOpenVoiceSettings": "Stëmmastellungen opmaachen"
 }

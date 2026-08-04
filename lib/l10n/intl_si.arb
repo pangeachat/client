@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-04 10:08:20.624964",
+    "@@last_modified": "2026-08-04 10:46:23.615014",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "ඔබගේ පුහුණු සැසිය ක්‍රියාකාරකම් නොමැතිව මිනිත්තු {minutes} කට පසු අවසන් විය.",
     "autocorrectMobileOnly": "ජංගම දුරකථන සඳහා පමණි",
     "autocorrectMobileOnlyWarning": "උපාංග ස්වයං නිවැරදි කිරීම ජංගම යෙදුමෙන් පමණක් ලබා ගත හැක.",
-    "choosePangeaAvatar": "Pangea අවතාරයක් තෝරන්න"
+    "choosePangeaAvatar": "Pangea අවතාරයක් තෝරන්න",
+    "readAloudNoVoiceTitle": "උසස් තත්ත්වයේ {language} හඬක් හමු නොවීය",
+    "readAloudNoVoiceDesktopWeb": "මෙම බ්‍රවුසරය උසස් තත්ත්වයේ {language} හඬක් ලබා නොදෙන නිසා, මෙහිදී පණිවිඩ හොඳින් කියවිය නොහැක. Chrome සහ Edge සාමාන්‍යයෙන් උසස් තත්ත්වයේ හඬවල් ඇතුළත් කරයි.",
+    "readAloudGetChrome": "Chrome ලබා ගන්න",
+    "readAloudNoVoiceMobileWeb": "මෙම බ්‍රවුසරය උසස් තත්ත්වයේ {language} හඬක් ලබා නොදෙන නිසා, මෙහිදී පණිවිඩ හොඳින් කියවිය නොහැක. Pangea Chat යෙදුමට ඔබගේ උපාංගයේ හොඳම හඬවල් භාවිතා කළ හැක.",
+    "readAloudGetApp": "යෙදුම ලබා ගන්න",
+    "readAloudNoVoiceIOS": "ඔබගේ උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් තවමත් බාගත කර නොමැත. එකක් බාගත කර, නැවත උත්සාහ කරන්න:",
+    "readAloudNoVoiceIOSSteps": "  • සැකසීම්\n  • ප්‍රවේශ්‍යතාව\n  • කථා කරන අන්තර්ගතය\n  • හඬවල්\n  • {language}\n  • වැඩි දියුණු කළ හෝ වාරික හඬක් බාගත කරන්න",
+    "readAloudNoVoiceAndroid": "ඔබගේ උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් තවමත් නොමැත. ඔබගේ පෙළ-කට-කථන එන්ජිම සඳහා හඬ දත්ත ස්ථාපනය කර, නැවත උත්සාහ කරන්න.",
+    "readAloudOpenVoiceSettings": "හඬ සැකසීම් විවෘත කරන්න"
 }

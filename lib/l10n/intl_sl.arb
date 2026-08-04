@@ -1811,7 +1811,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-04 10:08:20.618030",
+    "@@last_modified": "2026-08-04 10:46:23.729341",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10647,5 +10647,14 @@
     "practiceSessionTimedOut": "Vaša vaja se je končala po {minutes} minutah neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne naprave",
     "autocorrectMobileOnlyWarning": "Samodejno popravljanje je na voljo samo v mobilni aplikaciji.",
-    "choosePangeaAvatar": "Izberite avatar Pangea"
+    "choosePangeaAvatar": "Izberite avatar Pangea",
+    "readAloudNoVoiceTitle": "Ni najdenega visokokakovostnega glasu za {language}",
+    "readAloudNoVoiceDesktopWeb": "Ta brskalnik ne ponuja visokokakovostnega glasu za {language}, zato sporočil ni mogoče dobro prebrati na glas. Chrome in Edge običajno vključujeta visokokakovostne glasove.",
+    "readAloudGetChrome": "Prenesite Chrome",
+    "readAloudNoVoiceMobileWeb": "Ta brskalnik ne ponuja visokokakovostnega glasu za {language}, zato sporočil ni mogoče dobro prebrati na glas. Aplikacija Pangea Chat lahko uporablja najboljše glasove vaše naprave.",
+    "readAloudGetApp": "Prenesite aplikacijo",
+    "readAloudNoVoiceIOS": "Vaša naprava še nima prenesenega visokokakovostnega glasu za {language}. Prenesite ga in poskusite znova:",
+    "readAloudNoVoiceIOSSteps": "  • Nastavitve\n  • Dostopnost\n  • Izgovorjena vsebina\n  • Glasovi\n  • {language}\n  • Prenesite izboljšan ali premium glas",
+    "readAloudNoVoiceAndroid": "Vaša naprava še nima visokokakovostnega glasu za {language}. Namestite glasovne podatke za vaš mehanizem za pretvorbo besedila v govor in poskusite znova.",
+    "readAloudOpenVoiceSettings": "Odpri nastavitve glasu"
 }

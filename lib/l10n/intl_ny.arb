@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-04 10:08:19.598197",
+    "@@last_modified": "2026-08-04 10:46:20.626100",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "Nthawi yanu yochita masewera yatha patatha mphindi {minutes} osachita chilichonse.",
     "autocorrectMobileOnly": "Pa foni yokha",
     "autocorrectMobileOnlyWarning": "Kukonza zolakwika zokha kumapezeka pa pulogalamu yam'manja.",
-    "choosePangeaAvatar": "Sankhani chithunzi cha Pangea"
+    "choosePangeaAvatar": "Sankhani chithunzi cha Pangea",
+    "readAloudNoVoiceTitle": "Palibe mawu apamwamba a {language} omwe apezedwa",
+    "readAloudNoVoiceDesktopWeb": "Msakatuli uyu alibe mawu apamwamba a {language}, kotero mauthenga sangawerengedwe bwino pano. Chrome ndi Edge nthawi zambiri amakhala ndi mawu apamwamba.",
+    "readAloudGetChrome": "Pezani Chrome",
+    "readAloudNoVoiceMobileWeb": "Msakatuli uyu alibe mawu apamwamba a {language}, kotero mauthenga sangawerengedwe bwino pano. Pulogalamu ya Pangea Chat ingagwiritse ntchito mawu abwino kwambiri a chipangizo chanu.",
+    "readAloudGetApp": "Pezani pulogalamuyi",
+    "readAloudNoVoiceIOS": "Chipangizo chanu chilibe mawu apamwamba a {language} omwe adatsitsidwa. Tsitsani imodzi, kenako yesaninso:",
+    "readAloudNoVoiceIOSSteps": "  • Zokonda\n  • Kufikika\n  • Zomwe Zayankhulidwa\n  • Mawu\n  • {language}\n  • Tsitsani mawu a Enhanced kapena Premium",
+    "readAloudNoVoiceAndroid": "Chipangizo chanu chilibe mawu apamwamba a {language}. Ikani deta ya mawu a injini yanu yoyankhulira, kenako yesaninso.",
+    "readAloudOpenVoiceSettings": "Tsegulani zokonda za mawu"
 }

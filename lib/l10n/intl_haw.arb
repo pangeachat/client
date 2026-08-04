@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-04 10:08:16.768648",
+    "@@last_modified": "2026-08-04 10:46:09.163516",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "Ua pau kāu kau hoʻomaʻamaʻa ma hope o {minutes} mau minuke me ka hana ʻole.",
     "autocorrectMobileOnly": "Kelepona paʻa wale nō",
     "autocorrectMobileOnlyWarning": "Loaʻa wale ka hoʻoponopono ʻakomi o ka hāmeʻa ma ka polokalamu kelepona.",
-    "choosePangeaAvatar": "E koho i kiʻi avatar Pangea"
+    "choosePangeaAvatar": "E koho i kiʻi avatar Pangea",
+    "readAloudNoVoiceTitle": "ʻAʻohe leo {language} maikaʻi i loaʻa",
+    "readAloudNoVoiceDesktopWeb": "ʻAʻole hāʻawi kēia polokalamu kele pūnaewele i kahi leo {language} maikaʻi, no laila ʻaʻole hiki ke heluhelu maikaʻi ʻia nā leka ma ʻaneʻi. Hoʻokomo pinepine ʻo Chrome a me Edge i nā leo maikaʻi.",
+    "readAloudGetChrome": "E kiʻi iā Chrome",
+    "readAloudNoVoiceMobileWeb": "ʻAʻole hāʻawi kēia polokalamu kele pūnaewele i kahi leo {language} maikaʻi, no laila ʻaʻole hiki ke heluhelu maikaʻi ʻia nā leka ma ʻaneʻi. Hiki i ka polokalamu Pangea Chat ke hoʻohana i nā leo maikaʻi loa o kāu hāmeʻa.",
+    "readAloudGetApp": "E kiʻi i ka polokalamu",
+    "readAloudNoVoiceIOS": "ʻAʻole i hoʻoiho ʻia kahi leo {language} maikaʻi ma kāu hāmeʻa. E hoʻoiho i hoʻokahi, a laila e hoʻāʻo hou:",
+    "readAloudNoVoiceIOSSteps": "  • Nā hoʻonohonoho\n  • Hiki ke komo\n  • ʻIke i ʻōlelo ʻia\n  • Nā leo\n  • {language}\n  • Hoʻoiho i kahi leo Hoʻonui a Premium paha",
+    "readAloudNoVoiceAndroid": "ʻAʻohe leo {language} maikaʻi ma kāu hāmeʻa. E hoʻokomo i ka ʻikepili leo no kāu ʻenekini kikokikona-i-leo, a laila e hoʻāʻo hou.",
+    "readAloudOpenVoiceSettings": "E wehe i nā hoʻonohonoho leo"
 }

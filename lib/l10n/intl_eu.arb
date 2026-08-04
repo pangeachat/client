@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-04 10:08:15.635347",
+    "@@last_modified": "2026-08-04 10:46:06.153681",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9696,5 +9696,14 @@
     "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren.",
     "autocorrectMobileOnly": "Mugikorrean bakarrik",
     "autocorrectMobileOnlyWarning": "Gailuaren zuzenketa automatikoa mugikorreko aplikazioan bakarrik dago erabilgarri.",
-    "choosePangeaAvatar": "Aukeratu Pangea avatar bat"
+    "choosePangeaAvatar": "Aukeratu Pangea avatar bat",
+    "readAloudNoVoiceTitle": "Ez da kalitate handiko {language} ahotsik aurkitu",
+    "readAloudNoVoiceDesktopWeb": "Nabigatzaile honek ez du kalitate handiko {language} ahotsik eskaintzen, beraz, mezuak ezin dira ondo irakurri hemen. Chrome eta Edge-k kalitate handiko ahotsak izan ohi dituzte.",
+    "readAloudGetChrome": "Lortu Chrome",
+    "readAloudNoVoiceMobileWeb": "Nabigatzaile honek ez du kalitate handiko {language} ahotsik eskaintzen, beraz, mezuak ezin dira ondo irakurri hemen. Pangea Chat aplikazioak zure gailuko ahots onenak erabil ditzake.",
+    "readAloudGetApp": "Lortu aplikazioa",
+    "readAloudNoVoiceIOS": "Zure gailuak oraindik ez du kalitate handiko {language} ahotsik deskargatuta. Deskargatu bat, eta saiatu berriro:",
+    "readAloudNoVoiceIOSSteps": "  • Ezarpenak\n  • Irisgarritasuna\n  • Ahozko edukia\n  • Ahotsak\n  • {language}\n  • Deskargatu hobetutako edo premium ahots bat",
+    "readAloudNoVoiceAndroid": "Zure gailuak oraindik ez du kalitate handiko {language} ahotsik. Instalatu ahots-datuak zure testu-ahots motorrako, eta saiatu berriro.",
+    "readAloudOpenVoiceSettings": "Ireki ahots-ezarpenak"
 }

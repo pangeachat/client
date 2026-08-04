@@ -3574,7 +3574,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-04 10:08:16.068981",
+    "@@last_modified": "2026-08-04 10:46:08.118045",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9707,5 +9707,14 @@
     "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan ghníomhaíocht.",
     "autocorrectMobileOnly": "Fón póca amháin",
     "autocorrectMobileOnlyWarning": "Níl uathcheartú gléis ar fáil ach ar an aip shoghluaiste.",
-    "choosePangeaAvatar": "Roghnaigh avatar Pangea"
+    "choosePangeaAvatar": "Roghnaigh avatar Pangea",
+    "readAloudNoVoiceTitle": "Níor aimsíodh guth ardcháilíochta {language}",
+    "readAloudNoVoiceDesktopWeb": "Níl guth ardcháilíochta {language} ar fáil sa bhrabhsálaí seo, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. De ghnáth bíonn guthanna ardcháilíochta san áireamh le Chrome agus Edge.",
+    "readAloudGetChrome": "Faigh Chrome",
+    "readAloudNoVoiceMobileWeb": "Níl guth ardcháilíochta {language} ar fáil sa bhrabhsálaí seo, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. Is féidir le haip Pangea Chat na guthanna is fearr atá ar do ghléas a úsáid.",
+    "readAloudGetApp": "Faigh an aip",
+    "readAloudNoVoiceIOS": "Níl guth ardcháilíochta {language} íoslódáilte ar do ghléas go fóill. Íoslódáil ceann, ansin bain triail as arís:",
+    "readAloudNoVoiceIOSSteps": "  • Socruithe\n  • Inrochtaineacht\n  • Ábhar Labhartha\n  • Guthanna\n  • {language}\n  • Íoslódáil guth Feabhsaithe nó Préimhe",
+    "readAloudNoVoiceAndroid": "Níl guth ardcháilíochta {language} ar do ghléas go fóill. Suiteáil sonraí gutha d'inneall téacs-go-hurlabhra, ansin bain triail as arís.",
+    "readAloudOpenVoiceSettings": "Oscail socruithe gutha"
 }

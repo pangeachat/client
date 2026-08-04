@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-04 10:08:16.475086",
+    "@@last_modified": "2026-08-04 10:46:08.978996",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10132,5 +10132,14 @@
     "practiceSessionTimedOut": "Vaša vježba je završila nakon {minutes} minuta neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne uređaje",
     "autocorrectMobileOnlyWarning": "Automatska ispravka dostupna je samo u mobilnoj aplikaciji.",
-    "choosePangeaAvatar": "Odaberite Pangea avatar"
+    "choosePangeaAvatar": "Odaberite Pangea avatar",
+    "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
+    "readAloudNoVoiceDesktopWeb": "Ovaj preglednik ne nudi visokokvalitetan glas za {language}, tako da se poruke ovdje ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
+    "readAloudGetChrome": "Preuzmite Chrome",
+    "readAloudNoVoiceMobileWeb": "Ovaj preglednik ne nudi visokokvalitetan glas za {language}, tako da se poruke ovdje ne mogu dobro čitati naglas. Aplikacija Pangea Chat može koristiti najbolje glasove vašeg uređaja.",
+    "readAloudGetApp": "Preuzmite aplikaciju",
+    "readAloudNoVoiceIOS": "Vaš uređaj još nema preuzet visokokvalitetan glas za {language}. Preuzmite ga, a zatim pokušajte ponovno:",
+    "readAloudNoVoiceIOSSteps": "  • Postavke\n  • Pristupačnost\n  • Govorni sadržaj\n  • Glasovi\n  • {language}\n  • Preuzmite poboljšani ili premium glas",
+    "readAloudNoVoiceAndroid": "Vaš uređaj još nema visokokvalitetan glas za {language}. Instalirajte podatke o glasu za svoj mehanizam za pretvaranje teksta u govor, a zatim pokušajte ponovno.",
+    "readAloudOpenVoiceSettings": "Otvori postavke glasa"
 }

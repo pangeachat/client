@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:08:16.596185",
+    "@@last_modified": "2026-08-04 10:46:08.244150",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10616,5 +10616,14 @@
     "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות.",
     "autocorrectMobileOnly": "נייד בלבד",
     "autocorrectMobileOnlyWarning": "התיקון האוטומטי זמין רק באפליקציה לנייד.",
-    "choosePangeaAvatar": "בחר אווטאר של Pangea"
+    "choosePangeaAvatar": "בחר אווטאר של Pangea",
+    "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
+    "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
+    "readAloudGetChrome": "קבל את Chrome",
+    "readAloudNoVoiceMobileWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. אפליקציית Pangea Chat יכולה להשתמש בקולות הטובים ביותר של המכשיר שלך.",
+    "readAloudGetApp": "קבל את האפליקציה",
+    "readAloudNoVoiceIOS": "המכשיר שלך עדיין לא הוריד קול {language} באיכות גבוהה. הורד אחד, ואז נסה שוב:",
+    "readAloudNoVoiceIOSSteps": "  • הגדרות\n  • נגישות\n  • תוכן מדובר\n  • קולות\n  • {language}\n  • הורד קול משופר או פרימיום",
+    "readAloudNoVoiceAndroid": "המכשיר שלך עדיין לא כולל קול {language} באיכות גבוהה. התקן נתוני קול עבור מנוע הטקסט לדיבור שלך, ואז נסה שוב.",
+    "readAloudOpenVoiceSettings": "פתח את הגדרות הקול"
 }

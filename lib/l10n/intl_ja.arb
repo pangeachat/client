@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-04 10:08:18.250884",
+    "@@last_modified": "2026-08-04 10:46:11.050681",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10465,5 +10465,14 @@
     "practiceSessionTimedOut": "{minutes}分間操作がなかったため、練習セッションが終了しました。",
     "autocorrectMobileOnly": "モバイルのみ",
     "autocorrectMobileOnlyWarning": "デバイスの自動修正はモバイルアプリでのみ利用可能です。",
-    "choosePangeaAvatar": "パンゲアのアバターを選択"
+    "choosePangeaAvatar": "パンゲアのアバターを選択",
+    "readAloudNoVoiceTitle": "高品質な{language}の音声が見つかりません",
+    "readAloudNoVoiceDesktopWeb": "このブラウザでは高品質な{language}の音声が提供されていないため、ここではメッセージをうまく読み上げることができません。通常、ChromeとEdgeには高品質な音声が含まれています。",
+    "readAloudGetChrome": "Chromeを入手",
+    "readAloudNoVoiceMobileWeb": "このブラウザでは高品質な{language}の音声が提供されていないため、ここではメッセージをうまく読み上げることができません。Pangea Chatアプリは、お使いのデバイスの最高の音声を使用できます。",
+    "readAloudGetApp": "アプリを入手",
+    "readAloudNoVoiceIOS": "お使いのデバイスには、まだ高品質な{language}の音声がダウンロードされていません。ダウンロードしてからもう一度お試しください:",
+    "readAloudNoVoiceIOSSteps": "  • 設定\n  • アクセシビリティ\n  • 読み上げコンテンツ\n  • 音声\n  • {language}\n  • 強化またはプレミアムの音声をダウンロード",
+    "readAloudNoVoiceAndroid": "お使いのデバイスには、まだ高品質な{language}の音声がありません。テキスト読み上げエンジンの音声データをインストールしてから、もう一度お試しください。",
+    "readAloudOpenVoiceSettings": "音声設定を開く"
 }

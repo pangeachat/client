@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-04 10:08:19.099929",
+    "@@last_modified": "2026-08-04 10:46:16.181588",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "Вашата сесија за вежбање заврши по {minutes} минути неактивност.",
     "autocorrectMobileOnly": "Само за мобилни",
     "autocorrectMobileOnlyWarning": "Автоматската корекција на уредот е достапна само на мобилната апликација.",
-    "choosePangeaAvatar": "Изберете Pangea аватар"
+    "choosePangeaAvatar": "Изберете Pangea аватар",
+    "readAloudNoVoiceTitle": "Не е пронајден висококвалитетен глас за {language}",
+    "readAloudNoVoiceDesktopWeb": "Овој прелистувач не нуди висококвалитетен глас за {language}, па пораките не може добро да се читаат на глас овде. Chrome и Edge обично вклучуваат висококвалитетни гласови.",
+    "readAloudGetChrome": "Преземи Chrome",
+    "readAloudNoVoiceMobileWeb": "Овој прелистувач не нуди висококвалитетен глас за {language}, па пораките не може добро да се читаат на глас овде. Апликацијата Pangea Chat може да ги користи најдобрите гласови на вашиот уред.",
+    "readAloudGetApp": "Преземи ја апликацијата",
+    "readAloudNoVoiceIOS": "Вашиот уред сè уште нема преземено висококвалитетен глас за {language}. Преземете еден, па обидете се повторно:",
+    "readAloudNoVoiceIOSSteps": "  • Поставки\n  • Пристапност\n  • Изговорена содржина\n  • Гласови\n  • {language}\n  • Преземете подобрен или премиум глас",
+    "readAloudNoVoiceAndroid": "Вашиот уред сè уште нема висококвалитетен глас за {language}. Инсталирајте податоци за глас за вашиот механизам за текст во говор, па обидете се повторно.",
+    "readAloudOpenVoiceSettings": "Отвори ги поставките за глас"
 }

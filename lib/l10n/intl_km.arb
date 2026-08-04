@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-04 10:08:17.595457",
+    "@@last_modified": "2026-08-04 10:46:13.627244",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "វគ្គហ្វឹកហាត់របស់អ្នកបានបញ្ចប់បន្ទាប់ពី {minutes} នាទីដោយគ្មានសកម្មភាព។",
     "autocorrectMobileOnly": "សម្រាប់តែទូរសព្ទ",
     "autocorrectMobileOnlyWarning": "ការកែស្វ័យប្រវត្តិរបស់ឧបករណ៍អាចប្រើបានតែនៅលើកម្មវិធីទូរសព្ទប៉ុណ្ណោះ។",
-    "choosePangeaAvatar": "ជ្រើសរើសរូបតំណាង Pangea"
+    "choosePangeaAvatar": "ជ្រើសរើសរូបតំណាង Pangea",
+    "readAloudNoVoiceTitle": "រកមិនឃើញសំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ",
+    "readAloudNoVoiceDesktopWeb": "កម្មវិធីរុករកនេះមិនផ្ដល់សំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ ដូច្នេះសារមិនអាចអានឮបានល្អនៅទីនេះទេ។ ជាទូទៅ Chrome និង Edge រួមបញ្ចូលសំឡេងដែលមានគុណភាពខ្ពស់។",
+    "readAloudGetChrome": "ទាញយក Chrome",
+    "readAloudNoVoiceMobileWeb": "កម្មវិធីរុករកនេះមិនផ្ដល់សំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ ដូច្នេះសារមិនអាចអានឮបានល្អនៅទីនេះទេ។ កម្មវិធី Pangea Chat អាចប្រើសំឡេងល្អបំផុតរបស់ឧបករណ៍អ្នក។",
+    "readAloudGetApp": "ទាញយកកម្មវិធី",
+    "readAloudNoVoiceIOS": "ឧបករណ៍របស់អ្នកមិនទាន់បានទាញយកសំឡេង{language}ដែលមានគុណភាពខ្ពស់នៅឡើយទេ។ សូមទាញយកមួយ រួចព្យាយាមម្ដងទៀត៖",
+    "readAloudNoVoiceIOSSteps": "  • ការកំណត់\n  • លទ្ធភាពប្រើប្រាស់\n  • ខ្លឹមសារដែលបាននិយាយ\n  • សំឡេង\n  • {language}\n  • ទាញយកសំឡេងដែលបានកែលម្អ ឬ Premium",
+    "readAloudNoVoiceAndroid": "ឧបករណ៍របស់អ្នកមិនទាន់មានសំឡេង{language}ដែលមានគុណភាពខ្ពស់នៅឡើយទេ។ សូមដំឡើងទិន្នន័យសំឡេងសម្រាប់ម៉ាស៊ីនអត្ថបទទៅការនិយាយរបស់អ្នក រួចព្យាយាមម្ដងទៀត។",
+    "readAloudOpenVoiceSettings": "បើកការកំណត់សំឡេង"
 }

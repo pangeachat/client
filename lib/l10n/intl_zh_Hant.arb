@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:08:22.416296",
+    "@@last_modified": "2026-08-04 10:46:29.594338",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9802,5 +9802,14 @@
     "practiceSessionTimedOut": "您的練習時段因 {minutes} 分鐘沒有活動而結束。",
     "autocorrectMobileOnly": "僅限行動裝置",
     "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於行動應用程式。",
-    "choosePangeaAvatar": "選擇 Pangea 頭像"
+    "choosePangeaAvatar": "選擇 Pangea 頭像",
+    "readAloudNoVoiceTitle": "找不到高品質的{language}語音",
+    "readAloudNoVoiceDesktopWeb": "此瀏覽器不提供高品質的{language}語音，因此無法在此處良好地朗讀訊息。Chrome 和 Edge 通常包含高品質的語音。",
+    "readAloudGetChrome": "取得 Chrome",
+    "readAloudNoVoiceMobileWeb": "此瀏覽器不提供高品質的{language}語音，因此無法在此處良好地朗讀訊息。Pangea Chat 應用程式可以使用您裝置上最好的語音。",
+    "readAloudGetApp": "取得應用程式",
+    "readAloudNoVoiceIOS": "您的裝置尚未下載高品質的{language}語音。請下載一個，然後再試一次：",
+    "readAloudNoVoiceIOSSteps": "  • 設定\n  • 輔助使用\n  • 語音內容\n  • 語音\n  • {language}\n  • 下載增強型或進階語音",
+    "readAloudNoVoiceAndroid": "您的裝置尚未有高品質的{language}語音。請為您的文字轉語音引擎安裝語音資料，然後再試一次。",
+    "readAloudOpenVoiceSettings": "開啟語音設定"
 }

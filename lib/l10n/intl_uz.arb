@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-04 10:08:21.776601",
+    "@@last_modified": "2026-08-04 10:46:29.081866",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9700,5 +9700,14 @@
     "practiceSessionTimedOut": "Faoliyatsiz {minutes} daqiqadan so‘ng mashg‘ulotingiz tugadi.",
     "autocorrectMobileOnly": "Faqat mobil qurilmalar uchun",
     "autocorrectMobileOnlyWarning": "Qurilma avtokorreksiyasi faqat mobil ilovada mavjud.",
-    "choosePangeaAvatar": "Pangea avatarini tanlang"
+    "choosePangeaAvatar": "Pangea avatarini tanlang",
+    "readAloudNoVoiceTitle": "Yuqori sifatli {language} ovozi topilmadi",
+    "readAloudNoVoiceDesktopWeb": "Bu brauzer yuqori sifatli {language} ovozini taklif qilmaydi, shuning uchun xabarlar bu yerda yaxshi o'qilmaydi. Chrome va Edge odatda yuqori sifatli ovozlarni o'z ichiga oladi.",
+    "readAloudGetChrome": "Chrome'ni yuklab olish",
+    "readAloudNoVoiceMobileWeb": "Bu brauzer yuqori sifatli {language} ovozini taklif qilmaydi, shuning uchun xabarlar bu yerda yaxshi o'qilmaydi. Pangea Chat ilovasi qurilmangizning eng yaxshi ovozlaridan foydalana oladi.",
+    "readAloudGetApp": "Ilovani yuklab olish",
+    "readAloudNoVoiceIOS": "Qurilmangizda yuqori sifatli {language} ovozi hali yuklab olinmagan. Birini yuklab oling, so'ngra qayta urinib ko'ring:",
+    "readAloudNoVoiceIOSSteps": "  • Sozlamalar\n  • Maxsus imkoniyatlar\n  • Gapiriladigan kontent\n  • Ovozlar\n  • {language}\n  • Kengaytirilgan yoki Premium ovozni yuklab oling",
+    "readAloudNoVoiceAndroid": "Qurilmangizda yuqori sifatli {language} ovozi hali mavjud emas. Matndan nutqqa o'tkazish mexanizmi uchun ovoz ma'lumotlarini o'rnating, so'ngra qayta urinib ko'ring.",
+    "readAloudOpenVoiceSettings": "Ovoz sozlamalarini ochish"
 }

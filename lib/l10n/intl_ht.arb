@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-04 10:08:16.622324",
+    "@@last_modified": "2026-08-04 10:46:10.196914",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "Sesyon pratik ou a te fini apre {minutes} minit san aktivite.",
     "autocorrectMobileOnly": "Sèlman sou mobil",
     "autocorrectMobileOnlyWarning": "Koreksyon otomatik aparèy la disponib sèlman sou aplikasyon mobil lan.",
-    "choosePangeaAvatar": "Chwazi yon avatar Pangea"
+    "choosePangeaAvatar": "Chwazi yon avatar Pangea",
+    "readAloudNoVoiceTitle": "Pa gen vwa {language} bon kalite ki jwenn",
+    "readAloudNoVoiceDesktopWeb": "Navigatè sa a pa ofri yon vwa {language} bon kalite, kidonk mesaj yo pa ka li byen fò isit la. Chrome ak Edge anjeneral gen ladan yo vwa bon kalite.",
+    "readAloudGetChrome": "Jwenn Chrome",
+    "readAloudNoVoiceMobileWeb": "Navigatè sa a pa ofri yon vwa {language} bon kalite, kidonk mesaj yo pa ka li byen fò isit la. Aplikasyon Pangea Chat la ka itilize pi bon vwa aparèy ou an.",
+    "readAloudGetApp": "Jwenn aplikasyon an",
+    "readAloudNoVoiceIOS": "Aparèy ou an poko gen yon vwa {language} bon kalite telechaje. Telechaje youn, epi eseye ankò:",
+    "readAloudNoVoiceIOSSteps": "  • Anviwònman\n  • Aksè\n  • Kontni Pale\n  • Vwa\n  • {language}\n  • Telechaje yon vwa Amelyore oswa Premium",
+    "readAloudNoVoiceAndroid": "Aparèy ou an poko gen yon vwa {language} bon kalite. Enstale done vwa pou motè tèks-a-lapawòl ou a, epi eseye ankò.",
+    "readAloudOpenVoiceSettings": "Louvri anviwònman vwa"
 }

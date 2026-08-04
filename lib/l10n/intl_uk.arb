@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-04 10:08:22.270287",
+    "@@last_modified": "2026-08-04 10:46:27.787632",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9696,5 +9696,14 @@
     "practiceSessionTimedOut": "Ваш сеанс практики завершився після {minutes} хвилин бездіяльності.",
     "autocorrectMobileOnly": "Лише для мобільних пристроїв",
     "autocorrectMobileOnlyWarning": "Автовиправлення доступне лише в мобільному застосунку.",
-    "choosePangeaAvatar": "Виберіть аватар Pangea"
+    "choosePangeaAvatar": "Виберіть аватар Pangea",
+    "readAloudNoVoiceTitle": "Не знайдено високоякісного голосу {language}",
+    "readAloudNoVoiceDesktopWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Chrome та Edge зазвичай мають високоякісні голоси.",
+    "readAloudGetChrome": "Завантажити Chrome",
+    "readAloudNoVoiceMobileWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Додаток Pangea Chat може використовувати найкращі голоси вашого пристрою.",
+    "readAloudGetApp": "Завантажити додаток",
+    "readAloudNoVoiceIOS": "На вашому пристрої ще не завантажено високоякісний голос {language}. Завантажте його, а потім спробуйте ще раз:",
+    "readAloudNoVoiceIOSSteps": "  • Налаштування\n  • Доступність\n  • Вимовлений вміст\n  • Голоси\n  • {language}\n  • Завантажте покращений або преміум голос",
+    "readAloudNoVoiceAndroid": "На вашому пристрої ще немає високоякісного голосу {language}. Встановіть голосові дані для вашого механізму перетворення тексту в мову, а потім спробуйте ще раз.",
+    "readAloudOpenVoiceSettings": "Відкрити налаштування голосу"
 }

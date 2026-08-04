@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-04 10:08:15.374203",
+    "@@last_modified": "2026-08-04 10:46:04.028442",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9683,5 +9683,14 @@
     "practiceSessionTimedOut": "Deine Übungseinheit wurde nach {minutes} Minuten Inaktivität beendet.",
     "autocorrectMobileOnly": "Nur Mobilgeräte",
     "autocorrectMobileOnlyWarning": "Die Autokorrektur des Geräts ist nur in der mobilen App verfügbar.",
-    "choosePangeaAvatar": "Wähle einen Pangea-Avatar"
+    "choosePangeaAvatar": "Wähle einen Pangea-Avatar",
+    "readAloudNoVoiceTitle": "Keine hochwertige {language}-Stimme gefunden",
+    "readAloudNoVoiceDesktopWeb": "Dieser Browser bietet keine hochwertige {language}-Stimme, daher können Nachrichten hier nicht gut vorgelesen werden. Chrome und Edge enthalten normalerweise hochwertige Stimmen.",
+    "readAloudGetChrome": "Chrome herunterladen",
+    "readAloudNoVoiceMobileWeb": "Dieser Browser bietet keine hochwertige {language}-Stimme, daher können Nachrichten hier nicht gut vorgelesen werden. Die Pangea Chat App kann die besten Stimmen Ihres Geräts verwenden.",
+    "readAloudGetApp": "App herunterladen",
+    "readAloudNoVoiceIOS": "Auf Ihrem Gerät ist noch keine hochwertige {language}-Stimme heruntergeladen. Laden Sie eine herunter und versuchen Sie es dann erneut:",
+    "readAloudNoVoiceIOSSteps": "  • Einstellungen\n  • Bedienungshilfen\n  • Gesprochene Inhalte\n  • Stimmen\n  • {language}\n  • Eine erweiterte oder Premium-Stimme herunterladen",
+    "readAloudNoVoiceAndroid": "Auf Ihrem Gerät ist noch keine hochwertige {language}-Stimme vorhanden. Installieren Sie Sprachdaten für Ihre Text-to-Speech-Engine und versuchen Sie es dann erneut.",
+    "readAloudOpenVoiceSettings": "Spracheinstellungen öffnen"
 }

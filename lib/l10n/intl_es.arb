@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-04 10:08:15.779820",
+    "@@last_modified": "2026-08-04 10:46:05.290810",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7891,5 +7891,14 @@
     "practiceSessionTimedOut": "Tu sesión de práctica finalizó después de {minutes} minutos sin actividad.",
     "autocorrectMobileOnly": "Solo móvil",
     "autocorrectMobileOnlyWarning": "La autocorrección del dispositivo solo está disponible en la aplicación móvil.",
-    "choosePangeaAvatar": "Elige un avatar de Pangea"
+    "choosePangeaAvatar": "Elige un avatar de Pangea",
+    "readAloudNoVoiceTitle": "No se encontró una voz de {language} de alta calidad",
+    "readAloudNoVoiceDesktopWeb": "Este navegador no ofrece una voz de {language} de alta calidad, por lo que los mensajes no se pueden leer en voz alta correctamente aquí. Chrome y Edge suelen incluir voces de alta calidad.",
+    "readAloudGetChrome": "Obtener Chrome",
+    "readAloudNoVoiceMobileWeb": "Este navegador no ofrece una voz de {language} de alta calidad, por lo que los mensajes no se pueden leer en voz alta correctamente aquí. La aplicación Pangea Chat puede usar las mejores voces de tu dispositivo.",
+    "readAloudGetApp": "Obtener la aplicación",
+    "readAloudNoVoiceIOS": "Tu dispositivo aún no tiene descargada una voz de {language} de alta calidad. Descarga una y vuelve a intentarlo:",
+    "readAloudNoVoiceIOSSteps": "  • Ajustes\n  • Accesibilidad\n  • Contenido hablado\n  • Voces\n  • {language}\n  • Descargar una voz mejorada o premium",
+    "readAloudNoVoiceAndroid": "Tu dispositivo aún no tiene una voz de {language} de alta calidad. Instala los datos de voz para tu motor de texto a voz y vuelve a intentarlo.",
+    "readAloudOpenVoiceSettings": "Abrir ajustes de voz"
 }

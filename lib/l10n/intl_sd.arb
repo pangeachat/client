@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-04 10:08:20.315608",
+    "@@last_modified": "2026-08-04 10:46:23.852023",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2070,5 +2070,14 @@
     "practiceSessionTimedOut": "توهان جو مشق سيشن {minutes} منٽن جي غير فعاليت کان پوءِ ختم ٿي ويو.",
     "autocorrectMobileOnly": "صرف موبائل",
     "autocorrectMobileOnlyWarning": "ڊيوائس آٽوڪرڪٽ صرف موبائل ايپ تي موجود آهي.",
-    "choosePangeaAvatar": "پينجيا اوتار چونڊيو"
+    "choosePangeaAvatar": "پينجيا اوتار چونڊيو",
+    "readAloudNoVoiceTitle": "ڪا به اعليٰ معيار جي {language} آواز نه ملي سگهي",
+    "readAloudNoVoiceDesktopWeb": "هي برائوزر اعليٰ معيار جي {language} آواز پيش نٿو ڪري، تنهنڪري هتي پيغامن کي چڱيءَ طرح پڙهي نٿو سگهجي. ڪروم ۽ ايج ۾ عام طور تي اعليٰ معيار جا آواز شامل هوندا آهن.",
+    "readAloudGetChrome": "ڪروم حاصل ڪريو",
+    "readAloudNoVoiceMobileWeb": "هي برائوزر اعليٰ معيار جي {language} آواز پيش نٿو ڪري، تنهنڪري هتي پيغامن کي چڱيءَ طرح پڙهي نٿو سگهجي. پينجيا چيٽ ايپ توهان جي ڊوائيس جي بهترين آوازن کي استعمال ڪري سگهي ٿي.",
+    "readAloudGetApp": "ايپ حاصل ڪريو",
+    "readAloudNoVoiceIOS": "توهان جي ڊوائيس ۾ اڃا تائين اعليٰ معيار جي {language} آواز ڊائونلوڊ ٿيل ناهي. هڪ ڊائونلوڊ ڪريو، پوءِ ٻيهر ڪوشش ڪريو:",
+    "readAloudNoVoiceIOSSteps": "  • سيٽنگون\n  • رسائي\n  • ڳالهائڻ وارو مواد\n  • آواز\n  • {language}\n  • هڪ بهتر يا پريميئم آواز ڊائونلوڊ ڪريو",
+    "readAloudNoVoiceAndroid": "توهان جي ڊوائيس ۾ اڃا تائين اعليٰ معيار جي {language} آواز ناهي. پنهنجي ٽيڪسٽ-ٽو-اسپيچ انجڻ لاءِ آواز ڊيٽا انسٽال ڪريو، پوءِ ٻيهر ڪوشش ڪريو.",
+    "readAloudOpenVoiceSettings": "آواز سيٽنگون کوليو"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:08:20.144070",
+    "@@last_modified": "2026-08-04 10:46:20.611073",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10646,5 +10646,14 @@
     "practiceSessionTimedOut": "Sua sessão de prática terminou após {minutes} minutos sem atividade.",
     "autocorrectMobileOnly": "Somente para celular",
     "autocorrectMobileOnlyWarning": "A correção automática do dispositivo está disponível apenas na aplicação móvel.",
-    "choosePangeaAvatar": "Escolha um avatar Pangea"
+    "choosePangeaAvatar": "Escolha um avatar Pangea",
+    "readAloudNoVoiceTitle": "Nenhuma voz de alta qualidade em {language} encontrada",
+    "readAloudNoVoiceDesktopWeb": "Este navegador não oferece uma voz de alta qualidade em {language}, então as mensagens não podem ser lidas em voz alta aqui. Chrome e Edge geralmente incluem vozes de alta qualidade.",
+    "readAloudGetChrome": "Obter Chrome",
+    "readAloudNoVoiceMobileWeb": "Este navegador não oferece uma voz de alta qualidade em {language}, então as mensagens não podem ser lidas em voz alta aqui. O aplicativo Pangea Chat pode usar as melhores vozes do seu dispositivo.",
+    "readAloudGetApp": "Obter o aplicativo",
+    "readAloudNoVoiceIOS": "Seu dispositivo ainda não tem uma voz de alta qualidade em {language} baixada. Baixe uma e tente novamente:",
+    "readAloudNoVoiceIOSSteps": "  • Ajustes\n  • Acessibilidade\n  • Conteúdo Falado\n  • Vozes\n  • {language}\n  • Baixe uma voz Aprimorada ou Premium",
+    "readAloudNoVoiceAndroid": "Seu dispositivo ainda não tem uma voz de alta qualidade em {language}. Instale os dados de voz para seu mecanismo de conversão de texto em fala e tente novamente.",
+    "readAloudOpenVoiceSettings": "Abrir configurações de voz"
 }
