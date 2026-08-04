@@ -215,6 +215,7 @@ class OverlayMessage extends StatelessWidget {
               isTransitionAnimation: isTransitionAnimation,
               readingAssistanceMode: readingAssistanceMode,
               selected: true,
+              vocabLemmas: overlayController.highlightVocabLemmas,
             ),
           ),
           if (event.hasAggregatedEvents(timeline, RelationshipTypes.edit))

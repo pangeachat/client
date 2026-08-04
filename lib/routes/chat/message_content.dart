@@ -45,6 +45,14 @@ class MessageContent extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
+
+  /// Overrides the default token-tap behavior (select in the open overlay,
+  /// else open the chat toolbar). The analytics example messages use this to
+  /// open the toolbar overlay preselecting the tapped token.
+  final void Function(PangeaToken)? onTokenClick;
+
+  /// Gold-highlight lemma set override for [HtmlMessage] (lower-cased).
+  final Set<String>? vocabLemmas;
   // Pangea#
 
   const MessageContent(
@@ -64,6 +72,8 @@ class MessageContent extends StatelessWidget {
     this.prevEvent,
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
+    this.onTokenClick,
+    this.vocabLemmas,
     // Pangea#
   });
 
@@ -349,7 +359,8 @@ class MessageContent extends StatelessWidget {
                           readingAssistanceMode ==
                               ReadingAssistanceMode.practiceMode
                       ? null
-                      : onClick,
+                      : (onTokenClick ?? onClick),
+                  vocabLemmas: vocabLemmas,
                   isTransitionAnimation: isTransitionAnimation,
                   isPracticeMode:
                       readingAssistanceMode ==

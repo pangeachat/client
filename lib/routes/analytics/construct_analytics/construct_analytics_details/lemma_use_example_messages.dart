@@ -4,15 +4,15 @@ import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
-import 'package:fluffychat/pangea/common/constants/model_keys.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/example_message_toolbar.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/message_content.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LemmaUseExampleMessages extends StatefulWidget {
@@ -61,17 +61,24 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
 
     final tokens = messageEvent.messageDisplayRepresentation?.tokens;
     if (tokens == null || tokens.isEmpty) return null;
-    return ExampleMessage(
-      messageEvent: messageEvent,
-      message: messageEvent.messageDisplayText,
-      tokens: tokens,
-    );
+    return ExampleMessage(messageEvent: messageEvent, tokens: tokens);
   }
 
-  Future<List<ExampleMessage>> _getExampleMessages() async {
-    final resolve = widget.resolveExampleMessage ?? _resolveExampleMessage;
+  Future<List<ExampleMessage>> _getExampleMessages() => collectExampleMessages(
+    widget.construct.uses,
+    widget.resolveExampleMessage ?? _resolveExampleMessage,
+  );
+
+  /// Walks [uses] newest-first, resolving at most 5 distinct example
+  /// messages and recording every used form on its example. Static so the
+  /// walk is testable with a fake resolver without pumping the widget
+  /// (rendering a [MessageContent] needs the full app bootstrap).
+  @visibleForTesting
+  static Future<List<ExampleMessage>> collectExampleMessages(
+    List<OneConstructUse> uses,
+    Future<ExampleMessage?> Function(OneConstructUse use) resolve,
+  ) async {
     final Map<String, ExampleMessage> examples = {};
-    final uses = widget.construct.uses;
     for (int i = uses.length - 1; i >= 0; i--) {
       final use = uses[i];
       final eventId = use.metadata.eventId;
@@ -80,9 +87,8 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
 
       final resolved = examples[eventId];
       if (resolved != null) {
-        // Already resolved this message — just bold this use's form (a no-op
-        // for repeat uses of the same form). Re-resolving here would discard
-        // the forms already bolded on the example.
+        // Already resolved this message — just record this use's form (a
+        // no-op for repeat uses of the same form).
         resolved.addToken(form);
         continue;
       }
@@ -94,26 +100,94 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
       if (examples.length > 4) break;
     }
 
-    final List<ExampleMessage> result = [];
-    for (final example in examples.values) {
-      try {
-        example.spans = example.getTextSpans();
-        result.add(example);
-      } catch (e, s) {
-        ErrorHandler.logError(
-          e: e,
-          s: s,
-          data: {
-            "message": example.message,
-            ModelKey.tokens: example.tokens
-                .map((t) => t.text.toJson())
-                .toList(),
-          },
-        );
-      }
+    return examples.values.toList();
+  }
+
+  /// The example message as a real chat message bubble. Mirrors the bubble
+  /// styling in OverlayMessage / the chat's Message widget (bubble color,
+  /// text colors, corner radius, [MessageContent] body) so the toolbar
+  /// overlay's bubble lands visually identical over the chip, exactly like
+  /// in chat — and so tokens get the chat behaviors (hover underline, click
+  /// cursor, tap-to-open preselecting that token).
+  Widget _exampleMessageBubble(BuildContext context, ExampleMessage example) {
+    final theme = Theme.of(context);
+    final messageEvent = example.messageEvent;
+    final event = messageEvent.event;
+    final displayEvent = event.getDisplayEvent(messageEvent.timeline);
+    final ownMessage = messageEvent.ownMessage;
+
+    final textColor = event.isActivityMessage
+        ? ThemeData.light().colorScheme.onPrimary
+        : ownMessage
+        ? theme.colorScheme.onPrimary
+        : theme.colorScheme.onSurface;
+
+    final linkColor = ownMessage
+        ? theme.colorScheme.onPrimary
+        : theme.brightness == Brightness.light
+        ? theme.colorScheme.primary
+        : theme.colorScheme.onSurface;
+
+    var color = theme.colorScheme.surfaceContainerHigh;
+    if (ownMessage) {
+      color = displayEvent.status.isError
+          ? Colors.redAccent
+          : theme.colorScheme.primary;
+    }
+    if (event.isActivityMessage) {
+      color = theme.brightness == Brightness.dark
+          ? theme.colorScheme.onSecondary
+          : theme.colorScheme.primary;
     }
 
-    return result;
+    final borderRadius = BorderRadius.circular(AppConfig.borderRadius);
+    final targetId = analyticsExampleMessageTargetId(example.eventId);
+    final highlightLemmas = {widget.construct.lemma.toLowerCase()};
+    final host = AnalyticsMessageToolbarHost(
+      messageEvent: messageEvent,
+      context: context,
+    );
+
+    void openToolbar(PangeaToken? token) => showAnalyticsExampleMessageToolbar(
+      context: context,
+      host: host,
+      selectedToken: token,
+      chipTargetId: targetId,
+      highlightVocabLemmas: highlightLemmas,
+    );
+
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 8),
+      child: Semantics(
+        button: true,
+        child: Material(
+          key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
+          color: color,
+          borderRadius: borderRadius,
+          clipBehavior: Clip.antiAlias,
+          child: InkWell(
+            onTap: () => openToolbar(example.firstUsedToken),
+            child: Container(
+              constraints: const BoxConstraints(
+                maxWidth: FluffyThemes.columnWidth * 1.5,
+              ),
+              child: MessageContent(
+                displayEvent,
+                textColor: textColor,
+                linkColor: linkColor,
+                borderRadius: borderRadius,
+                timeline: messageEvent.timeline,
+                selected: false,
+                pangeaMessageEvent: messageEvent,
+                controller: host,
+                vocabLemmas: highlightLemmas,
+                onTokenClick: openToolbar,
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 
   @override
@@ -127,50 +201,9 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
-              children: snapshot.data!.map((example) {
-                final targetId = analyticsExampleMessageTargetId(
-                  example.eventId,
-                );
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Semantics(
-                    button: true,
-                    child: Material(
-                      key: MatrixState.pAnyState.layerLinkAndKey(targetId).key,
-                      color: widget.construct.lemmaCategory.color(context),
-                      borderRadius: BorderRadius.circular(4),
-                      clipBehavior: Clip.antiAlias,
-                      child: InkWell(
-                        onTap: () => showAnalyticsExampleMessageToolbar(
-                          context: context,
-                          messageEvent: example.messageEvent,
-                          selectedToken: example.firstBoldedToken,
-                          chipTargetId: targetId,
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16,
-                            vertical: 8,
-                          ),
-                          child: RichText(
-                            text: TextSpan(
-                              style: TextStyle(
-                                color: Theme.of(
-                                  context,
-                                ).colorScheme.onPrimaryFixed,
-                                fontSize:
-                                    AppSettings.fontSizeFactor.value *
-                                    AppConfig.messageFontSize,
-                              ),
-                              children: example.spans,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                );
-              }).toList(),
+              children: snapshot.data!
+                  .map((example) => _exampleMessageBubble(context, example))
+                  .toList(),
             ),
           );
         } else {
@@ -186,94 +219,34 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
   }
 }
 
-/// One example message chip: the resolved message event, its display text,
-/// its tokens, and which forms to bold. Public (rather than file-private) so
-/// the resolver seam in [LemmaUseExampleMessages] can be typed.
+/// One example message: the resolved message event, its tokens, and which of
+/// its forms this construct actually used. Public (rather than file-private)
+/// so the resolver seam in [LemmaUseExampleMessages] can be typed.
 class ExampleMessage {
   final PangeaMessageEvent messageEvent;
-  final String message;
   final List<PangeaToken> tokens;
 
-  /// Styled spans for the chip, precomputed by [getTextSpans] once all forms
-  /// are added (it throws on token/text mismatch, so failed examples are
-  /// dropped before rendering).
-  List<TextSpan> spans = [];
-
-  ExampleMessage({
-    required this.messageEvent,
-    required this.message,
-    required this.tokens,
-  });
+  ExampleMessage({required this.messageEvent, required this.tokens});
 
   String get eventId => messageEvent.eventId;
 
-  final List<PangeaToken> _boldedTokens = [];
+  final List<PangeaToken> _usedTokens = [];
 
-  /// The first bolded form by position in the message — the token the
-  /// toolbar preselects when the chip is tapped.
-  PangeaToken? get firstBoldedToken =>
-      _boldedTokens.sortedBy<num>((token) => token.text.offset).firstOrNull;
+  /// The first used form by position in the message — the token the toolbar
+  /// preselects when the chip itself (not a specific token) is tapped.
+  PangeaToken? get firstUsedToken =>
+      _usedTokens.sortedBy<num>((token) => token.text.offset).firstOrNull;
 
   bool addToken(String form) {
     final token = tokens.firstWhereOrNull(
       (token) => token.text.content == form,
     );
 
-    if (token == null || _boldedTokens.contains(token)) {
+    if (token == null || _usedTokens.contains(token)) {
       return false;
     }
 
-    _boldedTokens.add(token);
+    _usedTokens.add(token);
     return true;
-  }
-
-  /// Get a list of text spans with styling to indicate the matching tokens.
-  List<TextSpan> getTextSpans() {
-    int characterPointer = 0;
-    final List<TextSpan> spans = [];
-
-    final sortedTokens = [..._boldedTokens]
-      ..sort((a, b) => a.text.offset.compareTo(b.text.offset));
-
-    for (final token in sortedTokens) {
-      if (token.text.offset > characterPointer) {
-        final beforeText = message.characters
-            .skip(characterPointer)
-            .take(token.text.offset - characterPointer)
-            .toString();
-        spans.add(TextSpan(text: beforeText));
-      }
-
-      characterPointer = token.text.offset;
-      final tokenText = message.characters
-          .skip(characterPointer)
-          .take(token.text.length)
-          .toString();
-
-      if (tokenText != token.text.content) {
-        throw StateError(
-          "Token text mismatch: expected '${token.text.content}', got '$tokenText'",
-        );
-      }
-
-      spans.add(
-        TextSpan(
-          text: tokenText,
-          style: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-      );
-
-      characterPointer = token.text.offset + token.text.length;
-    }
-
-    if (characterPointer < message.length) {
-      final afterText = message.characters
-          .skip(characterPointer)
-          .take(message.length - characterPointer)
-          .toString();
-      spans.add(TextSpan(text: afterText));
-    }
-
-    return spans;
   }
 }

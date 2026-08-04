@@ -9,17 +9,18 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/example_message_toolbar.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/lemma_use_example_messages.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 import 'get_test_client.dart';
 
-/// #8081 — the vocab details example-message chips: one chip per source
-/// message (dedup by event id, capped at 5), matching forms bolded, resolver
-/// memoized across rebuilds, and each chip a tappable target registered for
-/// the message toolbar overlay to anchor over.
+/// #8081 — the vocab details example-message walk: one example per source
+/// message (dedup by event id, capped at 5), every used form recorded on its
+/// example, and the fetch memoized across widget rebuilds. The walk is
+/// exercised through the static
+/// [LemmaUseExampleMessagesState.collectExampleMessages] seam — rendering the
+/// bubbles themselves needs the full app bootstrap (MatrixState /
+/// PangeaController), which no test in this repo does.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -97,10 +98,6 @@ void main() {
     category: 'other',
   );
 
-  Widget wrap(Widget child) => MaterialApp(
-    home: Scaffold(body: SingleChildScrollView(child: child)),
-  );
-
   /// A resolver over canned per-event messages, counting calls per event id.
   ({
     Future<ExampleMessage?> Function(OneConstructUse use) resolve,
@@ -115,7 +112,6 @@ void main() {
       if (message == null) return null;
       return ExampleMessage(
         messageEvent: messageEvent(eventId, message),
-        message: message,
         tokens: tokenize(message),
       );
     }
@@ -123,134 +119,104 @@ void main() {
     return (resolve: resolve, calls: calls);
   }
 
-  /// All (text, isBold) segments across the rendered chips' RichTexts.
-  List<(String, bool)> renderedSegments(WidgetTester tester) {
-    final segments = <(String, bool)>[];
-    for (final richText in tester.widgetList<RichText>(find.byType(RichText))) {
-      (richText.text as TextSpan).visitChildren((span) {
-        if (span is TextSpan && span.text != null) {
-          segments.add((span.text!, span.style?.fontWeight == FontWeight.bold));
-        }
-        return true;
+  group('collectExampleMessages', () {
+    test('dedups uses by event id and records every used form', () async {
+      final base = DateTime(2026, 1, 1);
+      final resolver = resolverFor({'\$e1': 'corro y corres mucho'});
+      // Three uses of the same event: two distinct forms plus a duplicate.
+      final examples =
+          await LemmaUseExampleMessagesState.collectExampleMessages([
+            use('correr', 'corro', '\$e1', base),
+            use(
+              'correr',
+              'corres',
+              '\$e1',
+              base.add(const Duration(minutes: 1)),
+            ),
+            use(
+              'correr',
+              'corro',
+              '\$e1',
+              base.add(const Duration(minutes: 2)),
+            ),
+          ], resolver.resolve);
+
+      expect(examples, hasLength(1));
+      // Second and third uses hit the existing example, not the resolver.
+      expect(resolver.calls['\$e1'], 1);
+      // The preselect token is the first used form by position, and the
+      // already-recorded second form registers as a duplicate.
+      expect(examples.single.firstUsedToken?.text.content, 'corro');
+      expect(examples.single.addToken('corres'), isFalse);
+    });
+
+    test('caps the walk at 5 example messages, newest first', () async {
+      final base = DateTime(2026, 1, 1);
+      final resolver = resolverFor({
+        for (int i = 0; i < 6; i++) '\$e$i': 'corro numero $i',
       });
+      final examples =
+          await LemmaUseExampleMessagesState.collectExampleMessages([
+            for (int i = 0; i < 6; i++)
+              use('correr', 'corro', '\$e$i', base.add(Duration(minutes: i))),
+          ], resolver.resolve);
+
+      expect(examples, hasLength(5));
+      // Walks newest-first: the oldest use never resolves.
+      expect(resolver.calls.containsKey('\$e0'), isFalse);
+    });
+
+    test('skips unresolvable uses without breaking the walk', () async {
+      final base = DateTime(2026, 1, 1);
+      final resolver = resolverFor({'\$known': 'corro mucho'});
+      final examples =
+          await LemmaUseExampleMessagesState.collectExampleMessages([
+            use('correr', 'corro', '\$known', base),
+            use(
+              'correr',
+              'corro',
+              '\$unknown',
+              base.add(const Duration(minutes: 1)),
+            ),
+          ], resolver.resolve);
+
+      expect(examples, hasLength(1));
+      expect(examples.single.eventId, '\$known');
+    });
+  });
+
+  testWidgets('memoizes the walk across rebuilds of the same construct', (
+    tester,
+  ) async {
+    // A resolver that never resolves keeps the example list empty, so the
+    // widget renders without the full app bootstrap the bubbles need.
+    final calls = <String>[];
+    Future<ExampleMessage?> resolve(OneConstructUse use) async {
+      calls.add(use.metadata.eventId!);
+      return null;
     }
-    return segments;
-  }
 
-  testWidgets('dedups uses by event id and bolds every matched form', (
-    tester,
-  ) async {
-    final base = DateTime(2026, 1, 1);
-    final resolver = resolverFor({'\$e1': 'corro y corres mucho'});
-    // Three uses of the same event: two distinct forms plus a duplicate.
-    final construct = constructFor([
-      use('correr', 'corro', '\$e1', base),
-      use('correr', 'corres', '\$e1', base.add(const Duration(minutes: 1))),
-      use('correr', 'corro', '\$e1', base.add(const Duration(minutes: 2))),
-    ]);
-
-    await tester.pumpWidget(
-      wrap(
-        LemmaUseExampleMessages(
-          construct: construct,
-          client: client,
-          resolveExampleMessage: resolver.resolve,
-        ),
-      ),
-    );
-    await tester.pumpAndSettle();
-
-    expect(find.byType(InkWell), findsOneWidget);
-    // Second and third uses hit the existing example, not the resolver.
-    expect(resolver.calls['\$e1'], 1);
-
-    final segments = renderedSegments(tester);
-    expect(segments, contains(('corro', true)));
-    expect(segments, contains(('corres', true)));
-    expect(segments.where((s) => s.$1.contains('mucho') && !s.$2), isNotEmpty);
-  });
-
-  testWidgets('caps the list at 5 example messages', (tester) async {
-    final base = DateTime(2026, 1, 1);
-    final messages = {for (int i = 0; i < 6; i++) '\$e$i': 'corro numero $i'};
-    final resolver = resolverFor(messages);
-    final construct = constructFor([
-      for (int i = 0; i < 6; i++)
-        use('correr', 'corro', '\$e$i', base.add(Duration(minutes: i))),
-    ]);
-
-    await tester.pumpWidget(
-      wrap(
-        LemmaUseExampleMessages(
-          construct: construct,
-          client: client,
-          resolveExampleMessage: resolver.resolve,
-        ),
-      ),
-    );
-    await tester.pumpAndSettle();
-
-    expect(find.byType(InkWell), findsNWidgets(5));
-    // Walks newest-first: the oldest use never resolves.
-    expect(resolver.calls.containsKey('\$e0'), isFalse);
-  });
-
-  testWidgets('memoizes the fetch across rebuilds of the same construct', (
-    tester,
-  ) async {
-    final resolver = resolverFor({'\$e1': 'corro mucho'});
     final construct = constructFor([
       use('correr', 'corro', '\$e1', DateTime(2026, 1, 1)),
     ]);
 
-    Widget build() => wrap(
-      LemmaUseExampleMessages(
-        construct: construct,
-        client: client,
-        resolveExampleMessage: resolver.resolve,
+    Widget build() => MaterialApp(
+      home: Scaffold(
+        body: LemmaUseExampleMessages(
+          construct: construct,
+          client: client,
+          resolveExampleMessage: resolve,
+        ),
       ),
     );
 
     await tester.pumpWidget(build());
     await tester.pumpAndSettle();
-    expect(resolver.calls['\$e1'], 1);
+    expect(calls, hasLength(1));
 
     // A new widget instance with the same construct id must not refetch.
     await tester.pumpWidget(build());
     await tester.pumpAndSettle();
-    expect(resolver.calls['\$e1'], 1);
-  });
-
-  testWidgets('chips are tappable and registered as overlay anchor targets', (
-    tester,
-  ) async {
-    final resolver = resolverFor({'\$e1': 'corro mucho'});
-    final construct = constructFor([
-      use('correr', 'corro', '\$e1', DateTime(2026, 1, 1)),
-    ]);
-
-    await tester.pumpWidget(
-      wrap(
-        LemmaUseExampleMessages(
-          construct: construct,
-          client: client,
-          resolveExampleMessage: resolver.resolve,
-        ),
-      ),
-    );
-    await tester.pumpAndSettle();
-
-    final inkWell = tester.widget<InkWell>(find.byType(InkWell));
-    expect(inkWell.onTap, isNotNull);
-
-    // The chip registers its render box under the analytics-specific target
-    // id (never the raw event id — a chat panel showing the same message may
-    // hold that GlobalKey), so the toolbar positioner can anchor over it.
-    final targetId = analyticsExampleMessageTargetId('\$e1');
-    expect(MatrixState.pAnyState.getRenderBox(targetId), isNotNull);
-    expect(
-      MatrixState.pAnyState.getRenderBox(targetId)!.size.height,
-      greaterThan(0),
-    );
+    expect(calls, hasLength(1));
   });
 }

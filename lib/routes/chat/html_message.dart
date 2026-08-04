@@ -54,11 +54,17 @@ class HtmlMessage extends StatelessWidget {
   final bool isPracticeMode;
   final void Function(PangeaToken)? onClick;
 
-  /// Target vocab lemmas for the room's activity, computed once per build so
+  /// Overrides the room-activity vocab lemmas as the gold-highlight set —
+  /// used by the analytics example messages to mark the construct's forms.
+  /// Must already be lower-cased (see [TokenRenderingUtil.isVocabHighlight]).
+  final Set<String>? vocabLemmas;
+
+  /// Target vocab lemmas for the gold highlight, computed once per build so
   /// the per-token render loop doesn't rebuild the set for every token
-  /// (issue #7659). Null when the room has no activity plan.
+  /// (issue #7659). Defaults to the room activity's target vocab; null when
+  /// neither an override nor an activity plan exists.
   late final Set<String>? _activityVocabLemmas =
-      controller.room.activityPlan?.vocabLemmas;
+      vocabLemmas ?? controller.room.activityPlan?.vocabLemmas;
   // Pangea#
 
   HtmlMessage({
@@ -82,6 +88,7 @@ class HtmlMessage extends StatelessWidget {
     this.onClick,
     this.isTransitionAnimation = false,
     this.isPracticeMode = false,
+    this.vocabLemmas,
     // Pangea#
   });
 
@@ -1078,16 +1085,22 @@ class HtmlMessage extends StatelessWidget {
     // );
     final parsed = parser.parse(_addTokenTags()).body ?? dom.Element.html('');
     return GestureDetector(
-      onTap: () {
-        if (overlayController == null) {
-          controller.chatController?.showToolbar(
-            pangeaMessageEvent?.event ?? event,
-            pangeaMessageEvent: pangeaMessageEvent,
-            nextEvent: nextEvent,
-            prevEvent: prevEvent,
-          );
-        }
-      },
+      // Null (instead of a no-op) when there is neither a toolbar to open nor
+      // an open overlay to shield, so the tap falls through to the host's own
+      // tap handler (the analytics example-message chips wrap this in an
+      // InkWell that opens the toolbar overlay themselves).
+      onTap: overlayController != null || controller.chatController != null
+          ? () {
+              if (overlayController == null) {
+                controller.chatController?.showToolbar(
+                  pangeaMessageEvent?.event ?? event,
+                  pangeaMessageEvent: pangeaMessageEvent,
+                  nextEvent: nextEvent,
+                  prevEvent: prevEvent,
+                );
+              }
+            }
+          : null,
       child: Text.rich(
         textScaler: TextScaler.noScaling,
         _renderHtml(

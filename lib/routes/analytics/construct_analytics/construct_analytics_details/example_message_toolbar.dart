@@ -73,10 +73,12 @@ class AnalyticsMessageToolbarHost implements MessageToolbarHost {
 /// [MessageToolbarConfig.analyticsExample].
 Future<void> showAnalyticsExampleMessageToolbar({
   required BuildContext context,
-  required PangeaMessageEvent messageEvent,
+  required AnalyticsMessageToolbarHost host,
   required String chipTargetId,
   PangeaToken? selectedToken,
+  Set<String>? highlightVocabLemmas,
 }) async {
+  final messageEvent = host.messageEvent;
   final event = messageEvent.event;
   if (event.redacted ||
       event.text == '' ||
@@ -93,11 +95,6 @@ Future<void> showAnalyticsExampleMessageToolbar({
     HapticFeedback.mediumImpact();
   }
 
-  final host = AnalyticsMessageToolbarHost(
-    messageEvent: messageEvent,
-    context: context,
-  );
-
   final overlayEntry = MessageSelectionOverlay(
     host: host,
     event: event,
@@ -107,6 +104,7 @@ Future<void> showAnalyticsExampleMessageToolbar({
     prevEvent: null,
     config: MessageToolbarConfig.analyticsExample,
     messageTargetId: chipTargetId,
+    highlightVocabLemmas: highlightVocabLemmas,
   );
 
   OverlayUtil.showOverlay(

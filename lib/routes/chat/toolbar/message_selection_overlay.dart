@@ -39,6 +39,12 @@ class MessageSelectionOverlay extends StatefulWidget {
   /// may already be claimed by a chat panel showing the same message).
   final String? messageTargetId;
 
+  /// Gold-highlight lemma set override for the overlay message (lower-cased).
+  /// The analytics example messages pass their construct's lemma so the
+  /// overlay bubble highlights the same forms as the chip beneath it; null in
+  /// chat, where the highlight comes from the room's activity plan.
+  final Set<String>? highlightVocabLemmas;
+
   final Event _event;
   final Event? _nextEvent;
   final Event? _prevEvent;
@@ -54,6 +60,7 @@ class MessageSelectionOverlay extends StatefulWidget {
     required Timeline timeline,
     this.config = MessageToolbarConfig.chat,
     this.messageTargetId,
+    this.highlightVocabLemmas,
     super.key,
   }) : _initialSelectedToken = initialSelectedToken,
        _nextEvent = nextEvent,
@@ -73,6 +80,8 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
   Event get event => widget._event;
 
   MessageToolbarConfig get config => widget.config;
+
+  Set<String>? get highlightVocabLemmas => widget.highlightVocabLemmas;
 
   PangeaTokenText? _selectedSpan;
   ValueNotifier<PangeaToken?> selectedTokenNotifier = ValueNotifier(null);
