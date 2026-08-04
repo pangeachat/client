@@ -18,8 +18,9 @@ void main() {
     final icon = tester.widget<Icon>(iconFinder);
     // Neutral meta colour (onSurfaceVariant), NOT the warning-orange — an edit
     // is normal, not an error.
-    final expected =
-        Theme.of(tester.element(iconFinder)).colorScheme.onSurfaceVariant;
+    final expected = Theme.of(
+      tester.element(iconFinder),
+    ).colorScheme.onSurfaceVariant;
     expect(icon.color, expected);
   });
 

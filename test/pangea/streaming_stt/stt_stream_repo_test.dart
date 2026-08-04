@@ -312,60 +312,55 @@ void main() {
       },
     );
 
-    test(
-      'records degraded + primary from the provider frame and fires '
-      'providerUpdates (H9b degradation banner wiring)',
-      () async {
-        final repo = openRepoWithReadyHandshake();
-        repo.debugHandleInbound(
-          jsonEncode(<String, dynamic>{'type': 'ready', 'wire': 2}),
-        );
-        var updates = 0;
-        repo.providerUpdates.listen((_) => updates++);
+    test('records degraded + primary from the provider frame and fires '
+        'providerUpdates (H9b degradation banner wiring)', () async {
+      final repo = openRepoWithReadyHandshake();
+      repo.debugHandleInbound(
+        jsonEncode(<String, dynamic>{'type': 'ready', 'wire': 2}),
+      );
+      var updates = 0;
+      repo.providerUpdates.listen((_) => updates++);
 
-        // Neutral defaults until any provider frame arrives.
-        expect(repo.degraded, isFalse);
-        expect(repo.primaryProvider, isNull);
+      // Neutral defaults until any provider frame arrives.
+      expect(repo.degraded, isFalse);
+      expect(repo.primaryProvider, isNull);
 
-        repo.debugHandleInbound(
-          jsonEncode(<String, dynamic>{
-            'type': 'provider',
-            'id': 'assemblyai',
-            'degraded': true,
-            'primary': 'deepgram',
-          }),
-        );
-        await pumpEventQueue();
+      repo.debugHandleInbound(
+        jsonEncode(<String, dynamic>{
+          'type': 'provider',
+          'id': 'assemblyai',
+          'degraded': true,
+          'primary': 'deepgram',
+        }),
+      );
+      await pumpEventQueue();
 
-        expect(repo.selectedProvider, 'assemblyai'); // still the SERVING id
-        expect(repo.degraded, isTrue);
-        expect(repo.primaryProvider, 'deepgram');
-        expect(
-          updates,
-          1,
-          reason: 'a live listener (the session) must be able to rebuild '
-              'promptly instead of waiting for the next partial',
-        );
-      },
-    );
+      expect(repo.selectedProvider, 'assemblyai'); // still the SERVING id
+      expect(repo.degraded, isTrue);
+      expect(repo.primaryProvider, 'deepgram');
+      expect(
+        updates,
+        1,
+        reason:
+            'a live listener (the session) must be able to rebuild '
+            'promptly instead of waiting for the next partial',
+      );
+    });
 
-    test(
-      'a normal (non-degraded) provider frame defaults degraded=false, '
-      'primary=null (H9b)',
-      () {
-        final repo = openRepoWithReadyHandshake();
-        repo.debugHandleInbound(
-          jsonEncode(<String, dynamic>{'type': 'ready', 'wire': 2}),
-        );
-        repo.debugHandleInbound(
-          jsonEncode(<String, dynamic>{'type': 'provider', 'id': 'deepgram'}),
-        );
+    test('a normal (non-degraded) provider frame defaults degraded=false, '
+        'primary=null (H9b)', () {
+      final repo = openRepoWithReadyHandshake();
+      repo.debugHandleInbound(
+        jsonEncode(<String, dynamic>{'type': 'ready', 'wire': 2}),
+      );
+      repo.debugHandleInbound(
+        jsonEncode(<String, dynamic>{'type': 'provider', 'id': 'deepgram'}),
+      );
 
-        expect(repo.selectedProvider, 'deepgram');
-        expect(repo.degraded, isFalse);
-        expect(repo.primaryProvider, isNull);
-      },
-    );
+      expect(repo.selectedProvider, 'deepgram');
+      expect(repo.degraded, isFalse);
+      expect(repo.primaryProvider, isNull);
+    });
   });
 
   group('outbound framing', () {

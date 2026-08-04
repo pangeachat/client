@@ -1228,21 +1228,18 @@ void main() {
       },
     );
 
-    test(
-      'degraded-live status is server-authoritative (H9b): isDegradedLive / '
-      'degradedPrimaryProvider delegate to the repo, alongside service',
-      () {
-        final repo = _FakeRepo();
-        final session = _degradeSession(repo);
-        expect(session.isDegradedLive, isFalse); // neutral before any frame
-        expect(session.degradedPrimaryProvider, isNull);
+    test('degraded-live status is server-authoritative (H9b): isDegradedLive / '
+        'degradedPrimaryProvider delegate to the repo, alongside service', () {
+      final repo = _FakeRepo();
+      final session = _degradeSession(repo);
+      expect(session.isDegradedLive, isFalse); // neutral before any frame
+      expect(session.degradedPrimaryProvider, isNull);
 
-        repo.degraded = true;
-        repo.primaryProvider = 'deepgram';
-        expect(session.isDegradedLive, isTrue);
-        expect(session.degradedPrimaryProvider, 'deepgram');
-      },
-    );
+      repo.degraded = true;
+      repo.primaryProvider = 'deepgram';
+      expect(session.isDegradedLive, isTrue);
+      expect(session.degradedPrimaryProvider, 'deepgram');
+    });
   });
 
   group(
@@ -1275,7 +1272,8 @@ void main() {
           expect(
             updates,
             greaterThan(0),
-            reason: 'the banner must be able to appear WHILE still '
+            reason:
+                'the banner must be able to appear WHILE still '
                 'recording, without waiting on the next partial',
           );
           expect(session.isDegradedLive, isTrue);
@@ -1295,10 +1293,7 @@ void main() {
           expect(await session.start(), isTrue);
 
           channel.emit(
-            jsonEncode(<String, dynamic>{
-              'type': 'provider',
-              'id': 'deepgram',
-            }),
+            jsonEncode(<String, dynamic>{'type': 'provider', 'id': 'deepgram'}),
           );
           await pumpEventQueue();
 

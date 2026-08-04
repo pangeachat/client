@@ -518,9 +518,7 @@ void main() {
             'primary': 'deepgram',
           }),
         );
-        await tester.runAsync(
-          () async => Future<void>.delayed(Duration.zero),
-        );
+        await tester.runAsync(() async => Future<void>.delayed(Duration.zero));
         await tester.pump();
 
         expect(m.state.degradationBanner, DegradationBannerKind.degradedLive);
@@ -544,9 +542,7 @@ void main() {
             'code': 'all_providers_down',
           }),
         );
-        await tester.runAsync(
-          () async => Future<void>.delayed(Duration.zero),
-        );
+        await tester.runAsync(() async => Future<void>.delayed(Duration.zero));
         await tester.pump();
 
         expect(
@@ -575,9 +571,7 @@ void main() {
             speechFinal: false,
           ),
         );
-        await tester.runAsync(
-          () async => Future<void>.delayed(Duration.zero),
-        );
+        await tester.runAsync(() async => Future<void>.delayed(Duration.zero));
         await tester.pump();
 
         expect(m.state.degradationBanner, DegradationBannerKind.none);
@@ -626,9 +620,7 @@ void main() {
             'primary': 'deepgram',
           }),
         );
-        await tester.runAsync(
-          () async => Future<void>.delayed(Duration.zero),
-        );
+        await tester.runAsync(() async => Future<void>.delayed(Duration.zero));
         await tester.pump();
         m.state.dismissDegradationBanner();
         await tester.pump();
@@ -645,9 +637,7 @@ void main() {
             'code': 'all_providers_down',
           }),
         );
-        await tester.runAsync(
-          () async => Future<void>.delayed(Duration.zero),
-        );
+        await tester.runAsync(() async => Future<void>.delayed(Duration.zero));
         await tester.pump();
 
         expect(

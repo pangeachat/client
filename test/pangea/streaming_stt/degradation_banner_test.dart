@@ -49,9 +49,7 @@ void main() {
     );
   });
 
-  testWidgets('degradedLive renders its exact editorial copy', (
-    tester,
-  ) async {
+  testWidgets('degradedLive renders its exact editorial copy', (tester) async {
     await pumpBanner(
       tester,
       DegradationBannerKind.degradedLive,

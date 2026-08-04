@@ -73,7 +73,10 @@ void main() {
         isTrue,
       );
       expect(
-        StreamingSttGate.applies(flagEnabled: true, messageLangCodeShort: 'de-AT'),
+        StreamingSttGate.applies(
+          flagEnabled: true,
+          messageLangCodeShort: 'de-AT',
+        ),
         isTrue,
         reason: 'region tags canonicalize to de',
       );
@@ -132,59 +135,72 @@ void main() {
   });
 
   group('StreamingSttGate.languageUnsupported (D11 banner trigger)', () {
-    test('flag OFF -> no unsupported-language banner, even for a batch-only lang', () {
-      expect(
-        StreamingSttGate.languageUnsupported(
-          flagEnabled: false,
-          messageLangCodeShort: 'ar',
-        ),
-        isFalse,
-      );
-    });
+    test(
+      'flag OFF -> no unsupported-language banner, even for a batch-only lang',
+      () {
+        expect(
+          StreamingSttGate.languageUnsupported(
+            flagEnabled: false,
+            messageLangCodeShort: 'ar',
+          ),
+          isFalse,
+        );
+      },
+    );
 
-    test('flag ON + null language -> silent (unresolved L2 is NOT a language failure)', () {
-      // Codex LOW: a not-loaded-yet target language must not be mislabeled as
-      // "not available for this language" — it is the same silent no-banner
-      // outcome as a flag-off session.
-      expect(
-        StreamingSttGate.languageUnsupported(
-          flagEnabled: true,
-          messageLangCodeShort: null,
-        ),
-        isFalse,
-      );
-    });
-
-    test('flag ON + empty/blank language -> silent (canonicalizes to null)', () {
-      expect(
-        StreamingSttGate.languageUnsupported(
-          flagEnabled: true,
-          messageLangCodeShort: '',
-        ),
-        isFalse,
-      );
-      expect(
-        StreamingSttGate.languageUnsupported(
-          flagEnabled: true,
-          messageLangCodeShort: '   ',
-        ),
-        isFalse,
-      );
-    });
-
-    test('flag ON + a routed language (en/es/fr) -> no banner (streaming applies)', () {
-      // 'de' included: German is an owner-override streaming language, so no unsupported banner.
-      for (final lang in <String>['de', 'en', 'es', 'fr', 'it', 'pt']) {
+    test(
+      'flag ON + null language -> silent (unresolved L2 is NOT a language failure)',
+      () {
+        // Codex LOW: a not-loaded-yet target language must not be mislabeled as
+        // "not available for this language" — it is the same silent no-banner
+        // outcome as a flag-off session.
         expect(
           StreamingSttGate.languageUnsupported(
             flagEnabled: true,
-            messageLangCodeShort: lang,
+            messageLangCodeShort: null,
           ),
           isFalse,
-          reason: '$lang is routed -> streaming applies, so no unsupported banner',
         );
-      }
-    });
+      },
+    );
+
+    test(
+      'flag ON + empty/blank language -> silent (canonicalizes to null)',
+      () {
+        expect(
+          StreamingSttGate.languageUnsupported(
+            flagEnabled: true,
+            messageLangCodeShort: '',
+          ),
+          isFalse,
+        );
+        expect(
+          StreamingSttGate.languageUnsupported(
+            flagEnabled: true,
+            messageLangCodeShort: '   ',
+          ),
+          isFalse,
+        );
+      },
+    );
+
+    test(
+      'flag ON + a routed language (en/es/fr) -> no banner (streaming applies)',
+      () {
+        // 'de' included: German is an owner-override streaming language, so no unsupported banner.
+        for (final lang in <String>['de', 'en', 'es', 'fr', 'it', 'pt']) {
+          expect(
+            StreamingSttGate.languageUnsupported(
+              flagEnabled: true,
+              messageLangCodeShort: lang,
+            ),
+            isFalse,
+            reason:
+                '$lang is routed -> streaming applies, so no unsupported banner',
+          );
+        }
+      },
+    );
 
     test('flag ON + a KNOWN but unrouted/batch-only language -> banner fires', () {
       // 'de' removed: German is now a routed owner-override language, not batch-only.
@@ -195,22 +211,26 @@ void main() {
             messageLangCodeShort: lang,
           ),
           isTrue,
-          reason: '$lang is a known language absent from the W3 D3 streaming table',
+          reason:
+              '$lang is a known language absent from the W3 D3 streaming table',
         );
       }
     });
 
-    test('flag ON + Chinese aliases fold to the batch-only zh key -> banner fires', () {
-      for (final lang in <String>['cmn', 'yue', 'zh-Hant', 'zh-TW']) {
-        expect(
-          StreamingSttGate.languageUnsupported(
-            flagEnabled: true,
-            messageLangCodeShort: lang,
-          ),
-          isTrue,
-          reason: '$lang canonicalizes to zh, which is batch-only',
-        );
-      }
-    });
+    test(
+      'flag ON + Chinese aliases fold to the batch-only zh key -> banner fires',
+      () {
+        for (final lang in <String>['cmn', 'yue', 'zh-Hant', 'zh-TW']) {
+          expect(
+            StreamingSttGate.languageUnsupported(
+              flagEnabled: true,
+              messageLangCodeShort: lang,
+            ),
+            isTrue,
+            reason: '$lang canonicalizes to zh, which is batch-only',
+          );
+        }
+      },
+    );
   });
 }
