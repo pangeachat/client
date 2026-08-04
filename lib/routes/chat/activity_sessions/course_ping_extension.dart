@@ -26,13 +26,16 @@ extension CoursePingRoomExtension on Room {
     }
   }
 
-  Future<void> sendActivityPing(String body, {required String activityId}) =>
-      sendEvent({
-        "body": body,
-        "msgtype": MessageTypes.Text,
-        CoursePingConstants.coursePingRoomId: id,
-        CoursePingConstants.coursePingActivityId: activityId,
-      });
+  Future<void> sendActivityPing(
+    String body, {
+    required String activityId,
+    required String sessionRoomId,
+  }) => sendEvent({
+    "body": body,
+    "msgtype": MessageTypes.Text,
+    CoursePingConstants.coursePingRoomId: sessionRoomId,
+    CoursePingConstants.coursePingActivityId: activityId,
+  });
 }
 
 extension on Event {
