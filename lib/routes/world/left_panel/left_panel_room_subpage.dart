@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart';
-
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
@@ -69,18 +67,9 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
     // A space has no timeline, so it must never render as a chat — drop to a
     // graceful empty state instead of spinning up a ChatController on it.
+    // A LEFT room deliberately does NOT drop here: getRoomById also returns
+    // archived rooms, and those stay viewable as read-only chats (#8148).
     if (room == null || room.isSpace) {
-      return emptyPage;
-    }
-
-    // A `room:` token is a live chat. Once the user has left (or been removed
-    // from) the room, getRoomById still returns the archived copy, which would
-    // otherwise render as a chat — show the no-longer-participating state
-    // instead (#8148). Archive panels (`session:`, `archivedroom:`) are meant
-    // to display left rooms, so they fall through. Invites also fall through:
-    // the chat view auto-joins them.
-    if (tokenType == PanelTypesEnum.room &&
-        {Membership.leave, Membership.ban}.contains(room.membership)) {
       return emptyPage;
     }
 
