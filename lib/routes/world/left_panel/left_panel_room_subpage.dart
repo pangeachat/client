@@ -67,6 +67,8 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
     // A space has no timeline, so it must never render as a chat — drop to a
     // graceful empty state instead of spinning up a ChatController on it.
+    // A LEFT room deliberately does NOT drop here: getRoomById also returns
+    // archived rooms, and those stay viewable as read-only chats (#8148).
     if (room == null || room.isSpace) {
       return emptyPage;
     }
