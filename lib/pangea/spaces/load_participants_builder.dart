@@ -52,6 +52,11 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
     if (widget.room == null ||
         widget.room!.membership != Membership.join ||
         widget.room!.participantListComplete) {
+      // loading starts true; a room that skips the fetch (e.g. one the user
+      // has left) must still clear it or consumers spin forever (#8148).
+      if (loading) {
+        setState(() => loading = false);
+      }
       return;
     }
 
