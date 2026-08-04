@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-04 09:29:23.737319",
+    "@@last_modified": "2026-08-04 10:31:22.793453",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Air a chruinneachadh ann an còmhradh",
     "constructUseNanDesc": "Neo-iomchaidh",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Teacs-gu-cainnt air a chomasachadh",
-    "enableTTSToolDescription": "Leig leis an aplacaid toradh teacs-gu-cainnt a ghineadh airson earrannan teacsa anns an cànan targaid agad.",
     "yourUsername": "An t-ainm-cleachdaiche agad",
     "yourEmail": "Am post-d agad",
     "iWantToLearn": "Tha mi airson ionnsachadh",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "ÙR",
     "exitVocabPracticeSession": "Cha tèid adhartas an t-seisein cleachdaidh briathrachais làithreach agad a shàbhaladh.",
     "exitGrammarPracticeSession": "Cha tèid adhartas an t-seisein cleachdaidh gràmair làithreach agad a shàbhaladh.",
-    "autoReadAloudMessagesToolName": "Leugh a-mach gu fèin-obrachail a h-uile teachdaireachd a gheibhear",
-    "autoReadAloudMessagesDescription": "Nuair a gheibhear teachdaireachd, thèid guth an uidheim a chleachdadh gus an teachdaireachd a leughadh a-mach airson cleachdadh èisteachd.",
     "activityFilterButtonsLabel": "Putanan sìolaidh airson ìre, cluicheadairean, agus inbhe",
     "mapFilterAllLevels": "A h-uile ìre",
     "mapFilterAllPlayers": "A h-uile cluicheadair",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Chan eil gnìomhachd sam bith san sgìre seo.",
     "practiceSessionTimedOut": "Thàinig an seisean cleachdaidh agad gu crìch an dèidh {minutes} mionaid gun ghnìomhachd.",
     "autocorrectMobileOnly": "Fòn-làimhe a-mhàin",
-    "autocorrectMobileOnlyWarning": "Chan eil fèin-cheartachadh inneal ri fhaighinn ach air an aplacaid fòn-làimhe."
+    "autocorrectMobileOnlyWarning": "Chan eil fèin-cheartachadh inneal ri fhaighinn ach air an aplacaid fòn-làimhe.",
+    "audioSectionTitle": "Fuaim",
+    "audioWordsToolName": "Faclan",
+    "audioWordsDescription": "Cluich fuaim facail nuair a thapas tu air.",
+    "audioChoicesToolName": "Roghainnean",
+    "audioChoicesDescription": "Cluich fuaim airson roghainnean freagairt ann an gnìomhachdan cleachdaidh.",
+    "audioIncomingMessagesToolName": "Teachdaireachdan a tha a' tighinn a-steach",
+    "audioIncomingMessagesDescription": "Leugh teachdaireachdan a fhuaireadh gu fèin-obrachail a-mach anns an targaid-chànain agad airson cleachdadh èisteachd."
 }

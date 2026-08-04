@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-04 09:29:22.376288",
+    "@@last_modified": "2026-08-04 10:31:19.905879",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Casglwyd mewn sgwrs",
     "constructUseNanDesc": "Ddim yn berthnasol",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Testun-i-leferydd wedi'i alluogi",
-    "enableTTSToolDescription": "Caniatáu i'r ap gynhyrchu allbwn testun-i-leferydd ar gyfer rhannau o destun yn eich iaith darged.",
     "yourUsername": "Eich enw defnyddiwr",
     "yourEmail": "Eich e-bost",
     "iWantToLearn": "Dw i eisiau dysgu",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "NEWYDD",
     "exitVocabPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer geirfa gyfredol ei gadw.",
     "exitGrammarPracticeSession": "Ni chaiff cynnydd eich sesiwn ymarfer gramadeg gyfredol ei gadw.",
-    "autoReadAloudMessagesToolName": "Darllenwch bob neges a dderbyniwyd yn awtomatig",
-    "autoReadAloudMessagesDescription": "Pan dderbynnir neges, bydd llais y ddyfais yn cael ei ddefnyddio i ddarllen y neges yn uchel ar gyfer ymarfer gwrando.",
     "activityFilterButtonsLabel": "Botymau hidlo lefel, chwaraewyr a statws",
     "mapFilterAllLevels": "Pob lefel",
     "mapFilterAllPlayers": "Pob chwaraewr",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Dim gweithgareddau yn yr ardal hon.",
     "practiceSessionTimedOut": "Daeth eich sesiwn ymarfer i ben ar ôl {minutes} munud heb weithgarwch.",
     "autocorrectMobileOnly": "Symudol yn unig",
-    "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig."
+    "autocorrectMobileOnlyWarning": "Mae awto-gywiro dyfais ar gael ar yr ap symudol yn unig.",
+    "audioSectionTitle": "Sain",
+    "audioWordsToolName": "Geiriau",
+    "audioWordsDescription": "Chwarae sain gair pan fyddwch chi'n tapio arno.",
+    "audioChoicesToolName": "Dewisiadau",
+    "audioChoicesDescription": "Chwarae sain ar gyfer dewisiadau ateb mewn gweithgareddau ymarfer.",
+    "audioIncomingMessagesToolName": "Negeseuon sy'n dod i mewn",
+    "audioIncomingMessagesDescription": "Darllenwch negeseuon a dderbyniwyd yn awtomatig yn uchel yn eich iaith darged ar gyfer ymarfer gwrando."
 }

@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-04 09:29:30.583989",
+    "@@last_modified": "2026-08-04 10:31:35.300236",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3303,8 +3303,6 @@
     "constructUseCollected": "Chatda to'plangan",
     "constructUseNanDesc": "Qo'llanilmaydi",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Matnni nutqqa aylantirish yoqildi",
-    "enableTTSToolDescription": "Ilovaga matnning maqsadli tilingizdagi bo'laklari uchun matnni nutqqa aylantirish chiqishini yaratishga imkon beradi.",
     "yourUsername": "Sizning foydalanuvchi nomingiz",
     "yourEmail": "Sizning elektron pochta manzilingiz",
     "iWantToLearn": "O'rganishni istayman",
@@ -5679,14 +5677,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9681,8 +9671,6 @@
     "newActivityBadge": "YANGI",
     "exitVocabPracticeSession": "Joriy lugʻat mashgʻuloti jarayoni saqlanmaydi.",
     "exitGrammarPracticeSession": "Joriy grammatika mashgʻuloti jarayoni saqlanmaydi.",
-    "autoReadAloudMessagesToolName": "Barcha qabul qilingan xabarlarni avtomatik o'qish",
-    "autoReadAloudMessagesDescription": "Xabar qabul qilinganda, tinglash amaliyoti uchun qurilma ovozi xabarni baland ovozda o'qish uchun ishlatiladi.",
     "activityFilterButtonsLabel": "Daraja, oʻyinchilar va holat filtri tugmalari",
     "mapFilterAllLevels": "Barcha darajalar",
     "mapFilterAllPlayers": "Barcha oʻyinchilar",
@@ -9699,5 +9687,12 @@
     "mapNoActivitiesArea": "Bu hududda faoliyat yoʻq.",
     "practiceSessionTimedOut": "Faoliyatsiz {minutes} daqiqadan so‘ng mashg‘ulotingiz tugadi.",
     "autocorrectMobileOnly": "Faqat mobil qurilmalar uchun",
-    "autocorrectMobileOnlyWarning": "Qurilma avtokorreksiyasi faqat mobil ilovada mavjud."
+    "autocorrectMobileOnlyWarning": "Qurilma avtokorreksiyasi faqat mobil ilovada mavjud.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "So'zlar",
+    "audioWordsDescription": "So'zga tekkanda uning audiosini ijro eting.",
+    "audioChoicesToolName": "Tanlovlar",
+    "audioChoicesDescription": "Mashq faoliyatlarida javob tanlovlari uchun audio ijro eting.",
+    "audioIncomingMessagesToolName": "Kiruvchi xabarlar",
+    "audioIncomingMessagesDescription": "Tinglash amaliyoti uchun qabul qilingan xabarlarni avtomatik ravishda maqsadli tilingizda ovoz chiqarib o'qing."
 }

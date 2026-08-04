@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-04 09:29:29.948129",
+    "@@last_modified": "2026-08-04 10:31:34.492930",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "E bokeletsoe moqoqong",
     "constructUseNanDesc": "Ha e sebetse",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "E nolofalitse mongolo-ho-puo",
-    "enableTTSToolDescription": "Lumella sesebelisoa ho hlahisa mongolo-ho-puo bakeng sa likarolo tsa mongolo ka puo eo u e shebileng.",
     "yourUsername": "Lebitso la hau la mosebelisi",
     "yourEmail": "Lengolo-tsoibila la hau",
     "iWantToLearn": "Ke batla ho ithuta",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "E NCHA",
     "exitVocabPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa mantsoe a macha e ke ke ea bolokoa.",
     "exitGrammarPracticeSession": "Tsoelo-pele ea hau ea hajoale ea ho itloaetsa sebōpeho-puo e ke ke ea bolokoa.",
-    "autoReadAloudMessagesToolName": "Bala melaetsa yohle e amohetsweng ka boyona",
-    "autoReadAloudMessagesDescription": "Ha molaetsa o amohetswe, lentswe la sesebediswa le tla sebediswa ho bala molaetsa ka lentswe le phahameng bakeng sa tloaelo ya ho mamela.",
     "activityFilterButtonsLabel": "Maemo, libapali, le likonopo tsa ho sefa boemo",
     "mapFilterAllLevels": "Maemo ohle",
     "mapFilterAllPlayers": "Libapali tsohle",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Ha ho ditshebetso sebakeng sena.",
     "practiceSessionTimedOut": "Thuto ea hau ea boikoetliso e felile kamora metsotso e {minutes} ntle le ts'ebetso.",
     "autocorrectMobileOnly": "Fono feela",
-    "autocorrectMobileOnlyWarning": "Ho lokisa ka bo ho bona ho fumaneha feela ho app ea mohala."
+    "autocorrectMobileOnlyWarning": "Ho lokisa ka bo ho bona ho fumaneha feela ho app ea mohala.",
+    "audioSectionTitle": "Modumo",
+    "audioWordsToolName": "Mantswe",
+    "audioWordsDescription": "Bapala modumo wa lentswe ha o le tlanya.",
+    "audioChoicesToolName": "Dikgetho",
+    "audioChoicesDescription": "Bapala modumo bakeng sa dikgetho tsa dikarabo ditshebedisong tsa boitsebelo.",
+    "audioIncomingMessagesToolName": "Melaetsa e kenang",
+    "audioIncomingMessagesDescription": "Bala melaetsa e amohetsweng ka boyona ka lentswe le phahameng ka puo eo o e ithutang bakeng sa boitsebelo ba ho mamela."
 }

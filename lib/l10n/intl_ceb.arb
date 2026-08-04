@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-04 09:29:22.355174",
+    "@@last_modified": "2026-08-04 10:31:18.321025",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Nakolekta sa chat",
     "constructUseNanDesc": "Dili magamit",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Gipaandar ang text-to-speech",
-    "enableTTSToolDescription": "Tugoti ang app nga mogama og text-to-speech output para sa mga bahin sa teksto sa imong target nga pinulongan.",
     "yourUsername": "Imong username",
     "yourEmail": "Imong email",
     "iWantToLearn": "Gusto kong makat-on og",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "BAG-O",
     "exitVocabPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa bokabularyo dili maluwas.",
     "exitGrammarPracticeSession": "Ang imong kasamtangang pag-uswag sa sesyon sa pagpraktis sa gramatika dili maluwas.",
-    "autoReadAloudMessagesToolName": "Awtomatikong basahon og kusog ang tanang nadawat nga mensahe",
-    "autoReadAloudMessagesDescription": "Kung makadawat og mensahe, ang tingog sa device gamiton aron basahon og kusog ang mensahe para sa praktis sa pagpaminaw.",
     "activityFilterButtonsLabel": "Mga butones sa filter sa lebel, magdudula, ug status",
     "mapFilterAllLevels": "Tanan nga lebel",
     "mapFilterAllPlayers": "Tanan nga magdudula",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Walay mga kalihokan niining dapita.",
     "practiceSessionTimedOut": "Natapos ang imong practice session human sa {minutes} ka minuto nga walay kalihokan.",
     "autocorrectMobileOnly": "Mobile lang",
-    "autocorrectMobileOnlyWarning": "Ang autocorrect sa device anaa lang sa mobile app."
+    "autocorrectMobileOnlyWarning": "Ang autocorrect sa device anaa lang sa mobile app.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Mga Pulong",
+    "audioWordsDescription": "I-play ang audio sa usa ka pulong kon imong i-tap kini.",
+    "audioChoicesToolName": "Mga Pagpili",
+    "audioChoicesDescription": "I-play ang audio para sa mga pagpili sa tubag sa mga kalihokan sa pagpraktis.",
+    "audioIncomingMessagesToolName": "Mga umaabot nga mensahe",
+    "audioIncomingMessagesDescription": "Awtomatikong basahon og kusog ang nadawat nga mga mensahe sa imong target nga pinulongan para sa pagpraktis sa pagpaminaw."
 }

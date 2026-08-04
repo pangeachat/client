@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-04 09:29:29.451498",
+    "@@last_modified": "2026-08-04 10:31:32.811856",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Lagu ururiyey sheekada",
     "constructUseNanDesc": "Ma khuseeyo",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Qoraal-ku-hadal la hawlgeliyay",
-    "enableTTSToolDescription": "U oggolow abka inuu soo saaro qoraal-ku-hadal qaybo ka mid ah qoraalka luqaddaada bartilmaameedka ah.",
     "yourUsername": "Magacaaga isticmaale",
     "yourEmail": "Emailkaaga",
     "iWantToLearn": "Waxaan rabaa inaan barto",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "CUSUB",
     "exitVocabPracticeSession": "Horumarkaaga fadhiga ku celcelinta erayada hadda lama kaydin doono.",
     "exitGrammarPracticeSession": "Horumarkaaga fadhiga ku celcelinta naxwaha hadda lama kaydin doono.",
-    "autoReadAloudMessagesToolName": "Si toos ah u akhri dhammaan fariimaha la helay",
-    "autoReadAloudMessagesDescription": "Marka fariin la helo, codka qalabka ayaa loo isticmaali doonaa inuu si cod ah u akhriyo fariinta si loogu tababarto dhegeysiga.",
     "activityFilterButtonsLabel": "Badhamada shaandhaynta heerka, ciyaartoyda, iyo heerka",
     "mapFilterAllLevels": "Dhammaan heerarka",
     "mapFilterAllPlayers": "Dhammaan ciyaartoyda",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Ma jiraan wax hawlo ah aaggan.",
     "practiceSessionTimedOut": "Fadhigaaga tababarka wuxuu dhammaaday {minutes} daqiiqo ka dib markii aan wax dhaqdhaqaaq ah la samayn.",
     "autocorrectMobileOnly": "Kaliya moobilka",
-    "autocorrectMobileOnlyWarning": "Sixitaanka tooska ah ee aaladda waxa kaliya oo laga heli karaa abka mobaylka."
+    "autocorrectMobileOnlyWarning": "Sixitaanka tooska ah ee aaladda waxa kaliya oo laga heli karaa abka mobaylka.",
+    "audioSectionTitle": "Maqal",
+    "audioWordsToolName": "Erayo",
+    "audioWordsDescription": "Ku ciyaar maqaalka erayga marka aad taabato.",
+    "audioChoicesToolName": "Xulashooyin",
+    "audioChoicesDescription": "Ku ciyaar maqal xulashooyinka jawaabaha ee hawlaha tababarka.",
+    "audioIncomingMessagesToolName": "Fariimaha soo galaya",
+    "audioIncomingMessagesDescription": "Si toos ah u akhri fariimaha la helay si cod ah luqadda aad bartayso si aad u tababarto dhageysiga."
 }

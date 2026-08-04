@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-04 09:29:28.449786",
+    "@@last_modified": "2026-08-04 10:31:31.551210",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -6080,14 +6080,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8941,8 +8933,6 @@
     "constructUseCollected": "Собрано в чате",
     "constructUseNanDesc": "Не применяется",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Включено преобразование текста в речь",
-    "enableTTSToolDescription": "Разрешить приложению озвучивать части текста на вашем целевом языке.",
     "yourUsername": "Ваше имя пользователя",
     "yourEmail": "Ваш адрес электронной почты",
     "welcomeUser": "Добро пожаловать {user}",
@@ -10651,8 +10641,6 @@
     "newActivityBadge": "НОВОЕ",
     "exitVocabPracticeSession": "Прогресс текущей сессии по практике словарного запаса не будет сохранен.",
     "exitGrammarPracticeSession": "Прогресс текущей сессии по практике грамматики не будет сохранен.",
-    "autoReadAloudMessagesToolName": "Автоматически читать вслух все полученные сообщения",
-    "autoReadAloudMessagesDescription": "Когда сообщение получено, голос устройства будет использоваться для чтения сообщения вслух для практики аудирования.",
     "activityFilterButtonsLabel": "Кнопки фильтра по уровню, игрокам и статусу",
     "mapFilterAllLevels": "Все уровни",
     "mapFilterAllPlayers": "Все игроки",
@@ -10669,5 +10657,12 @@
     "mapNoActivitiesArea": "В этой области нет активностей.",
     "practiceSessionTimedOut": "Ваша тренировка завершилась после {minutes} минут бездействия.",
     "autocorrectMobileOnly": "Только для мобильных",
-    "autocorrectMobileOnlyWarning": "Автокоррекция доступна только в мобильном приложении."
+    "autocorrectMobileOnlyWarning": "Автокоррекция доступна только в мобильном приложении.",
+    "audioSectionTitle": "Аудио",
+    "audioWordsToolName": "Слова",
+    "audioWordsDescription": "Воспроизводить аудио слова при нажатии на него.",
+    "audioChoicesToolName": "Варианты",
+    "audioChoicesDescription": "Воспроизводить аудио для вариантов ответа в практических заданиях.",
+    "audioIncomingMessagesToolName": "Входящие сообщения",
+    "audioIncomingMessagesDescription": "Автоматически читать вслух полученные сообщения на вашем целевом языке для практики аудирования."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-04 09:29:26.945965",
+    "@@last_modified": "2026-08-04 10:31:29.024786",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Чатад цуглуулсан",
     "constructUseNanDesc": "Хамаарахгүй",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Текстээс яриа руу хөрвүүлэх идэвхжсэн",
-    "enableTTSToolDescription": "Апп-д таны зорилтот хэл дээрх текстийн хэсгүүдийг текстээс яриа руу хөрвүүлэх боломжийг олгоно.",
     "yourUsername": "Таны хэрэглэгчийн нэр",
     "yourEmail": "Таны и-мэйл",
     "iWantToLearn": "Би сурахыг хүсэж байна",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "ШИНЭ",
     "exitVocabPracticeSession": "Таны одоогийн үгийн сангийн дадлагын явц хадгалагдахгүй.",
     "exitGrammarPracticeSession": "Таны одоогийн дүрмийн дадлагын явц хадгалагдахгүй.",
-    "autoReadAloudMessagesToolName": "Ирсэн бүх мессежийг автоматаар чангаар унших",
-    "autoReadAloudMessagesDescription": "Мессеж ирэхэд төхөөрөмжийн дуу хоолойг ашиглан мессежийг чангаар уншиж, сонсох дадлага хийнэ.",
     "activityFilterButtonsLabel": "Түвшин, тоглогчид, болон төлөвийн шүүлтүүр товчлуурууд",
     "mapFilterAllLevels": "Бүх түвшин",
     "mapFilterAllPlayers": "Бүх тоглогчид",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Энэ хэсэгт үйл ажиллагаа байхгүй байна.",
     "practiceSessionTimedOut": "Таны дадлагын хичээл {minutes} минут идэвхгүй байсны дараа дууслаа.",
     "autocorrectMobileOnly": "Зөвхөн гар утсанд",
-    "autocorrectMobileOnlyWarning": "Төхөөрөмжийн автоматаар засах функц зөвхөн гар утасны апп дээр боломжтой."
+    "autocorrectMobileOnlyWarning": "Төхөөрөмжийн автоматаар засах функц зөвхөн гар утасны апп дээр боломжтой.",
+    "audioSectionTitle": "Дуу",
+    "audioWordsToolName": "Үгс",
+    "audioWordsDescription": "Үгэн дээр дарахад дууг нь тоглуулна.",
+    "audioChoicesToolName": "Сонголтууд",
+    "audioChoicesDescription": "Дасгалын хариултын сонголтуудын дууг тоглуулна.",
+    "audioIncomingMessagesToolName": "Ирж буй мессежүүд",
+    "audioIncomingMessagesDescription": "Сонсох дасгал хийх зорилгоор хүлээн авсан мессежүүдийг таны сурч буй хэлээр автоматаар чангаар уншина."
 }

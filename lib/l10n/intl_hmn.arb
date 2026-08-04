@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-04 09:29:24.249801",
+    "@@last_modified": "2026-08-04 10:31:23.822143",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Sau hauv kev sib tham",
     "constructUseNanDesc": "Tsis siv tau",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Qhib kev hais lus los ntawm ntawv",
-    "enableTTSToolDescription": "Tso cai rau lub app tsim kev hais lus los ntawm ntawv rau qee feem ntawm cov ntawv hauv koj hom lus.",
     "yourUsername": "Koj lub npe siv",
     "yourEmail": "Koj tus email",
     "iWantToLearn": "Kuv xav kawm",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "Tshiab",
     "exitVocabPracticeSession": "Qhov koj tab tom kawm lus tshiab yuav tsis raug cawm.",
     "exitGrammarPracticeSession": "Qhov koj tab tom kawm kev sau ntawv yuav tsis raug cawm.",
-    "autoReadAloudMessagesToolName": "Nyeem tag nrho cov lus tau txais kom nrov nrov",
-    "autoReadAloudMessagesDescription": "Thaum tau txais lus, lub cuab yeej lub suab yuav raug siv los nyeem cov lus kom nrov nrov rau kev xyaum mloog.",
     "activityFilterButtonsLabel": "Qib, cov neeg ua si, thiab cov nyees khawm lim xwm txheej",
     "mapFilterAllLevels": "Txhua qib",
     "mapFilterAllPlayers": "Txhua tus neeg ua si",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Tsis muaj kev ua si hauv cheeb tsam no.",
     "practiceSessionTimedOut": "Koj qhov kev xyaum kawm tau xaus lawm tom qab {minutes} feeb tsis muaj kev ua dab tsi.",
     "autocorrectMobileOnly": "Tsuas yog hauv xov tooj",
-    "autocorrectMobileOnlyWarning": "Kev kho lus yuam kev tsuas muaj nyob rau hauv lub xov tooj app xwb."
+    "autocorrectMobileOnlyWarning": "Kev kho lus yuam kev tsuas muaj nyob rau hauv lub xov tooj app xwb.",
+    "audioSectionTitle": "Suab",
+    "audioWordsToolName": "Cov lus",
+    "audioWordsDescription": "Ua si ib lo lus lub suab thaum koj coj rau nws.",
+    "audioChoicesToolName": "Kev xaiv",
+    "audioChoicesDescription": "Ua si suab rau cov lus teb hauv kev xyaum ua haujlwm.",
+    "audioIncomingMessagesToolName": "Cov lus tuaj",
+    "audioIncomingMessagesDescription": "Nyeem cov lus tau txais nrov nrov hauv koj hom lus rau kev xyaum mloog."
 }

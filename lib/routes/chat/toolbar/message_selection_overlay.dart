@@ -20,6 +20,7 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/events/tokens/collectable_tokens_mixin.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/message_selection_positioner.dart';
@@ -217,6 +218,7 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
       TtsController.tryToSpeak(
         selectedToken!.text.content,
         langCode: pangeaMessageEvent.messageDisplayLangCode,
+        useCase: TtsUseCase.words,
         pos: selectedToken!.pos,
         morph: selectedToken!.morph.map((k, v) => MapEntry(k.name, v)),
       );

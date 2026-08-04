@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-04 09:29:21.566896",
+    "@@last_modified": "2026-08-04 10:31:16.584926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Събрано в чата",
     "constructUseNanDesc": "Неприложимо",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Активиран текст-към-говор",
-    "enableTTSToolDescription": "Позволете на приложението да генерира текст-към-говор изход за части от текст на целевия ви език.",
     "yourUsername": "Вашето потребителско име",
     "yourEmail": "Вашият имейл",
     "iWantToLearn": "Искам да уча",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "НОВО",
     "exitVocabPracticeSession": "Напредъкът ви в текущата тренировка за лексика няма да бъде запазен.",
     "exitGrammarPracticeSession": "Напредъкът ви в текущата тренировка за граматика няма да бъде запазен.",
-    "autoReadAloudMessagesToolName": "Автоматично прочитане на глас на всички получени съобщения",
-    "autoReadAloudMessagesDescription": "Когато бъде получено съобщение, гласът на устройството ще бъде използван за прочитане на съобщението на глас за практика на слушане.",
     "activityFilterButtonsLabel": "Бутони за филтриране по ниво, играчи и статус",
     "mapFilterAllLevels": "Всички нива",
     "mapFilterAllPlayers": "Всички играчи",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Няма дейности в тази област.",
     "practiceSessionTimedOut": "Вашата тренировъчна сесия приключи след {minutes} минути без активност.",
     "autocorrectMobileOnly": "Само за мобилни устройства",
-    "autocorrectMobileOnlyWarning": "Автокорекцията на устройството е налична само в мобилното приложение."
+    "autocorrectMobileOnlyWarning": "Автокорекцията на устройството е налична само в мобилното приложение.",
+    "audioSectionTitle": "Аудио",
+    "audioWordsToolName": "Думи",
+    "audioWordsDescription": "Пускане на аудио на дума при докосване.",
+    "audioChoicesToolName": "Избори",
+    "audioChoicesDescription": "Пускане на аудио за опциите за отговор в практическите дейности.",
+    "audioIncomingMessagesToolName": "Входящи съобщения",
+    "audioIncomingMessagesDescription": "Автоматично четене на глас на получените съобщения на целевия език за практика на слушане."
 }

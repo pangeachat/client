@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:27.347737",
+    "@@last_modified": "2026-08-04 10:31:28.829769",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3199,8 +3199,6 @@
     "constructUseCollected": "Innsamlet i chat",
     "constructUseNanDesc": "Ikke aktuelt",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktivert tekst-til-tale",
-    "enableTTSToolDescription": "Tillat appen å generere tekst-til-tale-uttak for deler av teksten på målspråket ditt.",
     "yourUsername": "Ditt brukernavn",
     "yourEmail": "Din e-post",
     "iWantToLearn": "Jeg vil lære",
@@ -5359,14 +5357,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9734,8 +9724,6 @@
     "newActivityBadge": "NY",
     "exitVocabPracticeSession": "Fremdriften din i den nåværende ordforrådsøkten blir ikke lagret.",
     "exitGrammarPracticeSession": "Fremdriften din i den nåværende grammatikkøkten blir ikke lagret.",
-    "autoReadAloudMessagesToolName": "Les automatisk opp alle mottatte meldinger",
-    "autoReadAloudMessagesDescription": "Når en melding mottas, vil enhetens stemme bli brukt til å lese meldingen høyt for lytteøvelse.",
     "activityFilterButtonsLabel": "Filterknapper for nivå, spillere og status",
     "mapFilterAllLevels": "Alle nivåer",
     "mapFilterAllPlayers": "Alle spillere",
@@ -9752,5 +9740,12 @@
     "mapNoActivitiesArea": "Ingen aktiviteter i dette området.",
     "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet.",
     "autocorrectMobileOnly": "Kun mobil",
-    "autocorrectMobileOnlyWarning": "Enhetens autokorrektur er kun tilgjengelig i mobilappen."
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrektur er kun tilgjengelig i mobilappen.",
+    "audioSectionTitle": "Lyd",
+    "audioWordsToolName": "Ord",
+    "audioWordsDescription": "Spill av lyden for et ord når du trykker på det.",
+    "audioChoicesToolName": "Valg",
+    "audioChoicesDescription": "Spill av lyd for svaralternativer i øvelser.",
+    "audioIncomingMessagesToolName": "Innkommende meldinger",
+    "audioIncomingMessagesDescription": "Les automatisk mottatte meldinger høyt på målspråket ditt for lytteøvelser."
 }

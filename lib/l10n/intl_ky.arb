@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-04 09:29:25.564330",
+    "@@last_modified": "2026-08-04 10:31:26.579148",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Чатта чогултулган",
     "constructUseNanDesc": "Колдонулбайт",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Текстти кепке айландыруу иштетилди",
-    "enableTTSToolDescription": "Колдонмого максаттуу тилдеги тексттин бөлүктөрү үчүн текстти кепке айландырууну түзүүгө уруксат бериңиз.",
     "yourUsername": "Сиздин колдонуучу атыңыз",
     "yourEmail": "Сиздин электрондук почтаңыз",
     "iWantToLearn": "Мен үйрөнгүм келет",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "ЖАҢЫ",
     "exitVocabPracticeSession": "Учурдагы сөз байлыгын үйрөнүү сессияңыздын жүрүшү сакталбайт.",
     "exitGrammarPracticeSession": "Учурдагы грамматикалык практика сессияңыздын жүрүшү сакталбайт.",
-    "autoReadAloudMessagesToolName": "Бардык келген билдирүүлөрдү автоматтык түрдө үн чыгарып окуу",
-    "autoReadAloudMessagesDescription": "Билдирүү келгенде, угуу практикасы үчүн билдирүүнү үн чыгарып окуу үчүн аппараттын үнү колдонулат.",
     "activityFilterButtonsLabel": "Деңгээл, оюнчулар жана абал чыпкалоо баскычтары",
     "mapFilterAllLevels": "Бардык деңгээлдер",
     "mapFilterAllPlayers": "Бардык оюнчулар",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Бул аймакта эч кандай иш-аракеттер жок.",
     "practiceSessionTimedOut": "Сиздин машыгуу сессияңыз {minutes} мүнөт аракетсиздиктен кийин аяктады.",
     "autocorrectMobileOnly": "Мобилдик түзмөктөр үчүн гана",
-    "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү."
+    "autocorrectMobileOnlyWarning": "Түзмөктүн автооңдоосу мобилдик колдонмодо гана жеткиликтүү.",
+    "audioSectionTitle": "Аудио",
+    "audioWordsToolName": "Сөздөр",
+    "audioWordsDescription": "Сөздү басканда анын аудиосун ойнот.",
+    "audioChoicesToolName": "Тандоолор",
+    "audioChoicesDescription": "Практикалык иш-чаралардагы жооп тандоолору үчүн аудиону ойнот.",
+    "audioIncomingMessagesToolName": "Кирүүчү билдирүүлөр",
+    "audioIncomingMessagesDescription": "Угуу практикасы үчүн келген билдирүүлөрдү автоматтык түрдө максаттуу тилиңизде үн чыгарып окуңуз."
 }

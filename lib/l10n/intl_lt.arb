@@ -2708,8 +2708,6 @@
     "constructUseCollected": "Surinkta pokalbyje",
     "constructUseNanDesc": "Nepatikoma",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Įjungtas teksto į kalbą įrankis",
-    "enableTTSToolDescription": "Leiskite programai generuoti tekstą į kalbą išvestį tam tikroms teksto dalims jūsų tikslo kalba.",
     "yourUsername": "Jūsų vartotojo vardas",
     "yourEmail": "Jūsų el. paštas",
     "iWantToLearn": "Noriu mokytis",
@@ -2978,7 +2976,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-04 09:29:26.203906",
+    "@@last_modified": "2026-08-04 10:31:27.456899",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5904,14 +5902,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10458,8 +10448,6 @@
     "newActivityBadge": "NAUJAS",
     "exitVocabPracticeSession": "Dabartinė žodyno praktikos sesijos eiga nebus išsaugota.",
     "exitGrammarPracticeSession": "Dabartinė gramatikos praktikos sesijos eiga nebus išsaugota.",
-    "autoReadAloudMessagesToolName": "Automatiškai perskaityti visus gautus pranešimus",
-    "autoReadAloudMessagesDescription": "Kai gaunamas pranešimas, įrenginio balsas bus naudojamas pranešimui perskaityti, kad būtų galima praktikuotis klausytis.",
     "activityFilterButtonsLabel": "Lygio, žaidėjų ir būsenos filtro mygtukai",
     "mapFilterAllLevels": "Visi lygiai",
     "mapFilterAllPlayers": "Visi žaidėjai",
@@ -10476,5 +10464,12 @@
     "mapNoActivitiesArea": "Šioje srityje nėra jokios veiklos.",
     "practiceSessionTimedOut": "Jūsų praktikos sesija baigėsi po {minutes} minučių be veiklos.",
     "autocorrectMobileOnly": "Tik mobiliesiems",
-    "autocorrectMobileOnlyWarning": "Įrenginio automatinis taisymas galimas tik mobiliojoje programėlėje."
+    "autocorrectMobileOnlyWarning": "Įrenginio automatinis taisymas galimas tik mobiliojoje programėlėje.",
+    "audioSectionTitle": "Garsas",
+    "audioWordsToolName": "Žodžiai",
+    "audioWordsDescription": "Paleiskite žodžio garsą, kai jį paliečiate.",
+    "audioChoicesToolName": "Pasirinkimai",
+    "audioChoicesDescription": "Paleiskite atsakymų variantų garsą praktikos veiklose.",
+    "audioIncomingMessagesToolName": "Gaunami pranešimai",
+    "audioIncomingMessagesDescription": "Automatiškai garsiai perskaitykite gautus pranešimus jūsų tiksline kalba, kad lavintumėte klausymą."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:23.898867",
+    "@@last_modified": "2026-08-04 10:31:22.814037",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2097,8 +2097,6 @@
     "constructUseCollected": "אסוף בצ'אט",
     "constructUseNanDesc": "לא רלוונטי",
     "xpIntoLevel": "{currentXP} / {maxXP} נקודות ניסיון",
-    "enableTTSToolName": "הפעל טקסט לדיבור",
-    "enableTTSToolDescription": "אפשר לאפליקציה לייצר פלט טקסט לדיבור לחלקי טקסט בשפת היעד שלך.",
     "yourUsername": "שם המשתמש שלך",
     "yourEmail": "הדוא\"ל שלך",
     "iWantToLearn": "אני רוצה ללמוד",
@@ -6043,14 +6041,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10597,8 +10587,6 @@
     "newActivityBadge": "חדש",
     "exitVocabPracticeSession": "ההתקדמות שלך באימון אוצר המילים הנוכחי לא תישמר.",
     "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
-    "autoReadAloudMessagesToolName": "הקראה אוטומטית של כל ההודעות שהתקבלו",
-    "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה.",
     "activityFilterButtonsLabel": "לחצני סינון לפי רמה, שחקנים וסטטוס",
     "mapFilterAllLevels": "כל הרמות",
     "mapFilterAllPlayers": "כל השחקנים",
@@ -10615,5 +10603,12 @@
     "mapNoActivitiesArea": "אין פעילויות באזור זה.",
     "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות.",
     "autocorrectMobileOnly": "נייד בלבד",
-    "autocorrectMobileOnlyWarning": "התיקון האוטומטי זמין רק באפליקציה לנייד."
+    "autocorrectMobileOnlyWarning": "התיקון האוטומטי זמין רק באפליקציה לנייד.",
+    "audioSectionTitle": "שמע",
+    "audioWordsToolName": "מילים",
+    "audioWordsDescription": "השמעת מילה בלחיצה עליה.",
+    "audioChoicesToolName": "אפשרויות",
+    "audioChoicesDescription": "השמעת אודיו עבור אפשרויות התשובה בפעילויות תרגול.",
+    "audioIncomingMessagesToolName": "הודעות נכנסות",
+    "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה."
 }

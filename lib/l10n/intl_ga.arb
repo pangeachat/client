@@ -3304,8 +3304,6 @@
     "constructUseCollected": "Bailithe i gcomhrá",
     "constructUseNanDesc": "Níl infheidhmithe",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Cumasaíodh téacs-go-huaiseacht",
-    "enableTTSToolDescription": "Ceadaigh don aip toradh téacs-go-huaiseacht a ghiniúint do chuid codanna den téacs i do theanga sprioc.",
     "yourUsername": "Do chuid ainm úsáideora",
     "yourEmail": "Do r-phost",
     "iWantToLearn": "Ba mhaith liom foghlaim",
@@ -3574,7 +3572,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-04 09:29:23.722886",
+    "@@last_modified": "2026-08-04 10:31:23.880419",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -5310,14 +5308,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9688,8 +9678,6 @@
     "newActivityBadge": "NUA",
     "exitVocabPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh foclóra reatha.",
     "exitGrammarPracticeSession": "Ní shábhálfar do dhul chun cinn sa seisiún cleachtaidh gramadaí reatha.",
-    "autoReadAloudMessagesToolName": "Léigh gach teachtaireacht a fhaightear os ard go huathoibríoch",
-    "autoReadAloudMessagesDescription": "Nuair a fhaightear teachtaireacht, úsáidfear guth an ghléis chun an teachtaireacht a léamh os ard le haghaidh cleachtadh éisteachta.",
     "activityFilterButtonsLabel": "Cnaipí scagaire leibhéil, imreoirí, agus stádais",
     "mapFilterAllLevels": "Gach leibhéal",
     "mapFilterAllPlayers": "Gach imreoir",
@@ -9706,5 +9694,12 @@
     "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo.",
     "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan ghníomhaíocht.",
     "autocorrectMobileOnly": "Fón póca amháin",
-    "autocorrectMobileOnlyWarning": "Níl uathcheartú gléis ar fáil ach ar an aip shoghluaiste."
+    "autocorrectMobileOnlyWarning": "Níl uathcheartú gléis ar fáil ach ar an aip shoghluaiste.",
+    "audioSectionTitle": "Fuaime",
+    "audioWordsToolName": "Focail",
+    "audioWordsDescription": "Seinn fuaim an fhocail nuair a thapálann tú air.",
+    "audioChoicesToolName": "Roghanna",
+    "audioChoicesDescription": "Seinn fuaim do roghanna freagraí i ngníomhaíochtaí cleachtaidh.",
+    "audioIncomingMessagesToolName": "Teachtaireachtaí isteach",
+    "audioIncomingMessagesDescription": "Léigh teachtaireachtaí a fhaightear os ard go huathoibríoch i do sprioctheanga le haghaidh cleachtadh éisteachta."
 }

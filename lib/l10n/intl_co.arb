@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-04 09:29:22.343458",
+    "@@last_modified": "2026-08-04 10:31:18.132678",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Raccoltu in a discussione",
     "constructUseNanDesc": "Micca applicabile",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Sintesi vucale attivata",
-    "enableTTSToolDescription": "Permette à l'applicazione di generà una sintesi vucale per parte di u testu in a vostra lingua di destinazione.",
     "yourUsername": "U vostru nome d'utilizatore",
     "yourEmail": "U vostru email",
     "iWantToLearn": "Vogliu amparà",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "NOVU",
     "exitVocabPracticeSession": "U prugressu di a vostra sessione di pratica di vucabulariu ùn serà micca salvatu.",
     "exitGrammarPracticeSession": "U prugressu di a vostra sessione di pratica di grammatica ùn serà micca salvatu.",
-    "autoReadAloudMessagesToolName": "Leghje à voce alta in autumàticu tutti i messagi ricevuti",
-    "autoReadAloudMessagesDescription": "Quandu un messagiu hè ricevutu, a voce di u dispusitivu serà aduprata per leghje u messagiu à voce alta per a pratica d'ascoltu.",
     "activityFilterButtonsLabel": "Buttone di filtru di livellu, ghjucadori è statutu",
     "mapFilterAllLevels": "Tutti i livelli",
     "mapFilterAllPlayers": "Tutti i ghjucadori",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Nisuna attività in sta zona.",
     "practiceSessionTimedOut": "A vostra sessione di pratica hè finita dopu à {minutes} minuti senza attività.",
     "autocorrectMobileOnly": "Solu mobile",
-    "autocorrectMobileOnlyWarning": "L'autucurrezzione di u dispusitivu hè dispunibule solu nant'à l'app mobile."
+    "autocorrectMobileOnlyWarning": "L'autucurrezzione di u dispusitivu hè dispunibule solu nant'à l'app mobile.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Parolle",
+    "audioWordsDescription": "Riproduce l'audio di una parolla quandu a toccate.",
+    "audioChoicesToolName": "Scelte",
+    "audioChoicesDescription": "Riproduce l'audio per e scelte di risposta in l'attività di pratica.",
+    "audioIncomingMessagesToolName": "Missaghji entranti",
+    "audioIncomingMessagesDescription": "Leghje automaticamente i missaghji ricevuti à voce alta in a vostra lingua di destinazione per a pratica d'ascoltu."
 }

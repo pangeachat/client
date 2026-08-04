@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-04 09:29:23.606297",
+    "@@last_modified": "2026-08-04 10:31:20.910464",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Samle yn chat",
     "constructUseNanDesc": "Net fan tapassing",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Tekst-nei-spraak ynskeakele",
-    "enableTTSToolDescription": "Tastean dat de app tekst-nei-spraak-útfier generearret foar dielen fan tekst yn jo doeltaal.",
     "yourUsername": "Jo brûkersnamme",
     "yourEmail": "Jo e-mailadres",
     "iWantToLearn": "Ik wol graach leare",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "NIJ",
     "exitVocabPracticeSession": "De foarútgong fan jo hjoeddeistige wurdskat-oefensesje wurdt net bewarre.",
     "exitGrammarPracticeSession": "De foarútgong fan jo hjoeddeistige grammatika-oefensesje wurdt net bewarre.",
-    "autoReadAloudMessagesToolName": "Lês alle ûntfongen berjochten automatysk foar",
-    "autoReadAloudMessagesDescription": "As in berjocht ûntfongen wurdt, sil de stim fan it apparaat brûkt wurde om it berjocht foar te lêzen foar harkpraktyk.",
     "activityFilterButtonsLabel": "Nivo, spilers en statusfilterknoppen",
     "mapFilterAllLevels": "Alle nivo's",
     "mapFilterAllPlayers": "Alle spilers",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Gjin aktiviteiten yn dit gebiet.",
     "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit.",
     "autocorrectMobileOnly": "Allinne mobyl",
-    "autocorrectMobileOnlyWarning": "Apparaat-autokorreksje is allinnich beskikber yn de mobile app."
+    "autocorrectMobileOnlyWarning": "Apparaat-autokorreksje is allinnich beskikber yn de mobile app.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Wurden",
+    "audioWordsDescription": "Spielje de audio fan in wurd ôf as jo derop tikje.",
+    "audioChoicesToolName": "Keuzes",
+    "audioChoicesDescription": "Spielje audio ôf foar antwurdopsjes yn oefenaktiviteiten.",
+    "audioIncomingMessagesToolName": "Ynkommende berjochten",
+    "audioIncomingMessagesDescription": "Lês ûntfongen berjochten automatysk lûdop foar yn jo doeltaal foar harkûefening."
 }

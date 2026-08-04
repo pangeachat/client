@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-04 09:29:24.528849",
+    "@@last_modified": "2026-08-04 10:31:24.482570",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3202,8 +3202,6 @@
     "constructUseCollected": "Gyűjtve a chatben",
     "constructUseNanDesc": "Nem alkalmazható",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Szöveg-beszéd engedélyezve",
-    "enableTTSToolDescription": "Engedélyezi az alkalmazásnak, hogy szöveg-beszéd kimenetet generáljon a célnyelv szövegrészeire.",
     "yourUsername": "Az ön felhasználóneve",
     "yourEmail": "Az ön e-mail címe",
     "iWantToLearn": "Szeretnék tanulni",
@@ -5226,14 +5224,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9780,8 +9770,6 @@
     "newActivityBadge": "ÚJ",
     "exitVocabPracticeSession": "Az aktuális szókincsgyakorló-munkamenet előrehaladása nem lesz elmentve.",
     "exitGrammarPracticeSession": "Az aktuális nyelvtani gyakorló-munkamenet előrehaladása nem lesz elmentve.",
-    "autoReadAloudMessagesToolName": "Összes beérkező üzenet automatikus felolvasása",
-    "autoReadAloudMessagesDescription": "Üzenet érkezésekor az eszköz hangja felolvassa az üzenetet a hallás utáni gyakorláshoz.",
     "activityFilterButtonsLabel": "Szint, játékosok és állapot szűrőgombok",
     "mapFilterAllLevels": "Minden szint",
     "mapFilterAllPlayers": "Minden játékos",
@@ -9798,5 +9786,12 @@
     "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen.",
     "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt.",
     "autocorrectMobileOnly": "Csak mobilon",
-    "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el."
+    "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el.",
+    "audioSectionTitle": "Hang",
+    "audioWordsToolName": "Szavak",
+    "audioWordsDescription": "Érintsd meg a szót a hang lejátszásához.",
+    "audioChoicesToolName": "Választási lehetőségek",
+    "audioChoicesDescription": "A gyakorló feladatokban a válaszlehetőségek hangjának lejátszása.",
+    "audioIncomingMessagesToolName": "Bejövő üzenetek",
+    "audioIncomingMessagesDescription": "A bejövő üzenetek automatikus felolvasása a célnyelven a hallásgyakorláshoz."
 }

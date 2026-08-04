@@ -3277,8 +3277,6 @@
     "constructUseCollected": "Kerätty chatissa",
     "constructUseNanDesc": "Ei sovellu",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Ota tekstistä puhe käyttöön",
-    "enableTTSToolDescription": "Salli sovelluksen tuottaa tekstistä puhetta osioista tekstissä kohdekielessäsi.",
     "yourUsername": "Käyttäjänimesi",
     "yourEmail": "Sähköpostisi",
     "iWantToLearn": "Haluan oppia",
@@ -3547,7 +3545,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-04 09:29:23.022405",
+    "@@last_modified": "2026-08-04 10:31:20.330429",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -5291,14 +5289,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9714,8 +9704,6 @@
     "newActivityBadge": "UUSI",
     "exitVocabPracticeSession": "Nykyisen sanastoharjoittelun edistymistä ei tallenneta.",
     "exitGrammarPracticeSession": "Nykyisen kielioppiharjoittelun edistymistä ei tallenneta.",
-    "autoReadAloudMessagesToolName": "Lue kaikki vastaanotetut viestit ääneen automaattisesti",
-    "autoReadAloudMessagesDescription": "Kun viesti vastaanotetaan, laitteen ääntä käytetään viestin lukemiseen ääneen kuunteluharjoitusta varten.",
     "activityFilterButtonsLabel": "Tason, pelaajien ja tilan suodatuspainikkeet",
     "mapFilterAllLevels": "Kaikki tasot",
     "mapFilterAllPlayers": "Kaikki pelaajat",
@@ -9732,5 +9720,12 @@
     "mapNoActivitiesArea": "Tällä alueella ei ole aktiviteetteja.",
     "practiceSessionTimedOut": "Harjoitussessiosi päättyi {minutes} minuutin käyttämättömyyden jälkeen.",
     "autocorrectMobileOnly": "Vain mobiililaitteille",
-    "autocorrectMobileOnlyWarning": "Laitteen automaattinen korjaus on käytettävissä vain mobiilisovelluksessa."
+    "autocorrectMobileOnlyWarning": "Laitteen automaattinen korjaus on käytettävissä vain mobiilisovelluksessa.",
+    "audioSectionTitle": "Ääni",
+    "audioWordsToolName": "Sanat",
+    "audioWordsDescription": "Toista sanan ääni napauttamalla sitä.",
+    "audioChoicesToolName": "Vaihtoehdot",
+    "audioChoicesDescription": "Toista vastausvaihtoehtojen ääni harjoitustehtävissä.",
+    "audioIncomingMessagesToolName": "Saapuvat viestit",
+    "audioIncomingMessagesDescription": "Lue vastaanotetut viestit automaattisesti ääneen kohdekielellä kuunteluharjoitusta varten."
 }

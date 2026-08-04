@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-04 09:29:26.656230",
+    "@@last_modified": "2026-08-04 10:31:27.904504",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Собрано во разговор",
     "constructUseNanDesc": "Не е применливо",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Овозможен текст во говор",
-    "enableTTSToolDescription": "Дозволете ѝ на апликацијата да генерира излез од текст во говор за делови од текст на вашиот целен јазик.",
     "yourUsername": "Вашето корисничко име",
     "yourEmail": "Вашата е-пошта",
     "iWantToLearn": "Сакам да учам",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "НОВО",
     "exitVocabPracticeSession": "Напредокот од тековната сесија за вежбање вокабулар нема да биде зачуван.",
     "exitGrammarPracticeSession": "Напредокот од тековната сесија за вежбање граматика нема да биде зачуван.",
-    "autoReadAloudMessagesToolName": "Автоматско читање на сите примени пораки",
-    "autoReadAloudMessagesDescription": "Кога ќе се прими порака, гласот на уредот ќе се користи за читање на пораката на глас за вежбање слушање.",
     "activityFilterButtonsLabel": "Копчиња за филтрирање ниво, играчи и статус",
     "mapFilterAllLevels": "Сите нивоа",
     "mapFilterAllPlayers": "Сите играчи",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Нема активности во оваа област.",
     "practiceSessionTimedOut": "Вашата сесија за вежбање заврши по {minutes} минути неактивност.",
     "autocorrectMobileOnly": "Само за мобилни",
-    "autocorrectMobileOnlyWarning": "Автоматската корекција на уредот е достапна само на мобилната апликација."
+    "autocorrectMobileOnlyWarning": "Автоматската корекција на уредот е достапна само на мобилната апликација.",
+    "audioSectionTitle": "Аудио",
+    "audioWordsToolName": "Зборови",
+    "audioWordsDescription": "Пуштете го аудиото на зборот кога ќе го допрете.",
+    "audioChoicesToolName": "Избори",
+    "audioChoicesDescription": "Пуштете аудио за изборите на одговори во вежбите за вежбање.",
+    "audioIncomingMessagesToolName": "Дојдовни пораки",
+    "audioIncomingMessagesDescription": "Автоматски читајте ги примените пораки на глас на вашиот целен јазик за вежбање слушање."
 }

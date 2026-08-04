@@ -2834,8 +2834,6 @@
     "constructUseCollected": "चैट में संग्रहित",
     "constructUseNanDesc": "लागू नहीं",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "टेक्स्ट-टू-स्पीच सक्षम करें",
-    "enableTTSToolDescription": "एप्लिकेशन को आपके लक्षित भाषा में टेक्स्ट-टू-स्पीच आउटपुट बनाने की अनुमति दें।",
     "yourUsername": "आपका उपयोगकर्ता नाम",
     "yourEmail": "आपका ईमेल",
     "iWantToLearn": "मैं सीखना चाहता हूँ",
@@ -3104,7 +3102,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-04 09:29:24.070172",
+    "@@last_modified": "2026-08-04 10:31:22.767372",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5755,14 +5753,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10309,8 +10299,6 @@
     "newActivityBadge": "नया",
     "exitVocabPracticeSession": "आपकी मौजूदा शब्दावली अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।",
     "exitGrammarPracticeSession": "आपकी मौजूदा व्याकरण अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।",
-    "autoReadAloudMessagesToolName": "सभी प्राप्त संदेशों को अपने आप ज़ोर से पढ़ें",
-    "autoReadAloudMessagesDescription": "जब कोई संदेश प्राप्त होता है, तो सुनने के अभ्यास के लिए डिवाइस की आवाज़ का उपयोग करके संदेश को ज़ोर से पढ़ा जाएगा।",
     "activityFilterButtonsLabel": "स्तर, खिलाड़ी और स्थिति फ़िल्टर बटन",
     "mapFilterAllLevels": "सभी स्तर",
     "mapFilterAllPlayers": "सभी खिलाड़ी",
@@ -10327,5 +10315,12 @@
     "mapNoActivitiesArea": "इस क्षेत्र में कोई गतिविधि नहीं है।",
     "practiceSessionTimedOut": "आपकी अभ्यास सत्र {minutes} मिनट तक कोई गतिविधि न होने के बाद समाप्त हो गया।",
     "autocorrectMobileOnly": "केवल मोबाइल",
-    "autocorrectMobileOnlyWarning": "डिवाइस ऑटोकरेक्ट केवल मोबाइल ऐप पर उपलब्ध है।"
+    "autocorrectMobileOnlyWarning": "डिवाइस ऑटोकरेक्ट केवल मोबाइल ऐप पर उपलब्ध है।",
+    "audioSectionTitle": "ऑडियो",
+    "audioWordsToolName": "शब्द",
+    "audioWordsDescription": "किसी शब्द पर टैप करने पर उसका ऑडियो चलाएँ।",
+    "audioChoicesToolName": "विकल्प",
+    "audioChoicesDescription": "अभ्यास गतिविधियों में उत्तर विकल्पों के लिए ऑडियो चलाएँ।",
+    "audioIncomingMessagesToolName": "आने वाले संदेश",
+    "audioIncomingMessagesDescription": "सुनने के अभ्यास के लिए अपनी लक्षित भाषा में प्राप्त संदेशों को स्वचालित रूप से ज़ोर से पढ़ें।"
 }

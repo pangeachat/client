@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-04 09:29:29.332240",
+    "@@last_modified": "2026-08-04 10:31:33.026098",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Mbledhur në bisedë",
     "constructUseNanDesc": "Nuk aplikohet",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Tekst-në-fjalë i aktivizuar",
-    "enableTTSToolDescription": "Lejo aplikacionin të gjenerojë dalje tekst-në-fjalë për pjesë të tekstit në gjuhën tuaj të synuar.",
     "yourUsername": "Emri juaj i përdoruesit",
     "yourEmail": "Emaili juaj",
     "iWantToLearn": "Dua të mësoj",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "E RE",
     "exitVocabPracticeSession": "Progresi i seancës aktuale të praktikës së fjalorit nuk do të ruhet.",
     "exitGrammarPracticeSession": "Progresi i seancës aktuale të praktikës së gramatikës nuk do të ruhet.",
-    "autoReadAloudMessagesToolName": "Lexo automatikisht me zë të lartë të gjitha mesazhet e marra",
-    "autoReadAloudMessagesDescription": "Kur merret një mesazh, zëri i pajisjes do të përdoret për të lexuar mesazhin me zë të lartë për praktikë dëgjimi.",
     "activityFilterButtonsLabel": "Niveli, lojtarët dhe butonat e filtrit të statusit",
     "mapFilterAllLevels": "Të gjitha nivelet",
     "mapFilterAllPlayers": "Të gjithë lojtarët",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Nuk ka aktivitete në këtë zonë.",
     "practiceSessionTimedOut": "Sesioni juaj i praktikës përfundoi pas {minutes} minutash pa aktivitet.",
     "autocorrectMobileOnly": "Vetëm celular",
-    "autocorrectMobileOnlyWarning": "Autokorrektimi i pajisjes është i disponueshëm vetëm në aplikacionin celular."
+    "autocorrectMobileOnlyWarning": "Autokorrektimi i pajisjes është i disponueshëm vetëm në aplikacionin celular.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Fjalët",
+    "audioWordsDescription": "Luaj audion e një fjale kur e prek.",
+    "audioChoicesToolName": "Zgjedhjet",
+    "audioChoicesDescription": "Luaj audion për zgjedhjet e përgjigjeve në aktivitetet praktike.",
+    "audioIncomingMessagesToolName": "Mesazhet hyrëse",
+    "audioIncomingMessagesDescription": "Lexo automatikisht me zë të lartë mesazhet e marra në gjuhën tuaj të synuar për praktikë dëgjimi."
 }

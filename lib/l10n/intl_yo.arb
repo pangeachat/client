@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-04 09:29:31.589104",
+    "@@last_modified": "2026-08-04 10:31:37.279826",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Kó jọ nínú ìjíròrò",
     "constructUseNanDesc": "Kò wúlò",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Tẹ́tí sí ọ̀rọ̀ tí a kọ",
-    "enableTTSToolDescription": "Yọ̀ǹda fún ohun èlò láti ṣe àgbéjáde ohùn láti inú ọ̀rọ̀ fún àwọn apá kan ọ̀rọ̀ nínú èdè tí o fẹ́ kọ́.",
     "yourUsername": "Orúkọ olùmúlò rẹ",
     "yourEmail": "Imeeli rẹ",
     "iWantToLearn": "Mo fẹ́ kọ́",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "TITUN",
     "exitVocabPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ fóńká rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́.",
     "exitGrammarPracticeSession": "Ìtẹ̀síwájú ìdánilẹ́kọ̀ọ́ gírámà rẹ lọ́wọ́lọ́wọ́ kò ní wà ní fífipamọ́.",
-    "autoReadAloudMessagesToolName": "Fúnra rẹ̀ ka gbogbo àwọn ìránṣẹ́ tí a gbà jáde",
-    "autoReadAloudMessagesDescription": "Nígbà tí a bá gba ìránṣẹ́ kan, ohùn ẹ̀rọ yóò ṣee lò láti ka ìránṣẹ́ náà jáde fún ìdánilẹ́kọ̀ọ́ gbígbọ́.",
     "activityFilterButtonsLabel": "Ipele, awọn oṣere, ati awọn bọtini àlẹmọ ipo",
     "mapFilterAllLevels": "Gbogbo awọn ipele",
     "mapFilterAllPlayers": "Gbogbo awọn oṣere",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Ko si awọn iṣẹ ṣiṣe ni agbegbe yii.",
     "practiceSessionTimedOut": "Ìgbà ìdánilẹ́kọ̀ọ́ rẹ parí lẹ́hìn ìṣẹ́jú {minutes} láìsí ìgbòkègbodò kankan.",
     "autocorrectMobileOnly": "Fún àwọn fóònù nìkan",
-    "autocorrectMobileOnlyWarning": "Atunṣe aifọwọyi ẹrọ wa fun ohun elo alagbeka nikan."
+    "autocorrectMobileOnlyWarning": "Atunṣe aifọwọyi ẹrọ wa fun ohun elo alagbeka nikan.",
+    "audioSectionTitle": "Ohùn",
+    "audioWordsToolName": "Àwọn ọ̀rọ̀",
+    "audioWordsDescription": "Ṣí ohùn ọ̀rọ̀ kan nígbà tí o bá tẹ́ ẹ.",
+    "audioChoicesToolName": "Àwọn Àṣàyàn",
+    "audioChoicesDescription": "Ṣí ohùn fún àwọn àṣàyàn ìdáhùn nínú àwọn iṣẹ́ ìdánilẹ́kọ̀ọ́.",
+    "audioIncomingMessagesToolName": "Àwọn ìránṣẹ́ tí ń wọlé",
+    "audioIncomingMessagesDescription": "Ka àwọn ìránṣẹ́ tí o gbà jáde fúnra rẹ ní èdè tí o fẹ́ kọ́ fún ìdánilẹ́kọ̀ọ́ gbígbọ́."
 }

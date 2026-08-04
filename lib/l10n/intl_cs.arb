@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-04 09:29:22.405069",
+    "@@last_modified": "2026-08-04 10:31:18.468935",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -2904,8 +2904,6 @@
     "constructUseCollected": "Sebráno v chatu",
     "constructUseNanDesc": "Nepoužitelné",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Povolený převod textu na řeč",
-    "enableTTSToolDescription": "Umožněte aplikaci generovat výstup z textu na řeč pro části textu ve vašem cílovém jazyce.",
     "yourUsername": "Vaše uživatelské jméno",
     "yourEmail": "Váš e-mail",
     "iWantToLearn": "Chci se naučit",
@@ -5631,14 +5629,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10171,8 +10161,6 @@
     "newActivityBadge": "NOVÉ",
     "exitVocabPracticeSession": "Váš aktuální pokrok v procvičování slovní zásoby nebude uložen.",
     "exitGrammarPracticeSession": "Váš aktuální pokrok v procvičování gramatiky nebude uložen.",
-    "autoReadAloudMessagesToolName": "Automaticky číst nahlas všechny přijaté zprávy",
-    "autoReadAloudMessagesDescription": "Po přijetí zprávy bude hlas zařízení použit k přečtení zprávy nahlas pro cvičení poslechu.",
     "activityFilterButtonsLabel": "Tlačítka filtru úrovně, hráčů a stavu",
     "mapFilterAllLevels": "Všechny úrovně",
     "mapFilterAllPlayers": "Všichni hráči",
@@ -10189,5 +10177,12 @@
     "mapNoActivitiesArea": "V této oblasti nejsou žádné aktivity.",
     "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti.",
     "autocorrectMobileOnly": "Pouze mobilní",
-    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci."
+    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci.",
+    "audioSectionTitle": "Zvuk",
+    "audioWordsToolName": "Slova",
+    "audioWordsDescription": "Přehrát zvuk slova po klepnutí.",
+    "audioChoicesToolName": "Možnosti",
+    "audioChoicesDescription": "Přehrát zvuk pro možnosti odpovědí v procvičovacích aktivitách.",
+    "audioIncomingMessagesToolName": "Příchozí zprávy",
+    "audioIncomingMessagesDescription": "Automaticky nahlas přečíst přijaté zprávy ve vašem cílovém jazyce pro poslechové cvičení."
 }

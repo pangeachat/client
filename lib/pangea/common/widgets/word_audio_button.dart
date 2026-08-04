@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class WordAudioButton extends StatefulWidget {
@@ -110,6 +111,7 @@ class WordAudioButtonState extends State<WordAudioButton> {
                         context: context,
                         targetID: _targetId,
                         langCode: widget.langCode,
+                        useCase: TtsUseCase.words,
                         pos: widget.pos,
                         morph: widget.morph,
                         onStart: () {

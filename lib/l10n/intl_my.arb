@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-04 09:29:27.540846",
+    "@@last_modified": "2026-08-04 10:31:29.918358",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "ချတ်တွင် စုဆောင်းထားသည်",
     "constructUseNanDesc": "သက်ဆိုင်ခြင်းမရှိပါ",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "စာသားမှ စကားပြောစနစ်ကို ဖွင့်ထားသည်",
-    "enableTTSToolDescription": "သင့်ပစ်မှတ်ဘာသာစကားရှိ စာသားအပိုင်းများအတွက် စာသားမှ စကားပြောစနစ်ကို ထုတ်ပေးရန် အက်ပ်ကို ခွင့်ပြုပါ။",
     "yourUsername": "သင့်အသုံးပြုသူအမည်",
     "yourEmail": "သင့်အီးမေးလ်",
     "iWantToLearn": "ကျွန်ုပ်သင်ယူလိုပါသည်",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "အသစ်",
     "exitVocabPracticeSession": "သင်၏ လက်ရှိဝေါဟာရလေ့ကျင့်ခန်းအခြေအနေကို သိမ်းဆည်းမည်မဟုတ်ပါ။",
     "exitGrammarPracticeSession": "သင်၏ လက်ရှိသဒ္ဒါလေ့ကျင့်ခန်းအခြေအနေကို သိမ်းဆည်းမည်မဟုတ်ပါ။",
-    "autoReadAloudMessagesToolName": "လက်ခံရရှိသည့် မက်ဆေ့ချ်အားလုံးကို အလိုအလျောက် အသံထွက်ဖတ်ပါ",
-    "autoReadAloudMessagesDescription": "မက်ဆေ့ချ်လက်ခံရရှိသည့်အခါ နားထောင်လေ့ကျင့်ရန်အတွက် စက်၏အသံကို အသုံးပြု၍ မက်ဆေ့ချ်ကို အသံထွက်ဖတ်ပါမည်။",
     "activityFilterButtonsLabel": "အဆင့်၊ ကစားသမားများနှင့် အခြေအနေ စစ်ထုတ်ရန် ခလုတ်များ",
     "mapFilterAllLevels": "အဆင့်အားလုံး",
     "mapFilterAllPlayers": "ကစားသမားအားလုံး",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "ဤဧရိယာတွင် လုပ်ဆောင်ချက်များ မရှိပါ။",
     "practiceSessionTimedOut": "သင်၏လေ့ကျင့်မှုအစည်းအဝေးသည် {minutes} မိနစ်ကြာ လှုပ်ရှားမှုမရှိဘဲ အဆုံးသတ်သွားပါပြီ။",
     "autocorrectMobileOnly": "မိုဘိုင်းလ်အတွက်သာ",
-    "autocorrectMobileOnlyWarning": "စက်၏အလိုအလျောက်ပြင်ဆင်ခြင်းကို မိုဘိုင်းအက်ပ်တွင်သာ ရရှိနိုင်ပါသည်။"
+    "autocorrectMobileOnlyWarning": "စက်၏အလိုအလျောက်ပြင်ဆင်ခြင်းကို မိုဘိုင်းအက်ပ်တွင်သာ ရရှိနိုင်ပါသည်။",
+    "audioSectionTitle": "အသံ",
+    "audioWordsToolName": "စကားလုံးများ",
+    "audioWordsDescription": "စကားလုံးတစ်ခုကို နှိပ်လိုက်တဲ့အခါ အသံဖွင့်ပါ။",
+    "audioChoicesToolName": "ရွေးချယ်စရာများ",
+    "audioChoicesDescription": "လေ့ကျင့်ခန်းများတွင် အဖြေရွေးချယ်စရာများအတွက် အသံဖွင့်ပါ။",
+    "audioIncomingMessagesToolName": "ဝင်လာသော မက်ဆေ့ချ်များ",
+    "audioIncomingMessagesDescription": "နားထောင်လေ့ကျင့်ရန်အတွက် သင်၏ပစ်မှတ်ဘာသာစကားဖြင့် လက်ခံရရှိသော မက်ဆေ့ချ်များကို အလိုအလျောက် ဖတ်ပြပါ။"
 }

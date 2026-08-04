@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:26.246989",
+    "@@last_modified": "2026-08-04 10:31:25.986797",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3152,8 +3152,6 @@
     "constructUseCollected": "채팅에서 수집됨",
     "constructUseNanDesc": "적용 불가",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "텍스트 음성 변환 활성화",
-    "enableTTSToolDescription": "앱이 대상 언어의 일부 텍스트에 대해 텍스트 음성 변환 출력을 생성할 수 있도록 허용합니다.",
     "yourUsername": "사용자 이름",
     "yourEmail": "이메일",
     "iWantToLearn": "배우고 싶어요",
@@ -5316,14 +5314,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9870,8 +9860,6 @@
     "newActivityBadge": "새로운 활동",
     "exitVocabPracticeSession": "현재 어휘 연습 세션 진행 상황은 저장되지 않습니다.",
     "exitGrammarPracticeSession": "현재 문법 연습 세션 진행 상황은 저장되지 않습니다.",
-    "autoReadAloudMessagesToolName": "수신 메시지 자동 소리 내어 읽기",
-    "autoReadAloudMessagesDescription": "메시지를 받으면 기기 음성으로 메시지를 소리 내어 읽어 듣기 연습을 할 수 있습니다.",
     "activityFilterButtonsLabel": "레벨, 플레이어, 상태 필터 버튼",
     "mapFilterAllLevels": "모든 레벨",
     "mapFilterAllPlayers": "모든 플레이어",
@@ -9888,5 +9876,12 @@
     "mapNoActivitiesArea": "이 지역에 활동이 없습니다.",
     "practiceSessionTimedOut": "활동이 없어 {minutes}분 후 연습 세션이 종료되었습니다.",
     "autocorrectMobileOnly": "모바일 전용",
-    "autocorrectMobileOnlyWarning": "기기 자동 고침은 모바일 앱에서만 사용할 수 있습니다."
+    "autocorrectMobileOnlyWarning": "기기 자동 고침은 모바일 앱에서만 사용할 수 있습니다.",
+    "audioSectionTitle": "오디오",
+    "audioWordsToolName": "단어",
+    "audioWordsDescription": "단어를 탭하면 오디오가 재생됩니다.",
+    "audioChoicesToolName": "선택지",
+    "audioChoicesDescription": "연습 활동에서 답변 선택지에 대한 오디오를 재생합니다.",
+    "audioIncomingMessagesToolName": "수신 메시지",
+    "audioIncomingMessagesDescription": "듣기 연습을 위해 수신된 메시지를 학습 언어로 자동으로 소리 내어 읽습니다."
 }

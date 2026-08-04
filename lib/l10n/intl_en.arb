@@ -3500,8 +3500,13 @@
             }
         }
     },
-    "enableTTSToolName": "Enabled text-to-speech",
-    "enableTTSToolDescription": "Allow the app to generate text-to-speech output for portions of text in your target language.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Words",
+    "audioWordsDescription": "Play a word's audio when you tap on it.",
+    "audioChoicesToolName": "Choices",
+    "audioChoicesDescription": "Play audio for answer choices in practice activities.",
+    "audioIncomingMessagesToolName": "Incoming messages",
+    "audioIncomingMessagesDescription": "Automatically read received messages aloud in your target language for listening practice.",
     "yourUsername": "Your username",
     "yourEmail": "Your email",
     "iWantToLearn": "I want to learn",
@@ -4813,8 +4818,6 @@
             }
         }
     },
-    "autoReadAloudMessagesToolName": "Automatically read aloud all received messages",
-    "autoReadAloudMessagesDescription": "When a message is received, device voice will be utilized to read message aloud for listening practice.",
     "activityFilterButtonsLabel": "Level, players, and status filter buttons",
     "mapFilterAllLevels": "All levels",
     "mapFilterAllPlayers": "All players",

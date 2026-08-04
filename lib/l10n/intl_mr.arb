@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-04 09:29:27.041151",
+    "@@last_modified": "2026-08-04 10:31:28.682831",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "चॅटमध्ये गोळा केले",
     "constructUseNanDesc": "लागू नाही",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "टेक्स्ट-टू-स्पीच सक्षम केले",
-    "enableTTSToolDescription": "तुमच्या लक्ष्यित भाषेतील मजकूराच्या भागांसाठी ॲपला टेक्स्ट-टू-स्पीच आउटपुट तयार करण्याची परवानगी द्या.",
     "yourUsername": "तुमचे वापरकर्तानाव",
     "yourEmail": "तुमचा ईमेल",
     "iWantToLearn": "मला शिकायचे आहे",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "नवीन",
     "exitVocabPracticeSession": "तुमच्या सध्याच्या शब्दसंग्रह सरावाच्या सत्राची प्रगती सेव्ह केली जाणार नाही.",
     "exitGrammarPracticeSession": "तुमच्या सध्याच्या व्याकरण सरावाच्या सत्राची प्रगती सेव्ह केली जाणार नाही.",
-    "autoReadAloudMessagesToolName": "सर्व प्राप्त संदेश आपोआप मोठ्याने वाचा",
-    "autoReadAloudMessagesDescription": "जेव्हा एखादा संदेश प्राप्त होतो, तेव्हा ऐकण्याच्या सरावासाठी संदेश मोठ्याने वाचण्यासाठी डिव्हाइस व्हॉइसचा वापर केला जाईल.",
     "activityFilterButtonsLabel": "पातळी, खेळाडू आणि स्थिती फिल्टर बटणे",
     "mapFilterAllLevels": "सर्व स्तर",
     "mapFilterAllPlayers": "सर्व खेळाडू",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "या क्षेत्रात कोणतीही क्रिया नाही.",
     "practiceSessionTimedOut": "तुमचे सराव सत्र {minutes} मिनिटांपर्यंत कोणतीही हालचाल न झाल्यामुळे संपले.",
     "autocorrectMobileOnly": "फक्त मोबाइल",
-    "autocorrectMobileOnlyWarning": "डिव्हाइस ऑटोकरेक्ट फक्त मोबाइल ॲपवर उपलब्ध आहे."
+    "autocorrectMobileOnlyWarning": "डिव्हाइस ऑटोकरेक्ट फक्त मोबाइल ॲपवर उपलब्ध आहे.",
+    "audioSectionTitle": "ऑडिओ",
+    "audioWordsToolName": "शब्द",
+    "audioWordsDescription": "शब्दावर टॅप केल्यास त्याचा ऑडिओ प्ले होईल.",
+    "audioChoicesToolName": "पर्याय",
+    "audioChoicesDescription": "सराव क्रियाकलापांमध्ये उत्तरांच्या पर्यायांसाठी ऑडिओ प्ले करा.",
+    "audioIncomingMessagesToolName": "येणारे संदेश",
+    "audioIncomingMessagesDescription": "ऐकण्याच्या सरावासाठी प्राप्त झालेले संदेश तुमच्या लक्ष्यित भाषेत आपोआप मोठ्याने वाचा."
 }

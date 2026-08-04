@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:22.170504",
+    "@@last_modified": "2026-08-04 10:31:17.968728",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3182,8 +3182,6 @@
     "constructUseCollected": "Recollit a la conversa",
     "constructUseNanDesc": "No aplicable",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Activat text-a-veu",
-    "enableTTSToolDescription": "Permet a l'aplicació generar sortida de text-a-veu per a parts del text en la teva llengua objectiu.",
     "yourUsername": "El teu nom d'usuari",
     "yourEmail": "El teu correu electrònic",
     "iWantToLearn": "Vull aprendre",
@@ -5250,14 +5248,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9804,8 +9794,6 @@
     "newActivityBadge": "NOU",
     "exitVocabPracticeSession": "El progrés de la sessió actual de pràctica de vocabulari no es desarà.",
     "exitGrammarPracticeSession": "El progrés de la sessió actual de pràctica de gramàtica no es desarà.",
-    "autoReadAloudMessagesToolName": "Llegir en veu alta automàticament tots els missatges rebuts",
-    "autoReadAloudMessagesDescription": "Quan es rep un missatge, la veu del dispositiu s'utilitzarà per llegir el missatge en veu alta per practicar l'escolta.",
     "activityFilterButtonsLabel": "Botons de filtre de nivell, jugadors i estat",
     "mapFilterAllLevels": "Tots els nivells",
     "mapFilterAllPlayers": "Tots els jugadors",
@@ -9822,5 +9810,12 @@
     "mapNoActivitiesArea": "No hi ha activitats en aquesta zona.",
     "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat.",
     "autocorrectMobileOnly": "Només mòbil",
-    "autocorrectMobileOnlyWarning": "L'autocorrecció del dispositiu només està disponible a l'aplicació mòbil."
+    "autocorrectMobileOnlyWarning": "L'autocorrecció del dispositiu només està disponible a l'aplicació mòbil.",
+    "audioSectionTitle": "Àudio",
+    "audioWordsToolName": "Paraules",
+    "audioWordsDescription": "Reprodueix l'àudio d'una paraula quan la toques.",
+    "audioChoicesToolName": "Opcions",
+    "audioChoicesDescription": "Reprodueix l'àudio de les opcions de resposta en les activitats de pràctica.",
+    "audioIncomingMessagesToolName": "Missatges entrants",
+    "audioIncomingMessagesDescription": "Llegeix automàticament els missatges rebuts en veu alta en el teu idioma objectiu per practicar l'escolta."
 }

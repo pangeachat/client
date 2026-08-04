@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-04 09:29:24.330602",
+    "@@last_modified": "2026-08-04 10:31:23.151219",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -3006,8 +3006,6 @@
     "constructUseCollected": "Skupljeno u chatu",
     "constructUseNanDesc": "Nije primjenjivo",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Omogućeno pretvaranje teksta u govor",
-    "enableTTSToolDescription": "Dopustite aplikaciji da generira izlaz teksta u govor za dijelove teksta na vašem ciljanom jeziku.",
     "yourUsername": "Vaše korisničko ime",
     "yourEmail": "Vaša e-pošta",
     "iWantToLearn": "Želim naučiti",
@@ -5559,14 +5557,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10113,8 +10103,6 @@
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja vokabulara neće biti spremljen.",
     "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti spremljen.",
-    "autoReadAloudMessagesToolName": "Automatski čitaj naglas sve primljene poruke",
-    "autoReadAloudMessagesDescription": "Kada se poruka primi, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja.",
     "activityFilterButtonsLabel": "Gumbi za filtriranje razine, igrača i statusa",
     "mapFilterAllLevels": "Sve razine",
     "mapFilterAllPlayers": "Svi igrači",
@@ -10131,5 +10119,12 @@
     "mapNoActivitiesArea": "Nema aktivnosti na ovom području.",
     "practiceSessionTimedOut": "Vaša vježba je završila nakon {minutes} minuta neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne uređaje",
-    "autocorrectMobileOnlyWarning": "Automatska ispravka dostupna je samo u mobilnoj aplikaciji."
+    "autocorrectMobileOnlyWarning": "Automatska ispravka dostupna je samo u mobilnoj aplikaciji.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Riječi",
+    "audioWordsDescription": "Reproduciraj audiozapis riječi kada je dodirnete.",
+    "audioChoicesToolName": "Odabiri",
+    "audioChoicesDescription": "Reproduciraj audiozapis za odabire odgovora u vježbama.",
+    "audioIncomingMessagesToolName": "Dolazne poruke",
+    "audioIncomingMessagesDescription": "Automatski čitaj primljene poruke naglas na vašem ciljnom jeziku za vježbanje slušanja."
 }

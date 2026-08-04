@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-04 09:29:23.156083",
+    "@@last_modified": "2026-08-04 10:31:21.215710",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3299,8 +3299,6 @@
     "constructUseCollected": "Bilduta chat-en",
     "constructUseNanDesc": "Ez da aplikagarria",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Testu-hizketara gaituta",
-    "enableTTSToolDescription": "Aldatu aplikazioak testu-hizketara irteera sortzeko zure hizkuntzako testu zatietarako.",
     "yourUsername": "Zure erabiltzaile-izena",
     "yourEmail": "Zure emaila",
     "iWantToLearn": "Nahi dut ikasi",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9677,8 +9667,6 @@
     "newActivityBadge": "BERRIA",
     "exitVocabPracticeSession": "Zure egungo hiztegi-praktika saioaren aurrerapena ez da gordeko.",
     "exitGrammarPracticeSession": "Zure egungo gramatika-praktika saioaren aurrerapena ez da gordeko.",
-    "autoReadAloudMessagesToolName": "Jasotako mezu guztiak automatikoki ozenki irakurri",
-    "autoReadAloudMessagesDescription": "Mezu bat jasotzen denean, gailuaren ahotsa erabiliko da mezua ozenki irakurtzeko, entzuteko praktika egiteko.",
     "activityFilterButtonsLabel": "Maila, jokalariak eta egoera iragazteko botoiak",
     "mapFilterAllLevels": "Maila guztiak",
     "mapFilterAllPlayers": "Jokalari guztiak",
@@ -9695,5 +9683,12 @@
     "mapNoActivitiesArea": "Ez dago jarduerarik eremu honetan.",
     "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren.",
     "autocorrectMobileOnly": "Mugikorrean bakarrik",
-    "autocorrectMobileOnlyWarning": "Gailuaren zuzenketa automatikoa mugikorreko aplikazioan bakarrik dago erabilgarri."
+    "autocorrectMobileOnlyWarning": "Gailuaren zuzenketa automatikoa mugikorreko aplikazioan bakarrik dago erabilgarri.",
+    "audioSectionTitle": "Audioa",
+    "audioWordsToolName": "Hitzak",
+    "audioWordsDescription": "Sakatu hitz bat haren audioa entzuteko.",
+    "audioChoicesToolName": "Aukerak",
+    "audioChoicesDescription": "Praktikatzeko jardueretan erantzun-aukerei dagokien audioa erreproduzitu.",
+    "audioIncomingMessagesToolName": "Jasotako mezuak",
+    "audioIncomingMessagesDescription": "Jasotako mezuak automatikoki irakurri ozenki zure xede-hizkuntzan, entzuteko praktikatzeko."
 }

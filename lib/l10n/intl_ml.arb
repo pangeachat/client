@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-04 09:29:26.649591",
+    "@@last_modified": "2026-08-04 10:31:28.178077",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "ചാറ്റിൽ ശേഖരിച്ചത്",
     "constructUseNanDesc": "ബാധകമല്ല",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "ടെക്സ്റ്റ്-ടു-സ്പീച്ച് പ്രവർത്തനക്ഷമമാക്കി",
-    "enableTTSToolDescription": "നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിലെ ടെക്സ്റ്റ് ഭാഗങ്ങൾക്കായി ടെക്സ്റ്റ്-ടു-സ്പീച്ച് ഔട്ട്പുട്ട് സൃഷ്ടിക്കാൻ ആപ്പിനെ അനുവദിക്കുക.",
     "yourUsername": "നിങ്ങളുടെ യൂസർ നെയിം",
     "yourEmail": "നിങ്ങളുടെ ഇമെയിൽ",
     "iWantToLearn": "എനിക്ക് പഠിക്കണം",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "പുതിയത്",
     "exitVocabPracticeSession": "നിങ്ങളുടെ നിലവിലെ പദസമ്പത്ത് പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല.",
     "exitGrammarPracticeSession": "നിങ്ങളുടെ നിലവിലെ വ്യാകരണ പരിശീലന സെഷൻ പുരോഗതി സംരക്ഷിക്കപ്പെടില്ല.",
-    "autoReadAloudMessagesToolName": "ലഭിച്ച എല്ലാ സന്ദേശങ്ങളും സ്വയമേവ വായിക്കുക",
-    "autoReadAloudMessagesDescription": "ഒരു സന്ദേശം ലഭിക്കുമ്പോൾ, കേൾവി പരിശീലനത്തിനായി സന്ദേശം വായിക്കാൻ ഉപകരണത്തിന്റെ ശബ്ദം ഉപയോഗിക്കും.",
     "activityFilterButtonsLabel": "ലെവൽ, കളിക്കാർ, സ്റ്റാറ്റസ് ഫിൽട്ടർ ബട്ടണുകൾ",
     "mapFilterAllLevels": "എല്ലാ ലെവലുകളും",
     "mapFilterAllPlayers": "എല്ലാ കളിക്കാരും",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "ഈ പ്രദേശത്ത് പ്രവർത്തനങ്ങളൊന്നുമില്ല.",
     "practiceSessionTimedOut": "പ്രവർത്തനരഹിതമായി {minutes} മിനിറ്റിന് ശേഷം നിങ്ങളുടെ പരിശീലന സെഷൻ അവസാനിച്ചു.",
     "autocorrectMobileOnly": "മൊബൈലിൽ മാത്രം",
-    "autocorrectMobileOnlyWarning": "ഉപകരണ ഓട്ടോകറക്റ്റ് മൊബൈൽ ആപ്പിൽ മാത്രമേ ലഭ്യമാകൂ."
+    "autocorrectMobileOnlyWarning": "ഉപകരണ ഓട്ടോകറക്റ്റ് മൊബൈൽ ആപ്പിൽ മാത്രമേ ലഭ്യമാകൂ.",
+    "audioSectionTitle": "ഓഡിയോ",
+    "audioWordsToolName": "വാക്കുകൾ",
+    "audioWordsDescription": "ഒരു വാക്കിൽ ടാപ്പ് ചെയ്യുമ്പോൾ അതിന്റെ ഓഡിയോ പ്ലേ ചെയ്യുക.",
+    "audioChoicesToolName": "തിരഞ്ഞെടുക്കലുകൾ",
+    "audioChoicesDescription": "പരിശീലന പ്രവർത്തനങ്ങളിലെ ഉത്തര തിരഞ്ഞെടുപ്പുകൾക്കായി ഓഡിയോ പ്ലേ ചെയ്യുക.",
+    "audioIncomingMessagesToolName": "വരുന്ന സന്ദേശങ്ങൾ",
+    "audioIncomingMessagesDescription": "കേൾവി പരിശീലനത്തിനായി നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിൽ ലഭിച്ച സന്ദേശങ്ങൾ സ്വയമേവ വായിക്കുക."
 }

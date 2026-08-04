@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-04 09:29:22.238145",
+    "@@last_modified": "2026-08-04 10:31:17.113017",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "በቻት ውስጥ የተሰበሰበ",
     "constructUseNanDesc": "የማይመለከት",
     "xpIntoLevel": "{currentXP} / {maxXP} ኤክስፒ",
-    "enableTTSToolName": "ጽሑፍ-ወደ-ንግግር ነቅቷል",
-    "enableTTSToolDescription": "መተግበሪያው በሚማሩት ቋንቋ ለጽሑፍ ክፍሎች የድምጽ ውፅዓት እንዲያመነጭ ይፍቀዱለት።",
     "yourUsername": "የእርስዎ የተጠቃሚ ስም",
     "yourEmail": "የእርስዎ ኢሜይል",
     "iWantToLearn": "መማር እፈልጋለሁ",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "አዲስ",
     "exitVocabPracticeSession": "የአሁን የቃላት ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
     "exitGrammarPracticeSession": "የአሁን የሰዋስው ልምምድ ክፍለ ጊዜ ሂደትዎ አይቀመጥም።",
-    "autoReadAloudMessagesToolName": "ሁሉንም የተቀበሉ መልዕክቶችን በራስ-ሰር ጮክ ብሎ ያንብቡ",
-    "autoReadAloudMessagesDescription": "መልእክት ሲደርስ፣ ለማዳመጥ ልምምድ የመሣሪያ ድምፅ መልእክቱን ጮክ ብሎ ለማንበብ ይጠቅማል።",
     "activityFilterButtonsLabel": "ደረጃ፣ ተጫዋቾች እና የሁኔታ ማጣሪያ አዝራሮች",
     "mapFilterAllLevels": "ሁሉም ደረጃዎች",
     "mapFilterAllPlayers": "ሁሉም ተጫዋቾች",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "በዚህ አካባቢ ምንም እንቅስቃሴዎች የሉም።",
     "practiceSessionTimedOut": "ምንም እንቅስቃሴ ባለመኖሩ የልምምድ ክፍለ ጊዜዎ ከ{minutes} ደቂቃዎች በኋላ አብቅቷል።",
     "autocorrectMobileOnly": "ሞባይል ብቻ",
-    "autocorrectMobileOnlyWarning": "የመሣሪያ ራስ-አስተካክል በሞባይል መተግበሪያ ላይ ብቻ ይገኛል።"
+    "autocorrectMobileOnlyWarning": "የመሣሪያ ራስ-አስተካክል በሞባይል መተግበሪያ ላይ ብቻ ይገኛል።",
+    "audioSectionTitle": "ድምጽ",
+    "audioWordsToolName": "ቃላት",
+    "audioWordsDescription": "አንድን ቃል ሲነኩት ድምጹን ያጫውቱ።",
+    "audioChoicesToolName": "ምርጫዎች",
+    "audioChoicesDescription": "በልምምድ እንቅስቃሴዎች ውስጥ ለመልስ ምርጫዎች ድምጽ ያጫውቱ።",
+    "audioIncomingMessagesToolName": "ገቢ መልዕክቶች",
+    "audioIncomingMessagesDescription": "ለማዳመጥ ልምምድ የተቀበሉ መልዕክቶችን በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብለው ያንብቡ።"
 }

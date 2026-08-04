@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 09:29:30.215270",
+    "@@last_modified": "2026-08-04 10:31:34.043732",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -3208,8 +3208,6 @@
     "constructUseCollected": "செயலியில் சேகரிக்கப்பட்டது",
     "constructUseNanDesc": "பயன்படாது",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "உயர்த்தப்பட்ட உரை-தொடர்பு இயக்கு",
-    "enableTTSToolDescription": "உங்கள் இலக்கு மொழியில் உரை-தொடர்பு வெளியீட்டை உருவாக்க அனுமதி அளிக்கவும்.",
     "yourUsername": "உங்கள் பயனர்பெயர்",
     "yourEmail": "உங்கள் மின்னஞ்சல்",
     "iWantToLearn": "நான் கற்றுக்கொள்ள விரும்புகிறேன்",
@@ -5225,14 +5223,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9769,8 +9759,6 @@
     "newActivityBadge": "புதியது",
     "exitVocabPracticeSession": "தற்போதைய உங்கள் சொற்களஞ்சியப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
     "exitGrammarPracticeSession": "தற்போதைய உங்கள் இலக்கணப் பயிற்சி அமர்வின் முன்னேற்றம் சேமிக்கப்படாது.",
-    "autoReadAloudMessagesToolName": "பெறப்பட்ட எல்லாச் செய்திகளையும் தானாகப் படித்துக் காட்டு",
-    "autoReadAloudMessagesDescription": "ஒரு செய்தி பெறப்படும்போது, கேட்கும் பயிற்சிக்குச் செய்தியைப் படித்துக் காட்ட, சாதனத்தின் குரல் பயன்படுத்தப்படும்.",
     "activityFilterButtonsLabel": "நிலை, வீரர்கள் மற்றும் நிலை வடிகட்டி பொத்தான்கள்",
     "mapFilterAllLevels": "அனைத்து நிலைகளும்",
     "mapFilterAllPlayers": "அனைத்து வீரர்களும்",
@@ -9787,5 +9775,12 @@
     "mapNoActivitiesArea": "இந்த பகுதியில் எந்தச் செயல்பாடுகளும் இல்லை.",
     "practiceSessionTimedOut": "செயல்பாடு இல்லாமல் {minutes} நிமிடங்களுக்குப் பிறகு உங்கள் பயிற்சி அமர்வு முடிந்தது.",
     "autocorrectMobileOnly": "மொபைலுக்கு மட்டும்",
-    "autocorrectMobileOnlyWarning": "சாதனத் தானியங்கு திருத்தம் மொபைல் பயன்பாட்டில் மட்டுமே கிடைக்கும்."
+    "autocorrectMobileOnlyWarning": "சாதனத் தானியங்கு திருத்தம் மொபைல் பயன்பாட்டில் மட்டுமே கிடைக்கும்.",
+    "audioSectionTitle": "ஆடியோ",
+    "audioWordsToolName": "வார்த்தைகள்",
+    "audioWordsDescription": "ஒரு வார்த்தையைத் தட்டும்போது அதன் ஆடியோவை இயக்கவும்.",
+    "audioChoicesToolName": "தேர்வுகள்",
+    "audioChoicesDescription": "பயிற்சி நடவடிக்கைகளில் பதில்களுக்கான ஆடியோவை இயக்கவும்.",
+    "audioIncomingMessagesToolName": "உள்வரும் செய்திகள்",
+    "audioIncomingMessagesDescription": "கேட்கும் பயிற்சிக்காக உங்கள் இலக்கு மொழியில் பெறப்பட்ட செய்திகளை தானாகவே சத்தமாகப் படிக்கவும்."
 }

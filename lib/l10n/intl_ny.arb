@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-04 09:29:28.583927",
+    "@@last_modified": "2026-08-04 10:31:31.142496",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Zasonkhanitsidwa mu macheza",
     "constructUseNanDesc": "Sizikugwira ntchito",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Kuyatsa mawu-kukhala-mawu",
-    "enableTTSToolDescription": "Lolani pulogalamuyi kupanga mawu-kukhala-mawu pazigawo za mawu m'chilankhulo chanu chofuna.",
     "yourUsername": "Dzina lanu lolowera",
     "yourEmail": "Imelo yanu",
     "iWantToLearn": "Ndikufuna kuphunzira",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "CHATSWOPANO",
     "exitVocabPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa mawu sikudzasungidwa.",
     "exitGrammarPracticeSession": "Kupita patsogolo kwanu pakuchita masewera olimbitsa galamala sikudzasungidwa.",
-    "autoReadAloudMessagesToolName": "Werengani mauthenga onse olandiridwa okha",
-    "autoReadAloudMessagesDescription": "Mukalandira uthenga, mawu a chipangizo adzagwiritsidwa ntchito kuwerenga uthenga mokweza kuti muphunzire kumvetsera.",
     "activityFilterButtonsLabel": "Mabatani osefera a mulingo, osewera, ndi momwe zinthu zilili",
     "mapFilterAllLevels": "Milango yonse",
     "mapFilterAllPlayers": "Osewera onse",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Palibe zochitika m'derali.",
     "practiceSessionTimedOut": "Nthawi yanu yochita masewera yatha patatha mphindi {minutes} osachita chilichonse.",
     "autocorrectMobileOnly": "Pa foni yokha",
-    "autocorrectMobileOnlyWarning": "Kukonza zolakwika zokha kumapezeka pa pulogalamu yam'manja."
+    "autocorrectMobileOnlyWarning": "Kukonza zolakwika zokha kumapezeka pa pulogalamu yam'manja.",
+    "audioSectionTitle": "Mawu",
+    "audioWordsToolName": "Mawu",
+    "audioWordsDescription": "Sewerani mawu akamveka mukawadina.",
+    "audioChoicesToolName": "Zosankha",
+    "audioChoicesDescription": "Sewerani mawu a mayankho omwe mungasankhe pochita masewera olimbitsa thupi.",
+    "audioIncomingMessagesToolName": "Mauthenga obwera",
+    "audioIncomingMessagesDescription": "Werengani mauthenga omwe mwalandira mokweza m'chilankhulo chanu chofuna kumvetsera kuti muzolowere kumvetsera."
 }

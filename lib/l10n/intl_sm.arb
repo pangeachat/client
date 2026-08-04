@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-04 09:29:29.360369",
+    "@@last_modified": "2026-08-04 10:31:32.731521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Aoina i le talanoaga",
     "constructUseNanDesc": "Le talafeagai",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Faʻatagaina le text-to-speech",
-    "enableTTSToolDescription": "Faʻataga le app e gaosia le text-to-speech mo vaega o tusitusiga i lau gagana faʻatatau.",
     "yourUsername": "Lou igoa faʻaoga",
     "yourEmail": "Lou imeli",
     "iWantToLearn": "Ou te fia aʻoaʻo",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "FOU",
     "exitVocabPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i upu o lo'o iai nei o le a le fa'asaoina.",
     "exitGrammarPracticeSession": "O le alualu i luma o lau vasega fa'ata'ita'i kalama o lo'o iai nei o le a le fa'asaoina.",
-    "autoReadAloudMessagesToolName": "Faitau otometi ma le leo tele feʻau uma na maua",
-    "autoReadAloudMessagesDescription": "A maua se feʻau, o le a faʻaaogaina le leo o le masini e faitau leotele ai le feʻau mo le faʻataʻitaʻiga o le faʻalogo.",
     "activityFilterButtonsLabel": "Fa'amau fa'amama tulaga, tagata ta'alo, ma le tulaga",
     "mapFilterAllLevels": "Tulaga uma",
     "mapFilterAllPlayers": "Tagata ta'alo uma",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Leai ni gaioiga i lenei vaega.",
     "practiceSessionTimedOut": "Ua maeʻa lau sauniga faʻataʻitaʻi pe a maeʻa le {minutes} minute e aunoa ma se gaioiga.",
     "autocorrectMobileOnly": "Na'o le telefoni feavea'i",
-    "autocorrectMobileOnlyWarning": "O le autocorrect o le masini e na'o le app feavea'i e maua."
+    "autocorrectMobileOnlyWarning": "O le autocorrect o le masini e na'o le app feavea'i e maua.",
+    "audioSectionTitle": "Leo",
+    "audioWordsToolName": "Upu",
+    "audioWordsDescription": "Faʻalogologo i le leo o se upu pe a e tago i ai.",
+    "audioChoicesToolName": "Filifiliga",
+    "audioChoicesDescription": "Faʻalogologo i le leo mo filifiliga tali i galuega faʻataʻitaʻi.",
+    "audioIncomingMessagesToolName": "Feʻau o loʻo oʻo mai",
+    "audioIncomingMessagesDescription": "Faitau otometi feʻau na maua i lau gagana e aʻoaʻoina mo le faʻataʻitaʻiga faʻalogologo."
 }

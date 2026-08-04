@@ -3289,8 +3289,6 @@
     "constructUseCollected": "Savākti čatā",
     "constructUseNanDesc": "Nav piemērojams",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Iespējots teksta runas funkcija",
-    "enableTTSToolDescription": "Atļauj lietotnei ģenerēt teksta runas izvadi teksta daļām jūsu mērķvalodā.",
     "yourUsername": "Jūsu lietotājvārds",
     "yourEmail": "Jūsu e-pasts",
     "iWantToLearn": "Es vēlos mācīties",
@@ -3546,7 +3544,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-04 09:29:26.438388",
+    "@@last_modified": "2026-08-04 10:31:27.466926",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9677,8 +9667,6 @@
     "newActivityBadge": "JAUNS",
     "exitVocabPracticeSession": "Jūsu pašreizējās vārdu krājuma prakses sesijas progress netiks saglabāts.",
     "exitGrammarPracticeSession": "Jūsu pašreizējās gramatikas prakses sesijas progress netiks saglabāts.",
-    "autoReadAloudMessagesToolName": "Automātiski nolasīt visas saņemtās ziņas",
-    "autoReadAloudMessagesDescription": "Kad tiek saņemta ziņa, ierīces balss tiks izmantota, lai nolasītu ziņu skaļi klausīšanās prakses nolūkos.",
     "activityFilterButtonsLabel": "Līmeņa, spēlētāju un statusa filtra pogas",
     "mapFilterAllLevels": "Visi līmeņi",
     "mapFilterAllPlayers": "Visi spēlētāji",
@@ -9695,5 +9683,12 @@
     "mapNoActivitiesArea": "Šajā apgabalā nav aktivitāšu.",
     "practiceSessionTimedOut": "Jūsu prakses sesija beidzās pēc {minutes} minūtēm bez aktivitātes.",
     "autocorrectMobileOnly": "Tikai mobilajām ierīcēm",
-    "autocorrectMobileOnlyWarning": "Ierīces automātiskā labošana ir pieejama tikai mobilajā lietotnē."
+    "autocorrectMobileOnlyWarning": "Ierīces automātiskā labošana ir pieejama tikai mobilajā lietotnē.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Vārdi",
+    "audioWordsDescription": "Atskaņojiet vārda audio, kad tam pieskaraties.",
+    "audioChoicesToolName": "Izvēles",
+    "audioChoicesDescription": "Atskaņojiet audio atbilžu variantiem prakses aktivitātēs.",
+    "audioIncomingMessagesToolName": "Ienākošās ziņas",
+    "audioIncomingMessagesDescription": "Automātiski nolasīt saņemtās ziņas skaļi jūsu mērķa valodā, lai praktizētu klausīšanos."
 }

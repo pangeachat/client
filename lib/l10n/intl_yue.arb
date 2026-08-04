@@ -991,8 +991,6 @@
     "constructUseCollected": "喺聊天中收集",
     "constructUseNanDesc": "唔適用",
     "xpIntoLevel": "{currentXP} / {maxXP} 經驗值",
-    "enableTTSToolName": "啟用文字轉語音",
-    "enableTTSToolDescription": "允許應用程式為你嘅目標語言嘅部分文字產生文字轉語音輸出。",
     "yourUsername": "你的用戶名",
     "yourEmail": "你的電郵",
     "iWantToLearn": "我想學習",
@@ -1272,7 +1270,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-04 09:29:31.131004",
+    "@@last_modified": "2026-08-04 10:31:35.925441",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -5717,14 +5715,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10640,8 +10630,6 @@
     "newActivityBadge": "新",
     "exitVocabPracticeSession": "你目前嘅詞彙練習進度將唔會被儲存。",
     "exitGrammarPracticeSession": "你目前嘅文法練習進度將唔會被儲存。",
-    "autoReadAloudMessagesToolName": "自動朗讀所有已接收訊息",
-    "autoReadAloudMessagesDescription": "當收到訊息時，裝置語音會將訊息朗讀出來，以供聽力練習。",
     "activityFilterButtonsLabel": "等級、玩家同狀態篩選按鈕",
     "mapFilterAllLevels": "所有等級",
     "mapFilterAllPlayers": "所有玩家",
@@ -10658,5 +10646,12 @@
     "mapNoActivitiesArea": "呢個區域冇活動。",
     "practiceSessionTimedOut": "你嘅練習環節喺冇活動 {minutes} 分鐘後結束咗。",
     "autocorrectMobileOnly": "僅限流動裝置",
-    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於流動應用程式。"
+    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於流動應用程式。",
+    "audioSectionTitle": "音訊",
+    "audioWordsToolName": "單字",
+    "audioWordsDescription": "點擊單字時播放其音訊。",
+    "audioChoicesToolName": "選項",
+    "audioChoicesDescription": "在練習活動中為答案選項播放音訊。",
+    "audioIncomingMessagesToolName": "收到的訊息",
+    "audioIncomingMessagesDescription": "自動以您的目標語言朗讀收到的訊息，以進行聽力練習。"
 }

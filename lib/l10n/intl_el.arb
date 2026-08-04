@@ -3147,8 +3147,6 @@
     "constructUseCollected": "Συλλέχθηκε στη συνομιλία",
     "constructUseNanDesc": "Μη εφαρμόσιμο",
     "xpIntoLevel": "{currentXP} / {maxXP} Πόντοι XP",
-    "enableTTSToolName": "Ενεργοποιημένη φωνητική ανάγνωση κειμένου",
-    "enableTTSToolDescription": "Επιτρέψτε στην εφαρμογή να παράγει έξοδο φωνητικής ανάγνωσης για τμήματα κειμένου στη γλώσσα στόχο σας.",
     "yourUsername": "Το όνομα χρήστη σας",
     "yourEmail": "Το email σας",
     "iWantToLearn": "Θέλω να μάθω",
@@ -3417,7 +3415,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-04 09:29:22.862152",
+    "@@last_modified": "2026-08-04 10:31:22.881560",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -6004,14 +6002,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10558,8 +10548,6 @@
     "newActivityBadge": "ΝΕΟ",
     "exitVocabPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης λεξιλογίου δεν θα αποθηκευτεί.",
     "exitGrammarPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης γραμματικής δεν θα αποθηκευτεί.",
-    "autoReadAloudMessagesToolName": "Αυτόματη ανάγνωση όλων των εισερχόμενων μηνυμάτων",
-    "autoReadAloudMessagesDescription": "Όταν λαμβάνεται ένα μήνυμα, η φωνή της συσκευής θα χρησιμοποιείται για την ανάγνωση του μηνύματος δυνατά για εξάσκηση στην ακρόαση.",
     "activityFilterButtonsLabel": "Κουμπιά φίλτρου επιπέδου, παικτών και κατάστασης",
     "mapFilterAllLevels": "Όλα τα επίπεδα",
     "mapFilterAllPlayers": "Όλοι οι παίκτες",
@@ -10576,5 +10564,12 @@
     "mapNoActivitiesArea": "Δεν υπάρχουν δραστηριότητες σε αυτήν την περιοχή.",
     "practiceSessionTimedOut": "Η συνεδρία εξάσκησής σας έληξε μετά από {minutes} λεπτά αδράνειας.",
     "autocorrectMobileOnly": "Μόνο για κινητά",
-    "autocorrectMobileOnlyWarning": "Η αυτόματη διόρθωση συσκευής είναι διαθέσιμη μόνο στην εφαρμογή για κινητά."
+    "autocorrectMobileOnlyWarning": "Η αυτόματη διόρθωση συσκευής είναι διαθέσιμη μόνο στην εφαρμογή για κινητά.",
+    "audioSectionTitle": "Ήχος",
+    "audioWordsToolName": "Λέξεις",
+    "audioWordsDescription": "Αναπαραγωγή ήχου μιας λέξης όταν την πατάτε.",
+    "audioChoicesToolName": "Επιλογές",
+    "audioChoicesDescription": "Αναπαραγωγή ήχου για τις επιλογές απάντησης σε δραστηριότητες εξάσκησης.",
+    "audioIncomingMessagesToolName": "Εισερχόμενα μηνύματα",
+    "audioIncomingMessagesDescription": "Αυτόματη ανάγνωση των εισερχόμενων μηνυμάτων δυνατά στη γλώσσα-στόχο σας για εξάσκηση στην ακρόαση."
 }

@@ -6,6 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../../../features/bot/utils/bot_style.dart';
 
@@ -62,6 +63,7 @@ class ChoicesArray<T> extends StatelessWidget {
                       : value.toString(),
                   targetID: null,
                   langCode: langCode!,
+                  useCase: TtsUseCase.choices,
                 );
               }
             },

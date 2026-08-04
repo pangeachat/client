@@ -197,14 +197,20 @@ class UserSettings {
 
 /// The user's language tool settings.
 class UserToolSettings {
+  // Keys of the retired enableTTS/autoReadAloudMessages toggles, kept as
+  // read-fallbacks so stored profiles seed the per-surface audio toggles.
+  static const _legacyEnableTTSKey = 'ToolSetting.enableTTS';
+  static const _legacyAutoReadAloudKey = 'autoReadAloudMessages';
+
   final bool interactiveTranslator;
   final bool interactiveGrammar;
   final bool immersionMode;
   final bool definitions;
   final bool autoIGC;
-  final bool enableTTS;
+  final bool audioWords;
+  final bool audioChoices;
+  final bool audioIncomingMessages;
   final bool enableAutocorrect;
-  final bool autoReadAloudMessages;
   final bool showDeveloperOptions;
 
   const UserToolSettings({
@@ -213,9 +219,10 @@ class UserToolSettings {
     this.immersionMode = false,
     this.definitions = true,
     this.autoIGC = true,
-    this.enableTTS = true,
+    this.audioWords = true,
+    this.audioChoices = true,
+    this.audioIncomingMessages = false,
     this.enableAutocorrect = false,
-    this.autoReadAloudMessages = false,
     this.showDeveloperOptions = false,
   });
 
@@ -228,9 +235,13 @@ class UserToolSettings {
         immersionMode: false,
         definitions: json[ToolSetting.definitions.toString()] ?? true,
         autoIGC: json[UserConstants.autoIGC] ?? true,
-        enableTTS: json[ToolSetting.enableTTS.toString()] ?? true,
+        audioWords: json["audioWords"] ?? json[_legacyEnableTTSKey] ?? true,
+        audioChoices: json["audioChoices"] ?? json[_legacyEnableTTSKey] ?? true,
+        audioIncomingMessages:
+            json["audioIncomingMessages"] ??
+            json[_legacyAutoReadAloudKey] ??
+            false,
         enableAutocorrect: json["enableAutocorrect"] ?? false,
-        autoReadAloudMessages: json["autoReadAloudMessages"] ?? false,
         showDeveloperOptions: json["showDeveloperOptions"] ?? false,
       );
 
@@ -241,9 +252,10 @@ class UserToolSettings {
     data[ToolSetting.immersionMode.toString()] = immersionMode;
     data[ToolSetting.definitions.toString()] = definitions;
     data[UserConstants.autoIGC] = autoIGC;
-    data[ToolSetting.enableTTS.toString()] = enableTTS;
+    data["audioWords"] = audioWords;
+    data["audioChoices"] = audioChoices;
+    data["audioIncomingMessages"] = audioIncomingMessages;
     data["enableAutocorrect"] = enableAutocorrect;
-    data["autoReadAloudMessages"] = autoReadAloudMessages;
     data["showDeveloperOptions"] = showDeveloperOptions;
     return data;
   }
@@ -284,9 +296,10 @@ class UserToolSettings {
     bool? immersionMode,
     bool? definitions,
     bool? autoIGC,
-    bool? enableTTS,
+    bool? audioWords,
+    bool? audioChoices,
+    bool? audioIncomingMessages,
     bool? enableAutocorrect,
-    bool? autoReadAloudMessages,
     bool? showDeveloperOptions,
   }) {
     return UserToolSettings(
@@ -296,10 +309,11 @@ class UserToolSettings {
       immersionMode: immersionMode ?? this.immersionMode,
       definitions: definitions ?? this.definitions,
       autoIGC: autoIGC ?? this.autoIGC,
-      enableTTS: enableTTS ?? this.enableTTS,
+      audioWords: audioWords ?? this.audioWords,
+      audioChoices: audioChoices ?? this.audioChoices,
+      audioIncomingMessages:
+          audioIncomingMessages ?? this.audioIncomingMessages,
       enableAutocorrect: enableAutocorrect ?? this.enableAutocorrect,
-      autoReadAloudMessages:
-          autoReadAloudMessages ?? this.autoReadAloudMessages,
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
     );
   }
@@ -314,9 +328,10 @@ class UserToolSettings {
         other.immersionMode == immersionMode &&
         other.definitions == definitions &&
         other.autoIGC == autoIGC &&
-        other.enableTTS == enableTTS &&
+        other.audioWords == audioWords &&
+        other.audioChoices == audioChoices &&
+        other.audioIncomingMessages == audioIncomingMessages &&
         other.enableAutocorrect == enableAutocorrect &&
-        other.autoReadAloudMessages == autoReadAloudMessages &&
         other.showDeveloperOptions == showDeveloperOptions;
   }
 
@@ -327,9 +342,10 @@ class UserToolSettings {
     immersionMode.hashCode,
     definitions.hashCode,
     autoIGC.hashCode,
-    enableTTS.hashCode,
+    audioWords.hashCode,
+    audioChoices.hashCode,
+    audioIncomingMessages.hashCode,
     enableAutocorrect.hashCode,
-    autoReadAloudMessages.hashCode,
     showDeveloperOptions.hashCode,
   ]);
 }

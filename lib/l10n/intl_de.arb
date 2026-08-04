@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-04 09:29:22.618127",
+    "@@last_modified": "2026-08-04 10:31:18.912465",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3320,8 +3320,6 @@
     "constructUseCollected": "Im Chat gesammelt",
     "constructUseNanDesc": "Nicht anwendbar",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Text-zu-Sprache aktiviert",
-    "enableTTSToolDescription": "Erlauben Sie der App, Text-zu-Sprache-Ausgaben für Textteile in Ihrer Zielsprache zu generieren.",
     "yourUsername": "Ihr Benutzername",
     "yourEmail": "Ihre E-Mail",
     "iWantToLearn": "Ich möchte lernen",
@@ -5324,14 +5322,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9664,8 +9654,6 @@
     "newActivityBadge": "NEU",
     "exitVocabPracticeSession": "Ihr aktueller Fortschritt in der Vokabelübung wird nicht gespeichert.",
     "exitGrammarPracticeSession": "Ihr aktueller Fortschritt in der Grammatikübung wird nicht gespeichert.",
-    "autoReadAloudMessagesToolName": "Alle empfangenen Nachrichten automatisch vorlesen",
-    "autoReadAloudMessagesDescription": "Wenn eine Nachricht empfangen wird, liest die Gerätestimme die Nachricht zur Hörübung vor.",
     "activityFilterButtonsLabel": "Filter-Schaltflächen für Level, Spieler und Status",
     "mapFilterAllLevels": "Alle Level",
     "mapFilterAllPlayers": "Alle Spieler",
@@ -9682,5 +9670,12 @@
     "mapNoActivitiesArea": "Keine Aktivitäten in diesem Bereich.",
     "practiceSessionTimedOut": "Deine Übungseinheit wurde nach {minutes} Minuten Inaktivität beendet.",
     "autocorrectMobileOnly": "Nur Mobilgeräte",
-    "autocorrectMobileOnlyWarning": "Die Autokorrektur des Geräts ist nur in der mobilen App verfügbar."
+    "autocorrectMobileOnlyWarning": "Die Autokorrektur des Geräts ist nur in der mobilen App verfügbar.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Wörter",
+    "audioWordsDescription": "Spielt das Audio eines Wortes ab, wenn Sie darauf tippen.",
+    "audioChoicesToolName": "Auswahlmöglichkeiten",
+    "audioChoicesDescription": "Spielt Audio für Antwortmöglichkeiten in Übungsaktivitäten ab.",
+    "audioIncomingMessagesToolName": "Eingehende Nachrichten",
+    "audioIncomingMessagesDescription": "Liest empfangene Nachrichten in Ihrer Zielsprache automatisch vor, um das Hörverständnis zu üben."
 }

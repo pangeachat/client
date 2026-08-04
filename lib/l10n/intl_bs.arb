@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-04 09:29:21.665704",
+    "@@last_modified": "2026-08-04 10:31:16.618669",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1117,8 +1117,6 @@
     "constructUseCollected": "Prikupljeno u četu",
     "constructUseNanDesc": "Nije primjenjivo",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Omogućen tekst-u-govor",
-    "enableTTSToolDescription": "Dozvolite aplikaciji da generiše izlaz teksta u govor za dijelove teksta na vašem ciljnom jeziku.",
     "yourUsername": "Vaše korisničko ime",
     "yourEmail": "Vaš e-mail",
     "iWantToLearn": "Želim učiti",
@@ -2051,8 +2049,6 @@
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja rječnika neće biti sačuvan.",
     "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti sačuvan.",
-    "autoReadAloudMessagesToolName": "Automatski čitaj naglas sve primljene poruke",
-    "autoReadAloudMessagesDescription": "Kada se primi poruka, glas uređaja će se koristiti za čitanje poruke naglas radi vježbanja slušanja.",
     "activityFilterButtonsLabel": "Dugmad za filtriranje nivoa, igrača i statusa",
     "mapFilterAllLevels": "Svi nivoi",
     "mapFilterAllPlayers": "Svi igrači",
@@ -2069,5 +2065,12 @@
     "mapNoActivitiesArea": "Nema aktivnosti u ovom području.",
     "practiceSessionTimedOut": "Vaša sesija vježbanja je završena nakon {minutes} minuta neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne uređaje",
-    "autocorrectMobileOnlyWarning": "Automatska ispravka uređaja dostupna je samo u mobilnoj aplikaciji."
+    "autocorrectMobileOnlyWarning": "Automatska ispravka uređaja dostupna je samo u mobilnoj aplikaciji.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Riječi",
+    "audioWordsDescription": "Reproducirajte audiozapis riječi kada je dodirnete.",
+    "audioChoicesToolName": "Izbori",
+    "audioChoicesDescription": "Reproducirajte audiozapis za opcije odgovora u vježbama.",
+    "audioIncomingMessagesToolName": "Dolazne poruke",
+    "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na vašem ciljnom jeziku za vježbanje slušanja."
 }
