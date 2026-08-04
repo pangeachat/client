@@ -50,6 +50,13 @@ class WorldMapDot extends StatefulWidget {
   final bool dying;
   final VoidCallback? onExited;
 
+  /// Whether a freshly created state plays the 0→1 entry scale-in. False for
+  /// pins already on screen at the last settle: flutter_map's MarkerLayer
+  /// culls/reorders its (unkeyed) Positioned children every camera frame, so
+  /// this State can be discarded and recreated mid-gesture — such a pin must
+  /// render at full scale immediately instead of replaying its pop-in (#8136).
+  final bool animateIn;
+
   const WorldMapDot({
     super.key,
     required this.card,
@@ -64,6 +71,7 @@ class WorldMapDot extends StatefulWidget {
     this.isFocused = false,
     this.dying = false,
     this.onExited,
+    this.animateIn = true,
   });
 
   @override
@@ -81,7 +89,18 @@ class _WorldMapDotState extends State<WorldMapDot>
       vsync: this,
       duration: const Duration(milliseconds: 200),
     );
-    if (!widget.dying) _ctrl.forward();
+    if (widget.dying) {
+      // A dying dot is built fresh by ExitingMarkersLayer, so didUpdateWidget's
+      // false→true arm never runs for it — play the exit from here, or the
+      // controller stays at 0 (invisible) and onExited never fires, leaking the
+      // pin into the view's _exiting map forever (#8136).
+      _ctrl.value = 1.0;
+      _ctrl.reverse().then((_) => widget.onExited?.call());
+    } else if (widget.animateIn) {
+      _ctrl.forward();
+    } else {
+      _ctrl.value = 1.0;
+    }
   }
 
   @override

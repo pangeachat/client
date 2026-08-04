@@ -14,12 +14,19 @@ class LargeMarkersLayer {
   final void Function(QuestActivityCard) onTap;
   final void Function(QuestActivityCard) onClose;
 
+  /// Whether this card should play its entry grow-in — false for cards
+  /// already on screen at the last settle, so a State recreated by
+  /// MarkerLayer's per-frame positional reconciliation doesn't replay its
+  /// pop-in (#8136). Mirrors [DotMarkersLayer.animateInOf].
+  final bool Function(String) animateInOf;
+
   const LargeMarkersLayer({
     required this.largeCards,
     required this.currentLarge,
     required this.focusedId,
     required this.onTap,
     required this.onClose,
+    required this.animateInOf,
   });
 
   MarkerLayer layer() {
@@ -48,11 +55,16 @@ class LargeMarkersLayer {
                   WorldMapLargeCard.tailHeight +
                   WorldMapLargeCard.badgeOverhang,
               alignment: Alignment.topCenter,
+              // Child key, never Marker.key — see dot_markers_layer.dart
+              // (#7947/#8136). Keeps the animated card's state tied to its own
+              // activity through MarkerLayer's positional reconciliation.
               child: Align(
+                key: ValueKey(card.activityId),
                 // Bottom-align so the card+tail hugs its pin (the tail tip lands on
                 // the dot) instead of floating with a gap above it (#7153).
                 alignment: Alignment.bottomCenter,
                 child: WorldMapLargeCardAnimated(
+                  animateIn: animateInOf(card.activityId),
                   child: WorldMapLargeCard(
                     card: snap.card,
                     state: snap.state,

@@ -29,7 +29,11 @@ class ExitingMarkersLayer {
           width: box.width,
           height: box.height,
           alignment: markerAlignment(p.state, p.tier),
+          // Child key, never Marker.key — see dot_markers_layer.dart
+          // (#7947/#8136). Keeps a dying dot's exit animation tied to its own
+          // activity through MarkerLayer's positional reconciliation.
           child: WorldMapDot(
+            key: ValueKey('exiting_${p.card.activityId}'),
             card: p.card,
             state: p.state,
             tier: p.tier,
