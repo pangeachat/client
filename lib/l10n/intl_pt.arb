@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:31.092119",
+    "@@last_modified": "2026-08-04 09:29:28.325932",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10644,5 +10644,6 @@
     "mapNoSearchMatches": "Nenhuma atividade corresponde à sua pesquisa.",
     "mapNoActivitiesArea": "Nenhuma atividade nesta área.",
     "practiceSessionTimedOut": "Sua sessão de prática terminou após {minutes} minutos sem atividade.",
-    "autocorrectMobileOnly": "Somente para celular"
+    "autocorrectMobileOnly": "Somente para celular",
+    "autocorrectMobileOnlyWarning": "A correção automática do dispositivo está disponível apenas na aplicação móvel."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-03 16:07:29.878219",
+    "@@last_modified": "2026-08-04 09:29:25.817255",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "هیچ چالاکییەک لەگەڵ گەڕانەکەت ناگونجێت.",
     "mapNoActivitiesArea": "هیچ چالاکییەک لەم ناوچەیەدا نییە.",
     "practiceSessionTimedOut": "کاتی ڕاهێنانەکەت دوای {minutes} خولەک بەبێ چالاکی کۆتایی هات.",
-    "autocorrectMobileOnly": "تەنیا مۆبایل"
+    "autocorrectMobileOnly": "تەنیا مۆبایل",
+    "autocorrectMobileOnlyWarning": "خۆکارڕاستکردنەوەی ئامێر تەنیا لە ئەپی مۆبایل بەردەستە."
 }

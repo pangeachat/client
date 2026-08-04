@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-03 16:07:28.653888",
+    "@@last_modified": "2026-08-04 09:29:23.839048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Babu ayyukan da suka dace da bincikenka.",
     "mapNoActivitiesArea": "Babu ayyuka a wannan yanki.",
     "practiceSessionTimedOut": "Zaman horon ka ya ƙare bayan mintuna {minutes} ba tare da aiki ba.",
-    "autocorrectMobileOnly": "Wayar hannu kawai"
+    "autocorrectMobileOnly": "Wayar hannu kawai",
+    "autocorrectMobileOnlyWarning": "Gyaran rubutu ta atomatik yana samuwa ne kawai a kan manhajar wayar hannu."
 }

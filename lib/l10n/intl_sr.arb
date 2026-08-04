@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:31.845888",
+    "@@last_modified": "2026-08-04 09:29:29.876229",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10649,5 +10649,6 @@
     "mapNoSearchMatches": "Nijedna aktivnost ne odgovara vašoj pretrazi.",
     "mapNoActivitiesArea": "Nema aktivnosti u ovom području.",
     "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti.",
-    "autocorrectMobileOnly": "Samo za mobilne uređaje"
+    "autocorrectMobileOnly": "Samo za mobilne uređaje",
+    "autocorrectMobileOnlyWarning": "Automatska ispravka je dostupna samo u mobilnoj aplikaciji."
 }

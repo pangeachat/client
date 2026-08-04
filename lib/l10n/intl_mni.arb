@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-03 16:07:30.475873",
+    "@@last_modified": "2026-08-04 09:29:27.053970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "নখোয়গী শিংনবগা চুনবা এক্তিবিতী অমত্তা লৈতে।",
     "mapNoActivitiesArea": "অতোপ্পা এক্তিবিতী অমত্তা লৈতে।",
     "practiceSessionTimedOut": "নখোয়গী প্রেকটিস সেসন অসি {minutes} মিনিট ফাওবা করিগুম্বা থবক তৌদবনা লোইরে।",
-    "autocorrectMobileOnly": "মোবাইলদা খক্তা"
+    "autocorrectMobileOnly": "মোবাইলদা খক্তা",
+    "autocorrectMobileOnlyWarning": "মোবাইল এপ্লিকেসনদা খক্তা ডিভাইস অটোকরেক্ট ফংগনি।"
 }

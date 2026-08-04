@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:32.077927",
+    "@@last_modified": "2026-08-04 09:29:30.215270",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9786,5 +9786,6 @@
     "mapNoSearchMatches": "உங்கள் தேடலுடன் எந்தச் செயல்பாடுகளும் பொருந்தவில்லை.",
     "mapNoActivitiesArea": "இந்த பகுதியில் எந்தச் செயல்பாடுகளும் இல்லை.",
     "practiceSessionTimedOut": "செயல்பாடு இல்லாமல் {minutes} நிமிடங்களுக்குப் பிறகு உங்கள் பயிற்சி அமர்வு முடிந்தது.",
-    "autocorrectMobileOnly": "மொபைலுக்கு மட்டும்"
+    "autocorrectMobileOnly": "மொபைலுக்கு மட்டும்",
+    "autocorrectMobileOnlyWarning": "சாதனத் தானியங்கு திருத்தம் மொபைல் பயன்பாட்டில் மட்டுமே கிடைக்கும்."
 }

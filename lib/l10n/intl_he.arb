@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:28.807739",
+    "@@last_modified": "2026-08-04 09:29:23.898867",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10614,5 +10614,6 @@
     "mapNoSearchMatches": "אין פעילויות התואמות לחיפוש שלך.",
     "mapNoActivitiesArea": "אין פעילויות באזור זה.",
     "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות.",
-    "autocorrectMobileOnly": "נייד בלבד"
+    "autocorrectMobileOnly": "נייד בלבד",
+    "autocorrectMobileOnlyWarning": "התיקון האוטומטי זמין רק באפליקציה לנייד."
 }

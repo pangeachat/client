@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-03 16:07:27.611664",
+    "@@last_modified": "2026-08-04 09:29:22.343458",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Nisuna attività currisponde à a vostra ricerca.",
     "mapNoActivitiesArea": "Nisuna attività in sta zona.",
     "practiceSessionTimedOut": "A vostra sessione di pratica hè finita dopu à {minutes} minuti senza attività.",
-    "autocorrectMobileOnly": "Solu mobile"
+    "autocorrectMobileOnly": "Solu mobile",
+    "autocorrectMobileOnlyWarning": "L'autucurrezzione di u dispusitivu hè dispunibule solu nant'à l'app mobile."
 }

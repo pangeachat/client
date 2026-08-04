@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:31.303741",
+    "@@last_modified": "2026-08-04 09:29:29.121918",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9694,5 +9694,6 @@
     "mapNoSearchMatches": "Nenhuma atividade corresponde à sua pesquisa.",
     "mapNoActivitiesArea": "Nenhuma atividade nesta área.",
     "practiceSessionTimedOut": "Sua sessão de prática terminou após {minutes} minutos sem atividade.",
-    "autocorrectMobileOnly": "Somente para celular"
+    "autocorrectMobileOnly": "Somente para celular",
+    "autocorrectMobileOnlyWarning": "A correção automática do dispositivo está disponível apenas no aplicativo móvel."
 }

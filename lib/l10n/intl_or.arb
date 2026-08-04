@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-03 16:07:30.983896",
+    "@@last_modified": "2026-08-04 09:29:29.500137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "ଆପଣଙ୍କ ସନ୍ଧାନ ସହିତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ମେଳ ଖାଉ ନାହିଁ।",
     "mapNoActivitiesArea": "ଏହି ଅଞ୍ଚଳରେ କୌଣସି କାର୍ଯ୍ୟକଳାପ ନାହିଁ।",
     "practiceSessionTimedOut": "ଆପଣଙ୍କ ଅଭ୍ୟାସ ଅଧିବେଶନ {minutes} ମିନିଟ୍ ପର୍ଯ୍ୟନ୍ତ କୌଣସି କାର୍ଯ୍ୟକଳାପ ବିନା ଶେଷ ହୋଇଛି।",
-    "autocorrectMobileOnly": "କେବଳ ମୋବାଇଲ୍"
+    "autocorrectMobileOnly": "କେବଳ ମୋବାଇଲ୍",
+    "autocorrectMobileOnlyWarning": "ଡିଭାଇସ୍ ଅଟୋକରେକ୍ଟ କେବଳ ମୋବାଇଲ୍ ଆପ୍‌ରେ ଉପଲବ୍ଧ ଅଛି।"
 }

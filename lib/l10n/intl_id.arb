@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:29.104041",
+    "@@last_modified": "2026-08-04 09:29:24.612951",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9767,5 +9767,6 @@
     "mapNoSearchMatches": "Tidak ada aktivitas yang cocok dengan pencarian Anda.",
     "mapNoActivitiesArea": "Tidak ada aktivitas di area ini.",
     "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
-    "autocorrectMobileOnly": "Khusus seluler"
+    "autocorrectMobileOnly": "Khusus seluler",
+    "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler."
 }

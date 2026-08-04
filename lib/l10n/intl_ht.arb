@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-03 16:07:28.865357",
+    "@@last_modified": "2026-08-04 09:29:24.493652",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Pa gen okenn aktivite ki koresponn ak rechèch ou an.",
     "mapNoActivitiesArea": "Pa gen okenn aktivite nan zòn sa a.",
     "practiceSessionTimedOut": "Sesyon pratik ou a te fini apre {minutes} minit san aktivite.",
-    "autocorrectMobileOnly": "Sèlman sou mobil"
+    "autocorrectMobileOnly": "Sèlman sou mobil",
+    "autocorrectMobileOnlyWarning": "Koreksyon otomatik aparèy la disponib sèlman sou aplikasyon mobil lan."
 }

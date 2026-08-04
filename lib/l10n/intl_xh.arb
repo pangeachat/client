@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-03 16:07:32.899659",
+    "@@last_modified": "2026-08-04 09:29:31.008903",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Akukho misebenzi ifana nokukhangela kwakho.",
     "mapNoActivitiesArea": "Akukho misebenzi kule ndawo.",
     "practiceSessionTimedOut": "Iseshoni yakho yoqheliselo iphele emva kwemizuzu engu-{minutes} ngaphandle komsebenzi.",
-    "autocorrectMobileOnly": "Ifowuni kuphela"
+    "autocorrectMobileOnly": "Ifowuni kuphela",
+    "autocorrectMobileOnlyWarning": "Ukulungisa okuzenzekelayo kwifowuni kuyafumaneka kuphela kwi-app yeselula."
 }

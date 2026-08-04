@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-03 16:07:32.018559",
+    "@@last_modified": "2026-08-04 09:29:29.904685",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Teu aya kagiatan anu cocog sareng pamilarian anjeun.",
     "mapNoActivitiesArea": "Teu aya kagiatan di daérah ieu.",
     "practiceSessionTimedOut": "Sési latihan anjeun réngsé saatos {minutes} menit tanpa kagiatan.",
-    "autocorrectMobileOnly": "Ngan ukur dina mobile"
+    "autocorrectMobileOnly": "Ngan ukur dina mobile",
+    "autocorrectMobileOnlyWarning": "Autocorrect alat mung sayogi dina aplikasi sélulér."
 }

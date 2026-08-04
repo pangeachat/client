@@ -3104,7 +3104,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-03 16:07:29.348582",
+    "@@last_modified": "2026-08-04 09:29:24.694446",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10326,5 +10326,6 @@
     "mapNoSearchMatches": "Níl aon ghníomhaíochtaí ag teacht le do chuardach.",
     "mapNoActivitiesArea": "Níl aon ghníomhaíochtaí sa cheantar seo.",
     "practiceSessionTimedOut": "Tháinig deireadh le do sheisiún cleachtaidh tar éis {minutes} nóiméad gan aon ghníomhaíocht.",
-    "autocorrectMobileOnly": "Fón póca amháin"
+    "autocorrectMobileOnly": "Fón póca amháin",
+    "autocorrectMobileOnlyWarning": "Níl ceartú uathoibríoch gléis ar fáil ach ar an aip shoghluaiste."
 }

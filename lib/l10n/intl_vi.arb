@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:32.648249",
+    "@@last_modified": "2026-08-04 09:29:30.931929",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6960,5 +6960,6 @@
     "mapNoSearchMatches": "Không có hoạt động nào khớp với tìm kiếm của bạn.",
     "mapNoActivitiesArea": "Không có hoạt động nào trong khu vực này.",
     "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động.",
-    "autocorrectMobileOnly": "Chỉ trên di động"
+    "autocorrectMobileOnly": "Chỉ trên di động",
+    "autocorrectMobileOnlyWarning": "Tự động sửa lỗi chỉ khả dụng trên ứng dụng di động."
 }

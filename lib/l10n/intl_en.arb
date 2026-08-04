@@ -3580,6 +3580,7 @@
     "enableAutocorrectToolName": "Enable device autocorrect",
     "enableAutocorrectDescription": "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.",
     "autocorrectMobileOnly": "Mobile only",
+    "autocorrectMobileOnlyWarning": "Device autocorrect is only available on the mobile app.",
     "ttsDisbledTitle": "Text-to-speech disabled",
     "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
     "noSpaceDescriptionYet": "No course description created yet.",

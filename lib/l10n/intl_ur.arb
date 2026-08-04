@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-03 16:07:32.570494",
+    "@@last_modified": "2026-08-04 09:29:31.038486",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "آپ کی تلاش سے کوئی سرگرمی مماثل نہیں ہے۔",
     "mapNoActivitiesArea": "اس علاقے میں کوئی سرگرمیاں نہیں ہیں۔",
     "practiceSessionTimedOut": "آپ کا پریکٹس سیشن {minutes} منٹ کی غیرفعالی کے بعد ختم ہو گیا ہے۔",
-    "autocorrectMobileOnly": "صرف موبائل"
+    "autocorrectMobileOnly": "صرف موبائل",
+    "autocorrectMobileOnlyWarning": "ڈیوائس آٹو کریکٹ صرف موبائل ایپ پر دستیاب ہے۔"
 }

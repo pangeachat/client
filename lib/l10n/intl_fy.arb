@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-03 16:07:28.256545",
+    "@@last_modified": "2026-08-04 09:29:23.606297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Gjin aktiviteiten komme oerien mei jo syktocht.",
     "mapNoActivitiesArea": "Gjin aktiviteiten yn dit gebiet.",
     "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit.",
-    "autocorrectMobileOnly": "Allinne mobyl"
+    "autocorrectMobileOnly": "Allinne mobyl",
+    "autocorrectMobileOnlyWarning": "Apparaat-autokorreksje is allinnich beskikber yn de mobile app."
 }

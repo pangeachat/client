@@ -3559,7 +3559,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-03 16:07:27.166084",
+    "@@last_modified": "2026-08-04 09:29:21.714279",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9708,5 +9708,6 @@
     "mapNoSearchMatches": "Няма дзеянняў, якія адпавядаюць вашаму пошуку.",
     "mapNoActivitiesArea": "Няма дзеянняў у гэтай вобласці.",
     "practiceSessionTimedOut": "Ваша практычная сесія скончылася праз {minutes} хвілін без актыўнасці.",
-    "autocorrectMobileOnly": "Толькі мабільны"
+    "autocorrectMobileOnly": "Толькі мабільны",
+    "autocorrectMobileOnlyWarning": "Аўтавыпраўленне даступна толькі ў мабільнай праграме."
 }

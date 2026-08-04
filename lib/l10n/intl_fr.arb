@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-03 16:07:28.446896",
+    "@@last_modified": "2026-08-04 09:29:23.348447",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10049,5 +10049,6 @@
     "mapNoSearchMatches": "Aucune activité ne correspond à votre recherche.",
     "mapNoActivitiesArea": "Aucune activité dans cette zone.",
     "practiceSessionTimedOut": "Votre session d'entraînement s'est terminée après {minutes} minutes d'inactivité.",
-    "autocorrectMobileOnly": "Mobile uniquement"
+    "autocorrectMobileOnly": "Mobile uniquement",
+    "autocorrectMobileOnlyWarning": "La correction automatique de l'appareil n'est disponible que sur l'application mobile."
 }

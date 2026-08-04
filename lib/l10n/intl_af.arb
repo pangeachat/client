@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-03 16:07:27.126730",
+    "@@last_modified": "2026-08-04 09:29:21.481446",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Geen aktiwiteite stem ooreen met jou soektog nie.",
     "mapNoActivitiesArea": "Geen aktiwiteite in hierdie area nie.",
     "practiceSessionTimedOut": "Jou oefensessie het geëindig na {minutes} minute van onaktiwiteit.",
-    "autocorrectMobileOnly": "Slegs mobiel"
+    "autocorrectMobileOnly": "Slegs mobiel",
+    "autocorrectMobileOnlyWarning": "Toestel-outokorreksie is slegs op die mobiele toepassing beskikbaar."
 }

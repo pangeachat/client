@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-03 16:07:27.129846",
+    "@@last_modified": "2026-08-04 09:29:21.484900",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10000,5 +10000,6 @@
     "mapNoSearchMatches": "لا توجد أنشطة مطابقة لبحثك.",
     "mapNoActivitiesArea": "لا توجد أنشطة في هذه المنطقة.",
     "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط.",
-    "autocorrectMobileOnly": "للجوال فقط"
+    "autocorrectMobileOnly": "للجوال فقط",
+    "autocorrectMobileOnlyWarning": "التصحيح التلقائي للجهاز متاح فقط في تطبيق الجوال."
 }

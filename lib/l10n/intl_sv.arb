@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:32.008875",
+    "@@last_modified": "2026-08-04 09:29:29.860954",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10212,5 +10212,6 @@
     "mapNoSearchMatches": "Inga aktiviteter matchar din sökning.",
     "mapNoActivitiesArea": "Inga aktiviteter i detta område.",
     "practiceSessionTimedOut": "Din övningssession avslutades efter {minutes} minuters inaktivitet.",
-    "autocorrectMobileOnly": "Endast mobil"
+    "autocorrectMobileOnly": "Endast mobil",
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrigering är endast tillgänglig i mobilappen."
 }

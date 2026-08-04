@@ -1272,7 +1272,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-03 16:07:33.176405",
+    "@@last_modified": "2026-08-04 09:29:31.131004",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10657,5 +10657,6 @@
     "mapNoSearchMatches": "冇活動符合你嘅搜尋。",
     "mapNoActivitiesArea": "呢個區域冇活動。",
     "practiceSessionTimedOut": "你嘅練習環節喺冇活動 {minutes} 分鐘後結束咗。",
-    "autocorrectMobileOnly": "僅限流動裝置"
+    "autocorrectMobileOnly": "僅限流動裝置",
+    "autocorrectMobileOnlyWarning": "裝置自動校正功能僅適用於流動應用程式。"
 }

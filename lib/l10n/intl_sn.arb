@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-03 16:07:31.859948",
+    "@@last_modified": "2026-08-04 09:29:29.903005",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Hapana zviitiko zvinoenderana nekutsvaga kwako.",
     "mapNoActivitiesArea": "Hapana zviitiko munzvimbo ino.",
     "practiceSessionTimedOut": "Chikamu chako chekudzidzira chapera mushure memaminitsi {minutes} usina kuita chinhu.",
-    "autocorrectMobileOnly": "Pamafoni chete"
+    "autocorrectMobileOnly": "Pamafoni chete",
+    "autocorrectMobileOnlyWarning": "Autocorrect yefoni inongowanikwa pafoni app chete."
 }

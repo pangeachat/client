@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-03 16:07:31.876548",
+    "@@last_modified": "2026-08-04 09:29:29.451498",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Ma jiraan wax hawlo ah oo u dhigma raadintaada.",
     "mapNoActivitiesArea": "Ma jiraan wax hawlo ah aaggan.",
     "practiceSessionTimedOut": "Fadhigaaga tababarka wuxuu dhammaaday {minutes} daqiiqo ka dib markii aan wax dhaqdhaqaaq ah la samayn.",
-    "autocorrectMobileOnly": "Kaliya moobilka"
+    "autocorrectMobileOnly": "Kaliya moobilka",
+    "autocorrectMobileOnlyWarning": "Sixitaanka tooska ah ee aaladda waxa kaliya oo laga heli karaa abka mobaylka."
 }

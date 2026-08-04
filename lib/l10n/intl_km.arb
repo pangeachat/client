@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-03 16:07:29.584206",
+    "@@last_modified": "2026-08-04 09:29:25.791665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "គ្មាន​សកម្មភាព​ណា​ត្រូវ​នឹង​ការ​ស្វែងរក​របស់​អ្នក​ទេ។",
     "mapNoActivitiesArea": "គ្មាន​សកម្មភាព​នៅ​ក្នុង​តំបន់​នេះ​ទេ។",
     "practiceSessionTimedOut": "វគ្គហ្វឹកហាត់របស់អ្នកបានបញ្ចប់បន្ទាប់ពី {minutes} នាទីដោយគ្មានសកម្មភាព។",
-    "autocorrectMobileOnly": "សម្រាប់តែទូរសព្ទ"
+    "autocorrectMobileOnly": "សម្រាប់តែទូរសព្ទ",
+    "autocorrectMobileOnlyWarning": "ការកែស្វ័យប្រវត្តិរបស់ឧបករណ៍អាចប្រើបានតែនៅលើកម្មវិធីទូរសព្ទប៉ុណ្ណោះ។"
 }

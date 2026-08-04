@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:29.782610",
+    "@@last_modified": "2026-08-04 09:29:26.246989",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9887,5 +9887,6 @@
     "mapNoSearchMatches": "검색과 일치하는 활동이 없습니다.",
     "mapNoActivitiesArea": "이 지역에 활동이 없습니다.",
     "practiceSessionTimedOut": "활동이 없어 {minutes}분 후 연습 세션이 종료되었습니다.",
-    "autocorrectMobileOnly": "모바일 전용"
+    "autocorrectMobileOnly": "모바일 전용",
+    "autocorrectMobileOnlyWarning": "기기 자동 고침은 모바일 앱에서만 사용할 수 있습니다."
 }

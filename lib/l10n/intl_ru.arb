@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-03 16:07:31.329300",
+    "@@last_modified": "2026-08-04 09:29:28.449786",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10668,5 +10668,6 @@
     "mapNoSearchMatches": "По вашему запросу не найдено ни одной активности.",
     "mapNoActivitiesArea": "В этой области нет активностей.",
     "practiceSessionTimedOut": "Ваша тренировка завершилась после {minutes} минут бездействия.",
-    "autocorrectMobileOnly": "Только для мобильных"
+    "autocorrectMobileOnly": "Только для мобильных",
+    "autocorrectMobileOnlyWarning": "Автокоррекция доступна только в мобильном приложении."
 }

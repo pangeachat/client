@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:27.756466",
+    "@@last_modified": "2026-08-04 09:29:22.965990",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10645,5 +10645,6 @@
     "mapNoSearchMatches": "Neniuj agadoj kongruas kun via serĉo.",
     "mapNoActivitiesArea": "Neniuj agadoj en ĉi tiu areo.",
     "practiceSessionTimedOut": "Via ekzercsesio finiĝis post {minutes} minutoj sen aktiveco.",
-    "autocorrectMobileOnly": "Nur poŝtelefono"
+    "autocorrectMobileOnly": "Nur poŝtelefono",
+    "autocorrectMobileOnlyWarning": "Aŭtomata korekto de aparato disponeblas nur en la poŝtelefona aplikaĵo."
 }

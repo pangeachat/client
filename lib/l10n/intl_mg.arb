@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-03 16:07:30.279946",
+    "@@last_modified": "2026-08-04 09:29:26.829606",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Tsy misy hetsika mifanaraka amin'ny fikarohanao.",
     "mapNoActivitiesArea": "Tsy misy hetsika eto amin'ity faritra ity.",
     "practiceSessionTimedOut": "Nifarana ny fotoana fanaovanao fanazaran-tena rehefa afaka {minutes} minitra tsy nisy hetsika.",
-    "autocorrectMobileOnly": "Finday ihany"
+    "autocorrectMobileOnly": "Finday ihany",
+    "autocorrectMobileOnlyWarning": "Ny fanitsiana mandeha ho azy amin'ny fitaovana dia tsy misy afa-tsy amin'ny fampiharana finday."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-03 16:07:30.539467",
+    "@@last_modified": "2026-08-04 09:29:26.945965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Таны хайлтад тохирох үйл ажиллагаа байхгүй байна.",
     "mapNoActivitiesArea": "Энэ хэсэгт үйл ажиллагаа байхгүй байна.",
     "practiceSessionTimedOut": "Таны дадлагын хичээл {minutes} минут идэвхгүй байсны дараа дууслаа.",
-    "autocorrectMobileOnly": "Зөвхөн гар утсанд"
+    "autocorrectMobileOnly": "Зөвхөн гар утсанд",
+    "autocorrectMobileOnlyWarning": "Төхөөрөмжийн автоматаар засах функц зөвхөн гар утасны апп дээр боломжтой."
 }

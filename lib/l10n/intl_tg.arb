@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-03 16:07:32.354725",
+    "@@last_modified": "2026-08-04 09:29:30.401970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Ҳеҷ гуна фаъолият ба ҷустуҷӯи шумо мувофиқат намекунад.",
     "mapNoActivitiesArea": "Дар ин минтақа ҳеҷ гуна фаъолият нест.",
     "practiceSessionTimedOut": "Сеанси машқи шумо пас аз {minutes} дақиқа бефаъолиятӣ ба охир расид.",
-    "autocorrectMobileOnly": "Танҳо мобилӣ"
+    "autocorrectMobileOnly": "Танҳо мобилӣ",
+    "autocorrectMobileOnlyWarning": "Худкор ислоҳкунӣ танҳо дар барномаи мобилӣ дастрас аст."
 }

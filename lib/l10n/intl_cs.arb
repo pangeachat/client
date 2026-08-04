@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-03 16:07:27.735242",
+    "@@last_modified": "2026-08-04 09:29:22.405069",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10188,5 +10188,6 @@
     "mapNoSearchMatches": "Žádné aktivity neodpovídají vašemu vyhledávání.",
     "mapNoActivitiesArea": "V této oblasti nejsou žádné aktivity.",
     "practiceSessionTimedOut": "Vaše cvičná lekce skončila po {minutes} minutách nečinnosti.",
-    "autocorrectMobileOnly": "Pouze mobilní"
+    "autocorrectMobileOnly": "Pouze mobilní",
+    "autocorrectMobileOnlyWarning": "Automatické opravy jsou dostupné pouze v mobilní aplikaci."
 }

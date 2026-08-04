@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-03 16:07:30.007387",
+    "@@last_modified": "2026-08-04 09:29:25.794384",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Nullae actiones quaestioni tuae congruunt.",
     "mapNoActivitiesArea": "Nullae actiones in hac regione.",
     "practiceSessionTimedOut": "Sessio tua exercitatoria finita est post {minutes} minuta sine actione.",
-    "autocorrectMobileOnly": "Solum mobile"
+    "autocorrectMobileOnly": "Solum mobile",
+    "autocorrectMobileOnlyWarning": "Autocorrectio machinalis tantum in app mobili praesto est."
 }

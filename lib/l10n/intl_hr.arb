@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-03 16:07:28.813489",
+    "@@last_modified": "2026-08-04 09:29:24.330602",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10130,5 +10130,6 @@
     "mapNoSearchMatches": "Nema aktivnosti koje odgovaraju vašem pretraživanju.",
     "mapNoActivitiesArea": "Nema aktivnosti na ovom području.",
     "practiceSessionTimedOut": "Vaša vježba je završila nakon {minutes} minuta neaktivnosti.",
-    "autocorrectMobileOnly": "Samo za mobilne uređaje"
+    "autocorrectMobileOnly": "Samo za mobilne uređaje",
+    "autocorrectMobileOnlyWarning": "Automatska ispravka dostupna je samo u mobilnoj aplikaciji."
 }

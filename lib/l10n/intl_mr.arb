@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-03 16:07:30.401883",
+    "@@last_modified": "2026-08-04 09:29:27.041151",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "तुमच्या शोधानुसार कोणतीही क्रिया जुळत नाही.",
     "mapNoActivitiesArea": "या क्षेत्रात कोणतीही क्रिया नाही.",
     "practiceSessionTimedOut": "तुमचे सराव सत्र {minutes} मिनिटांपर्यंत कोणतीही हालचाल न झाल्यामुळे संपले.",
-    "autocorrectMobileOnly": "फक्त मोबाइल"
+    "autocorrectMobileOnly": "फक्त मोबाइल",
+    "autocorrectMobileOnlyWarning": "डिव्हाइस ऑटोकरेक्ट फक्त मोबाइल ॲपवर उपलब्ध आहे."
 }

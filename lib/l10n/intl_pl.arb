@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-03 16:07:31.223566",
+    "@@last_modified": "2026-08-04 09:29:28.031787",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9779,5 +9779,6 @@
     "mapNoSearchMatches": "Brak aktywności pasujących do wyszukiwania.",
     "mapNoActivitiesArea": "Brak aktywności w tym obszarze.",
     "practiceSessionTimedOut": "Twoja sesja ćwiczeniowa zakończyła się po {minutes} minutach braku aktywności.",
-    "autocorrectMobileOnly": "Tylko na urządzenia mobilne"
+    "autocorrectMobileOnly": "Tylko na urządzenia mobilne",
+    "autocorrectMobileOnlyWarning": "Autokorekta urządzenia jest dostępna tylko w aplikacji mobilnej."
 }

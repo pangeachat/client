@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:27.665914",
+    "@@last_modified": "2026-08-04 09:29:22.170504",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9821,5 +9821,6 @@
     "mapNoSearchMatches": "Cap activitat coincideix amb la teva cerca.",
     "mapNoActivitiesArea": "No hi ha activitats en aquesta zona.",
     "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat.",
-    "autocorrectMobileOnly": "Només mòbil"
+    "autocorrectMobileOnly": "Només mòbil",
+    "autocorrectMobileOnlyWarning": "L'autocorrecció del dispositiu només està disponible a l'aplicació mòbil."
 }

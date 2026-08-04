@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-03 16:07:28.922625",
+    "@@last_modified": "2026-08-04 09:29:24.528849",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9797,5 +9797,6 @@
     "mapNoSearchMatches": "Nincsenek a keresésnek megfelelő tevékenységek.",
     "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen.",
     "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt.",
-    "autocorrectMobileOnly": "Csak mobilon"
+    "autocorrectMobileOnly": "Csak mobilon",
+    "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el."
 }

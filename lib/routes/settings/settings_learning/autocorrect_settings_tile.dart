@@ -51,7 +51,7 @@ class AutocorrectSettingsTileState extends State<AutocorrectSettingsTile> {
     ScaffoldMessenger.of(context).hideCurrentSnackBar();
     ScaffoldMessenger.of(context).showSnackBarAnnounced(
       SnackBar(
-        content: Text(L10n.of(context).autocorrectNotAvailable),
+        content: Text(L10n.of(context).autocorrectMobileOnlyWarning),
         showCloseIcon: true,
       ),
     );
@@ -59,8 +59,12 @@ class AutocorrectSettingsTileState extends State<AutocorrectSettingsTile> {
 
   @override
   Widget build(BuildContext context) {
+    // On web the switch always reads as off, even if the profile setting was
+    // turned on from a mobile device — autocorrect never runs on web.
     final tile = SwitchListTile.adaptive(
-      value: widget.viewModel.getToolSetting(ToolSetting.enableAutocorrect),
+      value:
+          !widget.isWeb &&
+          widget.viewModel.getToolSetting(ToolSetting.enableAutocorrect),
       title: Text(ToolSetting.enableAutocorrect.toolName(context)),
       subtitle: Text(
         widget.isWeb

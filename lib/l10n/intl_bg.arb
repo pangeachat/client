@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-03 16:07:27.153456",
+    "@@last_modified": "2026-08-04 09:29:21.566896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2068,5 +2068,6 @@
     "mapNoSearchMatches": "Няма дейности, които да отговарят на вашето търсене.",
     "mapNoActivitiesArea": "Няма дейности в тази област.",
     "practiceSessionTimedOut": "Вашата тренировъчна сесия приключи след {minutes} минути без активност.",
-    "autocorrectMobileOnly": "Само за мобилни устройства"
+    "autocorrectMobileOnly": "Само за мобилни устройства",
+    "autocorrectMobileOnlyWarning": "Автокорекцията на устройството е налична само в мобилното приложение."
 }

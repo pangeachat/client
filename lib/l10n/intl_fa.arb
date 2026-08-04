@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-03 16:07:28.184367",
+    "@@last_modified": "2026-08-04 09:29:22.919641",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9782,5 +9782,6 @@
     "mapNoSearchMatches": "هیچ فعالیتی با جستجوی شما مطابقت ندارد.",
     "mapNoActivitiesArea": "هیچ فعالیتی در این منطقه وجود ندارد.",
     "practiceSessionTimedOut": "جلسه تمرین شما پس از {minutes} دقیقه عدم فعالیت به پایان رسید.",
-    "autocorrectMobileOnly": "فقط موبایل"
+    "autocorrectMobileOnly": "فقط موبایل",
+    "autocorrectMobileOnlyWarning": "تصحیح خودکار دستگاه فقط در برنامه موبایل در دسترس است."
 }

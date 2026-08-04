@@ -17,11 +17,15 @@ void main() {
 
   const mobileOnlyLabel = 'Mobile only';
   const snackBarWarning =
-      'Unfortunately your platform is not currently supported for this '
-      'feature. Stay tuned for further development!';
+      'Device autocorrect is only available on the mobile app.';
 
-  LearningSettingsViewModel makeViewModel() =>
-      LearningSettingsViewModel(Profile(userSettings: UserSettings()));
+  LearningSettingsViewModel makeViewModel({bool autocorrectOn = false}) =>
+      LearningSettingsViewModel(
+        Profile(
+          userSettings: UserSettings(),
+          toolSettings: UserToolSettings(enableAutocorrect: autocorrectOn),
+        ),
+      );
 
   Future<void> pumpTile(
     WidgetTester tester,
@@ -64,6 +68,15 @@ void main() {
       expect(find.text(mobileOnlyLabel), findsOneWidget);
     });
 
+    testWidgets('reads as off even when the profile setting is on', (
+      tester,
+    ) async {
+      await pumpTile(tester, makeViewModel(autocorrectOn: true), isWeb: true);
+
+      final tile = tester.widget<SwitchListTile>(find.byType(SwitchListTile));
+      expect(tile.value, isFalse);
+    });
+
     testWidgets('tapping shows a snackbar warning, backing off after 3 taps', (
       tester,
     ) async {
@@ -89,10 +102,12 @@ void main() {
     testWidgets('switch is enabled with the standard description', (
       tester,
     ) async {
-      await pumpTile(tester, makeViewModel(), isWeb: false);
+      await pumpTile(tester, makeViewModel(autocorrectOn: true), isWeb: false);
 
       final tile = tester.widget<SwitchListTile>(find.byType(SwitchListTile));
       expect(tile.onChanged, isNotNull);
+      // The off-masking is web-only: on mobile the switch shows the setting.
+      expect(tile.value, isTrue);
       expect(find.text(mobileOnlyLabel), findsNothing);
     });
 
