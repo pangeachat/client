@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-04 09:29:29.904685",
+    "@@last_modified": "2026-08-04 10:46:25.671555",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Teu aya kagiatan di daérah ieu.",
     "practiceSessionTimedOut": "Sési latihan anjeun réngsé saatos {minutes} menit tanpa kagiatan.",
     "autocorrectMobileOnly": "Ngan ukur dina mobile",
-    "autocorrectMobileOnlyWarning": "Autocorrect alat mung sayogi dina aplikasi sélulér."
+    "autocorrectMobileOnlyWarning": "Autocorrect alat mung sayogi dina aplikasi sélulér.",
+    "readAloudNoVoiceTitle": "Teu kapanggih sora {language} nu kualitasna luhur",
+    "readAloudNoVoiceDesktopWeb": "Panyungsi ieu teu nyadiakeun sora {language} nu kualitasna luhur, jadi pesen moal bisa dibacakeun kalawan hadé di dieu. Chrome jeung Edge biasana nyadiakeun sora nu kualitasna luhur.",
+    "readAloudGetChrome": "Meunangkeun Chrome",
+    "readAloudNoVoiceMobileWeb": "Panyungsi ieu teu nyadiakeun sora {language} nu kualitasna luhur, jadi pesen moal bisa dibacakeun kalawan hadé di dieu. Aplikasi Pangea Chat bisa ngagunakeun sora panghadéna dina alat anjeun.",
+    "readAloudGetApp": "Meunangkeun aplikasi",
+    "readAloudNoVoiceIOS": "Alat anjeun can boga sora {language} nu kualitasna luhur nu diunduh. Unduh heula, tuluy cobian deui:",
+    "readAloudNoVoiceIOSSteps": "  • Setélan\n  • Aksesibilitas\n  • Kontén Diucapkeun\n  • Sora\n  • {language}\n  • Unduh sora Enhanced atawa Premium",
+    "readAloudNoVoiceAndroid": "Alat anjeun can boga sora {language} nu kualitasna luhur. Pasang data sora pikeun mesin téks-ka-sora anjeun, tuluy cobian deui.",
+    "readAloudOpenVoiceSettings": "Buka setélan sora"
 }

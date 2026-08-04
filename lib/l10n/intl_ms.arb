@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-04 09:29:27.894476",
+    "@@last_modified": "2026-08-04 10:46:17.763625",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Tiada aktiviti di kawasan ini.",
     "practiceSessionTimedOut": "Sesi latihan anda tamat selepas {minutes} minit tanpa aktiviti.",
     "autocorrectMobileOnly": "Mudah alih sahaja",
-    "autocorrectMobileOnlyWarning": "Pembetulan automatik peranti hanya tersedia pada aplikasi mudah alih."
+    "autocorrectMobileOnlyWarning": "Pembetulan automatik peranti hanya tersedia pada aplikasi mudah alih.",
+    "readAloudNoVoiceTitle": "Tiada suara {language} berkualiti tinggi ditemui",
+    "readAloudNoVoiceDesktopWeb": "Penyemak imbas ini tidak menawarkan suara {language} berkualiti tinggi, jadi mesej tidak dapat dibacakan dengan baik di sini. Chrome dan Edge biasanya menyertakan suara berkualiti tinggi.",
+    "readAloudGetChrome": "Dapatkan Chrome",
+    "readAloudNoVoiceMobileWeb": "Penyemak imbas ini tidak menawarkan suara {language} berkualiti tinggi, jadi mesej tidak dapat dibacakan dengan baik di sini. Aplikasi Pangea Chat boleh menggunakan suara terbaik peranti anda.",
+    "readAloudGetApp": "Dapatkan aplikasi",
+    "readAloudNoVoiceIOS": "Peranti anda belum memuat turun suara {language} berkualiti tinggi. Muat turun satu, kemudian cuba lagi:",
+    "readAloudNoVoiceIOSSteps": "  • Tetapan\n  • Kebolehcapaian\n  • Kandungan Dituturkan\n  • Suara\n  • {language}\n  • Muat turun suara Dipertingkat atau Premium",
+    "readAloudNoVoiceAndroid": "Peranti anda belum mempunyai suara {language} berkualiti tinggi. Pasang data suara untuk enjin teks-ke-pertuturan anda, kemudian cuba lagi.",
+    "readAloudOpenVoiceSettings": "Buka tetapan suara"
 }

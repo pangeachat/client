@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-04 09:29:27.041151",
+    "@@last_modified": "2026-08-04 10:46:17.647057",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "या क्षेत्रात कोणतीही क्रिया नाही.",
     "practiceSessionTimedOut": "तुमचे सराव सत्र {minutes} मिनिटांपर्यंत कोणतीही हालचाल न झाल्यामुळे संपले.",
     "autocorrectMobileOnly": "फक्त मोबाइल",
-    "autocorrectMobileOnlyWarning": "डिव्हाइस ऑटोकरेक्ट फक्त मोबाइल ॲपवर उपलब्ध आहे."
+    "autocorrectMobileOnlyWarning": "डिव्हाइस ऑटोकरेक्ट फक्त मोबाइल ॲपवर उपलब्ध आहे.",
+    "readAloudNoVoiceTitle": "उच्च-गुणवत्तेचा {language} आवाज सापडला नाही",
+    "readAloudNoVoiceDesktopWeb": "हा ब्राउझर उच्च-गुणवत्तेचा {language} आवाज देत नाही, त्यामुळे येथे संदेश चांगल्या प्रकारे वाचले जाऊ शकत नाहीत. Chrome आणि Edge मध्ये सहसा उच्च-गुणवत्तेचे आवाज समाविष्ट असतात.",
+    "readAloudGetChrome": "Chrome मिळवा",
+    "readAloudNoVoiceMobileWeb": "हा ब्राउझर उच्च-गुणवत्तेचा {language} आवाज देत नाही, त्यामुळे येथे संदेश चांगल्या प्रकारे वाचले जाऊ शकत नाहीत. Pangea Chat ॲप तुमच्या डिव्हाइसचे सर्वोत्तम आवाज वापरू शकते.",
+    "readAloudGetApp": "ॲप मिळवा",
+    "readAloudNoVoiceIOS": "तुमच्या डिव्हाइसमध्ये अजून उच्च-गुणवत्तेचा {language} आवाज डाउनलोड केलेला नाही. एक डाउनलोड करा, नंतर पुन्हा प्रयत्न करा:",
+    "readAloudNoVoiceIOSSteps": "  • सेटिंग्ज\n  • ॲक्सेसिबिलिटी\n  • स्पोकन कंटेंट\n  • व्हॉइसेस\n  • {language}\n  • एनहान्स्ड किंवा प्रीमियम व्हॉइस डाउनलोड करा",
+    "readAloudNoVoiceAndroid": "तुमच्या डिव्हाइसमध्ये अजून उच्च-गुणवत्तेचा {language} आवाज नाही. तुमच्या टेक्स्ट-टू-स्पीच इंजिनसाठी व्हॉइस डेटा स्थापित करा, नंतर पुन्हा प्रयत्न करा.",
+    "readAloudOpenVoiceSettings": "व्हॉइस सेटिंग्ज उघडा"
 }

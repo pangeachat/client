@@ -2089,7 +2089,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-04 09:29:23.187820",
+    "@@last_modified": "2026-08-04 10:46:06.295290",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10561,5 +10561,14 @@
     "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito.",
     "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad.",
     "autocorrectMobileOnly": "Pang-mobile lang",
-    "autocorrectMobileOnlyWarning": "Available lang ang autocorrect ng device sa mobile app."
+    "autocorrectMobileOnlyWarning": "Available lang ang autocorrect ng device sa mobile app.",
+    "readAloudNoVoiceTitle": "Walang nakitang de-kalidad na boses sa {language}",
+    "readAloudNoVoiceDesktopWeb": "Hindi nag-aalok ang browser na ito ng de-kalidad na boses sa {language}, kaya hindi mababasa nang maayos ang mga mensahe dito. Karaniwang may kasamang de-kalidad na boses ang Chrome at Edge.",
+    "readAloudGetChrome": "Kunin ang Chrome",
+    "readAloudNoVoiceMobileWeb": "Hindi nag-aalok ang browser na ito ng de-kalidad na boses sa {language}, kaya hindi mababasa nang maayos ang mga mensahe dito. Magagamit ng Pangea Chat app ang pinakamahusay na boses ng iyong device.",
+    "readAloudGetApp": "Kunin ang app",
+    "readAloudNoVoiceIOS": "Wala pang na-download na de-kalidad na boses sa {language} ang iyong device. Mag-download ng isa, pagkatapos ay subukang muli:",
+    "readAloudNoVoiceIOSSteps": "  • Mga Setting\n  • Accessibility\n  • Spoken Content\n  • Mga Boses\n  • {language}\n  • Mag-download ng Enhanced o Premium na boses",
+    "readAloudNoVoiceAndroid": "Wala pang de-kalidad na boses sa {language} ang iyong device. Mag-install ng data ng boses para sa iyong text-to-speech engine, pagkatapos ay subukang muli.",
+    "readAloudOpenVoiceSettings": "Buksan ang mga setting ng boses"
 }

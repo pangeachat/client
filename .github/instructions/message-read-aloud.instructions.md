@@ -12,6 +12,18 @@ Incoming messages in the learner's target language are spoken automatically, tur
 ## The setting
 Off by default, opt-in per learner: Automatically read aloud all received messages in learning settings, stored as autoReadAloudMessages on ToolSetting. Default off because unprompted audio in a messaging app is intrusive for anyone who didn't ask for it.
 
+### Enabling requires a qualifying voice
+Turning the toggle on first runs the same known-good-voice gate playback uses (see Audio source below), against the learner's selected L2. When no known-good voice exists, the toggle stays off and a popup explains how to get one where the learner currently is (#8113):
+
+- **Desktop web, non-Chromium** (Safari, Firefox): try Chrome or Edge. These browsers bundle their own high-quality voices; Safari exposes only plain-named compact system voices to the Web Speech API, so no Safari voice can ever pass the gate.
+- **Mobile web, any browser**: use the mobile app. Every iOS browser is WebKit underneath and shares Safari's voices, so recommending another browser there would not help.
+- **iOS app**: download an Enhanced/Premium voice for the L2 (Settings → Accessibility → Spoken Content → Voices). iOS offers no public deep link to that screen — the private `App-Prefs:` scheme risks App Store rejection — so the popup opens the Settings app and lists the path, like the autocorrect dialog.
+- **Android app**: fire the system voice-data install intent (`android.speech.tts.engine.INSTALL_TTS_DATA`), falling back to the TTS settings screen. Rare in practice; Google TTS usually passes the gate.
+
+The advice hedges ("usually") rather than promises: the gate is per-language, and for a low-resource L2 even Chrome or Edge may lack a qualifying voice.
+
+The check is device-level while the setting is account-level. Enabling on a platform with a good voice does not make other platforms play; the silence rule under Audio source still governs playback everywhere. Silence remains correct at playback time — but at the moment of decision the learner deserves to know why nothing would play and what to change; silently doing nothing at toggle time read as broken (#7436).
+
 ## What gets read
 A message is read only when all of these hold:
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-04 09:29:23.588316",
+    "@@last_modified": "2026-08-04 10:46:08.612752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "આ વિસ્તારમાં કોઈ પ્રવૃત્તિઓ નથી.",
     "practiceSessionTimedOut": "પ્રવૃત્તિ વિના {minutes} મિનિટ પછી તમારું પ્રેક્ટિસ સત્ર સમાપ્ત થયું.",
     "autocorrectMobileOnly": "ફક્ત મોબાઇલ",
-    "autocorrectMobileOnlyWarning": "ડિવાઇસ ઑટોકરેક્ટ ફક્ત મોબાઇલ ઍપ પર ઉપલબ્ધ છે."
+    "autocorrectMobileOnlyWarning": "ડિવાઇસ ઑટોકરેક્ટ ફક્ત મોબાઇલ ઍપ પર ઉપલબ્ધ છે.",
+    "readAloudNoVoiceTitle": "ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ મળ્યો નથી",
+    "readAloudNoVoiceDesktopWeb": "આ બ્રાઉઝર ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ પ્રદાન કરતું નથી, તેથી અહીં સંદેશાઓ સારી રીતે વાંચી શકાતા નથી. Chrome અને Edge માં સામાન્ય રીતે ઉચ્ચ-ગુણવત્તાવાળા અવાજો શામેલ હોય છે.",
+    "readAloudGetChrome": "Chrome મેળવો",
+    "readAloudNoVoiceMobileWeb": "આ બ્રાઉઝર ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ પ્રદાન કરતું નથી, તેથી અહીં સંદેશાઓ સારી રીતે વાંચી શકાતા નથી. Pangea Chat એપ્લિકેશન તમારા ઉપકરણના શ્રેષ્ઠ અવાજોનો ઉપયોગ કરી શકે છે.",
+    "readAloudGetApp": "એપ્લિકેશન મેળવો",
+    "readAloudNoVoiceIOS": "તમારા ઉપકરણમાં હજી સુધી ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ ડાઉનલોડ થયો નથી. એક ડાઉનલોડ કરો, પછી ફરી પ્રયાસ કરો:",
+    "readAloudNoVoiceIOSSteps": "  • સેટિંગ્સ\n  • ઍક્સેસિબિલિટી\n  • બોલાયેલી સામગ્રી\n  • અવાજો\n  • {language}\n  • ઉન્નત અથવા પ્રીમિયમ અવાજ ડાઉનલોડ કરો",
+    "readAloudNoVoiceAndroid": "તમારા ઉપકરણમાં હજી સુધી ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ નથી. તમારા ટેક્સ્ટ-ટુ-સ્પીચ એન્જિન માટે વૉઇસ ડેટા ઇન્સ્ટોલ કરો, પછી ફરી પ્રયાસ કરો.",
+    "readAloudOpenVoiceSettings": "વૉઇસ સેટિંગ્સ ખોલો"
 }

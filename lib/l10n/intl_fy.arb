@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-04 09:29:23.606297",
+    "@@last_modified": "2026-08-04 10:46:07.023766",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "Gjin aktiviteiten yn dit gebiet.",
     "practiceSessionTimedOut": "Dyn oefensesje is beëinige nei {minutes} minuten sûnder aktiviteit.",
     "autocorrectMobileOnly": "Allinne mobyl",
-    "autocorrectMobileOnlyWarning": "Apparaat-autokorreksje is allinnich beskikber yn de mobile app."
+    "autocorrectMobileOnlyWarning": "Apparaat-autokorreksje is allinnich beskikber yn de mobile app.",
+    "readAloudNoVoiceTitle": "Gjin {language} stim fan hege kwaliteit fûn",
+    "readAloudNoVoiceDesktopWeb": "Dizze browser biedt gjin {language} stim fan hege kwaliteit, dus berjochten kinne hjir net goed foarlêzen wurde. Chrome en Edge befetsje meastentiids stimmen fan hege kwaliteit.",
+    "readAloudGetChrome": "Chrome downloade",
+    "readAloudNoVoiceMobileWeb": "Dizze browser biedt gjin {language} stim fan hege kwaliteit, dus berjochten kinne hjir net goed foarlêzen wurde. De Pangea Chat-app kin de bêste stimmen fan jo apparaat brûke.",
+    "readAloudGetApp": "De app downloade",
+    "readAloudNoVoiceIOS": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit downloade. Download ien, en besykje it dan opnij:",
+    "readAloudNoVoiceIOSSteps": "  • Ynstellings\n  • Tagong\n  • Sprutsen ynhâld\n  • Stimmen\n  • {language}\n  • Download in Ferbettere of Premium stim",
+    "readAloudNoVoiceAndroid": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit. Ynstallearje stimgegevens foar jo tekst-nei-spraak-motor, en besykje it dan opnij.",
+    "readAloudOpenVoiceSettings": "Stimynstellings iepenje"
 }

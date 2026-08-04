@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-04 09:29:31.038486",
+    "@@last_modified": "2026-08-04 10:46:27.880721",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2069,5 +2069,14 @@
     "mapNoActivitiesArea": "اس علاقے میں کوئی سرگرمیاں نہیں ہیں۔",
     "practiceSessionTimedOut": "آپ کا پریکٹس سیشن {minutes} منٹ کی غیرفعالی کے بعد ختم ہو گیا ہے۔",
     "autocorrectMobileOnly": "صرف موبائل",
-    "autocorrectMobileOnlyWarning": "ڈیوائس آٹو کریکٹ صرف موبائل ایپ پر دستیاب ہے۔"
+    "autocorrectMobileOnlyWarning": "ڈیوائس آٹو کریکٹ صرف موبائل ایپ پر دستیاب ہے۔",
+    "readAloudNoVoiceTitle": "اعلیٰ معیار کی {language} آواز نہیں ملی",
+    "readAloudNoVoiceDesktopWeb": "یہ براؤزر اعلیٰ معیار کی {language} آواز پیش نہیں کرتا، لہذا یہاں پیغامات کو اچھی طرح سے پڑھا نہیں جا سکتا۔ کروم اور ایج میں عام طور پر اعلیٰ معیار کی آوازیں شامل ہوتی ہیں۔",
+    "readAloudGetChrome": "کروم حاصل کریں",
+    "readAloudNoVoiceMobileWeb": "یہ براؤزر اعلیٰ معیار کی {language} آواز پیش نہیں کرتا، لہذا یہاں پیغامات کو اچھی طرح سے پڑھا نہیں جا سکتا۔ پینجیا چیٹ ایپ آپ کے آلے کی بہترین آوازیں استعمال کر سکتی ہے۔",
+    "readAloudGetApp": "ایپ حاصل کریں",
+    "readAloudNoVoiceIOS": "آپ کے آلے میں ابھی تک اعلیٰ معیار کی {language} آواز ڈاؤن لوڈ نہیں ہوئی ہے۔ ایک ڈاؤن لوڈ کریں، پھر دوبارہ کوشش کریں:",
+    "readAloudNoVoiceIOSSteps": "  • ترتیبات\n  • رسائی\n  • بولی جانے والی مواد\n  • آوازیں\n  • {language}\n  • ایک بہتر یا پریمیم آواز ڈاؤن لوڈ کریں",
+    "readAloudNoVoiceAndroid": "آپ کے آلے میں ابھی تک اعلیٰ معیار کی {language} آواز نہیں ہے۔ اپنے ٹیکسٹ ٹو اسپیچ انجن کے لیے صوتی ڈیٹا انسٹال کریں، پھر دوبارہ کوشش کریں۔",
+    "readAloudOpenVoiceSettings": "آواز کی ترتیبات کھولیں"
 }
