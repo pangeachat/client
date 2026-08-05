@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-04 10:31:27.806050",
+    "@@last_modified": "2026-08-05 09:53:11.792419",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "ອຸປະກອນຂອງທ່ານຍັງບໍ່ໄດ້ດາວໂຫຼດສຽງ {language} ທີ່ມີຄຸນນະພາບສູງເທື່ອ. ດາວໂຫຼດແລ້ວລອງໃໝ່ອີກຄັ້ງ:",
     "readAloudNoVoiceIOSSteps": "  • ການຕັ້ງຄ່າ\n  • ການຊ່ວຍເຫຼືອການເຂົ້າເຖິງ\n  • ເນື້ອຫາທີ່ເວົ້າ\n  • ສຽງ\n  • {language}\n  • ດາວໂຫຼດສຽງທີ່ປັບປຸງ ຫຼື ພຣີມຽມ",
     "readAloudNoVoiceAndroid": "ອຸປະກອນຂອງທ່ານຍັງບໍ່ມີສຽງ {language} ທີ່ມີຄຸນນະພາບສູງເທື່ອ. ຕິດຕັ້ງຂໍ້ມູນສຽງສຳລັບເຄື່ອງຈັກການປ່ຽນຂໍ້ຄວາມເປັນສຽງເວົ້າຂອງທ່ານ, ແລ້ວລອງໃໝ່ອີກຄັ້ງ.",
-    "readAloudOpenVoiceSettings": "ເປີດການຕັ້ງຄ່າສຽງ"
+    "readAloudOpenVoiceSettings": "ເປີດການຕັ້ງຄ່າສຽງ",
+    "formLabel": "ແບບຟອມ {name}"
 }

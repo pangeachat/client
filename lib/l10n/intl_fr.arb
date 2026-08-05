@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-04 10:31:21.337745",
+    "@@last_modified": "2026-08-05 09:53:09.628581",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10055,5 +10055,6 @@
     "readAloudNoVoiceIOS": "Votre appareil n'a pas encore téléchargé de voix {language} de haute qualité. Téléchargez-en une, puis réessayez :",
     "readAloudNoVoiceIOSSteps": "  • Réglages\n  • Accessibilité\n  • Contenu énoncé\n  • Voix\n  • {language}\n  • Télécharger une voix améliorée ou premium",
     "readAloudNoVoiceAndroid": "Votre appareil n'a pas encore de voix {language} de haute qualité. Installez les données vocales pour votre moteur de synthèse vocale, puis réessayez.",
-    "readAloudOpenVoiceSettings": "Ouvrir les paramètres vocaux"
+    "readAloudOpenVoiceSettings": "Ouvrir les paramètres vocaux",
+    "formLabel": "Formulaire {name}"
 }

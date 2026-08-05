@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-04 10:31:35.254936",
+    "@@last_modified": "2026-08-05 09:53:14.519244",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "آپ کے آلے میں ابھی تک اعلیٰ معیار کی {language} آواز ڈاؤن لوڈ نہیں ہوئی ہے۔ ایک ڈاؤن لوڈ کریں، پھر دوبارہ کوشش کریں:",
     "readAloudNoVoiceIOSSteps": "  • ترتیبات\n  • رسائی\n  • بولی جانے والی مواد\n  • آوازیں\n  • {language}\n  • ایک بہتر یا پریمیم آواز ڈاؤن لوڈ کریں",
     "readAloudNoVoiceAndroid": "آپ کے آلے میں ابھی تک اعلیٰ معیار کی {language} آواز نہیں ہے۔ اپنے ٹیکسٹ ٹو اسپیچ انجن کے لیے صوتی ڈیٹا انسٹال کریں، پھر دوبارہ کوشش کریں۔",
-    "readAloudOpenVoiceSettings": "آواز کی ترتیبات کھولیں"
+    "readAloudOpenVoiceSettings": "آواز کی ترتیبات کھولیں",
+    "formLabel": "{name} فارم"
 }

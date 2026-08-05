@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-04 10:31:23.151219",
+    "@@last_modified": "2026-08-05 09:53:10.449677",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10136,5 +10136,6 @@
     "readAloudNoVoiceIOS": "Vaš uređaj još nema preuzet visokokvalitetan glas za {language}. Preuzmite ga, a zatim pokušajte ponovno:",
     "readAloudNoVoiceIOSSteps": "  • Postavke\n  • Pristupačnost\n  • Govorni sadržaj\n  • Glasovi\n  • {language}\n  • Preuzmite poboljšani ili premium glas",
     "readAloudNoVoiceAndroid": "Vaš uređaj još nema visokokvalitetan glas za {language}. Instalirajte podatke o glasu za svoj mehanizam za pretvaranje teksta u govor, a zatim pokušajte ponovno.",
-    "readAloudOpenVoiceSettings": "Otvori postavke glasa"
+    "readAloudOpenVoiceSettings": "Otvori postavke glasa",
+    "formLabel": "Obrazac za {name}"
 }

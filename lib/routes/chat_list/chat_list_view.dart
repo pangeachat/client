@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view_body_wrapper.dart';
 
@@ -41,14 +42,18 @@ class ChatListView extends StatelessWidget {
               onTap: FocusManager.instance.primaryFocus?.unfocus,
               excludeFromSemantics: true,
               behavior: HitTestBehavior.translucent,
-              child: Scaffold(
-                // #Pangea
-                // body: ChatListViewBody(controller),
-                body: ChatListViewBodyWrapper(controller: controller),
-                // The Direct Message FAB moved into the panel header as the
-                // new-chat action (LeftPanelChatListSubpage) — floating over
-                // the list covered its bottom rows in the narrow sheet.
-                // Pangea#
+              child: Semantics(
+                label: L10n.of(context).listLabel(L10n.of(context).chats),
+                container: true,
+                child: Scaffold(
+                  // #Pangea
+                  // body: ChatListViewBody(controller),
+                  body: ChatListViewBodyWrapper(controller: controller),
+                  // The Direct Message FAB moved into the panel header as the
+                  // new-chat action (LeftPanelChatListSubpage) — floating over
+                  // the list covered its bottom rows in the narrow sheet.
+                  // Pangea#
+                ),
               ),
             ),
           ),

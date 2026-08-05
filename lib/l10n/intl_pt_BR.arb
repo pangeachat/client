@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:31:34.111950",
+    "@@last_modified": "2026-08-05 09:53:13.231672",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9700,5 +9700,6 @@
     "readAloudNoVoiceIOS": "Seu dispositivo ainda não tem uma voz de alta qualidade em {language} baixada. Baixe uma e tente novamente:",
     "readAloudNoVoiceIOSSteps": "  • Ajustes\n  • Acessibilidade\n  • Conteúdo Falado\n  • Vozes\n  • {language}\n  • Baixe uma voz Aprimorada ou Premium",
     "readAloudNoVoiceAndroid": "Seu dispositivo ainda não tem uma voz de alta qualidade em {language}. Instale os dados de voz para o seu mecanismo de conversão de texto em fala e tente novamente.",
-    "readAloudOpenVoiceSettings": "Abrir configurações de voz"
+    "readAloudOpenVoiceSettings": "Abrir configurações de voz",
+    "formLabel": "Formulário {name}"
 }

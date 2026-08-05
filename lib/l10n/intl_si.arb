@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-04 10:31:32.107408",
+    "@@last_modified": "2026-08-05 09:53:13.506327",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "ඔබගේ උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් තවමත් බාගත කර නොමැත. එකක් බාගත කර, නැවත උත්සාහ කරන්න:",
     "readAloudNoVoiceIOSSteps": "  • සැකසීම්\n  • ප්‍රවේශ්‍යතාව\n  • කථා කරන අන්තර්ගතය\n  • හඬවල්\n  • {language}\n  • වැඩි දියුණු කළ හෝ වාරික හඬක් බාගත කරන්න",
     "readAloudNoVoiceAndroid": "ඔබගේ උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් තවමත් නොමැත. ඔබගේ පෙළ-කට-කථන එන්ජිම සඳහා හඬ දත්ත ස්ථාපනය කර, නැවත උත්සාහ කරන්න.",
-    "readAloudOpenVoiceSettings": "හඬ සැකසීම් විවෘත කරන්න"
+    "readAloudOpenVoiceSettings": "හඬ සැකසීම් විවෘත කරන්න",
+    "formLabel": "{name} පෝරමය"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-04 10:31:19.905879",
+    "@@last_modified": "2026-08-05 09:53:08.915123",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Nid oes llais {language} o ansawdd uchel wedi'i lawrlwytho i'ch dyfais eto. Lawrlwythwch un, yna ceisiwch eto:",
     "readAloudNoVoiceIOSSteps": "  • Gosodiadau\n  • Hygyrchedd\n  • Cynnwys Llafar\n  • Lleisiau\n  • {language}\n  • Lawrlwytho llais Gwell neu Premiwm",
     "readAloudNoVoiceAndroid": "Nid oes llais {language} o ansawdd uchel gan eich dyfais eto. Gosodwch ddata llais ar gyfer eich injan testun-i-leferydd, yna ceisiwch eto.",
-    "readAloudOpenVoiceSettings": "Agor gosodiadau llais"
+    "readAloudOpenVoiceSettings": "Agor gosodiadau llais",
+    "formLabel": "Ffurflen {name}"
 }

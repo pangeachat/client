@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-04 10:31:35.300236",
+    "@@last_modified": "2026-08-05 09:53:14.653950",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9704,5 +9704,6 @@
     "readAloudNoVoiceIOS": "Qurilmangizda yuqori sifatli {language} ovozi hali yuklab olinmagan. Birini yuklab oling, so'ngra qayta urinib ko'ring:",
     "readAloudNoVoiceIOSSteps": "  • Sozlamalar\n  • Maxsus imkoniyatlar\n  • Gapiriladigan kontent\n  • Ovozlar\n  • {language}\n  • Kengaytirilgan yoki Premium ovozni yuklab oling",
     "readAloudNoVoiceAndroid": "Qurilmangizda yuqori sifatli {language} ovozi hali mavjud emas. Matndan nutqqa o'tkazish mexanizmi uchun ovoz ma'lumotlarini o'rnating, so'ngra qayta urinib ko'ring.",
-    "readAloudOpenVoiceSettings": "Ovoz sozlamalarini ochish"
+    "readAloudOpenVoiceSettings": "Ovoz sozlamalarini ochish",
+    "formLabel": "{name} shakli"
 }

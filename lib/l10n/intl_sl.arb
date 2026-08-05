@@ -1809,7 +1809,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-04 10:31:32.227853",
+    "@@last_modified": "2026-08-05 09:53:13.765281",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10651,5 +10651,6 @@
     "readAloudNoVoiceIOS": "Vaša naprava še nima prenesenega visokokakovostnega glasu za {language}. Prenesite ga in poskusite znova:",
     "readAloudNoVoiceIOSSteps": "  • Nastavitve\n  • Dostopnost\n  • Izgovorjena vsebina\n  • Glasovi\n  • {language}\n  • Prenesite izboljšan ali premium glas",
     "readAloudNoVoiceAndroid": "Vaša naprava še nima visokokakovostnega glasu za {language}. Namestite glasovne podatke za vaš mehanizem za pretvorbo besedila v govor in poskusite znova.",
-    "readAloudOpenVoiceSettings": "Odpri nastavitve glasu"
+    "readAloudOpenVoiceSettings": "Odpri nastavitve glasu",
+    "formLabel": "Obrazec {name}"
 }

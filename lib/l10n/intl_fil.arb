@@ -2087,7 +2087,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-04 10:31:21.203143",
+    "@@last_modified": "2026-08-05 09:53:09.522143",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10566,5 +10566,6 @@
     "readAloudNoVoiceIOS": "Wala pang na-download na de-kalidad na boses sa {language} ang iyong device. Mag-download ng isa, pagkatapos ay subukang muli:",
     "readAloudNoVoiceIOSSteps": "  • Mga Setting\n  • Accessibility\n  • Spoken Content\n  • Mga Boses\n  • {language}\n  • Mag-download ng Enhanced o Premium na boses",
     "readAloudNoVoiceAndroid": "Wala pang de-kalidad na boses sa {language} ang iyong device. Mag-install ng data ng boses para sa iyong text-to-speech engine, pagkatapos ay subukang muli.",
-    "readAloudOpenVoiceSettings": "Buksan ang mga setting ng boses"
+    "readAloudOpenVoiceSettings": "Buksan ang mga setting ng boses",
+    "formLabel": "Form ng {name}"
 }

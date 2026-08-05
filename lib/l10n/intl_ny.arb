@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-04 10:31:31.142496",
+    "@@last_modified": "2026-08-05 09:53:12.860722",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Chipangizo chanu chilibe mawu apamwamba a {language} omwe adatsitsidwa. Tsitsani imodzi, kenako yesaninso:",
     "readAloudNoVoiceIOSSteps": "  • Zokonda\n  • Kufikika\n  • Zomwe Zayankhulidwa\n  • Mawu\n  • {language}\n  • Tsitsani mawu a Enhanced kapena Premium",
     "readAloudNoVoiceAndroid": "Chipangizo chanu chilibe mawu apamwamba a {language}. Ikani deta ya mawu a injini yanu yoyankhulira, kenako yesaninso.",
-    "readAloudOpenVoiceSettings": "Tsegulani zokonda za mawu"
+    "readAloudOpenVoiceSettings": "Tsegulani zokonda za mawu",
+    "formLabel": "Fomu ya {name}"
 }

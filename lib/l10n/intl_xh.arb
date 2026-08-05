@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-04 10:31:35.867555",
+    "@@last_modified": "2026-08-05 09:53:14.888250",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Isixhobo sakho asikakhupheli ilizwi {language} elikumgangatho ophezulu okwangoku. Khuphela elinye, emva koko zama kwakhona:",
     "readAloudNoVoiceIOSSteps": "  • Izicwangciso\n  • Ukufikeleleka\n  • Umxholo othethwayo\n  • Amazwi\n  • {language}\n  • Khuphela ilizwi eliphuculweyo okanye eliyi-Premium",
     "readAloudNoVoiceAndroid": "Isixhobo sakho asinalo ilizwi {language} elikumgangatho ophezulu okwangoku. Faka idatha yelizwi ye-injini yakho yokuguqula umbhalo ube yintetho, emva koko zama kwakhona.",
-    "readAloudOpenVoiceSettings": "Vula izicwangciso zezwi"
+    "readAloudOpenVoiceSettings": "Vula izicwangciso zezwi",
+    "formLabel": "Ifomu lika-{name}"
 }
