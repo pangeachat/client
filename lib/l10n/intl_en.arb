@@ -4899,6 +4899,15 @@
     "mapFiltersHideMatches": "Your filters are hiding all matches. Widen the search to see them.",
     "mapNoSearchMatches": "No activities match your search.",
     "mapNoActivitiesArea": "No activities in this area.",
+    "pingedLabel": "Pinged",
+    "mapFilterPlayerCount": "{count} players",
+    "@mapFilterPlayerCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "formLabel": "{name} form",
     "@formLabel": {
         "placeholders": {
