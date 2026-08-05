@@ -22,7 +22,10 @@ class ActivitySessionsStatusModel {
         statuses[ActivitySummaryStatus.completed]![roomId] = summary;
       } else if (summary.isStarted) {
         statuses[ActivitySummaryStatus.inProgress]![roomId] = summary;
-      } else if (summary.membershipSummary.isNotEmpty) {
+      } else if (summary.hasPresentNonBotMember) {
+        // Abandoned sessions (everyone left, never finished) land in no bucket:
+        // with no joined member to authorize a knock_restricted join, offering
+        // them as "not started" dead-ends in a join error (#8150).
         statuses[ActivitySummaryStatus.notStarted]![roomId] = summary;
       }
     }

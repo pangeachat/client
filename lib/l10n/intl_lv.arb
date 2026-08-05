@@ -3544,7 +3544,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-04 10:31:27.466926",
+    "@@last_modified": "2026-08-05 11:42:14.491611",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9700,5 +9700,11 @@
     "readAloudNoVoiceIOS": "Jūsu ierīcē vēl nav lejupielādēta augstas kvalitātes {language} balss. Lejupielādējiet to un mēģiniet vēlreiz:",
     "readAloudNoVoiceIOSSteps": "  • Iestatījumi\n  • Pieejamība\n  • Runātais saturs\n  • Balsis\n  • {language}\n  • Lejupielādēt uzlabotu vai premium balsi",
     "readAloudNoVoiceAndroid": "Jūsu ierīcē vēl nav augstas kvalitātes {language} balss. Instalējiet balss datus savam teksta-runas dzinējam un mēģiniet vēlreiz.",
-    "readAloudOpenVoiceSettings": "Atvērt balss iestatījumus"
+    "readAloudOpenVoiceSettings": "Atvērt balss iestatījumus",
+    "streamingSttDegradedLiveBanner": "Tiešraides transkripcija darbojas, izmantojot rezerves pakalpojumu. Kvalitāte var atšķirties, lūdzu, pārbaudiet tekstu.",
+    "streamingSttDegradedToBatchBanner": "Tiešraides transkripcija pašlaik nav pieejama. Jūsu ziņojums tika pārrakstīts standarta veidā, bez tiešraides rediģēšanas. Mēs strādājam pie tās atjaunošanas.",
+    "streamingSttLanguageUnsupportedBanner": "Tiešraides transkripcija vēl nav pieejama šai valodai. Mēs pie tā strādājam.",
+    "formLabel": "{name} forma",
+    "botDisplayName": "Pangea Bots",
+    "supportDisplayName": "Atbalsts"
 }

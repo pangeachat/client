@@ -11,6 +11,8 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_request.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_model.dart';
+import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
+import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 
@@ -168,6 +170,77 @@ void main() {
       );
 
       expect(summary.isActivityOpenToJoin, isFalse);
+    });
+
+    test('an abandoned session (its only member left while waiting) is NOT '
+        'open to join — the #8150 case: the preview keeps the leaver in the '
+        'membership summary as "leave", and with no joined member left to '
+        'authorize the knock_restricted join, joining errors', () {
+      final summary = RoomSummaryResponse(
+        membershipSummary: {ana: 'leave'},
+        activityId: 'act-1',
+        activityPlan: plan(2),
+        activityRoles: ActivityRolesModel({
+          'role_0': ActivityRoleModel(id: 'role_0', userId: ana),
+        }),
+      );
+
+      expect(summary.hasPresentNonBotMember, isFalse);
+      expect(summary.isFinished, isFalse);
+      expect(summary.isStarted, isFalse);
+      expect(summary.isActivityOpenToJoin, isFalse);
+    });
+
+    test('a session where only the bot remains joined is not open to join — '
+        'presence means a non-bot member, matching the map\'s gate', () {
+      final summary = RoomSummaryResponse(
+        membershipSummary: {ana: 'leave', bot: 'join'},
+        activityId: 'act-1',
+        activityPlan: plan(2),
+        activityRoles: fullRoles(),
+      );
+
+      expect(summary.hasPresentNonBotMember, isFalse);
+      expect(summary.isActivityOpenToJoin, isFalse);
+    });
+  });
+
+  group('ActivitySessionsStatusModel — status bucketing', () {
+    test('an abandoned session lands in NO bucket — not offered as an open '
+        'session on the start page (#8150)', () {
+      final abandoned = RoomSummaryResponse(
+        membershipSummary: {ana: 'leave'},
+        activityId: 'act-1',
+        activityPlan: plan(2),
+        activityRoles: ActivityRolesModel({
+          'role_0': ActivityRoleModel(id: 'role_0', userId: ana),
+        }),
+      );
+
+      final model = ActivitySessionsStatusModel({'!room:server': abandoned});
+
+      for (final status in ActivitySummaryStatus.values) {
+        expect(model.getSessionsByStatus(status), isEmpty);
+      }
+    });
+
+    test('a waiting session with its host still present buckets as '
+        'notStarted', () {
+      final waiting = RoomSummaryResponse(
+        membershipSummary: {ana: 'join'},
+        activityId: 'act-1',
+        activityPlan: plan(2),
+        activityRoles: ActivityRolesModel({
+          'role_0': ActivityRoleModel(id: 'role_0', userId: ana),
+        }),
+      );
+
+      final model = ActivitySessionsStatusModel({'!room:server': waiting});
+
+      expect(
+        model.getSessionsByStatus(ActivitySummaryStatus.notStarted),
+        hasLength(1),
+      );
     });
   });
 }

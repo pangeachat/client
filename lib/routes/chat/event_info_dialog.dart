@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
@@ -85,13 +86,15 @@ class EventInfoDialog extends StatelessWidget {
           ListTile(
             leading: Avatar(
               mxContent: event.senderFromMemoryOrFallback.avatarUrl,
-              name: event.senderFromMemoryOrFallback.calcDisplayname(),
+              name: event.senderFromMemoryOrFallback.localizedDisplayname(
+                L10n.of(context),
+              ),
               client: event.room.client,
               presenceUserId: event.senderId,
             ),
             title: Text(L10n.of(context).sender),
             subtitle: Text(
-              '${event.senderFromMemoryOrFallback.calcDisplayname()} [${event.senderId}]',
+              '${event.senderFromMemoryOrFallback.localizedDisplayname(L10n.of(context))} [${event.senderId}]',
             ),
           ),
           ListTile(

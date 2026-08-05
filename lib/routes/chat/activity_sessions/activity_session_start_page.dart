@@ -127,9 +127,12 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
   }
 
   /// Seed the summaries from the world map's discovery cache when we arrived from
-  /// a pin it already knows is joinable — an instant join list, no fetch. On a
-  /// miss the model starts empty and [_summariesLoading] stays true, so
-  /// [_loadSummary] fetches and the CTA shows a spinner meanwhile.
+  /// a pin it already knows is joinable — an instant join list, no spinner. On a
+  /// miss the model starts empty and [_summariesLoading] stays true, so the CTA
+  /// shows a spinner until [_loadSummary] lands. Either way [_loadSummary] still
+  /// fetches: the cache can hold a session whose members have since left, which
+  /// nothing in B's sync will ever correct (#8150), so a seeded render is a
+  /// stale-while-revalidate, not a fetch skip.
   void _initSummariesFromCache() {
     final cached = DiscoveredSessionsCache.instance.forActivity(
       widget.activityId,
@@ -224,8 +227,6 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
 
   Future<void> _loadSummary() async {
     if (!mounted) return;
-    // Already satisfied from the map's discovery cache — no server round-trip.
-    if (!_summariesLoading) return;
     final client = Matrix.of(context).client;
 
     // This activity's session rooms across ALL the learner's joined courses —
@@ -279,6 +280,16 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
         }, activityId: widget.activityId);
         _summariesLoading = false;
       });
+      // Write the fresh space-scoped previews back so views rendering off the
+      // cache (the course card's Open state) correct themselves now instead of
+      // on the map's next discovery pass (#8150). Only results[0]: the per-room
+      // extras (deep-linked / invited rooms) are outside what discovery caches.
+      if (courseSpaceIds.isNotEmpty) {
+        DiscoveredSessionsCache.instance.updateActivity(
+          widget.activityId,
+          results[0],
+        );
+      }
     } catch (e, s) {
       // Summaries are non-essential (member counts / role availability); a slow
       // or stalled preview read must not block or fail the activity render, so

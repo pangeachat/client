@@ -27,6 +27,21 @@ class SubscriptionManagementRepo {
     await _cache.remove(PLocalKey.beganPaymentPlanId);
   }
 
+  static bool getLaunchedBillingPortal() {
+    return _cache.read(PLocalKey.launchedBillingPortal) ?? false;
+  }
+
+  /// Portal actions (cancel, renew, card change) happen outside the app, so
+  /// this flag marks that the status may have changed while the app was
+  /// backgrounded. The app-resume poll consumes it.
+  static Future<void> setLaunchedBillingPortal() async {
+    await _cache.write(PLocalKey.launchedBillingPortal, true);
+  }
+
+  static Future<void> removeLaunchedBillingPortal() async {
+    await _cache.remove(PLocalKey.launchedBillingPortal);
+  }
+
   static bool getDismissedPaywall() {
     final entry = _cache.read(PLocalKey.dismissedPaywall);
     if (entry == null) return false;

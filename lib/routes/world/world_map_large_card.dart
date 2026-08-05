@@ -6,6 +6,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -34,11 +35,19 @@ class WorldMapLargeCardAnimated extends StatefulWidget {
   final bool dying;
   final VoidCallback? onExited;
 
+  /// Whether a freshly created state plays the entry grow-in. False for cards
+  /// already on screen at the last settle — MarkerLayer's per-frame positional
+  /// reconciliation can discard and recreate this State mid-gesture, and such
+  /// a card must render at full scale instead of replaying its pop-in (#8136).
+  /// Mirrors [WorldMapDot.animateIn].
+  final bool animateIn;
+
   const WorldMapLargeCardAnimated({
     super.key,
     required this.child,
     this.dying = false,
     this.onExited,
+    this.animateIn = true,
   });
 
   @override
@@ -56,7 +65,18 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
   void initState() {
     super.initState();
     _ctrl = AnimationController(vsync: this, duration: _duration);
-    if (!widget.dying) _ctrl.forward();
+    if (widget.dying) {
+      // Built fresh by ExitingLargeMarkersLayer, so didUpdateWidget's
+      // false→true arm never runs — play the exit from here or onExited never
+      // fires and the card leaks into _exitingLarge (#8136). Mirrors
+      // WorldMapDot.
+      _ctrl.value = 1.0;
+      _ctrl.reverse().then((_) => widget.onExited?.call());
+    } else if (widget.animateIn) {
+      _ctrl.forward();
+    } else {
+      _ctrl.value = 1.0;
+    }
   }
 
   @override
@@ -454,7 +474,7 @@ class _OngoingActiveBody extends StatelessWidget {
               children: [
                 Avatar(
                   mxContent: sender?.avatarUrl,
-                  name: sender?.calcDisplayname(),
+                  name: sender?.localizedDisplayname(L10n.of(context)),
                   size: 24,
                 ),
                 const SizedBox(width: 8),

@@ -28,7 +28,10 @@ class ExitingLargeMarkersLayer {
               WorldMapLargeCard.tailHeight +
               WorldMapLargeCard.badgeOverhang,
           alignment: Alignment.topCenter,
+          // Child key, never Marker.key — see dot_markers_layer.dart
+          // (#7947/#8136).
           child: Align(
+            key: ValueKey('exiting_large_${snap.card.activityId}'),
             alignment: Alignment.bottomCenter,
             child: WorldMapLargeCardAnimated(
               dying: true,

@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-04 10:31:35.254936",
+    "@@last_modified": "2026-08-05 11:42:17.898149",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2082,5 +2082,11 @@
     "readAloudNoVoiceIOS": "آپ کے آلے میں ابھی تک اعلیٰ معیار کی {language} آواز ڈاؤن لوڈ نہیں ہوئی ہے۔ ایک ڈاؤن لوڈ کریں، پھر دوبارہ کوشش کریں:",
     "readAloudNoVoiceIOSSteps": "  • ترتیبات\n  • رسائی\n  • بولی جانے والی مواد\n  • آوازیں\n  • {language}\n  • ایک بہتر یا پریمیم آواز ڈاؤن لوڈ کریں",
     "readAloudNoVoiceAndroid": "آپ کے آلے میں ابھی تک اعلیٰ معیار کی {language} آواز نہیں ہے۔ اپنے ٹیکسٹ ٹو اسپیچ انجن کے لیے صوتی ڈیٹا انسٹال کریں، پھر دوبارہ کوشش کریں۔",
-    "readAloudOpenVoiceSettings": "آواز کی ترتیبات کھولیں"
+    "readAloudOpenVoiceSettings": "آواز کی ترتیبات کھولیں",
+    "streamingSttDegradedLiveBanner": "لائیو ٹرانسکرپشن بیک اپ سروس پر چل رہی ہے۔ معیار مختلف ہو سکتا ہے، براہ کرم متن چیک کریں۔",
+    "streamingSttDegradedToBatchBanner": "لائیو ٹرانسکرپشن ابھی دستیاب نہیں ہے۔ آپ کا پیغام معیاری طریقے سے، لائیو ایڈیٹنگ کے بغیر ٹرانسکرائب کیا گیا تھا۔ ہم اسے بحال کرنے کی کوشش کر رہے ہیں۔",
+    "streamingSttLanguageUnsupportedBanner": "اس زبان کے لیے لائیو ٹرانسکرپشن ابھی دستیاب نہیں ہے۔ ہم اس پر کام کر رہے ہیں۔",
+    "formLabel": "{name} فارم",
+    "botDisplayName": "پینجیا بوٹ",
+    "supportDisplayName": "سپورٹ"
 }

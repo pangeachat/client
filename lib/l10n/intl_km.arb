@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-04 10:31:27.502392",
+    "@@last_modified": "2026-08-05 11:42:13.737938",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2082,5 +2082,11 @@
     "readAloudNoVoiceIOS": "ឧបករណ៍របស់អ្នកមិនទាន់បានទាញយកសំឡេង{language}ដែលមានគុណភាពខ្ពស់នៅឡើយទេ។ សូមទាញយកមួយ រួចព្យាយាមម្ដងទៀត៖",
     "readAloudNoVoiceIOSSteps": "  • ការកំណត់\n  • លទ្ធភាពប្រើប្រាស់\n  • ខ្លឹមសារដែលបាននិយាយ\n  • សំឡេង\n  • {language}\n  • ទាញយកសំឡេងដែលបានកែលម្អ ឬ Premium",
     "readAloudNoVoiceAndroid": "ឧបករណ៍របស់អ្នកមិនទាន់មានសំឡេង{language}ដែលមានគុណភាពខ្ពស់នៅឡើយទេ។ សូមដំឡើងទិន្នន័យសំឡេងសម្រាប់ម៉ាស៊ីនអត្ថបទទៅការនិយាយរបស់អ្នក រួចព្យាយាមម្ដងទៀត។",
-    "readAloudOpenVoiceSettings": "បើកការកំណត់សំឡេង"
+    "readAloudOpenVoiceSettings": "បើកការកំណត់សំឡេង",
+    "streamingSttDegradedLiveBanner": "ការបកប្រែផ្ទាល់កំពុងដំណើរការលើសេវាកម្មបម្រុងទុក។ គុណភាពអាចប្រែប្រួល សូមពិនិត្យមើលអត្ថបទ។",
+    "streamingSttDegradedToBatchBanner": "ការបកប្រែផ្ទាល់មិនអាចប្រើបាននៅពេលនេះទេ។ សាររបស់អ្នកត្រូវបានបកប្រែតាមវិធីស្តង់ដារ ដោយគ្មានការកែសម្រួលផ្ទាល់។ យើងកំពុងព្យាយាមស្ដារវាឡើងវិញ។",
+    "streamingSttLanguageUnsupportedBanner": "ការបកប្រែផ្ទាល់មិនទាន់មានសម្រាប់ភាសានេះនៅឡើយទេ។ យើងកំពុងព្យាយាមបង្កើតវា។",
+    "formLabel": "ទម្រង់ {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "ជំនួយ"
 }

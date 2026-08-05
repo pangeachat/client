@@ -10,6 +10,7 @@ import 'package:fluffychat/features/subscription/enums/subscription_paywall_stat
 import 'package:fluffychat/features/subscription/widgets/paywall_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/shrinkable_text.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
@@ -321,17 +322,19 @@ class InputBar extends StatelessWidget {
     }
     if (suggestion['type'] == 'user' || suggestion['type'] == 'room') {
       final url = Uri.parse(suggestion['avatar_url'] ?? '');
+      final displayname = suggestion['type'] == 'user'
+          ? localizedPangeaUserName(suggestion['mxid'], L10n.of(context)) ??
+                suggestion.tryGet<String>('displayname')
+          : suggestion.tryGet<String>('displayname');
       return ListTile(
         onTap: () => onSelected(suggestion),
         leading: Avatar(
           mxContent: url,
-          name:
-              suggestion.tryGet<String>('displayname') ??
-              suggestion.tryGet<String>('mxid'),
+          name: displayname ?? suggestion.tryGet<String>('mxid'),
           size: size,
           client: client,
         ),
-        title: Text(suggestion['displayname'] ?? suggestion['mxid']!),
+        title: Text(displayname ?? suggestion['mxid']!),
       );
     }
     return const SizedBox.shrink();

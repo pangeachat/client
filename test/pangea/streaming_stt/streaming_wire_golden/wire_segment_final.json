@@ -1,0 +1,78 @@
+{
+  "transcript": "The quick brown fox jumps over the lazy dog while a curious",
+  "type": "segment_final",
+  "words": [
+    {
+      "confidence": 0.99121094,
+      "end": 0.32,
+      "start": 0.08,
+      "word": "the"
+    },
+    {
+      "confidence": 1.0,
+      "end": 0.56,
+      "start": 0.32,
+      "word": "quick"
+    },
+    {
+      "confidence": 0.9980469,
+      "end": 0.88,
+      "start": 0.56,
+      "word": "brown"
+    },
+    {
+      "confidence": 0.99902344,
+      "end": 1.28,
+      "start": 0.88,
+      "word": "fox"
+    },
+    {
+      "confidence": 1.0,
+      "end": 1.5999999,
+      "start": 1.28,
+      "word": "jumps"
+    },
+    {
+      "confidence": 1.0,
+      "end": 1.8399999,
+      "start": 1.5999999,
+      "word": "over"
+    },
+    {
+      "confidence": 1.0,
+      "end": 2.0,
+      "start": 1.8399999,
+      "word": "the"
+    },
+    {
+      "confidence": 0.9970703,
+      "end": 2.32,
+      "start": 2.0,
+      "word": "lazy"
+    },
+    {
+      "confidence": 1.0,
+      "end": 2.72,
+      "start": 2.32,
+      "word": "dog"
+    },
+    {
+      "confidence": 0.5678711,
+      "end": 3.12,
+      "start": 2.72,
+      "word": "while"
+    },
+    {
+      "confidence": 0.9970703,
+      "end": 3.28,
+      "start": 3.12,
+      "word": "a"
+    },
+    {
+      "confidence": 0.9980469,
+      "end": 3.6,
+      "start": 3.28,
+      "word": "curious"
+    }
+  ]
+}

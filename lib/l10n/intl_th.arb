@@ -3102,7 +3102,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-04 10:31:33.904216",
+    "@@last_modified": "2026-08-05 11:42:17.471075",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10332,5 +10332,11 @@
     "readAloudNoVoiceIOS": "อุปกรณ์ของคุณยังไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดาวน์โหลดเสียงแล้วลองอีกครั้ง:",
     "readAloudNoVoiceIOSSteps": "  • การตั้งค่า\n  • การช่วยการเข้าถึง\n  • เนื้อหาที่พูด\n  • เสียง\n  • {language}\n  • ดาวน์โหลดเสียง Enhanced หรือ Premium",
     "readAloudNoVoiceAndroid": "อุปกรณ์ของคุณยังไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ติดตั้งข้อมูลเสียงสำหรับกลไกการแปลงข้อความเป็นคำพูดของคุณ แล้วลองอีกครั้ง",
-    "readAloudOpenVoiceSettings": "เปิดการตั้งค่าเสียง"
+    "readAloudOpenVoiceSettings": "เปิดการตั้งค่าเสียง",
+    "streamingSttDegradedLiveBanner": "การถอดเสียงสดกำลังทำงานบนบริการสำรอง คุณภาพอาจแตกต่างกันไป โปรดตรวจสอบข้อความ",
+    "streamingSttDegradedToBatchBanner": "การถอดเสียงสดไม่พร้อมใช้งานในขณะนี้ ข้อความของคุณถูกถอดเสียงด้วยวิธีมาตรฐาน โดยไม่มีการแก้ไขสด เรากำลังดำเนินการเพื่อกู้คืน",
+    "streamingSttLanguageUnsupportedBanner": "การถอดเสียงสดยังไม่พร้อมใช้งานสำหรับภาษานี้ เรากำลังดำเนินการอยู่",
+    "formLabel": "แบบฟอร์ม {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "ฝ่ายสนับสนุน"
 }

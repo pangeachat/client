@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-04 10:31:24.482570",
+    "@@last_modified": "2026-08-05 11:42:12.890982",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9803,5 +9803,11 @@
     "readAloudNoVoiceIOS": "Az eszközödön még nincs letöltve kiváló minőségű {language} hang. Tölts le egyet, majd próbáld újra:",
     "readAloudNoVoiceIOSSteps": "  • Beállítások\n  • Kisegítő lehetőségek\n  • Felolvasott tartalom\n  • Hangok\n  • {language}\n  • Tölts le egy továbbfejlesztett vagy prémium hangot",
     "readAloudNoVoiceAndroid": "Az eszközödön még nincs kiváló minőségű {language} hang. Telepíts hangadatokat a szövegfelolvasó motorodhoz, majd próbáld újra.",
-    "readAloudOpenVoiceSettings": "Hangbeállítások megnyitása"
+    "readAloudOpenVoiceSettings": "Hangbeállítások megnyitása",
+    "streamingSttDegradedLiveBanner": "Az élő átírás egy biztonsági szolgáltatáson fut. A minőség változhat, kérjük, ellenőrizze a szöveget.",
+    "streamingSttDegradedToBatchBanner": "Az élő átírás jelenleg nem elérhető. Az üzenetét a szokásos módon írtuk át, élő szerkesztés nélkül. Dolgozunk a visszaállításon.",
+    "streamingSttLanguageUnsupportedBanner": "Az élő átírás még nem érhető el ehhez a nyelvhez. Dolgozunk rajta.",
+    "formLabel": "{name} űrlap",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Ügyfélszolgálat"
 }

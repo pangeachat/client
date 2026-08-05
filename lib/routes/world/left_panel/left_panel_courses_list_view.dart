@@ -34,26 +34,32 @@ class CoursesHubPanel extends StatelessWidget {
     final client = Matrix.of(context).client;
     final l10n = L10n.of(context);
 
-    return StreamBuilder(
-      stream: client.onSync.stream
-          .where((s) => s.hasRoomUpdate)
-          .rateLimit(const Duration(seconds: 1)),
-      builder: (context, _) {
-        final courses = client.sortedCourses(l10n);
-        return Column(
-          children: [
-            PanelHeader(
-              leading: closeButton,
-              title: l10n.courses,
-              // With courses present, the three add-course actions ride the
-              // header as right-justified icons; when empty they stay as full
-              // buttons in the body below (the empty state).
-              trailing: courses.isEmpty ? null : const AddCourseHeaderActions(),
-            ),
-            Expanded(child: LeftPanelCoursesListView(courses: courses)),
-          ],
-        );
-      },
+    return Semantics(
+      label: L10n.of(context).pageLabel(L10n.of(context).courses),
+      container: true,
+      child: StreamBuilder(
+        stream: client.onSync.stream
+            .where((s) => s.hasRoomUpdate)
+            .rateLimit(const Duration(seconds: 1)),
+        builder: (context, _) {
+          final courses = client.sortedCourses(l10n);
+          return Column(
+            children: [
+              PanelHeader(
+                leading: closeButton,
+                title: l10n.courses,
+                // With courses present, the three add-course actions ride the
+                // header as right-justified icons; when empty they stay as full
+                // buttons in the body below (the empty state).
+                trailing: courses.isEmpty
+                    ? null
+                    : const AddCourseHeaderActions(),
+              ),
+              Expanded(child: LeftPanelCoursesListView(courses: courses)),
+            ],
+          );
+        },
+      ),
     );
   }
 }
@@ -103,36 +109,40 @@ class LeftPanelCoursesListView extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12.0),
-      child: AddCourseTileList(
-        content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
-        onTap: (index) => onTapCourse(context, courses[index]),
-        extraContent: courses.isEmpty
-            ? [
-                const SizedBox(height: 4.0),
-                // "Add new course" section divider + the full add-course buttons.
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(color: theme.colorScheme.outlineVariant),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                      child: Text(
-                        l10n.addNewCourse,
-                        style: theme.textTheme.labelLarge?.copyWith(
-                          color: theme.colorScheme.onSurfaceVariant,
+      child: Semantics(
+        label: L10n.of(context).joinedCourseListLabel,
+        container: true,
+        child: AddCourseTileList(
+          content: courses.map((c) => RoomAddCourseTileContent(c)).toList(),
+          onTap: (index) => onTapCourse(context, courses[index]),
+          extraContent: courses.isEmpty
+              ? [
+                  const SizedBox(height: 4.0),
+                  // "Add new course" section divider + the full add-course buttons.
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Divider(color: theme.colorScheme.outlineVariant),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                        child: Text(
+                          l10n.addNewCourse,
+                          style: theme.textTheme.labelLarge?.copyWith(
+                            color: theme.colorScheme.onSurfaceVariant,
+                          ),
                         ),
                       ),
-                    ),
-                    Expanded(
-                      child: Divider(color: theme.colorScheme.outlineVariant),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 12.0),
-                const AddCourseOptions(),
-              ]
-            : null,
+                      Expanded(
+                        child: Divider(color: theme.colorScheme.outlineVariant),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12.0),
+                  const AddCourseOptions(),
+                ]
+              : null,
+        ),
       ),
     );
   }

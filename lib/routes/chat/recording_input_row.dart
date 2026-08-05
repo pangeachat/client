@@ -2,11 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/editable_transcript.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/transcript_diff_view.dart';
 import 'package:fluffychat/routes/chat/recording_view_model.dart';
 
 class RecordingInputRow extends StatelessWidget {
   final RecordingViewModelState state;
-  final Future<void> Function(String, int, List<int>, String?) onSend;
+  final VoiceMessageSend onSend;
   const RecordingInputRow({
     required this.state,
     required this.onSend,
@@ -19,7 +21,7 @@ class RecordingInputRow extends StatelessWidget {
     const maxDecibalWidth = 36.0;
     final time =
         '${state.duration.inMinutes.toString().padLeft(2, '0')}:${(state.duration.inSeconds % 60).toString().padLeft(2, '0')}';
-    return Row(
+    final controlsRow = Row(
       children: [
         IconButton(
           tooltip: L10n.of(context).cancel,
@@ -30,34 +32,44 @@ class RecordingInputRow extends StatelessWidget {
           onPressed: state.isSending ? null : state.cancel,
           // Pangea#
         ),
-        if (state.isPaused)
-          IconButton(
-            tooltip: L10n.of(context).resume,
-            icon: const Icon(Icons.play_circle_outline_outlined),
-            // #Pangea
-            // onPressed: state.resume,
-            onPressed: state.isSending ? null : state.resume,
-            // Pangea#
-          )
-        else
-          IconButton(
-            tooltip: L10n.of(context).pause,
-            icon: const Icon(Icons.pause_circle_outline_outlined),
-            // #Pangea
-            // onPressed: state.pause,
-            onPressed: state.isSending ? null : state.pause,
-            // Pangea#
-          ),
+        // #Pangea
+        // The pilot streaming socket has no resumable pause, so the pause/resume
+        // control is only shown on the batch path (D6).
+        if (!state.isStreaming)
+          // Pangea#
+          if (state.isPaused)
+            IconButton(
+              tooltip: L10n.of(context).resume,
+              icon: const Icon(Icons.play_circle_outline_outlined),
+              // #Pangea
+              // onPressed: state.resume,
+              onPressed: state.isSending ? null : state.resume,
+              // Pangea#
+            )
+          else
+            IconButton(
+              tooltip: L10n.of(context).pause,
+              icon: const Icon(Icons.pause_circle_outline_outlined),
+              // #Pangea
+              // onPressed: state.pause,
+              onPressed: state.isSending ? null : state.pause,
+              // Pangea#
+            ),
         Text(time),
         const SizedBox(width: 8),
         Expanded(
           child: LayoutBuilder(
             builder: (context, constraints) {
               const width = 4;
+              // #Pangea
+              // Waveform source: the streaming session's PCM-RMS timeline when
+              // streaming, else today's amplitude timeline (byte-identical off).
+              final amplitudes = state.waveformAmplitudes;
+              // Pangea#
               return Row(
                 mainAxisSize: .min,
                 mainAxisAlignment: .end,
-                children: state.amplitudeTimeline.reversed
+                children: amplitudes.reversed
                     .take((constraints.maxWidth / (width + 2)).floor())
                     .toList()
                     .reversed
@@ -90,9 +102,123 @@ class RecordingInputRow extends StatelessWidget {
                   child: CircularProgressIndicator.adaptive(),
                 )
               : const Icon(Icons.send_outlined),
-          onPressed: state.isSending ? null : () => state.stopAndSend(onSend),
+          // #Pangea
+          // Streaming, still recording: the primary button STOPS to the editable
+          // transcript (D7 finalizing -> editableClean) rather than sending
+          // immediately, so the learner can review/correct before sending. In
+          // the editable state (and on the batch path) it sends.
+          // onPressed: state.isSending ? null : () => state.stopAndSend(onSend),
+          // While the finalizing->editable transition is in flight the stop is
+          // disabled so a double-tap cannot re-enter stopStreamingToEditable.
+          onPressed: state.isSending || state.isFinalizingToEditable
+              ? null
+              : state.shouldStopStreamingToEditable
+              ? () => state.stopStreamingToEditable()
+              : () => state.stopAndSend(onSend),
+          // Pangea#
         ),
       ],
     );
+
+    // #Pangea
+    // Batch path: today's single Row, byte-identical. Streaming path: a
+    // Column whose TOP is the transcript surface and whose BOTTOM is the
+    // unchanged controls Row. While recording, the surface is a read-only
+    // replace-in-place live line; after stop (D7 editableClean/Dirty) it is
+    // the editable TextField pre-filled with the settled final. The
+    // degradation banner (D11 language gate / H9b runner-up / B4 batch
+    // degrade) no longer mounts here — it renders ABOVE the composer's
+    // Material box in chat_input_bar.dart (via the lifted RecordingViewModel),
+    // since that box's Clip.hardEdge was cutting off the banner's shadow.
+    if (!state.isStreaming && !state.isEditingTranscript) {
+      return controlsRow;
+    }
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        if (state.isEditingTranscript)
+          EditableTranscriptDiffField(controller: state.editableController!)
+        else
+          _LiveTranscriptLine(text: state.liveTranscript),
+        controlsRow,
+      ],
+    );
+    // Pangea#
   }
 }
+
+// #Pangea
+/// Read-only transcript surface for the streaming pilot: renders the settling
+/// live transcript in place (never an append log). A display-only partial never
+/// reaches the embed/bot/analytics (D10 invariant); only the guarded settled
+/// final (or the user's wave-4 edit of it) is ever sent. Replaced by an
+/// editable `TextField` in wave 4.
+class _LiveTranscriptLine extends StatelessWidget {
+  final String text;
+  const _LiveTranscriptLine({required this.text});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+      child: Align(
+        alignment: AlignmentDirectional.centerStart,
+        child: Text(
+          text,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onSurfaceVariant,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// Editable transcript surface (D7/D10): the [TextField] renders the settled
+/// transcript with the live edit-diff inline (changed words orange, unchanged
+/// green — via [EditableTranscriptController.buildTextSpan]); only replaced or
+/// deleted source words show struck-through beneath once the buffer diverges.
+/// Public so the diff mount is widget-testable without the recording view-model.
+class EditableTranscriptDiffField extends StatelessWidget {
+  final EditableTranscriptController controller;
+  const EditableTranscriptDiffField({required this.controller, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 6.0),
+      child: AnimatedBuilder(
+        animation: controller,
+        builder: (context, _) => Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: controller,
+              minLines: 1,
+              maxLines: 4,
+              keyboardType: TextInputType.multiline,
+              textInputAction: TextInputAction.newline,
+              style: theme.textTheme.bodyMedium,
+              decoration: const InputDecoration(
+                isDense: true,
+                border: InputBorder.none,
+              ),
+            ),
+            if (controller.text != controller.diffBase &&
+                controller.diffBase.isNotEmpty)
+              ChangedOriginalWords(
+                originalAsrText: controller.diffBase,
+                currentText: controller.text,
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// Pangea#

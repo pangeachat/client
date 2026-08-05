@@ -189,6 +189,17 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// [_exiting] with the correct visual state when a pin leaves.
   Map<String, PinSnapshot> _lastActive = {};
 
+  /// Non-large pin ids that have already played their entry scale-in. A pin
+  /// only animates in on its first appearance ([Set.add] returning true at
+  /// build time); after that, a [WorldMapDot] State recreated mid-gesture by
+  /// MarkerLayer's positional reconciliation renders at full scale instead of
+  /// replaying the pop-in (#8136). Pruned at each settle in [_updateExiting],
+  /// so a pin that leaves and later returns pops in fresh again.
+  final Set<String> _enteredIds = {};
+
+  /// Mirrors [_enteredIds] for the large tier ([WorldMapLargeCardAnimated]).
+  final Set<String> _enteredLargeIds = {};
+
   /// Large cards that have left the large tier (demoted, or the dot promoted
   /// past it out of view) and are animating to scale/opacity 0 — mirrors
   /// [_exiting]/[_lastActive] but for [WorldMapLargeCard] (world-map card
@@ -335,6 +346,12 @@ class _WorldMapViewState extends State<WorldMapView> {
     // Re-appeared as a (still) non-large pin: cancel any in-progress exit.
     _exiting.removeWhere((id, _) => currentNonLargeIds.contains(id));
 
+    // A pin gone from the render model forgets its "already entered" mark, so
+    // its next appearance (incl. demotion back from large) pops in fresh.
+    // While the camera is moving the frozen renderer yields the same id set,
+    // so nothing churns mid-gesture (#8136).
+    _enteredIds.retainAll(currentNonLargeIds);
+
     // Anything that was a dot last frame and isn't a dot this frame —
     // genuinely gone, or promoted to large — plays the shrink-out.
     for (final entry in _lastActive.entries) {
@@ -366,6 +383,9 @@ class _WorldMapViewState extends State<WorldMapView> {
     final currentIds = currentLarge.keys.toSet();
 
     _exitingLarge.removeWhere((id, _) => currentIds.contains(id));
+
+    // Mirror of _updateExiting's pruning (#8136).
+    _enteredLargeIds.retainAll(currentIds);
 
     for (final entry in _lastActiveLarge.entries) {
       if (!currentIds.contains(entry.key) &&
@@ -858,6 +878,10 @@ class _WorldMapViewState extends State<WorldMapView> {
                 sessionParticipants: (a, b) => _sessionParticipants(a, b),
                 focusedId: render.focusedId,
                 onTap: widget.controller.openActivity,
+                // Set.add returns true only on first insertion — a pin
+                // animates in the first build it appears, then holds full
+                // scale through State recreations (#8136).
+                animateInOf: _enteredIds.add,
               ).layer();
               final Widget largeLayer = LargeMarkersLayer(
                 largeCards: render.largeCards,
@@ -865,6 +889,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                 focusedId: render.focusedId,
                 onTap: widget.controller.openActivity,
                 onClose: widget.controller.dismissLargeCard,
+                animateInOf: _enteredLargeIds.add,
               ).layer();
               return FlutterMap(
                 mapController: widget.controller.mapController,
@@ -1071,9 +1096,10 @@ class _WorldMapViewState extends State<WorldMapView> {
                 onReset: widget.controller.resetFilters,
                 emptyVerdict: widget.controller.emptyVerdict,
                 canZoomOut: widget.controller.canZoomOut,
-                // "Zoom out" resets to the whole-world view (all the way out and
-                // re-centered), the same as the map's World control — one tap
-                // guarantees every off-screen match comes into view.
+                // "Zoom out" resets to the whole-world view (all the way out,
+                // centered over the fullest window of matching pins, #8121),
+                // the same as the map's World control — one tap brings the
+                // most matches a floor-zoomed viewport can show into view.
                 onZoomOut: widget.controller.resetToWorld,
               ),
             ),

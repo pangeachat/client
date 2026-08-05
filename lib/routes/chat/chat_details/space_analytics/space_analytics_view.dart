@@ -8,6 +8,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/dropdown_text_button.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/download_space_analytics_dialog.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics_download_enum.dart';
@@ -220,7 +221,9 @@ class SpaceAnalyticsView extends StatelessWidget {
                                         Avatar(
                                           size: !mini ? 64.0 : 40.0,
                                           mxContent: entry.key.avatarUrl,
-                                          name: entry.key.calcDisplayname(),
+                                          name: entry.key.localizedDisplayname(
+                                            L10n.of(context),
+                                          ),
                                           userId: entry.key.id,
                                           presenceUserId: entry.key.id,
                                         ),

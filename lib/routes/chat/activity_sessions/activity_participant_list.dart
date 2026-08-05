@@ -6,6 +6,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -179,13 +181,13 @@ class ActivityParticipantList extends StatelessWidget {
                           Avatar(
                             size: 18.0,
                             mxContent: member.avatarUrl,
-                            name: member.calcDisplayname(),
+                            name: member.localizedDisplayname(L10n.of(context)),
                             userId: member.id,
                           ),
                           ConstrainedBox(
                             constraints: const BoxConstraints(maxWidth: 80.0),
                             child: Text(
-                              member.calcDisplayname(),
+                              member.localizedDisplayname(L10n.of(context)),
                               style: TextStyle(
                                 fontSize: 12.0,
                                 color: theme.colorScheme.onPrimaryContainer,

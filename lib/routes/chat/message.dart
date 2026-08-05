@@ -13,6 +13,7 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_roles_event_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -491,7 +492,9 @@ class Message extends StatelessWidget {
                                             event.senderFromMemoryOrFallback;
                                         return Avatar(
                                           mxContent: user.avatarUrl,
-                                          name: user.calcDisplayname(),
+                                          name: user.localizedDisplayname(
+                                            L10n.of(context),
+                                          ),
                                           onTap: () =>
                                               controller.showActionsPopup(
                                                 user: user,
@@ -550,6 +553,7 @@ class Message extends StatelessWidget {
                                                               snapshot.data ??
                                                                   event
                                                                       .senderFromMemoryOrFallback,
+                                                              L10n.of(context),
                                                             ),
                                                         // Pangea#
                                                         style: TextStyle(

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-04 10:31:21.553427",
+    "@@last_modified": "2026-08-05 11:42:12.267678",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9700,5 +9700,11 @@
     "readAloudNoVoiceIOS": "O teu dispositivo aínda non ten descargada unha voz de {language} de alta calidade. Descarga unha e téntao de novo:",
     "readAloudNoVoiceIOSSteps": "  • Axustes\n  • Accesibilidade\n  • Contido falado\n  • Voces\n  • {language}\n  • Descarga unha voz mellorada ou Premium",
     "readAloudNoVoiceAndroid": "O teu dispositivo aínda non ten unha voz de {language} de alta calidade. Instala os datos de voz para o teu motor de texto a voz e téntao de novo.",
-    "readAloudOpenVoiceSettings": "Abrir a configuración de voz"
+    "readAloudOpenVoiceSettings": "Abrir a configuración de voz",
+    "streamingSttDegradedLiveBanner": "A transcrición en directo está a executarse nun servizo de respaldo. A calidade pode variar, revisa o texto.",
+    "streamingSttDegradedToBatchBanner": "A transcrición en directo non está dispoñible neste momento. A túa mensaxe transcribiuse do xeito estándar, sen edición en directo. Estamos a traballar para restaurala.",
+    "streamingSttLanguageUnsupportedBanner": "A transcrición en directo aínda non está dispoñible para este idioma. Estamos a traballar niso.",
+    "formLabel": "Formulario de {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Soporte"
 }

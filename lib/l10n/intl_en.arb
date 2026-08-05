@@ -4305,6 +4305,14 @@
     "publicInviteDescSpace": "Search for users to invite them to this space.",
     "useActivityImageAsChatBackground": "Use activity image as chat background",
     "chatWithSupport": "Chat with Support",
+    "botDisplayName": "Pangea Bot",
+    "@botDisplayName": {
+      "description": "Display name shown for the Pangea Bot account in place of its server-side profile name."
+    },
+    "supportDisplayName": "Support",
+    "@supportDisplayName": {
+      "description": "Display name shown for the Support account in place of its server-side profile name."
+    },
     "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
     "onboardingLanguagesTitle": "What language are you learning?",
     "supportSubtitle": "Questions? We're here to help!",
@@ -4893,5 +4901,16 @@
     "mapMatchesOffscreen": "There are matches outside your view. Zoom out to see them.",
     "mapFiltersHideMatches": "Your filters are hiding all matches. Widen the search to see them.",
     "mapNoSearchMatches": "No activities match your search.",
-    "mapNoActivitiesArea": "No activities in this area."
+    "mapNoActivitiesArea": "No activities in this area.",
+    "streamingSttDegradedLiveBanner": "Live transcription is running on a backup service. Quality may vary, please check the text.",
+    "streamingSttDegradedToBatchBanner": "Live transcription is unavailable right now. Your message was transcribed the standard way, without live editing. We're working to restore it.",
+    "streamingSttLanguageUnsupportedBanner": "Live transcription isn't available for this language yet. We're working on it.",
+    "formLabel": "{name} form",
+    "@formLabel": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:31:29.261809",
+    "@@last_modified": "2026-08-05 11:42:15.517402",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9700,5 +9700,11 @@
     "readAloudNoVoiceIOS": "Je apparaat heeft nog geen hoogwaardige {language}-stem gedownload. Download er een en probeer het opnieuw:",
     "readAloudNoVoiceIOSSteps": "  • Instellingen\n  • Toegankelijkheid\n  • Gesproken inhoud\n  • Stemmen\n  • {language}\n  • Download een verbeterde of premium stem",
     "readAloudNoVoiceAndroid": "Je apparaat heeft nog geen hoogwaardige {language}-stem. Installeer stemgegevens voor je tekst-naar-spraak-engine en probeer het opnieuw.",
-    "readAloudOpenVoiceSettings": "Open steminstellingen"
+    "readAloudOpenVoiceSettings": "Open steminstellingen",
+    "streamingSttDegradedLiveBanner": "Live transcriptie wordt uitgevoerd via een back-upservice. De kwaliteit kan variëren, controleer de tekst.",
+    "streamingSttDegradedToBatchBanner": "Live transcriptie is momenteel niet beschikbaar. Je bericht is op de standaardmanier getranscribeerd, zonder live bewerking. We werken eraan om dit te herstellen.",
+    "streamingSttLanguageUnsupportedBanner": "Live transcriptie is nog niet beschikbaar voor deze taal. We werken eraan.",
+    "formLabel": "{name}-formulier",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Ondersteuning"
 }

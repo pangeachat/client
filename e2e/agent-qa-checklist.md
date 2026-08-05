@@ -230,6 +230,16 @@ Toolbar overlays + word cards over the live chat; writing-assistance ring and sp
 - [ ] Subscribed user taps the same word twice (already backend-fetched) — **Expect:** no new backend request — served from the client-side short-TTL cache; repeated taps don't re-hit or re-bill (holds within the TTL + one session). _(word-text-to-speech.instructions.md; [gated])_
 - [ ] Subscribed user plays an L2 heteronym whose PT v2 cache holds a resolved `tts_phoneme` — **Expect:** routes to backend (only backend renders phonemes), using the single resolved phoneme from the local PT cache (no blocking call); a cache miss falls through to normal routing. (Trigger the transcription render first to seed the cache.) _(word-text-to-speech.instructions.md; phonetic-transcription-v2-design.instructions.md; [gated] [staging-only])_
 
+### 4c-bis. Message read-aloud & voice mode
+
+- [ ] Send a voice message to the bot, chat open — **Expect:** the bot replies with a **text** message (never `m.audio`) and it is read aloud automatically, with the toggle in either position. _(message-read-aloud.instructions.md; [recently-changed])_
+- [ ] Open the toolbar on that bot reply — **Expect:** the full four-mode text toolbar (audio, translate, practice, emoji), not the single speech-translation mode an audio message would get. This is the upgrade the bot-TTS removal buys. _(toolbar-reading-assistance.instructions.md; [recently-changed])_
+- [ ] Send a typed message, then let the bot reply — **Expect:** silence. Voice mode ends at the send, and it also cuts off any reply still being read. _(message-read-aloud.instructions.md; [recently-changed])_
+- [ ] In an activity room with other learners, send a voice message, then have another learner send an L2 text message — **Expect:** the other learner's message is NOT read aloud; voice mode speaks only the bot. _(message-read-aloud.instructions.md; [recently-changed])_
+- [ ] Start recording a new voice message while a bot reply is being read aloud — **Expect:** playback stops immediately; nothing spoken is captured into the recording or its transcript. _(message-read-aloud.instructions.md; [recently-changed])_
+- [ ] Voice mode on a device with no known-good L2 voice (Safari, or desktop Chrome without a Google voice) — **Expect:** a `POST /choreo/text_to_speech` fires and backend audio plays rather than silence — the one case read-aloud is allowed to reach the backend. _(message-read-aloud.instructions.md; [gated] [staging-only])_
+- [ ] Turn `audioIncomingMessages` (Audio → Incoming messages) OFF, send a voice message — **Expect:** the bot's text reply is STILL read aloud. A voice reply is ungated (`TtsUseCase.voiceReply`); the toggle governs unprompted audio only. Then send a typed message and confirm the next reply is silent. _(message-read-aloud.instructions.md; [recently-changed])_
+
 ### 4d. Writing assistance (ring + span card)
 
 - [ ] Observe the assistance ring with an empty input — **Expect:** grey check + 5 grey segments (idle); the ring is a status indicator only — tapping it does NOT navigate between matches. _(writing-assistance.instructions.md; [recently-changed])_

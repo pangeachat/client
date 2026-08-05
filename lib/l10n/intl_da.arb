@@ -1341,7 +1341,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-04 10:31:22.876543",
+    "@@last_modified": "2026-08-05 11:42:11.001268",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10626,5 +10626,11 @@
     "readAloudNoVoiceIOS": "Din enhed har endnu ikke downloadet en {language}-stemme af høj kvalitet. Download en, og prøv derefter igen:",
     "readAloudNoVoiceIOSSteps": "  • Indstillinger\n  • Tilgængelighed\n  • Oplæst indhold\n  • Stemmer\n  • {language}\n  • Download en forbedret eller premium-stemme",
     "readAloudNoVoiceAndroid": "Din enhed har endnu ikke en {language}-stemme af høj kvalitet. Installer stemmedata til din tekst-til-tale-motor, og prøv derefter igen.",
-    "readAloudOpenVoiceSettings": "Åbn stemmeindstillinger"
+    "readAloudOpenVoiceSettings": "Åbn stemmeindstillinger",
+    "streamingSttDegradedLiveBanner": "Live transskription kører på en backup-tjeneste. Kvaliteten kan variere, tjek venligst teksten.",
+    "streamingSttDegradedToBatchBanner": "Live transskription er ikke tilgængelig lige nu. Din besked blev transskriberet på standardmåden, uden live redigering. Vi arbejder på at genoprette den.",
+    "streamingSttLanguageUnsupportedBanner": "Live transskription er endnu ikke tilgængelig for dette sprog. Vi arbejder på det.",
+    "formLabel": "{name} form",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Support"
 }

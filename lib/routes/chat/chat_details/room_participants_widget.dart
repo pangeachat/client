@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -181,7 +182,9 @@ class RoomParticipantsSection extends StatelessWidget {
                                   child: Center(
                                     child: Avatar(
                                       mxContent: user.avatarUrl,
-                                      name: user.calcDisplayname(),
+                                      name: user.localizedDisplayname(
+                                        L10n.of(context),
+                                      ),
                                       size: _width - 6.0,
                                       presenceUserId: user.id,
                                       presenceOffset: const Offset(0, 0),
@@ -195,7 +198,7 @@ class RoomParticipantsSection extends StatelessWidget {
                         ],
                       ),
                       Text(
-                        user.calcDisplayname(),
+                        user.localizedDisplayname(L10n.of(context)),
                         style: theme.textTheme.labelLarge?.copyWith(
                           color: theme.colorScheme.primary,
                           fontWeight: FontWeight.bold,

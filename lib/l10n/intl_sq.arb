@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-04 10:31:33.026098",
+    "@@last_modified": "2026-08-05 11:42:16.653727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2082,5 +2082,11 @@
     "readAloudNoVoiceIOS": "Pajisja juaj nuk ka ende një zë me cilësi të lartë {language} të shkarkuar. Shkarkoni një, pastaj provoni përsëri:",
     "readAloudNoVoiceIOSSteps": "  • Cilësimet\n  • Aksesueshmëria\n  • Përmbajtja e folur\n  • Zërat\n  • {language}\n  • Shkarkoni një zë të përmirësuar ose Premium",
     "readAloudNoVoiceAndroid": "Pajisja juaj nuk ka ende një zë me cilësi të lartë {language}. Instaloni të dhënat e zërit për motorin tuaj të tekstit në të folur, pastaj provoni përsëri.",
-    "readAloudOpenVoiceSettings": "Hap cilësimet e zërit"
+    "readAloudOpenVoiceSettings": "Hap cilësimet e zërit",
+    "streamingSttDegradedLiveBanner": "Transkriptimi i drejtpërdrejtë po funksionon në një shërbim rezervë. Cilësia mund të ndryshojë, ju lutemi kontrolloni tekstin.",
+    "streamingSttDegradedToBatchBanner": "Transkriptimi i drejtpërdrejtë nuk është i disponueshëm tani. Mesazhi juaj u transkriptua në mënyrën standarde, pa redaktim të drejtpërdrejtë. Po punojmë për ta rikthyer.",
+    "streamingSttLanguageUnsupportedBanner": "Transkriptimi i drejtpërdrejtë nuk është ende i disponueshëm për këtë gjuhë. Po punojmë për këtë.",
+    "formLabel": "Formulari {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Mbështetje"
 }

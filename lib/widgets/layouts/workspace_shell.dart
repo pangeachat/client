@@ -21,6 +21,9 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -548,9 +551,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             emptyVerdict: () => mapController.emptyVerdict,
             canZoomOut: () => mapController.canZoomOut,
             onWidenSearch: mapController.widenFilters,
-            // Resets to the whole-world view (all the way out, re-centered) —
-            // the map's World control — so one tap reveals every off-screen
-            // match, not just the next zoom level.
+            // Resets to the whole-world view (all the way out, centered over
+            // the fullest window of matching pins, #8121) — the map's World
+            // control — so one tap reveals the most matches a floor-zoomed
+            // narrow viewport can show, not just the next zoom level.
             onZoomOut: mapController.resetToWorld,
             viewRevision: mapController.viewRevision,
             // The collapsible filter surface riding above the bar — the narrow
@@ -645,13 +649,28 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       child: MobileNavWidget(
         activeSection: sectionFor(uri),
         courseShortcutIcon: shortcutCourse != null
-            ? Avatar(
-                mxContent: shortcutCourse.avatar,
-                name: shortcutCourse.getLocalizedDisplayname(
-                  MatrixLocals(l10n),
-                ),
-                size: 32,
-                borderRadius: BorderRadius.circular(8),
+            // The same knock badge the web rail's course avatar wears: the
+            // builder loads the member list (admins only) and rebuilds on
+            // member changes, so the red "!" appears while users are knocking
+            // and clears when the admin accepts/denies (#8139).
+            ? KnockingUsersBuilder(
+                room: shortcutCourse,
+                builder: (context, knockingUsers) {
+                  final avatar = Avatar(
+                    mxContent: shortcutCourse.avatar,
+                    name: shortcutCourse.getLocalizedDisplayname(
+                      MatrixLocals(l10n),
+                    ),
+                    size: 32,
+                    borderRadius: BorderRadius.circular(8),
+                  );
+                  return knockingUsers.isEmpty
+                      ? avatar
+                      : KnockingUsersBadge(
+                          position: BadgePosition.topEnd(top: -5, end: -7),
+                          child: avatar,
+                        );
+                },
               )
             : const Icon(Icons.add),
         courseShortcutLabel: shortcutCourse != null
@@ -671,6 +690,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   shortcutCourse.id,
                   keepRoom: false,
                   clearRight: true,
+                  // While users are knocking, land the admin on the Chats
+                  // tab — where the knock notification lives — instead of
+                  // the Course Plan default, until the knock is accepted or
+                  // denied (#8139).
+                  tab: shortcutCourse.knockingUsers.isNotEmpty
+                      ? SpaceSettingsTabs.chat
+                      : null,
                 )
               : WorkspaceNav.setSection(
                   uri,
