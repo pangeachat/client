@@ -13,6 +13,7 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_roles_event_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_summary_widget.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -23,7 +24,6 @@ import 'package:fluffychat/routes/chat/pangea_message_reactions.dart';
 import 'package:fluffychat/routes/chat/room_creation_state_event.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/file_description.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -491,7 +491,9 @@ class Message extends StatelessWidget {
                                             event.senderFromMemoryOrFallback;
                                         return Avatar(
                                           mxContent: user.avatarUrl,
-                                          name: user.calcDisplayname(),
+                                          name: user.localizedDisplayname(
+                                            L10n.of(context),
+                                          ),
                                           onTap: () =>
                                               controller.showActionsPopup(
                                                 user: user,
@@ -550,6 +552,7 @@ class Message extends StatelessWidget {
                                                               snapshot.data ??
                                                                   event
                                                                       .senderFromMemoryOrFallback,
+                                                              L10n.of(context),
                                                             ),
                                                         // Pangea#
                                                         style: TextStyle(
@@ -1105,7 +1108,7 @@ class Message extends StatelessWidget {
                               onPressed: () => enterThread(event.eventId),
                               icon: const Icon(Icons.message),
                               label: Text(
-                                '${L10n.of(context).countReplies(threadChildren.length)} | ${threadChildren.first.calcLocalizedBodyFallback(MatrixLocals(L10n.of(context)), withSenderNamePrefix: true)}',
+                                '${L10n.of(context).countReplies(threadChildren.length)} | ${threadChildren.first.localizedBodyFallback(L10n.of(context), withSenderNamePrefix: true)}',
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                               ),

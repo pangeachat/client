@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -391,8 +392,8 @@ class MessageContent extends StatelessWidget {
           builder: (context, snapshot) {
             return _ButtonContent(
               label: L10n.of(context).startedACall(
-                snapshot.data?.calcDisplayname() ??
-                    event.senderFromMemoryOrFallback.calcDisplayname(),
+                (snapshot.data ?? event.senderFromMemoryOrFallback)
+                    .localizedDisplayname(L10n.of(context)),
               ),
               icon: '📞',
               textColor: buttonTextColor,
@@ -407,8 +408,8 @@ class MessageContent extends StatelessWidget {
           builder: (context, snapshot) {
             return _ButtonContent(
               label: L10n.of(context).userSentUnknownEvent(
-                snapshot.data?.calcDisplayname() ??
-                    event.senderFromMemoryOrFallback.calcDisplayname(),
+                (snapshot.data ?? event.senderFromMemoryOrFallback)
+                    .localizedDisplayname(L10n.of(context)),
                 event.type,
               ),
               icon: 'ℹ️',
@@ -443,7 +444,7 @@ class RedactionWidget extends StatelessWidget {
       builder: (context, snapshot) {
         final reason = event.redactedBecause?.content.tryGet<String>('reason');
         final redactedBy =
-            snapshot.data?.calcDisplayname() ??
+            snapshot.data?.localizedDisplayname(L10n.of(context)) ??
             event.redactedBecause?.senderId.localpart ??
             L10n.of(context).user;
         return _ButtonContent(

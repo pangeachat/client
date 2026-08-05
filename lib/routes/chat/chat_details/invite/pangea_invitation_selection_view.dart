@@ -9,6 +9,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/invite_all_in_space_tile.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/room_settings_constants.dart';
@@ -233,6 +234,10 @@ class PangeaInvitationSelectionView extends StatelessWidget {
                                 profile: Profile(
                                   avatarUrl: contacts[i].avatarUrl,
                                   displayName:
+                                      localizedPangeaUserName(
+                                        contacts[i].id,
+                                        L10n.of(context),
+                                      ) ??
                                       contacts[i].displayName ??
                                       contacts[i].id.localpart ??
                                       L10n.of(context).user,

@@ -11,7 +11,9 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
@@ -618,7 +620,7 @@ class HtmlMessage extends StatelessWidget {
               // Pangea#
               child: MatrixPill(
                 key: Key('user_pill_$matrixId'),
-                name: user.calcDisplayname(),
+                name: user.localizedDisplayname(L10n.of(context)),
                 avatar: user.avatarUrl,
                 uri: href,
                 outerContext: context,
@@ -639,7 +641,7 @@ class HtmlMessage extends StatelessWidget {
               alignment: .middle,
               // Pangea#
               child: MatrixPill(
-                name: room?.getLocalizedDisplayname() ?? matrixId,
+                name: room?.localizedDisplayname(L10n.of(context)) ?? matrixId,
                 avatar: room?.avatar,
                 uri: href,
                 outerContext: context,

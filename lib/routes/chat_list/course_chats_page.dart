@@ -18,6 +18,7 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
@@ -28,7 +29,6 @@ import 'package:fluffychat/routes/chat_list/default_chats_room_extension.dart';
 import 'package:fluffychat/routes/chat_list/extended_space_rooms_chunk.dart';
 import 'package:fluffychat/routes/chat_list/hierarchy_sync_update_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/invite_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
@@ -448,10 +448,9 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
           EventTypes.RoomMember,
           room.client.userID!,
         );
-        final matrixLocals = MatrixLocals(L10n.of(context));
         final action = await showInviteDialog<InviteAction>(
           context,
-          title: room.getLocalizedDisplayname(matrixLocals),
+          title: room.localizedDisplayname(L10n.of(context)),
           message: inviteEvent == null
               ? L10n.of(context).inviteForMe
               : inviteEvent.content.tryGet<String>('reason') ??
@@ -460,7 +459,7 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
                           .unsafeGetUserFromMemoryOrFallback(
                             inviteEvent.senderId,
                           )
-                          .calcDisplayname(i18n: matrixLocals),
+                          .localizedDisplayname(L10n.of(context)),
                     ),
           actions: [
             InviteDialogAction(

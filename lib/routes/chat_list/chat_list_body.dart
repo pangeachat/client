@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/dummy_chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/pangea_chat_list_header.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/public_room_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -254,9 +254,7 @@ class ChatListViewBody extends StatelessWidget {
                     rooms
                         .where(
                           (room) => room
-                              .getLocalizedDisplayname(
-                                MatrixLocals(L10n.of(context)),
-                              )
+                              .localizedDisplayname(L10n.of(context))
                               .toLowerCase()
                               .contains(filter),
                         )

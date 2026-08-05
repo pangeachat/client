@@ -6,13 +6,13 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details_button_row.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
 import 'package:fluffychat/utils/fluffy_share.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -32,9 +32,7 @@ class ChatDetailsContent extends StatelessWidget {
       itemBuilder: (BuildContext context, int i) {
         if (i == 0) {
           final theme = Theme.of(context);
-          final displayname = room.getLocalizedDisplayname(
-            MatrixLocals(L10n.of(context)),
-          );
+          final displayname = room.localizedDisplayname(L10n.of(context));
           return Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[

@@ -6,10 +6,10 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat_list/open_roles_indicator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
-import '../../utils/matrix_sdk_extensions/matrix_locals.dart';
 
 class ChatListItemSubtitle extends StatelessWidget {
   final Room room;
@@ -86,8 +86,8 @@ class ChatListItemSubtitle extends StatelessWidget {
     if (event == null) return Text(L10n.of(context).emptyChat, style: style);
     if (!_showPangeaContent(event)) {
       return FutureBuilder(
-        future: event.calcLocalizedBody(
-          MatrixLocals(L10n.of(context)),
+        future: event.localizedBody(
+          L10n.of(context),
           hideReply: true,
           hideEdit: true,
           plaintextBody: true,

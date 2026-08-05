@@ -5,9 +5,9 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/sync_status_localization.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -44,9 +44,7 @@ class ChatAppBarTitle extends StatelessWidget {
             child: ExcludeSemantics(
               child: Avatar(
                 mxContent: room.avatar,
-                name: room.getLocalizedDisplayname(
-                  MatrixLocals(L10n.of(context)),
-                ),
+                name: room.localizedDisplayname(L10n.of(context)),
                 // #Pangea
                 userId: room.directChatMatrixID,
                 // Pangea#
@@ -60,7 +58,7 @@ class ChatAppBarTitle extends StatelessWidget {
               crossAxisAlignment: .start,
               children: [
                 Text(
-                  room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+                  room.localizedDisplayname(L10n.of(context)),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                   style: FluffyThemes.isColumnMode(context)

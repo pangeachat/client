@@ -28,6 +28,7 @@ import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.d
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/app_version_util.dart';
@@ -36,7 +37,6 @@ import 'package:fluffychat/routes/invite_user/user_invite_controller.dart';
 import 'package:fluffychat/routes/invite_user/user_invite_link_repo.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
@@ -166,17 +166,16 @@ class ChatListController extends State<ChatList>
         EventTypes.RoomMember,
         room.client.userID!,
       );
-      final matrixLocals = MatrixLocals(L10n.of(context));
       final action = await showInviteDialog<InviteAction>(
         context,
-        title: room.getLocalizedDisplayname(matrixLocals),
+        title: room.localizedDisplayname(L10n.of(context)),
         message: inviteEvent == null
             ? L10n.of(context).inviteForMe
             : inviteEvent.content.tryGet<String>('reason') ??
                   L10n.of(context).youInvitedBy(
                     room
                         .unsafeGetUserFromMemoryOrFallback(inviteEvent.senderId)
-                        .calcDisplayname(i18n: matrixLocals),
+                        .localizedDisplayname(L10n.of(context)),
                   ),
         actions: [
           InviteDialogAction(

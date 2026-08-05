@@ -16,6 +16,7 @@ import 'package:fluffychat/features/join_codes/knock_notification_utils.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -266,7 +267,9 @@ Future<void> _tryPushHelper(
 
   final id = notification.roomId.hashCode;
 
-  final senderName = event.senderFromMemoryOrFallback.calcDisplayname();
+  final senderName = event.senderFromMemoryOrFallback.localizedDisplayname(
+    l10n,
+  );
   // Show notification
 
   final newMessage = Message(
@@ -288,7 +291,7 @@ Future<void> _tryPushHelper(
       : null;
   messagingStyleInformation?.messages?.add(newMessage);
 
-  final roomName = event.room.getLocalizedDisplayname(MatrixLocals(l10n));
+  final roomName = event.room.localizedDisplayname(l10n);
 
   final notificationGroupId = event.room.isDirectChat
       ? 'directChats'
@@ -340,8 +343,8 @@ Future<void> _tryPushHelper(
           groupConversation: !event.room.isDirectChat,
           messages: [newMessage],
         ),
-    ticker: event.calcLocalizedBodyFallback(
-      matrixLocals,
+    ticker: event.localizedBodyFallback(
+      l10n,
       plaintextBody: true,
       withSenderNamePrefix: !event.room.isDirectChat,
       hideReply: true,
@@ -377,7 +380,7 @@ Future<void> _tryPushHelper(
     iOS: iOSPlatformChannelSpecifics,
   );
 
-  final title = event.room.getLocalizedDisplayname(MatrixLocals(l10n));
+  final title = event.room.localizedDisplayname(l10n);
 
   if (PlatformInfos.isAndroid && messagingStyleInformation == null) {
     await _setShortcut(event, l10n, title, roomAvatarFile);

@@ -4,6 +4,7 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat_search/search_footer.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
@@ -42,9 +43,9 @@ class ChatSearchMessageTab extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 32.0),
             child: Text(
-              L10n.of(context).searchIn(
-                room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
-              ),
+              L10n.of(
+                context,
+              ).searchIn(room.localizedDisplayname(L10n.of(context))),
               textAlign: TextAlign.center,
             ),
           ),
@@ -68,9 +69,7 @@ class ChatSearchMessageTab extends StatelessWidget {
           }
           final event = events[i];
           final sender = event.senderFromMemoryOrFallback;
-          final displayname = sender.calcDisplayname(
-            i18n: MatrixLocals(L10n.of(context)),
-          );
+          final displayname = sender.localizedDisplayname(L10n.of(context));
           return _MessageSearchResultListTile(
             sender: sender,
             displayname: displayname,

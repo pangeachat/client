@@ -9,11 +9,11 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
-import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -100,7 +100,7 @@ void chatContextMenuAction(
     Offset.zero & overlay.size,
   );
 
-  final displayname = room.getLocalizedDisplayname(MatrixLocals(l10n));
+  final displayname = room.localizedDisplayname(l10n);
   final enabledCount = ChatContextAction.values
       .where((v) => v.enabled(room: room, space: space))
       .length;
