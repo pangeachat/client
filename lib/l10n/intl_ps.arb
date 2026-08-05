@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-05 10:21:40.300131",
+    "@@last_modified": "2026-08-05 11:42:16.109256",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "ژوندۍ لیکنه په بیک اپ خدمت روانه ده. کیفیت ممکن توپیر ولري، مهرباني وکړئ متن وګورئ.",
     "streamingSttDegradedToBatchBanner": "ژوندۍ لیکنه اوس مهال شتون نلري. ستاسو پیغام په معیاري ډول، پرته له ژوندي سمون څخه لیکل شوی. موږ یې د بیرته راوستلو لپاره کار کوو.",
     "streamingSttLanguageUnsupportedBanner": "ژوندۍ لیکنه لا تر اوسه د دې ژبې لپاره شتون نلري. موږ پرې کار کوو.",
-    "formLabel": "{name} فورمه"
+    "formLabel": "{name} فورمه",
+    "botDisplayName": "پنګیا بوټ",
+    "supportDisplayName": "ملاتړ"
 }

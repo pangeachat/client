@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-05 10:21:41.739846",
+    "@@last_modified": "2026-08-05 11:42:16.736775",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "O lo'o fa'agasolo le fa'aliliuga tuusa'o i se tautua fa'aagaga. E ono eseese le lelei, fa'amolemole siaki le tusitusiga.",
     "streamingSttDegradedToBatchBanner": "E le o maua le fa'aliliuga tuusa'o i le taimi nei. Na fa'aliliu lau fe'au i le auala masani, e aunoa ma le fa'asa'oina tuusa'o. O lo'o matou galulue e toe fa'aleleia.",
     "streamingSttLanguageUnsupportedBanner": "E le'i maua le fa'aliliuga tuusa'o mo lenei gagana. O lo'o matou galulue i ai.",
-    "formLabel": "Fomu {name}"
+    "formLabel": "Fomu {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Lagolago"
 }

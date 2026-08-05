@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-05 10:21:33.295119",
+    "@@last_modified": "2026-08-05 11:42:12.969377",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Transkripsyon an dirèk ap fonksyone sou yon sèvis backup. Kalite a ka varye, tanpri verifye tèks la.",
     "streamingSttDegradedToBatchBanner": "Transkripsyon an dirèk pa disponib kounye a. Mesaj ou a te transkri nan fason estanda a, san edisyon an dirèk. N ap travay pou retabli li.",
     "streamingSttLanguageUnsupportedBanner": "Transkripsyon an dirèk poko disponib pou lang sa a. N ap travay sou sa.",
-    "formLabel": "Fòmilè {name}"
+    "formLabel": "Fòmilè {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Sipò"
 }

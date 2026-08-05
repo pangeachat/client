@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-05 10:21:32.307430",
+    "@@last_modified": "2026-08-05 11:42:12.290679",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Fassarar kai tsaye tana gudana akan sabis na madadin. Inganci na iya bambanta, don Allah a duba rubutun.",
     "streamingSttDegradedToBatchBanner": "Fassarar kai tsaye ba ta samuwa a yanzu. An fassara saƙonka ta hanyar da aka saba, ba tare da gyara kai tsaye ba. Muna aiki don dawo da shi.",
     "streamingSttLanguageUnsupportedBanner": "Fassarar kai tsaye ba ta samuwa ga wannan yaren tukuna. Muna aiki a kai.",
-    "formLabel": "Fom na {name}"
+    "formLabel": "Fom na {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Taimako"
 }

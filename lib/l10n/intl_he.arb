@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:32.534038",
+    "@@last_modified": "2026-08-05 11:42:12.884174",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10624,5 +10624,7 @@
     "streamingSttDegradedLiveBanner": "התמלול החי פועל באמצעות שירות גיבוי. האיכות עשויה להשתנות, אנא בדוק את הטקסט.",
     "streamingSttDegradedToBatchBanner": "תמלול חי אינו זמין כרגע. ההודעה שלך תומללה בדרך הרגילה, ללא עריכה חיה. אנו פועלים לשחזור השירות.",
     "streamingSttLanguageUnsupportedBanner": "תמלול חי אינו זמין עדיין עבור שפה זו. אנו עובדים על כך.",
-    "formLabel": "טופס {name}"
+    "formLabel": "טופס {name}",
+    "botDisplayName": "בוט פנגיאה",
+    "supportDisplayName": "תמיכה"
 }

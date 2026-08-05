@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:43.561133",
+    "@@last_modified": "2026-08-05 11:42:17.911031",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6978,5 +6978,7 @@
     "streamingSttDegradedLiveBanner": "Tính năng phiên âm trực tiếp đang chạy trên dịch vụ dự phòng. Chất lượng có thể thay đổi, vui lòng kiểm tra văn bản.",
     "streamingSttDegradedToBatchBanner": "Tính năng phiên âm trực tiếp hiện không khả dụng. Tin nhắn của bạn đã được phiên âm theo cách tiêu chuẩn, không có chỉnh sửa trực tiếp. Chúng tôi đang nỗ lực khôi phục tính năng này.",
     "streamingSttLanguageUnsupportedBanner": "Tính năng phiên âm trực tiếp chưa khả dụng cho ngôn ngữ này. Chúng tôi đang nỗ lực thực hiện.",
-    "formLabel": "Biểu mẫu {name}"
+    "formLabel": "Biểu mẫu {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Hỗ trợ"
 }

@@ -13,6 +13,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -238,7 +239,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                             ),
                             Flexible(
                               child: Text(
-                                "${userRole.role ?? L10n.of(context).participant} | ${user?.calcDisplayname() ?? p.participantId.localpart}",
+                                "${userRole.role ?? L10n.of(context).participant} | ${user?.localizedDisplayname(L10n.of(context)) ?? p.participantId.localpart}",
                                 style: const TextStyle(fontSize: 14.0),
                                 overflow: TextOverflow.ellipsis,
                               ),
@@ -248,7 +249,7 @@ class ButtonControlledCarouselView extends StatelessWidget {
                         Flexible(
                           child: _SummaryText(
                             text: p.displayFeedback(
-                              user?.calcDisplayname() ??
+                              user?.localizedDisplayname(L10n.of(context)) ??
                                   p.participantId.localpart ??
                                   p.participantId,
                             ),

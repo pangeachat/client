@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-05 10:21:30.862170",
+    "@@last_modified": "2026-08-05 11:42:11.821669",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10059,5 +10059,7 @@
     "streamingSttDegradedLiveBanner": "La transcription en direct fonctionne sur un service de secours. La qualité peut varier, veuillez vérifier le texte.",
     "streamingSttDegradedToBatchBanner": "La transcription en direct n'est pas disponible pour le moment. Votre message a été transcrit de manière standard, sans édition en direct. Nous travaillons à la rétablir.",
     "streamingSttLanguageUnsupportedBanner": "La transcription en direct n'est pas encore disponible pour cette langue. Nous y travaillons.",
-    "formLabel": "Formulaire {name}"
+    "formLabel": "Formulaire {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Support"
 }

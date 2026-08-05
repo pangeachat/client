@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-05 10:21:35.083964",
+    "@@last_modified": "2026-08-05 11:42:15.522344",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Тікелей транскрипция қосалқы қызметте жұмыс істеп тұр. Сапасы әртүрлі болуы мүмкін, мәтінді тексеріңіз.",
     "streamingSttDegradedToBatchBanner": "Тікелей транскрипция қазір қолжетімді емес. Хабарламаңыз тікелей өңдеусіз, стандартты жолмен транскрипцияланды. Біз оны қалпына келтіру үшін жұмыс істеп жатырмыз.",
     "streamingSttLanguageUnsupportedBanner": "Бұл тіл үшін тікелей транскрипция әлі қолжетімді емес. Біз онымен жұмыс істеп жатырмыз.",
-    "formLabel": "{name} формасы"
+    "formLabel": "{name} формасы",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Қолдау"
 }

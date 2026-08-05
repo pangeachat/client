@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-05 10:21:43.875133",
+    "@@last_modified": "2026-08-05 11:42:17.809271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Транскрипсияи мустақим аз хидмати эҳтиётӣ кор мекунад. Сифат метавонад фарқ кунад, лутфан матнро тафтиш кунед.",
     "streamingSttDegradedToBatchBanner": "Транскрипсияи мустақим ҳоло дастрас нест. Паёми шумо ба таври стандартӣ, бе таҳрири мустақим, транскрипсия карда шуд. Мо барои барқарор кардани он кор карда истодаем.",
     "streamingSttLanguageUnsupportedBanner": "Транскрипсияи мустақим барои ин забон ҳанӯз дастрас нест. Мо дар болои он кор карда истодаем.",
-    "formLabel": "Шакли {name}"
+    "formLabel": "Шакли {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Дастгирӣ"
 }

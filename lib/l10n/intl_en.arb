@@ -4305,6 +4305,14 @@
     "publicInviteDescSpace": "Search for users to invite them to this space.",
     "useActivityImageAsChatBackground": "Use activity image as chat background",
     "chatWithSupport": "Chat with Support",
+    "botDisplayName": "Pangea Bot",
+    "@botDisplayName": {
+      "description": "Display name shown for the Pangea Bot account in place of its server-side profile name."
+    },
+    "supportDisplayName": "Support",
+    "@supportDisplayName": {
+      "description": "Display name shown for the Support account in place of its server-side profile name."
+    },
     "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
     "onboardingLanguagesTitle": "What language are you learning?",
     "supportSubtitle": "Questions? We're here to help!",

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-05 10:21:32.090917",
+    "@@last_modified": "2026-08-05 11:42:12.386919",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "લાઇવ ટ્રાન્સક્રિપ્શન બેકઅપ સેવા પર ચાલી રહ્યું છે. ગુણવત્તા અલગ હોઈ શકે છે, કૃપા કરીને ટેક્સ્ટ તપાસો.",
     "streamingSttDegradedToBatchBanner": "લાઇવ ટ્રાન્સક્રિપ્શન અત્યારે ઉપલબ્ધ નથી. તમારો સંદેશ લાઇવ એડિટિંગ વિના, પ્રમાણભૂત રીતે ટ્રાન્સક્રાઇબ કરવામાં આવ્યો હતો. અમે તેને પુનઃસ્થાપિત કરવા માટે કામ કરી રહ્યા છીએ.",
     "streamingSttLanguageUnsupportedBanner": "આ ભાષા માટે લાઇવ ટ્રાન્સક્રિપ્શન હજુ ઉપલબ્ધ નથી. અમે તેના પર કામ કરી રહ્યા છીએ.",
-    "formLabel": "{name} ફોર્મ"
+    "formLabel": "{name} ફોર્મ",
+    "botDisplayName": "પેંગિયા બોટ",
+    "supportDisplayName": "સપોર્ટ"
 }

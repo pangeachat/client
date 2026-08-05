@@ -1809,7 +1809,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-05 10:21:40.774647",
+    "@@last_modified": "2026-08-05 11:42:16.566366",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10655,5 +10655,7 @@
     "streamingSttDegradedLiveBanner": "Prepis v živo deluje na rezervni storitvi. Kakovost se lahko razlikuje, preverite besedilo.",
     "streamingSttDegradedToBatchBanner": "Prepis v živo trenutno ni na voljo. Vaše sporočilo je bilo prepisano na standarden način, brez urejanja v živo. Prizadevamo si, da bi ga obnovili.",
     "streamingSttLanguageUnsupportedBanner": "Prepis v živo še ni na voljo za ta jezik. Delamo na tem.",
-    "formLabel": "Obrazec {name}"
+    "formLabel": "Obrazec {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Podpora"
 }

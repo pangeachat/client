@@ -7,6 +7,7 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -73,7 +74,9 @@ class ActivityParticipantIndicator extends StatelessWidget {
               // Prefer the member's display name over the raw @localpart so a
               // role reads as a human name, not a username (#7366). Falls back
               // to the localpart when the occupant isn't a resolved member.
-              final displayName = user?.calcDisplayname() ?? userId?.localpart;
+              final displayName =
+                  user?.localizedDisplayname(L10n.of(context)) ??
+                  userId?.localpart;
               final avatar = userId != null
                   ? Avatar(
                       mxContent: user?.avatarUrl != null

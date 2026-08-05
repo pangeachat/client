@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-05 10:21:36.681647",
+    "@@last_modified": "2026-08-05 11:42:14.298242",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "ການຖອດຂໍ້ຄວາມສົດກຳລັງເຮັດວຽກຢູ່ໃນບໍລິການສຳຮອງ. ຄຸນນະພາບອາດຈະແຕກຕ່າງກັນ, ກະລຸນາກວດສອບຂໍ້ຄວາມ.",
     "streamingSttDegradedToBatchBanner": "ການຖອດຂໍ້ຄວາມສົດບໍ່ສາມາດໃຊ້ໄດ້ໃນຕອນນີ້. ຂໍ້ຄວາມຂອງທ່ານຖືກຖອດຂໍ້ຄວາມດ້ວຍວິທີມາດຕະຖານ, ໂດຍບໍ່ມີການແກ້ໄຂສົດ. ພວກເຮົາກຳລັງດຳເນີນການເພື່ອຟື້ນຟູມັນ.",
     "streamingSttLanguageUnsupportedBanner": "ການຖອດຂໍ້ຄວາມສົດຍັງບໍ່ສາມາດໃຊ້ໄດ້ສຳລັບພາສານີ້ເທື່ອ. ພວກເຮົາກຳລັງດຳເນີນການຢູ່.",
-    "formLabel": "ແບບຟອມ {name}"
+    "formLabel": "ແບບຟອມ {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "ຊ່ວຍເຫຼືອ"
 }
