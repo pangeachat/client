@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Fungua mipangilio ya sauti",
     "streamingSttDegradedLiveBanner": "Uandishi wa moja kwa moja unaendeshwa kwenye huduma mbadala. Ubora unaweza kutofautiana, tafadhali angalia maandishi.",
     "streamingSttDegradedToBatchBanner": "Uandishi wa moja kwa moja haupatikani kwa sasa. Ujumbe wako uliandikwa kwa njia ya kawaida, bila kuhaririwa moja kwa moja. Tunajitahidi kuurejesha.",
-    "streamingSttLanguageUnsupportedBanner": "Uandishi wa moja kwa moja haupatikani kwa lugha hii bado. Tunalifanyia kazi."
+    "streamingSttLanguageUnsupportedBanner": "Uandishi wa moja kwa moja haupatikani kwa lugha hii bado. Tunalifanyia kazi.",
+    "formLabel": "Fomu ya {name}"
 }

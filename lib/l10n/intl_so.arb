@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Fur goobaha codka",
     "streamingSttDegradedLiveBanner": "Qoraalka tooska ah waxa uu ku shaqaynayaa adeeg kayd ah. Tayada way kala duwanaan kartaa, fadlan hubi qoraalka.",
     "streamingSttDegradedToBatchBanner": "Qoraalka tooska ah hadda lama heli karo. Farriintaada waxa loo qoray si caadi ah, iyada oo aan la tafatirin si toos ah. Waxaanu ka shaqaynaynaa sidii aanu dib ugu soo celin lahayn.",
-    "streamingSttLanguageUnsupportedBanner": "Qoraalka tooska ah weli lama heli karo luqaddan. Waxaanu ka shaqaynaynaa."
+    "streamingSttLanguageUnsupportedBanner": "Qoraalka tooska ah weli lama heli karo luqaddan. Waxaanu ka shaqaynaynaa.",
+    "formLabel": "{name} foomka"
 }

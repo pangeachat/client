@@ -10623,5 +10623,6 @@
     "readAloudOpenVoiceSettings": "פתח את הגדרות הקול",
     "streamingSttDegradedLiveBanner": "התמלול החי פועל באמצעות שירות גיבוי. האיכות עשויה להשתנות, אנא בדוק את הטקסט.",
     "streamingSttDegradedToBatchBanner": "תמלול חי אינו זמין כרגע. ההודעה שלך תומללה בדרך הרגילה, ללא עריכה חיה. אנו פועלים לשחזור השירות.",
-    "streamingSttLanguageUnsupportedBanner": "תמלול חי אינו זמין עדיין עבור שפה זו. אנו עובדים על כך."
+    "streamingSttLanguageUnsupportedBanner": "תמלול חי אינו זמין עדיין עבור שפה זו. אנו עובדים על כך.",
+    "formLabel": "טופס {name}"
 }

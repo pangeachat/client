@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Bula litlhophiso tsa lentsoe",
     "streamingSttDegradedLiveBanner": "Phetolelo e phelang e sebetsa ka tshebeletso e bolokang. Boleng bo ka fapana, ka kopo hlahloba mongolo.",
     "streamingSttDegradedToBatchBanner": "Phetolelo e phelang ha e fumanehe ha jwale. Molaetsa wa hao o fetolelwa ka mokgwa o tlwaelehileng, ntle le ho o hlophisa hanghang. Re sebetsa ho e kgutlisa.",
-    "streamingSttLanguageUnsupportedBanner": "Phetolelo e phelang ha e so fumanehe bakeng sa puo ena. Re ntse re sebetsa ho yona."
+    "streamingSttLanguageUnsupportedBanner": "Phetolelo e phelang ha e so fumanehe bakeng sa puo ena. Re ntse re sebetsa ho yona.",
+    "formLabel": "Foromo ea {name}"
 }

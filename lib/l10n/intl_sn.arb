@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Vhura zvirongwa zveizwi",
     "streamingSttDegradedLiveBanner": "Kunyora zviri kuitika panguva imwe chete kuri kushanda pachishandiso chekuchengetedza. Hunhu hunogona kusiyana, ndapota tarisa zvinyorwa.",
     "streamingSttDegradedToBatchBanner": "Kunyora zviri kuitika panguva imwe chete hakusati kwavepo izvozvi. Mashoko ako akanyorwa nenzira yakajairika, pasina kugadzirisa panguva imwe chete. Tiri kushanda kuti zvidzoke.",
-    "streamingSttLanguageUnsupportedBanner": "Kunyora zviri kuitika panguva imwe chete hakusati kwavepo pamutauro uyu. Tiri kushanda nazvo."
+    "streamingSttLanguageUnsupportedBanner": "Kunyora zviri kuitika panguva imwe chete hakusati kwavepo pamutauro uyu. Tiri kushanda nazvo.",
+    "formLabel": "Fomu ra{name}"
 }

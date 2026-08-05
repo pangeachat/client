@@ -9830,5 +9830,6 @@
     "readAloudOpenVoiceSettings": "Obre la configuració de veu",
     "streamingSttDegradedLiveBanner": "La transcripció en directe s'està executant en un servei de còpia de seguretat. La qualitat pot variar, si us plau, revisa el text.",
     "streamingSttDegradedToBatchBanner": "La transcripció en directe no està disponible en aquest moment. El teu missatge es va transcriure de la manera estàndard, sense edició en directe. Estem treballant per restaurar-la.",
-    "streamingSttLanguageUnsupportedBanner": "La transcripció en directe encara no està disponible per a aquest idioma. Hi estem treballant."
+    "streamingSttLanguageUnsupportedBanner": "La transcripció en directe encara no està disponible per a aquest idioma. Hi estem treballant.",
+    "formLabel": "Formulari de {name}"
 }

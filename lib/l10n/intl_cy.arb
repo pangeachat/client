@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Agor gosodiadau llais",
     "streamingSttDegradedLiveBanner": "Mae trawsgrifio byw yn rhedeg ar wasanaeth wrth gefn. Gall ansawdd amrywio, gwiriwch y testun.",
     "streamingSttDegradedToBatchBanner": "Nid yw trawsgrifio byw ar gael ar hyn o bryd. Trawsgrifiwyd eich neges yn y ffordd safonol, heb olygu byw. Rydym yn gweithio i'w adfer.",
-    "streamingSttLanguageUnsupportedBanner": "Nid yw trawsgrifio byw ar gael ar gyfer yr iaith hon eto. Rydym yn gweithio arno."
+    "streamingSttLanguageUnsupportedBanner": "Nid yw trawsgrifio byw ar gael ar gyfer yr iaith hon eto. Rydym yn gweithio arno.",
+    "formLabel": "Ffurflen {name}"
 }

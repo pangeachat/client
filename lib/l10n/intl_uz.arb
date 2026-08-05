@@ -9707,5 +9707,6 @@
     "readAloudOpenVoiceSettings": "Ovoz sozlamalarini ochish",
     "streamingSttDegradedLiveBanner": "Jonli transkripsiya zaxira xizmatida ishlamoqda. Sifat har xil boʻlishi mumkin, iltimos, matnni tekshiring.",
     "streamingSttDegradedToBatchBanner": "Jonli transkripsiya hozircha mavjud emas. Xabaringiz standart usulda, jonli tahrirlashsiz transkripsiya qilindi. Uni tiklash ustida ishlayapmiz.",
-    "streamingSttLanguageUnsupportedBanner": "Ushbu til uchun jonli transkripsiya hali mavjud emas. Biz bu ustida ishlayapmiz."
+    "streamingSttLanguageUnsupportedBanner": "Ushbu til uchun jonli transkripsiya hali mavjud emas. Biz bu ustida ishlayapmiz.",
+    "formLabel": "{name} shakli"
 }

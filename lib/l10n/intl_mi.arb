@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Whakatuwhera i ngā tautuhinga reo",
     "streamingSttDegradedLiveBanner": "Kei te rere te tuhinga ora i runga i te ratonga pūrua. Ka rerekē pea te kounga, tēnā tirohia te kuputuhi.",
     "streamingSttDegradedToBatchBanner": "Kāore i te wātea te tuhinga ora i nāianei tonu. I tuhia tō karere i te ara paerewa, me te kore whakatika ora. Kei te mahi mātou ki te whakahoki mai.",
-    "streamingSttLanguageUnsupportedBanner": "Kāore anō kia wātea te tuhinga ora mō tēnei reo. Kei te mahi mātou."
+    "streamingSttLanguageUnsupportedBanner": "Kāore anō kia wātea te tuhinga ora mō tēnei reo. Kei te mahi mātou.",
+    "formLabel": "Puka {name}"
 }

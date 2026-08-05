@@ -9806,5 +9806,6 @@
     "readAloudOpenVoiceSettings": "Hangbeállítások megnyitása",
     "streamingSttDegradedLiveBanner": "Az élő átírás egy biztonsági szolgáltatáson fut. A minőség változhat, kérjük, ellenőrizze a szöveget.",
     "streamingSttDegradedToBatchBanner": "Az élő átírás jelenleg nem elérhető. Az üzenetét a szokásos módon írtuk át, élő szerkesztés nélkül. Dolgozunk a visszaállításon.",
-    "streamingSttLanguageUnsupportedBanner": "Az élő átírás még nem érhető el ehhez a nyelvhez. Dolgozunk rajta."
+    "streamingSttLanguageUnsupportedBanner": "Az élő átírás még nem érhető el ehhez a nyelvhez. Dolgozunk rajta.",
+    "formLabel": "{name} űrlap"
 }

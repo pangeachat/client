@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Tatala fa'atonuga leo",
     "streamingSttDegradedLiveBanner": "O lo'o fa'agasolo le fa'aliliuga tuusa'o i se tautua fa'aagaga. E ono eseese le lelei, fa'amolemole siaki le tusitusiga.",
     "streamingSttDegradedToBatchBanner": "E le o maua le fa'aliliuga tuusa'o i le taimi nei. Na fa'aliliu lau fe'au i le auala masani, e aunoa ma le fa'asa'oina tuusa'o. O lo'o matou galulue e toe fa'aleleia.",
-    "streamingSttLanguageUnsupportedBanner": "E le'i maua le fa'aliliuga tuusa'o mo lenei gagana. O lo'o matou galulue i ai."
+    "streamingSttLanguageUnsupportedBanner": "E le'i maua le fa'aliliuga tuusa'o mo lenei gagana. O lo'o matou galulue i ai.",
+    "formLabel": "Fomu {name}"
 }

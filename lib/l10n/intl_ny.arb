@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Tsegulani zokonda za mawu",
     "streamingSttDegradedLiveBanner": "Kulemba mawu pompopompo kukugwira ntchito pa ntchito yosunga zobwezera. Ubwino ukhoza kusiyana, chonde onani mawuwo.",
     "streamingSttDegradedToBatchBanner": "Kulemba mawu pompopompo sikukupezeka pakali pano. Uthenga wanu unalembedwa mwachizolowezi, osati pompopompo. Tikuyesetsa kubwezeretsa.",
-    "streamingSttLanguageUnsupportedBanner": "Kulemba mawu pompopompo sikukupezeka pa chilankhulo ichi pakali pano. Tikugwira ntchito."
+    "streamingSttLanguageUnsupportedBanner": "Kulemba mawu pompopompo sikukupezeka pa chilankhulo ichi pakali pano. Tikugwira ntchito.",
+    "formLabel": "Fomu ya {name}"
 }

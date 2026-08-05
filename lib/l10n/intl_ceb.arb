@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Ablihi ang mga setting sa tingog",
     "streamingSttDegradedLiveBanner": "Ang live transcription nagdagan sa usa ka backup nga serbisyo. Mahimong magkalainlain ang kalidad, palihug susiha ang teksto.",
     "streamingSttDegradedToBatchBanner": "Dili magamit ang live transcription karon. Ang imong mensahe gi-transcribe sa standard nga paagi, nga walay live editing. Nagtrabaho kami aron ibalik kini.",
-    "streamingSttLanguageUnsupportedBanner": "Dili pa magamit ang live transcription alang niini nga pinulongan. Nagtrabaho kami niini."
+    "streamingSttLanguageUnsupportedBanner": "Dili pa magamit ang live transcription alang niini nga pinulongan. Nagtrabaho kami niini.",
+    "formLabel": "Porma ni {name}"
 }

@@ -9896,5 +9896,6 @@
     "readAloudOpenVoiceSettings": "음성 설정 열기",
     "streamingSttDegradedLiveBanner": "실시간 스크립트가 백업 서비스에서 실행 중입니다. 품질이 저하될 수 있으니 텍스트를 확인해 주세요.",
     "streamingSttDegradedToBatchBanner": "현재 실시간 스크립트를 사용할 수 없습니다. 메시지는 실시간 편집 없이 일반적인 방식으로 스크립트 처리되었습니다. 복구 중입니다.",
-    "streamingSttLanguageUnsupportedBanner": "이 언어는 아직 실시간 스크립트를 지원하지 않습니다. 현재 작업 중입니다."
+    "streamingSttLanguageUnsupportedBanner": "이 언어는 아직 실시간 스크립트를 지원하지 않습니다. 현재 작업 중입니다.",
+    "formLabel": "{name} 양식"
 }

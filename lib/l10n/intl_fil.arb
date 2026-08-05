@@ -10569,5 +10569,6 @@
     "readAloudOpenVoiceSettings": "Buksan ang mga setting ng boses",
     "streamingSttDegradedLiveBanner": "Ang live transcription ay gumagana sa isang backup na serbisyo. Maaaring mag-iba ang kalidad, pakisuri ang text.",
     "streamingSttDegradedToBatchBanner": "Hindi available ang live transcription sa ngayon. Ang iyong mensahe ay na-transcribe sa karaniwang paraan, nang walang live editing. Ginagawa namin ang lahat para maibalik ito.",
-    "streamingSttLanguageUnsupportedBanner": "Hindi pa available ang live transcription para sa wikang ito. Ginagawa namin ito."
+    "streamingSttLanguageUnsupportedBanner": "Hindi pa available ang live transcription para sa wikang ito. Ginagawa namin ito.",
+    "formLabel": "Form ng {name}"
 }

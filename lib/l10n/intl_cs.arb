@@ -10197,5 +10197,6 @@
     "readAloudOpenVoiceSettings": "Otevřít nastavení hlasu",
     "streamingSttDegradedLiveBanner": "Živý přepis běží na záložní službě. Kvalita se může lišit, zkontrolujte prosím text.",
     "streamingSttDegradedToBatchBanner": "Živý přepis momentálně není k dispozici. Vaše zpráva byla přepsána standardním způsobem, bez živých úprav. Pracujeme na obnovení.",
-    "streamingSttLanguageUnsupportedBanner": "Živý přepis pro tento jazyk zatím není k dispozici. Pracujeme na tom."
+    "streamingSttLanguageUnsupportedBanner": "Živý přepis pro tento jazyk zatím není k dispozici. Pracujeme na tom.",
+    "formLabel": "Formulář {name}"
 }

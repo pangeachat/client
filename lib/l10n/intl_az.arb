@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Səs parametrlərini açın",
     "streamingSttDegradedLiveBanner": "Canlı transkripsiya ehtiyat xidməti ilə işləyir. Keyfiyyət dəyişə bilər, lütfən mətni yoxlayın.",
     "streamingSttDegradedToBatchBanner": "Canlı transkripsiya hazırda mövcud deyil. Mesajınız standart üsulla, canlı redaktə olmadan transkripsiya edildi. Onu bərpa etmək üçün çalışırıq.",
-    "streamingSttLanguageUnsupportedBanner": "Canlı transkripsiya hələ bu dil üçün mövcud deyil. Biz bunun üzərində işləyirik."
+    "streamingSttLanguageUnsupportedBanner": "Canlı transkripsiya hələ bu dil üçün mövcud deyil. Biz bunun üzərində işləyirik.",
+    "formLabel": "{name} forması"
 }

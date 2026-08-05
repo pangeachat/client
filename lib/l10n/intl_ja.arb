@@ -10472,5 +10472,6 @@
     "readAloudOpenVoiceSettings": "音声設定を開く",
     "streamingSttDegradedLiveBanner": "ライブ文字起こしはバックアップサービスで実行中です。品質が低下する場合がありますので、テキストをご確認ください。",
     "streamingSttDegradedToBatchBanner": "現在、ライブ文字起こしは利用できません。メッセージはライブ編集なしで通常の方法で文字起こしされました。復旧作業中です。",
-    "streamingSttLanguageUnsupportedBanner": "この言語ではまだライブ文字起こしをご利用いただけません。現在対応中です。"
+    "streamingSttLanguageUnsupportedBanner": "この言語ではまだライブ文字起こしをご利用いただけません。現在対応中です。",
+    "formLabel": "{name}フォーム"
 }

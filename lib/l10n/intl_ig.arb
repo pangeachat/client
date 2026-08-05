@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Mepee ntọala olu",
     "streamingSttDegradedLiveBanner": "Ntụgharị okwu dị ndụ na-agba ọsọ na ọrụ nkwado. Ogo nwere ike ịdị iche, biko lelee ederede.",
     "streamingSttDegradedToBatchBanner": "Ntụgharị okwu dị ndụ adịghị ugbu a. Edegharịrị ozi gị n'ụzọ ọkọlọtọ, na-enweghị ndezi ndụ. Anyị na-arụ ọrụ iji weghachi ya.",
-    "streamingSttLanguageUnsupportedBanner": "Ntụgharị okwu dị ndụ adịghị maka asụsụ a ugbu a. Anyị na-arụ ọrụ na ya."
+    "streamingSttLanguageUnsupportedBanner": "Ntụgharị okwu dị ndụ adịghị maka asụsụ a ugbu a. Anyị na-arụ ọrụ na ya.",
+    "formLabel": "Ụdị {name}"
 }

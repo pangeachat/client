@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Vula izicwangciso zezwi",
     "streamingSttDegradedLiveBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma kusebenza kwinkonzo yogcino. Umgangatho ungahluka, nceda ujonge umbhalo.",
     "streamingSttDegradedToBatchBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma akufumaneki okwangoku. Umyalezo wakho ubhalwe ngendlela eqhelekileyo, ngaphandle kokuhlela ngqo bukhoma. Sisebenzela ukuyibuyisela.",
-    "streamingSttLanguageUnsupportedBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma akukafumaneki okwangoku kolu lwimi. Sisebenzela kulo."
+    "streamingSttLanguageUnsupportedBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma akukafumaneki okwangoku kolu lwimi. Sisebenzela kulo.",
+    "formLabel": "Ifomu lika-{name}"
 }

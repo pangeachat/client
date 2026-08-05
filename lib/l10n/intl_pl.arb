@@ -9788,5 +9788,6 @@
     "readAloudOpenVoiceSettings": "Otwórz ustawienia głosu",
     "streamingSttDegradedLiveBanner": "Transkrypcja na żywo działa w usłudze zapasowej. Jakość może się różnić, sprawdź tekst.",
     "streamingSttDegradedToBatchBanner": "Transkrypcja na żywo jest obecnie niedostępna. Twoja wiadomość została przetranskrybowana w standardowy sposób, bez edycji na żywo. Pracujemy nad przywróceniem usługi.",
-    "streamingSttLanguageUnsupportedBanner": "Transkrypcja na żywo nie jest jeszcze dostępna dla tego języka. Pracujemy nad tym."
+    "streamingSttLanguageUnsupportedBanner": "Transkrypcja na żywo nie jest jeszcze dostępna dla tego języka. Pracujemy nad tym.",
+    "formLabel": "Formularz {name}"
 }

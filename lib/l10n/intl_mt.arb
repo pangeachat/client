@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Iftaħ is-settings tal-vuċi",
     "streamingSttDegradedLiveBanner": "It-traskrizzjoni diretta qed taħdem fuq servizz ta' backup. Il-kwalità tista' tvarja, jekk jogħġbok iċċekkja t-test.",
     "streamingSttDegradedToBatchBanner": "It-traskrizzjoni diretta mhix disponibbli bħalissa. Il-messaġġ tiegħek ġie traskritt bil-mod standard, mingħajr editjar dirett. Qed naħdmu biex nirrestawrawha.",
-    "streamingSttLanguageUnsupportedBanner": "It-traskrizzjoni diretta għadha mhix disponibbli għal din il-lingwa. Qed naħdmu fuqha."
+    "streamingSttLanguageUnsupportedBanner": "It-traskrizzjoni diretta għadha mhix disponibbli għal din il-lingwa. Qed naħdmu fuqha.",
+    "formLabel": "Formola ta' {name}"
 }

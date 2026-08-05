@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Bude saitunan murya",
     "streamingSttDegradedLiveBanner": "Fassarar kai tsaye tana gudana akan sabis na madadin. Inganci na iya bambanta, don Allah a duba rubutun.",
     "streamingSttDegradedToBatchBanner": "Fassarar kai tsaye ba ta samuwa a yanzu. An fassara saƙonka ta hanyar da aka saba, ba tare da gyara kai tsaye ba. Muna aiki don dawo da shi.",
-    "streamingSttLanguageUnsupportedBanner": "Fassarar kai tsaye ba ta samuwa ga wannan yaren tukuna. Muna aiki a kai."
+    "streamingSttLanguageUnsupportedBanner": "Fassarar kai tsaye ba ta samuwa ga wannan yaren tukuna. Muna aiki a kai.",
+    "formLabel": "Fom na {name}"
 }

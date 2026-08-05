@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Maak steminstellings oop",
     "streamingSttDegradedLiveBanner": "Regstreekse transkripsie loop op 'n rugsteundiens. Kwaliteit kan verskil, kontroleer asseblief die teks.",
     "streamingSttDegradedToBatchBanner": "Regstreekse transkripsie is tans onbeskikbaar. Jou boodskap is op die standaard manier getranskribeer, sonder regstreekse redigering. Ons werk daaraan om dit te herstel.",
-    "streamingSttLanguageUnsupportedBanner": "Regstreekse transkripsie is nog nie vir hierdie taal beskikbaar nie. Ons werk daaraan."
+    "streamingSttLanguageUnsupportedBanner": "Regstreekse transkripsie is nog nie vir hierdie taal beskikbaar nie. Ons werk daaraan.",
+    "formLabel": "{name} vorm"
 }

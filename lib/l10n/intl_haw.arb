@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "E wehe i nā hoʻonohonoho leo",
     "streamingSttDegradedLiveBanner": "Ke holo nei ka palapala ola ma kahi lawelawe hoʻihoʻi. Hiki ke ʻokoʻa ka maikaʻi, e ʻoluʻolu e nānā i ka kikokikona.",
     "streamingSttDegradedToBatchBanner": "ʻAʻole loaʻa ka palapala ola i kēia manawa. Ua kākau ʻia kāu leka ma ke ʻano maʻamau, me ka hoʻoponopono ola ʻole. Ke hana nei mākou e hoʻihoʻi.",
-    "streamingSttLanguageUnsupportedBanner": "ʻAʻole loaʻa ka palapala ola no kēia ʻōlelo i kēia manawa. Ke hana nei mākou ma luna."
+    "streamingSttLanguageUnsupportedBanner": "ʻAʻole loaʻa ka palapala ola no kēia ʻōlelo i kēia manawa. Ke hana nei mākou ma luna.",
+    "formLabel": "Palapala {name}"
 }

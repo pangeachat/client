@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Sokafy ny firafitry ny feo",
     "streamingSttDegradedLiveBanner": "Mandeha amin'ny tolotra backup ny fandikana mivantana. Mety hiovaova ny kalitao, azafady jereo ny lahatsoratra.",
     "streamingSttDegradedToBatchBanner": "Tsy misy amin'izao fotoana izao ny fandikana mivantana. Nadika tamin'ny fomba mahazatra ny hafatrao, tsy misy fanitsiana mivantana. Miezaka mamerina izany izahay.",
-    "streamingSttLanguageUnsupportedBanner": "Tsy misy ho an'ity fiteny ity aloha ny fandikana mivantana. Miezaka manao izany izahay."
+    "streamingSttLanguageUnsupportedBanner": "Tsy misy ho an'ity fiteny ity aloha ny fandikana mivantana. Miezaka manao izany izahay.",
+    "formLabel": "Endrika {name}"
 }

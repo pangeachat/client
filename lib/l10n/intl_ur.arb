@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "آواز کی ترتیبات کھولیں",
     "streamingSttDegradedLiveBanner": "لائیو ٹرانسکرپشن بیک اپ سروس پر چل رہی ہے۔ معیار مختلف ہو سکتا ہے، براہ کرم متن چیک کریں۔",
     "streamingSttDegradedToBatchBanner": "لائیو ٹرانسکرپشن ابھی دستیاب نہیں ہے۔ آپ کا پیغام معیاری طریقے سے، لائیو ایڈیٹنگ کے بغیر ٹرانسکرائب کیا گیا تھا۔ ہم اسے بحال کرنے کی کوشش کر رہے ہیں۔",
-    "streamingSttLanguageUnsupportedBanner": "اس زبان کے لیے لائیو ٹرانسکرپشن ابھی دستیاب نہیں ہے۔ ہم اس پر کام کر رہے ہیں۔"
+    "streamingSttLanguageUnsupportedBanner": "اس زبان کے لیے لائیو ٹرانسکرپشن ابھی دستیاب نہیں ہے۔ ہم اس پر کام کر رہے ہیں۔",
+    "formLabel": "{name} فارم"
 }

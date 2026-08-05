@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "व्हॉइस सेटिंग्ज उघडा",
     "streamingSttDegradedLiveBanner": "थेट प्रतिलेखन बॅकअप सेवेवर चालू आहे. गुणवत्तेत फरक असू शकतो, कृपया मजकूर तपासा.",
     "streamingSttDegradedToBatchBanner": "थेट प्रतिलेखन सध्या उपलब्ध नाही. तुमचा संदेश थेट संपादनाशिवाय, नेहमीच्या पद्धतीने प्रतिलेखित केला गेला आहे. आम्ही ते पूर्ववत करण्याचा प्रयत्न करत आहोत.",
-    "streamingSttLanguageUnsupportedBanner": "या भाषेसाठी थेट प्रतिलेखन अद्याप उपलब्ध नाही. आम्ही त्यावर काम करत आहोत."
+    "streamingSttLanguageUnsupportedBanner": "या भाषेसाठी थेट प्रतिलेखन अद्याप उपलब्ध नाही. आम्ही त्यावर काम करत आहोत.",
+    "formLabel": "{name} फॉर्म"
 }

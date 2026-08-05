@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Åpne stemmeinnstillinger",
     "streamingSttDegradedLiveBanner": "Direkte transkripsjon kjører på en reservetjeneste. Kvaliteten kan variere, vennligst sjekk teksten.",
     "streamingSttDegradedToBatchBanner": "Direkte transkripsjon er utilgjengelig akkurat nå. Meldingen din ble transkribert på standard måte, uten direkte redigering. Vi jobber med å gjenopprette den.",
-    "streamingSttLanguageUnsupportedBanner": "Direkte transkripsjon er ikke tilgjengelig for dette språket ennå. Vi jobber med det."
+    "streamingSttLanguageUnsupportedBanner": "Direkte transkripsjon er ikke tilgjengelig for dette språket ennå. Vi jobber med det.",
+    "formLabel": "{name}-skjema"
 }

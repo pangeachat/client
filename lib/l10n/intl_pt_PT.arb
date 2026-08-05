@@ -10620,5 +10620,6 @@
     "readAloudOpenVoiceSettings": "Abrir definições de voz",
     "streamingSttDegradedLiveBanner": "A transcrição em direto está a ser executada num serviço de backup. A qualidade pode variar, por favor, verifique o texto.",
     "streamingSttDegradedToBatchBanner": "A transcrição em direto não está disponível neste momento. A sua mensagem foi transcrita da forma padrão, sem edição em direto. Estamos a trabalhar para restaurá-la.",
-    "streamingSttLanguageUnsupportedBanner": "A transcrição em direto ainda não está disponível para este idioma. Estamos a trabalhar nisso."
+    "streamingSttLanguageUnsupportedBanner": "A transcrição em direto ainda não está disponível para este idioma. Estamos a trabalhar nisso.",
+    "formLabel": "Formulário de {name}"
 }

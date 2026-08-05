@@ -10058,5 +10058,6 @@
     "readAloudOpenVoiceSettings": "Ouvrir les paramètres vocaux",
     "streamingSttDegradedLiveBanner": "La transcription en direct fonctionne sur un service de secours. La qualité peut varier, veuillez vérifier le texte.",
     "streamingSttDegradedToBatchBanner": "La transcription en direct n'est pas disponible pour le moment. Votre message a été transcrit de manière standard, sans édition en direct. Nous travaillons à la rétablir.",
-    "streamingSttLanguageUnsupportedBanner": "La transcription en direct n'est pas encore disponible pour cette langue. Nous y travaillons."
+    "streamingSttLanguageUnsupportedBanner": "La transcription en direct n'est pas encore disponible pour cette langue. Nous y travaillons.",
+    "formLabel": "Formulaire {name}"
 }

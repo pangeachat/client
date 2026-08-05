@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Buka tetapan suara",
     "streamingSttDegradedLiveBanner": "Transkripsi langsung sedang berjalan pada perkhidmatan sandaran. Kualiti mungkin berbeza, sila semak teks.",
     "streamingSttDegradedToBatchBanner": "Transkripsi langsung tidak tersedia sekarang. Mesej anda ditranskripsi dengan cara standard, tanpa penyuntingan langsung. Kami sedang berusaha untuk memulihkannya.",
-    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengusahakannya."
+    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengusahakannya.",
+    "formLabel": "Borang {name}"
 }

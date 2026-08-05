@@ -191,139 +191,159 @@ class EditCourseController extends State<EditCourse> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: Center(
-          child: widget.embeddedCloseButton ?? const BackButton(),
+    return Semantics(
+      label: L10n.of(context).pageLabel(L10n.of(context).editing),
+      container: true,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Center(
+            child: widget.embeddedCloseButton ?? const BackButton(),
+          ),
+          title: ExcludeSemantics(
+            child: Text(
+              L10n.of(context).editing,
+              style: FluffyThemes.isColumnMode(context)
+                  ? Theme.of(context).textTheme.titleLarge
+                  : Theme.of(context).textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+            ),
+          ),
+          centerTitle: false,
+          titleSpacing: 0,
         ),
-        title: Text(
-          L10n.of(context).editing,
-          style: FluffyThemes.isColumnMode(context)
-              ? Theme.of(context).textTheme.titleLarge
-              : Theme.of(
-                  context,
-                ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
-        ),
-        centerTitle: false,
-        titleSpacing: 0,
-      ),
-      body: StreamBuilder(
-        stream: Matrix.of(
-          context,
-        ).client.onRoomState.stream.where((u) => u.roomId == widget.roomId),
-        builder: (context, snapshot) {
-          return Container(
-            alignment: Alignment.topCenter,
-            padding: const EdgeInsets.all(16.0),
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 600),
-              child: _room == null || !_room!.isSpace
-                  ? Center(child: Text(L10n.of(context).noRoomsFound))
-                  : Column(
-                      children: [
-                        Expanded(
-                          child: SingleChildScrollView(
-                            child: Column(
-                              spacing: 16.0,
-                              children: [
-                                Stack(
+        body: StreamBuilder(
+          stream: Matrix.of(
+            context,
+          ).client.onRoomState.stream.where((u) => u.roomId == widget.roomId),
+          builder: (context, snapshot) {
+            return Container(
+              alignment: Alignment.topCenter,
+              padding: const EdgeInsets.all(16.0),
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 600),
+                child: _room == null || !_room!.isSpace
+                    ? Center(child: Text(L10n.of(context).noRoomsFound))
+                    : Column(
+                        children: [
+                          Expanded(
+                            child: Semantics(
+                              label: L10n.of(
+                                context,
+                              ).formLabel(L10n.of(context).editing),
+                              container: true,
+                              child: SingleChildScrollView(
+                                child: Column(
+                                  spacing: 16.0,
                                   children: [
-                                    ClipPath(
-                                      clipper: MapClipper(),
-                                      child: _avatar != null
-                                          ? Image.memory(
-                                              _avatar!.bytes,
-                                              width: 200.0,
-                                              height: 200.0,
-                                              fit: BoxFit.cover,
-                                              semanticLabel: L10n.of(
-                                                context,
-                                              ).courseImage,
-                                            )
-                                          : ImageByUrl(
-                                              imageUrl: _room?.avatar,
-                                              width: 200.0,
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                              replacement: Avatar(
-                                                name: _room?.name,
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                size: 200.0,
-                                              ),
+                                    Stack(
+                                      children: [
+                                        ClipPath(
+                                          clipper: MapClipper(),
+                                          child: _avatar != null
+                                              ? Image.memory(
+                                                  _avatar!.bytes,
+                                                  width: 200.0,
+                                                  height: 200.0,
+                                                  fit: BoxFit.cover,
+                                                  semanticLabel: L10n.of(
+                                                    context,
+                                                  ).courseImage,
+                                                )
+                                              : ImageByUrl(
+                                                  imageUrl: _room?.avatar,
+                                                  width: 200.0,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                        0.0,
+                                                      ),
+                                                  replacement: Avatar(
+                                                    name: _room?.name,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          0.0,
+                                                        ),
+                                                    size: 200.0,
+                                                  ),
+                                                ),
+                                        ),
+                                        Positioned(
+                                          bottom: 0,
+                                          right: 0,
+                                          child: FloatingActionButton.small(
+                                            onPressed: _setAvatarAction,
+                                            tooltip: L10n.of(
+                                              context,
+                                            ).editRoomAvatar,
+                                            child: const Icon(
+                                              Icons.camera_alt_outlined,
                                             ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                    Positioned(
-                                      bottom: 0,
-                                      right: 0,
-                                      child: FloatingActionButton.small(
-                                        onPressed: _setAvatarAction,
-                                        tooltip: L10n.of(
-                                          context,
-                                        ).editRoomAvatar,
-                                        child: const Icon(
-                                          Icons.camera_alt_outlined,
+                                    TextField(
+                                      controller: _titleController,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            4.0,
+                                          ),
+                                        ),
+                                        hintText: L10n.of(context).courseTitle,
+                                      ),
+                                      inputFormatters: [
+                                        LengthLimitingTextInputFormatter(256),
+                                      ],
+                                    ),
+                                    TextField(
+                                      controller: _descController,
+                                      decoration: InputDecoration(
+                                        border: OutlineInputBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            4.0,
+                                          ),
+                                        ),
+                                        hintText: L10n.of(context).courseDesc,
+                                      ),
+                                      maxLines: null,
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                        vertical: 16.0,
+                                      ),
+                                      child: Text(
+                                        L10n.of(context).editsComingSoon,
+                                        style: const TextStyle(
+                                          fontStyle: FontStyle.italic,
                                         ),
                                       ),
                                     ),
                                   ],
                                 ),
-                                TextField(
-                                  controller: _titleController,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(4.0),
-                                    ),
-                                    hintText: L10n.of(context).courseTitle,
-                                  ),
-                                  inputFormatters: [
-                                    LengthLimitingTextInputFormatter(256),
-                                  ],
-                                ),
-                                TextField(
-                                  controller: _descController,
-                                  decoration: InputDecoration(
-                                    border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(4.0),
-                                    ),
-                                    hintText: L10n.of(context).courseDesc,
-                                  ),
-                                  maxLines: null,
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                    vertical: 16.0,
-                                  ),
-                                  child: Text(
-                                    L10n.of(context).editsComingSoon,
-                                    style: const TextStyle(
-                                      fontStyle: FontStyle.italic,
-                                    ),
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.symmetric(vertical: 16.0),
-                          child: ElevatedButton(
-                            onPressed: hasChanges && _isValid ? _save : null,
-                            child: Row(
-                              spacing: 8.0,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Icon(Icons.save_outlined),
-                                Text(L10n.of(context).saveChanges),
-                              ],
+                          Container(
+                            padding: const EdgeInsets.symmetric(vertical: 16.0),
+                            child: ElevatedButton(
+                              onPressed: hasChanges && _isValid ? _save : null,
+                              child: Row(
+                                spacing: 8.0,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(Icons.save_outlined),
+                                  Text(L10n.of(context).saveChanges),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-            ),
-          );
-        },
+                        ],
+                      ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

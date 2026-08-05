@@ -7906,5 +7906,6 @@
     "readAloudOpenVoiceSettings": "Abrir ajustes de voz",
     "streamingSttDegradedLiveBanner": "La transcripción en vivo se está ejecutando en un servicio de respaldo. La calidad puede variar, por favor, revisa el texto.",
     "streamingSttDegradedToBatchBanner": "La transcripción en vivo no está disponible en este momento. Tu mensaje fue transcrito de la manera estándar, sin edición en vivo. Estamos trabajando para restaurarla.",
-    "streamingSttLanguageUnsupportedBanner": "La transcripción en vivo aún no está disponible para este idioma. Estamos trabajando en ello."
+    "streamingSttLanguageUnsupportedBanner": "La transcripción en vivo aún no está disponible para este idioma. Estamos trabajando en ello.",
+    "formLabel": "Formulario de {name}"
 }

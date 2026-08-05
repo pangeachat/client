@@ -10654,5 +10654,6 @@
     "readAloudOpenVoiceSettings": "Odpri nastavitve glasu",
     "streamingSttDegradedLiveBanner": "Prepis v živo deluje na rezervni storitvi. Kakovost se lahko razlikuje, preverite besedilo.",
     "streamingSttDegradedToBatchBanner": "Prepis v živo trenutno ni na voljo. Vaše sporočilo je bilo prepisano na standarden način, brez urejanja v živo. Prizadevamo si, da bi ga obnovili.",
-    "streamingSttLanguageUnsupportedBanner": "Prepis v živo še ni na voljo za ta jezik. Delamo na tem."
+    "streamingSttLanguageUnsupportedBanner": "Prepis v živo še ni na voljo za ta jezik. Delamo na tem.",
+    "formLabel": "Obrazec {name}"
 }

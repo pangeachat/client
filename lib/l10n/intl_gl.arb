@@ -9703,5 +9703,6 @@
     "readAloudOpenVoiceSettings": "Abrir a configuración de voz",
     "streamingSttDegradedLiveBanner": "A transcrición en directo está a executarse nun servizo de respaldo. A calidade pode variar, revisa o texto.",
     "streamingSttDegradedToBatchBanner": "A transcrición en directo non está dispoñible neste momento. A túa mensaxe transcribiuse do xeito estándar, sen edición en directo. Estamos a traballar para restaurala.",
-    "streamingSttLanguageUnsupportedBanner": "A transcrición en directo aínda non está dispoñible para este idioma. Estamos a traballar niso."
+    "streamingSttLanguageUnsupportedBanner": "A transcrición en directo aínda non está dispoñible para este idioma. Estamos a traballar niso.",
+    "formLabel": "Formulario de {name}"
 }

@@ -10645,5 +10645,6 @@
     "readAloudOpenVoiceSettings": "Aperi le parametros de voce",
     "streamingSttDegradedLiveBanner": "Le transcription in directo functiona con un servicio de reserva. Le qualitate pote variar, per favor verifica le texto.",
     "streamingSttDegradedToBatchBanner": "Le transcription in directo non es disponibile nunc. Tu message esseva transcribite del maniera standard, sin edition in directo. Nos travalia pro restaurar lo.",
-    "streamingSttLanguageUnsupportedBanner": "Le transcription in directo non es ancora disponibile pro iste lingua. Nos travalia super illo."
+    "streamingSttLanguageUnsupportedBanner": "Le transcription in directo non es ancora disponibile pro iste lingua. Nos travalia super illo.",
+    "formLabel": "Formulario de {name}"
 }

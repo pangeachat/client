@@ -9703,5 +9703,6 @@
     "readAloudOpenVoiceSettings": "Atvērt balss iestatījumus",
     "streamingSttDegradedLiveBanner": "Tiešraides transkripcija darbojas, izmantojot rezerves pakalpojumu. Kvalitāte var atšķirties, lūdzu, pārbaudiet tekstu.",
     "streamingSttDegradedToBatchBanner": "Tiešraides transkripcija pašlaik nav pieejama. Jūsu ziņojums tika pārrakstīts standarta veidā, bez tiešraides rediģēšanas. Mēs strādājam pie tās atjaunošanas.",
-    "streamingSttLanguageUnsupportedBanner": "Tiešraides transkripcija vēl nav pieejama šai valodai. Mēs pie tā strādājam."
+    "streamingSttLanguageUnsupportedBanner": "Tiešraides transkripcija vēl nav pieejama šai valodai. Mēs pie tā strādājam.",
+    "formLabel": "{name} forma"
 }

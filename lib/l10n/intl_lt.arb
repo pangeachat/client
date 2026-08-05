@@ -10484,5 +10484,6 @@
     "readAloudOpenVoiceSettings": "Atidaryti balso nustatymus",
     "streamingSttDegradedLiveBanner": "Tiesioginė transkripcija veikia atsargine paslauga. Kokybė gali skirtis, patikrinkite tekstą.",
     "streamingSttDegradedToBatchBanner": "Tiesioginė transkripcija šiuo metu nepasiekiama. Jūsų žinutė buvo transkribuota standartiniu būdu, be tiesioginio redagavimo. Dirbame, kad ją atkurtume.",
-    "streamingSttLanguageUnsupportedBanner": "Tiesioginė transkripcija dar nepasiekiama šia kalba. Mes dirbame prie to."
+    "streamingSttLanguageUnsupportedBanner": "Tiesioginė transkripcija dar nepasiekiama šia kalba. Mes dirbame prie to.",
+    "formLabel": "{name} forma"
 }

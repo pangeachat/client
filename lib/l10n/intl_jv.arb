@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Bukak setelan swara",
     "streamingSttDegradedLiveBanner": "Transkripsi langsung mlaku ing layanan serep. Kualitas bisa beda-beda, mangga priksa teks.",
     "streamingSttDegradedToBatchBanner": "Transkripsi langsung ora kasedhiya saiki. Pesen sampeyan ditranskripsi kanthi cara standar, tanpa panyuntingan langsung. Kita lagi ngupayakake mulihake.",
-    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung durung kasedhiya kanggo basa iki. Kita lagi ngupayakake."
+    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung durung kasedhiya kanggo basa iki. Kita lagi ngupayakake.",
+    "formLabel": "Formulir {name}"
 }

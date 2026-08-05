@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Opna raddstillingar",
     "streamingSttDegradedLiveBanner": "Bein umritun er í gangi á varabúnaði. Gæði geta verið breytileg, vinsamlegast athugaðu textann.",
     "streamingSttDegradedToBatchBanner": "Bein umritun er ekki tiltæk eins og er. Skilaboðin þín voru umrituð á hefðbundinn hátt, án beinnar klippingar. Við erum að vinna að því að koma henni aftur í gang.",
-    "streamingSttLanguageUnsupportedBanner": "Bein umritun er ekki enn tiltæk fyrir þetta tungumál. Við erum að vinna í því."
+    "streamingSttLanguageUnsupportedBanner": "Bein umritun er ekki enn tiltæk fyrir þetta tungumál. Við erum að vinna í því.",
+    "formLabel": "{name} eyðublað"
 }

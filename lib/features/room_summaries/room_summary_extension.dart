@@ -210,13 +210,23 @@ class RoomSummaryResponse {
 
   bool isActivityInstance(String activityId) => this.activityId == activityId;
 
+  /// Someone is actually present: at least one non-bot member currently
+  /// joined. Filters stale, abandoned rooms (started, then left, never
+  /// finished) — see world-map.instructions.md "Discovering joinable sessions".
+  bool get hasPresentNonBotMember => membershipSummary.entries.any(
+    (e) => e.value == Membership.join.name && e.key != BotName.byEnvironment,
+  );
+
   bool get isActivityOpenToJoin {
     // v3 sessions carry a thin activity_plan ref, so key off [activityId] (set
     // even when the plan body is not embedded) rather than the parsed plan.
     if (activityId == null) return false;
 
-    // if room has no members, attempting to join will cause error, so we consider it not open
-    if (membershipSummary.isEmpty) return false;
+    // An abandoned session must not read as open (#8150): the room is
+    // knock_restricted, so with no joined member left to authorize the join,
+    // attempting it errors. The preview's membership summary keeps role-holders
+    // who left (value "leave"), so presence — not map emptiness — is the test.
+    if (!hasPresentNonBotMember) return false;
     return !isStarted;
   }
 

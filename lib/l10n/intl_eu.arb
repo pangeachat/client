@@ -9703,5 +9703,6 @@
     "readAloudOpenVoiceSettings": "Ireki ahots-ezarpenak",
     "streamingSttDegradedLiveBanner": "Zuzeneko transkripzioa babeskopia-zerbitzu batean exekutatzen ari da. Kalitatea alda daiteke, egiaztatu testua.",
     "streamingSttDegradedToBatchBanner": "Zuzeneko transkripzioa ez dago erabilgarri une honetan. Zure mezua modu estandarrean transkribatu da, zuzeneko ediziorik gabe. Berrezartzen ari gara.",
-    "streamingSttLanguageUnsupportedBanner": "Zuzeneko transkripzioa oraindik ez dago erabilgarri hizkuntza honetarako. Horretan ari gara lanean."
+    "streamingSttLanguageUnsupportedBanner": "Zuzeneko transkripzioa oraindik ez dago erabilgarri hizkuntza honetarako. Horretan ari gara lanean.",
+    "formLabel": "{name} inprimakia"
 }

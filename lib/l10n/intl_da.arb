@@ -10629,5 +10629,6 @@
     "readAloudOpenVoiceSettings": "Åbn stemmeindstillinger",
     "streamingSttDegradedLiveBanner": "Live transskription kører på en backup-tjeneste. Kvaliteten kan variere, tjek venligst teksten.",
     "streamingSttDegradedToBatchBanner": "Live transskription er ikke tilgængelig lige nu. Din besked blev transskriberet på standardmåden, uden live redigering. Vi arbejder på at genoprette den.",
-    "streamingSttLanguageUnsupportedBanner": "Live transskription er endnu ikke tilgængelig for dette sprog. Vi arbejder på det."
+    "streamingSttLanguageUnsupportedBanner": "Live transskription er endnu ikke tilgængelig for dette sprog. Vi arbejder på det.",
+    "formLabel": "{name} form"
 }

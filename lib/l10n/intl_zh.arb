@@ -9703,5 +9703,6 @@
     "readAloudOpenVoiceSettings": "打开语音设置",
     "streamingSttDegradedLiveBanner": "实时转录正在使用备用服务。质量可能会有所不同，请检查文本。",
     "streamingSttDegradedToBatchBanner": "实时转录目前不可用。您的消息已通过标准方式转录，无法进行实时编辑。我们正在努力恢复。",
-    "streamingSttLanguageUnsupportedBanner": "此语言的实时转录功能暂不可用。我们正在努力开发中。"
+    "streamingSttLanguageUnsupportedBanner": "此语言的实时转录功能暂不可用。我们正在努力开发中。",
+    "formLabel": "{name}表单"
 }

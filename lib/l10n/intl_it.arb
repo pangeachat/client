@@ -9776,5 +9776,6 @@
     "readAloudOpenVoiceSettings": "Apri impostazioni voce",
     "streamingSttDegradedLiveBanner": "La trascrizione in tempo reale è in esecuzione su un servizio di backup. La qualità potrebbe variare, si prega di controllare il testo.",
     "streamingSttDegradedToBatchBanner": "La trascrizione in tempo reale non è disponibile al momento. Il tuo messaggio è stato trascritto in modo standard, senza modifiche in tempo reale. Stiamo lavorando per ripristinarla.",
-    "streamingSttLanguageUnsupportedBanner": "La trascrizione in tempo reale non è ancora disponibile per questa lingua. Ci stiamo lavorando."
+    "streamingSttLanguageUnsupportedBanner": "La trascrizione in tempo reale non è ancora disponibile per questa lingua. Ci stiamo lavorando.",
+    "formLabel": "Modulo {name}"
 }

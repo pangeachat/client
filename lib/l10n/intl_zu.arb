@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Vula izilungiselelo zezwi",
     "streamingSttDegradedLiveBanner": "Ukulotshwa bukhoma kusebenza ngesevisi eyisipele. Ikhwalithi ingahluka, sicela uhlole umbhalo.",
     "streamingSttDegradedToBatchBanner": "Ukulotshwa bukhoma akutholakali okwamanje. Umlayezo wakho ulotshwe ngendlela evamile, ngaphandle kokuhlela bukhoma. Sisebenzela ukukubuyisela.",
-    "streamingSttLanguageUnsupportedBanner": "Ukulotshwa bukhoma akukatholakali ngalolu limi okwamanje. Sisebenzela kukho."
+    "streamingSttLanguageUnsupportedBanner": "Ukulotshwa bukhoma akukatholakali ngalolu limi okwamanje. Sisebenzela kukho.",
+    "formLabel": "Ifomu lika-{name}"
 }

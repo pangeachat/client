@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Hap cilësimet e zërit",
     "streamingSttDegradedLiveBanner": "Transkriptimi i drejtpërdrejtë po funksionon në një shërbim rezervë. Cilësia mund të ndryshojë, ju lutemi kontrolloni tekstin.",
     "streamingSttDegradedToBatchBanner": "Transkriptimi i drejtpërdrejtë nuk është i disponueshëm tani. Mesazhi juaj u transkriptua në mënyrën standarde, pa redaktim të drejtpërdrejtë. Po punojmë për ta rikthyer.",
-    "streamingSttLanguageUnsupportedBanner": "Transkriptimi i drejtpërdrejtë nuk është ende i disponueshëm për këtë gjuhë. Po punojmë për këtë."
+    "streamingSttLanguageUnsupportedBanner": "Transkriptimi i drejtpërdrejtë nuk është ende i disponueshëm për këtë gjuhë. Po punojmë për këtë.",
+    "formLabel": "Formulari {name}"
 }

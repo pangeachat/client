@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Aprite e impostazioni di voce",
     "streamingSttDegradedLiveBanner": "A trascrizzione in diretta hè in corsu nantu à un serviziu di salvezza. A qualità pò varià, per piacè verificate u testu.",
     "streamingSttDegradedToBatchBanner": "A trascrizzione in diretta ùn hè micca dispunibule avà. U vostru messagiu hè statu trascrittu in modu standard, senza edizione in diretta. Travagliemu per ristabilisce lu.",
-    "streamingSttLanguageUnsupportedBanner": "A trascrizzione in diretta ùn hè ancu dispunibule per sta lingua. Ci travagliemu."
+    "streamingSttLanguageUnsupportedBanner": "A trascrizzione in diretta ùn hè ancu dispunibule per sta lingua. Ci travagliemu.",
+    "formLabel": "Forma {name}"
 }

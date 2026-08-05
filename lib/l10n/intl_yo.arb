@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Ṣí àwọn ètò ohùn",
     "streamingSttDegradedLiveBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ ń ṣiṣẹ́ lórí iṣẹ́ ìdáàbòbò. Didara le yàtọ̀, jọ̀wọ́ ṣàyẹ̀wò ọ̀rọ̀ náà.",
     "streamingSttDegradedToBatchBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ kò sí nílò báyìí. A kọ ọ̀rọ̀ rẹ sílẹ̀ ní ọ̀nà tó wọ́pọ̀, láìsí àtúnṣe lórí ẹ̀rọ ìgbésáfẹ́fẹ́. A ń ṣiṣẹ́ láti mú un padà bọ̀ sípò.",
-    "streamingSttLanguageUnsupportedBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ kò sí fún èdè yìí báyìí. A ń ṣiṣẹ́ lórí rẹ̀."
+    "streamingSttLanguageUnsupportedBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ kò sí fún èdè yìí báyìí. A ń ṣiṣẹ́ lórí rẹ̀.",
+    "formLabel": "Fọ́ọ̀mù {name}"
 }

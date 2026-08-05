@@ -9776,5 +9776,6 @@
     "readAloudOpenVoiceSettings": "Buka pengaturan suara",
     "streamingSttDegradedLiveBanner": "Transkripsi langsung berjalan di layanan cadangan. Kualitas mungkin bervariasi, harap periksa teksnya.",
     "streamingSttDegradedToBatchBanner": "Transkripsi langsung tidak tersedia saat ini. Pesan Anda ditranskripsikan dengan cara standar, tanpa pengeditan langsung. Kami sedang berupaya memulihkannya.",
-    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengupayakannya."
+    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengupayakannya.",
+    "formLabel": "Formulir {name}"
 }

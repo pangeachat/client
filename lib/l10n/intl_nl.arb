@@ -9703,5 +9703,6 @@
     "readAloudOpenVoiceSettings": "Open steminstellingen",
     "streamingSttDegradedLiveBanner": "Live transcriptie wordt uitgevoerd via een back-upservice. De kwaliteit kan variëren, controleer de tekst.",
     "streamingSttDegradedToBatchBanner": "Live transcriptie is momenteel niet beschikbaar. Je bericht is op de standaardmanier getranscribeerd, zonder live bewerking. We werken eraan om dit te herstellen.",
-    "streamingSttLanguageUnsupportedBanner": "Live transcriptie is nog niet beschikbaar voor deze taal. We werken eraan."
+    "streamingSttLanguageUnsupportedBanner": "Live transcriptie is nog niet beschikbaar voor deze taal. We werken eraan.",
+    "formLabel": "{name}-formulier"
 }

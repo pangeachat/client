@@ -2085,5 +2085,6 @@
     "readAloudOpenVoiceSettings": "Aperi optiones vocis",
     "streamingSttDegradedLiveBanner": "Transcriptio viva in subsidiario servitio currit. Qualitas variari potest, textum quaeso inspice.",
     "streamingSttDegradedToBatchBanner": "Transcriptio viva nunc praesto non est. Nuntius tuus more solito transcriptus est, sine emendatione viva. Laboramus ut restituamus.",
-    "streamingSttLanguageUnsupportedBanner": "Transcriptio viva nondum huic linguae praesto est. Laboramus."
+    "streamingSttLanguageUnsupportedBanner": "Transcriptio viva nondum huic linguae praesto est. Laboramus.",
+    "formLabel": "{name} forma"
 }

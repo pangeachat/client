@@ -10654,5 +10654,6 @@
     "readAloudOpenVoiceSettings": "Otvoriť nastavenia hlasu",
     "streamingSttDegradedLiveBanner": "Živý prepis beží na záložnej službe. Kvalita sa môže líšiť, skontrolujte text.",
     "streamingSttDegradedToBatchBanner": "Živý prepis momentálne nie je k dispozícii. Vaša správa bola prepísaná štandardným spôsobom, bez živých úprav. Pracujeme na jej obnovení.",
-    "streamingSttLanguageUnsupportedBanner": "Živý prepis zatiaľ nie je k dispozícii pre tento jazyk. Pracujeme na tom."
+    "streamingSttLanguageUnsupportedBanner": "Živý prepis zatiaľ nie je k dispozícii pre tento jazyk. Pracujeme na tom.",
+    "formLabel": "Formulár {name}"
 }

@@ -10435,5 +10435,6 @@
     "readAloudOpenVoiceSettings": "Deschideți setările vocale",
     "streamingSttDegradedLiveBanner": "Transcrierea live rulează pe un serviciu de rezervă. Calitatea poate varia, vă rugăm să verificați textul.",
     "streamingSttDegradedToBatchBanner": "Transcrierea live nu este disponibilă momentan. Mesajul dumneavoastră a fost transcris în mod standard, fără editare live. Lucrăm la remedierea situației.",
-    "streamingSttLanguageUnsupportedBanner": "Transcrierea live nu este încă disponibilă pentru această limbă. Lucrăm la asta."
+    "streamingSttLanguageUnsupportedBanner": "Transcrierea live nu este încă disponibilă pentru această limbă. Lucrăm la asta.",
+    "formLabel": "Formular {name}"
 }

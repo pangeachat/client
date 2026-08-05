@@ -163,94 +163,114 @@ class CourseCodePageState extends State<CourseCodePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     if (_isInboundJoin) {
-      return Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            spacing: 16.0,
-            children: [
-              const CircularProgressIndicator.adaptive(),
-              Text(
-                L10n.of(context).loadingPleaseWait,
-                style: theme.textTheme.titleMedium,
-              ),
-            ],
+      return Semantics(
+        container: true,
+        child: Scaffold(
+          body: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              spacing: 16.0,
+              children: [
+                const CircularProgressIndicator.adaptive(),
+                Text(
+                  L10n.of(context).loadingPleaseWait,
+                  style: theme.textTheme.titleMedium,
+                ),
+              ],
+            ),
           ),
         ),
       );
     }
-    return Scaffold(
-      appBar: AppBar(
-        // world_v2: back returns to the Add-course hub, close to the map.
-        leading: widget.closeButton,
-        title: Text(
-          L10n.of(context).joinWithCode,
-          style: FluffyThemes.isColumnMode(context)
-              ? theme.textTheme.titleLarge
-              : theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w600,
-                ),
-        ),
-        centerTitle: false,
-        titleSpacing: 0,
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.close),
-            tooltip: L10n.of(context).close,
-            onPressed: () => context.go('/'),
+    return Semantics(
+      label: L10n.of(context).pageLabel(L10n.of(context).joinWithCode),
+      container: true,
+      child: Scaffold(
+        appBar: AppBar(
+          // world_v2: back returns to the Add-course hub, close to the map.
+          leading: widget.closeButton,
+          title: ExcludeSemantics(
+            child: Text(
+              L10n.of(context).joinWithCode,
+              style: FluffyThemes.isColumnMode(context)
+                  ? theme.textTheme.titleLarge
+                  : theme.textTheme.titleMedium?.copyWith(
+                      fontWeight: FontWeight.w600,
+                    ),
+            ),
           ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Center(
-          child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: Column(
-              spacing: 36.0,
-              children: [
-                FocusTraversalGroup(
-                  policy: OrderedTraversalPolicy(),
-                  child: Column(
-                    spacing: 16.0,
-                    children: [
-                      TextFormField(
-                        controller: _codeController,
-                        decoration: InputDecoration(
-                          hintText: L10n.of(context).courseCodeHint,
-                          prefixIcon: Icon(Icons.key_outlined),
-                        ),
-                        onFieldSubmitted: (_) => _submit(),
-                        inputFormatters: [LengthLimitingTextInputFormatter(10)],
-                      ),
-                      SizedBox(
-                        width: double.infinity,
-                        child: FilledButton.tonalIcon(
-                          onPressed: _code.isNotEmpty ? _submit : null,
-                          label: Text(L10n.of(context).submit),
-                          style: FilledButton.styleFrom(
-                            backgroundColor: theme.colorScheme.primaryContainer,
-                            foregroundColor:
-                                theme.colorScheme.onPrimaryContainer,
-                            padding: const EdgeInsets.symmetric(vertical: 14.0),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10.0),
+          centerTitle: false,
+          titleSpacing: 0,
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.close),
+              tooltip: L10n.of(context).close,
+              onPressed: () => context.go('/'),
+            ),
+          ],
+        ),
+        body: Semantics(
+          label: L10n.of(context).formLabel(L10n.of(context).joinWithCode),
+          container: true,
+          child: SingleChildScrollView(
+            child: Center(
+              child: Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                child: Column(
+                  spacing: 36.0,
+                  children: [
+                    FocusTraversalGroup(
+                      policy: OrderedTraversalPolicy(),
+                      child: Column(
+                        spacing: 16.0,
+                        children: [
+                          TextFormField(
+                            controller: _codeController,
+                            decoration: InputDecoration(
+                              hintText: L10n.of(context).courseCodeHint,
+                              prefixIcon: Icon(Icons.key_outlined),
+                            ),
+                            onFieldSubmitted: (_) => _submit(),
+                            inputFormatters: [
+                              LengthLimitingTextInputFormatter(10),
+                            ],
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: FilledButton.tonalIcon(
+                              onPressed: _code.isNotEmpty ? _submit : null,
+                              label: Text(L10n.of(context).submit),
+                              style: FilledButton.styleFrom(
+                                backgroundColor:
+                                    theme.colorScheme.primaryContainer,
+                                foregroundColor:
+                                    theme.colorScheme.onPrimaryContainer,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 14.0,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10.0),
+                                ),
+                              ),
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                    ExcludeSemantics(
+                      child: SvgPicture.network(
+                        "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
+                        width: 120.0,
+                        height: 120.0,
+                        colorFilter: ColorFilter.mode(
+                          theme.colorScheme.onSurface,
+                          BlendMode.srcIn,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                SvgPicture.network(
-                  "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
-                  width: 120.0,
-                  height: 120.0,
-                  colorFilter: ColorFilter.mode(
-                    theme.colorScheme.onSurface,
-                    BlendMode.srcIn,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),

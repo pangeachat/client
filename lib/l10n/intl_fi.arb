@@ -9740,5 +9740,6 @@
     "readAloudOpenVoiceSettings": "Avaa ääniasetukset",
     "streamingSttDegradedLiveBanner": "Suora transkriptio toimii varapalvelun kautta. Laatu voi vaihdella, tarkista teksti.",
     "streamingSttDegradedToBatchBanner": "Suora transkriptio ei ole tällä hetkellä käytettävissä. Viestisi transkriptoitiin tavallisella tavalla ilman reaaliaikaista muokkausta. Pyrimme palauttamaan sen.",
-    "streamingSttLanguageUnsupportedBanner": "Suora transkriptio ei ole vielä saatavilla tälle kielelle. Työskentelemme asian parissa."
+    "streamingSttLanguageUnsupportedBanner": "Suora transkriptio ei ole vielä saatavilla tälle kielelle. Työskentelemme asian parissa.",
+    "formLabel": "{name}-lomake"
 }
