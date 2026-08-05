@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-04 10:31:17.113017",
+    "@@last_modified": "2026-08-05 10:21:28.633892",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2082,5 +2082,9 @@
     "readAloudNoVoiceIOS": "የእርስዎ መሣሪያ እስካሁን ከፍተኛ ጥራት ያለው የ{language} ድምጽ አላወረደም። አንዱን ያውርዱ፣ ከዚያ እንደገና ይሞክሩ፦",
     "readAloudNoVoiceIOSSteps": "  • ቅንብሮች\n  • ተደራሽነት\n  • የተነገረ ይዘት\n  • ድምፆች\n  • {language}\n  • የተሻሻለ ወይም ፕሪሚየም ድምጽ ያውርዱ",
     "readAloudNoVoiceAndroid": "የእርስዎ መሣሪያ እስካሁን ከፍተኛ ጥራት ያለው የ{language} ድምጽ የለውም። ለጽሑፍ-ወደ-ንግግር ሞተርዎ የድምጽ ውሂብ ይጫኑ፣ ከዚያ እንደገና ይሞክሩ።",
-    "readAloudOpenVoiceSettings": "የድምጽ ቅንብሮችን ክፈት"
+    "readAloudOpenVoiceSettings": "የድምጽ ቅንብሮችን ክፈት",
+    "streamingSttDegradedLiveBanner": "የቀጥታ ትርጉም በመጠባበቂያ አገልግሎት ላይ እየሰራ ነው። ጥራት ሊለያይ ይችላል፣ እባክዎ ጽሑፉን ያረጋግጡ።",
+    "streamingSttDegradedToBatchBanner": "የቀጥታ ትርጉም በአሁኑ ጊዜ አይገኝም። መልእክትዎ በመደበኛ መንገድ፣ ያለቀጥታ አርትዖት ተተርጉሟል። ወደነበረበት ለመመለስ እየሰራን ነው።",
+    "streamingSttLanguageUnsupportedBanner": "የቀጥታ ትርጉም ለዚህ ቋንቋ ገና አይገኝም። እየሰራንበት ነው።",
+    "formLabel": "{name} ቅጽ"
 }

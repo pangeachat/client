@@ -1369,7 +1369,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-04 10:31:24.493380",
+    "@@last_modified": "2026-08-05 10:21:33.637242",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10642,5 +10642,9 @@
     "readAloudNoVoiceIOS": "Tu apparato non ha ancora un voce de alte qualitate pro {language} discargate. Discarga un, e postea reproba:",
     "readAloudNoVoiceIOSSteps": "  • Parametros\n  • Accessibilitate\n  • Contento Parlate\n  • Voces\n  • {language}\n  • Discarga un voce Meliorate o Premium",
     "readAloudNoVoiceAndroid": "Tu apparato non ha ancora un voce de alte qualitate pro {language}. Installar datos de voce pro tu motor de synthese vocal, e postea reproba.",
-    "readAloudOpenVoiceSettings": "Aperi le parametros de voce"
+    "readAloudOpenVoiceSettings": "Aperi le parametros de voce",
+    "streamingSttDegradedLiveBanner": "Le transcription in directo functiona con un servicio de reserva. Le qualitate pote variar, per favor verifica le texto.",
+    "streamingSttDegradedToBatchBanner": "Le transcription in directo non es disponibile nunc. Tu message esseva transcribite del maniera standard, sin edition in directo. Nos travalia pro restaurar lo.",
+    "streamingSttLanguageUnsupportedBanner": "Le transcription in directo non es ancora disponibile pro iste lingua. Nos travalia super illo.",
+    "formLabel": "Formulario de {name}"
 }

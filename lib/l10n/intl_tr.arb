@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-04 10:31:34.712988",
+    "@@last_modified": "2026-08-05 10:21:43.149674",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10001,5 +10001,9 @@
     "readAloudNoVoiceIOS": "Cihazınızda henüz yüksek kaliteli bir {language} sesi indirilmemiş. Bir tane indirin, sonra tekrar deneyin:",
     "readAloudNoVoiceIOSSteps": "  • Ayarlar\n  • Erişilebilirlik\n  • Konuşulan İçerik\n  • Sesler\n  • {language}\n  • Gelişmiş veya Premium bir ses indirin",
     "readAloudNoVoiceAndroid": "Cihazınızda henüz yüksek kaliteli bir {language} sesi yok. Metin okuma motorunuz için ses verilerini yükleyin, sonra tekrar deneyin.",
-    "readAloudOpenVoiceSettings": "Ses ayarlarını aç"
+    "readAloudOpenVoiceSettings": "Ses ayarlarını aç",
+    "streamingSttDegradedLiveBanner": "Canlı transkripsiyon yedek bir hizmet üzerinden çalışıyor. Kalite değişebilir, lütfen metni kontrol edin.",
+    "streamingSttDegradedToBatchBanner": "Canlı transkripsiyon şu anda kullanılamıyor. Mesajınız standart şekilde, canlı düzenleme olmadan transkribe edildi. Geri yüklemek için çalışıyoruz.",
+    "streamingSttLanguageUnsupportedBanner": "Bu dil için canlı transkripsiyon henüz mevcut değil. Üzerinde çalışıyoruz.",
+    "formLabel": "{name} formu"
 }

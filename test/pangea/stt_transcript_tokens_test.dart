@@ -8,19 +8,12 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dar
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/tokens/stt_transcript_tokens.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
+import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 
 /// Widget-level coverage for [SttTranscriptTokens].
 ///
-/// The widget has two branches. The non-empty-tokens branch calls
-/// `TokensUtil.getNewTokens` which in turn reads
-/// `MatrixState.pangeaController.matrixState.analyticsDataService` — a
-/// process-global singleton not initialized under `flutter test`. Covering
-/// that branch requires bringing up a fake `MatrixState`, which is out of
-/// scope for this change; it's covered by the TO TEST section on issue
-/// #1963 (which exercises the real app on real payloads).
-///
-/// The empty-tokens branch has no singleton dependency and is tested here
-/// as a smoke test to guard against a regression in the fallback render.
+/// `newTokensOverride` keeps the production token renderer testable without
+/// bootstrapping the process-global analytics singleton used by new-token lookup.
 void main() {
   testWidgets(
     'SttTranscriptTokens renders plain Text when there are no STT tokens',
@@ -50,6 +43,67 @@ void main() {
       );
 
       expect(find.text('hello world'), findsOneWidget);
+    },
+  );
+
+  testWidgets(
+    'real token renderer keeps transcript words tappable for lemma selection',
+    (tester) async {
+      final model = SpeechToTextResponseModel.fromJson({
+        'results': [
+          {
+            'transcripts': [
+              {
+                'confidence': 100,
+                'lang_code': 'de',
+                'stt_tokens': [
+                  {
+                    'token': {
+                      'text': {'content': 'Hallo', 'offset': 0},
+                      'lemma': {
+                        'text': 'hallo',
+                        'save_vocab': true,
+                        'form': 'Hallo',
+                      },
+                      'pos': 'INTJ',
+                      'morph': <String, dynamic>{},
+                    },
+                    'start_time': 0,
+                    'end_time': 100,
+                    'confidence': 100,
+                  },
+                ],
+                'transcript': 'Hallo',
+                'words_per_hr': 120,
+              },
+            ],
+          },
+        ],
+      });
+      final tapped = <PangeaToken>[];
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(
+            body: SttTranscriptTokens(
+              eventId: 'test',
+              model: model,
+              onClick: tapped.add,
+              newTokensOverride: const <PangeaTokenText>{},
+            ),
+          ),
+        ),
+      );
+
+      await tester.tap(
+        find.byWidgetPredicate(
+          (widget) => widget is UnderlineText && widget.text == 'Hallo',
+        ),
+      );
+
+      expect(tapped, hasLength(1));
+      expect(tapped.single.text.content, 'Hallo');
+      expect(tapped.single.lemma.text, 'hallo');
     },
   );
 

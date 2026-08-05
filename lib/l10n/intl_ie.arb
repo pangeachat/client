@@ -3102,7 +3102,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-04 10:31:24.902231",
+    "@@last_modified": "2026-08-05 10:21:34.106815",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10332,5 +10332,9 @@
     "readAloudNoVoiceIOS": "Níl guth {language} ardchaighdeáin íoslódáilte ag do ghléas fós. Íoslódáil ceann, ansin bain triail as arís:",
     "readAloudNoVoiceIOSSteps": "  • Socruithe\n  • Inrochtaineacht\n  • Ábhar Labhartha\n  • Guthanna\n  • {language}\n  • Íoslódáil guth Feabhsaithe nó Préimhe",
     "readAloudNoVoiceAndroid": "Níl guth {language} ardchaighdeáin ag do ghléas fós. Suiteáil sonraí guth do d'inneall téacs-go-caint, ansin bain triail as arís.",
-    "readAloudOpenVoiceSettings": "Oscail socruithe guth"
+    "readAloudOpenVoiceSettings": "Oscail socruithe guth",
+    "streamingSttDegradedLiveBanner": "Tá trascríobh beo ag rith ar sheirbhís chúltaca. D'fhéadfadh an cháilíocht a bheith éagsúil, seiceáil an téacs le do thoil.",
+    "streamingSttDegradedToBatchBanner": "Níl trascríobh beo ar fáil faoi láthair. Tras-scríobhadh do theachtaireacht ar an ngnáthbhealach, gan eagarthóireacht bheo. Táimid ag obair chun é a chur ar ais.",
+    "streamingSttLanguageUnsupportedBanner": "Níl trascríobh beo ar fáil don teanga seo fós. Táimid ag obair air.",
+    "formLabel": "Foirm {name}"
 }

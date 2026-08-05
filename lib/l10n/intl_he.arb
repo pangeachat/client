@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:31:22.814037",
+    "@@last_modified": "2026-08-05 10:21:32.534038",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10620,5 +10620,9 @@
     "readAloudNoVoiceIOS": "המכשיר שלך עדיין לא הוריד קול {language} באיכות גבוהה. הורד אחד, ואז נסה שוב:",
     "readAloudNoVoiceIOSSteps": "  • הגדרות\n  • נגישות\n  • תוכן מדובר\n  • קולות\n  • {language}\n  • הורד קול משופר או פרימיום",
     "readAloudNoVoiceAndroid": "המכשיר שלך עדיין לא כולל קול {language} באיכות גבוהה. התקן נתוני קול עבור מנוע הטקסט לדיבור שלך, ואז נסה שוב.",
-    "readAloudOpenVoiceSettings": "פתח את הגדרות הקול"
+    "readAloudOpenVoiceSettings": "פתח את הגדרות הקול",
+    "streamingSttDegradedLiveBanner": "התמלול החי פועל באמצעות שירות גיבוי. האיכות עשויה להשתנות, אנא בדוק את הטקסט.",
+    "streamingSttDegradedToBatchBanner": "תמלול חי אינו זמין כרגע. ההודעה שלך תומללה בדרך הרגילה, ללא עריכה חיה. אנו פועלים לשחזור השירות.",
+    "streamingSttLanguageUnsupportedBanner": "תמלול חי אינו זמין עדיין עבור שפה זו. אנו עובדים על כך.",
+    "formLabel": "טופס {name}"
 }

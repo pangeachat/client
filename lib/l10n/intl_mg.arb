@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-04 10:31:27.769815",
+    "@@last_modified": "2026-08-05 10:21:37.192562",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2082,5 +2082,9 @@
     "readAloudNoVoiceIOS": "Mbola tsy misy feo {language} avo lenta alaina ao amin'ny fitaovanao. Misintona iray, ary andramo indray:",
     "readAloudNoVoiceIOSSteps": "  • Fikirana\n  • Fidirana\n  • Votoaty Tenenina\n  • Feo\n  • {language}\n  • Misintona feo Enhanced na Premium",
     "readAloudNoVoiceAndroid": "Mbola tsy misy feo {language} avo lenta ao amin'ny fitaovanao. Mametraka angona feo ho an'ny motera lahatsoratra-ho-feo anao, ary andramo indray.",
-    "readAloudOpenVoiceSettings": "Sokafy ny firafitry ny feo"
+    "readAloudOpenVoiceSettings": "Sokafy ny firafitry ny feo",
+    "streamingSttDegradedLiveBanner": "Mandeha amin'ny tolotra backup ny fandikana mivantana. Mety hiovaova ny kalitao, azafady jereo ny lahatsoratra.",
+    "streamingSttDegradedToBatchBanner": "Tsy misy amin'izao fotoana izao ny fandikana mivantana. Nadika tamin'ny fomba mahazatra ny hafatrao, tsy misy fanitsiana mivantana. Miezaka mamerina izany izahay.",
+    "streamingSttLanguageUnsupportedBanner": "Tsy misy ho an'ity fiteny ity aloha ny fandikana mivantana. Miezaka manao izany izahay.",
+    "formLabel": "Endrika {name}"
 }

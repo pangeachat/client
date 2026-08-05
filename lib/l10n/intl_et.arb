@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-04 10:31:19.924475",
+    "@@last_modified": "2026-08-05 10:21:32.210649",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9697,5 +9697,9 @@
     "readAloudNoVoiceIOS": "Teie seadmesse pole veel kvaliteetset {language} häält alla laaditud. Laadige see alla ja proovige uuesti:",
     "readAloudNoVoiceIOSSteps": "  • Seaded\n  • Hõlbustus\n  • Räägitav sisu\n  • Hääled\n  • {language}\n  • Laadige alla täiustatud või Premium hääl",
     "readAloudNoVoiceAndroid": "Teie seadmes pole veel kvaliteetset {language} häält. Installige oma kõnesünteesi mootori jaoks häälandmed ja proovige uuesti.",
-    "readAloudOpenVoiceSettings": "Ava hääleseaded"
+    "readAloudOpenVoiceSettings": "Ava hääleseaded",
+    "streamingSttDegradedLiveBanner": "Reaalajas transkriptsioon töötab varuteenusega. Kvaliteet võib varieeruda, palun kontrollige teksti.",
+    "streamingSttDegradedToBatchBanner": "Reaalajas transkriptsioon pole praegu saadaval. Teie sõnum transkribeeriti tavapärasel viisil, ilma reaalajas redigeerimiseta. Töötame selle taastamise kallal.",
+    "streamingSttLanguageUnsupportedBanner": "Reaalajas transkriptsioon pole selle keele jaoks veel saadaval. Töötame selle kallal.",
+    "formLabel": "{name} vorm"
 }

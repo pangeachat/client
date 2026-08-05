@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-04 10:31:16.879624",
+    "@@last_modified": "2026-08-05 10:21:28.596386",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2082,5 +2082,9 @@
     "readAloudNoVoiceIOS": "Cihazınızda hələ yüksək keyfiyyətli {language} səsi yüklənməyib. Birini yükləyin, sonra yenidən cəhd edin:",
     "readAloudNoVoiceIOSSteps": "  • Parametrlər\n  • Əlçatanlıq\n  • Danışıq Məzmunu\n  • Səslər\n  • {language}\n  • Təkmilləşdirilmiş və ya Premium səs yükləyin",
     "readAloudNoVoiceAndroid": "Cihazınızda hələ yüksək keyfiyyətli {language} səsi yoxdur. Mətn-nitq mühərrikiniz üçün səs məlumatlarını quraşdırın, sonra yenidən cəhd edin.",
-    "readAloudOpenVoiceSettings": "Səs parametrlərini açın"
+    "readAloudOpenVoiceSettings": "Səs parametrlərini açın",
+    "streamingSttDegradedLiveBanner": "Canlı transkripsiya ehtiyat xidməti ilə işləyir. Keyfiyyət dəyişə bilər, lütfən mətni yoxlayın.",
+    "streamingSttDegradedToBatchBanner": "Canlı transkripsiya hazırda mövcud deyil. Mesajınız standart üsulla, canlı redaktə olmadan transkripsiya edildi. Onu bərpa etmək üçün çalışırıq.",
+    "streamingSttLanguageUnsupportedBanner": "Canlı transkripsiya hələ bu dil üçün mövcud deyil. Biz bunun üzərində işləyirik.",
+    "formLabel": "{name} forması"
 }

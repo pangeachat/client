@@ -3545,7 +3545,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-04 10:31:20.330429",
+    "@@last_modified": "2026-08-05 10:21:31.009644",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9737,5 +9737,9 @@
     "readAloudNoVoiceIOS": "Laitteellesi ei ole vielä ladattu laadukasta {language}-ääntä. Lataa sellainen ja yritä sitten uudelleen:",
     "readAloudNoVoiceIOSSteps": "  • Asetukset\n  • Käyttöapu\n  • Puhuttu sisältö\n  • Äänet\n  • {language}\n  • Lataa parannettu tai Premium-ääni",
     "readAloudNoVoiceAndroid": "Laitteellasi ei ole vielä laadukasta {language}-ääntä. Asenna äänidata tekstistä puheeksi -moottorillesi ja yritä sitten uudelleen.",
-    "readAloudOpenVoiceSettings": "Avaa ääniasetukset"
+    "readAloudOpenVoiceSettings": "Avaa ääniasetukset",
+    "streamingSttDegradedLiveBanner": "Suora transkriptio toimii varapalvelun kautta. Laatu voi vaihdella, tarkista teksti.",
+    "streamingSttDegradedToBatchBanner": "Suora transkriptio ei ole tällä hetkellä käytettävissä. Viestisi transkriptoitiin tavallisella tavalla ilman reaaliaikaista muokkausta. Pyrimme palauttamaan sen.",
+    "streamingSttLanguageUnsupportedBanner": "Suora transkriptio ei ole vielä saatavilla tälle kielelle. Työskentelemme asian parissa.",
+    "formLabel": "{name}-lomake"
 }

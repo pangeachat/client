@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-04 10:31:17.048672",
+    "@@last_modified": "2026-08-05 10:21:28.614439",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2082,5 +2082,9 @@
     "readAloudNoVoiceIOS": "Jou toestel het nog nie 'n hoëgehalte {language}-stem afgelaai nie. Laai een af, en probeer dan weer:",
     "readAloudNoVoiceIOSSteps": "  • Instellings\n  • Toeganklikheid\n  • Gesproke Inhoud\n  • Stemme\n  • {language}\n  • Laai 'n Verbeterde of Premium stem af",
     "readAloudNoVoiceAndroid": "Jou toestel het nog nie 'n hoëgehalte {language}-stem nie. Installeer stemdata vir jou teks-na-spraak-enjin, en probeer dan weer.",
-    "readAloudOpenVoiceSettings": "Maak steminstellings oop"
+    "readAloudOpenVoiceSettings": "Maak steminstellings oop",
+    "streamingSttDegradedLiveBanner": "Regstreekse transkripsie loop op 'n rugsteundiens. Kwaliteit kan verskil, kontroleer asseblief die teks.",
+    "streamingSttDegradedToBatchBanner": "Regstreekse transkripsie is tans onbeskikbaar. Jou boodskap is op die standaard manier getranskribeer, sonder regstreekse redigering. Ons werk daaraan om dit te herstel.",
+    "streamingSttLanguageUnsupportedBanner": "Regstreekse transkripsie is nog nie vir hierdie taal beskikbaar nie. Ons werk daaraan.",
+    "formLabel": "{name} vorm"
 }

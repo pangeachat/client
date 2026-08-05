@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-04 10:31:35.300236",
+    "@@last_modified": "2026-08-05 10:21:43.546264",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9704,5 +9704,9 @@
     "readAloudNoVoiceIOS": "Qurilmangizda yuqori sifatli {language} ovozi hali yuklab olinmagan. Birini yuklab oling, so'ngra qayta urinib ko'ring:",
     "readAloudNoVoiceIOSSteps": "  • Sozlamalar\n  • Maxsus imkoniyatlar\n  • Gapiriladigan kontent\n  • Ovozlar\n  • {language}\n  • Kengaytirilgan yoki Premium ovozni yuklab oling",
     "readAloudNoVoiceAndroid": "Qurilmangizda yuqori sifatli {language} ovozi hali mavjud emas. Matndan nutqqa o'tkazish mexanizmi uchun ovoz ma'lumotlarini o'rnating, so'ngra qayta urinib ko'ring.",
-    "readAloudOpenVoiceSettings": "Ovoz sozlamalarini ochish"
+    "readAloudOpenVoiceSettings": "Ovoz sozlamalarini ochish",
+    "streamingSttDegradedLiveBanner": "Jonli transkripsiya zaxira xizmatida ishlamoqda. Sifat har xil boʻlishi mumkin, iltimos, matnni tekshiring.",
+    "streamingSttDegradedToBatchBanner": "Jonli transkripsiya hozircha mavjud emas. Xabaringiz standart usulda, jonli tahrirlashsiz transkripsiya qilindi. Uni tiklash ustida ishlayapmiz.",
+    "streamingSttLanguageUnsupportedBanner": "Ushbu til uchun jonli transkripsiya hali mavjud emas. Biz bu ustida ishlayapmiz.",
+    "formLabel": "{name} shakli"
 }

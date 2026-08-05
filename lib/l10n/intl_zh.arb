@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-04 10:31:35.579731",
+    "@@last_modified": "2026-08-05 10:21:44.343627",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9700,5 +9700,9 @@
     "readAloudNoVoiceIOS": "您的设备尚未下载高质量的{language}语音。请下载一个，然后重试：",
     "readAloudNoVoiceIOSSteps": "  • 设置\n  • 辅助功能\n  • 朗读内容\n  • 语音\n  • {language}\n  • 下载增强或高级语音",
     "readAloudNoVoiceAndroid": "您的设备尚未安装高质量的{language}语音。请为您的文本转语音引擎安装语音数据，然后重试。",
-    "readAloudOpenVoiceSettings": "打开语音设置"
+    "readAloudOpenVoiceSettings": "打开语音设置",
+    "streamingSttDegradedLiveBanner": "实时转录正在使用备用服务。质量可能会有所不同，请检查文本。",
+    "streamingSttDegradedToBatchBanner": "实时转录目前不可用。您的消息已通过标准方式转录，无法进行实时编辑。我们正在努力恢复。",
+    "streamingSttLanguageUnsupportedBanner": "此语言的实时转录功能暂不可用。我们正在努力开发中。",
+    "formLabel": "{name}表单"
 }

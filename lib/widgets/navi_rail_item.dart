@@ -46,9 +46,12 @@ class NaviRailItem extends StatelessWidget {
         onTap: onTap,
         child: HoverBuilder(
           builder: (context, hovered) {
-            return Container(
+            // No background fill here: WorkspaceDock already paints the
+            // rail-wide surface. Per-item opaque fills leave hairline seams
+            // between items at fractional device pixel ratios (Windows
+            // 125%/150% display scaling) — see #7032.
+            return SizedBox(
               height: height,
-              decoration: BoxDecoration(color: theme.colorScheme.surface),
               child: Stack(
                 children: [
                   Positioned(

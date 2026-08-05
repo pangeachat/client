@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-04 10:31:32.772868",
+    "@@last_modified": "2026-08-05 10:21:41.911963",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2082,5 +2082,9 @@
     "readAloudNoVoiceIOS": "Foni yako haina izwi remhando yepamusoro re {language} rakadhawunirodwa. Dhawunirodha rimwe, wobva waedza zvakare:",
     "readAloudNoVoiceIOSSteps": "  • Zvirongwa\n  • Kuwanika\n  • Zvinyorwa Zvinotaurwa\n  • Mazwi\n  • {language}\n  • Dhawunirodha izwi reEnhanced kana Premium",
     "readAloudNoVoiceAndroid": "Foni yako haina izwi remhando yepamusoro re {language} parizvino. Isa data reizwi reinjini yako yekutaura-kubva-kumavara, wobva waedza zvakare.",
-    "readAloudOpenVoiceSettings": "Vhura zvirongwa zveizwi"
+    "readAloudOpenVoiceSettings": "Vhura zvirongwa zveizwi",
+    "streamingSttDegradedLiveBanner": "Kunyora zviri kuitika panguva imwe chete kuri kushanda pachishandiso chekuchengetedza. Hunhu hunogona kusiyana, ndapota tarisa zvinyorwa.",
+    "streamingSttDegradedToBatchBanner": "Kunyora zviri kuitika panguva imwe chete hakusati kwavepo izvozvi. Mashoko ako akanyorwa nenzira yakajairika, pasina kugadzirisa panguva imwe chete. Tiri kushanda kuti zvidzoke.",
+    "streamingSttLanguageUnsupportedBanner": "Kunyora zviri kuitika panguva imwe chete hakusati kwavepo pamutauro uyu. Tiri kushanda nazvo.",
+    "formLabel": "Fomu ra{name}"
 }

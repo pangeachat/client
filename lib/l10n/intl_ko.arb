@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:31:25.986797",
+    "@@last_modified": "2026-08-05 10:21:35.827764",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9893,5 +9893,9 @@
     "readAloudNoVoiceIOS": "기기에 고품질 {language} 음성이 아직 다운로드되지 않았습니다. 다운로드한 후 다시 시도하세요:",
     "readAloudNoVoiceIOSSteps": "  • 설정\n  • 손쉬운 사용\n  • 말하기 콘텐츠\n  • 음성\n  • {language}\n  • 향상 또는 프리미엄 음성 다운로드",
     "readAloudNoVoiceAndroid": "기기에 고품질 {language} 음성이 아직 없습니다. 텍스트 음성 변환 엔진용 음성 데이터를 설치한 후 다시 시도하세요.",
-    "readAloudOpenVoiceSettings": "음성 설정 열기"
+    "readAloudOpenVoiceSettings": "음성 설정 열기",
+    "streamingSttDegradedLiveBanner": "실시간 스크립트가 백업 서비스에서 실행 중입니다. 품질이 저하될 수 있으니 텍스트를 확인해 주세요.",
+    "streamingSttDegradedToBatchBanner": "현재 실시간 스크립트를 사용할 수 없습니다. 메시지는 실시간 편집 없이 일반적인 방식으로 스크립트 처리되었습니다. 복구 중입니다.",
+    "streamingSttLanguageUnsupportedBanner": "이 언어는 아직 실시간 스크립트를 지원하지 않습니다. 현재 작업 중입니다.",
+    "formLabel": "{name} 양식"
 }

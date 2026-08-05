@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-04 10:31:18.132678",
+    "@@last_modified": "2026-08-05 10:21:29.784444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2082,5 +2082,9 @@
     "readAloudNoVoiceIOS": "U vostru dispositivu ùn hà ancu scaricatu una voce di alta qualità in {language}. Scaricate una, dopu riprovate:",
     "readAloudNoVoiceIOSSteps": "  • Impostazioni\n  • Accessibilità\n  • Cuntenutu Parlatu\n  • Voci\n  • {language}\n  • Scaricate una voce Migliurata o Premium",
     "readAloudNoVoiceAndroid": "U vostru dispositivu ùn hà ancu una voce di alta qualità in {language}. Installate i dati di voce per u vostru mutore di sintesi vocale, dopu riprovate.",
-    "readAloudOpenVoiceSettings": "Aprite e impostazioni di voce"
+    "readAloudOpenVoiceSettings": "Aprite e impostazioni di voce",
+    "streamingSttDegradedLiveBanner": "A trascrizzione in diretta hè in corsu nantu à un serviziu di salvezza. A qualità pò varià, per piacè verificate u testu.",
+    "streamingSttDegradedToBatchBanner": "A trascrizzione in diretta ùn hè micca dispunibule avà. U vostru messagiu hè statu trascrittu in modu standard, senza edizione in diretta. Travagliemu per ristabilisce lu.",
+    "streamingSttLanguageUnsupportedBanner": "A trascrizzione in diretta ùn hè ancu dispunibule per sta lingua. Ci travagliemu.",
+    "formLabel": "Forma {name}"
 }

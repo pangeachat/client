@@ -2568,7 +2568,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-04 10:31:30.950057",
+    "@@last_modified": "2026-08-05 10:21:40.141083",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10617,5 +10617,9 @@
     "readAloudNoVoiceIOS": "O seu dispositivo ainda não tem uma voz de alta qualidade em {language} descarregada. Descarregue uma e tente novamente:",
     "readAloudNoVoiceIOSSteps": "  • Definições\n  • Acessibilidade\n  • Conteúdo Falado\n  • Vozes\n  • {language}\n  • Descarregar uma voz Melhorada ou Premium",
     "readAloudNoVoiceAndroid": "O seu dispositivo ainda não tem uma voz de alta qualidade em {language}. Instale os dados de voz para o seu motor de conversão de texto em fala e tente novamente.",
-    "readAloudOpenVoiceSettings": "Abrir definições de voz"
+    "readAloudOpenVoiceSettings": "Abrir definições de voz",
+    "streamingSttDegradedLiveBanner": "A transcrição em direto está a ser executada num serviço de backup. A qualidade pode variar, por favor, verifique o texto.",
+    "streamingSttDegradedToBatchBanner": "A transcrição em direto não está disponível neste momento. A sua mensagem foi transcrita da forma padrão, sem edição em direto. Estamos a trabalhar para restaurá-la.",
+    "streamingSttLanguageUnsupportedBanner": "A transcrição em direto ainda não está disponível para este idioma. Estamos a trabalhar nisso.",
+    "formLabel": "Formulário de {name}"
 }

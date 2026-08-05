@@ -11,9 +11,20 @@ enum TtsUseCase {
   choices,
 
   /// Automatic read-aloud of received messages.
-  incomingMessage;
+  incomingMessage,
 
-  ToolSetting get toolSetting {
+  /// The bot's reply to a voice message the learner just sent.
+  ///
+  /// Ungated on purpose: `audioIncomingMessages` governs *unprompted* audio —
+  /// messages arriving unbidden while the chat is open. A reply to something
+  /// the learner just said out loud is not unprompted, and it is bounded by
+  /// their own voice messages rather than by how much other people type. The
+  /// bot used to speak these itself, unconditionally and always via paid TTS;
+  /// this keeps them audible while routing device-first.
+  voiceReply;
+
+  /// The toggle that gates this use case, or null when it is ungated.
+  ToolSetting? get toolSetting {
     switch (this) {
       case TtsUseCase.words:
         return ToolSetting.audioWords;
@@ -21,6 +32,8 @@ enum TtsUseCase {
         return ToolSetting.audioChoices;
       case TtsUseCase.incomingMessage:
         return ToolSetting.audioIncomingMessages;
+      case TtsUseCase.voiceReply:
+        return null;
     }
   }
 }

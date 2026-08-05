@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-04 10:31:18.321025",
+    "@@last_modified": "2026-08-05 10:21:29.741359",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2082,5 +2082,9 @@
     "readAloudNoVoiceIOS": "Ang imong device wala pa'y na-download nga taas og kalidad nga tingog sa {language}. Pag-download usa, unya sulayi pag-usab:",
     "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Pag-download og Enhanced o Premium nga tingog",
     "readAloudNoVoiceAndroid": "Ang imong device wala pa'y taas og kalidad nga tingog sa {language}. Pag-instalar og data sa tingog para sa imong text-to-speech engine, unya sulayi pag-usab.",
-    "readAloudOpenVoiceSettings": "Ablihi ang mga setting sa tingog"
+    "readAloudOpenVoiceSettings": "Ablihi ang mga setting sa tingog",
+    "streamingSttDegradedLiveBanner": "Ang live transcription nagdagan sa usa ka backup nga serbisyo. Mahimong magkalainlain ang kalidad, palihug susiha ang teksto.",
+    "streamingSttDegradedToBatchBanner": "Dili magamit ang live transcription karon. Ang imong mensahe gi-transcribe sa standard nga paagi, nga walay live editing. Nagtrabaho kami aron ibalik kini.",
+    "streamingSttLanguageUnsupportedBanner": "Dili pa magamit ang live transcription alang niini nga pinulongan. Nagtrabaho kami niini.",
+    "formLabel": "Porma ni {name}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:31:35.344192",
+    "@@last_modified": "2026-08-05 10:21:43.561133",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6974,5 +6974,9 @@
     "readAloudNoVoiceIOS": "Thiết bị của bạn chưa tải giọng đọc {language} chất lượng cao. Hãy tải xuống rồi thử lại:",
     "readAloudNoVoiceIOSSteps": "  • Cài đặt\n  • Trợ năng\n  • Nội dung được đọc\n  • Giọng nói\n  • {language}\n  • Tải xuống giọng nói Nâng cao hoặc Cao cấp",
     "readAloudNoVoiceAndroid": "Thiết bị của bạn chưa có giọng đọc {language} chất lượng cao. Hãy cài đặt dữ liệu giọng nói cho công cụ chuyển văn bản thành giọng nói của bạn, sau đó thử lại.",
-    "readAloudOpenVoiceSettings": "Mở cài đặt giọng nói"
+    "readAloudOpenVoiceSettings": "Mở cài đặt giọng nói",
+    "streamingSttDegradedLiveBanner": "Tính năng phiên âm trực tiếp đang chạy trên dịch vụ dự phòng. Chất lượng có thể thay đổi, vui lòng kiểm tra văn bản.",
+    "streamingSttDegradedToBatchBanner": "Tính năng phiên âm trực tiếp hiện không khả dụng. Tin nhắn của bạn đã được phiên âm theo cách tiêu chuẩn, không có chỉnh sửa trực tiếp. Chúng tôi đang nỗ lực khôi phục tính năng này.",
+    "streamingSttLanguageUnsupportedBanner": "Tính năng phiên âm trực tiếp chưa khả dụng cho ngôn ngữ này. Chúng tôi đang nỗ lực thực hiện.",
+    "formLabel": "Biểu mẫu {name}"
 }

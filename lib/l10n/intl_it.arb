@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:31:25.078788",
+    "@@last_modified": "2026-08-05 10:21:34.224120",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9773,5 +9773,9 @@
     "readAloudNoVoiceIOS": "Il tuo dispositivo non ha ancora scaricato una voce {language} di alta qualità. Scaricane una, poi riprova:",
     "readAloudNoVoiceIOSSteps": "  • Impostazioni\n  • Accessibilità\n  • Contenuto letto ad alta voce\n  • Voci\n  • {language}\n  • Scarica una voce Migliorata o Premium",
     "readAloudNoVoiceAndroid": "Il tuo dispositivo non ha ancora una voce {language} di alta qualità. Installa i dati vocali per il tuo motore di sintesi vocale, quindi riprova.",
-    "readAloudOpenVoiceSettings": "Apri impostazioni voce"
+    "readAloudOpenVoiceSettings": "Apri impostazioni voce",
+    "streamingSttDegradedLiveBanner": "La trascrizione in tempo reale è in esecuzione su un servizio di backup. La qualità potrebbe variare, si prega di controllare il testo.",
+    "streamingSttDegradedToBatchBanner": "La trascrizione in tempo reale non è disponibile al momento. Il tuo messaggio è stato trascritto in modo standard, senza modifiche in tempo reale. Stiamo lavorando per ripristinarla.",
+    "streamingSttLanguageUnsupportedBanner": "La trascrizione in tempo reale non è ancora disponibile per questa lingua. Ci stiamo lavorando.",
+    "formLabel": "Modulo {name}"
 }

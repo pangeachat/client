@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-04 10:31:23.644314",
+    "@@last_modified": "2026-08-05 10:21:32.512296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2082,5 +2082,9 @@
     "readAloudNoVoiceIOS": "ʻAʻole i hoʻoiho ʻia kahi leo {language} maikaʻi ma kāu hāmeʻa. E hoʻoiho i hoʻokahi, a laila e hoʻāʻo hou:",
     "readAloudNoVoiceIOSSteps": "  • Nā hoʻonohonoho\n  • Hiki ke komo\n  • ʻIke i ʻōlelo ʻia\n  • Nā leo\n  • {language}\n  • Hoʻoiho i kahi leo Hoʻonui a Premium paha",
     "readAloudNoVoiceAndroid": "ʻAʻohe leo {language} maikaʻi ma kāu hāmeʻa. E hoʻokomo i ka ʻikepili leo no kāu ʻenekini kikokikona-i-leo, a laila e hoʻāʻo hou.",
-    "readAloudOpenVoiceSettings": "E wehe i nā hoʻonohonoho leo"
+    "readAloudOpenVoiceSettings": "E wehe i nā hoʻonohonoho leo",
+    "streamingSttDegradedLiveBanner": "Ke holo nei ka palapala ola ma kahi lawelawe hoʻihoʻi. Hiki ke ʻokoʻa ka maikaʻi, e ʻoluʻolu e nānā i ka kikokikona.",
+    "streamingSttDegradedToBatchBanner": "ʻAʻole loaʻa ka palapala ola i kēia manawa. Ua kākau ʻia kāu leka ma ke ʻano maʻamau, me ka hoʻoponopono ola ʻole. Ke hana nei mākou e hoʻihoʻi.",
+    "streamingSttLanguageUnsupportedBanner": "ʻAʻole loaʻa ka palapala ola no kēia ʻōlelo i kēia manawa. Ke hana nei mākou ma luna.",
+    "formLabel": "Palapala {name}"
 }
