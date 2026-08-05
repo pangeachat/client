@@ -483,6 +483,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
+  /// The learner tapped the minimized search icon back open over a
+  /// course-scoped map. Ephemeral view state; re-minimizes when the scope
+  /// changes (routing.instructions.md → Single-column search bar).
+  bool _searchRestored = false;
+  String? _lastScopeId;
+
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -522,25 +528,31 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final cavitySection = cavityToken?.type.cavitySection;
 
     // The floating search bar (routing.instructions.md → Single-column search
-    // bar), riding the widget's topAttachment slot. WORLD scope only: it drives
-    // the world map's own filter (reached through the persistent map's State).
-    // There is no narrow results list — the pins ARE the results. The
-    // verdict-driven empty-view card and the collapsible filter surface mount
-    // ABOVE the bar, since the bar sits at the bottom on narrow layouts. A
-    // course-scoped map has no working query search (its pins are not filtered
-    // by the query), so the bar is hidden there entirely, matching the web
-    // overlay (which only renders in world scope).
+    // bar), riding the widget's topAttachment slot. It drives the map's own
+    // filter (reached through the persistent map's State) in BOTH scopes — a
+    // course scope narrows which activities compete, not whether the learner
+    // can search within them (#7716). There is no narrow results list — the
+    // pins ARE the results. The verdict-driven empty-view card and the
+    // collapsible filter surface mount ABOVE the bar, since the bar sits at the
+    // bottom on narrow layouts.
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
-    // World map only (activeSpaceId is the course scope, `?c=`), and not over a
-    // selected activity or an open section sheet: the bar only rode the exposed
-    // map band, which those cover (#7640).
-    final showsSearchBar = activeSpaceId == null && cavityToken == null;
+    // Not over a selected activity or an open section sheet: the bar only rides
+    // the exposed map band, which those cover (#7640). Over a bare COURSE-scoped
+    // map it shows minimized — the compact icon, restorable by tap and
+    // re-minimizing when the scope changes.
+    if (_lastScopeId != activeSpaceId) {
+      _lastScopeId = activeSpaceId;
+      _searchRestored = false;
+    }
+    final showsSearchBar = cavityToken == null;
     final searchBar = showsSearchBar && mapController != null
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
             onQueryChanged: mapController.setQuery,
+            minimized: activeSpaceId != null && !_searchRestored,
+            onRestore: () => setState(() => _searchRestored = true),
             // The verdict-driven empty-view card (the web overlay's twin):
             // when the view shows no matches, the controller diagnoses WHY
             // (off-screen matches / pill-excluded matches / a dead query) and

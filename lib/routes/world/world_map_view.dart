@@ -1005,20 +1005,13 @@ class _WorldMapViewState extends State<WorldMapView> {
           )
         : const SizedBox.shrink();
 
-    // A course shows its plain map (plus the controls); the world map adds the
-    // search + filter overlay.
-    if (!widget.controller.isWorld) {
-      return Semantics(
-        label: L10n.of(context).activityMapLabel,
-        container: true,
-        child: Stack(
-          children: [
-            Positioned.fill(child: map),
-            controls,
-          ],
-        ),
-      );
-    }
+    // The search + filter overlay rides BOTH scopes (#7716): a selected course
+    // narrows which activities compete, not whether the learner can search or
+    // filter within them (world-map.instructions.md). Nothing here is
+    // scope-aware — the sliver rule below is what decides visibility, so an
+    // open course panel hides the overlay exactly like any other left panel
+    // that squeezes the map, and closing that panel brings it back.
+    //
     // The overlay lives in the EXPOSED map sliver: right of the open left
     // panels, clear of the right column / the top-right cluster gutter (a fixed
     // 360 slid under the cluster and off-screen whenever panels squeezed the
