@@ -998,11 +998,22 @@ class WorldMapController extends State<WorldMap>
   /// new camera instead of the frozen last-settled one (#7245). Applies in
   /// every map context (world and course), unlike the world-only re-fetch
   /// above.
+  ///
+  /// The settle also ticks [viewRevision]. The camera is an input to
+  /// [emptyVerdict] ([MapEmptyVerdict.matchesOffscreen] is exactly "the
+  /// matches are outside these bounds"), and the narrow surfaces are built by
+  /// the shell — this State's `setState` never reaches them, so without the
+  /// tick their empty-view card keeps answering for the camera it was last
+  /// built at. On the world map the settle re-fetch above ticks anyway; in a
+  /// course scope it doesn't run, which left the card's own Zoom out lever
+  /// unable to clear the card it had just fixed (#7716).
   void _onMapEvent(MapEvent event) {
     final wasMoving = isActivelyMoving;
     _moveSettleTimer?.cancel();
     _moveSettleTimer = Timer(WorldMapConstants.moveSettle, () {
-      if (mounted) setState(() {});
+      if (!mounted) return;
+      setState(() {});
+      viewRevision.value++;
     });
     if (!wasMoving && mounted) setState(() {});
   }
