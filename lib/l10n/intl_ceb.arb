@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-05 10:21:29.741359",
+    "@@last_modified": "2026-08-05 11:42:11.110011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Ang live transcription nagdagan sa usa ka backup nga serbisyo. Mahimong magkalainlain ang kalidad, palihug susiha ang teksto.",
     "streamingSttDegradedToBatchBanner": "Dili magamit ang live transcription karon. Ang imong mensahe gi-transcribe sa standard nga paagi, nga walay live editing. Nagtrabaho kami aron ibalik kini.",
     "streamingSttLanguageUnsupportedBanner": "Dili pa magamit ang live transcription alang niini nga pinulongan. Nagtrabaho kami niini.",
-    "formLabel": "Porma ni {name}"
+    "formLabel": "Porma ni {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Suporta",
+    "explorePlayAndLearn": "Pagsuhid, pagdula, ug pagkat-on",
+    "conversationFromDayOne": "Panag-istoryahanay gikan sa Unang Adlaw",
+    "builtForConnection": "Gibuhat para sa koneksyon",
+    "aiWhenYouNeedIt": "AI kung kinahanglan nimo",
+    "practiceTailoredForYou": "Praktis nga gipahaum para kanimo"
 }

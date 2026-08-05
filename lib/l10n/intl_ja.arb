@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-05 10:21:34.241301",
+    "@@last_modified": "2026-08-05 11:42:13.595371",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10473,5 +10473,12 @@
     "streamingSttDegradedLiveBanner": "ライブ文字起こしはバックアップサービスで実行中です。品質が低下する場合がありますので、テキストをご確認ください。",
     "streamingSttDegradedToBatchBanner": "現在、ライブ文字起こしは利用できません。メッセージはライブ編集なしで通常の方法で文字起こしされました。復旧作業中です。",
     "streamingSttLanguageUnsupportedBanner": "この言語ではまだライブ文字起こしをご利用いただけません。現在対応中です。",
-    "formLabel": "{name}フォーム"
+    "formLabel": "{name}フォーム",
+    "botDisplayName": "パンゲアボット",
+    "supportDisplayName": "サポート",
+    "explorePlayAndLearn": "探して、遊んで、学ぶ",
+    "conversationFromDayOne": "初日から会話",
+    "builtForConnection": "つながりのために作られました",
+    "aiWhenYouNeedIt": "必要なときにAIを",
+    "practiceTailoredForYou": "あなたに合わせた練習"
 }

@@ -10,8 +10,8 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 /// off-screen matches → zoom out; pill-excluded matches → widen the search;
 /// a query matching nothing → no remedy pretends to help.
 enum MapEmptyVerdict {
-  /// Matches are visible (or the verdict doesn't apply — loading, course
-  /// scope, camera not laid out): no card.
+  /// Matches are visible (or the verdict doesn't apply — loading, camera not
+  /// laid out): no card.
   none,
 
   /// Matches pass the filters/query but every one sits OUTSIDE the current
@@ -130,8 +130,20 @@ class WorldMapFilterState {
 
   WorldMapFilter get filter => _filter;
 
-  bool include(QuestActivityCard card, ActivityPinState state) {
-    return _langMatches(card) &&
+  /// [applyLanguage] carries the settings-fixed language constant, and is the
+  /// one part of the filter set that differs by map scope. The WORLD map
+  /// always applies it. A COURSE-scoped map does not: its pins are fetched at
+  /// the COURSE's own L2 ([WorldMapPinsManager.loadCourseScopedPins]), so
+  /// narrowing them by the learner's *settings* L2 would empty the map of any
+  /// course taught in another language — with no lever to widen, since
+  /// language is deliberately not one. The course scope is itself the
+  /// narrowing there; the pills and the query still apply (#7716).
+  bool include(
+    QuestActivityCard card,
+    ActivityPinState state, {
+    bool applyLanguage = true,
+  }) {
+    return (!applyLanguage || _langMatches(card)) &&
         _cefrMatches(card) &&
         _partyMatches(card) &&
         _statusMatches(state) &&
@@ -140,9 +152,14 @@ class WorldMapFilterState {
 
   /// Language + query only — the "would clearing every pill surface matches?"
   /// probe behind [MapEmptyVerdict.filtersHideMatches]. Language stays applied
-  /// (it is settings-fixed, not a pill the learner can widen in-app).
-  bool matchesIgnoringPills(QuestActivityCard card) =>
-      _langMatches(card) && card.matchesQuery(_filter.query);
+  /// (it is settings-fixed, not a pill the learner can widen in-app) wherever
+  /// [include] applies it — see [applyLanguage] there.
+  bool matchesIgnoringPills(
+    QuestActivityCard card, {
+    bool applyLanguage = true,
+  }) =>
+      (!applyLanguage || _langMatches(card)) &&
+      card.matchesQuery(_filter.query);
 
   bool _langMatches(QuestActivityCard card) {
     final filterL2 = _filter.l2;

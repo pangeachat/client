@@ -1341,7 +1341,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-05 10:21:29.656987",
+    "@@last_modified": "2026-08-05 11:42:11.001268",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10630,5 +10630,12 @@
     "streamingSttDegradedLiveBanner": "Live transskription kører på en backup-tjeneste. Kvaliteten kan variere, tjek venligst teksten.",
     "streamingSttDegradedToBatchBanner": "Live transskription er ikke tilgængelig lige nu. Din besked blev transskriberet på standardmåden, uden live redigering. Vi arbejder på at genoprette den.",
     "streamingSttLanguageUnsupportedBanner": "Live transskription er endnu ikke tilgængelig for dette sprog. Vi arbejder på det.",
-    "formLabel": "{name} form"
+    "formLabel": "{name} form",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Support",
+    "explorePlayAndLearn": "Udforsk, leg og lær",
+    "conversationFromDayOne": "Samtale fra dag ét",
+    "builtForConnection": "Bygget til forbindelse",
+    "aiWhenYouNeedIt": "AI, når du har brug for det",
+    "practiceTailoredForYou": "Øvelse skræddersyet til dig"
 }

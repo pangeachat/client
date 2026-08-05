@@ -682,6 +682,13 @@ class ChatListController extends State<ChatList>
     if (mounted) showSubscribedSnackbar(context);
   }
 
+  /// Settle pending space invites when the chat list opens: auto-accept the
+  /// ones the client takes without asking, prompt on the rest. The accepting
+  /// stays — a knock the user sent must never sit around looking like an
+  /// unsolicited invite — but the chat list does NOT follow the join to the
+  /// course. Opening the chat list means the user came to read chats, not to be
+  /// moved into a course (#7792). Matches what [_onInviteSync] already does for
+  /// an approved knock that lands live.
   Future<void> _joinInvitedSpaces() async {
     final client = Matrix.of(context).client;
     final invitedSpaces = client.rooms.where(
@@ -689,16 +696,13 @@ class ChatListController extends State<ChatList>
     );
 
     for (final space in invitedSpaces) {
+      if (!mounted) return;
       final joinResp = await SpaceTapUtil.onInviteTap(context, space);
       if (joinResp == null) continue;
 
+      if (!mounted) return;
       final handler = JoinRoomAnalyticsConsentHandler(joinResp, space);
-      final joinedRoomId = await handler.handle(context);
-      if (joinedRoomId == null) continue;
-
-      context.go(
-        WorkspaceNav.openCourse(GoRouterState.of(context).uri, joinedRoomId),
-      );
+      await handler.handle(context);
     }
   }
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-05 10:21:32.512296",
+    "@@last_modified": "2026-08-05 11:42:12.396480",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Ke holo nei ka palapala ola ma kahi lawelawe hoʻihoʻi. Hiki ke ʻokoʻa ka maikaʻi, e ʻoluʻolu e nānā i ka kikokikona.",
     "streamingSttDegradedToBatchBanner": "ʻAʻole loaʻa ka palapala ola i kēia manawa. Ua kākau ʻia kāu leka ma ke ʻano maʻamau, me ka hoʻoponopono ola ʻole. Ke hana nei mākou e hoʻihoʻi.",
     "streamingSttLanguageUnsupportedBanner": "ʻAʻole loaʻa ka palapala ola no kēia ʻōlelo i kēia manawa. Ke hana nei mākou ma luna.",
-    "formLabel": "Palapala {name}"
+    "formLabel": "Palapala {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Kākoʻo",
+    "explorePlayAndLearn": "Huli, pāʻani, a aʻo",
+    "conversationFromDayOne": "Kūkākūkā mai ka lā ʻekahi",
+    "builtForConnection": "Kūkulu ʻia no ka pilina",
+    "aiWhenYouNeedIt": "AI ke pono ʻoe",
+    "practiceTailoredForYou": "Hoʻomaʻamaʻa i hoʻopilikino ʻia nāu"
 }

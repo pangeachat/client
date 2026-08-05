@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-05 10:21:43.149674",
+    "@@last_modified": "2026-08-05 11:42:17.332493",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10005,5 +10005,12 @@
     "streamingSttDegradedLiveBanner": "Canlı transkripsiyon yedek bir hizmet üzerinden çalışıyor. Kalite değişebilir, lütfen metni kontrol edin.",
     "streamingSttDegradedToBatchBanner": "Canlı transkripsiyon şu anda kullanılamıyor. Mesajınız standart şekilde, canlı düzenleme olmadan transkribe edildi. Geri yüklemek için çalışıyoruz.",
     "streamingSttLanguageUnsupportedBanner": "Bu dil için canlı transkripsiyon henüz mevcut değil. Üzerinde çalışıyoruz.",
-    "formLabel": "{name} formu"
+    "formLabel": "{name} formu",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Destek",
+    "explorePlayAndLearn": "Keşfet, oyna ve öğren",
+    "conversationFromDayOne": "İlk Günden İtibaren Sohbet",
+    "builtForConnection": "Bağlantı için tasarlandı",
+    "aiWhenYouNeedIt": "İhtiyacınız olduğunda yapay zeka",
+    "practiceTailoredForYou": "Size özel pratik"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-05 10:21:35.647835",
+    "@@last_modified": "2026-08-05 11:42:14.279391",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Transcriptio viva in subsidiario servitio currit. Qualitas variari potest, textum quaeso inspice.",
     "streamingSttDegradedToBatchBanner": "Transcriptio viva nunc praesto non est. Nuntius tuus more solito transcriptus est, sine emendatione viva. Laboramus ut restituamus.",
     "streamingSttLanguageUnsupportedBanner": "Transcriptio viva nondum huic linguae praesto est. Laboramus.",
-    "formLabel": "{name} forma"
+    "formLabel": "{name} forma",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Subsidium",
+    "explorePlayAndLearn": "Explora, lude et disce",
+    "conversationFromDayOne": "Sermo ab initio",
+    "builtForConnection": "Ad coniunctionem aedificatum",
+    "aiWhenYouNeedIt": "AI cum opus est",
+    "practiceTailoredForYou": "Exercitatio tibi aptata"
 }

@@ -5,6 +5,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
 class OpenRolesIndicator extends StatelessWidget {
@@ -55,7 +57,7 @@ class OpenRolesIndicator extends StatelessWidget {
               builder: (context) => Avatar(
                 mxContent: user?.avatarUrl,
                 name:
-                    user?.calcDisplayname() ??
+                    user?.localizedDisplayname(L10n.of(context)) ??
                     assigned.userId.localpart ??
                     assigned.userId,
                 size: size ?? 16,

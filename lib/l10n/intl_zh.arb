@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-05 10:21:44.343627",
+    "@@last_modified": "2026-08-05 11:42:18.317504",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9704,5 +9704,12 @@
     "streamingSttDegradedLiveBanner": "实时转录正在使用备用服务。质量可能会有所不同，请检查文本。",
     "streamingSttDegradedToBatchBanner": "实时转录目前不可用。您的消息已通过标准方式转录，无法进行实时编辑。我们正在努力恢复。",
     "streamingSttLanguageUnsupportedBanner": "此语言的实时转录功能暂不可用。我们正在努力开发中。",
-    "formLabel": "{name}表单"
+    "formLabel": "{name}表单",
+    "botDisplayName": "Pangea 机器人",
+    "supportDisplayName": "支持",
+    "explorePlayAndLearn": "探索、玩耍和学习",
+    "conversationFromDayOne": "从第一天就开始对话",
+    "builtForConnection": "为连接而生",
+    "aiWhenYouNeedIt": "随时随地，AI相伴",
+    "practiceTailoredForYou": "为你量身定制的练习"
 }

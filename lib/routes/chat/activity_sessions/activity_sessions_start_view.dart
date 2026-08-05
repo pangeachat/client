@@ -16,6 +16,7 @@ import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom_content.dart';
@@ -517,10 +518,10 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
               return ListTile(
                 leading: Avatar(
                   mxContent: user.avatarUrl,
-                  name: user.calcDisplayname(),
+                  name: user.localizedDisplayname(L10n.of(context)),
                   userId: role.userId,
                 ),
-                title: Text(user.calcDisplayname()),
+                title: Text(user.localizedDisplayname(L10n.of(context))),
                 subtitle: role.role == null ? null : Text(role.role!),
                 trailing: Row(
                   mainAxisSize: MainAxisSize.min,

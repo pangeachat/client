@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:35.827764",
+    "@@last_modified": "2026-08-05 11:42:13.855055",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9897,5 +9897,12 @@
     "streamingSttDegradedLiveBanner": "실시간 스크립트가 백업 서비스에서 실행 중입니다. 품질이 저하될 수 있으니 텍스트를 확인해 주세요.",
     "streamingSttDegradedToBatchBanner": "현재 실시간 스크립트를 사용할 수 없습니다. 메시지는 실시간 편집 없이 일반적인 방식으로 스크립트 처리되었습니다. 복구 중입니다.",
     "streamingSttLanguageUnsupportedBanner": "이 언어는 아직 실시간 스크립트를 지원하지 않습니다. 현재 작업 중입니다.",
-    "formLabel": "{name} 양식"
+    "formLabel": "{name} 양식",
+    "botDisplayName": "판게아 봇",
+    "supportDisplayName": "지원",
+    "explorePlayAndLearn": "탐색하고, 플레이하고, 배우세요",
+    "conversationFromDayOne": "첫날부터 대화 시작",
+    "builtForConnection": "연결을 위해 구축",
+    "aiWhenYouNeedIt": "필요할 때 AI",
+    "practiceTailoredForYou": "나만을 위한 맞춤 연습"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-05 10:21:38.009228",
+    "@@last_modified": "2026-08-05 11:42:14.956108",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Шууд хуулбарлах үйлчилгээ нөөц системээр ажиллаж байна. Чанар өөрчлөгдөж болзошгүй тул текстийг шалгана уу.",
     "streamingSttDegradedToBatchBanner": "Шууд хуулбарлах боломжгүй байна. Таны мессежийг шууд засваргүйгээр стандарт аргаар хуулбарласан. Бид үүнийг сэргээхээр ажиллаж байна.",
     "streamingSttLanguageUnsupportedBanner": "Энэ хэл дээр шууд хуулбарлах боломжгүй байна. Бид үүн дээр ажиллаж байна.",
-    "formLabel": "{name} маягт"
+    "formLabel": "{name} маягт",
+    "botDisplayName": "Pangea Бот",
+    "supportDisplayName": "Тусламж",
+    "explorePlayAndLearn": "Судалж, тоглож, суралцаарай",
+    "conversationFromDayOne": "Эхний өдрөөсөө ярилцаарай",
+    "builtForConnection": "Холбогдоход зориулагдсан",
+    "aiWhenYouNeedIt": "Хэрэгцээтэй үедээ хиймэл оюун ухаан ашиглаарай",
+    "practiceTailoredForYou": "Танд тохирсон дасгал"
 }

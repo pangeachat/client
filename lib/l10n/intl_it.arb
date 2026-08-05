@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:34.224120",
+    "@@last_modified": "2026-08-05 11:42:13.426260",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9777,5 +9777,12 @@
     "streamingSttDegradedLiveBanner": "La trascrizione in tempo reale è in esecuzione su un servizio di backup. La qualità potrebbe variare, si prega di controllare il testo.",
     "streamingSttDegradedToBatchBanner": "La trascrizione in tempo reale non è disponibile al momento. Il tuo messaggio è stato trascritto in modo standard, senza modifiche in tempo reale. Stiamo lavorando per ripristinarla.",
     "streamingSttLanguageUnsupportedBanner": "La trascrizione in tempo reale non è ancora disponibile per questa lingua. Ci stiamo lavorando.",
-    "formLabel": "Modulo {name}"
+    "formLabel": "Modulo {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Supporto",
+    "explorePlayAndLearn": "Esplora, gioca e impara",
+    "conversationFromDayOne": "Conversazione dal primo giorno",
+    "builtForConnection": "Costruito per la connessione",
+    "aiWhenYouNeedIt": "AI quando ne hai bisogno",
+    "practiceTailoredForYou": "Pratica su misura per te"
 }

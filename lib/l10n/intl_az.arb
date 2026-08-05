@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-05 10:21:28.596386",
+    "@@last_modified": "2026-08-05 11:42:10.359054",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Canlı transkripsiya ehtiyat xidməti ilə işləyir. Keyfiyyət dəyişə bilər, lütfən mətni yoxlayın.",
     "streamingSttDegradedToBatchBanner": "Canlı transkripsiya hazırda mövcud deyil. Mesajınız standart üsulla, canlı redaktə olmadan transkripsiya edildi. Onu bərpa etmək üçün çalışırıq.",
     "streamingSttLanguageUnsupportedBanner": "Canlı transkripsiya hələ bu dil üçün mövcud deyil. Biz bunun üzərində işləyirik.",
-    "formLabel": "{name} forması"
+    "formLabel": "{name} forması",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Dəstək",
+    "explorePlayAndLearn": "Kəşf edin, oynayın və öyrənin",
+    "conversationFromDayOne": "İlk gündən söhbət",
+    "builtForConnection": "Əlaqə üçün qurulub",
+    "aiWhenYouNeedIt": "Ehtiyacınız olanda süni intellekt",
+    "practiceTailoredForYou": "Sizin üçün fərdi təcrübə"
 }

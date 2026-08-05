@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-05 10:21:41.911963",
+    "@@last_modified": "2026-08-05 11:42:16.702701",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Kunyora zviri kuitika panguva imwe chete kuri kushanda pachishandiso chekuchengetedza. Hunhu hunogona kusiyana, ndapota tarisa zvinyorwa.",
     "streamingSttDegradedToBatchBanner": "Kunyora zviri kuitika panguva imwe chete hakusati kwavepo izvozvi. Mashoko ako akanyorwa nenzira yakajairika, pasina kugadzirisa panguva imwe chete. Tiri kushanda kuti zvidzoke.",
     "streamingSttLanguageUnsupportedBanner": "Kunyora zviri kuitika panguva imwe chete hakusati kwavepo pamutauro uyu. Tiri kushanda nazvo.",
-    "formLabel": "Fomu ra{name}"
+    "formLabel": "Fomu ra{name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Rubatsiro",
+    "explorePlayAndLearn": "Ongorora, tamba uye dzidza",
+    "conversationFromDayOne": "Kukurukurirana kubva pazuva rekutanga",
+    "builtForConnection": "Yakavakwa yekubatanidza",
+    "aiWhenYouNeedIt": "AI paunenge uchiida",
+    "practiceTailoredForYou": "Kudzidzira kwakagadzirirwa iwe"
 }

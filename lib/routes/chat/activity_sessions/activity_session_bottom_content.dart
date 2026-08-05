@@ -9,6 +9,7 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -265,7 +266,7 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                           );
 
                           final displayName =
-                              user?.calcDisplayname() ??
+                              user?.localizedDisplayname(L10n.of(context)) ??
                               userId.localpart ??
                               userId;
 

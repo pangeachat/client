@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-05 10:21:28.271042",
+    "@@last_modified": "2026-08-05 11:42:10.378529",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10010,5 +10010,12 @@
     "streamingSttDegradedLiveBanner": "النسخ المباشر يعمل على خدمة احتياطية. قد تختلف الجودة، يرجى التحقق من النص.",
     "streamingSttDegradedToBatchBanner": "النسخ المباشر غير متاح حاليًا. تم نسخ رسالتك بالطريقة القياسية، بدون تحرير مباشر. نحن نعمل على استعادته.",
     "streamingSttLanguageUnsupportedBanner": "النسخ المباشر غير متاح لهذه اللغة بعد. نحن نعمل على ذلك.",
-    "formLabel": "نموذج {name}"
+    "formLabel": "نموذج {name}",
+    "botDisplayName": "بوت بانجيا",
+    "supportDisplayName": "الدعم",
+    "explorePlayAndLearn": "استكشف، العب وتعلّم",
+    "conversationFromDayOne": "المحادثة من اليوم الأول",
+    "builtForConnection": "مصمم للتواصل",
+    "aiWhenYouNeedIt": "الذكاء الاصطناعي عندما تحتاجه",
+    "practiceTailoredForYou": "تدريب مصمم خصيصًا لك"
 }

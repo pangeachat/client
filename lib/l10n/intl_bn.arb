@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:28.388851",
+    "@@last_modified": "2026-08-05 11:42:10.450226",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10332,5 +10332,12 @@
     "streamingSttDegradedLiveBanner": "লাইভ ট্রান্সক্রিপশন একটি ব্যাকআপ পরিষেবাতে চলছে। গুণমান ভিন্ন হতে পারে, অনুগ্রহ করে লেখাটি পরীক্ষা করুন।",
     "streamingSttDegradedToBatchBanner": "লাইভ ট্রান্সক্রিপশন এই মুহূর্তে উপলব্ধ নয়। আপনার বার্তাটি লাইভ এডিটিং ছাড়াই স্ট্যান্ডার্ড পদ্ধতিতে প্রতিলিপি করা হয়েছে। আমরা এটি পুনরুদ্ধার করার জন্য কাজ করছি।",
     "streamingSttLanguageUnsupportedBanner": "এই ভাষার জন্য লাইভ ট্রান্সক্রিপশন এখনও উপলব্ধ নয়। আমরা এটি নিয়ে কাজ করছি।",
-    "formLabel": "{name} ফর্ম"
+    "formLabel": "{name} ফর্ম",
+    "botDisplayName": "প্যানজিয়া বট",
+    "supportDisplayName": "সাপোর্ট",
+    "explorePlayAndLearn": "অনুসন্ধান করুন, খেলুন এবং শিখুন",
+    "conversationFromDayOne": "প্রথম দিন থেকেই কথোপকথন",
+    "builtForConnection": "সংযোগের জন্য তৈরি",
+    "aiWhenYouNeedIt": "আপনার যখন প্রয়োজন তখন AI",
+    "practiceTailoredForYou": "আপনার জন্য তৈরি অনুশীলন"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-05 10:21:29.627936",
+    "@@last_modified": "2026-08-05 11:42:11.010949",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10198,5 +10198,12 @@
     "streamingSttDegradedLiveBanner": "Živý přepis běží na záložní službě. Kvalita se může lišit, zkontrolujte prosím text.",
     "streamingSttDegradedToBatchBanner": "Živý přepis momentálně není k dispozici. Vaše zpráva byla přepsána standardním způsobem, bez živých úprav. Pracujeme na obnovení.",
     "streamingSttLanguageUnsupportedBanner": "Živý přepis pro tento jazyk zatím není k dispozici. Pracujeme na tom.",
-    "formLabel": "Formulář {name}"
+    "formLabel": "Formulář {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Podpora",
+    "explorePlayAndLearn": "Objevujte, hrajte si a učte se",
+    "conversationFromDayOne": "Konverzace od prvního dne",
+    "builtForConnection": "Stvořeno pro spojení",
+    "aiWhenYouNeedIt": "AI, když ji potřebujete",
+    "practiceTailoredForYou": "Praxe šitá na míru"
 }

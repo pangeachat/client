@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-05 10:21:33.336114",
+    "@@last_modified": "2026-08-05 11:42:12.890982",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9807,5 +9807,12 @@
     "streamingSttDegradedLiveBanner": "Az élő átírás egy biztonsági szolgáltatáson fut. A minőség változhat, kérjük, ellenőrizze a szöveget.",
     "streamingSttDegradedToBatchBanner": "Az élő átírás jelenleg nem elérhető. Az üzenetét a szokásos módon írtuk át, élő szerkesztés nélkül. Dolgozunk a visszaállításon.",
     "streamingSttLanguageUnsupportedBanner": "Az élő átírás még nem érhető el ehhez a nyelvhez. Dolgozunk rajta.",
-    "formLabel": "{name} űrlap"
+    "formLabel": "{name} űrlap",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Ügyfélszolgálat",
+    "explorePlayAndLearn": "Felfedezés, játék és tanulás",
+    "conversationFromDayOne": "Beszélgetés az első naptól",
+    "builtForConnection": "Kapcsolatra tervezve",
+    "aiWhenYouNeedIt": "MI, amikor szükséged van rá",
+    "practiceTailoredForYou": "Rád szabott gyakorlás"
 }

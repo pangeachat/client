@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-05 10:21:40.623914",
+    "@@last_modified": "2026-08-05 11:42:16.731113",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10655,5 +10655,12 @@
     "streamingSttDegradedLiveBanner": "Živý prepis beží na záložnej službe. Kvalita sa môže líšiť, skontrolujte text.",
     "streamingSttDegradedToBatchBanner": "Živý prepis momentálne nie je k dispozícii. Vaša správa bola prepísaná štandardným spôsobom, bez živých úprav. Pracujeme na jej obnovení.",
     "streamingSttLanguageUnsupportedBanner": "Živý prepis zatiaľ nie je k dispozícii pre tento jazyk. Pracujeme na tom.",
-    "formLabel": "Formulár {name}"
+    "formLabel": "Formulár {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Podpora",
+    "explorePlayAndLearn": "Objavuj, hraj sa a uč sa",
+    "conversationFromDayOne": "Konverzácia od prvého dňa",
+    "builtForConnection": "Stvorené pre spojenie",
+    "aiWhenYouNeedIt": "AI, keď ju potrebuješ",
+    "practiceTailoredForYou": "Cvičenie šité na mieru"
 }

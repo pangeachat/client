@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-05 10:21:31.724029",
+    "@@last_modified": "2026-08-05 11:42:11.653800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Mae trawsgrifio byw yn rhedeg ar wasanaeth wrth gefn. Gall ansawdd amrywio, gwiriwch y testun.",
     "streamingSttDegradedToBatchBanner": "Nid yw trawsgrifio byw ar gael ar hyn o bryd. Trawsgrifiwyd eich neges yn y ffordd safonol, heb olygu byw. Rydym yn gweithio i'w adfer.",
     "streamingSttLanguageUnsupportedBanner": "Nid yw trawsgrifio byw ar gael ar gyfer yr iaith hon eto. Rydym yn gweithio arno.",
-    "formLabel": "Ffurflen {name}"
+    "formLabel": "Ffurflen {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Cefnogaeth",
+    "explorePlayAndLearn": "Archwilio, chwarae a dysgu",
+    "conversationFromDayOne": "Sgwrs o Ddydd Un",
+    "builtForConnection": "Wedi'i adeiladu ar gyfer cysylltiad",
+    "aiWhenYouNeedIt": "AI pan fydd ei angen arnoch chi",
+    "practiceTailoredForYou": "Ymarfer wedi'i deilwra ar eich cyfer chi"
 }

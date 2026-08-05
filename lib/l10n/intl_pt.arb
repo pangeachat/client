@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:39.509677",
+    "@@last_modified": "2026-08-05 11:42:16.165905",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10654,5 +10654,12 @@
     "streamingSttDegradedLiveBanner": "A transcrição ao vivo está sendo executada em um serviço de backup. A qualidade pode variar, por favor, verifique o texto.",
     "streamingSttDegradedToBatchBanner": "A transcrição ao vivo não está disponível no momento. Sua mensagem foi transcrita da maneira padrão, sem edição ao vivo. Estamos trabalhando para restaurá-la.",
     "streamingSttLanguageUnsupportedBanner": "A transcrição ao vivo ainda não está disponível para este idioma. Estamos trabalhando nisso.",
-    "formLabel": "Formulário de {name}"
+    "formLabel": "Formulário de {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Suporte",
+    "explorePlayAndLearn": "Explore, jogue e aprenda",
+    "conversationFromDayOne": "Conversação desde o primeiro dia",
+    "builtForConnection": "Feito para conexão",
+    "aiWhenYouNeedIt": "IA quando você precisar",
+    "practiceTailoredForYou": "Prática personalizada para você"
 }

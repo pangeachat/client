@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-05 10:21:41.642992",
+    "@@last_modified": "2026-08-05 11:42:16.653727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Transkriptimi i drejtpërdrejtë po funksionon në një shërbim rezervë. Cilësia mund të ndryshojë, ju lutemi kontrolloni tekstin.",
     "streamingSttDegradedToBatchBanner": "Transkriptimi i drejtpërdrejtë nuk është i disponueshëm tani. Mesazhi juaj u transkriptua në mënyrën standarde, pa redaktim të drejtpërdrejtë. Po punojmë për ta rikthyer.",
     "streamingSttLanguageUnsupportedBanner": "Transkriptimi i drejtpërdrejtë nuk është ende i disponueshëm për këtë gjuhë. Po punojmë për këtë.",
-    "formLabel": "Formulari {name}"
+    "formLabel": "Formulari {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Mbështetje",
+    "explorePlayAndLearn": "Eksploro, luaj dhe mëso",
+    "conversationFromDayOne": "Bisedë që nga Dita e Parë",
+    "builtForConnection": "Ndërtuar për lidhje",
+    "aiWhenYouNeedIt": "AI kur ju nevojitet",
+    "practiceTailoredForYou": "Praktikë e përshtatur për ju"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-05 10:21:44.873894",
+    "@@last_modified": "2026-08-05 11:42:17.943665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma kusebenza kwinkonzo yogcino. Umgangatho ungahluka, nceda ujonge umbhalo.",
     "streamingSttDegradedToBatchBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma akufumaneki okwangoku. Umyalezo wakho ubhalwe ngendlela eqhelekileyo, ngaphandle kokuhlela ngqo bukhoma. Sisebenzela ukuyibuyisela.",
     "streamingSttLanguageUnsupportedBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma akukafumaneki okwangoku kolu lwimi. Sisebenzela kulo.",
-    "formLabel": "Ifomu lika-{name}"
+    "formLabel": "Ifomu lika-{name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Inkxaso",
+    "explorePlayAndLearn": "Hlola, dlala kwaye ufunde",
+    "conversationFromDayOne": "Incoko ukusuka kuSuku Lokuqala",
+    "builtForConnection": "Yakhelwe uqhagamshelwano",
+    "aiWhenYouNeedIt": "I-AI xa uyidinga",
+    "practiceTailoredForYou": "Uqheliselo olulungelelaniswe nawe"
 }

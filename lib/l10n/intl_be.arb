@@ -3557,7 +3557,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-05 10:21:28.545669",
+    "@@last_modified": "2026-08-05 11:42:10.528821",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9718,5 +9718,12 @@
     "streamingSttDegradedLiveBanner": "Жывая транскрыпцыя працуе на рэзервовай службе. Якасць можа адрознівацца, калі ласка, праверце тэкст.",
     "streamingSttDegradedToBatchBanner": "Жывая транскрыпцыя зараз недаступная. Ваша паведамленне было транскрыбавана стандартным спосабам, без жывога рэдагавання. Мы працуем над аднаўленнем.",
     "streamingSttLanguageUnsupportedBanner": "Жывая транскрыпцыя пакуль недаступная для гэтай мовы. Мы працуем над гэтым.",
-    "formLabel": "Форма {name}"
+    "formLabel": "Форма {name}",
+    "botDisplayName": "Бот Pangea",
+    "supportDisplayName": "Падтрымка",
+    "explorePlayAndLearn": "Даследуйце, гуляйце і вучыцеся",
+    "conversationFromDayOne": "Размова з першага дня",
+    "builtForConnection": "Створана для сувязі",
+    "aiWhenYouNeedIt": "ШІ, калі ён вам патрэбны",
+    "practiceTailoredForYou": "Практыка, адаптаваная для вас"
 }

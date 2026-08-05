@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -64,7 +66,9 @@ class TypingIndicators extends StatelessWidget {
                           // #Pangea
                           userId: typingUsers.first.id,
                           // Pangea#
-                          name: typingUsers.first.calcDisplayname(),
+                          name: typingUsers.first.localizedDisplayname(
+                            L10n.of(context),
+                          ),
                         ),
                       if (typingUsers.length == 2)
                         Padding(
@@ -80,7 +84,9 @@ class TypingIndicators extends StatelessWidget {
                                 : null,
                             // Pangea#
                             name: typingUsers.length == 2
-                                ? typingUsers.last.calcDisplayname()
+                                ? typingUsers.last.localizedDisplayname(
+                                    L10n.of(context),
+                                  )
                                 : '+${typingUsers.length - 1}',
                           ),
                         ),

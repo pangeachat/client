@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-05 10:21:36.169440",
+    "@@last_modified": "2026-08-05 11:42:13.935676",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2086,5 +2086,12 @@
     "streamingSttDegradedLiveBanner": "Di layv transkripshɔn de rɔn pan wan bakɔp savis. Di kwaliti kin difrɛn, duya chɛk di tɛks.",
     "streamingSttDegradedToBatchBanner": "Layv transkripshɔn nɔ de naw. Yu mɛsej bin transkrayb di standad we, witɔut layv ɛditin. Wi de tray fɔ mek i kɔm bak.",
     "streamingSttLanguageUnsupportedBanner": "Layv transkripshɔn nɔ de fɔ dis langwej yet. Wi de wok pan am.",
-    "formLabel": "{name} fɔm"
+    "formLabel": "{name} fɔm",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Sapot",
+    "explorePlayAndLearn": "Go, ple, ɛn lan",
+    "conversationFromDayOne": "Tɔk frɔm di fɔs de",
+    "builtForConnection": "Mek fɔ kɔnɛkshɔn",
+    "aiWhenYouNeedIt": "AI we yu nid am",
+    "practiceTailoredForYou": "Pratkis we dɛn mek fɔ yu"
 }

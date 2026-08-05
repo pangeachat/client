@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-05 10:21:31.108383",
+    "@@last_modified": "2026-08-05 11:42:11.671100",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9704,5 +9704,12 @@
     "streamingSttDegradedLiveBanner": "Zuzeneko transkripzioa babeskopia-zerbitzu batean exekutatzen ari da. Kalitatea alda daiteke, egiaztatu testua.",
     "streamingSttDegradedToBatchBanner": "Zuzeneko transkripzioa ez dago erabilgarri une honetan. Zure mezua modu estandarrean transkribatu da, zuzeneko ediziorik gabe. Berrezartzen ari gara.",
     "streamingSttLanguageUnsupportedBanner": "Zuzeneko transkripzioa oraindik ez dago erabilgarri hizkuntza honetarako. Horretan ari gara lanean.",
-    "formLabel": "{name} inprimakia"
+    "formLabel": "{name} inprimakia",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Laguntza",
+    "explorePlayAndLearn": "Arakatu, jolastu eta ikasi",
+    "conversationFromDayOne": "Elkarrizketa lehen egunetik",
+    "builtForConnection": "Konexiorako eraikia",
+    "aiWhenYouNeedIt": "Adimen artifiziala behar duzunean",
+    "practiceTailoredForYou": "Zuretzat egokitutako praktika"
 }

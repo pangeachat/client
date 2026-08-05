@@ -174,6 +174,15 @@ class WorldMapController extends State<WorldMap>
   bool _loadingPins = false;
   Timer? _refetchDebounce;
 
+  /// True from an L1 (base-language) change until the activity plans re-hydrate
+  /// at the new L1. While true the view freezes the pins on their last-settled
+  /// tiers and paints them as a shimmer skeleton (see [WorldMapView]) instead of
+  /// letting them flash to `available` and snap back as the signals re-derive.
+  /// Cleared by the first plan hydrate ([_onPlanHydrate]) or the
+  /// [WorldMapConstants.l1WarmupMax] fallback so it can never stick.
+  bool _warmingL1 = false;
+  Timer? _warmingTimer;
+
   @override
   void initState() {
     super.initState();
@@ -198,6 +207,10 @@ class WorldMapController extends State<WorldMap>
     _languageSubscription = user.languageStream.stream.listen((update) {
       if (update.targetLang != _filterState.filter.l2) {
         _setL2(update.targetLang);
+      }
+      // L1 (base-language) change → open the shimmer window (see [_warmingL1]).
+      if (update.prevBaseLang != update.baseLang) {
+        _beginL1Warmup();
       }
     });
 
@@ -288,6 +301,7 @@ class WorldMapController extends State<WorldMap>
     _syncSub?.cancel();
     _languageSubscription?.cancel();
     _refetchDebounce?.cancel();
+    _warmingTimer?.cancel();
     _fitDebounce?.cancel();
     _planHydrateDebounce?.cancel();
     _dismissalExpiryTimer?.cancel();
@@ -357,6 +371,9 @@ class WorldMapController extends State<WorldMap>
   Client? get client => _client;
   bool get loadingPins => _loadingPins;
 
+  /// Whether the L1 shimmer window is active.
+  bool get warmingPins => _warmingL1;
+
   WorldMapFilter get filter => _filterState.filter;
   Map<String, PinSignals> get signals => _pinsManager.signals;
   int? get courseAvailableParticipants =>
@@ -364,12 +381,18 @@ class WorldMapController extends State<WorldMap>
   ProgressionResolution get progression => _pinsManager.progression;
 
   /// The pins actually shown: the loaded set narrowed by the active CEFR band,
-  /// party-size and status filters, and free-text query. World only; a course
-  /// shows its set.
-  List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins((c) {
-    if (!isWorld) return true;
-    return _filterState.include(c, _pinsManager.displayStateOf(c));
-  });
+  /// party-size and status filters, and free-text query. Applied in BOTH
+  /// scopes (#7716) — a course scope only decides which items compete, not
+  /// whether the learner can refine them (world-map.instructions.md). The one
+  /// scope-dependent term is the settings-fixed language, applied on the world
+  /// map only; see [WorldMapFilterState.include].
+  List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins(
+    (c) => _filterState.include(
+      c,
+      _pinsManager.displayStateOf(c),
+      applyLanguage: isWorld,
+    ),
+  );
 
   /// Why the view shows no matches — the empty-view card's diagnosis
   /// ([MapEmptyVerdict]), shared by the wide overlay and the narrow bar so the
@@ -377,7 +400,7 @@ class WorldMapController extends State<WorldMap>
   /// coordinates count anywhere here: a match that can never render can't be
   /// revealed by any remedy the card offers.
   MapEmptyVerdict get emptyVerdict {
-    if (!isWorld || loadingPins) return MapEmptyVerdict.none;
+    if (loadingPins) return MapEmptyVerdict.none;
     final loaded = visiblePins.where((c) => c.point != null).toList();
     if (loaded.isNotEmpty) {
       // Matches exist under the current filters/query — the verdict is about
@@ -397,7 +420,9 @@ class WorldMapController extends State<WorldMap>
     // Nothing passes anywhere loaded: diagnose the excluder. If the pills are
     // it (matches exist ignoring them), widening fixes it by construction.
     final ignoringPills = _pinsManager.filteredPins(
-      (c) => c.point != null && _filterState.matchesIgnoringPills(c),
+      (c) =>
+          c.point != null &&
+          _filterState.matchesIgnoringPills(c, applyLanguage: isWorld),
     );
     if (ignoringPills.isNotEmpty) return MapEmptyVerdict.filtersHideMatches;
     return filter.query.trim().isNotEmpty
@@ -435,8 +460,23 @@ class WorldMapController extends State<WorldMap>
     // signals, debounced so a burst of hydrations coalesces into one pass.
     _planHydrateDebounce?.cancel();
     _planHydrateDebounce = Timer(const Duration(milliseconds: 500), () {
-      if (mounted) _recomputeProgress();
+      if (!mounted) return;
+      _recomputeProgress();
+      // Signals are fresh now, so end any open L1 shimmer window (no-op else).
+      _endL1Warmup();
     });
+  }
+
+  /// Open the shimmer window and arm its fallback timer.
+  void _beginL1Warmup() {
+    _warmingTimer?.cancel();
+    _warmingTimer = Timer(WorldMapConstants.l1WarmupMax, _endL1Warmup);
+    if (!_warmingL1 && mounted) setState(() => _warmingL1 = true);
+  }
+
+  void _endL1Warmup() {
+    _warmingTimer?.cancel();
+    if (_warmingL1 && mounted) setState(() => _warmingL1 = false);
   }
 
   void _recomputeProgress() {
@@ -958,11 +998,22 @@ class WorldMapController extends State<WorldMap>
   /// new camera instead of the frozen last-settled one (#7245). Applies in
   /// every map context (world and course), unlike the world-only re-fetch
   /// above.
+  ///
+  /// The settle also ticks [viewRevision]. The camera is an input to
+  /// [emptyVerdict] ([MapEmptyVerdict.matchesOffscreen] is exactly "the
+  /// matches are outside these bounds"), and the narrow surfaces are built by
+  /// the shell — this State's `setState` never reaches them, so without the
+  /// tick their empty-view card keeps answering for the camera it was last
+  /// built at. On the world map the settle re-fetch above ticks anyway; in a
+  /// course scope it doesn't run, which left the card's own Zoom out lever
+  /// unable to clear the card it had just fixed (#7716).
   void _onMapEvent(MapEvent event) {
     final wasMoving = isActivelyMoving;
     _moveSettleTimer?.cancel();
     _moveSettleTimer = Timer(WorldMapConstants.moveSettle, () {
-      if (mounted) setState(() {});
+      if (!mounted) return;
+      setState(() {});
+      viewRevision.value++;
     });
     if (!wasMoving && mounted) setState(() {});
   }

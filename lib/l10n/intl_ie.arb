@@ -3102,7 +3102,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-05 10:21:34.106815",
+    "@@last_modified": "2026-08-05 11:42:13.003639",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10336,5 +10336,12 @@
     "streamingSttDegradedLiveBanner": "Tá trascríobh beo ag rith ar sheirbhís chúltaca. D'fhéadfadh an cháilíocht a bheith éagsúil, seiceáil an téacs le do thoil.",
     "streamingSttDegradedToBatchBanner": "Níl trascríobh beo ar fáil faoi láthair. Tras-scríobhadh do theachtaireacht ar an ngnáthbhealach, gan eagarthóireacht bheo. Táimid ag obair chun é a chur ar ais.",
     "streamingSttLanguageUnsupportedBanner": "Níl trascríobh beo ar fáil don teanga seo fós. Táimid ag obair air.",
-    "formLabel": "Foirm {name}"
+    "formLabel": "Foirm {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Tacaíocht",
+    "explorePlayAndLearn": "Fiosraigh, imir agus foghlaim",
+    "conversationFromDayOne": "Comhrá ón gCéad Lá",
+    "builtForConnection": "Tógtha le haghaidh ceangail",
+    "aiWhenYouNeedIt": "AI nuair a bhíonn sé uait",
+    "practiceTailoredForYou": "Cleachtadh saincheaptha duit"
 }
