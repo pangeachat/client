@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-05 10:21:31.938958",
+    "@@last_modified": "2026-08-05 11:42:12.267678",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9705,6 +9705,8 @@
     "streamingSttDegradedToBatchBanner": "A transcrición en directo non está dispoñible neste momento. A túa mensaxe transcribiuse do xeito estándar, sen edición en directo. Estamos a traballar para restaurala.",
     "streamingSttLanguageUnsupportedBanner": "A transcrición en directo aínda non está dispoñible para este idioma. Estamos a traballar niso.",
     "formLabel": "Formulario de {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Soporte",
     "explorePlayAndLearn": "Explora, xoga e aprende",
     "conversationFromDayOne": "Conversa dende o primeiro día",
     "builtForConnection": "Feito para conectar",

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-05 10:21:35.651864",
+    "@@last_modified": "2026-08-05 11:42:13.804789",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "ಲೈವ್ ಟ್ರಾನ್ಸ್‌ಕ್ರಿಪ್ಷನ್ ಈಗ ಲಭ್ಯವಿಲ್ಲ. ನಿಮ್ಮ ಸಂದೇಶವನ್ನು ಲೈವ್ ಎಡಿಟಿಂಗ್ ಇಲ್ಲದೆ, ಪ್ರಮಾಣಿತ ರೀತಿಯಲ್ಲಿ ಟ್ರಾನ್ಸ್‌ಕ್ರೈಬ್ ಮಾಡಲಾಗಿದೆ. ನಾವು ಅದನ್ನು ಮರುಸ್ಥಾಪಿಸಲು ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದೇವೆ.",
     "streamingSttLanguageUnsupportedBanner": "ಈ ಭಾಷೆಗೆ ಲೈವ್ ಟ್ರಾನ್ಸ್‌ಕ್ರಿಪ್ಷನ್ ಇನ್ನೂ ಲಭ್ಯವಿಲ್ಲ. ನಾವು ಅದರ ಮೇಲೆ ಕೆಲಸ ಮಾಡುತ್ತಿದ್ದೇವೆ.",
     "formLabel": "{name} ಫಾರ್ಮ್",
+    "botDisplayName": "ಪ್ಯಾಂಗಿಯಾ ಬಾಟ್",
+    "supportDisplayName": "ಬೆಂಬಲ",
     "explorePlayAndLearn": "ಅನ್ವೇಷಿಸಿ, ಆಟವಾಡಿ ಮತ್ತು ಕಲಿಯಿರಿ",
     "conversationFromDayOne": "ಮೊದಲ ದಿನದಿಂದಲೇ ಸಂಭಾಷಣೆ",
     "builtForConnection": "ಸಂಪರ್ಕಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ",

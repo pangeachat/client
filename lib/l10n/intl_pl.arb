@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-05 10:21:39.253494",
+    "@@last_modified": "2026-08-05 11:42:15.882924",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9790,6 +9790,8 @@
     "streamingSttDegradedToBatchBanner": "Transkrypcja na żywo jest obecnie niedostępna. Twoja wiadomość została przetranskrybowana w standardowy sposób, bez edycji na żywo. Pracujemy nad przywróceniem usługi.",
     "streamingSttLanguageUnsupportedBanner": "Transkrypcja na żywo nie jest jeszcze dostępna dla tego języka. Pracujemy nad tym.",
     "formLabel": "Formularz {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Wsparcie",
     "explorePlayAndLearn": "Odkrywaj, graj i ucz się",
     "conversationFromDayOne": "Rozmowa od pierwszego dnia",
     "builtForConnection": "Stworzone do nawiązywania kontaktów",

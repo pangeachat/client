@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-05 10:21:41.847479",
+    "@@last_modified": "2026-08-05 11:42:18.227878",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Transkripsi langsung teu sayogi ayeuna. Pesen anjeun ditranskripsi sacara standar, tanpa éditan langsung. Kami nuju ngusahakeun mulihkeunana.",
     "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung teu acan sayogi pikeun basa ieu. Kami nuju ngusahakeunana.",
     "formLabel": "Formulir {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Pangrojong",
     "explorePlayAndLearn": "Ngajalajah, ulin, jeung diajar",
     "conversationFromDayOne": "Paguneman ti Poé Kahiji",
     "builtForConnection": "Dijieun pikeun sambungan",

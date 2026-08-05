@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-05 10:21:36.300825",
+    "@@last_modified": "2026-08-05 11:42:14.651996",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Live Transkriptioun ass am Moment net disponibel. Är Noriicht gouf op déi üblech Manéier transkribéiert, ouni Live-Ännerung. Mir schaffen drun, et nees hierzestellen.",
     "streamingSttLanguageUnsupportedBanner": "Live Transkriptioun ass nach net fir dës Sprooch disponibel. Mir schaffen drun.",
     "formLabel": "{name} Formulaire",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Support",
     "explorePlayAndLearn": "Entdeckt, spillt a léiert",
     "conversationFromDayOne": "Gespréicher vum éischten Dag un",
     "builtForConnection": "Gemaach fir Verbindung",

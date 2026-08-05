@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:34.224120",
+    "@@last_modified": "2026-08-05 11:42:13.426260",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9778,6 +9778,8 @@
     "streamingSttDegradedToBatchBanner": "La trascrizione in tempo reale non è disponibile al momento. Il tuo messaggio è stato trascritto in modo standard, senza modifiche in tempo reale. Stiamo lavorando per ripristinarla.",
     "streamingSttLanguageUnsupportedBanner": "La trascrizione in tempo reale non è ancora disponibile per questa lingua. Ci stiamo lavorando.",
     "formLabel": "Modulo {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Supporto",
     "explorePlayAndLearn": "Esplora, gioca e impara",
     "conversationFromDayOne": "Conversazione dal primo giorno",
     "builtForConnection": "Costruito per la connessione",

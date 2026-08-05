@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-05 10:21:37.247121",
+    "@@last_modified": "2026-08-05 11:42:14.565199",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Kāore i te wātea te tuhinga ora i nāianei tonu. I tuhia tō karere i te ara paerewa, me te kore whakatika ora. Kei te mahi mātou ki te whakahoki mai.",
     "streamingSttLanguageUnsupportedBanner": "Kāore anō kia wātea te tuhinga ora mō tēnei reo. Kei te mahi mātou.",
     "formLabel": "Puka {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Tautoko",
     "explorePlayAndLearn": "Tūhuratia, tākaro, ako hoki",
     "conversationFromDayOne": "Kōrerorero mai i te Rā Tuatahi",
     "builtForConnection": "Hangaia mō te hononga",

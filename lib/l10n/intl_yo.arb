@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-05 10:21:45.954814",
+    "@@last_modified": "2026-08-05 11:42:18.410365",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ kò sí nílò báyìí. A kọ ọ̀rọ̀ rẹ sílẹ̀ ní ọ̀nà tó wọ́pọ̀, láìsí àtúnṣe lórí ẹ̀rọ ìgbésáfẹ́fẹ́. A ń ṣiṣẹ́ láti mú un padà bọ̀ sípò.",
     "streamingSttLanguageUnsupportedBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ kò sí fún èdè yìí báyìí. A ń ṣiṣẹ́ lórí rẹ̀.",
     "formLabel": "Fọ́ọ̀mù {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Ìrànlọ́wọ́",
     "explorePlayAndLearn": "Ṣawari, ṣeré, ki o si kọ́",
     "conversationFromDayOne": "Ìfọ̀rọ̀wérọ̀ láti Ọjọ́ Kìíní",
     "builtForConnection": "Ti a kọ́ fún ìsopọ̀",

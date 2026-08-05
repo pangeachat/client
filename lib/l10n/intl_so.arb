@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-05 10:21:42.003870",
+    "@@last_modified": "2026-08-05 11:42:16.743628",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Qoraalka tooska ah hadda lama heli karo. Farriintaada waxa loo qoray si caadi ah, iyada oo aan la tafatirin si toos ah. Waxaanu ka shaqaynaynaa sidii aanu dib ugu soo celin lahayn.",
     "streamingSttLanguageUnsupportedBanner": "Qoraalka tooska ah weli lama heli karo luqaddan. Waxaanu ka shaqaynaynaa.",
     "formLabel": "{name} foomka",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Taageero",
     "explorePlayAndLearn": "Sahami, ciyaar oo baro",
     "conversationFromDayOne": "Wadahadal laga bilaabo maalinta koowaad",
     "builtForConnection": "Loo dhisay isku xirnaan",

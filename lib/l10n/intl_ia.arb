@@ -1369,7 +1369,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-05 10:21:33.637242",
+    "@@last_modified": "2026-08-05 11:42:12.905219",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10647,6 +10647,8 @@
     "streamingSttDegradedToBatchBanner": "Le transcription in directo non es disponibile nunc. Tu message esseva transcribite del maniera standard, sin edition in directo. Nos travalia pro restaurar lo.",
     "streamingSttLanguageUnsupportedBanner": "Le transcription in directo non es ancora disponibile pro iste lingua. Nos travalia super illo.",
     "formLabel": "Formulario de {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Supporto",
     "explorePlayAndLearn": "Explora, joca e apprende",
     "conversationFromDayOne": "Conversation desde le prime die",
     "builtForConnection": "Construite pro connexion",

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-05 10:21:29.638170",
+    "@@last_modified": "2026-08-05 11:42:11.325218",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9692,6 +9692,8 @@
     "streamingSttDegradedToBatchBanner": "Die Live-Transkription ist derzeit nicht verfügbar. Ihre Nachricht wurde auf die Standardweise transkribiert, ohne Live-Bearbeitung. Wir arbeiten daran, dies wiederherzustellen.",
     "streamingSttLanguageUnsupportedBanner": "Die Live-Transkription ist für diese Sprache noch nicht verfügbar. Wir arbeiten daran.",
     "formLabel": "{name}-Formular",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Support",
     "explorePlayAndLearn": "Entdecken, spielen und lernen",
     "conversationFromDayOne": "Konversation vom ersten Tag an",
     "builtForConnection": "Für Verbindung gemacht",

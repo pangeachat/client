@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:30.715872",
+    "@@last_modified": "2026-08-05 11:42:11.842939",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9793,6 +9793,8 @@
     "streamingSttDegradedToBatchBanner": "رونویسی زنده در حال حاضر در دسترس نیست. پیام شما به روش استاندارد، بدون ویرایش زنده، رونویسی شد. ما در حال تلاش برای بازیابی آن هستیم.",
     "streamingSttLanguageUnsupportedBanner": "رونویسی زنده هنوز برای این زبان در دسترس نیست. ما در حال کار روی آن هستیم.",
     "formLabel": "فرم {name}",
+    "botDisplayName": "ربات Pangea",
+    "supportDisplayName": "پشتیبانی",
     "explorePlayAndLearn": "کاوش کنید، بازی کنید و یاد بگیرید",
     "conversationFromDayOne": "مکالمه از روز اول",
     "builtForConnection": "ساخته شده برای ارتباط",

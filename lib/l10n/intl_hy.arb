@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-05 10:21:34.340347",
+    "@@last_modified": "2026-08-05 11:42:13.031581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Ուղիղ տառադարձումը ներկայումս անհասանելի է։ Ձեր հաղորդագրությունը տառադարձվել է ստանդարտ եղանակով՝ առանց ուղիղ խմբագրման։ Մենք աշխատում ենք այն վերականգնելու ուղղությամբ։",
     "streamingSttLanguageUnsupportedBanner": "Ուղիղ տառադարձումը դեռ հասանելի չէ այս լեզվի համար։ Մենք աշխատում ենք դրա վրա։",
     "formLabel": "{name} ձևաթուղթ",
+    "botDisplayName": "Pangea Բոտ",
+    "supportDisplayName": "Աջակցություն",
     "explorePlayAndLearn": "Բացահայտեք, խաղացեք և սովորեք",
     "conversationFromDayOne": "Զրույց առաջին իսկ օրվանից",
     "builtForConnection": "Ստեղծված կապի համար",

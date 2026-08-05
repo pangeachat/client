@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-05 10:21:33.133071",
+    "@@last_modified": "2026-08-05 11:42:12.527128",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10141,6 +10141,8 @@
     "streamingSttDegradedToBatchBanner": "Transkripcija uživo trenutno nije dostupna. Vaša poruka je transkribirana na standardni način, bez uređivanja uživo. Radimo na tome da je vratimo.",
     "streamingSttLanguageUnsupportedBanner": "Transkripcija uživo još nije dostupna za ovaj jezik. Radimo na tome.",
     "formLabel": "Obrazac za {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Podrška",
     "explorePlayAndLearn": "Istražuj, igraj se i uči",
     "conversationFromDayOne": "Razgovor od prvog dana",
     "builtForConnection": "Stvoreno za povezivanje",

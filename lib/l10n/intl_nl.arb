@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:38.246979",
+    "@@last_modified": "2026-08-05 11:42:15.517402",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9705,6 +9705,8 @@
     "streamingSttDegradedToBatchBanner": "Live transcriptie is momenteel niet beschikbaar. Je bericht is op de standaardmanier getranscribeerd, zonder live bewerking. We werken eraan om dit te herstellen.",
     "streamingSttLanguageUnsupportedBanner": "Live transcriptie is nog niet beschikbaar voor deze taal. We werken eraan.",
     "formLabel": "{name}-formulier",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Ondersteuning",
     "explorePlayAndLearn": "Ontdek, speel en leer",
     "conversationFromDayOne": "Gesprek vanaf dag één",
     "builtForConnection": "Gebouwd voor verbinding",

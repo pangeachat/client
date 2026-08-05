@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:41.893646",
+    "@@last_modified": "2026-08-05 11:42:17.635414",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10223,6 +10223,8 @@
     "streamingSttDegradedToBatchBanner": "Direkttranskribering är inte tillgänglig just nu. Ditt meddelande transkriberades på standardvis, utan direktredigering. Vi arbetar med att återställa den.",
     "streamingSttLanguageUnsupportedBanner": "Direkttranskribering är inte tillgänglig för det här språket ännu. Vi arbetar på det.",
     "formLabel": "{name} formulär",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Support",
     "explorePlayAndLearn": "Utforska, spela och lär dig",
     "conversationFromDayOne": "Konversation från första dagen",
     "builtForConnection": "Byggd för anslutning",

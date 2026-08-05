@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-05 10:21:45.167425",
+    "@@last_modified": "2026-08-05 11:42:18.397299",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "לייוו טראַנסקריפּציע איז איצט נישט פאַראַנען. דיין מעסעדזש איז טראַנסקריבירט געוואָרן אויפן סטאַנדאַרטן אופן, אָן לייוו רעדאַקטירונג. מיר אַרבעטן צו צוריקשטעלן עס.",
     "streamingSttLanguageUnsupportedBanner": "לייוו טראַנסקריפּציע איז נאָך נישט פאַראַנען פֿאַר דער שפּראַך. מיר אַרבעטן דערויף.",
     "formLabel": "{name} פאָרעם",
+    "botDisplayName": "פּאַנגעאַ באָט",
+    "supportDisplayName": "שטיצן",
     "explorePlayAndLearn": "אויספֿאָרשן, שפּילן און לערנען",
     "conversationFromDayOne": "שמועס פֿון טאָג איין",
     "builtForConnection": "געבויט פֿאַר פֿאַרבינדונג",

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-05 10:21:28.633892",
+    "@@last_modified": "2026-08-05 11:42:10.343463",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "የቀጥታ ትርጉም በአሁኑ ጊዜ አይገኝም። መልእክትዎ በመደበኛ መንገድ፣ ያለቀጥታ አርትዖት ተተርጉሟል። ወደነበረበት ለመመለስ እየሰራን ነው።",
     "streamingSttLanguageUnsupportedBanner": "የቀጥታ ትርጉም ለዚህ ቋንቋ ገና አይገኝም። እየሰራንበት ነው።",
     "formLabel": "{name} ቅጽ",
+    "botDisplayName": "ፓንጋያ ቦት",
+    "supportDisplayName": "ድጋፍ",
     "explorePlayAndLearn": "አስስ፣ ተጫወት እና ተማር",
     "conversationFromDayOne": "ከመጀመሪያው ቀን ጀምሮ ውይይት",
     "builtForConnection": "ለመገናኘት የተሰራ",

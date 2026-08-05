@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-05 10:21:45.355195",
+    "@@last_modified": "2026-08-05 11:42:18.637592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Ukulotshwa bukhoma akutholakali okwamanje. Umlayezo wakho ulotshwe ngendlela evamile, ngaphandle kokuhlela bukhoma. Sisebenzela ukukubuyisela.",
     "streamingSttLanguageUnsupportedBanner": "Ukulotshwa bukhoma akukatholakali ngalolu limi okwamanje. Sisebenzela kukho.",
     "formLabel": "Ifomu lika-{name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Ukusekela",
     "explorePlayAndLearn": "Hlola, dlala futhi ufunde",
     "conversationFromDayOne": "Ingxoxo kusukela osukwini lokuqala",
     "builtForConnection": "Yakhelwe ukuxhumana",

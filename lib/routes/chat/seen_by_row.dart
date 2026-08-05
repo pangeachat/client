@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/utils/room_status_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -44,7 +46,7 @@ class SeenByRow extends StatelessWidget {
                 .map(
                   (user) => Avatar(
                     mxContent: user.avatarUrl,
-                    name: user.calcDisplayname(),
+                    name: user.localizedDisplayname(L10n.of(context)),
                     size: 16,
                     // #Pangea
                     userId: user.id,

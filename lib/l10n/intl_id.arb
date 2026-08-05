@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:33.433876",
+    "@@last_modified": "2026-08-05 11:42:13.221476",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9778,6 +9778,8 @@
     "streamingSttDegradedToBatchBanner": "Transkripsi langsung tidak tersedia saat ini. Pesan Anda ditranskripsikan dengan cara standar, tanpa pengeditan langsung. Kami sedang berupaya memulihkannya.",
     "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengupayakannya.",
     "formLabel": "Formulir {name}",
+    "botDisplayName": "Bot Pangea",
+    "supportDisplayName": "Dukungan",
     "explorePlayAndLearn": "Jelajahi, mainkan, dan pelajari",
     "conversationFromDayOne": "Percakapan sejak Hari Pertama",
     "builtForConnection": "Dibuat untuk koneksi",

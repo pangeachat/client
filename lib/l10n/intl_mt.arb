@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-05 10:21:38.655683",
+    "@@last_modified": "2026-08-05 11:42:15.193433",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "It-traskrizzjoni diretta mhix disponibbli bħalissa. Il-messaġġ tiegħek ġie traskritt bil-mod standard, mingħajr editjar dirett. Qed naħdmu biex nirrestawrawha.",
     "streamingSttLanguageUnsupportedBanner": "It-traskrizzjoni diretta għadha mhix disponibbli għal din il-lingwa. Qed naħdmu fuqha.",
     "formLabel": "Formola ta' {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Appoġġ",
     "explorePlayAndLearn": "Esplora, ilgħab u titgħallem",
     "conversationFromDayOne": "Konverżazzjoni mill-ewwel jum",
     "builtForConnection": "Mibni għall-konnessjoni",

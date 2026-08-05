@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-05 10:21:34.633909",
+    "@@last_modified": "2026-08-05 11:42:13.447371",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Transkripsi langsung ora kasedhiya saiki. Pesen sampeyan ditranskripsi kanthi cara standar, tanpa panyuntingan langsung. Kita lagi ngupayakake mulihake.",
     "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung durung kasedhiya kanggo basa iki. Kita lagi ngupayakake.",
     "formLabel": "Formulir {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Dhukungan",
     "explorePlayAndLearn": "Jelajahi, dolanan, lan sinau",
     "conversationFromDayOne": "Pacelathon wiwit dina kapisan",
     "builtForConnection": "Digawe kanggo sesambungan",

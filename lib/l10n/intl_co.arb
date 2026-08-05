@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-05 10:21:29.784444",
+    "@@last_modified": "2026-08-05 11:42:11.066655",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "A trascrizzione in diretta ùn hè micca dispunibule avà. U vostru messagiu hè statu trascrittu in modu standard, senza edizione in diretta. Travagliemu per ristabilisce lu.",
     "streamingSttLanguageUnsupportedBanner": "A trascrizzione in diretta ùn hè ancu dispunibule per sta lingua. Ci travagliemu.",
     "formLabel": "Forma {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Supportu",
     "explorePlayAndLearn": "Esplora, ghjoca è ampara",
     "conversationFromDayOne": "Cunversazione da u primu ghjornu",
     "builtForConnection": "Custruitu per a cunnessione",

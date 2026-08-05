@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-05 10:21:36.780483",
+    "@@last_modified": "2026-08-05 11:42:14.106983",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "ڕوونووسکردنی ڕاستەوخۆ لە ئێستادا بەردەست نییە. پەیامەکەت بە شێوەی ستاندارد ڕوونووس کراوە، بەبێ دەستکاریکردنی ڕاستەوخۆ. ئێمە کار بۆ گەڕاندنەوەی دەکەین.",
     "streamingSttLanguageUnsupportedBanner": "ڕوونووسکردنی ڕاستەوخۆ هێشتا بۆ ئەم زمانە بەردەست نییە. ئێمە کار لەسەر ئەوە دەکەین.",
     "formLabel": "فۆرمی {name}",
+    "botDisplayName": "بۆتی پانگەیا",
+    "supportDisplayName": "پشتگیری",
     "explorePlayAndLearn": "گەڕان، یاریکردن و فێربوون",
     "conversationFromDayOne": "گفتوگۆ لە یەکەم ڕۆژەوە",
     "builtForConnection": "بۆ پەیوەندی دروستکراوە",

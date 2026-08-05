@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-05 10:21:37.611815",
+    "@@last_modified": "2026-08-05 11:42:15.086737",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "थेट प्रतिलेखन सध्या उपलब्ध नाही. तुमचा संदेश थेट संपादनाशिवाय, नेहमीच्या पद्धतीने प्रतिलेखित केला गेला आहे. आम्ही ते पूर्ववत करण्याचा प्रयत्न करत आहोत.",
     "streamingSttLanguageUnsupportedBanner": "या भाषेसाठी थेट प्रतिलेखन अद्याप उपलब्ध नाही. आम्ही त्यावर काम करत आहोत.",
     "formLabel": "{name} फॉर्म",
+    "botDisplayName": "पँजिया बॉट",
+    "supportDisplayName": "आधार",
     "explorePlayAndLearn": "एक्सप्लोर करा, खेळा आणि शिका",
     "conversationFromDayOne": "पहिल्या दिवसापासून संभाषण",
     "builtForConnection": "कनेक्शनसाठी बनवले आहे",

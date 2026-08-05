@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-05 10:21:34.141284",
+    "@@last_modified": "2026-08-05 11:42:13.544604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Bein umritun er ekki tiltæk eins og er. Skilaboðin þín voru umrituð á hefðbundinn hátt, án beinnar klippingar. Við erum að vinna að því að koma henni aftur í gang.",
     "streamingSttLanguageUnsupportedBanner": "Bein umritun er ekki enn tiltæk fyrir þetta tungumál. Við erum að vinna í því.",
     "formLabel": "{name} eyðublað",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Þjónustuver",
     "explorePlayAndLearn": "Kannaðu, spilaðu og lærðu",
     "conversationFromDayOne": "Samræður frá fyrsta degi",
     "builtForConnection": "Hannað fyrir tengingu",

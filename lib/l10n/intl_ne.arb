@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-05 10:21:39.121356",
+    "@@last_modified": "2026-08-05 11:42:15.854629",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "प्रत्यक्ष ट्रान्सक्रिप्शन अहिले उपलब्ध छैन। तपाईंको सन्देश मानक तरिकाले, प्रत्यक्ष सम्पादन बिना ट्रान्सक्राइब गरिएको थियो। हामी यसलाई पुनर्स्थापित गर्न काम गरिरहेका छौं।",
     "streamingSttLanguageUnsupportedBanner": "यस भाषाको लागि प्रत्यक्ष ट्रान्सक्रिप्शन अझै उपलब्ध छैन। हामी यसमा काम गरिरहेका छौं।",
     "formLabel": "{name} फारम",
+    "botDisplayName": "पान्गेया बट",
+    "supportDisplayName": "समर्थन",
     "explorePlayAndLearn": "अन्वेषण गर्नुहोस्, खेल्नुहोस् र सिक्नुहोस्",
     "conversationFromDayOne": "पहिलो दिनदेखि नै कुराकानी",
     "builtForConnection": "जडानका लागि निर्मित",

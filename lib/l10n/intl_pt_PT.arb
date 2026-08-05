@@ -2568,7 +2568,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-05 10:21:40.141083",
+    "@@last_modified": "2026-08-05 11:42:16.160610",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10622,6 +10622,8 @@
     "streamingSttDegradedToBatchBanner": "A transcrição em direto não está disponível neste momento. A sua mensagem foi transcrita da forma padrão, sem edição em direto. Estamos a trabalhar para restaurá-la.",
     "streamingSttLanguageUnsupportedBanner": "A transcrição em direto ainda não está disponível para este idioma. Estamos a trabalhar nisso.",
     "formLabel": "Formulário de {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Apoio",
     "explorePlayAndLearn": "Explorar, jogar e aprender",
     "conversationFromDayOne": "Conversar desde o primeiro dia",
     "builtForConnection": "Criado para a ligação",

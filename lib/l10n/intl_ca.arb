@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:29.615000",
+    "@@last_modified": "2026-08-05 11:42:11.297179",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9832,6 +9832,8 @@
     "streamingSttDegradedToBatchBanner": "La transcripció en directe no està disponible en aquest moment. El teu missatge es va transcriure de la manera estàndard, sense edició en directe. Estem treballant per restaurar-la.",
     "streamingSttLanguageUnsupportedBanner": "La transcripció en directe encara no està disponible per a aquest idioma. Hi estem treballant.",
     "formLabel": "Formulari de {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Suport",
     "explorePlayAndLearn": "Explora, juga i aprèn",
     "conversationFromDayOne": "Conversa des del primer dia",
     "builtForConnection": "Dissenyat per a la connexió",

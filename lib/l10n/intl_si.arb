@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-05 10:21:41.641869",
+    "@@last_modified": "2026-08-05 11:42:16.613172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "සජීවී පිටපත් කිරීම මේ මොහොතේ නොමැත. ඔබගේ පණිවිඩය සජීවී සංස්කරණයකින් තොරව සම්මත ආකාරයෙන් පිටපත් කර ඇත. අපි එය යථා තත්ත්වයට පත් කිරීමට කටයුතු කරමින් සිටිමු.",
     "streamingSttLanguageUnsupportedBanner": "මෙම භාෂාව සඳහා සජීවී පිටපත් කිරීම තවමත් නොමැත. අපි ඒ සඳහා කටයුතු කරමින් සිටිමු.",
     "formLabel": "{name} පෝරමය",
+    "botDisplayName": "පැන්ජියා බොට්",
+    "supportDisplayName": "සහාය",
     "explorePlayAndLearn": "ගවේෂණය කරන්න, සෙල්ලම් කරන්න සහ ඉගෙන ගන්න",
     "conversationFromDayOne": "මුල් දවසේ සිට සංවාදය",
     "builtForConnection": "සම්බන්ධතාවය සඳහා ගොඩනගා ඇත",

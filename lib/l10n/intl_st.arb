@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-05 10:21:42.276634",
+    "@@last_modified": "2026-08-05 11:42:17.029606",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "Phetolelo e phelang ha e fumanehe ha jwale. Molaetsa wa hao o fetolelwa ka mokgwa o tlwaelehileng, ntle le ho o hlophisa hanghang. Re sebetsa ho e kgutlisa.",
     "streamingSttLanguageUnsupportedBanner": "Phetolelo e phelang ha e so fumanehe bakeng sa puo ena. Re ntse re sebetsa ho yona.",
     "formLabel": "Foromo ea {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Tshehetso",
     "explorePlayAndLearn": "Hlahloba, bapala le ho ithuta",
     "conversationFromDayOne": "Puisano ho tloha Letsatsing la Pele",
     "builtForConnection": "E hahiloe bakeng sa khokahano",

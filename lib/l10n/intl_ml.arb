@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-05 10:21:37.479129",
+    "@@last_modified": "2026-08-05 11:42:15.616611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2087,6 +2087,8 @@
     "streamingSttDegradedToBatchBanner": "തത്സമയ ട്രാൻസ്ക്രിപ്ഷൻ ഇപ്പോൾ ലഭ്യമല്ല. നിങ്ങളുടെ സന്ദേശം സാധാരണ രീതിയിൽ, തത്സമയ എഡിറ്റിംഗ് ഇല്ലാതെ ട്രാൻസ്ക്രൈബ് ചെയ്തു. ഇത് പുനഃസ്ഥാപിക്കാൻ ഞങ്ങൾ പ്രവർത്തിക്കുന്നു.",
     "streamingSttLanguageUnsupportedBanner": "ഈ ഭാഷയിൽ തത്സമയ ട്രാൻസ്ക്രിപ്ഷൻ ഇതുവരെ ലഭ്യമല്ല. ഞങ്ങൾ അതിനായി പ്രവർത്തിക്കുന്നു.",
     "formLabel": "{name} ഫോം",
+    "botDisplayName": "പാൻജിയ ബോട്ട്",
+    "supportDisplayName": "പിന്തുണ",
     "explorePlayAndLearn": "പര്യവേക്ഷണം ചെയ്യുക, കളിക്കുക, പഠിക്കുക",
     "conversationFromDayOne": "ആദ്യ ദിവസം മുതൽ സംഭാഷണം",
     "builtForConnection": "ബന്ധങ്ങൾക്കായി നിർമ്മിച്ചത്",

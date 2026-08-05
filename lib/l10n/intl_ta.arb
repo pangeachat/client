@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:42.815082",
+    "@@last_modified": "2026-08-05 11:42:17.188887",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9797,6 +9797,8 @@
     "streamingSttDegradedToBatchBanner": "நேரடி படியெடுத்தல் தற்போது கிடைக்கவில்லை. உங்கள் செய்தி நேரடி திருத்தம் இல்லாமல், வழக்கமான முறையில் படியெடுக்கப்பட்டது. அதை மீட்டெடுக்க நாங்கள் பணியாற்றி வருகிறோம்.",
     "streamingSttLanguageUnsupportedBanner": "இந்த மொழிக்கு நேரடி படியெடுத்தல் இன்னும் கிடைக்கவில்லை. நாங்கள் அதில் பணியாற்றி வருகிறோம்.",
     "formLabel": "{name} படிவம்",
+    "botDisplayName": "பாங்கியா போட்",
+    "supportDisplayName": "ஆதரவு",
     "explorePlayAndLearn": "ஆராய்ந்து, விளையாடி, கற்றுக்கொள்ளுங்கள்",
     "conversationFromDayOne": "முதல் நாளிலிருந்தே உரையாடல்",
     "builtForConnection": "இணைப்பிற்காக உருவாக்கப்பட்டது",
