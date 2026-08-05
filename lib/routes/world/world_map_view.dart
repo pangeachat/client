@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
+import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
@@ -405,10 +406,13 @@ class _WorldMapViewState extends State<WorldMapView> {
     // While the camera is actively moving, hold the last-settled render model
     // instead of recomputing against the live, still-moving camera bounds —
     // freezes every pin/card's tier and size for the gesture's duration
-    // (#7245). Falls through to a fresh compute if nothing has settled yet
-    // (e.g. the very first frame).
+    // (#7245). The same freeze also holds through the L1 shimmer window, so pins
+    // keep their pre-change tiers instead of re-tiering against reset signals.
+    // Falls through to a fresh compute if nothing has settled yet (e.g. the very
+    // first frame).
     final cached = _lastSettledRenderer;
-    if (widget.controller.isActivelyMoving && cached != null) {
+    if ((widget.controller.isActivelyMoving || widget.controller.warmingPins) &&
+        cached != null) {
       return cached;
     }
 
@@ -798,6 +802,8 @@ class _WorldMapViewState extends State<WorldMapView> {
     final dark = Theme.of(context).brightness == Brightness.dark;
     final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
 
+    final warming = widget.controller.warmingPins;
+
     // Resolve which pins to draw and each one's tier/state/pinged/star-tier once
     // per frame, then lay out the layers from it.
     final render = _resolvePinRender(context);
@@ -856,6 +862,35 @@ class _WorldMapViewState extends State<WorldMapView> {
               // or panning freezes exactly as above.
               final minZoom = WorldMapConstants.minZoomFor(constraints.biggest);
               _reclampCameraIfBelow(minZoom);
+              // Locals so _ShimmerLayer can wrap them without duplicating their
+              // construction.
+              final Widget dotLayer = DotMarkersLayer(
+                nonLargeCards: render.nonLargeCards,
+                stateOf: render.stateOf,
+                nonStartableOf: render.nonStartableOf,
+                tierOf: render.tierOf,
+                starLevelOf: render.starLevelOf,
+                pingedOf: render.pingedOf,
+                activeActivityInstance:
+                    widget.controller.client?.activeActivityInstance,
+                markerBox: _markerBox,
+                markerAlignment: _markerAlignment,
+                sessionParticipants: (a, b) => _sessionParticipants(a, b),
+                focusedId: render.focusedId,
+                onTap: widget.controller.openActivity,
+                // Set.add returns true only on first insertion — a pin
+                // animates in the first build it appears, then holds full
+                // scale through State recreations (#8136).
+                animateInOf: _enteredIds.add,
+              ).layer();
+              final Widget largeLayer = LargeMarkersLayer(
+                largeCards: render.largeCards,
+                currentLarge: currentLarge,
+                focusedId: render.focusedId,
+                onTap: widget.controller.openActivity,
+                onClose: widget.controller.dismissLargeCard,
+                animateInOf: _enteredLargeIds.add,
+              ).layer();
               return FlutterMap(
                 mapController: widget.controller.mapController,
                 options: MapOptions(
@@ -904,25 +939,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                   // width-driven budget. Small/mid dots render individually (no
                   // clustering); the large featured cards render unclustered above so
                   // they're always visible.
-                  DotMarkersLayer(
-                    nonLargeCards: render.nonLargeCards,
-                    stateOf: render.stateOf,
-                    nonStartableOf: render.nonStartableOf,
-                    tierOf: render.tierOf,
-                    starLevelOf: render.starLevelOf,
-                    pingedOf: render.pingedOf,
-                    activeActivityInstance:
-                        widget.controller.client?.activeActivityInstance,
-                    markerBox: _markerBox,
-                    markerAlignment: _markerAlignment,
-                    sessionParticipants: (a, b) => _sessionParticipants(a, b),
-                    focusedId: render.focusedId,
-                    onTap: widget.controller.openActivity,
-                    // Set.add returns true only on first insertion — a pin
-                    // animates in the first build it appears, then holds full
-                    // scale through State recreations (#8136).
-                    animateInOf: _enteredIds.add,
-                  ).layer(),
+                  _ShimmerLayer(active: warming, child: dotLayer),
                   // Activity-name labels for mid pins, above the dots but below the
                   // large cards (world-map.instructions.md, "Pin display"; z-order:
                   // small < mid < labels < large).
@@ -949,14 +966,7 @@ class _WorldMapViewState extends State<WorldMapView> {
                     onExited: _onExitedLargeCardMarker,
                   ).layer(),
                   // Large cards (always visible): the featured cards the width affords.
-                  LargeMarkersLayer(
-                    largeCards: render.largeCards,
-                    currentLarge: currentLarge,
-                    focusedId: render.focusedId,
-                    onTap: widget.controller.openActivity,
-                    onClose: widget.controller.dismissLargeCard,
-                    animateInOf: _enteredLargeIds.add,
-                  ).layer(),
+                  _ShimmerLayer(active: warming, child: largeLayer),
                   Positioned(
                     // On a narrow screen the bottom chrome (nav widget + the search bar
                     // riding above it) owns the bottom edge, so lift the attribution
@@ -1096,6 +1106,26 @@ class _WorldMapViewState extends State<WorldMapView> {
           controls,
         ],
       ),
+    );
+  }
+}
+
+/// Wraps a pin layer in the app's shimmer palette while [active] (the L1 warmup
+/// — see [WorldMapController.warmingPins]), else renders it untouched.
+class _ShimmerLayer extends StatelessWidget {
+  final bool active;
+  final Widget child;
+
+  const _ShimmerLayer({required this.active, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    if (!active) return child;
+    final scheme = Theme.of(context).colorScheme;
+    return Shimmer.fromColors(
+      baseColor: scheme.surfaceContainerHighest,
+      highlightColor: scheme.surface,
+      child: child,
     );
   }
 }
