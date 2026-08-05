@@ -60,7 +60,8 @@ void main() {
   /// against the old code too, and prove nothing. Every assertion below that
   /// targets the new backoff runs only AFTER the failure has landed — which is
   /// precisely the frame on which the old code re-armed.
-  Future<void> settle() => Future<void>.delayed(const Duration(milliseconds: 10));
+  Future<void> settle() =>
+      Future<void>.delayed(const Duration(milliseconds: 10));
 
   group('attempt cooldown', () {
     test('a settled failure does not re-arm on later frames', () async {
@@ -75,7 +76,8 @@ void main() {
       expect(
         issued,
         0,
-        reason: '100 post-failure frames issued $issued fetches; '
+        reason:
+            '100 post-failure frames issued $issued fetches; '
             'before the fix this was 100 — the incident itself',
       );
     });
@@ -161,17 +163,24 @@ void main() {
   });
 
   group('classifyLookupError', () {
-    test('404 is terminal, via the typed exception Requests actually throws', () {
-      // Requests throws PangeaHttpException, never a raw http.Response, so a
-      // check written against Response would silently never match and 404s
-      // would loop like everything else.
-      expect(
-        ActivityPlanRepo.classifyLookupError(
-          PangeaHttpException(statusCode: 404, method: 'GET', path: '/a/{id}'),
-        ),
-        ActivityPlanLookupStatus.removed,
-      );
-    });
+    test(
+      '404 is terminal, via the typed exception Requests actually throws',
+      () {
+        // Requests throws PangeaHttpException, never a raw http.Response, so a
+        // check written against Response would silently never match and 404s
+        // would loop like everything else.
+        expect(
+          ActivityPlanRepo.classifyLookupError(
+            PangeaHttpException(
+              statusCode: 404,
+              method: 'GET',
+              path: '/a/{id}',
+            ),
+          ),
+          ActivityPlanLookupStatus.removed,
+        );
+      },
+    );
 
     test('429 is retryable, not terminal', () {
       expect(

@@ -304,23 +304,20 @@ class ActivityPlanRepo
     // above could never be.
     _nextAttempt[key] = now().add(_attemptCooldown);
     _hydrating.add(key);
-    getPlan(
-      activityId,
-      l1: l1,
-      version: version,
-      forceRefresh: doRevalidate,
-    ).catchError((Object e, StackTrace s) {
-      // `getPlan` is fire-and-forget here, and `.plan`'s mapping runs outside
-      // BaseRepo's try/catch, so without this a malformed body is an unhandled
-      // async error. The parked entry stays put, so it cannot re-arm.
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {'activityId': activityId, 'l1': l1, 'version': version},
-        level: SentryLevel.warning,
-      );
-      return null;
-    }).whenComplete(() => _hydrating.remove(key));
+    getPlan(activityId, l1: l1, version: version, forceRefresh: doRevalidate)
+        .catchError((Object e, StackTrace s) {
+          // `getPlan` is fire-and-forget here, and `.plan`'s mapping runs outside
+          // BaseRepo's try/catch, so without this a malformed body is an unhandled
+          // async error. The parked entry stays put, so it cannot re-arm.
+          ErrorHandler.logError(
+            e: e,
+            s: s,
+            data: {'activityId': activityId, 'l1': l1, 'version': version},
+            level: SentryLevel.warning,
+          );
+          return null;
+        })
+        .whenComplete(() => _hydrating.remove(key));
     return true;
   }
 
