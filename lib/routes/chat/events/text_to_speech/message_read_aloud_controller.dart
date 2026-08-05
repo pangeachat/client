@@ -185,9 +185,7 @@ class MessageReadAloudController {
     return TtsController.tryToSpeak(
       message.messageDisplayText,
       langCode: message.messageDisplayLangCode,
-      useCase: voiceReply
-          ? TtsUseCase.voiceReply
-          : TtsUseCase.incomingMessage,
+      useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.incomingMessage,
       allowChoreoPlay: voiceReply,
     );
   }
