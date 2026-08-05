@@ -211,10 +211,14 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
 
         final int neededParticipants = snapshot.data ?? 0;
         final bool hasEnoughParticipants = neededParticipants <= 0;
-        return Column(
-          spacing: 16.0,
-          children: [
-            if (!hasEnoughParticipants) ...[
+
+        // Not enough course participants yet — a blocking notice with its own
+        // invite / pick-different actions. Stays a vertical list on both
+        // platforms (it isn't the browse CTA the horizontal row replaces).
+        if (!hasEnoughParticipants) {
+          return Column(
+            spacing: 16.0,
+            children: [
               Text(
                 neededParticipants > 1
                     ? L10n.of(context).activityNeedsMembers(neededParticipants)
@@ -232,7 +236,20 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 L10n.of(context).pickDifferentActivity,
                 controller.goToCourse,
               ),
-            ] else if (controller.joinedActivityRoomId != null) ...[
+            ],
+          );
+        }
+
+        // The browse CTA: the horizontal row on mobile, the vertical layout
+        // below on web.
+        if (!FluffyThemes.isColumnMode(context)) {
+          return _NotStartedMobileCtaRow(controller);
+        }
+
+        return Column(
+          spacing: 16.0,
+          children: [
+            if (controller.joinedActivityRoomId != null) ...[
               ActivitySessionCTAButton(
                 L10n.of(context).continueText,
                 controller.goToJoinedActivity,
@@ -267,6 +284,151 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
         );
       },
     );
+  }
+}
+
+/// The mobile browse-step CTA: a single horizontally scrolling row, Google-Maps
+/// style. Exactly one filled primary leads (Ongoing → Join → Start), followed
+/// by any other available actions, with the everyone-visible Completed chip and
+/// then share + flag always appended last as light pills. The later steps
+/// (role picker, waiting room) keep their vertical lists. See
+/// activity-start-page.instructions.md.
+class _NotStartedMobileCtaRow extends StatelessWidget {
+  final NotStartedSessionController controller;
+  const _NotStartedMobileCtaRow(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final page = controller.widget.controller;
+    final chips = <Widget>[];
+
+    if (controller.joinedActivityRoomId != null) {
+      chips.add(
+        _ActivityCtaChip(
+          label: l10n.continueText,
+          onPressed: controller.goToJoinedActivity,
+          filled: true,
+        ),
+      );
+    } else if (controller.openSessionCount > 0) {
+      chips.add(
+        _ActivityCtaChip(
+          label: '${l10n.joinOpenSession} (${controller.openSessionCount})',
+          onPressed: controller.goToJoinPage,
+          filled: true,
+        ),
+      );
+      chips.add(
+        _ActivityCtaChip(
+          label: l10n.startOwn,
+          onPressed: controller.startNewActivity,
+        ),
+      );
+    } else {
+      chips.add(
+        _ActivityCtaChip(
+          label: l10n.start,
+          onPressed: controller.startNewActivity,
+          filled: true,
+        ),
+      );
+    }
+
+    // Opens the same view page as the admin "current or finished" action.
+    if (controller.hasCompletedSessions) {
+      chips.add(
+        _ActivityCtaChip(
+          label: l10n.mapFilterCompleted,
+          onPressed: controller.goToViewPage,
+        ),
+      );
+    }
+
+    chips.add(
+      _ActivityCtaChip(
+        icon: Icons.share_outlined,
+        tooltip: l10n.share,
+        onPressed: page.copyActivityLink,
+      ),
+    );
+    chips.add(
+      _ActivityCtaChip(
+        icon: Icons.flag_outlined,
+        tooltip: l10n.feedbackButton,
+        onPressed: page.submitActivityFeedback,
+      ),
+    );
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(spacing: 8.0, children: chips),
+    );
+  }
+}
+
+/// A pill in the mobile CTA row. The single primary action is [filled] (solid
+/// primary); every other action — including share and flag — is a light
+/// primaryContainer pill. Passing [icon] with no [label] renders a circular
+/// icon-only chip (share / flag) sized to match the text pills' height.
+class _ActivityCtaChip extends StatelessWidget {
+  final String? label;
+  final IconData? icon;
+  final VoidCallback? onPressed;
+  final bool filled;
+  final String? tooltip;
+
+  const _ActivityCtaChip({
+    this.label,
+    this.icon,
+    required this.onPressed,
+    this.filled = false,
+    this.tooltip,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final style = ElevatedButton.styleFrom(
+      backgroundColor: filled
+          ? theme.colorScheme.primary
+          : theme.colorScheme.primaryContainer,
+      foregroundColor: filled
+          ? theme.colorScheme.onPrimary
+          : theme.colorScheme.onPrimaryContainer,
+      elevation: 0.0,
+      shape: const StadiumBorder(),
+    );
+
+    final Widget button = icon != null && label == null
+        ? SizedBox(
+            height: 40.0,
+            width: 40.0,
+            child: ElevatedButton(
+              style: style.copyWith(
+                padding: WidgetStateProperty.all(EdgeInsets.zero),
+                shape: WidgetStateProperty.all(const CircleBorder()),
+              ),
+              onPressed: onPressed,
+              child: Icon(icon, size: 20.0),
+            ),
+          )
+        : SizedBox(
+            height: 40.0,
+            child: ElevatedButton(
+              style: style.copyWith(
+                padding: WidgetStateProperty.all(
+                  const EdgeInsets.symmetric(horizontal: 20.0),
+                ),
+              ),
+              onPressed: onPressed,
+              child: Text(label ?? ''),
+            ),
+          );
+
+    return tooltip == null
+        ? button
+        : Tooltip(message: tooltip!, child: button);
   }
 }
 

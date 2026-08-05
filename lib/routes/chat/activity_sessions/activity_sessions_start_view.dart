@@ -156,11 +156,13 @@ class ActivitySessionStartView extends StatelessWidget {
                 icon: const Icon(Icons.filter_center_focus),
                 onPressed: MapCameraFocusRequests.request,
               ),
-              IconButton(
-                tooltip: L10n.of(context).feedbackButton,
-                icon: const Icon(Icons.flag_outlined),
-                onPressed: controller.submitActivityFeedback,
-              ),
+              // Web only: on mobile the flag is a chip in the CTA row instead.
+              if (FluffyThemes.isColumnMode(context))
+                IconButton(
+                  tooltip: L10n.of(context).feedbackButton,
+                  icon: const Icon(Icons.flag_outlined),
+                  onPressed: controller.submitActivityFeedback,
+                ),
             ],
           ),
           body: controller.loading
@@ -300,9 +302,6 @@ class _ActivityStartInfoRow extends StatelessWidget {
       padding: const EdgeInsets.fromLTRB(12.0, 0.0, 8.0, 8.0),
       child: Row(
         children: [
-          // The current brand mark — the same Pangea logo the navrail uses for
-          // the world/home item — stands in for the creator until learners can
-          // author their own activities.
           Container(
             width: 28.0,
             height: 28.0,
@@ -382,9 +381,7 @@ class _IconLabel extends StatelessWidget {
         const SizedBox(width: 4.0),
         Text(
           label,
-          style: Theme.of(
-            context,
-          ).textTheme.labelLarge?.copyWith(color: color),
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(color: color),
         ),
       ],
     );
