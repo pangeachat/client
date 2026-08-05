@@ -910,12 +910,33 @@ class WorldMapController extends State<WorldMap>
   /// stored target longitude is UNWRAPPED so the tween's direction carries the
   /// anchor's on-screen copy directly to its resting spot instead of taking a
   /// path that throws it off screen (#7880).
+  ///
+  /// A move spanning more than [WorldMapConstants.instantMoveZoomDelta] levels
+  /// skips the tween and JUMPS (#7937): a tween has to render every zoom level
+  /// it crosses, and the levels it passes through are exactly the ones whose
+  /// tiles are not cached, so a long glide is mostly half-loaded map. Jumping
+  /// fetches one level. The anchor/unwrapping machinery is moot on that path —
+  /// it exists to keep a pin on screen for the duration of a flight, and there
+  /// is no flight.
   void _animateCameraTo(LatLng center, double zoom, {LatLng? anchor}) {
     final anim = _cameraAnimationController;
     if (!mounted) {
       try {
         mapController.move(center, zoom);
       } catch (_) {}
+      return;
+    }
+    if (WorldMapConstants.movesInstantly(mapController.camera.zoom, zoom)) {
+      // Drop any glide already in flight, so its next tick can't stomp the
+      // camera we are about to set.
+      anim.stop();
+      _camStart = null;
+      _camTarget = null;
+      try {
+        mapController.move(center, zoom);
+      } catch (_) {
+        // Camera not laid out yet; the next request will land.
+      }
       return;
     }
     final start = mapController.camera.center;

@@ -768,7 +768,13 @@ class _WorldMapViewState extends State<WorldMapView> {
     // world-map-tiles Phase 1: free hosted tiles switched by app theme —
     // OpenStreetMap (light) / CartoDB Dark Matter (dark).
     final dark = Theme.of(context).brightness == Brightness.dark;
-    final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
+    // What shows through wherever tiles have not arrived yet. Matched to each
+    // basemap's own paper — CartoDB Dark Matter's near-black, OSM's pale beige
+    // — so a gap during a zoom reads as unfilled map rather than the light
+    // grey flash flutter_map defaults to (#7937).
+    final mapBackground = dark
+        ? const Color(0xFF0E0E0E)
+        : const Color(0xFFF2EFE9);
 
     final warming = widget.controller.warmingPins;
 
@@ -880,6 +886,17 @@ class _WorldMapViewState extends State<WorldMapView> {
                     90,
                     -90,
                   ),
+                  // Un-tiled map area — every gap a zoom opens up before its
+                  // tiles arrive — paints this. flutter_map's default is a
+                  // light grey (#E0E0E0), which is what makes a zoom
+                  // "flashbang" a dark-theme user (#7937).
+                  backgroundColor: mapBackground,
+                  // Scroll-wheel zoom stays flutter_map's: it applies each wheel
+                  // event immediately, which is what direct manipulation should
+                  // do. An eased, cursor-anchored version was tried for #7937
+                  // and felt delayed and jumpy next to this — the ease showed up
+                  // as input lag, not as calm. Only the programmatic glides
+                  // (focus button, world reset) were slowed.
                   interactionOptions: const InteractionOptions(
                     flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
                   ),
@@ -894,13 +911,32 @@ class _WorldMapViewState extends State<WorldMapView> {
                 ),
                 children: [
                   // Base tiles, switched by app theme: OpenStreetMap (light) / CartoDB
-                  // Dark Matter (dark). Retina (@2x) keeps the dark basemap's small
-                  // labels sharp; CartoDB serves @2x, light (OSM) stays 1x.
+                  // Dark Matter (dark).
+                  //
+                  // Retina (@2x) is OFF (#7937). It used to be on for dark, to keep
+                  // that basemap's small labels sharp, but @2x is ~4x the pixels per
+                  // tile — so dark theme took roughly four times as long per tile to
+                  // arrive as light, and a slow tile is a visible gap. That is why
+                  // the loading artifact read as a DARK-mode problem specifically.
+                  // Labels are slightly softer on HiDPI as a result; legible on-brand
+                  // labels are a Phase 2 (vector tiles) goal anyway, where they cost
+                  // nothing — see world-map-tiles.instructions.md. `{r}` resolves to
+                  // an empty string with retina off, so the template is unchanged.
                   TileLayer(
                     urlTemplate: dark
                         ? 'https://a.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png'
                         : 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    retinaMode: retina,
+                    retinaMode: false,
+                    // How far outside the view a tile survives pruning. flutter_map
+                    // covers a still-loading level by scaling a neighbouring level it
+                    // already holds (TileImageView._retainAncestor), so the fallback
+                    // is only as good as what is still in memory; the default 2 drops
+                    // ancestors partway through a long move, leaving nothing to scale
+                    // and the background showing through in tile-shaped squares.
+                    // Retention only — the LOAD range is driven by `panBuffer`, which
+                    // stays at its default, so this costs memory and zero extra tile
+                    // requests (which matters on Phase 1's free hosted tiers).
+                    keepBuffer: 5,
                     userAgentPackageName: 'com.talktolearn.chat',
                   ),
                   // world_v2: activity pins by relevance tier + state, capped by the

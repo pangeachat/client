@@ -81,9 +81,18 @@ class WorldMapConstants {
   /// A glide's length scales with how far the zoom travels: a single +/- step
   /// stays snappy (~[_camGlideMinMs]), a deep focus move glides gently
   /// (~[_camGlideMaxMs]).
+  ///
+  /// #7937 — the per-level rate and the ceiling are both roughly doubled. A
+  /// glide crosses every zoom level between its endpoints, and each one is a
+  /// fresh tile level to fetch; the old ceiling squeezed the focus button's
+  /// ~13-level sweep into 1.4s (~100ms per level), far less than a tile round
+  /// trip, so most of the flight rendered as un-tiled background — the
+  /// "flashbang" in dark mode. The floor is deliberately unchanged so a single
+  /// +/- step stays responsive: only the LONG moves (the focus button, the
+  /// world reset) slow down, which is exactly where the churn was.
   static const double _camGlideMinMs = 500;
-  static const double _camGlideMaxMs = 1400;
-  static const double _camGlideMsPerZoom = 110;
+  static const double _camGlideMaxMs = 2400;
+  static const double _camGlideMsPerZoom = 200;
 
   static Duration glideDurationFor(double startZoom, double targetZoom) {
     final ms =
@@ -91,6 +100,35 @@ class WorldMapConstants {
             .clamp(_camGlideMinMs, _camGlideMaxMs);
     return Duration(milliseconds: ms.round());
   }
+
+  /// Beyond this many zoom levels a camera move JUMPS instead of gliding
+  /// (#7937). Slowing a long glide only lengthens the tile churn — a tween
+  /// through N levels must fetch all N, and flutter_map can only paper over a
+  /// loading level with a neighbouring one it already holds in memory. A move
+  /// that also pans (the focus button, the world reset) travels into map area
+  /// whose ancestors were never fetched, so there is nothing to scale up and
+  /// the background shows through in tile-shaped squares. An instant move
+  /// fetches exactly ONE level, which is the only way to avoid that rather
+  /// than shorten it.
+  ///
+  /// The threshold keeps the short moves smooth: a +/- step (1 level) and an
+  /// activity focus pan (0 levels) still glide, which is the motion that reads
+  /// as polish. Only the big sweeps — where the glide was never legible
+  /// anyway, just a blur of half-loaded tiles — snap.
+  static const double instantMoveZoomDelta = 4.0;
+
+  /// Whether a move of this size should skip the tween entirely.
+  static bool movesInstantly(double startZoom, double targetZoom) =>
+      (targetZoom - startZoom).abs() > instantMoveZoomDelta;
+
+  // #7937 — the scroll wheel is deliberately NOT eased. flutter_map applies
+  // each wheel event the instant it arrives, and an eased, cursor-anchored
+  // version (accumulating onto the in-flight glide target over ~260ms, with a
+  // reduced per-notch velocity) was built and rejected on feel: easing a
+  // direct-manipulation input reads as delay and stutter, not as calm. Only the
+  // PROGRAMMATIC glides above — the focus button and world reset — were slowed,
+  // and those are where the tile churn actually was. If this comes up again,
+  // the answer is not a shorter ease; it is leaving the wheel alone.
 
   /// The pan and zoom of a glide run on two overlapping intervals so the pan
   /// happens at the WIDER of the two zooms and the zoom at the narrower — keeping
