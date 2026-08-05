@@ -691,6 +691,7 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                         SizedBox(
                           height: _railHeight,
                           child: Semantics(
+                            container: true,
                             label: l10n.navOptionsLabel,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -702,16 +703,26 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   onPressed: () =>
                                       _onRailItemTap(AppSection.world),
                                 ),
-                                _withChatsBadge(
-                                  _RailButton(
-                                    icon: Icons.forum_outlined,
-                                    selectedIcon: Icons.forum,
-                                    selected:
-                                        widget.activeSection ==
-                                        AppSection.chats,
-                                    tooltip: l10n.allChats,
-                                    onTap: () =>
-                                        _onRailItemTap(AppSection.chats),
+                                Semantics(
+                                  container: true,
+                                  selected:
+                                      widget.activeSection == AppSection.chats,
+                                  onTap: () => _onRailItemTap(AppSection.chats),
+                                  child: _withChatsBadge(
+                                    Tooltip(
+                                      message: l10n.allChats,
+                                      child: ExcludeSemantics(
+                                        child: _RailButton(
+                                          icon: Icons.forum_outlined,
+                                          selectedIcon: Icons.forum,
+                                          selected:
+                                              widget.activeSection ==
+                                              AppSection.chats,
+                                          onTap: () =>
+                                              _onRailItemTap(AppSection.chats),
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 _RailButton(
@@ -758,14 +769,14 @@ class _RailButton extends StatelessWidget {
   final IconData icon;
   final IconData selectedIcon;
   final bool selected;
-  final String tooltip;
+  final String? tooltip;
   final VoidCallback onTap;
 
   const _RailButton({
     required this.icon,
     required this.selectedIcon,
     required this.selected,
-    required this.tooltip,
+    this.tooltip,
     required this.onTap,
   });
 
@@ -807,6 +818,7 @@ class _CourseShortcutButton extends StatelessWidget {
     final theme = Theme.of(context);
     return Tooltip(
       message: label,
+      excludeFromSemantics: true,
       child: Semantics(
         // Announce the active-course state — the border alone is visual-only.
         selected: selected,

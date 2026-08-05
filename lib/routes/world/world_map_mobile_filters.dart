@@ -130,7 +130,6 @@ class _WorldMapMobileFiltersState extends State<WorldMapMobileFilters>
     final filter = widget.filterBuilder();
 
     return Semantics(
-      label: l10n.activityFilterButtonsLabel,
       container: true,
       child: LayoutBuilder(
         builder: (context, constraints) {
@@ -141,15 +140,20 @@ class _WorldMapMobileFiltersState extends State<WorldMapMobileFilters>
             double.infinity,
           );
           // Built once per (setState) rebuild — NOT per animation tick.
-          final pills = SizedBox(
-            width: pillWidth,
-            child: WorldMapFilterBar(
-              filter: filter,
-              reverse: true,
-              onSetLevel: (v) => _onChanged(() => widget.onSetLevel(v)),
-              onSetPartySize: (v) => _onChanged(() => widget.onSetPartySize(v)),
-              onSetStatus: (v) => _onChanged(() => widget.onSetStatus(v)),
-              onReset: () => _onChanged(widget.onReset),
+          final pills = Semantics(
+            label: l10n.activityFilterButtonsLabel,
+            container: true,
+            child: SizedBox(
+              width: pillWidth,
+              child: WorldMapFilterBar(
+                filter: filter,
+                reverse: true,
+                onSetLevel: (v) => _onChanged(() => widget.onSetLevel(v)),
+                onSetPartySize: (v) =>
+                    _onChanged(() => widget.onSetPartySize(v)),
+                onSetStatus: (v) => _onChanged(() => widget.onSetStatus(v)),
+                onReset: () => _onChanged(widget.onReset),
+              ),
             ),
           );
           return AnimatedBuilder(

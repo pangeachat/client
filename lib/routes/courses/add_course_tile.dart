@@ -103,16 +103,18 @@ class AddCourseTile extends StatelessWidget {
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
                               if (invited)
-                                CourseInfoChip(
-                                  icon: Icons.mail,
-                                  text: L10n.of(context).invited,
-                                  fontSize: 12.0,
-                                  iconSize: 12.0,
-                                  highlightColor: AppConfig.goldByTheme(
-                                    context,
-                                  ),
-                                  foregroundColor: AppConfig.onGoldByTheme(
-                                    context,
+                                ExcludeSemantics(
+                                  child: CourseInfoChip(
+                                    icon: Icons.mail,
+                                    text: L10n.of(context).invited,
+                                    fontSize: 12.0,
+                                    iconSize: 12.0,
+                                    highlightColor: AppConfig.goldByTheme(
+                                      context,
+                                    ),
+                                    foregroundColor: AppConfig.onGoldByTheme(
+                                      context,
+                                    ),
                                   ),
                                 ),
                               if (members != null && !invited)
