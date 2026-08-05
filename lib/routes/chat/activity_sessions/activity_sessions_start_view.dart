@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -14,6 +17,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_meter.dart';
+import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_bottom_content.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_button_widget.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
@@ -145,16 +149,6 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // Rating indicator (#7194/#7993) — top-right per design: a NEW
-              // pill until the activity has ratings, then the aggregate meter.
-              if (activity != null)
-                Padding(
-                  padding: const EdgeInsets.only(right: 4.0),
-                  child: ActivityRatingMeter(
-                    average: activity.ratingAverage,
-                    count: activity.ratingCount,
-                  ),
-                ),
               // The one camera path that zooms (#7616): selection only pans,
               // so this button zoom+pans the map to the activity's pin.
               IconButton(
@@ -197,6 +191,7 @@ class ActivitySessionStartView extends StatelessWidget {
                 )
               : Column(
                   children: [
+                    _ActivityStartInfoRow(activity: activity),
                     Expanded(
                       child: SingleChildScrollView(
                         controller: controller.scrollController,
@@ -281,6 +276,117 @@ class ActivitySessionStartView extends StatelessWidget {
                 ),
         );
       },
+    );
+  }
+}
+
+/// The always-visible second row under the title: who made the activity and
+/// its at-a-glance facts (L2, level, participant count, rating). It sits above
+/// the scrollable body so a map explorer sees the essentials without expanding
+/// the sheet. Creator is fixed to PangeaChat until learners can author their
+/// own activities. See activity-start-page.instructions.md.
+class _ActivityStartInfoRow extends StatelessWidget {
+  final ActivityPlanModel activity;
+
+  const _ActivityStartInfoRow({required this.activity});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final language = PLanguageStore.byLangCode(activity.req.targetLanguage);
+    final onVariant = theme.colorScheme.onSurfaceVariant;
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12.0, 0.0, 8.0, 8.0),
+      child: Row(
+        children: [
+          // The current brand mark — the same Pangea logo the navrail uses for
+          // the world/home item — stands in for the creator until learners can
+          // author their own activities.
+          Container(
+            width: 28.0,
+            height: 28.0,
+            padding: const EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primaryContainer,
+              shape: BoxShape.circle,
+            ),
+            child: const PangeaLogoSvg(width: 18.0),
+          ),
+          const SizedBox(width: 8.0),
+          Expanded(
+            child: Text(
+              'PangeaChat',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8.0),
+          if (language != null && language.shouldShowFlag) ...[
+            ClipRRect(
+              borderRadius: BorderRadius.circular(3.0),
+              child: SvgPicture.network(
+                language.svgUrl.toString(),
+                width: 22.0,
+                height: 16.0,
+                fit: BoxFit.cover,
+                errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                placeholderBuilder: (_) => const SizedBox(width: 22.0),
+              ),
+            ),
+            const SizedBox(width: 12.0),
+          ],
+          _IconLabel(
+            icon: Icons.school_outlined,
+            label: activity.req.cefrLevel.string,
+            color: onVariant,
+          ),
+          const SizedBox(width: 12.0),
+          _IconLabel(
+            icon: Icons.group_outlined,
+            label: '${activity.req.numberOfParticipants}',
+            color: onVariant,
+          ),
+          const SizedBox(width: 8.0),
+          ActivityRatingMeter(
+            average: activity.ratingAverage,
+            count: activity.ratingCount,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A compact icon + text pair for the info row's level and participant facts.
+class _IconLabel extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+
+  const _IconLabel({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 18.0, color: color),
+        const SizedBox(width: 4.0),
+        Text(
+          label,
+          style: Theme.of(
+            context,
+          ).textTheme.labelLarge?.copyWith(color: color),
+        ),
+      ],
     );
   }
 }
