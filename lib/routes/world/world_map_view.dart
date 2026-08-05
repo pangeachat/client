@@ -1,5 +1,6 @@
 import 'dart:math' as math;
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
@@ -769,6 +770,13 @@ class _WorldMapViewState extends State<WorldMapView> {
     // OpenStreetMap (light) / CartoDB Dark Matter (dark).
     final dark = Theme.of(context).brightness == Brightness.dark;
     final retina = dark && MediaQuery.devicePixelRatioOf(context) > 1.0;
+    // What shows through wherever tiles have not arrived yet. Matched to each
+    // basemap's own paper — CartoDB Dark Matter's near-black, OSM's pale beige
+    // — so a gap during a zoom reads as unfilled map rather than the light
+    // grey flash flutter_map defaults to (#7937).
+    final mapBackground = dark
+        ? const Color(0xFF0E0E0E)
+        : const Color(0xFFF2EFE9);
 
     final warming = widget.controller.warmingPins;
 
@@ -817,6 +825,25 @@ class _WorldMapViewState extends State<WorldMapView> {
         // note on MapOptions below.)
         child: Listener(
           onPointerDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
+          // The scroll wheel is ours, not flutter_map's (#7937): its handler
+          // moves the camera the instant each event lands, so a zoom arrives as
+          // a burst of snaps. `scrollWheelZoom` is off in the flags below and
+          // the controller eases each step instead. Registering with the
+          // signal resolver (exactly as flutter_map's own handler does) keeps a
+          // scrollable ancestor from acting on the same event.
+          onPointerSignal: (signal) {
+            if (signal is! PointerScrollEvent) return;
+            if (signal.scrollDelta.dy == 0) return;
+            GestureBinding.instance.pointerSignalResolver.register(signal, (
+              resolved,
+            ) {
+              resolved as PointerScrollEvent;
+              widget.controller.scrollZoomBy(
+                resolved.scrollDelta.dy,
+                resolved.localPosition,
+              );
+            });
+          },
           child: LayoutBuilder(
             builder: (context, constraints) {
               // The zoom-out floor is viewport-derived (#7813): out to where one
@@ -880,8 +907,18 @@ class _WorldMapViewState extends State<WorldMapView> {
                     90,
                     -90,
                   ),
+                  // Un-tiled map area — every gap a zoom opens up before its
+                  // tiles arrive — paints this. flutter_map's default is a
+                  // light grey (#E0E0E0), which is what makes a zoom
+                  // "flashbang" a dark-theme user (#7937).
+                  backgroundColor: mapBackground,
                   interactionOptions: const InteractionOptions(
-                    flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
+                    // Scroll-wheel zoom is handled by the `Listener` above so
+                    // it can be eased rather than snapped (#7937).
+                    flags:
+                        InteractiveFlag.all &
+                        ~InteractiveFlag.rotate &
+                        ~InteractiveFlag.scrollWheelZoom,
                   ),
                   // Tapping empty map does not clear focus — a focus is cleared only by
                   // closing its panel or focusing another (world-map.instructions.md).

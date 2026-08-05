@@ -81,9 +81,18 @@ class WorldMapConstants {
   /// A glide's length scales with how far the zoom travels: a single +/- step
   /// stays snappy (~[_camGlideMinMs]), a deep focus move glides gently
   /// (~[_camGlideMaxMs]).
+  ///
+  /// #7937 — the per-level rate and the ceiling are both roughly doubled. A
+  /// glide crosses every zoom level between its endpoints, and each one is a
+  /// fresh tile level to fetch; the old ceiling squeezed the focus button's
+  /// ~13-level sweep into 1.4s (~100ms per level), far less than a tile round
+  /// trip, so most of the flight rendered as un-tiled background — the
+  /// "flashbang" in dark mode. The floor is deliberately unchanged so a single
+  /// +/- step stays responsive: only the LONG moves (the focus button, the
+  /// world reset) slow down, which is exactly where the churn was.
   static const double _camGlideMinMs = 500;
-  static const double _camGlideMaxMs = 1400;
-  static const double _camGlideMsPerZoom = 110;
+  static const double _camGlideMaxMs = 2400;
+  static const double _camGlideMsPerZoom = 200;
 
   static Duration glideDurationFor(double startZoom, double targetZoom) {
     final ms =
@@ -91,6 +100,36 @@ class WorldMapConstants {
             .clamp(_camGlideMinMs, _camGlideMaxMs);
     return Duration(milliseconds: ms.round());
   }
+
+  // #7937 — calm, Maps-like scroll-wheel zoom.
+  //
+  // flutter_map applies the wheel with NO easing: every scroll event moves the
+  // camera the instant it arrives, so a zoom is a burst of hard snaps rather
+  // than a move. We take the wheel over ourselves (the `scrollWheelZoom` flag
+  // is off in `MapOptions`, the map view's own `Listener` handles the signal)
+  // and ease each step through the same camera glide the buttons use.
+
+  /// Zoom levels travelled per logical pixel of scroll delta — below
+  /// flutter_map's 0.005 default, so one desktop mouse notch (~100px) covers
+  /// about a third of a level instead of half.
+  static const double scrollZoomVelocity = 0.0035;
+
+  /// How long one scroll step eases over. Short enough that the map still
+  /// tracks the wheel, long enough to read as a move rather than a snap.
+  /// Successive steps re-target the SAME glide (see `WorldMapController
+  /// .scrollZoomBy`), so a fast scroll is one continuous zoom, not a pile-up.
+  static const Duration scrollZoomGlide = Duration(milliseconds: 260);
+
+  /// The zoom a scroll of [scrollDelta] logical pixels should settle at,
+  /// accumulating onto [base] — the in-flight glide's TARGET when one is
+  /// running, so a fast scroll adds up instead of repeatedly re-measuring a
+  /// zoom that is still moving (the same accumulation the +/- buttons use).
+  /// Scrolling UP (negative delta, "away from the user") zooms in.
+  static double scrollZoomTarget({
+    required double base,
+    required double scrollDelta,
+    required double minZoom,
+  }) => (base - scrollDelta * scrollZoomVelocity).clamp(minZoom, maxZoom);
 
   /// The pan and zoom of a glide run on two overlapping intervals so the pan
   /// happens at the WIDER of the two zooms and the zoom at the narrower — keeping

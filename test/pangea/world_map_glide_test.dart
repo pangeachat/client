@@ -12,15 +12,65 @@ void main() {
     });
 
     test('one zoom level adds the per-level step', () {
-      expect(ms(5, 6), 610); // 500 + 1*110
+      expect(ms(5, 6), 700); // 500 + 1*200
     });
 
     test('a large move is clamped to the ceiling', () {
-      expect(ms(3, 18), 1400); // 500 + 15*110 = 2150 -> clamped
+      expect(ms(3, 18), 2400); // 500 + 15*200 = 3500 -> clamped
     });
 
     test('depends only on the magnitude of the delta', () {
       expect(ms(8, 12), ms(12, 8));
+    });
+
+    // #7937 — a glide crosses every zoom level between its endpoints and each
+    // is a fresh tile level to fetch, so a long sweep run too fast renders as
+    // un-tiled background (the dark-mode "flashbang"). Long moves must leave
+    // room for a tile round trip per level, while a single +/- step stays
+    // responsive.
+    test('a long sweep leaves >=150ms per zoom level crossed', () {
+      // The focus button's worst case: the world floor in to focusZoom.
+      const levels = WorldMapConstants.focusZoom - 3;
+      expect(ms(3, WorldMapConstants.focusZoom) / levels, greaterThan(150));
+    });
+
+    test('a single +/- step stays under a second', () {
+      expect(ms(5, 6), lessThan(1000));
+    });
+  });
+
+  // #7937 — the scroll wheel accumulates onto the in-flight target so a fast
+  // scroll adds up to one continuous move, and clamps to the camera's limits.
+  group('scrollZoomTarget — eased scroll-wheel zoom (#7937)', () {
+    double target(double base, double delta, {double minZoom = 3}) =>
+        WorldMapConstants.scrollZoomTarget(
+          base: base,
+          scrollDelta: delta,
+          minZoom: minZoom,
+        );
+
+    test('scrolling up (negative delta) zooms in, down zooms out', () {
+      expect(target(10, -100), greaterThan(10));
+      expect(target(10, 100), lessThan(10));
+    });
+
+    test('one desktop notch moves a fraction of a level, not half of one', () {
+      expect(target(10, -100) - 10, closeTo(0.35, 0.001));
+    });
+
+    test('successive steps accumulate when fed the running target', () {
+      final first = target(10, -100);
+      final second = target(first, -100);
+      expect(second - 10, closeTo(0.7, 0.001));
+    });
+
+    test('clamps to the viewport-derived floor and the shared ceiling', () {
+      expect(target(3.2, 10000, minZoom: 3), 3);
+      expect(target(17, -10000), WorldMapConstants.maxZoom);
+    });
+
+    test('a zero-delta scroll is a no-op', () {
+      expect(target(10, 0), 10);
     });
   });
 

@@ -124,6 +124,10 @@ class WorldMapController extends State<WorldMap>
   double _camStartZoom = 0;
   double _camTargetZoom = 0;
 
+  /// Whether the running glide offsets its pan from its zoom (#7239). False
+  /// for a cursor-anchored scroll step, which needs them in lockstep (#7937).
+  bool _camStagger = true;
+
   Client? _client;
 
   StreamSubscription<dynamic>? _syncSub;
@@ -902,7 +906,18 @@ class WorldMapController extends State<WorldMap>
   /// stored target longitude is UNWRAPPED so the tween's direction carries the
   /// anchor's on-screen copy directly to its resting spot instead of taking a
   /// path that throws it off screen (#7880).
-  void _animateCameraTo(LatLng center, double zoom, {LatLng? anchor}) {
+  ///
+  /// [duration] overrides the distance-derived length, and [stagger] turns the
+  /// pan/zoom offset off — both for the scroll wheel (#7937), whose steps are
+  /// short, cursor-anchored, and would visibly drag the point under the cursor
+  /// around if the pan and zoom ran on different intervals.
+  void _animateCameraTo(
+    LatLng center,
+    double zoom, {
+    LatLng? anchor,
+    Duration? duration,
+    bool stagger = true,
+  }) {
     final anim = _cameraAnimationController;
     if (!mounted) {
       try {
@@ -922,10 +937,53 @@ class WorldMapController extends State<WorldMap>
       ),
     );
     _camTargetZoom = zoom;
+    _camStagger = stagger;
     anim
-      ..duration = WorldMapConstants.glideDurationFor(_camStartZoom, zoom)
+      ..duration =
+          duration ?? WorldMapConstants.glideDurationFor(_camStartZoom, zoom)
       ..reset()
       ..forward();
+  }
+
+  /// Ease a scroll-wheel / trackpad step instead of snapping to it (#7937).
+  /// flutter_map moves the camera the instant each wheel event lands, which
+  /// reads as a burst of jumps; the view hands us the signal instead (its
+  /// `scrollWheelZoom` flag is off) and we run it through the same glide the
+  /// +/- buttons use, on a short duration.
+  ///
+  /// [scrollDelta] is the raw vertical scroll in logical pixels and
+  /// [cursorPosition] the pointer's map-local position: the geography under
+  /// the cursor stays under the cursor, Maps-style, rather than the view
+  /// zooming about its center.
+  void scrollZoomBy(double scrollDelta, Offset cursorPosition) {
+    if (scrollDelta == 0) return;
+    // Our own `move` calls report `hasGesture: false`, so tick the exploring
+    // signal here — a wheel zoom is as much "back to the map" as a drag is,
+    // and it used to arrive as a gesture when flutter_map owned the wheel.
+    mapPanTick.value++;
+    try {
+      final camera = mapController.camera;
+      // Accumulate onto the in-flight TARGET, not the moving live zoom, so a
+      // fast scroll adds up to one long move instead of each event measuring a
+      // zoom that has not arrived yet (the same trick as [zoomBy]).
+      final base = _cameraAnimationController.isAnimating
+          ? _camTargetZoom
+          : camera.zoom;
+      final target = WorldMapConstants.scrollZoomTarget(
+        base: base,
+        scrollDelta: scrollDelta,
+        minZoom: minZoom,
+      );
+      if (target == camera.zoom) return; // already at the limit
+      _animateCameraTo(
+        camera.focusedZoomCenter(cursorPosition, target),
+        target,
+        duration: WorldMapConstants.scrollZoomGlide,
+        stagger: false,
+      );
+    } catch (_) {
+      // Camera not laid out yet; the next scroll event will land.
+    }
   }
 
   void _onCamGlideTick() {
@@ -933,12 +991,12 @@ class WorldMapController extends State<WorldMap>
     final end = _camTarget;
     if (start == null || end == null) return;
 
-    // Stagger pan and zoom so the pan runs at the wider zoom (#7239).
-    final p = WorldMapConstants.glideProgress(
-      _cameraAnimationController.value,
-      _camStartZoom,
-      _camTargetZoom,
-    );
+    // Stagger pan and zoom so the pan runs at the wider zoom (#7239) — except
+    // on a cursor-anchored scroll step, which moves them together (#7937).
+    final t = _cameraAnimationController.value;
+    final p = _camStagger
+        ? WorldMapConstants.glideProgress(t, _camStartZoom, _camTargetZoom)
+        : (pan: Curves.easeOut.transform(t), zoom: Curves.easeOut.transform(t));
     final lat = start.latitude + (end.latitude - start.latitude) * p.pan;
     // A plain linear tween: the direction decision (which world-copy of the
     // target to fly to, so the focused pin stays on screen) was already baked
