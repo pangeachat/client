@@ -42,44 +42,53 @@ The screen chooses between two layouts from the window's **shape**, not the devi
 
 | | Narrow (ratio above 1.75) | Wide (ratio 1.75 or below) |
 |---|---|---|
-| Slide crop | Tall | Wide, without padding |
-| Slide width | Full window width | Capped — see the note below |
-| Slide height | Width times 1.25 | Two thirds of the space below the header |
-| Brand header | None — the first slide carries the name | Pangea logo at 48 beside the wordmark |
-| Headline | Above the carousel image | Below the carousel image |
+| Slide crop | Tall | Wide |
+| Slide width | Full window width | Open — see Wide layout sizing below |
+| Slide height | Width times 1.25 | Open — see Wide layout sizing below |
+| Brand header | None — the first slide carries the name | None — the first slide carries the name |
+| Headline | Above the carousel image | Above the carousel image |
 | Fallback logo when an image fails | 128 | 256 |
 
 One slide is always full-bleed across the carousel; slides never peek in from the edges, so a partly visible neighbour cannot be mistaken for content.
 
-**The wide cap is still open.** The shipped value is 600. **840 is a suggestion, not a decision** — it appears in the [#7415](https://github.com/pangeachat/client/issues/7415) change list and is worth considering because it matches the point at which [`FluffyThemes`](../../lib/config/themes.dart) already treats a window as wide enough for side-by-side panes, so the screen would change character at the same width as the rest of the app.
+#### Wide layout sizing
 
-What is settled is where the number should *not* come from. The narrower `MaxWidthBody` default in [layout.instructions.md](layout.instructions.md) is a reading measure, sized so a line of prose stays comfortable; a slide is an image rather than prose, so that reasoning does not carry over and the cap should not be aligned to it for consistency's sake.
+On a wide window the carousel should be as large as the window allows while Get started and Login to my account stay fully visible beneath it. The buttons are what the screen is for; the carousel is the pitch. Nothing about a slide justifies clipping a button or pushing it out of view.
 
-Spacing below is in logical pixels. The three stacked gaps of 24 between carousel, dots and buttons are what keep the dots reading as a group with the carousel rather than with the buttons.
+Three things bound how large that can be:
 
-| Gap | Narrow | Wide |
-|---|---|---|
-| Around the carousel group — slides, headline and dots together | 32 above, 24 below | 32 above, 24 below |
-| Above and below the brand header | — | 32 above, 24 below |
-| Strip reserved for the headline above the carousel image | 64, growing if scaled text needs it | — |
-| Headline inset from the top of the slide | 16 | — |
-| Headline side margins | 20 each side | — |
-| Gap between carousel image and headline | — | 24 |
-| Carousel to dots | 24 | 24 |
-| Dot size, and gap either side of each dot | 8, with 4 | 8, with 4 |
-| Dots to buttons | 24 | 24 |
-| Button column width | Capped at 300 | Capped at 300 |
-| Button column side padding | 24 | 24 |
-| Between the two buttons | 8 | 8 |
-| Inside each button | 16 | 16 |
+- **The wide carousel image is 1200 × 600 and must not be cropped.** Each slide is a single composed image, so cropping removes content rather than trimming a margin.
+- **The space around a slide should read as deliberate.** The report behind [#7415](https://github.com/pangeachat/client/issues/7415) was that web has too much empty space, so leaving slides small and centred is not the answer. A slide pressed hard against the window edges or against the buttons looks equally unfinished.
+- **The shipped cap of 600 is too small.** Whatever replaces it is larger. 840 has been suggested because it matches the width at which [`FluffyThemes`](../../lib/config/themes.dart) already treats a window as wide enough for side-by-side panes.
 
-On wide windows the carousel takes twice the vertical space of the button area beneath it.
+**Whether this is achieved with a width cap, with padding, or as a proportion of the window — and the exact numbers — is left open to the implementing developer.** How the slide, dots and buttons share the vertical space is easier to judge in the running app at real window sizes than in a comp. The wide frames in the Figma reference show the balance being aimed for.
+
+The number should not come from `MaxWidthBody` in [layout.instructions.md](layout.instructions.md). That default is a reading measure, sized so a line of prose stays comfortable; a slide is an image rather than prose, so aligning to it for consistency's sake would reintroduce the empty space this is meant to fix.
+
+Once it ships, ping @KhueDao1 with the values used and this section is updated to record them.
+
+Spacing below is in logical pixels and applies to both layouts. The three stacked gaps of 24 between carousel, dots and buttons are what keep the dots reading as a group with the carousel rather than with the buttons.
+
+| Gap | Value |
+|---|---|
+| Around the carousel group — slides, headline and dots together | 32 above, 24 below |
+| Strip reserved for the headline above the carousel image | 64, growing if scaled text needs it |
+| Headline inset from the top of the slide | 16 |
+| Headline side margins | 20 each side |
+| Between the headline and the carousel image | 24 |
+| Carousel to dots | 24 |
+| Dot size, and gap either side of each dot | 8, with 4 |
+| Dots to buttons | 24 |
+| Button column width | Capped at 300 |
+| Button column side padding | 24 |
+| Between the two buttons | 8 |
+| Inside each button | 16 |
 
 ### Slide text
 
 Each headline is localized text drawn over the carousel image rather than baked into it, so it translates and scales independently of the image, and a copy change never means re-exporting six files.
 
-**Placement differs by layout, and only by layout.** In the narrow layout the headline sits at the top of the slide, above the device mockup, so it is read before the image and stays clear of the buttons. In the wide layout it sits below the carousel image, because the wide crop is close to full-bleed and has no clear space at its top edge. The tables above give the measurements for each.
+**The headline sits above the carousel image in both layouts**, at the top of the slide, so it is read before the image and stays clear of the buttons. Nothing about the headline changes with window shape — the tables above give the measurements, and only the spacing around it differs.
 
 | Property | Value |
 |---|---|
@@ -89,15 +98,13 @@ Each headline is localized text drawn over the carousel image rather than baked 
 | Alignment | Centred |
 | Wrapping | Up to two lines |
 
-The same size and weight apply in both layouts. A headline that changes weight with window shape reads as a different voice for the same sentence, which is why the two layouts differ on position but not on type.
+Size and weight are the same in both layouts — a headline that changes weight with window shape reads as a different voice for the same sentence.
 
-Colour and outline come from the scheme roles listed under Buttons, dots and colour, so the headline carries no brand value of its own. In the narrow layout the outline does the separating work over the map: because it takes the surface colour, it is near-white in light mode and near-dark in dark, which keeps the type punched out of the backdrop in both without needing a second rule.
+Colour and outline come from the scheme roles under Buttons, dots and colour. In the narrow layout the outline does the separating work over the map: taking the surface colour makes it near-white in light and near-dark in dark, so one rule holds in both themes.
 
-**A headline wraps to a second line rather than shrinking or clipping.** The size is doing legibility work over the carousel image, so shrinking to fit defeats the point, and clipping loses words outright. The reserved strip is therefore sized for two lines: one line at 24 measures 29, so two plus the same breathing room comes to 64.
+**A headline wraps to a second line rather than shrinking or clipping**, because the size is doing legibility work over the carousel image. The strip is sized for two lines: one line at 24 measures 29, so two with the same breathing room is 64. Where the operating system's text-size setting needs more, the strip grows and the carousel image gives up the height — which is what makes it safe to leave scaling enabled. The current build disables it instead, recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294).
 
-**The strip grows rather than clips.** Where the operating system's text-size setting scales the headline past what 64 holds, the strip takes the extra height and the carousel image below it gives up the space. Text scaling stays enabled — the second line and the flexible strip are what absorb it, which is what makes that safe. The current build disables scaling on these headlines instead, recorded in [issue #6294](https://github.com/pangeachat/client/issues/6294).
-
-Two lines is headroom for translation, not a target. **A headline should still read as one line at 24 in English**, so that longer languages have somewhere to go. Several run twenty to thirty per cent longer, so a phrase filling the full width in English will already need both lines elsewhere. If a translation needs a third line, the copy is too long — shorten the string rather than grow the strip again.
+Two lines is headroom for translation, not a target. **A headline should still read as one line at 24 in English** so longer languages have somewhere to go; several run twenty to thirty per cent longer. A third line means the copy is too long.
 
 ### Image assets
 
@@ -109,11 +116,7 @@ Files are named `Carousel_<number>_<crop>_<version>.png`. The number runs 1 to 6
 
 The version suffix means a new set is added alongside the one it replaces rather than overwriting it, so the previous carousel images stay retrievable if a slide has to be rolled back or compared. It also makes the files safe to cache forever, since a new generation never reuses an old name.
 
-**Spell the crop and version tokens identically across a whole set.** Bucket keys are case-sensitive and the app builds each filename from one rule, so a set uploaded half as `_V5` and half as `_v5`, or half as `ratio2x1` and half as `ratio2x1_NoPadding`, cannot be addressed at all. The half that does not match the rule returns a not-found and falls back to the Pangea logo, which reads as a loading failure rather than a naming mistake.
-
-`ratio2x1_NoPadding` is the legacy wide name. Its files are 16:9 despite what the token suggests, and they carry padding despite the name; the V5 wide files are a true 2:1. The client still composes that legacy name with no version token, so **it will switch from `ratio2x1_NoPadding` to `ratio2x1_V5`** — tracked as part of [#7415](https://github.com/pangeachat/client/issues/7415) and completing with it. Until then the files linked under Slide inventory are live in the bucket but unused by the app.
-
-**Upload both crops of a slide together.** The app chooses a crop from the window shape, so replacing only one leaves the other layout on older carousel images. Nothing fails visibly when this happens; the two layouts simply drift apart, and the gap is only found by opening the app at a different window shape.
+The client still composes the legacy wide name `ratio2x1_NoPadding` and no version token, so **it switches to `ratio2x1_V5`** as part of [#7415](https://github.com/pangeachat/client/issues/7415). Until then the files linked under Slide inventory are live in the bucket but unused.
 
 ### Slide inventory
 
