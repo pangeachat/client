@@ -9,9 +9,9 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat_list/default_chats_room_extension.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
 class RoomCreationStateEvent extends StatefulWidget {
@@ -52,8 +52,9 @@ class RoomCreationStateEventState extends State<RoomCreationStateEvent> {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    final matrixLocals = MatrixLocals(l10n);
     final theme = Theme.of(context);
-    final roomName = event.room.localizedDisplayname(l10n);
+    final roomName = event.room.getLocalizedDisplayname(matrixLocals);
     final defaultChatType = event.room.defaultChatType;
 
     return Padding(

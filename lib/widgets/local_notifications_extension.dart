@@ -19,8 +19,8 @@ import 'package:fluffychat/features/notifications/notifications_request_repo.dar
 import 'package:fluffychat/features/notifications/suggest_mobile_dialog.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/push_helper.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -39,7 +39,9 @@ extension LocalNotificationsExtension on MatrixState {
       }
     }
 
-    final title = event.room.localizedDisplayname(L10n.of(context));
+    final title = event.room.getLocalizedDisplayname(
+      MatrixLocals(L10n.of(context)),
+    );
     // #Pangea
     // final body = await event.calcLocalizedBody(
     //   MatrixLocals(L10n.of(context)),
@@ -53,8 +55,8 @@ extension LocalNotificationsExtension on MatrixState {
     // );
     final body = isKnockAcceptedInviteForClient(event: event, client: client)
         ? L10n.of(context).knockAccepted
-        : await event.localizedBody(
-            L10n.of(context),
+        : await event.calcLocalizedBody(
+            MatrixLocals(L10n.of(context)),
             withSenderNamePrefix:
                 !event.room.isDirectChat ||
                 event.room.lastEvent?.senderId == client.userID,

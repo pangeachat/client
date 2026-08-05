@@ -60,7 +60,6 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
@@ -2038,7 +2037,10 @@ class ChatController extends State<ChatPageWithRoom>
       if (copyString.isNotEmpty) copyString += '\n\n';
       copyString += event
           .getDisplayEvent(timeline!)
-          .localizedBodyFallback(L10n.of(context), withSenderNamePrefix: true);
+          .calcLocalizedBodyFallback(
+            MatrixLocals(L10n.of(context)),
+            withSenderNamePrefix: true,
+          );
     }
     return copyString;
   }

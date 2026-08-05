@@ -291,7 +291,7 @@ Future<void> _tryPushHelper(
       : null;
   messagingStyleInformation?.messages?.add(newMessage);
 
-  final roomName = event.room.localizedDisplayname(l10n);
+  final roomName = event.room.getLocalizedDisplayname(MatrixLocals(l10n));
 
   final notificationGroupId = event.room.isDirectChat
       ? 'directChats'
@@ -343,8 +343,8 @@ Future<void> _tryPushHelper(
           groupConversation: !event.room.isDirectChat,
           messages: [newMessage],
         ),
-    ticker: event.localizedBodyFallback(
-      l10n,
+    ticker: event.calcLocalizedBodyFallback(
+      matrixLocals,
       plaintextBody: true,
       withSenderNamePrefix: !event.room.isDirectChat,
       hideReply: true,
@@ -380,7 +380,7 @@ Future<void> _tryPushHelper(
     iOS: iOSPlatformChannelSpecifics,
   );
 
-  final title = event.room.localizedDisplayname(l10n);
+  final title = event.room.getLocalizedDisplayname(MatrixLocals(l10n));
 
   if (PlatformInfos.isAndroid && messagingStyleInformation == null) {
     await _setShortcut(event, l10n, title, roomAvatarFile);

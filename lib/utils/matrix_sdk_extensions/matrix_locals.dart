@@ -10,6 +10,10 @@ class MatrixLocals extends MatrixLocalizations {
   MatrixLocals(this.l10n);
 
   @override
+  String? displaynameOverride(String userId) =>
+      localizedPangeaUserName(userId, l10n);
+
+  @override
   String acceptedTheInvitation(String targetName) {
     return l10n.acceptedTheInvitation(targetName);
   }

@@ -12,8 +12,8 @@ import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
@@ -116,7 +116,9 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
             itemCount: rooms.length,
             itemBuilder: (context, i) {
               final room = rooms[i];
-              final displayname = room.localizedDisplayname(L10n.of(context));
+              final displayname = room.getLocalizedDisplayname(
+                MatrixLocals(L10n.of(context)),
+              );
               final value = selectedRoomId == room.id;
               final filterOut = !displayname.toLowerCase().contains(filter);
               if (!value && filterOut) {

@@ -27,6 +27,7 @@ import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/token_emoji_button.dart';
 import 'package:fluffychat/utils/code_highlight_theme.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -641,7 +642,11 @@ class HtmlMessage extends StatelessWidget {
               alignment: .middle,
               // Pangea#
               child: MatrixPill(
-                name: room?.localizedDisplayname(L10n.of(context)) ?? matrixId,
+                name:
+                    room?.getLocalizedDisplayname(
+                      MatrixLocals(L10n.of(context)),
+                    ) ??
+                    matrixId,
                 avatar: room?.avatar,
                 uri: href,
                 outerContext: context,

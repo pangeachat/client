@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_files_tab.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_images_tab.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_message_tab.dart';
 import 'package:fluffychat/routes/chat/chat_search/chat_search_page.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
@@ -40,9 +40,9 @@ class ChatSearchView extends StatelessWidget {
         centerTitle: false,
         titleSpacing: 0,
         title: Text(
-          L10n.of(
-            context,
-          ).searchIn(room.localizedDisplayname(L10n.of(context))),
+          L10n.of(context).searchIn(
+            room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+          ),
           style: FluffyThemes.isColumnMode(context)
               ? theme.textTheme.titleLarge
               : theme.textTheme.titleMedium?.copyWith(
