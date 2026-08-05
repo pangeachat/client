@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-04 10:31:36.885844",
+    "@@last_modified": "2026-08-05 09:53:14.918609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "אייער מיטל האָט נאָך ניט אַראָפּגעליידנט קיין הויך-קוואַליטעט {language} שטימע. ליידט אַראָפּ איינס, און פּרוּווט ווידער:",
     "readAloudNoVoiceIOSSteps": "  • סעטטינגס\n  • אַקסעסאַביליטי\n  • גערעדט אינהאַלט\n  • שטימעס\n  • {language}\n  • ליידט אַראָפּ אַן ענהאַנסד אָדער פּרעמיום שטימע",
     "readAloudNoVoiceAndroid": "אייער מיטל האָט נאָך ניט קיין הויך-קוואַליטעט {language} שטימע. אינסטאַלירט שטימע דאַטן פֿאַר אייער טעקסט-צו-רעדע מאָטאָר, און פּרוּווט ווידער.",
-    "readAloudOpenVoiceSettings": "עפֿן שטימע סעטטינגס"
+    "readAloudOpenVoiceSettings": "עפֿן שטימע סעטטינגס",
+    "formLabel": "{name} פאָרעם"
 }

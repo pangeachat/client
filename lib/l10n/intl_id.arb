@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:31:23.970396",
+    "@@last_modified": "2026-08-05 09:53:10.754773",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9773,5 +9773,6 @@
     "readAloudNoVoiceIOS": "Perangkat Anda belum mengunduh suara {language} berkualitas tinggi. Unduh satu, lalu coba lagi:",
     "readAloudNoVoiceIOSSteps": "  • Pengaturan\n  • Aksesibilitas\n  • Konten Lisan\n  • Suara\n  • {language}\n  • Unduh suara yang Ditingkatkan atau Premium",
     "readAloudNoVoiceAndroid": "Perangkat Anda belum memiliki suara {language} berkualitas tinggi. Instal data suara untuk mesin text-to-speech Anda, lalu coba lagi.",
-    "readAloudOpenVoiceSettings": "Buka pengaturan suara"
+    "readAloudOpenVoiceSettings": "Buka pengaturan suara",
+    "formLabel": "Formulir {name}"
 }

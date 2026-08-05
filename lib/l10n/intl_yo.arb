@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-04 10:31:37.279826",
+    "@@last_modified": "2026-08-05 09:53:15.663043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Ẹrọ rẹ kò tíì ní ohùn {language} tó dára tó tí a ti gba sílẹ̀. Gba ọ̀kan sílẹ̀, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí:",
     "readAloudNoVoiceIOSSteps": "  • Ètò\n  • Ìrọ̀rùn\n  • Ohun Tí A Sọ\n  • Àwọn Ohùn\n  • {language}\n  • Gba ohùn Enhanced tàbí Premium sílẹ̀",
     "readAloudNoVoiceAndroid": "Ẹrọ rẹ kò tíì ní ohùn {language} tó dára tó. Fi data ohùn sori ẹrọ fún ẹ̀rọ text-to-speech rẹ, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí.",
-    "readAloudOpenVoiceSettings": "Ṣí àwọn ètò ohùn"
+    "readAloudOpenVoiceSettings": "Ṣí àwọn ètò ohùn",
+    "formLabel": "Fọ́ọ̀mù {name}"
 }

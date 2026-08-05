@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-04 10:31:32.189573",
+    "@@last_modified": "2026-08-05 09:53:13.493910",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "توهان جي ڊوائيس ۾ اڃا تائين اعليٰ معيار جي {language} آواز ڊائونلوڊ ٿيل ناهي. هڪ ڊائونلوڊ ڪريو، پوءِ ٻيهر ڪوشش ڪريو:",
     "readAloudNoVoiceIOSSteps": "  • سيٽنگون\n  • رسائي\n  • ڳالهائڻ وارو مواد\n  • آواز\n  • {language}\n  • هڪ بهتر يا پريميئم آواز ڊائونلوڊ ڪريو",
     "readAloudNoVoiceAndroid": "توهان جي ڊوائيس ۾ اڃا تائين اعليٰ معيار جي {language} آواز ناهي. پنهنجي ٽيڪسٽ-ٽو-اسپيچ انجڻ لاءِ آواز ڊيٽا انسٽال ڪريو، پوءِ ٻيهر ڪوشش ڪريو.",
-    "readAloudOpenVoiceSettings": "آواز سيٽنگون کوليو"
+    "readAloudOpenVoiceSettings": "آواز سيٽنگون کوليو",
+    "formLabel": "{name} فارم"
 }

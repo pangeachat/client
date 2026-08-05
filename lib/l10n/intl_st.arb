@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-04 10:31:34.492930",
+    "@@last_modified": "2026-08-05 09:53:14.091030",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Sesebelisoa sa hau ha se so be le lentsoe la boleng bo holimo la {language} le jarollotsoeng. Jarolla le leng, ebe u leka hape:",
     "readAloudNoVoiceIOSSteps": "  • Litlhophiso\n  • Phihlello\n  • Litaba tse Baloang\n  • Mantsoe\n  • {language}\n  • Jarolla lentsoe le Ntlafalitsoeng kapa la Premium",
     "readAloudNoVoiceAndroid": "Sesebelisoa sa hau ha se so be le lentsoe la boleng bo holimo la {language}. Kenya data ea lentsoe bakeng sa enjene ea hau ea mongolo-ho-puo, ebe u leka hape.",
-    "readAloudOpenVoiceSettings": "Bula litlhophiso tsa lentsoe"
+    "readAloudOpenVoiceSettings": "Bula litlhophiso tsa lentsoe",
+    "formLabel": "Foromo ea {name}"
 }

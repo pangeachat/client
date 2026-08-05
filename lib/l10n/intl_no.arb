@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-04 10:31:29.313724",
+    "@@last_modified": "2026-08-05 09:53:12.707543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Enheten din har ikke lastet ned en {language}-stemme av høy kvalitet ennå. Last ned en, og prøv deretter igjen:",
     "readAloudNoVoiceIOSSteps": "  • Innstillinger\n  • Tilgjengelighet\n  • Opplest innhold\n  • Stemmer\n  • {language}\n  • Last ned en forbedret eller premium-stemme",
     "readAloudNoVoiceAndroid": "Enheten din har ikke en {language}-stemme av høy kvalitet ennå. Installer stemmedata for tekst-til-tale-motoren din, og prøv deretter igjen.",
-    "readAloudOpenVoiceSettings": "Åpne stemmeinnstillinger"
+    "readAloudOpenVoiceSettings": "Åpne stemmeinnstillinger",
+    "formLabel": "{name}-skjema"
 }

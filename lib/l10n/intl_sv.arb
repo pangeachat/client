@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:31:33.377072",
+    "@@last_modified": "2026-08-05 09:53:14.382917",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10218,5 +10218,6 @@
     "readAloudNoVoiceIOS": "Din enhet har ingen högkvalitativ {language}-röst nedladdad ännu. Ladda ner en och försök sedan igen:",
     "readAloudNoVoiceIOSSteps": "  • Inställningar\n  • Hjälpmedel\n  • Talat innehåll\n  • Röster\n  • {language}\n  • Ladda ner en förbättrad eller premiumröst",
     "readAloudNoVoiceAndroid": "Din enhet har ingen högkvalitativ {language}-röst ännu. Installera röstdata för din text-till-tal-motor och försök sedan igen.",
-    "readAloudOpenVoiceSettings": "Öppna röstinställningar"
+    "readAloudOpenVoiceSettings": "Öppna röstinställningar",
+    "formLabel": "{name} formulär"
 }

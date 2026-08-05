@@ -3572,7 +3572,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-04 10:31:23.880419",
+    "@@last_modified": "2026-08-05 09:53:10.016258",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9711,5 +9711,6 @@
     "readAloudNoVoiceIOS": "Níl guth ardcháilíochta {language} íoslódáilte ar do ghléas go fóill. Íoslódáil ceann, ansin bain triail as arís:",
     "readAloudNoVoiceIOSSteps": "  • Socruithe\n  • Inrochtaineacht\n  • Ábhar Labhartha\n  • Guthanna\n  • {language}\n  • Íoslódáil guth Feabhsaithe nó Préimhe",
     "readAloudNoVoiceAndroid": "Níl guth ardcháilíochta {language} ar do ghléas go fóill. Suiteáil sonraí gutha d'inneall téacs-go-hurlabhra, ansin bain triail as arís.",
-    "readAloudOpenVoiceSettings": "Oscail socruithe gutha"
+    "readAloudOpenVoiceSettings": "Oscail socruithe gutha",
+    "formLabel": "Foirm {name}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-04 10:31:24.734387",
+    "@@last_modified": "2026-08-05 09:53:10.541050",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Ձեր սարքը դեռ չունի բարձրորակ {language} ձայն ներբեռնված։ Ներբեռնեք մեկը, ապա նորից փորձեք։",
     "readAloudNoVoiceIOSSteps": "  • Կարգավորումներ\n  • Մատչելիություն\n  • Խոսակցական բովանդակություն\n  • Ձայներ\n  • {language}\n  • Ներբեռնեք Ընդլայնված կամ Պրեմիում ձայն",
     "readAloudNoVoiceAndroid": "Ձեր սարքը դեռ չունի բարձրորակ {language} ձայն։ Տեղադրեք ձայնային տվյալներ ձեր տեքստից խոսքի շարժիչի համար, ապա նորից փորձեք։",
-    "readAloudOpenVoiceSettings": "Բացել ձայնի կարգավորումները"
+    "readAloudOpenVoiceSettings": "Բացել ձայնի կարգավորումները",
+    "formLabel": "{name} ձևաթուղթ"
 }

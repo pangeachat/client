@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-04 10:31:30.847307",
+    "@@last_modified": "2026-08-05 09:53:12.191160",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯗꯥ ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯑꯃꯠꯇꯥ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯤꯉꯥꯏꯗꯥ ꯂꯩꯇꯦ. ꯑꯃꯥ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧꯔꯒꯥ, ꯑꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯍꯟꯅꯥ ꯊꯤꯡꯖꯤꯜꯂꯨ:",
     "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Enhanced ꯅꯠꯠꯔꯒꯥ Premium ꯈꯣꯡꯎꯝ ꯑꯃꯥ ꯗꯥꯎꯟꯂꯣꯗ ꯇꯧ",
     "readAloudNoVoiceAndroid": "ꯅꯍꯥꯛꯀꯤ ꯗꯤꯚꯥꯏꯁ ꯑꯁꯤꯗꯥ ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯑꯃꯠꯇꯥ ꯂꯩꯇꯦ. ꯅꯍꯥꯛꯀꯤ text-to-speech engine ꯒꯤꯗꯃꯛ ꯈꯣꯡꯎꯝ ꯗꯦꯇꯥ ꯏꯟꯁꯇꯣꯜ ꯇꯧꯔꯒꯥ, ꯑꯗꯨꯒꯤ ꯃꯇꯨꯡꯗꯥ ꯍꯟꯅꯥ ꯊꯤꯡꯖꯤꯜꯂꯨ.",
-    "readAloudOpenVoiceSettings": "ꯈꯣꯡꯎꯝ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯍꯣꯡꯗꯣꯛꯎ"
+    "readAloudOpenVoiceSettings": "ꯈꯣꯡꯎꯝ ꯁꯦꯇꯤꯡꯁꯤꯡ ꯍꯣꯡꯗꯣꯛꯎ",
+    "formLabel": "{name} ফোর্ন"
 }

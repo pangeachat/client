@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-04 10:31:28.244165",
+    "@@last_modified": "2026-08-05 09:53:11.928460",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Kāore anō kia tikiakehia he reo {language} kounga teitei ki tō pūrere. Tikiakehia tētahi, kātahi ka ngana anō:",
     "readAloudNoVoiceIOSSteps": "  • Ngā Tautuhinga\n  • Whakaaetanga\n  • Ihirangi Kōrero\n  • Ngā Reo\n  • {language}\n  • Tikiake i tētahi reo Whakarei, Moni rānei",
     "readAloudNoVoiceAndroid": "Kāore anō kia whai reo {language} kounga teitei tō pūrere. Tāutahia ngā raraunga reo mō tō pūkaha kuputuhi-ki-reo, kātahi ka ngana anō.",
-    "readAloudOpenVoiceSettings": "Whakatuwhera i ngā tautuhinga reo"
+    "readAloudOpenVoiceSettings": "Whakatuwhera i ngā tautuhinga reo",
+    "formLabel": "Puka {name}"
 }

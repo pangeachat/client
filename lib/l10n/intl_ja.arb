@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-04 10:31:25.153075",
+    "@@last_modified": "2026-08-05 09:53:11.176486",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10469,5 +10469,6 @@
     "readAloudNoVoiceIOS": "お使いのデバイスには、まだ高品質な{language}の音声がダウンロードされていません。ダウンロードしてからもう一度お試しください:",
     "readAloudNoVoiceIOSSteps": "  • 設定\n  • アクセシビリティ\n  • 読み上げコンテンツ\n  • 音声\n  • {language}\n  • 強化またはプレミアムの音声をダウンロード",
     "readAloudNoVoiceAndroid": "お使いのデバイスには、まだ高品質な{language}の音声がありません。テキスト読み上げエンジンの音声データをインストールしてから、もう一度お試しください。",
-    "readAloudOpenVoiceSettings": "音声設定を開く"
+    "readAloudOpenVoiceSettings": "音声設定を開く",
+    "formLabel": "{name}フォーム"
 }

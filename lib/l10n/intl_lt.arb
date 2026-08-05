@@ -2976,7 +2976,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-04 10:31:27.456899",
+    "@@last_modified": "2026-08-05 09:53:11.743133",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10481,5 +10481,6 @@
     "readAloudNoVoiceIOS": "Jūsų įrenginyje dar neatsisiųstas aukštos kokybės {language} balsas. Atsisiųskite jį ir bandykite dar kartą:",
     "readAloudNoVoiceIOSSteps": "  • Nustatymai\n  • Pritaikymas neįgaliesiems\n  • Sakytinis turinys\n  • Balsai\n  • {language}\n  • Atsisiųskite patobulintą arba „Premium“ balsą",
     "readAloudNoVoiceAndroid": "Jūsų įrenginyje dar nėra aukštos kokybės {language} balso. Įdiekite balso duomenis savo teksto į kalbą varikliui, tada bandykite dar kartą.",
-    "readAloudOpenVoiceSettings": "Atidaryti balso nustatymus"
+    "readAloudOpenVoiceSettings": "Atidaryti balso nustatymus",
+    "formLabel": "{name} forma"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-04 10:31:24.482570",
+    "@@last_modified": "2026-08-05 09:53:10.630420",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9803,5 +9803,6 @@
     "readAloudNoVoiceIOS": "Az eszközödön még nincs letöltve kiváló minőségű {language} hang. Tölts le egyet, majd próbáld újra:",
     "readAloudNoVoiceIOSSteps": "  • Beállítások\n  • Kisegítő lehetőségek\n  • Felolvasott tartalom\n  • Hangok\n  • {language}\n  • Tölts le egy továbbfejlesztett vagy prémium hangot",
     "readAloudNoVoiceAndroid": "Az eszközödön még nincs kiváló minőségű {language} hang. Telepíts hangadatokat a szövegfelolvasó motorodhoz, majd próbáld újra.",
-    "readAloudOpenVoiceSettings": "Hangbeállítások megnyitása"
+    "readAloudOpenVoiceSettings": "Hangbeállítások megnyitása",
+    "formLabel": "{name} űrlap"
 }

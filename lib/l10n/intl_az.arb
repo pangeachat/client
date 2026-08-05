@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-04 10:31:16.879624",
+    "@@last_modified": "2026-08-05 09:53:09.526833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Cihazınızda hələ yüksək keyfiyyətli {language} səsi yüklənməyib. Birini yükləyin, sonra yenidən cəhd edin:",
     "readAloudNoVoiceIOSSteps": "  • Parametrlər\n  • Əlçatanlıq\n  • Danışıq Məzmunu\n  • Səslər\n  • {language}\n  • Təkmilləşdirilmiş və ya Premium səs yükləyin",
     "readAloudNoVoiceAndroid": "Cihazınızda hələ yüksək keyfiyyətli {language} səsi yoxdur. Mətn-nitq mühərrikiniz üçün səs məlumatlarını quraşdırın, sonra yenidən cəhd edin.",
-    "readAloudOpenVoiceSettings": "Səs parametrlərini açın"
+    "readAloudOpenVoiceSettings": "Səs parametrlərini açın",
+    "formLabel": "{name} forması"
 }

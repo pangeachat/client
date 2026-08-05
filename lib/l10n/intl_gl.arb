@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-04 10:31:21.553427",
+    "@@last_modified": "2026-08-05 09:53:10.059231",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9700,5 +9700,6 @@
     "readAloudNoVoiceIOS": "O teu dispositivo aínda non ten descargada unha voz de {language} de alta calidade. Descarga unha e téntao de novo:",
     "readAloudNoVoiceIOSSteps": "  • Axustes\n  • Accesibilidade\n  • Contido falado\n  • Voces\n  • {language}\n  • Descarga unha voz mellorada ou Premium",
     "readAloudNoVoiceAndroid": "O teu dispositivo aínda non ten unha voz de {language} de alta calidade. Instala os datos de voz para o teu motor de texto a voz e téntao de novo.",
-    "readAloudOpenVoiceSettings": "Abrir a configuración de voz"
+    "readAloudOpenVoiceSettings": "Abrir a configuración de voz",
+    "formLabel": "Formulario de {name}"
 }
