@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-04 10:31:37.279826",
+    "@@last_modified": "2026-08-05 10:21:45.954814",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2082,5 +2082,8 @@
     "readAloudNoVoiceIOS": "Ẹrọ rẹ kò tíì ní ohùn {language} tó dára tó tí a ti gba sílẹ̀. Gba ọ̀kan sílẹ̀, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí:",
     "readAloudNoVoiceIOSSteps": "  • Ètò\n  • Ìrọ̀rùn\n  • Ohun Tí A Sọ\n  • Àwọn Ohùn\n  • {language}\n  • Gba ohùn Enhanced tàbí Premium sílẹ̀",
     "readAloudNoVoiceAndroid": "Ẹrọ rẹ kò tíì ní ohùn {language} tó dára tó. Fi data ohùn sori ẹrọ fún ẹ̀rọ text-to-speech rẹ, lẹ́yìn náà gbìyànjú lẹ́ẹ̀kan sí.",
-    "readAloudOpenVoiceSettings": "Ṣí àwọn ètò ohùn"
+    "readAloudOpenVoiceSettings": "Ṣí àwọn ètò ohùn",
+    "streamingSttDegradedLiveBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ ń ṣiṣẹ́ lórí iṣẹ́ ìdáàbòbò. Didara le yàtọ̀, jọ̀wọ́ ṣàyẹ̀wò ọ̀rọ̀ náà.",
+    "streamingSttDegradedToBatchBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ kò sí nílò báyìí. A kọ ọ̀rọ̀ rẹ sílẹ̀ ní ọ̀nà tó wọ́pọ̀, láìsí àtúnṣe lórí ẹ̀rọ ìgbésáfẹ́fẹ́. A ń ṣiṣẹ́ láti mú un padà bọ̀ sípò.",
+    "streamingSttLanguageUnsupportedBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ kò sí fún èdè yìí báyìí. A ń ṣiṣẹ́ lórí rẹ̀."
 }

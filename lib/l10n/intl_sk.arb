@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-04 10:31:32.060549",
+    "@@last_modified": "2026-08-05 10:21:40.623914",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10651,5 +10651,8 @@
     "readAloudNoVoiceIOS": "Vaše zariadenie ešte nemá stiahnutý kvalitný hlas pre jazyk {language}. Stiahnite si ho a skúste to znova:",
     "readAloudNoVoiceIOSSteps": "  • Nastavenia\n  • Prístupnosť\n  • Hlasový obsah\n  • Hlasy\n  • {language}\n  • Stiahnite si vylepšený alebo prémiový hlas",
     "readAloudNoVoiceAndroid": "Vaše zariadenie ešte nemá kvalitný hlas pre jazyk {language}. Nainštalujte hlasové dáta pre váš text-to-speech engine a skúste to znova.",
-    "readAloudOpenVoiceSettings": "Otvoriť nastavenia hlasu"
+    "readAloudOpenVoiceSettings": "Otvoriť nastavenia hlasu",
+    "streamingSttDegradedLiveBanner": "Živý prepis beží na záložnej službe. Kvalita sa môže líšiť, skontrolujte text.",
+    "streamingSttDegradedToBatchBanner": "Živý prepis momentálne nie je k dispozícii. Vaša správa bola prepísaná štandardným spôsobom, bez živých úprav. Pracujeme na jej obnovení.",
+    "streamingSttLanguageUnsupportedBanner": "Živý prepis zatiaľ nie je k dispozícii pre tento jazyk. Pracujeme na tom."
 }

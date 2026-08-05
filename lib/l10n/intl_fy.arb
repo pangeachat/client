@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-04 10:31:20.910464",
+    "@@last_modified": "2026-08-05 10:21:31.458957",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2082,5 +2082,8 @@
     "readAloudNoVoiceIOS": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit downloade. Download ien, en besykje it dan opnij:",
     "readAloudNoVoiceIOSSteps": "  • Ynstellings\n  • Tagong\n  • Sprutsen ynhâld\n  • Stimmen\n  • {language}\n  • Download in Ferbettere of Premium stim",
     "readAloudNoVoiceAndroid": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit. Ynstallearje stimgegevens foar jo tekst-nei-spraak-motor, en besykje it dan opnij.",
-    "readAloudOpenVoiceSettings": "Stimynstellings iepenje"
+    "readAloudOpenVoiceSettings": "Stimynstellings iepenje",
+    "streamingSttDegradedLiveBanner": "Live transkripsje rint op in reservekopytsjinst. Kwaliteit kin ferskille, kontrolearje asjebleaft de tekst.",
+    "streamingSttDegradedToBatchBanner": "Live transkripsje is op it stuit net beskikber. Jo berjocht is op de standertwize transkribearre, sûnder live bewurking. Wy wurkje deroan om it te herstellen.",
+    "streamingSttLanguageUnsupportedBanner": "Live transkripsje is noch net beskikber foar dizze taal. Wy wurkje deroan."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-04 10:31:37.022389",
+    "@@last_modified": "2026-08-05 10:21:45.355195",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2082,5 +2082,8 @@
     "readAloudNoVoiceIOS": "Idivayisi yakho ayinalo izwi lesi-{language} elisezingeni eliphezulu elilandiwe okwamanje. Landa elilodwa, bese uzama futhi:",
     "readAloudNoVoiceIOSSteps": "  • Izilungiselelo\n  • Ukufinyeleleka\n  • Okuqukethwe Okukhulunywayo\n  • Amazwi\n  • {language}\n  • Landa izwi Elithuthukisiwe noma Le-Premium",
     "readAloudNoVoiceAndroid": "Idivayisi yakho ayinalo izwi lesi-{language} elisezingeni eliphezulu okwamanje. Faka idatha yezwi yenjini yakho yokuguqula umbhalo ube yizwi, bese uzama futhi.",
-    "readAloudOpenVoiceSettings": "Vula izilungiselelo zezwi"
+    "readAloudOpenVoiceSettings": "Vula izilungiselelo zezwi",
+    "streamingSttDegradedLiveBanner": "Ukulotshwa bukhoma kusebenza ngesevisi eyisipele. Ikhwalithi ingahluka, sicela uhlole umbhalo.",
+    "streamingSttDegradedToBatchBanner": "Ukulotshwa bukhoma akutholakali okwamanje. Umlayezo wakho ulotshwe ngendlela evamile, ngaphandle kokuhlela bukhoma. Sisebenzela ukukubuyisela.",
+    "streamingSttLanguageUnsupportedBanner": "Ukulotshwa bukhoma akukatholakali ngalolu limi okwamanje. Sisebenzela kukho."
 }

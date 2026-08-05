@@ -1270,7 +1270,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-04 10:31:35.925441",
+    "@@last_modified": "2026-08-05 10:21:44.137950",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10663,5 +10663,8 @@
     "readAloudNoVoiceIOS": "你部裝置仲未下載高質素嘅{language}語音。請下載一個，然後再試過：",
     "readAloudNoVoiceIOSSteps": "  • 設定\n  • 輔助使用\n  • 語音內容\n  • 語音\n  • {language}\n  • 下載增強版或高級版語音",
     "readAloudNoVoiceAndroid": "你部裝置仲未有高質素嘅{language}語音。請為你嘅文字轉語音引擎安裝語音數據，然後再試過。",
-    "readAloudOpenVoiceSettings": "開啟語音設定"
+    "readAloudOpenVoiceSettings": "開啟語音設定",
+    "streamingSttDegradedLiveBanner": "即時轉錄正在備用服務上運行。質量可能會有所不同，請檢查文本。",
+    "streamingSttDegradedToBatchBanner": "即時轉錄目前無法使用。您的訊息已透過標準方式轉錄，沒有即時編輯。我們正在努力恢復中。",
+    "streamingSttLanguageUnsupportedBanner": "此語言的即時轉錄功能尚未推出。我們正在努力開發中。"
 }

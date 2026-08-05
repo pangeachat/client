@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-04 10:31:26.634397",
+    "@@last_modified": "2026-08-05 10:21:36.169440",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2082,5 +2082,8 @@
     "readAloudNoVoiceIOS": "Yu divays nɔ gɛt kwaliti {language} vɔys dɔŋlod yet. Dɔŋlod wan, dɛn tray bak:",
     "readAloudNoVoiceIOSSteps": "  • Sɛtin dɛn\n  • Aksɛsibiliti\n  • Spoken Kɔntɛnt\n  • Vɔys dɛn\n  • {language}\n  • Dɔŋlod wan Ɛnhans ɔ Premiɔm vɔys",
     "readAloudNoVoiceAndroid": "Yu divays nɔ gɛt kwaliti {language} vɔys yet. Instɔl vɔys data fɔ yu tɛks-to-spich ɛnjin, dɛn tray bak.",
-    "readAloudOpenVoiceSettings": "Ɔpen vɔys sɛtin dɛn"
+    "readAloudOpenVoiceSettings": "Ɔpen vɔys sɛtin dɛn",
+    "streamingSttDegradedLiveBanner": "Di layv transkripshɔn de rɔn pan wan bakɔp savis. Di kwaliti kin difrɛn, duya chɛk di tɛks.",
+    "streamingSttDegradedToBatchBanner": "Layv transkripshɔn nɔ de naw. Yu mɛsej bin transkrayb di standad we, witɔut layv ɛditin. Wi de tray fɔ mek i kɔm bak.",
+    "streamingSttLanguageUnsupportedBanner": "Layv transkripshɔn nɔ de fɔ dis langwej yet. Wi de wok pan am."
 }

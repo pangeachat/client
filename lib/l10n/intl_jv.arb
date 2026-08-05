@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-04 10:31:25.560688",
+    "@@last_modified": "2026-08-05 10:21:34.633909",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2082,5 +2082,8 @@
     "readAloudNoVoiceIOS": "Piranti sampeyan durung ngundhuh swara {language} kualitas dhuwur. Undhuh siji, banjur coba maneh:",
     "readAloudNoVoiceIOSSteps": "  • Setelan\n  • Aksesibilitas\n  • Konten sing Diucapake\n  • Swara\n  • {language}\n  • Undhuh swara sing Ditingkatake utawa Premium",
     "readAloudNoVoiceAndroid": "Piranti sampeyan durung duwe swara {language} kualitas dhuwur. Instal data swara kanggo mesin teks-menyang-swara sampeyan, banjur coba maneh.",
-    "readAloudOpenVoiceSettings": "Bukak setelan swara"
+    "readAloudOpenVoiceSettings": "Bukak setelan swara",
+    "streamingSttDegradedLiveBanner": "Transkripsi langsung mlaku ing layanan serep. Kualitas bisa beda-beda, mangga priksa teks.",
+    "streamingSttDegradedToBatchBanner": "Transkripsi langsung ora kasedhiya saiki. Pesen sampeyan ditranskripsi kanthi cara standar, tanpa panyuntingan langsung. Kita lagi ngupayakake mulihake.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung durung kasedhiya kanggo basa iki. Kita lagi ngupayakake."
 }

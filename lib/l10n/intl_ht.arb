@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-04 10:31:24.342531",
+    "@@last_modified": "2026-08-05 10:21:33.295119",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2082,5 +2082,8 @@
     "readAloudNoVoiceIOS": "Aparèy ou an poko gen yon vwa {language} bon kalite telechaje. Telechaje youn, epi eseye ankò:",
     "readAloudNoVoiceIOSSteps": "  • Anviwònman\n  • Aksè\n  • Kontni Pale\n  • Vwa\n  • {language}\n  • Telechaje yon vwa Amelyore oswa Premium",
     "readAloudNoVoiceAndroid": "Aparèy ou an poko gen yon vwa {language} bon kalite. Enstale done vwa pou motè tèks-a-lapawòl ou a, epi eseye ankò.",
-    "readAloudOpenVoiceSettings": "Louvri anviwònman vwa"
+    "readAloudOpenVoiceSettings": "Louvri anviwònman vwa",
+    "streamingSttDegradedLiveBanner": "Transkripsyon an dirèk ap fonksyone sou yon sèvis backup. Kalite a ka varye, tanpri verifye tèks la.",
+    "streamingSttDegradedToBatchBanner": "Transkripsyon an dirèk pa disponib kounye a. Mesaj ou a te transkri nan fason estanda a, san edisyon an dirèk. N ap travay pou retabli li.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripsyon an dirèk poko disponib pou lang sa a. N ap travay sou sa."
 }

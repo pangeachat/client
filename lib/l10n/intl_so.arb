@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-04 10:31:32.811856",
+    "@@last_modified": "2026-08-05 10:21:42.003870",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2082,5 +2082,8 @@
     "readAloudNoVoiceIOS": "Qalabkaagu wali ma laha cod tayo sare leh oo {language} ah oo la soo dejiyay. Soo deji mid, ka dibna isku day mar kale:",
     "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Soo deji cod la xoojiyay ama Premium ah",
     "readAloudNoVoiceAndroid": "Qalabkaagu wali ma laha cod tayo sare leh oo {language} ah. Ku rakib xogta codka ee mashiinkaaga qoraalka-ilaa-hadalka, ka dibna isku day mar kale.",
-    "readAloudOpenVoiceSettings": "Fur goobaha codka"
+    "readAloudOpenVoiceSettings": "Fur goobaha codka",
+    "streamingSttDegradedLiveBanner": "Qoraalka tooska ah waxa uu ku shaqaynayaa adeeg kayd ah. Tayada way kala duwanaan kartaa, fadlan hubi qoraalka.",
+    "streamingSttDegradedToBatchBanner": "Qoraalka tooska ah hadda lama heli karo. Farriintaada waxa loo qoray si caadi ah, iyada oo aan la tafatirin si toos ah. Waxaanu ka shaqaynaynaa sidii aanu dib ugu soo celin lahayn.",
+    "streamingSttLanguageUnsupportedBanner": "Qoraalka tooska ah weli lama heli karo luqaddan. Waxaanu ka shaqaynaynaa."
 }

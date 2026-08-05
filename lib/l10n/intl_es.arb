@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-04 10:31:19.048436",
+    "@@last_modified": "2026-08-05 10:21:30.641115",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7903,5 +7903,8 @@
     "readAloudNoVoiceIOS": "Tu dispositivo aún no tiene descargada una voz de {language} de alta calidad. Descarga una y vuelve a intentarlo:",
     "readAloudNoVoiceIOSSteps": "  • Ajustes\n  • Accesibilidad\n  • Contenido hablado\n  • Voces\n  • {language}\n  • Descargar una voz mejorada o premium",
     "readAloudNoVoiceAndroid": "Tu dispositivo aún no tiene una voz de {language} de alta calidad. Instala los datos de voz para tu motor de texto a voz y vuelve a intentarlo.",
-    "readAloudOpenVoiceSettings": "Abrir ajustes de voz"
+    "readAloudOpenVoiceSettings": "Abrir ajustes de voz",
+    "streamingSttDegradedLiveBanner": "La transcripción en vivo se está ejecutando en un servicio de respaldo. La calidad puede variar, por favor, revisa el texto.",
+    "streamingSttDegradedToBatchBanner": "La transcripción en vivo no está disponible en este momento. Tu mensaje fue transcrito de la manera estándar, sin edición en vivo. Estamos trabajando para restaurarla.",
+    "streamingSttLanguageUnsupportedBanner": "La transcripción en vivo aún no está disponible para este idioma. Estamos trabajando en ello."
 }
