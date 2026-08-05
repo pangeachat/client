@@ -39,6 +39,42 @@ void main() {
     });
   });
 
+  // #7937 — past a threshold the camera jumps instead of tweening, so only the
+  // destination zoom level is ever fetched. A tween renders every level it
+  // crosses, and those are precisely the uncached ones.
+  group('movesInstantly — long moves skip the tween (#7937)', () {
+    test('the short moves that read as polish still glide', () {
+      expect(WorldMapConstants.movesInstantly(7, 7), isFalse); // focus pan
+      expect(WorldMapConstants.movesInstantly(7, 8), isFalse); // +/- step
+      expect(WorldMapConstants.movesInstantly(7, 6), isFalse);
+    });
+
+    test('exactly at the threshold still glides; past it jumps', () {
+      final t = WorldMapConstants.instantMoveZoomDelta;
+      expect(WorldMapConstants.movesInstantly(5, 5 + t), isFalse);
+      expect(WorldMapConstants.movesInstantly(5, 5 + t + 0.01), isTrue);
+    });
+
+    test('the focus button and the world reset both jump', () {
+      // Focus: world floor in to focusZoom. Reset: focusZoom back out.
+      expect(
+        WorldMapConstants.movesInstantly(3, WorldMapConstants.focusZoom),
+        isTrue,
+      );
+      expect(
+        WorldMapConstants.movesInstantly(WorldMapConstants.focusZoom, 3),
+        isTrue,
+      );
+    });
+
+    test('depends only on the magnitude, not the direction', () {
+      expect(
+        WorldMapConstants.movesInstantly(4, 12),
+        WorldMapConstants.movesInstantly(12, 4),
+      );
+    });
+  });
+
   group('glideProgress — directional pan/zoom staggering (#7239)', () {
     test(
       'endpoints: pan and zoom are 0 at t=0 and 1 at t=1, any direction',

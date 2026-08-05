@@ -101,6 +101,26 @@ class WorldMapConstants {
     return Duration(milliseconds: ms.round());
   }
 
+  /// Beyond this many zoom levels a camera move JUMPS instead of gliding
+  /// (#7937). Slowing a long glide only lengthens the tile churn — a tween
+  /// through N levels must fetch all N, and flutter_map can only paper over a
+  /// loading level with a neighbouring one it already holds in memory. A move
+  /// that also pans (the focus button, the world reset) travels into map area
+  /// whose ancestors were never fetched, so there is nothing to scale up and
+  /// the background shows through in tile-shaped squares. An instant move
+  /// fetches exactly ONE level, which is the only way to avoid that rather
+  /// than shorten it.
+  ///
+  /// The threshold keeps the short moves smooth: a +/- step (1 level) and an
+  /// activity focus pan (0 levels) still glide, which is the motion that reads
+  /// as polish. Only the big sweeps — where the glide was never legible
+  /// anyway, just a blur of half-loaded tiles — snap.
+  static const double instantMoveZoomDelta = 4.0;
+
+  /// Whether a move of this size should skip the tween entirely.
+  static bool movesInstantly(double startZoom, double targetZoom) =>
+      (targetZoom - startZoom).abs() > instantMoveZoomDelta;
+
   // #7937 — the scroll wheel is deliberately NOT eased. flutter_map applies
   // each wheel event the instant it arrives, and an eased, cursor-anchored
   // version (accumulating onto the in-flight glide target over ~260ms, with a
