@@ -97,6 +97,7 @@ class WorldAnalyticsBarInternal extends StatelessWidget {
       builder: (context, _) {
         final l2 = viewModel.userL2;
         return Semantics(
+          container: true,
           label: L10n.of(context).analyticsAndSettingsLabel,
           child: Row(
             mainAxisSize: MainAxisSize.max,
