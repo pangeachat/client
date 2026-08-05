@@ -15,6 +15,7 @@ import 'package:fluffychat/features/activity_sessions/activity_session_constants
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 extension RoomSummaryExtension on Api {
@@ -74,8 +75,21 @@ class RoomSummariesResponse {
   }) {
     final summaries = <String, RoomSummaryResponse>{};
     json["rooms"].forEach((key, value) {
-      if (value.isNotEmpty) {
-        summaries[key] = RoomSummaryResponse.fromJson(value, l1Code: l1Code);
+      // Parse each room independently. Room state is open-ended — a shape one
+      // client version doesn't expect (a newer event schema, a hand-edited
+      // state event) is a normal occurrence, and letting it throw out of here
+      // would reject the whole batched request and drop every other room's
+      // summary along with it. Skip the room we can't read, keep the rest.
+      try {
+        if (value.isNotEmpty) {
+          summaries[key] = RoomSummaryResponse.fromJson(value, l1Code: l1Code);
+        }
+      } catch (e, s) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {"message": "Failed to parse room summary", "roomId": key},
+        );
       }
     });
     return RoomSummariesResponse(summaries: summaries);
@@ -196,13 +210,23 @@ class RoomSummaryResponse {
 
   bool isActivityInstance(String activityId) => this.activityId == activityId;
 
+  /// Someone is actually present: at least one non-bot member currently
+  /// joined. Filters stale, abandoned rooms (started, then left, never
+  /// finished) — see world-map.instructions.md "Discovering joinable sessions".
+  bool get hasPresentNonBotMember => membershipSummary.entries.any(
+    (e) => e.value == Membership.join.name && e.key != BotName.byEnvironment,
+  );
+
   bool get isActivityOpenToJoin {
     // v3 sessions carry a thin activity_plan ref, so key off [activityId] (set
     // even when the plan body is not embedded) rather than the parsed plan.
     if (activityId == null) return false;
 
-    // if room has no members, attempting to join will cause error, so we consider it not open
-    if (membershipSummary.isEmpty) return false;
+    // An abandoned session must not read as open (#8150): the room is
+    // knock_restricted, so with no joined member left to authorize the join,
+    // attempting it errors. The preview's membership summary keeps role-holders
+    // who left (value "leave"), so presence — not map emptiness — is the test.
+    if (!hasPresentNonBotMember) return false;
     return !isStarted;
   }
 

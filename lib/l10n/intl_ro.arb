@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:22.941956",
+    "@@last_modified": "2026-08-04 10:31:31.564829",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2764,8 +2764,6 @@
     "constructUseCollected": "Colectat în chat",
     "constructUseNanDesc": "Nu se aplică",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Activat textul vorbit",
-    "enableTTSToolDescription": "Permite aplicației să genereze ieșire text-vorbit pentru porțiuni de text în limba țintă.",
     "yourUsername": "Numele tău de utilizator",
     "yourEmail": "Adresa ta de email",
     "iWantToLearn": "Vreau să învăț",
@@ -5856,14 +5854,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8478,15 +8468,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Progresul sesiunii tale de practică nu va fi salvat.",
     "practiceGrammar": "Exersează gramatică",
     "notEnoughToPractice": "Trimite mai multe mesaje pentru a debloca practica",
     "constructUseCorGCDesc": "Practică categoria de gramatică corectă",
     "constructUseIncGCDesc": "Practică categoria de gramatică incorectă",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9076,16 +9061,6 @@
     },
     "enableEmailNotifications": "Activează notificările prin email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Subliniază automat mesajele audio",
-    "selectAudioMessagesOnPlayDescription": "Subliniază automat mesajele audio atunci când sunt redată",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9843,7 +9818,6 @@
     "browsePublicCourses": "Răsfoiți cursurile publice",
     "editProfile": "Editează profilul",
     "mapSearchHint": "Căutați activități",
-    "mapSearchNoResults": "Niciun rezultat în vizualizare",
     "mapFilterAllLanguages": "Toate limbile",
     "mapFilterNotStarted": "Nepornit",
     "mapFilterInProgress": "În desfășurare",
@@ -9852,7 +9826,6 @@
     "activityTypeConversation": "Conversație",
     "playAgain": "Joacă din nou",
     "reviewActivity": "Recenzie",
-    "mapEmptyInView": "Nimic aici la nivelul sau limba ta. Lărgiți filtrele sau faceți zoom out.",
     "welcomeToPangeaChat": "Bine ai venit la Pangea Chat",
     "claimTrial": "Solicită perioada de probă",
     "thanksForSigningUp": "Mulțumim pentru înscriere! Iată",
@@ -9923,10 +9896,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9956,10 +9925,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10180,7 +10145,6 @@
     "analyticsAndSettingsLabel": "Opțiuni de analiză și setări",
     "searchActivitiesLabel": "Caută activități pe hartă",
     "filteredActivitiesLabel": "Lista activităților filtrate",
-    "activityFilterButtonsLabel": "Butonul de filtrare a limbii, dificultății și progresului",
     "mapZoomLabel": "Controale de zoom pentru hartă",
     "activityMapLabel": "Harta activităților",
     "@navOptionsLabel": {
@@ -10200,10 +10164,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10436,5 +10396,41 @@
     "rateActivityCommentRejected": "Comentariul tău nu a putut fi postat. Încearcă să-l reformulezi sau trimite evaluarea fără un comentariu.",
     "rateActivityThanks": "Mulțumim pentru feedback!",
     "activityRatingMeterLabel": "{percent}% pozitiv ({count, plural, =1{1 evaluare} other{{count} evaluări}})",
-    "newActivityBadge": "NOU"
+    "newActivityBadge": "NOU",
+    "exitVocabPracticeSession": "Progresul sesiunii curente de exersare a vocabularului nu va fi salvat.",
+    "exitGrammarPracticeSession": "Progresul sesiunii curente de exersare a gramaticii nu va fi salvat.",
+    "activityFilterButtonsLabel": "Butoane de filtrare pentru nivel, jucători și stare",
+    "mapFilterAllLevels": "Toate nivelurile",
+    "mapFilterAllPlayers": "Toți jucătorii",
+    "mapFilterAllStatuses": "Toate stările",
+    "mapFiltersShow": "Afișează filtrele",
+    "mapFiltersHide": "Ascunde filtrele",
+    "mapStatusAvailable": "Disponibil",
+    "mapStatusOngoing": "În desfășurare",
+    "mapStatusWaiting": "În așteptare",
+    "mapStatusOpenToJoin": "Deschis pentru alăturare",
+    "mapMatchesOffscreen": "Există meciuri în afara vizualizării tale. Micșorează pentru a le vedea.",
+    "mapFiltersHideMatches": "Filtrele tale ascund toate meciurile. Lărgește căutarea pentru a le vedea.",
+    "mapNoSearchMatches": "Nicio activitate nu corespunde căutării tale.",
+    "mapNoActivitiesArea": "Nicio activitate în această zonă.",
+    "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate.",
+    "autocorrectMobileOnly": "Doar pe mobil",
+    "autocorrectMobileOnlyWarning": "Corectarea automată a dispozitivului este disponibilă doar în aplicația mobilă.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Cuvinte",
+    "audioWordsDescription": "Redă sunetul unui cuvânt când apeși pe el.",
+    "audioChoicesToolName": "Opțiuni",
+    "audioChoicesDescription": "Redă sunetul pentru opțiunile de răspuns în activitățile de exersare.",
+    "audioIncomingMessagesToolName": "Mesaje primite",
+    "audioIncomingMessagesDescription": "Citește automat mesajele primite cu voce tare în limba țintă pentru exersarea ascultării.",
+    "choosePangeaAvatar": "Alege un avatar Pangea",
+    "readAloudNoVoiceTitle": "Nu s-a găsit o voce {language} de înaltă calitate",
+    "readAloudNoVoiceDesktopWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Chrome și Edge includ de obicei voci de înaltă calitate.",
+    "readAloudGetChrome": "Obțineți Chrome",
+    "readAloudNoVoiceMobileWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Aplicația Pangea Chat poate utiliza cele mai bune voci ale dispozitivului dvs.",
+    "readAloudGetApp": "Obțineți aplicația",
+    "readAloudNoVoiceIOS": "Dispozitivul dvs. nu are încă o voce {language} de înaltă calitate descărcată. Descărcați una, apoi încercați din nou:",
+    "readAloudNoVoiceIOSSteps": "  • Setări\n  • Accesibilitate\n  • Conținut vorbit\n  • Voci\n  • {language}\n  • Descărcați o voce îmbunătățită sau premium",
+    "readAloudNoVoiceAndroid": "Dispozitivul dvs. nu are încă o voce {language} de înaltă calitate. Instalați date vocale pentru motorul dvs. text-to-speech, apoi încercați din nou.",
+    "readAloudOpenVoiceSettings": "Deschideți setările vocale"
 }

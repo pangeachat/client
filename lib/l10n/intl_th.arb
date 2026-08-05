@@ -2835,8 +2835,6 @@
     "constructUseCollected": "เก็บรวบรวมในแชท",
     "constructUseNanDesc": "ไม่สามารถใช้ได้",
     "xpIntoLevel": "{currentXP} / {maxXP} คะแนนประสบการณ์",
-    "enableTTSToolName": "เปิดใช้งานการแปลงข้อความเป็นเสียง",
-    "enableTTSToolDescription": "อนุญาตให้แอปพลิเคชันสร้างผลลัพธ์การแปลงข้อความเป็นเสียงสำหรับส่วนของข้อความในภาษาที่คุณตั้งเป้าไว้",
     "yourUsername": "ชื่อผู้ใช้ของคุณ",
     "yourEmail": "อีเมลของคุณ",
     "iWantToLearn": "ฉันต้องการเรียนรู้",
@@ -3104,7 +3102,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-07-29 12:08:24.562031",
+    "@@last_modified": "2026-08-04 10:31:33.904216",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5756,14 +5754,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8378,15 +8368,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "ความก้าวหน้าของการฝึกฝนของคุณจะไม่ถูกบันทึก",
     "practiceGrammar": "ฝึกไวยากรณ์",
     "notEnoughToPractice": "ส่งข้อความเพิ่มเติมเพื่อปลดล็อกการฝึกฝน",
     "constructUseCorGCDesc": "การฝึกไวยากรณ์หมวดหมู่ที่ถูกต้อง",
     "constructUseIncGCDesc": "การฝึกไวยากรณ์หมวดหมู่ที่ไม่ถูกต้อง",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8976,16 +8961,6 @@
     },
     "enableEmailNotifications": "เปิดการแจ้งเตือนทางอีเมล",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "เน้นข้อความเสียงโดยอัตโนมัติ",
-    "selectAudioMessagesOnPlayDescription": "เน้นข้อความเสียงโดยอัตโนมัติเมื่อเล่น",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9743,7 +9718,6 @@
     "browsePublicCourses": "เรียกดูหลักสูตรสาธารณะ",
     "editProfile": "แก้ไขโปรไฟล์",
     "mapSearchHint": "ค้นหากิจกรรม",
-    "mapSearchNoResults": "ไม่มีผลลัพธ์ในมุมมอง",
     "mapFilterAllLanguages": "ทุกภาษา",
     "mapFilterNotStarted": "ยังไม่เริ่ม",
     "mapFilterInProgress": "กำลังดำเนินการ",
@@ -9752,7 +9726,6 @@
     "activityTypeConversation": "การสนทนา",
     "playAgain": "เล่นอีกครั้ง",
     "reviewActivity": "ตรวจสอบ",
-    "mapEmptyInView": "ไม่มีอะไรที่นี่ในระดับหรือภาษาของคุณ ขยายตัวกรองของคุณหรือซูมออก",
     "welcomeToPangeaChat": "ยินดีต้อนรับสู่ Pangea Chat",
     "claimTrial": "ขอรับการทดลองใช้งาน",
     "thanksForSigningUp": "ขอบคุณที่ลงทะเบียน! นี่คือ",
@@ -9823,10 +9796,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9856,10 +9825,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10080,7 +10045,6 @@
     "analyticsAndSettingsLabel": "ตัวเลือกการวิเคราะห์และการตั้งค่า",
     "searchActivitiesLabel": "ค้นหากิจกรรมบนแผนที่",
     "filteredActivitiesLabel": "รายการกิจกรรมที่กรอง",
-    "activityFilterButtonsLabel": "ปุ่มกรองภาษา ความยาก และความก้าวหน้า",
     "mapZoomLabel": "การควบคุมการซูมแผนที่",
     "activityMapLabel": "แผนที่กิจกรรม",
     "@navOptionsLabel": {
@@ -10100,10 +10064,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10336,5 +10296,41 @@
     "rateActivityCommentRejected": "ไม่สามารถโพสต์ความคิดเห็นของคุณได้ ลองเปลี่ยนคำพูด หรือส่งการให้คะแนนของคุณโดยไม่มีความคิดเห็น",
     "rateActivityThanks": "ขอบคุณสำหรับความคิดเห็นของคุณ!",
     "activityRatingMeterLabel": "{percent}% เป็นบวก ({count, plural, =1{1 การให้คะแนน} other{{count} การให้คะแนน}})",
-    "newActivityBadge": "ใหม่"
+    "newActivityBadge": "ใหม่",
+    "exitVocabPracticeSession": "ความคืบหน้าของเซสชันฝึกคำศัพท์ปัจจุบันของคุณจะไม่ถูกบันทึก",
+    "exitGrammarPracticeSession": "ความคืบหน้าของเซสชันฝึกไวยากรณ์ปัจจุบันของคุณจะไม่ถูกบันทึก",
+    "activityFilterButtonsLabel": "ปุ่มตัวกรองระดับ, ผู้เล่น และสถานะ",
+    "mapFilterAllLevels": "ทุกระดับ",
+    "mapFilterAllPlayers": "ผู้เล่นทั้งหมด",
+    "mapFilterAllStatuses": "ทุกสถานะ",
+    "mapFiltersShow": "แสดงตัวกรอง",
+    "mapFiltersHide": "ซ่อนตัวกรอง",
+    "mapStatusAvailable": "พร้อมใช้งาน",
+    "mapStatusOngoing": "กำลังดำเนินการ",
+    "mapStatusWaiting": "กำลังรอ",
+    "mapStatusOpenToJoin": "เปิดให้เข้าร่วม",
+    "mapMatchesOffscreen": "มีการแข่งขันอยู่นอกมุมมองของคุณ ซูมออกเพื่อดู",
+    "mapFiltersHideMatches": "ตัวกรองของคุณกำลังซ่อนการแข่งขันทั้งหมด ขยายการค้นหาเพื่อดู",
+    "mapNoSearchMatches": "ไม่มีกิจกรรมที่ตรงกับการค้นหาของคุณ",
+    "mapNoActivitiesArea": "ไม่มีกิจกรรมในพื้นที่นี้",
+    "practiceSessionTimedOut": "เซสชันฝึกฝนของคุณสิ้นสุดลงหลังจากไม่มีกิจกรรมเป็นเวลา {minutes} นาที",
+    "autocorrectMobileOnly": "สำหรับมือถือเท่านั้น",
+    "autocorrectMobileOnlyWarning": "การแก้ไขอัตโนมัติของอุปกรณ์มีให้ใช้งานเฉพาะในแอปบนมือถือเท่านั้น",
+    "audioSectionTitle": "เสียง",
+    "audioWordsToolName": "คำ",
+    "audioWordsDescription": "เล่นเสียงของคำเมื่อคุณแตะ",
+    "audioChoicesToolName": "ตัวเลือก",
+    "audioChoicesDescription": "เล่นเสียงสำหรับตัวเลือกคำตอบในกิจกรรมฝึกหัด",
+    "audioIncomingMessagesToolName": "ข้อความขาเข้า",
+    "audioIncomingMessagesDescription": "อ่านข้อความที่ได้รับโดยอัตโนมัติในภาษาเป้าหมายของคุณเพื่อฝึกการฟัง",
+    "choosePangeaAvatar": "เลือกอวตาร Pangea",
+    "readAloudNoVoiceTitle": "ไม่พบเสียงคุณภาพสูงสำหรับภาษา {language}",
+    "readAloudNoVoiceDesktopWeb": "เบราว์เซอร์นี้ไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดังนั้นจึงไม่สามารถอ่านข้อความออกเสียงได้ดีที่นี่ โดยปกติแล้ว Chrome และ Edge จะมีเสียงคุณภาพสูงให้ใช้งาน",
+    "readAloudGetChrome": "รับ Chrome",
+    "readAloudNoVoiceMobileWeb": "เบราว์เซอร์นี้ไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดังนั้นจึงไม่สามารถอ่านข้อความออกเสียงได้ดีที่นี่ แอป Pangea Chat สามารถใช้เสียงที่ดีที่สุดของอุปกรณ์ของคุณได้",
+    "readAloudGetApp": "รับแอป",
+    "readAloudNoVoiceIOS": "อุปกรณ์ของคุณยังไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดาวน์โหลดเสียงแล้วลองอีกครั้ง:",
+    "readAloudNoVoiceIOSSteps": "  • การตั้งค่า\n  • การช่วยการเข้าถึง\n  • เนื้อหาที่พูด\n  • เสียง\n  • {language}\n  • ดาวน์โหลดเสียง Enhanced หรือ Premium",
+    "readAloudNoVoiceAndroid": "อุปกรณ์ของคุณยังไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ติดตั้งข้อมูลเสียงสำหรับกลไกการแปลงข้อความเป็นคำพูดของคุณ แล้วลองอีกครั้ง",
+    "readAloudOpenVoiceSettings": "เปิดการตั้งค่าเสียง"
 }

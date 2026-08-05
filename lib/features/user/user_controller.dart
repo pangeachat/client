@@ -448,10 +448,12 @@ class UserController {
         return profile.toolSettings.autoIGC;
       case ToolSetting.enableAutocorrect:
         return profile.toolSettings.enableAutocorrect;
-      case ToolSetting.enableTTS:
-        return profile.toolSettings.enableTTS;
-      case ToolSetting.selectAudioMessagesOnPlay:
-        return profile.toolSettings.selectAudioMessagesOnPlay;
+      case ToolSetting.audioWords:
+        return profile.toolSettings.audioWords;
+      case ToolSetting.audioChoices:
+        return profile.toolSettings.audioChoices;
+      case ToolSetting.audioIncomingMessages:
+        return profile.toolSettings.audioIncomingMessages;
     }
   }
 

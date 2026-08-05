@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -45,6 +47,13 @@ class MobileNavWidget extends StatefulWidget {
   /// navigation (`WorkspaceNav.setSection`, etc).
   final void Function(AppSection section) onSectionTap;
 
+  /// Wraps the Chats rail item with the all-chats unread badge, so the narrow
+  /// tab carries the same count the web rail's Chats item wears (#8129).
+  /// Injected by the shell — which owns the Matrix lookups and the sync-driven
+  /// rebuilds — so this widget stays presentational. Null renders the plain
+  /// button.
+  final Widget Function(Widget child)? chatsBadgeBuilder;
+
   /// The open section/course content hosted in the cavity. Null means nothing
   /// is cavity-hosted (rail-only, no matter the last height).
   final Widget? cavityChild;
@@ -66,6 +75,18 @@ class MobileNavWidget extends StatefulWidget {
   /// or a fixed key like `'chats'` / `'courses'`. A different key opens at its
   /// own default rather than inheriting the previous key's height.
   final String? cavityKey;
+
+  /// The active COURSE context (`?c=` / `activeSpaceId`), or null when the
+  /// workspace isn't course-scoped. This is what says a course is still "open":
+  /// a chat or an activity opened from a course keeps the same context (only the
+  /// cavity — hence [cavityKey] — swaps), and even closing the course card keeps
+  /// it; the context leaves a course only via World or choosing another course
+  /// (routing.instructions.md — "scope is reset only by the World control or by
+  /// choosing a different course, never by closing a panel"). A course's
+  /// remembered height is forgotten exactly when the context leaves it, so
+  /// sub-navigation preserves it (#7332) while a genuinely fresh course open
+  /// starts at peek (#7609). See [didUpdateWidget].
+  final String? cavityContextId;
 
   /// True for a course card (opens at a small peek by default); false for a
   /// section (opens at half by default).
@@ -132,10 +153,12 @@ class MobileNavWidget extends StatefulWidget {
     this.courseShortcutSelected = false,
     required this.onCourseShortcutTap,
     required this.onSectionTap,
+    this.chatsBadgeBuilder,
     this.cavityChild,
     this.cavitySection,
     this.courseShortcutHostsCavity = false,
     this.cavityKey,
+    this.cavityContextId,
     this.cavityDefaultsToPeek = false,
     required this.maxHeightFraction,
     this.preferredCavityHeightPx,
@@ -156,7 +179,12 @@ class MobileNavWidget extends StatefulWidget {
   /// Last settled height per [cavityKey], surviving disposal when a full-screen
   /// surface (a live chat, an activity) mounts over this widget — mirrors
   /// `MobileCourseSheet._expandedBySheet` (#7332), generalized to any section
-  /// or course key and to three rest states instead of two.
+  /// or course key and to three rest states instead of two. A course entry is
+  /// dropped when the course CONTEXT leaves it (World / a different course), so a
+  /// fresh course open starts at peek (#7609; [didUpdateWidget]) while opening a
+  /// chat or activity from the course — or a chat that only disposes this widget
+  /// — keeps the context and restores the height on return (#7332). Section keys
+  /// persist for the session (#7510).
   static final Map<String, NavCavityHeight> _heightByKey = {};
 
   @visibleForTesting
@@ -184,6 +212,15 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const double _peekHeight = 128.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
+  /// The least the keyboard trim may leave of a cavity that HOLDS FOCUS — the
+  /// drag handle plus one text-field row. Trimming past it drops the hosted
+  /// surface entirely (see `showContent` in [build]), which disposes the
+  /// focused field's node, which closes the keyboard, which un-trims the
+  /// cavity, which remounts the field: the #8072 loop where a tapped input
+  /// deselects itself. Applies only while something inside the cavity is
+  /// focused, so the plain keyboard trim of #7754 is unchanged.
+  static const double _focusedKeyboardFloor = 96.0;
+
   /// The rest stop the cavity currently sits at. Non-null means the drawn
   /// fraction is DERIVED from this each build ([_currentFraction]), so it
   /// tracks the live max height and content-fit hint — a cold mount, a
@@ -207,6 +244,16 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// notify in [build] fires only on a real change.
   bool _reportedFull = false;
 
+  /// Something inside [MobileNavWidget.cavityChild] holds focus — in practice a
+  /// text input the learner just tapped. Drives both the grow-to-full below and
+  /// the [_focusedKeyboardFloor] in [build].
+  bool _cavityHasFocus = false;
+
+  /// The grow-to-full has already fired for the current focus/keyboard episode,
+  /// so a later rebuild does not undo a height the learner chose by dragging
+  /// while the keyboard is still up. Cleared when focus or the keyboard leaves.
+  bool _grewForKeyboard = false;
+
   @override
   void initState() {
     super.initState();
@@ -225,6 +272,22 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     final keyChanged =
         widget.cavityChild != null && oldWidget.cavityKey != widget.cavityKey;
 
+    // Forget a course's remembered height exactly when the course CONTEXT leaves
+    // it — i.e. World or choosing a different course, the only two things that
+    // reset scope (routing.instructions.md). That is the deterministic fresh
+    // open (#7609). Everything that keeps the context — opening a chat or an
+    // activity from the course, or even closing the course card — is still the
+    // same course "open", so its height is preserved (#7332). Keyed by the OLD
+    // context (== the leaving course's [cavityKey]); a chat covering the course
+    // instead DISPOSES the widget with the context unchanged, so nothing is
+    // cleared and the height is restored on return.
+    final contextLeft =
+        oldWidget.cavityContextId != null &&
+        oldWidget.cavityContextId != widget.cavityContextId;
+    if (contextLeft) {
+      MobileNavWidget._heightByKey.remove(oldWidget.cavityContextId);
+    }
+
     if (closedNow) {
       setState(() {
         _restState = null;
@@ -236,8 +299,40 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       setState(() => _restState = restored);
       _fullLatched = restored == NavCavityHeight.full;
     }
+    // The keyboard arrives a frame or two after the focus that summoned it, so
+    // this — not [_onCavityFocusChanged] alone — is where the grow usually
+    // fires.
+    _growForKeyboardIfNeeded();
     // A preferredCavityHeightPx change needs no handling: a resting sheet
     // derives its fraction from the current hint every build.
+  }
+
+  void _onCavityFocusChanged(bool hasFocus) {
+    if (!mounted || _cavityHasFocus == hasFocus) return;
+    setState(() => _cavityHasFocus = hasFocus);
+    _growForKeyboardIfNeeded();
+  }
+
+  /// Grow the cavity to full while a hosted input holds focus and the software
+  /// keyboard is up. At peek — or at a short content-fit half — the keyboard
+  /// covers the whole cavity, leaving the learner typing into a field they
+  /// cannot see, so full (the most room the widget has) is the only height that
+  /// works. It mirrors the peek's own tap-to-expand (#7609), which a text
+  /// field's tap otherwise claims for itself. Deliberately NOT remembered: the
+  /// keyboard picked this height, not the learner, so the next open still uses
+  /// the height they left it at (#7332, #7510). #8072.
+  void _growForKeyboardIfNeeded() {
+    if (!_cavityHasFocus || widget.keyboardInset <= 0) {
+      _grewForKeyboard = false;
+      return;
+    }
+    if (_grewForKeyboard ||
+        widget.cavityChild == null ||
+        _restState == NavCavityHeight.full) {
+      return;
+    }
+    _grewForKeyboard = true;
+    _openAt(NavCavityHeight.full, remember: false);
   }
 
   /// The fraction actually drawn this frame: derived from the rest state
@@ -248,10 +343,13 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   };
 
   NavCavityHeight _restoreHeight() {
-    // A peek cavity (course card) always opens at its default peek — a
-    // deterministic entry state, not the height it was left at (#7609). The
-    // height memory exists for SECTION sheets (#7510) and stays theirs.
-    if (widget.cavityDefaultsToPeek) return _defaultHeight();
+    // Restore the height this cavity was left at. For a course (peek) cavity this
+    // is what bridges a chat opening over it and closing: the widget is DISPOSED
+    // then freshly mounted, and the static [_heightByKey] is the only survivor,
+    // so the course reopens at the size the learner left it (#7332). A genuine
+    // close FORGETS the entry ([didUpdateWidget]), so a fresh open with no stored
+    // height falls back to the peek default — the deterministic entry state
+    // (#7609). Section sheets read the same memory (#7510).
     final key = widget.cavityKey;
     if (key == null) return NavCavityHeight.collapsed;
     return MobileNavWidget._heightByKey[key] ?? _defaultHeight();
@@ -262,17 +360,19 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       : NavCavityHeight.half;
 
   void _remember(NavCavityHeight height) {
-    // A peek cavity never reads the memory ([_restoreHeight]) — it always
-    // reopens at peek (#7609) — so don't write it either.
-    if (widget.cavityDefaultsToPeek) return;
     final key = widget.cavityKey;
     if (key == null) return;
     // Dragging a SECTION sheet fully down is a dismissal, not a height
     // preference: collapsed renders 0px there (no handle left to grab), so
     // persisting it would make every reopen arrive already-dismissed and
     // stuck (#7510). The sheet still collapses now; the memory just keeps
-    // the last real height for the reopen.
-    if (height == NavCavityHeight.collapsed) return;
+    // the last real height for the reopen. A peek cavity's collapsed IS a
+    // visible, draggable rest height (the 128px peek), so it is remembered
+    // like any other — dragging a course down to peek and returning from a
+    // chat must restore the peek, not a stale expanded height (#7332).
+    if (height == NavCavityHeight.collapsed && !widget.cavityDefaultsToPeek) {
+      return;
+    }
     MobileNavWidget._heightByKey[key] = height;
   }
 
@@ -308,8 +408,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   // value between frames.
   double _lastMaxHeightPx = 0.0;
 
-  void _openAt(NavCavityHeight height) {
-    _remember(height);
+  void _openAt(NavCavityHeight height, {bool remember = true}) {
+    if (remember) _remember(height);
     _fullLatched = height == NavCavityHeight.full;
     setState(() => _restState = height);
   }
@@ -430,6 +530,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     widget.onSectionTap(section);
   }
 
+  Widget _withChatsBadge(Widget child) =>
+      widget.chatsBadgeBuilder?.call(child) ?? child;
+
   void _onCourseShortcutTap() {
     // The shortcut's own toggle: when its course IS the hosted sheet, the tap
     // collapses/re-expands like any active rail item — a same-URL navigation
@@ -537,14 +640,37 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                               onDragStart: _onDragStart,
                               onDragUpdate: _onDragUpdate,
                               onDragEnd: _onDragEnd,
-                              child: widget.cavityChild!,
+                              // Watches the hosted surface for a focused text
+                              // input (#8072). Focusable itself only as an
+                              // ancestor — it never takes focus or a traversal
+                              // stop of its own.
+                              child: Focus(
+                                canRequestFocus: false,
+                                skipTraversal: true,
+                                onFocusChange: _onCavityFocusChanged,
+                                child: widget.cavityChild!,
+                              ),
                             ),
                             builder: (context, animatedHeight, child) {
-                              final visible =
+                              final trimmed =
                                   (animatedHeight - widget.keyboardInset).clamp(
                                     0.0,
                                     animatedHeight,
                                   );
+                              // Hold the floor while the cavity holds focus, so
+                              // the grow-to-full above has frames to run in
+                              // without the trim unmounting the very field that
+                              // triggered it (#8072).
+                              final visible =
+                                  _cavityHasFocus && baseCavityPx > 0
+                                  ? max(
+                                      trimmed,
+                                      min(
+                                        animatedHeight,
+                                        _focusedKeyboardFloor,
+                                      ),
+                                    )
+                                  : trimmed;
                               // Drop the content the instant the cavity is
                               // TARGETED shut (baseCavityPx), not when the
                               // ANIMATED height reaches 0 — otherwise a
@@ -576,13 +702,17 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   onPressed: () =>
                                       _onRailItemTap(AppSection.world),
                                 ),
-                                _RailButton(
-                                  icon: Icons.forum_outlined,
-                                  selectedIcon: Icons.forum,
-                                  selected:
-                                      widget.activeSection == AppSection.chats,
-                                  tooltip: l10n.allChats,
-                                  onTap: () => _onRailItemTap(AppSection.chats),
+                                _withChatsBadge(
+                                  _RailButton(
+                                    icon: Icons.forum_outlined,
+                                    selectedIcon: Icons.forum,
+                                    selected:
+                                        widget.activeSection ==
+                                        AppSection.chats,
+                                    tooltip: l10n.allChats,
+                                    onTap: () =>
+                                        _onRailItemTap(AppSection.chats),
+                                  ),
                                 ),
                                 _RailButton(
                                   icon: Icons.map_outlined,

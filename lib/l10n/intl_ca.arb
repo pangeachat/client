@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:16.801074",
+    "@@last_modified": "2026-08-04 10:31:17.968728",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3182,8 +3182,6 @@
     "constructUseCollected": "Recollit a la conversa",
     "constructUseNanDesc": "No aplicable",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Activat text-a-veu",
-    "enableTTSToolDescription": "Permet a l'aplicació generar sortida de text-a-veu per a parts del text en la teva llengua objectiu.",
     "yourUsername": "El teu nom d'usuari",
     "yourEmail": "El teu correu electrònic",
     "iWantToLearn": "Vull aprendre",
@@ -5250,14 +5248,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7873,15 +7863,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "El teu progrés de la sessió de pràctica no es desarà.",
     "practiceGrammar": "Practica gramàtica",
     "notEnoughToPractice": "Envia més missatges per desbloquejar la pràctica",
     "constructUseCorGCDesc": "Pràctica de la categoria de gramàtica correcta",
     "constructUseIncGCDesc": "Pràctica de la categoria de gramàtica incorrecta",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8471,16 +8456,6 @@
     },
     "enableEmailNotifications": "Activar les notificacions per correu electrònic",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Destacar automàticament els missatges d'àudio",
-    "selectAudioMessagesOnPlayDescription": "Destacar automàticament els missatges d'àudio quan es reprodueixin",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9238,7 +9213,6 @@
     "browsePublicCourses": "Explora cursos públics",
     "editProfile": "Edita el perfil",
     "mapSearchHint": "Cerca activitats",
-    "mapSearchNoResults": "Sense coincidències a la vista",
     "mapFilterAllLanguages": "Totes les llengües",
     "mapFilterNotStarted": "No iniciat",
     "mapFilterInProgress": "En curs",
@@ -9247,7 +9221,6 @@
     "activityTypeConversation": "Conversació",
     "playAgain": "Juga de nou",
     "reviewActivity": "Revisar",
-    "mapEmptyInView": "No hi ha res aquí al teu nivell o idioma. Ampliu els vostres filtres o allunyeu-vos.",
     "welcomeToPangeaChat": "Benvingut a Pangea Chat",
     "claimTrial": "Reclama la teva prova",
     "thanksForSigningUp": "Gràcies per registrar-te! Aquí tens",
@@ -9318,10 +9291,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9351,10 +9320,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9575,7 +9540,6 @@
     "analyticsAndSettingsLabel": "Opcions d'analítica i configuració",
     "searchActivitiesLabel": "Cerca d'activitats al mapa",
     "filteredActivitiesLabel": "Llista d'activitats filtrades",
-    "activityFilterButtonsLabel": "Botons de filtre de llengua, dificultat i progrés",
     "mapZoomLabel": "Controls de zoom del mapa",
     "activityMapLabel": "Mapa d'activitats",
     "@navOptionsLabel": {
@@ -9595,10 +9559,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9831,5 +9791,41 @@
     "rateActivityCommentRejected": "No s'ha pogut publicar el teu comentari. Prova de reformular-lo o envia la teva valoració sense comentari.",
     "rateActivityThanks": "Gràcies pels teus comentaris!",
     "activityRatingMeterLabel": "{percent}% positiu ({count, plural, =1{1 valoració} other{{count} valoracions}})",
-    "newActivityBadge": "NOU"
+    "newActivityBadge": "NOU",
+    "exitVocabPracticeSession": "El progrés de la sessió actual de pràctica de vocabulari no es desarà.",
+    "exitGrammarPracticeSession": "El progrés de la sessió actual de pràctica de gramàtica no es desarà.",
+    "activityFilterButtonsLabel": "Botons de filtre de nivell, jugadors i estat",
+    "mapFilterAllLevels": "Tots els nivells",
+    "mapFilterAllPlayers": "Tots els jugadors",
+    "mapFilterAllStatuses": "Tots els estats",
+    "mapFiltersShow": "Mostrar filtres",
+    "mapFiltersHide": "Amagar filtres",
+    "mapStatusAvailable": "Disponible",
+    "mapStatusOngoing": "En curs",
+    "mapStatusWaiting": "Esperant",
+    "mapStatusOpenToJoin": "Obert a unir-se",
+    "mapMatchesOffscreen": "Hi ha partides fora de la teva vista. Allunya el zoom per veure-les.",
+    "mapFiltersHideMatches": "Els teus filtres estan amagant totes les partides. Amplia la cerca per veure-les.",
+    "mapNoSearchMatches": "Cap activitat coincideix amb la teva cerca.",
+    "mapNoActivitiesArea": "No hi ha activitats en aquesta zona.",
+    "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat.",
+    "autocorrectMobileOnly": "Només mòbil",
+    "autocorrectMobileOnlyWarning": "L'autocorrecció del dispositiu només està disponible a l'aplicació mòbil.",
+    "audioSectionTitle": "Àudio",
+    "audioWordsToolName": "Paraules",
+    "audioWordsDescription": "Reprodueix l'àudio d'una paraula quan la toques.",
+    "audioChoicesToolName": "Opcions",
+    "audioChoicesDescription": "Reprodueix l'àudio de les opcions de resposta en les activitats de pràctica.",
+    "audioIncomingMessagesToolName": "Missatges entrants",
+    "audioIncomingMessagesDescription": "Llegeix automàticament els missatges rebuts en veu alta en el teu idioma objectiu per practicar l'escolta.",
+    "choosePangeaAvatar": "Tria un avatar de Pangea",
+    "readAloudNoVoiceTitle": "No s'ha trobat cap veu d'alta qualitat per a {language}",
+    "readAloudNoVoiceDesktopWeb": "Aquest navegador no ofereix una veu d'alta qualitat per a {language}, així que els missatges no es poden llegir en veu alta correctament aquí. Chrome i Edge solen incloure veus d'alta qualitat.",
+    "readAloudGetChrome": "Obtén Chrome",
+    "readAloudNoVoiceMobileWeb": "Aquest navegador no ofereix una veu d'alta qualitat per a {language}, així que els missatges no es poden llegir en veu alta correctament aquí. L'aplicació Pangea Chat pot utilitzar les millors veus del teu dispositiu.",
+    "readAloudGetApp": "Obtén l'aplicació",
+    "readAloudNoVoiceIOS": "El teu dispositiu encara no té una veu d'alta qualitat per a {language} descarregada. Descarrega'n una i torna-ho a provar:",
+    "readAloudNoVoiceIOSSteps": "  • Configuració\n  • Accessibilitat\n  • Contingut parlat\n  • Veus\n  • {language}\n  • Descarrega una veu millorada o Premium",
+    "readAloudNoVoiceAndroid": "El teu dispositiu encara no té una veu d'alta qualitat per a {language}. Instal·la les dades de veu per al teu motor de text a veu i torna-ho a provar.",
+    "readAloudOpenVoiceSettings": "Obre la configuració de veu"
 }

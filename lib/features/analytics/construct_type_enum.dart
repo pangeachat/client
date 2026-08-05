@@ -77,4 +77,9 @@ enum ConstructTypeEnum {
       (param == 'grammar' || param == 'morph')
       ? ConstructTypeEnum.morph
       : ConstructTypeEnum.vocab;
+
+  String practiceExitMessage(L10n l10n) => switch (this) {
+    ConstructTypeEnum.vocab => l10n.exitVocabPracticeSession,
+    ConstructTypeEnum.morph => l10n.exitGrammarPracticeSession,
+  };
 }

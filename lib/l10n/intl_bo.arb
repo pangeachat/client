@@ -2699,8 +2699,6 @@
     "constructUseCollected": "ཚོད་ལྟར་འབྱོར་བྱེད་ནས་གློག་ཆེན་ལ་འདུག",
     "constructUseNanDesc": "མིན་འདུག",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "ཡིག་ཚིགས་ལས་སྤྱོད་འབད་བཏུབ་པ།",
-    "enableTTSToolDescription": "ཁྱེད་རང་གི་སྤྱོད་ཡིག་གི་ནང་བཅུག་ལས་སྤྱོད་ལུས་སྤེལ་འབད་ནི་ལུགས་སྤྱོད་ལ་གནང་བ།",
     "yourUsername": "ཁྱེད་རང་གི་མིང་",
     "yourEmail": "ཁྱེད་རང་གི་ཡིག་གི",
     "iWantToLearn": "ང་ཚོས་སྟོན་བརྗེ་བཅོས་འདོད།",
@@ -2928,7 +2926,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-07-29 12:08:16.477248",
+    "@@last_modified": "2026-08-04 10:31:17.989548",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5229,14 +5227,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -7089,15 +7079,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ndae bɔkɔɔ a wopɛ no, wo nsɛm a wopɛ sɛ woyɛ no bɛyɛ a, ɛrenyɛ.",
     "practiceGrammar": "Bɔ mmara",
     "notEnoughToPractice": "Sɛ wopɛ sɛ woyɛ bɔ mmara a, fa nsɛm pii to mu",
     "constructUseCorGCDesc": "Nokware mmara kategorie bɔ mmara",
     "constructUseIncGCDesc": "Nnokwa mmara kategorie bɔ mmara",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -7687,16 +7672,6 @@
     },
     "enableEmailNotifications": "Buka notifikasi email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
-    "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -8722,7 +8697,6 @@
     "browsePublicCourses": "Shfletoni kurset publike",
     "editProfile": "Redaktoni profilin",
     "mapSearchHint": "Kërkoni aktivitete",
-    "mapSearchNoResults": "Nuk ka përputhje në pamje",
     "mapFilterAllLanguages": "Të gjitha gjuhët",
     "mapFilterNotStarted": "Nuk ka filluar",
     "mapFilterInProgress": "Në proces",
@@ -8731,7 +8705,6 @@
     "activityTypeConversation": "Konversasi",
     "playAgain": "Main lagi",
     "reviewActivity": "Tinjau",
-    "mapEmptyInView": "Tidak ada di sini pada level atau bahasa Anda. Perluas filter Anda atau perbesar.",
     "welcomeToPangeaChat": "Selamat datang di Pangea Chat",
     "claimTrial": "Klaim percobaan Anda",
     "thanksForSigningUp": "Terima kasih telah mendaftar! Ini dia",
@@ -8802,10 +8775,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -8835,10 +8804,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9059,7 +9024,6 @@
     "analyticsAndSettingsLabel": "Opsi Analitik dan Pengaturan",
     "searchActivitiesLabel": "Cari aktivitas di peta",
     "filteredActivitiesLabel": "Daftar aktivitas yang difilter",
-    "activityFilterButtonsLabel": "Tombol filter bahasa, kesulitan, dan kemajuan",
     "mapZoomLabel": "Kontrol zoom peta",
     "activityMapLabel": "Peta aktivitas",
     "@navOptionsLabel": {
@@ -9079,10 +9043,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9315,5 +9275,41 @@
     "rateActivityCommentRejected": "ཁྱེད་ཀྱི་མཆན་འགོད་མ་ཐུབ། ཚིག་སྒྱུར་བཅོས་བྱེད་རོགས། ཡང་ན་མཆན་མེད་པར་དཔྱད་མཆན་འགོད་རོགས།",
     "rateActivityThanks": "ཁྱེད་ཀྱི་བསམ་འཆར་ལ་ཐུགས་རྗེ་ཆེ།",
     "activityRatingMeterLabel": "{percent}% གུས་པོ་ ({count, plural, =1{དཔྱད་མཆན་ 1} other{དཔྱད་མཆན་ {count}}})",
-    "newActivityBadge": "གསར་པ།"
+    "newActivityBadge": "གསར་པ།",
+    "exitVocabPracticeSession": "ཁྱེད་ཀྱི་ད་ལྟའི་ཚིག་གི་སྦྱོང་བརྡར་གྱི་ཡར་རྒྱས་ཉར་ཚགས་བྱེད་མི་ཐུབ།",
+    "exitGrammarPracticeSession": "ཁྱེད་ཀྱི་ད་ལྟའི་བརྡ་སྤྲོད་སྦྱོང་བརྡར་གྱི་ཡར་རྒྱས་ཉར་ཚགས་བྱེད་མི་ཐུབ།",
+    "activityFilterButtonsLabel": "རིམ་པ་དང་། རྩེད་མོ་བ། གནས་སྟངས་བཅས་ཀྱི་ཚགས་འདེམས་ බොར་སྒྲོག་",
+    "mapFilterAllLevels": "རིམ་པ་ཚང་མ།",
+    "mapFilterAllPlayers": "རྩེད་མོ་བ་ཚང་མ།",
+    "mapFilterAllStatuses": "གནས་སྟངས་ཚང་མ།",
+    "mapFiltersShow": "ཚགས་འདེམས་སྟོན་པ།",
+    "mapFiltersHide": "ཚགས་འདེམས་སྦེད་པ།",
+    "mapStatusAvailable": "འཐུས་པ།",
+    "mapStatusOngoing": "མུ་མཐུད་དུ་བྱེད་བཞིན་པ།",
+    "mapStatusWaiting": "སྒུག་པ།",
+    "mapStatusOpenToJoin": "མཉམ་ཞུགས་བྱེད་ཆོག",
+    "mapMatchesOffscreen": "ཁྱེད་ཀྱི་མཐོང་རྒྱ་ལས་བརྒལ་བའི་འགྲན་བསྡུར་ཡོད། དེ་དག་མཐོང་བར་ཆེ་རུ་གཏོང་རོགས།",
+    "mapFiltersHideMatches": "ཁྱེད་ཀྱི་ཚགས་འདེམས་ཀྱིས་འགྲན་བསྡུར་ཚང་མ་སྦས་ཡོད། དེ་དག་མཐོང་བར་འཚོལ་ཞིབ་རྒྱ་ཆེ་རུ་གཏོང་རོགས།",
+    "mapNoSearchMatches": "ཁྱེད་ཀྱི་འཚོལ་ཞིབ་དང་མཐུན་པའི་བྱེད་སྒོ་གཅིག་ཀྱང་མི་འདུག",
+    "mapNoActivitiesArea": "ས་ཁུལ་འདིར་བྱེད་སྒོ་གཅིག་ཀྱང་མི་འདུག",
+    "practiceSessionTimedOut": "སྦྱོང་བརྡར་གྱི་དུས་ཡུན་སྐར་མ་ {minutes} རིང་ལ་བྱེད་སྒོ་མེད་པར་མཇུག་སྒྲིལ་སོང་།",
+    "autocorrectMobileOnly": "སྒུལ་འཕྲིན་ཁོ་ན།",
+    "autocorrectMobileOnlyWarning": "སྒྲིག་ཆས་ཀྱི་རང་འགུལ་ཡིག་བཅོས་ནི་ལག་ཐོགས་ཁ་པར་གྱི་ཉེར་སྤྱོད་ནང་ཁོ་ན་ལས་མེད།",
+    "audioSectionTitle": "སྒྲ་སྐད།",
+    "audioWordsToolName": "ཚིག་མཛོད།",
+    "audioWordsDescription": "ཚིག་གཅིག་གི་སྒྲ་སྐད་ཉན་པར་དེའི་སྟེང་དུ་མནོན།",
+    "audioChoicesToolName": "འདེམས་གཞི།",
+    "audioChoicesDescription": "སྦྱོང་བརྡར་བྱེད་སྐབས་ཀྱི་ལན་འདེམས་གཞིའི་སྒྲ་སྐད་ཉོན།",
+    "audioIncomingMessagesToolName": "འབྱོར་བཞིན་པའི་འཕྲིན་ཡིག",
+    "audioIncomingMessagesDescription": "ཉན་པའི་སྦྱོང་བརྡར་ཆེད་དུ་རང་གི་དམིགས་ཡུལ་སྐད་ཡིག་ནང་དུ་འབྱོར་བཞིན་པའི་འཕྲིན་ཡིག་རྣམས་རང་འགུལ་ངང་སྐད་བསྒྱུར་བྱེད།",
+    "choosePangeaAvatar": "པན་གྷི་ཡ་གི་མི་སྣ་ཞིག་འདེམས་",
+    "readAloudNoVoiceTitle": "སྤུས་ཚད་མཐོ་བའི་{language}སྐད་མི་འདུག",
+    "readAloudNoVoiceDesktopWeb": "བརའུ་ཟར་འདིའི་ནང་སྤུས་ཚད་མཐོ་བའི་{language}སྐད་མེད་པས། འདིར་བརྡ་ལན་རྣམས་ཡག་པོ་ཀློག་མི་ཐུབ། ཁོ་རོམ་དང་ཨེ་ཇི་ནང་སྤུས་ཚད་མཐོ་བའི་སྐད་ཡོད།",
+    "readAloudGetChrome": "ཁོ་རོམ་ལེན།",
+    "readAloudNoVoiceMobileWeb": "བརའུ་ཟར་འདིའི་ནང་སྤུས་ཚད་མཐོ་བའི་{language}སྐད་མེད་པས། འདིར་བརྡ་ལན་རྣམས་ཡག་པོ་ཀློག་མི་ཐུབ། པན་གྷི་ཡ་གླེང་མོལ་མཉེན་ཆས་ཀྱིས་ཁྱེད་ཀྱི་སྒྲིག་ཆས་ཀྱི་སྐད་སྤུས་ཚད་མཐོ་ཤོས་དེ་བེད་སྤྱོད་བྱེད་ཐུབ།",
+    "readAloudGetApp": "མཉེན་ཆས་ལེན།",
+    "readAloudNoVoiceIOS": "ཁྱེད་ཀྱི་སྒྲིག་ཆས་སུ་སྤུས་ཚད་མཐོ་བའི་{language}སྐད་ད་དུང་ཕབ་ལེན་བྱས་མེད། ཕབ་ལེན་བྱས་རྗེས་བསྐྱར་དུ་ཚོད་ལྟ་བྱོས།",
+    "readAloudNoVoiceIOSSteps": "  • སྒྲིག་འགོད།\n  • ལག་རྗེས་སླེབས་ཐུབ་པ།\n  • བཤད་པའི་ནང་དོན།\n  • སྐད།\n  • {language}\n  • ལེགས་སྒྲིག་གམ་སྤུས་ལེགས་སྐད་ཕབ་ལེན་བྱོས།",
+    "readAloudNoVoiceAndroid": "ཁྱེད་ཀྱི་སྒྲིག་ཆས་སུ་སྤུས་ཚད་མཐོ་བའི་{language}སྐད་ད་དུང་མེད། ཁྱེད་ཀྱི་ཡིག་ངག་སྒྲ་སྒྱུར་འཕྲུལ་ཆས་ལ་སྐད་ཀྱི་གཞི་གྲངས་འཇུག་སྒྲིག་བྱས་རྗེས་བསྐྱར་དུ་ཚོད་ལྟ་བྱོས།",
+    "readAloudOpenVoiceSettings": "སྐད་ཀྱི་སྒྲིག་འགོད་ཁ་ཕྱེ།"
 }

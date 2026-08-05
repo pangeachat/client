@@ -4,8 +4,8 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
+import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
-import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
 
@@ -21,6 +21,11 @@ class DotMarkersLayer {
   final Alignment Function(ActivityPinState, PinTier) markerAlignment;
   final String? focusedId;
   final void Function(QuestActivityCard) onTap;
+
+  /// Whether this pin should play its entry scale-in — false for pins already
+  /// on screen at the last settle, so a State recreated by MarkerLayer's
+  /// per-frame positional reconciliation doesn't replay its pop-in (#8136).
+  final bool Function(String) animateInOf;
   final ({List<LargeCardParticipant> participants, int openSlots}) Function(
     String,
     ActivityPinState,
@@ -39,6 +44,7 @@ class DotMarkersLayer {
     required this.markerAlignment,
     required this.focusedId,
     required this.onTap,
+    required this.animateInOf,
     required this.sessionParticipants,
   });
 
@@ -93,7 +99,16 @@ class DotMarkersLayer {
           width: box.width,
           height: box.height,
           alignment: markerAlignment(state, tier),
+          // The key goes on the CHILD, never on Marker.key: MarkerLayer emits
+          // one Positioned(key: marker.key) per visible world copy as siblings
+          // of one Stack, so a Marker.key crashes with duplicate keys when the
+          // map repeats at min zoom (#7947). A child key sits one level down,
+          // inside its own Positioned subtree, so copies can't collide — while
+          // still forcing a positionally re-matched slot to discard a
+          // different activity's state instead of reusing it, which is what
+          // made unread badges flash on the wrong pins during zoom (#8136).
           child: Opacity(
+            key: ValueKey(card.activityId),
             opacity: nonStartableOf(card.activityId) ? 0.5 : 1.0,
             child: WorldMapDot(
               card: card,
@@ -106,6 +121,7 @@ class DotMarkersLayer {
               participantsFilled: counts.filled,
               participantsTotal: counts.total,
               isFocused: card.activityId == focusedId,
+              animateIn: animateInOf(card.activityId),
             ),
           ),
         );

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-07-29 12:08:25.836944",
+    "@@last_modified": "2026-08-04 10:31:35.579731",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3299,8 +3299,6 @@
     "constructUseCollected": "已在聊天中收集",
     "constructUseNanDesc": "不适用",
     "xpIntoLevel": "{currentXP} / {maxXP} 经验值",
-    "enableTTSToolName": "启用文本转语音",
-    "enableTTSToolDescription": "允许应用程序为目标语言中的部分文本生成文本转语音输出。",
     "yourUsername": "您的用户名",
     "yourEmail": "您的邮箱",
     "iWantToLearn": "我想学习",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7926,15 +7916,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "您的练习会话进度将不会被保存。",
     "practiceGrammar": "练习语法",
     "notEnoughToPractice": "发送更多消息以解锁练习",
     "constructUseCorGCDesc": "正确语法类别练习",
     "constructUseIncGCDesc": "错误语法类别练习",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8344,16 +8329,6 @@
     },
     "enableEmailNotifications": "启用电子邮件通知",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "自动高亮音频消息",
-    "selectAudioMessagesOnPlayDescription": "播放时自动高亮音频消息",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9111,7 +9086,6 @@
     "browsePublicCourses": "浏览公开课程",
     "editProfile": "编辑个人资料",
     "mapSearchHint": "搜索活动",
-    "mapSearchNoResults": "视图中没有匹配项",
     "mapFilterAllLanguages": "所有语言",
     "mapFilterNotStarted": "未开始",
     "mapFilterInProgress": "进行中",
@@ -9120,7 +9094,6 @@
     "activityTypeConversation": "对话",
     "playAgain": "再玩一次",
     "reviewActivity": "回顾",
-    "mapEmptyInView": "在您的级别或语言中没有任何内容。扩大您的过滤器或缩小视图。",
     "welcomeToPangeaChat": "欢迎来到 Pangea Chat",
     "claimTrial": "领取您的试用",
     "thanksForSigningUp": "感谢您的注册！这是",
@@ -9191,10 +9164,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9224,10 +9193,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9448,7 +9413,6 @@
     "analyticsAndSettingsLabel": "分析和设置选项",
     "searchActivitiesLabel": "在地图上搜索活动",
     "filteredActivitiesLabel": "过滤后的活动列表",
-    "activityFilterButtonsLabel": "语言、难度和进度过滤按钮",
     "mapZoomLabel": "地图缩放控件",
     "activityMapLabel": "活动地图",
     "@navOptionsLabel": {
@@ -9468,10 +9432,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9704,5 +9664,41 @@
     "rateActivityCommentRejected": "您的评论无法发布。请尝试重新措辞，或不带评论提交您的评分。",
     "rateActivityThanks": "感谢您的反馈！",
     "activityRatingMeterLabel": "{percent}% 好评（{count, plural, =1{1 条评分} other{{count} 条评分}}）",
-    "newActivityBadge": "新"
+    "newActivityBadge": "新",
+    "exitVocabPracticeSession": "您当前词汇练习的进度将不会被保存。",
+    "exitGrammarPracticeSession": "您当前语法练习的进度将不会被保存。",
+    "activityFilterButtonsLabel": "等级、玩家和状态筛选按钮",
+    "mapFilterAllLevels": "所有等级",
+    "mapFilterAllPlayers": "所有玩家",
+    "mapFilterAllStatuses": "所有状态",
+    "mapFiltersShow": "显示筛选器",
+    "mapFiltersHide": "隐藏筛选器",
+    "mapStatusAvailable": "可用",
+    "mapStatusOngoing": "进行中",
+    "mapStatusWaiting": "等待中",
+    "mapStatusOpenToJoin": "开放加入",
+    "mapMatchesOffscreen": "您的视野外有匹配项。请缩小以查看。",
+    "mapFiltersHideMatches": "您的筛选器隐藏了所有匹配项。请放宽搜索范围以查看。",
+    "mapNoSearchMatches": "没有符合您搜索条件的活动。",
+    "mapNoActivitiesArea": "此区域没有活动。",
+    "practiceSessionTimedOut": "您的练习会话因{minutes}分钟无活动而结束。",
+    "autocorrectMobileOnly": "仅限移动设备",
+    "autocorrectMobileOnlyWarning": "设备自动更正功能仅在移动应用中可用。",
+    "audioSectionTitle": "音频",
+    "audioWordsToolName": "单词",
+    "audioWordsDescription": "点击单词时播放其音频。",
+    "audioChoicesToolName": "选项",
+    "audioChoicesDescription": "在练习活动中播放答案选项的音频。",
+    "audioIncomingMessagesToolName": "收到的消息",
+    "audioIncomingMessagesDescription": "自动朗读收到的消息，以便进行听力练习。",
+    "choosePangeaAvatar": "选择 Pangea 头像",
+    "readAloudNoVoiceTitle": "未找到高质量的{language}语音",
+    "readAloudNoVoiceDesktopWeb": "此浏览器不提供高质量的{language}语音，因此无法很好地朗读消息。Chrome和Edge通常包含高质量的语音。",
+    "readAloudGetChrome": "获取Chrome",
+    "readAloudNoVoiceMobileWeb": "此浏览器不提供高质量的{language}语音，因此无法很好地朗读消息。Pangea Chat应用可以使用您设备上最好的语音。",
+    "readAloudGetApp": "获取应用",
+    "readAloudNoVoiceIOS": "您的设备尚未下载高质量的{language}语音。请下载一个，然后重试：",
+    "readAloudNoVoiceIOSSteps": "  • 设置\n  • 辅助功能\n  • 朗读内容\n  • 语音\n  • {language}\n  • 下载增强或高级语音",
+    "readAloudNoVoiceAndroid": "您的设备尚未安装高质量的{language}语音。请为您的文本转语音引擎安装语音数据，然后重试。",
+    "readAloudOpenVoiceSettings": "打开语音设置"
 }

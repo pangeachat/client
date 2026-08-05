@@ -33,7 +33,12 @@ class ActivityUserSummaries extends StatelessWidget {
 
     final summary = summaryModel.summary;
     if (summary == null) {
-      return SizedBox();
+      // Generation runs in the chat, in the same semi-transparent box the
+      // summary will fill, so the finished-status bar doesn't grow and shove
+      // the rating card around while we wait (#8018).
+      return summaryModel.isLoading
+          ? const _SummaryLoading()
+          : const SizedBox();
     }
 
     return Center(
@@ -78,6 +83,42 @@ class ActivityUserSummaries extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+/// Placeholder shown where the summary will land while it is being generated.
+class _SummaryLoading extends StatelessWidget {
+  const _SummaryLoading();
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        margin: const EdgeInsets.all(16.0),
+        constraints: const BoxConstraints(maxWidth: 400.0),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.surface.withAlpha(128),
+          borderRadius: BorderRadius.circular(12.0),
+        ),
+        child: Column(
+          spacing: 12.0,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              L10n.of(context).generatingSummary,
+              style: const TextStyle(fontStyle: FontStyle.italic),
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 36.0,
+              width: 36.0,
+              child: CircularProgressIndicator(),
+            ),
+          ],
+        ),
       ),
     );
   }

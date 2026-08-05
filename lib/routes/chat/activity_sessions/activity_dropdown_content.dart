@@ -166,7 +166,7 @@ class ActivityDropdownContent extends StatelessWidget {
                 12.0,
                 GoalHeaderConstants.topPadding,
                 12.0,
-                0.0,
+                GoalHeaderConstants.topPadding,
               ),
               child: topRow,
             ),

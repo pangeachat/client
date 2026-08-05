@@ -3289,8 +3289,6 @@
     "constructUseCollected": "Savākti čatā",
     "constructUseNanDesc": "Nav piemērojams",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Iespējots teksta runas funkcija",
-    "enableTTSToolDescription": "Atļauj lietotnei ģenerēt teksta runas izvadi teksta daļām jūsu mērķvalodā.",
     "yourUsername": "Jūsu lietotājvārds",
     "yourEmail": "Jūsu e-pasts",
     "iWantToLearn": "Es vēlos mācīties",
@@ -3546,7 +3544,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-07-29 12:08:20.470226",
+    "@@last_modified": "2026-08-04 10:31:27.466926",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7926,15 +7916,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Jūsu prakses sesijas progress netiks saglabāts.",
     "practiceGrammar": "Praktizēt gramatiku",
     "notEnoughToPractice": "Sūtiet vairāk ziņojumu, lai atbloķētu praksi",
     "constructUseCorGCDesc": "Pareizas gramatikas kategorijas prakse",
     "constructUseIncGCDesc": "Nepareizas gramatikas kategorijas prakse",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8344,16 +8329,6 @@
     },
     "enableEmailNotifications": "Iespējot e-pasta paziņojumus",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automātiski izcelt audio ziņojumus",
-    "selectAudioMessagesOnPlayDescription": "Automātiski izcelt audio ziņojumus, kad tie tiek atskaņoti",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9111,7 +9086,6 @@
     "browsePublicCourses": "Pārlūkot publiskos kursus",
     "editProfile": "Rediģēt profilu",
     "mapSearchHint": "Meklēt aktivitātes",
-    "mapSearchNoResults": "Nav atbilžu skatā",
     "mapFilterAllLanguages": "Visas valodas",
     "mapFilterNotStarted": "Nav uzsākts",
     "mapFilterInProgress": "Norisinās",
@@ -9120,7 +9094,6 @@
     "activityTypeConversation": "Saruna",
     "playAgain": "Spēlēt vēlreiz",
     "reviewActivity": "Pārskatīt",
-    "mapEmptyInView": "Šeit nav nekas jūsu līmenī vai valodā. Paplašiniet savus filtrus vai tālummaiņu.",
     "welcomeToPangeaChat": "Laipni lūdzam Pangea Čatā",
     "claimTrial": "Pieteikties izmēģinājumam",
     "thanksForSigningUp": "Paldies, ka reģistrējāties! Šeit ir",
@@ -9191,10 +9164,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9224,10 +9193,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9448,7 +9413,6 @@
     "analyticsAndSettingsLabel": "Analītikas un iestatījumu opcijas",
     "searchActivitiesLabel": "Meklēt aktivitātes kartē",
     "filteredActivitiesLabel": "Filtrēto aktivitāšu saraksts",
-    "activityFilterButtonsLabel": "Valodas, grūtības un progresu filtrēšanas pogas",
     "mapZoomLabel": "Kartes tālummaiņas kontroles",
     "activityMapLabel": "Aktivitāšu karte",
     "@navOptionsLabel": {
@@ -9468,10 +9432,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9704,5 +9664,41 @@
     "rateActivityCommentRejected": "Jūsu komentāru nevarēja publicēt. Mēģiniet to pārformulēt vai iesniedziet savu vērtējumu bez komentāra.",
     "rateActivityThanks": "Paldies par jūsu atsauksmēm!",
     "activityRatingMeterLabel": "{percent}% pozitīvi ({count, plural, =1{1 vērtējums} other{{count} vērtējumi}})",
-    "newActivityBadge": "JAUNS"
+    "newActivityBadge": "JAUNS",
+    "exitVocabPracticeSession": "Jūsu pašreizējās vārdu krājuma prakses sesijas progress netiks saglabāts.",
+    "exitGrammarPracticeSession": "Jūsu pašreizējās gramatikas prakses sesijas progress netiks saglabāts.",
+    "activityFilterButtonsLabel": "Līmeņa, spēlētāju un statusa filtra pogas",
+    "mapFilterAllLevels": "Visi līmeņi",
+    "mapFilterAllPlayers": "Visi spēlētāji",
+    "mapFilterAllStatuses": "Visi statusi",
+    "mapFiltersShow": "Rādīt filtrus",
+    "mapFiltersHide": "Paslēpt filtrus",
+    "mapStatusAvailable": "Pieejams",
+    "mapStatusOngoing": "Notiek",
+    "mapStatusWaiting": "Gaida",
+    "mapStatusOpenToJoin": "Atvērts pievienošanai",
+    "mapMatchesOffscreen": "Ārpus redzamības lauka ir spēles. Tuviniet, lai tās redzētu.",
+    "mapFiltersHideMatches": "Jūsu filtri slēpj visas spēles. Paplašiniet meklēšanu, lai tās redzētu.",
+    "mapNoSearchMatches": "Meklēšanai neatbilst neviena aktivitāte.",
+    "mapNoActivitiesArea": "Šajā apgabalā nav aktivitāšu.",
+    "practiceSessionTimedOut": "Jūsu prakses sesija beidzās pēc {minutes} minūtēm bez aktivitātes.",
+    "autocorrectMobileOnly": "Tikai mobilajām ierīcēm",
+    "autocorrectMobileOnlyWarning": "Ierīces automātiskā labošana ir pieejama tikai mobilajā lietotnē.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Vārdi",
+    "audioWordsDescription": "Atskaņojiet vārda audio, kad tam pieskaraties.",
+    "audioChoicesToolName": "Izvēles",
+    "audioChoicesDescription": "Atskaņojiet audio atbilžu variantiem prakses aktivitātēs.",
+    "audioIncomingMessagesToolName": "Ienākošās ziņas",
+    "audioIncomingMessagesDescription": "Automātiski nolasīt saņemtās ziņas skaļi jūsu mērķa valodā, lai praktizētu klausīšanos.",
+    "choosePangeaAvatar": "Izvēlieties Pangea iemiesojumu",
+    "readAloudNoVoiceTitle": "Nav atrasta augstas kvalitātes {language} balss",
+    "readAloudNoVoiceDesktopWeb": "Šī pārlūkprogramma nepiedāvā augstas kvalitātes {language} balsi, tāpēc ziņojumus šeit nevar labi nolasīt. Chrome un Edge parasti ietver augstas kvalitātes balsis.",
+    "readAloudGetChrome": "Iegūt Chrome",
+    "readAloudNoVoiceMobileWeb": "Šī pārlūkprogramma nepiedāvā augstas kvalitātes {language} balsi, tāpēc ziņojumus šeit nevar labi nolasīt. Lietotne Pangea Chat var izmantot jūsu ierīces labākās balsis.",
+    "readAloudGetApp": "Iegūt lietotni",
+    "readAloudNoVoiceIOS": "Jūsu ierīcē vēl nav lejupielādēta augstas kvalitātes {language} balss. Lejupielādējiet to un mēģiniet vēlreiz:",
+    "readAloudNoVoiceIOSSteps": "  • Iestatījumi\n  • Pieejamība\n  • Runātais saturs\n  • Balsis\n  • {language}\n  • Lejupielādēt uzlabotu vai premium balsi",
+    "readAloudNoVoiceAndroid": "Jūsu ierīcē vēl nav augstas kvalitātes {language} balss. Instalējiet balss datus savam teksta-runas dzinējam un mēģiniet vēlreiz.",
+    "readAloudOpenVoiceSettings": "Atvērt balss iestatījumus"
 }

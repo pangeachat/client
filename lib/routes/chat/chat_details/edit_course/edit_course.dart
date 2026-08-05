@@ -77,7 +77,7 @@ class EditCourseController extends State<EditCourse> {
   }
 
   bool get _isValid {
-    return _titleController.text.isNotEmpty;
+    return _titleController.text.trim().isNotEmpty;
   }
 
   Future<void> _saveChanges() async {

@@ -35,6 +35,42 @@ enum InvitationFilter {
       value == null ? null : fromString(value);
 }
 
+/// Which filters the invite page can offer for a given room. Kept on [Room] so
+/// the rules are decidable from room state alone, without a [BuildContext].
+extension InvitationFiltersRoomExtension on Room {
+  /// The course whose roster the "in this course" filter offers, or null when
+  /// there is none to offer.
+  ///
+  /// For an activity session this is the course the session was LAUNCHED from
+  /// (`source_course_id`) — NOT merely a space parent. Launching also shares the
+  /// session into every other eligible joined course as an `m.space.child` (see
+  /// `activities.instructions.md`), so a session started from the world map
+  /// collects course parents it was never "in". Offering those rosters reads as
+  /// "invite this course" to someone who is not in a course at all, and the
+  /// launcher has no reason to expect them (#8097). A world-launched session
+  /// pins no source course, so it gets no course filter.
+  ///
+  /// Every other room keeps the plain first-space-parent rule: a chat inside a
+  /// course space really is "in this course".
+  Room? get invitationCourseSpace {
+    final parents = pangeaSpaceParents;
+    if (parents.isEmpty) return null;
+    if (!isActivitySession) return parents.first;
+
+    final sourceCourseId = pinnedSourceCourseId;
+    if (sourceCourseId == null) return null;
+    return parents.firstWhereOrNull((p) => p.id == sourceCourseId);
+  }
+
+  /// Whether the invite page offers a roster ("participants") filter.
+  ///
+  /// An activity session's start page already lists everyone — role holders in
+  /// their roles, the rest below them — so a second roster on the invite page is
+  /// redundant there (#8097). Other rooms keep it; it is where the "N
+  /// participants" button on the chat details page lands.
+  bool get showInvitationParticipantsFilter => !isActivitySession;
+}
+
 class PangeaInvitationSelection extends StatefulWidget {
   final String roomId;
   final InvitationFilter? initialFilter;
@@ -147,11 +183,7 @@ class PangeaInvitationSelectionController
 
   Room? get _room => Matrix.of(context).client.getRoomById(widget.roomId);
 
-  Room? get spaceParent {
-    final parents = _room?.pangeaSpaceParents;
-    if (parents == null || parents.isEmpty) return null;
-    return parents.first;
-  }
+  Room? get spaceParent => _room?.invitationCourseSpace;
 
   bool get showInviteAllInSpaceButton {
     final roomParticipants = participants;
@@ -180,7 +212,8 @@ class PangeaInvitationSelectionController
           InvitationFilter.banned =>
             participants?.any((u) => u.membership == Membership.ban) ?? false,
           InvitationFilter.public => true,
-          InvitationFilter.participants => true,
+          InvitationFilter.participants =>
+            _room?.showInvitationParticipantsFilter ?? true,
         },
       )
       .toList();

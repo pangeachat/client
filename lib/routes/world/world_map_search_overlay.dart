@@ -3,48 +3,66 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/world/world_map_empty_view_card.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
+import 'package:fluffychat/routes/world/world_map_filter_bar.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 /// Per-activity completion, derived client-side from Matrix session state.
-/// Public so the map and this overlay share one vocabulary.
+/// Retained as the completion *derivation* (world-map.instructions.md,
+/// "Filters") even though it is no longer a map filter — the Status pill
+/// supersedes it. Still consumed by [WorldMapSignalUtils.reduceActivityCompletions].
 enum MapCompletionFilter { notStarted, inProgress, completed }
 
 /// The Google-Maps-style search + filter surface floating over the World map.
 /// Presentational: the map owns the pin set, the filter state, and the
-/// filtering — this renders the bar/chips/results and reports user intent via
-/// callbacks. World-only (the shell hides it elsewhere). See
-/// world-map.instructions.md.
+/// filtering — this renders the bar, the [WorldMapFilterBar] pills, and the
+/// results, reporting user intent via callbacks. World-only (the shell hides it
+/// elsewhere). See world-map.instructions.md.
 class WorldMapSearchOverlay extends StatefulWidget {
   final WorldMapFilter filter;
 
   final VoidCallback onReset;
   final VoidCallback onWidenSearch;
 
-  final VoidCallback onToggleL2;
   final Function(String) updateQuery;
-  final Function(LanguageLevelTypeEnum) toggleCefr;
-  final Function(MapCompletionFilter) toggleCompletion;
+
+  /// The three filter pills: set the Level to exactly one CEFR level (null =
+  /// All levels), Party size (null = All players), or Status (null = All
+  /// statuses).
+  final ValueChanged<LanguageLevelTypeEnum?> setCefrLevel;
+  final ValueChanged<int?> setPartySize;
+  final ValueChanged<ActivityPinState?> setStatus;
 
   final List<QuestActivityCard> results;
   final Function(QuestActivityCard) onResultTap;
 
-  final String? l2Label;
-  final bool emptyInView;
+  /// The controller's diagnosis of why the view shows no matches
+  /// ([WorldMapController.emptyVerdict]) — drives the [WorldMapEmptyViewCard]
+  /// whenever the results dropdown has no rows to offer instead.
+  final MapEmptyVerdict emptyVerdict;
+
+  /// The camera is above its zoom-out floor, so the card's Zoom out lever is
+  /// live (greyed below it); [onZoomOut] resets to the whole-world view (all
+  /// the way out, re-centered) — the map's World control.
+  final bool canZoomOut;
+  final VoidCallback onZoomOut;
 
   const WorldMapSearchOverlay({
     super.key,
     required this.filter,
     required this.updateQuery,
-    required this.l2Label,
-    required this.onToggleL2,
     required this.onWidenSearch,
-    required this.toggleCefr,
-    required this.toggleCompletion,
+    required this.setCefrLevel,
+    required this.setPartySize,
+    required this.setStatus,
     required this.results,
     required this.onResultTap,
     required this.onReset,
-    required this.emptyInView,
+    required this.emptyVerdict,
+    required this.canZoomOut,
+    required this.onZoomOut,
   });
 
   @override
@@ -72,17 +90,6 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-  String _completionLabel(L10n l10n, MapCompletionFilter c) {
-    switch (c) {
-      case MapCompletionFilter.notStarted:
-        return l10n.mapFilterNotStarted;
-      case MapCompletionFilter.inProgress:
-        return l10n.mapFilterInProgress;
-      case MapCompletionFilter.completed:
-        return l10n.mapFilterCompleted;
-    }
   }
 
   @override
@@ -117,50 +124,19 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
               Semantics(
                 label: l10n.activityFilterButtonsLabel,
                 container: true,
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: [
-                      if (widget.l2Label != null) ...[
-                        FilterChip(
-                          selected: widget.filter.l2Only,
-                          label: Text(
-                            widget.filter.l2Only
-                                ? widget.l2Label!
-                                : l10n.mapFilterAllLanguages,
-                          ),
-                          avatar: const Icon(Icons.translate, size: 16),
-                          onSelected: (_) => widget.onToggleL2(),
-                        ),
-                        const SizedBox(width: 6),
-                      ],
-                      for (final level in LanguageLevelTypeEnum.values) ...[
-                        FilterChip(
-                          selected: widget.filter.cefrFilter.contains(level),
-                          label: Text(level.title(context)),
-                          onSelected: (_) => widget.toggleCefr(level),
-                        ),
-                        const SizedBox(width: 6),
-                      ],
-                      for (final c in MapCompletionFilter.values) ...[
-                        FilterChip(
-                          selected: widget.filter.completionFilter.contains(c),
-                          label: Text(_completionLabel(l10n, c)),
-                          onSelected: (_) => widget.toggleCompletion(c),
-                        ),
-                        const SizedBox(width: 6),
-                      ],
-                      if (widget.filter.canReset)
-                        ActionChip(
-                          avatar: const Icon(Icons.restart_alt, size: 16),
-                          label: Text(l10n.mapFilterReset),
-                          onPressed: widget.onReset,
-                        ),
-                    ],
-                  ),
+                child: WorldMapFilterBar(
+                  filter: widget.filter,
+                  onSetLevel: widget.setCefrLevel,
+                  onSetPartySize: widget.setPartySize,
+                  onSetStatus: widget.setStatus,
+                  onReset: widget.onReset,
                 ),
               ),
-              if (searching) ...[
+              // The results dropdown renders only when it has rows; an empty
+              // view — searching with no matches OR filters emptying the
+              // viewport — shows the ONE unified card instead (formerly two
+              // separate popups with a text-only no-matches state).
+              if (searching && widget.results.isNotEmpty) ...[
                 const SizedBox(height: 8),
                 Material(
                   elevation: 4,
@@ -168,73 +144,46 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                   color: theme.colorScheme.surface,
                   child: ConstrainedBox(
                     constraints: const BoxConstraints(maxHeight: 320),
-                    child: widget.results.isEmpty
-                        ? Padding(
-                            padding: const EdgeInsets.all(16),
-                            child: Text(
-                              l10n.mapSearchNoResults,
-                              style: theme.textTheme.bodyMedium,
+                    child: Semantics(
+                      label: l10n.filteredActivitiesLabel,
+                      container: true,
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        padding: EdgeInsets.zero,
+                        itemCount: widget.results.length > _maxResults
+                            ? _maxResults
+                            : widget.results.length,
+                        itemBuilder: (context, i) {
+                          final card = widget.results[i];
+                          return ListTile(
+                            dense: true,
+                            leading: const Icon(Icons.star, size: 18),
+                            title: Text(
+                              card.title,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          )
-                        : Semantics(
-                            label: l10n.filteredActivitiesLabel,
-                            container: true,
-                            child: ListView.builder(
-                              shrinkWrap: true,
-                              padding: EdgeInsets.zero,
-                              itemCount: widget.results.length > _maxResults
-                                  ? _maxResults
-                                  : widget.results.length,
-                              itemBuilder: (context, i) {
-                                final card = widget.results[i];
-                                return ListTile(
-                                  dense: true,
-                                  leading: const Icon(Icons.star, size: 18),
-                                  title: Text(
-                                    card.title,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  subtitle: Text(
-                                    [card.l2, card.cefr]
-                                        .where((s) => s != null && s.isNotEmpty)
-                                        .join(' · '),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                  ),
-                                  onTap: () => widget.onResultTap(card),
-                                );
-                              },
+                            subtitle: Text(
+                              [card.l2, card.cefr]
+                                  .where((s) => s != null && s.isNotEmpty)
+                                  .join(' · '),
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                  ),
-                ),
-              ] else if (widget.emptyInView) ...[
-                const SizedBox(height: 8),
-                Material(
-                  elevation: 4,
-                  borderRadius: BorderRadius.circular(12),
-                  color: theme.colorScheme.surface,
-                  child: Padding(
-                    padding: const EdgeInsets.all(12),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text(
-                          l10n.mapEmptyInView,
-                          style: theme.textTheme.bodyMedium,
-                        ),
-                        const SizedBox(height: 8),
-                        if (widget.filter.l2Only && widget.l2Label != null)
-                          FilledButton.tonalIcon(
-                            icon: const Icon(Icons.translate, size: 16),
-                            label: Text(l10n.widenSearch),
-                            onPressed: widget.onWidenSearch,
-                          ),
-                      ],
+                            onTap: () => widget.onResultTap(card),
+                          );
+                        },
+                      ),
                     ),
                   ),
+                ),
+              ] else if (widget.emptyVerdict != MapEmptyVerdict.none) ...[
+                const SizedBox(height: 8),
+                WorldMapEmptyViewCard(
+                  verdict: widget.emptyVerdict,
+                  canZoomOut: widget.canZoomOut,
+                  onWidenSearch: widget.onWidenSearch,
+                  onZoomOut: widget.onZoomOut,
                 ),
               ],
             ],

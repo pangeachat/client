@@ -461,6 +461,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "choosePangeaAvatar": "Choose a Pangea avatar",
+    "@choosePangeaAvatar": {
+        "type": "String",
+        "placeholders": {}
+    },
     "channelCorruptedDecryptError": "The encryption has been corrupted",
     "@channelCorruptedDecryptError": {
         "type": "String",
@@ -3500,8 +3505,13 @@
             }
         }
     },
-    "enableTTSToolName": "Enabled text-to-speech",
-    "enableTTSToolDescription": "Allow the app to generate text-to-speech output for portions of text in your target language.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Words",
+    "audioWordsDescription": "Play a word's audio when you tap on it.",
+    "audioChoicesToolName": "Choices",
+    "audioChoicesDescription": "Play audio for answer choices in practice activities.",
+    "audioIncomingMessagesToolName": "Incoming messages",
+    "audioIncomingMessagesDescription": "Automatically read received messages aloud in your target language for listening practice.",
     "yourUsername": "Your username",
     "yourEmail": "Your email",
     "iWantToLearn": "I want to learn",
@@ -3579,6 +3589,8 @@
     "dontForgetPassword": "Don't forget your password!",
     "enableAutocorrectToolName": "Enable device autocorrect",
     "enableAutocorrectDescription": "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.",
+    "autocorrectMobileOnly": "Mobile only",
+    "autocorrectMobileOnlyWarning": "Device autocorrect is only available on the mobile app.",
     "ttsDisbledTitle": "Text-to-speech disabled",
     "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
     "noSpaceDescriptionYet": "No course description created yet.",
@@ -4275,7 +4287,6 @@
     "voice": "Voice",
     "youLeftTheChat": "🚪 You left the chat",
     "webDownloadPermissionMessage": "If your browser blocks downloads, please enable downloads for this site.",
-    "exitPractice": "Your practice session progress won't be saved.",
     "endPractice": "End practice",
     "practiceGrammar": "Practice grammar",
     "notEnoughToPractice": "Send more messages to unlock practice",
@@ -4377,8 +4388,6 @@
     "notificationRuleDM": "Direct Message",
     "notificationRuleDMDescription": "Notifies the user about messages in direct message rooms.",
     "enableEmailNotifications": "Enable email notifications",
-    "selectAudioMessagesOnPlayToolName": "Auto-highlight audio messages",
-    "selectAudioMessagesOnPlayDescription": "Automatically highlight audio messages when played",
     "learningAnalytics": "Learning analytics",
     "searchLanguagesHint": "Search languages",
     "alreadySpeak": "I already speak...",
@@ -4541,7 +4550,6 @@
     "introChatDesc": "Anyone in the course can post.",
     "announcementsChatDesc": "Only course admins can post.",
     "mapSearchHint": "Search activities",
-    "mapSearchNoResults": "No matches in view",
     "mapFilterAllLanguages": "All languages",
     "mapFilterNotStarted": "Not started",
     "mapFilterInProgress": "In progress",
@@ -4550,7 +4558,6 @@
     "activityTypeConversation": "Conversation",
     "playAgain": "Play again",
     "reviewActivity": "Review",
-    "mapEmptyInView": "Nothing here at your level or language. Widen your filters or zoom out.",
     "back": "Back",
     "viewCurrentOrFinished": "View current or finished",
     "pronunciationTools": "Pronunciation tools",
@@ -4636,7 +4643,6 @@
     "analyticsAndSettingsLabel": "Analytics and Settings options",
     "searchActivitiesLabel": "Search for activities on map",
     "filteredActivitiesLabel": "Filtered activity list",
-    "activityFilterButtonsLabel": "Language, difficulty, and progress filter buttons",
     "mapZoomLabel": "Map zoom controls",
     "activityMapLabel": "Activity map",
     "writingAssistanceTutorialInputBar": "You can write in any language! We'll help you correct mistakes.",
@@ -4805,6 +4811,89 @@
     "joinableLabel": "Joinable",
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
+    "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
+    "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
+    "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
+    "practiceSessionTimedOut": "Your practice session ended after {minutes} minutes without activity.",
+    "@practiceSessionTimedOut": {
+        "type": "String",
+        "placeholders": {
+            "minutes": {
+                "type": "int"
+            }
+        }
+    },
+    "readAloudNoVoiceTitle": "No high-quality {language} voice found",
+    "@readAloudNoVoiceTitle": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudNoVoiceDesktopWeb": "This browser doesn't offer a high-quality {language} voice, so messages can't be read aloud well here. Chrome and Edge usually include high-quality voices.",
+    "@readAloudNoVoiceDesktopWeb": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudGetChrome": "Get Chrome",
+    "readAloudNoVoiceMobileWeb": "This browser doesn't offer a high-quality {language} voice, so messages can't be read aloud well here. The Pangea Chat app can use your device's best voices.",
+    "@readAloudNoVoiceMobileWeb": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudGetApp": "Get the app",
+    "readAloudNoVoiceIOS": "Your device doesn't have a high-quality {language} voice downloaded yet. Download one, then try again:",
+    "@readAloudNoVoiceIOS": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudNoVoiceIOSSteps": "  • Settings\n  • Accessibility\n  • Spoken Content\n  • Voices\n  • {language}\n  • Download an Enhanced or Premium voice",
+    "@readAloudNoVoiceIOSSteps": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudNoVoiceAndroid": "Your device doesn't have a high-quality {language} voice yet. Install voice data for your text-to-speech engine, then try again.",
+    "@readAloudNoVoiceAndroid": {
+        "type": "String",
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "readAloudOpenVoiceSettings": "Open voice settings",
+    "activityFilterButtonsLabel": "Level, players, and status filter buttons",
+    "mapFilterAllLevels": "All levels",
+    "mapFilterAllPlayers": "All players",
+    "mapFilterAllStatuses": "All statuses",
+    "mapFiltersShow": "Show filters",
+    "mapFiltersHide": "Hide filters",
+    "mapStatusAvailable": "Available",
+    "mapStatusOngoing": "Ongoing",
+    "mapStatusWaiting": "Waiting",
+    "mapStatusOpenToJoin": "Open to join",
+    "mapMatchesOffscreen": "There are matches outside your view. Zoom out to see them.",
+    "mapFiltersHideMatches": "Your filters are hiding all matches. Widen the search to see them.",
+    "mapNoSearchMatches": "No activities match your search.",
+    "mapNoActivitiesArea": "No activities in this area.",
     "formLabel": "{name} form",
     "@formLabel": {
         "placeholders": {
@@ -4812,6 +4901,5 @@
                 "type": "String"
             }
         }
-    },
-    "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings."
+    }
 }

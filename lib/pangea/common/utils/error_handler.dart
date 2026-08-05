@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class PangeaWarningError implements Exception {
@@ -50,6 +50,30 @@ class ErrorHandler {
     };
   }
 
+  /// Keys already reported this session via [logErrorOnce].
+  static final Set<String> _reportedOnceKeys = {};
+
+  @visibleForTesting
+  static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
+
+  /// [logError], capped at one report per app session per [key]. For known
+  /// recurring degrade paths — e.g. a joined course whose quest plan no longer
+  /// resolves, retried on every sync (#8083) — the first event per session
+  /// carries the signal (Sentry tallies affected users per issue); each repeat
+  /// is pure event volume. Returns whether this call reported.
+  static Future<bool> logErrorOnce({
+    required String key,
+    Object? e,
+    StackTrace? s,
+    String? m,
+    required Map<String, dynamic> data,
+    SentryLevel level = SentryLevel.error,
+  }) async {
+    if (!_reportedOnceKeys.add(key)) return false;
+    await logError(e: e, s: s, m: m, data: data, level: level);
+    return true;
+  }
+
   static Future<void> logError({
     Object? e,
     StackTrace? s,
@@ -81,13 +105,7 @@ class ErrorCopy {
   Object error;
   ErrorCopy(this.error);
 
-  int? get errorCode {
-    if (error is http.Response) {
-      return (error as http.Response).statusCode;
-    } else {
-      return null;
-    }
-  }
+  int? get errorCode => PangeaHttpException.statusCodeOf(error);
 
   String toLocalizedString(BuildContext context) {
     try {

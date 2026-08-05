@@ -10,17 +10,19 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_analytics_controller.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_data_service.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_notifier.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_view.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/end_practice_session_dialog.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/example_message_util.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/star_rain_widget.dart';
 
@@ -72,6 +74,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
     _holderState = PracticeSessionHolder.instance.claim(widget.type);
     PracticeSessionHolder.instance.attachPanel();
+    PracticeSessionHolder.instance.addListener(_onHolderChanged);
+
+    // The learner is back — if a previous session timed out while they were
+    // away, this reopen is where they find out.
+    WidgetsBinding.instance.addPostFrameCallback((_) => _showTimeoutNotice());
 
     _addLanguageSubscription();
     _resumeOrStart();
@@ -79,6 +86,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
 
   @override
   void dispose() {
+    PracticeSessionHolder.instance.removeListener(_onHolderChanged);
     PracticeSessionHolder.instance.detachPanel();
     _languageStreamSubscription?.cancel();
     audioPlaybackSpeedController.dispose();
@@ -165,6 +173,32 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
         : AsyncState.idle();
   }
 
+  /// The idle timeout dropped the session out from under this panel. Other
+  /// paths that drop it — the End control, a confirmed replace — are the
+  /// learner's own doing and close the panel themselves, so they never set the
+  /// notice and are deliberately ignored here.
+  void _onHolderChanged() {
+    if (!mounted) return;
+    if (identical(PracticeSessionHolder.instance.current, _holderState)) return;
+    if (!PracticeSessionHolder.instance.hasTimeoutNotice) return;
+    _showTimeoutNotice();
+    widget.close();
+  }
+
+  void _showTimeoutNotice() {
+    if (!mounted) return;
+    if (!PracticeSessionHolder.instance.consumeTimeoutNotice()) return;
+    ScaffoldMessenger.of(context).showSnackBarAnnounced(
+      SnackBar(
+        content: Text(
+          L10n.of(context).practiceSessionTimedOut(
+            AnalyticsPracticeConstants.idleTimeout.inMinutes,
+          ),
+        ),
+      ),
+    );
+  }
+
   void _addLanguageSubscription() {
     _languageStreamSubscription ??= MatrixState
         .pangeaController
@@ -187,6 +221,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   void onHintPressed({bool increment = true}) {
+    PracticeSessionHolder.instance.markInteraction();
     if (increment) session.updateHintsPressed();
     final currentSpeed = audioPlaybackSpeedController.playbackSpeed.value;
     if (currentSpeed > 0.75 &&
@@ -204,6 +239,11 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       );
 
   Future<void> startSession() async {
+    // A session starting over a state whose watchdog was already stood down —
+    // the Retry after a failed load, a language-change restart — needs the idle
+    // clock re-armed from now, or the new session would go unwatched until its
+    // first answer.
+    PracticeSessionHolder.instance.markInteraction();
     _clearState();
 
     // if starting one round after another, hide the confetti from the previous round
@@ -268,19 +308,12 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   /// The header's explicit End control: confirm, discard the session, close
   /// the panel. The X never calls this — leaving is silent.
   Future<void> endSession() async {
-    final l10n = L10n.of(context);
-    final result = await showOkCancelAlertDialog(
+    final ended = await EndPracticeSessionDialog.confirmAndEnd(
+      context,
+      type: widget.type,
       useRootNavigator: false,
-      context: context,
-      title: l10n.areYouSure,
-      okLabel: l10n.yes,
-      cancelLabel: l10n.cancel,
-      message: l10n.exitPractice,
     );
-    if (result != OkCancelResult.ok) return;
-
-    PracticeSessionHolder.instance.end();
-    if (mounted) widget.close();
+    if (ended && mounted) widget.close();
   }
 
   Future<void> _continueSession() async {
@@ -317,6 +350,8 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     final exercise = practiceExercise;
     if (exercise == null) return;
 
+    PracticeSessionHolder.instance.markInteraction();
+
     // Mark this choice as clicked so it can't be clicked again
     if (notifier.hasSelectedChoice(choiceContent)) return;
     notifier.selectChoice(choiceContent);
@@ -345,6 +380,9 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
   }
 
   Future<void> startNextExercise() async {
+    // Also the audio exercise's explicit Continue tap, which is the only
+    // learner action on that screen once the answer is in.
+    PracticeSessionHolder.instance.markInteraction();
     session.completeExercise();
     progress.value = session.progress;
     await _continueSession();
@@ -375,6 +413,7 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
     );
 
     if (feedback == null || feedback.isEmpty) return;
+    PracticeSessionHolder.instance.markInteraction();
     ErrorHandler.logError(
       e: 'Analytics practice exercise flagged',
       data: {'exercise': exercise.toJson(), 'feedback': feedback},

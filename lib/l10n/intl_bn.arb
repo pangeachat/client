@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:16.384354",
+    "@@last_modified": "2026-08-04 10:31:16.950637",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -2839,8 +2839,6 @@
     "constructUseCollected": "চ্যাটে সংগৃহীত",
     "constructUseNanDesc": "প্রযোজ্য নয়",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "টেক্সট-টু-স্পিচ সক্ষম করা হয়েছে",
-    "enableTTSToolDescription": "অ্যাপটিকে আপনার লক্ষ্য ভাষায় টেক্সট-টু-স্পিচ আউটপুট তৈরি করতে অনুমতি দিন।",
     "yourUsername": "আপনার ব্যবহারকারীর নাম",
     "yourEmail": "আপনার ইমেল",
     "iWantToLearn": "আমি শিখতে চাই",
@@ -5752,14 +5750,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8374,15 +8364,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "আপনার অনুশীলন সেশনের অগ্রগতি সংরক্ষিত হবে না।",
     "practiceGrammar": "ব্যাকরণ অনুশীলন করুন",
     "notEnoughToPractice": "অনুশীলন আনলক করতে আরও বার্তা পাঠান",
     "constructUseCorGCDesc": "সঠিক ব্যাকরণ বিভাগ অনুশীলন",
     "constructUseIncGCDesc": "ভুল ব্যাকরণ বিভাগ অনুশীলন",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8972,16 +8957,6 @@
     },
     "enableEmailNotifications": "ইমেইল বিজ্ঞপ্তি সক্রিয় করুন",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "অটো-হাইলাইট অডিও বার্তা",
-    "selectAudioMessagesOnPlayDescription": "অডিও বার্তা বাজানোর সময় স্বয়ংক্রিয়ভাবে হাইলাইট করুন",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9739,7 +9714,6 @@
     "browsePublicCourses": "সার্বজনীন কোর্স ব্রাউজ করুন",
     "editProfile": "প্রোফাইল সম্পাদনা করুন",
     "mapSearchHint": "কার্যকলাপ অনুসন্ধান করুন",
-    "mapSearchNoResults": "দৃশ্যে কোন মিল নেই",
     "mapFilterAllLanguages": "সমস্ত ভাষা",
     "mapFilterNotStarted": "শুরু হয়নি",
     "mapFilterInProgress": "চলমান",
@@ -9748,7 +9722,6 @@
     "activityTypeConversation": "আলাপ",
     "playAgain": "পুনরায় খেলুন",
     "reviewActivity": "পর্যালোচনা",
-    "mapEmptyInView": "আপনার স্তর বা ভাষায় এখানে কিছুই নেই। আপনার ফিল্টারগুলি প্রসারিত করুন বা জুম আউট করুন।",
     "welcomeToPangeaChat": "প্যাঙ্গিয়া চ্যাটে স্বাগতম",
     "claimTrial": "আপনার ট্রায়াল দাবি করুন",
     "thanksForSigningUp": "সাইন আপ করার জন্য ধন্যবাদ! এখানে",
@@ -9819,10 +9792,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9852,10 +9821,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10076,7 +10041,6 @@
     "analyticsAndSettingsLabel": "বিশ্লেষণ এবং সেটিংস বিকল্পগুলি",
     "searchActivitiesLabel": "মানচিত্রে কার্যকলাপ অনুসন্ধান করুন",
     "filteredActivitiesLabel": "ছাঁটাই করা কার্যকলাপের তালিকা",
-    "activityFilterButtonsLabel": "ভাষা, কঠিনতা, এবং অগ্রগতি ফিল্টার বোতামগুলি",
     "mapZoomLabel": "মানচিত্র জুম নিয়ন্ত্রণ",
     "activityMapLabel": "কার্যকলাপের মানচিত্র",
     "@navOptionsLabel": {
@@ -10096,10 +10060,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10332,5 +10292,41 @@
     "rateActivityCommentRejected": "আপনার মন্তব্য পোস্ট করা যায়নি। এটি অন্যভাবে লেখার চেষ্টা করুন, অথবা মন্তব্য ছাড়াই আপনার রেটিং জমা দিন।",
     "rateActivityThanks": "আপনার মতামতের জন্য ধন্যবাদ!",
     "activityRatingMeterLabel": "{percent}% ইতিবাচক ({count, plural, =1{১টি রেটিং} other{{count}টি রেটিং}})",
-    "newActivityBadge": "নতুন"
+    "newActivityBadge": "নতুন",
+    "exitVocabPracticeSession": "আপনার বর্তমান শব্দভান্ডার অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
+    "exitGrammarPracticeSession": "আপনার বর্তমান ব্যাকরণ অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
+    "activityFilterButtonsLabel": "স্তর, খেলোয়াড় এবং স্থিতি ফিল্টার বোতাম",
+    "mapFilterAllLevels": "সব স্তর",
+    "mapFilterAllPlayers": "সব খেলোয়াড়",
+    "mapFilterAllStatuses": "সব স্থিতি",
+    "mapFiltersShow": "ফিল্টার দেখান",
+    "mapFiltersHide": "ফিল্টার লুকান",
+    "mapStatusAvailable": "উপলব্ধ",
+    "mapStatusOngoing": "চলমান",
+    "mapStatusWaiting": "অপেক্ষা করছে",
+    "mapStatusOpenToJoin": "যোগদানের জন্য উন্মুক্ত",
+    "mapMatchesOffscreen": "আপনার দৃশ্যের বাইরে ম্যাচ আছে। সেগুলি দেখতে জুম আউট করুন।",
+    "mapFiltersHideMatches": "আপনার ফিল্টারগুলি সমস্ত ম্যাচ লুকিয়ে রাখছে। সেগুলি দেখতে অনুসন্ধান প্রসারিত করুন।",
+    "mapNoSearchMatches": "আপনার অনুসন্ধানের সাথে কোনো কার্যকলাপ মেলে না।",
+    "mapNoActivitiesArea": "এই এলাকায় কোনো কার্যকলাপ নেই।",
+    "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।",
+    "autocorrectMobileOnly": "শুধুমাত্র মোবাইল",
+    "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।",
+    "audioSectionTitle": "অডিও",
+    "audioWordsToolName": "শব্দ",
+    "audioWordsDescription": "একটি শব্দে ট্যাপ করলে সেটির অডিও বাজান।",
+    "audioChoicesToolName": "পছন্দ",
+    "audioChoicesDescription": "অনুশীলন কার্যক্রমে উত্তরের পছন্দের জন্য অডিও বাজান।",
+    "audioIncomingMessagesToolName": "আগত বার্তা",
+    "audioIncomingMessagesDescription": "শোনার অনুশীলনের জন্য আপনার লক্ষ্য ভাষায় প্রাপ্ত বার্তাগুলো স্বয়ংক্রিয়ভাবে জোরে পড়ুন।",
+    "choosePangeaAvatar": "একটি প্যানজিয়া অবতার চয়ন করুন",
+    "readAloudNoVoiceTitle": "উচ্চ-মানের {language} ভয়েস পাওয়া যায়নি",
+    "readAloudNoVoiceDesktopWeb": "এই ব্রাউজারে উচ্চ-মানের {language} ভয়েস নেই, তাই এখানে বার্তাগুলি ভালোভাবে পড়ে শোনানো যাবে না। Chrome এবং Edge-এ সাধারণত উচ্চ-মানের ভয়েস থাকে।",
+    "readAloudGetChrome": "Chrome পান",
+    "readAloudNoVoiceMobileWeb": "এই ব্রাউজারে উচ্চ-মানের {language} ভয়েস নেই, তাই এখানে বার্তাগুলি ভালোভাবে পড়ে শোনানো যাবে না। Pangea Chat অ্যাপ আপনার ডিভাইসের সেরা ভয়েস ব্যবহার করতে পারে।",
+    "readAloudGetApp": "অ্যাপটি পান",
+    "readAloudNoVoiceIOS": "আপনার ডিভাইসে এখনও উচ্চ-মানের {language} ভয়েস ডাউনলোড করা হয়নি। একটি ডাউনলোড করুন, তারপর আবার চেষ্টা করুন:",
+    "readAloudNoVoiceIOSSteps": "  • সেটিংস\n  • অ্যাক্সেসিবিলিটি\n  • স্পোকেন কন্টেন্ট\n  • ভয়েসেস\n  • {language}\n  • একটি এনহ্যান্সড বা প্রিমিয়াম ভয়েস ডাউনলোড করুন",
+    "readAloudNoVoiceAndroid": "আপনার ডিভাইসে এখনও উচ্চ-মানের {language} ভয়েস নেই। আপনার টেক্সট-টু-স্পিচ ইঞ্জিনের জন্য ভয়েস ডেটা ইনস্টল করুন, তারপর আবার চেষ্টা করুন।",
+    "readAloudOpenVoiceSettings": "ভয়েস সেটিংস খুলুন"
 }

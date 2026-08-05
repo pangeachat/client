@@ -1063,8 +1063,6 @@
     "constructUseCollected": "చాట్‌లో సేకరించబడింది",
     "constructUseNanDesc": "అన్వయించదు",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "టెక్స్ట్-టు-స్పీచ్ సదుపాయం ప్రారంభించబడింది",
-    "enableTTSToolDescription": "మీ లక్ష్య భాషలో భాగాల టెక్స్ట్-టు-స్పీచ్ అవుట్పుట్ ఉత్పత్తి చేయడానికి యాప్‌కు అనుమతి ఇవ్వండి.",
     "yourUsername": "మీ వినియోగదారు పేరు",
     "yourEmail": "మీ ఇమెయిల్",
     "iWantToLearn": "నేను నేర్చుకోవాలనుకుంటున్నాను",
@@ -1333,7 +1331,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-07-29 12:08:23.705121",
+    "@@last_modified": "2026-08-04 10:31:34.582209",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6080,14 +6078,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8702,15 +8692,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "మీ ప్రాక్టీస్ సెషన్ పురోగతి సేవ్ చేయబడదు.",
     "practiceGrammar": "వ్యాకరణాన్ని అభ్యాసం చేయండి",
     "notEnoughToPractice": "ప్రాక్టీస్‌ను అన్లాక్ చేయడానికి మరింత సందేశాలు పంపండి",
     "constructUseCorGCDesc": "సరైన వ్యాకరణ శ్రేణి ప్రాక్టీస్",
     "constructUseIncGCDesc": "తప్పు వ్యాకరణ శ్రేణి ప్రాక్టీస్",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9300,16 +9285,6 @@
     },
     "enableEmailNotifications": "ఇమెయిల్ నోటిఫికేషన్లను ప్రారంభించండి",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "ఆడియో సందేశాలను ఆటో-హైలైట్ చేయండి",
-    "selectAudioMessagesOnPlayDescription": "ఆడినప్పుడు ఆడియో సందేశాలను ఆటోమేటిక్‌గా హైలైట్ చేయండి",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10067,7 +10042,6 @@
     "browsePublicCourses": "ప్రజా కోర్సులను బ్రౌజ్ చేయండి",
     "editProfile": "ప్రొఫైల్ సవరించండి",
     "mapSearchHint": "చర్యలను శోధించండి",
-    "mapSearchNoResults": "చూపులో సరిపోలడం లేదు",
     "mapFilterAllLanguages": "అన్ని భాషలు",
     "mapFilterNotStarted": "ప్రారంభించలేదు",
     "mapFilterInProgress": "జరుగుతోంది",
@@ -10076,7 +10050,6 @@
     "activityTypeConversation": "సంభాషణ",
     "playAgain": "మళ్లీ ఆడండి",
     "reviewActivity": "సమీక్ష",
-    "mapEmptyInView": "మీ స్థాయిలో లేదా భాషలో ఇక్కడ ఏమి లేదు. మీ ఫిల్టర్లను విస్తరించండి లేదా జూమ్ అవుట్ చేయండి.",
     "welcomeToPangeaChat": "పాంజియా చాట్‌కు స్వాగతం",
     "claimTrial": "మీ ట్రయల్‌ను క్లెయిమ్ చేయండి",
     "thanksForSigningUp": "సైన్ అప్ చేసినందుకు ధన్యవాదాలు! ఇది",
@@ -10147,10 +10120,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10180,10 +10149,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10404,7 +10369,6 @@
     "analyticsAndSettingsLabel": "విశ్లేషణ మరియు సెట్టింగ్స్ ఎంపికలు",
     "searchActivitiesLabel": "నకశా పై కార్యకలాపాలను శోధించండి",
     "filteredActivitiesLabel": "ఫిల్టర్ చేసిన కార్యకలాపాల జాబితా",
-    "activityFilterButtonsLabel": "భాష, కష్టత, మరియు పురోగతి ఫిల్టర్ బటన్లు",
     "mapZoomLabel": "నకశా జూమ్ నియంత్రణలు",
     "activityMapLabel": "కార్యకలాపాల నకశా",
     "@navOptionsLabel": {
@@ -10424,10 +10388,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10660,5 +10620,41 @@
     "rateActivityCommentRejected": "మీ వ్యాఖ్య పోస్ట్ చేయబడలేదు. దయచేసి దాన్ని తిరిగి వ్రాయడానికి ప్రయత్నించండి లేదా వ్యాఖ్య లేకుండా మీ రేటింగ్‌ను సమర్పించండి.",
     "rateActivityThanks": "మీ అభిప్రాయానికి ధన్యవాదాలు!",
     "activityRatingMeterLabel": "{percent}% సానుకూలం ({count, plural, =1{1 రేటింగ్} other{{count} రేటింగ్‌లు}})",
-    "newActivityBadge": "కొత్త"
+    "newActivityBadge": "కొత్త",
+    "exitVocabPracticeSession": "మీ ప్రస్తుత పదజాల అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు.",
+    "exitGrammarPracticeSession": "మీ ప్రస్తుత వ్యాకరణ అభ్యాస సెషన్ పురోగతి సేవ్ చేయబడదు.",
+    "activityFilterButtonsLabel": "స్థాయి, ఆటగాళ్ళు మరియు స్థితి ఫిల్టర్ బటన్లు",
+    "mapFilterAllLevels": "అన్ని స్థాయిలు",
+    "mapFilterAllPlayers": "అన్ని ఆటగాళ్ళు",
+    "mapFilterAllStatuses": "అన్ని స్థితులు",
+    "mapFiltersShow": "ఫిల్టర్‌లను చూపించు",
+    "mapFiltersHide": "ఫిల్టర్‌లను దాచు",
+    "mapStatusAvailable": "అందుబాటులో ఉంది",
+    "mapStatusOngoing": "కొనసాగుతోంది",
+    "mapStatusWaiting": "వేచి ఉంది",
+    "mapStatusOpenToJoin": "చేరడానికి సిద్ధంగా ఉంది",
+    "mapMatchesOffscreen": "మీ వీక్షణకు వెలుపల మ్యాచ్‌లు ఉన్నాయి. వాటిని చూడటానికి జూమ్ అవుట్ చేయండి.",
+    "mapFiltersHideMatches": "మీ ఫిల్టర్‌లు అన్ని మ్యాచ్‌లను దాచిపెడుతున్నాయి. వాటిని చూడటానికి శోధనను విస్తరించండి.",
+    "mapNoSearchMatches": "మీ శోధనకు సరిపోలే కార్యకలాపాలు లేవు.",
+    "mapNoActivitiesArea": "ఈ ప్రాంతంలో కార్యకలాపాలు లేవు.",
+    "practiceSessionTimedOut": "మీరు {minutes} నిమిషాలు నిష్క్రియంగా ఉన్నందున మీ అభ్యాస సెషన్ ముగిసింది.",
+    "autocorrectMobileOnly": "మొబైల్ మాత్రమే",
+    "autocorrectMobileOnlyWarning": "పరికర స్వీయ దిద్దుబాటు మొబైల్ యాప్‌లో మాత్రమే అందుబాటులో ఉంటుంది.",
+    "audioSectionTitle": "ఆడియో",
+    "audioWordsToolName": "పదాలు",
+    "audioWordsDescription": "పదంపై నొక్కినప్పుడు దాని ఆడియోను ప్లే చేయండి.",
+    "audioChoicesToolName": "ఎంపికలు",
+    "audioChoicesDescription": "అభ్యాస కార్యకలాపాలలో సమాధాన ఎంపికల కోసం ఆడియోను ప్లే చేయండి.",
+    "audioIncomingMessagesToolName": "ఇన్‌కమింగ్ సందేశాలు",
+    "audioIncomingMessagesDescription": "వినే అభ్యాసం కోసం మీ లక్ష్య భాషలో స్వీకరించిన సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి.",
+    "choosePangeaAvatar": "పంగేయా అవతార్‌ను ఎంచుకోండి",
+    "readAloudNoVoiceTitle": "అధిక-నాణ్యత గల {language} వాయిస్ కనుగొనబడలేదు",
+    "readAloudNoVoiceDesktopWeb": "ఈ బ్రౌజర్ అధిక-నాణ్యత గల {language} వాయిస్‌ను అందించదు, కాబట్టి సందేశాలను ఇక్కడ సరిగ్గా చదవలేము. Chrome మరియు Edge సాధారణంగా అధిక-నాణ్యత గల వాయిస్‌లను కలిగి ఉంటాయి.",
+    "readAloudGetChrome": "Chrome పొందండి",
+    "readAloudNoVoiceMobileWeb": "ఈ బ్రౌజర్ అధిక-నాణ్యత గల {language} వాయిస్‌ను అందించదు, కాబట్టి సందేశాలను ఇక్కడ సరిగ్గా చదవలేము. Pangea Chat యాప్ మీ పరికరం యొక్క ఉత్తమ వాయిస్‌లను ఉపయోగించగలదు.",
+    "readAloudGetApp": "యాప్‌ను పొందండి",
+    "readAloudNoVoiceIOS": "మీ పరికరంలో అధిక-నాణ్యత గల {language} వాయిస్ ఇంకా డౌన్‌లోడ్ చేయబడలేదు. ఒకదాన్ని డౌన్‌లోడ్ చేసి, మళ్లీ ప్రయత్నించండి:",
+    "readAloudNoVoiceIOSSteps": "  • సెట్టింగ్‌లు\n  • యాక్సెసిబిలిటీ\n  • స్పోకెన్ కంటెంట్\n  • వాయిస్‌లు\n  • {language}\n  • మెరుగుపరచబడిన లేదా ప్రీమియం వాయిస్‌ను డౌన్‌లోడ్ చేయండి",
+    "readAloudNoVoiceAndroid": "మీ పరికరంలో అధిక-నాణ్యత గల {language} వాయిస్ ఇంకా లేదు. మీ టెక్స్ట్-టు-స్పీచ్ ఇంజిన్ కోసం వాయిస్ డేటాను ఇన్‌స్టాల్ చేసి, మళ్లీ ప్రయత్నించండి.",
+    "readAloudOpenVoiceSettings": "వాయిస్ సెట్టింగ్‌లను తెరవండి"
 }

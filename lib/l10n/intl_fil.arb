@@ -1808,8 +1808,6 @@
     "constructUseCollected": "Nakalap sa chat",
     "constructUseNanDesc": "Hindi naaangkop",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Pinagana ang text-to-speech",
-    "enableTTSToolDescription": "Payagan ang app na lumikha ng output na text-to-speech para sa mga bahagi ng teksto sa iyong target na wika.",
     "yourUsername": "Ang iyong username",
     "yourEmail": "Ang iyong email",
     "iWantToLearn": "Gusto kong matuto",
@@ -2089,7 +2087,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-07-29 12:08:17.621198",
+    "@@last_modified": "2026-08-04 10:31:21.203143",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6001,14 +5999,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8607,15 +8597,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Hindi mase-save ang iyong progreso sa sesyon ng pagsasanay.",
     "practiceGrammar": "Magsanay ng gramatika",
     "notEnoughToPractice": "Magpadala ng higit pang mga mensahe upang i-unlock ang pagsasanay",
     "constructUseCorGCDesc": "Pagsasanay sa tamang kategorya ng gramatika",
     "constructUseIncGCDesc": "Pagsasanay sa maling kategorya ng gramatika",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9210,16 +9195,6 @@
     },
     "enableEmailNotifications": "I-enable ang mga abiso sa email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Awtomatikong i-highlight ang mga mensaheng audio",
-    "selectAudioMessagesOnPlayDescription": "Awtomatikong i-highlight ang mga mensaheng audio kapag pinatugtog",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9977,7 +9952,6 @@
     "browsePublicCourses": "Mag-browse ng mga pampublikong kurso",
     "editProfile": "I-edit ang profile",
     "mapSearchHint": "Maghanap ng mga aktibidad",
-    "mapSearchNoResults": "Walang tugma sa view",
     "mapFilterAllLanguages": "Lahat ng wika",
     "mapFilterNotStarted": "Hindi pa nagsimula",
     "mapFilterInProgress": "Nasa proseso",
@@ -9986,7 +9960,6 @@
     "activityTypeConversation": "Usapan",
     "playAgain": "Maglaro muli",
     "reviewActivity": "Suriin",
-    "mapEmptyInView": "Walang nandito sa iyong antas o wika. Palawakin ang iyong mga filter o mag-zoom out.",
     "welcomeToPangeaChat": "Maligayang pagdating sa Pangea Chat",
     "claimTrial": "Kunin ang iyong pagsubok",
     "thanksForSigningUp": "Salamat sa pag-sign up! Narito ang",
@@ -10057,10 +10030,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10090,10 +10059,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10314,7 +10279,6 @@
     "analyticsAndSettingsLabel": "Mga pagpipilian sa Analytics at Mga Setting",
     "searchActivitiesLabel": "Maghanap ng mga aktibidad sa mapa",
     "filteredActivitiesLabel": "Listahan ng mga na-filter na aktibidad",
-    "activityFilterButtonsLabel": "Mga pindutan ng filter para sa wika, kahirapan, at progreso",
     "mapZoomLabel": "Mga kontrol sa pag-zoom ng mapa",
     "activityMapLabel": "Mapa ng aktibidad",
     "@navOptionsLabel": {
@@ -10334,10 +10298,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10570,5 +10530,41 @@
     "rateActivityCommentRejected": "Hindi maipaskil ang iyong komento. Subukang baguhin ang pagkakasalita nito, o isumite ang iyong rating nang walang komento.",
     "rateActivityThanks": "Salamat sa iyong feedback!",
     "activityRatingMeterLabel": "{percent}% positibo ({count, plural, =1{1 rating} other{{count} ratings}})",
-    "newActivityBadge": "BAGO"
+    "newActivityBadge": "BAGO",
+    "exitVocabPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng bokabularyo.",
+    "exitGrammarPracticeSession": "Hindi mase-save ang progreso ng iyong kasalukuyang sesyon sa pagsasanay ng gramatika.",
+    "activityFilterButtonsLabel": "Mga button ng filter para sa antas, manlalaro, at status",
+    "mapFilterAllLevels": "Lahat ng antas",
+    "mapFilterAllPlayers": "Lahat ng manlalaro",
+    "mapFilterAllStatuses": "Lahat ng status",
+    "mapFiltersShow": "Ipakita ang mga filter",
+    "mapFiltersHide": "Itago ang mga filter",
+    "mapStatusAvailable": "Available",
+    "mapStatusOngoing": "Kasalukuyan",
+    "mapStatusWaiting": "Naghihintay",
+    "mapStatusOpenToJoin": "Bukas para salihan",
+    "mapMatchesOffscreen": "May mga laban sa labas ng iyong view. Mag-zoom out para makita ang mga ito.",
+    "mapFiltersHideMatches": "Itinatago ng iyong mga filter ang lahat ng laban. Palawakin ang paghahanap para makita ang mga ito.",
+    "mapNoSearchMatches": "Walang aktibidad na tumutugma sa iyong paghahanap.",
+    "mapNoActivitiesArea": "Walang aktibidad sa lugar na ito.",
+    "practiceSessionTimedOut": "Natapos ang iyong sesyon sa pagsasanay pagkatapos ng {minutes} minuto nang walang aktibidad.",
+    "autocorrectMobileOnly": "Pang-mobile lang",
+    "autocorrectMobileOnlyWarning": "Available lang ang autocorrect ng device sa mobile app.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Mga Salita",
+    "audioWordsDescription": "I-play ang audio ng salita kapag tinap mo ito.",
+    "audioChoicesToolName": "Mga Pagpipilian",
+    "audioChoicesDescription": "I-play ang audio para sa mga pagpipilian sa sagot sa mga aktibidad sa pagsasanay.",
+    "audioIncomingMessagesToolName": "Mga Papasok na Mensahe",
+    "audioIncomingMessagesDescription": "Awtomatikong basahin nang malakas ang mga natanggap na mensahe sa iyong target na wika para sa pagsasanay sa pakikinig.",
+    "choosePangeaAvatar": "Pumili ng Pangea avatar",
+    "readAloudNoVoiceTitle": "Walang nakitang de-kalidad na boses sa {language}",
+    "readAloudNoVoiceDesktopWeb": "Hindi nag-aalok ang browser na ito ng de-kalidad na boses sa {language}, kaya hindi mababasa nang maayos ang mga mensahe dito. Karaniwang may kasamang de-kalidad na boses ang Chrome at Edge.",
+    "readAloudGetChrome": "Kunin ang Chrome",
+    "readAloudNoVoiceMobileWeb": "Hindi nag-aalok ang browser na ito ng de-kalidad na boses sa {language}, kaya hindi mababasa nang maayos ang mga mensahe dito. Magagamit ng Pangea Chat app ang pinakamahusay na boses ng iyong device.",
+    "readAloudGetApp": "Kunin ang app",
+    "readAloudNoVoiceIOS": "Wala pang na-download na de-kalidad na boses sa {language} ang iyong device. Mag-download ng isa, pagkatapos ay subukang muli:",
+    "readAloudNoVoiceIOSSteps": "  • Mga Setting\n  • Accessibility\n  • Spoken Content\n  • Mga Boses\n  • {language}\n  • Mag-download ng Enhanced o Premium na boses",
+    "readAloudNoVoiceAndroid": "Wala pang de-kalidad na boses sa {language} ang iyong device. Mag-install ng data ng boses para sa iyong text-to-speech engine, pagkatapos ay subukang muli.",
+    "readAloudOpenVoiceSettings": "Buksan ang mga setting ng boses"
 }

@@ -40,6 +40,61 @@ class RoleException implements Exception {
   String toString() => "RoleException: $message";
 }
 
+/// Whether a seat's holder has provably left the room. A role written in the
+/// activity-role state event stays assigned unless a LOADED m.room.member
+/// event says its holder left; `membership` is null when that event is not
+/// loaded, which must count as still occupied (#7556): under lazy member
+/// loading the holder — typically the bot — is routinely absent from the
+/// loaded member list right after an invite refreshes it, and treating
+/// "unknown" as "gone" made the bot's seat evaporate ("Waiting to fill 1
+/// roles") and let the invitee overwrite it.
+@visibleForTesting
+bool roleHolderVacated(String? membership) =>
+    membership == 'leave' || membership == 'ban';
+
+@visibleForTesting
+Map<String, ActivityRoleModel> filterAssignedRoles(
+  Map<String, ActivityRoleModel> roles,
+  String? Function(String userId) membershipOf,
+) => Map.fromEntries(
+  roles.entries.where((r) => !roleHolderVacated(membershipOf(r.value.userId))),
+);
+
+/// Whether [roles]' seat count is resting on the [roleHolderVacated] fallback
+/// instead of on evidence: at least one holder has no LOADED `m.room.member`
+/// event ([membershipOf] returns null), so its seat counts as occupied only
+/// because nothing proves otherwise.
+///
+/// Member events never ride the SDK's preloaded-state path — they live in
+/// their own store and come back into room state only through
+/// [Room.requestParticipants] — so this is true for every session room the
+/// learner hasn't opened this app session. The world map uses it to pick the
+/// rooms worth a member refill before trusting their seats (#8045).
+@visibleForTesting
+bool hasUnresolvedSeatEvidence(
+  Map<String, ActivityRoleModel>? roles,
+  String? Function(String userId) membershipOf,
+) => roles != null && roles.values.any((r) => membershipOf(r.userId) == null);
+
+/// Claim guard for [ActivityRolesRoomExtension.joinActivity], keyed by role
+/// ID: `updateRole` overwrites by id, so the guard must match on the same key
+/// (the old name-based check on the membership-filtered map let a claim on an
+/// occupied id slip through and overwrite the holder's entry).
+@visibleForTesting
+void guardSeatClaim({
+  required String claimantId,
+  required ActivityRoleModel? holder,
+  required bool holderVacated,
+  required bool claimantHoldsSeat,
+}) {
+  if (holder != null && holder.userId != claimantId && !holderVacated) {
+    throw RoleException("Role already taken");
+  }
+  if (claimantHoldsSeat) {
+    throw RoleException("User already has a role");
+  }
+}
+
 extension ActivityRolesRoomExtension on Room {
   ActivityRolesModel? get activityRoles {
     final content = getState(PangeaEventTypes.activityRole)?.content;
@@ -105,31 +160,42 @@ extension ActivityRolesRoomExtension on Room {
 
   bool get isActiveInActivity => hasPickedRole && !hasCompletedRole;
 
+  /// Loaded membership of [userId] via [getParticipants] with the full
+  /// membership filter — the DEFAULT filter drops leave/ban members, which is
+  /// exactly the evidence [roleHolderVacated] needs. Null when the member
+  /// event isn't loaded (lazy loading), which counts as still occupied.
+  String? _membershipOf(String userId) => getParticipants(
+    Membership.values,
+  ).firstWhereOrNull((u) => u.id == userId)?.membership.name;
+
   Map<String, ActivityRoleModel>? get assignedRoles {
     final roles = activityRoles?.roles;
     if (roles == null) return null;
-
-    final participants = getParticipants();
-    return Map.fromEntries(
-      roles.entries.where(
-        (r) => participants.any(
-          (p) => p.id == r.value.userId && p.membership == Membership.join,
-        ),
-      ),
-    );
+    return filterAssignedRoles(roles, _membershipOf);
   }
 
+  /// True when this session's seat math is resting on unloaded member state —
+  /// see [hasUnresolvedSeatEvidence]. Cheap: reads the loaded member list, never
+  /// fetches. It flags the room for the world map's member-refill sweep
+  /// (`WorldMapPinsManager.loadSessionParticipants`).
+  bool get hasUnresolvedSeats =>
+      hasUnresolvedSeatEvidence(activityRoles?.roles, _membershipOf);
+
   Future<void> joinActivity(ActivityRole role) async {
-    final assigned = assignedRoles?.values ?? [];
-    if (assigned.any((r) => r.userId != client.userID && r.role == role.name)) {
-      throw RoleException("Role already taken");
-    }
-
-    if (assigned.any((r) => r.userId == client.userID)) {
-      throw RoleException("User already has a role");
-    }
-
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
+    final holder = currentRoles.roles[role.id];
+    guardSeatClaim(
+      claimantId: client.userID!,
+      holder: holder,
+      holderVacated:
+          holder != null && roleHolderVacated(_membershipOf(holder.userId)),
+      claimantHoldsSeat: currentRoles.roles.values.any(
+        (r) =>
+            r.userId == client.userID &&
+            !roleHolderVacated(_membershipOf(r.userId)),
+      ),
+    );
+
     final activityRole = ActivityRoleModel(
       id: role.id,
       userId: client.userID!,

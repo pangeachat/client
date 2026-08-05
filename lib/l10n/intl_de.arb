@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-07-29 12:08:16.831858",
+    "@@last_modified": "2026-08-04 10:31:18.912465",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3320,8 +3320,6 @@
     "constructUseCollected": "Im Chat gesammelt",
     "constructUseNanDesc": "Nicht anwendbar",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Text-zu-Sprache aktiviert",
-    "enableTTSToolDescription": "Erlauben Sie der App, Text-zu-Sprache-Ausgaben für Textteile in Ihrer Zielsprache zu generieren.",
     "yourUsername": "Ihr Benutzername",
     "yourEmail": "Ihre E-Mail",
     "iWantToLearn": "Ich möchte lernen",
@@ -5324,14 +5322,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7947,15 +7937,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ihr Fortschritt in der Übungssitzung wird nicht gespeichert.",
     "practiceGrammar": "Grammatik üben",
     "notEnoughToPractice": "Senden Sie mehr Nachrichten, um die Übung freizuschalten",
     "constructUseCorGCDesc": "Übung der korrekten Grammatikkategorie",
     "constructUseIncGCDesc": "Übung der inkorrekten Grammatikkategorie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8331,16 +8316,6 @@
     },
     "enableEmailNotifications": "E-Mail-Benachrichtigungen aktivieren",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Audio-Nachrichten automatisch hervorheben",
-    "selectAudioMessagesOnPlayDescription": "Audio-Nachrichten automatisch hervorheben, wenn sie abgespielt werden",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9098,7 +9073,6 @@
     "browsePublicCourses": "Öffentliche Kurse durchsuchen",
     "editProfile": "Profil bearbeiten",
     "mapSearchHint": "Aktivitäten suchen",
-    "mapSearchNoResults": "Keine Übereinstimmungen in der Ansicht",
     "mapFilterAllLanguages": "Alle Sprachen",
     "mapFilterNotStarted": "Nicht gestartet",
     "mapFilterInProgress": "In Bearbeitung",
@@ -9107,7 +9081,6 @@
     "activityTypeConversation": "Gespräch",
     "playAgain": "Nochmals spielen",
     "reviewActivity": "Überprüfen",
-    "mapEmptyInView": "Nichts hier auf deinem Niveau oder in deiner Sprache. Erweitere deine Filter oder zoome heraus.",
     "welcomeToPangeaChat": "Willkommen bei Pangea Chat",
     "claimTrial": "Fordere deine Testversion an",
     "thanksForSigningUp": "Danke für die Anmeldung! Hier ist",
@@ -9178,10 +9151,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9211,10 +9180,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9435,7 +9400,6 @@
     "analyticsAndSettingsLabel": "Analytik- und Einstellungen-Optionen",
     "searchActivitiesLabel": "Aktivitäten auf der Karte suchen",
     "filteredActivitiesLabel": "Gefilterte Aktivitätenliste",
-    "activityFilterButtonsLabel": "Filtertasten für Sprache, Schwierigkeit und Fortschritt",
     "mapZoomLabel": "Kartenzoom-Steuerelemente",
     "activityMapLabel": "Aktivitätskarte",
     "@navOptionsLabel": {
@@ -9455,10 +9419,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9691,5 +9651,41 @@
     "rateActivityCommentRejected": "Ihr Kommentar konnte nicht gepostet werden. Versuchen Sie, ihn umzuformulieren, oder senden Sie Ihre Bewertung ohne Kommentar ab.",
     "rateActivityThanks": "Danke für Ihr Feedback!",
     "activityRatingMeterLabel": "{percent}% positiv ({count, plural, =1{1 Bewertung} other{{count} Bewertungen}})",
-    "newActivityBadge": "NEU"
+    "newActivityBadge": "NEU",
+    "exitVocabPracticeSession": "Ihr aktueller Fortschritt in der Vokabelübung wird nicht gespeichert.",
+    "exitGrammarPracticeSession": "Ihr aktueller Fortschritt in der Grammatikübung wird nicht gespeichert.",
+    "activityFilterButtonsLabel": "Filter-Schaltflächen für Level, Spieler und Status",
+    "mapFilterAllLevels": "Alle Level",
+    "mapFilterAllPlayers": "Alle Spieler",
+    "mapFilterAllStatuses": "Alle Status",
+    "mapFiltersShow": "Filter anzeigen",
+    "mapFiltersHide": "Filter ausblenden",
+    "mapStatusAvailable": "Verfügbar",
+    "mapStatusOngoing": "Laufend",
+    "mapStatusWaiting": "Wartend",
+    "mapStatusOpenToJoin": "Offen zum Beitreten",
+    "mapMatchesOffscreen": "Es gibt Matches außerhalb deines Sichtbereichs. Zoome heraus, um sie zu sehen.",
+    "mapFiltersHideMatches": "Deine Filter verbergen alle Matches. Erweitere die Suche, um sie zu sehen.",
+    "mapNoSearchMatches": "Keine Aktivitäten entsprechen deiner Suche.",
+    "mapNoActivitiesArea": "Keine Aktivitäten in diesem Bereich.",
+    "practiceSessionTimedOut": "Deine Übungseinheit wurde nach {minutes} Minuten Inaktivität beendet.",
+    "autocorrectMobileOnly": "Nur Mobilgeräte",
+    "autocorrectMobileOnlyWarning": "Die Autokorrektur des Geräts ist nur in der mobilen App verfügbar.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Wörter",
+    "audioWordsDescription": "Spielt das Audio eines Wortes ab, wenn Sie darauf tippen.",
+    "audioChoicesToolName": "Auswahlmöglichkeiten",
+    "audioChoicesDescription": "Spielt Audio für Antwortmöglichkeiten in Übungsaktivitäten ab.",
+    "audioIncomingMessagesToolName": "Eingehende Nachrichten",
+    "audioIncomingMessagesDescription": "Liest empfangene Nachrichten in Ihrer Zielsprache automatisch vor, um das Hörverständnis zu üben.",
+    "choosePangeaAvatar": "Wähle einen Pangea-Avatar",
+    "readAloudNoVoiceTitle": "Keine hochwertige {language}-Stimme gefunden",
+    "readAloudNoVoiceDesktopWeb": "Dieser Browser bietet keine hochwertige {language}-Stimme, daher können Nachrichten hier nicht gut vorgelesen werden. Chrome und Edge enthalten normalerweise hochwertige Stimmen.",
+    "readAloudGetChrome": "Chrome herunterladen",
+    "readAloudNoVoiceMobileWeb": "Dieser Browser bietet keine hochwertige {language}-Stimme, daher können Nachrichten hier nicht gut vorgelesen werden. Die Pangea Chat App kann die besten Stimmen Ihres Geräts verwenden.",
+    "readAloudGetApp": "App herunterladen",
+    "readAloudNoVoiceIOS": "Auf Ihrem Gerät ist noch keine hochwertige {language}-Stimme heruntergeladen. Laden Sie eine herunter und versuchen Sie es dann erneut:",
+    "readAloudNoVoiceIOSSteps": "  • Einstellungen\n  • Bedienungshilfen\n  • Gesprochene Inhalte\n  • Stimmen\n  • {language}\n  • Eine erweiterte oder Premium-Stimme herunterladen",
+    "readAloudNoVoiceAndroid": "Auf Ihrem Gerät ist noch keine hochwertige {language}-Stimme vorhanden. Installieren Sie Sprachdaten für Ihre Text-to-Speech-Engine und versuchen Sie es dann erneut.",
+    "readAloudOpenVoiceSettings": "Spracheinstellungen öffnen"
 }

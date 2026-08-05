@@ -6,9 +6,12 @@ import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 /// The activity plan page's rating indicator, top-right of the header per the
 /// #7194/#7993 designs: a NEW pill while the activity has fewer than
-/// [kNewRatingThreshold] ratings, then a small ring filled to the up-fraction
-/// with the percentage beside it, tinted between light red (all thumbs down)
-/// and light purple (all thumbs up). This is the ONLY surface that shows the
+/// [kNewRatingThreshold] ratings, then a pill carrying a thumbs-up icon and the
+/// up-percentage, tinted between the scheme's error container (all thumbs down)
+/// and its primary container (all thumbs up) — light red to light purple under
+/// the default seed. The thumb — not a ring or dial — is what reads as "share of
+/// thumbs up" (#8088): a ring at 0% looked like an empty progress meter rather
+/// than an all-negative rating. This is the ONLY surface that shows the
 /// badge/meter — map pins and cards carry neither (the rating enters the map
 /// solely as a score term; world-map.instructions.md).
 class ActivityRatingMeter extends StatelessWidget {
@@ -17,9 +20,6 @@ class ActivityRatingMeter extends StatelessWidget {
   final int? count;
 
   const ActivityRatingMeter({super.key, this.average, this.count});
-
-  static const Color _downColor = Color(0xFFEFB8B8); // light red
-  static const Color _upColor = AppConfig.primaryColorLight; // light purple
 
   @override
   Widget build(BuildContext context) {
@@ -47,26 +47,43 @@ class ActivityRatingMeter extends StatelessWidget {
 
     final clamped = (average ?? 0.0).clamp(0.0, 1.0);
     final percent = (clamped * 100).round();
-    final color = Color.lerp(_downColor, _upColor, clamped)!;
+
+    // The tint runs across a matched pair of scheme roles, so the pill and its
+    // contents stay contrasting at both ends and under either brightness.
+    final colors = theme.colorScheme;
+    final background = Color.lerp(
+      colors.errorContainer,
+      colors.primaryContainer,
+      clamped,
+    )!;
+    final foreground = Color.lerp(
+      colors.onErrorContainer,
+      colors.onPrimaryContainer,
+      clamped,
+    )!;
 
     return Tooltip(
       message: L10n.of(context).activityRatingMeterLabel(percent, count!),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        spacing: 4.0,
-        children: [
-          SizedBox(
-            height: 18.0,
-            width: 18.0,
-            child: CircularProgressIndicator(
-              value: clamped,
-              strokeWidth: 3.0,
-              color: color,
-              backgroundColor: theme.colorScheme.surfaceContainerHighest,
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+        decoration: BoxDecoration(
+          color: background,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 4.0,
+          children: [
+            Icon(Icons.thumb_up_outlined, size: 16.0, color: foreground),
+            Text(
+              "$percent%",
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: foreground,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
-          Text("$percent%", style: theme.textTheme.labelMedium),
-        ],
+          ],
+        ),
       ),
     );
   }

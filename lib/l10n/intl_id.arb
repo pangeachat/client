@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:18.963652",
+    "@@last_modified": "2026-08-04 10:31:23.970396",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -3217,8 +3217,6 @@
     "constructUseCollected": "Terkumpul dalam obrolan",
     "constructUseNanDesc": "Tidak berlaku",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktifkan teks-ke-ucapan",
-    "enableTTSToolDescription": "Izinkan aplikasi menghasilkan keluaran teks-ke-ucapan untuk bagian teks dalam bahasa target Anda.",
     "yourUsername": "Nama pengguna Anda",
     "yourEmail": "Email Anda",
     "iWantToLearn": "Saya ingin belajar",
@@ -5226,14 +5224,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7849,15 +7839,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Kemajuan sesi latihan Anda tidak akan disimpan.",
     "practiceGrammar": "Latihan tata bahasa",
     "notEnoughToPractice": "Kirim lebih banyak pesan untuk membuka latihan",
     "constructUseCorGCDesc": "Latihan kategori tata bahasa yang benar",
     "constructUseIncGCDesc": "Latihan kategori tata bahasa yang salah",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8417,16 +8402,6 @@
     },
     "enableEmailNotifications": "Aktifkan notifikasi email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Sorot otomatis pesan audio",
-    "selectAudioMessagesOnPlayDescription": "Secara otomatis sorot pesan audio saat diputar",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9184,7 +9159,6 @@
     "browsePublicCourses": "Jelajahi kursus publik",
     "editProfile": "Edit profil",
     "mapSearchHint": "Cari aktivitas",
-    "mapSearchNoResults": "Tidak ada kecocokan dalam tampilan",
     "mapFilterAllLanguages": "Semua bahasa",
     "mapFilterNotStarted": "Belum dimulai",
     "mapFilterInProgress": "Sedang berlangsung",
@@ -9193,7 +9167,6 @@
     "activityTypeConversation": "Percakapan",
     "playAgain": "Main lagi",
     "reviewActivity": "Tinjau",
-    "mapEmptyInView": "Tidak ada di sini pada level atau bahasa Anda. Perluas filter Anda atau perbesar.",
     "welcomeToPangeaChat": "Selamat datang di Pangea Chat",
     "claimTrial": "Klaim percobaan Anda",
     "thanksForSigningUp": "Terima kasih telah mendaftar! Ini dia",
@@ -9264,10 +9237,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9297,10 +9266,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9521,7 +9486,6 @@
     "analyticsAndSettingsLabel": "Opsi Analitik dan Pengaturan",
     "searchActivitiesLabel": "Cari aktivitas di peta",
     "filteredActivitiesLabel": "Daftar aktivitas yang difilter",
-    "activityFilterButtonsLabel": "Tombol filter bahasa, kesulitan, dan kemajuan",
     "mapZoomLabel": "Kontrol zoom peta",
     "activityMapLabel": "Peta aktivitas",
     "@navOptionsLabel": {
@@ -9541,10 +9505,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9777,5 +9737,41 @@
     "rateActivityCommentRejected": "Komentar Anda tidak dapat diposting. Coba ubah kata-katanya, atau kirim penilaian Anda tanpa komentar.",
     "rateActivityThanks": "Terima kasih atas masukan Anda!",
     "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
-    "newActivityBadge": "BARU"
+    "newActivityBadge": "BARU",
+    "exitVocabPracticeSession": "Progres sesi latihan kosakata Anda saat ini tidak akan disimpan.",
+    "exitGrammarPracticeSession": "Progres sesi latihan tata bahasa Anda saat ini tidak akan disimpan.",
+    "activityFilterButtonsLabel": "Tombol filter level, pemain, dan status",
+    "mapFilterAllLevels": "Semua level",
+    "mapFilterAllPlayers": "Semua pemain",
+    "mapFilterAllStatuses": "Semua status",
+    "mapFiltersShow": "Tampilkan filter",
+    "mapFiltersHide": "Sembunyikan filter",
+    "mapStatusAvailable": "Tersedia",
+    "mapStatusOngoing": "Sedang berlangsung",
+    "mapStatusWaiting": "Menunggu",
+    "mapStatusOpenToJoin": "Terbuka untuk bergabung",
+    "mapMatchesOffscreen": "Ada pertandingan di luar tampilan Anda. Perkecil untuk melihatnya.",
+    "mapFiltersHideMatches": "Filter Anda menyembunyikan semua pertandingan. Perluas pencarian untuk melihatnya.",
+    "mapNoSearchMatches": "Tidak ada aktivitas yang cocok dengan pencarian Anda.",
+    "mapNoActivitiesArea": "Tidak ada aktivitas di area ini.",
+    "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
+    "autocorrectMobileOnly": "Khusus seluler",
+    "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Kata",
+    "audioWordsDescription": "Putar audio kata saat Anda mengetuknya.",
+    "audioChoicesToolName": "Pilihan",
+    "audioChoicesDescription": "Putar audio untuk pilihan jawaban dalam aktivitas latihan.",
+    "audioIncomingMessagesToolName": "Pesan masuk",
+    "audioIncomingMessagesDescription": "Secara otomatis membacakan pesan yang diterima dalam bahasa target Anda untuk latihan mendengarkan.",
+    "choosePangeaAvatar": "Pilih avatar Pangea",
+    "readAloudNoVoiceTitle": "Tidak ditemukan suara {language} berkualitas tinggi",
+    "readAloudNoVoiceDesktopWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Chrome dan Edge biasanya menyertakan suara berkualitas tinggi.",
+    "readAloudGetChrome": "Dapatkan Chrome",
+    "readAloudNoVoiceMobileWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Aplikasi Pangea Chat dapat menggunakan suara terbaik perangkat Anda.",
+    "readAloudGetApp": "Dapatkan aplikasi",
+    "readAloudNoVoiceIOS": "Perangkat Anda belum mengunduh suara {language} berkualitas tinggi. Unduh satu, lalu coba lagi:",
+    "readAloudNoVoiceIOSSteps": "  • Pengaturan\n  • Aksesibilitas\n  • Konten Lisan\n  • Suara\n  • {language}\n  • Unduh suara yang Ditingkatkan atau Premium",
+    "readAloudNoVoiceAndroid": "Perangkat Anda belum memiliki suara {language} berkualitas tinggi. Instal data suara untuk mesin text-to-speech Anda, lalu coba lagi.",
+    "readAloudOpenVoiceSettings": "Buka pengaturan suara"
 }

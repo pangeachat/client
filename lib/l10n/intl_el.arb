@@ -3147,8 +3147,6 @@
     "constructUseCollected": "Συλλέχθηκε στη συνομιλία",
     "constructUseNanDesc": "Μη εφαρμόσιμο",
     "xpIntoLevel": "{currentXP} / {maxXP} Πόντοι XP",
-    "enableTTSToolName": "Ενεργοποιημένη φωνητική ανάγνωση κειμένου",
-    "enableTTSToolDescription": "Επιτρέψτε στην εφαρμογή να παράγει έξοδο φωνητικής ανάγνωσης για τμήματα κειμένου στη γλώσσα στόχο σας.",
     "yourUsername": "Το όνομα χρήστη σας",
     "yourEmail": "Το email σας",
     "iWantToLearn": "Θέλω να μάθω",
@@ -3417,7 +3415,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-07-29 12:08:16.888341",
+    "@@last_modified": "2026-08-04 10:31:22.881560",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -6004,14 +6002,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -8627,15 +8617,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Η πρόοδος της συνεδρίας πρακτικής σας δεν θα αποθηκευτεί.",
     "practiceGrammar": "Πρακτική γραμματικής",
     "notEnoughToPractice": "Στείλτε περισσότερα μηνύματα για να ξεκλειδώσετε την πρακτική",
     "constructUseCorGCDesc": "Πρακτική κατηγορίας σωστής γραμματικής",
     "constructUseIncGCDesc": "Πρακτική κατηγορίας λανθαστής γραμματικής",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9225,16 +9210,6 @@
     },
     "enableEmailNotifications": "Ενεργοποίηση ειδοποιήσεων μέσω email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Αυτόματη επισήμανση ηχητικών μηνυμάτων",
-    "selectAudioMessagesOnPlayDescription": "Αυτόματα επισήμανση ηχητικών μηνυμάτων κατά την αναπαραγωγή",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9992,7 +9967,6 @@
     "browsePublicCourses": "Περιήγηση σε δημόσια μαθήματα",
     "editProfile": "Επεξεργασία προφίλ",
     "mapSearchHint": "Αναζητήστε δραστηριότητες",
-    "mapSearchNoResults": "Δεν υπάρχουν αποτελέσματα στην προβολή",
     "mapFilterAllLanguages": "Όλες οι γλώσσες",
     "mapFilterNotStarted": "Δεν έχει ξεκινήσει",
     "mapFilterInProgress": "Σε εξέλιξη",
@@ -10001,7 +9975,6 @@
     "activityTypeConversation": "Συζήτηση",
     "playAgain": "Παίξτε ξανά",
     "reviewActivity": "Αξιολόγηση",
-    "mapEmptyInView": "Δεν υπάρχει τίποτα εδώ στο επίπεδό σας ή στη γλώσσα σας. Διευρύνετε τα φίλτρα σας ή απομακρυνθείτε.",
     "welcomeToPangeaChat": "Καλώς ήρθατε στο Pangea Chat",
     "claimTrial": "Διεκδικήστε τη δοκιμή σας",
     "thanksForSigningUp": "Ευχαριστούμε που εγγραφήκατε! Να τι είναι",
@@ -10072,10 +10045,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10105,10 +10074,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10329,7 +10294,6 @@
     "analyticsAndSettingsLabel": "Επιλογές ανάλυσης και ρυθμίσεων",
     "searchActivitiesLabel": "Αναζήτηση δραστηριοτήτων στον χάρτη",
     "filteredActivitiesLabel": "Λίστα φιλτραρισμένων δραστηριοτήτων",
-    "activityFilterButtonsLabel": "Κουμπιά φίλτρου γλώσσας, δυσκολίας και προόδου",
     "mapZoomLabel": "Έλεγχοι ζουμ χάρτη",
     "activityMapLabel": "Χάρτης δραστηριοτήτων",
     "@navOptionsLabel": {
@@ -10349,10 +10313,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10585,5 +10545,41 @@
     "rateActivityCommentRejected": "Το σχόλιό σας δεν μπόρεσε να δημοσιευτεί. Δοκιμάστε να το αναδιατυπώσετε ή υποβάλετε την αξιολόγησή σας χωρίς σχόλιο.",
     "rateActivityThanks": "Ευχαριστούμε για τα σχόλιά σας!",
     "activityRatingMeterLabel": "{percent}% θετικά ({count, plural, =1{1 αξιολόγηση} other{{count} αξιολογήσεις}})",
-    "newActivityBadge": "ΝΕΟ"
+    "newActivityBadge": "ΝΕΟ",
+    "exitVocabPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης λεξιλογίου δεν θα αποθηκευτεί.",
+    "exitGrammarPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης γραμματικής δεν θα αποθηκευτεί.",
+    "activityFilterButtonsLabel": "Κουμπιά φίλτρου επιπέδου, παικτών και κατάστασης",
+    "mapFilterAllLevels": "Όλα τα επίπεδα",
+    "mapFilterAllPlayers": "Όλοι οι παίκτες",
+    "mapFilterAllStatuses": "Όλες οι καταστάσεις",
+    "mapFiltersShow": "Εμφάνιση φίλτρων",
+    "mapFiltersHide": "Απόκρυψη φίλτρων",
+    "mapStatusAvailable": "Διαθέσιμο",
+    "mapStatusOngoing": "Σε εξέλιξη",
+    "mapStatusWaiting": "Σε αναμονή",
+    "mapStatusOpenToJoin": "Ανοιχτό για συμμετοχή",
+    "mapMatchesOffscreen": "Υπάρχουν αγώνες εκτός της οθόνης σας. Σμικρύνετε για να τους δείτε.",
+    "mapFiltersHideMatches": "Τα φίλτρα σας αποκρύπτουν όλους τους αγώνες. Διευρύνετε την αναζήτηση για να τους δείτε.",
+    "mapNoSearchMatches": "Δεν υπάρχουν δραστηριότητες που να ταιριάζουν με την αναζήτησή σας.",
+    "mapNoActivitiesArea": "Δεν υπάρχουν δραστηριότητες σε αυτήν την περιοχή.",
+    "practiceSessionTimedOut": "Η συνεδρία εξάσκησής σας έληξε μετά από {minutes} λεπτά αδράνειας.",
+    "autocorrectMobileOnly": "Μόνο για κινητά",
+    "autocorrectMobileOnlyWarning": "Η αυτόματη διόρθωση συσκευής είναι διαθέσιμη μόνο στην εφαρμογή για κινητά.",
+    "audioSectionTitle": "Ήχος",
+    "audioWordsToolName": "Λέξεις",
+    "audioWordsDescription": "Αναπαραγωγή ήχου μιας λέξης όταν την πατάτε.",
+    "audioChoicesToolName": "Επιλογές",
+    "audioChoicesDescription": "Αναπαραγωγή ήχου για τις επιλογές απάντησης σε δραστηριότητες εξάσκησης.",
+    "audioIncomingMessagesToolName": "Εισερχόμενα μηνύματα",
+    "audioIncomingMessagesDescription": "Αυτόματη ανάγνωση των εισερχόμενων μηνυμάτων δυνατά στη γλώσσα-στόχο σας για εξάσκηση στην ακρόαση.",
+    "choosePangeaAvatar": "Επιλέξτε ένα avatar Pangea",
+    "readAloudNoVoiceTitle": "Δεν βρέθηκε φωνή υψηλής ποιότητας για {language}",
+    "readAloudNoVoiceDesktopWeb": "Αυτό το πρόγραμμα περιήγησης δεν προσφέρει φωνή υψηλής ποιότητας για {language}, επομένως τα μηνύματα δεν μπορούν να διαβαστούν καλά εδώ. Το Chrome και το Edge συνήθως περιλαμβάνουν φωνές υψηλής ποιότητας.",
+    "readAloudGetChrome": "Αποκτήστε το Chrome",
+    "readAloudNoVoiceMobileWeb": "Αυτό το πρόγραμμα περιήγησης δεν προσφέρει φωνή υψηλής ποιότητας για {language}, επομένως τα μηνύματα δεν μπορούν να διαβαστούν καλά εδώ. Η εφαρμογή Pangea Chat μπορεί να χρησιμοποιήσει τις καλύτερες φωνές της συσκευής σας.",
+    "readAloudGetApp": "Αποκτήστε την εφαρμογή",
+    "readAloudNoVoiceIOS": "Η συσκευή σας δεν έχει ακόμη κατεβάσει φωνή υψηλής ποιότητας για {language}. Κατεβάστε μία και δοκιμάστε ξανά:",
+    "readAloudNoVoiceIOSSteps": "  • Ρυθμίσεις\n  • Προσβασιμότητα\n  • Εκφωνούμενο περιεχόμενο\n  • Φωνές\n  • {language}\n  • Κατεβάστε μια βελτιωμένη ή Premium φωνή",
+    "readAloudNoVoiceAndroid": "Η συσκευή σας δεν έχει ακόμη φωνή υψηλής ποιότητας για {language}. Εγκαταστήστε δεδομένα φωνής για τη μηχανή μετατροπής κειμένου σε ομιλία και δοκιμάστε ξανά.",
+    "readAloudOpenVoiceSettings": "Άνοιγμα ρυθμίσεων φωνής"
 }

@@ -33,11 +33,17 @@ class _AnalyticsClient {
 
 class AnalyticsStreamUpdate {
   final int points;
+
+  /// Uncapped point value of the update's added uses — see
+  /// [XPGainedEvent.totalPoints]. Read only by the XP gain/loss animation.
+  final int totalPoints;
+
   final Set<ConstructIdentifier>? blockedConstructs;
   final String? targetID;
 
   AnalyticsStreamUpdate({
     this.points = 0,
+    this.totalPoints = 0,
     this.blockedConstructs,
     this.targetID,
   });
@@ -537,7 +543,9 @@ class AnalyticsDataService {
         final newPoints = newConstructs[id]?.points ?? 0;
         points += (newPoints - prevPoints);
       }
-      events.add(XPGainedEvent(points, update.targetID));
+      events.add(
+        XPGainedEvent.fromUses(addedConstructs, points, update.targetID),
+      );
     }
 
     final newData = prevData.addXP(points);

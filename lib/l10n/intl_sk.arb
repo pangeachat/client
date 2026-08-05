@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-07-29 12:08:22.710179",
+    "@@last_modified": "2026-08-04 10:31:32.060549",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2130,8 +2130,6 @@
     "constructUseCollected": "Zbierka v chate",
     "constructUseNanDesc": "Nepoužiteľné",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Povolené text-to-speech",
-    "enableTTSToolDescription": "Povoľte aplikácii generovať výstup text-to-speech pre časti textu vo vašom cieľovom jazyku.",
     "yourUsername": "Vaše používateľské meno",
     "yourEmail": "Váš e-mail",
     "iWantToLearn": "Chcem sa naučiť",
@@ -6075,14 +6073,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8697,15 +8687,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Pokrok vo vašej cvičebnej relácii nebude uložený.",
     "practiceGrammar": "Cvičiť gramatiku",
     "notEnoughToPractice": "Odošlite viac správ na odomknutie cvičenia",
     "constructUseCorGCDesc": "Cvičenie správnej gramatickej kategórie",
     "constructUseIncGCDesc": "Cvičenie nesprávnej gramatickej kategórie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9295,16 +9280,6 @@
     },
     "enableEmailNotifications": "Povoliť e-mailové upozornenia",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automaticky zvýrazniť audio správy",
-    "selectAudioMessagesOnPlayDescription": "Automaticky zvýrazniť audio správy pri prehrávaní",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10062,7 +10037,6 @@
     "browsePublicCourses": "Prehľadávať verejné kurzy",
     "editProfile": "Upraviť profil",
     "mapSearchHint": "Hľadať aktivity",
-    "mapSearchNoResults": "Žiadne zhodné výsledky",
     "mapFilterAllLanguages": "Všetky jazyky",
     "mapFilterNotStarted": "Nebol začatý",
     "mapFilterInProgress": "Prebieha",
@@ -10071,7 +10045,6 @@
     "activityTypeConversation": "Konverzácia",
     "playAgain": "Hraj znova",
     "reviewActivity": "Prehľad",
-    "mapEmptyInView": "Tu nie je nič na vašej úrovni alebo jazyku. Rozšírte svoje filtre alebo priblížte.",
     "welcomeToPangeaChat": "Vitajte v Pangea Chate",
     "claimTrial": "Uplatnite svoju skúšobnú verziu",
     "thanksForSigningUp": "Ďakujeme za registráciu! Tu je",
@@ -10142,10 +10115,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10175,10 +10144,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10399,7 +10364,6 @@
     "analyticsAndSettingsLabel": "Možnosti analýzy a nastavení",
     "searchActivitiesLabel": "Hľadať aktivity na mape",
     "filteredActivitiesLabel": "Zoznam filtrovaných aktivít",
-    "activityFilterButtonsLabel": "Tlačidlá filtra jazyka, obtiažnosti a pokroku",
     "mapZoomLabel": "Ovládanie priblíženia mapy",
     "activityMapLabel": "Mapa aktivít",
     "@navOptionsLabel": {
@@ -10419,10 +10383,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10655,5 +10615,41 @@
     "rateActivityCommentRejected": "Váš komentár sa nepodarilo uverejniť. Skúste ho preformulovať alebo odošlite hodnotenie bez komentára.",
     "rateActivityThanks": "Ďakujeme za vašu spätnú väzbu!",
     "activityRatingMeterLabel": "{percent}% pozitívnych ({count, plural, =1{1 hodnotenie} other{{count} hodnotení}})",
-    "newActivityBadge": "NOVÉ"
+    "newActivityBadge": "NOVÉ",
+    "exitVocabPracticeSession": "Váš aktuálny pokrok v precvičovaní slovnej zásoby sa neuloží.",
+    "exitGrammarPracticeSession": "Váš aktuálny pokrok v precvičovaní gramatiky sa neuloží.",
+    "activityFilterButtonsLabel": "Tlačidlá filtra úrovne, hráčov a stavu",
+    "mapFilterAllLevels": "Všetky úrovne",
+    "mapFilterAllPlayers": "Všetci hráči",
+    "mapFilterAllStatuses": "Všetky stavy",
+    "mapFiltersShow": "Zobraziť filtre",
+    "mapFiltersHide": "Skryť filtre",
+    "mapStatusAvailable": "Dostupné",
+    "mapStatusOngoing": "Prebiehajúce",
+    "mapStatusWaiting": "Čaká sa",
+    "mapStatusOpenToJoin": "Otvorené pre pripojenie",
+    "mapMatchesOffscreen": "Mimo vášho zobrazenia sú zápasy. Oddiaľte zobrazenie, aby ste ich videli.",
+    "mapFiltersHideMatches": "Vaše filtre skrývajú všetky zápasy. Rozšírte vyhľadávanie, aby ste ich videli.",
+    "mapNoSearchMatches": "Žiadne aktivity nezodpovedajú vášmu vyhľadávaniu.",
+    "mapNoActivitiesArea": "V tejto oblasti nie sú žiadne aktivity.",
+    "practiceSessionTimedOut": "Vaša cvičná lekcia sa skončila po {minutes} minútach nečinnosti.",
+    "autocorrectMobileOnly": "Iba mobil",
+    "autocorrectMobileOnlyWarning": "Automatické opravy sú dostupné iba v mobilnej aplikácii.",
+    "audioSectionTitle": "Zvuk",
+    "audioWordsToolName": "Slová",
+    "audioWordsDescription": "Prehrajte zvuk slova, keď naň ťuknete.",
+    "audioChoicesToolName": "Možnosti",
+    "audioChoicesDescription": "Prehrajte zvuk pre možnosti odpovedí v cvičeniach.",
+    "audioIncomingMessagesToolName": "Prichádzajúce správy",
+    "audioIncomingMessagesDescription": "Automaticky čítajte prijaté správy nahlas vo vašom cieľovom jazyku pre cvičenie počúvania.",
+    "choosePangeaAvatar": "Vyberte si avatara Pangea",
+    "readAloudNoVoiceTitle": "Nenašiel sa kvalitný hlas pre jazyk {language}",
+    "readAloudNoVoiceDesktopWeb": "Tento prehliadač neponúka kvalitný hlas pre jazyk {language}, takže správy tu nemožno dobre nahlas prečítať. Prehliadače Chrome a Edge zvyčajne obsahujú kvalitné hlasy.",
+    "readAloudGetChrome": "Získať Chrome",
+    "readAloudNoVoiceMobileWeb": "Tento prehliadač neponúka kvalitný hlas pre jazyk {language}, takže správy tu nemožno dobre nahlas prečítať. Aplikácia Pangea Chat môže používať najlepšie hlasy vášho zariadenia.",
+    "readAloudGetApp": "Získať aplikáciu",
+    "readAloudNoVoiceIOS": "Vaše zariadenie ešte nemá stiahnutý kvalitný hlas pre jazyk {language}. Stiahnite si ho a skúste to znova:",
+    "readAloudNoVoiceIOSSteps": "  • Nastavenia\n  • Prístupnosť\n  • Hlasový obsah\n  • Hlasy\n  • {language}\n  • Stiahnite si vylepšený alebo prémiový hlas",
+    "readAloudNoVoiceAndroid": "Vaše zariadenie ešte nemá kvalitný hlas pre jazyk {language}. Nainštalujte hlasové dáta pre váš text-to-speech engine a skúste to znova.",
+    "readAloudOpenVoiceSettings": "Otvoriť nastavenia hlasu"
 }

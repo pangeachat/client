@@ -9,7 +9,8 @@ class GoalHeaderConstants {
 
   /// Padding above the star row (collapsed) and above the first goal row
   /// (expanded), kept identical so the top of the header doesn't shift on
-  /// expand.
+  /// expand. The collapsed star row carries it below itself too, so its hover
+  /// highlight is a symmetric band instead of stopping flush under the stars.
   static const double topPadding = 14.0;
 
   /// Max height of the scrolling portion of the goal list (the goals below the

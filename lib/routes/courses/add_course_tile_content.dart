@@ -15,6 +15,10 @@ abstract class AddCourseTileContent {
 
   String? get courseId => null;
 
+  /// The joined/previewed course space, where the tile has one — lets the info
+  /// chips read the same quest outline the course itself does.
+  String? get courseRoomId => null;
+
   bool get isKnock => false;
 
   bool? get invited => null;
@@ -51,6 +55,9 @@ class RoomAddCourseTileContent extends AddCourseTileContent {
 
   @override
   String? get courseId => space.coursePlan?.uuid;
+
+  @override
+  String? get courseRoomId => space.id;
 }
 
 class PreviewAddCourseTileContent extends AddCourseTileContent {

@@ -2,6 +2,8 @@ import 'dart:math' as math;
 
 import 'package:flutter/animation.dart';
 
+import 'package:latlong2/latlong.dart';
+
 class WorldMapConstants {
   /// The camera zoom ceiling — the single source for FlutterMap's MapOptions,
   /// the +/- step clamp in [zoomBy], and the on-map control disabled states
@@ -167,4 +169,97 @@ class WorldMapConstants {
     final eased = Curves.easeInOut.transform(t);
     return (pan: eased, zoom: eased);
   }
+
+  /// Where the whole-world reset points the camera (#8121). At the
+  /// viewport-derived zoom floor ([minZoomFor]) one world copy fits the LARGER
+  /// viewport axis, so the smaller axis shows only a slice of the world — on a
+  /// portrait phone roughly half its longitudes — and a fixed center can leave
+  /// every activity outside that slice. Slide a window the size of the visible
+  /// slice over [points] and center on the fullest one (ties go to the tightest
+  /// cluster, so the pins land mid-screen rather than at an edge), so the reset
+  /// shows the maximum number of activities the floor allows. Longitude is the
+  /// free axis when the floor fits the height (phones); latitude — measured in
+  /// projected Mercator space, where the viewport height is a fixed fraction of
+  /// the world — when it fits the width (wide desktops). Null when [points] is
+  /// empty: the caller keeps its fixed fallback center.
+  static LatLng? worldResetCenter(Size viewport, List<LatLng> points) {
+    if (points.isEmpty) return null;
+    final worldPx =
+        _worldSideAtZoomZero * math.pow(2, minZoomFor(viewport)).toDouble();
+
+    // Longitude: a circular sliding window over the visible longitude span
+    // (the classic doubled-sorted-array walk, since longitudes wrap).
+    final lonSpan = math.min(360.0, viewport.width / worldPx * 360.0);
+    final lons = points.map((p) => p.longitude).toList()..sort();
+    final n = lons.length;
+    final ext = [...lons, ...lons.map((l) => l + 360)];
+    final lonWin = _fullestWindow(ext, n, lonSpan);
+    var centerLon = (ext[lonWin.first] + ext[lonWin.last]) / 2;
+    if (centerLon > 180) centerLon -= 360;
+
+    // Latitude picks among the points the longitude window kept — visibility
+    // needs both axes, and the longitude cut is the coarser of the two.
+    final lo = ext[lonWin.first], hi = ext[lonWin.last];
+    bool inLonWindow(double l) =>
+        (l >= lo && l <= hi) || (l + 360 >= lo && l + 360 <= hi);
+    final latFrac = math.min(1.0, viewport.height / worldPx);
+    final ys =
+        points
+            .where((p) => inLonWindow(p.longitude))
+            .map((p) => _mercatorY(p.latitude))
+            .toList()
+          ..sort();
+    final latWin = _fullestWindow(ys, ys.length, latFrac);
+    final centerLat = _latFromMercatorY(
+      (ys[latWin.first] + ys[latWin.last]) / 2,
+    );
+    return LatLng(centerLat, centerLon);
+  }
+
+  /// The (first, last) indices of the fullest [span]-wide window over the first
+  /// [n] window-start candidates of sorted [values]; ties prefer the tightest
+  /// spread. Two-pointer walk — [values] may be the doubled array of a circular
+  /// domain, with [n] the real count so every rotation is tried exactly once.
+  static ({int first, int last}) _fullestWindow(
+    List<double> values,
+    int n,
+    double span,
+  ) {
+    var bestFirst = 0, bestLast = 0, bestCount = 0;
+    var j = 0;
+    for (var i = 0; i < n; i++) {
+      if (j < i) j = i;
+      while (j + 1 < i + n &&
+          j + 1 < values.length &&
+          values[j + 1] - values[i] <= span) {
+        j++;
+      }
+      final count = j - i + 1;
+      final spread = values[j] - values[i];
+      if (count > bestCount ||
+          (count == bestCount &&
+              spread < values[bestLast] - values[bestFirst])) {
+        bestCount = count;
+        bestFirst = i;
+        bestLast = j;
+      }
+    }
+    return (first: bestFirst, last: bestLast);
+  }
+
+  /// Web-Mercator projection of a latitude to normalized world y in [0, 1]
+  /// (0 = north edge), clamped to the projection's ±85.05° band — the linear
+  /// space the sliding latitude window must run in, since screen pixels are
+  /// linear in projected y, not in degrees.
+  static double _mercatorY(double latDeg) {
+    final lat = latDeg.clamp(-_maxMercatorLat, _maxMercatorLat) * math.pi / 180;
+    return (1 - math.log(math.tan(math.pi / 4 + lat / 2)) / math.pi) / 2;
+  }
+
+  static double _latFromMercatorY(double y) =>
+      (2 * math.atan(math.exp(math.pi * (1 - 2 * y))) - math.pi / 2) *
+      180 /
+      math.pi;
+
+  static const double _maxMercatorLat = 85.05112878;
 }

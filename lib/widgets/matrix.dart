@@ -682,6 +682,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         Logs().v('Set background sync to', foreground);
       }
     }
+
+    if (state == AppLifecycleState.resumed) {
+      pangeaController.subscriptionController.refreshOnAppResume(client.userID);
+    }
   }
 
   @override

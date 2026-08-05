@@ -1676,8 +1676,6 @@
     "constructUseCollected": "შეაგროვა ჩატში",
     "constructUseNanDesc": "არასამართლებელი",
     "xpIntoLevel": "{currentXP} / {maxXP} გამოცდილება",
-    "enableTTSToolName": "ჩართულია ტექსტიდან ხმას გამოთქმა",
-    "enableTTSToolDescription": "დაშვება აპლიკაციას შექმნას ტექსტიდან ხმას გამოთქმის გამოსავალი თქვენი სამიზნე ენის ნაწილებისთვის.",
     "yourUsername": "თქვენი მომხმარებლის სახელი",
     "yourEmail": "თქვენი ელფოსტა",
     "iWantToLearn": "მინდა ვისწავლო",
@@ -1946,7 +1944,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-07-29 12:08:19.198827",
+    "@@last_modified": "2026-08-04 10:31:26.001286",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6030,14 +6028,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8652,15 +8642,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "თქვენი პრაქტიკის სესიის პროგრესი არ დაიშლება.",
     "practiceGrammar": "პრაქტიკა გრამატიკა",
     "notEnoughToPractice": "პრაქტიკის გასახსნელად მეტი შეტყობინება გამოაგზავნეთ",
     "constructUseCorGCDesc": "სწორი გრამატიკული კატეგორიის პრაქტიკა",
     "constructUseIncGCDesc": "არასწორი გრამატიკული კატეგორიის პრაქტიკა",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9250,16 +9235,6 @@
     },
     "enableEmailNotifications": "გამოიყენეთ ელ.ფოსტის შეტყობინებები",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "აუდიო შეტყობინებების ავტომატური ხაზგასმა",
-    "selectAudioMessagesOnPlayDescription": "აუდიო შეტყობინებების ავტომატურად ხაზგასმა მათი დაკვრის დროს",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10017,7 +9992,6 @@
     "browsePublicCourses": "გადახედეთ საჯარო კურსებს",
     "editProfile": "რედაქტირება პროფილში",
     "mapSearchHint": "ძებნა აქტივობებში",
-    "mapSearchNoResults": "არ არის შესაბამისი შედეგები",
     "mapFilterAllLanguages": "ყველა ენა",
     "mapFilterNotStarted": "არ დაწყებულა",
     "mapFilterInProgress": "მიმდინარეა",
@@ -10026,7 +10000,6 @@
     "activityTypeConversation": "საუბარი",
     "playAgain": "მორიგე თამაში",
     "reviewActivity": "მიმოხილვა",
-    "mapEmptyInView": "აქ არაფერია თქვენს დონეზე ან ენაზე. გააფართოვეთ თქვენი ფილტრები ან დააკლებეთ ზუმი.",
     "welcomeToPangeaChat": "კეთილი იყოს თქვენი მობრძანება Pangea Chat-ში",
     "claimTrial": "მიითვისეთ თქვენი საცდელი ვადა",
     "thanksForSigningUp": "გმადლობთ რეგისტრაციისთვის! აი",
@@ -10097,10 +10070,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10130,10 +10099,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10354,7 +10319,6 @@
     "analyticsAndSettingsLabel": "ანალიტიკა და პარამეტრები",
     "searchActivitiesLabel": "ძებნა აქტივობების რუკაზე",
     "filteredActivitiesLabel": "ფილტრირებული აქტივობების სია",
-    "activityFilterButtonsLabel": "ენას, სირთულეს და პროგრესს ფილტრების ღილაკები",
     "mapZoomLabel": "რუკის ზუმის კონტროლი",
     "activityMapLabel": "აქტივობის რუკა",
     "@navOptionsLabel": {
@@ -10374,10 +10338,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10610,5 +10570,41 @@
     "rateActivityCommentRejected": "თქვენი კომენტარის გამოქვეყნება ვერ მოხერხდა. სცადეთ მისი გადაფორმება, ან გამოაქვეყნეთ თქვენი შეფასება კომენტარის გარეშე.",
     "rateActivityThanks": "გმადლობთ გამოხმაურებისთვის!",
     "activityRatingMeterLabel": "{percent}% დადებითი ({count, plural, =1{1 შეფასება} other{{count} შეფასება}})",
-    "newActivityBadge": "ახალი"
+    "newActivityBadge": "ახალი",
+    "exitVocabPracticeSession": "თქვენი მიმდინარე ლექსიკის სავარჯიშო სესიის პროგრესი არ შეინახება.",
+    "exitGrammarPracticeSession": "თქვენი მიმდინარე გრამატიკის სავარჯიშო სესიის პროგრესი არ შეინახება.",
+    "activityFilterButtonsLabel": "დონე, მოთამაშეები და სტატუსის ფილტრის ღილაკები",
+    "mapFilterAllLevels": "ყველა დონე",
+    "mapFilterAllPlayers": "ყველა მოთამაშე",
+    "mapFilterAllStatuses": "ყველა სტატუსი",
+    "mapFiltersShow": "ფილტრების ჩვენება",
+    "mapFiltersHide": "ფილტრების დამალვა",
+    "mapStatusAvailable": "ხელმისაწვდომია",
+    "mapStatusOngoing": "მიმდინარეობს",
+    "mapStatusWaiting": "ელოდება",
+    "mapStatusOpenToJoin": "გახსნილია შესაერთებლად",
+    "mapMatchesOffscreen": "თქვენი ხედვის არეალის მიღმა არის მატჩები. მათი სანახავად დააპატარავეთ ხედი.",
+    "mapFiltersHideMatches": "თქვენი ფილტრები მალავს ყველა მატჩს. მათი სანახავად გააფართოვეთ ძებნა.",
+    "mapNoSearchMatches": "თქვენს ძიებას არ ემთხვევა არცერთი აქტივობა.",
+    "mapNoActivitiesArea": "ამ ტერიტორიაზე არ არის აქტივობები.",
+    "practiceSessionTimedOut": "თქვენი სავარჯიშო სესია დასრულდა {minutes} წუთის უმოქმედობის შემდეგ.",
+    "autocorrectMobileOnly": "მხოლოდ მობილური",
+    "autocorrectMobileOnlyWarning": "მოწყობილობის ავტოკორექცია ხელმისაწვდომია მხოლოდ მობილურ აპლიკაციაში.",
+    "audioSectionTitle": "აუდიო",
+    "audioWordsToolName": "სიტყვები",
+    "audioWordsDescription": "დაუკარით სიტყვის აუდიო, როდესაც მასზე დააკლიკებთ.",
+    "audioChoicesToolName": "არჩევანი",
+    "audioChoicesDescription": "დაუკარით აუდიო სავარჯიშო აქტივობებში პასუხის ვარიანტებისთვის.",
+    "audioIncomingMessagesToolName": "შემომავალი შეტყობინებები",
+    "audioIncomingMessagesDescription": "ავტომატურად წაიკითხეთ მიღებული შეტყობინებები ხმამაღლა თქვენს სამიზნე ენაზე მოსმენის პრაქტიკისთვის.",
+    "choosePangeaAvatar": "აირჩიეთ Pangea-ს ავატარი",
+    "readAloudNoVoiceTitle": "ვერ მოიძებნა მაღალი ხარისხის {language} ხმა",
+    "readAloudNoVoiceDesktopWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Chrome და Edge, როგორც წესი, მოიცავს მაღალი ხარისხის ხმებს.",
+    "readAloudGetChrome": "მიიღეთ Chrome",
+    "readAloudNoVoiceMobileWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Pangea Chat აპს შეუძლია გამოიყენოს თქვენი მოწყობილობის საუკეთესო ხმები.",
+    "readAloudGetApp": "მიიღეთ აპი",
+    "readAloudNoVoiceIOS": "თქვენს მოწყობილობას ჯერ არ აქვს გადმოწერილი მაღალი ხარისხის {language} ხმა. გადმოწერეთ ერთი, შემდეგ სცადეთ ხელახლა:",
+    "readAloudNoVoiceIOSSteps": "  • პარამეტრები\n  • ხელმისაწვდომობა\n  • ნათქვამი კონტენტი\n  • ხმები\n  • {language}\n  • გადმოწერეთ გაუმჯობესებული ან პრემიუმ ხმა",
+    "readAloudNoVoiceAndroid": "თქვენს მოწყობილობას ჯერ არ აქვს მაღალი ხარისხის {language} ხმა. დააინსტალირეთ ხმოვანი მონაცემები თქვენი ტექსტიდან მეტყველების ძრავისთვის, შემდეგ სცადეთ ხელახლა.",
+    "readAloudOpenVoiceSettings": "ხმოვანი პარამეტრების გახსნა"
 }

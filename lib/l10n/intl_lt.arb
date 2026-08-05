@@ -2708,8 +2708,6 @@
     "constructUseCollected": "Surinkta pokalbyje",
     "constructUseNanDesc": "Nepatikoma",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Įjungtas teksto į kalbą įrankis",
-    "enableTTSToolDescription": "Leiskite programai generuoti tekstą į kalbą išvestį tam tikroms teksto dalims jūsų tikslo kalba.",
     "yourUsername": "Jūsų vartotojo vardas",
     "yourEmail": "Jūsų el. paštas",
     "iWantToLearn": "Noriu mokytis",
@@ -2978,7 +2976,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-07-29 12:08:20.564350",
+    "@@last_modified": "2026-08-04 10:31:27.456899",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -5905,14 +5903,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8527,15 +8517,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Jūsų praktikos sesijos pažanga nebus išsaugota.",
     "practiceGrammar": "Praktikuoti gramatiką",
     "notEnoughToPractice": "Siųskite daugiau žinučių, kad atrakintumėte praktiką",
     "constructUseCorGCDesc": "Teisingos gramatikos kategorijos praktika",
     "constructUseIncGCDesc": "Neteisingos gramatikos kategorijos praktika",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9125,16 +9110,6 @@
     },
     "enableEmailNotifications": "Įjungti el. pašto pranešimus",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatiškai paryškinti garso pranešimus",
-    "selectAudioMessagesOnPlayDescription": "Automatiškai paryškinti garso pranešimus, kai jie atkuriami",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9892,7 +9867,6 @@
     "browsePublicCourses": "Naršyti viešus kursus",
     "editProfile": "Redaguoti profilį",
     "mapSearchHint": "Ieškoti veiklų",
-    "mapSearchNoResults": "Nėra atitikmenų",
     "mapFilterAllLanguages": "Visos kalbos",
     "mapFilterNotStarted": "Nepradėta",
     "mapFilterInProgress": "Vyksta",
@@ -9901,7 +9875,6 @@
     "activityTypeConversation": "Pokalbis",
     "playAgain": "Žaisti vėl",
     "reviewActivity": "Peržiūrėti",
-    "mapEmptyInView": "Čia nieko nėra jūsų lygyje ar kalba. Išplėskite filtrus arba priartinkite.",
     "welcomeToPangeaChat": "Sveiki atvykę į Pangea Chat",
     "claimTrial": "Prašome gauti savo bandomąją versiją",
     "thanksForSigningUp": "Ačiū, kad užsiregistravote! Štai",
@@ -9972,10 +9945,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10005,10 +9974,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10229,7 +10194,6 @@
     "analyticsAndSettingsLabel": "Analizės ir nustatymų parinktys",
     "searchActivitiesLabel": "Ieškoti veiklų žemėlapyje",
     "filteredActivitiesLabel": "Filtruotų veiklų sąrašas",
-    "activityFilterButtonsLabel": "Kalbos, sunkumo ir progreso filtravimo mygtukai",
     "mapZoomLabel": "Žemėlapio priartinimo valdikliai",
     "activityMapLabel": "Veiklų žemėlapis",
     "@navOptionsLabel": {
@@ -10249,10 +10213,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10485,5 +10445,41 @@
     "rateActivityCommentRejected": "Jūsų komentaro nepavyko paskelbti. Pabandykite jį perrašyti arba pateikite įvertinimą be komentaro.",
     "rateActivityThanks": "Ačiū už atsiliepimą!",
     "activityRatingMeterLabel": "{percent}% teigiamų ({count, plural, =1{1 įvertinimas} other{{count} įvertinimai}})",
-    "newActivityBadge": "NAUJAS"
+    "newActivityBadge": "NAUJAS",
+    "exitVocabPracticeSession": "Dabartinė žodyno praktikos sesijos eiga nebus išsaugota.",
+    "exitGrammarPracticeSession": "Dabartinė gramatikos praktikos sesijos eiga nebus išsaugota.",
+    "activityFilterButtonsLabel": "Lygio, žaidėjų ir būsenos filtro mygtukai",
+    "mapFilterAllLevels": "Visi lygiai",
+    "mapFilterAllPlayers": "Visi žaidėjai",
+    "mapFilterAllStatuses": "Visos būsenos",
+    "mapFiltersShow": "Rodyti filtrus",
+    "mapFiltersHide": "Slėpti filtrus",
+    "mapStatusAvailable": "Pasiekiama",
+    "mapStatusOngoing": "Vyksta",
+    "mapStatusWaiting": "Laukiama",
+    "mapStatusOpenToJoin": "Galima prisijungti",
+    "mapMatchesOffscreen": "Už ekrano ribų yra atitikmenų. Norėdami juos pamatyti, sumažinkite vaizdą.",
+    "mapFiltersHideMatches": "Jūsų filtrai slepia visus atitikmenis. Išplėskite paiešką, kad juos pamatytumėte.",
+    "mapNoSearchMatches": "Jūsų paieškai neatitinka jokia veikla.",
+    "mapNoActivitiesArea": "Šioje srityje nėra jokios veiklos.",
+    "practiceSessionTimedOut": "Jūsų praktikos sesija baigėsi po {minutes} minučių be veiklos.",
+    "autocorrectMobileOnly": "Tik mobiliesiems",
+    "autocorrectMobileOnlyWarning": "Įrenginio automatinis taisymas galimas tik mobiliojoje programėlėje.",
+    "audioSectionTitle": "Garsas",
+    "audioWordsToolName": "Žodžiai",
+    "audioWordsDescription": "Paleiskite žodžio garsą, kai jį paliečiate.",
+    "audioChoicesToolName": "Pasirinkimai",
+    "audioChoicesDescription": "Paleiskite atsakymų variantų garsą praktikos veiklose.",
+    "audioIncomingMessagesToolName": "Gaunami pranešimai",
+    "audioIncomingMessagesDescription": "Automatiškai garsiai perskaitykite gautus pranešimus jūsų tiksline kalba, kad lavintumėte klausymą.",
+    "choosePangeaAvatar": "Pasirinkite „Pangea“ pseudoportretą",
+    "readAloudNoVoiceTitle": "Nerasta aukštos kokybės {language} balso",
+    "readAloudNoVoiceDesktopWeb": "Ši naršyklė nepasiūlo aukštos kokybės {language} balso, todėl pranešimai čia negali būti gerai perskaityti. „Chrome“ ir „Edge“ paprastai turi aukštos kokybės balsus.",
+    "readAloudGetChrome": "Gauti „Chrome“",
+    "readAloudNoVoiceMobileWeb": "Ši naršyklė nepasiūlo aukštos kokybės {language} balso, todėl pranešimai čia negali būti gerai perskaityti. „Pangea Chat“ programa gali naudoti geriausius jūsų įrenginio balsus.",
+    "readAloudGetApp": "Gauti programą",
+    "readAloudNoVoiceIOS": "Jūsų įrenginyje dar neatsisiųstas aukštos kokybės {language} balsas. Atsisiųskite jį ir bandykite dar kartą:",
+    "readAloudNoVoiceIOSSteps": "  • Nustatymai\n  • Pritaikymas neįgaliesiems\n  • Sakytinis turinys\n  • Balsai\n  • {language}\n  • Atsisiųskite patobulintą arba „Premium“ balsą",
+    "readAloudNoVoiceAndroid": "Jūsų įrenginyje dar nėra aukštos kokybės {language} balso. Įdiekite balso duomenis savo teksto į kalbą varikliui, tada bandykite dar kartą.",
+    "readAloudOpenVoiceSettings": "Atidaryti balso nustatymus"
 }

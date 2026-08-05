@@ -233,6 +233,33 @@ void main() {
       expect(lists.right, isEmpty);
       expect(lists.left.single, const CoursePanelToken());
     });
+
+    test('openCourseSection tab rides the course token param (#8139)', () {
+      // A knock-badged course opens on its Chats tab, so the admin lands on
+      // the knock notification instead of the Course Plan default.
+      final loc = WorkspaceNav.openCourseSection(
+        u('/'),
+        '!course',
+        keepRoom: false,
+        tab: SpaceSettingsTabs.chat,
+      );
+      final uri = u(loc);
+      expect(uri.queryParameters['c'], '!course');
+      expect(parseOpenPanels(uri).left, [
+        const CoursePanelToken(
+          CourseDetailsTokenParam(activeTab: SpaceSettingsTabs.chat),
+        ),
+      ]);
+    });
+
+    test('openCourseSection without tab keeps the bare course token', () {
+      final loc = WorkspaceNav.openCourseSection(
+        u('/'),
+        '!course',
+        keepRoom: false,
+      );
+      expect(parseOpenPanels(u(loc)).left, [const CoursePanelToken()]);
+    });
   });
 
   group('openRoomById (event folds into the room token; no loose params)', () {
@@ -905,6 +932,63 @@ void main() {
         isFalse,
       );
       expect(panels.right.single.type, PanelTypesEnum.settings); // menu remains
+    });
+
+    test('seatMenu false opens the page ALONE — the flag shortcut (#7961)', () {
+      // The cluster's language flag jumps straight to learning settings; it is
+      // not a drill-in from the menu, so it must not put a menu the learner
+      // never opened on screen beside it.
+      final loc = WorkspaceNav.openSettings(
+        u('/'),
+        page: 'learning',
+        seatMenu: false,
+      );
+      expect(loc, '/?right=settingspage:learning'); // not `settings,…` (#7961)
+
+      final panels = parseOpenPanels(u(loc));
+      expect(panels.right.single.type, PanelTypesEnum.settingspage);
+
+      final param = panels.right.single.param;
+      expect(param, isA<SettingsTokenParam>());
+      expect((param as SettingsTokenParam).subpage, 'learning');
+
+      // With no menu behind it, the page is an independent right panel: its
+      // close drops the token and reveals the map (an `X`, not a back arrow).
+      expect(
+        parentIsOpen(
+          u(loc),
+          const SettingsPagePanelToken(SettingsTokenParam(subpage: 'learning')),
+        ),
+        isFalse,
+      );
+    });
+
+    test('seatMenu false keeps a menu that is ALREADY open', () {
+      // The shortcut declines to SEAT a menu; it never closes one. A learner
+      // who opened Settings and then taps the flag keeps the master beside the
+      // page, exactly as a menu row would.
+      final open = WorkspaceNav.openSettings(u('/'));
+      final loc = WorkspaceNav.openSettings(
+        u(open),
+        page: 'learning',
+        seatMenu: false,
+      );
+      expect(parseOpenPanels(u(loc)).right.map((t) => t.type), [
+        PanelTypesEnum.settings,
+        PanelTypesEnum.settingspage,
+      ]);
+    });
+
+    test('seatMenu false still drops the analytics family (#7109)', () {
+      final loc = WorkspaceNav.openSettings(
+        u('/?right=analytics:vocab'),
+        page: 'learning',
+        seatMenu: false,
+      );
+      expect(
+        parseOpenPanels(u(loc)).right.single.type,
+        PanelTypesEnum.settingspage,
+      );
     });
   });
 

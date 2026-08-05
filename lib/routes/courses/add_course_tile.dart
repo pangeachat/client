@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
@@ -28,7 +29,13 @@ class AddCourseTile extends StatelessWidget {
     final title = content.title(L10n.of(context));
     final expandedContent = content.expandedContent;
 
-    final label = title;
+    // An invited course hides its member/level chips, so the participant count
+    // would announce detail that isn't on screen — lead with the state instead.
+    final label = invited
+        ? '$title, ${L10n.of(context).invited}'
+        : members != null
+        ? '$title, ${L10n.of(context).countParticipants(members)}'
+        : title;
 
     return Material(
       type: MaterialType.transparency,
@@ -95,6 +102,19 @@ class AddCourseTile extends StatelessWidget {
                             runSpacing: 8.0,
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
+                              if (invited)
+                                CourseInfoChip(
+                                  icon: Icons.mail,
+                                  text: L10n.of(context).invited,
+                                  fontSize: 12.0,
+                                  iconSize: 12.0,
+                                  highlightColor: AppConfig.goldByTheme(
+                                    context,
+                                  ),
+                                  foregroundColor: AppConfig.onGoldByTheme(
+                                    context,
+                                  ),
+                                ),
                               if (members != null && !invited)
                                 Semantics(
                                   label: L10n.of(
@@ -112,6 +132,7 @@ class AddCourseTile extends StatelessWidget {
                               if (courseId != null && !invited)
                                 CourseInfoChips(
                                   courseId,
+                                  courseRoomId: content.courseRoomId,
                                   fontSize: 12.0,
                                   iconSize: 12.0,
                                 ),

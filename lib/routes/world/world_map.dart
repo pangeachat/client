@@ -24,7 +24,6 @@ import 'package:fluffychat/routes/world/world_map_dismissals.dart';
 import 'package:fluffychat/routes/world/world_map_filter.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
-import 'package:fluffychat/routes/world/world_map_search_overlay.dart';
 import 'package:fluffychat/routes/world/world_map_view.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -129,10 +128,24 @@ class WorldMapController extends State<WorldMap>
 
   StreamSubscription<dynamic>? _syncSub;
   StreamSubscription? _languageSubscription;
-  StreamSubscription? _cefrLevelSubscription;
 
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
+
+  /// Ticks on every gesture-driven camera move (a user pan/pinch) so the
+  /// single-column filter surface can collapse itself out of the way while the
+  /// learner explores the map (see [WorldMapMobileFilters]). It is a bare "an
+  /// interaction happened" signal — listeners read nothing off the value, only
+  /// the change — so it stays independent of the filter state itself. Column
+  /// mode ignores it (its filter bar is always open).
+  final ValueNotifier<int> mapPanTick = ValueNotifier(0);
+
+  /// Ticks whenever the filtered view could have changed — a filter/query
+  /// mutation or a completed pin load — so the shell-built narrow search bar
+  /// can re-read [visiblePins] for its empty-view card: this State's own
+  /// setState reaches the map and the wide overlay (both built here) but never
+  /// the shell's layer. Same bare-tick contract as [mapPanTick].
+  final ValueNotifier<int> viewRevision = ValueNotifier(0);
 
   /// Activities the learner explicitly dismissed from the large-card tier (the
   /// card's X, #7207). A dismissed pin stays fully eligible for mid/small — the
@@ -188,14 +201,9 @@ class WorldMapController extends State<WorldMap>
       }
     });
 
-    _cefrLevelSubscription?.cancel();
-    _cefrLevelSubscription = user.settingsUpdateStream.stream.listen((update) {
-      if (!_filterState.filter.cefrFilter.contains(
-        update.userSettings.cefrLevel,
-      )) {
-        _setCefrLevel(update.userSettings.cefrLevel);
-      }
-    });
+    // No settings-driven level default: the Level pill starts at "All levels"
+    // and only the learner changes it, so a CEFR settings change never re-seats
+    // it (world-map.instructions.md, "Filters").
   }
 
   @override
@@ -218,6 +226,7 @@ class WorldMapController extends State<WorldMap>
       _rebuildObjectiveCache(client);
       _recomputePinged(client);
       _discoverCoursemateSessions(client);
+      _loadSessionParticipants(client);
       _syncSub?.cancel();
       _syncSub = client.onSync.stream
           .where((s) => s.hasRoomUpdate)
@@ -228,6 +237,7 @@ class WorldMapController extends State<WorldMap>
             _maybeRebuildObjectiveCache(client);
             _recomputePinged(client);
             _discoverCoursemateSessions(client);
+            _loadSessionParticipants(client);
             // Keep the "can't start" count live: a new invite/join changes the
             // members available to fill roles, so re-fetch (rate-limited by this
             // handler) — a dimmed pin un-dims once enough people are in.
@@ -235,12 +245,12 @@ class WorldMapController extends State<WorldMap>
           });
     }
 
-    // Personalized default: my CEFR band (at/below my level). Applied once the
-    // user controller is available.
+    // Seed the settings-fixed language filter once the user controller is
+    // available. The three pills are NOT pre-seeded — they start at "All" — so
+    // there is no CEFR default to apply here (world-map.instructions.md).
     if (!_filterState.filter.filterDefaultsApplied) {
       final l2 = MatrixState.pangeaController.userController.userL2;
-      final cefr = MatrixState.pangeaController.userController.userCefrLevel;
-      _filterState.applyDefaults(l2: l2, cefrLevel: cefr);
+      _filterState.applyDefaults(l2: l2);
     }
   }
 
@@ -277,13 +287,14 @@ class WorldMapController extends State<WorldMap>
   void dispose() {
     _syncSub?.cancel();
     _languageSubscription?.cancel();
-    _cefrLevelSubscription?.cancel();
     _refetchDebounce?.cancel();
     _fitDebounce?.cancel();
     _planHydrateDebounce?.cancel();
     _dismissalExpiryTimer?.cancel();
     _moveSettleTimer?.cancel();
     _mapEventSub?.cancel();
+    mapPanTick.dispose();
+    viewRevision.dispose();
     _cameraAnimationController.dispose();
     MapContextController.notifier.removeListener(_onContextChange);
     MapCameraFocusRequests.notifier.removeListener(_onCameraFocusRequest);
@@ -353,26 +364,69 @@ class WorldMapController extends State<WorldMap>
   ProgressionResolution get progression => _pinsManager.progression;
 
   /// The pins actually shown: the loaded set narrowed by the active CEFR band,
-  /// completion filter, and free-text query. World only; a course shows its set.
+  /// party-size and status filters, and free-text query. World only; a course
+  /// shows its set.
   List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins((c) {
     if (!isWorld) return true;
-
-    final status = _pinsManager.activityCompletionStatus(c.activityId);
-    return _filterState.include(c, status ?? MapCompletionFilter.notStarted);
+    return _filterState.include(c, _pinsManager.displayStateOf(c));
   });
+
+  /// Why the view shows no matches — the empty-view card's diagnosis
+  /// ([MapEmptyVerdict]), shared by the wide overlay and the narrow bar so the
+  /// card's message and remedy always agree with the map. Only pins with
+  /// coordinates count anywhere here: a match that can never render can't be
+  /// revealed by any remedy the card offers.
+  MapEmptyVerdict get emptyVerdict {
+    if (!isWorld || loadingPins) return MapEmptyVerdict.none;
+    final loaded = visiblePins.where((c) => c.point != null).toList();
+    if (loaded.isNotEmpty) {
+      // Matches exist under the current filters/query — the verdict is about
+      // WHERE they are: any in the viewport means no card; all off-screen
+      // means zooming out reveals them (the loaded set can exceed the
+      // viewport — the bbox fetch currently returns the whole catalog).
+      final LatLngBounds bounds;
+      try {
+        bounds = mapController.camera.visibleBounds;
+      } catch (_) {
+        return MapEmptyVerdict.none; // camera not laid out: no verdict yet
+      }
+      return loaded.any((c) => bounds.contains(c.point!))
+          ? MapEmptyVerdict.none
+          : MapEmptyVerdict.matchesOffscreen;
+    }
+    // Nothing passes anywhere loaded: diagnose the excluder. If the pills are
+    // it (matches exist ignoring them), widening fixes it by construction.
+    final ignoringPills = _pinsManager.filteredPins(
+      (c) => c.point != null && _filterState.matchesIgnoringPills(c),
+    );
+    if (ignoringPills.isNotEmpty) return MapEmptyVerdict.filtersHideMatches;
+    return filter.query.trim().isNotEmpty
+        ? MapEmptyVerdict.noSearchMatches
+        : MapEmptyVerdict.noActivities;
+  }
 
   int? activityStarsEarned(String activityId) =>
       _pinsManager.activityStarsEarned(activityId);
+
+  /// The activity's resolved display state / star tier — delegated to the pins
+  /// manager so the view and the Status filter read one source (reuse).
+  ActivityPinState displayStateOf(QuestActivityCard c) =>
+      _pinsManager.displayStateOf(c);
+  ActivityStarLevel starLevelOf(QuestActivityCard c) =>
+      _pinsManager.starLevelOf(c);
 
   /// Activity ids the learner has earned at least one star in — the trail the
   /// ranking reserves slots for (world-map.instructions.md, "Goal Progress").
   Set<String> get progressedActivityIds => _pinsManager.progressedActivityIds;
 
-  /// The learner has **no first activity yet** (never started, joined, or
-  /// finished one) — the condition under which the ranking deprioritizes 3+ role
-  /// activities (#7435). Cheap read over `client.rooms`, once per (debounced)
-  /// re-rank. Null client → false (no penalty).
-  bool get isNewLearner => _client?.hasAnyActivitySession == false;
+  /// The learner has **no finished activity yet** — the condition under which
+  /// the ranking deprioritizes 3+ role activities (#7435). Starting or joining
+  /// one is deliberately not enough (#7999): a learner who opens an activity and
+  /// goes back to exploring the map hasn't yet learned what activities are, and
+  /// would otherwise be shown 3+ role pins they can't fill. Cheap read over
+  /// `client.rooms`, once per (debounced) re-rank. Null client → false (no
+  /// penalty).
+  bool get isNewLearner => _client?.hasAnyFinishedActivitySession == false;
 
   void _onPlanHydrate() {
     // A plan landing from CMS fires no room sync, so the sync-driven recompute
@@ -434,6 +488,17 @@ class WorldMapController extends State<WorldMap>
   Future<void> _recomputePinged(Client client) async {
     await _pinsManager.recomputePinged(client);
     if (mounted) setState(() {});
+  }
+
+  /// Refill the member lists the map's seat math and participant rows read —
+  /// see [WorldMapPinsManager.loadSessionParticipants] (#8045). Runs on the
+  /// same triggers as discovery: once on attach, then draining on sync.
+  Future<void> _loadSessionParticipants(Client client) async {
+    if (!await _pinsManager.loadSessionParticipants(client)) return;
+    // Members decide both halves of a live large card — the ongoing
+    // pending/active split (seats remaining) and the avatar row itself — so a
+    // fill has to re-derive signals, not just repaint.
+    if (mounted) _recomputeProgress();
   }
 
   Future<void> _discoverCoursemateSessions(Client client) async {
@@ -530,47 +595,61 @@ class WorldMapController extends State<WorldMap>
     try {
       await _pinsManager.loadWorldScopedPins(
         bounds: bounds,
-        l2: _filterState.filter.l2Only
-            ? _filterState.filter.l2?.langCodeShort
-            : null,
+        // Language is fixed by the learner's settings, not a map filter, so the
+        // working set is always narrowed to their L2 (world-map.instructions.md).
+        l2: _filterState.filter.l2?.langCodeShort,
         l1: user.userL1?.langCodeShort,
       );
     } finally {
-      if (mounted) setState(() => _loadingPins = false);
+      if (mounted) {
+        setState(() => _loadingPins = false);
+        // Fresh pins change what the narrow empty-view card should show (a
+        // zoom-out can bring matches into view); loading START deliberately
+        // doesn't tick — the card holds steady through a refetch instead of
+        // flickering off and on.
+        viewRevision.value++;
+      }
     }
   }
 
-  void setQuery(String q) => setState(() => _filterState.setQuery(q));
+  /// Apply a filter mutation: rebuild this State (the map and the wide
+  /// overlay) and tick [viewRevision] for the shell-built narrow surfaces.
+  void _mutateFilter(VoidCallback mutate) {
+    setState(mutate);
+    viewRevision.value++;
+  }
+
+  void setQuery(String q) => _mutateFilter(() => _filterState.setQuery(q));
 
   void _setL2(LanguageModel? l2) {
-    setState(() => _filterState.setL2(l2));
+    _mutateFilter(() => _filterState.setL2(l2));
     loadWorldPins();
   }
 
-  void _setCefrLevel(LanguageLevelTypeEnum? cefrLevel) =>
-      setState(() => _filterState.setCefrLevel(cefrLevel));
+  // The three map filter pills. All are client-side refinements over the loaded
+  // set (level is applied client-side per the Scale boundary; party/status read
+  // the pin's own facts), so each is a pure setState — no working-set re-fetch.
+  void setCefrLevel(LanguageLevelTypeEnum? level) =>
+      _mutateFilter(() => _filterState.setCefrLevel(level));
 
-  void toggleL2() {
-    setState(() => _filterState.toggleL2());
-    loadWorldPins(); // L2 changes the working set → re-fetch
-  }
+  void setPartySize(int? size) =>
+      _mutateFilter(() => _filterState.setPartySize(size));
 
-  void toggleCefr(LanguageLevelTypeEnum level) =>
-      setState(() => _filterState.toggleCefr(level));
+  void setStatus(ActivityPinState? status) =>
+      _mutateFilter(() => _filterState.setStatus(status));
 
-  void toggleCompletion(MapCompletionFilter c) =>
-      setState(() => _filterState.toggleCompletion(c));
+  void resetFilters() => _mutateFilter(() => _filterState.resetFilters());
 
-  void resetFilters({bool l2Only = true}) {
-    final toggleL2Only = _filterState.filter.l2Only != l2Only;
-    setState(() {
-      _filterState.resetFilters(l2Only: l2Only);
-    });
-
-    if (toggleL2Only) {
-      loadWorldPins(); // L2 narrowed again → re-fetch
-    }
-  }
+  /// The empty card's widen lever: clear every pill to its "All …" state
+  /// (level, party, status — the query and the settings-fixed language stay).
+  /// ALL pills, not just level: that is what makes
+  /// [MapEmptyVerdict.filtersHideMatches]'s promise true whichever pill was
+  /// the excluder.
+  void widenFilters() => _mutateFilter(() {
+    _filterState.setCefrLevel(null);
+    _filterState.setPartySize(null);
+    _filterState.setStatus(null);
+  });
 
   /// The minimal screen translation that brings [card] fully inside [safe]: zero
   /// on an axis where it already fits, otherwise just enough to clear the
@@ -600,12 +679,35 @@ class WorldMapController extends State<WorldMap>
   /// step — a deliberate tap goes straight to focus, no peek.
   void flyTo(QuestActivityCard card) => openActivity(card);
 
-  /// Glide back to the whole-world view (the initial camera). Pins and search
-  /// only ever zoom the camera IN, so this is the one explicit "zoom out to
-  /// everything" affordance (#7086). Camera-only: the course scope, focus, and
-  /// open panels are untouched.
+  /// Glide back to the whole-world view. Pins and search only ever zoom the
+  /// camera IN, so this is the one explicit "zoom out to everything"
+  /// affordance (#7086). Camera-only: the course scope, focus, and open panels
+  /// are untouched.
+  ///
+  /// The center is not fixed (#8121): at the zoom floor a narrow viewport
+  /// shows only a slice of the world's longitudes, so a fixed (Europe-ish)
+  /// center could leave every matching activity off-screen with nothing left
+  /// to zoom. Center instead on the fullest viewport-sized window of the
+  /// currently-matching pins ([WorldMapConstants.worldResetCenter]), falling
+  /// back to the old fixed center when nothing is loaded.
   void resetToWorld() {
-    _animateCameraTo(const LatLng(20, 0), minZoom);
+    _animateCameraTo(_worldResetCenter(), minZoom);
+  }
+
+  /// The reset's target center: the view showing the maximum number of the
+  /// currently-matching pins (#8121) — the same [visiblePins] set the
+  /// empty-view card's matches-offscreen verdict counts, so its "Zoom out"
+  /// lever reveals the matches it promised.
+  LatLng _worldResetCenter() {
+    const fallback = LatLng(20, 0);
+    final Size viewport;
+    try {
+      viewport = mapController.camera.nonRotatedSize;
+    } catch (_) {
+      return fallback; // camera not laid out yet
+    }
+    final points = visiblePins.map((c) => c.point).whereType<LatLng>().toList();
+    return WorldMapConstants.worldResetCenter(viewport, points) ?? fallback;
   }
 
   /// The viewport-derived zoom-out floor (#7813, [WorldMapConstants.minZoomFor])
@@ -616,6 +718,18 @@ class WorldMapController extends State<WorldMap>
       return WorldMapConstants.minZoomFor(mapController.camera.nonRotatedSize);
     } catch (_) {
       return WorldMapConstants.fallbackMinZoom;
+    }
+  }
+
+  /// Whether the camera can still zoom out (above the viewport-derived floor,
+  /// #7813) — gates the empty-view card's "Zoom out?" lever on both layouts.
+  /// Reading the camera throws before the map's first layout; treat that as
+  /// "can zoom out", mirroring the zoom controls' default-enabled buttons.
+  bool get canZoomOut {
+    try {
+      return WorldMapConstants.canZoomOut(mapController.camera.zoom, minZoom);
+    } catch (_) {
+      return true;
     }
   }
 
@@ -815,6 +929,10 @@ class WorldMapController extends State<WorldMap>
   /// frames and programmatic glides (which fire `MapEventMove` without a
   /// matching `hasGesture`).
   void onMapPositionChanged(bool hasGesture) {
+    // A gesture-driven move means the learner has gone back to exploring the
+    // map: collapse the single-column filter surface if it is open. Fires every
+    // frame of a pan, but the surface no-ops once already collapsed.
+    if (hasGesture) mapPanTick.value++;
     if (!isWorld) return;
     _refetchDebounce?.cancel();
     _refetchDebounce = Timer(

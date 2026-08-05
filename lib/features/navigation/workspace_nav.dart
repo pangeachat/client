@@ -298,16 +298,21 @@ abstract class WorkspaceNav {
   /// list), a section switch replaces the left column
   /// (routing.instructions.md). This is the token-native replacement for the
   /// old `setSection(uri, PRoutes.course(id), …)` hybrid that bounced through
-  /// the legacy redirect.
+  /// the legacy redirect. [tab] seats the card on a specific tab instead of
+  /// its default — e.g. a knock-badged course opens on Chats so the admin
+  /// lands on the pending knock (#8139).
   static String openCourseSection(
     Uri current,
     String spaceId, {
     bool keepRoom = true,
     bool clearRight = false,
+    SpaceSettingsTabs? tab,
   }) {
     final lists = parseOpenPanels(current);
     final left = <PanelToken>[
-      CoursePanelToken(),
+      CoursePanelToken(
+        tab != null ? CourseDetailsTokenParam(activeTab: tab) : null,
+      ),
       if (keepRoom) ...lists.left.where((t) => t.type == PanelTypesEnum.room),
     ];
     final parts = WorkspaceQuery.parts(current.query);
@@ -658,11 +663,19 @@ abstract class WorkspaceNav {
   /// analytics-family panel so the two don't clutter the right column together
   /// (#7109). See `routing.instructions.md`.
   /// [closeSections] mirrors [setRight]'s flag for single-column callers.
+  ///
+  /// [seatMenu] false opens the page ALONE — for a shortcut that jumps straight
+  /// to one page rather than drilling in from the menu (the cluster's language
+  /// flag → learning settings, #7961): the learner asked for that one page, so
+  /// seating a menu they didn't open puts a second panel on screen and turns
+  /// the page's narrow-screen close into a back arrow. An already-open menu is
+  /// still kept — the flag declines to seat one, it never closes one.
   static String openSettings(
     Uri current, {
     String? page,
     String? planId,
     bool closeSections = false,
+    bool seatMenu = true,
   }) {
     final String next;
     if (page == null || page.isEmpty) {
@@ -685,7 +698,7 @@ abstract class WorkspaceNav {
                   !t.type.isAnalyticsPanel,
             )
             .toList();
-        if (!result.any((t) => t.type == PanelTypesEnum.settings)) {
+        if (seatMenu && !result.any((t) => t.type == PanelTypesEnum.settings)) {
           result.insert(0, const SettingsPanelToken());
         }
         result.add(detail);

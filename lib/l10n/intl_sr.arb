@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:27.862136",
+    "@@last_modified": "2026-08-04 10:31:32.692216",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2473,8 +2473,6 @@
     "constructUseCollected": "Прикупљено у ћаскању",
     "constructUseNanDesc": "Није применљиво",
     "xpIntoLevel": "{currentXP} / {maxXP} поена искуства",
-    "enableTTSToolName": "Омогућено текстуално-говорно претварање",
-    "enableTTSToolDescription": "Дозволите апликацији да генерише излаз у виду текста у говор за делове текста на вашој циљаној језику.",
     "yourUsername": "Ваше корисничко име",
     "yourEmail": "Ваша е-пошта",
     "iWantToLearn": "Желим да учим",
@@ -6079,14 +6077,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8701,15 +8691,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Vaš napredak u vežbanju neće biti sačuvan.",
     "practiceGrammar": "Vežbajte gramatiku",
     "notEnoughToPractice": "Pošaljite više poruka da otključate vežbanje",
     "constructUseCorGCDesc": "Vežbanje ispravne gramatike",
     "constructUseIncGCDesc": "Vežbanje nepravilne gramatike",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9299,16 +9284,6 @@
     },
     "enableEmailNotifications": "Omogući obaveštenja putem e-pošte",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatski istakni audio poruke",
-    "selectAudioMessagesOnPlayDescription": "Automatski istakni audio poruke kada se reprodukuju",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10066,7 +10041,6 @@
     "browsePublicCourses": "Pretraži javne kurseve",
     "editProfile": "Izmeni profil",
     "mapSearchHint": "Pretraži aktivnosti",
-    "mapSearchNoResults": "Nema podudaranja u pregledu",
     "mapFilterAllLanguages": "Svi jezici",
     "mapFilterNotStarted": "Nije započeto",
     "mapFilterInProgress": "U toku",
@@ -10075,7 +10049,6 @@
     "activityTypeConversation": "Razgovor",
     "playAgain": "Igraj ponovo",
     "reviewActivity": "Pregled",
-    "mapEmptyInView": "Nema ništa ovde na vašem nivou ili jeziku. Proširite svoje filtere ili zumirajte.",
     "welcomeToPangeaChat": "Dobrodošli u Pangea Chat",
     "claimTrial": "Zatražite svoj probni period",
     "thanksForSigningUp": "Hvala što ste se prijavili! Evo",
@@ -10146,10 +10119,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10179,10 +10148,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10403,7 +10368,6 @@
     "analyticsAndSettingsLabel": "Opcije analitike i podešavanja",
     "searchActivitiesLabel": "Pretraži aktivnosti na mapi",
     "filteredActivitiesLabel": "Lista filtriranih aktivnosti",
-    "activityFilterButtonsLabel": "Dugmad za filtriranje jezika, težine i napretka",
     "mapZoomLabel": "Kontrole zumiranja mape",
     "activityMapLabel": "Mapa aktivnosti",
     "@navOptionsLabel": {
@@ -10423,10 +10387,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10659,5 +10619,41 @@
     "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte da ga preformulišete ili pošaljite ocenu bez komentara.",
     "rateActivityThanks": "Hvala na povratnim informacijama!",
     "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocena} other{{count} ocena}})",
-    "newActivityBadge": "NOVO"
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "Napredak vaše trenutne sesije vežbanja rečnika neće biti sačuvan.",
+    "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vežbanja gramatike neće biti sačuvan.",
+    "activityFilterButtonsLabel": "Dugmad za filtriranje nivoa, igrača i statusa",
+    "mapFilterAllLevels": "Svi nivoi",
+    "mapFilterAllPlayers": "Svi igrači",
+    "mapFilterAllStatuses": "Svi statusi",
+    "mapFiltersShow": "Prikaži filtere",
+    "mapFiltersHide": "Sakrij filtere",
+    "mapStatusAvailable": "Dostupno",
+    "mapStatusOngoing": "U toku",
+    "mapStatusWaiting": "Čeka",
+    "mapStatusOpenToJoin": "Otvoreno za pridruživanje",
+    "mapMatchesOffscreen": "Postoje mečevi izvan vašeg vidokruga. Umanjite prikaz da biste ih videli.",
+    "mapFiltersHideMatches": "Vaši filteri skrivaju sve mečeve. Proširite pretragu da biste ih videli.",
+    "mapNoSearchMatches": "Nijedna aktivnost ne odgovara vašoj pretrazi.",
+    "mapNoActivitiesArea": "Nema aktivnosti u ovom području.",
+    "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti.",
+    "autocorrectMobileOnly": "Samo za mobilne uređaje",
+    "autocorrectMobileOnlyWarning": "Automatska ispravka je dostupna samo u mobilnoj aplikaciji.",
+    "audioSectionTitle": "Zvuk",
+    "audioWordsToolName": "Reči",
+    "audioWordsDescription": "Reprodukujte zvuk reči kada je dodirnete.",
+    "audioChoicesToolName": "Izbori",
+    "audioChoicesDescription": "Reprodukujte zvuk za ponuđene odgovore u vežbama.",
+    "audioIncomingMessagesToolName": "Dolazne poruke",
+    "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na ciljnom jeziku radi vežbanja slušanja.",
+    "choosePangeaAvatar": "Izaberite Pangea avatar",
+    "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
+    "readAloudNoVoiceDesktopWeb": "Ovaj pregledač ne nudi visokokvalitetan glas za {language}, tako da se poruke ovde ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
+    "readAloudGetChrome": "Preuzmite Chrome",
+    "readAloudNoVoiceMobileWeb": "Ovaj pregledač ne nudi visokokvalitetan glas za {language}, tako da se poruke ovde ne mogu dobro čitati naglas. Aplikacija Pangea Chat može koristiti najbolje glasove vašeg uređaja.",
+    "readAloudGetApp": "Preuzmite aplikaciju",
+    "readAloudNoVoiceIOS": "Vaš uređaj još uvek nema preuzet visokokvalitetan glas za {language}. Preuzmite ga, pa pokušajte ponovo:",
+    "readAloudNoVoiceIOSSteps": "  • Podešavanja\n  • Pristupačnost\n  • Izgovoreni sadržaj\n  • Glasovi\n  • {language}\n  • Preuzmite poboljšani ili premium glas",
+    "readAloudNoVoiceAndroid": "Vaš uređaj još uvek nema visokokvalitetan glas za {language}. Instalirajte glasovne podatke za vaš mehanizam za pretvaranje teksta u govor, pa pokušajte ponovo.",
+    "readAloudOpenVoiceSettings": "Otvorite podešavanja glasa"
 }

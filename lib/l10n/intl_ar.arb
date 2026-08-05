@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-07-29 12:08:16.869712",
+    "@@last_modified": "2026-08-04 10:31:16.598330",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3106,8 +3106,6 @@
     "constructUseCollected": "تم الجمع في الدردشة",
     "constructUseNanDesc": "غير قابل للتطبيق",
     "xpIntoLevel": "{currentXP} / {maxXP} نقطة خبرة",
-    "enableTTSToolName": "تم تفعيل تحويل النص إلى كلام",
-    "enableTTSToolDescription": "السماح للتطبيق بتوليد مخرجات تحويل النص إلى كلام لأجزاء من النص بلغتك المستهدفة.",
     "yourUsername": "اسم المستخدم الخاص بك",
     "yourEmail": "البريد الإلكتروني الخاص بك",
     "iWantToLearn": "أريد أن أتعلم",
@@ -5433,14 +5431,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -8056,15 +8046,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "لن يتم حفظ تقدم جلسة التدريب الخاصة بك.",
     "practiceGrammar": "تدرب على القواعد",
     "notEnoughToPractice": "أرسل المزيد من الرسائل لفتح التدريب",
     "constructUseCorGCDesc": "تدريب على فئة القواعد الصحيحة",
     "constructUseIncGCDesc": "تدريب على فئة القواعد غير الصحيحة",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8654,16 +8639,6 @@
     },
     "enableEmailNotifications": "تفعيل إشعارات البريد الإلكتروني",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "تمييز الرسائل الصوتية تلقائيًا",
-    "selectAudioMessagesOnPlayDescription": "تمييز الرسائل الصوتية تلقائيًا عند تشغيلها",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9421,7 +9396,6 @@
     "browsePublicCourses": "تصفح الدورات العامة",
     "editProfile": "تعديل الملف الشخصي",
     "mapSearchHint": "ابحث عن الأنشطة",
-    "mapSearchNoResults": "لا توجد تطابقات في العرض",
     "mapFilterAllLanguages": "جميع اللغات",
     "mapFilterNotStarted": "لم يبدأ بعد",
     "mapFilterInProgress": "قيد التقدم",
@@ -9430,7 +9404,6 @@
     "activityTypeConversation": "محادثة",
     "playAgain": "العب مرة أخرى",
     "reviewActivity": "مراجعة",
-    "mapEmptyInView": "لا شيء هنا بمستواك أو لغتك. قم بتوسيع الفلاتر أو قم بالتكبير للخارج.",
     "welcomeToPangeaChat": "مرحبًا بك في دردشة بانجيا",
     "claimTrial": "احصل على تجربتك",
     "thanksForSigningUp": "شكرًا لتسجيلك! إليك",
@@ -9501,10 +9474,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9534,10 +9503,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9758,7 +9723,6 @@
     "analyticsAndSettingsLabel": "خيارات التحليلات والإعدادات",
     "searchActivitiesLabel": "البحث عن الأنشطة على الخريطة",
     "filteredActivitiesLabel": "قائمة الأنشطة المفلترة",
-    "activityFilterButtonsLabel": "أزرار تصفية اللغة والصعوبة والتقدم",
     "mapZoomLabel": "تحكمات تكبير الخريطة",
     "activityMapLabel": "خريطة الأنشطة",
     "@navOptionsLabel": {
@@ -9778,10 +9742,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10010,5 +9970,41 @@
     "rateActivityCommentRejected": "تعذّر نشر تعليقك. حاول إعادة صياغته، أو أرسل تقييمك بدون تعليق.",
     "rateActivityThanks": "شكرًا لملاحظاتك!",
     "activityRatingMeterLabel": "{percent}% إيجابي ({count, plural, =1{تقييم واحد} other{{count} تقييمات}})",
-    "newActivityBadge": "جديد"
+    "newActivityBadge": "جديد",
+    "exitVocabPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب المفردات الحالية.",
+    "exitGrammarPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب القواعد الحالية.",
+    "activityFilterButtonsLabel": "أزرار تصفية المستوى واللاعبين والحالة",
+    "mapFilterAllLevels": "جميع المستويات",
+    "mapFilterAllPlayers": "جميع اللاعبين",
+    "mapFilterAllStatuses": "جميع الحالات",
+    "mapFiltersShow": "إظهار الفلاتر",
+    "mapFiltersHide": "إخفاء الفلاتر",
+    "mapStatusAvailable": "متاح",
+    "mapStatusOngoing": "جارٍ",
+    "mapStatusWaiting": "في الانتظار",
+    "mapStatusOpenToJoin": "مفتوح للانضمام",
+    "mapMatchesOffscreen": "توجد مباريات خارج نطاق رؤيتك. صغّر الخريطة لرؤيتها.",
+    "mapFiltersHideMatches": "الفلاتر التي اخترتها تخفي جميع المباريات. وسّع نطاق البحث لرؤيتها.",
+    "mapNoSearchMatches": "لا توجد أنشطة مطابقة لبحثك.",
+    "mapNoActivitiesArea": "لا توجد أنشطة في هذه المنطقة.",
+    "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط.",
+    "autocorrectMobileOnly": "للجوال فقط",
+    "autocorrectMobileOnlyWarning": "التصحيح التلقائي للجهاز متاح فقط في تطبيق الجوال.",
+    "audioSectionTitle": "صوت",
+    "audioWordsToolName": "الكلمات",
+    "audioWordsDescription": "شغّل صوت الكلمة عند النقر عليها.",
+    "audioChoicesToolName": "الخيارات",
+    "audioChoicesDescription": "شغّل الصوت لخيارات الإجابة في أنشطة التدريب.",
+    "audioIncomingMessagesToolName": "الرسائل الواردة",
+    "audioIncomingMessagesDescription": "اقرأ الرسائل المستلمة تلقائيًا بصوت عالٍ بلغتك المستهدفة لممارسة الاستماع.",
+    "choosePangeaAvatar": "اختر صورة بانجيا الرمزية",
+    "readAloudNoVoiceTitle": "لم يتم العثور على صوت عالي الجودة لـ {language}",
+    "readAloudNoVoiceDesktopWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يتضمن Chrome و Edge عادةً أصواتًا عالية الجودة.",
+    "readAloudGetChrome": "احصل على Chrome",
+    "readAloudNoVoiceMobileWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يمكن لتطبيق Pangea Chat استخدام أفضل الأصوات المتوفرة في جهازك.",
+    "readAloudGetApp": "احصل على التطبيق",
+    "readAloudNoVoiceIOS": "لم يتم تنزيل صوت عالي الجودة لـ {language} على جهازك بعد. قم بتنزيل واحد، ثم حاول مرة أخرى:",
+    "readAloudNoVoiceIOSSteps": "  • الإعدادات\n  • تسهيلات الاستخدام\n  • المحتوى المنطوق\n  • الأصوات\n  • {language}\n  • تنزيل صوت محسّن أو مميز",
+    "readAloudNoVoiceAndroid": "لا يحتوي جهازك على صوت عالي الجودة لـ {language} بعد. قم بتثبيت بيانات الصوت لمحرك تحويل النص إلى كلام، ثم حاول مرة أخرى.",
+    "readAloudOpenVoiceSettings": "افتح إعدادات الصوت"
 }

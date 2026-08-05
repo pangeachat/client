@@ -4,16 +4,15 @@ import 'package:flutter/material.dart';
 
 import 'package:dynamic_color/dynamic_color.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/style_example_message.dart';
 import 'package:fluffychat/utils/account_config.dart';
-import 'package:fluffychat/utils/color_value.dart';
 import 'package:fluffychat/widgets/layouts/max_width_body.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
+import 'color_theme_picker.dart';
 import 'settings_style.dart';
 
 class SettingsStyleView extends StatelessWidget {
@@ -25,7 +24,6 @@ class SettingsStyleView extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    const colorPickerSize = 32.0;
     final client = Matrix.of(context).client;
     return Semantics(
       label: L10n.of(context).bodyLabel(L10n.of(context).changeTheme),
@@ -88,81 +86,19 @@ class SettingsStyleView extends StatelessWidget {
                   ),
                 ),
               ),
+              // #Pangea
+              // The swatch grid lives in its own widget so it can be exercised
+              // directly in tests; see color_theme_picker.dart.
               DynamicColorBuilder(
-                builder: (light, dark) {
-                  final systemColor =
-                      Theme.of(context).brightness == Brightness.light
+                builder: (light, dark) => ColorThemePicker(
+                  systemColor: Theme.of(context).brightness == Brightness.light
                       ? light?.primary
-                      : dark?.primary;
-                  final colors = List<Color?>.from(
-                    SettingsStyleController.customColors,
-                  );
-                  if (systemColor == null) {
-                    colors.remove(null);
-                  }
-                  return Semantics(
-                    label: L10n.of(context).colorListLabel,
-                    container: true,
-                    child: GridView.builder(
-                      shrinkWrap: true,
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                            maxCrossAxisExtent: 64,
-                          ),
-                      itemCount: colors.length,
-                      itemBuilder: (context, i) {
-                        final color = colors[i];
-                        return Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Tooltip(
-                            message: color == null
-                                ? L10n.of(context).systemTheme
-                                : '#${color.hexValue.toRadixString(16).toUpperCase()}',
-                            child: InkWell(
-                              borderRadius: BorderRadius.circular(
-                                colorPickerSize,
-                              ),
-                              onTap: () => controller.setChatColor(color),
-                              child: Material(
-                                color: color ?? systemColor,
-                                elevation: 6,
-                                borderRadius: BorderRadius.circular(
-                                  colorPickerSize,
-                                ),
-                                child: SizedBox(
-                                  width: colorPickerSize,
-                                  height: colorPickerSize,
-                                  child:
-                                      (controller.currentColor == color ||
-                                          // #7176: on the default (null) colour the
-                                          // system swatch carries the selection, but
-                                          // where there is no system colour (web) that
-                                          // swatch is removed and the app falls back to
-                                          // its default colour — mark that swatch
-                                          // selected so a theme always reads as chosen.
-                                          (controller.currentColor == null &&
-                                              systemColor == null &&
-                                              color == AppConfig.chatColor))
-                                      ? Center(
-                                          child: Icon(
-                                            Icons.check,
-                                            size: 16,
-                                            color: Theme.of(
-                                              context,
-                                            ).colorScheme.onPrimary,
-                                          ),
-                                        )
-                                      : null,
-                                ),
-                              ),
-                            ),
-                          ),
-                        );
-                      },
-                    ),
-                  );
-                },
+                      : dark?.primary,
+                  currentColor: controller.currentColor,
+                  onColorSelected: controller.setChatColor,
+                ),
               ),
+              // Pangea#
               Divider(color: theme.dividerColor),
               ListTile(
                 title: Text(

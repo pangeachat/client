@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 
 /// The gold ribbon/shield that represents a learner's level across the app —
 /// the single source of the level symbol, so the right-nav cluster medal
@@ -17,7 +18,12 @@ class LevelRibbon extends StatelessWidget {
   final int? level;
   final double height;
 
-  const LevelRibbon({required this.height, this.level, super.key});
+  /// Fill for the shield; defaults to the theme's gold. The cluster medal
+  /// passes [AppConfig.goldHighlightByTheme] to show hover and the open Level
+  /// panel in the mark itself rather than behind it (#8067).
+  final Color? color;
+
+  const LevelRibbon({required this.height, this.level, this.color, super.key});
 
   /// The shield outline from Figma (icon/warning-secondary), filled [hexcode].
   static String _shieldSvg(String hexcode) =>
@@ -31,7 +37,7 @@ class LevelRibbon extends StatelessWidget {
     // Shield aspect ratio from the viewBox (24.6667 x 28.875).
     final width = height * (24.6667 / 28.875);
     final ribbon = SvgPicture.string(
-      _shieldSvg(AppConfig.goldHexByTheme(context)),
+      _shieldSvg(colorToHex(color ?? AppConfig.goldByTheme(context))),
       width: width,
       height: height,
       fit: BoxFit.contain,

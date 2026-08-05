@@ -726,7 +726,7 @@ Practice (the vocab/grammar exercise flow) is a right-column `practice` token â€
 a normal bounded panel, **not a route and not fullscreen**. Unlike other
 panels, the session it runs is a **background activity that outlives its
 panel**: leaving the panel loses nothing and ends nothing â€” the session runs
-until it is explicitly ended or finished.
+until it is explicitly ended, finished, or times out.
 
 - **Leaving is free and silent.** Opening Settings, another analytics surface,
   or a rail section drops the `practice` panel from the URL but keeps the

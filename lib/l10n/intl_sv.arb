@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:23.639784",
+    "@@last_modified": "2026-08-04 10:31:33.377072",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -2933,8 +2933,6 @@
     "constructUseCollected": "Samlad i chatt",
     "constructUseNanDesc": "Ej tillämpligt",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktiverad text-till-tal",
-    "enableTTSToolDescription": "Tillåt appen att generera text-till-tal-utdata för delar av texten på ditt målspråk.",
     "yourUsername": "Ditt användarnamn",
     "yourEmail": "Din e-post",
     "iWantToLearn": "Jag vill lära mig",
@@ -5642,14 +5640,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8264,15 +8254,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Din övningssession kommer inte att sparas.",
     "practiceGrammar": "Öva grammatik",
     "notEnoughToPractice": "Skicka fler meddelanden för att låsa upp övning",
     "constructUseCorGCDesc": "Övning i korrekt grammatikkategori",
     "constructUseIncGCDesc": "Övning i inkorrekt grammatikkategori",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8862,16 +8847,6 @@
     },
     "enableEmailNotifications": "Aktivera e-postaviseringar",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatiskt markera ljudmeddelanden",
-    "selectAudioMessagesOnPlayDescription": "Automatiskt markera ljudmeddelanden när de spelas",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9629,7 +9604,6 @@
     "browsePublicCourses": "Bläddra bland offentliga kurser",
     "editProfile": "Redigera profil",
     "mapSearchHint": "Sök aktiviteter",
-    "mapSearchNoResults": "Inga träffar i vyn",
     "mapFilterAllLanguages": "Alla språk",
     "mapFilterNotStarted": "Ej påbörjad",
     "mapFilterInProgress": "Pågår",
@@ -9638,7 +9612,6 @@
     "activityTypeConversation": "Konversation",
     "playAgain": "Spela igen",
     "reviewActivity": "Granska",
-    "mapEmptyInView": "Ingenting här på din nivå eller språk. Bredare dina filter eller zooma ut.",
     "welcomeToPangeaChat": "Välkommen till Pangea Chat",
     "claimTrial": "Kräv din provperiod",
     "thanksForSigningUp": "Tack för att du registrerade dig! Här är",
@@ -9709,10 +9682,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9742,10 +9711,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9966,7 +9931,6 @@
     "analyticsAndSettingsLabel": "Analys- och inställningsalternativ",
     "searchActivitiesLabel": "Sök efter aktiviteter på kartan",
     "filteredActivitiesLabel": "Filtrerad aktivitetslista",
-    "activityFilterButtonsLabel": "Språk-, svårighetsgrad- och progressionsfilterknappar",
     "mapZoomLabel": "Kartzoomkontroller",
     "activityMapLabel": "Aktivitetskarta",
     "@navOptionsLabel": {
@@ -9986,10 +9950,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10222,5 +10182,41 @@
     "rateActivityCommentRejected": "Din kommentar kunde inte publiceras. Försök att omformulera den, eller skicka in ditt betyg utan en kommentar.",
     "rateActivityThanks": "Tack för din feedback!",
     "activityRatingMeterLabel": "{percent}% positiva ({count, plural, =1{1 betyg} other{{count} betyg}})",
-    "newActivityBadge": "NY"
+    "newActivityBadge": "NY",
+    "exitVocabPracticeSession": "Dina framsteg i den nuvarande ordövningssessionen sparas inte.",
+    "exitGrammarPracticeSession": "Dina framsteg i den nuvarande grammatikövningssessionen sparas inte.",
+    "activityFilterButtonsLabel": "Nivå, spelare och statusfilterknappar",
+    "mapFilterAllLevels": "Alla nivåer",
+    "mapFilterAllPlayers": "Alla spelare",
+    "mapFilterAllStatuses": "Alla statusar",
+    "mapFiltersShow": "Visa filter",
+    "mapFiltersHide": "Dölj filter",
+    "mapStatusAvailable": "Tillgänglig",
+    "mapStatusOngoing": "Pågående",
+    "mapStatusWaiting": "Väntar",
+    "mapStatusOpenToJoin": "Öppen för anslutning",
+    "mapMatchesOffscreen": "Det finns matcher utanför din vy. Zooma ut för att se dem.",
+    "mapFiltersHideMatches": "Dina filter döljer alla matcher. Utöka sökningen för att se dem.",
+    "mapNoSearchMatches": "Inga aktiviteter matchar din sökning.",
+    "mapNoActivitiesArea": "Inga aktiviteter i detta område.",
+    "practiceSessionTimedOut": "Din övningssession avslutades efter {minutes} minuters inaktivitet.",
+    "autocorrectMobileOnly": "Endast mobil",
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrigering är endast tillgänglig i mobilappen.",
+    "audioSectionTitle": "Ljud",
+    "audioWordsToolName": "Ord",
+    "audioWordsDescription": "Spela upp ljud för ett ord när du trycker på det.",
+    "audioChoicesToolName": "Val",
+    "audioChoicesDescription": "Spela upp ljud för svarsalternativ i övningsaktiviteter.",
+    "audioIncomingMessagesToolName": "Inkommande meddelanden",
+    "audioIncomingMessagesDescription": "Läs automatiskt upp mottagna meddelanden på ditt målspråk för lyssningsövning.",
+    "choosePangeaAvatar": "Välj en Pangea-avatar",
+    "readAloudNoVoiceTitle": "Ingen högkvalitativ {language}-röst hittades",
+    "readAloudNoVoiceDesktopWeb": "Den här webbläsaren erbjuder ingen högkvalitativ {language}-röst, så meddelanden kan inte läsas upp ordentligt här. Chrome och Edge inkluderar vanligtvis högkvalitativa röster.",
+    "readAloudGetChrome": "Skaffa Chrome",
+    "readAloudNoVoiceMobileWeb": "Den här webbläsaren erbjuder ingen högkvalitativ {language}-röst, så meddelanden kan inte läsas upp ordentligt här. Pangea Chat-appen kan använda enhetens bästa röster.",
+    "readAloudGetApp": "Skaffa appen",
+    "readAloudNoVoiceIOS": "Din enhet har ingen högkvalitativ {language}-röst nedladdad ännu. Ladda ner en och försök sedan igen:",
+    "readAloudNoVoiceIOSSteps": "  • Inställningar\n  • Hjälpmedel\n  • Talat innehåll\n  • Röster\n  • {language}\n  • Ladda ner en förbättrad eller premiumröst",
+    "readAloudNoVoiceAndroid": "Din enhet har ingen högkvalitativ {language}-röst ännu. Installera röstdata för din text-till-tal-motor och försök sedan igen.",
+    "readAloudOpenVoiceSettings": "Öppna röstinställningar"
 }

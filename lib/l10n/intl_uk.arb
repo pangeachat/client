@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-07-29 12:08:26.696865",
+    "@@last_modified": "2026-08-04 10:31:34.655315",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3299,8 +3299,6 @@
     "constructUseCollected": "Зібрано у чаті",
     "constructUseNanDesc": "Не застосовується",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Увімкнено текст у мову",
-    "enableTTSToolDescription": "Дозвольте додатку генерувати вихідний текст у мову для частин тексту вашої цільової мови.",
     "yourUsername": "Ваше ім'я користувача",
     "yourEmail": "Ваша електронна пошта",
     "iWantToLearn": "Я хочу навчитися",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7926,15 +7916,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ваш прогрес у сесії практики не буде збережено.",
     "practiceGrammar": "Практика граматики",
     "notEnoughToPractice": "Надішліть більше повідомлень, щоб розблокувати практику",
     "constructUseCorGCDesc": "Практика правильної граматичної категорії",
     "constructUseIncGCDesc": "Практика неправильної граматичної категорії",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8344,16 +8329,6 @@
     },
     "enableEmailNotifications": "Увімкнути сповіщення електронною поштою",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Автоматичне виділення аудіоповідомлень",
-    "selectAudioMessagesOnPlayDescription": "Автоматично виділяти аудіоповідомлення під час відтворення",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9111,7 +9086,6 @@
     "browsePublicCourses": "Переглянути публічні курси",
     "editProfile": "Редагувати профіль",
     "mapSearchHint": "Шукати активності",
-    "mapSearchNoResults": "Немає збігів у виді",
     "mapFilterAllLanguages": "Усі мови",
     "mapFilterNotStarted": "Не розпочато",
     "mapFilterInProgress": "В процесі",
@@ -9120,7 +9094,6 @@
     "activityTypeConversation": "Розмова",
     "playAgain": "Грати знову",
     "reviewActivity": "Огляд",
-    "mapEmptyInView": "Тут нічого немає на вашому рівні або мові. Розширте свої фільтри або зменшіть масштаб.",
     "welcomeToPangeaChat": "Ласкаво просимо до Pangea Chat",
     "claimTrial": "Отримайте свій безкоштовний пробний період",
     "thanksForSigningUp": "Дякуємо за реєстрацію! Ось",
@@ -9191,10 +9164,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9224,10 +9193,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9448,7 +9413,6 @@
     "analyticsAndSettingsLabel": "Параметри аналітики та налаштувань",
     "searchActivitiesLabel": "Пошук активностей на карті",
     "filteredActivitiesLabel": "Список відфільтрованих активностей",
-    "activityFilterButtonsLabel": "Кнопки фільтрації за мовою, складністю та прогресом",
     "mapZoomLabel": "Елементи керування масштабом карти",
     "activityMapLabel": "Карта активностей",
     "@navOptionsLabel": {
@@ -9468,10 +9432,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9704,5 +9664,41 @@
     "rateActivityCommentRejected": "Ваш коментар не вдалося опублікувати. Спробуйте перефразувати його або надішліть свою оцінку без коментаря.",
     "rateActivityThanks": "Дякуємо за ваш відгук!",
     "activityRatingMeterLabel": "{percent}% позитивних ({count, plural, =1{1 оцінка} other{{count} оцінок}})",
-    "newActivityBadge": "НОВЕ"
+    "newActivityBadge": "НОВЕ",
+    "exitVocabPracticeSession": "Ваш поточний прогрес у сесії тренування словникового запасу не буде збережено.",
+    "exitGrammarPracticeSession": "Ваш поточний прогрес у сесії тренування граматики не буде збережено.",
+    "activityFilterButtonsLabel": "Кнопки фільтру за рівнем, гравцями та статусом",
+    "mapFilterAllLevels": "Усі рівні",
+    "mapFilterAllPlayers": "Усі гравці",
+    "mapFilterAllStatuses": "Усі статуси",
+    "mapFiltersShow": "Показати фільтри",
+    "mapFiltersHide": "Приховати фільтри",
+    "mapStatusAvailable": "Доступно",
+    "mapStatusOngoing": "Триває",
+    "mapStatusWaiting": "Очікування",
+    "mapStatusOpenToJoin": "Відкрито для приєднання",
+    "mapMatchesOffscreen": "Є матчі поза вашим полем зору. Зменште масштаб, щоб їх побачити.",
+    "mapFiltersHideMatches": "Ваші фільтри приховують усі матчі. Розширте пошук, щоб їх побачити.",
+    "mapNoSearchMatches": "Жодна діяльність не відповідає вашому пошуку.",
+    "mapNoActivitiesArea": "У цій області немає активностей.",
+    "practiceSessionTimedOut": "Ваш сеанс практики завершився після {minutes} хвилин бездіяльності.",
+    "autocorrectMobileOnly": "Лише для мобільних пристроїв",
+    "autocorrectMobileOnlyWarning": "Автовиправлення доступне лише в мобільному застосунку.",
+    "audioSectionTitle": "Аудіо",
+    "audioWordsToolName": "Слова",
+    "audioWordsDescription": "Відтворювати аудіо слова, коли ви натискаєте на нього.",
+    "audioChoicesToolName": "Варіанти",
+    "audioChoicesDescription": "Відтворювати аудіо для варіантів відповідей у практичних завданнях.",
+    "audioIncomingMessagesToolName": "Вхідні повідомлення",
+    "audioIncomingMessagesDescription": "Автоматично читати отримані повідомлення вголос вашою цільовою мовою для практики слухання.",
+    "choosePangeaAvatar": "Виберіть аватар Pangea",
+    "readAloudNoVoiceTitle": "Не знайдено високоякісного голосу {language}",
+    "readAloudNoVoiceDesktopWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Chrome та Edge зазвичай мають високоякісні голоси.",
+    "readAloudGetChrome": "Завантажити Chrome",
+    "readAloudNoVoiceMobileWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Додаток Pangea Chat може використовувати найкращі голоси вашого пристрою.",
+    "readAloudGetApp": "Завантажити додаток",
+    "readAloudNoVoiceIOS": "На вашому пристрої ще не завантажено високоякісний голос {language}. Завантажте його, а потім спробуйте ще раз:",
+    "readAloudNoVoiceIOSSteps": "  • Налаштування\n  • Доступність\n  • Вимовлений вміст\n  • Голоси\n  • {language}\n  • Завантажте покращений або преміум голос",
+    "readAloudNoVoiceAndroid": "На вашому пристрої ще немає високоякісного голосу {language}. Встановіть голосові дані для вашого механізму перетворення тексту в мову, а потім спробуйте ще раз.",
+    "readAloudOpenVoiceSettings": "Відкрити налаштування голосу"
 }

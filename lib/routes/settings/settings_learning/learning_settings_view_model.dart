@@ -105,14 +105,18 @@ class LearningSettingsViewModel extends ChangeNotifier {
         return toolSettings.definitions;
       case ToolSetting.autoIGC:
         return toolSettings.autoIGC;
-      case ToolSetting.enableTTS:
+      case ToolSetting.audioWords:
         return _updatedProfile.userSettings.targetLanguage != null &&
             _selectedTargetLanguage != null &&
-            toolSettings.enableTTS;
+            toolSettings.audioWords;
+      case ToolSetting.audioChoices:
+        return _updatedProfile.userSettings.targetLanguage != null &&
+            _selectedTargetLanguage != null &&
+            toolSettings.audioChoices;
+      case ToolSetting.audioIncomingMessages:
+        return toolSettings.audioIncomingMessages;
       case ToolSetting.enableAutocorrect:
         return toolSettings.enableAutocorrect;
-      case ToolSetting.selectAudioMessagesOnPlay:
-        return toolSettings.selectAudioMessagesOnPlay;
     }
   }
 
@@ -141,16 +145,18 @@ class LearningSettingsViewModel extends ChangeNotifier {
         autoIGC: toolSetting == ToolSetting.autoIGC
             ? value
             : _updatedProfile.toolSettings.autoIGC,
-        enableTTS: toolSetting == ToolSetting.enableTTS
+        audioWords: toolSetting == ToolSetting.audioWords
             ? value
-            : _updatedProfile.toolSettings.enableTTS,
+            : _updatedProfile.toolSettings.audioWords,
+        audioChoices: toolSetting == ToolSetting.audioChoices
+            ? value
+            : _updatedProfile.toolSettings.audioChoices,
+        audioIncomingMessages: toolSetting == ToolSetting.audioIncomingMessages
+            ? value
+            : _updatedProfile.toolSettings.audioIncomingMessages,
         enableAutocorrect: toolSetting == ToolSetting.enableAutocorrect
             ? value
             : _updatedProfile.toolSettings.enableAutocorrect,
-        selectAudioMessagesOnPlay:
-            toolSetting == ToolSetting.selectAudioMessagesOnPlay
-            ? value
-            : _updatedProfile.toolSettings.selectAudioMessagesOnPlay,
       ),
     );
     _updateProfile(updated);
@@ -196,7 +202,10 @@ class LearningSettingsViewModel extends ChangeNotifier {
           voice: null,
           setVoiceNull: true,
         ),
-        toolSettings: _updatedProfile.toolSettings.copyWith(enableTTS: true),
+        toolSettings: _updatedProfile.toolSettings.copyWith(
+          audioWords: true,
+          audioChoices: true,
+        ),
       );
     }
 

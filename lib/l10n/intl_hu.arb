@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-07-29 12:08:18.639659",
+    "@@last_modified": "2026-08-04 10:31:24.482570",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3202,8 +3202,6 @@
     "constructUseCollected": "Gyűjtve a chatben",
     "constructUseNanDesc": "Nem alkalmazható",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Szöveg-beszéd engedélyezve",
-    "enableTTSToolDescription": "Engedélyezi az alkalmazásnak, hogy szöveg-beszéd kimenetet generáljon a célnyelv szövegrészeire.",
     "yourUsername": "Az ön felhasználóneve",
     "yourEmail": "Az ön e-mail címe",
     "iWantToLearn": "Szeretnék tanulni",
@@ -5226,14 +5224,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7849,15 +7839,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "A gyakorlási session előrehaladása nem lesz mentve.",
     "practiceGrammar": "Nyelvtan gyakorlása",
     "notEnoughToPractice": "Több üzenetet kell küldeni a gyakorlás feloldásához",
     "constructUseCorGCDesc": "Helyes nyelvtani kategória gyakorlása",
     "constructUseIncGCDesc": "Helytelen nyelvtani kategória gyakorlása",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8447,16 +8432,6 @@
     },
     "enableEmailNotifications": "Engedélyezze az e-mail értesítéseket",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatikusan kiemeli az audio üzeneteket",
-    "selectAudioMessagesOnPlayDescription": "Automatikusan kiemeli az audio üzeneteket, amikor lejátszásra kerülnek",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9214,7 +9189,6 @@
     "browsePublicCourses": "Böngésszen a nyilvános kurzusok között",
     "editProfile": "Profil szerkesztése",
     "mapSearchHint": "Tevékenységek keresése",
-    "mapSearchNoResults": "Nincsenek találatok a nézetben",
     "mapFilterAllLanguages": "Minden nyelv",
     "mapFilterNotStarted": "Nem indult el",
     "mapFilterInProgress": "Folyamatban",
@@ -9223,7 +9197,6 @@
     "activityTypeConversation": "Beszélgetés",
     "playAgain": "Játssz újra",
     "reviewActivity": "Áttekintés",
-    "mapEmptyInView": "Itt semmi sincs a szintedhez vagy nyelvedhez. Szélesítsd a szűrőidet vagy nagyíts ki.",
     "welcomeToPangeaChat": "Üdvözlünk a Pangea Chatben",
     "claimTrial": "Kérd az ingyenes próbát",
     "thanksForSigningUp": "Köszönjük, hogy regisztráltál! Itt van",
@@ -9294,10 +9267,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9327,10 +9296,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9551,7 +9516,6 @@
     "analyticsAndSettingsLabel": "Elemzési és beállítási lehetőségek",
     "searchActivitiesLabel": "Tevékenységek keresése a térképen",
     "filteredActivitiesLabel": "Szűrt tevékenységek listája",
-    "activityFilterButtonsLabel": "Nyelv, nehézség és előrehaladás szűrőgombok",
     "mapZoomLabel": "Térkép nagyító vezérlők",
     "activityMapLabel": "Tevékenység térkép",
     "@navOptionsLabel": {
@@ -9571,10 +9535,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9807,5 +9767,41 @@
     "rateActivityCommentRejected": "A megjegyzésedet nem sikerült közzétenni. Próbáld meg átfogalmazni, vagy küldd be az értékelésedet megjegyzés nélkül.",
     "rateActivityThanks": "Köszönjük visszajelzésedet!",
     "activityRatingMeterLabel": "{percent}% pozitív ({count, plural, =1{1 értékelés} other{{count} értékelés}})",
-    "newActivityBadge": "ÚJ"
+    "newActivityBadge": "ÚJ",
+    "exitVocabPracticeSession": "Az aktuális szókincsgyakorló-munkamenet előrehaladása nem lesz elmentve.",
+    "exitGrammarPracticeSession": "Az aktuális nyelvtani gyakorló-munkamenet előrehaladása nem lesz elmentve.",
+    "activityFilterButtonsLabel": "Szint, játékosok és állapot szűrőgombok",
+    "mapFilterAllLevels": "Minden szint",
+    "mapFilterAllPlayers": "Minden játékos",
+    "mapFilterAllStatuses": "Minden állapot",
+    "mapFiltersShow": "Szűrők mutatása",
+    "mapFiltersHide": "Szűrők elrejtése",
+    "mapStatusAvailable": "Elérhető",
+    "mapStatusOngoing": "Folyamatban",
+    "mapStatusWaiting": "Várakozás",
+    "mapStatusOpenToJoin": "Nyitott a csatlakozásra",
+    "mapMatchesOffscreen": "Vannak meccsek a látótereden kívül. Nagyíts ki, hogy lásd őket.",
+    "mapFiltersHideMatches": "A szűrőid minden meccset elrejtenek. Szélesítsd a keresést, hogy lásd őket.",
+    "mapNoSearchMatches": "Nincsenek a keresésnek megfelelő tevékenységek.",
+    "mapNoActivitiesArea": "Nincsenek tevékenységek ezen a területen.",
+    "practiceSessionTimedOut": "A gyakorlási munkamenet {minutes} perc inaktivitás után lejárt.",
+    "autocorrectMobileOnly": "Csak mobilon",
+    "autocorrectMobileOnlyWarning": "Az eszköz automatikus javítása csak a mobilalkalmazásban érhető el.",
+    "audioSectionTitle": "Hang",
+    "audioWordsToolName": "Szavak",
+    "audioWordsDescription": "Érintsd meg a szót a hang lejátszásához.",
+    "audioChoicesToolName": "Választási lehetőségek",
+    "audioChoicesDescription": "A gyakorló feladatokban a válaszlehetőségek hangjának lejátszása.",
+    "audioIncomingMessagesToolName": "Bejövő üzenetek",
+    "audioIncomingMessagesDescription": "A bejövő üzenetek automatikus felolvasása a célnyelven a hallásgyakorláshoz.",
+    "choosePangeaAvatar": "Válassz Pangea avatart",
+    "readAloudNoVoiceTitle": "Nincs kiváló minőségű {language} hang",
+    "readAloudNoVoiceDesktopWeb": "Ez a böngésző nem kínál kiváló minőségű {language} hangot, így az üzenetek nem olvashatók fel jól. A Chrome és az Edge általában tartalmaz kiváló minőségű hangokat.",
+    "readAloudGetChrome": "Chrome letöltése",
+    "readAloudNoVoiceMobileWeb": "Ez a böngésző nem kínál kiváló minőségű {language} hangot, így az üzenetek nem olvashatók fel jól. A Pangea Chat alkalmazás használhatja az eszközöd legjobb hangjait.",
+    "readAloudGetApp": "Alkalmazás letöltése",
+    "readAloudNoVoiceIOS": "Az eszközödön még nincs letöltve kiváló minőségű {language} hang. Tölts le egyet, majd próbáld újra:",
+    "readAloudNoVoiceIOSSteps": "  • Beállítások\n  • Kisegítő lehetőségek\n  • Felolvasott tartalom\n  • Hangok\n  • {language}\n  • Tölts le egy továbbfejlesztett vagy prémium hangot",
+    "readAloudNoVoiceAndroid": "Az eszközödön még nincs kiváló minőségű {language} hang. Telepíts hangadatokat a szövegfelolvasó motorodhoz, majd próbáld újra.",
+    "readAloudOpenVoiceSettings": "Hangbeállítások megnyitása"
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class WordAudioButton extends StatefulWidget {
@@ -44,12 +45,18 @@ class WordAudioButtonState extends State<WordAudioButton> {
   bool _isLoading = false;
   StreamSubscription? _loadingChoreoSubscription;
 
+  String get _targetId => 'word-audio-button-${widget.uniqueID}';
+
   @override
   void initState() {
     super.initState();
+    // Filter on this button's own target id — the stream is global, and
+    // reacting to every event made every mounted audio button spin whenever
+    // any backend TTS call was in flight.
     _loadingChoreoSubscription = TtsController.loadingChoreoStream.stream
-        .listen((val) {
-          if (mounted) setState(() => _isLoading = val);
+        .listen((event) {
+          if (event.targetId != _targetId) return;
+          if (mounted) setState(() => _isLoading = event.isLoading);
         });
   }
 
@@ -77,13 +84,9 @@ class WordAudioButtonState extends State<WordAudioButton> {
   @override
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
-      link: MatrixState.pAnyState
-          .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
-          .link,
+      link: MatrixState.pAnyState.layerLinkAndKey(_targetId).link,
       child: Opacity(
-        key: MatrixState.pAnyState
-            .layerLinkAndKey('word-audio-button-${widget.uniqueID}')
-            .key,
+        key: MatrixState.pAnyState.layerLinkAndKey(_targetId).key,
         opacity: widget.isSelected || _isPlaying ? 1 : widget.baseOpacity,
         child: Tooltip(
           message: _isPlaying
@@ -106,8 +109,9 @@ class WordAudioButtonState extends State<WordAudioButton> {
                       await TtsController.tryToSpeak(
                         widget.text,
                         context: context,
-                        targetID: 'word-audio-button-${widget.uniqueID}',
+                        targetID: _targetId,
                         langCode: widget.langCode,
+                        useCase: TtsUseCase.words,
                         pos: widget.pos,
                         morph: widget.morph,
                         onStart: () {

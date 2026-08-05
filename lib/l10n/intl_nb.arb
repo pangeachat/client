@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:21.282162",
+    "@@last_modified": "2026-08-04 10:31:28.829769",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3199,8 +3199,6 @@
     "constructUseCollected": "Innsamlet i chat",
     "constructUseNanDesc": "Ikke aktuelt",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktivert tekst-til-tale",
-    "enableTTSToolDescription": "Tillat appen å generere tekst-til-tale-uttak for deler av teksten på målspråket ditt.",
     "yourUsername": "Ditt brukernavn",
     "yourEmail": "Din e-post",
     "iWantToLearn": "Jeg vil lære",
@@ -5359,14 +5357,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7982,15 +7972,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Fremdriften i økten din vil ikke bli lagret.",
     "practiceGrammar": "Øv på grammatikk",
     "notEnoughToPractice": "Send flere meldinger for å låse opp øving",
     "constructUseCorGCDesc": "Øvelse i korrekt grammatikkategori",
     "constructUseIncGCDesc": "Øvelse i ukorrekt grammatikkategori",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8401,16 +8386,6 @@
     },
     "enableEmailNotifications": "Aktiver e-postvarsler",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatisk utheving av lydmeldinger",
-    "selectAudioMessagesOnPlayDescription": "Automatisk utheve lydmeldinger når de spilles av",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9168,7 +9143,6 @@
     "browsePublicCourses": "Bla gjennom offentlige kurs",
     "editProfile": "Rediger profil",
     "mapSearchHint": "Søk aktiviteter",
-    "mapSearchNoResults": "Ingen treff i visningen",
     "mapFilterAllLanguages": "Alle språk",
     "mapFilterNotStarted": "Ikke startet",
     "mapFilterInProgress": "Pågår",
@@ -9177,7 +9151,6 @@
     "activityTypeConversation": "Samtale",
     "playAgain": "Spill igjen",
     "reviewActivity": "Vurder",
-    "mapEmptyInView": "Ingenting her på ditt nivå eller språk. Utvid filtrene dine eller zoom ut.",
     "welcomeToPangeaChat": "Velkommen til Pangea Chat",
     "claimTrial": "Krev din prøveperiode",
     "thanksForSigningUp": "Takk for at du registrerte deg! Her er",
@@ -9248,10 +9221,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9281,10 +9250,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9505,7 +9470,6 @@
     "analyticsAndSettingsLabel": "Analyse- og innstillingsalternativer",
     "searchActivitiesLabel": "Søk etter aktiviteter på kartet",
     "filteredActivitiesLabel": "Filtrert aktivitetsliste",
-    "activityFilterButtonsLabel": "Språk-, vanskelighetsgrad- og fremdriftsfilterknapper",
     "mapZoomLabel": "Kartzoomkontroller",
     "activityMapLabel": "Aktivitetskart",
     "@navOptionsLabel": {
@@ -9525,10 +9489,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9761,5 +9721,41 @@
     "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
     "rateActivityThanks": "Takk for tilbakemeldingen din!",
     "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
-    "newActivityBadge": "NY"
+    "newActivityBadge": "NY",
+    "exitVocabPracticeSession": "Fremdriften din i den nåværende ordforrådsøkten blir ikke lagret.",
+    "exitGrammarPracticeSession": "Fremdriften din i den nåværende grammatikkøkten blir ikke lagret.",
+    "activityFilterButtonsLabel": "Filterknapper for nivå, spillere og status",
+    "mapFilterAllLevels": "Alle nivåer",
+    "mapFilterAllPlayers": "Alle spillere",
+    "mapFilterAllStatuses": "Alle statuser",
+    "mapFiltersShow": "Vis filtre",
+    "mapFiltersHide": "Skjul filtre",
+    "mapStatusAvailable": "Tilgjengelig",
+    "mapStatusOngoing": "Pågående",
+    "mapStatusWaiting": "Venter",
+    "mapStatusOpenToJoin": "Åpen for deltakelse",
+    "mapMatchesOffscreen": "Det er kamper utenfor synsfeltet ditt. Zoom ut for å se dem.",
+    "mapFiltersHideMatches": "Filtrene dine skjuler alle kamper. Utvid søket for å se dem.",
+    "mapNoSearchMatches": "Ingen aktiviteter samsvarer med søket ditt.",
+    "mapNoActivitiesArea": "Ingen aktiviteter i dette området.",
+    "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet.",
+    "autocorrectMobileOnly": "Kun mobil",
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrektur er kun tilgjengelig i mobilappen.",
+    "audioSectionTitle": "Lyd",
+    "audioWordsToolName": "Ord",
+    "audioWordsDescription": "Spill av lyden for et ord når du trykker på det.",
+    "audioChoicesToolName": "Valg",
+    "audioChoicesDescription": "Spill av lyd for svaralternativer i øvelser.",
+    "audioIncomingMessagesToolName": "Innkommende meldinger",
+    "audioIncomingMessagesDescription": "Les automatisk mottatte meldinger høyt på målspråket ditt for lytteøvelser.",
+    "choosePangeaAvatar": "Velg en Pangea-avatar",
+    "readAloudNoVoiceTitle": "Fant ingen {language}-stemme av høy kvalitet",
+    "readAloudNoVoiceDesktopWeb": "Denne nettleseren tilbyr ikke en {language}-stemme av høy kvalitet, så meldinger kan ikke leses høyt på en god måte her. Chrome og Edge inkluderer vanligvis stemmer av høy kvalitet.",
+    "readAloudGetChrome": "Skaff deg Chrome",
+    "readAloudNoVoiceMobileWeb": "Denne nettleseren tilbyr ikke en {language}-stemme av høy kvalitet, så meldinger kan ikke leses høyt på en god måte her. Pangea Chat-appen kan bruke enhetens beste stemmer.",
+    "readAloudGetApp": "Skaff deg appen",
+    "readAloudNoVoiceIOS": "Enheten din har ikke en {language}-stemme av høy kvalitet nedlastet ennå. Last ned en, og prøv deretter igjen:",
+    "readAloudNoVoiceIOSSteps": "  • Innstillinger\n  • Tilgjengelighet\n  • Talt innhold\n  • Stemmer\n  • {language}\n  • Last ned en forbedret eller premium-stemme",
+    "readAloudNoVoiceAndroid": "Enheten din har ikke en {language}-stemme av høy kvalitet ennå. Installer stemmedata for tekst-til-tale-motoren din, og prøv deretter igjen.",
+    "readAloudOpenVoiceSettings": "Åpne stemmeinnstillinger"
 }

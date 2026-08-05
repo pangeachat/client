@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-07-29 12:08:17.499276",
+    "@@last_modified": "2026-08-04 10:31:19.924475",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -3309,8 +3309,6 @@
     "constructUseCollected": "Kogutud vestluses",
     "constructUseNanDesc": "Ei kehti",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Lülita sisse teksti kõneks",
-    "enableTTSToolDescription": "Luba rakendusel genereerida teksti kõneks väljund teie sihtkeele osas.",
     "yourUsername": "Sinu kasutajanimi",
     "yourEmail": "Sinu e-post",
     "iWantToLearn": "Ma tahan õppida",
@@ -5216,14 +5214,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7937,15 +7927,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Teie harjut seansi edusamme ei salvestata.",
     "practiceGrammar": "Harjuta grammatikat",
     "notEnoughToPractice": "Saada rohkem sõnumeid, et harjutust avada",
     "constructUseCorGCDesc": "Õige grammatika kategooria harjutus",
     "constructUseIncGCDesc": "Vale grammatika kategooria harjutus",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8341,16 +8326,6 @@
     },
     "enableEmailNotifications": "Luba e-posti teavitused",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automaatne helisõnumite esiletõstmine",
-    "selectAudioMessagesOnPlayDescription": "Helisõnumid esitatuna automaatselt esile tõsta",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9108,7 +9083,6 @@
     "browsePublicCourses": "Sirvi avalikke kursusi",
     "editProfile": "Muuda profiili",
     "mapSearchHint": "Otsi tegevusi",
-    "mapSearchNoResults": "Vaates ei ole vasteid",
     "mapFilterAllLanguages": "Kõik keeled",
     "mapFilterNotStarted": "Alustamata",
     "mapFilterInProgress": "Käimas",
@@ -9117,7 +9091,6 @@
     "activityTypeConversation": "Vestlus",
     "playAgain": "Mängi uuesti",
     "reviewActivity": "Ülevaade",
-    "mapEmptyInView": "Sinu tasemel või keeles ei ole siin midagi. Laienda oma filtreid või suumi välja.",
     "welcomeToPangeaChat": "Tere tulemast Pangea Chati",
     "claimTrial": "Nõua oma prooviversioon",
     "thanksForSigningUp": "Aitäh registreerumise eest! Siin on",
@@ -9188,10 +9161,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9221,10 +9190,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9445,7 +9410,6 @@
     "analyticsAndSettingsLabel": "Analüütika ja seadevalikute valikud",
     "searchActivitiesLabel": "Otsi tegevusi kaardilt",
     "filteredActivitiesLabel": "Filtreeritud tegevuste loetelu",
-    "activityFilterButtonsLabel": "Keele, raskuse ja edusamme filtreerimise nupud",
     "mapZoomLabel": "Kaardi suumimise juhtnupud",
     "activityMapLabel": "Tegevuste kaart",
     "@navOptionsLabel": {
@@ -9465,10 +9429,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9701,5 +9661,41 @@
     "rateActivityCommentRejected": "Sinu kommentaari ei saanud postitada. Proovi seda ümber sõnastada või esita oma hinnang ilma kommentaarita.",
     "rateActivityThanks": "Täname tagasiside eest!",
     "activityRatingMeterLabel": "{percent}% positiivne ({count, plural, =1{1 hinnang} other{{count} hinnangut}})",
-    "newActivityBadge": "UUS"
+    "newActivityBadge": "UUS",
+    "exitVocabPracticeSession": "Sinu praeguse sõnavara harjutamise seansi edenemist ei salvestata.",
+    "exitGrammarPracticeSession": "Sinu praeguse grammatika harjutamise seansi edenemist ei salvestata.",
+    "activityFilterButtonsLabel": "Taseme, mängijate ja oleku filtri nupud",
+    "mapFilterAllLevels": "Kõik tasemed",
+    "mapFilterAllPlayers": "Kõik mängijad",
+    "mapFilterAllStatuses": "Kõik olekud",
+    "mapFiltersShow": "Näita filtreid",
+    "mapFiltersHide": "Peida filtrid",
+    "mapStatusAvailable": "Saadaval",
+    "mapStatusOngoing": "Käimas",
+    "mapStatusWaiting": "Ootel",
+    "mapStatusOpenToJoin": "Liitumiseks avatud",
+    "mapMatchesOffscreen": "Mõned mängud jäävad vaateväljast välja. Suumi välja, et neid näha.",
+    "mapFiltersHideMatches": "Teie filtrid peidavad kõik mängud. Laiendage otsingut, et neid näha.",
+    "mapNoSearchMatches": "Teie otsingule ei vasta ühtegi tegevust.",
+    "mapNoActivitiesArea": "Selles piirkonnas pole tegevusi.",
+    "practiceSessionTimedOut": "Sinu harjutussessioon lõppes pärast {minutes} minutit tegevusetust.",
+    "autocorrectMobileOnly": "Ainult mobiilis",
+    "autocorrectMobileOnlyWarning": "Seadme automaatkorrektuur on saadaval ainult mobiilirakenduses.",
+    "audioSectionTitle": "Heli",
+    "audioWordsToolName": "Sõnad",
+    "audioWordsDescription": "Esita sõna heli, kui sellele koputad.",
+    "audioChoicesToolName": "Valikud",
+    "audioChoicesDescription": "Esita harjutuste vastusevalikute heli.",
+    "audioIncomingMessagesToolName": "Sissetulevad sõnumid",
+    "audioIncomingMessagesDescription": "Loe vastuvõetud sõnumid automaatselt sihtkeeles ette kuulamisharjutuste jaoks.",
+    "choosePangeaAvatar": "Vali Pangea avatar",
+    "readAloudNoVoiceTitle": "Kvaliteetset {language} häält ei leitud",
+    "readAloudNoVoiceDesktopWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Chrome ja Edge sisaldavad tavaliselt kvaliteetseid hääli.",
+    "readAloudGetChrome": "Hangi Chrome",
+    "readAloudNoVoiceMobileWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Pangea vestlusrakendus saab kasutada teie seadme parimaid hääli.",
+    "readAloudGetApp": "Hangi rakendus",
+    "readAloudNoVoiceIOS": "Teie seadmesse pole veel kvaliteetset {language} häält alla laaditud. Laadige see alla ja proovige uuesti:",
+    "readAloudNoVoiceIOSSteps": "  • Seaded\n  • Hõlbustus\n  • Räägitav sisu\n  • Hääled\n  • {language}\n  • Laadige alla täiustatud või Premium hääl",
+    "readAloudNoVoiceAndroid": "Teie seadmes pole veel kvaliteetset {language} häält. Installige oma kõnesünteesi mootori jaoks häälandmed ja proovige uuesti.",
+    "readAloudOpenVoiceSettings": "Ava hääleseaded"
 }

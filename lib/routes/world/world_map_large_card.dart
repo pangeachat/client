@@ -7,6 +7,7 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
+import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 import 'package:fluffychat/routes/world/world_map_pinged_badge.dart';
@@ -17,10 +18,6 @@ import 'package:fluffychat/routes/world/world_map_star_dot.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
-
-/// One participant in a featured joinable/ongoing session — just what the
-/// avatar stack needs, decoupled from the Matrix SDK type.
-typedef LargeCardParticipant = ({Uri? avatar, String name});
 
 /// Pops [child] (a [WorldMapLargeCard]) in on mount and shrinks it back out on
 /// [dying], mirroring [WorldMapDot]'s exact enter/exit contract
@@ -37,11 +34,19 @@ class WorldMapLargeCardAnimated extends StatefulWidget {
   final bool dying;
   final VoidCallback? onExited;
 
+  /// Whether a freshly created state plays the entry grow-in. False for cards
+  /// already on screen at the last settle — MarkerLayer's per-frame positional
+  /// reconciliation can discard and recreate this State mid-gesture, and such
+  /// a card must render at full scale instead of replaying its pop-in (#8136).
+  /// Mirrors [WorldMapDot.animateIn].
+  final bool animateIn;
+
   const WorldMapLargeCardAnimated({
     super.key,
     required this.child,
     this.dying = false,
     this.onExited,
+    this.animateIn = true,
   });
 
   @override
@@ -59,7 +64,18 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
   void initState() {
     super.initState();
     _ctrl = AnimationController(vsync: this, duration: _duration);
-    if (!widget.dying) _ctrl.forward();
+    if (widget.dying) {
+      // Built fresh by ExitingLargeMarkersLayer, so didUpdateWidget's
+      // false→true arm never runs — play the exit from here or onExited never
+      // fires and the card leaks into _exitingLarge (#8136). Mirrors
+      // WorldMapDot.
+      _ctrl.value = 1.0;
+      _ctrl.reverse().then((_) => widget.onExited?.call());
+    } else if (widget.animateIn) {
+      _ctrl.forward();
+    } else {
+      _ctrl.value = 1.0;
+    }
   }
 
   @override
@@ -395,13 +411,13 @@ class _CardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => switch (state) {
-    ActivityPinState.joinable => _ParticipantRow(
+    ActivityPinState.joinable => ActivityParticipantRow(
       icon: Icons.meeting_room,
       accent: accent,
       participants: participants,
       openSlots: openSlots,
     ),
-    ActivityPinState.ongoingPending => _ParticipantRow(
+    ActivityPinState.ongoingPending => ActivityParticipantRow(
       icon: Icons.hourglass_bottom,
       accent: accent,
       participants: liveRoom?.largeCardParticipants ?? participants,
@@ -415,69 +431,6 @@ class _CardBody extends StatelessWidget {
     ActivityPinState.available ||
     ActivityPinState.inProgress => const SizedBox.shrink(),
   };
-}
-
-/// The Joinable / Ongoing-Pending body: a leading icon (door vs hourglass)
-/// followed by the participant row (filled/unfilled avatar circles, one per
-/// role) — world-map.instructions.md, "Pin state".
-class _ParticipantRow extends StatelessWidget {
-  final IconData icon;
-  final Color accent;
-  final List<LargeCardParticipant> participants;
-  final int openSlots;
-
-  const _ParticipantRow({
-    required this.icon,
-    required this.accent,
-    required this.participants,
-    required this.openSlots,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    if (participants.isEmpty && openSlots <= 0) {
-      return const SizedBox.shrink();
-    }
-    final theme = Theme.of(context);
-    // Shrink-wrap so a card with few roles doesn't stretch to the full width —
-    // the card sizes to this row (world-map Figma, size variety).
-    return Semantics(
-      label: L10n.of(context).participantRowLabel(
-        participants.length,
-        participants.length + openSlots,
-      ),
-      container: true,
-      child: ExcludeSemantics(
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(icon, size: 18, color: accent),
-            const SizedBox(width: 8),
-            for (final p in participants.take(4)) ...[
-              Avatar(mxContent: p.avatar, name: p.name, size: 28),
-              const SizedBox(width: 4),
-            ],
-            // An open seat, matching the activity-lobby's open-role look
-            // (ActivityParticipantIndicator) — a person-icon avatar on the
-            // primary container, scaled to this row's 28px avatars — rather than a
-            // bespoke glyph, so the two surfaces read the same.
-            for (int i = 0; i < openSlots.clamp(0, 4); i++) ...[
-              CircleAvatar(
-                radius: 14,
-                backgroundColor: theme.colorScheme.primaryContainer,
-                child: Icon(
-                  Icons.person,
-                  size: 16,
-                  color: theme.colorScheme.onPrimaryContainer,
-                ),
-              ),
-              const SizedBox(width: 4),
-            ],
-          ],
-        ),
-      ),
-    );
-  }
 }
 
 /// The Ongoing/Active body: a chat-list tile — the last chat event beneath the

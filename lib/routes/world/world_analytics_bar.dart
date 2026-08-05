@@ -185,7 +185,9 @@ class _PowerupsRow extends StatelessWidget {
   static const double _pillRightPadding = 14.0;
 
   /// Half the hex badge's width — how far it sticks out past the pill's
-  /// left edge (the Figma overhang).
+  /// left edge (the Figma overhang). No ring is reserved around it: the badge
+  /// shows the open Level panel in its own gold, not in a wash beside it
+  /// (#8067).
   static final double _hexBadgeOverhang = _badgeWidth / 2;
 
   // The bar's hex badge is smaller than [_HexLevelBadge]'s web-facing
@@ -311,10 +313,19 @@ class _PowerupsRow extends StatelessWidget {
                       left: 0,
                       child: Material(
                         type: MaterialType.transparency,
+                        // Open-panel highlight (#7977, #8062): the badge wears
+                        // its own deepened gold, the same treatment as hover
+                        // and as the web cluster's shield — a wash under a
+                        // solid gold hexagon is gold on gold, and one around it
+                        // is the circle #8067 removes. Purely a color change,
+                        // so lighting it never moves the badge or the pill it
+                        // overhangs.
                         child: LevelUpBadgeCelebration(
                           levelUpdates: viewModel.levelUpdates,
                           child: HexLevelBadge(
                             level: level,
+                            selected:
+                                selectedTab == ProgressIndicatorEnum.level,
                             onTap: () => viewModel.openLevel(context),
                             width: _badgeWidth,
                             height: _badgeHeight,

@@ -59,7 +59,8 @@ class ReadingAssistanceContent extends StatelessWidget {
         enableEmojiSelection: true,
         enableEmojiReactions:
             !overlayController.pangeaMessageEvent.room.isActivityFinished,
-        enableAnalyticsNavigation: true,
+        enableAnalyticsNavigation:
+            overlayController.config.enableWordCardAnalyticsNavigation,
         onFlagTokenInfo:
             (
               LemmaInfoResponse lemmaInfo,
@@ -82,7 +83,7 @@ class ReadingAssistanceContent extends StatelessWidget {
                 ptRequest: ptRequest,
                 ptResponse: ptResponse,
               );
-              overlayController.widget.chatController.showTokenFeedbackDialog(
+              overlayController.widget.host.showTokenFeedbackDialog(
                 requestData,
                 overlayController.pangeaMessageEvent.messageDisplayLangCode,
                 overlayController.pangeaMessageEvent,

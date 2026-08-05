@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:21.525682",
+    "@@last_modified": "2026-08-04 10:31:29.261809",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -3298,8 +3298,6 @@
     "constructUseCollected": "Verzameld in chat",
     "constructUseNanDesc": "Niet van toepassing",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Tekst-naar-spraak ingeschakeld",
-    "enableTTSToolDescription": "Sta de app toe om tekst-naar-spraak-uitvoer te genereren voor delen van tekst in uw doeltaal.",
     "yourUsername": "Uw gebruikersnaam",
     "yourEmail": "Uw e-mail",
     "iWantToLearn": "Ik wil leren",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7926,15 +7916,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Uw voortgang in de oefensessie wordt niet opgeslagen.",
     "practiceGrammar": "Oefen grammatica",
     "notEnoughToPractice": "Stuur meer berichten om de oefening te ontgrendelen",
     "constructUseCorGCDesc": "Oefening in de juiste grammaticacategorie",
     "constructUseIncGCDesc": "Oefening in de onjuiste grammaticacategorie",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8344,16 +8329,6 @@
     },
     "enableEmailNotifications": "Schakel e-mailmeldingen in",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatisch audio berichten markeren",
-    "selectAudioMessagesOnPlayDescription": "Audio berichten automatisch markeren wanneer ze worden afgespeeld",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9111,7 +9086,6 @@
     "browsePublicCourses": "Blader door openbare cursussen",
     "editProfile": "Bewerk profiel",
     "mapSearchHint": "Zoek activiteiten",
-    "mapSearchNoResults": "Geen overeenkomsten in weergave",
     "mapFilterAllLanguages": "Alle talen",
     "mapFilterNotStarted": "Niet gestart",
     "mapFilterInProgress": "Bezig",
@@ -9120,7 +9094,6 @@
     "activityTypeConversation": "Gesprek",
     "playAgain": "Speel opnieuw",
     "reviewActivity": "Beoordelen",
-    "mapEmptyInView": "Niets hier op jouw niveau of taal. Verbreed je filters of zoom uit.",
     "welcomeToPangeaChat": "Welkom bij Pangea Chat",
     "claimTrial": "Claim je proefperiode",
     "thanksForSigningUp": "Bedankt voor je aanmelding! Hier is",
@@ -9191,10 +9164,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9224,10 +9193,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9448,7 +9413,6 @@
     "analyticsAndSettingsLabel": "Analytics- en instellingenopties",
     "searchActivitiesLabel": "Zoek naar activiteiten op de kaart",
     "filteredActivitiesLabel": "Gefilterde activiteitenlijst",
-    "activityFilterButtonsLabel": "Taal-, moeilijkheidsgraad- en voortgangsfilterknoppen",
     "mapZoomLabel": "Kaartzoombediening",
     "activityMapLabel": "Activiteitenkaart",
     "@navOptionsLabel": {
@@ -9468,10 +9432,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9704,5 +9664,41 @@
     "rateActivityCommentRejected": "Je opmerking kon niet worden geplaatst. Probeer het anders te formuleren, of verstuur je beoordeling zonder opmerking.",
     "rateActivityThanks": "Bedankt voor je feedback!",
     "activityRatingMeterLabel": "{percent}% positief ({count, plural, =1{1 beoordeling} other{{count} beoordelingen}})",
-    "newActivityBadge": "NIEUW"
+    "newActivityBadge": "NIEUW",
+    "exitVocabPracticeSession": "De voortgang van je huidige woordenschatoefensessie wordt niet opgeslagen.",
+    "exitGrammarPracticeSession": "De voortgang van je huidige grammaticaoefensessie wordt niet opgeslagen.",
+    "activityFilterButtonsLabel": "Filterknoppen voor niveau, spelers en status",
+    "mapFilterAllLevels": "Alle niveaus",
+    "mapFilterAllPlayers": "Alle spelers",
+    "mapFilterAllStatuses": "Alle statussen",
+    "mapFiltersShow": "Filters tonen",
+    "mapFiltersHide": "Filters verbergen",
+    "mapStatusAvailable": "Beschikbaar",
+    "mapStatusOngoing": "Bezig",
+    "mapStatusWaiting": "Wachtend",
+    "mapStatusOpenToJoin": "Open om deel te nemen",
+    "mapMatchesOffscreen": "Er zijn wedstrijden buiten je zicht. Zoom uit om ze te zien.",
+    "mapFiltersHideMatches": "Je filters verbergen alle wedstrijden. Verbreed de zoekopdracht om ze te zien.",
+    "mapNoSearchMatches": "Geen activiteiten komen overeen met je zoekopdracht.",
+    "mapNoActivitiesArea": "Geen activiteiten in dit gebied.",
+    "practiceSessionTimedOut": "Je oefensessie is beëindigd na {minutes} minuten inactiviteit.",
+    "autocorrectMobileOnly": "Alleen mobiel",
+    "autocorrectMobileOnlyWarning": "Apparaatautocorrectie is alleen beschikbaar in de mobiele app.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Woorden",
+    "audioWordsDescription": "Speel de audio van een woord af als je erop tikt.",
+    "audioChoicesToolName": "Keuzes",
+    "audioChoicesDescription": "Speel audio af voor antwoordkeuzes in oefenactiviteiten.",
+    "audioIncomingMessagesToolName": "Inkomende berichten",
+    "audioIncomingMessagesDescription": "Lees ontvangen berichten automatisch hardop voor in je doeltaal voor luisteroefeningen.",
+    "choosePangeaAvatar": "Kies een Pangea-avatar",
+    "readAloudNoVoiceTitle": "Geen hoogwaardige {language}-stem gevonden",
+    "readAloudNoVoiceDesktopWeb": "Deze browser biedt geen hoogwaardige {language}-stem, dus berichten kunnen hier niet goed worden voorgelezen. Chrome en Edge bevatten meestal hoogwaardige stemmen.",
+    "readAloudGetChrome": "Download Chrome",
+    "readAloudNoVoiceMobileWeb": "Deze browser biedt geen hoogwaardige {language}-stem, dus berichten kunnen hier niet goed worden voorgelezen. De Pangea Chat-app kan de beste stemmen van je apparaat gebruiken.",
+    "readAloudGetApp": "Download de app",
+    "readAloudNoVoiceIOS": "Je apparaat heeft nog geen hoogwaardige {language}-stem gedownload. Download er een en probeer het opnieuw:",
+    "readAloudNoVoiceIOSSteps": "  • Instellingen\n  • Toegankelijkheid\n  • Gesproken inhoud\n  • Stemmen\n  • {language}\n  • Download een verbeterde of premium stem",
+    "readAloudNoVoiceAndroid": "Je apparaat heeft nog geen hoogwaardige {language}-stem. Installeer stemgegevens voor je tekst-naar-spraak-engine en probeer het opnieuw.",
+    "readAloudOpenVoiceSettings": "Open steminstellingen"
 }

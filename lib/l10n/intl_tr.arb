@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-07-29 12:08:24.323661",
+    "@@last_modified": "2026-08-04 10:31:34.712988",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -3117,8 +3117,6 @@
     "constructUseCollected": "Sohbette toplandı",
     "constructUseNanDesc": "Uygulanamaz",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Metinden sese özelliği etkinleştirildi",
-    "enableTTSToolDescription": "Uygulamanın hedef dilinizdeki metin parçaları için metinden sese çıkış üretmesine izin verin.",
     "yourUsername": "Kullanıcı adınız",
     "yourEmail": "E-posta adresiniz",
     "iWantToLearn": "Öğrenmek istiyorum",
@@ -5424,14 +5422,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -8047,15 +8037,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Pratik oturumunuzun ilerlemesi kaydedilmeyecek.",
     "practiceGrammar": "Dil bilgisi pratiği yap",
     "notEnoughToPractice": "Pratik yapmak için daha fazla mesaj gönderin",
     "constructUseCorGCDesc": "Doğru dil bilgisi kategorisi pratiği",
     "constructUseIncGCDesc": "Yanlış dil bilgisi kategorisi pratiği",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8645,16 +8630,6 @@
     },
     "enableEmailNotifications": "E-posta bildirimlerini etkinleştir",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Sesli mesajları otomatik vurgula",
-    "selectAudioMessagesOnPlayDescription": "Oynatıldığında sesli mesajları otomatik olarak vurgula",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9412,7 +9387,6 @@
     "browsePublicCourses": "Açık kursları göz atın",
     "editProfile": "Profili düzenle",
     "mapSearchHint": "Aktiviteleri ara",
-    "mapSearchNoResults": "Görüntüde eşleşme yok",
     "mapFilterAllLanguages": "Tüm diller",
     "mapFilterNotStarted": "Başlamadı",
     "mapFilterInProgress": "Devam ediyor",
@@ -9421,7 +9395,6 @@
     "activityTypeConversation": "Konuşma",
     "playAgain": "Tekrar oyna",
     "reviewActivity": "Gözden geçir",
-    "mapEmptyInView": "Seviyenizde veya dilinizde burada hiçbir şey yok. Filtrelerinizi genişletin veya uzaklaştırın.",
     "welcomeToPangeaChat": "Pangea Chat'e hoş geldiniz",
     "claimTrial": "Denemenizi talep edin",
     "thanksForSigningUp": "Kaydolduğunuz için teşekkürler! İşte",
@@ -9492,10 +9465,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9525,10 +9494,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9749,7 +9714,6 @@
     "analyticsAndSettingsLabel": "Analitik ve Ayarlar seçenekleri",
     "searchActivitiesLabel": "Haritada etkinlikleri ara",
     "filteredActivitiesLabel": "Filtrelenmiş etkinlik listesi",
-    "activityFilterButtonsLabel": "Dil, zorluk ve ilerleme filtre butonları",
     "mapZoomLabel": "Harita yakınlaştırma kontrolleri",
     "activityMapLabel": "Etkinlik haritası",
     "@navOptionsLabel": {
@@ -9769,10 +9733,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10005,5 +9965,41 @@
     "rateActivityCommentRejected": "Yorumunuz gönderilemedi. Yeniden düzenlemeyi deneyin veya yorumsuz olarak puanınızı gönderin.",
     "rateActivityThanks": "Geri bildiriminiz için teşekkürler!",
     "activityRatingMeterLabel": "Yüzde {percent} olumlu ({count, plural, =1{1 puan} other{{count} puan}})",
-    "newActivityBadge": "YENİ"
+    "newActivityBadge": "YENİ",
+    "exitVocabPracticeSession": "Mevcut kelime alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
+    "exitGrammarPracticeSession": "Mevcut dil bilgisi alıştırması oturumu ilerlemeniz kaydedilmeyecek.",
+    "activityFilterButtonsLabel": "Seviye, oyuncu ve durum filtre düğmeleri",
+    "mapFilterAllLevels": "Tüm seviyeler",
+    "mapFilterAllPlayers": "Tüm oyuncular",
+    "mapFilterAllStatuses": "Tüm durumlar",
+    "mapFiltersShow": "Filtreleri göster",
+    "mapFiltersHide": "Filtreleri gizle",
+    "mapStatusAvailable": "Müsait",
+    "mapStatusOngoing": "Devam ediyor",
+    "mapStatusWaiting": "Bekliyor",
+    "mapStatusOpenToJoin": "Katılmaya açık",
+    "mapMatchesOffscreen": "Görüş alanınızın dışında eşleşmeler var. Görmek için uzaklaştırın.",
+    "mapFiltersHideMatches": "Filtreleriniz tüm eşleşmeleri gizliyor. Görmek için aramayı genişletin.",
+    "mapNoSearchMatches": "Aramanızla eşleşen etkinlik yok.",
+    "mapNoActivitiesArea": "Bu alanda etkinlik yok.",
+    "practiceSessionTimedOut": "Etkinlik olmaksızın {minutes} dakika sonra pratik oturumunuz sona erdi.",
+    "autocorrectMobileOnly": "Yalnızca mobil",
+    "autocorrectMobileOnlyWarning": "Cihaz otomatik düzeltme özelliği yalnızca mobil uygulamada mevcuttur.",
+    "audioSectionTitle": "Ses",
+    "audioWordsToolName": "Kelimeler",
+    "audioWordsDescription": "Bir kelimeye dokunduğunuzda sesini çalın.",
+    "audioChoicesToolName": "Seçenekler",
+    "audioChoicesDescription": "Alıştırma etkinliklerindeki cevap seçenekleri için ses çalın.",
+    "audioIncomingMessagesToolName": "Gelen mesajlar",
+    "audioIncomingMessagesDescription": "Dinleme pratiği için alınan mesajları hedef dilinizde otomatik olarak yüksek sesle okuyun.",
+    "choosePangeaAvatar": "Pangea avatarı seç",
+    "readAloudNoVoiceTitle": "Yüksek kaliteli {language} sesi bulunamadı",
+    "readAloudNoVoiceDesktopWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Chrome ve Edge genellikle yüksek kaliteli sesler içerir.",
+    "readAloudGetChrome": "Chrome'u Edinin",
+    "readAloudNoVoiceMobileWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Pangea Sohbet uygulaması cihazınızın en iyi seslerini kullanabilir.",
+    "readAloudGetApp": "Uygulamayı edinin",
+    "readAloudNoVoiceIOS": "Cihazınızda henüz yüksek kaliteli bir {language} sesi indirilmemiş. Bir tane indirin, sonra tekrar deneyin:",
+    "readAloudNoVoiceIOSSteps": "  • Ayarlar\n  • Erişilebilirlik\n  • Konuşulan İçerik\n  • Sesler\n  • {language}\n  • Gelişmiş veya Premium bir ses indirin",
+    "readAloudNoVoiceAndroid": "Cihazınızda henüz yüksek kaliteli bir {language} sesi yok. Metin okuma motorunuz için ses verilerini yükleyin, sonra tekrar deneyin.",
+    "readAloudOpenVoiceSettings": "Ses ayarlarını aç"
 }

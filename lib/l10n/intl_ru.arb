@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-07-29 12:08:22.580569",
+    "@@last_modified": "2026-08-04 10:31:31.551210",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -6080,14 +6080,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8881,15 +8873,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Ваш прогресс в сессии практики не будет сохранен.",
     "practiceGrammar": "Практика грамматики",
     "notEnoughToPractice": "Отправьте больше сообщений, чтобы разблокировать практику",
     "constructUseCorGCDesc": "Практика правильной грамматики",
     "constructUseIncGCDesc": "Практика неправильной грамматики",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8946,8 +8933,6 @@
     "constructUseCollected": "Собрано в чате",
     "constructUseNanDesc": "Не применяется",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Включено преобразование текста в речь",
-    "enableTTSToolDescription": "Разрешить приложению озвучивать части текста на вашем целевом языке.",
     "yourUsername": "Ваше имя пользователя",
     "yourEmail": "Ваш адрес электронной почты",
     "welcomeUser": "Добро пожаловать {user}",
@@ -9327,16 +9312,6 @@
     },
     "enableEmailNotifications": "Включить уведомления по электронной почте",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Автовыделение аудиосообщений",
-    "selectAudioMessagesOnPlayDescription": "Автоматически выделять аудиосообщения при воспроизведении",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10085,7 +10060,6 @@
     "browsePublicCourses": "Просмотреть публичные курсы",
     "editProfile": "Редактировать профиль",
     "mapSearchHint": "Поиск мероприятий",
-    "mapSearchNoResults": "Нет совпадений в области видимости",
     "mapFilterAllLanguages": "Все языки",
     "mapFilterNotStarted": "Не начато",
     "mapFilterInProgress": "В процессе",
@@ -10094,7 +10068,6 @@
     "activityTypeConversation": "Разговор",
     "playAgain": "Играть снова",
     "reviewActivity": "Обзор",
-    "mapEmptyInView": "Здесь ничего нет на вашем уровне или языке. Расширьте свои фильтры или уменьшите масштаб.",
     "welcomeToPangeaChat": "Добро пожаловать в Pangea Chat",
     "claimTrial": "Получите свою пробную версию",
     "thanksForSigningUp": "Спасибо за регистрацию! Вот",
@@ -10165,10 +10138,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10198,10 +10167,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10422,7 +10387,6 @@
     "analyticsAndSettingsLabel": "Опции аналитики и настроек",
     "searchActivitiesLabel": "Поиск активностей на карте",
     "filteredActivitiesLabel": "Список отфильтрованных активностей",
-    "activityFilterButtonsLabel": "Кнопки фильтрации по языку, сложности и прогрессу",
     "mapZoomLabel": "Элементы управления масштабом карты",
     "activityMapLabel": "Карта активностей",
     "@navOptionsLabel": {
@@ -10442,10 +10406,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10678,5 +10638,41 @@
     "rateActivityCommentRejected": "Ваш комментарий не удалось опубликовать. Попробуйте перефразировать его или отправьте оценку без комментария.",
     "rateActivityThanks": "Спасибо за ваш отзыв!",
     "activityRatingMeterLabel": "{percent}% положительных ({count, plural, =1{1 оценка} other{{count} оценок}})",
-    "newActivityBadge": "НОВОЕ"
+    "newActivityBadge": "НОВОЕ",
+    "exitVocabPracticeSession": "Прогресс текущей сессии по практике словарного запаса не будет сохранен.",
+    "exitGrammarPracticeSession": "Прогресс текущей сессии по практике грамматики не будет сохранен.",
+    "activityFilterButtonsLabel": "Кнопки фильтра по уровню, игрокам и статусу",
+    "mapFilterAllLevels": "Все уровни",
+    "mapFilterAllPlayers": "Все игроки",
+    "mapFilterAllStatuses": "Все статусы",
+    "mapFiltersShow": "Показать фильтры",
+    "mapFiltersHide": "Скрыть фильтры",
+    "mapStatusAvailable": "Доступно",
+    "mapStatusOngoing": "В процессе",
+    "mapStatusWaiting": "Ожидание",
+    "mapStatusOpenToJoin": "Открыто для присоединения",
+    "mapMatchesOffscreen": "Есть матчи за пределами вашей видимости. Уменьшите масштаб, чтобы увидеть их.",
+    "mapFiltersHideMatches": "Ваши фильтры скрывают все матчи. Расширьте поиск, чтобы увидеть их.",
+    "mapNoSearchMatches": "По вашему запросу не найдено ни одной активности.",
+    "mapNoActivitiesArea": "В этой области нет активностей.",
+    "practiceSessionTimedOut": "Ваша тренировка завершилась после {minutes} минут бездействия.",
+    "autocorrectMobileOnly": "Только для мобильных",
+    "autocorrectMobileOnlyWarning": "Автокоррекция доступна только в мобильном приложении.",
+    "audioSectionTitle": "Аудио",
+    "audioWordsToolName": "Слова",
+    "audioWordsDescription": "Воспроизводить аудио слова при нажатии на него.",
+    "audioChoicesToolName": "Варианты",
+    "audioChoicesDescription": "Воспроизводить аудио для вариантов ответа в практических заданиях.",
+    "audioIncomingMessagesToolName": "Входящие сообщения",
+    "audioIncomingMessagesDescription": "Автоматически читать вслух полученные сообщения на вашем целевом языке для практики аудирования.",
+    "choosePangeaAvatar": "Выберите аватар Pangea",
+    "readAloudNoVoiceTitle": "Высококачественный голос {language} не найден",
+    "readAloudNoVoiceDesktopWeb": "Этот браузер не предлагает высококачественный голос {language}, поэтому сообщения не могут быть хорошо прочитаны вслух. Chrome и Edge обычно включают высококачественные голоса.",
+    "readAloudGetChrome": "Установить Chrome",
+    "readAloudNoVoiceMobileWeb": "Этот браузер не предлагает высококачественный голос {language}, поэтому сообщения не могут быть хорошо прочитаны вслух. Приложение Pangea Chat может использовать лучшие голоса вашего устройства.",
+    "readAloudGetApp": "Установить приложение",
+    "readAloudNoVoiceIOS": "На вашем устройстве еще не загружен высококачественный голос {language}. Загрузите его, затем попробуйте снова:",
+    "readAloudNoVoiceIOSSteps": "  • Настройки\n  • Универсальный доступ\n  • Произносимый контент\n  • Голоса\n  • {language}\n  • Загрузите улучшенный или премиум-голос",
+    "readAloudNoVoiceAndroid": "На вашем устройстве еще нет высококачественного голоса {language}. Установите голосовые данные для вашего движка преобразования текста в речь, затем попробуйте снова.",
+    "readAloudOpenVoiceSettings": "Открыть настройки голоса"
 }

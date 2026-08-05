@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:18.067216",
+    "@@last_modified": "2026-08-04 10:31:22.814037",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2097,8 +2097,6 @@
     "constructUseCollected": "אסוף בצ'אט",
     "constructUseNanDesc": "לא רלוונטי",
     "xpIntoLevel": "{currentXP} / {maxXP} נקודות ניסיון",
-    "enableTTSToolName": "הפעל טקסט לדיבור",
-    "enableTTSToolDescription": "אפשר לאפליקציה לייצר פלט טקסט לדיבור לחלקי טקסט בשפת היעד שלך.",
     "yourUsername": "שם המשתמש שלך",
     "yourEmail": "הדוא\"ל שלך",
     "iWantToLearn": "אני רוצה ללמוד",
@@ -6044,14 +6042,6 @@
             }
         }
     },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@yourUsername": {
         "type": "String",
         "placeholders": {}
@@ -8666,15 +8656,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "ההתקדמות שלך במפגש האימון לא תישמר.",
     "practiceGrammar": "אימון דקדוק",
     "notEnoughToPractice": "שלח יותר הודעות כדי לפתוח אימון",
     "constructUseCorGCDesc": "אימון בקטגוריית דקדוק נכון",
     "constructUseIncGCDesc": "אימון בקטגוריית דקדוק לא נכון",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -9264,16 +9249,6 @@
     },
     "enableEmailNotifications": "אפשר התראות דוא\"ל",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "הדגש אוטומטית הודעות קוליות",
-    "selectAudioMessagesOnPlayDescription": "הדגש אוטומטית הודעות קוליות כאשר הן מנוגנות",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10031,7 +10006,6 @@
     "browsePublicCourses": "עיין בקורסים ציבוריים",
     "editProfile": "ערוך פרופיל",
     "mapSearchHint": "חפש פעילויות",
-    "mapSearchNoResults": "אין תוצאות בתצוגה",
     "mapFilterAllLanguages": "כל השפות",
     "mapFilterNotStarted": "לא התחיל",
     "mapFilterInProgress": "בתהליך",
@@ -10040,7 +10014,6 @@
     "activityTypeConversation": "שיחה",
     "playAgain": "שחק שוב",
     "reviewActivity": "סקירה",
-    "mapEmptyInView": "אין כאן כלום ברמתך או בשפתך. הרחב את המסננים שלך או התקרב.",
     "welcomeToPangeaChat": "ברוך הבא לפנגיאה צ'אט",
     "claimTrial": "דרוש את הניסיון שלך",
     "thanksForSigningUp": "תודה על ההרשמה! הנה",
@@ -10111,10 +10084,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -10144,10 +10113,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -10368,7 +10333,6 @@
     "analyticsAndSettingsLabel": "אפשרויות ניתוח והגדרות",
     "searchActivitiesLabel": "חפש פעילויות על המפה",
     "filteredActivitiesLabel": "רשימת פעילויות מסוננות",
-    "activityFilterButtonsLabel": "כפתורי סינון שפה, קושי והתקדמות",
     "mapZoomLabel": "בקרות זום במפה",
     "activityMapLabel": "מפת פעילויות",
     "@navOptionsLabel": {
@@ -10388,10 +10352,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -10624,5 +10584,41 @@
     "rateActivityCommentRejected": "התגובה שלך לא פורסמה. נסה לנסח אותה מחדש, או שלח את הדירוג שלך ללא תגובה.",
     "rateActivityThanks": "תודה על המשוב!",
     "activityRatingMeterLabel": "{percent}% חיובי ({count, plural, =1{דירוג 1} other{{count} דירוגים}})",
-    "newActivityBadge": "חדש"
+    "newActivityBadge": "חדש",
+    "exitVocabPracticeSession": "ההתקדמות שלך באימון אוצר המילים הנוכחי לא תישמר.",
+    "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
+    "activityFilterButtonsLabel": "לחצני סינון לפי רמה, שחקנים וסטטוס",
+    "mapFilterAllLevels": "כל הרמות",
+    "mapFilterAllPlayers": "כל השחקנים",
+    "mapFilterAllStatuses": "כל הסטטוסים",
+    "mapFiltersShow": "הצג מסננים",
+    "mapFiltersHide": "הסתר מסננים",
+    "mapStatusAvailable": "זמין",
+    "mapStatusOngoing": "מתבצע",
+    "mapStatusWaiting": "ממתין",
+    "mapStatusOpenToJoin": "פתוח להצטרפות",
+    "mapMatchesOffscreen": "יש התאמות מחוץ לתצוגה שלך. התרחק כדי לראות אותן.",
+    "mapFiltersHideMatches": "המסננים שלך מסתירים את כל ההתאמות. הרחב את החיפוש כדי לראות אותן.",
+    "mapNoSearchMatches": "אין פעילויות התואמות לחיפוש שלך.",
+    "mapNoActivitiesArea": "אין פעילויות באזור זה.",
+    "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות.",
+    "autocorrectMobileOnly": "נייד בלבד",
+    "autocorrectMobileOnlyWarning": "התיקון האוטומטי זמין רק באפליקציה לנייד.",
+    "audioSectionTitle": "שמע",
+    "audioWordsToolName": "מילים",
+    "audioWordsDescription": "השמעת מילה בלחיצה עליה.",
+    "audioChoicesToolName": "אפשרויות",
+    "audioChoicesDescription": "השמעת אודיו עבור אפשרויות התשובה בפעילויות תרגול.",
+    "audioIncomingMessagesToolName": "הודעות נכנסות",
+    "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה.",
+    "choosePangeaAvatar": "בחר אווטאר של Pangea",
+    "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
+    "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
+    "readAloudGetChrome": "קבל את Chrome",
+    "readAloudNoVoiceMobileWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. אפליקציית Pangea Chat יכולה להשתמש בקולות הטובים ביותר של המכשיר שלך.",
+    "readAloudGetApp": "קבל את האפליקציה",
+    "readAloudNoVoiceIOS": "המכשיר שלך עדיין לא הוריד קול {language} באיכות גבוהה. הורד אחד, ואז נסה שוב:",
+    "readAloudNoVoiceIOSSteps": "  • הגדרות\n  • נגישות\n  • תוכן מדובר\n  • קולות\n  • {language}\n  • הורד קול משופר או פרימיום",
+    "readAloudNoVoiceAndroid": "המכשיר שלך עדיין לא כולל קול {language} באיכות גבוהה. התקן נתוני קול עבור מנוע הטקסט לדיבור שלך, ואז נסה שוב.",
+    "readAloudOpenVoiceSettings": "פתח את הגדרות הקול"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-07-29 12:08:17.314079",
+    "@@last_modified": "2026-08-04 10:31:21.215710",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3299,8 +3299,6 @@
     "constructUseCollected": "Bilduta chat-en",
     "constructUseNanDesc": "Ez da aplikagarria",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Testu-hizketara gaituta",
-    "enableTTSToolDescription": "Aldatu aplikazioak testu-hizketara irteera sortzeko zure hizkuntzako testu zatietarako.",
     "yourUsername": "Zure erabiltzaile-izena",
     "yourEmail": "Zure emaila",
     "iWantToLearn": "Nahi dut ikasi",
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7926,15 +7916,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Zure praktika saioaren aurrerapena ez da gorde.",
     "practiceGrammar": "Gramatika praktikatu",
     "notEnoughToPractice": "Praktika desblokeatzeko gehiago mezu bidali",
     "constructUseCorGCDesc": "Gramatika kategoriako praktika zuzena",
     "constructUseIncGCDesc": "Gramatika kategoriako praktika okerra",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -8344,16 +8329,6 @@
     },
     "enableEmailNotifications": "Gaitu posta elektronikoaren jakinarazpenak",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Audio mezuak automatikoki nabarmentzea",
-    "selectAudioMessagesOnPlayDescription": "Audio mezuak automatikoki nabarmentzea erreproduzitzen direnean",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9111,7 +9086,6 @@
     "browsePublicCourses": "Arakatu publiko ikastaroak",
     "editProfile": "Editatu profila",
     "mapSearchHint": "Bilatu jarduerak",
-    "mapSearchNoResults": "Ez dago bat etorritakoen ikuspegian",
     "mapFilterAllLanguages": "Hizkuntza guztiak",
     "mapFilterNotStarted": "Hasita ez",
     "mapFilterInProgress": "Prozesuan",
@@ -9120,7 +9094,6 @@
     "activityTypeConversation": "Elkarrizketa",
     "playAgain": "Jolastu berriro",
     "reviewActivity": "Berrikusi",
-    "mapEmptyInView": "Ez dago ezer zure mailan edo hizkuntzan. Zabaldu zure iragazkiak edo hurbildu.",
     "welcomeToPangeaChat": "Ongi etorri Pangea Chat-era",
     "claimTrial": "Eska itzazu zure probak",
     "thanksForSigningUp": "Eskerrik asko izena emateagatik! Hona hemen",
@@ -9191,10 +9164,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -9224,10 +9193,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -9448,7 +9413,6 @@
     "analyticsAndSettingsLabel": "Analitika eta Ezarpenen aukerak",
     "searchActivitiesLabel": "Bilatu jarduerak mapan",
     "filteredActivitiesLabel": "Iragazitako jardueren zerrenda",
-    "activityFilterButtonsLabel": "Hizkuntza, zailtasuna eta aurrerapen iragazki botoiak",
     "mapZoomLabel": "Maparen zoom kontrolak",
     "activityMapLabel": "Jarduera mapa",
     "@navOptionsLabel": {
@@ -9468,10 +9432,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -9704,5 +9664,41 @@
     "rateActivityCommentRejected": "Ezin izan da zure iruzkina argitaratu. Saiatu berriro idazten, edo bidali zure balorazioa iruzkinik gabe.",
     "rateActivityThanks": "Eskerrik asko zure iritziagatik!",
     "activityRatingMeterLabel": "%{percent} positibo ({count, plural, =1{balorazio 1} other{{count} balorazio}})",
-    "newActivityBadge": "BERRIA"
+    "newActivityBadge": "BERRIA",
+    "exitVocabPracticeSession": "Zure egungo hiztegi-praktika saioaren aurrerapena ez da gordeko.",
+    "exitGrammarPracticeSession": "Zure egungo gramatika-praktika saioaren aurrerapena ez da gordeko.",
+    "activityFilterButtonsLabel": "Maila, jokalariak eta egoera iragazteko botoiak",
+    "mapFilterAllLevels": "Maila guztiak",
+    "mapFilterAllPlayers": "Jokalari guztiak",
+    "mapFilterAllStatuses": "Egoera guztiak",
+    "mapFiltersShow": "Erakutsi iragazkiak",
+    "mapFiltersHide": "Ezkutatu iragazkiak",
+    "mapStatusAvailable": "Erabilgarri",
+    "mapStatusOngoing": "Abian",
+    "mapStatusWaiting": "Zain",
+    "mapStatusOpenToJoin": "Ireki daiteke",
+    "mapMatchesOffscreen": "Partidak daude zure ikuspegitik kanpo. Handitu ikusteko.",
+    "mapFiltersHideMatches": "Zure iragazkiek partida guztiak ezkutatzen dituzte. Zabaltu bilaketa ikusteko.",
+    "mapNoSearchMatches": "Ez dago zure bilaketarekin bat datorren jarduerarik.",
+    "mapNoActivitiesArea": "Ez dago jarduerarik eremu honetan.",
+    "practiceSessionTimedOut": "Zure praktika-saioa amaitu da {minutes} minutuz jarduerarik gabe egon ondoren.",
+    "autocorrectMobileOnly": "Mugikorrean bakarrik",
+    "autocorrectMobileOnlyWarning": "Gailuaren zuzenketa automatikoa mugikorreko aplikazioan bakarrik dago erabilgarri.",
+    "audioSectionTitle": "Audioa",
+    "audioWordsToolName": "Hitzak",
+    "audioWordsDescription": "Sakatu hitz bat haren audioa entzuteko.",
+    "audioChoicesToolName": "Aukerak",
+    "audioChoicesDescription": "Praktikatzeko jardueretan erantzun-aukerei dagokien audioa erreproduzitu.",
+    "audioIncomingMessagesToolName": "Jasotako mezuak",
+    "audioIncomingMessagesDescription": "Jasotako mezuak automatikoki irakurri ozenki zure xede-hizkuntzan, entzuteko praktikatzeko.",
+    "choosePangeaAvatar": "Aukeratu Pangea avatar bat",
+    "readAloudNoVoiceTitle": "Ez da kalitate handiko {language} ahotsik aurkitu",
+    "readAloudNoVoiceDesktopWeb": "Nabigatzaile honek ez du kalitate handiko {language} ahotsik eskaintzen, beraz, mezuak ezin dira ondo irakurri hemen. Chrome eta Edge-k kalitate handiko ahotsak izan ohi dituzte.",
+    "readAloudGetChrome": "Lortu Chrome",
+    "readAloudNoVoiceMobileWeb": "Nabigatzaile honek ez du kalitate handiko {language} ahotsik eskaintzen, beraz, mezuak ezin dira ondo irakurri hemen. Pangea Chat aplikazioak zure gailuko ahots onenak erabil ditzake.",
+    "readAloudGetApp": "Lortu aplikazioa",
+    "readAloudNoVoiceIOS": "Zure gailuak oraindik ez du kalitate handiko {language} ahotsik deskargatuta. Deskargatu bat, eta saiatu berriro:",
+    "readAloudNoVoiceIOSSteps": "  • Ezarpenak\n  • Irisgarritasuna\n  • Ahozko edukia\n  • Ahotsak\n  • {language}\n  • Deskargatu hobetutako edo premium ahots bat",
+    "readAloudNoVoiceAndroid": "Zure gailuak oraindik ez du kalitate handiko {language} ahotsik. Instalatu ahots-datuak zure testu-ahots motorrako, eta saiatu berriro.",
+    "readAloudOpenVoiceSettings": "Ireki ahots-ezarpenak"
 }

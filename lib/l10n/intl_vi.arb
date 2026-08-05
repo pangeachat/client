@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-07-29 12:08:24.905448",
+    "@@last_modified": "2026-08-04 10:31:35.344192",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -2170,8 +2170,6 @@
             }
         }
     },
-    "enableTTSToolName": "Bật đọc văn bản (text-to-speech)",
-    "enableTTSToolDescription": "Cho phép ứng dụng tạo âm thanh đọc văn bản của ngôn ngữ đích",
     "yourUsername": "Tên người dùng của bạn",
     "yourEmail": "Email của bạn",
     "iWantToLearn": "Tôi muốn học",
@@ -5012,15 +5010,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Tiến trình phiên thực hành của bạn sẽ không được lưu.",
     "practiceGrammar": "Thực hành ngữ pháp",
     "notEnoughToPractice": "Gửi thêm tin nhắn để mở khóa thực hành",
     "constructUseCorGCDesc": "Thực hành thể loại ngữ pháp đúng",
     "constructUseIncGCDesc": "Thực hành thể loại ngữ pháp sai",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -5610,16 +5603,6 @@
     },
     "enableEmailNotifications": "Bật thông báo qua email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Tự động làm nổi bật tin nhắn âm thanh",
-    "selectAudioMessagesOnPlayDescription": "Tự động làm nổi bật tin nhắn âm thanh khi phát",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -6377,7 +6360,6 @@
     "browsePublicCourses": "Duyệt các khóa học công khai",
     "editProfile": "Chỉnh sửa hồ sơ",
     "mapSearchHint": "Tìm kiếm hoạt động",
-    "mapSearchNoResults": "Không có kết quả nào trong chế độ xem",
     "mapFilterAllLanguages": "Tất cả các ngôn ngữ",
     "mapFilterNotStarted": "Chưa bắt đầu",
     "mapFilterInProgress": "Đang tiến hành",
@@ -6386,7 +6368,6 @@
     "activityTypeConversation": "Cuộc trò chuyện",
     "playAgain": "Chơi lại",
     "reviewActivity": "Xem lại",
-    "mapEmptyInView": "Không có gì ở cấp độ hoặc ngôn ngữ của bạn. Mở rộng bộ lọc của bạn hoặc thu nhỏ.",
     "welcomeToPangeaChat": "Chào mừng đến với Pangea Chat",
     "claimTrial": "Nhận thử nghiệm của bạn",
     "thanksForSigningUp": "Cảm ơn bạn đã đăng ký! Đây là",
@@ -6457,10 +6438,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mapSearchNoResults": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@mapFilterAllLanguages": {
         "type": "String",
         "placeholders": {}
@@ -6490,10 +6467,6 @@
         "placeholders": {}
     },
     "@reviewActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mapEmptyInView": {
         "type": "String",
         "placeholders": {}
     },
@@ -6714,7 +6687,6 @@
     "analyticsAndSettingsLabel": "Tùy chọn phân tích và cài đặt",
     "searchActivitiesLabel": "Tìm kiếm hoạt động trên bản đồ",
     "filteredActivitiesLabel": "Danh sách hoạt động đã lọc",
-    "activityFilterButtonsLabel": "Nút lọc ngôn ngữ, độ khó và tiến độ",
     "mapZoomLabel": "Điều khiển phóng to bản đồ",
     "activityMapLabel": "Bản đồ hoạt động",
     "@navOptionsLabel": {
@@ -6734,10 +6706,6 @@
         "placeholders": {}
     },
     "@filteredActivitiesLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityFilterButtonsLabel": {
         "type": "String",
         "placeholders": {}
     },
@@ -6970,5 +6938,41 @@
     "rateActivityCommentRejected": "Không thể đăng bình luận của bạn. Hãy thử diễn đạt lại hoặc gửi đánh giá mà không có bình luận.",
     "rateActivityThanks": "Cảm ơn phản hồi của bạn!",
     "activityRatingMeterLabel": "{percent}% tích cực ({count, plural, =1{1 đánh giá} other{{count} đánh giá}})",
-    "newActivityBadge": "MỚI"
+    "newActivityBadge": "MỚI",
+    "exitVocabPracticeSession": "Tiến độ phiên luyện từ vựng hiện tại của bạn sẽ không được lưu.",
+    "exitGrammarPracticeSession": "Tiến độ phiên luyện ngữ pháp hiện tại của bạn sẽ không được lưu.",
+    "activityFilterButtonsLabel": "Các nút lọc cấp độ, người chơi và trạng thái",
+    "mapFilterAllLevels": "Tất cả cấp độ",
+    "mapFilterAllPlayers": "Tất cả người chơi",
+    "mapFilterAllStatuses": "Tất cả trạng thái",
+    "mapFiltersShow": "Hiện bộ lọc",
+    "mapFiltersHide": "Ẩn bộ lọc",
+    "mapStatusAvailable": "Có sẵn",
+    "mapStatusOngoing": "Đang diễn ra",
+    "mapStatusWaiting": "Đang chờ",
+    "mapStatusOpenToJoin": "Mở để tham gia",
+    "mapMatchesOffscreen": "Có các trận đấu nằm ngoài tầm nhìn của bạn. Hãy thu nhỏ để xem chúng.",
+    "mapFiltersHideMatches": "Bộ lọc của bạn đang ẩn tất cả các trận đấu. Hãy mở rộng phạm vi tìm kiếm để xem chúng.",
+    "mapNoSearchMatches": "Không có hoạt động nào khớp với tìm kiếm của bạn.",
+    "mapNoActivitiesArea": "Không có hoạt động nào trong khu vực này.",
+    "practiceSessionTimedOut": "Phiên luyện tập của bạn đã kết thúc sau {minutes} phút không hoạt động.",
+    "autocorrectMobileOnly": "Chỉ trên di động",
+    "autocorrectMobileOnlyWarning": "Tự động sửa lỗi chỉ khả dụng trên ứng dụng di động.",
+    "audioSectionTitle": "Âm thanh",
+    "audioWordsToolName": "Từ vựng",
+    "audioWordsDescription": "Phát âm thanh của một từ khi bạn chạm vào từ đó.",
+    "audioChoicesToolName": "Lựa chọn",
+    "audioChoicesDescription": "Phát âm thanh cho các lựa chọn trả lời trong các hoạt động luyện tập.",
+    "audioIncomingMessagesToolName": "Tin nhắn đến",
+    "audioIncomingMessagesDescription": "Tự động đọc to các tin nhắn đã nhận bằng ngôn ngữ mục tiêu của bạn để luyện nghe.",
+    "choosePangeaAvatar": "Chọn ảnh đại diện Pangea",
+    "readAloudNoVoiceTitle": "Không tìm thấy giọng đọc {language} chất lượng cao",
+    "readAloudNoVoiceDesktopWeb": "Trình duyệt này không cung cấp giọng đọc {language} chất lượng cao, nên không thể đọc to tin nhắn tốt ở đây. Chrome và Edge thường có giọng đọc chất lượng cao.",
+    "readAloudGetChrome": "Tải Chrome",
+    "readAloudNoVoiceMobileWeb": "Trình duyệt này không cung cấp giọng đọc {language} chất lượng cao, nên không thể đọc to tin nhắn tốt ở đây. Ứng dụng Pangea Chat có thể sử dụng giọng đọc tốt nhất của thiết bị bạn.",
+    "readAloudGetApp": "Tải ứng dụng",
+    "readAloudNoVoiceIOS": "Thiết bị của bạn chưa tải giọng đọc {language} chất lượng cao. Hãy tải xuống rồi thử lại:",
+    "readAloudNoVoiceIOSSteps": "  • Cài đặt\n  • Trợ năng\n  • Nội dung được đọc\n  • Giọng nói\n  • {language}\n  • Tải xuống giọng nói Nâng cao hoặc Cao cấp",
+    "readAloudNoVoiceAndroid": "Thiết bị của bạn chưa có giọng đọc {language} chất lượng cao. Hãy cài đặt dữ liệu giọng nói cho công cụ chuyển văn bản thành giọng nói của bạn, sau đó thử lại.",
+    "readAloudOpenVoiceSettings": "Mở cài đặt giọng nói"
 }

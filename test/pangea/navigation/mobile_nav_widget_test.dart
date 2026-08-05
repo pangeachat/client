@@ -23,6 +23,7 @@ void main() {
     AppSection activeSection = AppSection.world,
     Widget? cavityChild,
     String? cavityKey,
+    String? cavityContextId,
     bool cavityDefaultsToPeek = false,
     void Function(AppSection section)? onSectionTap,
     VoidCallback? onCourseShortcutTap,
@@ -33,6 +34,8 @@ void main() {
     VoidCallback? onDismissed,
     ValueChanged<bool>? onCavityFullChanged,
     double keyboardInset = 0.0,
+    Widget Function(Widget child)? chatsBadgeBuilder,
+    bool settle = true,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
     tester.view.devicePixelRatio = 1.0;
@@ -50,6 +53,7 @@ void main() {
             onSectionTap: onSectionTap ?? (_) {},
             cavityChild: cavityChild,
             cavityKey: cavityKey,
+            cavityContextId: cavityContextId,
             cavityDefaultsToPeek: cavityDefaultsToPeek,
             maxHeightFraction: maxHeightFraction,
             preferredCavityHeightPx: preferredCavityHeightPx,
@@ -58,11 +62,12 @@ void main() {
             onDismissed: onDismissed,
             onCavityFullChanged: onCavityFullChanged,
             keyboardInset: keyboardInset,
+            chatsBadgeBuilder: chatsBadgeBuilder,
           ),
         ),
       ),
     );
-    await tester.pumpAndSettle();
+    if (settle) await tester.pumpAndSettle();
   }
 
   // Drop the widget from the tree (as a full-screen surface mounting over it
@@ -157,6 +162,61 @@ void main() {
 
       expect(tapped, isTrue);
     });
+
+    testWidgets(
+      'the injected badge wraps the Chats item — and only the Chats item '
+      '(#8129)',
+      (tester) async {
+        // The shell injects the all-chats unread badge (UnreadRoomsBadge over
+        // its sync stream) through this seam so the widget itself stays free
+        // of Matrix lookups. The contract here: whatever is injected must
+        // enclose exactly the Chats rail button.
+        const badgeKey = ValueKey('chatsUnreadBadge');
+        await pumpNav(
+          tester,
+          chatsBadgeBuilder: (child) =>
+              KeyedSubtree(key: badgeKey, child: child),
+        );
+
+        expect(
+          find.descendant(
+            of: find.byKey(badgeKey),
+            matching: find.byTooltip('All chats'),
+          ),
+          findsOneWidget,
+          reason: 'the badge must enclose the Chats rail item',
+        );
+        for (final other in ['World', 'Courses', 'Add a course']) {
+          expect(
+            find.descendant(
+              of: find.byKey(badgeKey),
+              matching: find.byTooltip(other),
+            ),
+            findsNothing,
+            reason: 'only the Chats item carries the unread badge',
+          );
+        }
+      },
+    );
+
+    testWidgets('a badged Chats item still taps through to onSectionTap', (
+      tester,
+    ) async {
+      final tapped = <AppSection>[];
+      await pumpNav(
+        tester,
+        onSectionTap: tapped.add,
+        // A wrapper that adds real chrome around the button, like the badge
+        // Stack does — the tap must reach the button through it.
+        chatsBadgeBuilder: (child) =>
+            Padding(padding: const EdgeInsets.all(2.0), child: child),
+      );
+
+      await tester.tap(find.byTooltip('All chats'));
+      await tester.pumpAndSettle();
+
+      expect(tapped, [AppSection.chats]);
+    });
   });
 
   group('cavity open height', () {
@@ -230,30 +290,111 @@ void main() {
     });
 
     testWidgets(
-      'a course cavity reopens at peek, not the height it was left at (#7609)',
+      'a course covered by a chat and reopened restores its height (#7332)',
       (tester) async {
         await pumpNav(
           tester,
           activeSection: AppSection.courses,
           cavityChild: const Text('Course card'),
           cavityKey: 'course-a',
+          cavityContextId: 'course-a',
           cavityDefaultsToPeek: true,
         );
         final peek = cavityHeightOf(tester);
 
-        // Expand to full (tap-the-body, #7609), then leave.
+        // Expand to full (tap-the-body, #7609).
         await tester.tap(find.text('Course card'));
         await tester.pumpAndSettle();
-        expect(cavityHeightOf(tester), greaterThan(peek));
-        await unmountNav(tester);
+        final expanded = cavityHeightOf(tester);
+        expect(expanded, greaterThan(peek));
 
-        // Reopening the same course arrives at the default peek — a
-        // deterministic entry state; the height memory is section sheets'.
+        // A chat opening over the course DISPOSES the nav widget (the shell
+        // drops it under a full-screen focus); closing the chat mounts it fresh.
+        // The course context (`?c=`) never left — the course was only covered —
+        // so it must reopen at the height the learner left it, not peek (#7332).
+        await unmountNav(tester);
         await pumpNav(
           tester,
           activeSection: AppSection.courses,
           cavityChild: const Text('Course card'),
           cavityKey: 'course-a',
+          cavityContextId: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        expect(cavityHeightOf(tester), closeTo(expanded, 1.0));
+      },
+    );
+
+    testWidgets(
+      'a course keeps its height across opening and closing an activity (#7332)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityContextId: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        final peek = cavityHeightOf(tester);
+
+        await tester.tap(find.text('Course card'));
+        await tester.pumpAndSettle();
+        final expanded = cavityHeightOf(tester);
+        expect(expanded, greaterThan(peek));
+
+        // Open an activity from the course: it rides the SAME cavity (the key
+        // swaps course->activity) but keeps the course context, so it must NOT
+        // forget the course's height. Then close the activity back to the card.
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Activity plan'),
+          cavityKey: 'activity-x',
+          cavityContextId: 'course-a',
+        );
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityContextId: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        expect(cavityHeightOf(tester), closeTo(expanded, 1.0));
+      },
+    );
+
+    testWidgets(
+      'a course genuinely closed reopens at peek, not its last height (#7609)',
+      (tester) async {
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityContextId: 'course-a',
+          cavityDefaultsToPeek: true,
+        );
+        final peek = cavityHeightOf(tester);
+
+        // Expand to full, then LEAVE the course context — World clears `?c=`
+        // (the only thing besides picking another course that resets scope).
+        // That, unlike a covering chat or an in-course activity, forgets the
+        // height (#7609).
+        await tester.tap(find.text('Course card'));
+        await tester.pumpAndSettle();
+        expect(cavityHeightOf(tester), greaterThan(peek));
+        await pumpNav(tester, activeSection: AppSection.world);
+
+        // Reopening the same course arrives at the default peek — the
+        // deterministic entry state; the expanded height was forgotten on close.
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavityChild: const Text('Course card'),
+          cavityKey: 'course-a',
+          cavityContextId: 'course-a',
           cavityDefaultsToPeek: true,
         );
         expect(cavityHeightOf(tester), closeTo(peek, 1.0));
@@ -556,6 +697,39 @@ void main() {
       expect(shortcutTaps, 0);
       expect(cavityHeightOf(tester), closeTo(peek, 1.0));
     });
+
+    testWidgets(
+      'the `+` shortcut toggles the add-course hub it is showing (#8098)',
+      (tester) async {
+        // With no courses joined the 4th slot IS the `+` add-course button, so
+        // the hub is its own surface and the Courses item beside it toggles the
+        // very same cavity. Distinct from the course-sheet case above: a
+        // SECTION cavity is not a peek, so the collapse renders 0px and the
+        // re-expand comes from the remembered content-fit height, not a peek.
+        var shortcutTaps = 0;
+        await pumpNav(
+          tester,
+          activeSection: AppSection.courses,
+          cavitySection: AppSection.courses,
+          courseShortcutHostsCavity: true,
+          cavityChild: const Text('Courses hub'),
+          cavityKey: 'addcourse',
+          onCourseShortcutTap: () => shortcutTaps++,
+        );
+        final open = cavityHeightOf(tester);
+        expect(open, greaterThan(0.0));
+
+        await tester.tap(find.byTooltip('Add a course'));
+        await tester.pumpAndSettle();
+        expect(shortcutTaps, 0, reason: 'the active hub tap is a toggle');
+        expect(cavityHeightOf(tester), 0.0);
+
+        await tester.tap(find.byTooltip('Add a course'));
+        await tester.pumpAndSettle();
+        expect(shortcutTaps, 0);
+        expect(cavityHeightOf(tester), closeTo(open, 1.0));
+      },
+    );
 
     testWidgets(
       'the course shortcut navigates when its course is NOT the hosted sheet',
@@ -881,6 +1055,102 @@ void main() {
         // Half height is 300px; a 500px inset would drive it negative.
         keyboardInset: 500.0,
       );
+      expect(cavityHeightOf(tester), 0.0);
+    });
+  });
+
+  group('keyboard over a focused cavity input (#8072)', () {
+    // A course card rests at peek and the add-course steps at a short half —
+    // both shorter than the software keyboard. Tapping an input inside one used
+    // to trim the cavity to nothing, which unmounted the field, dropped its
+    // focus and closed the keyboard again. It must instead grow to full.
+    const field = TextField(decoration: InputDecoration(hintText: 'Code'));
+
+    Future<void> pumpCourseCavity(
+      WidgetTester tester, {
+      double keyboardInset = 0.0,
+      bool settle = true,
+    }) => pumpNav(
+      tester,
+      cavityChild: field,
+      cavityKey: 'course-a',
+      cavityContextId: 'course-a',
+      cavityDefaultsToPeek: true,
+      maxHeightFraction: 0.75,
+      keyboardInset: keyboardInset,
+      settle: settle,
+    );
+
+    bool inputHasFocus(WidgetTester tester) => tester
+        .widget<EditableText>(find.byType(EditableText))
+        .focusNode
+        .hasFocus;
+
+    testWidgets('grows a peeking cavity to full so the input stays visible', (
+      tester,
+    ) async {
+      await pumpCourseCavity(tester);
+      expect(cavityHeightOf(tester), closeTo(128.0, 1.0));
+
+      // Tap the field, then let the keyboard the tap summoned arrive.
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await pumpCourseCavity(tester, keyboardInset: 300.0);
+
+      final maxHeightPx = 800.0 * 0.75;
+      expect(
+        cavityHeightOf(tester),
+        closeTo(maxHeightPx - 300.0, 1.0),
+        reason: 'full height, minus the keyboard trim of #7754',
+      );
+      expect(
+        inputHasFocus(tester),
+        isTrue,
+        reason: 'the field the learner tapped keeps its focus',
+      );
+    });
+
+    testWidgets('keeps the focused input mounted while the cavity grows', (
+      tester,
+    ) async {
+      await pumpCourseCavity(tester);
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+
+      // A keyboard taller than the peek, observed on the FIRST frame — before
+      // the grow has animated anywhere. Without the focused floor the cavity is
+      // 0px here and the field is gone from the tree.
+      await pumpCourseCavity(tester, keyboardInset: 500.0, settle: false);
+      expect(cavityHeightOf(tester), greaterThan(0.0));
+      expect(find.byType(TextField), findsOneWidget);
+      expect(inputHasFocus(tester), isTrue);
+
+      await tester.pumpAndSettle();
+      expect(find.byType(TextField), findsOneWidget);
+      expect(inputHasFocus(tester), isTrue);
+    });
+
+    testWidgets('does not remember the keyboard height for the next open', (
+      tester,
+    ) async {
+      await pumpCourseCavity(tester);
+      await tester.tap(find.byType(TextField));
+      await tester.pumpAndSettle();
+      await pumpCourseCavity(tester, keyboardInset: 300.0);
+
+      // The course reopens at the height the LEARNER left it at — the peek —
+      // not the full the keyboard forced (#7332, #7609).
+      await unmountNav(tester);
+      await pumpCourseCavity(tester);
+      expect(cavityHeightOf(tester), closeTo(128.0, 1.0));
+    });
+
+    testWidgets('leaves an unfocused cavity to the plain #7754 trim', (
+      tester,
+    ) async {
+      // The search bar riding ABOVE the widget owns this keyboard; nothing in
+      // the cavity is focused, so the cavity neither grows nor holds a floor.
+      await pumpCourseCavity(tester, keyboardInset: 300.0);
       expect(cavityHeightOf(tester), 0.0);
     });
   });
