@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-04 10:31:24.342531",
+    "@@last_modified": "2026-08-05 09:53:10.637526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Aparèy ou an poko gen yon vwa {language} bon kalite telechaje. Telechaje youn, epi eseye ankò:",
     "readAloudNoVoiceIOSSteps": "  • Anviwònman\n  • Aksè\n  • Kontni Pale\n  • Vwa\n  • {language}\n  • Telechaje yon vwa Amelyore oswa Premium",
     "readAloudNoVoiceAndroid": "Aparèy ou an poko gen yon vwa {language} bon kalite. Enstale done vwa pou motè tèks-a-lapawòl ou a, epi eseye ankò.",
-    "readAloudOpenVoiceSettings": "Louvri anviwònman vwa"
+    "readAloudOpenVoiceSettings": "Louvri anviwònman vwa",
+    "formLabel": "Fòmilè {name}"
 }

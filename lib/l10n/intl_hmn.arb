@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-04 10:31:23.822143",
+    "@@last_modified": "2026-08-05 09:53:10.589517",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Koj lub cuab yeej tseem tsis tau rub lub suab zoo {language}. Rub ib lub, ces sim dua:",
     "readAloudNoVoiceIOSSteps": "  • Chaw\n  • Kev nkag tau yooj yim\n  • Cov Lus Hais\n  • Suab\n  • {language}\n  • Rub lub suab Txhim Kho lossis Premium",
     "readAloudNoVoiceAndroid": "Koj lub cuab yeej tseem tsis tau muaj lub suab zoo {language}. Nruab cov ntaub ntawv suab rau koj lub tshuab hais lus, ces sim dua.",
-    "readAloudOpenVoiceSettings": "Qhib chaw suab"
+    "readAloudOpenVoiceSettings": "Qhib chaw suab",
+    "formLabel": "{name} daim ntawv"
 }

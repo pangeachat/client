@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-04 10:31:16.598330",
+    "@@last_modified": "2026-08-05 09:53:08.265894",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10006,5 +10006,6 @@
     "readAloudNoVoiceIOS": "لم يتم تنزيل صوت عالي الجودة لـ {language} على جهازك بعد. قم بتنزيل واحد، ثم حاول مرة أخرى:",
     "readAloudNoVoiceIOSSteps": "  • الإعدادات\n  • تسهيلات الاستخدام\n  • المحتوى المنطوق\n  • الأصوات\n  • {language}\n  • تنزيل صوت محسّن أو مميز",
     "readAloudNoVoiceAndroid": "لا يحتوي جهازك على صوت عالي الجودة لـ {language} بعد. قم بتثبيت بيانات الصوت لمحرك تحويل النص إلى كلام، ثم حاول مرة أخرى.",
-    "readAloudOpenVoiceSettings": "افتح إعدادات الصوت"
+    "readAloudOpenVoiceSettings": "افتح إعدادات الصوت",
+    "formLabel": "نموذج {name}"
 }

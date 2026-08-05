@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-04 10:31:20.910464",
+    "@@last_modified": "2026-08-05 09:53:10.001470",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit downloade. Download ien, en besykje it dan opnij:",
     "readAloudNoVoiceIOSSteps": "  • Ynstellings\n  • Tagong\n  • Sprutsen ynhâld\n  • Stimmen\n  • {language}\n  • Download in Ferbettere of Premium stim",
     "readAloudNoVoiceAndroid": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit. Ynstallearje stimgegevens foar jo tekst-nei-spraak-motor, en besykje it dan opnij.",
-    "readAloudOpenVoiceSettings": "Stimynstellings iepenje"
+    "readAloudOpenVoiceSettings": "Stimynstellings iepenje",
+    "formLabel": "{name} formulier"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-04 10:31:31.139730",
+    "@@last_modified": "2026-08-05 09:53:13.360797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "ستاسو وسیله لا تر اوسه د {language} لوړ کیفیت غږ نه دی ډاونلوډ کړی. یو ډاونلوډ کړئ، بیا بیا هڅه وکړئ:",
     "readAloudNoVoiceIOSSteps": "  • ترتیبات\n  • لاسرسی\n  • ویل شوي مینځپانګه\n  • غږونه\n  • {language}\n  • یو پرمختللی یا پریمیم غږ ډاونلوډ کړئ",
     "readAloudNoVoiceAndroid": "ستاسو وسیله لا تر اوسه د {language} لوړ کیفیت غږ نه لري. د خپل متن څخه وینا انجن لپاره د غږ ډاټا نصب کړئ، بیا بیا هڅه وکړئ.",
-    "readAloudOpenVoiceSettings": "د غږ ترتیبات خلاص کړئ"
+    "readAloudOpenVoiceSettings": "د غږ ترتیبات خلاص کړئ",
+    "formLabel": "{name} فورمه"
 }

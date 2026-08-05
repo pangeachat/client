@@ -1270,7 +1270,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-04 10:31:35.925441",
+    "@@last_modified": "2026-08-05 09:53:15.084182",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10663,5 +10663,6 @@
     "readAloudNoVoiceIOS": "你部裝置仲未下載高質素嘅{language}語音。請下載一個，然後再試過：",
     "readAloudNoVoiceIOSSteps": "  • 設定\n  • 輔助使用\n  • 語音內容\n  • 語音\n  • {language}\n  • 下載增強版或高級版語音",
     "readAloudNoVoiceAndroid": "你部裝置仲未有高質素嘅{language}語音。請為你嘅文字轉語音引擎安裝語音數據，然後再試過。",
-    "readAloudOpenVoiceSettings": "開啟語音設定"
+    "readAloudOpenVoiceSettings": "開啟語音設定",
+    "formLabel": "{name}表格"
 }

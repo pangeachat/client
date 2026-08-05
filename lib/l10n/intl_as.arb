@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-04 10:31:16.985025",
+    "@@last_modified": "2026-08-05 09:53:08.462862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "আপোনাৰ ডিভাইচত এতিয়ালৈকে উচ্চ মানদণ্ডৰ {language} ভইচ ডাউনলোড কৰা হোৱা নাই। এটা ডাউনলোড কৰক, তাৰ পিছত পুনৰ চেষ্টা কৰক:",
     "readAloudNoVoiceIOSSteps": "  • ছেটিংছ\n  • এক্সেছিবিলিটি\n  • স্পোকেন কন্টেন্ট\n  • ভইচ\n  • {language}\n  • এটা এনহেন্সড বা প্ৰিমিয়াম ভইচ ডাউনলোড কৰক",
     "readAloudNoVoiceAndroid": "আপোনাৰ ডিভাইচত এতিয়ালৈকে উচ্চ মানদণ্ডৰ {language} ভইচ নাই। আপোনাৰ টেক্সট-টু-স্পিচ ইঞ্জিনৰ বাবে ভইচ ডেটা ইনষ্টল কৰক, তাৰ পিছত পুনৰ চেষ্টা কৰক।",
-    "readAloudOpenVoiceSettings": "ভইচ ছেটিংছ খোলক"
+    "readAloudOpenVoiceSettings": "ভইচ ছেটিংছ খোলক",
+    "formLabel": "{name} ফৰ্ম"
 }

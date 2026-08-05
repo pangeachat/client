@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-04 10:31:28.686010",
+    "@@last_modified": "2026-08-05 09:53:12.383865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Peranti anda belum memuat turun suara {language} berkualiti tinggi. Muat turun satu, kemudian cuba lagi:",
     "readAloudNoVoiceIOSSteps": "  • Tetapan\n  • Kebolehcapaian\n  • Kandungan Dituturkan\n  • Suara\n  • {language}\n  • Muat turun suara Dipertingkat atau Premium",
     "readAloudNoVoiceAndroid": "Peranti anda belum mempunyai suara {language} berkualiti tinggi. Pasang data suara untuk enjin teks-ke-pertuturan anda, kemudian cuba lagi.",
-    "readAloudOpenVoiceSettings": "Buka tetapan suara"
+    "readAloudOpenVoiceSettings": "Buka tetapan suara",
+    "formLabel": "Borang {name}"
 }

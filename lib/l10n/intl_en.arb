@@ -4898,5 +4898,13 @@
     "mapMatchesOffscreen": "There are matches outside your view. Zoom out to see them.",
     "mapFiltersHideMatches": "Your filters are hiding all matches. Widen the search to see them.",
     "mapNoSearchMatches": "No activities match your search.",
-    "mapNoActivitiesArea": "No activities in this area."
+    "mapNoActivitiesArea": "No activities in this area.",
+    "formLabel": "{name} form",
+    "@formLabel": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    }
 }

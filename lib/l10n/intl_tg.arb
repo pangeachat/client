@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-04 10:31:34.628460",
+    "@@last_modified": "2026-08-05 09:53:14.749541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Дастгоҳи шумо то ҳол овози баландсифати {language}-ро зеркашӣ накардааст. Якеро зеркашӣ кунед, пас дубора кӯшиш кунед:",
     "readAloudNoVoiceIOSSteps": "  • Танзимот\n  • Дастрасӣ\n  • Мундариҷаи гуфторӣ\n  • Овозҳо\n  • {language}\n  • Овози такмилёфта ё Premium-ро зеркашӣ кунед",
     "readAloudNoVoiceAndroid": "Дастгоҳи шумо то ҳол овози баландсифати {language}-ро надорад. Маълумоти овозиро барои муҳаррики матн ба нутқи худ насб кунед, пас дубора кӯшиш кунед.",
-    "readAloudOpenVoiceSettings": "Танзимоти овозиро кушоед"
+    "readAloudOpenVoiceSettings": "Танзимоти овозиро кушоед",
+    "formLabel": "Шакли {name}"
 }

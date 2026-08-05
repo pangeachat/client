@@ -14,103 +14,143 @@ class PangeaChatAccessSettingsPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final room = controller.room;
-    return Scaffold(
-      appBar: AppBar(
-        leading: Center(
-          child: controller.widget.embeddedCloseButton ?? const BackButton(),
-        ),
-        title: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.shield_outlined),
-            const SizedBox(width: 8),
-            Text(
-              L10n.of(context).access,
-              style: FluffyThemes.isColumnMode(context)
-                  ? Theme.of(context).textTheme.titleLarge
-                  : Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-            ),
-          ],
-        ),
-        centerTitle: false,
-        titleSpacing: 0,
-      ),
-      body: MaxWidthBody(
-        showBorder: false,
-        child: StreamBuilder<Object>(
-          stream: room.client.onRoomState.stream.where(
-            (update) => update.roomId == controller.room.id,
+    return Semantics(
+      label: L10n.of(context).pageLabel(L10n.of(context).access),
+      container: true,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: Center(
+            child: controller.widget.embeddedCloseButton ?? const BackButton(),
           ),
-          builder: (context, snapshot) {
-            return Container(
-              width: 400.0,
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: FutureBuilder(
-                future: room.client.getRoomVisibilityOnDirectory(room.id),
-                builder: (context, snapshot) {
-                  return Column(
-                    spacing: 16.0,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ChatAccessTitle(
-                        icon: Icons.search_outlined,
-                        title: L10n.of(context).howSpaceCanBeFound,
-                      ),
-                      ChatAccessTile(
-                        emoji: "🏡",
-                        title: L10n.of(context).private,
-                        description: L10n.of(context).cannotBeFoundInSearch,
-                        selected: snapshot.data == Visibility.private,
-                        onTap: () {
-                          if (snapshot.data == Visibility.private) return;
-                          controller.setChatVisibilityOnDirectory(false);
-                        },
-                      ),
-                      ChatAccessTile(
-                        emoji: "🌏",
-                        title: L10n.of(context).public,
-                        description: L10n.of(context).visibleToCommunity,
-                        selected: snapshot.data == Visibility.public,
-                        onTap: () {
-                          if (snapshot.data == Visibility.public) return;
-                          controller.setChatVisibilityOnDirectory(true);
-                        },
-                      ),
-                      const SizedBox(height: 8.0),
-                      ChatAccessTitle(
-                        icon: Icons.key_outlined,
-                        title: L10n.of(context).howSpaceCanBeJoined,
-                      ),
-                      ChatAccessTile(
-                        emoji: "🤝",
-                        title: L10n.of(context).restricted,
-                        descriptionWidget: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(L10n.of(context).canBeFoundVia),
-                            Text(L10n.of(context).canBeFoundViaInvitation),
-                            Text(L10n.of(context).canBeFoundViaCodeOrLink),
-                            Text(L10n.of(context).canBeFoundViaKnock),
-                          ],
+          title: ExcludeSemantics(
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                const Icon(Icons.shield_outlined),
+                const SizedBox(width: 8),
+                Text(
+                  L10n.of(context).access,
+                  style: FluffyThemes.isColumnMode(context)
+                      ? Theme.of(context).textTheme.titleLarge
+                      : Theme.of(context).textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
                         ),
-                        selected: room.joinRules == JoinRules.knock,
-                        onTap: () => controller.setJoinRule(JoinRules.knock),
-                      ),
-                      ChatAccessTile(
-                        emoji: "👐",
-                        title: L10n.of(context).open,
-                        description: L10n.of(context).anyoneCanJoin,
-                        selected: room.joinRules == JoinRules.public,
-                        onTap: () => controller.setJoinRule(JoinRules.public),
-                      ),
-                    ],
-                  );
-                },
+                ),
+              ],
+            ),
+          ),
+          centerTitle: false,
+          titleSpacing: 0,
+        ),
+        body: MaxWidthBody(
+          showBorder: false,
+          child: Semantics(
+            label: L10n.of(context).bodyLabel(L10n.of(context).access),
+            container: true,
+            child: StreamBuilder<Object>(
+              stream: room.client.onRoomState.stream.where(
+                (update) => update.roomId == controller.room.id,
               ),
-            );
-          },
+              builder: (context, snapshot) {
+                return Container(
+                  width: 400.0,
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: FutureBuilder(
+                    future: room.client.getRoomVisibilityOnDirectory(room.id),
+                    builder: (context, snapshot) {
+                      return Column(
+                        spacing: 16.0,
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Semantics(
+                            container: true,
+                            child: ChatAccessTitle(
+                              icon: Icons.search_outlined,
+                              title: L10n.of(context).howSpaceCanBeFound,
+                            ),
+                          ),
+                          Semantics(
+                            checked: snapshot.data == Visibility.private,
+                            inMutuallyExclusiveGroup: true,
+                            child: ChatAccessTile(
+                              emoji: "🏡",
+                              title: L10n.of(context).private,
+                              description: L10n.of(
+                                context,
+                              ).cannotBeFoundInSearch,
+                              selected: snapshot.data == Visibility.private,
+                              onTap: () {
+                                if (snapshot.data == Visibility.private) return;
+                                controller.setChatVisibilityOnDirectory(false);
+                              },
+                            ),
+                          ),
+                          Semantics(
+                            checked: snapshot.data == Visibility.public,
+                            inMutuallyExclusiveGroup: true,
+                            child: ChatAccessTile(
+                              emoji: "🌏",
+                              title: L10n.of(context).public,
+                              description: L10n.of(context).visibleToCommunity,
+                              selected: snapshot.data == Visibility.public,
+                              onTap: () {
+                                if (snapshot.data == Visibility.public) return;
+                                controller.setChatVisibilityOnDirectory(true);
+                              },
+                            ),
+                          ),
+                          const SizedBox(height: 8.0),
+                          Semantics(
+                            container: true,
+                            child: ChatAccessTitle(
+                              icon: Icons.key_outlined,
+                              title: L10n.of(context).howSpaceCanBeJoined,
+                            ),
+                          ),
+                          Semantics(
+                            checked: room.joinRules == JoinRules.knock,
+                            inMutuallyExclusiveGroup: true,
+                            child: ChatAccessTile(
+                              emoji: "🤝",
+                              title: L10n.of(context).restricted,
+                              descriptionWidget: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(L10n.of(context).canBeFoundVia),
+                                  Text(
+                                    L10n.of(context).canBeFoundViaInvitation,
+                                  ),
+                                  Text(
+                                    L10n.of(context).canBeFoundViaCodeOrLink,
+                                  ),
+                                  Text(L10n.of(context).canBeFoundViaKnock),
+                                ],
+                              ),
+                              selected: room.joinRules == JoinRules.knock,
+                              onTap: () =>
+                                  controller.setJoinRule(JoinRules.knock),
+                            ),
+                          ),
+                          Semantics(
+                            checked: room.joinRules == JoinRules.public,
+                            inMutuallyExclusiveGroup: true,
+                            child: ChatAccessTile(
+                              emoji: "👐",
+                              title: L10n.of(context).open,
+                              description: L10n.of(context).anyoneCanJoin,
+                              selected: room.joinRules == JoinRules.public,
+                              onTap: () =>
+                                  controller.setJoinRule(JoinRules.public),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
+          ),
         ),
       ),
     );

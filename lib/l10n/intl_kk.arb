@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-04 10:31:26.141514",
+    "@@last_modified": "2026-08-05 09:53:11.204690",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Құрылғыңызда әлі жоғары сапалы {language} дауысы жүктелмеген. Жүктеп алып, қайталап көріңіз:",
     "readAloudNoVoiceIOSSteps": "  • Параметрлер\n  • Арнайы мүмкіндіктер\n  • Сөйлеу мазмұны\n  • Дауыстар\n  • {language}\n  • Жақсартылған немесе Premium дауысты жүктеп алыңыз",
     "readAloudNoVoiceAndroid": "Құрылғыңызда әлі жоғары сапалы {language} дауысы жоқ. Мәтінді сөйлеу қозғалтқышы үшін дауыс деректерін орнатып, қайталап көріңіз.",
-    "readAloudOpenVoiceSettings": "Дауыс параметрлерін ашу"
+    "readAloudOpenVoiceSettings": "Дауыс параметрлерін ашу",
+    "formLabel": "{name} формасы"
 }

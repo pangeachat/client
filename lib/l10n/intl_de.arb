@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-04 10:31:18.912465",
+    "@@last_modified": "2026-08-05 09:53:09.288113",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9687,5 +9687,6 @@
     "readAloudNoVoiceIOS": "Auf Ihrem Gerät ist noch keine hochwertige {language}-Stimme heruntergeladen. Laden Sie eine herunter und versuchen Sie es dann erneut:",
     "readAloudNoVoiceIOSSteps": "  • Einstellungen\n  • Bedienungshilfen\n  • Gesprochene Inhalte\n  • Stimmen\n  • {language}\n  • Eine erweiterte oder Premium-Stimme herunterladen",
     "readAloudNoVoiceAndroid": "Auf Ihrem Gerät ist noch keine hochwertige {language}-Stimme vorhanden. Installieren Sie Sprachdaten für Ihre Text-to-Speech-Engine und versuchen Sie es dann erneut.",
-    "readAloudOpenVoiceSettings": "Spracheinstellungen öffnen"
+    "readAloudOpenVoiceSettings": "Spracheinstellungen öffnen",
+    "formLabel": "{name}-Formular"
 }

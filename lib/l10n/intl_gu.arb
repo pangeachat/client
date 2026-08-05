@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-04 10:31:21.784248",
+    "@@last_modified": "2026-08-05 09:53:09.892186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "તમારા ઉપકરણમાં હજી સુધી ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ ડાઉનલોડ થયો નથી. એક ડાઉનલોડ કરો, પછી ફરી પ્રયાસ કરો:",
     "readAloudNoVoiceIOSSteps": "  • સેટિંગ્સ\n  • ઍક્સેસિબિલિટી\n  • બોલાયેલી સામગ્રી\n  • અવાજો\n  • {language}\n  • ઉન્નત અથવા પ્રીમિયમ અવાજ ડાઉનલોડ કરો",
     "readAloudNoVoiceAndroid": "તમારા ઉપકરણમાં હજી સુધી ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ નથી. તમારા ટેક્સ્ટ-ટુ-સ્પીચ એન્જિન માટે વૉઇસ ડેટા ઇન્સ્ટોલ કરો, પછી ફરી પ્રયાસ કરો.",
-    "readAloudOpenVoiceSettings": "વૉઇસ સેટિંગ્સ ખોલો"
+    "readAloudOpenVoiceSettings": "વૉઇસ સેટિંગ્સ ખોલો",
+    "formLabel": "{name} ફોર્મ"
 }

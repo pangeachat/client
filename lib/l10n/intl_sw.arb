@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-04 10:31:33.669710",
+    "@@last_modified": "2026-08-05 09:53:14.179292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Kifaa chako hakina sauti ya hali ya juu ya {language} iliyopakuliwa bado. Pakua moja, kisha ujaribu tena:",
     "readAloudNoVoiceIOSSteps": "  • Mipangilio\n  • Ufikiaji\n  • Maudhui Yanayozungumzwa\n  • Sauti\n  • {language}\n  • Pakua sauti ya Kuboreshwa au Premium",
     "readAloudNoVoiceAndroid": "Kifaa chako hakina sauti ya hali ya juu ya {language} bado. Sakinisha data ya sauti kwa injini yako ya maandishi-kwa-sauti, kisha ujaribu tena.",
-    "readAloudOpenVoiceSettings": "Fungua mipangilio ya sauti"
+    "readAloudOpenVoiceSettings": "Fungua mipangilio ya sauti",
+    "formLabel": "Fomu ya {name}"
 }

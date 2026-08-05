@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-04 10:31:27.221032",
+    "@@last_modified": "2026-08-05 09:53:11.607672",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "ئامێرەکەت هێشتا دەنگێکی {language}ی کوالیتی بەرزی دابەزێنراوی تێدا نییە. یەکێکیان دابەزێنە، پاشان دووبارە هەوڵبدەوە:",
     "readAloudNoVoiceIOSSteps": "  • ڕێکخستنەکان\n  • دەستڕاگەیشتن\n  • ناوەڕۆکی قسەکراو\n  • دەنگەکان\n  • {language}\n  • دەنگێکی باشکراو یان پریمیم دابەزێنە",
     "readAloudNoVoiceAndroid": "ئامێرەکەت هێشتا دەنگێکی {language}ی کوالیتی بەرزی تێدا نییە. داتای دەنگ بۆ بزوێنەری دەق-بۆ-قسەکردنت دابمەزرێنە، پاشان دووبارە هەوڵبدەوە.",
-    "readAloudOpenVoiceSettings": "ڕێکخستنەکانی دەنگ بکەرەوە"
+    "readAloudOpenVoiceSettings": "ڕێکخستنەکانی دەنگ بکەرەوە",
+    "formLabel": "فۆرمی {name}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-04 10:31:25.131939",
+    "@@last_modified": "2026-08-05 09:53:10.913663",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2082,5 +2082,6 @@
     "readAloudNoVoiceIOS": "Ngwaọrụ gị enwebeghị olu {language} dị elu ebudatara. Budata otu, wee nwaa ọzọ:",
     "readAloudNoVoiceIOSSteps": "  • Ntọala\n  • Nnweta\n  • Ọdịnaya a na-ekwu okwu\n  • Olu\n  • {language}\n  • Budata olu emelitere ma ọ bụ nke adịchaghị mma",
     "readAloudNoVoiceAndroid": "Ngwaọrụ gị enwebeghị olu {language} dị elu. Wụnye data olu maka injin ederede-na-okwu gị, wee nwaa ọzọ.",
-    "readAloudOpenVoiceSettings": "Mepee ntọala olu"
+    "readAloudOpenVoiceSettings": "Mepee ntọala olu",
+    "formLabel": "Ụdị {name}"
 }
