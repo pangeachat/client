@@ -42,9 +42,7 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
     final isMobile = size.height / size.width > _mobileRatioBreakpoint;
     // The wide slide 1 bakes its brand text into the artwork, so it ships in
     // a per-theme variant: dark text for light mode, light text for dark.
-    final slide1Suffix = isMobile
-        ? ''
-        : theme.brightness == Brightness.dark
+    final slide1Suffix = theme.brightness == Brightness.dark
         ? '_Dark'
         : '_Light';
     final imageUrls = List.generate(
