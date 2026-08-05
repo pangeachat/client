@@ -392,8 +392,12 @@ class TtsController {
 
     await _setSpeakingLanguage(langCode, tid);
 
-    final audioEnabled = MatrixState.pangeaController.userController
-        .isToolEnabled(useCase.toolSetting);
+    // A null tool setting means the use case is ungated — see
+    // TtsUseCase.voiceReply for the one case and why.
+    final gate = useCase.toolSetting;
+    final audioEnabled =
+        gate == null ||
+        MatrixState.pangeaController.userController.isToolEnabled(gate);
 
     if (audioEnabled) {
       final token = PangeaTokenText(
