@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Chan eil tar-sgrìobhadh beò ri fhaighinn airson a' chànain seo fhathast. Tha sinn ag obair air.",
     "formLabel": "Foirm {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Taic"
+    "supportDisplayName": "Taic",
+    "explorePlayAndLearn": "Rannsaich, cluich is ionnsaich",
+    "conversationFromDayOne": "Còmhradh bhon Chiad Latha",
+    "builtForConnection": "Air a thogail airson ceangal",
+    "aiWhenYouNeedIt": "AI nuair a tha feum agad air",
+    "practiceTailoredForYou": "Cleachdadh air a dhealbhadh dhut"
 }

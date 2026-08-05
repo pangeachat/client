@@ -9703,5 +9703,10 @@
     "streamingSttLanguageUnsupportedBanner": "Reaalajas transkriptsioon pole selle keele jaoks veel saadaval. Töötame selle kallal.",
     "formLabel": "{name} vorm",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Tugi"
+    "supportDisplayName": "Tugi",
+    "explorePlayAndLearn": "Avasta, mängi ja õpi",
+    "conversationFromDayOne": "Vestlus esimesest päevast alates",
+    "builtForConnection": "Loodud ühenduse loomiseks",
+    "aiWhenYouNeedIt": "AI siis, kui seda vajad",
+    "practiceTailoredForYou": "Sulle kohandatud praktika"
 }

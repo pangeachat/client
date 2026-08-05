@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "اس زبان کے لیے لائیو ٹرانسکرپشن ابھی دستیاب نہیں ہے۔ ہم اس پر کام کر رہے ہیں۔",
     "formLabel": "{name} فارم",
     "botDisplayName": "پینجیا بوٹ",
-    "supportDisplayName": "سپورٹ"
+    "supportDisplayName": "سپورٹ",
+    "explorePlayAndLearn": "دریافت کریں، کھیلیں اور سیکھیں",
+    "conversationFromDayOne": "پہلے دن سے گفتگو",
+    "builtForConnection": "رابطے کے لیے بنایا گیا",
+    "aiWhenYouNeedIt": "جب آپ کو ضرورت ہو تو AI",
+    "practiceTailoredForYou": "آپ کے لیے تیار کردہ مشق"
 }

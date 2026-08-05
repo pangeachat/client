@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "هن ٻولي لاءِ لائيو ٽرانسڪرپشن اڃا موجود ناهي. اسان ان تي ڪم ڪري رهيا آهيون.",
     "formLabel": "{name} فارم",
     "botDisplayName": "پينگيا بوٽ",
-    "supportDisplayName": "مدد"
+    "supportDisplayName": "مدد",
+    "explorePlayAndLearn": "ڳوليو، کيڏيو ۽ سکو",
+    "conversationFromDayOne": "پهرين ڏينهن کان ڳالهه ٻولهه",
+    "builtForConnection": "رابطي لاءِ ٺهيل",
+    "aiWhenYouNeedIt": "جڏهن توهان کي ضرورت هجي ته AI",
+    "practiceTailoredForYou": "توهان لاءِ تيار ڪيل مشق"
 }

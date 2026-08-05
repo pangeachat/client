@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Dili pa magamit ang live transcription alang niini nga pinulongan. Nagtrabaho kami niini.",
     "formLabel": "Porma ni {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Suporta"
+    "supportDisplayName": "Suporta",
+    "explorePlayAndLearn": "Pagsuhid, pagdula, ug pagkat-on",
+    "conversationFromDayOne": "Panag-istoryahanay gikan sa Unang Adlaw",
+    "builtForConnection": "Gibuhat para sa koneksyon",
+    "aiWhenYouNeedIt": "AI kung kinahanglan nimo",
+    "practiceTailoredForYou": "Praktis nga gipahaum para kanimo"
 }

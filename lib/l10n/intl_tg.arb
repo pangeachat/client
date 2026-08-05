@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Транскрипсияи мустақим барои ин забон ҳанӯз дастрас нест. Мо дар болои он кор карда истодаем.",
     "formLabel": "Шакли {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Дастгирӣ"
+    "supportDisplayName": "Дастгирӣ",
+    "explorePlayAndLearn": "Кашф кунед, бозӣ кунед ва омӯзед",
+    "conversationFromDayOne": "Муколама аз рӯзи аввал",
+    "builtForConnection": "Барои пайвастшавӣ сохта шудааст",
+    "aiWhenYouNeedIt": "AI вақте ки ба шумо лозим аст",
+    "practiceTailoredForYou": "Машқ барои шумо мутобиқ карда шудааст"
 }

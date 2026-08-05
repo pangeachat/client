@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "ଏହି ଭାଷା ପାଇଁ ଲାଇଭ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ସନ୍ ଏପର୍ଯ୍ୟନ୍ତ ଉପଲବ୍ଧ ନାହିଁ। ଆମେ ଏହା ଉପରେ କାମ କରୁଛୁ।",
     "formLabel": "{name} ଫର୍ମ",
     "botDisplayName": "ପାଙ୍ଗିଆ ବଟ୍",
-    "supportDisplayName": "ସହାୟତା"
+    "supportDisplayName": "ସହାୟତା",
+    "explorePlayAndLearn": "ଅନୁସନ୍ଧାନ କରନ୍ତୁ, ଖେଳନ୍ତୁ ଏବଂ ଶିଖନ୍ତୁ",
+    "conversationFromDayOne": "ପ୍ରଥମ ଦିନରୁ କଥାବାର୍ତ୍ତା",
+    "builtForConnection": "ସଂଯୋଗ ପାଇଁ ନିର୍ମିତ",
+    "aiWhenYouNeedIt": "ଆପଣଙ୍କୁ ଆବଶ୍ୟକ ହେଲେ AI",
+    "practiceTailoredForYou": "ଆପଣଙ୍କ ପାଇଁ ଉପଯୁକ୍ତ ଅଭ୍ୟାସ"
 }

@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Kulemba mawu pompopompo sikukupezeka pa chilankhulo ichi pakali pano. Tikugwira ntchito.",
     "formLabel": "Fomu ya {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Thandizo"
+    "supportDisplayName": "Thandizo",
+    "explorePlayAndLearn": "Fufuzani, sewerani ndi kuphunzira",
+    "conversationFromDayOne": "Kukambirana kuyambira Tsiku Loyamba",
+    "builtForConnection": "Yopangidwira kulumikizana",
+    "aiWhenYouNeedIt": "AI mukafuna",
+    "practiceTailoredForYou": "Zochita zopangidwira inu"
 }

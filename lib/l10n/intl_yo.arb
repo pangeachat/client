@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Ìṣàyálò àkọsílẹ̀ lórí ẹ̀rọ ìgbésáfẹ́fẹ́ kò sí fún èdè yìí báyìí. A ń ṣiṣẹ́ lórí rẹ̀.",
     "formLabel": "Fọ́ọ̀mù {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Ìrànlọ́wọ́"
+    "supportDisplayName": "Ìrànlọ́wọ́",
+    "explorePlayAndLearn": "Ṣawari, ṣeré, ki o si kọ́",
+    "conversationFromDayOne": "Ìfọ̀rọ̀wérọ̀ láti Ọjọ́ Kìíní",
+    "builtForConnection": "Ti a kọ́ fún ìsopọ̀",
+    "aiWhenYouNeedIt": "AI nígbàtí o bá nílò rẹ̀",
+    "practiceTailoredForYou": "Ìdánilẹ́kọ̀ọ́ tí a ṣe fún ọ"
 }

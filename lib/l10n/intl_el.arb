@@ -10587,5 +10587,10 @@
     "streamingSttLanguageUnsupportedBanner": "Η ζωντανή μεταγραφή δεν είναι ακόμη διαθέσιμη για αυτήν τη γλώσσα. Εργαζόμαστε πάνω σε αυτό.",
     "formLabel": "Φόρμα {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Υποστήριξη"
+    "supportDisplayName": "Υποστήριξη",
+    "explorePlayAndLearn": "Εξερευνήστε, παίξτε και μάθετε",
+    "conversationFromDayOne": "Συζήτηση από την πρώτη μέρα",
+    "builtForConnection": "Φτιαγμένο για σύνδεση",
+    "aiWhenYouNeedIt": "AI όταν το χρειάζεστε",
+    "practiceTailoredForYou": "Εξάσκηση προσαρμοσμένη για εσάς"
 }

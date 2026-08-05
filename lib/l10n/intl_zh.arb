@@ -9706,5 +9706,10 @@
     "streamingSttLanguageUnsupportedBanner": "此语言的实时转录功能暂不可用。我们正在努力开发中。",
     "formLabel": "{name}表单",
     "botDisplayName": "Pangea 机器人",
-    "supportDisplayName": "支持"
+    "supportDisplayName": "支持",
+    "explorePlayAndLearn": "探索、玩耍和学习",
+    "conversationFromDayOne": "从第一天就开始对话",
+    "builtForConnection": "为连接而生",
+    "aiWhenYouNeedIt": "随时随地，AI相伴",
+    "practiceTailoredForYou": "为你量身定制的练习"
 }

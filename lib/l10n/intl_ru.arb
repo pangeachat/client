@@ -10680,5 +10680,10 @@
     "streamingSttLanguageUnsupportedBanner": "Прямая транскрипция пока недоступна для этого языка. Мы работаем над этим.",
     "formLabel": "Форма {name}",
     "botDisplayName": "Бот Pangea",
-    "supportDisplayName": "Поддержка"
+    "supportDisplayName": "Поддержка",
+    "explorePlayAndLearn": "Исследуйте, играйте и учитесь",
+    "conversationFromDayOne": "Общение с первого дня",
+    "builtForConnection": "Создано для общения",
+    "aiWhenYouNeedIt": "ИИ, когда он вам нужен",
+    "practiceTailoredForYou": "Практика, адаптированная для вас"
 }

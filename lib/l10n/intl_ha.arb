@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Fassarar kai tsaye ba ta samuwa ga wannan yaren tukuna. Muna aiki a kai.",
     "formLabel": "Fom na {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Taimako"
+    "supportDisplayName": "Taimako",
+    "explorePlayAndLearn": "Bincika, yi wasa kuma ka koya",
+    "conversationFromDayOne": "Tattaunawa daga Rana ta Farko",
+    "builtForConnection": "An gina shi don haɗi",
+    "aiWhenYouNeedIt": "AI lokacin da kake buƙata",
+    "practiceTailoredForYou": "Aiwatar da aka keɓance maka"
 }

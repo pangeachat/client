@@ -9899,5 +9899,10 @@
     "streamingSttLanguageUnsupportedBanner": "이 언어는 아직 실시간 스크립트를 지원하지 않습니다. 현재 작업 중입니다.",
     "formLabel": "{name} 양식",
     "botDisplayName": "판게아 봇",
-    "supportDisplayName": "지원"
+    "supportDisplayName": "지원",
+    "explorePlayAndLearn": "탐색하고, 플레이하고, 배우세요",
+    "conversationFromDayOne": "첫날부터 대화 시작",
+    "builtForConnection": "연결을 위해 구축",
+    "aiWhenYouNeedIt": "필요할 때 AI",
+    "practiceTailoredForYou": "나만을 위한 맞춤 연습"
 }

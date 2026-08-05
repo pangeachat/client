@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Regstreekse transkripsie is nog nie vir hierdie taal beskikbaar nie. Ons werk daaraan.",
     "formLabel": "{name} vorm",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Ondersteuning"
+    "supportDisplayName": "Ondersteuning",
+    "explorePlayAndLearn": "Verken, speel en leer",
+    "conversationFromDayOne": "Gesprek van Dag Een af",
+    "builtForConnection": "Gebou vir verbinding",
+    "aiWhenYouNeedIt": "KI wanneer jy dit nodig het",
+    "practiceTailoredForYou": "Oefening op maat vir jou"
 }

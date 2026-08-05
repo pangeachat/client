@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Ntụgharị okwu dị ndụ adịghị maka asụsụ a ugbu a. Anyị na-arụ ọrụ na ya.",
     "formLabel": "Ụdị {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Nkwado"
+    "supportDisplayName": "Nkwado",
+    "explorePlayAndLearn": "Chọpụta, kpọọ egwuregwu ma mụta ihe",
+    "conversationFromDayOne": "Mkparịta ụka site n'ụbọchị mbụ",
+    "builtForConnection": "Ewubere maka njikọ",
+    "aiWhenYouNeedIt": "AI mgbe ịchọrọ ya",
+    "practiceTailoredForYou": "Omume ahaziri maka gị"
 }

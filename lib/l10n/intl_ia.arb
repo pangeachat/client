@@ -10648,5 +10648,10 @@
     "streamingSttLanguageUnsupportedBanner": "Le transcription in directo non es ancora disponibile pro iste lingua. Nos travalia super illo.",
     "formLabel": "Formulario de {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Supporto"
+    "supportDisplayName": "Supporto",
+    "explorePlayAndLearn": "Explora, joca e apprende",
+    "conversationFromDayOne": "Conversation desde le prime die",
+    "builtForConnection": "Construite pro connexion",
+    "aiWhenYouNeedIt": "IA quando tu lo besonia",
+    "practiceTailoredForYou": "Practica adaptate a te"
 }

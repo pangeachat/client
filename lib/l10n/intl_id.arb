@@ -9779,5 +9779,10 @@
     "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengupayakannya.",
     "formLabel": "Formulir {name}",
     "botDisplayName": "Bot Pangea",
-    "supportDisplayName": "Dukungan"
+    "supportDisplayName": "Dukungan",
+    "explorePlayAndLearn": "Jelajahi, mainkan, dan pelajari",
+    "conversationFromDayOne": "Percakapan sejak Hari Pertama",
+    "builtForConnection": "Dibuat untuk koneksi",
+    "aiWhenYouNeedIt": "AI saat Anda membutuhkannya",
+    "practiceTailoredForYou": "Latihan yang disesuaikan untuk Anda"
 }

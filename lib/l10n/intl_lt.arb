@@ -10487,5 +10487,10 @@
     "streamingSttLanguageUnsupportedBanner": "Tiesioginė transkripcija dar nepasiekiama šia kalba. Mes dirbame prie to.",
     "formLabel": "{name} forma",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Pagalba"
+    "supportDisplayName": "Pagalba",
+    "explorePlayAndLearn": "Tyrinėkite, žaiskite ir mokykitės",
+    "conversationFromDayOne": "Pokalbiai nuo pat pirmos dienos",
+    "builtForConnection": "Sukurta ryšiui",
+    "aiWhenYouNeedIt": "DI, kai jums jos reikia",
+    "practiceTailoredForYou": "Jums pritaikyta praktika"
 }

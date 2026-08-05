@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "የቀጥታ ትርጉም ለዚህ ቋንቋ ገና አይገኝም። እየሰራንበት ነው።",
     "formLabel": "{name} ቅጽ",
     "botDisplayName": "ፓንጋያ ቦት",
-    "supportDisplayName": "ድጋፍ"
+    "supportDisplayName": "ድጋፍ",
+    "explorePlayAndLearn": "አስስ፣ ተጫወት እና ተማር",
+    "conversationFromDayOne": "ከመጀመሪያው ቀን ጀምሮ ውይይት",
+    "builtForConnection": "ለመገናኘት የተሰራ",
+    "aiWhenYouNeedIt": "ሲያስፈልግህ AI",
+    "practiceTailoredForYou": "ለእርስዎ የተበጀ ልምምድ"
 }

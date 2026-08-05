@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "ژوندۍ لیکنه لا تر اوسه د دې ژبې لپاره شتون نلري. موږ پرې کار کوو.",
     "formLabel": "{name} فورمه",
     "botDisplayName": "پنګیا بوټ",
-    "supportDisplayName": "ملاتړ"
+    "supportDisplayName": "ملاتړ",
+    "explorePlayAndLearn": "پلټنه وکړئ، لوبې وکړئ او زده کړئ",
+    "conversationFromDayOne": "له لومړۍ ورځې څخه خبرې اترې",
+    "builtForConnection": "د اړیکو لپاره جوړ شوی",
+    "aiWhenYouNeedIt": "مصنوعي استخبارات کله چې ورته اړتیا لرئ",
+    "practiceTailoredForYou": "ستاسو لپاره چمتو شوی تمرین"
 }

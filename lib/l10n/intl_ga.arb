@@ -9717,5 +9717,10 @@
     "streamingSttLanguageUnsupportedBanner": "Níl trascríobh beo ar fáil don teanga seo fós. Táimid ag obair air.",
     "formLabel": "Foirm {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Tacaíocht"
+    "supportDisplayName": "Tacaíocht",
+    "explorePlayAndLearn": "Déan iniúchadh, imir agus foghlaim",
+    "conversationFromDayOne": "Comhrá ón gCéad Lá",
+    "builtForConnection": "Tógtha le haghaidh ceangail",
+    "aiWhenYouNeedIt": "Intleacht shaorga nuair a bhíonn sí uait",
+    "practiceTailoredForYou": "Cleachtadh saincheaptha duit"
 }

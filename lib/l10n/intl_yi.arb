@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "לייוו טראַנסקריפּציע איז נאָך נישט פאַראַנען פֿאַר דער שפּראַך. מיר אַרבעטן דערויף.",
     "formLabel": "{name} פאָרעם",
     "botDisplayName": "פּאַנגעאַ באָט",
-    "supportDisplayName": "שטיצן"
+    "supportDisplayName": "שטיצן",
+    "explorePlayAndLearn": "אויספֿאָרשן, שפּילן און לערנען",
+    "conversationFromDayOne": "שמועס פֿון טאָג איין",
+    "builtForConnection": "געבויט פֿאַר פֿאַרבינדונג",
+    "aiWhenYouNeedIt": "ק״ק ווען איר דאַרפֿט עס",
+    "practiceTailoredForYou": "פּראַקטיק צוגעפּאַסט פֿאַר דיר"
 }

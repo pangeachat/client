@@ -10200,5 +10200,10 @@
     "streamingSttLanguageUnsupportedBanner": "Živý přepis pro tento jazyk zatím není k dispozici. Pracujeme na tom.",
     "formLabel": "Formulář {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Podpora"
+    "supportDisplayName": "Podpora",
+    "explorePlayAndLearn": "Objevujte, hrajte si a učte se",
+    "conversationFromDayOne": "Konverzace od prvního dne",
+    "builtForConnection": "Stvořeno pro spojení",
+    "aiWhenYouNeedIt": "AI, když ji potřebujete",
+    "practiceTailoredForYou": "Praxe šitá na míru"
 }

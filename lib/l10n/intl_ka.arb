@@ -10612,5 +10612,10 @@
     "streamingSttLanguageUnsupportedBanner": "პირდაპირი ტრანსკრიფცია ჯერ არ არის ხელმისაწვდომი ამ ენისთვის. ჩვენ ვმუშაობთ ამაზე.",
     "formLabel": "{name} ფორმა",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "მხარდაჭერა"
+    "supportDisplayName": "მხარდაჭერა",
+    "explorePlayAndLearn": "გამოიკვლიე, ითამაშე და ისწავლე",
+    "conversationFromDayOne": "საუბარი პირველივე დღიდან",
+    "builtForConnection": "კავშირისთვის შექმნილი",
+    "aiWhenYouNeedIt": "AI, როცა დაგჭირდება",
+    "practiceTailoredForYou": "თქვენზე მორგებული პრაქტიკა"
 }

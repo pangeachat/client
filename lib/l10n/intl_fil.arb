@@ -10572,5 +10572,10 @@
     "streamingSttLanguageUnsupportedBanner": "Hindi pa available ang live transcription para sa wikang ito. Ginagawa namin ito.",
     "formLabel": "Form ng {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Suporta"
+    "supportDisplayName": "Suporta",
+    "explorePlayAndLearn": "Mag-explore, maglaro at matuto",
+    "conversationFromDayOne": "Pag-uusap mula sa Unang Araw",
+    "builtForConnection": "Ginawa para sa koneksyon",
+    "aiWhenYouNeedIt": "AI kapag kailangan mo",
+    "practiceTailoredForYou": "Pagsasanay na akma para sa iyo"
 }

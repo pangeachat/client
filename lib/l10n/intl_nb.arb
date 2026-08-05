@@ -9763,5 +9763,10 @@
     "streamingSttLanguageUnsupportedBanner": "Direkte transkripsjon er ikke tilgjengelig for dette språket ennå. Vi jobber med det.",
     "formLabel": "{name}-skjema",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Kundestøtte"
+    "supportDisplayName": "Kundestøtte",
+    "explorePlayAndLearn": "Utforsk, lek og lær",
+    "conversationFromDayOne": "Samtale fra første dag",
+    "builtForConnection": "Bygget for tilkobling",
+    "aiWhenYouNeedIt": "AI når du trenger det",
+    "practiceTailoredForYou": "Øvelse skreddersydd for deg"
 }

@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Бул тил үчүн түз транскрипция азырынча жеткиликсиз. Биз анын үстүндө иштеп жатабыз.",
     "formLabel": "{name} формасы",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Колдоо"
+    "supportDisplayName": "Колдоо",
+    "explorePlayAndLearn": "Изилдөө, ойноо жана үйрөнүү",
+    "conversationFromDayOne": "Биринчи күндөн баштап баарлашуу",
+    "builtForConnection": "Байланыш үчүн курулган",
+    "aiWhenYouNeedIt": "Керек болгондо жасалма интеллект",
+    "practiceTailoredForYou": "Сизге ылайыкташтырылган практика"
 }

@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Bein umritun er ekki enn tiltæk fyrir þetta tungumál. Við erum að vinna í því.",
     "formLabel": "{name} eyðublað",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Þjónustuver"
+    "supportDisplayName": "Þjónustuver",
+    "explorePlayAndLearn": "Kannaðu, spilaðu og lærðu",
+    "conversationFromDayOne": "Samræður frá fyrsta degi",
+    "builtForConnection": "Hannað fyrir tengingu",
+    "aiWhenYouNeedIt": "Gervigreind þegar þú þarft á henni að halda",
+    "practiceTailoredForYou": "Æfing sérsniðin fyrir þig"
 }

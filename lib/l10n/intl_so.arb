@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Qoraalka tooska ah weli lama heli karo luqaddan. Waxaanu ka shaqaynaynaa.",
     "formLabel": "{name} foomka",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Taageero"
+    "supportDisplayName": "Taageero",
+    "explorePlayAndLearn": "Sahami, ciyaar oo baro",
+    "conversationFromDayOne": "Wadahadal laga bilaabo maalinta koowaad",
+    "builtForConnection": "Loo dhisay isku xirnaan",
+    "aiWhenYouNeedIt": "AI markaad u baahato",
+    "practiceTailoredForYou": "Layli adiga kuu gaar ah"
 }

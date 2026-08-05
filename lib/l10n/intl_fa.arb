@@ -9794,5 +9794,10 @@
     "streamingSttLanguageUnsupportedBanner": "رونویسی زنده هنوز برای این زبان در دسترس نیست. ما در حال کار روی آن هستیم.",
     "formLabel": "فرم {name}",
     "botDisplayName": "ربات Pangea",
-    "supportDisplayName": "پشتیبانی"
+    "supportDisplayName": "پشتیبانی",
+    "explorePlayAndLearn": "کاوش کنید، بازی کنید و یاد بگیرید",
+    "conversationFromDayOne": "مکالمه از روز اول",
+    "builtForConnection": "ساخته شده برای ارتباط",
+    "aiWhenYouNeedIt": "هوش مصنوعی هر زمان که به آن نیاز داشتید",
+    "practiceTailoredForYou": "تمرین متناسب با شما"
 }

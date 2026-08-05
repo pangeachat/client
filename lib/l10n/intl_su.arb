@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung teu acan sayogi pikeun basa ieu. Kami nuju ngusahakeunana.",
     "formLabel": "Formulir {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Pangrojong"
+    "supportDisplayName": "Pangrojong",
+    "explorePlayAndLearn": "Ngajalajah, ulin, jeung diajar",
+    "conversationFromDayOne": "Paguneman ti Poé Kahiji",
+    "builtForConnection": "Dijieun pikeun sambungan",
+    "aiWhenYouNeedIt": "AI nalika anjeun butuh",
+    "practiceTailoredForYou": "Latihan anu disaluyukeun pikeun anjeun"
 }

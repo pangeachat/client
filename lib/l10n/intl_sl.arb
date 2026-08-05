@@ -10657,5 +10657,10 @@
     "streamingSttLanguageUnsupportedBanner": "Prepis v živo še ni na voljo za ta jezik. Delamo na tem.",
     "formLabel": "Obrazec {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Podpora"
+    "supportDisplayName": "Podpora",
+    "explorePlayAndLearn": "Raziskuj, igraj se in se uči",
+    "conversationFromDayOne": "Pogovor od prvega dne",
+    "builtForConnection": "Ustvarjeno za povezovanje",
+    "aiWhenYouNeedIt": "AI, ko ga potrebuješ",
+    "practiceTailoredForYou": "Praksa, prilagojena tebi"
 }

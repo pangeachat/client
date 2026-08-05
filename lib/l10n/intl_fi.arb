@@ -9743,5 +9743,10 @@
     "streamingSttLanguageUnsupportedBanner": "Suora transkriptio ei ole vielä saatavilla tälle kielelle. Työskentelemme asian parissa.",
     "formLabel": "{name}-lomake",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Tuki"
+    "supportDisplayName": "Tuki",
+    "explorePlayAndLearn": "Tutki, pelaa ja opi",
+    "conversationFromDayOne": "Keskustelua heti alusta alkaen",
+    "builtForConnection": "Rakennettu yhteydenpitoa varten",
+    "aiWhenYouNeedIt": "Tekoälyä tarvittaessa",
+    "practiceTailoredForYou": "Räätälöityä harjoittelua sinulle"
 }

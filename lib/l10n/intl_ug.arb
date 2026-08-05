@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "جانلىق تەرجىمە بۇ تىل ئۈچۈن تېخى ئىشلەپ تۇرمايدۇ. بىز ئۇنىڭ ئۈستىدە ئىشلەۋاتىمىز.",
     "formLabel": "{name} جەدۋىلى",
     "botDisplayName": "پانگەيا بوت",
-    "supportDisplayName": "ياردەم"
+    "supportDisplayName": "ياردەم",
+    "explorePlayAndLearn": "ئىزدە، ئوينا ۋە ئۆگەن",
+    "conversationFromDayOne": "بىرىنچى كۈندىن باشلاپ پاراڭلىشىش",
+    "builtForConnection": "ئالاقە ئۈچۈن ياسالغان",
+    "aiWhenYouNeedIt": "سىزگە لازىم بولغاندا سۈنئىي ئىدراك",
+    "practiceTailoredForYou": "سىز ئۈچۈن خاسلاشتۇرۇلغان مەشىق"
 }

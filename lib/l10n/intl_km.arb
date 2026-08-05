@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "ការបកប្រែផ្ទាល់មិនទាន់មានសម្រាប់ភាសានេះនៅឡើយទេ។ យើងកំពុងព្យាយាមបង្កើតវា។",
     "formLabel": "ទម្រង់ {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "ជំនួយ"
+    "supportDisplayName": "ជំនួយ",
+    "explorePlayAndLearn": "ស្វែងយល់ លេង និងរៀន",
+    "conversationFromDayOne": "ការសន្ទនាចាប់ពីថ្ងៃដំបូង",
+    "builtForConnection": "បង្កើតឡើងសម្រាប់ការតភ្ជាប់",
+    "aiWhenYouNeedIt": "AI នៅពេលអ្នកត្រូវការវា",
+    "practiceTailoredForYou": "ការអនុវត្តដែលបានរៀបចំសម្រាប់អ្នក"
 }

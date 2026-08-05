@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "ການຖອດຂໍ້ຄວາມສົດຍັງບໍ່ສາມາດໃຊ້ໄດ້ສຳລັບພາສານີ້ເທື່ອ. ພວກເຮົາກຳລັງດຳເນີນການຢູ່.",
     "formLabel": "ແບບຟອມ {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "ຊ່ວຍເຫຼືອ"
+    "supportDisplayName": "ຊ່ວຍເຫຼືອ",
+    "explorePlayAndLearn": "ສຳຫຼວດ, ຫຼິ້ນ ແລະ ຮຽນຮູ້",
+    "conversationFromDayOne": "ສົນທະນາຕັ້ງແຕ່ມື້ທຳອິດ",
+    "builtForConnection": "ສ້າງຂຶ້ນເພື່ອການເຊື່ອມຕໍ່",
+    "aiWhenYouNeedIt": "AI ເມື່ອທ່ານຕ້ອງການ",
+    "practiceTailoredForYou": "ການຝຶກຝົນທີ່ເໝາະສົມກັບທ່ານ"
 }

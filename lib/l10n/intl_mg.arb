@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Tsy misy ho an'ity fiteny ity aloha ny fandikana mivantana. Miezaka manao izany izahay.",
     "formLabel": "Endrika {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Fanohanana"
+    "supportDisplayName": "Fanohanana",
+    "explorePlayAndLearn": "Mikaroka, milalao ary mianara",
+    "conversationFromDayOne": "Fifampiresahana manomboka amin'ny andro voalohany",
+    "builtForConnection": "Namboarina ho an'ny fifandraisana",
+    "aiWhenYouNeedIt": "AI rehefa ilainao izany",
+    "practiceTailoredForYou": "Fanazaran-tena mifanaraka aminao"
 }

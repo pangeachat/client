@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Kev txhais lus nyob tam sim no tsis muaj rau hom lus no. Peb tab tom ua haujlwm rau nws.",
     "formLabel": "{name} daim ntawv",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Kev Pab"
+    "supportDisplayName": "Kev Pab",
+    "explorePlayAndLearn": "Tshawb nrhiav, ua si thiab kawm",
+    "conversationFromDayOne": "Sib tham txij hnub ib",
+    "builtForConnection": "Tsim los rau kev sib txuas",
+    "aiWhenYouNeedIt": "AI thaum koj xav tau",
+    "practiceTailoredForYou": "Kev xyaum tsim nyog rau koj"
 }

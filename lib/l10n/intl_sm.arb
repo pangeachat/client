@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "E le'i maua le fa'aliliuga tuusa'o mo lenei gagana. O lo'o matou galulue i ai.",
     "formLabel": "Fomu {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Lagolago"
+    "supportDisplayName": "Lagolago",
+    "explorePlayAndLearn": "Su'esu'e, ta'alo ma a'oa'o",
+    "conversationFromDayOne": "Talanoaga mai le Aso Muamua",
+    "builtForConnection": "Fausia mo feso'ota'iga",
+    "aiWhenYouNeedIt": "AI pe a e mana'omia",
+    "practiceTailoredForYou": "Fa'ata'ita'iga fa'apitoa mo oe"
 }

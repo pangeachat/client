@@ -9706,5 +9706,10 @@
     "streamingSttLanguageUnsupportedBanner": "Zuzeneko transkripzioa oraindik ez dago erabilgarri hizkuntza honetarako. Horretan ari gara lanean.",
     "formLabel": "{name} inprimakia",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Laguntza"
+    "supportDisplayName": "Laguntza",
+    "explorePlayAndLearn": "Arakatu, jolastu eta ikasi",
+    "conversationFromDayOne": "Elkarrizketa lehen egunetik",
+    "builtForConnection": "Konexiorako eraikia",
+    "aiWhenYouNeedIt": "Adimen artifiziala behar duzunean",
+    "practiceTailoredForYou": "Zuretzat egokitutako praktika"
 }

@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Transcriptio viva nondum huic linguae praesto est. Laboramus.",
     "formLabel": "{name} forma",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Subsidium"
+    "supportDisplayName": "Subsidium",
+    "explorePlayAndLearn": "Explora, lude et disce",
+    "conversationFromDayOne": "Sermo ab initio",
+    "builtForConnection": "Ad coniunctionem aedificatum",
+    "aiWhenYouNeedIt": "AI cum opus est",
+    "practiceTailoredForYou": "Exercitatio tibi aptata"
 }

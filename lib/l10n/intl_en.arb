@@ -4340,11 +4340,7 @@
     "unlockLearningTools": "Unlock learning tools",
     "managementSnackbarMessage": "We launched subscription management in a new tab. If you didn't see the new tab, please check your popup blocker.",
     "getStarted": "Get started",
-    "playConversationGames": "Play conversation games with the bot, classmates, and new friends!",
-    "jumpIntoConversation": "Jump into conversation from Day One with AI writing tools!",
-    "playPersonalizedGames": "Play practice games personalized to your vocabulary and grammar needs!",
     "hideEvents": "Hide events",
-    "learnLanguageWhileTexting": "Learn a language while texting your friends!",
     "denyKnockSpace": "User will be rejected from course, however they may attempt to rejoin any time later.",
     "denyKnockChat": "User will be rejected from chat, however they may attempt to rejoin any time later.",
     "banFromSpace": "Ban from course",
@@ -4614,7 +4610,6 @@
             }
         }
     },
-    "writeAndSpeakWorryFree": "Write and speak worry-free with Pangea Bot anytime, anywhere!",
     "starRowLabel": "{filled} out of {total} stars have been completed",
     "@starRowLabel": {
         "placeholders": {
@@ -4634,7 +4629,6 @@
             }
         }
     },
-    "joinLearningCommunities": "Join international learning communities, or start your own!",
     "pageLabel": "{title} page",
     "@pageLabel": {
         "placeholders": {
@@ -4822,6 +4816,11 @@
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
+    "explorePlayAndLearn": "Explore, play and learn",
+    "conversationFromDayOne": "Conversation from Day One",
+    "builtForConnection": "Built for connection",
+    "aiWhenYouNeedIt": "AI when you need it",
+    "practiceTailoredForYou": "Practice tailored for you",
     "practiceSessionTimedOut": "Your practice session ended after {minutes} minutes without activity.",
     "@practiceSessionTimedOut": {
         "type": "String",

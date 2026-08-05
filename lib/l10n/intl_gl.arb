@@ -9706,5 +9706,10 @@
     "streamingSttLanguageUnsupportedBanner": "A transcrición en directo aínda non está dispoñible para este idioma. Estamos a traballar niso.",
     "formLabel": "Formulario de {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Soporte"
+    "supportDisplayName": "Soporte",
+    "explorePlayAndLearn": "Explora, xoga e aprende",
+    "conversationFromDayOne": "Conversa dende o primeiro día",
+    "builtForConnection": "Feito para conectar",
+    "aiWhenYouNeedIt": "IA cando a precises",
+    "practiceTailoredForYou": "Práctica adaptada para ti"
 }

@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung durung kasedhiya kanggo basa iki. Kita lagi ngupayakake.",
     "formLabel": "Formulir {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Dhukungan"
+    "supportDisplayName": "Dhukungan",
+    "explorePlayAndLearn": "Jelajahi, dolanan, lan sinau",
+    "conversationFromDayOne": "Pacelathon wiwit dina kapisan",
+    "builtForConnection": "Digawe kanggo sesambungan",
+    "aiWhenYouNeedIt": "AI nalika sampeyan butuh",
+    "practiceTailoredForYou": "Latihan sing cocog kanggo sampeyan"
 }

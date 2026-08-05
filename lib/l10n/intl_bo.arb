@@ -9317,5 +9317,10 @@
     "streamingSttLanguageUnsupportedBanner": "དངོས་གཞིའི་བརྡ་འཕྲིན་བརྒྱུད་སྒྲིག་སྐད་ཡིག་འདིར་ད་དུང་མེད། ང་ཚོས་དེའི་ཐོག་ལས་ཀ་བྱེད་བཞིན་ཡོད།",
     "formLabel": "{name} འབྲི་ཤོག",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "རྒྱབ་སྐྱོར།"
+    "supportDisplayName": "རྒྱབ་སྐྱོར།",
+    "explorePlayAndLearn": "འཚོལ་ཞིབ་དང་རྩེད་མོ་རྩེ་ཞིང་སྦྱོང་བ།",
+    "conversationFromDayOne": "ཉིན་དང་པོ་ནས་བཟུང་གླེང་མོལ།",
+    "builtForConnection": "འབྲེལ་མཐུད་ཆེད་དུ་བསྐྲུན་པ།",
+    "aiWhenYouNeedIt": "ཁྱེད་ལ་དགོས་པའི་སྐབས་ཀྱི་རང་བྱུང་རིག་ནུས།",
+    "practiceTailoredForYou": "ཁྱེད་རང་ལ་འཚམས་པའི་སྦྱོང་བརྡར།"
 }

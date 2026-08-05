@@ -10657,5 +10657,10 @@
     "streamingSttLanguageUnsupportedBanner": "Viva transskribo ankoraŭ ne disponeblas por ĉi tiu lingvo. Ni laboras pri tio.",
     "formLabel": "{name} formularo",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Subteno"
+    "supportDisplayName": "Subteno",
+    "explorePlayAndLearn": "Esploru, ludu kaj lernu",
+    "conversationFromDayOne": "Konversacio ekde la unua tago",
+    "builtForConnection": "Konstruita por konekto",
+    "aiWhenYouNeedIt": "AI kiam vi bezonas ĝin",
+    "practiceTailoredForYou": "Praktiko adaptita al vi"
 }

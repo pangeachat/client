@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "It-traskrizzjoni diretta għadha mhix disponibbli għal din il-lingwa. Qed naħdmu fuqha.",
     "formLabel": "Formola ta' {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Appoġġ"
+    "supportDisplayName": "Appoġġ",
+    "explorePlayAndLearn": "Esplora, ilgħab u titgħallem",
+    "conversationFromDayOne": "Konverżazzjoni mill-ewwel jum",
+    "builtForConnection": "Mibni għall-konnessjoni",
+    "aiWhenYouNeedIt": "AI meta jkollok bżonnha",
+    "practiceTailoredForYou": "Prattika mfassla għalik"
 }

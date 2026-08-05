@@ -10012,5 +10012,10 @@
     "streamingSttLanguageUnsupportedBanner": "النسخ المباشر غير متاح لهذه اللغة بعد. نحن نعمل على ذلك.",
     "formLabel": "نموذج {name}",
     "botDisplayName": "بوت بانجيا",
-    "supportDisplayName": "الدعم"
+    "supportDisplayName": "الدعم",
+    "explorePlayAndLearn": "استكشف، العب وتعلّم",
+    "conversationFromDayOne": "المحادثة من اليوم الأول",
+    "builtForConnection": "مصمم للتواصل",
+    "aiWhenYouNeedIt": "الذكاء الاصطناعي عندما تحتاجه",
+    "practiceTailoredForYou": "تدريب مصمم خصيصًا لك"
 }

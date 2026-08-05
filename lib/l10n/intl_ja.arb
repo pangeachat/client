@@ -10475,5 +10475,10 @@
     "streamingSttLanguageUnsupportedBanner": "この言語ではまだライブ文字起こしをご利用いただけません。現在対応中です。",
     "formLabel": "{name}フォーム",
     "botDisplayName": "パンゲアボット",
-    "supportDisplayName": "サポート"
+    "supportDisplayName": "サポート",
+    "explorePlayAndLearn": "探して、遊んで、学ぶ",
+    "conversationFromDayOne": "初日から会話",
+    "builtForConnection": "つながりのために作られました",
+    "aiWhenYouNeedIt": "必要なときにAIを",
+    "practiceTailoredForYou": "あなたに合わせた練習"
 }

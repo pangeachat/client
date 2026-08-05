@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "A trascrizzione in diretta ùn hè ancu dispunibule per sta lingua. Ci travagliemu.",
     "formLabel": "Forma {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Supportu"
+    "supportDisplayName": "Supportu",
+    "explorePlayAndLearn": "Esplora, ghjoca è ampara",
+    "conversationFromDayOne": "Cunversazione da u primu ghjornu",
+    "builtForConnection": "Custruitu per a cunnessione",
+    "aiWhenYouNeedIt": "IA quandu ne avete bisognu",
+    "practiceTailoredForYou": "Pratica persunalizata per voi"
 }

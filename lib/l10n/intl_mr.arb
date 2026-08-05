@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "या भाषेसाठी थेट प्रतिलेखन अद्याप उपलब्ध नाही. आम्ही त्यावर काम करत आहोत.",
     "formLabel": "{name} फॉर्म",
     "botDisplayName": "पँजिया बॉट",
-    "supportDisplayName": "आधार"
+    "supportDisplayName": "आधार",
+    "explorePlayAndLearn": "एक्सप्लोर करा, खेळा आणि शिका",
+    "conversationFromDayOne": "पहिल्या दिवसापासून संभाषण",
+    "builtForConnection": "कनेक्शनसाठी बनवले आहे",
+    "aiWhenYouNeedIt": "जेव्हा तुम्हाला गरज असेल तेव्हा AI",
+    "practiceTailoredForYou": "तुमच्यासाठी तयार केलेला सराव"
 }

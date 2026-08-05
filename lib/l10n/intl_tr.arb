@@ -10007,5 +10007,10 @@
     "streamingSttLanguageUnsupportedBanner": "Bu dil için canlı transkripsiyon henüz mevcut değil. Üzerinde çalışıyoruz.",
     "formLabel": "{name} formu",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Destek"
+    "supportDisplayName": "Destek",
+    "explorePlayAndLearn": "Keşfet, oyna ve öğren",
+    "conversationFromDayOne": "İlk Günden İtibaren Sohbet",
+    "builtForConnection": "Bağlantı için tasarlandı",
+    "aiWhenYouNeedIt": "İhtiyacınız olduğunda yapay zeka",
+    "practiceTailoredForYou": "Size özel pratik"
 }

@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Uandishi wa moja kwa moja haupatikani kwa lugha hii bado. Tunalifanyia kazi.",
     "formLabel": "Fomu ya {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Usaidizi"
+    "supportDisplayName": "Usaidizi",
+    "explorePlayAndLearn": "Gundua, cheza na ujifunze",
+    "conversationFromDayOne": "Mazungumzo tangu Siku ya Kwanza",
+    "builtForConnection": "Imeundwa kwa ajili ya muunganisho",
+    "aiWhenYouNeedIt": "AI unapohitaji",
+    "practiceTailoredForYou": "Mazoezi yaliyoundwa kwa ajili yako"
 }

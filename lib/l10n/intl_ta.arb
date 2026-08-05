@@ -9798,5 +9798,10 @@
     "streamingSttLanguageUnsupportedBanner": "இந்த மொழிக்கு நேரடி படியெடுத்தல் இன்னும் கிடைக்கவில்லை. நாங்கள் அதில் பணியாற்றி வருகிறோம்.",
     "formLabel": "{name} படிவம்",
     "botDisplayName": "பாங்கியா போட்",
-    "supportDisplayName": "ஆதரவு"
+    "supportDisplayName": "ஆதரவு",
+    "explorePlayAndLearn": "ஆராய்ந்து, விளையாடி, கற்றுக்கொள்ளுங்கள்",
+    "conversationFromDayOne": "முதல் நாளிலிருந்தே உரையாடல்",
+    "builtForConnection": "இணைப்பிற்காக உருவாக்கப்பட்டது",
+    "aiWhenYouNeedIt": "உங்களுக்குத் தேவைப்படும்போது AI",
+    "practiceTailoredForYou": "உங்களுக்காக வடிவமைக்கப்பட்ட பயிற்சி"
 }

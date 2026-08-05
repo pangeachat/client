@@ -10669,5 +10669,10 @@
     "streamingSttLanguageUnsupportedBanner": "此語言的即時轉錄功能尚未推出。我們正在努力開發中。",
     "formLabel": "{name}表格",
     "botDisplayName": "Pangea 機械人",
-    "supportDisplayName": "支援"
+    "supportDisplayName": "支援",
+    "explorePlayAndLearn": "探索、玩樂、學習",
+    "conversationFromDayOne": "從第一日開始對話",
+    "builtForConnection": "為連結而生",
+    "aiWhenYouNeedIt": "隨時為你提供AI",
+    "practiceTailoredForYou": "為你度身訂造的練習"
 }

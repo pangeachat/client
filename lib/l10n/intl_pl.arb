@@ -9791,5 +9791,10 @@
     "streamingSttLanguageUnsupportedBanner": "Transkrypcja na żywo nie jest jeszcze dostępna dla tego języka. Pracujemy nad tym.",
     "formLabel": "Formularz {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Wsparcie"
+    "supportDisplayName": "Wsparcie",
+    "explorePlayAndLearn": "Odkrywaj, graj i ucz się",
+    "conversationFromDayOne": "Rozmowa od pierwszego dnia",
+    "builtForConnection": "Stworzone do nawiązywania kontaktów",
+    "aiWhenYouNeedIt": "AI, kiedy jej potrzebujesz",
+    "practiceTailoredForYou": "Praktyka dopasowana do Ciebie"
 }

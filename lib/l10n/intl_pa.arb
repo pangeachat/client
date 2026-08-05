@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "ਇਸ ਭਾਸ਼ਾ ਲਈ ਲਾਈਵ ਟ੍ਰਾਂਸਕ੍ਰਿਪਸ਼ਨ ਅਜੇ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਅਸੀਂ ਇਸ 'ਤੇ ਕੰਮ ਕਰ ਰਹੇ ਹਾਂ।",
     "formLabel": "{name} ਫਾਰਮ",
     "botDisplayName": "ਪੰਗੇਆ ਬੋਟ",
-    "supportDisplayName": "ਸਹਾਇਤਾ"
+    "supportDisplayName": "ਸਹਾਇਤਾ",
+    "explorePlayAndLearn": "ਖੋਜੋ, ਖੇਡੋ ਅਤੇ ਸਿੱਖੋ",
+    "conversationFromDayOne": "ਪਹਿਲੇ ਦਿਨ ਤੋਂ ਗੱਲਬਾਤ",
+    "builtForConnection": "ਕਨੈਕਸ਼ਨ ਲਈ ਬਣਾਇਆ ਗਿਆ",
+    "aiWhenYouNeedIt": "ਜਦੋਂ ਤੁਹਾਨੂੰ ਲੋੜ ਹੋਵੇ AI",
+    "practiceTailoredForYou": "ਤੁਹਾਡੇ ਲਈ ਤਿਆਰ ਕੀਤਾ ਅਭਿਆਸ"
 }

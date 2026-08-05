@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "ဤဘာသာစကားအတွက် တိုက်ရိုက်မှတ်တမ်းတင်ခြင်းကို မရရှိနိုင်သေးပါ။ ကျွန်ုပ်တို့ လုပ်ဆောင်နေပါသည်။",
     "formLabel": "{name} ဖောင်",
     "botDisplayName": "Pangea ဘော့",
-    "supportDisplayName": "အကူအညီ"
+    "supportDisplayName": "အကူအညီ",
+    "explorePlayAndLearn": "လေ့လာပါ၊ ကစားပါ၊ သင်ယူပါ",
+    "conversationFromDayOne": "ပထမဆုံးနေ့ကတည်းက စကားပြောဆိုမှု",
+    "builtForConnection": "ချိတ်ဆက်မှုအတွက် တည်ဆောက်ထားသည်",
+    "aiWhenYouNeedIt": "လိုအပ်သည့်အခါတိုင်း AI",
+    "practiceTailoredForYou": "သင့်အတွက် အံဝင်ခွင်ကျ လေ့ကျင့်မှု"
 }

@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Kāore anō kia wātea te tuhinga ora mō tēnei reo. Kei te mahi mātou.",
     "formLabel": "Puka {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Tautoko"
+    "supportDisplayName": "Tautoko",
+    "explorePlayAndLearn": "Tūhuratia, tākaro, ako hoki",
+    "conversationFromDayOne": "Kōrerorero mai i te Rā Tuatahi",
+    "builtForConnection": "Hangaia mō te hononga",
+    "aiWhenYouNeedIt": "AI ina hiahia koe",
+    "practiceTailoredForYou": "Whakaharatau i whakaritea māu"
 }

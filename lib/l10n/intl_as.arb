@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "এই ভাষাৰ বাবে লাইভ ট্ৰান্সক্ৰিপশ্বন এতিয়াও উপলব্ধ নহয়। আমি ইয়াত কাম কৰি আছোঁ।",
     "formLabel": "{name} ফৰ্ম",
     "botDisplayName": "পেংগিয়া বট",
-    "supportDisplayName": "সমৰ্থন"
+    "supportDisplayName": "সমৰ্থন",
+    "explorePlayAndLearn": "অন্বেষণ কৰক, খেলক আৰু শিকক",
+    "conversationFromDayOne": "প্ৰথম দিনৰ পৰাই কথা-বতৰা",
+    "builtForConnection": "সংযোগৰ বাবে নিৰ্মিত",
+    "aiWhenYouNeedIt": "আপোনাক প্ৰয়োজন হ’লে AI",
+    "practiceTailoredForYou": "আপোনাৰ বাবে উপযোগী অনুশীলন"
 }

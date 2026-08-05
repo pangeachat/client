@@ -10662,5 +10662,10 @@
     "streamingSttLanguageUnsupportedBanner": "ఈ భాషకు ప్రత్యక్ష ట్రాన్స్‌క్రిప్షన్ ఇంకా అందుబాటులో లేదు. మేము దానిపై పని చేస్తున్నాము.",
     "formLabel": "{name} ఫారమ్",
     "botDisplayName": "పాంగియా బాట్",
-    "supportDisplayName": "మద్దతు"
+    "supportDisplayName": "మద్దతు",
+    "explorePlayAndLearn": "అన్వేషించండి, ఆడండి మరియు నేర్చుకోండి",
+    "conversationFromDayOne": "మొదటి రోజు నుంచే సంభాషణ",
+    "builtForConnection": "కనెక్షన్ కోసం నిర్మించబడింది",
+    "aiWhenYouNeedIt": "మీకు అవసరమైనప్పుడు AI",
+    "practiceTailoredForYou": "మీకు అనుగుణంగా అభ్యాసం"
 }

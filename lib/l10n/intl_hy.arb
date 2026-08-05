@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Ուղիղ տառադարձումը դեռ հասանելի չէ այս լեզվի համար։ Մենք աշխատում ենք դրա վրա։",
     "formLabel": "{name} ձևաթուղթ",
     "botDisplayName": "Pangea Բոտ",
-    "supportDisplayName": "Աջակցություն"
+    "supportDisplayName": "Աջակցություն",
+    "explorePlayAndLearn": "Բացահայտեք, խաղացեք և սովորեք",
+    "conversationFromDayOne": "Զրույց առաջին իսկ օրվանից",
+    "builtForConnection": "Ստեղծված կապի համար",
+    "aiWhenYouNeedIt": "AI-ն, երբ ձեզ անհրաժեշտ է",
+    "practiceTailoredForYou": "Ձեզ համար հարմարեցված պրակտիկա"
 }

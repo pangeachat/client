@@ -10338,5 +10338,10 @@
     "streamingSttLanguageUnsupportedBanner": "การถอดเสียงสดยังไม่พร้อมใช้งานสำหรับภาษานี้ เรากำลังดำเนินการอยู่",
     "formLabel": "แบบฟอร์ม {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "ฝ่ายสนับสนุน"
+    "supportDisplayName": "ฝ่ายสนับสนุน",
+    "explorePlayAndLearn": "สำรวจ เล่น และเรียนรู้",
+    "conversationFromDayOne": "บทสนทนาตั้งแต่วันแรก",
+    "builtForConnection": "สร้างมาเพื่อการเชื่อมต่อ",
+    "aiWhenYouNeedIt": "AI เมื่อคุณต้องการ",
+    "practiceTailoredForYou": "ฝึกฝนที่ปรับให้เหมาะกับคุณ"
 }

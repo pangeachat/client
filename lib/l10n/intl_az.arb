@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Canlı transkripsiya hələ bu dil üçün mövcud deyil. Biz bunun üzərində işləyirik.",
     "formLabel": "{name} forması",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Dəstək"
+    "supportDisplayName": "Dəstək",
+    "explorePlayAndLearn": "Kəşf edin, oynayın və öyrənin",
+    "conversationFromDayOne": "İlk gündən söhbət",
+    "builtForConnection": "Əlaqə üçün qurulub",
+    "aiWhenYouNeedIt": "Ehtiyacınız olanda süni intellekt",
+    "practiceTailoredForYou": "Sizin üçün fərdi təcrübə"
 }

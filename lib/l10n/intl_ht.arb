@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Transkripsyon an dirèk poko disponib pou lang sa a. N ap travay sou sa.",
     "formLabel": "Fòmilè {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Sipò"
+    "supportDisplayName": "Sipò",
+    "explorePlayAndLearn": "Eksplore, jwe epi aprann",
+    "conversationFromDayOne": "Konvèsasyon depi premye jou a",
+    "builtForConnection": "Bati pou koneksyon",
+    "aiWhenYouNeedIt": "AI lè w bezwen li",
+    "practiceTailoredForYou": "Pratik adapte pou ou"
 }

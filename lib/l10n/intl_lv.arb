@@ -9706,5 +9706,10 @@
     "streamingSttLanguageUnsupportedBanner": "Tiešraides transkripcija vēl nav pieejama šai valodai. Mēs pie tā strādājam.",
     "formLabel": "{name} forma",
     "botDisplayName": "Pangea Bots",
-    "supportDisplayName": "Atbalsts"
+    "supportDisplayName": "Atbalsts",
+    "explorePlayAndLearn": "Izpētiet, spēlējiet un mācieties",
+    "conversationFromDayOne": "Sarunas no pirmās dienas",
+    "builtForConnection": "Radīts savienojumam",
+    "aiWhenYouNeedIt": "AI, kad tas nepieciešams",
+    "practiceTailoredForYou": "Jums pielāgota prakse"
 }

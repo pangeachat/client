@@ -10224,5 +10224,10 @@
     "streamingSttLanguageUnsupportedBanner": "Direkttranskribering är inte tillgänglig för det här språket ännu. Vi arbetar på det.",
     "formLabel": "{name} formulär",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Support"
+    "supportDisplayName": "Support",
+    "explorePlayAndLearn": "Utforska, spela och lär dig",
+    "conversationFromDayOne": "Konversation från första dagen",
+    "builtForConnection": "Byggd för anslutning",
+    "aiWhenYouNeedIt": "AI när du behöver det",
+    "practiceTailoredForYou": "Övning anpassad för dig"
 }

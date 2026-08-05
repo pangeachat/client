@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Kunyora zviri kuitika panguva imwe chete hakusati kwavepo pamutauro uyu. Tiri kushanda nazvo.",
     "formLabel": "Fomu ra{name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Rubatsiro"
+    "supportDisplayName": "Rubatsiro",
+    "explorePlayAndLearn": "Ongorora, tamba uye dzidza",
+    "conversationFromDayOne": "Kukurukurirana kubva pazuva rekutanga",
+    "builtForConnection": "Yakavakwa yekubatanidza",
+    "aiWhenYouNeedIt": "AI paunenge uchiida",
+    "practiceTailoredForYou": "Kudzidzira kwakagadzirirwa iwe"
 }

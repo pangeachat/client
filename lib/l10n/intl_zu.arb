@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Ukulotshwa bukhoma akukatholakali ngalolu limi okwamanje. Sisebenzela kukho.",
     "formLabel": "Ifomu lika-{name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Ukusekela"
+    "supportDisplayName": "Ukusekela",
+    "explorePlayAndLearn": "Hlola, dlala futhi ufunde",
+    "conversationFromDayOne": "Ingxoxo kusukela osukwini lokuqala",
+    "builtForConnection": "Yakhelwe ukuxhumana",
+    "aiWhenYouNeedIt": "I-AI uma uyidinga",
+    "practiceTailoredForYou": "Ukuzijwayeza okuklanyelwe wena"
 }

@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Layv transkripshɔn nɔ de fɔ dis langwej yet. Wi de wok pan am.",
     "formLabel": "{name} fɔm",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Sapot"
+    "supportDisplayName": "Sapot",
+    "explorePlayAndLearn": "Go, ple, ɛn lan",
+    "conversationFromDayOne": "Tɔk frɔm di fɔs de",
+    "builtForConnection": "Mek fɔ kɔnɛkshɔn",
+    "aiWhenYouNeedIt": "AI we yu nid am",
+    "practiceTailoredForYou": "Pratkis we dɛn mek fɔ yu"
 }

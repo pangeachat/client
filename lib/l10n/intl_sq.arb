@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Transkriptimi i drejtpërdrejtë nuk është ende i disponueshëm për këtë gjuhë. Po punojmë për këtë.",
     "formLabel": "Formulari {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Mbështetje"
+    "supportDisplayName": "Mbështetje",
+    "explorePlayAndLearn": "Eksploro, luaj dhe mëso",
+    "conversationFromDayOne": "Bisedë që nga Dita e Parë",
+    "builtForConnection": "Ndërtuar për lidhje",
+    "aiWhenYouNeedIt": "AI kur ju nevojitet",
+    "practiceTailoredForYou": "Praktikë e përshtatur për ju"
 }

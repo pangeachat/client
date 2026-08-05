@@ -10334,5 +10334,10 @@
     "streamingSttLanguageUnsupportedBanner": "এই ভাষার জন্য লাইভ ট্রান্সক্রিপশন এখনও উপলব্ধ নয়। আমরা এটি নিয়ে কাজ করছি।",
     "formLabel": "{name} ফর্ম",
     "botDisplayName": "প্যানজিয়া বট",
-    "supportDisplayName": "সাপোর্ট"
+    "supportDisplayName": "সাপোর্ট",
+    "explorePlayAndLearn": "অনুসন্ধান করুন, খেলুন এবং শিখুন",
+    "conversationFromDayOne": "প্রথম দিন থেকেই কথোপকথন",
+    "builtForConnection": "সংযোগের জন্য তৈরি",
+    "aiWhenYouNeedIt": "আপনার যখন প্রয়োজন তখন AI",
+    "practiceTailoredForYou": "আপনার জন্য তৈরি অনুশীলন"
 }

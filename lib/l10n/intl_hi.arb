@@ -10338,5 +10338,10 @@
     "streamingSttLanguageUnsupportedBanner": "इस भाषा के लिए लाइव ट्रांसक्रिप्शन अभी उपलब्ध नहीं है। हम इस पर काम कर रहे हैं।",
     "formLabel": "{name} फ़ॉर्म",
     "botDisplayName": "पंगिया बॉट",
-    "supportDisplayName": "सहायता"
+    "supportDisplayName": "सहायता",
+    "explorePlayAndLearn": "खोजें, खेलें और सीखें",
+    "conversationFromDayOne": "पहले दिन से बातचीत",
+    "builtForConnection": "कनेक्शन के लिए बनाया गया",
+    "aiWhenYouNeedIt": "जब आपको ज़रूरत हो, तब AI",
+    "practiceTailoredForYou": "आपके लिए तैयार किया गया अभ्यास"
 }

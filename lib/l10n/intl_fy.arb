@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Live transkripsje is noch net beskikber foar dizze taal. Wy wurkje deroan.",
     "formLabel": "{name} formulier",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Support"
+    "supportDisplayName": "Support",
+    "explorePlayAndLearn": "Ferkenne, boartsje en lear",
+    "conversationFromDayOne": "Konversaasje fan dei ien ôf",
+    "builtForConnection": "Boud foar ferbining",
+    "aiWhenYouNeedIt": "AI as jo it nedich hawwe",
+    "practiceTailoredForYou": "Oefenje op maat foar jo"
 }

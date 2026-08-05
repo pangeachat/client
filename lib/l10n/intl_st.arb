@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "Phetolelo e phelang ha e so fumanehe bakeng sa puo ena. Re ntse re sebetsa ho yona.",
     "formLabel": "Foromo ea {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Tshehetso"
+    "supportDisplayName": "Tshehetso",
+    "explorePlayAndLearn": "Hlahloba, bapala le ho ithuta",
+    "conversationFromDayOne": "Puisano ho tloha Letsatsing la Pele",
+    "builtForConnection": "E hahiloe bakeng sa khokahano",
+    "aiWhenYouNeedIt": "AI ha o e hloka",
+    "practiceTailoredForYou": "Boitšisinyo bo ikhethileng bakeng sa hau"
 }

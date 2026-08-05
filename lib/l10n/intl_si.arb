@@ -2088,5 +2088,10 @@
     "streamingSttLanguageUnsupportedBanner": "මෙම භාෂාව සඳහා සජීවී පිටපත් කිරීම තවමත් නොමැත. අපි ඒ සඳහා කටයුතු කරමින් සිටිමු.",
     "formLabel": "{name} පෝරමය",
     "botDisplayName": "පැන්ජියා බොට්",
-    "supportDisplayName": "සහාය"
+    "supportDisplayName": "සහාය",
+    "explorePlayAndLearn": "ගවේෂණය කරන්න, සෙල්ලම් කරන්න සහ ඉගෙන ගන්න",
+    "conversationFromDayOne": "මුල් දවසේ සිට සංවාදය",
+    "builtForConnection": "සම්බන්ධතාවය සඳහා ගොඩනගා ඇත",
+    "aiWhenYouNeedIt": "ඔබට අවශ්‍ය විට AI",
+    "practiceTailoredForYou": "ඔබට ගැලපෙන පරිදි පුහුණුවීම්"
 }

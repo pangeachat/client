@@ -6980,5 +6980,10 @@
     "streamingSttLanguageUnsupportedBanner": "Tính năng phiên âm trực tiếp chưa khả dụng cho ngôn ngữ này. Chúng tôi đang nỗ lực thực hiện.",
     "formLabel": "Biểu mẫu {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Hỗ trợ"
+    "supportDisplayName": "Hỗ trợ",
+    "explorePlayAndLearn": "Khám phá, vui chơi và học hỏi",
+    "conversationFromDayOne": "Trò chuyện ngay từ ngày đầu tiên",
+    "builtForConnection": "Được xây dựng để kết nối",
+    "aiWhenYouNeedIt": "AI khi bạn cần",
+    "practiceTailoredForYou": "Thực hành phù hợp với bạn"
 }

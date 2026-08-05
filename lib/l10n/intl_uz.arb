@@ -9710,5 +9710,10 @@
     "streamingSttLanguageUnsupportedBanner": "Ushbu til uchun jonli transkripsiya hali mavjud emas. Biz bu ustida ishlayapmiz.",
     "formLabel": "{name} shakli",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Yordam"
+    "supportDisplayName": "Yordam",
+    "explorePlayAndLearn": "Kashf eting, o'ynang va o'rganing",
+    "conversationFromDayOne": "Birinchi kundan suhbat",
+    "builtForConnection": "Aloqa uchun yaratilgan",
+    "aiWhenYouNeedIt": "Kerak bo'lganda AI",
+    "practiceTailoredForYou": "Sizga moslashtirilgan amaliyot"
 }

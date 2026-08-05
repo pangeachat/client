@@ -9779,5 +9779,10 @@
     "streamingSttLanguageUnsupportedBanner": "La trascrizione in tempo reale non è ancora disponibile per questa lingua. Ci stiamo lavorando.",
     "formLabel": "Modulo {name}",
     "botDisplayName": "Pangea Bot",
-    "supportDisplayName": "Supporto"
+    "supportDisplayName": "Supporto",
+    "explorePlayAndLearn": "Esplora, gioca e impara",
+    "conversationFromDayOne": "Conversazione dal primo giorno",
+    "builtForConnection": "Costruito per la connessione",
+    "aiWhenYouNeedIt": "AI quando ne hai bisogno",
+    "practiceTailoredForYou": "Pratica su misura per te"
 }
