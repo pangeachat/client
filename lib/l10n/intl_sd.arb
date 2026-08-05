@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-05 10:21:41.068124",
+    "@@last_modified": "2026-08-05 11:42:16.621962",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "لائيو ٽرانسڪرپشن بيڪ اپ سروس تي هلندڙ آهي. معيار مختلف ٿي سگهي ٿو، مهرباني ڪري متن چيڪ ڪريو.",
     "streamingSttDegradedToBatchBanner": "لائيو ٽرانسڪرپشن هن وقت موجود ناهي. توهان جو پيغام معياري طريقي سان ٽرانسڪرائب ڪيو ويو، بغير لائيو ايڊيٽنگ جي. اسان ان کي بحال ڪرڻ لاءِ ڪم ڪري رهيا آهيون.",
     "streamingSttLanguageUnsupportedBanner": "هن ٻولي لاءِ لائيو ٽرانسڪرپشن اڃا موجود ناهي. اسان ان تي ڪم ڪري رهيا آهيون.",
-    "formLabel": "{name} فارم"
+    "formLabel": "{name} فارم",
+    "botDisplayName": "پينگيا بوٽ",
+    "supportDisplayName": "مدد"
 }

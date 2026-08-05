@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-05 10:21:38.557381",
+    "@@last_modified": "2026-08-05 11:42:15.642861",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Direkte transkripsjon kjører på en reservetjeneste. Kvaliteten kan variere, vennligst sjekk teksten.",
     "streamingSttDegradedToBatchBanner": "Direkte transkripsjon er utilgjengelig akkurat nå. Meldingen din ble transkribert på standard måte, uten direkte redigering. Vi jobber med å gjenopprette den.",
     "streamingSttLanguageUnsupportedBanner": "Direkte transkripsjon er ikke tilgjengelig for dette språket ennå. Vi jobber med det.",
-    "formLabel": "{name}-skjema"
+    "formLabel": "{name}-skjema",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Kundestøtte"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-05 10:21:32.210649",
+    "@@last_modified": "2026-08-05 11:42:11.804535",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9701,5 +9701,7 @@
     "streamingSttDegradedLiveBanner": "Reaalajas transkriptsioon töötab varuteenusega. Kvaliteet võib varieeruda, palun kontrollige teksti.",
     "streamingSttDegradedToBatchBanner": "Reaalajas transkriptsioon pole praegu saadaval. Teie sõnum transkribeeriti tavapärasel viisil, ilma reaalajas redigeerimiseta. Töötame selle taastamise kallal.",
     "streamingSttLanguageUnsupportedBanner": "Reaalajas transkriptsioon pole selle keele jaoks veel saadaval. Töötame selle kallal.",
-    "formLabel": "{name} vorm"
+    "formLabel": "{name} vorm",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Tugi"
 }

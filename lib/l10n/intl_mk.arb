@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-05 10:21:37.052025",
+    "@@last_modified": "2026-08-05 11:42:14.788124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Транскрипцијата во живо работи на резервна услуга. Квалитетот може да варира, проверете го текстот.",
     "streamingSttDegradedToBatchBanner": "Транскрипцијата во живо моментално не е достапна. Вашата порака беше транскрибирана на стандарден начин, без уредување во живо. Работиме на тоа да ја вратиме.",
     "streamingSttLanguageUnsupportedBanner": "Транскрипцијата во живо сè уште не е достапна за овој јазик. Работиме на тоа.",
-    "formLabel": "Формулар за {name}"
+    "formLabel": "Формулар за {name}",
+    "botDisplayName": "Pangea Бот",
+    "supportDisplayName": "Поддршка"
 }

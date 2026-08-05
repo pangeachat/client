@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-05 10:21:37.192562",
+    "@@last_modified": "2026-08-05 11:42:14.448338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Mandeha amin'ny tolotra backup ny fandikana mivantana. Mety hiovaova ny kalitao, azafady jereo ny lahatsoratra.",
     "streamingSttDegradedToBatchBanner": "Tsy misy amin'izao fotoana izao ny fandikana mivantana. Nadika tamin'ny fomba mahazatra ny hafatrao, tsy misy fanitsiana mivantana. Miezaka mamerina izany izahay.",
     "streamingSttLanguageUnsupportedBanner": "Tsy misy ho an'ity fiteny ity aloha ny fandikana mivantana. Miezaka manao izany izahay.",
-    "formLabel": "Endrika {name}"
+    "formLabel": "Endrika {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Fanohanana"
 }

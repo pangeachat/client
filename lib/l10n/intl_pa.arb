@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-05 10:21:39.549274",
+    "@@last_modified": "2026-08-05 11:42:15.856833",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "ਲਾਈਵ ਟ੍ਰਾਂਸਕ੍ਰਿਪਸ਼ਨ ਬੈਕਅੱਪ ਸੇਵਾ 'ਤੇ ਚੱਲ ਰਹੀ ਹੈ। ਗੁਣਵੱਤਾ ਵੱਖਰੀ ਹੋ ਸਕਦੀ ਹੈ, ਕਿਰਪਾ ਕਰਕੇ ਟੈਕਸਟ ਦੀ ਜਾਂਚ ਕਰੋ।",
     "streamingSttDegradedToBatchBanner": "ਲਾਈਵ ਟ੍ਰਾਂਸਕ੍ਰਿਪਸ਼ਨ ਇਸ ਸਮੇਂ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਤੁਹਾਡਾ ਸੁਨੇਹਾ ਲਾਈਵ ਸੰਪਾਦਨ ਤੋਂ ਬਿਨਾਂ, ਮਿਆਰੀ ਤਰੀਕੇ ਨਾਲ ਟ੍ਰਾਂਸਕ੍ਰਾਈਬ ਕੀਤਾ ਗਿਆ ਸੀ। ਅਸੀਂ ਇਸਨੂੰ ਬਹਾਲ ਕਰਨ ਲਈ ਕੰਮ ਕਰ ਰਹੇ ਹਾਂ।",
     "streamingSttLanguageUnsupportedBanner": "ਇਸ ਭਾਸ਼ਾ ਲਈ ਲਾਈਵ ਟ੍ਰਾਂਸਕ੍ਰਿਪਸ਼ਨ ਅਜੇ ਉਪਲਬਧ ਨਹੀਂ ਹੈ। ਅਸੀਂ ਇਸ 'ਤੇ ਕੰਮ ਕਰ ਰਹੇ ਹਾਂ।",
-    "formLabel": "{name} ਫਾਰਮ"
+    "formLabel": "{name} ਫਾਰਮ",
+    "botDisplayName": "ਪੰਗੇਆ ਬੋਟ",
+    "supportDisplayName": "ਸਹਾਇਤਾ"
 }

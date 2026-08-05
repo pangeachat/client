@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-05 10:21:38.977734",
+    "@@last_modified": "2026-08-05 11:42:15.076052",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "লাইভ ট্রানস্ক্রিপশন অতোংবা সার্ভিস অমদা চৎলি। কোয়ালিটিদা খেৎনবা লৈতে, টেক্সট চেক তৌবীয়ু।",
     "streamingSttDegradedToBatchBanner": "লাইভ ট্রানস্ক্রিপশন হৌজিক ফংদে। নখোঙগী মেসেজ অদু লাইভ এডিটিং লৈতনা স্ট্যান্ডার্ড ওইনা ট্রানস্ক্রাইব তৌখি। ঐখোয়না অদু ফংহনবগীদমক হোৎনরি।",
     "streamingSttLanguageUnsupportedBanner": "লাইভ ট্রানস্ক্রিপশন অসি হৌজিক ফাওবা অসিগুম্বা লোন অসিগীদমক ফংদ্রি। ঐখোয়না অদু হোৎনরি।",
-    "formLabel": "{name} ফোর্ন"
+    "formLabel": "{name} ফোর্ন",
+    "botDisplayName": "পেঙ্গিয়া বট",
+    "supportDisplayName": "সাপোর্ট"
 }

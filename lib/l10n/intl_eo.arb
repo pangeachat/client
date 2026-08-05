@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 10:21:30.205808",
+    "@@last_modified": "2026-08-05 11:42:11.361785",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10655,5 +10655,7 @@
     "streamingSttDegradedLiveBanner": "Viva transskribo funkcias per rezerva servo. Kvalito povas varii, bonvolu kontroli la tekston.",
     "streamingSttDegradedToBatchBanner": "Viva transskribo ne disponeblas nun. Via mesaĝo estis transskribita laŭ la norma maniero, sen viva redaktado. Ni laboras por restarigi ĝin.",
     "streamingSttLanguageUnsupportedBanner": "Viva transskribo ankoraŭ ne disponeblas por ĉi tiu lingvo. Ni laboras pri tio.",
-    "formLabel": "{name} formularo"
+    "formLabel": "{name} formularo",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Subteno"
 }

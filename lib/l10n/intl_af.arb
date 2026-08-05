@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-05 10:21:28.614439",
+    "@@last_modified": "2026-08-05 11:42:10.567229",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Regstreekse transkripsie loop op 'n rugsteundiens. Kwaliteit kan verskil, kontroleer asseblief die teks.",
     "streamingSttDegradedToBatchBanner": "Regstreekse transkripsie is tans onbeskikbaar. Jou boodskap is op die standaard manier getranskribeer, sonder regstreekse redigering. Ons werk daaraan om dit te herstel.",
     "streamingSttLanguageUnsupportedBanner": "Regstreekse transkripsie is nog nie vir hierdie taal beskikbaar nie. Ons werk daaraan.",
-    "formLabel": "{name} vorm"
+    "formLabel": "{name} vorm",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Ondersteuning"
 }

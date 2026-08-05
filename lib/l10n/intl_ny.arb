@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-05 10:21:39.483643",
+    "@@last_modified": "2026-08-05 11:42:16.071645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Kulemba mawu pompopompo kukugwira ntchito pa ntchito yosunga zobwezera. Ubwino ukhoza kusiyana, chonde onani mawuwo.",
     "streamingSttDegradedToBatchBanner": "Kulemba mawu pompopompo sikukupezeka pakali pano. Uthenga wanu unalembedwa mwachizolowezi, osati pompopompo. Tikuyesetsa kubwezeretsa.",
     "streamingSttLanguageUnsupportedBanner": "Kulemba mawu pompopompo sikukupezeka pa chilankhulo ichi pakali pano. Tikugwira ntchito.",
-    "formLabel": "Fomu ya {name}"
+    "formLabel": "Fomu ya {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Thandizo"
 }

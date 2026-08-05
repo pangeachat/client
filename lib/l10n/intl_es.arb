@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-05 10:21:30.641115",
+    "@@last_modified": "2026-08-05 11:42:11.167805",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7907,5 +7907,7 @@
     "streamingSttDegradedLiveBanner": "La transcripción en vivo se está ejecutando en un servicio de respaldo. La calidad puede variar, por favor, revisa el texto.",
     "streamingSttDegradedToBatchBanner": "La transcripción en vivo no está disponible en este momento. Tu mensaje fue transcrito de la manera estándar, sin edición en vivo. Estamos trabajando para restaurarla.",
     "streamingSttLanguageUnsupportedBanner": "La transcripción en vivo aún no está disponible para este idioma. Estamos trabajando en ello.",
-    "formLabel": "Formulario de {name}"
+    "formLabel": "Formulario de {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Soporte"
 }

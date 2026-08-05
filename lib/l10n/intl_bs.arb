@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-05 10:21:28.438224",
+    "@@last_modified": "2026-08-05 11:42:10.503712",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2086,5 +2086,7 @@
     "streamingSttDegradedLiveBanner": "Transkripcija uživo radi na rezervnoj usluzi. Kvalitet može varirati, provjerite tekst.",
     "streamingSttDegradedToBatchBanner": "Transkripcija uživo trenutno nije dostupna. Vaša poruka je transkribovana na standardni način, bez uređivanja uživo. Radimo na tome da je vratimo.",
     "streamingSttLanguageUnsupportedBanner": "Transkripcija uživo još nije dostupna za ovaj jezik. Radimo na tome.",
-    "formLabel": "{name} obrazac"
+    "formLabel": "{name} obrazac",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Podrška"
 }

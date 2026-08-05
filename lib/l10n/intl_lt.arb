@@ -2976,7 +2976,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-05 10:21:36.427172",
+    "@@last_modified": "2026-08-05 11:42:14.374325",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10485,5 +10485,7 @@
     "streamingSttDegradedLiveBanner": "Tiesioginė transkripcija veikia atsargine paslauga. Kokybė gali skirtis, patikrinkite tekstą.",
     "streamingSttDegradedToBatchBanner": "Tiesioginė transkripcija šiuo metu nepasiekiama. Jūsų žinutė buvo transkribuota standartiniu būdu, be tiesioginio redagavimo. Dirbame, kad ją atkurtume.",
     "streamingSttLanguageUnsupportedBanner": "Tiesioginė transkripcija dar nepasiekiama šia kalba. Mes dirbame prie to.",
-    "formLabel": "{name} forma"
+    "formLabel": "{name} forma",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Pagalba"
 }
