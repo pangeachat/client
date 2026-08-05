@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_search/search_footer.dart';
 import 'package:fluffychat/routes/chat/video_player.dart';
 import 'package:fluffychat/widgets/image_viewer/image_viewer.dart';
@@ -97,22 +98,25 @@ class ChatSearchImagesTab extends StatelessWidget {
                     child: EventVideoPlayer(event),
                   );
                 }
-                return InkWell(
-                  onTap: () => showDialog(
-                    context: context,
-                    builder: (_) => ImageViewer(event, outerContext: context),
-                  ),
-                  borderRadius: borderRadius,
-                  child: Material(
-                    clipBehavior: Clip.hardEdge,
+                return Semantics(
+                  label: L10n.of(context).selectImageLabel,
+                  child: InkWell(
+                    onTap: () => showDialog(
+                      context: context,
+                      builder: (_) => ImageViewer(event, outerContext: context),
+                    ),
                     borderRadius: borderRadius,
-                    child: MxcImage(
-                      event: event,
-                      width: 128,
-                      height: 128,
-                      fit: BoxFit.cover,
-                      animated: true,
-                      isThumbnail: true,
+                    child: Material(
+                      clipBehavior: Clip.hardEdge,
+                      borderRadius: borderRadius,
+                      child: MxcImage(
+                        event: event,
+                        width: 128,
+                        height: 128,
+                        fit: BoxFit.cover,
+                        animated: true,
+                        isThumbnail: true,
+                      ),
                     ),
                   ),
                 );
