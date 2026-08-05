@@ -15,16 +15,29 @@ class ActivitySessionButtons extends StatelessWidget {
   final ActivitySessionStartState controller;
   final ActivitySessionStateController sessionController;
 
+  /// Mobile minimized rest: render just the CTA row, snug and left-aligned
+  /// under the info row (no divider, description, centering, or heavy padding),
+  /// so the minimized sheet reads as densely as the course card's compact peek.
+  final bool compact;
+
   const ActivitySessionButtons({
     super.key,
     required this.controller,
     required this.sessionController,
+    this.compact = false,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final description = sessionController.descriptionText;
+
+    if (compact) {
+      return Padding(
+        padding: const EdgeInsets.fromLTRB(12.0, 4.0, 8.0, 12.0),
+        child: _SessionCTAButtons(sessionController),
+      );
+    }
 
     return AnimatedSize(
       alignment: Alignment.bottomCenter,
@@ -426,9 +439,7 @@ class _ActivityCtaChip extends StatelessWidget {
             ),
           );
 
-    return tooltip == null
-        ? button
-        : Tooltip(message: tooltip!, child: button);
+    return tooltip == null ? button : Tooltip(message: tooltip!, child: button);
   }
 }
 

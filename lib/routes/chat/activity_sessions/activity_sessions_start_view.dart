@@ -36,6 +36,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 // (`roomTokenCloseLocation`) once leaving a chat needed the same semantic
 // (#7561); the activity plan's close (#7156) reads it from there.
 
+/// Below this body height the start page is at its mobile minimized rest and
+/// renders only the header + info row + CTA — the scroll content is dropped
+/// until the sheet is dragged/tapped up. Kept in step with
+/// `_activitySheetMinimizedHeight` in workspace_shell.dart, the cavity height
+/// that produces this. See activity-start-page.instructions.md.
+const double kActivityCompactMaxHeight = 150.0;
+
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartState controller;
   final ActivitySessionStateController sessionController;
@@ -156,13 +163,6 @@ class ActivitySessionStartView extends StatelessWidget {
                 icon: const Icon(Icons.filter_center_focus),
                 onPressed: MapCameraFocusRequests.request,
               ),
-              // Web only: on mobile the flag is a chip in the CTA row instead.
-              if (FluffyThemes.isColumnMode(context))
-                IconButton(
-                  tooltip: L10n.of(context).feedbackButton,
-                  icon: const Icon(Icons.flag_outlined),
-                  onPressed: controller.submitActivityFeedback,
-                ),
             ],
           ),
           body: controller.loading
@@ -191,90 +191,124 @@ class ActivitySessionStartView extends StatelessWidget {
                     message: L10n.of(context).activityNotFound,
                   ),
                 )
-              : Column(
-                  children: [
-                    _ActivityStartInfoRow(activity: activity),
-                    Expanded(
-                      child: SingleChildScrollView(
-                        controller: controller.scrollController,
-                        child: Column(
-                          children: [
-                            ActivityStartHero(
-                              controller: controller,
-                              sessionController: sessionController,
-                              activity: activity,
-                            ),
-                            if (sessionController.showDescriptionSection)
-                              Center(
-                                child: Container(
+              : LayoutBuilder(
+                  builder: (context, constraints) {
+                    // Mobile minimized (short cavity): render only the header,
+                    // info row, and CTA — the media, description, and roles
+                    // mount when the sheet is dragged or tapped up, mirroring
+                    // the course card's compact peek. Never compact on the wide
+                    // web panel or at the sheet's full height.
+                    final compact =
+                        constraints.maxHeight.isFinite &&
+                        constraints.maxHeight < kActivityCompactMaxHeight;
+                    // Minimized: header (app bar) + info row + CTA only, sized
+                    // to fit snugly — no scroll content, so no Expanded gap.
+                    if (compact) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _ActivityStartInfoRow(activity: activity),
+                          ActivitySessionButtons(
+                            controller: controller,
+                            sessionController: sessionController,
+                            compact: true,
+                          ),
+                        ],
+                      );
+                    }
+                    return Column(
+                      children: [
+                        _ActivityStartInfoRow(activity: activity),
+                        // Web keeps the vertical CTA at the bottom; share and flag
+                        // sit here as de-emphasized buttons instead. On mobile they
+                        // are chips in the bottom CTA row.
+                        if (FluffyThemes.isColumnMode(context))
+                          _ActivityStartShareFlagRow(controller),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            controller: controller.scrollController,
+                            child: Column(
+                              children: [
+                                ActivityStartHero(
+                                  controller: controller,
+                                  sessionController: sessionController,
+                                  activity: activity,
+                                ),
+                                if (sessionController.showDescriptionSection)
+                                  Center(
+                                    child: Container(
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 600.0,
+                                      ),
+                                      padding: const EdgeInsets.fromLTRB(
+                                        16.0,
+                                        50.0,
+                                        16.0,
+                                        0.0,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        spacing: 12.0,
+                                        children: [
+                                          Linkify(
+                                            text: activity.description,
+                                            options: const LinkifyOptions(
+                                              humanize: false,
+                                            ),
+                                            useMouseRegion: true,
+                                            style: theme.textTheme.bodyLarge,
+                                            linkStyle: theme.textTheme.bodyLarge
+                                                ?.copyWith(
+                                                  color:
+                                                      theme.colorScheme.primary,
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                  decorationColor:
+                                                      theme.colorScheme.primary,
+                                                ),
+                                            onOpen: (link) => UrlLauncher(
+                                              context,
+                                              link.url,
+                                            ).launchUrl(),
+                                          ),
+                                          if (activity.vocab.isNotEmpty)
+                                            ActivityVocabWidget(
+                                              key: ValueKey(
+                                                'activity-start-vocab-${activity.activityId}',
+                                              ),
+                                              vocab: activity.vocab,
+                                              langCode:
+                                                  activity.req.targetLanguage,
+                                              targetId: 'activity-start-vocab',
+                                              usedVocab: null,
+                                              activityLangCode:
+                                                  activity.req.targetLanguage,
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                Container(
                                   constraints: const BoxConstraints(
                                     maxWidth: 600.0,
                                   ),
-                                  padding: const EdgeInsets.fromLTRB(
-                                    16.0,
-                                    50.0,
-                                    16.0,
-                                    0.0,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    spacing: 12.0,
-                                    children: [
-                                      Linkify(
-                                        text: activity.description,
-                                        options: const LinkifyOptions(
-                                          humanize: false,
-                                        ),
-                                        useMouseRegion: true,
-                                        style: theme.textTheme.bodyLarge,
-                                        linkStyle: theme.textTheme.bodyLarge
-                                            ?.copyWith(
-                                              color: theme.colorScheme.primary,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              decorationColor:
-                                                  theme.colorScheme.primary,
-                                            ),
-                                        onOpen: (link) => UrlLauncher(
-                                          context,
-                                          link.url,
-                                        ).launchUrl(),
-                                      ),
-                                      if (activity.vocab.isNotEmpty)
-                                        ActivityVocabWidget(
-                                          key: ValueKey(
-                                            'activity-start-vocab-${activity.activityId}',
-                                          ),
-                                          vocab: activity.vocab,
-                                          langCode: activity.req.targetLanguage,
-                                          targetId: 'activity-start-vocab',
-                                          usedVocab: null,
-                                          activityLangCode:
-                                              activity.req.targetLanguage,
-                                        ),
-                                    ],
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: ActivitySessionBottomContent(
+                                    sessionController,
                                   ),
                                 ),
-                              ),
-                            Container(
-                              constraints: const BoxConstraints(
-                                maxWidth: 600.0,
-                              ),
-                              padding: const EdgeInsets.all(12.0),
-                              child: ActivitySessionBottomContent(
-                                sessionController,
-                              ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    ActivitySessionButtons(
-                      controller: controller,
-                      sessionController: sessionController,
-                    ),
-                  ],
+                        ActivitySessionButtons(
+                          controller: controller,
+                          sessionController: sessionController,
+                        ),
+                      ],
+                    );
+                  },
                 ),
         );
       },
@@ -384,6 +418,52 @@ class _IconLabel extends StatelessWidget {
           style: Theme.of(context).textTheme.labelLarge?.copyWith(color: color),
         ),
       ],
+    );
+  }
+}
+
+/// Web's share and flag actions, sitting under the info row as two
+/// de-emphasized bare-outline buttons (mobile puts them in the bottom CTA row
+/// instead). See activity-start-page.instructions.md.
+class _ActivityStartShareFlagRow extends StatelessWidget {
+  final ActivitySessionStartState controller;
+
+  const _ActivityStartShareFlagRow(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20.0),
+    );
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
+      child: Row(
+        spacing: 8.0,
+        children: [
+          Expanded(
+            child: Tooltip(
+              message: l10n.share,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(shape: shape),
+                onPressed: controller.copyActivityLink,
+                child: const Icon(Icons.share_outlined),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Tooltip(
+              message: l10n.feedbackButton,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(shape: shape),
+                onPressed: controller.submitActivityFeedback,
+                child: const Icon(Icons.flag_outlined),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

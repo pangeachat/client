@@ -480,6 +480,15 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _coursesSheetRowEstimate = 84.0;
   static const double _coursesSheetAddOptionsAllowance = 236.0;
 
+  /// The activity plan's minimized rest height: the cavity handle + the start
+  /// page's app bar, info row, and CTA row, with no media/description. This is
+  /// the plan's opening stop (there is no taller mid-level); dragging up goes
+  /// to full, dragging down dismisses. Kept in step with
+  /// `kActivityCompactMaxHeight` in activity_sessions_start_view.dart, which
+  /// tells the body to drop its content below this height. See
+  /// activity-start-page.instructions.md.
+  static const double _activitySheetMinimizedHeight = 180.0;
+
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
@@ -598,7 +607,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // lists. Uses the same visibility predicate as the list's all-chats
     // filter so the estimate counts what actually renders.
     double? preferredCavityHeight;
-    if (cavityToken?.type == PanelTypesEnum.chats) {
+    if (isActivityCavity) {
+      preferredCavityHeight = _activitySheetMinimizedHeight;
+    } else if (cavityToken?.type == PanelTypesEnum.chats) {
       final visibleChats = Matrix.of(context).client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
           .length;
@@ -787,6 +798,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // to select it directly; panning never dismisses. Dismissal is the
         // drag-down handle or the sheet's own close control (#7742).
         mapStaysLive: isActivityCavity || isCourseCavity,
+        // Tapping the plan's minimized rest expands it to full, alongside
+        // dragging up.
+        tapBodyExpands: isActivityCavity,
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,

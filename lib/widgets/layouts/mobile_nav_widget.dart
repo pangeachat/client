@@ -137,6 +137,13 @@ class MobileNavWidget extends StatefulWidget {
   /// the finger moves.
   final ValueChanged<bool>? onCavityFullChanged;
 
+  /// A tap on the hosted surface's dead space (not a button) expands the cavity
+  /// to full — the same tap-to-expand a course peek has, extended to the
+  /// activity plan's minimized rest so a map explorer can open the full page
+  /// with a tap as well as a drag. Only meaningful below full. See
+  /// activity-start-page.instructions.md.
+  final bool tapBodyExpands;
+
   /// The keyboard's overlap BEYOND the bottom safe area, computed by the shell
   /// (which reads `viewInsets` above its Scaffold — a resizing Scaffold hides it
   /// from the body — and nets out the home-indicator inset the SafeArea stops
@@ -166,6 +173,7 @@ class MobileNavWidget extends StatefulWidget {
     this.onDismissed,
     this.mapStaysLive = false,
     this.onCavityFullChanged,
+    this.tapBodyExpands = false,
     this.keyboardInset = 0.0,
     super.key,
   });
@@ -628,13 +636,18 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                             tween: Tween<double>(end: baseCavityPx),
                             child: _NavCavity(
                               onHandleTap: _toggleHandle,
-                              // At peek, a tap anywhere on the sheet (not
-                              // claimed by an inner button) expands to full —
-                              // the peek is an entry point, not a surface to
-                              // interact with (#7609).
+                              // A tap anywhere on the sheet (not claimed by an
+                              // inner button) expands to full: at a course peek
+                              // (#7609), and — for [tapBodyExpands], the activity
+                              // plan — at its minimized rest, since that view is
+                              // header + info + CTA with no content to interact
+                              // with. Null once full so content taps pass through.
                               onBodyTap:
-                                  widget.cavityDefaultsToPeek &&
-                                      _restState == NavCavityHeight.collapsed
+                                  (widget.cavityDefaultsToPeek &&
+                                          _restState ==
+                                              NavCavityHeight.collapsed) ||
+                                      (widget.tapBodyExpands &&
+                                          _restState == NavCavityHeight.half)
                                   ? () => _openAt(NavCavityHeight.full)
                                   : null,
                               onDragStart: _onDragStart,
