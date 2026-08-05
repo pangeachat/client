@@ -161,7 +161,7 @@ class ActivitySessionStartView extends StatelessWidget {
               // so this button zoom+pans the map to the activity's pin.
               IconButton(
                 tooltip: L10n.of(context).focusOnMap,
-                icon: const Icon(Icons.filter_center_focus),
+                icon: const Icon(Icons.my_location),
                 onPressed: MapCameraFocusRequests.request,
               ),
             ],
