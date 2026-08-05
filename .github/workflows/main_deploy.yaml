@@ -125,6 +125,13 @@ jobs:
           # (task_definition_staging.json). NOT set on production (release.yaml) until
           # validated on staging.
           echo "DOSAGE_SIGNALS_ENABLED=true" >> build/web/.env
+          # Staging only: turn on the live streaming-STT capture path so voice
+          # messages transcribe over the choreo WebSocket relay instead of batch.
+          # The choreo master flag (STREAMING_LIVE_ENABLED) is already on in staging;
+          # this is the matching client gate (Environment.liveStreamingSttEnabled).
+          # Client falls back to batch on any relay/provider failure. NOT set on
+          # production (release.yaml) until validated on staging.
+          echo "LIVE_STREAMING_STT_ENABLED=true" >> build/web/.env
           touch build/web/assets/envs.json
           echo "$ENV_OVERRIDES" >> build/web/assets/envs.json
           mkdir -p build/web/.well-known
