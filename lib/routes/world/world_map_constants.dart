@@ -101,35 +101,14 @@ class WorldMapConstants {
     return Duration(milliseconds: ms.round());
   }
 
-  // #7937 — calm, Maps-like scroll-wheel zoom.
-  //
-  // flutter_map applies the wheel with NO easing: every scroll event moves the
-  // camera the instant it arrives, so a zoom is a burst of hard snaps rather
-  // than a move. We take the wheel over ourselves (the `scrollWheelZoom` flag
-  // is off in `MapOptions`, the map view's own `Listener` handles the signal)
-  // and ease each step through the same camera glide the buttons use.
-
-  /// Zoom levels travelled per logical pixel of scroll delta — below
-  /// flutter_map's 0.005 default, so one desktop mouse notch (~100px) covers
-  /// about a third of a level instead of half.
-  static const double scrollZoomVelocity = 0.0035;
-
-  /// How long one scroll step eases over. Short enough that the map still
-  /// tracks the wheel, long enough to read as a move rather than a snap.
-  /// Successive steps re-target the SAME glide (see `WorldMapController
-  /// .scrollZoomBy`), so a fast scroll is one continuous zoom, not a pile-up.
-  static const Duration scrollZoomGlide = Duration(milliseconds: 260);
-
-  /// The zoom a scroll of [scrollDelta] logical pixels should settle at,
-  /// accumulating onto [base] — the in-flight glide's TARGET when one is
-  /// running, so a fast scroll adds up instead of repeatedly re-measuring a
-  /// zoom that is still moving (the same accumulation the +/- buttons use).
-  /// Scrolling UP (negative delta, "away from the user") zooms in.
-  static double scrollZoomTarget({
-    required double base,
-    required double scrollDelta,
-    required double minZoom,
-  }) => (base - scrollDelta * scrollZoomVelocity).clamp(minZoom, maxZoom);
+  // #7937 — the scroll wheel is deliberately NOT eased. flutter_map applies
+  // each wheel event the instant it arrives, and an eased, cursor-anchored
+  // version (accumulating onto the in-flight glide target over ~260ms, with a
+  // reduced per-notch velocity) was built and rejected on feel: easing a
+  // direct-manipulation input reads as delay and stutter, not as calm. Only the
+  // PROGRAMMATIC glides above — the focus button and world reset — were slowed,
+  // and those are where the tile churn actually was. If this comes up again,
+  // the answer is not a shorter ease; it is leaving the wheel alone.
 
   /// The pan and zoom of a glide run on two overlapping intervals so the pan
   /// happens at the WIDER of the two zooms and the zoom at the narrower — keeping

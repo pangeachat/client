@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_map/flutter_map.dart';
@@ -825,25 +824,6 @@ class _WorldMapViewState extends State<WorldMapView> {
         // note on MapOptions below.)
         child: Listener(
           onPointerDown: (_) => FocusManager.instance.primaryFocus?.unfocus(),
-          // The scroll wheel is ours, not flutter_map's (#7937): its handler
-          // moves the camera the instant each event lands, so a zoom arrives as
-          // a burst of snaps. `scrollWheelZoom` is off in the flags below and
-          // the controller eases each step instead. Registering with the
-          // signal resolver (exactly as flutter_map's own handler does) keeps a
-          // scrollable ancestor from acting on the same event.
-          onPointerSignal: (signal) {
-            if (signal is! PointerScrollEvent) return;
-            if (signal.scrollDelta.dy == 0) return;
-            GestureBinding.instance.pointerSignalResolver.register(signal, (
-              resolved,
-            ) {
-              resolved as PointerScrollEvent;
-              widget.controller.scrollZoomBy(
-                resolved.scrollDelta.dy,
-                resolved.localPosition,
-              );
-            });
-          },
           child: LayoutBuilder(
             builder: (context, constraints) {
               // The zoom-out floor is viewport-derived (#7813): out to where one
@@ -912,13 +892,14 @@ class _WorldMapViewState extends State<WorldMapView> {
                   // light grey (#E0E0E0), which is what makes a zoom
                   // "flashbang" a dark-theme user (#7937).
                   backgroundColor: mapBackground,
+                  // Scroll-wheel zoom stays flutter_map's: it applies each wheel
+                  // event immediately, which is what direct manipulation should
+                  // do. An eased, cursor-anchored version was tried for #7937
+                  // and felt delayed and jumpy next to this — the ease showed up
+                  // as input lag, not as calm. Only the programmatic glides
+                  // (focus button, world reset) were slowed.
                   interactionOptions: const InteractionOptions(
-                    // Scroll-wheel zoom is handled by the `Listener` above so
-                    // it can be eased rather than snapped (#7937).
-                    flags:
-                        InteractiveFlag.all &
-                        ~InteractiveFlag.rotate &
-                        ~InteractiveFlag.scrollWheelZoom,
+                    flags: InteractiveFlag.all & ~InteractiveFlag.rotate,
                   ),
                   // Tapping empty map does not clear focus — a focus is cleared only by
                   // closing its panel or focusing another (world-map.instructions.md).

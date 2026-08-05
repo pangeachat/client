@@ -39,41 +39,6 @@ void main() {
     });
   });
 
-  // #7937 — the scroll wheel accumulates onto the in-flight target so a fast
-  // scroll adds up to one continuous move, and clamps to the camera's limits.
-  group('scrollZoomTarget — eased scroll-wheel zoom (#7937)', () {
-    double target(double base, double delta, {double minZoom = 3}) =>
-        WorldMapConstants.scrollZoomTarget(
-          base: base,
-          scrollDelta: delta,
-          minZoom: minZoom,
-        );
-
-    test('scrolling up (negative delta) zooms in, down zooms out', () {
-      expect(target(10, -100), greaterThan(10));
-      expect(target(10, 100), lessThan(10));
-    });
-
-    test('one desktop notch moves a fraction of a level, not half of one', () {
-      expect(target(10, -100) - 10, closeTo(0.35, 0.001));
-    });
-
-    test('successive steps accumulate when fed the running target', () {
-      final first = target(10, -100);
-      final second = target(first, -100);
-      expect(second - 10, closeTo(0.7, 0.001));
-    });
-
-    test('clamps to the viewport-derived floor and the shared ceiling', () {
-      expect(target(3.2, 10000, minZoom: 3), 3);
-      expect(target(17, -10000), WorldMapConstants.maxZoom);
-    });
-
-    test('a zero-delta scroll is a no-op', () {
-      expect(target(10, 0), 10);
-    });
-  });
-
   group('glideProgress — directional pan/zoom staggering (#7239)', () {
     test(
       'endpoints: pan and zoom are 0 at t=0 and 1 at t=1, any direction',
