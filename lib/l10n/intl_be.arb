@@ -3289,8 +3289,6 @@
     "constructUseCollected": "Збіраецца ў чаце",
     "constructUseNanDesc": "Ня прымяняецца",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Уключана тэксту ў гаварэнне",
-    "enableTTSToolDescription": "Дазвольце прыкладанню генерыраваць вывад тэксту ў гаварэнне для частак тэксту на вашай мове.",
     "yourUsername": "Ваш імя карыстальніка",
     "yourEmail": "Ваша электронная пошта",
     "iWantToLearn": "Я хачу навучыцца",
@@ -3559,7 +3557,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-04 10:40:26.286032",
+    "@@last_modified": "2026-08-05 10:21:28.545669",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -5303,14 +5301,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9691,8 +9681,6 @@
     "newActivityBadge": "НОВАЕ",
     "exitVocabPracticeSession": "Ваш бягучы прагрэс у практыцы слоўнікавага запасу не будзе захаваны.",
     "exitGrammarPracticeSession": "Ваш бягучы прагрэс у практыцы граматыкі не будзе захаваны.",
-    "autoReadAloudMessagesToolName": "Аўтаматычна чытаць услых усе атрыманыя паведамленні",
-    "autoReadAloudMessagesDescription": "Калі паведамленне атрымана, голас прылады будзе выкарыстаны для чытання паведамлення ўслых для практыкі праслухоўвання.",
     "activityFilterButtonsLabel": "Кнопкі фільтра ўзроўню, гульцоў і статусу",
     "mapFilterAllLevels": "Усе ўзроўні",
     "mapFilterAllPlayers": "Усе гульцы",
@@ -9710,6 +9698,27 @@
     "practiceSessionTimedOut": "Ваша практычная сесія скончылася праз {minutes} хвілін без актыўнасці.",
     "autocorrectMobileOnly": "Толькі мабільны",
     "autocorrectMobileOnlyWarning": "Аўтавыпраўленне даступна толькі ў мабільнай праграме.",
+    "audioSectionTitle": "Аўдыя",
+    "audioWordsToolName": "Словы",
+    "audioWordsDescription": "Прайгравайце аўдыя слова, калі націскаеце на яго.",
+    "audioChoicesToolName": "Варыянты",
+    "audioChoicesDescription": "Прайгравайце аўдыя для варыянтаў адказаў у практычных заданнях.",
+    "audioIncomingMessagesToolName": "Уваходныя паведамленні",
+    "audioIncomingMessagesDescription": "Аўтаматычна чытайце ўслых атрыманыя паведамленні на вашай мэтавай мове для практыкі аўдзіравання.",
+    "choosePangeaAvatar": "Выберыце аватар Pangea",
+    "readAloudNoVoiceTitle": "Не знойдзены высакаякасны голас {language}",
+    "readAloudNoVoiceDesktopWeb": "Гэты браўзер не прапануе высакаякасны голас {language}, таму паведамленні не могуць быць добра прачытаны ўслых. Chrome і Edge звычайна ўключаюць высакаякасныя галасы.",
+    "readAloudGetChrome": "Спампаваць Chrome",
+    "readAloudNoVoiceMobileWeb": "Гэты браўзер не прапануе высакаякасны голас {language}, таму паведамленні не могуць быць добра прачытаны ўслых. Дадатак Pangea Chat можа выкарыстоўваць лепшыя галасы вашай прылады.",
+    "readAloudGetApp": "Спампаваць дадатак",
+    "readAloudNoVoiceIOS": "Ваша прылада яшчэ не спампавала высакаякасны голас {language}. Спампуйце яго, а потым паспрабуйце яшчэ раз:",
+    "readAloudNoVoiceIOSSteps": "  • Налады\n  • Даступнасць\n  • Вымаўленне змесціва\n  • Галасы\n  • {language}\n  • Спампаваць палепшаны або прэміум-голас",
+    "readAloudNoVoiceAndroid": "Ваша прылада яшчэ не мае высакаякаснага голасу {language}. Усталюйце галасавыя дадзеныя для вашага механізму пераўтварэння тэксту ў маўленне, а потым паспрабуйце яшчэ раз.",
+    "readAloudOpenVoiceSettings": "Адкрыць налады голасу",
+    "streamingSttDegradedLiveBanner": "Жывая транскрыпцыя працуе на рэзервовай службе. Якасць можа адрознівацца, калі ласка, праверце тэкст.",
+    "streamingSttDegradedToBatchBanner": "Жывая транскрыпцыя зараз недаступная. Ваша паведамленне было транскрыбавана стандартным спосабам, без жывога рэдагавання. Мы працуем над аднаўленнем.",
+    "streamingSttLanguageUnsupportedBanner": "Жывая транскрыпцыя пакуль недаступная для гэтай мовы. Мы працуем над гэтым.",
+    "formLabel": "Форма {name}",
     "explorePlayAndLearn": "Даследуйце, гуляйце і вучыцеся",
     "conversationFromDayOne": "Размова з першага дня",
     "builtForConnection": "Створана для сувязі",

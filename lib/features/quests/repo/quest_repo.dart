@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
-import 'package:http/http.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
@@ -15,13 +14,24 @@ import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/activity_v2_mapper.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class MissingQuestException implements Exception {}
+/// A quest plan id that no longer resolves in the CMS (confirmed 404). A known
+/// benign state — old course rooms keep referencing removed quests — which
+/// [QuestRepo.quest] returns WITHOUT reporting; callers render it as a known
+/// state (or report it at warning, never error). The `toString()` matters:
+/// without it, any report arrives in Sentry as `Instance of
+/// 'MissingQuestException'` (CLIENT-DQC, #8094).
+class MissingQuestException implements Exception {
+  @override
+  String toString() =>
+      'MissingQuestException: quest plan not found in CMS (confirmed 404)';
+}
 
 /// The single home of the per-course activity-pin rule (org quests doc,
 /// client#7748): which of a Mission's [available] activity ids count when the
@@ -108,9 +118,13 @@ class QuestOutline {
   CourseLoOutline toCourseLoOutline({
     int starsToUnlock = kDefaultStarsToUnlockObjective,
   }) => CourseLoOutline(
-    // v3: the quest-plans id IS the course-plan uuid callers resolved by, so
-    // this is the key a per-course surface looks its own rollup up under.
+    // The quest id serves as the scoping key here — right for scoped/preview
+    // outlines that have no room. The joined-course cache re-keys courseId to
+    // the course room id (unique per course) so two courses built from one
+    // quest stay distinct (#8087); questId survives that re-key for the
+    // world-map band's per-quest dedupe.
     courseId: quest.id,
+    questId: quest.id,
     orderedLoIds: quest.learningObjectiveIds,
     activityIdsByLo: {
       for (final group in groups)
@@ -199,7 +213,12 @@ class QuestRepo {
         questActivityEntriesFromJson(jsonDecode(response.body)),
       );
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"quest_id": questId});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"quest_id": questId},
+        level: PangeaHttpException.severityOf(e),
+      );
       return Result.error(e);
     }
   }
@@ -235,11 +254,16 @@ class QuestRepo {
       );
       return Result.value(quest);
     } catch (e, s) {
-      if (e is Response && e.statusCode == 404) {
+      if (PangeaHttpException.statusCodeOf(e) == 404) {
         return Result.error(MissingQuestException());
       }
 
-      ErrorHandler.logError(e: e, s: s, data: {"quest_id": questId});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"quest_id": questId},
+        level: PangeaHttpException.severityOf(e),
+      );
       return Result.error(e);
     }
   }
@@ -261,7 +285,12 @@ class QuestRepo {
       );
       return Result.value({for (final lo in resp.docs) lo.id: lo});
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"lo_ids": ids});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"lo_ids": ids},
+        level: PangeaHttpException.severityOf(e),
+      );
       return Result.error(e);
     }
   }
@@ -293,7 +322,15 @@ class QuestRepo {
           : null;
       return Result.value((refs ?? const []).map((e) => e as String).toList());
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"activity_id": activityId});
+      if (PangeaHttpException.statusCodeOf(e) == 404) {
+        return Result.value(const []);
+      }
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"activity_id": activityId},
+        level: PangeaHttpException.severityOf(e),
+      );
       return Result.error(e);
     }
   }
@@ -364,7 +401,12 @@ class QuestRepo {
           (plan: resolved[i], refs: entries[i].refs),
       ]);
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {},
+        level: PangeaHttpException.severityOf(e),
+      );
       return Result.error(e);
     }
   }
@@ -525,7 +567,12 @@ class QuestRepo {
 
       return Result.value(QuestOutline(quest: quest, groups: groups));
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"quest_id": questId});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"quest_id": questId},
+        level: PangeaHttpException.severityOf(e),
+      );
       return Result.error(e);
     }
   }

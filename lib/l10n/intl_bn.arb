@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:40:26.228278",
+    "@@last_modified": "2026-08-05 10:21:28.388851",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -2839,8 +2839,6 @@
     "constructUseCollected": "চ্যাটে সংগৃহীত",
     "constructUseNanDesc": "প্রযোজ্য নয়",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "টেক্সট-টু-স্পিচ সক্ষম করা হয়েছে",
-    "enableTTSToolDescription": "অ্যাপটিকে আপনার লক্ষ্য ভাষায় টেক্সট-টু-স্পিচ আউটপুট তৈরি করতে অনুমতি দিন।",
     "yourUsername": "আপনার ব্যবহারকারীর নাম",
     "yourEmail": "আপনার ইমেল",
     "iWantToLearn": "আমি শিখতে চাই",
@@ -5751,14 +5749,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10305,8 +10295,6 @@
     "newActivityBadge": "নতুন",
     "exitVocabPracticeSession": "আপনার বর্তমান শব্দভান্ডার অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
     "exitGrammarPracticeSession": "আপনার বর্তমান ব্যাকরণ অনুশীলন সেশনের অগ্রগতি সংরক্ষণ করা হবে না।",
-    "autoReadAloudMessagesToolName": "স্বয়ংক্রিয়ভাবে প্রাপ্ত সমস্ত বার্তা জোরে পড়ুন",
-    "autoReadAloudMessagesDescription": "যখন একটি বার্তা প্রাপ্ত হয়, তখন শোনার অনুশীলনের জন্য ডিভাইসের ভয়েস ব্যবহার করে বার্তাটি জোরে পড়া হবে।",
     "activityFilterButtonsLabel": "স্তর, খেলোয়াড় এবং স্থিতি ফিল্টার বোতাম",
     "mapFilterAllLevels": "সব স্তর",
     "mapFilterAllPlayers": "সব খেলোয়াড়",
@@ -10324,6 +10312,27 @@
     "practiceSessionTimedOut": "{minutes} মিনিট কোনো কার্যকলাপ না থাকায় আপনার অনুশীলন সেশন শেষ হয়েছে।",
     "autocorrectMobileOnly": "শুধুমাত্র মোবাইল",
     "autocorrectMobileOnlyWarning": "ডিভাইস স্বয়ংক্রিয় সংশোধন শুধুমাত্র মোবাইল অ্যাপে উপলব্ধ।",
+    "audioSectionTitle": "অডিও",
+    "audioWordsToolName": "শব্দ",
+    "audioWordsDescription": "একটি শব্দে ট্যাপ করলে সেটির অডিও বাজান।",
+    "audioChoicesToolName": "পছন্দ",
+    "audioChoicesDescription": "অনুশীলন কার্যক্রমে উত্তরের পছন্দের জন্য অডিও বাজান।",
+    "audioIncomingMessagesToolName": "আগত বার্তা",
+    "audioIncomingMessagesDescription": "শোনার অনুশীলনের জন্য আপনার লক্ষ্য ভাষায় প্রাপ্ত বার্তাগুলো স্বয়ংক্রিয়ভাবে জোরে পড়ুন।",
+    "choosePangeaAvatar": "একটি প্যানজিয়া অবতার চয়ন করুন",
+    "readAloudNoVoiceTitle": "উচ্চ-মানের {language} ভয়েস পাওয়া যায়নি",
+    "readAloudNoVoiceDesktopWeb": "এই ব্রাউজারে উচ্চ-মানের {language} ভয়েস নেই, তাই এখানে বার্তাগুলি ভালোভাবে পড়ে শোনানো যাবে না। Chrome এবং Edge-এ সাধারণত উচ্চ-মানের ভয়েস থাকে।",
+    "readAloudGetChrome": "Chrome পান",
+    "readAloudNoVoiceMobileWeb": "এই ব্রাউজারে উচ্চ-মানের {language} ভয়েস নেই, তাই এখানে বার্তাগুলি ভালোভাবে পড়ে শোনানো যাবে না। Pangea Chat অ্যাপ আপনার ডিভাইসের সেরা ভয়েস ব্যবহার করতে পারে।",
+    "readAloudGetApp": "অ্যাপটি পান",
+    "readAloudNoVoiceIOS": "আপনার ডিভাইসে এখনও উচ্চ-মানের {language} ভয়েস ডাউনলোড করা হয়নি। একটি ডাউনলোড করুন, তারপর আবার চেষ্টা করুন:",
+    "readAloudNoVoiceIOSSteps": "  • সেটিংস\n  • অ্যাক্সেসিবিলিটি\n  • স্পোকেন কন্টেন্ট\n  • ভয়েসেস\n  • {language}\n  • একটি এনহ্যান্সড বা প্রিমিয়াম ভয়েস ডাউনলোড করুন",
+    "readAloudNoVoiceAndroid": "আপনার ডিভাইসে এখনও উচ্চ-মানের {language} ভয়েস নেই। আপনার টেক্সট-টু-স্পিচ ইঞ্জিনের জন্য ভয়েস ডেটা ইনস্টল করুন, তারপর আবার চেষ্টা করুন।",
+    "readAloudOpenVoiceSettings": "ভয়েস সেটিংস খুলুন",
+    "streamingSttDegradedLiveBanner": "লাইভ ট্রান্সক্রিপশন একটি ব্যাকআপ পরিষেবাতে চলছে। গুণমান ভিন্ন হতে পারে, অনুগ্রহ করে লেখাটি পরীক্ষা করুন।",
+    "streamingSttDegradedToBatchBanner": "লাইভ ট্রান্সক্রিপশন এই মুহূর্তে উপলব্ধ নয়। আপনার বার্তাটি লাইভ এডিটিং ছাড়াই স্ট্যান্ডার্ড পদ্ধতিতে প্রতিলিপি করা হয়েছে। আমরা এটি পুনরুদ্ধার করার জন্য কাজ করছি।",
+    "streamingSttLanguageUnsupportedBanner": "এই ভাষার জন্য লাইভ ট্রান্সক্রিপশন এখনও উপলব্ধ নয়। আমরা এটি নিয়ে কাজ করছি।",
+    "formLabel": "{name} ফর্ম",
     "explorePlayAndLearn": "অনুসন্ধান করুন, খেলুন এবং শিখুন",
     "conversationFromDayOne": "প্রথম দিন থেকেই কথোপকথন",
     "builtForConnection": "সংযোগের জন্য তৈরি",

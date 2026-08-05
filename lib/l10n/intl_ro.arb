@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:40:34.673409",
+    "@@last_modified": "2026-08-05 10:21:40.093100",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -2764,8 +2764,6 @@
     "constructUseCollected": "Colectat în chat",
     "constructUseNanDesc": "Nu se aplică",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Activat textul vorbit",
-    "enableTTSToolDescription": "Permite aplicației să genereze ieșire text-vorbit pentru porțiuni de text în limba țintă.",
     "yourUsername": "Numele tău de utilizator",
     "yourEmail": "Adresa ta de email",
     "iWantToLearn": "Vreau să învăț",
@@ -5855,14 +5853,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10409,8 +10399,6 @@
     "newActivityBadge": "NOU",
     "exitVocabPracticeSession": "Progresul sesiunii curente de exersare a vocabularului nu va fi salvat.",
     "exitGrammarPracticeSession": "Progresul sesiunii curente de exersare a gramaticii nu va fi salvat.",
-    "autoReadAloudMessagesToolName": "Citește automat cu voce tare toate mesajele primite",
-    "autoReadAloudMessagesDescription": "Când este primit un mesaj, vocea dispozitivului va fi utilizată pentru a citi mesajul cu voce tare pentru exersarea ascultării.",
     "activityFilterButtonsLabel": "Butoane de filtrare pentru nivel, jucători și stare",
     "mapFilterAllLevels": "Toate nivelurile",
     "mapFilterAllPlayers": "Toți jucătorii",
@@ -10428,6 +10416,27 @@
     "practiceSessionTimedOut": "Sesiunea ta de exersare s-a încheiat după {minutes} minute de inactivitate.",
     "autocorrectMobileOnly": "Doar pe mobil",
     "autocorrectMobileOnlyWarning": "Corectarea automată a dispozitivului este disponibilă doar în aplicația mobilă.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Cuvinte",
+    "audioWordsDescription": "Redă sunetul unui cuvânt când apeși pe el.",
+    "audioChoicesToolName": "Opțiuni",
+    "audioChoicesDescription": "Redă sunetul pentru opțiunile de răspuns în activitățile de exersare.",
+    "audioIncomingMessagesToolName": "Mesaje primite",
+    "audioIncomingMessagesDescription": "Citește automat mesajele primite cu voce tare în limba țintă pentru exersarea ascultării.",
+    "choosePangeaAvatar": "Alege un avatar Pangea",
+    "readAloudNoVoiceTitle": "Nu s-a găsit o voce {language} de înaltă calitate",
+    "readAloudNoVoiceDesktopWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Chrome și Edge includ de obicei voci de înaltă calitate.",
+    "readAloudGetChrome": "Obțineți Chrome",
+    "readAloudNoVoiceMobileWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Aplicația Pangea Chat poate utiliza cele mai bune voci ale dispozitivului dvs.",
+    "readAloudGetApp": "Obțineți aplicația",
+    "readAloudNoVoiceIOS": "Dispozitivul dvs. nu are încă o voce {language} de înaltă calitate descărcată. Descărcați una, apoi încercați din nou:",
+    "readAloudNoVoiceIOSSteps": "  • Setări\n  • Accesibilitate\n  • Conținut vorbit\n  • Voci\n  • {language}\n  • Descărcați o voce îmbunătățită sau premium",
+    "readAloudNoVoiceAndroid": "Dispozitivul dvs. nu are încă o voce {language} de înaltă calitate. Instalați date vocale pentru motorul dvs. text-to-speech, apoi încercați din nou.",
+    "readAloudOpenVoiceSettings": "Deschideți setările vocale",
+    "streamingSttDegradedLiveBanner": "Transcrierea live rulează pe un serviciu de rezervă. Calitatea poate varia, vă rugăm să verificați textul.",
+    "streamingSttDegradedToBatchBanner": "Transcrierea live nu este disponibilă momentan. Mesajul dumneavoastră a fost transcris în mod standard, fără editare live. Lucrăm la remedierea situației.",
+    "streamingSttLanguageUnsupportedBanner": "Transcrierea live nu este încă disponibilă pentru această limbă. Lucrăm la asta.",
+    "formLabel": "Formular {name}",
     "explorePlayAndLearn": "Explorează, joacă-te și învață",
     "conversationFromDayOne": "Conversație din prima zi",
     "builtForConnection": "Conceput pentru conectare",

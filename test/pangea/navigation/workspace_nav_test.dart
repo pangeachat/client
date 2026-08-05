@@ -233,6 +233,33 @@ void main() {
       expect(lists.right, isEmpty);
       expect(lists.left.single, const CoursePanelToken());
     });
+
+    test('openCourseSection tab rides the course token param (#8139)', () {
+      // A knock-badged course opens on its Chats tab, so the admin lands on
+      // the knock notification instead of the Course Plan default.
+      final loc = WorkspaceNav.openCourseSection(
+        u('/'),
+        '!course',
+        keepRoom: false,
+        tab: SpaceSettingsTabs.chat,
+      );
+      final uri = u(loc);
+      expect(uri.queryParameters['c'], '!course');
+      expect(parseOpenPanels(uri).left, [
+        const CoursePanelToken(
+          CourseDetailsTokenParam(activeTab: SpaceSettingsTabs.chat),
+        ),
+      ]);
+    });
+
+    test('openCourseSection without tab keeps the bare course token', () {
+      final loc = WorkspaceNav.openCourseSection(
+        u('/'),
+        '!course',
+        keepRoom: false,
+      );
+      expect(parseOpenPanels(u(loc)).left, [const CoursePanelToken()]);
+    });
   });
 
   group('openRoomById (event folds into the room token; no loose params)', () {

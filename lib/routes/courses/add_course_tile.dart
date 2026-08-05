@@ -116,11 +116,18 @@ class AddCourseTile extends StatelessWidget {
                                   ),
                                 ),
                               if (members != null && !invited)
-                                CourseInfoChip(
-                                  icon: Icons.group,
-                                  text: '$members',
-                                  fontSize: 12.0,
-                                  iconSize: 12.0,
+                                Semantics(
+                                  label: L10n.of(
+                                    context,
+                                  ).countParticipants(members),
+                                  child: ExcludeSemantics(
+                                    child: CourseInfoChip(
+                                      icon: Icons.group,
+                                      text: '$members',
+                                      fontSize: 12.0,
+                                      iconSize: 12.0,
+                                    ),
+                                  ),
                                 ),
                               if (courseId != null && !invited)
                                 CourseInfoChips(

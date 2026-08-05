@@ -4,12 +4,12 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart';
+import 'package:fluffychat/routes/settings/settings_learning/audio_settings_section.dart';
 import 'package:fluffychat/routes/settings/settings_learning/autocorrect_settings_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
-import 'package:fluffychat/routes/settings/settings_learning/voice_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LearningSettingsTiles extends StatelessWidget {
@@ -97,22 +97,21 @@ class LearningSettingsTiles extends StatelessWidget {
                 ),
               ],
             ),
-            Divider(height: 1),
             Column(
               children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    vertical: 8.0,
-                    horizontal: 16.0,
-                  ),
-                  child: VoiceDropdown(
-                    value: viewModel.selectedVoice,
-                    language: viewModel.selectedTargetLanguage,
-                    onChanged: viewModel.setVoice,
-                  ),
+                Divider(height: 1),
+                AutocorrectSettingsTile(viewModel: viewModel),
+                SwitchListTile.adaptive(
+                  value: viewModel.appLanguageIsTarget,
+                  title: Text(L10n.of(context).appInTargetLanguageTitle),
+                  subtitle: Text(L10n.of(context).appInTargetLanguageDesc),
+                  activeThumbColor: AppConfig.activeToggleColor,
+                  onChanged: viewModel.setAppLanguageIsTarget,
                 ),
                 ...ToolSetting.values
-                    .where((tool) => tool.isAvailableSetting)
+                    .where(
+                      (tool) => tool.isAvailableSetting && !tool.isAudioSetting,
+                    )
                     .map(
                       (setting) => ProfileSettingsSwitchListTile.adaptive(
                         defaultValue: viewModel.getToolSetting(setting),
@@ -122,14 +121,6 @@ class LearningSettingsTiles extends StatelessWidget {
                             viewModel.updateToolSetting(setting, v),
                       ),
                     ),
-                AutocorrectSettingsTile(viewModel: viewModel),
-                SwitchListTile.adaptive(
-                  value: viewModel.appLanguageIsTarget,
-                  title: Text(L10n.of(context).appInTargetLanguageTitle),
-                  subtitle: Text(L10n.of(context).appInTargetLanguageDesc),
-                  activeThumbColor: AppConfig.activeToggleColor,
-                  onChanged: viewModel.setAppLanguageIsTarget,
-                ),
                 ListTile(
                   leading: const Icon(Icons.lightbulb),
                   title: Text(L10n.of(context).resetInstructionTooltipsTitle),
@@ -139,6 +130,12 @@ class LearningSettingsTiles extends StatelessWidget {
                       ? null
                       : viewModel.resetInstructionTooltips,
                 ),
+              ],
+            ),
+            Column(
+              children: [
+                Divider(height: 1),
+                AudioSettingsSection(viewModel: viewModel),
               ],
             ),
           ],

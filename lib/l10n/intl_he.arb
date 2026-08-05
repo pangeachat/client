@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:40:29.289124",
+    "@@last_modified": "2026-08-05 10:21:32.534038",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -2097,8 +2097,6 @@
     "constructUseCollected": "אסוף בצ'אט",
     "constructUseNanDesc": "לא רלוונטי",
     "xpIntoLevel": "{currentXP} / {maxXP} נקודות ניסיון",
-    "enableTTSToolName": "הפעל טקסט לדיבור",
-    "enableTTSToolDescription": "אפשר לאפליקציה לייצר פלט טקסט לדיבור לחלקי טקסט בשפת היעד שלך.",
     "yourUsername": "שם המשתמש שלך",
     "yourEmail": "הדוא\"ל שלך",
     "iWantToLearn": "אני רוצה ללמוד",
@@ -6043,14 +6041,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10597,8 +10587,6 @@
     "newActivityBadge": "חדש",
     "exitVocabPracticeSession": "ההתקדמות שלך באימון אוצר המילים הנוכחי לא תישמר.",
     "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
-    "autoReadAloudMessagesToolName": "הקראה אוטומטית של כל ההודעות שהתקבלו",
-    "autoReadAloudMessagesDescription": "כאשר מתקבלת הודעה, קול המכשיר ישמש להקראת ההודעה בקול רם לצורך תרגול הקשבה.",
     "activityFilterButtonsLabel": "לחצני סינון לפי רמה, שחקנים וסטטוס",
     "mapFilterAllLevels": "כל הרמות",
     "mapFilterAllPlayers": "כל השחקנים",
@@ -10616,6 +10604,27 @@
     "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות.",
     "autocorrectMobileOnly": "נייד בלבד",
     "autocorrectMobileOnlyWarning": "התיקון האוטומטי זמין רק באפליקציה לנייד.",
+    "audioSectionTitle": "שמע",
+    "audioWordsToolName": "מילים",
+    "audioWordsDescription": "השמעת מילה בלחיצה עליה.",
+    "audioChoicesToolName": "אפשרויות",
+    "audioChoicesDescription": "השמעת אודיו עבור אפשרויות התשובה בפעילויות תרגול.",
+    "audioIncomingMessagesToolName": "הודעות נכנסות",
+    "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה.",
+    "choosePangeaAvatar": "בחר אווטאר של Pangea",
+    "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
+    "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
+    "readAloudGetChrome": "קבל את Chrome",
+    "readAloudNoVoiceMobileWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. אפליקציית Pangea Chat יכולה להשתמש בקולות הטובים ביותר של המכשיר שלך.",
+    "readAloudGetApp": "קבל את האפליקציה",
+    "readAloudNoVoiceIOS": "המכשיר שלך עדיין לא הוריד קול {language} באיכות גבוהה. הורד אחד, ואז נסה שוב:",
+    "readAloudNoVoiceIOSSteps": "  • הגדרות\n  • נגישות\n  • תוכן מדובר\n  • קולות\n  • {language}\n  • הורד קול משופר או פרימיום",
+    "readAloudNoVoiceAndroid": "המכשיר שלך עדיין לא כולל קול {language} באיכות גבוהה. התקן נתוני קול עבור מנוע הטקסט לדיבור שלך, ואז נסה שוב.",
+    "readAloudOpenVoiceSettings": "פתח את הגדרות הקול",
+    "streamingSttDegradedLiveBanner": "התמלול החי פועל באמצעות שירות גיבוי. האיכות עשויה להשתנות, אנא בדוק את הטקסט.",
+    "streamingSttDegradedToBatchBanner": "תמלול חי אינו זמין כרגע. ההודעה שלך תומללה בדרך הרגילה, ללא עריכה חיה. אנו פועלים לשחזור השירות.",
+    "streamingSttLanguageUnsupportedBanner": "תמלול חי אינו זמין עדיין עבור שפה זו. אנו עובדים על כך.",
+    "formLabel": "טופס {name}",
     "explorePlayAndLearn": "חקור, שחק ולמד",
     "conversationFromDayOne": "שיחה מהיום הראשון",
     "builtForConnection": "נבנה לחיבור",

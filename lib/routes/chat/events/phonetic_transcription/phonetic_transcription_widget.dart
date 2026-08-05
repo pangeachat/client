@@ -14,6 +14,7 @@ import 'package:fluffychat/routes/chat/events/phonetic_transcription/phonetic_tr
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_disambiguation.dart';
 import 'package:fluffychat/routes/chat/events/phonetic_transcription/pt_v2_models.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/text_loading_shimmer.dart';
@@ -120,6 +121,7 @@ class _PhoneticTranscriptionWidgetState
         context: context,
         targetID: targetId,
         langCode: widget.textLanguage.langCode,
+        useCase: TtsUseCase.words,
         pos: widget.pos,
         morph: widget.morph,
         ttsPhoneme: ttsPhoneme,

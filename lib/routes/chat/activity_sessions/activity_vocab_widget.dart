@@ -14,6 +14,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_details_row.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/events/tokens/collectable_tokens_mixin.dart';
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
@@ -147,9 +148,12 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
   void _selectVocab(Vocab vocab, {bool isNew = false}) {
     setState(() => _selectedVocab = vocab);
-    TtsController.tryToSpeak(vocab.lemma, langCode: widget.langCode);
     if (isNew) _onSelectNewVocab(vocab);
-    TtsController.tryToSpeak(vocab.lemma, langCode: widget.langCode);
+    TtsController.tryToSpeak(
+      vocab.lemma,
+      langCode: widget.langCode,
+      useCase: TtsUseCase.words,
+    );
     _showWordCard(vocab);
   }
 

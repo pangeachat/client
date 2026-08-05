@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/base_repo.dart';
 
 /// The 404-vs-transient split behind the removed-activity fallback ladder
@@ -15,8 +16,19 @@ import 'package:fluffychat/pangea/common/utils/base_repo.dart';
 /// (old rooms referencing removed activities), not code breakage — they log
 /// as warnings, not Sentry errors.
 void main() {
+  PangeaHttpException http(int status) => PangeaHttpException(
+    statusCode: status,
+    method: 'GET',
+    path: '/choreo/v2/activity',
+  );
+
   group('ActivityPlanRepo.classifyLookupError', () {
     test('404 is a confirmed miss — the only status that walks the ladder', () {
+      expect(
+        ActivityPlanRepo.classifyLookupError(http(404)),
+        ActivityPlanLookupStatus.removed,
+      );
+      // A raw Response from a not-yet-migrated throw site still classifies.
       expect(
         ActivityPlanRepo.classifyLookupError(Response('not found', 404)),
         ActivityPlanLookupStatus.removed,
@@ -25,11 +37,11 @@ void main() {
 
     test('server errors are transient, never removed', () {
       expect(
-        ActivityPlanRepo.classifyLookupError(Response('boom', 500)),
+        ActivityPlanRepo.classifyLookupError(http(500)),
         ActivityPlanLookupStatus.failed,
       );
       expect(
-        ActivityPlanRepo.classifyLookupError(Response('bad gateway', 502)),
+        ActivityPlanRepo.classifyLookupError(http(502)),
         ActivityPlanLookupStatus.failed,
       );
     });
@@ -48,6 +60,8 @@ void main() {
 
   group('BaseRepo.errorLevel — Sentry severity', () {
     test('404 logs as warning (expected data state, not breakage)', () {
+      expect(BaseRepo.errorLevel(http(404)), SentryLevel.warning);
+      // Raw Response from a not-yet-migrated throw site keeps its severity.
       expect(
         BaseRepo.errorLevel(Response('not found', 404)),
         SentryLevel.warning,
@@ -62,7 +76,7 @@ void main() {
     });
 
     test('other failures stay errors', () {
-      expect(BaseRepo.errorLevel(Response('boom', 500)), SentryLevel.error);
+      expect(BaseRepo.errorLevel(http(500)), SentryLevel.error);
       expect(BaseRepo.errorLevel(Exception('parse')), SentryLevel.error);
     });
   });

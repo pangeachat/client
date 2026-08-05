@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:40:31.479102",
+    "@@last_modified": "2026-08-05 10:21:35.827764",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -3152,8 +3152,6 @@
     "constructUseCollected": "채팅에서 수집됨",
     "constructUseNanDesc": "적용 불가",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "텍스트 음성 변환 활성화",
-    "enableTTSToolDescription": "앱이 대상 언어의 일부 텍스트에 대해 텍스트 음성 변환 출력을 생성할 수 있도록 허용합니다.",
     "yourUsername": "사용자 이름",
     "yourEmail": "이메일",
     "iWantToLearn": "배우고 싶어요",
@@ -5316,14 +5314,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9870,8 +9860,6 @@
     "newActivityBadge": "새로운 활동",
     "exitVocabPracticeSession": "현재 어휘 연습 세션 진행 상황은 저장되지 않습니다.",
     "exitGrammarPracticeSession": "현재 문법 연습 세션 진행 상황은 저장되지 않습니다.",
-    "autoReadAloudMessagesToolName": "수신 메시지 자동 소리 내어 읽기",
-    "autoReadAloudMessagesDescription": "메시지를 받으면 기기 음성으로 메시지를 소리 내어 읽어 듣기 연습을 할 수 있습니다.",
     "activityFilterButtonsLabel": "레벨, 플레이어, 상태 필터 버튼",
     "mapFilterAllLevels": "모든 레벨",
     "mapFilterAllPlayers": "모든 플레이어",
@@ -9889,6 +9877,27 @@
     "practiceSessionTimedOut": "활동이 없어 {minutes}분 후 연습 세션이 종료되었습니다.",
     "autocorrectMobileOnly": "모바일 전용",
     "autocorrectMobileOnlyWarning": "기기 자동 고침은 모바일 앱에서만 사용할 수 있습니다.",
+    "audioSectionTitle": "오디오",
+    "audioWordsToolName": "단어",
+    "audioWordsDescription": "단어를 탭하면 오디오가 재생됩니다.",
+    "audioChoicesToolName": "선택지",
+    "audioChoicesDescription": "연습 활동에서 답변 선택지에 대한 오디오를 재생합니다.",
+    "audioIncomingMessagesToolName": "수신 메시지",
+    "audioIncomingMessagesDescription": "듣기 연습을 위해 수신된 메시지를 학습 언어로 자동으로 소리 내어 읽습니다.",
+    "choosePangeaAvatar": "판게아 아바타 선택",
+    "readAloudNoVoiceTitle": "고품질 {language} 음성을 찾을 수 없음",
+    "readAloudNoVoiceDesktopWeb": "이 브라우저는 고품질 {language} 음성을 제공하지 않아 메시지를 제대로 읽어줄 수 없습니다. Chrome 및 Edge는 일반적으로 고품질 음성을 포함합니다.",
+    "readAloudGetChrome": "Chrome 다운로드",
+    "readAloudNoVoiceMobileWeb": "이 브라우저는 고품질 {language} 음성을 제공하지 않아 메시지를 제대로 읽어줄 수 없습니다. Pangea Chat 앱은 기기의 최적 음성을 사용할 수 있습니다.",
+    "readAloudGetApp": "앱 다운로드",
+    "readAloudNoVoiceIOS": "기기에 고품질 {language} 음성이 아직 다운로드되지 않았습니다. 다운로드한 후 다시 시도하세요:",
+    "readAloudNoVoiceIOSSteps": "  • 설정\n  • 손쉬운 사용\n  • 말하기 콘텐츠\n  • 음성\n  • {language}\n  • 향상 또는 프리미엄 음성 다운로드",
+    "readAloudNoVoiceAndroid": "기기에 고품질 {language} 음성이 아직 없습니다. 텍스트 음성 변환 엔진용 음성 데이터를 설치한 후 다시 시도하세요.",
+    "readAloudOpenVoiceSettings": "음성 설정 열기",
+    "streamingSttDegradedLiveBanner": "실시간 스크립트가 백업 서비스에서 실행 중입니다. 품질이 저하될 수 있으니 텍스트를 확인해 주세요.",
+    "streamingSttDegradedToBatchBanner": "현재 실시간 스크립트를 사용할 수 없습니다. 메시지는 실시간 편집 없이 일반적인 방식으로 스크립트 처리되었습니다. 복구 중입니다.",
+    "streamingSttLanguageUnsupportedBanner": "이 언어는 아직 실시간 스크립트를 지원하지 않습니다. 현재 작업 중입니다.",
+    "formLabel": "{name} 양식",
     "explorePlayAndLearn": "탐색하고, 플레이하고, 배우세요",
     "conversationFromDayOne": "첫날부터 대화 시작",
     "builtForConnection": "연결을 위해 구축",

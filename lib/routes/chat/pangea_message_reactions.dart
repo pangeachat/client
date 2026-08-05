@@ -8,9 +8,9 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/emoji_burst.dart';
 import 'package:fluffychat/routes/chat/reaction_listener.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -19,7 +19,7 @@ import 'package:fluffychat/widgets/mxc_image.dart';
 class PangeaMessageReactions extends StatefulWidget {
   final Event event;
   final Timeline timeline;
-  final ChatController controller;
+  final MessageToolbarHost controller;
   final double? width;
   final bool enabled;
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/routes/chat/events/tokens/highlight_style.dart';
 
 class TokenRenderingUtil {
   TokenRenderingUtil();
@@ -54,23 +55,17 @@ class TokenRenderingUtil {
   static bool isVocabHighlight(String lemmaText, Set<String>? vocabLemmas) =>
       vocabLemmas != null && vocabLemmas.contains(lemmaText.toLowerCase());
 
-  /// Wraps [child] in the gold target-vocab highlight when [highlight] is
-  /// true, otherwise returns [child] unchanged. Keeps the typed and spoken
+  /// Wraps [child] in the target-vocab backfill highlight when [highlight] is
+  /// true, otherwise returns [child] unchanged. [color] defaults to the gold
+  /// vocab tint (issue #7659) so existing callers are byte-identical; the STT
+  /// edit-diff passes [AppConfig.warning]. Keeps the typed and spoken
   /// highlights visually identical.
   static Widget vocabHighlight({
     required bool highlight,
     required Widget child,
+    Color color = AppConfig.gold,
   }) {
     if (!highlight) return child;
-    return DecoratedBox(
-      decoration: BoxDecoration(
-        color: AppConfig.gold.withAlpha(50),
-        borderRadius: BorderRadius.circular(12),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 4),
-        child: child,
-      ),
-    );
+    return highlightBox(color: color, child: child);
   }
 }

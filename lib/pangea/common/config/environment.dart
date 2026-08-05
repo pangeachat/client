@@ -141,6 +141,19 @@ class Environment {
             'true');
   }
 
+  /// Feature flag for the live streaming-STT capture path (Phase-2 pilot, D11).
+  /// Defaults to `false` so it ships dark: when OFF, the recorder uses today's
+  /// `AudioEncoder.wav` batch record-then-transcribe path byte-for-byte. When
+  /// ON *and* the message language is in the evaluated streaming set, the
+  /// recorder streams PCM16 to the relay for live partials, tees the same frames
+  /// into a retained WAV, and renders the settling transcript. Any other case
+  /// (flag off, batch-only language, streaming unavailable) falls back to
+  /// today's path unchanged (see [StreamingSttGate]).
+  static bool get liveStreamingSttEnabled {
+    return appConfigOverride?.liveStreamingSttEnabled ??
+        (dotenv.env["LIVE_STREAMING_STT_ENABLED"]?.toLowerCase() == 'true');
+  }
+
   static String get pushGatewayUrl => isStagingEnvironment
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
@@ -258,6 +271,7 @@ class AppConfigOverride {
   final bool? analyticsDualWriteEnabled;
   final bool? dosageSignalsEnabled;
   final bool? voiceTranscriptDecoupleEnabled;
+  final bool? liveStreamingSttEnabled;
   final String? sentryDsn;
   final String? googleAnalyticsFirebaseOptionsBase64;
   final String? rcGoogleKey;
@@ -276,6 +290,7 @@ class AppConfigOverride {
     this.analyticsDualWriteEnabled,
     this.dosageSignalsEnabled,
     this.voiceTranscriptDecoupleEnabled,
+    this.liveStreamingSttEnabled,
     this.sentryDsn,
     this.googleAnalyticsFirebaseOptionsBase64,
     this.rcGoogleKey,
@@ -297,6 +312,7 @@ class AppConfigOverride {
       dosageSignalsEnabled: json['dosageSignalsEnabled'] as bool?,
       voiceTranscriptDecoupleEnabled:
           json['voiceTranscriptDecoupleEnabled'] as bool?,
+      liveStreamingSttEnabled: json['liveStreamingSttEnabled'] as bool?,
       sentryDsn: json['sentryDsn'] as String?,
       googleAnalyticsFirebaseOptionsBase64:
           json['googleAnalyticsFirebaseOptionsBase64'] as String?,
@@ -319,6 +335,7 @@ class AppConfigOverride {
       'analyticsDualWriteEnabled': analyticsDualWriteEnabled,
       'dosageSignalsEnabled': dosageSignalsEnabled,
       'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
+      'liveStreamingSttEnabled': liveStreamingSttEnabled,
       'sentryDsn': sentryDsn,
       'googleAnalyticsFirebaseOptionsBase64':
           googleAnalyticsFirebaseOptionsBase64,
@@ -341,6 +358,7 @@ class AppConfigOverride {
         analyticsDualWriteEnabled.hashCode ^
         dosageSignalsEnabled.hashCode ^
         voiceTranscriptDecoupleEnabled.hashCode ^
+        liveStreamingSttEnabled.hashCode ^
         sentryDsn.hashCode ^
         googleAnalyticsFirebaseOptionsBase64.hashCode ^
         rcGoogleKey.hashCode ^
@@ -364,6 +382,7 @@ class AppConfigOverride {
         dosageSignalsEnabled == other.dosageSignalsEnabled &&
         voiceTranscriptDecoupleEnabled ==
             other.voiceTranscriptDecoupleEnabled &&
+        liveStreamingSttEnabled == other.liveStreamingSttEnabled &&
         sentryDsn == other.sentryDsn &&
         googleAnalyticsFirebaseOptionsBase64 ==
             other.googleAnalyticsFirebaseOptionsBase64 &&

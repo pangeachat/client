@@ -47,6 +47,13 @@ class MobileNavWidget extends StatefulWidget {
   /// navigation (`WorkspaceNav.setSection`, etc).
   final void Function(AppSection section) onSectionTap;
 
+  /// Wraps the Chats rail item with the all-chats unread badge, so the narrow
+  /// tab carries the same count the web rail's Chats item wears (#8129).
+  /// Injected by the shell — which owns the Matrix lookups and the sync-driven
+  /// rebuilds — so this widget stays presentational. Null renders the plain
+  /// button.
+  final Widget Function(Widget child)? chatsBadgeBuilder;
+
   /// The open section/course content hosted in the cavity. Null means nothing
   /// is cavity-hosted (rail-only, no matter the last height).
   final Widget? cavityChild;
@@ -146,6 +153,7 @@ class MobileNavWidget extends StatefulWidget {
     this.courseShortcutSelected = false,
     required this.onCourseShortcutTap,
     required this.onSectionTap,
+    this.chatsBadgeBuilder,
     this.cavityChild,
     this.cavitySection,
     this.courseShortcutHostsCavity = false,
@@ -522,6 +530,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     widget.onSectionTap(section);
   }
 
+  Widget _withChatsBadge(Widget child) =>
+      widget.chatsBadgeBuilder?.call(child) ?? child;
+
   void _onCourseShortcutTap() {
     // The shortcut's own toggle: when its course IS the hosted sheet, the tap
     // collapses/re-expands like any active rail item — a same-URL navigation
@@ -691,13 +702,17 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                   onPressed: () =>
                                       _onRailItemTap(AppSection.world),
                                 ),
-                                _RailButton(
-                                  icon: Icons.forum_outlined,
-                                  selectedIcon: Icons.forum,
-                                  selected:
-                                      widget.activeSection == AppSection.chats,
-                                  tooltip: l10n.allChats,
-                                  onTap: () => _onRailItemTap(AppSection.chats),
+                                _withChatsBadge(
+                                  _RailButton(
+                                    icon: Icons.forum_outlined,
+                                    selectedIcon: Icons.forum,
+                                    selected:
+                                        widget.activeSection ==
+                                        AppSection.chats,
+                                    tooltip: l10n.allChats,
+                                    onTap: () =>
+                                        _onRailItemTap(AppSection.chats),
+                                  ),
                                 ),
                                 _RailButton(
                                   icon: Icons.map_outlined,

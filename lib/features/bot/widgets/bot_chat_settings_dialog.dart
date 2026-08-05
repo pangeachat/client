@@ -14,7 +14,6 @@ import 'package:fluffychat/routes/chat/chat_details/language_level_dropdown.dart
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
-import 'package:fluffychat/routes/settings/settings_learning/voice_dropdown.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -31,7 +30,6 @@ class BotChatSettingsDialog extends StatefulWidget {
 class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
   LanguageModel? _selectedLang;
   LanguageLevelTypeEnum? _selectedLevel;
-  String? _selectedVoice;
 
   @override
   void initState() {
@@ -39,7 +37,6 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
     final activityPlan = _isActivity ? widget.room.activityPlan : null;
 
     _selectedLevel = activityPlan?.req.cefrLevel ?? botSettings?.languageLevel;
-    _selectedVoice = botSettings?.targetVoice;
     final lang =
         activityPlan?.req.targetLanguage ?? botSettings?.targetLanguage;
     if (lang != null) {
@@ -120,12 +117,8 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
     }
 
     final prevLang = MatrixState.pangeaController.userController.userL2;
-    final prevVoice = _userProfile.userSettings.voice;
 
-    setState(() {
-      _selectedLang = lang;
-      _selectedVoice = null;
-    });
+    setState(() => _selectedLang = lang);
 
     await _update(
       (model) {
@@ -145,10 +138,7 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
       },
       () {
         if (mounted) {
-          setState(() {
-            _selectedLang = prevLang;
-            _selectedVoice = prevVoice;
-          });
+          setState(() => _selectedLang = prevLang);
         }
       },
     );
@@ -166,23 +156,6 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
       () {
         if (mounted) {
           setState(() => _selectedLevel = prevLevel);
-        }
-      },
-    );
-  }
-
-  Future<void> _setVoice(String? voice) async {
-    if (voice == _userProfile.userSettings.voice) return;
-    final prevVoice = _userProfile.userSettings.voice;
-
-    setState(() => _selectedVoice = voice);
-    await _update(
-      (model) => model.copyWith(
-        userSettings: model.userSettings.copyWith(voice: voice),
-      ),
-      () {
-        if (mounted) {
-          setState(() => _selectedVoice = prevVoice);
         }
       },
     );
@@ -231,16 +204,6 @@ class BotChatSettingsDialogState extends State<BotChatSettingsDialog> {
             enabled: !widget.room.isActivitySession,
             // width: 300,
             // maxHeight: 300,
-          ),
-          VoiceDropdown(
-            onChanged: _setVoice,
-            value: _selectedVoice,
-            language: _selectedLang,
-            enabled:
-                !widget.room.isActivitySession ||
-                (_selectedLang != null &&
-                    _selectedLang ==
-                        MatrixState.pangeaController.userController.userL2),
           ),
           const SizedBox(),
         ],

@@ -25,6 +25,9 @@ import 'package:fluffychat/routes/chat/events/repo/tokens_repo.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
+bool hasUsableRepresentationTokens(List<PangeaToken>? tokens) =>
+    tokens?.isNotEmpty == true;
+
 class RepresentationEvent {
   Event? _event;
   PangeaRepresentation? _content;
@@ -164,7 +167,7 @@ class RepresentationEvent {
   }
 
   Future<Result<List<PangeaToken>>> requestTokens() async {
-    if (tokens != null) return Result.value(tokens!);
+    if (hasUsableRepresentationTokens(tokens)) return Result.value(tokens!);
     final res = await TokensRepo.instance.get(
       TokensRequestModel(
         fullText: text,
@@ -178,6 +181,8 @@ class RepresentationEvent {
       ),
     );
 
+    if (res.isError) return Result.error(res.error!);
+
     if (_event != null) {
       _event!.room.sendPangeaEvent(
         content: PangeaMessageTokens(
@@ -189,8 +194,6 @@ class RepresentationEvent {
       );
     }
 
-    return res.isError
-        ? Result.error(res.error!)
-        : Result.value(res.result!.tokens);
+    return Result.value(res.result!.tokens);
   }
 }

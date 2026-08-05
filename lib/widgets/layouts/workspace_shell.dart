@@ -2,6 +2,7 @@ import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
 
+import 'package:badges/badges.dart' show BadgePosition;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -20,6 +21,9 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -30,6 +34,7 @@ import 'package:fluffychat/routes/world/world_map_mobile_filters.dart';
 import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/left_panel_layer.dart';
 import 'package:fluffychat/widgets/layouts/mobile_nav_widget.dart';
@@ -37,6 +42,7 @@ import 'package:fluffychat/widgets/layouts/navigation_extras_extension.dart';
 import 'package:fluffychat/widgets/layouts/panel_allocator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/navigation_rail.dart';
+import 'package:fluffychat/widgets/unread_rooms_badge.dart';
 
 /// One persistent world-map element for the whole app shell (world_v2 map
 /// architecture). The GlobalKey preserves the map's State — tiles, camera,
@@ -545,9 +551,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             emptyVerdict: () => mapController.emptyVerdict,
             canZoomOut: () => mapController.canZoomOut,
             onWidenSearch: mapController.widenFilters,
-            // Resets to the whole-world view (all the way out, re-centered) —
-            // the map's World control — so one tap reveals every off-screen
-            // match, not just the next zoom level.
+            // Resets to the whole-world view (all the way out, centered over
+            // the fullest window of matching pins, #8121) — the map's World
+            // control — so one tap reveals the most matches a floor-zoomed
+            // narrow viewport can show, not just the next zoom level.
             onZoomOut: mapController.resetToWorld,
             viewRevision: mapController.viewRevision,
             // The collapsible filter surface riding above the bar — the narrow
@@ -642,13 +649,28 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       child: MobileNavWidget(
         activeSection: sectionFor(uri),
         courseShortcutIcon: shortcutCourse != null
-            ? Avatar(
-                mxContent: shortcutCourse.avatar,
-                name: shortcutCourse.getLocalizedDisplayname(
-                  MatrixLocals(l10n),
-                ),
-                size: 32,
-                borderRadius: BorderRadius.circular(8),
+            // The same knock badge the web rail's course avatar wears: the
+            // builder loads the member list (admins only) and rebuilds on
+            // member changes, so the red "!" appears while users are knocking
+            // and clears when the admin accepts/denies (#8139).
+            ? KnockingUsersBuilder(
+                room: shortcutCourse,
+                builder: (context, knockingUsers) {
+                  final avatar = Avatar(
+                    mxContent: shortcutCourse.avatar,
+                    name: shortcutCourse.getLocalizedDisplayname(
+                      MatrixLocals(l10n),
+                    ),
+                    size: 32,
+                    borderRadius: BorderRadius.circular(8),
+                  );
+                  return knockingUsers.isEmpty
+                      ? avatar
+                      : KnockingUsersBadge(
+                          position: BadgePosition.topEnd(top: -5, end: -7),
+                          child: avatar,
+                        );
+                },
               )
             : const Icon(Icons.add),
         courseShortcutLabel: shortcutCourse != null
@@ -668,6 +690,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   shortcutCourse.id,
                   keepRoom: false,
                   clearRight: true,
+                  // While users are knocking, land the admin on the Chats
+                  // tab — where the knock notification lives — instead of
+                  // the Course Plan default, until the knock is accepted or
+                  // denied (#8139).
+                  tab: shortcutCourse.knockingUsers.isNotEmpty
+                      ? SpaceSettingsTabs.chat
+                      : null,
                 )
               : WorkspaceNav.setSection(
                   uri,
@@ -675,6 +704,25 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
                   keepRoom: false,
                   clearRight: true,
                 ),
+        ),
+        // The same all-chats unread badge the web rail's Chats item wears
+        // (navigation_rail.dart): identical top-level-chats filter, identical
+        // sync-driven rebuild — so the two tabs can't disagree (#8129).
+        chatsBadgeBuilder: (child) => StreamBuilder(
+          stream: client.onSync.stream
+              .where((s) => s.hasRoomUpdate)
+              .rateLimit(const Duration(seconds: 1)),
+          builder: (context, _) => UnreadRoomsBadge(
+            filter: (room) => room.firstSpaceParent == null,
+            // Sits at the icon's corner with the web rail's proportions: the
+            // rail badge covers ~30% of its 41px icon, so over this 24px icon
+            // the badge must ride further up-and-out — at (4,4) it covered
+            // half the glyph and read as touching it. The badge Stack is
+            // Clip.none and the rail row leaves 8px above the 48px button, so
+            // the small negative overhang stays fully visible.
+            badgePosition: BadgePosition.topEnd(top: -1, end: -1),
+            child: child,
+          ),
         ),
         onSectionTap: (section) => context.go(switch (section) {
           // World is home: clear every panel and reveal the full map.

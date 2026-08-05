@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:40:35.616825",
+    "@@last_modified": "2026-08-05 10:21:41.503299",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2473,8 +2473,6 @@
     "constructUseCollected": "Прикупљено у ћаскању",
     "constructUseNanDesc": "Није применљиво",
     "xpIntoLevel": "{currentXP} / {maxXP} поена искуства",
-    "enableTTSToolName": "Омогућено текстуално-говорно претварање",
-    "enableTTSToolDescription": "Дозволите апликацији да генерише излаз у виду текста у говор за делове текста на вашој циљаној језику.",
     "yourUsername": "Ваше корисничко име",
     "yourEmail": "Ваша е-пошта",
     "iWantToLearn": "Желим да учим",
@@ -6078,14 +6076,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10632,8 +10622,6 @@
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "Napredak vaše trenutne sesije vežbanja rečnika neće biti sačuvan.",
     "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vežbanja gramatike neće biti sačuvan.",
-    "autoReadAloudMessagesToolName": "Automatski čitaj sve primljene poruke",
-    "autoReadAloudMessagesDescription": "Kada se primi poruka, glas uređaja će biti korišćen za čitanje poruke naglas radi vežbanja slušanja.",
     "activityFilterButtonsLabel": "Dugmad za filtriranje nivoa, igrača i statusa",
     "mapFilterAllLevels": "Svi nivoi",
     "mapFilterAllPlayers": "Svi igrači",
@@ -10651,6 +10639,27 @@
     "practiceSessionTimedOut": "Vaša sesija vežbanja je istekla nakon {minutes} minuta neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne uređaje",
     "autocorrectMobileOnlyWarning": "Automatska ispravka je dostupna samo u mobilnoj aplikaciji.",
+    "audioSectionTitle": "Zvuk",
+    "audioWordsToolName": "Reči",
+    "audioWordsDescription": "Reprodukujte zvuk reči kada je dodirnete.",
+    "audioChoicesToolName": "Izbori",
+    "audioChoicesDescription": "Reprodukujte zvuk za ponuđene odgovore u vežbama.",
+    "audioIncomingMessagesToolName": "Dolazne poruke",
+    "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na ciljnom jeziku radi vežbanja slušanja.",
+    "choosePangeaAvatar": "Izaberite Pangea avatar",
+    "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
+    "readAloudNoVoiceDesktopWeb": "Ovaj pregledač ne nudi visokokvalitetan glas za {language}, tako da se poruke ovde ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
+    "readAloudGetChrome": "Preuzmite Chrome",
+    "readAloudNoVoiceMobileWeb": "Ovaj pregledač ne nudi visokokvalitetan glas za {language}, tako da se poruke ovde ne mogu dobro čitati naglas. Aplikacija Pangea Chat može koristiti najbolje glasove vašeg uređaja.",
+    "readAloudGetApp": "Preuzmite aplikaciju",
+    "readAloudNoVoiceIOS": "Vaš uređaj još uvek nema preuzet visokokvalitetan glas za {language}. Preuzmite ga, pa pokušajte ponovo:",
+    "readAloudNoVoiceIOSSteps": "  • Podešavanja\n  • Pristupačnost\n  • Izgovoreni sadržaj\n  • Glasovi\n  • {language}\n  • Preuzmite poboljšani ili premium glas",
+    "readAloudNoVoiceAndroid": "Vaš uređaj još uvek nema visokokvalitetan glas za {language}. Instalirajte glasovne podatke za vaš mehanizam za pretvaranje teksta u govor, pa pokušajte ponovo.",
+    "readAloudOpenVoiceSettings": "Otvorite podešavanja glasa",
+    "streamingSttDegradedLiveBanner": "Transkripcija uživo se pokreće na rezervnoj usluzi. Kvalitet može varirati, proverite tekst.",
+    "streamingSttDegradedToBatchBanner": "Transkripcija uživo trenutno nije dostupna. Vaša poruka je transkribovana na standardni način, bez uređivanja uživo. Radimo na tome da je vratimo.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripcija uživo još uvek nije dostupna za ovaj jezik. Radimo na tome.",
+    "formLabel": "{name} obrazac",
     "explorePlayAndLearn": "Istražujte, igrajte se i učite",
     "conversationFromDayOne": "Razgovor od prvog dana",
     "builtForConnection": "Napravljeno za povezivanje",

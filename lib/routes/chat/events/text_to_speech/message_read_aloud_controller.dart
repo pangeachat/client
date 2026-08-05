@@ -1,16 +1,25 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart' show visibleForTesting;
+
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/read_aloud_queue.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Reads incoming target-language messages aloud with device text-to-speech
 /// while the learner has the chat open, so a conversation doubles as listening
 /// practice.
+///
+/// Gated by [ToolSetting.audioIncomingMessages]. [voiceMode] does not change
+/// *whether* a message is read, only whether the bot's reply to a voice message
+/// may reach backend TTS instead of staying silent. See "Voice mode" in the
+/// design doc.
 ///
 /// Decides which arriving messages qualify; [ReadAloudQueue] owns the
 /// one-at-a-time playback scheduling.
@@ -44,6 +53,21 @@ class MessageReadAloudController {
   StreamSubscription<SyncUpdate>? _syncSubscription;
   DateTime? _openedAt;
 
+  /// Whether the learner is in a spoken exchange: set when they send a voice
+  /// note, cleared when they send text. This is the rule the bot used to apply
+  /// server-side — it replied with audio when the trigger was a voice note —
+  /// relocated to the only process that can see the device's voices, the
+  /// learner's subscription and their settings.
+  ///
+  /// Deliberately session state rather than a predicate over the timeline.
+  /// A derived version would misfire three ways: errored events are pinned to
+  /// the front of `Timeline.events`, so a voice note that fails to upload would
+  /// hold the mode open for the session; edits are themselves `m.room.message`
+  /// events in that list, so editing any older message would silently flip it;
+  /// and history pagination can page in a week-old voice note and flip it with
+  /// no user action at all.
+  bool voiceMode = false;
+
   void start() {
     _openedAt = DateTime.now();
     _syncSubscription?.cancel();
@@ -65,7 +89,27 @@ class MessageReadAloudController {
   }
 
   bool get _isEnabled => MatrixState.pangeaController.userController
-      .isToolEnabled(ToolSetting.autoReadAloudMessages);
+      .isToolEnabled(ToolSetting.audioIncomingMessages);
+
+  /// Whether this read may reach backend TTS. True only for the bot's reply
+  /// while the learner is in a spoken exchange — see [_speak] for why that is
+  /// the one exception to device-only playback.
+  ///
+  /// Voice mode is deliberately *not* a second switch on whether a message is
+  /// read: [TtsController] gates every request on its [TtsUseCase]'s tool
+  /// setting, so a read still requires `audioIncomingMessages` either way.
+  ///
+  /// Pure so the decision is unit-testable without Matrix, TTS or app state.
+  @visibleForTesting
+  static bool useBackendTts({
+    required bool voiceMode,
+    required bool senderIsBot,
+  }) => voiceMode && senderIsBot;
+
+  bool _isVoiceModeReply(PangeaMessageEvent message) => useBackendTts(
+    voiceMode: voiceMode,
+    senderIsBot: message.event.senderId == BotName.byEnvironment,
+  );
 
   void _onSync(SyncUpdate update) {
     if (!_isEnabled) return;
@@ -108,12 +152,21 @@ class MessageReadAloudController {
     return messageLangCode == targetLangCode;
   }
 
-  /// Backend TTS is disallowed here: read-aloud fires on every eligible
-  /// incoming message, so its volume is driven by how much others type rather
-  /// than by the learner. Without a known-good device voice, nothing plays.
+  /// Backend TTS is disallowed for setting-driven read-aloud: it fires on every
+  /// eligible incoming message, so its volume is driven by how much others type
+  /// rather than by the learner, and without a known-good device voice nothing
+  /// plays.
+  ///
+  /// Voice-mode replies are the exception. They are bounded by the learner's own
+  /// voice notes — the bound the setting-driven case lacks — and device-only
+  /// would mean total silence, with no error and no indicator, wherever the
+  /// device has no known-good voice for the L2 (Safari, desktop Chrome without a
+  /// Google voice, Android without a high-quality voice). That would break the
+  /// spoken exchange the bot used to guarantee, so these fall back to backend.
   Future<void> _speak(PangeaMessageEvent message) => TtsController.tryToSpeak(
     message.messageDisplayText,
     langCode: message.messageDisplayLangCode,
-    allowChoreoPlay: false,
+    useCase: TtsUseCase.incomingMessage,
+    allowChoreoPlay: _isVoiceModeReply(message),
   );
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:40:26.994966",
+    "@@last_modified": "2026-08-05 10:21:29.615000",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -3182,8 +3182,6 @@
     "constructUseCollected": "Recollit a la conversa",
     "constructUseNanDesc": "No aplicable",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Activat text-a-veu",
-    "enableTTSToolDescription": "Permet a l'aplicació generar sortida de text-a-veu per a parts del text en la teva llengua objectiu.",
     "yourUsername": "El teu nom d'usuari",
     "yourEmail": "El teu correu electrònic",
     "iWantToLearn": "Vull aprendre",
@@ -5250,14 +5248,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9804,8 +9794,6 @@
     "newActivityBadge": "NOU",
     "exitVocabPracticeSession": "El progrés de la sessió actual de pràctica de vocabulari no es desarà.",
     "exitGrammarPracticeSession": "El progrés de la sessió actual de pràctica de gramàtica no es desarà.",
-    "autoReadAloudMessagesToolName": "Llegir en veu alta automàticament tots els missatges rebuts",
-    "autoReadAloudMessagesDescription": "Quan es rep un missatge, la veu del dispositiu s'utilitzarà per llegir el missatge en veu alta per practicar l'escolta.",
     "activityFilterButtonsLabel": "Botons de filtre de nivell, jugadors i estat",
     "mapFilterAllLevels": "Tots els nivells",
     "mapFilterAllPlayers": "Tots els jugadors",
@@ -9823,6 +9811,27 @@
     "practiceSessionTimedOut": "La teva sessió de pràctica ha finalitzat després de {minutes} minuts sense activitat.",
     "autocorrectMobileOnly": "Només mòbil",
     "autocorrectMobileOnlyWarning": "L'autocorrecció del dispositiu només està disponible a l'aplicació mòbil.",
+    "audioSectionTitle": "Àudio",
+    "audioWordsToolName": "Paraules",
+    "audioWordsDescription": "Reprodueix l'àudio d'una paraula quan la toques.",
+    "audioChoicesToolName": "Opcions",
+    "audioChoicesDescription": "Reprodueix l'àudio de les opcions de resposta en les activitats de pràctica.",
+    "audioIncomingMessagesToolName": "Missatges entrants",
+    "audioIncomingMessagesDescription": "Llegeix automàticament els missatges rebuts en veu alta en el teu idioma objectiu per practicar l'escolta.",
+    "choosePangeaAvatar": "Tria un avatar de Pangea",
+    "readAloudNoVoiceTitle": "No s'ha trobat cap veu d'alta qualitat per a {language}",
+    "readAloudNoVoiceDesktopWeb": "Aquest navegador no ofereix una veu d'alta qualitat per a {language}, així que els missatges no es poden llegir en veu alta correctament aquí. Chrome i Edge solen incloure veus d'alta qualitat.",
+    "readAloudGetChrome": "Obtén Chrome",
+    "readAloudNoVoiceMobileWeb": "Aquest navegador no ofereix una veu d'alta qualitat per a {language}, així que els missatges no es poden llegir en veu alta correctament aquí. L'aplicació Pangea Chat pot utilitzar les millors veus del teu dispositiu.",
+    "readAloudGetApp": "Obtén l'aplicació",
+    "readAloudNoVoiceIOS": "El teu dispositiu encara no té una veu d'alta qualitat per a {language} descarregada. Descarrega'n una i torna-ho a provar:",
+    "readAloudNoVoiceIOSSteps": "  • Configuració\n  • Accessibilitat\n  • Contingut parlat\n  • Veus\n  • {language}\n  • Descarrega una veu millorada o Premium",
+    "readAloudNoVoiceAndroid": "El teu dispositiu encara no té una veu d'alta qualitat per a {language}. Instal·la les dades de veu per al teu motor de text a veu i torna-ho a provar.",
+    "readAloudOpenVoiceSettings": "Obre la configuració de veu",
+    "streamingSttDegradedLiveBanner": "La transcripció en directe s'està executant en un servei de còpia de seguretat. La qualitat pot variar, si us plau, revisa el text.",
+    "streamingSttDegradedToBatchBanner": "La transcripció en directe no està disponible en aquest moment. El teu missatge es va transcriure de la manera estàndard, sense edició en directe. Estem treballant per restaurar-la.",
+    "streamingSttLanguageUnsupportedBanner": "La transcripció en directe encara no està disponible per a aquest idioma. Hi estem treballant.",
+    "formLabel": "Formulari de {name}",
     "explorePlayAndLearn": "Explora, juga i aprèn",
     "conversationFromDayOne": "Conversa des del primer dia",
     "builtForConnection": "Dissenyat per a la connexió",

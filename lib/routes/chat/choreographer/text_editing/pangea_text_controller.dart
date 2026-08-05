@@ -26,12 +26,17 @@ class PangeaTextController extends TextEditingController {
 
   bool get exceededMaxLength => text.length >= ChoreoConstants.maxLength;
 
-  TextStyle _underlineStyle(Color color, bool isSelected) => TextStyle(
-    decoration: isSelected ? null : TextDecoration.underline,
-    decorationColor: isSelected ? null : color,
-    decorationThickness: isSelected ? null : 5,
-    backgroundColor: isSelected ? color : null,
-  );
+  @visibleForTesting
+  static TextStyle underlineStyleForTesting(Color color, bool isSelected) =>
+      TextStyle(
+        decoration: isSelected ? null : TextDecoration.underline,
+        decorationColor: isSelected ? null : color,
+        decorationThickness: isSelected ? null : 5,
+        backgroundColor: isSelected ? color : null,
+      );
+
+  TextStyle _underlineStyle(Color color, bool isSelected) =>
+      underlineStyleForTesting(color, isSelected);
 
   Color _underlineColor(PangeaMatch match) {
     final status = match.status;

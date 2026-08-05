@@ -26,6 +26,7 @@ import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/chat/events/utils/report_message.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
@@ -139,7 +140,7 @@ enum MessageActions {
 class SelectModeButtons extends StatefulWidget {
   final VoidCallback launchPractice;
   final MessageOverlayController overlayController;
-  final ChatController controller;
+  final MessageToolbarHost controller;
 
   const SelectModeButtons({
     required this.launchPractice,
@@ -155,6 +156,15 @@ class SelectModeButtons extends StatefulWidget {
 class SelectModeButtonsState extends State<SelectModeButtons> {
   static const double iconWidth = 36.0;
   static const double buttonSize = 40.0;
+
+  /// The mode buttons the host's [config] leaves visible.
+  @visibleForTesting
+  static List<SelectMode> visibleModes(
+    List<SelectMode> allModes,
+    MessageToolbarConfig config,
+  ) => config.showPracticeButton
+      ? allModes
+      : allModes.where((mode) => mode != SelectMode.practice).toList();
 
   StreamSubscription? _playerStateSub;
   final ValueNotifier<bool> _isPlayingNotifier = ValueNotifier(false);
@@ -177,9 +187,11 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
     controller.playTokenNotifier.addListener(_playToken);
 
-    if (widget.controller.tutorialOverlayController.isTutorialQueued(
-      TutorialEnum.selectModeButtons,
-    )) {
+    final chat = widget.controller.chatController;
+    if (chat != null &&
+        chat.tutorialOverlayController.isTutorialQueued(
+          TutorialEnum.selectModeButtons,
+        )) {
       Future.delayed(Duration(milliseconds: 1000), () {
         if (mounted && controller.selectedMode.value == null) {
           _startSelectModeTutorial();
@@ -187,10 +199,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       });
     } else {
       _shimmerTranslateButton.value = true;
-      _tutorialSub = widget
-          .controller
-          .tutorialOverlayController
-          .forwardTutorialStream
+      _tutorialSub = chat?.tutorialOverlayController.forwardTutorialStream
           .listen((tutorial) {
             if (!mounted) return;
             if (tutorial == TutorialEnum.selectModeButtons &&
@@ -203,8 +212,10 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   @override
   void dispose() {
-    final tutorial = widget.controller.tutorialOverlayController;
-    if (tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
+    final tutorial =
+        widget.controller.chatController?.tutorialOverlayController;
+    if (tutorial != null &&
+        tutorial.state.isTutorialActive(TutorialEnum.selectModeButtons) &&
         !tutorial.state.model.isStepTransitioning) {
       tutorial.resetTutorial();
     }
@@ -228,21 +239,24 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       widget.overlayController.selectModeController;
 
   bool get _canRefresh =>
-      messageEvent.eventId == widget.controller.refreshEventID;
+      messageEvent.eventId == widget.controller.chatController?.refreshEventID;
 
   void _startSelectModeTutorial() {
+    final chat = widget.controller.chatController;
+    if (chat == null) return;
+
     _shimmerTranslateButton.value = false;
 
     final translateTarget = SelectMode.translate.buttonTarget;
     final audioTarget = SelectMode.audio.buttonTarget;
     final msgTarget = widget.overlayController.overlayMessageKey;
-    final tokenTarget = widget.controller.tutorialTokenTargetKey;
+    final tokenTarget = chat.tutorialTokenTargetKey;
     if (tokenTarget == null) {
       _shimmerTranslateButton.value = true;
       return;
     }
 
-    widget.controller.tutorialOverlayController.launchTutorial(
+    chat.tutorialOverlayController.launchTutorial(
       context: context,
       tutorial: SelectModeButtonsTutorialModel(
         data: [
@@ -250,7 +264,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             targetKey: tokenTarget,
             onTap: () async {
               widget.overlayController.updateSelectedSpan(
-                widget.controller.tutorialToken!.text,
+                chat.tutorialToken!.text,
               );
               await Future.delayed(Duration(milliseconds: 4000));
               widget.overlayController.updateSelectedSpan(null);
@@ -285,7 +299,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
           ),
         ],
       ),
-      isFocused: widget.controller.isFocused,
+      isFocused: chat.isFocused,
     );
   }
 
@@ -329,7 +343,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     if (updatedMode == SelectMode.requestRegenerate) {
-      await widget.controller.requestRegeneration(messageEvent.eventId);
+      await widget.controller.chatController?.requestRegeneration(
+        messageEvent.eventId,
+      );
 
       if (mounted) {
         controller.setSelectMode(null);
@@ -351,6 +367,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> modeDisabled() async {
+    final chat = widget.controller.chatController;
     final targetLangCode = controller.messageEvent.originalSent?.langCode;
     LanguageModel? targetLang;
     if (targetLangCode != null) {
@@ -369,7 +386,8 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             style: TextStyle(color: Theme.of(context).colorScheme.surface),
             children: [
               TextSpan(text: L10n.of(context).modeDisabled),
-              if (targetLang != null &&
+              if (chat != null &&
+                  targetLang != null &&
                   targetLang.langCodeShort != l1?.langCodeShort) ...[
                 const TextSpan(text: ' '),
                 WidgetSpan(
@@ -378,7 +396,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                   child: InkWell(
                     onTap: () {
                       messenger.hideCurrentSnackBar();
-                      widget.controller.updateLanguageOnMismatch(targetLang!);
+                      chat.updateLanguageOnMismatch(targetLang!);
                     },
                     child: Text(
                       L10n.of(context).clickToUpdateTargetLanguage,
@@ -518,8 +536,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final config = widget.overlayController.config;
+    final chat = widget.controller.chatController;
     final modes = controller.readingAssistanceModes;
-    final allModes = controller.allModes(enableRefresh: _canRefresh);
+    final allModes = visibleModes(
+      controller.allModes(enableRefresh: _canRefresh),
+      config,
+    );
+    final showMoreButton = config.showMoreButton && chat != null;
 
     return Material(
       type: MaterialType.transparency,
@@ -527,7 +551,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
         height: AppConfig.toolbarMenuHeight,
         child: Row(
           mainAxisSize: MainAxisSize.min,
-          children: List.generate(allModes.length + 1, (index) {
+          children: List.generate(allModes.length + (showMoreButton ? 1 : 0), (
+            index,
+          ) {
             if (index < allModes.length) {
               final mode = allModes[index];
               final enabled = modes(enableRefresh: _canRefresh).contains(mode);
@@ -629,7 +655,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
                 width: 45.0,
                 alignment: Alignment.center,
                 child: _MoreButton(
-                  controller: widget.controller,
+                  controller: chat!,
                   messageEvent: messageEvent,
                 ),
               );

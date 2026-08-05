@@ -12,8 +12,9 @@ import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 ///
 /// A miss (an activity opened by deep link without visiting the map first) falls
 /// back to the start page's own fetch, so this is purely an optimization, never a
-/// correctness requirement. Replaced wholesale on each discovery pass; the
-/// staleness window is bounded by the map's discovery cadence, and the join
+/// correctness requirement. Replaced wholesale on each discovery pass, and
+/// per-activity by the start page's background revalidate ([updateActivity]);
+/// the staleness window is bounded by the map's discovery cadence, and the join
 /// action re-validates against the server anyway. See world-map.instructions.md
 /// ("Discovering joinable sessions").
 class DiscoveredSessionsCache extends ChangeNotifier {
@@ -30,6 +31,19 @@ class DiscoveredSessionsCache extends ChangeNotifier {
     _byActivityId
       ..clear()
       ..addAll(byActivityId);
+    notifyListeners();
+  }
+
+  /// Replace one activity's previewed sessions with a fresh read — the start
+  /// page's revalidate-on-view (#8150): a cache-seeded render still refetches
+  /// in the background, and writing the result back here corrects every view
+  /// rendering off the cache (the course card's Open state) without waiting
+  /// for the map's next discovery pass.
+  void updateActivity(
+    String activityId,
+    Map<String, RoomSummaryResponse> rooms,
+  ) {
+    _byActivityId[activityId] = rooms;
     notifyListeners();
   }
 

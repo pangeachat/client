@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-04 10:40:27.475314",
+    "@@last_modified": "2026-08-05 10:21:30.205808",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2544,8 +2544,6 @@
     "constructUseCollected": " Kolektita en babilejo",
     "constructUseNanDesc": " Ne aplikebla",
     "xpIntoLevel": "{currentXP} / {maxXP} PTS",
-    "enableTTSToolName": "Ebligita teksto-al-parolado",
-    "enableTTSToolDescription": "Permesi al la aplikaĵo generi teksto-al-paroladon por partoj de teksto en via cellingvo.",
     "yourUsername": "Via uznomo",
     "yourEmail": "Via retpoŝto",
     "iWantToLearn": "Mi volas lerni",
@@ -6074,14 +6072,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10628,8 +10618,6 @@
     "newActivityBadge": "NOVA",
     "exitVocabPracticeSession": "Via nuna progreso en la vortopraktika sesio ne estos konservita.",
     "exitGrammarPracticeSession": "Via nuna progreso en la gramatikpraktika sesio ne estos konservita.",
-    "autoReadAloudMessagesToolName": "Aŭtomate laŭtlegi ĉiujn ricevitajn mesaĝojn",
-    "autoReadAloudMessagesDescription": "Kiam mesaĝo estas ricevita, la voĉo de la aparato estos uzata por laŭtlegi la mesaĝon por aŭskulta praktiko.",
     "activityFilterButtonsLabel": "Filtraj butonoj por nivelo, ludantoj kaj stato",
     "mapFilterAllLevels": "Ĉiuj niveloj",
     "mapFilterAllPlayers": "Ĉiuj ludantoj",
@@ -10647,6 +10635,27 @@
     "practiceSessionTimedOut": "Via ekzercsesio finiĝis post {minutes} minutoj sen aktiveco.",
     "autocorrectMobileOnly": "Nur poŝtelefono",
     "autocorrectMobileOnlyWarning": "Aŭtomata korekto de aparato disponeblas nur en la poŝtelefona aplikaĵo.",
+    "audioSectionTitle": "Aŭdio",
+    "audioWordsToolName": "Vortoj",
+    "audioWordsDescription": "Ludu la aŭdion de vorto kiam vi frapetas ĝin.",
+    "audioChoicesToolName": "Elektoj",
+    "audioChoicesDescription": "Ludu aŭdion por respondaj elektoj en praktikaj agadoj.",
+    "audioIncomingMessagesToolName": "Alvenantaj mesaĝoj",
+    "audioIncomingMessagesDescription": "Aŭtomate laŭtlegi ricevitajn mesaĝojn en via cellingvo por aŭskulta praktiko.",
+    "choosePangeaAvatar": "Elektu Pangean avataron",
+    "readAloudNoVoiceTitle": "Neniu altkvalita {language} voĉo trovita",
+    "readAloudNoVoiceDesktopWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. Chrome kaj Edge kutime inkluzivas altkvalitajn voĉojn.",
+    "readAloudGetChrome": "Akiri Chrome",
+    "readAloudNoVoiceMobileWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. La aplikaĵo Pangea Chat povas uzi la plej bonajn voĉojn de via aparato.",
+    "readAloudGetApp": "Akiri la aplikaĵon",
+    "readAloudNoVoiceIOS": "Via aparato ankoraŭ ne havas altkvalitan {language} voĉon elŝutitan. Elŝutu unu, poste reprovu:",
+    "readAloudNoVoiceIOSSteps": "  • Agordoj\n  • Alirebleco\n  • Parolita Enhavo\n  • Voĉoj\n  • {language}\n  • Elŝutu Plibonigitan aŭ Premium-voĉon",
+    "readAloudNoVoiceAndroid": "Via aparato ankoraŭ ne havas altkvalitan {language} voĉon. Instalu voĉajn datumojn por via tekst-al-parola motoro, poste reprovu.",
+    "readAloudOpenVoiceSettings": "Malfermi voĉajn agordojn",
+    "streamingSttDegradedLiveBanner": "Viva transskribo funkcias per rezerva servo. Kvalito povas varii, bonvolu kontroli la tekston.",
+    "streamingSttDegradedToBatchBanner": "Viva transskribo ne disponeblas nun. Via mesaĝo estis transskribita laŭ la norma maniero, sen viva redaktado. Ni laboras por restarigi ĝin.",
+    "streamingSttLanguageUnsupportedBanner": "Viva transskribo ankoraŭ ne disponeblas por ĉi tiu lingvo. Ni laboras pri tio.",
+    "formLabel": "{name} formularo",
     "explorePlayAndLearn": "Esploru, ludu kaj lernu",
     "conversationFromDayOne": "Konversacio ekde la unua tago",
     "builtForConnection": "Konstruita por konekto",

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'package:fluffychat/features/course_plans/payload_client/paginated_response.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 
 /// Generic PayloadCMS client for CRUD operations
 class PayloadClient {
@@ -110,9 +111,7 @@ class PayloadClient {
     final response = await _get(endpoint);
 
     if (response.statusCode >= 400) {
-      throw Exception(
-        'Failed to load documents: ${response.statusCode} ${response.body}',
-      );
+      throw PangeaHttpException.fromResponse(response);
     }
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
@@ -133,7 +132,7 @@ class PayloadClient {
     final endpoint = '$basePath/$collection/$id$query';
     final response = await _get(endpoint);
     if (response.statusCode >= 400) {
-      throw response;
+      throw PangeaHttpException.fromResponse(response);
     }
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return fromJson(json);
@@ -149,9 +148,7 @@ class PayloadClient {
     final response = await _post(endpoint, data);
 
     if (response.statusCode >= 400) {
-      throw Exception(
-        'Failed to create document: ${response.statusCode} ${response.body}',
-      );
+      throw PangeaHttpException.fromResponse(response);
     }
 
     final json = jsonDecode(response.body) as Map<String, dynamic>;
@@ -168,9 +165,7 @@ class PayloadClient {
     final endpoint = '$basePath/$collection/$id';
     final response = await _patch(endpoint, data);
     if (response.statusCode >= 400) {
-      throw Exception(
-        'Failed to update document: ${response.statusCode} ${response.body}',
-      );
+      throw PangeaHttpException.fromResponse(response);
     }
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return fromJson(json);
@@ -185,9 +180,7 @@ class PayloadClient {
     final endpoint = '$basePath/$collection/$id';
     final response = await _delete(endpoint);
     if (response.statusCode >= 400) {
-      throw Exception(
-        'Failed to delete document: ${response.statusCode} ${response.body}',
-      );
+      throw PangeaHttpException.fromResponse(response);
     }
     final json = jsonDecode(response.body) as Map<String, dynamic>;
     return fromJson(json);

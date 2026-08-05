@@ -3147,8 +3147,6 @@
     "constructUseCollected": "Συλλέχθηκε στη συνομιλία",
     "constructUseNanDesc": "Μη εφαρμόσιμο",
     "xpIntoLevel": "{currentXP} / {maxXP} Πόντοι XP",
-    "enableTTSToolName": "Ενεργοποιημένη φωνητική ανάγνωση κειμένου",
-    "enableTTSToolDescription": "Επιτρέψτε στην εφαρμογή να παράγει έξοδο φωνητικής ανάγνωσης για τμήματα κειμένου στη γλώσσα στόχο σας.",
     "yourUsername": "Το όνομα χρήστη σας",
     "yourEmail": "Το email σας",
     "iWantToLearn": "Θέλω να μάθω",
@@ -3417,7 +3415,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-04 10:40:27.516755",
+    "@@last_modified": "2026-08-05 10:21:29.986783",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -6004,14 +6002,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10558,8 +10548,6 @@
     "newActivityBadge": "ΝΕΟ",
     "exitVocabPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης λεξιλογίου δεν θα αποθηκευτεί.",
     "exitGrammarPracticeSession": "Η πρόοδος της τρέχουσας συνεδρίας εξάσκησης γραμματικής δεν θα αποθηκευτεί.",
-    "autoReadAloudMessagesToolName": "Αυτόματη ανάγνωση όλων των εισερχόμενων μηνυμάτων",
-    "autoReadAloudMessagesDescription": "Όταν λαμβάνεται ένα μήνυμα, η φωνή της συσκευής θα χρησιμοποιείται για την ανάγνωση του μηνύματος δυνατά για εξάσκηση στην ακρόαση.",
     "activityFilterButtonsLabel": "Κουμπιά φίλτρου επιπέδου, παικτών και κατάστασης",
     "mapFilterAllLevels": "Όλα τα επίπεδα",
     "mapFilterAllPlayers": "Όλοι οι παίκτες",
@@ -10577,6 +10565,27 @@
     "practiceSessionTimedOut": "Η συνεδρία εξάσκησής σας έληξε μετά από {minutes} λεπτά αδράνειας.",
     "autocorrectMobileOnly": "Μόνο για κινητά",
     "autocorrectMobileOnlyWarning": "Η αυτόματη διόρθωση συσκευής είναι διαθέσιμη μόνο στην εφαρμογή για κινητά.",
+    "audioSectionTitle": "Ήχος",
+    "audioWordsToolName": "Λέξεις",
+    "audioWordsDescription": "Αναπαραγωγή ήχου μιας λέξης όταν την πατάτε.",
+    "audioChoicesToolName": "Επιλογές",
+    "audioChoicesDescription": "Αναπαραγωγή ήχου για τις επιλογές απάντησης σε δραστηριότητες εξάσκησης.",
+    "audioIncomingMessagesToolName": "Εισερχόμενα μηνύματα",
+    "audioIncomingMessagesDescription": "Αυτόματη ανάγνωση των εισερχόμενων μηνυμάτων δυνατά στη γλώσσα-στόχο σας για εξάσκηση στην ακρόαση.",
+    "choosePangeaAvatar": "Επιλέξτε ένα avatar Pangea",
+    "readAloudNoVoiceTitle": "Δεν βρέθηκε φωνή υψηλής ποιότητας για {language}",
+    "readAloudNoVoiceDesktopWeb": "Αυτό το πρόγραμμα περιήγησης δεν προσφέρει φωνή υψηλής ποιότητας για {language}, επομένως τα μηνύματα δεν μπορούν να διαβαστούν καλά εδώ. Το Chrome και το Edge συνήθως περιλαμβάνουν φωνές υψηλής ποιότητας.",
+    "readAloudGetChrome": "Αποκτήστε το Chrome",
+    "readAloudNoVoiceMobileWeb": "Αυτό το πρόγραμμα περιήγησης δεν προσφέρει φωνή υψηλής ποιότητας για {language}, επομένως τα μηνύματα δεν μπορούν να διαβαστούν καλά εδώ. Η εφαρμογή Pangea Chat μπορεί να χρησιμοποιήσει τις καλύτερες φωνές της συσκευής σας.",
+    "readAloudGetApp": "Αποκτήστε την εφαρμογή",
+    "readAloudNoVoiceIOS": "Η συσκευή σας δεν έχει ακόμη κατεβάσει φωνή υψηλής ποιότητας για {language}. Κατεβάστε μία και δοκιμάστε ξανά:",
+    "readAloudNoVoiceIOSSteps": "  • Ρυθμίσεις\n  • Προσβασιμότητα\n  • Εκφωνούμενο περιεχόμενο\n  • Φωνές\n  • {language}\n  • Κατεβάστε μια βελτιωμένη ή Premium φωνή",
+    "readAloudNoVoiceAndroid": "Η συσκευή σας δεν έχει ακόμη φωνή υψηλής ποιότητας για {language}. Εγκαταστήστε δεδομένα φωνής για τη μηχανή μετατροπής κειμένου σε ομιλία και δοκιμάστε ξανά.",
+    "readAloudOpenVoiceSettings": "Άνοιγμα ρυθμίσεων φωνής",
+    "streamingSttDegradedLiveBanner": "Η ζωντανή μεταγραφή εκτελείται σε εφεδρική υπηρεσία. Η ποιότητα ενδέχεται να διαφέρει, παρακαλούμε ελέγξτε το κείμενο.",
+    "streamingSttDegradedToBatchBanner": "Η ζωντανή μεταγραφή δεν είναι διαθέσιμη αυτή τη στιγμή. Το μήνυμά σας μεταγράφηκε με τον τυπικό τρόπο, χωρίς ζωντανή επεξεργασία. Εργαζόμαστε για την αποκατάστασή της.",
+    "streamingSttLanguageUnsupportedBanner": "Η ζωντανή μεταγραφή δεν είναι ακόμη διαθέσιμη για αυτήν τη γλώσσα. Εργαζόμαστε πάνω σε αυτό.",
+    "formLabel": "Φόρμα {name}",
     "explorePlayAndLearn": "Εξερευνήστε, παίξτε και μάθετε",
     "conversationFromDayOne": "Συζήτηση από την πρώτη μέρα",
     "builtForConnection": "Φτιαγμένο για σύνδεση",

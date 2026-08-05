@@ -1541,8 +1541,6 @@
     "constructUseCollected": "Zbrano v klepetu",
     "constructUseNanDesc": "Ni primerno",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Omogočeno besedilno pretvarjanje v govor",
-    "enableTTSToolDescription": "Dovolite aplikaciji, da generira izhod besedilnega pretvarjanja v govor za dele besedila v vašem ciljnem jeziku.",
     "yourUsername": "Vaše uporabniško ime",
     "yourEmail": "Vaš e-poštni naslov",
     "iWantToLearn": "Želim se učiti",
@@ -1811,7 +1809,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-04 10:40:35.125428",
+    "@@last_modified": "2026-08-05 10:21:40.774647",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6074,14 +6072,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10628,8 +10618,6 @@
     "newActivityBadge": "NOVO",
     "exitVocabPracticeSession": "Napredek trenutne vaje besedišča ne bo shranjen.",
     "exitGrammarPracticeSession": "Napredek trenutne vaje slovnice ne bo shranjen.",
-    "autoReadAloudMessagesToolName": "Samodejno preberi vsa prejeta sporočila",
-    "autoReadAloudMessagesDescription": "Ko je sporočilo prejeto, bo glas naprave uporabljen za branje sporočila na glas za vajo poslušanja.",
     "activityFilterButtonsLabel": "Gumbi za filtriranje po ravni, igralcih in statusu",
     "mapFilterAllLevels": "Vse ravni",
     "mapFilterAllPlayers": "Vsi igralci",
@@ -10647,6 +10635,27 @@
     "practiceSessionTimedOut": "Vaša vaja se je končala po {minutes} minutah neaktivnosti.",
     "autocorrectMobileOnly": "Samo za mobilne naprave",
     "autocorrectMobileOnlyWarning": "Samodejno popravljanje je na voljo samo v mobilni aplikaciji.",
+    "audioSectionTitle": "Zvok",
+    "audioWordsToolName": "Besede",
+    "audioWordsDescription": "Predvajaj zvok besede, ko se je dotakneš.",
+    "audioChoicesToolName": "Izbire",
+    "audioChoicesDescription": "Predvajaj zvok za izbire odgovorov v vajah.",
+    "audioIncomingMessagesToolName": "Dohodne sporočila",
+    "audioIncomingMessagesDescription": "Samodejno preberi prejeta sporočila na glas v ciljnem jeziku za vajo poslušanja.",
+    "choosePangeaAvatar": "Izberite avatar Pangea",
+    "readAloudNoVoiceTitle": "Ni najdenega visokokakovostnega glasu za {language}",
+    "readAloudNoVoiceDesktopWeb": "Ta brskalnik ne ponuja visokokakovostnega glasu za {language}, zato sporočil ni mogoče dobro prebrati na glas. Chrome in Edge običajno vključujeta visokokakovostne glasove.",
+    "readAloudGetChrome": "Prenesite Chrome",
+    "readAloudNoVoiceMobileWeb": "Ta brskalnik ne ponuja visokokakovostnega glasu za {language}, zato sporočil ni mogoče dobro prebrati na glas. Aplikacija Pangea Chat lahko uporablja najboljše glasove vaše naprave.",
+    "readAloudGetApp": "Prenesite aplikacijo",
+    "readAloudNoVoiceIOS": "Vaša naprava še nima prenesenega visokokakovostnega glasu za {language}. Prenesite ga in poskusite znova:",
+    "readAloudNoVoiceIOSSteps": "  • Nastavitve\n  • Dostopnost\n  • Izgovorjena vsebina\n  • Glasovi\n  • {language}\n  • Prenesite izboljšan ali premium glas",
+    "readAloudNoVoiceAndroid": "Vaša naprava še nima visokokakovostnega glasu za {language}. Namestite glasovne podatke za vaš mehanizem za pretvorbo besedila v govor in poskusite znova.",
+    "readAloudOpenVoiceSettings": "Odpri nastavitve glasu",
+    "streamingSttDegradedLiveBanner": "Prepis v živo deluje na rezervni storitvi. Kakovost se lahko razlikuje, preverite besedilo.",
+    "streamingSttDegradedToBatchBanner": "Prepis v živo trenutno ni na voljo. Vaše sporočilo je bilo prepisano na standarden način, brez urejanja v živo. Prizadevamo si, da bi ga obnovili.",
+    "streamingSttLanguageUnsupportedBanner": "Prepis v živo še ni na voljo za ta jezik. Delamo na tem.",
+    "formLabel": "Obrazec {name}",
     "explorePlayAndLearn": "Raziskuj, igraj se in se uči",
     "conversationFromDayOne": "Pogovor od prvega dne",
     "builtForConnection": "Ustvarjeno za povezovanje",

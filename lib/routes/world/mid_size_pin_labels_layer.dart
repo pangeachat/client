@@ -60,7 +60,13 @@ class MidSizePinLabelsLayer {
             width: size.width,
             height: size.height,
             alignment: _labelAlignment(side, size),
+            // Child key, never Marker.key — see dot_markers_layer.dart: a
+            // Marker.key duplicates across world copies at min zoom (#7947);
+            // the child key keeps the label's GestureDetector state tied to
+            // its own activity through MarkerLayer's per-frame positional
+            // reconciliation (#8136).
             child: Opacity(
+              key: ValueKey('label_$id'),
               // Match the pin: a non-startable available pin's label dims too.
               opacity: nonStartableOf(id) ? 0.5 : 1.0,
               // ExcludeSemantics: the pin's own Semantics(button) node stays the

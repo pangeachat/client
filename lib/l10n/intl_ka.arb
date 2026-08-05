@@ -1676,8 +1676,6 @@
     "constructUseCollected": "შეაგროვა ჩატში",
     "constructUseNanDesc": "არასამართლებელი",
     "xpIntoLevel": "{currentXP} / {maxXP} გამოცდილება",
-    "enableTTSToolName": "ჩართულია ტექსტიდან ხმას გამოთქმა",
-    "enableTTSToolDescription": "დაშვება აპლიკაციას შექმნას ტექსტიდან ხმას გამოთქმის გამოსავალი თქვენი სამიზნე ენის ნაწილებისთვის.",
     "yourUsername": "თქვენი მომხმარებლის სახელი",
     "yourEmail": "თქვენი ელფოსტა",
     "iWantToLearn": "მინდა ვისწავლო",
@@ -1946,7 +1944,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-04 10:40:30.951048",
+    "@@last_modified": "2026-08-05 10:21:35.078999",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6029,14 +6027,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -10583,8 +10573,6 @@
     "newActivityBadge": "ახალი",
     "exitVocabPracticeSession": "თქვენი მიმდინარე ლექსიკის სავარჯიშო სესიის პროგრესი არ შეინახება.",
     "exitGrammarPracticeSession": "თქვენი მიმდინარე გრამატიკის სავარჯიშო სესიის პროგრესი არ შეინახება.",
-    "autoReadAloudMessagesToolName": "ყველა მიღებული შეტყობინების ავტომატურად ხმამაღლა წაკითხვა",
-    "autoReadAloudMessagesDescription": "შეტყობინების მიღებისას, მოწყობილობის ხმა გამოყენებული იქნება შეტყობინების ხმამაღლა წასაკითხად მოსმენის პრაქტიკისთვის.",
     "activityFilterButtonsLabel": "დონე, მოთამაშეები და სტატუსის ფილტრის ღილაკები",
     "mapFilterAllLevels": "ყველა დონე",
     "mapFilterAllPlayers": "ყველა მოთამაშე",
@@ -10602,6 +10590,27 @@
     "practiceSessionTimedOut": "თქვენი სავარჯიშო სესია დასრულდა {minutes} წუთის უმოქმედობის შემდეგ.",
     "autocorrectMobileOnly": "მხოლოდ მობილური",
     "autocorrectMobileOnlyWarning": "მოწყობილობის ავტოკორექცია ხელმისაწვდომია მხოლოდ მობილურ აპლიკაციაში.",
+    "audioSectionTitle": "აუდიო",
+    "audioWordsToolName": "სიტყვები",
+    "audioWordsDescription": "დაუკარით სიტყვის აუდიო, როდესაც მასზე დააკლიკებთ.",
+    "audioChoicesToolName": "არჩევანი",
+    "audioChoicesDescription": "დაუკარით აუდიო სავარჯიშო აქტივობებში პასუხის ვარიანტებისთვის.",
+    "audioIncomingMessagesToolName": "შემომავალი შეტყობინებები",
+    "audioIncomingMessagesDescription": "ავტომატურად წაიკითხეთ მიღებული შეტყობინებები ხმამაღლა თქვენს სამიზნე ენაზე მოსმენის პრაქტიკისთვის.",
+    "choosePangeaAvatar": "აირჩიეთ Pangea-ს ავატარი",
+    "readAloudNoVoiceTitle": "ვერ მოიძებნა მაღალი ხარისხის {language} ხმა",
+    "readAloudNoVoiceDesktopWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Chrome და Edge, როგორც წესი, მოიცავს მაღალი ხარისხის ხმებს.",
+    "readAloudGetChrome": "მიიღეთ Chrome",
+    "readAloudNoVoiceMobileWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Pangea Chat აპს შეუძლია გამოიყენოს თქვენი მოწყობილობის საუკეთესო ხმები.",
+    "readAloudGetApp": "მიიღეთ აპი",
+    "readAloudNoVoiceIOS": "თქვენს მოწყობილობას ჯერ არ აქვს გადმოწერილი მაღალი ხარისხის {language} ხმა. გადმოწერეთ ერთი, შემდეგ სცადეთ ხელახლა:",
+    "readAloudNoVoiceIOSSteps": "  • პარამეტრები\n  • ხელმისაწვდომობა\n  • ნათქვამი კონტენტი\n  • ხმები\n  • {language}\n  • გადმოწერეთ გაუმჯობესებული ან პრემიუმ ხმა",
+    "readAloudNoVoiceAndroid": "თქვენს მოწყობილობას ჯერ არ აქვს მაღალი ხარისხის {language} ხმა. დააინსტალირეთ ხმოვანი მონაცემები თქვენი ტექსტიდან მეტყველების ძრავისთვის, შემდეგ სცადეთ ხელახლა.",
+    "readAloudOpenVoiceSettings": "ხმოვანი პარამეტრების გახსნა",
+    "streamingSttDegradedLiveBanner": "პირდაპირი ტრანსკრიფცია სარეზერვო სერვისზე მუშაობს. ხარისხი შეიძლება განსხვავდებოდეს, გთხოვთ, შეამოწმოთ ტექსტი.",
+    "streamingSttDegradedToBatchBanner": "პირდაპირი ტრანსკრიფცია ამჟამად მიუწვდომელია. თქვენი შეტყობინება სტანდარტული წესით იქნა ტრანსკრიბირებული, პირდაპირი რედაქტირების გარეშე. ჩვენ ვმუშაობთ მის აღსადგენად.",
+    "streamingSttLanguageUnsupportedBanner": "პირდაპირი ტრანსკრიფცია ჯერ არ არის ხელმისაწვდომი ამ ენისთვის. ჩვენ ვმუშაობთ ამაზე.",
+    "formLabel": "{name} ფორმა",
     "explorePlayAndLearn": "გამოიკვლიე, ითამაშე და ისწავლე",
     "conversationFromDayOne": "საუბარი პირველივე დღიდან",
     "builtForConnection": "კავშირისთვის შექმნილი",

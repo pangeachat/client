@@ -13,10 +13,12 @@ void main() {
     String courseId,
     List<String> seq,
     Map<String, Set<String>> acts, {
+    String? questId,
     int threshold = kDefaultStarsToUnlockObjective,
     Map<String, int> earnable = const {},
   }) => CourseLoOutline(
     courseId: courseId,
+    questId: questId,
     orderedLoIds: seq,
     activityIdsByLo: acts,
     starsToUnlock: threshold,
@@ -280,6 +282,103 @@ void main() {
       );
 
       expect(r.missionGradient(['m1']), 0.0);
+    });
+  });
+
+  group('two course rooms from one quest (#8087)', () {
+    /// One quest ('q1') launched into two course rooms: room A pins Mission m1
+    /// to its own 4-star activity, room B carries the same Mission with a
+    /// different (side-quest) activity. Courses are keyed by room id; the
+    /// shared quest uuid is the second key the band dedupes by.
+    List<CourseLoOutline> twoRoomsOneQuest() => [
+      outline(
+        '!roomA:x',
+        ['m1'],
+        {
+          'm1': {'a1'},
+        },
+        questId: 'q1',
+        earnable: {'a1': 4},
+      ),
+      outline(
+        '!roomB:x',
+        ['m1'],
+        {
+          'm1': {'b1'},
+        },
+        questId: 'q1',
+        earnable: {'b1': 4},
+      ),
+    ];
+
+    test('each room resolves its own rollup — no last-room-wins collapse', () {
+      final r = resolveProgression(
+        outlines: twoRoomsOneQuest(),
+        starsByActivity: const {'a1': 3},
+      );
+
+      expect(r.forCourse('!roomA:x')!.rollup['m1']!.stars, 3);
+      expect(r.forCourse('!roomB:x')!.rollup['m1']!.stars, 0);
+    });
+
+    test("stars earned in one room's activity never credit the other", () {
+      // The reported repro: earn stars in course B, course A displayed them.
+      final r = resolveProgression(
+        outlines: twoRoomsOneQuest(),
+        starsByActivity: const {'b1': 2},
+      );
+
+      final a = r.questStars('!roomA:x')!;
+      expect(a.earned, 0);
+      final b = r.questStars('!roomB:x')!;
+      expect(b.earned, 2);
+    });
+
+    test('the band counts the shared quest once, not once per room', () {
+      final r = resolveProgression(
+        outlines: twoRoomsOneQuest(),
+        starsByActivity: const {},
+      );
+
+      expect(r.missionGradient(['m1']), 1.0);
+    });
+
+    test("a Mission satisfied in one room keeps the other room's signal", () {
+      // Room A's m1 is satisfied (contribution 0); room B's differently-pinned
+      // m1 is not. The quest's strongest per-room value stands (max, not
+      // first-wins): the activity genuinely is the learner's next step in B.
+      final r = resolveProgression(
+        outlines: twoRoomsOneQuest(),
+        starsByActivity: const {'a1': 4},
+      );
+
+      expect(r.missionGradient(['m1']), 1.0);
+    });
+
+    test('distinct quests with explicit questIds still sum', () {
+      final r = resolveProgression(
+        outlines: [
+          outline(
+            '!roomA:x',
+            ['m1'],
+            {
+              'm1': {'x'},
+            },
+            questId: 'q1',
+          ),
+          outline(
+            '!roomB:x',
+            ['m2'],
+            {
+              'm2': {'x'},
+            },
+            questId: 'q2',
+          ),
+        ],
+        starsByActivity: const {},
+      );
+
+      expect(r.missionGradient(['m1', 'm2']), 2.0);
     });
   });
 }

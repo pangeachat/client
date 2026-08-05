@@ -761,4 +761,42 @@ void main() {
       },
     );
   });
+
+  group('rankPins — deterministic order for equal scores (#8136)', () {
+    test('equal-score pins rank in activityId order', () {
+      // Four identical pins (same band, same signals) — only activityId can
+      // break the tie, so the ranked order must be lexicographic.
+      final pins = [
+        _card('delta', refs: ['k1']),
+        _card('alpha', refs: ['k2']),
+        _card('charlie', refs: ['k3']),
+        _card('bravo', refs: ['k4']),
+      ];
+      final result = rank(pins, {
+        for (final p in pins) p.activityId: const PinSignals(),
+      });
+      expect(result.ordered, ['alpha', 'bravo', 'charlie', 'delta']);
+    });
+
+    test('the ranked order is identical across shuffled input orders', () {
+      // List.sort is unstable, so without the tiebreaker equal-score pins can
+      // swap between calls and flip mid<->small tiers between settles.
+      final pins = [
+        for (var i = 0; i < 12; i++) _card('pin$i', refs: ['k$i']),
+      ];
+      final signals = {for (final p in pins) p.activityId: const PinSignals()};
+      final baseline = rank(pins, signals, midBudget: 6).ordered;
+      for (var rotation = 1; rotation < pins.length; rotation++) {
+        final rotated = [
+          ...pins.sublist(rotation),
+          ...pins.sublist(0, rotation),
+        ];
+        expect(
+          rank(rotated, signals, midBudget: 6).ordered,
+          baseline,
+          reason: 'rotation $rotation changed the ranked order',
+        );
+      }
+    });
+  });
 }

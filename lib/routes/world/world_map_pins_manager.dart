@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
-import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -46,6 +46,18 @@ bool needsParticipantRefill({
   required int? joinedCount,
   required bool hasUnresolvedSeats,
 }) => everFilled ? filledAtJoinedCount != joinedCount : hasUnresolvedSeats;
+
+/// Severity for a course outline that failed to resolve during the objective
+/// cache rebuild. [MissingQuestException] is a state the repo already
+/// classified benign — [QuestRepo.quest] returns it without reporting, and the
+/// course panel renders it as a known state — so re-reporting it at `error`
+/// re-severitized a handled condition (CLIENT-DQC, #8094). It still reports at
+/// `warning` (once per course per session) because a dropped course blanks
+/// relevance banding with no other visible signal. Everything else keeps
+/// `error`: the outline read failing for any other reason is real breakage.
+@visibleForTesting
+SentryLevel courseOutlineErrorLevel(Object error) =>
+    error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
 
 /// Minimum spacing between empty-cache self-heal rebuilds of the objective
 /// cache. A set-change rebuild (course join/leave) is never subject to it —
@@ -105,12 +117,20 @@ class WorldMapPinsManager {
   /// banding. Rebuilt async on course join/leave (see [_maybeRebuildObjectiveCache]).
   final JoinedObjectiveCache _objectiveCache = JoinedObjectiveCache();
 
-  /// The joined-course uuids [_objectiveCache] was last (re)built from. The
+  /// The joined-course ROOM ids [_objectiveCache] was last (re)built from. The
   /// initial build happens on client-set, but the joined-course rooms (or their
   /// outlines) may not be ready yet; tracking the set lets the sync listener
   /// rebuild when it changes — or when a prior build resolved nothing — instead
-  /// of the banding + gate staying blank for the whole session.
-  Set<String> _objectiveCacheUuids = const {};
+  /// of the banding + gate staying blank for the whole session. Room ids, not
+  /// quest uuids: a second room of an already-joined quest leaves the uuid set
+  /// unchanged and would silently skip the rebuild (#8087).
+  Set<String> _objectiveCacheRoomIds = const {};
+
+  /// The quest uuids of those same joined courses, kept solely for
+  /// [ensureScopedCourseOutline]: the map's course scope carries a quest uuid
+  /// (CourseMapContext), so "is this course already in the cache?" is a
+  /// quest-uuid question even though the cache itself keys by room id.
+  Set<String> _objectiveCacheQuestIds = const {};
 
   /// Guards against overlapping objective-cache rebuilds (and stops a
   /// persistently-failing course from rebuilding on every single sync).
@@ -486,23 +506,15 @@ class WorldMapPinsManager {
         final activityId = summary.activityId;
         if (activityId == null) continue; // not an activity session
         (byActivity[activityId] ??= {})[entry.key] = summary;
-        // Not joinable if finished OR full (all roles taken): the same
-        // `isStarted` the start page's open-to-join gate uses, so a pin the map
-        // shows joinable is one the start page will actually offer a Join for,
-        // never a green pin that dead-ends at "Start". `isStarted` is finished ||
-        // (plan-carries-roles && no free seat); a thin-ref preview (no role plan)
-        // leaves it false, so seat-unknown sessions stay permissive as before.
-        if (summary.isStarted) continue;
-        // "Live" means someone is actually present — filters stale rooms that
-        // were never marked finished but everyone has since left.
-        final presentNonBot = summary.membershipSummary.entries
-            .where(
-              (e) =>
-                  e.value == Membership.join.name &&
-                  e.key != BotName.byEnvironment,
-            )
-            .length;
-        if (presentNonBot < 1) continue;
+        // Not joinable if finished, full (all roles taken), or abandoned
+        // (no non-bot member still present): the same `isActivityOpenToJoin`
+        // every other surface gates on, so a pin the map shows joinable is one
+        // the start page will actually offer a Join for, never a green pin
+        // that dead-ends at "Start" or a join error. A thin-ref preview (no
+        // role plan) leaves `isStarted` false, so seat-unknown sessions stay
+        // permissive as before; the presence check filters stale rooms that
+        // were never marked finished but everyone has since left (#8150).
+        if (!summary.isActivityOpenToJoin) continue;
         facts.add(
           ActivitySessionFacts(
             activityId: activityId,
@@ -568,20 +580,22 @@ class WorldMapPinsManager {
     if (_objectiveCacheRebuilding) return;
     _objectiveCacheRebuilding = true;
     try {
-      final uuids = client.joinedCourseRooms
-          .map((r) => r.coursePlan!.uuid)
-          .toList();
+      final rooms = client.joinedCourseRooms;
       await _objectiveCache.rebuildFromJoinedCourses(
         client,
-        onError: (uuid, e, s) => ErrorHandler.logErrorOnce(
-          key: 'course-outline-resolve:$uuid',
+        // Keyed per course ROOM — two rooms of one quest can fail
+        // independently; questId keeps orphaned-quest reports diagnosable.
+        onError: (roomId, questId, e, s) => ErrorHandler.logErrorOnce(
+          key: 'course-outline-resolve:$roomId',
           e: e,
           s: s,
           m: 'JoinedObjectiveCache: course outline failed to resolve',
-          data: {'courseUuid': uuid},
+          data: {'courseRoomId': roomId, 'questId': questId},
+          level: courseOutlineErrorLevel(e),
         ),
       );
-      _objectiveCacheUuids = uuids.toSet();
+      _objectiveCacheRoomIds = rooms.map((r) => r.id).toSet();
+      _objectiveCacheQuestIds = rooms.map((r) => r.coursePlan!.uuid).toSet();
       resolveProgression(); // re-resolve the band with the loaded outlines
     } finally {
       _objectiveCacheRebuilding = false;
@@ -599,18 +613,18 @@ class WorldMapPinsManager {
   /// self-heals once the data is fixed (which is why [QuestRepo.outline] must
   /// never cache errors — see its cache doc, #8083).
   bool shouldRebuildObjectiveCache(Client client) {
-    final uuids = client.joinedCourseRooms
-        .map((r) => r.coursePlan!.uuid)
-        .toSet();
+    // Room ids, not quest uuids: joining a second room of an already-joined
+    // quest must register as a change (#8087).
+    final roomIds = client.joinedCourseRooms.map((r) => r.id).toSet();
 
     final setChanged =
-        uuids.length != _objectiveCacheUuids.length ||
-        !uuids.containsAll(_objectiveCacheUuids);
+        roomIds.length != _objectiveCacheRoomIds.length ||
+        !roomIds.containsAll(_objectiveCacheRoomIds);
 
     return shouldRebuildObjectiveCacheNow(
       rebuilding: _objectiveCacheRebuilding,
       setChanged: setChanged,
-      emptyButHasCourses: _objectiveCache.ids.isEmpty && uuids.isNotEmpty,
+      emptyButHasCourses: _objectiveCache.ids.isEmpty && roomIds.isNotEmpty,
       lastRebuildAt: _lastObjectiveCacheRebuildAt,
       now: DateTime.now(),
     );
@@ -624,7 +638,7 @@ class WorldMapPinsManager {
     if (_scopedCourseOutlineId == coursePlanId) return;
     _scopedCourseOutlineId = coursePlanId;
     _scopedCourseOutline = null;
-    if (_objectiveCacheUuids.contains(coursePlanId)) {
+    if (_objectiveCacheQuestIds.contains(coursePlanId)) {
       resolveProgression(); // joined: the cache already carries it
       return;
     }

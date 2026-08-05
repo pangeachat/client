@@ -9,6 +9,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/morph_selection.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_record_controller.dart';
@@ -243,6 +244,7 @@ class PracticeController with ChangeNotifier {
       TtsController.tryToSpeak(
         token.text.content,
         langCode: MatrixState.pangeaController.userController.userL2!.langCode,
+        useCase: TtsUseCase.choices,
         pos: token.pos,
         morph: token.morph.map((k, v) => MapEntry(k.name, v)),
       );

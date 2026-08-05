@@ -22,6 +22,7 @@ import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_requ
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_disabled_popup.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_routing.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -162,6 +163,17 @@ class TtsController {
         .toList();
   }
 
+  /// Whether the device currently offers a known-good voice for [langCode] —
+  /// the same gate `tryToSpeak` applies before read-aloud playback, so a
+  /// caller checking upfront (the settings toggle) can never disagree with
+  /// what playback will do. See message-read-aloud.instructions.md.
+  static Future<bool> hasKnownGoodVoiceFor(String langCode) async {
+    if (_availableLangCodes.isEmpty || kIsWeb) {
+      await setAvailableLanguages();
+    }
+    return TtsRouting.selectVoice(_voices, langCode, isWeb: kIsWeb).isKnownGood;
+  }
+
   static Future<void> _setSpeakingLanguage(String langCode, String tid) async {
     String? selectedLangCode;
     final langCodeShort = langCode.split("-").first;
@@ -267,6 +279,10 @@ class TtsController {
   static Future<void> tryToSpeak(
     String text, {
     required String langCode,
+
+    /// The surface this request comes from; determines which per-surface
+    /// audio setting gates playback.
+    required TtsUseCase useCase,
     // Target ID for where to show warning popup
     String? targetID,
     BuildContext? context,
@@ -335,6 +351,7 @@ class TtsController {
       ttsPhoneme: ttsPhoneme,
       requestId: requestId,
       langCode: langCode,
+      useCase: useCase,
       targetID: targetID,
       context: context,
       chatController: chatController,
@@ -358,6 +375,7 @@ class TtsController {
     String text, {
     required int requestId,
     required String langCode,
+    required TtsUseCase useCase,
     // Target ID for where to show warning popup
     String? targetID,
     BuildContext? context,
@@ -374,14 +392,10 @@ class TtsController {
 
     await _setSpeakingLanguage(langCode, tid);
 
-    final enableTTS = MatrixState
-        .pangeaController
-        .userController
-        .profile
-        .toolSettings
-        .enableTTS;
+    final audioEnabled = MatrixState.pangeaController.userController
+        .isToolEnabled(useCase.toolSetting);
 
-    if (enableTTS) {
+    if (audioEnabled) {
       final token = PangeaTokenText(
         offset: 0,
         content: text,

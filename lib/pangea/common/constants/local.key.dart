@@ -5,6 +5,7 @@ class PLocalKey {
   static const String cachedActivityToOpenAt = "cachedactivitytoopenat";
   static const String beganPayment = "beganWebPayment";
   static const String beganPaymentPlanId = "beganWebPaymentPlanId";
+  static const String launchedBillingPortal = "launchedBillingPortal";
   static const String dismissedPaywall = 'dismissedPaywall';
   static const String paywallBackoff = 'paywallBackoff';
   static const String clickedCancelSubscription = 'clickedCancelSubscription';

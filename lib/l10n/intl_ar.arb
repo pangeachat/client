@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-04 10:40:26.299032",
+    "@@last_modified": "2026-08-05 10:21:28.271042",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3106,8 +3106,6 @@
     "constructUseCollected": "تم الجمع في الدردشة",
     "constructUseNanDesc": "غير قابل للتطبيق",
     "xpIntoLevel": "{currentXP} / {maxXP} نقطة خبرة",
-    "enableTTSToolName": "تم تفعيل تحويل النص إلى كلام",
-    "enableTTSToolDescription": "السماح للتطبيق بتوليد مخرجات تحويل النص إلى كلام لأجزاء من النص بلغتك المستهدفة.",
     "yourUsername": "اسم المستخدم الخاص بك",
     "yourEmail": "البريد الإلكتروني الخاص بك",
     "iWantToLearn": "أريد أن أتعلم",
@@ -5433,14 +5431,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -9983,8 +9973,6 @@
     "newActivityBadge": "جديد",
     "exitVocabPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب المفردات الحالية.",
     "exitGrammarPracticeSession": "لن يتم حفظ تقدمك في جلسة تدريب القواعد الحالية.",
-    "autoReadAloudMessagesToolName": "قراءة جميع الرسائل المستلمة تلقائيًا بصوت عالٍ",
-    "autoReadAloudMessagesDescription": "عند استلام رسالة، سيتم استخدام صوت الجهاز لقراءة الرسالة بصوت عالٍ لممارسة الاستماع.",
     "activityFilterButtonsLabel": "أزرار تصفية المستوى واللاعبين والحالة",
     "mapFilterAllLevels": "جميع المستويات",
     "mapFilterAllPlayers": "جميع اللاعبين",
@@ -10002,6 +9990,27 @@
     "practiceSessionTimedOut": "انتهت جلسة التدريب الخاصة بك بعد {minutes} دقيقة من عدم النشاط.",
     "autocorrectMobileOnly": "للجوال فقط",
     "autocorrectMobileOnlyWarning": "التصحيح التلقائي للجهاز متاح فقط في تطبيق الجوال.",
+    "audioSectionTitle": "صوت",
+    "audioWordsToolName": "الكلمات",
+    "audioWordsDescription": "شغّل صوت الكلمة عند النقر عليها.",
+    "audioChoicesToolName": "الخيارات",
+    "audioChoicesDescription": "شغّل الصوت لخيارات الإجابة في أنشطة التدريب.",
+    "audioIncomingMessagesToolName": "الرسائل الواردة",
+    "audioIncomingMessagesDescription": "اقرأ الرسائل المستلمة تلقائيًا بصوت عالٍ بلغتك المستهدفة لممارسة الاستماع.",
+    "choosePangeaAvatar": "اختر صورة بانجيا الرمزية",
+    "readAloudNoVoiceTitle": "لم يتم العثور على صوت عالي الجودة لـ {language}",
+    "readAloudNoVoiceDesktopWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يتضمن Chrome و Edge عادةً أصواتًا عالية الجودة.",
+    "readAloudGetChrome": "احصل على Chrome",
+    "readAloudNoVoiceMobileWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يمكن لتطبيق Pangea Chat استخدام أفضل الأصوات المتوفرة في جهازك.",
+    "readAloudGetApp": "احصل على التطبيق",
+    "readAloudNoVoiceIOS": "لم يتم تنزيل صوت عالي الجودة لـ {language} على جهازك بعد. قم بتنزيل واحد، ثم حاول مرة أخرى:",
+    "readAloudNoVoiceIOSSteps": "  • الإعدادات\n  • تسهيلات الاستخدام\n  • المحتوى المنطوق\n  • الأصوات\n  • {language}\n  • تنزيل صوت محسّن أو مميز",
+    "readAloudNoVoiceAndroid": "لا يحتوي جهازك على صوت عالي الجودة لـ {language} بعد. قم بتثبيت بيانات الصوت لمحرك تحويل النص إلى كلام، ثم حاول مرة أخرى.",
+    "readAloudOpenVoiceSettings": "افتح إعدادات الصوت",
+    "streamingSttDegradedLiveBanner": "النسخ المباشر يعمل على خدمة احتياطية. قد تختلف الجودة، يرجى التحقق من النص.",
+    "streamingSttDegradedToBatchBanner": "النسخ المباشر غير متاح حاليًا. تم نسخ رسالتك بالطريقة القياسية، بدون تحرير مباشر. نحن نعمل على استعادته.",
+    "streamingSttLanguageUnsupportedBanner": "النسخ المباشر غير متاح لهذه اللغة بعد. نحن نعمل على ذلك.",
+    "formLabel": "نموذج {name}",
     "explorePlayAndLearn": "استكشف، العب وتعلّم",
     "conversationFromDayOne": "المحادثة من اليوم الأول",
     "builtForConnection": "مصمم للتواصل",
