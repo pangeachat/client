@@ -43,6 +43,18 @@ Each data point is stored as a [`OneConstructUse`](lib/pangea/analytics_misc/con
 
 The same word can appear with different casing or slight variations across messages (e.g., "Hello" vs "hello"). [`ConstructMergeTable`](lib/pangea/analytics_data/construct_merge_table.dart) merges these transparently so the user sees one unified progress bar per word, not confusing duplicates.
 
+### Construct Displays
+
+Users can view their analytics via the [ConstructAnalyticsView](../../lib/routes/analytics/construct_analytics/analytics_details_popup.dart). There are pages for vocab and morph constructs. Each construct type has a list page, displaying all constructs, and individual construct details page, which the user can navigate to via the main list.
+
+The morph list view ([MorphAnalyticsListView](../../lib/routes/analytics/construct_analytics/morph_analytics_list_view.dart)) displays a list of grammar feature sections, each containing tiles for each of the grammar tags in that feature. All features / tags for the user's L2 are displayed, with a 'locked/disabled' indicator for unused tags. (See [grammar analytics instructions](grammar-analytics.instructions.md) for more details.)
+
+The vocab list view shows a list of tiles, one for each vocab construct, each with the construct's assigned emoji (if present) and the construct's lemma (the vocab word itself). The lemma's text color indicates the construct's [level](../../lib/features/analytics/construct_level_enum.dart). The page has filters for each construct level, and a search bar. Vocab construct tiles can be long-pressed to select them for deletion (see [Blocking Constructs](#blocking-constructs) for more details on deleting vocab constructs). 
+
+Both list views show a button at the top to launch practice. (See [practice exercises instructions](practice-exercises.instructions.md) for more details on analytics practice exercises.)
+
+Construct details page show definitions, canonical examples, and user-generated usage examples for individual constructs.
+
 ### Blocking Constructs
 
 Users can hide specific constructs they consider too easy or irrelevant (e.g., cognates, proper nouns). Blocked constructs:
@@ -50,6 +62,16 @@ Users can hide specific constructs they consider too easy or irrelevant (e.g., c
 - Stop contributing to XP totals
 - Are excluded from practice exercise selection
 - Persist across sessions via the Matrix analytics room
+
+Blocking a construct does not prevent new construct uses for the given construct from being generated or collected. They are hidden from the user, but continue to be stored in the background.
+
+Blocked Constructs are stored in [PangeaEventTypes.analyticsSettings](../../lib/routes/chat/events/constants/pangea_event_types.dart) events in the analytics room of their corresponding language as a list of ConstructIdentifiers. Blocking constructs adds them to this list, so constructs can be blocked one at a time or in bulk with one write to the state event.
+
+Vocab constructs can be blocked individually from construct details pages via the delete button at the bottom of the page, or in bulk via the vocab construct list page by long pressing a construct tile to enter selection mode, selecting all of the construct the user wants to delete, then clicking the delete button at the top of the page. The delete button is only visible in select mode.
+
+Users may want to undo blocking of a vocab construct. They can do this via the vocab construct archive page. This page is accessed by the "more" dropdown button in the AppBar of the vocab construct list view (this dropdown also contains the download button). This page looks similar to the vocab construct list view, but is missing the filters, search bar, practice button, and dropdown menu. Clicking on the back button takes the user back to the vocab construct list page. Clicking or long-pressing a vocab construct tile in this view selects in and activates select mode, so vocab construct can be bulk un-blocked. The tiles have lower opacity than the normal vocab construct tiles, and have a red icon in their upper-right corners to indicate their blocked status.
+
+Blocked constructs can also be unblocked from the construct details page. Blocked construct show a "restore" button at the bottom of the page instead of a delete button.
 
 ## User Levels
 
