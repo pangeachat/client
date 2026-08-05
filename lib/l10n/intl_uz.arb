@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-05 09:53:14.653950",
+    "@@last_modified": "2026-08-05 11:42:17.950261",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9705,5 +9705,15 @@
     "readAloudNoVoiceIOSSteps": "  • Sozlamalar\n  • Maxsus imkoniyatlar\n  • Gapiriladigan kontent\n  • Ovozlar\n  • {language}\n  • Kengaytirilgan yoki Premium ovozni yuklab oling",
     "readAloudNoVoiceAndroid": "Qurilmangizda yuqori sifatli {language} ovozi hali mavjud emas. Matndan nutqqa o'tkazish mexanizmi uchun ovoz ma'lumotlarini o'rnating, so'ngra qayta urinib ko'ring.",
     "readAloudOpenVoiceSettings": "Ovoz sozlamalarini ochish",
-    "formLabel": "{name} shakli"
+    "streamingSttDegradedLiveBanner": "Jonli transkripsiya zaxira xizmatida ishlamoqda. Sifat har xil boʻlishi mumkin, iltimos, matnni tekshiring.",
+    "streamingSttDegradedToBatchBanner": "Jonli transkripsiya hozircha mavjud emas. Xabaringiz standart usulda, jonli tahrirlashsiz transkripsiya qilindi. Uni tiklash ustida ishlayapmiz.",
+    "streamingSttLanguageUnsupportedBanner": "Ushbu til uchun jonli transkripsiya hali mavjud emas. Biz bu ustida ishlayapmiz.",
+    "formLabel": "{name} shakli",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Yordam",
+    "explorePlayAndLearn": "Kashf eting, o'ynang va o'rganing",
+    "conversationFromDayOne": "Birinchi kundan suhbat",
+    "builtForConnection": "Aloqa uchun yaratilgan",
+    "aiWhenYouNeedIt": "Kerak bo'lganda AI",
+    "practiceTailoredForYou": "Sizga moslashtirilgan amaliyot"
 }

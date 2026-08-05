@@ -6,6 +6,7 @@ import 'package:fluffychat/features/activity_sessions/activity_room_extension.da
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_chat_settings_dialog.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/users/about_me_display.dart';
@@ -53,7 +54,7 @@ Future<MemberAction?> _getAction(
   final popupContext = positionContext ?? context;
   final position = _position(popupContext);
 
-  final displayname = user.calcDisplayname();
+  final displayname = user.localizedDisplayname(l10n);
   final dmRoomId = user.room.client.getDirectChatFromUserId(user.id);
   final isBotInActivity =
       user.id == BotName.byEnvironment && room?.showActivityChatUI == true;

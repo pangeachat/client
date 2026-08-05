@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 09:53:13.937594",
+    "@@last_modified": "2026-08-05 11:42:16.804478",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10656,5 +10656,15 @@
     "readAloudNoVoiceIOSSteps": "  • Podešavanja\n  • Pristupačnost\n  • Izgovoreni sadržaj\n  • Glasovi\n  • {language}\n  • Preuzmite poboljšani ili premium glas",
     "readAloudNoVoiceAndroid": "Vaš uređaj još uvek nema visokokvalitetan glas za {language}. Instalirajte glasovne podatke za vaš mehanizam za pretvaranje teksta u govor, pa pokušajte ponovo.",
     "readAloudOpenVoiceSettings": "Otvorite podešavanja glasa",
-    "formLabel": "{name} obrazac"
+    "streamingSttDegradedLiveBanner": "Transkripcija uživo se pokreće na rezervnoj usluzi. Kvalitet može varirati, proverite tekst.",
+    "streamingSttDegradedToBatchBanner": "Transkripcija uživo trenutno nije dostupna. Vaša poruka je transkribovana na standardni način, bez uređivanja uživo. Radimo na tome da je vratimo.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripcija uživo još uvek nije dostupna za ovaj jezik. Radimo na tome.",
+    "formLabel": "{name} obrazac",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Podrška",
+    "explorePlayAndLearn": "Istražujte, igrajte se i učite",
+    "conversationFromDayOne": "Razgovor od prvog dana",
+    "builtForConnection": "Napravljeno za povezivanje",
+    "aiWhenYouNeedIt": "AI kada vam zatreba",
+    "practiceTailoredForYou": "Vežba krojena po vašoj meri"
 }

@@ -94,6 +94,8 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/streamed_stt_embed.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/stt_provenance.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/message_read_aloud_controller.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/show_token_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/events/token_info_feedback/token_info_feedback_request.dart';
@@ -1699,8 +1701,15 @@ class ChatController extends State<ChatPageWithRoom>
     String path,
     int duration,
     List<int> waveform,
-    String? fileName,
-  ) async {
+    String? fileName, {
+    // #Pangea
+    // Phase-2 D8: when the streaming path sends a (possibly edited) transcript,
+    // it hands the settled D9 provenance here so the send SKIPS re-transcribing
+    // the WAV and embeds the SENT text + provenance instead. `null` on the batch
+    // path (and when the streaming flag is off) -> today's exact behaviour.
+    StreamingSttSendData? streamedTranscript,
+    // Pangea#
+  }) async {
     // #Pangea
     // Capture EVERYTHING context-derived at the ABSOLUTE TOP -- before
     // `stopMediaStream.add` and before the FIRST await (the Android sdkInt
@@ -1710,7 +1719,16 @@ class ChatController extends State<ChatPageWithRoom>
     // reading a deactivated context.
     final scaffoldMessenger = ScaffoldMessenger.of(context);
     final decoupleTokenizer = Environment.voiceTranscriptDecoupleEnabled;
-    final VoiceAnalyticsSink? voiceAnalyticsSink = decoupleTokenizer
+    // A streamed send ALWAYS embeds `stt_tokens: []` (streaming never tokenizes
+    // inline), so it always drives the decoupled background-tokenize half — the
+    // same machinery the batch decouple flag turns on. `decoupledSend` unifies
+    // them; for a batch send (streamedTranscript == null) it equals
+    // decoupleTokenizer, so the batch path stays byte-identical.
+    final decoupledSend = voiceSendIsDecoupled(
+      decoupleFlag: decoupleTokenizer,
+      isStreamedSend: streamedTranscript != null,
+    );
+    final VoiceAnalyticsSink? voiceAnalyticsSink = decoupledSend
         ? Matrix.of(context).analyticsDataService.updateService.addAnalytics
         : null;
     final capturedRoom = room;
@@ -1766,16 +1784,37 @@ class ChatController extends State<ChatPageWithRoom>
     // tokenizer-decouple flag is on, fetch TEXT-ONLY (skip_tokenize) so the
     // send does not block on the LLM tokenizer; the tokens are computed and
     // attached in the background after send (_scheduleVoiceTranscriptEnrichment).
-    final transcriptResult = await _getVoiceMessageTranscript(
-      file,
-      skipTokenize: decoupleTokenizer,
-      // Thread the ASR short codes captured at t0 (baseline representation),
-      // never re-read current settings -- byte-identical to baseline yet
-      // drift-free across a mid-send change (BLOCKER/H3).
-      userL1: voiceLangs.asrL1,
-      userL2: voiceLangs.asrL2,
-    );
-    final stt = transcriptResult.result;
+    //
+    // Streaming (D8): the transcript is ALREADY settled (and possibly edited),
+    // so we do NOT re-transcribe the WAV. Build a usable STT model from the
+    // streamed provenance (the SENT text, empty tokens, word timings omitted
+    // when edited) and a user_stt embed carrying the D9 provenance keys. The
+    // embedded lang_code is the target L2 short code the streaming gate used.
+    final SpeechToTextResponseModel? stt;
+    final Map<String, dynamic>? userSttJson;
+    if (streamedTranscript != null) {
+      final model = streamedSttResponse(
+        streamedTranscript,
+        // Recording-time gated language from the streaming session, NOT the
+        // send-time setting — a mid-flow L2 change must not relabel/mis-tokenize
+        // the audio that was already transcribed in the gated language.
+        langCode: streamedTranscript.langCode,
+      );
+      stt = model;
+      userSttJson = userSttEmbedFromModel(model, streamedTranscript);
+    } else {
+      final transcriptResult = await _getVoiceMessageTranscript(
+        file,
+        skipTokenize: decoupleTokenizer,
+        // Thread the ASR short codes captured at t0 (baseline representation),
+        // never re-read current settings -- byte-identical to baseline yet
+        // drift-free across a mid-send change (BLOCKER/H3).
+        userL1: voiceLangs.asrL1,
+        userL2: voiceLangs.asrL2,
+      );
+      stt = transcriptResult.result;
+      userSttJson = stt?.toJson();
+    }
 
     // The background tokenize snapshot is EVENT-sourced (D6): full_text /
     // lang_code / sender_l2 come from the embed, sender_l1 from the speaker_l1
@@ -1783,9 +1822,10 @@ class ChatController extends State<ChatPageWithRoom>
     // drift if the user changes their L1/L2 while the send is in flight, and
     // the background never re-reads current settings. A non-usable
     // (exhausted-fallback) transcript has nothing to tokenize -> no snapshot,
-    // no background work.
+    // no background work. Built for ANY decoupled send (batch-flagged OR
+    // streamed) — both embed empty tokens and need the background enrichment.
     final decoupleSnapshot =
-        decoupleTokenizer && stt != null && stt.hasUsableTranscript
+        decoupledSend && stt != null && stt.hasUsableTranscript
         ? SttLangSnapshot.fromBaseStt(stt, speakerL1: voiceLangs.speakerL1)
         : null;
     // Pangea#
@@ -1810,8 +1850,12 @@ class ChatController extends State<ChatPageWithRoom>
             },
             // #Pangea
             'speaker_l1': voiceLangs.speakerL1,
-            'speaker_l2': voiceLangs.speakerL2,
-            if (stt != null) MessageConstants.userStt: stt.toJson(),
+            // For a streamed send, the spoken (target) language is the gated
+            // language the relay transcribed in, captured at recording start —
+            // not the (possibly since-changed) send-time L2 setting. The batch
+            // path keeps the send-time value (its ASR runs at send time).
+            'speaker_l2': streamedTranscript?.langCode ?? voiceLangs.speakerL2,
+            MessageConstants.userStt: ?userSttJson,
             // Pangea#
           },
         )
@@ -1855,7 +1899,7 @@ class ChatController extends State<ChatPageWithRoom>
       // Route through the pure predicate so the flag-gated decision is
       // unit-tested (see shouldScheduleDecoupledEnrichment).
       if (shouldScheduleDecoupledEnrichment(
-        decoupleFlag: decoupleTokenizer,
+        decoupleFlag: decoupledSend,
         snapshot: decoupleSnapshot,
         sink: voiceAnalyticsSink,
       )) {
@@ -1873,8 +1917,9 @@ class ChatController extends State<ChatPageWithRoom>
           roomId: capturedRoomId,
           clientUserId: capturedClientUserId,
         );
-      } else if (!decoupleTokenizer) {
-        // Flag OFF: unchanged legacy inline analytics path (byte-parity).
+      } else if (!decoupledSend) {
+        // Flag OFF and not a streamed send: unchanged legacy inline analytics
+        // path (byte-parity with the pre-decouple behaviour).
         _sendVoiceMessageAnalytics(eventId, stt);
       }
     }

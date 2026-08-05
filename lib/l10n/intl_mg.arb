@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-05 09:53:11.862241",
+    "@@last_modified": "2026-08-05 11:42:14.448338",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Fikirana\n  • Fidirana\n  • Votoaty Tenenina\n  • Feo\n  • {language}\n  • Misintona feo Enhanced na Premium",
     "readAloudNoVoiceAndroid": "Mbola tsy misy feo {language} avo lenta ao amin'ny fitaovanao. Mametraka angona feo ho an'ny motera lahatsoratra-ho-feo anao, ary andramo indray.",
     "readAloudOpenVoiceSettings": "Sokafy ny firafitry ny feo",
-    "formLabel": "Endrika {name}"
+    "streamingSttDegradedLiveBanner": "Mandeha amin'ny tolotra backup ny fandikana mivantana. Mety hiovaova ny kalitao, azafady jereo ny lahatsoratra.",
+    "streamingSttDegradedToBatchBanner": "Tsy misy amin'izao fotoana izao ny fandikana mivantana. Nadika tamin'ny fomba mahazatra ny hafatrao, tsy misy fanitsiana mivantana. Miezaka mamerina izany izahay.",
+    "streamingSttLanguageUnsupportedBanner": "Tsy misy ho an'ity fiteny ity aloha ny fandikana mivantana. Miezaka manao izany izahay.",
+    "formLabel": "Endrika {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Fanohanana",
+    "explorePlayAndLearn": "Mikaroka, milalao ary mianara",
+    "conversationFromDayOne": "Fifampiresahana manomboka amin'ny andro voalohany",
+    "builtForConnection": "Namboarina ho an'ny fifandraisana",
+    "aiWhenYouNeedIt": "AI rehefa ilainao izany",
+    "practiceTailoredForYou": "Fanazaran-tena mifanaraka aminao"
 }

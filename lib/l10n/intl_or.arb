@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-05 09:53:13.432262",
+    "@@last_modified": "2026-08-05 11:42:15.957937",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • ସେଟିଙ୍ଗ୍ସ\n  • ଆକ୍ସେସିବିଲିଟି\n  • ସ୍ପୋକେନ୍ କଣ୍ଟେଣ୍ଟ\n  • ଭଏସ୍‌ଗୁଡ଼ିକ\n  • {language}\n  • ଏକ ଏନ୍‌ହାନ୍ସଡ୍ କିମ୍ବା ପ୍ରିମିୟମ୍ ଭଏସ୍ ଡାଉନଲୋଡ୍ କରନ୍ତୁ",
     "readAloudNoVoiceAndroid": "ଆପଣଙ୍କ ଡିଭାଇସ୍‌ରେ ଏପର୍ଯ୍ୟନ୍ତ ଉଚ୍ଚ-ଗୁଣବତ୍ତା ବିଶିଷ୍ଟ {language} ଭଏସ୍ ନାହିଁ। ଆପଣଙ୍କ ଟେକ୍ସଟ୍-ଟୁ-ସ୍ପିଚ୍ ଇଞ୍ଜିନ୍ ପାଇଁ ଭଏସ୍ ଡାଟା ଇନଷ୍ଟଲ୍ କରନ୍ତୁ, ତାପରେ ପୁଣି ଚେଷ୍ଟା କରନ୍ତୁ।",
     "readAloudOpenVoiceSettings": "ଭଏସ୍ ସେଟିଙ୍ଗ୍ସ ଖୋଲନ୍ତୁ",
-    "formLabel": "{name} ଫର୍ମ"
+    "streamingSttDegradedLiveBanner": "ଲାଇଭ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ସନ୍ ଏକ ବ୍ୟାକଅପ୍ ସେବାରେ ଚାଲୁଅଛି। ଗୁଣବତ୍ତା ଭିନ୍ନ ହୋଇପାରେ, ଦୟାକରି ଟେକ୍ସଟ୍ ଯାଞ୍ଚ କରନ୍ତୁ।",
+    "streamingSttDegradedToBatchBanner": "ଲାଇଭ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ସନ୍ ବର୍ତ୍ତମାନ ଉପଲବ୍ଧ ନାହିଁ। ଆପଣଙ୍କ ବାର୍ତ୍ତା ଲାଇଭ୍ ଏଡିଟିଂ ବିନା ସାଧାରଣ ଉପାୟରେ ଟ୍ରାନ୍ସକ୍ରାଇବ୍ କରାଯାଇଛି। ଆମେ ଏହାକୁ ପୁନରୁଦ୍ଧାର କରିବାକୁ ଚେଷ୍ଟା କରୁଛୁ।",
+    "streamingSttLanguageUnsupportedBanner": "ଏହି ଭାଷା ପାଇଁ ଲାଇଭ୍ ଟ୍ରାନ୍ସକ୍ରିପ୍ସନ୍ ଏପର୍ଯ୍ୟନ୍ତ ଉପଲବ୍ଧ ନାହିଁ। ଆମେ ଏହା ଉପରେ କାମ କରୁଛୁ।",
+    "formLabel": "{name} ଫର୍ମ",
+    "botDisplayName": "ପାଙ୍ଗିଆ ବଟ୍",
+    "supportDisplayName": "ସହାୟତା",
+    "explorePlayAndLearn": "ଅନୁସନ୍ଧାନ କରନ୍ତୁ, ଖେଳନ୍ତୁ ଏବଂ ଶିଖନ୍ତୁ",
+    "conversationFromDayOne": "ପ୍ରଥମ ଦିନରୁ କଥାବାର୍ତ୍ତା",
+    "builtForConnection": "ସଂଯୋଗ ପାଇଁ ନିର୍ମିତ",
+    "aiWhenYouNeedIt": "ଆପଣଙ୍କୁ ଆବଶ୍ୟକ ହେଲେ AI",
+    "practiceTailoredForYou": "ଆପଣଙ୍କ ପାଇଁ ଉପଯୁକ୍ତ ଅଭ୍ୟାସ"
 }

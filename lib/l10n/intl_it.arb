@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 09:53:11.082969",
+    "@@last_modified": "2026-08-05 11:42:13.426260",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9774,5 +9774,15 @@
     "readAloudNoVoiceIOSSteps": "  • Impostazioni\n  • Accessibilità\n  • Contenuto letto ad alta voce\n  • Voci\n  • {language}\n  • Scarica una voce Migliorata o Premium",
     "readAloudNoVoiceAndroid": "Il tuo dispositivo non ha ancora una voce {language} di alta qualità. Installa i dati vocali per il tuo motore di sintesi vocale, quindi riprova.",
     "readAloudOpenVoiceSettings": "Apri impostazioni voce",
-    "formLabel": "Modulo {name}"
+    "streamingSttDegradedLiveBanner": "La trascrizione in tempo reale è in esecuzione su un servizio di backup. La qualità potrebbe variare, si prega di controllare il testo.",
+    "streamingSttDegradedToBatchBanner": "La trascrizione in tempo reale non è disponibile al momento. Il tuo messaggio è stato trascritto in modo standard, senza modifiche in tempo reale. Stiamo lavorando per ripristinarla.",
+    "streamingSttLanguageUnsupportedBanner": "La trascrizione in tempo reale non è ancora disponibile per questa lingua. Ci stiamo lavorando.",
+    "formLabel": "Modulo {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Supporto",
+    "explorePlayAndLearn": "Esplora, gioca e impara",
+    "conversationFromDayOne": "Conversazione dal primo giorno",
+    "builtForConnection": "Costruito per la connessione",
+    "aiWhenYouNeedIt": "AI quando ne hai bisogno",
+    "practiceTailoredForYou": "Pratica su misura per te"
 }

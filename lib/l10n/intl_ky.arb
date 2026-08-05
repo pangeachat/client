@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-05 09:53:11.675414",
+    "@@last_modified": "2026-08-05 11:42:14.444523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Жөндөөлөр\n  • Атайын мүмкүнчүлүктөр\n  • Сүйлөө мазмуну\n  • Үндөр\n  • {language}\n  • Жакшыртылган же Премиум үндү жүктөп алыңыз",
     "readAloudNoVoiceAndroid": "Түзмөгүңүздө жогорку сапаттагы {language} үнү жок. Текстти кепке айландыруу кыймылдаткычыңыз үчүн үн дайындарын орнотуп, кайра аракет кылыңыз.",
     "readAloudOpenVoiceSettings": "Үн жөндөөлөрүн ачуу",
-    "formLabel": "{name} формасы"
+    "streamingSttDegradedLiveBanner": "Түз транскрипция камдык көчүрмө кызматта иштеп жатат. Сапаты ар кандай болушу мүмкүн, текстти текшериңиз.",
+    "streamingSttDegradedToBatchBanner": "Түз транскрипция азыр жеткиликсиз. Сиздин билдирүүңүз түз түзөтүүсүз, стандарттуу жол менен транскрипцияланды. Биз аны калыбына келтирүү үчүн иштеп жатабыз.",
+    "streamingSttLanguageUnsupportedBanner": "Бул тил үчүн түз транскрипция азырынча жеткиликсиз. Биз анын үстүндө иштеп жатабыз.",
+    "formLabel": "{name} формасы",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Колдоо",
+    "explorePlayAndLearn": "Изилдөө, ойноо жана үйрөнүү",
+    "conversationFromDayOne": "Биринчи күндөн баштап баарлашуу",
+    "builtForConnection": "Байланыш үчүн курулган",
+    "aiWhenYouNeedIt": "Керек болгондо жасалма интеллект",
+    "practiceTailoredForYou": "Сизге ылайыкташтырылган практика"
 }

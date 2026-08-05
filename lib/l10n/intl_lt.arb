@@ -2976,7 +2976,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-05 09:53:11.743133",
+    "@@last_modified": "2026-08-05 11:42:14.374325",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10482,5 +10482,15 @@
     "readAloudNoVoiceIOSSteps": "  • Nustatymai\n  • Pritaikymas neįgaliesiems\n  • Sakytinis turinys\n  • Balsai\n  • {language}\n  • Atsisiųskite patobulintą arba „Premium“ balsą",
     "readAloudNoVoiceAndroid": "Jūsų įrenginyje dar nėra aukštos kokybės {language} balso. Įdiekite balso duomenis savo teksto į kalbą varikliui, tada bandykite dar kartą.",
     "readAloudOpenVoiceSettings": "Atidaryti balso nustatymus",
-    "formLabel": "{name} forma"
+    "streamingSttDegradedLiveBanner": "Tiesioginė transkripcija veikia atsargine paslauga. Kokybė gali skirtis, patikrinkite tekstą.",
+    "streamingSttDegradedToBatchBanner": "Tiesioginė transkripcija šiuo metu nepasiekiama. Jūsų žinutė buvo transkribuota standartiniu būdu, be tiesioginio redagavimo. Dirbame, kad ją atkurtume.",
+    "streamingSttLanguageUnsupportedBanner": "Tiesioginė transkripcija dar nepasiekiama šia kalba. Mes dirbame prie to.",
+    "formLabel": "{name} forma",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Pagalba",
+    "explorePlayAndLearn": "Tyrinėkite, žaiskite ir mokykitės",
+    "conversationFromDayOne": "Pokalbiai nuo pat pirmos dienos",
+    "builtForConnection": "Sukurta ryšiui",
+    "aiWhenYouNeedIt": "DI, kai jums jos reikia",
+    "practiceTailoredForYou": "Jums pritaikyta praktika"
 }

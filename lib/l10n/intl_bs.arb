@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-05 09:53:08.319324",
+    "@@last_modified": "2026-08-05 11:42:10.503712",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Postavke\n  • Pristupačnost\n  • Izgovoreni sadržaj\n  • Glasovi\n  • {language}\n  • Preuzmite poboljšani ili premium glas",
     "readAloudNoVoiceAndroid": "Vaš uređaj još nema visokokvalitetan glas za {language}. Instalirajte podatke o glasu za vašu tekst-u-govor mašinu, a zatim pokušajte ponovo.",
     "readAloudOpenVoiceSettings": "Otvori postavke glasa",
-    "formLabel": "{name} obrazac"
+    "streamingSttDegradedLiveBanner": "Transkripcija uživo radi na rezervnoj usluzi. Kvalitet može varirati, provjerite tekst.",
+    "streamingSttDegradedToBatchBanner": "Transkripcija uživo trenutno nije dostupna. Vaša poruka je transkribovana na standardni način, bez uređivanja uživo. Radimo na tome da je vratimo.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripcija uživo još nije dostupna za ovaj jezik. Radimo na tome.",
+    "formLabel": "{name} obrazac",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Podrška",
+    "explorePlayAndLearn": "Istražujte, igrajte se i učite",
+    "conversationFromDayOne": "Razgovor od prvog dana",
+    "builtForConnection": "Kreirano za povezivanje",
+    "aiWhenYouNeedIt": "AI kada vam zatreba",
+    "practiceTailoredForYou": "Praksa prilagođena vama"
 }

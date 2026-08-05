@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-05 09:53:11.667539",
+    "@@last_modified": "2026-08-05 11:42:14.651996",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Astellungen\n  • Accessibilitéit\n  • Geschwaten Inhalt\n  • Stëmmen\n  • {language}\n  • Eng verbessert oder Premium Stëmm eroflueden",
     "readAloudNoVoiceAndroid": "Ären Apparat huet nach keng héichqualitativ {language} Stëmm. Installéiert Stëmmdaten fir Ären Text-zu-Sprooch-Motor, a probéiert et dann nach eng Kéier.",
     "readAloudOpenVoiceSettings": "Stëmmastellungen opmaachen",
-    "formLabel": "{name} Formulaire"
+    "streamingSttDegradedLiveBanner": "Live Transkriptioun leeft op engem Backup-Service. D'Qualitéit ka variéieren, kontrolléiert w.e.g. den Text.",
+    "streamingSttDegradedToBatchBanner": "Live Transkriptioun ass am Moment net disponibel. Är Noriicht gouf op déi üblech Manéier transkribéiert, ouni Live-Ännerung. Mir schaffen drun, et nees hierzestellen.",
+    "streamingSttLanguageUnsupportedBanner": "Live Transkriptioun ass nach net fir dës Sprooch disponibel. Mir schaffen drun.",
+    "formLabel": "{name} Formulaire",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Support",
+    "explorePlayAndLearn": "Entdeckt, spillt a léiert",
+    "conversationFromDayOne": "Gespréicher vum éischten Dag un",
+    "builtForConnection": "Gemaach fir Verbindung",
+    "aiWhenYouNeedIt": "AI wann Dir se braucht",
+    "practiceTailoredForYou": "Praxis op Iech ugepasst"
 }

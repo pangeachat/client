@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-05 09:53:11.081978",
+    "@@last_modified": "2026-08-05 11:42:13.544604",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Stillingar\n  • Aðgengi\n  • Talað efni\n  • Raddir\n  • {language}\n  • Sækja Enhanced eða Premium rödd",
     "readAloudNoVoiceAndroid": "Tækið þitt hefur ekki hágæða {language} rödd ennþá. Settu upp raddgögn fyrir texta-í-tal vélina þína og reyndu aftur.",
     "readAloudOpenVoiceSettings": "Opna raddstillingar",
-    "formLabel": "{name} eyðublað"
+    "streamingSttDegradedLiveBanner": "Bein umritun er í gangi á varabúnaði. Gæði geta verið breytileg, vinsamlegast athugaðu textann.",
+    "streamingSttDegradedToBatchBanner": "Bein umritun er ekki tiltæk eins og er. Skilaboðin þín voru umrituð á hefðbundinn hátt, án beinnar klippingar. Við erum að vinna að því að koma henni aftur í gang.",
+    "streamingSttLanguageUnsupportedBanner": "Bein umritun er ekki enn tiltæk fyrir þetta tungumál. Við erum að vinna í því.",
+    "formLabel": "{name} eyðublað",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Þjónustuver",
+    "explorePlayAndLearn": "Kannaðu, spilaðu og lærðu",
+    "conversationFromDayOne": "Samræður frá fyrsta degi",
+    "builtForConnection": "Hannað fyrir tengingu",
+    "aiWhenYouNeedIt": "Gervigreind þegar þú þarft á henni að halda",
+    "practiceTailoredForYou": "Æfing sérsniðin fyrir þig"
 }

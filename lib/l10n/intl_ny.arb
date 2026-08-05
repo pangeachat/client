@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-05 09:53:12.860722",
+    "@@last_modified": "2026-08-05 11:42:16.071645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Zokonda\n  • Kufikika\n  • Zomwe Zayankhulidwa\n  • Mawu\n  • {language}\n  • Tsitsani mawu a Enhanced kapena Premium",
     "readAloudNoVoiceAndroid": "Chipangizo chanu chilibe mawu apamwamba a {language}. Ikani deta ya mawu a injini yanu yoyankhulira, kenako yesaninso.",
     "readAloudOpenVoiceSettings": "Tsegulani zokonda za mawu",
-    "formLabel": "Fomu ya {name}"
+    "streamingSttDegradedLiveBanner": "Kulemba mawu pompopompo kukugwira ntchito pa ntchito yosunga zobwezera. Ubwino ukhoza kusiyana, chonde onani mawuwo.",
+    "streamingSttDegradedToBatchBanner": "Kulemba mawu pompopompo sikukupezeka pakali pano. Uthenga wanu unalembedwa mwachizolowezi, osati pompopompo. Tikuyesetsa kubwezeretsa.",
+    "streamingSttLanguageUnsupportedBanner": "Kulemba mawu pompopompo sikukupezeka pa chilankhulo ichi pakali pano. Tikugwira ntchito.",
+    "formLabel": "Fomu ya {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Thandizo",
+    "explorePlayAndLearn": "Fufuzani, sewerani ndi kuphunzira",
+    "conversationFromDayOne": "Kukambirana kuyambira Tsiku Loyamba",
+    "builtForConnection": "Yopangidwira kulumikizana",
+    "aiWhenYouNeedIt": "AI mukafuna",
+    "practiceTailoredForYou": "Zochita zopangidwira inu"
 }

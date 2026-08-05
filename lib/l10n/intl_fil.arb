@@ -2087,7 +2087,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-05 09:53:09.522143",
+    "@@last_modified": "2026-08-05 11:42:11.778379",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10567,5 +10567,15 @@
     "readAloudNoVoiceIOSSteps": "  • Mga Setting\n  • Accessibility\n  • Spoken Content\n  • Mga Boses\n  • {language}\n  • Mag-download ng Enhanced o Premium na boses",
     "readAloudNoVoiceAndroid": "Wala pang de-kalidad na boses sa {language} ang iyong device. Mag-install ng data ng boses para sa iyong text-to-speech engine, pagkatapos ay subukang muli.",
     "readAloudOpenVoiceSettings": "Buksan ang mga setting ng boses",
-    "formLabel": "Form ng {name}"
+    "streamingSttDegradedLiveBanner": "Ang live transcription ay gumagana sa isang backup na serbisyo. Maaaring mag-iba ang kalidad, pakisuri ang text.",
+    "streamingSttDegradedToBatchBanner": "Hindi available ang live transcription sa ngayon. Ang iyong mensahe ay na-transcribe sa karaniwang paraan, nang walang live editing. Ginagawa namin ang lahat para maibalik ito.",
+    "streamingSttLanguageUnsupportedBanner": "Hindi pa available ang live transcription para sa wikang ito. Ginagawa namin ito.",
+    "formLabel": "Form ng {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Suporta",
+    "explorePlayAndLearn": "Mag-explore, maglaro at matuto",
+    "conversationFromDayOne": "Pag-uusap mula sa Unang Araw",
+    "builtForConnection": "Ginawa para sa koneksyon",
+    "aiWhenYouNeedIt": "AI kapag kailangan mo",
+    "practiceTailoredForYou": "Pagsasanay na akma para sa iyo"
 }

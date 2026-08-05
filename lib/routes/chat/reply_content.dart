@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import '../../config/app_config.dart';
 
@@ -73,7 +74,7 @@ class ReplyContent extends StatelessWidget {
                       // #Pangea
                       textScaler: TextScaler.noScaling,
                       // Pangea#
-                      '${snapshot.data?.calcDisplayname() ?? displayEvent.senderFromMemoryOrFallback.calcDisplayname()}:',
+                      '${(snapshot.data ?? displayEvent.senderFromMemoryOrFallback).localizedDisplayname(L10n.of(context))}:',
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(

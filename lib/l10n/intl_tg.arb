@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-05 09:53:14.749541",
+    "@@last_modified": "2026-08-05 11:42:17.809271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Танзимот\n  • Дастрасӣ\n  • Мундариҷаи гуфторӣ\n  • Овозҳо\n  • {language}\n  • Овози такмилёфта ё Premium-ро зеркашӣ кунед",
     "readAloudNoVoiceAndroid": "Дастгоҳи шумо то ҳол овози баландсифати {language}-ро надорад. Маълумоти овозиро барои муҳаррики матн ба нутқи худ насб кунед, пас дубора кӯшиш кунед.",
     "readAloudOpenVoiceSettings": "Танзимоти овозиро кушоед",
-    "formLabel": "Шакли {name}"
+    "streamingSttDegradedLiveBanner": "Транскрипсияи мустақим аз хидмати эҳтиётӣ кор мекунад. Сифат метавонад фарқ кунад, лутфан матнро тафтиш кунед.",
+    "streamingSttDegradedToBatchBanner": "Транскрипсияи мустақим ҳоло дастрас нест. Паёми шумо ба таври стандартӣ, бе таҳрири мустақим, транскрипсия карда шуд. Мо барои барқарор кардани он кор карда истодаем.",
+    "streamingSttLanguageUnsupportedBanner": "Транскрипсияи мустақим барои ин забон ҳанӯз дастрас нест. Мо дар болои он кор карда истодаем.",
+    "formLabel": "Шакли {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Дастгирӣ",
+    "explorePlayAndLearn": "Кашф кунед, бозӣ кунед ва омӯзед",
+    "conversationFromDayOne": "Муколама аз рӯзи аввал",
+    "builtForConnection": "Барои пайвастшавӣ сохта шудааст",
+    "aiWhenYouNeedIt": "AI вақте ки ба шумо лозим аст",
+    "practiceTailoredForYou": "Машқ барои шумо мутобиқ карда шудааст"
 }

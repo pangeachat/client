@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-05 09:53:12.896858",
+    "@@last_modified": "2026-08-05 11:42:15.882924",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9786,5 +9786,15 @@
     "readAloudNoVoiceIOSSteps": "  • Ustawienia\n  • Dostępność\n  • Treści mówione\n  • Głosy\n  • {language}\n  • Pobierz głos ulepszony lub premium",
     "readAloudNoVoiceAndroid": "Twoje urządzenie nie ma jeszcze wysokiej jakości głosu {language}. Zainstaluj dane głosowe dla swojego silnika zamiany tekstu na mowę, a następnie spróbuj ponownie.",
     "readAloudOpenVoiceSettings": "Otwórz ustawienia głosu",
-    "formLabel": "Formularz {name}"
+    "streamingSttDegradedLiveBanner": "Transkrypcja na żywo działa w usłudze zapasowej. Jakość może się różnić, sprawdź tekst.",
+    "streamingSttDegradedToBatchBanner": "Transkrypcja na żywo jest obecnie niedostępna. Twoja wiadomość została przetranskrybowana w standardowy sposób, bez edycji na żywo. Pracujemy nad przywróceniem usługi.",
+    "streamingSttLanguageUnsupportedBanner": "Transkrypcja na żywo nie jest jeszcze dostępna dla tego języka. Pracujemy nad tym.",
+    "formLabel": "Formularz {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Wsparcie",
+    "explorePlayAndLearn": "Odkrywaj, graj i ucz się",
+    "conversationFromDayOne": "Rozmowa od pierwszego dnia",
+    "builtForConnection": "Stworzone do nawiązywania kontaktów",
+    "aiWhenYouNeedIt": "AI, kiedy jej potrzebujesz",
+    "practiceTailoredForYou": "Praktyka dopasowana do Ciebie"
 }

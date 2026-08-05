@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-05 09:53:08.288178",
+    "@@last_modified": "2026-08-05 11:42:10.567229",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Instellings\n  • Toeganklikheid\n  • Gesproke Inhoud\n  • Stemme\n  • {language}\n  • Laai 'n Verbeterde of Premium stem af",
     "readAloudNoVoiceAndroid": "Jou toestel het nog nie 'n hoëgehalte {language}-stem nie. Installeer stemdata vir jou teks-na-spraak-enjin, en probeer dan weer.",
     "readAloudOpenVoiceSettings": "Maak steminstellings oop",
-    "formLabel": "{name} vorm"
+    "streamingSttDegradedLiveBanner": "Regstreekse transkripsie loop op 'n rugsteundiens. Kwaliteit kan verskil, kontroleer asseblief die teks.",
+    "streamingSttDegradedToBatchBanner": "Regstreekse transkripsie is tans onbeskikbaar. Jou boodskap is op die standaard manier getranskribeer, sonder regstreekse redigering. Ons werk daaraan om dit te herstel.",
+    "streamingSttLanguageUnsupportedBanner": "Regstreekse transkripsie is nog nie vir hierdie taal beskikbaar nie. Ons werk daaraan.",
+    "formLabel": "{name} vorm",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Ondersteuning",
+    "explorePlayAndLearn": "Verken, speel en leer",
+    "conversationFromDayOne": "Gesprek van Dag Een af",
+    "builtForConnection": "Gebou vir verbinding",
+    "aiWhenYouNeedIt": "KI wanneer jy dit nodig het",
+    "practiceTailoredForYou": "Oefening op maat vir jou"
 }

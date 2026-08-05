@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 09:53:10.706138",
+    "@@last_modified": "2026-08-05 11:42:12.884174",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10621,5 +10621,15 @@
     "readAloudNoVoiceIOSSteps": "  • הגדרות\n  • נגישות\n  • תוכן מדובר\n  • קולות\n  • {language}\n  • הורד קול משופר או פרימיום",
     "readAloudNoVoiceAndroid": "המכשיר שלך עדיין לא כולל קול {language} באיכות גבוהה. התקן נתוני קול עבור מנוע הטקסט לדיבור שלך, ואז נסה שוב.",
     "readAloudOpenVoiceSettings": "פתח את הגדרות הקול",
-    "formLabel": "טופס {name}"
+    "streamingSttDegradedLiveBanner": "התמלול החי פועל באמצעות שירות גיבוי. האיכות עשויה להשתנות, אנא בדוק את הטקסט.",
+    "streamingSttDegradedToBatchBanner": "תמלול חי אינו זמין כרגע. ההודעה שלך תומללה בדרך הרגילה, ללא עריכה חיה. אנו פועלים לשחזור השירות.",
+    "streamingSttLanguageUnsupportedBanner": "תמלול חי אינו זמין עדיין עבור שפה זו. אנו עובדים על כך.",
+    "formLabel": "טופס {name}",
+    "botDisplayName": "בוט פנגיאה",
+    "supportDisplayName": "תמיכה",
+    "explorePlayAndLearn": "חקור, שחק ולמד",
+    "conversationFromDayOne": "שיחה מהיום הראשון",
+    "builtForConnection": "נבנה לחיבור",
+    "aiWhenYouNeedIt": "בינה מלאכותית כשאתה צריך אותה",
+    "practiceTailoredForYou": "תרגול המותאם אישית עבורך"
 }

@@ -57,33 +57,74 @@ void main() {
       expect(identical(result, child), isTrue);
     });
 
+    testWidgets('wraps the child in the gold highlight when highlight is true', (
+      tester,
+    ) async {
+      final result = TokenRenderingUtil.vocabHighlight(
+        highlight: true,
+        child: const Text('hola'),
+      );
+
+      await tester.pumpWidget(
+        MaterialApp(
+          home: Scaffold(body: Center(child: result)),
+        ),
+      );
+
+      // The spoken word is still shown...
+      expect(find.text('hola'), findsOneWidget);
+
+      // ...inside a DecoratedBox tinted with the gold vocab colour, matching
+      // the typed-message highlight in html_message.dart.
+      final decoratedBox = tester.widget<DecoratedBox>(
+        find.ancestor(
+          of: find.text('hola'),
+          matching: find.byType(DecoratedBox),
+        ),
+      );
+      final decoration = decoratedBox.decoration as BoxDecoration;
+      expect(decoration.color, AppConfig.gold.withAlpha(50));
+      // Pin the gold caller's full geometry so the shared-helper extraction is
+      // provably pixel-identical for the real existing caller, not just color.
+      expect(decoration.borderRadius, BorderRadius.circular(12));
+      final padding = tester.widget<Padding>(
+        find
+            .ancestor(of: find.text('hola'), matching: find.byType(Padding))
+            .first,
+      );
+      expect(padding.padding, const EdgeInsets.symmetric(horizontal: 4));
+    });
+
     testWidgets(
-      'wraps the child in the gold highlight when highlight is true',
+      'de-hardcoded + pixel-identical box: color, 12px radius, 4px h-padding',
       (tester) async {
         final result = TokenRenderingUtil.vocabHighlight(
           highlight: true,
+          color: AppConfig.warning,
           child: const Text('hola'),
         );
-
         await tester.pumpWidget(
           MaterialApp(
             home: Scaffold(body: Center(child: result)),
           ),
         );
-
-        // The spoken word is still shown...
-        expect(find.text('hola'), findsOneWidget);
-
-        // ...inside a DecoratedBox tinted with the gold vocab colour, matching
-        // the typed-message highlight in html_message.dart.
-        final decoratedBox = tester.widget<DecoratedBox>(
+        final box = tester.widget<DecoratedBox>(
           find.ancestor(
             of: find.text('hola'),
             matching: find.byType(DecoratedBox),
           ),
         );
-        final decoration = decoratedBox.decoration as BoxDecoration;
-        expect(decoration.color, AppConfig.gold.withAlpha(50));
+        final decoration = box.decoration as BoxDecoration;
+        // Full geometry parity with the pre-extraction vocabHighlight
+        // (token_rendering_util.dart:65-72): tint alpha 50, radius 12, pad 4.
+        expect(decoration.color, AppConfig.warning.withAlpha(50));
+        expect(decoration.borderRadius, BorderRadius.circular(12));
+        final padding = tester.widget<Padding>(
+          find
+              .ancestor(of: find.text('hola'), matching: find.byType(Padding))
+              .first,
+        );
+        expect(padding.padding, const EdgeInsets.symmetric(horizontal: 4));
       },
     );
   });

@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import '../config/app_config.dart';
 
 extension RoomStatusExtension on Room {
@@ -19,18 +20,18 @@ extension RoomStatusExtension on Room {
     } else if (typingUsers.length == 1) {
       typingText = L10n.of(context).isTyping;
       if (typingUsers.first.id != directChatMatrixID) {
-        typingText = L10n.of(
-          context,
-        ).userIsTyping(typingUsers.first.calcDisplayname());
+        typingText = L10n.of(context).userIsTyping(
+          typingUsers.first.localizedDisplayname(L10n.of(context)),
+        );
       }
     } else if (typingUsers.length == 2) {
       typingText = L10n.of(context).userAndUserAreTyping(
-        typingUsers.first.calcDisplayname(),
-        typingUsers[1].calcDisplayname(),
+        typingUsers.first.localizedDisplayname(L10n.of(context)),
+        typingUsers[1].localizedDisplayname(L10n.of(context)),
       );
     } else if (typingUsers.length > 2) {
       typingText = L10n.of(context).userAndOthersAreTyping(
-        typingUsers.first.calcDisplayname(),
+        typingUsers.first.localizedDisplayname(L10n.of(context)),
         (typingUsers.length - 1),
       );
     }

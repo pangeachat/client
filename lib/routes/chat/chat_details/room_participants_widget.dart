@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -150,143 +151,135 @@ class RoomParticipantsSection extends StatelessWidget {
                 }
               }
 
-              return Semantics(
+            return  Semantics(
                 container: true,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
-                  child: SizedBox(
-                    width: _width,
-                    child: Opacity(
-                      opacity: user.membership == Membership.join ? 1.0 : 0.5,
-                      child: Column(
-                        spacing: 4.0,
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              child: SizedBox(
+                width: _width,
+                child: Opacity(
+                  opacity: user.membership == Membership.join ? 1.0 : 0.5,
+                  child: Column(
+                    spacing: 4.0,
+                    children: [
+                      Stack(
+                        alignment: Alignment.center,
                         children: [
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              if (gradient != null)
-                                ExcludeSemantics(
+                          if (gradient != null)
+                            ExcludeSemantics(
                                   child: CircleAvatar(
-                                    radius: _width / 2,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        gradient: gradient,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              else
-                                SizedBox(height: _width, width: _width),
-                              Builder(
-                                builder: (context) {
-                                  return MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    child: GestureDetector(
-                                      onTap: () => showMemberActionsPopupMenu(
-                                        context: context,
-                                        user: user,
-                                        room: room,
-                                      ),
-                                      child: Center(
-                                        child: ExcludeSemantics(
-                                          child: Avatar(
-                                            mxContent: user.avatarUrl,
-                                            name: user.calcDisplayname(),
-                                            size: _width - 6.0,
-                                            presenceUserId: user.id,
-                                            presenceOffset: const Offset(0, 0),
-                                            presenceSize: 18.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
+                              radius: _width / 2,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  gradient: gradient,
+                                ),
                               ),
-                            ],
-                          ),
-                          Text(
-                            user.calcDisplayname(),
-                            style: theme.textTheme.labelLarge?.copyWith(
-                              color: theme.colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Container(
-                            height: 20.0,
-                            alignment: Alignment.center,
-                            child: LevelDisplayName(
-                              userId: user.id,
-                              textStyle: theme.textTheme.labelSmall,
-                              showFlags: false,
-                            ),
-                          ),
-                          Container(
-                            height: 24.0,
-                            alignment: Alignment.center,
-                            child: membershipBatch != null
-                                ? Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color:
-                                          theme.colorScheme.secondaryContainer,
-                                      borderRadius: BorderRadius.circular(
-                                        AppConfig.borderRadius,
+                            ),)
+                          else
+                            SizedBox(height: _width, width: _width),
+                          Builder(
+                            builder: (context) {
+                              return MouseRegion(
+                                cursor: SystemMouseCursors.click,
+                                child: GestureDetector(
+                                  onTap: () => showMemberActionsPopupMenu(
+                                    context: context,
+                                    user: user,
+                                    room: room,
+                                  ),
+                                  child: Center(
+                               child: ExcludeSemantics(child:  Avatar(
+                                      mxContent: user.avatarUrl,
+                                      name: user.localizedDisplayname(
+                                        L10n.of(context),
                                       ),
+                                      size: _width - 6.0,
+                                      presenceUserId: user.id,
+                                      presenceOffset: const Offset(0, 0),
+                                      presenceSize: 18.0,
                                     ),
-                                    child: Text(
-                                      membershipBatch,
-                                      style: theme.textTheme.labelSmall
-                                          ?.copyWith(
-                                            color: theme
-                                                .colorScheme
-                                                .onSecondaryContainer,
-                                          ),
-                                    ),
-                                  )
-                                : permissionBatch.isNotEmpty
-                                ? Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: user.powerLevel >= 100
-                                          ? theme.colorScheme.tertiary
-                                          : theme.colorScheme.tertiaryContainer,
-                                      borderRadius: BorderRadius.circular(
-                                        AppConfig.borderRadius,
-                                      ),
-                                    ),
-                                    child: Text(
-                                      permissionBatch,
-                                      style: theme.textTheme.labelSmall
-                                          ?.copyWith(
-                                            color: user.powerLevel >= 100
-                                                ? theme.colorScheme.onTertiary
-                                                : theme
-                                                      .colorScheme
-                                                      .onTertiaryContainer,
-                                          ),
-                                    ),
-                                  )
-                                : null,
+                                  ),),
+                                ),
+                              );
+                            },
                           ),
                         ],
                       ),
-                    ),
+                      Text(
+                        user.localizedDisplayname(L10n.of(context)),
+                        style: theme.textTheme.labelLarge?.copyWith(
+                          color: theme.colorScheme.primary,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      Container(
+                        height: 20.0,
+                        alignment: Alignment.center,
+                        child: LevelDisplayName(
+                          userId: user.id,
+                          textStyle: theme.textTheme.labelSmall,
+                          showFlags: false,
+                        ),
+                      ),
+                      Container(
+                        height: 24.0,
+                        alignment: Alignment.center,
+                        child: membershipBatch != null
+                            ? Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 4,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: theme.colorScheme.secondaryContainer,
+                                  borderRadius: BorderRadius.circular(
+                                    AppConfig.borderRadius,
+                                  ),
+                                ),
+                                child: Text(
+                                  membershipBatch,
+                                  style: theme.textTheme.labelSmall?.copyWith(
+                                    color:
+                                        theme.colorScheme.onSecondaryContainer,
+                                  ),
+                                ),
+                              )
+                            : permissionBatch.isNotEmpty
+                            ? Container(
+                                padding: const EdgeInsets.symmetric(
+                                  horizontal: 12,
+                                  vertical: 4,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: user.powerLevel >= 100
+                                      ? theme.colorScheme.tertiary
+                                      : theme.colorScheme.tertiaryContainer,
+                                  borderRadius: BorderRadius.circular(
+                                    AppConfig.borderRadius,
+                                  ),
+                                ),
+                                child: Text(
+                                  permissionBatch,
+                                  style: theme.textTheme.labelSmall?.copyWith(
+                                    color: user.powerLevel >= 100
+                                        ? theme.colorScheme.onTertiary
+                                        : theme.colorScheme.onTertiaryContainer,
+                                  ),
+                                ),
+                              )
+                            : null,
+                      ),
+                    ],
                   ),
                 ),
-              );
-            }).toList(),
-          );
-        },
-      ),
+              ),
+                ),
+            );
+          }).toList(),
+        );
+      },
     );
   }
 }

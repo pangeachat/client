@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-05 09:53:14.179292",
+    "@@last_modified": "2026-08-05 11:42:17.369462",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Mipangilio\n  • Ufikiaji\n  • Maudhui Yanayozungumzwa\n  • Sauti\n  • {language}\n  • Pakua sauti ya Kuboreshwa au Premium",
     "readAloudNoVoiceAndroid": "Kifaa chako hakina sauti ya hali ya juu ya {language} bado. Sakinisha data ya sauti kwa injini yako ya maandishi-kwa-sauti, kisha ujaribu tena.",
     "readAloudOpenVoiceSettings": "Fungua mipangilio ya sauti",
-    "formLabel": "Fomu ya {name}"
+    "streamingSttDegradedLiveBanner": "Uandishi wa moja kwa moja unaendeshwa kwenye huduma mbadala. Ubora unaweza kutofautiana, tafadhali angalia maandishi.",
+    "streamingSttDegradedToBatchBanner": "Uandishi wa moja kwa moja haupatikani kwa sasa. Ujumbe wako uliandikwa kwa njia ya kawaida, bila kuhaririwa moja kwa moja. Tunajitahidi kuurejesha.",
+    "streamingSttLanguageUnsupportedBanner": "Uandishi wa moja kwa moja haupatikani kwa lugha hii bado. Tunalifanyia kazi.",
+    "formLabel": "Fomu ya {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Usaidizi",
+    "explorePlayAndLearn": "Gundua, cheza na ujifunze",
+    "conversationFromDayOne": "Mazungumzo tangu Siku ya Kwanza",
+    "builtForConnection": "Imeundwa kwa ajili ya muunganisho",
+    "aiWhenYouNeedIt": "AI unapohitaji",
+    "practiceTailoredForYou": "Mazoezi yaliyoundwa kwa ajili yako"
 }

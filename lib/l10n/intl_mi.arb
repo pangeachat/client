@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-05 09:53:11.928460",
+    "@@last_modified": "2026-08-05 11:42:14.565199",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Ngā Tautuhinga\n  • Whakaaetanga\n  • Ihirangi Kōrero\n  • Ngā Reo\n  • {language}\n  • Tikiake i tētahi reo Whakarei, Moni rānei",
     "readAloudNoVoiceAndroid": "Kāore anō kia whai reo {language} kounga teitei tō pūrere. Tāutahia ngā raraunga reo mō tō pūkaha kuputuhi-ki-reo, kātahi ka ngana anō.",
     "readAloudOpenVoiceSettings": "Whakatuwhera i ngā tautuhinga reo",
-    "formLabel": "Puka {name}"
+    "streamingSttDegradedLiveBanner": "Kei te rere te tuhinga ora i runga i te ratonga pūrua. Ka rerekē pea te kounga, tēnā tirohia te kuputuhi.",
+    "streamingSttDegradedToBatchBanner": "Kāore i te wātea te tuhinga ora i nāianei tonu. I tuhia tō karere i te ara paerewa, me te kore whakatika ora. Kei te mahi mātou ki te whakahoki mai.",
+    "streamingSttLanguageUnsupportedBanner": "Kāore anō kia wātea te tuhinga ora mō tēnei reo. Kei te mahi mātou.",
+    "formLabel": "Puka {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Tautoko",
+    "explorePlayAndLearn": "Tūhuratia, tākaro, ako hoki",
+    "conversationFromDayOne": "Kōrerorero mai i te Rā Tuatahi",
+    "builtForConnection": "Hangaia mō te hononga",
+    "aiWhenYouNeedIt": "AI ina hiahia koe",
+    "practiceTailoredForYou": "Whakaharatau i whakaritea māu"
 }

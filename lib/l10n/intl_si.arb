@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-05 09:53:13.506327",
+    "@@last_modified": "2026-08-05 11:42:16.613172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • සැකසීම්\n  • ප්‍රවේශ්‍යතාව\n  • කථා කරන අන්තර්ගතය\n  • හඬවල්\n  • {language}\n  • වැඩි දියුණු කළ හෝ වාරික හඬක් බාගත කරන්න",
     "readAloudNoVoiceAndroid": "ඔබගේ උපාංගයේ උසස් තත්ත්වයේ {language} හඬක් තවමත් නොමැත. ඔබගේ පෙළ-කට-කථන එන්ජිම සඳහා හඬ දත්ත ස්ථාපනය කර, නැවත උත්සාහ කරන්න.",
     "readAloudOpenVoiceSettings": "හඬ සැකසීම් විවෘත කරන්න",
-    "formLabel": "{name} පෝරමය"
+    "streamingSttDegradedLiveBanner": "සජීවී පිටපත් කිරීම උපස්ථ සේවාවක් මත ක්‍රියාත්මක වේ. ගුණාත්මක භාවය වෙනස් විය හැක, කරුණාකර පෙළ පරීක්ෂා කරන්න.",
+    "streamingSttDegradedToBatchBanner": "සජීවී පිටපත් කිරීම මේ මොහොතේ නොමැත. ඔබගේ පණිවිඩය සජීවී සංස්කරණයකින් තොරව සම්මත ආකාරයෙන් පිටපත් කර ඇත. අපි එය යථා තත්ත්වයට පත් කිරීමට කටයුතු කරමින් සිටිමු.",
+    "streamingSttLanguageUnsupportedBanner": "මෙම භාෂාව සඳහා සජීවී පිටපත් කිරීම තවමත් නොමැත. අපි ඒ සඳහා කටයුතු කරමින් සිටිමු.",
+    "formLabel": "{name} පෝරමය",
+    "botDisplayName": "පැන්ජියා බොට්",
+    "supportDisplayName": "සහාය",
+    "explorePlayAndLearn": "ගවේෂණය කරන්න, සෙල්ලම් කරන්න සහ ඉගෙන ගන්න",
+    "conversationFromDayOne": "මුල් දවසේ සිට සංවාදය",
+    "builtForConnection": "සම්බන්ධතාවය සඳහා ගොඩනගා ඇත",
+    "aiWhenYouNeedIt": "ඔබට අවශ්‍ය විට AI",
+    "practiceTailoredForYou": "ඔබට ගැලපෙන පරිදි පුහුණුවීම්"
 }

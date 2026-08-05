@@ -1944,7 +1944,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-05 09:53:11.114151",
+    "@@last_modified": "2026-08-05 11:42:13.759403",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10607,5 +10607,15 @@
     "readAloudNoVoiceIOSSteps": "  • პარამეტრები\n  • ხელმისაწვდომობა\n  • ნათქვამი კონტენტი\n  • ხმები\n  • {language}\n  • გადმოწერეთ გაუმჯობესებული ან პრემიუმ ხმა",
     "readAloudNoVoiceAndroid": "თქვენს მოწყობილობას ჯერ არ აქვს მაღალი ხარისხის {language} ხმა. დააინსტალირეთ ხმოვანი მონაცემები თქვენი ტექსტიდან მეტყველების ძრავისთვის, შემდეგ სცადეთ ხელახლა.",
     "readAloudOpenVoiceSettings": "ხმოვანი პარამეტრების გახსნა",
-    "formLabel": "{name} ფორმა"
+    "streamingSttDegradedLiveBanner": "პირდაპირი ტრანსკრიფცია სარეზერვო სერვისზე მუშაობს. ხარისხი შეიძლება განსხვავდებოდეს, გთხოვთ, შეამოწმოთ ტექსტი.",
+    "streamingSttDegradedToBatchBanner": "პირდაპირი ტრანსკრიფცია ამჟამად მიუწვდომელია. თქვენი შეტყობინება სტანდარტული წესით იქნა ტრანსკრიბირებული, პირდაპირი რედაქტირების გარეშე. ჩვენ ვმუშაობთ მის აღსადგენად.",
+    "streamingSttLanguageUnsupportedBanner": "პირდაპირი ტრანსკრიფცია ჯერ არ არის ხელმისაწვდომი ამ ენისთვის. ჩვენ ვმუშაობთ ამაზე.",
+    "formLabel": "{name} ფორმა",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "მხარდაჭერა",
+    "explorePlayAndLearn": "გამოიკვლიე, ითამაშე და ისწავლე",
+    "conversationFromDayOne": "საუბარი პირველივე დღიდან",
+    "builtForConnection": "კავშირისთვის შექმნილი",
+    "aiWhenYouNeedIt": "AI, როცა დაგჭირდება",
+    "practiceTailoredForYou": "თქვენზე მორგებული პრაქტიკა"
 }

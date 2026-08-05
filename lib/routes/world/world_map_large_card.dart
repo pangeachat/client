@@ -6,6 +6,7 @@ import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
 import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -473,7 +474,7 @@ class _OngoingActiveBody extends StatelessWidget {
               children: [
                 Avatar(
                   mxContent: sender?.avatarUrl,
-                  name: sender?.calcDisplayname(),
+                  name: sender?.localizedDisplayname(L10n.of(context)),
                   size: 24,
                 ),
                 const SizedBox(width: 8),

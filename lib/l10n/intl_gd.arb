@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-05 09:53:09.931459",
+    "@@last_modified": "2026-08-05 11:42:12.882507",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Roghainnean\n  • Ruigsinneachd\n  • Susbaint Labhairteach\n  • Guthan\n  • {language}\n  • Luchdaich sìos guth Leasaichte no Premium",
     "readAloudNoVoiceAndroid": "Chan eil guth {language} de chàileachd àrd aig an inneal agad fhathast. Stàlaich dàta guth airson an einnsean teacsa-gu-cainnt agad, an uair sin feuch ris a-rithist.",
     "readAloudOpenVoiceSettings": "Fosgail roghainnean guth",
-    "formLabel": "Foirm {name}"
+    "streamingSttDegradedLiveBanner": "Tha tar-sgrìobhadh beò a' ruith air seirbheis cùl-taic. Dh'fhaodadh càileachd a bhith eadar-dhealaichte, feuch an dèan thu sgrùdadh air an teacsa.",
+    "streamingSttDegradedToBatchBanner": "Chan eil tar-sgrìobhadh beò ri fhaighinn an-dràsta. Chaidh an teachdaireachd agad a thar-sgrìobhadh san dòigh àbhaisteach, gun deasachadh beò. Tha sinn ag obair gus a thoirt air ais.",
+    "streamingSttLanguageUnsupportedBanner": "Chan eil tar-sgrìobhadh beò ri fhaighinn airson a' chànain seo fhathast. Tha sinn ag obair air.",
+    "formLabel": "Foirm {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Taic",
+    "explorePlayAndLearn": "Rannsaich, cluich is ionnsaich",
+    "conversationFromDayOne": "Còmhradh bhon Chiad Latha",
+    "builtForConnection": "Air a thogail airson ceangal",
+    "aiWhenYouNeedIt": "AI nuair a tha feum agad air",
+    "practiceTailoredForYou": "Cleachdadh air a dhealbhadh dhut"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-05 09:53:10.001470",
+    "@@last_modified": "2026-08-05 11:42:12.125047",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Ynstellings\n  • Tagong\n  • Sprutsen ynhâld\n  • Stimmen\n  • {language}\n  • Download in Ferbettere of Premium stim",
     "readAloudNoVoiceAndroid": "Jo apparaat hat noch gjin {language} stim fan hege kwaliteit. Ynstallearje stimgegevens foar jo tekst-nei-spraak-motor, en besykje it dan opnij.",
     "readAloudOpenVoiceSettings": "Stimynstellings iepenje",
-    "formLabel": "{name} formulier"
+    "streamingSttDegradedLiveBanner": "Live transkripsje rint op in reservekopytsjinst. Kwaliteit kin ferskille, kontrolearje asjebleaft de tekst.",
+    "streamingSttDegradedToBatchBanner": "Live transkripsje is op it stuit net beskikber. Jo berjocht is op de standertwize transkribearre, sûnder live bewurking. Wy wurkje deroan om it te herstellen.",
+    "streamingSttLanguageUnsupportedBanner": "Live transkripsje is noch net beskikber foar dizze taal. Wy wurkje deroan.",
+    "formLabel": "{name} formulier",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Support",
+    "explorePlayAndLearn": "Ferkenne, boartsje en lear",
+    "conversationFromDayOne": "Konversaasje fan dei ien ôf",
+    "builtForConnection": "Boud foar ferbining",
+    "aiWhenYouNeedIt": "AI as jo it nedich hawwe",
+    "practiceTailoredForYou": "Oefenje op maat foar jo"
 }

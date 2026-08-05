@@ -34,7 +34,7 @@ class MessageReadAloudController {
   }) {
     _queue = ReadAloudQueue<PangeaMessageEvent>(
       speak: _speak,
-      canPlay: () => _isEnabled && !isSuppressed(),
+      canPlay: () => _canReadSomething && !isSuppressed(),
     );
   }
 
@@ -91,28 +91,39 @@ class MessageReadAloudController {
   bool get _isEnabled => MatrixState.pangeaController.userController
       .isToolEnabled(ToolSetting.audioIncomingMessages);
 
-  /// Whether this read may reach backend TTS. True only for the bot's reply
-  /// while the learner is in a spoken exchange — see [_speak] for why that is
-  /// the one exception to device-only playback.
+  /// Whether this is the bot answering a voice message the learner just sent.
   ///
-  /// Voice mode is deliberately *not* a second switch on whether a message is
-  /// read: [TtsController] gates every request on its [TtsUseCase]'s tool
-  /// setting, so a read still requires `audioIncomingMessages` either way.
+  /// Such a reply is read aloud whether or not `audioIncomingMessages` is on,
+  /// because the learner asked for it by speaking — see [TtsUseCase.voiceReply].
+  /// Restricted to the bot so that one voice message in a busy activity room
+  /// cannot start speaking every other participant.
   ///
   /// Pure so the decision is unit-testable without Matrix, TTS or app state.
   @visibleForTesting
-  static bool useBackendTts({
+  static bool isVoiceReply({
     required bool voiceMode,
     required bool senderIsBot,
   }) => voiceMode && senderIsBot;
 
-  bool _isVoiceModeReply(PangeaMessageEvent message) => useBackendTts(
+  /// Whether a message qualifies to be read at all: either the learner opted
+  /// into unprompted read-aloud, or this is a voice reply.
+  @visibleForTesting
+  static bool qualifies({
+    required bool settingEnabled,
+    required bool voiceReply,
+  }) => settingEnabled || voiceReply;
+
+  bool _isVoiceReply(Event event) => isVoiceReply(
     voiceMode: voiceMode,
-    senderIsBot: message.event.senderId == BotName.byEnvironment,
+    senderIsBot: event.senderId == BotName.byEnvironment,
   );
 
+  /// Live, so the queue re-reads it before draining its waiting slot: sending a
+  /// text message ends voice mode and the pending reply is dropped.
+  bool get _canReadSomething => _isEnabled || voiceMode;
+
   void _onSync(SyncUpdate update) {
-    if (!_isEnabled) return;
+    if (!_canReadSomething) return;
     final timeline = currentTimeline();
     final matrixEvents = update.rooms?.join?[room.id]?.timeline?.events;
     if (timeline == null || matrixEvents == null) return;
@@ -141,6 +152,12 @@ class MessageReadAloudController {
     if (event.senderId == room.client.userID) return false;
     if (event.type != EventTypes.Message) return false;
     if (event.messageType != MessageTypes.Text) return false;
+    if (!qualifies(
+      settingEnabled: _isEnabled,
+      voiceReply: _isVoiceReply(event),
+    )) {
+      return false;
+    }
     return !event.redacted && event.status.isSynced;
   }
 
@@ -152,21 +169,24 @@ class MessageReadAloudController {
     return messageLangCode == targetLangCode;
   }
 
-  /// Backend TTS is disallowed for setting-driven read-aloud: it fires on every
-  /// eligible incoming message, so its volume is driven by how much others type
-  /// rather than by the learner, and without a known-good device voice nothing
-  /// plays.
+  /// Setting-driven read-aloud is device-only and gated: it fires on every
+  /// eligible incoming message, so its volume is driven by how much other people
+  /// type, and without a known-good device voice nothing plays.
   ///
-  /// Voice-mode replies are the exception. They are bounded by the learner's own
-  /// voice notes — the bound the setting-driven case lacks — and device-only
-  /// would mean total silence, with no error and no indicator, wherever the
-  /// device has no known-good voice for the L2 (Safari, desktop Chrome without a
-  /// Google voice, Android without a high-quality voice). That would break the
-  /// spoken exchange the bot used to guarantee, so these fall back to backend.
-  Future<void> _speak(PangeaMessageEvent message) => TtsController.tryToSpeak(
-    message.messageDisplayText,
-    langCode: message.messageDisplayLangCode,
-    useCase: TtsUseCase.incomingMessage,
-    allowChoreoPlay: _isVoiceModeReply(message),
-  );
+  /// A voice reply is the exception on both counts. It is ungated
+  /// ([TtsUseCase.voiceReply]) because the learner asked for it by speaking, and
+  /// it may reach backend TTS because device-only would mean total silence — no
+  /// error, no indicator — wherever the device has no known-good voice for the
+  /// L2 (Safari, desktop Chrome without a Google voice, Android without a
+  /// high-quality voice). Both were true of the bot-generated audio this
+  /// replaces, which always played and always cost a paid request.
+  Future<void> _speak(PangeaMessageEvent message) {
+    final voiceReply = _isVoiceReply(message.event);
+    return TtsController.tryToSpeak(
+      message.messageDisplayText,
+      langCode: message.messageDisplayLangCode,
+      useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.incomingMessage,
+      allowChoreoPlay: voiceReply,
+    );
+  }
 }

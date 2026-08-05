@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -51,6 +52,7 @@ class UserDialog extends StatelessWidget {
     final client = Matrix.of(context).client;
     final dmRoomId = client.getDirectChatFromUserId(profile.userId);
     final displayname =
+        localizedPangeaUserName(profile.userId, L10n.of(context)) ??
         profile.displayName ??
         profile.userId.localpart ??
         L10n.of(context).user;

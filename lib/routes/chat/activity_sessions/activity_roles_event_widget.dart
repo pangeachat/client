@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 
 class ActivityRolesEvent extends StatelessWidget {
   final Event event;
@@ -45,7 +46,9 @@ class ActivityRolesEvent extends StatelessWidget {
         );
 
         final displayName =
-            user?.calcDisplayname() ?? role.userId.localpart ?? role.userId;
+            user?.localizedDisplayname(L10n.of(context)) ??
+            role.userId.localpart ??
+            role.userId;
 
         final message = role.stateEventMessage(displayName, L10n.of(context));
         if (message == null) {

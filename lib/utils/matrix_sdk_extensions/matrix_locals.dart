@@ -1,12 +1,17 @@
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 
 /// This is a temporary helper class until there is a proper solution to this with the new system
 class MatrixLocals extends MatrixLocalizations {
   final L10n l10n;
 
   MatrixLocals(this.l10n);
+
+  @override
+  String? displaynameOverride(String userId) =>
+      localizedPangeaUserName(userId, l10n);
 
   @override
   String acceptedTheInvitation(String targetName) {
@@ -189,7 +194,7 @@ class MatrixLocals extends MatrixLocalizations {
   String redactedAnEvent(Event redactedEvent) {
     return l10n.redactedAnEvent(
       redactedEvent.redactedBecause?.senderFromMemoryOrFallback
-              .calcDisplayname() ??
+              .localizedDisplayname(l10n) ??
           l10n.user,
     );
   }
@@ -202,7 +207,7 @@ class MatrixLocals extends MatrixLocalizations {
   @override
   String removedBy(Event redactedEvent) {
     return l10n.redactedBy(
-      redactedEvent.senderFromMemoryOrFallback.calcDisplayname(),
+      redactedEvent.senderFromMemoryOrFallback.localizedDisplayname(l10n),
     );
   }
 

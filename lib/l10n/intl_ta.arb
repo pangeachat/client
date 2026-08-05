@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 09:53:14.359252",
+    "@@last_modified": "2026-08-05 11:42:17.188887",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9793,5 +9793,15 @@
     "readAloudNoVoiceIOSSteps": "  • அமைப்புகள்\n  • அணுகல்தன்மை\n  • பேசப்படும் உள்ளடக்கம்\n  • குரல்கள்\n  • {language}\n  • மேம்படுத்தப்பட்ட அல்லது பிரீமியம் குரலைப் பதிவிறக்கவும்",
     "readAloudNoVoiceAndroid": "உங்கள் சாதனத்தில் உயர்தரமான {language} குரல் இன்னும் இல்லை. உங்கள் உரை-பேச்சு இயந்திரத்திற்கான குரல் தரவை நிறுவி, மீண்டும் முயற்சிக்கவும்.",
     "readAloudOpenVoiceSettings": "குரல் அமைப்புகளைத் திறக்கவும்",
-    "formLabel": "{name} படிவம்"
+    "streamingSttDegradedLiveBanner": "நேரடி படியெடுத்தல் ஒரு காப்பு சேவை மூலம் இயங்குகிறது. தரம் வேறுபடலாம், உரையைச் சரிபார்க்கவும்.",
+    "streamingSttDegradedToBatchBanner": "நேரடி படியெடுத்தல் தற்போது கிடைக்கவில்லை. உங்கள் செய்தி நேரடி திருத்தம் இல்லாமல், வழக்கமான முறையில் படியெடுக்கப்பட்டது. அதை மீட்டெடுக்க நாங்கள் பணியாற்றி வருகிறோம்.",
+    "streamingSttLanguageUnsupportedBanner": "இந்த மொழிக்கு நேரடி படியெடுத்தல் இன்னும் கிடைக்கவில்லை. நாங்கள் அதில் பணியாற்றி வருகிறோம்.",
+    "formLabel": "{name} படிவம்",
+    "botDisplayName": "பாங்கியா போட்",
+    "supportDisplayName": "ஆதரவு",
+    "explorePlayAndLearn": "ஆராய்ந்து, விளையாடி, கற்றுக்கொள்ளுங்கள்",
+    "conversationFromDayOne": "முதல் நாளிலிருந்தே உரையாடல்",
+    "builtForConnection": "இணைப்பிற்காக உருவாக்கப்பட்டது",
+    "aiWhenYouNeedIt": "உங்களுக்குத் தேவைப்படும்போது AI",
+    "practiceTailoredForYou": "உங்களுக்காக வடிவமைக்கப்பட்ட பயிற்சி"
 }

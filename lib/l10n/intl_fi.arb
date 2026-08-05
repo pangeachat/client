@@ -3545,7 +3545,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-05 09:53:09.685713",
+    "@@last_modified": "2026-08-05 11:42:11.713234",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9738,5 +9738,15 @@
     "readAloudNoVoiceIOSSteps": "  • Asetukset\n  • Käyttöapu\n  • Puhuttu sisältö\n  • Äänet\n  • {language}\n  • Lataa parannettu tai Premium-ääni",
     "readAloudNoVoiceAndroid": "Laitteellasi ei ole vielä laadukasta {language}-ääntä. Asenna äänidata tekstistä puheeksi -moottorillesi ja yritä sitten uudelleen.",
     "readAloudOpenVoiceSettings": "Avaa ääniasetukset",
-    "formLabel": "{name}-lomake"
+    "streamingSttDegradedLiveBanner": "Suora transkriptio toimii varapalvelun kautta. Laatu voi vaihdella, tarkista teksti.",
+    "streamingSttDegradedToBatchBanner": "Suora transkriptio ei ole tällä hetkellä käytettävissä. Viestisi transkriptoitiin tavallisella tavalla ilman reaaliaikaista muokkausta. Pyrimme palauttamaan sen.",
+    "streamingSttLanguageUnsupportedBanner": "Suora transkriptio ei ole vielä saatavilla tälle kielelle. Työskentelemme asian parissa.",
+    "formLabel": "{name}-lomake",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Tuki",
+    "explorePlayAndLearn": "Tutki, pelaa ja opi",
+    "conversationFromDayOne": "Keskustelua heti alusta alkaen",
+    "builtForConnection": "Rakennettu yhteydenpitoa varten",
+    "aiWhenYouNeedIt": "Tekoälyä tarvittaessa",
+    "practiceTailoredForYou": "Räätälöityä harjoittelua sinulle"
 }

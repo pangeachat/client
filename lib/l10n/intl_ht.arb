@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-05 09:53:10.637526",
+    "@@last_modified": "2026-08-05 11:42:12.969377",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Anviwònman\n  • Aksè\n  • Kontni Pale\n  • Vwa\n  • {language}\n  • Telechaje yon vwa Amelyore oswa Premium",
     "readAloudNoVoiceAndroid": "Aparèy ou an poko gen yon vwa {language} bon kalite. Enstale done vwa pou motè tèks-a-lapawòl ou a, epi eseye ankò.",
     "readAloudOpenVoiceSettings": "Louvri anviwònman vwa",
-    "formLabel": "Fòmilè {name}"
+    "streamingSttDegradedLiveBanner": "Transkripsyon an dirèk ap fonksyone sou yon sèvis backup. Kalite a ka varye, tanpri verifye tèks la.",
+    "streamingSttDegradedToBatchBanner": "Transkripsyon an dirèk pa disponib kounye a. Mesaj ou a te transkri nan fason estanda a, san edisyon an dirèk. N ap travay pou retabli li.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripsyon an dirèk poko disponib pou lang sa a. N ap travay sou sa.",
+    "formLabel": "Fòmilè {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Sipò",
+    "explorePlayAndLearn": "Eksplore, jwe epi aprann",
+    "conversationFromDayOne": "Konvèsasyon depi premye jou a",
+    "builtForConnection": "Bati pou koneksyon",
+    "aiWhenYouNeedIt": "AI lè w bezwen li",
+    "practiceTailoredForYou": "Pratik adapte pou ou"
 }

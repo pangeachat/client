@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-05 09:53:14.786203",
+    "@@last_modified": "2026-08-05 11:42:17.562128",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • تەڭشەكلەر\n  • يېتىشمەسلىك\n  • سۆزلەنگەن مەزمۇن\n  • ئاۋازلار\n  • {language}\n  • كۈچەيتىلگەن ياكى ئالىي دەرىجىلىك ئاۋازنى چۈشۈرۈڭ",
     "readAloudNoVoiceAndroid": "ئۈسكۈنىڭىزدە تېخى يۇقىرى سۈپەتلىك {language} ئاۋازى يوق. تېكىستتىن نۇتۇققا ئايلاندۇرۇش ماتورىڭىز ئۈچۈن ئاۋاز سانلىق مەلۇماتىنى قاچىلاپ، ئاندىن قايتا سىناڭ.",
     "readAloudOpenVoiceSettings": "ئاۋاز تەڭشەكلىرىنى ئېچىڭ",
-    "formLabel": "{name} جەدۋىلى"
+    "streamingSttDegradedLiveBanner": "جانلىق تەرجىمە قوشۇمچە مۇلازىمەتتە ئىجرا قىلىنىۋاتىدۇ. سۈپىتى ئوخشىماسلىقى مۇمكىن، تېكىستنى تەكشۈرۈڭ.",
+    "streamingSttDegradedToBatchBanner": "جانلىق تەرجىمە ھازىر ئىشلەپ تۇرمايدۇ. ئۇچۇرىڭىز ئۆلچەملىك ئۇسۇلدا، جانلىق تەھرىرلەشسىز تەرجىمە قىلىندى. بىز ئۇنى ئەسلىگە كەلتۈرۈش ئۈچۈن تىرىشىۋاتىمىز.",
+    "streamingSttLanguageUnsupportedBanner": "جانلىق تەرجىمە بۇ تىل ئۈچۈن تېخى ئىشلەپ تۇرمايدۇ. بىز ئۇنىڭ ئۈستىدە ئىشلەۋاتىمىز.",
+    "formLabel": "{name} جەدۋىلى",
+    "botDisplayName": "پانگەيا بوت",
+    "supportDisplayName": "ياردەم",
+    "explorePlayAndLearn": "ئىزدە، ئوينا ۋە ئۆگەن",
+    "conversationFromDayOne": "بىرىنچى كۈندىن باشلاپ پاراڭلىشىش",
+    "builtForConnection": "ئالاقە ئۈچۈن ياسالغان",
+    "aiWhenYouNeedIt": "سىزگە لازىم بولغاندا سۈنئىي ئىدراك",
+    "practiceTailoredForYou": "سىز ئۈچۈن خاسلاشتۇرۇلغان مەشىق"
 }

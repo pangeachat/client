@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-05 09:53:12.383865",
+    "@@last_modified": "2026-08-05 11:42:15.177802",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Tetapan\n  • Kebolehcapaian\n  • Kandungan Dituturkan\n  • Suara\n  • {language}\n  • Muat turun suara Dipertingkat atau Premium",
     "readAloudNoVoiceAndroid": "Peranti anda belum mempunyai suara {language} berkualiti tinggi. Pasang data suara untuk enjin teks-ke-pertuturan anda, kemudian cuba lagi.",
     "readAloudOpenVoiceSettings": "Buka tetapan suara",
-    "formLabel": "Borang {name}"
+    "streamingSttDegradedLiveBanner": "Transkripsi langsung sedang berjalan pada perkhidmatan sandaran. Kualiti mungkin berbeza, sila semak teks.",
+    "streamingSttDegradedToBatchBanner": "Transkripsi langsung tidak tersedia sekarang. Mesej anda ditranskripsi dengan cara standard, tanpa penyuntingan langsung. Kami sedang berusaha untuk memulihkannya.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengusahakannya.",
+    "formLabel": "Borang {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Sokongan",
+    "explorePlayAndLearn": "Teroka, bermain dan belajar",
+    "conversationFromDayOne": "Perbualan dari Hari Pertama",
+    "builtForConnection": "Dibina untuk perhubungan",
+    "aiWhenYouNeedIt": "AI apabila anda memerlukannya",
+    "practiceTailoredForYou": "Latihan yang disesuaikan untuk anda"
 }

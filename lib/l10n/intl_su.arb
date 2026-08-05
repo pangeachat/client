@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-05 09:53:14.092060",
+    "@@last_modified": "2026-08-05 11:42:18.227878",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2083,5 +2083,15 @@
     "readAloudNoVoiceIOSSteps": "  • Setélan\n  • Aksesibilitas\n  • Kontén Diucapkeun\n  • Sora\n  • {language}\n  • Unduh sora Enhanced atawa Premium",
     "readAloudNoVoiceAndroid": "Alat anjeun can boga sora {language} nu kualitasna luhur. Pasang data sora pikeun mesin téks-ka-sora anjeun, tuluy cobian deui.",
     "readAloudOpenVoiceSettings": "Buka setélan sora",
-    "formLabel": "Formulir {name}"
+    "streamingSttDegradedLiveBanner": "Transkripsi langsung dijalankeun dina layanan cadangan. Kualitas tiasa bénten-bénten, mangga parios téksna.",
+    "streamingSttDegradedToBatchBanner": "Transkripsi langsung teu sayogi ayeuna. Pesen anjeun ditranskripsi sacara standar, tanpa éditan langsung. Kami nuju ngusahakeun mulihkeunana.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung teu acan sayogi pikeun basa ieu. Kami nuju ngusahakeunana.",
+    "formLabel": "Formulir {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Pangrojong",
+    "explorePlayAndLearn": "Ngajalajah, ulin, jeung diajar",
+    "conversationFromDayOne": "Paguneman ti Poé Kahiji",
+    "builtForConnection": "Dijieun pikeun sambungan",
+    "aiWhenYouNeedIt": "AI nalika anjeun butuh",
+    "practiceTailoredForYou": "Latihan anu disaluyukeun pikeun anjeun"
 }

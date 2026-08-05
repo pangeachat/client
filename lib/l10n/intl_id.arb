@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 09:53:10.754773",
+    "@@last_modified": "2026-08-05 11:42:13.221476",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9774,5 +9774,15 @@
     "readAloudNoVoiceIOSSteps": "  • Pengaturan\n  • Aksesibilitas\n  • Konten Lisan\n  • Suara\n  • {language}\n  • Unduh suara yang Ditingkatkan atau Premium",
     "readAloudNoVoiceAndroid": "Perangkat Anda belum memiliki suara {language} berkualitas tinggi. Instal data suara untuk mesin text-to-speech Anda, lalu coba lagi.",
     "readAloudOpenVoiceSettings": "Buka pengaturan suara",
-    "formLabel": "Formulir {name}"
+    "streamingSttDegradedLiveBanner": "Transkripsi langsung berjalan di layanan cadangan. Kualitas mungkin bervariasi, harap periksa teksnya.",
+    "streamingSttDegradedToBatchBanner": "Transkripsi langsung tidak tersedia saat ini. Pesan Anda ditranskripsikan dengan cara standar, tanpa pengeditan langsung. Kami sedang berupaya memulihkannya.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengupayakannya.",
+    "formLabel": "Formulir {name}",
+    "botDisplayName": "Bot Pangea",
+    "supportDisplayName": "Dukungan",
+    "explorePlayAndLearn": "Jelajahi, mainkan, dan pelajari",
+    "conversationFromDayOne": "Percakapan sejak Hari Pertama",
+    "builtForConnection": "Dibuat untuk koneksi",
+    "aiWhenYouNeedIt": "AI saat Anda membutuhkannya",
+    "practiceTailoredForYou": "Latihan yang disesuaikan untuk Anda"
 }

@@ -28,6 +28,7 @@ import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_request_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/stt_provenance.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_repo.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_request_model.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/text_to_speech_response_model.dart';
@@ -519,6 +520,29 @@ class PangeaMessageEvent {
           return null;
         }
       },
+    );
+  }
+
+  /// D9 provenance reader: whether this voice message's `user_stt` embed was
+  /// learner-edited (`edited == true`). The orange-triangle flag
+  /// ([TranscriptEditedFlag]) keys off this. Reads the raw embed map (not a full
+  /// [SpeechToTextResponseModel] parse) so a minimal `{edited: true}` embed still
+  /// reads, and fails closed to `false` on any absent/malformed provenance.
+  /// Wave 5 WRITES the [SttProvenanceKeys] onto the `user_stt` embed at send.
+  bool get isTranscriptEdited {
+    final raw = event.content.tryGetMap(MessageConstants.userStt);
+    return sttTranscriptEditedFromUserStt(
+      raw == null ? null : Map<String, dynamic>.from(raw),
+    );
+  }
+
+  /// D10: the (original ASR, sent transcript) pair for the tappable edit-diff on
+  /// a learner-edited voice message, or null when this message is not an edited
+  /// streamed send. Reads the same `user_stt` embed the orange flag keys off.
+  SttDiffPair? get sttDiffPair {
+    final raw = event.content.tryGetMap(MessageConstants.userStt);
+    return sttDiffPairFromUserStt(
+      raw == null ? null : Map<String, dynamic>.from(raw),
     );
   }
 
