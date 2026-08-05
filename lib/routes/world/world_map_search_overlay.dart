@@ -15,11 +15,12 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// supersedes it. Still consumed by [WorldMapSignalUtils.reduceActivityCompletions].
 enum MapCompletionFilter { notStarted, inProgress, completed }
 
-/// The Google-Maps-style search + filter surface floating over the World map.
+/// The Google-Maps-style search + filter surface floating over the map.
 /// Presentational: the map owns the pin set, the filter state, and the
 /// filtering — this renders the bar, the [WorldMapFilterBar] pills, and the
-/// results, reporting user intent via callbacks. World-only (the shell hides it
-/// elsewhere). See world-map.instructions.md.
+/// results, reporting user intent via callbacks. Scope-agnostic: it rides the
+/// world map and a course-scoped map alike (#7716), sized to whatever map
+/// sliver the open panels leave. See world-map.instructions.md.
 class WorldMapSearchOverlay extends StatefulWidget {
   final WorldMapFilter filter;
 

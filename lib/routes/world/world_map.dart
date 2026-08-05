@@ -381,12 +381,18 @@ class WorldMapController extends State<WorldMap>
   ProgressionResolution get progression => _pinsManager.progression;
 
   /// The pins actually shown: the loaded set narrowed by the active CEFR band,
-  /// party-size and status filters, and free-text query. World only; a course
-  /// shows its set.
-  List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins((c) {
-    if (!isWorld) return true;
-    return _filterState.include(c, _pinsManager.displayStateOf(c));
-  });
+  /// party-size and status filters, and free-text query. Applied in BOTH
+  /// scopes (#7716) — a course scope only decides which items compete, not
+  /// whether the learner can refine them (world-map.instructions.md). The one
+  /// scope-dependent term is the settings-fixed language, applied on the world
+  /// map only; see [WorldMapFilterState.include].
+  List<QuestActivityCard> get visiblePins => _pinsManager.filteredPins(
+    (c) => _filterState.include(
+      c,
+      _pinsManager.displayStateOf(c),
+      applyLanguage: isWorld,
+    ),
+  );
 
   /// Why the view shows no matches — the empty-view card's diagnosis
   /// ([MapEmptyVerdict]), shared by the wide overlay and the narrow bar so the
@@ -394,7 +400,7 @@ class WorldMapController extends State<WorldMap>
   /// coordinates count anywhere here: a match that can never render can't be
   /// revealed by any remedy the card offers.
   MapEmptyVerdict get emptyVerdict {
-    if (!isWorld || loadingPins) return MapEmptyVerdict.none;
+    if (loadingPins) return MapEmptyVerdict.none;
     final loaded = visiblePins.where((c) => c.point != null).toList();
     if (loaded.isNotEmpty) {
       // Matches exist under the current filters/query — the verdict is about
@@ -414,7 +420,9 @@ class WorldMapController extends State<WorldMap>
     // Nothing passes anywhere loaded: diagnose the excluder. If the pills are
     // it (matches exist ignoring them), widening fixes it by construction.
     final ignoringPills = _pinsManager.filteredPins(
-      (c) => c.point != null && _filterState.matchesIgnoringPills(c),
+      (c) =>
+          c.point != null &&
+          _filterState.matchesIgnoringPills(c, applyLanguage: isWorld),
     );
     if (ignoringPills.isNotEmpty) return MapEmptyVerdict.filtersHideMatches;
     return filter.query.trim().isNotEmpty
