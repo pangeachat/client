@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-05 09:53:13.360797",
+    "@@last_modified": "2026-08-05 10:21:40.300131",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2083,5 +2083,8 @@
     "readAloudNoVoiceIOSSteps": "  • ترتیبات\n  • لاسرسی\n  • ویل شوي مینځپانګه\n  • غږونه\n  • {language}\n  • یو پرمختللی یا پریمیم غږ ډاونلوډ کړئ",
     "readAloudNoVoiceAndroid": "ستاسو وسیله لا تر اوسه د {language} لوړ کیفیت غږ نه لري. د خپل متن څخه وینا انجن لپاره د غږ ډاټا نصب کړئ، بیا بیا هڅه وکړئ.",
     "readAloudOpenVoiceSettings": "د غږ ترتیبات خلاص کړئ",
+    "streamingSttDegradedLiveBanner": "ژوندۍ لیکنه په بیک اپ خدمت روانه ده. کیفیت ممکن توپیر ولري، مهرباني وکړئ متن وګورئ.",
+    "streamingSttDegradedToBatchBanner": "ژوندۍ لیکنه اوس مهال شتون نلري. ستاسو پیغام په معیاري ډول، پرته له ژوندي سمون څخه لیکل شوی. موږ یې د بیرته راوستلو لپاره کار کوو.",
+    "streamingSttLanguageUnsupportedBanner": "ژوندۍ لیکنه لا تر اوسه د دې ژبې لپاره شتون نلري. موږ پرې کار کوو.",
     "formLabel": "{name} فورمه"
 }

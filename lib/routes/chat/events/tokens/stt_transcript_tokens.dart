@@ -1,11 +1,25 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
+
+typedef SttTranscriptTokenPresentation = ({
+  Color idleUnderlineColor,
+  String? secondaryText,
+  TextStyle? secondaryStyle,
+});
+
+typedef SttTranscriptTokenPresentationResolver =
+    SttTranscriptTokenPresentation? Function(
+      PangeaToken token,
+      int startIndex,
+      int endIndex,
+    );
 
 class SttTranscriptTokens extends StatelessWidget {
   final String eventId;
@@ -19,6 +33,8 @@ class SttTranscriptTokens extends StatelessWidget {
   /// the room has no activity plan. Spoken words whose lemma is in this set
   /// get the gold highlight, matching typed messages (issue #7659).
   final Set<String>? vocabLemmas;
+  final SttTranscriptTokenPresentationResolver? presentationForToken;
+  final Set<PangeaTokenText>? newTokensOverride;
 
   const SttTranscriptTokens({
     super.key,
@@ -28,6 +44,8 @@ class SttTranscriptTokens extends StatelessWidget {
     this.isSelected,
     this.style,
     this.vocabLemmas,
+    this.presentationForToken,
+    this.newTokensOverride,
   });
 
   List<PangeaToken> get tokens =>
@@ -44,11 +62,9 @@ class SttTranscriptTokens extends StatelessWidget {
     }
 
     final messageCharacters = model.transcript.text.characters;
-    final newTokens = TokensUtil.instance.getNewTokens(
-      eventId,
-      tokens,
-      model.langCode,
-    );
+    final newTokens =
+        newTokensOverride ??
+        TokensUtil.instance.getNewTokens(eventId, tokens, model.langCode);
 
     return RichText(
       textScaler: TextScaler.noScaling,
@@ -71,6 +87,12 @@ class SttTranscriptTokens extends StatelessWidget {
 
               final token = tokenPosition.token!;
               final selected = isSelected?.call(token) ?? false;
+              final isNew = newTokens.any((t) => t == token.text);
+              final presentation = presentationForToken?.call(
+                token,
+                tokenPosition.startIndex,
+                tokenPosition.endIndex,
+              );
               final isVocabHighlight = TokenRenderingUtil.isVocabHighlight(
                 token.lemma.text,
                 vocabLemmas,
@@ -85,20 +107,45 @@ class SttTranscriptTokens extends StatelessWidget {
                       onTap: onClick != null
                           ? () => onClick?.call(token)
                           : null,
-                      child: TokenRenderingUtil.vocabHighlight(
-                        highlight: isVocabHighlight,
-                        child: UnderlineText(
-                          text: text,
-                          style: style ?? DefaultTextStyle.of(context).style,
-                          underlineColor: TokenRenderingUtil.underlineColor(
-                            Theme.of(
-                              context,
-                            ).colorScheme.primary.withAlpha(200),
-                            selected: selected,
-                            hovered: hovered,
-                            isNew: newTokens.any((t) => t == token.text),
-                          ),
-                        ),
+                      child: Builder(
+                        builder: (context) {
+                          final interactionUnderline =
+                              TokenRenderingUtil.underlineColor(
+                                Theme.of(
+                                  context,
+                                ).colorScheme.primary.withAlpha(200),
+                                selected: selected,
+                                hovered: hovered,
+                                isNew: isNew,
+                              );
+                          final underline =
+                              presentation != null && !selected && !hovered
+                              ? presentation.idleUnderlineColor
+                              : interactionUnderline;
+                          final primary = UnderlineText(
+                            text: text,
+                            style: style ?? DefaultTextStyle.of(context).style,
+                            underlineColor: underline,
+                          );
+                          final secondaryText = presentation?.secondaryText;
+                          final content = secondaryText == null
+                              ? primary
+                              : Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    primary,
+                                    Text(
+                                      secondaryText,
+                                      style: presentation?.secondaryStyle,
+                                    ),
+                                  ],
+                                );
+                          return TokenRenderingUtil.vocabHighlight(
+                            highlight: isVocabHighlight,
+                            child: content,
+                          );
+                        },
                       ),
                     ),
                   ),

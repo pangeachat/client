@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-05 09:53:14.888250",
+    "@@last_modified": "2026-08-05 10:21:44.873894",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2083,5 +2083,8 @@
     "readAloudNoVoiceIOSSteps": "  • Izicwangciso\n  • Ukufikeleleka\n  • Umxholo othethwayo\n  • Amazwi\n  • {language}\n  • Khuphela ilizwi eliphuculweyo okanye eliyi-Premium",
     "readAloudNoVoiceAndroid": "Isixhobo sakho asinalo ilizwi {language} elikumgangatho ophezulu okwangoku. Faka idatha yelizwi ye-injini yakho yokuguqula umbhalo ube yintetho, emva koko zama kwakhona.",
     "readAloudOpenVoiceSettings": "Vula izicwangciso zezwi",
+    "streamingSttDegradedLiveBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma kusebenza kwinkonzo yogcino. Umgangatho ungahluka, nceda ujonge umbhalo.",
+    "streamingSttDegradedToBatchBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma akufumaneki okwangoku. Umyalezo wakho ubhalwe ngendlela eqhelekileyo, ngaphandle kokuhlela ngqo bukhoma. Sisebenzela ukuyibuyisela.",
+    "streamingSttLanguageUnsupportedBanner": "Ukubhalwa kwesicatshulwa ngqo bukhoma akukafumaneki okwangoku kolu lwimi. Sisebenzela kulo.",
     "formLabel": "Ifomu lika-{name}"
 }

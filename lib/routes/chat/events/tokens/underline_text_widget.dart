@@ -4,6 +4,9 @@ import 'package:flutter_linkify/flutter_linkify.dart';
 
 import 'package:fluffychat/utils/url_launcher.dart';
 
+const double tokenUnderlineHeight = 3;
+const double tokenUnderlineGap = 2;
+
 class UnderlineText extends StatelessWidget {
   final String text;
   final TextStyle style;
@@ -20,8 +23,8 @@ class UnderlineText extends StatelessWidget {
     this.linkStyle,
     this.textDirection,
     this.underlineColor,
-    this.underlineHeight = 3,
-    this.gap = 2, // 👈 control spacing from text
+    this.underlineHeight = tokenUnderlineHeight,
+    this.gap = tokenUnderlineGap,
   });
 
   @override

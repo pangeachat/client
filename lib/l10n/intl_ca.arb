@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 09:53:08.870427",
+    "@@last_modified": "2026-08-05 10:21:29.615000",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9828,5 +9828,8 @@
     "readAloudNoVoiceIOSSteps": "  • Configuració\n  • Accessibilitat\n  • Contingut parlat\n  • Veus\n  • {language}\n  • Descarrega una veu millorada o Premium",
     "readAloudNoVoiceAndroid": "El teu dispositiu encara no té una veu d'alta qualitat per a {language}. Instal·la les dades de veu per al teu motor de text a veu i torna-ho a provar.",
     "readAloudOpenVoiceSettings": "Obre la configuració de veu",
+    "streamingSttDegradedLiveBanner": "La transcripció en directe s'està executant en un servei de còpia de seguretat. La qualitat pot variar, si us plau, revisa el text.",
+    "streamingSttDegradedToBatchBanner": "La transcripció en directe no està disponible en aquest moment. El teu missatge es va transcriure de la manera estàndard, sense edició en directe. Estem treballant per restaurar-la.",
+    "streamingSttLanguageUnsupportedBanner": "La transcripció en directe encara no està disponible per a aquest idioma. Hi estem treballant.",
     "formLabel": "Formulari de {name}"
 }

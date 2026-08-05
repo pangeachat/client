@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-05 09:53:09.288113",
+    "@@last_modified": "2026-08-05 10:21:29.638170",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9688,5 +9688,8 @@
     "readAloudNoVoiceIOSSteps": "  • Einstellungen\n  • Bedienungshilfen\n  • Gesprochene Inhalte\n  • Stimmen\n  • {language}\n  • Eine erweiterte oder Premium-Stimme herunterladen",
     "readAloudNoVoiceAndroid": "Auf Ihrem Gerät ist noch keine hochwertige {language}-Stimme vorhanden. Installieren Sie Sprachdaten für Ihre Text-to-Speech-Engine und versuchen Sie es dann erneut.",
     "readAloudOpenVoiceSettings": "Spracheinstellungen öffnen",
+    "streamingSttDegradedLiveBanner": "Die Live-Transkription läuft über einen Backup-Dienst. Die Qualität kann variieren, bitte überprüfen Sie den Text.",
+    "streamingSttDegradedToBatchBanner": "Die Live-Transkription ist derzeit nicht verfügbar. Ihre Nachricht wurde auf die Standardweise transkribiert, ohne Live-Bearbeitung. Wir arbeiten daran, dies wiederherzustellen.",
+    "streamingSttLanguageUnsupportedBanner": "Die Live-Transkription ist für diese Sprache noch nicht verfügbar. Wir arbeiten daran.",
     "formLabel": "{name}-Formular"
 }

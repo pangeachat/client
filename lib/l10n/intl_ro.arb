@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 09:53:13.970484",
+    "@@last_modified": "2026-08-05 10:21:40.093100",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10433,5 +10433,8 @@
     "readAloudNoVoiceIOSSteps": "  • Setări\n  • Accesibilitate\n  • Conținut vorbit\n  • Voci\n  • {language}\n  • Descărcați o voce îmbunătățită sau premium",
     "readAloudNoVoiceAndroid": "Dispozitivul dvs. nu are încă o voce {language} de înaltă calitate. Instalați date vocale pentru motorul dvs. text-to-speech, apoi încercați din nou.",
     "readAloudOpenVoiceSettings": "Deschideți setările vocale",
+    "streamingSttDegradedLiveBanner": "Transcrierea live rulează pe un serviciu de rezervă. Calitatea poate varia, vă rugăm să verificați textul.",
+    "streamingSttDegradedToBatchBanner": "Transcrierea live nu este disponibilă momentan. Mesajul dumneavoastră a fost transcris în mod standard, fără editare live. Lucrăm la remedierea situației.",
+    "streamingSttLanguageUnsupportedBanner": "Transcrierea live nu este încă disponibilă pentru această limbă. Lucrăm la asta.",
     "formLabel": "Formular {name}"
 }

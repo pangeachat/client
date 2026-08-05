@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-05 09:53:13.044631",
+    "@@last_modified": "2026-08-05 10:21:35.647835",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2083,5 +2083,8 @@
     "readAloudNoVoiceIOSSteps": "  • Optiones\n  • Aditus\n  • Contentum Dictum\n  • Voces\n  • {language}\n  • Recipe vocem Amplificatam vel Praemium",
     "readAloudNoVoiceAndroid": "Machina tua nullam vocem {language} optimam adhuc habet. Instrue data vocis pro machina tua textus-ad-orationem, deinde iterum conare.",
     "readAloudOpenVoiceSettings": "Aperi optiones vocis",
+    "streamingSttDegradedLiveBanner": "Transcriptio viva in subsidiario servitio currit. Qualitas variari potest, textum quaeso inspice.",
+    "streamingSttDegradedToBatchBanner": "Transcriptio viva nunc praesto non est. Nuntius tuus more solito transcriptus est, sine emendatione viva. Laboramus ut restituamus.",
+    "streamingSttLanguageUnsupportedBanner": "Transcriptio viva nondum huic linguae praesto est. Laboramus.",
     "formLabel": "{name} forma"
 }

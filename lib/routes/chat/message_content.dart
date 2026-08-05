@@ -9,6 +9,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/streaming_stt/transcript_edited_flag.dart';
 import 'package:fluffychat/routes/chat/poll.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
@@ -197,6 +198,8 @@ class MessageContent extends StatelessWidget {
           case CuteEventContent.eventType:
             return CuteContent(event);
           case MessageTypes.Audio:
+            // #Pangea
+            final Widget audioBody;
             if (PlatformInfos.isMobile ||
                 PlatformInfos.isMacOS ||
                 PlatformInfos.isWeb
@@ -204,7 +207,7 @@ class MessageContent extends StatelessWidget {
             // is fixed
             //   || PlatformInfos.isLinux
             ) {
-              return AudioPlayerWidget(
+              audioBody = AudioPlayerWidget(
                 event,
                 color: textColor,
                 linkColor: linkColor,
@@ -220,12 +223,29 @@ class MessageContent extends StatelessWidget {
                 enableClicks: overlayController != null,
                 // Pangea#
               );
+            } else {
+              audioBody = MessageDownloadContent(
+                event,
+                textColor: textColor,
+                linkColor: linkColor,
+              );
             }
-            return MessageDownloadContent(
-              event,
-              textColor: textColor,
-              linkColor: linkColor,
+            // D9: surface the learner-edited-transcript flag (a neutral edit
+            // pencil) on the player when this voice message's user_stt
+            // provenance carries edited == true. A verbatim/legacy message (the
+            // vast majority — the provenance key only lands on an edited
+            // streamed send) returns the untouched player subtree,
+            // byte-identical. The mount decision lives in
+            // AudioMessageEditedFlag.wrap so it is unit-testable without the
+            // singleton-gated player subtree. `textColor` is the bubble's own
+            // foreground (waveform/timestamp colour) so the pencil contrasts
+            // with the voice bubble rather than washing out on it.
+            return AudioMessageEditedFlag.wrap(
+              audioBody,
+              pangeaMessageEvent,
+              color: textColor,
             );
+          // Pangea#
           case MessageTypes.Video:
             return EventVideoPlayer(
               event,
