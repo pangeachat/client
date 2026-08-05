@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_linkify/flutter_linkify.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
@@ -193,16 +193,12 @@ class ActivitySessionStartView extends StatelessWidget {
                 )
               : LayoutBuilder(
                   builder: (context, constraints) {
-                    // Mobile minimized (short cavity): render only the header,
-                    // info row, and CTA — the media, description, and roles
-                    // mount when the sheet is dragged or tapped up, mirroring
-                    // the course card's compact peek. Never compact on the wide
-                    // web panel or at the sheet's full height.
                     final compact =
                         constraints.maxHeight.isFinite &&
                         constraints.maxHeight < kActivityCompactMaxHeight;
-                    // Minimized: header (app bar) + info row + CTA only, sized
-                    // to fit snugly — no scroll content, so no Expanded gap.
+                    // Snug: no scroll content, so no Expanded — the CTA sits
+                    // directly under the info row (mirrors the course card's
+                    // compact peek).
                     if (compact) {
                       return Column(
                         mainAxisSize: MainAxisSize.min,
@@ -358,20 +354,19 @@ class _ActivityStartInfoRow extends StatelessWidget {
             ),
           ),
           const SizedBox(width: 8.0),
-          if (language != null && language.shouldShowFlag) ...[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(3.0),
-              child: SvgPicture.network(
-                language.svgUrl.toString(),
-                width: 22.0,
-                height: 16.0,
-                fit: BoxFit.cover,
-                errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                placeholderBuilder: (_) => const SizedBox(width: 22.0),
-              ),
-            ),
-            const SizedBox(width: 12.0),
-          ],
+          // Never empty: the flag when the language resolves to one, else a
+          // langcode chip (shared with the analytics cluster's flag).
+          LanguageFlagChip(
+            language: language,
+            langCode: activity.req.targetLanguage,
+            width: 24.0,
+            height: 18.0,
+            fontSize: 12.0,
+            radius: 3.0,
+            borderWidth: 1.0,
+            alwaysShowCode: false,
+          ),
+          const SizedBox(width: 12.0),
           _IconLabel(
             icon: Icons.school_outlined,
             label: activity.req.cefrLevel.string,

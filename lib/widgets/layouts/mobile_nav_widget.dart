@@ -6,6 +6,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
+import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 
 /// The cavity's resting heights, as a fraction of [MobileNavWidget.maxHeightFraction]:
 /// rail-only, roughly half the growth bound, or the full bound.
@@ -144,6 +145,14 @@ class MobileNavWidget extends StatefulWidget {
   /// activity-start-page.instructions.md.
   final bool tapBodyExpands;
 
+  /// Hide the 4-item nav rail so the hosted surface OWNS the whole rounded
+  /// container. Wired for the activity plan: its nav items don't apply while a
+  /// map explorer is looking at an activity, so the sheet covers them and its
+  /// own close control (the app-bar X/back) is the way out — dismissing the
+  /// cavity brings the rail back. Section sheets keep the rail so the learner
+  /// can keep navigating. See activity-start-page.instructions.md.
+  final bool hideRail;
+
   /// The keyboard's overlap BEYOND the bottom safe area, computed by the shell
   /// (which reads `viewInsets` above its Scaffold — a resizing Scaffold hides it
   /// from the body — and nets out the home-indicator inset the SafeArea stops
@@ -174,6 +183,7 @@ class MobileNavWidget extends StatefulWidget {
     this.mapStaysLive = false,
     this.onCavityFullChanged,
     this.tapBodyExpands = false,
+    this.hideRail = false,
     this.keyboardInset = 0.0,
     super.key,
   });
@@ -661,7 +671,11 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                 canRequestFocus: false,
                                 skipTraversal: true,
                                 onFocusChange: _onCavityFocusChanged,
-                                child: widget.cavityChild!,
+                                child: CavityControls(
+                                  expandToFull: () =>
+                                      _openAt(NavCavityHeight.full),
+                                  child: widget.cavityChild!,
+                                ),
                               ),
                             ),
                             builder: (context, animatedHeight, child) {
@@ -701,55 +715,62 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                               );
                             },
                           ),
-                        SizedBox(
-                          height: _railHeight,
-                          child: Semantics(
-                            label: l10n.navOptionsLabel,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                PangeaIconButton(
-                                  selected:
-                                      widget.activeSection == AppSection.world,
-                                  tooltip: l10n.world,
-                                  onPressed: () =>
-                                      _onRailItemTap(AppSection.world),
-                                ),
-                                _withChatsBadge(
-                                  _RailButton(
-                                    icon: Icons.forum_outlined,
-                                    selectedIcon: Icons.forum,
+                        // The activity plan hides the rail and owns the whole
+                        // container ([hideRail]); its own close control brings
+                        // the rail back. Section sheets keep it to stay
+                        // navigable.
+                        if (!widget.hideRail)
+                          SizedBox(
+                            height: _railHeight,
+                            child: Semantics(
+                              label: l10n.navOptionsLabel,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  PangeaIconButton(
                                     selected:
                                         widget.activeSection ==
-                                        AppSection.chats,
-                                    tooltip: l10n.allChats,
-                                    onTap: () =>
-                                        _onRailItemTap(AppSection.chats),
+                                        AppSection.world,
+                                    tooltip: l10n.world,
+                                    onPressed: () =>
+                                        _onRailItemTap(AppSection.world),
                                   ),
-                                ),
-                                _RailButton(
-                                  icon: Icons.map_outlined,
-                                  selectedIcon: Icons.map,
-                                  // The specific course's highlight (the
-                                  // shortcut) outranks the section icon.
-                                  selected:
-                                      widget.activeSection ==
-                                          AppSection.courses &&
-                                      !widget.courseShortcutSelected,
-                                  tooltip: l10n.courses,
-                                  onTap: () =>
-                                      _onRailItemTap(AppSection.courses),
-                                ),
-                                _CourseShortcutButton(
-                                  icon: widget.courseShortcutIcon,
-                                  label: widget.courseShortcutLabel,
-                                  selected: widget.courseShortcutSelected,
-                                  onTap: _onCourseShortcutTap,
-                                ),
-                              ],
+                                  _withChatsBadge(
+                                    _RailButton(
+                                      icon: Icons.forum_outlined,
+                                      selectedIcon: Icons.forum,
+                                      selected:
+                                          widget.activeSection ==
+                                          AppSection.chats,
+                                      tooltip: l10n.allChats,
+                                      onTap: () =>
+                                          _onRailItemTap(AppSection.chats),
+                                    ),
+                                  ),
+                                  _RailButton(
+                                    icon: Icons.map_outlined,
+                                    selectedIcon: Icons.map,
+                                    // The specific course's highlight (the
+                                    // shortcut) outranks the section icon.
+                                    selected:
+                                        widget.activeSection ==
+                                            AppSection.courses &&
+                                        !widget.courseShortcutSelected,
+                                    tooltip: l10n.courses,
+                                    onTap: () =>
+                                        _onRailItemTap(AppSection.courses),
+                                  ),
+                                  _CourseShortcutButton(
+                                    icon: widget.courseShortcutIcon,
+                                    label: widget.courseShortcutLabel,
+                                    selected: widget.courseShortcutSelected,
+                                    onTap: _onCourseShortcutTap,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
-                        ),
                       ],
                     ),
                   ),

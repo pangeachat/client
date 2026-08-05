@@ -10,6 +10,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -300,11 +301,11 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
   }
 }
 
-/// The mobile browse-step CTA: a single horizontally scrolling row, Google-Maps
-/// style. Exactly one filled primary leads (Ongoing → Join → Start), followed
-/// by any other available actions, with the everyone-visible Completed chip and
-/// then share + flag always appended last as light pills. The later steps
-/// (role picker, waiting room) keep their vertical lists. See
+/// The mobile browse-step CTA: a single horizontally scrolling row. Exactly one
+/// filled primary leads (Ongoing → Join → Start), followed by any other
+/// available actions, with the everyone-visible Completed chip and then share +
+/// flag always appended last as light pills. The later steps (role picker,
+/// waiting room) keep their vertical lists. See
 /// activity-start-page.instructions.md.
 class _NotStartedMobileCtaRow extends StatelessWidget {
   final NotStartedSessionController controller;
@@ -315,6 +316,15 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
     final l10n = L10n.of(context);
     final page = controller.widget.controller;
     final chips = <Widget>[];
+
+    // An action chip maximizes the sheet before running — the view it opens
+    // (role picker, sessions list) is dropped by the minimized LayoutBuilder,
+    // so it must reach full first. Continue is exempt: it leaves for the chat.
+    final expand = CavityControls.maybeExpandToFull(context);
+    VoidCallback expandThen(VoidCallback action) => () {
+      expand?.call();
+      action();
+    };
 
     if (controller.joinedActivityRoomId != null) {
       chips.add(
@@ -328,21 +338,21 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       chips.add(
         _ActivityCtaChip(
           label: '${l10n.joinOpenSession} (${controller.openSessionCount})',
-          onPressed: controller.goToJoinPage,
+          onPressed: expandThen(controller.goToJoinPage),
           filled: true,
         ),
       );
       chips.add(
         _ActivityCtaChip(
           label: l10n.startOwn,
-          onPressed: controller.startNewActivity,
+          onPressed: expandThen(controller.startNewActivity),
         ),
       );
     } else {
       chips.add(
         _ActivityCtaChip(
           label: l10n.start,
-          onPressed: controller.startNewActivity,
+          onPressed: expandThen(controller.startNewActivity),
           filled: true,
         ),
       );
@@ -353,7 +363,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       chips.add(
         _ActivityCtaChip(
           label: l10n.mapFilterCompleted,
-          onPressed: controller.goToViewPage,
+          onPressed: expandThen(controller.goToViewPage),
         ),
       );
     }

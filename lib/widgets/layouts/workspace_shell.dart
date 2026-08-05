@@ -801,6 +801,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // Tapping the plan's minimized rest expands it to full, alongside
         // dragging up.
         tapBodyExpands: isActivityCavity,
+        // The activity plan covers the nav rail and owns the container; its
+        // app-bar X/back is the way out (which restores the rail).
+        hideRail: isActivityCavity,
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,
