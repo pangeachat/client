@@ -1,5 +1,5 @@
 ---
-applyTo: "lib/pangea/analytics_data/**,lib/pangea/analytics_misc/**,lib/pangea/analytics_page/**,lib/pangea/analytics_summary/**,lib/pangea/analytics_practice/**,lib/pangea/analytics_settings/**,lib/pangea/analytics_downloads/**,lib/pangea/analytics_details_popup/**,lib/pangea/space_analytics/**,lib/pangea/constructs/**"
+applyTo: "lib/features/analytics/**,lib/features/analytics_data/**,lib/routes/analytics/**,lib/routes/chat/chat_details/space_analytics/**"
 ---
 
 # Analytics System
@@ -45,33 +45,41 @@ The same word can appear with different casing or slight variations across messa
 
 ### Construct Displays
 
-Users can view their analytics via the [ConstructAnalyticsView](../../lib/routes/analytics/construct_analytics/analytics_details_popup.dart). There are pages for vocab and morph constructs. Each construct type has a list page, displaying all constructs, and individual construct details page, which the user can navigate to via the main list.
+Users can view their analytics via the [ConstructAnalyticsView](../../lib/routes/analytics/construct_analytics/analytics_details_popup.dart). There are pages for vocab and morph constructs. Each construct type has a list page, displaying all constructs, and an individual construct details page, which the user can navigate to via the main list.
 
 The morph list view ([MorphAnalyticsListView](../../lib/routes/analytics/construct_analytics/morph_analytics_list_view.dart)) displays a list of grammar feature sections, each containing tiles for each of the grammar tags in that feature. All features / tags for the user's L2 are displayed, with a 'locked/disabled' indicator for unused tags. (See [grammar analytics instructions](grammar-analytics.instructions.md) for more details.)
 
-The vocab list view shows a list of tiles, one for each vocab construct, each with the construct's assigned emoji (if present) and the construct's lemma (the vocab word itself). The lemma's text color indicates the construct's [level](../../lib/features/analytics/construct_level_enum.dart). The page has filters for each construct level, and a search bar. Vocab construct tiles can be long-pressed to select them for deletion (see [Blocking Constructs](#blocking-constructs) for more details on deleting vocab constructs). 
+The vocab list view shows a list of tiles, one for each vocab construct, each with the construct's assigned emoji (if present) and the construct's lemma (the vocab word itself). The lemma's text color indicates the construct's [level](../../lib/features/analytics/construct_level_enum.dart). The page has filters for each construct level, and a search bar. Vocab construct tiles can be long-pressed to select them for deletion (see [Blocking Constructs](#blocking-constructs) for more details on blocking vocab constructs). 
 
-Both list views show a button at the top to launch practice. (See [practice exercises instructions](practice-exercises.instructions.md) for more details on analytics practice exercises.)
+Both list views show a button at the top to launch practice (See [practice exercises instructions](practice-exercises.instructions.md) for more details on analytics practice exercises), and a "more" button which expands a popup menu containing additional options, e.g. the download button, a button to navigate to the blocked constructs page, etc. The "more" button is hidden if it has no content, like in a morph construct list with developer mode turned off.
 
-Construct details page show definitions, canonical examples, and user-generated usage examples for individual constructs.
+Construct details pages show definitions, canonical examples, and user-generated usage examples for individual constructs.
 
 ### Blocking Constructs
 
 Users can hide specific constructs they consider too easy or irrelevant (e.g., cognates, proper nouns). Blocked constructs:
-- Disappear from all analytics views
+- Disappear from all analytics views except the blocked vocab constructs page (described later in this section)
 - Stop contributing to XP totals
 - Are excluded from practice exercise selection
 - Persist across sessions via the Matrix analytics room
 
-Blocking a construct does not prevent new construct uses for the given construct from being generated or collected. They are hidden from the user, but continue to be stored in the background.
+Within the code, this is referred to as "Blocking," and undoing the block is referred to as "Restoring." Within the UI, the terms are "Deleting" and "Restoring." This hides the implementation details from the user (making blocked constructs appear to be deleted), while keeping the terminology of the internal system consistent (nothing is literally 'deleted,' but is instead 'blocked' from the user's view). Blocking a construct does not prevent new construct uses from being generated or collected. They are hidden from the user, but continue to be stored in the background.
 
-Blocked Constructs are stored in [PangeaEventTypes.analyticsSettings](../../lib/routes/chat/events/constants/pangea_event_types.dart) events in the analytics room of their corresponding language as a list of ConstructIdentifiers. Blocking constructs adds them to this list, so constructs can be blocked one at a time or in bulk with one write to the state event.
+Only vocab constructs can be blocked. Morph constructs cannot be blocked.
 
-Vocab constructs can be blocked individually from construct details pages via the delete button at the bottom of the page, or in bulk via the vocab construct list page by long pressing a construct tile to enter selection mode, selecting all of the construct the user wants to delete, then clicking the delete button at the top of the page. The delete button is only visible in select mode.
+Blocked Constructs are stored in [PangeaEventTypes.analyticsSettings](../../lib/routes/chat/events/constants/pangea_event_types.dart) events in the analytics room of their corresponding language as a list of ConstructIdentifiers. Blocking constructs adds them to this list, so constructs can be blocked one at a time or in bulk with one write to the state event. This is also true of restoring constructs.
 
-Users may want to undo blocking of a vocab construct. They can do this via the vocab construct archive page. This page is accessed by the "more" dropdown button in the AppBar of the vocab construct list view (this dropdown also contains the download button). This page looks similar to the vocab construct list view, but is missing the filters, search bar, practice button, and dropdown menu. Clicking on the back button takes the user back to the vocab construct list page. Clicking or long-pressing a vocab construct tile in this view selects in and activates select mode, so vocab construct can be bulk un-blocked. The tiles have lower opacity than the normal vocab construct tiles, and have a red icon in their upper-right corners to indicate their blocked status.
+Vocab constructs can be blocked individually from construct details pages via the delete button at the bottom of the page, or in bulk via the vocab construct list page by long pressing a construct tile to enter selection mode, selecting constructs to block, and then clicking the delete button at the top of the page. The delete button is only visible in select mode.
 
-Blocked constructs can also be unblocked from the construct details page. Blocked construct show a "restore" button at the bottom of the page instead of a delete button.
+Users can restore constructs in the blocked vocab constructs page, or in construct details pages for blocked constructs. 
+
+The blocked vocab constructs page is accessed by the "more" dropdown button in the AppBar of the vocab construct list view. This page looks similar to the vocab construct list view, but is missing the filters, search bar, practice button, and dropdown menu. This page has its own route (analytics:vocab/deleted), separate from the main vocab construct list. Long-pressing a vocab construct tile in this view activates select mode, so vocab constructs can be bulk restored. Clicking a vocab tile in this view opens the construct details page, just like the vocab construct list. The tiles have lower opacity than the normal vocab construct tiles, and have a red icon in their upper-right corners to indicate their blocked status.
+
+Blocked constructs can also be restored from the construct details page. This page can be reached by clicking on a construct tile in the blocked vocab constructs page, or by clicking on the title of a word card for a blocked construct. Word cards for blocked constructs have a lower opacity title with a red "restore" icon button in the top right corner that restores the construct when tapped. Blocked constructs show a "restore" button at the bottom of the page instead of a delete button.
+
+When a vocab construct is restored, its XP is added back to the total language XP silently. No XP gained or level up events are fired, so no animations or other effects are shown.
+
+Blocking constructs adds a [AnalyticsStreamUpdate](../../lib/features/analytics_data/analytics_data_service.dart) containing a set of newly blocked constructs to the analytics update dispatcher's [constructUpdateStream](../../lib/features/analytics_data/analytics_update_dispatcher.dart), which widgets can listen to when they need to react to blocked construct updates (e.g., the vocab construct list listens to it to filter blocked constructs from the list). Restoring constructs does something similar, except these updates contain a set of the newly restored constructs. The vocab construct archive page listens to these updates to filter out restored constructs. These are separate variables in the AnalyticsStreamUpdate because widgets have to react differently to these types of updates. 
 
 ## User Levels
 
@@ -85,7 +93,7 @@ Level-ups are **celebration moments**: the app shows a banner, plays a chime, an
 
 ### Level Protection
 
-Users should never see their level go down from routine actions. If blocking a construct or switching languages would reduce total XP below the current level threshold, the system applies an XP offset to maintain the level. This is a deliberate UX choice — level-downs feel bad and discourage experimentation.
+Users should never see their level go down due to negative-XP construct uses. If adding new, negative-points construct uses would reduce total XP below the current level threshold, the system applies an XP offset to maintain the level. This is a deliberate UX choice — level-downs feel bad and discourage experimentation.
 
 ## Data Architecture Principles
 
@@ -127,8 +135,8 @@ This data flows from each student's analytics room to the teacher view — the t
 ## Key Contracts
 
 - **Never fetch analytics from Synapse per-message.** The local database is the runtime source of truth.
-- **XP per construct caps at the flower threshold (100).** [`ConstructUses.cappedUses`](lib/pangea/analytics_misc/construct_use_model.dart) enforces this, preventing level inflation from repeatedly encountering familiar words.
-- **Level can never visibly decrease** from user-initiated actions (blocking, language switching). Use offsets to maintain.
+- **XP per construct caps at the flower threshold (100).** [`ConstructUses.cappedUses`](../../lib/features/analytics/construct_use_model.dart) enforces this, preventing level inflation from repeatedly encountering familiar words.
+- **Level can never visibly decrease** due to negative-XP construct uses. Use offsets to maintain.
 - **The "other" category is always filtered out** of aggregations and displays. It represents unclassifiable tokens.
 - **Analytics initialization must complete before any UI reads.** All public methods await an init completer.
 - **A UI surface reads live analytics through the update streams, subscribed during build — not via a listener attached after mount.** [`AnalyticsUpdateDispatcher`](lib/features/analytics_data/analytics_update_dispatcher.dart) fires its first construct/activity update once, during init, on hot broadcast streams with no replay. A widget that subscribes *after* init completes (a manual `listen` in `didChangeDependencies`) misses that event and shows stale/zero until the next live update. Read inside a `StreamBuilder` on the construct/activity streams — which subscribes during build, before init finishes — and read `numConstructs`/`derivedData` *inside* the builder so each rebuild is fresh. The chat-list `LearningProgressIndicators` and the world map's top-right cluster (see [routing.instructions.md](routing.instructions.md)) both follow this.
