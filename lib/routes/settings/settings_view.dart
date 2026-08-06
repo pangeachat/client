@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -198,6 +199,15 @@ class SettingsView extends StatelessWidget {
                         child: const Icon(Icons.open_in_new_outlined),
                       ),
                     ),
+                    ListTile(
+                      leading: const Icon(Icons.privacy_tip_outlined),
+                      title: Text(L10n.of(context).privacy),
+                      onTap: () => launchUrl(AppConfig.privacyUrl),
+                      trailing: Semantics(
+                        label: L10n.of(context).openNewTab,
+                        child: const Icon(Icons.open_in_new_outlined),
+                      ),
+                    ),
                     if (MatrixState
                         .pangeaController
                         .userController
@@ -276,11 +286,6 @@ class SettingsView extends StatelessWidget {
                     //       activeRoute.startsWith('/settings/homeserver')
                     //       ? theme.colorScheme.surfaceContainerHigh
                     //       : null,
-                    // ),
-                    // ListTile(
-                    //   leading: const Icon(Icons.privacy_tip_outlined),
-                    //   title: Text(L10n.of(context).privacy),
-                    //   onTap: () => launchUrl(AppConfig.privacyUrl),
                     // ),
                     // ListTile(
                     //   leading: const Icon(Icons.info_outline_rounded),
