@@ -815,7 +815,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
     "@emptyChat": {
         "type": "String",
@@ -996,7 +995,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrate": {},
     "@locationPermissionDeniedNotice": {
         "type": "String",
         "placeholders": {}
@@ -1996,8 +1994,6 @@
     "leave": "ออกจาก",
     "leftTheChat": "ออกจากแชทแล้ว",
     "lightTheme": "แสง",
-    "dehydrate": "ส่งออกเซสชันและล้างข้อมูลอุปกรณ์",
-    "dehydrateWarning": "ไม่สามารถยกเลิกการดำเนินการนี้ได้ โปรดเก็บไฟล์สำรองข้อมูลอย่างปลอดภัย",
     "hydrate": "กู้คืนจากไฟล์สำรองข้อมูล",
     "loadingPleaseWait": "กำลังโหลด… กรุณารอ",
     "loadMore": "โหลดเพิ่มเติม…",

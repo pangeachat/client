@@ -646,7 +646,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
     "@emptyChat": {
         "type": "String",
@@ -853,7 +852,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrate": {},
     "@locationPermissionDeniedNotice": {
         "type": "String",
         "placeholders": {}
@@ -1994,8 +1992,6 @@
     "leave": "छोड़ें",
     "leftTheChat": "चैट छोड़ दिया",
     "lightTheme": "प्रकाश",
-    "dehydrate": "सत्र निर्यात करें और डिवाइस को साफ़ करें",
-    "dehydrateWarning": "यह क्रिया पूर्ववत नहीं की जा सकती। सुनिश्चित करें कि आप बैकअप फ़ाइल को सुरक्षित रूप से संग्रहित करें।",
     "hydrate": "बैकअप फ़ाइल से पुनर्स्थापित करें",
     "loadingPleaseWait": "लोड हो रहा है… कृपया प्रतीक्षा करें।",
     "loadMore": "और लोड करें…",

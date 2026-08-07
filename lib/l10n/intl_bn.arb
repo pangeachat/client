@@ -759,7 +759,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
     "@emptyChat": {
         "type": "String",
@@ -940,7 +939,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrate": {},
     "@locationPermissionDeniedNotice": {
         "type": "String",
         "placeholders": {}
@@ -2002,8 +2000,6 @@
     "lastActiveAgo": "শেষ সক্রিয়তা: {localizedTimeShort}",
     "leftTheChat": "চ্যাট থেকে প্রস্থান করেছেন",
     "lightTheme": "আলো",
-    "dehydrate": "সেশন এক্সপোর্ট করুন এবং ডিভাইসটি মুছে ফেলুন",
-    "dehydrateWarning": "এই ক্রিয়া পূর্বে ফিরে আসবে না। নিশ্চিত করুন যে আপনি ব্যাকআপ ফাইলটি নিরাপদে সংরক্ষণ করেছেন।",
     "hydrate": "ব্যাকআপ ফাইল থেকে পুনরুদ্ধার করুন",
     "loadingPleaseWait": "লোড হচ্ছে… দয়া করে অপেক্ষা করুন।",
     "loadMore": "আরও লোড করুন…",

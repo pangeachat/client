@@ -1386,8 +1386,6 @@
     "redactMessageDescription": "Správa bude redigovaná pre všetkých účastníkov tejto konverzácie. Toto nemôže byť vrátené.",
     "optionalRedactReason": "(Voliteľné) Dôvod redigovania tejto správy...",
     "inviteForMe": "Pozvať mňa",
-    "dehydrate": "Exportovať reláciu a vymazať zariadenie",
-    "dehydrateWarning": "Táto akcia sa nedá vrátiť. Uistite sa, že bezpečne uložíte záložný súbor.",
     "hydrate": "Obnoviť zo záložného súboru",
     "locationDisabledNotice": "Služby polohy sú zakázané. Povolením ich môžete zdieľať svoju polohu.",
     "locationPermissionDeniedNotice": "Oprávnenie na polohu bolo zamietnuté. Požiadajte o povolenie, aby ste mohli zdieľať svoju polohu.",
@@ -2838,14 +2836,6 @@
         "placeholders": {}
     },
     "@inviteForMe": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
