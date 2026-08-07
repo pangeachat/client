@@ -310,7 +310,17 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     // v3: read the canonical activities-v2 plan directly (fetched on open, per
     // the thin-list/full-on-open contract). Localization is choreo's concern,
     // consumed later when this read swaps to a choreo endpoint.
-    final lookup = await ActivityPlanRepo.instance.lookup(widget.activityId);
+    //
+    // On an existing session room, read at the room's pinned version, not the
+    // latest: role ids re-mint on owner edits, and the room's role state (and
+    // the session previews derived from it) key on the pinned ids, so a latest
+    // read makes every assignedRoles lookup miss and renders occupied role
+    // cards as OPEN (#8213). Null (no room, or legacy embedded room) reads the
+    // latest, as before.
+    final lookup = await ActivityPlanRepo.instance.lookup(
+      widget.activityId,
+      version: activityRoom?.pinnedActivityVersionId,
+    );
     switch (lookup.status) {
       case ActivityPlanLookupStatus.found:
         activity = lookup.plan;
