@@ -39,12 +39,15 @@ class AnalyticsStreamUpdate {
   final int totalPoints;
 
   final Set<ConstructIdentifier>? blockedConstructs;
+  final Set<ConstructIdentifier>? restoredConstructs;
+
   final String? targetID;
 
   AnalyticsStreamUpdate({
     this.points = 0,
     this.totalPoints = 0,
     this.blockedConstructs,
+    this.restoredConstructs,
     this.targetID,
   });
 }
@@ -635,6 +638,11 @@ class AnalyticsDataService {
       events,
       language,
     );
+    await _recomputeTotalXP(language);
+  }
+
+  /// Recomputes the language's XP total and level from the current aggregate.
+  Future<void> _recomputeTotalXP(String language) async {
     final vocab = await getAggregatedConstructs(
       ConstructTypeEnum.vocab,
       language,
@@ -646,29 +654,33 @@ class AnalyticsDataService {
     final constructs = [...vocab.values, ...morphs.values];
     final totalXP = constructs.fold(0, (total, c) => total + c.points);
 
+    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
+      level: DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP),
+    );
     await _analyticsClientGetter.database.updateTotalXP(totalXP, language);
   }
 
   Future<void> updateBlockedConstructs(
-    ConstructIdentifier constructId,
+    Set<ConstructIdentifier> constructIds,
     String language,
   ) async {
     await _ensureInitialized();
-    _mergeTable.removeConstruct(constructId);
+    for (final constructId in constructIds) {
+      _mergeTable.removeConstruct(constructId);
+    }
+    _invalidateCaches();
+    await _recomputeTotalXP(language);
+    _invalidateCaches();
+  }
 
-    final construct = await _analyticsClientGetter.database.getConstructUse([
-      constructId,
-    ], language);
-
-    final derived = await derivedData(language);
-    final newXP = derived.totalXP - construct.points;
-    final newLevel = DerivedAnalyticsDataModel.calculateLevelWithXp(newXP);
-
-    await MatrixState.pangeaController.userController.updateAnalyticsProfile(
-      level: newLevel,
-    );
-
-    await _analyticsClientGetter.database.updateTotalXP(newXP, language);
+  Future<void> updateRestoredConstructs(
+    Set<ConstructIdentifier> constructIds,
+    String language,
+  ) async {
+    await _ensureInitialized();
+    await _initMergeTable(language);
+    _invalidateCaches();
+    await _recomputeTotalXP(language);
     _invalidateCaches();
   }
 

@@ -15,29 +15,29 @@ The analytics system tracks learning, rewards progress, visualizes growth, and g
 5. **Teacher insights**: Teachers can view aggregate analytics for their students, helping them tailor instruction and identify who needs extra support.
 
 ## Constructs
-The core unit of analytics is a **construct** — either a vocabulary word, chunk, grammar pattern, or even higher-level concepts (see [`ConstructIdentifier`](lib/pangea/constructs/construct_identifier.dart)). It's basically anything you can track and is interesting for learning. Each construct has a unique identifier, a type (vocab vs morph), and tracks how many times the user has encountered it, practiced it, and mastered it. 
+The core unit of analytics is a **construct** — either a vocabulary word, chunk, grammar pattern, or even higher-level concepts (see [`ConstructIdentifier`](../../lib/features/analytics/construct_identifier.dart)). It's basically anything you can track and is interesting for learning. Each construct has a unique identifier, a type (vocab vs morph), and tracks how many times the user has encountered it, practiced it, and mastered it. 
 
 ### Two Kinds of Constructs
 
-Defined by [`ConstructTypeEnum`](lib/pangea/analytics_misc/construct_type_enum.dart):
+Defined by [`ConstructTypeEnum`](../../lib/features/analytics/construct_type_enum.dart):
 
 | Type | UI Label | What It Tracks | Example |
 |------|----------|----------------|--------|
 | Vocab | "Vocabulary" | Individual words identified by lemma + part of speech | "run" (verb), "bank" (noun) |
-| Morph | "Grammar" | Morphological features of words (categories from [`MorphFeaturesEnum`](lib/pangea/morphs/morph_features_enum.dart)) | Tense=Past, Number=Plural |
+| Morph | "Grammar" | Morphological features of words (categories from [`MorphFeaturesEnum`](../../lib/pangea/morphs/morph_features_enum.dart)) | Tense=Past, Number=Plural |
 
 The user sees these as two tabs in their analytics view. Grammar constructs "unlock" when they reach the Green stage (50 XP), giving users a sense of discovery.
 
 ### What Earns XP
 
-Different interactions contribute different amounts of XP, reflecting effort. Each interaction type is a value in [`ConstructUseTypeEnum`](lib/pangea/analytics_misc/construct_use_type_enum.dart), which determines how much XP it awards:
+Different interactions contribute different amounts of XP, reflecting effort. Each interaction type is a value in [`ConstructUseTypeEnum`](../../lib/features/analytics/construct_use_type_enum.dart), which determines how much XP it awards:
 
 - **Clicking a new word** in the toolbar (first view) — small XP (passive learning)
 - **Correct practice answers** (emoji matching, meaning selection, listening) — moderate XP
 - **Wrong practice answers** — reduced or zero XP (no punishment, but less reward)
 - **Using a word in writing** (via the choreographer) — XP based on the construct use type
 
-Each data point is stored as a [`OneConstructUse`](lib/pangea/analytics_misc/constructs_model.dart) which includes construct identifier, use type, timestamp, and messageId.
+Each data point is stored as a [`OneConstructUse`](../../lib/features/analytics/constructs_model.dart) which includes construct identifier, use type, timestamp, and messageId.
 
 ### Construct Deduplication
 
@@ -87,7 +87,7 @@ Total XP across all constructs determines the user's global level, computed in [
 
 $$\text{level} = \lfloor 1 + \sqrt{\frac{1 + 8 \cdot \text{totalXP} / 300}{2}} \rfloor$$
 
-Level-ups are **celebration moments**: the app shows a banner, plays a chime, and [`LevelUpAnalyticsService`](../../lib/features/analytics_data/level_up_analytics_service.dart) generates an AI summary of what the user learned since their last level-up (pulling from actual messages they sent and received).
+Level-ups are **celebration moments**: the app shows [LevelUpBadgeCelebration](../../lib/routes/world/level_up_badge_celebration.dart) – a badge pulse plus a "Level N!" chip.
 
 > This formula is still being balanced to find the optimal sequence of effort and reward.
 
@@ -136,7 +136,7 @@ This data flows from each student's analytics room to the teacher view — the t
 
 - **Never fetch analytics from Synapse per-message.** The local database is the runtime source of truth.
 - **XP per construct caps at the flower threshold (100).** [`ConstructUses.cappedUses`](../../lib/features/analytics/construct_use_model.dart) enforces this, preventing level inflation from repeatedly encountering familiar words.
-- **Level can never visibly decrease** due to negative-XP construct uses. Use offsets to maintain.
+- **Level can never visibly decrease due to negative-XP construct uses**. Use offsets to maintain. Level may visiblity decrease due to users blocking constructs.
 - **The "other" category is always filtered out** of aggregations and displays. It represents unclassifiable tokens.
 - **Analytics initialization must complete before any UI reads.** All public methods await an init completer.
 - **A UI surface reads live analytics through the update streams, subscribed during build — not via a listener attached after mount.** [`AnalyticsUpdateDispatcher`](lib/features/analytics_data/analytics_update_dispatcher.dart) fires its first construct/activity update once, during init, on hot broadcast streams with no replay. A widget that subscribes *after* init completes (a manual `listen` in `didChangeDependencies`) misses that event and shows stale/zero until the next live update. Read inside a `StreamBuilder` on the construct/activity streams — which subscribes during build, before init finishes — and read `numConstructs`/`derivedData` *inside* the builder so each rebuild is fresh. The chat-list `LearningProgressIndicators` and the world map's top-right cluster (see [routing.instructions.md](routing.instructions.md)) both follow this.

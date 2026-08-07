@@ -92,7 +92,7 @@ class AnalyticsSyncController {
         _onLemmaInfoEvents(updates);
         break;
       case _AnalyticsUpdateEvent.blockedConstruct:
-        await _onBlockedConstructEvents(updates, language);
+        await _onAnalyticsSettingsEvents(updates, language);
         break;
     }
   }
@@ -151,7 +151,7 @@ class AnalyticsSyncController {
     }
   }
 
-  Future<void> _onBlockedConstructEvents(
+  Future<void> _onAnalyticsSettingsEvents(
     List<MatrixEvent> events,
     String language,
   ) async {
@@ -164,14 +164,27 @@ class AnalyticsSyncController {
           : null;
 
       final newBlocked = current.blockedConstructs;
-      final prevBlocked = prev?.blockedConstructs ?? {};
+      final prevBlocked = prev?.blockedConstructs ?? <ConstructIdentifier>{};
 
-      final newlyBlocked = newBlocked.where((c) => !prevBlocked.contains(c));
-      if (newlyBlocked.isEmpty) continue;
-      await dataService.updateDispatcher.sendBlockedConstructsUpdate(
-        newlyBlocked.toSet(),
-        language,
-      );
+      final newlyBlocked = newBlocked
+          .where((c) => !prevBlocked.contains(c))
+          .toSet();
+      if (newlyBlocked.isNotEmpty) {
+        await dataService.updateDispatcher.sendBlockedConstructsUpdate(
+          newlyBlocked,
+          language,
+        );
+      }
+
+      final newlyRestored = prevBlocked
+          .where((c) => !newBlocked.contains(c))
+          .toSet();
+      if (newlyRestored.isNotEmpty) {
+        await dataService.updateDispatcher.sendRestoredConstructsUpdate(
+          newlyRestored,
+          language,
+        );
+      }
     }
   }
 
