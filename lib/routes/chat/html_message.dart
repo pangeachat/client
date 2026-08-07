@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:go_router/go_router.dart';
 import 'package:highlight/highlight.dart' show highlight;
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
@@ -28,6 +29,7 @@ import 'package:fluffychat/routes/chat/toolbar/reading_assistance/token_emoji_bu
 import 'package:fluffychat/utils/code_highlight_theme.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -1148,11 +1150,51 @@ class MatrixPill extends StatelessWidget {
     // Pangea#
   });
 
+  // #Pangea
+  /// A user pill opens that user's profile popup in-app. Only a non-user pill
+  /// (a room or alias) falls through to the URL launcher — handing a user's
+  /// `matrix.to` link to the browser sent the reader out of the app
+  /// (pangeachat/client#8187).
+  Future<void> _onTap() async {
+    final userId = this.userId;
+    if (userId == null) {
+      UrlLauncher(outerContext, uri).launchUrl();
+      return;
+    }
+    // The room's in-memory user is a bare fallback for someone who isn't a
+    // member here, so prefer the server profile — it's usually already cached,
+    // and awaiting it directly keeps the popup one tap away (a
+    // showFutureLoadingDialog wrapper here suppresses the popup entirely).
+    // What the pill renders is the fallback, so the two can't disagree.
+    var noProfileWarning = false;
+    Profile profile;
+    try {
+      profile = await Matrix.of(
+        outerContext,
+      ).client.getProfileFromUserId(userId);
+    } catch (_) {
+      noProfileWarning = true;
+      profile = Profile(userId: userId, displayName: name, avatarUrl: avatar);
+    }
+    if (!outerContext.mounted) return;
+    await UserDialog.show(
+      context: outerContext,
+      profile: profile,
+      noProfileWarning: noProfileWarning,
+      uri: GoRouterState.of(outerContext).uri,
+    );
+  }
+
+  // Pangea#
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.transparent,
-      onTap: UrlLauncher(outerContext, uri).launchUrl,
+      // #Pangea
+      // onTap: UrlLauncher(outerContext, uri).launchUrl,
+      onTap: _onTap,
+      // Pangea#
       // #Pangea
       child: RichText(
         textScaler: TextScaler.noScaling,
