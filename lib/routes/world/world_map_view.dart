@@ -15,7 +15,6 @@ import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/dot_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
@@ -143,7 +142,7 @@ class LargeCardSnapshot {
   final ActivityPlanModel? plan;
   final Room? liveRoom;
   final int starsEarned;
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
   final ActivityStarLevel starLevel;
 
@@ -643,8 +642,7 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// holds the learner's live room (the large card resolves it for the message
   /// preview too), it passes [liveRoom] so the `ongoingPending` arm reuses it
   /// instead of re-scanning.
-  ({List<LargeCardParticipant> participants, int openSlots})
-  _sessionParticipants(
+  ({List<String> participants, int openSlots}) _sessionParticipants(
     String activityId,
     ActivityPinState state, {
     Room? liveRoom,
@@ -658,9 +656,9 @@ class _WorldMapViewState extends State<WorldMapView> {
             : null;
         return (
           participants:
-              joinableActivity?.largeCardParticipants ??
-              discoveredSummary?.largeCardParticipants ??
-              const <LargeCardParticipant>[],
+              joinableActivity?.largeCardParticipantIds ??
+              discoveredSummary?.largeCardParticipantIds ??
+              const <String>[],
           openSlots:
               joinableActivity?.numRemainingRoles ??
               discoveredSummary?.openSlots ??
@@ -671,12 +669,11 @@ class _WorldMapViewState extends State<WorldMapView> {
             liveRoom ??
             widget.controller.client?.activeActivityInstance(activityId);
         return (
-          participants:
-              room?.largeCardParticipants ?? const <LargeCardParticipant>[],
+          participants: room?.largeCardParticipantIds ?? const <String>[],
           openSlots: room?.numRemainingRoles ?? 0,
         );
       default:
-        return (participants: const <LargeCardParticipant>[], openSlots: 0);
+        return (participants: const <String>[], openSlots: 0);
     }
   }
 

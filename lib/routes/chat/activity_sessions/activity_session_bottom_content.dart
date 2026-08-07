@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -9,10 +8,9 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
+import 'package:fluffychat/pangea/common/widgets/user_profile_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 
 class ActivitySessionBottomContent extends StatelessWidget {
   final ActivitySessionStateController controller;
@@ -55,7 +53,6 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
             return _ActivitySummaryStatusSection(
               status: status,
               roomSummaries: roomSummaries,
-              course: controller.course,
               onTap: controller.joinActivityByRoomId,
             );
           }),
@@ -69,13 +66,11 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
   final ActivitySummaryStatus status;
   final Map<String, RoomSummaryResponse> roomSummaries;
 
-  final Room? course;
   final Function(String) onTap;
 
   const _ActivitySummaryStatusSection({
     required this.status,
     required this.roomSummaries,
-    required this.course,
     required this.onTap,
   });
 
@@ -103,7 +98,6 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
           ...roomSummaries.entries.map((e) {
             return _ActivitySessionDetailsTile(
               roomSummary: e.value,
-              course: course,
               onTap: () => onTap(e.key),
             );
           }),
@@ -115,12 +109,10 @@ class _ActivitySummaryStatusSection extends StatelessWidget {
 
 class _ActivitySessionDetailsTile extends StatelessWidget {
   final RoomSummaryResponse roomSummary;
-  final Room? course;
   final VoidCallback onTap;
 
   const _ActivitySessionDetailsTile({
     required this.roomSummary,
-    required this.course,
     required this.onTap,
   });
 
@@ -131,7 +123,6 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
     final textSummary = activitySummary?.summary?.summary;
     final analytics = activitySummary?.analytics;
     final participants = roomSummary.membershipSummary.keys;
-    final users = course?.getParticipants();
     final theme = Theme.of(context);
 
     return Padding(
@@ -261,15 +252,6 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ...participants.map((userId) {
-                          final user = users?.firstWhereOrNull(
-                            (u) => u.id == userId,
-                          );
-
-                          final displayName =
-                              user?.localizedDisplayname(L10n.of(context)) ??
-                              userId.localpart ??
-                              userId;
-
                           final role = activityRoles?.role(userId);
 
                           final userSummary = activitySummary?.summary
@@ -285,19 +267,28 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                               child: Column(
                                 spacing: 6.0,
                                 children: [
-                                  Text(
-                                    displayName,
-                                    style: const TextStyle(fontSize: 12.0),
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    textAlign: TextAlign.center,
-                                  ),
-                                  Avatar(
-                                    mxContent: user?.avatarUrl,
-                                    name: userId.localpart,
-                                    size: 60.0,
+                                  // Name and avatar both come from the user's
+                                  // own profile: this tile lists sessions the
+                                  // learner has NOT joined, so there is no
+                                  // member state to resolve them from and the
+                                  // course-member lookup this replaced left
+                                  // everyone at their localpart with a default
+                                  // avatar (#8192).
+                                  UserProfileBuilder(
                                     userId: userId,
+                                    builder: (context, profile) => Text(
+                                      profileDisplayName(
+                                        userId,
+                                        profile,
+                                        L10n.of(context),
+                                      ),
+                                      style: const TextStyle(fontSize: 12.0),
+                                      maxLines: 1,
+                                      overflow: TextOverflow.ellipsis,
+                                      textAlign: TextAlign.center,
+                                    ),
                                   ),
+                                  UserProfileAvatar(userId: userId, size: 60.0),
                                   if (userSummary != null)
                                     Text(
                                       userSummary.cefrLevel,

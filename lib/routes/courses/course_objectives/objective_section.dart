@@ -9,7 +9,6 @@ import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 class ObjectiveSection extends StatefulWidget {
@@ -25,7 +24,7 @@ class ObjectiveSection extends StatefulWidget {
   final ({
     ActivityPinState? state,
     int openSessions,
-    List<LargeCardParticipant> participants,
+    List<String> participants,
     int openSlots,
   })
   Function(String activityId)

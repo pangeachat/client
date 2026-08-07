@@ -20,7 +20,6 @@ import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
@@ -159,7 +158,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   ///    discriminator — [Room.numRemainingRoles] > 0 (seats still empty) →
   ///    [ActivityPinState.ongoingPending] (Waiting), else
   ///    [ActivityPinState.ongoingActive] — and carries the room's roster
-  ///    ([Room.largeCardParticipants] + remaining seats) so the card can draw
+  ///    ([Room.largeCardParticipantIds] + remaining seats) so the card can draw
   ///    the same participant row the map's pending pin does.
   ///  * Otherwise, open sessions others started that the learner can join —
   ///    counted from the map's shared [DiscoveredSessionsCache] (best-effort; the
@@ -169,7 +168,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   ({
     ActivityPinState? state,
     int openSessions,
-    List<LargeCardParticipant> participants,
+    List<String> participants,
     int openSlots,
   })
   _liveStateFor(String activityId) {
@@ -192,7 +191,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
             ? ActivityPinState.ongoingPending
             : ActivityPinState.ongoingActive,
         openSessions: 0,
-        participants: live?.largeCardParticipants ?? const [],
+        participants: live?.largeCardParticipantIds ?? const [],
         openSlots: remaining,
       );
     }

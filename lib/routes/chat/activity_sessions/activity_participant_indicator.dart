@@ -7,7 +7,7 @@ import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/bot/widgets/bot_settings_language_icon.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
+import 'package:fluffychat/pangea/common/widgets/user_profile_builder.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/activity_star_row.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -54,7 +54,6 @@ class ActivityParticipantIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final borderRadius = this.borderRadius ?? BorderRadius.circular(8.0);
     return MouseRegion(
       cursor: SystemMouseCursors.basic,
       child: GestureDetector(
@@ -71,119 +70,149 @@ class ActivityParticipantIndicator extends StatelessWidget {
           absorbing: !selectable,
           child: HoverBuilder(
             builder: (context, hovered) {
-              // Prefer the member's display name over the raw @localpart so a
-              // role reads as a human name, not a username (#7366). Falls back
-              // to the localpart when the occupant isn't a resolved member.
-              final displayName =
-                  user?.localizedDisplayname(L10n.of(context)) ??
-                  userId?.localpart;
-              final avatar = userId != null
-                  ? Avatar(
-                      mxContent: user?.avatarUrl != null
-                          ? user!.avatarUrl!
-                          : null,
-                      name: displayName ?? userId!.localpart,
-                      size: 60.0,
-                      userId: userId,
-                      miniIcon:
-                          room != null && user?.id == BotName.byEnvironment
-                          ? BotSettingsLanguageIcon(user: user!)
-                          : null,
-                      presenceOffset:
-                          room != null && user?.id == BotName.byEnvironment
-                          ? const Offset(0, 0)
-                          : null,
+              final userId = this.userId;
+              // The seat's occupant is drawn from their own fetched profile
+              // rather than from a [User] resolved upstream: on a session the
+              // learner hasn't joined there is no member state to resolve one
+              // from, and the card fell back to the localpart and the default
+              // letter avatar (#8192). A role reads as a human name, not a
+              // username (#7366).
+              return userId == null
+                  ? _card(
+                      context,
+                      hovered: hovered,
+                      displayName: null,
+                      avatar: CircleAvatar(
+                        radius: 30.0,
+                        backgroundColor: theme.colorScheme.primaryContainer,
+                        child: const Icon(Icons.person, size: 30.0),
+                      ),
                     )
-                  : CircleAvatar(
-                      radius: 30.0,
-                      backgroundColor: theme.colorScheme.primaryContainer,
-                      child: const Icon(Icons.person, size: 30.0),
-                    );
-              return Opacity(
-                opacity: opacity,
-                child: ShimmerBackground(
-                  enabled: shimmer && !hovered,
-                  borderRadius: borderRadius,
-                  child: Container(
-                    alignment: Alignment.center,
-                    padding:
-                        padding ??
-                        const EdgeInsets.symmetric(
-                          vertical: 4.0,
-                          horizontal: 8.0,
+                  : UserProfileBuilder(
+                      userId: userId,
+                      builder: (context, profile) => _card(
+                        context,
+                        hovered: hovered,
+                        displayName: profileDisplayName(
+                          userId,
+                          profile,
+                          L10n.of(context),
                         ),
-                    decoration: BoxDecoration(
-                      borderRadius: borderRadius,
-                      color: (hovered || selected) && selectable
-                          ? theme.colorScheme.surfaceContainerHighest
-                          : theme.colorScheme.surfaceContainerLow,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withAlpha(25),
-                          blurRadius: 4.0,
-                          offset: const Offset(0, 2),
-                        ),
-                      ],
-                    ),
-                    height: 125.0,
-                    child: goals != null
-                        ? Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              Text(
-                                name,
-                                style: const TextStyle(fontSize: 12.0),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.center,
-                              ),
-                              ActivityStarRow(
-                                total: goals!.length,
-                                earned: goals!
-                                    .where(
-                                      (g) =>
-                                          completedGoalIds?.contains(g.id) ??
-                                          false,
-                                    )
-                                    .length,
-                                iconSize: 22.0,
-                              ),
-                            ],
-                          )
-                        : Column(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text(
-                                name,
-                                style: const TextStyle(fontSize: 12.0),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.center,
-                              ),
-                              avatar,
-                              Text(
-                                displayName ?? L10n.of(context).openRoleLabel,
-                                style: TextStyle(
-                                  fontSize: 12.0,
-                                  color:
-                                      (Theme.of(context).brightness ==
-                                          Brightness.light
-                                      ? (displayName?.darkColor ??
-                                            theme.colorScheme.primary)
-                                      : (displayName?.lightColorText ??
-                                            theme.colorScheme.primary)),
-                                ),
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ],
+                        avatar: Avatar(
+                          mxContent: profile?.avatarUrl,
+                          name: profileDisplayName(
+                            userId,
+                            profile,
+                            L10n.of(context),
                           ),
-                  ),
-                ),
-              );
+                          size: 60.0,
+                          userId: userId,
+                          // The language badge reads the bot's room member
+                          // event, so it still needs the resolved [User] —
+                          // unlike the name and avatar, it simply doesn't
+                          // render when there is none.
+                          miniIcon:
+                              room != null && user?.id == BotName.byEnvironment
+                              ? BotSettingsLanguageIcon(user: user!)
+                              : null,
+                          presenceOffset:
+                              room != null && user?.id == BotName.byEnvironment
+                              ? const Offset(0, 0)
+                              : null,
+                        ),
+                      ),
+                    );
             },
           ),
+        ),
+      ),
+    );
+  }
+
+  /// The seat tile itself — role name, the occupant's [avatar] and
+  /// [displayName] (null for an empty seat, which reads "open role"), or the
+  /// role's star row in stars mode.
+  Widget _card(
+    BuildContext context, {
+    required bool hovered,
+    required String? displayName,
+    required Widget avatar,
+  }) {
+    final theme = Theme.of(context);
+    final borderRadius = this.borderRadius ?? BorderRadius.circular(8.0);
+    return Opacity(
+      opacity: opacity,
+      child: ShimmerBackground(
+        enabled: shimmer && !hovered,
+        borderRadius: borderRadius,
+        child: Container(
+          alignment: Alignment.center,
+          padding:
+              padding ??
+              const EdgeInsets.symmetric(vertical: 4.0, horizontal: 8.0),
+          decoration: BoxDecoration(
+            borderRadius: borderRadius,
+            color: (hovered || selected) && selectable
+                ? theme.colorScheme.surfaceContainerHighest
+                : theme.colorScheme.surfaceContainerLow,
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withAlpha(25),
+                blurRadius: 4.0,
+                offset: const Offset(0, 2),
+              ),
+            ],
+          ),
+          height: 125.0,
+          child: goals != null
+              ? Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(fontSize: 12.0),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    ),
+                    ActivityStarRow(
+                      total: goals!.length,
+                      earned: goals!
+                          .where(
+                            (g) => completedGoalIds?.contains(g.id) ?? false,
+                          )
+                          .length,
+                      iconSize: 22.0,
+                    ),
+                  ],
+                )
+              : Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      name,
+                      style: const TextStyle(fontSize: 12.0),
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                    ),
+                    avatar,
+                    Text(
+                      displayName ?? L10n.of(context).openRoleLabel,
+                      style: TextStyle(
+                        fontSize: 12.0,
+                        color: (Theme.of(context).brightness == Brightness.light
+                            ? (displayName?.darkColor ??
+                                  theme.colorScheme.primary)
+                            : (displayName?.lightColorText ??
+                                  theme.colorScheme.primary)),
+                      ),
+                      textAlign: TextAlign.center,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
         ),
       ),
     );
