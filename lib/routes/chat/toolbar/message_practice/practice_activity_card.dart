@@ -6,10 +6,12 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/card_error_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/content_loading_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_morph_choice.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_controller.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_exercise_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_match_card.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
@@ -93,6 +95,72 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
     }
   }
 
+  Future<void> _onFlagExercise(MatchPracticeExerciseModel activity) async {
+    final loadedTarget = widget.targetTokensAndActivityType;
+    final outcome = await showDialog<PracticeFeedbackOutcome>(
+      context: context,
+      builder: (context) => PracticeExerciseFeedbackDialog(
+        activity: activity,
+        target: loadedTarget,
+        controller: widget.controller,
+      ),
+    );
+    if (outcome == null || !mounted) return;
+
+    // Rebuild the exercise from the corrected lemma content — unless the
+    // target changed while the dialog was open, in which case the card has
+    // already refetched.
+    if (loadedTarget == widget.targetTokensAndActivityType) {
+      await _fetchActivity();
+    }
+    if (!mounted) return;
+
+    final unchanged = outcome.prior == outcome.updated;
+    await showDialog(
+      context: context,
+      builder: (context) => FeedbackResponseDialog(
+        title: L10n.of(context).practiceFeedbackDialogTitle,
+        feedback: unchanged
+            ? L10n.of(context).practiceFeedbackUnchanged
+            : L10n.of(context).practiceFeedbackUpdated,
+      ),
+    );
+  }
+
+  /// Match cards whose content comes from the lemma dictionary (emoji /
+  /// meaning) get a flag button for reporting wrong content. Listening
+  /// cards are also match cards, but their content is generated locally,
+  /// so there is nothing to report.
+  Widget _buildMatchCard(MatchPracticeExerciseModel activity) {
+    final card = MatchActivityCard(
+      currentActivity: activity,
+      controller: widget.controller,
+      playbackSpeedController: _playbackSpeedController,
+    );
+
+    final flaggable =
+        activity is EmojiPracticeExerciseModel ||
+        activity is LemmaMeaningPracticeExerciseModel;
+    if (!flaggable) return card;
+
+    return Stack(
+      children: [
+        card,
+        Positioned(
+          top: 0.0,
+          right: 0.0,
+          child: IconButton(
+            color: Theme.of(context).iconTheme.color,
+            iconSize: 20.0,
+            icon: const Icon(Icons.flag_outlined),
+            tooltip: L10n.of(context).practiceFeedbackButtonTooltip,
+            onPressed: () => _onFlagExercise(activity),
+          ),
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -114,10 +182,8 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
                     selectedToken: widget.selectedToken,
                     maxWidth: widget.maxWidth,
                   ),
-                MatchPracticeExerciseModel() => MatchActivityCard(
-                  currentActivity: state.value as MatchPracticeExerciseModel,
-                  controller: widget.controller,
-                  playbackSpeedController: _playbackSpeedController,
+                MatchPracticeExerciseModel() => _buildMatchCard(
+                  state.value as MatchPracticeExerciseModel,
                 ),
               },
               _ => const SizedBox.shrink(),

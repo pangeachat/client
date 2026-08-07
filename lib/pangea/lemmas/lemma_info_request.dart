@@ -3,6 +3,7 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
@@ -13,7 +14,10 @@ class LemmaInfoRequest extends BaseRequest {
   final String userL1;
   final Map<String, dynamic> messageInfo;
 
-  List<LemmaInfoResponse> feedback;
+  /// User corrections to previously served content, matching the server's
+  /// `list[LLMFeedbackSchema]`. Excluded from [storageKey] so the regenerated
+  /// response overwrites the same cache slot.
+  List<LLMFeedbackModel<LemmaInfoResponse>> feedback;
   bool? mock;
 
   LemmaInfoRequest({
