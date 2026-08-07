@@ -137,6 +137,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                                 overflow: TextOverflow.ellipsis,
                                 textAlign: TextAlign.center,
                               ),
+                              avatar,
                               ActivityStarRow(
                                 total: goals!.length,
                                 earned: goals!
