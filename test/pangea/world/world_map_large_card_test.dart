@@ -4,7 +4,6 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_large_card.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_selection.dart';
@@ -29,7 +28,7 @@ void main() {
     bool isFocused = false,
     Color primary = const Color(0xFF112233),
     ActivityPinState state = ActivityPinState.available,
-    List<LargeCardParticipant> participants = const [],
+    List<String> participants = const [],
     int openSlots = 0,
     int starsEarned = 0,
     QuestActivityCard? cardOverride,
