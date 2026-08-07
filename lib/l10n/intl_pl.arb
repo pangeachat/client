@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-05 11:42:15.882924",
+    "@@last_modified": "2026-08-07 13:12:52.771408",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -7687,16 +7687,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "To słowo w słownictwie zostanie trwale usunięte z twojej analizy",
     "woman": "Kobieta",
     "man": "Mężczyzna",
     "otherGender": "Inna",
     "unselectedGender": "Wybierz opcję płci",
     "chatParticipantTooltip": "To wszyscy w tym czacie. Kliknij na avatar dowolnego użytkownika i wybierz „rozpocznij rozmowę”, aby wysłać wiadomość prywatną.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9792,5 +9787,13 @@
     "conversationFromDayOne": "Rozmowa od pierwszego dnia",
     "builtForConnection": "Stworzone do nawiązywania kontaktów",
     "aiWhenYouNeedIt": "AI, kiedy jej potrzebujesz",
-    "practiceTailoredForYou": "Praktyka dopasowana do Ciebie"
+    "practiceTailoredForYou": "Praktyka dopasowana do Ciebie",
+    "deletedVocab": "Usunięte słowa",
+    "blockLemmaConfirmation": "To słowo zostanie usunięte z Twojego słownictwa i przestanie przynosić punkty XP. Możesz je przywrócić z Usuniętych słów.",
+    "deletedVocabListBody": "Te słowa są ukryte w Twoim słownictwie i nie przynoszą punktów XP. Przywróć je, aby ponownie je aktywować.",
+    "deletedVocabListBodyEmpty": "Nie usunąłeś żadnych słów. Słowa usunięte ze słownictwa pojawią się tutaj, abyś mógł je przywrócić.",
+    "deletedVocabListLabel": "Usunięte słowa",
+    "restore": "Przywróć",
+    "deletedWordLabel": "{lemma}, usunięte",
+    "restoredWords": "{count, plural, =1{Przywrócono 1 słowo} other{Przywrócono {count} słów}}"
 }

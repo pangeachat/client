@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-05 11:42:13.544604",
+    "@@last_modified": "2026-08-07 13:12:44.486206",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Opin lotur ({num})",
     "inProgressActivitiesTitle": "Í gangi núna ({num})",
     "pickDifferentActivity": "Veldu annað verkefni",
-    "blockLemmaConfirmation": "Þetta orð verður fjarlægt varanlega úr greiningum þínum",
     "woman": "Kona",
     "man": "Maður",
     "otherGender": "Annað",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "Samræður frá fyrsta degi",
     "builtForConnection": "Hannað fyrir tengingu",
     "aiWhenYouNeedIt": "Gervigreind þegar þú þarft á henni að halda",
-    "practiceTailoredForYou": "Æfing sérsniðin fyrir þig"
+    "practiceTailoredForYou": "Æfing sérsniðin fyrir þig",
+    "deletedVocab": "Eydd orð",
+    "blockLemmaConfirmation": "Þetta orð verður fjarlægt úr orðaforðanum þínum og hættir að gefa þér XP. Þú getur sótt það aftur úr Eyddum orðum.",
+    "deletedVocabListBody": "Þessi orð eru falin úr orðaforðanum þínum og gefa ekki XP. Endurheimtu eitt til að fá það aftur.",
+    "deletedVocabListBodyEmpty": "Þú hefur ekki eytt neinum orðum. Orðum sem þú eyðir úr orðaforðanum þínum mun birtast hér svo þú getir sótt þau aftur.",
+    "deletedVocabListLabel": "Eydd orð",
+    "restore": "Endurheimta",
+    "deletedWordLabel": "{lemma}, eytt",
+    "restoredWords": "{count, plural, =1{Endurheimti 1 orð} other{Endurheimti {count} orð}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-05 11:42:15.522344",
+    "@@last_modified": "2026-08-07 13:12:45.675880",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Ашық сессиялар ({num})",
     "inProgressActivitiesTitle": "Қазір болып жатыр ({num})",
     "pickDifferentActivity": "Басқа әрекетті таңдаңыз",
-    "blockLemmaConfirmation": "Бұл сөздік сөз сіздің аналитикаңыздан біржола жойылады",
     "woman": "Әйел",
     "man": "Ер адам",
     "otherGender": "Басқа",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "Бірінші күннен бастап сөйлесу",
     "builtForConnection": "Байланыс үшін жасалған",
     "aiWhenYouNeedIt": "Қажет болғанда AI",
-    "practiceTailoredForYou": "Сізге арналған жаттығу"
+    "practiceTailoredForYou": "Сізге арналған жаттығу",
+    "deletedVocab": "Жойылған сөздер",
+    "blockLemmaConfirmation": "Бұл сөз сөздігіңізден жойылады және XP ұпайларын әкелмейді. Оны Жойылған сөздер бөлімінен қайтаруға болады.",
+    "deletedVocabListBody": "Бұл сөздер сөздігіңізден жасырылған және XP ұпайларын әкелмейді. Оны қайтару үшін қалпына келтіріңіз.",
+    "deletedVocabListBodyEmpty": "Сіз ешқандай сөзді жойған жоқсыз. Сөздігіңізден жойған сөздер осында пайда болады, осылайша оларды қайтара аласыз.",
+    "deletedVocabListLabel": "Жойылған сөздер",
+    "restore": "Қалпына келтіру",
+    "deletedWordLabel": "{lemma}, жойылды",
+    "restoredWords": "{count, plural, =1{1 сөз қалпына келтірілді} other{{count} сөз қалпына келтірілді}}"
 }

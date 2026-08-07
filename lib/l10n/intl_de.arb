@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-05 11:42:11.325218",
+    "@@last_modified": "2026-08-07 13:12:38.984572",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -7794,16 +7794,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Dieses Vokabelwort wird dauerhaft aus Ihren Analysen entfernt",
     "woman": "Frau",
     "man": "Mann",
     "otherGender": "Sonstiges",
     "unselectedGender": "Wählen Sie eine Geschlechtsoption",
     "chatParticipantTooltip": "Das sind alle in diesem Chat. Klicken Sie auf das Avatar eines Benutzers und \"Gespräch starten\", um eine DM zu senden.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9694,5 +9689,13 @@
     "conversationFromDayOne": "Konversation vom ersten Tag an",
     "builtForConnection": "Für Verbindung gemacht",
     "aiWhenYouNeedIt": "KI, wenn du sie brauchst",
-    "practiceTailoredForYou": "Maßgeschneiderte Übungen für dich"
+    "practiceTailoredForYou": "Maßgeschneiderte Übungen für dich",
+    "deletedVocab": "Gelöschte Wörter",
+    "blockLemmaConfirmation": "Dieses Wort wird aus deinem Wortschatz entfernt und bringt keine XP mehr ein. Du kannst es über „Gelöschte Wörter“ wiederherstellen.",
+    "deletedVocabListBody": "Diese Wörter sind in deinem Wortschatz ausgeblendet und bringen keine XP ein. Stelle ein Wort wieder her, um es zurückzuholen.",
+    "deletedVocabListBodyEmpty": "Du hast noch keine Wörter gelöscht. Wörter, die du aus deinem Wortschatz löschst, werden hier angezeigt, damit du sie wiederherstellen kannst.",
+    "deletedVocabListLabel": "Gelöschte Wörter",
+    "restore": "Wiederherstellen",
+    "deletedWordLabel": "{lemma}, gelöscht",
+    "restoredWords": "{count, plural, =1{1 Wort wiederhergestellt} other{{count} Wörter wiederhergestellt}}"
 }

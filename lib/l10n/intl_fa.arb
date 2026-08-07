@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:11.842939",
+    "@@last_modified": "2026-08-07 13:12:40.666659",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -7686,16 +7686,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "این کلمه واژگان به طور دائمی از تجزیه و تحلیل شما حذف خواهد شد",
     "woman": "زن",
     "man": "مرد",
     "otherGender": "سایر",
     "unselectedGender": "یک گزینه جنسیتی انتخاب کنید",
     "chatParticipantTooltip": "این افراد در این چت هستند. روی آواتار هر کاربر کلیک کنید و \"شروع مکالمه\" را بزنید تا یک پیام مستقیم ارسال کنید.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9795,5 +9790,13 @@
     "conversationFromDayOne": "مکالمه از روز اول",
     "builtForConnection": "ساخته شده برای ارتباط",
     "aiWhenYouNeedIt": "هوش مصنوعی هر زمان که به آن نیاز داشتید",
-    "practiceTailoredForYou": "تمرین متناسب با شما"
+    "practiceTailoredForYou": "تمرین متناسب با شما",
+    "deletedVocab": "واژه‌های حذف‌شده",
+    "blockLemmaConfirmation": "این واژه از واژگان شما حذف می‌شود و دیگر امتیازی کسب نمی‌کند. می‌توانید آن را از بخش واژه‌های حذف‌شده بازگردانید.",
+    "deletedVocabListBody": "این واژه‌ها از واژگان شما پنهان شده‌اند و امتیازی کسب نمی‌کنند. برای بازگرداندن، یکی را بازیابی کنید.",
+    "deletedVocabListBodyEmpty": "شما هیچ واژه‌ای را حذف نکرده‌اید. واژه‌هایی که از واژگان خود حذف می‌کنید، در اینجا نمایش داده می‌شوند تا بتوانید آنها را بازگردانید.",
+    "deletedVocabListLabel": "واژه‌های حذف‌شده",
+    "restore": "بازیابی",
+    "deletedWordLabel": "{lemma}، حذف‌شده",
+    "restoredWords": "{count, plural, =1{۱ واژه بازیابی شد} other{{count} واژه بازیابی شد}}"
 }

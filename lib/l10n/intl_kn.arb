@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-05 11:42:13.804789",
+    "@@last_modified": "2026-08-07 13:12:46.838056",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "ತೆರೆದ ಸೆಷನ್‌ಗಳು ({num})",
     "inProgressActivitiesTitle": "ಈಗ ನಡೆಯುತ್ತಿದೆ ({num})",
     "pickDifferentActivity": "ಬೇರೆ ಚಟುವಟಿಕೆಯನ್ನು ಆರಿಸಿ",
-    "blockLemmaConfirmation": "ಈ ಶಬ್ದಕೋಶದ ಪದವನ್ನು ನಿಮ್ಮ ವಿಶ್ಲೇಷಣೆಯಿಂದ ಶಾಶ್ವತವಾಗಿ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ",
     "woman": "ಮಹಿಳೆ",
     "man": "ಪುರುಷ",
     "otherGender": "ಇತರೆ",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "ಮೊದಲ ದಿನದಿಂದಲೇ ಸಂಭಾಷಣೆ",
     "builtForConnection": "ಸಂಪರ್ಕಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ",
     "aiWhenYouNeedIt": "ನಿಮಗೆ ಬೇಕಾದಾಗ AI",
-    "practiceTailoredForYou": "ನಿಮಗಾಗಿ ರೂಪಿಸಿದ ಅಭ್ಯಾಸ"
+    "practiceTailoredForYou": "ನಿಮಗಾಗಿ ರೂಪಿಸಿದ ಅಭ್ಯಾಸ",
+    "deletedVocab": "ಅಳಿಸಿದ ಪದಗಳು",
+    "blockLemmaConfirmation": "ಈ ಪದವನ್ನು ನಿಮ್ಮ ಶಬ್ದಕೋಶದಿಂದ ತೆಗೆದುಹಾಕಲಾಗುತ್ತದೆ ಮತ್ತು XP ಗಳಿಸುವುದನ್ನು ನಿಲ್ಲಿಸುತ್ತದೆ. ನೀವು ಅದನ್ನು ಅಳಿಸಿದ ಪದಗಳಿಂದ ಮರಳಿ ತರಬಹುದು.",
+    "deletedVocabListBody": "ಈ ಪದಗಳನ್ನು ನಿಮ್ಮ ಶಬ್ದಕೋಶದಿಂದ ಮರೆಮಾಡಲಾಗಿದೆ ಮತ್ತು XP ಗಳಿಸುವುದಿಲ್ಲ. ಅದನ್ನು ಮರಳಿ ತರಲು ಒಂದನ್ನು ಮರುಸ್ಥಾಪಿಸಿ.",
+    "deletedVocabListBodyEmpty": "ನೀವು ಯಾವುದೇ ಪದಗಳನ್ನು ಅಳಿಸಿಲ್ಲ. ನಿಮ್ಮ ಶಬ್ದಕೋಶದಿಂದ ನೀವು ಅಳಿಸುವ ಪದಗಳು ಇಲ್ಲಿ ಕಾಣಿಸುತ್ತವೆ, ಆದ್ದರಿಂದ ನೀವು ಅವುಗಳನ್ನು ಮರಳಿ ತರಬಹುದು.",
+    "deletedVocabListLabel": "ಅಳಿಸಿದ ಪದಗಳು",
+    "restore": "ಮರುಸ್ಥಾಪಿಸಿ",
+    "deletedWordLabel": "{lemma}, ಅಳಿಸಲಾಗಿದೆ",
+    "restoredWords": "{count, plural, =1{1 ಪದವನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ} other{{count} ಪದಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ}}"
 }

@@ -3098,7 +3098,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-05 11:42:12.375837",
+    "@@last_modified": "2026-08-07 13:12:42.502905",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8225,16 +8225,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "यह शब्द आपके विश्लेषण से स्थायी रूप से हटा दिया जाएगा",
     "woman": "महिला",
     "man": "पुरुष",
     "otherGender": "अन्य",
     "unselectedGender": "एक लिंग विकल्प चुनें",
     "chatParticipantTooltip": "यह इस चैट में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेजा जा सके।",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10339,5 +10334,13 @@
     "conversationFromDayOne": "पहले दिन से बातचीत",
     "builtForConnection": "कनेक्शन के लिए बनाया गया",
     "aiWhenYouNeedIt": "जब आपको ज़रूरत हो, तब AI",
-    "practiceTailoredForYou": "आपके लिए तैयार किया गया अभ्यास"
+    "practiceTailoredForYou": "आपके लिए तैयार किया गया अभ्यास",
+    "deletedVocab": "हटाए गए शब्द",
+    "blockLemmaConfirmation": "यह शब्द आपकी शब्दावली से हटा दिया जाएगा और XP अर्जित करना बंद कर देगा। आप इसे हटाए गए शब्दों से वापस ला सकते हैं।",
+    "deletedVocabListBody": "ये शब्द आपकी शब्दावली से छिपे हुए हैं और XP अर्जित नहीं करते हैं। इसे वापस लाने के लिए किसी एक को पुनर्स्थापित करें।",
+    "deletedVocabListBodyEmpty": "आपने कोई शब्द नहीं हटाया है। आपकी शब्दावली से हटाए गए शब्द यहां दिखाई देंगे ताकि आप उन्हें वापस ला सकें।",
+    "deletedVocabListLabel": "हटाए गए शब्द",
+    "restore": "पुनर्स्थापित करें",
+    "deletedWordLabel": "{lemma}, हटाया गया",
+    "restoredWords": "{count, plural, =1{1 शब्द पुनर्स्थापित किया गया} other{{count} शब्द पुनर्स्थापित किए गए}}"
 }

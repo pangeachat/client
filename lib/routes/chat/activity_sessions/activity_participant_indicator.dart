@@ -53,6 +53,28 @@ class ActivityParticipantIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final borderRadius = this.borderRadius ?? BorderRadius.circular(8.0);
+
+    final avatar = userId == null
+        ? CircleAvatar(
+            radius: 30.0,
+            backgroundColor: theme.colorScheme.primaryContainer,
+            child: const Icon(Icons.person, size: 30.0),
+          )
+        : UserProfileAvatar(
+            userId: userId!,
+            size: 60.0,
+            // The language badge reads the bot's room
+            // member event, so it still needs the resolved
+            // [User] — unlike the name and avatar, it
+            // simply doesn't render when there is none.
+            miniIcon: room != null && user?.id == BotName.byEnvironment
+                ? BotSettingsLanguageIcon(user: user!)
+                : null,
+            presenceOffset: room != null && user?.id == BotName.byEnvironment
+                ? const Offset(0, 0)
+                : null,
+          );
+
     return MouseRegion(
       cursor: SystemMouseCursors.basic,
       child: GestureDetector(
@@ -106,6 +128,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                             ),
+                            avatar,
                             ActivityStarRow(
                               total: goals!.length,
                               earned: goals!
@@ -129,39 +152,7 @@ class ActivityParticipantIndicator extends StatelessWidget {
                               overflow: TextOverflow.ellipsis,
                               textAlign: TextAlign.center,
                             ),
-                            // The occupant is drawn from their own fetched
-                            // profile rather than from a [User] resolved
-                            // upstream: on a session the learner hasn't joined
-                            // there is no member state to resolve one from, and
-                            // the seat fell back to the localpart and the
-                            // default letter avatar (#8192). A role reads as a
-                            // human name, not a username (#7366).
-                            if (userId == null)
-                              CircleAvatar(
-                                radius: 30.0,
-                                backgroundColor:
-                                    theme.colorScheme.primaryContainer,
-                                child: const Icon(Icons.person, size: 30.0),
-                              )
-                            else
-                              UserProfileAvatar(
-                                userId: userId!,
-                                size: 60.0,
-                                // The language badge reads the bot's room
-                                // member event, so it still needs the resolved
-                                // [User] — unlike the name and avatar, it
-                                // simply doesn't render when there is none.
-                                miniIcon:
-                                    room != null &&
-                                        user?.id == BotName.byEnvironment
-                                    ? BotSettingsLanguageIcon(user: user!)
-                                    : null,
-                                presenceOffset:
-                                    room != null &&
-                                        user?.id == BotName.byEnvironment
-                                    ? const Offset(0, 0)
-                                    : null,
-                              ),
+                            avatar,
                             UserProfileName(
                               userId: userId,
                               fallback: L10n.of(context).openRoleLabel,

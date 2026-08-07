@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-05 11:42:17.943665",
+    "@@last_modified": "2026-08-07 13:12:58.894095",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Iiseshoni ezivulekileyo ({num})",
     "inProgressActivitiesTitle": "Kwenzeka ngoku ({num})",
     "pickDifferentActivity": "Khetha omnye umsebenzi",
-    "blockLemmaConfirmation": "Eli gama lesigama liya kususwa ngokusisigxina kuhlazo lwakho",
     "woman": "Umntu obhinqileyo",
     "man": "Umntu oyindoda",
     "otherGender": "Esinye isini",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "Incoko ukusuka kuSuku Lokuqala",
     "builtForConnection": "Yakhelwe uqhagamshelwano",
     "aiWhenYouNeedIt": "I-AI xa uyidinga",
-    "practiceTailoredForYou": "Uqheliselo olulungelelaniswe nawe"
+    "practiceTailoredForYou": "Uqheliselo olulungelelaniswe nawe",
+    "deletedVocab": "Amagama acinyiweyo",
+    "blockLemmaConfirmation": "Eli gama lizakususwa kwisigama sakho kwaye lingaphindi lifumane i-XP. Ungalibuyisela umva kumagama acinyiweyo.",
+    "deletedVocabListBody": "La magama afihliwe kwisigama sakho kwaye awafumani i-XP. Buyisela elinye ukuze ulibuyise.",
+    "deletedVocabListBodyEmpty": "Akukacimi magama. Amagama owacimayo kwisigama sakho azakuvela apha ukuze ukwazi ukuwabuyisela.",
+    "deletedVocabListLabel": "Amagama acinyiweyo",
+    "restore": "Buyisela",
+    "deletedWordLabel": "{lemma}, icinyiwe",
+    "restoredWords": "{count, plural, =1{Libuyisiwe igama eli-1} other{Abuyisiwe amagama angama-{count}}}"
 }

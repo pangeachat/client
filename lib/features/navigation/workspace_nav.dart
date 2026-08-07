@@ -853,6 +853,16 @@ abstract class WorkspaceNav {
     ),
   ], closeSections: closeSections);
 
+  static String openBlockedVocabList(Uri current) => pushPage(
+    current,
+    const AnalyticsPanelToken(
+      AnalyticsTokenParam(
+        subpage: ProgressIndicatorEnum.wordsUsed,
+        deleted: true,
+      ),
+    ),
+  );
+
   static String closeConstructDetail(Uri current, ConstructTypeEnum view) =>
       setRight(current, [
         AnalyticsPanelToken(

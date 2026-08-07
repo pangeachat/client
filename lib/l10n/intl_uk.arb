@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-05 11:42:17.554508",
+    "@@last_modified": "2026-08-07 13:12:57.999600",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -7773,16 +7773,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Це слово vocab буде назавжди видалено з вашої аналітики",
     "woman": "Жінка",
     "man": "Чоловік",
     "otherGender": "Інше",
     "unselectedGender": "Виберіть варіант статі",
     "chatParticipantTooltip": "Це всі учасники цього чату. Натисніть на аватар будь-якого користувача та \"почати розмову\", щоб надіслати особисте повідомлення.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9707,5 +9702,13 @@
     "conversationFromDayOne": "Розмова з першого дня",
     "builtForConnection": "Створено для спілкування",
     "aiWhenYouNeedIt": "ШІ, коли він вам потрібен",
-    "practiceTailoredForYou": "Практика, адаптована для вас"
+    "practiceTailoredForYou": "Практика, адаптована для вас",
+    "deletedVocab": "Видалені слова",
+    "blockLemmaConfirmation": "Це слово буде видалено з вашого словника та перестане приносити XP. Ви можете повернути його з Видалених слів.",
+    "deletedVocabListBody": "Ці слова приховані з вашого словника та не приносять XP. Відновіть слово, щоб повернути його.",
+    "deletedVocabListBodyEmpty": "Ви не видалили жодного слова. Слова, які ви видалите зі свого словника, з'являться тут, щоб ви могли їх повернути.",
+    "deletedVocabListLabel": "Видалені слова",
+    "restore": "Відновити",
+    "deletedWordLabel": "{lemma}, видалено",
+    "restoredWords": "{count, plural, =1{Відновлено 1 слово} other{Відновлено {count} слів}}"
 }

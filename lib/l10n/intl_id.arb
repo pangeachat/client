@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:13.221476",
+    "@@last_modified": "2026-08-07 13:12:44.081243",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -7696,16 +7696,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Kata vocab ini akan dihapus secara permanen dari analitik Anda",
     "woman": "Wanita",
     "man": "Pria",
     "otherGender": "Lainnya",
     "unselectedGender": "Pilih opsi gender",
     "chatParticipantTooltip": "Ini adalah semua orang di obrolan ini. Klik pada avatar pengguna mana pun dan \"mulai percakapan\" untuk mengirim DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9780,5 +9775,13 @@
     "conversationFromDayOne": "Percakapan sejak Hari Pertama",
     "builtForConnection": "Dibuat untuk koneksi",
     "aiWhenYouNeedIt": "AI saat Anda membutuhkannya",
-    "practiceTailoredForYou": "Latihan yang disesuaikan untuk Anda"
+    "practiceTailoredForYou": "Latihan yang disesuaikan untuk Anda",
+    "deletedVocab": "Kata yang dihapus",
+    "blockLemmaConfirmation": "Kata ini akan dihapus dari kosakata Anda dan tidak lagi menghasilkan XP. Anda bisa mengembalikannya dari Kata yang dihapus.",
+    "deletedVocabListBody": "Kata-kata ini disembunyikan dari kosakata Anda dan tidak menghasilkan XP. Pulihkan satu untuk mengembalikannya.",
+    "deletedVocabListBodyEmpty": "Anda belum menghapus kata apa pun. Kata yang Anda hapus dari kosakata akan muncul di sini sehingga Anda dapat mengembalikannya.",
+    "deletedVocabListLabel": "Kata yang dihapus",
+    "restore": "Pulihkan",
+    "deletedWordLabel": "{lemma}, dihapus",
+    "restoredWords": "{count, plural, =1{1 kata dipulihkan} other{{count} kata dipulihkan}}"
 }

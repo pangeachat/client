@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-05 11:42:12.882507",
+    "@@last_modified": "2026-08-07 13:12:41.802320",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Seiseanan fosgailte ({num})",
     "inProgressActivitiesTitle": "A’ tachairt an-dràsta ({num})",
     "pickDifferentActivity": "Tagh gnìomh eadar-dhealaichte",
-    "blockLemmaConfirmation": "Thèid am facal briathrachais seo a thoirt air falbh gu buan bho na staitistig agad",
     "woman": "Boireannach",
     "man": "Fear",
     "otherGender": "Eile",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "Còmhradh bhon Chiad Latha",
     "builtForConnection": "Air a thogail airson ceangal",
     "aiWhenYouNeedIt": "AI nuair a tha feum agad air",
-    "practiceTailoredForYou": "Cleachdadh air a dhealbhadh dhut"
+    "practiceTailoredForYou": "Cleachdadh air a dhealbhadh dhut",
+    "deletedVocab": "Faclan a chaidh a sguabadh às",
+    "blockLemmaConfirmation": "Thèid am facal seo a thoirt air falbh bhon fhaclair agad agus cha choisinn e XP tuilleadh. Faodaidh tu a thoirt air ais bho Faclan a chaidh a sguabadh às.",
+    "deletedVocabListBody": "Tha na faclan seo falaichte bhon fhaclair agad agus cha choisinn iad XP. Thoir air ais fear gus a thoirt air ais.",
+    "deletedVocabListBodyEmpty": "Cha do sguab thu às facal sam bith. Nochdaidh faclan a sguabas tu às bhon fhaclair agad an seo gus an urrainn dhut an toirt air ais.",
+    "deletedVocabListLabel": "Faclan a chaidh a sguabadh às",
+    "restore": "Thoir air ais",
+    "deletedWordLabel": "{lemma}, air a sguabadh às",
+    "restoredWords": "{count, plural, =1{Chaidh 1 facal a thoirt air ais} other{Chaidh {count} facal a thoirt air ais}}"
 }

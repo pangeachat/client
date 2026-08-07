@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-05 11:42:18.317504",
+    "@@last_modified": "2026-08-07 13:12:59.654496",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -7773,16 +7773,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "这个词汇将从您的分析中永久删除",
     "woman": "女性",
     "man": "男性",
     "otherGender": "其他",
     "unselectedGender": "选择一个性别选项",
     "chatParticipantTooltip": "这就是这个聊天中的所有人。点击任何用户的头像并选择“开始对话”以发送私信。",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9707,5 +9702,13 @@
     "conversationFromDayOne": "从第一天就开始对话",
     "builtForConnection": "为连接而生",
     "aiWhenYouNeedIt": "随时随地，AI相伴",
-    "practiceTailoredForYou": "为你量身定制的练习"
+    "practiceTailoredForYou": "为你量身定制的练习",
+    "deletedVocab": "已删除的词汇",
+    "blockLemmaConfirmation": "此词将从您的词汇中移除，不再获得经验值。您可以从“已删除的词汇”中将其恢复。",
+    "deletedVocabListBody": "这些词汇已从您的词汇中隐藏，不获得经验值。恢复一个即可将其找回。",
+    "deletedVocabListBodyEmpty": "您尚未删除任何词汇。您从词汇中删除的词汇将显示在此处，以便您将其找回。",
+    "deletedVocabListLabel": "已删除的词汇",
+    "restore": "恢复",
+    "deletedWordLabel": "{lemma}，已删除",
+    "restoredWords": "{count, plural, =1{已恢复 1 个词} other{已恢复 {count} 个词}}"
 }

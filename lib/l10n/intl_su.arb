@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-05 11:42:18.227878",
+    "@@last_modified": "2026-08-07 13:12:56.134271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Sési dibuka ({num})",
     "inProgressActivitiesTitle": "Keur lumangsung ayeuna ({num})",
     "pickDifferentActivity": "Pilih kagiatan anu béda",
-    "blockLemmaConfirmation": "Kecap kosakata ieu bakal dipupus permanén tina analitik anjeun",
     "woman": "Awéwé",
     "man": "Lalaki",
     "otherGender": "Lianna",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "Paguneman ti Poé Kahiji",
     "builtForConnection": "Dijieun pikeun sambungan",
     "aiWhenYouNeedIt": "AI nalika anjeun butuh",
-    "practiceTailoredForYou": "Latihan anu disaluyukeun pikeun anjeun"
+    "practiceTailoredForYou": "Latihan anu disaluyukeun pikeun anjeun",
+    "deletedVocab": "Kecap nu Dihapus",
+    "blockLemmaConfirmation": "Kecap ieu bakal dipiceun tina kosakata anjeun sarta moal nambahan XP. Anjeun tiasa mulangkeunana ti Kecap nu Dihapus.",
+    "deletedVocabListBody": "Kecap-kecap ieu disumputkeun tina kosakata anjeun sarta henteu nambahan XP. Mulangkeunana pikeun ngabalikeunana.",
+    "deletedVocabListBodyEmpty": "Anjeun teu acan ngahapus kecap nanaon. Kecap nu anjeun hapus tina kosakata anjeun bakal muncul di dieu sangkan anjeun tiasa mulangkeunana.",
+    "deletedVocabListLabel": "Kecap nu Dihapus",
+    "restore": "Mulangkeun",
+    "deletedWordLabel": "{lemma}, dihapus",
+    "restoredWords": "{count, plural, =1{1 kecap dipulangkeun} other{{count} kecap dipulangkeun}}"
 }

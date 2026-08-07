@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-05 11:42:18.397299",
+    "@@last_modified": "2026-08-07 13:12:59.611762",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "אָפֿענע סעסיעס ({num})",
     "inProgressActivitiesTitle": "פּאַסירט איצט ({num})",
     "pickDifferentActivity": "קלויבט אַן אַנדער אַקטיוויטעט",
-    "blockLemmaConfirmation": "דאָס וואָקאַבולאַר וואָרט וועט ווערן פּערמאַנענטלי אַראָפּגענומען פון אייער אַנאַליטיקס",
     "woman": "פרוי",
     "man": "מאַן",
     "otherGender": "אַנדער",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "שמועס פֿון טאָג איין",
     "builtForConnection": "געבויט פֿאַר פֿאַרבינדונג",
     "aiWhenYouNeedIt": "ק״ק ווען איר דאַרפֿט עס",
-    "practiceTailoredForYou": "פּראַקטיק צוגעפּאַסט פֿאַר דיר"
+    "practiceTailoredForYou": "פּראַקטיק צוגעפּאַסט פֿאַר דיר",
+    "deletedVocab": "אויסגעמעקטע ווערטער",
+    "blockLemmaConfirmation": "דאָס וואָרט וועט ווערן אַראָפּגענומען פֿון דײַן וואָקאַבולאַר און וועט מער נישט פֿאַרדינען קיין XP. דו קענסט עס צוריקברענגען פֿון אויסגעמעקטע ווערטער.",
+    "deletedVocabListBody": "די ווערטער זענען באַהאַלטן פֿון דײַן וואָקאַבולאַר און פֿאַרדינען נישט קיין XP. שטעל צוריק איינס צו ברענגען עס צוריק.",
+    "deletedVocabListBodyEmpty": "דו האָסט נישט אויסגעמעקט קיין ווערטער. ווערטער וואָס דו מעקסט אויס פֿון דײַן וואָקאַבולאַר וועלן זיך באַווײַזן דאָ, כּדי דו זאָלסט זיי קענען צוריקברענגען.",
+    "deletedVocabListLabel": "אויסגעמעקטע ווערטער",
+    "restore": "צוריקשטעלן",
+    "deletedWordLabel": "{lemma}, אויסגעמעקט",
+    "restoredWords": "{count, plural, =1{צוריקגעשטעלט 1 וואָרט} other{צוריקגעשטעלט {count} ווערטער}}"
 }

@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-05 11:42:11.001268",
+    "@@last_modified": "2026-08-07 13:12:38.953755",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -8513,16 +8513,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Dette ord vil blive permanent fjernet fra din analyse",
     "woman": "Kvinde",
     "man": "Mand",
     "otherGender": "Andet",
     "unselectedGender": "Vælg en kønsoption",
     "chatParticipantTooltip": "Dette er alle i denne chat. Klik på en brugers avatar og \"start samtale\" for at sende en DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10627,5 +10622,13 @@
     "conversationFromDayOne": "Samtale fra dag ét",
     "builtForConnection": "Bygget til forbindelse",
     "aiWhenYouNeedIt": "AI, når du har brug for det",
-    "practiceTailoredForYou": "Øvelse skræddersyet til dig"
+    "practiceTailoredForYou": "Øvelse skræddersyet til dig",
+    "deletedVocab": "Slettede ord",
+    "blockLemmaConfirmation": "Dette ord fjernes fra dit ordforråd og giver ikke længere XP. Du kan gendanne det fra Slettede ord.",
+    "deletedVocabListBody": "Disse ord er skjult fra dit ordforråd og giver ikke XP. Gendan et for at få det tilbage.",
+    "deletedVocabListBodyEmpty": "Du har ikke slettet nogen ord. Ord, du sletter fra dit ordforråd, vises her, så du kan gendanne dem.",
+    "deletedVocabListLabel": "Slettede ord",
+    "restore": "Gendan",
+    "deletedWordLabel": "{lemma}, slettet",
+    "restoredWords": "{count, plural, =1{Gendannede 1 ord} other{Gendannede {count} ord}}"
 }

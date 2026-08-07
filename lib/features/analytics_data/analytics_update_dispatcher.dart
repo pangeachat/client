@@ -105,11 +105,20 @@ class AnalyticsUpdateDispatcher {
     Set<ConstructIdentifier> blockedConstructs,
     String language,
   ) async {
-    for (final blockedConstruct in blockedConstructs) {
-      await dataService.updateBlockedConstructs(blockedConstruct, language);
-    }
-    final update = AnalyticsStreamUpdate(blockedConstructs: blockedConstructs);
-    constructUpdateStream.add(update);
+    await dataService.updateBlockedConstructs(blockedConstructs, language);
+    constructUpdateStream.add(
+      AnalyticsStreamUpdate(blockedConstructs: blockedConstructs),
+    );
+  }
+
+  Future<void> sendRestoredConstructsUpdate(
+    Set<ConstructIdentifier> restoredConstructs,
+    String language,
+  ) async {
+    await dataService.updateRestoredConstructs(restoredConstructs, language);
+    constructUpdateStream.add(
+      AnalyticsStreamUpdate(restoredConstructs: restoredConstructs),
+    );
   }
 
   void sendEmptyAnalyticsUpdate() {
