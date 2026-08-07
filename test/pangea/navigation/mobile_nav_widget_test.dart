@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/semantics.dart';
 
@@ -5,6 +6,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/widgets/layouts/mobile_nav_widget.dart';
 
 /// Coverage for the world_v2 single-column bottom chrome: one floating
@@ -35,6 +37,7 @@ void main() {
     ValueChanged<bool>? onCavityFullChanged,
     double keyboardInset = 0.0,
     Widget Function(Widget child)? chatsBadgeBuilder,
+    ValueListenable<bool>? courseInvitePending,
     bool settle = true,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
@@ -63,6 +66,7 @@ void main() {
             onCavityFullChanged: onCavityFullChanged,
             keyboardInset: keyboardInset,
             chatsBadgeBuilder: chatsBadgeBuilder,
+            courseInvitePending: courseInvitePending,
           ),
         ),
       ),
@@ -216,6 +220,93 @@ void main() {
       await tester.pumpAndSettle();
 
       expect(tapped, [AppSection.chats]);
+    });
+
+    // The badge is mounted at zero opacity when no invite is pending (the
+    // badges package's own appear/disappear animation), so "is it showing" is
+    // a question about the semantics tree, not about the widget tree. Matched
+    // loosely because the rail row merges the badge's label into its own node.
+    Finder shownInviteBadge() => find.bySemanticsLabel(RegExp('Invited'));
+
+    testWidgets(
+      'a pending course invite badges the Courses item — and only the '
+      'Courses item (#8190)',
+      (tester) async {
+        final semantics = tester.ensureSemantics();
+        await pumpNav(tester, courseInvitePending: ValueNotifier(true));
+
+        expect(shownInviteBadge(), findsOneWidget);
+        expect(
+          find.descendant(
+            of: find.byType(InvitedCourseBadge),
+            matching: find.byTooltip('Courses'),
+          ),
+          findsOneWidget,
+          reason: 'the badge must enclose the Courses rail item',
+        );
+        for (final other in ['World', 'All chats', 'Add a course']) {
+          expect(
+            find.descendant(
+              of: find.byType(InvitedCourseBadge),
+              matching: find.byTooltip(other),
+            ),
+            findsNothing,
+            reason: 'only the Courses item carries the invite badge',
+          );
+        }
+        semantics.dispose();
+      },
+    );
+
+    testWidgets('no pending invite leaves the Courses item bare', (
+      tester,
+    ) async {
+      final semantics = tester.ensureSemantics();
+      await pumpNav(tester, courseInvitePending: ValueNotifier(false));
+      expect(shownInviteBadge(), findsNothing);
+
+      // And a shell that passes nothing at all is the same as no invite.
+      await unmountNav(tester);
+      await pumpNav(tester);
+      expect(shownInviteBadge(), findsNothing);
+      semantics.dispose();
+    });
+
+    testWidgets('the badge follows the invite arriving and being resolved', (
+      tester,
+    ) async {
+      // The whole reason this is a listenable: sync flips it under a nav
+      // widget that is otherwise not rebuilding.
+      final semantics = tester.ensureSemantics();
+      final pending = ValueNotifier(false);
+      addTearDown(pending.dispose);
+      await pumpNav(tester, courseInvitePending: pending);
+      expect(shownInviteBadge(), findsNothing);
+
+      pending.value = true;
+      await tester.pumpAndSettle();
+      expect(shownInviteBadge(), findsOneWidget);
+
+      pending.value = false;
+      await tester.pumpAndSettle();
+      expect(shownInviteBadge(), findsNothing);
+      semantics.dispose();
+    });
+
+    testWidgets('a badged Courses item still taps through to onSectionTap', (
+      tester,
+    ) async {
+      final tapped = <AppSection>[];
+      await pumpNav(
+        tester,
+        onSectionTap: tapped.add,
+        courseInvitePending: ValueNotifier(true),
+      );
+
+      await tester.tap(find.byTooltip('Courses'));
+      await tester.pumpAndSettle();
+
+      expect(tapped, [AppSection.courses]);
     });
   });
 

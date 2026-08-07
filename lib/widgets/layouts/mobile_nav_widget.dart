@@ -1,10 +1,14 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+
+import 'package:badges/badges.dart' show BadgePosition;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/common/widgets/pangea_icon_button.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 
@@ -54,6 +58,15 @@ class MobileNavWidget extends StatefulWidget {
   /// rebuilds — so this widget stays presentational. Null renders the plain
   /// button.
   final Widget Function(Widget child)? chatsBadgeBuilder;
+
+  /// A course invitation is waiting, so the Courses item wears the invite
+  /// badge. The web rail shows an invited course as its own badged avatar in
+  /// the rail; on one column the courses live behind this tab, so the tab
+  /// itself has to carry the invite (#8190). A listenable rather than a plain
+  /// bool: the shell owns the Matrix lookup behind it, and an arriving invite
+  /// then repaints the badge alone instead of the whole nav layer and its
+  /// cavity. Null never badges.
+  final ValueListenable<bool>? courseInvitePending;
 
   /// The open section/course content hosted in the cavity. Null means nothing
   /// is cavity-hosted (rail-only, no matter the last height).
@@ -170,6 +183,7 @@ class MobileNavWidget extends StatefulWidget {
     required this.onCourseShortcutTap,
     required this.onSectionTap,
     this.chatsBadgeBuilder,
+    this.courseInvitePending,
     this.cavityChild,
     this.cavitySection,
     this.courseShortcutHostsCavity = false,
@@ -551,6 +565,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   Widget _withChatsBadge(Widget child) =>
       widget.chatsBadgeBuilder?.call(child) ?? child;
 
+  /// Stands in for a null [MobileNavWidget.courseInvitePending] — never fires,
+  /// so the Courses item simply stays unbadged.
+  static final ValueNotifier<bool> _neverPending = ValueNotifier(false);
+
   void _onCourseShortcutTap() {
     // The shortcut's own toggle: when its course IS the hosted sheet, the tap
     // collapses/re-expands like any active rail item — a same-URL navigation
@@ -748,18 +766,38 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                           _onRailItemTap(AppSection.chats),
                                     ),
                                   ),
-                                  _RailButton(
-                                    icon: Icons.map_outlined,
-                                    selectedIcon: Icons.map,
-                                    // The specific course's highlight (the
-                                    // shortcut) outranks the section icon.
-                                    selected:
-                                        widget.activeSection ==
-                                            AppSection.courses &&
-                                        !widget.courseShortcutSelected,
-                                    tooltip: l10n.courses,
-                                    onTap: () =>
-                                        _onRailItemTap(AppSection.courses),
+                                  ValueListenableBuilder<bool>(
+                                    valueListenable:
+                                        widget.courseInvitePending ??
+                                        _neverPending,
+                                    builder: (context, pending, child) =>
+                                        InvitedCourseBadge(
+                                          showBadge: pending,
+                                          // The chats badge's corner, so the
+                                          // two rail badges sit alike.
+                                          position: BadgePosition.topEnd(
+                                            top: -1,
+                                            end: -1,
+                                          ),
+                                          // Nothing else on the rail says
+                                          // "invite", so the badge carries the
+                                          // announcement itself.
+                                          semanticLabel: l10n.invited,
+                                          child: child,
+                                        ),
+                                    child: _RailButton(
+                                      icon: Icons.map_outlined,
+                                      selectedIcon: Icons.map,
+                                      // The specific course's highlight (the
+                                      // shortcut) outranks the section icon.
+                                      selected:
+                                          widget.activeSection ==
+                                              AppSection.courses &&
+                                          !widget.courseShortcutSelected,
+                                      tooltip: l10n.courses,
+                                      onTap: () =>
+                                          _onRailItemTap(AppSection.courses),
+                                    ),
                                   ),
                                   _CourseShortcutButton(
                                     icon: widget.courseShortcutIcon,

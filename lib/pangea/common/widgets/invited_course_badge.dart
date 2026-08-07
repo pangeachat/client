@@ -13,11 +13,29 @@ class InvitedCourseBadge extends StatelessWidget {
   final b.BadgePosition? position;
   final Widget? child;
 
-  const InvitedCourseBadge({super.key, this.position, this.child});
+  /// Announces the badge to a screen reader. Null on an avatar the surrounding
+  /// tile already labels "Invited" (`add_course_tile.dart`); set where the
+  /// badge is the only sign of the invite, as on the narrow Courses tab.
+  final String? semanticLabel;
+
+  /// False leaves the child bare. For callers that show the same subtree in
+  /// both states — the Courses rail item, which is badged only while an
+  /// invitation is waiting — so the button isn't rebuilt from scratch as the
+  /// badge comes and goes.
+  final bool showBadge;
+
+  const InvitedCourseBadge({
+    super.key,
+    this.position,
+    this.child,
+    this.semanticLabel,
+    this.showBadge = true,
+  });
 
   @override
   Widget build(BuildContext context) {
     return b.Badge(
+      showBadge: showBadge,
       badgeStyle: b.BadgeStyle(
         badgeColor: AppConfig.goldByTheme(context),
         elevation: 4,
@@ -28,6 +46,7 @@ class InvitedCourseBadge extends StatelessWidget {
         Icons.mail,
         color: AppConfig.onGoldByTheme(context),
         size: 12,
+        semanticLabel: semanticLabel,
       ),
       position: position,
       child: child,

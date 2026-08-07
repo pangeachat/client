@@ -33,6 +33,12 @@ extension SpacesClientExtension on Client {
     ),
   );
 
+  /// A course invitation is waiting. Same predicate as the invited half of
+  /// [sortedCourses] — what this reports is exactly what the courses list
+  /// sorts to its top.
+  bool get hasInvitedCourse =>
+      rooms.any((r) => r.isSpace && r.membership == Membership.invite);
+
   /// In the nav rail and courses tab, prioritize invited courses,
   /// then sort alphebetically by title
   List<Room> sortedCourses(L10n l10n) =>

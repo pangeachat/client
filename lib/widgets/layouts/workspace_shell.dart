@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math' as math;
 
 import 'package:flutter/material.dart';
@@ -518,6 +519,36 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   bool _searchRestored = false;
   String? _lastScopeId;
 
+  /// Whether a course invitation is waiting, kept fresh from sync so the
+  /// Courses tab's badge appears the moment the invite lands and clears when
+  /// it is accepted or declined (#8190). A notifier rather than State: the
+  /// badge is all that repaints, not the cavity's whole hosted surface.
+  final ValueNotifier<bool> _courseInvitePending = ValueNotifier(false);
+  StreamSubscription<SyncUpdate>? _courseInviteSubscription;
+  Client? _courseInviteClient;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // Re-subscribes if the account is switched under the shell; the guard
+    // makes every other dependency change a no-op.
+    final client = Matrix.of(context).client;
+    if (identical(client, _courseInviteClient)) return;
+    _courseInviteClient = client;
+    _courseInviteSubscription?.cancel();
+    _courseInvitePending.value = client.hasInvitedCourse;
+    _courseInviteSubscription = client.onSync.stream
+        .where((sync) => sync.hasRoomUpdate)
+        .listen((_) => _courseInvitePending.value = client.hasInvitedCourse);
+  }
+
+  @override
+  void dispose() {
+    _courseInviteSubscription?.cancel();
+    _courseInvitePending.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -771,6 +802,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             child: child,
           ),
         ),
+        // The web rail announces a pending course invite with the invited
+        // course's own badged avatar, which sits in the rail beside the
+        // Courses item. On one column there are no per-course avatars — the
+        // invited courses are behind this tab, at the top of the hub list — so
+        // the tab carries the announcement instead (#8190).
+        courseInvitePending: _courseInvitePending,
         onSectionTap: (section) => context.go(switch (section) {
           // World is home: clear every panel and reveal the full map.
           AppSection.world => WorkspaceNav.clearAll(),
