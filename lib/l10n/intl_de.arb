@@ -1949,8 +1949,6 @@
     },
     "user": "Benutzer",
     "custom": "Benutzerdefiniert",
-    "dehydrate": "Sitzung exportieren und Gerät löschen",
-    "dehydrateWarning": "Diese Aktion kann nicht rückgängig gemacht werden. Stelle sicher, dass du die Sicherungsdatei sicher aufbewahrst.",
     "hydrate": "Aus Sicherungsdatei wiederherstellen",
     "countFiles": "{count} Dateien",
     "@countFiles": {
@@ -2638,8 +2636,6 @@
     "@youAcceptedTheInvitation": {},
     "@user": {},
     "@custom": {},
-    "@dehydrate": {},
-    "@dehydrateWarning": {},
     "@hydrate": {},
     "@users": {},
     "@confirmMatrixId": {},

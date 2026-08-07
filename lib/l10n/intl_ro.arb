@@ -877,8 +877,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "Exportați sesiunea și ștergeți dispozitivul",
-    "@dehydrate": {},
     "hydrate": "Restaurați din fișier backup",
     "@hydrate": {},
     "loadMore": "Încarcă mai multe…",
@@ -1181,8 +1179,6 @@
             }
         }
     },
-    "dehydrateWarning": "Această actiune nu poate fi anulată. Asigurați-vă că păstrați fișierul backup.",
-    "@dehydrateWarning": {},
     "joinRoom": "Alăturați la cameră",
     "@joinRoom": {
         "type": "String",

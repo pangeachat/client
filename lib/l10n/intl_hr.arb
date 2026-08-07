@@ -1898,8 +1898,6 @@
             }
         }
     },
-    "dehydrateWarning": "Ovo je nepovratna radnja. Spremi datoteku sigurnosne kopije na sigurno mjeto.",
-    "@dehydrateWarning": {},
     "emojis": "Emojiji",
     "@emojis": {},
     "countFiles": "Broj datoteka: {count}",
@@ -1984,8 +1982,6 @@
             }
         }
     },
-    "dehydrate": "Izvezi sesiju i izbriši uređaj",
-    "@dehydrate": {},
     "separateChatTypes": "Odvojeni izravni razgovori, grupe i prostori",
     "@separateChatTypes": {
         "type": "String",

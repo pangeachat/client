@@ -1997,10 +1997,6 @@
             }
         }
     },
-    "dehydrate": "Ekspordi sessiooni teave ja kustuta nutiseadmest rakenduse andmed",
-    "@dehydrate": {},
-    "dehydrateWarning": "Seda tegevust ei saa tagasi pöörata. Palun kontrolli, et sa oled varukoopia turvaliselt salvestanud.",
-    "@dehydrateWarning": {},
     "hydrate": "Taasta varundatud failist",
     "@hydrate": {},
     "user": "Kasutaja",

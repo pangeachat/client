@@ -1987,8 +1987,6 @@
     },
     "commandHint_markasdm": "Pažymėti kaip tiesioginio pokalbio kambarį",
     "@commandHint_markasdm": {},
-    "dehydrateWarning": "Šio veiksmo negalima atšaukti. Įsitikinkite, kad saugiai saugote atsarginę kopiją.",
-    "@dehydrateWarning": {},
     "commandHint_markasgroup": "Pažymėti kaip grupę",
     "@commandHint_markasgroup": {},
     "newSpace": "Nauja erdvė",
@@ -2010,8 +2008,6 @@
             }
         }
     },
-    "dehydrate": "Eksportuoti sesiją ir išvalyti įrenginį",
-    "@dehydrate": {},
     "hydrate": "Atkurti iš atsarginės kopijos failo",
     "@hydrate": {},
     "countFiles": "{count} failai",

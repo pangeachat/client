@@ -1811,8 +1811,6 @@
     "@noChatDescriptionYet": {},
     "optionalRedactReason": "（非必填）收回此訊息的原因...",
     "@optionalRedactReason": {},
-    "dehydrateWarning": "此操作不能反悔。請確保安全地存儲備份文件。",
-    "@dehydrateWarning": {},
     "hydrate": "從備份文件恢復",
     "@hydrate": {},
     "locationDisabledNotice": "位置服務被停用。請啟用它們以能夠分享您的位置。",
@@ -1879,8 +1877,6 @@
             }
         }
     },
-    "dehydrate": "匯出會話並清除裝置",
-    "@dehydrate": {},
     "reopenChat": "重新開啟聊天室",
     "@reopenChat": {},
     "widgetNameError": "請提供一個顯示名稱。",

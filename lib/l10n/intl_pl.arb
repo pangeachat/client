@@ -1890,10 +1890,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "Eksportuj sesję i wymaż urządzenie",
-    "@dehydrate": {},
-    "dehydrateWarning": "Tego nie można cofnąć. Upewnij się, że plik kopii zapasowej jest bezpiecznie przechowywany.",
-    "@dehydrateWarning": {},
     "unsupportedAndroidVersion": "Nieobsługiwana wersja systemu Android",
     "@unsupportedAndroidVersion": {},
     "widgetCustom": "Własny",

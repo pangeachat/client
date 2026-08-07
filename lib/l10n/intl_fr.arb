@@ -1995,10 +1995,6 @@
     "@custom": {},
     "hydrate": "Restaurer à partir du fichier de sauvegarde",
     "@hydrate": {},
-    "dehydrateWarning": "Cette action ne peut pas être annulée. Assurez-vous d'enregistrer convenablement le fichier de sauvegarde.",
-    "@dehydrateWarning": {},
-    "dehydrate": "Exporter la session et effacer l'appareil",
-    "@dehydrate": {},
     "countFiles": "{count} fichiers",
     "@countFiles": {
         "placeholders": {
