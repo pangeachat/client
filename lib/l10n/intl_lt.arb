@@ -2972,7 +2972,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-05 11:42:14.374325",
+    "@@last_modified": "2026-08-07 13:12:48.015788",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8374,16 +8374,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Šis žodynas bus nuolat pašalintas iš jūsų analizės",
     "woman": "Moteris",
     "man": "Vyras",
     "otherGender": "Kitas",
     "unselectedGender": "Pasirinkite lyties parinktį",
     "chatParticipantTooltip": "Tai visi šioje pokalbyje. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10488,5 +10483,13 @@
     "conversationFromDayOne": "Pokalbiai nuo pat pirmos dienos",
     "builtForConnection": "Sukurta ryšiui",
     "aiWhenYouNeedIt": "DI, kai jums jos reikia",
-    "practiceTailoredForYou": "Jums pritaikyta praktika"
+    "practiceTailoredForYou": "Jums pritaikyta praktika",
+    "deletedVocab": "Ištrinti žodžiai",
+    "blockLemmaConfirmation": "Šis žodis bus pašalintas iš jūsų žodyno ir nebeuždirbs XP. Galite jį grąžinti iš ištrintų žodžių.",
+    "deletedVocabListBody": "Šie žodžiai paslėpti iš jūsų žodyno ir neuždirba XP. Atkurkite vieną, kad jį sugrąžintumėte.",
+    "deletedVocabListBodyEmpty": "Neištrynėte jokių žodžių. Žodžiai, kuriuos ištrinate iš savo žodyno, bus rodomi čia, kad galėtumėte juos sugrąžinti.",
+    "deletedVocabListLabel": "Ištrinti žodžiai",
+    "restore": "Atkurti",
+    "deletedWordLabel": "{lemma}, ištrinta",
+    "restoredWords": "{count, plural, =1{Atkurtas 1 žodis} other{Atkurti {count} žodžiai}}"
 }

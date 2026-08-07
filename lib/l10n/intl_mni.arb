@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-05 11:42:15.076052",
+    "@@last_modified": "2026-08-07 13:12:50.386011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "খোলা সেশন ({num})",
     "inProgressActivitiesTitle": "এখন চলছে ({num})",
     "pickDifferentActivity": "একটি ভিন্ন কার্যকলাপ বেছে নিন",
-    "blockLemmaConfirmation": "এই শব্দভাণ্ডার শব্দটি আপনার অ্যানালিটিক্স থেকে স্থায়ীভাবে সরানো হবে",
     "woman": "মহিলা",
     "man": "পুরুষ",
     "otherGender": "অন্যান্য",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "অহানবা নুমিত্তা ৱারী শান্নবা",
     "builtForConnection": "শম্ননবা শাবা",
     "aiWhenYouNeedIt": "নাংনা দরকার ওইবা মতমদা AI",
-    "practiceTailoredForYou": "নঙগীদমক শেমগৎলবা প্রেকটিস"
+    "practiceTailoredForYou": "নঙগীদমক শেমগৎলবা প্রেকটিস",
+    "deletedVocab": "লু্প্পা ৱাহৈশিং",
+    "blockLemmaConfirmation": "অসিগুম্বা ৱাহৈ অসি নহাক্কী ৱাহৈশিংদগী লৌথোক্কনি অমসুং XP ফংলোই। নহাক্না লু্প্পা ৱাহৈশিংদগী অমুক হন্না পীরকপা য়াই।",
+    "deletedVocabListBody": "অসিগুম্বা ৱাহৈশিং অসি নহাক্কী ৱাহৈশিংদগী লু্প্পা ওই অমসুং XP ফংদে। অমুক হন্না পীরক্নবা অমা অমুক হন্না থমবীয়ু।",
+    "deletedVocabListBodyEmpty": "নহাক্না করিগুম্বা ৱাহৈ অমত্তা লু্প্পা তৌদ্রি। নহাক্না নহাক্কী ৱাহৈশিংদগী লু্প্পা তৌবা ৱাহৈশিং অসিদা উৎলগনি মরমদি নহাক্না মখোয়বু অমুক হন্না পীরকপা য়াই।",
+    "deletedVocabListLabel": "লু্প্পা ৱাহৈশিং",
+    "restore": "অমুক হন্না থমবীয়ু",
+    "deletedWordLabel": "{lemma}, লু্প্পা",
+    "restoredWords": "{count, plural, =1{ৱাহৈ ১ অমুক হন্না থমখ্রে} other{ৱাহৈ {count} অমুক হন্না থমখ্রে}}"
 }

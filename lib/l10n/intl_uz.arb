@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-05 11:42:17.950261",
+    "@@last_modified": "2026-08-07 13:12:58.708608",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3829,7 +3829,6 @@
     "notStartedActivitiesTitle": "Boshlanmagan sessiyalar ({num})",
     "inProgressActivitiesTitle": "Hozir bo'lib o'tayotgan ({num})",
     "pickDifferentActivity": "Boshqa faoliyatni tanlang",
-    "blockLemmaConfirmation": "Ushbu lug'at so'zi sizning tahlil natijalaringizdan doimiy ravishda o'chiriladi",
     "woman": "Ayol",
     "man": "Erkak",
     "otherGender": "Boshqa",
@@ -7880,10 +7879,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9711,5 +9706,13 @@
     "conversationFromDayOne": "Birinchi kundan suhbat",
     "builtForConnection": "Aloqa uchun yaratilgan",
     "aiWhenYouNeedIt": "Kerak bo'lganda AI",
-    "practiceTailoredForYou": "Sizga moslashtirilgan amaliyot"
+    "practiceTailoredForYou": "Sizga moslashtirilgan amaliyot",
+    "deletedVocab": "Oʻchirilgan soʻzlar",
+    "blockLemmaConfirmation": "Bu soʻz lugʻatingizdan olib tashlanadi va XP ishlab topishni toʻxtatadi. Uni Oʻchirilgan soʻzlar boʻlimidan qaytarishingiz mumkin.",
+    "deletedVocabListBody": "Bu soʻzlar lugʻatingizdan yashirilgan va XP ishlab topmaydi. Ularni qaytarish uchun birini tiklang.",
+    "deletedVocabListBodyEmpty": "Siz hech qanday soʻz oʻchirmadingiz. Lugʻatingizdan oʻchirgan soʻzlaringiz bu yerda koʻrsatiladi, shunda ularni qaytarishingiz mumkin boʻladi.",
+    "deletedVocabListLabel": "Oʻchirilgan soʻzlar",
+    "restore": "Tiklash",
+    "deletedWordLabel": "{lemma}, oʻchirilgan",
+    "restoredWords": "{count, plural, =1{1 ta soʻz tiklandi} other{{count} ta soʻz tiklandi}}"
 }

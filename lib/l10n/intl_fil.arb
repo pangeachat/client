@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-05 11:42:11.778379",
+    "@@last_modified": "2026-08-07 13:12:40.694812",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -8448,16 +8448,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ang salitang bokabularyo na ito ay permanenteng aalisin mula sa iyong analytics",
     "woman": "Babae",
     "man": "Lalaki",
     "otherGender": "Iba",
     "unselectedGender": "Pumili ng opsyon sa kasarian",
     "chatParticipantTooltip": "Ito ang lahat ng tao sa chat na ito. I-click ang avatar ng sinumang user at \"simulan ang pag-uusap\" upang magpadala ng DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10567,5 +10562,13 @@
     "conversationFromDayOne": "Pag-uusap mula sa Unang Araw",
     "builtForConnection": "Ginawa para sa koneksyon",
     "aiWhenYouNeedIt": "AI kapag kailangan mo",
-    "practiceTailoredForYou": "Pagsasanay na akma para sa iyo"
+    "practiceTailoredForYou": "Pagsasanay na akma para sa iyo",
+    "deletedVocab": "Mga tinanggal na salita",
+    "blockLemmaConfirmation": "Aalisin ang salitang ito sa iyong bokabularyo at hindi na makakakuha ng XP. Maaari mo itong ibalik mula sa Mga tinanggal na salita.",
+    "deletedVocabListBody": "Ang mga salitang ito ay nakatago mula sa iyong bokabularyo at hindi kumikita ng XP. Ibalik ang isa upang maibalik ito.",
+    "deletedVocabListBodyEmpty": "Wala kang tinanggal na salita. Ang mga salitang tatanggalin mo sa iyong bokabularyo ay lalabas dito para maibalik mo ang mga ito.",
+    "deletedVocabListLabel": "Mga tinanggal na salita",
+    "restore": "Ibalik",
+    "deletedWordLabel": "{lemma}, tinanggal",
+    "restoredWords": "{count, plural, =1{Naibalik ang 1 salita} other{Naibalik ang {count} salita}}"
 }

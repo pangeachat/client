@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-05 11:42:16.731113",
+    "@@last_modified": "2026-08-07 13:12:54.143966",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -8538,16 +8538,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Toto slovo v slovnej zásobe bude trvalo odstránené z vašich analytických údajov",
     "woman": "Žena",
     "man": "Muž",
     "otherGender": "Iné",
     "unselectedGender": "Vyberte možnosť pohlavia",
     "chatParticipantTooltip": "Toto sú všetci v tomto chate. Kliknite na avatar akéhokoľvek používateľa a „začať konverzáciu“ na odoslanie priamej správy.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10652,5 +10647,13 @@
     "conversationFromDayOne": "Konverzácia od prvého dňa",
     "builtForConnection": "Stvorené pre spojenie",
     "aiWhenYouNeedIt": "AI, keď ju potrebuješ",
-    "practiceTailoredForYou": "Cvičenie šité na mieru"
+    "practiceTailoredForYou": "Cvičenie šité na mieru",
+    "deletedVocab": "Odstránené slová",
+    "blockLemmaConfirmation": "Toto slovo bude odstránené z vášho slovníka a prestane získavať XP. Môžete ho vrátiť z Odstránených slov.",
+    "deletedVocabListBody": "Tieto slová sú skryté z vášho slovníka a nezískavajú XP. Obnovte ich, aby ste ich vrátili.",
+    "deletedVocabListBodyEmpty": "Neodstránili ste žiadne slová. Slová, ktoré odstránite z vášho slovníka, sa tu zobrazia, aby ste ich mohli vrátiť.",
+    "deletedVocabListLabel": "Odstránené slová",
+    "restore": "Obnoviť",
+    "deletedWordLabel": "{lemma}, odstránené",
+    "restoredWords": "{count, plural, =1{Obnovené 1 slovo} other{Obnovených {count} slov}}"
 }

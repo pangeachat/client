@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-05 11:42:11.713234",
+    "@@last_modified": "2026-08-07 13:12:40.479419",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -7761,16 +7761,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Tämä sanavihkon sana poistetaan pysyvästi analytiikastasi",
     "woman": "Nainen",
     "man": "Mies",
     "otherGender": "Muu",
     "unselectedGender": "Valitse sukupuoli vaihtoehto",
     "chatParticipantTooltip": "Tässä ovat kaikki tässä keskustelussa. Napsauta mitä tahansa käyttäjän avatarista ja \"aloita keskustelu\" lähettääksesi yksityisviestin.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9744,5 +9739,13 @@
     "conversationFromDayOne": "Keskustelua heti alusta alkaen",
     "builtForConnection": "Rakennettu yhteydenpitoa varten",
     "aiWhenYouNeedIt": "Tekoälyä tarvittaessa",
-    "practiceTailoredForYou": "Räätälöityä harjoittelua sinulle"
+    "practiceTailoredForYou": "Räätälöityä harjoittelua sinulle",
+    "deletedVocab": "Poistetut sanat",
+    "blockLemmaConfirmation": "Tämä sana poistetaan sanastostasi, eikä se enää kerrytä XP:tä. Voit palauttaa sen Poistetut sanat -osiosta.",
+    "deletedVocabListBody": "Nämä sanat on piilotettu sanastostasi, eivätkä ne kerrytä XP:tä. Palauta sana tuodaksesi sen takaisin.",
+    "deletedVocabListBodyEmpty": "Et ole poistanut yhtään sanaa. Sanastostasi poistamasi sanat näkyvät täällä, jotta voit palauttaa ne.",
+    "deletedVocabListLabel": "Poistetut sanat",
+    "restore": "Palauta",
+    "deletedWordLabel": "{lemma}, poistettu",
+    "restoredWords": "{count, plural, =1{Palautettu 1 sana} other{Palautettu {count} sanaa}}"
 }

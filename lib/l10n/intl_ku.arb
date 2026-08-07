@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-05 11:42:14.106983",
+    "@@last_modified": "2026-08-07 13:12:47.385474",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "دانیشتنە کراوەکان ({num})",
     "inProgressActivitiesTitle": "ئێستا ڕوودەدات ({num})",
     "pickDifferentActivity": "چالاکییەکی جیاواز هەڵبژێرە",
-    "blockLemmaConfirmation": "ئەم وشە فەرهەنگییە بە هەمیشەیی لە شیکارییەکانت لادەبرێت",
     "woman": "ژن",
     "man": "پیاو",
     "otherGender": "هیتر",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "گفتوگۆ لە یەکەم ڕۆژەوە",
     "builtForConnection": "بۆ پەیوەندی دروستکراوە",
     "aiWhenYouNeedIt": "ژیرى دەستکرد کاتێک پێویستت پێیەتى",
-    "practiceTailoredForYou": "ڕاهێنان بەپێی تۆ گونجێنراوە"
+    "practiceTailoredForYou": "ڕاهێنان بەپێی تۆ گونجێنراوە",
+    "deletedVocab": "وشە سڕاوەکان",
+    "blockLemmaConfirmation": "ئەم وشەیە لە وشەدانەکەت لادەبرێت و چیتر خاڵی ئەزموونی (XP) بەدەست ناهێنێت. دەتوانیت لە بەشی وشە سڕاوەکان بیگەڕێنیتەوە.",
+    "deletedVocabListBody": "ئەم وشانە لە وشەدانەکەتدا شاردراونەتەوە و خاڵی ئەزموونی (XP) بەدەست ناهێنن. یەکێکیان بگەڕێنەرەوە بۆ ئەوەی بگەڕێتەوە.",
+    "deletedVocabListBodyEmpty": "هیچ وشەیەکت نەسڕیوەتەوە. ئەو وشانەی لە وشەدانەکەت دەیانسڕیتەوە لێرە دەردەکەون بۆ ئەوەی بتوانیت بیانگەڕێنیتەوە.",
+    "deletedVocabListLabel": "وشە سڕاوەکان",
+    "restore": "گەڕاندنەوە",
+    "deletedWordLabel": "{lemma}, سڕاوەتەوە",
+    "restoredWords": "{count, plural, =1{1 وشە گەڕێنرایەوە} other{{count} وشە گەڕێنرانەوە}}"
 }

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:async/async.dart';
@@ -24,7 +23,7 @@ import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_and_tags.dart';
-import 'package:fluffychat/routes/analytics/construct_analytics/analytics_download_button.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/analytics_more_menu.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/morph_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/vocab_analytics_details_view.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/morph_analytics_list_view.dart';
@@ -339,7 +338,6 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
             ConstructTypeEnum.vocab => L10n.of(context).vocab,
           };
 
-    final showDownload = kIsWeb && widget.construct == null;
     final showReport =
         widget.view == ConstructTypeEnum.morph && widget.construct != null;
 
@@ -359,7 +357,6 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
         centerTitle: false,
         titleSpacing: 0,
         actions: [
-          if (showDownload) DownloadAnalyticsButton(),
           if (showReport)
             IconButton(
               color: Theme.of(context).iconTheme.color,
@@ -375,6 +372,7 @@ class ConstructAnalyticsViewState extends State<ConstructAnalyticsView> {
             _PracticeButton(view: widget.view),
             const SizedBox(width: 8.0),
           ],
+          if (widget.construct == null) AnalyticsMoreMenu(view: widget.view),
         ],
       ),
       body: Padding(
