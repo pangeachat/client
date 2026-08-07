@@ -1490,10 +1490,6 @@
         "type": "String",
         "description": "Usage hint for the command /dm"
     },
-    "dehydrate": "Exportar sessão e limpar dispositivo",
-    "@dehydrate": {},
-    "dehydrateWarning": "Esta ação não pode ser revertida. Assegura-te que guardas bem a cópia de segurança.",
-    "@dehydrateWarning": {},
     "hydrate": "Restaurar a partir de cópia de segurança",
     "@hydrate": {},
     "alwaysUse24HourFormat": "falso",

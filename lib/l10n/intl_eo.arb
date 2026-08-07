@@ -1850,8 +1850,6 @@
     "invalidServerName": "Nevalida servila nomo",
     "redactMessageDescription": "La mesaĝo estos redaktita por ĉiuj partoprenantoj en ĉi tiu konversacio. Tio ne povas esti malkonfirmita.",
     "optionalRedactReason": "(Opcionalo) Kialo por redakti ĉi tiun mesaĝon...",
-    "dehydrate": "Eksporti sesion kaj forviŝi aparaton",
-    "dehydrateWarning": "Ĉi tiu ago ne povas esti malkonfirmita. Certigu ke vi sekure konservas la rezervan dosieron.",
     "hydrate": "Restarigi el rezervdosiero",
     "locationDisabledNotice": "Loko-servoj estas malaktivigitaj. Bonvolu ebligi ilin por povi dividi vian lokon.",
     "locationPermissionDeniedNotice": "Permesoj pri loko estas malpermesitaj. Bonvolu doni ilin por povi dividi vian lokon.",
@@ -3057,14 +3055,6 @@
         "placeholders": {}
     },
     "@optionalRedactReason": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

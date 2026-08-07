@@ -836,8 +836,6 @@
     "leave": "გადადი",
     "leftTheChat": "გადადგა საუბარი",
     "lightTheme": "მარტივი",
-    "dehydrate": "ექსპორტი სესია და წაშალეთ მოწყობილობა",
-    "dehydrateWarning": "ეს მოქმედება ვერ მოხერხდება უკან დაბრუნება. დარწმუნდით, რომ უსაფრთხოდ ინახავთ სარეზერვო ფაილს.",
     "hydrate": "აღადგინე სარეზერვო ფაილიდან",
     "loadingPleaseWait": "იტვირთება… გთხოვთ დაელოდოთ.",
     "loadMore": "მეტი ჩატვირთვა…",
@@ -2329,14 +2327,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

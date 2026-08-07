@@ -233,8 +233,6 @@
     "leave": "Forlad",
     "leftTheChat": "Forlod chatten",
     "lightTheme": "Lyst",
-    "dehydrate": "Eksporter session og slet enhed",
-    "dehydrateWarning": "Denne handling kan ikke fortrydes. Sørg for at gemme backup-filen sikkert.",
     "hydrate": "Gendan fra backup-fil",
     "loadingPleaseWait": "Indlæser… Vent venligst.",
     "loadMore": "Indlæs flere…",
@@ -2349,14 +2347,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

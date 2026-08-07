@@ -1674,10 +1674,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "Munkamenet exportálása és az eszköz törlése",
-    "@dehydrate": {},
-    "dehydrateWarning": "Ez nem visszavonható. Bizonyosodjon meg róla, hogy biztonságos helyre menti a fájlt.",
-    "@dehydrateWarning": {},
     "hydrate": "Visszaállítás mentett fájlból",
     "@hydrate": {},
     "link": "Hivatkozás",

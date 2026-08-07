@@ -1916,10 +1916,6 @@
     },
     "commandHint_markasgroup": "그룹 채팅으로 만들기",
     "@commandHint_markasgroup": {},
-    "dehydrate": "세션을 내보내고 기기 초기화 하기",
-    "@dehydrate": {},
-    "dehydrateWarning": "이 동작은 되돌릴 수 없습니다. 백업 파일을 꼭 안전하게 보관하세요.",
-    "@dehydrateWarning": {},
     "hugContent": "{senderName}님이 당신을 허그합니다",
     "@hugContent": {
         "type": "String",

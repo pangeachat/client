@@ -701,8 +701,6 @@
     "leave": "Iščä",
     "leftTheChat": "Zapustil je pogovor",
     "lightTheme": "Svetla",
-    "dehydrate": "Izvozi sejo in počisti napravo",
-    "dehydrateWarning": "Ta dejanja ni mogoče razveljaviti. Poskrbite, da varno shranite varnostno kopijo datoteke.",
     "hydrate": "Obnovi iz varnostne kopije",
     "loadingPleaseWait": "Nalaganje… Prosimo počakajte.",
     "loadMore": "Naloži več…",
@@ -2374,14 +2372,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

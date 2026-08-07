@@ -1182,10 +1182,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "Export session and wipe device",
-    "@dehydrate": {},
-    "dehydrateWarning": "This action cannot be undone. Ensure you safely store the backup file.",
-    "@dehydrateWarning": {},
     "hydrate": "Restore from backup file",
     "@hydrate": {},
     "loadingPleaseWait": "Loading… Please wait.",
@@ -4307,11 +4303,11 @@
     "chatWithSupport": "Chat with Support",
     "botDisplayName": "Pangea Bot",
     "@botDisplayName": {
-      "description": "Display name shown for the Pangea Bot account in place of its server-side profile name."
+        "description": "Display name shown for the Pangea Bot account in place of its server-side profile name."
     },
     "supportDisplayName": "Support",
     "@supportDisplayName": {
-      "description": "Display name shown for the Support account in place of its server-side profile name."
+        "description": "Display name shown for the Support account in place of its server-side profile name."
     },
     "newCourseAccess": "By default, courses are publicly searchable and require admin approval to join. You can edit these settings at any time.",
     "onboardingLanguagesTitle": "What language are you learning?",
