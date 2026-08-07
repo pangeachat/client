@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-07 13:12:38.804898",
+    "@@last_modified": "2026-08-07 16:23:18.653021",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Gipapas nga mga pulong",
     "restore": "Ibalik",
     "deletedWordLabel": "{lemma}, gipapas",
-    "restoredWords": "{count, plural, =1{Gibalik ang 1 ka pulong} other{Gibalik ang {count} ka pulong}}"
+    "restoredWords": "{count, plural, =1{Gibalik ang 1 ka pulong} other{Gibalik ang {count} ka pulong}}",
+    "chatSearchPageLabel": "Panid sa pagpangita sa chat",
+    "selectImageLabel": "Pagpili og hulagway",
+    "userSearchTagsLabel": "Pangitaa sa...",
+    "courseDetails": "Mga detalye sa kurso",
+    "objective": "Tumong",
+    "pingedLabel": "Gi-ping",
+    "mapFilterPlayerCount": "{count} ka magdudula"
 }

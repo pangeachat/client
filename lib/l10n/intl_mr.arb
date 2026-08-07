@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-07 13:12:50.481257",
+    "@@last_modified": "2026-08-07 16:23:23.346487",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "हटवलेले शब्द",
     "restore": "पुनर्संचयित करा",
     "deletedWordLabel": "{lemma}, हटवले",
-    "restoredWords": "{count, plural, =1{1 शब्द पुनर्संचयित केला} other{{count} शब्द पुनर्संचयित केले}}"
+    "restoredWords": "{count, plural, =1{1 शब्द पुनर्संचयित केला} other{{count} शब्द पुनर्संचयित केले}}",
+    "chatSearchPageLabel": "गप्पा शोध पृष्ठ",
+    "selectImageLabel": "प्रतिमा निवडा",
+    "userSearchTagsLabel": "यामध्ये शोधा...",
+    "courseDetails": "अभ्यासक्रमाचे तपशील",
+    "objective": "उद्दिष्ट",
+    "pingedLabel": "पिंग केले",
+    "mapFilterPlayerCount": "{count} खेळाडू"
 }

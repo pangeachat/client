@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-07 13:12:38.411261",
+    "@@last_modified": "2026-08-07 16:23:18.529995",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9321,5 +9321,12 @@
     "deletedVocabListLabel": "བསུབ་ཟིན་པའི་ཐ་སྙད།",
     "restore": "སླར་གསོ།",
     "deletedWordLabel": "{lemma}, བསུབ་ཟིན།",
-    "restoredWords": "{count, plural, =1{ཐ་སྙད་ 1 སླར་གསོ་བྱས།} other{ཐ་སྙད་ {count} སླར་གསོ་བྱས།}}"
+    "restoredWords": "{count, plural, =1{ཐ་སྙད་ 1 སླར་གསོ་བྱས།} other{ཐ་སྙད་ {count} སླར་གསོ་བྱས།}}",
+    "chatSearchPageLabel": "ཁ་བརྡའི་འཚོལ་བཤེར་ཤོག་ངོས།",
+    "selectImageLabel": "པར་འདེམས་པ།",
+    "userSearchTagsLabel": "འཚོལ་བཤེར་བྱེད་ས།",
+    "courseDetails": "སློབ་ཚན་གྱི་ཞིབ་ཕྲ།",
+    "objective": "དམིགས་ཡུལ།",
+    "pingedLabel": "བརྡ་བཏང་བ།",
+    "mapFilterPlayerCount": "རྩེད་མོ་བ་ {count} ཡོད།"
 }

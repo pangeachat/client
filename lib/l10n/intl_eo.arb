@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:39.648781",
+    "@@last_modified": "2026-08-07 16:23:19.151881",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10655,5 +10655,12 @@
     "deletedVocabListLabel": "Forigitaj vortoj",
     "restore": "Restarigi",
     "deletedWordLabel": "{lemma}, forigita",
-    "restoredWords": "{count, plural, =1{Restarigita 1 vorto} other{Restarigitaj {count} vortoj}}"
+    "restoredWords": "{count, plural, =1{Restarigita 1 vorto} other{Restarigitaj {count} vortoj}}",
+    "chatSearchPageLabel": "Babileja serĉopaĝo",
+    "selectImageLabel": "Elekti bildon",
+    "userSearchTagsLabel": "Serĉi en...",
+    "courseDetails": "Kursaj detaloj",
+    "objective": "Celo",
+    "pingedLabel": "Pingita",
+    "mapFilterPlayerCount": "{count} ludantoj"
 }

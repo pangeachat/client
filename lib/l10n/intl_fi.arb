@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-07 13:12:40.479419",
+    "@@last_modified": "2026-08-07 16:23:19.553123",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9747,5 +9747,12 @@
     "deletedVocabListLabel": "Poistetut sanat",
     "restore": "Palauta",
     "deletedWordLabel": "{lemma}, poistettu",
-    "restoredWords": "{count, plural, =1{Palautettu 1 sana} other{Palautettu {count} sanaa}}"
+    "restoredWords": "{count, plural, =1{Palautettu 1 sana} other{Palautettu {count} sanaa}}",
+    "chatSearchPageLabel": "Keskustelun hakusivu",
+    "selectImageLabel": "Valitse kuva",
+    "userSearchTagsLabel": "Hae kohteesta...",
+    "courseDetails": "Kurssin tiedot",
+    "objective": "Tavoite",
+    "pingedLabel": "Pingattu",
+    "mapFilterPlayerCount": "{count} pelaajaa"
 }

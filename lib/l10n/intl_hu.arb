@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-07 13:12:43.594014",
+    "@@last_modified": "2026-08-07 16:23:21.193133",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9813,5 +9813,12 @@
     "deletedVocabListLabel": "Törölt szavak",
     "restore": "Visszaállítás",
     "deletedWordLabel": "{lemma}, törölve",
-    "restoredWords": "{count, plural, =1{1 szó visszaállítva} other{{count} szó visszaállítva}}"
+    "restoredWords": "{count, plural, =1{1 szó visszaállítva} other{{count} szó visszaállítva}}",
+    "chatSearchPageLabel": "Csevegés keresési oldal",
+    "selectImageLabel": "Kép kiválasztása",
+    "userSearchTagsLabel": "Keresés itt...",
+    "courseDetails": "Tanfolyam részletei",
+    "objective": "Cél",
+    "pingedLabel": "Pingelve",
+    "mapFilterPlayerCount": "{count} játékos"
 }

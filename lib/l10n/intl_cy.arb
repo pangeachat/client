@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-07 13:12:39.677432",
+    "@@last_modified": "2026-08-07 16:23:18.809181",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Geiriau wedi'u dileu",
     "restore": "Adfer",
     "deletedWordLabel": "{lemma}, wedi'i ddileu",
-    "restoredWords": "{count, plural, =1{Adferwyd 1 gair} other{Adferwyd {count} gair}}"
+    "restoredWords": "{count, plural, =1{Adferwyd 1 gair} other{Adferwyd {count} gair}}",
+    "chatSearchPageLabel": "Tudalen chwilio sgwrsio",
+    "selectImageLabel": "Dewis delwedd",
+    "userSearchTagsLabel": "Chwilio yn...",
+    "courseDetails": "Manylion y cwrs",
+    "objective": "Amcan",
+    "pingedLabel": "Wedi pingio",
+    "mapFilterPlayerCount": "{count} chwaraewr"
 }

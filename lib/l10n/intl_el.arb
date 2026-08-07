@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-07 13:12:39.553774",
+    "@@last_modified": "2026-08-07 16:23:18.910618",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10585,5 +10585,12 @@
     "deletedVocabListLabel": "Διαγραμμένες λέξεις",
     "restore": "Επαναφορά",
     "deletedWordLabel": "{lemma}, διαγραμμένο",
-    "restoredWords": "{count, plural, =1{Επαναφέρθηκε 1 λέξη} other{Επαναφέρθηκαν {count} λέξεις}}"
+    "restoredWords": "{count, plural, =1{Επαναφέρθηκε 1 λέξη} other{Επαναφέρθηκαν {count} λέξεις}}",
+    "chatSearchPageLabel": "Σελίδα αναζήτησης συνομιλιών",
+    "selectImageLabel": "Επιλογή εικόνας",
+    "userSearchTagsLabel": "Αναζήτηση σε...",
+    "courseDetails": "Λεπτομέρειες μαθήματος",
+    "objective": "Στόχος",
+    "pingedLabel": "Έγινε ping",
+    "mapFilterPlayerCount": "{count} παίκτες"
 }

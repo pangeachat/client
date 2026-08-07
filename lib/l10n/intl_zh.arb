@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-07 13:12:59.654496",
+    "@@last_modified": "2026-08-07 16:23:27.675675",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9710,5 +9710,12 @@
     "deletedVocabListLabel": "已删除的词汇",
     "restore": "恢复",
     "deletedWordLabel": "{lemma}，已删除",
-    "restoredWords": "{count, plural, =1{已恢复 1 个词} other{已恢复 {count} 个词}}"
+    "restoredWords": "{count, plural, =1{已恢复 1 个词} other{已恢复 {count} 个词}}",
+    "chatSearchPageLabel": "聊天搜索页面",
+    "selectImageLabel": "选择图片",
+    "userSearchTagsLabel": "搜索范围...",
+    "courseDetails": "课程详情",
+    "objective": "目标",
+    "pingedLabel": "已提醒",
+    "mapFilterPlayerCount": "{count} 位玩家"
 }

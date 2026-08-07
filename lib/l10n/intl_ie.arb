@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-07 13:12:44.642534",
+    "@@last_modified": "2026-08-07 16:23:21.350463",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10342,5 +10342,12 @@
     "deletedVocabListLabel": "Focail scriosta",
     "restore": "Cuir ar ais",
     "deletedWordLabel": "{lemma}, scriosta",
-    "restoredWords": "{count, plural, =1{Cuireadh 1 fhocal ar ais} other{Cuireadh {count} focal ar ais}}"
+    "restoredWords": "{count, plural, =1{Cuireadh 1 fhocal ar ais} other{Cuireadh {count} focal ar ais}}",
+    "chatSearchPageLabel": "Leathanach cuardaigh comhrá",
+    "selectImageLabel": "Roghnaigh íomhá",
+    "userSearchTagsLabel": "Cuardaigh i...",
+    "courseDetails": "Sonraí an chúrsa",
+    "objective": "Cuspóir",
+    "pingedLabel": "Pingáilte",
+    "mapFilterPlayerCount": "{count} imreoir"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-07 13:12:42.990407",
+    "@@last_modified": "2026-08-07 16:23:20.589956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Cov lus raug tshem tawm",
     "restore": "Rov qab",
     "deletedWordLabel": "{lemma}, raug tshem tawm",
-    "restoredWords": "{count, plural, =1{Rov qab tau 1 lo lus} other{Rov qab tau {count} lo lus}}"
+    "restoredWords": "{count, plural, =1{Rov qab tau 1 lo lus} other{Rov qab tau {count} lo lus}}",
+    "chatSearchPageLabel": "Nrhiav kev sib tham",
+    "selectImageLabel": "Xaiv duab",
+    "userSearchTagsLabel": "Nrhiav hauv...",
+    "courseDetails": "Cov ncauj lus qhia",
+    "objective": "Lub hom phiaj",
+    "pingedLabel": "Hu lawm",
+    "mapFilterPlayerCount": "{count} tus neeg ua si"
 }

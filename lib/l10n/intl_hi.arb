@@ -3098,7 +3098,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-07 13:12:42.502905",
+    "@@last_modified": "2026-08-07 16:23:20.314978",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10342,5 +10342,12 @@
     "deletedVocabListLabel": "हटाए गए शब्द",
     "restore": "पुनर्स्थापित करें",
     "deletedWordLabel": "{lemma}, हटाया गया",
-    "restoredWords": "{count, plural, =1{1 शब्द पुनर्स्थापित किया गया} other{{count} शब्द पुनर्स्थापित किए गए}}"
+    "restoredWords": "{count, plural, =1{1 शब्द पुनर्स्थापित किया गया} other{{count} शब्द पुनर्स्थापित किए गए}}",
+    "chatSearchPageLabel": "चैट खोज पेज",
+    "selectImageLabel": "छवि चुनें",
+    "userSearchTagsLabel": "इसमें खोजें...",
+    "courseDetails": "कोर्स विवरण",
+    "objective": "उद्देश्य",
+    "pingedLabel": "पिंग किया गया",
+    "mapFilterPlayerCount": "{count} खिलाड़ी"
 }

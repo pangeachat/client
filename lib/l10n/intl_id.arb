@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:44.081243",
+    "@@last_modified": "2026-08-07 16:23:21.176432",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9783,5 +9783,12 @@
     "deletedVocabListLabel": "Kata yang dihapus",
     "restore": "Pulihkan",
     "deletedWordLabel": "{lemma}, dihapus",
-    "restoredWords": "{count, plural, =1{1 kata dipulihkan} other{{count} kata dipulihkan}}"
+    "restoredWords": "{count, plural, =1{1 kata dipulihkan} other{{count} kata dipulihkan}}",
+    "chatSearchPageLabel": "Halaman pencarian obrolan",
+    "selectImageLabel": "Pilih gambar",
+    "userSearchTagsLabel": "Cari di...",
+    "courseDetails": "Detail kursus",
+    "objective": "Tujuan",
+    "pingedLabel": "Di-ping",
+    "mapFilterPlayerCount": "{count} pemain"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:59.738597",
+    "@@last_modified": "2026-08-07 16:23:27.692848",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9816,5 +9816,12 @@
     "deletedVocabListLabel": "已刪除的單字",
     "restore": "恢復",
     "deletedWordLabel": "{lemma}，已刪除",
-    "restoredWords": "{count, plural, =1{已恢復 1 個單字} other{已恢復 {count} 個單字}}"
+    "restoredWords": "{count, plural, =1{已恢復 1 個單字} other{已恢復 {count} 個單字}}",
+    "chatSearchPageLabel": "聊天搜尋頁面",
+    "selectImageLabel": "選擇圖片",
+    "userSearchTagsLabel": "搜尋範圍...",
+    "courseDetails": "課程詳情",
+    "objective": "目標",
+    "pingedLabel": "已收到通知",
+    "mapFilterPlayerCount": "{count} 位玩家"
 }
