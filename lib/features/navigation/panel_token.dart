@@ -229,6 +229,15 @@ class SettingsPagePanelToken extends PanelToken<SettingsTokenParam> {
 class AnalyticsPanelToken extends PanelToken<AnalyticsTokenParam> {
   const AnalyticsPanelToken(AnalyticsTokenParam param)
     : super(PanelTypesEnum.analytics, param);
+
+  @override
+  AnalyticsPanelToken? get popped {
+    final param = this.param;
+    if (param == null || !param.isPushed) return null;
+    final poppedParam = param.poppedParam;
+    if (poppedParam == null) return null;
+    return AnalyticsPanelToken(poppedParam);
+  }
 }
 
 class VocabAnalyticsPanelToken extends PanelToken<VocabAnalyticsTokenParam> {

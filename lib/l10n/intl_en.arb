@@ -764,6 +764,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "deletedVocab": "Deleted words",
+    "@deletedVocab": {
+        "type": "String",
+        "placeholders": {}
+    },
     "deleteAccount": "Delete account",
     "@deleteAccount": {
         "type": "String",
