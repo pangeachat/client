@@ -34,6 +34,7 @@ import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/screen_size_warning_dialog.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
@@ -350,7 +351,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
-      _showScreenSizeDialog();
+      _checkScreenSize();
       // Debug-only: `?devlogin=1` signs the local build into the test account,
       // bypassing the canvas login form. No-op without the param. See
       // dev_login.dart / matrix-auth.instructions.md.
@@ -361,54 +362,31 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   // #Pangea
-  bool _showingScreenSizeDialog = false;
-  // Tracks whether the screen was too small on the last check. The popup is
-  // only shown when transitioning from "big enough" → "too small" (or on the
-  // initial frame check), so resizing from small → big never triggers it.
-  bool _screenWasTooSmall = false;
+  final ScreenSizeWarning _screenSizeWarning = ScreenSizeWarning();
+  Timer? _screenSizeTimer;
+
   @override
   void didChangeMetrics() {
-    _showScreenSizeDialog();
+    // Debounced: a resize (or an on-screen keyboard opening/closing) fires a
+    // burst of metrics changes, and only the size it settles on is meaningful.
+    _screenSizeTimer?.cancel();
+    _screenSizeTimer = Timer(kScreenSizeSettleDelay, _checkScreenSize);
     super.didChangeMetrics();
   }
 
-  Future<void> _showScreenSizeDialog() async {
-    if (!kIsWeb) return;
+  void _checkScreenSize() {
+    if (!kIsWeb || !mounted) return;
 
-    final height = MediaQuery.heightOf(context);
-    if (height > 550) {
-      // Screen is now big enough — reset so a future shrink can show the popup.
-      _screenWasTooSmall = false;
-      return;
-    }
-
-    // Screen is too small. Guard against: dialog already open, or screen was
-    // already too small (i.e. we're mid-resize within the too-small range).
-    if (_showingScreenSizeDialog || _screenWasTooSmall) return;
-
-    // Mark immediately so any didChangeMetrics calls fired during the navigator
-    // retry loop (e.g. mid-expansion resize events) are blocked by the guard
-    // above and don't trigger a spurious dialog show.
-    _screenWasTooSmall = true;
-
-    // The navigator may not be ready on the initial frame — retry next frame,
-    // resetting the flag so the retry can re-evaluate height and navigator.
+    // The navigator may not be mounted yet on the initial frame — retry next
+    // frame, but only while the window is short enough to warrant a warning.
     final navigatorContext =
         FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
-    if (navigatorContext == null) {
-      WidgetsBinding.instance.addPostFrameCallback((_) {
-        _screenWasTooSmall = false;
-        _showScreenSizeDialog();
-      });
+    if (navigatorContext == null && screenIsTooShort(context)) {
+      WidgetsBinding.instance.addPostFrameCallback((_) => _checkScreenSize());
       return;
     }
 
-    _showingScreenSizeDialog = true;
-    await showOkAlertDialog(
-      context: navigatorContext,
-      title: L10n.of(context).screenSizeWarning,
-    );
-    _showingScreenSizeDialog = false;
+    _screenSizeWarning.onWindowHeight(windowHeight(context), navigatorContext);
   }
 
   StreamSubscription? _languageListener;
@@ -713,6 +691,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     _languageListener?.cancel();
     _appLanguageSettingsListener?.cancel();
     _uriListener?.cancel();
+    _screenSizeTimer?.cancel();
     notifPermissionNotifier.dispose();
     // Pangea#
 
