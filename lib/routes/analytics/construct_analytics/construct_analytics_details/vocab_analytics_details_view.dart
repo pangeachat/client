@@ -113,6 +113,9 @@ class VocabDetailsView extends StatelessWidget with ConstructRestorer {
                   maxWidth: double.infinity,
                   enableEmojiSelection: true,
                   enableEmojiReactions: false,
+                  // This page carries its own Restore tile below, so the card
+                  // must not offer a second one in its header.
+                  enableRestore: false,
                 ),
               ),
               if (construct != null)

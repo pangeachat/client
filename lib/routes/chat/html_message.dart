@@ -55,6 +55,12 @@ class HtmlMessage extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final bool isPracticeMode;
+
+  /// Rendered as an example-message chip on a construct's analytics details
+  /// page. Selects that render context's token target-key namespace so the
+  /// chip does not collide with the same event in the open chat timeline —
+  /// see [PangeaToken.analyticsExampleTargetKey].
+  final bool isAnalyticsExample;
   final void Function(PangeaToken)? onClick;
 
   /// Overrides the room-activity vocab lemmas as the gold-highlight set —
@@ -91,6 +97,7 @@ class HtmlMessage extends StatelessWidget {
     this.onClick,
     this.isTransitionAnimation = false,
     this.isPracticeMode = false,
+    this.isAnalyticsExample = false,
     this.vocabLemmas,
     // Pangea#
   });
@@ -504,6 +511,8 @@ class HtmlMessage extends StatelessWidget {
             ? token?.practiceModeTargetKey(event.eventId)
             : overlayController != null
             ? token?.overlayTargetKey(event.eventId)
+            : isAnalyticsExample
+            ? token?.analyticsExampleTargetKey(event.eventId)
             : token?.baseTargetKey(event.eventId);
 
         final layerLinkAndKey = tokenTargetKey != null
