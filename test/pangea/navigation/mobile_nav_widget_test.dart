@@ -112,12 +112,9 @@ void main() {
           matching: find.byType(IconButton),
         ),
       );
-      final chatsButton = tester.widget<IconButton>(
-        find.ancestor(
-          of: find.byTooltip('All chats'),
-          matching: find.byType(IconButton),
-        ),
-      );
+      final chatsButton = tester
+          .getSemantics(find.byTooltip(RegExp('All chats*')))
+          .getSemanticsData();
       final coursesButton = tester.widget<IconButton>(
         find.ancestor(
           of: find.byTooltip('Courses'),
@@ -126,7 +123,7 @@ void main() {
       );
 
       expect(worldButton.isSelected, isFalse);
-      expect(chatsButton.isSelected, isTrue);
+      expect(chatsButton.flagsCollection.isSelected.toBoolOrNull(), isTrue);
       expect(coursesButton.isSelected, isFalse);
 
       // The course shortcut renders too (4th item), addressed by its label.
