@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
@@ -92,9 +91,9 @@ class ActivitySessionCTAButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
 
-  /// A de-emphasized (outlined) variant for a secondary action shown beside a
-  /// stronger one — e.g. "start my own" when joining an open session is the
-  /// encouraged choice.
+  /// A de-emphasized variant for any action following the single primary: a
+  /// fully filled but lighter (primaryContainer) button, mirroring the mobile
+  /// CTA chips — e.g. "start my own" when joining an open session leads.
   final bool secondary;
 
   const ActivitySessionCTAButton(
@@ -114,21 +113,14 @@ class ActivitySessionCTAButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [Flexible(child: Text(text, textAlign: TextAlign.center))],
     );
-    if (secondary) {
-      return OutlinedButton(
-        style: OutlinedButton.styleFrom(
-          foregroundColor: theme.colorScheme.onPrimaryContainer,
-          padding: const EdgeInsets.all(8.0),
-          shape: shape,
-        ),
-        onPressed: onPressed,
-        child: child,
-      );
-    }
+    // Mirror the mobile CTA chips' colour hierarchy: the single lead action is
+    // the darker filled primary; every following action is a fully filled but
+    // lighter primaryContainer button (not a bare outline).
+    final scheme = theme.colorScheme;
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: theme.colorScheme.primaryContainer,
-        foregroundColor: theme.colorScheme.onPrimaryContainer,
+        backgroundColor: secondary ? scheme.primaryContainer : scheme.primary,
+        foregroundColor: secondary ? scheme.onPrimaryContainer : scheme.onPrimary,
         padding: const EdgeInsets.all(8.0),
         shape: shape,
       ),
@@ -246,9 +238,12 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                   L10n.of(context).inviteFriendsToCourse,
                   controller.inviteToCourse,
                 ),
+              // Primary only when it leads — with invite above it, it drops to
+              // the lighter secondary so a single darker CTA stays on top.
               ActivitySessionCTAButton(
                 L10n.of(context).pickDifferentActivity,
                 controller.goToCourse,
+                secondary: controller.canInviteToCourse,
               ),
             ],
           );
@@ -287,13 +282,16 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                   L10n.of(context).start,
                   controller.startNewActivity,
                 ),
-              if (controller.course?.isRoomAdmin == true &&
-                  controller.hasCurrentOrFinishedSessions)
-                ActivitySessionCTAButton(
-                  '${L10n.of(context).viewCurrentOrFinished} (${controller.currentOrFinishedSessionCount})',
-                  controller.goToViewPage,
-                ),
             ],
+            // Completed sits below the start/join choice for any learner with
+            // finished sessions to review (an admin sees all; everyone else
+            // sees their own), de-emphasized like the mobile chip.
+            if (controller.hasCompletedSessions)
+              ActivitySessionCTAButton(
+                L10n.of(context).mapFilterCompleted,
+                controller.goToViewPage,
+                secondary: true,
+              ),
           ],
         );
       },
@@ -358,7 +356,8 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       );
     }
 
-    // Opens the same view page as the admin "current or finished" action.
+    // Opens the Completed subpage — the learner's own finished sessions, or all
+    // of them (their own first) for a course admin.
     if (controller.hasCompletedSessions) {
       chips.add(
         _ActivityCtaChip(
@@ -480,12 +479,16 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
     return Column(
       mainAxisSize: .min,
       children: [
+        // Ping, play with bot, and invite friends are all equally valid ways
+        // forward from the waiting room, so none is emphasized — every one is
+        // the lighter secondary.
         if (controller.showPingCourse) ...[
           FutureBuilder(
             future: controller.canPingParticipants,
             builder: (context, snapshot) => ActivitySessionCTAButton(
               L10n.of(context).pingParticipants,
               snapshot.data == true ? controller.pingCourse : null,
+              secondary: true,
             ),
           ),
           SizedBox(height: 16.0),
@@ -496,12 +499,14 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
             child: ActivitySessionCTAButton(
               L10n.of(context).playWithBot,
               controller.enablePlayWithBot ? controller.playWithBot : null,
+              secondary: true,
             ),
           ),
         if (controller.showInviteOptions)
           ActivitySessionCTAButton(
             L10n.of(context).inviteFriends,
             controller.inviteFriends,
+            secondary: true,
           ),
       ],
     );

@@ -47,8 +47,12 @@ class _NotStartedSessionBottomContent extends StatelessWidget {
       child: Column(
         children: [
           ...controller.subPage.visibleStatuses.map((status) {
-            final roomSummaries = controller.activityStatuses
-                .getSessionsByStatus(status);
+            // Completed is scoped to the viewer (their own sessions, or all with
+            // their own first for a course admin); any other status lists the
+            // whole course as before.
+            final roomSummaries = status == ActivitySummaryStatus.completed
+                ? controller.visibleCompletedSessions
+                : controller.activityStatuses.getSessionsByStatus(status);
 
             if (roomSummaries.isEmpty) return const SizedBox.shrink();
 

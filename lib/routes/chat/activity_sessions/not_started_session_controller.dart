@@ -12,7 +12,9 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/room_summaries/activity_sessions_status_model.dart';
 import 'package:fluffychat/features/room_summaries/activity_summary_status_enum.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
+import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
@@ -31,10 +33,7 @@ enum NotStartedSubPage {
       case NotStartedSubPage.join:
         return [ActivitySummaryStatus.notStarted];
       case NotStartedSubPage.view:
-        return [
-          ActivitySummaryStatus.inProgress,
-          ActivitySummaryStatus.completed,
-        ];
+        return [ActivitySummaryStatus.completed];
       case NotStartedSubPage.main:
         return [];
     }
@@ -150,30 +149,50 @@ class NotStartedSessionController extends State<NotStartedSession>
   ActivitySessionsStatusModel get activityStatuses =>
       widget.summaries.activitySessionStatuses;
 
-  bool get hasCurrentOrFinishedSessions =>
-      activityStatuses
-          .getSessionsByStatus(ActivitySummaryStatus.inProgress)
-          .isNotEmpty ||
-      activityStatuses
-          .getSessionsByStatus(ActivitySummaryStatus.completed)
-          .isNotEmpty;
+  /// A course admin oversees the whole course, so their Completed view lists
+  /// every finished session; a regular learner — and anyone on a standalone
+  /// activity, which has no course to be admin of — sees only their own.
+  bool get isCourseAdmin => widget.course?.isRoomAdmin == true;
 
-  int get currentOrFinishedSessionCount =>
-      activityStatuses
-          .getSessionsByStatus(ActivitySummaryStatus.inProgress)
-          .length +
-      activityStatuses
-          .getSessionsByStatus(ActivitySummaryStatus.completed)
-          .length;
+  String? get _ownUserId => Matrix.of(context).client.userID;
 
-  /// Completed-only sessions, for the everyone-visible mobile "Completed" chip.
-  /// Distinct from [currentOrFinishedSessionCount], which also folds in
-  /// in-progress sessions and gates the admin-only "view current or finished".
-  int get completedSessionCount => activityStatuses
-      .getSessionsByStatus(ActivitySummaryStatus.completed)
-      .length;
+  Map<String, RoomSummaryResponse> get _completedSessions =>
+      activityStatuses.getSessionsByStatus(ActivitySummaryStatus.completed);
 
-  bool get hasCompletedSessions => completedSessionCount > 0;
+  /// Completed sessions the current learner personally finished — their role in
+  /// the session is archived ([RoomSummaryResponse.isCompleteByUserId]), so a
+  /// session others wrapped up after they left doesn't read as theirs.
+  Map<String, RoomSummaryResponse> get _ownCompletedSessions {
+    final userId = _ownUserId;
+    if (userId == null) return {};
+    return Map.fromEntries(
+      _completedSessions.entries.where(
+        (e) => e.value.isCompleteByUserId(userId),
+      ),
+    );
+  }
+
+  /// The completed sessions the Completed subpage lists for this viewer: an
+  /// admin sees them all with their own floated to the top; everyone else sees
+  /// only their own.
+  Map<String, RoomSummaryResponse> get visibleCompletedSessions {
+    if (!isCourseAdmin) return _ownCompletedSessions;
+    final userId = _ownUserId;
+    final entries = _completedSessions.entries.toList();
+    if (userId != null) {
+      entries.sort((a, b) {
+        final aOwn = a.value.isCompleteByUserId(userId) ? 0 : 1;
+        final bOwn = b.value.isCompleteByUserId(userId) ? 0 : 1;
+        return aOwn.compareTo(bOwn);
+      });
+    }
+    return Map.fromEntries(entries);
+  }
+
+  /// The Completed CTA and subpage appear when this viewer has at least one
+  /// completed session to review: any completed session for an admin, or one
+  /// the learner finished themselves otherwise.
+  bool get hasCompletedSessions => visibleCompletedSessions.isNotEmpty;
 
   Future<int> get neededCourseParticipants async {
     // No course: the session launches standalone (the bot fills in), so no
