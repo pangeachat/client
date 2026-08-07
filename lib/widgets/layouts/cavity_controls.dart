@@ -17,9 +17,8 @@ class CavityControls extends InheritedWidget {
     super.key,
   });
 
-  static VoidCallback? maybeExpandToFull(BuildContext context) => context
-      .getInheritedWidgetOfExactType<CavityControls>()
-      ?.expandToFull;
+  static VoidCallback? maybeExpandToFull(BuildContext context) =>
+      context.getInheritedWidgetOfExactType<CavityControls>()?.expandToFull;
 
   // The callback closes over the cavity's State, so it stays valid across
   // rebuilds — dependents only invoke it, never rebuild on it.
