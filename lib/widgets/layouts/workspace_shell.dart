@@ -19,6 +19,7 @@ import 'package:fluffychat/features/navigation/token_params/add_course_token.dar
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
@@ -35,7 +36,6 @@ import 'package:fluffychat/routes/world/world_map_pins_manager.dart';
 import 'package:fluffychat/routes/world/world_user_cluster.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/layouts/left_panel_layer.dart';
 import 'package:fluffychat/widgets/layouts/mobile_nav_widget.dart';
 import 'package:fluffychat/widgets/layouts/navigation_extras_extension.dart';
@@ -703,13 +703,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             ? KnockingUsersBuilder(
                 room: shortcutCourse,
                 builder: (context, knockingUsers) {
-                  final avatar = Avatar(
-                    mxContent: shortcutCourse.avatar,
-                    name: shortcutCourse.getLocalizedDisplayname(
+                  final avatar = CourseAvatar(
+                    avatar: shortcutCourse.avatar,
+                    displayname: shortcutCourse.getLocalizedDisplayname(
                       MatrixLocals(l10n),
                     ),
                     size: 32,
-                    borderRadius: BorderRadius.circular(8),
                   );
                   return knockingUsers.isEmpty
                       ? avatar
