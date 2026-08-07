@@ -41,7 +41,7 @@ Each data point is stored as a [`OneConstructUse`](lib/pangea/analytics_misc/con
 
 ### Construct Deduplication
 
-The same word can appear with different casing or slight variations across messages (e.g., "Hello" vs "hello"). [`ConstructMergeTable`](lib/pangea/analytics_data/construct_merge_table.dart) merges these transparently so the user sees one unified progress bar per word, not confusing duplicates.
+The same word can appear with different casing or slight variations across messages (e.g., "Hello" vs "hello"). [`ConstructMergeTable`](../../lib/features/analytics_data/construct_merge_table.dart) merges these transparently so the user sees one unified progress bar per word, not confusing duplicates.
 
 ### Construct Displays
 
@@ -83,11 +83,11 @@ Blocking constructs adds a [AnalyticsStreamUpdate](../../lib/features/analytics_
 
 ## User Levels
 
-Total XP across all constructs determines the user's global level, computed in [`DerivedAnalyticsDataModel`](lib/pangea/analytics_data/derived_analytics_data_model.dart). The progression is quadratic — early levels come quickly to create momentum, while later levels require sustained effort:
+Total XP across all constructs determines the user's global level, computed in [`DerivedAnalyticsDataModel`](../../lib/features/analytics_data/derived_analytics_data_model.dart). The progression is quadratic — early levels come quickly to create momentum, while later levels require sustained effort:
 
 $$\text{level} = \lfloor 1 + \sqrt{\frac{1 + 8 \cdot \text{totalXP} / 300}{2}} \rfloor$$
 
-Level-ups are **celebration moments**: the app shows a banner, plays a chime, and [`LevelUpAnalyticsService`](lib/pangea/analytics_data/level_up_analytics_service.dart) generates an AI summary of what the user learned since their last level-up (pulling from actual messages they sent and received).
+Level-ups are **celebration moments**: the app shows a banner, plays a chime, and [`LevelUpAnalyticsService`](../../lib/features/analytics_data/level_up_analytics_service.dart) generates an AI summary of what the user learned since their last level-up (pulling from actual messages they sent and received).
 
 > This formula is still being balanced to find the optimal sequence of effort and reward.
 
@@ -99,7 +99,7 @@ Users should never see their level go down due to negative-XP construct uses. If
 
 ### Local-First, Sync-Later
 
-All analytics computation happens against [`AnalyticsDatabase`](lib/pangea/analytics_data/analytics_database.dart) (SQLite on native, IndexedDB on web). The app never queries the server for analytics on a per-message basis. [`AnalyticsUpdateService`](lib/pangea/analytics_data/analytics_update_service.dart) syncs data to a dedicated Matrix room in the background — batched every 10 messages or 10 minutes, whichever comes first. [`AnalyticsDataService`](lib/pangea/analytics_data/analytics_data_service.dart) is the central orchestrator that wires everything together.
+All analytics computation happens against [`AnalyticsDatabase`](../../lib/features/analytics_data/analytics_database.dart) (SQLite on native, IndexedDB on web). The app never queries the server for analytics on a per-message basis. [`AnalyticsUpdateService`](../../lib/features/analytics_data/analytics_update_service.dart) syncs data to a dedicated Matrix room in the background — batched every 10 messages or 10 minutes, whichever comes first. [`AnalyticsDataService`](../../lib/features/analytics_data/analytics_data_service.dart) is the central orchestrator that wires everything together.
 
 ### Per-Language Isolation
 
@@ -107,21 +107,21 @@ Each target language has its own analytics room and its own local database parti
 
 ### Multi-Device Sync
 
-Because analytics are stored in Matrix rooms, they sync across devices automatically via the Matrix sync protocol. On login or language change, [`AnalyticsSyncController`](lib/pangea/analytics_data/analytics_sync_controller.dart) performs a bulk catch-up from the analytics room before starting real-time tracking.
+Because analytics are stored in Matrix rooms, they sync across devices automatically via the Matrix sync protocol. On login or language change, [`AnalyticsSyncController`](../../lib/features/analytics_data/analytics_sync_controller.dart) performs a bulk catch-up from the analytics room before starting real-time tracking.
 
 ## Celebration Moments
 
-[`AnalyticsUpdateDispatcher`](lib/pangea/analytics_data/analytics_update_dispatcher.dart) emits [typed events](lib/pangea/analytics_data/analytics_update_events.dart) that the UI listens for to trigger celebratory animations:
+[`AnalyticsUpdateDispatcher`](../../lib/features/analytics_data/analytics_update_dispatcher.dart) emits [typed events](../../lib/features/analytics_data/analytics_update_events.dart) that the UI listens for to trigger celebratory animations:
 
 | Event | UX Response |
 |-------|-------------|
-| [`XPGainedEvent`](lib/pangea/analytics_data/analytics_update_events.dart) | Floating "+N" animation anchored to the word the user interacted with |
-| [`ConstructLevelUpEvent`](lib/pangea/analytics_data/analytics_update_events.dart) | Growth animation on the word's token in the toolbar |
-| [`LevelUpEvent`](lib/pangea/analytics_data/analytics_update_events.dart) | Full-screen banner + chime + AI-generated learning summary |
-| [`MorphUnlockedEvent`](lib/pangea/analytics_data/analytics_update_events.dart) | Notification that a new grammar pattern has been discovered |
-| [`NewConstructsEvent`](lib/pangea/analytics_data/analytics_update_events.dart) | Subtle highlight (first-ever interaction with a word) |
+| [`XPGainedEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Floating "+N" animation anchored to the word the user interacted with |
+| [`ConstructLevelUpEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Growth animation on the word's token in the toolbar |
+| [`LevelUpEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Full-screen banner + chime + AI-generated learning summary |
+| [`MorphUnlockedEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Notification that a new grammar pattern has been discovered |
+| [`NewConstructsEvent`](../../lib/features/analytics_data/analytics_update_events.dart) | Subtle highlight (first-ever interaction with a word) |
 
-These events are always anchored to a specific UI element (via a `targetID`) so the animation appears in context, not as a disconnected popup. Use the [`AnalyticsUpdater`](lib/pangea/analytics_data/analytics_updater_mixin.dart) mixin on any widget that triggers analytics and wants to show immediate XP/growth feedback.
+These events are always anchored to a specific UI element (via a `targetID`) so the animation appears in context, not as a disconnected popup. Use the [`AnalyticsUpdater`](../../lib/features/analytics_data/analytics_updater_mixin.dart) mixin on any widget that triggers analytics and wants to show immediate XP/growth feedback.
 
 ## Analytics for Teachers (Space Analytics)
 
