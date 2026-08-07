@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:matrix/matrix.dart';
 
@@ -18,6 +19,7 @@ import 'package:fluffychat/features/room_summaries/activity_session_previews_ext
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
@@ -27,6 +29,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -325,6 +328,27 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
       case ActivityPlanLookupStatus.failed:
         throw Exception("Activity plan fetch failed");
     }
+  }
+
+  /// Copy the activity's standalone shareable link (`/<activityId>`, the
+  /// inbound contract folded by LegacyRedirects) to the clipboard. Mirrors the
+  /// course [ShareRoomButton]: copy-only (never the OS share sheet), and
+  /// `hideCurrentSnackBar` + `showCloseIcon` so rapid taps replace the toast
+  /// (with a dismissal X) instead of queueing a backlog. See
+  /// activity-start-page.instructions.md.
+  Future<void> copyActivityLink() async {
+    await Clipboard.setData(
+      ClipboardData(text: '${Environment.frontendURL}/#/${widget.activityId}'),
+    );
+    if (!mounted) return;
+    final messenger = ScaffoldMessenger.of(context);
+    messenger.hideCurrentSnackBar();
+    messenger.showSnackBarAnnounced(
+      SnackBar(
+        content: Text(L10n.of(context).copiedToClipboard),
+        showCloseIcon: true,
+      ),
+    );
   }
 
   Future<void> submitActivityFeedback() async {
