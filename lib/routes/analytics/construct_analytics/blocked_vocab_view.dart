@@ -14,10 +14,9 @@ import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/analytics/analytics_navigation_util.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/restore_constructs_mixin.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/vocab_analytics_list_tile.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
-import 'package:fluffychat/widgets/announcing_snackbar.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The deleted-vocab list — the undo surface for
@@ -36,7 +35,8 @@ class BlockedVocabView extends StatefulWidget {
   State<BlockedVocabView> createState() => _BlockedVocabViewState();
 }
 
-class _BlockedVocabViewState extends State<BlockedVocabView> {
+class _BlockedVocabViewState extends State<BlockedVocabView>
+    with ConstructRestorer {
   List<ConstructUses>? _blocked;
   final List<ConstructIdentifier> _selected = [];
   StreamSubscription<AnalyticsStreamUpdate>? _updateSub;
@@ -101,27 +101,10 @@ class _BlockedVocabViewState extends State<BlockedVocabView> {
     _selected.contains(id) ? _selected.remove(id) : _selected.add(id);
   });
 
-  /// No confirmation dialog: restoring is the undo of a destructive action and
-  /// is itself reversible, so a second "are you sure" is friction. The snackbar
-  /// is the receipt.
   Future<void> _restore(List<ConstructIdentifier> ids) async {
-    if (ids.isEmpty) return;
-    final l10n = L10n.of(context);
-    final count = ids.length;
-
-    final result = await showFutureLoadingDialog(
-      context: context,
-      future: () => Matrix.of(
-        context,
-      ).analyticsDataService.updateService.unblockConstructs(ids),
-    );
-    if (!mounted || result.isError) return;
-
+    final restored = await restoreConstructs(context, ids);
+    if (!restored || !mounted) return;
     setState(_selected.clear);
-    ScaffoldMessenger.of(context).hideCurrentSnackBar();
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBarAnnounced(SnackBar(content: Text(l10n.restoredWords(count))));
   }
 
   void _openDetails(ConstructIdentifier id) =>
