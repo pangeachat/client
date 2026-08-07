@@ -11,6 +11,17 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 extension KnockRoomExtension on Room {
   bool get hasKnocked => client.hasKnockedRoom(id);
 
+  /// Someone invited the learner here and they haven't answered yet — the state
+  /// the gold "Invited" marking is for (`InvitedChip`, and the gold unread
+  /// badge in the nav; #8191).
+  ///
+  /// Narrower than `membership == Membership.invite`, because [acceptKnock]
+  /// grants a knock by *inviting* the knocker: an approved knock arrives on
+  /// this client wearing exactly that membership. That is the learner's own
+  /// request coming back answered, so it must never be dressed up as an
+  /// unsolicited invitation.
+  bool get isPendingInvite => membership == Membership.invite && !hasKnocked;
+
   Future<JoinResponse?> joinKnockedRoom() async {
     try {
       final resp = await joinWithAccessCheck();
