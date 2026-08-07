@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/user/user_profile_cache.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
+import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -25,12 +26,16 @@ String profileDisplayName(String userId, Profile? profile, L10n l10n) =>
 /// circle (#8192). See [UserProfileCache] for why room state can't be relied on
 /// for a session the learner hasn't joined.
 ///
+/// Prefer [UserProfileAvatar] / [UserProfileName]; reach for this directly only
+/// where a card needs the raw [Profile].
+///
 /// [builder] gets null on the first frame of a cold lookup (and forever if the
-/// profile can't be resolved), so every caller must render a fallback rather
-/// than a spinner: these are avatars inside cards, and a placeholder that
-/// resizes on arrival would jump the layout.
+/// profile can't be resolved, or when [userId] is null — an unfilled seat), so
+/// every caller must render a fallback rather than a spinner: these are avatars
+/// inside cards, and a placeholder that resizes on arrival would jump the
+/// layout.
 class UserProfileBuilder extends StatefulWidget {
-  final String userId;
+  final String? userId;
   final Widget Function(BuildContext context, Profile? profile) builder;
 
   const UserProfileBuilder({
@@ -62,6 +67,10 @@ class _UserProfileBuilderState extends State<UserProfileBuilder> {
 
   void _resolve() {
     final userId = widget.userId;
+    if (userId == null) {
+      _profile = null;
+      return;
+    }
     final cached = UserProfileCache.cached(userId);
     if (cached != null) {
       // Synchronous hit — assign directly. In didChangeDependencies there is
@@ -113,4 +122,60 @@ class UserProfileAvatar extends StatelessWidget {
       presenceOffset: presenceOffset,
     ),
   );
+}
+
+/// The display name for a bare user id, from the same fetched profile the
+/// avatar uses. A null [userId] — an unfilled activity seat — draws [fallback].
+///
+/// [colorize] applies the app's per-name hue to the text (`string_color`), the
+/// treatment usernames get elsewhere; the [style]'s own colour wins when it is
+/// off.
+class UserProfileName extends StatelessWidget {
+  final String? userId;
+  final String? fallback;
+  final TextStyle? style;
+  final bool colorize;
+  final int? maxLines;
+  final TextOverflow? overflow;
+  final TextAlign? textAlign;
+
+  const UserProfileName({
+    super.key,
+    required this.userId,
+    this.fallback,
+    this.style,
+    this.colorize = false,
+    this.maxLines,
+    this.overflow,
+    this.textAlign,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return UserProfileBuilder(
+      userId: userId,
+      builder: (context, profile) {
+        final userId = this.userId;
+        final name = userId == null
+            ? null
+            : profileDisplayName(userId, profile, L10n.of(context));
+        return Text(
+          name ?? fallback ?? '',
+          style: colorize
+              ? (style ?? const TextStyle()).copyWith(
+                  color:
+                      (theme.brightness == Brightness.light
+                          ? name?.darkColor
+                          : name?.lightColorText) ??
+                      theme.colorScheme.primary,
+                )
+              : style,
+          maxLines: maxLines,
+          overflow: overflow,
+          textAlign: textAlign,
+        );
+      },
+    );
+  }
 }

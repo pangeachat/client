@@ -274,19 +274,12 @@ class _ActivitySessionDetailsTile extends StatelessWidget {
                                   // course-member lookup this replaced left
                                   // everyone at their localpart with a default
                                   // avatar (#8192).
-                                  UserProfileBuilder(
+                                  UserProfileName(
                                     userId: userId,
-                                    builder: (context, profile) => Text(
-                                      profileDisplayName(
-                                        userId,
-                                        profile,
-                                        L10n.of(context),
-                                      ),
-                                      style: const TextStyle(fontSize: 12.0),
-                                      maxLines: 1,
-                                      overflow: TextOverflow.ellipsis,
-                                      textAlign: TextAlign.center,
-                                    ),
+                                    style: const TextStyle(fontSize: 12.0),
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                    textAlign: TextAlign.center,
                                   ),
                                   UserProfileAvatar(userId: userId, size: 60.0),
                                   if (userSummary != null)
