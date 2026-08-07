@@ -13,6 +13,14 @@ sealed class OverlayDisplayDetails {
   final bool backDropToDismiss;
   final bool closePrevOverlay;
   final bool ignorePointer;
+
+  /// Makes the overlay's own content opaque to hit testing — both Flutter's
+  /// hit test and, on web, the semantics DOM — so taps that land on it never
+  /// fall through to whatever sits behind the overlay (#8181).
+  /// Off by default: decorative overlays (animations, confetti) cover large
+  /// areas and must stay click-through.
+  final bool blockPointerThrough;
+
   final bool canPop;
 
   final VoidCallback? onDismiss;
@@ -27,6 +35,7 @@ sealed class OverlayDisplayDetails {
     this.backDropToDismiss = true,
     this.closePrevOverlay = true,
     this.ignorePointer = false,
+    this.blockPointerThrough = false,
     this.canPop = true,
     this.onDismiss,
   });
@@ -55,6 +64,7 @@ class TransformOverlayDisplayDetails extends OverlayDisplayDetails {
     super.backDropToDismiss = true,
     super.closePrevOverlay = true,
     super.ignorePointer = false,
+    super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,
   });
@@ -78,6 +88,7 @@ class TransformOverlayDisplayDetails extends OverlayDisplayDetails {
     backDropToDismiss: backDropToDismiss,
     closePrevOverlay: closePrevOverlay,
     ignorePointer: ignorePointer,
+    blockPointerThrough: blockPointerThrough,
     canPop: canPop,
     onDismiss: onDismiss,
   );
@@ -94,6 +105,7 @@ class CenteredOverlayDisplayDetails extends OverlayDisplayDetails {
     super.backDropToDismiss = true,
     super.closePrevOverlay = true,
     super.ignorePointer = false,
+    super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,
   });
@@ -110,6 +122,7 @@ class TopOverlayDisplayDetails extends OverlayDisplayDetails {
     super.backDropToDismiss = true,
     super.closePrevOverlay = true,
     super.ignorePointer = false,
+    super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,
   });
@@ -142,6 +155,7 @@ class PositionedOverlayDisplayDetails extends TransformOverlayDisplayDetails {
     super.backDropToDismiss = true,
     super.closePrevOverlay = true,
     super.ignorePointer = false,
+    super.blockPointerThrough = false,
     super.canPop = true,
     super.onDismiss,
   });

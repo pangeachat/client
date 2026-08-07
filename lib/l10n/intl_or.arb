@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-05 11:42:15.957937",
+    "@@last_modified": "2026-08-07 13:12:52.934681",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "ଖୋଲା ଅଧିବେଶନ ({num})",
     "inProgressActivitiesTitle": "ବର୍ତ୍ତମାନ ଚାଲିଛି ({num})",
     "pickDifferentActivity": "ଏକ ଭିନ୍ନ କାର୍ଯ୍ୟକଳାପ ବାଛନ୍ତୁ",
-    "blockLemmaConfirmation": "ଏହି ଶବ୍ଦ ଆପଣଙ୍କ ବିଶ୍ଳେଷଣରୁ ସ୍ଥାୟୀ ଭାବରେ ଅପସାରଣ କରାଯିବ",
     "woman": "ମହିଳା",
     "man": "ପୁରୁଷ",
     "otherGender": "ଅନ୍ୟାନ୍ୟ",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "ପ୍ରଥମ ଦିନରୁ କଥାବାର୍ତ୍ତା",
     "builtForConnection": "ସଂଯୋଗ ପାଇଁ ନିର୍ମିତ",
     "aiWhenYouNeedIt": "ଆପଣଙ୍କୁ ଆବଶ୍ୟକ ହେଲେ AI",
-    "practiceTailoredForYou": "ଆପଣଙ୍କ ପାଇଁ ଉପଯୁକ୍ତ ଅଭ୍ୟାସ"
+    "practiceTailoredForYou": "ଆପଣଙ୍କ ପାଇଁ ଉପଯୁକ୍ତ ଅଭ୍ୟାସ",
+    "deletedVocab": "ଡିଲିଟ୍ ହୋଇଥିବା ଶବ୍ଦ",
+    "blockLemmaConfirmation": "ଏହି ଶବ୍ଦଟି ଆପଣଙ୍କ ଶବ୍ଦକୋଷରୁ ବାହାର କରିଦିଆଯିବ ଏବଂ ଏଥିରୁ ଆଉ XP ମିଳିବ ନାହିଁ। ଆପଣ ଏହାକୁ ଡିଲିଟ୍ ହୋଇଥିବା ଶବ୍ଦରୁ ଫେରାଇ ଆଣିପାରିବେ।",
+    "deletedVocabListBody": "ଏହି ଶବ୍ଦଗୁଡ଼ିକ ଆପଣଙ୍କ ଶବ୍ଦକୋଷରୁ ଲୁଚାଯାଇଛି ଏବଂ XP ଅର୍ଜନ କରନ୍ତି ନାହିଁ। ଏହାକୁ ଫେରାଇ ଆଣିବା ପାଇଁ ଗୋଟିଏକୁ ରିଷ୍ଟୋର କରନ୍ତୁ।",
+    "deletedVocabListBodyEmpty": "ଆପଣ କୌଣସି ଶବ୍ଦ ଡିଲିଟ୍ କରିନାହାଁନ୍ତି। ଆପଣଙ୍କ ଶବ୍ଦକୋଷରୁ ଡିଲିଟ୍ ହୋଇଥିବା ଶବ୍ଦଗୁଡ଼ିକ ଏଠାରେ ଦେଖାଯିବ ଯାହାକୁ ଆପଣ ଫେରାଇ ଆଣିପାରିବେ।",
+    "deletedVocabListLabel": "ଡିଲିଟ୍ ହୋଇଥିବା ଶବ୍ଦ",
+    "restore": "ରିଷ୍ଟୋର କରନ୍ତୁ",
+    "deletedWordLabel": "{lemma}, ଡିଲିଟ୍ ହୋଇଛି",
+    "restoredWords": "{count, plural, =1{1ଟି ଶବ୍ଦ ରିଷ୍ଟୋର ହୋଇଛି} other{{count}ଟି ଶବ୍ଦ ରିଷ୍ଟୋର ହୋଇଛି}}"
 }

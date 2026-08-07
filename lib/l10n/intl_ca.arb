@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:11.297179",
+    "@@last_modified": "2026-08-07 13:12:38.396691",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -7720,16 +7720,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Aquesta paraula de vocabulari s'eliminarà permanentment de les teves analítiques",
     "woman": "Dona",
     "man": "Home",
     "otherGender": "Altre",
     "unselectedGender": "Selecciona una opció de gènere",
     "chatParticipantTooltip": "Això és tothom en aquest xat. Fes clic a l'avatar de qualsevol usuari i \"inicia una conversa\" per enviar un DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9834,5 +9829,13 @@
     "conversationFromDayOne": "Conversa des del primer dia",
     "builtForConnection": "Dissenyat per a la connexió",
     "aiWhenYouNeedIt": "IA quan la necessitis",
-    "practiceTailoredForYou": "Pràctica personalitzada per a tu"
+    "practiceTailoredForYou": "Pràctica personalitzada per a tu",
+    "deletedVocab": "Paraules suprimides",
+    "blockLemmaConfirmation": "Aquesta paraula se suprimirà del teu vocabulari i deixarà de generar XP. Pots recuperar-la des de Paraules suprimides.",
+    "deletedVocabListBody": "Aquestes paraules estan ocultes del teu vocabulari i no generen XP. Restaura'n una per recuperar-la.",
+    "deletedVocabListBodyEmpty": "No has suprimit cap paraula. Les paraules que suprimeixis del teu vocabulari apareixeran aquí perquè puguis recuperar-les.",
+    "deletedVocabListLabel": "Paraules suprimides",
+    "restore": "Restaurar",
+    "deletedWordLabel": "{lemma}, suprimit",
+    "restoredWords": "{count, plural, =1{S'ha restaurat 1 paraula} other{S'han restaurat {count} paraules}}"
 }

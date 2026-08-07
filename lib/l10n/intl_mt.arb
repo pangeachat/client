@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-05 11:42:15.193433",
+    "@@last_modified": "2026-08-07 13:12:50.197711",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Sessjonijiet miftuħa ({num})",
     "inProgressActivitiesTitle": "Għaddejjin bħalissa ({num})",
     "pickDifferentActivity": "Agħżel attività differenti",
-    "blockLemmaConfirmation": "Din il-kelma tal-vokabularju titneħħa b'mod permanenti mill-analitika tiegħek",
     "woman": "Mara",
     "man": "Raġel",
     "otherGender": "Oħrajn",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "Konverżazzjoni mill-ewwel jum",
     "builtForConnection": "Mibni għall-konnessjoni",
     "aiWhenYouNeedIt": "AI meta jkollok bżonnha",
-    "practiceTailoredForYou": "Prattika mfassla għalik"
+    "practiceTailoredForYou": "Prattika mfassla għalik",
+    "deletedVocab": "Kliem imħassar",
+    "blockLemmaConfirmation": "Din il-kelma titneħħa mill-vokabularju tiegħek u ma tibqax taqla' XP. Tista' terġa' ġġibha minn Kliem imħassar.",
+    "deletedVocabListBody": "Dawn il-kliem huma moħbija mill-vokabularju tiegħek u ma jaqlgħux XP. Irrestawra waħda biex terġa' ġġibha lura.",
+    "deletedVocabListBodyEmpty": "Ma ħassart l-ebda kelma. Kliem li tħassar mill-vokabularju tiegħek jidher hawnhekk biex tkun tista' terġa' ġġibhom lura.",
+    "deletedVocabListLabel": "Kliem imħassar",
+    "restore": "Irrestawra",
+    "deletedWordLabel": "{lemma}, imħassar",
+    "restoredWords": "{count, plural, =1{Ġiet restawrata kelma waħda} other{Ġew restawrati {count} kliem}}"
 }

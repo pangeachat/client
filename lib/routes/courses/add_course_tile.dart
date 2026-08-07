@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
+import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 
@@ -103,20 +103,7 @@ class AddCourseTile extends StatelessWidget {
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
                               if (invited)
-                                ExcludeSemantics(
-                                  child: CourseInfoChip(
-                                    icon: Icons.mail,
-                                    text: L10n.of(context).invited,
-                                    fontSize: 12.0,
-                                    iconSize: 12.0,
-                                    highlightColor: AppConfig.goldByTheme(
-                                      context,
-                                    ),
-                                    foregroundColor: AppConfig.onGoldByTheme(
-                                      context,
-                                    ),
-                                  ),
-                                ),
+                                ExcludeSemantics(child: InvitedChip()),
                               if (members != null && !invited)
                                 Semantics(
                                   label: L10n.of(

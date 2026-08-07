@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-05 11:42:11.249576",
+    "@@last_modified": "2026-08-07 13:12:39.553774",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -8468,16 +8468,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Αυτή η λέξη λεξιλογίου θα αφαιρεθεί μόνιμα από την ανάλυσή σας",
     "woman": "Γυναίκα",
     "man": "Άνδρας",
     "otherGender": "Άλλο",
     "unselectedGender": "Επιλέξτε μια επιλογή φύλου",
     "chatParticipantTooltip": "Αυτοί είναι όλοι σε αυτή τη συνομιλία. Κάντε κλικ στο avatar οποιουδήποτε χρήστη και \"ξεκινήστε συνομιλία\" για να στείλετε ένα DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10582,5 +10577,13 @@
     "conversationFromDayOne": "Συζήτηση από την πρώτη μέρα",
     "builtForConnection": "Φτιαγμένο για σύνδεση",
     "aiWhenYouNeedIt": "AI όταν το χρειάζεστε",
-    "practiceTailoredForYou": "Εξάσκηση προσαρμοσμένη για εσάς"
+    "practiceTailoredForYou": "Εξάσκηση προσαρμοσμένη για εσάς",
+    "deletedVocab": "Διαγραμμένες λέξεις",
+    "blockLemmaConfirmation": "Αυτή η λέξη θα αφαιρεθεί από το λεξιλόγιό σας και δεν θα κερδίζει πλέον XP. Μπορείτε να την επαναφέρετε από τις Διαγραμμένες λέξεις.",
+    "deletedVocabListBody": "Αυτές οι λέξεις είναι κρυμμένες από το λεξιλόγιό σας και δεν κερδίζουν XP. Επαναφέρετε μία για να την επαναφέρετε.",
+    "deletedVocabListBodyEmpty": "Δεν έχετε διαγράψει λέξεις. Οι λέξεις που διαγράφετε από το λεξιλόγιό σας θα εμφανίζονται εδώ, ώστε να μπορείτε να τις επαναφέρετε.",
+    "deletedVocabListLabel": "Διαγραμμένες λέξεις",
+    "restore": "Επαναφορά",
+    "deletedWordLabel": "{lemma}, διαγραμμένο",
+    "restoredWords": "{count, plural, =1{Επαναφέρθηκε 1 λέξη} other{Επαναφέρθηκαν {count} λέξεις}}"
 }

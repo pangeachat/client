@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:16.127212",
+    "@@last_modified": "2026-08-07 13:12:53.181888",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -8325,16 +8325,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Această cuvânt de vocabular va fi eliminat permanent din analizele tale",
     "woman": "Femeie",
     "man": "Bărbat",
     "otherGender": "Altul",
     "unselectedGender": "Selectați o opțiune de gen",
     "chatParticipantTooltip": "Aceasta este toată lumea din acest chat. Faceți clic pe avatarul oricărui utilizator și “începeți conversația” pentru a trimite un DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10439,5 +10434,13 @@
     "conversationFromDayOne": "Conversație din prima zi",
     "builtForConnection": "Conceput pentru conectare",
     "aiWhenYouNeedIt": "AI când ai nevoie",
-    "practiceTailoredForYou": "Exerciții personalizate pentru tine"
+    "practiceTailoredForYou": "Exerciții personalizate pentru tine",
+    "deletedVocab": "Cuvinte șterse",
+    "blockLemmaConfirmation": "Acest cuvânt va fi eliminat din vocabularul tău și nu va mai aduce XP. Îl poți readuce din Cuvinte șterse.",
+    "deletedVocabListBody": "Aceste cuvinte sunt ascunse din vocabularul tău și nu aduc XP. Restaurează unul pentru a-l readuce.",
+    "deletedVocabListBodyEmpty": "Nu ai șters niciun cuvânt. Cuvintele pe care le ștergi din vocabularul tău vor apărea aici, astfel încât să le poți readuce.",
+    "deletedVocabListLabel": "Cuvinte șterse",
+    "restore": "Restaurare",
+    "deletedWordLabel": "{lemma}, șters",
+    "restoredWords": "{count, plural, =1{Am restaurat 1 cuvânt} other{Am restaurat {count} cuvinte}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-05 11:42:17.562128",
+    "@@last_modified": "2026-08-07 13:12:59.422683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "ئېچىلمىغان دەرسلەر ({num})",
     "inProgressActivitiesTitle": "ھازىر داۋام قىلىۋاتقان ({num})",
     "pickDifferentActivity": "باشقا پائالىيەت تاللاڭ",
-    "blockLemmaConfirmation": "بۇ سۆزلۈك سىزنىڭ ئانالىزىڭىزدىن مەڭگۈلۈك ئۆچۈرۈلىدۇ",
     "woman": "ئايال",
     "man": "ئەر",
     "otherGender": "باشقا",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "بىرىنچى كۈندىن باشلاپ پاراڭلىشىش",
     "builtForConnection": "ئالاقە ئۈچۈن ياسالغان",
     "aiWhenYouNeedIt": "سىزگە لازىم بولغاندا سۈنئىي ئىدراك",
-    "practiceTailoredForYou": "سىز ئۈچۈن خاسلاشتۇرۇلغان مەشىق"
+    "practiceTailoredForYou": "سىز ئۈچۈن خاسلاشتۇرۇلغان مەشىق",
+    "deletedVocab": "ئۆچۈرۈلگەن سۆزلەر",
+    "blockLemmaConfirmation": "بۇ سۆز سۆزلۈكۈڭىزدىن ئۆچۈرۈلىدۇ ھەمدە XP تاپالمايدۇ. سىز ئۇنى ئۆچۈرۈلگەن سۆزلەر تىزىملىكىدىن ئەسلىگە كەلتۈرەلەيسىز.",
+    "deletedVocabListBody": "بۇ سۆزلەر سۆزلۈكۈڭىزدىن يوشۇرۇنغان ھەمدە XP تاپالمايدۇ. ئۇنى ئەسلىگە كەلتۈرۈش ئۈچۈن بىرنى ئەسلىگە كەلتۈرۈڭ.",
+    "deletedVocabListBodyEmpty": "سىز ھېچقانداق سۆز ئۆچۈرمىدىڭىز. سۆزلۈكۈڭىزدىن ئۆچۈرگەن سۆزلەر بۇ يەردە كۆرسىتىلىدۇ، شۇنداق قىلىپ سىز ئۇلارنى ئەسلىگە كەلتۈرەلەيسىز.",
+    "deletedVocabListLabel": "ئۆچۈرۈلگەن سۆزلەر",
+    "restore": "ئەسلىگە كەلتۈرۈش",
+    "deletedWordLabel": "{lemma}، ئۆچۈرۈلدى",
+    "restoredWords": "{count, plural, =1{1 سۆز ئەسلىگە كەلتۈرۈلدى} other{{count} سۆز ئەسلىگە كەلتۈرۈلدى}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-05 11:42:11.110011",
+    "@@last_modified": "2026-08-07 13:12:38.804898",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Bukas nga mga sesyon ({num})",
     "inProgressActivitiesTitle": "Nagakahitabo karon ({num})",
     "pickDifferentActivity": "Pagpili og laing aktibidad",
-    "blockLemmaConfirmation": "Kini nga pulong sa bokabularyo permanenteng tangtangon gikan sa imong analytics",
     "woman": "Babaye",
     "man": "Lalaki",
     "otherGender": "Uban pa",
@@ -2091,5 +2090,13 @@
     "conversationFromDayOne": "Panag-istoryahanay gikan sa Unang Adlaw",
     "builtForConnection": "Gibuhat para sa koneksyon",
     "aiWhenYouNeedIt": "AI kung kinahanglan nimo",
-    "practiceTailoredForYou": "Praktis nga gipahaum para kanimo"
+    "practiceTailoredForYou": "Praktis nga gipahaum para kanimo",
+    "deletedVocab": "Gipapas nga mga pulong",
+    "blockLemmaConfirmation": "Kini nga pulong tangtangon gikan sa imong bokabularyo ug dili na makakuha og XP. Mahimo nimo kining ibalik gikan sa Gipapas nga mga pulong.",
+    "deletedVocabListBody": "Kini nga mga pulong gitago gikan sa imong bokabularyo ug dili makakuha og XP. Ibalik ang usa aron kini makita pag-usab.",
+    "deletedVocabListBodyEmpty": "Wala ka pa nakapapas og bisan unsang pulong. Ang mga pulong nga imong papason gikan sa imong bokabularyo makita dinhi aron mahimo nimo kining ibalik.",
+    "deletedVocabListLabel": "Gipapas nga mga pulong",
+    "restore": "Ibalik",
+    "deletedWordLabel": "{lemma}, gipapas",
+    "restoredWords": "{count, plural, =1{Gibalik ang 1 ka pulong} other{Gibalik ang {count} ka pulong}}"
 }

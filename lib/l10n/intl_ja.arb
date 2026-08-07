@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-05 11:42:13.595371",
+    "@@last_modified": "2026-08-07 13:12:44.562038",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -8362,16 +8362,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "この語彙はあなたの分析から永久に削除されます",
     "woman": "女性",
     "man": "男性",
     "otherGender": "その他",
     "unselectedGender": "性別オプションを選択してください",
     "chatParticipantTooltip": "これはこのチャットの全員です。任意のユーザーのアバターをクリックして「会話を開始」を選択すると、DMを送信できます。",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10476,5 +10471,13 @@
     "conversationFromDayOne": "初日から会話",
     "builtForConnection": "つながりのために作られました",
     "aiWhenYouNeedIt": "必要なときにAIを",
-    "practiceTailoredForYou": "あなたに合わせた練習"
+    "practiceTailoredForYou": "あなたに合わせた練習",
+    "deletedVocab": "削除済み単語",
+    "blockLemmaConfirmation": "この単語は語彙から削除され、XPを獲得できなくなります。「削除済み単語」から元に戻すことができます。",
+    "deletedVocabListBody": "これらの単語は語彙から非表示になり、XPを獲得しません。元に戻すには、いずれかを復元してください。",
+    "deletedVocabListBodyEmpty": "削除した単語はありません。語彙から削除した単語はここに表示され、元に戻すことができます。",
+    "deletedVocabListLabel": "削除済み単語",
+    "restore": "復元",
+    "deletedWordLabel": "{lemma}、削除済み",
+    "restoredWords": "{count, plural, =1{1単語を復元しました} other{{count}単語を復元しました}}"
 }
