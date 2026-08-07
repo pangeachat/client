@@ -1,18 +1,30 @@
 import 'dart:async';
+import 'dart:math';
 
 import 'package:flutter/material.dart';
 
+import 'package:audioplayers/audioplayers.dart';
+
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// A level-up celebration anchored to the level badge it wraps (issue #7432).
 ///
 /// Replaces the old top-down chat snackbar: instead of chrome dropping over
-/// the conversation, the badge itself briefly pulses (scale + gold glow) and a
-/// small "Level N!" chip pops out beside it, then fades away on its own. This
-/// keeps the learner's eye on the analytics surface the level actually lives
-/// on, per the issue's intent.
+/// the conversation, the badge itself briefly pulses (scale + gold glow), a
+/// small "Level N!" chip pops out beside it, and the level-up chime plays; the
+/// chip then fades away on its own. This keeps the learner's eye on the
+/// analytics surface the level actually lives on, per the issue's intent.
+///
+/// Only one of these is ever mounted at a time — the shell picks the cluster
+/// (column mode) or the analytics bar (narrow), and a full-screen chat's app
+/// bar hosts the avatar only where the bar is absent (routing.instructions.md
+/// → Single-column analytics nav bar). That is what keeps a single level-up
+/// from playing the chime two or three times over.
 ///
 /// Contract (routing.instructions.md, "Single-column analytics nav bar" — no
 /// stacked chrome, no timed controls):
@@ -42,11 +54,16 @@ class LevelUpBadgeCelebration extends StatefulWidget {
   /// One full pulse run (a few scale/glow beats). Tests shorten this.
   final Duration pulseDuration;
 
+  /// Fired alongside the pulse. Defaults to the real chime; widget tests pass
+  /// a no-op so they never reach for the audio plugin or the network.
+  final Future<void> Function()? playChime;
+
   const LevelUpBadgeCelebration({
     required this.child,
     this.levelUpdates,
     this.chipDuration = defaultChipDuration,
     this.pulseDuration = defaultPulseDuration,
+    this.playChime,
     super.key,
   });
 
@@ -78,6 +95,33 @@ class _LevelUpBadgeCelebrationState extends State<LevelUpBadgeCelebration>
   late final AnimationController _chipController;
   late final Animation<double> _chipOpacity;
   late final Animation<double> _chipScale;
+
+  Future<void> _playChime() => widget.playChime?.call() ?? _playLevelUpChime();
+
+  Future<void> _playLevelUpChime() async {
+    final player = AudioPlayer();
+    try {
+      await player.setVolume(min(0.25, AppSettings.volume.value));
+      await player.play(
+        UrlSource(
+          "${AppConfig.assetsBaseURL}/${AnalyticsConstants.levelUpAudioFileName}",
+        ),
+      );
+      // Let the clip finish before the player is torn down.
+      await Future.delayed(const Duration(seconds: 2));
+    } catch (e, s) {
+      // Once, not per level-up: the failure modes here are standing ones (no
+      // network, browser autoplay policy), so repeat reports say nothing new.
+      await ErrorHandler.logErrorOnce(
+        key: "level_up_chime",
+        e: e,
+        s: s,
+        data: {"message": "Failed to play level up sound"},
+      );
+    } finally {
+      await player.dispose();
+    }
+  }
 
   @override
   void initState() {
@@ -153,6 +197,8 @@ class _LevelUpBadgeCelebrationState extends State<LevelUpBadgeCelebration>
     setState(() => _celebratedLevel = update.newLevel);
     _pulseController.forward(from: 0.0);
     _chipController.forward();
+    // Not awaited: the chime outlives the pulse and must not gate the visuals.
+    unawaited(_playChime());
 
     _chipTimer?.cancel();
     _chipTimer = Timer(widget.chipDuration, () {
