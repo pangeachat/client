@@ -12,15 +12,66 @@ void main() {
     });
 
     test('one zoom level adds the per-level step', () {
-      expect(ms(5, 6), 610); // 500 + 1*110
+      expect(ms(5, 6), 700); // 500 + 1*200
     });
 
     test('a large move is clamped to the ceiling', () {
-      expect(ms(3, 18), 1400); // 500 + 15*110 = 2150 -> clamped
+      expect(ms(3, 18), 2400); // 500 + 15*200 = 3500 -> clamped
     });
 
     test('depends only on the magnitude of the delta', () {
       expect(ms(8, 12), ms(12, 8));
+    });
+
+    // #7937 — a glide crosses every zoom level between its endpoints and each
+    // is a fresh tile level to fetch, so a long sweep run too fast renders as
+    // un-tiled background (the dark-mode "flashbang"). Long moves must leave
+    // room for a tile round trip per level, while a single +/- step stays
+    // responsive.
+    test('a long sweep leaves >=150ms per zoom level crossed', () {
+      // The focus button's worst case: the world floor in to focusZoom.
+      const levels = WorldMapConstants.focusZoom - 3;
+      expect(ms(3, WorldMapConstants.focusZoom) / levels, greaterThan(150));
+    });
+
+    test('a single +/- step stays under a second', () {
+      expect(ms(5, 6), lessThan(1000));
+    });
+  });
+
+  // #7937 — past a threshold the camera jumps instead of tweening, so only the
+  // destination zoom level is ever fetched. A tween renders every level it
+  // crosses, and those are precisely the uncached ones.
+  group('movesInstantly — long moves skip the tween (#7937)', () {
+    test('the short moves that read as polish still glide', () {
+      expect(WorldMapConstants.movesInstantly(7, 7), isFalse); // focus pan
+      expect(WorldMapConstants.movesInstantly(7, 8), isFalse); // +/- step
+      expect(WorldMapConstants.movesInstantly(7, 6), isFalse);
+    });
+
+    test('exactly at the threshold still glides; past it jumps', () {
+      final t = WorldMapConstants.instantMoveZoomDelta;
+      expect(WorldMapConstants.movesInstantly(5, 5 + t), isFalse);
+      expect(WorldMapConstants.movesInstantly(5, 5 + t + 0.01), isTrue);
+    });
+
+    test('the focus button and the world reset both jump', () {
+      // Focus: world floor in to focusZoom. Reset: focusZoom back out.
+      expect(
+        WorldMapConstants.movesInstantly(3, WorldMapConstants.focusZoom),
+        isTrue,
+      );
+      expect(
+        WorldMapConstants.movesInstantly(WorldMapConstants.focusZoom, 3),
+        isTrue,
+      );
+    });
+
+    test('depends only on the magnitude, not the direction', () {
+      expect(
+        WorldMapConstants.movesInstantly(4, 12),
+        WorldMapConstants.movesInstantly(12, 4),
+      );
     });
   });
 

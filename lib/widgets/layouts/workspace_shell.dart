@@ -241,201 +241,205 @@ class WorkspaceShell extends StatelessWidget {
     return Semantics(
       label: L10n.of(context).home,
       child: ScaffoldMessenger(
-        child: Scaffold(
-          // No bottomNavigationBar slot: the narrow chrome is the FLOATING nav
-          // widget (rail + expandable cavity) stacked over the map below, so it
-          // can grow upward and let the map show through around it. See
-          // `routing.instructions.md` → Single-column bottom nav.
-          // The persistent WorldMap stays full-bleed (edge to edge, behind the
-          // status bar) as the base layer — routing.instructions.md. Only the
-          // foreground chrome/panels sit inside the SafeArea below.
-          body: Stack(
-            fit: StackFit.expand,
-            children: [
-              /// Persistent world map — the base layer everything overlays. Overlays pad the
-              /// camera so a course fit lands in the exposed area: left = rail + column +
-              /// detail; right = the panel zone.
-              WorldMap(
-                key: _persistentWorldMapKey,
-                leftOverlayWidth: l.mapLeftOverlay,
-                rightOverlayWidth: l.allocation.mapRightOverlay,
-                bottomOverlayHeight: l.mapBottomOverlay,
-                availableVisibleMapWidth: l.availableVisibleMapWidth,
-                focus: mapFocusFor(state),
-              ),
+        child: FocusTraversalGroup(
+          policy: OrderedTraversalPolicy(),
+          child: Scaffold(
+            // No bottomNavigationBar slot: the narrow chrome is the FLOATING nav
+            // widget (rail + expandable cavity) stacked over the map below, so it
+            // can grow upward and let the map show through around it. See
+            // `routing.instructions.md` → Single-column bottom nav.
+            // The persistent WorldMap stays full-bleed (edge to edge, behind the
+            // status bar) as the base layer — routing.instructions.md. Only the
+            // foreground chrome/panels sit inside the SafeArea below.
+            body: Stack(
+              fit: StackFit.expand,
+              children: [
+                /// Persistent world map — the base layer everything overlays. Overlays pad the
+                /// camera so a course fit lands in the exposed area: left = rail + column +
+                /// detail; right = the panel zone.
+                WorldMap(
+                  key: _persistentWorldMapKey,
+                  leftOverlayWidth: l.mapLeftOverlay,
+                  rightOverlayWidth: l.allocation.mapRightOverlay,
+                  bottomOverlayHeight: l.mapBottomOverlay,
+                  availableVisibleMapWidth: l.availableVisibleMapWidth,
+                  focus: mapFocusFor(state),
+                ),
 
-              // Everything above the map respects the device safe area; the
-              // map itself does not (it is full-bleed, see above).
-              Positioned.fill(
-                child: SafeArea(
-                  child: Stack(
-                    fit: StackFit.expand,
-                    children: [
-                      /// The route canvas, as one stable child
-                      Positioned(
-                        left: l.leftInset,
-                        top: 0,
-                        bottom: 0,
-                        right: 0,
-                        width: null,
-                        child: Offstage(child: l.canvasChild),
-                      ),
-
-                      /// The narrow floating nav widget: the 4-item rail with the
-                      /// expandable cavity above it hosting the focused section surface
-                      /// (the chat list, the Courses hub, a course card) bare — the widget
-                      /// is the card. Hidden while a map-pin preview sheet is open (the
-                      /// map owns that selection; the notifier carries the signal up), and
-                      /// entirely absent under a focused full-screen surface. See
-                      /// `routing.instructions.md` → Single-column bottom nav.
-                      if (l.navWidgetVisible)
-                        ValueListenableBuilder<bool>(
-                          valueListenable: WorldMapPinsManager.notifier,
-                          builder: (context, pinSheetOpen, child) =>
-                              pinSheetOpen ? const SizedBox.shrink() : child!,
-                          child: _MobileNavLayer(
-                            state: state,
-                            layout: l,
-                            screenPadding: MediaQuery.viewPaddingOf(context),
-                            // Only the keyboard's overlap BEYOND the bottom safe
-                            // area (home indicator) should trim the cavity: once
-                            // the keyboard covers that strip, the SafeArea stops
-                            // reserving it and the bottom-anchored nav layer
-                            // already drops by that much. Trimming by the raw
-                            // inset would double-count it and settle the cavity
-                            // top ~34pt low. Read above the Scaffold, where
-                            // `viewInsets` is still intact (#7754).
-                            keyboardInset:
-                                (MediaQuery.viewInsetsOf(context).bottom -
-                                        MediaQuery.viewPaddingOf(
-                                          context,
-                                        ).bottom)
-                                    .clamp(0.0, double.infinity),
-                          ),
+                // Everything above the map respects the device safe area; the
+                // map itself does not (it is full-bleed, see above).
+                Positioned.fill(
+                  child: SafeArea(
+                    child: Stack(
+                      fit: StackFit.expand,
+                      children: [
+                        /// The route canvas, as one stable child
+                        Positioned(
+                          left: l.leftInset,
+                          top: 0,
+                          bottom: 0,
+                          right: 0,
+                          width: null,
+                          child: Offstage(child: l.canvasChild),
                         ),
 
-                      /// The nav rail must size to its content, NOT fill the Stack: this Stack is
-                      /// StackFit.expand, which forces non-positioned children to full size — and the
-                      /// rail's root (opaque-canvas) Material would then paint over the entire
-                      /// persistent map below it (blank map; mobile was fine because the rail is
-                      /// `SizedBox.shrink` there). Align tops it left at its natural size so the map
-                      /// stays full-bleed behind it.
-                      Align(
-                        alignment: Alignment.topLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(
-                            _ShellLayout.chromeMargin,
-                          ),
-                          child: SpacesNavigationRail(
-                            state: state,
-                            showNavRail: l.navRail,
-                            naviRailWidth: FluffyThemes.navRailWidth + 1.0,
-                            activeSpaceId: activeSpaceIdFor(state.uri),
-                          ),
-                        ),
-                      ),
-
-                      /// Left-column panels (the chat list, a live room, a course, the
-                      /// settings/profile menu) from `?left=`, each at its allocator slot. The
-                      /// floating-card chrome AND margin live in [PanelCard] (inside
-                      /// WorkspaceLeftPanel), shared with the right column and the center detail.
-                      /// Keyed by token so opening/closing a sibling panel doesn't shift indices and
-                      /// remount this one; a `room` panel additionally carries a roomId GlobalKey so
-                      /// its ChatController repositions rather than remounts when the slot moves.
-                      ...[
-                        for (var i = 0; i < l.leftTokens.length; i++)
-                          // Skip the cavity-hosted surface (the chat list, the Courses
-                          // hub, a course card) — it renders inside the nav widget's
-                          // cavity, not as a full-screen left panel (no double-render).
-                          if (i != l.cavityIndex &&
-                              l.allocation.left[i].vis != PanelVis.hidden)
-                            Positioned(
-                              key: ValueKey(l.leftTokens[i].encode()),
-                              // The narrow full-screen focus (a live room / session) is
-                              // FULL-BLEED: no card chrome, edge to edge, top 0 — its own
-                              // app bar absorbs the status-bar inset, and skipping the
-                              // shell's extra safe-area offset removes the doubled top
-                              // padding (#7554). Column-mode / non-focused panels keep
-                              // the card and respect the top inset so their close/back
-                              // control clears the system top bar (#7143); PanelCard's
-                              // 12px top margin aligns them with the top-right cluster.
-                              top: 0,
-                              bottom: 0,
-                              left: l.allocation.left[i].left,
-                              width: l.allocation.left[i].width,
-                              child: LeftPanelLayer(
-                                token: l.leftTokens[i],
-                                state: state,
-                                foldedOver: l.allocation.left[i].foldedOver,
-                                getRoomKey: _roomKeyFor,
-                                bare:
-                                    !l.isColumnMode &&
-                                    l.allocation.left[i].vis == PanelVis.full,
-                              ),
+                        /// The narrow floating nav widget: the 4-item rail with the
+                        /// expandable cavity above it hosting the focused section surface
+                        /// (the chat list, the Courses hub, a course card) bare — the widget
+                        /// is the card. Hidden while a map-pin preview sheet is open (the
+                        /// map owns that selection; the notifier carries the signal up), and
+                        /// entirely absent under a focused full-screen surface. See
+                        /// `routing.instructions.md` → Single-column bottom nav.
+                        if (l.navWidgetVisible)
+                          ValueListenableBuilder<bool>(
+                            valueListenable: WorldMapPinsManager.notifier,
+                            builder: (context, pinSheetOpen, child) =>
+                                pinSheetOpen ? const SizedBox.shrink() : child!,
+                            child: _MobileNavLayer(
+                              state: state,
+                              layout: l,
+                              screenPadding: MediaQuery.viewPaddingOf(context),
+                              // Only the keyboard's overlap BEYOND the bottom safe
+                              // area (home indicator) should trim the cavity: once
+                              // the keyboard covers that strip, the SafeArea stops
+                              // reserving it and the bottom-anchored nav layer
+                              // already drops by that much. Trimming by the raw
+                              // inset would double-count it and settle the cavity
+                              // top ~34pt low. Read above the Scaffold, where
+                              // `viewInsets` is still intact (#7754).
+                              keyboardInset:
+                                  (MediaQuery.viewInsetsOf(context).bottom -
+                                          MediaQuery.viewPaddingOf(
+                                            context,
+                                          ).bottom)
+                                      .clamp(0.0, double.infinity),
                             ),
-                      ],
+                          ),
 
-                      /// Right-column panels (analytics summary, a vocab/grammar detail, a
-                      /// completed-activity review) from `?right=`, each placed at its allocator
-                      /// slot. The slots tile and never overlap by construction; a folded slot is
-                      /// `hidden` (not drawn), its content one back-step away on the higher-priority
-                      /// sibling that stayed.
-                      ...[
-                        for (var i = 0; i < l.rightTokens.length; i++)
-                          if (l.allocation.right[i].vis != PanelVis.hidden)
-                            Positioned(
-                              // Keyed by token so a left-column open/close (which shifts sibling
-                              // indices in this Stack) reconciles the right panel by identity, not
-                              // position — otherwise its stateful content (analytics, a detail) would
-                              // remount and re-fetch.
-                              key: ValueKey(l.rightTokens[i].encode()),
-                              // Respect the top safe-area inset so the close/back control clears the
-                              // system top bar (#7143). On narrow the analytics bar heads the panel
-                              // ("the analytics bar itself remains visible at the top throughout" —
-                              // routing.instructions.md), so the panel starts below it.
-                              top: l.isColumnMode
-                                  ? 0
-                                  : _ShellLayout.analyticsBarAllowance,
-                              bottom: 0,
-                              left: l.allocation.right[i].left,
-                              width: l.allocation.right[i].width,
-                              child: FocusTraversalGroup(
-                                policy: OrderedTraversalPolicy(),
-                                child: WorkspaceRightPanel(
-                                  token: l.rightTokens[i],
-                                  currentUri: state.uri,
-                                  foldedOver: l.allocation.right[i].foldedOver,
+                        /// The nav rail must size to its content, NOT fill the Stack: this Stack is
+                        /// StackFit.expand, which forces non-positioned children to full size — and the
+                        /// rail's root (opaque-canvas) Material would then paint over the entire
+                        /// persistent map below it (blank map; mobile was fine because the rail is
+                        /// `SizedBox.shrink` there). Align tops it left at its natural size so the map
+                        /// stays full-bleed behind it.
+                        Align(
+                          alignment: Alignment.topLeft,
+                          child: Padding(
+                            padding: const EdgeInsets.all(
+                              _ShellLayout.chromeMargin,
+                            ),
+                            child: SpacesNavigationRail(
+                              state: state,
+                              showNavRail: l.navRail,
+                              naviRailWidth: FluffyThemes.navRailWidth + 1.0,
+                              activeSpaceId: activeSpaceIdFor(state.uri),
+                            ),
+                          ),
+                        ),
+
+                        /// Left-column panels (the chat list, a live room, a course, the
+                        /// settings/profile menu) from `?left=`, each at its allocator slot. The
+                        /// floating-card chrome AND margin live in [PanelCard] (inside
+                        /// WorkspaceLeftPanel), shared with the right column and the center detail.
+                        /// Keyed by token so opening/closing a sibling panel doesn't shift indices and
+                        /// remount this one; a `room` panel additionally carries a roomId GlobalKey so
+                        /// its ChatController repositions rather than remounts when the slot moves.
+                        ...[
+                          for (var i = 0; i < l.leftTokens.length; i++)
+                            // Skip the cavity-hosted surface (the chat list, the Courses
+                            // hub, a course card) — it renders inside the nav widget's
+                            // cavity, not as a full-screen left panel (no double-render).
+                            if (i != l.cavityIndex &&
+                                l.allocation.left[i].vis != PanelVis.hidden)
+                              Positioned(
+                                key: ValueKey(l.leftTokens[i].encode()),
+                                // The narrow full-screen focus (a live room / session) is
+                                // FULL-BLEED: no card chrome, edge to edge, top 0 — its own
+                                // app bar absorbs the status-bar inset, and skipping the
+                                // shell's extra safe-area offset removes the doubled top
+                                // padding (#7554). Column-mode / non-focused panels keep
+                                // the card and respect the top inset so their close/back
+                                // control clears the system top bar (#7143); PanelCard's
+                                // 12px top margin aligns them with the top-right cluster.
+                                top: 0,
+                                bottom: 0,
+                                left: l.allocation.left[i].left,
+                                width: l.allocation.left[i].width,
+                                child: LeftPanelLayer(
+                                  token: l.leftTokens[i],
+                                  state: state,
+                                  foldedOver: l.allocation.left[i].foldedOver,
+                                  getRoomKey: _roomKeyFor,
+                                  bare:
+                                      !l.isColumnMode &&
+                                      l.allocation.left[i].vis == PanelVis.full,
                                 ),
                               ),
-                            ),
-                      ],
+                        ],
 
-                      /// The right column's entry point. In column mode: the persistent
-                      /// top-right vertical cluster, in the gutter the allocator reserves.
-                      /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
-                      /// safe area — full form only, on the surfaces where it IS
-                      /// navigation (the map/cavity ground and the right panels it
-                      /// heads). A full-screen chat hosts the avatar in its own app bar
-                      /// instead, and a route-driven detail page shows nothing. See
-                      /// `routing.instructions.md` → Single-column analytics nav bar.
-                      if (l.isColumnMode && l.allocation.clusterVisible)
-                        Positioned(
-                          top: _ShellLayout.chromeMargin,
-                          right: _ShellLayout.chromeMargin,
-                          child: WorldUserCluster(key: _userClusterKey),
-                        )
-                      else if (l.analyticsBarVisible)
-                        Positioned(
-                          top: _ShellLayout.chromeMargin,
-                          left: _ShellLayout.chromeMargin,
-                          right: _ShellLayout.chromeMargin,
-                          child: WorldAnalyticsBar(key: _userClusterKey),
-                        ),
-                    ],
+                        /// Right-column panels (analytics summary, a vocab/grammar detail, a
+                        /// completed-activity review) from `?right=`, each placed at its allocator
+                        /// slot. The slots tile and never overlap by construction; a folded slot is
+                        /// `hidden` (not drawn), its content one back-step away on the higher-priority
+                        /// sibling that stayed.
+                        ...[
+                          for (var i = 0; i < l.rightTokens.length; i++)
+                            if (l.allocation.right[i].vis != PanelVis.hidden)
+                              Positioned(
+                                // Keyed by token so a left-column open/close (which shifts sibling
+                                // indices in this Stack) reconciles the right panel by identity, not
+                                // position — otherwise its stateful content (analytics, a detail) would
+                                // remount and re-fetch.
+                                key: ValueKey(l.rightTokens[i].encode()),
+                                // Respect the top safe-area inset so the close/back control clears the
+                                // system top bar (#7143). On narrow the analytics bar heads the panel
+                                // ("the analytics bar itself remains visible at the top throughout" —
+                                // routing.instructions.md), so the panel starts below it.
+                                top: l.isColumnMode
+                                    ? 0
+                                    : _ShellLayout.analyticsBarAllowance,
+                                bottom: 0,
+                                left: l.allocation.right[i].left,
+                                width: l.allocation.right[i].width,
+                                child: FocusTraversalGroup(
+                                  policy: OrderedTraversalPolicy(),
+                                  child: WorkspaceRightPanel(
+                                    token: l.rightTokens[i],
+                                    currentUri: state.uri,
+                                    foldedOver:
+                                        l.allocation.right[i].foldedOver,
+                                  ),
+                                ),
+                              ),
+                        ],
+
+                        /// The right column's entry point. In column mode: the persistent
+                        /// top-right vertical cluster, in the gutter the allocator reserves.
+                        /// On narrow: the horizontal ANALYTICS NAV BAR pinned to the top
+                        /// safe area — full form only, on the surfaces where it IS
+                        /// navigation (the map/cavity ground and the right panels it
+                        /// heads). A full-screen chat hosts the avatar in its own app bar
+                        /// instead, and a route-driven detail page shows nothing. See
+                        /// `routing.instructions.md` → Single-column analytics nav bar.
+                        if (l.isColumnMode && l.allocation.clusterVisible)
+                          Positioned(
+                            top: _ShellLayout.chromeMargin,
+                            right: _ShellLayout.chromeMargin,
+                            child: WorldUserCluster(key: _userClusterKey),
+                          )
+                        else if (l.analyticsBarVisible)
+                          Positioned(
+                            top: _ShellLayout.chromeMargin,
+                            left: _ShellLayout.chromeMargin,
+                            right: _ShellLayout.chromeMargin,
+                            child: WorldAnalyticsBar(key: _userClusterKey),
+                          ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
@@ -483,6 +487,12 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
 
+  /// The learner tapped the minimized search icon back open over a
+  /// course-scoped map. Ephemeral view state; re-minimizes when the scope
+  /// changes (routing.instructions.md → Single-column search bar).
+  bool _searchRestored = false;
+  String? _lastScopeId;
+
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
@@ -522,25 +532,31 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final cavitySection = cavityToken?.type.cavitySection;
 
     // The floating search bar (routing.instructions.md → Single-column search
-    // bar), riding the widget's topAttachment slot. WORLD scope only: it drives
-    // the world map's own filter (reached through the persistent map's State).
-    // There is no narrow results list — the pins ARE the results. The
-    // verdict-driven empty-view card and the collapsible filter surface mount
-    // ABOVE the bar, since the bar sits at the bottom on narrow layouts. A
-    // course-scoped map has no working query search (its pins are not filtered
-    // by the query), so the bar is hidden there entirely, matching the web
-    // overlay (which only renders in world scope).
+    // bar), riding the widget's topAttachment slot. It drives the map's own
+    // filter (reached through the persistent map's State) in BOTH scopes — a
+    // course scope narrows which activities compete, not whether the learner
+    // can search within them (#7716). There is no narrow results list — the
+    // pins ARE the results. The verdict-driven empty-view card and the
+    // collapsible filter surface mount ABOVE the bar, since the bar sits at the
+    // bottom on narrow layouts.
     final mapController =
         _persistentWorldMapKey.currentState as WorldMapController?;
-    // World map only (activeSpaceId is the course scope, `?c=`), and not over a
-    // selected activity or an open section sheet: the bar only rode the exposed
-    // map band, which those cover (#7640).
-    final showsSearchBar = activeSpaceId == null && cavityToken == null;
+    // Not over a selected activity or an open section sheet: the bar only rides
+    // the exposed map band, which those cover (#7640). Over a bare COURSE-scoped
+    // map it shows minimized — the compact icon, restorable by tap and
+    // re-minimizing when the scope changes.
+    if (_lastScopeId != activeSpaceId) {
+      _lastScopeId = activeSpaceId;
+      _searchRestored = false;
+    }
+    final showsSearchBar = cavityToken == null;
     final searchBar = showsSearchBar && mapController != null
         ? MobileSearchBar(
             hintText: l10n.mapSearchHint,
             query: mapController.filter.query,
             onQueryChanged: mapController.setQuery,
+            minimized: activeSpaceId != null && !_searchRestored,
+            onRestore: () => setState(() => _searchRestored = true),
             // The verdict-driven empty-view card (the web overlay's twin):
             // when the view shows no matches, the controller diagnoses WHY
             // (off-screen matches / pill-excluded matches / a dead query) and
