@@ -12,6 +12,7 @@ import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/navigation/token_fields.dart';
+import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
@@ -175,18 +176,21 @@ class ConstructIdentifier {
     return pos;
   }
 
-  LemmaInfoRequest lemmaInfoRequest(Map<String, dynamic> messageInfo) =>
-      LemmaInfoRequest(
-        partOfSpeech: category,
-        lemmaLang:
-            MatrixState.pangeaController.userController.userL2?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
-        userL1:
-            MatrixState.pangeaController.userController.userL1?.langCodeShort ??
-            LanguageKeys.defaultLanguage,
-        lemma: lemma,
-        messageInfo: messageInfo,
-      );
+  LemmaInfoRequest lemmaInfoRequest(
+    Map<String, dynamic> messageInfo, {
+    List<LLMFeedbackModel<LemmaInfoResponse>> feedback = const [],
+  }) => LemmaInfoRequest(
+    partOfSpeech: category,
+    lemmaLang:
+        MatrixState.pangeaController.userController.userL2?.langCodeShort ??
+        LanguageKeys.defaultLanguage,
+    userL1:
+        MatrixState.pangeaController.userController.userL1?.langCodeShort ??
+        LanguageKeys.defaultLanguage,
+    lemma: lemma,
+    messageInfo: messageInfo,
+    feedback: feedback,
+  );
 
   /// [lemmmaLang] if not set, assumed to be userL2
   Future<Result<LemmaInfoResponse>> getLemmaInfo(
