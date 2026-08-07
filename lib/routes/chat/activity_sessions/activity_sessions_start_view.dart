@@ -5,7 +5,10 @@ import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/languages/language_flag_chip.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -22,6 +25,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_
 import 'package:fluffychat/routes/chat/activity_sessions/activity_start_hero.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_vocab_widget.dart';
 import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
+import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -32,6 +36,13 @@ import 'package:fluffychat/widgets/matrix.dart';
 // The close-only-this-room-token location moved to the navigation layer
 // (`roomTokenCloseLocation`) once leaving a chat needed the same semantic
 // (#7561); the activity plan's close (#7156) reads it from there.
+
+/// Below this body height the start page is at its mobile minimized rest and
+/// renders only the header + info row + CTA — the scroll content is dropped
+/// until the sheet is dragged/tapped up. Kept in step with
+/// `_activitySheetMinimizedHeight` in workspace_shell.dart, the cavity height
+/// that produces this. See activity-start-page.instructions.md.
+const double kActivityCompactMaxHeight = 150.0;
 
 class ActivitySessionStartView extends StatelessWidget {
   final ActivitySessionStartState controller;
@@ -146,27 +157,12 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
-              // Rating indicator (#7194/#7993) — top-right per design: a NEW
-              // pill until the activity has ratings, then the aggregate meter.
-              if (activity != null)
-                Padding(
-                  padding: const EdgeInsets.only(right: 4.0),
-                  child: ActivityRatingMeter(
-                    average: activity.ratingAverage,
-                    count: activity.ratingCount,
-                  ),
-                ),
               // The one camera path that zooms (#7616): selection only pans,
               // so this button zoom+pans the map to the activity's pin.
               IconButton(
                 tooltip: L10n.of(context).focusOnMap,
-                icon: const Icon(Icons.filter_center_focus),
+                icon: const Icon(Icons.my_location),
                 onPressed: MapCameraFocusRequests.request,
-              ),
-              IconButton(
-                tooltip: L10n.of(context).feedbackButton,
-                icon: const Icon(Icons.flag_outlined),
-                onPressed: controller.submitActivityFeedback,
               ),
             ],
           ),
@@ -196,92 +192,274 @@ class ActivitySessionStartView extends StatelessWidget {
                     message: L10n.of(context).activityNotFound,
                   ),
                 )
-              : Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        controller: controller.scrollController,
-                        child: Column(
-                          children: [
-                            ActivityStartHero(
-                              controller: controller,
-                              sessionController: sessionController,
-                              activity: activity,
-                            ),
-                            if (sessionController.showDescriptionSection)
-                              Center(
-                                child: Container(
+              : LayoutBuilder(
+                  builder: (context, constraints) {
+                    final compact =
+                        constraints.maxHeight.isFinite &&
+                        constraints.maxHeight < kActivityCompactMaxHeight;
+                    // Snug: no scroll content, so no Expanded — the CTA sits
+                    // directly under the info row (mirrors the course card's
+                    // compact peek).
+                    if (compact) {
+                      return Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          _ActivityStartInfoRow(activity: activity),
+                          ActivitySessionButtons(
+                            controller: controller,
+                            sessionController: sessionController,
+                            compact: true,
+                          ),
+                        ],
+                      );
+                    }
+                    return Column(
+                      children: [
+                        _ActivityStartInfoRow(activity: activity),
+                        // Web keeps the vertical CTA at the bottom; share and flag
+                        // sit here as de-emphasized buttons instead. On mobile they
+                        // are chips in the bottom CTA row.
+                        if (FluffyThemes.isColumnMode(context))
+                          _ActivityStartShareFlagRow(controller),
+                        Expanded(
+                          child: SingleChildScrollView(
+                            controller: controller.scrollController,
+                            child: Column(
+                              children: [
+                                ActivityStartHero(
+                                  controller: controller,
+                                  sessionController: sessionController,
+                                  activity: activity,
+                                ),
+                                if (sessionController.showDescriptionSection)
+                                  Center(
+                                    child: Container(
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 600.0,
+                                      ),
+                                      padding: const EdgeInsets.fromLTRB(
+                                        16.0,
+                                        50.0,
+                                        16.0,
+                                        0.0,
+                                      ),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        spacing: 12.0,
+                                        children: [
+                                          Linkify(
+                                            text: activity.description,
+                                            options: const LinkifyOptions(
+                                              humanize: false,
+                                            ),
+                                            useMouseRegion: true,
+                                            style: theme.textTheme.bodyLarge,
+                                            linkStyle: theme.textTheme.bodyLarge
+                                                ?.copyWith(
+                                                  color:
+                                                      theme.colorScheme.primary,
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                  decorationColor:
+                                                      theme.colorScheme.primary,
+                                                ),
+                                            onOpen: (link) => UrlLauncher(
+                                              context,
+                                              link.url,
+                                            ).launchUrl(),
+                                          ),
+                                          if (activity.vocab.isNotEmpty)
+                                            ActivityVocabWidget(
+                                              key: ValueKey(
+                                                'activity-start-vocab-${activity.activityId}',
+                                              ),
+                                              vocab: activity.vocab,
+                                              langCode:
+                                                  activity.req.targetLanguage,
+                                              targetId: 'activity-start-vocab',
+                                              usedVocab: null,
+                                              activityLangCode:
+                                                  activity.req.targetLanguage,
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                Container(
                                   constraints: const BoxConstraints(
                                     maxWidth: 600.0,
                                   ),
-                                  padding: const EdgeInsets.fromLTRB(
-                                    16.0,
-                                    50.0,
-                                    16.0,
-                                    0.0,
-                                  ),
-                                  child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    spacing: 12.0,
-                                    children: [
-                                      Linkify(
-                                        text: activity.description,
-                                        options: const LinkifyOptions(
-                                          humanize: false,
-                                        ),
-                                        useMouseRegion: true,
-                                        style: theme.textTheme.bodyLarge,
-                                        linkStyle: theme.textTheme.bodyLarge
-                                            ?.copyWith(
-                                              color: theme.colorScheme.primary,
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              decorationColor:
-                                                  theme.colorScheme.primary,
-                                            ),
-                                        onOpen: (link) => UrlLauncher(
-                                          context,
-                                          link.url,
-                                        ).launchUrl(),
-                                      ),
-                                      if (activity.vocab.isNotEmpty)
-                                        ActivityVocabWidget(
-                                          key: ValueKey(
-                                            'activity-start-vocab-${activity.activityId}',
-                                          ),
-                                          vocab: activity.vocab,
-                                          langCode: activity.req.targetLanguage,
-                                          targetId: 'activity-start-vocab',
-                                          usedVocab: null,
-                                          activityLangCode:
-                                              activity.req.targetLanguage,
-                                        ),
-                                    ],
+                                  padding: const EdgeInsets.all(12.0),
+                                  child: ActivitySessionBottomContent(
+                                    sessionController,
                                   ),
                                 ),
-                              ),
-                            Container(
-                              constraints: const BoxConstraints(
-                                maxWidth: 600.0,
-                              ),
-                              padding: const EdgeInsets.all(12.0),
-                              child: ActivitySessionBottomContent(
-                                sessionController,
-                              ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ),
-                    ActivitySessionButtons(
-                      controller: controller,
-                      sessionController: sessionController,
-                    ),
-                  ],
+                        ActivitySessionButtons(
+                          controller: controller,
+                          sessionController: sessionController,
+                        ),
+                      ],
+                    );
+                  },
                 ),
         );
       },
+    );
+  }
+}
+
+/// The always-visible second row under the title: who made the activity and
+/// its at-a-glance facts (L2, level, participant count, rating). It sits above
+/// the scrollable body so a map explorer sees the essentials without expanding
+/// the sheet. Creator is fixed to PangeaChat until learners can author their
+/// own activities. See activity-start-page.instructions.md.
+class _ActivityStartInfoRow extends StatelessWidget {
+  final ActivityPlanModel activity;
+
+  const _ActivityStartInfoRow({required this.activity});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final language = PLanguageStore.byLangCode(activity.req.targetLanguage);
+    final onVariant = theme.colorScheme.onSurfaceVariant;
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12.0, 0.0, 8.0, 8.0),
+      child: Row(
+        children: [
+          Container(
+            width: 28.0,
+            height: 28.0,
+            padding: const EdgeInsets.all(5.0),
+            decoration: BoxDecoration(
+              color: theme.colorScheme.primaryContainer,
+              shape: BoxShape.circle,
+            ),
+            child: const PangeaLogoSvg(width: 18.0),
+          ),
+          const SizedBox(width: 8.0),
+          Expanded(
+            child: Text(
+              'PangeaChat',
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          const SizedBox(width: 8.0),
+          // Never empty: the flag when the language resolves to one, else a
+          // langcode chip (shared with the analytics cluster's flag).
+          LanguageFlagChip(
+            language: language,
+            langCode: activity.req.targetLanguage,
+            width: 24.0,
+            height: 18.0,
+            fontSize: 12.0,
+            radius: 3.0,
+            borderWidth: 1.0,
+            alwaysShowCode: false,
+          ),
+          const SizedBox(width: 12.0),
+          _IconLabel(
+            icon: Icons.school_outlined,
+            label: activity.req.cefrLevel.string,
+            color: onVariant,
+          ),
+          const SizedBox(width: 12.0),
+          _IconLabel(
+            icon: Icons.group_outlined,
+            label: '${activity.req.numberOfParticipants}',
+            color: onVariant,
+          ),
+          const SizedBox(width: 8.0),
+          ActivityRatingMeter(
+            average: activity.ratingAverage,
+            count: activity.ratingCount,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// A compact icon + text pair for the info row's level and participant facts.
+class _IconLabel extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color color;
+
+  const _IconLabel({
+    required this.icon,
+    required this.label,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Icon(icon, size: 18.0, color: color),
+        const SizedBox(width: 4.0),
+        Text(
+          label,
+          style: Theme.of(context).textTheme.labelLarge?.copyWith(color: color),
+        ),
+      ],
+    );
+  }
+}
+
+/// Web's share and flag actions, sitting under the info row as two
+/// de-emphasized bare-outline buttons (mobile puts them in the bottom CTA row
+/// instead). See activity-start-page.instructions.md.
+class _ActivityStartShareFlagRow extends StatelessWidget {
+  final ActivitySessionStartState controller;
+
+  const _ActivityStartShareFlagRow(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final shape = RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(20.0),
+    );
+
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
+      child: Row(
+        spacing: 8.0,
+        children: [
+          Expanded(
+            child: Tooltip(
+              message: l10n.share,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(shape: shape),
+                onPressed: controller.copyActivityLink,
+                child: const Icon(Icons.share_outlined),
+              ),
+            ),
+          ),
+          Expanded(
+            child: Tooltip(
+              message: l10n.feedbackButton,
+              child: OutlinedButton(
+                style: OutlinedButton.styleFrom(shape: shape),
+                onPressed: controller.submitActivityFeedback,
+                child: const Icon(Icons.flag_outlined),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -30,7 +30,11 @@ class FreeTrialStepView extends StatelessWidget {
         ? theme.textTheme.displayMedium
         : theme.textTheme.headlineMedium;
 
+    // See the note on the same wrapper in onboarding_page.dart —
+    // `explicitChildNodes` stops this page container from absorbing a
+    // descendant's semantics config.
     return Semantics(
+      explicitChildNodes: true,
       label: L10n.of(context).pageLabel(L10n.of(context).freeTrial),
       child: Scaffold(
         appBar: AppBar(

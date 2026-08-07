@@ -168,7 +168,15 @@ class OnboardingController extends State<Onboarding> {
           return content;
         }
 
+        // `explicitChildNodes` keeps this a labelled container rather than an
+        // annotation that merges with the first mergeable descendant config it
+        // finds. Without it the page node absorbs a descendant's role — the
+        // step views show a `CircularProgressIndicator` while `BotFace` loads,
+        // and its `loadingSpinner` role lands on the page container, which then
+        // stops being exposed as a labelled group. `container: true` does not
+        // prevent this; only `explicitChildNodes` does.
         return Semantics(
+          explicitChildNodes: true,
           label: L10n.of(
             context,
           ).pageLabel(labelByStepIndex(_navigation.currentStepIndex)),

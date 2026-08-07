@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:go_router/go_router.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
+import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -559,32 +559,10 @@ class ClusterLanguageFlag extends StatelessWidget {
   static const double _defaultWidth = 52.0;
   static const double _defaultHeight = 36.0;
   static const double _defaultFontSize = 18.0;
-  static const double _radius = 6.0;
-  static const double _borderWidth = 2.0;
 
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
-    final theme = Theme.of(context);
-
-    final outlinedText = Stack(
-      children: <Widget>[
-        Text(
-          language.langCodeShort.toUpperCase(),
-          style: TextStyle(
-            fontSize: fontSize,
-            foreground: Paint()
-              ..style = PaintingStyle.stroke
-              ..strokeWidth = 4
-              ..color = Colors.white,
-          ),
-        ),
-        Text(
-          language.langCodeShort.toUpperCase(),
-          style: TextStyle(fontSize: fontSize, color: Colors.black),
-        ),
-      ],
-    );
 
     return MouseRegion(
       cursor: SystemMouseCursors.click,
@@ -604,34 +582,12 @@ class ClusterLanguageFlag extends StatelessWidget {
           child: GestureDetector(
             behavior: HitTestBehavior.opaque,
             onTap: onTap,
-            child: Container(
+            child: LanguageFlagChip(
+              language: language,
+              langCode: language.langCode,
               width: width,
               height: height,
-              padding: .all(_borderWidth),
-              alignment: Alignment.center,
-              decoration: BoxDecoration(
-                color: theme.colorScheme.primary,
-                borderRadius: BorderRadius.circular(_radius + _borderWidth),
-              ),
-              child: language.shouldShowFlag
-                  ? ClipRRect(
-                      borderRadius: BorderRadius.circular(_radius),
-                      child: Stack(
-                        children: [
-                          SvgPicture.network(
-                            language.svgUrl.toString(),
-                            width: width,
-                            height: height,
-                            fit: BoxFit.cover,
-                            errorBuilder: (ctx, _, _) => outlinedText,
-                            placeholderBuilder: (_) =>
-                                SizedBox(width: width, height: height),
-                          ),
-                          Positioned(child: Center(child: outlinedText)),
-                        ],
-                      ),
-                    )
-                  : outlinedText,
+              fontSize: fontSize,
             ),
           ),
         ),

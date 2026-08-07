@@ -25,6 +25,8 @@ The activity's start page doesn't store its own state; it reads it from the room
 
 When a session counts as "ended" is the org doc's call. The client's part is firing the summary once that happens, and keeping a short-lived local cache of the room's analytics so the page doesn't re-fetch on every visit.
 
+The page's **layout and gestures** — the mobile grow-before-scroll sheet, the header and info row, the CTA row, and how it owns its container over the nav rail and analytics bar — are their own concern: [activity-start-page.instructions.md](activity-start-page.instructions.md).
+
 ## The goal header
 
 A running activity carries its progress in a **goal header** pinned to the top of the conversation — a horizontal row of stars, one per goal, with the active goal named beneath them. It stays visible and sticky as the learner scrolls the timeline, and it is styled to read as a button (rounded corners, a drop shadow that lifts it off the conversation, a subtle hover state) because it is one: tapping it opens the full goal list. [`ActivityStatsMenu`](../../lib/routes/chat/activity_sessions/activity_stats_menu.dart) hosts it in the live session; the collapsed row is [`ActivityDropdownHeader`](../../lib/routes/chat/activity_sessions/activity_dropdown_header.dart) and the dropped-down panel is [`ActivityDropdownContent`](../../lib/routes/chat/activity_sessions/activity_dropdown_content.dart).

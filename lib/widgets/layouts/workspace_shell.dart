@@ -432,7 +432,23 @@ class WorkspaceShell extends StatelessWidget {
                             top: _ShellLayout.chromeMargin,
                             left: _ShellLayout.chromeMargin,
                             right: _ShellLayout.chromeMargin,
-                            child: WorldAnalyticsBar(key: _userClusterKey),
+                            // Fades out while the activity plan sits at full,
+                            // where the sheet grows over this band. Kept mounted
+                            // (opacity, not swapped out) so the bar holds its
+                            // state — counts, stream subs — across the toggle.
+                            child: ValueListenableBuilder<bool>(
+                              valueListenable: ActivitySheetFull.notifier,
+                              builder: (context, activityFull, child) =>
+                                  IgnorePointer(
+                                    ignoring: activityFull,
+                                    child: AnimatedOpacity(
+                                      opacity: activityFull ? 0.0 : 1.0,
+                                      duration: FluffyThemes.animationDuration,
+                                      child: child,
+                                    ),
+                                  ),
+                              child: WorldAnalyticsBar(key: _userClusterKey),
+                            ),
                           ),
                       ],
                     ),
@@ -483,6 +499,15 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   /// header allowance above.
   static const double _coursesSheetRowEstimate = 84.0;
   static const double _coursesSheetAddOptionsAllowance = 236.0;
+
+  /// The activity plan's minimized rest height: the cavity handle + the start
+  /// page's app bar, info row, and CTA row, with no media/description. This is
+  /// the plan's opening stop (there is no taller mid-level); dragging up goes
+  /// to full, dragging down dismisses. Kept in step with
+  /// `kActivityCompactMaxHeight` in activity_sessions_start_view.dart, which
+  /// tells the body to drop its content below this height. See
+  /// activity-start-page.instructions.md.
+  static const double _activitySheetMinimizedHeight = 180.0;
 
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
@@ -602,6 +627,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     final reserved = _ShellLayout.navChromeReserved(
       screenPadding: widget.screenPadding,
       hasSearchBar: searchBar != null,
+      // The activity plan has no rail and covers the analytics bar at full, so
+      // its full-height bound extends through both bands.
+      reserveAnalyticsBar: !isActivityCavity,
+      reserveRail: !isActivityCavity,
     );
     final maxHeightFraction = screenHeight <= 0
         ? 0.8
@@ -614,7 +643,9 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // lists. Uses the same visibility predicate as the list's all-chats
     // filter so the estimate counts what actually renders.
     double? preferredCavityHeight;
-    if (cavityToken?.type == PanelTypesEnum.chats) {
+    if (isActivityCavity) {
+      preferredCavityHeight = _activitySheetMinimizedHeight;
+    } else if (cavityToken?.type == PanelTypesEnum.chats) {
       final visibleChats = Matrix.of(context).client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
           .length;
@@ -805,6 +836,17 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // to select it directly; panning never dismisses. Dismissal is the
         // drag-down handle or the sheet's own close control (#7742).
         mapStaysLive: isActivityCavity || isCourseCavity,
+        // Tapping the plan's minimized rest expands it to full, alongside
+        // dragging up.
+        tapBodyExpands: isActivityCavity,
+        // The activity plan covers the nav rail and owns the container; its
+        // app-bar X/back is the way out (which restores the rail).
+        hideRail: isActivityCavity,
+        // Publish whether the activity plan is at full — the shell hides the
+        // analytics bar under it. Any other cavity reports false, so
+        // switching away resets it.
+        onCavityFullChanged: (full) =>
+            ActivitySheetFull.set(value: isActivityCavity && full),
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
         topAttachment: searchBar,
@@ -857,11 +899,16 @@ class _ShellLayout {
   static double navChromeReserved({
     required EdgeInsets screenPadding,
     required bool hasSearchBar,
+    // Set false to leave a band out of the reservation, letting the cavity's
+    // full height extend through it: the activity plan has no rail and covers
+    // the analytics bar at full.
+    bool reserveAnalyticsBar = true,
+    bool reserveRail = true,
   }) =>
       screenPadding.top +
-      analyticsBarAllowance +
+      (reserveAnalyticsBar ? analyticsBarAllowance : 0.0) +
       (hasSearchBar ? searchBarAllowance : 0.0) +
-      MobileNavWidget.railRowHeight +
+      (reserveRail ? MobileNavWidget.railRowHeight : 0.0) +
       screenPadding.bottom +
       chromeMargin * 2;
 
@@ -1101,30 +1148,18 @@ class _ShellLayout {
 
     // The narrow activity-plan sheet covers the bottom of the full-width map —
     // the band the left/right overlays don't model. Pad the camera's bottom by
-    // the sheet's half-rest state (its default; the height it opens at) so a
-    // focused pin lands in the exposed area ABOVE the sheet instead of behind
-    // it (#7640; activities doc — "the plan keeps its pin visible above", the
-    // Google Maps target UX). The band: half the cavity's growth bound plus
-    // the chrome below/above it (rail row, the search bar the activity cavity
-    // always rides, margins, safe area) — the same [navChromeReserved] chain
-    // the nav layer sizes the cavity with, so the two can't drift. An estimate
-    // of the resting sheet, deliberately not live-tracked: dragging the sheet
-    // must not yank the camera.
+    // the sheet's minimized rest (the height it opens at) so a focused pin
+    // lands in the exposed map ABOVE the sheet instead of behind it (#7640;
+    // activities doc — "the plan keeps its pin visible above", the Google Maps
+    // target UX). The band is the minimized cavity height plus the bottom safe
+    // area and a margin of breathing room; the sheet carries no rail. An
+    // estimate of the resting sheet, deliberately not live-tracked: dragging
+    // the sheet (or maximizing it) must not yank the camera.
     var mapBottomOverlay = 0.0;
     if (hasCavity && leftTokens[cavityIndex].type == PanelTypesEnum.activity) {
-      final screenHeight = MediaQuery.sizeOf(context).height;
-      // No search bar rides the activity sheet (it hides on selection), so
-      // the reservation and the covered band both exclude its allowance.
-      final reserved = navChromeReserved(
-        screenPadding: .zero,
-        hasSearchBar: false,
-      );
-      final maxHeightFraction = screenHeight <= 0
-          ? 0.8
-          : ((screenHeight - reserved) / screenHeight).clamp(0.3, 0.95);
       mapBottomOverlay =
-          0.5 * maxHeightFraction * screenHeight +
-          MobileNavWidget.railRowHeight +
+          _MobileNavLayerState._activitySheetMinimizedHeight +
+          MediaQuery.viewPaddingOf(context).bottom +
           chromeMargin * 2;
     }
 

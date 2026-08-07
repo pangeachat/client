@@ -366,6 +366,8 @@ class _WorldMapStateDot extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bodyColor = _bodyColor(context);
+
     if (state == ActivityPinState.inProgress) {
       // Progress is the state: a fixed-size star dot replaces the coloured body
       // — a super star (all roles) or a plain star (one role). No shape/point.
@@ -384,7 +386,7 @@ class _WorldMapStateDot extends StatelessWidget {
         width: diameter,
         height: diameter,
         decoration: BoxDecoration(
-          color: _bodyColor,
+          color: bodyColor,
           shape: BoxShape.circle,
           border: Border.all(color: Colors.white, width: borderWidth),
           boxShadow: const [BoxShadow(blurRadius: 3, color: Colors.black38)],
@@ -405,7 +407,7 @@ class _WorldMapStateDot extends StatelessWidget {
           CustomPaint(
             size: Size(diameter, diameter + pointHeight),
             painter: TeardropPainter(
-              color: _bodyColor,
+              color: bodyColor,
               headDiameter: diameter,
               pointHeight: pointHeight,
             ),
@@ -426,8 +428,11 @@ class _WorldMapStateDot extends StatelessWidget {
 
   /// The pin body's fill, darkened slightly while [isFocused] for the selected
   /// look (the star dot keeps its own gold — only coloured bodies darken).
-  Color get _bodyColor =>
-      isFocused ? WorldMapSelection.darken(state.color) : state.color;
+  /// Theme-aware: an `available` pin fills darker in the dark theme (#8174).
+  Color _bodyColor(BuildContext context) {
+    final base = state.bodyColor(context);
+    return isFocused ? WorldMapSelection.darken(base) : base;
+  }
 
   /// The selected (focused) treatment: NO outline — a soft state-coloured glow
   /// haloes the pin head (the body itself darkens via [_bodyColor]), so a
@@ -449,7 +454,9 @@ class _WorldMapStateDot extends StatelessWidget {
       height: headDiameter,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
-        boxShadow: WorldMapSelection.glow(state.color),
+        // The halo tracks the body fill, so a focused `available` pin in the
+        // dark theme glows its darker purple rather than the light one (#8174).
+        boxShadow: WorldMapSelection.glow(state.bodyColor(context)),
       ),
     );
 
