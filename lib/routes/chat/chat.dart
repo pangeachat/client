@@ -3150,16 +3150,29 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    // If assistance is complete, but the user manually requests corrections,
-    // update the feedback to say that the message still contains errors
-    if (feedback == null &&
+    // Assistance is complete and the user manually asks for another pass. That
+    // click means one of two things (#8193):
+    //
+    // - Corrections were applied since the last request, so the message is
+    //   different text now. Re-check that text. Re-sending the previous request
+    //   would rewind the input to its pre-correction state and make the user
+    //   click through every match again.
+    // - Nothing was applied, so assistance found nothing to fix and the user
+    //   disagrees. Send feedback so the server escalates to a stronger model.
+    final bool isManualRecheck =
+        feedback == null &&
         manual &&
-        assistanceState == AssistanceStateEnum.igcComplete) {
+        assistanceState == AssistanceStateEnum.igcComplete;
+
+    if (isManualRecheck && !choreographer.igcController.hasAppliedMatches) {
       feedback = ChoreoConstants.incorrectCompleteIgcFeedback;
     }
 
     feedback == null
-        ? await choreographer.requestWritingAssistance(manual: manual)
+        ? await choreographer.requestWritingAssistance(
+            manual: manual,
+            recheck: isManualRecheck,
+          )
         : await choreographer.rerunWithFeedback(feedback);
 
     if (choreographer.assistanceState == AssistanceStateEnum.fetched) {

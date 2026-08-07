@@ -24,6 +24,12 @@ class IgcController {
   bool _isFetching = false;
   String? _currentText;
 
+  /// The text the last response was about, before any of its matches were
+  /// applied. Taken from the response rather than the request so server-side
+  /// normalization of the input doesn't read as a correction. Compared against
+  /// [_currentText] to tell whether assistance has since changed the message.
+  String? _checkedText;
+
   /// Last request made - stored for feedback rerun
   IGCRequestModel? _lastRequest;
 
@@ -40,6 +46,18 @@ class IgcController {
   ValueNotifier<PangeaMatchState?> get activeMatch => _activeMatch;
 
   String? get currentText => _currentText;
+
+  /// Whether writing assistance has replaced any text since the last response
+  /// arrived — i.e. the user accepted a correction, or a surface correction was
+  /// auto-applied.
+  ///
+  /// When true, [currentText] is no longer the text the server was asked about,
+  /// so re-sending [_lastRequest] would rewind the input field to its
+  /// pre-correction state (#8193).
+  bool get hasAppliedMatches =>
+      _checkedText != null &&
+      _currentText != null &&
+      _currentText != _checkedText;
 
   List<PangeaMatchState> get matches => _matches;
 
@@ -84,6 +102,7 @@ class IgcController {
   void clear() {
     _isFetching = false;
     _currentText = null;
+    _checkedText = null;
     _lastRequest = null;
     _lastResponse = null;
     clearMatches();
@@ -343,9 +362,19 @@ class IgcController {
 
     if (!_isFetching) return false;
 
-    _lastResponse = res.result!;
-    _currentText = res.result!.originalInput;
-    for (final match in res.result!.matches) {
+    adoptResponse(res.result!);
+    _isFetching = false;
+    return true;
+  }
+
+  /// Adopts [response] as the current writing-assistance state, snapshotting
+  /// the text it was about so later replacements can be detected.
+  @visibleForTesting
+  void adoptResponse(IGCResponseModel response) {
+    _lastResponse = response;
+    _checkedText = response.originalInput;
+    _currentText = response.originalInput;
+    for (final match in response.matches) {
       final matchState = PangeaMatchState(
         match: match.match,
         status: PangeaMatchStatusEnum.open,
@@ -353,7 +382,5 @@ class IgcController {
       );
       _matches.add(matchState);
     }
-    _isFetching = false;
-    return true;
   }
 }

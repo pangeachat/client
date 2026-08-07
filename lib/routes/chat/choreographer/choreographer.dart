@@ -219,8 +219,18 @@ class Choreographer extends ChangeNotifier {
     textController.editType = EditTypeEnum.keyboard;
   }
 
-  Future<void> requestWritingAssistance({bool manual = false}) async {
-    if (assistanceState != AssistanceStateEnum.notFetched) return;
+  /// Requests writing assistance for the current text.
+  ///
+  /// [recheck] runs assistance again over a message it has already finished
+  /// with, discarding the previous run's matches. The corrections the user
+  /// accepted are already part of the text, so the new run starts from the text
+  /// as it stands now rather than from the text of the previous request
+  /// (#8193).
+  Future<void> requestWritingAssistance({
+    bool manual = false,
+    bool recheck = false,
+  }) async {
+    if (!recheck && assistanceState != AssistanceStateEnum.notFetched) return;
     final SubscriptionPaywallStatus canSendStatus =
         MatrixState.pangeaController.subscriptionController.paywallStatus;
 
@@ -256,6 +266,11 @@ class Choreographer extends ChangeNotifier {
     }
 
     _resetDebounceTimer();
+
+    // Drop the finished run's matches and cached request/response so the new
+    // run is built from the current text. The choreo record is deliberately
+    // kept — the corrections it already recorded really happened.
+    if (recheck) igcController.clear();
 
     // init choreo record to record the original text before any matches are applied
     _choreoRecord ??= ChoreoRecordModel(
