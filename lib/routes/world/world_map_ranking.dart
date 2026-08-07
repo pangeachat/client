@@ -46,10 +46,7 @@ enum ActivityPinState {
   /// values.
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
-  /// The pin body colour. See world-map.instructions.md ("Pin state").
-  ///
-  /// The canonical (light-theme) hue. Painting a pin body goes through
-  /// [bodyColor] instead, which swaps in the dark-theme `available` fill.
+  /// The pin body color. See world-map.instructions.md ("Pin state").
   Color get color => switch (this) {
     ActivityPinState.ongoingPending ||
     ActivityPinState.ongoingActive => AppConfig.primaryColor,
@@ -58,19 +55,6 @@ enum ActivityPinState {
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
 
-  /// The pin body fill for the ambient theme — [color] everywhere except an
-  /// `available` pin in the dark theme, which fills the scheme's
-  /// **primaryContainer** instead (#8174).
-  ///
-  /// [AppConfig.primaryColorLight] is a near-white lavender: over the dark
-  /// basemap's near-black paper it out-shouts every other state, which is
-  /// backwards for the map's least urgent one. `primaryContainer` is exactly
-  /// the role for "a surface filled in the primary hue" and the dark scheme
-  /// resolves it deep and desaturated — it recedes into the dark UI, carries
-  /// the white plus glyph at ~9:1, and stays well off the vivid Ongoing purple
-  /// ([AppConfig.primaryColor], lighter AND far more saturated). Taking it from
-  /// the scheme also means the pin follows the learner's theme seed instead of
-  /// pinning one hand-picked purple.
   Color bodyColor(BuildContext context) =>
       this == ActivityPinState.available &&
           Theme.of(context).brightness == Brightness.dark
