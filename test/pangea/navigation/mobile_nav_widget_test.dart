@@ -112,9 +112,12 @@ void main() {
           matching: find.byType(IconButton),
         ),
       );
-      final chatsButton = tester
-          .getSemantics(find.byTooltip(RegExp('All chats*')))
-          .getSemanticsData();
+      final chatsButton = tester.widget<IconButton>(
+        find.ancestor(
+          of: find.byTooltip(RegExp('All chats*')),
+          matching: find.byType(IconButton),
+        ),
+      );
       final coursesButton = tester.widget<IconButton>(
         find.ancestor(
           of: find.byTooltip('Courses'),
@@ -123,7 +126,7 @@ void main() {
       );
 
       expect(worldButton.isSelected, isFalse);
-      expect(chatsButton.flagsCollection.isSelected.toBoolOrNull(), isTrue);
+      expect(chatsButton.isSelected, isTrue);
       expect(coursesButton.isSelected, isFalse);
 
       // The course shortcut renders too (4th item), addressed by its label.
@@ -139,8 +142,12 @@ void main() {
         activeSection: AppSection.world,
         onSectionTap: tapped.add,
       );
-
-      await tester.tap(find.byTooltip('All chats'));
+      await tester.tap(
+        find.ancestor(
+          of: find.byTooltip(RegExp('All chats*')),
+          matching: find.byType(IconButton),
+        ),
+      );
       await tester.pumpAndSettle();
       await tester.tap(find.byTooltip('Courses'));
       await tester.pumpAndSettle();
@@ -178,7 +185,10 @@ void main() {
         expect(
           find.descendant(
             of: find.byKey(badgeKey),
-            matching: find.byTooltip('All chats'),
+            matching: find.ancestor(
+              of: find.byTooltip(RegExp('All chats*')),
+              matching: find.byType(IconButton),
+            ),
           ),
           findsOneWidget,
           reason: 'the badge must enclose the Chats rail item',
@@ -209,7 +219,12 @@ void main() {
             Padding(padding: const EdgeInsets.all(2.0), child: child),
       );
 
-      await tester.tap(find.byTooltip('All chats'));
+      await tester.tap(
+        find.ancestor(
+          of: find.byTooltip(RegExp('All chats*')),
+          matching: find.byType(IconButton),
+        ),
+      );
       await tester.pumpAndSettle();
 
       expect(tapped, [AppSection.chats]);
@@ -531,7 +546,12 @@ void main() {
 
         // The rail item must reopen it at a usable height, NOT the
         // remembered zero (the #7510 stuck state).
-        await tester.tap(find.byTooltip('All chats'));
+        await tester.tap(
+          find.ancestor(
+            of: find.byTooltip(RegExp('All chats*')),
+            matching: find.byType(IconButton),
+          ),
+        );
         await tester.pumpAndSettle();
         expect(
           cavityHeightOf(tester),
@@ -860,7 +880,12 @@ void main() {
 
         // Tapping the still-active rail item re-expands to the remembered
         // (full) height rather than the section default (half).
-        await tester.tap(find.byTooltip('All chats'));
+        await tester.tap(
+          find.ancestor(
+            of: find.byTooltip(RegExp('All chats*')),
+            matching: find.byType(IconButton),
+          ),
+        );
         await tester.pumpAndSettle();
         expect(cavityHeightOf(tester), closeTo(maxHeightPx, 1.0));
       },
@@ -880,7 +905,12 @@ void main() {
 
       expect(cavityHeightOf(tester), greaterThan(0.0));
 
-      await tester.tap(find.byTooltip('All chats'));
+      await tester.tap(
+        find.ancestor(
+          of: find.byTooltip(RegExp('All chats*')),
+          matching: find.byType(IconButton),
+        ),
+      );
       await tester.pumpAndSettle();
 
       expect(cavityHeightOf(tester), 0.0);
