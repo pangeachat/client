@@ -466,6 +466,55 @@ class AnalyticsDataService {
     return cleaned;
   }
 
+  /// The inverse of [getAggregatedConstructs]: only the constructs the user has
+  /// blocked, for the deleted-vocab list. Every other fetcher on this service
+  /// filters blocked ids OUT, so the undo surface needs its own read.
+  ///
+  /// Merge-table resolution is skipped on purpose — blocking removes an id from
+  /// the table, so `resolve` would hand it straight back, and case-variants of a
+  /// blocked lemma are separate entries in the blocked set too.
+  ///
+  /// Every blocked id of [type] gets a row even when the database has no uses
+  /// for it (blocked on another device before this one ever saw the word), so a
+  /// blocked construct can never become unrestorable.
+  Future<Map<ConstructIdentifier, ConstructUses>> getBlockedConstructs(
+    ConstructTypeEnum type,
+    String language,
+  ) async {
+    await _ensureInitialized();
+    final blocked = blockedConstructs;
+    if (blocked.isEmpty) return {};
+
+    final combined = await _analyticsClientGetter.database
+        .getAggregatedConstructs(type, language);
+
+    final result = <ConstructIdentifier, ConstructUses>{};
+    for (final entry in combined) {
+      if (!blocked.contains(entry.id) || entry.id.isInvalid) continue;
+      final existing = result[entry.id];
+      if (existing != null) {
+        existing.merge(entry);
+      } else {
+        result[entry.id] = entry;
+      }
+    }
+
+    for (final id in blocked) {
+      if (id.type != type || id.isInvalid) continue;
+      result.putIfAbsent(
+        id,
+        () => ConstructUses(
+          uses: [],
+          constructType: id.type,
+          lemma: id.lemma,
+          category: id.category,
+        ),
+      );
+    }
+
+    return result;
+  }
+
   Future<int> getNewConstructCount(
     List<OneConstructUse> newConstructs,
     ConstructTypeEnum type,

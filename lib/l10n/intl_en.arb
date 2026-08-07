@@ -4492,6 +4492,26 @@
     "removeAdminDescription": "Lowering this user's permission level will remove admin privileges.",
     "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!",
     "analyticsVocabListBodyEmpty": "The vocabulary words you collect will go here. Start chatting and interacting to earn some!",
+    "deletedVocabListBody": "These words are hidden from your vocabulary and don't earn XP. Restore one to bring it back.",
+    "deletedVocabListBodyEmpty": "You haven't deleted any words. Words you delete from your vocabulary will show up here so you can bring them back.",
+    "deletedVocabListLabel": "Deleted words",
+    "restore": "Restore",
+    "deletedWordLabel": "{lemma}, deleted",
+    "@deletedWordLabel": {
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "restoredWords": "{count, plural, =1{Restored 1 word} other{Restored {count} words}}",
+    "@restoredWords": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
     "requireAnalyticsAccessTitle": "Require analytics access to join",
