@@ -511,8 +511,6 @@
     },
     "sendOnEnter": "Enter ஐ அனுப்பவும்",
     "@sendOnEnter": {},
-    "dehydrate": "ஏற்றுமதி அமர்வு மற்றும் சாதனத்தை துடைக்கவும்",
-    "@dehydrate": {},
     "ok": "சரி",
     "@ok": {
         "type": "String",
@@ -1128,8 +1126,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrateWarning": "இந்த செயலை செயல்தவிர்க்க முடியாது. காப்புப்பிரதி கோப்பை பாதுகாப்பாக சேமித்து வைக்கவும்.",
-    "@dehydrateWarning": {},
     "loadMore": "மேலும் ஏற்றவும்…",
     "@loadMore": {
         "type": "String",

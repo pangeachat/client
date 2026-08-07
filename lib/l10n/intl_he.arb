@@ -1319,8 +1319,6 @@
     "invalidServerName": "שם שרת לא חוקי",
     "redactMessageDescription": "ההודעה תימחק לכל המשתתפים בשיחה זו. פעולה זו אינה ניתנת לביטול.",
     "optionalRedactReason": "(אופציונלי) סיבת מחיקת ההודעה...",
-    "dehydrate": "יצוא סשן וניקוי מכשיר",
-    "dehydrateWarning": "פעולה זו אינה ניתנת לביטול. ודא שאתה שומר את קובץ הגיבוי במקום בטוח.",
     "hydrate": "שחזר מקובץ גיבוי",
     "messagesStyle": "הודעות:",
     "noEmotesFound": "לא נמצאו אמוטיקונים. 😕",
@@ -2606,14 +2604,6 @@
         "placeholders": {}
     },
     "@optionalRedactReason": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

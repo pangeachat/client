@@ -968,8 +968,6 @@
     "leave": "Umalis",
     "leftTheChat": "Umalis sa chat",
     "lightTheme": "Maaliwalas",
-    "dehydrate": "I-export ang sesyon at burahin ang device",
-    "dehydrateWarning": "Hindi maaaring ibalik ang aksyong ito. Siguraduhing ligtas mong naiimbak ang backup na file.",
     "hydrate": "I-restore mula sa backup na file",
     "loadingPleaseWait": "Naglo-load… Pakiusap, maghintay.",
     "loadMore": "Mag-load pa…",
@@ -2300,14 +2298,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

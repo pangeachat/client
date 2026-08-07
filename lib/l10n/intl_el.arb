@@ -1078,10 +1078,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noOtherDevicesFound": {
         "type": "String",
         "placeholders": {}
@@ -1255,10 +1251,6 @@
         "placeholders": {}
     },
     "@copyToClipboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
         "type": "String",
         "placeholders": {}
     },
@@ -2307,8 +2299,6 @@
     "leave": "Αποχώρηση",
     "leftTheChat": "Έφυγε από τη συζήτηση",
     "lightTheme": "Φωτεινό",
-    "dehydrate": "Εξαγωγή συνεδρίας και διαγραφή συσκευής",
-    "dehydrateWarning": "Αυτή η ενέργεια δεν μπορεί να αναιρεθεί. Βεβαιωθείτε ότι αποθηκεύετε με ασφάλεια το αρχείο αντιγράφου ασφαλείας.",
     "hydrate": "Ανάκτηση από αρχείο δημιουργίας αντιγράφων ασφαλείας",
     "loadingPleaseWait": "Φόρτωση… Παρακαλώ περιμένετε.",
     "loadMore": "Φόρτωση περισσότερων…",

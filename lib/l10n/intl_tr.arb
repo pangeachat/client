@@ -1997,12 +1997,8 @@
             }
         }
     },
-    "dehydrate": "Oturumu dışa aktar ve aygıtı sil",
-    "@dehydrate": {},
     "hydrate": "Yedekleme dosyasından geri yükle",
     "@hydrate": {},
-    "dehydrateWarning": "Bu eylem geri alınamaz. Yedekleme dosyasını güvenli bir şekilde sakladığınızdan emin olun.",
-    "@dehydrateWarning": {},
     "user": "Kullanıcı",
     "@user": {},
     "custom": "Özel",

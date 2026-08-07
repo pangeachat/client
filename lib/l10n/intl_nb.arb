@@ -2400,10 +2400,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "Eksporter økten og slett enheten",
-    "@dehydrate": {},
-    "dehydrateWarning": "Denne handlingen kan ikke angres. Sørg for at du lagrer sikkerhetskopifilen på en trygg måte.",
-    "@dehydrateWarning": {},
     "noMatrixServer": "{server1} er ingen matrix-server, bruk {server2} i stedet?",
     "@noMatrixServer": {
         "type": "String",

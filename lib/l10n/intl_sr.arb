@@ -1773,8 +1773,6 @@
     "invalidServerName": "Nevažeće ime servera",
     "redactMessageDescription": "Poruka će biti redigovana za sve učesnike u ovom razgovoru. Ovo se ne može poništiti.",
     "optionalRedactReason": "(Opcionalno) Razlog za redigovanje ove poruke...",
-    "dehydrate": "Izvoz sesije i brisanje uređaja",
-    "dehydrateWarning": "Ова акција се не може опозвати. Осигурајте да сигурно сачувате резервну копију датотеке.",
     "hydrate": "Врати из резервне копије",
     "locationDisabledNotice": "Услуге локације су онемогућене. Молимо вас да их омогућите како бисте могли делити своју локацију.",
     "locationPermissionDeniedNotice": "Дозвола за локацију је одбијена. Молимо вас да је одобрите како бисте могли делити своју локацију.",
@@ -3030,14 +3028,6 @@
         "placeholders": {}
     },
     "@optionalRedactReason": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

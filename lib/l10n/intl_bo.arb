@@ -644,7 +644,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
     "@emptyChat": {
         "type": "String",
@@ -850,7 +849,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrate": {},
     "@locationPermissionDeniedNotice": {
         "type": "String",
         "placeholders": {}
@@ -6225,8 +6223,6 @@
     "leave": "འཁོར་བ",
     "leftTheChat": "ཚོད་ལོག",
     "lightTheme": "ཉིན་ལྡན",
-    "dehydrate": "ཚེས་གཉིས་སྤྱོད་ལེན་དང་གནས་སྡེབ་བརྒྱབ་",
-    "dehydrateWarning": "འདི་ལས་འགོག་མི་ཚུལ་མེད། སྤྱོད་ལེན་འབད་ནི་ལས་སྤྱོད་འགོག་བྱེད་མི་ཚུལ་ལས་སྤྱོད་འབད་བཏང་བ་བྱེད།",
     "hydrate": "Backup ཡིག་སྣོད་ནས་སྤྱོད་ལེན།",
     "loadingPleaseWait": "ལོག་འཇོག་འདི་ལས་སྤྱོད་འབད་ནས་བརྗེ་བ་འདི་ལས་སྤྱོད་འབད་བར་འགྱོ་བ།",
     "loadMore": "མང་བའི་ལག་ལེན།",

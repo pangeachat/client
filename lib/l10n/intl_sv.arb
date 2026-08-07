@@ -1969,10 +1969,6 @@
             }
         }
     },
-    "dehydrate": "Exportera sessionen och rensa enheten",
-    "@dehydrate": {},
-    "dehydrateWarning": "Denna åtgärd kan inte ångras. Försäkra dig om att backupen är i säkert förvar.",
-    "@dehydrateWarning": {},
     "separateChatTypes": "Separata direktchattar och grupper",
     "@separateChatTypes": {
         "type": "String",

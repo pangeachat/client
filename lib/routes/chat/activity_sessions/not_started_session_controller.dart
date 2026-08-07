@@ -166,6 +166,15 @@ class NotStartedSessionController extends State<NotStartedSession>
           .getSessionsByStatus(ActivitySummaryStatus.completed)
           .length;
 
+  /// Completed-only sessions, for the everyone-visible mobile "Completed" chip.
+  /// Distinct from [currentOrFinishedSessionCount], which also folds in
+  /// in-progress sessions and gates the admin-only "view current or finished".
+  int get completedSessionCount => activityStatuses
+      .getSessionsByStatus(ActivitySummaryStatus.completed)
+      .length;
+
+  bool get hasCompletedSessions => completedSessionCount > 0;
+
   Future<int> get neededCourseParticipants async {
     // No course: the session launches standalone (the bot fills in), so no
     // extra course participants are required.

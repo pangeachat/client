@@ -1304,8 +1304,6 @@ class ChatListController extends State<ChatList>
   void _hackyWebRTCFixForWeb() {
     ChatList.contextForVoip = context;
   }
-
-  Future<void> dehydrate() => Matrix.of(context).dehydrateAction(context);
 }
 
 enum EditBundleAction { addToBundle, removeFromBundle }

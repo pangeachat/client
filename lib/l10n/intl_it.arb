@@ -1887,8 +1887,6 @@
     "@setChatDescription": {},
     "importFromZipFile": "Importa da file .zip",
     "@importFromZipFile": {},
-    "dehydrateWarning": "Questa azione non può essere annullata. Assicurarsi di aver salvato il file di backup.",
-    "@dehydrateWarning": {},
     "noOtherDevicesFound": "Nessun altro dispositivo trovato",
     "@noOtherDevicesFound": {},
     "redactedBy": "Rimosso da {username}",
@@ -1910,8 +1908,6 @@
     "@start": {},
     "optionalRedactReason": "(Opzionale) Ragione per rimuovere questo messaggio...",
     "@optionalRedactReason": {},
-    "dehydrate": "Esporta la sessione e cancella il dispositivo",
-    "@dehydrate": {},
     "locationPermissionDeniedNotice": "Permesso per accedere alla posizione negato. Per favore concedilo per essere in grado di condividere la tua posizione.",
     "@locationPermissionDeniedNotice": {
         "type": "String",

@@ -2038,8 +2038,6 @@
             }
         }
     },
-    "dehydrate": "Exportovat sezení a promazat zařízení",
-    "@dehydrate": {},
     "newGroup": "Nová skupina",
     "@newGroup": {},
     "doNotShowAgain": "Nezobrazovat znovu",
@@ -2148,8 +2146,6 @@
     },
     "custom": "Vlastní",
     "@custom": {},
-    "dehydrateWarning": "Tuto akci nelze vzít zpět. Ujistěte se že záložní soubor máte bezpečně uložen.",
-    "@dehydrateWarning": {},
     "countFiles": "{count} souborů",
     "@countFiles": {
         "placeholders": {

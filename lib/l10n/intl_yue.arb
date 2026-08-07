@@ -151,8 +151,6 @@
     "leave": "離開",
     "leftTheChat": "已離開聊天",
     "lightTheme": "淺色",
-    "dehydrate": "導出會話並清除裝置",
-    "dehydrateWarning": "此操作無法撤銷。請確保妥善保存備份檔案。",
     "hydrate": "從備份文件恢復",
     "loadingPleaseWait": "載入中… 請稍候。",
     "loadMore": "載入更多…",
@@ -2017,14 +2015,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

@@ -1998,8 +1998,6 @@
     "@whyIsThisMessageEncrypted": {},
     "setChatDescription": "Establecer descripción del chat",
     "@setChatDescription": {},
-    "dehydrateWarning": "Esta acción no se puede deshacer. Asegúrese de que ha almacenado de forma segura el fichero de copia de seguridad.",
-    "@dehydrateWarning": {},
     "redactedBy": "Censurado por {username}",
     "@redactedBy": {
         "type": "String",
@@ -2011,8 +2009,6 @@
     },
     "optionalRedactReason": "(Opcional) Motivo para censurar este mensaje...",
     "@optionalRedactReason": {},
-    "dehydrate": "Exportar sesión y limpiar dispositivo",
-    "@dehydrate": {},
     "experimentalVideoCalls": "Videollamadas experimentales",
     "@experimentalVideoCalls": {},
     "redactedByBecause": "Censurado por {username} porque: \"{reason}\"",

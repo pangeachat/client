@@ -851,10 +851,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noOtherDevicesFound": {
         "type": "String",
         "placeholders": {}
@@ -1066,10 +1062,6 @@
         "placeholders": {}
     },
     "@copyToClipboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
         "type": "String",
         "placeholders": {}
     },
@@ -2331,8 +2323,6 @@
     "leave": "Sair",
     "leftTheChat": "Saiu do chat",
     "lightTheme": "Claro",
-    "dehydrate": "Exportar sessão e limpar o dispositivo",
-    "dehydrateWarning": "Esta ação não pode ser desfeita. Certifique-se de armazenar o arquivo de backup com segurança.",
     "hydrate": "Restaurar a partir do arquivo de backup",
     "loadingPleaseWait": "Carregando… Por favor, aguarde.",
     "loadMore": "Carregar mais…",

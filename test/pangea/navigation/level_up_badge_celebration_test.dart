@@ -24,8 +24,9 @@ void main() {
 
   Future<void> pumpCelebration(
     WidgetTester tester,
-    Stream<LevelUpdate> levelUpdates,
-  ) async {
+    Stream<LevelUpdate> levelUpdates, {
+    Future<void> Function()? playChime,
+  }) async {
     await tester.pumpWidget(
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
@@ -36,6 +37,10 @@ void main() {
               levelUpdates: levelUpdates,
               chipDuration: chipDuration,
               pulseDuration: pulseDuration,
+              // Never the real chime here: the default reaches for the audio
+              // plugin and the assets bucket, neither of which exists in a
+              // widget test.
+              playChime: playChime ?? () async {},
               child: const SizedBox(key: badgeKey, width: 40, height: 44),
             ),
           ),
@@ -95,6 +100,50 @@ void main() {
     await tester.pump(fadeOut);
     await tester.pumpAndSettle();
     expect(find.text(chipText), findsNothing);
+    await controller.close();
+  });
+
+  testWidgets('a level bump plays the chime (#7881)', (tester) async {
+    var chimes = 0;
+    final controller = StreamController<LevelUpdate>.broadcast();
+    await pumpCelebration(
+      tester,
+      controller.stream,
+      playChime: () async => chimes++,
+    );
+
+    expect(chimes, 0);
+
+    controller.add(const LevelUpdate(prevLevel: 3, newLevel: 4));
+    await tester.pump();
+    await tester.pump();
+
+    // Once per level-up, fired with the pulse rather than after it.
+    expect(chimes, 1);
+
+    await tester.pump(pulseDuration);
+    await tester.pump(chipDuration + fadeOut);
+    await tester.pumpAndSettle();
+    await controller.close();
+  });
+
+  testWidgets('no chime when the level did not increase (#7881)', (
+    tester,
+  ) async {
+    var chimes = 0;
+    final controller = StreamController<LevelUpdate>.broadcast();
+    await pumpCelebration(
+      tester,
+      controller.stream,
+      playChime: () async => chimes++,
+    );
+
+    controller.add(const LevelUpdate(prevLevel: 4, newLevel: 4));
+    controller.add(const LevelUpdate(prevLevel: 4, newLevel: 3));
+    await tester.pump();
+    await tester.pump();
+
+    expect(chimes, 0);
     await controller.close();
   });
 

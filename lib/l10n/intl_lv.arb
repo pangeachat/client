@@ -796,8 +796,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrateWarning": "Šī darbība nav atdarāma. Jānodrošina, ka rezerves kopijas datne tiek droši uzglabāta.",
-    "@dehydrateWarning": {},
     "noOtherDevicesFound": "Netika atrastas citas ierīces",
     "@noOtherDevicesFound": {},
     "emptyChat": "Tukša tērzēšana",
@@ -1044,8 +1042,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "Izgūt sesiju un iztīrīt ierīci",
-    "@dehydrate": {},
     "locationPermissionDeniedNotice": "Atrašanās vietas atļauja noliegta. Lūgums nodrošināt to, lai būtu iespējams kopīgot savu atrašanās vietu.",
     "@locationPermissionDeniedNotice": {
         "type": "String",

@@ -1340,7 +1340,6 @@
         }
     },
     "@importFromZipFile": {},
-    "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
     "@redactedBy": {
         "type": "String",
@@ -1435,7 +1434,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrate": {},
     "@locationPermissionDeniedNotice": {
         "type": "String",
         "placeholders": {}
@@ -2100,8 +2098,6 @@
     "kicked": "👞 {username} ha expulsete {targetName}",
     "kickedAndBanned": "🙅 {username} ha expulsete e bannite {targetName}",
     "kickFromChat": "Expulser de chat",
-    "dehydrate": "Exportar session e netejar dispositive",
-    "dehydrateWarning": "Iste action ne pote esser revertite. Assegura te que tu stoca securmente li copia de securitate.",
     "hydrate": "Restaurar de copia de securitate",
     "locationDisabledNotice": "Li servicies de localisacion es disactivate. Per favor, active los pro poter compartir tu localisacion.",
     "locationPermissionDeniedNotice": "Permesso de localisacion es denegate. Per favor, concede los pro poter compartir tu localisacion.",

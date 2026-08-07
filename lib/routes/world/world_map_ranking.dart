@@ -46,7 +46,7 @@ enum ActivityPinState {
   /// values.
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
-  /// The pin body colour. See world-map.instructions.md ("Pin state").
+  /// The pin body color. See world-map.instructions.md ("Pin state").
   Color get color => switch (this) {
     ActivityPinState.ongoingPending ||
     ActivityPinState.ongoingActive => AppConfig.primaryColor,
@@ -54,6 +54,12 @@ enum ActivityPinState {
     ActivityPinState.inProgress => AppConfig.gold,
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
+
+  Color bodyColor(BuildContext context) =>
+      this == ActivityPinState.available &&
+          Theme.of(context).brightness == Brightness.dark
+      ? Theme.of(context).colorScheme.primaryContainer
+      : color;
 
   String label(L10n l10n) => switch (this) {
     ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,

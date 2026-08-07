@@ -223,8 +223,6 @@
     "leave": "నిష్క్రమించండి",
     "leftTheChat": "చాట్ నుండి నిష్క్రమించారు",
     "lightTheme": "కాంతివంతమైన",
-    "dehydrate": "సెషన్ ఎగుమతి చేసి పరికరాన్ని శుభ్రం చేయండి",
-    "dehydrateWarning": "ఈ చర్యను తిరిగి చేయలేరు. బ్యాకప్ ఫైల్‌ను సురక్షితంగా నిల్వ చేయండి.",
     "hydrate": "బ్యాకప్ ఫైల్ నుండి పునరుద్ధరించండి",
     "loadingPleaseWait": "లోడ్ అవుతోంది… దయచేసి వేచిఉండండి.",
     "loadMore": "మరిన్ని లోడ్ చేయండి…",
@@ -2379,14 +2377,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },

@@ -1245,8 +1245,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "صدور نشست و پاک کردن دستگاه",
-    "@dehydrate": {},
     "loadingPleaseWait": "در حال بارگذاری… لطفاً صبر کنید.",
     "@loadingPleaseWait": {
         "type": "String",
@@ -1379,8 +1377,6 @@
             }
         }
     },
-    "dehydrateWarning": "این کنش برگشت‌ناپذیر است. مطمئن شوید پرونده پشتیبان را به‌صورت امن ذخیره می‌کنید.",
-    "@dehydrateWarning": {},
     "locationDisabledNotice": "مکان‌یاب غیرفعال است. لطفاً آن را فعال کنید تا بتوانید مکان خود را هم‌رسانی کنید.",
     "@locationDisabledNotice": {
         "type": "String",

@@ -2244,12 +2244,6 @@
     "@hydrateTorLong": {},
     "dehydrateTorLong": "Для пользователей TOR рекомендуется экспортировать сессию перед закрытием окна.",
     "@dehydrateTorLong": {},
-    "dehydrate": "Экспорт сеанса и очистка устройства",
-    "@dehydrate": {},
-    "dehydrateWarning": "Это действие не может быть отменено. Убедитесь, что вы надёжно сохранили файл резервной копии.",
-    "@dehydrateWarning": {
-        "pangea_override": true
-    },
     "indexedDbErrorTitle": "Проблемы с приватным режимом",
     "@indexedDbErrorTitle": {},
     "otherCallingPermissions": "Разрешения FluffyChat: микрофон, камера и другие",
