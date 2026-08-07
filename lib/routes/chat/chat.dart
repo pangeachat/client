@@ -3072,6 +3072,7 @@ class ChatController extends State<ChatPageWithRoom>
           ignorePointer: true,
           targetAnchor: Alignment.topCenter,
           followerAnchor: Alignment.bottomCenter,
+          blockPointerThrough: true,
         ),
       ),
     );
