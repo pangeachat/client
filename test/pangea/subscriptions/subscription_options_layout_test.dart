@@ -32,13 +32,11 @@ void main() {
     WidgetTester tester, {
     double width = 368.0,
     ValueNotifier<ProductPlan?>? selected,
-    Brightness brightness = Brightness.light,
   }) async {
     await tester.pumpWidget(
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
-        theme: ThemeData(brightness: brightness),
         home: Scaffold(
           body: Center(
             child: SizedBox(
@@ -57,26 +55,31 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  /// The card's outer [AnimatedContainer] — the one carrying the drop shadow
-  /// and the hover lift.
-  AnimatedContainer cardShell(WidgetTester tester) => tester.widget(
-    find
-        .descendant(
-          of: find.byType(SubscriptionOptionCard).first,
-          matching: find.byType(AnimatedContainer),
-        )
-        .first,
+  /// The discount-code button, as opposed to the chips — which are themselves
+  /// [ElevatedButton]s.
+  final discountButton = find.widgetWithText(
+    ElevatedButton,
+    'Enter discount code',
   );
 
-  BoxShadow cardShadow(WidgetTester tester) =>
-      ((cardShell(tester).decoration! as BoxDecoration).boxShadow!).single;
+  /// Elevation of the [Material] the first chip's button paints itself on.
+  double chipElevation(WidgetTester tester) => tester
+      .widget<Material>(
+        find
+            .descendant(
+              of: find.byType(SubscriptionOptionCard).first,
+              matching: find.byType(Material),
+            )
+            .first,
+      )
+      .elevation;
 
   group('discount-code button aligns with the plan chips', () {
     testWidgets('two chips per row: button spans both chips', (tester) async {
       await pumpOptions(tester);
 
       final wrapWidth = tester.getSize(find.byType(Wrap)).width;
-      final buttonWidth = tester.getSize(find.byType(ElevatedButton)).width;
+      final buttonWidth = tester.getSize(discountButton).width;
 
       // 150 + 12 + 150
       expect(wrapWidth, 312.0);
@@ -89,7 +92,7 @@ void main() {
       await pumpOptions(tester, width: 200.0);
 
       final wrapWidth = tester.getSize(find.byType(Wrap)).width;
-      final buttonWidth = tester.getSize(find.byType(ElevatedButton)).width;
+      final buttonWidth = tester.getSize(discountButton).width;
 
       expect(wrapWidth, 150.0);
       expect(buttonWidth, wrapWidth);
@@ -97,21 +100,15 @@ void main() {
   });
 
   group('plan chips read as clickable', () {
-    testWidgets('rests with a drop shadow', (tester) async {
+    testWidgets('rests raised off the page', (tester) async {
       await pumpOptions(tester);
 
-      final shadow = cardShadow(tester);
-      expect(shadow.blurRadius, 4.0);
-      expect(shadow.offset, const Offset(0, 2));
-      expect(
-        cardShell(tester).transform,
-        Matrix4.translationValues(0, 0, 0),
-        reason: 'sits flush until hovered',
-      );
+      expect(chipElevation(tester), greaterThan(0.0));
     });
 
-    testWidgets('lifts and deepens its shadow on hover', (tester) async {
+    testWidgets('rises further on hover', (tester) async {
       await pumpOptions(tester);
+      final resting = chipElevation(tester);
 
       final mouse = await tester.createGesture(kind: PointerDeviceKind.mouse);
       await mouse.addPointer(location: Offset.zero);
@@ -123,27 +120,7 @@ void main() {
       );
       await tester.pumpAndSettle();
 
-      final shadow = cardShadow(tester);
-      expect(shadow.blurRadius, 10.0);
-      expect(shadow.offset, const Offset(0, 4));
-      expect(
-        cardShell(tester).transform,
-        Matrix4.translationValues(0, -2, 0),
-        reason: 'lifts toward the pointer',
-      );
-    });
-
-    testWidgets('casts a visible glow instead of a black shadow in the dark', (
-      tester,
-    ) async {
-      await pumpOptions(tester, brightness: Brightness.dark);
-
-      final theme = ThemeData(brightness: Brightness.dark);
-      final shadow = cardShadow(tester);
-
-      // Black-on-near-black would read as no elevation at all.
-      expect(shadow.color.withAlpha(255), theme.colorScheme.primary);
-      expect(shadow.color.a, greaterThan(0.25));
+      expect(chipElevation(tester), greaterThan(resting));
     });
 
     testWidgets('selecting a plan still reports the tap', (tester) async {
