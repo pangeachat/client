@@ -103,17 +103,19 @@ class RecordingInputRow extends StatelessWidget {
                 )
               : const Icon(Icons.send_outlined),
           // #Pangea
-          // Streaming, still recording: the primary button STOPS to the editable
-          // transcript (D7 finalizing -> editableClean) rather than sending
-          // immediately, so the learner can review/correct before sending. In
-          // the editable state (and on the batch path) it sends.
+          // One-click send (#8209): the send button always SENDS, on every
+          // path. While streaming, stopAndSend stops the capture, synthesizes
+          // the retained WAV, and sends it with the settled transcript
+          // embedded verbatim — no intermediate stop-to-editable-review step
+          // (that stop read as "pause instead of send"). The editable-review
+          // machinery (stopStreamingToEditable + the TextField above) stays,
+          // and stopAndSend still routes its editable/degraded states.
           // onPressed: state.isSending ? null : () => state.stopAndSend(onSend),
-          // While the finalizing->editable transition is in flight the stop is
-          // disabled so a double-tap cannot re-enter stopStreamingToEditable.
+          // While a terminal degrade's retained-WAV recovery is in flight the
+          // send stays disabled (isFinalizingToEditable covers that window) so
+          // the batch payload cannot be sent before it exists.
           onPressed: state.isSending || state.isFinalizingToEditable
               ? null
-              : state.shouldStopStreamingToEditable
-              ? () => state.stopStreamingToEditable()
               : () => state.stopAndSend(onSend),
           // Pangea#
         ),

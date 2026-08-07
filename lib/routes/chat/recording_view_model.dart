@@ -212,14 +212,6 @@ class RecordingViewModelState extends State<RecordingViewModel> {
       _finalizingToEditable ||
       (_streaming?.isDegradingToBatch == true && _pendingResult == null);
 
-  /// Whether the live-stream button should enter transcript editing. A terminal
-  /// recovery owns the same button and must complete into the batch-send path.
-  bool get shouldStopStreamingToEditable =>
-      _streaming != null &&
-      _editable == null &&
-      !_degradedToBatch &&
-      _streaming?.isDegradingToBatch != true;
-
   /// The editable buffer's controller for the `TextField`, or `null` off the
   /// editable path.
   EditableTranscriptController? get editableController => _editable?.controller;
@@ -570,9 +562,16 @@ class RecordingViewModelState extends State<RecordingViewModel> {
   /// the batch path uses (D5a). Wave 5 threads the settled transcript through
   /// this call; wave 3 sends the WAV exactly like today.
   Future<void> _stopStreamingAndSend(VoiceMessageSend onSend) async {
-    _recorderSubscription?.cancel();
     final session = _streaming;
-    if (session == null) return;
+    // In-method re-entrancy guard: one-click send (#8209) makes this the
+    // primary streaming send path, and stopAndSynthesize's memoized future
+    // would let an overlapping second tap resume past the await and send the
+    // same WAV twice. Marking isSending BEFORE the await both closes that
+    // window and disables cancel/pause for the finalizing drain, so a
+    // teardown cannot race the synth into sending a cancelled recording.
+    if (session == null || isSending) return;
+    setState(() => isSending = true);
+    _recorderSubscription?.cancel();
 
     final result = await session.stopAndSynthesize();
     if (result == null) {
@@ -615,7 +614,6 @@ class RecordingViewModelState extends State<RecordingViewModel> {
       langCode: session.lang,
     );
 
-    setState(() => isSending = true);
     try {
       await onSend(
         result.wavPath,

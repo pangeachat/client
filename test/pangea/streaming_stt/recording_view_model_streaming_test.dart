@@ -451,6 +451,110 @@ void main() {
     },
   );
 
+  testWidgets(
+    'one-click send (#8209): a single tap of the send button while streaming '
+    'sends the settled transcript verbatim — no editable-review stop — and an '
+    'overlapping second send is a no-op',
+    (tester) async {
+      final capture = _FakeCapture();
+      final channel = _FakeWebSocketChannel();
+      final repo = SttStreamRepo(
+        wsUrl: 'wss://api.example/choreo/speech_to_text/stream',
+        accessToken: 'TOKEN',
+        connector: (uri, {protocols}) => channel,
+      );
+      final session = StreamingSttSession(
+        capture: capture,
+        repo: repo,
+        tempFileWriter: (_) async => '/tmp/one_click_retained.wav',
+        // Bound the finalizing drain: the fake socket never closes on its own.
+        finalizeTimeout: const Duration(milliseconds: 40),
+      );
+
+      var sendCalls = 0;
+      StreamingSttSendData? streamed;
+      Future<void> onSend(
+        String path,
+        int duration,
+        List<int> waveform,
+        String? fileName, {
+        StreamingSttSendData? streamedTranscript,
+      }) async {
+        sendCalls++;
+        streamed = streamedTranscript;
+      }
+
+      late RecordingViewModelState state;
+      await tester.pumpWidget(
+        MaterialApp(
+          localizationsDelegates: L10n.localizationsDelegates,
+          supportedLocales: L10n.supportedLocales,
+          home: RecordingViewModel(
+            streamingSessionFactory: () => session,
+            builder: (context, s) {
+              state = s;
+              return Scaffold(
+                body: RecordingInputRow(state: s, onSend: onSend),
+              );
+            },
+          ),
+        ),
+      );
+      await tester.pumpAndSettle();
+
+      await tester.runAsync(() => session.start());
+      state.debugAttachStreamingSession(session);
+      expect(capture.started, isTrue);
+
+      // Non-silent audio (empty-audio guard) and a settled final to embed.
+      session.debugOnFrame(
+        Uint8List.fromList(<int>[0, 64, 0, 64, 0, 64, 0, 64]),
+      );
+      session.debugApplyPartial(
+        const SttPartial(
+          transcript: 'hola mundo',
+          words: <SttWord>[],
+          isFinal: true,
+          speechFinal: false,
+        ),
+      );
+      await tester.pump();
+
+      // ONE tap: the send is in flight (spinner), never an editable review.
+      await tester.tap(find.byIcon(Icons.send_outlined));
+      await tester.pump();
+      expect(state.isSending, isTrue);
+      expect(state.isEditingTranscript, isFalse);
+
+      // A second send racing the in-flight one (the double-tap window before
+      // the disabled button repaints) must be swallowed by the in-method
+      // isSending guard — stopAndSynthesize's memoized future would otherwise
+      // let it resume past the await and send the same WAV twice.
+      final second = state.stopAndSend(onSend);
+
+      // Drive the send to completion: the bounded 40ms drain timer lives on
+      // the test clock (created a few microtask hops into the tap), so
+      // alternate fake-clock pumps with real-async flushes until it lands.
+      for (var i = 0; i < 10 && sendCalls == 0; i++) {
+        await tester.pump(const Duration(milliseconds: 50));
+        await tester.runAsync(
+          () => Future<void>.delayed(const Duration(milliseconds: 10)),
+        );
+      }
+      await tester.runAsync(() => second);
+      await tester.pump();
+
+      expect(sendCalls, 1);
+      expect(streamed, isNotNull);
+      expect(streamed!.text, 'hola mundo');
+      expect(streamed!.isEdited, isFalse);
+      expect(state.isEditingTranscript, isFalse);
+      expect(state.isStreaming, isFalse);
+      expect(capture.stopped, isTrue);
+      expect(channel.isClosed, isTrue);
+    },
+  );
+
   group('degradation banner (H9b live / B4 batch)', () {
     Future<
       ({
