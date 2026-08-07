@@ -3039,6 +3039,9 @@ class ChatController extends State<ChatPageWithRoom>
             maxWidth: maxWidth,
             transformTargetId: ChoreoConstants.inputTransformTargetKey,
             ignorePointer: true,
+            // Taps outside the card still reach the input field and other
+            // highlights, but taps on the card stop there (#8181).
+            blockPointerThrough: true,
             isScrollable: false,
           ),
           overlayPosition: OverlayPosition.above,
