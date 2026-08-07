@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-07 13:12:56.826738",
+    "@@last_modified": "2026-08-07 16:23:26.421298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Maneno yaliyofutwa",
     "restore": "Rudisha",
     "deletedWordLabel": "{lemma}, yamefutwa",
-    "restoredWords": "{count, plural, =1{Neno 1 limerejeshwa} other{Maneno {count} yamerejeshwa}}"
+    "restoredWords": "{count, plural, =1{Neno 1 limerejeshwa} other{Maneno {count} yamerejeshwa}}",
+    "chatSearchPageLabel": "Ukurasa wa utafutaji wa gumzo",
+    "selectImageLabel": "Chagua picha",
+    "userSearchTagsLabel": "Tafuta katika...",
+    "courseDetails": "Maelezo ya kozi",
+    "objective": "Lengo",
+    "pingedLabel": "Imepingiwa",
+    "mapFilterPlayerCount": "Wachezaji {count}"
 }

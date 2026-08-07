@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:46.280637",
+    "@@last_modified": "2026-08-07 16:23:22.097383",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9903,5 +9903,12 @@
     "deletedVocabListLabel": "삭제된 단어",
     "restore": "복원",
     "deletedWordLabel": "{lemma}, 삭제됨",
-    "restoredWords": "{count, plural, =1{단어 1개 복원됨} other{단어 {count}개 복원됨}}"
+    "restoredWords": "{count, plural, =1{단어 1개 복원됨} other{단어 {count}개 복원됨}}",
+    "chatSearchPageLabel": "채팅 검색 페이지",
+    "selectImageLabel": "이미지 선택",
+    "userSearchTagsLabel": "검색 위치...",
+    "courseDetails": "코스 상세 정보",
+    "objective": "목표",
+    "pingedLabel": "핑됨",
+    "mapFilterPlayerCount": "{count}명"
 }

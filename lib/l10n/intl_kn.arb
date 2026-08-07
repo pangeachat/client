@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-07 13:12:46.838056",
+    "@@last_modified": "2026-08-07 16:23:22.111606",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "ಅಳಿಸಿದ ಪದಗಳು",
     "restore": "ಮರುಸ್ಥಾಪಿಸಿ",
     "deletedWordLabel": "{lemma}, ಅಳಿಸಲಾಗಿದೆ",
-    "restoredWords": "{count, plural, =1{1 ಪದವನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ} other{{count} ಪದಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ}}"
+    "restoredWords": "{count, plural, =1{1 ಪದವನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ} other{{count} ಪದಗಳನ್ನು ಮರುಸ್ಥಾಪಿಸಲಾಗಿದೆ}}",
+    "chatSearchPageLabel": "ಚಾಟ್ ಹುಡುಕಾಟ ಪುಟ",
+    "selectImageLabel": "ಚಿತ್ರ ಆಯ್ಕೆಮಾಡಿ",
+    "userSearchTagsLabel": "ಇದರಲ್ಲಿ ಹುಡುಕಿ...",
+    "courseDetails": "ಕೋರ್ಸ್ ವಿವರಗಳು",
+    "objective": "ಉದ್ದೇಶ",
+    "pingedLabel": "ಪಿಂಗ್ ಮಾಡಲಾಗಿದೆ",
+    "mapFilterPlayerCount": "{count} ಆಟಗಾರರು"
 }

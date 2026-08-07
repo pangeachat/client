@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-07 13:12:40.876254",
+    "@@last_modified": "2026-08-07 16:23:19.503530",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10065,5 +10065,12 @@
     "deletedVocabListLabel": "Mots supprimés",
     "restore": "Restaurer",
     "deletedWordLabel": "{lemma}, supprimé",
-    "restoredWords": "{count, plural, =1{1 mot restauré} other{{count} mots restaurés}}"
+    "restoredWords": "{count, plural, =1{1 mot restauré} other{{count} mots restaurés}}",
+    "chatSearchPageLabel": "Page de recherche de chat",
+    "selectImageLabel": "Sélectionner une image",
+    "userSearchTagsLabel": "Rechercher dans...",
+    "courseDetails": "Détails du cours",
+    "objective": "Objectif",
+    "pingedLabel": "Pingé",
+    "mapFilterPlayerCount": "{count} joueurs"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-07 13:12:40.340440",
+    "@@last_modified": "2026-08-07 16:23:19.363059",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9707,5 +9707,12 @@
     "deletedVocabListLabel": "Kustutatud sõnad",
     "restore": "Taasta",
     "deletedWordLabel": "{lemma}, kustutatud",
-    "restoredWords": "{count, plural, =1{Taastatud 1 sõna} other{Taastatud {count} sõna}}"
+    "restoredWords": "{count, plural, =1{Taastatud 1 sõna} other{Taastatud {count} sõna}}",
+    "chatSearchPageLabel": "Vestluse otsingu leht",
+    "selectImageLabel": "Vali pilt",
+    "userSearchTagsLabel": "Otsi asukohast...",
+    "courseDetails": "Kursuse üksikasjad",
+    "objective": "Eesmärk",
+    "pingedLabel": "Pingitud",
+    "mapFilterPlayerCount": "{count} mängijat"
 }

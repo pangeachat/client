@@ -102,7 +102,8 @@ class AddCourseTile extends StatelessWidget {
                             runSpacing: 8.0,
                             crossAxisAlignment: WrapCrossAlignment.center,
                             children: [
-                              if (invited) const InvitedChip(),
+                              if (invited)
+                                ExcludeSemantics(child: InvitedChip()),
                               if (members != null && !invited)
                                 Semantics(
                                   label: L10n.of(

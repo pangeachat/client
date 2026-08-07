@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-07 13:12:46.919157",
+    "@@last_modified": "2026-08-07 16:23:22.461258",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Verba delevimus",
     "restore": "Restitue",
     "deletedWordLabel": "{lemma}, deletum",
-    "restoredWords": "{count, plural, =1{Unum verbum restitutum} other{{count} verba restituta}}"
+    "restoredWords": "{count, plural, =1{Unum verbum restitutum} other{{count} verba restituta}}",
+    "chatSearchPageLabel": "Pagina quaerendi sermonis",
+    "selectImageLabel": "Imaginem elige",
+    "userSearchTagsLabel": "Quaere in...",
+    "courseDetails": "Singula cursus",
+    "objective": "Propositum",
+    "pingedLabel": "Pulsatus",
+    "mapFilterPlayerCount": "{count} lusores"
 }

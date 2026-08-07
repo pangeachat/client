@@ -160,7 +160,7 @@ class _MobileSearchBarState extends State<MobileSearchBar> {
     final verdict = widget.emptyVerdict?.call() ?? MapEmptyVerdict.none;
 
     return Semantics(
-      label: widget.hintText,
+      label: l10n.searchActivitiesLabel,
       container: true,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -42,7 +42,7 @@ class _LeftPanelChatListSubpageState extends State<LeftPanelChatListSubpage> {
     // new-chat action (the old floating Direct Message FAB, moved here so it
     // no longer covers list rows). See routing.instructions.md.
     return Semantics(
-      label: L10n.of(context).pageLabel(L10n.of(context).chats),
+      label: l10n.pageLabel(l10n.chats),
       container: true,
       child: Column(
         children: [

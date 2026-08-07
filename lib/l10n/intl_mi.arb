@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-07 13:12:49.184228",
+    "@@last_modified": "2026-08-07 16:23:23.483926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Kupu Kua Mukua",
     "restore": "Whakahoki",
     "deletedWordLabel": "{lemma}, kua mukua",
-    "restoredWords": "{count, plural, =1{Kua Whakahokia te 1 kupu} other{Kua Whakahokia ngā kupu e {count}}}"
+    "restoredWords": "{count, plural, =1{Kua Whakahokia te 1 kupu} other{Kua Whakahokia ngā kupu e {count}}}",
+    "chatSearchPageLabel": "Whārangi rapu kōrerorero",
+    "selectImageLabel": "Tīpako atahanga",
+    "userSearchTagsLabel": "Rapu i roto...",
+    "courseDetails": "Ngā taipitopito akoranga",
+    "objective": "Whāinga",
+    "pingedLabel": "Kua pīngia",
+    "mapFilterPlayerCount": "{count} kaitākaro"
 }

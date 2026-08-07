@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-07 13:12:59.873219",
+    "@@last_modified": "2026-08-07 16:23:27.410100",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10667,5 +10667,12 @@
     "deletedVocabListLabel": "已刪除嘅詞彙",
     "restore": "還原",
     "deletedWordLabel": "{lemma}，已刪除",
-    "restoredWords": "{count, plural, =1{已還原 1 個詞彙} other{已還原 {count} 個詞彙}}"
+    "restoredWords": "{count, plural, =1{已還原 1 個詞彙} other{已還原 {count} 個詞彙}}",
+    "chatSearchPageLabel": "聊天室搜尋頁面",
+    "selectImageLabel": "選擇圖片",
+    "userSearchTagsLabel": "搜尋範圍...",
+    "courseDetails": "課程詳情",
+    "objective": "目標",
+    "pingedLabel": "已提示",
+    "mapFilterPlayerCount": "{count} 位玩家"
 }

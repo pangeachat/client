@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-07 13:12:49.355112",
+    "@@last_modified": "2026-08-07 16:23:23.873334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Perkataan yang dipadam",
     "restore": "Pulihkan",
     "deletedWordLabel": "{lemma}, dipadam",
-    "restoredWords": "{count, plural, =1{1 perkataan dipulihkan} other{{count} perkataan dipulihkan}}"
+    "restoredWords": "{count, plural, =1{1 perkataan dipulihkan} other{{count} perkataan dipulihkan}}",
+    "chatSearchPageLabel": "Halaman carian sembang",
+    "selectImageLabel": "Pilih imej",
+    "userSearchTagsLabel": "Cari dalam...",
+    "courseDetails": "Butiran kursus",
+    "objective": "Objektif",
+    "pingedLabel": "Diping",
+    "mapFilterPlayerCount": "{count} pemain"
 }

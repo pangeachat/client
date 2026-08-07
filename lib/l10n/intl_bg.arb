@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-07 13:12:36.985218",
+    "@@last_modified": "2026-08-07 16:23:17.952217",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Изтрити думи",
     "restore": "Възстановяване",
     "deletedWordLabel": "{lemma}, изтрита",
-    "restoredWords": "{count, plural, =1{Възстановена е 1 дума} other{Възстановени са {count} думи}}"
+    "restoredWords": "{count, plural, =1{Възстановена е 1 дума} other{Възстановени са {count} думи}}",
+    "chatSearchPageLabel": "Страница за търсене в чата",
+    "selectImageLabel": "Изберете изображение",
+    "userSearchTagsLabel": "Търсене в...",
+    "courseDetails": "Подробности за курса",
+    "objective": "Цел",
+    "pingedLabel": "Пингован",
+    "mapFilterPlayerCount": "{count} играчи"
 }

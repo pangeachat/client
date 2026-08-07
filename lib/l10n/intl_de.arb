@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-07 13:12:38.984572",
+    "@@last_modified": "2026-08-07 16:23:18.897089",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9697,5 +9697,12 @@
     "deletedVocabListLabel": "Gelöschte Wörter",
     "restore": "Wiederherstellen",
     "deletedWordLabel": "{lemma}, gelöscht",
-    "restoredWords": "{count, plural, =1{1 Wort wiederhergestellt} other{{count} Wörter wiederhergestellt}}"
+    "restoredWords": "{count, plural, =1{1 Wort wiederhergestellt} other{{count} Wörter wiederhergestellt}}",
+    "chatSearchPageLabel": "Chat-Suchseite",
+    "selectImageLabel": "Bild auswählen",
+    "userSearchTagsLabel": "Suchen in...",
+    "courseDetails": "Kursdetails",
+    "objective": "Ziel",
+    "pingedLabel": "Angesprochen",
+    "mapFilterPlayerCount": "{count} Spieler"
 }

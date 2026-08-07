@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-07 13:12:40.694812",
+    "@@last_modified": "2026-08-07 16:23:19.524550",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10570,5 +10570,12 @@
     "deletedVocabListLabel": "Mga tinanggal na salita",
     "restore": "Ibalik",
     "deletedWordLabel": "{lemma}, tinanggal",
-    "restoredWords": "{count, plural, =1{Naibalik ang 1 salita} other{Naibalik ang {count} salita}}"
+    "restoredWords": "{count, plural, =1{Naibalik ang 1 salita} other{Naibalik ang {count} salita}}",
+    "chatSearchPageLabel": "Pahina ng paghahanap sa chat",
+    "selectImageLabel": "Pumili ng larawan",
+    "userSearchTagsLabel": "Maghanap sa...",
+    "courseDetails": "Mga detalye ng kurso",
+    "objective": "Layunin",
+    "pingedLabel": "Na-ping",
+    "mapFilterPlayerCount": "{count} manlalaro"
 }

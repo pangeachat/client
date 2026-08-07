@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-07 13:12:50.197711",
+    "@@last_modified": "2026-08-07 16:23:24.092667",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Kliem imħassar",
     "restore": "Irrestawra",
     "deletedWordLabel": "{lemma}, imħassar",
-    "restoredWords": "{count, plural, =1{Ġiet restawrata kelma waħda} other{Ġew restawrati {count} kliem}}"
+    "restoredWords": "{count, plural, =1{Ġiet restawrata kelma waħda} other{Ġew restawrati {count} kliem}}",
+    "chatSearchPageLabel": "Paġna tat-tfittxija taċ-chat",
+    "selectImageLabel": "Agħżel immaġni",
+    "userSearchTagsLabel": "Fittex fi...",
+    "courseDetails": "Dettalji tal-kors",
+    "objective": "Objettiv",
+    "pingedLabel": "Pingjat",
+    "mapFilterPlayerCount": "{count} plejers"
 }

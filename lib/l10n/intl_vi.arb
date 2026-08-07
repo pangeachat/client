@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:58.210478",
+    "@@last_modified": "2026-08-07 16:23:27.248806",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6986,5 +6986,12 @@
     "deletedVocabListLabel": "Các từ đã xóa",
     "restore": "Khôi phục",
     "deletedWordLabel": "{lemma}, đã xóa",
-    "restoredWords": "{count, plural, =1{Đã khôi phục 1 từ} other{Đã khôi phục {count} từ}}"
+    "restoredWords": "{count, plural, =1{Đã khôi phục 1 từ} other{Đã khôi phục {count} từ}}",
+    "chatSearchPageLabel": "Trang tìm kiếm trò chuyện",
+    "selectImageLabel": "Chọn hình ảnh",
+    "userSearchTagsLabel": "Tìm kiếm trong...",
+    "courseDetails": "Chi tiết khóa học",
+    "objective": "Mục tiêu",
+    "pingedLabel": "Đã được nhắc đến",
+    "mapFilterPlayerCount": "{count} người chơi"
 }

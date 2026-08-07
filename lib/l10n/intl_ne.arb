@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-07 13:12:51.417883",
+    "@@last_modified": "2026-08-07 16:23:24.024265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "मेटाइएका शब्दहरू",
     "restore": "पुनर्स्थापित गर्नुहोस्",
     "deletedWordLabel": "{lemma}, मेटाइयो",
-    "restoredWords": "{count, plural, =1{१ शब्द पुनर्स्थापित गरियो} other{{count} शब्दहरू पुनर्स्थापित गरियो}}"
+    "restoredWords": "{count, plural, =1{१ शब्द पुनर्स्थापित गरियो} other{{count} शब्दहरू पुनर्स्थापित गरियो}}",
+    "chatSearchPageLabel": "च्याट खोज पृष्ठ",
+    "selectImageLabel": "छवि चयन गर्नुहोस्",
+    "userSearchTagsLabel": "यसमा खोज्नुहोस्...",
+    "courseDetails": "पाठ्यक्रम विवरण",
+    "objective": "उद्देश्य",
+    "pingedLabel": "पिङ गरियो",
+    "mapFilterPlayerCount": "{count} खेलाडीहरू"
 }
