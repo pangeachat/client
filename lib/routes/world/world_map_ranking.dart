@@ -7,6 +7,16 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 
+/// The dark-theme fill for an `available` pin ([ActivityPinState.bodyColor]).
+/// [AppConfig.primaryColorLight] is a near-white lavender: over the near-black
+/// dark basemap it out-shouts every other pin state and reads as the loudest
+/// thing on the map, which is backwards for the map's least urgent state
+/// (#8174). This is the same brand hue deepened and desaturated — dark enough
+/// to recede into the dark UI and to keep the white plus glyph legible on it
+/// (~9:1), and far enough off the vivid Ongoing purple ([AppConfig.primaryColor],
+/// lighter AND much more saturated) not to be mistaken for it.
+const Color _availableDarkFill = Color(0xFF4E3974);
+
 /// The displayed colour-state of a world-map activity pin. Declared
 /// lowest-precedence first so `state.index` is the precedence ladder
 /// (available < inProgress < joinable < ongoingPending < ongoingActive): when
@@ -47,6 +57,9 @@ enum ActivityPinState {
   bool get isLive => isOngoing || this == ActivityPinState.joinable;
 
   /// The pin body colour. See world-map.instructions.md ("Pin state").
+  ///
+  /// The canonical (light-theme) hue. Painting a pin body goes through
+  /// [bodyColor] instead, which swaps in the dark-theme `available` fill.
   Color get color => switch (this) {
     ActivityPinState.ongoingPending ||
     ActivityPinState.ongoingActive => AppConfig.primaryColor,
@@ -54,6 +67,14 @@ enum ActivityPinState {
     ActivityPinState.inProgress => AppConfig.gold,
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
+
+  /// The pin body fill for the ambient theme — [color] for every state except
+  /// `available` in the dark theme, which uses [_availableDarkFill] (#8174).
+  Color bodyColor(BuildContext context) =>
+      this == ActivityPinState.available &&
+          Theme.of(context).brightness == Brightness.dark
+      ? _availableDarkFill
+      : color;
 
   String label(L10n l10n) => switch (this) {
     ActivityPinState.ongoingPending => l10n.ongoingPendingLabel,
