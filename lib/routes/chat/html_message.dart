@@ -1150,23 +1150,14 @@ class MatrixPill extends StatelessWidget {
     // Pangea#
   });
 
-  // #Pangea
-  /// A user pill opens that user's profile popup in-app. Only a non-user pill
-  /// (a room or alias) falls through to the URL launcher — handing a user's
-  /// `matrix.to` link to the browser sent the reader out of the app
-  /// (pangeachat/client#8187).
   Future<void> _onTap() async {
     final userId = this.userId;
     if (userId == null) {
       UrlLauncher(outerContext, uri).launchUrl();
       return;
     }
-    // The room's in-memory user is a bare fallback for someone who isn't a
-    // member here, so prefer the server profile — it's usually already cached,
-    // and awaiting it directly keeps the popup one tap away (a
-    // showFutureLoadingDialog wrapper here suppresses the popup entirely).
-    // What the pill renders is the fallback, so the two can't disagree.
-    var noProfileWarning = false;
+
+    bool noProfileWarning = false;
     Profile profile;
     try {
       profile = await Matrix.of(
@@ -1177,6 +1168,7 @@ class MatrixPill extends StatelessWidget {
       profile = Profile(userId: userId, displayName: name, avatarUrl: avatar);
     }
     if (!outerContext.mounted) return;
+
     await UserDialog.show(
       context: outerContext,
       profile: profile,
@@ -1184,8 +1176,6 @@ class MatrixPill extends StatelessWidget {
       uri: GoRouterState.of(outerContext).uri,
     );
   }
-
-  // Pangea#
 
   @override
   Widget build(BuildContext context) {
