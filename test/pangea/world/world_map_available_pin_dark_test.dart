@@ -23,6 +23,16 @@ void main() {
     learningObjectiveRefs: [],
   );
 
+  // Seeded the way FluffyThemes.buildTheme seeds the real app, so the scheme
+  // roles under test are the ones the app actually resolves.
+  ThemeData themeFor(Brightness brightness) => ThemeData(
+    brightness: brightness,
+    colorScheme: ColorScheme.fromSeed(
+      brightness: brightness,
+      seedColor: AppConfig.primaryColor,
+    ),
+  );
+
   Future<void> pump(
     WidgetTester tester, {
     required Brightness brightness,
@@ -33,7 +43,7 @@ void main() {
       MaterialApp(
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
-        theme: ThemeData(brightness: brightness),
+        theme: themeFor(brightness),
         home: Scaffold(
           body: Center(
             child: WorldMapDot(
@@ -126,6 +136,13 @@ void main() {
         small,
         mid,
         reason: 'both tiers share one available fill, whatever the theme',
+      );
+      expect(
+        mid,
+        themeFor(Brightness.dark).colorScheme.primaryContainer,
+        reason:
+            'the dark fill comes from the scheme, not a hand-picked constant, '
+            'so it follows the learner theme seed',
       );
       expect(
         mid,

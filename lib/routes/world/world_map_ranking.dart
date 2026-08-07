@@ -7,16 +7,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/world/world_map_pin_budget.dart';
 
-/// The dark-theme fill for an `available` pin ([ActivityPinState.bodyColor]).
-/// [AppConfig.primaryColorLight] is a near-white lavender: over the near-black
-/// dark basemap it out-shouts every other pin state and reads as the loudest
-/// thing on the map, which is backwards for the map's least urgent state
-/// (#8174). This is the same brand hue deepened and desaturated — dark enough
-/// to recede into the dark UI and to keep the white plus glyph legible on it
-/// (~9:1), and far enough off the vivid Ongoing purple ([AppConfig.primaryColor],
-/// lighter AND much more saturated) not to be mistaken for it.
-const Color _availableDarkFill = Color(0xFF4E3974);
-
 /// The displayed colour-state of a world-map activity pin. Declared
 /// lowest-precedence first so `state.index` is the precedence ladder
 /// (available < inProgress < joinable < ongoingPending < ongoingActive): when
@@ -68,12 +58,23 @@ enum ActivityPinState {
     ActivityPinState.available => AppConfig.primaryColorLight,
   };
 
-  /// The pin body fill for the ambient theme — [color] for every state except
-  /// `available` in the dark theme, which uses [_availableDarkFill] (#8174).
+  /// The pin body fill for the ambient theme — [color] everywhere except an
+  /// `available` pin in the dark theme, which fills the scheme's
+  /// **primaryContainer** instead (#8174).
+  ///
+  /// [AppConfig.primaryColorLight] is a near-white lavender: over the dark
+  /// basemap's near-black paper it out-shouts every other state, which is
+  /// backwards for the map's least urgent one. `primaryContainer` is exactly
+  /// the role for "a surface filled in the primary hue" and the dark scheme
+  /// resolves it deep and desaturated — it recedes into the dark UI, carries
+  /// the white plus glyph at ~9:1, and stays well off the vivid Ongoing purple
+  /// ([AppConfig.primaryColor], lighter AND far more saturated). Taking it from
+  /// the scheme also means the pin follows the learner's theme seed instead of
+  /// pinning one hand-picked purple.
   Color bodyColor(BuildContext context) =>
       this == ActivityPinState.available &&
           Theme.of(context).brightness == Brightness.dark
-      ? _availableDarkFill
+      ? Theme.of(context).colorScheme.primaryContainer
       : color;
 
   String label(L10n l10n) => switch (this) {
