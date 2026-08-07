@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/user/user_profile_cache.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/string_color.dart';
@@ -20,11 +19,22 @@ String profileDisplayName(String userId, Profile? profile, L10n l10n) =>
     userId.localpart ??
     userId;
 
-/// Builds with [userId]'s global Matrix profile, fetching it through
-/// [UserProfileCache] — the way any card that knows only a user id draws that
-/// user's real name and avatar instead of the localpart and the default letter
-/// circle (#8192). See [UserProfileCache] for why room state can't be relied on
-/// for a session the learner hasn't joined.
+/// Builds with [userId]'s **global** Matrix profile — the way any card that
+/// knows only a user id draws that user's real name and avatar instead of the
+/// localpart and the default letter circle (#8192).
+///
+/// Why cards fetch instead of being handed a resolved [User]: a session the
+/// learner has not joined has no loaded member state — its `room_preview`
+/// summary carries bare user ids, and even a local [Room] drops member events
+/// under lazy loading — so anything resolved upstream from room state falls
+/// back to the localpart. The global profile is the one source always
+/// available.
+///
+/// The SDK owns the caching: [Client.getProfileFromUserId] serves from its
+/// database, de-duplicates concurrent requests for the same id, and marks
+/// entries outdated off the sync loop. This widget adds no cache of its own,
+/// so a resolved profile still costs a future — the fallback shows for a frame
+/// whenever this State is built fresh rather than merely rebuilt.
 ///
 /// Prefer [UserProfileAvatar] / [UserProfileName]; reach for this directly only
 /// where a card needs the raw [Profile].
@@ -66,21 +76,13 @@ class _UserProfileBuilderState extends State<UserProfileBuilder> {
   }
 
   void _resolve() {
-    final userId = widget.userId;
-    if (userId == null) {
-      _profile = null;
-      return;
-    }
-    final cached = UserProfileCache.cached(userId);
-    if (cached != null) {
-      // Synchronous hit — assign directly. In didChangeDependencies there is
-      // no build to schedule yet, and setState during didUpdateWidget's
-      // rebuild would be redundant.
-      _profile = cached;
-      return;
-    }
     _profile = null;
-    UserProfileCache.fetch(Matrix.of(context).client, userId).then((profile) {
+    final userId = widget.userId;
+    // Null is an unfilled activity seat: nothing to look up, and the caller
+    // draws its own empty-seat treatment.
+    if (userId == null) return;
+
+    Matrix.of(context).client.getProfileFromUserId(userId).then((profile) {
       // Drop a stale completion: the widget may have moved to another user
       // (marker recycling) while this lookup was in flight.
       if (mounted && widget.userId == userId) {
