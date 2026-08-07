@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:18.624855",
+    "@@last_modified": "2026-08-07 13:12:59.738597",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -7698,16 +7698,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "此詞彙將永久從您的分析中移除",
     "woman": "女性",
     "man": "男性",
     "otherGender": "其他",
     "unselectedGender": "選擇性別選項",
     "chatParticipantTooltip": "這是此聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9817,5 +9812,13 @@
     "conversationFromDayOne": "從第一天起就開始對話",
     "builtForConnection": "為連結而生",
     "aiWhenYouNeedIt": "隨時隨地為您提供 AI",
-    "practiceTailoredForYou": "為您量身打造的練習"
+    "practiceTailoredForYou": "為您量身打造的練習",
+    "deletedVocab": "已刪除的單字",
+    "blockLemmaConfirmation": "此單字將從您的詞彙中移除，並且不會再獲得經驗值。您可以從「已刪除的單字」中將其恢復。",
+    "deletedVocabListBody": "這些單字已從您的詞彙中隱藏，並且不會獲得經驗值。恢復單字即可將其取回。",
+    "deletedVocabListBodyEmpty": "您尚未刪除任何單字。您從詞彙中刪除的單字將會顯示在此處，以便您將其取回。",
+    "deletedVocabListLabel": "已刪除的單字",
+    "restore": "恢復",
+    "deletedWordLabel": "{lemma}，已刪除",
+    "restoredWords": "{count, plural, =1{已恢復 1 個單字} other{已恢復 {count} 個單字}}"
 }

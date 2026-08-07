@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-05 11:42:15.642861",
+    "@@last_modified": "2026-08-07 13:12:51.203321",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Åpne økter ({num})",
     "inProgressActivitiesTitle": "Pågående ({num})",
     "pickDifferentActivity": "Velg en annen aktivitet",
-    "blockLemmaConfirmation": "Dette vokabularet vil bli permanent fjernet fra analysene dine",
     "woman": "Kvinne",
     "man": "Mann",
     "otherGender": "Annet",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Samtale fra første dag",
     "builtForConnection": "Bygget for tilknytning",
     "aiWhenYouNeedIt": "AI når du trenger det",
-    "practiceTailoredForYou": "Øvelse skreddersydd for deg"
+    "practiceTailoredForYou": "Øvelse skreddersydd for deg",
+    "deletedVocab": "Slettede ord",
+    "blockLemmaConfirmation": "Dette ordet blir fjernet fra vokabularet ditt og vil ikke lenger gi XP. Du kan hente det tilbake fra Slettede ord.",
+    "deletedVocabListBody": "Disse ordene er skjult fra vokabularet ditt og gir ikke XP. Gjenopprett et ord for å hente det tilbake.",
+    "deletedVocabListBodyEmpty": "Du har ikke slettet noen ord. Ord du sletter fra vokabularet ditt, vises her slik at du kan hente dem tilbake.",
+    "deletedVocabListLabel": "Slettede ord",
+    "restore": "Gjenopprett",
+    "deletedWordLabel": "{lemma}, slettet",
+    "restoredWords": "{count, plural, =1{Gjenopprettet 1 ord} other{Gjenopprettet {count} ord}}"
 }

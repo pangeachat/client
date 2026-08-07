@@ -43,30 +43,7 @@ class VocabAnalyticsListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final tile = _buildTile(context);
-    if (!blocked) return tile;
-
-    // One semantics node for the whole tile: the inner InkWell and lemma text
-    // are excluded so a screen reader reads "<lemma>, deleted" once rather than
-    // the lemma twice, and the tap/long-press are re-exposed here so the row
-    // stays reachable — Playwright resolves controls by role + name.
-    //
-    // Dimming is the only visual marker. That would normally be colour-alone,
-    // but every tile on the deleted-vocab page is blocked, so a per-tile badge
-    // marks nothing the page title doesn't already say — and the accessible
-    // name below carries the state for anyone not seeing the dimming.
-    return Semantics(
-      label: L10n.of(context).deletedWordLabel(constructId.lemma),
-      button: true,
-      container: true,
-      onTap: onTap,
-      onLongPress: onLongPress,
-      child: ExcludeSemantics(child: Opacity(opacity: 0.5, child: tile)),
-    );
-  }
-
-  Widget _buildTile(BuildContext context) {
-    return HoverBuilder(
+    final Widget tile = HoverBuilder(
       builder: (context, hovered) => Material(
         type: MaterialType.transparency,
         child: InkWell(
@@ -130,6 +107,26 @@ class VocabAnalyticsListTile extends StatelessWidget {
           ),
         ),
       ),
+    );
+
+    if (!blocked) return tile;
+
+    // One semantics node for the whole tile: the inner InkWell and lemma text
+    // are excluded so a screen reader reads "<lemma>, deleted" once rather than
+    // the lemma twice, and the tap/long-press are re-exposed here so the row
+    // stays reachable — Playwright resolves controls by role + name.
+    //
+    // Dimming is the only visual marker. That would normally be colour-alone,
+    // but every tile on the deleted-vocab page is blocked, so a per-tile badge
+    // marks nothing the page title doesn't already say — and the accessible
+    // name below carries the state for anyone not seeing the dimming.
+    return Semantics(
+      label: L10n.of(context).deletedWordLabel(constructId.lemma),
+      button: true,
+      container: true,
+      onTap: onTap,
+      onLongPress: onLongPress,
+      child: ExcludeSemantics(child: Opacity(opacity: 0.5, child: tile)),
     );
   }
 }

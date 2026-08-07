@@ -2926,7 +2926,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-05 11:42:10.594557",
+    "@@last_modified": "2026-08-07 13:12:38.411261",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6940,16 +6940,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ita vocab word will be permanently removed from your analytics",
     "woman": "Baba",
     "man": "Baba",
     "otherGender": "Bola",
     "unselectedGender": "Select a gender option",
     "chatParticipantTooltip": "Ita is everybody in this chat. Click on any user’s avatar and “start conversation” to send a DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9322,5 +9317,13 @@
     "conversationFromDayOne": "ཉིན་དང་པོ་ནས་བཟུང་གླེང་མོལ།",
     "builtForConnection": "འབྲེལ་མཐུད་ཆེད་དུ་བསྐྲུན་པ།",
     "aiWhenYouNeedIt": "ཁྱེད་ལ་དགོས་པའི་སྐབས་ཀྱི་རང་བྱུང་རིག་ནུས།",
-    "practiceTailoredForYou": "ཁྱེད་རང་ལ་འཚམས་པའི་སྦྱོང་བརྡར།"
+    "practiceTailoredForYou": "ཁྱེད་རང་ལ་འཚམས་པའི་སྦྱོང་བརྡར།",
+    "deletedVocab": "བསུབ་ཟིན་པའི་ཐ་སྙད།",
+    "blockLemmaConfirmation": "ཐ་སྙད་འདི་ཁྱེད་ཀྱི་ཐ་སྙད་མཛོད་ནས་བསུབ་པ་དང་། ཉམས་མྱོང་སྐར་མ་བསགས་མི་ཐུབ། ཁྱེད་ཀྱིས་བསུབ་ཟིན་པའི་ཐ་སྙད་ནས་སླར་གསོ་བྱེད་ཐུབ།",
+    "deletedVocabListBody": "ཐ་སྙད་འདི་དག་ཁྱེད་ཀྱི་ཐ་སྙད་མཛོད་ནས་སྦས་ཡོད་པ་དང་། ཉམས་མྱོང་སྐར་མ་བསགས་མི་ཐུབ། སླར་གསོ་བྱས་ན་ཕྱིར་འདོན་ཐུབ།",
+    "deletedVocabListBodyEmpty": "ཁྱེད་ཀྱིས་ཐ་སྙད་གང་ཡང་བསུབ་མེད། ཁྱེད་ཀྱིས་ཐ་སྙད་མཛོད་ནས་བསུབ་པའི་ཐ་སྙད་འདིར་མངོན་པ་དང་། ཁྱེད་ཀྱིས་ཕྱིར་འདོན་ཐུབ།",
+    "deletedVocabListLabel": "བསུབ་ཟིན་པའི་ཐ་སྙད།",
+    "restore": "སླར་གསོ།",
+    "deletedWordLabel": "{lemma}, བསུབ་ཟིན།",
+    "restoredWords": "{count, plural, =1{ཐ་སྙད་ 1 སླར་གསོ་བྱས།} other{ཐ་སྙད་ {count} སླར་གསོ་བྱས།}}"
 }

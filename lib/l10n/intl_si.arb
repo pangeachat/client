@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-05 11:42:16.613172",
+    "@@last_modified": "2026-08-07 13:12:54.607202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "විවෘත සැසි ({num})",
     "inProgressActivitiesTitle": "දැන් සිදුවෙමින් පවතී ({num})",
     "pickDifferentActivity": "වෙනත් ක්‍රියාකාරකමක් තෝරන්න",
-    "blockLemmaConfirmation": "මෙම වචන මාලාව ඔබේ විශ්ලේෂණවලින් ස්ථිරවම ඉවත් කෙරේ",
     "woman": "කාන්තාව",
     "man": "පුරුෂයා",
     "otherGender": "වෙනත්",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "මුල් දවසේ සිට සංවාදය",
     "builtForConnection": "සම්බන්ධතාවය සඳහා ගොඩනගා ඇත",
     "aiWhenYouNeedIt": "ඔබට අවශ්‍ය විට AI",
-    "practiceTailoredForYou": "ඔබට ගැලපෙන පරිදි පුහුණුවීම්"
+    "practiceTailoredForYou": "ඔබට ගැලපෙන පරිදි පුහුණුවීම්",
+    "deletedVocab": "මකා දැමූ වචන",
+    "blockLemmaConfirmation": "මෙම වචනය ඔබගේ වචන මාලාවෙන් ඉවත් වන අතර XP උපයා ගැනීම නවත්වනු ඇත. ඔබට එය මකා දැමූ වචන වලින් නැවත ලබා ගත හැක.",
+    "deletedVocabListBody": "මෙම වචන ඔබගේ වචන මාලාවෙන් සඟවා ඇති අතර XP උපයා නොගනී. එය නැවත ලබා ගැනීමට එකක් ප්‍රතිසාධනය කරන්න.",
+    "deletedVocabListBodyEmpty": "ඔබ කිසිදු වචනයක් මකා නැත. ඔබගේ වචන මාලාවෙන් ඔබ මකා දමන වචන මෙහි දිස්වනු ඇත, එවිට ඔබට ඒවා නැවත ලබා ගත හැක.",
+    "deletedVocabListLabel": "මකා දැමූ වචන",
+    "restore": "ප්‍රතිසාධනය කරන්න",
+    "deletedWordLabel": "{lemma}, මකා දමා ඇත",
+    "restoredWords": "{count, plural, =1{වචන 1ක් ප්‍රතිසාධනය කරන ලදී} other{වචන {count}ක් ප්‍රතිසාධනය කරන ලදී}}"
 }

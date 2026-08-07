@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-05 11:42:12.386919",
+    "@@last_modified": "2026-08-07 13:12:42.083885",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "ખુલ્લા સત્રો ({num})",
     "inProgressActivitiesTitle": "હમણાં ચાલી રહ્યું છે ({num})",
     "pickDifferentActivity": "એક અલગ પ્રવૃત્તિ પસંદ કરો",
-    "blockLemmaConfirmation": "આ શબ્દભંડોળ તમારા એનાલિટિક્સમાંથી કાયમ માટે દૂર કરવામાં આવશે",
     "woman": "સ્ત્રી",
     "man": "પુરુષ",
     "otherGender": "અન્ય",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "પહેલા દિવસથી જ વાતચીત",
     "builtForConnection": "કનેક્શન માટે બનાવેલ",
     "aiWhenYouNeedIt": "જ્યારે તમને જરૂર હોય ત્યારે AI",
-    "practiceTailoredForYou": "તમારા માટે તૈયાર કરેલી પ્રેક્ટિસ"
+    "practiceTailoredForYou": "તમારા માટે તૈયાર કરેલી પ્રેક્ટિસ",
+    "deletedVocab": "કાઢી નાખેલા શબ્દો",
+    "blockLemmaConfirmation": "આ શબ્દ તમારા શબ્દભંડોળમાંથી દૂર કરવામાં આવશે અને XP કમાવવાનું બંધ કરશે. તમે તેને કાઢી નાખેલા શબ્દોમાંથી પાછો લાવી શકો છો.",
+    "deletedVocabListBody": "આ શબ્દો તમારા શબ્દભંડોળમાંથી છુપાયેલા છે અને XP કમાતા નથી. તેને પાછો લાવવા માટે એકને પુનઃસ્થાપિત કરો.",
+    "deletedVocabListBodyEmpty": "તમે કોઈ શબ્દો કાઢી નાખ્યા નથી. તમે તમારા શબ્દભંડોળમાંથી કાઢી નાખેલા શબ્દો અહીં દેખાશે જેથી તમે તેમને પાછા લાવી શકો.",
+    "deletedVocabListLabel": "કાઢી નાખેલા શબ્દો",
+    "restore": "પુનઃસ્થાપિત કરો",
+    "deletedWordLabel": "{lemma}, કાઢી નાખેલ",
+    "restoredWords": "{count, plural, =1{1 શબ્દ પુનઃસ્થાપિત કર્યો} other{{count} શબ્દો પુનઃસ્થાપિત કર્યા}}"
 }

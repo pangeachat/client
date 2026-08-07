@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-05 11:42:14.788124",
+    "@@last_modified": "2026-08-07 13:12:48.680381",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Отворени сесии ({num})",
     "inProgressActivitiesTitle": "Се случува сега ({num})",
     "pickDifferentActivity": "Изберете друга активност",
-    "blockLemmaConfirmation": "Овој збор од речникот трајно ќе биде отстранет од вашата анализа",
     "woman": "Жена",
     "man": "Маж",
     "otherGender": "Друго",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Разговор од првиот ден",
     "builtForConnection": "Создадено за поврзување",
     "aiWhenYouNeedIt": "Вештачка интелигенција кога ви е потребна",
-    "practiceTailoredForYou": "Вежбање прилагодено за вас"
+    "practiceTailoredForYou": "Вежбање прилагодено за вас",
+    "deletedVocab": "Избришани зборови",
+    "blockLemmaConfirmation": "Овој збор ќе биде отстранет од вашиот вокабулар и нема да заработува ХР. Можете да го вратите од Избришани зборови.",
+    "deletedVocabListBody": "Овие зборови се скриени од вашиот вокабулар и не заработуваат ХР. Вратете еден за да го вратите.",
+    "deletedVocabListBodyEmpty": "Немате избришано зборови. Зборовите што ќе ги избришете од вашиот вокабулар ќе се појават овде за да можете да ги вратите.",
+    "deletedVocabListLabel": "Избришани зборови",
+    "restore": "Врати",
+    "deletedWordLabel": "{lemma}, избришано",
+    "restoredWords": "{count, plural, =1{Вратен 1 збор} other{Вратени {count} зборови}}"
 }

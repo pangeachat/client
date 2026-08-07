@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-05 11:42:17.369462",
+    "@@last_modified": "2026-08-07 13:12:56.826738",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Vipindi vilivyo wazi ({num})",
     "inProgressActivitiesTitle": "Inaendelea sasa ({num})",
     "pickDifferentActivity": "Chagua shughuli tofauti",
-    "blockLemmaConfirmation": "Neno hili la msamiati litaondolewa kabisa kwenye takwimu zako",
     "woman": "Mwanamke",
     "man": "Mwanamume",
     "otherGender": "Jinsia nyingine",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Mazungumzo tangu Siku ya Kwanza",
     "builtForConnection": "Imeundwa kwa ajili ya muunganisho",
     "aiWhenYouNeedIt": "AI unapohitaji",
-    "practiceTailoredForYou": "Mazoezi yaliyoundwa kwa ajili yako"
+    "practiceTailoredForYou": "Mazoezi yaliyoundwa kwa ajili yako",
+    "deletedVocab": "Maneno yaliyofutwa",
+    "blockLemmaConfirmation": "Neno hili litaondolewa kwenye msamiati wako na halitaendelea kukuletea XP. Unaweza kulirudisha kutoka kwenye Maneno yaliyofutwa.",
+    "deletedVocabListBody": "Maneno haya yamefichwa kutoka kwenye msamiati wako na hayapati XP. Rudisha neno moja ili kulirejesha.",
+    "deletedVocabListBodyEmpty": "Hujafuta maneno yoyote. Maneno unayofuta kutoka kwenye msamiati wako yataonekana hapa ili uweze kuyarudisha.",
+    "deletedVocabListLabel": "Maneno yaliyofutwa",
+    "restore": "Rudisha",
+    "deletedWordLabel": "{lemma}, yamefutwa",
+    "restoredWords": "{count, plural, =1{Neno 1 limerejeshwa} other{Maneno {count} yamerejeshwa}}"
 }

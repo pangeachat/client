@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-05 11:42:16.653727",
+    "@@last_modified": "2026-08-07 13:12:55.184545",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Sesione të hapura ({num})",
     "inProgressActivitiesTitle": "Duke u zhvilluar tani ({num})",
     "pickDifferentActivity": "Zgjidh një aktivitet tjetër",
-    "blockLemmaConfirmation": "Kjo fjalë fjalori do të hiqet përgjithmonë nga analitikat tuaja",
     "woman": "Grua",
     "man": "Burrë",
     "otherGender": "Tjetër",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Bisedë që nga Dita e Parë",
     "builtForConnection": "Ndërtuar për lidhje",
     "aiWhenYouNeedIt": "AI kur ju nevojitet",
-    "practiceTailoredForYou": "Praktikë e përshtatur për ju"
+    "practiceTailoredForYou": "Praktikë e përshtatur për ju",
+    "deletedVocab": "Fjalë të fshira",
+    "blockLemmaConfirmation": "Kjo fjalë do të hiqet nga fjalori juaj dhe nuk do të fitojë më pikë XP. Mund ta riktheni nga Fjalët e fshira.",
+    "deletedVocabListBody": "Këto fjalë janë fshehur nga fjalori juaj dhe nuk fitojnë pikë XP. Riktheni një për ta sjellë atë përsëri.",
+    "deletedVocabListBodyEmpty": "Nuk keni fshirë asnjë fjalë. Fjalët që fshini nga fjalori juaj do të shfaqen këtu, në mënyrë që t'i riktheni.",
+    "deletedVocabListLabel": "Fjalë të fshira",
+    "restore": "Rikthe",
+    "deletedWordLabel": "{lemma}, e fshirë",
+    "restoredWords": "{count, plural, =1{U rikthye 1 fjalë} other{U rikthyen {count} fjalë}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-05 11:42:15.856833",
+    "@@last_modified": "2026-08-07 13:12:52.728953",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "ਖੁੱਲ੍ਹੇ ਸੈਸ਼ਨ ({num})",
     "inProgressActivitiesTitle": "ਹੁਣੇ ਹੋ ਰਹੀਆਂ ਹਨ ({num})",
     "pickDifferentActivity": "ਕੋਈ ਵੱਖਰੀ ਗਤੀਵਿਧੀ ਚੁਣੋ",
-    "blockLemmaConfirmation": "ਇਹ ਸ਼ਬਦਾਵਲੀ ਸ਼ਬਦ ਤੁਹਾਡੇ ਵਿਸ਼ਲੇਸ਼ਣ ਤੋਂ ਪੱਕੇ ਤੌਰ 'ਤੇ ਹਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ",
     "woman": "ਔਰਤ",
     "man": "ਆਦਮੀ",
     "otherGender": "ਹੋਰ",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "ਪਹਿਲੇ ਦਿਨ ਤੋਂ ਗੱਲਬਾਤ",
     "builtForConnection": "ਕਨੈਕਸ਼ਨ ਲਈ ਬਣਾਇਆ ਗਿਆ",
     "aiWhenYouNeedIt": "ਜਦੋਂ ਤੁਹਾਨੂੰ ਲੋੜ ਹੋਵੇ AI",
-    "practiceTailoredForYou": "ਤੁਹਾਡੇ ਲਈ ਤਿਆਰ ਕੀਤਾ ਅਭਿਆਸ"
+    "practiceTailoredForYou": "ਤੁਹਾਡੇ ਲਈ ਤਿਆਰ ਕੀਤਾ ਅਭਿਆਸ",
+    "deletedVocab": "ਮਿਟਾਏ ਗਏ ਸ਼ਬਦ",
+    "blockLemmaConfirmation": "ਇਹ ਸ਼ਬਦ ਤੁਹਾਡੀ ਸ਼ਬਦਾਵਲੀ ਵਿੱਚੋਂ ਹਟਾ ਦਿੱਤਾ ਜਾਵੇਗਾ ਅਤੇ XP ਕਮਾਉਣਾ ਬੰਦ ਕਰ ਦੇਵੇਗਾ। ਤੁਸੀਂ ਇਸਨੂੰ ਮਿਟਾਏ ਗਏ ਸ਼ਬਦਾਂ ਵਿੱਚੋਂ ਵਾਪਸ ਲਿਆ ਸਕਦੇ ਹੋ।",
+    "deletedVocabListBody": "ਇਹ ਸ਼ਬਦ ਤੁਹਾਡੀ ਸ਼ਬਦਾਵਲੀ ਤੋਂ ਲੁਕਾਏ ਗਏ ਹਨ ਅਤੇ XP ਨਹੀਂ ਕਮਾਉਂਦੇ। ਇਸਨੂੰ ਵਾਪਸ ਲਿਆਉਣ ਲਈ ਇੱਕ ਨੂੰ ਬਹਾਲ ਕਰੋ।",
+    "deletedVocabListBodyEmpty": "ਤੁਸੀਂ ਕੋਈ ਸ਼ਬਦ ਨਹੀਂ ਮਿਟਾਇਆ ਹੈ। ਤੁਹਾਡੀ ਸ਼ਬਦਾਵਲੀ ਵਿੱਚੋਂ ਮਿਟਾਏ ਗਏ ਸ਼ਬਦ ਇੱਥੇ ਦਿਖਾਈ ਦੇਣਗੇ ਤਾਂ ਜੋ ਤੁਸੀਂ ਉਹਨਾਂ ਨੂੰ ਵਾਪਸ ਲਿਆ ਸਕੋ।",
+    "deletedVocabListLabel": "ਮਿਟਾਏ ਗਏ ਸ਼ਬਦ",
+    "restore": "ਬਹਾਲ ਕਰੋ",
+    "deletedWordLabel": "{lemma}, ਮਿਟਾਇਆ ਗਿਆ",
+    "restoredWords": "{count, plural, =1{1 ਸ਼ਬਦ ਬਹਾਲ ਕੀਤਾ ਗਿਆ} other{{count} ਸ਼ਬਦ ਬਹਾਲ ਕੀਤੇ ਗਏ}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-05 11:42:10.343463",
+    "@@last_modified": "2026-08-07 13:12:37.912362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "ክፍት ክፍለ-ጊዜዎች ({num})",
     "inProgressActivitiesTitle": "አሁን እየተካሄዱ ያሉ ({num})",
     "pickDifferentActivity": "የተለየ እንቅስቃሴ ምረጥ",
-    "blockLemmaConfirmation": "ይህ የቃላት ቃል ከእርስዎ ትንታኔዎች በቋሚነት ይወገዳል።",
     "woman": "ሴት",
     "man": "ወንድ",
     "otherGender": "ሌላ",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "ከመጀመሪያው ቀን ጀምሮ ውይይት",
     "builtForConnection": "ለመገናኘት የተሰራ",
     "aiWhenYouNeedIt": "ሲያስፈልግህ AI",
-    "practiceTailoredForYou": "ለእርስዎ የተበጀ ልምምድ"
+    "practiceTailoredForYou": "ለእርስዎ የተበጀ ልምምድ",
+    "deletedVocab": "የተሰረዙ ቃላት",
+    "blockLemmaConfirmation": "ይህ ቃል ከቃላት ዝርዝርዎ ይወገዳል እና XP ማግኘት ያቆማል። ከተሰረዙ ቃላት መልሰው ማምጣት ይችላሉ።",
+    "deletedVocabListBody": "እነዚህ ቃላት ከቃላት ዝርዝርዎ የተደበቁ ናቸው እና XP አያስገኙም። መልሰው ለማምጣት አንዱን ወደነበረበት ይመልሱ።",
+    "deletedVocabListBodyEmpty": "ምንም ቃላት አልሰረዙም። ከቃላት ዝርዝርዎ የሚሰርዟቸው ቃላት መልሰው እንዲያመጧቸው እዚህ ይታያሉ።",
+    "deletedVocabListLabel": "የተሰረዙ ቃላት",
+    "restore": "ወደነበረበት መልስ",
+    "deletedWordLabel": "{lemma}, ተሰርዟል",
+    "restoredWords": "{count, plural, =1{1 ቃል ወደነበረበት ተመልሷል} other{{count} ቃላት ወደነበሩበት ተመልሰዋል}}"
 }

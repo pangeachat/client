@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-05 11:42:11.653800",
+    "@@last_modified": "2026-08-07 13:12:39.677432",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Sesiynau agored ({num})",
     "inProgressActivitiesTitle": "Yn digwydd nawr ({num})",
     "pickDifferentActivity": "Dewis gweithgaredd gwahanol",
-    "blockLemmaConfirmation": "Bydd y gair geirfa hwn yn cael ei dynnu'n barhaol o'ch dadansoddiad",
     "woman": "Menyw",
     "man": "Dyn",
     "otherGender": "Arall",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Sgwrs o Ddydd Un",
     "builtForConnection": "Wedi'i adeiladu ar gyfer cysylltiad",
     "aiWhenYouNeedIt": "AI pan fydd ei angen arnoch chi",
-    "practiceTailoredForYou": "Ymarfer wedi'i deilwra ar eich cyfer chi"
+    "practiceTailoredForYou": "Ymarfer wedi'i deilwra ar eich cyfer chi",
+    "deletedVocab": "Geiriau wedi'u dileu",
+    "blockLemmaConfirmation": "Bydd y gair hwn yn cael ei ddileu o'ch geirfa ac ni fydd yn ennill pwyntiau profiad. Gallwch ei adfer o'r geiriau sydd wedi'u dileu.",
+    "deletedVocabListBody": "Mae'r geiriau hyn wedi'u cuddio o'ch geirfa ac nid ydynt yn ennill pwyntiau profiad. Adferwch un i'w ddwyn yn ôl.",
+    "deletedVocabListBodyEmpty": "Nid ydych wedi dileu unrhyw eiriau. Bydd geiriau rydych chi'n eu dileu o'ch geirfa yn ymddangos yma fel y gallwch eu hadfer.",
+    "deletedVocabListLabel": "Geiriau wedi'u dileu",
+    "restore": "Adfer",
+    "deletedWordLabel": "{lemma}, wedi'i ddileu",
+    "restoredWords": "{count, plural, =1{Adferwyd 1 gair} other{Adferwyd {count} gair}}"
 }

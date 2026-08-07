@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-05 11:42:16.621962",
+    "@@last_modified": "2026-08-07 13:12:54.769202",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "کليل سيشن ({num})",
     "inProgressActivitiesTitle": "هاڻي ٿي رهيو آهي ({num})",
     "pickDifferentActivity": "هڪ مختلف سرگرمي چونڊيو",
-    "blockLemmaConfirmation": "هي لفظ توهان جي تجزين مان مستقل طور تي هٽايو ويندو",
     "woman": "عورت",
     "man": "مرد",
     "otherGender": "ٻيو",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "پهرين ڏينهن کان ڳالهه ٻولهه",
     "builtForConnection": "رابطي لاءِ ٺهيل",
     "aiWhenYouNeedIt": "جڏهن توهان کي ضرورت هجي ته AI",
-    "practiceTailoredForYou": "توهان لاءِ تيار ڪيل مشق"
+    "practiceTailoredForYou": "توهان لاءِ تيار ڪيل مشق",
+    "deletedVocab": "حذف ڪيل لفظ",
+    "blockLemmaConfirmation": "هي لفظ توهان جي لفظن جي ذخيري مان هٽايو ويندو ۽ XP ڪمائڻ بند ڪندو. توهان ان کي حذف ڪيل لفظن مان واپس آڻي سگهو ٿا.",
+    "deletedVocabListBody": "اهي لفظ توهان جي لفظن جي ذخيري مان لڪيل آهن ۽ XP نٿا ڪمائين. ان کي واپس آڻڻ لاءِ هڪ کي بحال ڪريو.",
+    "deletedVocabListBodyEmpty": "توهان ڪو به لفظ حذف نه ڪيو آهي. توهان جي لفظن جي ذخيري مان حذف ڪيل لفظ هتي ظاهر ٿيندا ته جيئن توهان انهن کي واپس آڻي سگهو.",
+    "deletedVocabListLabel": "حذف ڪيل لفظ",
+    "restore": "بحال ڪريو",
+    "deletedWordLabel": "{lemma}, حذف ٿيل",
+    "restoredWords": "{count, plural, =1{1 لفظ بحال ڪيو ويو} other{{count} لفظ بحال ڪيا ويا}}"
 }

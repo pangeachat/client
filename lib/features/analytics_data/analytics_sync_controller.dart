@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/analytics_constants.dart';
@@ -151,37 +153,51 @@ class AnalyticsSyncController {
     }
   }
 
+  /// What changed in one analytics-settings state event, in BOTH directions.
+  ///
+  /// Static and pure so the diff is testable without pumping a client — the
+  /// removal half in particular, which an earlier version dropped entirely by
+  /// computing additions only and skipping the event when there were none, so
+  /// undoing a block produced no reaction anywhere (#6803).
+  @visibleForTesting
+  static ({Set<ConstructIdentifier> blocked, Set<ConstructIdentifier> restored})
+  diffAnalyticsSettings(
+    Map<String, dynamic> content,
+    Map<String, Object?>? prevContent,
+  ) {
+    final newBlocked = AnalyticsSettingsModel.fromJson(
+      content,
+    ).blockedConstructs;
+    final prevBlocked = prevContent != null
+        ? AnalyticsSettingsModel.fromJson(prevContent).blockedConstructs
+        : <ConstructIdentifier>{};
+
+    return (
+      blocked: newBlocked.where((c) => !prevBlocked.contains(c)).toSet(),
+      restored: prevBlocked.where((c) => !newBlocked.contains(c)).toSet(),
+    );
+  }
+
   Future<void> _onAnalyticsSettingsEvents(
     List<MatrixEvent> events,
     String language,
   ) async {
     for (final event in events) {
-      final current = AnalyticsSettingsModel.fromJson(event.content);
-      final prevContent =
-          event.unsigned?['prev_content'] as Map<String, Object?>?;
-      final prev = prevContent != null
-          ? AnalyticsSettingsModel.fromJson(prevContent)
-          : null;
+      final diff = diffAnalyticsSettings(
+        event.content,
+        event.unsigned?['prev_content'] as Map<String, Object?>?,
+      );
 
-      final newBlocked = current.blockedConstructs;
-      final prevBlocked = prev?.blockedConstructs ?? <ConstructIdentifier>{};
-
-      final newlyBlocked = newBlocked
-          .where((c) => !prevBlocked.contains(c))
-          .toSet();
-      if (newlyBlocked.isNotEmpty) {
+      if (diff.blocked.isNotEmpty) {
         await dataService.updateDispatcher.sendBlockedConstructsUpdate(
-          newlyBlocked,
+          diff.blocked,
           language,
         );
       }
 
-      final newlyRestored = prevBlocked
-          .where((c) => !newBlocked.contains(c))
-          .toSet();
-      if (newlyRestored.isNotEmpty) {
+      if (diff.restored.isNotEmpty) {
         await dataService.updateDispatcher.sendRestoredConstructsUpdate(
-          newlyRestored,
+          diff.restored,
           language,
         );
       }

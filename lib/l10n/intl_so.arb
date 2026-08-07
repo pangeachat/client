@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-05 11:42:16.743628",
+    "@@last_modified": "2026-08-07 13:12:55.171526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Kulamada furan ({num})",
     "inProgressActivitiesTitle": "Hadda socda ({num})",
     "pickDifferentActivity": "Dooro hawl kale",
-    "blockLemmaConfirmation": "Eraygan eraybixinta si joogto ah ayaa looga saari doonaa falanqayntaada",
     "woman": "Dumar",
     "man": "Rag",
     "otherGender": "Mid kale",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Wadahadal laga bilaabo maalinta koowaad",
     "builtForConnection": "Loo dhisay isku xirnaan",
     "aiWhenYouNeedIt": "AI markaad u baahato",
-    "practiceTailoredForYou": "Layli adiga kuu gaar ah"
+    "practiceTailoredForYou": "Layli adiga kuu gaar ah",
+    "deletedVocab": "Erayada la tirtiray",
+    "blockLemmaConfirmation": "Eraygan waxa laga saari doonaa erayadaada waxana uu joojin doonaa inuu kasbado XP. Waxaad dib uga soo celin kartaa erayada la tirtiray.",
+    "deletedVocabListBody": "Erayadan waxa laga qariyey erayadaada mana kasbadaan XP. Soo celi mid si aad dib ugu soo celiso.",
+    "deletedVocabListBodyEmpty": "Ma aadan tirtirin wax eray ah. Erayada aad ka tirtirto erayadaada waxa ay halkan ka soo muuqan doonaan si aad dib ugu soo celiso.",
+    "deletedVocabListLabel": "Erayada la tirtiray",
+    "restore": "Soo celi",
+    "deletedWordLabel": "{lemma}, la tirtiray",
+    "restoredWords": "{count, plural, =1{Waxaa la soo celiyey 1 eray} other{Waxaa la soo celiyey {count} eray}}"
 }

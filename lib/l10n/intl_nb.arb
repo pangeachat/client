@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:15.381537",
+    "@@last_modified": "2026-08-07 13:12:50.726854",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -7833,16 +7833,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Dette ordet vil bli permanent fjernet fra analysene dine",
     "woman": "Kvinne",
     "man": "Mann",
     "otherGender": "Annet",
     "unselectedGender": "Velg et kjønnsalternativ",
     "chatParticipantTooltip": "Dette er alle i denne chatten. Klikk på hvilken som helst brukers avatar og \"start samtale\" for å sende en DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9768,5 +9763,13 @@
     "conversationFromDayOne": "Samtale fra første dag",
     "builtForConnection": "Bygget for tilkobling",
     "aiWhenYouNeedIt": "AI når du trenger det",
-    "practiceTailoredForYou": "Øvelse skreddersydd for deg"
+    "practiceTailoredForYou": "Øvelse skreddersydd for deg",
+    "deletedVocab": "Slettede ord",
+    "blockLemmaConfirmation": "Dette ordet blir fjernet fra vokabularet ditt og vil ikke lenger gi XP. Du kan hente det tilbake fra Slettede ord.",
+    "deletedVocabListBody": "Disse ordene er skjult fra vokabularet ditt og gir ikke XP. Gjenopprett et ord for å hente det tilbake.",
+    "deletedVocabListBodyEmpty": "Du har ikke slettet noen ord. Ord du sletter fra vokabularet ditt, vises her slik at du kan hente dem tilbake.",
+    "deletedVocabListLabel": "Slettede ord",
+    "restore": "Gjenopprett",
+    "deletedWordLabel": "{lemma}, slettet",
+    "restoredWords": "{count, plural, =1{Gjenopprettet 1 ord} other{Gjenopprettet {count} ord}}"
 }

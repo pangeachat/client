@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-05 11:42:11.671100",
+    "@@last_modified": "2026-08-07 13:12:40.554549",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -7777,16 +7777,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Hau vocab hitza zure analitiketatik behin betiko ezabatuko da",
     "woman": "Emakumea",
     "man": "Gizona",
     "otherGender": "Bestea",
     "unselectedGender": "Aukeratu genero aukera bat",
     "chatParticipantTooltip": "Hau da txat honetan dena. Egin klik edozein erabiltzaileen irudian eta \"hasieratu elkarrizketa\" DM bat bidaltzeko.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9711,5 +9706,13 @@
     "conversationFromDayOne": "Elkarrizketa lehen egunetik",
     "builtForConnection": "Konexiorako eraikia",
     "aiWhenYouNeedIt": "Adimen artifiziala behar duzunean",
-    "practiceTailoredForYou": "Zuretzat egokitutako praktika"
+    "practiceTailoredForYou": "Zuretzat egokitutako praktika",
+    "deletedVocab": "Ezabatutako hitzak",
+    "blockLemmaConfirmation": "Hitz hau zure hiztegitik kenduko da eta ez duzu XPrik irabaziko. Ezabatutako hitzetatik berreskura dezakezu.",
+    "deletedVocabListBody": "Hitz hauek zure hiztegitik ezkutatuta daude eta ez dute XPrik irabazten. Berreskuratu bat itzultzeko.",
+    "deletedVocabListBodyEmpty": "Ez duzu hitzik ezabatu. Zure hiztegitik ezabatzen dituzun hitzak hemen agertuko dira, berreskuratu ahal izateko.",
+    "deletedVocabListLabel": "Ezabatutako hitzak",
+    "restore": "Berreskuratu",
+    "deletedWordLabel": "{lemma}, ezabatuta",
+    "restoredWords": "{count, plural, =1{Hitz 1 berreskuratu da} other{{count} hitz berreskuratu dira}}"
 }

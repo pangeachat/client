@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:13.855055",
+    "@@last_modified": "2026-08-07 13:12:46.280637",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -7790,16 +7790,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "이 어휘 단어는 귀하의 분석에서 영구적으로 제거됩니다.",
     "woman": "여성",
     "man": "남성",
     "otherGender": "기타",
     "unselectedGender": "성별 옵션을 선택하세요",
     "chatParticipantTooltip": "이 채팅의 모든 사람입니다. 사용자 아바타를 클릭하고 '대화 시작'을 클릭하여 DM을 보내세요.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9904,5 +9899,13 @@
     "conversationFromDayOne": "첫날부터 대화 시작",
     "builtForConnection": "연결을 위해 구축",
     "aiWhenYouNeedIt": "필요할 때 AI",
-    "practiceTailoredForYou": "나만을 위한 맞춤 연습"
+    "practiceTailoredForYou": "나만을 위한 맞춤 연습",
+    "deletedVocab": "삭제된 단어",
+    "blockLemmaConfirmation": "이 단어는 내 단어장에서 삭제되며 더 이상 XP를 얻지 못합니다. 삭제된 단어에서 다시 가져올 수 있습니다.",
+    "deletedVocabListBody": "이 단어들은 내 단어장에서 숨겨지며 XP를 얻지 못합니다. 다시 가져오려면 복원하세요.",
+    "deletedVocabListBodyEmpty": "삭제된 단어가 없습니다. 단어장에서 삭제한 단어는 여기에 표시되어 다시 가져올 수 있습니다.",
+    "deletedVocabListLabel": "삭제된 단어",
+    "restore": "복원",
+    "deletedWordLabel": "{lemma}, 삭제됨",
+    "restoredWords": "{count, plural, =1{단어 1개 복원됨} other{단어 {count}개 복원됨}}"
 }

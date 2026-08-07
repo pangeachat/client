@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:12.884174",
+    "@@last_modified": "2026-08-07 13:12:42.497043",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -8517,16 +8517,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "מילת הווקב הזו תוסר לצמיתות מהאנליטיקה שלך",
     "woman": "אישה",
     "man": "גבר",
     "otherGender": "אחר",
     "unselectedGender": "בחר אפשרות מגדר",
     "chatParticipantTooltip": "אלה כולם בצ'אט הזה. לחץ על התמונה של כל משתמש ו\"התחל שיחה\" כדי לשלוח הודעה פרטית.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10631,5 +10626,13 @@
     "conversationFromDayOne": "שיחה מהיום הראשון",
     "builtForConnection": "נבנה לחיבור",
     "aiWhenYouNeedIt": "בינה מלאכותית כשאתה צריך אותה",
-    "practiceTailoredForYou": "תרגול המותאם אישית עבורך"
+    "practiceTailoredForYou": "תרגול המותאם אישית עבורך",
+    "deletedVocab": "מילים שנמחקו",
+    "blockLemmaConfirmation": "מילה זו תוסר מאוצר המילים שלך ותפסיק לצבור נקודות ניסיון. תוכל להחזיר אותה מ'מילים שנמחקו'.",
+    "deletedVocabListBody": "מילים אלו מוסתרות מאוצר המילים שלך ואינן צוברות נקודות ניסיון. שחזר מילה כדי להחזיר אותה.",
+    "deletedVocabListBodyEmpty": "לא מחקת מילים. מילים שתמחק מאוצר המילים שלך יופיעו כאן כדי שתוכל להחזיר אותן.",
+    "deletedVocabListLabel": "מילים שנמחקו",
+    "restore": "שחזר",
+    "deletedWordLabel": "{lemma}, נמחקה",
+    "restoredWords": "{count, plural, =1{שוחזרה מילה אחת} other{שוחזרו {count} מילים}}"
 }

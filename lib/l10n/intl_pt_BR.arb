@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:16.233441",
+    "@@last_modified": "2026-08-07 13:12:52.883136",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -7772,16 +7772,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Esta palavra de vocabulário será removida permanentemente da sua análise",
     "woman": "Mulher",
     "man": "Homem",
     "otherGender": "Outro",
     "unselectedGender": "Selecione uma opção de gênero",
     "chatParticipantTooltip": "Estas são todas as pessoas neste chat. Clique no avatar de qualquer usuário e \"iniciar conversa\" para enviar uma DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9711,5 +9706,13 @@
     "conversationFromDayOne": "Conversação desde o primeiro dia",
     "builtForConnection": "Feito para conexão",
     "aiWhenYouNeedIt": "IA quando você precisar",
-    "practiceTailoredForYou": "Prática personalizada para você"
+    "practiceTailoredForYou": "Prática personalizada para você",
+    "deletedVocab": "Palavras excluídas",
+    "blockLemmaConfirmation": "Esta palavra será removida do seu vocabulário e deixará de render XP. Você pode recuperá-la em Palavras excluídas.",
+    "deletedVocabListBody": "Estas palavras estão ocultas do seu vocabulário e não rendem XP. Restaure uma para trazê-la de volta.",
+    "deletedVocabListBodyEmpty": "Você não excluiu nenhuma palavra. As palavras que você excluir do seu vocabulário aparecerão aqui para que você possa recuperá-las.",
+    "deletedVocabListLabel": "Palavras excluídas",
+    "restore": "Restaurar",
+    "deletedWordLabel": "{lemma}, excluída",
+    "restoredWords": "{count, plural, =1{1 palavra restaurada} other{{count} palavras restauradas}}"
 }

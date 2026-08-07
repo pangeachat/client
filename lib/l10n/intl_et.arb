@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-05 11:42:11.804535",
+    "@@last_modified": "2026-08-07 13:12:40.340440",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -7788,16 +7788,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "See sõnavara sõna eemaldatakse teie analüüsist püsivalt",
     "woman": "Naine",
     "man": "Mees",
     "otherGender": "Muu",
     "unselectedGender": "Valige soo valik",
     "chatParticipantTooltip": "See on kõik, kes on selles vestluses. Klõpsake mis tahes kasutaja avatarile ja valige \"alusta vestlust\", et saata DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9708,5 +9703,13 @@
     "conversationFromDayOne": "Vestlus esimesest päevast alates",
     "builtForConnection": "Loodud ühenduse loomiseks",
     "aiWhenYouNeedIt": "AI siis, kui seda vajad",
-    "practiceTailoredForYou": "Sulle kohandatud praktika"
+    "practiceTailoredForYou": "Sulle kohandatud praktika",
+    "deletedVocab": "Kustutatud sõnad",
+    "blockLemmaConfirmation": "See sõna eemaldatakse sinu sõnavarast ja see ei teeni enam XP-d. Sa saad selle tagasi tuua kustutatud sõnade alt.",
+    "deletedVocabListBody": "Need sõnad on sinu sõnavarast peidetud ja ei teeni XP-d. Taasta need, et need tagasi tuua.",
+    "deletedVocabListBodyEmpty": "Sa pole ühtegi sõna kustutanud. Sõnad, mille sa oma sõnavarast kustutad, ilmuvad siia, et sa saaksid need tagasi tuua.",
+    "deletedVocabListLabel": "Kustutatud sõnad",
+    "restore": "Taasta",
+    "deletedWordLabel": "{lemma}, kustutatud",
+    "restoredWords": "{count, plural, =1{Taastatud 1 sõna} other{Taastatud {count} sõna}}"
 }

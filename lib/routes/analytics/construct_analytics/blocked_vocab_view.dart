@@ -144,15 +144,84 @@ class _BlockedVocabViewState extends State<BlockedVocabView>
             : Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (_selectMode) _selectionRow(context),
-                  Expanded(child: _grid(context, blocked)),
+                  if (_selectMode)
+                    _SelectionRow(
+                      count: _selected.length,
+                      onClear: () => setState(_selected.clear),
+                      onRestore: () => _restore(List.of(_selected)),
+                    ),
+                  Expanded(
+                    child: Semantics(
+                      label: L10n.of(context).deletedVocabListLabel,
+                      container: true,
+                      child: CustomScrollView(
+                        key: const PageStorageKey(
+                          "blocked-vocab-view-page-key",
+                        ),
+                        slivers: [
+                          SliverToBoxAdapter(
+                            child: InstructionsInlineTooltip(
+                              instructionsEnum: blocked.isEmpty
+                                  ? InstructionsEnum.deletedVocabListEmpty
+                                  : InstructionsEnum.deletedVocabList,
+                            ),
+                          ),
+                          if (blocked.isNotEmpty)
+                            SliverGrid(
+                              gridDelegate:
+                                  const SliverGridDelegateWithMaxCrossAxisExtent(
+                                    maxCrossAxisExtent: 100.0,
+                                    mainAxisExtent: 100.0,
+                                    crossAxisSpacing: 8.0,
+                                    mainAxisSpacing: 8.0,
+                                  ),
+                              delegate: SliverChildBuilderDelegate((
+                                context,
+                                index,
+                              ) {
+                                final item = blocked[index];
+                                return VocabAnalyticsListTile(
+                                  constructId: item.id,
+                                  level: item.lemmaCategory,
+                                  textColor:
+                                      Theme.of(context).brightness ==
+                                          Brightness.light
+                                      ? item.lemmaCategory.darkColor(context)
+                                      : item.lemmaCategory.color(context),
+                                  selected: _selected.contains(item.id),
+                                  blocked: true,
+                                  onTap: _selectMode
+                                      ? () => _toggleSelected(item.id)
+                                      : () => _openDetails(item.id),
+                                  onLongPress: () => _toggleSelected(item.id),
+                                );
+                              }, childCount: blocked.length),
+                            ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
       ),
     );
   }
+}
 
-  Widget _selectionRow(BuildContext context) => Row(
+/// The select-mode header: deselect-all, the running count, and bulk restore.
+class _SelectionRow extends StatelessWidget {
+  final int count;
+  final VoidCallback onClear;
+  final VoidCallback onRestore;
+
+  const _SelectionRow({
+    required this.count,
+    required this.onClear,
+    required this.onRestore,
+  });
+
+  @override
+  Widget build(BuildContext context) => Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Row(
@@ -160,59 +229,17 @@ class _BlockedVocabViewState extends State<BlockedVocabView>
         children: [
           IconButton(
             tooltip: L10n.of(context).deselectAll,
-            onPressed: () => setState(_selected.clear),
+            onPressed: onClear,
             icon: const Icon(Icons.close),
           ),
-          Text(
-            "${_selected.length}",
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
+          Text("$count", style: Theme.of(context).textTheme.bodyLarge),
         ],
       ),
       IconButton(
         tooltip: L10n.of(context).restore,
-        onPressed: () => _restore(List.of(_selected)),
+        onPressed: onRestore,
         icon: const Icon(Icons.restore_from_trash_outlined),
       ),
     ],
   );
-
-  Widget _grid(BuildContext context, List<ConstructUses> blocked) =>
-      CustomScrollView(
-        key: const PageStorageKey("blocked-vocab-view-page-key"),
-        slivers: [
-          SliverToBoxAdapter(
-            child: InstructionsInlineTooltip(
-              instructionsEnum: blocked.isEmpty
-                  ? InstructionsEnum.deletedVocabListEmpty
-                  : InstructionsEnum.deletedVocabList,
-            ),
-          ),
-          if (blocked.isNotEmpty)
-            SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 100.0,
-                mainAxisExtent: 100.0,
-                crossAxisSpacing: 8.0,
-                mainAxisSpacing: 8.0,
-              ),
-              delegate: SliverChildBuilderDelegate((context, index) {
-                final item = blocked[index];
-                return VocabAnalyticsListTile(
-                  constructId: item.id,
-                  level: item.lemmaCategory,
-                  textColor: Theme.of(context).brightness == Brightness.light
-                      ? item.lemmaCategory.darkColor(context)
-                      : item.lemmaCategory.color(context),
-                  selected: _selected.contains(item.id),
-                  blocked: true,
-                  onTap: _selectMode
-                      ? () => _toggleSelected(item.id)
-                      : () => _openDetails(item.id),
-                  onLongPress: () => _toggleSelected(item.id),
-                );
-              }, childCount: blocked.length),
-            ),
-        ],
-      );
 }

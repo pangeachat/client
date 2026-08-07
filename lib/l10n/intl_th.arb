@@ -3102,7 +3102,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-05 11:42:17.471075",
+    "@@last_modified": "2026-08-07 13:12:56.769828",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8229,16 +8229,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "คำศัพท์นี้จะถูกลบออกจากการวิเคราะห์ของคุณอย่างถาวร",
     "woman": "ผู้หญิง",
     "man": "ผู้ชาย",
     "otherGender": "อื่นๆ",
     "unselectedGender": "เลือกตัวเลือกเพศ",
     "chatParticipantTooltip": "นี่คือทุกคนในแชทนี้ คลิกที่อวาตาร์ของผู้ใช้ใด ๆ และ \"เริ่มการสนทนา\" เพื่อส่งข้อความส่วนตัว",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10343,5 +10338,13 @@
     "conversationFromDayOne": "บทสนทนาตั้งแต่วันแรก",
     "builtForConnection": "สร้างมาเพื่อการเชื่อมต่อ",
     "aiWhenYouNeedIt": "AI เมื่อคุณต้องการ",
-    "practiceTailoredForYou": "ฝึกฝนที่ปรับให้เหมาะกับคุณ"
+    "practiceTailoredForYou": "ฝึกฝนที่ปรับให้เหมาะกับคุณ",
+    "deletedVocab": "คำที่ถูกลบ",
+    "blockLemmaConfirmation": "คำนี้จะถูกลบออกจากคลังคำศัพท์ของคุณและจะไม่ได้รับ XP อีกต่อไป คุณสามารถนำกลับมาได้จากคำที่ถูกลบ",
+    "deletedVocabListBody": "คำเหล่านี้ถูกซ่อนจากคลังคำศัพท์ของคุณและไม่ได้รับ XP หากต้องการนำกลับมา ให้กู้คืนคำนั้น",
+    "deletedVocabListBodyEmpty": "คุณยังไม่ได้ลบคำใดๆ คำที่คุณลบออกจากคลังคำศัพท์ของคุณจะแสดงที่นี่เพื่อให้คุณสามารถนำกลับมาได้",
+    "deletedVocabListLabel": "คำที่ถูกลบ",
+    "restore": "กู้คืน",
+    "deletedWordLabel": "{lemma}, ถูกลบแล้ว",
+    "restoredWords": "{count, plural, =1{กู้คืน 1 คำแล้ว} other{กู้คืน {count} คำแล้ว}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-05 11:42:11.010949",
+    "@@last_modified": "2026-08-07 13:12:39.670022",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -8105,16 +8105,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Toto slovo ve slovní zásobě bude trvale odstraněno z vašich analýz",
     "woman": "Žena",
     "man": "Muž",
     "otherGender": "Jiné",
     "unselectedGender": "Vyberte možnost pohlaví",
     "chatParticipantTooltip": "Toto jsou všichni v tomto chatu. Klikněte na avatar jakéhokoli uživatele a “začněte konverzaci” pro odeslání DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10205,5 +10200,13 @@
     "conversationFromDayOne": "Konverzace od prvního dne",
     "builtForConnection": "Stvořeno pro spojení",
     "aiWhenYouNeedIt": "AI, když ji potřebujete",
-    "practiceTailoredForYou": "Praxe šitá na míru"
+    "practiceTailoredForYou": "Praxe šitá na míru",
+    "deletedVocab": "Smazaná slova",
+    "blockLemmaConfirmation": "Toto slovo bude odstraněno z vašeho slovníku a přestane vám vydělávat XP. Můžete ho vrátit ze Smazaných slov.",
+    "deletedVocabListBody": "Tato slova jsou skryta z vašeho slovníku a nevydělávají XP. Obnovte je, abyste je vrátili zpět.",
+    "deletedVocabListBodyEmpty": "Nenaměli jste žádná slova. Slova, která smažete ze svého slovníku, se zde zobrazí, abyste je mohli vrátit zpět.",
+    "deletedVocabListLabel": "Smazaná slova",
+    "restore": "Obnovit",
+    "deletedWordLabel": "{lemma}, smazáno",
+    "restoredWords": "{count, plural, =1{Obnoveno 1 slovo} few{Obnovena {count} slova} many{Obnoveno {count} slova} other{Obnoveno {count} slov}}"
 }

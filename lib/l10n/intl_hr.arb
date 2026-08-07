@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-05 11:42:12.527128",
+    "@@last_modified": "2026-08-07 13:12:43.011817",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -8033,16 +8033,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ova riječ će biti trajno uklonjena iz vaših analitika",
     "woman": "Žena",
     "man": "Muškarac",
     "otherGender": "Ostalo",
     "unselectedGender": "Odaberite opciju spola",
     "chatParticipantTooltip": "Ovo su svi u ovom chatu. Kliknite na avatar bilo kojeg korisnika i \"započnite razgovor\" da pošaljete DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10147,5 +10142,13 @@
     "conversationFromDayOne": "Razgovor od prvog dana",
     "builtForConnection": "Stvoreno za povezivanje",
     "aiWhenYouNeedIt": "AI kad ti zatreba",
-    "practiceTailoredForYou": "Vježba prilagođena tebi"
+    "practiceTailoredForYou": "Vježba prilagođena tebi",
+    "deletedVocab": "Izbrisane riječi",
+    "blockLemmaConfirmation": "Ova će riječ biti uklonjena iz vašeg rječnika i prestat će donositi bodove iskustva. Možete je vratiti iz Izbrisanih riječi.",
+    "deletedVocabListBody": "Ove su riječi skrivene iz vašeg rječnika i ne donose bodove iskustva. Vratite ih da biste ih ponovno aktivirali.",
+    "deletedVocabListBodyEmpty": "Niste izbrisali nijednu riječ. Riječi koje izbrišete iz svog rječnika pojavit će se ovdje kako biste ih mogli vratiti.",
+    "deletedVocabListLabel": "Izbrisane riječi",
+    "restore": "Vrati",
+    "deletedWordLabel": "{lemma}, izbrisano",
+    "restoredWords": "{count, plural, =1{Vraćena 1 riječ} other{Vraćeno {count} riječi}}"
 }

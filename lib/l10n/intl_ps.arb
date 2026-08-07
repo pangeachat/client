@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-05 11:42:16.109256",
+    "@@last_modified": "2026-08-07 13:12:53.037071",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "خلاصې ناستې ({num})",
     "inProgressActivitiesTitle": "اوس روان دي ({num})",
     "pickDifferentActivity": "یو بل فعالیت غوره کړئ",
-    "blockLemmaConfirmation": "دا د لغتونو کلمه به ستاسو له تحلیل څخه د تل لپاره لرې شي",
     "woman": "ښځه",
     "man": "نارینه",
     "otherGender": "نور",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "له لومړۍ ورځې څخه خبرې اترې",
     "builtForConnection": "د اړیکو لپاره جوړ شوی",
     "aiWhenYouNeedIt": "مصنوعي استخبارات کله چې ورته اړتیا لرئ",
-    "practiceTailoredForYou": "ستاسو لپاره چمتو شوی تمرین"
+    "practiceTailoredForYou": "ستاسو لپاره چمتو شوی تمرین",
+    "deletedVocab": "حذف شوې کلمې",
+    "blockLemmaConfirmation": "دا کلمه به ستاسو له لغتونو څخه لرې شي او د XP ګټل به بند کړي. تاسو کولی شئ دا د حذف شویو کلمو څخه بیرته راوړئ.",
+    "deletedVocabListBody": "دا کلمې ستاسو له لغتونو څخه پټې دي او XP نه ګټي. د بیرته راوړلو لپاره یوه بیرته راوړئ.",
+    "deletedVocabListBodyEmpty": "تاسو هیڅ کلمه نه ده حذف کړې. هغه کلمې چې تاسو یې له خپل لغتونو څخه حذف کوئ دلته به ښکاره شي ترڅو تاسو یې بیرته راوړئ.",
+    "deletedVocabListLabel": "حذف شوې کلمې",
+    "restore": "بیرته راوړل",
+    "deletedWordLabel": "{lemma}, حذف شوی",
+    "restoredWords": "{count, plural, =1{۱ کلمه بیرته راوړل شوه} other{{count} کلمې بیرته راوړل شوې}}"
 }

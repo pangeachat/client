@@ -4252,7 +4252,7 @@
         }
     },
     "pickDifferentActivity": "Pick a different activity",
-    "blockLemmaConfirmation": "This vocab word will be permanently removed from your analytics",
+    "blockLemmaConfirmation": "This word will be removed from your vocabulary and stop earning XP. You can bring it back from Deleted words.",
     "woman": "Woman",
     "man": "Man",
     "otherGender": "Other",

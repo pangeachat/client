@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-05 11:42:12.920881",
+    "@@last_modified": "2026-08-07 13:12:42.990407",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Qhib kev sib tham ({num})",
     "inProgressActivitiesTitle": "Tab tom tshwm sim ({num})",
     "pickDifferentActivity": "Xaiv lwm yam kev ua si",
-    "blockLemmaConfirmation": "Lo lus no yuav raug tshem tawm mus tas li ntawm koj cov ntaub ntawv tshuaj ntsuam",
     "woman": "Poj niam",
     "man": "Txiv neej",
     "otherGender": "Lwm tus",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Sib tham txij hnub ib",
     "builtForConnection": "Tsim los rau kev sib txuas",
     "aiWhenYouNeedIt": "AI thaum koj xav tau",
-    "practiceTailoredForYou": "Kev xyaum tsim nyog rau koj"
+    "practiceTailoredForYou": "Kev xyaum tsim nyog rau koj",
+    "deletedVocab": "Cov lus raug tshem tawm",
+    "blockLemmaConfirmation": "Lo lus no yuav raug tshem tawm ntawm koj cov lus kawm thiab yuav tsis tau XP ntxiv lawm. Koj tuaj yeem coj rov qab los ntawm Cov lus raug tshem tawm.",
+    "deletedVocabListBody": "Cov lus no raug zais ntawm koj cov lus kawm thiab tsis tau XP. Rov qab los kom nws rov qab.",
+    "deletedVocabListBodyEmpty": "Koj tsis tau tshem tawm ib lo lus twg. Cov lus koj tshem tawm ntawm koj cov lus kawm yuav tshwm sim ntawm no kom koj tuaj yeem coj rov qab los.",
+    "deletedVocabListLabel": "Cov lus raug tshem tawm",
+    "restore": "Rov qab",
+    "deletedWordLabel": "{lemma}, raug tshem tawm",
+    "restoredWords": "{count, plural, =1{Rov qab tau 1 lo lus} other{Rov qab tau {count} lo lus}}"
 }

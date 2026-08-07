@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-05 11:42:15.086737",
+    "@@last_modified": "2026-08-07 13:12:50.481257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "सत्र सुरू करा ({num})",
     "inProgressActivitiesTitle": "आता सुरू आहे ({num})",
     "pickDifferentActivity": "वेगळा क्रियाकलाप निवडा",
-    "blockLemmaConfirmation": "हा शब्द तुमच्या विश्लेषणातून कायमचा काढून टाकला जाईल",
     "woman": "स्त्री",
     "man": "पुरुष",
     "otherGender": "इतर",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "पहिल्या दिवसापासून संभाषण",
     "builtForConnection": "कनेक्शनसाठी बनवले आहे",
     "aiWhenYouNeedIt": "जेव्हा तुम्हाला गरज असेल तेव्हा AI",
-    "practiceTailoredForYou": "तुमच्यासाठी तयार केलेला सराव"
+    "practiceTailoredForYou": "तुमच्यासाठी तयार केलेला सराव",
+    "deletedVocab": "हटवलेले शब्द",
+    "blockLemmaConfirmation": "हा शब्द तुमच्या शब्दसंग्रहातून काढून टाकला जाईल आणि XP मिळवणे थांबवेल. तुम्ही तो हटवलेल्या शब्दांमधून परत आणू शकता.",
+    "deletedVocabListBody": "हे शब्द तुमच्या शब्दसंग्रहातून लपवले आहेत आणि XP मिळवत नाहीत. तो परत आणण्यासाठी एक पुनर्संचयित करा.",
+    "deletedVocabListBodyEmpty": "तुम्ही कोणतेही शब्द हटवले नाहीत. तुमच्या शब्दसंग्रहातून हटवलेले शब्द येथे दिसतील जेणेकरून तुम्ही ते परत आणू शकता.",
+    "deletedVocabListLabel": "हटवलेले शब्द",
+    "restore": "पुनर्संचयित करा",
+    "deletedWordLabel": "{lemma}, हटवले",
+    "restoredWords": "{count, plural, =1{1 शब्द पुनर्संचयित केला} other{{count} शब्द पुनर्संचयित केले}}"
 }

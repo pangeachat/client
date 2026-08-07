@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-05 11:42:13.935676",
+    "@@last_modified": "2026-08-07 13:12:47.359667",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Ɔpɔn seshɔn dɛn ({num})",
     "inProgressActivitiesTitle": "De apin naw ({num})",
     "pickDifferentActivity": "Pik ɔda aktiviti",
-    "blockLemmaConfirmation": "Dɛn go rɛdi dis vɔkyabulari wɛd frɔm yu analitiks pamanɛntli",
     "woman": "Wuman",
     "man": "Man",
     "otherGender": "Ɔda",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Tɔk frɔm di fɔs de",
     "builtForConnection": "Mek fɔ kɔnɛkshɔn",
     "aiWhenYouNeedIt": "AI we yu nid am",
-    "practiceTailoredForYou": "Pratkis we dɛn mek fɔ yu"
+    "practiceTailoredForYou": "Pratkis we dɛn mek fɔ yu",
+    "deletedVocab": "Di wod dɛn we yu dilit",
+    "blockLemmaConfirmation": "Dɛn go pul dis wod frɔm yu vokabulary ɛn i nɔ go de gi yu XP igen. Yu go ebul fɔ bring am bak frɔm di wod dɛn we yu dilit.",
+    "deletedVocabListBody": "Dɛn dɔn hayd dɛn wod dɛn ya frɔm yu vokabulary ɛn dɛn nɔ de gi yu XP. Bring wan bak fɔ mek i kɔmɔt de.",
+    "deletedVocabListBodyEmpty": "Yu nɔ dilit ɛni wod. Di wod dɛn we yu dilit frɔm yu vokabulary go sho insay ya so dat yu go ebul fɔ bring dɛn bak.",
+    "deletedVocabListLabel": "Di wod dɛn we yu dilit",
+    "restore": "Bring bak",
+    "deletedWordLabel": "{lemma}, dilit",
+    "restoredWords": "{count, plural, =1{Dɔn bring 1 wod bak} other{Dɔn bring {count} wod dɛn bak}}"
 }

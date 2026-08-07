@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:15.517402",
+    "@@last_modified": "2026-08-07 13:12:50.493330",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -7777,16 +7777,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Dit vocabulairewoord wordt permanent verwijderd uit uw analyses",
     "woman": "Vrouw",
     "man": "Man",
     "otherGender": "Anders",
     "unselectedGender": "Selecteer een geslachtsoptie",
     "chatParticipantTooltip": "Dit zijn alle deelnemers in deze chat. Klik op het avatar van een gebruiker en \"start gesprek\" om een DM te sturen.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9711,5 +9706,13 @@
     "conversationFromDayOne": "Gesprek vanaf dag één",
     "builtForConnection": "Gebouwd voor verbinding",
     "aiWhenYouNeedIt": "AI wanneer je het nodig hebt",
-    "practiceTailoredForYou": "Oefening op maat voor jou"
+    "practiceTailoredForYou": "Oefening op maat voor jou",
+    "deletedVocab": "Verwijderde woorden",
+    "blockLemmaConfirmation": "Dit woord wordt uit je woordenschat verwijderd en levert geen XP meer op. Je kunt het terughalen via Verwijderde woorden.",
+    "deletedVocabListBody": "Deze woorden zijn verborgen in je woordenschat en leveren geen XP op. Herstel een woord om het terug te halen.",
+    "deletedVocabListBodyEmpty": "Je hebt geen woorden verwijderd. Woorden die je uit je woordenschat verwijdert, verschijnen hier zodat je ze kunt terughalen.",
+    "deletedVocabListLabel": "Verwijderde woorden",
+    "restore": "Herstellen",
+    "deletedWordLabel": "{lemma}, verwijderd",
+    "restoredWords": "{count, plural, =1{1 woord hersteld} other{{count} woorden hersteld}}"
 }

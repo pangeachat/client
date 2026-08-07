@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:17.635414",
+    "@@last_modified": "2026-08-07 13:12:56.305924",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -8115,16 +8115,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Detta vokabulärord kommer att tas bort permanent från din analys",
     "woman": "Kvinna",
     "man": "Man",
     "otherGender": "Annat",
     "unselectedGender": "Välj ett könsalternativ",
     "chatParticipantTooltip": "Detta är alla i denna chatt. Klicka på vilken användares avatar som helst och \"starta konversation\" för att skicka ett DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10229,5 +10224,13 @@
     "conversationFromDayOne": "Konversation från första dagen",
     "builtForConnection": "Byggd för anslutning",
     "aiWhenYouNeedIt": "AI när du behöver det",
-    "practiceTailoredForYou": "Övning anpassad för dig"
+    "practiceTailoredForYou": "Övning anpassad för dig",
+    "deletedVocab": "Borttagna ord",
+    "blockLemmaConfirmation": "Det här ordet kommer att tas bort från ditt ordförråd och sluta ge XP. Du kan återställa det från Borttagna ord.",
+    "deletedVocabListBody": "Dessa ord är dolda från ditt ordförråd och ger inte XP. Återställ ett för att få tillbaka det.",
+    "deletedVocabListBodyEmpty": "Du har inte tagit bort några ord. Ord du tar bort från ditt ordförråd kommer att visas här så att du kan återställa dem.",
+    "deletedVocabListLabel": "Borttagna ord",
+    "restore": "Återställ",
+    "deletedWordLabel": "{lemma}, borttaget",
+    "restoredWords": "{count, plural, =1{Återställde 1 ord} other{Återställde {count} ord}}"
 }

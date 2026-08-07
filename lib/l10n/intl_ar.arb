@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-05 11:42:10.378529",
+    "@@last_modified": "2026-08-07 13:12:36.767851",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -7907,16 +7907,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "ستتم إزالة هذه الكلمة من تحليلاتك بشكل دائم",
     "woman": "امرأة",
     "man": "رجل",
     "otherGender": "آخر",
     "unselectedGender": "اختر خيار الجنس",
     "chatParticipantTooltip": "هؤلاء هم جميع الأشخاص في هذه الدردشة. انقر على صورة أي مستخدم و\"ابدأ محادثة\" لإرسال رسالة مباشرة.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10017,5 +10012,13 @@
     "conversationFromDayOne": "المحادثة من اليوم الأول",
     "builtForConnection": "مصمم للتواصل",
     "aiWhenYouNeedIt": "الذكاء الاصطناعي عندما تحتاجه",
-    "practiceTailoredForYou": "تدريب مصمم خصيصًا لك"
+    "practiceTailoredForYou": "تدريب مصمم خصيصًا لك",
+    "deletedVocab": "الكلمات المحذوفة",
+    "blockLemmaConfirmation": "ستتم إزالة هذه الكلمة من مفرداتك وستتوقف عن كسب نقاط الخبرة. يمكنك استعادتها من الكلمات المحذوفة.",
+    "deletedVocabListBody": "هذه الكلمات مخفية من مفرداتك ولا تكسب نقاط خبرة. استعد إحداها لإعادتها.",
+    "deletedVocabListBodyEmpty": "لم تحذف أي كلمات. ستظهر الكلمات التي تحذفها من مفرداتك هنا حتى تتمكن من استعادتها.",
+    "deletedVocabListLabel": "الكلمات المحذوفة",
+    "restore": "استعادة",
+    "deletedWordLabel": "{lemma}، محذوفة",
+    "restoredWords": "{count, plural, =1{تمت استعادة كلمة واحدة} other{تمت استعادة {count} كلمات}}"
 }

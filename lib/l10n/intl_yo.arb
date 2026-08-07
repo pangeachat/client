@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-05 11:42:18.410365",
+    "@@last_modified": "2026-08-07 13:13:00.568038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Awọn akoko ṣiṣi ({num})",
     "inProgressActivitiesTitle": "Nlọ lọwọlọwọ ({num})",
     "pickDifferentActivity": "Yan iṣẹ miiran",
-    "blockLemmaConfirmation": "Ọrọ yii yoo yọkuro patapata lati inu atupalẹ rẹ",
     "woman": "Obinrin",
     "man": "Ọkunrin",
     "otherGender": "Omiiran",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Ìfọ̀rọ̀wérọ̀ láti Ọjọ́ Kìíní",
     "builtForConnection": "Ti a kọ́ fún ìsopọ̀",
     "aiWhenYouNeedIt": "AI nígbàtí o bá nílò rẹ̀",
-    "practiceTailoredForYou": "Ìdánilẹ́kọ̀ọ́ tí a ṣe fún ọ"
+    "practiceTailoredForYou": "Ìdánilẹ́kọ̀ọ́ tí a ṣe fún ọ",
+    "deletedVocab": "Àwọn ọ̀rọ̀ tó ti parẹ́",
+    "blockLemmaConfirmation": "Ọ̀rọ̀ yìí yóò di yíyọ kúrò nínú àkójọ ọ̀rọ̀ rẹ, kò sì ní jẹ́ kó o tún rí XP mọ́. O lè mú un padà láti inú àwọn ọ̀rọ̀ tó ti parẹ́.",
+    "deletedVocabListBody": "Àwọn ọ̀rọ̀ wọ̀nyí ti fi pamọ́ kúrò nínú àkójọ ọ̀rọ̀ rẹ, wọn kò sì ní jẹ́ kó o rí XP. Dá ọ̀kan padà láti mú un padà wá.",
+    "deletedVocabListBodyEmpty": "O kò tíì pa ọ̀rọ̀ kankan rẹ́. Àwọn ọ̀rọ̀ tí o bá pa rẹ́ nínú àkójọ ọ̀rọ̀ rẹ yóò hàn níbí kí o lè mú wọn padà wá.",
+    "deletedVocabListLabel": "Àwọn ọ̀rọ̀ tó ti parẹ́",
+    "restore": "Mú padà",
+    "deletedWordLabel": "{lemma}, tí a ti parẹ́",
+    "restoredWords": "{count, plural, =1{A ti mú ọ̀rọ̀ 1 padà} other{A ti mú àwọn ọ̀rọ̀ {count} padà}}"
 }

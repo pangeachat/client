@@ -1270,7 +1270,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-05 11:42:18.229779",
+    "@@last_modified": "2026-08-07 13:12:59.873219",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -8555,16 +8555,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "這個詞彙將會從你的分析中永久移除",
     "woman": "女性",
     "man": "男性",
     "otherGender": "其他",
     "unselectedGender": "選擇一個性別選項",
     "chatParticipantTooltip": "這是這個聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」來發送私信。",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10674,5 +10669,13 @@
     "conversationFromDayOne": "從第一日開始對話",
     "builtForConnection": "為連結而生",
     "aiWhenYouNeedIt": "隨時為你提供AI",
-    "practiceTailoredForYou": "為你度身訂造的練習"
+    "practiceTailoredForYou": "為你度身訂造的練習",
+    "deletedVocab": "已刪除嘅詞彙",
+    "blockLemmaConfirmation": "呢個詞彙會喺你嘅詞彙表度移除，亦都唔會再賺到經驗值。你可以喺「已刪除嘅詞彙」度將佢還原。",
+    "deletedVocabListBody": "呢啲詞彙會喺你嘅詞彙表度隱藏，亦都唔會賺到經驗值。還原一個就可以將佢帶返嚟。",
+    "deletedVocabListBodyEmpty": "你仲未刪除任何詞彙。你喺詞彙表刪除嘅詞彙會喺呢度顯示，咁你就可以將佢哋帶返嚟。",
+    "deletedVocabListLabel": "已刪除嘅詞彙",
+    "restore": "還原",
+    "deletedWordLabel": "{lemma}，已刪除",
+    "restoredWords": "{count, plural, =1{已還原 1 個詞彙} other{已還原 {count} 個詞彙}}"
 }

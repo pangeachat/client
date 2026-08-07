@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-05 11:42:13.447371",
+    "@@last_modified": "2026-08-07 13:12:45.147979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Sesi sing durung diwiwiti ({num})",
     "inProgressActivitiesTitle": "Lagi lumaku ({num})",
     "pickDifferentActivity": "Pilih aktivitas liyane",
-    "blockLemmaConfirmation": "Tembung kosa kata iki bakal dibusak permanen saka analitik sampeyan",
     "woman": "Wanita",
     "man": "Pria",
     "otherGender": "Liyane",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Pacelathon wiwit dina kapisan",
     "builtForConnection": "Digawe kanggo sesambungan",
     "aiWhenYouNeedIt": "AI nalika sampeyan butuh",
-    "practiceTailoredForYou": "Latihan sing cocog kanggo sampeyan"
+    "practiceTailoredForYou": "Latihan sing cocog kanggo sampeyan",
+    "deletedVocab": "Tembung sing dibusak",
+    "blockLemmaConfirmation": "Tembung iki bakal dibusak saka kosakata sampeyan lan ora bakal entuk XP maneh. Sampeyan bisa mbalekake saka Tembung sing dibusak.",
+    "deletedVocabListBody": "Tembung-tembung iki didhelikake saka kosakata sampeyan lan ora entuk XP. Pulihake siji kanggo mbalekake.",
+    "deletedVocabListBodyEmpty": "Sampeyan durung mbusak tembung apa-apa. Tembung sing sampeyan busak saka kosakata bakal katon ing kene supaya sampeyan bisa mbalekake.",
+    "deletedVocabListLabel": "Tembung sing dibusak",
+    "restore": "Pulihake",
+    "deletedWordLabel": "{lemma}, dibusak",
+    "restoredWords": "{count, plural, =1{1 tembung dipulihake} other{{count} tembung dipulihake}}"
 }

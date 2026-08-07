@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-05 11:42:12.290679",
+    "@@last_modified": "2026-08-07 13:12:42.509366",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1664,7 +1664,6 @@
     "notStartedActivitiesTitle": "Zaurukan da ba a fara ba ({num})",
     "inProgressActivitiesTitle": "Suna gudana yanzu ({num})",
     "pickDifferentActivity": "Zaɓi wani aiki daban",
-    "blockLemmaConfirmation": "Za a cire wannan kalmar har abada daga nazarin ka",
     "woman": "Mace",
     "man": "Namiji",
     "otherGender": "Wani",
@@ -2093,5 +2092,13 @@
     "conversationFromDayOne": "Tattaunawa daga Rana ta Farko",
     "builtForConnection": "An gina shi don haɗi",
     "aiWhenYouNeedIt": "AI lokacin da kake buƙata",
-    "practiceTailoredForYou": "Aiwatar da aka keɓance maka"
+    "practiceTailoredForYou": "Aiwatar da aka keɓance maka",
+    "deletedVocab": "Kalmomin da aka goge",
+    "blockLemmaConfirmation": "Za a cire wannan kalmar daga ƙamus ɗinka kuma ba za ta ƙara samun XP ba. Zaka iya dawo da ita daga Kalmomin da aka goge.",
+    "deletedVocabListBody": "An ɓoye waɗannan kalmomin daga ƙamus ɗinka kuma ba sa samun XP. Maido da ɗaya don dawo da ita.",
+    "deletedVocabListBodyEmpty": "Ba ka goge kowace kalma ba. Kalmomin da ka goge daga ƙamus ɗinka za su bayyana a nan don ka dawo da su.",
+    "deletedVocabListLabel": "Kalmomin da aka goge",
+    "restore": "Maido",
+    "deletedWordLabel": "{lemma}, an goge",
+    "restoredWords": "{count, plural, =1{An maido da kalma 1} other{An maido da kalmomi {count}}}"
 }
