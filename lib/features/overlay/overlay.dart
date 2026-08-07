@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -22,6 +23,31 @@ class OverlayUtil {
       if (displayDetails.closePrevOverlay) {
         MatrixState.pAnyState.closeOverlay();
       }
+
+      // Stop taps on the card from reaching whatever sits behind the overlay
+      // (#8181). Two separate hit-test paths have to be closed:
+      //
+      // * `hitTestBehavior: opaque` covers web with the semantics tree on
+      //   (staging forces it via ENABLE_SEMANTICS). There, a click lands on a
+      //   `flt-semantics` DOM element, not on Flutter's hit test — the card is
+      //   inert decoration and publishes no tappable node, so the click hits
+      //   the *message's* tappable node underneath and opens its toolbar. This
+      //   makes the card's own node accept pointer events; the engine z-orders
+      //   it above the message by paint order. Same tool `ModalRoute` uses.
+      // * The opaque `Listener` covers the framework hit test (mobile, and web
+      //   without semantics) for cards that aren't opaque on their own, e.g.
+      //   `addBorder: false`. It joins no gesture arena, so the card's own
+      //   buttons keep working.
+      //
+      // Both sit inside the positioning widgets below so the absorbing area
+      // follows the card, not the overlay's origin.
+      final Widget positionedChild = displayDetails.blockPointerThrough
+          ? Semantics(
+              container: true,
+              hitTestBehavior: ui.SemanticsHitTestBehavior.opaque,
+              child: Listener(behavior: HitTestBehavior.opaque, child: child),
+            )
+          : child;
 
       final OverlayEntry entry = OverlayEntry(
         builder: (_) => Stack(
@@ -48,12 +74,14 @@ class OverlayUtil {
                   link: MatrixState.pAnyState.layerLinkAndKey(targetId).link,
                   showWhenUnlinked: false,
                   offset: offset ?? Offset.zero,
-                  child: child,
+                  child: positionedChild,
                 ),
               CenteredOverlayDisplayDetails() => CenteredOverlayWidget(
-                child: child,
+                child: positionedChild,
               ),
-              TopOverlayDisplayDetails() => TopOverlayWidget(child: child),
+              TopOverlayDisplayDetails() => TopOverlayWidget(
+                child: positionedChild,
+              ),
             },
           ],
         ),
