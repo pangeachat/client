@@ -19,13 +19,7 @@ class RecordingInputRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     const maxDecibalWidth = 36.0;
-    // #Pangea
-    // The empty-input voice message button sits centered in a 48x48 box
-    // (pangea_chat_input_row.dart), which keeps a margin between the button
-    // and the composer edges. The cancel and send buttons here get the same
-    // box so the padding stays consistent when recording starts (#8208).
     const buttonBoxSize = 48.0;
-    // Pangea#
     final time =
         '${state.duration.inMinutes.toString().padLeft(2, '0')}:${(state.duration.inSeconds % 60).toString().padLeft(2, '0')}';
     final controlsRow = Row(
