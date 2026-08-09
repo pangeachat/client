@@ -5,47 +5,62 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_misc/level_display_name.dart';
-import 'package:fluffychat/pangea/chat/extensions/create_room_extension.dart';
-import 'package:fluffychat/pangea/user/about_me_display.dart';
+import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/utils/date_time_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
+import 'package:fluffychat/widgets/users/about_me_display.dart';
+import 'package:fluffychat/widgets/users/country_display.dart';
+import 'package:fluffychat/widgets/users/level_display_name.dart';
 import '../future_loading_dialog.dart';
 import '../hover_builder.dart';
 import '../matrix.dart';
 import '../mxc_image_viewer.dart';
 
 class UserDialog extends StatelessWidget {
+  final Profile profile;
+  final bool noProfileWarning;
+  final Uri uri;
+
+  const UserDialog(
+    this.profile, {
+    required this.uri,
+    this.noProfileWarning = false,
+    super.key,
+  });
+
   static Future<void> show({
     required BuildContext context,
     required Profile profile,
+    required Uri uri,
     bool noProfileWarning = false,
   }) => showAdaptiveDialog(
     context: context,
     barrierDismissible: true,
     builder: (context) =>
-        UserDialog(profile, noProfileWarning: noProfileWarning),
+        UserDialog(profile, noProfileWarning: noProfileWarning, uri: uri),
   );
-
-  final Profile profile;
-  final bool noProfileWarning;
-
-  const UserDialog(this.profile, {this.noProfileWarning = false, super.key});
 
   @override
   Widget build(BuildContext context) {
     final client = Matrix.of(context).client;
     final dmRoomId = client.getDirectChatFromUserId(profile.userId);
     final displayname =
+        localizedPangeaUserName(profile.userId, L10n.of(context)) ??
         profile.displayName ??
         profile.userId.localpart ??
         L10n.of(context).user;
+
     var copied = false;
     final theme = Theme.of(context);
     final avatar = profile.avatarUrl;
+
     return AlertDialog.adaptive(
       title: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256),
@@ -58,9 +73,6 @@ class UserDialog extends StatelessWidget {
           client: Matrix.of(context).client,
           builder: (context, presence) {
             if (presence == null) return const SizedBox.shrink();
-            // #Pangea
-            // final statusMsg = presence.statusMsg;
-            // Pangea#
             final lastActiveTimestamp = presence.lastActiveTimestamp;
             final presenceText = presence.currentlyActive == true
                 ? L10n.of(context).currentlyActive
@@ -69,28 +81,13 @@ class UserDialog extends StatelessWidget {
                     lastActiveTimestamp.localizedTimeShort(context),
                   )
                 : null;
+
             return SingleChildScrollView(
               child: Column(
                 spacing: 8,
                 mainAxisSize: .min,
                 crossAxisAlignment: .stretch,
                 children: [
-                  Center(
-                    child: Avatar(
-                      mxContent: avatar,
-                      name: displayname,
-                      size: Avatar.defaultSize * 2,
-                      onTap: avatar != null
-                          ? () => showDialog(
-                              context: context,
-                              builder: (_) => MxcImageViewer(avatar),
-                            )
-                          : null,
-                      // #Pangea
-                      userId: profile.userId,
-                      // Pangea#
-                    ),
-                  ),
                   HoverBuilder(
                     builder: (context, hovered) => StatefulBuilder(
                       builder: (context, setState) => MouseRegion(
@@ -140,39 +137,36 @@ class UserDialog extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Center(
+                    child: Avatar(
+                      mxContent: avatar,
+                      name: displayname,
+                      size: Avatar.defaultSize * 2,
+                      onTap: avatar != null
+                          ? () => showDialog(
+                              context: context,
+                              builder: (_) => MxcImageViewer(avatar),
+                            )
+                          : null,
+                      userId: profile.userId,
+                    ),
+                  ),
                   if (presenceText != null)
                     Text(
                       presenceText,
                       style: const TextStyle(fontSize: 10),
                       textAlign: TextAlign.center,
                     ),
-                  // #Pangea
-                  // if (statusMsg != null)
-                  //   SelectableLinkify(
-                  //     text: statusMsg,
-                  //     textScaleFactor: MediaQuery.textScalerOf(
-                  //       context,
-                  //     ).scale(1),
-                  //     textAlign: TextAlign.center,
-                  //     options: const LinkifyOptions(humanize: false),
-                  //     linkStyle: TextStyle(
-                  //       color: theme.colorScheme.primary,
-                  //       decoration: TextDecoration.underline,
-                  //       decorationColor: theme.colorScheme.primary,
-                  //     ),
-                  //     onOpen: (url) =>
-                  //         UrlLauncher(context, url.url).launchUrl(),
-                  //   ),
                   Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Column(
                       children: [
                         LevelDisplayName(userId: profile.userId),
+                        CountryDisplay(userId: profile.userId),
                         AboutMeDisplay(userId: profile.userId),
                       ],
                     ),
                   ),
-                  // Pangea#
                 ],
               ),
             );
@@ -188,15 +182,12 @@ class UserDialog extends StatelessWidget {
               final router = GoRouter.of(context);
               final roomIdResult = await showFutureLoadingDialog(
                 context: context,
-                // #Pangea
-                // future: () => client.startDirectChat(profile.userId),
                 future: () => client.createPangeaDirectChat(profile.userId),
-                // Pangea#
               );
               final roomId = roomIdResult.result;
               if (roomId == null) return;
               if (context.mounted) Navigator.of(context).pop();
-              router.go('/rooms/$roomId');
+              router.go(WorkspaceNav.openRoomById(uri, roomId));
             },
             child: Text(
               dmRoomId == null
@@ -204,22 +195,26 @@ class UserDialog extends StatelessWidget {
                   : L10n.of(context).sendAMessage,
             ),
           ),
-          AdaptiveDialogAction(
-            bigButtons: true,
-            borderRadius: AdaptiveDialogAction.centerRadius,
-            onPressed: () {
-              final router = GoRouter.of(context);
-              Navigator.of(context).pop();
-              router.go(
-                '/rooms/settings/security/ignorelist',
-                extra: profile.userId,
-              );
-            },
-            child: Text(
-              L10n.of(context).ignoreUser,
-              style: TextStyle(color: theme.colorScheme.error),
+          if (profile.userId != BotName.byEnvironment &&
+              profile.userId != Environment.supportUserId)
+            AdaptiveDialogAction(
+              bigButtons: true,
+              borderRadius: AdaptiveDialogAction.centerRadius,
+              onPressed: () {
+                final router = GoRouter.of(context);
+                Navigator.of(context).pop();
+                router.go(
+                  WorkspaceNav.openSettings(
+                    uri,
+                    page: 'security/ignorelist/${profile.userId}',
+                  ),
+                );
+              },
+              child: Text(
+                L10n.of(context).block,
+                style: TextStyle(color: theme.colorScheme.error),
+              ),
             ),
-          ),
         ],
         AdaptiveDialogAction(
           bigButtons: true,

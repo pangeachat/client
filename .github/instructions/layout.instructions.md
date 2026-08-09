@@ -1,8 +1,6 @@
----
-applyTo: "lib/config/themes.dart,lib/widgets/layouts/**,lib/pangea/spaces/space_navigation_column.dart,lib/widgets/navigation_rail.dart,lib/config/routes.dart"
----
-
 # Client Layout System
+
+> Deprecated: These designs are only preserved to inform any lingering migrations from pre-world, legacy navigation code and no longer represent design intent. For overall app layout, please refer to routing.instructions.md.
 
 ## Overview
 
@@ -14,13 +12,14 @@ The app uses a responsive two-column layout inherited from FluffyChat. On wide s
 
 All breakpoint logic lives in [`FluffyThemes`](../../lib/config/themes.dart):
 
-| Mode | Condition | Result |
-|------|-----------|--------|
-| **Column mode** (two-column) | `width > columnWidth * 2 + navRailWidth` = **~833px** | Nav rail + left column + right column all visible |
-| **Single-column** (mobile) | `width ≤ 833px` | One screen at a time; nav rail may or may not show depending on route |
-| **Three-column** | `width > columnWidth * 3.5` = **~1330px** | Used sparingly (chat search panel, toolbar positioning) |
+| Mode                         | Condition                                             | Result                                                                |
+| ---------------------------- | ----------------------------------------------------- | --------------------------------------------------------------------- |
+| **Column mode** (two-column) | `width > columnWidth * 2 + navRailWidth` = **~833px** | Nav rail + left column + right column all visible                     |
+| **Single-column** (mobile)   | `width ≤ 833px`                                       | One screen at a time; nav rail may or may not show depending on route |
+| **Three-column**             | `width > columnWidth * 3.5` = **~1330px**             | Used sparingly (chat search panel, toolbar positioning)               |
 
 Constants:
+
 - `columnWidth` = **380px** — width of the left column (chat list, analytics, settings)
 - `navRailWidth` = **72px** (Pangea override; upstream FluffyChat uses 80px)
 
@@ -72,6 +71,7 @@ The GoRouter `ShellRoute` builder wraps **all** authenticated routes in `TwoColu
 - **`sideView`** (the GoRouter child) fills the remaining space to the right
 
 The `columnWidth` calculation determines the left inset:
+
 - Column mode: `navRailWidth + 1 + columnWidth + 1` ≈ **454px**
 - Mobile with rail: `navRailWidth + 1` ≈ **73px**
 - Mobile without rail: **0px** (sideView fills the entire screen)
@@ -127,6 +127,7 @@ The left column content is determined by `_MainView` reading `GoRouterState.full
 ## Mobile-Specific Behavior
 
 On mobile (single-column):
+
 - The nav rail shows a **smaller** icon size (64px width vs 72px)
 - The nav rail **hides** when inside a room or during certain flows (determined by `TwoColumnLayout`'s `showNavRail` logic)
 - Navigation between "list" and "detail" views uses GoRouter's standard push/pop, appearing as full-screen transitions
@@ -139,6 +140,7 @@ On mobile (single-column):
 ## Theme Adaptations
 
 `FluffyThemes.buildTheme()` adapts several theme properties based on `isColumnMode`:
+
 - **App bar**: taller (72px vs 56px), with shadow on desktop
 - **Snackbar**: width-constrained to `columnWidth * 1.5` (570px) on desktop, unconstrained on mobile
 - **Actions padding**: extra horizontal padding on desktop app bars

@@ -1,0 +1,43 @@
+{
+  "login": {
+    "globs": [
+      "lib/pangea/login/**",
+      "lib/pages/login/**",
+      "lib/config/routes.dart",
+      "lib/widgets/matrix.dart",
+      "lib/pages/settings/**",
+      "lib/pangea/login/**",
+      "lib/widgets/matrix.dart"
+    ],
+    "web": "e2e/scripts/login-logout.spec.ts",
+    "mobile": "integration_test/patrol/login_logout_test.dart"
+  },
+  "permissions": {
+    "globs": [
+      "lib/pangea/common/controllers/pangea_controller.dart",
+      "lib/main.dart",
+      "android/app/**",
+      "ios/Runner/**"
+    ],
+    "web": null,
+    "mobile": "integration_test/patrol/permissions_test.dart"
+  },
+  "a11y": {
+    "globs": [
+      "lib/routes/world/**",
+      "lib/features/navigation/**",
+      "lib/widgets/layouts/**",
+      "lib/routes/chat_list/**",
+      "lib/routes/home/**",
+      "lib/routes/settings/**",
+      "lib/routes/profile/**",
+      "e2e/scripts/a11y*.spec.ts"
+    ],
+    "web": [
+      "e2e/scripts/a11y.spec.ts",
+      "e2e/scripts/a11y-structure.spec.ts",
+      "e2e/scripts/a11y-contrast.spec.ts"
+    ],
+    "mobile": null
+  }
+}

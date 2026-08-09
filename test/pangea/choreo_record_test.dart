@@ -1,7 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:fluffychat/pangea/choreographer/choreo_edit_model.dart';
-import 'package:fluffychat/pangea/choreographer/choreo_record_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/choreo_edit_model.dart';
+import 'package:fluffychat/routes/chat/choreographer/choreo_record_model.dart';
 
 void main() async {
   group("Optimized choreo record tests", () {
@@ -78,6 +78,24 @@ void main() async {
             received.choreoSteps[1].edits != null &&
             received.stepText() == "Si",
       );
+    });
+
+    test("suggestionStrings is in-memory only, like pastedStrings", () {
+      // Send-time scoring reads the live record (#7665); neither exclusion
+      // set is serialized.
+      final record = ChoreoRecordModel(
+        originalText: "",
+        choreoSteps: [],
+        openMatches: [],
+      );
+
+      expect(record.suggestionStrings, isEmpty);
+      record.addSuggestionString("quiero un café");
+      record.addPastedString("hola");
+
+      final received = ChoreoRecordModel.fromJson(record.toJson());
+      expect(received.suggestionStrings, isEmpty);
+      expect(received.pastedStrings, isEmpty);
     });
 
     test("Test that fromJSON converts old version correctly", () {

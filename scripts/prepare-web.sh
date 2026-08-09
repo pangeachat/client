@@ -1,15 +1,44 @@
 #!/bin/sh -ve
 
-version=$(yq ".dependencies.flutter_vodozemac" < pubspec.yaml)
-version=$(expr "$version" : '\^*\(.*\)')
-git clone https://github.com/famedly/dart-vodozemac.git -b ${version} .vodozemac
-cd .vodozemac
-cargo install flutter_rust_bridge_codegen
-flutter_rust_bridge_codegen build-web --dart-root dart --rust-root $(readlink -f rust) --release
-cd ..
-rm -f ./assets/vodozemac/vodozemac_bindings_dart*
-mv .vodozemac/dart/web/pkg/vodozemac_bindings_dart* ./assets/vodozemac/
-rm -rf .vodozemac
+# Retry the web build: flutter_rust_bridge_codegen downloads binaryen from
+# GitHub releases, which intermittently flakes (transient network / rate
+# limits) and fails the build even though the asset is available. Retrying the
+# command re-attempts the download.
+retry() {
+  attempt=1
+  while true; do
+    "$@" && return 0
+    status=$?
+    if [ "$attempt" -ge 3 ]; then
+      echo "retry: '$*' failed after $attempt attempts (exit $status)" >&2
+      return "$status"
+    fi
+    echo "retry: '$*' failed (attempt $attempt/3, exit $status), retrying in 15s..." >&2
+    attempt=$((attempt + 1))
+    sleep 15
+  done
+}
+
+# Generating the bindings costs ~4 minutes (clone + cargo install + wasm build)
+# and its output depends only on the pinned flutter_vodozemac version and this
+# script, so CI caches ./assets/vodozemac and skips the build when it restores.
+# See ci.instructions.md. Delete the files (or the cache) to force a rebuild.
+if ls ./assets/vodozemac/vodozemac_bindings_dart* >/dev/null 2>&1; then
+  echo "prepare-web: vodozemac bindings already present, skipping build"
+else
+  version=$(yq ".dependencies.flutter_vodozemac" < pubspec.yaml)
+  version=$(expr "$version" : '\^*\(.*\)')
+  git clone https://github.com/famedly/dart-vodozemac.git -b ${version} .vodozemac
+  cd .vodozemac
+  # Pinned so the generated bindings are reproducible — the cache key assumes
+  # the same inputs yield the same output. Bump alongside flutter_vodozemac.
+  cargo install flutter_rust_bridge_codegen --version 2.12.0
+  retry flutter_rust_bridge_codegen build-web --dart-root dart --rust-root $(readlink -f rust) --release
+  cd ..
+  rm -f ./assets/vodozemac/vodozemac_bindings_dart*
+  mv .vodozemac/dart/web/pkg/vodozemac_bindings_dart* ./assets/vodozemac/
+  rm -rf .vodozemac
+fi
 
 flutter pub get
 dart compile js ./web/native_executor.dart -o ./web/native_executor.js -m

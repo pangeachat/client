@@ -1,0 +1,231 @@
+import 'dart:async';
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
+
+import 'package:fluffychat/features/subscription/enums/subscription_paywall_status_enum.dart';
+import 'package:fluffychat/features/subscription/models/subscription_state.dart';
+import 'package:fluffychat/features/subscription/repo_v2/free_trial_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/free_trial_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_management_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_repo.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_request.dart';
+import 'package:fluffychat/features/subscription/repo_v2/subscription_status_response.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_country_repo.dart';
+import 'package:fluffychat/features/subscription/utils/storefront_gate.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+class SubscriptionController {
+  final ValueNotifier<SubscriptionState> _state = ValueNotifier(
+    SubscriptionLoading(),
+  );
+  Completer<void>? _initCompleter;
+  bool _refreshingOnResume = false;
+  final ValueNotifier<bool> subscriptionNotifier = ValueNotifier<bool>(false);
+
+  ValueNotifier<SubscriptionState> get state => _state;
+
+  /// How the purchase surface may be presented on this device and storefront.
+  /// Starts at the conservative tier and upgrades once the storefront country
+  /// resolves during initialization, so a paywall is never shown before the
+  /// storefront confirms steering is allowed there.
+  PurchasePresentation _purchasePresentation = resolvePurchasePresentation(
+    isWeb: kIsWeb,
+    platform: defaultTargetPlatform,
+    storefrontCountry: null,
+  );
+
+  PurchasePresentation get purchasePresentation => _purchasePresentation;
+
+  bool get showSubscriptionGatedContent => switch (_state.value) {
+    SubscriptionInactive() => _inTrialWindow,
+    _ => true,
+  };
+
+  SubscriptionPaywallStatus get paywallStatus => switch (_state.value) {
+    SubscriptionActive() => SubscriptionPaywallStatus.subscribed,
+    _ =>
+      shouldShowPaywall
+          ? SubscriptionPaywallStatus.shouldShowPaywall
+          : SubscriptionPaywallStatus.dimissedPaywall,
+  };
+
+  bool get shouldShowPaywall => switch (_state.value) {
+    SubscriptionInactive() => !SubscriptionManagementRepo.getDismissedPaywall(),
+    _ => false,
+  };
+
+  bool get _inTrialWindow =>
+      MatrixState.pangeaController.userController.inTrialWindow();
+
+  SubscriptionStatusResponse? get subscriptionStatus {
+    return switch (_state.value) {
+      SubscriptionActive(response: final response) ||
+      SubscriptionInactive(response: final response) => response,
+      _ => null,
+    };
+  }
+
+  void dispose() {
+    _state.dispose();
+    subscriptionNotifier.dispose();
+  }
+
+  void _onSubscribe() {
+    subscriptionNotifier.value = true;
+    GoogleAnalytics.updateUserSubscriptionStatus(true);
+  }
+
+  Future<void> initialize(String? userID) async {
+    if (userID == null) return;
+
+    final init = _initCompleter;
+    if (init?.isCompleted == true) return;
+    if (init != null && !init.isCompleted) {
+      await init.future;
+      return;
+    }
+
+    _initCompleter = Completer();
+    await _initialize(userID);
+
+    if (_initCompleter != null && !_initCompleter!.isCompleted) {
+      _initCompleter!.complete();
+    }
+  }
+
+  Future<void> reinitialize(String? userID) async {
+    if (_initCompleter?.isCompleted == false) {
+      _initCompleter?.complete();
+    }
+
+    _initCompleter = null;
+    _state.value = SubscriptionLoading();
+    await initialize(userID);
+  }
+
+  Future<void> _initialize(String userID) async {
+    try {
+      await MatrixState.pangeaController.userController.initCompleter.future;
+      await _resolvePurchasePresentation();
+      await _updateCurrentSubscription(userID);
+
+      final state = _state.value;
+      if (state is SubscriptionInactive &&
+          state.response.isTrialOfferable &&
+          _inTrialWindow) {
+        await _activateNewUserTrial(userID);
+      }
+
+      await _completeBeganPayment();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+      _state.value = SubscriptionError(error: e);
+    }
+  }
+
+  Future<void> _completeBeganPayment() async {
+    final isSubscribed = _state.value is SubscriptionActive;
+    final beganPayment = SubscriptionManagementRepo.getBeganPayment();
+    if (beganPayment && isSubscribed) {
+      final planId = SubscriptionManagementRepo.getBeganPaymentPlanId();
+      await SubscriptionManagementRepo.removeBeganPayment();
+      GoogleAnalytics.purchaseSubscription(planId);
+      _onSubscribe();
+    }
+  }
+
+  /// App-resume refresh: when a checkout or billing-portal round trip may
+  /// have changed the subscription, poll the status endpoint until the
+  /// server reflects a change from the cached value. The portal flag is
+  /// consumed after one round either way — portal visits that change
+  /// nothing must not leave the app re-polling on every resume — while
+  /// [SubscriptionManagementRepo.getBeganPayment] persists until a
+  /// subscription is observed, so a checkout completed after an early
+  /// bounce back to the app is still picked up.
+  Future<void> refreshOnAppResume(String? userID) async {
+    if (userID == null || _refreshingOnResume) return;
+    if (_initCompleter?.isCompleted != true) return;
+
+    final beganPayment = SubscriptionManagementRepo.getBeganPayment();
+    final launchedBillingPortal =
+        SubscriptionManagementRepo.getLaunchedBillingPortal();
+    if (!beganPayment && !launchedBillingPortal) return;
+
+    _refreshingOnResume = true;
+    try {
+      final previous = subscriptionStatus;
+      final previousJson = previous == null
+          ? null
+          : jsonEncode(previous.toJson());
+      final response = await SubscriptionStatusRepo.instance
+          .pollSubscriptionStatus(
+            SubscriptionStatusRequest(userID: userID),
+            (r) =>
+                previousJson == null || jsonEncode(r.toJson()) != previousJson,
+          );
+
+      if (response != null) {
+        _state.value = SubscriptionState.fromSubscriptionStatus(response);
+        await _completeBeganPayment();
+      }
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {});
+    } finally {
+      if (launchedBillingPortal) {
+        await SubscriptionManagementRepo.removeLaunchedBillingPortal();
+      }
+      _refreshingOnResume = false;
+    }
+  }
+
+  Future<void> _activateNewUserTrial(String userID) async {
+    final result = await FreeTrialRepo.instance.get(
+      FreeTrialRequest(userID: userID),
+    );
+    final activated = !result.isError;
+    if (!activated) return;
+    await _updateCurrentSubscription(userID);
+  }
+
+  Future<void> _resolvePurchasePresentation() async {
+    final country = await StorefrontCountryRepo.resolve();
+    _purchasePresentation = resolvePurchasePresentation(
+      isWeb: kIsWeb,
+      platform: defaultTargetPlatform,
+      storefrontCountry: country,
+    );
+  }
+
+  Future<void> _updateCurrentSubscription(String userID) async {
+    final result = await SubscriptionStatusRepo.instance.get(
+      SubscriptionStatusRequest(userID: userID),
+      forceRefresh: true,
+    );
+
+    final response = result.result;
+    if (response == null) {
+      _state.value = SubscriptionError(
+        error: result.error ?? "Failed to fetch subscription status",
+      );
+      return;
+    }
+
+    if (response.isPaidWithoutPlan) {
+      // a paid entitlement should always map to a catalog plan. If it
+      // does not, log it (this shouldn't happen) — the controller renders a
+      // generic tile so the paying user still sees management + the
+      // account-delete warning, rather than a broken/empty tile.
+      ErrorHandler.logError(
+        m: "v2 paid entitlement missing a catalog planId",
+        s: StackTrace.current,
+        data: {},
+      );
+    }
+
+    _state.value = SubscriptionState.fromSubscriptionStatus(response);
+  }
+}

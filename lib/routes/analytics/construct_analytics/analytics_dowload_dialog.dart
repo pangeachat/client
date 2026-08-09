@@ -1,0 +1,404 @@
+import 'package:flutter/material.dart';
+
+import 'package:csv/csv.dart';
+import 'package:excel/excel.dart';
+import 'package:intl/intl.dart';
+import 'package:matrix/matrix.dart';
+
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
+import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/download/download_dialog.dart';
+import 'package:fluffychat/features/download/download_file_util.dart';
+import 'package:fluffychat/features/download/download_type_enum.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/analytics_summary_enum.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/analytics_summary_model.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/construct_analytics_details/learning_skills_enum.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+class AnalyticsDownloadDialog extends StatefulWidget {
+  const AnalyticsDownloadDialog({super.key});
+
+  @override
+  AnalyticsDownloadDialogState createState() => AnalyticsDownloadDialogState();
+}
+
+class AnalyticsDownloadDialogState extends State<AnalyticsDownloadDialog> {
+  DownloadType _downloadType = DownloadType.csv;
+
+  bool _downloading = false;
+  bool _downloaded = false;
+  String? _error;
+
+  void _setDownloadType(DownloadType type) {
+    if (mounted) {
+      setState(() {
+        _downloadType = type;
+        _downloaded = false;
+        _error = null;
+      });
+    }
+  }
+
+  Future<void> _downloadAnalytics() async {
+    List<AnalyticsSummaryModel> vocabSummary;
+    List<AnalyticsSummaryModel> morphSummary;
+
+    try {
+      setState(() {
+        _downloading = true;
+        _downloaded = false;
+        _error = null;
+      });
+
+      vocabSummary = await _getVocabAnalytics();
+      morphSummary = await _getMorphAnalytics();
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {"downloadType": _downloadType});
+
+      if (mounted) {
+        setState(() {
+          _downloading = false;
+          _error = L10n.of(context).errorProcessAnalytics;
+        });
+      }
+      return;
+    }
+
+    final client = Matrix.of(context).client;
+    try {
+      if (_downloadType == DownloadType.csv) {
+        final vocabContent = _getCSVFileContent(
+          ConstructTypeEnum.vocab,
+          vocabSummary,
+        );
+
+        final morphContent = _getCSVFileContent(
+          ConstructTypeEnum.morph,
+          morphSummary,
+        );
+
+        final vocabFileName =
+            "analytics_vocab_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
+
+        final morphFileName =
+            "analytics_morph_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.csv";
+
+        final futures = [
+          DownloadUtil.downloadFile(vocabContent, vocabFileName, _downloadType),
+          DownloadUtil.downloadFile(morphContent, morphFileName, _downloadType),
+        ];
+
+        await Future.wait(futures);
+      } else {
+        final content = _getExcelFileContent({
+          ConstructTypeEnum.vocab: vocabSummary,
+          ConstructTypeEnum.morph: morphSummary,
+        });
+
+        final fileName =
+            "analytics_${client.userID?.localpart}_${DateFormat('yyyy-MM-dd-hh:mm:ss').format(DateTime.now())}.xlsx";
+
+        await DownloadUtil.downloadFile(content, fileName, _downloadType);
+      }
+      _downloaded = true;
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {"downloadType": _downloadType});
+      _error = L10n.of(context).errorDownloading;
+    } finally {
+      if (mounted) setState(() => _downloading = false);
+    }
+  }
+
+  Future<List<AnalyticsSummaryModel>> _getVocabAnalytics() async {
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    if (l2 == null) {
+      throw Exception("No L2 set for user");
+    }
+
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    final aggregatedVocab = await analyticsService.getAggregatedConstructs(
+      ConstructTypeEnum.vocab,
+      l2.langCodeShort,
+    );
+
+    final uses = aggregatedVocab.values.toList();
+    final Map<String, List<ConstructUses>> lemmasToUses = {};
+    for (final use in uses) {
+      lemmasToUses[use.lemma] ??= [];
+      lemmasToUses[use.lemma]!.add(use);
+    }
+
+    final List<AnalyticsSummaryModel> summaries = [];
+    for (final entry in lemmasToUses.entries) {
+      final lemma = entry.key;
+      final uses = entry.value;
+
+      final xp = uses.map((e) => e.points).reduce((a, total) => a + total);
+      final exampleMessages = await _getExampleMessages(uses);
+      final allUses = uses
+          .map((u) => u.cappedUses)
+          .expand((element) => element);
+
+      int independantUseOccurrences = 0;
+      int assistedUseOccurrences = 0;
+      for (final use in allUses) {
+        use.useType == ConstructUseTypeEnum.wa
+            ? independantUseOccurrences++
+            : assistedUseOccurrences++;
+      }
+
+      final forms = allUses
+          .map((e) => e.form?.toLowerCase())
+          .toSet()
+          .whereType<String>()
+          .toList();
+
+      final summary = AnalyticsSummaryModel(
+        lemma: lemma,
+        xp: xp,
+        forms: forms,
+        exampleMessages: exampleMessages,
+        independantUseOccurrences: independantUseOccurrences,
+        assistedUseOccurrences: assistedUseOccurrences,
+      );
+
+      summaries.add(summary);
+    }
+
+    return summaries;
+  }
+
+  Future<List<AnalyticsSummaryModel>> _getMorphAnalytics() async {
+    final l1 = MatrixState.pangeaController.userController.userL1;
+    final l2 = MatrixState.pangeaController.userController.userL2;
+    if (l1 == null || l2 == null) {
+      throw Exception("Missing base or target language");
+    }
+
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    final morphs = await GrammarConstructsProvider.fetchFeaturesAndTags();
+
+    final List<AnalyticsSummaryModel> summaries = [];
+    for (final feature in morphs.features) {
+      for (final tag in feature.tags) {
+        final id = ConstructIdentifier(
+          lemma: tag.value,
+          type: ConstructTypeEnum.morph,
+          category: feature.feature.value,
+        );
+
+        final uses = await analyticsService.getConstructUse(
+          id,
+          l2.langCodeShort,
+        );
+
+        final xp = uses.points;
+        final exampleMessages = await _getExampleMessages([uses]);
+        final allUses = uses.cappedUses;
+
+        int independantUseOccurrences = 0;
+        int assistedUseOccurrences = 0;
+        for (final use in allUses) {
+          use.useType == ConstructUseTypeEnum.wa
+              ? independantUseOccurrences++
+              : assistedUseOccurrences++;
+        }
+
+        final forms = allUses
+            .map((e) => e.form?.toLowerCase())
+            .toSet()
+            .whereType<String>()
+            .toList();
+
+        final tagCopy = tag.title;
+
+        final summary = AnalyticsSummaryModel(
+          morphFeature: feature.feature.title,
+          morphTag: tagCopy,
+          xp: xp,
+          forms: forms,
+          exampleMessages: exampleMessages,
+          independantUseOccurrences: independantUseOccurrences,
+          assistedUseOccurrences: assistedUseOccurrences,
+        );
+
+        summaries.add(summary);
+      }
+    }
+
+    return summaries;
+  }
+
+  Future<List<String>> _getExampleMessages(
+    List<ConstructUses> constructUses,
+  ) async {
+    final allUses = constructUses
+        .map((e) => e.cappedUses)
+        .expand((e) => e)
+        .toList();
+    final List<PangeaMessageEvent> examples = [];
+    for (final OneConstructUse use in allUses) {
+      if (use.metadata.roomId == null) continue;
+      final client = Matrix.of(context).client;
+      final Room? room = client.getRoomById(use.metadata.roomId!);
+      if (room == null) continue;
+
+      if (use.useType.skillsEnumType != LearningSkillsEnum.writing ||
+          use.metadata.eventId == null ||
+          use.form == null ||
+          use.xp <= 0) {
+        continue;
+      }
+
+      final exampleIndex = examples.indexWhere(
+        (example) => example.eventId == use.metadata.eventId!,
+      );
+      if (exampleIndex != -1) continue;
+      if (use.metadata.roomId == null) continue;
+
+      Timeline? timeline = room.timeline;
+      if (room.timeline == null) {
+        timeline = await room.getTimeline();
+      }
+
+      final Event? event = await room.getEventById(use.metadata.eventId!);
+
+      if (event == null || event.senderId != client.userID) continue;
+      final PangeaMessageEvent pangeaMessageEvent = PangeaMessageEvent(
+        event: event,
+        timeline: timeline!,
+        ownMessage: event.senderId == client.userID,
+      );
+      examples.add(pangeaMessageEvent);
+      if (examples.length >= 5) break;
+    }
+
+    return examples.map((m) => m.messageDisplayText).toSet().toList();
+  }
+
+  List<int> _getExcelFileContent(
+    Map<ConstructTypeEnum, List<AnalyticsSummaryModel>> summaries,
+  ) {
+    final excel = Excel.createExcel();
+
+    for (final entry in summaries.entries) {
+      final sheet = excel[entry.key.sheetname(context)];
+      final values = entry.key == ConstructTypeEnum.vocab
+          ? AnalyticsSummaryEnum.vocabValues
+          : AnalyticsSummaryEnum.morphValues;
+
+      for (final key in values) {
+        sheet
+            .cell(
+              CellIndex.indexByColumnRow(
+                rowIndex: 0,
+                columnIndex: values.indexOf(key),
+              ),
+            )
+            .value = TextCellValue(
+          key.header(context),
+        );
+      }
+
+      final rows = entry.value
+          .map((summary) => _formatExcelRow(summary, entry.key))
+          .toList();
+
+      for (int i = 0; i < rows.length; i++) {
+        final row = rows[i];
+        for (int j = 0; j < row.length; j++) {
+          final cell = row[j];
+          sheet
+                  .cell(
+                    CellIndex.indexByColumnRow(rowIndex: i + 2, columnIndex: j),
+                  )
+                  .value =
+              cell;
+        }
+      }
+    }
+
+    excel.setDefaultSheet(ConstructTypeEnum.vocab.sheetname(context));
+    excel.delete('Sheet1');
+    return excel.encode() ?? [];
+  }
+
+  String _getCSVFileContent(
+    ConstructTypeEnum type,
+    List<AnalyticsSummaryModel> summaries,
+  ) {
+    final values = type == ConstructTypeEnum.vocab
+        ? AnalyticsSummaryEnum.vocabValues
+        : AnalyticsSummaryEnum.morphValues;
+
+    final List<List<dynamic>> rows = [];
+    final headerRow = [];
+    for (final key in values) {
+      headerRow.add(key.header(context));
+    }
+
+    rows.add(headerRow);
+    for (final summary in summaries) {
+      final List<dynamic> row = [];
+      for (int i = 0; i < values.length; i++) {
+        final key = values[i];
+        final value = summary.getValue(key);
+        row.add(
+          value is List<String> ? value.map((v) => "\"$v\"").join(", ") : value,
+        );
+      }
+      rows.add(row);
+    }
+
+    final String fileString = const ListToCsvConverter().convert(rows);
+    return fileString;
+  }
+
+  List<CellValue> _formatExcelRow(
+    AnalyticsSummaryModel summary,
+    ConstructTypeEnum type,
+  ) {
+    final List<CellValue> row = [];
+    final values = type == ConstructTypeEnum.vocab
+        ? AnalyticsSummaryEnum.vocabValues
+        : AnalyticsSummaryEnum.morphValues;
+
+    for (int i = 0; i < values.length; i++) {
+      final key = values[i];
+      final value = summary.getValue(key);
+      if (value is int) {
+        row.add(IntCellValue(value));
+      } else if (value is String) {
+        row.add(TextCellValue(value));
+      } else if (value is List<String>) {
+        row.add(TextCellValue(value.map((v) => "\"$v\"").join(", ")));
+      }
+    }
+    return row;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final enableDownload = !_downloading;
+    final errorMessage = _error;
+
+    return DownloadDialog(
+      downloading: _downloading,
+      downloaded: _downloaded,
+      enableDownload: enableDownload,
+      selectedDownloadType: _downloadType,
+      downloadableTypes: [DownloadType.csv, DownloadType.xlsx],
+      setDownloadType: _setDownloadType,
+      download: _downloadAnalytics,
+      description: L10n.of(context).analyticsDownloadDesc,
+      error: errorMessage,
+    );
+  }
+}

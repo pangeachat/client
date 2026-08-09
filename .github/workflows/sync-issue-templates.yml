@@ -1,0 +1,13 @@
+name: Sync issue templates
+
+on:
+  schedule:
+    - cron: '0 13 * * 1' # weekly Mondays 13:00 UTC
+  workflow_dispatch:
+
+jobs:
+  sync:
+    uses: pangeachat/workflows/.github/workflows/reusable-sync-issue-templates.yaml@a02f9792e74b0a406612be47549e3c3c5194632b # main
+    permissions:
+      contents: write
+      pull-requests: write

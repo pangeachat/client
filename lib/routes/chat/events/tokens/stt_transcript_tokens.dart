@@ -1,0 +1,159 @@
+import 'package:flutter/material.dart';
+
+import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
+import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
+import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
+import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
+import 'package:fluffychat/widgets/hover_builder.dart';
+
+typedef SttTranscriptTokenPresentation = ({
+  Color idleUnderlineColor,
+  String? secondaryText,
+  TextStyle? secondaryStyle,
+});
+
+typedef SttTranscriptTokenPresentationResolver =
+    SttTranscriptTokenPresentation? Function(
+      PangeaToken token,
+      int startIndex,
+      int endIndex,
+    );
+
+class SttTranscriptTokens extends StatelessWidget {
+  final String eventId;
+  final SpeechToTextResponseModel model;
+  final TextStyle? style;
+
+  final void Function(PangeaToken)? onClick;
+  final bool Function(PangeaToken)? isSelected;
+
+  /// Lower-cased target vocab lemmas for the room's activity, or null when
+  /// the room has no activity plan. Spoken words whose lemma is in this set
+  /// get the gold highlight, matching typed messages (issue #7659).
+  final Set<String>? vocabLemmas;
+  final SttTranscriptTokenPresentationResolver? presentationForToken;
+  final Set<PangeaTokenText>? newTokensOverride;
+
+  const SttTranscriptTokens({
+    super.key,
+    required this.eventId,
+    required this.model,
+    this.onClick,
+    this.isSelected,
+    this.style,
+    this.vocabLemmas,
+    this.presentationForToken,
+    this.newTokensOverride,
+  });
+
+  List<PangeaToken> get tokens =>
+      model.transcript.sttTokens.map((t) => t.token).toList();
+
+  @override
+  Widget build(BuildContext context) {
+    if (model.transcript.sttTokens.isEmpty) {
+      return Text(
+        model.transcript.text,
+        style: style ?? DefaultTextStyle.of(context).style,
+        textScaler: TextScaler.noScaling,
+      );
+    }
+
+    final messageCharacters = model.transcript.text.characters;
+    final newTokens =
+        newTokensOverride ??
+        TokensUtil.instance.getNewTokens(eventId, tokens, model.langCode);
+
+    return RichText(
+      textScaler: TextScaler.noScaling,
+      text: TextSpan(
+        style: style ?? DefaultTextStyle.of(context).style,
+        children: TokensUtil.instance
+            .getGlobalTokenPositions(tokens, transcript: model.transcript.text)
+            .map((tokenPosition) {
+              final text = messageCharacters
+                  .skip(tokenPosition.startIndex)
+                  .take(tokenPosition.endIndex - tokenPosition.startIndex)
+                  .toString();
+
+              if (tokenPosition.token == null) {
+                return TextSpan(
+                  text: text,
+                  style: style ?? DefaultTextStyle.of(context).style,
+                );
+              }
+
+              final token = tokenPosition.token!;
+              final selected = isSelected?.call(token) ?? false;
+              final isNew = newTokens.any((t) => t == token.text);
+              final presentation = presentationForToken?.call(
+                token,
+                tokenPosition.startIndex,
+                tokenPosition.endIndex,
+              );
+              final isVocabHighlight = TokenRenderingUtil.isVocabHighlight(
+                token.lemma.text,
+                vocabLemmas,
+              );
+
+              return WidgetSpan(
+                child: HoverBuilder(
+                  builder: (context, hovered) => MouseRegion(
+                    cursor: SystemMouseCursors.click,
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: onClick != null
+                          ? () => onClick?.call(token)
+                          : null,
+                      child: Builder(
+                        builder: (context) {
+                          final interactionUnderline =
+                              TokenRenderingUtil.underlineColor(
+                                Theme.of(
+                                  context,
+                                ).colorScheme.primary.withAlpha(200),
+                                selected: selected,
+                                hovered: hovered,
+                                isNew: isNew,
+                              );
+                          final underline =
+                              presentation != null && !selected && !hovered
+                              ? presentation.idleUnderlineColor
+                              : interactionUnderline;
+                          final primary = UnderlineText(
+                            text: text,
+                            style: style ?? DefaultTextStyle.of(context).style,
+                            underlineColor: underline,
+                          );
+                          final secondaryText = presentation?.secondaryText;
+                          final content = secondaryText == null
+                              ? primary
+                              : Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    primary,
+                                    Text(
+                                      secondaryText,
+                                      style: presentation?.secondaryStyle,
+                                    ),
+                                  ],
+                                );
+                          return TokenRenderingUtil.vocabHighlight(
+                            highlight: isVocabHighlight,
+                            child: content,
+                          );
+                        },
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            })
+            .toList(),
+      ),
+    );
+  }
+}

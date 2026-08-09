@@ -7,6 +7,7 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -35,6 +36,7 @@
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:localeConfig="@xml/locale_config"
+        android:usesCleartextTraffic="true"
     >
         <activity
             android:name=".MainActivity"
@@ -59,7 +61,9 @@
 
             <!-- App can open https://matrix.to urls -->
             <!-- # Pangea -->
-            <!-- Causes deeplink error in google play -->
+            <!-- Causes deeplink error in google play: matrix.to is a
+                 third-party domain whose assetlinks.json can never verify us.
+                 Our OWN domains below are fine - do not conflate the two. -->
             <!-- <intent-filter>
                <action android:name="android.intent.action.VIEW" />
                <category android:name="android.intent.category.DEFAULT" />
@@ -68,6 +72,19 @@
                    android:scheme="https"
                    android:host="matrix.to"/>
             </intent-filter> -->
+
+            <!-- Android App Links: shared links (course /<code>, activity
+                 /<uuid>) tapped anywhere open the installed app with the
+                 route intact, like iOS universal links. Verified against
+                 /.well-known/assetlinks.json served on both hosts
+                 (joining-courses.instructions.md, Deep Linking). -->
+            <intent-filter android:autoVerify="true">
+               <action android:name="android.intent.action.VIEW" />
+               <category android:name="android.intent.category.DEFAULT" />
+               <category android:name="android.intent.category.BROWSABLE" />
+               <data android:scheme="https" android:host="app.pangea.chat" />
+               <data android:scheme="https" android:host="app.staging.pangea.chat" />
+            </intent-filter>
             <!-- Pangea# -->
 
             <!-- App can open matrix: uris -->

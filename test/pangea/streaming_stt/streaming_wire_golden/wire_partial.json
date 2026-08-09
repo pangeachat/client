@@ -1,0 +1,24 @@
+{
+  "transcript": "The quick brown",
+  "type": "partial",
+  "words": [
+    {
+      "confidence": 0.96875,
+      "end": 0.32,
+      "start": 0.0,
+      "word": "the"
+    },
+    {
+      "confidence": 0.65625,
+      "end": 0.56,
+      "start": 0.32,
+      "word": "quick"
+    },
+    {
+      "confidence": 0.90722656,
+      "end": 0.88,
+      "start": 0.56,
+      "word": "brown"
+    }
+  ]
+}

@@ -47,7 +47,7 @@ Defined in `lib/pangea/events/constants/pangea_event_types.dart`:
 |---|---|---|
 | `pangea.bot_options` | `botOptions` | Bot behavior configuration |
 | `pangea.capacity` | `capacity` | Room capacity limit |
-| `pangea.course_plan` | `coursePlan` | Course plan reference |
+| `pangea.course_plan` | `coursePlan` | The quest a course space runs (`uuid`) and the course's target language (`l2`). The public course catalog's eligibility and language filtering read this event — see [public-courses.instructions.md](../../../synapse-pangea-chat/.github/instructions/public-courses.instructions.md). Write it through [`CoursePlanEvent`](../../lib/features/course_plans/courses/course_plan_event.dart), never as a raw map. |
 | `pangea.teacher_mode` | `teacherMode` | Teacher mode toggle |
 | `pangea.course_chat_list` | `courseChatList` | Course chat list default chat settings |
 
@@ -89,7 +89,7 @@ Interpretation matrix:
 
 | `originalSent` | `originalWritten` | Meaning |
 |:-:|:-:|---|
-| ✓ | ✗ | Text went through IGC/IT before sending |
+| ✓ | ✗ | Text went through writing assistance / interactive translation before sending |
 | ✗ | ✗ | Added by another user (e.g., translation) |
 | ✓ | ✓ | User wrote and sent as-is (L1 or perfect L2) |
 | ✗ | ✓ | User's original L1 that was then translated via IT |
@@ -105,7 +105,7 @@ Key capabilities:
 - Access tokens for the message
 - Get translations and representations
 - Trigger TTS/STT
-- Get associated practice activities
+- Get associated practice exercises
 
 ### PangeaRepresentationEvent (`events/event_wrappers/pangea_representation_event.dart`)
 
@@ -127,4 +127,4 @@ Wraps a `pangea.record` event. Provides typed access to `ChoreoRecordModel` (edi
 
 1. **Writing**: Choreographer gets tokens from `/tokenize` on send
 2. **Saving**: `PangeaMessageContentModel` bundles tokens + choreo record + representations → saved as Matrix child events
-3. **Reading**: `PangeaMessageEvent` loads child events → toolbar uses `PangeaToken` list for word cards, practice activities, analytics
+3. **Reading**: `PangeaMessageEvent` loads child events → toolbar uses `PangeaToken` list for word cards, practice exercises, analytics

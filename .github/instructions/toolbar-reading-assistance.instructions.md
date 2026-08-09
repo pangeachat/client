@@ -4,7 +4,9 @@ applyTo: "lib/pangea/toolbar/**"
 
 # Toolbar & Reading Assistance
 
-The toolbar is the primary learning surface for received messages. When a user taps any message in a chat, an overlay appears that transforms that message into an interactive language exercise. The design philosophy: **every message is a lesson**, and the toolbar is how you access it.
+The toolbar is the primary learning surface for received messages. When a user taps a message, an overlay appears that transforms that message into an interactive language exercise. The design philosophy: **every message is a lesson**, and the toolbar is how you access it.
+
+The toolbar can be opened for message in chats and example messages in vocab construct details pages.
 
 ## Design Goals
 
@@ -46,7 +48,7 @@ The toolbar offers several assistance modes. Which ones appear depends on the me
 | ---------------------- | -------------------------------------------------------------------------------- | ---------------------------------------- |
 | **Audio**              | Full sentence TTS with word-by-word highlighting (like a karaoke bar)            | Text messages in user's L2               |
 | **Translate**          | Full L1 translation appears below the message                                    | Text messages in L2 or unknown languages |
-| **Practice**           | Transitions to practice mode (see conversation-activities doc)                           | Text messages in user's L2               |
+| **Practice**           | Transitions to practice mode (see [practice-exercises.instructions.md](practice-exercises.instructions.md))                           | Text messages in user's L2               |
 | **Emoji**              | Emoji picker appears for each word — user can assign personal emoji associations | Text messages in user's L2               |
 | **Speech Translation** | Shows STT transcript + translation for audio messages                            | Audio messages not in user's L1          |
 | **Regenerate**         | Re-tokenizes the message (for when tokenization looks wrong)                     | Optional, when enabled                   |
@@ -112,11 +114,10 @@ Emoji associations persist via the Matrix analytics room and sync across devices
 
 ## Layout Constraints
 
-The toolbar must work within chat layout constraints:
+The toolbar must work within the constraints on the parent view:
 
 - The overlay positions itself relative to the original message bubble
 - On small screens, it scrolls if the message + word card + buttons exceed available space
-- The overlay must survive screen rotation and keyboard appearance without losing state
 - On width changes (e.g., split-screen), the overlay dismisses rather than attempting to reposition (avoids jarring layout jumps)
 
 ## User Feedback
@@ -142,7 +143,7 @@ This is especially important for mixed-language and polysemous inputs where the 
 
 ## Key Contracts
 
-- **Overlay, not navigation.** The toolbar never pushes a route. It's a composited overlay that lives on top of the chat. Dismissal returns to the exact same chat state.
+- **Overlay, not navigation.** The toolbar never pushes a route. It's a composited overlay that lives on top of a page containing message bubbles. Dismissal returns to the exact same page state.
 - **Lazy loading.** Translation, TTS, and transcription are fetched only when the user activates the corresponding mode. Nothing is prefetched on message tap.
 - **Token-centric.** All assistance features require the message to have a tokenized representation. If tokens aren't available (message still loading, unsupported language), the toolbar shows limited functionality.
 - **First-click-only analytics.** Tapping the same word repeatedly doesn't keep earning XP. Only the first interaction with a word per session counts, preventing XP gaming.

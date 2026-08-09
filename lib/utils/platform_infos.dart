@@ -1,23 +1,22 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
-import 'package:fluffychat/l10n/l10n.dart';
-import '../config/app_config.dart';
 
 abstract class PlatformInfos {
   static bool get isWeb => kIsWeb;
   static bool get isLinux => !kIsWeb && Platform.isLinux;
   // #Pangea
   // static bool get isWindows => !kIsWeb && Platform.isWindows;
-  static bool get isWindows => getOperatingSystem() == 'Windows';
+  // Detect BOTH native Windows (dart:io) and web-on-Windows (navigator); the
+  // web-only check alone left native Windows undetected (e.g. dosage spans
+  // reported an `unknown` platform).
+  static bool get isWindows =>
+      (!kIsWeb && Platform.isWindows) || getOperatingSystem() == 'Windows';
   // Pangea#
   static bool get isMacOS => !kIsWeb && Platform.isMacOS;
   static bool get isIOS => !kIsWeb && Platform.isIOS;
@@ -55,55 +54,6 @@ abstract class PlatformInfos {
       version = (await PackageInfo.fromPlatform()).version;
     } catch (_) {}
     return version;
-  }
-
-  static void showDialog(BuildContext context) async {
-    final version = await PlatformInfos.getVersion();
-    showAboutDialog(
-      context: context,
-      // #Pangea
-      useRootNavigator: false,
-      // Pangea#
-      children: [
-        Text(L10n.of(context).versionWithNumber(version)),
-        TextButton.icon(
-          onPressed: () => launchUrlString(AppConfig.sourceCodeUrl),
-          icon: const Icon(Icons.source_outlined),
-          label: Text(L10n.of(context).sourceCode),
-        ),
-        Builder(
-          builder: (innerContext) {
-            return TextButton.icon(
-              onPressed: () {
-                context.go('/logs');
-                Navigator.of(innerContext).pop();
-              },
-              icon: const Icon(Icons.list_outlined),
-              label: Text(L10n.of(context).logs),
-            );
-          },
-        ),
-        Builder(
-          builder: (innerContext) {
-            return TextButton.icon(
-              onPressed: () {
-                context.go('/configs');
-                Navigator.of(innerContext).pop();
-              },
-              icon: const Icon(Icons.settings_applications_outlined),
-              label: Text(L10n.of(context).advancedConfigs),
-            );
-          },
-        ),
-      ],
-      applicationIcon: Image.asset(
-        'assets/logo.png',
-        width: 64,
-        height: 64,
-        filterQuality: FilterQuality.medium,
-      ),
-      applicationName: AppSettings.applicationName.value,
-    );
   }
 
   // #Pangea

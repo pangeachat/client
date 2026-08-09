@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:13.187850",
+    "@@last_modified": "2026-08-05 11:42:15.381537",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -69,11 +69,6 @@
     },
     "archive": "Arkiv",
     "@archive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "areGuestsAllowedToJoin": "Skal gjester tillates å ta del",
-    "@areGuestsAllowedToJoin": {
         "type": "String",
         "placeholders": {}
     },
@@ -317,11 +312,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "Din sludringssikkerhetskopi er sikret med en sikkerhetsnøkkel. Ikke mist den.",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatDetails": "Sludringsdetaljer",
     "@chatDetails": {
         "type": "String",
@@ -359,11 +349,6 @@
     },
     "connect": "Koble til",
     "@connect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "contactHasBeenInvitedToTheGroup": "Kontakt invitert til gruppen",
-    "@contactHasBeenInvitedToTheGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -556,11 +541,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableEncryptionWarning": "Du vil ikke kunne skru av kryptering lenger. Er du sikker?",
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "encrypted": "Kryptert",
     "@encrypted": {
         "type": "String",
@@ -587,11 +567,6 @@
     },
     "enterAnEmailAddress": "Skriv inn en e-postadresse",
     "@enterAnEmailAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "everythingReady": "Alt er klart!",
-    "@everythingReady": {
         "type": "String",
         "placeholders": {}
     },
@@ -632,11 +607,6 @@
     },
     "group": "Gruppe",
     "@group": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "Gruppen er offentlig",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -730,15 +700,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "Inviter kontakt til {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "invited": "Invitert",
     "@invited": {
@@ -851,15 +812,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "Last inn {count} deltagere til",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "loadingPleaseWait": "Laster inn… Vent.",
     "@loadingPleaseWait": {
         "type": "String",
@@ -874,15 +826,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "Logg inn på {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "logout": "Logg ut",
     "@logout": {
@@ -941,11 +884,6 @@
     },
     "noEmotesFound": "Fant ingen smilefjes. 😕",
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noGoogleServicesWarning": "Bruk https://microg.org/ for å få Google-tjenester (uten at det går ut over personvernet) for å få push-merknader i FluffyChat:",
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -1045,11 +983,6 @@
     },
     "passwordHasBeenChanged": "Passord endret",
     "@passwordHasBeenChanged": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "passwordRecovery": "Passordgjenoppretting",
-    "@passwordRecovery": {
         "type": "String",
         "placeholders": {}
     },
@@ -1158,11 +1091,6 @@
                 "type": "String"
             }
         }
-    },
-    "removeDevice": "Fjern enhet",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "unbanFromChat": "Opphev bannlysning",
     "@unbanFromChat": {
@@ -1293,11 +1221,6 @@
             }
         }
     },
-    "setPermissionsLevel": "Sett tilgangsnivå",
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "setStatus": "Angi status",
     "@setStatus": {
         "type": "String",
@@ -1382,11 +1305,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "transferFromAnotherDevice": "Overfør fra en annen enhet",
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tryToSendAgain": "Prøv å sende igjen",
     "@tryToSendAgain": {
         "type": "String",
@@ -1442,15 +1360,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "unreadChats": "{unreadCount, plural, other{{unreadCount} uleste sludringer}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "userAndOthersAreTyping": "{username} og {count} andre skriver…",
     "@userAndOthersAreTyping": {
@@ -1531,16 +1440,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "Videosamtale",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "Sludrehistorikkens synlighet",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "visibleForAllParticipants": "Synlig for alle deltagere",
     "@visibleForAllParticipants": {
         "type": "String",
@@ -1573,16 +1472,6 @@
     },
     "weSentYouAnEmail": "Du har fått en e-post",
     "@weSentYouAnEmail": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoCanPerformWhichAction": "Hvem kan utføre hvilken handling",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "Hvem tillates å ta del i denne gruppen",
-    "@whoIsAllowedToJoinThisGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1746,10 +1635,6 @@
     "@passwordsDoNotMatch": {},
     "decline": "Avslå",
     "@decline": {},
-    "emailOrUsername": "E-post eller brukernavn",
-    "@emailOrUsername": {},
-    "encryptThisChat": "Krypter denne chatten",
-    "@encryptThisChat": {},
     "doNotShowAgain": "Ikke vis igjen",
     "@doNotShowAgain": {},
     "notificationRuleContainsUserName": "Inneholder brukernavn",
@@ -1766,8 +1651,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "recoveryKey": "Gjenopprettingsnøkkel",
-    "@recoveryKey": {},
     "shareLocation": "Del lokasjon",
     "@shareLocation": {
         "type": "String",
@@ -1870,8 +1753,6 @@
     "@passwordIsWrong": {},
     "startConversation": "Start samtale",
     "@startConversation": {},
-    "manageAccount": "Administrer konto",
-    "@manageAccount": {},
     "nothingFound": "Ingenting funnet...",
     "@nothingFound": {},
     "incomingMessages": "Innkommende meldinger",
@@ -1900,8 +1781,6 @@
     "@allDevices": {},
     "learnMore": "Lær mer",
     "@learnMore": {},
-    "sorryThatsNotPossible": "Beklager... det er ikke mulig",
-    "@sorryThatsNotPossible": {},
     "markAsUnread": "Marker som ulest",
     "@markAsUnread": {},
     "newGroup": "Ny gruppe",
@@ -2008,15 +1887,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "pleaseEnterRecoveryKey": "Vennligst skriv inn gjenopprettingsnøkkelen din:",
-    "@pleaseEnterRecoveryKey": {},
     "pleaseEnterYourPin": "Vennligst skriv inn PIN-koden din",
     "@pleaseEnterYourPin": {
         "type": "String",
         "placeholders": {}
     },
-    "globalChatId": "Global chat-ID",
-    "@globalChatId": {},
     "chatPermissions": "Chat tillatelser",
     "@chatPermissions": {},
     "setPermissionsLevelDescription": "Vennligst velg en forhåndsdefinert rolle nedenfor eller skriv inn et tilpasset tillatelsesnivå mellom 0 og 100.",
@@ -2036,8 +1911,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "yourChatBackupHasBeenSetUp": "Sikkerhetskopien av chatten din er konfigurert.",
-    "@yourChatBackupHasBeenSetUp": {},
     "discover": "Oppdag",
     "@discover": {},
     "thereAreCountUsersBlocked": "Akkurat nå er det {count} blokkerte brukere.",
@@ -2047,10 +1920,6 @@
     },
     "sendCanceled": "Sending avbrutt",
     "@sendCanceled": {},
-    "loginWithMatrixId": "Logg på med Matrix ID",
-    "@loginWithMatrixId": {},
-    "discoverHomeservers": "Oppdag hjemmeservere",
-    "@discoverHomeservers": {},
     "shareInviteLink": "Del invitasjonslenke",
     "@shareInviteLink": {},
     "scanQrCode": "Skann QR-kode",
@@ -2061,10 +1930,6 @@
     "@hydrate": {},
     "oneClientLoggedOut": "En av klientene dine har blitt logget ut",
     "@oneClientLoggedOut": {},
-    "addAccount": "Legg til konto",
-    "@addAccount": {},
-    "enableMultiAccounts": "(BETA) Aktiver flere kontoer på denne enheten",
-    "@enableMultiAccounts": {},
     "openInMaps": "Åpne i kart",
     "@openInMaps": {
         "type": "String",
@@ -2087,15 +1952,6 @@
     "@user": {},
     "users": "Brukere",
     "@users": {},
-    "countInvited": "{count} inviterte",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "createGroup": "Opprett gruppe",
     "@createGroup": {},
     "editRoomAliases": "Rediger rom aliaser",
@@ -2103,8 +1959,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "accessAndVisibility": "Tilgang og synlighet",
-    "@accessAndVisibility": {},
     "hideInvalidOrUnknownMessageFormats": "Skjul ugyldige eller ukjente meldingsformater",
     "@hideInvalidOrUnknownMessageFormats": {},
     "block": "Blokkér",
@@ -2147,20 +2001,12 @@
     },
     "chatDescriptionHasBeenChanged": "Chatbeskrivelsen er endret",
     "@chatDescriptionHasBeenChanged": {},
-    "screenSharingTitle": "skjermdeling",
-    "@screenSharingTitle": {},
-    "screenSharingDetail": "Du deler skjermen din i FuffyChat",
-    "@screenSharingDetail": {},
     "whyIsThisMessageEncrypted": "Hvorfor er denne meldingen uleselig?",
     "@whyIsThisMessageEncrypted": {},
     "yourGlobalUserIdIs": "Din globale bruker-ID er: ",
     "@yourGlobalUserIdIs": {},
-    "searchChatsRooms": "Søk etter #chatter, @brukere...",
-    "@searchChatsRooms": {},
     "groupName": "Gruppenavn",
     "@groupName": {},
-    "createGroupAndInviteUsers": "Opprett en gruppe og inviter brukere",
-    "@createGroupAndInviteUsers": {},
     "invite": "Inviter",
     "@invite": {},
     "wrongPinEntered": "Feil PIN-kode tastet inn! Prøv igjen om {seconds} sekunder...",
@@ -2190,10 +2036,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceCall": "Taleanrop",
-    "@voiceCall": {},
-    "accessAndVisibilityDescription": "Hvem som har lov til å bli med i denne chatten og hvordan chatten kan oppdages.",
-    "@accessAndVisibilityDescription": {},
     "calls": "Anrop",
     "@calls": {},
     "customEmojisAndStickers": "Egendefinerte emojier og klistremerker",
@@ -2320,8 +2162,6 @@
             }
         }
     },
-    "disableEncryptionWarning": "Av sikkerhetshensyn kan du ikke deaktivere kryptering i en chat der det har vært aktivert tidligere.",
-    "@disableEncryptionWarning": {},
     "deviceKeys": "Enhetsnøkler:",
     "@deviceKeys": {},
     "readUpToHere": "Lest frem til her",
@@ -2338,18 +2178,12 @@
     "@archiveRoomDescription": {},
     "removeDevicesDescription": "Du vil bli logget ut av denne enheten og vil ikke lenger kunne motta meldinger.",
     "@removeDevicesDescription": {},
-    "setTheme": "Angi tema:",
-    "@setTheme": {},
     "setColorTheme": "Angi fargetema:",
     "@setColorTheme": {},
     "inviteGroupChat": "📨 Invitasjon til gruppechat",
     "@inviteGroupChat": {},
     "pleaseChooseAStrongPassword": "Vennligst velg et sterkt passord",
     "@pleaseChooseAStrongPassword": {},
-    "publicChatAddresses": "Offentlige chatadresser",
-    "@publicChatAddresses": {},
-    "createNewAddress": "Opprett ny adresse",
-    "@createNewAddress": {},
     "initAppError": "Det oppsto en feil under oppstart av appen",
     "@initAppError": {},
     "sendReadReceipts": "Send lesebekreftelser",
@@ -2382,17 +2216,6 @@
     "@notificationRuleInviteForMeDescription": {},
     "newChatRequest": "📩 Ny chatforespørsel",
     "@newChatRequest": {},
-    "appWantsToUseForLogin": "Bruk '{server}' for å logge inn",
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "appWantsToUseForLoginDescription": "Du gir herved tillatelse til at appen og nettstedet deler informasjon om deg.",
-    "@appWantsToUseForLoginDescription": {},
     "exportEmotePack": "Eksporter smilefjes som .zip-fil",
     "@exportEmotePack": {},
     "noUsersFoundWithQuery": "Dessverre ble ingen bruker funnet med \"{query}\". Sjekk om du har skrevet feil.",
@@ -2400,15 +2223,6 @@
         "type": "String",
         "placeholders": {
             "query": {
-                "type": "String"
-            }
-        }
-    },
-    "chatCanBeDiscoveredViaSearchOnServer": "Chatten kan oppdages via søket på {server}",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
                 "type": "String"
             }
         }
@@ -2425,18 +2239,6 @@
     "@wrongRecoveryKey": {},
     "declineInvitation": "Avslå invitasjon",
     "@declineInvitation": {},
-    "restoreSessionBody": "Appen prøver nå å gjenopprette økten din fra sikkerhetskopien. Rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "hidePresences": "Skjul statuslisten?",
     "@hidePresences": {},
     "noMessagesYet": "Ingen meldinger enda",
@@ -2482,8 +2284,6 @@
     "@sendRoomNotifications": {},
     "formattedMessagesDescription": "Vis rikt meldingsinnhold som fet skrift ved hjelp av markdown.",
     "@formattedMessagesDescription": {},
-    "verifyOtherUser": "🔐 Verifiser annen bruker",
-    "@verifyOtherUser": {},
     "verifyOtherDevice": "🔐 Verifiser annen enhet",
     "@verifyOtherDevice": {},
     "sendTypingNotificationsDescription": "Andre deltakere i en chat kan se når du skriver en ny melding.",
@@ -2576,8 +2376,6 @@
             }
         }
     },
-    "chatDescription": "Chat beskrivelse",
-    "@chatDescription": {},
     "hideRedactedMessages": "Skjul redigerte meldinger",
     "@hideRedactedMessages": {},
     "hideRedactedMessagesBody": "Hvis noen redigerer en melding, vil ikke denne meldingen lenger være synlig i chatten.",
@@ -2606,11 +2404,6 @@
     "@dehydrate": {},
     "dehydrateWarning": "Denne handlingen kan ikke angres. Sørg for at du lagrer sikkerhetskopifilen på en trygg måte.",
     "@dehydrateWarning": {},
-    "noEncryptionForPublicRooms": "Du kan bare aktivere kryptering på rom som ikke er offentlig tilgjengelig.",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noMatrixServer": "{server1} er ingen matrix-server, bruk {server2} i stedet?",
     "@noMatrixServer": {
         "type": "String",
@@ -2633,14 +2426,8 @@
     "@contentNotificationSettings": {},
     "generalNotificationSettings": "Generelle varslingsinnstillinger",
     "@generalNotificationSettings": {},
-    "appIntroduction": "Med FluffyChat kan du chatte med vennene dine på tvers av forskjellige meldingstjenester. Finn ut mer på https://matrix.org eller trykk bare på *Fortsett*.",
-    "@appIntroduction": {},
     "notificationRuleContainsUserNameDescription": "Varsler bruker når en melding inneholder ens brukernavn.",
     "@notificationRuleContainsUserNameDescription": {},
-    "removeFromSpace": "Fjern fra området",
-    "@removeFromSpace": {},
-    "pleaseEnterRecoveryKeyDescription": "For å låse opp gamle meldinger, vennligst skriv inn gjenopprettingsnøkkelen som ble generert i en tidligere økt. Gjenopprettingsnøkkelen er IKKE passordet ditt.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "reactedWith": "{sender} reagerte med {reaction}",
     "@reactedWith": {
         "type": "String",
@@ -2661,8 +2448,6 @@
     "@placeCall": {},
     "unsupportedAndroidVersionLong": "Denne funksjonen krever en nyere Android-versjon. Se etter oppdateringer eller støtte for Lineage OS.",
     "@unsupportedAndroidVersionLong": {},
-    "videoCallsBetaWarning": "Vær oppmerksom på at videosamtaler for øyeblikket er i betaversjon. Det fungerer kanskje ikke som forventet eller i det hele tatt.",
-    "@videoCallsBetaWarning": {},
     "experimentalVideoCalls": "Eksperimentelle videoanrop",
     "@experimentalVideoCalls": {},
     "notificationRuleRoomnotifDescription": "Varsler brukeren når en melding inneholder ‘@room’.",
@@ -2687,8 +2472,6 @@
         "type": "String",
         "description": "Usage hint for the command /clearcache"
     },
-    "homeserverDescription": "Alle dataene dine lagres på hjemmeserveren, akkurat som hos en e-postleverandør. Du kan velge hvilken hjemmeserver du vil bruke, samtidig som du fortsatt kan kommunisere med alle. Lær mer på https://matrix.org.",
-    "@homeserverDescription": {},
     "doesNotSeemToBeAValidHomeserver": "Ser ikke ut til å være en kompatibel hjemmeserver. Feil URL?",
     "@doesNotSeemToBeAValidHomeserver": {},
     "prepareSendingAttachment": "Forbered sending av vedlegg...",
@@ -2697,8 +2480,6 @@
     "@generatingVideoThumbnail": {},
     "compressVideo": "Komprimerer video...",
     "@compressVideo": {},
-    "welcomeText": "Hei, hei! 👋 Dette er FluffyChat. Du kan logge på hvilken som helst hjemmeserver som er kompatibel med https://matrix.org. Og deretter chatte med hvem som helst. Det er et stort desentralisert meldingsnettverk!",
-    "@welcomeText": {},
     "notificationRuleIsUserMentionDescription": "Varsler brukeren når de er direkte nevnt i en melding.",
     "@notificationRuleIsUserMentionDescription": {},
     "notificationRuleContainsDisplayName": "Inneholder visningsnavn",
@@ -2709,8 +2490,6 @@
     "@notificationRuleIsUserMention": {},
     "notificationRuleIsRoomMention": "Romomtale",
     "@notificationRuleIsRoomMention": {},
-    "whatIsAHomeserver": "Hva er en hjemmeserver?",
-    "@whatIsAHomeserver": {},
     "commandHint_me": "Beskriv deg selv",
     "@commandHint_me": {
         "type": "String",
@@ -2762,11 +2541,6 @@
     },
     "checkList": "Sjekkliste",
     "@checkList": {},
-    "createNewSpace": "Nytt område",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "emoteKeyboardNoRecents": "Nylig brukte emotes vil vises her ...",
     "@emoteKeyboardNoRecents": {
         "type": "String",
@@ -2794,15 +2568,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "wipeChatBackup": "Vil du slette sikkerhetskopien av chatten din for å opprette en ny gjenopprettingsnøkkel?",
-    "@wipeChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "widgetEtherpad": "Tekstnotat",
     "@widgetEtherpad": {},
-    "noOneCanJoin": "Ingen kan bli med",
-    "@noOneCanJoin": {},
     "commandHint_html": "Send HTML-formatert tekst",
     "@commandHint_html": {
         "type": "String",
@@ -2879,8 +2646,6 @@
             }
         }
     },
-    "removeFromSpaceDescription": "Chatten blir fjernet fra området, men vises fortsatt i chatlisten din.",
-    "@removeFromSpaceDescription": {},
     "countChats": "{chats} chats",
     "@countChats": {
         "type": "String",
@@ -2890,8 +2655,6 @@
             }
         }
     },
-    "donate": "Doner",
-    "@donate": {},
     "banUserDescription": "Brukeren vil bli utestengt fra chatten og vil ikke kunne delta i chatten igjen før utestengelsen er opphevet.",
     "@banUserDescription": {},
     "unbanUserDescription": "Brukeren vil kunne gå inn i chatten igjen hvis vedkommende prøver.",
@@ -2902,14 +2665,6 @@
     "@sendTypingNotifications": {},
     "swipeRightToLeftToReply": "Sveip fra høyre mot venstre for å svare",
     "@swipeRightToLeftToReply": {},
-    "unlockOldMessages": "Lås opp gamle meldinger",
-    "@unlockOldMessages": {},
-    "storeInAndroidKeystore": "Lagre i Android KeyStore",
-    "@storeInAndroidKeystore": {},
-    "storeInAppleKeyChain": "Lagre i Apple nøkkelring",
-    "@storeInAppleKeyChain": {},
-    "storeSecurlyOnThisDevice": "Lagre sikkert på denne enheten",
-    "@storeSecurlyOnThisDevice": {},
     "acceptedKeyVerification": "{sender} godtok nøkkelverifisering",
     "@acceptedKeyVerification": {
         "type": "String",
@@ -2935,12 +2690,6 @@
     "@customReaction": {},
     "pause": "Pause",
     "@pause": {},
-    "moveToDifferentSpace": "Flytt til et annet område",
-    "@moveToDifferentSpace": {},
-    "storeInSecureStorageDescription": "Oppbevar gjenopprettingsnøkkelen på en sikker lagringsplass på denne enheten.",
-    "@storeInSecureStorageDescription": {},
-    "foregroundServiceRunning": "Denne varslingen vises når forgrunnstjenesten kjører.",
-    "@foregroundServiceRunning": {},
     "longPressToRecordVoiceMessage": "Langt trykk for å spille inn talemelding.",
     "@longPressToRecordVoiceMessage": {},
     "startedAPoll": "{username} startet en avstemning.",
@@ -2970,24 +2719,10 @@
     "@pollHasBeenEnded": {},
     "roomUpgradeDescription": "Chatten vil deretter bli gjenskapt med den nye romversjonen. Alle deltakere vil bli varslet om at de må bytte til den nye chatten. Du kan finne ut mer om romversjoner på https://spec.matrix.org/latest/rooms/",
     "@roomUpgradeDescription": {},
-    "groupCanBeFoundViaSearch": "Gruppen kan finnes via søk",
-    "@groupCanBeFoundViaSearch": {},
     "commandHint_sendraw": "Send raw json",
     "@commandHint_sendraw": {},
     "replyInThread": "Svar i tråden",
     "@replyInThread": {},
-    "sessionLostBody": "Sesjonen din er tapt. Vennligst rapporter denne feilen til utviklerne på {url}. Feilmeldingen er: {error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "noticeChatBackupDeviceVerification": "Merk: Når du kobler alle enhetene dine til chat-sikkerhetskopien, blir de automatisk bekreftet.",
     "@noticeChatBackupDeviceVerification": {},
     "notificationRuleTombstone": "Gravstein",
@@ -3000,12 +2735,6 @@
     "@backToMainChat": {},
     "saveChanges": "Lagre endringer",
     "@saveChanges": {},
-    "skipChatBackup": "Hopp over sikkerhetskopiering av chat",
-    "@skipChatBackup": {},
-    "loadingMessages": "Laster inn meldinger",
-    "@loadingMessages": {},
-    "setupChatBackup": "Konfigurer sikkerhetskopi av chat",
-    "@setupChatBackup": {},
     "commandHint_googly": "Send noen stirreøyne",
     "@commandHint_googly": {},
     "commandHint_cuddle": "Send en kos",
@@ -3029,29 +2758,20 @@
     "removeFromBundle": "Fjern fra denne pakken",
     "bundleName": "Pakke navn",
     "register": "Registrer",
-    "recoveryKeyLost": "Gjenopprettingsnøkkel tapt?",
     "separateChatTypes": "Separat direktemeldinger og grupper",
     "setAsCanonicalAlias": "Sett som hovedalias",
-    "spaceIsPublic": "Rom er offentlig",
-    "spaceName": "Romnavn",
     "confirmEventUnpin": "Er du sikker på at du vil fjerne festingen av arrangementet permanent?",
     "errorAddingWidget": "Feil ved tillegg av widgeten.",
     "hasKnocked": "🚪 {user} har banket på",
-    "usersMustKnock": "Brukere må banke på",
     "knock": "Bank på",
-    "saveKeyManuallyDescription": "Lagre denne nøkkelen manuelt ved å utløse systemets delingsdialog eller utklippstavle.",
     "noKeyForThisMessage": "Dette kan skje hvis meldingen ble sendt før du logget inn på kontoen din på denne enheten.\n\nDet er også mulig at avsenderen har blokkert enheten din eller at noe gikk galt med internettforbindelsen.\n\nEr du i stand til å lese meldingen på en annen økt? Da kan du overføre meldingen derfra! Gå til Innstillinger > Enheter og sørg for at enhetene dine har verifisert hverandre. Når du åpner rommet neste gang og begge øktene er i forgrunnen, vil nøklene bli overført automatisk.\n\nVil du ikke miste nøklene når du logger ut eller bytter enhet? Sørg for at du har aktivert chat-sikkerhetskopiering i innstillingene.",
-    "enterSpace": "Gå inn i rommet",
-    "newSpaceDescription": "Rom lar deg konsolidere dine chatter og bygge private eller offentlige fellesskap.",
     "noBackupWarning": "Advarsel! Uten å aktivere chat-sikkerhetskopi vil du miste tilgangen til dine krypterte meldinger. Det anbefales sterkt å aktivere chat-sikkerhetskopi før du logger ut.",
     "report": "rapporter",
     "makeAdminDescription": "Når du gjør denne brukeren til administrator, kan det hende du ikke kan angre dette, da de da vil ha de samme tillatelsene som deg.",
     "knocking": "Banker på",
     "joinSpace": "Bli med i rom",
     "publicSpaces": "Offentlige rom",
-    "addChatOrSubSpace": "Legg til chat eller underrom",
     "subspace": "Underrom",
-    "verifyOtherUserDescription": "Hvis du verifiserer en annen bruker, kan du være sikker på at du vet hvem du faktisk skriver til. 💪\n\nNår du starter en verifisering, vil du og den andre brukeren se en popup i appen. Der vil dere se en serie av emojis eller tall som dere må sammenligne.\n\nDen beste måten å gjøre dette på er å møtes eller starte en videosamtale. 👩‍💻",
     "verifyOtherDeviceDescription": "Når du verifiserer en annen enhet, kan disse enhetene utveksle nøkler, noe som øker din totale sikkerhet. 💪 Når du starter en verifisering, vil en popup vises i appen på begge enhetene. Der vil dere se en serie av emojis eller tall som dere må sammenligne.\nDet er best å ha begge enhetene tilgjengelig før du starter verifiseringen. 🤳",
     "knockRestricted": "Knock-begrenset",
     "chatPermissionsDescription": "Definer hvilket maktnivå som er nødvendig for visse handlinger i denne chatten. Maktnivåene 0, 50 og 100 representerer vanligvis brukere, moderatorer og administratorer, men alle grader er mulige.",
@@ -3070,11 +2790,9 @@
     "taTooltip": "L2 bruk med oversettelseshjelp",
     "interactiveTranslatorSliderHeader": "Interaktiv oversetter",
     "interactiveGrammarSliderHeader": "Interaktiv grammatikkontroll",
-    "interactiveTranslatorRequired": "Påkrevd",
     "waTooltip": "L2 bruk uten hjelp",
     "interactiveTranslator": "Oversettelseshjelp",
     "noIdenticalLanguages": "Vennligst velg ulike grunn- og målspråk",
-    "searchBy": "Søk etter land og språk",
     "joinWithClassCode": "Bli med i kurs",
     "languageLevelPreA1": "Novice Low (Pre A1)",
     "languageLevelA1": "Novice Mid (A1)",
@@ -3094,19 +2812,14 @@
     "whatIsYourBaseLanguage": "Hva er ditt hovedspråk?",
     "publicProfileTitle": "La profilen min bli funnet i søk",
     "publicProfileDesc": "Ved å slå på dette, gjør du det mulig for andre brukere å finne profilen din i den globale søkefeltet og sende forespørsler om chat. På dette tidspunktet kan du velge å godta eller avvise forespørselen.",
-    "errorDisableIT": "Oversettelsesassistanse er slått av.",
-    "errorDisableIGC": "Grammatikkhjelp er slått av.",
     "errorDisableITUserDesc": "Klikk her for å oppdatere innstillingene for oversettelseshjelp",
     "errorDisableIGCUserDesc": "Klikk her for å oppdatere innstillingene for grammatikkhjelp",
     "errorDisableITClassDesc": "Oversettelseshjelp er slått av for kurset som denne chatten er i.",
     "errorDisableIGCClassDesc": "Grammatikkhjelp er slått av for kurset som denne chatten er i.",
-    "error405Title": "Språk ikke satt",
     "error405Desc": "Vennligst sett språkene dine i Hovedmeny > Læringsinnstillinger.",
     "termsAndConditions": "Vilkår og betingelser",
     "andCertifyIAmAtLeast13YearsOfAge": " og bekrefter at jeg er minst 16 år gammel.",
-    "error502504Title": "Wow, det er mange elever pålogget!",
     "error502504Desc": "Oversettelses- og grammatikkverktøy kan være trege eller utilgjengelige mens Pangea-botene tar igjen.",
-    "error404Title": "Oversettelsesfeil!",
     "error404Desc": "Pangea Bot er ikke sikker på hvordan den skal oversette det...",
     "errorPleaseRefresh": "Vi undersøker det! Vennligst last inn siden på nytt og prøv igjen.",
     "connectedToStaging": "Tilkoblet til staging",
@@ -3144,13 +2857,9 @@
     "definitionsToolName": "Orddefinisjoner",
     "definitionsToolDescription": "Når det er aktivert, kan ord understreket i blått klikkes for definisjoner. Klikk på meldinger for å få tilgang til definisjoner.",
     "welcomeBack": "Velkommen tilbake! Hvis du var en del av pilotprosjektet 2023-2024, kontakt oss for din spesielle pilotabonnement. Hvis du er lærer som har (eller institusjonen din har) kjøpt lisenser for klassen din, kontakt oss for ditt lærerabonnement.",
-    "downloadTxtFile": "Last ned tekstfil",
-    "downloadCSVFile": "Last ned CSV-fil",
     "promotionalSubscriptionDesc": "Du har for øyeblikket et livstids kampanjeabonnement. Send en melding til support@pangea.chat for hjelp med å endre abonnementet ditt.",
     "originalSubscriptionPlatform": "Abonnement kjøpt via {purchasePlatform}",
     "oneWeekTrial": "Én ukes prøveperiode",
-    "downloadXLSXFile": "Last ned Excel-fil",
-    "unkDisplayName": "Ukjent",
     "wwCountryDisplayName": "Verden",
     "afCountryDisplayName": "Afghanistan",
     "axCountryDisplayName": "Ålandøyene",
@@ -3433,7 +3142,6 @@
     "trialPeriodExpired": "Prøveperioden din har utløpt",
     "translations": "oversettelser",
     "definitions": "definisjoner",
-    "subscribedToUnlockTools": "Abonner for å låse opp interaktiv oversettelse og grammatikkontroll, lydavspilling, tilpassede øvelsesaktiviteter og læringsanalyse!",
     "translationTooltip": "Oversett",
     "kickBotWarning": "Å sparke Pangea Bot vil fjerne samtale-boten fra denne chatten.",
     "refresh": "Oppdater",
@@ -3446,24 +3154,19 @@
     "chatCapacityHasBeenChanged": "Chattkapasiteten er endret",
     "chatCapacitySetTooLow": "Chattkapasiteten må være minst {count}.",
     "chatCapacityExplanation": "Chattkapasitet begrenser antall medlemmer som kan delta i en chat.",
-    "tooManyRequest": "For mange forespørsler, vennligst prøv igjen senere.",
     "enterNumber": "Vennligst skriv inn en heltallsverdi.",
     "practice": "Øv",
-    "speechToTextBody": "For talebeskjeder kan du se en transkripsjon samt speakerens Words Per Minute-poengsum.",
     "versionNotFound": "Versjon ikke funnet",
     "fetchingVersion": "Henter versjon...",
     "versionFetchError": "Feil ved henting av versjon",
     "versionText": "Versjon: {version}+{buildNumber}",
-    "l1TranslationBody": "Meldinger på ditt grunnspråk vil ikke bli oversatt.",
     "deleteSubscriptionWarningTitle": "Du har et aktivt abonnement",
     "deleteSubscriptionWarningBody": "Sletting av kontoen din vil ikke automatisk kansellere abonnementet ditt.",
     "manageSubscription": "Administrer abonnement",
-    "error520Title": "Vennligst prøv igjen.",
     "error520Desc": "Beklager, vi kunne ikke forstå meldingen din...",
     "wordsUsed": "Ord brukt",
     "level": "Nivå",
     "morphsUsed": "Morf brukt",
-    "translationChoicesBody": "Klikk og hold et alternativ for en ledetråd.",
     "grammar": "Grammatikk",
     "contactHasBeenInvitedToTheChat": "Kontakt har blitt invitert til chatten",
     "inviteChat": "📨 Inviter til chat",
@@ -3474,280 +3177,9 @@
     "l2SupportFull": "Full",
     "playAudio": "Spill av",
     "stop": "Stopp",
-    "grammarCopyPOSsconj": "Underordnende konjunksjon",
-    "grammarCopyPOSnum": "Tall",
-    "grammarCopyPOSverb": "Verb",
-    "grammarCopyPOSaffix": "Affiks",
-    "grammarCopyPOSpart": "Partikkel",
-    "grammarCopyPOSadj": "Adjektiv",
-    "grammarCopyPOScconj": "Koordinerende konjunksjon",
-    "grammarCopyPOSpunct": "Tegnsymbol",
-    "grammarCopyPOSadv": "Adverb",
-    "grammarCopyPOSaux": "Hjelpeverb",
-    "grammarCopyPOSspace": "Mellomrom",
-    "grammarCopyPOSsym": "Symbol",
-    "grammarCopyPOSdet": "Bestemmende",
-    "grammarCopyPOSpron": "Pronomen",
-    "grammarCopyPOSadp": "Adposisjon",
-    "grammarCopyPOSpropn": "Egennavn",
-    "grammarCopyPOSnoun": "Substantiv",
-    "grammarCopyPOSintj": "Interjeksjon",
-    "grammarCopyPOSx": "Annet",
-    "grammarCopyGENDERfem": "Feminint",
-    "grammarCopyPERSON2": "Andre person",
-    "grammarCopyMOODimp": "Imperativ",
-    "grammarCopyPUNCTTYPEqest": "Spørsmål",
-    "grammarCopyASPECTperf": "Perfekt",
-    "grammarCopyCASEaccnom": "Akkusativ, Nominativ",
-    "grammarCopyCASEobl": "Oblik",
-    "grammarCopyVOICEact": "Aktiv",
-    "grammarCopyPUNCTTYPEbrck": "Parentes",
-    "grammarCopyNOUNTYPEart": "Artikkel",
-    "grammarCopyNUMBERsing": "Entall",
-    "grammarCopyGENDERmasc": "Hankjønn",
-    "grammarCopyVERBTYPEmod": "Modale",
-    "grammarCopyADVTYPEadverbial": "Adverbial",
-    "grammarCopyTENSEperi": "Perifrasisk",
-    "grammarCopyNUMFORMdigit": "Siffer",
-    "grammarCopyNOUNTYPEnot_proper": "Ikke egennavn",
-    "grammarCopyNUMTYPEcard": " Kardinal",
-    "grammarCopyNOUNTYPEprop": "Egen",
-    "grammarCopyPUNCTTYPEdash": "Bindestrek",
-    "grammarCopyPUNCTTYPEyes": "Ja",
-    "grammarCopyPUNCTTYPEsemi": "Semikolon",
-    "grammarCopyPUNCTTYPEcomm": "Komma",
-    "grammarCopyMOODcnd": "Kondisjonell",
-    "grammarCopyCASEacc": "Akkusativ",
-    "grammarCopyPARTTYPEpart": "Partitiv",
-    "grammarCopyTENSEpast": "Fortid",
-    "grammarCopyDEGREEsup": "Superlativ",
-    "grammarCopyPUNCTTYPEcolo": "Kolon",
-    "grammarCopyPERSON3": "Tredje person",
-    "grammarCopyNUMBERplur": "Flertall",
-    "grammarCopyPRONTYPEnpr": "Egennavn",
-    "grammarCopyPRONTYPEinterrogative": "Spørreord",
-    "grammarCopyPOLITEinfm": "Uformell",
-    "grammarCopyADVTYPEtim": "Tid",
-    "grammarCopyPOLARITYneg": "Negativ",
-    "grammarCopyNUMTYPEtot": "Total",
-    "grammarCopyADVTYPEadnomial": "Adnominal",
-    "grammarCopyASPECTprog": "Progressiv",
-    "grammarCopyMOODsub": "Konjunktiv",
-    "grammarCopyVERBFORMcomplementive": "Komplementiv",
-    "grammarCopyCASEnom": "Nominativ",
-    "grammarCopyTENSEfut": "Fremtid",
-    "grammarCopyCASEdat": "Dativ",
-    "grammarCopyTENSEpres": "Presens",
-    "grammarCopyGENDERneut": "Intetkjønn",
-    "grammarCopyPRONTYPErel": "Relativ",
-    "grammarCopyVERBFORMfinalEnding": "Endelig ending",
-    "grammarCopyPRONTYPEdem": "Demonstrativ",
-    "grammarCopyPREPCASEpre": "Preposisjonell",
-    "grammarCopyVERBFORMfin": "Finite",
-    "grammarCopyDEGREEpos": "Positiv",
-    "grammarCopyPUNCTTYPEquot": "Sitat",
-    "grammarCopyVERBFORMger": "Gerundium",
-    "grammarCopyVOICEpass": "Passiv",
-    "grammarCopyCASEgen": "Genitiv",
-    "grammarCopyTENSEprs": "Presens",
-    "grammarCopyDEFINITEdef": "Bestemt",
-    "grammarCopyNUMTYPEord": "Ordinal",
-    "grammarCopyCASEins": "Instrumental",
-    "grammarCopyVERBFORMinf": "Infinitiv",
-    "grammarCopyVERBFORMaux": "Hjelpeverb",
-    "grammarCopyNUMFORMlong": "Lang",
-    "grammarCopyCASEloc": "Lokativ",
-    "grammarCopyMOODind": "Indikativ",
-    "grammarCopyDEGREEcmp": "Komparativ",
-    "grammarCopyCASErelativeCase": "Relativ",
-    "grammarCopyPUNCTTYPEexcl": "Utrop",
-    "grammarCopyPERSON1": "Første person",
-    "grammarCopyPUNCTSIDEini": "Innledende",
-    "grammarCopyGENDERperson": "Person",
-    "grammarCopyFOREIGNyes": "Utenlandsk",
-    "grammarCopyVOICEvoice": "Stemme",
-    "grammarCopyVERBTYPEverbType": "Verb",
-    "grammarCopyPOSSpass": "Eieform",
-    "grammarCopyPREPCASEprepCase": "Preposisjonell",
-    "grammarCopyNUMTYPEnumType": "Tallord",
-    "grammarCopyNOUNTYPEnounType": "Substantiv",
-    "grammarCopyREFLEXreflex": "Refleksiv",
-    "grammarCopyPRONTYPEpronType": "Pronomen",
-    "grammarCopyPUNCTSIDEpunctSide": "Tegnpunktside",
-    "grammarCopyVERBFORMverbForm": "Verb",
-    "grammarCopyGENDERgender": "Kjønn",
-    "grammarCopyMOODmood": "Modus",
-    "grammarCopyASPECTaspect": "Aspekt",
-    "grammarCopyPUNCTTYPEpunctType": "Tegnsetting",
-    "grammarCopyTENSEtense": "Tidsform",
-    "grammarCopyDEGREEdegree": "Grad",
-    "grammarCopyPOLITEpolite": "Høflighet",
-    "grammarCopyADVTYPEadvType": "Adverb",
-    "grammarCopyNUMFORMnumber": "Tall",
-    "grammarCopyCONJTYPEconjType": "Konjunksjon",
-    "grammarCopyPOLARITYpolarity": "Polaritetsgrad",
-    "grammarCopyCASEcase": "Kasus",
-    "grammarCopyDEFINITEdefinite": "Bestemthet",
-    "grammarCopyNUMFORMnumForm": "Numeral",
-    "grammarCopyPRONTYPEadn": "Adnominal",
-    "grammarCopyVOCvoc": "Vokativ",
-    "grammarCopyCMPLcmpl": "Komplementor",
-    "grammarCopyADVadv": "Adverbial",
-    "grammarCopyMOODjus": "Imperativ",
-    "grammarCopyGENDERcom": "Felleskjønn",
-    "grammarCopyREFLEXrflx": "Refleksiv",
-    "grammarCopyPARTTYPEpar": "Partitiv",
-    "grammarCopySPCspc": "Spesifikk",
-    "grammarCopyTENSEpqp": "Pluskvamperfekt",
-    "grammarCopyREFLEXref": "Refleksiv",
-    "grammarCopyPUNCTTYPEnshrt": "Kort",
-    "grammarCopyNUMBERdual": "Dobbel",
-    "grammarCopyNUMFORMlng": "Lang",
-    "grammarCopyVOICEmid": "Midten",
-    "grammarCopyINTRELintRel": "Spørreord, Relativ",
-    "grammarCopyINTint": "Spørreord",
-    "grammarCopyVOICEcaus": "Årsakende",
-    "grammarCopyUnknown": "Ukjent",
-    "grammarCopyEVIDENTevident": "Evidens",
-    "grammarCopyNUMFORMnumberPsor": "Eiers tall",
-    "grammarCopyASPECThab": "Vanemessig",
-    "grammarCopyCASEabl": "Ablativ",
-    "grammarCopyCASEall": "Allativ",
-    "grammarCopyCASEess": "Essiv",
-    "grammarCopyCASEtra": "Translativ",
-    "grammarCopyCASEequ": "Likestilt",
-    "grammarCopyCASEdis": "Distribusjon",
-    "grammarCopyCASEabs": "Absolutt",
-    "grammarCopyCASEerg": "Ergativ",
-    "grammarCopyCASEcau": "Årsak",
-    "grammarCopyCASEben": "Fordel",
-    "grammarCopyCASEtem": "Tidsmessig",
-    "grammarCopyCONJTYPEcoord": "Koordinerende",
-    "grammarCopyDEFINITEcons": "Bestemt form",
-    "grammarCopyDEGREEabs": "Absolutt grad",
-    "grammarCopyEVIDENTfh": "Faktisk evidens",
-    "grammarCopyEVIDENTnfh": "Ikke-faktisk evidens",
-    "grammarCopyMOODopt": "Optativ",
-    "grammarCopyMOODadm": "Beundrende",
-    "grammarCopyMOODdes": "Ønskende",
-    "grammarCopyMOODnec": "Nødvendighetsmodus",
-    "grammarCopyMOODpot": "Potensiell",
-    "grammarCopyMOODprp": "Proposisjon",
-    "grammarCopyMOODqot": "Kvantifiserende",
-    "grammarCopyNUMFORMword": "Ordform",
-    "grammarCopyNUMFORMroman": "Romersk tall",
-    "grammarCopyNUMFORMletter": "Bokstavform",
-    "grammarCopyNUMTYPEmult": "Multiplikativ",
-    "grammarCopyNUMTYPEfrac": "Brøkdel",
-    "grammarCopyNUMTYPEsets": "Sett",
-    "grammarCopyNUMTYPErange": "Rekke",
-    "grammarCopyNUMTYPEdist": "Distributiv",
-    "grammarCopyNUMBERtri": "Prøve",
-    "grammarCopyNUMBERpauc": "Paukal",
-    "grammarCopyNUMBERgrpa": "Større Paukal",
-    "grammarCopyNUMBERgrpl": "Større Flertall",
-    "grammarCopyNUMBERinv": "Invers",
-    "grammarCopyPERSON0": "Null",
-    "grammarCopyPERSON4": "Fjerde",
-    "grammarCopyPOLITEform": "Formell",
-    "grammarCopyPOLITEelev": "Høyverdig",
-    "grammarCopyPOLITEhumb": "Ydmyk",
-    "grammarCopyPRONTYPEemp": "Betont",
-    "grammarCopyPRONTYPEexc": "Utrop",
-    "grammarCopyPRONTYPErcp": "Gjensidig",
-    "grammarCopyPRONTYPEintRelPronType": "Interrogativ-Relativ",
-    "grammarCopyTENSEaor": "Aorist",
-    "grammarCopyTENSEeps": "Epistemisk",
-    "grammarCopyTENSEprosp": "Fremtidig",
-    "grammarCopyVERBFORMpart": "Partisipp",
-    "grammarCopyVERBFORMconv": "Konverb",
-    "grammarCopyVERBFORMvnoun": "Verbalt substantiv",
-    "grammarCopyVOICEantip": "Antipasiv",
-    "grammarCopyVOICEcauVoice": "Årsakende",
-    "grammarCopyVOICedir": "Direkte",
-    "grammarCopyVOICEinvVoice": "Invers",
-    "grammarCopyVOICErcpVoice": "Reciprocal",
-    "grammarCopyPOS": "Ordklasse",
-    "grammarCopyGENDER": "Kjønn",
-    "grammarCopyPERSON": "Person",
-    "grammarCopyMOOD": "Modus",
-    "grammarCopyPUNCTTYPE": "Tegntype",
-    "grammarCopyASPECT": "Aspekt",
-    "grammarCopyCASE": "Kasus",
-    "grammarCopyVOICE": "Aktiv/Passiv",
-    "grammarCopyNOUNTYPE": "Substantivtype",
-    "grammarCopyVERBTYPE": "Verbtype",
-    "grammarCopyADVTYPE": "Adverbtype",
-    "grammarCopyNUMFORM": "Tallform",
-    "grammarCopyNUMTYPE": "Numeral Type",
-    "grammarCopyNUMBER": "Tall",
-    "grammarCopyDEFINITE": "Bestemmelse",
-    "grammarCopyDEGREE": "Grad",
-    "grammarCopyEVIDENT": "Evidensialitet",
-    "grammarCopyFOREIGN": "Utenlandsk",
-    "grammarCopyPOLARITY": "Polaritets",
-    "grammarCopyPOLITE": "Høflighet",
-    "grammarCopyPREPCASE": "Preposisjonskasus",
-    "grammarCopyPRONTYPE": "Pronomen Type",
-    "grammarCopyPUNCTSIDE": "Tegnpunktside",
-    "grammarCopyREFLEX": "Refleksiv",
-    "grammarCopyTENSE": "Tid",
-    "grammarCopyVERBFORM": "Verbform",
-    "grammarCopyCONJTYPE": "Konjunksjonstype",
-    "grammarCopySPC": "Spesifisitet",
-    "grammarCopyPARTTYPE": "Partitiv Type",
-    "grammarCopyINTREL": "Interrogativ-Relativ",
-    "grammarCopyUNKNOWN": "Ukjent",
-    "grammarCopyNUMBERPSOR": "Eiers tall",
-    "grammarCopyPOSS": "Besittende",
-    "grammarCopyASPECTimp": "Ufullstendig aspekt",
-    "grammarCopyCASEvoc": "Kallativ",
-    "grammarCopyCASEcom": "Komitat",
-    "grammarCopyCASEpar": "Partitiv",
-    "grammarCopyCASEadv": "Adverbial",
-    "grammarCopyCASEref": "Referensiell",
-    "grammarCopyCASErel": "Relativ",
-    "grammarCopyCASEsub": "Subessiv",
-    "grammarCopyCASEsup": "Superessiv",
-    "grammarCopyCASEaccdat": "Akusativ-Dativ",
-    "grammarCopyCASEpre": "Preposisjonell",
-    "grammarCopyCONJTYPEsub": "Underordnende",
-    "grammarCopyCONJTYPEcmp": "Komparativ",
-    "grammarCopyDEFINITEind": "Ubestemt",
-    "grammarCopyMOODint": "Spørremodus",
-    "grammarCopyNOUNTYPEcomm": "Fellesnavn",
-    "grammarCopyNUMBERPSORsing": "Eiers tall entall",
-    "grammarCopyNUMBERPSORplur": "Eiers tall flertall",
-    "grammarCopyNUMBERPSORdual": "Eiers dual",
-    "grammarCopyPOLARITYpos": "Positiv polaritet",
-    "grammarCopyPOSSyes": "Besittende",
-    "grammarCopyPREPCASEnpr": "Ikke-preposisjonell",
-    "grammarCopyPRONTYPEprs": "Personlig",
-    "grammarCopyPRONTYPEint": "Interrogativ",
-    "grammarCopyPRONTYPEtot": "Total",
-    "grammarCopyPRONTYPEneg": "Negativ",
-    "grammarCopyPRONTYPEart": "Artikkel",
-    "grammarCopyPRONTYPEind": "Ubestemt",
-    "grammarCopyPRONTYPEintrel": "Interrogativ-relativ",
-    "grammarCopyPUNCTSIDEfin": "Endelig tegnsetting",
-    "grammarCopyPUNCTTYPEperi": "Punktum",
-    "grammarCopyREFLEXyes": "Refleksiv",
-    "grammarCopyTENSEimp": "Imperfekt",
-    "grammarCopyVERBFORMsup": "Supinum",
-    "grammarCopyVERBFORMadn": "Adnominal",
-    "grammarCopyVERBFORMlng": "Lang",
-    "grammarCopyVERBFORMshrt": "Kort",
-    "grammarCopyVERBTYPEcaus": "Årsaksverb",
-    "grammarCopyVOICEcau": "Årsakssammenheng",
-    "grammarCopyVOICEdir": "Direkte",
-    "grammarCopyVOICEinv": "Invers",
-    "grammarCopyVOICErcp": "Gjensidig",
     "other": "Annet",
     "levelShort": "NIVÅ {level}",
-    "clickBestOption": "Velg de beste alternativene for å oversette meldingen din!",
-    "completeActivitiesToUnlock": "Fullfør minst én aktivitet for å låse opp oversettelsen!",
     "noCapacityLimit": "Ingen kapasitetbegrensning",
-    "downloadGroupText": "Last ned gruppe tekst",
     "notificationsOn": "Varslinger på",
     "notificationsOff": "Varslinger av",
     "joinWithCode": "Bli med med kode",
@@ -3764,27 +3196,9 @@
     "constructUseIgnIGCDesc": "Ignorert i grammatikkorreksjon",
     "constructUseCorIGCDesc": "Korrekt i grammatikkorreksjon",
     "constructUseIncIGCDesc": "Feil i grammatikkorreksjon",
-    "constructUseCorPADesc": "Korrekt i ords betydningsaktivitet",
-    "constructUseIgnPADesc": "Ignorert i ords betydningsaktivitet",
-    "constructUseIncPADesc": "Feil i ords betydningsaktivitet",
-    "constructUseCorWLDesc": "Korrekt i ordlyttingsaktivitet",
-    "constructUseIncWLDesc": "Feil i ordlyttingsaktivitet",
-    "constructUseIngWLDesc": "Ignorert i ordlyttingsaktivitet",
-    "constructUseCorHWLDesc": "Korrekt i skjult ord-aktivitet",
-    "constructUseIncHWLDesc": "Feil i skjult ord-aktivitet",
-    "constructUseIgnHWLDesc": "Ignorert i skjult ord-aktivitet",
-    "constructUseCorLDesc": "Korrekt i lemmaktivitet",
-    "constructUseIncLDesc": "Feil i lemmaktivitet",
-    "constructUseIgnLDesc": "Ignorert i lemmaktivitet",
-    "constructUseCorMDesc": "Korrekt i grammatikkaktivitet",
-    "constructUseIncMDesc": "Feil i grammatikkaktivitet",
-    "constructUseIgnMDesc": "Ignorert i grammatikkaktivitet",
-    "constructUseEmojiDesc": "Korrekt i emoji-aktivitet",
     "constructUseCollected": "Innsamlet i chat",
     "constructUseNanDesc": "Ikke aktuelt",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktivert tekst-til-tale",
-    "enableTTSToolDescription": "Tillat appen å generere tekst-til-tale-uttak for deler av teksten på målspråket ditt.",
     "yourUsername": "Ditt brukernavn",
     "yourEmail": "Din e-post",
     "iWantToLearn": "Jeg vil lære",
@@ -3827,31 +3241,12 @@
     "whatIsTheMorphTag": "Hva er {morphologicalFeature} av '{wordForm}'?",
     "dataAvailable": "Data tilgjengelighet",
     "available": "Tilgjengelig",
-    "pangeaBotIsFallible": "Pangea Bot gjør også feil!",
-    "whatIsMeaning": "Hva betyr '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Match betydninger med ordene i meldingen!",
-    "doubleClickToEdit": "Dobbeltklikk for å redigere.",
-    "activityPlannerTitle": "Aktivitetsplanlegger",
-    "topicLabel": "Tema",
-    "topicPlaceholder": "Velg et tema...",
-    "modeLabel": "Aktivitetstype",
-    "modePlaceholder": "Velg en modus...",
-    "learningObjectiveLabel": "Læringsmål",
-    "learningObjectivePlaceholder": "Velg et læringsmål...",
-    "languageOfInstructionsLabel": "Språk for aktivitetsinstruksjoner",
-    "targetLanguageLabel": "Mål språk",
     "cefrLevelLabel": "CEFR-nivå",
-    "generateActivitiesButton": "Generer aktivitet",
-    "launchActivityButton": "Start aktivitet",
     "image": "Bilde",
     "video": "Video",
     "nan": "Ikke aktuelt",
-    "activityPlannerOverviewInstructionsBody": "Velg et emne, modus, læringsmål og generer en aktivitet for chatten!",
-    "activityTitle": "Aktivitetstittel",
-    "addVocabulary": "Legg til vokabular",
     "instructions": "Instruksjoner",
-    "numberOfLearners": "Antall elever",
-    "mustBeInteger": "Må være et heltall, f.eks. 1, 2, 3, ...",
     "constructUsePvmDesc": "Produsert i talemeldingsmodus",
     "leaveSpaceDescription": "Ved å forlate kurset vil du forlate alle chattene innenfor det. Andre brukere vil se at du har forlatt kurset.",
     "constructUseCorMmDesc": "Korrekt meldingsbetydning",
@@ -3866,7 +3261,6 @@
     "ttsDisabledBody": "Du kan aktivere tekst-til-tale i læringsinnstillingene dine",
     "noSpaceDescriptionYet": "Ingen kursbeskrivelse opprettet ennå.",
     "tooLargeToSend": "Denne meldingen er for stor til å sende",
-    "exitWithoutSaving": "Er du sikker på at du vil forlate uten å lagre?",
     "enableAutocorrectPopupTitle": "Legg til tastaturet for målspråket ditt ved å gå til:",
     "enableAutocorrectPopupSteps": "  • Innstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Legg til nytt tastatur",
     "enableAutocorrectPopupDescription": "Når språket er valgt, kan du klikke på det lille globus-ikonet nederst til venstre på tastaturet for å aktivere det nylig installerte tastaturet.",
@@ -3877,11 +3271,8 @@
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er i ferd med å forlate denne chatten. Andre brukere vil se at du har forlatt chatten.",
     "confirmUserId": "Vennligst bekreft brukernavnet ditt i Pangea Chat for å slette kontoen din.",
-    "startingToday": "Fra og med i dag",
-    "oneWeekFreeTrial": "En ukes gratis prøveperiode",
     "paidSubscriptionStarts": "Starter {startDate}",
     "cancelInSubscriptionSettings": "• Avbryt når som helst i abonnementinnstillingene",
-    "cancelToAvoidCharges": "• Avbryt før {trialEnds} for å unngå gebyrer",
     "downloadGboard": "Last ned Gboard",
     "autocorrectNotAvailable": "Dessverre er ikke plattformen din for tiden støttet for denne funksjonen. Følg med for videre utvikling!",
     "pleaseUpdateApp": "Vennligst oppdater appen for å fortsette.",
@@ -3891,19 +3282,12 @@
     "knockSpaceSuccess": "Du har bedt om å bli med i dette kurset! En administrator vil svare på forespørselen din når de mottar den 😀",
     "chooseWordAudioInstructionsBody": "Lytt til hele meldingen. Deretter matcher du lydene med ordene.",
     "chooseMorphsInstructionsBody": "Klikk på puslespillbitene for grammatikkspørsmål!",
-    "pleaseEnterInt": "Vennligst skriv inn et tall",
     "home": "Hjem",
     "join": "Bli med",
-    "readingAssistanceOverviewBody": "Klikk på knappene nedenfor for minispill om å matche emojis, lyder, ords betydninger og grammatikkonsepter. Eller klikk på hvilket som helst ord for detaljer.",
     "resetInstructionTooltipsTitle": "Tilbakestill instruksjonstips",
     "resetInstructionTooltipsDesc": "Klikk for å vise instruksjonstips som for en helt ny bruker.",
-    "randomize": "Tilfeldiggjør",
     "clear": "Tøm",
-    "makeYourOwnActivity": "Lag din egen aktivitet",
-    "featuredActivities": "Utvalgte",
     "save": "Lagre",
-    "startChat": "Start en chat",
-    "translationProblem": "Oversettelsesproblem",
     "askToJoin": "Spør om å bli med",
     "emptyChatWarningTitle": "Chatten er tom",
     "emptyChatWarningDesc": "Du har ikke invitert noen til chatten din. Gå til Chat-innstillinger for å invitere kontaktene dine eller Bot. Du kan også gjøre dette senere.",
@@ -3933,17 +3317,13 @@
     "timesUsedIndependently": "Antall ganger brukt uavhengig",
     "timesUsedWithAssistance": "Antall ganger brukt med hjelp",
     "shareInviteCode": "Del invitasjonskode: {code}",
-    "leaderboard": "Toppliste",
     "skipForNow": "Hopp over for nå",
     "permissions": "Tillatelser",
     "spaceChildPermission": "Hvem kan legge til nye chatter i dette kurset",
-    "addEnvironmentOverride": "Legg til miljøoverstyring",
     "defaultOption": "Standard",
     "deleteChatDesc": "Er du sikker på at du vil slette denne samtalen? Den vil bli slettet for alle deltakere, og alle meldinger i samtalen vil ikke lenger være tilgjengelige for praksis eller læringsanalyse.",
     "deleteSpaceDesc": "Kurset og eventuelle valgte samtaler vil bli slettet for alle deltakere, og alle meldinger i samtalen vil ikke lenger være tilgjengelige for praksis eller læringsanalyse. Denne handlingen kan ikke angres.",
     "launch": "Start",
-    "searchChats": "Søk i samtaler",
-    "maxFifty": "Maks 50",
     "configureSpace": "Konfigurer kurs",
     "pinMessages": "Fest meldinger",
     "setJoinRules": "Sett innmeldingsregler",
@@ -3956,7 +3336,6 @@
     "announcements": "Kunngjøringer",
     "activities": "Aktiviteter",
     "access": "Tilgang",
-    "activitySuggestionTimeoutMessage": "Vi jobber hardt for å generere flere aktiviteter for deg, vennligst sjekk igjen om et minutt",
     "howSpaceCanBeFound": "Hvordan dette kurset kan finnes",
     "private": "Privat",
     "cannotBeFoundInSearch": "Kan ikke finnes i søk",
@@ -3978,9 +3357,6 @@
     "failedToFetchTranscription": "Kunne ikke hente transkripsjon",
     "deleteEmptySpaceDesc": "Kurset vil bli slettet for alle deltakere. Denne handlingen kan ikke angres.",
     "regenerate": "Regenerer",
-    "mySavedActivities": "Mine lagrede aktiviteter",
-    "noSavedActivities": "Ingen lagrede aktiviteter",
-    "saveActivity": "Lagre denne aktiviteten",
     "failedToPlayVideo": "Mislyktes i å spille av video",
     "done": "Ferdig",
     "inThisSpace": "I dette kurset",
@@ -3991,18 +3367,10 @@
     "numInvited": "{count} invitert",
     "saved": "Lagret",
     "reset": "Tilbakestill",
-    "errorGenerateActivityMessage": "Mislyktes i å generere aktivitet",
-    "errorRegenerateActivityMessage": "Mislyktes i å regenerere aktivitet",
-    "errorLaunchActivityMessage": "Mislyktes i å starte aktivitet",
-    "errorFetchingActivitiesMessage": "Mislyktes i å hente aktiviteter",
     "errorFetchingDefinition": "Mislyktes i å hente definisjon",
     "errorProcessAnalytics": "Mislyktes i å behandle analyse",
     "errorDownloading": "Nedlasting mislyktes",
-    "errorLoadingSpaceChildren": "Mislyktes i å laste inn chatter innenfor dette kurset",
-    "unexpectedError": "Uventet feil.",
-    "pleaseReload": "Vennligst last inn på nytt og prøv igjen.",
     "translationError": "Oversettelsesfeil",
-    "errorFetchingActivity": "Mislyktes i å hente aktivitet",
     "check": "Sjekk",
     "unableToFindRoom": "Ingen chat eller kurs funnet med den koden. Vennligst prøv igjen.",
     "numCompletedActivities": "Antall fullførte aktiviteter",
@@ -4010,23 +3378,14 @@
     "request": "Forespørsel",
     "requestAll": "Forespør alle",
     "confirmMessageUnpin": "Er du sikker på at du vil fjerne festingen av denne meldingen?",
-    "createActivityPlan": "Opprett en ny aktivitetsplan",
-    "saveAndLaunch": "Lagre og start",
-    "launchToSpace": "Start i kurs",
-    "numberOfActivities": "Antall aktivitetsøkter",
-    "maximumActivityParticipants": "Hver aktivitet kan ha maksimalt {count} deltaker(e).",
     "pending": "Venter",
     "inactive": "Inaktiv",
-    "confirmRole": "Bekreft rolle",
     "openRoleLabel": "ÅPEN",
-    "joinedTheActivity": "👋 {username} ble med som {role}",
     "finishedTheActivity": "🎯 {username} avsluttet denne aktiviteten",
     "activitySummaryError": "Aktivitetsoppsummeringer er utilgjengelige",
     "requestSummaries": "Be om oppsummeringer",
-    "generatingNewActivities": "Du er den første brukeren av dette språkparet! Vennligst gi oss et minutt, vi forbereder aktiviteter spesielt for deg.",
     "requestAccessTitle": "Be om tilgang til analyser?",
     "requestAccessDesc": "Vil du be om tilgang til å se deltakeranalyser?\n\nHvis deltakerne godtar, vil administratorer av kurset kunne se deres:\n    • total vokabular\n    • totale grammatikkonsepter\n    • fullførte aktivitetsøkter\n    • de spesifikke grammatikkonseptene som er brukt, riktig og feil\n\nDe vil ikke kunne se deres:\n    • meldinger i chatter utenfor kurset\n    • vokabularlisten",
-    "requestAccess": "Be om tilgang ({count})",
     "analyticsInactiveTitle": "Forespørsler til inaktive brukere kunne ikke sendes",
     "analyticsInactiveDesc": "Inaktive brukere som ikke har logget inn siden denne funksjonen ble introdusert, vil ikke se forespørselen din.\n\nForespørselsknappen vil vises når de kommer tilbake. Du kan sende forespørselen på nytt senere ved å klikke på Forespørselsknappen under navnet deres når den er tilgjengelig.",
     "accessRequestedTitle": "Forespørsel om tilgang til analyse",
@@ -4035,7 +3394,6 @@
     "lastUpdated": "Oppdatert\n{time}",
     "activityFinishedMessage": "Alt ferdig!",
     "endForAll": "Avslutt for alle",
-    "newCourse": "Nytt kurs",
     "numModules": "{num} moduler",
     "coursePlan": "Kursplan",
     "editCourseLater": "Du kan redigere malens tittel, beskrivelser og kursbilde senere.",
@@ -4049,8 +3407,6 @@
     "accessDesc": "Du kan gjøre kurset ditt åpent for alle! Eller, gjør kurset ditt privat og sikkert.",
     "createGroupChatDesc": "Mens aktivitetsøkter starter og slutter, vil gruppechatter forbli åpne for rutinemessig kommunikasjon.",
     "deleteDesc": "Bare administratorer kan slette et kurs. Dette er en ødeleggende handling som fjerner alle brukere og sletter alle valgte chatter innen kurset. Vær forsiktig.",
-    "noCourseFound": "Åh, dette kurset trenger en plan!\n\nKursplaner er en sekvens av emner og samtaleaktiviteter.",
-    "additionalParticipants": "+ {num} andre",
     "whatNow": "Hva nå?",
     "chooseNextActivity": "Velg din neste aktivitet!",
     "letsGo": "La oss dra",
@@ -4063,16 +3419,13 @@
     "waitNotDone": "Vent, jeg er ikke ferdig!",
     "waitingForOthersToFinish": "Venter på at de andre skal bli ferdige...",
     "generatingSummary": "Analyserer chat og genererer resultater",
-    "findCourse": "Finn et kurs",
     "pingParticipantsNotification": "{user} ser etter brukere for å delta i aktivitetsøkten i {room}",
     "course": "Kurs",
     "courses": "Kurs",
     "goToCourse": "Gå til kurset: {course}",
     "activityComplete": "Denne aktiviteten er fullført. Oppsummeringen av aktiviteten skal være tilgjengelig nedenfor.",
-    "startNewSession": "Start ny økt",
     "joinOpenSession": "Bli med i åpen økt",
     "activityNotFound": "Aktivitet ikke funnet",
-    "levelUp": "Nivå opp",
     "myActivities": "Mine aktiviteter",
     "openToJoin": "Åpen for å bli med",
     "results": "Resultater",
@@ -4154,23 +3507,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@recoveryKeyLost": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@separateChatTypes": {
         "type": "String",
         "placeholders": {}
     },
     "@setAsCanonicalAlias": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceName": {
         "type": "String",
         "placeholders": {}
     },
@@ -4190,27 +3531,11 @@
             }
         }
     },
-    "@usersMustKnock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knock": {
         "type": "String",
         "placeholders": {}
     },
-    "@saveKeyManuallyDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noKeyForThisMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enterSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newSpaceDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -4238,15 +3563,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addChatOrSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@subspace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -4336,10 +3653,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4349,10 +3662,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4436,14 +3745,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4460,10 +3761,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4476,15 +3773,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4636,14 +3925,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4657,14 +3938,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5835,10 +5108,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5891,19 +5160,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
     },
     "@practice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@speechToTextBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -5930,10 +5191,6 @@
             }
         }
     },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
         "placeholders": {}
@@ -5943,10 +5200,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5963,10 +5216,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6010,1078 +5259,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@grammarCopyPOSsconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnum": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSverb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaffix": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpunct": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSspace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSsym": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSdet": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpron": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpropn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSintj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERfem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON2": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEqest": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTperf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEobl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEact": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEbrck": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERmasc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEmod": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadverbial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMdigit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnot_proper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEcard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEprop": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEdash": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEsemi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODcnd": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEacc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpast": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcolo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON3": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEinterrogative": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEinfm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEtim": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadnomial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTprog": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMcomplementive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEfut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpres": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERneut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfinalEnding": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEdem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEquot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMger": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEgen": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdef": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEins": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMinf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlong": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEloc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErelativeCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEexcl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON1": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEini": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERperson": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGNyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEvoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEverbType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEprepCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEnumType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnounType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXreflex": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEpronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEpunctSide": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMverbForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERgender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODmood": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTaspect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEpunctType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEtense": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEdegree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEpolite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadvType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumber": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEconjType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpolarity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdefinite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOCvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCMPLcmpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODjus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXrflx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPCspc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpqp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEnshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEmid": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTRELintRel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUnknown": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTevident": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumberPsor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECThab": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEess": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtra": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEequ": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEerg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEben": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcoord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEcons": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTnfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODopt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODadm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODdes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODnec": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODpot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODprp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODqot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMword": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMroman": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMletter": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEmult": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEfrac": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEsets": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPErange": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEdist": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERtri": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERpauc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpa": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON0": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON4": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEform": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEelev": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEhumb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEemp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEexc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintRelPronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEaor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEeps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprosp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMconv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMvnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEantip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcauVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICedir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinvVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcpVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOOD": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITY": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEX": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPC": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTREL": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUNKNOWN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSOR": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintrel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEdir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@other": {
         "type": "String",
         "placeholders": {}
@@ -7094,19 +5271,7 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -7174,70 +5339,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@constructUseCollected": {
         "type": "String",
         "placeholders": {}
@@ -7256,14 +5357,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7440,71 +5533,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
         "type": "String",
         "placeholders": {}
     },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7520,27 +5553,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -7604,10 +5617,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -7648,14 +5657,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -7667,14 +5668,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -7712,19 +5705,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
     },
     "@join": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@readingAssistanceOverviewBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7736,31 +5721,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@makeYourOwnActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -7884,10 +5849,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -7897,10 +5858,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -7917,14 +5874,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -7973,10 +5922,6 @@
         "placeholders": {}
     },
     "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitySuggestionTimeoutMessage": {
         "type": "String",
         "placeholders": {}
     },
@@ -8068,18 +6013,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -8128,22 +6061,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -8156,23 +6073,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8211,30 +6112,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
@@ -8243,24 +6120,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@confirmRole": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -8278,10 +6140,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -8289,14 +6147,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -8338,10 +6188,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -8401,18 +6247,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -8465,10 +6299,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -8495,10 +6325,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -8679,7 +6505,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Sjekk igjen i morgen for oppdateringer om aktiviteten.",
-    "activityDropdownDesc": "Når du er ferdig med denne aktiviteten, klikk nedenfor",
     "languageMismatchTitle": "Språkavvik",
     "languageMismatchDesc": "Mål språket ditt stemmer ikke overens med språket for denne aktiviteten. Vil du oppdatere målspråket?",
     "reportWordIssueTooltip": "Rapporter problem med ordinformasjon",
@@ -8692,10 +6517,6 @@
     "selectAll": "Velg alle",
     "deselectAll": "Fjern valg av alle",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8744,17 +6565,11 @@
         "placeholders": {}
     },
     "startOwn": "Start min egen",
-    "joinCourseDesc": "Hvert kurs har 8-10 sekvenserte emner med en rekke oppgavebaserte språklæringsaktiviteter.",
     "newMessageInPangeaChat": "🗨️ Ny melding i Pangea Chat",
     "shareCourse": "Del kurs",
     "addCourse": "Legg til et kurs",
-    "joinPublicCourse": "Bli med på offentlig kurs",
     "vocabLevelsDesc": "Dette er hvor vokabularord vil komme når du har nivåert dem opp!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8767,10 +6582,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -8789,12 +6600,9 @@
     "emojiView": "Emoji-visning",
     "feedbackDialogDesc": "Jeg gjør også feil! Noe for å hjelpe meg å bli bedre?",
     "contactHasBeenInvitedToTheCourse": "Kontakt har blitt invitert til kurset",
-    "activityStatsButtonTooltip": "Aktivitetsinfo",
     "allow": "Tillat",
     "deny": "Avvis",
     "enabledRenewal": "Aktiver abonnementfornyelse",
-    "subscriptionEndsOn": "Abonnementet slutter den",
-    "subscriptionRenewsOn": "Abonnementet fornyes den",
     "waitForSubscriptionChanges": "Endringer i abonnementet ditt kan ta et øyeblikk å gjenspeile i appen.",
     "subscribeReadingAssistance": "Abonner for å låse opp meldingsverktøy",
     "aceDisplayName": "Achinese",
@@ -9060,10 +6868,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -9073,14 +6877,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9999,14 +7795,8 @@
         "placeholders": {}
     },
     "introChatTitle": "Opprett Introduksjoner Chat",
-    "introChatDesc": "Alle i rommet kan legge ut.",
     "announcementsChatTitle": "Kunngjøringer Chat",
-    "announcementsChatDesc": "Bare romadministratoren kan legge ut.",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10014,13 +7804,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "Åpne økter ({num})",
     "inProgressActivitiesTitle": "Pågår nå ({num})",
-    "completedActivitiesTitle": "Ferdig ({num})",
     "pickDifferentActivity": "Velg en annen aktivitet",
     "inOngoingActivity": "Du har en pågående aktivitet!",
     "@notStartedActivitiesTitle": {
@@ -10032,14 +7817,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10105,15 +7882,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Du har satt emoji for {lemma}! Vi vil bruke denne emojien for å representere ordet i praksisaktiviteter fremover.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Venter på at påloggingen skal fullføres",
     "ssoDialogDesc": "Vi åpnet en ny fane slik at du kan logge inn sikkert.",
     "ssoDialogHelpText": "🤔 Hvis du ikke så den nye fanen, vennligst sjekk popup-blokkeringen din.",
@@ -10144,16 +7912,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Aktiviteter for å låse opp neste emne",
-    "activitiesToUnlockTopicDesc": "Sett antall aktiviteter for å låse opp neste kurs emne",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Korrekt orddefinisjonspraksis",
     "constructUseIncLMDesc": "Feil orddefinisjonspraksis",
     "constructUseCorLADesc": "Korrekt ordlyttpraksis",
@@ -10161,7 +7919,6 @@
     "constructUseBonus": "Bonus under ordpraksis",
     "practiceVocab": "Øv på ordforråd",
     "selectMeaning": "Velg betydningen",
-    "selectAudio": "Velg den matchende lyden",
     "anotherRound": "En runde til",
     "activitySettingsOverrideWarning": "Språk og språknivå bestemt av aktivitetsplan",
     "voice": "Stemme",
@@ -10193,10 +7950,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -10214,25 +7967,15 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Nedlasting initiert",
     "webDownloadPermissionMessage": "Hvis nettleseren din blokkerer nedlastinger, vennligst aktiver nedlastinger for dette nettstedet.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Fremdriften i økten din vil ikke bli lagret.",
     "practiceGrammar": "Øv på grammatikk",
     "notEnoughToPractice": "Send flere meldinger for å låse opp øving",
     "constructUseCorGCDesc": "Øvelse i korrekt grammatikkategori",
     "constructUseIncGCDesc": "Øvelse i ukorrekt grammatikkategori",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10274,11 +8017,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot-stemme",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Din forespørsel har blitt sendt til kursadministratoren! Du vil bli sluppet inn hvis de godkjenner.",
     "@knockDesc": {
         "type": "String",
@@ -10291,16 +8029,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat er en tekstmelding-app, så varsler er viktige!",
-    "enableNotificationsDesc": "Tillat varsler",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10329,11 +8057,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Noe gikk galt, og vi jobber hardt med å fikse det. Sjekk igjen senere.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Aktiver skriveassistent",
     "autoIGCToolDescription": "Kjør Pangea Chat-verktøy automatisk for å korrigere sendte meldinger til målspråket.",
     "@autoIGCToolName": {
@@ -10351,21 +8074,6 @@
     },
     "aboutMeHint": "Om meg",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "Idiom",
-    "grammarCopyPOSphrasalv": "Phrasal Verb",
-    "grammarCopyPOScompn": "Sammensatt",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10404,24 +8112,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "Grammatikk",
-    "spanTypeWordChoice": "Ordvalg",
     "spanTypeSpelling": "Staving",
     "spanTypePunctuation": "Tegnsetting",
     "spanTypeStyle": "Stil",
     "spanTypeFluency": "Flyt",
     "spanTypeAccents": "Aksenter",
     "spanTypeCapitalization": "Store bokstaver",
-    "spanTypeCorrection": "Korrigering",
     "spanFeedbackTitle": "Rapporter korrigeringsproblem",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -10446,10 +8143,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -10457,9 +8150,6 @@
     "changedTheChatDescription": "{username} endret chatbeskrivelsen",
     "changedTheChatName": "{username} endret chatnavnet",
     "moreEvents": "Flere hendelser",
-    "newSubSpace": "Nytt underområde",
-    "spaceMemberOf": "Rommedlem av {spaces}",
-    "spaceMemberOfCanKnock": "Rommedlem av {spaces} kan banke",
     "pollQuestion": "Avstemningsspørsmål",
     "countVotes": "{count, plural, =1{Én stemme} other{{count} stemmer}}",
     "@changedTheChatDescription": {
@@ -10477,26 +8167,6 @@
     "@moreEvents": {
         "type": "String",
         "placeholders": {}
-    },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
     },
     "@pollQuestion": {
         "type": "String",
@@ -10518,20 +8188,15 @@
     "newStickerPack": "Ny klistremerke-pakke",
     "stickerPackName": "Klistremerke-pakkens navn",
     "attribution": "Attribusjon",
-    "skipChatBackupWarning": "Er du sikker? Uten å aktivere chat-sikkerhetskopi kan du miste tilgangen til meldingene dine hvis du bytter enhet.",
     "noMoreResultsFound": "Ingen flere resultater funnet",
     "chatSearchedUntil": "Chat søkt til {time}",
     "federationBaseUrl": "Føderasjonsbasis-URL",
     "clientWellKnownInformation": "Klient-Vel-Kjent Informasjon:",
     "baseUrl": "Basis-URL",
     "identityServer": "Identitetsserver:",
-    "versionWithNumber": "Versjon: {version}",
     "logs": "Logger",
-    "advancedConfigs": "Avanserte konfigurasjoner",
     "advancedConfigurations": "Avanserte konfigurasjoner",
-    "signInWithLabel": "Logg inn med:",
     "selectAllWords": "Velg alle ordene du hører i lyden",
-    "joinCourseForActivities": "Bli med i et kurs for å prøve aktiviteter.",
     "courseDescription": "Kurs består av 3-8 moduler, hver med aktiviteter for å oppmuntre til å øve på ord i forskjellige sammenhenger",
     "@courseDescription": {
         "type": "String",
@@ -10552,12 +8217,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Lås opp øvingsaktiviteter",
     "hideEvents": "Skjul hendelser",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10655,21 +8315,11 @@
         "placeholders": {}
     },
     "getStarted": "Kom i gang",
-    "writeAndSpeakWorryFree": "Skriv og snakk uten bekymringer med Pangea Bot når som helst, hvor som helst!",
-    "joinLearningCommunities": "Bli med i internasjonale læringsfellesskap eller... start ditt eget!",
     "playConversationGames": "Spill samtalespill med boten, klassekamerater og nye venner!",
     "jumpIntoConversation": "Kast deg inn i samtalen fra dag én med AI-skriveverktøy!",
     "playPersonalizedGames": "Spill øvelsesspill tilpasset ditt ordforråd og grammatikkbehov!",
     "learnLanguageWhileTexting": "Lær et språk mens du sender tekstmeldinger til vennene dine!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10689,23 +8339,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ser du ikke etter den du leter etter? De må kanskje sette profilen sin til offentlig i Læringsinnstillinger",
     "suggestedVocab": "Foreslått ordforråd",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
     },
     "myGender": "Kjønnet mitt",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvingsaktiviteter.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10720,8 +8360,6 @@
     "notificationDeviceSubtitle": "Se og administrer enheter som sender deg push-varsler.",
     "notificationRuleDM": "Direktemelding",
     "notificationRuleDMDescription": "Varsler brukeren om meldinger i direktemeldingsrom.",
-    "notificationRuleCourseAndActivity": "Kurs og aktivitet",
-    "notificationRuleCourseAndActivityDescription": "Varsler brukeren om meldinger i kurs, aktiviteter og chatter.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10746,31 +8384,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableEmailNotifications": "Aktiver e-postvarsler",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "joinSpaceOnboardingDesc": "I en klasse? Skriv inn koden din her.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatisk utheving av lydmeldinger",
-    "selectAudioMessagesOnPlayDescription": "Automatisk utheve lydmeldinger når de spilles av",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10779,7 +8394,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Jeg lærer...",
     "alreadySpeak": "Jeg snakker allerede...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10807,18 +8421,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Dette kurset har emner med færre enn {input} aktiviteter. Vennligst skriv inn et tall som er mindre enn eller lik {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Klikk her for å logge inn igjen.",
     "@clickToLogin": {
@@ -11020,6 +8622,116 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Abonner for å låse opp interaktiv oversettelse og grammatikkontroll, lydavspilling, personlige øvelser og læringsanalyse!",
+    "unlockPracticeActivities": "Lås opp øvelser",
+    "noAnalyticsActivitiesAvailable": "Wow, du har fullført alle tilgjengelige aktiviteter! Send flere meldinger for å låse opp flere øvelser.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Korrekt i ordbetydningsøvelse",
+    "constructUseIgnPADesc": "Ignorert i ordbetydningsøvelse",
+    "constructUseIncPADesc": "Feil i ordbetydningsøvelse",
+    "constructUseCorWLDesc": "Korrekt i ordlytteøvelse",
+    "constructUseIncWLDesc": "Feil i ordlytteøvelse",
+    "constructUseIngWLDesc": "Ignorert i ordlytteøvelse",
+    "constructUseCorHWLDesc": "Korrekt i skjult ordøvelse",
+    "constructUseIncHWLDesc": "Feil i skjult ordøvelse",
+    "constructUseIgnHWLDesc": "Ignorert i skjult ordøvelse",
+    "constructUseCorLDesc": "Korrekt i lemmaøvelse",
+    "constructUseIncLDesc": "Feil i lemma-øvelse",
+    "constructUseIgnLDesc": "Ignorert i lemma-øvelse",
+    "constructUseCorMDesc": "Korrekt i grammatikk-øvelse",
+    "constructUseIncMDesc": "Feil i grammatikk-øvelse",
+    "constructUseIgnMDesc": "Ignorert i grammatikk-øvelse",
+    "constructUseEmojiDesc": "Korrekt i emoji-øvelse",
+    "errorFetchingExercise": "Kunne ikke hente praksisøvelse",
+    "notificationRuleCourseAndActivity": "Kurs og Aktivitet",
+    "notificationRuleCourseAndActivityDescription": "Varsler brukeren om meldinger i kurs, aktiviteter og chatter.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Klikk her for å oppdatere målspråket ditt.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -11029,5 +8741,1032 @@
     "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
-    }
+    },
+    "visibilityToggleTitle": "Tillat andre å søke etter kurset ditt",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Ikke gå glipp av en chat!",
+    "enableNotificationsDesc": "Tillat varsler for Pangea Chat og hold kontakten med språkvennene dine!",
+    "enableNotifications": "Tillat varsler",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Du kan ikke blokkere deg selv",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokker brukernavn",
+    "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klikk på meldingsboblen for å velge den",
+    "writingAssistanceTutorialIGCButton": "Etter å ha skrevet meldingen din, klikk på denne knappen for å starte skriveassistanse",
+    "selectModeTutorialTranslate": "Klikk her for å oversette meldingen",
+    "selectModeTutorialAudio": "Klikk her for å lytte til meldingen",
+    "selectModeTutorialExit": "Klikk på bakgrunnen for å gå tilbake til chatting",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Skriveassistanse tar litt lengre tid enn forventet. Prøv igjen om et sekund!",
+    "@errorTryAgainSoon": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Oops, noe gikk galt… Vi ser på det! Vennligst prøv igjen senere.",
+    "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Godta alt",
+    "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Å senke denne brukerens tillatelsesnivå vil fjerne administratorrettigheter.",
+    "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Denne modusen lar deg sette emojis til ord! Velg et ord for å knytte en emoji til det!",
+    "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Vokabularordene du samler vil gå her. Begynn å chatte og interagere for å tjene noen!",
+    "vocabLevelsDescSeed": "Dette er hvor nye vokabularord vil vises!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Flere alternativer",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Velg ord for å lære mer om dem",
+    "requireAnalyticsAccessTitle": "Krever tilgang til analyser for å bli med",
+    "requireAnalyticsAccessDesc": "Deltakere må gi tilgang til sine læringsanalyser for å bli med i dette kurset",
+    "analyticsAccessNoticeTitle": "Tilgang til analyser kreves",
+    "analyticsAccessNoticeDesc": "Ved å bli med i dette kurset, godtar du å gi administratorer tilgang til dine læringsanalyser.",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Vennligst velg en forhåndsdefinert rolle nedenfor eller skriv inn et tilpasset tillatelsesnivå. Velg et helt tall mellom 0 og 100.",
+    "reportContentIssue": "Rapporter innholdsproblem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Vennligst velg gyldige kilde- og målspråk",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Jeg bruker Pangea Chat til",
+    "teach": "Undervise",
+    "courseCodeStepTitle": "Har du en kursinvitasjonskode?",
+    "courseCodeStepHint": "Skriv inn koden for å bli med",
+    "courseCodeStepSkip": "Jeg har ikke en kode",
+    "joinedCourseStepTitle": "Velkommen!",
+    "pickLanguageTeacherStepTitle": "Hvilket språk underviser du?",
+    "pickCefrLevelTeacherStepTitle": "Hvilket nivå underviser du?",
+    "pickCefrLevelStudentStepTitle": "Hvilket nivå er du?",
+    "customCourseStepTitle": "Fyll ut dette skjemaet for å få et tilpasset kurs",
+    "courseCodeStepErrorMessage": "Vennligst sjekk koden din og prøv igjen",
+    "institution": "Institusjon",
+    "courseGoals": "Kursmål",
+    "selectChats": "Velg chatter",
+    "plainTextFile": "Tekst",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Ferdig ({num})",
+    "suggestion": "Velg det beste forslaget",
+    "completeActivityButton": "Jeg er ferdig!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Vennligst begrens navnelengden til 50 tegn eller færre.",
+    "enterAName": "Vennligst skriv inn et navn.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Skrivehjelp",
+    "viewError": "Se feil",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Få Pangea Chat-appen for å motta varsler!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Fikk det!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Fortsett med {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Laster ned hele meldingshistorikken, inkludert avsender, dato sendt, original melding, sendt melding og brukstype.",
+    "analyticsDownloadDesc": "Laster ned personlig ordforråd og grammatikk-analyser for det valgte språket.",
+    "courseAnalyticsDownloadDesc": "Laster ned lemma og grammatikkbruk på det valgte språket for alle kursdeltakere med delte analyser.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Dette kurset samsvarer med ditt språknivå",
+    "cefrLevelBelow": "Dette kurset er under ditt språknivå.",
+    "cefrLevelAbove": "Dette kurset er over ditt språknivå.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot lydmelding stemme",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "introChatDetails": "Si hei! Introduser deg selv for dine medkursdeltakere, finn venner, og chat utenfor aktiviteter.",
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Denne emojien vil nå representere \"{word}\" i praksisøvelser",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Vis utvikleralternativer",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Slå på utvikleralternativer for å vise nedlastingsanalyse og detaljerte infoalternativer i hele appen.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Venter på at boten skal bli med...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Et sted for kursadministratorer å lage kunngjøringer for kursdeltakere. Mens alle kan se denne kanalen, kan bare administratorer skrive i den.",
+    "introChatDesc": "Alle i kurset kan legge ut.",
+    "announcementsChatDesc": "Bare kursadministratorer kan legge ut.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pronunciationTools": "Uttaleverktøy",
+    "audioTranscription": "AI lydtranskripsjon",
+    "visualLearnerSupport": "Støtte for visuelle lærere",
+    "instantWritingTranslation": "Umiddelbar skriving oversettelse",
+    "personalizedPracticeExercises": "Personlige øvelser",
+    "vocabularyFlashcards": "Ordforråd flashkort",
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Tilbake",
+    "viewCurrentOrFinished": "Se nåværende eller fullførte",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "resizeCoursePanel": "Endre størrelse på kurspanel",
+    "undo": "Angre",
+    "unlock": "Lås opp",
+    "zoomIn": "Zoom inn",
+    "zoomOut": "Zoom ut",
+    "stars": "Stjerner",
+    "addNewCourse": "Legg til nytt kurs",
+    "world": "Verden",
+    "addCourseStartMyOwn": "Start mitt eget",
+    "addCourseEnterCode": "Skriv inn kode for privat kurs",
+    "addCourseBrowsePublic": "Bla gjennom offentlige kurs",
+    "browsePublicCourses": "Bla gjennom offentlige kurs",
+    "editProfile": "Rediger profil",
+    "mapSearchHint": "Søk aktiviteter",
+    "mapFilterAllLanguages": "Alle språk",
+    "mapFilterNotStarted": "Ikke startet",
+    "mapFilterInProgress": "Pågår",
+    "mapFilterCompleted": "Fullført",
+    "mapFilterReset": "Tilbakestill",
+    "activityTypeConversation": "Samtale",
+    "playAgain": "Spill igjen",
+    "reviewActivity": "Vurder",
+    "welcomeToPangeaChat": "Velkommen til Pangea Chat",
+    "claimTrial": "Krev din prøveperiode",
+    "thanksForSigningUp": "Takk for at du registrerte deg! Her er",
+    "sevenDaysFree": "7 DAGER GRATIS",
+    "manageTrialInSettings": "Administrer prøveversjonen når som helst i\nAbonnementsinnstillinger",
+    "noCreditCardRequired": "Ingen kredittkort nødvendig.",
+    "proFeatures": "PRO",
+    "widenSearch": "Utvid søk",
+    "scrollToBottom": "Rull til bunnen",
+    "courseImage": "Kursbilde",
+    "avatarPreview": "Avatar forhåndsvisning",
+    "emotePreview": "Emote forhåndsvisning: {name}",
+    "activityLabel": "Aktivitet: {title}",
+    "resetMapView": "Tilbakestill kartvisning",
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signUpWithEmail": "Registrer deg med e-post",
+    "unreadLabel": "Ulest: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
+    },
+    "writeAndSpeakWorryFree": "Skriv og snakk bekymringsfritt med Pangea Bot når som helst, hvor som helst!",
+    "joinLearningCommunities": "Bli med i internasjonale læringsfellesskap, eller start ditt eget!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Lukk chatliste",
+    "closeChat": "Lukk chat",
+    "closeSession": "Lukk aktivitetsgjennomgang",
+    "closeCourse": "Lukk kurs",
+    "closeCoursePage": "Lukk kursside",
+    "closeAddCourse": "Lukk legg til kurs",
+    "closeAnalytics": "Lukk analyser",
+    "closeVocabulary": "Lukk ordforråd",
+    "closeGrammar": "Lukk grammatikk",
+    "closePractice": "Lukk øvelse",
+    "closeSettings": "Lukk innstillinger",
+    "closeActivity": "Lukk aktivitet",
+    "closeNamed": "Lukk {name}",
+    "clearSearch": "Fjern søk",
+    "starRowLabel": "{filled} av {total} stjerner er fullført",
+    "difficultyLabel": "Vanskelighetsgrad: {cefr}",
+    "writingAssistanceTutorialInputBar": "Du kan skrive på hvilket som helst språk! Vi hjelper deg med å rette feil.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} side",
+    "closeHint": "Lukk hint",
+    "starListLabel": "Lagrede aktiviteter og stjerner",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Tilpass avstemning",
+    "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Navigasjonsalternativer",
+    "joinedCourseListLabel": "Liste over delte kurs",
+    "analyticsAndSettingsLabel": "Analyse- og innstillingsalternativer",
+    "searchActivitiesLabel": "Søk etter aktiviteter på kartet",
+    "filteredActivitiesLabel": "Filtrert aktivitetsliste",
+    "mapZoomLabel": "Kartzoomkontroller",
+    "activityMapLabel": "Aktivitetskart",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estisk",
+    "abDisplayName": "Abkhasisk",
+    "elDisplayName": "Gresk",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} av {total} stjerner opptjent",
+    "activityNoLongerSupported": "Denne aktiviteten kjørte på en eldre versjon av aktiviteter og støttes ikke lenger. Du kan fortsatt se hva som skjedde i denne økten.",
+    "activityLoadFailed": "Kunne ikke laste aktiviteten. Sjekk tilkoblingen din og prøv igjen.",
+    "levelUpChip": "Nivå {level}!",
+    "missingCourseOutline": "Dette kurset er ikke lenger tilgjengelig",
+    "missingCourseOutlineCta": "Dette kurset er ikke lenger tilgjengelig. Velg en ny kursplan.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Lukk legg til kurs-siden",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Rapporter grammatikkinformasjonsproblem",
+    "grammarFeedbackDialogTitle": "Tilbakemelding om grammatikkinformasjon",
+    "grammarFeedbackSubmittedDesc": "Takk! Forklaringen har blitt oppdatert basert på tilbakemeldingen din.",
+    "focusOnMap": "Fokuser på kartet",
+    "welcome": "Velkommen",
+    "courseRequest": "Kursforespørsel",
+    "onboarding": "Introduksjon",
+    "selectImageFromDevice": "Velg bilde fra enheten",
+    "dinoAvatarLabel": "En dinosaur med solbriller",
+    "bearAvatarLabel": "En vennlig bjørn",
+    "squidAvatarLabel": "En blekksprut med hodetelefoner",
+    "cartoonAvatarLabel": "En glad tegneseriefigur som vinker",
+    "robotAvatarLabel": "En robot med stjerner som øyne",
+    "featuresIncludeLabel": "Funksjoner inkluderer",
+    "difficultyListLabel": "Vanskelighetsliste",
+    "languageListLabel": "Språkliste",
+    "searchedResultsLabel": "Søkeresultater for '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
+    },
+    "coursePermissions": "Kurstillatelser",
+    "starsToUnlockObjectiveTitle": "Stjerner per oppdrag",
+    "starsToUnlockObjectiveDesc": "Angi antall stjerner som trengs for å fullføre hvert oppdrag",
+    "maxStarsPerMissionWarning": "Dette kurset har oppdrag der bare {maxValue} stjerner kan opptjenes. Angi et tall som er mindre enn eller lik {maxValue}.",
+    "removedFromCourseError": "Du har blitt fjernet fra dette kurset. Kontakt læreren din.",
+    "endPractice": "Avslutt øving",
+    "bodyLabel": "{page} alternativer",
+    "openDM": "Åpne direktemelding",
+    "openNewTab": "Åpne i ny fane",
+    "viewProfileImageLabel": "Vis profilbilde",
+    "profileImageLabel": "Profilbilde",
+    "actionsLabel": "Handlinger",
+    "colorListLabel": "Fargeliste",
+    "chatAppearanceStyleLabel": "Chat-utseende med valgt stil",
+    "volumeLabel": "Volum",
+    "listLabel": "{description} liste",
+    "passwordFormLabel": "Skjema for passordendring",
+    "searchLanguagesHint": "Søk språk",
+    "searchCountriesHint": "Søk land",
+    "searchVocabHint": "Søk vokabular",
+    "searchUsersHint": "Søk brukere",
+    "searchMessagesHint": "Søk meldinger",
+    "searchChatsHint": "Søk chatter",
+    "searchActivitiesHint": "Søk aktiviteter",
+    "appInTargetLanguageTitle": "Vis appen på språket jeg lærer",
+    "appInTargetLanguageDesc": "Menyer, knapper og etiketter vises på målspråket ditt for fordypning. Uoversatt tekst faller tilbake til engelsk.",
+    "changePasswordSessionExpired": "Økten din har utløpt. Logg inn på nytt.",
+    "constructUseSugDesc": "Godkjente forslag",
+    "mostPopular": "Mest populær",
+    "mostSavings": "Mest besparelse",
+    "enterDiscountCode": "Skriv inn rabattkode",
+    "yourPlan": "Din plan",
+    "subscriptionRenewsOn": "Fornyes {date}",
+    "subscriptionEndsOn": "Avsluttes {date}",
+    "promoSubscription": "Kampanjeabonnement",
+    "seatSubscription": "Institusjonell plass",
+    "lifetimeSubscription": "Livstidsabonnement",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Du har en gratis prøveperiode",
+    "manage": "Administrer",
+    "subscriptionHistory": "Abonnementshistorikk",
+    "history": "Historikk",
+    "noPaymentHistoryFound": "Ingen betalingshistorikk funnet",
+    "cancelAnytime": "Avbryt når som helst i abonnementsinnstillingene",
+    "pricePerMonth": "{price}/måned",
+    "pricePerYear": "{price}/år",
+    "viewSubscriptionOptions": "Se abonnementsalternativer",
+    "apply": "Bruk",
+    "continueToSubscribe": "Fortsett å abonnere",
+    "invalidDiscountCode": "Ugyldig rabattkode",
+    "selectDiscountPlan": "Velg rabattplan",
+    "discountApplied": "{discount} rabatt brukt",
+    "cancelDescriptionWithRenewalDate": "Abonnementet ditt vil være aktivt frem til fornyelsesdatoen ({date}), deretter deaktiveres. Du beholder analyser, men vil ikke kunne bruke pro-funksjoner.",
+    "cancelDescriptionWithoutRenewalDate": "Abonnementet ditt vil være aktivt frem til fornyelsesdatoen, deretter deaktiveres. Du beholder analyser, men vil ikke kunne bruke pro-funksjoner.",
+    "change": "Endre",
+    "deactivateSubscribedAccountWarning": "Dette vil deaktivere brukerkontoen din og kansellere abonnementet ditt. Dette kan ikke angres! Er du sikker?",
+    "newCourseWithoutTitle": "Start kurs",
+    "newCourseWithTitle": "Start «{title}»",
+    "joinCourseWithTitle": "Bli med i «{title}»",
+    "searchCoursePlans": "Søk i kursplaner",
+    "searchPublicCourses": "Søk i offentlige kurs",
+    "closeSearch": "Lukk søk",
+    "subscriptionsNotAvailableInApp": "Abonnement kan ikke kjøpes i appen",
+    "subscribeOnTheWeb": "Du kan abonnere på nett på pangea.chat",
+    "waitingToFillOneRole": "Venter på å fylle 1 rolle...",
+    "closeArchive": "Lukk arkiv",
+    "activityActions": "Aktivitetshandlinger",
+    "ongoing": "Pågående",
+    "emptyInviteSearchHint": "Finner du ikke den du leter etter? De må kanskje tillate at profilen deres blir funnet i søk. Sjekk Rediger profil i Innstillinger.",
+    "activityPreviewLabel": "Forhåndsvisning av aktivitet: ",
+    "participantRowLabel": "{joined} av {total} deltakere har blitt med",
+    "ongoingPendingLabel": "Venter på at andre skal bli med",
+    "joinableLabel": "Kan bli med",
+    "inProgressLabel": "Tidligere fullført",
+    "availableLabel": "Opprett aktivitet",
+    "rateActivityTitle": "Hvordan var denne aktiviteten?",
+    "rateActivityCommentHint": "Legg til en kommentar (valgfritt)",
+    "rateActivityCommentRejected": "Kommentaren din kunne ikke publiseres. Prøv å omformulere den, eller send inn vurderingen din uten en kommentar.",
+    "rateActivityThanks": "Takk for tilbakemeldingen din!",
+    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 vurdering} other{{count} vurderinger}})",
+    "newActivityBadge": "NY",
+    "exitVocabPracticeSession": "Fremdriften din i den nåværende ordforrådsøkten blir ikke lagret.",
+    "exitGrammarPracticeSession": "Fremdriften din i den nåværende grammatikkøkten blir ikke lagret.",
+    "activityFilterButtonsLabel": "Filterknapper for nivå, spillere og status",
+    "mapFilterAllLevels": "Alle nivåer",
+    "mapFilterAllPlayers": "Alle spillere",
+    "mapFilterAllStatuses": "Alle statuser",
+    "mapFiltersShow": "Vis filtre",
+    "mapFiltersHide": "Skjul filtre",
+    "mapStatusAvailable": "Tilgjengelig",
+    "mapStatusOngoing": "Pågående",
+    "mapStatusWaiting": "Venter",
+    "mapStatusOpenToJoin": "Åpen for deltakelse",
+    "mapMatchesOffscreen": "Det er kamper utenfor synsfeltet ditt. Zoom ut for å se dem.",
+    "mapFiltersHideMatches": "Filtrene dine skjuler alle kamper. Utvid søket for å se dem.",
+    "mapNoSearchMatches": "Ingen aktiviteter samsvarer med søket ditt.",
+    "mapNoActivitiesArea": "Ingen aktiviteter i dette området.",
+    "practiceSessionTimedOut": "Økten din ble avsluttet etter {minutes} minutter uten aktivitet.",
+    "autocorrectMobileOnly": "Kun mobil",
+    "autocorrectMobileOnlyWarning": "Enhetens autokorrektur er kun tilgjengelig i mobilappen.",
+    "audioSectionTitle": "Lyd",
+    "audioWordsToolName": "Ord",
+    "audioWordsDescription": "Spill av lyden for et ord når du trykker på det.",
+    "audioChoicesToolName": "Valg",
+    "audioChoicesDescription": "Spill av lyd for svaralternativer i øvelser.",
+    "audioIncomingMessagesToolName": "Innkommende meldinger",
+    "audioIncomingMessagesDescription": "Les automatisk mottatte meldinger høyt på målspråket ditt for lytteøvelser.",
+    "choosePangeaAvatar": "Velg en Pangea-avatar",
+    "readAloudNoVoiceTitle": "Fant ingen {language}-stemme av høy kvalitet",
+    "readAloudNoVoiceDesktopWeb": "Denne nettleseren tilbyr ikke en {language}-stemme av høy kvalitet, så meldinger kan ikke leses høyt på en god måte her. Chrome og Edge inkluderer vanligvis stemmer av høy kvalitet.",
+    "readAloudGetChrome": "Skaff deg Chrome",
+    "readAloudNoVoiceMobileWeb": "Denne nettleseren tilbyr ikke en {language}-stemme av høy kvalitet, så meldinger kan ikke leses høyt på en god måte her. Pangea Chat-appen kan bruke enhetens beste stemmer.",
+    "readAloudGetApp": "Skaff deg appen",
+    "readAloudNoVoiceIOS": "Enheten din har ikke en {language}-stemme av høy kvalitet nedlastet ennå. Last ned en, og prøv deretter igjen:",
+    "readAloudNoVoiceIOSSteps": "  • Innstillinger\n  • Tilgjengelighet\n  • Talt innhold\n  • Stemmer\n  • {language}\n  • Last ned en forbedret eller premium-stemme",
+    "readAloudNoVoiceAndroid": "Enheten din har ikke en {language}-stemme av høy kvalitet ennå. Installer stemmedata for tekst-til-tale-motoren din, og prøv deretter igjen.",
+    "readAloudOpenVoiceSettings": "Åpne stemmeinnstillinger",
+    "streamingSttDegradedLiveBanner": "Direkte transkripsjon kjører på en reservetjeneste. Kvaliteten kan variere, vennligst sjekk teksten.",
+    "streamingSttDegradedToBatchBanner": "Direkte transkripsjon er utilgjengelig akkurat nå. Meldingen din ble transkribert på standard måte, uten direkte redigering. Vi jobber med å gjenopprette den.",
+    "streamingSttLanguageUnsupportedBanner": "Direkte transkripsjon er ikke tilgjengelig for dette språket ennå. Vi jobber med det.",
+    "formLabel": "{name}-skjema",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Kundestøtte",
+    "explorePlayAndLearn": "Utforsk, lek og lær",
+    "conversationFromDayOne": "Samtale fra første dag",
+    "builtForConnection": "Bygget for tilkobling",
+    "aiWhenYouNeedIt": "AI når du trenger det",
+    "practiceTailoredForYou": "Øvelse skreddersydd for deg"
 }

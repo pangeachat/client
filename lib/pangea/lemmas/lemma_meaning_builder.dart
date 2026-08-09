@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
-import 'package:fluffychat/pangea/languages/language_constants.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
@@ -83,10 +83,7 @@ class LemmaMeaningBuilderState extends State<LemmaMeaningBuilder> {
     final int version = ++_loadVersion;
 
     _loader.value = const AsyncState.loading();
-    final result = await LemmaInfoRepo.get(
-      MatrixState.pangeaController.userController.accessToken,
-      _request,
-    );
+    final result = await LemmaInfoRepo.instance.get(_request);
 
     // Ignore if a newer load started after this one
     if (!mounted || version != _loadVersion) return;

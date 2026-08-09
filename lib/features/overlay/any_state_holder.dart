@@ -1,0 +1,149 @@
+import 'package:flutter/material.dart';
+
+import 'package:collection/collection.dart';
+import 'package:matrix/matrix_api_lite/utils/logs.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
+import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+
+class _OverlayListEntry {
+  final OverlayEntry entry;
+  final String? key;
+  final bool canPop;
+  final bool blockOverlay;
+
+  _OverlayListEntry(
+    this.entry, {
+    this.key,
+    this.canPop = true,
+    this.blockOverlay = false,
+  });
+}
+
+class PangeaAnyState {
+  final Map<String, LayerLinkAndKey> _layerLinkAndKeys = {};
+  final List<_OverlayListEntry> _entries = [];
+
+  LayerLinkAndKey layerLinkAndKey(
+    String transformTargetId, [
+    throwErrorIfNotThere = false,
+  ]) {
+    if (_layerLinkAndKeys[transformTargetId] == null) {
+      if (throwErrorIfNotThere) {
+        Sentry.addBreadcrumb(Breadcrumb(data: _layerLinkAndKeys));
+        throw Exception("layerLinkAndKey with null for $transformTargetId");
+      } else {
+        _layerLinkAndKeys[transformTargetId] = LayerLinkAndKey(
+          transformTargetId,
+        );
+      }
+    }
+
+    return _layerLinkAndKeys[transformTargetId]!;
+  }
+
+  bool openOverlay(
+    OverlayEntry entry,
+    BuildContext context, {
+    String? overlayKey,
+    bool canPop = true,
+    bool blockOverlay = false,
+    bool rootOverlay = false,
+    bool bypassBlockingOverlays = false,
+  }) {
+    final blockingOverlays = _entries.where((e) => e.blockOverlay).toList();
+    if (blockingOverlays.isNotEmpty && !bypassBlockingOverlays) {
+      Logs().w(
+        "Cannot open overlay, another overlay is blocking the view: "
+        "${blockingOverlays.map((e) => e.key)}",
+      );
+      return false;
+    }
+
+    if (overlayKey != null &&
+        _entries.any((element) => element.key == overlayKey)) {
+      Logs().w("Overlay with key $overlayKey already open");
+      return false;
+    }
+
+    _entries.add(
+      _OverlayListEntry(
+        entry,
+        key: overlayKey,
+        canPop: canPop,
+        blockOverlay: blockOverlay,
+      ),
+    );
+
+    Overlay.of(context, rootOverlay: rootOverlay).insert(entry);
+
+    return true;
+  }
+
+  void closeOverlay([String? overlayKey]) {
+    final entry = overlayKey != null
+        ? _entries.firstWhereOrNull((element) => element.key == overlayKey)
+        : _entries.lastWhereOrNull((element) => element.canPop);
+
+    if (entry != null) {
+      try {
+        entry.entry.remove();
+        entry.entry.dispose();
+      } catch (err, s) {
+        ErrorHandler.logError(e: err, s: s, data: {"overlay": entry});
+      }
+      _entries.remove(entry);
+    }
+  }
+
+  void closeAllOverlays({RegExp? filter, force = false}) {
+    List<_OverlayListEntry> shouldRemove = List.from(_entries);
+    if (!force) {
+      shouldRemove = shouldRemove.where((element) => element.canPop).toList();
+    }
+
+    if (filter != null) {
+      shouldRemove = shouldRemove
+          .where((element) => element.key != null)
+          .where((element) => filter.hasMatch(element.key!))
+          .toList();
+    }
+    if (shouldRemove.isEmpty) return;
+
+    for (int i = 0; i < shouldRemove.length; i++) {
+      try {
+        shouldRemove[i].entry.remove();
+        shouldRemove[i].entry.dispose();
+      } catch (err, s) {
+        ErrorHandler.logError(e: err, s: s, data: {"overlay": shouldRemove[i]});
+      }
+
+      _entries.remove(shouldRemove[i]);
+    }
+  }
+
+  RenderBox? getRenderBox(String key) {
+    final box =
+        layerLinkAndKey(key).key.currentContext?.findRenderObject()
+            as RenderBox?;
+    return box?.hasSize == true ? box : null;
+  }
+
+  bool isOverlayOpen({RegExp? regex, String? overlayKey}) {
+    return _entries.any(
+      (element) =>
+          element.key != null &&
+          (regex?.hasMatch(element.key!) == true || element.key == overlayKey),
+    );
+  }
+
+  List<String> getMatchingOverlayKeys(RegExp regex) {
+    return _entries
+        .where((e) => e.key != null)
+        .where((element) => regex.hasMatch(element.key!))
+        .map((e) => e.key)
+        .whereType<String>()
+        .toList();
+  }
+}

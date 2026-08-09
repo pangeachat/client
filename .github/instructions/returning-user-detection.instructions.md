@@ -1,12 +1,12 @@
 ---
-applyTo: "lib/pangea/login/**,lib/pangea/authentication/**,lib/pages/login/**"
+applyTo: "lib/features/authentication/**,lib/routes/registration/**,lib/routes/onboarding/**"
 ---
 
 # Returning User Detection — Preventing Duplicate Accounts
 
 Users frequently create multiple accounts because they forget whether they signed up with Google, Apple, or email. This doc defines the strategy for remembering and surfacing the previous login method.
 
-See also: [modules.instructions.md](modules.instructions.md) | [matrix-auth.instructions.md](matrix-auth.instructions.md)
+See also: [codebase-organization.instructions.md](codebase-organization.instructions.md) | [matrix-auth.instructions.md](matrix-auth.instructions.md)
 
 ## Problem
 

@@ -6,18 +6,19 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 
 abstract class AppConfig {
-  // #Pangea
   static String get defaultHomeserver => Environment.synapseURL;
-  // Pangea#
-  // Const and final configuration values (immutable)
-  // #Pangea
-  // static const Color primaryColor = Color(0xFF5625BA);
-  // static const Color primaryColorLight = Color(0xFFCCBDEA);
-  // static const Color secondaryColor = Color(0xFF41a2bc);
+
+  /// SYNAPSE_URL may carry an explicit scheme (local dev uses
+  /// http://localhost:8008); only default to https when it has none.
+  static Uri get defaultHomeserverUri {
+    final url = defaultHomeserver;
+    final hasScheme = url.startsWith('http://') || url.startsWith('https://');
+    return Uri.parse(hasScheme ? url : 'https://$url');
+  }
+
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color primaryColorLight = Color(0xFFDBC9FF);
   static const Color secondaryColor = Color.fromARGB(255, 253, 191, 1);
-  // Pangea#
 
   static const Color chatColor = primaryColor;
   static const double messageFontSize = 16.0;
@@ -26,53 +27,26 @@ abstract class AppConfig {
   static const bool hideTypingUsernames = false;
 
   static const String inviteLinkPrefix = 'https://matrix.to/#/';
-  static const String deepLinkPrefix = 'im.fluffychat://chat/';
   static const String schemePrefix = 'matrix:';
-  // #Pangea
-  // static const String pushNotificationsChannelId = 'fluffychat_push';
-  // static const String pushNotificationsAppId = 'chat.fluffy.fluffychat';
+
   static const String pushNotificationsChannelId = 'pangeachat_push';
   static const String pushNotificationsAppId = 'com.talktolearn.chat';
-  // Pangea#
+
   static const double borderRadius = 18.0;
   static const double columnWidth = 360.0;
 
-  // #Pangea
-  // static const String website = 'https://fluffy.chat';
-  static const String website = "https://pangea.chat/";
-  // Pangea#
-  static const String enablePushTutorial =
-      'https://fluffy.chat/faq/#push_without_google_services';
-  static const String encryptionTutorial =
-      'https://fluffy.chat/faq/#how_to_use_end_to_end_encryption';
-  static const String startChatTutorial =
-      'https://fluffy.chat/faq/#how_do_i_find_other_users';
-  static const String howDoIGetStickersTutorial =
-      'https://fluffy.chat/faq/#how_do_i_get_stickers';
-  static const String appId = 'im.fluffychat.FluffyChat';
-  // #Pangea
-  // static const String appOpenUrlScheme = 'im.fluffychat';
-  static const String appOpenUrlScheme = 'matrix.pangea.chat';
-  // Pangea#
+  /// How many lines a `TextField`'s error message may wrap to before it is
+  /// truncated. Sentence-length errors need several on a narrow screen.
+  static const int inputErrorMaxLines = 4;
 
-  static const String sourceCodeUrl =
-      'https://github.com/krille-chan/fluffychat';
-  // static const String supportUrl =
-  //     'https://github.com/krille-chan/fluffychat/issues';
-  // static const String changelogUrl = 'https://fluffy.chat/en/changelog/';
-  // static const String donationUrl = 'https://ko-fi.com/krille';
+  static const String website = "https://pangea.chat/";
+  static const String appOpenUrlScheme = 'matrix.pangea.chat';
+
   static const String supportUrl = 'https://www.pangeachat.com/faqs';
   static const String termsOfServiceUrl =
       'https://www.pangeachat.com/terms-of-service';
-  // Pangea#
 
   static const Set<String> defaultReactions = {'👍', '❤️', '😂', '😮', '😢'};
-
-  static final Uri newIssueUrl = Uri(
-    scheme: 'https',
-    host: 'github.com',
-    path: '/krille-chan/fluffychat/issues/new',
-  );
 
   static final Uri homeserverList = Uri(
     scheme: 'https',
@@ -80,16 +54,11 @@ abstract class AppConfig {
     path: 'servers.json',
   );
 
-  static final Uri privacyUrl = Uri(
-    scheme: 'https',
-    host: 'fluffy.chat',
-    path: '/en/privacy',
-  );
+  static final Uri privacyUrl = Uri.parse('https://www.pangeachat.com/privacy');
 
   static const String mainIsolatePortName = 'main_isolate';
   static const String pushIsolatePortName = 'push_isolate';
 
-  // #Pangea
   static String assetsBaseURL =
       "https://pangea-chat-client-assets.s3.us-east-1.amazonaws.com";
   static String androidUpdateURL =
@@ -107,6 +76,47 @@ abstract class AppConfig {
   static const int overlayAnimationDuration = 250;
   static const Color gold = Color.fromARGB(255, 253, 191, 1);
   static const Color goldLight = Color.fromARGB(255, 254, 223, 73);
+
+  static Color goldByTheme(BuildContext context) =>
+      Theme.of(context).brightness == Brightness.light ? gold : goldLight;
+
+  /// Readable ink on top of [goldByTheme], which is a light fill in both
+  /// brightnesses — so both branches resolve to a dark tone.
+  static Color onGoldByTheme(BuildContext context) {
+    final theme = Theme.of(context);
+    return theme.brightness == Brightness.light
+        ? theme.colorScheme.onSurface
+        : theme.colorScheme.surface;
+  }
+
+  /// The gold a **level badge** wears while hovered, or while the Level panel
+  /// it opens is showing: [goldByTheme] deepened by [_goldHighlightDepth].
+  ///
+  /// The cluster's trackers show those two states with a translucent gold wash
+  /// behind them, but the level badge is itself a solid gold mark — a wash
+  /// behind it is gold on gold and reads as nothing, and a wash *around* it is
+  /// a circle the design doesn't want. So the mark's own gold shifts instead
+  /// (#8067), on both the web cluster's shield medal and the mobile bar's hex
+  /// badge.
+  ///
+  /// Deepened toward black rather than down the HSL lightness axis: the dark
+  /// theme's [goldLight] sits near the top of that axis, where dropping
+  /// lightness mostly saturates the yellow and barely darkens it — the state
+  /// has to read as the same shift in both brightnesses.
+  static Color goldHighlightByTheme(BuildContext context) =>
+      Color.lerp(goldByTheme(context), Colors.black, _goldHighlightDepth)!;
+
+  /// How far [goldHighlightByTheme] pulls the gold toward black — enough to
+  /// read as a state change at a glance, not so far that the badge's black
+  /// level number loses contrast (both themes stay above 8:1).
+  static const double _goldHighlightDepth = 0.2;
+
+  // The "powerups" gold palette for the right-nav cluster (Figma
+  // AvatarLangFlags). See the cluster section of routing.instructions.md.
+  static const Color goldPill = Color(0xFFFDCE47); // powerups pill background
+  static const Color goldMedal = Color(0xFFF3C141); // level shield fill
+  static const Color goldMedalText = Color(0xFFC29B32); // level number
+  static const Color goldPale = Color(0xFFFCF2D0); // shield inner field
   static const Color success = Color(0xFF33D057);
   static const Color error = Colors.red;
   static const Color warning = Color.fromARGB(255, 210, 124, 12);
@@ -138,5 +148,37 @@ abstract class AppConfig {
     );
   }
 
-  // Pangea#
+  static final Set<String> _allowedImageHosts = {
+    "pangea.chat",
+    "staging.pangea.chat",
+    "pangea-chat-client-assets.s3.us-east-1.amazonaws.com",
+    "api.pangea.chat",
+    "api.staging.pangea.chat",
+    // Media CDN (image-cdn consolidation): activity/course/topic images are now
+    // served from here. Without this, ImageByUrl rejects every CDN image and
+    // shows a placeholder. See devops image-cdn.instructions.md.
+    "content.pangea.chat",
+    // YouTube poster thumbnails for activity `youtube` media blocks. Both hosts
+    // send `Access-Control-Allow-Origin: *`, so ImageByUrl's web XHR fetch works
+    // (no auth, no platform-view needed).
+    "img.youtube.com",
+    "i.ytimg.com",
+  };
+
+  static bool isAllowedImage(Uri imageUrl) =>
+      _allowedImageHosts.contains(imageUrl.host);
+
+  static Set<String> get allowedMimeTypes => {
+    "image/jpeg",
+    "image/jpg",
+    "image/webp",
+    "image/gif",
+    "image/png",
+  };
+
+  static const Color green = Color(0xFF34A853);
+  static const Color purple = Color(0xFF7B61FF);
+  static const Color gray = Color(0xFFB4B2A9);
+  static const Color grayText = Color(0xFF5F5E5A);
+  static const Color completedGreen = Color(0xFF3B6D11);
 }

@@ -8,15 +8,21 @@ import 'package:desktop_notifications/desktop_notifications.dart';
 import 'package:image/image.dart';
 import 'package:matrix/matrix.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:universal_html/html.dart' as html;
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/features/join_codes/knock_notification_utils.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/notifications/enable_notifications_dialog.dart';
+import 'package:fluffychat/features/notifications/notifications_request_repo.dart';
+import 'package:fluffychat/features/notifications/suggest_mobile_dialog.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/join_codes/knock_notification_utils.dart';
 import 'package:fluffychat/utils/client_download_content_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/push_helper.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -172,7 +178,12 @@ extension LocalNotificationsExtension on MatrixState {
           case DesktopNotificationActions.openChat:
             setActiveClient(event.room.client);
 
-            FluffyChatApp.router.go('/rooms/${event.room.id}');
+            FluffyChatApp.router.go(
+              WorkspaceNav.openRoomById(
+                FluffyChatApp.router.routeInformationProvider.value.uri,
+                event.room.id,
+              ),
+            );
             break;
         }
       });
@@ -208,6 +219,37 @@ extension LocalNotificationsExtension on MatrixState {
       final permission = await notificationsEnabled;
       ErrorHandler.logError(e: e, s: s, data: {'permission': permission});
     }
+  }
+
+  Future<void> showEnableNotificationsDialog(BuildContext context) async {
+    final enabled = await notificationsEnabled;
+    if (enabled) return;
+
+    final userId = client.userID;
+    if (userId == null) {
+      ErrorHandler.logError(
+        e: 'User ID is null when trying to check notification request timestamp',
+        data: {'client_user_id': client.userID},
+        level: SentryLevel.warning,
+      );
+      return;
+    }
+
+    final canShow = await NotificationsRequestRepo.canShowRequest(userId);
+    if (!canShow) return;
+
+    final result = await showDialog<OkCancelResult>(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) =>
+          kIsWeb ? SuggestMobileDialog() : EnableNotificationsDialog(),
+    );
+
+    if (result == OkCancelResult.ok) {
+      await requestNotificationPermission();
+    }
+
+    await NotificationsRequestRepo.updateRequestTimestamp(userId);
   }
 
   // Pangea#

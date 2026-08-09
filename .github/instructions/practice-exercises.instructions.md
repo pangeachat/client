@@ -1,20 +1,26 @@
 ---
-applyTo: "lib/pangea/practice_activities/**,lib/pangea/analytics_practice/**,lib/pangea/toolbar/message_practice/**"
+applyTo: "lib/routes/chat/toolbar/practice_exercises/**,lib/routes/chat/toolbar/message_practice/**,lib/routes/analytics/construct_analytics/practice/**"
 ---
 
 # Practice Exercises
 
 Practice exercises are multiple-choice exercises that reinforce vocabulary and grammar from real conversations. There are no disconnected flashcard decks — every practice item traces back to a message the user sent or received.
 
-For **conversation activities**, see [conversation-activities.instructions.md](conversation-activities.instructions.md).
+For **conversation activities**, see [activities.instructions.md](activities.instructions.md).
+
+## Terminology
+
+| Term | Meaning | Code modules |
+|---|---|---|
+| **Practice exercise** | Multiple-choice quiz reinforcing vocab/grammar from real messages (solo) | `practice_activities/` (legacy name), `analytics_practice/`, `toolbar/message_practice/` |
 
 ## Three Entry Points
 
 | Entry Point | What It Is | Where It Lives | Activity Types Used |
 |---|---|---|---|
-| **Vocab Practice** | Standalone session of ~10 vocab exercises drawn from the user's weakest words | Analytics page → "Practice Vocab" button → [`AnalyticsPractice(type: vocab)`](../../lib/pangea/analytics_practice/analytics_practice_page.dart) | `lemmaMeaning`, `lemmaAudio` |
-| **Grammar Practice** | Standalone session of ~10 grammar exercises drawn from recent errors + weak morphology | Analytics page → "Practice Grammar" button → [`AnalyticsPractice(type: morph)`](../../lib/pangea/analytics_practice/analytics_practice_page.dart) | `grammarError`, `grammarCategory` |
-| **Message Practice** | Per-message practice accessed from the toolbar; exercises target words in that specific message | Toolbar → 💪 button → [`PracticeController`](../../lib/pangea/toolbar/message_practice/practice_controller.dart) | `wordMeaning`, `wordFocusListening`, `emoji`, `morphId` |
+| **Vocab Practice** | Standalone session of ~10 vocab exercises drawn from the user's weakest words | Analytics page → "Practice Vocab" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: vocab`) | `lemmaMeaning`, `lemmaAudio` |
+| **Grammar Practice** | Standalone session of ~10 grammar exercises drawn from recent errors + weak morphology | Analytics page → "Practice Grammar" button → [`AnalyticsPracticePage`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_page.dart) (`type: morph`) | `grammarError`, `grammarCategory` |
+| **Message Practice** | Per-message practice accessed from the toolbar; exercises target words in that specific message | Toolbar → 💪 button → [`PracticeController`](../../lib/routes/chat/toolbar/message_practice/practice_controller.dart) | `wordMeaning`, `wordFocusListening`, `emoji`, `morphId` |
 
 All three entry points produce the same [`ConstructUseModel`](../../lib/pangea/analytics_misc/constructs_model.dart) records, so practice from any source contributes equally to the user's vocabulary garden and XP.
 
@@ -45,13 +51,20 @@ score = daysSinceLastUsed × (isContentWord ? 10 : 7)
 - **Content word bonus**: nouns, verbs, and adjectives get a 10× multiplier; function words (articles, prepositions) get 7×. This meaningfully favors content words when recency is equal.
 - Tokens are sorted by score descending, top 8 taken, then shuffled.
 
-### Standalone Practice — simple recency sort
+### Standalone Practice — practice sorting
 
-[`AnalyticsPracticeSessionRepo._fetchVocab`](../../lib/pangea/analytics_practice/analytics_practice_session_repo.dart) and `_fetchAudio` sort by `lastUsed` ascending with nulls first (never-practiced words come first). There is **no scoring formula** and **no content-word bonus**.
+Each standable practice type has its own practice target generator.
 
-Grammar targets use a different strategy:
-- **`_fetchErrors`**: selects recent grammar mistakes, skipping any construct practiced in the last 24 hours.
-- **`_fetchMorphs`**: sorts morph constructs by `lastUsed` ascending (same as vocab).
+| Type | Generator |
+| --- | --- |
+| PracticeExerciseTypeEnum.grammarCategory | [GrammarMatchTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/grammar_match_target_generator.dart) |
+| PracticeExerciseTypeEnum.grammarError | [GrammarErrorTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/grammar_error_target_generator.dart) |
+| PracticeExerciseTypeEnum.lemmaAudio | [VocabAudioTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/vocab_audio_target_generator.dart) |
+| PracticeExerciseTypeEnum.lemmaMeaning | [VocabMeaningTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/vocab_meaning_target_generator.dart) |
+
+Each of these is passed a full list of the user's construct data for the relevant type (vocab or grammar) and uses [practiceSort](../../lib/routes/analytics/construct_analytics/practice/construct_practice_extension.dart) to order them by relevance for the given type.  
+
+[GrammarErrorTargetGenerator](../../lib/routes/analytics/construct_analytics/practice/grammar_error_target_generator.dart) acts differently. Because constructs from grammar error practice exercises have an eventID attached, these eventIDs are used to filter out constructs from events that happened in the last 24 hours to prevent users from [getting exercies for the same messages too many times in a row.](https://github.com/pangeachat/client/issues/7360)
 
 ### ⚠️ Divergence note
 
@@ -65,12 +78,12 @@ The current scoring only considers **recency** and **content-word status**. It i
 
 | Tier | Who goes here | Practice priority |
 |---|---|---|
-| **Suppressed** | Lemmas whose most recent chat use is `wa` (without assistance) AND no subsequent incorrect practice | **0** — skip entirely |
-| **Active** | Lemmas encountered through `ta` (IT) or `ga` (IGC), OR lemmas with a recent incorrect practice answer (`incXX`) | **High** — prioritize these |
+| **Suppressed** | Lemmas whose most recent chat use is `wa` (writing assistance ran, message correct) or `unk` (no writing assistance run) AND no subsequent incorrect practice | **0** — skip entirely |
+| **Active** | Lemmas encountered through `ta` (interactive translation) or `ga` (grammar correction / IGC), OR lemmas with a recent incorrect practice answer (`incXX`) | **High** — prioritize these |
 | **Maintenance** | Everything else — correctly practiced but aging | **Normal** — standard recency-based |
 
 **Tier transitions:**
-- A `wa` use → moves to Suppressed (user knows this word)
+- A `wa` or `unk` use → moves to Suppressed (user produced the word correctly, no help needed)
 - A `ta` or `ga` use → moves to Active (user needed help)
 - An incorrect practice answer → moves to Active (user struggled)
 - N consecutive correct practice answers → Active → Maintenance (learning is sticking)
@@ -78,15 +91,15 @@ The current scoring only considers **recency** and **content-word status**. It i
 
 **Within each tier**, the existing scoring formula applies: `daysSinceLastUsed × (isContentWord ? 10 : 7)`. Active-tier words get an additional multiplier (e.g., ×2) so they always appear before maintenance words of similar age.
 
-**Key principle**: Words used through IT and IGC should be practiced **much more** than `wa` words. A `wa` word should only re-enter practice if the user later gets it wrong.
+**Key principle**: Words the user needed help with (interactive translation or grammar correction) should be practiced **much more** than words they already produce correctly (`wa`/`unk`). Such a word should only re-enter practice if the user later gets it wrong.
 
 **Example scenario:**
-1. User types "gato" correctly without assistance → `wa` → Suppressed. Won't appear in practice.
+1. User types "gato" correctly with no correction needed → `unk` (or `wa` if writing assistance ran and passed) → Suppressed. Won't appear in practice.
 2. User uses IT to translate "mariposa" → `ta` → Active. High priority for practice.
 3. User practices "mariposa" and gets it wrong → `incLM` → stays Active, priority boosted.
 4. User practices "mariposa" correctly 3 times → Active → Maintenance.
 5. Two weeks pass with no interaction → Maintenance, but high recency score → likely to appear.
-6. User later misspells "gato" and IGC corrects it → `ga` → moves from Suppressed back to Active.
+6. User later misspells "gato" and it's corrected during grammar checking → `ga` → moves from Suppressed back to Active.
 
 ### ⚠️ Grammar Error Practice: Missing Message Data
 
@@ -124,14 +137,14 @@ Each activity type maps to specific [`ConstructUseTypeEnum`](../../lib/pangea/an
 
 ### Session Lifecycle
 
-1. [`AnalyticsPracticeSessionRepo.get(type, language)`](../../lib/pangea/analytics_practice/analytics_practice_session_repo.dart) builds a session:
-   - **Vocab**: fetches the user's weakest lemmas (by spaced-repetition score), splits ~50/50 between `lemmaAudio` (needs example messages with audio) and `lemmaMeaning` targets
-   - **Grammar**: fetches recent grammar errors first (`grammarError` targets), then fills remaining slots with weak morph features (`grammarCategory` targets)
-   - Session size: 10 exercises + 5 error buffer (constants in [`AnalyticsPracticeConstants`](../../lib/pangea/analytics_practice/analytics_practice_constants.dart))
-2. [`AnalyticsPracticeState`](../../lib/pangea/analytics_practice/analytics_practice_page.dart) manages the session UI — progress bar, timer, activity queue, hints
-3. For each target, a [`MessageActivityRequest`](../../lib/pangea/practice_activities/message_activity_request.dart) is sent to the appropriate generator
-4. The generator returns a [`PracticeActivityModel`](../../lib/pangea/practice_activities/practice_activity_model.dart) subclass with choices and answers
-5. On answer, a construct use is recorded and the session advances
+1. [`AnalyticsPracticeSessionRepo.get(type, userL1, userL2)`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart) selects the session's targets (words/constructs + exercise type), NOT their content:
+   - **Vocab**: picks the user's weakest lemmas (by spaced-repetition score) and splits ~50/50 between `lemmaAudio` and `lemmaMeaning` targets. The split is by **count**; audio candidates are picked by a cheap local check that the lemma has an example-bearing use, and the example message itself is resolved later at generation (see [Loading & Generation Sequencing](#loading--generation-sequencing)).
+   - **Grammar**: picks recent grammar errors first (`grammarError` targets), then fills remaining slots with weak morph features (`grammarCategory` targets)
+   - Session size: 10 exercises shown, plus a 5-item error buffer (15 targets generated — `targetsToGenerate`; constants in [`AnalyticsPracticeConstants`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart)). The "~10" entry-point sessions above are this same 10 shown.
+2. [`PracticeSessionController`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart) owns the session and the exercise queue; the page widgets show progress bar, timer, hints.
+3. For each target, a [`MessagePracticeExerciseRequest`](../../lib/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart) is routed by [`PracticeRepo`](../../lib/routes/chat/toolbar/practice_exercises/practice_generation_repo.dart) to the appropriate generator.
+4. The generator returns a [`PracticeExerciseModel`](../../lib/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart) subclass with choices and answers.
+5. On answer, a construct use is recorded and the session advances.
 
 ### Session Completion
 
@@ -140,9 +153,44 @@ When all targets are answered, [`CompletedActivitySessionView`](../../lib/pangea
 - Time elapsed (with bonus XP if under 60 seconds)
 - Per-item review
 
+### Loading & Generation Sequencing
+
+Standalone practice loads in two phases, and only the first sits behind the loading screen:
+
+1. **Selection** ([`AnalyticsPracticeSessionRepo.get`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart)) picks the session's targets from aggregated constructs (local analytics).
+2. **Content generation** ([`PracticeSessionController.getNextExercise`](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_session_controller.dart)) turns targets into exercises. The **first** exercise is awaited and shown; the moment it resolves, generation of **every** remaining exercise is kicked off eagerly and concurrently (`_fillExerciseQueue`), so later exercises are prefetched and waiting by the time the learner reaches them.
+
+Selection must stay cheap: it reads aggregated constructs from local analytics and does **not** resolve per-target example messages, audio, or Matrix events. Those resolve during content generation, inside the eager background queue. The goal is not to defer the work — every exercise is still prefetched — but to keep it from gating first paint: resolving example messages *during selection* blocked the first exercise on N serial event fetches, which made practice load slowly and inconsistently (#7702).
+
+A `lemmaAudio` target whose audio example can't be resolved at generation **falls back to a `lemmaMeaning` exercise for the same lemma**, so a deferred resolution failure never leaves a gap. This is a degradation path only — the audio/meaning mix is set at selection by count, so it doesn't materially shift the mix.
+
+### Session Persistence & Lifecycle
+
+A standalone practice session is a **background activity that outlives its
+panel** (the routing-level rules — silent leave, explicit end, the cluster
+badge, and the same-section analytics block — live in
+[routing.instructions.md](routing.instructions.md#practice-is-a-persistent-background-session)):
+
+- **The session lives in a holder that survives panel teardown.** Closing the
+  practice panel (or navigating anywhere else) neither disposes nor pauses the
+  session; re-opening practice re-attaches to the held session and resumes at
+  the current exercise. The holder is in-memory only — a refresh or app
+  restart starts fresh.
+- **One session at a time**, across vocab and grammar. Starting a new session
+  while an unfinished one is held confirms first, then replaces it.
+- **A session ends four ways**: finishing all exercises (completion view,
+  XP awarded), the explicit **End session** control (confirms, discards
+  progress), being replaced by a newly started session (confirms), or by automatically closing after [AnalyticsPracticeConstants.idleTimeout](../../lib/routes/analytics/construct_analytics/practice/analytics_practice_constants.dart) inactivity. Ending
+  clears the holder and the cluster badge.
+- **Elapsed time is wall-clock from session start**, not time-on-screen. The
+  timer keeps counting while the panel is closed — an anti-cheat mechanism in
+  its own right: leaving mid-session to consult a dictionary or an AI costs
+  the clock, so the speed bonus rewards finishing unaided in one sitting. The
+  cluster badge shows the same running clock.
+
 ### Subscription Gate
 
-Standalone practice requires an active subscription. [`UnsubscribedPracticePage`](../../lib/pangea/analytics_practice/unsubscribed_practice_page.dart) is shown if the user isn't subscribed.
+Standalone practice requires an active subscription. [`UnsubscribedPracticePage`](../../lib/routes/analytics/construct_analytics/practice/unsubscribed_practice_page.dart) is shown if the user isn't subscribed.
 
 ---
 
@@ -171,7 +219,7 @@ Token priority within each message uses the scoring formula described in [Target
 - Fetches `PracticeSelection` on construction
 - Generates activities on demand via [`PracticeRepo`](../../lib/pangea/practice_activities/practice_generation_repo.dart)
 - Records answers via [`PracticeRecordController`](../../lib/pangea/toolbar/message_practice/practice_record_controller.dart)
-- Plays TTS on correct answers for audio reinforcement
+- Plays TTS on correct answers for audio reinforcement (gated by the **Choices** audio setting)
 
 ---
 
@@ -201,7 +249,8 @@ All expose a `multipleChoiceContent` (choices + answers) and produce a `Practice
 ## Key Contracts
 
 - **Practice targets are deterministic per message.** For a given eventId + language + token set, the same targets are generated and cached. Don't introduce randomness that would change targets on re-render.
-- **Practice never blocks on network.** Selection happens locally from cached token data. Activity content fetches from choreo, but the UI shows shimmer placeholders, never a blocking spinner.
+- **Message practice never blocks on network.** Selection is local from cached token data; content fetches from choreo behind shimmer placeholders, never a blocking spinner.
+- **Standalone practice gates the UI only on the first exercise.** The loading screen covers target selection (local analytics reads) plus generation of the first exercise; the remaining exercises are prefetched eagerly in the background — their example-message, audio, and event resolution runs concurrently so they're ready when reached — but the UI never waits on the full set. Selection stays cheap and resolves no example messages, audio, or events (see [Loading & Generation Sequencing](#loading--generation-sequencing)).
 - **Emoji and meaning choices persist beyond the practice session.** They become the user's personal annotation on that lemma, visible in word cards and analytics.
 - **All practice produces construct uses.** Whether from the toolbar or the standalone page, every answer is recorded as a `ConstructUseModel` that feeds into the analytics system.
 
@@ -212,7 +261,7 @@ All expose a `multipleChoiceContent` (choices + answers) and produce a `Practice
 
 - [pangeachat/client#5656](https://github.com/pangeachat/client/issues/5656) — Voice practice ideas
 - [pangeachat/client#3175](https://github.com/pangeachat/client/discussions/3175) — Speaking practice for Voice/Audio message
-- [pangeachat/client#3176](https://github.com/pangeachat/client/discussions/3176) — New type of practice activity
+- [pangeachat/client#3176](https://github.com/pangeachat/client/discussions/3176) — New type of practice exercise
 - [pangeachat/client#2678](https://github.com/pangeachat/client/discussions/2678) — Listening exercises
 - [pangeachat/client#5654](https://github.com/pangeachat/client/issues/5654) — Are there more places where it makes sense to use the word audio?
 

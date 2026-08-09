@@ -1,10 +1,12 @@
 import 'package:collection/collection.dart';
 
-import 'package:fluffychat/pangea/analytics_misc/construct_type_enum.dart';
-import 'package:fluffychat/pangea/constructs/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
+import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/utils/base_request.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
 
-class LemmaInfoRequest {
+class LemmaInfoRequest extends BaseRequest {
   final String lemma;
   final String partOfSpeech;
   final String lemmaLang;
@@ -12,6 +14,7 @@ class LemmaInfoRequest {
   final Map<String, dynamic> messageInfo;
 
   List<LemmaInfoResponse> feedback;
+  bool? mock;
 
   LemmaInfoRequest({
     required String partOfSpeech,
@@ -20,17 +23,20 @@ class LemmaInfoRequest {
     required this.lemma,
     required this.messageInfo,
     this.feedback = const [],
+    this.mock,
   }) : partOfSpeech = partOfSpeech.toLowerCase(),
        lemmaLang = lemmaLang.toLowerCase();
 
+  @override
   Map<String, dynamic> toJson() {
     return {
       'lemma': lemma,
       'part_of_speech': partOfSpeech,
       'lemma_lang': lemmaLang,
-      'user_l1': userL1,
+      ModelKey.userL1: userL1,
       'feedback': feedback.map((e) => e.toJson()).toList(),
       'message_info': messageInfo,
+      if (mock != null) ModelKey.mock: mock,
     };
   }
 
@@ -51,6 +57,7 @@ class LemmaInfoRequest {
       const ListEquality().hash(feedback) ^
       userL1.hashCode;
 
+  @override
   String get storageKey {
     return 'l:$lemma,p:$partOfSpeech,lang:$lemmaLang,l1:$userL1';
   }

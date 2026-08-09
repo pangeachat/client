@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-04-03 12:21:59.367409",
+    "@@last_modified": "2026-08-05 11:42:12.527128",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -75,11 +75,6 @@
     },
     "archive": "Arhiv",
     "@archive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "areGuestsAllowedToJoin": "Smiju li se gosti pridružiti",
-    "@areGuestsAllowedToJoin": {
         "type": "String",
         "placeholders": {}
     },
@@ -354,11 +349,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "Tvoje poruke su osigurane s ključem za obnavljanje. Pazi da ga ne izgubiš.",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "chatDetails": "Detalji razgovora",
     "@chatDetails": {
         "type": "String",
@@ -490,11 +480,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "contactHasBeenInvitedToTheGroup": "Kontakt je pozvan u grupu",
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "contentHasBeenReported": "Sadržaj je prijavljen administratorima poslužitelja",
     "@contentHasBeenReported": {
         "type": "String",
@@ -546,11 +531,6 @@
                 "type": "String"
             }
         }
-    },
-    "createNewSpace": "Novi prostor",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
     },
     "currentlyActive": "Trenutačno aktivni",
     "@currentlyActive": {
@@ -694,11 +674,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableEncryptionWarning": "Više nećeš moći deaktivirati šifriranje. Stvarno to želiš?",
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "encrypted": "Šifrirano",
     "@encrypted": {
         "type": "String",
@@ -725,11 +700,6 @@
     },
     "enterAnEmailAddress": "Upiši e-adressu",
     "@enterAnEmailAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "everythingReady": "Sve je spremno!",
-    "@everythingReady": {
         "type": "String",
         "placeholders": {}
     },
@@ -770,11 +740,6 @@
     },
     "group": "Grupiraj",
     "@group": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "Grupa je javna",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -868,15 +833,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "Pozovi kontakt u {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "invited": "Pozvan/a",
     "@invited": {
@@ -989,15 +945,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "loadCountMoreParticipants": "Učitaj još {count} sudionika",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "loadingPleaseWait": "Učitava se … Pričekaj.",
     "@loadingPleaseWait": {
         "type": "String",
@@ -1012,15 +959,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "Prijavi se na {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "logout": "Odjava",
     "@logout": {
@@ -1084,11 +1022,6 @@
     },
     "noEmotesFound": "Nema emotikona. 😕",
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noEncryptionForPublicRooms": "Šifriranje možeš aktivirati samo nakon što soba više nije javno dostupna.",
-    "@noEncryptionForPublicRooms": {
         "type": "String",
         "placeholders": {}
     },
@@ -1198,11 +1131,6 @@
     },
     "passwordHasBeenChanged": "Lozinka je promijenjena",
     "@passwordHasBeenChanged": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "passwordRecovery": "Obnavljanje lozinke",
-    "@passwordRecovery": {
         "type": "String",
         "placeholders": {}
     },
@@ -1346,11 +1274,6 @@
                 "type": "String"
             }
         }
-    },
-    "removeDevice": "Ukloni uređaj",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "unbanFromChat": "Ponovo uključi u razgovor",
     "@unbanFromChat": {
@@ -1505,11 +1428,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "setPermissionsLevel": "Postavi razinu dozvola",
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "setStatus": "Postavi stanje",
     "@setStatus": {
         "type": "String",
@@ -1546,16 +1464,6 @@
     },
     "sourceCode": "Izvorni kȏd",
     "@sourceCode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceIsPublic": "Prostor je javan",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceName": "Ime prostora",
-    "@spaceName": {
         "type": "String",
         "placeholders": {}
     },
@@ -1614,11 +1522,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "transferFromAnotherDevice": "Prenesi s jednog drugog uređaja",
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "tryToSendAgain": "Pokušaj ponovo poslati",
     "@tryToSendAgain": {
         "type": "String",
@@ -1674,15 +1577,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "unreadChats": "{unreadCount, plural, =1{1 nepročitan razgovor} few{{unreadCount} nepročitana razgovora} other{{unreadCount} nepročitanih razgovora}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "userAndOthersAreTyping": "{username} i još {count} korisnika pišu …",
     "@userAndOthersAreTyping": {
@@ -1768,16 +1662,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "videoCall": "Video poziv",
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "Vidljivost povijesti razgovora",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "visibleForAllParticipants": "Vidljivo za sve sudionike",
     "@visibleForAllParticipants": {
         "type": "String",
@@ -1823,23 +1707,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "whoCanPerformWhichAction": "Tko može izvršiti koju radnju",
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "Tko se smije pridružiti grupi",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "Zašto želiš ovo prijaviti?",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "wipeChatBackup": "Izbrisati sigurnosnu kopiju razgovora za stvaranje novog sigurnosnog ključa za obnavljanje?",
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1946,8 +1815,6 @@
     "@sendOnEnter": {},
     "link": "Poveznica",
     "@link": {},
-    "enableMultiAccounts": "(BETA) Omogući korištenje više računa na ovom uređaju",
-    "@enableMultiAccounts": {},
     "bundleName": "Ime paketa",
     "@bundleName": {},
     "removeFromBundle": "Ukloni iz ovog paketa",
@@ -1956,14 +1823,10 @@
     "@addToBundle": {},
     "editBundlesForAccount": "Uredi pakete za ovaj račun",
     "@editBundlesForAccount": {},
-    "addAccount": "Dodaj račun",
-    "@addAccount": {},
     "oneClientLoggedOut": "Jedan od tvojih klijenata je odjavljen",
     "@oneClientLoggedOut": {},
     "unverified": "Nepotvrđeno",
     "@unverified": {},
-    "yourChatBackupHasBeenSetUp": "Sigurnosna kopija tvog razgovora je postavljena.",
-    "@yourChatBackupHasBeenSetUp": {},
     "repeatPassword": "Ponovi lozinku",
     "@repeatPassword": {},
     "messageInfo": "Informacija poruke",
@@ -1976,8 +1839,6 @@
     "@openGallery": {},
     "time": "Vrijeme",
     "@time": {},
-    "removeFromSpace": "Ukloni iz prostora",
-    "@removeFromSpace": {},
     "start": "Početak",
     "@start": {},
     "commandHint_clearcache": "Isprazni predmemoriju",
@@ -2027,14 +1888,8 @@
     "@widgetName": {},
     "widgetUrlError": "Ovo nije valjan URL.",
     "@widgetUrlError": {},
-    "emailOrUsername": "E-mail ili korisničko ime",
-    "@emailOrUsername": {},
     "unsupportedAndroidVersionLong": "Ova funkcija zahtijeva noviju verziju Androida. Provjeri, postoje li nove verzije ili podrška za Lineage OS.",
     "@unsupportedAndroidVersionLong": {},
-    "recoveryKey": "Ključ za obnavljanje",
-    "@recoveryKey": {},
-    "recoveryKeyLost": "Izgubio/la si ključ za obnavljanje?",
-    "@recoveryKeyLost": {},
     "youKickedAndBanned": "🙅 Izbacio/la si i blokirao/la korisnika {user}",
     "@youKickedAndBanned": {
         "placeholders": {
@@ -2047,8 +1902,6 @@
     "@dehydrateWarning": {},
     "emojis": "Emojiji",
     "@emojis": {},
-    "storeSecurlyOnThisDevice": "Spremi sigurno na ovom uređaju",
-    "@storeSecurlyOnThisDevice": {},
     "countFiles": "Broj datoteka: {count}",
     "@countFiles": {
         "placeholders": {
@@ -2073,12 +1926,8 @@
     "@pinMessage": {},
     "confirmEventUnpin": "Stvarno želiš trajno otkvačiti događaj?",
     "@confirmEventUnpin": {},
-    "voiceCall": "Glasovni poziv",
-    "@voiceCall": {},
     "placeCall": "Nazovi",
     "@placeCall": {},
-    "videoCallsBetaWarning": "Napominjemo da se funkcija videopoziva trenutačno nalazi u beta stanju. Možda neće raditi ispravno ili uopće neće raditi na svim platformama.",
-    "@videoCallsBetaWarning": {},
     "experimentalVideoCalls": "Eksperimentalni videopozivi",
     "@experimentalVideoCalls": {},
     "widgetJitsi": "Jitsi Meet",
@@ -2137,14 +1986,6 @@
     },
     "dehydrate": "Izvezi sesiju i izbriši uređaj",
     "@dehydrate": {},
-    "unlockOldMessages": "Otključaj stare poruke",
-    "@unlockOldMessages": {},
-    "storeInSecureStorageDescription": "Ključ za obnavljanje spremi u sigurno spremište na ovom uređaju.",
-    "@storeInSecureStorageDescription": {},
-    "saveKeyManuallyDescription": "Spremi ovaj ključ ručno pokretanjem dijaloga za dijeljenje sustava ili međuspremnika.",
-    "@saveKeyManuallyDescription": {},
-    "storeInAndroidKeystore": "Spremi u Android KeyStore",
-    "@storeInAndroidKeystore": {},
     "separateChatTypes": "Odvojeni izravni razgovori, grupe i prostori",
     "@separateChatTypes": {
         "type": "String",
@@ -2152,12 +1993,8 @@
     },
     "hydrate": "Obnovi pomoću sigurnosne kopije",
     "@hydrate": {},
-    "pleaseEnterRecoveryKey": "Upiši svoj ključ za obnavljanje:",
-    "@pleaseEnterRecoveryKey": {},
     "users": "Korisnici",
     "@users": {},
-    "pleaseEnterRecoveryKeyDescription": "Za otključavanje starih poruka upiši ključ za obnavljanje koji je generiran u prethodnoj sesiji. Tvoj ključ za obnavljanje NIJE tvoja lozinka.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "youBannedUser": "Isključio/la si korisnika {user}",
     "@youBannedUser": {
         "placeholders": {
@@ -2166,8 +2003,6 @@
             }
         }
     },
-    "storeInAppleKeyChain": "Spremi u Apple KeyChain",
-    "@storeInAppleKeyChain": {},
     "user": "Korisnik",
     "@user": {},
     "custom": "Prilagođeno",
@@ -2210,14 +2045,8 @@
     "@whyIsThisMessageEncrypted": {},
     "jump": "Skoči",
     "@jump": {},
-    "newSpaceDescription": "Prostori omogućuju konsolidiranje tvojih razgovora i izgradnju privatne ili javne zajednice.",
-    "@newSpaceDescription": {},
-    "encryptThisChat": "Šifiraj ovaj razgovor",
-    "@encryptThisChat": {},
     "deviceKeys": "Ključevi uređaja:",
     "@deviceKeys": {},
-    "foregroundServiceRunning": "Ova se obavijest pojavljuje kada se pokreće usluga u prvom planu.",
-    "@foregroundServiceRunning": {},
     "commandHint_hug": "Pošalji grljenje",
     "@commandHint_hug": {},
     "commandHint_googly": "Pošalji kotrljajuće oči",
@@ -2235,22 +2064,12 @@
             }
         }
     },
-    "screenSharingDetail": "Dijeliš svoj ekran u FuffyChatu",
-    "@screenSharingDetail": {},
     "newGroup": "Nova grupa",
     "@newGroup": {},
     "allSpaces": "Svi prostori",
     "@allSpaces": {},
-    "screenSharingTitle": "dijeljenje ekrana",
-    "@screenSharingTitle": {},
-    "enterSpace": "Uđi u prostor",
-    "@enterSpace": {},
     "newSpace": "Novi prostor",
     "@newSpace": {},
-    "sorryThatsNotPossible": "Žao nam je … to nije moguće",
-    "@sorryThatsNotPossible": {},
-    "disableEncryptionWarning": "Iz sigurnosnih razloga ne možeš deaktivirati šifriranje u razgovoru u kojem je prije bilo aktivirano.",
-    "@disableEncryptionWarning": {},
     "googlyEyesContent": "{senderName} ti šalje kotrljajuće oči",
     "@googlyEyesContent": {
         "type": "String",
@@ -2308,8 +2127,6 @@
     "@tryAgain": {},
     "messagesStyle": "Poruke:",
     "@messagesStyle": {},
-    "chatDescription": "Opis razgovora",
-    "@chatDescription": {},
     "invalidServerName": "Neispravno ime servera",
     "@invalidServerName": {},
     "chatPermissions": "Dozvole za razgovor",
@@ -2356,8 +2173,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "setTheme": "Postavi temu:",
-    "@setTheme": {},
     "createGroup": "Stvori grupu",
     "@createGroup": {},
     "invite": "Pozovi",
@@ -2387,14 +2202,10 @@
     "@pushNotificationsNotAvailable": {},
     "learnMore": "Saznaj više",
     "@learnMore": {},
-    "createGroupAndInviteUsers": "Stvori grupu i pozovi korisnike",
-    "@createGroupAndInviteUsers": {},
     "startConversation": "Pokreni konverzaciju",
     "@startConversation": {},
     "blockedUsers": "Blokirani korisnici",
     "@blockedUsers": {},
-    "groupCanBeFoundViaSearch": "Grupa se može pronaći putem pretrage",
-    "@groupCanBeFoundViaSearch": {},
     "block": "Blokiraj",
     "@block": {},
     "yourGlobalUserIdIs": "Tvoj globalni korisnički ID je: ",
@@ -2409,8 +2220,6 @@
     "@groupName": {},
     "databaseMigrationTitle": "Baza podataka je optimirana",
     "@databaseMigrationTitle": {},
-    "searchChatsRooms": "Traži #chats, @users …",
-    "@searchChatsRooms": {},
     "databaseMigrationBody": "Pričekaj. Ovo može potrajati.",
     "@databaseMigrationBody": {},
     "transparent": "Prozirno",
@@ -2421,16 +2230,12 @@
     "@incomingMessages": {},
     "passwordsDoNotMatch": "Lozinke se ne poklapaju",
     "@passwordsDoNotMatch": {},
-    "accessAndVisibility": "Pristup i vidljivost",
-    "@accessAndVisibility": {},
     "calls": "Pozivi",
     "@calls": {},
     "customEmojisAndStickers": "Prilagođeni emojiji i naljepnice",
     "@customEmojisAndStickers": {},
     "customEmojisAndStickersBody": "Dodaj ili dijeli prilagođene emojije ili naljepnice koje se mogu koristiti u bilo kojem razgovoru.",
     "@customEmojisAndStickersBody": {},
-    "accessAndVisibilityDescription": "Tko se smije pridružiti ovom razgovoru i kako se razgovor može otkriti.",
-    "@accessAndVisibilityDescription": {},
     "stickers": "Naljepnice",
     "@stickers": {},
     "discover": "Otkrij",
@@ -2470,12 +2275,8 @@
     "@hideRedactedMessagesBody": {},
     "kickUserDescription": "Korisnik je izbačen iz razgovora, ali nije blokiran. U javnim razgovorima se korisnik može ponovo pridružiti u bilo kojem trenutku.",
     "@kickUserDescription": {},
-    "addChatOrSubSpace": "Dodaj razgovor ili podpodručje",
-    "@addChatOrSubSpace": {},
     "appLockDescription": "Zaključaj aplikaciju kada je ne koristiš s PIN kodom",
     "@appLockDescription": {},
-    "globalChatId": "Globalni ID razgovora",
-    "@globalChatId": {},
     "hideRedactedMessages": "Sakrij redigirane poruke",
     "@hideRedactedMessages": {},
     "hideInvalidOrUnknownMessageFormats": "Sakrij nevažeće ili nepoznate formate poruka",
@@ -2484,35 +2285,16 @@
     "@overview": {},
     "passwordRecoverySettings": "Postavke za obnavljanje lozinke",
     "@passwordRecoverySettings": {},
-    "usersMustKnock": "Korisnici moraju pokucati",
-    "@usersMustKnock": {},
-    "noOneCanJoin": "Nitko se ne može pridružiti",
-    "@noOneCanJoin": {},
     "knock": "Pokucaj",
     "@knock": {},
     "knocking": "Kucanje",
     "@knocking": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "Razgovor se može otkriti pretraživanjem servera {server}",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "searchForUsers": "Traži @users...",
     "@searchForUsers": {},
     "pleaseChooseAStrongPassword": "Odaberi snažnu lozinku",
     "@pleaseChooseAStrongPassword": {},
     "joinSpace": "Pridruži se prostoru",
     "@joinSpace": {},
-    "publicChatAddresses": "Adrese javnih razgovora",
-    "@publicChatAddresses": {},
-    "createNewAddress": "Stvori novu adresu",
-    "@createNewAddress": {},
-    "verifyOtherUser": "🔐 Potvrdi drugog korisnika",
-    "@verifyOtherUser": {},
     "sendTypingNotificationsDescription": "Drugi sudionici u razgovoru mogu vidjeti kada pišeš novu poruku.",
     "@sendTypingNotificationsDescription": {},
     "sendReadReceiptsDescription": "Drugi sudionici u raygovoru mogu vidjeti kada pročitaš poruku.",
@@ -2561,18 +2343,6 @@
     },
     "banUserDescription": "Korisnik će biti isključen iz razgovora i moći će ponovo prisustvovati razgovoru kad ga se deblokira.",
     "@banUserDescription": {},
-    "sessionLostBody": "Tvoja je sesija izgubljena. Prijavi ovu grešku programerima na {url}. Poruka o grešci glasi: {error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "completedKeyVerification": "{sender} je dovršio/la potvrđivanje ključa",
     "@completedKeyVerification": {
         "type": "String",
@@ -2595,18 +2365,6 @@
             }
         }
     },
-    "restoreSessionBody": "Aplikacija sada pokušava obnoviti tvoju sesiju iz sigurnosne kopije. Prijavi ovu grešku programerima na {url}. Poruka o grešci glasi: {error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "requestedKeyVerification": "{sender} je zatražio/la potvrđivanje ključa",
     "@requestedKeyVerification": {
         "type": "String",
@@ -2620,15 +2378,8 @@
     "@restricted": {},
     "roomUpgradeDescription": "Razgovor će se tada ponovo stvoriti s novom verzijom sobe. Svi sudionici će biti obaviješteni da se moraju prebaciti na novi razgovor. Više o verzijama soba možeš saznati na https://spec.matrix.org/latest/rooms/",
     "@roomUpgradeDescription": {},
-    "noGoogleServicesWarning": "Čini se da Firebase Cloud Messaging nije dostupan na tvom uređaju. Za daljnje primanje push obavijesti, preporučujemo da instaliraš ntfy. S ntfy ili drugim pružateljem Unified Push usluge možeš primati push obavijesti na podatkovno siguran način. Ntfy možeš preuzeti s PlayStorea ili s F-Droida.",
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "verifyOtherDeviceDescription": "Kada potvrdiš jedan drugi uređaj, ti uređaji mogu razmjenjivati ključeve, povećavajući tvoju ukupnu sigurnost. 💪 Kada pokreneš provjeru, pojavit će se skočni prozor u aplikaciji na oba uređaja. Tamo ćeš tada vidjeti niz emojija ili brojeve koje moraš međusobno usporediti. Najbolje je imati oba uređaja pri ruci prije nego što započneš provjeru. 🤳",
     "@verifyOtherDeviceDescription": {},
-    "verifyOtherUserDescription": "Ako potvrdiš jednog drugog korisnika, možeš biti siguran/na da znaš kome zapravo pišeš. 💪\n\nKada pokreneš provjeru, vi i drugi korisnik vidjet ćete skočni prozor u aplikaciji. Tamo ćeš tada vidjeti niz emojija ili brojeve koje morate međusobno usporediti.\n\nNajbolji način za to je da se nađete zajedno ili započnete videopoziv. 👭",
-    "@verifyOtherUserDescription": {},
     "knockRestricted": "Pokucaj na ograničene sobe",
     "@knockRestricted": {},
     "makeAdminDescription": "Nakon postavljanja ovog korisnika kao administratora, to možda nećeš moći poništiti jer će on tada imati iste dozvole kao i ti.",
@@ -2721,7 +2472,6 @@
     "space": "Prostor",
     "spaces": "Prostori",
     "checkList": "Popis za provjeru",
-    "countInvited": "Pozvani: {count}",
     "sendImages": "Pošalji {count} sliku",
     "synchronizingPleaseWaitCounter": "Sinkronizacija… ({percentage}%)",
     "invitedBy": "📩 Pozvao {user}",
@@ -2741,10 +2491,6 @@
     "updateInstalled": "🎉 Instalirana je nadogradnja {version}!",
     "changelog": "Dnevnik promjena",
     "sendCanceled": "Slanje otkazano",
-    "loginWithMatrixId": "Prijava s Matrix-ID-jem",
-    "discoverHomeservers": "Otkrij domove servera",
-    "whatIsAHomeserver": "Što je dom server?",
-    "homeserverDescription": "Svi vaši podaci pohranjeni su na domu serveru, baš kao i kod pružatelja e-pošte. Možete odabrati koji dom servera želite koristiti, dok i dalje možete komunicirati sa svima. Saznajte više na https://matrix.org.",
     "doesNotSeemToBeAValidHomeserver": "Čini se da nije kompatibilan dom server. Pogrešan URL?",
     "calculatingFileSize": "Računanje veličine datoteke...",
     "generatingVideoThumbnail": "Generiranje minijature videa...",
@@ -2753,11 +2499,9 @@
     "oneOfYourDevicesIsNotVerified": "Jedan od vaših uređaja nije verificiran",
     "noticeChatBackupDeviceVerification": "Napomena: Kada povežete sve svoje uređaje na sigurnosnu kopiju chata, oni se automatski verificiraju.",
     "continueText": "Nastavi",
-    "welcomeText": "Hej Hej 👋 Ovo je FluffyChat. Možete se prijaviti na bilo koji kućni poslužitelj koji je kompatibilan s https://matrix.org. I zatim razgovarajte s bilo kim. To je velika decentralizirana mreža za razmjenu poruka!",
     "blur": "Zamućenje:",
     "opacity": "Prozirnost:",
     "setWallpaper": "Postavi pozadinu",
-    "manageAccount": "Upravljanje računom",
     "noContactInformationProvided": "Poslužitelj ne pruža valjane kontakt informacije",
     "contactServerAdmin": "Kontaktirajte administratora poslužitelja",
     "contactServerSecurity": "Kontaktirajte sigurnost poslužitelja",
@@ -2776,11 +2520,8 @@
     "unableToJoinChat": "Nemoguće se pridružiti razgovoru. Možda je druga strana već zatvorila razgovor.",
     "previous": "Prethodno",
     "otherPartyNotLoggedIn": "Druga strana trenutno nije prijavljena i stoga ne može primati poruke!",
-    "appWantsToUseForLogin": "Koristi '{server}' za prijavu",
-    "appWantsToUseForLoginDescription": "Ovim dopuštate aplikaciji i web stranici dijeljenje informacija o vama.",
     "open": "Otvoriti",
     "waitingForServer": "Čekanje na poslužitelj...",
-    "appIntroduction": "FluffyChat vam omogućava da razgovarate s prijateljima putem različitih posrednika. Saznajte više na https://matrix.org ili jednostavno dodirnite *Nastavi*.",
     "newChatRequest": "📩 Novi zahtjev za razgovor",
     "contentNotificationSettings": "Postavke obavijesti o sadržaju",
     "generalNotificationSettings": "Opće postavke obavijesti",
@@ -2855,11 +2596,9 @@
     "taTooltip": "L2 korištenje s prijevodnom pomoći",
     "interactiveTranslatorSliderHeader": "Interaktivni prevoditelj",
     "interactiveGrammarSliderHeader": "Interaktivni provjerivač gramatike",
-    "interactiveTranslatorRequired": "Obavezno",
     "waTooltip": "L2 korištenje bez pomoći",
     "interactiveTranslator": "Pomoć pri prevođenju",
     "noIdenticalLanguages": "Molimo odaberite različite izvornu i ciljnu jezike",
-    "searchBy": "Pretraži po zemlji i jezicima",
     "joinWithClassCode": "Pridruži se tečaju",
     "languageLevelPreA1": "Novak Nizak (Pre A1)",
     "languageLevelA1": "Novice Mid (A1)",
@@ -2880,19 +2619,14 @@
     "saveChanges": "Spremi promjene",
     "publicProfileTitle": "Dozvoli da moj profil bude pronađen u pretraživanju",
     "publicProfileDesc": "Uključivanjem omogućujete drugim korisnicima da pronađu vaš profil u globalnoj tražilici i pošalju zahtjeve za chat. U ovom trenutku možete odabrati prihvatiti ili odbiti zahtjev.",
-    "errorDisableIT": "Pomoć pri prevođenju je isključena.",
-    "errorDisableIGC": "Pomoć pri gramatici je isključena.",
     "errorDisableITUserDesc": "Kliknite ovdje za ažuriranje postavki pomoći pri prevođenju",
     "errorDisableIGCUserDesc": "Kliknite ovdje za ažuriranje postavki pomoći pri gramatici",
     "errorDisableITClassDesc": "Pomoć pri prevođenju je isključena za tečaj u kojem se nalazi ovaj chat.",
     "errorDisableIGCClassDesc": "Pomoć pri gramatici je isključena za tečaj u kojem se nalazi ovaj chat.",
-    "error405Title": "Jezici nisu postavljeni",
     "error405Desc": "Molimo postavite svoje jezike u Glavnom izborniku > Postavke učenja.",
     "termsAndConditions": "Uvjetima i odredbama",
     "andCertifyIAmAtLeast13YearsOfAge": " i potvrđujem da imam najmanje 16 godina.",
-    "error502504Title": "Vau, puno je učenika online!",
     "error502504Desc": "Alati za prijevod i gramatiku mogu biti spori ili nedostupni dok Pangea botovi ne uhvate korak.",
-    "error404Title": "Greška u prijevodu!",
     "error404Desc": "Pangea Bot nije siguran kako to prevesti...",
     "errorPleaseRefresh": "Radimo na tome! Molimo osvježite i pokušajte ponovno.",
     "connectedToStaging": "Povezano sa Stagingom",
@@ -2930,13 +2664,9 @@
     "definitionsToolName": "Definicije riječi",
     "definitionsToolDescription": "Kad je omogućeno, riječi podvučene plavom bojom mogu se kliknuti za definicije. Kliknite na poruke za pristup definicijama.",
     "welcomeBack": "Dobro došli nazad! Ako ste sudjelovali u pilot projektu 2023-2024, kontaktirajte nas za vašu posebnu pilot pretplatu. Ako ste učitelj koji je (ili vaša institucija je) kupio licence za vašu razred, kontaktirajte nas za učiteljevu pretplatu.",
-    "downloadTxtFile": "Preuzmi tekstualnu datoteku",
-    "downloadCSVFile": "Preuzmi CSV datoteku",
     "promotionalSubscriptionDesc": "Trenutno imate doživotnu promotivnu pretplatu. Pošaljite poruku na support@pangea.chat za pomoć pri promjeni pretplate.",
     "originalSubscriptionPlatform": "Pretplata kupljena putem {purchasePlatform}",
     "oneWeekTrial": "Tjedan dana probnog razdoblja",
-    "downloadXLSXFile": "Preuzmi Excel datoteku",
-    "unkDisplayName": "Nepoznato",
     "wwCountryDisplayName": "Cijeli svijet",
     "afCountryDisplayName": "Afganistan",
     "axCountryDisplayName": "Olandski otoci",
@@ -3219,7 +2949,6 @@
     "trialPeriodExpired": "Vaše probno razdoblje je isteklo",
     "translations": "prijevodi",
     "definitions": "definicije",
-    "subscribedToUnlockTools": "Pretplatite se za otključavanje interaktivnog prijevoda i provjere gramatike, reprodukcije zvuka, personaliziranih aktivnosti vježbanja i analitike učenja!",
     "translationTooltip": "Prevedi",
     "kickBotWarning": "Izbacivanje Pangea Bota uklonit će chat bota iz ovog razgovora.",
     "refresh": "Osvježi",
@@ -3232,24 +2961,19 @@
     "chatCapacityHasBeenChanged": "Kapacitet chata je promijenjen",
     "chatCapacitySetTooLow": "Kapacitet chata mora biti najmanje {count}.",
     "chatCapacityExplanation": "Kapacitet chata ograničava broj članova koji smiju biti u chatu.",
-    "tooManyRequest": "Previše zahtjeva, molimo pokušajte kasnije.",
     "enterNumber": "Molimo unesite cijeli broj.",
     "practice": "Vježba",
-    "speechToTextBody": "Za glasovne poruke, možete vidjeti transkript kao i rezultat govornika u riječima po minutu.",
     "versionNotFound": "Verzija nije pronađena",
     "fetchingVersion": "Preuzimanje verzije...",
     "versionFetchError": "Pogreška pri preuzimanju verzije",
     "versionText": "Verzija: {version}+{buildNumber}",
-    "l1TranslationBody": "Poruke na vašem osnovnom jeziku neće biti prevedene.",
     "deleteSubscriptionWarningTitle": "Imate aktivnu pretplatu",
     "deleteSubscriptionWarningBody": "Brisanje vašeg računa neće automatski otkazati vašu pretplatu.",
     "manageSubscription": "Upravljanje pretplatom",
-    "error520Title": "Pokušajte ponovno.",
     "error520Desc": "Oprostite, nismo mogli razumjeti vašu poruku...",
     "wordsUsed": "Riječi korištene",
     "level": "Razina",
     "morphsUsed": "Korišteni morfemi",
-    "translationChoicesBody": "Kliknite i držite opciju za naznaku.",
     "grammar": "Gramatika",
     "contactHasBeenInvitedToTheChat": "Kontakt je pozvan u chat",
     "inviteChat": "Pozovi chat",
@@ -3260,280 +2984,9 @@
     "l2SupportFull": "Puno",
     "playAudio": "Reproduciraj",
     "stop": "Zaustavi",
-    "grammarCopyPOSsconj": "Podređujući veznik",
-    "grammarCopyPOSnum": "Broj",
-    "grammarCopyPOSverb": "Glagol",
-    "grammarCopyPOSaffix": "Prilog",
-    "grammarCopyPOSpart": "Članak",
-    "grammarCopyPOSadj": "Pridjev",
-    "grammarCopyPOScconj": "Koordinacijska Konjunkcija",
-    "grammarCopyPOSpunct": "Interpunkcija",
-    "grammarCopyPOSadv": "Prilog",
-    "grammarCopyPOSaux": "Pomoćni",
-    "grammarCopyPOSspace": "Razmak",
-    "grammarCopyPOSsym": "Simbol",
-    "grammarCopyPOSdet": "Odrednica",
-    "grammarCopyPOSpron": "Zamjenica",
-    "grammarCopyPOSadp": "Prijedlog",
-    "grammarCopyPOSpropn": "Vlastito Ime",
-    "grammarCopyPOSnoun": "Imenica",
-    "grammarCopyPOSintj": "Umetnuta Riječ",
-    "grammarCopyPOSx": "Drugo",
-    "grammarCopyGENDERfem": "Ženski Rod",
-    "grammarCopyPERSON2": "Druga Osoba",
-    "grammarCopyMOODimp": "Zapovjedni Način",
-    "grammarCopyPUNCTTYPEqest": "Pitanje",
-    "grammarCopyASPECTperf": "Savršeno",
-    "grammarCopyCASEaccnom": "Akuzativ, Nominativ",
-    "grammarCopyCASEobl": "Obli",
-    "grammarCopyVOICEact": "Aktivno",
-    "grammarCopyPUNCTTYPEbrck": "Zagrada",
-    "grammarCopyNOUNTYPEart": "Članak",
-    "grammarCopyNUMBERsing": "Jednina",
-    "grammarCopyGENDERmasc": "Muški rod",
-    "grammarCopyVERBTYPEmod": "Modalni",
-    "grammarCopyADVTYPEadverbial": "Prilog",
-    "grammarCopyTENSEperi": "Perifrasti",
-    "grammarCopyNUMFORMdigit": "Brojka",
-    "grammarCopyNOUNTYPEnot_proper": "Nije vlastito",
-    "grammarCopyNUMTYPEcard": "Redni broj",
-    "grammarCopyNOUNTYPEprop": "Vlastito",
-    "grammarCopyPUNCTTYPEdash": "Crta",
-    "grammarCopyPUNCTTYPEyes": "Da",
-    "grammarCopyPUNCTTYPEsemi": "Točka-zarez",
-    "grammarCopyPUNCTTYPEcomm": "Zarez",
-    "grammarCopyMOODcnd": "Uvjetno",
-    "grammarCopyCASEacc": "Akuzativ",
-    "grammarCopyPARTTYPEpart": "Dioznik",
-    "grammarCopyTENSEpast": "Prošlo",
-    "grammarCopyDEGREEsup": "Superlativ",
-    "grammarCopyPUNCTTYPEcolo": "Dvotočka",
-    "grammarCopyPERSON3": "Treće lice",
-    "grammarCopyNUMBERplur": "Množina",
-    "grammarCopyPRONTYPEnpr": "Vlastito ime",
-    "grammarCopyPRONTYPEinterrogative": "Upitno",
-    "grammarCopyPOLITEinfm": "Neformalno",
-    "grammarCopyADVTYPEtim": "Vrijeme",
-    "grammarCopyPOLARITYneg": "Negativno",
-    "grammarCopyNUMTYPEtot": "Ukupno",
-    "grammarCopyADVTYPEadnomial": "Pridjevski",
-    "grammarCopyASPECTprog": "Napredni",
-    "grammarCopyMOODsub": "Subjunktiv",
-    "grammarCopyVERBFORMcomplementive": "Komplementivni",
-    "grammarCopyCASEnom": "Nominativ",
-    "grammarCopyTENSEfut": "Buduće",
-    "grammarCopyCASEdat": "Dativ",
-    "grammarCopyTENSEpres": "Sadašnje",
-    "grammarCopyGENDERneut": "Neutralno",
-    "grammarCopyPRONTYPErel": "Relativno",
-    "grammarCopyVERBFORMfinalEnding": "Završni završetak",
-    "grammarCopyPRONTYPEdem": "Pokazno",
-    "grammarCopyPREPCASEpre": "Prijedložni padež",
-    "grammarCopyVERBFORMfin": "Finitiv",
-    "grammarCopyDEGREEpos": "Pozitivno",
-    "grammarCopyPUNCTTYPEquot": "Navodnici",
-    "grammarCopyVERBFORMger": "Gerundij",
-    "grammarCopyVOICEpass": "Pasiv",
-    "grammarCopyCASEgen": "Genitiv",
-    "grammarCopyTENSEprs": "Sadašnje",
-    "grammarCopyDEFINITEdef": "Određeni",
-    "grammarCopyNUMTYPEord": "Redni",
-    "grammarCopyCASEins": "Instrumental",
-    "grammarCopyVERBFORMinf": "Infinitiv",
-    "grammarCopyVERBFORMaux": "Pomoćni glagol",
-    "grammarCopyNUMFORMlong": "Dugo",
-    "grammarCopyCASEloc": "Lokativ",
-    "grammarCopyMOODind": "Indicativno",
-    "grammarCopyDEGREEcmp": "Komparativno",
-    "grammarCopyCASErelativeCase": "Relativno",
-    "grammarCopyPUNCTTYPEexcl": "Uzvično",
-    "grammarCopyPERSON1": "Prva osoba",
-    "grammarCopyPUNCTSIDEini": "Početno",
-    "grammarCopyGENDERperson": "Osoba",
-    "grammarCopyFOREIGNyes": "Strano",
-    "grammarCopyVOICEvoice": "Glas",
-    "grammarCopyVERBTYPEverbType": "Glagolski",
-    "grammarCopyPOSSpass": "Posvojno",
-    "grammarCopyPREPCASEprepCase": "Prijedložni",
-    "grammarCopyNUMTYPEnumType": "Brojevni",
-    "grammarCopyNOUNTYPEnounType": "Imenica",
-    "grammarCopyREFLEXreflex": "Refleksivno",
-    "grammarCopyPRONTYPEpronType": "Zamjenica",
-    "grammarCopyPUNCTSIDEpunctSide": "Strana interpunkcije",
-    "grammarCopyVERBFORMverbForm": "Oblik glagola",
-    "grammarCopyGENDERgender": "Rod",
-    "grammarCopyMOODmood": "Način",
-    "grammarCopyASPECTaspect": "Aspekt",
-    "grammarCopyPUNCTTYPEpunctType": "Interpunkcija",
-    "grammarCopyTENSEtense": "Vremenski oblik",
-    "grammarCopyDEGREEdegree": "Stupanj",
-    "grammarCopyPOLITEpolite": "Ljubaznost",
-    "grammarCopyADVTYPEadvType": "Prilog",
-    "grammarCopyNUMFORMnumber": "Broj",
-    "grammarCopyCONJTYPEconjType": "Veza",
-    "grammarCopyPOLARITYpolarity": "Polariteta",
-    "grammarCopyCASEcase": "Pad",
-    "grammarCopyDEFINITEdefinite": "Određenost",
-    "grammarCopyNUMFORMnumForm": "Brojevni izraz",
-    "grammarCopyPRONTYPEadn": "Pridjevski",
-    "grammarCopyVOCvoc": "Vokativ",
-    "grammarCopyCMPLcmpl": "Komplementator",
-    "grammarCopyADVadv": "Priložnik",
-    "grammarCopyMOODjus": "Način",
-    "grammarCopyGENDERcom": "Rod",
-    "grammarCopyREFLEXrflx": "Refleksivno",
-    "grammarCopyPARTTYPEpar": "Dio",
-    "grammarCopySPCspc": "Specifično",
-    "grammarCopyTENSEpqp": "Pluskvamperfekt",
-    "grammarCopyREFLEXref": "Refleksivno",
-    "grammarCopyPUNCTTYPEnshrt": "Kratko",
-    "grammarCopyNUMBERdual": "Dvojno",
-    "grammarCopyNUMFORMlng": "Dugo",
-    "grammarCopyVOICEmid": "Srednji",
-    "grammarCopyINTRELintRel": "Upitno, Relativno",
-    "grammarCopyINTint": "Upitno",
-    "grammarCopyVOICEcaus": "Uzročni",
-    "grammarCopyUnknown": "Nepoznato",
-    "grammarCopyEVIDENTevident": "Evidentnost",
-    "grammarCopyNUMFORMnumberPsor": "Broj posjeditelja",
-    "grammarCopyASPECThab": "Navika",
-    "grammarCopyCASEabl": "Ablativ",
-    "grammarCopyCASEall": "Allativ",
-    "grammarCopyCASEess": "Essiv",
-    "grammarCopyCASEtra": "Translativ",
-    "grammarCopyCASEequ": "Ekvativ",
-    "grammarCopyCASEdis": "Distributivno",
-    "grammarCopyCASEabs": "Apsolutiv",
-    "grammarCopyCASEerg": "Ergativ",
-    "grammarCopyCASEcau": "Uzročni",
-    "grammarCopyCASEben": "Dobrotvorni",
-    "grammarCopyCASEtem": "Vremenski",
-    "grammarCopyCONJTYPEcoord": "Koordinacijski",
-    "grammarCopyDEFINITEcons": "Konstruktivno stanje",
-    "grammarCopyDEGREEabs": "Apsolutni stupanj",
-    "grammarCopyEVIDENTfh": "Činjenična evidencija",
-    "grammarCopyEVIDENTnfh": "Nečinjenična evidencija",
-    "grammarCopyMOODopt": "Optativ",
-    "grammarCopyMOODadm": "Divertikalni",
-    "grammarCopyMOODdes": "Željni",
-    "grammarCopyMOODnec": "Neophodni",
-    "grammarCopyMOODpot": "Mogući",
-    "grammarCopyMOODprp": "Propozitivni",
-    "grammarCopyMOODqot": "Kvantifikator",
-    "grammarCopyNUMFORMword": "Riječni oblik",
-    "grammarCopyNUMFORMroman": "Rimski brojevi",
-    "grammarCopyNUMFORMletter": "Slovni oblik",
-    "grammarCopyNUMTYPEmult": "Mnoštruko",
-    "grammarCopyNUMTYPEfrac": "Razlomak",
-    "grammarCopyNUMTYPEsets": "Skup",
-    "grammarCopyNUMTYPErange": "Opseg",
-    "grammarCopyNUMTYPEdist": "Distribucijski",
-    "grammarCopyNUMBERtri": "Probni",
-    "grammarCopyNUMBERpauc": "Paukalni",
-    "grammarCopyNUMBERgrpa": "Veći paukalni",
-    "grammarCopyNUMBERgrpl": "Veći množinski",
-    "grammarCopyNUMBERinv": "Inverzno",
-    "grammarCopyPERSON0": "Nula",
-    "grammarCopyPERSON4": "Četvrti",
-    "grammarCopyPOLITEform": "Formalno",
-    "grammarCopyPOLITEelev": "Uzdignuto",
-    "grammarCopyPOLITEhumb": "Skromno",
-    "grammarCopyPRONTYPEemp": "Naglašeno",
-    "grammarCopyPRONTYPEexc": "Uzvično",
-    "grammarCopyPRONTYPErcp": "Uzajamno",
-    "grammarCopyPRONTYPEintRelPronType": "Upitno-relativno",
-    "grammarCopyTENSEaor": "Aorist",
-    "grammarCopyTENSEeps": "Epistemički",
-    "grammarCopyTENSEprosp": "Perspektivni",
-    "grammarCopyVERBFORMpart": "Particip",
-    "grammarCopyVERBFORMconv": "Konverb",
-    "grammarCopyVERBFORMvnoun": "Glagolski imenica",
-    "grammarCopyVOICEantip": "Antipasiv",
-    "grammarCopyVOICEcauVoice": "Uzročni",
-    "grammarCopyVOICedir": "Izravni",
-    "grammarCopyVOICEinvVoice": "Inverse",
-    "grammarCopyVOICErcpVoice": "Recipročni",
-    "grammarCopyPOS": "Vrsta riječi",
-    "grammarCopyGENDER": "Rod",
-    "grammarCopyPERSON": "Osoba",
-    "grammarCopyMOOD": "Način",
-    "grammarCopyPUNCTTYPE": "Vrsta interpunkcije",
-    "grammarCopyASPECT": "Aspekt",
-    "grammarCopyCASE": "Padž",
-    "grammarCopyVOICE": "Glas",
-    "grammarCopyNOUNTYPE": "Vrsta imenice",
-    "grammarCopyVERBTYPE": "Vrsta glagola",
-    "grammarCopyADVTYPE": "Vrsta priloga",
-    "grammarCopyNUMFORM": "Oblik broja",
-    "grammarCopyNUMTYPE": "Vrsta broja",
-    "grammarCopyNUMBER": "Broj",
-    "grammarCopyDEFINITE": "Određenost",
-    "grammarCopyDEGREE": "Stupanj",
-    "grammarCopyEVIDENT": "Evidentnost",
-    "grammarCopyFOREIGN": "Strani",
-    "grammarCopyPOLARITY": "Polarnost",
-    "grammarCopyPOLITE": "Ljubaznost",
-    "grammarCopyPREPCASE": "Prijedložni padež",
-    "grammarCopyPRONTYPE": "Vrsta zamjenice",
-    "grammarCopyPUNCTSIDE": "Strana interpunkcije",
-    "grammarCopyREFLEX": "Refleksivno",
-    "grammarCopyTENSE": "Vremenski oblik",
-    "grammarCopyVERBFORM": "Oblik glagola",
-    "grammarCopyCONJTYPE": "Vrsta veznika",
-    "grammarCopySPC": "Specifičnost",
-    "grammarCopyPARTTYPE": "Vrsta djeljivosti",
-    "grammarCopyINTREL": "Upitno-odnosno",
-    "grammarCopyUNKNOWN": "Nepoznato",
-    "grammarCopyNUMBERPSOR": "Broj posjednika",
-    "grammarCopyPOSS": "Posvojni",
-    "grammarCopyASPECTimp": "Nedovršni aspekt",
-    "grammarCopyCASEvoc": "Vokativ",
-    "grammarCopyCASEcom": "Komitativ",
-    "grammarCopyCASEpar": "Partitiv",
-    "grammarCopyCASEadv": "Prilogni",
-    "grammarCopyCASEref": "Referencijalni",
-    "grammarCopyCASErel": "Relativni",
-    "grammarCopyCASEsub": "Subessiv",
-    "grammarCopyCASEsup": "Superessiv",
-    "grammarCopyCASEaccdat": "Akuzativ-Dativ",
-    "grammarCopyCASEpre": "Prijedložni",
-    "grammarCopyCONJTYPEsub": "Podređujući",
-    "grammarCopyCONJTYPEcmp": "Usporedni",
-    "grammarCopyDEFINITEind": "Neodređeni",
-    "grammarCopyMOODint": "Upitni način",
-    "grammarCopyNOUNTYPEcomm": "Zajednička imenica",
-    "grammarCopyNUMBERPSORsing": "Posvojitelj u jednini",
-    "grammarCopyNUMBERPSORplur": "Posvojitelj u množini",
-    "grammarCopyNUMBERPSORdual": "Posvojitelj u dvojini",
-    "grammarCopyPOLARITYpos": "Pozitivna polaritet",
-    "grammarCopyPOSSyes": "Posvojno",
-    "grammarCopyPREPCASEnpr": "Bez prijedloga",
-    "grammarCopyPRONTYPEprs": "Osobno",
-    "grammarCopyPRONTYPEint": "Upitno",
-    "grammarCopyPRONTYPEtot": "Ukupno",
-    "grammarCopyPRONTYPEneg": "Negativno",
-    "grammarCopyPRONTYPEart": "Član",
-    "grammarCopyPRONTYPEind": "Neodređeno",
-    "grammarCopyPRONTYPEintrel": "Upitno-odnosno",
-    "grammarCopyPUNCTSIDEfin": "Završna interpunkcija",
-    "grammarCopyPUNCTTYPEperi": "Točka",
-    "grammarCopyREFLEXyes": "Refleksivno",
-    "grammarCopyTENSEimp": "Nedovršno",
-    "grammarCopyVERBFORMsup": "Supin",
-    "grammarCopyVERBFORMadn": "Pridjevski",
-    "grammarCopyVERBFORMlng": "Dug",
-    "grammarCopyVERBFORMshrt": "Kratko",
-    "grammarCopyVERBTYPEcaus": "Uzročni glagol",
-    "grammarCopyVOICEcau": "Uzročni",
-    "grammarCopyVOICEdir": "Izravni",
-    "grammarCopyVOICEinv": "Obrnuti",
-    "grammarCopyVOICErcp": "Recipročno",
     "other": "Ostalo",
     "levelShort": "RAV {level}",
-    "clickBestOption": "Odaberite najbolje opcije za prevođenje vaše poruke!",
-    "completeActivitiesToUnlock": "Dovršite barem jednu aktivnost za otključavanje prijevoda!",
     "noCapacityLimit": "Nema ograničenja kapaciteta",
-    "downloadGroupText": "Preuzmi tekst grupe",
     "notificationsOn": "Obavijesti uključene",
     "notificationsOff": "Obavijesti isključene",
     "joinWithCode": "Pridruži se s kodom",
@@ -3550,27 +3003,9 @@
     "constructUseIgnIGCDesc": "Ignorirano u gramatičkoj korekciji",
     "constructUseCorIGCDesc": "Ispravno u gramatičkoj korekciji",
     "constructUseIncIGCDesc": "Neispravno u gramatičkoj korekciji",
-    "constructUseCorPADesc": "Ispravno u aktivnosti značenja riječi",
-    "constructUseIgnPADesc": "Ignorirano u aktivnosti značenja riječi",
-    "constructUseIncPADesc": "Neispravno u aktivnosti značenja riječi",
-    "constructUseCorWLDesc": "Ispravno u aktivnosti slušanja riječi",
-    "constructUseIncWLDesc": "Neispravno u aktivnosti slušanja riječi",
-    "constructUseIngWLDesc": "Ignorirano u aktivnosti slušanja riječi",
-    "constructUseCorHWLDesc": "Ispravno u aktivnosti skrivene riječi",
-    "constructUseIncHWLDesc": "Neispravno u aktivnosti skrivene riječi",
-    "constructUseIgnHWLDesc": "Ignorirano u aktivnosti skrivene riječi",
-    "constructUseCorLDesc": "Ispravno u aktivnosti leme",
-    "constructUseIncLDesc": "Neispravno u aktivnosti leme",
-    "constructUseIgnLDesc": "Ignorirano u aktivnosti leme",
-    "constructUseCorMDesc": "Ispravno u aktivnosti gramatike",
-    "constructUseIncMDesc": "Neispravno u aktivnosti gramatike",
-    "constructUseIgnMDesc": "Ignorirano u aktivnosti gramatike",
-    "constructUseEmojiDesc": "Ispravno u aktivnosti emojija",
     "constructUseCollected": "Skupljeno u chatu",
     "constructUseNanDesc": "Nije primjenjivo",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Omogućeno pretvaranje teksta u govor",
-    "enableTTSToolDescription": "Dopustite aplikaciji da generira izlaz teksta u govor za dijelove teksta na vašem ciljanom jeziku.",
     "yourUsername": "Vaše korisničko ime",
     "yourEmail": "Vaša e-pošta",
     "iWantToLearn": "Želim naučiti",
@@ -3613,31 +3048,12 @@
     "whatIsTheMorphTag": "Što je {morphologicalFeature} od '{wordForm}'?",
     "dataAvailable": "Dostupnost podataka",
     "available": "Dostupno",
-    "pangeaBotIsFallible": "Pangea Bot također pravi pogreške!",
-    "whatIsMeaning": "Što znači '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Uskladite značenja s riječima u poruci!",
-    "doubleClickToEdit": "Dvostruki klik za uređivanje.",
-    "activityPlannerTitle": "Planer aktivnosti",
-    "topicLabel": "Tema",
-    "topicPlaceholder": "Odaberite temu...",
-    "modeLabel": "Vrsta aktivnosti",
-    "modePlaceholder": "Odaberite način...",
-    "learningObjectiveLabel": "Cilj učenja",
-    "learningObjectivePlaceholder": "Odaberite cilj učenja...",
-    "languageOfInstructionsLabel": "Jezik uputa za aktivnost",
-    "targetLanguageLabel": "Ciljani jezik",
     "cefrLevelLabel": "Razina CEFR-a",
-    "generateActivitiesButton": "Generiraj aktivnost",
-    "launchActivityButton": "Pokreni aktivnost",
     "image": "Slika",
     "video": "Video",
     "nan": "Nije primjenjivo",
-    "activityPlannerOverviewInstructionsBody": "Odaberite temu, način, cilj učenja i generirajte aktivnost za chat!",
-    "activityTitle": "Naslov aktivnosti",
-    "addVocabulary": "Dodaj vokabular",
     "instructions": "Upute",
-    "numberOfLearners": "Broj učenika",
-    "mustBeInteger": "Mora biti cijeli broj, npr. 1, 2, 3, ...",
     "constructUsePvmDesc": "Proizvedeno u glasovnoj poruci",
     "leaveSpaceDescription": "Napustite tečaj, napustit ćete sve razgovore unutar njega. Ostali korisnici će vidjeti da ste napustili tečaj.",
     "constructUseCorMmDesc": "Točno značenje poruke",
@@ -3652,7 +3068,6 @@
     "ttsDisabledBody": "Možete omogućiti pretvaranje teksta u govor u postavkama učenja",
     "noSpaceDescriptionYet": "Još nije kreiran opis tečaja.",
     "tooLargeToSend": "Ova poruka je prevelika za slanje",
-    "exitWithoutSaving": "Jeste li sigurni da želite izaći bez spremanja?",
     "enableAutocorrectPopupTitle": "Dodajte tipkovnicu za ciljani jezik tako da odete na:",
     "enableAutocorrectPopupSteps": "  • Postavke\n  • Općenito\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novu tipkovnicu",
     "enableAutocorrectPopupDescription": "Kad odaberete jezik, možete kliknuti na malu globus ikonu u donjem lijevom kutu vaše tipkovnice za aktiviranje nove instalirane tipkovnice.",
@@ -3663,11 +3078,8 @@
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Upravo napuštate ovaj chat. Ostali korisnici će vidjeti da ste napustili chat.",
     "confirmUserId": "Molimo potvrdite svoje korisničko ime na Pangea Chatu kako biste izbrisali svoj račun.",
-    "startingToday": "Počevši od danas",
-    "oneWeekFreeTrial": "Tjedan dana besplatnog probnog razdoblja",
     "paidSubscriptionStarts": "Počinje {startDate}",
     "cancelInSubscriptionSettings": "• Otkažite u bilo kojem trenutku u postavkama pretplate",
-    "cancelToAvoidCharges": "• Otkažite prije {trialEnds} kako biste izbjegli naplate",
     "downloadGboard": "Preuzmi Gboard",
     "autocorrectNotAvailable": "Nažalost, vaša platforma trenutno nije podržana za ovu značajku. Ostanite s nama za daljnji razvoj!",
     "pleaseUpdateApp": "Molimo ažurirajte aplikaciju za nastavak.",
@@ -3677,19 +3089,12 @@
     "knockSpaceSuccess": "Zatražili ste pridruživanje ovom tečaju! Administrator će odgovoriti na vaš zahtjev kada ga primi. 😀",
     "chooseWordAudioInstructionsBody": "Slušajte cijelu poruku. Zatim uskladite audiozapise s riječima.",
     "chooseMorphsInstructionsBody": "Kliknite na komade slagalice za gramatička pitanja!",
-    "pleaseEnterInt": "Unesite broj",
     "home": "Početna",
     "join": "Pridruži se",
-    "readingAssistanceOverviewBody": "Kliknite na gumbe ispod za mini-igre u usklađivanju emojija, audiozapisa, značenja riječi i gramatičkih koncepata. Ili kliknite na bilo koju riječ za detalje.",
     "resetInstructionTooltipsTitle": "Resetiraj upute za alatne trake",
     "resetInstructionTooltipsDesc": "Kliknite za prikaz uputa poput za potpuno novog korisnika.",
-    "randomize": "Nasumično",
     "clear": "Očisti",
-    "makeYourOwnActivity": "Stvori svoju aktivnost",
-    "featuredActivities": "Istaknuto",
     "save": "Spremi",
-    "startChat": "Započni chat",
-    "translationProblem": "Problem s prijevodom",
     "askToJoin": "Zatraži pridruživanje",
     "emptyChatWarningTitle": "Chat je prazan",
     "emptyChatWarningDesc": "Niste pozvali nikoga u svoj chat. Idite na postavke chata da pozovete svoje kontakte ili Bota. To možete učiniti i kasnije.",
@@ -3719,17 +3124,13 @@
     "timesUsedIndependently": "Broj korištenja neovisno",
     "timesUsedWithAssistance": "Broj korištenja uz pomoć",
     "shareInviteCode": "Podijeli pozivni kod: {code}",
-    "leaderboard": "Ljestvica",
     "skipForNow": "Preskoči za sada",
     "permissions": "Dozvole",
     "spaceChildPermission": "Tko može dodati nove razgovore u ovaj tečaj",
-    "addEnvironmentOverride": "Dodaj nadjačavanje okruženja",
     "defaultOption": "Zadano",
     "deleteChatDesc": "Jeste li sigurni da želite izbrisati ovaj razgovor? On će biti izbrisan za sve sudionike, a sve poruke unutar razgovora više neće biti dostupne za vježbanje ili analitiku učenja.",
     "deleteSpaceDesc": "Tečaj i svi odabrani razgovori bit će izbrisani za sve sudionike, a sve poruke unutar razgovora više neće biti dostupne za vježbanje ili analitiku učenja. Ova radnja se ne može poništiti.",
     "launch": "Pokreni",
-    "searchChats": "Pretraži razgovore",
-    "maxFifty": "Maksimalno 50",
     "configureSpace": "Konfiguriraj tečaj",
     "pinMessages": "Prikači poruke",
     "setJoinRules": "Postavi pravila pridruživanja",
@@ -3742,7 +3143,6 @@
     "announcements": "Obavijesti",
     "activities": "Aktivnosti",
     "access": "Pristup",
-    "activitySuggestionTimeoutMessage": "Radimo na tome da vam pružimo više aktivnosti, molimo provjerite ponovo za minutu",
     "howSpaceCanBeFound": "Kako se može pronaći ovaj tečaj",
     "private": "Privatno",
     "cannotBeFoundInSearch": "Ne može se pronaći u pretraživanju",
@@ -3764,9 +3164,6 @@
     "failedToFetchTranscription": "Neuspjelo dohvaćanje transkripcije",
     "deleteEmptySpaceDesc": "Tečaj će biti izbrisan za sve sudionike. Ova radnja se ne može poništiti.",
     "regenerate": "Ponovno generiraj",
-    "mySavedActivities": "Moje spremljene aktivnosti",
-    "noSavedActivities": "Nema spremljenih aktivnosti",
-    "saveActivity": "Spremi ovu aktivnost",
     "failedToPlayVideo": "Neuspješno reproduciranje videa",
     "done": "Gotovo",
     "inThisSpace": "U ovom tečaju",
@@ -3777,18 +3174,10 @@
     "numInvited": "{count} pozvano",
     "saved": "Spremljeno",
     "reset": "Resetiraj",
-    "errorGenerateActivityMessage": "Neuspješno generiranje aktivnosti",
-    "errorRegenerateActivityMessage": "Neuspješno ponovno generiranje aktivnosti",
-    "errorLaunchActivityMessage": "Neuspješno pokretanje aktivnosti",
-    "errorFetchingActivitiesMessage": "Neuspješno dohvaćanje aktivnosti",
     "errorFetchingDefinition": "Neuspješno dohvaćanje definicije",
     "errorProcessAnalytics": "Neuspješno procesiranje analitike",
     "errorDownloading": "Preuzimanje nije uspjelo",
-    "errorLoadingSpaceChildren": "Neuspješno učitavanje razgovora unutar ovog tečaja",
-    "unexpectedError": "Neočekivana pogreška.",
-    "pleaseReload": "Molimo vas da ponovno učitate i pokušate ponovo.",
     "translationError": "Pogreška u prijevodu",
-    "errorFetchingActivity": "Neuspješno dohvaćanje aktivnosti",
     "check": "Provjeri",
     "unableToFindRoom": "Nije pronađen razgovor ili tečaj s tim kodom. Molimo pokušajte ponovno.",
     "numCompletedActivities": "Broj dovršenih aktivnosti",
@@ -3796,23 +3185,14 @@
     "request": "Zahtjev",
     "requestAll": "Zatraži sve",
     "confirmMessageUnpin": "Jeste li sigurni da želite odvojiti ovu poruku?",
-    "createActivityPlan": "Stvori novi plan aktivnosti",
-    "saveAndLaunch": "Spremi i pokreni",
-    "launchToSpace": "Pokreni u tečaju",
-    "numberOfActivities": "Broj sesija aktivnosti",
-    "maximumActivityParticipants": "Svaka aktivnost može imati najviše {count} sudionik(a).",
     "pending": "Na čekanju",
     "inactive": "Neaktivno",
-    "confirmRole": "Potvrdi ulogu",
     "openRoleLabel": "OTVORENO",
-    "joinedTheActivity": "👋 {username} pridružio se kao {role}",
     "finishedTheActivity": "🎯 {username} završio ovu aktivnost",
     "activitySummaryError": "Sažeci aktivnosti nisu dostupni",
     "requestSummaries": "Zatraži sažetke",
-    "generatingNewActivities": "Vi ste prvi korisnik ovog para jezika! Molimo vas pričekajte minutu, pripremamo aktivnosti baš za vas.",
     "requestAccessTitle": "Zatraži pristup analitici?",
     "requestAccessDesc": "Želite li zatražiti pristup za prikaz analitike sudionika?\n\nAko se sudionici slože, administratori ovog tečaja moći će vidjeti njihove:\n    • ukupni vokabular\n    • ukupne gramatičke koncepte\n    • ukupne završene sesije aktivnosti\n    • specifične gramatičke koncepte korištene, ispravno i pogrešno\n\nNeće moći vidjeti njihove:\n    • poruke u chatovima izvan tečaja\n    • popis vokabulara",
-    "requestAccess": "Zatraži pristup ({count})",
     "analyticsInactiveTitle": "Zahtjevi za neaktivne korisnike nisu mogli biti poslani",
     "analyticsInactiveDesc": "Neaktivni korisnici koji se nisu prijavili od kada je ova značajka uvedena neće vidjeti vaš zahtjev.\n\nGumb Zahtjev pojavit će se nakon njihovog povratka. Možete ponovno poslati zahtjev kasnije klikom na gumb Zahtjev ispod njihovog imena kada bude dostupan.",
     "accessRequestedTitle": "Zahtjev za pristup analitici",
@@ -3821,7 +3201,6 @@
     "lastUpdated": "Ažurirano\n{time}",
     "activityFinishedMessage": "Svi završili!",
     "endForAll": "Završi za sve",
-    "newCourse": "Novi tečaj",
     "numModules": "{num} modula",
     "coursePlan": "Plan tečaja",
     "editCourseLater": "Možete kasnije urediti naslov predloška, opise i sliku tečaja.",
@@ -3835,8 +3214,6 @@
     "accessDesc": "Možete učiniti svoj tečaj otvorenim za svijet! Ili, učiniti svoj tečaj privatnim i sigurnim.",
     "createGroupChatDesc": "Dok sesije aktivnosti počinju i završavaju, grupni chatovi će ostati otvoreni za rutinsku komunikaciju.",
     "deleteDesc": "Samo administratori mogu izbrisati tečaj. Ovo je destruktivna radnja koja uklanja sve korisnike i briše sve odabrane chatove unutar tečaja. Budite oprezni.",
-    "noCourseFound": "O, ovaj tečaj treba plan!\n\nPlanovi tečaja su niz tema i aktivnosti razgovora.",
-    "additionalParticipants": "+ {num} drugih",
     "whatNow": "Što sada?",
     "chooseNextActivity": "Odaberite svoju sljedeću aktivnost!",
     "letsGo": "Krenimo",
@@ -3846,19 +3223,16 @@
     "pingParticipants": "Označi sudionike tečaja",
     "playWithBot": "Igraj s Pangea Botom",
     "inviteFriends": "Pozovi prijatelje",
-    "waitNotDone": "Čekaj, nisam završio!",
+    "waitNotDone": "Čekaj, još nisam gotov!",
     "waitingForOthersToFinish": "Čekam da ostali završe...",
     "generatingSummary": "Analiziranje chata i generiranje rezultata",
-    "findCourse": "Pronađi tečaj",
     "pingParticipantsNotification": "{user} traži korisnike za pridruživanje sesiji aktivnosti u {room}",
     "course": "Tečaj",
     "courses": "Tečajevi",
     "goToCourse": "Idi na tečaj: {course}",
     "activityComplete": "Ova aktivnost je završena. Sažetak aktivnosti trebao bi biti dostupan u nastavku.",
-    "startNewSession": "Započni novu sesiju",
     "joinOpenSession": "Pridruži se otvorenoj sesiji",
     "activityNotFound": "Aktivnost nije pronađena",
-    "levelUp": "Podigni razinu",
     "myActivities": "Moje aktivnosti",
     "openToJoin": "Otvoreno za pridruživanje",
     "results": "Rezultati",
@@ -3926,14 +3300,6 @@
     "@checkList": {
         "type": "String",
         "placeholders": {}
-    },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@sendImages": {
         "type": "String",
@@ -4041,22 +3407,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -4093,10 +3443,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -4106,10 +3452,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -4185,27 +3527,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -4523,10 +3849,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4536,10 +3858,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4627,14 +3945,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4651,10 +3961,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4667,15 +3973,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4827,14 +4125,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4848,14 +4138,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6026,10 +5308,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6082,19 +5360,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
     },
     "@practice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@speechToTextBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6121,10 +5391,6 @@
             }
         }
     },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
         "placeholders": {}
@@ -6134,10 +5400,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -6154,10 +5416,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6201,1078 +5459,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@grammarCopyPOSsconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnum": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSverb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaffix": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpunct": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSspace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSsym": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSdet": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpron": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpropn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSintj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERfem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON2": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEqest": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTperf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEobl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEact": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEbrck": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERmasc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEmod": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadverbial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMdigit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnot_proper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEcard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEprop": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEdash": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEsemi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODcnd": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEacc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpast": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcolo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON3": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEinterrogative": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEinfm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEtim": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadnomial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTprog": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMcomplementive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEfut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpres": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERneut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfinalEnding": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEdem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEquot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMger": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEgen": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdef": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEins": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMinf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlong": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEloc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErelativeCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEexcl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON1": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEini": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERperson": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGNyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEvoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEverbType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEprepCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEnumType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnounType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXreflex": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEpronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEpunctSide": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMverbForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERgender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODmood": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTaspect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEpunctType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEtense": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEdegree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEpolite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadvType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumber": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEconjType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpolarity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdefinite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOCvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCMPLcmpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODjus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXrflx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPCspc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpqp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEnshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEmid": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTRELintRel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUnknown": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTevident": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumberPsor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECThab": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEess": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtra": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEequ": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEerg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEben": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcoord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEcons": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTnfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODopt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODadm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODdes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODnec": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODpot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODprp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODqot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMword": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMroman": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMletter": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEmult": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEfrac": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEsets": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPErange": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEdist": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERtri": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERpauc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpa": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON0": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON4": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEform": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEelev": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEhumb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEemp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEexc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintRelPronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEaor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEeps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprosp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMconv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMvnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEantip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcauVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICedir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinvVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcpVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOOD": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITY": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEX": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPC": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTREL": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUNKNOWN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSOR": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintrel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEdir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@other": {
         "type": "String",
         "placeholders": {}
@@ -7285,19 +5471,7 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -7365,70 +5539,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@constructUseCollected": {
         "type": "String",
         "placeholders": {}
@@ -7447,14 +5557,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7631,71 +5733,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
         "type": "String",
         "placeholders": {}
     },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7711,27 +5753,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -7795,10 +5817,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -7839,14 +5857,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -7858,14 +5868,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -7903,19 +5905,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
     },
     "@join": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@readingAssistanceOverviewBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7927,31 +5921,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@makeYourOwnActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -8075,10 +6049,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -8088,10 +6058,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -8108,14 +6074,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -8164,10 +6122,6 @@
         "placeholders": {}
     },
     "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitySuggestionTimeoutMessage": {
         "type": "String",
         "placeholders": {}
     },
@@ -8259,18 +6213,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -8319,22 +6261,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -8347,23 +6273,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8402,30 +6312,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
@@ -8434,24 +6320,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@confirmRole": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -8469,10 +6340,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -8480,14 +6347,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -8529,10 +6388,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -8592,18 +6447,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -8656,10 +6499,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -8686,10 +6525,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -8870,7 +6705,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Vratite se sutra za ažuriranja aktivnosti.",
-    "activityDropdownDesc": "Kad završite s ovom aktivnošću, kliknite ispod",
     "languageMismatchTitle": "Neusklađenost jezika",
     "languageMismatchDesc": "Vaš ciljni jezik ne odgovara jeziku ove aktivnosti. Želite li ažurirati svoj ciljni jezik?",
     "reportWordIssueTooltip": "Prijavite problem s informacijama o riječi",
@@ -8883,10 +6717,6 @@
     "selectAll": "Odaberi sve",
     "deselectAll": "Odznači sve",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8935,17 +6765,11 @@
         "placeholders": {}
     },
     "startOwn": "Započni svoj vlastiti",
-    "joinCourseDesc": "Svaki tečaj ima 8-10 sekvenciranih tema s nizom aktivnosti za učenje jezika temeljenih na zadacima.",
     "newMessageInPangeaChat": "💬 Nova poruka u Pangea chatu",
     "shareCourse": "Podijeli tečaj",
     "addCourse": "Dodaj tečaj",
-    "joinPublicCourse": "Pridruži se javnom tečaju",
     "vocabLevelsDesc": "Ovdje će ići riječi vokabulara nakon što ih podignete na višu razinu!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8958,10 +6782,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -8980,12 +6800,9 @@
     "emojiView": "Prikaz emojija",
     "feedbackDialogDesc": "I ja griješim! Ima li nešto što bi mi pomoglo da se poboljšam?",
     "contactHasBeenInvitedToTheCourse": "Kontakt je pozvan na tečaj",
-    "activityStatsButtonTooltip": "Informacije o aktivnosti",
     "allow": "Dopusti",
     "deny": "Odbij",
     "enabledRenewal": "Omogući obnavljanje pretplate",
-    "subscriptionEndsOn": "Pretplata završava",
-    "subscriptionRenewsOn": "Pretplata se obnavlja",
     "waitForSubscriptionChanges": "Promjene na vašoj pretplati mogu potrajati trenutak da se odraze u aplikaciji.",
     "subscribeReadingAssistance": "Pretplatite se za otključavanje alata za poruke",
     "aceDisplayName": "Achinese",
@@ -9251,10 +7068,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -9264,14 +7077,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10190,14 +7995,8 @@
         "placeholders": {}
     },
     "introChatTitle": "Kreiraj chat za uvod",
-    "introChatDesc": "Svako u prostoru može objavljivati.",
     "announcementsChatTitle": "Chat za obavijesti",
-    "announcementsChatDesc": "Samo administrator prostora može objavljivati.",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10205,14 +8004,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "Otvorene sesije ({num})",
     "pickDifferentActivity": "Odaberite drugu aktivnost",
     "inProgressActivitiesTitle": "Trenutno se događa ({num})",
-    "completedActivitiesTitle": "Završeno ({num})",
     "inOngoingActivity": "Imate aktivnost koja traje!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -10223,14 +8017,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10296,15 +8082,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Postavili ste emoji za {lemma}! Ovaj emoji ćemo koristiti za predstavljanje riječi u praktičnim aktivnostima ubuduće.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Čekanje na dovršetak prijave",
     "ssoDialogDesc": "Otvorili smo novu karticu kako biste se mogli sigurno prijaviti.",
     "ssoDialogHelpText": "🤔 Ako niste vidjeli novu karticu, provjerite svoj blokator iskačućih prozora.",
@@ -10335,16 +8112,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Aktivnosti za otključavanje sljedeće teme",
-    "activitiesToUnlockTopicDesc": "Postavite broj aktivnosti za otključavanje sljedeće teme tečaja",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Ispravna praksa definicije vokabulara",
     "constructUseIncLMDesc": "Neispravna praksa definicije vokabulara",
     "constructUseCorLADesc": "Ispravna praksa audio vokabulara",
@@ -10352,7 +8119,6 @@
     "constructUseBonus": "Bonus tijekom prakse vokabulara",
     "practiceVocab": "Vježbajte vokabular",
     "selectMeaning": "Odaberite značenje",
-    "selectAudio": "Odaberite odgovarajući audio",
     "anotherRound": "Još jedan krug",
     "activitySettingsOverrideWarning": "Jezik i razina jezika određeni planom aktivnosti",
     "voice": "Glas",
@@ -10384,10 +8150,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -10405,25 +8167,15 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Preuzimanje pokrenuto",
     "webDownloadPermissionMessage": "Ako vaš preglednik blokira preuzimanja, molimo omogućite preuzimanja za ovu stranicu.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Vaš napredak u vježbi neće biti spremljen.",
     "practiceGrammar": "Vježbajte gramatiku",
     "notEnoughToPractice": "Pošaljite više poruka da otključate vježbu",
     "constructUseCorGCDesc": "Vježba ispravne gramatičke kategorije",
     "constructUseIncGCDesc": "Vježba neispravne gramatičke kategorije",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10465,11 +8217,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Pangea Bot glas",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Vaš zahtjev je poslan administratoru tečaja! Bit ćete primljeni ako odobre.",
     "@knockDesc": {
         "type": "String",
@@ -10482,16 +8229,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat je aplikacija za slanje poruka, stoga su obavijesti važne!",
-    "enableNotificationsDesc": "Dopusti obavijesti",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10520,11 +8257,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Nešto je pošlo po zlu i marljivo radimo na rješavanju problema. Provjerite ponovo kasnije.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Omogući pomoć pri pisanju",
     "autoIGCToolDescription": "Automatski pokreni Pangea Chat alate za ispravljanje poslanih poruka na ciljni jezik.",
     "@autoIGCToolName": {
@@ -10542,21 +8274,6 @@
     },
     "aboutMeHint": "O meni",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "Idiom",
-    "grammarCopyPOSphrasalv": "Phrasalni Glagol",
-    "grammarCopyPOScompn": "Složenica",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10595,24 +8312,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "Gramatika",
-    "spanTypeWordChoice": "Odabir riječi",
     "spanTypeSpelling": "Pravopis",
     "spanTypePunctuation": "Interpunkcija",
     "spanTypeStyle": "Stil",
     "spanTypeFluency": "Tečnost",
     "spanTypeAccents": "Naglasci",
     "spanTypeCapitalization": "Velika slova",
-    "spanTypeCorrection": "Ispravak",
     "spanFeedbackTitle": "Prijavi problem s ispravkom",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -10637,10 +8343,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -10653,13 +8355,7 @@
     "longPressToRecordVoiceMessage": "Dugo pritisnite za snimanje glasovne poruke.",
     "pause": "Pauza",
     "resume": "Nastavi",
-    "newSubSpace": "Novi podprostor",
-    "moveToDifferentSpace": "Premjesti u drugi prostor",
-    "removeFromSpaceDescription": "Razgovor će biti uklonjen iz prostora, ali će se i dalje pojavljivati na vašem popisu razgovora.",
     "countChats": "{chats} razgovora",
-    "spaceMemberOf": "Član prostora {spaces}",
-    "spaceMemberOfCanKnock": "Član prostora {spaces} može pokucati",
-    "donate": "Doniraj",
     "startedAPoll": "{username} je započeo anketu.",
     "poll": "Anketa",
     "startPoll": "Započni anketu",
@@ -10683,23 +8379,15 @@
     "newStickerPack": "Novi paket naljepnica",
     "stickerPackName": "Ime paketa naljepnica",
     "attribution": "Priznanje",
-    "skipChatBackup": "Preskoči sigurnosnu kopiju chata",
-    "skipChatBackupWarning": "Jeste li sigurni? Bez omogućavanja sigurnosne kopije chata možete izgubiti pristup svojim porukama ako promijenite uređaj.",
-    "loadingMessages": "Učitavanje poruka",
-    "setupChatBackup": "Postavi sigurnosnu kopiju chata",
     "noMoreResultsFound": "Nema više pronađenih rezultata",
     "chatSearchedUntil": "Chat pretražen do {time}",
     "federationBaseUrl": "Osnovna URL adresa federacije",
     "clientWellKnownInformation": "Informacije o klijentu:",
     "baseUrl": "Osnovna URL adresa",
     "identityServer": "Identitet Server:",
-    "versionWithNumber": "Verzija: {version}",
     "logs": "Dnevnici",
-    "advancedConfigs": "Napredne postavke",
     "advancedConfigurations": "Napredne konfiguracije",
-    "signInWithLabel": "Prijavite se s:",
     "selectAllWords": "Odaberite sve riječi koje čujete u audiozapisu",
-    "joinCourseForActivities": "Pridružite se tečaju kako biste isprobali aktivnosti.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -10736,18 +8424,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -10755,26 +8431,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -10880,22 +8536,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -10924,19 +8564,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -10944,15 +8572,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10976,12 +8596,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Otključaj aktivnosti vježbanja",
     "hideEvents": "Sakrij događaje",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11079,21 +8694,11 @@
         "placeholders": {}
     },
     "getStarted": "Započni",
-    "writeAndSpeakWorryFree": "Piši i govori bez brige s Pangea Botom u bilo kojem trenutku, bilo gdje!",
-    "joinLearningCommunities": "Pridruži se međunarodnim zajednicama za učenje ili... započni svoju vlastitu!",
     "playConversationGames": "Igraj igre razgovora s botom, kolegama i novim prijateljima!",
     "jumpIntoConversation": "Uključi se u razgovor od prvog dana s AI alatima za pisanje!",
     "playPersonalizedGames": "Igraj igre vježbanja prilagođene tvojim rječnikom i gramatičkim potrebama!",
     "learnLanguageWhileTexting": "Uči jezik dok dopisuješ s prijateljima!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11113,23 +8718,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Ne vidite koga tražite? Možda trebaju postaviti svoj profil na javno u postavkama učenja",
     "suggestedVocab": "Preporučena vokabular",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
     },
     "myGender": "Moj spol",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, završili ste sve dostupne aktivnosti! Pošaljite više poruka kako biste otključali više aktivnosti za vježbanje.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11144,8 +8739,6 @@
     "notificationDeviceSubtitle": "Pogledajte i upravljajte uređajima koji vam šalju obavijesti.",
     "notificationRuleDM": "Izravna poruka",
     "notificationRuleDMDescription": "Obavještava korisnika o porukama u sobama za izravne poruke.",
-    "notificationRuleCourseAndActivity": "Tečaj i aktivnost",
-    "notificationRuleCourseAndActivityDescription": "Obavještava korisnika o porukama u tečajevima, aktivnostima i chatovima.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11170,31 +8763,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableEmailNotifications": "Omogući obavijesti putem e-pošte",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "joinSpaceOnboardingDesc": "U razredu? Stavite svoj kod za pridruživanje ovdje.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Automatski istakni audio poruke",
-    "selectAudioMessagesOnPlayDescription": "Automatski istakni audio poruke kada se reproduciraju",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11203,7 +8773,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Učim...",
     "alreadySpeak": "Već govorim...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -11231,18 +8800,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Ovaj tečaj ima teme s manje od {input} aktivnosti. Molimo unesite broj manji ili jednak {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Kliknite ovdje da se ponovno prijavite.",
     "@clickToLogin": {
@@ -11444,6 +9001,116 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Pretplatite se za otključavanje interaktivnog prevođenja i provjere gramatike, reprodukcije zvuka, personaliziranih vježbi i analitike učenja!",
+    "unlockPracticeActivities": "Otključajte vježbe",
+    "noAnalyticsActivitiesAvailable": "Wow, završili ste sve dostupne aktivnosti! Pošaljite više poruka kako biste otključali više vježbi.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Točno u vježbi značenja riječi",
+    "constructUseIgnPADesc": "Ignorirano u vježbi značenja riječi",
+    "constructUseIncPADesc": "Netočno u vježbi značenja riječi",
+    "constructUseCorWLDesc": "Točno u vježbi slušanja riječi",
+    "constructUseIncWLDesc": "Netočno u vježbi slušanja riječi",
+    "constructUseIngWLDesc": "Ignorirano u vježbi slušanja riječi",
+    "constructUseCorHWLDesc": "Točno u vježbi skrivenih riječi",
+    "constructUseIncHWLDesc": "Netočno u vježbi skrivenih riječi",
+    "constructUseIgnHWLDesc": "Ignorirano u vježbi skrivenih riječi",
+    "constructUseCorLDesc": "Točno u vježbi lema",
+    "constructUseIncLDesc": "Netočno u vježbi leksikona",
+    "constructUseIgnLDesc": "Ignorirano u vježbi leksikona",
+    "constructUseCorMDesc": "Točno u vježbi gramatike",
+    "constructUseIncMDesc": "Netočno u vježbi gramatike",
+    "constructUseIgnMDesc": "Ignorirano u vježbi gramatike",
+    "constructUseEmojiDesc": "Točno u vježbi s emojijima",
+    "errorFetchingExercise": "Nije uspjelo dohvatiti vježbu",
+    "notificationRuleCourseAndActivity": "Tečaj i Aktivnost",
+    "notificationRuleCourseAndActivityDescription": "Obavještava korisnika o porukama u tečajevima, aktivnostima i chatovima.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Kliknite ovdje za ažuriranje vašeg ciljnog jezika.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -11453,5 +9120,1032 @@
     "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
-    }
+    },
+    "visibilityToggleTitle": "Dopusti drugima da pretražuju tvoj tečaj",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nikada ne propustite razgovor!",
+    "enableNotificationsDesc": "Dopustite obavijesti za Pangea Chat i ostanite povezani sa svojim jezičnim prijateljima!",
+    "enableNotifications": "Dopustite obavijesti",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Ne možete blokirati sebe",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokiraj korisničko ime",
+    "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Kliknite na balon s porukom da biste ga odabrali",
+    "writingAssistanceTutorialIGCButton": "Nakon što napišete svoju poruku, kliknite na ovu tipku za početak pomoći pri pisanju",
+    "selectModeTutorialTranslate": "Kliknite ovdje za prevođenje poruke",
+    "selectModeTutorialAudio": "Kliknite ovdje da biste poslušali poruku",
+    "selectModeTutorialExit": "Kliknite na pozadinu da se vratite razgovoru",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Pomoć pri pisanju traje malo duže nego što se očekivalo. Pokušajte ponovo za trenutak!",
+    "@errorTryAgainSoon": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Oprosti, nešto je pošlo po zlu… Istražujemo to! Molimo pokušajte ponovo kasnije.",
+    "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Prihvati sve",
+    "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Smanjenje razine dozvole ovog korisnika uklonit će administratorske privilegije.",
+    "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Ovaj način omogućuje vam da postavite emojije uz riječi! Odaberite riječ s kojom želite povezati emoji!",
+    "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Riječi vokabulara koje prikupite će ići ovdje. Počnite razgovarati i interagirati kako biste zaradili nešto!",
+    "vocabLevelsDescSeed": "Ovdje će se pojaviti nove riječi vokabulara!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Više opcija",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Odaberite riječi kako biste saznali više o njima",
+    "requireAnalyticsAccessTitle": "Zahtijeva pristup analitici za pridruživanje",
+    "requireAnalyticsAccessDesc": "Sudionici moraju odobriti pristup svojim analitikama učenja kako bi se pridružili ovom tečaju",
+    "analyticsAccessNoticeTitle": "Potrebna analitika",
+    "analyticsAccessNoticeDesc": "Pridruživanjem ovom tečaju, slažete se da administratorima omogućite pristup vašim analitikama učenja.",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Molimo odaberite unaprijed definiranu ulogu u nastavku ili unesite prilagođenu razinu dozvola. Odaberite cijeli broj između 0 i 100.",
+    "reportContentIssue": "Prijavite problem s sadržajem",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Molimo odaberite valjane osnovne i ciljne jezike",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Koristim Pangea Chat za",
+    "teach": "Podučavanje",
+    "courseCodeStepTitle": "Imate li pozivni kod za tečaj?",
+    "courseCodeStepHint": "Unesite kod za pridruživanje",
+    "courseCodeStepSkip": "Nemam kod",
+    "joinedCourseStepTitle": "Dobrodošli!",
+    "pickLanguageTeacherStepTitle": "Koji jezik podučavate?",
+    "pickCefrLevelTeacherStepTitle": "Koju razinu podučavate?",
+    "pickCefrLevelStudentStepTitle": "Koja ste razina?",
+    "customCourseStepTitle": "Ispunite ovaj obrazac za prilagođeni tečaj",
+    "courseCodeStepErrorMessage": "Molimo provjerite svoj kod i pokušajte ponovo",
+    "institution": "Institucija",
+    "courseGoals": "Ciljevi tečaja",
+    "selectChats": "Odaberite razgovore",
+    "plainTextFile": "Tekst",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Završeno ({num})",
+    "suggestion": "Odaberite najbolji prijedlog",
+    "completeActivityButton": "Gotovo sam!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Molimo vas da ograničite duljinu imena na 50 znakova ili manje.",
+    "enterAName": "Molimo unesite ime.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Pomoć pri pisanju",
+    "viewError": "Pogledaj grešku",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Preuzmite Pangea Chat aplikaciju kako biste primali obavijesti!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Razumijem!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Nastavi s {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Preuzima cijelu povijest poruka, uključujući pošiljatelja, datum slanja, izvorne poruke, poslane poruke i vrstu korištenja.",
+    "analyticsDownloadDesc": "Preuzima osobnu analizu vokabulara i gramatike za odabrani jezik.",
+    "courseAnalyticsDownloadDesc": "Preuzima lemu i korištenje gramatike na odabranom jeziku za sve sudionike tečaja s dijeljenim analizama.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Ovaj tečaj odgovara vašoj jezičnoj razini",
+    "cefrLevelBelow": "Ovaj tečaj je ispod vaše jezične razine.",
+    "cefrLevelAbove": "Ovaj tečaj je iznad vaše jezične razine.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea Bot audio poruka glas",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "introChatDetails": "Pozdravite se! Predstavite se svojim kolegama sudionicima tečaja, pronađite prijatelje i razgovarajte izvan aktivnosti.",
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Ova emoji sada će predstavljati \"{word}\" u praktičnim vježbama",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Prikaži opcije za programere",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Uključite opcije za programere kako biste prikazali analitiku preuzimanja i detaljne informacije o opcijama unutar aplikacije.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Čekam da se bot pridruži...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Mjesto za administratore tečaja da kreiraju obavijesti za sudionike tečaja. Dok svi mogu vidjeti ovaj kanal, samo administratori mogu pisati u njemu.",
+    "introChatDesc": "Svako u tečaju može objavljivati.",
+    "announcementsChatDesc": "Samo administratori tečaja mogu objavljivati.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pronunciationTools": "Alati za izgovor",
+    "audioTranscription": "AI transkripcija zvuka",
+    "visualLearnerSupport": "Podrška za vizualne učenike",
+    "instantWritingTranslation": "Instantna prijevod pisanja",
+    "personalizedPracticeExercises": "Personalizirane vježbe",
+    "vocabularyFlashcards": "Rječničke kartice",
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Natrag",
+    "viewCurrentOrFinished": "Pogledajte trenutne ili završene",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "resizeCoursePanel": "Promijeni veličinu panela tečaja",
+    "undo": "Poništi",
+    "unlock": "Otključaj",
+    "zoomIn": "Povećaj",
+    "zoomOut": "Smanji",
+    "stars": "Zvijezde",
+    "addNewCourse": "Dodaj novi tečaj",
+    "world": "Svijet",
+    "addCourseStartMyOwn": "Započni svoj vlastiti",
+    "addCourseEnterCode": "Unesite kod za privatni tečaj",
+    "addCourseBrowsePublic": "Pretraži javne tečajeve",
+    "browsePublicCourses": "Pretraži javne tečajeve",
+    "editProfile": "Uredi profil",
+    "mapSearchHint": "Pretraži aktivnosti",
+    "mapFilterAllLanguages": "Svi jezici",
+    "mapFilterNotStarted": "Nije započeto",
+    "mapFilterInProgress": "U tijeku",
+    "mapFilterCompleted": "Završeno",
+    "mapFilterReset": "Ponovno postavi",
+    "activityTypeConversation": "Razgovor",
+    "playAgain": "Igraj ponovo",
+    "reviewActivity": "Pregledaj",
+    "welcomeToPangeaChat": "Dobrodošao u Pangea Chat",
+    "claimTrial": "Zatraži svoj probni period",
+    "thanksForSigningUp": "Hvala na prijavi! Evo",
+    "sevenDaysFree": "7 DANA BESPLATNO",
+    "manageTrialInSettings": "Upravite svoju probu u bilo kojem trenutku u\nPostavkama pretplate",
+    "noCreditCardRequired": "Nema potrebe za kreditnom karticom.",
+    "proFeatures": "PRO",
+    "widenSearch": "Proširi pretraživanje",
+    "scrollToBottom": "Pomakni se do dna",
+    "courseImage": "Slika tečaja",
+    "avatarPreview": "Pregled avatara",
+    "emotePreview": "Pregled emota: {name}",
+    "activityLabel": "Aktivnost: {title}",
+    "resetMapView": "Poništi prikaz karte",
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signUpWithEmail": "Prijavite se s emailom",
+    "unreadLabel": "Nepročitano: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
+    },
+    "writeAndSpeakWorryFree": "Pišite i govorite bez brige s Pangea Botom bilo kada, bilo gdje!",
+    "joinLearningCommunities": "Pridružite se međunarodnim učnim zajednicama ili započnite svoju vlastitu!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Zatvori popis razgovora",
+    "closeChat": "Zatvori razgovor",
+    "closeSession": "Zatvori pregled aktivnosti",
+    "closeCourse": "Zatvori tečaj",
+    "closeCoursePage": "Zatvori stranicu tečaja",
+    "closeAddCourse": "Zatvori dodavanje tečaja",
+    "closeAnalytics": "Zatvori analitiku",
+    "closeVocabulary": "Zatvori rječnik",
+    "closeGrammar": "Zatvori gramatiku",
+    "closePractice": "Zatvori vježbu",
+    "closeSettings": "Zatvori postavke",
+    "closeActivity": "Zatvori aktivnost",
+    "closeNamed": "Zatvori {name}",
+    "clearSearch": "Očisti pretraživanje",
+    "starRowLabel": "{filled} od {total} zvjezdica je dovršeno",
+    "difficultyLabel": "Težina: {cefr}",
+    "writingAssistanceTutorialInputBar": "Možete pisati na bilo kojem jeziku! Pomoći ćemo vam ispraviti greške.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} stranica",
+    "closeHint": "Zatvori savjet",
+    "starListLabel": "Spremne aktivnosti i zvjezdice",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Prilagodi anketu",
+    "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opcije navigacije",
+    "joinedCourseListLabel": "Popis pridruženih tečajeva",
+    "analyticsAndSettingsLabel": "Opcije analitike i postavki",
+    "searchActivitiesLabel": "Pretraži aktivnosti na karti",
+    "filteredActivitiesLabel": "Popis filtriranih aktivnosti",
+    "mapZoomLabel": "Kontrole zumiranja karte",
+    "activityMapLabel": "Karta aktivnosti",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonski",
+    "abDisplayName": "Abhazijski",
+    "elDisplayName": "Grčki",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} od {total} zvezda zarađenih",
+    "activityNoLongerSupported": "Ova aktivnost se izvodila na starijoj verziji aktivnosti i više nije podržana. I dalje možete pregledati šta se dogodilo u ovoj sesiji.",
+    "activityLoadFailed": "Nije moguće učitati aktivnost. Provjerite svoju vezu i pokušajte ponovo.",
+    "levelUpChip": "Nivo {level}!",
+    "missingCourseOutline": "Ovaj kurs više nije dostupan",
+    "missingCourseOutlineCta": "Ovaj kurs više nije dostupan. Odaberite novi plan kursa.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Zatvori stranicu za dodavanje tečaja",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Prijavite problem s informacijama o gramatici",
+    "grammarFeedbackDialogTitle": "Povratne informacije o gramatici",
+    "grammarFeedbackSubmittedDesc": "Hvala! Objašnjenje je ažurirano na temelju vaših povratnih informacija.",
+    "focusOnMap": "Usredotočite se na kartu",
+    "welcome": "Dobrodošli",
+    "courseRequest": "Zahtjev za tečaj",
+    "onboarding": "Uvod",
+    "selectImageFromDevice": "Odaberite sliku s uređaja",
+    "dinoAvatarLabel": "Dinosaur s naočalama",
+    "bearAvatarLabel": "Prijateljski medvjed",
+    "squidAvatarLabel": "Ljubičasta hobotnica s slušalicama",
+    "cartoonAvatarLabel": "Sretni crtani lik koji maše",
+    "robotAvatarLabel": "Robot s zvijezdama umjesto očiju",
+    "featuresIncludeLabel": "Značajke uključuju",
+    "difficultyListLabel": "Popis težina",
+    "languageListLabel": "Popis jezika",
+    "searchedResultsLabel": "Rezultati pretraživanja za '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
+    },
+    "coursePermissions": "Dozvole za tečaj",
+    "starsToUnlockObjectiveTitle": "Zvijezde po misiji",
+    "starsToUnlockObjectiveDesc": "Postavite broj zvjezdica potrebnih za dovršetak svake misije",
+    "maxStarsPerMissionWarning": "Ovaj tečaj ima misije gdje se može zaraditi samo {maxValue} zvjezdica. Unesite broj manji ili jednak {maxValue}.",
+    "removedFromCourseError": "Uklonjeni ste s ovog tečaja. Obratite se svom učitelju.",
+    "endPractice": "Završi vježbu",
+    "bodyLabel": "Opcije {page}",
+    "openDM": "Otvori izravnu poruku",
+    "openNewTab": "Otvori u novoj kartici",
+    "viewProfileImageLabel": "Prikaži sliku profila",
+    "profileImageLabel": "Slika profila",
+    "actionsLabel": "Radnje",
+    "colorListLabel": "Popis boja",
+    "chatAppearanceStyleLabel": "Izgled chata s odabranim stilom",
+    "volumeLabel": "Glasnoća",
+    "listLabel": "Popis {description}",
+    "passwordFormLabel": "Obrazac za promjenu lozinke",
+    "searchLanguagesHint": "Pretraži jezike",
+    "searchCountriesHint": "Pretraži zemlje",
+    "searchVocabHint": "Pretraži rječnik",
+    "searchUsersHint": "Pretraži korisnike",
+    "searchMessagesHint": "Pretraži poruke",
+    "searchChatsHint": "Pretraži razgovore",
+    "searchActivitiesHint": "Pretraži aktivnosti",
+    "appInTargetLanguageTitle": "Prikaži aplikaciju na jeziku koji učim",
+    "appInTargetLanguageDesc": "Izbornici, gumbi i oznake prikazuju se na vašem ciljnom jeziku radi uranjanja. Neprevedeni tekst vraća se na engleski.",
+    "changePasswordSessionExpired": "Vaša je sesija istekla. Molimo prijavite se ponovno.",
+    "constructUseSugDesc": "Prihvaćeni prijedlozi",
+    "mostPopular": "Najpopularnije",
+    "mostSavings": "Najveće uštede",
+    "enterDiscountCode": "Unesite kod za popust",
+    "yourPlan": "Vaš plan",
+    "subscriptionRenewsOn": "Obnavlja se {date}",
+    "subscriptionEndsOn": "Završava {date}",
+    "promoSubscription": "Promotivna pretplata",
+    "seatSubscription": "Institucionalno mjesto",
+    "lifetimeSubscription": "Doživotna pretplata",
+    "freeSubscription": "BESPLATNO",
+    "freeTrialDescription": "Imate besplatnu probnu verziju",
+    "manage": "Upravljanje",
+    "subscriptionHistory": "Povijest pretplata",
+    "history": "Povijest",
+    "noPaymentHistoryFound": "Nije pronađena povijest plaćanja",
+    "cancelAnytime": "Otkažite bilo kada u postavkama pretplate",
+    "pricePerMonth": "{price}/mjesec",
+    "pricePerYear": "{price}/godina",
+    "viewSubscriptionOptions": "Pregledajte opcije pretplate",
+    "apply": "Primijeni",
+    "continueToSubscribe": "Nastavi s pretplatom",
+    "invalidDiscountCode": "Nevažeći kod za popust",
+    "selectDiscountPlan": "Odaberite plan popusta",
+    "discountApplied": "Primijenjen popust od {discount}",
+    "cancelDescriptionWithRenewalDate": "Vaša pretplata bit će aktivna do datuma obnove ({date}), a zatim će se deaktivirati. Zadržat ćete analitiku, ali nećete moći koristiti profesionalne značajke.",
+    "cancelDescriptionWithoutRenewalDate": "Vaša pretplata bit će aktivna do datuma obnove, a zatim će se deaktivirati. Zadržat ćete analitiku, ali nećete moći koristiti profesionalne značajke.",
+    "change": "Promijeni",
+    "deactivateSubscribedAccountWarning": "Ovo će deaktivirati vaš korisnički račun i otkazati vašu pretplatu. Ovo se ne može poništiti! Jeste li sigurni?",
+    "newCourseWithoutTitle": "Započni tečaj",
+    "newCourseWithTitle": "Započni \"{title}\"",
+    "joinCourseWithTitle": "Pridruži se \"{title}\"",
+    "searchCoursePlans": "Pretražite planove tečajeva",
+    "searchPublicCourses": "Pretražite javne tečajeve",
+    "closeSearch": "Zatvori pretraživanje",
+    "subscriptionsNotAvailableInApp": "Pretplate se ne mogu kupiti u aplikaciji",
+    "subscribeOnTheWeb": "Možete se pretplatiti putem interneta na pangea.chat",
+    "waitingToFillOneRole": "Čeka se popunjavanje 1 uloge...",
+    "closeArchive": "Zatvori arhivu",
+    "activityActions": "Radnje aktivnosti",
+    "ongoing": "U tijeku",
+    "emptyInviteSearchHint": "Ne možete pronaći koga tražite? Možda će morati dopustiti da se njihov profil pronađe u pretraživanju. Provjerite Uredi profil u Postavkama.",
+    "activityPreviewLabel": "Pregled aktivnosti: ",
+    "participantRowLabel": "{joined} od {total} sudionika pridružilo se",
+    "ongoingPendingLabel": "Čekanje da se drugi pridruže",
+    "joinableLabel": "Pridruživo",
+    "inProgressLabel": "Prethodno dovršeno",
+    "availableLabel": "Stvori aktivnost",
+    "rateActivityTitle": "Kako je bilo u ovoj aktivnosti?",
+    "rateActivityCommentHint": "Dodajte komentar (opcionalno)",
+    "rateActivityCommentRejected": "Vaš komentar nije mogao biti objavljen. Pokušajte ga preformulirati ili pošaljite svoju ocjenu bez komentara.",
+    "rateActivityThanks": "Hvala na povratnim informacijama!",
+    "activityRatingMeterLabel": "{percent}% pozitivno ({count, plural, =1{1 ocjena} other{{count} ocjena}})",
+    "newActivityBadge": "NOVO",
+    "exitVocabPracticeSession": "Napredak vaše trenutne sesije vježbanja vokabulara neće biti spremljen.",
+    "exitGrammarPracticeSession": "Napredak vaše trenutne sesije vježbanja gramatike neće biti spremljen.",
+    "activityFilterButtonsLabel": "Gumbi za filtriranje razine, igrača i statusa",
+    "mapFilterAllLevels": "Sve razine",
+    "mapFilterAllPlayers": "Svi igrači",
+    "mapFilterAllStatuses": "Svi statusi",
+    "mapFiltersShow": "Prikaži filtre",
+    "mapFiltersHide": "Sakrij filtre",
+    "mapStatusAvailable": "Dostupno",
+    "mapStatusOngoing": "U tijeku",
+    "mapStatusWaiting": "Čeka",
+    "mapStatusOpenToJoin": "Otvoreno za pridruživanje",
+    "mapMatchesOffscreen": "Izvan vašeg pogleda postoje podudaranja. Umanjite prikaz da biste ih vidjeli.",
+    "mapFiltersHideMatches": "Vaši filtri skrivaju sva podudaranja. Proširite pretraživanje da biste ih vidjeli.",
+    "mapNoSearchMatches": "Nema aktivnosti koje odgovaraju vašem pretraživanju.",
+    "mapNoActivitiesArea": "Nema aktivnosti na ovom području.",
+    "practiceSessionTimedOut": "Vaša vježba je završila nakon {minutes} minuta neaktivnosti.",
+    "autocorrectMobileOnly": "Samo za mobilne uređaje",
+    "autocorrectMobileOnlyWarning": "Automatska ispravka dostupna je samo u mobilnoj aplikaciji.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Riječi",
+    "audioWordsDescription": "Reproduciraj audiozapis riječi kada je dodirnete.",
+    "audioChoicesToolName": "Odabiri",
+    "audioChoicesDescription": "Reproduciraj audiozapis za odabire odgovora u vježbama.",
+    "audioIncomingMessagesToolName": "Dolazne poruke",
+    "audioIncomingMessagesDescription": "Automatski čitaj primljene poruke naglas na vašem ciljnom jeziku za vježbanje slušanja.",
+    "choosePangeaAvatar": "Odaberite Pangea avatar",
+    "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
+    "readAloudNoVoiceDesktopWeb": "Ovaj preglednik ne nudi visokokvalitetan glas za {language}, tako da se poruke ovdje ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
+    "readAloudGetChrome": "Preuzmite Chrome",
+    "readAloudNoVoiceMobileWeb": "Ovaj preglednik ne nudi visokokvalitetan glas za {language}, tako da se poruke ovdje ne mogu dobro čitati naglas. Aplikacija Pangea Chat može koristiti najbolje glasove vašeg uređaja.",
+    "readAloudGetApp": "Preuzmite aplikaciju",
+    "readAloudNoVoiceIOS": "Vaš uređaj još nema preuzet visokokvalitetan glas za {language}. Preuzmite ga, a zatim pokušajte ponovno:",
+    "readAloudNoVoiceIOSSteps": "  • Postavke\n  • Pristupačnost\n  • Govorni sadržaj\n  • Glasovi\n  • {language}\n  • Preuzmite poboljšani ili premium glas",
+    "readAloudNoVoiceAndroid": "Vaš uređaj još nema visokokvalitetan glas za {language}. Instalirajte podatke o glasu za svoj mehanizam za pretvaranje teksta u govor, a zatim pokušajte ponovno.",
+    "readAloudOpenVoiceSettings": "Otvori postavke glasa",
+    "streamingSttDegradedLiveBanner": "Transkripcija uživo radi na rezervnoj usluzi. Kvaliteta može varirati, provjerite tekst.",
+    "streamingSttDegradedToBatchBanner": "Transkripcija uživo trenutno nije dostupna. Vaša poruka je transkribirana na standardni način, bez uređivanja uživo. Radimo na tome da je vratimo.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripcija uživo još nije dostupna za ovaj jezik. Radimo na tome.",
+    "formLabel": "Obrazac za {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Podrška",
+    "explorePlayAndLearn": "Istražuj, igraj se i uči",
+    "conversationFromDayOne": "Razgovor od prvog dana",
+    "builtForConnection": "Stvoreno za povezivanje",
+    "aiWhenYouNeedIt": "AI kad ti zatreba",
+    "practiceTailoredForYou": "Vježba prilagođena tebi"
 }

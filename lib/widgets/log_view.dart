@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
+
 class LogViewer extends StatefulWidget {
   const LogViewer({super.key});
 
@@ -25,10 +27,12 @@ class LogViewerState extends State<LogViewer> {
         leading: BackButton(onPressed: () => context.go('/')),
         actions: [
           IconButton(
+            tooltip: L10n.of(context).zoomIn,
             icon: const Icon(Icons.zoom_in_outlined),
             onPressed: () => setState(() => fontSize++),
           ),
           IconButton(
+            tooltip: L10n.of(context).zoomOut,
             icon: const Icon(Icons.zoom_out_outlined),
             onPressed: () => setState(() => fontSize--),
           ),

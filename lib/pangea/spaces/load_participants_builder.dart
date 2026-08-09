@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/user/analytics_profile_model.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class LoadParticipantsBuilder extends StatefulWidget {
@@ -52,6 +52,11 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
     if (widget.room == null ||
         widget.room!.membership != Membership.join ||
         widget.room!.participantListComplete) {
+      // loading starts true; a room that skips the fetch (e.g. one the user
+      // has left) must still clear it or consumers spin forever (#8148).
+      if (loading) {
+        setState(() => loading = false);
+      }
       return;
     }
 

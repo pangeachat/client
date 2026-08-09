@@ -4,6 +4,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
+
+// #Pangea
+// Pangea#
 
 abstract class UpdateNotifier {
   static const String versionStoreKey = 'last_known_version';
@@ -16,7 +20,8 @@ abstract class UpdateNotifier {
 
     if (currentVersion != storedVersion) {
       if (storedVersion != null) {
-        scaffoldMessenger.showSnackBar(
+        // #Pangea
+        scaffoldMessenger.showSnackBarAnnounced(
           SnackBar(
             duration: const Duration(
               seconds:
@@ -35,6 +40,7 @@ abstract class UpdateNotifier {
             // Pangea#
           ),
         );
+        // Pangea#
       }
       await store.setString(versionStoreKey, currentVersion);
     }

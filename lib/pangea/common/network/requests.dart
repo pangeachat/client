@@ -1,33 +1,27 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import 'package:http/http.dart' as http;
 import 'package:matrix/matrix_api_lite/utils/logs.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/models/base_request_model.dart';
-
-class ChoreoException implements Exception {
-  final String message;
-  final http.Response response;
-
-  const ChoreoException({required this.message, required this.response});
-
-  String get errorMessage => "${response.statusCode}: $message";
-}
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/utils/error_response_parser.dart';
 
 class Requests {
   late String? accessToken;
-  late String? choreoApiKey;
 
-  Requests({this.accessToken, this.choreoApiKey});
+  Requests({this.accessToken});
 
   Future<http.Response> post({
     required String url,
     required Map<dynamic, dynamic> body,
+    bool enrichBody = true,
+    ErrorResponseParser? errorResponseParser,
   }) async {
-    final enrichedBody = BaseRequestModel.injectUserContext(body);
+    final enrichedBody = enrichBody
+        ? BaseRequestModel.injectUserContext(body)
+        : body;
 
     dynamic encoded;
     encoded = jsonEncode(enrichedBody);
@@ -38,24 +32,28 @@ class Requests {
       headers: _headers,
     );
 
-    handleError(response, body: body);
+    _handleError(
+      response,
+      body: body,
+      errorResponseParser: errorResponseParser,
+    );
     return response;
   }
 
-  Future<http.Response> get({required String url}) async {
+  Future<http.Response> get({
+    required String url,
+    ErrorResponseParser? errorResponseParser,
+  }) async {
     final http.Response response = await http.get(
       Uri.parse(url),
       headers: _headers,
     );
 
-    handleError(response);
+    _handleError(response, errorResponseParser: errorResponseParser);
     return response;
   }
 
-  void addBreadcrumb(http.Response response, {Map<dynamic, dynamic>? body}) {
-    debugPrint("Error - code: ${response.statusCode}");
-    debugPrint("api: ${response.request?.url}");
-    debugPrint("request body: $body");
+  void _addBreadcrumb(http.Response response, {Map<dynamic, dynamic>? body}) {
     Sentry.addBreadcrumb(
       Breadcrumb.http(
         url: response.request?.url ?? Uri(path: "not available"),
@@ -66,13 +64,18 @@ class Requests {
     Sentry.addBreadcrumb(Breadcrumb(data: {"body": body}));
   }
 
-  void handleError(http.Response response, {Map<dynamic, dynamic>? body}) {
+  void _handleError(
+    http.Response response, {
+    Map<dynamic, dynamic>? body,
+    ErrorResponseParser? errorResponseParser,
+  }) {
     if (response.statusCode < 400) return;
 
     String? message;
     try {
       final responseBody = jsonDecode(utf8.decode(response.bodyBytes));
-      message = responseBody['detail'];
+      final detail = responseBody['detail'];
+      message = detail is String ? detail : null;
     } catch (e) {
       Logs().w("Failed to parse error response body");
       message = null;
@@ -83,11 +86,9 @@ class Requests {
       throw UnsubscribedException();
     }
 
-    addBreadcrumb(response, body: body);
-    if (message is String) {
-      throw ChoreoException(message: message, response: response);
-    }
-    throw response;
+    _addBreadcrumb(response, body: body);
+    throw errorResponseParser?.parse(response) ??
+        PangeaHttpException.fromResponse(response, detail: message);
   }
 
   Map<String, String> get _headers {
@@ -97,9 +98,6 @@ class Requests {
     };
     if (accessToken != null) {
       headers["Authorization"] = 'Bearer ${accessToken!}';
-    }
-    if (choreoApiKey != null) {
-      headers['api_key'] = choreoApiKey!;
     }
     return headers;
   }

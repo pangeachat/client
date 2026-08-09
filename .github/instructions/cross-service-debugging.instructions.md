@@ -1,5 +1,5 @@
 ---
-applyTo: "**/assets/.env*,**/*repo*.dart,lib/pangea/common/network/**"
+applyTo: "**/.env*,**/*repo*.dart,lib/pangea/common/network/**"
 ---
 
 # Cross-Service Debugging (client)

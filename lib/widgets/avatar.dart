@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/bot/utils/bot_name.dart';
-import 'package:fluffychat/pangea/bot/widgets/bot_face_svg.dart';
-import 'package:fluffychat/pangea/common/widgets/url_image_widget.dart';
+import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/bot/widgets/bot_face_svg.dart';
 import 'package:fluffychat/utils/string_color.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
 import 'package:fluffychat/widgets/presence_builder.dart';
+import 'package:fluffychat/widgets/url_image_widget.dart';
 
 class Avatar extends StatelessWidget {
   final Uri? mxContent;
@@ -227,10 +227,26 @@ class Avatar extends StatelessWidget {
           ),
       ],
     );
-    if (onTap == null) return container;
+    // #Pangea — expose avatar identity to assistive tech. A named avatar is a
+    // labelled image (or button when tappable); the inner fallback initial is
+    // suppressed so screen readers announce the full name, not a single letter.
+    // An unnamed avatar carries no useful label, so it is treated as decorative
+    // rather than emitted as an unlabelled image/button (an axe violation).
+    final avatarName = name != null && name.isNotEmpty ? name : null;
+    final semanticContainer = avatarName == null
+        ? ExcludeSemantics(child: container)
+        : Semantics(
+            label: avatarName,
+            image: onTap == null,
+            button: onTap != null,
+            excludeSemantics: true,
+            child: container,
+          );
+    // Pangea#
+    if (onTap == null) return semanticContainer;
     return MouseRegion(
       cursor: SystemMouseCursors.click,
-      child: GestureDetector(onTap: onTap, child: container),
+      child: GestureDetector(onTap: onTap, child: semanticContainer),
     );
   }
 }

@@ -51,10 +51,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@admin": {
         "type": "String",
         "placeholders": {}
@@ -64,19 +60,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
-    },
-    "@addAccount": {},
     "@close": {
         "type": "String",
         "placeholders": {}
@@ -228,10 +211,6 @@
             }
         }
     },
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@youAcceptedTheInvitation": {},
     "@banFromChat": {
         "type": "String",
@@ -342,10 +321,6 @@
         "placeholders": {}
     },
     "@tryAgain": {},
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blocked": {
         "type": "String",
         "placeholders": {}
@@ -356,10 +331,6 @@
                 "type": "String"
             }
         }
-    },
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
     },
     "@unbanUserDescription": {},
     "@userAndUserAreTyping": {
@@ -410,9 +381,6 @@
     },
     "@link": {},
     "@widgetUrlError": {},
-    "@emailOrUsername": {},
-    "@newSpaceDescription": {},
-    "@chatDescription": {},
     "@next": {
         "type": "String",
         "placeholders": {}
@@ -433,8 +401,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@enterSpace": {},
-    "@encryptThisChat": {},
     "@fileName": {
         "type": "String",
         "placeholders": {}
@@ -460,7 +426,6 @@
         "placeholders": {}
     },
     "@reopenChat": {},
-    "@pleaseEnterRecoveryKey": {},
     "@create": {
         "type": "String",
         "placeholders": {}
@@ -487,10 +452,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@addWidget": {},
     "@all": {
         "type": "String",
@@ -512,10 +473,6 @@
         }
     },
     "@noKeyForThisMessage": {},
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@inviteText": {
         "type": "String",
         "placeholders": {
@@ -545,11 +502,6 @@
         }
     },
     "@pushNotificationsNotAvailable": {},
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAppleKeyChain": {},
     "@replaceRoomWithNewerVersion": {
         "type": "String",
         "placeholders": {}
@@ -572,10 +524,6 @@
             }
         }
     },
-    "@wipeChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@cantOpenUri": {
         "type": "String",
         "placeholders": {
@@ -585,7 +533,6 @@
         }
     },
     "@sender": {},
-    "@storeInAndroidKeystore": {},
     "@hideRedactedEvents": {
         "type": "String",
         "placeholders": {}
@@ -646,10 +593,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@passwordHasBeenChanged": {
         "type": "String",
         "placeholders": {}
@@ -670,7 +613,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@saveKeyManuallyDescription": {},
     "@none": {
         "type": "String",
         "placeholders": {}
@@ -681,14 +623,6 @@
         "placeholders": {}
     },
     "@whyIsThisMessageEncrypted": {},
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
-    },
     "@rejectedTheInvitation": {
         "type": "String",
         "placeholders": {
@@ -706,10 +640,6 @@
             }
         }
     },
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
     "importFromZipFile": ".zip फ़ाइल से आयात करें",
     "@importFromZipFile": {},
     "@or": {
@@ -718,16 +648,10 @@
     },
     "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@emptyChat": {
         "type": "String",
         "placeholders": {}
     },
-    "@storeSecurlyOnThisDevice": {},
-    "@yourChatBackupHasBeenSetUp": {},
     "@chatBackup": {
         "type": "String",
         "placeholders": {}
@@ -744,7 +668,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@videoCallsBetaWarning": {},
     "@unmuteChat": {
         "type": "String",
         "placeholders": {}
@@ -776,14 +699,6 @@
     "@participant": {
         "type": "String",
         "placeholders": {}
-    },
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "@yes": {
         "type": "String",
@@ -870,7 +785,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@unlockOldMessages": {},
     "@identity": {
         "type": "String",
         "placeholders": {}
@@ -1049,7 +963,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterRecoveryKeyDescription": {},
     "@guestsAreForbidden": {
         "type": "String",
         "placeholders": {}
@@ -1214,7 +1127,6 @@
         "description": "State that {command} is not a valid /command."
     },
     "@redactMessageDescription": {},
-    "@recoveryKey": {},
     "@redactMessage": {
         "type": "String",
         "placeholders": {}
@@ -1289,10 +1201,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@groupIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@verifyStart": {
         "type": "String",
         "placeholders": {}
@@ -1311,7 +1219,6 @@
         "placeholders": {}
     },
     "@serverRequiresEmail": {},
-    "@screenSharingTitle": {},
     "@widgetCustom": {},
     "@sentCallInformations": {
         "type": "String",
@@ -1411,7 +1318,6 @@
         "placeholders": {}
     },
     "@messageInfo": {},
-    "@disableEncryptionWarning": {},
     "@directChat": {},
     "@encryptionNotEnabled": {
         "type": "String",
@@ -1435,21 +1341,15 @@
         "type": "String",
         "placeholders": {}
     },
-    "@foregroundServiceRunning": {},
     "@enterAnEmailAddress": {
         "type": "String",
         "placeholders": {}
     },
-    "@voiceCall": {},
     "@commandHint_kick": {
         "type": "String",
         "description": "Usage hint for the command /kick"
     },
     "@copiedToClipboard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -1497,10 +1397,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@confirmMatrixId": {},
     "@learnMore": {},
     "@iHaveClickedOnLink": {
@@ -1522,7 +1418,6 @@
     },
     "@newGroup": {},
     "@bundleName": {},
-    "@removeFromSpace": {},
     "@dateAndTimeOfDay": {
         "type": "String",
         "placeholders": {
@@ -1568,10 +1463,6 @@
         "placeholders": {}
     },
     "@pleaseEnterANumber": {},
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@youKicked": {
         "placeholders": {
             "user": {
@@ -1618,22 +1509,12 @@
             }
         }
     },
-    "@sorryThatsNotPossible": {},
     "@oopsSomethingWentWrong": {
         "type": "String",
         "placeholders": {}
     },
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@shareInviteLink": {},
     "@commandHint_markasdm": {},
-    "@recoveryKeyLost": {},
     "@cuddleContent": {
         "type": "String",
         "placeholders": {
@@ -1660,14 +1541,6 @@
     },
     "@deviceKeys": {},
     "@waitingPartnerNumbers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@everythingReady": {
         "type": "String",
         "placeholders": {}
     },
@@ -1699,15 +1572,10 @@
         "type": "String",
         "placeholders": {}
     },
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@settings": {
         "type": "String",
         "placeholders": {}
     },
-    "@setTheme": {},
     "@changeTheHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -1728,10 +1596,6 @@
                 "type": "String"
             }
         }
-    },
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@changeDeviceName": {
         "type": "String",
@@ -1884,7 +1748,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@storeInSecureStorageDescription": {},
     "@openChat": {},
     "@kickUserDescription": {},
     "@sendAMessage": {
@@ -1902,13 +1765,11 @@
         "placeholders": {}
     },
     "@pinMessage": {},
-    "@screenSharingDetail": {},
     "@muteChat": {
         "type": "String",
         "placeholders": {}
     },
     "@invite": {},
-    "@enableMultiAccounts": {},
     "@anyoneCanJoin": {
         "type": "String",
         "placeholders": {}
@@ -1957,7 +1818,6 @@
     "appLock": "एप्लिकेशन लॉक",
     "appLockDescription": "पिन कोड के साथ उपयोग न करने पर एप्लिकेशन को लॉक करें",
     "archive": "आर्काइव",
-    "areGuestsAllowedToJoin": "क्या अतिथि उपयोगकर्ताओं को शामिल होने की अनुमति है",
     "areYouSure": "क्या आप सुनिश्चित हैं?",
     "areYouSureYouWantToLogout": "क्या आप सुनिश्चित हैं कि आप लॉग आउट करना चाहते हैं?",
     "askSSSSSign": "दूसरे व्यक्ति पर हस्ताक्षर करने में सक्षम होने के लिए, कृपया अपना सुरक्षित स्टोर पासफ़्रेज़ या रिकवरी कुंजी दर्ज करें।",
@@ -2002,9 +1862,7 @@
     "changeYourAvatar": "अपना अवतार बदलें",
     "channelCorruptedDecryptError": "एन्क्रिप्शन करप्ट हो गया है",
     "chat": "चैट",
-    "yourChatBackupHasBeenSetUp": "आपका चैट बैकअप सेटअप हो चुका है।",
     "chatBackup": "चैट बैकअप",
-    "chatBackupDescription": "आपके पुराने संदेशों को एक रिकवरी की के साथ सुरक्षित किया गया है। कृपया सुनिश्चित करें कि आप इसे न खोएं।",
     "chatDetails": "चैट विवरण",
     "chats": "चैट्स",
     "chooseAStrongPassword": "एक मजबूत पासवर्ड चुनें",
@@ -2037,7 +1895,6 @@
     "configureChat": "चैट कॉन्फ़िगर करें",
     "confirm": "पुष्टि करें",
     "connect": "कनेक्ट करें",
-    "contactHasBeenInvitedToTheGroup": "संपर्क को समूह में आमंत्रित किया गया है",
     "contentHasBeenReported": "सामग्री को सर्वर व्यवस्थापकों को रिपोर्ट किया गया है",
     "copiedToClipboard": "क्लिपबोर्ड पर कॉपी किया गया",
     "copy": "कॉपी करें",
@@ -2045,11 +1902,9 @@
     "couldNotDecryptMessage": "संदेश डिक्रिप्ट नहीं किया जा सका: {error}",
     "checkList": "चेकलिस्ट",
     "countParticipants": "{count} प्रतिभागी",
-    "countInvited": "{count} आमंत्रित",
     "create": "बनाएँ",
     "createdTheChat": "💬 {username} ने चैट बनाई",
     "createGroup": "समूह बनाएं",
-    "createNewSpace": "नई जगह",
     "currentlyActive": "वर्तमान में सक्रिय",
     "darkTheme": "गहरा",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -2075,9 +1930,6 @@
     "emoteKeyboardNoRecents": "हाल ही में उपयोग किए गए इमोट यहाँ दिखाई देंगे...",
     "emotePacks": "कक्ष के लिए इमोट पैक",
     "emoteSettings": "इमोट सेटिंग्स",
-    "globalChatId": "वैश्विक चैट आईडी",
-    "accessAndVisibility": "पहुँच और दृश्यता",
-    "accessAndVisibilityDescription": "कौन इस चैट में शामिल होने की अनुमति है और चैट को कैसे खोजा जा सकता है।",
     "calls": "कॉल",
     "customEmojisAndStickers": "कस्टम इमोजी और स्टिकर",
     "customEmojisAndStickersBody": "ऐसे कस्टम इमोजी या स्टिकर जोड़ें या साझा करें जिन्हें किसी भी चैट में इस्तेमाल किया जा सकता है।",
@@ -2085,7 +1937,6 @@
     "emptyChat": "खाली चैट",
     "enableEmotesGlobally": "ग्लोबली इमोट पैक सक्षम करें",
     "enableEncryption": "एन्क्रिप्शन सक्षम करें",
-    "enableEncryptionWarning": "आप अब एन्क्रिप्शन को अक्षम नहीं कर पाएंगे। क्या आप सुनिश्चित हैं?",
     "encrypted": "एन्क्रिप्टेड",
     "encryption": "एन्क्रिप्शन",
     "encryptionNotEnabled": "एन्क्रिप्शन सक्षम नहीं है",
@@ -2093,7 +1944,6 @@
     "enterAnEmailAddress": "एक ईमेल पता दर्ज करें",
     "homeserver": "होमसर्वर",
     "errorObtainingLocation": "स्थान प्राप्त करने में त्रुटि: {error}",
-    "everythingReady": "सब कुछ तैयार है!",
     "extremeOffensive": "अत्यंत अपमानजनक",
     "fileName": "फ़ाइल का नाम",
     "fluffychat": "फ्लफीचैट",
@@ -2102,9 +1952,7 @@
     "fromJoining": "शामिल होने से",
     "fromTheInvitation": "आमंत्रण से",
     "group": "समूह",
-    "chatDescription": "चैट विवरण",
     "chatDescriptionHasBeenChanged": "चैट विवरण बदल दिया गया है",
-    "groupIsPublic": "समूह सार्वजनिक है",
     "groups": "समूह",
     "groupWith": "{displayname} के साथ समूह",
     "guestsAreForbidden": "अतिथि मना है",
@@ -2126,7 +1974,6 @@
     "incorrectPassphraseOrKey": "गलत पासफ़्रेज़ या रिकवरी कुंजी",
     "inoffensive": "अप्रभावशाली",
     "inviteContact": "संपर्क को आमंत्रित करें",
-    "inviteContactToGroup": "संपर्क को {groupName} में आमंत्रित करें",
     "noChatDescriptionYet": "अभी तक कोई चैट विवरण नहीं बनाया गया है।",
     "tryAgain": "फिर से प्रयास करें",
     "invalidServerName": "अमान्य सर्वर नाम",
@@ -2147,7 +1994,6 @@
     "leave": "छोड़ें",
     "leftTheChat": "चैट छोड़ दिया",
     "lightTheme": "प्रकाश",
-    "loadCountMoreParticipants": "{count} अधिक प्रतिभागियों को लोड करें",
     "dehydrate": "सत्र निर्यात करें और डिवाइस को साफ़ करें",
     "dehydrateWarning": "यह क्रिया पूर्ववत नहीं की जा सकती। सुनिश्चित करें कि आप बैकअप फ़ाइल को सुरक्षित रूप से संग्रहित करें।",
     "hydrate": "बैकअप फ़ाइल से पुनर्स्थापित करें",
@@ -2156,7 +2002,6 @@
     "locationDisabledNotice": "स्थान सेवाएँ अक्षम हैं। कृपया उन्हें सक्षम करें ताकि आप अपना स्थान साझा कर सकें।",
     "locationPermissionDeniedNotice": "स्थान अनुमति अस्वीकृत। कृपया उन्हें अनुमति दें ताकि आप अपना स्थान साझा कर सकें।",
     "login": "लॉगिन",
-    "logInTo": "{homeserver} में लॉग इन करें",
     "logout": "लॉगआउट",
     "mention": "उल्लेख",
     "messages": "संदेश",
@@ -2171,8 +2016,6 @@
     "no": "नहीं",
     "noConnectionToTheServer": "सर्वर से कनेक्शन नहीं",
     "noEmotesFound": "कोई इमोट नहीं मिला। 😕",
-    "noEncryptionForPublicRooms": "आप केवल तभी एन्क्रिप्शन सक्रिय कर सकते हैं जब कमरा अब सार्वजनिक रूप से उपलब्ध न हो।",
-    "noGoogleServicesWarning": "Firebase क्लाउड मैसेजिंग आपके डिवाइस पर उपलब्ध नहीं लगती। पुश सूचनाएं प्राप्त करने के लिए, हम ntfy इंस्टॉल करने की सलाह देते हैं। ntfy या किसी अन्य यूनिफाइड पुश प्रदाता के साथ आप डेटा सुरक्षित तरीके से पुश सूचनाएं प्राप्त कर सकते हैं। आप ntfy को PlayStore या F-Droid से डाउनलोड कर सकते हैं।",
     "noMatrixServer": "{server1} कोई मैट्रिक्स सर्वर नहीं है, क्या आप {server2} का उपयोग करना चाहेंगे?",
     "shareInviteLink": "आमंत्रण लिंक साझा करें",
     "scanQrCode": "QR कोड स्कैन करें",
@@ -2194,12 +2037,10 @@
     "openCamera": "कैमरा खोलें",
     "openVideoCamera": "वीडियो के लिए कैमरा खोलें",
     "oneClientLoggedOut": "आपके एक क्लाइंट को लॉग आउट कर दिया गया है",
-    "addAccount": "खाता जोड़ें",
     "editBundlesForAccount": "इस खाते के लिए बंडल संपादित करें",
     "addToBundle": "बंडल में जोड़ें",
     "removeFromBundle": "इस बंडल से हटाएँ",
     "bundleName": "बंडल का नाम",
-    "enableMultiAccounts": "(बीटा) इस डिवाइस पर मल्टी अकाउंट्स सक्षम करें",
     "openInMaps": "मानचित्र में खोलें",
     "link": "लिंक",
     "serverRequiresEmail": "इस सर्वर को पंजीकरण के लिए आपका ईमेल पता सत्यापित करने की आवश्यकता है।",
@@ -2211,7 +2052,6 @@
     "passwordHasBeenChanged": "पासवर्ड बदल दिया गया है",
     "overview": "समीक्षा",
     "passwordRecoverySettings": "पासवर्ड रिकवरी सेटिंग्स",
-    "passwordRecovery": "पासवर्ड रिकवरी",
     "people": "लोग",
     "pickImage": "एक छवि चुनें",
     "pin": "पिन",
@@ -2220,7 +2060,6 @@
     "pleaseChooseAPasscode": "कृपया एक पासकोड चुनें",
     "pleaseClickOnLink": "कृपया ईमेल में लिंक पर क्लिक करें और फिर आगे बढ़ें।",
     "pleaseEnter4Digits": "कृपया 4 अंक दर्ज करें या ऐप लॉक को अक्षम करने के लिए खाली छोड़ें।",
-    "pleaseEnterRecoveryKey": "कृपया अपनी रिकवरी की दर्ज करें:",
     "pleaseEnterYourPassword": "कृपया अपना पासवर्ड दर्ज करें",
     "pleaseEnterYourPin": "कृपया अपना पिन दर्ज करें",
     "pleaseEnterYourUsername": "कृपया अपना उपयोगकर्ता नाम दर्ज करें",
@@ -2240,7 +2079,6 @@
     "rejectedTheInvitation": "{username} ने निमंत्रण अस्वीकार कर दिया",
     "removeAllOtherDevices": "सभी अन्य उपकरणों को हटा दें",
     "removedBy": "{username} द्वारा हटाया गया",
-    "removeDevice": "डिवाइस हटाएँ",
     "unbanFromChat": "चैट से अनबैन करें",
     "removeYourAvatar": "अपना अवतार हटाएँ",
     "replaceRoomWithNewerVersion": "कक्ष को नए संस्करण के साथ बदलें",
@@ -2252,8 +2090,6 @@
     "saveFile": "फ़ाइल सहेजें",
     "search": "खोजें",
     "security": "सुरक्षा",
-    "recoveryKey": "रिकवरी कुंजी",
-    "recoveryKeyLost": "रिकवरी कुंजी खो गई?",
     "send": "भेजें",
     "sendAMessage": "एक संदेश भेजें",
     "sendAsText": "पाठ के रूप में भेजें",
@@ -2272,7 +2108,6 @@
     "separateChatTypes": "प्रत्यक्ष चैट और समूह अलग करें",
     "setAsCanonicalAlias": "मुख्य उपनाम के रूप में सेट करें",
     "setChatDescription": "चैट विवरण सेट करें",
-    "setPermissionsLevel": "अधिकार स्तर सेट करें",
     "setStatus": "स्थिति सेट करें",
     "settings": "सेटिंग्स",
     "share": "साझा करें",
@@ -2282,8 +2117,6 @@
     "presencesToggle": "अन्य उपयोगकर्ताओं से स्थिति संदेश दिखाएँ",
     "skip": "छोड़ें",
     "sourceCode": "स्रोत कोड",
-    "spaceIsPublic": "स्थान सार्वजनिक है",
-    "spaceName": "स्थान का नाम",
     "startedACall": "{senderName} ने कॉल शुरू की",
     "status": "स्थिति",
     "statusExampleMessage": "आज आप कैसे हैं?",
@@ -2295,7 +2128,6 @@
     "theyMatch": "वे मेल खाते हैं",
     "title": "फ्लफीचैट",
     "tooManyRequestsWarning": "बहुत अधिक अनुरोध। कृपया बाद में पुनः प्रयास करें!",
-    "transferFromAnotherDevice": "किसी अन्य डिवाइस से स्थानांतरण करें",
     "tryToSendAgain": "फिर से भेजने का प्रयास करें",
     "unavailable": "उपलब्ध नहीं",
     "unbannedUser": "{username} ने {targetName} को अनबैन किया",
@@ -2305,7 +2137,6 @@
     "unknownEvent": "अज्ञात घटना '{type}'",
     "unmuteChat": "चैट अनम्यूट करें",
     "unpin": "अनपिन करें",
-    "unreadChats": "{unreadCount, plural, =1{1 अपठित चैट} other{{unreadCount} अपठित चैट्स}}",
     "userAndOthersAreTyping": "{username} और {count} अन्य टाइप कर रहे हैं…",
     "userAndUserAreTyping": "{username} और {username2} टाइप कर रहे हैं…",
     "userIsTyping": "{username} टाइप कर रहे हैं…",
@@ -2318,8 +2149,6 @@
     "verifyStart": "सत्यापन शुरू करें",
     "verifySuccess": "आपने सफलतापूर्वक सत्यापित किया!",
     "verifyTitle": "अन्य खाते का सत्यापन कर रहे हैं",
-    "videoCall": "वीडियो कॉल",
-    "visibilityOfTheChatHistory": "चैट इतिहास की दृश्यता",
     "visibleForAllParticipants": "सभी प्रतिभागियों के लिए दृश्य",
     "visibleForEveryone": "सभी के लिए दृश्य",
     "voiceMessage": "आवाज संदेश",
@@ -2329,10 +2158,7 @@
     "wallpaper": "वॉलपेपर:",
     "warning": "चेतावनी!",
     "weSentYouAnEmail": "हमने आपको एक ईमेल भेजा है",
-    "whoCanPerformWhichAction": "कौन कौन सा कार्य कर सकता है",
-    "whoIsAllowedToJoinThisGroup": "इस समूह में कौन शामिल हो सकता है",
     "whyDoYouWantToReportThis": "आप इसे रिपोर्ट क्यों करना चाहते हैं?",
-    "wipeChatBackup": "क्या आप अपने चैट बैकअप को मिटाकर एक नई रिकवरी कुंजी बनाना चाहते हैं?",
     "withTheseAddressesRecoveryDescription": "इन पतों के साथ आप अपना पासवर्ड पुनः प्राप्त कर सकते हैं।",
     "writeAMessage": "एक संदेश लिखें…",
     "yes": "हाँ",
@@ -2345,9 +2171,7 @@
     "messageType": "संदेश प्रकार",
     "sender": "प्रेषक",
     "openGallery": "गैलरी खोलें",
-    "removeFromSpace": "स्थान से हटाएँ",
     "start": "शुरू करें",
-    "pleaseEnterRecoveryKeyDescription": "अपनी पुरानी संदेशों को अनलॉक करने के लिए, कृपया अपनी रिकवरी कुंजी दर्ज करें जो पिछले सत्र में जेनरेट की गई है। आपकी रिकवरी कुंजी आपका पासवर्ड नहीं है।",
     "publish": "प्रकाशित करें",
     "openChat": "चैट खोलें",
     "markAsRead": "पढ़े गए के रूप में चिह्नित करें",
@@ -2358,12 +2182,9 @@
     "confirmEventUnpin": "क्या आप सुनिश्चित हैं कि आप स्थायी रूप से ईवेंट को अनपिन करना चाहते हैं?",
     "emojis": "इमोजी",
     "placeCall": "कॉल करें",
-    "voiceCall": "वॉयस कॉल",
     "unsupportedAndroidVersion": "असमर्थित Android संस्करण",
     "unsupportedAndroidVersionLong": "इस सुविधा के लिए एक नए Android संस्करण की आवश्यकता है। कृपया अपडेट या Lineage OS समर्थन के लिए जांचें।",
-    "videoCallsBetaWarning": "कृपया ध्यान दें कि वीडियो कॉल वर्तमान में बीटा में हैं। ये अपेक्षा के अनुसार काम नहीं कर सकते हैं या सभी प्लेटफार्मों पर बिल्कुल भी काम नहीं कर सकते हैं।",
     "experimentalVideoCalls": "प्रयोगात्मक वीडियो कॉल",
-    "emailOrUsername": "ईमेल या उपयोगकर्ता नाम",
     "addWidget": "विजेट जोड़ें",
     "widgetVideo": "वीडियो",
     "widgetEtherpad": "पाठ नोट",
@@ -2385,35 +2206,19 @@
     "youKickedAndBanned": "🙅 आप {user} को बाहर किया और प्रतिबंधित किया",
     "youUnbannedUser": "आपने {user} को अनबैन किया",
     "hasKnocked": "🚪 {user} ने दस्तक दी है",
-    "usersMustKnock": "उपयोगकर्ताओं को दस्तक देनी चाहिए",
-    "noOneCanJoin": "कोई भी शामिल नहीं हो सकता",
     "knock": "दस्तक",
     "users": "उपयोगकर्ता",
-    "unlockOldMessages": "पुराने संदेश अनलॉक करें",
-    "storeInSecureStorageDescription": "इस डिवाइस के सुरक्षित भंडारण में रिकवरी कुंजी सहेजें।",
-    "saveKeyManuallyDescription": "सिस्टम शेयर डायलॉग या क्लिपबोर्ड को ट्रिगर करके इस कुंजी को मैनुअल रूप से सहेजें।",
-    "storeInAndroidKeystore": "एंड्रॉइड कीस्टोर में सहेजें",
-    "storeInAppleKeyChain": "एप्पल की चेन में सहेजें",
-    "storeSecurlyOnThisDevice": "इस डिवाइस पर सुरक्षित रूप से सहेजें",
     "countFiles": "{count} फ़ाइलें",
     "user": "उपयोगकर्ता",
     "custom": "कस्टम",
-    "foregroundServiceRunning": "यह नोटिफिकेशन तब दिखाई देता है जब फोरग्राउंड सेवा चल रही हो।",
-    "screenSharingTitle": "स्क्रीन शेयरिंग",
-    "screenSharingDetail": "आप FuffyChat में अपनी स्क्रीन साझा कर रहे हैं",
     "whyIsThisMessageEncrypted": "यह संदेश पढ़ने में असमर्थ क्यों है?",
     "noKeyForThisMessage": "यह तब हो सकता है जब संदेश भेजा गया हो इससे पहले कि आपने इस डिवाइस पर अपने खाते में साइन इन किया हो।\n\nयह भी संभव है कि भेजने वाले ने आपके डिवाइस को ब्लॉक कर दिया हो या इंटरनेट कनेक्शन में कुछ गलत हो गया हो।\n\nक्या आप दूसरे सत्र में संदेश पढ़ सकते हैं? फिर आप इसे उससे ट्रांसफर कर सकते हैं! सेटिंग्स > डिवाइसेस पर जाएं और सुनिश्चित करें कि आपके डिवाइसेस ने एक-दूसरे को सत्यापित किया है। जब आप अगली बार कमरे को खोलेंगे और दोनों सत्र अग्रभूमि में होंगे, तो कुंजी स्वचालित रूप से ट्रांसमिट हो जाएगी।\n\nक्या आप लॉगआउट या डिवाइस स्विच करने पर कुंजी खोना नहीं चाहते हैं? सुनिश्चित करें कि आपने सेटिंग्स में चैट बैकअप सक्षम किया है।",
     "newGroup": "नई समूह",
     "newSpace": "नई जगह",
-    "enterSpace": "स्थान में प्रवेश करें",
     "allSpaces": "सभी स्थान",
     "hidePresences": "स्थिति सूची छुपाएं?",
     "doNotShowAgain": "फिर से न दिखाएं",
     "wasDirectChatDisplayName": "खाली चैट (था {oldDisplayName})",
-    "newSpaceDescription": "स्पेस आपको अपने चैट को समेकित करने और निजी या सार्वजनिक समुदाय बनाने की अनुमति देता है।",
-    "encryptThisChat": "इस चैट को एन्क्रिप्ट करें",
-    "disableEncryptionWarning": "सुरक्षा कारणों से आप उस चैट में एन्क्रिप्शन को अक्षम नहीं कर सकते, जिसमें इसे पहले सक्षम किया गया हो।",
-    "sorryThatsNotPossible": "माफ़ कीजिए... यह संभव नहीं है",
     "deviceKeys": "डिवाइस कुंजी:",
     "reopenChat": "चैट फिर से खोलें",
     "noBackupWarning": "चेतावनी! चैट बैकअप को सक्षम किए बिना, आप अपने एन्क्रिप्टेड संदेशों तक पहुंच खो देंगे। लॉग आउट करने से पहले चैट बैकअप को सक्षम करना अत्यंत अनुशंसित है।",
@@ -2426,7 +2231,6 @@
     "openLinkInBrowser": "ब्राउज़र में लिंक खोलें",
     "reportErrorDescription": "😢 ओह नहीं। कुछ गलत हो गया है। यदि आप चाहें तो आप इस बग की रिपोर्ट डेवलपर्स को कर सकते हैं।",
     "report": "रिपोर्ट करें",
-    "setTheme": "थीम सेट करें:",
     "setColorTheme": "रंग थीम सेट करें:",
     "invite": "आमंत्रित करें",
     "inviteGroupChat": "ग्रुप चैट आमंत्रित करें",
@@ -2445,12 +2249,8 @@
     "yourGlobalUserIdIs": "आपका वैश्विक उपयोगकर्ता-आईडी है: ",
     "noUsersFoundWithQuery": "दुर्भाग्यवश \"{query}\" के साथ कोई उपयोगकर्ता नहीं मिला। कृपया जांचें कि आपने टाइपो तो नहीं किया है।",
     "knocking": " knocking",
-    "chatCanBeDiscoveredViaSearchOnServer": "चैट को {server} पर खोज के माध्यम से खोजा जा सकता है",
-    "searchChatsRooms": "#चैट्स, @उपयोगकर्ताओं के लिए खोजें...",
     "nothingFound": "कुछ नहीं मिला...",
     "groupName": "समूह का नाम",
-    "createGroupAndInviteUsers": "एक समूह बनाएं और उपयोगकर्ताओं को आमंत्रित करें",
-    "groupCanBeFoundViaSearch": "खोज के माध्यम से समूह पाया जा सकता है",
     "wrongRecoveryKey": "माफ़ कीजिए... यह सही रिकवरी कुंजी नहीं लगती।",
     "startConversation": "संवाद शुरू करें",
     "commandHint_sendraw": "कच्चा JSON भेजें",
@@ -2464,11 +2264,8 @@
     "pleaseChooseAStrongPassword": "कृपया एक मजबूत पासवर्ड चुनें",
     "passwordsDoNotMatch": "पासवर्ड मेल नहीं खाते",
     "passwordIsWrong": "आपका दर्ज किया गया पासवर्ड गलत है",
-    "publicChatAddresses": "सार्वजनिक चैट पते",
-    "createNewAddress": "नई पता बनाएं",
     "joinSpace": "स्थान में शामिल हों",
     "publicSpaces": "सार्वजनिक स्थान",
-    "addChatOrSubSpace": "चैट या उप-स्थान जोड़ें",
     "subspace": "उप-स्थान",
     "decline": "अस्वीकार करें",
     "thisDevice": "यह उपकरण:",
@@ -2477,15 +2274,11 @@
     "searchMore": "और खोजें...",
     "gallery": "गैलरी",
     "files": "फ़ाइलें",
-    "sessionLostBody": "आपका सत्र खो गया है। कृपया इस त्रुटि की रिपोर्ट डेवलपर्स को {url} पर करें। त्रुटि संदेश है: {error}",
-    "restoreSessionBody": "अब ऐप आपके बैकअप से आपका सत्र पुनः स्थापित करने का प्रयास कर रहा है। कृपया इस त्रुटि की रिपोर्ट डेवलपर्स को {url} पर करें। त्रुटि संदेश है: {error}",
     "sendReadReceipts": "पढ़ने की रसीदें भेजें",
     "sendTypingNotificationsDescription": "अन्य प्रतिभागी देख सकते हैं कि आप नई संदेश टाइप कर रहे हैं।",
     "sendReadReceiptsDescription": "अन्य प्रतिभागी देख सकते हैं कि आपने संदेश पढ़ा है।",
     "formattedMessages": "संकुचित संदेश",
     "formattedMessagesDescription": "मर्कडाउन का उपयोग करके बोल्ड टेक्स्ट जैसी समृद्ध संदेश सामग्री दिखाएँ।",
-    "verifyOtherUser": "🔐 अन्य उपयोगकर्ता को सत्यापित करें",
-    "verifyOtherUserDescription": "यदि आप किसी अन्य उपयोगकर्ता को सत्यापित करते हैं, तो आप सुनिश्चित कर सकते हैं कि आप वास्तव में किसके साथ लिख रहे हैं। 💪\n\nजब आप सत्यापन शुरू करते हैं, तो आप और दूसरा उपयोगकर्ता ऐप में एक पॉपअप देखेंगे। वहाँ आप एक श्रृंखला इमोजी या संख्याएँ देखेंगे जिन्हें आपको एक-दूसरे के साथ तुलना करनी होगी।\n\nइसे करने का सबसे अच्छा तरीका मिलना या वीडियो कॉल शुरू करना है। 👩‍💻",
     "verifyOtherDevice": "🔐 अन्य डिवाइस को सत्यापित करें",
     "verifyOtherDeviceDescription": "जब आप किसी अन्य डिवाइस को सत्यापित करते हैं, तो वे डिवाइस कुंजी का आदान-प्रदान कर सकते हैं, जिससे आपकी समग्र सुरक्षा बढ़ती है। 💪 जब आप सत्यापन शुरू करते हैं, तो दोनों डिवाइस पर ऐप में एक पॉपअप दिखाई देगा। वहाँ आप एक श्रृंखला इमोजी या संख्याएँ देखेंगे जिन्हें आपको तुलना करनी होगी। सत्यापन शुरू करने से पहले दोनों डिवाइस को पास में रखना सबसे अच्छा है। 🤳",
     "acceptedKeyVerification": "{sender} ने कुंजी सत्यापन स्वीकार किया",
@@ -2521,10 +2314,6 @@
     "updateInstalled": "🎉 {version} अपडेट स्थापित!",
     "changelog": "परिवर्तन सूची",
     "sendCanceled": "भेजना रद्द कर दिया गया",
-    "loginWithMatrixId": "Matrix-ID के साथ लॉगिन करें",
-    "discoverHomeservers": "होमसर्वर खोजें",
-    "whatIsAHomeserver": "होमसर्वर क्या है?",
-    "homeserverDescription": "आपका सारा डेटा होमसर्वर पर संग्रहित होता है, जैसे एक ईमेल प्रदाता। आप चुन सकते हैं कि आप कौन सा होमसर्वर उपयोग करना चाहते हैं, जबकि आप अभी भी सभी के साथ संवाद कर सकते हैं। अधिक जानने के लिए https://matrix.org पर जाएं।",
     "doesNotSeemToBeAValidHomeserver": "यह एक उपयुक्त होमसर्वर प्रतीत नहीं होता। क्या URL गलत है?",
     "calculatingFileSize": "फ़ाइल का आकार गणना कर रहा है...",
     "prepareSendingAttachment": "संलग्नक भेजने की तैयारी कर रहा है...",
@@ -2536,11 +2325,9 @@
     "oneOfYourDevicesIsNotVerified": "आपके एक उपकरण का सत्यापन नहीं हुआ है",
     "noticeChatBackupDeviceVerification": "ध्यान दें: जब आप अपने सभी उपकरणों को चैट बैकअप से जोड़ते हैं, तो वे स्वचालित रूप से सत्यापित हो जाते हैं।",
     "continueText": "जारी रखें",
-    "welcomeText": "अरे अरे 👋 यह फ्लफीचैट है। आप किसी भी होमसर्वर में साइन इन कर सकते हैं, जो https://matrix.org के साथ संगत है। और फिर किसी के साथ भी चैट करें। यह एक विशाल विकेंद्रीकृत संदेश नेटवर्क है!",
     "blur": "धुंधलापन:",
     "opacity": "अस्पष्टता:",
     "setWallpaper": "वॉलपेपर सेट करें",
-    "manageAccount": "खाता प्रबंधित करें",
     "noContactInformationProvided": "सर्वर कोई मान्य संपर्क जानकारी प्रदान नहीं करता है",
     "contactServerAdmin": "सर्वर व्यवस्थापक से संपर्क करें",
     "contactServerSecurity": "सर्वर सुरक्षा से संपर्क करें",
@@ -2559,11 +2346,8 @@
     "unableToJoinChat": "चैट में शामिल नहीं हो सकता। हो सकता है कि दूसरी पार्टी ने पहले ही बातचीत बंद कर दी हो।",
     "previous": "पिछला",
     "otherPartyNotLoggedIn": "दूसरी पार्टी वर्तमान में लॉग इन नहीं है और इसलिए संदेश प्राप्त नहीं कर सकती!",
-    "appWantsToUseForLogin": "'{server}' का उपयोग लॉगिन के लिए करें",
-    "appWantsToUseForLoginDescription": "आप यहाँ अनुमति देते हैं कि ऐप और वेबसाइट आपके बारे में जानकारी साझा करें।",
     "open": "खुला",
     "waitingForServer": "सर्वर का इंतजार कर रहा है...",
-    "appIntroduction": "फ्लफीचैट आपको विभिन्न मैसेंजरों के साथ अपने दोस्तों के साथ चैट करने की अनुमति देता है। अधिक जानने के लिए https://matrix.org पर जाएं या बस *जारी रखें* टैप करें।",
     "newChatRequest": "📩 नई चैट अनुरोध",
     "contentNotificationSettings": "सामग्री सूचनाएँ सेटिंग्स",
     "generalNotificationSettings": "सामान्य सूचनाएँ सेटिंग्स",
@@ -2640,11 +2424,9 @@
     "taTooltip": "अनुवाद सहायता के साथ L2 का उपयोग करें",
     "interactiveTranslatorSliderHeader": "इंटरैक्टिव अनुवादक",
     "interactiveGrammarSliderHeader": "इंटरैक्टिव व्याकरण जांचक",
-    "interactiveTranslatorRequired": "आवश्यक",
     "waTooltip": "बिना सहायता के L2 उपयोग",
     "interactiveTranslator": "अनुवाद सहायता",
     "noIdenticalLanguages": "कृपया अलग आधार और लक्ष्य भाषाएँ चुनें",
-    "searchBy": "देश और भाषाओं द्वारा खोजें",
     "joinWithClassCode": "कोर्स में शामिल हों",
     "languageLevelPreA1": "नवीनतम निम्न (पूर्व A1)",
     "languageLevelA1": "नवोदित मध्य (A1)",
@@ -2665,19 +2447,14 @@
     "saveChanges": "परिवर्तनों को सहेजें",
     "publicProfileTitle": "मेरी प्रोफ़ाइल को खोज में पाया जा सके",
     "publicProfileDesc": "ऑन करने पर, आप अन्य उपयोगकर्ताओं को अपने प्रोफ़ाइल को ग्लोबल सर्च बार में खोजने और चैट के लिए अनुरोध भेजने में सक्षम बनाते हैं। इस बिंदु पर, आप अनुरोध को स्वीकार करने या अस्वीकार करने का विकल्प चुन सकते हैं।",
-    "errorDisableIT": "अनुवाद सहायता बंद कर दी गई है।",
-    "errorDisableIGC": "व्याकरण सहायता बंद कर दी गई है।",
     "errorDisableITUserDesc": "अनुवाद सहायता सेटिंग्स अपडेट करने के लिए यहां क्लिक करें",
     "errorDisableIGCUserDesc": "व्याकरण सहायता सेटिंग्स अपडेट करने के लिए यहां क्लिक करें",
     "errorDisableITClassDesc": "इस चैट के कक्षा के लिए अनुवाद सहायता बंद कर दी गई है।",
     "errorDisableIGCClassDesc": "इस चैट के कक्षा के लिए व्याकरण सहायता बंद कर दी गई है।",
-    "error405Title": "भाषाएँ सेट नहीं हैं",
     "error405Desc": "कृपया अपने भाषाओं को मेनू > सीखने की सेटिंग्स में सेट करें।",
     "termsAndConditions": "शर्तें और नियम",
     "andCertifyIAmAtLeast13YearsOfAge": " और प्रमाणित करता हूँ कि मेरी उम्र कम से कम 16 वर्ष है।",
-    "error502504Title": "वाह, बहुत सारे छात्र ऑनलाइन हैं!",
     "error502504Desc": "जब तक पांगेआ बॉट्स अपडेट नहीं हो जाते, तब तक अनुवाद और व्याकरण उपकरण धीमे या अनुपलब्ध हो सकते हैं।",
-    "error404Title": "अनुवाद त्रुटि!",
     "error404Desc": "पांगेआ बॉट को यह अनुवाद करने का तरीका नहीं पता...",
     "errorPleaseRefresh": "हम इसे देख रहे हैं! कृपया पुनः लोड करें और फिर से प्रयास करें।",
     "connectedToStaging": "स्टेजिंग से जुड़ा हुआ",
@@ -2715,13 +2492,9 @@
     "definitionsToolName": "शब्द परिभाषाएँ",
     "definitionsToolDescription": "जब सक्षम किया जाता है, तो नीले रंग में रेखांकित शब्दों पर क्लिक करके परिभाषाएँ देखी जा सकती हैं। परिभाषाएँ देखने के लिए संदेश पर क्लिक करें।",
     "welcomeBack": "वापस स्वागत है! यदि आप 2023-2024 पायलट का हिस्सा थे, तो कृपया अपनी विशेष पायलट सदस्यता के लिए हमसे संपर्क करें। यदि आप एक शिक्षक हैं जिन्होंने (या जिनके संस्थान ने) अपनी कक्षा के लिए लाइसेंस खरीदे हैं, तो कृपया अपनी शिक्षक सदस्यता के लिए हमसे संपर्क करें।",
-    "downloadTxtFile": "टेक्स्ट फ़ाइल डाउनलोड करें",
-    "downloadCSVFile": "CSV फ़ाइल डाउनलोड करें",
     "promotionalSubscriptionDesc": "आपके पास वर्तमान में एक जीवनकाल प्रचार सदस्यता है। अपनी सदस्यता बदलने में मदद के लिए support@pangea.chat पर संदेश भेजें।",
     "originalSubscriptionPlatform": "खरीदी गई सदस्यता {purchasePlatform} के माध्यम से",
     "oneWeekTrial": "एक सप्ताह का परीक्षण",
-    "downloadXLSXFile": "एक्सेल फ़ाइल डाउनलोड करें",
-    "unkDisplayName": "अज्ञात",
     "wwCountryDisplayName": "विश्वव्यापी",
     "afCountryDisplayName": "अफगानिस्तान",
     "axCountryDisplayName": "आलैंड द्वीपसमूह",
@@ -3004,7 +2777,6 @@
     "trialPeriodExpired": "आपका परीक्षण अवधि समाप्त हो गई है",
     "translations": "अनुवाद",
     "definitions": "परिभाषाएँ",
-    "subscribedToUnlockTools": "इंटरैक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास गतिविधियों, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
     "translationTooltip": "अनुवाद करें",
     "kickBotWarning": "पांगेआ बॉट को निकालने से इस चैट से बातचीत बॉट हटा दिया जाएगा।",
     "refresh": "रिफ्रेश करें",
@@ -3017,24 +2789,19 @@
     "chatCapacityHasBeenChanged": "चैट क्षमता बदल गई है",
     "chatCapacitySetTooLow": "चैट क्षमता कम से कम {count} होनी चाहिए।",
     "chatCapacityExplanation": "चैट क्षमता उस सदस्यों की संख्या को सीमित करती है जो एक चैट में अनुमति प्राप्त हैं।",
-    "tooManyRequest": "बहुत अधिक अनुरोध, कृपया बाद में पुनः प्रयास करें।",
     "enterNumber": "कृपया एक पूर्ण संख्या मान दर्ज करें।",
     "practice": "अभ्यास",
-    "speechToTextBody": "आवाज संदेशों के लिए, आप ट्रांसक्रिप्ट के साथ-साथ वक्ता के शब्द प्रति मिनट स्कोर को भी देख सकते हैं।",
     "versionNotFound": "संस्करण नहीं मिला",
     "fetchingVersion": "संस्करण प्राप्त किया जा रहा है...",
     "versionFetchError": "संस्करण प्राप्त करने में त्रुटि",
     "versionText": "संस्करण: {version}+{buildNumber}",
-    "l1TranslationBody": "आपकी मूल भाषा में संदेश का अनुवाद नहीं किया जाएगा।",
     "deleteSubscriptionWarningTitle": "आपकी एक सक्रिय सदस्यता है",
     "deleteSubscriptionWarningBody": "आपका खाता हटाने से आपकी सदस्यता अपने आप रद्द नहीं होगी।",
     "manageSubscription": "सदस्यता प्रबंधित करें",
-    "error520Title": "कृपया पुनः प्रयास करें।",
     "error520Desc": "माफ़ कीजिए, हम आपका संदेश समझ नहीं सके...",
     "wordsUsed": "शब्दों का उपयोग किया गया",
     "level": "स्तर",
     "morphsUsed": "मॉर्फ़ का उपयोग किया गया",
-    "translationChoicesBody": "एक विकल्प पर क्लिक करें और होल्ड करें ताकि संकेत मिल सके।",
     "grammar": "व्याकरण",
     "contactHasBeenInvitedToTheChat": "संपर्क को चैट में आमंत्रित किया गया है",
     "inviteChat": "चैट आमंत्रित करें",
@@ -3045,280 +2812,9 @@
     "l2SupportFull": "पूर्ण",
     "playAudio": "चलाएँ",
     "stop": "रोकें",
-    "grammarCopyPOSsconj": "उपवाक्य संयोजक",
-    "grammarCopyPOSnum": "संख्या",
-    "grammarCopyPOSverb": "क्रिया",
-    "grammarCopyPOSaffix": "प्रत्यय",
-    "grammarCopyPOSpart": "कण",
-    "grammarCopyPOSadj": "विशेषण",
-    "grammarCopyPOScconj": "सामंजस्य संयोजक",
-    "grammarCopyPOSpunct": "विराम चिह्न",
-    "grammarCopyPOSadv": "क्रिया विशेषण",
-    "grammarCopyPOSaux": "सहायक",
-    "grammarCopyPOSspace": "स्थान",
-    "grammarCopyPOSsym": "प्रतीक",
-    "grammarCopyPOSdet": "निर्धारक",
-    "grammarCopyPOSpron": "सर्वनाम",
-    "grammarCopyPOSadp": "अवस्थान",
-    "grammarCopyPOSpropn": "सही नाम",
-    "grammarCopyPOSnoun": "संज्ञा",
-    "grammarCopyPOSintj": "आवेश",
-    "grammarCopyPOSx": "अन्य",
-    "grammarCopyGENDERfem": "स्त्रीलिंग",
-    "grammarCopyPERSON2": "दूसरा व्यक्ति",
-    "grammarCopyMOODimp": "आज्ञा",
-    "grammarCopyPUNCTTYPEqest": "प्रश्न",
-    "grammarCopyASPECTperf": "पूर्ण",
-    "grammarCopyCASEaccnom": "कृदंत, नामवाचक",
-    "grammarCopyCASEobl": "वक्र",
-    "grammarCopyVOICEact": "सक्रिय",
-    "grammarCopyPUNCTTYPEbrck": "कोष्ठक",
-    "grammarCopyNOUNTYPEart": "लेख",
-    "grammarCopyNUMBERsing": "एकवचन",
-    "grammarCopyGENDERmasc": "पुल्लिंग",
-    "grammarCopyVERBTYPEmod": "मोडल",
-    "grammarCopyADVTYPEadverbial": "क्रिया विशेषण",
-    "grammarCopyTENSEperi": "परिभ्रंशकाल",
-    "grammarCopyNUMFORMdigit": "अंक",
-    "grammarCopyNOUNTYPEnot_proper": "सही नहीं",
-    "grammarCopyNUMTYPEcard": "संक्यात्मक",
-    "grammarCopyNOUNTYPEprop": "सही",
-    "grammarCopyPUNCTTYPEdash": "डैश",
-    "grammarCopyPUNCTTYPEyes": "हाँ",
-    "grammarCopyPUNCTTYPEsemi": "सेमीकोलन",
-    "grammarCopyPUNCTTYPEcomm": "कॉमा",
-    "grammarCopyMOODcnd": "शर्तीय",
-    "grammarCopyCASEacc": "अभियोग",
-    "grammarCopyPARTTYPEpart": "भागात्मक",
-    "grammarCopyTENSEpast": "भूतकाल",
-    "grammarCopyDEGREEsup": "अतिशयोक्तिपूर्ण",
-    "grammarCopyPUNCTTYPEcolo": "कोलन",
-    "grammarCopyPERSON3": "तृतीय पुरुष",
-    "grammarCopyNUMBERplur": "बहुवचन",
-    "grammarCopyPRONTYPEnpr": "सही नाम",
-    "grammarCopyPRONTYPEinterrogative": "प्रश्नवाचक",
-    "grammarCopyPOLITEinfm": "अनौपचारिक",
-    "grammarCopyADVTYPEtim": "समय",
-    "grammarCopyPOLARITYneg": "नकारात्मक",
-    "grammarCopyNUMTYPEtot": "कुल",
-    "grammarCopyADVTYPEadnomial": "विशेषणात्मक",
-    "grammarCopyASPECTprog": "प्रगति",
-    "grammarCopyMOODsub": "विषयवाचक",
-    "grammarCopyVERBFORMcomplementive": "पूरक",
-    "grammarCopyCASEnom": "कर्ता",
-    "grammarCopyTENSEfut": "भविष्यकाल",
-    "grammarCopyCASEdat": "अपादान",
-    "grammarCopyTENSEpres": "वर्तमान",
-    "grammarCopyGENDERneut": "स्त्रीलिंग",
-    "grammarCopyPRONTYPErel": "संबंधवाचक",
-    "grammarCopyVERBFORMfinalEnding": "अंतिम समाप्ति",
-    "grammarCopyPRONTYPEdem": "दर्शक",
-    "grammarCopyPREPCASEpre": "पूर्वसंबंधी",
-    "grammarCopyVERBFORMfin": "सीमित",
-    "grammarCopyDEGREEpos": "सकारात्मक",
-    "grammarCopyPUNCTTYPEquot": "उद्धरण",
-    "grammarCopyVERBFORMger": "Gerund",
-    "grammarCopyVOICEpass": "Passive",
-    "grammarCopyCASEgen": "संबंधवाचक",
-    "grammarCopyTENSEprs": "वर्तमान",
-    "grammarCopyDEFINITEdef": "निश्चित",
-    "grammarCopyNUMTYPEord": "क्रमांक",
-    "grammarCopyCASEins": "आयामवाचक",
-    "grammarCopyVERBFORMinf": "अपूर्ण क्रिया",
-    "grammarCopyVERBFORMaux": "सहायक",
-    "grammarCopyNUMFORMlong": "लंबा",
-    "grammarCopyCASEloc": "स्थानवाचक",
-    "grammarCopyMOODind": "सूचक",
-    "grammarCopyDEGREEcmp": "तुलनात्मक",
-    "grammarCopyCASErelativeCase": "संबंधित",
-    "grammarCopyPUNCTTYPEexcl": "विस्मयादिबोधक",
-    "grammarCopyPERSON1": "प्रथम व्यक्ति",
-    "grammarCopyPUNCTSIDEini": "प्रारंभिक",
-    "grammarCopyGENDERperson": "लैंगिक",
-    "grammarCopyFOREIGNyes": "विदेशी",
-    "grammarCopyVOICEvoice": "आवाज़",
-    "grammarCopyVERBTYPEverbType": "क्रिया",
-    "grammarCopyPOSSpass": "स्वामित्व",
-    "grammarCopyPREPCASEprepCase": "पूर्वसर्गात्मक",
-    "grammarCopyNUMTYPEnumType": "संख्या",
-    "grammarCopyNOUNTYPEnounType": "संज्ञा",
-    "grammarCopyREFLEXreflex": "प्रत्यावर्तक",
-    "grammarCopyPRONTYPEpronType": "सर्वनाम",
-    "grammarCopyPUNCTSIDEpunctSide": "विराम चिह्न का पक्ष",
-    "grammarCopyVERBFORMverbForm": "क्रिया का रूप",
-    "grammarCopyGENDERgender": "लैंगिकता",
-    "grammarCopyMOODmood": "मनोभाव",
-    "grammarCopyASPECTaspect": "पहलू",
-    "grammarCopyPUNCTTYPEpunctType": "विराम चिह्न का प्रकार",
-    "grammarCopyTENSEtense": "काल",
-    "grammarCopyDEGREEdegree": "डिग्री",
-    "grammarCopyPOLITEpolite": "विनम्रता",
-    "grammarCopyADVTYPEadvType": "क्रिया विशेषण",
-    "grammarCopyNUMFORMnumber": "संख्या",
-    "grammarCopyCONJTYPEconjType": "संयोजन",
-    "grammarCopyPOLARITYpolarity": "ध्रुवता",
-    "grammarCopyCASEcase": "विषय",
-    "grammarCopyDEFINITEdefinite": "निश्चितता",
-    "grammarCopyNUMFORMnumForm": "संख्या",
-    "grammarCopyPRONTYPEadn": "संबंधसूचक",
-    "grammarCopyVOCvoc": "आह्वान",
-    "grammarCopyCMPLcmpl": "पूरककर्ता",
-    "grammarCopyADVadv": "क्रियाविशेषण",
-    "grammarCopyMOODjus": "आज्ञा",
-    "grammarCopyGENDERcom": "सामान्य",
-    "grammarCopyREFLEXrflx": "प्रतिबिंब",
-    "grammarCopyPARTTYPEpar": "अंशात्मक",
-    "grammarCopySPCspc": "विशेष",
-    "grammarCopyTENSEpqp": "पूर्णकालिक",
-    "grammarCopyREFLEXref": "प्रतिबिंब",
-    "grammarCopyPUNCTTYPEnshrt": "संक्षिप्त",
-    "grammarCopyNUMBERdual": "द्विगुण",
-    "grammarCopyNUMFORMlng": "लंबा",
-    "grammarCopyVOICEmid": "मध्यम",
-    "grammarCopyINTRELintRel": "प्रश्नवाचक, संबंधसूचक",
-    "grammarCopyINTint": "प्रश्नवाचक",
-    "grammarCopyVOICEcaus": "कारक",
-    "grammarCopyUnknown": "अज्ञात",
-    "grammarCopyEVIDENTevident": "साक्ष्यात्मकता",
-    "grammarCopyNUMFORMnumberPsor": "स्वामित्वकर्ता का नंबर",
-    "grammarCopyASPECThab": "आदतन",
-    "grammarCopyCASEabl": "अलैटिव",
-    "grammarCopyCASEall": "अलाटिव",
-    "grammarCopyCASEess": "अस्तित्व",
-    "grammarCopyCASEtra": "अनुवादक",
-    "grammarCopyCASEequ": "समान",
-    "grammarCopyCASEdis": "वितरक",
-    "grammarCopyCASEabs": "पूर्णात्मक",
-    "grammarCopyCASEerg": "कर्तृ",
-    "grammarCopyCASEcau": "कारण",
-    "grammarCopyCASEben": "लाभार्थी",
-    "grammarCopyCASEtem": "कालिक",
-    "grammarCopyCONJTYPEcoord": "सहयोगी",
-    "grammarCopyDEFINITEcons": "संरचना स्थिति",
-    "grammarCopyDEGREEabs": "पूर्ण डिग्री",
-    "grammarCopyEVIDENTfh": "तथ्यात्मक साक्ष्य",
-    "grammarCopyEVIDENTnfh": "गैर-तथ्यात्मक साक्ष्य",
-    "grammarCopyMOODopt": "इच्छात्मक",
-    "grammarCopyMOODadm": "आश्चर्यजनक",
-    "grammarCopyMOODdes": "इच्छाप्रद",
-    "grammarCopyMOODnec": "आवश्यकता सूचक",
-    "grammarCopyMOODpot": "संभाव्य",
-    "grammarCopyMOODprp": "प्रस्तावात्मक",
-    "grammarCopyMOODqot": "उद्धरणात्मक",
-    "grammarCopyNUMFORMword": "शब्द रूप",
-    "grammarCopyNUMFORMroman": "रोमन संख्या",
-    "grammarCopyNUMFORMletter": "अक्षर रूप",
-    "grammarCopyNUMTYPEmult": "गुणकात्मक",
-    "grammarCopyNUMTYPEfrac": "भिन्नात्मक",
-    "grammarCopyNUMTYPEsets": "सेट",
-    "grammarCopyNUMTYPErange": "सीमा",
-    "grammarCopyNUMTYPEdist": "वितरक",
-    "grammarCopyNUMBERtri": "परीक्षण",
-    "grammarCopyNUMBERpauc": "पौकाल",
-    "grammarCopyNUMBERgrpa": "बड़ा पौकाल",
-    "grammarCopyNUMBERgrpl": "बड़ा बहुवचन",
-    "grammarCopyNUMBERinv": "उल्टा",
-    "grammarCopyPERSON0": "शून्य",
-    "grammarCopyPERSON4": "चौथा",
-    "grammarCopyPOLITEform": "औपचारिक",
-    "grammarCopyPOLITEelev": "उन्नत",
-    "grammarCopyPOLITEhumb": "विनम्र",
-    "grammarCopyPRONTYPEemp": "जोरदार",
-    "grammarCopyPRONTYPEexc": "विस्मयादिबोधक",
-    "grammarCopyPRONTYPErcp": "परस्पर",
-    "grammarCopyPRONTYPEintRelPronType": "प्रश्नवाचक-संबंधवाचक",
-    "grammarCopyTENSEaor": "अतीतकाल",
-    "grammarCopyTENSEeps": "ज्ञानात्मक",
-    "grammarCopyTENSEprosp": "भविष्यकालीन",
-    "grammarCopyVERBFORMpart": "भाग्यवाचक",
-    "grammarCopyVERBFORMconv": "सामंजस्यवाचक",
-    "grammarCopyVERBFORMvnoun": "क्रियावाचक संज्ञा",
-    "grammarCopyVOICEantip": "विरोधी कर्मवाचक",
-    "grammarCopyVOICEcauVoice": "कारक",
-    "grammarCopyVOICedir": "प्रत्यक्ष",
-    "grammarCopyVOICEinvVoice": "विपरीत",
-    "grammarCopyVOICErcpVoice": "पारस्परिक",
-    "grammarCopyPOS": "वाक्यांश का भाग",
-    "grammarCopyGENDER": "लैंगिकता",
-    "grammarCopyPERSON": "व्यक्ति",
-    "grammarCopyMOOD": "मूड",
-    "grammarCopyPUNCTTYPE": "विराम चिह्न प्रकार",
-    "grammarCopyASPECT": "पहलू",
-    "grammarCopyCASE": "विषय",
-    "grammarCopyVOICE": "ध्वनि",
-    "grammarCopyNOUNTYPE": "संज्ञा प्रकार",
-    "grammarCopyVERBTYPE": "क्रिया प्रकार",
-    "grammarCopyADVTYPE": "क्रिया विशेषण प्रकार",
-    "grammarCopyNUMFORM": "संख्या रूप",
-    "grammarCopyNUMTYPE": "संख्या प्रकार",
-    "grammarCopyNUMBER": "संख्या",
-    "grammarCopyDEFINITE": "निश्चितता",
-    "grammarCopyDEGREE": "डिग्री",
-    "grammarCopyEVIDENT": "साक्ष्य",
-    "grammarCopyFOREIGN": "विदेशी",
-    "grammarCopyPOLARITY": "ध्रुवता",
-    "grammarCopyPOLITE": "विनम्रता",
-    "grammarCopyPREPCASE": "पूर्वसंबंधात्मक वाक्यांश",
-    "grammarCopyPRONTYPE": "सर्वनाम प्रकार",
-    "grammarCopyPUNCTSIDE": "विराम चिह्न का पक्ष",
-    "grammarCopyREFLEX": "प्रतिबिंब",
-    "grammarCopyTENSE": "काल",
-    "grammarCopyVERBFORM": "क्रिया का रूप",
-    "grammarCopyCONJTYPE": "संयोजन प्रकार",
-    "grammarCopySPC": "विशेषता",
-    "grammarCopyPARTTYPE": "भागात्मक प्रकार",
-    "grammarCopyINTREL": "प्रश्नवाचक-संबंधी",
-    "grammarCopyUNKNOWN": "अज्ञात",
-    "grammarCopyNUMBERPSOR": "स्वामित्वकर्ता का संख्या",
-    "grammarCopyPOSS": "स्वामित्वसूचक",
-    "grammarCopyASPECTimp": "अपूर्णात्मक दृष्टिकोण",
-    "grammarCopyCASEvoc": "संबोधन",
-    "grammarCopyCASEcom": "सहयोगी",
-    "grammarCopyCASEpar": "भागात्मक",
-    "grammarCopyCASEadv": "क्रिया विशेषण",
-    "grammarCopyCASEref": "संदर्भात्मक",
-    "grammarCopyCASErel": "संबंधसूचक",
-    "grammarCopyCASEsub": "अधीनस्थ",
-    "grammarCopyCASEsup": "अधिपत्यात्मक",
-    "grammarCopyCASEaccdat": "संबोधन-आश्रित",
-    "grammarCopyCASEpre": "पूर्वसर्गात्मक",
-    "grammarCopyCONJTYPEsub": "अधीनस्थ संयोजक",
-    "grammarCopyCONJTYPEcmp": "तुलनात्मक",
-    "grammarCopyDEFINITEind": "अपरिभाषित",
-    "grammarCopyMOODint": "प्रश्नवाचक मूड",
-    "grammarCopyNOUNTYPEcomm": "सामान्य संज्ञा",
-    "grammarCopyNUMBERPSORsing": "स्वामित्वकर्ता का एकवचन",
-    "grammarCopyNUMBERPSORplur": "स्वामित्वकर्ता का बहुवचन",
-    "grammarCopyNUMBERPSORdual": "स्वामित्वकर्ता का द्विगुणित",
-    "grammarCopyPOLARITYpos": "सकारात्मक ध्रुवता",
-    "grammarCopyPOSSyes": "स्वामित्वसूचक",
-    "grammarCopyPREPCASEnpr": "अपूर्वसर्गात्मक नहीं",
-    "grammarCopyPRONTYPEprs": "व्यक्तिगत",
-    "grammarCopyPRONTYPEint": "प्रश्नवाचक",
-    "grammarCopyPRONTYPEtot": "कुल",
-    "grammarCopyPRONTYPEneg": "नकारात्मक",
-    "grammarCopyPRONTYPEart": "लेख",
-    "grammarCopyPRONTYPEind": "अपरिभाषित",
-    "grammarCopyPRONTYPEintrel": "प्रश्नवाचक-संबंधी",
-    "grammarCopyPUNCTSIDEfin": "अंतिम विराम चिह्न",
-    "grammarCopyPUNCTTYPEperi": "पूर्णविराम",
-    "grammarCopyREFLEXyes": "प्रतिबिंब",
-    "grammarCopyTENSEimp": "अपूर्णकालिक",
-    "grammarCopyVERBFORMsup": "सुपाइन",
-    "grammarCopyVERBFORMadn": "संबंधित क्रिया",
-    "grammarCopyVERBFORMlng": "लंबा",
-    "grammarCopyVERBFORMshrt": "संक्षिप्त",
-    "grammarCopyVERBTYPEcaus": "कारक क्रिया",
-    "grammarCopyVOICEcau": "कारक",
-    "grammarCopyVOICEdir": "प्रत्यक्ष",
-    "grammarCopyVOICEinv": "विपरीत",
-    "grammarCopyVOICErcp": "परस्पर",
     "other": "अन्य",
     "levelShort": "LVL {level}",
-    "clickBestOption": "अपना संदेश अनुवाद करने के लिए सबसे अच्छा विकल्प चुनें!",
-    "completeActivitiesToUnlock": "अनुवाद को अनलॉक करने के लिए कम से कम एक गतिविधि पूरी करें!",
     "noCapacityLimit": "कोई क्षमता सीमा नहीं",
-    "downloadGroupText": "समूह टेक्स्ट डाउनलोड करें",
     "notificationsOn": "सूचनाएँ चालू हैं",
     "notificationsOff": "सूचनाएँ बंद हैं",
     "joinWithCode": "कोड के साथ जुड़ें",
@@ -3335,27 +2831,9 @@
     "constructUseIgnIGCDesc": "व्याकरण सुधार में अनदेखा किया गया",
     "constructUseCorIGCDesc": "व्याकरण सुधार में सही",
     "constructUseIncIGCDesc": "व्याकरण सुधार में गलत",
-    "constructUseCorPADesc": "शब्द अर्थ गतिविधि में सही",
-    "constructUseIgnPADesc": "शब्द अर्थ गतिविधि में अनदेखा किया गया",
-    "constructUseIncPADesc": "शब्द अर्थ गतिविधि में गलत",
-    "constructUseCorWLDesc": "शब्द सुनने की गतिविधि में सही",
-    "constructUseIncWLDesc": "शब्द सुनने की गतिविधि में गलत",
-    "constructUseIngWLDesc": "शब्द सुनने की गतिविधि में अनदेखा किया गया",
-    "constructUseCorHWLDesc": "छुपे हुए शब्द गतिविधि में सही",
-    "constructUseIncHWLDesc": "छुपे हुए शब्द गतिविधि में गलत",
-    "constructUseIgnHWLDesc": "छुपे हुए शब्द गतिविधि में अनदेखा किया गया",
-    "constructUseCorLDesc": "लेम्मा गतिविधि में सही",
-    "constructUseIncLDesc": "लेम्मा गतिविधि में गलत",
-    "constructUseIgnLDesc": "लेम्मा गतिविधि में अनदेखा किया गया",
-    "constructUseCorMDesc": "व्याकरण गतिविधि में सही",
-    "constructUseIncMDesc": "व्याकरण गतिविधि में गलत",
-    "constructUseIgnMDesc": "व्याकरण गतिविधि में अनदेखा किया गया",
-    "constructUseEmojiDesc": "इमोजी गतिविधि में सही",
     "constructUseCollected": "चैट में संग्रहित",
     "constructUseNanDesc": "लागू नहीं",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "टेक्स्ट-टू-स्पीच सक्षम करें",
-    "enableTTSToolDescription": "एप्लिकेशन को आपके लक्षित भाषा में टेक्स्ट-टू-स्पीच आउटपुट बनाने की अनुमति दें।",
     "yourUsername": "आपका उपयोगकर्ता नाम",
     "yourEmail": "आपका ईमेल",
     "iWantToLearn": "मैं सीखना चाहता हूँ",
@@ -3398,31 +2876,12 @@
     "whatIsTheMorphTag": "'{wordForm}' का {morphologicalFeature} क्या है?",
     "dataAvailable": "डेटा उपलब्धता",
     "available": "उपलब्ध",
-    "pangeaBotIsFallible": "पांगेआ बॉट भी गलतियाँ करता है!",
-    "whatIsMeaning": "'{lemma}' का अर्थ क्या है?",
     "chooseLemmaMeaningInstructionsBody": "संदेश में शब्दों के साथ अर्थ मिलाएँ!",
-    "doubleClickToEdit": "संपादित करने के लिए डबल-क्लिक करें।",
-    "activityPlannerTitle": "गतिविधि योजनाकार",
-    "topicLabel": "विषय",
-    "topicPlaceholder": "एक विषय चुनें...",
-    "modeLabel": "गतिविधि प्रकार",
-    "modePlaceholder": "एक मोड चुनें...",
-    "learningObjectiveLabel": "अधिगम उद्देश्य",
-    "learningObjectivePlaceholder": "एक अधिगम उद्देश्य चुनें...",
-    "languageOfInstructionsLabel": "गतिविधि निर्देशों की भाषा",
-    "targetLanguageLabel": "लक्षित भाषा",
     "cefrLevelLabel": "CEFR स्तर",
-    "generateActivitiesButton": "गतिविधि बनाएं",
-    "launchActivityButton": "गतिविधि शुरू करें",
     "image": "छवि",
     "video": "वीडियो",
     "nan": "लागू नहीं",
-    "activityPlannerOverviewInstructionsBody": "एक विषय, मोड, सीखने का उद्देश्य चुनें और चैट के लिए एक गतिविधि बनाएं!",
-    "activityTitle": "गतिविधि का शीर्षक",
-    "addVocabulary": "शब्दावली जोड़ें",
     "instructions": "निर्देश",
-    "numberOfLearners": "सीखने वालों की संख्या",
-    "mustBeInteger": "यह एक पूर्णांक होना चाहिए जैसे 1, 2, 3, ...",
     "constructUsePvmDesc": "आवाज संदेश में उत्पादित",
     "leaveSpaceDescription": "कोर्स छोड़ने पर, आप इसमें सभी चैट छोड़ देंगे। अन्य उपयोगकर्ता देखेंगे कि आपने कोर्स छोड़ दिया है।",
     "constructUseCorMmDesc": "सही संदेश का अर्थ",
@@ -3437,7 +2896,6 @@
     "ttsDisabledBody": "आप अपने सीखने की सेटिंग्स में टेक्स्ट-टू-स्पीच सक्षम कर सकते हैं",
     "noSpaceDescriptionYet": "अभी तक कोई कोर्स विवरण नहीं बनाया गया है।",
     "tooLargeToSend": "यह संदेश भेजने के लिए बहुत बड़ा है",
-    "exitWithoutSaving": "क्या आप सुनिश्चित हैं कि आप बिना सहेजे छोड़ना चाहते हैं?",
     "enableAutocorrectPopupTitle": "अपनी लक्षित भाषा की कीबोर्ड जोड़ने के लिए जाएं:",
     "enableAutocorrectPopupSteps": "  • सेटिंग्स\n  • सामान्य\n  • कीबोर्ड\n  • कीबोर्ड्स\n  • नया कीबोर्ड जोड़ें",
     "enableAutocorrectPopupDescription": "एक बार भाषा का चयन करने के बाद, आप अपने कीबोर्ड के नीचे बाएं कोने में छोटे ग्लोब आइकन पर क्लिक कर सकते हैं ताकि नए इंस्टॉल किए गए कीबोर्ड को सक्रिय किया जा सके।",
@@ -3448,11 +2906,8 @@
     "displayName": "प्रदर्शन नाम",
     "leaveRoomDescription": "आप इस चैट को छोड़ने वाले हैं। अन्य उपयोगकर्ता देखेंगे कि आपने चैट छोड़ दी है।",
     "confirmUserId": "कृपया अपना पांगेआ चैट उपयोगकर्ता नाम की पुष्टि करें ताकि आपना खाता हटा सकें।",
-    "startingToday": "आज से शुरू",
-    "oneWeekFreeTrial": "एक सप्ताह मुफ्त परीक्षण",
     "paidSubscriptionStarts": "{startDate} से शुरू",
     "cancelInSubscriptionSettings": "• सदस्यता सेटिंग्स में कभी भी रद्द करें",
-    "cancelToAvoidCharges": "• शुल्क से बचने के लिए {trialEnds} से पहले रद्द करें",
     "downloadGboard": "Gboard डाउनलोड करें",
     "autocorrectNotAvailable": "दुर्भाग्यवश, आपका प्लेटफ़ॉर्म इस सुविधा के लिए वर्तमान में समर्थित नहीं है। आगे के विकास के लिए जुड़े रहें!",
     "pleaseUpdateApp": "कृपया ऐप को अपडेट करें ताकि आप जारी रख सकें।",
@@ -3462,19 +2917,12 @@
     "knockSpaceSuccess": "आपने इस कोर्स में शामिल होने का अनुरोध किया है! जब उन्हें यह प्राप्त होगा तो एक व्यवस्थापक आपकी प्रतिक्रिया देगा 😄",
     "chooseWordAudioInstructionsBody": "पूर्ण संदेश सुनें। फिर ऑडियो को शब्दों के साथ मिलाएं।",
     "chooseMorphsInstructionsBody": "व्याकरण प्रश्नों के लिए पज़ल टुकड़ों पर क्लिक करें!",
-    "pleaseEnterInt": "कृपया एक संख्या दर्ज करें",
     "home": "होम",
     "join": "शामिल हों",
-    "readingAssistanceOverviewBody": "मिनी-खेलों के लिए नीचे दिए गए बटनों पर क्लिक करें, जैसे इमोजी, ऑडियो, शब्द अर्थ, और व्याकरण अवधारणाओं का मिलान। या किसी भी शब्द पर क्लिक करें विवरण के लिए।",
     "resetInstructionTooltipsTitle": "निर्देश टूलटिप्स रीसेट करें",
     "resetInstructionTooltipsDesc": "कृपया निर्देश टूलटिप्स दिखाने के लिए क्लिक करें जैसे कि एक नए उपयोगकर्ता के लिए।",
-    "randomize": "यादृच्छिक करें",
     "clear": "साफ़ करें",
-    "makeYourOwnActivity": "अपनी खुद की गतिविधि बनाएं",
-    "featuredActivities": "विशेषताएँ",
     "save": "सहेजें",
-    "startChat": "चैट शुरू करें",
-    "translationProblem": "अनुवाद समस्या",
     "askToJoin": "शामिल होने के लिए पूछें",
     "emptyChatWarningTitle": "चैट खाली है",
     "emptyChatWarningDesc": "आपने अपने चैट में किसी को आमंत्रित नहीं किया है। संपर्क या बॉट को आमंत्रित करने के लिए चैट सेटिंग्स पर जाएं। आप इसे बाद में भी कर सकते हैं।",
@@ -3504,17 +2952,13 @@
     "timesUsedIndependently": "स्वतंत्र रूप से उपयोग किए गए समय",
     "timesUsedWithAssistance": "सहायता के साथ उपयोग किए गए समय",
     "shareInviteCode": "आमंत्रण कोड साझा करें: {code}",
-    "leaderboard": "लीडरबोर्ड",
     "skipForNow": "अभी के लिए छोड़ें",
     "permissions": "अनुमतियां",
     "spaceChildPermission": "यह कोर्स में नए चैट जोड़ने वाला कौन है",
-    "addEnvironmentOverride": "पर्यावरण ओवरराइड जोड़ें",
     "defaultOption": "डिफ़ॉल्ट",
     "deleteChatDesc": "क्या आप सुनिश्चित हैं कि आप इस चैट को हटाना चाहते हैं? यह सभी प्रतिभागियों के लिए हटा दिया जाएगा और चैट के सभी संदेश अब अभ्यास या सीखने के विश्लेषण के लिए उपलब्ध नहीं होंगे।",
     "deleteSpaceDesc": "कोर्स और कोई भी चयनित चैट सभी प्रतिभागियों के लिए हटा दी जाएगी और चैट के सभी संदेश अब अभ्यास या सीखने के विश्लेषण के लिए उपलब्ध नहीं होंगे। इस क्रिया को पूर्ववत नहीं किया जा सकता।",
     "launch": "लॉन्च करें",
-    "searchChats": "चैट खोजें",
-    "maxFifty": "अधिकतम 50",
     "configureSpace": "कोर्स कॉन्फ़िगर करें",
     "pinMessages": "संदेश पिन करें",
     "setJoinRules": "सदस्यता नियम सेट करें",
@@ -3527,7 +2971,6 @@
     "announcements": "घोषणाएँ",
     "activities": "गतिविधियाँ",
     "access": "पहुँच",
-    "activitySuggestionTimeoutMessage": "हम आपके लिए और गतिविधियाँ बनाने में मेहनत कर रहे हैं, कृपया एक मिनट में वापस जांचें",
     "howSpaceCanBeFound": "यह कोर्स कैसे पाया जा सकता है",
     "private": "निजी",
     "cannotBeFoundInSearch": "खोज में नहीं मिल सकता",
@@ -3549,9 +2992,6 @@
     "failedToFetchTranscription": "ट्रांसक्रिप्शन प्राप्त करने में विफल",
     "deleteEmptySpaceDesc": "कोर्स सभी प्रतिभागियों के लिए हटा दिया जाएगा। यह क्रिया पूर्ववत नहीं की जा सकती।",
     "regenerate": "पुनः उत्पन्न करें",
-    "mySavedActivities": "मेरी सहेजी गई गतिविधियां",
-    "noSavedActivities": "कोई सहेजी गई गतिविधि नहीं",
-    "saveActivity": "इस गतिविधि को सहेजें",
     "failedToPlayVideo": "वीडियो चलाने में विफल",
     "done": "पूर्ण",
     "inThisSpace": "इस कोर्स में",
@@ -3562,18 +3002,10 @@
     "numInvited": "{count} आमंत्रित",
     "saved": "सहेजा गया",
     "reset": "रीसेट करें",
-    "errorGenerateActivityMessage": "गतिविधि बनाने में विफल",
-    "errorRegenerateActivityMessage": "गतिविधि पुनः बनाने में विफल",
-    "errorLaunchActivityMessage": "गतिविधि शुरू करने में विफल",
-    "errorFetchingActivitiesMessage": "गतिविधियों को प्राप्त करने में विफल",
     "errorFetchingDefinition": "परिभाषा प्राप्त करने में विफल",
     "errorProcessAnalytics": "विश्लेषण प्रक्रिया में विफल",
     "errorDownloading": "डाउनलोड विफल",
-    "errorLoadingSpaceChildren": "इस कोर्स के चैट लोड करने में विफल",
-    "unexpectedError": "अप्रत्याशित त्रुटि।",
-    "pleaseReload": "कृपया पुनः लोड करें और पुनः प्रयास करें।",
     "translationError": "अनुवाद त्रुटि",
-    "errorFetchingActivity": "गतिविधि प्राप्त करने में विफल",
     "check": "जांचें",
     "unableToFindRoom": "उस कोड के साथ कोई चैट या कोर्स नहीं मिला। कृपया पुनः प्रयास करें।",
     "numCompletedActivities": "पूर्ण की गई गतिविधियों की संख्या",
@@ -3581,23 +3013,14 @@
     "request": "अनुरोध",
     "requestAll": "सभी का अनुरोध करें",
     "confirmMessageUnpin": "क्या आप सुनिश्चित हैं कि आप इस संदेश को अनपिन करना चाहते हैं?",
-    "createActivityPlan": "एक नई गतिविधि योजना बनाएं",
-    "saveAndLaunch": "सहेजें और शुरू करें",
-    "launchToSpace": "कोर्स में लॉन्च करें",
-    "numberOfActivities": "गतिविधि सत्रों की संख्या",
-    "maximumActivityParticipants": "प्रत्येक गतिविधि में अधिकतम {count} प्रतिभागी हो सकते हैं।",
     "pending": "लंबित",
     "inactive": "निष्क्रिय",
-    "confirmRole": "भूमिका की पुष्टि करें",
     "openRoleLabel": "खुली",
-    "joinedTheActivity": "👋 {username} ने {role} के रूप में भाग लिया",
     "finishedTheActivity": "🎯 {username} ने इस गतिविधि को पूरा किया",
     "activitySummaryError": "गतिविधि सारांश उपलब्ध नहीं है",
     "requestSummaries": "सारांश अनुरोध करें",
-    "generatingNewActivities": "आप इस भाषा जोड़े के पहले उपयोगकर्ता हैं! कृपया एक मिनट दें, हम आपके लिए गतिविधियों की तैयारी कर रहे हैं।",
     "requestAccessTitle": "विश्लेषण पहुंच का अनुरोध करें?",
     "requestAccessDesc": "क्या आप प्रतिभागियों के विश्लेषण देखने के लिए पहुंच का अनुरोध करना चाहेंगे?\n\nयदि प्रतिभागी सहमत हैं, तो इस कोर्स के व्यवस्थापक उनकी देख सकेंगे:\n    • कुल शब्दावली\n    • कुल व्याकरण अवधारणाएँ\n    • कुल गतिविधि सत्र पूरे किए गए\n    • उपयोग किए गए विशिष्ट व्याकरण अवधारणाएँ, सही और गलत\n\nवे अपनी देख नहीं सकेंगे:\n    • कोर्स के बाहर चैट में संदेश\n    • शब्दावली सूची",
-    "requestAccess": "अनुरोध करें ({count})",
     "analyticsInactiveTitle": "निष्क्रिय उपयोगकर्ताओं को अनुरोध नहीं भेजा जा सका",
     "analyticsInactiveDesc": "निष्क्रिय उपयोगकर्ता जिन्होंने इस सुविधा के शुरू होने के बाद लॉग इन नहीं किया है, वे आपका अनुरोध नहीं देखेंगे।\n\nजैसे ही वे वापस आएंगे, अनुरोध बटन दिखाई देगा। आप बाद में उनके नाम के नीचे अनुरोध बटन पर क्लिक करके पुनः अनुरोध भेज सकते हैं।",
     "accessRequestedTitle": "विश्लेषण पहुंच का अनुरोध",
@@ -3606,7 +3029,6 @@
     "lastUpdated": "अद्यतन\n{time}",
     "activityFinishedMessage": "सभी समाप्त!",
     "endForAll": "सभी के लिए समाप्त करें",
-    "newCourse": "नई कोर्स",
     "numModules": "{num} मॉड्यूल",
     "coursePlan": "कोर्स योजना",
     "editCourseLater": "आप बाद में टेम्पलेट का शीर्षक, विवरण और कोर्स छवि संपादित कर सकते हैं।",
@@ -3620,8 +3042,6 @@
     "accessDesc": "आप अपने कोर्स को दुनिया के लिए खोल सकते हैं! या, अपने कोर्स को निजी और सुरक्षित बना सकते हैं।",
     "createGroupChatDesc": "जहां गतिविधि सत्र शुरू और समाप्त होते हैं, वहीं समूह चैट नियमित संचार के लिए खुली रहेगी।",
     "deleteDesc": "केवल व्यवस्थापक ही कोर्स हटा सकते हैं। यह एक विनाशकारी क्रिया है जो सभी उपयोगकर्ताओं को हटा देती है और कोर्स के भीतर सभी चुनी गई चैट को हटा देती है। सावधानी से आगे बढ़ें।",
-    "noCourseFound": "अरे, इस कोर्स के लिए एक योजना की आवश्यकता है!\n\nकोर्स योजनाएँ विषयों और बातचीत गतिविधियों का एक क्रम हैं।",
-    "additionalParticipants": "+ {num} अन्य",
     "whatNow": "अब क्या?",
     "chooseNextActivity": "अपनी अगली गतिविधि चुनें!",
     "letsGo": "चलो शुरू करें",
@@ -3631,19 +3051,16 @@
     "pingParticipants": "कोर्स प्रतिभागियों को पिंग करें",
     "playWithBot": "पांगेआ बॉट के साथ खेलें",
     "inviteFriends": "मित्रों को आमंत्रित करें",
-    "waitNotDone": "रुको, मैं अभी पूरा नहीं किया हूँ!",
+    "waitNotDone": "रुको, मैं अभी खत्म नहीं हुआ हूँ!",
     "waitingForOthersToFinish": "बाकियों के समाप्त होने का इंतजार कर रहा हूँ...",
     "generatingSummary": "चैट का विश्लेषण कर रहे हैं और परिणाम उत्पन्न कर रहे हैं",
-    "findCourse": "कोर्स खोजें",
     "pingParticipantsNotification": "{user} गतिविधि सत्र में शामिल होने के लिए उपयोगकर्ताओं की तलाश कर रहा है {room}",
     "course": "कोर्स",
     "courses": "कोर्स",
     "goToCourse": "कोर्स पर जाएं: {course}",
     "activityComplete": "यह गतिविधि पूरी हो गई है। गतिविधि का सारांश नीचे उपलब्ध होना चाहिए।",
-    "startNewSession": "नई सत्र शुरू करें",
     "joinOpenSession": "खुले सत्र में शामिल हों",
     "activityNotFound": "गतिविधि नहीं मिली",
-    "levelUp": "स्तर बढ़ाएँ",
     "myActivities": "मेरी गतिविधियाँ",
     "openToJoin": "शामिल होने के लिए खुला",
     "results": "परिणाम",
@@ -3685,7 +3102,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-04-03 12:22:33.474047",
+    "@@last_modified": "2026-08-05 11:42:12.375837",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -3751,26 +3168,6 @@
         "placeholders": {}
     },
     "@checkList": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
-    "@globalChatId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibility": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibilityDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3850,14 +3247,6 @@
             }
         }
     },
-    "@usersMustKnock": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noOneCanJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knock": {
         "type": "String",
         "placeholders": {}
@@ -3882,31 +3271,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@searchChatsRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@nothingFound": {
         "type": "String",
         "placeholders": {}
     },
     "@groupName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupAndInviteUsers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupCanBeFoundViaSearch": {
         "type": "String",
         "placeholders": {}
     },
@@ -3962,23 +3331,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@publicChatAddresses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@joinSpace": {
         "type": "String",
         "placeholders": {}
     },
     "@publicSpaces": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -4018,28 +3375,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "@sendReadReceipts": {
         "type": "String",
         "placeholders": {}
@@ -4057,14 +3392,6 @@
         "placeholders": {}
     },
     "@formattedMessagesDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUser": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -4257,22 +3584,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -4328,10 +3639,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -4341,10 +3648,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -4420,27 +3723,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -4758,10 +4045,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4771,10 +4054,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4862,14 +4141,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4886,10 +4157,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4902,15 +4169,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5062,14 +4321,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -5083,14 +4334,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6261,10 +5504,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6317,19 +5556,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
     },
     "@practice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@speechToTextBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6356,10 +5587,6 @@
             }
         }
     },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
         "placeholders": {}
@@ -6369,10 +5596,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -6389,10 +5612,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6436,1078 +5655,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@grammarCopyPOSsconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnum": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSverb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaffix": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpunct": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSspace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSsym": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSdet": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpron": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpropn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSintj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERfem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON2": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEqest": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTperf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEobl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEact": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEbrck": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERmasc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEmod": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadverbial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMdigit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnot_proper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEcard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEprop": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEdash": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEsemi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODcnd": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEacc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpast": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcolo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON3": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEinterrogative": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEinfm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEtim": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadnomial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTprog": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMcomplementive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEfut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpres": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERneut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfinalEnding": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEdem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEquot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMger": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEgen": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdef": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEins": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMinf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlong": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEloc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErelativeCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEexcl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON1": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEini": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERperson": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGNyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEvoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEverbType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEprepCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEnumType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnounType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXreflex": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEpronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEpunctSide": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMverbForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERgender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODmood": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTaspect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEpunctType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEtense": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEdegree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEpolite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadvType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumber": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEconjType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpolarity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdefinite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOCvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCMPLcmpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODjus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXrflx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPCspc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpqp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEnshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEmid": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTRELintRel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUnknown": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTevident": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumberPsor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECThab": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEess": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtra": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEequ": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEerg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEben": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcoord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEcons": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTnfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODopt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODadm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODdes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODnec": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODpot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODprp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODqot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMword": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMroman": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMletter": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEmult": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEfrac": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEsets": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPErange": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEdist": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERtri": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERpauc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpa": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON0": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON4": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEform": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEelev": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEhumb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEemp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEexc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintRelPronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEaor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEeps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprosp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMconv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMvnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEantip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcauVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICedir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinvVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcpVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOOD": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITY": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEX": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPC": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTREL": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUNKNOWN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSOR": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintrel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEdir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@other": {
         "type": "String",
         "placeholders": {}
@@ -7520,19 +5667,7 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -7600,70 +5735,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@constructUseCollected": {
         "type": "String",
         "placeholders": {}
@@ -7682,14 +5753,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7866,71 +5929,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
         "type": "String",
         "placeholders": {}
     },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7946,27 +5949,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -8030,10 +6013,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -8074,14 +6053,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -8093,14 +6064,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -8138,19 +6101,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
     },
     "@join": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@readingAssistanceOverviewBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -8162,31 +6117,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@makeYourOwnActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -8310,10 +6245,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -8323,10 +6254,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -8343,14 +6270,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -8399,10 +6318,6 @@
         "placeholders": {}
     },
     "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitySuggestionTimeoutMessage": {
         "type": "String",
         "placeholders": {}
     },
@@ -8494,18 +6409,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -8554,22 +6457,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -8582,23 +6469,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8637,30 +6508,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
@@ -8669,24 +6516,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@confirmRole": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -8704,10 +6536,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -8715,14 +6543,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -8764,10 +6584,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -8827,18 +6643,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -8891,10 +6695,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -8921,10 +6721,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -9105,7 +6901,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "कल फिर से जांचें गतिविधि अपडेट के लिए।",
-    "activityDropdownDesc": "जब आप इस गतिविधि को पूरा कर लें, तो नीचे क्लिक करें",
     "languageMismatchTitle": "भाषा मेल नहीं खाती",
     "languageMismatchDesc": "आपकी लक्षित भाषा इस गतिविधि की भाषा से मेल नहीं खाती। क्या आप अपनी लक्षित भाषा अपडेट करना चाहेंगे?",
     "reportWordIssueTooltip": "शब्द जानकारी समस्या रिपोर्ट करें",
@@ -9118,10 +6913,6 @@
     "selectAll": "सभी चुनें",
     "deselectAll": "सभी अनचुनें",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9170,17 +6961,11 @@
         "placeholders": {}
     },
     "startOwn": "अपना खुद का शुरू करें",
-    "joinCourseDesc": "प्रत्येक कोर्स में 8-10 अनुक्रमित विषय होते हैं जिनके साथ कार्य-आधारित भाषा सीखने की गतिविधियों की श्रृंखला होती है।",
     "newMessageInPangeaChat": "💬 पांगेआ चैट में नया संदेश",
     "shareCourse": "कोर्स साझा करें",
     "addCourse": "कोर्स जोड़ें",
-    "joinPublicCourse": "सार्वजनिक कोर्स में शामिल हों",
     "vocabLevelsDesc": "यहां वे शब्द जाएंगे जब आप उन्हें स्तर देंगे!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9193,10 +6978,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9215,12 +6996,9 @@
     "emojiView": "इमोजी दृश्य",
     "feedbackDialogDesc": "मैं भी गलतियाँ करता हूँ! मुझे सुधारने में मदद करने के लिए कुछ है?",
     "contactHasBeenInvitedToTheCourse": "संपर्क को पाठ्यक्रम में आमंत्रित किया गया है",
-    "activityStatsButtonTooltip": "गतिविधि जानकारी",
     "allow": "अनुमति दें",
     "deny": "अस्वीकृत करें",
     "enabledRenewal": "सदस्यता नवीनीकरण सक्षम करें",
-    "subscriptionEndsOn": "सदस्यता समाप्त होती है",
-    "subscriptionRenewsOn": "सदस्यता नवीनीकरण होती है",
     "waitForSubscriptionChanges": "आपकी सदस्यता में परिवर्तन ऐप में परिलक्षित होने में कुछ समय ले सकते हैं।",
     "subscribeReadingAssistance": "संदेश उपकरणों को अनलॉक करने के लिए सदस्यता लें",
     "aceDisplayName": "अचिनीज़",
@@ -9486,10 +7264,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -9499,14 +7273,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10425,14 +8191,8 @@
         "placeholders": {}
     },
     "introChatTitle": "परिचय चैट बनाएं",
-    "introChatDesc": "इस स्थान में कोई भी पोस्ट कर सकता है।",
     "announcementsChatTitle": "घोषणाएँ चैट",
-    "announcementsChatDesc": "केवल स्थान प्रशासक पोस्ट कर सकता है।",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10440,13 +8200,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "खुले सत्र ({num})",
     "inProgressActivitiesTitle": "अब हो रहा है ({num})",
-    "completedActivitiesTitle": "पूरा हुआ ({num})",
     "pickDifferentActivity": "एक अलग गतिविधि चुनें",
     "inOngoingActivity": "आपके पास एक चल रही गतिविधि है!",
     "@notStartedActivitiesTitle": {
@@ -10458,14 +8213,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10531,15 +8278,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "आपने {lemma} के लिए इमोजी सेट किया है! हम आगे के अभ्यास गतिविधियों में इस इमोजी का उपयोग करेंगे।",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "साइन इन पूरा होने की प्रतीक्षा कर रहे हैं",
     "ssoDialogDesc": "हमने एक नया टैब खोला है ताकि आप सुरक्षित रूप से साइन इन कर सकें।",
     "ssoDialogHelpText": "🤔 यदि आपने नया टैब नहीं देखा, तो कृपया अपने पॉपअप ब्लॉकर की जांच करें।",
@@ -10570,16 +8308,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "अगले विषय को अनलॉक करने के लिए गतिविधियाँ",
-    "activitiesToUnlockTopicDesc": "अगले पाठ्यक्रम विषय को अनलॉक करने के लिए गतिविधियों की संख्या निर्धारित करें",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "सही शब्दावली परिभाषा अभ्यास",
     "constructUseIncLMDesc": "गलत शब्दावली परिभाषा अभ्यास",
     "constructUseCorLADesc": "सही शब्दावली ऑडियो अभ्यास",
@@ -10587,7 +8315,6 @@
     "constructUseBonus": "शब्दावली अभ्यास के दौरान बोनस",
     "practiceVocab": "शब्दावली का अभ्यास करें",
     "selectMeaning": "अर्थ चुनें",
-    "selectAudio": "मेल खाने वाला ऑडियो चुनें",
     "anotherRound": "एक और राउंड",
     "activitySettingsOverrideWarning": "भाषा और भाषा स्तर गतिविधि योजना द्वारा निर्धारित किया गया है",
     "voice": "स्वर",
@@ -10619,10 +8346,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -10640,25 +8363,15 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "डाउनलोड शुरू किया गया",
     "webDownloadPermissionMessage": "यदि आपका ब्राउज़र डाउनलोड को ब्लॉक करता है, तो कृपया इस साइट के लिए डाउनलोड सक्षम करें।",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "आपकी प्रैक्टिस सत्र की प्रगति सहेजी नहीं जाएगी।",
     "practiceGrammar": "व्याकरण का अभ्यास करें",
     "notEnoughToPractice": "अभ्यास अनलॉक करने के लिए अधिक संदेश भेजें",
     "constructUseCorGCDesc": "सही व्याकरण श्रेणी का अभ्यास",
     "constructUseIncGCDesc": "गलत व्याकरण श्रेणी का अभ्यास",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10700,11 +8413,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "पैंगिया बॉट की आवाज़",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "आपका अनुरोध पाठ्यक्रम प्रशासन को भेज दिया गया है! यदि वे स्वीकृत करते हैं, तो आपको अंदर जाने दिया जाएगा।",
     "@knockDesc": {
         "type": "String",
@@ -10717,16 +8425,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea चैट एक टेक्स्टिंग ऐप है इसलिए सूचनाएँ महत्वपूर्ण हैं!",
-    "enableNotificationsDesc": "सूचनाएँ अनुमति दें",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10755,11 +8453,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "कुछ गलत हो गया है, और हम इसे ठीक करने में कड़ी मेहनत कर रहे हैं। बाद में फिर से जांचें।",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "लेखन सहायता सक्षम करें",
     "autoIGCToolDescription": "लक्षित भाषा में भेजे गए संदेशों को सही करने के लिए स्वचालित रूप से Pangea चैट उपकरण चलाएँ।",
     "@autoIGCToolName": {
@@ -10777,21 +8470,6 @@
     },
     "aboutMeHint": "मेरे बारे में",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "मुहावरा",
-    "grammarCopyPOSphrasalv": "फ्रेज़ल वर्ब",
-    "grammarCopyPOScompn": "संयुक्त",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10830,24 +8508,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "व्याकरण",
-    "spanTypeWordChoice": "शब्द चयन",
     "spanTypeSpelling": "वर्तनी",
     "spanTypePunctuation": "विराम चिह्न",
     "spanTypeStyle": "शैली",
     "spanTypeFluency": "धाराप्रवाहता",
     "spanTypeAccents": "उच्चारण",
     "spanTypeCapitalization": "बड़े अक्षर",
-    "spanTypeCorrection": "सुधार",
     "spanFeedbackTitle": "सुधार समस्या की रिपोर्ट करें",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -10872,10 +8539,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -10888,13 +8551,7 @@
     "longPressToRecordVoiceMessage": "वॉयस संदेश रिकॉर्ड करने के लिए लंबे समय तक दबाएं।",
     "pause": "रोकें",
     "resume": "जारी रखें",
-    "newSubSpace": "नया उप स्थान",
-    "moveToDifferentSpace": "विभिन्न स्थान पर जाएं",
-    "removeFromSpaceDescription": "चैट स्पेस से हटा दी जाएगी लेकिन आपकी चैट सूची में अभी भी दिखाई देगी।",
     "countChats": "{chats} चैट",
-    "spaceMemberOf": "{spaces} का स्पेस सदस्य",
-    "spaceMemberOfCanKnock": "{spaces} का स्पेस सदस्य दस्तक दे सकता है",
-    "donate": "दान करें",
     "startedAPoll": "{username} ने एक मतदान शुरू किया।",
     "poll": "मतदान",
     "startPoll": "मतदान शुरू करें",
@@ -10918,23 +8575,15 @@
     "newStickerPack": "नया स्टिकर पैक",
     "stickerPackName": "स्टिकर पैक का नाम",
     "attribution": "अट्रिब्यूशन",
-    "skipChatBackup": "चैट बैकअप छोड़ें",
-    "skipChatBackupWarning": "क्या आप सुनिश्चित हैं? चैट बैकअप सक्षम किए बिना, यदि आप अपना डिवाइस बदलते हैं तो आप अपने संदेशों तक पहुंच खो सकते हैं।",
-    "loadingMessages": "संदेश लोड हो रहे हैं",
-    "setupChatBackup": "चैट बैकअप सेट करें",
     "noMoreResultsFound": "कोई और परिणाम नहीं मिला",
     "chatSearchedUntil": "चैट {time} तक खोजी गई",
     "federationBaseUrl": "फेडरेशन बेस यूआरएल",
     "clientWellKnownInformation": "क्लाइंट-वेलेन जानकारी:",
     "baseUrl": "बेस यूआरएल",
     "identityServer": "पहचान सर्वर:",
-    "versionWithNumber": "संस्करण: {version}",
     "logs": "लॉग",
-    "advancedConfigs": "उन्नत कॉन्फ़िग्स",
     "advancedConfigurations": "उन्नत कॉन्फ़िगरेशन",
-    "signInWithLabel": "साइन इन करें:",
     "selectAllWords": "ऑडियो में सुनाई देने वाले सभी शब्दों का चयन करें",
-    "joinCourseForActivities": "गतिविधियों को आजमाने के लिए एक पाठ्यक्रम में शामिल हों।",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -10971,18 +8620,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -10990,26 +8627,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -11115,22 +8732,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -11159,19 +8760,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -11179,15 +8768,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11211,12 +8792,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "प्रैक्टिस गतिविधियों को अनलॉक करें",
     "hideEvents": "इवेंट्स छिपाएँ",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11314,21 +8890,11 @@
         "placeholders": {}
     },
     "getStarted": "शुरू करें",
-    "writeAndSpeakWorryFree": "किसी भी समय, कहीं भी Pangea Bot के साथ बिना चिंता के लिखें और बोलें!",
-    "joinLearningCommunities": "अंतरराष्ट्रीय शिक्षण समुदायों में शामिल हों या... अपना खुद का शुरू करें!",
     "playConversationGames": "बॉट, सहपाठियों और नए दोस्तों के साथ बातचीत के खेल खेलें!",
     "jumpIntoConversation": "AI लेखन उपकरणों के साथ पहले दिन से बातचीत में कूदें!",
     "playPersonalizedGames": "अपने शब्दावली और व्याकरण की जरूरतों के अनुसार व्यक्तिगत अभ्यास खेल खेलें!",
     "learnLanguageWhileTexting": "अपने दोस्तों को टेक्स्ट करते समय एक भाषा सीखें!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11348,23 +8914,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "क्या आप जिस व्यक्ति को ढूंढ रहे हैं, उसे नहीं देख पा रहे हैं? उन्हें लर्निंग सेटिंग्स में अपना प्रोफ़ाइल सार्वजनिक करने की आवश्यकता हो सकती है",
     "suggestedVocab": "सुझाए गए शब्दावली",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
     },
     "myGender": "मेरा लिंग",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास गतिविधियाँ अनलॉक करने के लिए अधिक संदेश भेजें।",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11379,8 +8935,6 @@
     "notificationDeviceSubtitle": "उन उपकरणों को देखें और प्रबंधित करें जो आपको पुश सूचनाएँ भेजते हैं।",
     "notificationRuleDM": "प्रत्यक्ष संदेश",
     "notificationRuleDMDescription": "प्रत्यक्ष संदेश कमरों में संदेशों के बारे में उपयोगकर्ता को सूचित करता है।",
-    "notificationRuleCourseAndActivity": "कोर्स और गतिविधि",
-    "notificationRuleCourseAndActivityDescription": "कोर्स, गतिविधियों और चैट में संदेशों के बारे में उपयोगकर्ता को सूचित करता है।",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11405,31 +8959,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableEmailNotifications": "ईमेल सूचनाएँ सक्षम करें",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "joinSpaceOnboardingDesc": "क्लास में हैं? अपना जॉइन कोड यहाँ डालें।",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "ऑटो-हाइलाइट ऑडियो संदेश",
-    "selectAudioMessagesOnPlayDescription": "जब ऑडियो संदेश चलाए जाएं तो स्वचालित रूप से ऑडियो संदेशों को हाइलाइट करें",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11438,7 +8969,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "मैं सीख रहा हूँ...",
     "alreadySpeak": "मैं पहले से ही बोलता हूँ...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -11466,18 +8996,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "इस पाठ्यक्रम में ऐसे विषय हैं जिनमें {input} गतिविधियों से कम हैं। कृपया {minValue} से कम या उसके बराबर एक संख्या दर्ज करें।",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "यहाँ क्लिक करें फिर से साइन इन करने के लिए।",
     "@clickToLogin": {
@@ -11679,6 +9197,116 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "इंटरएक्टिव अनुवाद और व्याकरण जांच, ऑडियो प्लेबैक, व्यक्तिगत अभ्यास व्यायाम, और सीखने के विश्लेषण को अनलॉक करने के लिए सदस्यता लें!",
+    "unlockPracticeActivities": "अभ्यास व्यायाम अनलॉक करें",
+    "noAnalyticsActivitiesAvailable": "वाह, आपने सभी उपलब्ध गतिविधियाँ पूरी कर ली हैं! अधिक अभ्यास व्यायाम अनलॉक करने के लिए और संदेश भेजें।",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "शब्द अर्थ व्यायाम में सही",
+    "constructUseIgnPADesc": "शब्द अर्थ व्यायाम में अनदेखा",
+    "constructUseIncPADesc": "शब्द अर्थ व्यायाम में गलत",
+    "constructUseCorWLDesc": "शब्द सुनने के व्यायाम में सही",
+    "constructUseIncWLDesc": "शब्द सुनने के व्यायाम में गलत",
+    "constructUseIngWLDesc": "शब्द सुनने के व्यायाम में अनदेखा",
+    "constructUseCorHWLDesc": "छिपे हुए शब्द के व्यायाम में सही",
+    "constructUseIncHWLDesc": "छिपे हुए शब्द के व्यायाम में गलत",
+    "constructUseIgnHWLDesc": "छिपे हुए शब्द के व्यायाम में अनदेखा",
+    "constructUseCorLDesc": "लेम्मा व्यायाम में सही",
+    "constructUseIncLDesc": "लेम्मा व्यायाम में गलत",
+    "constructUseIgnLDesc": "लेम्मा व्यायाम में अनदेखा किया गया",
+    "constructUseCorMDesc": "व्याकरण व्यायाम में सही",
+    "constructUseIncMDesc": "व्याकरण व्यायाम में गलत",
+    "constructUseIgnMDesc": "व्याकरण व्यायाम में अनदेखा किया गया",
+    "constructUseEmojiDesc": "इमोजी व्यायाम में सही",
+    "errorFetchingExercise": "व्यायाम प्राप्त करने में विफल",
+    "notificationRuleCourseAndActivity": "कोर्स और गतिविधि",
+    "notificationRuleCourseAndActivityDescription": "कोर्स, गतिविधियों और चैट में संदेशों के बारे में उपयोगकर्ता को सूचित करता है।",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "यहाँ क्लिक करें अपने लक्षित भाषा को अपडेट करने के लिए।",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -11688,5 +9316,1032 @@
     "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
-    }
+    },
+    "visibilityToggleTitle": "अन्य लोगों को आपके पाठ्यक्रम को खोजने की अनुमति दें",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "कभी भी चैट न चूकें!",
+    "enableNotificationsDesc": "Pangea चैट के लिए सूचनाएँ अनुमति दें और अपने भाषा मित्रों के साथ जुड़े रहें!",
+    "enableNotifications": "सूचनाएँ अनुमति दें",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "आप खुद को ब्लॉक नहीं कर सकते",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "उपयोगकर्ता नाम ब्लॉक करें",
+    "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "संदेश बबल पर क्लिक करें ताकि आप इसे चुन सकें",
+    "writingAssistanceTutorialIGCButton": "अपने संदेश को लिखने के बाद, लेखन सहायता शुरू करने के लिए इस बटन पर क्लिक करें",
+    "selectModeTutorialTranslate": "संदेश का अनुवाद करने के लिए यहां क्लिक करें",
+    "selectModeTutorialAudio": "संदेश सुनने के लिए यहां क्लिक करें",
+    "selectModeTutorialExit": "चैटिंग पर वापस जाने के लिए पृष्ठभूमि पर क्लिक करें",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "लेखन सहायता अपेक्षा से थोड़ा अधिक समय ले रही है। एक सेकंड में फिर से प्रयास करें!",
+    "@errorTryAgainSoon": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "अरे, कुछ गलत हो गया… हम इसे देख रहे हैं! कृपया बाद में फिर से प्रयास करें।",
+    "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "सभी स्वीकार करें",
+    "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "इस उपयोगकर्ता के अनुमति स्तर को कम करने से व्यवस्थापक विशेषाधिकार हटा दिए जाएंगे।",
+    "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "यह मोड आपको शब्दों के साथ इमोजी सेट करने की अनुमति देता है! एक शब्द चुनें जिससे आप एक इमोजी को जोड़ना चाहते हैं!",
+    "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "आपके द्वारा एकत्र किए गए शब्द यहाँ आएंगे। कुछ कमाने के लिए बातचीत करना और इंटरैक्ट करना शुरू करें!",
+    "vocabLevelsDescSeed": "यहाँ नए शब्द दिखाई देंगे!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "अधिक विकल्प",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "शब्दों का चयन करें ताकि उनके बारे में अधिक जान सकें",
+    "requireAnalyticsAccessTitle": "शामिल होने के लिए एनालिटिक्स एक्सेस की आवश्यकता है",
+    "requireAnalyticsAccessDesc": "भागीदारों को इस पाठ्यक्रम में शामिल होने के लिए अपने शिक्षण एनालिटिक्स तक पहुंच प्रदान करनी होगी",
+    "analyticsAccessNoticeTitle": "एनालिटिक्स एक्सेस आवश्यक",
+    "analyticsAccessNoticeDesc": "इस पाठ्यक्रम में शामिल होकर, आप प्रशासकों को अपने शिक्षण एनालिटिक्स तक पहुंच प्रदान करने के लिए सहमत होते हैं।",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "कृपया नीचे एक पूर्वनिर्धारित भूमिका चुनें या एक कस्टम अनुमति स्तर दर्ज करें। 0 और 100 के बीच एक पूर्ण संख्या चुनें।",
+    "reportContentIssue": "सामग्री समस्या की रिपोर्ट करें",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "कृपया मान्य आधार और लक्ष्य भाषाएँ चुनें",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "मैं Pangea Chat का उपयोग करता हूँ",
+    "teach": "सिखाना",
+    "courseCodeStepTitle": "क्या आपके पास एक पाठ्यक्रम आमंत्रण कोड है?",
+    "courseCodeStepHint": "शामिल होने के लिए कोड डालें",
+    "courseCodeStepSkip": "मेरे पास कोड नहीं है",
+    "joinedCourseStepTitle": "स्वागत है!",
+    "pickLanguageTeacherStepTitle": "आप किस भाषा को सिखा रहे हैं?",
+    "pickCefrLevelTeacherStepTitle": "आप किस स्तर को सिखाते हैं?",
+    "pickCefrLevelStudentStepTitle": "आप किस स्तर पर हैं?",
+    "customCourseStepTitle": "कस्टम पाठ्यक्रम प्राप्त करने के लिए यह फॉर्म भरें",
+    "courseCodeStepErrorMessage": "कृपया अपना कोड जांचें और फिर से प्रयास करें",
+    "institution": "संस्थान",
+    "courseGoals": "कोर्स के लक्ष्य",
+    "selectChats": "चैट्स चुनें",
+    "plainTextFile": "पाठ",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "समाप्त ({num})",
+    "suggestion": "सर्वश्रेष्ठ सुझाव चुनें",
+    "completeActivityButton": "मैं तैयार हूँ!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "कृपया नाम की लंबाई 50 अक्षरों या उससे कम तक सीमित करें।",
+    "enterAName": "कृपया एक नाम दर्ज करें।",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "लेखन सहायता",
+    "viewError": "त्रुटि देखें",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "सूचनाएँ प्राप्त करने के लिए Pangea चैट ऐप प्राप्त करें!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "समझ गया!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "{lang} के साथ जारी रखें",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "पूर्ण संदेश इतिहास को डाउनलोड करता है, जिसमें प्रेषक, भेजी गई तारीख, मूल संदेश, भेजा गया संदेश, और उपयोग प्रकार शामिल हैं।",
+    "analyticsDownloadDesc": "चुने गए भाषा के लिए व्यक्तिगत शब्दावली और व्याकरण विश्लेषण डाउनलोड करता है।",
+    "courseAnalyticsDownloadDesc": "साझा विश्लेषण के साथ सभी पाठ्यक्रम प्रतिभागियों के लिए चुने गए भाषा में lemma और व्याकरण उपयोग डाउनलोड करता है।",
+    "cefrLevelMatch": "यह पाठ्यक्रम आपके भाषा स्तर से मेल खाता है",
+    "cefrLevelBelow": "यह पाठ्यक्रम आपके भाषा स्तर से नीचे है।",
+    "cefrLevelAbove": "यह पाठ्यक्रम आपके भाषा स्तर से ऊपर है।",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Pangea बॉट ऑडियो संदेश आवाज़",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "introChatDetails": "नमस्ते कहें! अपने सहपाठियों से परिचय करें, दोस्तों को खोजें, और गतिविधियों के बाहर चैट करें।",
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "यह इमोजी अब \"{word}\" को प्रैक्टिस एक्सरसाइज में दर्शाएगा",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "डेवलपर विकल्प दिखाएँ",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "डेवलपर विकल्पों को चालू करें ताकि ऐप में डाउनलोड विश्लेषण और विस्तृत जानकारी विकल्प दिखाए जा सकें।",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "बॉट के शामिल होने की प्रतीक्षा कर रहे हैं...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "कोर्स प्रशासकों के लिए कोर्स प्रतिभागियों के लिए घोषणाएँ बनाने के लिए एक स्थान। जबकि सभी इस चैनल को देख सकते हैं, केवल प्रशासक इसमें टाइप कर सकते हैं।",
+    "introChatDesc": "कोर्स में कोई भी पोस्ट कर सकता है।",
+    "announcementsChatDesc": "केवल कोर्स प्रशासक ही पोस्ट कर सकते हैं।",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pronunciationTools": "उच्चारण उपकरण",
+    "audioTranscription": "एआई ऑडियो ट्रांसक्रिप्शन",
+    "visualLearnerSupport": "दृश्य शिक्षार्थी समर्थन",
+    "instantWritingTranslation": "तत्काल लेखन अनुवाद",
+    "personalizedPracticeExercises": "व्यक्तिगत अभ्यास व्यायाम",
+    "vocabularyFlashcards": "शब्दावली फ्लैशकार्ड",
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "वापस",
+    "viewCurrentOrFinished": "वर्तमान या समाप्त देखें",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "resizeCoursePanel": "पाठ्यक्रम पैनल का आकार बदलें",
+    "undo": "पूर्ववत करें",
+    "unlock": "अनलॉक करें",
+    "zoomIn": "ज़ूम इन करें",
+    "zoomOut": "ज़ूम आउट करें",
+    "stars": "तारे",
+    "addNewCourse": "नया पाठ्यक्रम जोड़ें",
+    "world": "दुनिया",
+    "addCourseStartMyOwn": "अपना खुद का शुरू करें",
+    "addCourseEnterCode": "निजी पाठ्यक्रम के लिए कोड दर्ज करें",
+    "addCourseBrowsePublic": "सार्वजनिक पाठ्यक्रम ब्राउज़ करें",
+    "browsePublicCourses": "सार्वजनिक पाठ्यक्रम ब्राउज़ करें",
+    "editProfile": "प्रोफ़ाइल संपादित करें",
+    "mapSearchHint": "गतिविधियों की खोज करें",
+    "mapFilterAllLanguages": "सभी भाषाएँ",
+    "mapFilterNotStarted": "शुरू नहीं हुआ",
+    "mapFilterInProgress": "प्रगति पर",
+    "mapFilterCompleted": "पूर्ण",
+    "mapFilterReset": "रीसेट",
+    "activityTypeConversation": "संवाद",
+    "playAgain": "फिर से खेलें",
+    "reviewActivity": "समीक्षा करें",
+    "welcomeToPangeaChat": "Pangea चैट में आपका स्वागत है",
+    "claimTrial": "अपना परीक्षण दावा करें",
+    "thanksForSigningUp": "साइन अप करने के लिए धन्यवाद! यहाँ है",
+    "sevenDaysFree": "7 दिन मुफ्त",
+    "manageTrialInSettings": "किसी भी समय अपने ट्रायल को प्रबंधित करें\nसदस्यता सेटिंग्स में",
+    "noCreditCardRequired": "कोई क्रेडिट कार्ड आवश्यक नहीं है।",
+    "proFeatures": "प्रो",
+    "widenSearch": "खोज को विस्तारित करें",
+    "scrollToBottom": "नीचे स्क्रॉल करें",
+    "courseImage": "कोर्स छवि",
+    "avatarPreview": "अवतार पूर्वावलोकन",
+    "emotePreview": "इमोट पूर्वावलोकन: {name}",
+    "activityLabel": "गतिविधि: {title}",
+    "resetMapView": "मानचित्र दृश्य रीसेट करें",
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signUpWithEmail": "ईमेल के साथ साइन अप करें",
+    "unreadLabel": "अविकृत: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
+    },
+    "writeAndSpeakWorryFree": "किसी भी समय, कहीं भी Pangea Bot के साथ बिना चिंता के लिखें और बोलें!",
+    "joinLearningCommunities": "अंतरराष्ट्रीय शिक्षण समुदायों में शामिल हों, या अपना खुद का शुरू करें!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "चैट सूची बंद करें",
+    "closeChat": "चैट बंद करें",
+    "closeSession": "गतिविधि समीक्षा बंद करें",
+    "closeCourse": "कोर्स बंद करें",
+    "closeCoursePage": "कोर्स पृष्ठ बंद करें",
+    "closeAddCourse": "कोर्स जोड़ें बंद करें",
+    "closeAnalytics": "विश्लेषण बंद करें",
+    "closeVocabulary": "शब्दावली बंद करें",
+    "closeGrammar": "व्याकरण बंद करें",
+    "closePractice": "अभ्यास बंद करें",
+    "closeSettings": "सेटिंग्स बंद करें",
+    "closeActivity": "गतिविधि बंद करें",
+    "closeNamed": "{name} बंद करें",
+    "clearSearch": "खोज साफ करें",
+    "starRowLabel": "{filled} में से {total} सितारे पूरे हो चुके हैं",
+    "difficultyLabel": "कठिनाई: {cefr}",
+    "writingAssistanceTutorialInputBar": "आप किसी भी भाषा में लिख सकते हैं! हम आपकी गलतियों को सुधारने में मदद करेंगे।",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} पृष्ठ",
+    "closeHint": "संकेत बंद करें",
+    "starListLabel": "सहेजे गए गतिविधियाँ और सितारे",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "मतदान को अनुकूलित करें",
+    "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "नेविगेशन विकल्प",
+    "joinedCourseListLabel": "शामिल पाठ्यक्रम सूची",
+    "analyticsAndSettingsLabel": "विश्लेषण और सेटिंग्स विकल्प",
+    "searchActivitiesLabel": "मानचित्र पर गतिविधियों के लिए खोजें",
+    "filteredActivitiesLabel": "फिल्टर की गई गतिविधियों की सूची",
+    "mapZoomLabel": "मानचित्र ज़ूम नियंत्रण",
+    "activityMapLabel": "गतिविधि मानचित्र",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "एस्टोनियाई",
+    "abDisplayName": "अभखाज़ियन",
+    "elDisplayName": "ग्रीक",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} में से {total} सितारे अर्जित किए गए",
+    "activityNoLongerSupported": "यह गतिविधि गतिविधियों के पुराने संस्करण पर चल रही थी और अब समर्थित नहीं है। आप अभी भी इस सत्र में क्या हुआ, इसकी समीक्षा कर सकते हैं।",
+    "activityLoadFailed": "गतिविधि लोड नहीं हो सकी। अपने कनेक्शन की जांच करें और फिर से प्रयास करें।",
+    "levelUpChip": "स्तर {level}!",
+    "missingCourseOutline": "यह पाठ्यक्रम अब उपलब्ध नहीं है",
+    "missingCourseOutlineCta": "यह पाठ्यक्रम अब उपलब्ध नहीं है। एक नया पाठ्यक्रम योजना चुनें।",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "कोर्स जोड़ने का पृष्ठ बंद करें",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "व्याकरण जानकारी समस्या की रिपोर्ट करें",
+    "grammarFeedbackDialogTitle": "व्याकरण जानकारी फीडबैक",
+    "grammarFeedbackSubmittedDesc": "धन्यवाद! आपकी फीडबैक के आधार पर व्याख्या अपडेट की गई है।",
+    "focusOnMap": "मानचित्र पर ध्यान केंद्रित करें",
+    "welcome": "स्वागत है",
+    "courseRequest": "कोर्स अनुरोध",
+    "onboarding": "ऑनबोर्डिंग",
+    "selectImageFromDevice": "डिवाइस से छवि चुनें",
+    "dinoAvatarLabel": "सूरज के चश्मे वाला एक डायनासोर",
+    "bearAvatarLabel": "एक दोस्ताना भालू",
+    "squidAvatarLabel": "हेडफ़ोन पहने एक ऑक्टोपस",
+    "cartoonAvatarLabel": "एक खुश कार्टून पात्र जो लहराता है",
+    "robotAvatarLabel": "आंखों के लिए सितारे वाला एक रोबोट",
+    "featuresIncludeLabel": "विशेषताएँ शामिल हैं",
+    "difficultyListLabel": "कठिनाई सूची",
+    "languageListLabel": "भाषा सूची",
+    "searchedResultsLabel": "'{search}' के लिए खोज परिणाम",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
+    },
+    "coursePermissions": "कोर्स अनुमतियां",
+    "starsToUnlockObjectiveTitle": "प्रति मिशन सितारे",
+    "starsToUnlockObjectiveDesc": "प्रत्येक मिशन को पूरा करने के लिए आवश्यक सितारों की संख्या निर्धारित करें",
+    "maxStarsPerMissionWarning": "इस कोर्स में ऐसे मिशन हैं जहाँ केवल {maxValue} सितारे ही अर्जित किए जा सकते हैं। कृपया {maxValue} से कम या उसके बराबर संख्या दर्ज करें।",
+    "removedFromCourseError": "आपको इस कोर्स से हटा दिया गया है। अपने शिक्षक से संपर्क करें।",
+    "endPractice": "अभ्यास समाप्त करें",
+    "bodyLabel": "{page} विकल्प",
+    "openDM": "सीधा संदेश खोलें",
+    "openNewTab": "नए टैब में खोलें",
+    "viewProfileImageLabel": "प्रोफ़ाइल छवि देखें",
+    "profileImageLabel": "प्रोफ़ाइल छवि",
+    "actionsLabel": "कार्य",
+    "colorListLabel": "रंग सूची",
+    "chatAppearanceStyleLabel": "चुनी गई शैली के साथ चैट का स्वरूप",
+    "volumeLabel": "वॉल्यूम",
+    "listLabel": "{description} सूची",
+    "passwordFormLabel": "पासवर्ड बदलें फ़ॉर्म",
+    "searchLanguagesHint": "भाषाएँ खोजें",
+    "searchCountriesHint": "देश खोजें",
+    "searchVocabHint": "शब्दावली खोजें",
+    "searchUsersHint": "उपयोगकर्ता खोजें",
+    "searchMessagesHint": "संदेश खोजें",
+    "searchChatsHint": "चैट खोजें",
+    "searchActivitiesHint": "गतिविधियाँ खोजें",
+    "appInTargetLanguageTitle": "ऐप को उस भाषा में दिखाएं जो मैं सीख रहा हूँ",
+    "appInTargetLanguageDesc": "इमर्शन के लिए मेन्यू, बटन और लेबल आपकी लक्ष्य भाषा में दिखेंगे। अनुवाद न किया गया टेक्स्ट अंग्रेज़ी में दिखेगा।",
+    "changePasswordSessionExpired": "आपका सत्र समाप्त हो गया है। कृपया फिर से लॉग इन करें।",
+    "constructUseSugDesc": "स्वीकृत सुझाव",
+    "mostPopular": "सबसे लोकप्रिय",
+    "mostSavings": "सबसे ज़्यादा बचत",
+    "enterDiscountCode": "छूट कोड दर्ज करें",
+    "yourPlan": "आपकी योजना",
+    "subscriptionRenewsOn": "{date} को नवीनीकृत होगा",
+    "subscriptionEndsOn": "{date} को समाप्त होगा",
+    "promoSubscription": "प्रचार सदस्यता",
+    "seatSubscription": "संस्थागत सीट",
+    "lifetimeSubscription": "आजीवन सदस्यता",
+    "freeSubscription": "मुफ़्त",
+    "freeTrialDescription": "आपके पास एक मुफ़्त ट्रायल है",
+    "manage": "प्रबंधित करें",
+    "subscriptionHistory": "सदस्यता इतिहास",
+    "history": "इतिहास",
+    "noPaymentHistoryFound": "कोई भुगतान इतिहास नहीं मिला",
+    "cancelAnytime": "सदस्यता सेटिंग में कभी भी रद्द करें",
+    "pricePerMonth": "{price}/माह",
+    "pricePerYear": "{price}/वर्ष",
+    "viewSubscriptionOptions": "सदस्यता विकल्प देखें",
+    "apply": "लागू करें",
+    "continueToSubscribe": "सदस्यता लेने के लिए जारी रखें",
+    "invalidDiscountCode": "अमान्य छूट कोड",
+    "selectDiscountPlan": "छूट योजना चुनें",
+    "discountApplied": "{discount} छूट लागू की गई",
+    "cancelDescriptionWithRenewalDate": "आपकी सदस्यता इसकी नवीनीकरण तिथि ({date}) तक सक्रिय रहेगी, फिर निष्क्रिय हो जाएगी। आप विश्लेषण बरकरार रखेंगे लेकिन प्रो सुविधाओं का उपयोग नहीं कर पाएंगे।",
+    "cancelDescriptionWithoutRenewalDate": "आपकी सदस्यता इसकी नवीनीकरण तिथि तक सक्रिय रहेगी, फिर निष्क्रिय हो जाएगी। आप विश्लेषण बरकरार रखेंगे लेकिन प्रो सुविधाओं का उपयोग नहीं कर पाएंगे।",
+    "change": "बदलें",
+    "deactivateSubscribedAccountWarning": "इससे आपका उपयोगकर्ता खाता निष्क्रिय हो जाएगा और आपकी सदस्यता रद्द हो जाएगी। इसे पूर्ववत नहीं किया जा सकता! क्या आप निश्चित हैं?",
+    "newCourseWithoutTitle": "कोर्स शुरू करें",
+    "newCourseWithTitle": "\"{title}\" शुरू करें",
+    "joinCourseWithTitle": "\"{title}\" से जुड़ें",
+    "searchCoursePlans": "कोर्स प्लान खोजें",
+    "searchPublicCourses": "सार्वजनिक कोर्स खोजें",
+    "closeSearch": "खोज बंद करें",
+    "subscriptionsNotAvailableInApp": "सदस्यताएँ ऐप में नहीं खरीदी जा सकतीं",
+    "subscribeOnTheWeb": "आप pangea.chat पर वेब पर सदस्यता ले सकते हैं",
+    "waitingToFillOneRole": "1 भूमिका भरने की प्रतीक्षा कर रहा है...",
+    "closeArchive": "संग्रह बंद करें",
+    "activityActions": "गतिविधि क्रियाएँ",
+    "ongoing": "जारी है",
+    "emptyInviteSearchHint": "आप जिसे ढूंढ रहे हैं वह नहीं मिल रहा है? उन्हें अपनी प्रोफ़ाइल को खोज में पाए जाने की अनुमति देनी पड़ सकती है। सेटिंग में प्रोफ़ाइल संपादित करें देखें।",
+    "activityPreviewLabel": "गतिविधि का पूर्वावलोकन:",
+    "participantRowLabel": "{total} प्रतिभागियों में से {joined} शामिल हो गए हैं",
+    "ongoingPendingLabel": "दूसरों के शामिल होने की प्रतीक्षा है",
+    "joinableLabel": "शामिल होने योग्य",
+    "inProgressLabel": "पहले पूरा किया गया",
+    "availableLabel": "गतिविधि बनाएँ",
+    "rateActivityTitle": "यह गतिविधि कैसी रही?",
+    "rateActivityCommentHint": "एक टिप्पणी जोड़ें (वैकल्पिक)",
+    "rateActivityCommentRejected": "आपकी टिप्पणी पोस्ट नहीं की जा सकी। इसे फिर से लिखने का प्रयास करें, या बिना टिप्पणी के अपनी रेटिंग सबमिट करें।",
+    "rateActivityThanks": "आपकी प्रतिक्रिया के लिए धन्यवाद!",
+    "activityRatingMeterLabel": "{percent}% सकारात्मक ({count, plural, =1{1 रेटिंग} other{{count} रेटिंग}})",
+    "newActivityBadge": "नया",
+    "exitVocabPracticeSession": "आपकी मौजूदा शब्दावली अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।",
+    "exitGrammarPracticeSession": "आपकी मौजूदा व्याकरण अभ्यास सत्र की प्रगति सहेजी नहीं जाएगी।",
+    "activityFilterButtonsLabel": "स्तर, खिलाड़ी और स्थिति फ़िल्टर बटन",
+    "mapFilterAllLevels": "सभी स्तर",
+    "mapFilterAllPlayers": "सभी खिलाड़ी",
+    "mapFilterAllStatuses": "सभी स्थितियाँ",
+    "mapFiltersShow": "फ़िल्टर दिखाएँ",
+    "mapFiltersHide": "फ़िल्टर छिपाएँ",
+    "mapStatusAvailable": "उपलब्ध",
+    "mapStatusOngoing": "जारी है",
+    "mapStatusWaiting": "प्रतीक्षा कर रहा है",
+    "mapStatusOpenToJoin": "शामिल होने के लिए खुला",
+    "mapMatchesOffscreen": "आपकी दृष्टि से बाहर मैच हैं। उन्हें देखने के लिए ज़ूम आउट करें।",
+    "mapFiltersHideMatches": "आपके फ़िल्टर सभी मैचों को छिपा रहे हैं। उन्हें देखने के लिए खोज का दायरा बढ़ाएँ।",
+    "mapNoSearchMatches": "आपकी खोज से कोई गतिविधि मेल नहीं खाती।",
+    "mapNoActivitiesArea": "इस क्षेत्र में कोई गतिविधि नहीं है।",
+    "practiceSessionTimedOut": "आपकी अभ्यास सत्र {minutes} मिनट तक कोई गतिविधि न होने के बाद समाप्त हो गया।",
+    "autocorrectMobileOnly": "केवल मोबाइल",
+    "autocorrectMobileOnlyWarning": "डिवाइस ऑटोकरेक्ट केवल मोबाइल ऐप पर उपलब्ध है।",
+    "audioSectionTitle": "ऑडियो",
+    "audioWordsToolName": "शब्द",
+    "audioWordsDescription": "किसी शब्द पर टैप करने पर उसका ऑडियो चलाएँ।",
+    "audioChoicesToolName": "विकल्प",
+    "audioChoicesDescription": "अभ्यास गतिविधियों में उत्तर विकल्पों के लिए ऑडियो चलाएँ।",
+    "audioIncomingMessagesToolName": "आने वाले संदेश",
+    "audioIncomingMessagesDescription": "सुनने के अभ्यास के लिए अपनी लक्षित भाषा में प्राप्त संदेशों को स्वचालित रूप से ज़ोर से पढ़ें।",
+    "choosePangeaAvatar": "पेंजिया अवतार चुनें",
+    "readAloudNoVoiceTitle": "{language} की कोई उच्च-गुणवत्ता वाली आवाज़ नहीं मिली",
+    "readAloudNoVoiceDesktopWeb": "यह ब्राउज़र उच्च-गुणवत्ता वाली {language} आवाज़ प्रदान नहीं करता है, इसलिए संदेशों को यहां अच्छी तरह से पढ़ा नहीं जा सकता है। Chrome और Edge में आमतौर पर उच्च-गुणवत्ता वाली आवाज़ें शामिल होती हैं।",
+    "readAloudGetChrome": "Chrome प्राप्त करें",
+    "readAloudNoVoiceMobileWeb": "यह ब्राउज़र उच्च-गुणवत्ता वाली {language} आवाज़ प्रदान नहीं करता है, इसलिए संदेशों को यहां अच्छी तरह से पढ़ा नहीं जा सकता है। Pangea Chat ऐप आपके डिवाइस की सबसे अच्छी आवाज़ों का उपयोग कर सकता है।",
+    "readAloudGetApp": "ऐप प्राप्त करें",
+    "readAloudNoVoiceIOS": "आपके डिवाइस में अभी तक उच्च-गुणवत्ता वाली {language} आवाज़ डाउनलोड नहीं हुई है। एक डाउनलोड करें, फिर से प्रयास करें:",
+    "readAloudNoVoiceIOSSteps": "  • सेटिंग्स\n  • एक्सेसिबिलिटी\n  • बोले गए कंटेंट\n  • आवाज़ें\n  • {language}\n  • एक एन्हांस्ड या प्रीमियम आवाज़ डाउनलोड करें",
+    "readAloudNoVoiceAndroid": "आपके डिवाइस में अभी तक उच्च-गुणवत्ता वाली {language} आवाज़ नहीं है। अपने टेक्स्ट-टू-स्पीच इंजन के लिए आवाज़ डेटा इंस्टॉल करें, फिर से प्रयास करें।",
+    "readAloudOpenVoiceSettings": "आवाज़ सेटिंग्स खोलें",
+    "streamingSttDegradedLiveBanner": "लाइव ट्रांसक्रिप्शन एक बैकअप सेवा पर चल रहा है। गुणवत्ता भिन्न हो सकती है, कृपया टेक्स्ट जांचें।",
+    "streamingSttDegradedToBatchBanner": "लाइव ट्रांसक्रिप्शन अभी अनुपलब्ध है। आपका संदेश बिना लाइव संपादन के, मानक तरीके से ट्रांसक्रिप्ट किया गया था। हम इसे बहाल करने के लिए काम कर रहे हैं।",
+    "streamingSttLanguageUnsupportedBanner": "इस भाषा के लिए लाइव ट्रांसक्रिप्शन अभी उपलब्ध नहीं है। हम इस पर काम कर रहे हैं।",
+    "formLabel": "{name} फ़ॉर्म",
+    "botDisplayName": "पंगिया बॉट",
+    "supportDisplayName": "सहायता",
+    "explorePlayAndLearn": "खोजें, खेलें और सीखें",
+    "conversationFromDayOne": "पहले दिन से बातचीत",
+    "builtForConnection": "कनेक्शन के लिए बनाया गया",
+    "aiWhenYouNeedIt": "जब आपको ज़रूरत हो, तब AI",
+    "practiceTailoredForYou": "आपके लिए तैयार किया गया अभ्यास"
 }

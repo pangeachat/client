@@ -3,6 +3,18 @@ name: Pull Request Workflow
 on:
   pull_request:
   merge_group:
+  # Native builds (APK, iOS) run here on merge, not on every PR push. This also
+  # warms the default-branch cache scope that PR web builds restore the Rust
+  # target/debug from. See ci.instructions.md.
+  push:
+    branches:
+      - main
+
+# Cancel superseded runs when a PR is pushed to repeatedly; let merge_group and
+# main-push runs finish (they gate merges and warm caches).
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 permissions:
   contents: read
@@ -10,11 +22,23 @@ permissions:
 jobs:
   code_tests:
     runs-on: ubuntu-latest
+    environment: staging
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: ./scripts/generate-locale-config.sh
       - run: git diff --exit-code
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - name: Ensure .fvmrc and CI Flutter version agree
+        # The FVM pin (.fvmrc) is what developers' local toolchains use, and
+        # FLUTTER_VERSION (versions.env) is what CI uses. They must be the same
+        # version, otherwise the dart-format gate goes red on unrelated files.
+        run: |
+          FVMRC_VERSION=$(grep -oP '"flutter"\s*:\s*"\K[^"]+' .fvmrc)
+          if [ "$FVMRC_VERSION" != "$FLUTTER_VERSION" ]; then
+            echo "::error::.fvmrc pins Flutter '$FVMRC_VERSION' but versions.env pins '$FLUTTER_VERSION'. Update both to the same version."
+            exit 1
+          fi
+          echo "Flutter version pin is consistent across .fvmrc and CI: $FLUTTER_VERSION"
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
@@ -29,12 +53,46 @@ jobs:
         run: dart run license_checker check-licenses -c licenses.yaml --problematic
       - run: flutter analyze
       - name: Add Firebase Messaging
-        run: ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+          GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter analyze
-      - run: flutter test
+      - run: flutter test --dart-define=TEST_MATRIX_USERNAME=${{ vars.TEST_MATRIX_USERNAME }} --dart-define=TEST_MATRIX_PASSWORD=${{ vars.TEST_MATRIX_PASSWORD }}
+
+
+  # Source-level accessibility gate: every interactive control and image in lib/
+  # must carry an accessible name (tooltip / semanticLabel) or be explicitly
+  # marked decorative (excludeFromSemantics). Catches naming gaps anywhere in the
+  # codebase, not only on the surfaces axe-core renders. Pure Python, no Flutter.
+  accessibility_floor_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: Accessible names floor-check
+        run: python3 scripts/a11y_floor_check.py
+
+  # An e2e spec addresses widgets by their accessible name, read from intl_en.arb.
+  # Nothing ties that key back to a widget, so deleting the widget leaves the key —
+  # and the spec — compiling but unmatchable. Rot then surfaces weeks later as a red
+  # nightly run against deployed staging, un-attributable to the commit that caused
+  # it. This fails on the PR that removes the widget, where it is cheap to fix.
+  # Static and partial by nature: it catches a key with no live renderer, not a key
+  # rendered under a different role. Pure Node, no Flutter, no browser, no staging.
+  e2e_locator_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+      - name: e2e locator keys still render
+        run: node e2e/check-locator-keys.js
 
   build_debug_apk:
+    environment: staging
     runs-on: ubuntu-latest
+    # Native build: runs on merge to main, not on every PR push. See
+    # ci.instructions.md. If this is a required status check, drop it
+    # from branch protection first, or PRs will wait on a check that never runs.
+    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
@@ -42,6 +100,7 @@ jobs:
         with:
           java-version: ${{ env.JAVA_VERSION }}
           distribution: "zulu"
+          cache: gradle
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
@@ -49,10 +108,13 @@ jobs:
       - uses: ./.github/actions/free_up_space
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging
-        run: ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter build apk --debug --target-platform android-arm # Pangea change, only build arm to decrease size & time
 
   build_debug_web:
+    environment: staging
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -64,30 +126,47 @@ jobs:
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
       - run: flutter pub get
+      # See the note in main_deploy.yaml — same cache, same key scheme.
+      - name: Resolve vodozemac version
+        id: vodozemac
+        run: echo "version=$(yq '.dependencies.flutter_vodozemac' pubspec.yaml | tr -d '^')" >> $GITHUB_OUTPUT
+      - name: Cache vodozemac bindings
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: assets/vodozemac/vodozemac_bindings_dart*
+          key: vodozemac-bindings-v1-${{ runner.os }}-${{ steps.vodozemac.outputs.version }}-${{ hashFiles('scripts/prepare-web.sh') }}
       - name: Prepare web
         run: ./scripts/prepare-web.sh
       - run: flutter build web
 
-  build_debug_linux:
-    strategy:
-      matrix:
-        arch: [ x64, arm64 ]
-    runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-latest'}}
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install git wget curl libcurl4-openssl-dev clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev libjsoncpp-dev cmake-data libsecret-1-dev libsecret-1-0 librhash0 libssl-dev libwebkit2gtk-4.1-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev -y
-      - name: Install Flutter
-        run: |
-          git clone --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git
-          ./flutter/bin/flutter doctor
-      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
-      - run: ./flutter/bin/flutter pub get
-      - run: ./flutter/bin/flutter build linux --target-platform linux-${{ matrix.arch }}
+  # #Pangea
+  # build_debug_linux:
+  #   environment: staging
+  #   strategy:
+  #     matrix:
+  #       arch: [ x64, arm64 ]
+  #   runs-on: ${{ matrix.arch == 'arm64' && 'ubuntu-24.04-arm' || 'ubuntu-latest'}}
+  #   steps:
+  #     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+  #     - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+  #     - name: Install dependencies
+  #       run: sudo apt-get update && sudo apt-get install git wget curl libcurl4-openssl-dev clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev libjsoncpp-dev cmake-data libsecret-1-dev libsecret-1-0 librhash0 libssl-dev libwebkit2gtk-4.1-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev -y
+  #     - name: Install Flutter
+  #       run: |
+  #         git clone --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git
+  #         ./flutter/bin/flutter doctor
+  #     - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
+  #     - run: ./flutter/bin/flutter pub get
+  #     - run: ./flutter/bin/flutter build linux --target-platform linux-${{ matrix.arch }}
+  # Pangea#
 
   build_debug_ios:
+    environment: staging
     runs-on: macos-15
+    # Native build: runs on merge to main, not on every PR push. See
+    # ci.instructions.md. If this is a required status check, drop it
+    # from branch protection first, or PRs will wait on a check that never runs.
+    if: github.event_name == 'push'
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
@@ -100,6 +179,8 @@ jobs:
       - run: brew install sqlcipher
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - name: Add Firebase Messaging
-        run: ./scripts/add-firebase-messaging.sh
+        env:
+          GOOGLE_SERVICES_PLIST: ${{ secrets.GOOGLE_SERVICES_PLIST }}
+        run: ./scripts/configure-firebase-messaging.sh
       - run: flutter pub get
       - run: flutter build ios --no-codesign

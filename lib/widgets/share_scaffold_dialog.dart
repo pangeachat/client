@@ -6,11 +6,17 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 abstract class ShareItem {}
 
@@ -59,7 +65,16 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
     while (context.canPop()) {
       context.pop();
     }
-    context.go('/rooms/$roomId', extra: widget.items);
+    // world_v2: open the target as the single live `room` token over the map.
+    // The shared items ride the navigation `extra` (they cannot be expressed in
+    // the URL); the shell forwards them to the room. See `routing.instructions.md`.
+    context.go(
+      WorkspaceNav.openExclusiveLeftRoom(
+        GoRouterState.of(context).uri,
+        RoomPanelToken(RoomTokenParam(id: shortRoomId(roomId))),
+      ),
+      extra: widget.items,
+    );
   }
 
   @override
@@ -72,6 +87,7 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
               !room.isSpace &&
               // #Pangea
               !room.isHiddenRoom &&
+              !room.isActivityFinished &&
               // Pangea#
               room.membership == Membership.join,
         )
@@ -90,32 +106,10 @@ class _ShareScaffoldDialogState extends State<ShareScaffoldDialog> {
             scrolledUnderElevation: 0,
             backgroundColor: Colors.transparent,
             automaticallyImplyLeading: false,
-            title: TextField(
+            title: PangeaSearchBar(
+              labelText: L10n.of(context).searchChatsHint,
               controller: _filterController,
               onChanged: (_) => setState(() {}),
-              textInputAction: TextInputAction.search,
-              decoration: InputDecoration(
-                filled: true,
-                fillColor: theme.colorScheme.secondaryContainer,
-                border: OutlineInputBorder(
-                  borderSide: BorderSide.none,
-                  borderRadius: BorderRadius.circular(99),
-                ),
-                contentPadding: EdgeInsets.zero,
-                hintText: L10n.of(context).search,
-                hintStyle: TextStyle(
-                  color: theme.colorScheme.onPrimaryContainer,
-                  fontWeight: FontWeight.normal,
-                ),
-                floatingLabelBehavior: FloatingLabelBehavior.never,
-                prefixIcon: IconButton(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.search_outlined,
-                    color: theme.colorScheme.onPrimaryContainer,
-                  ),
-                ),
-              ),
             ),
           ),
           SliverList.builder(

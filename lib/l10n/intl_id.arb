@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:21:55.784279",
+    "@@last_modified": "2026-08-05 11:42:13.221476",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -132,15 +132,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "inviteContactToGroup": "Undang kontak ke {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
-    },
     "inviteContact": "Undang kontak",
     "@inviteContact": {
         "type": "String",
@@ -212,11 +203,6 @@
             }
         }
     },
-    "groupIsPublic": "Grup bersifat publik",
-    "@groupIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "group": "Grup",
     "@group": {
         "type": "String",
@@ -247,11 +233,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "everythingReady": "Semua siap!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enterAnEmailAddress": "Masukkan alamat email",
     "@enterAnEmailAddress": {
         "type": "String",
@@ -273,11 +254,6 @@
     },
     "encrypted": "Terenkripsi",
     "@encrypted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableEncryptionWarning": "Kamu tidak akan bisa menonaktifkan enkripsi. Apakah kamu yakin?",
-    "@enableEncryptionWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -703,11 +679,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "areGuestsAllowedToJoin": "Apakah pengguna tamu diizinkan untuk bergabung",
-    "@areGuestsAllowedToJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "appLock": "Kunci aplikasi",
     "@appLock": {
         "type": "String",
@@ -732,11 +703,6 @@
     },
     "encryptionNotEnabled": "Enkripsi tidak diaktifkan",
     "@encryptionNotEnabled": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "contactHasBeenInvitedToTheGroup": "Kontak telah diundang ke grup",
-    "@contactHasBeenInvitedToTheGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -777,11 +743,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "chatBackupDescription": "Pesan lamamu diamankan dengan sebuah kunci pemulihan. Pastikan kamu tidak menghilangkannya.",
-    "@chatBackupDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "activatedEndToEndEncryption": "🔐 {username} mengaktifkan enkripsi ujung ke ujung",
     "@activatedEndToEndEncryption": {
         "type": "String",
@@ -795,15 +756,6 @@
     "@loadingPleaseWait": {
         "type": "String",
         "placeholders": {}
-    },
-    "loadCountMoreParticipants": "Muat {count} anggota",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "leftTheChat": "Keluar dari obrolan",
     "@leftTheChat": {
@@ -887,16 +839,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noGoogleServicesWarning": "Perpesanan Awan Firebase sepertinya tidak tersedia di perangkatmu. Untuk dapat menerima notifikasi dorongan, kami menyarankan memasang ntfy. Dengan ntfy atau penyedia UnifiedPush lainnya, kamu bisa menerima notifikasi dorongan dengan cara yang aman. Kamu bisa mengunduh ntfy dari Play Store atau F-Droid.",
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noEncryptionForPublicRooms": "Kamu hanya bisa mengaktifkan enkripsi setelah ruangan tidak lagi dapat diakses secara publik.",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noEmotesFound": "Tidak ada emote yang ditemukan. 😕",
     "@noEmotesFound": {
         "type": "String",
@@ -947,15 +889,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "logInTo": "Masuk ke {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
-    },
     "login": "Masuk",
     "@login": {
         "type": "String",
@@ -982,11 +915,6 @@
     },
     "unavailable": "Tidak tersedia",
     "@unavailable": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "transferFromAnotherDevice": "Transfer dari perangkat lain",
-    "@transferFromAnotherDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -1085,23 +1013,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "wipeChatBackup": "Hapus cadangan obrolan untuk membuat kunci pemulihan baru?",
-    "@wipeChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "whyDoYouWantToReportThis": "Kenapa kamu ingin melaporkannya?",
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoIsAllowedToJoinThisGroup": "Siapa yang dapat bergabung ke grup ini",
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "whoCanPerformWhichAction": "Siapa yang dapat melakukan tindakan apa",
-    "@whoCanPerformWhichAction": {
         "type": "String",
         "placeholders": {}
     },
@@ -1147,16 +1060,6 @@
     },
     "visibleForAllParticipants": "Terlihat untuk semua anggota",
     "@visibleForAllParticipants": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "visibilityOfTheChatHistory": "Visibilitas sejarah obrolan",
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "videoCall": "Panggilan video",
-    "@videoCall": {
         "type": "String",
         "placeholders": {}
     },
@@ -1226,15 +1129,6 @@
                 "type": "String"
             },
             "count": {
-                "type": "int"
-            }
-        }
-    },
-    "unreadChats": "{unreadCount, plural, =1{1 obrolan belum dibaca} other{{unreadCount} obrolan belum dibaca}}",
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
                 "type": "int"
             }
         }
@@ -1345,16 +1239,6 @@
             }
         }
     },
-    "spaceName": "Nama space",
-    "@spaceName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "spaceIsPublic": "Space publik",
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
     "sourceCode": "Kode sumber",
     "@sourceCode": {
         "type": "String",
@@ -1391,11 +1275,6 @@
     },
     "setStatus": "Tetapkan status",
     "@setStatus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "setPermissionsLevel": "Tetapkan level izin",
-    "@setPermissionsLevel": {
         "type": "String",
         "placeholders": {}
     },
@@ -1550,11 +1429,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "passwordRecovery": "Pemulihan kata sandi",
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
     "passwordHasBeenChanged": "Kata sandi telah diubah",
     "@passwordHasBeenChanged": {
         "type": "String",
@@ -1592,8 +1466,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableMultiAccounts": "(BETA) Aktifkan multi-akun di perangkat ini",
-    "@enableMultiAccounts": {},
     "bundleName": "Nama bundel",
     "@bundleName": {},
     "removeFromBundle": "Hilangkan dari bundel ini",
@@ -1602,8 +1474,6 @@
     "@addToBundle": {},
     "editBundlesForAccount": "Edit bundel untuk akun ini",
     "@editBundlesForAccount": {},
-    "addAccount": "Tambah akun",
-    "@addAccount": {},
     "oneClientLoggedOut": "Salah satu klienmu telah keluar",
     "@oneClientLoggedOut": {},
     "openCamera": "Buka kamera",
@@ -1742,11 +1612,6 @@
     },
     "darkTheme": "Gelap",
     "@darkTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "createNewSpace": "Space baru",
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -1903,11 +1768,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "removeDevice": "Hapus perangkat",
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "removedBy": "Dihapus oleh {username}",
     "@removedBy": {
         "type": "String",
@@ -1964,8 +1824,6 @@
     },
     "link": "Tautan",
     "@link": {},
-    "yourChatBackupHasBeenSetUp": "Cadangan obrolanmu telah disiapkan.",
-    "@yourChatBackupHasBeenSetUp": {},
     "unverified": "Tidak terverifikasi",
     "@unverified": {},
     "repeatPassword": "Ulangi kata sandi",
@@ -1982,8 +1840,6 @@
     "@openGallery": {},
     "start": "Mulai",
     "@start": {},
-    "removeFromSpace": "Hilangkan dari space",
-    "@removeFromSpace": {},
     "commandHint_clearcache": "Bersihkan tembolok",
     "@commandHint_clearcache": {
         "type": "String",
@@ -2043,12 +1899,6 @@
     "@unsupportedAndroidVersion": {},
     "placeCall": "Lakukan panggilan",
     "@placeCall": {},
-    "voiceCall": "Panggilan suara",
-    "@voiceCall": {},
-    "videoCallsBetaWarning": "Dicatat bahwa panggilan video sedang dalam beta. Fitur ini mungkin tidak berkerja dengan benar atau tidak berkerja sama sekali pada semua platform.",
-    "@videoCallsBetaWarning": {},
-    "emailOrUsername": "Email atau nama pengguna",
-    "@emailOrUsername": {},
     "experimentalVideoCalls": "Panggilan video eksperimental",
     "@experimentalVideoCalls": {},
     "widgetEtherpad": "Catatan teks",
@@ -2136,28 +1986,8 @@
             }
         }
     },
-    "pleaseEnterRecoveryKeyDescription": "Untuk mengakses pesan lamamu, mohon masukkan kunci pemulihanmu yang telah dibuat di sesi sebelumnya. Kunci pemulihanmu BUKAN kata sandimu.",
-    "@pleaseEnterRecoveryKeyDescription": {},
     "users": "Pengguna",
     "@users": {},
-    "storeInSecureStorageDescription": "Simpan kunci pemulihan di penyimpanan aman perangkat ini.",
-    "@storeInSecureStorageDescription": {},
-    "saveKeyManuallyDescription": "Simpan kunci ini secara manual dengan memicu dialog pembagian atau papan klip sistem.",
-    "@saveKeyManuallyDescription": {},
-    "recoveryKey": "Kunci pemulihan",
-    "@recoveryKey": {},
-    "storeInAppleKeyChain": "Simpan di Apple KeyChain",
-    "@storeInAppleKeyChain": {},
-    "pleaseEnterRecoveryKey": "Mohon masukkan kunci pemulihanmu:",
-    "@pleaseEnterRecoveryKey": {},
-    "unlockOldMessages": "Akses pesan lama",
-    "@unlockOldMessages": {},
-    "recoveryKeyLost": "Kunci pemulihan hilang?",
-    "@recoveryKeyLost": {},
-    "storeInAndroidKeystore": "Simpan di Android KeyStore",
-    "@storeInAndroidKeystore": {},
-    "storeSecurlyOnThisDevice": "Simpan secara aman di perangkat ini",
-    "@storeSecurlyOnThisDevice": {},
     "countFiles": "{count} file",
     "@countFiles": {
         "placeholders": {
@@ -2191,24 +2021,16 @@
     "@commandHint_markasdm": {},
     "commandHint_markasgroup": "Tandai sebagai grup",
     "@commandHint_markasgroup": {},
-    "screenSharingTitle": "membagikan layar",
-    "@screenSharingTitle": {},
     "noKeyForThisMessage": "Hal ini bisa terjadi jika pesan dikirim sebelum kamu masuk ke akunmu di perangkat ini.\n\nMungkin juga pengirim telah memblokir perangkatmu atau ada yang tidak beres dengan koneksi internet.\n\nApakah kamu bisa membaca pesan pada sesi lain? Maka kamu bisa mentransfer pesan dari sesi tersebut! Buka Pengaturan > Perangkat dan pastikan bahwa perangkat Anda telah ditandatangani secara silang. Ketika kamu membuka ruangan di lain waktu dan kedua sesi berada di latar depan, kunci akan ditransmisikan secara otomatis.\n\nApakah kamu tidak mau kehilangan kunci saat keluar atau berpindah perangkat? Pastikan bahwa kamu telah mengaktifkan cadangan obrolan dalam pengaturan.",
     "@noKeyForThisMessage": {},
-    "foregroundServiceRunning": "Notifikasi ini ditampilkan ketika layanan latar depan berjalan.",
-    "@foregroundServiceRunning": {},
     "whyIsThisMessageEncrypted": "Mengapa pesan ini tidak bisa dibaca?",
     "@whyIsThisMessageEncrypted": {},
     "newGroup": "Grup baru",
     "@newGroup": {},
     "newSpace": "Space baru",
     "@newSpace": {},
-    "enterSpace": "Masuk space",
-    "@enterSpace": {},
     "allSpaces": "Semua space",
     "@allSpaces": {},
-    "screenSharingDetail": "Kamu membagikan layarmu di FluffyChat",
-    "@screenSharingDetail": {},
     "doNotShowAgain": "Jangan tampilkan lagi",
     "@doNotShowAgain": {},
     "hugContent": "{senderName} memeluk kamu",
@@ -2253,16 +2075,8 @@
             }
         }
     },
-    "newSpaceDescription": "Fitur space bisa membantu untuk memisahkan obrolanmu dan membuat komunitas pribadi atau publik.",
-    "@newSpaceDescription": {},
-    "sorryThatsNotPossible": "Maaf... itu tidak mungkin",
-    "@sorryThatsNotPossible": {},
     "deviceKeys": "Kunci perangkat:",
     "@deviceKeys": {},
-    "encryptThisChat": "Enkripsi obrolan ini",
-    "@encryptThisChat": {},
-    "disableEncryptionWarning": "Demi keamanan kamu tidak bisa menonaktifkan enkripsi dalam sebuah obrolan di mana sebelumbya sudah diaktifkan.",
-    "@disableEncryptionWarning": {},
     "reopenChat": "Buka obrolan lagi",
     "@reopenChat": {},
     "noBackupWarning": "Peringatan! Tanpa mengaktifkan cadangan percakapan, kamu akan kehilangan akses ke pesan terenkripsimu. Disarankan untuk mengaktifkan cadangan percakapan terlebih dahulu sebelum keluar dari akun.",
@@ -2314,14 +2128,10 @@
     "@messagesStyle": {},
     "shareInviteLink": "Bagikan tautan undangan",
     "@shareInviteLink": {},
-    "setTheme": "Atur tema:",
-    "@setTheme": {},
     "invalidServerName": "Nama server tidak valid",
     "@invalidServerName": {},
     "chatPermissions": "Perizinan obrolan",
     "@chatPermissions": {},
-    "chatDescription": "Deskripsi obrolan",
-    "@chatDescription": {},
     "chatDescriptionHasBeenChanged": "Deskripsi obrolan diubah",
     "@chatDescriptionHasBeenChanged": {},
     "noChatDescriptionYet": "Deskripsi obrolan belum dibuat.",
@@ -2405,14 +2215,10 @@
     "@pleaseEnterANumber": {},
     "kickUserDescription": "Pengguna ini dikeluarkan dari percakapan tetapi tidak dicekal. Dalam percakapan publik, penggunanya dapat bergabung ulang kapan pun.",
     "@kickUserDescription": {},
-    "groupCanBeFoundViaSearch": "Grup dapat dicari melalui pencarian",
-    "@groupCanBeFoundViaSearch": {},
     "groupName": "Nama grup",
     "@groupName": {},
     "wrongRecoveryKey": "Maaf... ini sepertinya bukan kunci pemulihan yang benar.",
     "@wrongRecoveryKey": {},
-    "addChatOrSubSpace": "Tambahkan percakapan atau subspace",
-    "@addChatOrSubSpace": {},
     "pleaseChooseAStrongPassword": "Silakan pilih kata sandi yang kuat",
     "@pleaseChooseAStrongPassword": {},
     "joinSpace": "Bergabung ke space",
@@ -2477,10 +2283,6 @@
     },
     "passwordIsWrong": "Kata sandi yang kamu masukkan salah",
     "@passwordIsWrong": {},
-    "searchChatsRooms": "Cari #percakapan, @pengguna...",
-    "@searchChatsRooms": {},
-    "createGroupAndInviteUsers": "Buat sebuah grup dan undang pengguna",
-    "@createGroupAndInviteUsers": {},
     "pleaseEnterYourCurrentPassword": "Silakan masukkan kata sandimu saat ini",
     "@pleaseEnterYourCurrentPassword": {},
     "passwordsDoNotMatch": "Kata sandi tidak cocok",
@@ -2491,32 +2293,6 @@
     "@sendReadReceipts": {},
     "formattedMessages": "Pesan yang diformat",
     "@formattedMessages": {},
-    "verifyOtherUser": "🔐 Verifikasi pengguna lain",
-    "@verifyOtherUser": {},
-    "sessionLostBody": "Sesimu hilang. Silakan laporkan kesalahan ini kepada pengembang di {url}. Pesan kesalahannya adalah: {error}",
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "restoreSessionBody": "Aplikasi sekarang mencoba memulihkan sesimu dari cadangan. Silakan laporkan kesalahan ini kepada pengembang di {url}. Pesan kesalahannya adalah: {error}",
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "presencesToggle": "Tampilkan pesan status dari pengguna lain",
     "@presencesToggle": {
         "type": "String",
@@ -2583,8 +2359,6 @@
     "@initAppError": {},
     "verifyOtherDeviceDescription": "Saat kamu memverifikasi perangkat lain, perangkat tersebut dapat bertukar kunci, sehingga meningkatkan keamananmu secara keseluruhan. 💪 Saat Anda memulai verifikasi, sebuah pemberitahuan akan muncul di aplikasi pada kedua perangkat. Di situ kemudian akan melihat serangkaian emoji atau angka yang harus dibandingkan satu sama lain. Sebaiknya siapkan kedua perangkat sebelum kamu memulai verifikasi. 🤳",
     "@verifyOtherDeviceDescription": {},
-    "verifyOtherUserDescription": "Jika kamu memverifikasi pengguna lain, kamu bisa yakin bahwa kamu tahu kepada siapa sebenarnya kamu menulis pesan kepadanya. 💪\n\nSaat kamu memulai verifikasi, kamu dan pengguna lain akan melihat pemberitahuan di aplikasi. Di sana kemudian akan melihat serangkaian emoji atau angka yang harus dibandingkan satu sama lain.\n\nCara terbaik untuk melakukannya adalah dengan bertemu secara langsung atau memulai panggilan video. 👭",
-    "@verifyOtherUserDescription": {},
     "commandHint_ignore": "Abaikan ID Matrix yang diberikan",
     "@commandHint_ignore": {},
     "commandHint_unignore": "Batalkan pengabaian ID Matrix yang diberikan",
@@ -2609,12 +2383,6 @@
     "@hideRedactedMessages": {},
     "appLockDescription": "Kunci aplikasi ketika tidak digunakan dengan kode PIN",
     "@appLockDescription": {},
-    "accessAndVisibility": "Akses dan keterlihatan",
-    "@accessAndVisibility": {},
-    "globalChatId": "ID obrolan global",
-    "@globalChatId": {},
-    "accessAndVisibilityDescription": "Siapa yang diperbolehkan bergabung ke obrolan ini dan bagaimana obrolannya dapat ditemukan.",
-    "@accessAndVisibilityDescription": {},
     "calls": "Panggilan",
     "@calls": {},
     "customEmojisAndStickers": "Emoji dan stiker kustom",
@@ -2627,32 +2395,15 @@
     "@overview": {},
     "passwordRecoverySettings": "Pengaturan pemulihan kata sandi",
     "@passwordRecoverySettings": {},
-    "usersMustKnock": "Pengguna harus mengetuk",
-    "@usersMustKnock": {},
-    "noOneCanJoin": "Tidak ada siapa pun yang dapat bergabung",
-    "@noOneCanJoin": {},
     "knock": "Ketuk",
     "@knock": {},
     "knocking": "Mengetuk",
     "@knocking": {},
-    "chatCanBeDiscoveredViaSearchOnServer": "Obrolan dapat ditemukan melalui pencarian di {server}",
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
     "thereAreCountUsersBlocked": "Saat ini ada {count} pengguna yang diblokir.",
     "@thereAreCountUsersBlocked": {
         "type": "String",
         "count": {}
     },
-    "publicChatAddresses": "Alamat obrolan umum",
-    "@publicChatAddresses": {},
-    "createNewAddress": "Buat alamat baru",
-    "@createNewAddress": {},
     "swipeRightToLeftToReply": "Usap dari kanan ke kiri untuk membalas",
     "@swipeRightToLeftToReply": {},
     "searchMore": "Cari lebih banyak...",
@@ -2754,10 +2505,6 @@
     },
     "changeGeneralChatSettings": "Ubah pengaturan chat umum",
     "@changeGeneralChatSettings": {},
-    "discoverHomeservers": "Jelajahi homeserver",
-    "@discoverHomeservers": {},
-    "loginWithMatrixId": "Masuk dengan ID Matrix",
-    "@loginWithMatrixId": {},
     "doesNotSeemToBeAValidHomeserver": "Sepertinya bukan homeserver yang kompatibel. URL salah?",
     "@doesNotSeemToBeAValidHomeserver": {},
     "unread": "Tidak dibaca",
@@ -2774,8 +2521,6 @@
     "@generatingVideoThumbnail": {},
     "changelog": "Catatan perubahan",
     "@changelog": {},
-    "whatIsAHomeserver": "Apa itu homeserver?",
-    "@whatIsAHomeserver": {},
     "sendRoomNotifications": "Kirim notifikasi @room",
     "@sendRoomNotifications": {},
     "updateInstalled": "🎉 Pembaruan {version} terpasang!",
@@ -2800,14 +2545,10 @@
     },
     "chatPermissionsDescription": "Tentukan tingkat kekuasaan yang diperlukan untuk tindakan tertentu dalam chat ini. Tingkat kekuasaan 0, 50 dan 100 biasanya mewakili pengguna, moderator dan admin, tetapi gradasi apa pun dimungkinkan.",
     "@chatPermissionsDescription": {},
-    "homeserverDescription": "Semua data Anda disimpan di dalam server, seperti halnya penyedia email. Anda dapat memilih homeserver mana yang ingin Anda gunakan, sementara Anda masih dapat berkomunikasi dengan semua orang. Pelajari lebih lanjut di https://matrix.org.",
-    "@homeserverDescription": {},
     "oneOfYourDevicesIsNotVerified": "Salah satu perangkat Anda tidak terverifikasi",
     "@oneOfYourDevicesIsNotVerified": {},
     "noticeChatBackupDeviceVerification": "Catatan: Ketika Anda menghubungkan semua perangkat Anda ke cadangan chat, mereka akan diverifikasi secara otomatis.",
     "@noticeChatBackupDeviceVerification": {},
-    "welcomeText": "Halo 👋 Ini FluffyChat. Kamu bisa masuk ke homeserver mana pun, yang kompatibel dengan https://matrix.org. Lalu, chat dengan siapa pun. Ini merupakan jaringan perpesanan besar yang terdesentralisasi!",
-    "@welcomeText": {},
     "continueText": "Lanjutkan",
     "@continueText": {},
     "aboutHomeserver": "Tentang {homeserver}",
@@ -2837,8 +2578,6 @@
     "@version": {},
     "website": "Situs Web",
     "@website": {},
-    "manageAccount": "Kelola akun",
-    "@manageAccount": {},
     "contactServerSecurity": "Hubungi keamanan server",
     "@contactServerSecurity": {},
     "name": "Nama",
@@ -2977,8 +2716,6 @@
     "@crossVerifiedDevices": {},
     "waitingForServer": "Menunggu server...",
     "@waitingForServer": {},
-    "appIntroduction": "FluffyChat memungkinkanmu untuk mengobrol dengan teman-temanmu di berbagai perpesanan. Pelajari lebih lanjut di https://matrix.org atau ketuk *Lanjutkan* saja.",
-    "@appIntroduction": {},
     "notificationRuleContainsDisplayNameDescription": "Memberi tahu pengguna ketika pesan berisi nama tampilannya.",
     "@notificationRuleContainsDisplayNameDescription": {},
     "shareKeysWith": "Bagikan kunci dengan...",
@@ -3002,17 +2739,6 @@
     "@previous": {},
     "otherPartyNotLoggedIn": "Pihak lain belum masuk dan tidak dapat menerima pesan!",
     "@otherPartyNotLoggedIn": {},
-    "appWantsToUseForLogin": "Gunakan '{server}' untuk masuk",
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "appWantsToUseForLoginDescription": "Anda memperbolehkan aplikasi dan situs web membagikan informasi tentang Anda.",
-    "@appWantsToUseForLoginDescription": {},
     "open": "Buka",
     "@open": {},
     "takeAPhoto": "Ambil foto",
@@ -3055,15 +2781,6 @@
     },
     "checkList": "Ceklis",
     "@checkList": {},
-    "countInvited": "{count} diundang",
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "commandHint_logout": "Keluar dari perangkatmu saat ini",
     "@commandHint_logout": {},
     "commandHint_logoutall": "Keluarkan semua perangkat aktif",
@@ -3090,11 +2807,9 @@
     "taTooltip": "Penggunaan L2 dengan bantuan terjemahan",
     "interactiveTranslatorSliderHeader": "Penerjemah Interaktif",
     "interactiveGrammarSliderHeader": "Pemeriksa Tata Bahasa Interaktif",
-    "interactiveTranslatorRequired": "Diperlukan",
     "waTooltip": "Penggunaan L2 tanpa bantuan",
     "interactiveTranslator": "Bantuan Terjemahan",
     "noIdenticalLanguages": "Harap pilih bahasa dasar dan target yang berbeda",
-    "searchBy": "Cari berdasarkan negara dan bahasa",
     "joinWithClassCode": "Gabung kursus",
     "languageLevelPreA1": "Pemula Rendah (Pre A1)",
     "languageLevelA1": "Novice Mid (A1)",
@@ -3115,19 +2830,14 @@
     "saveChanges": "Simpan perubahan",
     "publicProfileTitle": "Izinkan profil saya ditemukan dalam pencarian",
     "publicProfileDesc": "Dengan mengaktifkan, Anda memungkinkan pengguna lain menemukan profil Anda di bilah pencarian global dan mengirim permintaan untuk mengobrol. Pada titik ini, Anda dapat memilih untuk menerima atau menolak permintaan tersebut.",
-    "errorDisableIT": "Bantuan terjemahan dimatikan.",
-    "errorDisableIGC": "Bantuan tata bahasa dimatikan.",
     "errorDisableITUserDesc": "Klik di sini untuk memperbarui pengaturan bantuan terjemahan",
     "errorDisableIGCUserDesc": "Klik di sini untuk memperbarui pengaturan bantuan tata bahasa",
     "errorDisableITClassDesc": "Bantuan terjemahan dimatikan untuk kursus tempat obrolan ini berada.",
     "errorDisableIGCClassDesc": "Bantuan tata bahasa dimatikan untuk kursus tempat obrolan ini berada.",
-    "error405Title": "Bahasa belum diatur",
     "error405Desc": "Silakan atur bahasa Anda di Menu Utama > Pengaturan Pembelajaran.",
     "termsAndConditions": "Syarat dan Ketentuan",
     "andCertifyIAmAtLeast13YearsOfAge": " dan menyatakan saya berusia minimal 16 tahun.",
-    "error502504Title": "Wow, banyak siswa online!",
     "error502504Desc": "Alat terjemahan dan tata bahasa mungkin lambat atau tidak tersedia sementara bot Pangea mengejar ketertinggalan.",
-    "error404Title": "Kesalahan terjemahan!",
     "error404Desc": "Bot Pangea tidak yakin bagaimana menerjemahkan itu...",
     "errorPleaseRefresh": "Kami sedang menelusurinya! Silakan muat ulang dan coba lagi.",
     "connectedToStaging": "Terhubung ke Staging",
@@ -3165,13 +2875,9 @@
     "definitionsToolName": "Definisi Kata",
     "definitionsToolDescription": "Ketika diaktifkan, kata yang digarisbawahi berwarna biru dapat diklik untuk melihat definisi. Klik pesan untuk mengakses definisi.",
     "welcomeBack": "Selamat datang kembali! Jika Anda bagian dari pilot 2023-2024, silakan hubungi kami untuk langganan pilot khusus Anda. Jika Anda seorang guru yang telah (atau institusi Anda telah) membeli lisensi untuk kelas Anda, hubungi kami untuk langganan guru.",
-    "downloadTxtFile": "Unduh File Teks",
-    "downloadCSVFile": "Unduh File CSV",
     "promotionalSubscriptionDesc": "Anda saat ini memiliki langganan promosi seumur hidup. Pesan ke support@pangea.chat untuk bantuan mengubah langganan Anda.",
     "originalSubscriptionPlatform": "Langganan dibeli melalui {purchasePlatform}",
     "oneWeekTrial": "Percobaan Seminggu",
-    "downloadXLSXFile": "Unduh Berkas Excel",
-    "unkDisplayName": "Tidak Diketahui",
     "wwCountryDisplayName": "Dunia",
     "afCountryDisplayName": "Afghanistan",
     "axCountryDisplayName": "Kepulauan Aland",
@@ -3454,7 +3160,6 @@
     "trialPeriodExpired": "Periode percobaan Anda telah berakhir",
     "translations": "terjemahan",
     "definitions": "definisi",
-    "subscribedToUnlockTools": "Berlangganan untuk membuka kunci terjemahan interaktif dan pemeriksaan tata bahasa, pemutaran audio, aktivitas latihan pribadi, dan analitik pembelajaran!",
     "translationTooltip": "Terjemahkan",
     "kickBotWarning": "Mengeluarkan Pangea Bot akan menghapus bot percakapan dari obrolan ini.",
     "refresh": "Segarkan",
@@ -3467,24 +3172,19 @@
     "chatCapacityHasBeenChanged": "Kapasitas obrolan telah diubah",
     "chatCapacitySetTooLow": "Kapasitas obrolan harus minimal {count}.",
     "chatCapacityExplanation": "Kapasitas obrolan membatasi jumlah anggota yang diizinkan dalam obrolan.",
-    "tooManyRequest": "Terlalu banyak permintaan, silakan coba lagi nanti.",
     "enterNumber": "Silakan masukkan nilai angka bulat.",
     "practice": "Latihan",
-    "speechToTextBody": "Untuk pesan suara, Anda dapat melihat transkrip serta skor Kata Per Menit dari pembicara.",
     "versionNotFound": "Versi Tidak Ditemukan",
     "fetchingVersion": "Mengambil versi...",
     "versionFetchError": "Kesalahan saat mengambil versi",
     "versionText": "Versi: {version}+{buildNumber}",
-    "l1TranslationBody": "Pesan dalam bahasa dasar Anda tidak akan diterjemahkan.",
     "deleteSubscriptionWarningTitle": "Anda memiliki langganan aktif",
     "deleteSubscriptionWarningBody": "Menghapus akun Anda tidak akan secara otomatis membatalkan langganan Anda.",
     "manageSubscription": "Kelola Langganan",
-    "error520Title": "Silakan coba lagi.",
     "error520Desc": "Maaf, kami tidak dapat memahami pesan Anda...",
     "wordsUsed": "Kata yang Digunakan",
     "level": "Level",
     "morphsUsed": "Morf digunakan",
-    "translationChoicesBody": "Klik dan tahan opsi untuk petunjuk.",
     "grammar": "Tata Bahasa",
     "contactHasBeenInvitedToTheChat": "Kontak telah diundang ke obrolan",
     "inviteChat": "📝 Undangan obrolan",
@@ -3495,280 +3195,9 @@
     "l2SupportFull": "Penuh",
     "playAudio": "Putar",
     "stop": "Hentikan",
-    "grammarCopyPOSsconj": "Kata Hubung Subordinatif",
-    "grammarCopyPOSnum": "Angka",
-    "grammarCopyPOSverb": "Kata Kerja",
-    "grammarCopyPOSaffix": "Aksesoris",
-    "grammarCopyPOSpart": "Partikel",
-    "grammarCopyPOSadj": "Kata sifat",
-    "grammarCopyPOScconj": "Kata hubung koordinatif",
-    "grammarCopyPOSpunct": "Tanda baca",
-    "grammarCopyPOSadv": "Kata keterangan",
-    "grammarCopyPOSaux": "Kata bantu",
-    "grammarCopyPOSspace": "Spasi",
-    "grammarCopyPOSsym": "Simbol",
-    "grammarCopyPOSdet": "Penentu",
-    "grammarCopyPOSpron": "Kata ganti",
-    "grammarCopyPOSadp": "Preposisi",
-    "grammarCopyPOSpropn": "Kata benda khusus",
-    "grammarCopyPOSnoun": "Kata benda",
-    "grammarCopyPOSintj": "Seru",
-    "grammarCopyPOSx": "Lainnya",
-    "grammarCopyGENDERfem": "Feminin",
-    "grammarCopyPERSON2": "Orang Kedua",
-    "grammarCopyMOODimp": "Perintah",
-    "grammarCopyPUNCTTYPEqest": "Pertanyaan",
-    "grammarCopyASPECTperf": "Sempurna",
-    "grammarCopyCASEaccnom": "Akkusatif, Nominatif",
-    "grammarCopyCASEobl": "Oblique",
-    "grammarCopyVOICEact": "Aktif",
-    "grammarCopyPUNCTTYPEbrck": "Kurung",
-    "grammarCopyNOUNTYPEart": "Artikel",
-    "grammarCopyNUMBERsing": "Tunggal",
-    "grammarCopyGENDERmasc": "Maskulin",
-    "grammarCopyVERBTYPEmod": "Modal",
-    "grammarCopyADVTYPEadverbial": "Adverbial",
-    "grammarCopyTENSEperi": "Perifrastik",
-    "grammarCopyNUMFORMdigit": "Digit",
-    "grammarCopyNOUNTYPEnot_proper": "Bukan Proper",
-    "grammarCopyNUMTYPEcard": "Kardinal",
-    "grammarCopyNOUNTYPEprop": "Proper",
-    "grammarCopyPUNCTTYPEdash": "Tanda Hubung",
-    "grammarCopyPUNCTTYPEyes": "Ya",
-    "grammarCopyPUNCTTYPEsemi": "Titik Koma",
-    "grammarCopyPUNCTTYPEcomm": "Koma",
-    "grammarCopyMOODcnd": "Kondisional",
-    "grammarCopyCASEacc": "Akkusatif",
-    "grammarCopyPARTTYPEpart": "Partitif",
-    "grammarCopyTENSEpast": "Lampau",
-    "grammarCopyDEGREEsup": "Superlatif",
-    "grammarCopyPUNCTTYPEcolo": "Titik Dua",
-    "grammarCopyPERSON3": "Orang Ketiga",
-    "grammarCopyNUMBERplur": "Jamakan",
-    "grammarCopyPRONTYPEnpr": "Kata Benda Khusus",
-    "grammarCopyPRONTYPEinterrogative": "Interogatif",
-    "grammarCopyPOLITEinfm": "Tidak Formal",
-    "grammarCopyADVTYPEtim": "Waktu",
-    "grammarCopyPOLARITYneg": "Negatif",
-    "grammarCopyNUMTYPEtot": "Total",
-    "grammarCopyADVTYPEadnomial": "Adnominal",
-    "grammarCopyASPECTprog": "Progresif",
-    "grammarCopyMOODsub": "Subjunktif",
-    "grammarCopyVERBFORMcomplementive": "Pelengkap",
-    "grammarCopyCASEnom": "Nominatif",
-    "grammarCopyTENSEfut": "Masa Depan",
-    "grammarCopyCASEdat": "Dativ",
-    "grammarCopyTENSEpres": "Sekarang",
-    "grammarCopyGENDERneut": "Netral",
-    "grammarCopyPRONTYPErel": "Relatif",
-    "grammarCopyVERBFORMfinalEnding": "Akhiran Akhir",
-    "grammarCopyPRONTYPEdem": "Demonstratif",
-    "grammarCopyPREPCASEpre": "Preposisional",
-    "grammarCopyVERBFORMfin": "Terbatas",
-    "grammarCopyDEGREEpos": "Positif",
-    "grammarCopyPUNCTTYPEquot": "Kutipan",
-    "grammarCopyVERBFORMger": "Gerund",
-    "grammarCopyVOICEpass": "Pasif",
-    "grammarCopyCASEgen": "Genitif",
-    "grammarCopyTENSEprs": "Sekarang",
-    "grammarCopyDEFINITEdef": "Tentu",
-    "grammarCopyNUMTYPEord": "Ordinal",
-    "grammarCopyCASEins": "Instrumental",
-    "grammarCopyVERBFORMinf": "Infinitif",
-    "grammarCopyVERBFORMaux": "Bantu",
-    "grammarCopyNUMFORMlong": "Panjang",
-    "grammarCopyCASEloc": "Lokatif",
-    "grammarCopyMOODind": "Indikatif",
-    "grammarCopyDEGREEcmp": "Perbandingan",
-    "grammarCopyCASErelativeCase": "Relatif",
-    "grammarCopyPUNCTTYPEexcl": "Seru",
-    "grammarCopyPERSON1": "Orang Pertama",
-    "grammarCopyPUNCTSIDEini": "Awal",
-    "grammarCopyGENDERperson": "Jenis Kelamin",
-    "grammarCopyFOREIGNyes": "Asing",
-    "grammarCopyVOICEvoice": "Suara",
-    "grammarCopyVERBTYPEverbType": "Kata Kerja",
-    "grammarCopyPOSSpass": "Kepemilikan",
-    "grammarCopyPREPCASEprepCase": "Preposisional",
-    "grammarCopyNUMTYPEnumType": "Numeral",
-    "grammarCopyNOUNTYPEnounType": "Kata Benda",
-    "grammarCopyREFLEXreflex": "Refleksif",
-    "grammarCopyPRONTYPEpronType": "Kata Ganti",
-    "grammarCopyPUNCTSIDEpunctSide": "Sisi Tanda Baca",
-    "grammarCopyVERBFORMverbForm": "Bentuk Kata Kerja",
-    "grammarCopyGENDERgender": "Jenis Kelamin",
-    "grammarCopyMOODmood": "Mood",
-    "grammarCopyASPECTaspect": "Aspek",
-    "grammarCopyPUNCTTYPEpunctType": "Tanda baca",
-    "grammarCopyTENSEtense": "Waktu",
-    "grammarCopyDEGREEdegree": "Derajat",
-    "grammarCopyPOLITEpolite": "Kesopanan",
-    "grammarCopyADVTYPEadvType": "Kata keterangan",
-    "grammarCopyNUMFORMnumber": "Angka",
-    "grammarCopyCONJTYPEconjType": "Konjungsi",
-    "grammarCopyPOLARITYpolarity": "Polarisasi",
-    "grammarCopyCASEcase": "Kasus",
-    "grammarCopyDEFINITEdefinite": "Kejelasan",
-    "grammarCopyNUMFORMnumForm": "Numeral",
-    "grammarCopyPRONTYPEadn": "Adnominal",
-    "grammarCopyVOCvoc": "Vokatif",
-    "grammarCopyCMPLcmpl": "Pelengkap",
-    "grammarCopyADVadv": "Kata keterangan",
-    "grammarCopyMOODjus": "Modus",
-    "grammarCopyGENDERcom": "Umum",
-    "grammarCopyREFLEXrflx": "Refleksif",
-    "grammarCopyPARTTYPEpar": "Partitif",
-    "grammarCopySPCspc": "Spesifik",
-    "grammarCopyTENSEpqp": "Pluskuatif",
-    "grammarCopyREFLEXref": "Refleksif",
-    "grammarCopyPUNCTTYPEnshrt": "Pendek",
-    "grammarCopyNUMBERdual": "Ganda",
-    "grammarCopyNUMFORMlng": "Panjang",
-    "grammarCopyVOICEmid": "Tengah",
-    "grammarCopyINTRELintRel": "Interogatif, Relatif",
-    "grammarCopyINTint": "Interogatif",
-    "grammarCopyVOICEcaus": "Sebab",
-    "grammarCopyUnknown": "Tidak diketahui",
-    "grammarCopyEVIDENTevident": "Bukti",
-    "grammarCopyNUMFORMnumberPsor": "Nomor Pemilik",
-    "grammarCopyASPECThab": "Kebiasaan",
-    "grammarCopyCASEabl": "Ablatif",
-    "grammarCopyCASEall": "Allatif",
-    "grammarCopyCASEess": "Esif",
-    "grammarCopyCASEtra": "Translative",
-    "grammarCopyCASEequ": "Setara",
-    "grammarCopyCASEdis": "Distribusi",
-    "grammarCopyCASEabs": "Absolut",
-    "grammarCopyCASEerg": "Ergatif",
-    "grammarCopyCASEcau": "Kausal",
-    "grammarCopyCASEben": "Benefaktif",
-    "grammarCopyCASEtem": "Temporal",
-    "grammarCopyCONJTYPEcoord": "Koordinatif",
-    "grammarCopyDEFINITEcons": "Keadaan Konstruksi",
-    "grammarCopyDEGREEabs": "Derajat Absolut",
-    "grammarCopyEVIDENTfh": "Kedalaman Faktual",
-    "grammarCopyEVIDENTnfh": "Kedalaman Non-faktual",
-    "grammarCopyMOODopt": "Optatif",
-    "grammarCopyMOODadm": "Admiratif",
-    "grammarCopyMOODdes": "Desideratif",
-    "grammarCopyMOODnec": "Necessitatif",
-    "grammarCopyMOODpot": "Potensial",
-    "grammarCopyMOODprp": "Propositional",
-    "grammarCopyMOODqot": "Kutipan",
-    "grammarCopyNUMFORMword": "Bentuk Kata",
-    "grammarCopyNUMFORMroman": "Angka Romawi",
-    "grammarCopyNUMFORMletter": "Bentuk Huruf",
-    "grammarCopyNUMTYPEmult": "Multiplikatif",
-    "grammarCopyNUMTYPEfrac": "Fraksional",
-    "grammarCopyNUMTYPEsets": "Set",
-    "grammarCopyNUMTYPErange": "Rentang",
-    "grammarCopyNUMTYPEdist": "Distributif",
-    "grammarCopyNUMBERtri": "Percobaan",
-    "grammarCopyNUMBERpauc": "Paucal",
-    "grammarCopyNUMBERgrpa": "Paucal Lebih Besar",
-    "grammarCopyNUMBERgrpl": "Plural Lebih Besar",
-    "grammarCopyNUMBERinv": "Terbalik",
-    "grammarCopyPERSON0": "Nol",
-    "grammarCopyPERSON4": "Keempat",
-    "grammarCopyPOLITEform": "Formal",
-    "grammarCopyPOLITEelev": "Tingkat Tinggi",
-    "grammarCopyPOLITEhumb": "Humble",
-    "grammarCopyPRONTYPEemp": "Penegasan",
-    "grammarCopyPRONTYPEexc": "Seru",
-    "grammarCopyPRONTYPErcp": "Timbal Balik",
-    "grammarCopyPRONTYPEintRelPronType": "Interogatif-Relatif",
-    "grammarCopyTENSEaor": "Aorist",
-    "grammarCopyTENSEeps": "Epistemik",
-    "grammarCopyTENSEprosp": "Prospektif",
-    "grammarCopyVERBFORMpart": "Partisip",
-    "grammarCopyVERBFORMconv": "Kata kerja konverb",
-    "grammarCopyVERBFORMvnoun": "Kata benda verbal",
-    "grammarCopyVOICEantip": "Antipasif",
-    "grammarCopyVOICEcauVoice": "Kausatif",
-    "grammarCopyVOICedir": "Langsung",
-    "grammarCopyVOICEinvVoice": "Terbalik",
-    "grammarCopyVOICErcpVoice": "Timbal balik",
-    "grammarCopyPOS": "Bagian dari Ucapan",
-    "grammarCopyGENDER": "Jenis Kelamin",
-    "grammarCopyPERSON": "Orang",
-    "grammarCopyMOOD": "Mode",
-    "grammarCopyPUNCTTYPE": "Jenis Tanda Baca",
-    "grammarCopyASPECT": "Aspek",
-    "grammarCopyCASE": "Kasus",
-    "grammarCopyVOICE": "Suara",
-    "grammarCopyNOUNTYPE": "Jenis Kata Benda",
-    "grammarCopyVERBTYPE": "Jenis Kata Kerja",
-    "grammarCopyADVTYPE": "Jenis Kata Keterangan",
-    "grammarCopyNUMFORM": "Bentuk Numeral",
-    "grammarCopyNUMTYPE": "Jenis Numeral",
-    "grammarCopyNUMBER": "Angka",
-    "grammarCopyDEFINITE": "Kepastian",
-    "grammarCopyDEGREE": "Derajat",
-    "grammarCopyEVIDENT": "Evidentialitas",
-    "grammarCopyFOREIGN": "Asing",
-    "grammarCopyPOLARITY": "Polarisasi",
-    "grammarCopyPOLITE": "Kesopanan",
-    "grammarCopyPREPCASE": "Kasus Preposisional",
-    "grammarCopyPRONTYPE": "Jenis Kata Ganti",
-    "grammarCopyPUNCTSIDE": "Sisi Tanda Baca",
-    "grammarCopyREFLEX": "Refleksif",
-    "grammarCopyTENSE": "Waktu",
-    "grammarCopyVERBFORM": "Bentuk Kata Kerja",
-    "grammarCopyCONJTYPE": "Jenis Konjungsi",
-    "grammarCopySPC": "Spesifikasi",
-    "grammarCopyPARTTYPE": "Jenis Partitif",
-    "grammarCopyINTREL": "Interogatif-Relatif",
-    "grammarCopyUNKNOWN": "Tidak diketahui",
-    "grammarCopyNUMBERPSOR": "Nomor Pemilik",
-    "grammarCopyPOSS": "Kepemilikan",
-    "grammarCopyASPECTimp": "Aspek Imperfektif",
-    "grammarCopyCASEvoc": "Vokatif",
-    "grammarCopyCASEcom": "Kompang",
-    "grammarCopyCASEpar": "Partitif",
-    "grammarCopyCASEadv": "Keterangan Kata Keterangan",
-    "grammarCopyCASEref": "Referensial",
-    "grammarCopyCASErel": "Relatif",
-    "grammarCopyCASEsub": "Subessive",
-    "grammarCopyCASEsup": "Superessive",
-    "grammarCopyCASEaccdat": "Akkusatif-Dativ",
-    "grammarCopyCASEpre": "Preposisional",
-    "grammarCopyCONJTYPEsub": "Subordinatif",
-    "grammarCopyCONJTYPEcmp": "Perbandingan",
-    "grammarCopyDEFINITEind": "Tak tentu",
-    "grammarCopyMOODint": "Mood Interogatif",
-    "grammarCopyNOUNTYPEcomm": "Kata Benda Umum",
-    "grammarCopyNUMBERPSORsing": "Jumlah Pemilik Tunggal",
-    "grammarCopyNUMBERPSORplur": "Jumlah Penanggung",
-    "grammarCopyNUMBERPSORdual": "Ganda Penanggung",
-    "grammarCopyPOLARITYpos": "Polaris Positif",
-    "grammarCopyPOSSyes": "Kepemilikan",
-    "grammarCopyPREPCASEnpr": "Non-preposisional",
-    "grammarCopyPRONTYPEprs": "Pribadi",
-    "grammarCopyPRONTYPEint": "Interogatif",
-    "grammarCopyPRONTYPEtot": "Total",
-    "grammarCopyPRONTYPEneg": "Negatif",
-    "grammarCopyPRONTYPEart": "Artikel",
-    "grammarCopyPRONTYPEind": "Tak tentu",
-    "grammarCopyPRONTYPEintrel": "Interogatif-Relatif",
-    "grammarCopyPUNCTSIDEfin": "Tanda baca akhir",
-    "grammarCopyPUNCTTYPEperi": "Titik",
-    "grammarCopyREFLEXyes": "Refleksif",
-    "grammarCopyTENSEimp": "Tidak sempurna",
-    "grammarCopyVERBFORMsup": "Supine",
-    "grammarCopyVERBFORMadn": "Adnominal",
-    "grammarCopyVERBFORMlng": "Panjang",
-    "grammarCopyVERBFORMshrt": "Pendek",
-    "grammarCopyVERBTYPEcaus": "Kata Kerja Causative",
-    "grammarCopyVOICEcau": "Causative",
-    "grammarCopyVOICEdir": "Langsung",
-    "grammarCopyVOICEinv": "Terbalik",
-    "grammarCopyVOICErcp": "Timbal Balik",
     "other": "Lainnya",
     "levelShort": "LVL {level}",
-    "clickBestOption": "Pilih opsi terbaik untuk menerjemahkan pesan Anda!",
-    "completeActivitiesToUnlock": "Selesaikan setidaknya satu aktivitas untuk membuka kunci terjemahan!",
     "noCapacityLimit": "Tanpa batas kapasitas",
-    "downloadGroupText": "Unduh teks grup",
     "notificationsOn": "Notifikasi aktif",
     "notificationsOff": "Notifikasi mati",
     "joinWithCode": "Gabung dengan kode",
@@ -3785,27 +3214,9 @@
     "constructUseIgnIGCDesc": "Diabaikan dalam koreksi tata bahasa",
     "constructUseCorIGCDesc": "Benar dalam koreksi tata bahasa",
     "constructUseIncIGCDesc": "Salah dalam koreksi tata bahasa",
-    "constructUseCorPADesc": "Benar dalam aktivitas arti kata",
-    "constructUseIgnPADesc": "Diabaikan dalam aktivitas arti kata",
-    "constructUseIncPADesc": "Salah dalam aktivitas arti kata",
-    "constructUseCorWLDesc": "Benar dalam aktivitas mendengarkan kata",
-    "constructUseIncWLDesc": "Salah dalam aktivitas mendengarkan kata",
-    "constructUseIngWLDesc": "Diabaikan dalam aktivitas mendengarkan kata",
-    "constructUseCorHWLDesc": "Benar dalam aktivitas kata tersembunyi",
-    "constructUseIncHWLDesc": "Salah dalam aktivitas kata tersembunyi",
-    "constructUseIgnHWLDesc": "Diabaikan dalam aktivitas kata tersembunyi",
-    "constructUseCorLDesc": "Benar dalam aktivitas lema",
-    "constructUseIncLDesc": "Salah dalam aktivitas lema",
-    "constructUseIgnLDesc": "Diabaikan dalam aktivitas lema",
-    "constructUseCorMDesc": "Benar dalam aktivitas tata bahasa",
-    "constructUseIncMDesc": "Salah dalam aktivitas tata bahasa",
-    "constructUseIgnMDesc": "Diabaikan dalam aktivitas tata bahasa",
-    "constructUseEmojiDesc": "Benar dalam aktivitas emoji",
     "constructUseCollected": "Terkumpul dalam obrolan",
     "constructUseNanDesc": "Tidak berlaku",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "Aktifkan teks-ke-ucapan",
-    "enableTTSToolDescription": "Izinkan aplikasi menghasilkan keluaran teks-ke-ucapan untuk bagian teks dalam bahasa target Anda.",
     "yourUsername": "Nama pengguna Anda",
     "yourEmail": "Email Anda",
     "iWantToLearn": "Saya ingin belajar",
@@ -3848,31 +3259,12 @@
     "whatIsTheMorphTag": "Apa {morphologicalFeature} dari '{wordForm}'?",
     "dataAvailable": "Ketersediaan data",
     "available": "Tersedia",
-    "pangeaBotIsFallible": "Pangea Bot juga bisa membuat kesalahan!",
-    "whatIsMeaning": "Apa arti '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Cocokkan arti dengan kata-kata dalam pesan!",
-    "doubleClickToEdit": "Klik dua kali untuk mengedit.",
-    "activityPlannerTitle": "Perencana Kegiatan",
-    "topicLabel": "Topik",
-    "topicPlaceholder": "Pilih topik...",
-    "modeLabel": "Jenis Aktivitas",
-    "modePlaceholder": "Pilih mode...",
-    "learningObjectiveLabel": "Tujuan Pembelajaran",
-    "learningObjectivePlaceholder": "Pilih tujuan pembelajaran...",
-    "languageOfInstructionsLabel": "Bahasa instruksi aktivitas",
-    "targetLanguageLabel": "Bahasa target",
     "cefrLevelLabel": "Level CEFR",
-    "generateActivitiesButton": "Hasilkan Aktivitas",
-    "launchActivityButton": "Luncurkan Aktivitas",
     "image": "Gambar",
     "video": "Video",
     "nan": "Tidak berlaku",
-    "activityPlannerOverviewInstructionsBody": "Pilih topik, mode, tujuan pembelajaran dan hasilkan aktivitas untuk obrolan!",
-    "activityTitle": "Judul Aktivitas",
-    "addVocabulary": "Tambah kosakata",
     "instructions": "Instruksi",
-    "numberOfLearners": "Jumlah pelajar",
-    "mustBeInteger": "Harus berupa bilangan bulat misalnya 1, 2, 3, ...",
     "constructUsePvmDesc": "Diproduksi dalam pesan suara",
     "leaveSpaceDescription": "Dengan meninggalkan kursus, Anda akan meninggalkan semua obrolan di dalamnya. Pengguna lain akan melihat bahwa Anda telah meninggalkan kursus.",
     "constructUseCorMmDesc": "Makna pesan yang benar",
@@ -3887,7 +3279,6 @@
     "ttsDisabledBody": "Anda dapat mengaktifkan teks-ke-ucapan di pengaturan pembelajaran Anda",
     "noSpaceDescriptionYet": "Belum ada deskripsi kursus yang dibuat.",
     "tooLargeToSend": "Pesan ini terlalu besar untuk dikirim",
-    "exitWithoutSaving": "Apakah Anda yakin ingin meninggalkan tanpa menyimpan?",
     "enableAutocorrectPopupTitle": "Tambahkan keyboard bahasa target Anda dengan pergi ke:",
     "enableAutocorrectPopupSteps": "  • Pengaturan\n  • Umum\n  • Keyboard\n  • Keyboard\n  • Tambah Keyboard Baru",
     "enableAutocorrectPopupDescription": "Setelah bahasa dipilih, Anda dapat mengklik ikon globe kecil di kiri bawah keyboard Anda untuk mengaktifkan keyboard yang baru diinstal.",
@@ -3898,11 +3289,8 @@
     "displayName": "Nama tampilan",
     "leaveRoomDescription": "Anda akan meninggalkan obrolan ini. Pengguna lain akan melihat bahwa Anda telah meninggalkan obrolan.",
     "confirmUserId": "Harap konfirmasi nama pengguna Pangea Chat Anda untuk menghapus akun Anda.",
-    "startingToday": "Mulai hari ini",
-    "oneWeekFreeTrial": "Percobaan gratis satu minggu",
     "paidSubscriptionStarts": "Dimulai {startDate}",
     "cancelInSubscriptionSettings": "• Batalkan kapan saja di pengaturan langganan",
-    "cancelToAvoidCharges": "• Batalkan sebelum {trialEnds} untuk menghindari biaya",
     "downloadGboard": "Unduh Gboard",
     "autocorrectNotAvailable": "Sayangnya platform Anda saat ini tidak didukung untuk fitur ini. Nantikan pengembangan lebih lanjut!",
     "pleaseUpdateApp": "Harap perbarui aplikasi untuk melanjutkan.",
@@ -3912,19 +3300,12 @@
     "knockSpaceSuccess": "Anda telah meminta untuk bergabung dengan kursus ini! Seorang admin akan merespons permintaan Anda saat mereka menerimanya 😊",
     "chooseWordAudioInstructionsBody": "Dengarkan pesan lengkapnya. Kemudian cocokkan audio dengan kata-kata.",
     "chooseMorphsInstructionsBody": "Klik bagian puzzle untuk pertanyaan tata bahasa!",
-    "pleaseEnterInt": "Silakan masukkan angka",
     "home": "Beranda",
     "join": "Gabung",
-    "readingAssistanceOverviewBody": "Klik tombol di bawah untuk permainan mini tentang mencocokkan emoji, audio, arti kata, dan konsep tata bahasa. Atau klik kata apa saja untuk detail.",
     "resetInstructionTooltipsTitle": "Atur ulang tooltip instruksi",
     "resetInstructionTooltipsDesc": "Klik untuk menampilkan tooltip instruksi seperti untuk pengguna baru.",
-    "randomize": "Acak",
     "clear": "Hapus",
-    "makeYourOwnActivity": "Buat aktivitas sendiri",
-    "featuredActivities": "Unggulan",
     "save": "Simpan",
-    "startChat": "Mulai obrolan",
-    "translationProblem": "Masalah terjemahan",
     "askToJoin": "Minta bergabung",
     "emptyChatWarningTitle": "Obrolan kosong",
     "emptyChatWarningDesc": "Anda belum mengundang siapa pun ke obrolan Anda. Pergi ke Pengaturan Obrolan untuk mengundang kontak Anda atau Bot. Anda juga dapat melakukannya nanti.",
@@ -3954,17 +3335,13 @@
     "timesUsedIndependently": "Jumlah digunakan secara mandiri",
     "timesUsedWithAssistance": "Jumlah digunakan dengan bantuan",
     "shareInviteCode": "Bagikan kode undangan: {code}",
-    "leaderboard": "Papan peringkat",
     "skipForNow": "Lewati untuk saat ini",
     "permissions": "Izin",
     "spaceChildPermission": "Siapa yang dapat menambahkan obrolan baru ke kursus ini",
-    "addEnvironmentOverride": "Tambahkan override lingkungan",
     "defaultOption": "Default",
     "deleteChatDesc": "Anda yakin ingin menghapus obrolan ini? Ini akan dihapus untuk semua peserta dan semua pesan dalam obrolan tidak akan lagi tersedia untuk latihan atau analitik pembelajaran.",
     "deleteSpaceDesc": "Kursus dan obrolan yang dipilih akan dihapus untuk semua peserta dan semua pesan dalam obrolan tidak akan lagi tersedia untuk latihan atau analitik pembelajaran. Tindakan ini tidak dapat dibatalkan.",
     "launch": "Luncurkan",
-    "searchChats": "Cari obrolan",
-    "maxFifty": "Maks 50",
     "configureSpace": "Konfigurasi kursus",
     "pinMessages": "Pin pesan",
     "setJoinRules": "Atur aturan bergabung",
@@ -3977,7 +3354,6 @@
     "announcements": "Pengumuman",
     "activities": "Kegiatan",
     "access": "Akses",
-    "activitySuggestionTimeoutMessage": "Kami sedang bekerja keras untuk menghasilkan lebih banyak kegiatan untuk Anda, silakan periksa kembali dalam satu menit",
     "howSpaceCanBeFound": "Bagaimana kursus ini dapat ditemukan",
     "private": "Pribadi",
     "cannotBeFoundInSearch": "Tidak dapat ditemukan dalam pencarian",
@@ -3999,9 +3375,6 @@
     "failedToFetchTranscription": "Gagal mengambil transkripsi",
     "deleteEmptySpaceDesc": "Kursus akan dihapus untuk semua peserta. Tindakan ini tidak dapat dibatalkan.",
     "regenerate": "Hasilkan ulang",
-    "mySavedActivities": "Aktivitas Tersimpan Saya",
-    "noSavedActivities": "Tidak ada aktivitas tersimpan",
-    "saveActivity": "Simpan aktivitas ini",
     "failedToPlayVideo": "Gagal memutar video",
     "done": "Selesai",
     "inThisSpace": "Dalam kursus ini",
@@ -4012,18 +3385,10 @@
     "numInvited": "{count} diundang",
     "saved": "Tersimpan",
     "reset": "Atur ulang",
-    "errorGenerateActivityMessage": "Gagal menghasilkan aktivitas",
-    "errorRegenerateActivityMessage": "Gagal menghasilkan ulang aktivitas",
-    "errorLaunchActivityMessage": "Gagal meluncurkan aktivitas",
-    "errorFetchingActivitiesMessage": "Gagal mengambil aktivitas",
     "errorFetchingDefinition": "Gagal mengambil definisi",
     "errorProcessAnalytics": "Gagal memproses analitik",
     "errorDownloading": "Gagal mengunduh",
-    "errorLoadingSpaceChildren": "Gagal memuat obrolan dalam kursus ini",
-    "unexpectedError": "Kesalahan tak terduga.",
-    "pleaseReload": "Silakan muat ulang dan coba lagi.",
     "translationError": "Kesalahan terjemahan",
-    "errorFetchingActivity": "Gagal mengambil aktivitas",
     "check": "Periksa",
     "unableToFindRoom": "Tidak ditemukan obrolan atau kursus dengan kode tersebut. Silakan coba lagi.",
     "numCompletedActivities": "Jumlah aktivitas yang telah diselesaikan",
@@ -4031,23 +3396,14 @@
     "request": "Permintaan",
     "requestAll": "Permintaan Semua",
     "confirmMessageUnpin": "Apakah Anda yakin ingin melepas pin pesan ini?",
-    "createActivityPlan": "Buat rencana aktivitas baru",
-    "saveAndLaunch": "Simpan dan Luncurkan",
-    "launchToSpace": "Luncurkan ke kursus",
-    "numberOfActivities": "Jumlah Sesi Aktivitas",
-    "maximumActivityParticipants": "Setiap Aktivitas dapat memiliki maksimal {count} peserta.",
     "pending": "Menunggu",
     "inactive": "Tidak aktif",
-    "confirmRole": "Konfirmasi peran",
     "openRoleLabel": "TERBUKA",
-    "joinedTheActivity": "👋 {username} bergabung sebagai {role}",
     "finishedTheActivity": "🎯 {username} menyelesaikan aktivitas ini",
     "activitySummaryError": "Ringkasan aktivitas tidak tersedia",
     "requestSummaries": "Minta ringkasan",
-    "generatingNewActivities": "Anda adalah pengguna pertama dari pasangan bahasa ini! Mohon tunggu sebentar, kami sedang menyiapkan aktivitas khusus untuk Anda.",
     "requestAccessTitle": "Minta akses analitik?",
     "requestAccessDesc": "Apakah Anda ingin meminta akses untuk melihat analitik peserta?\n\nJika peserta setuju, admin kursus ini akan dapat melihat:\n    • total kosakata\n    • total konsep tata bahasa\n    • total sesi aktivitas yang diselesaikan\n    • konsep tata bahasa tertentu yang digunakan, dengan benar dan salah\n\nMereka tidak akan dapat melihat:\n    • pesan dalam obrolan di luar kursus\n    • daftar kosakata",
-    "requestAccess": "Permintaan akses ({count})",
     "analyticsInactiveTitle": "Permintaan ke pengguna tidak aktif tidak dapat dikirim",
     "analyticsInactiveDesc": "Pengguna tidak aktif yang belum masuk sejak fitur ini diperkenalkan tidak akan melihat permintaan Anda.\n\nTombol Permintaan akan muncul setelah mereka kembali. Anda dapat mengirim ulang permintaan nanti dengan mengklik tombol Permintaan di bawah nama mereka saat tersedia.",
     "accessRequestedTitle": "Permintaan Akses Analitik",
@@ -4056,7 +3412,6 @@
     "lastUpdated": "Diperbarui\n{time}",
     "activityFinishedMessage": "Semua Selesai!",
     "endForAll": "Akhiri untuk semua",
-    "newCourse": "Kursus Baru",
     "numModules": "{num} modul",
     "coursePlan": "Rencana Kursus",
     "editCourseLater": "Anda dapat mengedit judul template, deskripsi, dan gambar kursus nanti.",
@@ -4070,8 +3425,6 @@
     "accessDesc": "Anda dapat membuat kursus Anda terbuka untuk dunia! Atau, buat kursus Anda pribadi dan aman.",
     "createGroupChatDesc": "Sedangkan sesi aktivitas dimulai dan berakhir, obrolan grup akan tetap terbuka untuk komunikasi rutin.",
     "deleteDesc": "Hanya admin yang dapat menghapus kursus. Ini adalah tindakan destruktif yang menghapus semua pengguna dan menghapus semua obrolan yang dipilih dalam kursus. Lanjutkan dengan hati-hati.",
-    "noCourseFound": "Oh, kursus ini membutuhkan rencana!\n\nRencana kursus adalah rangkaian topik dan aktivitas percakapan.",
-    "additionalParticipants": "+ {num} lainnya",
     "whatNow": "Apa sekarang?",
     "chooseNextActivity": "Pilih aktivitas berikutnya!",
     "letsGo": "Ayo mulai",
@@ -4084,16 +3437,13 @@
     "waitNotDone": "Tunggu, saya belum selesai!",
     "waitingForOthersToFinish": "Menunggu yang lain selesai...",
     "generatingSummary": "Menganalisis obrolan dan menghasilkan hasil",
-    "findCourse": "Cari kursus",
     "pingParticipantsNotification": "{user} sedang mencari pengguna untuk bergabung dalam sesi aktivitas di {room}",
     "course": "Kursus",
     "courses": "Kursus",
     "goToCourse": "Pergi ke kursus: {course}",
     "activityComplete": "Aktivitas ini telah selesai. Ringkasan aktivitas harus tersedia di bawah.",
-    "startNewSession": "Mulai sesi baru",
     "joinOpenSession": "Gabung sesi terbuka",
     "activityNotFound": "Aktivitas tidak ditemukan",
-    "levelUp": "Naik level",
     "myActivities": "Aktivitas saya",
     "openToJoin": "Terbuka untuk bergabung",
     "results": "Hasil",
@@ -4166,10 +3516,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -4179,10 +3525,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -4270,14 +3612,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -4294,10 +3628,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -4310,15 +3640,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -4470,14 +3792,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -4491,14 +3805,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -5669,10 +4975,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5725,19 +5027,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
     },
     "@practice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@speechToTextBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -5764,10 +5058,6 @@
             }
         }
     },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
         "placeholders": {}
@@ -5777,10 +5067,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5797,10 +5083,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -5844,1078 +5126,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@grammarCopyPOSsconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnum": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSverb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaffix": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpunct": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSspace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSsym": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSdet": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpron": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpropn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSintj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERfem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON2": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEqest": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTperf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEobl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEact": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEbrck": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERmasc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEmod": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadverbial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMdigit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnot_proper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEcard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEprop": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEdash": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEsemi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODcnd": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEacc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpast": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcolo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON3": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEinterrogative": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEinfm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEtim": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadnomial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTprog": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMcomplementive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEfut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpres": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERneut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfinalEnding": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEdem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEquot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMger": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEgen": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdef": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEins": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMinf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlong": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEloc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErelativeCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEexcl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON1": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEini": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERperson": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGNyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEvoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEverbType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEprepCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEnumType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnounType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXreflex": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEpronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEpunctSide": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMverbForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERgender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODmood": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTaspect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEpunctType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEtense": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEdegree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEpolite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadvType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumber": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEconjType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpolarity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdefinite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOCvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCMPLcmpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODjus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXrflx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPCspc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpqp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEnshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEmid": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTRELintRel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUnknown": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTevident": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumberPsor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECThab": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEess": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtra": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEequ": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEerg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEben": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcoord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEcons": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTnfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODopt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODadm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODdes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODnec": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODpot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODprp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODqot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMword": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMroman": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMletter": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEmult": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEfrac": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEsets": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPErange": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEdist": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERtri": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERpauc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpa": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON0": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON4": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEform": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEelev": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEhumb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEemp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEexc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintRelPronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEaor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEeps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprosp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMconv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMvnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEantip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcauVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICedir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinvVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcpVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOOD": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITY": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEX": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPC": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTREL": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUNKNOWN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSOR": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintrel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEdir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@other": {
         "type": "String",
         "placeholders": {}
@@ -6928,19 +5138,7 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -7008,70 +5206,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@constructUseCollected": {
         "type": "String",
         "placeholders": {}
@@ -7090,14 +5224,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -7274,71 +5400,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
         "type": "String",
         "placeholders": {}
     },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -7354,27 +5420,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -7438,10 +5484,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -7482,14 +5524,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -7501,14 +5535,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -7546,19 +5572,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
     },
     "@join": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@readingAssistanceOverviewBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -7570,31 +5588,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@makeYourOwnActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -7718,10 +5716,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -7731,10 +5725,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -7751,14 +5741,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -7807,10 +5789,6 @@
         "placeholders": {}
     },
     "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitySuggestionTimeoutMessage": {
         "type": "String",
         "placeholders": {}
     },
@@ -7902,18 +5880,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -7962,22 +5928,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -7990,23 +5940,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8045,30 +5979,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
@@ -8077,24 +5987,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@confirmRole": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -8112,10 +6007,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -8123,14 +6014,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -8172,10 +6055,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -8235,18 +6114,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -8299,10 +6166,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -8329,10 +6192,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -8513,7 +6372,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Periksa kembali besok untuk pembaruan aktivitas.",
-    "activityDropdownDesc": "Ketika Anda selesai dengan aktivitas ini, klik di bawah",
     "languageMismatchTitle": "Ketidaksesuaian bahasa",
     "languageMismatchDesc": "Bahasa target Anda tidak cocok dengan bahasa aktivitas ini. Perbarui bahasa target Anda?",
     "reportWordIssueTooltip": "Laporkan masalah informasi kata",
@@ -8526,10 +6384,6 @@
     "selectAll": "Pilih semua",
     "deselectAll": "Batalkan pilihan semua",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8578,17 +6432,11 @@
         "placeholders": {}
     },
     "startOwn": "Mulai milik saya sendiri",
-    "joinCourseDesc": "Setiap kursus memiliki 8-10 topik berurutan dengan berbagai aktivitas pembelajaran bahasa berbasis tugas.",
     "newMessageInPangeaChat": "📝 Pesan baru di Pangea Chat",
     "shareCourse": "Bagikan kursus",
     "addCourse": "Tambahkan kursus",
-    "joinPublicCourse": "Gabung kursus publik",
     "vocabLevelsDesc": "Di sinilah kata-kata kosakata akan ditempatkan setelah Anda meningkatkannya!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -8601,10 +6449,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -8623,12 +6467,9 @@
     "emojiView": "Tampilan emoji",
     "feedbackDialogDesc": "Saya juga membuat kesalahan! Ada yang bisa membantu saya untuk memperbaiki?",
     "contactHasBeenInvitedToTheCourse": "Kontak telah diundang ke kursus",
-    "activityStatsButtonTooltip": "Info aktivitas",
     "allow": "Izinkan",
     "deny": "Tolak",
     "enabledRenewal": "Aktifkan Pembaruan Langganan",
-    "subscriptionEndsOn": "Langganan Berakhir Pada",
-    "subscriptionRenewsOn": "Langganan Diperbarui Pada",
     "waitForSubscriptionChanges": "Perubahan pada langganan Anda mungkin memerlukan waktu sejenak untuk tercermin di aplikasi.",
     "subscribeReadingAssistance": "Berlangganan untuk membuka kunci alat pesan",
     "aceDisplayName": "Achinese",
@@ -8894,10 +6735,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -8907,14 +6744,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -9833,14 +7662,8 @@
         "placeholders": {}
     },
     "introChatTitle": "Buat Obrolan Perkenalan",
-    "introChatDesc": "Siapa pun di ruang ini dapat memposting.",
     "announcementsChatTitle": "Obrolan Pengumuman",
-    "announcementsChatDesc": "Hanya admin ruang yang dapat memposting.",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9848,13 +7671,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "Sesi terbuka ({num})",
     "inProgressActivitiesTitle": "Sedang berlangsung ({num})",
-    "completedActivitiesTitle": "Selesai ({num})",
     "pickDifferentActivity": "Pilih aktivitas yang berbeda",
     "inOngoingActivity": "Anda memiliki aktivitas yang sedang berlangsung!",
     "@notStartedActivitiesTitle": {
@@ -9866,14 +7684,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -9939,15 +7749,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Anda telah menetapkan emoji untuk {lemma}! Kami akan menggunakan emoji ini untuk mewakili kata dalam aktivitas praktik ke depan.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Menunggu penyelesaian masuk",
     "ssoDialogDesc": "Kami membuka tab baru agar Anda dapat masuk dengan aman.",
     "ssoDialogHelpText": "🤔 Jika Anda tidak melihat tab baru, silakan periksa pemblokir popup Anda.",
@@ -9978,16 +7779,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Kegiatan untuk Membuka Topik Berikutnya",
-    "activitiesToUnlockTopicDesc": "Tentukan jumlah kegiatan untuk membuka topik kursus berikutnya",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Latihan definisi kosakata yang benar",
     "constructUseIncLMDesc": "Latihan definisi kosakata yang salah",
     "constructUseCorLADesc": "Latihan audio kosakata yang benar",
@@ -9995,7 +7786,6 @@
     "constructUseBonus": "Bonus selama latihan kosakata",
     "practiceVocab": "Latihan kosakata",
     "selectMeaning": "Pilih arti",
-    "selectAudio": "Pilih audio yang sesuai",
     "anotherRound": "Putaran lain",
     "activitySettingsOverrideWarning": "Bahasa dan tingkat bahasa ditentukan oleh rencana aktivitas",
     "voice": "Suara",
@@ -10027,10 +7817,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -10048,25 +7834,15 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Unduhan dimulai",
     "webDownloadPermissionMessage": "Jika browser Anda memblokir unduhan, silakan aktifkan unduhan untuk situs ini.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Kemajuan sesi latihan Anda tidak akan disimpan.",
     "practiceGrammar": "Latihan tata bahasa",
     "notEnoughToPractice": "Kirim lebih banyak pesan untuk membuka latihan",
     "constructUseCorGCDesc": "Latihan kategori tata bahasa yang benar",
     "constructUseIncGCDesc": "Latihan kategori tata bahasa yang salah",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -10108,11 +7884,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Suara Pangea Bot",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Permintaan Anda telah dikirim ke admin kursus! Anda akan diizinkan masuk jika mereka menyetujuinya.",
     "@knockDesc": {
         "type": "String",
@@ -10125,16 +7896,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat adalah aplikasi pesan, jadi notifikasi itu penting!",
-    "enableNotificationsDesc": "Izinkan notifikasi",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10163,11 +7924,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "Ada yang tidak beres, dan kami sedang bekerja keras untuk memperbaikinya. Periksa lagi nanti.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Aktifkan bantuan penulisan",
     "autoIGCToolDescription": "Secara otomatis menjalankan alat Pangea Chat untuk memperbaiki pesan yang dikirim ke bahasa target.",
     "@autoIGCToolName": {
@@ -10185,21 +7941,6 @@
     },
     "aboutMeHint": "Tentang saya",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "Idiom",
-    "grammarCopyPOSphrasalv": "Kata Kerja Phrasal",
-    "grammarCopyPOScompn": "Kombinasi",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10238,24 +7979,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "Tata Bahasa",
-    "spanTypeWordChoice": "Pilihan Kata",
     "spanTypeSpelling": "Ejaan",
     "spanTypePunctuation": "Tanda Baca",
     "spanTypeStyle": "Gaya",
     "spanTypeFluency": "Kefasihan",
     "spanTypeAccents": "Aksen",
     "spanTypeCapitalization": "Kapitalisasi",
-    "spanTypeCorrection": "Koreksi",
     "spanFeedbackTitle": "Laporkan masalah koreksi",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -10280,23 +8010,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
     },
     "changedTheChatDescription": "{username} mengubah deskripsi obrolan",
     "changedTheChatName": "{username} mengubah nama obrolan",
-    "newSubSpace": "Ruang sub baru",
-    "moveToDifferentSpace": "Pindah ke ruang yang berbeda",
-    "removeFromSpaceDescription": "Obrolan akan dihapus dari ruang tetapi masih muncul di daftar obrolan Anda.",
     "countChats": "{chats} obrolan",
-    "spaceMemberOf": "Anggota ruang {spaces}",
-    "spaceMemberOfCanKnock": "Anggota ruang {spaces} dapat mengetuk",
-    "donate": "Donasi",
     "startedAPoll": "{username} memulai sebuah jajak pendapat.",
     "poll": "Jajak pendapat",
     "startPoll": "Mulai jajak pendapat",
@@ -10320,23 +8040,15 @@
     "newStickerPack": "Paket stiker baru",
     "stickerPackName": "Nama paket stiker",
     "attribution": "Atribusi",
-    "skipChatBackup": "Lewati cadangan obrolan",
-    "skipChatBackupWarning": "Apakah Anda yakin? Tanpa mengaktifkan cadangan obrolan, Anda mungkin kehilangan akses ke pesan Anda jika Anda mengganti perangkat.",
-    "loadingMessages": "Memuat pesan",
-    "setupChatBackup": "Siapkan cadangan obrolan",
     "noMoreResultsFound": "Tidak ada hasil lagi yang ditemukan",
     "chatSearchedUntil": "Obrolan dicari hingga {time}",
     "federationBaseUrl": "URL Dasar Federasi",
     "clientWellKnownInformation": "Informasi Klien-Terkenal:",
     "baseUrl": "URL Dasar",
     "identityServer": "Server Identitas:",
-    "versionWithNumber": "Versi: {version}",
     "logs": "Log",
-    "advancedConfigs": "Konfigurasi Lanjutan",
     "advancedConfigurations": "Konfigurasi lanjutan",
-    "signInWithLabel": "Masuk dengan:",
     "selectAllWords": "Pilih semua kata yang Anda dengar dalam audio",
-    "joinCourseForActivities": "Bergabunglah dengan kursus untuk mencoba aktivitas.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -10349,18 +8061,6 @@
             "username": {}
         }
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -10368,26 +8068,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -10493,22 +8173,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -10537,19 +8201,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -10557,15 +8209,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10589,12 +8233,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Buka aktivitas latihan",
     "hideEvents": "Sembunyikan acara",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -10692,21 +8331,11 @@
         "placeholders": {}
     },
     "getStarted": "Mulai",
-    "writeAndSpeakWorryFree": "Tulis dan berbicara tanpa khawatir dengan Pangea Bot kapan saja, di mana saja!",
-    "joinLearningCommunities": "Bergabunglah dengan komunitas belajar internasional atau... mulai milikmu sendiri!",
     "playConversationGames": "Mainkan permainan percakapan dengan bot, teman sekelas, dan teman baru!",
     "jumpIntoConversation": "Masuk ke dalam percakapan sejak Hari Pertama dengan alat tulis AI!",
     "playPersonalizedGames": "Mainkan permainan latihan yang dipersonalisasi sesuai kebutuhan kosakata dan tata bahasamu!",
     "learnLanguageWhileTexting": "Pelajari bahasa sambil mengirim pesan kepada teman-temanmu!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -10726,23 +8355,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Tidak melihat orang yang Anda cari? Mereka mungkin perlu mengatur profil mereka menjadi publik di Pengaturan Pembelajaran",
     "suggestedVocab": "Kosakata yang Disarankan",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
     },
     "myGender": "Jenis kelamin saya",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak aktivitas latihan.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -10757,8 +8376,6 @@
     "notificationDeviceSubtitle": "Lihat dan kelola perangkat yang mengirimkan notifikasi push kepada Anda.",
     "notificationRuleDM": "Pesan Langsung",
     "notificationRuleDMDescription": "Memberitahukan pengguna tentang pesan di ruang pesan langsung.",
-    "notificationRuleCourseAndActivity": "Kursus dan Aktivitas",
-    "notificationRuleCourseAndActivityDescription": "Memberitahukan pengguna tentang pesan di kursus, aktivitas, dan obrolan.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -10783,31 +8400,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableEmailNotifications": "Aktifkan notifikasi email",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "joinSpaceOnboardingDesc": "Dalam kelas? Masukkan kode bergabung Anda di sini.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Sorot otomatis pesan audio",
-    "selectAudioMessagesOnPlayDescription": "Secara otomatis sorot pesan audio saat diputar",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10816,7 +8410,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Saya sedang belajar...",
     "alreadySpeak": "Saya sudah bisa berbicara...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -10844,18 +8437,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Kursus ini memiliki topik dengan kurang dari {input} aktivitas. Silakan masukkan angka yang kurang dari atau sama dengan {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Klik di sini untuk masuk kembali.",
     "@clickToLogin": {
@@ -11057,6 +8638,116 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Berlangganan untuk membuka terjemahan interaktif dan pemeriksaan tata bahasa, pemutaran audio, latihan praktik yang dipersonalisasi, dan analitik pembelajaran!",
+    "unlockPracticeActivities": "Buka latihan praktik",
+    "noAnalyticsActivitiesAvailable": "Wow, Anda telah menyelesaikan semua aktivitas yang tersedia! Kirim lebih banyak pesan untuk membuka lebih banyak latihan praktik.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Benar dalam latihan makna kata",
+    "constructUseIgnPADesc": "Diabaikan dalam latihan makna kata",
+    "constructUseIncPADesc": "Salah dalam latihan makna kata",
+    "constructUseCorWLDesc": "Benar dalam latihan mendengarkan kata",
+    "constructUseIncWLDesc": "Salah dalam latihan mendengarkan kata",
+    "constructUseIngWLDesc": "Diabaikan dalam latihan mendengarkan kata",
+    "constructUseCorHWLDesc": "Benar dalam latihan kata tersembunyi",
+    "constructUseIncHWLDesc": "Salah dalam latihan kata tersembunyi",
+    "constructUseIgnHWLDesc": "Diabaikan dalam latihan kata tersembunyi",
+    "constructUseCorLDesc": "Benar dalam latihan lema",
+    "constructUseIncLDesc": "Salah dalam latihan lema",
+    "constructUseIgnLDesc": "Diabaikan dalam latihan lema",
+    "constructUseCorMDesc": "Benar dalam latihan tata bahasa",
+    "constructUseIncMDesc": "Salah dalam latihan tata bahasa",
+    "constructUseIgnMDesc": "Diabaikan dalam latihan tata bahasa",
+    "constructUseEmojiDesc": "Benar dalam latihan emoji",
+    "errorFetchingExercise": "Gagal mengambil latihan praktik",
+    "notificationRuleCourseAndActivity": "Kursus dan Aktivitas",
+    "notificationRuleCourseAndActivityDescription": "Memberitahukan pengguna tentang pesan dalam kursus, aktivitas, dan obrolan.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Klik di sini untuk memperbarui bahasa target Anda.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -11066,5 +8757,1032 @@
     "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
-    }
+    },
+    "visibilityToggleTitle": "Izinkan orang lain mencari kursus Anda",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Jangan lewatkan obrolan!",
+    "enableNotificationsDesc": "Izinkan notifikasi untuk Pangea Chat dan tetap terhubung dengan teman bahasa Anda!",
+    "enableNotifications": "Izinkan notifikasi",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Anda tidak dapat memblokir diri sendiri",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokir nama pengguna",
+    "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Klik pada gelembung pesan untuk memilihnya",
+    "writingAssistanceTutorialIGCButton": "Setelah menulis pesan Anda, klik tombol ini untuk memulai bantuan penulisan",
+    "selectModeTutorialTranslate": "Klik di sini untuk menerjemahkan pesan",
+    "selectModeTutorialAudio": "Klik di sini untuk mendengarkan pesan",
+    "selectModeTutorialExit": "Klik latar belakang untuk kembali ke obrolan",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "Bantuan penulisan memerlukan sedikit lebih banyak waktu dari yang diharapkan. Coba lagi dalam beberapa detik!",
+    "@errorTryAgainSoon": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Ups, ada yang salah… Kami sedang menyelidikinya! Silakan coba lagi nanti.",
+    "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Terima semua",
+    "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Menurunkan tingkat izin pengguna ini akan menghapus hak istimewa admin.",
+    "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Mode ini memungkinkan Anda untuk mengaitkan emoji dengan kata! Pilih sebuah kata untuk mengasosiasikan emoji dengannya!",
+    "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Kata-kata kosakata yang Anda kumpulkan akan muncul di sini. Mulailah mengobrol dan berinteraksi untuk mendapatkan beberapa!",
+    "vocabLevelsDescSeed": "Ini adalah tempat kata-kata kosakata baru akan muncul!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Lebih banyak opsi",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Pilih kata untuk mempelajari lebih lanjut tentangnya",
+    "requireAnalyticsAccessTitle": "Memerlukan akses analitik untuk bergabung",
+    "requireAnalyticsAccessDesc": "Peserta harus memberikan akses ke analitik pembelajaran mereka untuk bergabung dengan kursus ini",
+    "analyticsAccessNoticeTitle": "Akses Analitik Diperlukan",
+    "analyticsAccessNoticeDesc": "Dengan bergabung dengan kursus ini, Anda setuju untuk memberikan akses kepada admin ke analitik pembelajaran Anda.",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Silakan pilih peran yang telah ditentukan di bawah ini atau masukkan tingkat izin kustom. Pilih angka bulat antara 0 dan 100.",
+    "reportContentIssue": "Laporkan masalah konten",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Silakan pilih bahasa dasar dan target yang valid",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Saya menggunakan Pangea Chat untuk",
+    "teach": "Mengajar",
+    "courseCodeStepTitle": "Apakah Anda memiliki kode undangan kursus?",
+    "courseCodeStepHint": "Masukkan kode untuk bergabung",
+    "courseCodeStepSkip": "Saya tidak memiliki kode",
+    "joinedCourseStepTitle": "Selamat datang!",
+    "pickLanguageTeacherStepTitle": "Bahasa apa yang Anda ajarkan?",
+    "pickCefrLevelTeacherStepTitle": "Tingkat apa yang Anda ajarkan?",
+    "pickCefrLevelStudentStepTitle": "Tingkat apa Anda?",
+    "customCourseStepTitle": "Isi formulir ini untuk mendapatkan kursus kustom",
+    "courseCodeStepErrorMessage": "Silakan periksa kode Anda dan coba lagi",
+    "institution": "Institusi",
+    "courseGoals": "Tujuan Kursus",
+    "selectChats": "Pilih Obrolan",
+    "plainTextFile": "Teks",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Selesai ({num})",
+    "suggestion": "Pilih Saran Terbaik",
+    "completeActivityButton": "Saya sudah selesai!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Silakan batasi panjang nama hingga 50 karakter atau kurang.",
+    "enterAName": "Silakan masukkan nama.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Bantuan menulis",
+    "viewError": "Lihat kesalahan",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Dapatkan aplikasi Pangea Chat untuk menerima notifikasi!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Mengerti!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Lanjutkan dengan {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Mengunduh seluruh riwayat pesan, termasuk pengirim, tanggal dikirim, pesan asli, pesan yang dikirim, dan jenis penggunaan.",
+    "analyticsDownloadDesc": "Mengunduh analitik kosakata dan tata bahasa pribadi untuk bahasa yang dipilih.",
+    "courseAnalyticsDownloadDesc": "Mengunduh lema dan penggunaan tata bahasa dalam bahasa yang dipilih untuk semua peserta kursus dengan analitik yang dibagikan.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Kursus ini sesuai dengan tingkat bahasa Anda",
+    "cefrLevelBelow": "Kursus ini di bawah tingkat bahasa Anda.",
+    "cefrLevelAbove": "Kursus ini di atas tingkat bahasa Anda.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Suara pesan audio Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "introChatDetails": "Sapa! Perkenalkan diri Anda kepada peserta kursus lainnya, temukan teman, dan mengobrol di luar kegiatan.",
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Emoji ini sekarang akan mewakili \"{word}\" dalam latihan praktik",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Tampilkan opsi pengembang",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Aktifkan opsi pengembang untuk menampilkan analitik unduhan dan opsi info rinci di seluruh aplikasi.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Menunggu bot untuk bergabung...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Tempat bagi admin kursus untuk membuat pengumuman bagi peserta kursus. Sementara semua orang dapat melihat saluran ini, hanya admin yang dapat mengetiknya.",
+    "introChatDesc": "Siapa pun dalam kursus dapat memposting.",
+    "announcementsChatDesc": "Hanya admin kursus yang dapat memposting.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pronunciationTools": "Alat pengucapan",
+    "audioTranscription": "Transkripsi audio AI",
+    "visualLearnerSupport": "Dukungan pembelajar visual",
+    "instantWritingTranslation": "Terjemahan tulisan instan",
+    "personalizedPracticeExercises": "Latihan praktik yang dipersonalisasi",
+    "vocabularyFlashcards": "Kartu flash kosakata",
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Kembali",
+    "viewCurrentOrFinished": "Lihat yang sedang berlangsung atau selesai",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "resizeCoursePanel": "Ubah ukuran panel kursus",
+    "undo": "Batalkan",
+    "unlock": "Buka kunci",
+    "zoomIn": "Perbesar",
+    "zoomOut": "Perkecil",
+    "stars": "Bintang",
+    "addNewCourse": "Tambahkan kursus baru",
+    "world": "Dunia",
+    "addCourseStartMyOwn": "Mulai kursus saya sendiri",
+    "addCourseEnterCode": "Masukkan kode untuk kursus pribadi",
+    "addCourseBrowsePublic": "Jelajahi kursus publik",
+    "browsePublicCourses": "Jelajahi kursus publik",
+    "editProfile": "Edit profil",
+    "mapSearchHint": "Cari aktivitas",
+    "mapFilterAllLanguages": "Semua bahasa",
+    "mapFilterNotStarted": "Belum dimulai",
+    "mapFilterInProgress": "Sedang berlangsung",
+    "mapFilterCompleted": "Selesai",
+    "mapFilterReset": "Atur Ulang",
+    "activityTypeConversation": "Percakapan",
+    "playAgain": "Main lagi",
+    "reviewActivity": "Tinjau",
+    "welcomeToPangeaChat": "Selamat datang di Pangea Chat",
+    "claimTrial": "Klaim percobaan Anda",
+    "thanksForSigningUp": "Terima kasih telah mendaftar! Ini dia",
+    "sevenDaysFree": "7 HARI GRATIS",
+    "manageTrialInSettings": "Kelola percobaan Anda kapan saja di\nPengaturan Langganan",
+    "noCreditCardRequired": "Tidak diperlukan kartu kredit.",
+    "proFeatures": "PRO",
+    "widenSearch": "Perluas pencarian",
+    "scrollToBottom": "Gulir ke bawah",
+    "courseImage": "Gambar kursus",
+    "avatarPreview": "Prabaca avatar",
+    "emotePreview": "Prabaca emote: {name}",
+    "activityLabel": "Aktivitas: {title}",
+    "resetMapView": "Atur ulang tampilan peta",
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signUpWithEmail": "Daftar dengan email",
+    "unreadLabel": "Belum dibaca: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
+    },
+    "writeAndSpeakWorryFree": "Tulis dan bicaralah tanpa khawatir dengan Pangea Bot kapan saja, di mana saja!",
+    "joinLearningCommunities": "Bergabunglah dengan komunitas pembelajaran internasional, atau mulai milikmu sendiri!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Tutup daftar obrolan",
+    "closeChat": "Tutup obrolan",
+    "closeSession": "Tutup tinjauan aktivitas",
+    "closeCourse": "Tutup kursus",
+    "closeCoursePage": "Tutup halaman kursus",
+    "closeAddCourse": "Tutup tambah kursus",
+    "closeAnalytics": "Tutup analitik",
+    "closeVocabulary": "Tutup kosakata",
+    "closeGrammar": "Tutup tata bahasa",
+    "closePractice": "Tutup latihan",
+    "closeSettings": "Tutup pengaturan",
+    "closeActivity": "Tutup aktivitas",
+    "closeNamed": "Tutup {name}",
+    "clearSearch": "Bersihkan pencarian",
+    "starRowLabel": "{filled} dari {total} bintang telah diselesaikan",
+    "difficultyLabel": "Kesulitan: {cefr}",
+    "writingAssistanceTutorialInputBar": "Anda dapat menulis dalam bahasa apa pun! Kami akan membantu Anda memperbaiki kesalahan.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "halaman {title}",
+    "closeHint": "Tutup petunjuk",
+    "starListLabel": "Aktivitas dan bintang yang disimpan",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Sesuaikan jajak pendapat",
+    "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opsi navigasi",
+    "joinedCourseListLabel": "Daftar kursus yang diikuti",
+    "analyticsAndSettingsLabel": "Opsi Analitik dan Pengaturan",
+    "searchActivitiesLabel": "Cari aktivitas di peta",
+    "filteredActivitiesLabel": "Daftar aktivitas yang difilter",
+    "mapZoomLabel": "Kontrol zoom peta",
+    "activityMapLabel": "Peta aktivitas",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Estonia",
+    "abDisplayName": "Abkhaz",
+    "elDisplayName": "Yunani",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} dari {total} bintang yang diperoleh",
+    "activityNoLongerSupported": "Aktivitas ini dijalankan pada versi lama dari aktivitas dan tidak lagi didukung. Anda masih dapat meninjau apa yang terjadi dalam sesi ini.",
+    "activityLoadFailed": "Tidak dapat memuat aktivitas. Periksa koneksi Anda dan coba lagi.",
+    "levelUpChip": "Tingkat {level}!",
+    "missingCourseOutline": "Kursus ini tidak lagi tersedia",
+    "missingCourseOutlineCta": "Kursus ini tidak lagi tersedia. Pilih rencana kursus baru.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Tutup halaman tambah kursus",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Laporkan masalah informasi tata bahasa",
+    "grammarFeedbackDialogTitle": "Umpan Balik Informasi Tata Bahasa",
+    "grammarFeedbackSubmittedDesc": "Terima kasih! Penjelasan telah diperbarui berdasarkan umpan balik Anda.",
+    "focusOnMap": "Fokus pada peta",
+    "welcome": "Selamat datang",
+    "courseRequest": "Permintaan kursus",
+    "onboarding": "Pengenalan",
+    "selectImageFromDevice": "Pilih gambar dari perangkat",
+    "dinoAvatarLabel": "Seekor dinosaurus dengan kacamata hitam",
+    "bearAvatarLabel": "Seekor beruang yang ramah",
+    "squidAvatarLabel": "Seekor cumi-cumi yang mengenakan headphone",
+    "cartoonAvatarLabel": "Karakter kartun yang bahagia melambaikan tangan",
+    "robotAvatarLabel": "Sebuah robot dengan bintang sebagai mata",
+    "featuresIncludeLabel": "Fitur termasuk",
+    "difficultyListLabel": "Daftar kesulitan",
+    "languageListLabel": "Daftar bahasa",
+    "searchedResultsLabel": "Hasil pencarian untuk '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
+    },
+    "coursePermissions": "Izin kursus",
+    "starsToUnlockObjectiveTitle": "Bintang per Misi",
+    "starsToUnlockObjectiveDesc": "Tetapkan jumlah bintang yang dibutuhkan untuk menyelesaikan setiap misi",
+    "maxStarsPerMissionWarning": "Kursus ini memiliki misi di mana hanya {maxValue} bintang yang dapat diperoleh. Harap masukkan angka kurang dari atau sama dengan {maxValue}.",
+    "removedFromCourseError": "Anda telah dihapus dari kursus ini. Hubungi guru Anda.",
+    "endPractice": "Akhiri latihan",
+    "bodyLabel": "Opsi {page}",
+    "openDM": "Buka pesan langsung",
+    "openNewTab": "Buka di tab baru",
+    "viewProfileImageLabel": "Lihat gambar profil",
+    "profileImageLabel": "Gambar profil",
+    "actionsLabel": "Tindakan",
+    "colorListLabel": "Daftar warna",
+    "chatAppearanceStyleLabel": "Tampilan obrolan dengan gaya pilihan",
+    "volumeLabel": "Volume",
+    "listLabel": "Daftar {description}",
+    "passwordFormLabel": "Formulir ganti kata sandi",
+    "searchLanguagesHint": "Cari bahasa",
+    "searchCountriesHint": "Cari negara",
+    "searchVocabHint": "Cari kosakata",
+    "searchUsersHint": "Cari pengguna",
+    "searchMessagesHint": "Cari pesan",
+    "searchChatsHint": "Cari obrolan",
+    "searchActivitiesHint": "Cari aktivitas",
+    "appInTargetLanguageTitle": "Tampilkan aplikasi dalam bahasa yang saya pelajari",
+    "appInTargetLanguageDesc": "Menu, tombol, dan label akan muncul dalam bahasa target Anda untuk pengalaman imersi. Teks yang tidak diterjemahkan akan kembali ke bahasa Inggris.",
+    "changePasswordSessionExpired": "Sesi Anda telah berakhir. Harap masuk lagi.",
+    "constructUseSugDesc": "Saran yang diterima",
+    "mostPopular": "Terpopuler",
+    "mostSavings": "Penghematan terbanyak",
+    "enterDiscountCode": "Masukkan kode diskon",
+    "yourPlan": "Paket Anda",
+    "subscriptionRenewsOn": "Diperbarui pada {date}",
+    "subscriptionEndsOn": "Berakhir pada {date}",
+    "promoSubscription": "Langganan Promosi",
+    "seatSubscription": "Kursi Institusi",
+    "lifetimeSubscription": "Langganan seumur hidup",
+    "freeSubscription": "GRATIS",
+    "freeTrialDescription": "Anda memiliki uji coba gratis",
+    "manage": "Kelola",
+    "subscriptionHistory": "Riwayat Langganan",
+    "history": "Riwayat",
+    "noPaymentHistoryFound": "Tidak ada riwayat pembayaran yang ditemukan",
+    "cancelAnytime": "Batalkan kapan saja di pengaturan langganan",
+    "pricePerMonth": "{price}/bulan",
+    "pricePerYear": "{price}/tahun",
+    "viewSubscriptionOptions": "Lihat opsi langganan",
+    "apply": "Terapkan",
+    "continueToSubscribe": "Lanjutkan untuk berlangganan",
+    "invalidDiscountCode": "Kode diskon tidak valid",
+    "selectDiscountPlan": "Pilih paket diskon",
+    "discountApplied": "Diskon {discount} diterapkan",
+    "cancelDescriptionWithRenewalDate": "Langganan Anda akan aktif hingga tanggal perpanjangan ({date}), lalu dinonaktifkan. Anda akan tetap memiliki analitik tetapi tidak dapat menggunakan fitur pro.",
+    "cancelDescriptionWithoutRenewalDate": "Langganan Anda akan aktif hingga tanggal perpanjangan, lalu dinonaktifkan. Anda akan tetap memiliki analitik tetapi tidak dapat menggunakan fitur pro.",
+    "change": "Ubah",
+    "deactivateSubscribedAccountWarning": "Ini akan menonaktifkan akun pengguna Anda dan membatalkan langganan Anda. Ini tidak dapat dibatalkan! Apakah Anda yakin?",
+    "newCourseWithoutTitle": "Mulai kursus",
+    "newCourseWithTitle": "Mulai \"{title}\"",
+    "joinCourseWithTitle": "Gabung \"{title}\"",
+    "searchCoursePlans": "Cari rencana kursus",
+    "searchPublicCourses": "Cari kursus publik",
+    "closeSearch": "Tutup pencarian",
+    "subscriptionsNotAvailableInApp": "Langganan tidak dapat dibeli di aplikasi",
+    "subscribeOnTheWeb": "Anda dapat berlangganan di web di pangea.chat",
+    "waitingToFillOneRole": "Menunggu untuk mengisi 1 peran...",
+    "closeArchive": "Tutup arsip",
+    "activityActions": "Tindakan aktivitas",
+    "ongoing": "Sedang Berlangsung",
+    "emptyInviteSearchHint": "Tidak dapat menemukan yang Anda cari? Mereka mungkin perlu mengizinkan profil mereka ditemukan dalam pencarian. Periksa Edit Profil di Pengaturan.",
+    "activityPreviewLabel": "Pratinjau aktivitas: ",
+    "participantRowLabel": "{joined} dari {total} peserta telah bergabung",
+    "ongoingPendingLabel": "Menunggu yang lain bergabung",
+    "joinableLabel": "Dapat bergabung",
+    "inProgressLabel": "Telah selesai",
+    "availableLabel": "Buat aktivitas",
+    "rateActivityTitle": "Bagaimana aktivitas ini?",
+    "rateActivityCommentHint": "Tambahkan komentar (opsional)",
+    "rateActivityCommentRejected": "Komentar Anda tidak dapat diposting. Coba ubah kata-katanya, atau kirim penilaian Anda tanpa komentar.",
+    "rateActivityThanks": "Terima kasih atas masukan Anda!",
+    "activityRatingMeterLabel": "{percent}% positif ({count, plural, =1{1 penilaian} other{{count} penilaian}})",
+    "newActivityBadge": "BARU",
+    "exitVocabPracticeSession": "Progres sesi latihan kosakata Anda saat ini tidak akan disimpan.",
+    "exitGrammarPracticeSession": "Progres sesi latihan tata bahasa Anda saat ini tidak akan disimpan.",
+    "activityFilterButtonsLabel": "Tombol filter level, pemain, dan status",
+    "mapFilterAllLevels": "Semua level",
+    "mapFilterAllPlayers": "Semua pemain",
+    "mapFilterAllStatuses": "Semua status",
+    "mapFiltersShow": "Tampilkan filter",
+    "mapFiltersHide": "Sembunyikan filter",
+    "mapStatusAvailable": "Tersedia",
+    "mapStatusOngoing": "Sedang berlangsung",
+    "mapStatusWaiting": "Menunggu",
+    "mapStatusOpenToJoin": "Terbuka untuk bergabung",
+    "mapMatchesOffscreen": "Ada pertandingan di luar tampilan Anda. Perkecil untuk melihatnya.",
+    "mapFiltersHideMatches": "Filter Anda menyembunyikan semua pertandingan. Perluas pencarian untuk melihatnya.",
+    "mapNoSearchMatches": "Tidak ada aktivitas yang cocok dengan pencarian Anda.",
+    "mapNoActivitiesArea": "Tidak ada aktivitas di area ini.",
+    "practiceSessionTimedOut": "Sesi latihan Anda berakhir setelah {minutes} menit tanpa aktivitas.",
+    "autocorrectMobileOnly": "Khusus seluler",
+    "autocorrectMobileOnlyWarning": "Koreksi otomatis perangkat hanya tersedia di aplikasi seluler.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Kata",
+    "audioWordsDescription": "Putar audio kata saat Anda mengetuknya.",
+    "audioChoicesToolName": "Pilihan",
+    "audioChoicesDescription": "Putar audio untuk pilihan jawaban dalam aktivitas latihan.",
+    "audioIncomingMessagesToolName": "Pesan masuk",
+    "audioIncomingMessagesDescription": "Secara otomatis membacakan pesan yang diterima dalam bahasa target Anda untuk latihan mendengarkan.",
+    "choosePangeaAvatar": "Pilih avatar Pangea",
+    "readAloudNoVoiceTitle": "Tidak ditemukan suara {language} berkualitas tinggi",
+    "readAloudNoVoiceDesktopWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Chrome dan Edge biasanya menyertakan suara berkualitas tinggi.",
+    "readAloudGetChrome": "Dapatkan Chrome",
+    "readAloudNoVoiceMobileWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Aplikasi Pangea Chat dapat menggunakan suara terbaik perangkat Anda.",
+    "readAloudGetApp": "Dapatkan aplikasi",
+    "readAloudNoVoiceIOS": "Perangkat Anda belum mengunduh suara {language} berkualitas tinggi. Unduh satu, lalu coba lagi:",
+    "readAloudNoVoiceIOSSteps": "  • Pengaturan\n  • Aksesibilitas\n  • Konten Lisan\n  • Suara\n  • {language}\n  • Unduh suara yang Ditingkatkan atau Premium",
+    "readAloudNoVoiceAndroid": "Perangkat Anda belum memiliki suara {language} berkualitas tinggi. Instal data suara untuk mesin text-to-speech Anda, lalu coba lagi.",
+    "readAloudOpenVoiceSettings": "Buka pengaturan suara",
+    "streamingSttDegradedLiveBanner": "Transkripsi langsung berjalan di layanan cadangan. Kualitas mungkin bervariasi, harap periksa teksnya.",
+    "streamingSttDegradedToBatchBanner": "Transkripsi langsung tidak tersedia saat ini. Pesan Anda ditranskripsikan dengan cara standar, tanpa pengeditan langsung. Kami sedang berupaya memulihkannya.",
+    "streamingSttLanguageUnsupportedBanner": "Transkripsi langsung belum tersedia untuk bahasa ini. Kami sedang mengupayakannya.",
+    "formLabel": "Formulir {name}",
+    "botDisplayName": "Bot Pangea",
+    "supportDisplayName": "Dukungan",
+    "explorePlayAndLearn": "Jelajahi, mainkan, dan pelajari",
+    "conversationFromDayOne": "Percakapan sejak Hari Pertama",
+    "builtForConnection": "Dibuat untuk koneksi",
+    "aiWhenYouNeedIt": "AI saat Anda membutuhkannya",
+    "practiceTailoredForYou": "Latihan yang disesuaikan untuk Anda"
 }

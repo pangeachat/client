@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-04-03 12:22:00.582916",
+    "@@last_modified": "2026-08-05 11:42:12.884174",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -59,11 +59,6 @@
     },
     "archive": "ארכיון",
     "@archive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "areGuestsAllowedToJoin": "האם משתמשים אורחים מורשים להצטרף",
-    "@areGuestsAllowedToJoin": {
         "type": "String",
         "placeholders": {}
     },
@@ -362,8 +357,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "yourChatBackupHasBeenSetUp": "גיבוי הצ'אט שלך הוגדר.",
-    "@yourChatBackupHasBeenSetUp": {},
     "chatBackup": "גיבוי צ'אט",
     "@chatBackup": {
         "type": "String",
@@ -426,11 +419,6 @@
     },
     "chatDetails": "פרטי צ'אט",
     "@chatDetails": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "chatBackupDescription": "גיבוי הצ'אט שלך מאובטח באמצעות מפתח אבטחה. אנא וודא שאתה לא מאבד אותו.",
-    "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -583,11 +571,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "everythingReady": "הכל מוכן!",
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "fileName": "שם קובץ",
     "@fileName": {
         "type": "String",
@@ -615,11 +598,6 @@
     },
     "fromTheInvitation": "מההזמנה",
     "@fromTheInvitation": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "groupIsPublic": "הקבוצה ציבורית",
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -808,24 +786,10 @@
         "type": "String",
         "description": "Usage hint for the command /react"
     },
-    "createNewSpace": "חלל חדש",
-    "@createNewSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableEncryption": "אפשר הצפנה",
     "@enableEncryption": {
         "type": "String",
         "placeholders": {}
-    },
-    "inviteContactToGroup": "הזמן איש קשר אל {groupName}",
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "deactivateAccountWarning": "פעולה זו תשבית את חשבון המשתמש שלך. אי אפשר לבטל את זה! האם אתה בטוח?",
     "@deactivateAccountWarning": {
@@ -871,11 +835,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "enableEncryptionWarning": "לא תוכל לבטל את ההצפנה יותר. האם אתה בטוח?",
-    "@enableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "encryption": "הצפנה",
     "@encryption": {
         "type": "String",
@@ -916,15 +875,6 @@
     "@extremeOffensive": {
         "type": "String",
         "placeholders": {}
-    },
-    "loadCountMoreParticipants": "טען {count} משתתפים נוספים",
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "homeserver": "שרת בית",
     "@homeserver": {},
@@ -970,11 +920,6 @@
     },
     "connect": "התחבר",
     "@connect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "contactHasBeenInvitedToTheGroup": "איש הקשר הוזמן לקבוצה",
-    "@contactHasBeenInvitedToTheGroup": {
         "type": "String",
         "placeholders": {}
     },
@@ -1081,11 +1026,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noEncryptionForPublicRooms": "אתה יכול להפעיל הצפנה רק כשהחדר כבר לא נגיש לציבור.",
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noRoomsFound": "לא נמצאו חדרים…",
     "@noRoomsFound": {
         "type": "String",
@@ -1132,8 +1072,6 @@
     },
     "oneClientLoggedOut": "אחד מהמכשירים שלך התנתק",
     "@oneClientLoggedOut": {},
-    "addAccount": "הוסף חשבון",
-    "@addAccount": {},
     "editBundlesForAccount": "ערוך חבילות עבור חשבון זה",
     "@editBundlesForAccount": {},
     "participant": "משתתף",
@@ -1175,11 +1113,6 @@
     },
     "passwordHasBeenChanged": "הסיסמה שונתה",
     "@passwordHasBeenChanged": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "passwordRecovery": "שחזור סיסמה",
-    "@passwordRecovery": {
         "type": "String",
         "placeholders": {}
     },
@@ -1237,11 +1170,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "noGoogleServicesWarning": "נראה שאין לך שירותי גוגל בטלפון שלך. זו החלטה טובה לפרטיות שלך! כדי לקבל התרעות ב- FluffyChat אנו ממליצים להשתמש https://microg.org/ או https://unifiedpush.org/.",
-    "@noGoogleServicesWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "noMatrixServer": "{server1} אינו שרת מטריקס, השתמש ב-{server2} במקום זאת?",
     "@noMatrixServer": {
         "type": "String",
@@ -1283,8 +1211,6 @@
     },
     "removeFromBundle": "הסר מחבילה זו",
     "@removeFromBundle": {},
-    "enableMultiAccounts": "(בטא) אפשר ריבוי חשבונות במכשיר זה",
-    "@enableMultiAccounts": {},
     "openInMaps": "פתיחה במפות",
     "@openInMaps": {
         "type": "String",
@@ -1315,15 +1241,6 @@
     "@or": {
         "type": "String",
         "placeholders": {}
-    },
-    "logInTo": "היכנס אל {homeserver}",
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "mention": "הזכיר",
     "@mention": {
@@ -1378,22 +1295,17 @@
     "commandHint_markasdm": "סמן כחלל הודעה ישירה עבור מזהה Matrix הנתון",
     "commandHint_markasgroup": "סמן כקבוצה",
     "checkList": "רשימת בדיקה",
-    "countInvited": "{count} מוזמנים",
     "createGroup": "צור קבוצה",
     "chatPermissions": "הרשאות שיחה",
     "emoteInvalid": "קוד רגש לא חוקי!",
     "emoteKeyboardNoRecents": "רגשות שהיו בשימוש לאחרונה יופיעו כאן...",
     "emotePacks": "חבילות אימוג'י לחדר",
     "emoteSettings": "הגדרות אימוג'י",
-    "globalChatId": "מזהה שיחת גלובלית",
-    "accessAndVisibility": "גישה ונראות",
-    "accessAndVisibilityDescription": "מי מורשה להצטרף לשיחה זו ואיך ניתן לגלות את השיחה.",
     "calls": "שיחות",
     "customEmojisAndStickers": "אמוג'י מדומים וסטיקרים מותאמים אישית",
     "customEmojisAndStickersBody": "הוסף או שתף אמוג'י מותאם אישית או סטיקרים שניתן להשתמש בהם בכל שיחה.",
     "emoteShortcode": "קוד קצר של אימוג'י",
     "enableEmotesGlobally": "הפעלת חבילת אימוג'י באופן גלובלי",
-    "chatDescription": "תיאור השיחה",
     "chatDescriptionHasBeenChanged": "תיאור השיחה שונה",
     "hideRedactedMessages": "הסתר הודעות מצונזרות",
     "hideRedactedMessagesBody": "אם מישהו מצנזר הודעה, ההודעה הזו לא תהיה נראית יותר בשיחה.",
@@ -1416,7 +1328,6 @@
     "ok": "אישור",
     "overview": "סקירה",
     "passwordRecoverySettings": "הגדרות שחזור סיסמה",
-    "pleaseEnterRecoveryKey": "אנא הזן את מפתח השחזור שלך:",
     "pleaseFollowInstructionsOnWeb": "אנא עקוב אחר ההוראות באתר ולחץ על הבא.",
     "privacy": "פרטיות",
     "publicRooms": "חדרים ציבוריים",
@@ -1433,7 +1344,6 @@
     "rejectedTheInvitation": "{username} דחה את ההזמנה",
     "removeAllOtherDevices": "הסר את כל המכשירים האחרים",
     "removedBy": "הוסר על ידי {username}",
-    "removeDevice": "הסר מכשיר",
     "unbanFromChat": "בטל חסימה מהשיחה",
     "removeYourAvatar": "הסר את הסמל האישי שלך",
     "replaceRoomWithNewerVersion": "החלף את החדר בגרסה חדשה יותר",
@@ -1445,8 +1355,6 @@
     "saveFile": "שמור קובץ",
     "search": "חיפוש",
     "security": "אבטחה",
-    "recoveryKey": "מפתח שחזור",
-    "recoveryKeyLost": "איבדת את מפתח השחזור?",
     "send": "שלח",
     "sendAMessage": "שלח הודעה",
     "sendAsText": "שלח כטקסט",
@@ -1465,7 +1373,6 @@
     "separateChatTypes": "הפרד שיחות ישירות וקבוצות",
     "setAsCanonicalAlias": "הגדר ככינוי ראשי",
     "setChatDescription": "הגדר תיאור שיחה",
-    "setPermissionsLevel": "הגדר רמת הרשאות",
     "setStatus": "הגדר מצב",
     "settings": "הגדרות",
     "share": "שתף",
@@ -1475,8 +1382,6 @@
     "presencesToggle": "הצג הודעות סטטוס ממשתמשים אחרים",
     "skip": "דלג",
     "sourceCode": "קוד מקור",
-    "spaceIsPublic": "המקום ציבורי",
-    "spaceName": "שם המקום",
     "startedACall": "{senderName} התחיל שיחה",
     "status": "סטטוס",
     "statusExampleMessage": "איך אתה היום?",
@@ -1488,7 +1393,6 @@
     "theyMatch": "הם תואמים",
     "title": "FluffyChat",
     "tooManyRequestsWarning": "יותר מדי בקשות. אנא נסה שוב מאוחר יותר!",
-    "transferFromAnotherDevice": "העבר ממכשיר אחר",
     "tryToSendAgain": "נסה לשלוח שוב",
     "unavailable": "לא זמין",
     "unbannedUser": "{username} הוסר המניעה מ-{targetName}",
@@ -1498,7 +1402,6 @@
     "unknownEvent": "אירוע לא ידוע '{type}'",
     "unmuteChat": "בטל השתקת שיחה",
     "unpin": "בטל קיבוע",
-    "unreadChats": "{unreadCount, plural, =1{שיחה לא נקראה אחת} other{{unreadCount} שיחות לא נקראו}}",
     "userAndOthersAreTyping": "{username} ו-{count} אחרים מקלידים…",
     "userAndUserAreTyping": "{username} ו-{username2} מקלידים…",
     "userIsTyping": "{username} מקליד…",
@@ -1511,8 +1414,6 @@
     "verifyStart": "התחל אימות",
     "verifySuccess": "אימות הצליח!",
     "verifyTitle": "מאמת חשבון אחר",
-    "videoCall": "שיחת וידאו",
-    "visibilityOfTheChatHistory": "נראות היסטוריית השיחה",
     "visibleForAllParticipants": "נראה לכל המשתתפים",
     "visibleForEveryone": "נראה לכולם",
     "voiceMessage": "הודעת קול",
@@ -1522,10 +1423,7 @@
     "wallpaper": "רקע:",
     "warning": "אזהרה!",
     "weSentYouAnEmail": "שלחנו לך אימייל",
-    "whoCanPerformWhichAction": "מי יכול לבצע איזו פעולה",
-    "whoIsAllowedToJoinThisGroup": "מי מורשה להצטרף לקבוצה זו",
     "whyDoYouWantToReportThis": "מדוע אתה רוצה לדווח על זה?",
-    "wipeChatBackup": "למחוק את גיבוי הצ'אט שלך כדי ליצור מפתח שחזור חדש?",
     "withTheseAddressesRecoveryDescription": "עם כתובות אלה תוכל לשחזר את הסיסמה שלך.",
     "writeAMessage": "כתוב הודעה…",
     "yes": "כן",
@@ -1538,9 +1436,7 @@
     "messageType": "סוג ההודעה",
     "sender": "שולח ההודעה",
     "openGallery": "פתח גלריה",
-    "removeFromSpace": "הסר מהחלל",
     "start": "התחל",
-    "pleaseEnterRecoveryKeyDescription": "כדי לפתוח את ההודעות הישנות שלך, הזן את מפתח השחזור שלך שנוצר בפגישה קודמת. מפתח השחזור שלך אינו הסיסמה שלך.",
     "publish": "פרסם",
     "openChat": "פתח שיחה",
     "markAsRead": "סמן כנקרא",
@@ -1551,12 +1447,9 @@
     "confirmEventUnpin": "האם אתה בטוח שברצונך להסיר את נעיצת האירוע באופן קבוע?",
     "emojis": "אימוג'ים",
     "placeCall": "התקשר",
-    "voiceCall": "שיחת קול",
     "unsupportedAndroidVersion": "גרסת אנדרואיד לא נתמכת",
     "unsupportedAndroidVersionLong": "תכונה זו דורשת גרסת אנדרואיד חדשה יותר. אנא בדוק עדכונים או תמיכה ב-Lineage OS.",
-    "videoCallsBetaWarning": "שים לב ששיחות וידאו נמצאות כרגע בגרסת בטא. ייתכן שהן לא יעבדו כראוי או בכלל בכל הפלטפורמות.",
     "experimentalVideoCalls": "שיחות וידאו ניסיוניות",
-    "emailOrUsername": "דוא\"ל או שם משתמש",
     "addWidget": "הוסף ווידג'ט",
     "widgetVideo": "וידאו",
     "widgetEtherpad": "הערת טקסט",
@@ -1578,35 +1471,19 @@
     "youKickedAndBanned": "🙅 הוצאת והחרמת את {user}",
     "youUnbannedUser": "שיחררת את {user}",
     "hasKnocked": "🚪 {user} דפק בדלת",
-    "usersMustKnock": "המשתמשים חייבים לדפוק בדלת",
-    "noOneCanJoin": "אף אחד לא יכול להצטרף",
     "knock": "דפוק",
     "users": "משתמשים",
-    "unlockOldMessages": "פתח הודעות ישנות",
-    "storeInSecureStorageDescription": "אחסן את מפתח השחזור באחסון המאובטח של המכשיר הזה.",
-    "saveKeyManuallyDescription": "שמור את המפתח הזה ידנית על ידי הפעלת תיבת השיתוף של המערכת או הלוח.",
-    "storeInAndroidKeystore": "אחסן ב-Android KeyStore",
-    "storeInAppleKeyChain": "אחסן ב-Apple KeyChain",
-    "storeSecurlyOnThisDevice": "אחסן באופן מאובטח במכשיר זה",
     "countFiles": "{count} קבצים",
     "user": "משתמש",
     "custom": "מותאם אישית",
-    "foregroundServiceRunning": "התראה זו מופיעה כאשר השירות הקדמי פועל.",
-    "screenSharingTitle": "שיתוף מסך",
-    "screenSharingDetail": "אתה משתף את המסך שלך ב-FuffyChat",
     "whyIsThisMessageEncrypted": "מדוע ההודעה הזו בלתי קריאה?",
     "noKeyForThisMessage": "זה יכול לקרות אם ההודעה נשלחה לפני שהתחברת לחשבונך במכשיר זה.\n\nיכול גם להיות שהשולח חסם את המכשיר שלך או שמשהו השתבש בחיבור לאינטרנט.\n\nהאם אתה יכול לקרוא את ההודעה בסשן אחר? אז תוכל להעביר את ההודעה ממנו! עבור להגדרות > מכשירים וודא שהמכשירים שלך אושרו זה את זה. כאשר תפתח את החדר בפעם הבאה ושני הסשנים יהיו בחזית, המפתחות יועברו אוטומטית.\n\nלא רוצה לאבד את המפתחות בעת יציאה או החלפת מכשירים? ודא שהפעלת את גיבוי הצ'אט בהגדרות.",
     "newGroup": "קבוצה חדשה",
     "newSpace": "מרחב חדש",
-    "enterSpace": "היכנס למרחב",
     "allSpaces": "כל המרחבים",
     "hidePresences": "הסתר רשימת סטטוס?",
     "doNotShowAgain": "אל תציג שוב",
     "wasDirectChatDisplayName": "שיחה ריקה (הייתה {oldDisplayName})",
-    "newSpaceDescription": "מרחבים מאפשרים לך לאחד את השיחות שלך ולבנות קהילות פרטיות או ציבוריות.",
-    "encryptThisChat": "הצפן שיחה זו",
-    "disableEncryptionWarning": "מסיבות אבטחה, אינך יכול לבטל את ההצפנה בשיחה שבה היא הופעלה קודם לכן.",
-    "sorryThatsNotPossible": "סליחה... זה לא אפשרי",
     "deviceKeys": "מפתחות מכשיר:",
     "reopenChat": "פתח מחדש את השיחה",
     "noBackupWarning": "אזהרה! ללא הפעלת גיבוי שיחה, תאבד גישה להודעות המוצפנות שלך. מומלץ מאוד להפעיל את גיבוי השיחה לפני יציאה מהחשבון.",
@@ -1619,7 +1496,6 @@
     "openLinkInBrowser": "פתח את הקישור בדפדפן",
     "reportErrorDescription": "😞 אוי לא. קרה משהו. אם תרצה, תוכל לדווח על באג זה למפתחים.",
     "report": "דווח",
-    "setTheme": "הגדר נושא:",
     "setColorTheme": "הגדר נושא צבע:",
     "invite": "הזמן",
     "inviteGroupChat": "📨 הזמנת שיחת קבוצה",
@@ -1638,12 +1514,8 @@
     "yourGlobalUserIdIs": "זיהוי המשתמש הגלובלי שלך הוא: ",
     "noUsersFoundWithQuery": "לצערנו לא נמצא משתמש עם \"{query}\". אנא בדוק אם טעות בהקלדה.",
     "knocking": "דופק",
-    "chatCanBeDiscoveredViaSearchOnServer": "הצ'אט ניתן לגילוי באמצעות החיפוש ב-{server}",
-    "searchChatsRooms": "חפש ב-#שיחות, @משתמשים...",
     "nothingFound": "לא נמצא כלום...",
     "groupName": "שם הקבוצה",
-    "createGroupAndInviteUsers": "צור קבוצה והזמן משתמשים",
-    "groupCanBeFoundViaSearch": "הקבוצה ניתנת למציאה באמצעות חיפוש",
     "wrongRecoveryKey": "סליחה... זה לא נראה מפתח השחזור הנכון.",
     "startConversation": "התחל שיחה",
     "commandHint_sendraw": "שלח json גולמי",
@@ -1657,11 +1529,8 @@
     "pleaseChooseAStrongPassword": "אנא בחר סיסמה חזקה",
     "passwordsDoNotMatch": "הסיסמאות אינן תואמות",
     "passwordIsWrong": "הסיסמה שהזנת שגויה",
-    "publicChatAddresses": "כתובות שיחות ציבוריות",
-    "createNewAddress": "צור כתובת חדשה",
     "joinSpace": "הצטרף למרחב",
     "publicSpaces": "מרחבים ציבוריים",
-    "addChatOrSubSpace": "הוסף שיחה או תת-מרחב",
     "subspace": "תת-מרחב",
     "decline": "דחה",
     "thisDevice": "התקן זה:",
@@ -1670,15 +1539,11 @@
     "searchMore": "חפש עוד...",
     "gallery": "גלריה",
     "files": "קבצים",
-    "sessionLostBody": "הסשן שלך אבד. אנא דווח על שגיאה זו למפתחים ב-{url}. הודעת השגיאה היא: {error}",
-    "restoreSessionBody": "האפליקציה מנסה לשחזר את הסשן שלך מהגיבוי. אנא דווח על שגיאה זו למפתחים ב-{url}. הודעת השגיאה היא: {error}",
     "sendReadReceipts": "שלח אישורי קריאה",
     "sendTypingNotificationsDescription": "משתתפי השיחה האחרים יכולים לראות מתי אתה מקליד הודעה חדשה.",
     "sendReadReceiptsDescription": "משתתפי השיחה האחרים יכולים לראות מתי קראת הודעה.",
     "formattedMessages": "הודעות מעוצבות",
     "formattedMessagesDescription": "הצג תוכן הודעות עשיר כמו טקסט מודגש באמצעות מרקרד.",
-    "verifyOtherUser": "🔐 אימות משתמש אחר",
-    "verifyOtherUserDescription": "אם תאמת משתמש אחר, תוכל להיות בטוח שאתה באמת כותב לאדם הנכון. 💪\n\nכאשר תתחיל תהליך אימות, אתה והמשתמש האחר תראו חלון קופץ באפליקציה. שם תראו סדרת אמויות או מספרים שעליכם להשוות ביניהם.\n\nהדרך הטובה ביותר לעשות זאת היא להיפגש או להתחיל שיחת וידאו. 👭",
     "verifyOtherDevice": "🔐 אימות מכשיר אחר",
     "verifyOtherDeviceDescription": "כאשר תאמת מכשיר אחר, מכשירים אלה יוכלו להחליף מפתחות, מה שישפר את האבטחה הכוללת שלך. 💪 כאשר תתחיל תהליך אימות, יופיע חלון קופץ באפליקציה בשני המכשירים. שם תראו סדרת אמויות או מספרים שעליכם להשוות ביניהם. עדיף שיהיו שני המכשירים זמינים לפני שתתחיל את תהליך האימות. 🤳",
     "acceptedKeyVerification": "{sender} אישר אימות מפתח",
@@ -1714,10 +1579,6 @@
     "updateInstalled": "🎉 עדכון {version} הותקן!",
     "changelog": "שינויים",
     "sendCanceled": "השליחה בוטלה",
-    "loginWithMatrixId": "התחבר עם מזהה Matrix",
-    "discoverHomeservers": "גלה שרתי בית",
-    "whatIsAHomeserver": "מהו שרת בית?",
-    "homeserverDescription": "כל הנתונים שלך נשמרים בשרת הבית, בדיוק כמו ספק דואר אלקטרוני. תוכל לבחור באיזה שרת בית להשתמש, ועדיין לתקשר עם כולם. למידע נוסף בכתובת https://matrix.org.",
     "doesNotSeemToBeAValidHomeserver": "נראה שזה לא שרת בית תואם. כתובת URL שגויה?",
     "calculatingFileSize": "חישוב גודל הקובץ...",
     "prepareSendingAttachment": "הכן שליחת קובץ מצורף...",
@@ -1729,11 +1590,9 @@
     "oneOfYourDevicesIsNotVerified": "אחד מהמכשירים שלך לא מאומת",
     "noticeChatBackupDeviceVerification": "הערה: כאשר אתה מחבר את כל המכשירים לגיבוי הצ'אט, הם מאומתים אוטומטית.",
     "continueText": "המשך",
-    "welcomeText": "היי היי 👋 זה FluffyChat. תוכל להתחבר לכל שרת בית שתואם ל-https://matrix.org. ואז לתקשר עם כל אחד. זה רשת הודעות מבוזרת עצומה!",
     "blur": "טשטוש:",
     "opacity": "אטימות:",
     "setWallpaper": "הגדר רקע",
-    "manageAccount": "נהל את החשבון",
     "noContactInformationProvided": "השרת לא מספק פרטי יצירת קשר תקפים",
     "contactServerAdmin": "צור קשר עם מנהל השרת",
     "contactServerSecurity": "צור קשר עם אבטחת השרת",
@@ -1752,11 +1611,8 @@
     "unableToJoinChat": "לא ניתן להצטרף לשיחה. ייתכן שהצד השני סגר את השיחה כבר.",
     "previous": "קודם",
     "otherPartyNotLoggedIn": "הצד השני כרגע לא מחובר ולכן לא יכול לקבל הודעות!",
-    "appWantsToUseForLogin": "השתמש ב'{server}' כדי להתחבר",
-    "appWantsToUseForLoginDescription": "אתה מאשר בזאת שהאפליקציה והאתר ישתפו מידע עליך.",
     "open": "פתח",
     "waitingForServer": "מחכה לשרת...",
-    "appIntroduction": "FluffyChat מאפשר לך לתקשר עם החברים שלך דרך אפליקציות מסרים שונות. למידע נוסף בכתובת https://matrix.org או פשוט לחץ *המשך*.",
     "newChatRequest": "📩 בקשת שיחה חדשה",
     "contentNotificationSettings": "הגדרות התראות תוכן",
     "generalNotificationSettings": "הגדרות התראות כלליות",
@@ -1831,11 +1687,9 @@
     "taTooltip": "שימוש ב-L2 עם סיוע תרגום",
     "interactiveTranslatorSliderHeader": "מתרגם אינטראקטיבי",
     "interactiveGrammarSliderHeader": "בודק דקדוק אינטראקטיבי",
-    "interactiveTranslatorRequired": "נדרש",
     "waTooltip": "שימוש ב-L2 ללא סיוע",
     "interactiveTranslator": "סיוע בתרגום",
     "noIdenticalLanguages": "אנא בחר שפות בסיסיות ומטרה שונות",
-    "searchBy": "חפש לפי מדינה ושפות",
     "joinWithClassCode": "הצטרף לקורס",
     "languageLevelPreA1": "מתחיל נמוך (פרה A1)",
     "languageLevelA1": "מתחיל בינוני (A1)",
@@ -1856,19 +1710,14 @@
     "saveChanges": "שמור שינויים",
     "publicProfileTitle": "אפשר למצוא את הפרופיל שלי בחיפוש",
     "publicProfileDesc": "על ידי הפעלה, אתה מאפשר למשתמשים אחרים למצוא את הפרופיל שלך בשורת החיפוש הגלובלית ולשלוח בקשות לשיחה. בשלב זה, תוכל לבחור לקבל או לדחות את הבקשה.",
-    "errorDisableIT": "עזרה בתרגום מושבתת.",
-    "errorDisableIGC": "עזרה בדקדוק מושבתה.",
     "errorDisableITUserDesc": "לחץ כאן לעדכון הגדרות עזרה בתרגום",
     "errorDisableIGCUserDesc": "לחץ כאן לעדכון הגדרות עזרה בדקדוק",
     "errorDisableITClassDesc": "עזרה בתרגום מושבתת עבור הקורס שבו נמצא הצ'אט הזה.",
     "errorDisableIGCClassDesc": "עזרה בדקדוק מושבתת עבור הקורס שבו נמצא הצ'אט הזה.",
-    "error405Title": "שפות לא מוגדרות",
     "error405Desc": "אנא הגדר את שפותיך בתפריט הראשי > הגדרות למידה.",
     "termsAndConditions": "תנאים והגבלות",
     "andCertifyIAmAtLeast13YearsOfAge": "ומאשר שאני בן לפחות 16 שנים.",
-    "error502504Title": "וואו, יש הרבה תלמידים באינטרנט!",
     "error502504Desc": "כלי תרגום ודקדוק עלולים להיות איטיים או לא זמינים בזמן שהבוטים של פנגיאה מעדכנים.",
-    "error404Title": "שגיאת תרגום!",
     "error404Desc": "בוט פנגיאה לא בטוח איך לתרגם את זה...",
     "errorPleaseRefresh": "אנחנו בודקים את זה! אנא טען מחדש ונסה שוב.",
     "connectedToStaging": "מחובר לסביבת בדיקה",
@@ -1906,13 +1755,9 @@
     "definitionsToolName": "הגדרות מילים",
     "definitionsToolDescription": "כאשר מופעל, מילים שמודגשות בכחול ניתנות ללחיצה לקבלת הגדרות. לחץ על ההודעות כדי לגשת להגדרות.",
     "welcomeBack": "ברוכים השבים! אם היית חלק מניסוי 2023-2024, אנא צור איתנו קשר לקבלת המנוי המיוחד שלך לניסוי. אם אתה מורה שרכש (או המוסד שלך רכש) רישיונות לכיתה שלך, צור איתנו קשר למנוי המורה שלך.",
-    "downloadTxtFile": "הורד קובץ טקסט",
-    "downloadCSVFile": "הורד קובץ CSV",
     "promotionalSubscriptionDesc": "יש לך כרגע מנוי קידום מכירות לכל החיים. שלח הודעה ל-support@pangea.chat לעזרה בשינוי המנוי שלך.",
     "originalSubscriptionPlatform": "המנוי נרכש דרך {purchasePlatform}",
     "oneWeekTrial": "ניסיון לשבוע אחד",
-    "downloadXLSXFile": "הורד קובץ אקסל",
-    "unkDisplayName": "לא ידוע",
     "wwCountryDisplayName": "עולם רחב",
     "afCountryDisplayName": "אפגניסטן",
     "axCountryDisplayName": "איי אלנד",
@@ -2195,7 +2040,6 @@
     "trialPeriodExpired": "תקופת הניסיון שלך תמה",
     "translations": "תרגומים",
     "definitions": "הגדרות",
-    "subscribedToUnlockTools": "הירשם כדי לפתוח תרגום אינטראקטיבי ובדיקת דקדוק, השמעת קול, פעילויות תרגול מותאמות אישית וניתוחי למידה!",
     "translationTooltip": "תרגם",
     "kickBotWarning": "הסרת בוט פנגיאה תסיר את בוט השיחה משיחה זו.",
     "refresh": "רענן",
@@ -2208,24 +2052,19 @@
     "chatCapacityHasBeenChanged": "קיבולת השיחה שונתה",
     "chatCapacitySetTooLow": "קיבולת השיחה חייבת להיות לפחות {count}.",
     "chatCapacityExplanation": "קיבולת שיחה מגבילה את מספר החברים המורשים בשיחה.",
-    "tooManyRequest": "יותר מדי בקשות, אנא נסה שוב מאוחר יותר.",
     "enterNumber": "אנא הזן ערך מספר שלם.",
     "practice": "תרגול",
-    "speechToTextBody": "להודעות קוליות, תוכל לראות תמלול וגם את ניקוד מילות לדקה של הדובר.",
     "versionNotFound": "הגרסה לא נמצאה",
     "fetchingVersion": "מבצע טעינת גרסה...",
     "versionFetchError": "שגיאה בטעינת הגרסה",
     "versionText": "גרסה: {version}+{buildNumber}",
-    "l1TranslationBody": "הודעות בשפת היסוד שלך לא יתורגמו.",
     "deleteSubscriptionWarningTitle": "יש לך מנוי פעיל",
     "deleteSubscriptionWarningBody": "מחיקת החשבון שלך לא תבטל אוטומטית את המנוי שלך.",
     "manageSubscription": "ניהול המנוי",
-    "error520Title": "אנא נסה שוב.",
     "error520Desc": "סליחה, לא הצלחנו להבין את ההודעה שלך...",
     "wordsUsed": "מילים בשימוש",
     "level": "רמה",
     "morphsUsed": "מורפמות בשימוש",
-    "translationChoicesBody": "לחץ והחזק אפשרות לקבלת רמז.",
     "grammar": "דקדוק",
     "contactHasBeenInvitedToTheChat": "הקשר הוזמן לשיחה",
     "inviteChat": "📨 הזמנת שיחה",
@@ -2236,280 +2075,9 @@
     "l2SupportFull": "מלא",
     "playAudio": "נגן",
     "stop": "עצור",
-    "grammarCopyPOSsconj": "מילת קישור משנית",
-    "grammarCopyPOSnum": "מספר",
-    "grammarCopyPOSverb": "פועל",
-    "grammarCopyPOSaffix": "סיומת",
-    "grammarCopyPOSpart": "חלקיק",
-    "grammarCopyPOSadj": "תואר תואר",
-    "grammarCopyPOScconj": "מילת קישור משותפת",
-    "grammarCopyPOSpunct": "סימן פיסוק",
-    "grammarCopyPOSadv": "תואר הפועל",
-    "grammarCopyPOSaux": "עזר",
-    "grammarCopyPOSspace": "רווח",
-    "grammarCopyPOSsym": "סמל",
-    "grammarCopyPOSdet": "מילית",
-    "grammarCopyPOSpron": "מִשְׁתַּמֵּשׁ",
-    "grammarCopyPOSadp": "הַקְשָׁרָה",
-    "grammarCopyPOSpropn": "שֵׁם יִיחוּד",
-    "grammarCopyPOSnoun": "שֵׁם",
-    "grammarCopyPOSintj": "הַהַכָּחָה",
-    "grammarCopyPOSx": "אחר",
-    "grammarCopyGENDERfem": "נְקֵבָה",
-    "grammarCopyPERSON2": "אישִׁית שֵׁנִית",
-    "grammarCopyMOODimp": "ציווי",
-    "grammarCopyPUNCTTYPEqest": "שְׁאֵלָה",
-    "grammarCopyASPECTperf": "שלם",
-    "grammarCopyCASEaccnom": "נִסְיוֹן, שֵׁם הַכְּרוּת",
-    "grammarCopyCASEobl": "עָקֵב",
-    "grammarCopyVOICEact": "פעיל",
-    "grammarCopyPUNCTTYPEbrck": "סְגוֹלָה",
-    "grammarCopyNOUNTYPEart": "מאמר",
-    "grammarCopyNUMBERsing": "יחיד",
-    "grammarCopyGENDERmasc": "זָכָר",
-    "grammarCopyVERBTYPEmod": "מודאלי",
-    "grammarCopyADVTYPEadverbial": "תואר הפועל",
-    "grammarCopyTENSEperi": "פרפרזטי",
-    "grammarCopyNUMFORMdigit": "ספרתי",
-    "grammarCopyNOUNTYPEnot_proper": "לא נכון",
-    "grammarCopyNUMTYPEcard": "מספרי",
-    "grammarCopyNOUNTYPEprop": "נכון",
-    "grammarCopyPUNCTTYPEdash": "מקף",
-    "grammarCopyPUNCTTYPEyes": "כן",
-    "grammarCopyPUNCTTYPEsemi": "נקודה פסיק",
-    "grammarCopyPUNCTTYPEcomm": "פסיק",
-    "grammarCopyMOODcnd": "תנאי",
-    "grammarCopyCASEacc": "נושא ישיר",
-    "grammarCopyPARTTYPEpart": "חלקי",
-    "grammarCopyTENSEpast": "עבר",
-    "grammarCopyDEGREEsup": "שיא",
-    "grammarCopyPUNCTTYPEcolo": "נקודתיים",
-    "grammarCopyPERSON3": "גוף שלישי",
-    "grammarCopyNUMBERplur": "רבים",
-    "grammarCopyPRONTYPEnpr": "שם עצם פרטי",
-    "grammarCopyPRONTYPEinterrogative": "שאלתית",
-    "grammarCopyPOLITEinfm": "לא פורמלי",
-    "grammarCopyADVTYPEtim": "זמן",
-    "grammarCopyPOLARITYneg": "שלילי",
-    "grammarCopyNUMTYPEtot": "סך הכל",
-    "grammarCopyADVTYPEadnomial": "שמות תואר",
-    "grammarCopyASPECTprog": "מתקדם",
-    "grammarCopyMOODsub": "שוליים",
-    "grammarCopyVERBFORMcomplementive": "משלים",
-    "grammarCopyCASEnom": " nominative",
-    "grammarCopyTENSEfut": "עתיד",
-    "grammarCopyCASEdat": "דאטיב",
-    "grammarCopyTENSEpres": "הווה",
-    "grammarCopyGENDERneut": "נקבה",
-    "grammarCopyPRONTYPErel": "יחסי",
-    "grammarCopyVERBFORMfinalEnding": "סיום סופי",
-    "grammarCopyPRONTYPEdem": "מורה",
-    "grammarCopyPREPCASEpre": "קודם",
-    "grammarCopyVERBFORMfin": "סופי",
-    "grammarCopyDEGREEpos": "חיובי",
-    "grammarCopyPUNCTTYPEquot": "ציטוט",
-    "grammarCopyVERBFORMger": "גזור",
-    "grammarCopyVOICEpass": "פסיבי",
-    "grammarCopyCASEgen": "גניטיבי",
-    "grammarCopyTENSEprs": "הווה",
-    "grammarCopyDEFINITEdef": "מוגדר",
-    "grammarCopyNUMTYPEord": "סידורי",
-    "grammarCopyCASEins": "כלי",
-    "grammarCopyVERBFORMinf": "בינוני",
-    "grammarCopyVERBFORMaux": "עזרי",
-    "grammarCopyNUMFORMlong": "ארוך",
-    "grammarCopyCASEloc": "מקומי",
-    "grammarCopyMOODind": "מצביע",
-    "grammarCopyDEGREEcmp": "השוואתי",
-    "grammarCopyCASErelativeCase": "יחסי",
-    "grammarCopyPUNCTTYPEexcl": "התרחשות",
-    "grammarCopyPERSON1": "גוף ראשון",
-    "grammarCopyPUNCTSIDEini": "התחלתי",
-    "grammarCopyGENDERperson": "מין",
-    "grammarCopyFOREIGNyes": "זר",
-    "grammarCopyVOICEvoice": "קול",
-    "grammarCopyVERBTYPEverbType": "פועל",
-    "grammarCopyPOSSpass": "קניין",
-    "grammarCopyPREPCASEprepCase": "מילית יחס",
-    "grammarCopyNUMTYPEnumType": "מספרי",
-    "grammarCopyNOUNTYPEnounType": "שֵם",
-    "grammarCopyREFLEXreflex": "רפלקסיבי",
-    "grammarCopyPRONTYPEpronType": "מִשְׁמָר",
-    "grammarCopyPUNCTSIDEpunctSide": "צד סימני פיסוק",
-    "grammarCopyVERBFORMverbForm": "פועל",
-    "grammarCopyGENDERgender": "מין",
-    "grammarCopyMOODmood": "מצב רוח",
-    "grammarCopyASPECTaspect": "היבט",
-    "grammarCopyPUNCTTYPEpunctType": "סימני פיסוק",
-    "grammarCopyTENSEtense": "זמן",
-    "grammarCopyDEGREEdegree": "דרגה",
-    "grammarCopyPOLITEpolite": "נימוס",
-    "grammarCopyADVTYPEadvType": "תואר הפועל",
-    "grammarCopyNUMFORMnumber": "מספר",
-    "grammarCopyCONJTYPEconjType": "מילת קישור",
-    "grammarCopyPOLARITYpolarity": "הגדרה חיובית/שלילית",
-    "grammarCopyCASEcase": "מקרה",
-    "grammarCopyDEFINITEdefinite": "הגדרה",
-    "grammarCopyNUMFORMnumForm": "מספרי",
-    "grammarCopyPRONTYPEadn": "שמות תואר",
-    "grammarCopyVOCvoc": "קריאה",
-    "grammarCopyCMPLcmpl": "משלים",
-    "grammarCopyADVadv": "תואר הפועל",
-    "grammarCopyMOODjus": "ציווי",
-    "grammarCopyGENDERcom": "מין משותף",
-    "grammarCopyREFLEXrflx": "רפלקסיבי",
-    "grammarCopyPARTTYPEpar": "חלקי",
-    "grammarCopySPCspc": "ספציפי",
-    "grammarCopyTENSEpqp": "זמן עבר מושלם",
-    "grammarCopyREFLEXref": "רפלקסיבי",
-    "grammarCopyPUNCTTYPEnshrt": "קצר",
-    "grammarCopyNUMBERdual": "זוגי",
-    "grammarCopyNUMFORMlng": "ארוך",
-    "grammarCopyVOICEmid": "אמצעי",
-    "grammarCopyINTRELintRel": "שאלי, יחס",
-    "grammarCopyINTint": "שאלי",
-    "grammarCopyVOICEcaus": "סיבתי",
-    "grammarCopyUnknown": "לא ידוע",
-    "grammarCopyEVIDENTevident": "עדותיות",
-    "grammarCopyNUMFORMnumberPsor": "מספר המחזיק",
-    "grammarCopyASPECThab": "הרגלי",
-    "grammarCopyCASEabl": "סביל",
-    "grammarCopyCASEall": "כללי",
-    "grammarCopyCASEess": "מצבי",
-    "grammarCopyCASEtra": "טרנסליטיבי",
-    "grammarCopyCASEequ": "שוויוני",
-    "grammarCopyCASEdis": "מפוזר",
-    "grammarCopyCASEabs": "במקרה סופי",
-    "grammarCopyCASEerg": "ארגטיבי",
-    "grammarCopyCASEcau": "סיבתי",
-    "grammarCopyCASEben": "תועלתני",
-    "grammarCopyCASEtem": "זמני",
-    "grammarCopyCONJTYPEcoord": "קואורדינטיבי",
-    "grammarCopyDEFINITEcons": "מצב בניין",
-    "grammarCopyDEGREEabs": "דרגה מוחלטת",
-    "grammarCopyEVIDENTfh": "עדות עובדתית",
-    "grammarCopyEVIDENTnfh": "עדות לא-עובדתית",
-    "grammarCopyMOODopt": "רצוני",
-    "grammarCopyMOODadm": "מאמץ",
-    "grammarCopyMOODdes": "רצוני",
-    "grammarCopyMOODnec": "נחיצותי",
-    "grammarCopyMOODpot": "פוטנציאלי",
-    "grammarCopyMOODprp": "הצעה",
-    "grammarCopyMOODqot": "ציטוטי",
-    "grammarCopyNUMFORMword": "צורת מילה",
-    "grammarCopyNUMFORMroman": "מספר רומאי",
-    "grammarCopyNUMFORMletter": "צורת אות",
-    "grammarCopyNUMTYPEmult": "כפל",
-    "grammarCopyNUMTYPEfrac": "שבר",
-    "grammarCopyNUMTYPEsets": "קבוצה",
-    "grammarCopyNUMTYPErange": "טווח",
-    "grammarCopyNUMTYPEdist": "מפוזר",
-    "grammarCopyNUMBERtri": "ניסיון",
-    "grammarCopyNUMBERpauc": "פאוקאלי",
-    "grammarCopyNUMBERgrpa": "פאוקאלי גדול",
-    "grammarCopyNUMBERgrpl": "רבים גדולים",
-    "grammarCopyNUMBERinv": "הפוך",
-    "grammarCopyPERSON0": "אפס",
-    "grammarCopyPERSON4": "רביעי",
-    "grammarCopyPOLITEform": "רשמי",
-    "grammarCopyPOLITEelev": "מוגבה",
-    "grammarCopyPOLITEhumb": "ענווה",
-    "grammarCopyPRONTYPEemp": "הדגשה",
-    "grammarCopyPRONTYPEexc": "התרחשות בהתרסה",
-    "grammarCopyPRONTYPErcp": "הדדי",
-    "grammarCopyPRONTYPEintRelPronType": "שאלתית-יחסית",
-    "grammarCopyTENSEaor": "עתיד פשוט",
-    "grammarCopyTENSEeps": "אפיסטמי",
-    "grammarCopyTENSEprosp": "עתידי",
-    "grammarCopyVERBFORMpart": "צורת חלק",
-    "grammarCopyVERBFORMconv": "צורת קישור",
-    "grammarCopyVERBFORMvnoun": "שם פועל שמני",
-    "grammarCopyVOICEantip": "אנטי-פסיבי",
-    "grammarCopyVOICEcauVoice": "סיבתית",
-    "grammarCopyVOICedir": "ישיר",
-    "grammarCopyVOICEinvVoice": "הפוך",
-    "grammarCopyVOICErcpVoice": "הדדי",
-    "grammarCopyPOS": "חלק הדיבור",
-    "grammarCopyGENDER": "מין",
-    "grammarCopyPERSON": "אישיות",
-    "grammarCopyMOOD": "מצב רוח",
-    "grammarCopyPUNCTTYPE": "סוג פיסוק",
-    "grammarCopyASPECT": "היבט",
-    "grammarCopyCASE": "מקרה",
-    "grammarCopyVOICE": "קול",
-    "grammarCopyNOUNTYPE": "סוג שם עצם",
-    "grammarCopyVERBTYPE": "סוג פועל",
-    "grammarCopyADVTYPE": "סוג תואר הפועל",
-    "grammarCopyNUMFORM": "צורת מספר",
-    "grammarCopyNUMTYPE": "סוג מספר",
-    "grammarCopyNUMBER": "מספר",
-    "grammarCopyDEFINITE": "הגדרה",
-    "grammarCopyDEGREE": "דרגה",
-    "grammarCopyEVIDENT": "עדותיות",
-    "grammarCopyFOREIGN": "זר",
-    "grammarCopyPOLARITY": "הפכיות",
-    "grammarCopyPOLITE": "נימוס",
-    "grammarCopyPREPCASE": "מקרה יחס",
-    "grammarCopyPRONTYPE": "סוג כינוי",
-    "grammarCopyPUNCTSIDE": "צד פיסוק",
-    "grammarCopyREFLEX": "רפלקסיבי",
-    "grammarCopyTENSE": "זמן",
-    "grammarCopyVERBFORM": "צורת הפועל",
-    "grammarCopyCONJTYPE": "סוג קונ junction",
-    "grammarCopySPC": "ספציפיות",
-    "grammarCopyPARTTYPE": "סוג חלקי",
-    "grammarCopyINTREL": "שאלה-יחס",
-    "grammarCopyUNKNOWN": "לא ידוע",
-    "grammarCopyNUMBERPSOR": "מספר מחזיק",
-    "grammarCopyPOSS": "קנייני",
-    "grammarCopyASPECTimp": "היבט בלתי מושלם",
-    "grammarCopyCASEvoc": "קריאה",
-    "grammarCopyCASEcom": "קומיטיבי",
-    "grammarCopyCASEpar": "חלקי",
-    "grammarCopyCASEadv": "תואר הפועל",
-    "grammarCopyCASEref": "רפרנציאלי",
-    "grammarCopyCASErel": "יחסי",
-    "grammarCopyCASEsub": "סובסיבי",
-    "grammarCopyCASEsup": "על-מקומי",
-    "grammarCopyCASEaccdat": "אובייקטיבי-דאטיבי",
-    "grammarCopyCASEpre": "לפני-מילת יחס",
-    "grammarCopyCONJTYPEsub": "משני",
-    "grammarCopyCONJTYPEcmp": "השוואתי",
-    "grammarCopyDEFINITEind": "לא מוגדר",
-    "grammarCopyMOODint": "שאלי",
-    "grammarCopyNOUNTYPEcomm": "שם עצם כללי",
-    "grammarCopyNUMBERPSORsing": "יחיד של בעלות",
-    "grammarCopyNUMBERPSORplur": "רבים של בעלות",
-    "grammarCopyNUMBERPSORdual": "שני של בעלות",
-    "grammarCopyPOLARITYpos": "חיובי",
-    "grammarCopyPOSSyes": "בעלות",
-    "grammarCopyPREPCASEnpr": "לא לפני-מילת יחס",
-    "grammarCopyPRONTYPEprs": "אישי",
-    "grammarCopyPRONTYPEint": "שאלתי",
-    "grammarCopyPRONTYPEtot": "כולל",
-    "grammarCopyPRONTYPEneg": "שלילי",
-    "grammarCopyPRONTYPEart": "מאמר",
-    "grammarCopyPRONTYPEind": "לא מוגדר",
-    "grammarCopyPRONTYPEintrel": "שאלה-יחס",
-    "grammarCopyPUNCTSIDEfin": "סימני פיסוק סופיים",
-    "grammarCopyPUNCTTYPEperi": "נקודה",
-    "grammarCopyREFLEXyes": "רפלקסיבי",
-    "grammarCopyTENSEimp": "עבר פשוט",
-    "grammarCopyVERBFORMsup": "צורת סופין",
-    "grammarCopyVERBFORMadn": "צורת תואר שמני",
-    "grammarCopyVERBFORMlng": "ארוכה",
-    "grammarCopyVERBFORMshrt": "קצרה",
-    "grammarCopyVERBTYPEcaus": "פועל סיבתי",
-    "grammarCopyVOICEcau": "סיבתי",
-    "grammarCopyVOICEdir": "ישיר",
-    "grammarCopyVOICEinv": "הפוך",
-    "grammarCopyVOICErcp": "הדדי",
     "other": "אחר",
     "levelShort": "רמה {level}",
-    "clickBestOption": "בחר את האפשרויות הטובות ביותר לתרגום ההודעה שלך!",
-    "completeActivitiesToUnlock": "השלם לפחות פעילות אחת כדי לפתוח את התרגום!",
     "noCapacityLimit": "אין מגבלת קיבולת",
-    "downloadGroupText": "הורד טקסט מקבוצה",
     "notificationsOn": "התראות מופעלות",
     "notificationsOff": "ההתראות כבויות",
     "joinWithCode": "הצטרף עם קוד",
@@ -2526,27 +2094,9 @@
     "constructUseIgnIGCDesc": "התעלמות בתיקון דקדוקי",
     "constructUseCorIGCDesc": "תיקון בדקדוק",
     "constructUseIncIGCDesc": "שגוי בדקדוק",
-    "constructUseCorPADesc": "תיקון בפעילות משמעות המילה",
-    "constructUseIgnPADesc": "התעלמות בפעילות משמעות המילה",
-    "constructUseIncPADesc": "שגוי בפעילות משמעות המילה",
-    "constructUseCorWLDesc": "תיקון בפעילות שמיעת המילה",
-    "constructUseIncWLDesc": "שגוי בפעילות שמיעת המילה",
-    "constructUseIngWLDesc": "התעלמות בפעילות שמיעת המילה",
-    "constructUseCorHWLDesc": "נכון בפעילות מילה נסתתרת",
-    "constructUseIncHWLDesc": "שגוי בפעילות מילה נסתתרת",
-    "constructUseIgnHWLDesc": "התעלם בפעילות מילה נסתתרת",
-    "constructUseCorLDesc": "נכון בפעילות לֶמָה",
-    "constructUseIncLDesc": "שגוי בפעילות לֶמָה",
-    "constructUseIgnLDesc": "התעלם בפעילות לֶמָה",
-    "constructUseCorMDesc": "נכון בפעילות דקדוק",
-    "constructUseIncMDesc": "שגוי בפעילות דקדוק",
-    "constructUseIgnMDesc": "התעלם בפעילות דקדוק",
-    "constructUseEmojiDesc": "נכון בפעילות אימוג'י",
     "constructUseCollected": "אסוף בצ'אט",
     "constructUseNanDesc": "לא רלוונטי",
     "xpIntoLevel": "{currentXP} / {maxXP} נקודות ניסיון",
-    "enableTTSToolName": "הפעל טקסט לדיבור",
-    "enableTTSToolDescription": "אפשר לאפליקציה לייצר פלט טקסט לדיבור לחלקי טקסט בשפת היעד שלך.",
     "yourUsername": "שם המשתמש שלך",
     "yourEmail": "הדוא\"ל שלך",
     "iWantToLearn": "אני רוצה ללמוד",
@@ -2589,31 +2139,12 @@
     "whatIsTheMorphTag": "מה ה-{morphologicalFeature} של '{wordForm}'?",
     "dataAvailable": "זמינות נתונים",
     "available": "זמין",
-    "pangeaBotIsFallible": "גם ביג בוט עלול לטעות!",
-    "whatIsMeaning": "מה המשמעות של '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "התאם בין המשמעויות למילים בהודעה!",
-    "doubleClickToEdit": "לחץ פעמיים כדי לערוך.",
-    "activityPlannerTitle": "מתכנן פעילויות",
-    "topicLabel": "נושא",
-    "topicPlaceholder": "בחר נושא...",
-    "modeLabel": "סוג הפעילות",
-    "modePlaceholder": "בחר מצב...",
-    "learningObjectiveLabel": "מטרה ללמידה",
-    "learningObjectivePlaceholder": "בחר מטרה ללמידה...",
-    "languageOfInstructionsLabel": "שפת ההוראות לפעילות",
-    "targetLanguageLabel": "שפת היעד",
     "cefrLevelLabel": "רמת CEFR",
-    "generateActivitiesButton": "צור פעילות",
-    "launchActivityButton": "התחל פעילות",
     "image": "תמונה",
     "video": "וידאו",
     "nan": "לא רלוונטי",
-    "activityPlannerOverviewInstructionsBody": "בחר נושא, מצב, מטרה ללמידה ויצור פעילות לשיחה!",
-    "activityTitle": "כותרת הפעילות",
-    "addVocabulary": "הוסף אוצר מילים",
     "instructions": "הוראות",
-    "numberOfLearners": "מספר הלומדים",
-    "mustBeInteger": "Must be an integer e.g. 1, 2, 3, ...",
     "constructUsePvmDesc": "מיוצר בהודעת קול",
     "leaveSpaceDescription": "על ידי יציאה מהקורס, תעזוב את כל השיחות בתוכו. משתמשים אחרים יראו שהיית בחוץ.",
     "constructUseCorMmDesc": "משמעות ההודעה הנכונה",
@@ -2628,7 +2159,6 @@
     "ttsDisabledBody": "אתה יכול להפעיל את תכונת ההמרה לטקסט לדיבור בהגדרות הלמידה שלך",
     "noSpaceDescriptionYet": "עדיין לא נוצר תיאור לקורס.",
     "tooLargeToSend": "ההודעה הזו גדולה מדי לשליחה",
-    "exitWithoutSaving": "האם אתה בטוח שברצונך לצאת מבלי לשמור?",
     "enableAutocorrectPopupTitle": "הוסף את מקלדת שפת היעד שלך על ידי כניסה ל:",
     "enableAutocorrectPopupSteps": "  • הגדרות\n  • כללי\n  • מקלדת\n  • מקלדות\n  • הוסף מקלדת חדשה",
     "enableAutocorrectPopupDescription": "לאחר בחירת השפה, תוכל ללחוץ על סמל הגלובוס הקטן בפינה השמאלית התחתונה של המקלדת כדי להפעיל את המקלדת שהותקנה לאחרונה.",
@@ -2639,11 +2169,8 @@
     "displayName": "שם תצוגה",
     "leaveRoomDescription": "אתה עומד לעזוב את השיחה הזו. משתמשים אחרים יראו שהייתה לך יציאה מהשיחה.",
     "confirmUserId": "אנא אשר את שם המשתמש שלך ב-Pangea Chat כדי למחוק את החשבון שלך.",
-    "startingToday": "החל מהיום",
-    "oneWeekFreeTrial": "ניסיון חינם לשבוע אחד",
     "paidSubscriptionStarts": "החל מ-{startDate}",
     "cancelInSubscriptionSettings": "• בטל בכל עת בהגדרות המנוי",
-    "cancelToAvoidCharges": "• בטל לפני {trialEnds} כדי להימנע מחיובים",
     "downloadGboard": "הורד את Gboard",
     "autocorrectNotAvailable": "לצערנו הפלטפורמה שלך כרגע לא נתמכת לתכונה זו. המשך לעקוב לפיתוח עתידי!",
     "pleaseUpdateApp": "אנא עדכן את האפליקציה כדי להמשיך.",
@@ -2653,19 +2180,12 @@
     "knockSpaceSuccess": "ביקשת להצטרף לקורס זה! מנהל יענה לבקשתך כאשר יקבל אותה 😀",
     "chooseWordAudioInstructionsBody": "האזן להודעה המלאה. לאחר מכן, התאם את ההקלטות למילים.",
     "chooseMorphsInstructionsBody": "לחץ על חלקי הפאזל לשאלות דקדוק!",
-    "pleaseEnterInt": "אנא הזן מספר",
     "home": "בית",
     "join": "הצטרף",
-    "readingAssistanceOverviewBody": "לחץ על הכפתורים למטה למשחקי מיני על התאמת אימוג'י, אודיו, משמעויות מילים ומושגים דקדוקיים. או לחץ על כל מילה לפרטים.",
     "resetInstructionTooltipsTitle": "אפס טיפים להנחיות",
     "resetInstructionTooltipsDesc": "לחץ כדי להציג טיפים להנחיות כמו למשתמש חדש.",
-    "randomize": "אקראי",
     "clear": "נקה",
-    "makeYourOwnActivity": "צור את הפעילות שלך",
-    "featuredActivities": "פעילויות מובילות",
     "save": "שמור",
-    "startChat": "התחל שיחה",
-    "translationProblem": "בעיה בתרגום",
     "askToJoin": "בקש להצטרף",
     "emptyChatWarningTitle": "השיחה ריקה",
     "emptyChatWarningDesc": "לא הזמנת אף אחד לשיחה שלך. עבור להגדרות שיחה כדי להזמין את אנשי הקשר שלך או את הבוט. אפשר גם לעשות זאת מאוחר יותר.",
@@ -2695,17 +2215,13 @@
     "timesUsedIndependently": "פעמים בשימוש עצמאי",
     "timesUsedWithAssistance": "פעמים בשימוש עם סיוע",
     "shareInviteCode": "שתף קוד הזמנה: {code}",
-    "leaderboard": "טבלת מובילים",
     "skipForNow": "דלג לעכשיו",
     "permissions": "הרשאות",
     "spaceChildPermission": "מי יכול להוסיף שיחות חדשות לקורס זה",
-    "addEnvironmentOverride": "הוסף שינוי סביבה",
     "defaultOption": "ברירת מחדל",
     "deleteChatDesc": "האם אתה בטוח שברצונך למחוק שיחה זו? היא תימחק לכל המשתתפים וכל ההודעות בתוך השיחה לא יהיו זמינות עוד לתרגול או לניתוחי למידה.",
     "deleteSpaceDesc": "הקורס וכל השיחות שנבחרו יימחקו לכל המשתתפים וכל ההודעות בתוך השיחה לא יהיו זמינות עוד לתרגול או לניתוחי למידה. פעולה זו אינה ניתנת לביטול.",
     "launch": "הפעל",
-    "searchChats": "חפש שיחות",
-    "maxFifty": "מקסימום 50",
     "configureSpace": "הגדר קורס",
     "pinMessages": "נעץ הודעות",
     "setJoinRules": "הגדר כללי הצטרפות",
@@ -2718,7 +2234,6 @@
     "announcements": "הודעות",
     "activities": "פעילויות",
     "access": "גישה",
-    "activitySuggestionTimeoutMessage": "אנחנו עובדים קשה ליצירת עוד פעילויות בשבילך, אנא חזור בעוד דקה",
     "howSpaceCanBeFound": "איך ניתן למצוא את הקורס הזה",
     "private": "פרטי",
     "cannotBeFoundInSearch": "לא ניתן למצוא בחיפוש",
@@ -2740,9 +2255,6 @@
     "failedToFetchTranscription": "הטעינה של ההמרה נכשלה",
     "deleteEmptySpaceDesc": "הקורס יימחק לכל המשתתפים. פעולה זו אינה ניתנת לביטול.",
     "regenerate": "ליצור מחדש",
-    "mySavedActivities": "הפעילויות שמורים שלי",
-    "noSavedActivities": "אין פעילויות שמורות",
-    "saveActivity": "שמור פעילות זו",
     "failedToPlayVideo": "נכשלה ההפעלה של הווידאו",
     "done": "הושלם",
     "inThisSpace": "במקום זה",
@@ -2753,18 +2265,10 @@
     "numInvited": "{count} הוזמן/ה",
     "saved": "שמור",
     "reset": "אפס",
-    "errorGenerateActivityMessage": "נכשל ביצירת הודעת פעילות",
-    "errorRegenerateActivityMessage": "נכשל ביצירת מחדש הודעת פעילות",
-    "errorLaunchActivityMessage": "נכשל בהשקת ההודעה לפעילות",
-    "errorFetchingActivitiesMessage": "נכשל באחזור פעילויות",
     "errorFetchingDefinition": "נכשל באחזור ההגדרה",
     "errorProcessAnalytics": "נכשל בעיבוד ניתוחים",
     "errorDownloading": "ההורדה נכשלה",
-    "errorLoadingSpaceChildren": "נכשל בטעינת הצ'אטים בתוך קורס זה",
-    "unexpectedError": "שגיאה בלתי צפויה.",
-    "pleaseReload": "אנא טען מחדש ונסה שוב.",
     "translationError": "שגיאת תרגום",
-    "errorFetchingActivity": "נכשל באחזור הפעילות",
     "check": "בדוק",
     "unableToFindRoom": "לא נמצא שיחה או קורס עם קוד זה. אנא נסה שוב.",
     "numCompletedActivities": "מספר הפעילויות שהושלמו",
@@ -2772,23 +2276,14 @@
     "request": "בקשה",
     "requestAll": "בקש את הכל",
     "confirmMessageUnpin": "האם אתה בטוח שברצונך להסיר את ההצמדה של הודעה זו?",
-    "createActivityPlan": "צור תכנית פעילות חדשה",
-    "saveAndLaunch": "שמור והפעל",
-    "launchToSpace": "הפעל לקורס",
-    "numberOfActivities": "מספר מפגשי הפעילות",
-    "maximumActivityParticipants": "לכל פעילות יכול להיות עד {count} משתתף/ים.",
     "pending": "בהמתנה",
     "inactive": "לא פעיל",
-    "confirmRole": "אשר תפקיד",
     "openRoleLabel": "פתוח",
-    "joinedTheActivity": "👋 {username} הצטרף כ-{role}",
     "finishedTheActivity": "🎯 {username} סיים את הפעילות הזו",
     "activitySummaryError": "סיכומי הפעילות אינם זמינים",
     "requestSummaries": "בקש סיכומים",
-    "generatingNewActivities": "אתה המשתמש הראשון בזוג שפות זה! אנא המתן דקה, אנו מכינים פעילויות במיוחד בשבילך.",
     "requestAccessTitle": "לבקש גישה לניתוחי נתונים?",
     "requestAccessDesc": "האם תרצה לבקש גישה לצפייה בנתוני המשתתפים?\n\nאם המשתתפים יסכימו, מנהלי הקורס יוכלו לצפות ב:\n    • אוצר מילים כולל\n    • מושגי דקדוק כוללים\n    • סך כל מפגשי הפעילות שהושלמו\n    • המושגים הדקדוקיים הספציפיים שהשתמשו בהם, נכון ולא נכון\n\nהם לא יוכלו לצפות ב:\n    • הודעות בצ'אט מחוץ לקורס\n    • רשימת אוצר מילים",
-    "requestAccess": "בקש גישה ({count})",
     "analyticsInactiveTitle": "בקשות למשתמשים לא פעילים לא נשלחות",
     "analyticsInactiveDesc": "משתמשים לא פעילים שלא התחברו מאז הוספת תכונה זו לא יראו את הבקשה שלך.\n\nכפתור הבקשה יופיע כאשר הם יחזרו. תוכל לשלוח את הבקשה מחדש מאוחר יותר על ידי לחיצה על כפתור הבקשה תחת שמם כאשר הוא זמין.",
     "accessRequestedTitle": "בקשת גישה לנתוני אנליטיקה",
@@ -2797,7 +2292,6 @@
     "lastUpdated": "עודכן\n{time}",
     "activityFinishedMessage": "הכל מוכן!",
     "endForAll": "סיום לכולם",
-    "newCourse": "קורס חדש",
     "numModules": "{num} מודולים",
     "coursePlan": "תכנית קורס",
     "editCourseLater": "אתה יכול לערוך את כותרת התבנית, תיאורים ותמונת הקורס מאוחר יותר.",
@@ -2811,8 +2305,6 @@
     "accessDesc": "אתה יכול להפוך את הקורס שלך לגלוי לעולם! או, להפוך את הקורס לפרטי ומאובטח.",
     "createGroupChatDesc": "בעוד שמפגשי הפעילות מתחילים ומסתיימים, שיחות קבוצתיות יישארו פתוחות לתקשורת שוטפת.",
     "deleteDesc": "רק מנהלים יכולים למחוק קורס. זוהי פעולה הרסנית שמסירה את כל המשתמשים ומוחקת את כל השיחות שנבחרו בתוך הקורס. המשך בזהירות.",
-    "noCourseFound": "אה, הקורס הזה צריך תכנית!\n\nתכניות קורס הן רצף של נושאים ופעילויות שיחה.",
-    "additionalParticipants": "+ {num} אחרים",
     "whatNow": "מה עכשיו?",
     "chooseNextActivity": "בחר את הפעילות הבאה שלך!",
     "letsGo": "בוא נתחיל",
@@ -2825,16 +2317,13 @@
     "waitNotDone": "חכה, אני לא סיימתי!",
     "waitingForOthersToFinish": "מחכה לשאר לסיים...",
     "generatingSummary": "אנליזת שיחה ויצירת תוצאות",
-    "findCourse": "מצא קורס",
     "pingParticipantsNotification": "{user} מחפש משתמשים להצטרף למפגש הפעילות ב-{room}",
     "course": "קורס",
     "courses": "קורסים",
     "goToCourse": "עבור לקורס: {course}",
     "activityComplete": "הפעילות הזו הושלמה. סיכום הפעילות אמור להיות זמין למטה.",
-    "startNewSession": "התחל מפגש חדש",
     "joinOpenSession": "הצטרף למפגש פתוח",
     "activityNotFound": "הפעילות לא נמצאה",
-    "levelUp": "רמה עליונה",
     "myActivities": "הפעילויות שלי",
     "openToJoin": "פתוח להצטרפות",
     "results": "תוצאות",
@@ -3024,14 +2513,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@createGroup": {
         "type": "String",
         "placeholders": {}
@@ -3056,18 +2537,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@globalChatId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibility": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibilityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@calls": {
         "type": "String",
         "placeholders": {}
@@ -3085,10 +2554,6 @@
         "placeholders": {}
     },
     "@enableEmotesGlobally": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@chatDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3180,10 +2645,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterRecoveryKey": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pleaseFollowInstructionsOnWeb": {
         "type": "String",
         "placeholders": {}
@@ -3271,10 +2732,6 @@
             }
         }
     },
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@unbanFromChat": {
         "type": "String",
         "placeholders": {}
@@ -3316,14 +2773,6 @@
         "placeholders": {}
     },
     "@security": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@recoveryKey": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@recoveryKeyLost": {
         "type": "String",
         "placeholders": {}
     },
@@ -3427,10 +2876,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@setStatus": {
         "type": "String",
         "placeholders": {}
@@ -3468,14 +2913,6 @@
         "placeholders": {}
     },
     "@sourceCode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceName": {
         "type": "String",
         "placeholders": {}
     },
@@ -3531,10 +2968,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@tryToSendAgain": {
         "type": "String",
         "placeholders": {}
@@ -3581,14 +3014,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "@userAndOthersAreTyping": {
         "type": "String",
@@ -3667,14 +3092,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@visibleForAllParticipants": {
         "type": "String",
         "placeholders": {}
@@ -3711,19 +3128,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -3775,15 +3180,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@removeFromSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@start": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseEnterRecoveryKeyDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3834,10 +3231,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@voiceCall": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@unsupportedAndroidVersion": {
         "type": "String",
         "placeholders": {}
@@ -3846,15 +3239,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@videoCallsBetaWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@experimentalVideoCalls": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@emailOrUsername": {
         "type": "String",
         "placeholders": {}
     },
@@ -3978,43 +3363,11 @@
             }
         }
     },
-    "@usersMustKnock": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noOneCanJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knock": {
         "type": "String",
         "placeholders": {}
     },
     "@users": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unlockOldMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInSecureStorageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveKeyManuallyDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAndroidKeystore": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAppleKeyChain": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeSecurlyOnThisDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -4034,18 +3387,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@foregroundServiceRunning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@screenSharingTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@screenSharingDetail": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@whyIsThisMessageEncrypted": {
         "type": "String",
         "placeholders": {}
@@ -4059,10 +3400,6 @@
         "placeholders": {}
     },
     "@newSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enterSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -4085,22 +3422,6 @@
                 "type": "String"
             }
         }
-    },
-    "@newSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@encryptThisChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@disableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@sorryThatsNotPossible": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deviceKeys": {
         "type": "String",
@@ -4155,10 +3476,6 @@
         "placeholders": {}
     },
     "@report": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setTheme": {
         "type": "String",
         "placeholders": {}
     },
@@ -4242,31 +3559,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@searchChatsRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@nothingFound": {
         "type": "String",
         "placeholders": {}
     },
     "@groupName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupAndInviteUsers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupCanBeFoundViaSearch": {
         "type": "String",
         "placeholders": {}
     },
@@ -4322,23 +3619,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@publicChatAddresses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@joinSpace": {
         "type": "String",
         "placeholders": {}
     },
     "@publicSpaces": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -4378,28 +3663,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "@sendReadReceipts": {
         "type": "String",
         "placeholders": {}
@@ -4417,14 +3680,6 @@
         "placeholders": {}
     },
     "@formattedMessagesDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUser": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -4617,22 +3872,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -4688,10 +3927,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -4701,10 +3936,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -4780,27 +4011,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -5118,10 +4333,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5131,10 +4342,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -5222,14 +4429,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -5246,10 +4445,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -5262,15 +4457,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5422,14 +4609,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -5443,14 +4622,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6621,10 +5792,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6677,19 +5844,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
     },
     "@practice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@speechToTextBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6716,10 +5875,6 @@
             }
         }
     },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
         "placeholders": {}
@@ -6729,10 +5884,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -6749,10 +5900,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6796,1078 +5943,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@grammarCopyPOSsconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnum": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSverb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaffix": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpunct": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSspace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSsym": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSdet": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpron": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpropn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSintj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERfem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON2": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEqest": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTperf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEobl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEact": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEbrck": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERmasc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEmod": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadverbial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMdigit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnot_proper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEcard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEprop": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEdash": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEsemi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODcnd": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEacc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpast": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcolo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON3": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEinterrogative": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEinfm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEtim": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadnomial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTprog": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMcomplementive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEfut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpres": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERneut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfinalEnding": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEdem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEquot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMger": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEgen": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdef": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEins": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMinf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlong": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEloc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErelativeCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEexcl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON1": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEini": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERperson": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGNyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEvoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEverbType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEprepCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEnumType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnounType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXreflex": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEpronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEpunctSide": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMverbForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERgender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODmood": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTaspect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEpunctType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEtense": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEdegree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEpolite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadvType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumber": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEconjType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpolarity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdefinite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOCvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCMPLcmpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODjus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXrflx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPCspc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpqp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEnshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEmid": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTRELintRel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUnknown": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTevident": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumberPsor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECThab": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEess": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtra": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEequ": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEerg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEben": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcoord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEcons": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTnfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODopt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODadm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODdes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODnec": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODpot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODprp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODqot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMword": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMroman": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMletter": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEmult": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEfrac": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEsets": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPErange": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEdist": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERtri": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERpauc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpa": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON0": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON4": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEform": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEelev": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEhumb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEemp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEexc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintRelPronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEaor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEeps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprosp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMconv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMvnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEantip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcauVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICedir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinvVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcpVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOOD": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITY": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEX": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPC": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTREL": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUNKNOWN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSOR": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintrel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEdir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@other": {
         "type": "String",
         "placeholders": {}
@@ -7880,19 +5955,7 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -7960,70 +6023,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@constructUseCollected": {
         "type": "String",
         "placeholders": {}
@@ -8042,14 +6041,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -8226,71 +6217,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
         "type": "String",
         "placeholders": {}
     },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -8306,27 +6237,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -8390,10 +6301,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -8434,14 +6341,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -8453,14 +6352,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -8498,19 +6389,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
     },
     "@join": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@readingAssistanceOverviewBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -8522,31 +6405,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@makeYourOwnActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -8670,10 +6533,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -8683,10 +6542,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -8703,14 +6558,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -8759,10 +6606,6 @@
         "placeholders": {}
     },
     "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitySuggestionTimeoutMessage": {
         "type": "String",
         "placeholders": {}
     },
@@ -8854,18 +6697,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -8914,22 +6745,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -8942,23 +6757,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -8997,30 +6796,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
@@ -9029,24 +6804,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@confirmRole": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9064,10 +6824,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -9075,14 +6831,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -9124,10 +6872,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9187,18 +6931,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -9251,10 +6983,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -9281,10 +7009,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -9465,7 +7189,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Повращайте наповращане за приятие на активности завтра",
-    "activityDropdownDesc": "Когато ви завершите свою активность, нажмите на подобно",
     "languageMismatchTitle": "Неподолятность езика",
     "languageMismatchDesc": "Ваше потелно е неподолятно на езика на этото активность. Измените наше потелно езика?",
     "reportWordIssueTooltip": "Оповещайте за проблема информация за слово",
@@ -9478,10 +7201,6 @@
     "selectAll": "Выбрати все",
     "deselectAll": "Отмените все",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9530,17 +7249,11 @@
         "placeholders": {}
     },
     "startOwn": "התחל את שלי",
-    "joinCourseDesc": "לכל קורס יש 8-10 נושאים מסודרים עם מגוון פעילויות למידה מבוססות משימות בשפה.",
     "newMessageInPangeaChat": "📩 הודעה חדשה בצ'אט פאנגיאה",
     "shareCourse": "שתף קורס",
     "addCourse": "הוסף קורס",
-    "joinPublicCourse": "הצטרף לקורס ציבורי",
     "vocabLevelsDesc": "זה המקום שבו מילות אוצר המילים יופיעו לאחר שהעלית את רמתן!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9553,10 +7266,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9575,12 +7284,9 @@
     "emojiView": "תצוגת אימוג'י",
     "feedbackDialogDesc": "גם אני עושה טעויות! יש משהו שיכול לעזור לי להשתפר?",
     "contactHasBeenInvitedToTheCourse": "הקשר הוזמן לקורס",
-    "activityStatsButtonTooltip": "מידע על פעילות",
     "allow": "אפשר",
     "deny": "סירב",
     "enabledRenewal": "אפשר חידוש מנוי",
-    "subscriptionEndsOn": "המנוי מסתיים ב",
-    "subscriptionRenewsOn": "המנוי מתחדש ב",
     "waitForSubscriptionChanges": "שינויים במנוי שלך עשויים לקחת רגע להופיע באפליקציה.",
     "subscribeReadingAssistance": "הירשם כדי לפתוח כלים להודעות",
     "aceDisplayName": "אכינזי",
@@ -9846,10 +7552,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -9859,14 +7561,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10785,14 +8479,8 @@
         "placeholders": {}
     },
     "introChatTitle": "צור צ'אט היכרות",
-    "introChatDesc": "כל אחד במרחב יכול לפרסם.",
     "announcementsChatTitle": "צ'אט הודעות",
-    "announcementsChatDesc": "רק מנהל המרחב יכול לפרסם.",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10800,13 +8488,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "סשנים פתוחים ({num})",
     "inProgressActivitiesTitle": "מתרחש עכשיו ({num})",
-    "completedActivitiesTitle": "בוצע ({num})",
     "pickDifferentActivity": "בחר פעילות שונה",
     "inOngoingActivity": "יש לך פעילות מתמשכת!",
     "@notStartedActivitiesTitle": {
@@ -10818,14 +8501,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10891,15 +8566,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "הגדרת את האימוג'י עבור {lemma}! נשתמש באימוג'י הזה כדי לייצג את המילה בפעילויות תרגול מעתה ואילך.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "ממתינים להשלים את הכניסה",
     "ssoDialogDesc": "פתחנו לשונית חדשה כדי שתוכל להיכנס בצורה מאובטחת.",
     "ssoDialogHelpText": "🤔 אם לא ראית את הלשונית החדשה, אנא בדוק את חוסם הפופ-אפ שלך.",
@@ -10930,16 +8596,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "פעילויות לפתיחת נושא הבא",
-    "activitiesToUnlockTopicDesc": "קבע את מספר הפעילויות לפתיחת נושא הקורס הבא",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "תרגול הגדרה נכונה של אוצר מילים",
     "constructUseIncLMDesc": "תרגול הגדרה שגויה של אוצר מילים",
     "constructUseCorLADesc": "תרגול שמע נכון של אוצר מילים",
@@ -10947,7 +8603,6 @@
     "constructUseBonus": "בונוס במהלך תרגול אוצר מילים",
     "practiceVocab": "תרגל אוצר מילים",
     "selectMeaning": "בחר את המשמעות",
-    "selectAudio": "בחר את השמע התואם",
     "anotherRound": "סיבוב נוסף",
     "activitySettingsOverrideWarning": "שפה ורמת שפה נקבעות על ידי תוכנית הפעילות",
     "voice": "קול",
@@ -10979,10 +8634,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -11000,25 +8651,15 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "ההורדה החלה",
     "webDownloadPermissionMessage": "אם הדפדפן שלך חוסם הורדות, אנא אפשר הורדות לאתר זה.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "ההתקדמות שלך במפגש האימון לא תישמר.",
     "practiceGrammar": "אימון דקדוק",
     "notEnoughToPractice": "שלח יותר הודעות כדי לפתוח אימון",
     "constructUseCorGCDesc": "אימון בקטגוריית דקדוק נכון",
     "constructUseIncGCDesc": "אימון בקטגוריית דקדוק לא נכון",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -11060,11 +8701,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "קול של פנגיאה בוט",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "הבקשה שלך נשלחה למנהל הקורס! תורשה להיכנס אם הם יאשרו.",
     "@knockDesc": {
         "type": "String",
@@ -11077,16 +8713,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat היא אפליקציית הודעות, ולכן התראות הן חשובות!",
-    "enableNotificationsDesc": "אפשר התראות",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -11115,11 +8741,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "משהו השתבש, ואנחנו עובדים קשה על תיקון זה. בדוק שוב מאוחר יותר.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "אפשר סיוע בכתיבה",
     "autoIGCToolDescription": "הרץ אוטומטית את כלי Pangea Chat כדי לתקן הודעות שנשלחו לשפה היעד.",
     "@autoIGCToolName": {
@@ -11137,21 +8758,6 @@
     },
     "aboutMeHint": "עליי",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "ביטוי",
-    "grammarCopyPOSphrasalv": "פועל פיזי",
-    "grammarCopyPOScompn": "מורכב",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -11190,24 +8796,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "דקדוק",
-    "spanTypeWordChoice": "בחירת מילים",
     "spanTypeSpelling": "איות",
     "spanTypePunctuation": "פיסוק",
     "spanTypeStyle": "סגנון",
     "spanTypeFluency": "שפה רהוטה",
     "spanTypeAccents": "הטעמה",
     "spanTypeCapitalization": "הגדלת אותיות",
-    "spanTypeCorrection": "תיקון",
     "spanFeedbackTitle": "דווח על בעיית תיקון",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -11232,10 +8827,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -11248,13 +8839,7 @@
     "longPressToRecordVoiceMessage": "לחץ ארוך כדי להקליט הודעת קול.",
     "pause": "השהה",
     "resume": "המשך",
-    "newSubSpace": "מרחב משנה חדש",
-    "moveToDifferentSpace": "מעבר למרחב שונה",
-    "removeFromSpaceDescription": "הצ'אט יוסר מהמרחב אך עדיין יופיע ברשימת הצ'אטים שלך.",
     "countChats": "{chats} צ'אטים",
-    "spaceMemberOf": "חבר מרחב של {spaces}",
-    "spaceMemberOfCanKnock": "חבר מרחב של {spaces} יכול לדפוק",
-    "donate": "תרום",
     "startedAPoll": "{username} התחיל סקר.",
     "poll": "סקר",
     "startPoll": "התחל סקר",
@@ -11278,23 +8863,15 @@
     "newStickerPack": "חבילת מדבקות חדשה",
     "stickerPackName": "שם חבילת המדבקות",
     "attribution": "אטריבוציה",
-    "skipChatBackup": "דלג על גיבוי צ'אט",
-    "skipChatBackupWarning": "האם אתה בטוח? ללא הפעלת גיבוי הצ'אט, ייתכן שתאבד גישה להודעות שלך אם תחליף את המכשיר שלך.",
-    "loadingMessages": "טוען הודעות",
-    "setupChatBackup": "הגדר גיבוי צ'אט",
     "noMoreResultsFound": "לא נמצאו תוצאות נוספות",
     "chatSearchedUntil": "הצ'אט חיפש עד {time}",
     "federationBaseUrl": "כתובת URL בסיסית של פדרציה",
     "clientWellKnownInformation": "מידע ידוע על לקוח:",
     "baseUrl": "כתובת URL בסיסית",
     "identityServer": "שרת זהות:",
-    "versionWithNumber": "גרסה: {version}",
     "logs": "יומנים",
-    "advancedConfigs": "הגדרות מתקדמות",
     "advancedConfigurations": "הגדרות מתקדמות",
-    "signInWithLabel": "התחבר עם:",
     "selectAllWords": "בחר את כל המילים שאתה שומע בהקלטה",
-    "joinCourseForActivities": "הצטרף לקורס כדי לנסות פעילויות.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -11331,18 +8908,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -11350,26 +8915,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -11475,22 +9020,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -11519,19 +9048,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -11539,15 +9056,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11571,12 +9080,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "שחרר פעילויות תרגול",
     "hideEvents": "הסתר אירועים",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11674,21 +9178,11 @@
         "placeholders": {}
     },
     "getStarted": "התחל",
-    "writeAndSpeakWorryFree": "כתוב ודבר ללא דאגות עם פנגיאה בוט בכל זמן, בכל מקום!",
-    "joinLearningCommunities": "הצטרף לקהילות למידה בינלאומיות או... התחל את שלך!",
     "playConversationGames": "שחק במשחקי שיחה עם הבוט, חברים לכיתה וחברים חדשים!",
     "jumpIntoConversation": "קפוץ לשיחה מהיום הראשון עם כלים לכתיבה מבוססי AI!",
     "playPersonalizedGames": "שחק במשחקי תרגול מותאמים אישית לצרכי אוצר המילים והדקדוק שלך!",
     "learnLanguageWhileTexting": "למד שפה בזמן שאתה שולח הודעות לחברים שלך!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11708,23 +9202,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "לא רואים את מי שאתם מחפשים? ייתכן שהם צריכים להגדיר את הפרופיל שלהם לציבורי בהגדרות הלמידה",
     "suggestedVocab": "אוצר מילים מוצע",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
     },
     "myGender": "המגדר שלי",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "וואו, סיימת את כל הפעילויות הזמינות! שלח עוד הודעות כדי לפתוח פעילויות תרגול נוספות.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11739,8 +9223,6 @@
     "notificationDeviceSubtitle": "צפה ונהל מכשירים ששולחים לך התראות פוש.",
     "notificationRuleDM": "הודעה ישירה",
     "notificationRuleDMDescription": "מעדכן את המשתמש על הודעות בחדרי הודעות ישירות.",
-    "notificationRuleCourseAndActivity": "קורס ופעילות",
-    "notificationRuleCourseAndActivityDescription": "מעדכן את המשתמש על הודעות בקורסים, פעילויות וצ'אטים.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11765,31 +9247,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableEmailNotifications": "אפשר התראות דוא\"ל",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "joinSpaceOnboardingDesc": "בכיתה? הכנס את קוד ההצטרפות שלך כאן.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "הדגש אוטומטית הודעות קוליות",
-    "selectAudioMessagesOnPlayDescription": "הדגש אוטומטית הודעות קוליות כאשר הן מנוגנות",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11798,7 +9257,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "אני לומד...",
     "alreadySpeak": "אני כבר מדבר...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -11826,18 +9284,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "לקורס זה יש נושאים עם פחות מ-{input} פעילויות. אנא הזן מספר קטן או שווה ל-{minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "לחץ כאן כדי להיכנס שוב.",
     "@clickToLogin": {
@@ -12039,6 +9485,116 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "הירשם כדי לפתוח תרגום אינטראקטיבי ובדיקת דקדוק, השמעת אודיו, תרגילים מותאמים אישית וניתוחי למידה!",
+    "unlockPracticeActivities": "פתח תרגילים מעשיים",
+    "noAnalyticsActivitiesAvailable": "וואו, סיימת את כל הפעילויות הזמינות! שלח עוד הודעות כדי לפתוח עוד תרגילים מעשיים.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "נכון בתרגיל משמעות המילה",
+    "constructUseIgnPADesc": "התעלם בתרגיל משמעות המילה",
+    "constructUseIncPADesc": "שגוי בתרגיל משמעות המילה",
+    "constructUseCorWLDesc": "נכון בתרגיל הקשבה למילה",
+    "constructUseIncWLDesc": "שגוי בתרגיל הקשבה למילה",
+    "constructUseIngWLDesc": "התעלם בתרגיל הקשבה למילה",
+    "constructUseCorHWLDesc": "נכון בתרגיל המילה החבויה",
+    "constructUseIncHWLDesc": "שגוי בתרגיל המילה החבויה",
+    "constructUseIgnHWLDesc": "התעלם בתרגיל המילה החבויה",
+    "constructUseCorLDesc": "נכון בתרגיל הלמה",
+    "constructUseIncLDesc": "שגוי בתרגיל לקסיקלי",
+    "constructUseIgnLDesc": "התעלם בתרגיל לקסיקלי",
+    "constructUseCorMDesc": "נכון בתרגיל דקדוק",
+    "constructUseIncMDesc": "שגוי בתרגיל דקדוק",
+    "constructUseIgnMDesc": "התעלם בתרגיל דקדוק",
+    "constructUseEmojiDesc": "נכון בתרגיל אימוג'י",
+    "errorFetchingExercise": "נכשל בהבאת תרגיל תרגול",
+    "notificationRuleCourseAndActivity": "קורס ופעילות",
+    "notificationRuleCourseAndActivityDescription": "מעדכן את המשתמש על הודעות בקורסים, פעילויות וצ'אטים.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "לחץ כאן כדי לעדכן את שפת היעד שלך.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -12048,5 +9604,1032 @@
     "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
-    }
+    },
+    "visibilityToggleTitle": "אפשר לאחרים לחפש את הקורס שלך",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "אל תפספס שיחה לעולם!",
+    "enableNotificationsDesc": "אפשר התראות עבור Pangea Chat והישאר מחובר עם חברי השפה שלך!",
+    "enableNotifications": "אפשר התראות",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "אינך יכול לחסום את עצמך",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "חסום שם משתמש",
+    "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "לחץ על בועת ההודעה כדי לבחור אותה",
+    "writingAssistanceTutorialIGCButton": "לאחר שכתבת את ההודעה שלך, לחץ על כפתור זה כדי להתחיל בעזרה בכתיבה",
+    "selectModeTutorialTranslate": "לחץ כאן כדי לתרגם את ההודעה",
+    "selectModeTutorialAudio": "לחץ כאן כדי להקשיב להודעה",
+    "selectModeTutorialExit": "לחץ על הרקע כדי לחזור לשיחה",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "סיוע בכתיבה לוקח קצת יותר זמן מהצפוי. נסה שוב בעוד שנייה!",
+    "@errorTryAgainSoon": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "אופס, משהו השתבש… אנחנו בודקים את זה! אנא נסה שוב מאוחר יותר.",
+    "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "קבל הכל",
+    "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "הורדת רמת ההרשאה של משתמש זה תסיר את זכויות המנהל.",
+    "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "מצב זה מאפשר לך לקשר אמוג'ים למילים! בחר מילה כדי לקשר לה אמוג'י!",
+    "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "המילים שאספת יופיעו כאן. התחל לשוחח ולהתמודד כדי להרוויח כמה!",
+    "vocabLevelsDescSeed": "כאן יופיעו מילים חדשות!",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "עוד אפשרויות",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "בחר מילים כדי ללמוד עליהן יותר",
+    "requireAnalyticsAccessTitle": "דרוש גישה לניתוחי נתונים כדי להצטרף",
+    "requireAnalyticsAccessDesc": "משתתפים חייבים להעניק גישה לניתוחי הלמידה שלהם כדי להצטרף לקורס זה",
+    "analyticsAccessNoticeTitle": "דרושה גישה לניתוחי נתונים",
+    "analyticsAccessNoticeDesc": "בהצטרפות לקורס זה, אתה מסכים להעניק למנהלים גישה לניתוחי הלמידה שלך.",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "אנא בחר תפקיד מוגדר מראש למטה או הזן רמת הרשאה מותאמת אישית. בחר מספר שלם בין 0 ל-100.",
+    "reportContentIssue": "דווח על בעיית תוכן",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "אנא בחר שפות בסיס ויעד תקפות",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "אני משתמש ב-Pangea Chat כדי",
+    "teach": "ללמד",
+    "courseCodeStepTitle": "האם יש לך קוד הזמנה לקורס?",
+    "courseCodeStepHint": "הכנס קוד כדי להצטרף",
+    "courseCodeStepSkip": "אין לי קוד",
+    "joinedCourseStepTitle": "ברוך הבא!",
+    "pickLanguageTeacherStepTitle": "איזו שפה אתה מלמד?",
+    "pickCefrLevelTeacherStepTitle": "איזה רמה אתה מלמד?",
+    "pickCefrLevelStudentStepTitle": "איזה רמה אתה?",
+    "customCourseStepTitle": "מלא את הטופס הזה כדי לקבל קורס מותאם אישית",
+    "courseCodeStepErrorMessage": "אנא בדוק את הקוד שלך ונסה שוב",
+    "institution": "מוסד",
+    "courseGoals": "מטרות הקורס",
+    "selectChats": "בחר שיחות",
+    "plainTextFile": "טקסט",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "סיים ({num})",
+    "suggestion": "בחר את ההצעה הטובה ביותר",
+    "completeActivityButton": "סיימתי!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "אנא הגבל את אורך השם ל-50 תווים או פחות.",
+    "enterAName": "אנא הזן שם.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "סיוע בכתיבה",
+    "viewError": "צפה בשגיאה",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "קבל את אפליקציית Pangea Chat כדי לקבל התראות!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "הבנתי!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "המשך עם {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "מוריד את היסטוריית ההודעות המלאה, כולל שולח, תאריך שנשלח, הודעה מקורית, הודעה שנשלחה וסוג שימוש.",
+    "analyticsDownloadDesc": "מוריד אנליטיקות של אוצר מילים ודקדוק אישיים עבור השפה הנבחרת.",
+    "courseAnalyticsDownloadDesc": "מוריד את השורש ושימוש הדקדוק בשפה הנבחרת עבור כל משתתפי הקורס עם אנליטיקות משותפות.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "הקורס הזה תואם את רמת השפה שלך",
+    "cefrLevelBelow": "הקורס הזה מתחת לרמת השפה שלך.",
+    "cefrLevelAbove": "הקורס הזה מעל לרמת השפה שלך.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "קול הודעת שמע של פנגיאה בוט",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "introChatDetails": "תגיד שלום! הצג את עצמך למשתתפי הקורס שלך, מצא חברים וצ'אט מחוץ לפעילויות.",
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "האמוג'י הזה ייצג עכשיו \"{word}\" בתרגילים מעשיים",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "הצג אפשרויות מפתחים",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "הפעל אפשרויות מפתחים כדי להציג ניתוחי הורדה ואפשרויות מידע מפורטות ברחבי האפליקציה.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "ממתין לבוט שיצטרף...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "מקום שבו מנהלי הקורס יכולים ליצור הודעות למשתתפי הקורס. בעוד שכולם יכולים לראות את הערוץ הזה, רק מנהלים יכולים לכתוב בו.",
+    "introChatDesc": "כל אחד בקורס יכול לפרסם.",
+    "announcementsChatDesc": "רק מנהלי הקורס יכולים לפרסם.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pronunciationTools": "כלי הגייה",
+    "audioTranscription": "תמלול אודיו בעזרת AI",
+    "visualLearnerSupport": "תמיכה בלומדים חזותיים",
+    "instantWritingTranslation": "תרגום כתיבה מיידי",
+    "personalizedPracticeExercises": "תרגילים מותאמים אישית",
+    "vocabularyFlashcards": "כרטיסיות אוצר מילים",
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "חזרה",
+    "viewCurrentOrFinished": "צפה בהווה או בהסתיים",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "resizeCoursePanel": "שנה גודל פאנל הקורס",
+    "undo": "בטל",
+    "unlock": "שחרר",
+    "zoomIn": "התקרב",
+    "zoomOut": "התרחק",
+    "stars": "כוכבים",
+    "addNewCourse": "הוסף קורס חדש",
+    "world": "עולם",
+    "addCourseStartMyOwn": "התחל את שלי",
+    "addCourseEnterCode": "הזן קוד לקורס פרטי",
+    "addCourseBrowsePublic": "עיין בקורסים ציבוריים",
+    "browsePublicCourses": "עיין בקורסים ציבוריים",
+    "editProfile": "ערוך פרופיל",
+    "mapSearchHint": "חפש פעילויות",
+    "mapFilterAllLanguages": "כל השפות",
+    "mapFilterNotStarted": "לא התחיל",
+    "mapFilterInProgress": "בתהליך",
+    "mapFilterCompleted": "הושלם",
+    "mapFilterReset": "אפס",
+    "activityTypeConversation": "שיחה",
+    "playAgain": "שחק שוב",
+    "reviewActivity": "סקירה",
+    "welcomeToPangeaChat": "ברוך הבא לפנגיאה צ'אט",
+    "claimTrial": "דרוש את הניסיון שלך",
+    "thanksForSigningUp": "תודה על ההרשמה! הנה",
+    "sevenDaysFree": "7 ימים חינם",
+    "manageTrialInSettings": "נהל את הניסיון שלך בכל עת ב\nהגדרות המנוי",
+    "noCreditCardRequired": "אין צורך בכרטיס אשראי.",
+    "proFeatures": "פרו",
+    "widenSearch": "הרחב חיפוש",
+    "scrollToBottom": "גלול לתחתית",
+    "courseImage": "תמונת קורס",
+    "avatarPreview": "תצוגה מקדימה של אווטאר",
+    "emotePreview": "תצוגה מקדימה של אמוט: {name}",
+    "activityLabel": "פעילות: {title}",
+    "resetMapView": "אפס את תצוגת המפה",
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signUpWithEmail": "הירשם עם דוא\"ל",
+    "unreadLabel": "לא נקרא: {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
+    },
+    "writeAndSpeakWorryFree": "כתוב ודבר ללא דאגות עם פנגיאה בוט בכל זמן, בכל מקום!",
+    "joinLearningCommunities": "הצטרף לקהילות למידה בינלאומיות, או התחל את שלך!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "סגור רשימת צ'אטים",
+    "closeChat": "סגור צ'אט",
+    "closeSession": "סגור סקירת פעילות",
+    "closeCourse": "סגור קורס",
+    "closeCoursePage": "סגור דף קורס",
+    "closeAddCourse": "סגור הוספת קורס",
+    "closeAnalytics": "סגור אנליטיקה",
+    "closeVocabulary": "סגור אוצר מילים",
+    "closeGrammar": "סגור דקדוק",
+    "closePractice": "סגור תרגול",
+    "closeSettings": "סגור הגדרות",
+    "closeActivity": "סגור פעילות",
+    "closeNamed": "סגור {name}",
+    "clearSearch": "נקה חיפוש",
+    "starRowLabel": "{filled} מתוך {total} כוכבים הושלמו",
+    "difficultyLabel": "קושי: {cefr}",
+    "writingAssistanceTutorialInputBar": "אתה יכול לכתוב בכל שפה! אנחנו נעזור לך לתקן טעויות.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} עמוד",
+    "closeHint": "סגור רמז",
+    "starListLabel": "פעילויות ושמות כוכבים שנשמרו",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "התאם את הסקר",
+    "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "אפשרויות ניווט",
+    "joinedCourseListLabel": "רשימת קורסים מצורפים",
+    "analyticsAndSettingsLabel": "אפשרויות ניתוח והגדרות",
+    "searchActivitiesLabel": "חפש פעילויות על המפה",
+    "filteredActivitiesLabel": "רשימת פעילויות מסוננות",
+    "mapZoomLabel": "בקרות זום במפה",
+    "activityMapLabel": "מפת פעילויות",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "אסטונית",
+    "abDisplayName": "אבחזית",
+    "elDisplayName": "יוונית",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} מתוך {total} כוכבים שהושגו",
+    "activityNoLongerSupported": "פעילות זו רצה על גרסה ישנה יותר של פעילויות ואינה נתמכת עוד. אתה עדיין יכול לעיין במה שקרה במפגש זה.",
+    "activityLoadFailed": "לא ניתן לטעון את הפעילות. בדוק את החיבור שלך ונסה שוב.",
+    "levelUpChip": "רמה {level}!",
+    "missingCourseOutline": "הקורס הזה אינו זמין יותר",
+    "missingCourseOutlineCta": "הקורס הזה אינו זמין יותר. בחר תוכנית קורס חדשה.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "סגור את עמוד הוספת הקורס",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "דווח על בעיית מידע דקדוק",
+    "grammarFeedbackDialogTitle": "משוב על מידע דקדוק",
+    "grammarFeedbackSubmittedDesc": "תודה! ההסבר עודכן בהתאם למשוב שלך.",
+    "focusOnMap": "מקד על המפה",
+    "welcome": "ברוך הבא",
+    "courseRequest": "בקשת קורס",
+    "onboarding": "הדרכה",
+    "selectImageFromDevice": "בחר תמונה מהמכשיר",
+    "dinoAvatarLabel": "דינוזואר עם משקפי שמש",
+    "bearAvatarLabel": "דוב ידידותי",
+    "squidAvatarLabel": "דיונון עם אוזניות",
+    "cartoonAvatarLabel": "דמות מצוירת שמחה מנפנפת",
+    "robotAvatarLabel": "רובוט עם כוכבים במקום עיניים",
+    "featuresIncludeLabel": "תכונות כוללות",
+    "difficultyListLabel": "רשימת קושי",
+    "languageListLabel": "רשימת שפות",
+    "searchedResultsLabel": "תוצאות חיפוש עבור '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
+    },
+    "coursePermissions": "הרשאות קורס",
+    "starsToUnlockObjectiveTitle": "כוכבים למשימה",
+    "starsToUnlockObjectiveDesc": "קבע את מספר הכוכבים הדרושים להשלמת כל משימה",
+    "maxStarsPerMissionWarning": "בקורס זה יש משימות שבהן ניתן לצבור רק {maxValue} כוכבים. אנא הזן מספר קטן או שווה ל-{maxValue}.",
+    "removedFromCourseError": "הוסרת מקורס זה. צור קשר עם המורה שלך.",
+    "endPractice": "סיים אימון",
+    "bodyLabel": "אפשרויות {page}",
+    "openDM": "פתח הודעה פרטית",
+    "openNewTab": "פתח בכרטיסייה חדשה",
+    "viewProfileImageLabel": "הצג תמונת פרופיל",
+    "profileImageLabel": "תמונת פרופיל",
+    "actionsLabel": "פעולות",
+    "colorListLabel": "רשימת צבעים",
+    "chatAppearanceStyleLabel": "מראה הצ'אט עם הסגנון הנבחר",
+    "volumeLabel": "עוצמת קול",
+    "listLabel": "רשימת {description}",
+    "passwordFormLabel": "טופס שינוי סיסמה",
+    "searchLanguagesHint": "חיפוש שפות",
+    "searchCountriesHint": "חיפוש מדינות",
+    "searchVocabHint": "חיפוש אוצר מילים",
+    "searchUsersHint": "חיפוש משתמשים",
+    "searchMessagesHint": "חיפוש הודעות",
+    "searchChatsHint": "חיפוש צ'אטים",
+    "searchActivitiesHint": "חיפוש פעילויות",
+    "appInTargetLanguageTitle": "הצג את האפליקציה בשפה שאני לומד",
+    "appInTargetLanguageDesc": "תפריטים, כפתורים ותוויות יופיעו בשפת היעד שלך לטבילה. טקסט שלא תורגם יחזור לאנגלית.",
+    "changePasswordSessionExpired": "ההתחברות שלך פגה. אנא התחבר מחדש.",
+    "constructUseSugDesc": "הצעות שהתקבלו",
+    "mostPopular": "הפופולרי ביותר",
+    "mostSavings": "החיסכון הגדול ביותר",
+    "enterDiscountCode": "הזן קוד הנחה",
+    "yourPlan": "התוכנית שלך",
+    "subscriptionRenewsOn": "מתחדש ב-{date}",
+    "subscriptionEndsOn": "מסתיים ב-{date}",
+    "promoSubscription": "מנוי קידום מכירות",
+    "seatSubscription": "מושב מוסדי",
+    "lifetimeSubscription": "מנוי לכל החיים",
+    "freeSubscription": "חינם",
+    "freeTrialDescription": "יש לך תקופת ניסיון בחינם",
+    "manage": "נהל",
+    "subscriptionHistory": "היסטוריית מנויים",
+    "history": "היסטוריה",
+    "noPaymentHistoryFound": "לא נמצאה היסטוריית תשלומים",
+    "cancelAnytime": "בטל בכל עת בהגדרות המנוי",
+    "pricePerMonth": "{price}/חודש",
+    "pricePerYear": "{price}/שנה",
+    "viewSubscriptionOptions": "הצג אפשרויות מנוי",
+    "apply": "החל",
+    "continueToSubscribe": "המשך להירשם",
+    "invalidDiscountCode": "קוד הנחה לא חוקי",
+    "selectDiscountPlan": "בחר תוכנית הנחה",
+    "discountApplied": "הנחת {discount} הוחלה",
+    "cancelDescriptionWithRenewalDate": "המנוי שלך יהיה פעיל עד תאריך החידוש שלו ({date}), ולאחר מכן יבוטל. תשמור על הנתונים הסטטיסטיים אך לא תוכל להשתמש בתכונות הפרו.",
+    "cancelDescriptionWithoutRenewalDate": "המנוי שלך יהיה פעיל עד תאריך החידוש שלו, ולאחר מכן יבוטל. תשמור על הנתונים הסטטיסטיים אך לא תוכל להשתמש בתכונות הפרו.",
+    "change": "שנה",
+    "deactivateSubscribedAccountWarning": "פעולה זו תבטל את חשבון המשתמש שלך ותבטל את המנוי שלך. לא ניתן לבטל פעולה זו! האם אתה בטוח?",
+    "newCourseWithoutTitle": "התחל קורס",
+    "newCourseWithTitle": "התחל את \"{title}\"",
+    "joinCourseWithTitle": "הצטרף ל-\"{title}\"",
+    "searchCoursePlans": "חיפוש תוכניות קורסים",
+    "searchPublicCourses": "חיפוש קורסים ציבוריים",
+    "closeSearch": "סגור חיפוש",
+    "subscriptionsNotAvailableInApp": "לא ניתן לרכוש מנויים בתוך האפליקציה",
+    "subscribeOnTheWeb": "ניתן להירשם כמנוי דרך האתר בכתובת pangea.chat",
+    "waitingToFillOneRole": "ממתין למילוי תפקיד אחד...",
+    "closeArchive": "סגור ארכיון",
+    "activityActions": "פעולות פעילות",
+    "ongoing": "מתבצע",
+    "emptyInviteSearchHint": "לא מוצא את מי שאתה מחפש? ייתכן שהם צריכים לאפשר למצוא את הפרופיל שלהם בחיפוש. בדוק את עריכת פרופיל בהגדרות.",
+    "activityPreviewLabel": "תצוגה מקדימה של פעילות: ",
+    "participantRowLabel": "{joined} מתוך {total} משתתפים הצטרפו",
+    "ongoingPendingLabel": "ממתין לאחרים להצטרף",
+    "joinableLabel": "ניתן להצטרף",
+    "inProgressLabel": "הושלם בעבר",
+    "availableLabel": "צור פעילות",
+    "rateActivityTitle": "איך הייתה הפעילות?",
+    "rateActivityCommentHint": "הוסף תגובה (אופציונלית)",
+    "rateActivityCommentRejected": "התגובה שלך לא פורסמה. נסה לנסח אותה מחדש, או שלח את הדירוג שלך ללא תגובה.",
+    "rateActivityThanks": "תודה על המשוב!",
+    "activityRatingMeterLabel": "{percent}% חיובי ({count, plural, =1{דירוג 1} other{{count} דירוגים}})",
+    "newActivityBadge": "חדש",
+    "exitVocabPracticeSession": "ההתקדמות שלך באימון אוצר המילים הנוכחי לא תישמר.",
+    "exitGrammarPracticeSession": "ההתקדמות שלך באימון הדקדוק הנוכחי לא תישמר.",
+    "activityFilterButtonsLabel": "לחצני סינון לפי רמה, שחקנים וסטטוס",
+    "mapFilterAllLevels": "כל הרמות",
+    "mapFilterAllPlayers": "כל השחקנים",
+    "mapFilterAllStatuses": "כל הסטטוסים",
+    "mapFiltersShow": "הצג מסננים",
+    "mapFiltersHide": "הסתר מסננים",
+    "mapStatusAvailable": "זמין",
+    "mapStatusOngoing": "מתבצע",
+    "mapStatusWaiting": "ממתין",
+    "mapStatusOpenToJoin": "פתוח להצטרפות",
+    "mapMatchesOffscreen": "יש התאמות מחוץ לתצוגה שלך. התרחק כדי לראות אותן.",
+    "mapFiltersHideMatches": "המסננים שלך מסתירים את כל ההתאמות. הרחב את החיפוש כדי לראות אותן.",
+    "mapNoSearchMatches": "אין פעילויות התואמות לחיפוש שלך.",
+    "mapNoActivitiesArea": "אין פעילויות באזור זה.",
+    "practiceSessionTimedOut": "אימון התרגול שלך הסתיים לאחר {minutes} דקות ללא פעילות.",
+    "autocorrectMobileOnly": "נייד בלבד",
+    "autocorrectMobileOnlyWarning": "התיקון האוטומטי זמין רק באפליקציה לנייד.",
+    "audioSectionTitle": "שמע",
+    "audioWordsToolName": "מילים",
+    "audioWordsDescription": "השמעת מילה בלחיצה עליה.",
+    "audioChoicesToolName": "אפשרויות",
+    "audioChoicesDescription": "השמעת אודיו עבור אפשרויות התשובה בפעילויות תרגול.",
+    "audioIncomingMessagesToolName": "הודעות נכנסות",
+    "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה.",
+    "choosePangeaAvatar": "בחר אווטאר של Pangea",
+    "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
+    "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
+    "readAloudGetChrome": "קבל את Chrome",
+    "readAloudNoVoiceMobileWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. אפליקציית Pangea Chat יכולה להשתמש בקולות הטובים ביותר של המכשיר שלך.",
+    "readAloudGetApp": "קבל את האפליקציה",
+    "readAloudNoVoiceIOS": "המכשיר שלך עדיין לא הוריד קול {language} באיכות גבוהה. הורד אחד, ואז נסה שוב:",
+    "readAloudNoVoiceIOSSteps": "  • הגדרות\n  • נגישות\n  • תוכן מדובר\n  • קולות\n  • {language}\n  • הורד קול משופר או פרימיום",
+    "readAloudNoVoiceAndroid": "המכשיר שלך עדיין לא כולל קול {language} באיכות גבוהה. התקן נתוני קול עבור מנוע הטקסט לדיבור שלך, ואז נסה שוב.",
+    "readAloudOpenVoiceSettings": "פתח את הגדרות הקול",
+    "streamingSttDegradedLiveBanner": "התמלול החי פועל באמצעות שירות גיבוי. האיכות עשויה להשתנות, אנא בדוק את הטקסט.",
+    "streamingSttDegradedToBatchBanner": "תמלול חי אינו זמין כרגע. ההודעה שלך תומללה בדרך הרגילה, ללא עריכה חיה. אנו פועלים לשחזור השירות.",
+    "streamingSttLanguageUnsupportedBanner": "תמלול חי אינו זמין עדיין עבור שפה זו. אנו עובדים על כך.",
+    "formLabel": "טופס {name}",
+    "botDisplayName": "בוט פנגיאה",
+    "supportDisplayName": "תמיכה",
+    "explorePlayAndLearn": "חקור, שחק ולמד",
+    "conversationFromDayOne": "שיחה מהיום הראשון",
+    "builtForConnection": "נבנה לחיבור",
+    "aiWhenYouNeedIt": "בינה מלאכותית כשאתה צריך אותה",
+    "practiceTailoredForYou": "תרגול המותאם אישית עבורך"
 }

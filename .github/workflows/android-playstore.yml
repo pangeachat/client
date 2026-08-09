@@ -1,0 +1,122 @@
+name: Build Android and upload to Play Store internal track
+# Signed appbundle uploaded to the Play Store internal track.
+# - Called from release.yaml with environment=production on every release.
+# - Manually dispatchable for staging (or production) test builds.
+# Promotion beyond the internal track happens by hand in the Play Console,
+# mirroring the TestFlight -> App Store human step on iOS.
+on:
+  workflow_call:
+    inputs:
+      environment:
+        required: true
+        type: string
+      new_release_notes:
+        required: false
+        type: string
+        default: ""
+  workflow_dispatch:
+    inputs:
+     environment:
+        type: choice
+        description: Select the environment
+        options:
+          - staging
+          - production
+        default: 'staging'
+     new_release_notes:
+        required: true
+        type: string
+        description: "Posted to Release Announcements as the build's Summary (plain text; or paste '## Summary' / '## To Test' markdown sections)"
+
+permissions:
+  contents: read
+
+jobs:
+  deploy_playstore_internal:
+    environment:
+      name: ${{ inputs.environment }}
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+    env:
+      WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
+      ENV_OVERRIDES: ${{ vars.ENV_OVERRIDES }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
+      - uses: actions/setup-java@c1e323688fd81a25caa38c78aa6df2d33d3e20d9 # v4
+        with:
+          distribution: 'temurin'
+          java-version: ${{ env.JAVA_VERSION }}
+      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - name: Set up Android SDK
+        if: ${{ env.ACT }} # Only run on local act setups, as GitHub Actions provides the Android SDK on Ubuntu
+        uses: android-actions/setup-android@7c5672355aaa8fde5f97a91aa9a99616d1ace6bc # v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@6ca151fd1bfcfd6fe0c4eb6837eb0584d0134a0c # v1
+        with:
+          ruby-version: '3.3'
+      - name: Add Firebase Messaging
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: ./scripts/configure-firebase-messaging.sh
+      - name: Update env files to selected environment
+        run: |
+          rm -f .env
+          echo "$WEB_APP_ENV" > .env
+          touch assets/envs.json
+          echo "$ENV_OVERRIDES" >> assets/envs.json
+      - name: Apply .env patch
+        run: git apply ./scripts/enable_mobile_env.patch
+      - name: Install Fastlane
+        run: gem install fastlane -NV
+      - name: Remove Emoji Font
+        run: |
+          rm -rf fonts/NotoEmoji
+          yq -i 'del( .flutter.fonts[] | select(.family == "NotoEmoji") )' pubspec.yaml
+      - run: flutter pub get
+      - name: Prepare Android Release Build
+        env:
+          PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
+          PLAY_STORE_KEYSTORE_KEY_ALIAS: ${{ secrets.PLAY_STORE_KEYSTORE_KEY_ALIAS }}
+          PLAY_STORE_KEYSTORE_STORE_PASSWORD: ${{ secrets.PLAY_STORE_KEYSTORE_STORE_PASSWORD }}
+          PLAY_STORE_KEYSTORE_KEY_PASSWORD: ${{ secrets.PLAY_STORE_KEYSTORE_KEY_PASSWORD }}
+          PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
+        run: ./scripts/prepare-android-release.sh
+      - name: Capture build version
+        id: version
+        # prepare-android-release.sh (set_build_code_internal) rewrites pubspec
+        # with the Play Store build code, so this reads e.g. "5.0.0+3828".
+        run: echo "version=$(grep -m1 '^version:' pubspec.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
+      - name: Build Android Release
+        run: flutter build appbundle --target-platform android-arm,android-arm64,android-x64
+      - name: Deploy Android Release
+        env:
+          RELEASE_NOTES: ${{ inputs.new_release_notes }}
+        run: |
+          mkdir -p build/android
+          cp build/app/outputs/bundle/release/app-release.aab build/android/
+          cd android
+          bundle install
+          bundle update fastlane
+          bundle exec fastlane deploy_internal_test
+          cd ..
+
+  notify:
+    needs: deploy_playstore_internal
+    permissions:
+      id-token: write
+      contents: read
+    # Local workflow — this public repo can't call the private org-wide
+    # notify-matrix-deploy.yaml (see header of notify-matrix-build.yml).
+    uses: ./.github/workflows/notify-matrix-build.yml
+    with:
+      service_name: "Pangea Chat Android"
+      version: ${{ needs.deploy_playstore_internal.outputs.version }}
+      headline: "(${{ inputs.environment }}) is on the Play Store internal track"
+      release_body: ${{ inputs.new_release_notes }}
+    secrets:
+      aws_role_arn: ${{ secrets.AWS_ROLE_ARN_PROD }}

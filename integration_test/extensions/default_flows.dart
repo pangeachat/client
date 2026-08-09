@@ -1,7 +1,4 @@
-import 'dart:developer';
-
-import 'package:fluffychat/pages/chat_list/chat_list_body.dart';
-import 'package:fluffychat/pages/homeserver_picker/homeserver_picker.dart';
+import 'package:fluffychat/routes/chat_list/chat_list_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -124,48 +121,5 @@ extension DefaultFlowExtensions on WidgetTester {
       await tester.tap(find.maybeUppercaseText('Yes'));
       await tester.pumpAndSettle();
     }
-  }
-
-  Future<void> ensureAppStartedHomescreen({
-    Duration timeout = const Duration(seconds: 20),
-  }) async {
-    final tester = this;
-    await tester.pumpAndSettle();
-
-    final homeserverPickerFinder = find.byType(HomeserverPicker);
-    final chatListFinder = find.byType(ChatListViewBody);
-
-    final end = DateTime.now().add(timeout);
-
-    log(
-      'Waiting for HomeserverPicker or ChatListViewBody...',
-      name: 'Test Runner',
-    );
-    do {
-      if (DateTime.now().isAfter(end)) {
-        throw Exception(
-          'Timed out waiting for HomeserverPicker or ChatListViewBody',
-        );
-      }
-
-      await pumpAndSettle();
-      await Future.delayed(const Duration(milliseconds: 100));
-    } while (homeserverPickerFinder.evaluate().isEmpty &&
-        chatListFinder.evaluate().isEmpty);
-
-    if (homeserverPickerFinder.evaluate().isNotEmpty) {
-      log(
-        'Found HomeserverPicker, performing login.',
-        name: 'Test Runner',
-      );
-      await tester.login();
-    } else {
-      log(
-        'Found ChatListViewBody, skipping login.',
-        name: 'Test Runner',
-      );
-    }
-
-    await tester.acceptPushWarning();
   }
 }

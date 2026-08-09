@@ -7,12 +7,12 @@ import 'package:http/http.dart';
 import 'package:matrix/encryption.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/authentication/delete_account_exception.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat/recording_view_model.dart';
-import 'package:fluffychat/pangea/analytics_practice/analytics_practice_session_repo.dart';
-import 'package:fluffychat/pangea/authentication/delete_account_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
-import 'package:fluffychat/pangea/learning_settings/language_mismatch_popup.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_repo.dart';
+import 'package:fluffychat/routes/chat/recording_view_model.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/utils/other_party_can_receive.dart';
 import 'uia_request_manager.dart';
 
@@ -50,6 +50,11 @@ extension LocalizedExceptionExtension on Object {
     if (this is IdenticalLanguageException) {
       return L10n.of(context).noIdenticalLanguages;
     }
+
+    if (this is MissingLanguageException) {
+      return L10n.of(context).missingLanguageException;
+    }
+
     if (this is DeleteAccountException) {
       switch ((this as DeleteAccountException).error) {
         case DeleteAccountError.P_LIMIT_EXCEEDED:
@@ -84,15 +89,34 @@ extension LocalizedExceptionExtension on Object {
           return L10n.of(context).emailVerificationFailed;
         case MatrixError.M_BAD_STATE:
           if ((this as MatrixException).errorMessage.contains(
-            "Cannot knock user who was banned",
+            "user who was banned",
           )) {
             return L10n.of(context).cannotJoinBannedRoom;
           }
+        case MatrixError.M_BAD_JSON:
+          return L10n.of(context).invalidInput;
         // Pangea#
         default:
           if (exceptionContext == ExceptionContext.joinRoom) {
             return L10n.of(context).unableToJoinChat;
           }
+          // #Pangea
+          if ((this as MatrixException).errorMessage.contains(
+            "No known servers",
+          )) {
+            return L10n.of(context).unableToJoinChat;
+          }
+          // Changing a password logs the user out of their other sessions
+          // (logout_devices defaults to true server-side). On refresh-token
+          // sessions Synapse can also tear down the current session's token,
+          // so a follow-up request returns a raw 404 "No row found
+          // (access_tokens)" (M_UNKNOWN, not M_UNKNOWN_TOKEN, so soft-logout
+          // never catches it). Surface an actionable message instead of the
+          // internal DB string. See ansible#191 / client#7670.
+          if (exceptionContext == ExceptionContext.changePassword) {
+            return L10n.of(context).changePasswordSessionExpired;
+          }
+          // Pangea#
           return (this as MatrixException).errorMessage;
       }
     }
@@ -110,11 +134,9 @@ extension LocalizedExceptionExtension on Object {
           .toString()
           .replaceAll('{', '"')
           .replaceAll('}', '"');
-      return L10n.of(context).badServerLoginTypesException(
-        serverVersions,
-        supportedVersions,
-        supportedVersions,
-      );
+      return L10n.of(
+        context,
+      ).badServerLoginTypesException(serverVersions, supportedVersions);
     }
     if (this is IOException ||
         this is SocketException ||

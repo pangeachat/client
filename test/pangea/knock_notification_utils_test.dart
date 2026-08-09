@@ -1,8 +1,8 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/pangea/join_codes/knock_notification_utils.dart';
-import 'package:fluffychat/pangea/join_codes/knocked_rooms_model.dart';
+import 'package:fluffychat/features/join_codes/knock_notification_utils.dart';
+import 'package:fluffychat/features/join_codes/knocked_rooms_model.dart';
 
 void main() {
   const roomId = '!course:staging.pangea.chat';

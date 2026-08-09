@@ -1,0 +1,245 @@
+import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
+
+import 'package:fluffychat/features/join_codes/space_code_repo.dart';
+import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
+import 'package:fluffychat/routes/world/activity_course_resolver.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+
+/// Activity detail, rendered as a first-class `left=activity:<id>` panel over the
+/// persistent map (world_v2) — hosted by `WorkspaceLeftPanel` like any other left
+/// panel, sized by the allocator (#7385), a bottom sheet on narrow. The token
+/// param is the activity id; the in-course/standalone/legacy entry points all
+/// resolve to that token (see `WorkspaceNav.openCourseActivity` /
+/// `LegacyRedirects`). It renders the activity session start flow — it never
+/// remounts a second map. Closing drops the activity token, returning to the
+/// course-scoped map (or the bare map).
+///
+/// The parent course is the active course space when one is selected;
+/// otherwise the first joined course whose plan includes the activity (or none
+/// — you no longer need a course to play).
+class LeftPanelActivityDetailsSubpage extends StatefulWidget {
+  final ActivityTokenParam param;
+  final String? parentSpaceId;
+
+  const LeftPanelActivityDetailsSubpage({
+    super.key,
+    required this.param,
+    this.parentSpaceId,
+  });
+
+  @override
+  State<LeftPanelActivityDetailsSubpage> createState() =>
+      _LeftPanelActivityDetailsSubpageState();
+}
+
+class _LeftPanelActivityDetailsSubpageState
+    extends State<LeftPanelActivityDetailsSubpage> {
+  String? _parentId;
+  bool _loading = true;
+
+  /// Monotonic id for the in-flight parent resolve. Bumped on every
+  /// [_resolveParent]; a completion whose captured generation no longer matches
+  /// is STALE (the widget moved to a different activity) and must not write its
+  /// result, or a slow resolve for activity A could overwrite activity B's pin.
+  int _resolveGeneration = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _resolveParent();
+  }
+
+  /// Consume an activity id ferried across the login bounce
+  /// (PAuthGaurd.consumeCachedJoinCode, #7821). Called from exactly two
+  /// places, NOT from initState: a mount alone proved lossy — a competing
+  /// boot-time navigation can dispose this panel right after initState, and
+  /// clearing there consumed the ferry without the activity ever being seen
+  /// (the "landed in the world, no activity" QA report). Instead the cache
+  /// clears when a rendered frame SURVIVES (the panel is really on screen —
+  /// an interrupted attempt retries on the next logged-in landing), and
+  /// unconditionally on an explicit close/back — a deliberate dismissal must
+  /// never be resurrected by the ferry (the "uncloseable activity" QA
+  /// report). Fire-and-forget; a plain in-app open finds no cache and this
+  /// no-ops.
+  void _consumeFerriedActivity() {
+    if (SpaceCodeRepo.activityId == widget.param.activityId) {
+      SpaceCodeRepo.clearActivityId();
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant LeftPanelActivityDetailsSubpage oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.param.activityId != widget.param.activityId ||
+        oldWidget.parentSpaceId != widget.parentSpaceId) {
+      setState(() {
+        _loading = true;
+        _parentId = null;
+      });
+      _resolveParent();
+    }
+  }
+
+  Future<void> _resolveParent() async {
+    // Capture this resolve's generation + the activity it is for; a later resolve
+    // (widget changed activities) bumps the generation and any stale completion
+    // below is dropped rather than pinning the wrong activity's course.
+    final generation = ++_resolveGeneration;
+    final activityId = widget.param.activityId;
+    if (widget.parentSpaceId != null) {
+      setState(() {
+        _parentId = widget.parentSpaceId;
+        _loading = false;
+      });
+      return;
+    }
+    // No course selected (e.g. opened from World): find a joined course that
+    // includes this activity. Null L2 skips the language filter.
+    //
+    // Bounded: matchingCourseSpaces reads each joined course's quest outline
+    // from the CMS, and those reads are sequential within a course, so a slow
+    // or stalled backend could leave this resolve spinner up far longer than a
+    // user will wait (#7085, #7159). A miss just means the activity opens
+    // unscoped, so cap the whole resolve and fall through on timeout. Mirrors
+    // launch_activity_session's bound on the same call.
+    try {
+      final matches = await ActivityCourseResolver.matchingCourseSpaces(
+        Matrix.of(context).client,
+        activityId,
+        null,
+      ).timeout(const Duration(seconds: 10));
+      // Drop a STALE completion: a newer resolve (different activity) has
+      // superseded this one, so its match must not overwrite the current pin.
+      if (!mounted || generation != _resolveGeneration) return;
+      setState(() {
+        // Only pin when exactly one course matches AND the match set is
+        // complete; a tie — or a lone survivor of a batch where another
+        // course's eligibility couldn't be resolved — is left unscoped rather
+        // than attributing source_course_id to a possibly-wrong space.
+        _parentId = ActivityCourseResolver.unambiguousCourseId(matches);
+        _loading = false;
+      });
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {'activityId': activityId});
+      if (mounted && generation == _resolveGeneration) {
+        setState(() => _loading = false);
+      }
+    }
+  }
+
+  void _close() {
+    _consumeFerriedActivity();
+    final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    // Drop the activity token (and any legacy loose activity params) via the
+    // one shared sweeper — the course context survives a close.
+    context.go(WorkspaceNav.dropActivityOverlay(uri));
+  }
+
+  /// Back returns toward the course: pop history if there's something to pop,
+  /// otherwise just drop the activity token. Either way the course context stays
+  /// (the `?m=course:` scope survives) — this never leaves for a standalone open.
+  void _back() {
+    _consumeFerriedActivity();
+    if (context.canPop()) {
+      context.pop();
+    } else {
+      _close();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    // Once resolved, render the activity — with or without a parent course.
+    // You no longer need to be in a course to do an activity, so a null parent
+    // is fine; the session launches standalone. The activity view brings its
+    // own AppBar (the back/X nav row when embedded), so it renders directly.
+    if (!_loading) {
+      // A CONTENT frame survived on screen: consume the ferried id (see
+      // _consumeFerriedActivity — consuming any earlier lost interrupted
+      // opens). Post-frame + mounted so a build torn down before painting
+      // doesn't count as landed; idempotent across rebuilds.
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) _consumeFerriedActivity();
+      });
+      return ActivitySessionStartPage(
+        activityId: widget.param.activityId,
+        parentId: _parentId,
+        roomId: widget.param.roomId,
+        launch: widget.param.launch,
+      );
+    }
+
+    // While resolving, a minimal close row over a spinner. ONE control only,
+    // matching the loaded start view's rule (activity_sessions_start_view.dart):
+    // a back-arrow when the activity is still course-scoped (the `?c=` context),
+    // so it returns toward the course; an X otherwise (a map pin / standalone),
+    // so it dismisses to the map. Rendering both ← and X here was a redundant
+    // pair that did the same thing in the pin case (#7115).
+    final uri = GoRouter.of(context).routeInformationProvider.value.uri;
+    final embedded = parseOpenPanels(
+      uri,
+    ).left.any((t) => t.type == PanelTypesEnum.activity);
+    final courseScoped = activeSpaceIdFor(uri) != null;
+    final showBack = embedded && courseScoped;
+    return Scaffold(
+      body: Column(
+        children: [
+          ActivityLoadingHeader(
+            showBack: showBack,
+            onBack: _back,
+            onClose: _close,
+          ),
+          const Expanded(
+            child: Center(child: CircularProgressIndicator.adaptive()),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The single close control shown over the activity-resolve spinner. Exactly ONE
+/// control, mirroring the loaded start view's rule (activity_sessions_start_view
+/// and routing.instructions.md → one close affordance per panel): a back-arrow
+/// when [showBack] (the activity is still course-scoped, so it returns toward the
+/// course), an X otherwise (a map pin / standalone, so it dismisses to the map).
+/// Rendering both ← and X here was a redundant pair doing the same thing (#7115).
+class ActivityLoadingHeader extends StatelessWidget {
+  final bool showBack;
+  final VoidCallback onBack;
+  final VoidCallback onClose;
+
+  const ActivityLoadingHeader({
+    super.key,
+    required this.showBack,
+    required this.onBack,
+    required this.onClose,
+  });
+
+  @override
+  Widget build(BuildContext context) => Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 4.0, vertical: 4.0),
+    child: Align(
+      alignment: Alignment.centerLeft,
+      child: showBack
+          ? IconButton(
+              tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+              icon: const Icon(Icons.arrow_back),
+              onPressed: onBack,
+            )
+          : IconButton(
+              tooltip: L10n.of(context).closeActivity,
+              icon: const Icon(Icons.close),
+              onPressed: onClose,
+            ),
+    ),
+  );
+}

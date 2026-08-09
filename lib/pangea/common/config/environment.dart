@@ -15,11 +15,25 @@ class Environment {
   static bool get isStagingEnvironment =>
       dotenv.env["ENVIRONMENT"] == "staging";
 
+  /// Force Flutter's accessibility semantics tree always-on (opt-in).
+  ///
+  /// Flutter keeps semantics off until an assistive tech is detected or the
+  /// off-screen placeholder is activated. With this on, the tree is populated
+  /// from startup, so automation and assistive tech can drive the
+  /// canvas-rendered UI by role+name instead of screenshots. Off by default —
+  /// it carries Flutter's semantics perf cost, so it is never enabled in
+  /// production. See `playwright-testing.instructions.md`.
+  static bool get enableSemantics => dotenv.env["ENABLE_SEMANTICS"] == "true";
+
   static String get frontendURL {
     return appConfigOverride?.frontendURL ??
         dotenv.env["FRONTEND_URL"] ??
         "Frontend URL NOT FOUND";
   }
+
+  static String? get testUsername => dotenv.env["TEST_MATRIX_USERNAME"];
+
+  static String? get testPassword => dotenv.env["TEST_MATRIX_PASSWORD"];
 
   static String get synapseURL {
     return appConfigOverride?.synapseURL ??
@@ -81,15 +95,68 @@ class Environment {
     return envEntry;
   }
 
+  /// Base URL of the teacher-BFF (admin-dash-api). Used only by the best-effort
+  /// analytics dual-write (see [AnalyticsEventsRepo]); empty when unconfigured,
+  /// in which case the dual-write is skipped. Trailing slash is trimmed so the
+  /// caller can concatenate a leading-slash path safely.
+  static String get teacherBffApi {
+    final envEntry =
+        appConfigOverride?.teacherBffApi ?? dotenv.env['TEACHER_BFF_API'];
+    if (envEntry == null || envEntry.isEmpty) {
+      return "";
+    }
+    return envEntry.endsWith("/")
+        ? envEntry.substring(0, envEntry.length - 1)
+        : envEntry;
+  }
+
+  /// Feature flag for the best-effort analytics dual-write to the teacher-BFF.
+  /// Defaults to `false` so the behavior ships dark; the dual-write is also a
+  /// no-op whenever [teacherBffApi] is empty, so both must be set for it to run.
+  static bool get analyticsDualWriteEnabled {
+    return appConfigOverride?.analyticsDualWriteEnabled ??
+        (dotenv.env["ANALYTICS_DUAL_WRITE_ENABLED"]?.toLowerCase() == 'true');
+  }
+
+  /// Feature flag for the best-effort dosage signals (see [DosageSignalsRepo]).
+  /// Defaults to `false` so the behavior ships dark. This is the third gate on
+  /// top of [analyticsDualWriteEnabled] + [teacherBffApi]: dosage signals ride
+  /// the same BFF door as the analytics dual-write, so all three must be set.
+  static bool get dosageSignalsEnabled {
+    return appConfigOverride?.dosageSignalsEnabled ??
+        (dotenv.env["DOSAGE_SIGNALS_ENABLED"]?.toLowerCase() == 'true');
+  }
+
+  /// Feature flag for the voice-transcript tokenizer-decouple send path.
+  /// Defaults to `false` so it ships dark: when OFF, `onVoiceMessageSend` uses
+  /// today's blocking tokenized path byte-for-byte. When ON, the send awaits
+  /// only the ASR transcript text (skip_tokenize), embeds it with
+  /// `stt_tokens: []`, sends, and tokenizes + attaches + records analytics in
+  /// the background. Gates the NEW SEND PATH only -- the token-aware read and
+  /// the compatibility token-repair stay active for already-sent token-less
+  /// messages regardless of this flag.
+  static bool get voiceTranscriptDecoupleEnabled {
+    return appConfigOverride?.voiceTranscriptDecoupleEnabled ??
+        (dotenv.env["VOICE_TRANSCRIPT_DECOUPLE_ENABLED"]?.toLowerCase() ==
+            'true');
+  }
+
+  /// Feature flag for the live streaming-STT capture path (Phase-2 pilot, D11).
+  /// Defaults to `false` so it ships dark: when OFF, the recorder uses today's
+  /// `AudioEncoder.wav` batch record-then-transcribe path byte-for-byte. When
+  /// ON *and* the message language is in the evaluated streaming set, the
+  /// recorder streams PCM16 to the relay for live partials, tees the same frames
+  /// into a retained WAV, and renders the settling transcript. Any other case
+  /// (flag off, batch-only language, streaming unavailable) falls back to
+  /// today's path unchanged (see [StreamingSttGate]).
+  static bool get liveStreamingSttEnabled {
+    return appConfigOverride?.liveStreamingSttEnabled ??
+        (dotenv.env["LIVE_STREAMING_STT_ENABLED"]?.toLowerCase() == 'true');
+  }
+
   static String get pushGatewayUrl => isStagingEnvironment
       ? 'https://sygnal.staging.pangea.chat/_matrix/push/v1/notify'
       : 'https://sygnal.pangea.chat/_matrix/push/v1/notify';
-
-  static String get choreoApiKey {
-    return appConfigOverride?.choreoApiKey ??
-        dotenv.env['CHOREO_API_KEY'] ??
-        'e6fa9fa97031ba0c852efe78457922f278a2fbc109752fe18e465337699e9873';
-  }
 
   static String get sentryDsn {
     return appConfigOverride?.sentryDsn ??
@@ -97,9 +164,9 @@ class Environment {
         'https://c2fd19ab2cdc4ebb939a32d01c0e9fa1@o225078.ingest.sentry.io/1376295';
   }
 
-  static bool get analyticsDebugEnabled {
-    return appConfigOverride?.analyticsDebugEnabled ??
-        (dotenv.env["GOOGLE_ANALYTICS_DEBUG_ENABLED"]?.toLowerCase() == 'true');
+  static String? get googleAnalyticsFirebaseOptionsBase64 {
+    return appConfigOverride?.googleAnalyticsFirebaseOptionsBase64 ??
+        dotenv.env["GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64"];
   }
 
   static String get rcGoogleKey {
@@ -200,9 +267,13 @@ class AppConfigOverride {
   final String? synapseURL;
   final String? homeServer;
   final String? choreoApi;
-  final String? choreoApiKey;
+  final String? teacherBffApi;
+  final bool? analyticsDualWriteEnabled;
+  final bool? dosageSignalsEnabled;
+  final bool? voiceTranscriptDecoupleEnabled;
+  final bool? liveStreamingSttEnabled;
   final String? sentryDsn;
-  final bool? analyticsDebugEnabled;
+  final String? googleAnalyticsFirebaseOptionsBase64;
   final String? rcGoogleKey;
   final String? rcIosKey;
   final String? rcOfferingName;
@@ -215,9 +286,13 @@ class AppConfigOverride {
     this.synapseURL,
     this.homeServer,
     this.choreoApi,
-    this.choreoApiKey,
+    this.teacherBffApi,
+    this.analyticsDualWriteEnabled,
+    this.dosageSignalsEnabled,
+    this.voiceTranscriptDecoupleEnabled,
+    this.liveStreamingSttEnabled,
     this.sentryDsn,
-    this.analyticsDebugEnabled,
+    this.googleAnalyticsFirebaseOptionsBase64,
     this.rcGoogleKey,
     this.rcIosKey,
     this.rcOfferingName,
@@ -232,9 +307,15 @@ class AppConfigOverride {
       synapseURL: json['synapseURL'] as String?,
       homeServer: json['homeServer'] as String?,
       choreoApi: json['choreoApi'] as String?,
-      choreoApiKey: json['choreoApiKey'] as String?,
+      teacherBffApi: json['teacherBffApi'] as String?,
+      analyticsDualWriteEnabled: json['analyticsDualWriteEnabled'] as bool?,
+      dosageSignalsEnabled: json['dosageSignalsEnabled'] as bool?,
+      voiceTranscriptDecoupleEnabled:
+          json['voiceTranscriptDecoupleEnabled'] as bool?,
+      liveStreamingSttEnabled: json['liveStreamingSttEnabled'] as bool?,
       sentryDsn: json['sentryDsn'] as String?,
-      analyticsDebugEnabled: json['analyticsDebugEnabled'] as bool?,
+      googleAnalyticsFirebaseOptionsBase64:
+          json['googleAnalyticsFirebaseOptionsBase64'] as String?,
       rcGoogleKey: json['rcGoogleKey'] as String?,
       rcIosKey: json['rcIosKey'] as String?,
       rcOfferingName: json['rcOfferingName'] as String?,
@@ -250,8 +331,14 @@ class AppConfigOverride {
       'synapseURL': synapseURL,
       'homeServer': homeServer,
       'choreoApi': choreoApi,
-      'choreoApiKey': choreoApiKey,
+      'teacherBffApi': teacherBffApi,
+      'analyticsDualWriteEnabled': analyticsDualWriteEnabled,
+      'dosageSignalsEnabled': dosageSignalsEnabled,
+      'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
+      'liveStreamingSttEnabled': liveStreamingSttEnabled,
       'sentryDsn': sentryDsn,
+      'googleAnalyticsFirebaseOptionsBase64':
+          googleAnalyticsFirebaseOptionsBase64,
       'rcGoogleKey': rcGoogleKey,
       'rcIosKey': rcIosKey,
       'rcOfferingName': rcOfferingName,
@@ -267,8 +354,13 @@ class AppConfigOverride {
         synapseURL.hashCode ^
         homeServer.hashCode ^
         choreoApi.hashCode ^
-        choreoApiKey.hashCode ^
+        teacherBffApi.hashCode ^
+        analyticsDualWriteEnabled.hashCode ^
+        dosageSignalsEnabled.hashCode ^
+        voiceTranscriptDecoupleEnabled.hashCode ^
+        liveStreamingSttEnabled.hashCode ^
         sentryDsn.hashCode ^
+        googleAnalyticsFirebaseOptionsBase64.hashCode ^
         rcGoogleKey.hashCode ^
         rcIosKey.hashCode ^
         rcOfferingName.hashCode ^
@@ -285,8 +377,15 @@ class AppConfigOverride {
         synapseURL == other.synapseURL &&
         homeServer == other.homeServer &&
         choreoApi == other.choreoApi &&
-        choreoApiKey == other.choreoApiKey &&
+        teacherBffApi == other.teacherBffApi &&
+        analyticsDualWriteEnabled == other.analyticsDualWriteEnabled &&
+        dosageSignalsEnabled == other.dosageSignalsEnabled &&
+        voiceTranscriptDecoupleEnabled ==
+            other.voiceTranscriptDecoupleEnabled &&
+        liveStreamingSttEnabled == other.liveStreamingSttEnabled &&
         sentryDsn == other.sentryDsn &&
+        googleAnalyticsFirebaseOptionsBase64 ==
+            other.googleAnalyticsFirebaseOptionsBase64 &&
         rcGoogleKey == other.rcGoogleKey &&
         rcIosKey == other.rcIosKey &&
         rcOfferingName == other.rcOfferingName &&

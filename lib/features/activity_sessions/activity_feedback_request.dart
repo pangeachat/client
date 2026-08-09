@@ -1,0 +1,49 @@
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+
+class ActivityFeedbackRequest {
+  final String activityId;
+  final String feedbackText;
+  final String userId;
+  final String userL1;
+  final String userL2;
+  final bool? mock;
+
+  ActivityFeedbackRequest({
+    required this.activityId,
+    required this.feedbackText,
+    required this.userId,
+    required this.userL1,
+    required this.userL2,
+    this.mock,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'activity_id': activityId,
+      'feedback_text': feedbackText,
+      ModelKey.userId: userId,
+      ModelKey.userL1: userL1,
+      ModelKey.userL2: userL2,
+      if (mock != null) ModelKey.mock: mock,
+    };
+  }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is ActivityFeedbackRequest &&
+          runtimeType == other.runtimeType &&
+          activityId == other.activityId &&
+          feedbackText == other.feedbackText &&
+          userId == other.userId &&
+          userL1 == other.userL1 &&
+          userL2 == other.userL2;
+
+  @override
+  int get hashCode =>
+      activityId.hashCode ^
+      feedbackText.hashCode ^
+      userId.hashCode ^
+      userL1.hashCode ^
+      userL2.hashCode;
+}

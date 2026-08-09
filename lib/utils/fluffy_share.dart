@@ -3,10 +3,15 @@ import 'package:flutter/services.dart';
 
 import 'package:share_plus/share_plus.dart';
 
+import 'package:fluffychat/features/navigation/user_id_url.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import '../widgets/matrix.dart';
+
+// #Pangea
+// Pangea#
 
 abstract class FluffyShare {
   static Future<void> share(
@@ -25,22 +30,26 @@ abstract class FluffyShare {
       return;
     }
     await Clipboard.setData(ClipboardData(text: text));
-    ScaffoldMessenger.of(
-      context,
-    ).showSnackBar(SnackBar(content: Text(L10n.of(context).copiedToClipboard)));
+    // #Pangea
+    ScaffoldMessenger.of(context).showSnackBarAnnounced(
+      SnackBar(content: Text(L10n.of(context).copiedToClipboard)),
+    );
+    // Pangea#
     return;
   }
 
   static Future<void> shareInviteLink(BuildContext context) async {
     final client = Matrix.of(context).client;
-    final ownProfile = await client.fetchOwnProfile();
+    // #Pangea
+    // final ownProfile = await client.fetchOwnProfile();
+    // Pangea#
     await FluffyShare.share(
       // #Pangea
       // L10n.of(context).inviteText(
       //   ownProfile.displayName ?? client.userID!,
       //   'https://matrix.to/#/${client.userID}?client=im.fluffychat',
       // ),
-      "${ownProfile.displayName ?? client.userID!} invited you to Pangea Chat.\nOpen the invite link: \n ${Environment.frontendURL}",
+      "${Environment.frontendURL}/#/invite_user/${Uri.encodeComponent(shortUserId(client.userID!))}",
       // Pangea#
       context,
     );

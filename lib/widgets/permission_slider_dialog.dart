@@ -8,13 +8,25 @@ Future<int?> showPermissionChooser(
   BuildContext context, {
   int currentLevel = 0,
   int maxLevel = 100,
+  // #Pangea
+  bool isCourse = false,
+  // Pangea#
 }) async {
   final controller = TextEditingController();
   final error = ValueNotifier<String?>(null);
   return await showAdaptiveDialog<int>(
     context: context,
     builder: (context) => AlertDialog.adaptive(
-      title: Center(child: Text(L10n.of(context).chatPermissions)),
+      title: Center(
+        child: Text(
+          // #Pangea
+          // L10n.of(context).chatPermissions,
+          isCourse
+              ? L10n.of(context).coursePermissions
+              : L10n.of(context).chatPermissions,
+          // Pangea#
+        ),
+      ),
       content: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 256, maxHeight: 256),
         child: Column(
@@ -22,7 +34,10 @@ Future<int?> showPermissionChooser(
           crossAxisAlignment: .stretch,
           spacing: 12.0,
           children: [
-            Text(L10n.of(context).setPermissionsLevelDescription),
+            // #Pangea
+            // Text(L10n.of(context).setPermissionsLevelDescription),
+            Text(L10n.of(context).setPermissionsLevelDesc),
+            // Pangea#
             ValueListenableBuilder(
               valueListenable: error,
               builder: (context, errorText, _) => DialogTextField(
@@ -43,9 +58,18 @@ Future<int?> showPermissionChooser(
           onPressed: () {
             final level = int.tryParse(controller.text.trim());
             if (level == null) {
-              error.value = L10n.of(context).pleaseEnterANumber;
+              // #Pangea
+              // error.value = L10n.of(context).pleaseEnterANumber;
+              error.value = L10n.of(context).invalidInput;
+              // Pangea#
               return;
             }
+            // #Pangea
+            if (level > 100 || level < 0) {
+              error.value = L10n.of(context).invalidInput;
+              return;
+            }
+            // Pangea#
             if (level > maxLevel) {
               error.value = L10n.of(context).noPermission;
               return;

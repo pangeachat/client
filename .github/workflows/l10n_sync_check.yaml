@@ -1,0 +1,25 @@
+name: l10n sync check
+
+# Notify (non-blocking) when a PR changes English UI copy without updating
+# translations. See scripts/translate/check_l10n_sync.py and
+# .github/instructions/localization.instructions.md.
+
+on:
+  pull_request:
+    paths:
+      - "lib/l10n/intl_en.arb"
+
+jobs:
+  l10n-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Fetch base branch
+        run: git fetch origin ${{ github.base_ref }} --depth=1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check translation sync
+        run: python scripts/translate/check_l10n_sync.py --base origin/${{ github.base_ref }}

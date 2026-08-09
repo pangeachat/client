@@ -5,19 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import 'package:collection/collection.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_rating_store.dart';
+import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
+import 'package:fluffychat/features/navigation/workspace_screen_tracker.dart';
+import 'package:fluffychat/pangea/common/config/env_loader.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
-import 'package:fluffychat/pangea/languages/locale_provider.dart';
-import 'package:fluffychat/pangea/languages/p_language_store.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/notification_background_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
@@ -28,11 +31,36 @@ import 'widgets/fluffy_chat_app.dart';
 ReceivePort? mainIsolateReceivePort;
 
 void main() async {
+  // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
+  // To make sure that the parts of flutter needed are started up already, we need to ensure that the
+  // widget bindings are initialized already.
+  WidgetsFlutterBinding.ensureInitialized();
+
+  // #Pangea
+  // Path URLs, not hash URLs. The router must read the real path at boot:
+  // the inbound contracts (`/<code>` join links, `/<uuid>` activity links —
+  // routing.instructions.md) arrive as paths, and under the default hash
+  // strategy the initial route is always `/`, leaving external links to a
+  // post-frame app_links replay that RACES the logged-out login bounce
+  // (joining-courses.instructions.md). CloudFront serves the SPA shell for
+  // every path (the SPA index fallback), so a direct path load always boots.
+  // No-op off web.
+  usePathUrlStrategy();
+
   // #Pangea
   try {
-    await dotenv.load(fileName: ".env");
+    await EnvLoader.load();
   } catch (e) {
     Logs().e('Failed to load .env file', e);
+  }
+
+  // Force the accessibility semantics tree on when ENABLE_SEMANTICS=true, so
+  // automation / assistive tech can drive the canvas-rendered UI by role+name
+  // instead of screenshots. Off by default (semantics has a perf cost). The
+  // handle is intentionally never disposed, keeping semantics on for the app's
+  // lifetime. See playwright-testing.instructions.md.
+  if (Environment.enableSemantics) {
+    WidgetsBinding.instance.ensureSemantics();
   }
 
   await Future.wait([
@@ -50,6 +78,8 @@ void main() async {
     GetStorage.init(),
     GetStorage.init("subscription_storage"),
     GetStorage.init('class_storage'),
+    GetStorage.init('user_invite_storage'),
+    GetStorage.init(ActivityRatingStore.storageKey),
   ];
   await Future.wait(initFutures);
   // Pangea#
@@ -63,11 +93,6 @@ void main() async {
     );
     await waitForPushIsolateDone();
   }
-
-  // Our background push shared isolate accesses flutter-internal things very early in the startup proccess
-  // To make sure that the parts of flutter needed are started up already, we need to ensure that the
-  // widget bindings are initialized already.
-  WidgetsFlutterBinding.ensureInitialized();
 
   final store = await AppSettings.init();
   Logs().i('Welcome to ${AppSettings.applicationName.value} <3');
@@ -124,6 +149,20 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
 
   // Preload first client
   final firstClient = clients.firstOrNull;
+
+  // #Pangea
+  // Stamp the GA user id as early as possible — before the rooms/account-data
+  // sync awaits below, which can be slow on a cold start. Otherwise
+  // early-session events (session_start, first screen views) fire with only
+  // the pseudonymous device id, which GA4 surfaces as a bare number (#7789).
+  // userID is restored from local storage by getClients(), so it is already
+  // known here. The post-sync call further down re-affirms it and clears it if
+  // the staging/prod mismatch check logs the client out.
+  await GoogleAnalytics.analyticsUserUpdate(
+    clients.firstWhereOrNull((c) => c.isLogged())?.userID,
+  );
+  // Pangea#
+
   await firstClient?.roomsLoading;
   await firstClient?.accountDataLoading;
 
@@ -138,12 +177,18 @@ Future<void> startGui(List<Client> clients, SharedPreferences store) async {
       await firstClient.logout();
     }
   }
+  final loggedInClient = clients.firstWhereOrNull((c) => c.isLogged());
+  await GoogleAnalytics.analyticsUserUpdate(loggedInClient?.userID);
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp, // Lock to portrait mode
   ]);
   // Pangea#
 
   // #Pangea
+  // Emit a GA4 screen view on every real workspace screen change (token-derived,
+  // deduped) — the observer only sees top-level page routes. See
+  // google-analytics.instructions.md.
+  WorkspaceScreenTracker.attach(FluffyChatApp.router);
   // runApp(FluffyChatApp(clients: clients, pincode: pin, store: store));
   runApp(
     ChangeNotifierProvider(

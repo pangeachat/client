@@ -1,0 +1,641 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shimmer/shimmer.dart';
+
+import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_badge.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/practice/practice_session_holder.dart';
+import 'package:fluffychat/routes/world/compact_count.dart';
+import 'package:fluffychat/routes/world/level_up_badge_celebration.dart';
+import 'package:fluffychat/routes/world/user_cluster_view_model.dart';
+import 'package:fluffychat/routes/world/user_cluster_view_model_builder.dart';
+import 'package:fluffychat/routes/world/xp_border_painter.dart';
+import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
+import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/users/level_ribbon.dart';
+
+/// The persistent top-right cluster over the world map (world_v2): the user's
+/// avatar wrapped in a clockwise XP ring (gray track that fills gold toward the
+/// next level), a gold "powerups" pill of three tappable trackers (Sessions /
+/// Grammar / Vocabulary) with the level medal overhanging its base, and the
+/// active L2 flag below. Tapping a tracker opens that metric's analytics docked
+/// on the right; the avatar opens profile/settings; the level medal opens the
+/// level tab; the flag opens learning settings. All data is client-side (see
+/// analytics-system.instructions.md); the cluster listens to the analytics
+/// update streams so counts/level/XP stay live. Look follows Figma
+/// `AvatarLangFlags` (12935:46894). See routing.instructions.md.
+class WorldUserCluster extends StatelessWidget {
+  const WorldUserCluster({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // Which analytics panel is open — chrome-level derivation from the URL, so
+    // the tracker whose panel is showing stays highlighted (#7977). Read here
+    // (not below) so the plain-values internals stay route-free and testable.
+    final selectedTab = activeAnalyticsTabFor(GoRouterState.of(context).uri);
+    return UserClusterViewModelBuilder(
+      builder: (context, viewModel) => WorldUserClusterInternal(
+        viewModel: viewModel,
+        selectedTab: selectedTab,
+      ),
+    );
+  }
+}
+
+class WorldUserClusterInternal extends StatelessWidget {
+  final UserClusterViewModel viewModel;
+
+  /// The analytics metric whose panel is open, highlighted in the pill; null
+  /// when none is open ([activeAnalyticsTabFor]).
+  final ProgressIndicatorEnum? selectedTab;
+
+  const WorldUserClusterInternal({
+    super.key,
+    required this.viewModel,
+    this.selectedTab,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: viewModel.languageStream,
+      builder: (context, _) {
+        final l2 = viewModel.userL2;
+        return Semantics(
+          label: L10n.of(context).analyticsAndSettingsLabel,
+          container: true,
+          child: FocusTraversalGroup(
+            policy: OrderedTraversalPolicy(),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ListenableBuilder(
+                  listenable: Listenable.merge([
+                    viewModel.avatarUrl,
+                    viewModel.displayName,
+                  ]),
+                  builder: (context, _) => ClusterAvatar(
+                    avatarUrl: viewModel.avatarUrl.value,
+                    name: viewModel.displayName.value,
+                    onTap: () => viewModel.openProfile(context),
+                  ),
+                ),
+                const SizedBox(height: 8),
+                _PowerupsPill(viewModel: viewModel, selectedTab: selectedTab),
+                if (l2 != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20),
+                    child: ClusterLanguageFlag(
+                      language: l2,
+                      onTap: () => viewModel.openLearningSettings(context),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// The circular user avatar at the top of the cluster. Opens profile/settings.
+/// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar] —
+/// the mobile single-column rendering of this same cluster
+/// (routing.instructions.md, "Single-column analytics nav bar") — can reuse it
+/// verbatim (including at the collapsed bar's smaller size) rather than
+/// duplicating the avatar + tooltip + semantics wiring. This is the one
+/// mechanical visibility change made to this file for that reuse; no behavior
+/// changed for the cluster's own usage (the default matches the old fixed
+/// `_size`).
+class ClusterAvatar extends StatelessWidget {
+  final Uri? avatarUrl;
+  final String? name;
+  final VoidCallback onTap;
+  final double size;
+
+  const ClusterAvatar({
+    required this.avatarUrl,
+    required this.name,
+    required this.onTap,
+    this.size = _defaultSize,
+    super.key,
+  });
+
+  static const double _defaultSize = 56.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final label = L10n.of(context).settings;
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Tooltip(
+        message: label,
+        // The Semantics below already names this control; without this the
+        // Tooltip's own message is announced too, doubling the accessible name
+        // ("Account Account"). See accessibility.instructions.md.
+        excludeFromSemantics: true,
+        child: Semantics(
+          button: true,
+          label: label,
+          excludeSemantics: true,
+          // Expose the tap on the announced node so screen-reader users can
+          // activate it (e.g. open Settings); GestureDetector alone leaves the
+          // button unactivatable via assistive tech. See issue #7185.
+          onTap: onTap,
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: onTap,
+            child: Avatar(
+              mxContent: avatarUrl,
+              name: name,
+              size: size,
+              showPresence: false,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The gold "powerups" pill: a white inner stack of the three trackers with the
+/// level medal overhanging its base. Follows Figma `AvatarLangFlags`.
+class _PowerupsPill extends StatelessWidget {
+  final UserClusterViewModel viewModel;
+  final ProgressIndicatorEnum? selectedTab;
+  const _PowerupsPill({required this.viewModel, this.selectedTab});
+
+  static const double _xpStroke = 5.0;
+  static const double _innerRadius = 20.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: viewModel.constructUpdateStream,
+      builder: (context, _) {
+        final vocab = viewModel.numVocabConstructs;
+        final grammar = viewModel.numGrammarConstruct;
+
+        final content = FutureBuilder<DerivedAnalyticsDataModel>(
+          future: viewModel.derivedAnalyticsData,
+          builder: (context, snapshot) {
+            final derived =
+                snapshot.data ?? viewModel.cachedDerivedAnalyticsData;
+            final level = derived?.level ?? 1;
+            final progress = (derived?.levelProgress ?? 0.0).clamp(0.0, 1.0);
+
+            return Stack(
+              alignment: Alignment.bottomCenter,
+              // The medal's level-up celebration paints just outside the
+              // pill's bounds (badge pulse + chip); don't clip it.
+              clipBehavior: Clip.none,
+              children: [
+                // The pill's frame IS the XP ring: a gray track that fills gold clockwise
+                // from the bottom-center (where the level medal sits) toward the next
+                // level. The trackers sit on a white field inside it; there is no solid
+                // gold fill — the only gold is the XP progress.
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    CustomPaint(
+                      painter: XpBorderPainter(
+                        progress: progress,
+                        trackColor: const Color.fromARGB(130, 135, 135, 135),
+                        progressColor: AppConfig.goldByTheme(context),
+                        stroke: _xpStroke,
+                        radius: _innerRadius + _xpStroke / 2,
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(_xpStroke),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Theme.of(
+                              context,
+                            ).colorScheme.surfaceContainer,
+                            borderRadius: BorderRadius.circular(_innerRadius),
+                          ),
+                          clipBehavior: Clip.antiAlias,
+                          padding: EdgeInsets.all(4.0),
+                          child: Material(
+                            type: MaterialType.transparency,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                StreamBuilder(
+                                  stream: viewModel.starsUpdateStream,
+                                  builder: (context, _) {
+                                    final stars = viewModel.starsEarned;
+                                    return ClusterTrackerButton(
+                                      indicator: ProgressIndicatorEnum.stars,
+                                      count: stars,
+                                      selected:
+                                          selectedTab ==
+                                          ProgressIndicatorEnum.stars,
+                                      onTap: () => viewModel.openAnalytics(
+                                        context,
+                                        AnalyticsPanelTab.sessions,
+                                      ),
+                                    );
+                                  },
+                                ),
+                                ClusterTrackerButton(
+                                  indicator: ProgressIndicatorEnum.morphsUsed,
+                                  count: grammar,
+                                  selected:
+                                      selectedTab ==
+                                      ProgressIndicatorEnum.morphsUsed,
+                                  onTap: () => viewModel.openAnalytics(
+                                    context,
+                                    AnalyticsPanelTab.grammar,
+                                  ),
+                                ),
+                                ClusterTrackerButton(
+                                  indicator: ProgressIndicatorEnum.wordsUsed,
+                                  count: vocab,
+                                  selected:
+                                      selectedTab ==
+                                      ProgressIndicatorEnum.wordsUsed,
+                                  onTap: () => viewModel.openAnalytics(
+                                    context,
+                                    AnalyticsPanelTab.vocab,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 30),
+                  ],
+                ),
+                Positioned(
+                  bottom: 0,
+                  child: Material(
+                    type: MaterialType.transparency,
+                    child: LevelUpBadgeCelebration(
+                      levelUpdates: viewModel.levelUpdates,
+                      child: ClusterLevelMedal(
+                        level: level,
+                        selected: selectedTab == ProgressIndicatorEnum.level,
+                        onTap: () => viewModel.openLevel(context),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
+          },
+        );
+
+        return viewModel.isAnalyticsInitializing
+            ? Shimmer.fromColors(
+                baseColor: Theme.of(
+                  context,
+                ).colorScheme.surfaceContainerHighest,
+                highlightColor: Theme.of(context).colorScheme.surface,
+                child: content,
+              )
+            : content;
+      },
+    );
+  }
+}
+
+/// One tracker in the powerups pill: a dark icon over its count, on the white
+/// inner field. Tapping opens that metric's analytics tab. Public so
+/// [WorldAnalyticsBar] can lay the same three trackers out horizontally.
+/// The displayed count abbreviates above 999 ([compactCount]) so the pill
+/// never outgrows the allocator's fixed cluster gutter; the semantics label
+/// carries the exact count.
+class ClusterTrackerButton extends StatefulWidget {
+  final ProgressIndicatorEnum indicator;
+  final int count;
+  final VoidCallback onTap;
+
+  /// Whether this tracker's analytics panel is the one currently open — then it
+  /// wears a persistent highlight (a sticky version of its hover wash) so the
+  /// pill shows what is on screen (#7977). Ignored while a live practice badge
+  /// occupies the tracker.
+  final bool selected;
+
+  /// Sizing knobs so the narrow analytics bar can render the compact variant
+  /// (the Figma mobile pill); web keeps these defaults.
+  final double horizontalPadding;
+  final double iconSize;
+  final double fontSize;
+
+  const ClusterTrackerButton({
+    required this.indicator,
+    required this.count,
+    required this.onTap,
+    this.selected = false,
+    this.horizontalPadding = 16,
+    this.iconSize = 24,
+    this.fontSize = 16,
+    super.key,
+  });
+
+  @override
+  State<ClusterTrackerButton> createState() => _ClusterTrackerButtonState();
+}
+
+class _ClusterTrackerButtonState extends State<ClusterTrackerButton> {
+  ProgressIndicatorEnum get indicator => widget.indicator;
+  int get count => widget.count;
+  VoidCallback get onTap => widget.onTap;
+  bool get selected => widget.selected;
+  double get horizontalPadding => widget.horizontalPadding;
+  double get iconSize => widget.iconSize;
+  double get fontSize => widget.fontSize;
+
+  /// Hover feedback for the live-practice badge: the fill brightens to full
+  /// opacity (the gold ink highlight is suppressed there — a translucent gold
+  /// wash over solid primary read as no feedback at all).
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    // While this section has a live background practice session, the tracker
+    // wears the practice badge (icon + running timer) and its tap RESUMES the
+    // session instead of opening analytics (gated in the view model). See
+    // routing.instructions.md § Practice is a persistent background session.
+    return ListenableBuilder(
+      listenable: PracticeSessionHolder.instance,
+      builder: (context, _) {
+        final holder = PracticeSessionHolder.instance;
+        final tracksPractice =
+            indicator == ProgressIndicatorEnum.wordsUsed ||
+            indicator == ProgressIndicatorEnum.morphsUsed;
+        final liveSessionStart =
+            tracksPractice && holder.liveType == indicator.constructType
+            ? holder.current?.sessionController.session?.startedAt
+            : null;
+
+        final semanticsLabel = liveSessionStart != null
+            ? '${indicator.tooltip(context)}: $count — '
+                  '${L10n.of(context).practice}'
+            : '${indicator.tooltip(context)}: $count';
+
+        return Tooltip(
+          message: liveSessionStart != null
+              ? L10n.of(context).practice
+              : indicator.tooltip(context),
+          // The Semantics below carries the full "<stat>: <count>" name;
+          // exclude the Tooltip so it isn't announced twice ("Stars Stars: 0").
+          excludeFromSemantics: true,
+          child: InkWell(
+            onTap: onTap,
+            onHover: (h) => setState(() => _hovered = h),
+            hoverColor: liveSessionStart != null
+                ? Colors.transparent
+                : AppConfig.goldByTheme(context).withAlpha(50),
+            borderRadius: BorderRadius.circular(100),
+            child: Semantics(
+              button: true,
+              // The exact count — assistive tech is never given the
+              // abbreviation.
+              label: semanticsLabel,
+              excludeSemantics: true,
+              // While a session is live the badge takes the button's place:
+              // ONE stadium fill on exactly the hover-highlight geometry
+              // (same radius, same padded bounds), practice icon over the
+              // running timer inside it. Painted as INK (not a Container) so
+              // Material's press splash renders on top of the fill — the same
+              // white flash the sibling trackers give.
+              child: Ink(
+                decoration: liveSessionStart != null
+                    ? BoxDecoration(
+                        color: Theme.of(context).colorScheme.primary.withValues(
+                          alpha: _hovered ? 1.0 : 0.75,
+                        ),
+                        borderRadius: BorderRadius.circular(100),
+                      )
+                    // Open-panel highlight: a persistent version of the hover
+                    // wash on the same padded geometry, so the tracker whose
+                    // analytics is showing stays lit (#7977).
+                    : selected
+                    ? BoxDecoration(
+                        color: AppConfig.goldByTheme(context).withAlpha(50),
+                        borderRadius: BorderRadius.circular(100),
+                      )
+                    : null,
+                padding: EdgeInsets.symmetric(
+                  horizontal: horizontalPadding,
+                  vertical: 9,
+                ),
+                child: liveSessionStart != null
+                    ? PracticeSessionBadge(
+                        startedAt: liveSessionStart,
+                        iconSize: iconSize,
+                        fontSize: fontSize,
+                      )
+                    : Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(indicator.icon, size: iconSize),
+                          const SizedBox(height: 3),
+                          Text(
+                            compactCount(count),
+                            style: TextStyle(
+                              fontSize: fontSize,
+                              height: 1.1,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ],
+                      ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+/// The gold level shield overhanging the powerups pill (opens the level tab).
+/// Public so [WorldAnalyticsBar] can place it at the bar's left end.
+///
+/// Unlike the trackers, the medal shows hover and the open Level panel in
+/// **its own gold** ([AppConfig.goldHighlightByTheme]) rather than behind
+/// itself: the trackers' circular wash sat gold-on-gold under a solid gold
+/// shield and read as a stray circle instead of feedback (#8067).
+class ClusterLevelMedal extends StatefulWidget {
+  final int level;
+  final VoidCallback onTap;
+
+  /// Whether the Level analytics tab is open — then the shield stays in its
+  /// deepened gold, the sticky counterpart of hover (#7977, #8067).
+  final bool selected;
+
+  const ClusterLevelMedal({
+    required this.level,
+    required this.onTap,
+    this.selected = false,
+    super.key,
+  });
+
+  @override
+  State<ClusterLevelMedal> createState() => _ClusterLevelMedalState();
+}
+
+class _ClusterLevelMedalState extends State<ClusterLevelMedal> {
+  bool _hovered = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final label = '${L10n.of(context).level} ${widget.level}';
+    final lit = _hovered || widget.selected;
+    return Tooltip(
+      message: label,
+      // Semantics below names this; exclude the Tooltip to avoid "Level 2 Level 2".
+      excludeFromSemantics: true,
+      child: InkWell(
+        onTap: widget.onTap,
+        onHover: (hovered) => setState(() => _hovered = hovered),
+        // No circular wash behind the shield — the shield's own gold carries
+        // hover (#8067). The focus highlight is left alone: keyboard users
+        // still get a visible ring.
+        hoverColor: Colors.transparent,
+        borderRadius: BorderRadius.circular(100.0),
+        child: Semantics(
+          button: true,
+          label: label,
+          excludeSemantics: true,
+          // Expose the tap on the announced node for assistive tech (#7185).
+          onTap: widget.onTap,
+          child: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: LevelRibbon(
+              height: 44,
+              level: widget.level,
+              color: lit ? AppConfig.goldHighlightByTheme(context) : null,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+/// The active L2 indicator below the powerups pill (Figma `Flags`). Shows the
+/// language's flag SVG ([LanguageModel.svgUrl]) when it has a usable locale
+/// (e.g. `es-ES` → Spanish flag), with the uppercased language code (e.g. `ES`)
+/// overlaid on top for at-a-glance identification. When there is no usable
+/// locale, or the SVG fails to load, the code is shown on its own; a white
+/// outline keeps it legible over any flag. Gated on
+/// [LanguageModel.shouldShowFlag], the same rule the language pickers use.
+/// Tapping it opens the learning settings page.
+///
+/// Public (not `_`-prefixed) and its size overridable so [WorldAnalyticsBar]
+/// can reuse it at the "slightly smaller than web" size the mobile chrome
+/// calls for (routing.instructions.md, "Single-column analytics nav bar") without
+/// duplicating the flag/outline/tooltip logic.
+class ClusterLanguageFlag extends StatelessWidget {
+  final LanguageModel language;
+  final VoidCallback onTap;
+  final double width;
+  final double height;
+  final double fontSize;
+
+  const ClusterLanguageFlag({
+    required this.language,
+    required this.onTap,
+    this.width = _defaultWidth,
+    this.height = _defaultHeight,
+    this.fontSize = _defaultFontSize,
+    super.key,
+  });
+
+  static const double _defaultWidth = 52.0;
+  static const double _defaultHeight = 36.0;
+  static const double _defaultFontSize = 18.0;
+  static const double _radius = 6.0;
+  static const double _borderWidth = 2.0;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+
+    final outlinedText = Stack(
+      children: <Widget>[
+        Text(
+          language.langCodeShort.toUpperCase(),
+          style: TextStyle(
+            fontSize: fontSize,
+            foreground: Paint()
+              ..style = PaintingStyle.stroke
+              ..strokeWidth = 4
+              ..color = Colors.white,
+          ),
+        ),
+        Text(
+          language.langCodeShort.toUpperCase(),
+          style: TextStyle(fontSize: fontSize, color: Colors.black),
+        ),
+      ],
+    );
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: Tooltip(
+        message: l10n.learningSettings,
+        // Semantics below names this (language + settings); exclude the Tooltip
+        // so its message isn't appended again.
+        excludeFromSemantics: true,
+        child: Semantics(
+          button: true,
+          label: '${language.getDisplayName(l10n)}, ${l10n.learningSettings}',
+          excludeSemantics: true,
+          // Expose the tap on the announced node for assistive tech (#7185).
+          onTap: onTap,
+          // Opaque so the whole chip is tappable — not just the painted glyphs
+          // / flag pixels (a transparent-interior box defers the hit test).
+          child: GestureDetector(
+            behavior: HitTestBehavior.opaque,
+            onTap: onTap,
+            child: Container(
+              width: width,
+              height: height,
+              padding: .all(_borderWidth),
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primary,
+                borderRadius: BorderRadius.circular(_radius + _borderWidth),
+              ),
+              child: language.shouldShowFlag
+                  ? ClipRRect(
+                      borderRadius: BorderRadius.circular(_radius),
+                      child: Stack(
+                        children: [
+                          SvgPicture.network(
+                            language.svgUrl.toString(),
+                            width: width,
+                            height: height,
+                            fit: BoxFit.cover,
+                            errorBuilder: (ctx, _, _) => outlinedText,
+                            placeholderBuilder: (_) =>
+                                SizedBox(width: width, height: height),
+                          ),
+                          Positioned(child: Center(child: outlinedText)),
+                        ],
+                      ),
+                    )
+                  : outlinedText,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

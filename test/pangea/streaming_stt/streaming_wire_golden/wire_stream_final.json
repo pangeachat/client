@@ -1,0 +1,48 @@
+{
+  "transcript": "falling on the empty city street below.",
+  "type": "stream_final",
+  "words": [
+    {
+      "confidence": 1.0,
+      "end": 8.95,
+      "start": 8.55,
+      "word": "falling"
+    },
+    {
+      "confidence": 1.0,
+      "end": 9.110001,
+      "start": 8.95,
+      "word": "on"
+    },
+    {
+      "confidence": 1.0,
+      "end": 9.190001,
+      "start": 9.110001,
+      "word": "the"
+    },
+    {
+      "confidence": 1.0,
+      "end": 9.59,
+      "start": 9.190001,
+      "word": "empty"
+    },
+    {
+      "confidence": 0.99609375,
+      "end": 9.83,
+      "start": 9.59,
+      "word": "city"
+    },
+    {
+      "confidence": 0.9970703,
+      "end": 10.2300005,
+      "start": 9.83,
+      "word": "street"
+    },
+    {
+      "confidence": 0.9970703,
+      "end": 10.47,
+      "start": 10.2300005,
+      "word": "below"
+    }
+  ]
+}

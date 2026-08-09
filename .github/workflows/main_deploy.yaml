@@ -23,19 +23,64 @@ jobs:
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
       - run: rustup component add rust-src --toolchain nightly-x86_64-unknown-linux-gnu
+      # prepare-web spends ~4m cloning dart-vodozemac, compiling
+      # flutter_rust_bridge_codegen, and building wasm — to produce two files.
+      # The output depends only on the pinned flutter_vodozemac version and the
+      # script, so an exact-key cache (no restore-keys — a stale binding would be
+      # wrong) makes it a restore. See ci.instructions.md.
+      - name: Resolve vodozemac version
+        id: vodozemac
+        run: echo "version=$(yq '.dependencies.flutter_vodozemac' pubspec.yaml | tr -d '^')" >> $GITHUB_OUTPUT
+      - name: Cache vodozemac bindings
+        uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: assets/vodozemac/vodozemac_bindings_dart*
+          key: vodozemac-bindings-v1-${{ runner.os }}-${{ steps.vodozemac.outputs.version }}-${{ hashFiles('scripts/prepare-web.sh') }}
       - name: Prepare web
         run: ./scripts/prepare-web.sh
       - run: rm ./assets/vodozemac/.gitignore
       - run: flutter pub get
       - name: Build Release Web
+        # UTC ddHHMM stamp, identical scheme in release.yaml, so staging and
+        # production share one sequence instead of each workflow's own run_number
+        # (those had drifted to 3890 vs 104). Build-time only — nothing is
+        # committed back, and the release tag still reads pubspec's `+N`.
+        # Resets monthly, so it identifies a build, never orders one.
+        # See ci.instructions.md.
         run: |
           flutter config --enable-web
           flutter clean
           flutter pub get
-          flutter build web --dart-define=FLUTTER_WEB_CANVASKIT_URL=canvaskit/ --pwa-strategy=none --profile --source-maps
+          ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile --source-maps --build-number=$(date -u +%d%H%M)
+
+      - name: Version Material Icons font
+        run: |
+          VERSION=${GITHUB_SHA::8}
+
+          FONT_DIR="build/web/assets/fonts"
+          OLD_NAME="MaterialIcons-Regular.otf"
+          NEW_NAME="MaterialIcons-Regular-${VERSION}.otf"
+
+          mv "$FONT_DIR/$OLD_NAME" "$FONT_DIR/$NEW_NAME"
+
+          sed -i "s|$OLD_NAME|$NEW_NAME|g" build/web/assets/FontManifest.json
+
+          echo "Renamed $OLD_NAME -> $NEW_NAME"
+
+      - name: Inject build version into index.html
+        run: |
+          VERSION=${GITHUB_SHA::8}
+          sed -i "s|__BUILD_VERSION__|$VERSION|g" build/web/index.html
         
+      - name: Publish self-unregistering service worker
+        # Overwrites Flutter's empty (--pwa-strategy=none) flutter_service_worker.js
+        # so browsers still holding the old offline-first worker evict it. Inert for
+        # fresh visitors, who never register a service worker. See the script header.
+        run: cp scripts/self_destroying_service_worker.js build/web/flutter_service_worker.js
+
       - name: Upload files
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         with:
@@ -62,7 +107,24 @@ jobs:
         run: |
           touch build/web/.env
           echo "$WEB_APP_ENV" >> build/web/.env
-          cp build/web/.env build/web/assets/.env
+          # Staging only: force the Flutter accessibility (semantics) tree on so
+          # automated and assistive-tech testing can read the canvas. NOT set on
+          # production (release.yaml), where semantics stays on-demand per user.
+          echo "ENABLE_SEMANTICS=true" >> build/web/.env
+          # Staging only: enable the best-effort analytics dual-write to the
+          # teacher-BFF (admin-dash-api). BOTH must be set for it to fire (no-op if
+          # either is missing). Points at the STAGING BFF; NOT set on production
+          # (release.yaml) until validated on staging. The BFF's CORS allowlist must
+          # include this web origin (app.staging.pangea.chat) — see admin-dash-api
+          # task_definition_staging.json CORS_ORIGINS.
+          echo "ANALYTICS_DUAL_WRITE_ENABLED=true" >> build/web/.env
+          echo "TEACHER_BFF_API=https://admin-dash-api.staging.pangea.chat" >> build/web/.env
+          # Staging only: enable the best-effort DOSAGE signals — the third gate on top
+          # of the dual-write + BFF above (all three must be set). Turns on the client ->
+          # admin-dash-api dosage ingest; requires DOSAGE_INGEST_ENABLED=true on the BFF
+          # (task_definition_staging.json). NOT set on production (release.yaml) until
+          # validated on staging.
+          echo "DOSAGE_SIGNALS_ENABLED=true" >> build/web/.env
           touch build/web/assets/envs.json
           echo "$ENV_OVERRIDES" >> build/web/assets/envs.json
           mkdir -p build/web/.well-known
@@ -77,23 +139,115 @@ jobs:
           aws-region: us-east-1
       - name: Deploy to S3
         run: |
-          # Immutable hashed assets — cache for 1 year
+          set -e
+
+          # =========================
+          # 1. IMMUTABLE ASSETS
+          # Safe to cache long-term only if filenames are versioned/content-safe
+          # =========================
           aws s3 sync ./build/web s3://$WEBAPP_S3_BUCKET \
             --cache-control "public, max-age=31536000, immutable" \
             --exclude "index.html" \
+            --exclude ".env" \
+            --exclude "main.dart.js" \
+            --exclude "*.part.js" \
+            --exclude "flutter.js" \
+            --exclude "flutter_bootstrap.js" \
             --exclude "flutter_service_worker.js" \
             --exclude "version.json" \
-            --exclude "manifest.json"
-          # Mutable entry points — always revalidate
-          for f in index.html flutter_service_worker.js version.json manifest.json; do
-            if [ -f "./build/web/$f" ]; then
-              aws s3 cp "./build/web/$f" "s3://$WEBAPP_S3_BUCKET/$f" \
-                --cache-control "no-cache, must-revalidate"
-            fi
+            --exclude "manifest.json" \
+            --exclude "assets/FontManifest.json" \
+            --exclude "assets/AssetManifest.bin*" \
+            --exclude "assets/fonts/*"
+
+          # =========================
+          # 2. FONT FILES
+          # Stable names, can change between deploys
+          # =========================
+          aws s3 sync ./build/web/assets/fonts s3://$WEBAPP_S3_BUCKET/assets/fonts \
+            --cache-control "no-cache, must-revalidate"
+
+          # =========================
+          # 3. DEFERRED FLUTTER CHUNKS
+          # Flutter .part.js filenames are NOT content hashed
+          # Must revalidate to avoid stale disk-cache crashes
+          # =========================
+          aws s3 cp ./build/web s3://$WEBAPP_S3_BUCKET \
+            --recursive \
+            --exclude "*" \
+            --include "*.part.js" \
+            --cache-control "no-cache, must-revalidate"
+
+          # =========================
+          # 4. FLUTTER RUNTIME ENTRY FILES + .env (config must propagate every deploy)
+          # Must always stay fresh
+          # =========================
+          RUNTIME_FILES=(
+            "index.html"
+            ".env"
+            "main.dart.js"
+            "flutter.js"
+            "flutter_bootstrap.js"
+            "flutter_service_worker.js"
+            "version.json"
+            "manifest.json"
+            "assets/FontManifest.json"
+            "assets/AssetManifest.bin"
+            "assets/AssetManifest.bin.json"
+          )
+
+          # Every entry is required: a missing runtime file is a partial
+          # deploy (same silent-failure class the post-deploy smoke exists
+          # for, #7862) and must fail the run, not skip quietly.
+          for f in "${RUNTIME_FILES[@]}"; do
+            [ -f "./build/web/$f" ] \
+              || { echo "::error::runtime file $f missing from build output"; exit 1; }
+            aws s3 cp "./build/web/$f" \
+              "s3://$WEBAPP_S3_BUCKET/$f" \
+              --cache-control "no-cache, must-revalidate"
           done
       - name: Invalidate CloudFront cache
         run: |
-          aws cloudfront create-invalidation --distribution-id $CF_DISTRIBUTION_ID --paths "/*"
+          INVALIDATION_ID=$(aws cloudfront create-invalidation \
+            --distribution-id $CF_DISTRIBUTION_ID --paths "/*" \
+            --query 'Invalidation.Id' --output text)
+          echo "INVALIDATION_ID=$INVALIDATION_ID" >> "$GITHUB_ENV"
+      - name: Post-deploy smoke — deep-link files and served scripts
+        # The SPA index fallback serves index.html with a 200 for ANY missing
+        # path (deep-link design, joining-courses.instructions.md), which
+        # turns two loud failures silent: a dropped .well-known file breaks
+        # installed-app links invisibly, and a missing build artifact
+        # presents as a white screen instead of a 404. This step makes them
+        # loud again at deploy time (#7862).
+        run: |
+          set -e
+          BASE="https://app.staging.pangea.chat"
+          aws cloudfront wait invalidation-completed \
+            --distribution-id $CF_DISTRIBUTION_ID --id "$INVALIDATION_ID"
+
+          # 1. .well-known files are real JSON carrying the app id — not the
+          #    SPA fallback's HTML.
+          for f in apple-app-site-association assetlinks.json; do
+            curl -sf "$BASE/.well-known/$f" \
+              | python3 -c "import sys,json; assert 'com.talktolearn.chat' in json.dumps(json.load(sys.stdin))" \
+              || { echo "::error::.well-known/$f is missing, invalid JSON, or lacks the app id (SPA fallback?)"; exit 1; }
+          done
+
+          # 2. Runtime entry scripts — and the versioned CanvasKit dir this
+          #    exact build requests (scripts/build-web-versioned-canvaskit.sh)
+          #    — serve as JavaScript, not the SPA shell.
+          CK_REV=$(ls build/web/canvaskit)
+          for f in flutter.js main.dart.js "canvaskit/$CK_REV/canvaskit.js"; do
+            # First non-whitespace byte: canvaskit.js opens with a newline,
+            # which a bare `head -c 1` + command substitution would eat.
+            head=$(curl -sf "$BASE/$f" | tr -d '[:space:]' | head -c 1)
+            [ "$head" != "<" ] && [ -n "$head" ] \
+              || { echo "::error::$f served HTML or empty — partial deploy?"; exit 1; }
+          done
+
+          # 3. A deep path serves the SPA shell (the fallback is alive).
+          curl -sf "$BASE/zz9smoke" | grep -qi "<html\|<base\|flutter" \
+            || { echo "::error::deep path did not serve the SPA shell — fallback broken?"; exit 1; }
 
   update_sentry:
     runs-on: ubuntu-latest
@@ -109,6 +263,7 @@ jobs:
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
           flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
       - name: Download web
         uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4
         with:

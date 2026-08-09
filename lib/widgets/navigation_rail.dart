@@ -1,342 +1,314 @@
 import 'package:flutter/material.dart';
 
-import 'package:badges/badges.dart' as b;
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/navigation/app_section.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pages/chat_list/navi_rail_item.dart';
-import 'package:fluffychat/pangea/analytics_misc/analytics_navigation_util.dart';
-import 'package:fluffychat/pangea/chat_list/utils/chat_list_handle_space_tap.dart';
-import 'package:fluffychat/pangea/course_plans/map_clipper.dart';
+import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
+import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
+import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
+import 'package:fluffychat/routes/world/workspace_dock.dart';
+import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/navi_rail_item.dart';
 
 class SpacesNavigationRail extends StatelessWidget {
+  final GoRouterState state;
   final String? activeSpaceId;
-  // #Pangea
-  // final void Function() onGoToChats;
-  // final void Function(String) onGoToSpaceId;
-  final String? path;
-  final double railWidth;
-  final bool expanded;
-  final VoidCallback collapse;
-  final Profile? profile;
-  final Function(Profile) onProfileUpdate;
-  // Pangea#
+  final double naviRailWidth;
+  final bool showNavRail;
 
   const SpacesNavigationRail({
+    required this.state,
     required this.activeSpaceId,
-    // #Pangea
-    // required this.onGoToChats,
-    // required this.onGoToSpaceId,
-    required this.path,
-    required this.railWidth,
-    required this.collapse,
-    required this.onProfileUpdate,
-    this.expanded = false,
-    this.profile,
-    // Pangea#
+    required this.naviRailWidth,
+    required this.showNavRail,
     super.key,
   });
 
   @override
   Widget build(BuildContext context) {
-    final client = Matrix.of(context).client;
-    final isSettings = GoRouter.of(
-      context,
-    ).routeInformationProvider.value.uri.path.startsWith('/rooms/settings');
-    // #Pangea
-    final isUserHome = path?.contains('user_home') ?? false;
-    final isAnalytics = path?.contains('analytics') ?? false;
-    final isCourse = path?.contains('course') ?? false;
     final isColumnMode = FluffyThemes.isColumnMode(context);
 
-    final width = isColumnMode
-        ? FluffyThemes.navRailWidth
-        : FluffyThemes.navRailWidth - 8.0;
-    // return StreamBuilder(
-    return Material(
-      child: SafeArea(
-        child: StreamBuilder(
-          // Pangea#
-          key: ValueKey(client.userID.toString()),
-          stream: client.onSync.stream
-              .where((s) => s.hasRoomUpdate)
-              .rateLimit(const Duration(seconds: 1)),
-          builder: (context, _) {
-            final allSpaces = client.rooms
-                .where((room) => room.isSpace)
-                .toList();
+    // The vertical rail is column-mode only; narrow screens use the bottom nav.
+    if (!isColumnMode || !showNavRail) return const SizedBox.shrink();
 
-            // #Pangea
-            // return SizedBox(
-            return AnimatedContainer(
-              // width: FluffyThemes.navRailWidth,
-              width: railWidth,
-              duration: FluffyThemes.animationDuration,
-              // Pangea#
-              child: Column(
-                // #Pangea
-                crossAxisAlignment: CrossAxisAlignment.start,
-                // Pangea#
-                children: [
-                  Expanded(
-                    child: ListView.builder(
-                      scrollDirection: Axis.vertical,
-                      // #Pangea
-                      // itemCount: allSpaces.length + 2,
-                      itemCount: allSpaces.length + 4,
-                      // Pangea#
-                      itemBuilder: (context, i) {
-                        // #Pangea
-                        if (i == 0) {
-                          return NaviRailItem(
-                            isSelected: isUserHome,
-                            onTap: () {
-                              collapse();
-                              context.go('/rooms/user_home');
-                            },
-                            backgroundColor: Colors.transparent,
-                            icon: FutureBuilder<Profile>(
-                              // #Pangea
-                              initialData: profile,
-                              // Pangea#
-                              future: client.fetchOwnProfile(),
-                              // #Pangea
-                              // builder: (context, snapshot) => Stack(
-                              builder: (context, snapshot) {
-                                if (snapshot.data?.avatarUrl != null &&
-                                    snapshot.data?.avatarUrl !=
-                                        profile?.avatarUrl) {
-                                  WidgetsBinding.instance.addPostFrameCallback(
-                                    (_) => onProfileUpdate(snapshot.data!),
-                                  );
-                                }
-                                return Stack(
-                                  // Pangea#
-                                  alignment: Alignment.center,
-                                  children: [
-                                    Material(
-                                      color: Colors.transparent,
-                                      borderRadius: BorderRadius.circular(99),
-                                      child: Avatar(
-                                        mxContent: snapshot.data?.avatarUrl,
-                                        name:
-                                            snapshot.data?.displayName ??
-                                            client.userID!.localpart,
-                                        size:
-                                            width -
-                                            (isColumnMode ? 32.0 : 24.0),
-                                      ),
-                                    ),
-                                  ],
+    final client = Matrix.of(context).client;
+
+    // world_v2: section + active space from route_facts (the single resolver),
+    // using the shell's state so the rail can't disagree with the shell.
+    final section = sectionFor(state.uri);
+    final isChats = section == AppSection.chats;
+    final isWorld = section == AppSection.world;
+
+    // The Add-course / find-course flow: courses section, no active space.
+    final isCourseFind = section == AppSection.courses && activeSpaceId == null;
+
+    final largeIconWidth = naviRailWidth - (isColumnMode ? 32.0 : 24.0);
+    final smallIconWidth = naviRailWidth - (isColumnMode ? 40.0 : 32.0);
+
+    // world_v2: the rail floats over the persistent map in the shared dock pill
+    // (rounded, surface, elevated, outline-bordered) — the same chrome as the
+    // top-right cluster, one source of truth. See workspace_dock.dart.
+    return Padding(
+      // Leave space for attributions widget to be visible
+      padding: .only(bottom: 100),
+      child: WorkspaceDock(
+        child: Semantics(
+          label: L10n.of(context).navOptionsLabel,
+          container: true,
+          child: FocusTraversalGroup(
+            policy: OrderedTraversalPolicy(),
+            child: StreamBuilder(
+              key: ValueKey(client.userID.toString()),
+              stream: client.onSync.stream
+                  .where((s) => s.hasRoomUpdate)
+                  .rateLimit(const Duration(seconds: 1)),
+              builder: (context, _) {
+                final allSpaces = client.sortedCourses(L10n.of(context));
+
+                return AnimatedContainer(
+                  width: naviRailWidth,
+                  duration: FluffyThemes.animationDuration,
+                  // world_v2 rail order (top→bottom): World · Chats · Courses ·
+                  // joined spaces. (Profile/settings is no longer a rail slot;
+                  // analytics opens from the top-right cluster.)
+                  child: Column(
+                    // Size the rail to its items — a floating bar over the map, not
+                    // the full screen height; it still scrolls if the joined-spaces
+                    // list overflows the viewport.
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: ListView(
+                          shrinkWrap: true,
+                          scrollDirection: Axis.vertical,
+                          children: [
+                            // 1. World map home — the Pangea brand mark, at the top
+                            // of the rail. Chromeless and avatar-sized; the left
+                            // indicator bar conveys selection. Brand purple when
+                            // active, muted when not.
+                            NaviRailItem(
+                              isSelected: isWorld,
+                              backgroundColor: Colors.transparent,
+                              // Exclude the logo's semanticsLabel so VoiceOver reads
+                              // only the button tooltip ("world"), not the logo name.
+                              icon: ExcludeSemantics(
+                                child: PangeaLogoSvg(
+                                  width: largeIconWidth,
+                                  forceColor: Theme.of(
+                                    context,
+                                  ).colorScheme.onSurfaceVariant,
+                                ),
+                              ),
+                              selectedIcon: ExcludeSemantics(
+                                child: PangeaLogoSvg(
+                                  width: largeIconWidth,
+                                  forceColor: Theme.of(
+                                    context,
+                                  ).colorScheme.primary,
+                                ),
+                              ),
+                              onTap: () {
+                                // World is home: clear every panel (both columns)
+                                // and reveal the full map. See routing.instructions.md.
+                                context.go(WorkspaceNav.clearAll());
+                              },
+                              toolTip: L10n.of(context).world,
+                              naviRailWidth: naviRailWidth,
+                            ),
+                            // 2. Chats — the chat list. Chromeless (no box fill) and
+                            // icon-sized to match the brand mark / course avatars
+                            // (it used to render tiny on the default surface fill);
+                            // the left indicator bar conveys selection.
+                            NaviRailItem(
+                              isSelected: isChats,
+                              backgroundColor: Colors.transparent,
+                              icon: Icon(
+                                Icons.forum_outlined,
+                                size: smallIconWidth,
+                              ),
+                              selectedIcon: Icon(
+                                Icons.forum,
+                                size: smallIconWidth,
+                              ),
+                              onTap: () {
+                                // Token-only: the chats list is a left `chats` token
+                                // over the world path `/` (no legacy `/chats` path).
+                                context.go(
+                                  WorkspaceNav.setSection(
+                                    state.uri,
+                                    const ChatsPanelToken(),
+                                    // Replace open left panels rather than stack.
+                                    keepRoom: false,
+                                  ),
                                 );
                               },
+                              toolTip: L10n.of(context).allChats,
+                              unreadBadgeFilter: (room) =>
+                                  room.firstSpaceParent == null,
+                              naviRailWidth: naviRailWidth,
                             ),
-                            toolTip: L10n.of(context).home,
-                            // #Pangea
-                            expanded: expanded,
-                            // Pangea#
-                          );
-                        }
-                        i--;
-                        if (i == 0) {
-                          return NaviRailItem(
-                            isSelected: isAnalytics,
-                            icon: const Icon(Icons.analytics_outlined),
-                            selectedIcon: const Icon(Icons.analytics),
-                            onTap: () {
-                              collapse();
-                              AnalyticsNavigationUtil.navigateToAnalytics(
-                                context: context,
-                              );
-                            },
-                            toolTip: L10n.of(context).learningAnalytics,
-                            expanded: expanded,
-                          );
-                        }
-                        i--;
-                        // Pangea#
-                        if (i == 0) {
-                          return NaviRailItem(
-                            // #Pangea
-                            // isSelected: activeSpaceId == null && !isSettings,
-                            isSelected:
-                                activeSpaceId == null &&
-                                !isSettings &&
-                                !isAnalytics &&
-                                !isUserHome &&
-                                !isCourse,
-                            // onTap: onGoToChats,
-                            // icon: const Padding(
-                            //   padding: EdgeInsets.all(10.0),
-                            //   child: Icon(Icons.forum_outlined),
-                            // ),
-                            // selectedIcon: const Padding(
-                            //   padding: EdgeInsets.all(10.0),
-                            //   child: Icon(Icons.forum),
-                            // ),
-                            // toolTip: L10n.of(context).chats,
-                            // unreadBadgeFilter: (room) => true,
-                            icon: const Icon(Icons.forum_outlined),
-                            selectedIcon: const Icon(Icons.forum),
-                            onTap: () {
-                              collapse();
-                              context.go("/rooms");
-                            },
-                            toolTip: L10n.of(context).allChats,
-                            unreadBadgeFilter: (room) =>
-                                room.firstSpaceParent == null,
-                            expanded: expanded,
-                            // Pangea#
-                          );
-                        }
-                        i--;
-                        if (i == allSpaces.length) {
-                          return NaviRailItem(
-                            // #Pangea
-                            // isSelected: false,
-                            // onTap: () => context.go('/rooms/newspace'),
-                            // icon: const Padding(
-                            //   padding: EdgeInsets.all(8.0),
-                            //   child: Icon(Icons.add),
-                            // ),
-                            // toolTip: L10n.of(context).createNewSpace,
-                            backgroundColor: Colors.transparent,
-                            borderRadius: BorderRadius.circular(0),
-                            isSelected: isCourse,
-                            onTap: () {
-                              collapse();
-                              context.go('/rooms/course');
-                            },
-                            icon: ClipPath(
-                              clipper: MapClipper(),
-                              child: Container(
-                                width: width - (isColumnMode ? 32.0 : 24.0),
-                                height: width - (isColumnMode ? 32.0 : 24.0),
-                                color: isCourse
-                                    ? Theme.of(
-                                        context,
-                                      ).colorScheme.primaryContainer
-                                    : Theme.of(
-                                        context,
-                                      ).colorScheme.surfaceContainerHigh,
-                                child: const Icon(Icons.add),
+                            // 3. Courses — opens the Courses panel (the courses
+                            // you're in + add-course options) as a bare `addcourse`
+                            // left token. The Material map icon; chromeless, the bar
+                            // conveys selection. keepRoom:false keeps it a focused
+                            // flow with no chat floating over it. (Analytics is not a
+                            // rail section — it opens from the top-right cluster.)
+                            NaviRailItem(
+                              isSelected: isCourseFind,
+                              backgroundColor: Colors.transparent,
+                              icon: Icon(
+                                Icons.map_outlined,
+                                size: smallIconWidth,
+                              ),
+                              selectedIcon: Icon(
+                                Icons.map,
+                                size: smallIconWidth,
+                              ),
+                              onTap: () {
+                                context.go(
+                                  WorkspaceNav.openAddCourse(state.uri),
+                                );
+                              },
+                              toolTip: L10n.of(context).courses,
+                              naviRailWidth: naviRailWidth,
+                            ),
+                            // A plain Column, NOT a nested ListView: a
+                            // shrink-wrapped inner list is always fully laid
+                            // out (zero scroll extent of its own) yet still
+                            // claims vertical drags that start on a course
+                            // avatar — on touch devices the drag rubber-bands
+                            // against nothing and the rail never scrolls. The
+                            // outer ListView is the rail's one scrollable.
+                            Semantics(
+                              label: L10n.of(context).joinedCourseListLabel,
+                              child: Column(
+                                children: [
+                                  // 4. The course spaces you're in.
+                                  for (final space in allSpaces)
+                                    _SpaceItem(
+                                      space: space,
+                                      iconWidth: largeIconWidth,
+                                      naviRailWidth: naviRailWidth,
+                                      // Highlight the course avatar only while the course
+                                      // IS the open section — not merely because `?c=`
+                                      // persists under a chat/room (routing decision 5).
+                                      selected:
+                                          section == AppSection.courses &&
+                                          activeSpaceId == space.id,
+                                    ),
+                                ],
                               ),
                             ),
-                            toolTip: L10n.of(context).findCourse,
-                            expanded: expanded,
-                            // Pangea#
-                          );
-                        }
-                        final space = allSpaces[i];
-                        final displayname = allSpaces[i]
-                            .getLocalizedDisplayname(
-                              MatrixLocals(L10n.of(context)),
-                            );
-                        final spaceChildrenIds = space.spaceChildren
-                            .map((c) => c.roomId)
-                            .toSet();
-                        return NaviRailItem(
-                          toolTip: displayname,
-                          isSelected: activeSpaceId == space.id,
-                          // #Pangea
-                          backgroundColor: Colors.transparent,
-                          borderRadius: BorderRadius.circular(0),
-                          // onTap: () => onGoToSpaceId(allSpaces[i].id),
-                          onTap: () async {
-                            collapse();
-                            final room = client.getRoomById(allSpaces[i].id);
-                            if (room != null) {
-                              await SpaceTapUtil.onTap(context, room);
-                            } else {
-                              context.go(
-                                "/rooms/spaces/${allSpaces[i].id}/details",
-                              );
-                            }
-                          },
-                          // Pangea#
-                          unreadBadgeFilter: (room) =>
-                              spaceChildrenIds.contains(room.id),
-                          // #Pangea
-                          // icon: Avatar(
-                          //   mxContent: allSpaces[i].avatar,
-                          //   name: displayname,
-                          //   border: BorderSide(
-                          //     width: 1,
-                          //     color: Theme.of(context).dividerColor,
-                          //   ),
-                          //   borderRadius: BorderRadius.circular(
-                          //     AppConfig.borderRadius / 2,
-                          //   ),
-                          // ),
-                          icon: b.Badge(
-                            showBadge:
-                                allSpaces[i].membership == Membership.invite,
-                            badgeStyle: b.BadgeStyle(
-                              badgeColor: Theme.of(context).colorScheme.error,
-                              elevation: 4,
-                              borderSide: BorderSide.none,
-                              padding: const EdgeInsetsGeometry.all(0),
-                            ),
-                            badgeContent: Icon(
-                              Icons.error_outline,
-                              color: Theme.of(context).colorScheme.onPrimary,
-                              size: 16,
-                            ),
-                            position: b.BadgePosition.topEnd(top: -5, end: -7),
-                            child: ClipPath(
-                              clipper: MapClipper(),
-                              child: Avatar(
-                                mxContent: allSpaces[i].avatar,
-                                name: displayname,
-                                border: BorderSide(
-                                  width: 1,
-                                  color: Theme.of(context).dividerColor,
-                                ),
-                                borderRadius: BorderRadius.circular(0),
-                                size: width - (isColumnMode ? 32.0 : 24.0),
-                              ),
-                            ),
-                          ),
-                          expanded: expanded,
-                          // Pangea#
-                        );
-                      },
-                    ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  NaviRailItem(
-                    isSelected: isSettings,
-                    // #Pangea
-                    // onTap: () => context.go('/rooms/settings'),
-                    // icon: const Padding(
-                    //   padding: EdgeInsets.all(10.0),
-                    //   child: Icon(Icons.settings_outlined),
-                    // ),
-                    // selectedIcon: const Padding(
-                    //   padding: EdgeInsets.all(10.0),
-                    //   child: Icon(Icons.settings),
-                    // ),
-                    onTap: () {
-                      collapse();
-                      context.go('/rooms/settings');
-                    },
-                    icon: const Icon(Icons.settings_outlined),
-                    selectedIcon: const Icon(Icons.settings),
-                    expanded: expanded,
-                    // Pangea#
-                    toolTip: L10n.of(context).settings,
-                  ),
-                ],
-              ),
-            );
-          },
+                );
+              },
+            ),
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class _SpaceItem extends StatelessWidget {
+  final Room space;
+  final double iconWidth;
+  final double naviRailWidth;
+  final bool selected;
+
+  const _SpaceItem({
+    required this.space,
+    required this.iconWidth,
+    required this.naviRailWidth,
+    required this.selected,
+  });
+
+  Future<void> _onTapSpace(BuildContext context) async {
+    final uri = GoRouterState.of(context).uri;
+    final client = Matrix.of(context).client;
+    final membership = space.membership;
+
+    if (!{Membership.invite, Membership.leave}.contains(membership)) {
+      context.go(
+        // A left-nav click replaces the open left panels rather than stacking
+        // beside them (drop any open room/section). See routing.instructions.md.
+        WorkspaceNav.openCourseSection(
+          uri,
+          space.id,
+          keepRoom: false,
+          // While users are knocking, land the admin on the Chats tab — where
+          // the knock notification lives — instead of the Course Plan default,
+          // every time, until the knock is accepted or denied (#8139).
+          tab: space.knockingUsers.isNotEmpty ? SpaceSettingsTabs.chat : null,
+        ),
+      );
+      return;
+    }
+
+    final joinResp = space.membership == Membership.invite
+        ? await SpaceTapUtil.onInviteTap(context, space)
+        : await SpaceTapUtil.autoJoin(context, space);
+
+    if (joinResp == null) return;
+    final joinedRoom = client.getRoomById(joinResp.roomId);
+    if (joinedRoom == null) return;
+
+    final handler = JoinRoomAnalyticsConsentHandler(joinResp, joinedRoom);
+    final joinedRoomId = await handler.handle(context);
+    if (joinedRoomId == null) return;
+
+    context.go(
+      WorkspaceNav.openCourseSection(uri, joinedRoomId, keepRoom: false),
+    );
+    return;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final displayname = space.getLocalizedDisplayname(
+      MatrixLocals(L10n.of(context)),
+    );
+    final courseChildrenIds = space.spaceChildren.map((c) => c.roomId).toSet();
+    // The builder loads the member list (admins only) and rebuilds on member
+    // changes, so the knock badge appears when someone knocks and clears the
+    // moment the admin accepts/denies (#8139).
+    return KnockingUsersBuilder(
+      room: space,
+      builder: (context, knockingUsers) => NaviRailItem(
+        toolTip: displayname,
+        isSelected: selected,
+        backgroundColor: Colors.transparent,
+        borderRadius: BorderRadius.circular(0),
+        onTap: () => _onTapSpace(context),
+        icon: CourseAvatar(
+          avatar: space.avatar,
+          displayname: displayname,
+          size: iconWidth,
+          unreadCoursePingEvent: space.unreadCoursePingEvent,
+          courseChildrenIds: courseChildrenIds,
+          invite: space.membership == .invite,
+          hasKnockingUsers: knockingUsers.isNotEmpty,
+        ),
+        naviRailWidth: naviRailWidth,
       ),
     );
   }

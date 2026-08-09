@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart' show IterableExtension;
-import 'package:go_router/go_router.dart';
-import 'package:matrix/matrix.dart';
 import 'package:punycode/punycode.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/chat_list/widgets/public_room_bottom_sheet.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'platform_infos.dart';
+
+// #Pangea
+// Pangea#
 
 class UrlLauncher {
   /// The url to open.
@@ -28,18 +24,15 @@ class UrlLauncher {
   const UrlLauncher(this.context, this.url, [this.name]);
 
   void launchUrl() async {
-    if (url!.toLowerCase().startsWith(AppConfig.deepLinkPrefix) ||
-        url!.toLowerCase().startsWith(AppConfig.inviteLinkPrefix) ||
-        {'#', '@', '!', '+', '\$'}.contains(url![0]) ||
-        url!.toLowerCase().startsWith(AppConfig.schemePrefix)) {
-      return openMatrixToUrl();
-    }
     final uri = Uri.tryParse(url!);
     if (uri == null) {
       // we can't open this thing
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).cantOpenUri(url!))),
+        assertive: true,
       );
+      // Pangea#
       return;
     }
 
@@ -91,9 +84,12 @@ class UrlLauncher {
       return;
     }
     if (uri.host.isEmpty) {
-      ScaffoldMessenger.of(context).showSnackBar(
+      // #Pangea
+      ScaffoldMessenger.of(context).showSnackBarAnnounced(
         SnackBar(content: Text(L10n.of(context).cantOpenUri(url!))),
+        assertive: true,
       );
+      // Pangea#
       return;
     }
     // okay, we have either an http or an https URI.
@@ -115,133 +111,5 @@ class UrlLauncher {
       uri.replace(host: newHost).toString(),
       mode: LaunchMode.externalApplication,
     );
-  }
-
-  void openMatrixToUrl() async {
-    final matrix = Matrix.of(context);
-    final url = this.url!.replaceFirst(
-      AppConfig.deepLinkPrefix,
-      AppConfig.inviteLinkPrefix,
-    );
-
-    // The identifier might be a matrix.to url and needs escaping. Or, it might have multiple
-    // identifiers (room id & event id), or it might also have a query part.
-    // All this needs parsing.
-    final identityParts =
-        url.parseIdentifierIntoParts() ??
-        Uri.tryParse(url)?.host.parseIdentifierIntoParts() ??
-        Uri.tryParse(url)?.pathSegments
-            .lastWhereOrNull((_) => true)
-            ?.parseIdentifierIntoParts();
-    if (identityParts == null) {
-      return; // no match, nothing to do
-    }
-    if (identityParts.primaryIdentifier.sigil == '#' ||
-        identityParts.primaryIdentifier.sigil == '!') {
-      // we got a room! Let's open that one
-      final roomIdOrAlias = identityParts.primaryIdentifier;
-      final event = identityParts.secondaryIdentifier;
-      var room =
-          matrix.client.getRoomByAlias(roomIdOrAlias) ??
-          matrix.client.getRoomById(roomIdOrAlias);
-      var roomId = room?.id;
-      // we make the servers a set and later on convert to a list, so that we can easily
-      // deduplicate servers added via alias lookup and query parameter
-      final servers = <String>{};
-      if (room == null && roomIdOrAlias.sigil == '#') {
-        // we were unable to find the room locally...so resolve it
-        final response = await showFutureLoadingDialog(
-          context: context,
-          future: () => matrix.client.getRoomIdByAlias(roomIdOrAlias),
-        );
-        if (response.error != null) {
-          return; // nothing to do, the alias doesn't exist
-        }
-        roomId = response.result!.roomId;
-        servers.addAll(response.result!.servers!);
-        room = matrix.client.getRoomById(roomId!);
-      }
-      servers.addAll(identityParts.via);
-      // #Pangea
-      if (room != null && room.membership != Membership.leave) {
-        // if (room != null) {
-        // Pangea#
-        if (room.isSpace) {
-          // TODO: Implement navigate to space
-          context.go('/rooms/${room.id}');
-
-          return;
-        }
-        // we have the room, so....just open it
-        if (event != null) {
-          context.go(
-            '/${Uri(pathSegments: ['rooms', room.id], queryParameters: {'event': event})}',
-          );
-        } else {
-          context.go('/rooms/${room.id}');
-        }
-        return;
-      } else {
-        // #Pangea
-        // await showAdaptiveDialog(
-        //   context: context,
-        //   builder: (c) =>
-        //       PublicRoomDialog(roomAlias: identityParts.primaryIdentifier),
-        // );
-        await PublicRoomBottomSheet.show(
-          context: context,
-          roomAlias: identityParts.primaryIdentifier,
-        );
-        // Pangea#
-      }
-      if (roomIdOrAlias.sigil == '!') {
-        if (await showOkCancelAlertDialog(
-              useRootNavigator: false,
-              context: context,
-              title: 'Join room $roomIdOrAlias',
-            ) ==
-            OkCancelResult.ok) {
-          roomId = roomIdOrAlias;
-          final response = await showFutureLoadingDialog(
-            context: context,
-            future: () => matrix.client.joinRoom(
-              roomIdOrAlias,
-              serverName: servers.isNotEmpty ? servers.toList() : null,
-            ),
-          );
-          // wait for two seconds so that it probably came down /sync
-          await showFutureLoadingDialog(
-            context: context,
-            future: () => Future.delayed(const Duration(seconds: 2)),
-          );
-          if (event != null) {
-            context.go(
-              Uri(
-                pathSegments: ['rooms', response.result!],
-                queryParameters: {'event': event},
-              ).toString(),
-            );
-          } else {
-            context.go('/rooms/${response.result!}');
-          }
-        }
-      }
-    } else if (identityParts.primaryIdentifier.sigil == '@') {
-      final userId = identityParts.primaryIdentifier;
-      var noProfileWarning = false;
-      final profileResult = await showFutureLoadingDialog(
-        context: context,
-        future: () =>
-            matrix.client.getProfileFromUserId(userId).catchError((_) {
-              noProfileWarning = true;
-              return Profile(userId: userId);
-            }),
-      );
-      await UserDialog.show(
-        context: context,
-        profile: profileResult.result!,
-        noProfileWarning: noProfileWarning,
-      );
-    }
   }
 }

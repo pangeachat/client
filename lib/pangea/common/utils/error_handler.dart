@@ -3,11 +3,11 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class PangeaWarningError implements Exception {
@@ -25,7 +25,7 @@ class ErrorHandler {
   static Future<void> initialize() async {
     await SentryFlutter.init((options) {
       options.dsn = Environment.sentryDsn;
-      options.tracesSampleRate = 0.1;
+      options.tracesSampleRate = 0.02;
       options.debug = kDebugMode;
       options.environment = kDebugMode
           ? "debug"
@@ -48,6 +48,30 @@ class ErrorHandler {
       logError(e: exception, s: stack, data: {});
       return true;
     };
+  }
+
+  /// Keys already reported this session via [logErrorOnce].
+  static final Set<String> _reportedOnceKeys = {};
+
+  @visibleForTesting
+  static void resetReportedOnceKeysForTest() => _reportedOnceKeys.clear();
+
+  /// [logError], capped at one report per app session per [key]. For known
+  /// recurring degrade paths — e.g. a joined course whose quest plan no longer
+  /// resolves, retried on every sync (#8083) — the first event per session
+  /// carries the signal (Sentry tallies affected users per issue); each repeat
+  /// is pure event volume. Returns whether this call reported.
+  static Future<bool> logErrorOnce({
+    required String key,
+    Object? e,
+    StackTrace? s,
+    String? m,
+    required Map<String, dynamic> data,
+    SentryLevel level = SentryLevel.error,
+  }) async {
+    if (!_reportedOnceKeys.add(key)) return false;
+    await logError(e: e, s: s, m: m, data: data, level: level);
+    return true;
   }
 
   static Future<void> logError({
@@ -78,76 +102,44 @@ class ErrorHandler {
 }
 
 class ErrorCopy {
-  BuildContext context;
-  Object? error;
+  Object error;
+  ErrorCopy(this.error);
 
-  late String title;
-  late String body;
-  int? errorCode;
+  int? get errorCode => PangeaHttpException.statusCodeOf(error);
 
-  ErrorCopy(this.context, {this.error, String? title, String? body}) {
-    if (title != null) this.title = title;
-    if (body != null) this.body = body;
-    if (title == null || body == null) setCopy();
-  }
-
-  void _setDefaults() {
-    title = L10n.of(context).unexpectedError;
-    body = L10n.of(context).pleaseReload;
-    errorCode = 400;
-  }
-
-  void setCopy() {
+  String toLocalizedString(BuildContext context) {
     try {
-      if (error is http.Response) {
-        errorCode = (error as http.Response).statusCode;
-      } else {
-        errorCode = null;
-      }
       final L10n l10n = L10n.of(context);
+
+      if (error is TimeoutException) {
+        return l10n.errorTryAgainSoon;
+      }
 
       switch (errorCode) {
         case 502:
         case 504:
         case 500:
-          title = l10n.error502504Title;
-          body = l10n.error502504Desc;
-          break;
+          return l10n.error502504Desc;
         case 520:
-          title = l10n.error520Title;
-          body = l10n.error520Desc;
-          break;
+          return l10n.error520Desc;
         case 404:
-          title = l10n.error404Title;
-          body = l10n.error404Desc;
-          break;
+          return l10n.error404Desc;
         case 405:
-          title = l10n.error405Title;
-          body = l10n.error405Desc;
-          break;
+          return l10n.error405Desc;
         case 601:
-          title = l10n.errorDisableIT;
-          body = l10n.errorDisableITUserDesc;
-          break;
+          return l10n.errorDisableITUserDesc;
         case 602:
-          title = l10n.errorDisableIGC;
-          body = l10n.errorDisableIGCUserDesc;
-          break;
+          return l10n.errorDisableIGCUserDesc;
         case 603:
-          title = l10n.errorDisableIT;
-          body = l10n.errorDisableITClassDesc;
-          break;
+          return l10n.errorDisableITClassDesc;
         case 604:
-          title = l10n.errorDisableIGC;
-          body = l10n.errorDisableIGCClassDesc;
-          break;
+          return l10n.errorDisableIGCClassDesc;
         default:
-          title = l10n.oopsSomethingWentWrong;
-          body = l10n.errorPleaseRefresh;
+          return l10n.errorTryAgainLater;
       }
     } catch (e, s) {
-      ErrorHandler.logError(e: s, s: s, data: {});
-      _setDefaults();
+      ErrorHandler.logError(e: e, s: s, data: {});
+      return L10n.of(context).errorTryAgainLater;
     }
   }
 }

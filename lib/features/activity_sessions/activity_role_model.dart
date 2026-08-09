@@ -1,0 +1,77 @@
+import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+
+class ActivityRoleModel {
+  final String id;
+  final String userId;
+  final String? role;
+  DateTime? finishedAt;
+  DateTime? archivedAt;
+
+  ActivityRoleModel({
+    required this.id,
+    required this.userId,
+    this.role,
+    this.finishedAt,
+    this.archivedAt,
+  });
+
+  bool get isFinished => finishedAt != null;
+
+  bool get isArchived => archivedAt != null;
+
+  String? stateEventMessage(String displayName, L10n l10n) {
+    // Only the transition into finished gets a timeline row. The automatic
+    // save re-writes the same role state (adding archived_at), and rendering
+    // that write too would repeat the row on every completed session.
+    if (isFinished && !isArchived) {
+      return l10n.finishedTheActivity(displayName);
+    } else {
+      return null;
+    }
+  }
+
+  factory ActivityRoleModel.fromJson(Map<String, dynamic> json) {
+    final archivedEntry = json['archived_at'] ?? json['archivedAt'];
+    final finishedEntry = json['finished_at'] ?? json['finishedAt'];
+    return ActivityRoleModel(
+      id: json['id'] as String,
+      userId: (json[ModelKey.userId] ?? json['userId']) as String,
+      role: json['role'] as String?,
+      finishedAt: finishedEntry != null ? DateTime.parse(finishedEntry) : null,
+      archivedAt: archivedEntry != null ? DateTime.parse(archivedEntry) : null,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      ModelKey.userId: userId,
+      'role': role,
+      // Serialize as UTC (with the trailing 'Z') so the persisted timestamps are
+      // unambiguous instants, not bare local wall-clocks without an offset.
+      'finished_at': finishedAt?.toUtc().toIso8601String(),
+      'archived_at': archivedAt?.toUtc().toIso8601String(),
+    };
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is ActivityRoleModel &&
+        other.userId == userId &&
+        other.role == role &&
+        other.finishedAt == finishedAt &&
+        other.archivedAt == archivedAt &&
+        other.id == id;
+  }
+
+  @override
+  int get hashCode =>
+      userId.hashCode ^
+      role.hashCode ^
+      (finishedAt?.hashCode ?? 0) ^
+      (archivedAt?.hashCode ?? 0) ^
+      id.hashCode;
+}

@@ -19,25 +19,33 @@ import 'package:universal_html/html.dart' as html;
 import 'package:url_launcher/url_launcher_string.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
+import 'package:fluffychat/features/languages/locale_provider.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/overlay/any_state_holder.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/pangea/common/config/dev_login.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
-import 'package:fluffychat/pangea/common/utils/any_state_holder.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/languages/locale_provider.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_file_extension.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
-import 'package:fluffychat/utils/voip_plugin.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
+import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import '../config/setting_keys.dart';
-import '../pages/key_verification/key_verification_dialog.dart';
+import '../routes/settings/settings_device/key_verification_dialog.dart';
 import '../utils/account_bundles.dart';
 import '../utils/background_push.dart';
 import 'local_notifications_extension.dart';
+
+// #Pangea
+// Pangea#
 
 // import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -75,6 +83,15 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   late StreamSubscription? _uriListener;
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
+  final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
+
+  /// Accounts whose services are being torn down, mapped to the in-flight
+  /// disposal. Concurrent teardowns coalesce onto ONE disposal (no double-
+  /// dispose), and [analyticsDataService] refuses to resurrect a service while
+  /// its account is closing — the entries stay in their maps until disposal
+  /// finishes, so a queued rebuild reads the closing service rather than
+  /// creating a fresh one that would outlive the account and leak.
+  final Map<String, Future<void>> _disposingServices = {};
   // Pangea#
   SharedPreferences get store => widget.store;
 
@@ -90,34 +107,43 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   Client get client {
     if (_activeClient < 0 || _activeClient >= widget.clients.length) {
       // #Pangea
-      currentBundle!.first!.homeserver = Uri.parse(
-        "https://${AppConfig.defaultHomeserver}",
-      );
+      currentBundle!.first!.homeserver = AppConfig.defaultHomeserverUri;
       // Pangea#
       return currentBundle!.first!;
     }
 
     // #Pangea
-    widget.clients[_activeClient].homeserver = Uri.parse(
-      "https://${AppConfig.defaultHomeserver}",
-    );
+    widget.clients[_activeClient].homeserver = AppConfig.defaultHomeserverUri;
     // Pangea#
     return widget.clients[_activeClient];
   }
 
   // #Pangea
   AnalyticsDataService get analyticsDataService {
-    if (_analyticsServices[client.clientName] == null) {
-      Logs().w(
-        'Tried to access AnalyticsDataService for client ${client.clientName}, but it does not exist.',
-      );
-      _analyticsServices[client.clientName] = AnalyticsDataService(client);
-    }
-    return _analyticsServices[client.clientName]!;
+    final name = client.clientName;
+    // A service being torn down stays in its map until disposal finishes (see
+    // [disposeAccountServices]), so an access mid-teardown returns the SAME
+    // closing service — never a fresh one that would boot a DB, wait forever for
+    // a login that isn't coming, and outlive the account. Only create when the
+    // account is genuinely present and NOT closing.
+    final existing = _analyticsServices[name];
+    if (existing != null) return existing;
+    Logs().w(
+      'Tried to access AnalyticsDataService for client $name, but it does not exist.',
+    );
+    final created = AnalyticsDataService(client);
+    _analyticsServices[name] = created;
+    return created;
   }
-  // Pangea#
 
-  VoipPlugin? voipPlugin;
+  /// The EXISTING analytics service for a SPECIFIC account (or null), without the
+  /// active-client getter's create-on-miss. Callers that captured one account up
+  /// front (e.g. the logout path) use this so they save/flush that account's
+  /// analytics even if the active client switched mid-flow — never the wrong
+  /// account's, and never resurrecting a service for a closing one.
+  AnalyticsDataService? analyticsServiceFor(String clientName) =>
+      _analyticsServices[clientName];
+  // Pangea#
 
   bool get isMultiAccount => widget.clients.length > 1;
 
@@ -136,8 +162,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     final i = widget.clients.indexWhere((c) => c == cl);
     if (i != -1) {
       _activeClient = i;
-      // TODO: Multi-client VoiP support
-      createVoipPlugin();
     } else {
       Logs().w('Tried to set an unknown client ${cl!.userID} as active');
     }
@@ -203,7 +227,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .first
               .then((_) async {
                 // #Pangea
-                MatrixState.pangeaController.handleLoginStateChange(
+                await MatrixState.pangeaController.handleLoginStateChange(
                   LoginState.loggedIn,
                   _loginClientCandidate!.userID,
                   context,
@@ -228,13 +252,24 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
                 // FluffyChatApp.router.go('/backup');
                 final isL2Set =
                     await pangeaController.userController.isUserL2Set;
-                FluffyChatApp.router.go(
-                  isL2Set ? '/rooms' : '/registration/create',
-                );
+                if (!isL2Set) {
+                  // A new user's onboarding joins with any code cached across
+                  // the login bounce and clears it at completion
+                  // (user_type_onboarding_step.dart).
+                  FluffyChatApp.router.go('/registration');
+                } else {
+                  // A join code cached across the login bounce is consumed by
+                  // the world route's auth guard on this landing
+                  // (PAuthGaurd._consumeCachedJoinCode) — the one consumption
+                  // point shared with logins that never pass through this
+                  // listener (web SSO's full-reload return, a restored
+                  // session).
+                  FluffyChatApp.router.go(PRoutes.world);
+                }
                 // Pangea#
               });
     // #Pangea
-    candidate.homeserver = Uri.parse("https://${AppConfig.defaultHomeserver}");
+    candidate.homeserver = AppConfig.defaultHomeserverUri;
 
     // This listener is not set for the new login client until the user is logged in,
     // but if the user tries to sign up without this listener set, the signup UIA request
@@ -273,10 +308,25 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   String? get activeRoomId {
     final route = FluffyChatApp.router.routeInformationProvider.value.uri.path;
-    if (!route.startsWith('/rooms/')) return null;
+    // #Pangea
+    // world_v2: open chats also live under /courses/:spaceid/:roomid and
+    // /analytics/activities/:roomid.
+    if (!route.startsWith('/rooms/') &&
+        !route.startsWith('/courses/') &&
+        !route.startsWith('/analytics/activities/')) {
+      return null;
+    }
+    // if (!route.startsWith('/rooms/')) return null;
+    // Pangea#
     // #Pangea
     // return route.split('/')[2];
-    return FluffyChatApp.router.state.pathParameters['roomid'];
+    // world_v2 URLs carry a bare localpart; re-attach the home server_name so
+    // this matches full event room ids (e.g. notification suppression).
+    final roomId = FluffyChatApp.router.state.pathParameters['roomid'];
+    if (roomId == null || roomId.contains(':')) return roomId;
+    final userId = client.userID;
+    final sep = userId?.indexOf(':') ?? -1;
+    return sep == -1 ? roomId : '$roomId:${userId!.substring(sep + 1)}';
     // Pangea#
   }
 
@@ -296,9 +346,15 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
           scope.setUser(SentryUser(id: client.userID, name: client.userID)),
     );
     pangeaController = PangeaController(matrixState: this);
+    pangeaController.initControllers(client.userID);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _setAppLanguage();
       _setLanguageListener();
+      _showScreenSizeDialog();
+      // Debug-only: `?devlogin=1` signs the local build into the test account,
+      // bypassing the canvas login form. No-op without the param. See
+      // dev_login.dart / matrix-auth.instructions.md.
+      maybeDevLogin(this);
     });
     _uriListener = AppLinks().uriLinkStream.listen(_processIncomingUris);
     // Pangea#
@@ -306,7 +362,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   // #Pangea
   bool _showingScreenSizeDialog = false;
-  double? _lastShownPopupHeight;
+  // Tracks whether the screen was too small on the last check. The popup is
+  // only shown when transitioning from "big enough" → "too small" (or on the
+  // initial frame check), so resizing from small → big never triggers it.
+  bool _screenWasTooSmall = false;
   @override
   void didChangeMetrics() {
     _showScreenSizeDialog();
@@ -314,48 +373,82 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   Future<void> _showScreenSizeDialog() async {
-    if (_showingScreenSizeDialog || !kIsWeb) {
-      return;
-    }
+    if (!kIsWeb) return;
 
     final height = MediaQuery.heightOf(context);
     if (height > 550) {
-      _lastShownPopupHeight = null;
+      // Screen is now big enough — reset so a future shrink can show the popup.
+      _screenWasTooSmall = false;
       return;
     }
 
-    if (_lastShownPopupHeight != null && height >= _lastShownPopupHeight!) {
+    // Screen is too small. Guard against: dialog already open, or screen was
+    // already too small (i.e. we're mid-resize within the too-small range).
+    if (_showingScreenSizeDialog || _screenWasTooSmall) return;
+
+    // Mark immediately so any didChangeMetrics calls fired during the navigator
+    // retry loop (e.g. mid-expansion resize events) are blocked by the guard
+    // above and don't trigger a spurious dialog show.
+    _screenWasTooSmall = true;
+
+    // The navigator may not be ready on the initial frame — retry next frame,
+    // resetting the flag so the retry can re-evaluate height and navigator.
+    final navigatorContext =
+        FluffyChatApp.router.routerDelegate.navigatorKey.currentContext;
+    if (navigatorContext == null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _screenWasTooSmall = false;
+        _showScreenSizeDialog();
+      });
       return;
     }
 
     _showingScreenSizeDialog = true;
-    _lastShownPopupHeight = height;
     await showOkAlertDialog(
-      context:
-          FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
-          context,
+      context: navigatorContext,
       title: L10n.of(context).screenSizeWarning,
     );
-    _lastShownPopupHeight = MediaQuery.heightOf(context);
     _showingScreenSizeDialog = false;
   }
 
   StreamSubscription? _languageListener;
+  StreamSubscription? _appLanguageSettingsListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
+    GrammarConstructsProvider.fetchFeaturesAndTags();
+
     _languageListener?.cancel();
     _languageListener = pangeaController.userController.languageStream.stream
         .listen((update) {
           _setAppLanguage();
           analyticsDataService.updateService.onUpdateLanguages(update);
+          GrammarConstructsProvider.fetchFeaturesAndTags();
         });
+
+    // Non-language settings changes (e.g. the app-copy-language immersion
+    // toggle) emit here, not on languageStream — re-apply the locale so the
+    // toggle takes effect.
+    _appLanguageSettingsListener?.cancel();
+    _appLanguageSettingsListener = pangeaController
+        .userController
+        .settingsUpdateStream
+        .stream
+        .listen((_) => _setAppLanguage());
   }
 
   void _setAppLanguage() {
     try {
-      Provider.of<LocaleProvider>(context, listen: false).setLocale(
-        pangeaController.userController.profile.userSettings.sourceLanguage,
-      );
+      final settings = pangeaController.userController.profile.userSettings;
+      // Immersion: show the app in the target language when the user opts in,
+      // otherwise their source/native language. Falls back to source (then
+      // system) if the target isn't set.
+      final appLanguage = settings.appLanguageIsTarget
+          ? (settings.targetLanguage ?? settings.sourceLanguage)
+          : settings.sourceLanguage;
+      Provider.of<LocaleProvider>(
+        context,
+        listen: false,
+      ).setLocale(appLanguage);
     } catch (e, s) {
       Logs().e('Error setting app language', e);
       ErrorHandler.logError(e: e, s: s, data: {});
@@ -409,15 +502,22 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
       state,
     ) async {
       // #Pangea
-      MatrixState.pangeaController.handleLoginStateChange(
-        state,
-        c.userID,
-        context,
-      );
+      // A failure reporting the state change (e.g. Firebase analytics) must NOT
+      // skip the loggedOut teardown below — otherwise the account's services +
+      // subscriptions (and its dosage tracker) leak on logout.
+      try {
+        await MatrixState.pangeaController.handleLoginStateChange(
+          state,
+          c.userID,
+          context,
+        );
+      } catch (e, s) {
+        Logs().e('handleLoginStateChange failed', e, s);
+      }
       // Pangea#
       final loggedInWithMultipleClients = widget.clients.length > 1;
       if (state == LoginState.loggedOut) {
-        _cancelSubs(c.clientName);
+        await _cancelSubs(c.clientName);
         widget.clients.remove(c);
         ClientManager.removeClientNameFromStore(c.clientName, store);
         // #Pangea
@@ -425,15 +525,17 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // Pangea#
       }
       if (loggedInWithMultipleClients && state != LoginState.loggedIn) {
+        // #Pangea
         ScaffoldMessenger.of(
           FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
               context,
-        ).showSnackBar(
+        ).showSnackBarAnnounced(
           SnackBar(content: Text(L10n.of(context).oneClientLoggedOut)),
         );
+        // Pangea#
 
         if (state != LoginState.loggedIn) {
-          FluffyChatApp.router.go('/rooms');
+          FluffyChatApp.router.go(PRoutes.world);
         }
       } else {
         // #Pangea
@@ -442,7 +544,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         // );
         if (state == LoginState.loggedIn) {
           final isL2Set = await pangeaController.userController.isUserL2Set;
-          FluffyChatApp.router.go(isL2Set ? '/rooms' : '/registration/create');
+          FluffyChatApp.router.go(isL2Set ? PRoutes.world : '/registration');
         } else {
           FluffyChatApp.router.go('/home');
         }
@@ -460,10 +562,17 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     }
     // #Pangea
     _analyticsServices[name] ??= AnalyticsDataService(c);
+    if (_activityAutoSaveServices[name] == null) {
+      _activityAutoSaveServices[name] = ActivityAutoSaveService(
+        client: c,
+        analyticsService: _analyticsServices[name]!,
+      );
+      _activityAutoSaveServices[name]!.start();
+    }
     // Pangea#
   }
 
-  void _cancelSubs(String name) {
+  Future<void> _cancelSubs(String name) async {
     onRoomKeyRequestSub[name]?.cancel();
     onRoomKeyRequestSub.remove(name);
     onKeyVerificationRequestSub[name]?.cancel();
@@ -475,9 +584,49 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     // #Pangea
     onUiaRequest[name]?.cancel();
     onUiaRequest.remove(name);
-    _analyticsServices[name]?.dispose();
-    _analyticsServices.remove(name);
+    await disposeAccountServices(name);
     // Pangea#
+  }
+
+  /// Best-effort, bounded, NON-destructive flush of an account's open engagement
+  /// span. Called BEFORE `client.logout()` so the final POST uses a still-valid
+  /// bearer WITHOUT tearing the services down — if logout then fails, they are
+  /// intact and the `loggedOut` listener disposes them once logout is confirmed.
+  /// Never throws or blocks the logout.
+  Future<void> flushAccountTelemetry(String clientName) async {
+    try {
+      final userId = _analyticsServices[clientName]?.accountUserId;
+      if (userId == null || userId.isEmpty) return;
+      // Tombstoned, non-destructive flush: KEEPS the tracker (so a failed logout
+      // leaves it live) but blocks a new span from opening during the awaited
+      // POST — which would otherwise flush only after logout kills the bearer.
+      await DosageEngagementTracker.flushForLogout(
+        userId,
+      ).timeout(const Duration(seconds: 5));
+    } catch (_) {
+      // Telemetry is best-effort; a flush failure must never block logout.
+    }
+  }
+
+  /// DISPOSES THIS account's dosage/analytics services (awaited). The final span
+  /// is flushed by [flushAccountTelemetry] BEFORE logout; this destructive
+  /// teardown runs on the `loggedOut` listener ([_cancelSubs]) and widget
+  /// [dispose]. Concurrent teardowns for the same account COALESCE onto one
+  /// disposal (a second caller awaits the first, never double-disposing the
+  /// service/database), and the map entries are removed only AFTER disposal
+  /// completes — so [analyticsDataService] returns the still-closing service
+  /// mid-teardown instead of resurrecting a fresh one for a logged-out account.
+  Future<void> disposeAccountServices(String clientName) {
+    return _disposingServices[clientName] ??= () async {
+      try {
+        _activityAutoSaveServices[clientName]?.dispose();
+        await _analyticsServices[clientName]?.dispose();
+      } finally {
+        _activityAutoSaveServices.remove(clientName);
+        _analyticsServices.remove(clientName);
+        _disposingServices.remove(clientName);
+      }
+    }();
   }
 
   void initMatrix() {
@@ -516,16 +665,6 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         },
       );
     }
-
-    createVoipPlugin();
-  }
-
-  void createVoipPlugin() async {
-    if (AppSettings.experimentalVoip.value) {
-      voipPlugin = null;
-      return;
-    }
-    voipPlugin = VoipPlugin(this);
   }
 
   @override
@@ -543,6 +682,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
         Logs().v('Set background sync to', foreground);
       }
     }
+
+    if (state == AppLifecycleState.resumed) {
+      pangeaController.subscriptionController.refreshOnAppResume(client.userID);
+    }
   }
 
   @override
@@ -557,7 +700,18 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
     linuxNotifications?.close();
     // #Pangea
+    // Flush + dispose every account's dosage/analytics on widget teardown so the
+    // last open engagement span isn't dropped. dispose() can't be async; the
+    // teardown is awaited internally and each flush POSTs on its own client, and
+    // the bearer isn't invalidated by widget teardown.
+    for (final name in {
+      ..._analyticsServices.keys,
+      ..._activityAutoSaveServices.keys,
+    }) {
+      unawaited(disposeAccountServices(name));
+    }
     _languageListener?.cancel();
+    _appLanguageSettingsListener?.cancel();
     _uriListener?.cancel();
     notifPermissionNotifier.dispose();
     // Pangea#
@@ -597,23 +751,43 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   // #Pangea
+  /// The in-app location an OS-delivered link maps to — pure and unit-tested
+  /// (incoming_uri_path_test.dart): a bare `/<code>` course join link and the
+  /// `/<uuid>` activity link flow straight through to the router's
+  /// LegacyRedirects, which folds them into their tokens — no per-shape
+  /// rewrite here.
+  static String incomingUriToPath(Uri uri) {
+    if (uri.fragment.isNotEmpty) {
+      return uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
+    }
+    final query = uri.queryParameters;
+    final queryString = query.entries
+        .map((e) => '${e.key}=${e.value}')
+        .join('&');
+    var path = '/${uri.pathSegments.join('/')}';
+    if (queryString.isNotEmpty) {
+      path = '$path?$queryString';
+    }
+    return path;
+  }
+
+  /// Whether an `app_links` emission should be navigated to.
+  ///
+  /// Only OS-delivered links are real inbound navigations. On **web** the
+  /// plugin has no OS channel: its stream is a single value captured at
+  /// construction — the URL the page was LOADED with — so every emission is a
+  /// replay of the boot location the router already consumed (path URL
+  /// strategy, see main.dart). Acting on that replay re-navigates the user
+  /// back to the link they may already have moved on from: it arrives one
+  /// post-frame AFTER the app's first frame, so closing a deep-linked
+  /// activity or course in that window snapped straight back into it — the
+  /// "uncloseable activity" trap (#7821). Pure, so it is unit-tested.
+  static bool shouldNavigateToIncomingUri({required bool isWeb}) => !isWeb;
+
   Future<void> _processIncomingUris(Uri? uri) async {
     if (uri == null) return;
-
-    String path;
-    if (uri.fragment.isNotEmpty) {
-      path = uri.fragment.startsWith('/') ? uri.fragment : '/${uri.fragment}';
-    } else {
-      final query = uri.queryParameters;
-      final queryString = query.entries
-          .map((e) => '${e.key}=${e.value}')
-          .join('&');
-      path = '/${uri.pathSegments.join('/')}';
-      if (queryString.isNotEmpty) {
-        path = '$path?$queryString';
-      }
-    }
-
+    if (!shouldNavigateToIncomingUri(isWeb: kIsWeb)) return;
+    final path = incomingUriToPath(uri);
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FluffyChatApp.router.go(path);
     });

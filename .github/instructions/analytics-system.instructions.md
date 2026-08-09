@@ -11,7 +11,7 @@ The analytics system tracks learning, rewards progress, visualizes growth, and g
 1. **Instant feedback**: Users should see XP and growth animations the moment they interact with a word, not after a server round-trip. The system is local-first.
 2. **Every interaction counts**: Every interaction, from reading a message to tapping a new word to practice exercises, contributes to the user's progress.
 3. **Engaging visuals**: The seeds→greens→flowers metaphor and per-word emoji associations make progress tangible and fun to track.
-4. **Fun, personalized practice**: Practice activities are generated from the user's actual messages, making them relevant and engaging. The system prioritizes words that need attention, not just random drills.
+4. **Fun, personalized practice**: Practice exercises are generated from the user's actual messages, making them relevant and engaging. The system prioritizes words that need attention, not just random drills.
 5. **Teacher insights**: Teachers can view aggregate analytics for their students, helping them tailor instruction and identify who needs extra support.
 
 ## Constructs
@@ -48,7 +48,7 @@ The same word can appear with different casing or slight variations across messa
 Users can hide specific constructs they consider too easy or irrelevant (e.g., cognates, proper nouns). Blocked constructs:
 - Disappear from all analytics views
 - Stop contributing to XP totals
-- Are excluded from practice activity selection
+- Are excluded from practice exercise selection
 - Persist across sessions via the Matrix analytics room
 
 ## User Levels
@@ -109,6 +109,8 @@ This data flows from each student's analytics room to the teacher view — the t
 - **Level can never visibly decrease** from user-initiated actions (blocking, language switching). Use offsets to maintain.
 - **The "other" category is always filtered out** of aggregations and displays. It represents unclassifiable tokens.
 - **Analytics initialization must complete before any UI reads.** All public methods await an init completer.
+- **A UI surface reads live analytics through the update streams, subscribed during build — not via a listener attached after mount.** [`AnalyticsUpdateDispatcher`](lib/features/analytics_data/analytics_update_dispatcher.dart) fires its first construct/activity update once, during init, on hot broadcast streams with no replay. A widget that subscribes *after* init completes (a manual `listen` in `didChangeDependencies`) misses that event and shows stale/zero until the next live update. Read inside a `StreamBuilder` on the construct/activity streams — which subscribes during build, before init finishes — and read `numConstructs`/`derivedData` *inside* the builder so each rebuild is fresh. The chat-list `LearningProgressIndicators` and the world map's top-right cluster (see [routing.instructions.md](routing.instructions.md)) both follow this.
+- **Show level/XP from the local `derivedData`, not the public-profile level.** [`AnalyticsDataService`](lib/features/analytics_data/analytics_data_service.dart) `derivedData` (with `cachedDerivedData` as the synchronous fallback) reflects the live local XP total; the public-profile `AnalyticsProfileModel.level` can lag behind it.
 - **Construct uses store `eventId` and `roomId` when they originate from a message context.** Chat-originated uses (wa, ga, ta) and message-practice uses populate both fields, enabling tracing back to the source message. Standalone practice uses (e.g., from the analytics practice page) correctly set these to null — there is no originating room/message in that context.
 
 ## Open Issues Discussions

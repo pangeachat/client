@@ -2,6 +2,23 @@
 <html>
 
 <head>
+  <!-- #Pangea -->
+  <!-- iOS Smart App Banner: Safari renders a native "Open in app" strip.
+       app-argument carries the CURRENT URL, so a shared link (`/<code>`
+       course join, `/<uuid>` activity) opened in Safari or an in-app browser
+       hops into the installed app with the link intact; "View" goes to the
+       App Store. Injected via script because the argument must be the live
+       URL (joining-courses.instructions.md, Deep Linking). -->
+  <script>
+    (function () {
+      const meta = document.createElement('meta');
+      meta.name = 'apple-itunes-app';
+      meta.content =
+        'app-id=1445118630, app-argument=' + window.location.href;
+      document.head.appendChild(meta);
+    })();
+  </script>
+  <!-- Pangea# -->
   <!--
     If you are serving your web app in a path other than the root, change the
     href value below to reflect the base path you are serving from.
@@ -19,6 +36,111 @@
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+
+  <!-- #Pangea: one-time eviction of any legacy service worker.
+       Current builds use --pwa-strategy=none and register no service worker.
+       Returning users from older offline-first builds still hold a registration
+       whose worker serves a stale app shell from Cache Storage.
+
+       A controlled page CANNOT evict its own controller in WebKit/Safari:
+       unregister() only marks-for-removal, and location.reload() is re-claimed by
+       the old worker, so a page-side unregister+reload loops forever there. The
+       one WebKit-legal lever is registration.update(): it force-fetches the
+       self-destroying worker at /flutter_service_worker.js, whose activate
+       handler claims the page, clears caches, and unregisters. We then reload
+       exactly once on the resulting controllerchange (or the worker's message).
+       If the old worker still controls the tab after a grace period (a genuinely
+       wedged registration, mostly iOS), we show a banner asking the user to fully
+       close the tab -- the only remaining fix without clearing site data.
+
+       Inert for fresh users: no controller -> immediate return. -->
+  <script>
+    (function () {
+      var sw = navigator.serviceWorker;
+      if (!sw || !sw.controller) return; // fresh users: nothing to evict
+
+      // Report the degraded state to Sentry directly: the Flutter app and its
+      // Sentry SDK have not loaded yet, and we usually reload before they would.
+      // keepalive lets the POST outlive the eviction reload. The DSN mirrors the
+      // committed default in lib/pangea/common/config/environment.dart; the
+      // release token is injected by the deploy's __BUILD_VERSION__ sed.
+      var report = function (state, level) {
+        try {
+          var rk = 'pangea-sw-report-' + state;
+          try { if (sessionStorage.getItem(rk)) return; sessionStorage.setItem(rk, '1'); } catch (e) {}
+          var id = '';
+          try { if (self.crypto && crypto.randomUUID) id = crypto.randomUUID().replace(/-/g, ''); } catch (e) {}
+          while (id.length < 32) id += Math.floor(Math.random() * 16).toString(16);
+          var host = location.hostname;
+          var env = host.indexOf('staging') !== -1 ? 'staging'
+            : (host === 'app.pangea.chat' ? 'production' : 'development');
+          var ev = {
+            event_id: id, timestamp: Date.now() / 1000, platform: 'javascript',
+            logger: 'sw-killswitch', level: level, environment: env,
+            release: '__BUILD_VERSION__',
+            message: 'Legacy service worker degraded state (' + state + ')',
+            tags: { sw_state: state, sw_controller: (sw.controller && sw.controller.scriptURL) || 'unknown' },
+            request: { url: location.href, headers: { 'User-Agent': navigator.userAgent } }
+          };
+          var body = JSON.stringify({ event_id: id, sent_at: new Date().toISOString() })
+            + '\n{"type":"event"}\n' + JSON.stringify(ev);
+          fetch('https://o225078.ingest.sentry.io/api/1376295/envelope/'
+            + '?sentry_key=c2fd19ab2cdc4ebb939a32d01c0e9fa1&sentry_version=7',
+            { method: 'POST', body: body, keepalive: true,
+              headers: { 'Content-Type': 'application/x-sentry-envelope' } }).catch(function () {});
+        } catch (e) { /* never let reporting break eviction */ }
+      };
+      report('detected', 'warning');
+
+      var KEY = 'pangea-sw-killswitch';
+      var reloaded = false;
+      var reloadOnce = function () {
+        if (reloaded) return;
+        try {
+          if (sessionStorage.getItem(KEY)) return; // already reloaded this session
+          sessionStorage.setItem(KEY, '1');
+        } catch (e) {
+          return; // no sessionStorage -> don't risk a reload loop
+        }
+        reloaded = true;
+        location.reload();
+      };
+      // The only WebKit-legal lever: force a byte-fetch of the self-destroying
+      // worker so ITS activate handler does the eviction. A page-side
+      // unregister() cannot release a controlling worker in Safari.
+      sw.getRegistrations().then(function (regs) {
+        regs.forEach(function (reg) { try { reg.update(); } catch (e) {} });
+      }).catch(function () {});
+      // The self-destroying worker took control (it has no fetch handler, so the
+      // next load comes straight from the network). Reload once.
+      sw.addEventListener('controllerchange', reloadOnce);
+      sw.addEventListener('message', function (e) {
+        if (e.data && e.data.type === 'SW_SELF_DESTRUCT_RELOAD') reloadOnce();
+      });
+      // Wedged-registration fallback (mostly iOS Safari): if the old worker is
+      // still in control after a grace period, update() could not promote a new
+      // worker, and destroying the controlled client is the only fix left.
+      setTimeout(function () {
+        if (reloaded || !navigator.serviceWorker.controller) return;
+        try { if (sessionStorage.getItem(KEY)) return; } catch (e) {}
+        report('wedged', 'error'); // eviction failed; this is the stuck tail
+        var bar = document.createElement('div');
+        bar.setAttribute('role', 'alert');
+        bar.style.cssText =
+          'position:fixed;top:0;left:0;right:0;z-index:2147483647;background:#1f1147;' +
+          'color:#fff;font:14px/1.4 -apple-system,system-ui,sans-serif;padding:12px 16px;' +
+          'text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.3)';
+        bar.textContent =
+          'Pangea Chat needs to finish updating. Please fully close this tab ' +
+          '(and any other Pangea Chat tabs), then reopen the app.';
+        var add = function () { if (document.body) document.body.appendChild(bar); };
+        if (document.body) add();
+        else document.addEventListener('DOMContentLoaded', add);
+      }, 8000);
+    })();
+  </script>
+  <!-- Pangea# -->
+
   <!-- #Pangea -->
   <!-- <meta name="description" content="The cutest messenger in the Matrix network."> -->
   <meta name="description" content="Learn a language while texting your friends.">
@@ -45,6 +167,48 @@
   <link rel="stylesheet" type="text/css" href="splash/style.css">
   <script src="Imaging.js"></script>
 
+  <script>
+    // The deploy runs sed s/__BUILD_VERSION__/<sha>/g over this file, so the
+    // token must only ever appear inside a string literal. Using it as an
+    // identifier (window.__BUILD_VERSION__) becomes window.<sha>, which is a
+    // SyntaxError whenever the sha starts with a digit (~62% of deploys).
+    window.__pangeaBuild = "__BUILD_VERSION__";
+
+    (function () {
+      const BUILD = window.__pangeaBuild || "dev";
+
+      const shouldVersion = (url) => {
+        return (
+          url.includes("FontManifest.json") ||
+          url.includes("AssetManifest.json") ||
+          url.includes("assets.json") ||
+          url.includes("version.json")
+        );
+      };
+
+      const addVersion = (url) => {
+        if (!shouldVersion(url)) return url;
+
+        const separator = url.includes("?") ? "&" : "?";
+        return url + separator + "v=" + BUILD;
+      };
+
+      const originalFetch = window.fetch.bind(window);
+
+      window.fetch = function (input, init) {
+        try {
+          if (typeof input === "string") {
+            input = addVersion(input);
+          } else if (input instanceof Request) {
+            input = new Request(addVersion(input.url), input);
+          }
+        } catch (e) { }
+
+        return originalFetch(input, init);
+      };
+    })();
+  </script>
+
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
@@ -66,32 +230,63 @@
   </script>
 
   <!-- #Pangea -->
+  <!-- Android "Open in app" banner. There is deliberately NO automatic
+       store/scheme bounce from the page: browsers block JS navigations to
+       app schemes (including intent://) without a user tap, so the old
+       `pangea://` + timer pattern failed silently (#7830). The automatic
+       leg is OS-level Android App Links instead (AndroidManifest, #8031):
+       links tapped OUTSIDE the browser open the installed app directly.
+       This bar covers browser landings: the tap is an intent:// URL that
+       opens the installed app at the current route and falls back to the
+       Play Store natively in Chromium browsers; non-Chromium (Firefox)
+       gets a plain Play Store link. Shown on every path — the tap carries
+       the route, so a deep link no longer costs its payload
+       (joining-courses.instructions.md, Deep Linking). iOS gets the native
+       Smart App Banner (the meta in <head>). -->
   <script>
-    (function() {
-      const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      const isAndroid = /android/i.test(userAgent);
-      const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
-      const isMobile = isAndroid || isIOS;
+    (function () {
+      const ua = navigator.userAgent || '';
+      if (!/android/i.test(ua)) return;
+      const KEY = 'pangea-play-banner-dismissed-at';
+      try {
+        const dismissedAt = parseInt(localStorage.getItem(KEY) || '0', 10);
+        if (Date.now() - dismissedAt < 14 * 24 * 3600 * 1000) return;
+      } catch (e) { /* storage unavailable: just show the banner */ }
 
-      if (!isMobile) return; // Exit if not a mobile device
+      const playUrl =
+        'https://play.google.com/store/apps/details?id=com.talktolearn.chat';
+      // intent:// is a Chromium-ism; Firefox et al get the store link.
+      const isChromium = /chrome\/\d/i.test(ua);
+      const href = isChromium
+        ? 'intent://' + window.location.host + window.location.pathname +
+          window.location.search + '#Intent;scheme=https;' +
+          'package=com.talktolearn.chat;S.browser_fallback_url=' +
+          encodeURIComponent(playUrl) + ';end'
+        : playUrl;
 
-      const appScheme = 'pangea://'; // Replace with your app's scheme
-      const fallbackURL = isIOS
-        ? 'https://apps.apple.com/app/pangea-chat/id1445118630'
-        : 'https://play.google.com/store/apps/details?id=com.talktolearn.chat';
-
-      // Try opening the app
-      window.location = appScheme;
-
-      // Fallback to App Store / Play Store if not installed
-      setTimeout(() => {
-        window.location = fallbackURL;
-      }, 1500);
+      const bar = document.createElement('div');
+      bar.setAttribute('style',
+        'position:fixed;top:0;left:0;right:0;z-index:9999;display:flex;' +
+        'align-items:center;gap:12px;padding:10px 12px;background:#1f1a2e;' +
+        'color:#fff;font-family:Roboto,sans-serif;font-size:14px;' +
+        'box-shadow:0 1px 4px rgba(0,0,0,.3);');
+      bar.innerHTML =
+        '<span style="flex:1">Pangea Chat is better in the app</span>' +
+        '<a style="background:#7761d6;color:#fff;text-decoration:none;' +
+        'padding:8px 14px;border-radius:20px;font-weight:600">Open in app</a>' +
+        '<button aria-label="Dismiss" style="background:none;border:none;' +
+        'color:#fff;font-size:18px;padding:4px 8px;cursor:pointer">×</button>';
+      bar.querySelector('a').setAttribute('href', href);
+      bar.querySelector('button').addEventListener('click', function () {
+        try { localStorage.setItem(KEY, String(Date.now())); } catch (e) {}
+        bar.remove();
+      });
+      document.body.appendChild(bar);
     })();
   </script>
   <!-- Pangea# -->
 
-  <picture id="splash">
+  <picture id="splash" aria-hidden="true">
     <!-- #Pangea -->
     <!-- <source
       srcset="splash/img/light-1x.png 1x, splash/img/light-2x.png 2x, splash/img/light-3x.png 3x, splash/img/light-4x.png 4x"

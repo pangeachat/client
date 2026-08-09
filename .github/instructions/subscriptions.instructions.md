@@ -1,85 +1,41 @@
 ---
-applyTo: "lib/pangea/subscription/**"
+applyTo: "lib/features/subscription/**,lib/routes/settings/settings_subscription/**"
+description: "Client subscription module — entitlement display from the choreographer, storefront-gated purchase steering, and in-app discount and management."
 ---
 
 # Subscription Module — Client
 
-Client-side subscription UI, platform branching, and payment flows. For the cross-repo architecture (service roles, price configuration, entitlement flow), see [subscriptions.instructions.md](../../../.github/instructions/subscriptions.instructions.md).
+Client-side subscription UI and purchase flow. For the cross-repo architecture — the web-only rationale, the entitlement model, and the platform policy — see [subscriptions.instructions.md](../../../.github/.github/instructions/subscriptions.instructions.md).
 
-## Platform Branching
+The client holds no payment state. It reads entitlement status from the choreographer, renders the purchase surface defined by the subscription design, and hands off to Stripe on the web for the actual payment.
 
-The subscription system splits by platform at initialization:
+## Entitlement state
 
-| Platform | Subscription info class | How purchases work | How prices are displayed |
-|----------|------------------------|--------------------|------------------------|
-| **Web** | [`WebSubscriptionInfo`](../../../lib/pangea/subscription/models/web_subscriptions.dart) | Choreographer generates a Stripe PaymentLink; user completes checkout in browser | `localizedPrice` is null → falls back to `"$${price.toStringAsFixed(2)}"` using price from RC metadata via choreographer |
-| **Mobile** | [`MobileSubscriptionInfo`](../../../lib/pangea/subscription/models/mobile_subscriptions.dart) | RevenueCat SDK handles native store purchase via `Purchases.purchasePackage()` | `localizedPrice` set from `package.storeProduct.priceString` (locale-aware, from the store) |
+[`SubscriptionController`](../../lib/features/subscription/controllers/subscription_controller.dart) resolves the user's status from the choreographer on startup — returning from web checkout must feel immediate, and server-side grants (seats, trials, comps) appear the same way. There is no RevenueCat SDK and no store-package merging: entitlement is a choreographer-served record that the app reflects, never unlocks. Paid features gate on `showSubscriptionGatedContent`; the paywall surfaces only when the user is unsubscribed outside the trial window and hasn't dismissed it.
 
-Both extend [`CurrentSubscriptionInfo`](../../../lib/pangea/subscription/models/base_subscription_info.dart).
+## Purchase surface
 
-## Key Files
+Which purchase surface the client renders — the plans, prices, discount field, and whether checkout is offered — is defined by the org doc's [Platform policy](../../../.github/.github/instructions/subscriptions.instructions.md). The client renders that design; it does not decide it.
 
-| File | Role |
-|------|------|
-| [`subscription_controller.dart`](../../../lib/pangea/subscription/controllers/subscription_controller.dart) | Main controller — initialization, purchase submission, paywall display, payment link generation |
-| [`base_subscription_info.dart`](../../../lib/pangea/subscription/models/base_subscription_info.dart) | `CurrentSubscriptionInfo` base class, `AvailableSubscriptionsInfo` |
-| [`mobile_subscriptions.dart`](../../../lib/pangea/subscription/models/mobile_subscriptions.dart) | Mobile: configures RC SDK, merges store packages with product list |
-| [`web_subscriptions.dart`](../../../lib/pangea/subscription/models/web_subscriptions.dart) | Web: queries choreographer for current subscription status |
-| [`subscription_repo.dart`](../../../lib/pangea/subscription/repo/subscription_repo.dart) | API calls to choreographer: `getAppIds`, `getAllProducts`, `activateFreeTrial`, `getCurrentSubscriptionInfo` |
-| [`subscription_app_id.dart`](../../../lib/pangea/subscription/utils/subscription_app_id.dart) | `SubscriptionAppIds` model and `RCPlatform` enum for platform discrimination |
-| [`subscription_management_repo.dart`](../../../lib/pangea/subscription/repo/subscription_management_repo.dart) | Local persistence (GetStorage) — caches `AvailableSubscriptionsInfo`, tracks paywall dismissal with exponential backoff, and tracks `beganWebPayment` flag |
+## Purchase flow
 
-## Initialization Flow
+Selecting a plan requests a checkout URL from the choreographer and opens it in the system browser ([`PaymentPageMixin`](../../lib/routes/settings/settings_subscription/payment_page_mixin.dart)). A `beganPayment` flag survives the round-trip, so returning to the app is recognized as a completed purchase and the entitlement refresh runs. The discount-code field validates the code server-side before checkout, so an error surfaces in the app and the code reaches Stripe pre-applied; the field appears only where the paywall may appear.
 
-1. `SubscriptionController.initialize()` waits for user controller
-2. `AvailableSubscriptionsInfo.setAvailableSubscriptions()` reads from the local GetStorage cache first (`SubscriptionManagementRepo`); only hits choreographer (`/subscription/all_products`, `/subscription/app_ids`) if the cache is empty. Product/pricing data can therefore be stale across app relaunches.
-3. Platform-specific `CurrentSubscriptionInfo` is created (Web or Mobile)
-4. `configure()` → on mobile, initializes RevenueCat SDK with platform API key
-5. `setCurrentSubscription()` → on mobile, queries RC SDK; on web, queries choreographer (`/subscription`)
-6. If no active subscription and user is in trial window, activates free trial
+## Refreshing subscription info
 
-## Price Display
+Subscription info is initially fetched on session startup, and cached in the [SubscriptionController](../../lib/features/subscription/controllers/subscription_controller.dart) until explicitly reset. The client much refresh the cached subscription status info when it changes. All refreshes go through the SubscriptionController's [_updateCurrentSubscription](../../lib/features/subscription/controllers/subscription_controller.dart) function, which force-refreshes the cached value. The SubscriptionController calls this internally on startup ([_initialize](../../lib/features/subscription/controllers/subscription_controller.dart)), when a free trial is activated ([_activateNewUserTrial](../../lib/features/subscription/controllers/subscription_controller.dart)), and when the controller is explicitly reinitialized ([reinitialize](../../lib/features/subscription/controllers/subscription_controller.dart)). 
 
-[`SubscriptionDetails.displayPrice()`](../../../lib/pangea/subscription/controllers/subscription_controller.dart) resolves display price:
+The settings page pulls subscription status from the SubscriptionController instead of fetching that info itself, and rebuilds automatically when updates are made in the SubscriptionController.
 
-- Trial → localized "Free Trial" string
-- Mobile → `localizedPrice` (set by RevenueCat SDK from App Store / Play Store — locale-aware, store-canonical)
-- Web → `localizedPrice` is null, so falls back to `"$${price.toStringAsFixed(2)}"` using the `price` float from RevenueCat Offering metadata
+The client called reinitialize when:
+1. A new user logs in ([PangeaController._onLogin](../../lib/pangea/common/controllers/pangea_controller.dart))
+2. After a user creates an account, to trigger free trial activation
+3. When a checkout request fails because the user already has a subscription. This is a fallback to account for the cache not being updated for a user with a subscription, so the UI allows them to start the checkout flow.
+4. After a user cancels their subscription via the "Cancel" button in the [SubscriptionHistory](../../lib/routes/settings/settings_subscription/subscription_history.dart) page
+5. When a refresh button is pressed in the errored-out subscription settings view
 
-This means **web users see the price from RC metadata**, not from Stripe directly. If RC metadata and the Stripe Price object disagree, users will see one price in the subscription page and a different price at Stripe checkout.
+The client tracks potential subscription changes via the [SubscriptionManagementRepo](../../lib/features/subscription/repo_v2/subscription_management_repo.dart). It tracks if the user has started a payment and if the user has launched their billing portal, which can be used to cancel or restart subscriptions. The client uses with info the the [didChangeAppLifecycleState](../../lib/widgets/matrix.dart) override in [Matrix](../../lib/widgets/matrix.dart) to poll for refreshes to the subscription status when the user returns to the app. The polling has an exponential backoff, with a maximum of 5 calls to the status endpoint.
 
-## Web Payment Flow
+## Managing a subscription
 
-1. User selects a plan → `submitSubscriptionChange()` → `getPaymentLink(duration)`
-2. Client calls choreographer `GET /subscription/payment_link?pangea_user_id=...&duration=month`
-3. Choreographer creates a Stripe PaymentLink and returns the URL
-4. Client launches the URL in-browser (`launchUrlString`)
-5. After checkout, Stripe redirects to `STRIPE_REDIRECT_URL`; user returns to app
-6. On next load, `WebSubscriptionInfo.setCurrentSubscription()` calls choreographer `GET /subscription`, which queries RC and returns updated entitlement status (the client never contacts RC directly on web)
-
-## Environment Configuration
-
-Key env values in [`assets/.env`](../../../assets/.env):
-
-| Key | Purpose |
-|-----|---------|
-| `RC_GOOGLE_KEY` | RevenueCat Android SDK key |
-| `RC_IOS_KEY` | RevenueCat iOS SDK key |
-| `RC_STRIPE_KEY` | RevenueCat Stripe public key (used for web app ID resolution) |
-| `RC_OFFERING_NAME` | RevenueCat offering identifier |
-| `STRIPE_MANAGEMENT_LINK` | URL for Stripe billing portal (subscription management on web) |
-
-## Discount Codes on Mobile
-
-Stripe promo codes (from conferences, LCB promotions, Google Form webhooks) only work at Stripe Checkout — they cannot be applied to native App Store / Play Store purchases. This is a known friction point.
-
-**Current approach**: Keep native IAP as the default mobile purchase path (higher conversion, 1-tap with Face ID/biometrics). For discount codes, add a "Have a discount code?" link on the mobile subscription paywall that opens the Stripe web checkout in an in-app browser via `getPaymentLink()`. The PaymentLink already has `allow_promotion_codes: True`.
-
-**Why not web-only checkout on mobile**: Native IAP conversion rates are significantly higher than browser redirects. RevenueCat already abstracts the multi-platform complexity. Removing native IAP would also lose access to App Store / Play Store promotional pricing and subscription offer codes.
-
-**Possible future alternative**: Apple Subscription Offer Codes (iOS 14+) and Google Play promo codes allow native discount redemption without Stripe. RevenueCat supports both. This would require creating codes in each store's console instead of just Stripe, but would eliminate the web checkout redirect for discount users.
-
-## Future Work
-
-- [pangeachat/client#4977](https://github.com/pangeachat/client/issues/4977) — Move entering of discount code to subscription page
-- [pangeachat/marketing-and-sales-strategy#34](https://github.com/pangeachat/marketing-and-sales-strategy/issues/34) — Lock down v2 pricing and apply across website + app
+Settings shows the current plan and billing history natively, cancels in the app, and opens a Stripe-hosted page only to change the payment card. This is account management, shown on every platform. Institution-sponsored learners see who sponsors their access in place of a paywall.

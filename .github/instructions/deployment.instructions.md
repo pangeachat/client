@@ -20,9 +20,44 @@ Production is periodically synced from `main` via merge PRs. Between syncs, the 
 ## Deploy Mechanism
 
 - Flutter web build → S3 upload via GitHub Actions
-- Mobile builds: manual app store builds and releases
+- Mobile builds: both platforms follow the same shape — a staging build is a button (manual `workflow_dispatch`), a production build happens automatically on every release, and promotion to end users stays a human step in the store console. Android: [`android-playstore.yml`](../../.github/workflows/android-playstore.yml) uploads a signed appbundle to the Play Store internal track (release also attaches an APK to the GitHub release). iOS: [`ios-testflight.yml`](../../.github/workflows/ios-testflight.yml) uploads a signed IPA to TestFlight (fastlane match signing; certs live encrypted in the private `pangeachat/ios-certificates` repo). CI is the only sanctioned path for store builds because the checked-in Firebase config files are the staging ones — only env-secret-driven CI builds are guaranteed to carry the right Firebase project (FCM tokens are project-scoped; a mismatch kills push).
 - Staging: app.staging.pangea.chat (S3 + CloudFront)
 - Production: app.pangea.chat (S3 + CloudFront)
+
+## Versioning
+
+The semantic version in `pubspec.yaml` is bumped by hand. (The build number after the `+` is stamped automatically per platform at build time — see [ci.instructions.md](ci.instructions.md).)
+
+**Which level to bump.** The levels are defined by what they let you do to the fleet, because major and minor are the only two that can wall a user out: the client raises a mandatory-update wall when the force-upgrade floor's major *or* minor exceeds the running client's. Patch never can. Raising that floor is a separate, deliberate release step — see [client-version-gating.instructions.md](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/client-version-gating.instructions.md).
+
+- **Major** — a release you intend to eventually force the whole fleet onto: a protocol or stored-data break, or a cutover that ends coexistence with the previous line.
+- **Minor** — a release you may later want to force: a notable feature, or a migration users must land on before old clients become a liability.
+- **Patch** — the default, and right for most work including most feature work. Never used to retire a fleet.
+
+Choosing a level is answering one question: *would we ever force someone onto this?* If no, it is a patch.
+
+**Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must bump `+N` regardless, because the release workflow tags from the full version string and silently fails on a tag that already exists.
+
+## Environment Config (`.env`)
+
+The root `.env` is the **single config source** on every platform. There is no tracked `assets/.env`; don't reintroduce one — a second copy is what previously let web silently ignore the root file.
+
+- **Web**: `.env` is not a bundled asset. [`EnvLoader`](../../lib/pangea/common/config/env_loader.dart) fetches `/.env` from the web root at startup, so deploy jobs must place the env file at the web root (`build/web/.env`). This is what lets one web artifact be stamped with the target env at deploy time without a rebuild.
+- **Native**: `.env` is a bundled asset, but the pubspec declaration stays commented on `main` because a declared-but-missing asset fails the build and `.env` is gitignored. CI writes the file and applies [`enable_mobile_env.patch`](../../scripts/enable_mobile_env.patch) to uncomment it. If the pubspec asset block changes, regenerate the patch or mobile builds break at `git apply`.
+- **Env switcher** (staging builds): `envs.json` / `appConfigOverride` overlays whatever dotenv loaded; it is independent of where the file came from.
+
+The GitHub Actions environment variable `WEB_APP_ENV` is the source for generated `.env` files in deploy workflows. It should include the runtime web Firebase analytics config as `GOOGLE_ANALYTICS_FIREBASE_OPTIONS_BASE64`, with a base64-encoded Firebase options JSON value for the target environment.
+
+## CI Secrets
+
+Mobile Firebase messaging setup uses GitHub Actions secrets:
+
+| Secret | Destination |
+|--------|-------------|
+| `GOOGLE_SERVICES_JSON` | `android/app/google-services.json` |
+| `GOOGLE_SERVICES_PLIST` | `ios/Runner/GoogleService-Info.plist` |
+
+Both values are base64-encoded file contents. Run [`configure-firebase-messaging.sh`](../../scripts/configure-firebase-messaging.sh) to set up the environment.
 
 ## Production Hotfix Process
 
@@ -31,7 +66,7 @@ When a bug must be fixed on production before the next full sync from `main`:
 1. **Branch from `production`** — not `main`. The branches may have diverged enough that code from `main` doesn't compile or behaves differently on `production`.
 2. **Assess cherry-pick feasibility** — If the fix already exists on `main`, try `git cherry-pick`. If `production` has diverged (e.g., a refactor changed the surrounding code), the cherry-pick may apply as a no-op or conflict. In that case, manually port the fix to be compatible with production's codebase.
 3. **PR to `production`** — open a PR targeting `production`, not `main`.
-4. **Bump the version** in `pubspec.yaml` — the release workflow tags from this version. If the tag already exists, the workflow fails silently. Always increment the build number (e.g., `4.1.18+6` → `4.1.18+7`).
+4. **Bump the version** in `pubspec.yaml` — see [Versioning](#versioning). A hotfix is a patch: increment the build number (e.g., `4.1.18+6` → `4.1.18+7`).
 5. **Push triggers deploy** — merging the PR (or pushing directly) to `production` triggers [`release.yaml`](../../.github/workflows/release.yaml).
 6. **Forward-port to `main`** — after the hotfix is confirmed working on production, ensure the fix also exists on `main` (via the original PR, a separate PR, or the next sync merge). Otherwise the fix regresses on the next production sync.
 

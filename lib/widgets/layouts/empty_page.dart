@@ -1,39 +1,14 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
-import 'package:fluffychat/pangea/common/widgets/pangea_logo_svg.dart';
-
+/// The map-canvas hole (world_v2). Section roots use this as their canvas: it
+/// paints nothing, so the single persistent `WorldMap` hosted by the app
+/// shell ([WorkspaceShell]) shows underneath. The shell decides — from the
+/// route — to take the whole `sideView` off the hit-test tree while a
+/// map-canvas route is showing, keeping the map interactive. The map is NOT
+/// built here; rendering it per route is what used to remount it.
 class EmptyPage extends StatelessWidget {
-  static const double _width = 400;
   const EmptyPage({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    final width = min(MediaQuery.sizeOf(context).width, EmptyPage._width) / 2;
-    // #Pangea
-    // final theme = Theme.of(context);
-    // Pangea#
-    return Scaffold(
-      // Add invisible appbar to make status bar on Android tablets bright.
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
-      extendBodyBehindAppBar: true,
-      body: Container(
-        alignment: Alignment.center,
-        // #Pangea
-        child: PangeaLogoSvg(width: width),
-        // child: Image.asset(
-        //   'assets/logo_transparent.png',
-        //   color: theme.colorScheme.surfaceContainerHigh,
-        //   width: width,
-        //   height: width,
-        //   filterQuality: FilterQuality.medium,
-        // ),
-        // Pangea#
-      ),
-    );
-  }
+  Widget build(BuildContext context) => const SizedBox.expand();
 }

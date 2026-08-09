@@ -1,0 +1,113 @@
+import 'package:flutter/material.dart';
+
+import 'package:go_router/go_router.dart';
+
+import 'package:fluffychat/features/navigation/close_affordance.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
+import 'package:fluffychat/features/navigation/route_facts.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/l10n/l10n.dart';
+
+/// The panel's close control. A pushed sub-page ([_isPushedSubPage]) backs out
+/// ONE level via popPage (a course management page → the card; a room sub-page
+/// → the chat). Otherwise the centralized [CloseAffordance] decides `←` (reveal
+/// a folded/sibling master) vs `X` (dismiss to the map). See
+/// `close_affordance` / `routing.instructions.md`.
+class LeftPanelCloseButton extends StatelessWidget {
+  final PanelToken token;
+  final Uri currentUri;
+  final bool foldedOver;
+  final bool isColumnMode;
+
+  const LeftPanelCloseButton({
+    super.key,
+    required this.token,
+    required this.currentUri,
+    required this.foldedOver,
+    required this.isColumnMode,
+  });
+
+  /// True when this panel's param is a pushed sub-page (not the bare panel / a
+  /// card tab): a `room`/`session` token carrying a `<roomid>/<sub>` path. Such
+  /// a page's close is `←` back one level (popPage), not `X` to the map. (A
+  /// course-management page is its own `coursepage` detail with its own close,
+  /// not a push on the room/course token.) See `close_affordance`.
+  bool get _isPushedSubPage {
+    final param = token.param;
+    if (param == null) return false;
+    return param.isPushed;
+  }
+
+  // Centralized affordance (close_affordance.dart): `←` when closing returns to
+  // a master that was behind us — a width-fold ([foldedOver]) or, on a narrow
+  // single pane, this leaf's navigation-tree PARENT being open behind it
+  // (possibly in the other column, e.g. a left session over the right analytics
+  // list). An independent panel (no open parent) gets `X` so it dismisses to the
+  // map in one tap, rather than a misleading `←` to something unrelated.
+  CloseAffordance get _closeAffordance => CloseAffordance.of(
+    isPushedPage: false,
+    revealsMaster:
+        foldedOver || (!isColumnMode && parentIsOpen(currentUri, token)),
+  );
+
+  /// The LIVE workspace URL at click time. The left panel does NOT rebuild when
+  /// only the RIGHT column changes (so the live chat/timeline is not torn down),
+  /// so the [currentUri] captured at this panel's last build can be STALE for the
+  /// right column. A token mutation (close / pop) preserves the rest of the query
+  /// verbatim, so running it on the stale uri would "restore" the right tab the
+  /// panel opened with and discard whatever the user switched to since — e.g.
+  /// closing a session review snapped the right column from `analytics:grammar`
+  /// back to the open-time `analytics:sessions` (#7268). Read the current url
+  /// instead, so the close drops only this token and leaves the right column as
+  /// the user left it.
+  Uri _liveUri(BuildContext context) =>
+      GoRouter.of(context).routeInformationProvider.value.uri;
+
+  // A `room`/`session` is a token-only panel, so dropping its token closes it.
+  // A section panel (a course) is also addressable by its map filter, so
+  // closing it returns to the world map. See WorkspaceNav.closeSection.
+  //
+  // Like [currentUri], the CAPTURED token can be stale for a room panel: the
+  // chat renders inside a room-keyed nested Navigator whose route holds the
+  // close button built at open time, so when the same room reopens under a
+  // different token (`room:X` from the chat list, then `session:X` from the
+  // Stars archive after the activity ends) a surviving stale button would try
+  // to drop the departed token — a no-op, i.e. a dead back button (#8142).
+  // Resolve the token to drop by ROOM ID against the live URL instead, so the
+  // close always drops whatever room-panel token is actually open for this
+  // room.
+  void _close(BuildContext context) {
+    final uri = _liveUri(context);
+    if (token.type.isRoomPanel) {
+      final param = token.param;
+      final close = roomTokenCloseLocation(
+        uri,
+        param is RoomTokenParam ? param.id : null,
+      );
+      context.go(close ?? WorkspaceNav.closeLeft(uri, token));
+      return;
+    }
+    context.go(WorkspaceNav.closeSection(uri, token));
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final page = token.param;
+    if (_isPushedSubPage && page != null) {
+      return BackButton(
+        onPressed: () =>
+            context.go(WorkspaceNav.popPage(_liveUri(context), token)),
+      );
+    }
+
+    return _closeAffordance.showBack
+        ? BackButton(onPressed: () => _close(context))
+        : IconButton(
+            icon: const Icon(Icons.close),
+            tooltip: token.type.closeButtonLabel(L10n.of(context)),
+            onPressed: () => _close(context),
+          );
+  }
+}

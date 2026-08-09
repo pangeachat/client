@@ -85,7 +85,6 @@
     "appLock": "Clavetta del application",
     "appLockDescription": "Claudar le application quando non es usate con un codice PIN",
     "archive": "Archivar",
-    "areGuestsAllowedToJoin": "Es permittite a hospites junger?",
     "areYouSure": "Es tu secur?",
     "areYouSureYouWantToLogout": "Es tu secur que vole tu disconnector te?",
     "askSSSSSign": "Pro poter signar le altere persona, per favor introduce tu phrase de securitate o clave de recuperation.",
@@ -130,9 +129,7 @@
     "changeYourAvatar": "Cambiar tu avatar",
     "channelCorruptedDecryptError": "Le encryption ha essite corrompite",
     "chat": "Chat",
-    "yourChatBackupHasBeenSetUp": "Tu copia de securitate del chat ha essite configurate.",
     "chatBackup": "Copia de securitate del chat",
-    "chatBackupDescription": "Tu message antiquate es securitate con un clave de recuperation. Per favor assecurate que tu non lo perde.",
     "chatDetails": "Details del chat",
     "chats": "Chats",
     "chooseAStrongPassword": "Selige un forte contrasigno",
@@ -165,7 +162,6 @@
     "configureChat": "Configura le chat",
     "confirm": "Confirma",
     "connect": "Conecta",
-    "contactHasBeenInvitedToTheGroup": "Le contacto ha essite invitate al gruppo",
     "contentHasBeenReported": "Le contento ha essite reportate a le administratores del server",
     "copiedToClipboard": "Copiato in le portapapeles",
     "copy": "Copia",
@@ -173,11 +169,9 @@
     "couldNotDecryptMessage": "Non poteva decriptar le message: {error}",
     "checkList": "Lista de verification",
     "countParticipants": "{count} participantes",
-    "countInvited": "{count} invitate",
     "create": "Create",
     "createdTheChat": "💬} {username} create le chat",
     "createGroup": "Create gruppo",
-    "createNewSpace": " nove spatio",
     "currentlyActive": "Activa actualmenente",
     "darkTheme": "Dark",
     "dateAndTimeOfDay": "{date}, {timeOfDay}",
@@ -203,9 +197,6 @@
     "emoteKeyboardNoRecents": "Le emot usate recenter apparira hic...",
     "emotePacks": "Packs de emot pro le camera",
     "emoteSettings": "Configurationes de emot",
-    "globalChatId": "ID global de chat",
-    "accessAndVisibility": "Accesso e visibilitate",
-    "accessAndVisibilityDescription": "Qui ha le permission de aderir a iste chat e como le chat pote esser discoperite.",
     "calls": "Appellos",
     "customEmojisAndStickers": "Emojis e stickers personalisate",
     "customEmojisAndStickersBody": "Adder o compartir emojis o stickers personalisate que pote esser usate in qualunque chat.",
@@ -213,7 +204,6 @@
     "emptyChat": "Chat vacue",
     "enableEmotesGlobally": "Habilitar le pack de emotes globalmente",
     "enableEncryption": "Habilitar le encryption",
-    "enableEncryptionWarning": "Tu non potera disactivar le encryption plus. Es tu secur?",
     "encrypted": "Cifrate",
     "encryption": "Cifration",
     "encryptionNotEnabled": "Le encryption non es activate",
@@ -221,7 +211,6 @@
     "enterAnEmailAddress": "Entera un adresse de email",
     "homeserver": "Servitor principal",
     "errorObtainingLocation": "Error durante le obtention del position: {error}",
-    "everythingReady": "Tutto es in ordine!",
     "extremeOffensive": "Extrememente offendente",
     "fileName": "Nomen del file",
     "fluffychat": "FluffyChat",
@@ -230,9 +219,7 @@
     "fromJoining": "De le inscription",
     "fromTheInvitation": "De le invitation",
     "group": "Grupo",
-    "chatDescription": "Description del chat",
     "chatDescriptionHasBeenChanged": "Le description del chat ha essite cambiate",
-    "groupIsPublic": "Le grupo es publice",
     "groups": "Groupes",
     "groupWith": "Grupo con {displayname}",
     "guestsAreForbidden": "Le hospites es prohibite",
@@ -254,7 +241,6 @@
     "incorrectPassphraseOrKey": "Phrase de securitate o clave de recuperation incorrecte",
     "inoffensive": "Inoffensive",
     "inviteContact": "Invitar contacto",
-    "inviteContactToGroup": "Invitar contacto a {groupName}",
     "noChatDescriptionYet": "Nulle description de chat ha essite create ancora.",
     "tryAgain": "Prova ancora",
     "invalidServerName": "Nomen de servitor invalide",
@@ -275,7 +261,6 @@
     "leave": "Lassar",
     "leftTheChat": "Lassó le chat",
     "lightTheme": "Lucente",
-    "loadCountMoreParticipants": "Carga {count} participantes plus",
     "dehydrate": "Exportar session e netar le dispositivo",
     "dehydrateWarning": "Iste action non pote esser revertite. Assegura te que tu ha securemente storate le file de respaldo.",
     "hydrate": "Restaurar ab file de respaldo",
@@ -284,7 +269,6 @@
     "locationDisabledNotice": "Servitios de localisacion es disactivate. Per favor, active los pro poter compartir tu localisacion.",
     "locationPermissionDeniedNotice": "Permission de localisacion es refusate. Per favor, concede los pro poter compartir tu localisacion.",
     "login": "Login",
-    "logInTo": "Intra a {homeserver}",
     "logout": "Salir",
     "mention": "Mentionar",
     "messages": "Messas",
@@ -299,8 +283,6 @@
     "no": "Nulle",
     "noConnectionToTheServer": "Nulle connection a le servitor",
     "noEmotesFound": "Nulle emoticon trovate. 😝",
-    "noEncryptionForPublicRooms": "Tu pote solmente activar le encryption quando le camera non es plus accessible publicamente.",
-    "noGoogleServicesWarning": "Le Service de Messagiero Cloud de Firebase non pare esser disponibile in tu dispositivo. Pro ancora reciper notificationes push, nos recommenda installar ntfy. Con ntfy o un altere proveedor de Push Unificate, tu pote reciper notificationes push de un maniera secur de datos. Tu pote descargar ntfy ab le PlayStore o ab F-Droid.",
     "noMatrixServer": "{server1} non es un servo matrix, usa {server2} in su vice?",
     "shareInviteLink": "Compartir ligamine de invitation",
     "scanQrCode": "Scanar codice QR",
@@ -322,12 +304,10 @@
     "openCamera": "Aperir camera",
     "openVideoCamera": "Aperir camera pro un video",
     "oneClientLoggedOut": "Un de tu clientes ha essite disconnectate",
-    "addAccount": "Adder conto",
     "editBundlesForAccount": "Modificar bundle pro iste conto",
     "addToBundle": "Adder a bundle",
     "removeFromBundle": "Remove de iste bundle",
     "bundleName": "Nomen del bundle",
-    "enableMultiAccounts": "(BETA) Active multiple cuentas in iste dispositivo",
     "openInMaps": "Aperir in mappas",
     "link": "Ligamine",
     "serverRequiresEmail": "Iste servitor necessita de validar tu adresse de email pro registration.",
@@ -339,7 +319,6 @@
     "passwordHasBeenChanged": "Contrasse ha essite cambiate",
     "overview": "Visu",
     "passwordRecoverySettings": "Configurationes de recuperation de parola",
-    "passwordRecovery": "Recuperation de parola",
     "people": "Personas",
     "pickImage": "Selige un imagine",
     "pin": "Pin",
@@ -348,7 +327,6 @@
     "pleaseChooseAPasscode": "Per favor, selige un codice de accesso",
     "pleaseClickOnLink": "Per favor, clicca super le ligamine in le email e poi procede.",
     "pleaseEnter4Digits": "Per favor, entra 4 cifras o lascia vacue pro disactivar le lock del application",
-    "pleaseEnterRecoveryKey": "Per favor, entra tu clave de recuperation:",
     "pleaseEnterYourPassword": "Per favor, entra tu parola de pass",
     "pleaseEnterYourPin": "Per favor, entra tu PIN",
     "pleaseEnterYourUsername": "Per favor, entra tu nomine de usator",
@@ -368,7 +346,6 @@
     "rejectedTheInvitation": "{username} ha rejecite le invitation",
     "removeAllOtherDevices": "Remove tote le altere dispositivos",
     "removedBy": "Removite per {username}",
-    "removeDevice": "Remover dispositivo",
     "unbanFromChat": "Desbanir de le chat",
     "removeYourAvatar": "Remover tu avatar",
     "replaceRoomWithNewerVersion": "Replace le sala con un version plus recente",
@@ -380,8 +357,6 @@
     "saveFile": "Salva file",
     "search": "Cercar",
     "security": "Securitate",
-    "recoveryKey": "Clav de recuperation",
-    "recoveryKeyLost": "Clav de recuperation perdite?",
     "send": "Manda",
     "sendAMessage": "Manda un message",
     "sendAsText": "Manda como texto",
@@ -400,7 +375,6 @@
     "separateChatTypes": "Separa chat direct e gruppos",
     "setAsCanonicalAlias": "Stellar como alias principal",
     "setChatDescription": "Stellar description del chat",
-    "setPermissionsLevel": "Stellar nivele de permissiones",
     "setStatus": "Stellar stato",
     "settings": "Configurationes",
     "share": "Compartir",
@@ -410,8 +384,6 @@
     "presencesToggle": "Monstrar messages de stato de altere usatores",
     "skip": "Salta",
     "sourceCode": "Code fonte",
-    "spaceIsPublic": "Le spatio es publice",
-    "spaceName": "Nomen del spatio",
     "startedACall": "{senderName} ha comenciato un appel",
     "status": "Stato",
     "statusExampleMessage": "Como tu es hodie?",
@@ -423,7 +395,6 @@
     "theyMatch": "Illes coincide",
     "title": "FluffyChat",
     "tooManyRequestsWarning": "Troppo request. Per favor prova ancora plus tarde!",
-    "transferFromAnotherDevice": "Transferar de un altere dispositivo",
     "tryToSendAgain": "Prova remitter",
     "unavailable": "Inaccessibile",
     "unbannedUser": "{username} ha levate le restrictiones a {targetName}",
@@ -433,7 +404,6 @@
     "unknownEvent": "Evenimento ignote '{type}'",
     "unmuteChat": "Dismute chat",
     "unpin": "Disfixar",
-    "unreadChats": "{unreadCount, plural, =1{1 chat non legite} other{{unreadCount} chat non legite}}",
     "userAndOthersAreTyping": "{username} e {count} alteres sta scribente…",
     "userAndUserAreTyping": "{username} e {username2} sta scribente…",
     "userIsTyping": "{username} sta scribente…",
@@ -446,8 +416,6 @@
     "verifyStart": "Iniciar verification",
     "verifySuccess": "Tu ha verificat con successo!",
     "verifyTitle": "Verificando altere conto",
-    "videoCall": "Appello video",
-    "visibilityOfTheChatHistory": "Visibilitate del historia del chat",
     "visibleForAllParticipants": "Visibile pro tote le participantes",
     "visibleForEveryone": "Visibile pro omne",
     "voiceMessage": "Messeggia de voce",
@@ -457,10 +425,7 @@
     "wallpaper": "Fond de pantalla:",
     "warning": "Periculo!",
     "weSentYouAnEmail": "Nos ha inviate un email",
-    "whoCanPerformWhichAction": "Qui pote facer qual action",
-    "whoIsAllowedToJoinThisGroup": "Qui ha le permission de aderir a iste gruppo",
     "whyDoYouWantToReportThis": "Proque vole tu reportar isto?",
-    "wipeChatBackup": "Eliminar tu copia de securitate del chat pro crear un nove clave de recupero?",
     "withTheseAddressesRecoveryDescription": "Con iste addresses tu pote recuperar tu contrasigno.",
     "writeAMessage": "Scribe un messagio…",
     "yes": "Si",
@@ -473,9 +438,7 @@
     "messageType": "Tipo de message",
     "sender": "Scribente",
     "openGallery": "Derrer galeria",
-    "removeFromSpace": "Remove de spazio",
     "start": "Iniciar",
-    "pleaseEnterRecoveryKeyDescription": "Pro desbloquear tu antigas messages, per favor introduce tu clave de recuperation que ha essite generate in un session anterior. Tu clave de recuperation NON es tu contrasigno.",
     "publish": "Publicar",
     "openChat": "Derrer chat",
     "markAsRead": " Marca como lege",
@@ -486,12 +449,9 @@
     "confirmEventUnpin": "Es tu secur de despinnear permanentemente le evento?",
     "emojis": "Emojis",
     "placeCall": " Face un appel",
-    "voiceCall": "Appel de voce",
     "unsupportedAndroidVersion": "Version Android non supportate",
     "unsupportedAndroidVersionLong": "Iste function necessita un version plus recente de Android. Per favor verifica pro actualisationes o supporto de Lineage OS.",
-    "videoCallsBetaWarning": "Per favor nota que le appel video es actualmente in beta. Illes pote non functionar como expectate o non functionar a tot in tote le plataformas.",
     "experimentalVideoCalls": "Appellos video experimental",
-    "emailOrUsername": "Email o nomine de usator",
     "addWidget": "Adder widget",
     "widgetVideo": "Video",
     "widgetEtherpad": "Nota de texto",
@@ -513,35 +473,19 @@
     "youKickedAndBanned": "🙅‍♂️ Tu ha kickate e bannate {user}",
     "youUnbannedUser": "Tu ha levate le banno a {user}",
     "hasKnocked": "🚪 {user} ha frappate",
-    "usersMustKnock": "Le usatores debe frappare",
-    "noOneCanJoin": "Nulle pote juncer",
     "knock": "Toccar",
     "users": "Usatores",
-    "unlockOldMessages": "Debloquear messages ancient",
-    "storeInSecureStorageDescription": "Stoque le clave de recuperation in le stoccage secur del dispositivo.",
-    "saveKeyManuallyDescription": "Salve iste clave manualmente per activar le dialogo de partage del systema o le portapapeles.",
-    "storeInAndroidKeystore": "Stoque in le Keystore de Android",
-    "storeInAppleKeyChain": "Stoque in le KeyChain de Apple",
-    "storeSecurlyOnThisDevice": "Stoque securmente in iste dispositivo",
     "countFiles": "{count} files",
     "user": "Usator",
     "custom": "Personalizzate",
-    "foregroundServiceRunning": "Iste notification appare quando le servicio in primer plano es active.",
-    "screenSharingTitle": "partage de pantalla",
-    "screenSharingDetail": "Tu es partagiante tu pantalla in FuffyChat",
     "whyIsThisMessageEncrypted": "Proque iste message es illisible?",
     "noKeyForThisMessage": "Isto pote evenir si le message esseva inviate ante que tu te connectava a tu conto in iste dispositivo.\n\nIl es etiam possibile que le inviante ha bloccate tu dispositivo o que alcun cosa ha fallite con le connexion a le internet.\n\nEs tu capace de leger le message in un altere session? Alora tu pote transferer le message de illa! Vade a Settings > Dispositivos e assecurate que tu dispositivos ha verifyate se. Quando tu aperi le sala le proxime vice e ambes sessiones es in le foreground, le claves essera transmittite automaticamente.\n\nNoli voler perder le claves quando te disconecta o cambia de dispositivos? Assecura te que tu ha activate le backup del chat in le settings.",
     "newGroup": "Nove grupo",
     "newSpace": "Nove spatio",
-    "enterSpace": "Entera spatio",
     "allSpaces": "Tote le spacios",
     "hidePresences": "Celar lista de statuts?",
     "doNotShowAgain": "Non monstrar ancora",
     "wasDirectChatDisplayName": "Chat vacue (era {oldDisplayName})",
-    "newSpaceDescription": "Le spacios permitte te de consolidar tu chats e construir communitates private o publice.",
-    "encryptThisChat": "Scrypta iste chat",
-    "disableEncryptionWarning": "Pro securitate, tu non pote disactivar le scryptation in un chat ubi illa ha essite activate antea.",
-    "sorryThatsNotPossible": "Pardona... isto non es possibile",
     "deviceKeys": "Claves del dispositivo:",
     "reopenChat": "Re-aperir le chat",
     "noBackupWarning": "Aviso! Sin activar le backup del chat, tu perdera accesso a tu messages scryptate. Es altamente recommandate activar le backup del chat prime de disconectarte.",
@@ -554,7 +498,6 @@
     "openLinkInBrowser": "Derrer le ligamine in le navigator",
     "reportErrorDescription": "😢 Oh non. Alicuno cosa ha fallite. Si vole, tu pote reportar iste bug a le developpatores.",
     "report": "reportar",
-    "setTheme": "Configurar thema:",
     "setColorTheme": "Configurar thema de colore:",
     "invite": "Invitar",
     "inviteGroupChat": "📝 Invitar al chat de gruppo",
@@ -573,12 +516,8 @@
     "yourGlobalUserIdIs": "Tu ID global de usator es: ",
     "noUsersFoundWithQuery": "Infelicemente, nemo usator poteva esser trovate con \"{query}\". Per favor, verifica si tu ha facite un typo.",
     "knocking": "Batte",
-    "chatCanBeDiscoveredViaSearchOnServer": "Le chat pote esser discoperite via le recerca super {server}",
-    "searchChatsRooms": "Recerca pro #chats, @usatores...",
     "nothingFound": "Nulle cosa trovate...",
     "groupName": "Nomen del gruppo",
-    "createGroupAndInviteUsers": "Create un gruppo e invitar usatores",
-    "groupCanBeFoundViaSearch": "Le grupo pote esser trovate via recerca",
     "wrongRecoveryKey": "Pardon... isto non pare esser le clave de recuperation correcte.",
     "startConversation": "Comenciar conversation",
     "commandHint_sendraw": "Invia JSON brute",
@@ -592,11 +531,8 @@
     "pleaseChooseAStrongPassword": "Per favor, selige un contrasigno forte",
     "passwordsDoNotMatch": "Le contrasignos non coincide",
     "passwordIsWrong": "Le contrasigno que tu ha introducite es incorrecte",
-    "publicChatAddresses": "Adresses de chat publice",
-    "createNewAddress": "Create un nove adresse",
     "joinSpace": "Join space",
     "publicSpaces": "Spaces publice",
-    "addChatOrSubSpace": "Adder un chat o sub-space",
     "subspace": "Sub-space",
     "decline": "Refusa",
     "thisDevice": "Iste dispositivo:",
@@ -605,15 +541,11 @@
     "searchMore": "Cercar plus...",
     "gallery": "Galeria",
     "files": "Files",
-    "sessionLostBody": "Tu session es perdite. Per favor reporta iste error a le developpatores a {url}. Le message de error es: {error}",
-    "restoreSessionBody": "Le applicato ora tenta restore tu session a partir del backup. Per favor reporta iste error a le developpatores a {url}. Le message de error es: {error}",
     "sendReadReceipts": "Manda recipis de lectura",
     "sendTypingNotificationsDescription": "Altri participantes in un chat pote vider quando tu es typpando un nove message.",
     "sendReadReceiptsDescription": "Altri participantes in un chat pote vider quando tu ha lege un message.",
     "formattedMessages": "Message formattate",
     "formattedMessagesDescription": "Monstra contento de message ric de texto in bold usando markdown.",
-    "verifyOtherUser": "🔐 Verificar altere usator",
-    "verifyOtherUserDescription": "Si tu verifica un altere usator, tu pote esser certe que tu sape a qui tu realmente escribe. 💪\n\nQuando tu comencia un verification, tu e le altere usator vide un popup in le app. Illo te monstrara un serie de emojis o numeros que tu ha de comparar con illes.\n\nLe melior maniera de facer isto es incontrar o comenciar un video call. 👩‍💻",
     "verifyOtherDevice": "🔐 Verificar altere dispositivo",
     "verifyOtherDeviceDescription": "Quando tu verifica un altere dispositivo, illes dispositivos pote intercambiar claves, augmentante tu securitate global. 💪 Quando tu comencia un verification, un popup apparera in le application in tamben dispositivos. Illo te monstra un serie de emojis o numeros que tu debe comparar inter se. Es melior haber ambes dispositivos a mano ante que tu comencia le verification. 🤳",
     "acceptedKeyVerification": "{sender} acceptava le verification de clave",
@@ -649,10 +581,6 @@
     "updateInstalled": "🎉 Actualisation {version} installate!",
     "changelog": "Historico de cambios",
     "sendCanceled": "Le invio ha essite cancellate",
-    "loginWithMatrixId": "Login con Matrix-ID",
-    "discoverHomeservers": "Discoverer servitores principal",
-    "whatIsAHomeserver": "Que es un servitor principal?",
-    "homeserverDescription": "Tote tu datos es stoccate in le servitor principal, similar a un proveedor de email. Tu pote seliger qual servitor principal tu vole usar, e tu pote ancora communicar con omnes. Discerca de plus a https://matrix.org.",
     "doesNotSeemToBeAValidHomeserver": "Non pare esser un servitor principal compatible. URL incorrecte?",
     "calculatingFileSize": "Calculante le grandezza del file...",
     "prepareSendingAttachment": "Prepara inviar attachment...",
@@ -664,11 +592,9 @@
     "oneOfYourDevicesIsNotVerified": "Un de tu dispositivos non es verificat",
     "noticeChatBackupDeviceVerification": "Nota: Quando tu conecta tote tu dispositivos al backup de chat, illes es automaticemente verificat.",
     "continueText": "Continer",
-    "welcomeText": "Hodie! 😊 Iste es FluffyChat. Tu pote signar in a qualunque servitor de casas, que es compatible con https://matrix.org. E postea chatta con omne. Es un grande rete de message decentralisate!",
     "blur": "Blurring:",
     "opacity": "Opacitate:",
     "setWallpaper": "Stabilir fondo de pantalla",
-    "manageAccount": "Gerir conto",
     "noContactInformationProvided": "Le servitor non provide information de contacto valide",
     "contactServerAdmin": "Contactar le administrator del servitor",
     "contactServerSecurity": "Contactar le securitate del servitor",
@@ -687,11 +613,8 @@
     "unableToJoinChat": "Non pote assumer in le chat. Forse le alter parte ha ja clausurate le conversation.",
     "previous": "Anterior",
     "otherPartyNotLoggedIn": "Le alter parte actualmente non es connectate e quindi non pote ricever messages!",
-    "appWantsToUseForLogin": "Usar '{server}' pro login",
-    "appWantsToUseForLoginDescription": "Tu permitte hic le app e sito web de compartir informationes super te.",
     "open": "Aperir",
     "waitingForServer": "Expectante pro le servitor...",
-    "appIntroduction": "FluffyChat te permitte de chat with tu amicos trans differente messager. Discoperi plus a https://matrix.org o simplemente tappa *Continua*.",
     "newChatRequest": "📩 Requesta de nove chat",
     "contentNotificationSettings": "Configuration de notification de contento",
     "generalNotificationSettings": "Configuration general de notification",
@@ -768,11 +691,9 @@
     "taTooltip": "L2 usance con adjuta de traduction",
     "interactiveTranslatorSliderHeader": "Traductor Interactive",
     "interactiveGrammarSliderHeader": "Verificador de Grammatica Interactive",
-    "interactiveTranslatorRequired": "Requisito",
     "waTooltip": "L2 usance sin adjuta",
     "interactiveTranslator": "Assistente de translation",
     "noIdenticalLanguages": "Per favor, selige linguas de base e de destino differente",
-    "searchBy": "Cerca per pais e linguas",
     "joinWithClassCode": "Joinar le curso",
     "languageLevelPreA1": "Novice Low (Pre A1)",
     "languageLevelA1": "Novice Mid (A1)",
@@ -793,19 +714,14 @@
     "saveChanges": "Salva le modificationes",
     "publicProfileTitle": "Permitte que mi profilo sia trovate in le recerca",
     "publicProfileDesc": "Per activar, tu permitte a altere usatores de trovar tu profilo in le barra de recerca global e de inviar requestas de chat. A iste puncto, tu pote seliger acceptar o negar le requesta.",
-    "errorDisableIT": "Le assistentia de traduction es disactivate.",
-    "errorDisableIGC": "Le assistentia de grammatica es disactivate.",
     "errorDisableITUserDesc": "Clicca hic pro actualizar le configuration de assistentia de traduction",
     "errorDisableIGCUserDesc": "Clicca hic pro actualizar le configuration de assistentia de grammatica",
     "errorDisableITClassDesc": "Le assistance de traduction es disactivate pro le curso in le qual iste chat es.",
     "errorDisableIGCClassDesc": "Le assistance de grammatica es disactivate pro le curso in le qual iste chat es.",
-    "error405Title": "Linguas non definite",
     "error405Desc": "Per favor, definite tuas linguas in le Menu Principal > Configuration de Aprendimento.",
     "termsAndConditions": "Terminos e Condiciones",
     "andCertifyIAmAtLeast13YearsOfAge": " e certifica que io ha al minus 16 annos de etate.",
-    "error502504Title": "Wow, il ha multe students online!",
     "error502504Desc": "Le instrumentos de translation e grammatica pote esser lente o non disponibile durante que le bots Pangea se actualisa.",
-    "error404Title": "Error de translation!",
     "error404Desc": "Le Bot Pangea non es secur de como traducer isto...",
     "errorPleaseRefresh": "Nos es in le processus de investigar! Per favor, re-intra e tenta ancora.",
     "connectedToStaging": " Conectate a le Staging",
@@ -843,13 +759,9 @@
     "definitionsToolName": "Definitiones de Parolas",
     "definitionsToolDescription": "Quando activate, le parolas sublineate in azul pote esser cliccabile pro definitiones. Clicca super messages pro accedere a le definitiones.",
     "welcomeBack": "Ben retornate! Si tu ha essite parte del pilot 2023-2024, per favor contacta nos pro tu subscription special de pilot. Si tu es un professor qui ha (o que su institution ha) comprate licentias pro tu classe, contacta nos pro tu subscription de professor.",
-    "downloadTxtFile": "Downloadar file de texto",
-    "downloadCSVFile": "Downloadar file CSV",
     "promotionalSubscriptionDesc": "Tu ha actualmente un subscription promotional de vita. Mesage supporto@pangea.chat pro adjutar te a cambiar tu subscription.",
     "originalSubscriptionPlatform": "Subscription comprate per medio de {purchasePlatform}",
     "oneWeekTrial": "Período de proba de un septimana",
-    "downloadXLSXFile": "Downloadar file Excel",
-    "unkDisplayName": "Inconnu",
     "wwCountryDisplayName": "Mundo Wide",
     "afCountryDisplayName": "Afghanistan",
     "axCountryDisplayName": "Insulas Aland",
@@ -1132,7 +1044,6 @@
     "trialPeriodExpired": "Vostre periodo de prova ha expirati",
     "translations": "traduceres",
     "definitions": "definitiones",
-    "subscribedToUnlockTools": "Subcribe pro unlockar traduction interactive e verification de grammatica, reproduction audio, actividades personalisate de practica, e analytics de apprendimento!",
     "translationTooltip": "Traducer",
     "kickBotWarning": "Expeller le Pangea Bot remove le bot de conversation de iste chat.",
     "refresh": "Recarregar",
@@ -1145,24 +1056,19 @@
     "chatCapacityHasBeenChanged": "Le capacitate de chat ha essite cambiate",
     "chatCapacitySetTooLow": "Le capacitate de chat debe esser al minus {count}.",
     "chatCapacityExplanation": "Le capacitate de chat limita le numero de membros permitite in un chat.",
-    "tooManyRequest": "Troppo request, per favor prova de novo plus tarde.",
     "enterNumber": "Per favor, entra un valor de numero entier.",
     "practice": "Practica",
-    "speechToTextBody": "Pro messages de voce, tu pote vider un transcripto e etiam le punctuacion de Parolas Per Minuto del speaker.",
     "versionNotFound": "Version non trovate",
     "fetchingVersion": "Recuperante version...",
     "versionFetchError": "Error durante le recuperation de version",
     "versionText": "Version: {version}+{buildNumber}",
-    "l1TranslationBody": "Le messages in tu lingua de base non essera traducite.",
     "deleteSubscriptionWarningTitle": "Tu ha un subscription active",
     "deleteSubscriptionWarningBody": "Le delition de tu conto non cancelara automaticamente tu subscription.",
     "manageSubscription": "Manage le subscription",
-    "error520Title": "Per favor, prova ancora.",
     "error520Desc": "Disculpa, nos non poteva comprender tu message...",
     "wordsUsed": "Parolas usate",
     "level": "Nivel",
     "morphsUsed": "Morphe usate",
-    "translationChoicesBody": "Clique e tene un option pro un suggestion.",
     "grammar": "Grammatica",
     "contactHasBeenInvitedToTheChat": "Le contact ha essite invitate al chat",
     "inviteChat": "📨 Invitar al chat",
@@ -1173,280 +1079,9 @@
     "l2SupportFull": "Complete",
     "playAudio": "Sonar",
     "stop": "Interromper",
-    "grammarCopyPOSsconj": "Conjuncion subordinative",
-    "grammarCopyPOSnum": "Numeru",
-    "grammarCopyPOSverb": "Verbe",
-    "grammarCopyPOSaffix": "Afixo",
-    "grammarCopyPOSpart": "Particula",
-    "grammarCopyPOSadj": "Adjective",
-    "grammarCopyPOScconj": "Conjuncion coordinating",
-    "grammarCopyPOSpunct": "Punctuacion",
-    "grammarCopyPOSadv": "Adverbio",
-    "grammarCopyPOSaux": "Auxiliare",
-    "grammarCopyPOSspace": "Spatio",
-    "grammarCopyPOSsym": "Symbolo",
-    "grammarCopyPOSdet": "Determinator",
-    "grammarCopyPOSpron": "Pronome",
-    "grammarCopyPOSadp": "Adposition",
-    "grammarCopyPOSpropn": "Nomen propre",
-    "grammarCopyPOSnoun": "Nomen",
-    "grammarCopyPOSintj": "Interjection",
-    "grammarCopyPOSx": "Altere",
-    "grammarCopyGENDERfem": "Feminine",
-    "grammarCopyPERSON2": "Secunde Persona",
-    "grammarCopyMOODimp": "Imperative",
-    "grammarCopyPUNCTTYPEqest": "Question",
-    "grammarCopyASPECTperf": "Perfecte",
-    "grammarCopyCASEaccnom": "Accusative, Nominative",
-    "grammarCopyCASEobl": "Oblique",
-    "grammarCopyVOICEact": "Active",
-    "grammarCopyPUNCTTYPEbrck": "Parenthese",
-    "grammarCopyNOUNTYPEart": "Articulo",
-    "grammarCopyNUMBERsing": "Singular",
-    "grammarCopyGENDERmasc": "Masculine",
-    "grammarCopyVERBTYPEmod": "Modale",
-    "grammarCopyADVTYPEadverbial": "Adverbial",
-    "grammarCopyTENSEperi": "Perifrastic",
-    "grammarCopyNUMFORMdigit": "Cifra",
-    "grammarCopyNOUNTYPEnot_proper": "Non proprie",
-    "grammarCopyNUMTYPEcard": "Cardinal",
-    "grammarCopyNOUNTYPEprop": "Proprie",
-    "grammarCopyPUNCTTYPEdash": "Linea",
-    "grammarCopyPUNCTTYPEyes": "Sí",
-    "grammarCopyPUNCTTYPEsemi": "Puncto e-vincla",
-    "grammarCopyPUNCTTYPEcomm": "Virgula",
-    "grammarCopyMOODcnd": "Condicional",
-    "grammarCopyCASEacc": "Accusativo",
-    "grammarCopyPARTTYPEpart": "Partitivo",
-    "grammarCopyTENSEpast": "Passate",
-    "grammarCopyDEGREEsup": "Superlative",
-    "grammarCopyPUNCTTYPEcolo": "Dos-colon",
-    "grammarCopyPERSON3": "Tertie Persona",
-    "grammarCopyNUMBERplur": "Plural",
-    "grammarCopyPRONTYPEnpr": "Nomen proprie",
-    "grammarCopyPRONTYPEinterrogative": "Interrogative",
-    "grammarCopyPOLITEinfm": "Informal",
-    "grammarCopyADVTYPEtim": "Timpore",
-    "grammarCopyPOLARITYneg": "Negativ",
-    "grammarCopyNUMTYPEtot": "Total",
-    "grammarCopyADVTYPEadnomial": "Adnominal",
-    "grammarCopyASPECTprog": "Progressive",
-    "grammarCopyMOODsub": "Subjunctive",
-    "grammarCopyVERBFORMcomplementive": "Complementive",
-    "grammarCopyCASEnom": "Nominative",
-    "grammarCopyTENSEfut": "Futuro",
-    "grammarCopyCASEdat": "Dative",
-    "grammarCopyTENSEpres": "Presente",
-    "grammarCopyGENDERneut": "Neuter",
-    "grammarCopyPRONTYPErel": "Relativ",
-    "grammarCopyVERBFORMfinalEnding": "Finale Termination",
-    "grammarCopyPRONTYPEdem": "Demonstrative",
-    "grammarCopyPREPCASEpre": "Prepositional",
-    "grammarCopyVERBFORMfin": "Finite",
-    "grammarCopyDEGREEpos": "Positive",
-    "grammarCopyPUNCTTYPEquot": "Quotation",
-    "grammarCopyVERBFORMger": "Gerundio",
-    "grammarCopyVOICEpass": "Passiv",
-    "grammarCopyCASEgen": "Genitive",
-    "grammarCopyTENSEprs": "Presente",
-    "grammarCopyDEFINITEdef": "Definite",
-    "grammarCopyNUMTYPEord": "Ordinal",
-    "grammarCopyCASEins": "Instrumental",
-    "grammarCopyVERBFORMinf": "Infinitive",
-    "grammarCopyVERBFORMaux": "Auxiliary",
-    "grammarCopyNUMFORMlong": "Long",
-    "grammarCopyCASEloc": "Locative",
-    "grammarCopyMOODind": "Indicative",
-    "grammarCopyDEGREEcmp": "Comparative",
-    "grammarCopyCASErelativeCase": "Relative",
-    "grammarCopyPUNCTTYPEexcl": "Exclamative",
-    "grammarCopyPERSON1": "Prime Persona",
-    "grammarCopyPUNCTSIDEini": "Initiale",
-    "grammarCopyGENDERperson": "Persona",
-    "grammarCopyFOREIGNyes": "Estraniere",
-    "grammarCopyVOICEvoice": "Voz",
-    "grammarCopyVERBTYPEverbType": "Verbe",
-    "grammarCopyPOSSpass": "Possessive",
-    "grammarCopyPREPCASEprepCase": "Prepositional",
-    "grammarCopyNUMTYPEnumType": "Numerale",
-    "grammarCopyNOUNTYPEnounType": "Substantive",
-    "grammarCopyREFLEXreflex": "Reflexive",
-    "grammarCopyPRONTYPEpronType": "Pronomine",
-    "grammarCopyPUNCTSIDEpunctSide": "Lato de punctuation",
-    "grammarCopyVERBFORMverbForm": "Verbe",
-    "grammarCopyGENDERgender": "Genere",
-    "grammarCopyMOODmood": "Modo",
-    "grammarCopyASPECTaspect": "Aspecto",
-    "grammarCopyPUNCTTYPEpunctType": "Punctuacion",
-    "grammarCopyTENSEtense": "Tense",
-    "grammarCopyDEGREEdegree": "Gradiente",
-    "grammarCopyPOLITEpolite": "Politenesse",
-    "grammarCopyADVTYPEadvType": "Adverbio",
-    "grammarCopyNUMFORMnumber": "Numeral",
-    "grammarCopyCONJTYPEconjType": "Conjunction",
-    "grammarCopyPOLARITYpolarity": "Polaritate",
-    "grammarCopyCASEcase": "Casu",
-    "grammarCopyDEFINITEdefinite": "Definititate",
-    "grammarCopyNUMFORMnumForm": "Numerale",
-    "grammarCopyPRONTYPEadn": "Adnominal",
-    "grammarCopyVOCvoc": "Vocative",
-    "grammarCopyCMPLcmpl": "Complementator",
-    "grammarCopyADVadv": "Adverbial",
-    "grammarCopyMOODjus": "Jussive",
-    "grammarCopyGENDERcom": "Comun",
-    "grammarCopyREFLEXrflx": "Reflexive",
-    "grammarCopyPARTTYPEpar": "Partitive",
-    "grammarCopySPCspc": "Specifique",
-    "grammarCopyTENSEpqp": "Plusquamperfecto",
-    "grammarCopyREFLEXref": "Reflexive",
-    "grammarCopyPUNCTTYPEnshrt": "Breve",
-    "grammarCopyNUMBERdual": "Dual",
-    "grammarCopyNUMFORMlng": "Longo",
-    "grammarCopyVOICEmid": "Medi",
-    "grammarCopyINTRELintRel": "Interrogative, Relative",
-    "grammarCopyINTint": "Interrogative",
-    "grammarCopyVOICEcaus": "Causative",
-    "grammarCopyUnknown": "Nescite",
-    "grammarCopyEVIDENTevident": "Evidentialitate",
-    "grammarCopyNUMFORMnumberPsor": "Numeros del possessore",
-    "grammarCopyASPECThab": "Habitual",
-    "grammarCopyCASEabl": "Ablative",
-    "grammarCopyCASEall": "Allative",
-    "grammarCopyCASEess": "Essive",
-    "grammarCopyCASEtra": "Translative",
-    "grammarCopyCASEequ": "Equative",
-    "grammarCopyCASEdis": "Distributive",
-    "grammarCopyCASEabs": "Absolutive",
-    "grammarCopyCASEerg": "Ergative",
-    "grammarCopyCASEcau": "Causal",
-    "grammarCopyCASEben": "Benefactive",
-    "grammarCopyCASEtem": "Temporal",
-    "grammarCopyCONJTYPEcoord": "Coordination",
-    "grammarCopyDEFINITEcons": "Stato de construction",
-    "grammarCopyDEGREEabs": "Gradito absolute",
-    "grammarCopyEVIDENTfh": "Evidentia factual",
-    "grammarCopyEVIDENTnfh": "Evidentia non-factual",
-    "grammarCopyMOODopt": "Optative",
-    "grammarCopyMOODadm": "Admirative",
-    "grammarCopyMOODdes": "Desiderative",
-    "grammarCopyMOODnec": "Necessitative",
-    "grammarCopyMOODpot": "Potential",
-    "grammarCopyMOODprp": "Propositive",
-    "grammarCopyMOODqot": "Quotative",
-    "grammarCopyNUMFORMword": "Forma de parola",
-    "grammarCopyNUMFORMroman": "Numeral Roman",
-    "grammarCopyNUMFORMletter": "Forma de littera",
-    "grammarCopyNUMTYPEmult": "Multiplicative",
-    "grammarCopyNUMTYPEfrac": "Fractional",
-    "grammarCopyNUMTYPEsets": "Set",
-    "grammarCopyNUMTYPErange": "Intervallo",
-    "grammarCopyNUMTYPEdist": "Distributive",
-    "grammarCopyNUMBERtri": "Prova",
-    "grammarCopyNUMBERpauc": "Paucal",
-    "grammarCopyNUMBERgrpa": "Plus grande paucal",
-    "grammarCopyNUMBERgrpl": "Plus grande plural",
-    "grammarCopyNUMBERinv": "Inverse",
-    "grammarCopyPERSON0": "Zero",
-    "grammarCopyPERSON4": "Quarto",
-    "grammarCopyPOLITEform": "Formal",
-    "grammarCopyPOLITEelev": "Elevate",
-    "grammarCopyPOLITEhumb": "Humile",
-    "grammarCopyPRONTYPEemp": "Emphatic",
-    "grammarCopyPRONTYPEexc": "Exclamative",
-    "grammarCopyPRONTYPErcp": "Reciprocal",
-    "grammarCopyPRONTYPEintRelPronType": "Interrogative-Relative",
-    "grammarCopyTENSEaor": "Aorist",
-    "grammarCopyTENSEeps": "Epistemic",
-    "grammarCopyTENSEprosp": "Prospective",
-    "grammarCopyVERBFORMpart": "Participle",
-    "grammarCopyVERBFORMconv": "Converb",
-    "grammarCopyVERBFORMvnoun": "Verbal Noun",
-    "grammarCopyVOICEantip": "Antipassive",
-    "grammarCopyVOICEcauVoice": "Causative",
-    "grammarCopyVOICedir": "Direct",
-    "grammarCopyVOICEinvVoice": "Inverse",
-    "grammarCopyVOICErcpVoice": "Reciprocal",
-    "grammarCopyPOS": "Part of Speech",
-    "grammarCopyGENDER": "Gender",
-    "grammarCopyPERSON": "Person",
-    "grammarCopyMOOD": "Mood",
-    "grammarCopyPUNCTTYPE": "Punctuation Type",
-    "grammarCopyASPECT": "Aspecto",
-    "grammarCopyCASE": "Casso",
-    "grammarCopyVOICE": "Voz",
-    "grammarCopyNOUNTYPE": "Tipo de Substantivo",
-    "grammarCopyVERBTYPE": "Tipo de Verbo",
-    "grammarCopyADVTYPE": "Tipo de Adverbio",
-    "grammarCopyNUMFORM": "Forma Numeral",
-    "grammarCopyNUMTYPE": "Tipo de Numeral",
-    "grammarCopyNUMBER": "Numeral",
-    "grammarCopyDEFINITE": "Definitivitate",
-    "grammarCopyDEGREE": "Grado",
-    "grammarCopyEVIDENT": "Evidentialitate",
-    "grammarCopyFOREIGN": "Estranier",
-    "grammarCopyPOLARITY": "Polaritate",
-    "grammarCopyPOLITE": "Politesse",
-    "grammarCopyPREPCASE": "Casso Prepositional",
-    "grammarCopyPRONTYPE": "Tipo de Pronome",
-    "grammarCopyPUNCTSIDE": "Lato de Punctuamento",
-    "grammarCopyREFLEX": "Reflexive",
-    "grammarCopyTENSE": "Tempore",
-    "grammarCopyVERBFORM": "Forma de Verbo",
-    "grammarCopyCONJTYPE": "Tipo de Conjunction",
-    "grammarCopySPC": "Specificitate",
-    "grammarCopyPARTTYPE": "Tipo Partitiv",
-    "grammarCopyINTREL": "Interrogative-Relativ",
-    "grammarCopyUNKNOWN": "Ignorate",
-    "grammarCopyNUMBERPSOR": "Numeros del Possessor",
-    "grammarCopyPOSS": "Possessive",
-    "grammarCopyASPECTimp": "Aspecto Imperfective",
-    "grammarCopyCASEvoc": "Vocative",
-    "grammarCopyCASEcom": "Comitative",
-    "grammarCopyCASEpar": "Partitive",
-    "grammarCopyCASEadv": "Adverbial",
-    "grammarCopyCASEref": "Referential",
-    "grammarCopyCASErel": "Relativ",
-    "grammarCopyCASEsub": "Subessive",
-    "grammarCopyCASEsup": "Superessive",
-    "grammarCopyCASEaccdat": "Accusative-Dative",
-    "grammarCopyCASEpre": "Prepositional",
-    "grammarCopyCONJTYPEsub": "Subordinante",
-    "grammarCopyCONJTYPEcmp": "Comparative",
-    "grammarCopyDEFINITEind": "Indefinite",
-    "grammarCopyMOODint": "Modo Interrogative",
-    "grammarCopyNOUNTYPEcomm": "Noun Commun",
-    "grammarCopyNUMBERPSORsing": "Singular del Possessor",
-    "grammarCopyNUMBERPSORplur": "Plural del Possessor",
-    "grammarCopyNUMBERPSORdual": "Dual del Possessor",
-    "grammarCopyPOLARITYpos": "Polaritate Positive",
-    "grammarCopyPOSSyes": "Possessive",
-    "grammarCopyPREPCASEnpr": "Non-prepositional",
-    "grammarCopyPRONTYPEprs": "Personal",
-    "grammarCopyPRONTYPEint": "Interrogative",
-    "grammarCopyPRONTYPEtot": "Total",
-    "grammarCopyPRONTYPEneg": "Negativ",
-    "grammarCopyPRONTYPEart": "Articulo",
-    "grammarCopyPRONTYPEind": "Indefinite",
-    "grammarCopyPRONTYPEintrel": "Interrogative-Relativ",
-    "grammarCopyPUNCTSIDEfin": "Punctuacion Final",
-    "grammarCopyPUNCTTYPEperi": "Periode",
-    "grammarCopyREFLEXyes": "Reflexive",
-    "grammarCopyTENSEimp": "Imperfecto",
-    "grammarCopyVERBFORMsup": "Supine",
-    "grammarCopyVERBFORMadn": "Adnominal",
-    "grammarCopyVERBFORMlng": "Longo",
-    "grammarCopyVERBFORMshrt": "Breve",
-    "grammarCopyVERBTYPEcaus": "Verbo causative",
-    "grammarCopyVOICEcau": "Causative",
-    "grammarCopyVOICEdir": "Directe",
-    "grammarCopyVOICEinv": "Inverse",
-    "grammarCopyVOICErcp": "Reciprocal",
     "other": "Altere",
     "levelShort": "NIV {level}",
-    "clickBestOption": "Selige le melior optiones pro traducer tu message!",
-    "completeActivitiesToUnlock": "Complete al minus un activitate pro desbloquar le translation!",
     "noCapacityLimit": "Nulle limite de capacitate",
-    "downloadGroupText": "Download le texto del gruppo",
     "notificationsOn": "Notificationes activate",
     "notificationsOff": "Notificationes disactivate",
     "joinWithCode": "Aderir con codice",
@@ -1463,27 +1098,9 @@
     "constructUseIgnIGCDesc": "Ignorate in correction grammatical",
     "constructUseCorIGCDesc": "Correcte in correction grammatical",
     "constructUseIncIGCDesc": "Incorrecte in correction grammatical",
-    "constructUseCorPADesc": "Correcte in activitate de significato de parola",
-    "constructUseIgnPADesc": "Ignorate in activitate de significato de parola",
-    "constructUseIncPADesc": "Incorrecte in activitate de significato de parola",
-    "constructUseCorWLDesc": "Correcte in activitate de ascolto de parola",
-    "constructUseIncWLDesc": "Incorrecte in activitate de ascolto de parola",
-    "constructUseIngWLDesc": "Ignorate in activitate de ascolto de parola",
-    "constructUseCorHWLDesc": "Correcte in activitate de parola celate",
-    "constructUseIncHWLDesc": "Incorrecte in activitate de parola celate",
-    "constructUseIgnHWLDesc": "Ignorate in activitate de parola celate",
-    "constructUseCorLDesc": "Correcte in activitate de lemma",
-    "constructUseIncLDesc": "Incorrecte in activitate de lemma",
-    "constructUseIgnLDesc": " Ignorate in activitate de lemma",
-    "constructUseCorMDesc": "Correcte in activitate de grammatica",
-    "constructUseIncMDesc": "Incorrecte in activitate de grammatica",
-    "constructUseIgnMDesc": " Ignorate in activitate de grammatica",
-    "constructUseEmojiDesc": "Correcte in activitate de emoji",
     "constructUseCollected": " Collected in chat",
     "constructUseNanDesc": " Non applicabile",
     "xpIntoLevel": "{currentXP} / {maxXP} XP",
-    "enableTTSToolName": "TTS activate",
-    "enableTTSToolDescription": "Permitte al application de generar output de texto-a-vocala pro partes del texto in tu lingua de destino.",
     "yourUsername": "Tu nomine de usator",
     "yourEmail": "Tuo e-mail",
     "iWantToLearn": "Io vole aprender",
@@ -1526,31 +1143,12 @@
     "whatIsTheMorphTag": "Qual es le {morphologicalFeature} de '{wordForm}'?",
     "dataAvailable": "Disponibilitate de datos",
     "available": "Disponibile",
-    "pangeaBotIsFallible": "Pangea Bot face errores tamben!",
-    "whatIsMeaning": "Qual es le significato de '{lemma}'?",
     "chooseLemmaMeaningInstructionsBody": "Corresponda le significatos con le parolas in le message!",
-    "doubleClickToEdit": "Dubla clic pro modificar.",
-    "activityPlannerTitle": "Planificador de activitate",
-    "topicLabel": "Topic",
-    "topicPlaceholder": "Selige un topic...",
-    "modeLabel": "Tipo de activitate",
-    "modePlaceholder": "Selige un modo...",
-    "learningObjectiveLabel": "Objectivo de apprendimento",
-    "learningObjectivePlaceholder": "Selige un objectivo de apprendimento...",
-    "languageOfInstructionsLabel": "Lingua del instructiones de activitate",
-    "targetLanguageLabel": "Lingua de destino",
     "cefrLevelLabel": "Nivello CEFR",
-    "generateActivitiesButton": "Generate activitate",
-    "launchActivityButton": "Iniciar activitate",
     "image": "Imagine",
     "video": "Video",
     "nan": "Nulle applicabile",
-    "activityPlannerOverviewInstructionsBody": "Selige un topic, modo, objectivo de apprendimento e generate un activitate pro le chat!",
-    "activityTitle": "Titolo de Activitate",
-    "addVocabulary": "Adder vocabulario",
     "instructions": "Instrucciones",
-    "numberOfLearners": "Numero de discentes",
-    "mustBeInteger": "Debe esser un numero integer, ex. 1, 2, 3, ...",
     "constructUsePvmDesc": "Producte in message de voce",
     "leaveSpaceDescription": "Per abandonar le curso, tu abandonar le totalitate del chats in illo. Altri usatores videbit que tu ha abandonate le curso.",
     "constructUseCorMmDesc": "Signification correcte del message",
@@ -1565,7 +1163,6 @@
     "ttsDisabledBody": "Tu pote activar le texto-a-parola in tu configuration de apprendimento",
     "noSpaceDescriptionYet": "Nulle description de curso create ancora.",
     "tooLargeToSend": "Iste message es troppo grande pro inviar",
-    "exitWithoutSaving": "Es tu secur que tu vole partir sin salvar?",
     "enableAutocorrectPopupTitle": "Adder tu clavier de lingua target per ir a:",
     "enableAutocorrectPopupSteps": "  • Configuration\n  • General\n  • Claviatura\n  • Claviaturas\n  • Adder nove clavier",
     "enableAutocorrectPopupDescription": "Post le selection de le lingua, tu pote cliccar le icono de globulo in le basso sinistre de tu clavier pro activar le clavier installate recentemente.",
@@ -1576,11 +1173,8 @@
     "displayName": "Nom de display",
     "leaveRoomDescription": "Tu es circa de partir de iste chat. Altri usatores vide que tu ha partite le chat.",
     "confirmUserId": "Per favor confirma tu nomine de usator in Pangea Chat pro eliminar tu conto.",
-    "startingToday": "A partir de hodie",
-    "oneWeekFreeTrial": "Un septimana de prova gratuite",
     "paidSubscriptionStarts": "A partir de {startDate}",
     "cancelInSubscriptionSettings": "• Cancellar in le configuration de subscription",
-    "cancelToAvoidCharges": "• Cancellar ante {trialEnds} pro evitar charges",
     "downloadGboard": "Downloadar Gboard",
     "autocorrectNotAvailable": "Infelicemente, tu piattaforma actualmente non es supportate pro iste function. Sta attentive pro ulteriore developpamento!",
     "pleaseUpdateApp": "Per favor, actualisa le application pro continuar.",
@@ -1590,19 +1184,12 @@
     "knockSpaceSuccess": "Tu ha requestate de aderir a iste curso! Un administrator responde a tu requesto quando lo recive 😄",
     "chooseWordAudioInstructionsBody": "Audi le message complete. Postea, compatra le audio con le parolas.",
     "chooseMorphsInstructionsBody": "Clicca le piezas de puzzle pro questiones grammatical!",
-    "pleaseEnterInt": "Per favor, entra un numero",
     "home": "Casa",
     "join": "Aderir",
-    "readingAssistanceOverviewBody": "Clicca le button infra pro mini-games de compatimento de emojis, audio, significatos de parolas, e conceptos grammatical. O clicca super un parola pro plus de details.",
     "resetInstructionTooltipsTitle": "Resettar le dicas de instructiones",
     "resetInstructionTooltipsDesc": "Clique pro mostrar dicas de instructiones como pro un usator nove.",
-    "randomize": "Randomisar",
     "clear": "Clara",
-    "makeYourOwnActivity": "Create tu proprie activitate",
-    "featuredActivities": "Featured",
     "save": "Salva",
-    "startChat": "Iniciar un conversation",
-    "translationProblem": "Problema de translation",
     "askToJoin": "Pedir de junger",
     "emptyChatWarningTitle": "Le chat es vacue",
     "emptyChatWarningDesc": "Tu ha invitate nulle uno a tu chat. Vade a configuration de chat pro invitar tu contactos o le Bot. Tu pote etiam facer isto plus tarde.",
@@ -1632,17 +1219,13 @@
     "timesUsedIndependently": "Tiempos usate independentemente",
     "timesUsedWithAssistance": "Tiempos usate con assistance",
     "shareInviteCode": "Partage le codice de invitation: {code}",
-    "leaderboard": "Classifica",
     "skipForNow": "Saltar pro nunc",
     "permissions": "Permissiones",
     "spaceChildPermission": "Qui pote adder nove chats a iste curso",
-    "addEnvironmentOverride": "Adder override de ambiente",
     "defaultOption": "Default",
     "deleteChatDesc": "Es tu secur de vole eliminar iste chat? Il essera eliminat pro tote le participantes e tote le message in le chat non essera plus disponibile pro practica o analytics de apprendimento.",
     "deleteSpaceDesc": "Le curso e omne chats selectate essera eliminat pro tote le participantes e tote le message in le chat non essera plus disponibile pro practica o analytics de apprendimento. Iste action non pote esser annullate.",
     "launch": "Lance",
-    "searchChats": "Cercar chats",
-    "maxFifty": "Maximo 50",
     "configureSpace": "Configurar le curso",
     "pinMessages": "Fixar message",
     "setJoinRules": "Stabilir le regules de admission",
@@ -1655,7 +1238,6 @@
     "announcements": "Anuncios",
     "activities": "Activitates",
     "access": "Acceso",
-    "activitySuggestionTimeoutMessage": "Nos labora duramente pro generate plus de actividades pro te, per favor re-vide in un minuto",
     "howSpaceCanBeFound": "Como iste curso pote esser trovate",
     "private": "Privat",
     "cannotBeFoundInSearch": "Non pote esser trovate in le recerca",
@@ -1677,9 +1259,6 @@
     "failedToFetchTranscription": "Fallite a reciper le transcription",
     "deleteEmptySpaceDesc": "Le curso essera delite pro tote le participantes. Iste action non pote esser annullate.",
     "regenerate": "Regenerar",
-    "mySavedActivities": "Mi activitates salvat",
-    "noSavedActivities": "Nulle activitate salvat",
-    "saveActivity": "Salva iste activitate",
     "failedToPlayVideo": "Fallite a jocar le video",
     "done": "Finite",
     "inThisSpace": "In iste curso",
@@ -1690,18 +1269,10 @@
     "numInvited": "{count} invitate",
     "saved": "Salvate",
     "reset": "Reinitialisar",
-    "errorGenerateActivityMessage": "Fallite a generate le activity",
-    "errorRegenerateActivityMessage": "Fallite a regenerate le activity",
-    "errorLaunchActivityMessage": "Fallite a lanciar le activity",
-    "errorFetchingActivitiesMessage": "Fallite a reciper le activities",
     "errorFetchingDefinition": "Fallite a reciper le definition",
     "errorProcessAnalytics": "Fallite a processar le analytics",
     "errorDownloading": "Fallite durante le descarga",
-    "errorLoadingSpaceChildren": "Fallite a cargar le chats in iste curso",
-    "unexpectedError": "Error unexpected.",
-    "pleaseReload": "Per favor, re-in cargar e tentar de novo.",
     "translationError": "Error de translation",
-    "errorFetchingActivity": "Fallite a reciper le activity",
     "check": "Verificar",
     "unableToFindRoom": "Nulle chat o curso trovate con iste codice. Per favor, tenta de novo.",
     "numCompletedActivities": "Numeru de activities completate",
@@ -1709,23 +1280,14 @@
     "request": "Requesta",
     "requestAll": "Requesta Tote",
     "confirmMessageUnpin": "Es tu secur que tu vole desunpinir iste message?",
-    "createActivityPlan": "Create un nove plan de activitate",
-    "saveAndLaunch": "Salva e lance",
-    "launchToSpace": "Lance a curso",
-    "numberOfActivities": "Numeru de sessiones de activitate",
-    "maximumActivityParticipants": "Cata activitate pote haber un maximum de {count} participant(e).",
     "pending": "Pending",
     "inactive": "Inactiv",
-    "confirmRole": "Confirma le rolo",
     "openRoleLabel": "APERTE",
-    "joinedTheActivity": "👋 {username} s'aciapava como {role}",
     "finishedTheActivity": "🎯 {username} ha completate iste activitate",
     "activitySummaryError": "Summarios de activitate non disponibile",
     "requestSummaries": "Requerer summarios",
-    "generatingNewActivities": "Tu es le prime usator de iste parie de linguas! Per favor, da nos un minuto, nos es preparante actividades solmente pro te.",
     "requestAccessTitle": "Demanar accès a l'analítica?",
     "requestAccessDesc": "Vole tu requestar accesso a vider le analytics de participantes?\n\nSi le participantes agree, le administratores de iste curso potera vider lor:\n    • total vocabulario\n    • total conceptos de grammatica\n    • total sessiones de activitate complete\n    • le conceptos de grammatica specificate, correctemente e incorrectemente\n\nIlles non potera vider lor:\n    • messages in chats extra le curso\n    • lista de vocabulario",
-    "requestAccess": "Requestar accesso ({count})",
     "analyticsInactiveTitle": "Le requestes a usatores inactive non pote esser inviate",
     "analyticsInactiveDesc": "Usatores inactive que non ha login ab le introduccione de iste caracteristica non vide tu requesta.\n\nLe button Requesta apparira una vice illes returna. Tu pote renvocar le requesta postea cliccando le button Requesta sub lor nomine quando illo es disponibile.",
     "accessRequestedTitle": "Requesta de accesso a analytics",
@@ -1734,7 +1296,6 @@
     "lastUpdated": "Actualisate\n{time}",
     "activityFinishedMessage": "Tote finite!",
     "endForAll": "Terminar pro tote",
-    "newCourse": "Nove curso",
     "numModules": "{num} modulo(s)",
     "coursePlan": "Plan de curso",
     "editCourseLater": "Tu pote modificar le titulo del curso, descriptiones, e imagine del curso postea.",
@@ -1748,8 +1309,6 @@
     "accessDesc": "Tu pote face tu curso aperte al mundo! O, face tu curso private e secure.",
     "createGroupChatDesc": "Dove le sessiones de activitate comencia e termina, le chats de grupo remanera aperte pro communication routine.",
     "deleteDesc": "Solo le administratores pote delere un curso. Iste es un action destructive que remove tote le usatores e delere tote le chats selectate in le curso. Procede con cautela.",
-    "noCourseFound": "Oh, iste curso ha besonio de un plano!\n\nLe planos del curso es un sequencia de themas e actividades de conversation.",
-    "additionalParticipants": "+ {num} alteres",
     "whatNow": "Que face ora?",
     "chooseNextActivity": "Selige tu proxime activitate!",
     "letsGo": "Iscamos",
@@ -1759,19 +1318,16 @@
     "pingParticipants": "Notificar participantes del curso",
     "playWithBot": "Jocar con Pangea Bot",
     "inviteFriends": "Invitar amicos",
-    "waitNotDone": "Spere, io non ha finito!",
+    "waitNotDone": "Aguarda, no he terminado!",
     "waitingForOthersToFinish": "Spere que le alios finisca...",
     "generatingSummary": "Analizando le chat e generate resultatos",
-    "findCourse": "Trova un curso",
     "pingParticipantsNotification": "{user} cerca usatores pro aderir a le session de activitate in {room}",
     "course": "Curso",
     "courses": "Cursus",
     "goToCourse": "Irr a curso: {course}",
     "activityComplete": "Iste activitate ha essite completate. Le summario del activitate debe esser disponibile infra.",
-    "startNewSession": "Iniciar nove session",
     "joinOpenSession": "Joiner session aperte",
     "activityNotFound": "Activitate non trovate",
-    "levelUp": "Level up",
     "myActivities": "Mie actividades",
     "openToJoin": "Aperte a joiner",
     "results": "Resultatos",
@@ -1813,7 +1369,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-04-03 12:22:01.751317",
+    "@@last_modified": "2026-08-05 11:42:12.905219",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -1935,10 +1491,6 @@
         "placeholders": {}
     },
     "@archive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@areGuestsAllowedToJoin": {
         "type": "String",
         "placeholders": {}
     },
@@ -2214,15 +1766,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@yourChatBackupHasBeenSetUp": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@chatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@chatBackupDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -2358,10 +1902,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@contactHasBeenInvitedToTheGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@contentHasBeenReported": {
         "type": "String",
         "placeholders": {}
@@ -2398,14 +1938,6 @@
             }
         }
     },
-    "@countInvited": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@create": {
         "type": "String",
         "placeholders": {}
@@ -2419,10 +1951,6 @@
         }
     },
     "@createGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -2533,18 +2061,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@globalChatId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibility": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@accessAndVisibilityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@calls": {
         "type": "String",
         "placeholders": {}
@@ -2570,10 +2086,6 @@
         "placeholders": {}
     },
     "@enableEncryption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableEncryptionWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -2613,10 +2125,6 @@
             }
         }
     },
-    "@everythingReady": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@extremeOffensive": {
         "type": "String",
         "placeholders": {}
@@ -2649,15 +2157,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@chatDescriptionHasBeenChanged": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupIsPublic": {
         "type": "String",
         "placeholders": {}
     },
@@ -2755,14 +2255,6 @@
     "@inviteContact": {
         "type": "String",
         "placeholders": {}
-    },
-    "@inviteContactToGroup": {
-        "type": "String",
-        "placeholders": {
-            "groupName": {
-                "type": "String"
-            }
-        }
     },
     "@noChatDescriptionYet": {
         "type": "String",
@@ -2880,14 +2372,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loadCountMoreParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@dehydrate": {
         "type": "String",
         "placeholders": {}
@@ -2919,14 +2403,6 @@
     "@login": {
         "type": "String",
         "placeholders": {}
-    },
-    "@logInTo": {
-        "type": "String",
-        "placeholders": {
-            "homeserver": {
-                "type": "String"
-            }
-        }
     },
     "@logout": {
         "type": "String",
@@ -2981,14 +2457,6 @@
         "placeholders": {}
     },
     "@noEmotesFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noEncryptionForPublicRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noGoogleServicesWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -3087,10 +2555,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@addAccount": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@editBundlesForAccount": {
         "type": "String",
         "placeholders": {}
@@ -3104,10 +2568,6 @@
         "placeholders": {}
     },
     "@bundleName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableMultiAccounts": {
         "type": "String",
         "placeholders": {}
     },
@@ -3155,10 +2615,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@passwordRecovery": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@people": {
         "type": "String",
         "placeholders": {}
@@ -3192,10 +2648,6 @@
         "placeholders": {}
     },
     "@pleaseEnter4Digits": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseEnterRecoveryKey": {
         "type": "String",
         "placeholders": {}
     },
@@ -3298,10 +2750,6 @@
             }
         }
     },
-    "@removeDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@unbanFromChat": {
         "type": "String",
         "placeholders": {}
@@ -3343,14 +2791,6 @@
         "placeholders": {}
     },
     "@security": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@recoveryKey": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@recoveryKeyLost": {
         "type": "String",
         "placeholders": {}
     },
@@ -3454,10 +2894,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@setPermissionsLevel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@setStatus": {
         "type": "String",
         "placeholders": {}
@@ -3495,14 +2931,6 @@
         "placeholders": {}
     },
     "@sourceCode": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceIsPublic": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spaceName": {
         "type": "String",
         "placeholders": {}
     },
@@ -3558,10 +2986,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@transferFromAnotherDevice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@tryToSendAgain": {
         "type": "String",
         "placeholders": {}
@@ -3608,14 +3032,6 @@
     "@unpin": {
         "type": "String",
         "placeholders": {}
-    },
-    "@unreadChats": {
-        "type": "String",
-        "placeholders": {
-            "unreadCount": {
-                "type": "int"
-            }
-        }
     },
     "@userAndOthersAreTyping": {
         "type": "String",
@@ -3694,14 +3110,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@videoCall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@visibilityOfTheChatHistory": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@visibleForAllParticipants": {
         "type": "String",
         "placeholders": {}
@@ -3738,19 +3146,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@whoCanPerformWhichAction": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whoIsAllowedToJoinThisGroup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@whyDoYouWantToReportThis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@wipeChatBackup": {
         "type": "String",
         "placeholders": {}
     },
@@ -3802,15 +3198,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@removeFromSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@start": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseEnterRecoveryKeyDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -3861,10 +3249,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@voiceCall": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@unsupportedAndroidVersion": {
         "type": "String",
         "placeholders": {}
@@ -3873,15 +3257,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@videoCallsBetaWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@experimentalVideoCalls": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@emailOrUsername": {
         "type": "String",
         "placeholders": {}
     },
@@ -4005,43 +3381,11 @@
             }
         }
     },
-    "@usersMustKnock": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noOneCanJoin": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@knock": {
         "type": "String",
         "placeholders": {}
     },
     "@users": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unlockOldMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInSecureStorageDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveKeyManuallyDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAndroidKeystore": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeInAppleKeyChain": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@storeSecurlyOnThisDevice": {
         "type": "String",
         "placeholders": {}
     },
@@ -4054,18 +3398,6 @@
         }
     },
     "@user": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@foregroundServiceRunning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@screenSharingTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@screenSharingDetail": {
         "type": "String",
         "placeholders": {}
     },
@@ -4082,10 +3414,6 @@
         "placeholders": {}
     },
     "@newSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enterSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -4108,22 +3436,6 @@
                 "type": "String"
             }
         }
-    },
-    "@newSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@encryptThisChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@disableEncryptionWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@sorryThatsNotPossible": {
-        "type": "String",
-        "placeholders": {}
     },
     "@deviceKeys": {
         "type": "String",
@@ -4178,10 +3490,6 @@
         "placeholders": {}
     },
     "@report": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setTheme": {
         "type": "String",
         "placeholders": {}
     },
@@ -4265,31 +3573,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@chatCanBeDiscoveredViaSearchOnServer": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@searchChatsRooms": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@nothingFound": {
         "type": "String",
         "placeholders": {}
     },
     "@groupName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createGroupAndInviteUsers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@groupCanBeFoundViaSearch": {
         "type": "String",
         "placeholders": {}
     },
@@ -4345,23 +3633,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@publicChatAddresses": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@createNewAddress": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@joinSpace": {
         "type": "String",
         "placeholders": {}
     },
     "@publicSpaces": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addChatOrSubSpace": {
         "type": "String",
         "placeholders": {}
     },
@@ -4401,28 +3677,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@sessionLostBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
-    "@restoreSessionBody": {
-        "type": "String",
-        "placeholders": {
-            "url": {
-                "type": "String"
-            },
-            "error": {
-                "type": "String"
-            }
-        }
-    },
     "@sendReadReceipts": {
         "type": "String",
         "placeholders": {}
@@ -4440,14 +3694,6 @@
         "placeholders": {}
     },
     "@formattedMessagesDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUser": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@verifyOtherUserDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -4640,22 +3886,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@loginWithMatrixId": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@discoverHomeservers": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsAHomeserver": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@homeserverDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@doesNotSeemToBeAValidHomeserver": {
         "type": "String",
         "placeholders": {}
@@ -4711,10 +3941,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@welcomeText": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@blur": {
         "type": "String",
         "placeholders": {}
@@ -4724,10 +3950,6 @@
         "placeholders": {}
     },
     "@setWallpaper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@manageAccount": {
         "type": "String",
         "placeholders": {}
     },
@@ -4803,27 +4025,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@appWantsToUseForLogin": {
-        "type": "String",
-        "placeholders": {
-            "server": {
-                "type": "String"
-            }
-        }
-    },
-    "@appWantsToUseForLoginDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@open": {
         "type": "String",
         "placeholders": {}
     },
     "@waitingForServer": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@appIntroduction": {
         "type": "String",
         "placeholders": {}
     },
@@ -5149,10 +4355,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@interactiveTranslatorRequired": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@waTooltip": {
         "type": "String",
         "placeholders": {}
@@ -5162,10 +4364,6 @@
         "placeholders": {}
     },
     "@noIdenticalLanguages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchBy": {
         "type": "String",
         "placeholders": {}
     },
@@ -5253,14 +4451,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorDisableIT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorDisableIGC": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorDisableITUserDesc": {
         "type": "String",
         "placeholders": {}
@@ -5277,10 +4467,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error405Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error405Desc": {
         "type": "String",
         "placeholders": {}
@@ -5293,15 +4479,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@error502504Title": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@error502504Desc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error404Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -5453,14 +4631,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadTxtFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadCSVFile": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@promotionalSubscriptionDesc": {
         "type": "String",
         "placeholders": {}
@@ -5474,14 +4644,6 @@
         }
     },
     "@oneWeekTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadXLSXFile": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unkDisplayName": {
         "type": "String",
         "placeholders": {}
     },
@@ -6652,10 +5814,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@subscribedToUnlockTools": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationTooltip": {
         "type": "String",
         "placeholders": {}
@@ -6708,19 +5866,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@tooManyRequest": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enterNumber": {
         "type": "String",
         "placeholders": {}
     },
     "@practice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@speechToTextBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6747,10 +5897,6 @@
             }
         }
     },
-    "@l1TranslationBody": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@deleteSubscriptionWarningTitle": {
         "type": "String",
         "placeholders": {}
@@ -6760,10 +5906,6 @@
         "placeholders": {}
     },
     "@manageSubscription": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@error520Title": {
         "type": "String",
         "placeholders": {}
     },
@@ -6780,10 +5922,6 @@
         "placeholders": {}
     },
     "@morphsUsed": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationChoicesBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -6827,1078 +5965,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@grammarCopyPOSsconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnum": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSverb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaffix": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScconj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpunct": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSspace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSsym": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSdet": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpron": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSadp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSpropn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSintj": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERfem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON2": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEqest": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTperf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEobl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEact": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEbrck": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERmasc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEmod": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadverbial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMdigit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnot_proper": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEcard": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEprop": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEdash": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEsemi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODcnd": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEacc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpast": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEcolo": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON3": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEinterrogative": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEinfm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEtim": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadnomial": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTprog": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMcomplementive": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEnom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEfut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpres": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERneut": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfinalEnding": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEdem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEquot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMger": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEgen": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdef": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEins": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMinf": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMaux": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlong": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEloc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErelativeCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEexcl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON1": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEini": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERperson": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGNyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEvoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEverbType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSpass": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEprepCase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEnumType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEnounType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXreflex": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEpronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEpunctSide": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMverbForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERgender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODmood": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTaspect": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEpunctType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEtense": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEdegree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEpolite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPEadvType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumber": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEconjType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpolarity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcase": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEdefinite": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumForm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOCvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCMPLcmpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODjus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDERcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXrflx": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPCspc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEpqp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEnshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEmid": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTRELintRel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUnknown": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTevident": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMnumberPsor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECThab": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEall": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEess": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtra": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEequ": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEdis": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEerg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEben": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEtem": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcoord": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEcons": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREEabs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENTnfh": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODopt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODadm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODdes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODnec": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODpot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODprp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODqot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMword": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMroman": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORMletter": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEmult": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEfrac": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEsets": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPErange": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPEdist": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERtri": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERpauc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpa": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERgrpl": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON0": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON4": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEform": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEelev": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITEhumb": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEemp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEexc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintRelPronType": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEaor": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEeps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEprosp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMpart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMconv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMvnoun": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEantip": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcauVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICedir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinvVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcpVoice": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyGENDER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPERSON": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOOD": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyADVTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBER": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEGREE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyEVIDENT": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyFOREIGN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITY": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLITE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEX": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORM": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopySPC": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPARTTYPE": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyINTREL": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyUNKNOWN": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSOR": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSS": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyASPECTimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEvoc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEcom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEadv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEref": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASErel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEaccdat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCASEpre": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEsub": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyCONJTYPEcmp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyDEFINITEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyMOODint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNOUNTYPEcomm": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORsing": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORplur": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyNUMBERPSORdual": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOLARITYpos": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSSyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPREPCASEnpr": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEprs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEtot": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEneg": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEart": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEind": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPRONTYPEintrel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTSIDEfin": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPUNCTTYPEperi": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyREFLEXyes": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyTENSEimp": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMsup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMadn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMlng": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBFORMshrt": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVERBTYPEcaus": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEcau": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEdir": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICEinv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyVOICErcp": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@other": {
         "type": "String",
         "placeholders": {}
@@ -7911,19 +5977,7 @@
             }
         }
     },
-    "@clickBestOption": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@completeActivitiesToUnlock": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noCapacityLimit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGroupText": {
         "type": "String",
         "placeholders": {}
     },
@@ -7991,70 +6045,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@constructUseCorPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncPADesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIngWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnHWLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnLDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseCorMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIncMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseIgnMDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@constructUseEmojiDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@constructUseCollected": {
         "type": "String",
         "placeholders": {}
@@ -8073,14 +6063,6 @@
                 "type": "int"
             }
         }
-    },
-    "@enableTTSToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableTTSToolDescription": {
-        "type": "String",
-        "placeholders": {}
     },
     "@yourUsername": {
         "type": "String",
@@ -8257,71 +6239,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pangeaBotIsFallible": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@whatIsMeaning": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "@chooseLemmaMeaningInstructionsBody": {
         "type": "String",
         "placeholders": {}
     },
-    "@doubleClickToEdit": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityPlannerTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@topicPlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modeLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@modePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectiveLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@learningObjectivePlaceholder": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@languageOfInstructionsLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@targetLanguageLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@cefrLevelLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@generateActivitiesButton": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchActivityButton": {
         "type": "String",
         "placeholders": {}
     },
@@ -8337,27 +6259,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityPlannerOverviewInstructionsBody": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addVocabulary": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@instructions": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfLearners": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@mustBeInteger": {
         "type": "String",
         "placeholders": {}
     },
@@ -8421,10 +6323,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@exitWithoutSaving": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectPopupTitle": {
         "type": "String",
         "placeholders": {}
@@ -8465,14 +6363,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@startingToday": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@oneWeekFreeTrial": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@paidSubscriptionStarts": {
         "type": "String",
         "placeholders": {
@@ -8484,14 +6374,6 @@
     "@cancelInSubscriptionSettings": {
         "type": "String",
         "placeholders": {}
-    },
-    "@cancelToAvoidCharges": {
-        "type": "String",
-        "placeholders": {
-            "trialEnds": {
-                "type": "String"
-            }
-        }
     },
     "@downloadGboard": {
         "type": "String",
@@ -8529,19 +6411,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@pleaseEnterInt": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@home": {
         "type": "String",
         "placeholders": {}
     },
     "@join": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@readingAssistanceOverviewBody": {
         "type": "String",
         "placeholders": {}
     },
@@ -8553,31 +6427,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "@randomize": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@clear": {
         "type": "String",
         "placeholders": {}
     },
-    "@makeYourOwnActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@featuredActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@save": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startChat": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@translationProblem": {
         "type": "String",
         "placeholders": {}
     },
@@ -8701,10 +6555,6 @@
             }
         }
     },
-    "@leaderboard": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@skipForNow": {
         "type": "String",
         "placeholders": {}
@@ -8714,10 +6564,6 @@
         "placeholders": {}
     },
     "@spaceChildPermission": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@addEnvironmentOverride": {
         "type": "String",
         "placeholders": {}
     },
@@ -8734,14 +6580,6 @@
         "placeholders": {}
     },
     "@launch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@searchChats": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maxFifty": {
         "type": "String",
         "placeholders": {}
     },
@@ -8790,10 +6628,6 @@
         "placeholders": {}
     },
     "@access": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitySuggestionTimeoutMessage": {
         "type": "String",
         "placeholders": {}
     },
@@ -8885,18 +6719,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@mySavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@noSavedActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@failedToPlayVideo": {
         "type": "String",
         "placeholders": {}
@@ -8945,22 +6767,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorGenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorRegenerateActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorLaunchActivityMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivitiesMessage": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@errorFetchingDefinition": {
         "type": "String",
         "placeholders": {}
@@ -8973,23 +6779,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@errorLoadingSpaceChildren": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@unexpectedError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@pleaseReload": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@translationError": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@errorFetchingActivity": {
         "type": "String",
         "placeholders": {}
     },
@@ -9028,30 +6818,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@createActivityPlan": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@saveAndLaunch": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@launchToSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@numberOfActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@maximumActivityParticipants": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
-    },
     "@pending": {
         "type": "String",
         "placeholders": {}
@@ -9060,24 +6826,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@confirmRole": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@openRoleLabel": {
         "type": "String",
         "placeholders": {}
-    },
-    "@joinedTheActivity": {
-        "type": "String",
-        "placeholders": {
-            "username": {
-                "type": "String"
-            },
-            "role": {
-                "type": "String"
-            }
-        }
     },
     "@finishedTheActivity": {
         "type": "String",
@@ -9095,10 +6846,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@generatingNewActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@requestAccessTitle": {
         "type": "String",
         "placeholders": {}
@@ -9106,14 +6853,6 @@
     "@requestAccessDesc": {
         "type": "String",
         "placeholders": {}
-    },
-    "@requestAccess": {
-        "type": "String",
-        "placeholders": {
-            "count": {
-                "type": "int"
-            }
-        }
     },
     "@analyticsInactiveTitle": {
         "type": "String",
@@ -9155,10 +6894,6 @@
         "placeholders": {}
     },
     "@endForAll": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@newCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9218,18 +6953,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@noCourseFound": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@additionalParticipants": {
-        "type": "int",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
     "@whatNow": {
         "type": "String",
         "placeholders": {}
@@ -9282,10 +7005,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@findCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@pingParticipantsNotification": {
         "type": "String",
         "placeholders": {
@@ -9312,10 +7031,6 @@
         }
     },
     "@activityComplete": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@startNewSession": {
         "type": "String",
         "placeholders": {}
     },
@@ -9496,7 +7211,6 @@
         "placeholders": {}
     },
     "feedbackRespDesc": "Revisita demanano pro actualizaciones de activity.",
-    "activityDropdownDesc": "Quando tu ha finite con iste activity, clicca infra",
     "languageMismatchTitle": "Discrepantie de lingua",
     "languageMismatchDesc": "Le lingua de destino tu non coincide con le lingua de iste activity. Actualisa tu lingua de destino?",
     "reportWordIssueTooltip": "Reportar un problema de information de parola",
@@ -9509,10 +7223,6 @@
     "selectAll": "Selige tote",
     "deselectAll": "Deselecte tote",
     "@feedbackRespDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activityDropdownDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9561,17 +7271,11 @@
         "placeholders": {}
     },
     "startOwn": "Comencia mi proprie",
-    "joinCourseDesc": "Cata curso ha 8-10 temas sequente con un gamma de actividades de apprendimento de lingua basate in task.",
     "newMessageInPangeaChat": "🗨️ Novy message in Pangea Chat",
     "shareCourse": "Partagear curso",
     "addCourse": "Adder un curso",
-    "joinPublicCourse": "Joiner curso publice",
     "vocabLevelsDesc": "Isto es le loco ubi le vocabularies va in post una vice que tu ha levelate los!",
     "@startOwn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -9584,10 +7288,6 @@
         "placeholders": {}
     },
     "@addCourse": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinPublicCourse": {
         "type": "String",
         "placeholders": {}
     },
@@ -9606,12 +7306,9 @@
     "emojiView": "Visualizzazione emoji",
     "feedbackDialogDesc": "Anch'io faccio errori! Qualcosa per aiutarmi a migliorare?",
     "contactHasBeenInvitedToTheCourse": "Kontak telah diundang ke kursus",
-    "activityStatsButtonTooltip": "Info aktivitas",
     "allow": "Izinkan",
     "deny": "Tolak",
     "enabledRenewal": "Aktifkan Pembaruan Langganan",
-    "subscriptionEndsOn": "Langganan Berakhir Pada",
-    "subscriptionRenewsOn": "Langganan Diperbarui Pada",
     "waitForSubscriptionChanges": "Perubahan pada langganan Anda mungkin memerlukan waktu sejenak untuk tercermin di aplikasi.",
     "subscribeReadingAssistance": "Langganan untuk membuka kunci alat pesan",
     "aceDisplayName": "Achinese",
@@ -9877,10 +7574,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@activityStatsButtonTooltip": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@allow": {
         "type": "String",
         "placeholders": {}
@@ -9890,14 +7583,6 @@
         "placeholders": {}
     },
     "@enabledRenewal": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionEndsOn": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@subscriptionRenewsOn": {
         "type": "String",
         "placeholders": {}
     },
@@ -10816,14 +8501,8 @@
         "placeholders": {}
     },
     "introChatTitle": "Crea Chat de Introducciones",
-    "introChatDesc": "Cualquiera en el espacio puede publicar.",
     "announcementsChatTitle": "Chat de Anuncios",
-    "announcementsChatDesc": "Solo el administrador del espacio puede publicar.",
     "@introChatTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@introChatDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -10831,14 +8510,9 @@
         "type": "String",
         "placeholders": {}
     },
-    "@announcementsChatDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "notStartedActivitiesTitle": "Sesiones abiertas ({num})",
     "pickDifferentActivity": "Elige una actividad diferente",
     "inProgressActivitiesTitle": "Sucedendo agora ({num})",
-    "completedActivitiesTitle": "Feito ({num})",
     "inOngoingActivity": "Você tem uma atividade em andamento!",
     "@notStartedActivitiesTitle": {
         "type": "String",
@@ -10849,14 +8523,6 @@
         }
     },
     "@inProgressActivitiesTitle": {
-        "type": "String",
-        "placeholders": {
-            "num": {
-                "type": "int"
-            }
-        }
-    },
-    "@completedActivitiesTitle": {
         "type": "String",
         "placeholders": {
             "num": {
@@ -10922,15 +8588,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "emojiSelectedSnackbar": "Ați setat emoji-ul pentru {lemma}! Vom folosi acest emoji pentru a reprezenta cuvântul în activitățile practice de acum înainte.",
-    "@emojiSelectedSnackbar": {
-        "type": "String",
-        "placeholders": {
-            "lemma": {
-                "type": "String"
-            }
-        }
-    },
     "ssoDialogTitle": "Atingindo para a conclusão do login",
     "ssoDialogDesc": "Abrimos uma nova aba para que você possa fazer login com segurança.",
     "ssoDialogHelpText": "🤔 Se você não viu a nova aba, verifique seu bloqueador de pop-ups.",
@@ -10961,16 +8618,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "activitiesToUnlockTopicTitle": "Actividades para Desbloquear el Siguiente Tema",
-    "activitiesToUnlockTopicDesc": "Establecer el número de actividades para desbloquear el siguiente tema del curso",
-    "@activitiesToUnlockTopicTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@activitiesToUnlockTopicDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
     "constructUseCorLMDesc": "Praktiko de ĝusta vortaro difino",
     "constructUseIncLMDesc": "Praktiko de malĝusta vortaro difino",
     "constructUseCorLADesc": "Praktiko de ĝusta vortaro aŭdio",
@@ -10978,7 +8625,6 @@
     "constructUseBonus": "Bonus dum vortaro praktiko",
     "practiceVocab": "Praktiki vortaron",
     "selectMeaning": "Elekti la signifon",
-    "selectAudio": "Elekti la kongruan aŭdion",
     "anotherRound": "Alia rundo",
     "activitySettingsOverrideWarning": "Idioma y nivel de idioma determinados por el plan de actividad",
     "voice": "Voz",
@@ -11010,10 +8656,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@selectAudio": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@anotherRound": {
         "type": "String",
         "placeholders": {}
@@ -11031,25 +8673,15 @@
         "type": "String",
         "placeholders": {}
     },
-    "downloadInitiated": "Download inisiati",
     "webDownloadPermissionMessage": "Se o teu navegador bloqueia descargas, por favor habilita descargas para este site.",
-    "@downloadInitiated": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@webDownloadPermissionMessage": {
         "type": "String",
         "placeholders": {}
     },
-    "exitPractice": "Progresul sesiunii tale de practică nu va fi salvat.",
     "practiceGrammar": "Exersează gramatică",
     "notEnoughToPractice": "Trimite mai multe mesaje pentru a debloca practica",
     "constructUseCorGCDesc": "Practică categoria de gramatică corectă",
     "constructUseIncGCDesc": "Practică categoria de gramatică incorectă",
-    "@exitPractice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@practiceGrammar": {
         "type": "String",
         "placeholders": {}
@@ -11091,11 +8723,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "voiceDropdownTitle": "Voix du bot Pangea",
-    "@voiceDropdownTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "knockDesc": "Tua peticio est missa ad administratorem cursuum! Te admittent si illi approbant.",
     "@knockDesc": {
         "type": "String",
@@ -11108,16 +8735,6 @@
         "placeholders": {}
     },
     "@publicInviteDescSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "enableNotificationsTitle": "Pangea Chat est un application de messagerie donc les notifications sont importantes !",
-    "enableNotificationsDesc": "Autoriser les notifications",
-    "@enableNotificationsTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@enableNotificationsDesc": {
         "type": "String",
         "placeholders": {}
     },
@@ -11146,11 +8763,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "courseLoadingError": "N'ayen a fau, e n'ayen a t'awen a t'awen a t'awen. T'awen a t'awen a t'awen.",
-    "@courseLoadingError": {
-        "type": "String",
-        "placeholders": {}
-    },
     "autoIGCToolName": "Abilita l'assistenza alla scrittura",
     "autoIGCToolDescription": "Esegui automaticamente gli strumenti di Pangea Chat per correggere i messaggi inviati nella lingua target.",
     "@autoIGCToolName": {
@@ -11168,21 +8780,6 @@
     },
     "aboutMeHint": "Despre mine",
     "@aboutMeHint": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "grammarCopyPOSidiom": "Idiom",
-    "grammarCopyPOSphrasalv": "Verbo Phrasal",
-    "grammarCopyPOScompn": "Compuesto",
-    "@grammarCopyPOSidiom": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOSphrasalv": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@grammarCopyPOScompn": {
         "type": "String",
         "placeholders": {}
     },
@@ -11221,24 +8818,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "spanTypeGrammar": "Gramatika",
-    "spanTypeWordChoice": "Escolha de Palavras",
     "spanTypeSpelling": "Ortografia",
     "spanTypePunctuation": "Pontuação",
     "spanTypeStyle": "Estilo",
     "spanTypeFluency": "Fluência",
     "spanTypeAccents": "Acentos",
     "spanTypeCapitalization": "Capitalização",
-    "spanTypeCorrection": "Correção",
     "spanFeedbackTitle": "Relatar problema de correção",
-    "@spanTypeGrammar": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@spanTypeWordChoice": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanTypeSpelling": {
         "type": "String",
         "placeholders": {}
@@ -11263,10 +8849,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@spanTypeCorrection": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@spanFeedbackTitle": {
         "type": "String",
         "placeholders": {}
@@ -11279,13 +8861,7 @@
     "longPressToRecordVoiceMessage": "Mantén presionado para grabar un mensaje de voz.",
     "pause": "Pausa",
     "resume": "Reanudar",
-    "newSubSpace": "Nuevo subespacio",
-    "moveToDifferentSpace": "Mover a un espacio diferente",
-    "removeFromSpaceDescription": "La chat sarà rimossa dallo spazio ma apparirà ancora nella tua lista chat.",
     "countChats": "{chats} chat",
-    "spaceMemberOf": "Membro dello spazio di {spaces}",
-    "spaceMemberOfCanKnock": "Membro dello spazio di {spaces} può bussare",
-    "donate": "Dona",
     "startedAPoll": "{username} ha avviato un sondaggio.",
     "poll": "Sondaggio",
     "startPoll": "Avvia sondaggio",
@@ -11309,23 +8885,15 @@
     "newStickerPack": "Nouveau pack d'autocollants",
     "stickerPackName": "Nom du pack d'autocollants",
     "attribution": "Attribution",
-    "skipChatBackup": "Salta la copia de seguridad del chat",
-    "skipChatBackupWarning": "¿Estás seguro? Sin habilitar la copia de seguridad del chat, puedes perder el acceso a tus mensajes si cambias de dispositivo.",
-    "loadingMessages": "Cargando mensajes",
-    "setupChatBackup": "Configurar la copia de seguridad del chat",
     "noMoreResultsFound": "No se encontraron más resultados",
     "chatSearchedUntil": "Chat buscado hasta {time}",
     "federationBaseUrl": "URL base de la federación",
     "clientWellKnownInformation": "Información del cliente bien conocida:",
     "baseUrl": "URL base",
     "identityServer": "Identitātes serveris:",
-    "versionWithNumber": "Versija: {version}",
     "logs": "Žurnāli",
-    "advancedConfigs": "Papildu konfigurācijas",
     "advancedConfigurations": "Papildu konfigurācijas",
-    "signInWithLabel": "Piesakieties ar:",
     "selectAllWords": "Izvēlieties visus vārdus, kurus dzirdat audio",
-    "joinCourseForActivities": "Pievienojieties kursam, lai izmēģinātu aktivitātes.",
     "@changedTheChatDescription": {
         "type": "String",
         "placeholders": {
@@ -11362,18 +8930,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@newSubSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@moveToDifferentSpace": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@removeFromSpaceDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@countChats": {
         "type": "String",
         "placeholders": {
@@ -11381,26 +8937,6 @@
                 "type": "int"
             }
         }
-    },
-    "@spaceMemberOf": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@spaceMemberOfCanKnock": {
-        "type": "String",
-        "placeholders": {
-            "spaces": {
-                "type": "String"
-            }
-        }
-    },
-    "@donate": {
-        "type": "String",
-        "placeholders": {}
     },
     "@startedAPoll": {
         "type": "String",
@@ -11506,22 +9042,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@skipChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@skipChatBackupWarning": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@loadingMessages": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@setupChatBackup": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@noMoreResultsFound": {
         "type": "String",
         "placeholders": {}
@@ -11550,19 +9070,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@versionWithNumber": {
-        "type": "String",
-        "placeholders": {
-            "version": {
-                "type": "String"
-            }
-        }
-    },
     "@logs": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@advancedConfigs": {
         "type": "String",
         "placeholders": {}
     },
@@ -11570,15 +9078,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@signInWithLabel": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@selectAllWords": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinCourseForActivities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11602,12 +9102,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "unlockPracticeActivities": "Desbloquea actividades de práctica",
     "hideEvents": "Ocultar eventos",
-    "@unlockPracticeActivities": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@hideEvents": {
         "type": "String",
         "placeholders": {}
@@ -11705,21 +9200,11 @@
         "placeholders": {}
     },
     "getStarted": "Bula",
-    "writeAndSpeakWorryFree": "Scri și vorbește fără griji cu Pangea Bot oricând, oriunde!",
-    "joinLearningCommunities": "Alătură-te comunităților internaționale de învățare sau... începe-ți propria!",
     "playConversationGames": "Joacă jocuri de conversație cu botul, colegii de clasă și noi prieteni!",
     "jumpIntoConversation": "Intră în conversație din prima zi cu instrumentele de scriere AI!",
     "playPersonalizedGames": "Joacă jocuri de practică personalizate pentru vocabularul și nevoile tale gramaticale!",
     "learnLanguageWhileTexting": "Învață o limbă în timp ce trimiți mesaje prietenilor tăi!",
     "@getStarted": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@writeAndSpeakWorryFree": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@joinLearningCommunities": {
         "type": "String",
         "placeholders": {}
     },
@@ -11739,23 +9224,13 @@
         "type": "String",
         "placeholders": {}
     },
-    "emptyInviteSearchHint": "Non vides qui tu quaeris? Illi fortasse debent suum profile in Parametris Discendi ad publicum constituere",
     "suggestedVocab": "Vocabularium suaditum",
-    "@emptyInviteSearchHint": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@suggestedVocab": {
         "type": "String",
         "placeholders": {}
     },
     "myGender": "Mi gendro",
     "@myGender": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "noAnalyticsActivitiesAvailable": "Wow, tu a completat toti activitatile disponibile! Trimite mai multe mesaje pentru a debloca mai multe activitati de practica.",
-    "@noAnalyticsActivitiesAvailable": {
         "type": "String",
         "placeholders": {}
     },
@@ -11770,8 +9245,6 @@
     "notificationDeviceSubtitle": "Visualizza e gestisci i dispositivi che ti inviano notifiche push.",
     "notificationRuleDM": "Messaggio Diretto",
     "notificationRuleDMDescription": "Notifica all'utente riguardo ai messaggi nelle stanze di messaggi diretti.",
-    "notificationRuleCourseAndActivity": "Corso e Attività",
-    "notificationRuleCourseAndActivityDescription": "Notifica all'utente riguardo ai messaggi nei corsi, nelle attività e nelle chat.",
     "@clickOnEmailLinkDesc": {
         "type": "String",
         "placeholders": {}
@@ -11796,31 +9269,8 @@
         "type": "String",
         "placeholders": {}
     },
-    "@notificationRuleCourseAndActivity": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@notificationRuleCourseAndActivityDescription": {
-        "type": "String",
-        "placeholders": {}
-    },
     "enableEmailNotifications": "Aktivuj e-poštne obvestila",
     "@enableEmailNotifications": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "joinSpaceOnboardingDesc": "In un klas? Meti vian enir kodon ĉi tie.",
-    "@joinSpaceOnboardingDesc": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "selectAudioMessagesOnPlayToolName": "Auto-sélectionner les messages audio",
-    "selectAudioMessagesOnPlayDescription": "Mettre automatiquement en surbrillance les messages audio lorsqu'ils sont lus",
-    "@selectAudioMessagesOnPlayToolName": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@selectAudioMessagesOnPlayDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -11829,7 +9279,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "searchLanguagesHint": "Mi estu lernante...",
     "alreadySpeak": "Mi jam parolas...",
     "@searchLanguagesHint": {
         "type": "String",
@@ -11857,18 +9306,6 @@
     "@clickToAddEmail": {
         "type": "String",
         "placeholders": {}
-    },
-    "minActivitiesPerTopicWarning": "Iste cursu ha tópicos con menos de {input} actividades. Por favor, ingresa un número menor o igual a {minValue}.",
-    "@minActivitiesPerTopicWarning": {
-        "type": "integer",
-        "placeholders": {
-            "input": {
-                "type": "int"
-            },
-            "minValue": {
-                "type": "int"
-            }
-        }
     },
     "clickToLogin": "Clic aquí para volver a iniciar sesión.",
     "@clickToLogin": {
@@ -12070,6 +9507,116 @@
         "type": "String",
         "placeholders": {}
     },
+    "subscribedToUnlockTools": "Abonează-te pentru a debloca traducerea interactivă și verificarea gramaticii, redarea audio, exerciții de practică personalizate și analize de învățare!",
+    "unlockPracticeActivities": "Deblochează exercițiile de practică",
+    "noAnalyticsActivitiesAvailable": "Wow, ai completat toate activitățile disponibile! Trimite mai multe mesaje pentru a debloca mai multe exerciții de practică.",
+    "@subscribedToUnlockTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlockPracticeActivities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noAnalyticsActivitiesAvailable": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "constructUseCorPADesc": "Korrekt in wörda betyding übung",
+    "constructUseIgnPADesc": "Ignoriert in wörda betyding übung",
+    "constructUseIncPADesc": "Inkorrekt in wörda betyding übung",
+    "constructUseCorWLDesc": "Korrekt in wörda hören übung",
+    "constructUseIncWLDesc": "Inkorrekt in wörda hören übung",
+    "constructUseIngWLDesc": "Ignoriert in wörda hören übung",
+    "constructUseCorHWLDesc": "Korrekt in verborgene wörda übung",
+    "constructUseIncHWLDesc": "Inkorrekt in verborgene wörda übung",
+    "constructUseIgnHWLDesc": "Ignoriert in verborgene wörda übung",
+    "constructUseCorLDesc": "Korrekt in lemma übung",
+    "constructUseIncLDesc": "Inkorrekt en lemma eksersice",
+    "constructUseIgnLDesc": "Ignoriert en lemma eksersice",
+    "constructUseCorMDesc": "Korrekt en grammar eksersice",
+    "constructUseIncMDesc": "Inkorrekt en grammar eksersice",
+    "constructUseIgnMDesc": "Ignoriert en grammar eksersice",
+    "constructUseEmojiDesc": "Korrekt en emoji eksersice",
+    "errorFetchingExercise": "Fehlgeschlagen en fetch praktik eksersice",
+    "notificationRuleCourseAndActivity": "Kursus en Aktivität",
+    "notificationRuleCourseAndActivityDescription": "Notifiziert den Benutzer über Nachrichten in Kursen, Aktivitäten und Chats.",
+    "@constructUseCorPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncPADesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIngWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnHWLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnLDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseCorMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIncMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseIgnMDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@constructUseEmojiDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@errorFetchingExercise": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@notificationRuleCourseAndActivityDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "clickToUpdateTargetLanguage": "Clicca qui per aggiornare la tua lingua di destinazione.",
     "@clickToUpdateTargetLanguage": {
         "type": "String",
@@ -12079,5 +9626,1032 @@
     "@closeEmojiMenu": {
         "type": "String",
         "placeholders": {}
-    }
+    },
+    "visibilityToggleTitle": "Permet a l'autri de cercar per ton cors",
+    "@visibilityToggleTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "enableNotificationsTitle": "Nekas neperduokite pokalbio!",
+    "enableNotificationsDesc": "Leiskite pranešimus Pangea pokalbiui ir likite susijungę su savo kalbos draugais!",
+    "enableNotifications": "Leiskite pranešimus",
+    "@enableNotificationsTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotificationsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enableNotifications": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cannotIgnoreYourself": "Tu ne peux pas te bloquer",
+    "@cannotIgnoreYourself": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "blockUsernameHint": "Blokir nama pengguna",
+    "@blockUsernameHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialClickMessage": "Clicca sulla bolla del messaggio per selezionarlo",
+    "writingAssistanceTutorialIGCButton": "Dopo aver scritto il tuo messaggio, clicca questo pulsante per iniziare l'assistenza alla scrittura",
+    "selectModeTutorialTranslate": "Clicca qui per tradurre il messaggio",
+    "selectModeTutorialAudio": "Clicca qui per ascoltare il messaggio",
+    "selectModeTutorialExit": "Clicca sullo sfondo per tornare a chattare",
+    "@readingAssistanceTutorialClickMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@writingAssistanceTutorialIGCButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialTranslate": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialAudio": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectModeTutorialExit": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainSoon": "La asistente de escritura está tardando un poco más de lo esperado. ¡Intenta de nuevo en un segundo!",
+    "@errorTryAgainSoon": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "errorTryAgainLater": "Oups, quicò quòc è andat mal… Nòstrem a l'òbra! Per piaser, pröva de nòu pù tardi.",
+    "@errorTryAgainLater": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "acceptAll": "Aksepter alle",
+    "@acceptAll": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "removeAdminDescription": "Diminui la nivelo de permesso de ĉi tiu uzanto forigos admin privilegiojn.",
+    "@removeAdminDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiToolbarInstruction": "Ista modo permite a te establecer emojis a palabras! Selecciona una palabra para asociar un emoji con ella!",
+    "@emojiToolbarInstruction": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "analyticsVocabListBodyEmpty": "Les mots de vocabulaire que vous collectez apparaîtront ici. Commencez à discuter et à interagir pour en gagner !",
+    "vocabLevelsDescSeed": "C'est ici que de nouveaux mots de vocabulaire apparaîtront !",
+    "@analyticsVocabListBodyEmpty": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabLevelsDescSeed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "moreOptions": "Plu opciòns",
+    "@moreOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "readingAssistanceTutorialCollectToken": "Selecciona palabras para aprender más sobre ellas",
+    "requireAnalyticsAccessTitle": "Requiere acceso a análisis para unirse",
+    "requireAnalyticsAccessDesc": "Los participantes deben otorgar acceso a sus análisis de aprendizaje para unirse a este curso",
+    "analyticsAccessNoticeTitle": "Acceso a Análisis Requerido",
+    "analyticsAccessNoticeDesc": "Al unirte a este curso, aceptas otorgar a los administradores acceso a tus análisis de aprendizaje.",
+    "@readingAssistanceTutorialCollectToken": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@requireAnalyticsAccessDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAccessNoticeDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "setPermissionsLevelDesc": "Per favore scegli un ruolo predefinito qui sotto o inserisci un livello di permesso personalizzato. Scegli un numero intero tra 0 e 100.",
+    "reportContentIssue": "Segnala problema di contenuto",
+    "@setPermissionsLevelDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reportContentIssue": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "missingLanguageException": "Per favore scegli lingue di base e di destinazione valide",
+    "@missingLanguageException": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "userTypeTitle": "Mi uzas Pangea Chat por",
+    "teach": "Instrui",
+    "courseCodeStepTitle": "Ĉu vi havas kursoinvitan kodon?",
+    "courseCodeStepHint": "Enigu kodon por aliĝi",
+    "courseCodeStepSkip": "Mi ne havas kodon",
+    "joinedCourseStepTitle": "Bonvenon!",
+    "pickLanguageTeacherStepTitle": "Kiun lingvon vi instruas?",
+    "pickCefrLevelTeacherStepTitle": "Kiun nivelon vi instruas?",
+    "pickCefrLevelStudentStepTitle": "Kiun nivelon vi estas?",
+    "customCourseStepTitle": "Plenigu ĉi tiun formularon por ricevi personigitan kurson",
+    "courseCodeStepErrorMessage": "Te rog verifică codul tău și încearcă din nou",
+    "institution": "Instituție",
+    "courseGoals": "Obiectivele cursului",
+    "selectChats": "Selectează conversațiile",
+    "plainTextFile": "Text",
+    "@userTypeTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@teach": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepSkip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickLanguageTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelTeacherStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@pickCefrLevelStudentStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@customCourseStepTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseCodeStepErrorMessage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@institution": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseGoals": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@plainTextFile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "completedActivitiesTitle": "Finito ({num})",
+    "suggestion": "Sèchì l'ùtima Suggerimentu",
+    "completeActivityButton": "Mi es finita!",
+    "@completedActivitiesTitle": {
+        "type": "String",
+        "placeholders": {
+            "num": {
+                "type": "int"
+            }
+        }
+    },
+    "@suggestion": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@completeActivityButton": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "shorterName": "Plese limiti nomi lunghezza a 50 caratteri o meno.",
+    "enterAName": "Plese inseri un nomi.",
+    "@shorterName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@enterAName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "writingAssistanceNoSub": "Asistenta de scriere",
+    "viewError": "Vede erro",
+    "@writingAssistanceNoSub": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewError": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "suggestMobileDesc": "Obtenha o aplicativo Pangea Chat para receber notificações!",
+    "@suggestMobileDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "gotIt": "Got it!",
+    "@gotIt": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "continueWithLang": "Continua con {lang}",
+    "@continueWithLang": {
+        "type": "String",
+        "placeholders": {
+            "lang": {
+                "type": "String"
+            }
+        }
+    },
+    "chatDownloadDesc": "Descarca la istoria completa de mesaje, inclusiv expeditor, data trimisă, mesajul original, mesajul trimis și tipul de utilizare.",
+    "analyticsDownloadDesc": "Descarcă analiza personală a vocabularului și gramaticii pentru limba selectată.",
+    "courseAnalyticsDownloadDesc": "Descarcă utilizarea lemei și gramaticii în limba selectată pentru toți participanții la curs cu analize partajate.",
+    "@chatDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseAnalyticsDownloadDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "cefrLevelMatch": "Acest curs se potrivește cu nivelul tău de limbă",
+    "cefrLevelBelow": "Acest curs este sub nivelul tău de limbă.",
+    "cefrLevelAbove": "Acest curs este peste nivelul tău de limbă.",
+    "@cefrLevelMatch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelBelow": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cefrLevelAbove": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "voiceDropdownTitle": "Voce de mensagem de áudio do Pangea Bot",
+    "@voiceDropdownTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "introChatDetails": "¡Di hola! Preséntate a tus compañeros participantes del curso, encuentra amigos y chatea fuera de las actividades.",
+    "@introChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "emojiSelectedSnackbar": "Isto emoji agora representará \"{word}\" em exercícios práticos",
+    "@emojiSelectedSnackbar": {
+        "type": "String",
+        "placeholders": {
+            "word": {
+                "type": "String"
+            }
+        }
+    },
+    "showDeveloperOptions": "Mostra opzioni sviluppatore",
+    "@showDeveloperOptions": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showDeveloperOptionsDesc": "Aktivuj opsi pengembang untuk menampilkan analitik unduhan dan opsi info terperinci di seluruh aplikasi.",
+    "@showDeveloperOptionsDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "waitingForBotToJoinActivity": "Asteptând ca botul să se alăture...",
+    "@waitingForBotToJoinActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "announcementsChatDetails": "Un luòc per als administradors del curs per crear anuncis per als participants del curs. Mentre que tots poden veure aquest canal, només els administradors poden escriure-hi.",
+    "introChatDesc": "Qualsevol persona del curs pot publicar.",
+    "announcementsChatDesc": "Només els administradors del curs poden publicar.",
+    "@announcementsChatDetails": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@introChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@announcementsChatDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pronunciationTools": "Alat pengucapan",
+    "audioTranscription": "Transkripsi audio AI",
+    "visualLearnerSupport": "Dukungan pembelajar visual",
+    "instantWritingTranslation": "Terjemahan tulisan instan",
+    "personalizedPracticeExercises": "Latihan praktik yang dipersonalisasi",
+    "vocabularyFlashcards": "Kartu flash kosakata",
+    "@pronunciationTools": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@audioTranscription": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@visualLearnerSupport": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@instantWritingTranslation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@personalizedPracticeExercises": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@vocabularyFlashcards": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "back": "Bala",
+    "viewCurrentOrFinished": "Vea actual o terminado",
+    "@back": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@viewCurrentOrFinished": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "resizeCoursePanel": "Redimensionar panel de cursu",
+    "undo": "Desfacer",
+    "unlock": "Desbloquear",
+    "zoomIn": "Ampliar",
+    "zoomOut": "Reducir",
+    "stars": "Estrellas",
+    "addNewCourse": "Añadir nuevu cursu",
+    "world": "Mundu",
+    "addCourseStartMyOwn": "Empezar el mio propiu",
+    "addCourseEnterCode": "Entro kodo por privata kurso",
+    "addCourseBrowsePublic": "Brosu publikajn kursojn",
+    "browsePublicCourses": "Brosu publikajn kursojn",
+    "editProfile": "Redaktu profilon",
+    "mapSearchHint": "Serĉu aktivecojn",
+    "mapFilterAllLanguages": "Ĉiuj lingvoj",
+    "mapFilterNotStarted": "Ne komencita",
+    "mapFilterInProgress": "En progreso",
+    "mapFilterCompleted": "Completo",
+    "mapFilterReset": "Resetar",
+    "activityTypeConversation": "Conversa",
+    "playAgain": "Jogar novamente",
+    "reviewActivity": "Revisar",
+    "welcomeToPangeaChat": "Bem-vindo ao Pangea Chat",
+    "claimTrial": "Reivindique seu teste",
+    "thanksForSigningUp": "Obrigado por se inscrever! Aqui está",
+    "sevenDaysFree": "7 DIAS LIBRES",
+    "manageTrialInSettings": "Gestiona tu prueba en cualquier momento en\nConfiguración de Suscripción",
+    "noCreditCardRequired": "No se requiere tarjeta de crédito.",
+    "proFeatures": "PRO",
+    "widenSearch": "Ampliar búsqueda",
+    "scrollToBottom": "Desplazarse hasta el final",
+    "courseImage": "Imagen del curso",
+    "avatarPreview": "Vista previa del avatar",
+    "emotePreview": "Vista previa de emote: {name}",
+    "activityLabel": "Aktiviteet: {title}",
+    "resetMapView": "Resetti kaardi vaade",
+    "@resizeCoursePanel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@undo": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unlock": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomIn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@zoomOut": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@stars": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addNewCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@world": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseStartMyOwn": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseEnterCode": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@addCourseBrowsePublic": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@browsePublicCourses": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@editProfile": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapSearchHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterAllLanguages": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterNotStarted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterInProgress": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterCompleted": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapFilterReset": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityTypeConversation": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@playAgain": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@reviewActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcomeToPangeaChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@claimTrial": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@thanksForSigningUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@sevenDaysFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@manageTrialInSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@noCreditCardRequired": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@proFeatures": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@widenSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@scrollToBottom": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseImage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@avatarPreview": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@emotePreview": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@activityLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@resetMapView": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "signUpWithEmail": "S'inscrire avec un e-mail",
+    "unreadLabel": "Non lu : {count}",
+    "@signUpWithEmail": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@unreadLabel": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "String"
+            }
+        }
+    },
+    "writeAndSpeakWorryFree": "Scrivi e parla senza preoccupazioni con Pangea Bot in qualsiasi momento e luogo!",
+    "joinLearningCommunities": "Unisciti a comunità di apprendimento internazionali, o inizia la tua!",
+    "@writeAndSpeakWorryFree": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinLearningCommunities": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeChats": "Fermar lista de chats",
+    "closeChat": "Fermar chat",
+    "closeSession": "Fermar revisión de actividad",
+    "closeCourse": "Fermar curso",
+    "closeCoursePage": "Fermar página de curso",
+    "closeAddCourse": "Fermar añadir curso",
+    "closeAnalytics": "Fermar analíticas",
+    "closeVocabulary": "Fermar vocabulario",
+    "closeGrammar": "Fermar gramática",
+    "closePractice": "Fermar práctica",
+    "closeSettings": "Chèchè réglages",
+    "closeActivity": "Chèchè activité",
+    "closeNamed": "Chèchè {name}",
+    "clearSearch": "Vider recherche",
+    "starRowLabel": "{filled} sur {total} étoiles ont été complétées",
+    "difficultyLabel": "Difficulté : {cefr}",
+    "writingAssistanceTutorialInputBar": "Vous pouvez écrire dans n'importe quelle langue ! Nous vous aiderons à corriger les erreurs.",
+    "@closeChats": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeChat": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSession": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAddCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeAnalytics": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeVocabulary": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeGrammar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closePractice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeSettings": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeActivity": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@closeNamed": {
+        "type": "String",
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
+    },
+    "@clearSearch": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starRowLabel": {
+        "type": "String",
+        "placeholders": {
+            "filled": {
+                "type": "int"
+            },
+            "total": {
+                "type": "int"
+            }
+        }
+    },
+    "@difficultyLabel": {
+        "type": "String",
+        "placeholders": {
+            "cefr": {
+                "type": "String"
+            }
+        }
+    },
+    "@writingAssistanceTutorialInputBar": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "pageLabel": "{title} paĝo",
+    "closeHint": "Fermi indikon",
+    "starListLabel": "Konservitaj agadoj kaj steloj",
+    "@pageLabel": {
+        "type": "String",
+        "placeholders": {
+            "title": {
+                "type": "String"
+            }
+        }
+    },
+    "@closeHint": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@starListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "customizePollLabel": "Personaliza la votación",
+    "@customizePollLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "navOptionsLabel": "Opções de navegação",
+    "joinedCourseListLabel": "Lista de cursos inscritos",
+    "analyticsAndSettingsLabel": "Opções de análises e configurações",
+    "searchActivitiesLabel": "Pesquisar atividades no mapa",
+    "filteredActivitiesLabel": "Lista de atividades filtradas",
+    "mapZoomLabel": "Controles de zoom do mapa",
+    "activityMapLabel": "Mapa de atividades",
+    "@navOptionsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@joinedCourseListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@analyticsAndSettingsLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@filteredActivitiesLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@mapZoomLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityMapLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "etDisplayName": "Istońa",
+    "abDisplayName": "Abxazian",
+    "elDisplayName": "Greka",
+    "@etDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@abDisplayName": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@elDisplayName": {},
+    "starsEarnedOfTotal": "{earned} di {total} stelle guadagnate",
+    "activityNoLongerSupported": "Questa attività è stata eseguita su una versione precedente delle attività e non è più supportata. Puoi comunque rivedere cosa è successo in questa sessione.",
+    "activityLoadFailed": "Impossibile caricare l'attività. Controlla la tua connessione e riprova.",
+    "levelUpChip": "Livello {level}!",
+    "missingCourseOutline": "Questo corso non è più disponibile",
+    "missingCourseOutlineCta": "Questo corso non è più disponibile. Scegli un nuovo piano di corso.",
+    "@starsEarnedOfTotal": {
+        "type": "String",
+        "placeholders": {
+            "earned": {},
+            "total": {}
+        }
+    },
+    "@activityNoLongerSupported": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@activityLoadFailed": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@levelUpChip": {
+        "type": "String",
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
+    "@missingCourseOutline": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@missingCourseOutlineCta": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "closeAddCoursePage": "Chècè add course page",
+    "@closeAddCoursePage": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "reportGrammarIssueTooltip": "Raporta informo pri gramatiko",
+    "grammarFeedbackDialogTitle": "Gramatiko Informo Reago",
+    "grammarFeedbackSubmittedDesc": "Dankon! La klarigo estis ĝisdatigita surbaze de via reago.",
+    "focusOnMap": "Fokusiĝi sur la mapo",
+    "welcome": "Bonvenon",
+    "courseRequest": "Kurso peto",
+    "onboarding": "Ensalutado",
+    "selectImageFromDevice": "Elekti bildon de aparato",
+    "dinoAvatarLabel": "Dinozaŭro kun sunokulvitroj",
+    "bearAvatarLabel": "Amika urso",
+    "squidAvatarLabel": "Un squid que lleva auriculares",
+    "cartoonAvatarLabel": "Un personaje de dibujos animados feliz que saluda",
+    "robotAvatarLabel": "Un robot con estrellas por ojos",
+    "featuresIncludeLabel": "Las características incluyen",
+    "difficultyListLabel": "Lista de dificultad",
+    "languageListLabel": "Lista de idiomas",
+    "searchedResultsLabel": "Resultados de búsqueda para '{search}'",
+    "@reportGrammarIssueTooltip": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackDialogTitle": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@grammarFeedbackSubmittedDesc": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@focusOnMap": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@welcome": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@courseRequest": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@onboarding": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@selectImageFromDevice": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@dinoAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@bearAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@squidAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@cartoonAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@robotAvatarLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@featuresIncludeLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@difficultyListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@languageListLabel": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "@searchedResultsLabel": {
+        "type": "String",
+        "placeholders": {
+            "search": {}
+        }
+    },
+    "coursePermissions": "Permissiones de curso",
+    "starsToUnlockObjectiveTitle": "Stellas per Mission",
+    "starsToUnlockObjectiveDesc": "Define le numero de stellas necessari pro completar cata mission",
+    "maxStarsPerMissionWarning": "Iste curso ha missiones ubi solmente {maxValue} stellas pote esser ganiate. Per favor entra un numero minus que o equal a {maxValue}.",
+    "removedFromCourseError": "Tu ha essite removite de iste curso. Contacta tu inseniator.",
+    "endPractice": "Finir le practica",
+    "bodyLabel": "Optiones de {page}",
+    "openDM": "Aperi message directe",
+    "openNewTab": "Aperi in nove scheda",
+    "viewProfileImageLabel": "Vide imagine de profilo",
+    "profileImageLabel": "Imagine de profilo",
+    "actionsLabel": "Actiones",
+    "colorListLabel": "Lista de colores",
+    "chatAppearanceStyleLabel": "Apparentia del chat con stilo seligite",
+    "volumeLabel": "Volumine",
+    "listLabel": "Lista de {description}",
+    "passwordFormLabel": "Formulario de cambio de contrasigno",
+    "searchLanguagesHint": "Cercar linguas",
+    "searchCountriesHint": "Cercar paises",
+    "searchVocabHint": "Cercar vocabulario",
+    "searchUsersHint": "Cercar usatores",
+    "searchMessagesHint": "Cercar messages",
+    "searchChatsHint": "Cercar conversas",
+    "searchActivitiesHint": "Cercar activitates",
+    "appInTargetLanguageTitle": "Monstra le app in le lingua que io apprende",
+    "appInTargetLanguageDesc": "Menus, buttones e etiquettas appare in tu lingua de scopo pro immersion. Texto non traducite retorna al anglese.",
+    "changePasswordSessionExpired": "Tu session ha expirate. Per favor, aperi de nove.",
+    "constructUseSugDesc": "Suggestiones acceptate",
+    "mostPopular": "Le plus popular",
+    "mostSavings": "Le plus grande sparnios",
+    "enterDiscountCode": "Introduce codice de sconto",
+    "yourPlan": "Tu plano",
+    "subscriptionRenewsOn": "Renova le {date}",
+    "subscriptionEndsOn": "Termina le {date}",
+    "promoSubscription": "Subscription Promotional",
+    "seatSubscription": "Sede Institutional",
+    "lifetimeSubscription": "Subscription a vita",
+    "freeSubscription": "GRATUITE",
+    "freeTrialDescription": "Tu ha un prova gratuite",
+    "manage": "Gerer",
+    "subscriptionHistory": "Historico de Subscription",
+    "history": "Historico",
+    "noPaymentHistoryFound": "Nulle historico de pagamento trovate",
+    "cancelAnytime": "Cancella a qualcunque momento in le configurationes de subscription",
+    "pricePerMonth": "{price}/menese",
+    "pricePerYear": "{price}/anno",
+    "viewSubscriptionOptions": "Vider optiones de subscription",
+    "apply": "Applicar",
+    "continueToSubscribe": "Continuar a subscribir",
+    "invalidDiscountCode": "Codice de sconto invalide",
+    "selectDiscountPlan": "Selige plano de sconto",
+    "discountApplied": "{discount} sconto applicate",
+    "cancelDescriptionWithRenewalDate": "Tu subscription essera active usque a su data de renovation ({date}), postea disactivate. Tu retenera le datos analytic ma non potera usar le functionalitates pro.",
+    "cancelDescriptionWithoutRenewalDate": "Tu subscription essera active usque a su data de renovation, postea disactivate. Tu retenera le datos analytic ma non potera usar le functionalitates pro.",
+    "change": "Cambiar",
+    "deactivateSubscribedAccountWarning": "Isto disactivara tu conto de usator e cancellara tu subscription. Isto non pote esser disfacite! Es tu secur?",
+    "newCourseWithoutTitle": "Comenciar curso",
+    "newCourseWithTitle": "Comenciar \"{title}\"",
+    "joinCourseWithTitle": "Unir se a \"{title}\"",
+    "searchCoursePlans": "Cercar planos de curso",
+    "searchPublicCourses": "Cercar cursos public",
+    "closeSearch": "Clauder recerca",
+    "subscriptionsNotAvailableInApp": "Le subscriptiones non pote esser mercate in le app",
+    "subscribeOnTheWeb": "Tu pote subscribere in le web a pangea.chat",
+    "waitingToFillOneRole": "In attesa de plenar 1 rolo...",
+    "closeArchive": "Clauder archivo",
+    "activityActions": "Actiones de activitate",
+    "ongoing": "In curso",
+    "emptyInviteSearchHint": "Non pote tu trovar qui tu cerca? Illes forsan debe permitter que lor profilo sia trovate in recerca. Verifica \"Modificar profilo\" in \"Configurationes\".",
+    "activityPreviewLabel": "Previsualisation del activitate: ",
+    "participantRowLabel": "{joined} de {total} participantes ha adherite",
+    "ongoingPendingLabel": "Attendente que alteres se junge",
+    "joinableLabel": "Adheribile",
+    "inProgressLabel": "Previemente completate",
+    "availableLabel": "Crear activitate",
+    "rateActivityTitle": "Como esse activitate esseva?",
+    "rateActivityCommentHint": "Adde un commento (optional)",
+    "rateActivityCommentRejected": "Vostre commento non poteva esser publicate. Essaya reformular lo, o submitte tu evalutation sin un commento.",
+    "rateActivityThanks": "Gratias pro tu feedback!",
+    "activityRatingMeterLabel": "{percent}% positive ({count, plural, =1{1 evalutation} other{{count} evalutationes}})",
+    "newActivityBadge": "NOVE",
+    "exitVocabPracticeSession": "Le progresso de tu session actual de practica de vocabulario non essera salvate.",
+    "exitGrammarPracticeSession": "Le progresso de tu session actual de practica de grammatica non essera salvate.",
+    "activityFilterButtonsLabel": "Botones de filtro de nivello, jocatores e stato",
+    "mapFilterAllLevels": "Tote le nivellos",
+    "mapFilterAllPlayers": "Tote le jocatores",
+    "mapFilterAllStatuses": "Tote le status",
+    "mapFiltersShow": "Monstrar filtros",
+    "mapFiltersHide": "Celar filtros",
+    "mapStatusAvailable": "Disponibile",
+    "mapStatusOngoing": "In curso",
+    "mapStatusWaiting": "Expectante",
+    "mapStatusOpenToJoin": "Aperte pro unir se",
+    "mapMatchesOffscreen": "Il ha matches foras de tu vista. Face zoom retro pro vider los.",
+    "mapFiltersHideMatches": "Tu filtros cela tote le matches. Allarga le cerca pro vider los.",
+    "mapNoSearchMatches": "Nulle activitate corresponde a tu cerca.",
+    "mapNoActivitiesArea": "Nulle activitate in iste area.",
+    "practiceSessionTimedOut": "Tu session de practica ha terminate post {minutes} minutas sin activitate.",
+    "autocorrectMobileOnly": "Solmente mobile",
+    "autocorrectMobileOnlyWarning": "Le autocorrection del apparato es solmente disponibile in le application mobile.",
+    "audioSectionTitle": "Audio",
+    "audioWordsToolName": "Parolas",
+    "audioWordsDescription": "Reproducer le audio de un parola quando tu lo tocca.",
+    "audioChoicesToolName": "Optiones",
+    "audioChoicesDescription": "Reproducer audio pro le optiones de responsa in activitates de practica.",
+    "audioIncomingMessagesToolName": "Messages entrante",
+    "audioIncomingMessagesDescription": "Leger automaticamente le messages recipite a alte voce in tu lingua de destination pro practica de ascolta.",
+    "choosePangeaAvatar": "Selige un avatar de Pangea",
+    "readAloudNoVoiceTitle": "Nulle voce de alte qualitate pro {language} trovate",
+    "readAloudNoVoiceDesktopWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Chrome e Edge usualmente include voces de alte qualitate.",
+    "readAloudGetChrome": "Obtene Chrome",
+    "readAloudNoVoiceMobileWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Le app Pangea Chat pote usar le melior voces de tu apparato.",
+    "readAloudGetApp": "Obtene le app",
+    "readAloudNoVoiceIOS": "Tu apparato non ha ancora un voce de alte qualitate pro {language} discargate. Discarga un, e postea reproba:",
+    "readAloudNoVoiceIOSSteps": "  • Parametros\n  • Accessibilitate\n  • Contento Parlate\n  • Voces\n  • {language}\n  • Discarga un voce Meliorate o Premium",
+    "readAloudNoVoiceAndroid": "Tu apparato non ha ancora un voce de alte qualitate pro {language}. Installar datos de voce pro tu motor de synthese vocal, e postea reproba.",
+    "readAloudOpenVoiceSettings": "Aperi le parametros de voce",
+    "streamingSttDegradedLiveBanner": "Le transcription in directo functiona con un servicio de reserva. Le qualitate pote variar, per favor verifica le texto.",
+    "streamingSttDegradedToBatchBanner": "Le transcription in directo non es disponibile nunc. Tu message esseva transcribite del maniera standard, sin edition in directo. Nos travalia pro restaurar lo.",
+    "streamingSttLanguageUnsupportedBanner": "Le transcription in directo non es ancora disponibile pro iste lingua. Nos travalia super illo.",
+    "formLabel": "Formulario de {name}",
+    "botDisplayName": "Pangea Bot",
+    "supportDisplayName": "Supporto",
+    "explorePlayAndLearn": "Explora, joca e apprende",
+    "conversationFromDayOne": "Conversation desde le prime die",
+    "builtForConnection": "Construite pro connexion",
+    "aiWhenYouNeedIt": "IA quando tu lo besonia",
+    "practiceTailoredForYou": "Practica adaptate a te"
 }
