@@ -84,6 +84,8 @@ A text representation of a message, stored as `pangea.representation` event:
 - `langCode` — detected language
 - `originalSent` — true if this is the text that was actually sent
 - `originalWritten` — true if this is what the user originally typed
+- `isCorrection` - true if this is a correction of an inaccurate representation event
+- `tokens` - embedded PangeaMessageTokens for this representation, used to keep correction representation events atomic
 
 Interpretation matrix:
 
@@ -107,6 +109,10 @@ Key capabilities:
 - Trigger TTS/STT
 - Get associated practice exercises
 
+PangeaMessageEvent exposes many different accessors for message representations. These include:
+- **originalSent**: the original representation that the user sent, with the embedded choreo record and original tokens
+- **correctedSent**: the corrected version of the originalSent representation, used for display (see [Correcting tokens after the fact](#correcting-tokens-after-the-fact) for more info on representation corrections)
+
 ### PangeaRepresentationEvent (`events/event_wrappers/pangea_representation_event.dart`)
 
 Wraps a `pangea.representation` event. Provides typed access to `PangeaRepresentation` content.
@@ -128,3 +134,15 @@ Wraps a `pangea.record` event. Provides typed access to `ChoreoRecordModel` (edi
 1. **Writing**: Choreographer gets tokens from `/tokenize` on send
 2. **Saving**: `PangeaMessageContentModel` bundles tokens + choreo record + representations → saved as Matrix child events
 3. **Reading**: `PangeaMessageEvent` loads child events → toolbar uses `PangeaToken` list for word cards, practice exercises, analytics
+
+### Correcting tokens after the fact
+
+A token-info-feedback correction (re-tokenization or language re-detection) is persisted as a single child pangea.representation event with the isCorrection flag (crctn) and the corrected tokens embedded in its content (tkns) — one atomic event, no separate child tokens event to race or orphan.
+
+Invariant: a correction is never an m.replace edit. Anyone in the room may author a correction; authorship is not restricted to the message sender.
+
+Read resolution: correctedSent = newest correction with usable tokens, else the embedded originalSent. A correction without usable tokens is ignored (a partial correction can never override a token-rich original); when multiple exist, newest wins. The display path prefers a same-language token-rich correction; a correction in a different language never hijacks a language match.
+
+Invariant: provenance, choreo, and analytics consumers always read originalSent. A correction refines what the message is (language identity, interactive tokens); it never rewrites what the sender actually produced (construct uses, activity summaries, chat export, choreo history).
+
+See [token-info-feedback-v2](token-info-feedback-v2.instructions.md) for more details on token corrections.
