@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
+import 'package:go_router/go_router.dart';
 import 'package:highlight/highlight.dart' show highlight;
 import 'package:html/dom.dart' as dom;
 import 'package:html/parser.dart' as parser;
@@ -28,6 +29,7 @@ import 'package:fluffychat/routes/chat/toolbar/reading_assistance/token_emoji_bu
 import 'package:fluffychat/utils/code_highlight_theme.dart';
 import 'package:fluffychat/utils/event_checkbox_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
+import 'package:fluffychat/widgets/adaptive_dialogs/user_dialog.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
@@ -55,6 +57,12 @@ class HtmlMessage extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final bool isPracticeMode;
+
+  /// Rendered as an example-message chip on a construct's analytics details
+  /// page. Selects that render context's token target-key namespace so the
+  /// chip does not collide with the same event in the open chat timeline —
+  /// see [PangeaToken.analyticsExampleTargetKey].
+  final bool isAnalyticsExample;
   final void Function(PangeaToken)? onClick;
 
   /// Overrides the room-activity vocab lemmas as the gold-highlight set —
@@ -91,6 +99,7 @@ class HtmlMessage extends StatelessWidget {
     this.onClick,
     this.isTransitionAnimation = false,
     this.isPracticeMode = false,
+    this.isAnalyticsExample = false,
     this.vocabLemmas,
     // Pangea#
   });
@@ -504,6 +513,8 @@ class HtmlMessage extends StatelessWidget {
             ? token?.practiceModeTargetKey(event.eventId)
             : overlayController != null
             ? token?.overlayTargetKey(event.eventId)
+            : isAnalyticsExample
+            ? token?.analyticsExampleTargetKey(event.eventId)
             : token?.baseTargetKey(event.eventId);
 
         final layerLinkAndKey = tokenTargetKey != null
@@ -1148,11 +1159,41 @@ class MatrixPill extends StatelessWidget {
     // Pangea#
   });
 
+  Future<void> _onTap() async {
+    final userId = this.userId;
+    if (userId == null) {
+      UrlLauncher(outerContext, uri).launchUrl();
+      return;
+    }
+
+    bool noProfileWarning = false;
+    Profile profile;
+    try {
+      profile = await Matrix.of(
+        outerContext,
+      ).client.getProfileFromUserId(userId);
+    } catch (_) {
+      noProfileWarning = true;
+      profile = Profile(userId: userId, displayName: name, avatarUrl: avatar);
+    }
+    if (!outerContext.mounted) return;
+
+    await UserDialog.show(
+      context: outerContext,
+      profile: profile,
+      noProfileWarning: noProfileWarning,
+      uri: GoRouterState.of(outerContext).uri,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return InkWell(
       splashColor: Colors.transparent,
-      onTap: UrlLauncher(outerContext, uri).launchUrl,
+      // #Pangea
+      // onTap: UrlLauncher(outerContext, uri).launchUrl,
+      onTap: _onTap,
+      // Pangea#
       // #Pangea
       child: RichText(
         textScaler: TextScaler.noScaling,

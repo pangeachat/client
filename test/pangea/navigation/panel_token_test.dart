@@ -7,6 +7,7 @@ import 'package:fluffychat/features/navigation/token_params/analytics_token.dart
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/token_params/settings_token.dart';
 import 'package:fluffychat/features/navigation/token_params/vocab_analytics_token.dart';
+import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 
 void main() {
   List<PanelToken> right(String url) => parseOpenPanels(Uri.parse(url)).right;
@@ -32,6 +33,33 @@ void main() {
       expect(PanelToken.parse('Bad'), isNull); // uppercase
       expect(PanelToken.parse('1abc'), isNull); // leading digit
       expect(PanelToken.parse(':param'), isNull); // empty type
+    });
+
+    test('the blocked-vocab push leaf round-trips (#6803)', () {
+      const token = AnalyticsPanelToken(
+        AnalyticsTokenParam(
+          subpage: ProgressIndicatorEnum.wordsUsed,
+          deleted: true,
+        ),
+      );
+      expect(PanelToken.parse(token.encode()), token);
+
+      // The leaf must survive a refresh or a shared link. ProgressIndicatorEnum
+      // .fromRoute falls back to wordsUsed for anything it doesn't recognize, so
+      // parsing the whole 'vocab/deleted' string would silently drop /deleted
+      // and land on the ordinary vocab list.
+      final parsed = right('/?right=analytics:vocab%2Fdeleted').single;
+      expect(parsed, token);
+      expect(parsed.param?.isPushed, isTrue);
+    });
+
+    test('a bare analytics param is not a push', () {
+      const token = AnalyticsPanelToken(
+        AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+      );
+      expect(token.param?.isPushed, isFalse);
+      expect(token.popped, isNull);
+      expect(right('/?right=analytics:vocab').single, token);
     });
 
     test('encode round-trips a construct whose value has commas and colons', () {

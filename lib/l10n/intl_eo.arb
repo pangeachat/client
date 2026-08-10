@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:11.361785",
+    "@@last_modified": "2026-08-07 16:23:19.151881",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -8538,16 +8538,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ĉi tiu vortaro vorto estos permanente forigita el viaj analizoj",
     "woman": "Virino",
     "man": "Viro",
     "otherGender": "Alia",
     "unselectedGender": "Elektu genran opcion",
     "chatParticipantTooltip": "Ĉi tio estas ĉiuj en ĉi tiu konversacio. Klaku sur la avataro de iu ajn kaj \"komenci konversacion\" por sendi DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10652,5 +10647,20 @@
     "conversationFromDayOne": "Konversacio ekde la unua tago",
     "builtForConnection": "Konstruita por konekto",
     "aiWhenYouNeedIt": "AI kiam vi bezonas ĝin",
-    "practiceTailoredForYou": "Praktiko adaptita al vi"
+    "practiceTailoredForYou": "Praktiko adaptita al vi",
+    "deletedVocab": "Forigitaj vortoj",
+    "blockLemmaConfirmation": "Ĉi tiu vorto estos forigita el via vortprovizo kaj ne plu gajnos XP. Vi povas reporti ĝin el Forigitaj vortoj.",
+    "deletedVocabListBody": "Ĉi tiuj vortoj estas kaŝitaj de via vortprovizo kaj ne gajnas XP. Restarigu unu por reporti ĝin.",
+    "deletedVocabListBodyEmpty": "Vi ne forigis iujn vortojn. Vortoj, kiujn vi forigas el via vortprovizo, aperos ĉi tie, por ke vi povu reporti ilin.",
+    "deletedVocabListLabel": "Forigitaj vortoj",
+    "restore": "Restarigi",
+    "deletedWordLabel": "{lemma}, forigita",
+    "restoredWords": "{count, plural, =1{Restarigita 1 vorto} other{Restarigitaj {count} vortoj}}",
+    "chatSearchPageLabel": "Babileja serĉopaĝo",
+    "selectImageLabel": "Elekti bildon",
+    "userSearchTagsLabel": "Serĉi en...",
+    "courseDetails": "Kursaj detaloj",
+    "objective": "Celo",
+    "pingedLabel": "Pingita",
+    "mapFilterPlayerCount": "{count} ludantoj"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-05 11:42:10.503712",
+    "@@last_modified": "2026-08-07 16:23:17.837206",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Otvorene sesije ({num})",
     "inProgressActivitiesTitle": "Dešava se sada ({num})",
     "pickDifferentActivity": "Odaberi drugu aktivnost",
-    "blockLemmaConfirmation": "Ova riječ iz rječnika će biti trajno uklonjena iz vaše analitike",
     "woman": "Žena",
     "man": "Muškarac",
     "otherGender": "Drugo",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Razgovor od prvog dana",
     "builtForConnection": "Kreirano za povezivanje",
     "aiWhenYouNeedIt": "AI kada vam zatreba",
-    "practiceTailoredForYou": "Praksa prilagođena vama"
+    "practiceTailoredForYou": "Praksa prilagođena vama",
+    "deletedVocab": "Izbrisane riječi",
+    "blockLemmaConfirmation": "Ova riječ će biti uklonjena iz vašeg rječnika i prestat će donositi XP. Možete je vratiti iz Izbrisanih riječi.",
+    "deletedVocabListBody": "Ove riječi su skrivene iz vašeg rječnika i ne donose XP. Vratite ih da ih ponovo aktivirate.",
+    "deletedVocabListBodyEmpty": "Niste izbrisali nijednu riječ. Riječi koje izbrišete iz svog rječnika pojavit će se ovdje kako biste ih mogli vratiti.",
+    "deletedVocabListLabel": "Izbrisane riječi",
+    "restore": "Vrati",
+    "deletedWordLabel": "{lemma}, izbrisano",
+    "restoredWords": "{count, plural, =1{Vraćena 1 riječ} other{Vraćeno {count} riječi}}",
+    "chatSearchPageLabel": "Stranica za pretragu četa",
+    "selectImageLabel": "Odaberite sliku",
+    "userSearchTagsLabel": "Pretraži u...",
+    "courseDetails": "Detalji kursa",
+    "objective": "Cilj",
+    "pingedLabel": "Pingovano",
+    "mapFilterPlayerCount": "{count} igrača"
 }

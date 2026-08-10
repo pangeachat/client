@@ -270,18 +270,22 @@ class IgcController {
 
   /// Re-runs IGC with user feedback about the previous response.
   /// Returns true if feedback was submitted, false if no previous data.
-  Future<bool> rerunWithFeedback(String feedbackText) async {
+  Future<bool> rerunWithFeedback(String text, String feedbackText) async {
+    final lastResponse = _lastResponse;
+    final lastRequest = _lastRequest;
+    final currentText = _currentText;
+
     debugPrint('rerunWithFeedback called with: $feedbackText');
-    debugPrint('_lastRequest: $_lastRequest, _lastResponse: $_lastResponse');
-    if (_lastRequest == null || _lastResponse == null) {
+    debugPrint('_lastRequest: $lastRequest, _lastResponse: $lastResponse');
+    if (lastRequest == null || lastResponse == null) {
       ErrorHandler.logError(
         e: StateError(
           'rerunWithFeedback called without prior request/response',
         ),
         data: {
-          'hasLastRequest': _lastRequest != null,
-          'hasLastResponse': _lastResponse != null,
-          'currentText': _currentText,
+          'hasLastRequest': lastRequest != null,
+          'hasLastResponse': lastResponse != null,
+          'currentText': currentText,
         },
       );
       return false;
@@ -294,7 +298,7 @@ class IgcController {
     // Create feedback containing the original response
     final feedback = LLMFeedbackModel<IGCResponseModel>(
       feedback: feedbackText,
-      content: _lastResponse!,
+      content: lastResponse,
       contentToJson: (r) => r.toJson(),
     );
 
@@ -302,12 +306,12 @@ class IgcController {
     clearMatches();
 
     // Create request with feedback attached
-    final requestWithFeedback = _lastRequest!.copyWithFeedback([feedback]);
+    final requestWithFeedback = lastRequest.copyWithFeedback([feedback], text);
     debugPrint(
       'requestWithFeedback.feedback.length: ${requestWithFeedback.feedback.length}',
     );
     debugPrint('requestWithFeedback.hashCode: ${requestWithFeedback.hashCode}');
-    debugPrint('_lastRequest.hashCode: ${_lastRequest!.hashCode}');
+    debugPrint('_lastRequest.hashCode: ${lastRequest.hashCode}');
     debugPrint('Calling IgcRepo.get...');
     return _fetchIGC(requestWithFeedback);
   }

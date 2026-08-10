@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-05 11:42:11.066655",
+    "@@last_modified": "2026-08-07 16:23:18.732713",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Sessioni aperte ({num})",
     "inProgressActivitiesTitle": "In corsu ({num})",
     "pickDifferentActivity": "Sceglie un'altra attività",
-    "blockLemmaConfirmation": "Sta parolla di vucabulariu serà sguassata da e vostre anàlisi in modu permanente",
     "woman": "Donna",
     "man": "Omu",
     "otherGender": "Altru",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Cunversazione da u primu ghjornu",
     "builtForConnection": "Custruitu per a cunnessione",
     "aiWhenYouNeedIt": "IA quandu ne avete bisognu",
-    "practiceTailoredForYou": "Pratica persunalizata per voi"
+    "practiceTailoredForYou": "Pratica persunalizata per voi",
+    "deletedVocab": "Parolle sguassate",
+    "blockLemmaConfirmation": "Sta parolla serà cacciata da u vostru vucabulariu è ùn guadagnerà più XP. Pudete ripurtalla da e parolle sguassate.",
+    "deletedVocabListBody": "Ste parolle sò piattate da u vostru vucabulariu è ùn guadagnanu micca XP. Risturà una per ripurtalla.",
+    "deletedVocabListBodyEmpty": "Ùn avete micca sguassatu parolle. E parolle chì sguassate da u vostru vucabulariu appareranu quì per chì pudete ripurtalle.",
+    "deletedVocabListLabel": "Parolle sguassate",
+    "restore": "Risturà",
+    "deletedWordLabel": "{lemma}, sguassatu",
+    "restoredWords": "{count, plural, =1{1 parolla risturata} other{{count} parolle risturate}}",
+    "chatSearchPageLabel": "Pagina di ricerca di e chjachjare",
+    "selectImageLabel": "Selezziunà l'imagine",
+    "userSearchTagsLabel": "Circà in...",
+    "courseDetails": "Dettagli di u corsu",
+    "objective": "Obiettivu",
+    "pingedLabel": "Pingatu",
+    "mapFilterPlayerCount": "{count} ghjucadori"
 }

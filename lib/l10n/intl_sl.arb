@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-05 11:42:16.566366",
+    "@@last_modified": "2026-08-07 16:23:25.520273",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8538,16 +8538,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ta beseda v besedi bo trajno odstranjena iz vaših analiz.",
     "woman": "Ženska",
     "man": "Moški",
     "otherGender": "Drugo",
     "unselectedGender": "Izberite možnost spola",
     "chatParticipantTooltip": "To so vsi v tem klepetu. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10652,5 +10647,20 @@
     "conversationFromDayOne": "Pogovor od prvega dne",
     "builtForConnection": "Ustvarjeno za povezovanje",
     "aiWhenYouNeedIt": "AI, ko ga potrebuješ",
-    "practiceTailoredForYou": "Praksa, prilagojena tebi"
+    "practiceTailoredForYou": "Praksa, prilagojena tebi",
+    "deletedVocab": "Izbrisane besede",
+    "blockLemmaConfirmation": "Ta beseda bo odstranjena iz vašega besedišča in ne bo več prinašala XP. Lahko jo vrnete iz Izbrisanih besed.",
+    "deletedVocabListBody": "Te besede so skrite iz vašega besedišča in ne prinašajo XP. Obnovite jih, da jih vrnete.",
+    "deletedVocabListBodyEmpty": "Niste izbrisali nobene besede. Besede, ki jih izbrišete iz svojega besedišča, se bodo prikazale tukaj, da jih lahko vrnete.",
+    "deletedVocabListLabel": "Izbrisane besede",
+    "restore": "Obnovi",
+    "deletedWordLabel": "{lemma}, izbrisano",
+    "restoredWords": "{count, plural, =1{Obnovljena 1 beseda} other{Obnovljenih {count} besed}}",
+    "chatSearchPageLabel": "Stran za iskanje klepetov",
+    "selectImageLabel": "Izberi sliko",
+    "userSearchTagsLabel": "Išči v...",
+    "courseDetails": "Podrobnosti tečaja",
+    "objective": "Cilj",
+    "pingedLabel": "Pingano",
+    "mapFilterPlayerCount": "{count} igralcev"
 }

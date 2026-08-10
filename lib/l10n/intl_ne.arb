@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-05 11:42:15.854629",
+    "@@last_modified": "2026-08-07 16:23:24.024265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "खुला सत्रहरू ({num})",
     "inProgressActivitiesTitle": "अहिले भइरहेको ({num})",
     "pickDifferentActivity": "फरक गतिविधि छान्नुहोस्",
-    "blockLemmaConfirmation": "यो शब्दावली शब्द तपाईंको विश्लेषणबाट स्थायी रूपमा हटाइनेछ",
     "woman": "महिला",
     "man": "पुरुष",
     "otherGender": "अन्य",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "पहिलो दिनदेखि नै कुराकानी",
     "builtForConnection": "जडानका लागि निर्मित",
     "aiWhenYouNeedIt": "तपाईंलाई आवश्यक पर्दा AI",
-    "practiceTailoredForYou": "तपाईंको लागि तयार पारिएको अभ्यास"
+    "practiceTailoredForYou": "तपाईंको लागि तयार पारिएको अभ्यास",
+    "deletedVocab": "मेटाइएका शब्दहरू",
+    "blockLemmaConfirmation": "यो शब्द तपाईंको शब्दावलीबाट हटाइनेछ र XP कमाउन बन्द हुनेछ। तपाईं यसलाई मेटाइएका शब्दहरूबाट फिर्ता ल्याउन सक्नुहुन्छ।",
+    "deletedVocabListBody": "यी शब्दहरू तपाईंको शब्दावलीबाट लुकाइएका छन् र XP कमाउँदैनन्। यसलाई फिर्ता ल्याउन एउटा पुनर्स्थापित गर्नुहोस्।",
+    "deletedVocabListBodyEmpty": "तपाईंले कुनै शब्द मेटाउनुभएको छैन। तपाईंले आफ्नो शब्दावलीबाट मेटाउनुभएका शब्दहरू यहाँ देखा पर्नेछन् ताकि तपाईं तिनीहरूलाई फिर्ता ल्याउन सक्नुहुन्छ।",
+    "deletedVocabListLabel": "मेटाइएका शब्दहरू",
+    "restore": "पुनर्स्थापित गर्नुहोस्",
+    "deletedWordLabel": "{lemma}, मेटाइयो",
+    "restoredWords": "{count, plural, =1{१ शब्द पुनर्स्थापित गरियो} other{{count} शब्दहरू पुनर्स्थापित गरियो}}",
+    "chatSearchPageLabel": "च्याट खोज पृष्ठ",
+    "selectImageLabel": "छवि चयन गर्नुहोस्",
+    "userSearchTagsLabel": "यसमा खोज्नुहोस्...",
+    "courseDetails": "पाठ्यक्रम विवरण",
+    "objective": "उद्देश्य",
+    "pingedLabel": "पिङ गरियो",
+    "mapFilterPlayerCount": "{count} खेलाडीहरू"
 }

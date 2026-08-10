@@ -25,7 +25,7 @@ class ActivitySuggestionCard extends StatelessWidget {
 
   /// The live roster drawn in the Waiting ([ActivityPinState.ongoingPending])
   /// state's participant bar
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
 
   /// The activity's live map-pin state, or null for a plain card. Drives the
@@ -176,9 +176,15 @@ class ActivitySuggestionCard extends StatelessWidget {
                                       size: iconSize ?? 12.0,
                                       color: onState,
                                     ),
-                                    Text(
-                                      "${activity.req.numberOfParticipants}",
-                                      style: labelStyle,
+                                    Semantics(
+                                      label:
+                                          "${L10n.of(context).participants}: ${activity.req.numberOfParticipants}",
+                                      child: ExcludeSemantics(
+                                        child: Text(
+                                          "${activity.req.numberOfParticipants}",
+                                          style: labelStyle,
+                                        ),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -246,7 +252,7 @@ class _WaitingParticipantBar extends StatelessWidget {
   /// The width of the card this bar hangs off, used to size the avatars down.
   final double cardWidth;
 
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
 
   const _WaitingParticipantBar({

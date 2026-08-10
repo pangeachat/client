@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-05 11:42:14.956108",
+    "@@last_modified": "2026-08-07 16:23:23.487534",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Нээлттэй хичээлүүд ({num})",
     "inProgressActivitiesTitle": "Одоо явагдаж байна ({num})",
     "pickDifferentActivity": "Өөр дасгал сонгох",
-    "blockLemmaConfirmation": "Энэ үгийн санг таны аналитикээс бүрмөсөн устгана",
     "woman": "Эмэгтэй",
     "man": "Эрэгтэй",
     "otherGender": "Бусад",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Эхний өдрөөсөө ярилцаарай",
     "builtForConnection": "Холбогдоход зориулагдсан",
     "aiWhenYouNeedIt": "Хэрэгцээтэй үедээ хиймэл оюун ухаан ашиглаарай",
-    "practiceTailoredForYou": "Танд тохирсон дасгал"
+    "practiceTailoredForYou": "Танд тохирсон дасгал",
+    "deletedVocab": "Устгасан үгс",
+    "blockLemmaConfirmation": "Энэ үгийг таны үгийн сангаас хасаж, XP олохоо болино. Та үүнийг Устгасан үгсээс буцааж авчрах боломжтой.",
+    "deletedVocabListBody": "Эдгээр үгсийг таны үгийн сангаас нуусан бөгөөд XP олохгүй. Буцааж авчрахын тулд нэгийг нь сэргээнэ үү.",
+    "deletedVocabListBodyEmpty": "Та ямар ч үг устгаагүй байна. Таны үгийн сангаас устгасан үгс энд харагдах бөгөөд та тэдгээрийг буцааж авчрах боломжтой.",
+    "deletedVocabListLabel": "Устгасан үгс",
+    "restore": "Сэргээх",
+    "deletedWordLabel": "{lemma}, устгасан",
+    "restoredWords": "{count, plural, =1{1 үг сэргээгдсэн} other{{count} үг сэргээгдсэн}}",
+    "chatSearchPageLabel": "Чат хайх хуудас",
+    "selectImageLabel": "Зураг сонгох",
+    "userSearchTagsLabel": "Хайх...",
+    "courseDetails": "Хичээлийн дэлгэрэнгүй",
+    "objective": "Зорилго",
+    "pingedLabel": "Дуудсан",
+    "mapFilterPlayerCount": "{count} тоглогч"
 }

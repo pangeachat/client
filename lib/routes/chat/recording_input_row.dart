@@ -19,19 +19,30 @@ class RecordingInputRow extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     const maxDecibalWidth = 36.0;
+    const buttonBoxSize = 48.0;
     final time =
         '${state.duration.inMinutes.toString().padLeft(2, '0')}:${(state.duration.inSeconds % 60).toString().padLeft(2, '0')}';
     final controlsRow = Row(
       children: [
-        IconButton(
-          tooltip: L10n.of(context).cancel,
-          icon: const Icon(Icons.delete_outlined),
-          color: theme.colorScheme.error,
+        // #Pangea
+        Container(
+          height: buttonBoxSize,
+          width: buttonBoxSize,
+          alignment: Alignment.center,
+          child:
+              // Pangea#
+              IconButton(
+                tooltip: L10n.of(context).cancel,
+                icon: const Icon(Icons.delete_outlined),
+                color: theme.colorScheme.error,
+                // #Pangea
+                // onPressed: state.cancel,
+                onPressed: state.isSending ? null : state.cancel,
+                // Pangea#
+              ),
           // #Pangea
-          // onPressed: state.cancel,
-          onPressed: state.isSending ? null : state.cancel,
-          // Pangea#
         ),
+        // Pangea#
         // #Pangea
         // The pilot streaming socket has no resumable pause, so the pause/resume
         // control is only shown on the batch path (D6).
@@ -89,34 +100,46 @@ class RecordingInputRow extends StatelessWidget {
             },
           ),
         ),
-        IconButton(
-          style: IconButton.styleFrom(
-            disabledBackgroundColor: theme.bubbleColor.withAlpha(128),
-            backgroundColor: theme.bubbleColor,
-            foregroundColor: theme.onBubbleColor,
-          ),
-          tooltip: L10n.of(context).sendAudio,
-          icon: state.isSending
-              ? const SizedBox.square(
-                  dimension: 24,
-                  child: CircularProgressIndicator.adaptive(),
-                )
-              : const Icon(Icons.send_outlined),
+        // #Pangea
+        Container(
+          height: buttonBoxSize,
+          width: buttonBoxSize,
+          alignment: Alignment.center,
+          child:
+              // Pangea#
+              IconButton(
+                style: IconButton.styleFrom(
+                  disabledBackgroundColor: theme.bubbleColor.withAlpha(128),
+                  backgroundColor: theme.bubbleColor,
+                  foregroundColor: theme.onBubbleColor,
+                ),
+                tooltip: L10n.of(context).sendAudio,
+                icon: state.isSending
+                    ? const SizedBox.square(
+                        dimension: 24,
+                        child: CircularProgressIndicator.adaptive(),
+                      )
+                    : const Icon(Icons.send_outlined),
+                // #Pangea
+                // Streaming, still recording: the primary button STOPS to the
+                // editable transcript (D7 finalizing -> editableClean) rather
+                // than sending immediately, so the learner can review/correct
+                // before sending. In the editable state (and on the batch path)
+                // it sends.
+                // onPressed: state.isSending ? null : () => state.stopAndSend(onSend),
+                // While the finalizing->editable transition is in flight the
+                // stop is disabled so a double-tap cannot re-enter
+                // stopStreamingToEditable.
+                onPressed: state.isSending || state.isFinalizingToEditable
+                    ? null
+                    : state.shouldStopStreamingToEditable
+                    ? () => state.stopStreamingToEditable()
+                    : () => state.stopAndSend(onSend),
+                // Pangea#
+              ),
           // #Pangea
-          // Streaming, still recording: the primary button STOPS to the editable
-          // transcript (D7 finalizing -> editableClean) rather than sending
-          // immediately, so the learner can review/correct before sending. In
-          // the editable state (and on the batch path) it sends.
-          // onPressed: state.isSending ? null : () => state.stopAndSend(onSend),
-          // While the finalizing->editable transition is in flight the stop is
-          // disabled so a double-tap cannot re-enter stopStreamingToEditable.
-          onPressed: state.isSending || state.isFinalizingToEditable
-              ? null
-              : state.shouldStopStreamingToEditable
-              ? () => state.stopStreamingToEditable()
-              : () => state.stopAndSend(onSend),
-          // Pangea#
         ),
+        // Pangea#
       ],
     );
 

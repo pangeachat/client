@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-05 11:42:12.125047",
+    "@@last_modified": "2026-08-07 16:23:19.705853",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Iepen sesjes ({num})",
     "inProgressActivitiesTitle": "No dwaande ({num})",
     "pickDifferentActivity": "Kies in oare aktiviteit",
-    "blockLemmaConfirmation": "Dit wurd wurdt permanint út jo analyze fuorthelle",
     "woman": "Frou",
     "man": "Man",
     "otherGender": "Oars",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Konversaasje fan dei ien ôf",
     "builtForConnection": "Boud foar ferbining",
     "aiWhenYouNeedIt": "AI as jo it nedich hawwe",
-    "practiceTailoredForYou": "Oefenje op maat foar jo"
+    "practiceTailoredForYou": "Oefenje op maat foar jo",
+    "deletedVocab": "Wiskje wurden",
+    "blockLemmaConfirmation": "Dit wurd wurdt út jo wurdskat fuortsmiten en sil gjin XP mear fertsjinje. Jo kinne it weromhelje út Wiskje wurden.",
+    "deletedVocabListBody": "Dizze wurden binne ferburgen út jo wurdskat en fertsjinje gjin XP. Weromsette om it werom te heljen.",
+    "deletedVocabListBodyEmpty": "Jo hawwe gjin wurden wiske. Wurden dy't jo út jo wurdskat wiskje, sille hjir ferskine, sadat jo se weromhelje kinne.",
+    "deletedVocabListLabel": "Wiskje wurden",
+    "restore": "Weromsette",
+    "deletedWordLabel": "{lemma}, wiske",
+    "restoredWords": "{count, plural, =1{1 wurd weromset} other{{count} wurden weromset}}",
+    "chatSearchPageLabel": "Petear sykpagina",
+    "selectImageLabel": "Ofbylding selektearje",
+    "userSearchTagsLabel": "Sykje yn...",
+    "courseDetails": "Kursusdetails",
+    "objective": "Doel",
+    "pingedLabel": "Pingd",
+    "mapFilterPlayerCount": "{count} spilers"
 }

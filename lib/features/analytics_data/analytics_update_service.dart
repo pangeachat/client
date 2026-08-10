@@ -239,6 +239,21 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     await analyticsRoom.setAnalyticsSettings(updated);
   }
 
+  Future<void> unblockConstructs(List<ConstructIdentifier> constructIds) async {
+    final analyticsRoom = await _getAnalyticsRoom();
+    if (analyticsRoom == null) return;
+
+    final current = analyticsRoom.analyticsSettings;
+    final remaining = current.blockedConstructs
+        .where((c) => !constructIds.contains(c))
+        .toSet();
+    if (remaining.length == current.blockedConstructs.length) return;
+
+    await analyticsRoom.setAnalyticsSettings(
+      current.copyWith(blockedConstructs: remaining),
+    );
+  }
+
   Future<void> setLemmaInfo(
     ConstructIdentifier constructId, {
     String? emoji,

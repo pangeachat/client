@@ -291,6 +291,7 @@ class AnalyticsPanelDef extends PanelDef {
          type: PanelTypesEnum.analytics,
          column: PanelColumn.right,
          priority: 40,
+         pushable: true, // vocab list → blocked ("deleted") vocab
        );
 }
 

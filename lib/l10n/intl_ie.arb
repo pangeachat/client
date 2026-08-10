@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-05 11:42:13.003639",
+    "@@last_modified": "2026-08-07 16:23:21.350463",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8225,16 +8225,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Tēnā, ka tangohia tēnei kupu mōhiohio i tō rātaka mō ake tonu atu",
     "woman": "Wāhine",
     "man": "Tāne",
     "otherGender": "Ētahi atu",
     "unselectedGender": "Tīpakohia he kōwhiringa ira",
     "chatParticipantTooltip": "Ko te katoa tēnei i roto i tēnei kōrero. Pāwhiritia te whakaahua o te kaiwhakamahi ka \"tīmata kōrero\" ki te tuku karere ki a ia.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10339,5 +10334,20 @@
     "conversationFromDayOne": "Comhrá ón gCéad Lá",
     "builtForConnection": "Tógtha le haghaidh ceangail",
     "aiWhenYouNeedIt": "AI nuair a bhíonn sé uait",
-    "practiceTailoredForYou": "Cleachtadh saincheaptha duit"
+    "practiceTailoredForYou": "Cleachtadh saincheaptha duit",
+    "deletedVocab": "Focail scriosta",
+    "blockLemmaConfirmation": "Bainfear an focal seo de do stór focal agus ní bhfaighidh tú XP as. Is féidir leat é a chur ar ais ó Focail scriosta.",
+    "deletedVocabListBody": "Tá na focail seo i bhfolach ó do stór focal agus ní bhfaigheann tú XP astu. Cuir ceann ar ais chun é a thabhairt ar ais.",
+    "deletedVocabListBodyEmpty": "Níl aon fhocal scriosta agat. Tiocfaidh focail a scriosann tú ó do stór focal anseo ionas gur féidir leat iad a chur ar ais.",
+    "deletedVocabListLabel": "Focail scriosta",
+    "restore": "Cuir ar ais",
+    "deletedWordLabel": "{lemma}, scriosta",
+    "restoredWords": "{count, plural, =1{Cuireadh 1 fhocal ar ais} other{Cuireadh {count} focal ar ais}}",
+    "chatSearchPageLabel": "Leathanach cuardaigh comhrá",
+    "selectImageLabel": "Roghnaigh íomhá",
+    "userSearchTagsLabel": "Cuardaigh i...",
+    "courseDetails": "Sonraí an chúrsa",
+    "objective": "Cuspóir",
+    "pingedLabel": "Pingáilte",
+    "mapFilterPlayerCount": "{count} imreoir"
 }

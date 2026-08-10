@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/join_codes/knocked_rooms_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/invited_chip.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item_subtitle.dart';
 import 'package:fluffychat/routes/chat_list/unread_bubble.dart';
@@ -82,6 +84,8 @@ class ChatListItem extends StatelessWidget {
     final String chatSemanticsLabel = unread
         ? '$displayname, ${L10n.of(context).unread}, '
         : '$displayname, ';
+
+    final isPendingInvite = room.isPendingInvite;
     // Pangea#
 
     return Padding(
@@ -334,7 +338,21 @@ class ChatListItem extends StatelessWidget {
                         : const SizedBox.shrink(),
                   ),
                   Expanded(
-                    child: room.isSpace && room.membership == Membership.join
+                    // #Pangea: a pending invite wears the same gold "Invited"
+                    // pill an invited course tile wears, so an activity invite
+                    // is as hard to walk past here as it is in the Courses hub
+                    // (#8191) — it replaces the grey "Invite chat" line, which
+                    // said the same thing in the colour of everything else.
+                    // `isPendingInvite`, not the raw membership: an approved
+                    // knock arrives as an invite too, and keeps the plain
+                    // subtitle rather than claiming someone invited them.
+                    child: isPendingInvite
+                        ? const Align(
+                            alignment: Alignment.centerLeft,
+                            child: InvitedChip(),
+                          )
+                        // Pangea#
+                        : room.isSpace && room.membership == Membership.join
                         ? Text(
                             // #Pangea
                             // L10n.of(

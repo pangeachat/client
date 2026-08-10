@@ -3568,7 +3568,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-05 11:42:11.870117",
+    "@@last_modified": "2026-08-07 16:23:19.967564",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -7780,16 +7780,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Déanfidh an focal foclóra seo a bhaint go buan ó do anailísí",
     "woman": "Bean",
     "man": "Duine",
     "otherGender": "Duine eile",
     "unselectedGender": "Roghnaigh rogha gnéis",
     "chatParticipantTooltip": "Is iad seo go léir atá sa chomhrá seo. Cliceáil ar avatar aon úsáideora agus \"tosaigh comhrá\" chun DM a sheoladh.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9718,5 +9713,20 @@
     "conversationFromDayOne": "Comhrá ón gCéad Lá",
     "builtForConnection": "Tógtha le haghaidh ceangail",
     "aiWhenYouNeedIt": "Intleacht shaorga nuair a bhíonn sí uait",
-    "practiceTailoredForYou": "Cleachtadh saincheaptha duit"
+    "practiceTailoredForYou": "Cleachtadh saincheaptha duit",
+    "deletedVocab": "Focail scriosta",
+    "blockLemmaConfirmation": "Bainfear an focal seo de d'fhoclóir agus ní bhfaighidh tú XP as. Is féidir leat é a chur ar ais ó Fhocail scriosta.",
+    "deletedVocabListBody": "Tá na focail seo i bhfolach ó d'fhoclóir agus ní bhfaigheann siad XP. Cuir focal ar ais chun é a thabhairt ar ais.",
+    "deletedVocabListBodyEmpty": "Níl aon fhocal scriosta agat. Beidh focail a scriosann tú ó d'fhoclóir le feiceáil anseo ionas gur féidir leat iad a chur ar ais.",
+    "deletedVocabListLabel": "Focail scriosta",
+    "restore": "Cuir ar ais",
+    "deletedWordLabel": "{lemma}, scriosta",
+    "restoredWords": "{count, plural, =1{Cuireadh 1 fhocal ar ais} other{Cuireadh {count} focal ar ais}}",
+    "chatSearchPageLabel": "Leathanach cuardaigh comhrá",
+    "selectImageLabel": "Roghnaigh íomhá",
+    "userSearchTagsLabel": "Cuardaigh i...",
+    "courseDetails": "Sonraí an chúrsa",
+    "objective": "Cuspóir",
+    "pingedLabel": "Pingáilte",
+    "mapFilterPlayerCount": "{count} imreoir"
 }

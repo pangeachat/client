@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-05 11:42:17.809271",
+    "@@last_modified": "2026-08-07 16:23:26.645437",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Сессияҳои кушода ({num})",
     "inProgressActivitiesTitle": "Ҳоло идома дорад ({num})",
     "pickDifferentActivity": "Фаъолияти дигарро интихоб кунед",
-    "blockLemmaConfirmation": "Ин калимаи луғатӣ аз таҳлили шумо ба таври доимӣ хориҷ карда мешавад",
     "woman": "Зан",
     "man": "Мард",
     "otherGender": "Дигар",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Муколама аз рӯзи аввал",
     "builtForConnection": "Барои пайвастшавӣ сохта шудааст",
     "aiWhenYouNeedIt": "AI вақте ки ба шумо лозим аст",
-    "practiceTailoredForYou": "Машқ барои шумо мутобиқ карда шудааст"
+    "practiceTailoredForYou": "Машқ барои шумо мутобиқ карда шудааст",
+    "deletedVocab": "Калимаҳои ҳазфшуда",
+    "blockLemmaConfirmation": "Ин калима аз луғати шумо хориҷ карда мешавад ва XP ба даст намеорад. Шумо метавонед онро аз калимаҳои ҳазфшуда баргардонед.",
+    "deletedVocabListBody": "Ин калимаҳо аз луғати шумо пинҳон карда шудаанд ва XP ба даст намеоранд. Барои баргардонидан якеро барқарор кунед.",
+    "deletedVocabListBodyEmpty": "Шумо ягон калимаро ҳазф накардаед. Калимаҳое, ки шумо аз луғати худ ҳазф мекунед, дар ин ҷо пайдо мешаванд, то шумо метавонед онҳоро баргардонед.",
+    "deletedVocabListLabel": "Калимаҳои ҳазфшуда",
+    "restore": "Барқарор кардан",
+    "deletedWordLabel": "{lemma}, ҳазфшуда",
+    "restoredWords": "{count, plural, =1{1 калима барқарор карда шуд} other{{count} калима барқарор карда шуд}}",
+    "chatSearchPageLabel": "Саҳифаи ҷустуҷӯи чат",
+    "selectImageLabel": "Тасвирро интихоб кунед",
+    "userSearchTagsLabel": "Ҷустуҷӯ дар...",
+    "courseDetails": "Тафсилоти курс",
+    "objective": "Мақсад",
+    "pingedLabel": "Пинг шуд",
+    "mapFilterPlayerCount": "{count} бозигар"
 }

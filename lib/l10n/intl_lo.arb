@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-05 11:42:14.298242",
+    "@@last_modified": "2026-08-07 16:23:23.135341",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "ເຊສຊັນທີ່ເປີດຢູ່ ({num})",
     "inProgressActivitiesTitle": "ກຳລັງດຳເນີນຢູ່ ({num})",
     "pickDifferentActivity": "ເລືອກກິດຈະກຳອື່ນ",
-    "blockLemmaConfirmation": "ຄຳສັບນີ້ຈະຖືກລຶບອອກຈາກການວິເຄາະຂອງທ່ານຢ່າງຖາວອນ",
     "woman": "ຜູ້ຍິງ",
     "man": "ຜູ້ຊາຍ",
     "otherGender": "ອື່ນໆ",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "ສົນທະນາຕັ້ງແຕ່ມື້ທຳອິດ",
     "builtForConnection": "ສ້າງຂຶ້ນເພື່ອການເຊື່ອມຕໍ່",
     "aiWhenYouNeedIt": "AI ເມື່ອທ່ານຕ້ອງການ",
-    "practiceTailoredForYou": "ການຝຶກຝົນທີ່ເໝາະສົມກັບທ່ານ"
+    "practiceTailoredForYou": "ການຝຶກຝົນທີ່ເໝາະສົມກັບທ່ານ",
+    "deletedVocab": "ຄຳສັບທີ່ຖືກລຶບ",
+    "blockLemmaConfirmation": "ຄຳສັບນີ້ຈະຖືກລຶບອອກຈາກຄຳສັບຂອງທ່ານ ແລະ ຈະບໍ່ໄດ້ຮັບ XP. ທ່ານສາມາດນຳກັບມາໄດ້ຈາກຄຳສັບທີ່ຖືກລຶບ.",
+    "deletedVocabListBody": "ຄຳສັບເຫຼົ່ານີ້ຖືກເຊື່ອງຈາກຄຳສັບຂອງທ່ານ ແລະ ບໍ່ໄດ້ຮັບ XP. ກູ້ຄືນເພື່ອເອົາກັບມາ.",
+    "deletedVocabListBodyEmpty": "ທ່ານບໍ່ໄດ້ລຶບຄຳສັບໃດໆ. ຄຳສັບທີ່ທ່ານລຶບອອກຈາກຄຳສັບຂອງທ່ານຈະສະແດງຢູ່ບ່ອນນີ້ ເພື່ອໃຫ້ທ່ານສາມາດນຳກັບມາໄດ້.",
+    "deletedVocabListLabel": "ຄຳສັບທີ່ຖືກລຶບ",
+    "restore": "ກູ້ຄືນ",
+    "deletedWordLabel": "{lemma}, ຖືກລຶບ",
+    "restoredWords": "{count, plural, =1{ກູ້ຄືນ 1 ຄຳສັບແລ້ວ} other{ກູ້ຄືນ {count} ຄຳສັບແລ້ວ}}",
+    "chatSearchPageLabel": "ໜ້າຊອກຫາການສົນທະນາ",
+    "selectImageLabel": "ເລືອກຮູບພາບ",
+    "userSearchTagsLabel": "ຊອກຫາໃນ...",
+    "courseDetails": "ລາຍລະອຽດຫຼັກສູດ",
+    "objective": "ຈຸດປະສົງ",
+    "pingedLabel": "ຖືກປິງແລ້ວ",
+    "mapFilterPlayerCount": "{count} ຜູ້ຫຼິ້ນ"
 }

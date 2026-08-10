@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-05 11:42:16.702701",
+    "@@last_modified": "2026-08-07 16:23:25.765191",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Zvikamu zvisina kutanga ({num})",
     "inProgressActivitiesTitle": "Zvirikuitika izvozvi ({num})",
     "pickDifferentActivity": "Sarudza rimwe basa",
-    "blockLemmaConfirmation": "Izwi iri remazwi richabviswa zvachose kubva kune analytics ako",
     "woman": "Mukadzi",
     "man": "Murume",
     "otherGender": "Zvimwe",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Kukurukurirana kubva pazuva rekutanga",
     "builtForConnection": "Yakavakwa yekubatanidza",
     "aiWhenYouNeedIt": "AI paunenge uchiida",
-    "practiceTailoredForYou": "Kudzidzira kwakagadzirirwa iwe"
+    "practiceTailoredForYou": "Kudzidzira kwakagadzirirwa iwe",
+    "deletedVocab": "Mashoko akadzimwa",
+    "blockLemmaConfirmation": "Izwi iri richabviswa mumashoko ako uye harichakupi XP. Unogona kuridzosera kubva kumashoko akadzimwa.",
+    "deletedVocabListBody": "Mashoko aya akavanzwa mumashoko ako uye haakupe XP. Dzosera rimwe kuti ridzoke.",
+    "deletedVocabListBodyEmpty": "Hauna kudzima mashoko. Mashoko aunodzima kubva mumashoko ako achaonekwa pano kuti ugone kuadzosa.",
+    "deletedVocabListLabel": "Mashoko akadzimwa",
+    "restore": "Dzosera",
+    "deletedWordLabel": "{lemma}, yakadzimwa",
+    "restoredWords": "{count, plural, =1{Dzosera izwi rimwe chete} other{Dzosera mazwi {count}}}",
+    "chatSearchPageLabel": "Peji yekutsvaga chat",
+    "selectImageLabel": "Sarudza mufananidzo",
+    "userSearchTagsLabel": "Tsvaga mu...",
+    "courseDetails": "Ruzivo rwekirasi",
+    "objective": "Chinangwa",
+    "pingedLabel": "Yapindurwa",
+    "mapFilterPlayerCount": "Vatambi {count}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-05 11:42:13.190620",
+    "@@last_modified": "2026-08-07 16:23:21.537735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Mepee nnọkọ ({num})",
     "inProgressActivitiesTitle": "Na-eme ugbu a ({num})",
     "pickDifferentActivity": "Họrọ ihe omume dị iche",
-    "blockLemmaConfirmation": "A ga-ewepụ okwu a na nyocha gị kpamkpam",
     "woman": "Nwanyị",
     "man": "Nwoke",
     "otherGender": "Ndị ọzọ",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Mkparịta ụka site n'ụbọchị mbụ",
     "builtForConnection": "Ewubere maka njikọ",
     "aiWhenYouNeedIt": "AI mgbe ịchọrọ ya",
-    "practiceTailoredForYou": "Omume ahaziri maka gị"
+    "practiceTailoredForYou": "Omume ahaziri maka gị",
+    "deletedVocab": "Okwu ndị ehichapụrụ",
+    "blockLemmaConfirmation": "A ga-ewepụ okwu a na ndepụta okwu gị ma ọ gaghị enwetakwu XP. Ị nwere ike iweghachi ya site na Okwu ndị ehichapụrụ.",
+    "deletedVocabListBody": "Ezochiri okwu ndị a na ndepụta okwu gị ma ha anaghị enweta XP. Weghachi otu iji weghachi ya.",
+    "deletedVocabListBodyEmpty": "Ị ehichapụbeghị okwu ọ bụla. Okwu ị ga-ehichapụ na ndepụta okwu gị ga-apụta ebe a ka ị wee nwee ike iweghachi ha.",
+    "deletedVocabListLabel": "Okwu ndị ehichapụrụ",
+    "restore": "Weghachi",
+    "deletedWordLabel": "{lemma}, ehichapụrụ",
+    "restoredWords": "{count, plural, =1{Eweghachiri okwu 1} other{Eweghachiri okwu {count}}}",
+    "chatSearchPageLabel": "Ibe nchọta nkata",
+    "selectImageLabel": "Họrọ onyonyo",
+    "userSearchTagsLabel": "Chọọ na...",
+    "courseDetails": "Nkọwa ọmụmụ",
+    "objective": "Ebumnuche",
+    "pingedLabel": "Kpọọrọ",
+    "mapFilterPlayerCount": "{count} ndị egwuregwu"
 }

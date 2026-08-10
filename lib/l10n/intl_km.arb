@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-05 11:42:13.737938",
+    "@@last_modified": "2026-08-07 16:23:22.257641",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "វគ្គបើក ({num})",
     "inProgressActivitiesTitle": "កំពុងដំណើរការ ({num})",
     "pickDifferentActivity": "ជ្រើសរើសសកម្មភាពផ្សេង",
-    "blockLemmaConfirmation": "ពាក្យវាក្យសព្ទនេះនឹងត្រូវបានលុបជាអចិន្ត្រៃយ៍ពីការវិភាគរបស់អ្នក",
     "woman": "ស្រី",
     "man": "ប្រុស",
     "otherGender": "ផ្សេងទៀត",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "ការសន្ទនាចាប់ពីថ្ងៃដំបូង",
     "builtForConnection": "បង្កើតឡើងសម្រាប់ការតភ្ជាប់",
     "aiWhenYouNeedIt": "AI នៅពេលអ្នកត្រូវការវា",
-    "practiceTailoredForYou": "ការអនុវត្តដែលបានរៀបចំសម្រាប់អ្នក"
+    "practiceTailoredForYou": "ការអនុវត្តដែលបានរៀបចំសម្រាប់អ្នក",
+    "deletedVocab": "ពាក្យដែលបានលុប",
+    "blockLemmaConfirmation": "ពាក្យនេះនឹងត្រូវបានលុបចេញពីវាក្យសព្ទរបស់អ្នក ហើយឈប់ទទួលបាន XP។ អ្នកអាចយកវាមកវិញពីពាក្យដែលបានលុប។",
+    "deletedVocabListBody": "ពាក្យទាំងនេះត្រូវបានលាក់ពីវាក្យសព្ទរបស់អ្នក ហើយមិនទទួលបាន XP ទេ។ ស្ដារពាក្យណាមួយដើម្បីយកវាមកវិញ។",
+    "deletedVocabListBodyEmpty": "អ្នកមិនទាន់បានលុបពាក្យណាមួយទេ។ ពាក្យដែលអ្នកលុបចេញពីវាក្យសព្ទរបស់អ្នកនឹងបង្ហាញនៅទីនេះ ដូច្នេះអ្នកអាចយកវាមកវិញបាន។",
+    "deletedVocabListLabel": "ពាក្យដែលបានលុប",
+    "restore": "ស្ដារ",
+    "deletedWordLabel": "{lemma} ដែលបានលុប",
+    "restoredWords": "{count, plural, =1{បានស្ដារពាក្យ ១} other{បានស្ដារពាក្យ {count}}}",
+    "chatSearchPageLabel": "ទំព័រស្វែងរកការជជែក",
+    "selectImageLabel": "ជ្រើសរើសរូបភាព",
+    "userSearchTagsLabel": "ស្វែងរកក្នុង...",
+    "courseDetails": "ព័ត៌មានលម្អិតវគ្គសិក្សា",
+    "objective": "គោលបំណង",
+    "pingedLabel": "បាន Ping",
+    "mapFilterPlayerCount": "{count} អ្នកលេង"
 }

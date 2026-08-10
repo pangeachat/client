@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-05 11:42:11.167805",
+    "@@last_modified": "2026-08-07 16:23:19.351728",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -5878,16 +5878,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Esta palabra de vocabulario será eliminada permanentemente de tus análisis",
     "woman": "Mujer",
     "man": "Hombre",
     "otherGender": "Otro",
     "unselectedGender": "Selecciona una opción de género",
     "chatParticipantTooltip": "Estas son todas las personas en este chat. Haz clic en el avatar de cualquier usuario y \"iniciar conversación\" para enviar un DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -7910,5 +7905,20 @@
     "conversationFromDayOne": "Conversación desde el primer día",
     "builtForConnection": "Diseñado para conectar",
     "aiWhenYouNeedIt": "IA cuando la necesites",
-    "practiceTailoredForYou": "Práctica personalizada para ti"
+    "practiceTailoredForYou": "Práctica personalizada para ti",
+    "deletedVocab": "Palabras eliminadas",
+    "blockLemmaConfirmation": "Esta palabra se eliminará de tu vocabulario y dejará de generar XP. Puedes recuperarla desde Palabras eliminadas.",
+    "deletedVocabListBody": "Estas palabras están ocultas de tu vocabulario y no generan XP. Restaura una para recuperarla.",
+    "deletedVocabListBodyEmpty": "No has eliminado ninguna palabra. Las palabras que elimines de tu vocabulario aparecerán aquí para que puedas recuperarlas.",
+    "deletedVocabListLabel": "Palabras eliminadas",
+    "restore": "Restaurar",
+    "deletedWordLabel": "{lemma}, eliminada",
+    "restoredWords": "{count, plural, =1{Se restauró 1 palabra} other{Se restauraron {count} palabras}}",
+    "chatSearchPageLabel": "Página de búsqueda de chat",
+    "selectImageLabel": "Seleccionar imagen",
+    "userSearchTagsLabel": "Buscar en...",
+    "courseDetails": "Detalles del curso",
+    "objective": "Objetivo",
+    "pingedLabel": "Mencionado",
+    "mapFilterPlayerCount": "{count} jugadores"
 }

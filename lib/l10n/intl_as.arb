@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-05 11:42:10.437474",
+    "@@last_modified": "2026-08-07 16:23:18.028353",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "খোলা অধিবেশন ({num})",
     "inProgressActivitiesTitle": "এতিয়া চলি আছে ({num})",
     "pickDifferentActivity": "এটা বেলেগ কাৰ্যকলাপ বাছক",
-    "blockLemmaConfirmation": "এই শব্দভাণ্ডাৰটো আপোনাৰ বিশ্লেষণৰ পৰা স্থায়ীভাৱে আঁতৰাই দিয়া হ'ব",
     "woman": "মহিলা",
     "man": "পুৰুষ",
     "otherGender": "অন্য",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "প্ৰথম দিনৰ পৰাই কথা-বতৰা",
     "builtForConnection": "সংযোগৰ বাবে নিৰ্মিত",
     "aiWhenYouNeedIt": "আপোনাক প্ৰয়োজন হ’লে AI",
-    "practiceTailoredForYou": "আপোনাৰ বাবে উপযোগী অনুশীলন"
+    "practiceTailoredForYou": "আপোনাৰ বাবে উপযোগী অনুশীলন",
+    "deletedVocab": "বিলুপ্ত শব্দসমূহ",
+    "blockLemmaConfirmation": "এই শব্দটো আপোনাৰ শব্দভাণ্ডাৰৰ পৰা আঁতৰাই পেলোৱা হ'ব আৰু XP অৰ্জন কৰা বন্ধ কৰিব। আপুনি ইয়াক বিলুপ্ত শব্দসমূহৰ পৰা ঘূৰাই আনিব পাৰিব।",
+    "deletedVocabListBody": "এই শব্দবোৰ আপোনাৰ শব্দভাণ্ডাৰৰ পৰা লুকুৱাই ৰখা হৈছে আৰু XP অৰ্জন নকৰে। ইয়াক ঘূৰাই আনিবলৈ এটা পুনৰুদ্ধাৰ কৰক।",
+    "deletedVocabListBodyEmpty": "আপুনি কোনো শব্দ বিলুপ্ত কৰা নাই। আপুনি আপোনাৰ শব্দভাণ্ডাৰৰ পৰা বিলুপ্ত কৰা শব্দবোৰ ইয়াত দেখা যাব যাতে আপুনি সেইবোৰ ঘূৰাই আনিব পাৰে।",
+    "deletedVocabListLabel": "বিলুপ্ত শব্দসমূহ",
+    "restore": "পুনৰুদ্ধাৰ কৰক",
+    "deletedWordLabel": "{lemma}, বিলুপ্ত কৰা হৈছে",
+    "restoredWords": "{count, plural, =1{১টা শব্দ পুনৰুদ্ধাৰ কৰা হ'ল} other{{count}টা শব্দ পুনৰুদ্ধাৰ কৰা হ'ল}}",
+    "chatSearchPageLabel": "চাট অনুসন্ধান পৃষ্ঠা",
+    "selectImageLabel": "ছবি বাছক",
+    "userSearchTagsLabel": "ইয়াত সন্ধান কৰক...",
+    "courseDetails": "পাঠ্যক্ৰমৰ বিৱৰণ",
+    "objective": "উদ্দেশ্য",
+    "pingedLabel": "পিং কৰা হৈছে",
+    "mapFilterPlayerCount": "{count} খেলুৱৈ"
 }

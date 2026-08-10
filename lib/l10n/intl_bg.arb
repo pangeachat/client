@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-05 11:42:10.367055",
+    "@@last_modified": "2026-08-07 16:23:17.952217",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Отворени сесии ({num})",
     "inProgressActivitiesTitle": "В момента ({num})",
     "pickDifferentActivity": "Изберете друга дейност",
-    "blockLemmaConfirmation": "Тази лексикална дума ще бъде премахната завинаги от вашите анализи",
     "woman": "Жена",
     "man": "Мъж",
     "otherGender": "Друг",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Разговор от първия ден",
     "builtForConnection": "Създадено за връзка",
     "aiWhenYouNeedIt": "Изкуствен интелект, когато имаш нужда",
-    "practiceTailoredForYou": "Практика, съобразена с теб"
+    "practiceTailoredForYou": "Практика, съобразена с теб",
+    "deletedVocab": "Изтрити думи",
+    "blockLemmaConfirmation": "Тази дума ще бъде премахната от речника ви и няма да носи XP. Можете да я върнете от „Изтрити думи“.",
+    "deletedVocabListBody": "Тези думи са скрити от речника ви и не носят XP. Възстановете някоя, за да я върнете.",
+    "deletedVocabListBodyEmpty": "Не сте изтрили никакви думи. Думите, които изтриете от речника си, ще се показват тук, за да можете да ги върнете.",
+    "deletedVocabListLabel": "Изтрити думи",
+    "restore": "Възстановяване",
+    "deletedWordLabel": "{lemma}, изтрита",
+    "restoredWords": "{count, plural, =1{Възстановена е 1 дума} other{Възстановени са {count} думи}}",
+    "chatSearchPageLabel": "Страница за търсене в чата",
+    "selectImageLabel": "Изберете изображение",
+    "userSearchTagsLabel": "Търсене в...",
+    "courseDetails": "Подробности за курса",
+    "objective": "Цел",
+    "pingedLabel": "Пингован",
+    "mapFilterPlayerCount": "{count} играчи"
 }

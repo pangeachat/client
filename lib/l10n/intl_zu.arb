@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-05 11:42:18.637592",
+    "@@last_modified": "2026-08-07 16:23:27.996390",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Izikhathi ezivuliwe ({num})",
     "inProgressActivitiesTitle": "Kwenzeka manje ({num})",
     "pickDifferentActivity": "Khetha umsebenzi ohlukile",
-    "blockLemmaConfirmation": "Leli gama lesilulumagama lizosuswa unomphela kuzibalo zakho",
     "woman": "Owesifazane",
     "man": "Indoda",
     "otherGender": "Okunye",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Ingxoxo kusukela osukwini lokuqala",
     "builtForConnection": "Yakhelwe ukuxhumana",
     "aiWhenYouNeedIt": "I-AI uma uyidinga",
-    "practiceTailoredForYou": "Ukuzijwayeza okuklanyelwe wena"
+    "practiceTailoredForYou": "Ukuzijwayeza okuklanyelwe wena",
+    "deletedVocab": "Amagama asusiwe",
+    "blockLemmaConfirmation": "Leli gama lizosuswa ohlelweni lwakho lwamagama futhi ngeke lisakwazi ukuzuza i-XP. Ungalibuyisa kusukela kumagama asusiwe.",
+    "deletedVocabListBody": "Lawa magama afihliwe ohlelweni lwakho lwamagama futhi awazuzi i-XP. Buyisa elilodwa ukuze ulibuyisele emuva.",
+    "deletedVocabListBodyEmpty": "Awukasusanga magama. Amagama owasusa ohlelweni lwakho lwamagama azovela lapha ukuze ukwazi ukuwabuyisa.",
+    "deletedVocabListLabel": "Amagama asusiwe",
+    "restore": "Buyisa",
+    "deletedWordLabel": "{lemma}, kususiwe",
+    "restoredWords": "{count, plural, =1{Kubuyiswe igama eli-1} other{Kubuyiswe amagama angu-{count}}}",
+    "chatSearchPageLabel": "Ikhasi lokusesha lengxoxo",
+    "selectImageLabel": "Khetha isithombe",
+    "userSearchTagsLabel": "Sesha ku...",
+    "courseDetails": "Imininingwane yesifundo",
+    "objective": "Umgomo",
+    "pingedLabel": "Kupingwe",
+    "mapFilterPlayerCount": "abadlali abangu-{count}"
 }

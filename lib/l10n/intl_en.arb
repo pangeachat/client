@@ -764,6 +764,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "deletedVocab": "Deleted words",
+    "@deletedVocab": {
+        "type": "String",
+        "placeholders": {}
+    },
     "deleteAccount": "Delete account",
     "@deleteAccount": {
         "type": "String",
@@ -4243,7 +4248,7 @@
         }
     },
     "pickDifferentActivity": "Pick a different activity",
-    "blockLemmaConfirmation": "This vocab word will be permanently removed from your analytics",
+    "blockLemmaConfirmation": "This word will be removed from your vocabulary and stop earning XP. You can bring it back from Deleted words.",
     "woman": "Woman",
     "man": "Man",
     "otherGender": "Other",
@@ -4483,6 +4488,26 @@
     "removeAdminDescription": "Lowering this user's permission level will remove admin privileges.",
     "emojiToolbarInstruction": "This mode allows you to set emojis to words! Select a word to associate an emoji with it!",
     "analyticsVocabListBodyEmpty": "The vocabulary words you collect will go here. Start chatting and interacting to earn some!",
+    "deletedVocabListBody": "These words are hidden from your vocabulary and don't earn XP. Restore one to bring it back.",
+    "deletedVocabListBodyEmpty": "You haven't deleted any words. Words you delete from your vocabulary will show up here so you can bring them back.",
+    "deletedVocabListLabel": "Deleted words",
+    "restore": "Restore",
+    "deletedWordLabel": "{lemma}, deleted",
+    "@deletedWordLabel": {
+        "placeholders": {
+            "lemma": {
+                "type": "String"
+            }
+        }
+    },
+    "restoredWords": "{count, plural, =1{Restored 1 word} other{Restored {count} words}}",
+    "@restoredWords": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "vocabLevelsDescSeed": "This is where new vocab words will appear!",
     "readingAssistanceTutorialCollectToken": "Select words to learn more about them",
     "requireAnalyticsAccessTitle": "Require analytics access to join",
@@ -4809,6 +4834,11 @@
     "joinableLabel": "Joinable",
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
+    "chatSearchPageLabel": "Chat search page",
+    "selectImageLabel": "Select image", 
+    "userSearchTagsLabel": "Search in...",
+    "courseDetails": "Course details",
+    "objective": "Objective",
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
@@ -4900,6 +4930,15 @@
     "streamingSttDegradedLiveBanner": "Live transcription is running on a backup service. Quality may vary, please check the text.",
     "streamingSttDegradedToBatchBanner": "Live transcription is unavailable right now. Your message was transcribed the standard way, without live editing. We're working to restore it.",
     "streamingSttLanguageUnsupportedBanner": "Live transcription isn't available for this language yet. We're working on it.",
+    "pingedLabel": "Pinged",
+    "mapFilterPlayerCount": "{count} players",
+    "@mapFilterPlayerCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "formLabel": "{name} form",
     "@formLabel": {
         "placeholders": {

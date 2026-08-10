@@ -72,10 +72,7 @@ void main() {
         {'@ana:pangea.chat': 'join', bot: 'join', '@ben:pangea.chat': 'invite'},
         roles: {'r1': '@ana:pangea.chat', 'r2': bot},
       );
-      expect(s.largeCardParticipants, [
-        (avatar: null, name: 'ana', userId: '@ana:pangea.chat'),
-        (avatar: null, name: 'bot', userId: bot),
-      ]);
+      expect(s.largeCardParticipantIds, ['@ana:pangea.chat', bot]);
     });
 
     test('the moderation bot gets no circle when it holds no role — only role '
@@ -84,9 +81,7 @@ void main() {
         {'@ana:pangea.chat': 'join', bot: 'join'},
         roles: {'r1': '@ana:pangea.chat'},
       );
-      expect(s.largeCardParticipants, [
-        (avatar: null, name: 'ana', userId: '@ana:pangea.chat'),
-      ]);
+      expect(s.largeCardParticipantIds, ['@ana:pangea.chat']);
     });
 
     test('a thin-ref preview whose plan has not hydrated shows zero open '

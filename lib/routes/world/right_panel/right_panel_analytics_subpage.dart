@@ -4,6 +4,7 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/navigation/token_params/analytics_token.dart';
 import 'package:fluffychat/routes/analytics/activities/activity_archive.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/analytics_details_popup.dart';
+import 'package:fluffychat/routes/analytics/construct_analytics/blocked_vocab_view.dart';
 import 'package:fluffychat/routes/analytics/level/level_analytics_details_content.dart';
 import 'package:fluffychat/routes/world/panel_card.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
@@ -47,11 +48,18 @@ class RightPanelAnalyticsSubpage extends StatelessWidget {
         ProgressIndicatorEnum.level => LevelAnalyticsDetailsContent(
           closeButton: closeButton,
         ),
-        _ => ConstructAnalyticsView(
-          view: ConstructTypeEnum.vocab,
-          showPracticeButton: true, // the Practice FAB (→ /practice/vocab)
-          closeButton: closeButton,
-        ),
+        // The blocked ("deleted") list is a push UNDER the vocab summary, not a
+        // tab of its own: `subpage` stays `wordsUsed` so the vocab metric keeps
+        // its highlight, and the leaf picks which vocab page renders.
+        _ =>
+          param?.deleted == true
+              ? BlockedVocabView(closeButton: closeButton)
+              : ConstructAnalyticsView(
+                  view: ConstructTypeEnum.vocab,
+                  showPracticeButton:
+                      true, // the Practice FAB (→ /practice/vocab)
+                  closeButton: closeButton,
+                ),
       },
     );
   }

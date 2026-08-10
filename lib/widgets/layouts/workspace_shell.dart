@@ -703,13 +703,15 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             ? KnockingUsersBuilder(
                 room: shortcutCourse,
                 builder: (context, knockingUsers) {
-                  final avatar = Avatar(
-                    mxContent: shortcutCourse.avatar,
-                    name: shortcutCourse.getLocalizedDisplayname(
-                      MatrixLocals(l10n),
+                  final avatar = ExcludeSemantics(
+                    child: Avatar(
+                      mxContent: shortcutCourse.avatar,
+                      name: shortcutCourse.getLocalizedDisplayname(
+                        MatrixLocals(l10n),
+                      ),
+                      size: 32,
+                      borderRadius: BorderRadius.circular(8),
                     ),
-                    size: 32,
-                    borderRadius: BorderRadius.circular(8),
                   );
                   return knockingUsers.isEmpty
                       ? avatar

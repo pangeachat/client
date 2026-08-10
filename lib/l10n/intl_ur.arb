@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-05 11:42:17.898149",
+    "@@last_modified": "2026-08-07 16:23:26.962117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "کھلے سیشنز ({num})",
     "inProgressActivitiesTitle": "ابھی جاری ہے ({num})",
     "pickDifferentActivity": "ایک مختلف سرگرمی منتخب کریں",
-    "blockLemmaConfirmation": "یہ الفاظ آپ کے تجزیات سے مستقل طور پر ہٹا دیے جائیں گے",
     "woman": "عورت",
     "man": "مرد",
     "otherGender": "دیگر",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "پہلے دن سے گفتگو",
     "builtForConnection": "رابطے کے لیے بنایا گیا",
     "aiWhenYouNeedIt": "جب آپ کو ضرورت ہو تو AI",
-    "practiceTailoredForYou": "آپ کے لیے تیار کردہ مشق"
+    "practiceTailoredForYou": "آپ کے لیے تیار کردہ مشق",
+    "deletedVocab": "حذف شدہ الفاظ",
+    "blockLemmaConfirmation": "یہ لفظ آپ کی ذخیرہ الفاظ سے ہٹا دیا جائے گا اور XP حاصل کرنا بند کر دے گا۔ آپ اسے حذف شدہ الفاظ سے واپس لا سکتے ہیں۔",
+    "deletedVocabListBody": "یہ الفاظ آپ کی ذخیرہ الفاظ سے چھپے ہوئے ہیں اور XP حاصل نہیں کرتے ہیں۔ اسے واپس لانے کے لیے کسی ایک کو بحال کریں۔",
+    "deletedVocabListBodyEmpty": "آپ نے کوئی لفظ حذف نہیں کیا ہے۔ آپ جو الفاظ اپنی ذخیرہ الفاظ سے حذف کریں گے وہ یہاں ظاہر ہوں گے تاکہ آپ انہیں واپس لا سکیں۔",
+    "deletedVocabListLabel": "حذف شدہ الفاظ",
+    "restore": "بحال کریں",
+    "deletedWordLabel": "{lemma}، حذف شدہ",
+    "restoredWords": "{count, plural, =1{1 لفظ بحال کیا گیا} other{{count} الفاظ بحال کیے گئے}}",
+    "chatSearchPageLabel": "چیٹ سرچ پیج",
+    "selectImageLabel": "تصویر منتخب کریں",
+    "userSearchTagsLabel": "تلاش کریں...",
+    "courseDetails": "کورس کی تفصیلات",
+    "objective": "مقصد",
+    "pingedLabel": "پنگ کیا گیا",
+    "mapFilterPlayerCount": "{count} کھلاڑی"
 }

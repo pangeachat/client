@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-05 11:42:14.565199",
+    "@@last_modified": "2026-08-07 16:23:23.483926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Ngā wāhanga tuwhera ({num})",
     "inProgressActivitiesTitle": "E haere tonu ana ({num})",
     "pickDifferentActivity": "Kōwhiria tētahi atu mahi",
-    "blockLemmaConfirmation": "Ka tangohia pūmau tēnei kupu reo mai i ō tātaritanga",
     "woman": "Wahine",
     "man": "Tāne",
     "otherGender": "Ētahi atu",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Kōrerorero mai i te Rā Tuatahi",
     "builtForConnection": "Hangaia mō te hononga",
     "aiWhenYouNeedIt": "AI ina hiahia koe",
-    "practiceTailoredForYou": "Whakaharatau i whakaritea māu"
+    "practiceTailoredForYou": "Whakaharatau i whakaritea māu",
+    "deletedVocab": "Kupu Kua Mukua",
+    "blockLemmaConfirmation": "Ka tangohia tēnei kupu i tō rārangi kupu, ā, ka kore e whiwhi XP. Ka taea e koe te whakahoki mai i ngā Kupu Kua Mukua.",
+    "deletedVocabListBody": "Kua huna ēnei kupu i tō rārangi kupu, ā, kāore e whiwhi XP. Whakahokia mai tētahi kia hoki mai anō.",
+    "deletedVocabListBodyEmpty": "Kāore anō koe kia muku kupu. Ko ngā kupu ka mukua e koe i tō rārangi kupu ka puta ki konei kia taea ai e koe te whakahoki mai.",
+    "deletedVocabListLabel": "Kupu Kua Mukua",
+    "restore": "Whakahoki",
+    "deletedWordLabel": "{lemma}, kua mukua",
+    "restoredWords": "{count, plural, =1{Kua Whakahokia te 1 kupu} other{Kua Whakahokia ngā kupu e {count}}}",
+    "chatSearchPageLabel": "Whārangi rapu kōrerorero",
+    "selectImageLabel": "Tīpako atahanga",
+    "userSearchTagsLabel": "Rapu i roto...",
+    "courseDetails": "Ngā taipitopito akoranga",
+    "objective": "Whāinga",
+    "pingedLabel": "Kua pīngia",
+    "mapFilterPlayerCount": "{count} kaitākaro"
 }

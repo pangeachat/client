@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-05 11:42:15.177802",
+    "@@last_modified": "2026-08-07 16:23:23.873334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Sesi dibuka ({num})",
     "inProgressActivitiesTitle": "Sedang berlangsung ({num})",
     "pickDifferentActivity": "Pilih aktiviti lain",
-    "blockLemmaConfirmation": "Perkataan kosa kata ini akan dialih keluar secara kekal daripada analitik anda",
     "woman": "Wanita",
     "man": "Lelaki",
     "otherGender": "Lain-lain",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Perbualan dari Hari Pertama",
     "builtForConnection": "Dibina untuk perhubungan",
     "aiWhenYouNeedIt": "AI apabila anda memerlukannya",
-    "practiceTailoredForYou": "Latihan yang disesuaikan untuk anda"
+    "practiceTailoredForYou": "Latihan yang disesuaikan untuk anda",
+    "deletedVocab": "Perkataan yang dipadam",
+    "blockLemmaConfirmation": "Perkataan ini akan dialih keluar daripada perbendaharaan kata anda dan tidak lagi memperoleh XP. Anda boleh mengembalikannya daripada Perkataan yang dipadam.",
+    "deletedVocabListBody": "Perkataan ini disembunyikan daripada perbendaharaan kata anda dan tidak memperoleh XP. Pulihkan satu untuk mengembalikannya.",
+    "deletedVocabListBodyEmpty": "Anda belum memadam sebarang perkataan. Perkataan yang anda padam daripada perbendaharaan kata anda akan dipaparkan di sini supaya anda boleh mengembalikannya.",
+    "deletedVocabListLabel": "Perkataan yang dipadam",
+    "restore": "Pulihkan",
+    "deletedWordLabel": "{lemma}, dipadam",
+    "restoredWords": "{count, plural, =1{1 perkataan dipulihkan} other{{count} perkataan dipulihkan}}",
+    "chatSearchPageLabel": "Halaman carian sembang",
+    "selectImageLabel": "Pilih imej",
+    "userSearchTagsLabel": "Cari dalam...",
+    "courseDetails": "Butiran kursus",
+    "objective": "Objektif",
+    "pingedLabel": "Diping",
+    "mapFilterPlayerCount": "{count} pemain"
 }

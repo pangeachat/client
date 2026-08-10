@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:17.911031",
+    "@@last_modified": "2026-08-07 16:23:27.248806",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -4869,16 +4869,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Từ vựng này sẽ bị xóa vĩnh viễn khỏi phân tích của bạn",
     "woman": "Phụ nữ",
     "man": "Nam",
     "otherGender": "Khác",
     "unselectedGender": "Chọn một tùy chọn giới tính",
     "chatParticipantTooltip": "Đây là tất cả mọi người trong cuộc trò chuyện này. Nhấp vào avatar của bất kỳ người dùng nào và \"bắt đầu cuộc trò chuyện\" để gửi tin nhắn trực tiếp.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -6983,5 +6978,20 @@
     "conversationFromDayOne": "Trò chuyện ngay từ ngày đầu tiên",
     "builtForConnection": "Được xây dựng để kết nối",
     "aiWhenYouNeedIt": "AI khi bạn cần",
-    "practiceTailoredForYou": "Thực hành phù hợp với bạn"
+    "practiceTailoredForYou": "Thực hành phù hợp với bạn",
+    "deletedVocab": "Các từ đã xóa",
+    "blockLemmaConfirmation": "Từ này sẽ bị xóa khỏi danh sách từ vựng của bạn và sẽ không còn kiếm được XP. Bạn có thể khôi phục từ này từ mục Các từ đã xóa.",
+    "deletedVocabListBody": "Những từ này bị ẩn khỏi danh sách từ vựng của bạn và không kiếm được XP. Khôi phục một từ để đưa từ đó trở lại.",
+    "deletedVocabListBodyEmpty": "Bạn chưa xóa từ nào. Các từ bạn xóa khỏi danh sách từ vựng sẽ hiển thị ở đây để bạn có thể khôi phục chúng.",
+    "deletedVocabListLabel": "Các từ đã xóa",
+    "restore": "Khôi phục",
+    "deletedWordLabel": "{lemma}, đã xóa",
+    "restoredWords": "{count, plural, =1{Đã khôi phục 1 từ} other{Đã khôi phục {count} từ}}",
+    "chatSearchPageLabel": "Trang tìm kiếm trò chuyện",
+    "selectImageLabel": "Chọn hình ảnh",
+    "userSearchTagsLabel": "Tìm kiếm trong...",
+    "courseDetails": "Chi tiết khóa học",
+    "objective": "Mục tiêu",
+    "pingedLabel": "Đã được nhắc đến",
+    "mapFilterPlayerCount": "{count} người chơi"
 }

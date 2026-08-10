@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-05 11:42:11.821669",
+    "@@last_modified": "2026-08-07 16:23:19.503530",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -7963,16 +7963,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ce mot de vocabulaire sera définitivement supprimé de vos analyses",
     "woman": "Femme",
     "man": "Homme",
     "otherGender": "Autre",
     "unselectedGender": "Sélectionnez une option de genre",
     "chatParticipantTooltip": "Ce sont tous les participants de ce chat. Cliquez sur l'avatar de n'importe quel utilisateur et \"démarrer une conversation\" pour envoyer un message direct.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10062,5 +10057,20 @@
     "conversationFromDayOne": "La conversation dès le premier jour",
     "builtForConnection": "Conçu pour la connexion",
     "aiWhenYouNeedIt": "L'IA quand vous en avez besoin",
-    "practiceTailoredForYou": "Une pratique adaptée à vos besoins"
+    "practiceTailoredForYou": "Une pratique adaptée à vos besoins",
+    "deletedVocab": "Mots supprimés",
+    "blockLemmaConfirmation": "Ce mot sera retiré de votre vocabulaire et ne rapportera plus d'XP. Vous pouvez le restaurer à partir des mots supprimés.",
+    "deletedVocabListBody": "Ces mots sont masqués de votre vocabulaire et ne rapportent pas d'XP. Restaurez-en un pour le récupérer.",
+    "deletedVocabListBodyEmpty": "Vous n'avez supprimé aucun mot. Les mots que vous supprimez de votre vocabulaire apparaîtront ici afin que vous puissiez les récupérer.",
+    "deletedVocabListLabel": "Mots supprimés",
+    "restore": "Restaurer",
+    "deletedWordLabel": "{lemma}, supprimé",
+    "restoredWords": "{count, plural, =1{1 mot restauré} other{{count} mots restaurés}}",
+    "chatSearchPageLabel": "Page de recherche de chat",
+    "selectImageLabel": "Sélectionner une image",
+    "userSearchTagsLabel": "Rechercher dans...",
+    "courseDetails": "Détails du cours",
+    "objective": "Objectif",
+    "pingedLabel": "Pingé",
+    "mapFilterPlayerCount": "{count} joueurs"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-05 11:42:14.448338",
+    "@@last_modified": "2026-08-07 16:23:23.387237",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Fivoriana misokatra ({num})",
     "inProgressActivitiesTitle": "Mandeha ankehitriny ({num})",
     "pickDifferentActivity": "Mifidy hetsika hafa",
-    "blockLemmaConfirmation": "Hoesorina tanteraka amin'ny fanadihadiana anao ity teny voambolana ity",
     "woman": "Vehivavy",
     "man": "Lehilahy",
     "otherGender": "Hafa",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Fifampiresahana manomboka amin'ny andro voalohany",
     "builtForConnection": "Namboarina ho an'ny fifandraisana",
     "aiWhenYouNeedIt": "AI rehefa ilainao izany",
-    "practiceTailoredForYou": "Fanazaran-tena mifanaraka aminao"
+    "practiceTailoredForYou": "Fanazaran-tena mifanaraka aminao",
+    "deletedVocab": "Teny voafafa",
+    "blockLemmaConfirmation": "Hesorina amin'ny voambolanao ity teny ity ary tsy hahazo XP intsony. Azonao averina avy amin'ny teny voafafa izany.",
+    "deletedVocabListBody": "Miafina amin'ny voambolanao ireto teny ireto ary tsy mahazo XP. Avereno ny iray mba hamerenana azy.",
+    "deletedVocabListBodyEmpty": "Tsy mbola namafa teny ianao. Ireo teny fafanao amin'ny voambolanao dia hiseho eto mba hahafahanao mamerina azy ireo.",
+    "deletedVocabListLabel": "Teny voafafa",
+    "restore": "Avereno",
+    "deletedWordLabel": "{lemma}, voafafa",
+    "restoredWords": "{count, plural, =1{Teny 1 naverina} other{Teny {count} naverina}}",
+    "chatSearchPageLabel": "Pejy fitadiavana chat",
+    "selectImageLabel": "Fidio sary",
+    "userSearchTagsLabel": "Tadiavo ao amin'ny...",
+    "courseDetails": "Andinindinin'ny taranja",
+    "objective": "Tanjona",
+    "pingedLabel": "Voatsindry",
+    "mapFilterPlayerCount": "{count} mpilalao"
 }

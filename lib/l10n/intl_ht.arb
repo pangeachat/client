@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-05 11:42:12.969377",
+    "@@last_modified": "2026-08-07 16:23:20.847260",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Sesyon ouvè ({num})",
     "inProgressActivitiesTitle": "K ap pase kounye a ({num})",
     "pickDifferentActivity": "Chwazi yon lòt aktivite",
-    "blockLemmaConfirmation": "Mo vokabilè sa a ap retire nèt nan analiz ou yo",
     "woman": "Fanm",
     "man": "Gason",
     "otherGender": "Lòt",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Konvèsasyon depi premye jou a",
     "builtForConnection": "Bati pou koneksyon",
     "aiWhenYouNeedIt": "AI lè w bezwen li",
-    "practiceTailoredForYou": "Pratik adapte pou ou"
+    "practiceTailoredForYou": "Pratik adapte pou ou",
+    "deletedVocab": "Mo efase yo",
+    "blockLemmaConfirmation": "Mo sa a pral retire nan vokabilè ou epi li p ap fè w touche XP ankò. Ou ka retounen li soti nan Mo efase yo.",
+    "deletedVocabListBody": "Mo sa yo kache nan vokabilè ou epi yo pa fè w touche XP. Restore youn pou retounen li.",
+    "deletedVocabListBodyEmpty": "Ou pa efase okenn mo. Mo ou efase nan vokabilè ou ap parèt isit la pou ou ka retounen yo.",
+    "deletedVocabListLabel": "Mo efase yo",
+    "restore": "Restore",
+    "deletedWordLabel": "{lemma}, efase",
+    "restoredWords": "{count, plural, =1{1 mo restore} other{{count} mo restore}}",
+    "chatSearchPageLabel": "Paj rechèch chat",
+    "selectImageLabel": "Chwazi imaj",
+    "userSearchTagsLabel": "Chèche nan...",
+    "courseDetails": "Detay kou",
+    "objective": "Objektif",
+    "pingedLabel": "Pinged",
+    "mapFilterPlayerCount": "{count} jwè"
 }

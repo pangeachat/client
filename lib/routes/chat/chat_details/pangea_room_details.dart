@@ -18,10 +18,13 @@ class PangeaRoomDetailsView extends StatelessWidget {
   Widget build(BuildContext context) {
     final room = Matrix.of(context).client.getRoomById(controller.roomId!);
     if (room == null || room.membership == Membership.leave) {
-      return Scaffold(
-        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
-        body: Center(
-          child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
+      return Semantics(
+        container: true,
+        child: Scaffold(
+          appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
+          body: Center(
+            child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
+          ),
         ),
       );
     }
@@ -31,28 +34,36 @@ class PangeaRoomDetailsView extends StatelessWidget {
         (update) => update.roomId == room.id,
       ),
       builder: (context, snapshot) {
-        return Scaffold(
-          appBar: room.isSpace
-              ? null
-              : AppBar(
-                  leading:
-                      controller.widget.embeddedCloseButton ??
-                      const Center(child: BackButton()),
-                ),
-          body: Padding(
-            padding: const EdgeInsetsGeometry.only(
-              top: 16.0,
-              left: 16.0,
-              right: 16.0,
-            ),
-            child: MaxWidthBody(
-              maxWidth: 900,
-              showBorder: false,
-              innerPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-              withScrolling: !room.isSpace,
-              child: room.isSpace
-                  ? SpaceDetailsContent(controller, room)
-                  : ChatDetailsContent(controller, room),
+        return Semantics(
+          label: L10n.of(context).pageLabel(
+            room.isSpace
+                ? L10n.of(context).courseDetails
+                : L10n.of(context).chatDetails,
+          ),
+          container: true,
+          child: Scaffold(
+            appBar: room.isSpace
+                ? null
+                : AppBar(
+                    leading:
+                        controller.widget.embeddedCloseButton ??
+                        const Center(child: BackButton()),
+                  ),
+            body: Padding(
+              padding: const EdgeInsetsGeometry.only(
+                top: 16.0,
+                left: 16.0,
+                right: 16.0,
+              ),
+              child: MaxWidthBody(
+                maxWidth: 900,
+                showBorder: false,
+                innerPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                withScrolling: !room.isSpace,
+                child: room.isSpace
+                    ? SpaceDetailsContent(controller, room)
+                    : ChatDetailsContent(controller, room),
+              ),
             ),
           ),
         );

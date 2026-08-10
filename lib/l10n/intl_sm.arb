@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-05 11:42:16.736775",
+    "@@last_modified": "2026-08-07 16:23:25.909060",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Sauniga tatala ({num})",
     "inProgressActivitiesTitle": "O loʻo tupu nei ({num})",
     "pickDifferentActivity": "Filifili se isi gaoioiga",
-    "blockLemmaConfirmation": "O lenei upu faʻa-upu o le a aveesea tumau mai au auiliiliga",
     "woman": "Fafine",
     "man": "Aliʻi",
     "otherGender": "Isi",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Talanoaga mai le Aso Muamua",
     "builtForConnection": "Fausia mo feso'ota'iga",
     "aiWhenYouNeedIt": "AI pe a e mana'omia",
-    "practiceTailoredForYou": "Fa'ata'ita'iga fa'apitoa mo oe"
+    "practiceTailoredForYou": "Fa'ata'ita'iga fa'apitoa mo oe",
+    "deletedVocab": "Upu ua tapeina",
+    "blockLemmaConfirmation": "O lenei upu o le a aveesea mai lau lisi o upu ma o le a le toe maua ai ni XP. E mafai ona e toe faafoʻi mai i upu ua tapeina.",
+    "deletedVocabListBody": "O upu nei ua natia mai lau lisi o upu ma e le maua ai ni XP. Toe faafoʻi mai se tasi e toe aumai ai.",
+    "deletedVocabListBodyEmpty": "E te leʻi tapeina ni upu. O upu e te tapeina mai lau lisi o upu o le a faʻaalia iinei ina ia mafai ona e toe aumai ai.",
+    "deletedVocabListLabel": "Upu ua tapeina",
+    "restore": "Toe faafoʻi",
+    "deletedWordLabel": "{lemma}, ua tapeina",
+    "restoredWords": "{count, plural, =1{Ua toe faafoʻi le 1 upu} other{Ua toe faafoʻi upu e {count}}}",
+    "chatSearchPageLabel": "Itulau su'esu'e talatalanoaga",
+    "selectImageLabel": "Filifili ata",
+    "userSearchTagsLabel": "Su'e i totonu...",
+    "courseDetails": "Fa'amatalaga o le kosi",
+    "objective": "Fa'amoemoe",
+    "pingedLabel": "Fa'ailoaina",
+    "mapFilterPlayerCount": "{count} tagata ta'aalo"
 }

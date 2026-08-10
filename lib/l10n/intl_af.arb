@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-05 11:42:10.567229",
+    "@@last_modified": "2026-08-07 16:23:17.795941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Oop sessies ({num})",
     "inProgressActivitiesTitle": "Gebeur nou ({num})",
     "pickDifferentActivity": "Kies 'n ander aktiwiteit",
-    "blockLemmaConfirmation": "Hierdie woordeskatwoord sal permanent van jou analise verwyder word",
     "woman": "Vrou",
     "man": "Man",
     "otherGender": "Ander",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Gesprek van Dag Een af",
     "builtForConnection": "Gebou vir verbinding",
     "aiWhenYouNeedIt": "KI wanneer jy dit nodig het",
-    "practiceTailoredForYou": "Oefening op maat vir jou"
+    "practiceTailoredForYou": "Oefening op maat vir jou",
+    "deletedVocab": "Geskrewe woorde",
+    "blockLemmaConfirmation": "Hierdie woord sal uit jou woordeskat verwyder word en sal nie meer XP verdien nie. Jy kan dit terugbring vanaf Geskrewe woorde.",
+    "deletedVocabListBody": "Hierdie woorde is versteek uit jou woordeskat en verdien nie XP nie. Herstel een om dit terug te bring.",
+    "deletedVocabListBodyEmpty": "Jy het nog geen woorde geskrap nie. Woorde wat jy uit jou woordeskat skrap, sal hier verskyn sodat jy dit kan terugbring.",
+    "deletedVocabListLabel": "Geskrewe woorde",
+    "restore": "Herstel",
+    "deletedWordLabel": "{lemma}, geskrap",
+    "restoredWords": "{count, plural, =1{1 woord herstel} other{{count} woorde herstel}}",
+    "chatSearchPageLabel": "Kletssoekbladsy",
+    "selectImageLabel": "Kies prent",
+    "userSearchTagsLabel": "Soek in...",
+    "courseDetails": "Kursusbesonderhede",
+    "objective": "Doelwit",
+    "pingedLabel": "Geping",
+    "mapFilterPlayerCount": "{count} spelers"
 }

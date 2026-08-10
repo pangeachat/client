@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-05 11:42:14.279391",
+    "@@last_modified": "2026-08-07 16:23:22.461258",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Sessiones apertae ({num})",
     "inProgressActivitiesTitle": "Nunc geruntur ({num})",
     "pickDifferentActivity": "Elige aliam exercitationem",
-    "blockLemmaConfirmation": "Hoc vocabulum ex analysi tua perpetuo removebitur",
     "woman": "Mulier",
     "man": "Vir",
     "otherGender": "Aliud",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "Sermo ab initio",
     "builtForConnection": "Ad coniunctionem aedificatum",
     "aiWhenYouNeedIt": "AI cum opus est",
-    "practiceTailoredForYou": "Exercitatio tibi aptata"
+    "practiceTailoredForYou": "Exercitatio tibi aptata",
+    "deletedVocab": "Verba delevimus",
+    "blockLemmaConfirmation": "Hoc verbum ex vocabulario tuo removebitur et XP non iam merebitur. Ex Verbis Deletis id recipere potes.",
+    "deletedVocabListBody": "Haec verba ex vocabulario tuo abscondita sunt et XP non merentur. Unum restitue ut id recipias.",
+    "deletedVocabListBodyEmpty": "Nulla verba delevisti. Verba quae ex vocabulario tuo deleveris hic apparebunt ut ea recipere possis.",
+    "deletedVocabListLabel": "Verba delevimus",
+    "restore": "Restitue",
+    "deletedWordLabel": "{lemma}, deletum",
+    "restoredWords": "{count, plural, =1{Unum verbum restitutum} other{{count} verba restituta}}",
+    "chatSearchPageLabel": "Pagina quaerendi sermonis",
+    "selectImageLabel": "Imaginem elige",
+    "userSearchTagsLabel": "Quaere in...",
+    "courseDetails": "Singula cursus",
+    "objective": "Propositum",
+    "pingedLabel": "Pulsatus",
+    "mapFilterPlayerCount": "{count} lusores"
 }

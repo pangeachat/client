@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-05 11:42:10.359054",
+    "@@last_modified": "2026-08-07 16:23:18.026026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "Açıq sessiyalar ({num})",
     "inProgressActivitiesTitle": "Hazırda davam edir ({num})",
     "pickDifferentActivity": "Fərqli bir fəaliyyət seçin",
-    "blockLemmaConfirmation": "Bu lüğət sözü analitikanızdan həmişəlik silinəcək",
     "woman": "Qadın",
     "man": "Kişi",
     "otherGender": "Digər",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "İlk gündən söhbət",
     "builtForConnection": "Əlaqə üçün qurulub",
     "aiWhenYouNeedIt": "Ehtiyacınız olanda süni intellekt",
-    "practiceTailoredForYou": "Sizin üçün fərdi təcrübə"
+    "practiceTailoredForYou": "Sizin üçün fərdi təcrübə",
+    "deletedVocab": "Silinmiş sözlər",
+    "blockLemmaConfirmation": "Bu söz lüğətinizdən silinəcək və XP qazandırmayacaq. Onu Silinmiş sözlər bölməsindən geri qaytara bilərsiniz.",
+    "deletedVocabListBody": "Bu sözlər lüğətinizdən gizlədilib və XP qazandırmır. Geri qaytarmaq üçün birini bərpa edin.",
+    "deletedVocabListBodyEmpty": "Heç bir söz silməmisiniz. Lüğətinizdən sildiyiniz sözlər burada görünəcək ki, onları geri qaytara biləsiniz.",
+    "deletedVocabListLabel": "Silinmiş sözlər",
+    "restore": "Bərpa et",
+    "deletedWordLabel": "{lemma}, silinib",
+    "restoredWords": "{count, plural, =1{1 söz bərpa edildi} other{{count} söz bərpa edildi}}",
+    "chatSearchPageLabel": "Söhbət axtarış səhifəsi",
+    "selectImageLabel": "Şəkil seçin",
+    "userSearchTagsLabel": "Axtarış yeri...",
+    "courseDetails": "Kurs təfərrüatları",
+    "objective": "Məqsəd",
+    "pingedLabel": "Bildiriş göndərildi",
+    "mapFilterPlayerCount": "{count} oyunçu"
 }

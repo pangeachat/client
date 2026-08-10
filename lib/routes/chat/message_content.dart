@@ -55,6 +55,13 @@ class MessageContent extends StatelessWidget {
 
   /// Gold-highlight lemma set override for [HtmlMessage] (lower-cased).
   final Set<String>? vocabLemmas;
+
+  /// Rendered as an example-message chip on a construct's analytics details
+  /// page, which shows real chat messages. Without this the chip shares token
+  /// target keys with the same event in the open chat timeline, putting one
+  /// `LayerLink` on two `CompositedTransformTarget`s and one `GlobalKey` in two
+  /// places (#6803). See [PangeaToken.analyticsExampleTargetKey].
+  final bool isAnalyticsExample;
   // Pangea#
 
   const MessageContent(
@@ -76,6 +83,7 @@ class MessageContent extends StatelessWidget {
     this.readingAssistanceMode,
     this.onTokenClick,
     this.vocabLemmas,
+    this.isAnalyticsExample = false,
     // Pangea#
   });
 
@@ -386,6 +394,7 @@ class MessageContent extends StatelessWidget {
                   isPracticeMode:
                       readingAssistanceMode ==
                       ReadingAssistanceMode.practiceMode,
+                  isAnalyticsExample: isAnalyticsExample,
                   // Pangea#
                 ),
               ),

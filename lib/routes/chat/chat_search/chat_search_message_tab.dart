@@ -105,11 +105,13 @@ class _MessageSearchResultListTile extends StatelessWidget {
         children: [
           // #Pangea
           // Avatar(mxContent: sender.avatarUrl, name: displayname, size: 16),
-          Avatar(
-            mxContent: sender.avatarUrl,
-            name: displayname,
-            userId: sender.id,
-            size: 16,
+          ExcludeSemantics(
+            child: Avatar(
+              mxContent: sender.avatarUrl,
+              name: displayname,
+              userId: sender.id,
+              size: 16,
+            ),
           ),
           // Pangea#
           const SizedBox(width: 8),

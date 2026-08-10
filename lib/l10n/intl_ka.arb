@@ -1942,7 +1942,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-05 11:42:13.759403",
+    "@@last_modified": "2026-08-07 16:23:22.210998",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -8493,16 +8493,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "ეს სიტყვა მუდმივად წაიშლება თქვენი ანალიტიკიდან",
     "woman": "ქალი",
     "man": "კაცი",
     "otherGender": "სხვა",
     "unselectedGender": "აირჩიეთ სქესის ვარიანტი",
     "chatParticipantTooltip": "ეს არის ყველა ადამიანი ამ ჩატში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „საუბრის დაწყება“, რომ გამოგიგზავნოთ პირადი შეტყობინება.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10607,5 +10602,20 @@
     "conversationFromDayOne": "საუბარი პირველივე დღიდან",
     "builtForConnection": "კავშირისთვის შექმნილი",
     "aiWhenYouNeedIt": "AI, როცა დაგჭირდება",
-    "practiceTailoredForYou": "თქვენზე მორგებული პრაქტიკა"
+    "practiceTailoredForYou": "თქვენზე მორგებული პრაქტიკა",
+    "deletedVocab": "წაშლილი სიტყვები",
+    "blockLemmaConfirmation": "ეს სიტყვა წაიშლება თქვენი ლექსიკიდან და შეწყვეტს XP-ის გამომუშავებას. შეგიძლიათ მისი აღდგენა წაშლილი სიტყვებიდან.",
+    "deletedVocabListBody": "ეს სიტყვები დამალულია თქვენი ლექსიკიდან და არ გამოიმუშავებს XP-ს. აღადგინეთ ისინი უკან დასაბრუნებლად.",
+    "deletedVocabListBodyEmpty": "თქვენ არ წაგიშლიათ არცერთი სიტყვა. სიტყვები, რომლებსაც წაშლით თქვენი ლექსიკიდან, აქ გამოჩნდება, რათა შეძლოთ მათი აღდგენა.",
+    "deletedVocabListLabel": "წაშლილი სიტყვები",
+    "restore": "აღდგენა",
+    "deletedWordLabel": "{lemma}, წაშლილია",
+    "restoredWords": "{count, plural, =1{აღდგენილია 1 სიტყვა} other{აღდგენილია {count} სიტყვა}}",
+    "chatSearchPageLabel": "ჩეთის ძიების გვერდი",
+    "selectImageLabel": "სურათის არჩევა",
+    "userSearchTagsLabel": "ძიება...",
+    "courseDetails": "კურსის დეტალები",
+    "objective": "მიზანი",
+    "pingedLabel": "დაპინგულია",
+    "mapFilterPlayerCount": "{count} მოთამაშე"
 }

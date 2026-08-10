@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-05 11:42:15.616611",
+    "@@last_modified": "2026-08-07 16:23:23.225837",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -1662,7 +1662,6 @@
     "notStartedActivitiesTitle": "തുറന്ന സെഷനുകൾ ({num})",
     "inProgressActivitiesTitle": "ഇപ്പോൾ നടക്കുന്നു ({num})",
     "pickDifferentActivity": "മറ്റൊരു പ്രവർത്തനം തിരഞ്ഞെടുക്കുക",
-    "blockLemmaConfirmation": "ഈ പദാവലി വാക്ക് നിങ്ങളുടെ അനലിറ്റിക്സിൽ നിന്ന് ശാശ്വതമായി നീക്കം ചെയ്യപ്പെടും",
     "woman": "സ്ത്രീ",
     "man": "പുരുഷൻ",
     "otherGender": "മറ്റുള്ളവ",
@@ -2091,5 +2090,20 @@
     "conversationFromDayOne": "ആദ്യ ദിവസം മുതൽ സംഭാഷണം",
     "builtForConnection": "ബന്ധങ്ങൾക്കായി നിർമ്മിച്ചത്",
     "aiWhenYouNeedIt": "നിങ്ങൾക്ക് ആവശ്യമുള്ളപ്പോൾ AI",
-    "practiceTailoredForYou": "നിങ്ങൾക്കായി തയ്യാറാക്കിയ പരിശീലനം"
+    "practiceTailoredForYou": "നിങ്ങൾക്കായി തയ്യാറാക്കിയ പരിശീലനം",
+    "deletedVocab": "മായ്‌ച്ച വാക്കുകൾ",
+    "blockLemmaConfirmation": "ഈ വാക്ക് നിങ്ങളുടെ പദസമ്പത്തിൽ നിന്ന് നീക്കം ചെയ്യപ്പെടുകയും XP നേടുന്നത് നിർത്തുകയും ചെയ്യും. മായ്‌ച്ച വാക്കുകളിൽ നിന്ന് നിങ്ങൾക്ക് ഇത് തിരികെ കൊണ്ടുവരാൻ കഴിയും.",
+    "deletedVocabListBody": "ഈ വാക്കുകൾ നിങ്ങളുടെ പദസമ്പത്തിൽ നിന്ന് മറച്ചിരിക്കുന്നു, XP നേടുന്നില്ല. ഒരെണ്ണം തിരികെ കൊണ്ടുവരാൻ പുനഃസ്ഥാപിക്കുക.",
+    "deletedVocabListBodyEmpty": "നിങ്ങൾ ഒരു വാക്കും മായ്ച്ചിട്ടില്ല. നിങ്ങളുടെ പദസമ്പത്തിൽ നിന്ന് നിങ്ങൾ മായ്ക്കുന്ന വാക്കുകൾ ഇവിടെ ദൃശ്യമാകും, അതിനാൽ നിങ്ങൾക്ക് അവ തിരികെ കൊണ്ടുവരാൻ കഴിയും.",
+    "deletedVocabListLabel": "മായ്‌ച്ച വാക്കുകൾ",
+    "restore": "പുനഃസ്ഥാപിക്കുക",
+    "deletedWordLabel": "{lemma}, മായ്ച്ചു",
+    "restoredWords": "{count, plural, =1{ഒരു വാക്ക് പുനഃസ്ഥാപിച്ചു} other{{count} വാക്കുകൾ പുനഃസ്ഥാപിച്ചു}}",
+    "chatSearchPageLabel": "ചാറ്റ് തിരയൽ പേജ്",
+    "selectImageLabel": "ചിത്രം തിരഞ്ഞെടുക്കുക",
+    "userSearchTagsLabel": "തിരയുക...",
+    "courseDetails": "കോഴ്സ് വിശദാംശങ്ങൾ",
+    "objective": "ലക്ഷ്യം",
+    "pingedLabel": "പിംഗ് ചെയ്തു",
+    "mapFilterPlayerCount": "{count} കളിക്കാർ"
 }
