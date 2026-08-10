@@ -322,11 +322,26 @@ class PangeaMessageEvent {
     _representations = null;
   }
 
-  /// The first representation matching [langCode]. With [preferCorrection], a
-  /// token-rich correction among the matches beats the embedded original —
-  /// `representations` lists embeds first, then related events newest-first,
-  /// so the first matching correction is the newest one.
   RepresentationEvent? _representationByLanguage(
+    String langCode, {
+    bool Function(RepresentationEvent)? filter,
+    bool preferCorrection = false,
+  }) => pickRepresentationByLanguage(
+    representations,
+    langCode,
+    filter: filter,
+    preferCorrection: preferCorrection,
+  );
+
+  /// The first of [representations] matching [langCode]. With
+  /// [preferCorrection], a token-rich correction among the matches beats the
+  /// embedded original — [representations] lists embeds first, then related
+  /// events newest-first, so the first matching correction is the newest one.
+  /// A correction in a DIFFERENT language never hijacks a match, and a
+  /// correction without usable tokens is ignored. Pure -> unit-testable.
+  @visibleForTesting
+  static RepresentationEvent? pickRepresentationByLanguage(
+    List<RepresentationEvent> representations,
     String langCode, {
     bool Function(RepresentationEvent)? filter,
     bool preferCorrection = false,
@@ -946,16 +961,10 @@ class PangeaMessageEvent {
     String fullText,
     PangeaMessageTokens tokensSent,
   ) async {
-    final representation = PangeaRepresentation(
-      langCode:
-          tokensSent.detections?.firstOrNull?.langCode ??
-          correctedSent?.langCode ??
-          LanguageKeys.unknownLanguage,
-      text: fullText,
-      originalSent: false,
-      originalWritten: false,
-      isCorrection: true,
-      tokens: tokensSent,
+    final representation = buildTokenCorrection(
+      fullText: fullText,
+      tokensSent: tokensSent,
+      fallbackLangCode: correctedSent?.langCode,
     );
 
     _representations = null;
@@ -965,6 +974,27 @@ class PangeaMessageEvent {
       type: PangeaEventTypes.representation,
     );
   }
+
+  /// Pure builder behind [sendTokenCorrection]: the correction's language
+  /// comes from its own detections (where the feedback flow records a
+  /// language update), falling back to [fallbackLangCode] — the current sent
+  /// representation's language. Pure -> unit-testable.
+  @visibleForTesting
+  static PangeaRepresentation buildTokenCorrection({
+    required String fullText,
+    required PangeaMessageTokens tokensSent,
+    String? fallbackLangCode,
+  }) => PangeaRepresentation(
+    langCode:
+        tokensSent.detections?.firstOrNull?.langCode ??
+        fallbackLangCode ??
+        LanguageKeys.unknownLanguage,
+    text: fullText,
+    originalSent: false,
+    originalWritten: false,
+    isCorrection: true,
+    tokens: tokensSent,
+  );
 
   Future<String?> _sendRepresentationEvent(
     PangeaRepresentation representation,
