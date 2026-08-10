@@ -27,12 +27,18 @@ class PracticeActivityCard extends StatefulWidget {
   final PangeaToken? selectedToken;
   final double maxWidth;
 
+  /// Slot owned by the input bar. Set to a callback when the loaded
+  /// exercise supports content feedback; the bar shows a flag button
+  /// pinned to its corner, above the scrolling content, while non-null.
+  final ValueNotifier<VoidCallback?> flagAction;
+
   const PracticeActivityCard({
     super.key,
     required this.targetTokensAndActivityType,
     required this.controller,
     required this.selectedToken,
     required this.maxWidth,
+    required this.flagAction,
   });
 
   @override
@@ -48,6 +54,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   @override
   void initState() {
     super.initState();
+    _activityState.addListener(_publishFlagAction);
     WidgetsBinding.instance.addPostFrameCallback((_) => _fetchActivity());
   }
 
@@ -62,9 +69,29 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
 
   @override
   void dispose() {
+    _activityState.removeListener(_publishFlagAction);
+    widget.flagAction.value = null;
     _activityState.dispose();
     _playbackSpeedController.dispose();
     super.dispose();
+  }
+
+  /// Exercises whose content comes from the lemma dictionary (emoji /
+  /// meaning) can be flagged as wrong. Listening exercises are also match
+  /// exercises, but their content is generated locally, so there is
+  /// nothing to report.
+  void _publishFlagAction() {
+    final state = _activityState.value;
+    final activity = state is AsyncLoaded<PracticeExerciseModel>
+        ? state.value
+        : null;
+    if (activity is EmojiPracticeExerciseModel ||
+        activity is LemmaMeaningPracticeExerciseModel) {
+      widget.flagAction.value = () =>
+          _onFlagExercise(activity as MatchPracticeExerciseModel);
+    } else {
+      widget.flagAction.value = null;
+    }
   }
 
   Future<void> _fetchActivity() async {
@@ -127,40 +154,6 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
     );
   }
 
-  /// Match cards whose content comes from the lemma dictionary (emoji /
-  /// meaning) get a flag button for reporting wrong content. Listening
-  /// cards are also match cards, but their content is generated locally,
-  /// so there is nothing to report.
-  Widget _buildMatchCard(MatchPracticeExerciseModel activity) {
-    final card = MatchActivityCard(
-      currentActivity: activity,
-      controller: widget.controller,
-      playbackSpeedController: _playbackSpeedController,
-    );
-
-    final flaggable =
-        activity is EmojiPracticeExerciseModel ||
-        activity is LemmaMeaningPracticeExerciseModel;
-    if (!flaggable) return card;
-
-    return Stack(
-      children: [
-        card,
-        Positioned(
-          top: 0.0,
-          right: 0.0,
-          child: IconButton(
-            color: Theme.of(context).iconTheme.color,
-            iconSize: 20.0,
-            icon: const Icon(Icons.flag_outlined),
-            tooltip: L10n.of(context).practiceFeedbackButtonTooltip,
-            onPressed: () => _onFlagExercise(activity),
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
@@ -182,8 +175,10 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
                     selectedToken: widget.selectedToken,
                     maxWidth: widget.maxWidth,
                   ),
-                MatchPracticeExerciseModel() => _buildMatchCard(
-                  state.value as MatchPracticeExerciseModel,
+                MatchPracticeExerciseModel() => MatchActivityCard(
+                  currentActivity: state.value as MatchPracticeExerciseModel,
+                  controller: widget.controller,
+                  playbackSpeedController: _playbackSpeedController,
                 ),
               },
               _ => const SizedBox.shrink(),

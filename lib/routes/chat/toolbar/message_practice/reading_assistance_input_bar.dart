@@ -33,9 +33,14 @@ class ReadingAssistanceInputBar extends StatefulWidget {
 class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
   final ScrollController _scrollController = ScrollController();
 
+  /// Set by the practice card when the current exercise's content can be
+  /// flagged as wrong (emoji / meaning); null while it can't.
+  final ValueNotifier<VoidCallback?> _flagAction = ValueNotifier(null);
+
   @override
   void dispose() {
     _scrollController.dispose();
+    _flagAction.dispose();
     super.dispose();
   }
 
@@ -73,28 +78,54 @@ class ReadingAssistanceInputBarState extends State<ReadingAssistanceInputBar> {
               padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Material(
                 borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                child: Container(
-                  padding: const EdgeInsets.all(8.0),
-                  alignment: Alignment.center,
-                  constraints: const BoxConstraints(
-                    minHeight: minContentHeight,
-                    maxHeight: AppConfig.readingAssistanceInputBarHeight,
-                  ),
-                  child: Scrollbar(
-                    thumbVisibility: true,
-                    controller: _scrollController,
-                    child: SingleChildScrollView(
-                      controller: _scrollController,
-                      child: SizedBox(
-                        width: widget.maxWidth,
-                        child: _ReadingAssistanceBarContent(
-                          controller: widget.controller,
-                          selectedToken: widget.selectedToken,
-                          maxWidth: widget.maxWidth,
+                child: Stack(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      alignment: Alignment.center,
+                      constraints: const BoxConstraints(
+                        minHeight: minContentHeight,
+                        maxHeight: AppConfig.readingAssistanceInputBarHeight,
+                      ),
+                      child: Scrollbar(
+                        thumbVisibility: true,
+                        controller: _scrollController,
+                        child: SingleChildScrollView(
+                          controller: _scrollController,
+                          child: SizedBox(
+                            width: widget.maxWidth,
+                            child: _ReadingAssistanceBarContent(
+                              controller: widget.controller,
+                              selectedToken: widget.selectedToken,
+                              maxWidth: widget.maxWidth,
+                              flagAction: _flagAction,
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
+                    ValueListenableBuilder(
+                      valueListenable: _flagAction,
+                      builder: (context, flagAction, _) {
+                        if (flagAction == null) {
+                          return const SizedBox.shrink();
+                        }
+                        return Positioned(
+                          top: 0.0,
+                          right: 0.0,
+                          child: IconButton(
+                            color: Theme.of(context).iconTheme.color,
+                            iconSize: 20.0,
+                            icon: const Icon(Icons.flag_outlined),
+                            tooltip: L10n.of(
+                              context,
+                            ).practiceFeedbackButtonTooltip,
+                            onPressed: flagAction,
+                          ),
+                        );
+                      },
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -109,11 +140,13 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
   final PracticeController controller;
   final PangeaToken? selectedToken;
   final double maxWidth;
+  final ValueNotifier<VoidCallback?> flagAction;
 
   const _ReadingAssistanceBarContent({
     required this.controller,
     required this.selectedToken,
     required this.maxWidth,
+    required this.flagAction,
   });
 
   @override
@@ -152,6 +185,7 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
           controller: controller,
           selectedToken: selectedToken,
           maxWidth: maxWidth,
+          flagAction: flagAction,
         );
       case MessagePracticeMode.wordMorph:
         if (controller.isTotallyDone) {
@@ -174,6 +208,7 @@ class _ReadingAssistanceBarContent extends StatelessWidget {
           controller: controller,
           selectedToken: selectedToken,
           maxWidth: maxWidth,
+          flagAction: flagAction,
         );
     }
   }
