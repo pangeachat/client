@@ -74,6 +74,10 @@ jobs:
         run: |
           rm -f .env
           echo "$WEB_APP_ENV" > .env
+          # Live streaming-STT client gate, same as the web deploy (release.yaml).
+          # Dark until the choreo backend is enabled: the session fails pre-`ready`
+          # and the recorder falls back to batch (today's behavior).
+          echo "LIVE_STREAMING_STT_ENABLED=true" >> .env
       - name: Apply .env patch
         run: git apply ./scripts/enable_mobile_env.patch
       - name: Remove Emoji Font
