@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-07 13:12:56.769828",
+    "@@last_modified": "2026-08-07 16:23:26.616270",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10342,5 +10342,12 @@
     "deletedVocabListLabel": "คำที่ถูกลบ",
     "restore": "กู้คืน",
     "deletedWordLabel": "{lemma}, ถูกลบแล้ว",
-    "restoredWords": "{count, plural, =1{กู้คืน 1 คำแล้ว} other{กู้คืน {count} คำแล้ว}}"
+    "restoredWords": "{count, plural, =1{กู้คืน 1 คำแล้ว} other{กู้คืน {count} คำแล้ว}}",
+    "chatSearchPageLabel": "หน้าค้นหาแชท",
+    "selectImageLabel": "เลือกรูปภาพ",
+    "userSearchTagsLabel": "ค้นหาใน...",
+    "courseDetails": "รายละเอียดคอร์ส",
+    "objective": "วัตถุประสงค์",
+    "pingedLabel": "ถูกปิง",
+    "mapFilterPlayerCount": "{count} ผู้เล่น"
 }

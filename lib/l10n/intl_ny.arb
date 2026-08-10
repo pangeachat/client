@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-07 13:12:51.676152",
+    "@@last_modified": "2026-08-07 16:23:24.570977",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Mawu ochotsedwa",
     "restore": "Bwezeretsani",
     "deletedWordLabel": "{lemma}, yachotsedwa",
-    "restoredWords": "{count, plural, =1{Mawu 1 abwezeretsedwa} other{Mawu {count} abwezeretsedwa}}"
+    "restoredWords": "{count, plural, =1{Mawu 1 abwezeretsedwa} other{Mawu {count} abwezeretsedwa}}",
+    "chatSearchPageLabel": "Tsamba lofufuzira macheza",
+    "selectImageLabel": "Sankhani chithunzi",
+    "userSearchTagsLabel": "Fufuzani mu...",
+    "courseDetails": "Zambiri za maphunziro",
+    "objective": "Cholinga",
+    "pingedLabel": "Mwatumizidwa uthenga",
+    "mapFilterPlayerCount": "Osewera {count}"
 }

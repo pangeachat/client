@@ -4,7 +4,6 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
-import 'package:fluffychat/routes/world/activity_participant_row.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_state_dot.dart';
@@ -26,7 +25,7 @@ class DotMarkersLayer {
   /// on screen at the last settle, so a State recreated by MarkerLayer's
   /// per-frame positional reconciliation doesn't replay its pop-in (#8136).
   final bool Function(String) animateInOf;
-  final ({List<LargeCardParticipant> participants, int openSlots}) Function(
+  final ({List<String> participants, int openSlots}) Function(
     String,
     ActivityPinState,
   )

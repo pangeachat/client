@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-07 13:12:54.143966",
+    "@@last_modified": "2026-08-07 16:23:25.608315",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10655,5 +10655,12 @@
     "deletedVocabListLabel": "Odstránené slová",
     "restore": "Obnoviť",
     "deletedWordLabel": "{lemma}, odstránené",
-    "restoredWords": "{count, plural, =1{Obnovené 1 slovo} other{Obnovených {count} slov}}"
+    "restoredWords": "{count, plural, =1{Obnovené 1 slovo} other{Obnovených {count} slov}}",
+    "chatSearchPageLabel": "Stránka vyhľadávania chatu",
+    "selectImageLabel": "Vybrať obrázok",
+    "userSearchTagsLabel": "Hľadať v...",
+    "courseDetails": "Podrobnosti kurzu",
+    "objective": "Cieľ",
+    "pingedLabel": "Pingnuté",
+    "mapFilterPlayerCount": "{count} hráčov"
 }

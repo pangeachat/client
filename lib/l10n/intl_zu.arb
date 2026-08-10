@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-07 13:13:00.407057",
+    "@@last_modified": "2026-08-07 16:23:27.996390",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Amagama asusiwe",
     "restore": "Buyisa",
     "deletedWordLabel": "{lemma}, kususiwe",
-    "restoredWords": "{count, plural, =1{Kubuyiswe igama eli-1} other{Kubuyiswe amagama angu-{count}}}"
+    "restoredWords": "{count, plural, =1{Kubuyiswe igama eli-1} other{Kubuyiswe amagama angu-{count}}}",
+    "chatSearchPageLabel": "Ikhasi lokusesha lengxoxo",
+    "selectImageLabel": "Khetha isithombe",
+    "userSearchTagsLabel": "Sesha ku...",
+    "courseDetails": "Imininingwane yesifundo",
+    "objective": "Umgomo",
+    "pingedLabel": "Kupingwe",
+    "mapFilterPlayerCount": "abadlali abangu-{count}"
 }

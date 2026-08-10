@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-07 13:12:57.999600",
+    "@@last_modified": "2026-08-07 16:23:26.895404",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9710,5 +9710,12 @@
     "deletedVocabListLabel": "Видалені слова",
     "restore": "Відновити",
     "deletedWordLabel": "{lemma}, видалено",
-    "restoredWords": "{count, plural, =1{Відновлено 1 слово} other{Відновлено {count} слів}}"
+    "restoredWords": "{count, plural, =1{Відновлено 1 слово} other{Відновлено {count} слів}}",
+    "chatSearchPageLabel": "Сторінка пошуку чату",
+    "selectImageLabel": "Вибрати зображення",
+    "userSearchTagsLabel": "Шукати в...",
+    "courseDetails": "Деталі курсу",
+    "objective": "Мета",
+    "pingedLabel": "Надіслано запит",
+    "mapFilterPlayerCount": "{count} гравців"
 }

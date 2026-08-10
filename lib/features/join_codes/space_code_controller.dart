@@ -18,8 +18,7 @@ import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/join_codes/too_many_requests_dialog.dart';
 import 'package:fluffychat/features/navigation/panel_token.dart';
-import 'package:fluffychat/features/navigation/route_paths.dart';
-import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -121,15 +120,6 @@ class SpaceCodeController {
     return (roomId: joinedRoomId, isSpace: false, activityId: null);
   }
 
-  /// The landing for an activity-session code join: the activity plan page
-  /// with the joined session room bound in the token (`activity:<id>.r<room>`),
-  /// so the page offers that session's join/resume. No course context rides
-  /// along — the plan resolves a JOINED parent itself, and forcing an
-  /// unjoined one open was the endless-spinner half of #8047. Pure —
-  /// unit-tested (join_code_login_bounce_test.dart).
-  static String activitySessionLanding(String activityId, String roomId) =>
-      '${PRoutes.world}?left=${ActivityPanelToken(ActivityTokenParam(activityId: activityId, roomId: roomId)).encode()}';
-
   /// The synchronous half of the post-join hop, split from
   /// [resolveJoinedTarget] so a caller that must rewrite its own URL first
   /// (the inbound-coded join page consuming its trigger, #7579) can do both
@@ -140,7 +130,11 @@ class SpaceCodeController {
   ) {
     final activityId = target.activityId;
     if (activityId != null) {
-      context.go(activitySessionLanding(activityId, target.roomId));
+      context.go(
+        WorkspaceNav.setLeft(GoRouterState.of(context).uri, [
+          RoomPanelToken(RoomTokenParam(id: target.roomId)),
+        ]),
+      );
       return;
     }
     target.isSpace

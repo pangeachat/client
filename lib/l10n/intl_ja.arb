@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-07 13:12:44.562038",
+    "@@last_modified": "2026-08-07 16:23:21.358700",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10479,5 +10479,12 @@
     "deletedVocabListLabel": "削除済み単語",
     "restore": "復元",
     "deletedWordLabel": "{lemma}、削除済み",
-    "restoredWords": "{count, plural, =1{1単語を復元しました} other{{count}単語を復元しました}}"
+    "restoredWords": "{count, plural, =1{1単語を復元しました} other{{count}単語を復元しました}}",
+    "chatSearchPageLabel": "チャット検索ページ",
+    "selectImageLabel": "画像を選択",
+    "userSearchTagsLabel": "検索対象...",
+    "courseDetails": "コース詳細",
+    "objective": "目的",
+    "pingedLabel": "Ping済み",
+    "mapFilterPlayerCount": "{count}人のプレイヤー"
 }

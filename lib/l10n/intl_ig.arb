@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-07 13:12:44.795822",
+    "@@last_modified": "2026-08-07 16:23:21.537735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Okwu ndị ehichapụrụ",
     "restore": "Weghachi",
     "deletedWordLabel": "{lemma}, ehichapụrụ",
-    "restoredWords": "{count, plural, =1{Eweghachiri okwu 1} other{Eweghachiri okwu {count}}}"
+    "restoredWords": "{count, plural, =1{Eweghachiri okwu 1} other{Eweghachiri okwu {count}}}",
+    "chatSearchPageLabel": "Ibe nchọta nkata",
+    "selectImageLabel": "Họrọ onyonyo",
+    "userSearchTagsLabel": "Chọọ na...",
+    "courseDetails": "Nkọwa ọmụmụ",
+    "objective": "Ebumnuche",
+    "pingedLabel": "Kpọọrọ",
+    "mapFilterPlayerCount": "{count} ndị egwuregwu"
 }

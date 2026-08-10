@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-07 13:12:49.772094",
+    "@@last_modified": "2026-08-07 16:23:23.225837",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "മായ്‌ച്ച വാക്കുകൾ",
     "restore": "പുനഃസ്ഥാപിക്കുക",
     "deletedWordLabel": "{lemma}, മായ്ച്ചു",
-    "restoredWords": "{count, plural, =1{ഒരു വാക്ക് പുനഃസ്ഥാപിച്ചു} other{{count} വാക്കുകൾ പുനഃസ്ഥാപിച്ചു}}"
+    "restoredWords": "{count, plural, =1{ഒരു വാക്ക് പുനഃസ്ഥാപിച്ചു} other{{count} വാക്കുകൾ പുനഃസ്ഥാപിച്ചു}}",
+    "chatSearchPageLabel": "ചാറ്റ് തിരയൽ പേജ്",
+    "selectImageLabel": "ചിത്രം തിരഞ്ഞെടുക്കുക",
+    "userSearchTagsLabel": "തിരയുക...",
+    "courseDetails": "കോഴ്സ് വിശദാംശങ്ങൾ",
+    "objective": "ലക്ഷ്യം",
+    "pingedLabel": "പിംഗ് ചെയ്തു",
+    "mapFilterPlayerCount": "{count} കളിക്കാർ"
 }

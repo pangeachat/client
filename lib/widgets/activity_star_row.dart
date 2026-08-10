@@ -41,7 +41,7 @@ class ActivityStarRow extends StatelessWidget {
       );
     }
     return Semantics(
-      label: L10n.of(context).starRowLabel(filled, total),
+      label: L10n.of(context).starsEarnedOfTotal(filled, total),
       child: Wrap(
         spacing: 2.0,
         runSpacing: 2.0,

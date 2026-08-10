@@ -5,9 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 
-import 'package:fluffychat/features/join_codes/space_code_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
-import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 
@@ -159,31 +157,5 @@ void main() {
         expect(storage.read(PLocalKey.cachedActivityToOpen), isNull);
       },
     );
-  });
-
-  // An activity-session code join lands on the activity page with the joined
-  // session bound — never the parent course, and with no course context
-  // forced open (#8047). The landing URL is the token the activity panel
-  // parses, so pin the round-trip.
-  group('SpaceCodeController.activitySessionLanding', () {
-    const uuid = 'a1aed3f6-1ef7-4ed0-bc46-4a393aaf880b';
-    const sessionRoom = '!session:staging.pangea.chat';
-
-    test('emits the activity token with the session room bound, no course '
-        'context', () {
-      final landing = SpaceCodeController.activitySessionLanding(
-        uuid,
-        sessionRoom,
-      );
-      final uri = Uri.parse(landing);
-      expect(uri.path, '/');
-      expect(uri.queryParameters.containsKey('c'), isFalse);
-
-      final param = activityInfoFor(uri);
-      expect(param, isNotNull);
-      expect(param!.activityId, uuid);
-      expect(param.roomId, sessionRoom);
-      expect(param.launch, isFalse);
-    });
   });
 }

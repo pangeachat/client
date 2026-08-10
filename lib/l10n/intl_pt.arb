@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:52.122498",
+    "@@last_modified": "2026-08-07 16:23:24.717141",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10654,5 +10654,12 @@
     "deletedVocabListLabel": "Palavras excluídas",
     "restore": "Restaurar",
     "deletedWordLabel": "{lemma}, excluído",
-    "restoredWords": "{count, plural, =1{1 palavra restaurada} other{{count} palavras restauradas}}"
+    "restoredWords": "{count, plural, =1{1 palavra restaurada} other{{count} palavras restauradas}}",
+    "chatSearchPageLabel": "Página de pesquisa do chat",
+    "selectImageLabel": "Selecionar imagem",
+    "userSearchTagsLabel": "Pesquisar em...",
+    "courseDetails": "Detalhes do curso",
+    "objective": "Objetivo",
+    "pingedLabel": "Notificado",
+    "mapFilterPlayerCount": "{count} jogadores"
 }

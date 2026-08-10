@@ -39,6 +39,10 @@ class QuestPlan {
       PLanguageStore.byLangCode(targetLanguage)?.langCode.toUpperCase() ??
       targetLanguage.toUpperCase();
 
+  String get targetLanguageFullDisplay =>
+      PLanguageStore.byLangCode(targetLanguage)?.displayName ??
+      targetLanguageDisplay;
+
   LanguageLevelTypeEnum get cefrLevel =>
       LanguageLevelTypeEnum.fromString(targetCefr);
 

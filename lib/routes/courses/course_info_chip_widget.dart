@@ -126,12 +126,17 @@ class CourseInfoChipsState extends State<CourseInfoChips> {
       spacing: 8.0,
       runSpacing: 8.0,
       children: [
-        CourseInfoChip(
-          icon: Icons.language,
-          text: outline.quest.targetLanguageDisplay,
-          fontSize: widget.fontSize,
-          iconSize: widget.iconSize,
-          padding: widget.padding,
+        Semantics(
+          label: outline.quest.targetLanguageFullDisplay,
+          child: ExcludeSemantics(
+            child: CourseInfoChip(
+              icon: Icons.language,
+              text: outline.quest.targetLanguageDisplay,
+              fontSize: widget.fontSize,
+              iconSize: widget.iconSize,
+              padding: widget.padding,
+            ),
+          ),
         ),
         CourseInfoChip(
           icon: Icons.school,

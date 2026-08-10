@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-07 13:12:53.039606",
+    "@@last_modified": "2026-08-07 16:23:24.997323",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10682,5 +10682,12 @@
     "deletedVocabListLabel": "Удалённые слова",
     "restore": "Восстановить",
     "deletedWordLabel": "{lemma}, удалено",
-    "restoredWords": "{count, plural, =1{Восстановлено 1 слово} other{Восстановлено {count} слов}}"
+    "restoredWords": "{count, plural, =1{Восстановлено 1 слово} other{Восстановлено {count} слов}}",
+    "chatSearchPageLabel": "Страница поиска чатов",
+    "selectImageLabel": "Выбрать изображение",
+    "userSearchTagsLabel": "Искать в...",
+    "courseDetails": "Детали курса",
+    "objective": "Цель",
+    "pingedLabel": "Упомянут",
+    "mapFilterPlayerCount": "{count} игроков"
 }

@@ -3540,7 +3540,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-07 13:12:48.631782",
+    "@@last_modified": "2026-08-07 16:23:23.103588",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9710,5 +9710,12 @@
     "deletedVocabListLabel": "Dzēstie vārdi",
     "restore": "Atjaunot",
     "deletedWordLabel": "{lemma}, dzēsts",
-    "restoredWords": "{count, plural, =1{Atjaunots 1 vārds} other{Atjaunoti {count} vārdi}}"
+    "restoredWords": "{count, plural, =1{Atjaunots 1 vārds} other{Atjaunoti {count} vārdi}}",
+    "chatSearchPageLabel": "Tērzēšanas meklēšanas lapa",
+    "selectImageLabel": "Atlasīt attēlu",
+    "userSearchTagsLabel": "Meklēt šeit...",
+    "courseDetails": "Kursa detaļas",
+    "objective": "Mērķis",
+    "pingedLabel": "Pingots",
+    "mapFilterPlayerCount": "{count} spēlētāji"
 }

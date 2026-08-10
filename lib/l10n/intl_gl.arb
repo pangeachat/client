@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-07 13:12:41.410174",
+    "@@last_modified": "2026-08-07 16:23:20.278172",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9710,5 +9710,12 @@
     "deletedVocabListLabel": "Palabras eliminadas",
     "restore": "Restaurar",
     "deletedWordLabel": "{lemma}, eliminada",
-    "restoredWords": "{count, plural, =1{Restaurouse 1 palabra} other{Restauráronse {count} palabras}}"
+    "restoredWords": "{count, plural, =1{Restaurouse 1 palabra} other{Restauráronse {count} palabras}}",
+    "chatSearchPageLabel": "Páxina de busca do chat",
+    "selectImageLabel": "Seleccionar imaxe",
+    "userSearchTagsLabel": "Buscar en...",
+    "courseDetails": "Detalles do curso",
+    "objective": "Obxectivo",
+    "pingedLabel": "Mencionado",
+    "mapFilterPlayerCount": "{count} xogadores"
 }

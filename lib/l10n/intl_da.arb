@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-07 13:12:38.953755",
+    "@@last_modified": "2026-08-07 16:23:18.713905",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10630,5 +10630,12 @@
     "deletedVocabListLabel": "Slettede ord",
     "restore": "Gendan",
     "deletedWordLabel": "{lemma}, slettet",
-    "restoredWords": "{count, plural, =1{Gendannede 1 ord} other{Gendannede {count} ord}}"
+    "restoredWords": "{count, plural, =1{Gendannede 1 ord} other{Gendannede {count} ord}}",
+    "chatSearchPageLabel": "Søgeside for chat",
+    "selectImageLabel": "Vælg billede",
+    "userSearchTagsLabel": "Søg i...",
+    "courseDetails": "Kursusdetaljer",
+    "objective": "Mål",
+    "pingedLabel": "Pinget",
+    "mapFilterPlayerCount": "{count} spillere"
 }

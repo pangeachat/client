@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-07 13:12:37.380760",
+    "@@last_modified": "2026-08-07 16:23:18.026026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Silinmiş sözlər",
     "restore": "Bərpa et",
     "deletedWordLabel": "{lemma}, silinib",
-    "restoredWords": "{count, plural, =1{1 söz bərpa edildi} other{{count} söz bərpa edildi}}"
+    "restoredWords": "{count, plural, =1{1 söz bərpa edildi} other{{count} söz bərpa edildi}}",
+    "chatSearchPageLabel": "Söhbət axtarış səhifəsi",
+    "selectImageLabel": "Şəkil seçin",
+    "userSearchTagsLabel": "Axtarış yeri...",
+    "courseDetails": "Kurs təfərrüatları",
+    "objective": "Məqsəd",
+    "pingedLabel": "Bildiriş göndərildi",
+    "mapFilterPlayerCount": "{count} oyunçu"
 }

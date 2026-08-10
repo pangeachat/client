@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-07 13:12:42.083885",
+    "@@last_modified": "2026-08-07 16:23:20.171672",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "કાઢી નાખેલા શબ્દો",
     "restore": "પુનઃસ્થાપિત કરો",
     "deletedWordLabel": "{lemma}, કાઢી નાખેલ",
-    "restoredWords": "{count, plural, =1{1 શબ્દ પુનઃસ્થાપિત કર્યો} other{{count} શબ્દો પુનઃસ્થાપિત કર્યા}}"
+    "restoredWords": "{count, plural, =1{1 શબ્દ પુનઃસ્થાપિત કર્યો} other{{count} શબ્દો પુનઃસ્થાપિત કર્યા}}",
+    "chatSearchPageLabel": "ચેટ શોધ પેજ",
+    "selectImageLabel": "છબી પસંદ કરો",
+    "userSearchTagsLabel": "આમાં શોધો...",
+    "courseDetails": "કોર્સની વિગતો",
+    "objective": "ઉદ્દેશ્ય",
+    "pingedLabel": "પિંગ કર્યું",
+    "mapFilterPlayerCount": "{count} ખેલાડીઓ"
 }

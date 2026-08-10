@@ -84,19 +84,23 @@ class ChatSearchFilesTab extends StatelessWidget {
                   ),
                   const SizedBox(height: 4),
                 ],
-                Material(
-                  borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-                  color: theme.colorScheme.onInverseSurface,
-                  clipBehavior: Clip.hardEdge,
-                  child: ListTile(
-                    leading: const Icon(Icons.file_present_outlined),
-                    title: Text(
-                      filename,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
+                Semantics(
+                  label: L10n.of(context).download,
+                  container: true,
+                  child: Material(
+                    borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                    color: theme.colorScheme.onInverseSurface,
+                    clipBehavior: Clip.hardEdge,
+                    child: ListTile(
+                      leading: const Icon(Icons.file_present_outlined),
+                      title: Text(
+                        filename,
+                        maxLines: 1,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      subtitle: Text('$sizeString | $filetype'),
+                      onTap: () => event.saveFile(context),
                     ),
-                    subtitle: Text('$sizeString | $filetype'),
-                    onTap: () => event.saveFile(context),
                   ),
                 ),
               ],

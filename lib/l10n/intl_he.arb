@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:42.497043",
+    "@@last_modified": "2026-08-07 16:23:20.342558",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10624,5 +10624,12 @@
     "deletedVocabListLabel": "מילים שנמחקו",
     "restore": "שחזר",
     "deletedWordLabel": "{lemma}, נמחקה",
-    "restoredWords": "{count, plural, =1{שוחזרה מילה אחת} other{שוחזרו {count} מילים}}"
+    "restoredWords": "{count, plural, =1{שוחזרה מילה אחת} other{שוחזרו {count} מילים}}",
+    "chatSearchPageLabel": "דף חיפוש צ'אט",
+    "selectImageLabel": "בחר תמונה",
+    "userSearchTagsLabel": "חפש ב...",
+    "courseDetails": "פרטי הקורס",
+    "objective": "מטרה",
+    "pingedLabel": "תויג",
+    "mapFilterPlayerCount": "{count} שחקנים"
 }

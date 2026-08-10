@@ -149,7 +149,7 @@ class WorldMapLargeCard extends StatelessWidget {
   final ActivityPlanModel? plan;
   final Room? liveRoom;
   final int starsEarned;
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
   final VoidCallback onTap;
 
@@ -395,7 +395,7 @@ class _CardBody extends StatelessWidget {
   final ActivityPinState state;
   final Color accent;
   final Room? liveRoom;
-  final List<LargeCardParticipant> participants;
+  final List<String> participants;
   final int openSlots;
   final int starsTotal;
   final int starsEarned;
@@ -421,7 +421,7 @@ class _CardBody extends StatelessWidget {
     ActivityPinState.ongoingPending => ActivityParticipantRow(
       icon: Icons.hourglass_bottom,
       accent: accent,
-      participants: liveRoom?.largeCardParticipants ?? participants,
+      participants: liveRoom?.largeCardParticipantIds ?? participants,
       openSlots: liveRoom?.numRemainingRoles ?? openSlots,
     ),
     ActivityPinState.ongoingActive => _OngoingActiveBody(

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-07 13:12:38.679869",
+    "@@last_modified": "2026-08-07 16:23:18.732713",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Parolle sguassate",
     "restore": "Risturà",
     "deletedWordLabel": "{lemma}, sguassatu",
-    "restoredWords": "{count, plural, =1{1 parolla risturata} other{{count} parolle risturate}}"
+    "restoredWords": "{count, plural, =1{1 parolla risturata} other{{count} parolle risturate}}",
+    "chatSearchPageLabel": "Pagina di ricerca di e chjachjare",
+    "selectImageLabel": "Selezziunà l'imagine",
+    "userSearchTagsLabel": "Circà in...",
+    "courseDetails": "Dettagli di u corsu",
+    "objective": "Obiettivu",
+    "pingedLabel": "Pingatu",
+    "mapFilterPlayerCount": "{count} ghjucadori"
 }

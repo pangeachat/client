@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-07 13:13:00.568038",
+    "@@last_modified": "2026-08-07 16:23:28.061771",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Àwọn ọ̀rọ̀ tó ti parẹ́",
     "restore": "Mú padà",
     "deletedWordLabel": "{lemma}, tí a ti parẹ́",
-    "restoredWords": "{count, plural, =1{A ti mú ọ̀rọ̀ 1 padà} other{A ti mú àwọn ọ̀rọ̀ {count} padà}}"
+    "restoredWords": "{count, plural, =1{A ti mú ọ̀rọ̀ 1 padà} other{A ti mú àwọn ọ̀rọ̀ {count} padà}}",
+    "chatSearchPageLabel": "Ojúewé àwárí ìfọ̀rọ̀wéránṣẹ́",
+    "selectImageLabel": "Yan àwòrán",
+    "userSearchTagsLabel": "Ṣe àwárí nínú...",
+    "courseDetails": "Àwọn àlàyé kúkúrú nípa ẹ̀kọ́",
+    "objective": "Ète",
+    "pingedLabel": "Píngì",
+    "mapFilterPlayerCount": "{count} àwọn agbábọ́ọ̀lù"
 }

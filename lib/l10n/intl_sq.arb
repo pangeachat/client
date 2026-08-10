@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-07 13:12:55.184545",
+    "@@last_modified": "2026-08-07 16:23:25.775162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Fjalë të fshira",
     "restore": "Rikthe",
     "deletedWordLabel": "{lemma}, e fshirë",
-    "restoredWords": "{count, plural, =1{U rikthye 1 fjalë} other{U rikthyen {count} fjalë}}"
+    "restoredWords": "{count, plural, =1{U rikthye 1 fjalë} other{U rikthyen {count} fjalë}}",
+    "chatSearchPageLabel": "Faqja e kërkimit të bisedave",
+    "selectImageLabel": "Zgjidhni imazhin",
+    "userSearchTagsLabel": "Kërko në...",
+    "courseDetails": "Detajet e kursit",
+    "objective": "Objektivi",
+    "pingedLabel": "U njoftua",
+    "mapFilterPlayerCount": "{count} lojtarë"
 }

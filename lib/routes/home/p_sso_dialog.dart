@@ -87,22 +87,25 @@ class SSODialogState extends State<SSODialog> {
                     spacing: 16.0,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      SelectableLinkify(
-                        text: L10n.of(context).ssoDialogDesc,
-                        textScaleFactor: MediaQuery.textScalerOf(
-                          context,
-                        ).scale(1),
-                        linkStyle: TextStyle(
-                          color: Theme.of(context).colorScheme.primary,
-                          decorationColor: Theme.of(
+                      Semantics(
+                        label: L10n.of(context).ssoDialogDesc,
+                        child: SelectableLinkify(
+                          text: L10n.of(context).ssoDialogDesc,
+                          textScaleFactor: MediaQuery.textScalerOf(
                             context,
-                          ).colorScheme.primary,
+                          ).scale(1),
+                          linkStyle: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            decorationColor: Theme.of(
+                              context,
+                            ).colorScheme.primary,
+                          ),
+                          options: const LinkifyOptions(humanize: false),
+                          onOpen: (url) =>
+                              UrlLauncher(context, url.url).launchUrl(),
+                          style: Theme.of(context).textTheme.bodyLarge,
+                          textAlign: TextAlign.center,
                         ),
-                        options: const LinkifyOptions(humanize: false),
-                        onOpen: (url) =>
-                            UrlLauncher(context, url.url).launchUrl(),
-                        style: Theme.of(context).textTheme.bodyLarge,
-                        textAlign: TextAlign.center,
                       ),
                       _showHint
                           ? Text(
