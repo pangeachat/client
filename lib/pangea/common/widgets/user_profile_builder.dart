@@ -30,11 +30,14 @@ String profileDisplayName(String userId, Profile? profile, L10n l10n) =>
 /// back to the localpart. The global profile is the one source always
 /// available.
 ///
-/// The SDK owns the caching: [Client.getProfileFromUserId] serves from its
+/// The SDK owns the freshness: [Client.getProfileFromUserId] serves from its
 /// database, de-duplicates concurrent requests for the same id, and marks
-/// entries outdated off the sync loop. This widget adds no cache of its own,
-/// so a resolved profile still costs a future — the fallback shows for a frame
-/// whenever this State is built fresh rather than merely rebuilt.
+/// entries outdated off the sync loop. That lookup is always a future though,
+/// even on a hit, so a [State] starting from null draws the fallback letter
+/// circle for at least a frame — and cards mount fresh far more often than the
+/// profile changes. The process-wide seed below closes that gap: a mount starts
+/// from the last value resolved for that id, and the refetch still runs and
+/// overwrites.
 ///
 /// Prefer [UserProfileAvatar] / [UserProfileName]; reach for this directly only
 /// where a card needs the raw [Profile].
@@ -54,38 +57,72 @@ class UserProfileBuilder extends StatefulWidget {
     required this.builder,
   });
 
+  @visibleForTesting
+  static void clearLastResolvedForTest() => _lastResolved.clear();
+
   @override
   State<UserProfileBuilder> createState() => _UserProfileBuilderState();
 }
 
+/// Profiles this process has already resolved, by user id — the synchronous
+/// seed a fresh [_UserProfileBuilderState] starts from instead of null.
+///
+/// It exists because a remount is not a rare event here. The role cards sit
+/// inside the chat timeline, which rebuilds on every event; a rebuild that
+/// changes the shape of an ancestor's child list (the goals header appearing,
+/// the media carousel collapsing) drops and recreates the subtree, and the old
+/// behaviour flashed the letter circle every time (#8233).
+///
+/// Deliberately never evicted: an entry is a user id, display name and avatar
+/// URL, it is overwritten by the refetch every mount performs, and the set of
+/// users one session sees is small.
+final Map<String, Profile> _lastResolved = {};
+
 class _UserProfileBuilderState extends State<UserProfileBuilder> {
   Profile? _profile;
+
+  /// Whether [didChangeDependencies] has already kicked off the first resolve.
+  bool _requested = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _profile = _lastResolved[widget.userId];
+  }
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     // Not initState: resolving reads the client off the Provider, which isn't
-    // available until dependencies are in place.
+    // available until dependencies are in place. Guarded, because this also
+    // fires on every later dependency change — re-resolving there is what used
+    // to blank an already-resolved avatar (#8233).
+    if (_requested) return;
+    _requested = true;
     _resolve();
   }
 
   @override
   void didUpdateWidget(UserProfileBuilder old) {
     super.didUpdateWidget(old);
-    if (old.userId != widget.userId) _resolve();
+    if (old.userId == widget.userId) return;
+    // A different user: what we hold describes the old one, so fall back to
+    // whatever is already known about the new one (null until it resolves).
+    _profile = _lastResolved[widget.userId];
+    _resolve();
   }
 
   void _resolve() {
-    _profile = null;
     final userId = widget.userId;
     // Null is an unfilled activity seat: nothing to look up, and the caller
     // draws its own empty-seat treatment.
     if (userId == null) return;
 
     Matrix.of(context).client.getProfileFromUserId(userId).then((profile) {
+      _lastResolved[userId] = profile;
       // Drop a stale completion: the widget may have moved to another user
       // (marker recycling) while this lookup was in flight.
-      if (mounted && widget.userId == userId) {
+      if (mounted && widget.userId == userId && _profile != profile) {
         setState(() => _profile = profile);
       }
     });
