@@ -55,6 +55,12 @@ class MobileNavWidget extends StatefulWidget {
   /// button.
   final Widget Function(Widget child)? chatsBadgeBuilder;
 
+  /// Wraps the Courses rail item with the invited-course badge, so a pending
+  /// course invitation is visible without opening the hub (#8190). Injected by
+  /// the shell for the same reason as [chatsBadgeBuilder]. Null renders the
+  /// plain button.
+  final Widget Function(Widget child)? coursesBadgeBuilder;
+
   /// The open section/course content hosted in the cavity. Null means nothing
   /// is cavity-hosted (rail-only, no matter the last height).
   final Widget? cavityChild;
@@ -170,6 +176,7 @@ class MobileNavWidget extends StatefulWidget {
     required this.onCourseShortcutTap,
     required this.onSectionTap,
     this.chatsBadgeBuilder,
+    this.coursesBadgeBuilder,
     this.cavityChild,
     this.cavitySection,
     this.courseShortcutHostsCavity = false,
@@ -551,6 +558,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   Widget _withChatsBadge(Widget child) =>
       widget.chatsBadgeBuilder?.call(child) ?? child;
 
+  Widget _withCoursesBadge(Widget child) =>
+      widget.coursesBadgeBuilder?.call(child) ?? child;
+
   void _onCourseShortcutTap() {
     // The shortcut's own toggle: when its course IS the hosted sheet, the tap
     // collapses/re-expands like any active rail item — a same-URL navigation
@@ -765,18 +775,20 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                       ),
                                     ),
                                   ),
-                                  _RailButton(
-                                    icon: Icons.map_outlined,
-                                    selectedIcon: Icons.map,
-                                    // The specific course's highlight (the
-                                    // shortcut) outranks the section icon.
-                                    selected:
-                                        widget.activeSection ==
-                                            AppSection.courses &&
-                                        !widget.courseShortcutSelected,
-                                    tooltip: l10n.courses,
-                                    onTap: () =>
-                                        _onRailItemTap(AppSection.courses),
+                                  _withCoursesBadge(
+                                    _RailButton(
+                                      icon: Icons.map_outlined,
+                                      selectedIcon: Icons.map,
+                                      // The specific course's highlight (the
+                                      // shortcut) outranks the section icon.
+                                      selected:
+                                          widget.activeSection ==
+                                              AppSection.courses &&
+                                          !widget.courseShortcutSelected,
+                                      tooltip: l10n.courses,
+                                      onTap: () =>
+                                          _onRailItemTap(AppSection.courses),
+                                    ),
                                   ),
                                   _CourseShortcutButton(
                                     icon: widget.courseShortcutIcon,
