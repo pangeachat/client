@@ -133,7 +133,7 @@ class RecordingInputRow extends StatelessWidget {
                 onPressed: state.isSending || state.isFinalizingToEditable
                     ? null
                     : state.shouldStopStreamingToEditable
-                    ? () => state.stopStreamingToEditable()
+                    ? () => state.stopStreamingToEditable(onSend)
                     : () => state.stopAndSend(onSend),
                 // Pangea#
               ),
