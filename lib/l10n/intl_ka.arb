@@ -1942,7 +1942,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-07 13:12:46.291392",
+    "@@last_modified": "2026-08-07 16:23:22.210998",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10610,5 +10610,12 @@
     "deletedVocabListLabel": "წაშლილი სიტყვები",
     "restore": "აღდგენა",
     "deletedWordLabel": "{lemma}, წაშლილია",
-    "restoredWords": "{count, plural, =1{აღდგენილია 1 სიტყვა} other{აღდგენილია {count} სიტყვა}}"
+    "restoredWords": "{count, plural, =1{აღდგენილია 1 სიტყვა} other{აღდგენილია {count} სიტყვა}}",
+    "chatSearchPageLabel": "ჩეთის ძიების გვერდი",
+    "selectImageLabel": "სურათის არჩევა",
+    "userSearchTagsLabel": "ძიება...",
+    "courseDetails": "კურსის დეტალები",
+    "objective": "მიზანი",
+    "pingedLabel": "დაპინგულია",
+    "mapFilterPlayerCount": "{count} მოთამაშე"
 }

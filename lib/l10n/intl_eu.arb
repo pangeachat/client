@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-07 13:12:40.554549",
+    "@@last_modified": "2026-08-07 16:23:19.469708",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9710,5 +9710,12 @@
     "deletedVocabListLabel": "Ezabatutako hitzak",
     "restore": "Berreskuratu",
     "deletedWordLabel": "{lemma}, ezabatuta",
-    "restoredWords": "{count, plural, =1{Hitz 1 berreskuratu da} other{{count} hitz berreskuratu dira}}"
+    "restoredWords": "{count, plural, =1{Hitz 1 berreskuratu da} other{{count} hitz berreskuratu dira}}",
+    "chatSearchPageLabel": "Txat bilaketa orria",
+    "selectImageLabel": "Hautatu irudia",
+    "userSearchTagsLabel": "Bilatu hemen...",
+    "courseDetails": "Ikastaroaren xehetasunak",
+    "objective": "Helburua",
+    "pingedLabel": "Pingatuta",
+    "mapFilterPlayerCount": "{count} jokalari"
 }

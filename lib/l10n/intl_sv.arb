@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:56.305924",
+    "@@last_modified": "2026-08-07 16:23:26.272103",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10228,5 +10228,12 @@
     "deletedVocabListLabel": "Borttagna ord",
     "restore": "Återställ",
     "deletedWordLabel": "{lemma}, borttaget",
-    "restoredWords": "{count, plural, =1{Återställde 1 ord} other{Återställde {count} ord}}"
+    "restoredWords": "{count, plural, =1{Återställde 1 ord} other{Återställde {count} ord}}",
+    "chatSearchPageLabel": "Sök i chatt",
+    "selectImageLabel": "Välj bild",
+    "userSearchTagsLabel": "Sök i...",
+    "courseDetails": "Kursdetaljer",
+    "objective": "Mål",
+    "pingedLabel": "Pingad",
+    "mapFilterPlayerCount": "{count} spelare"
 }

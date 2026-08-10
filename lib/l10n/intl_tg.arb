@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-07 13:12:57.216478",
+    "@@last_modified": "2026-08-07 16:23:26.645437",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Калимаҳои ҳазфшуда",
     "restore": "Барқарор кардан",
     "deletedWordLabel": "{lemma}, ҳазфшуда",
-    "restoredWords": "{count, plural, =1{1 калима барқарор карда шуд} other{{count} калима барқарор карда шуд}}"
+    "restoredWords": "{count, plural, =1{1 калима барқарор карда шуд} other{{count} калима барқарор карда шуд}}",
+    "chatSearchPageLabel": "Саҳифаи ҷустуҷӯи чат",
+    "selectImageLabel": "Тасвирро интихоб кунед",
+    "userSearchTagsLabel": "Ҷустуҷӯ дар...",
+    "courseDetails": "Тафсилоти курс",
+    "objective": "Мақсад",
+    "pingedLabel": "Пинг шуд",
+    "mapFilterPlayerCount": "{count} бозигар"
 }

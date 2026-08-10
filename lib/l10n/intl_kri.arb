@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-07 13:12:47.359667",
+    "@@last_modified": "2026-08-07 16:23:22.495512",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Di wod dɛn we yu dilit",
     "restore": "Bring bak",
     "deletedWordLabel": "{lemma}, dilit",
-    "restoredWords": "{count, plural, =1{Dɔn bring 1 wod bak} other{Dɔn bring {count} wod dɛn bak}}"
+    "restoredWords": "{count, plural, =1{Dɔn bring 1 wod bak} other{Dɔn bring {count} wod dɛn bak}}",
+    "chatSearchPageLabel": "Chat say foh luk",
+    "selectImageLabel": "Pik pikcha",
+    "userSearchTagsLabel": "Luk insai...",
+    "courseDetails": "Di kos im detel dɛn",
+    "objective": "Wetín yu want foh du",
+    "pingedLabel": "Kɔl yu",
+    "mapFilterPlayerCount": "{count} pleya dɛn"
 }

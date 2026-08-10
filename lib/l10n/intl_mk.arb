@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-07 13:12:48.680381",
+    "@@last_modified": "2026-08-07 16:23:23.180126",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Избришани зборови",
     "restore": "Врати",
     "deletedWordLabel": "{lemma}, избришано",
-    "restoredWords": "{count, plural, =1{Вратен 1 збор} other{Вратени {count} зборови}}"
+    "restoredWords": "{count, plural, =1{Вратен 1 збор} other{Вратени {count} зборови}}",
+    "chatSearchPageLabel": "Страница за пребарување разговор",
+    "selectImageLabel": "Избери слика",
+    "userSearchTagsLabel": "Пребарај во...",
+    "courseDetails": "Детали за курсот",
+    "objective": "Цел",
+    "pingedLabel": "Пингувано",
+    "mapFilterPlayerCount": "{count} играчи"
 }

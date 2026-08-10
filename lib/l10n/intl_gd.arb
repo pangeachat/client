@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-07 13:12:41.802320",
+    "@@last_modified": "2026-08-07 16:23:20.384874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Faclan a chaidh a sguabadh às",
     "restore": "Thoir air ais",
     "deletedWordLabel": "{lemma}, air a sguabadh às",
-    "restoredWords": "{count, plural, =1{Chaidh 1 facal a thoirt air ais} other{Chaidh {count} facal a thoirt air ais}}"
+    "restoredWords": "{count, plural, =1{Chaidh 1 facal a thoirt air ais} other{Chaidh {count} facal a thoirt air ais}}",
+    "chatSearchPageLabel": "Duilleag sgrùdaidh cabadaich",
+    "selectImageLabel": "Tagh ìomhaigh",
+    "userSearchTagsLabel": "Rannsaich ann an...",
+    "courseDetails": "Mion-fhiosrachadh cùrsa",
+    "objective": "Amas",
+    "pingedLabel": "Air a phingadh",
+    "mapFilterPlayerCount": "{count} cluicheadairean"
 }

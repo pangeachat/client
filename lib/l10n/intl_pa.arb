@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-07 13:12:52.728953",
+    "@@last_modified": "2026-08-07 16:23:24.435793",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "ਮਿਟਾਏ ਗਏ ਸ਼ਬਦ",
     "restore": "ਬਹਾਲ ਕਰੋ",
     "deletedWordLabel": "{lemma}, ਮਿਟਾਇਆ ਗਿਆ",
-    "restoredWords": "{count, plural, =1{1 ਸ਼ਬਦ ਬਹਾਲ ਕੀਤਾ ਗਿਆ} other{{count} ਸ਼ਬਦ ਬਹਾਲ ਕੀਤੇ ਗਏ}}"
+    "restoredWords": "{count, plural, =1{1 ਸ਼ਬਦ ਬਹਾਲ ਕੀਤਾ ਗਿਆ} other{{count} ਸ਼ਬਦ ਬਹਾਲ ਕੀਤੇ ਗਏ}}",
+    "chatSearchPageLabel": "ਚੈਟ ਖੋਜ ਪੰਨਾ",
+    "selectImageLabel": "ਚਿੱਤਰ ਚੁਣੋ",
+    "userSearchTagsLabel": "ਇਸ ਵਿੱਚ ਖੋਜੋ...",
+    "courseDetails": "ਕੋਰਸ ਵੇਰਵੇ",
+    "objective": "ਉਦੇਸ਼",
+    "pingedLabel": "ਪਿੰਗ ਕੀਤਾ ਗਿਆ",
+    "mapFilterPlayerCount": "{count} ਖਿਡਾਰੀ"
 }

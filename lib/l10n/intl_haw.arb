@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-07 13:12:42.699102",
+    "@@last_modified": "2026-08-07 16:23:20.494405",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Nā huaʻōlelo i kāpae ʻia",
     "restore": "Hoʻihoʻi",
     "deletedWordLabel": "{lemma}, i kāpae ʻia",
-    "restoredWords": "{count, plural, =1{Ua hoʻihoʻi ʻia he 1 huaʻōlelo} other{Ua hoʻihoʻi ʻia he {count} huaʻōlelo}}"
+    "restoredWords": "{count, plural, =1{Ua hoʻihoʻi ʻia he 1 huaʻōlelo} other{Ua hoʻihoʻi ʻia he {count} huaʻōlelo}}",
+    "chatSearchPageLabel": "ʻAoʻao huli kamaʻilio",
+    "selectImageLabel": "Koho kiʻi",
+    "userSearchTagsLabel": "Huli ma...",
+    "courseDetails": "Nā kikoʻī papa",
+    "objective": "Pahuhopu",
+    "pingedLabel": "Ua kīkē ʻia",
+    "mapFilterPlayerCount": "{count} mau mea pāʻani"
 }

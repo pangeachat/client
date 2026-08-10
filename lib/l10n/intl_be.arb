@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-07 13:12:37.124102",
+    "@@last_modified": "2026-08-07 16:23:17.828288",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9724,5 +9724,12 @@
     "deletedVocabListLabel": "Выдаленыя словы",
     "restore": "Аднавіць",
     "deletedWordLabel": "{lemma}, выдалена",
-    "restoredWords": "{count, plural, =1{Адноўлена 1 слова} other{Адноўлена {count} слоў}}"
+    "restoredWords": "{count, plural, =1{Адноўлена 1 слова} other{Адноўлена {count} слоў}}",
+    "chatSearchPageLabel": "Старонка пошуку ў чаце",
+    "selectImageLabel": "Выбраць выяву",
+    "userSearchTagsLabel": "Шукаць у...",
+    "courseDetails": "Дэталі курса",
+    "objective": "Мэта",
+    "pingedLabel": "Пінг",
+    "mapFilterPlayerCount": "{count} гульцоў"
 }

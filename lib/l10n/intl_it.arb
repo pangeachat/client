@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:44.434584",
+    "@@last_modified": "2026-08-07 16:23:21.365254",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9783,5 +9783,12 @@
     "deletedVocabListLabel": "Parole eliminate",
     "restore": "Ripristina",
     "deletedWordLabel": "{lemma}, eliminata",
-    "restoredWords": "{count, plural, =1{Ripristinata 1 parola} other{Ripristinate {count} parole}}"
+    "restoredWords": "{count, plural, =1{Ripristinata 1 parola} other{Ripristinate {count} parole}}",
+    "chatSearchPageLabel": "Pagina di ricerca chat",
+    "selectImageLabel": "Seleziona immagine",
+    "userSearchTagsLabel": "Cerca in...",
+    "courseDetails": "Dettagli del corso",
+    "objective": "Obiettivo",
+    "pingedLabel": "Pingato",
+    "mapFilterPlayerCount": "{count} giocatori"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-07 13:12:51.203321",
+    "@@last_modified": "2026-08-07 16:23:24.216544",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Slettede ord",
     "restore": "Gjenopprett",
     "deletedWordLabel": "{lemma}, slettet",
-    "restoredWords": "{count, plural, =1{Gjenopprettet 1 ord} other{Gjenopprettet {count} ord}}"
+    "restoredWords": "{count, plural, =1{Gjenopprettet 1 ord} other{Gjenopprettet {count} ord}}",
+    "chatSearchPageLabel": "Chat-søkeside",
+    "selectImageLabel": "Velg bilde",
+    "userSearchTagsLabel": "Søk i...",
+    "courseDetails": "Kursdetaljer",
+    "objective": "Mål",
+    "pingedLabel": "Pinget",
+    "mapFilterPlayerCount": "{count} spillere"
 }

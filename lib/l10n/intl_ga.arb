@@ -3568,7 +3568,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-07 13:12:41.773905",
+    "@@last_modified": "2026-08-07 16:23:19.967564",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9721,5 +9721,12 @@
     "deletedVocabListLabel": "Focail scriosta",
     "restore": "Cuir ar ais",
     "deletedWordLabel": "{lemma}, scriosta",
-    "restoredWords": "{count, plural, =1{Cuireadh 1 fhocal ar ais} other{Cuireadh {count} focal ar ais}}"
+    "restoredWords": "{count, plural, =1{Cuireadh 1 fhocal ar ais} other{Cuireadh {count} focal ar ais}}",
+    "chatSearchPageLabel": "Leathanach cuardaigh comhrá",
+    "selectImageLabel": "Roghnaigh íomhá",
+    "userSearchTagsLabel": "Cuardaigh i...",
+    "courseDetails": "Sonraí an chúrsa",
+    "objective": "Cuspóir",
+    "pingedLabel": "Pingáilte",
+    "mapFilterPlayerCount": "{count} imreoir"
 }

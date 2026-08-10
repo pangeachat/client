@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-07 13:12:57.986990",
+    "@@last_modified": "2026-08-07 16:23:26.559238",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10660,5 +10660,12 @@
     "deletedVocabListLabel": "తొలగించిన పదాలు",
     "restore": "పునరుద్ధరించు",
     "deletedWordLabel": "{lemma}, తొలగించబడింది",
-    "restoredWords": "{count, plural, =1{1 పదం పునరుద్ధరించబడింది} other{{count} పదాలు పునరుద్ధరించబడ్డాయి}}"
+    "restoredWords": "{count, plural, =1{1 పదం పునరుద్ధరించబడింది} other{{count} పదాలు పునరుద్ధరించబడ్డాయి}}",
+    "chatSearchPageLabel": "చాట్ శోధన పేజీ",
+    "selectImageLabel": "చిత్రాన్ని ఎంచుకోండి",
+    "userSearchTagsLabel": "దీనిలో శోధించండి...",
+    "courseDetails": "కోర్సు వివరాలు",
+    "objective": "లక్ష్యం",
+    "pingedLabel": "పింగ్ చేయబడింది",
+    "mapFilterPlayerCount": "{count} ఆటగాళ్ళు"
 }

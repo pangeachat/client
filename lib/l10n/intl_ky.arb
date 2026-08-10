@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-07 13:12:47.313566",
+    "@@last_modified": "2026-08-07 16:23:22.395647",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Жок кылынган сөздөр",
     "restore": "Калыбына келтирүү",
     "deletedWordLabel": "{lemma}, жок кылынды",
-    "restoredWords": "{count, plural, =1{1 сөз калыбына келтирилди} other{{count} сөз калыбына келтирилди}}"
+    "restoredWords": "{count, plural, =1{1 сөз калыбына келтирилди} other{{count} сөз калыбына келтирилди}}",
+    "chatSearchPageLabel": "Чат издөө барагы",
+    "selectImageLabel": "Сүрөт тандоо",
+    "userSearchTagsLabel": "Издөө...",
+    "courseDetails": "Курстун чоо-жайы",
+    "objective": "Максат",
+    "pingedLabel": "Пингделди",
+    "mapFilterPlayerCount": "{count} оюнчу"
 }

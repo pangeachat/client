@@ -215,111 +215,118 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   @override
   Widget build(BuildContext context) {
-    return ValueListenableBuilder(
-      valueListenable: widget.objectivesProvider.questLoader,
-      builder: (context, state, _) {
-        switch (state) {
-          case AsyncLoading():
-          case AsyncIdle():
-            return const Center(child: CircularProgressIndicator.adaptive());
-          case AsyncError(error: final error):
-            return _QuestLoadErrorView(
-              error,
-              showAddCourse: widget.room?.isRoomAdmin == true,
-            );
-          case AsyncLoaded():
-            // The overall quest-star bar now lives in the course card header
-            // (above the tabs — [CourseProgressBar]), so it shows on every tab
-            // and in the collapsed mobile peek; the list is just the Missions.
-            // Per-Mission stars still show once the shared rollup resolves; a
-            // preview has no learner progress.
-            final groups = widget.objectivesProvider.filteredObjectiveGroups;
-            if (groups.isEmpty) {
+    return Semantics(
+      label: L10n.of(context).coursePlan,
+      container: true,
+      child: ValueListenableBuilder(
+        valueListenable: widget.objectivesProvider.questLoader,
+        builder: (context, state, _) {
+          switch (state) {
+            case AsyncLoading():
+            case AsyncIdle():
+              return const Center(child: CircularProgressIndicator.adaptive());
+            case AsyncError(error: final error):
               return _QuestLoadErrorView(
-                MissingQuestException(),
+                error,
                 showAddCourse: widget.room?.isRoomAdmin == true,
               );
-            }
+            case AsyncLoaded():
+              // The overall quest-star bar now lives in the course card header
+              // (above the tabs — [CourseProgressBar]), so it shows on every tab
+              // and in the collapsed mobile peek; the list is just the Missions.
+              // Per-Mission stars still show once the shared rollup resolves; a
+              // preview has no learner progress.
+              final groups = widget.objectivesProvider.filteredObjectiveGroups;
+              if (groups.isEmpty) {
+                return _QuestLoadErrorView(
+                  MissingQuestException(),
+                  showAddCourse: widget.room?.isRoomAdmin == true,
+                );
+              }
 
-            return ValueListenableBuilder(
-              valueListenable: widget.objectivesProvider.progression,
-              builder: (context, progression, _) {
-                // Scoped to THIS course: the shared resolution spans every
-                // joined course, and Missions are reused across quests (#7771).
-                final hasProgress =
-                    widget.room != null &&
-                    widget.objectivesProvider.hasResolvedProgress;
-                final list = ListView.separated(
-                  controller: widget.shrinkWrap ? null : _scrollController,
-                  padding: const EdgeInsets.symmetric(vertical: 8.0),
-                  shrinkWrap: widget.shrinkWrap,
-                  physics: widget.shrinkWrap
-                      ? const NeverScrollableScrollPhysics()
-                      : null,
-                  itemCount: groups.length,
-                  separatorBuilder: (_, _) => const SizedBox(height: 24.0),
-                  itemBuilder: (context, i) {
-                    final group = groups[i];
-                    return ObjectiveSection(
-                      index: i,
-                      group: group,
-                      hasCompletedActivity: widget.hasCompletedActivity,
-                      progress: hasProgress
-                          ? widget.objectivesProvider.missionProgress(
-                              group.objective.id,
-                            )
-                          : null,
-                      onTap: (ref) {
-                        final room = widget.room;
-                        if (room == null) {
-                          // Token-native open; the course context (if any) is kept,
-                          // so the plan closes back to it. See routing.instructions.md.
+              return ValueListenableBuilder(
+                valueListenable: widget.objectivesProvider.progression,
+                builder: (context, progression, _) {
+                  // Scoped to THIS course: the shared resolution spans every
+                  // joined course, and Missions are reused across quests (#7771).
+                  final hasProgress =
+                      widget.room != null &&
+                      widget.objectivesProvider.hasResolvedProgress;
+                  final list = ListView.separated(
+                    controller: widget.shrinkWrap ? null : _scrollController,
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    shrinkWrap: widget.shrinkWrap,
+                    physics: widget.shrinkWrap
+                        ? const NeverScrollableScrollPhysics()
+                        : null,
+                    itemCount: groups.length,
+                    separatorBuilder: (_, _) => const SizedBox(height: 24.0),
+                    itemBuilder: (context, i) {
+                      final group = groups[i];
+                      return ObjectiveSection(
+                        index: i,
+                        group: group,
+                        hasCompletedActivity: widget.hasCompletedActivity,
+                        progress: hasProgress
+                            ? widget.objectivesProvider.missionProgress(
+                                group.objective.id,
+                              )
+                            : null,
+                        onTap: (ref) {
+                          final room = widget.room;
+                          if (room == null) {
+                            // Token-native open; the course context (if any) is kept,
+                            // so the plan closes back to it. See routing.instructions.md.
+                            context.go(
+                              WorkspaceNav.openActivity(
+                                GoRouterState.of(context).uri,
+                                ref.activityId,
+                              ),
+                            );
+                            return;
+                          }
+                          // Immersive in-course open: the token producer drops the
+                          // `left=course` card (and any right panel) and keeps the
+                          // `?m=course:` scope, so the plan takes the card's slot and
+                          // backs out to it. A video hero autostarts (muted).
                           context.go(
-                            WorkspaceNav.openActivity(
-                              GoRouterState.of(context).uri,
+                            WorkspaceNav.openCourseActivity(
+                              room.id,
                               ref.activityId,
+                              autoplay:
+                                  ref.plan.heroBlock?.isVideo == true ||
+                                  ref.plan.heroBlock?.isYoutube == true,
                             ),
                           );
-                          return;
-                        }
-                        // Immersive in-course open: the token producer drops the
-                        // `left=course` card (and any right panel) and keeps the
-                        // `?m=course:` scope, so the plan takes the card's slot and
-                        // backs out to it. A video hero autostarts (muted).
-                        context.go(
-                          WorkspaceNav.openCourseActivity(
-                            room.id,
-                            ref.activityId,
-                            autoplay:
-                                ref.plan.heroBlock?.isVideo == true ||
-                                ref.plan.heroBlock?.isYoutube == true,
-                          ),
-                        );
-                      },
-                      userStarsByActivity: (activityId) =>
-                          widget.room?.client.userStarsByActivity[activityId] ??
-                          0,
-                      liveStateByActivity: _liveStateFor,
-                      availableParticipants: _availableParticipants,
-                    );
-                  },
-                );
-                // In a preview the list is embedded in an outer scroll view (shrinkWrap)
-                // with no map behind it, so a wheel can't leak — return it bare. The
-                // standalone course-card panel floats over the map, so capture the wheel
-                // OPAQUELY across the whole panel: the gaps between cards and the
-                // objective headers are hit-transparent, and a wheel there would zoom the
-                // map instead of scrolling the list. See [_claimVerticalScroll].
-                if (widget.shrinkWrap) return list;
-                return Listener(
-                  behavior: HitTestBehavior.opaque,
-                  onPointerSignal: _claimVerticalScroll,
-                  child: list,
-                );
-              },
-            );
-        }
-      },
+                        },
+                        userStarsByActivity: (activityId) =>
+                            widget
+                                .room
+                                ?.client
+                                .userStarsByActivity[activityId] ??
+                            0,
+                        liveStateByActivity: _liveStateFor,
+                        availableParticipants: _availableParticipants,
+                      );
+                    },
+                  );
+                  // In a preview the list is embedded in an outer scroll view (shrinkWrap)
+                  // with no map behind it, so a wheel can't leak — return it bare. The
+                  // standalone course-card panel floats over the map, so capture the wheel
+                  // OPAQUELY across the whole panel: the gaps between cards and the
+                  // objective headers are hit-transparent, and a wheel there would zoom the
+                  // map instead of scrolling the list. See [_claimVerticalScroll].
+                  if (widget.shrinkWrap) return list;
+                  return Listener(
+                    behavior: HitTestBehavior.opaque,
+                    onPointerSignal: _claimVerticalScroll,
+                    child: list,
+                  );
+                },
+              );
+          }
+        },
+      ),
     );
   }
 }
@@ -339,13 +346,16 @@ class _QuestLoadErrorView extends StatelessWidget {
           child: Column(
             spacing: 12.0,
             children: [
-              Text(
-                showAddCourse
-                    ? L10n.of(context).missingCourseOutlineCta
-                    : L10n.of(context).missingCourseOutline,
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: Theme.of(context).colorScheme.outline,
+              Semantics(
+                container: true,
+                child: Text(
+                  showAddCourse
+                      ? L10n.of(context).missingCourseOutlineCta
+                      : L10n.of(context).missingCourseOutline,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    color: Theme.of(context).colorScheme.outline,
+                  ),
                 ),
               ),
               if (showAddCourse)

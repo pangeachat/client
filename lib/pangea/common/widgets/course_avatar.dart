@@ -4,6 +4,7 @@ import 'package:badges/badges.dart' as b;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/course_plans/map_clipper.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/widgets/avatar.dart';
@@ -59,7 +60,11 @@ class CourseAvatar extends StatelessWidget {
     );
 
     if (invite) {
-      return InvitedCourseBadge(position: position, child: child);
+      return Semantics(
+        label: L10n.of(context).invited,
+        container: true,
+        child: InvitedCourseBadge(position: position, child: child),
+      );
     }
 
     // No underlying room (add-course preview or course-plan suggestion): show
@@ -99,7 +104,10 @@ class CourseAvatar extends StatelessWidget {
                 size: 12,
               ),
               position: position,
-              child: child,
+              child: Semantics(
+                label: L10n.of(context).pingedLabel,
+                child: child,
+              ),
             );
           }
 

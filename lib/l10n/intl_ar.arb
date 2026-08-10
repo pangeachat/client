@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-07 13:12:36.767851",
+    "@@last_modified": "2026-08-07 16:23:17.706305",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10016,5 +10016,12 @@
     "deletedVocabListLabel": "الكلمات المحذوفة",
     "restore": "استعادة",
     "deletedWordLabel": "{lemma}، محذوفة",
-    "restoredWords": "{count, plural, =1{تمت استعادة كلمة واحدة} other{تمت استعادة {count} كلمات}}"
+    "restoredWords": "{count, plural, =1{تمت استعادة كلمة واحدة} other{تمت استعادة {count} كلمات}}",
+    "chatSearchPageLabel": "صفحة البحث في الدردشة",
+    "selectImageLabel": "تحديد صورة",
+    "userSearchTagsLabel": "البحث في...",
+    "courseDetails": "تفاصيل الدورة",
+    "objective": "الهدف",
+    "pingedLabel": "تم التنبيه",
+    "mapFilterPlayerCount": "{count} لاعبين"
 }
