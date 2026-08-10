@@ -132,7 +132,9 @@ class ActivitySessionCTAButton extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: secondary ? scheme.primaryContainer : scheme.primary,
-        foregroundColor: secondary ? scheme.onPrimaryContainer : scheme.onPrimary,
+        foregroundColor: secondary
+            ? scheme.onPrimaryContainer
+            : scheme.onPrimary,
         padding: const EdgeInsets.all(8.0),
         shape: shape,
       ),
@@ -404,9 +406,24 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       ),
     );
 
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: Row(spacing: 8.0, children: chips),
+    // Stretch the single primary CTA to fill the row when everything fits, but
+    // fall back to a plain horizontal scroll when the chips overflow
+    return LayoutBuilder(
+      builder: (context, constraints) => SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: ConstrainedBox(
+          constraints: BoxConstraints(minWidth: constraints.maxWidth),
+          child: IntrinsicWidth(
+            child: Row(
+              spacing: 8.0,
+              children: [
+                Expanded(child: chips.first),
+                ...chips.skip(1),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
