@@ -37,6 +37,13 @@ class PracticeController with ChangeNotifier {
 
   PracticeExerciseModel? _activity;
 
+  /// Choice content the user flagged as wrong via practice feedback, by
+  /// construct. Fed into exercise requests so regenerated exercises steer
+  /// their picks away from the reported content — the regenerated row can
+  /// legitimately still contain it, and re-displaying it makes a successful
+  /// regen look like it did nothing.
+  final Map<ConstructIdentifier, String> _flaggedChoices = {};
+
   MessagePracticeMode _practiceMode = MessagePracticeMode.noneSelected;
 
   MorphSelection? _selectedMorph;
@@ -272,6 +279,7 @@ class PracticeController with ChangeNotifier {
         userL2: MatrixState.pangeaController.userController.userL2!.langCode,
         exerciseQualityFeedback: null,
         target: target,
+        avoidContent: _flaggedChoices,
       );
 
   Future<Result<PracticeExerciseModel>> fetchActivityModel(
@@ -294,13 +302,16 @@ class PracticeController with ChangeNotifier {
   /// is invalidated so the next fetch rebuilds it from corrected content.
   ///
   /// [priorContent] is the content as displayed, used as feedback context if
-  /// the lemma cache has expired. Returns both the prior and regenerated
-  /// content so callers can tell the user whether anything changed.
+  /// the lemma cache has expired. [flaggedChoice] is the exact choice content
+  /// the user reported; regenerated exercises avoid re-picking it. Returns
+  /// both the prior and regenerated content so callers can tell the user
+  /// whether anything changed.
   Future<Result<({LemmaInfoResponse prior, LemmaInfoResponse updated})>>
   submitLemmaFeedback({
     required ConstructIdentifier cId,
     required LemmaInfoResponse priorContent,
     required String feedbackText,
+    required String flaggedChoice,
     required PracticeTarget target,
   }) async {
     final prior =
@@ -327,6 +338,7 @@ class PracticeController with ChangeNotifier {
       return Result.error(error.error, error.stackTrace);
     }
 
+    _flaggedChoices[cId] = flaggedChoice;
     await PracticeRepo.invalidate(_buildExerciseRequest(target));
     _activity = null;
     return Result.value((prior: prior, updated: updated));

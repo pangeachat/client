@@ -122,6 +122,7 @@ class PracticeExerciseFeedbackDialogState
           cId: selected.form.cId,
           priorContent: _priorContent(selected),
           feedbackText: feedbackText,
+          flaggedChoice: selected.choiceContent,
           target: widget.target,
         );
         if (result.isError) {
