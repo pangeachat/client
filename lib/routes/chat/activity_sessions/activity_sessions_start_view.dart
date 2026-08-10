@@ -366,7 +366,8 @@ class _ActivityStartInfoRow extends StatelessWidget {
     final language = PLanguageStore.byLangCode(activity.req.targetLanguage);
     final onVariant = theme.colorScheme.onSurfaceVariant;
 
-    return Padding(
+    return Container(
+      color: theme.colorScheme.surface,
       padding: const EdgeInsets.fromLTRB(12.0, 0.0, 8.0, 8.0),
       child: Row(
         children: [

@@ -9,6 +9,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/widgets/layouts/cavity_controls.dart';
 
 class ActivitySessionButtons extends StatelessWidget {
@@ -96,10 +97,15 @@ class ActivitySessionCTAButton extends StatelessWidget {
   /// CTA chips — e.g. "start my own" when joining an open session leads.
   final bool secondary;
 
+  /// An optional leading glyph — the state CTAs pass their
+  /// [ActivityPinState.icon] so the row echoes the map pins' iconography.
+  final IconData? icon;
+
   const ActivitySessionCTAButton(
     this.text,
     this.onPressed, {
     this.secondary = false,
+    this.icon,
     super.key,
   });
 
@@ -111,7 +117,13 @@ class ActivitySessionCTAButton extends StatelessWidget {
     );
     final child = Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: [Flexible(child: Text(text, textAlign: TextAlign.center))],
+      children: [
+        if (icon != null) ...[
+          Icon(icon, size: 18.0),
+          const SizedBox(width: 8.0),
+        ],
+        Flexible(child: Text(text, textAlign: TextAlign.center)),
+      ],
     );
     // Mirror the mobile CTA chips' colour hierarchy: the single lead action is
     // the darker filled primary; every following action is a fully filled but
@@ -262,6 +274,7 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
               ActivitySessionCTAButton(
                 L10n.of(context).continueText,
                 controller.goToJoinedActivity,
+                icon: ActivityPinState.ongoingActive.icon,
               ),
             ] else ...[
               // An open session to join is the encouraged choice, so it leads
@@ -271,16 +284,19 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 ActivitySessionCTAButton(
                   '${L10n.of(context).joinOpenSession} (${controller.openSessionCount})',
                   controller.goToJoinPage,
+                  icon: ActivityPinState.joinable.icon,
                 ),
                 ActivitySessionCTAButton(
                   L10n.of(context).startOwn,
                   controller.startNewActivity,
                   secondary: true,
+                  icon: ActivityPinState.available.icon,
                 ),
               ] else
                 ActivitySessionCTAButton(
                   L10n.of(context).start,
                   controller.startNewActivity,
+                  icon: ActivityPinState.available.icon,
                 ),
             ],
             // Completed sits below the start/join choice for any learner with
@@ -291,6 +307,7 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                 L10n.of(context).mapFilterCompleted,
                 controller.goToViewPage,
                 secondary: true,
+                icon: ActivityPinState.inProgress.icon,
               ),
           ],
         );
@@ -328,6 +345,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       chips.add(
         _ActivityCtaChip(
           label: l10n.continueText,
+          icon: ActivityPinState.ongoingActive.icon,
           onPressed: controller.goToJoinedActivity,
           filled: true,
         ),
@@ -336,6 +354,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       chips.add(
         _ActivityCtaChip(
           label: '${l10n.joinOpenSession} (${controller.openSessionCount})',
+          icon: ActivityPinState.joinable.icon,
           onPressed: expandThen(controller.goToJoinPage),
           filled: true,
         ),
@@ -343,6 +362,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       chips.add(
         _ActivityCtaChip(
           label: l10n.startOwn,
+          icon: ActivityPinState.available.icon,
           onPressed: expandThen(controller.startNewActivity),
         ),
       );
@@ -350,6 +370,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       chips.add(
         _ActivityCtaChip(
           label: l10n.start,
+          icon: ActivityPinState.available.icon,
           onPressed: expandThen(controller.startNewActivity),
           filled: true,
         ),
@@ -362,6 +383,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       chips.add(
         _ActivityCtaChip(
           label: l10n.mapFilterCompleted,
+          icon: ActivityPinState.inProgress.icon,
           onPressed: expandThen(controller.goToViewPage),
         ),
       );
@@ -392,7 +414,8 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
 /// A pill in the mobile CTA row. The single primary action is [filled] (solid
 /// primary); every other action — including share and flag — is a light
 /// primaryContainer pill. Passing [icon] with no [label] renders a circular
-/// icon-only chip (share / flag) sized to match the text pills' height.
+/// icon-only chip (share / flag) sized to match the text pills' height; passing
+/// both renders the icon as a leading glyph before the label (the state chips).
 class _ActivityCtaChip extends StatelessWidget {
   final String? label;
   final IconData? icon;
@@ -444,7 +467,16 @@ class _ActivityCtaChip extends StatelessWidget {
                 ),
               ),
               onPressed: onPressed,
-              child: Text(label ?? ''),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  if (icon != null) ...[
+                    Icon(icon, size: 18.0),
+                    const SizedBox(width: 8.0),
+                  ],
+                  Text(label ?? ''),
+                ],
+              ),
             ),
           );
 
