@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-07 16:23:23.180126",
+    "@@last_modified": "2026-08-10 14:04:51.140409",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Детали за курсот",
     "objective": "Цел",
     "pingedLabel": "Пингувано",
-    "mapFilterPlayerCount": "{count} играчи"
+    "mapFilterPlayerCount": "{count} играчи",
+    "practiceFeedbackButtonTooltip": "Пријави проблем со оваа вежба",
+    "practiceFeedbackDialogTitle": "Повратни информации за вежбата",
+    "practiceFeedbackSelectPair": "Кој пар изгледа погрешно?",
+    "practiceFeedbackUserSetEmoji": "Го избравте ова емоџи – променете го од картичката со зборови",
+    "practiceFeedbackAlreadyMatched": "Веќе точно совпаднато",
+    "practiceFeedbackUpdated": "Ви благодариме! Вежбата е ажурирана врз основа на вашите повратни информации.",
+    "practiceFeedbackUnchanged": "Ви благодариме! Вашиот извештај е запишан, но содржината остана непроменета."
 }

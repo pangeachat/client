@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-07 16:23:26.895404",
+    "@@last_modified": "2026-08-10 14:04:59.766088",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9717,5 +9717,12 @@
     "courseDetails": "Деталі курсу",
     "objective": "Мета",
     "pingedLabel": "Надіслано запит",
-    "mapFilterPlayerCount": "{count} гравців"
+    "mapFilterPlayerCount": "{count} гравців",
+    "practiceFeedbackButtonTooltip": "Повідомити про проблему з цією вправою",
+    "practiceFeedbackDialogTitle": "Відгук про практичну вправу",
+    "practiceFeedbackSelectPair": "Яка пара виглядає неправильно?",
+    "practiceFeedbackUserSetEmoji": "Ви обрали цей емодзі — змініть його з картки слова",
+    "practiceFeedbackAlreadyMatched": "Вже правильно зіставлено",
+    "practiceFeedbackUpdated": "Дякуємо! Вправу оновлено на основі вашого відгуку.",
+    "practiceFeedbackUnchanged": "Дякуємо! Ваш звіт було записано, але вміст залишився без змін."
 }

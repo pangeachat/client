@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-07 16:23:27.268430",
+    "@@last_modified": "2026-08-10 14:05:00.441285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "كۇرس تەپسىلاتى",
     "objective": "نىشان",
     "pingedLabel": "پىڭلاندى",
-    "mapFilterPlayerCount": "{count} قويغۇچ"
+    "mapFilterPlayerCount": "{count} قويغۇچ",
+    "practiceFeedbackButtonTooltip": "بۇ مەشىقتىكى مەسىلە توغرىسىدا دوكلات قىلىڭ",
+    "practiceFeedbackDialogTitle": "مەشىق ئىنكاسى",
+    "practiceFeedbackSelectPair": "قايسى جۈپ خاتا كۆرۈنىدۇ؟",
+    "practiceFeedbackUserSetEmoji": "سىز بۇ ئېموجىنى تاللىدىڭىز — ئۇنى سۆز كارتىسىدىن ئۆزگەرتىڭ",
+    "practiceFeedbackAlreadyMatched": "ئاللىبۇرۇن توغرا ماسلاشتۇرۇلغان",
+    "practiceFeedbackUpdated": "رەھمەت! مەشىق سىزنىڭ ئىنكاسىڭىزغا ئاساسەن يېڭىلاندى.",
+    "practiceFeedbackUnchanged": "رەھمەت! دوكلاتىڭىز خاتىرىلەندى، ئەمما مەزمۇن ئۆزگەرمىدى."
 }

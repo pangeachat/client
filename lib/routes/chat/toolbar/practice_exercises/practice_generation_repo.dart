@@ -1,9 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:developer';
 import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
 import 'package:get_storage/get_storage.dart';
@@ -135,7 +132,6 @@ class PracticeRepo {
       case PracticeExerciseTypeEnum.morphId:
         return MorphPracticeExerciseGenerator.get(req);
       case PracticeExerciseTypeEnum.wordMeaning:
-        debugger(when: kDebugMode);
         return LemmaMeaningPracticeExerciseGenerator.get(
           req,
           messageInfo: messageInfo,
@@ -147,6 +143,11 @@ class PracticeRepo {
         return _fetch(accessToken: accessToken, requestModel: req);
     }
   }
+
+  /// Drop the cached exercise for [req] so the next fetch regenerates it —
+  /// e.g. after lemma content is corrected via user feedback.
+  static Future<void> invalidate(MessagePracticeExerciseRequest req) =>
+      _storage.remove(req.hashCode.toString());
 
   static PracticeExerciseModel? _getCached(MessagePracticeExerciseRequest req) {
     final keys = List.from(_storage.getKeys());

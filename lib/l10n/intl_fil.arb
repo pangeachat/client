@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-07 16:23:19.524550",
+    "@@last_modified": "2026-08-10 14:04:43.470375",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10577,5 +10577,12 @@
     "courseDetails": "Mga detalye ng kurso",
     "objective": "Layunin",
     "pingedLabel": "Na-ping",
-    "mapFilterPlayerCount": "{count} manlalaro"
+    "mapFilterPlayerCount": "{count} manlalaro",
+    "practiceFeedbackButtonTooltip": "Mag-ulat ng problema sa pagsasanay na ito",
+    "practiceFeedbackDialogTitle": "Feedback sa Pagsasanay",
+    "practiceFeedbackSelectPair": "Aling pares ang mukhang mali?",
+    "practiceFeedbackUserSetEmoji": "Pinili mo ang emoji na ito — baguhin ito mula sa word card",
+    "practiceFeedbackAlreadyMatched": "Naitugma na nang tama",
+    "practiceFeedbackUpdated": "Salamat! Na-update ang pagsasanay batay sa iyong feedback.",
+    "practiceFeedbackUnchanged": "Salamat! Naitala ang iyong ulat, ngunit nanatiling hindi nagbago ang nilalaman."
 }

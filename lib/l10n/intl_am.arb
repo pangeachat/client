@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-07 16:23:18.221602",
+    "@@last_modified": "2026-08-10 14:04:41.294073",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2105,5 +2105,12 @@
     "courseDetails": "የኮርስ ዝርዝሮች",
     "objective": "ዓላማ",
     "pingedLabel": "ፒንግ ተደርጓል",
-    "mapFilterPlayerCount": "{count} ተጫዋቾች"
+    "mapFilterPlayerCount": "{count} ተጫዋቾች",
+    "practiceFeedbackButtonTooltip": "በዚህ ልምምድ ላይ ችግር ሪፖርት ያድርጉ",
+    "practiceFeedbackDialogTitle": "የልምምድ መልመጃ ግብረመልስ",
+    "practiceFeedbackSelectPair": "የትኛው ጥንድ ስህተት ይመስላል?",
+    "practiceFeedbackUserSetEmoji": "ይህን ኢሞጂ መርጠዋል — ከቃሉ ካርድ ይቀይሩት",
+    "practiceFeedbackAlreadyMatched": "አስቀድሞ በትክክል ተዛምዷል",
+    "practiceFeedbackUpdated": "እናመሰግናለን! መልመጃው በእርስዎ ግብረመልስ መሰረት ተዘምኗል።",
+    "practiceFeedbackUnchanged": "እናመሰግናለን! ሪፖርትዎ ተመዝግቧል፣ ነገር ግን ይዘቱ ሳይለወጥ ተመልሷል።"
 }

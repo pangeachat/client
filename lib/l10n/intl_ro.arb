@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:24.981214",
+    "@@last_modified": "2026-08-10 14:04:55.587048",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10449,5 +10449,12 @@
     "courseDetails": "Detalii curs",
     "objective": "Obiectiv",
     "pingedLabel": "Notificat",
-    "mapFilterPlayerCount": "{count} jucători"
+    "mapFilterPlayerCount": "{count} jucători",
+    "practiceFeedbackButtonTooltip": "Raportează o problemă cu acest exercițiu",
+    "practiceFeedbackDialogTitle": "Feedback exercițiu de practică",
+    "practiceFeedbackSelectPair": "Care pereche pare greșită?",
+    "practiceFeedbackUserSetEmoji": "Ai ales acest emoji — schimbă-l din cartonașul cuvântului",
+    "practiceFeedbackAlreadyMatched": "Deja potrivit corect",
+    "practiceFeedbackUpdated": "Mulțumim! Exercițiul a fost actualizat pe baza feedback-ului tău.",
+    "practiceFeedbackUnchanged": "Mulțumim! Raportul tău a fost înregistrat, dar conținutul a rămas neschimbat."
 }

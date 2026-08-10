@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-07 16:23:22.395647",
+    "@@last_modified": "2026-08-10 14:04:49.793150",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Курстун чоо-жайы",
     "objective": "Максат",
     "pingedLabel": "Пингделди",
-    "mapFilterPlayerCount": "{count} оюнчу"
+    "mapFilterPlayerCount": "{count} оюнчу",
+    "practiceFeedbackButtonTooltip": "Бул көнүгүүдөгү көйгөй тууралуу билдирүү",
+    "practiceFeedbackDialogTitle": "Көнүгүү боюнча пикир",
+    "practiceFeedbackSelectPair": "Кайсы жуп туура эмес көрүнөт?",
+    "practiceFeedbackUserSetEmoji": "Сиз бул эмодзини тандадыңыз — аны сөз картасынан өзгөртүңүз",
+    "practiceFeedbackAlreadyMatched": "Буга чейин туура дал келтирилген",
+    "practiceFeedbackUpdated": "Рахмат! Көнүгүү сиздин пикириңиздин негизинде жаңыртылды.",
+    "practiceFeedbackUnchanged": "Рахмат! Сиздин билдирүүңүз катталды, бирок мазмун өзгөрүүсүз калды."
 }

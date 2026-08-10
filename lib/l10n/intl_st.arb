@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-07 16:23:26.077468",
+    "@@last_modified": "2026-08-10 14:04:58.214505",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Lintlha tsa thupelo",
     "objective": "Sepheo",
     "pingedLabel": "E rometsoe",
-    "mapFilterPlayerCount": "Libapali tse {count}"
+    "mapFilterPlayerCount": "Libapali tse {count}",
+    "practiceFeedbackButtonTooltip": "Tlaleha bothata ka boikoetliso bona",
+    "practiceFeedbackDialogTitle": "Maikutlo a Boikoetliso ba ho Ithuta",
+    "practiceFeedbackSelectPair": "Ke para efe e shebahalang e fosahetse?",
+    "practiceFeedbackUserSetEmoji": "U khethile emoji ena — e fetole ho tsoa kareteneng ea lentsoe",
+    "practiceFeedbackAlreadyMatched": "E se e tsamaisane hantle",
+    "practiceFeedbackUpdated": "Kea leboha! Boikoetliso bo ntlafalitsoe ho latela maikutlo a hau.",
+    "practiceFeedbackUnchanged": "Kea leboha! Tlaleho ea hau e tlalehiloe, empa litaba ha lia fetoha."
 }

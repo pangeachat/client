@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:21.176432",
+    "@@last_modified": "2026-08-10 14:04:46.048298",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9790,5 +9790,12 @@
     "courseDetails": "Detail kursus",
     "objective": "Tujuan",
     "pingedLabel": "Di-ping",
-    "mapFilterPlayerCount": "{count} pemain"
+    "mapFilterPlayerCount": "{count} pemain",
+    "practiceFeedbackButtonTooltip": "Laporkan masalah dengan latihan ini",
+    "practiceFeedbackDialogTitle": "Umpan Balik Latihan",
+    "practiceFeedbackSelectPair": "Pasangan mana yang terlihat salah?",
+    "practiceFeedbackUserSetEmoji": "Anda memilih emoji ini — ubah dari kartu kata",
+    "practiceFeedbackAlreadyMatched": "Sudah cocok dengan benar",
+    "practiceFeedbackUpdated": "Terima kasih! Latihan telah diperbarui berdasarkan umpan balik Anda.",
+    "practiceFeedbackUnchanged": "Terima kasih! Laporan Anda telah dicatat, tetapi kontennya tidak berubah."
 }

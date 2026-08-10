@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-07 16:23:24.570977",
+    "@@last_modified": "2026-08-10 14:04:54.527597",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Zambiri za maphunziro",
     "objective": "Cholinga",
     "pingedLabel": "Mwatumizidwa uthenga",
-    "mapFilterPlayerCount": "Osewera {count}"
+    "mapFilterPlayerCount": "Osewera {count}",
+    "practiceFeedbackButtonTooltip": "Nenani vuto ndi masewera olimbitsa thupi awa",
+    "practiceFeedbackDialogTitle": "Ndemanga pa Zochita Zochita",
+    "practiceFeedbackSelectPair": "Kodi ndi awiri ati omwe akuwoneka olakwika?",
+    "practiceFeedbackUserSetEmoji": "Munasankha emoji iyi — isintheni kuchokera pa khadi la mawu",
+    "practiceFeedbackAlreadyMatched": "Zafanana kale molondola",
+    "practiceFeedbackUpdated": "Zikomo! Zochita zasintha potengera ndemanga zanu.",
+    "practiceFeedbackUnchanged": "Zikomo! Lipoti lanu lalembedwa, koma zomwe zili mkati sizinakhudzidwe."
 }

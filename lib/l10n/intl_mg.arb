@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-07 16:23:23.387237",
+    "@@last_modified": "2026-08-10 14:04:51.471257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Andinindinin'ny taranja",
     "objective": "Tanjona",
     "pingedLabel": "Voatsindry",
-    "mapFilterPlayerCount": "{count} mpilalao"
+    "mapFilterPlayerCount": "{count} mpilalao",
+    "practiceFeedbackButtonTooltip": "Misy olana amin'ity fanazaran-tena ity ve?",
+    "practiceFeedbackDialogTitle": "Fanehoan-kevitra momba ny fanazaran-tena",
+    "practiceFeedbackSelectPair": "Iza amin'ireo tsiroaroa no toa diso?",
+    "practiceFeedbackUserSetEmoji": "Ity emoji ity no nofidinao — ovay avy amin'ny karatra teny",
+    "practiceFeedbackAlreadyMatched": "Efa nifanaraka tsara",
+    "practiceFeedbackUpdated": "Misaotra! Nohavaozina ny fanazaran-tena araka ny fanehoan-kevitrao.",
+    "practiceFeedbackUnchanged": "Misaotra! Voarakitra ny tatitrao, saingy tsy niova ny votoatiny."
 }

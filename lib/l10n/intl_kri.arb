@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-07 16:23:22.495512",
+    "@@last_modified": "2026-08-10 14:04:48.843221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Di kos im detel dɛn",
     "objective": "Wetín yu want foh du",
     "pingedLabel": "Kɔl yu",
-    "mapFilterPlayerCount": "{count} pleya dɛn"
+    "mapFilterPlayerCount": "{count} pleya dɛn",
+    "practiceFeedbackButtonTooltip": "Ripɔt prɔblɛm wit dis ɛksasayz",
+    "practiceFeedbackDialogTitle": "Pratkis Ɛksasayz Fidbak",
+    "practiceFeedbackSelectPair": "Us peya luk rɔng?",
+    "practiceFeedbackUserSetEmoji": "Yu pik dis ɛmoji — chenj am frɔm di wɔd kad",
+    "practiceFeedbackAlreadyMatched": "Dɔn mach kɔrɛkt wan",
+    "practiceFeedbackUpdated": "Tɛnki! Di ɛksasayz dɔn chenj bay wetin yu se.",
+    "practiceFeedbackUnchanged": "Tɛnki! Wi dɔn mek not fɔ yu ripɔt, bɔt di kɔntɛnt nɔ chenj."
 }

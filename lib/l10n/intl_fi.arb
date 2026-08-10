@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-07 16:23:19.553123",
+    "@@last_modified": "2026-08-10 14:04:43.480353",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9754,5 +9754,12 @@
     "courseDetails": "Kurssin tiedot",
     "objective": "Tavoite",
     "pingedLabel": "Pingattu",
-    "mapFilterPlayerCount": "{count} pelaajaa"
+    "mapFilterPlayerCount": "{count} pelaajaa",
+    "practiceFeedbackButtonTooltip": "Ilmoita ongelmasta tässä harjoituksessa",
+    "practiceFeedbackDialogTitle": "Harjoitustehtävän palaute",
+    "practiceFeedbackSelectPair": "Mikä pari näyttää väärältä?",
+    "practiceFeedbackUserSetEmoji": "Valitsit tämän emojin – vaihda se sanakortista",
+    "practiceFeedbackAlreadyMatched": "Jo yhdistetty oikein",
+    "practiceFeedbackUpdated": "Kiitos! Harjoitusta on päivitetty palautteesi perusteella.",
+    "practiceFeedbackUnchanged": "Kiitos! Ilmoituksesi kirjattiin, mutta sisältö pysyi ennallaan."
 }

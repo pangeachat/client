@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-07 16:23:20.847260",
+    "@@last_modified": "2026-08-10 14:04:45.718374",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Detay kou",
     "objective": "Objektif",
     "pingedLabel": "Pinged",
-    "mapFilterPlayerCount": "{count} jwè"
+    "mapFilterPlayerCount": "{count} jwè",
+    "practiceFeedbackButtonTooltip": "Rapòte yon pwoblèm ak egzèsis sa a",
+    "practiceFeedbackDialogTitle": "Feedback Egzèsis Pratik",
+    "practiceFeedbackSelectPair": "Ki pè ki sanble mal?",
+    "practiceFeedbackUserSetEmoji": "Ou te chwazi emoji sa a — chanje li nan kat mo a",
+    "practiceFeedbackAlreadyMatched": "Deja matche kòrèkteman",
+    "practiceFeedbackUpdated": "Mèsi! Egzèsis la te mete ajou baze sou feedback ou.",
+    "practiceFeedbackUnchanged": "Mèsi! Rapò ou te anrejistre, men kontni an rete san chanjman."
 }

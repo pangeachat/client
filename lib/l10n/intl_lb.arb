@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-07 16:23:22.580002",
+    "@@last_modified": "2026-08-10 14:04:49.712673",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Coursdetailer",
     "objective": "Zil",
     "pingedLabel": "Gepingt",
-    "mapFilterPlayerCount": "{count} Spiller"
+    "mapFilterPlayerCount": "{count} Spiller",
+    "practiceFeedbackButtonTooltip": "Mellt e Problem mat dëser Übung",
+    "practiceFeedbackDialogTitle": "Feedback zu der Übung",
+    "practiceFeedbackSelectPair": "Wéi ee Pair gesäit falsch aus?",
+    "practiceFeedbackUserSetEmoji": "Dir hutt dësen Emoji gewielt – ännert en op der Wuertkaart",
+    "practiceFeedbackAlreadyMatched": "Scho richteg ugepasst",
+    "practiceFeedbackUpdated": "Merci! D'Übung gouf op Basis vun Ärem Feedback aktualiséiert.",
+    "practiceFeedbackUnchanged": "Merci! Äre Bericht gouf opgeholl, awer den Inhalt ass onverännert bliwwen."
 }

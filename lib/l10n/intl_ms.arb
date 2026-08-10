@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-07 16:23:23.873334",
+    "@@last_modified": "2026-08-10 14:04:52.367356",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Butiran kursus",
     "objective": "Objektif",
     "pingedLabel": "Diping",
-    "mapFilterPlayerCount": "{count} pemain"
+    "mapFilterPlayerCount": "{count} pemain",
+    "practiceFeedbackButtonTooltip": "Laporkan masalah dengan latihan ini",
+    "practiceFeedbackDialogTitle": "Maklum Balas Latihan Amali",
+    "practiceFeedbackSelectPair": "Pasangan yang manakah kelihatan salah?",
+    "practiceFeedbackUserSetEmoji": "Anda memilih emoji ini — ubahnya daripada kad perkataan",
+    "practiceFeedbackAlreadyMatched": "Sudah dipadankan dengan betul",
+    "practiceFeedbackUpdated": "Terima kasih! Latihan telah dikemas kini berdasarkan maklum balas anda.",
+    "practiceFeedbackUnchanged": "Terima kasih! Laporan anda telah direkodkan, tetapi kandungan tidak berubah."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-07 16:23:25.775162",
+    "@@last_modified": "2026-08-10 14:04:57.187200",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Detajet e kursit",
     "objective": "Objektivi",
     "pingedLabel": "U njoftua",
-    "mapFilterPlayerCount": "{count} lojtarë"
+    "mapFilterPlayerCount": "{count} lojtarë",
+    "practiceFeedbackButtonTooltip": "Raporto një problem me këtë ushtrim",
+    "practiceFeedbackDialogTitle": "Reagime për Ushtrimin Praktik",
+    "practiceFeedbackSelectPair": "Cili çift duket gabim?",
+    "practiceFeedbackUserSetEmoji": "Ju zgjodhët këtë emoji — ndryshojeni nga karta e fjalës",
+    "practiceFeedbackAlreadyMatched": "Përputhur tashmë saktë",
+    "practiceFeedbackUpdated": "Faleminderit! Ushtrimi është përditësuar bazuar në reagimet tuaja.",
+    "practiceFeedbackUnchanged": "Faleminderit! Raporti juaj u regjistrua, por përmbajtja mbeti e pandryshuar."
 }

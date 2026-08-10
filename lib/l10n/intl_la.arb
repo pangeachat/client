@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-07 16:23:22.461258",
+    "@@last_modified": "2026-08-10 14:04:49.708431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Singula cursus",
     "objective": "Propositum",
     "pingedLabel": "Pulsatus",
-    "mapFilterPlayerCount": "{count} lusores"
+    "mapFilterPlayerCount": "{count} lusores",
+    "practiceFeedbackButtonTooltip": "Refer de quaestione huius exercitationis",
+    "practiceFeedbackDialogTitle": "Responsio de Exercitatione",
+    "practiceFeedbackSelectPair": "Quae paria errata videntur?",
+    "practiceFeedbackUserSetEmoji": "Hoc emoji elegisti — muta id ex charta verbi",
+    "practiceFeedbackAlreadyMatched": "Iam recte compositum",
+    "practiceFeedbackUpdated": "Gratias! Exercitatio renovata est secundum tuam responsionem.",
+    "practiceFeedbackUnchanged": "Gratias! Tua relatio notata est, sed contentum immutatum remansit."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-07 16:23:27.454089",
+    "@@last_modified": "2026-08-10 14:05:00.867980",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Iinkcukacha zekhosi",
     "objective": "Injongo",
     "pingedLabel": "Ubhaliwe",
-    "mapFilterPlayerCount": "Abadlali abali-{count}"
+    "mapFilterPlayerCount": "Abadlali abali-{count}",
+    "practiceFeedbackButtonTooltip": "Xela ingxaki ngalo msebenzi",
+    "practiceFeedbackDialogTitle": "Ingxelo yoMsebenzi woQheliso",
+    "practiceFeedbackSelectPair": "Yeyiphi ipere ebonakala ingachananga?",
+    "practiceFeedbackUserSetEmoji": "Ukhethe le emoji — yitshintshe kwikhadi legama",
+    "practiceFeedbackAlreadyMatched": "Sele ifaniswe ngokuchanekileyo",
+    "practiceFeedbackUpdated": "Enkosi! Umsebenzi uhlaziywe ngokwesiphakamiso sakho.",
+    "practiceFeedbackUnchanged": "Enkosi! Ingxelo yakho irekhodiwe, kodwa umxholo awutshintshanga."
 }

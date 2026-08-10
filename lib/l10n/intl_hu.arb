@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-07 16:23:21.193133",
+    "@@last_modified": "2026-08-10 14:04:46.018398",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9820,5 +9820,12 @@
     "courseDetails": "Tanfolyam részletei",
     "objective": "Cél",
     "pingedLabel": "Pingelve",
-    "mapFilterPlayerCount": "{count} játékos"
+    "mapFilterPlayerCount": "{count} játékos",
+    "practiceFeedbackButtonTooltip": "Jelentés küldése a feladattal kapcsolatban",
+    "practiceFeedbackDialogTitle": "Visszajelzés a gyakorlófeladatról",
+    "practiceFeedbackSelectPair": "Melyik pár tűnik hibásnak?",
+    "practiceFeedbackUserSetEmoji": "Ezt az emojit választottad – módosítsd a szókártyáról",
+    "practiceFeedbackAlreadyMatched": "Már helyesen párosítva",
+    "practiceFeedbackUpdated": "Köszönjük! A feladat a visszajelzésed alapján frissült.",
+    "practiceFeedbackUnchanged": "Köszönjük! A jelentésed rögzítésre került, de a tartalom változatlan maradt."
 }

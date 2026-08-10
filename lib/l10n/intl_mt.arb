@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-07 16:23:24.092667",
+    "@@last_modified": "2026-08-10 14:04:52.770901",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Dettalji tal-kors",
     "objective": "Objettiv",
     "pingedLabel": "Pingjat",
-    "mapFilterPlayerCount": "{count} plejers"
+    "mapFilterPlayerCount": "{count} plejers",
+    "practiceFeedbackButtonTooltip": "Irrapporta problema b'dan l-eżerċizzju",
+    "practiceFeedbackDialogTitle": "Feedback dwar l-Eżerċizzju Prattiku",
+    "practiceFeedbackSelectPair": "Liema par jidher ħażin?",
+    "practiceFeedbackUserSetEmoji": "Int għażilt din l-emoji — ibdelha mill-karta tal-kelma",
+    "practiceFeedbackAlreadyMatched": "Diġà mqabbel b'mod korrett",
+    "practiceFeedbackUpdated": "Grazzi! L-eżerċizzju ġie aġġornat abbażi tal-feedback tiegħek.",
+    "practiceFeedbackUnchanged": "Grazzi! Ir-rapport tiegħek ġie rreġistrat, iżda l-kontenut baqa' l-istess."
 }

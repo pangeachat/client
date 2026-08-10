@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-07 16:23:25.909060",
+    "@@last_modified": "2026-08-10 14:04:57.082537",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Fa'amatalaga o le kosi",
     "objective": "Fa'amoemoe",
     "pingedLabel": "Fa'ailoaina",
-    "mapFilterPlayerCount": "{count} tagata ta'aalo"
+    "mapFilterPlayerCount": "{count} tagata ta'aalo",
+    "practiceFeedbackButtonTooltip": "Lipoti se fa'afitauli i lenei fa'amalositino",
+    "practiceFeedbackDialogTitle": "Fa'amatalaga Fa'amalositino",
+    "practiceFeedbackSelectPair": "O le fea paga e foliga sese?",
+    "practiceFeedbackUserSetEmoji": "Na e filifilia lenei emoji — sui mai le kata upu",
+    "practiceFeedbackAlreadyMatched": "Ua uma ona fetaui lelei",
+    "practiceFeedbackUpdated": "Fa'afetai! Ua fa'afouina le fa'amalositino e fa'atatau i lau fa'amatalaga.",
+    "practiceFeedbackUnchanged": "Fa'afetai! Na fa'amauina lau lipoti, ae e le'i suia le anotusi."
 }

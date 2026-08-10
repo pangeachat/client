@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-07 16:23:23.225837",
+    "@@last_modified": "2026-08-10 14:04:51.109261",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "കോഴ്സ് വിശദാംശങ്ങൾ",
     "objective": "ലക്ഷ്യം",
     "pingedLabel": "പിംഗ് ചെയ്തു",
-    "mapFilterPlayerCount": "{count} കളിക്കാർ"
+    "mapFilterPlayerCount": "{count} കളിക്കാർ",
+    "practiceFeedbackButtonTooltip": "ഈ അഭ്യാസത്തിലെ ഒരു പ്രശ്നം റിപ്പോർട്ട് ചെയ്യുക",
+    "practiceFeedbackDialogTitle": "അഭ്യാസത്തിനുള്ള ഫീഡ്‌ബാക്ക്",
+    "practiceFeedbackSelectPair": "ഏത് ജോഡിയാണ് തെറ്റായി തോന്നുന്നത്?",
+    "practiceFeedbackUserSetEmoji": "നിങ്ങൾ ഈ ഇമോജി തിരഞ്ഞെടുത്തു — വേഡ് കാർഡിൽ നിന്ന് ഇത് മാറ്റുക",
+    "practiceFeedbackAlreadyMatched": "മുൻപേ ശരിയായി യോജിപ്പിച്ചു",
+    "practiceFeedbackUpdated": "നന്ദി! നിങ്ങളുടെ ഫീഡ്‌ബാക്കിന്റെ അടിസ്ഥാനത്തിൽ അഭ്യാസം അപ്‌ഡേറ്റ് ചെയ്തിട്ടുണ്ട്.",
+    "practiceFeedbackUnchanged": "നന്ദി! നിങ്ങളുടെ റിപ്പോർട്ട് രേഖപ്പെടുത്തിയിട്ടുണ്ട്, പക്ഷേ ഉള്ളടക്കം മാറ്റമില്ലാതെ തിരിച്ചെത്തി."
 }

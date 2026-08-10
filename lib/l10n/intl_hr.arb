@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-07 16:23:20.622053",
+    "@@last_modified": "2026-08-10 14:04:44.955268",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10153,5 +10153,12 @@
     "courseDetails": "Detalji tečaja",
     "objective": "Cilj",
     "pingedLabel": "Pingano",
-    "mapFilterPlayerCount": "{count} igrača"
+    "mapFilterPlayerCount": "{count} igrača",
+    "practiceFeedbackButtonTooltip": "Prijavi problem s ovom vježbom",
+    "practiceFeedbackDialogTitle": "Povratne informacije o vježbi",
+    "practiceFeedbackSelectPair": "Koji par izgleda pogrešno?",
+    "practiceFeedbackUserSetEmoji": "Odabrali ste ovaj emoji – promijenite ga na kartici riječi",
+    "practiceFeedbackAlreadyMatched": "Već ispravno spojeno",
+    "practiceFeedbackUpdated": "Hvala! Vježba je ažurirana na temelju vaših povratnih informacija.",
+    "practiceFeedbackUnchanged": "Hvala! Vaša je prijava zabilježena, ali sadržaj je ostao nepromijenjen."
 }

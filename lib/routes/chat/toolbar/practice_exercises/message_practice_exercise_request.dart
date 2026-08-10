@@ -1,5 +1,6 @@
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_session_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_record_model.dart';
@@ -90,6 +91,17 @@ class MessagePracticeExerciseRequest {
   final AudioExampleMessage? audioExampleMessage;
   final bool? mock;
 
+  /// Content the user has flagged as wrong via practice feedback, keyed by
+  /// construct. Generators steer their choice picks away from these values —
+  /// a regenerated lemma row may legitimately still contain the flagged
+  /// content (the server applies feedback as a minimal edit and cannot know
+  /// which list entry the exercise displayed), and re-showing the exact
+  /// content the user just reported reads as the feedback having done
+  /// nothing. Client-side pick steering only: excluded from [toJson],
+  /// [==], and [hashCode] (it is not part of the exercise's identity, and
+  /// the feedback flow invalidates the cached exercise when it changes).
+  final Map<ConstructIdentifier, String> avoidContent;
+
   MessagePracticeExerciseRequest({
     required this.userL1,
     required this.userL2,
@@ -99,6 +111,7 @@ class MessagePracticeExerciseRequest {
     this.exampleMessage,
     this.audioExampleMessage,
     this.mock,
+    this.avoidContent = const {},
   }) {
     if (target.tokens.isEmpty) {
       throw Exception('Target tokens must not be empty');

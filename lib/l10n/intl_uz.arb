@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-07 16:23:27.114101",
+    "@@last_modified": "2026-08-10 14:05:00.347567",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9721,5 +9721,12 @@
     "courseDetails": "Kurs tafsilotlari",
     "objective": "Maqsad",
     "pingedLabel": "Ping qilingan",
-    "mapFilterPlayerCount": "{count} o'yinchi"
+    "mapFilterPlayerCount": "{count} o'yinchi",
+    "practiceFeedbackButtonTooltip": "Ushbu mashq bilan bogʻliq muammoni xabar qiling",
+    "practiceFeedbackDialogTitle": "Mashq boʻyicha fikr-mulohaza",
+    "practiceFeedbackSelectPair": "Qaysi juftlik notoʻgʻri koʻrinadi?",
+    "practiceFeedbackUserSetEmoji": "Siz ushbu emojini tanladingiz — uni soʻz kartasidan oʻzgartiring",
+    "practiceFeedbackAlreadyMatched": "Allaqachon toʻgʻri moslashtirilgan",
+    "practiceFeedbackUpdated": "Rahmat! Mashq sizning fikr-mulohazangiz asosida yangilandi.",
+    "practiceFeedbackUnchanged": "Rahmat! Sizning hisobotingiz qayd etildi, ammo tarkib oʻzgarishsiz qoldi."
 }

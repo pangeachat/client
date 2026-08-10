@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-07 16:23:17.837206",
+    "@@last_modified": "2026-08-10 14:04:40.497787",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Detalji kursa",
     "objective": "Cilj",
     "pingedLabel": "Pingovano",
-    "mapFilterPlayerCount": "{count} igrača"
+    "mapFilterPlayerCount": "{count} igrača",
+    "practiceFeedbackButtonTooltip": "Prijavi problem sa ovom vježbom",
+    "practiceFeedbackDialogTitle": "Povratne informacije o vježbi",
+    "practiceFeedbackSelectPair": "Koji par izgleda pogrešno?",
+    "practiceFeedbackUserSetEmoji": "Odabrali ste ovaj emoji – promijenite ga sa kartice riječi",
+    "practiceFeedbackAlreadyMatched": "Već ispravno usklađeno",
+    "practiceFeedbackUpdated": "Hvala! Vježba je ažurirana na osnovu vaših povratnih informacija.",
+    "practiceFeedbackUnchanged": "Hvala! Vaš izvještaj je zabilježen, ali sadržaj je ostao nepromijenjen."
 }

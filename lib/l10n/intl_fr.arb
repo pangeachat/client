@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-07 16:23:19.503530",
+    "@@last_modified": "2026-08-10 14:04:43.391064",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10072,5 +10072,12 @@
     "courseDetails": "Détails du cours",
     "objective": "Objectif",
     "pingedLabel": "Pingé",
-    "mapFilterPlayerCount": "{count} joueurs"
+    "mapFilterPlayerCount": "{count} joueurs",
+    "practiceFeedbackButtonTooltip": "Signaler un problème avec cet exercice",
+    "practiceFeedbackDialogTitle": "Commentaires sur l'exercice pratique",
+    "practiceFeedbackSelectPair": "Quelle paire semble incorrecte ?",
+    "practiceFeedbackUserSetEmoji": "Vous avez choisi cet emoji — modifiez-le depuis la carte de mot",
+    "practiceFeedbackAlreadyMatched": "Déjà correctement associé",
+    "practiceFeedbackUpdated": "Merci ! L'exercice a été mis à jour en fonction de vos commentaires.",
+    "practiceFeedbackUnchanged": "Merci ! Votre signalement a été enregistré, mais le contenu est resté inchangé."
 }

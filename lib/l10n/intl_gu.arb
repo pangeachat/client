@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-07 16:23:20.171672",
+    "@@last_modified": "2026-08-10 14:04:44.713661",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "કોર્સની વિગતો",
     "objective": "ઉદ્દેશ્ય",
     "pingedLabel": "પિંગ કર્યું",
-    "mapFilterPlayerCount": "{count} ખેલાડીઓ"
+    "mapFilterPlayerCount": "{count} ખેલાડીઓ",
+    "practiceFeedbackButtonTooltip": "આ કવાયતમાં સમસ્યાની જાણ કરો",
+    "practiceFeedbackDialogTitle": "પ્રેક્ટિસ કવાયત પ્રતિસાદ",
+    "practiceFeedbackSelectPair": "કઈ જોડી ખોટી લાગે છે?",
+    "practiceFeedbackUserSetEmoji": "તમે આ ઇમોજી પસંદ કર્યું છે — તેને વર્ડ કાર્ડમાંથી બદલો",
+    "practiceFeedbackAlreadyMatched": "પહેલેથી જ યોગ્ય રીતે મેચ થયેલ છે",
+    "practiceFeedbackUpdated": "આભાર! તમારા પ્રતિસાદના આધારે કવાયત અપડેટ કરવામાં આવી છે.",
+    "practiceFeedbackUnchanged": "આભાર! તમારો અહેવાલ નોંધવામાં આવ્યો હતો, પરંતુ સામગ્રી યથાવત રહી."
 }

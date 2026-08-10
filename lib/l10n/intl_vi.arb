@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:27.248806",
+    "@@last_modified": "2026-08-10 14:04:59.989509",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6993,5 +6993,12 @@
     "courseDetails": "Chi tiết khóa học",
     "objective": "Mục tiêu",
     "pingedLabel": "Đã được nhắc đến",
-    "mapFilterPlayerCount": "{count} người chơi"
+    "mapFilterPlayerCount": "{count} người chơi",
+    "practiceFeedbackButtonTooltip": "Báo cáo sự cố với bài tập này",
+    "practiceFeedbackDialogTitle": "Phản hồi về bài tập thực hành",
+    "practiceFeedbackSelectPair": "Cặp nào có vẻ sai?",
+    "practiceFeedbackUserSetEmoji": "Bạn đã chọn biểu tượng cảm xúc này — hãy thay đổi nó từ thẻ từ",
+    "practiceFeedbackAlreadyMatched": "Đã khớp chính xác",
+    "practiceFeedbackUpdated": "Cảm ơn! Bài tập đã được cập nhật dựa trên phản hồi của bạn.",
+    "practiceFeedbackUnchanged": "Cảm ơn! Báo cáo của bạn đã được ghi lại, nhưng nội dung không thay đổi."
 }

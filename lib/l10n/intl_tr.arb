@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-07 16:23:26.858294",
+    "@@last_modified": "2026-08-10 14:04:59.251072",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10018,5 +10018,12 @@
     "courseDetails": "Kurs detayları",
     "objective": "Hedef",
     "pingedLabel": "Pinglendi",
-    "mapFilterPlayerCount": "{count} oyuncu"
+    "mapFilterPlayerCount": "{count} oyuncu",
+    "practiceFeedbackButtonTooltip": "Bu alıştırmayla ilgili bir sorun bildir",
+    "practiceFeedbackDialogTitle": "Alıştırma Geri Bildirimi",
+    "practiceFeedbackSelectPair": "Hangi çift yanlış görünüyor?",
+    "practiceFeedbackUserSetEmoji": "Bu emojiyi sen seçtin — kelime kartından değiştir",
+    "practiceFeedbackAlreadyMatched": "Zaten doğru eşleştirildi",
+    "practiceFeedbackUpdated": "Teşekkürler! Alıştırma, geri bildirimine göre güncellendi.",
+    "practiceFeedbackUnchanged": "Teşekkürler! Raporun kaydedildi, ancak içerik değişmeden kaldı."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-07 16:23:25.765191",
+    "@@last_modified": "2026-08-10 14:04:58.210328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Ruzivo rwekirasi",
     "objective": "Chinangwa",
     "pingedLabel": "Yapindurwa",
-    "mapFilterPlayerCount": "Vatambi {count}"
+    "mapFilterPlayerCount": "Vatambi {count}",
+    "practiceFeedbackButtonTooltip": "Taura dambudziko riri pabasa iri",
+    "practiceFeedbackDialogTitle": "Mhinduro Yebasa Rekudzidzira",
+    "practiceFeedbackSelectPair": "Ndeipi pair inoita seyakanganisa?",
+    "practiceFeedbackUserSetEmoji": "Wasarudza emoji iyi — chinja kubva pakadhi rezwi",
+    "practiceFeedbackAlreadyMatched": "Yatofananidzwa nemazvo",
+    "practiceFeedbackUpdated": "Ndatenda! Basa racho rakagadziridzwa zvichibva pamhinduro yako.",
+    "practiceFeedbackUnchanged": "Ndatenda! Chirevo chako chakanyorwa, asi zviri mukati hazvina kuchinja."
 }

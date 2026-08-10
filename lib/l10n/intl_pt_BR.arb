@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:24.889974",
+    "@@last_modified": "2026-08-10 14:04:55.026913",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9717,5 +9717,12 @@
     "courseDetails": "Detalhes do curso",
     "objective": "Objetivo",
     "pingedLabel": "Mencionado",
-    "mapFilterPlayerCount": "{count} jogadores"
+    "mapFilterPlayerCount": "{count} jogadores",
+    "practiceFeedbackButtonTooltip": "Reportar um problema com este exercício",
+    "practiceFeedbackDialogTitle": "Feedback do Exercício",
+    "practiceFeedbackSelectPair": "Qual par parece errado?",
+    "practiceFeedbackUserSetEmoji": "Você escolheu este emoji — mude-o no cartão da palavra",
+    "practiceFeedbackAlreadyMatched": "Já combinado corretamente",
+    "practiceFeedbackUpdated": "Obrigado! O exercício foi atualizado com base no seu feedback.",
+    "practiceFeedbackUnchanged": "Obrigado! Seu relatório foi registrado, mas o conteúdo permaneceu inalterado."
 }

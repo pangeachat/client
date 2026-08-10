@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-07 16:23:18.897089",
+    "@@last_modified": "2026-08-10 14:04:42.188429",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9704,5 +9704,12 @@
     "courseDetails": "Kursdetails",
     "objective": "Ziel",
     "pingedLabel": "Angesprochen",
-    "mapFilterPlayerCount": "{count} Spieler"
+    "mapFilterPlayerCount": "{count} Spieler",
+    "practiceFeedbackButtonTooltip": "Problem mit dieser Übung melden",
+    "practiceFeedbackDialogTitle": "Feedback zur Übung",
+    "practiceFeedbackSelectPair": "Welches Paar scheint falsch zu sein?",
+    "practiceFeedbackUserSetEmoji": "Du hast dieses Emoji ausgewählt – ändere es auf der Wortkarte",
+    "practiceFeedbackAlreadyMatched": "Bereits korrekt zugeordnet",
+    "practiceFeedbackUpdated": "Danke! Die Übung wurde basierend auf deinem Feedback aktualisiert.",
+    "practiceFeedbackUnchanged": "Danke! Dein Bericht wurde erfasst, aber der Inhalt blieb unverändert."
 }

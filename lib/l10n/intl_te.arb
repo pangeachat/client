@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-07 16:23:26.559238",
+    "@@last_modified": "2026-08-10 14:04:58.485024",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10667,5 +10667,12 @@
     "courseDetails": "కోర్సు వివరాలు",
     "objective": "లక్ష్యం",
     "pingedLabel": "పింగ్ చేయబడింది",
-    "mapFilterPlayerCount": "{count} ఆటగాళ్ళు"
+    "mapFilterPlayerCount": "{count} ఆటగాళ్ళు",
+    "practiceFeedbackButtonTooltip": "ఈ అభ్యాసంలో సమస్యను నివేదించండి",
+    "practiceFeedbackDialogTitle": "అభ్యాస వ్యాయామం అభిప్రాయం",
+    "practiceFeedbackSelectPair": "ఏ జత తప్పుగా కనిపిస్తుంది?",
+    "practiceFeedbackUserSetEmoji": "మీరు ఈ ఎమోజిని ఎంచుకున్నారు — పద కార్డ్ నుండి దీన్ని మార్చండి",
+    "practiceFeedbackAlreadyMatched": "ఇప్పటికే సరిగ్గా సరిపోలింది",
+    "practiceFeedbackUpdated": "ధన్యవాదాలు! మీ అభిప్రాయం ఆధారంగా వ్యాయామం నవీకరించబడింది.",
+    "practiceFeedbackUnchanged": "ధన్యవాదాలు! మీ నివేదిక రికార్డ్ చేయబడింది, కానీ కంటెంట్ మారకుండా తిరిగి వచ్చింది."
 }

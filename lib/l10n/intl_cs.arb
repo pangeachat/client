@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-07 16:23:18.611760",
+    "@@last_modified": "2026-08-10 14:04:41.940923",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10211,5 +10211,12 @@
     "courseDetails": "Podrobnosti kurzu",
     "objective": "Cíl",
     "pingedLabel": "Pingnuto",
-    "mapFilterPlayerCount": "{count} hráčů"
+    "mapFilterPlayerCount": "{count} hráčů",
+    "practiceFeedbackButtonTooltip": "Nahlásit problém s tímto cvičením",
+    "practiceFeedbackDialogTitle": "Zpětná vazba k cvičení",
+    "practiceFeedbackSelectPair": "Který pár vypadá špatně?",
+    "practiceFeedbackUserSetEmoji": "Vybrali jste tento emotikon – změňte jej z kartičky se slovem",
+    "practiceFeedbackAlreadyMatched": "Již správně spárováno",
+    "practiceFeedbackUpdated": "Děkujeme! Cvičení bylo aktualizováno na základě vaší zpětné vazby.",
+    "practiceFeedbackUnchanged": "Děkujeme! Váš report byl zaznamenán, ale obsah zůstal nezměněn."
 }

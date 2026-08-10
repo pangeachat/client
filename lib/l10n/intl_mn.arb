@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-07 16:23:23.487534",
+    "@@last_modified": "2026-08-10 14:04:51.933328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Хичээлийн дэлгэрэнгүй",
     "objective": "Зорилго",
     "pingedLabel": "Дуудсан",
-    "mapFilterPlayerCount": "{count} тоглогч"
+    "mapFilterPlayerCount": "{count} тоглогч",
+    "practiceFeedbackButtonTooltip": "Энэ дасгалын талаар асуудал мэдээлэх",
+    "practiceFeedbackDialogTitle": "Дасгалын талаарх санал хүсэлт",
+    "practiceFeedbackSelectPair": "Аль хослол нь буруу харагдаж байна вэ?",
+    "practiceFeedbackUserSetEmoji": "Та энэ эможиг сонгосон байна — үүнийг үгийн картаас өөрчилнө үү",
+    "practiceFeedbackAlreadyMatched": "Аль хэдийн зөв таарсан байна",
+    "practiceFeedbackUpdated": "Баярлалаа! Таны санал хүсэлтэд үндэслэн дасгалыг шинэчиллээ.",
+    "practiceFeedbackUnchanged": "Баярлалаа! Таны мэдээллийг бүртгэсэн боловч агуулга өөрчлөгдөөгүй байна."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:23.925142",
+    "@@last_modified": "2026-08-10 14:04:52.661847",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9774,5 +9774,12 @@
     "courseDetails": "Kursdetaljer",
     "objective": "Mål",
     "pingedLabel": "Pinget",
-    "mapFilterPlayerCount": "{count} spillere"
+    "mapFilterPlayerCount": "{count} spillere",
+    "practiceFeedbackButtonTooltip": "Rapporter et problem med denne øvelsen",
+    "practiceFeedbackDialogTitle": "Tilbakemelding på øvelse",
+    "practiceFeedbackSelectPair": "Hvilket par ser feil ut?",
+    "practiceFeedbackUserSetEmoji": "Du valgte denne emojien – endre den fra ordkortet",
+    "practiceFeedbackAlreadyMatched": "Allerede riktig matchet",
+    "practiceFeedbackUpdated": "Takk! Øvelsen er oppdatert basert på din tilbakemelding.",
+    "practiceFeedbackUnchanged": "Takk! Rapporten din ble registrert, men innholdet ble ikke endret."
 }

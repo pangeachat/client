@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-07 16:23:18.713905",
+    "@@last_modified": "2026-08-10 14:04:42.025503",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10637,5 +10637,12 @@
     "courseDetails": "Kursusdetaljer",
     "objective": "Mål",
     "pingedLabel": "Pinget",
-    "mapFilterPlayerCount": "{count} spillere"
+    "mapFilterPlayerCount": "{count} spillere",
+    "practiceFeedbackButtonTooltip": "Rapportér et problem med denne øvelse",
+    "practiceFeedbackDialogTitle": "Feedback på øvelse",
+    "practiceFeedbackSelectPair": "Hvilket par ser forkert ud?",
+    "practiceFeedbackUserSetEmoji": "Du valgte denne emoji – skift den fra ordkortet",
+    "practiceFeedbackAlreadyMatched": "Allerede matchet korrekt",
+    "practiceFeedbackUpdated": "Tak! Øvelsen er blevet opdateret baseret på din feedback.",
+    "practiceFeedbackUnchanged": "Tak! Din rapport blev registreret, men indholdet er uændret."
 }

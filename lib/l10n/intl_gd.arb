@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-07 16:23:20.384874",
+    "@@last_modified": "2026-08-10 14:04:45.406428",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Mion-fhiosrachadh cùrsa",
     "objective": "Amas",
     "pingedLabel": "Air a phingadh",
-    "mapFilterPlayerCount": "{count} cluicheadairean"
+    "mapFilterPlayerCount": "{count} cluicheadairean",
+    "practiceFeedbackButtonTooltip": "Thoir cunntas air duilgheadas leis an eacarsaich seo",
+    "practiceFeedbackDialogTitle": "Aiseag air Eacarsaich Cleachdaidh",
+    "practiceFeedbackSelectPair": "Dè am paidhir a tha a’ coimhead ceàrr?",
+    "practiceFeedbackUserSetEmoji": "Thagh thu an emoji seo – atharraich e bhon chairt-fhacail",
+    "practiceFeedbackAlreadyMatched": "Air a mhaidseadh gu ceart mu thràth",
+    "practiceFeedbackUpdated": "Tapadh leat! Chaidh an eacarsaich ùrachadh stèidhichte air an aiseag agad.",
+    "practiceFeedbackUnchanged": "Tapadh leat! Chaidh an aithisg agad a chlàradh, ach cha tàinig atharrachadh sam bith air an t-susbaint."
 }

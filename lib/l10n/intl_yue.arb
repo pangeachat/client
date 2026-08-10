@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-07 16:23:27.410100",
+    "@@last_modified": "2026-08-10 14:05:00.968039",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10674,5 +10674,12 @@
     "courseDetails": "課程詳情",
     "objective": "目標",
     "pingedLabel": "已提示",
-    "mapFilterPlayerCount": "{count} 位玩家"
+    "mapFilterPlayerCount": "{count} 位玩家",
+    "practiceFeedbackButtonTooltip": "報告此練習的問題",
+    "practiceFeedbackDialogTitle": "練習反饋",
+    "practiceFeedbackSelectPair": "哪一對看起來不對？",
+    "practiceFeedbackUserSetEmoji": "你選了這個表情符號 — 從詞卡更改它",
+    "practiceFeedbackAlreadyMatched": "已經正確配對",
+    "practiceFeedbackUpdated": "謝謝！練習已根據你的反饋更新。",
+    "practiceFeedbackUnchanged": "謝謝！你的報告已記錄，但內容未有更改。"
 }

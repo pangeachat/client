@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-07 16:23:19.351728",
+    "@@last_modified": "2026-08-10 14:04:43.072463",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7920,5 +7920,12 @@
     "courseDetails": "Detalles del curso",
     "objective": "Objetivo",
     "pingedLabel": "Mencionado",
-    "mapFilterPlayerCount": "{count} jugadores"
+    "mapFilterPlayerCount": "{count} jugadores",
+    "practiceFeedbackButtonTooltip": "Reportar un problema con este ejercicio",
+    "practiceFeedbackDialogTitle": "Comentarios sobre el ejercicio de práctica",
+    "practiceFeedbackSelectPair": "¿Qué par parece incorrecto?",
+    "practiceFeedbackUserSetEmoji": "Elegiste este emoji; cámbialo desde la tarjeta de la palabra",
+    "practiceFeedbackAlreadyMatched": "Ya se ha emparejado correctamente",
+    "practiceFeedbackUpdated": "¡Gracias! El ejercicio se ha actualizado según tus comentarios.",
+    "practiceFeedbackUnchanged": "¡Gracias! Tu informe fue registrado, pero el contenido no ha cambiado."
 }

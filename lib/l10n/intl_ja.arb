@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-07 16:23:21.358700",
+    "@@last_modified": "2026-08-10 14:04:47.145580",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10486,5 +10486,12 @@
     "courseDetails": "コース詳細",
     "objective": "目的",
     "pingedLabel": "Ping済み",
-    "mapFilterPlayerCount": "{count}人のプレイヤー"
+    "mapFilterPlayerCount": "{count}人のプレイヤー",
+    "practiceFeedbackButtonTooltip": "この練習問題の問題を報告する",
+    "practiceFeedbackDialogTitle": "練習問題のフィードバック",
+    "practiceFeedbackSelectPair": "どのペアが間違っていますか？",
+    "practiceFeedbackUserSetEmoji": "あなたが選んだ絵文字です — 単語カードから変更してください",
+    "practiceFeedbackAlreadyMatched": "すでに正しく一致しています",
+    "practiceFeedbackUpdated": "ありがとうございます！あなたのフィードバックに基づいて練習問題が更新されました。",
+    "practiceFeedbackUnchanged": "ありがとうございます！報告は記録されましたが、内容は変更されませんでした。"
 }

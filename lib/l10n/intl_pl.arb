@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-07 16:23:24.681050",
+    "@@last_modified": "2026-08-10 14:04:54.178362",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9802,5 +9802,12 @@
     "courseDetails": "Szczegóły kursu",
     "objective": "Cel",
     "pingedLabel": "Pingowano",
-    "mapFilterPlayerCount": "{count} graczy"
+    "mapFilterPlayerCount": "{count} graczy",
+    "practiceFeedbackButtonTooltip": "Zgłoś problem z tym ćwiczeniem",
+    "practiceFeedbackDialogTitle": "Opinia o ćwiczeniu",
+    "practiceFeedbackSelectPair": "Która para wygląda na błędną?",
+    "practiceFeedbackUserSetEmoji": "Wybrano tę emotikonę — zmień ją z karty słowa",
+    "practiceFeedbackAlreadyMatched": "Już poprawnie dopasowane",
+    "practiceFeedbackUpdated": "Dziękujemy! Ćwiczenie zostało zaktualizowane na podstawie Twojej opinii.",
+    "practiceFeedbackUnchanged": "Dziękujemy! Twoje zgłoszenie zostało zarejestrowane, ale treść pozostała niezmieniona."
 }

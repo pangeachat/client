@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-07 16:23:24.997323",
+    "@@last_modified": "2026-08-10 14:04:55.430865",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10689,5 +10689,12 @@
     "courseDetails": "Детали курса",
     "objective": "Цель",
     "pingedLabel": "Упомянут",
-    "mapFilterPlayerCount": "{count} игроков"
+    "mapFilterPlayerCount": "{count} игроков",
+    "practiceFeedbackButtonTooltip": "Сообщить о проблеме с этим упражнением",
+    "practiceFeedbackDialogTitle": "Отзыв об упражнении",
+    "practiceFeedbackSelectPair": "Какая пара выглядит неправильно?",
+    "practiceFeedbackUserSetEmoji": "Вы выбрали этот эмодзи — измените его на карточке слова",
+    "practiceFeedbackAlreadyMatched": "Уже сопоставлено правильно",
+    "practiceFeedbackUpdated": "Спасибо! Упражнение было обновлено на основе вашего отзыва.",
+    "practiceFeedbackUnchanged": "Спасибо! Ваш отчет был записан, но содержание осталось без изменений."
 }

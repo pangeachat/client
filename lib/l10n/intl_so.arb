@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-07 16:23:26.093787",
+    "@@last_modified": "2026-08-10 14:04:58.819965",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Faahfaahinta koorsada",
     "objective": "Ujeeddo",
     "pingedLabel": "La ping-gareeyay",
-    "mapFilterPlayerCount": "{count} ciyaartoy"
+    "mapFilterPlayerCount": "{count} ciyaartoy",
+    "practiceFeedbackButtonTooltip": "Ka warbixi dhibaato ku saabsan layligan",
+    "practiceFeedbackDialogTitle": "Jawaab celinta layliga ku celcelinta",
+    "practiceFeedbackSelectPair": "Labadan keebaa u muuqda mid qaldan?",
+    "practiceFeedbackUserSetEmoji": "Waxaad dooratay emoji-gan — ka beddel kaarka ereyga",
+    "practiceFeedbackAlreadyMatched": "Horey ayaa si sax ah loo isku daray",
+    "practiceFeedbackUpdated": "Waad ku mahadsan tahay! Layliga waa la cusboonaysiiyay iyadoo lagu saleynayo jawaab celintaada.",
+    "practiceFeedbackUnchanged": "Waad ku mahadsan tahay! Warbixintaada waa la diiwaan geliyay, laakiin waxa ku jira waxba iskama beddelin."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-07 16:23:22.111606",
+    "@@last_modified": "2026-08-10 14:04:48.211788",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "ಕೋರ್ಸ್ ವಿವರಗಳು",
     "objective": "ಉದ್ದೇಶ",
     "pingedLabel": "ಪಿಂಗ್ ಮಾಡಲಾಗಿದೆ",
-    "mapFilterPlayerCount": "{count} ಆಟಗಾರರು"
+    "mapFilterPlayerCount": "{count} ಆಟಗಾರರು",
+    "practiceFeedbackButtonTooltip": "ಈ ವ್ಯಾಯಾಮದಲ್ಲಿನ ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿ",
+    "practiceFeedbackDialogTitle": "ಅಭ್ಯಾಸದ ವ್ಯಾಯಾಮದ ಪ್ರತಿಕ್ರಿಯೆ",
+    "practiceFeedbackSelectPair": "ಯಾವ ಜೋಡಿ ತಪ್ಪಾಗಿದೆ?",
+    "practiceFeedbackUserSetEmoji": "ನೀವು ಈ ಎಮೋಜಿಯನ್ನು ಆರಿಸಿದ್ದೀರಿ — ಪದ ಕಾರ್ಡ್‌ನಿಂದ ಅದನ್ನು ಬದಲಾಯಿಸಿ",
+    "practiceFeedbackAlreadyMatched": "ಈಗಾಗಲೇ ಸರಿಯಾಗಿ ಹೊಂದಾಣಿಕೆಯಾಗಿದೆ",
+    "practiceFeedbackUpdated": "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯ ಆಧಾರದ ಮೇಲೆ ವ್ಯಾಯಾಮವನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ.",
+    "practiceFeedbackUnchanged": "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ವರದಿಯನ್ನು ದಾಖಲಿಸಲಾಗಿದೆ, ಆದರೆ ವಿಷಯವು ಬದಲಾಗದೆ ಮರಳಿದೆ."
 }

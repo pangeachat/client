@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-07 16:23:18.809181",
+    "@@last_modified": "2026-08-10 14:04:42.335868",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Manylion y cwrs",
     "objective": "Amcan",
     "pingedLabel": "Wedi pingio",
-    "mapFilterPlayerCount": "{count} chwaraewr"
+    "mapFilterPlayerCount": "{count} chwaraewr",
+    "practiceFeedbackButtonTooltip": "Adrodd problem gyda'r ymarfer hwn",
+    "practiceFeedbackDialogTitle": "Adborth Ymarfer",
+    "practiceFeedbackSelectPair": "Pa bâr sy'n edrych yn anghywir?",
+    "practiceFeedbackUserSetEmoji": "Dewisoch yr emoji hwn — newidiwch ef o'r cerdyn gair",
+    "practiceFeedbackAlreadyMatched": "Eisoes wedi'i baru'n gywir",
+    "practiceFeedbackUpdated": "Diolch! Mae'r ymarfer wedi'i ddiweddaru yn seiliedig ar eich adborth.",
+    "practiceFeedbackUnchanged": "Diolch! Cofnodwyd eich adroddiad, ond daeth y cynnwys yn ôl heb ei newid."
 }

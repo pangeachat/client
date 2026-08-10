@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-07 16:23:19.363059",
+    "@@last_modified": "2026-08-10 14:04:43.248676",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9714,5 +9714,12 @@
     "courseDetails": "Kursuse üksikasjad",
     "objective": "Eesmärk",
     "pingedLabel": "Pingitud",
-    "mapFilterPlayerCount": "{count} mängijat"
+    "mapFilterPlayerCount": "{count} mängijat",
+    "practiceFeedbackButtonTooltip": "Teata probleemist selle harjutusega",
+    "practiceFeedbackDialogTitle": "Harjutuse tagasiside",
+    "practiceFeedbackSelectPair": "Milline paar tundub vale?",
+    "practiceFeedbackUserSetEmoji": "Valisid selle emotikoni – muuda seda sõnakaardilt",
+    "practiceFeedbackAlreadyMatched": "Juba õigesti sobitatud",
+    "practiceFeedbackUpdated": "Aitäh! Harjutust on teie tagasiside põhjal värskendatud.",
+    "practiceFeedbackUnchanged": "Aitäh! Teie teade salvestati, kuid sisu jäi muutmata."
 }

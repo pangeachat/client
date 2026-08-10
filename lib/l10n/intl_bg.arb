@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-07 16:23:17.952217",
+    "@@last_modified": "2026-08-10 14:04:40.571468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Подробности за курса",
     "objective": "Цел",
     "pingedLabel": "Пингован",
-    "mapFilterPlayerCount": "{count} играчи"
+    "mapFilterPlayerCount": "{count} играчи",
+    "practiceFeedbackButtonTooltip": "Докладвайте проблем с това упражнение",
+    "practiceFeedbackDialogTitle": "Обратна връзка за упражнението",
+    "practiceFeedbackSelectPair": "Коя двойка изглежда грешна?",
+    "practiceFeedbackUserSetEmoji": "Избрахте това емоджи – променете го от картата с думи",
+    "practiceFeedbackAlreadyMatched": "Вече съвпада правилно",
+    "practiceFeedbackUpdated": "Благодарим! Упражнението е актуализирано въз основа на вашата обратна връзка.",
+    "practiceFeedbackUnchanged": "Благодарим! Вашият доклад беше записан, но съдържанието остана непроменено."
 }

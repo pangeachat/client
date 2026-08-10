@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-07 16:23:22.591141",
+    "@@last_modified": "2026-08-10 14:04:49.842094",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "وردەکارییەکانی خول",
     "objective": "ئامانج",
     "pingedLabel": "پینگ کرا",
-    "mapFilterPlayerCount": "{count} یاریزان"
+    "mapFilterPlayerCount": "{count} یاریزان",
+    "practiceFeedbackButtonTooltip": "کێشەیەک لەم ڕاهێنانەدا ڕاپۆرت بکە",
+    "practiceFeedbackDialogTitle": "فیدباکی ڕاهێنانی پراکتیکی",
+    "practiceFeedbackSelectPair": "کام جووتە هەڵە دەردەکەوێت؟",
+    "practiceFeedbackUserSetEmoji": "تۆ ئەم ئیمۆجییەت هەڵبژاردووە — لە کارتی وشەکە بیگۆڕە",
+    "practiceFeedbackAlreadyMatched": "پێشتر بە دروستی گونجاوە",
+    "practiceFeedbackUpdated": "سوپاس! ڕاهێنانەکە نوێکرایەوە بە پشتبەستن بە فیدباکی تۆ.",
+    "practiceFeedbackUnchanged": "سوپاس! ڕاپۆرتەکەت تۆمارکرا، بەڵام ناوەڕۆکەکە وەک خۆی مایەوە."
 }

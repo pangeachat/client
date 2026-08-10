@@ -3568,7 +3568,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-07 16:23:19.967564",
+    "@@last_modified": "2026-08-10 14:04:44.866600",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9728,5 +9728,12 @@
     "courseDetails": "Sonraí an chúrsa",
     "objective": "Cuspóir",
     "pingedLabel": "Pingáilte",
-    "mapFilterPlayerCount": "{count} imreoir"
+    "mapFilterPlayerCount": "{count} imreoir",
+    "practiceFeedbackButtonTooltip": "Tuairiscigh fadhb leis an gcleachtadh seo",
+    "practiceFeedbackDialogTitle": "Aiseolas ar Chleachtadh",
+    "practiceFeedbackSelectPair": "Cén péire atá mícheart?",
+    "practiceFeedbackUserSetEmoji": "Thogh tú an straoiseog seo — athraigh é ón gcárta focal",
+    "practiceFeedbackAlreadyMatched": "Meaitseáladh i gceart cheana",
+    "practiceFeedbackUpdated": "Go raibh maith agat! Nuashonraíodh an cleachtadh bunaithe ar d’aiseolas.",
+    "practiceFeedbackUnchanged": "Go raibh maith agat! Taifeadadh do thuairisc, ach níor athraíodh an t-ábhar."
 }

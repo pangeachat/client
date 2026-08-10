@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-07 16:23:17.795941",
+    "@@last_modified": "2026-08-10 14:04:40.409342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Kursusbesonderhede",
     "objective": "Doelwit",
     "pingedLabel": "Geping",
-    "mapFilterPlayerCount": "{count} spelers"
+    "mapFilterPlayerCount": "{count} spelers",
+    "practiceFeedbackButtonTooltip": "Rapporteer 'n probleem met hierdie oefening",
+    "practiceFeedbackDialogTitle": "Terugvoer oor Oefening",
+    "practiceFeedbackSelectPair": "Watter paar lyk verkeerd?",
+    "practiceFeedbackUserSetEmoji": "Jy het hierdie emoji gekies — verander dit vanaf die woordkaart",
+    "practiceFeedbackAlreadyMatched": "Reeds korrek gepas",
+    "practiceFeedbackUpdated": "Dankie! Die oefening is opgedateer op grond van jou terugvoer.",
+    "practiceFeedbackUnchanged": "Dankie! Jou verslag is aangeteken, maar die inhoud het onveranderd gebly."
 }

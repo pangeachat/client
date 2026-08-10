@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-07 16:23:23.135341",
+    "@@last_modified": "2026-08-10 14:04:50.325156",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "ລາຍລະອຽດຫຼັກສູດ",
     "objective": "ຈຸດປະສົງ",
     "pingedLabel": "ຖືກປິງແລ້ວ",
-    "mapFilterPlayerCount": "{count} ຜູ້ຫຼິ້ນ"
+    "mapFilterPlayerCount": "{count} ຜູ້ຫຼິ້ນ",
+    "practiceFeedbackButtonTooltip": "ລາຍງານບັນຫາຂອງບົດຝຶກຫັດນີ້",
+    "practiceFeedbackDialogTitle": "ຄຳຄິດເຫັນກ່ຽວກັບບົດຝຶກຫັດ",
+    "practiceFeedbackSelectPair": "ຄູ່ໃດເບິ່ງຄືວ່າຜິດ?",
+    "practiceFeedbackUserSetEmoji": "ທ່ານເລືອກອີໂມຈິນີ້ — ປ່ຽນມັນຈາກບັດຄຳສັບ",
+    "practiceFeedbackAlreadyMatched": "ຈັບຄູ່ຖືກຕ້ອງແລ້ວ",
+    "practiceFeedbackUpdated": "ຂອບໃຈ! ບົດຝຶກຫັດໄດ້ຖືກອັບເດດຕາມຄຳຄິດເຫັນຂອງທ່ານ.",
+    "practiceFeedbackUnchanged": "ຂອບໃຈ! ລາຍງານຂອງທ່ານໄດ້ຖືກບັນທຶກໄວ້, ແຕ່ເນື້ອຫາບໍ່ມີການປ່ຽນແປງ."
 }

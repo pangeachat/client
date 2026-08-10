@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-07 16:23:27.675675",
+    "@@last_modified": "2026-08-10 14:05:00.895222",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9717,5 +9717,12 @@
     "courseDetails": "课程详情",
     "objective": "目标",
     "pingedLabel": "已提醒",
-    "mapFilterPlayerCount": "{count} 位玩家"
+    "mapFilterPlayerCount": "{count} 位玩家",
+    "practiceFeedbackButtonTooltip": "报告此练习的问题",
+    "practiceFeedbackDialogTitle": "练习反馈",
+    "practiceFeedbackSelectPair": "哪一组看起来不对？",
+    "practiceFeedbackUserSetEmoji": "你选择了这个表情符号 — 从单词卡中更改它",
+    "practiceFeedbackAlreadyMatched": "已正确匹配",
+    "practiceFeedbackUpdated": "谢谢！练习已根据您的反馈进行了更新。",
+    "practiceFeedbackUnchanged": "谢谢！您的报告已记录，但内容未更改。"
 }

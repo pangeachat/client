@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-07 16:23:26.962117",
+    "@@last_modified": "2026-08-10 14:04:59.762663",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2105,5 +2105,12 @@
     "courseDetails": "کورس کی تفصیلات",
     "objective": "مقصد",
     "pingedLabel": "پنگ کیا گیا",
-    "mapFilterPlayerCount": "{count} کھلاڑی"
+    "mapFilterPlayerCount": "{count} کھلاڑی",
+    "practiceFeedbackButtonTooltip": "اس مشق کے ساتھ ایک مسئلہ کی اطلاع دیں",
+    "practiceFeedbackDialogTitle": "مشق کی رائے",
+    "practiceFeedbackSelectPair": "کون سا جوڑا غلط لگتا ہے؟",
+    "practiceFeedbackUserSetEmoji": "آپ نے یہ ایموجی منتخب کیا ہے — اسے ورڈ کارڈ سے تبدیل کریں",
+    "practiceFeedbackAlreadyMatched": "پہلے ہی صحیح طریقے سے مماثل ہے",
+    "practiceFeedbackUpdated": "شکریہ! آپ کی رائے کی بنیاد پر مشق کو اپ ڈیٹ کر دیا گیا ہے۔",
+    "practiceFeedbackUnchanged": "شکریہ! آپ کی رپورٹ ریکارڈ کر لی گئی ہے، لیکن مواد میں کوئی تبدیلی نہیں کی گئی۔"
 }

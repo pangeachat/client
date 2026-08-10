@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-07 16:23:25.517121",
+    "@@last_modified": "2026-08-10 14:04:56.225628",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "ڪورس جا تفصيل",
     "objective": "مقصد",
     "pingedLabel": "پنگ ڪيو ويو",
-    "mapFilterPlayerCount": "{count} رانديگر"
+    "mapFilterPlayerCount": "{count} رانديگر",
+    "practiceFeedbackButtonTooltip": "هن مشق سان مسئلو ٻڌايو",
+    "practiceFeedbackDialogTitle": "مشق جي راءِ",
+    "practiceFeedbackSelectPair": "ڪهڙو جوڙو غلط لڳي ٿو؟",
+    "practiceFeedbackUserSetEmoji": "توهان هي ايموجي چونڊيو آهي — ان کي لفظ ڪارڊ مان تبديل ڪريو",
+    "practiceFeedbackAlreadyMatched": "اڳ ۾ ئي صحيح نموني سان ملائي وئي آهي",
+    "practiceFeedbackUpdated": "مهرباني! مشق توهان جي راءِ جي بنياد تي اپڊيٽ ڪئي وئي آهي.",
+    "practiceFeedbackUnchanged": "مهرباني! توهان جي رپورٽ رڪارڊ ڪئي وئي، پر مواد اڻ تبديل ٿيل رهيو."
 }

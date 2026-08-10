@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-07 16:23:23.660030",
+    "@@last_modified": "2026-08-10 14:04:52.524067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2105,5 +2105,12 @@
     "courseDetails": "কোর্সকী খুদমশিং",
     "objective": "পাঙ্গল",
     "pingedLabel": "পিং তৌরে",
-    "mapFilterPlayerCount": "{count} প্লেয়ারশিং"
+    "mapFilterPlayerCount": "{count} প্লেয়ারশিং",
+    "practiceFeedbackButtonTooltip": "অসাইনবমেন্ত অসিদা অৱাবা অমত্তা লৈরবদি ফোংদোকউ",
+    "practiceFeedbackDialogTitle": "প্রেকটিস এক্সারসাইজ ফিডব্যাক",
+    "practiceFeedbackSelectPair": "করি পেয়ার অসি মাকল লৈরিবগে?",
+    "practiceFeedbackUserSetEmoji": "নখোয়না ইমোজি অসি খল্লিবনি — ৱার্ড কার্ডদগী হোংদোকউ",
+    "practiceFeedbackAlreadyMatched": "মমাংদগী চুনখ্রে",
+    "practiceFeedbackUpdated": "থাগৎচরি! নখোয়গী ফিডব্যাক মতুং ইন্না এক্সারসাইজ অসি আপডেট তৌখ্রে.",
+    "practiceFeedbackUnchanged": "থাগৎচরি! নখোয়গী রিপোর্ট অদু রেকোর্ড তৌখ্রে, অদুবু কন্টেন্ট অদু হোংদোকখিদে."
 }

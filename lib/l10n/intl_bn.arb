@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:17.851388",
+    "@@last_modified": "2026-08-10 14:04:40.511790",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10345,5 +10345,12 @@
     "courseDetails": "কোর্সের বিবরণ",
     "objective": "উদ্দেশ্য",
     "pingedLabel": "পিং করা হয়েছে",
-    "mapFilterPlayerCount": "{count} জন খেলোয়াড়"
+    "mapFilterPlayerCount": "{count} জন খেলোয়াড়",
+    "practiceFeedbackButtonTooltip": "এই অনুশীলনে একটি সমস্যা রিপোর্ট করুন",
+    "practiceFeedbackDialogTitle": "অনুশীলন সংক্রান্ত প্রতিক্রিয়া",
+    "practiceFeedbackSelectPair": "কোন জোড়াটি ভুল দেখাচ্ছে?",
+    "practiceFeedbackUserSetEmoji": "আপনি এই ইমোজিটি বেছে নিয়েছেন — শব্দ কার্ড থেকে এটি পরিবর্তন করুন",
+    "practiceFeedbackAlreadyMatched": "ইতিমধ্যেই সঠিকভাবে মিলেছে",
+    "practiceFeedbackUpdated": "ধন্যবাদ! আপনার মতামতের ভিত্তিতে অনুশীলনটি আপডেট করা হয়েছে।",
+    "practiceFeedbackUnchanged": "ধন্যবাদ! আপনার রিপোর্ট রেকর্ড করা হয়েছে, কিন্তু বিষয়বস্তু অপরিবর্তিত রয়েছে।"
 }

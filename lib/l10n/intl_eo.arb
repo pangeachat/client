@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:19.151881",
+    "@@last_modified": "2026-08-10 14:04:43.369745",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10662,5 +10662,12 @@
     "courseDetails": "Kursaj detaloj",
     "objective": "Celo",
     "pingedLabel": "Pingita",
-    "mapFilterPlayerCount": "{count} ludantoj"
+    "mapFilterPlayerCount": "{count} ludantoj",
+    "practiceFeedbackButtonTooltip": "Raporti problemon pri ĉi tiu ekzerco",
+    "practiceFeedbackDialogTitle": "Reago pri Ekzerco",
+    "practiceFeedbackSelectPair": "Kiu paro aspektas malĝusta?",
+    "practiceFeedbackUserSetEmoji": "Vi elektis ĉi tiun emoji-on — ŝanĝu ĝin de la vortkarto",
+    "practiceFeedbackAlreadyMatched": "Jam ĝuste kongruigita",
+    "practiceFeedbackUpdated": "Dankon! La ekzerco estis ĝisdatigita laŭ via reago.",
+    "practiceFeedbackUnchanged": "Dankon! Via raporto estis registrita, sed la enhavo restis senŝanĝa."
 }

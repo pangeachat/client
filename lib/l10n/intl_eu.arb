@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-07 16:23:19.469708",
+    "@@last_modified": "2026-08-10 14:04:43.609438",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9717,5 +9717,12 @@
     "courseDetails": "Ikastaroaren xehetasunak",
     "objective": "Helburua",
     "pingedLabel": "Pingatuta",
-    "mapFilterPlayerCount": "{count} jokalari"
+    "mapFilterPlayerCount": "{count} jokalari",
+    "practiceFeedbackButtonTooltip": "Ariketa honekin arazo bat dagoela jakinarazi",
+    "practiceFeedbackDialogTitle": "Ariketa-praktikaren iritzia",
+    "practiceFeedbackSelectPair": "Zein bikote dirudi okerra?",
+    "practiceFeedbackUserSetEmoji": "Emoji hau aukeratu duzu — aldatu hitz-txarteletik",
+    "practiceFeedbackAlreadyMatched": "Dagoeneko zuzen parekatuta",
+    "practiceFeedbackUpdated": "Eskerrik asko! Ariketa zure iritziaren arabera eguneratu da.",
+    "practiceFeedbackUnchanged": "Eskerrik asko! Zure txostena erregistratu da, baina edukia aldatu gabe itzuli da."
 }

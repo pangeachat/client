@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-07 16:23:26.645437",
+    "@@last_modified": "2026-08-10 14:04:59.023524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Тафсилоти курс",
     "objective": "Мақсад",
     "pingedLabel": "Пинг шуд",
-    "mapFilterPlayerCount": "{count} бозигар"
+    "mapFilterPlayerCount": "{count} бозигар",
+    "practiceFeedbackButtonTooltip": "Мушкили машқро гузориш диҳед",
+    "practiceFeedbackDialogTitle": "Фикру мулоҳиза оид ба машқ",
+    "practiceFeedbackSelectPair": "Кадом ҷуфт нодуруст ба назар мерасад?",
+    "practiceFeedbackUserSetEmoji": "Шумо ин эмодзиро интихоб кардед — онро аз корти калима иваз кунед",
+    "practiceFeedbackAlreadyMatched": "Аллакай дуруст мувофиқат карда шудааст",
+    "practiceFeedbackUpdated": "Ташаккур! Машқ дар асоси фикру мулоҳизаи шумо нав карда шуд.",
+    "practiceFeedbackUnchanged": "Ташаккур! Гузориши шумо сабт шуд, аммо мундариҷа бетағйир монд."
 }

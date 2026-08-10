@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-07 16:23:20.494405",
+    "@@last_modified": "2026-08-10 14:04:45.097946",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Nā kikoʻī papa",
     "objective": "Pahuhopu",
     "pingedLabel": "Ua kīkē ʻia",
-    "mapFilterPlayerCount": "{count} mau mea pāʻani"
+    "mapFilterPlayerCount": "{count} mau mea pāʻani",
+    "practiceFeedbackButtonTooltip": "Hōʻike i kahi pilikia me kēia haʻawina",
+    "practiceFeedbackDialogTitle": "Manaʻo Hoʻoikaika Hoʻomaʻamaʻa",
+    "practiceFeedbackSelectPair": "ʻO wai ka paʻa i hewa?",
+    "practiceFeedbackUserSetEmoji": "Ua koho ʻoe i kēia emoji — e hoʻololi mai ke kāleka huaʻōlelo",
+    "practiceFeedbackAlreadyMatched": "Ua hoʻohālikelike pololei ʻia",
+    "practiceFeedbackUpdated": "Mahalo! Ua hōʻano hou ʻia ka haʻawina ma muli o kāu manaʻo.",
+    "practiceFeedbackUnchanged": "Mahalo! Ua hoʻopaʻa ʻia kāu hōʻike, akā ʻaʻole i loli ka ʻike."
 }

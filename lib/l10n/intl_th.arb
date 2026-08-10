@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-07 16:23:26.616270",
+    "@@last_modified": "2026-08-10 14:04:58.880640",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10349,5 +10349,12 @@
     "courseDetails": "รายละเอียดคอร์ส",
     "objective": "วัตถุประสงค์",
     "pingedLabel": "ถูกปิง",
-    "mapFilterPlayerCount": "{count} ผู้เล่น"
+    "mapFilterPlayerCount": "{count} ผู้เล่น",
+    "practiceFeedbackButtonTooltip": "รายงานปัญหาเกี่ยวกับแบบฝึกหัดนี้",
+    "practiceFeedbackDialogTitle": "ข้อเสนอแนะแบบฝึกหัด",
+    "practiceFeedbackSelectPair": "คู่ไหนที่ดูไม่ถูกต้อง?",
+    "practiceFeedbackUserSetEmoji": "คุณเลือกอิโมจินี้ — เปลี่ยนจากบัตรคำศัพท์",
+    "practiceFeedbackAlreadyMatched": "จับคู่ถูกต้องแล้ว",
+    "practiceFeedbackUpdated": "ขอบคุณ! แบบฝึกหัดได้รับการอัปเดตตามข้อเสนอแนะของคุณแล้ว",
+    "practiceFeedbackUnchanged": "ขอบคุณ! รายงานของคุณถูกบันทึกแล้ว แต่เนื้อหายังคงไม่เปลี่ยนแปลง"
 }

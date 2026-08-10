@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-07 16:23:27.688554",
+    "@@last_modified": "2026-08-10 14:05:01.505130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "קורס דעטאַילס",
     "objective": "ציל",
     "pingedLabel": "געפּינגט",
-    "mapFilterPlayerCount": "{count} שפּילערס"
+    "mapFilterPlayerCount": "{count} שפּילערס",
+    "practiceFeedbackButtonTooltip": "מעלדן אַ פּראָבלעם מיט דעם איבונג",
+    "practiceFeedbackDialogTitle": "באַמערקונגען וועגן פּראַקטישע איבונג",
+    "practiceFeedbackSelectPair": "וועלכע פּאָר זעט אויס פאַלש?",
+    "practiceFeedbackUserSetEmoji": "איר האָט אויסגעקליבן דעם עמאָדזשי — ענדערט עס פֿון דער וואָרט קאַרטל",
+    "practiceFeedbackAlreadyMatched": "שוין ריכטיק צוגעפּאַסט",
+    "practiceFeedbackUpdated": "אַ דאַנק! די איבונג איז דערהייַנטיקט געוואָרן לויט אייערע באַמערקונגען.",
+    "practiceFeedbackUnchanged": "אַ דאַנק! אייער באַריכט איז רעקאָרדירט געוואָרן, אָבער דער אינהאַלט איז געבליבן אומגעענדערט."
 }

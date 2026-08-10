@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-07 16:23:25.048065",
+    "@@last_modified": "2026-08-10 14:04:54.561884",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "د کورس جزئیات",
     "objective": "هدف",
     "pingedLabel": "پینګ شوی",
-    "mapFilterPlayerCount": "{count} لوبغاړي"
+    "mapFilterPlayerCount": "{count} لوبغاړي",
+    "practiceFeedbackButtonTooltip": "د دې تمرین سره ستونزه راپور کړئ",
+    "practiceFeedbackDialogTitle": "د تمرین فیډبیک",
+    "practiceFeedbackSelectPair": "کومه جوړه غلطه ښکاري؟",
+    "practiceFeedbackUserSetEmoji": "تاسو دا ایموجي غوره کړې — دا د کلمې کارت څخه بدل کړئ",
+    "practiceFeedbackAlreadyMatched": "دمخه په سمه توګه سمون شوی",
+    "practiceFeedbackUpdated": "مننه! تمرین ستاسو د فیډبیک پراساس تازه شوی.",
+    "practiceFeedbackUnchanged": "مننه! ستاسو راپور ثبت شو، مګر مینځپانګه بې بدله پاتې شوه."
 }

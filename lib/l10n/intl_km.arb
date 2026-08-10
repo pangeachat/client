@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-07 16:23:22.257641",
+    "@@last_modified": "2026-08-10 14:04:48.585183",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2105,5 +2105,12 @@
     "courseDetails": "ព័ត៌មានលម្អិតវគ្គសិក្សា",
     "objective": "គោលបំណង",
     "pingedLabel": "បាន Ping",
-    "mapFilterPlayerCount": "{count} អ្នកលេង"
+    "mapFilterPlayerCount": "{count} អ្នកលេង",
+    "practiceFeedbackButtonTooltip": "រាយការណ៍បញ្ហាជាមួយលំហាត់នេះ",
+    "practiceFeedbackDialogTitle": "មតិកែលម្អលំហាត់អនុវត្ត",
+    "practiceFeedbackSelectPair": "គូមួយណាដែលមើលទៅខុស?",
+    "practiceFeedbackUserSetEmoji": "អ្នកបានជ្រើសរើសរូបអារម្មណ៍នេះ — ផ្លាស់ប្ដូរវាពីកាតពាក្យ",
+    "practiceFeedbackAlreadyMatched": "បានផ្គូផ្គងត្រឹមត្រូវរួចហើយ",
+    "practiceFeedbackUpdated": "អរគុណ! លំហាត់ត្រូវបានអាប់ដេតដោយផ្អែកលើមតិកែលម្អរបស់អ្នក។",
+    "practiceFeedbackUnchanged": "អរគុណ! របាយការណ៍របស់អ្នកត្រូវបានកត់ត្រា ប៉ុន្តែមាតិកានៅតែមិនផ្លាស់ប្តូរ។"
 }

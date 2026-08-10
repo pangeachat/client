@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-07 16:23:24.024265",
+    "@@last_modified": "2026-08-10 14:04:52.955905",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2105,5 +2105,12 @@
     "courseDetails": "पाठ्यक्रम विवरण",
     "objective": "उद्देश्य",
     "pingedLabel": "पिङ गरियो",
-    "mapFilterPlayerCount": "{count} खेलाडीहरू"
+    "mapFilterPlayerCount": "{count} खेलाडीहरू",
+    "practiceFeedbackButtonTooltip": "यस अभ्यासमा समस्या रिपोर्ट गर्नुहोस्",
+    "practiceFeedbackDialogTitle": "अभ्यास प्रतिक्रिया",
+    "practiceFeedbackSelectPair": "कुन जोडी गलत देखिन्छ?",
+    "practiceFeedbackUserSetEmoji": "तपाईंले यो इमोजी रोज्नुभयो — यसलाई शब्द कार्डबाट परिवर्तन गर्नुहोस्",
+    "practiceFeedbackAlreadyMatched": "पहिले नै सही मिलान भयो",
+    "practiceFeedbackUpdated": "धन्यवाद! तपाईंको प्रतिक्रियाको आधारमा अभ्यास अद्यावधिक गरिएको छ।",
+    "practiceFeedbackUnchanged": "धन्यवाद! तपाईंको रिपोर्ट रेकर्ड गरिएको थियो, तर सामग्री अपरिवर्तित फिर्ता आयो।"
 }

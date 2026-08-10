@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-07 16:23:19.705853",
+    "@@last_modified": "2026-08-10 14:04:43.822621",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Kursusdetails",
     "objective": "Doel",
     "pingedLabel": "Pingd",
-    "mapFilterPlayerCount": "{count} spilers"
+    "mapFilterPlayerCount": "{count} spilers",
+    "practiceFeedbackButtonTooltip": "Meld in probleem mei dizze oefening",
+    "practiceFeedbackDialogTitle": "Feedback oer oefening",
+    "practiceFeedbackSelectPair": "Hokker pear liket ferkeard?",
+    "practiceFeedbackUserSetEmoji": "Jo hawwe dizze emoji keazen — feroarje it fan de wurdkaart",
+    "practiceFeedbackAlreadyMatched": "Al korrekt oerienkomme",
+    "practiceFeedbackUpdated": "Tank! De oefening is bywurke op basis fan jo feedback.",
+    "practiceFeedbackUnchanged": "Tank! Jo melding is opnommen, mar de ynhâld is net feroare."
 }

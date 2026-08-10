@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:18.541041",
+    "@@last_modified": "2026-08-10 14:04:41.926780",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9844,5 +9844,12 @@
     "courseDetails": "Detalls del curs",
     "objective": "Objectiu",
     "pingedLabel": "Fet ping",
-    "mapFilterPlayerCount": "{count} jugadors"
+    "mapFilterPlayerCount": "{count} jugadors",
+    "practiceFeedbackButtonTooltip": "Informar d'un problema amb aquest exercici",
+    "practiceFeedbackDialogTitle": "Comentaris sobre l'exercici de pràctica",
+    "practiceFeedbackSelectPair": "Quina parella sembla incorrecta?",
+    "practiceFeedbackUserSetEmoji": "Has triat aquest emoji; canvia'l des de la targeta de paraules",
+    "practiceFeedbackAlreadyMatched": "Ja s'ha emparellat correctament",
+    "practiceFeedbackUpdated": "Gràcies! L'exercici s'ha actualitzat segons els teus comentaris.",
+    "practiceFeedbackUnchanged": "Gràcies! El teu informe s'ha registrat, però el contingut no ha canviat."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-07 16:23:18.026026",
+    "@@last_modified": "2026-08-10 14:04:43.437815",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Kurs təfərrüatları",
     "objective": "Məqsəd",
     "pingedLabel": "Bildiriş göndərildi",
-    "mapFilterPlayerCount": "{count} oyunçu"
+    "mapFilterPlayerCount": "{count} oyunçu",
+    "practiceFeedbackButtonTooltip": "Bu tapşırıqla bağlı problemi bildirin",
+    "practiceFeedbackDialogTitle": "Təcrübə Tapşırığı Rəyi",
+    "practiceFeedbackSelectPair": "Hansı cütlük səhv görünür?",
+    "practiceFeedbackUserSetEmoji": "Siz bu emojini seçdiniz — onu söz kartından dəyişdirin",
+    "practiceFeedbackAlreadyMatched": "Artıq düzgün uyğunlaşdırılıb",
+    "practiceFeedbackUpdated": "Təşəkkürlər! Tapşırıq rəyiniz əsasında yeniləndi.",
+    "practiceFeedbackUnchanged": "Təşəkkürlər! Hesabatınız qeydə alındı, lakin məzmun dəyişməz qaldı."
 }

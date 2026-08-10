@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-07 16:23:21.537735",
+    "@@last_modified": "2026-08-10 14:04:55.780461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2105,5 +2105,12 @@
     "courseDetails": "Nkọwa ọmụmụ",
     "objective": "Ebumnuche",
     "pingedLabel": "Kpọọrọ",
-    "mapFilterPlayerCount": "{count} ndị egwuregwu"
+    "mapFilterPlayerCount": "{count} ndị egwuregwu",
+    "practiceFeedbackButtonTooltip": "Kọọ nsogbu gbasara mmega ahụ a",
+    "practiceFeedbackDialogTitle": "Nzaghachi Mmega Ahụ",
+    "practiceFeedbackSelectPair": "Nke abụọ n'ime ndị a ka dị njọ?",
+    "practiceFeedbackUserSetEmoji": "Ị họọrọ emoji a — gbanwee ya na kaadị okwu",
+    "practiceFeedbackAlreadyMatched": "Emeela ya nke ọma",
+    "practiceFeedbackUpdated": "Daalụ! Emelitere mmega ahụ ahụ dabere na nzaghachi gị.",
+    "practiceFeedbackUnchanged": "Daalụ! Edere akụkọ gị, mana ọdịnaya ahụ agbanweghị."
 }

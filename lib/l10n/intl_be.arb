@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-07 16:23:17.828288",
+    "@@last_modified": "2026-08-10 14:04:41.006268",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9731,5 +9731,12 @@
     "courseDetails": "Дэталі курса",
     "objective": "Мэта",
     "pingedLabel": "Пінг",
-    "mapFilterPlayerCount": "{count} гульцоў"
+    "mapFilterPlayerCount": "{count} гульцоў",
+    "practiceFeedbackButtonTooltip": "Паведаміць пра праблему з гэтым практыкаваннем",
+    "practiceFeedbackDialogTitle": "Водгук аб практыкаванні",
+    "practiceFeedbackSelectPair": "Якая пара выглядае няправільна?",
+    "practiceFeedbackUserSetEmoji": "Вы выбралі гэты эмодзі — змяніце яго з карткі слова",
+    "practiceFeedbackAlreadyMatched": "Ужо супадае правільна",
+    "practiceFeedbackUpdated": "Дзякуй! Практыкаванне было абноўлена на аснове вашага водгуку.",
+    "practiceFeedbackUnchanged": "Дзякуй! Ваша паведамленне было запісана, але змест застаўся без змен."
 }
