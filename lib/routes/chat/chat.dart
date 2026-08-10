@@ -754,7 +754,12 @@ class ChatController extends State<ChatPageWithRoom>
         final token = tutorialToken;
         if (event == null) return;
         // Re-open the toolbar so SelectModeButtons mounts and picks up the queued tutorial.
-        showToolbar(event, bypassBlockingOverlays: true, selectedToken: token);
+        showToolbar(
+          event,
+          bypassBlockingOverlays: true,
+          selectedToken: token,
+          isTutorial: true,
+        );
         return;
       case TutorialEnum.writingAssistance:
         // The writing-assistance tutorial starts from the text input which is
@@ -778,7 +783,11 @@ class ChatController extends State<ChatPageWithRoom>
           TutorialStepData(
             targetKey: event.eventId,
             onTap: () async {
-              showToolbar(event, bypassBlockingOverlays: true);
+              showToolbar(
+                event,
+                bypassBlockingOverlays: true,
+                isTutorial: true,
+              );
             },
             canShowNextStep: () => isToolbarOpen,
           ),
@@ -2774,6 +2783,12 @@ class ChatController extends State<ChatPageWithRoom>
     Event? nextEvent,
     Event? prevEvent,
     bool bypassBlockingOverlays = false,
+
+    /// Whether a tutorial opened the toolbar rather than the learner. Marked at
+    /// the call site rather than inferred, so read-aloud does not talk over the
+    /// tutorial's own instruction. See "Reading on select" in
+    /// client/.github/instructions/message-read-aloud.instructions.md
+    bool isTutorial = false,
   }) async {
     if (event.redacted ||
         event.text == '' ||
@@ -2874,6 +2889,19 @@ class ChatController extends State<ChatPageWithRoom>
         ),
       );
     }
+
+    // A deliberate tap on a message is a request to hear it, for learners who
+    // opted into read-aloud. The controller owns which selections qualify.
+    readAloudController.readSelectedMessage(
+      pangeaMessageEvent ??
+          PangeaMessageEvent(
+            event: event,
+            timeline: timeline!,
+            ownMessage: event.senderId == event.room.client.userID,
+          ),
+      isTutorial: isTutorial,
+      tokenSelected: selectedToken != null,
+    );
 
     GoogleAnalytics.openMessageToolbar();
   }
