@@ -14,7 +14,10 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -330,15 +333,24 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     }
   }
 
-  /// Copy the activity's standalone shareable link (`/<activityId>`, the
-  /// inbound contract folded by LegacyRedirects) to the clipboard. Mirrors the
-  /// course [ShareRoomButton]: copy-only (never the OS share sheet), and
+  /// Copy the activity's standalone shareable link to the clipboard. Mirrors
+  /// the course [ShareRoomButton]: copy-only (never the OS share sheet), and
   /// `hideCurrentSnackBar` + `showCloseIcon` so rapid taps replace the toast
   /// (with a dismissal X) instead of queueing a backlog. See
   /// activity-start-page.instructions.md.
+  ///
+  /// Path URL strategy (main.dart) means the link carries no `#` — on web a
+  /// fragment is ignored (`shouldNavigateToIncomingUri` is false there) and the
+  /// link would dead-end on the world map. A first-class UUID rides the pretty
+  /// `/<uuid>` contract that LegacyRedirects folds in.
   Future<void> copyActivityLink() async {
+    final activityId = widget.activityId;
+    final path = PRoutes.isWorldObjectId(activityId)
+        ? PRoutes.worldObject(activityId)
+        : '${PRoutes.world}?left='
+              '${ActivityPanelToken(ActivityTokenParam(activityId: activityId)).encode()}';
     await Clipboard.setData(
-      ClipboardData(text: '${Environment.frontendURL}/#/${widget.activityId}'),
+      ClipboardData(text: '${Environment.frontendURL}$path'),
     );
     if (!mounted) return;
     final messenger = ScaffoldMessenger.of(context);

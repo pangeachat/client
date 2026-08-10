@@ -383,6 +383,17 @@ class SpaceDetailsContent extends StatelessWidget {
                     ),
                   ),
                 ),
+                // Normalized with the activity start page: share on the left,
+                // focus on the right, and the shared `my_location` focus icon.
+                if (room.joinCode != null)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: ShareRoomButton(
+                      room: room,
+                      tooltip: L10n.of(context).shareCourse,
+                      child: const Icon(Icons.share_outlined),
+                    ),
+                  ),
                 // The one camera path that zooms (#7616): course selection
                 // only pans, so this button zoom+pan-fits the map to all of
                 // the course's activities.
@@ -395,22 +406,13 @@ class SpaceDetailsContent extends StatelessWidget {
                         .isNotEmpty) {
                       return IconButton(
                         tooltip: L10n.of(context).focusOnMap,
-                        icon: const Icon(Icons.filter_center_focus),
+                        icon: const Icon(Icons.my_location),
                         onPressed: MapCameraFocusRequests.request,
                       );
                     }
                     return const SizedBox.shrink();
                   },
                 ),
-                if (room.joinCode != null)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ShareRoomButton(
-                      room: room,
-                      tooltip: L10n.of(context).shareCourse,
-                      child: const Icon(Icons.share_outlined),
-                    ),
-                  ),
               ],
             ),
             const SizedBox(height: 12.0),
