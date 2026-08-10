@@ -229,7 +229,7 @@ class MessageReadAloudController {
     final targetLangCode =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
     if (targetLangCode == null) return false;
-    final messageLangCode = message.originalSent?.langCode.split('-').first;
+    final messageLangCode = message.correctedSent?.langCode.split('-').first;
     return messageLangCode == targetLangCode;
   }
 

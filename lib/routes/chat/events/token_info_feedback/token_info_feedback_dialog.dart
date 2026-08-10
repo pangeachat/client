@@ -50,15 +50,17 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       await _updatePhoneticTranscription(response.updatedPhonetics!);
     }
 
-    final originalSent = event?.originalSent;
+    // baseline for "did the language change" is the corrected sent rep, so a
+    // second round of feedback compares against the prior correction
+    final sent = event?.correctedSent;
 
     // if no other changes, just return the message
     final hasTokenUpdate =
         response.updatedTokens != null || response.updatedToken != null;
     final hasLangUpdate =
-        originalSent != null &&
+        sent != null &&
         response.updatedLanguage != null &&
-        response.updatedLanguage != originalSent.langCode;
+        response.updatedLanguage != sent.langCode;
 
     if (!hasTokenUpdate && !hasLangUpdate) {
       return response.userFriendlyMessage;
@@ -72,8 +74,7 @@ class TokenInfoFeedbackDialog extends StatelessWidget {
       tokens[requestData.selectedToken] = response.updatedToken!;
     }
 
-    final updatedLanguage =
-        response.updatedLanguage ?? event?.originalSent?.langCode;
+    final updatedLanguage = response.updatedLanguage ?? sent?.langCode;
 
     final tokensSent = PangeaMessageTokens(
       tokens: tokens,

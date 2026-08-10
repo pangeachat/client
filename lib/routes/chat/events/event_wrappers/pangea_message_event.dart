@@ -246,6 +246,21 @@ class PangeaMessageEvent {
     (element) => element.content.originalSent,
   );
 
+  /// The newest correction representation with usable tokens, if any.
+  /// Corrections without usable tokens are ignored, so a partial or malformed
+  /// correction can never override a token-rich original.
+  RepresentationEvent? get _sentCorrection => representations.firstWhereOrNull(
+    (element) =>
+        element.content.isCorrection &&
+        hasUsableRepresentationTokens(element.tokens),
+  );
+
+  /// The sent representation with any correction applied. Language-identity
+  /// and interactive-token consumers read this; provenance, choreo, and
+  /// analytics consumers keep reading [originalSent] — a correction never
+  /// rewrites what the sender actually produced.
+  RepresentationEvent? get correctedSent => _sentCorrection ?? originalSent;
+
   /// Vocab + morph construct uses the sender actually produced in this
   /// message — the single source for analytics and used-vocab tracking.
   /// Typed messages read the sent representation's tokens; voice messages
@@ -284,14 +299,14 @@ class PangeaMessageEvent {
     final bool immersionMode = MatrixState.pangeaController.userController
         .isToolEnabled(ToolSetting.immersionMode);
 
-    final String? originalLangCode = originalSent?.langCode;
+    final String? sentLangCode = correctedSent?.langCode;
 
-    final String? langCode = immersionMode ? _l2Code : originalLangCode;
+    final String? langCode = immersionMode ? _l2Code : sentLangCode;
     return langCode ?? LanguageKeys.unknownLanguage;
   }
 
   RepresentationEvent? get messageDisplayRepresentation =>
-      _representationByLanguage(messageDisplayLangCode);
+      _representationByLanguage(messageDisplayLangCode, preferCorrection: true);
 
   /// Gets the message display text for the current language code.
   /// If the message display text is not available for the current language code,
@@ -308,14 +323,32 @@ class PangeaMessageEvent {
     _representations = null;
   }
 
+  /// The first representation matching [langCode]. With [preferCorrection], a
+  /// token-rich correction among the matches beats the embedded original —
+  /// `representations` lists embeds first, then related events newest-first,
+  /// so the first matching correction is the newest one.
   RepresentationEvent? _representationByLanguage(
     String langCode, {
     bool Function(RepresentationEvent)? filter,
-  }) => representations.firstWhereOrNull(
-    (element) =>
-        element.langCode.split("-")[0] == langCode.split("-")[0] &&
-        (filter?.call(element) ?? true),
-  );
+    bool preferCorrection = false,
+  }) {
+    final matches = representations.where(
+      (element) =>
+          element.langCode.split("-")[0] == langCode.split("-")[0] &&
+          (filter?.call(element) ?? true),
+    );
+
+    if (preferCorrection) {
+      final correction = matches.firstWhereOrNull(
+        (element) =>
+            element.content.isCorrection &&
+            hasUsableRepresentationTokens(element.tokens),
+      );
+      if (correction != null) return correction;
+    }
+
+    return matches.firstOrNull;
+  }
 
   /// The newest representation carrying a `speechToText` payload. When
   /// [preferTokens] is set, a token-rich representation (usable transcript AND
@@ -790,14 +823,14 @@ class PangeaMessageEvent {
 
     final langCode = resp.detections.firstOrNull?.langCode;
     if (langCode == null) return null;
-    if (langCode == originalSent?.langCode) {
-      return originalSent?.event?.eventId;
+    if (langCode == correctedSent?.langCode) {
+      return correctedSent?.event?.eventId;
     }
 
     final res = await _requestRepresentation(
-      originalSent?.content.text ?? _latestEdit.body,
+      correctedSent?.content.text ?? _latestEdit.body,
       langCode,
-      originalSent?.langCode ?? LanguageKeys.unknownLanguage,
+      correctedSent?.langCode ?? LanguageKeys.unknownLanguage,
       originalSent: originalSent == null,
     );
 
@@ -840,9 +873,11 @@ class PangeaMessageEvent {
     final includedIT =
         originalSent?.choreo?.endedWithIT(originalSent!.text) == true;
 
+    // srcLang is language identity, so a correction wins; the includedIT
+    // checks above are send-time process history and stay on originalSent.
     final String srcLang = includedIT
         ? (originalWritten?.langCode ?? _l1Code!)
-        : (originalSent?.langCode ?? _l2Code!);
+        : (correctedSent?.langCode ?? _l2Code!);
 
     final text = includedIT ? originalWrittenContent : messageDisplayText;
     final resp = await FullTextTranslationRepo.instance.get(

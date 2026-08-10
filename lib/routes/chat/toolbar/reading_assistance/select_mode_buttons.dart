@@ -368,7 +368,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
 
   Future<void> modeDisabled() async {
     final chat = widget.controller.chatController;
-    final targetLangCode = controller.messageEvent.originalSent?.langCode;
+    final targetLangCode = controller.messageEvent.correctedSent?.langCode;
     LanguageModel? targetLang;
     if (targetLangCode != null) {
       targetLang = PLanguageStore.byLangCode(targetLangCode);
