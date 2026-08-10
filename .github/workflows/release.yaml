@@ -132,6 +132,12 @@ jobs:
         # that owns the environment.
         run: |
           echo "$WEB_APP_ENV" > build/web/.env
+          # Production streaming-STT client gate (Environment.liveStreamingSttEnabled),
+          # enabled the same way staging does in main_deploy.yaml. The choreo backend
+          # gates the actual behavior: while prod streaming is still dark, the session
+          # fails pre-`ready` and the recorder falls back to batch (today's behavior),
+          # so this is safe to ship ahead of the backend flip.
+          echo "LIVE_STREAMING_STT_ENABLED=true" >> build/web/.env
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
         with:
