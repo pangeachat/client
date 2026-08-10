@@ -55,6 +55,7 @@ class IGCRequestModel extends BaseRequest with BaseRequestModel {
   /// Creates a copy of this request with optional feedback.
   IGCRequestModel copyWithFeedback(
     List<LLMFeedbackModel<IGCResponseModel>> newFeedback,
+    String fullText,
   ) => IGCRequestModel(
     fullText: fullText,
     enableIGC: enableIGC,

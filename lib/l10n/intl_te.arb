@@ -223,8 +223,6 @@
     "leave": "నిష్క్రమించండి",
     "leftTheChat": "చాట్ నుండి నిష్క్రమించారు",
     "lightTheme": "కాంతివంతమైన",
-    "dehydrate": "సెషన్ ఎగుమతి చేసి పరికరాన్ని శుభ్రం చేయండి",
-    "dehydrateWarning": "ఈ చర్యను తిరిగి చేయలేరు. బ్యాకప్ ఫైల్‌ను సురక్షితంగా నిల్వ చేయండి.",
     "hydrate": "బ్యాకప్ ఫైల్ నుండి పునరుద్ధరించండి",
     "loadingPleaseWait": "లోడ్ అవుతోంది… దయచేసి వేచిఉండండి.",
     "loadMore": "మరిన్ని లోడ్ చేయండి…",
@@ -2379,14 +2377,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -8553,16 +8543,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "ఈ పదం మీ విశ్లేషణల నుండి శాశ్వతంగా తొలగించబడుతుంది",
     "woman": "మహిళ",
     "man": "పురుషుడు",
     "otherGender": "ఇతర",
     "unselectedGender": "ఒక లింగ ఎంపికను ఎంచుకోండి",
     "chatParticipantTooltip": "ఈ చాట్లో ఉన్న అందరే. ఏ వినియోగదారుడి అవతారంపై క్లిక్ చేసి \"సంభాషణ ప్రారంభించండి\" అని నేరుగా సందేశం పంపండి.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10668,6 +10653,21 @@
     "builtForConnection": "కనెక్షన్ కోసం నిర్మించబడింది",
     "aiWhenYouNeedIt": "మీకు అవసరమైనప్పుడు AI",
     "practiceTailoredForYou": "మీకు అనుగుణంగా అభ్యాసం",
+    "deletedVocab": "తొలగించిన పదాలు",
+    "blockLemmaConfirmation": "ఈ పదం మీ పదజాలం నుండి తీసివేయబడుతుంది మరియు XP సంపాదించడం ఆగిపోతుంది. మీరు దీన్ని తొలగించిన పదాల నుండి తిరిగి తీసుకురావచ్చు.",
+    "deletedVocabListBody": "ఈ పదాలు మీ పదజాలం నుండి దాచబడ్డాయి మరియు XP సంపాదించవు. దాన్ని తిరిగి తీసుకురావడానికి ఒకదాన్ని పునరుద్ధరించండి.",
+    "deletedVocabListBodyEmpty": "మీరు ఏ పదాలను తొలగించలేదు. మీరు మీ పదజాలం నుండి తొలగించిన పదాలు ఇక్కడ కనిపిస్తాయి, తద్వారా మీరు వాటిని తిరిగి తీసుకురావచ్చు.",
+    "deletedVocabListLabel": "తొలగించిన పదాలు",
+    "restore": "పునరుద్ధరించు",
+    "deletedWordLabel": "{lemma}, తొలగించబడింది",
+    "restoredWords": "{count, plural, =1{1 పదం పునరుద్ధరించబడింది} other{{count} పదాలు పునరుద్ధరించబడ్డాయి}}",
+    "chatSearchPageLabel": "చాట్ శోధన పేజీ",
+    "selectImageLabel": "చిత్రాన్ని ఎంచుకోండి",
+    "userSearchTagsLabel": "దీనిలో శోధించండి...",
+    "courseDetails": "కోర్సు వివరాలు",
+    "objective": "లక్ష్యం",
+    "pingedLabel": "పింగ్ చేయబడింది",
+    "mapFilterPlayerCount": "{count} ఆటగాళ్ళు",
     "practiceFeedbackButtonTooltip": "ఈ అభ్యాసంలో సమస్యను నివేదించండి",
     "practiceFeedbackDialogTitle": "అభ్యాస వ్యాయామం అభిప్రాయం",
     "practiceFeedbackSelectPair": "ఏ జత తప్పుగా కనిపిస్తుంది?",

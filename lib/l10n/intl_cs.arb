@@ -2038,8 +2038,6 @@
             }
         }
     },
-    "dehydrate": "Exportovat sezení a promazat zařízení",
-    "@dehydrate": {},
     "newGroup": "Nová skupina",
     "@newGroup": {},
     "doNotShowAgain": "Nezobrazovat znovu",
@@ -2148,8 +2146,6 @@
     },
     "custom": "Vlastní",
     "@custom": {},
-    "dehydrateWarning": "Tuto akci nelze vzít zpět. Ujistěte se že záložní soubor máte bezpečně uložen.",
-    "@dehydrateWarning": {},
     "countFiles": "{count} souborů",
     "@countFiles": {
         "placeholders": {
@@ -8105,16 +8101,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Toto slovo ve slovní zásobě bude trvale odstraněno z vašich analýz",
     "woman": "Žena",
     "man": "Muž",
     "otherGender": "Jiné",
     "unselectedGender": "Vyberte možnost pohlaví",
     "chatParticipantTooltip": "Toto jsou všichni v tomto chatu. Klikněte na avatar jakéhokoli uživatele a “začněte konverzaci” pro odeslání DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10206,6 +10197,21 @@
     "builtForConnection": "Stvořeno pro spojení",
     "aiWhenYouNeedIt": "AI, když ji potřebujete",
     "practiceTailoredForYou": "Praxe šitá na míru",
+    "deletedVocab": "Smazaná slova",
+    "blockLemmaConfirmation": "Toto slovo bude odstraněno z vašeho slovníku a přestane vám vydělávat XP. Můžete ho vrátit ze Smazaných slov.",
+    "deletedVocabListBody": "Tato slova jsou skryta z vašeho slovníku a nevydělávají XP. Obnovte je, abyste je vrátili zpět.",
+    "deletedVocabListBodyEmpty": "Nenaměli jste žádná slova. Slova, která smažete ze svého slovníku, se zde zobrazí, abyste je mohli vrátit zpět.",
+    "deletedVocabListLabel": "Smazaná slova",
+    "restore": "Obnovit",
+    "deletedWordLabel": "{lemma}, smazáno",
+    "restoredWords": "{count, plural, =1{Obnoveno 1 slovo} few{Obnovena {count} slova} many{Obnoveno {count} slova} other{Obnoveno {count} slov}}",
+    "chatSearchPageLabel": "Stránka vyhledávání chatu",
+    "selectImageLabel": "Vybrat obrázek",
+    "userSearchTagsLabel": "Hledat v...",
+    "courseDetails": "Podrobnosti kurzu",
+    "objective": "Cíl",
+    "pingedLabel": "Pingnuto",
+    "mapFilterPlayerCount": "{count} hráčů",
     "practiceFeedbackButtonTooltip": "Nahlásit problém s tímto cvičením",
     "practiceFeedbackDialogTitle": "Zpětná vazba k cvičení",
     "practiceFeedbackSelectPair": "Který pár vypadá špatně?",

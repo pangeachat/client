@@ -24,6 +24,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// Decides which arriving messages qualify; [ReadAloudQueue] owns the
 /// one-at-a-time playback scheduling.
 ///
+/// The same setting also reads a message the learner deliberately taps, via
+/// [readSelectedMessage] — one feature reached two ways, not two features.
+///
 /// Design — what qualifies to be read, the single waiting slot, and the stop
 /// conditions: client/.github/instructions/message-read-aloud.instructions.md
 class MessageReadAloudController {
@@ -149,16 +152,77 @@ class MessageReadAloudController {
     // Nothing retroactive: a backlog of unheard messages would be noise rather
     // than practice, so only what arrives after the chat opens is read.
     if (!event.originServerTs.isAfter(openedAt)) return false;
+    if (!_isReadableContent(event)) return false;
+    return qualifies(
+      settingEnabled: _isEnabled,
+      voiceReply: _isVoiceReply(event),
+    );
+  }
+
+  /// Whether the event is the kind of message read-aloud can speak at all,
+  /// independent of what prompted the read. Shared by arrival and by
+  /// [readSelectedMessage] so a tap can never read something an arrival
+  /// wouldn't.
+  bool _isReadableContent(Event event) {
     if (event.senderId == room.client.userID) return false;
     if (event.type != EventTypes.Message) return false;
     if (event.messageType != MessageTypes.Text) return false;
-    if (!qualifies(
-      settingEnabled: _isEnabled,
-      voiceReply: _isVoiceReply(event),
-    )) {
-      return false;
-    }
     return !event.redacted && event.status.isSynced;
+  }
+
+  /// Whether opening the toolbar over a message should speak that message.
+  ///
+  /// Gated on the same toggle as an arriving message — no second setting, this
+  /// is the same feature reached a second way. A tutorial that opens the
+  /// toolbar on the learner's behalf speaks its own instruction over it, and a
+  /// tapped token plays the word instead: the more specific request wins.
+  ///
+  /// Pure so the decision is unit-testable without Matrix, TTS or app state.
+  @visibleForTesting
+  static bool readsOnSelect({
+    required bool settingEnabled,
+    required bool isTutorial,
+    required bool tokenSelected,
+  }) => settingEnabled && !isTutorial && !tokenSelected;
+
+  /// Reads a message the learner deliberately selected.
+  ///
+  /// Same toggle and the same qualifying conditions as an arriving message,
+  /// minus the arrived-while-open rule: that rule stops a backlog playing at
+  /// once, and a message the learner picked out and tapped is on screen and
+  /// asked for by definition.
+  ///
+  /// Device-only and gated: voice mode's backend exception does not extend
+  /// here, because a tap is not a spoken exchange.
+  ///
+  /// Design — "Reading on select":
+  /// client/.github/instructions/message-read-aloud.instructions.md
+  Future<void> readSelectedMessage(
+    PangeaMessageEvent message, {
+    required bool isTutorial,
+    required bool tokenSelected,
+  }) {
+    if (!readsOnSelect(
+      settingEnabled: _isEnabled,
+      isTutorial: isTutorial,
+      tokenSelected: tokenSelected,
+    )) {
+      return Future.value();
+    }
+    if (!_isReadableContent(message.event)) return Future.value();
+    if (!_isInTargetLanguage(message)) return Future.value();
+
+    // Ends the automatic read first. Selecting a message clears the queue
+    // anyway, but that happens once the overlay registers the selection — after
+    // this call — and would otherwise stop the audio being started here.
+    stopAndClear();
+
+    return TtsController.tryToSpeak(
+      message.messageDisplayText,
+      langCode: message.messageDisplayLangCode,
+      useCase: TtsUseCase.incomingMessage,
+      allowChoreoPlay: false,
+    );
   }
 
   bool _isInTargetLanguage(PangeaMessageEvent message) {

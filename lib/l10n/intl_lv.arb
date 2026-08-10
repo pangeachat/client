@@ -796,8 +796,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrateWarning": "Šī darbība nav atdarāma. Jānodrošina, ka rezerves kopijas datne tiek droši uzglabāta.",
-    "@dehydrateWarning": {},
     "noOtherDevicesFound": "Netika atrastas citas ierīces",
     "@noOtherDevicesFound": {},
     "emptyChat": "Tukša tērzēšana",
@@ -1044,8 +1042,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrate": "Izgūt sesiju un iztīrīt ierīci",
-    "@dehydrate": {},
     "locationPermissionDeniedNotice": "Atrašanās vietas atļauja noliegta. Lūgums nodrošināt to, lai būtu iespējams kopīgot savu atrašanās vietu.",
     "@locationPermissionDeniedNotice": {
         "type": "String",
@@ -7777,16 +7773,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Šis vārds tiks pastāvīgi noņemts no jūsu analīzes",
     "woman": "Sieviete",
     "man": "Vīrietis",
     "otherGender": "Cits",
     "unselectedGender": "Izvēlieties dzimuma opciju",
     "chatParticipantTooltip": "Šeit ir visi šajā čatā. Noklikšķiniet uz jebkura lietotāja avatara un \"sākt sarunu\", lai nosūtītu DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9712,6 +9703,21 @@
     "builtForConnection": "Radīts savienojumam",
     "aiWhenYouNeedIt": "AI, kad tas nepieciešams",
     "practiceTailoredForYou": "Jums pielāgota prakse",
+    "deletedVocab": "Dzēstie vārdi",
+    "blockLemmaConfirmation": "Šis vārds tiks noņemts no jūsu vārdu krājuma un vairs nenopelnīs XP. Varat to atjaunot no dzēstajiem vārdiem.",
+    "deletedVocabListBody": "Šie vārdi ir paslēpti no jūsu vārdu krājuma un nenopelna XP. Atjaunojiet tos, lai tie atkal parādītos.",
+    "deletedVocabListBodyEmpty": "Jūs neesat izdzēsis nevienu vārdu. Vārdi, kurus izdzēsīsit no sava vārdu krājuma, parādīsies šeit, lai jūs varētu tos atjaunot.",
+    "deletedVocabListLabel": "Dzēstie vārdi",
+    "restore": "Atjaunot",
+    "deletedWordLabel": "{lemma}, dzēsts",
+    "restoredWords": "{count, plural, =1{Atjaunots 1 vārds} other{Atjaunoti {count} vārdi}}",
+    "chatSearchPageLabel": "Tērzēšanas meklēšanas lapa",
+    "selectImageLabel": "Atlasīt attēlu",
+    "userSearchTagsLabel": "Meklēt šeit...",
+    "courseDetails": "Kursa detaļas",
+    "objective": "Mērķis",
+    "pingedLabel": "Pingots",
+    "mapFilterPlayerCount": "{count} spēlētāji",
     "practiceFeedbackButtonTooltip": "Ziņot par problēmu šajā uzdevumā",
     "practiceFeedbackDialogTitle": "Atsauksmes par prakses uzdevumu",
     "practiceFeedbackSelectPair": "Kurš pāris izskatās nepareizi?",

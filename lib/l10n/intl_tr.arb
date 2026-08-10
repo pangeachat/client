@@ -1997,12 +1997,8 @@
             }
         }
     },
-    "dehydrate": "Oturumu dışa aktar ve aygıtı sil",
-    "@dehydrate": {},
     "hydrate": "Yedekleme dosyasından geri yükle",
     "@hydrate": {},
-    "dehydrateWarning": "Bu eylem geri alınamaz. Yedekleme dosyasını güvenli bir şekilde sakladığınızdan emin olun.",
-    "@dehydrateWarning": {},
     "user": "Kullanıcı",
     "@user": {},
     "custom": "Özel",
@@ -7898,16 +7894,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Bu kelime analitiklerinizden kalıcı olarak kaldırılacaktır.",
     "woman": "Kadın",
     "man": "Erkek",
     "otherGender": "Diğer",
     "unselectedGender": "Bir cinsiyet seçeneği seçin",
     "chatParticipantTooltip": "Bu sohbetin içindeki herkes. Herhangi bir kullanıcının avatarına tıklayın ve \"sohbet başlat\" seçeneği ile DM gönderin.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10013,6 +10004,21 @@
     "builtForConnection": "Bağlantı için tasarlandı",
     "aiWhenYouNeedIt": "İhtiyacınız olduğunda yapay zeka",
     "practiceTailoredForYou": "Size özel pratik",
+    "deletedVocab": "Silinen kelimeler",
+    "blockLemmaConfirmation": "Bu kelime kelime dağarcığınızdan kaldırılacak ve XP kazandırmayacak. Silinen kelimelerden geri getirebilirsiniz.",
+    "deletedVocabListBody": "Bu kelimeler kelime dağarcığınızdan gizlenir ve XP kazandırmaz. Geri getirmek için birini geri yükleyin.",
+    "deletedVocabListBodyEmpty": "Hiç kelime silmediniz. Kelime dağarcığınızdan sildiğiniz kelimeler, geri getirebilmeniz için burada görünecektir.",
+    "deletedVocabListLabel": "Silinen kelimeler",
+    "restore": "Geri Yükle",
+    "deletedWordLabel": "{lemma}, silindi",
+    "restoredWords": "{count, plural, =1{1 kelime geri yüklendi} other{{count} kelime geri yüklendi}}",
+    "chatSearchPageLabel": "Sohbet arama sayfası",
+    "selectImageLabel": "Resim seç",
+    "userSearchTagsLabel": "Araştır...",
+    "courseDetails": "Kurs detayları",
+    "objective": "Hedef",
+    "pingedLabel": "Pinglendi",
+    "mapFilterPlayerCount": "{count} oyuncu",
     "practiceFeedbackButtonTooltip": "Bu alıştırmayla ilgili bir sorun bildir",
     "practiceFeedbackDialogTitle": "Alıştırma Geri Bildirimi",
     "practiceFeedbackSelectPair": "Hangi çift yanlış görünüyor?",

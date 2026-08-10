@@ -42,6 +42,16 @@ A message is read only when all of these hold:
 - It is in the learner's L2 (target language). Messages in the L1 or an unknown language offer no listening practice.
 - It arrived in the currently open chat, while that chat was open. Opening a chat reads nothing retroactively — a backlog of unheard messages would be noise rather than practice — and messages in background rooms have no visible counterpart on screen to follow along with.
 
+## Reading on select
+Tapping a message is a deliberate request to engage with it, so for a learner who already opted into read-aloud it speaks that message. Same toggle, same qualifying conditions, same device-only source as an arriving message — only the trigger differs.
+
+- **Same conditions as an arriving message** (received, in the L2, text, synced, not redacted), minus the arrived-while-open rule. That rule exists to stop a backlog of unheard messages playing at once; a message the learner picked out and tapped is by definition on screen and asked for.
+- **Gated on the same toggle.** A learner who has not opted into read-aloud hears nothing on tap. No second setting: this is the same feature reached a second way.
+- **Device only**, through the same known-good-voice gate — silence when the device has no good L2 voice. Voice mode's backend exception does not extend here; a tap is not a spoken exchange.
+- **Not when a token was tapped.** Tapping a word selects that token and plays the word. The more specific request wins, and the two would otherwise talk over each other.
+- **Not when the tutorial opens the toolbar.** The reading-assistance tutorial selects a message on the learner's behalf and speaks its own instruction over it. Tutorial-driven selections are marked at the call site rather than inferred from how the toolbar was opened.
+- **Chat only.** The example-message toolbar on analytics detail pages is a reference lookup, not a message in a conversation.
+
 ## Audio source
 Device text-to-speech only for setting-driven reads; that flow never calls the choreographer. Backend TTS is paid per request, and unlike a deliberate word tap this fires on every eligible incoming message, so the volume is unbounded and driven by how much other people type rather than by the learner.
 
@@ -52,11 +62,11 @@ The known-good-voice gate in [word-text-to-speech.instructions.md](word-text-to-
 ## One message at a time
 Playback holds a single waiting slot: while a message is being read, at most one message waits, and a newer arrival replaces whichever message was waiting. The learner stays at most one message behind the conversation, so what they hear is still on screen. Reading every message in order would fall progressively further behind; ignoring everything that arrives mid-playback would instead skip the newest messages and drift the audio away from where the learner is looking.
 
-Read-aloud shares the single TtsController with word-level playback, so only one utterance plays anywhere in the app — tapping a word interrupts read-aloud.
+Read-aloud shares the single TtsController with word-level playback, so only one utterance plays anywhere in the app — tapping a word interrupts read-aloud, and the toolbar's sentence-audio button stops it before starting its own.
 
 ## When it stops
 - The chat closes or loses focus. Audio stops immediately.
-- A message is selected. Read-aloud does not start while a message is selected, and selecting one stops playback in progress. The selected message has the learner's attention and its own audio controls.
+- A message is selected. Automatic read-aloud does not start while a message is selected, and selecting one stops playback in progress and drops the waiting message — the conversation has moved past what the learner is now looking at. Selection may then speak the *selected* message instead, see [Reading on select](#reading-on-select).
 - The learner starts drafting. Playback stops and any waiting message is dropped rather than held for later. Read-aloud stays suppressed while the input bar holds text, resuming once the draft is sent or cleared — composing a reply is the moment an interruption costs the most.
 - The learner is recording a voice message. Recording is inline rather than modal, so none of the conditions above catch it, and in voice mode the learner is recording by construction. Without this, playback would go out loud into a hot mic, be captured by the recorder and uploaded to speech-to-text.
 - The learner sends text, which additionally ends [Voice mode](#voice-mode) itself.

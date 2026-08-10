@@ -1987,8 +1987,6 @@
     },
     "commandHint_markasdm": "Pažymėti kaip tiesioginio pokalbio kambarį",
     "@commandHint_markasdm": {},
-    "dehydrateWarning": "Šio veiksmo negalima atšaukti. Įsitikinkite, kad saugiai saugote atsarginę kopiją.",
-    "@dehydrateWarning": {},
     "commandHint_markasgroup": "Pažymėti kaip grupę",
     "@commandHint_markasgroup": {},
     "newSpace": "Nauja erdvė",
@@ -2010,8 +2008,6 @@
             }
         }
     },
-    "dehydrate": "Eksportuoti sesiją ir išvalyti įrenginį",
-    "@dehydrate": {},
     "hydrate": "Atkurti iš atsarginės kopijos failo",
     "@hydrate": {},
     "countFiles": "{count} failai",
@@ -8378,16 +8374,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Šis žodynas bus nuolat pašalintas iš jūsų analizės",
     "woman": "Moteris",
     "man": "Vyras",
     "otherGender": "Kitas",
     "unselectedGender": "Pasirinkite lyties parinktį",
     "chatParticipantTooltip": "Tai visi šioje pokalbyje. Spustelėkite bet kurio vartotojo avatarą ir „pradėti pokalbį“, kad siųstumėte DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10493,6 +10484,21 @@
     "builtForConnection": "Sukurta ryšiui",
     "aiWhenYouNeedIt": "DI, kai jums jos reikia",
     "practiceTailoredForYou": "Jums pritaikyta praktika",
+    "deletedVocab": "Ištrinti žodžiai",
+    "blockLemmaConfirmation": "Šis žodis bus pašalintas iš jūsų žodyno ir nebeuždirbs XP. Galite jį grąžinti iš ištrintų žodžių.",
+    "deletedVocabListBody": "Šie žodžiai paslėpti iš jūsų žodyno ir neuždirba XP. Atkurkite vieną, kad jį sugrąžintumėte.",
+    "deletedVocabListBodyEmpty": "Neištrynėte jokių žodžių. Žodžiai, kuriuos ištrinate iš savo žodyno, bus rodomi čia, kad galėtumėte juos sugrąžinti.",
+    "deletedVocabListLabel": "Ištrinti žodžiai",
+    "restore": "Atkurti",
+    "deletedWordLabel": "{lemma}, ištrinta",
+    "restoredWords": "{count, plural, =1{Atkurtas 1 žodis} other{Atkurti {count} žodžiai}}",
+    "chatSearchPageLabel": "Pokalbių paieškos puslapis",
+    "selectImageLabel": "Pasirinkti atvaizdą",
+    "userSearchTagsLabel": "Ieškoti...",
+    "courseDetails": "Kurso detalės",
+    "objective": "Tikslas",
+    "pingedLabel": "Papingavo",
+    "mapFilterPlayerCount": "{count} žaidėjų",
     "practiceFeedbackButtonTooltip": "Pranešti apie problemą su šiuo pratimu",
     "practiceFeedbackDialogTitle": "Pratimo atsiliepimai",
     "practiceFeedbackSelectPair": "Kuri pora atrodo neteisinga?",

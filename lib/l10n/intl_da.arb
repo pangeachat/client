@@ -233,8 +233,6 @@
     "leave": "Forlad",
     "leftTheChat": "Forlod chatten",
     "lightTheme": "Lyst",
-    "dehydrate": "Eksporter session og slet enhed",
-    "dehydrateWarning": "Denne handling kan ikke fortrydes. Sørg for at gemme backup-filen sikkert.",
     "hydrate": "Gendan fra backup-fil",
     "loadingPleaseWait": "Indlæser… Vent venligst.",
     "loadMore": "Indlæs flere…",
@@ -2349,14 +2347,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -8523,16 +8513,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Dette ord vil blive permanent fjernet fra din analyse",
     "woman": "Kvinde",
     "man": "Mand",
     "otherGender": "Andet",
     "unselectedGender": "Vælg en kønsoption",
     "chatParticipantTooltip": "Dette er alle i denne chat. Klik på en brugers avatar og \"start samtale\" for at sende en DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10638,6 +10623,21 @@
     "builtForConnection": "Bygget til forbindelse",
     "aiWhenYouNeedIt": "AI, når du har brug for det",
     "practiceTailoredForYou": "Øvelse skræddersyet til dig",
+    "deletedVocab": "Slettede ord",
+    "blockLemmaConfirmation": "Dette ord fjernes fra dit ordforråd og giver ikke længere XP. Du kan gendanne det fra Slettede ord.",
+    "deletedVocabListBody": "Disse ord er skjult fra dit ordforråd og giver ikke XP. Gendan et for at få det tilbage.",
+    "deletedVocabListBodyEmpty": "Du har ikke slettet nogen ord. Ord, du sletter fra dit ordforråd, vises her, så du kan gendanne dem.",
+    "deletedVocabListLabel": "Slettede ord",
+    "restore": "Gendan",
+    "deletedWordLabel": "{lemma}, slettet",
+    "restoredWords": "{count, plural, =1{Gendannede 1 ord} other{Gendannede {count} ord}}",
+    "chatSearchPageLabel": "Søgeside for chat",
+    "selectImageLabel": "Vælg billede",
+    "userSearchTagsLabel": "Søg i...",
+    "courseDetails": "Kursusdetaljer",
+    "objective": "Mål",
+    "pingedLabel": "Pinget",
+    "mapFilterPlayerCount": "{count} spillere",
     "practiceFeedbackButtonTooltip": "Rapportér et problem med denne øvelse",
     "practiceFeedbackDialogTitle": "Feedback på øvelse",
     "practiceFeedbackSelectPair": "Hvilket par ser forkert ud?",

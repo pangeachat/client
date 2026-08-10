@@ -968,8 +968,6 @@
     "leave": "Umalis",
     "leftTheChat": "Umalis sa chat",
     "lightTheme": "Maaliwalas",
-    "dehydrate": "I-export ang sesyon at burahin ang device",
-    "dehydrateWarning": "Hindi maaaring ibalik ang aksyong ito. Siguraduhing ligtas mong naiimbak ang backup na file.",
     "hydrate": "I-restore mula sa backup na file",
     "loadingPleaseWait": "Naglo-load… Pakiusap, maghintay.",
     "loadMore": "Mag-load pa…",
@@ -2300,14 +2298,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -8458,16 +8448,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ang salitang bokabularyo na ito ay permanenteng aalisin mula sa iyong analytics",
     "woman": "Babae",
     "man": "Lalaki",
     "otherGender": "Iba",
     "unselectedGender": "Pumili ng opsyon sa kasarian",
     "chatParticipantTooltip": "Ito ang lahat ng tao sa chat na ito. I-click ang avatar ng sinumang user at \"simulan ang pag-uusap\" upang magpadala ng DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10578,6 +10563,21 @@
     "builtForConnection": "Ginawa para sa koneksyon",
     "aiWhenYouNeedIt": "AI kapag kailangan mo",
     "practiceTailoredForYou": "Pagsasanay na akma para sa iyo",
+    "deletedVocab": "Mga tinanggal na salita",
+    "blockLemmaConfirmation": "Aalisin ang salitang ito sa iyong bokabularyo at hindi na makakakuha ng XP. Maaari mo itong ibalik mula sa Mga tinanggal na salita.",
+    "deletedVocabListBody": "Ang mga salitang ito ay nakatago mula sa iyong bokabularyo at hindi kumikita ng XP. Ibalik ang isa upang maibalik ito.",
+    "deletedVocabListBodyEmpty": "Wala kang tinanggal na salita. Ang mga salitang tatanggalin mo sa iyong bokabularyo ay lalabas dito para maibalik mo ang mga ito.",
+    "deletedVocabListLabel": "Mga tinanggal na salita",
+    "restore": "Ibalik",
+    "deletedWordLabel": "{lemma}, tinanggal",
+    "restoredWords": "{count, plural, =1{Naibalik ang 1 salita} other{Naibalik ang {count} salita}}",
+    "chatSearchPageLabel": "Pahina ng paghahanap sa chat",
+    "selectImageLabel": "Pumili ng larawan",
+    "userSearchTagsLabel": "Maghanap sa...",
+    "courseDetails": "Mga detalye ng kurso",
+    "objective": "Layunin",
+    "pingedLabel": "Na-ping",
+    "mapFilterPlayerCount": "{count} manlalaro",
     "practiceFeedbackButtonTooltip": "Mag-ulat ng problema sa pagsasanay na ito",
     "practiceFeedbackDialogTitle": "Feedback sa Pagsasanay",
     "practiceFeedbackSelectPair": "Aling pares ang mukhang mali?",

@@ -1340,7 +1340,6 @@
         }
     },
     "@importFromZipFile": {},
-    "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
     "@redactedBy": {
         "type": "String",
@@ -1435,7 +1434,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrate": {},
     "@locationPermissionDeniedNotice": {
         "type": "String",
         "placeholders": {}
@@ -2100,8 +2098,6 @@
     "kicked": "👞 {username} ha expulsete {targetName}",
     "kickedAndBanned": "🙅 {username} ha expulsete e bannite {targetName}",
     "kickFromChat": "Expulser de chat",
-    "dehydrate": "Exportar session e netejar dispositive",
-    "dehydrateWarning": "Iste action ne pote esser revertite. Assegura te que tu stoca securmente li copia de securitate.",
     "hydrate": "Restaurar de copia de securitate",
     "locationDisabledNotice": "Li servicies de localisacion es disactivate. Per favor, active los pro poter compartir tu localisacion.",
     "locationPermissionDeniedNotice": "Permesso de localisacion es denegate. Per favor, concede los pro poter compartir tu localisacion.",
@@ -8229,16 +8225,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Tēnā, ka tangohia tēnei kupu mōhiohio i tō rātaka mō ake tonu atu",
     "woman": "Wāhine",
     "man": "Tāne",
     "otherGender": "Ētahi atu",
     "unselectedGender": "Tīpakohia he kōwhiringa ira",
     "chatParticipantTooltip": "Ko te katoa tēnei i roto i tēnei kōrero. Pāwhiritia te whakaahua o te kaiwhakamahi ka \"tīmata kōrero\" ki te tuku karere ki a ia.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10344,6 +10335,21 @@
     "builtForConnection": "Tógtha le haghaidh ceangail",
     "aiWhenYouNeedIt": "AI nuair a bhíonn sé uait",
     "practiceTailoredForYou": "Cleachtadh saincheaptha duit",
+    "deletedVocab": "Focail scriosta",
+    "blockLemmaConfirmation": "Bainfear an focal seo de do stór focal agus ní bhfaighidh tú XP as. Is féidir leat é a chur ar ais ó Focail scriosta.",
+    "deletedVocabListBody": "Tá na focail seo i bhfolach ó do stór focal agus ní bhfaigheann tú XP astu. Cuir ceann ar ais chun é a thabhairt ar ais.",
+    "deletedVocabListBodyEmpty": "Níl aon fhocal scriosta agat. Tiocfaidh focail a scriosann tú ó do stór focal anseo ionas gur féidir leat iad a chur ar ais.",
+    "deletedVocabListLabel": "Focail scriosta",
+    "restore": "Cuir ar ais",
+    "deletedWordLabel": "{lemma}, scriosta",
+    "restoredWords": "{count, plural, =1{Cuireadh 1 fhocal ar ais} other{Cuireadh {count} focal ar ais}}",
+    "chatSearchPageLabel": "Leathanach cuardaigh comhrá",
+    "selectImageLabel": "Roghnaigh íomhá",
+    "userSearchTagsLabel": "Cuardaigh i...",
+    "courseDetails": "Sonraí an chúrsa",
+    "objective": "Cuspóir",
+    "pingedLabel": "Pingáilte",
+    "mapFilterPlayerCount": "{count} imreoir",
     "practiceFeedbackButtonTooltip": "Tuairiscigh fadhb leis an gcleachtadh seo",
     "practiceFeedbackDialogTitle": "Aiseolas Cleachtaidh",
     "practiceFeedbackSelectPair": "Cén péire atá mícheart?",

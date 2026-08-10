@@ -646,7 +646,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
     "@emptyChat": {
         "type": "String",
@@ -853,7 +852,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrate": {},
     "@locationPermissionDeniedNotice": {
         "type": "String",
         "placeholders": {}
@@ -1994,8 +1992,6 @@
     "leave": "छोड़ें",
     "leftTheChat": "चैट छोड़ दिया",
     "lightTheme": "प्रकाश",
-    "dehydrate": "सत्र निर्यात करें और डिवाइस को साफ़ करें",
-    "dehydrateWarning": "यह क्रिया पूर्ववत नहीं की जा सकती। सुनिश्चित करें कि आप बैकअप फ़ाइल को सुरक्षित रूप से संग्रहित करें।",
     "hydrate": "बैकअप फ़ाइल से पुनर्स्थापित करें",
     "loadingPleaseWait": "लोड हो रहा है… कृपया प्रतीक्षा करें।",
     "loadMore": "और लोड करें…",
@@ -8229,16 +8225,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "यह शब्द आपके विश्लेषण से स्थायी रूप से हटा दिया जाएगा",
     "woman": "महिला",
     "man": "पुरुष",
     "otherGender": "अन्य",
     "unselectedGender": "एक लिंग विकल्प चुनें",
     "chatParticipantTooltip": "यह इस चैट में सभी लोग हैं। किसी भी उपयोगकर्ता के अवतार पर क्लिक करें और \"वार्तालाप शुरू करें\" पर क्लिक करें ताकि एक डीएम भेजा जा सके।",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10344,6 +10335,21 @@
     "builtForConnection": "कनेक्शन के लिए बनाया गया",
     "aiWhenYouNeedIt": "जब आपको ज़रूरत हो, तब AI",
     "practiceTailoredForYou": "आपके लिए तैयार किया गया अभ्यास",
+    "deletedVocab": "हटाए गए शब्द",
+    "blockLemmaConfirmation": "यह शब्द आपकी शब्दावली से हटा दिया जाएगा और XP अर्जित करना बंद कर देगा। आप इसे हटाए गए शब्दों से वापस ला सकते हैं।",
+    "deletedVocabListBody": "ये शब्द आपकी शब्दावली से छिपे हुए हैं और XP अर्जित नहीं करते हैं। इसे वापस लाने के लिए किसी एक को पुनर्स्थापित करें।",
+    "deletedVocabListBodyEmpty": "आपने कोई शब्द नहीं हटाया है। आपकी शब्दावली से हटाए गए शब्द यहां दिखाई देंगे ताकि आप उन्हें वापस ला सकें।",
+    "deletedVocabListLabel": "हटाए गए शब्द",
+    "restore": "पुनर्स्थापित करें",
+    "deletedWordLabel": "{lemma}, हटाया गया",
+    "restoredWords": "{count, plural, =1{1 शब्द पुनर्स्थापित किया गया} other{{count} शब्द पुनर्स्थापित किए गए}}",
+    "chatSearchPageLabel": "चैट खोज पेज",
+    "selectImageLabel": "छवि चुनें",
+    "userSearchTagsLabel": "इसमें खोजें...",
+    "courseDetails": "कोर्स विवरण",
+    "objective": "उद्देश्य",
+    "pingedLabel": "पिंग किया गया",
+    "mapFilterPlayerCount": "{count} खिलाड़ी",
     "practiceFeedbackButtonTooltip": "इस अभ्यास में किसी समस्या की रिपोर्ट करें",
     "practiceFeedbackDialogTitle": "अभ्यास प्रतिक्रिया",
     "practiceFeedbackSelectPair": "कौन सा युग्म गलत लग रहा है?",

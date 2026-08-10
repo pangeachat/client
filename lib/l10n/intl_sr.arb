@@ -1773,8 +1773,6 @@
     "invalidServerName": "Nevažeće ime servera",
     "redactMessageDescription": "Poruka će biti redigovana za sve učesnike u ovom razgovoru. Ovo se ne može poništiti.",
     "optionalRedactReason": "(Opcionalno) Razlog za redigovanje ove poruke...",
-    "dehydrate": "Izvoz sesije i brisanje uređaja",
-    "dehydrateWarning": "Ова акција се не може опозвати. Осигурајте да сигурно сачувате резервну копију датотеке.",
     "hydrate": "Врати из резервне копије",
     "locationDisabledNotice": "Услуге локације су онемогућене. Молимо вас да их омогућите како бисте могли делити своју локацију.",
     "locationPermissionDeniedNotice": "Дозвола за локацију је одбијена. Молимо вас да је одобрите како бисте могли делити своју локацију.",
@@ -3030,14 +3028,6 @@
         "placeholders": {}
     },
     "@optionalRedactReason": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -8552,16 +8542,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ova reč u rečniku će biti trajno uklonjena iz vaših analitika",
     "woman": "Žena",
     "man": "Muškarac",
     "otherGender": "Drugo",
     "unselectedGender": "Izaberite opciju pola",
     "chatParticipantTooltip": "Ovo su svi u ovom čatu. Kliknite na avatar bilo kog korisnika i \"započnite razgovor\" da pošaljete DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10667,6 +10652,21 @@
     "builtForConnection": "Napravljeno za povezivanje",
     "aiWhenYouNeedIt": "AI kada vam zatreba",
     "practiceTailoredForYou": "Vežba krojena po vašoj meri",
+    "deletedVocab": "Izbrisane reči",
+    "blockLemmaConfirmation": "Ova reč će biti uklonjena iz vašeg rečnika i prestaće da donosi XP. Možete je vratiti iz Izbrisanih reči.",
+    "deletedVocabListBody": "Ove reči su skrivene iz vašeg rečnika i ne donose XP. Vratite neku da biste je ponovo koristili.",
+    "deletedVocabListBodyEmpty": "Niste izbrisali nijednu reč. Reči koje izbrišete iz svog rečnika pojaviće se ovde kako biste ih mogli vratiti.",
+    "deletedVocabListLabel": "Izbrisane reči",
+    "restore": "Vrati",
+    "deletedWordLabel": "{lemma}, izbrisano",
+    "restoredWords": "{count, plural, =1{Vraćena 1 reč} other{Vraćeno {count} reči}}",
+    "chatSearchPageLabel": "Stranica za pretragu ćaskanja",
+    "selectImageLabel": "Izaberite sliku",
+    "userSearchTagsLabel": "Pretraži u...",
+    "courseDetails": "Detalji kursa",
+    "objective": "Cilj",
+    "pingedLabel": "Pingovano",
+    "mapFilterPlayerCount": "{count} igrača",
     "practiceFeedbackButtonTooltip": "Prijavite problem sa ovom vežbom",
     "practiceFeedbackDialogTitle": "Povratne informacije o vežbi",
     "practiceFeedbackSelectPair": "Koji par izgleda pogrešno?",

@@ -2244,12 +2244,6 @@
     "@hydrateTorLong": {},
     "dehydrateTorLong": "Для пользователей TOR рекомендуется экспортировать сессию перед закрытием окна.",
     "@dehydrateTorLong": {},
-    "dehydrate": "Экспорт сеанса и очистка устройства",
-    "@dehydrate": {},
-    "dehydrateWarning": "Это действие не может быть отменено. Убедитесь, что вы надёжно сохранили файл резервной копии.",
-    "@dehydrateWarning": {
-        "pangea_override": true
-    },
     "indexedDbErrorTitle": "Проблемы с приватным режимом",
     "@indexedDbErrorTitle": {},
     "otherCallingPermissions": "Разрешения FluffyChat: микрофон, камера и другие",
@@ -8699,16 +8693,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Это слово будет навсегда удалено из вашей аналитики",
     "woman": "Женщина",
     "man": "Мужчина",
     "otherGender": "Другое",
     "unselectedGender": "Ваш пол",
     "chatParticipantTooltip": "Это все участники этого чата. Нажмите на аватар любого пользователя и выберите «начать разговор», чтобы отправить личное сообщение.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10686,6 +10675,21 @@
     "builtForConnection": "Создано для общения",
     "aiWhenYouNeedIt": "ИИ, когда он вам нужен",
     "practiceTailoredForYou": "Практика, адаптированная для вас",
+    "deletedVocab": "Удалённые слова",
+    "blockLemmaConfirmation": "Это слово будет удалено из вашего словаря и перестанет приносить XP. Вы можете вернуть его из раздела «Удалённые слова».",
+    "deletedVocabListBody": "Эти слова скрыты из вашего словаря и не приносят XP. Восстановите слово, чтобы вернуть его.",
+    "deletedVocabListBodyEmpty": "Вы не удалили ни одного слова. Слова, которые вы удалите из своего словаря, появятся здесь, и вы сможете их вернуть.",
+    "deletedVocabListLabel": "Удалённые слова",
+    "restore": "Восстановить",
+    "deletedWordLabel": "{lemma}, удалено",
+    "restoredWords": "{count, plural, =1{Восстановлено 1 слово} other{Восстановлено {count} слов}}",
+    "chatSearchPageLabel": "Страница поиска чатов",
+    "selectImageLabel": "Выбрать изображение",
+    "userSearchTagsLabel": "Искать в...",
+    "courseDetails": "Детали курса",
+    "objective": "Цель",
+    "pingedLabel": "Упомянут",
+    "mapFilterPlayerCount": "{count} игроков",
     "practiceFeedbackButtonTooltip": "Сообщить о проблеме с этим упражнением",
     "practiceFeedbackDialogTitle": "Отзыв об упражнении",
     "practiceFeedbackSelectPair": "Какая пара выглядит неправильно?",

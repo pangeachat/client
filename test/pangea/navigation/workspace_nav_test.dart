@@ -1245,6 +1245,29 @@ void main() {
       expect(parseOpenPanels(u(loc)).right.length, 0);
     });
 
+    test('blocked vocab pops back to the vocab list, not away (#6803)', () {
+      const vocab = AnalyticsPanelToken(
+        AnalyticsTokenParam(subpage: ProgressIndicatorEnum.wordsUsed),
+      );
+      const blocked = AnalyticsPanelToken(
+        AnalyticsTokenParam(
+          subpage: ProgressIndicatorEnum.wordsUsed,
+          deleted: true,
+        ),
+      );
+
+      var loc = WorkspaceNav.openAnalytics(u('/'));
+      expect(parseOpenPanels(u(loc)).right.single, vocab);
+
+      loc = WorkspaceNav.openBlockedVocabList(u(loc));
+      expect(parseOpenPanels(u(loc)).right.single, blocked);
+
+      // Without AnalyticsPanelToken.popped this pops to an empty column, i.e.
+      // the back arrow closes analytics instead of returning to the list.
+      loc = WorkspaceNav.popPage(u(loc), blocked);
+      expect(parseOpenPanels(u(loc)).right.single, vocab);
+    });
+
     test('pushing keeps other panels in the column', () {
       var loc = WorkspaceNav.openRight(
         u('/'),

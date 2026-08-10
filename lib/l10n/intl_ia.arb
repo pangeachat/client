@@ -261,8 +261,6 @@
     "leave": "Lassar",
     "leftTheChat": "Lassó le chat",
     "lightTheme": "Lucente",
-    "dehydrate": "Exportar session e netar le dispositivo",
-    "dehydrateWarning": "Iste action non pote esser revertite. Assegura te que tu ha securemente storate le file de respaldo.",
     "hydrate": "Restaurar ab file de respaldo",
     "loadingPleaseWait": "Loading… Per favor, aspetta.",
     "loadMore": "Carga plus…",
@@ -2369,14 +2367,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -8539,16 +8529,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ita vocab parola va essere permanentemente rimossa da tuas analytics",
     "woman": "Femin",
     "man": "Mascul",
     "otherGender": "Altre",
     "unselectedGender": "Seleziona un'opzione di genere",
     "chatParticipantTooltip": "Ita es tutti in ista chat. Clicca su qualunque avatar de utente e \"inizia conversazione\" pro inviar un DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10654,6 +10639,21 @@
     "builtForConnection": "Construite pro connexion",
     "aiWhenYouNeedIt": "IA quando tu lo besonia",
     "practiceTailoredForYou": "Practica adaptate a te",
+    "deletedVocab": "Vocabulos delite",
+    "blockLemmaConfirmation": "Iste vocabulo essera removite de tu vocabulario e cessara de ganiar XP. Tu pote restaurar lo de Vocabulos delite.",
+    "deletedVocabListBody": "Iste vocabulos es celate de tu vocabulario e non gania XP. Restaura un pro re-activar lo.",
+    "deletedVocabListBodyEmpty": "Tu non ha delite ulle vocabulo. Vocabulos que tu delite de tu vocabulario apparera hic pro que tu pote restaurar los.",
+    "deletedVocabListLabel": "Vocabulos delite",
+    "restore": "Restaurar",
+    "deletedWordLabel": "{lemma}, delite",
+    "restoredWords": "{count, plural, =1{Restaurate 1 vocabulo} other{Restaurate {count} vocabulos}}",
+    "chatSearchPageLabel": "Pagina de recerca de conversas",
+    "selectImageLabel": "Selige imagine",
+    "userSearchTagsLabel": "Cercar in...",
+    "courseDetails": "Detalios del curso",
+    "objective": "Objectivo",
+    "pingedLabel": "Pingeva",
+    "mapFilterPlayerCount": "{count} jocatores",
     "practiceFeedbackButtonTooltip": "Reportar un problema con iste exercitio",
     "practiceFeedbackDialogTitle": "Commentario super le Exerctio Practic",
     "practiceFeedbackSelectPair": "Qual par pare incorrecte?",

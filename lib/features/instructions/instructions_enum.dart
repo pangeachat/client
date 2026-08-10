@@ -15,6 +15,8 @@ enum InstructionsEnum {
   chooseMorphs,
   analyticsVocabList,
   analyticsVocabListEmpty,
+  deletedVocabList,
+  deletedVocabListEmpty,
   morphAnalyticsList,
   activityAnalyticsList,
   levelAnalytics,
@@ -51,6 +53,8 @@ extension InstructionsEnumExtension on InstructionsEnum {
       case InstructionsEnum.chooseMorphs:
       case InstructionsEnum.analyticsVocabList:
       case InstructionsEnum.analyticsVocabListEmpty:
+      case InstructionsEnum.deletedVocabList:
+      case InstructionsEnum.deletedVocabListEmpty:
       case InstructionsEnum.morphAnalyticsList:
       case InstructionsEnum.activityStatsMenu:
       case InstructionsEnum.chatParticipantTooltip:
@@ -99,6 +103,10 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.analyticsVocabListBody;
       case InstructionsEnum.analyticsVocabListEmpty:
         return l10n.analyticsVocabListBodyEmpty;
+      case InstructionsEnum.deletedVocabList:
+        return l10n.deletedVocabListBody;
+      case InstructionsEnum.deletedVocabListEmpty:
+        return l10n.deletedVocabListBodyEmpty;
       case InstructionsEnum.morphAnalyticsList:
         return l10n.morphAnalyticsListBody;
       case InstructionsEnum.activityAnalyticsList:

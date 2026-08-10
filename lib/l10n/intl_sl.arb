@@ -701,8 +701,6 @@
     "leave": "Iščä",
     "leftTheChat": "Zapustil je pogovor",
     "lightTheme": "Svetla",
-    "dehydrate": "Izvozi sejo in počisti napravo",
-    "dehydrateWarning": "Ta dejanja ni mogoče razveljaviti. Poskrbite, da varno shranite varnostno kopijo datoteke.",
     "hydrate": "Obnovi iz varnostne kopije",
     "loadingPleaseWait": "Nalaganje… Prosimo počakajte.",
     "loadMore": "Naloži več…",
@@ -2374,14 +2372,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -8548,16 +8538,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "Ta beseda v besedi bo trajno odstranjena iz vaših analiz.",
     "woman": "Ženska",
     "man": "Moški",
     "otherGender": "Drugo",
     "unselectedGender": "Izberite možnost spola",
     "chatParticipantTooltip": "To so vsi v tem klepetu. Kliknite na avatar katerega koli uporabnika in \"začnite pogovor\", da pošljete DM.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10663,6 +10648,21 @@
     "builtForConnection": "Ustvarjeno za povezovanje",
     "aiWhenYouNeedIt": "AI, ko ga potrebuješ",
     "practiceTailoredForYou": "Praksa, prilagojena tebi",
+    "deletedVocab": "Izbrisane besede",
+    "blockLemmaConfirmation": "Ta beseda bo odstranjena iz vašega besedišča in ne bo več prinašala XP. Lahko jo vrnete iz Izbrisanih besed.",
+    "deletedVocabListBody": "Te besede so skrite iz vašega besedišča in ne prinašajo XP. Obnovite jih, da jih vrnete.",
+    "deletedVocabListBodyEmpty": "Niste izbrisali nobene besede. Besede, ki jih izbrišete iz svojega besedišča, se bodo prikazale tukaj, da jih lahko vrnete.",
+    "deletedVocabListLabel": "Izbrisane besede",
+    "restore": "Obnovi",
+    "deletedWordLabel": "{lemma}, izbrisano",
+    "restoredWords": "{count, plural, =1{Obnovljena 1 beseda} other{Obnovljenih {count} besed}}",
+    "chatSearchPageLabel": "Stran za iskanje klepetov",
+    "selectImageLabel": "Izberi sliko",
+    "userSearchTagsLabel": "Išči v...",
+    "courseDetails": "Podrobnosti tečaja",
+    "objective": "Cilj",
+    "pingedLabel": "Pingano",
+    "mapFilterPlayerCount": "{count} igralcev",
     "practiceFeedbackButtonTooltip": "Prijavi težavo s to vajo",
     "practiceFeedbackDialogTitle": "Povratne informacije o vaji",
     "practiceFeedbackSelectPair": "Kateri par se zdi napačen?",

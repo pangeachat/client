@@ -836,8 +836,6 @@
     "leave": "გადადი",
     "leftTheChat": "გადადგა საუბარი",
     "lightTheme": "მარტივი",
-    "dehydrate": "ექსპორტი სესია და წაშალეთ მოწყობილობა",
-    "dehydrateWarning": "ეს მოქმედება ვერ მოხერხდება უკან დაბრუნება. დარწმუნდით, რომ უსაფრთხოდ ინახავთ სარეზერვო ფაილს.",
     "hydrate": "აღადგინე სარეზერვო ფაილიდან",
     "loadingPleaseWait": "იტვირთება… გთხოვთ დაელოდოთ.",
     "loadMore": "მეტი ჩატვირთვა…",
@@ -2329,14 +2327,6 @@
         "placeholders": {}
     },
     "@lightTheme": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrate": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@dehydrateWarning": {
         "type": "String",
         "placeholders": {}
     },
@@ -8503,16 +8493,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "ეს სიტყვა მუდმივად წაიშლება თქვენი ანალიტიკიდან",
     "woman": "ქალი",
     "man": "კაცი",
     "otherGender": "სხვა",
     "unselectedGender": "აირჩიეთ სქესის ვარიანტი",
     "chatParticipantTooltip": "ეს არის ყველა ადამიანი ამ ჩატში. დააწკაპუნეთ ნებისმიერი მომხმარებლის ავატარზე და „საუბრის დაწყება“, რომ გამოგიგზავნოთ პირადი შეტყობინება.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10618,6 +10603,21 @@
     "builtForConnection": "კავშირისთვის შექმნილი",
     "aiWhenYouNeedIt": "AI, როცა დაგჭირდება",
     "practiceTailoredForYou": "თქვენზე მორგებული პრაქტიკა",
+    "deletedVocab": "წაშლილი სიტყვები",
+    "blockLemmaConfirmation": "ეს სიტყვა წაიშლება თქვენი ლექსიკიდან და შეწყვეტს XP-ის გამომუშავებას. შეგიძლიათ მისი აღდგენა წაშლილი სიტყვებიდან.",
+    "deletedVocabListBody": "ეს სიტყვები დამალულია თქვენი ლექსიკიდან და არ გამოიმუშავებს XP-ს. აღადგინეთ ისინი უკან დასაბრუნებლად.",
+    "deletedVocabListBodyEmpty": "თქვენ არ წაგიშლიათ არცერთი სიტყვა. სიტყვები, რომლებსაც წაშლით თქვენი ლექსიკიდან, აქ გამოჩნდება, რათა შეძლოთ მათი აღდგენა.",
+    "deletedVocabListLabel": "წაშლილი სიტყვები",
+    "restore": "აღდგენა",
+    "deletedWordLabel": "{lemma}, წაშლილია",
+    "restoredWords": "{count, plural, =1{აღდგენილია 1 სიტყვა} other{აღდგენილია {count} სიტყვა}}",
+    "chatSearchPageLabel": "ჩეთის ძიების გვერდი",
+    "selectImageLabel": "სურათის არჩევა",
+    "userSearchTagsLabel": "ძიება...",
+    "courseDetails": "კურსის დეტალები",
+    "objective": "მიზანი",
+    "pingedLabel": "დაპინგულია",
+    "mapFilterPlayerCount": "{count} მოთამაშე",
     "practiceFeedbackButtonTooltip": "შეატყობინეთ პრობლემის შესახებ ამ სავარჯიშოში",
     "practiceFeedbackDialogTitle": "სავარჯიშოს უკუკავშირი",
     "practiceFeedbackSelectPair": "რომელი წყვილი გამოიყურება არასწორად?",

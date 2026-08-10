@@ -58,6 +58,44 @@ class _FrameContainerState extends State<FrameContainer>
 
   @override
   Widget build(BuildContext context) {
+    final titleContent = Container(
+      width: double.infinity,
+      color: widget.frameColor,
+      padding: widget.titlePadding,
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              widget.title,
+              textAlign: widget.expandable ? TextAlign.start : TextAlign.center,
+              style:
+                  widget.titleStyle ??
+                  Theme.of(context).textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.bold,
+                    color: widget.foregroundColor,
+                  ),
+            ),
+          ),
+          if (widget.expandable)
+            IconButton(
+              tooltip: _expanded
+                  ? L10n.of(context).close
+                  : L10n.of(context).open,
+              visualDensity: VisualDensity.compact,
+              splashRadius: 20,
+              color: widget.foregroundColor,
+              icon: AnimatedRotation(
+                duration: const Duration(milliseconds: 200),
+                curve: Curves.easeInOut,
+                turns: _expanded ? 0.5 : 0.0,
+                child: const Icon(Icons.expand_less),
+              ),
+              onPressed: _toggleExpanded,
+            ),
+        ],
+      ),
+    );
+
     return Container(
       decoration: BoxDecoration(
         color: widget.frameColor,
@@ -79,52 +117,16 @@ class _FrameContainerState extends State<FrameContainer>
               onTap: widget.expandable ? _toggleExpanded : null,
               excludeSemantics:
                   true, // suppress children's own semantics; we've already described the whole node
-              child: InkWell(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(widget.borderRadius),
-                  topRight: Radius.circular(widget.borderRadius),
-                ),
-                onTap: widget.expandable ? _toggleExpanded : null,
-                child: Container(
-                  width: double.infinity,
-                  color: widget.frameColor,
-                  padding: widget.titlePadding,
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Text(
-                          widget.title,
-                          textAlign: widget.expandable
-                              ? TextAlign.start
-                              : TextAlign.center,
-                          style:
-                              widget.titleStyle ??
-                              Theme.of(context).textTheme.titleLarge?.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: widget.foregroundColor,
-                              ),
-                        ),
+              child: widget.expandable
+                  ? InkWell(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(widget.borderRadius),
+                        topRight: Radius.circular(widget.borderRadius),
                       ),
-                      if (widget.expandable)
-                        IconButton(
-                          tooltip: _expanded
-                              ? L10n.of(context).close
-                              : L10n.of(context).open,
-                          visualDensity: VisualDensity.compact,
-                          splashRadius: 20,
-                          color: widget.foregroundColor,
-                          icon: AnimatedRotation(
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.easeInOut,
-                            turns: _expanded ? 0.5 : 0.0,
-                            child: const Icon(Icons.expand_less),
-                          ),
-                          onPressed: _toggleExpanded,
-                        ),
-                    ],
-                  ),
-                ),
-              ),
+                      onTap: _toggleExpanded,
+                      child: titleContent,
+                    )
+                  : titleContent,
             ),
             AnimatedSize(
               duration: const Duration(milliseconds: 250),

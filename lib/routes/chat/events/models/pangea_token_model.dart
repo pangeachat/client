@@ -218,6 +218,15 @@ class PangeaToken {
 
   String get uniqueId => "${text.content}::${text.offset}";
 
+  /// Target keys are namespaced PER RENDER CONTEXT, not just per token.
+  ///
+  /// [PangeaAnyState.layerLinkAndKey] hands out one `LayerLink` + one
+  /// `GlobalKey` per id, process-wide, and every rendered token wraps itself in
+  /// a `CompositedTransformTarget` + keyed `MouseRegion` with them. So two
+  /// surfaces showing the SAME event at the same time must not share a
+  /// namespace: one `LayerLink` on two targets throws
+  /// "a RenderLeaderLayer was mutated…", and one `GlobalKey` in two places is a
+  /// duplicate-key error.
   String baseTargetKey(String eventId) =>
       "message-token-${text.uniqueKey}-$eventId";
 
@@ -226,4 +235,10 @@ class PangeaToken {
 
   String practiceModeTargetKey(String eventId) =>
       "message-token-${text.uniqueKey}-$eventId-practice";
+
+  /// The example-message chips on a construct's analytics details page. These
+  /// render real chat messages, so without their own namespace they collide
+  /// with the same event in the open chat timeline (#6803).
+  String analyticsExampleTargetKey(String eventId) =>
+      "message-token-${text.uniqueKey}-$eventId-analytics-example";
 }

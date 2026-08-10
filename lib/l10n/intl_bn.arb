@@ -759,7 +759,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrateWarning": {},
     "@noOtherDevicesFound": {},
     "@emptyChat": {
         "type": "String",
@@ -940,7 +939,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@dehydrate": {},
     "@locationPermissionDeniedNotice": {
         "type": "String",
         "placeholders": {}
@@ -2002,8 +2000,6 @@
     "lastActiveAgo": "শেষ সক্রিয়তা: {localizedTimeShort}",
     "leftTheChat": "চ্যাট থেকে প্রস্থান করেছেন",
     "lightTheme": "আলো",
-    "dehydrate": "সেশন এক্সপোর্ট করুন এবং ডিভাইসটি মুছে ফেলুন",
-    "dehydrateWarning": "এই ক্রিয়া পূর্বে ফিরে আসবে না। নিশ্চিত করুন যে আপনি ব্যাকআপ ফাইলটি নিরাপদে সংরক্ষণ করেছেন।",
     "hydrate": "ব্যাকআপ ফাইল থেকে পুনরুদ্ধার করুন",
     "loadingPleaseWait": "লোড হচ্ছে… দয়া করে অপেক্ষা করুন।",
     "loadMore": "আরও লোড করুন…",
@@ -8225,16 +8221,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "এই শব্দটি আপনার বিশ্লেষণ থেকে স্থায়ীভাবে মুছে ফেলা হবে",
     "woman": "মহিলা",
     "man": "পুরুষ",
     "otherGender": "অন্যান্য",
     "unselectedGender": "একটি লিঙ্গ বিকল্প নির্বাচন করুন",
     "chatParticipantTooltip": "এটি এই চ্যাটে সকলেই। যে কোনও ব্যবহারকারীর অ্যাভাটারে ক্লিক করুন এবং \"কথোপকথন শুরু করুন\" ডিএম পাঠাতে।",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -10340,6 +10331,21 @@
     "builtForConnection": "সংযোগের জন্য তৈরি",
     "aiWhenYouNeedIt": "আপনার যখন প্রয়োজন তখন AI",
     "practiceTailoredForYou": "আপনার জন্য তৈরি অনুশীলন",
+    "deletedVocab": "মুছে ফেলা শব্দ",
+    "blockLemmaConfirmation": "এই শব্দটি আপনার শব্দভাণ্ডার থেকে সরানো হবে এবং XP অর্জন করা বন্ধ করবে। আপনি এটিকে মুছে ফেলা শব্দ থেকে ফিরিয়ে আনতে পারেন।",
+    "deletedVocabListBody": "এই শব্দগুলি আপনার শব্দভাণ্ডার থেকে লুকানো আছে এবং XP অর্জন করে না। ফিরিয়ে আনতে একটি পুনরুদ্ধার করুন।",
+    "deletedVocabListBodyEmpty": "আপনি কোনো শব্দ মুছে ফেলেননি। আপনার শব্দভাণ্ডার থেকে মুছে ফেলা শব্দগুলি এখানে প্রদর্শিত হবে যাতে আপনি সেগুলিকে ফিরিয়ে আনতে পারেন।",
+    "deletedVocabListLabel": "মুছে ফেলা শব্দ",
+    "restore": "পুনরুদ্ধার করুন",
+    "deletedWordLabel": "{lemma}, মুছে ফেলা হয়েছে",
+    "restoredWords": "{count, plural, =1{১টি শব্দ পুনরুদ্ধার করা হয়েছে} other{{count}টি শব্দ পুনরুদ্ধার করা হয়েছে}}",
+    "chatSearchPageLabel": "চ্যাট অনুসন্ধান পৃষ্ঠা",
+    "selectImageLabel": "ছবি নির্বাচন করুন",
+    "userSearchTagsLabel": "অনুসন্ধান করুন...",
+    "courseDetails": "কোর্সের বিবরণ",
+    "objective": "উদ্দেশ্য",
+    "pingedLabel": "পিং করা হয়েছে",
+    "mapFilterPlayerCount": "{count} জন খেলোয়াড়",
     "practiceFeedbackButtonTooltip": "এই অনুশীলনে একটি সমস্যা রিপোর্ট করুন",
     "practiceFeedbackDialogTitle": "অনুশীলন সংক্রান্ত প্রতিক্রিয়া",
     "practiceFeedbackSelectPair": "কোন জোড়াটি ভুল দেখাচ্ছে?",

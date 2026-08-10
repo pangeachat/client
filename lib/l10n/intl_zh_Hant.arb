@@ -1811,8 +1811,6 @@
     "@noChatDescriptionYet": {},
     "optionalRedactReason": "（非必填）收回此訊息的原因...",
     "@optionalRedactReason": {},
-    "dehydrateWarning": "此操作不能反悔。請確保安全地存儲備份文件。",
-    "@dehydrateWarning": {},
     "hydrate": "從備份文件恢復",
     "@hydrate": {},
     "locationDisabledNotice": "位置服務被停用。請啟用它們以能夠分享您的位置。",
@@ -1879,8 +1877,6 @@
             }
         }
     },
-    "dehydrate": "匯出會話並清除裝置",
-    "@dehydrate": {},
     "reopenChat": "重新開啟聊天室",
     "@reopenChat": {},
     "widgetNameError": "請提供一個顯示名稱。",
@@ -7698,16 +7694,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "此詞彙將永久從您的分析中移除",
     "woman": "女性",
     "man": "男性",
     "otherGender": "其他",
     "unselectedGender": "選擇性別選項",
     "chatParticipantTooltip": "這是此聊天中的所有人。點擊任何用戶的頭像並選擇「開始對話」以發送私信。",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9818,6 +9809,21 @@
     "builtForConnection": "為連結而生",
     "aiWhenYouNeedIt": "隨時隨地為您提供 AI",
     "practiceTailoredForYou": "為您量身打造的練習",
+    "deletedVocab": "已刪除的單字",
+    "blockLemmaConfirmation": "此單字將從您的詞彙中移除，並且不會再獲得經驗值。您可以從「已刪除的單字」中將其恢復。",
+    "deletedVocabListBody": "這些單字已從您的詞彙中隱藏，並且不會獲得經驗值。恢復單字即可將其取回。",
+    "deletedVocabListBodyEmpty": "您尚未刪除任何單字。您從詞彙中刪除的單字將會顯示在此處，以便您將其取回。",
+    "deletedVocabListLabel": "已刪除的單字",
+    "restore": "恢復",
+    "deletedWordLabel": "{lemma}，已刪除",
+    "restoredWords": "{count, plural, =1{已恢復 1 個單字} other{已恢復 {count} 個單字}}",
+    "chatSearchPageLabel": "聊天搜尋頁面",
+    "selectImageLabel": "選擇圖片",
+    "userSearchTagsLabel": "搜尋範圍...",
+    "courseDetails": "課程詳情",
+    "objective": "目標",
+    "pingedLabel": "已收到通知",
+    "mapFilterPlayerCount": "{count} 位玩家",
     "practiceFeedbackButtonTooltip": "回報此練習的問題",
     "practiceFeedbackDialogTitle": "練習回饋",
     "practiceFeedbackSelectPair": "哪一組看起來有問題？",

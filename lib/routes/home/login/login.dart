@@ -275,7 +275,6 @@ class LoginController extends State<Login> {
       initialText: usernameController.text.isEmail
           ? usernameController.text
           : '',
-      hintText: L10n.of(context).enterAnEmailAddress,
       keyboardType: TextInputType.emailAddress,
     );
     if (input == null) return;

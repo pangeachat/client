@@ -511,8 +511,6 @@
     },
     "sendOnEnter": "Enter ஐ அனுப்பவும்",
     "@sendOnEnter": {},
-    "dehydrate": "ஏற்றுமதி அமர்வு மற்றும் சாதனத்தை துடைக்கவும்",
-    "@dehydrate": {},
     "ok": "சரி",
     "@ok": {
         "type": "String",
@@ -1128,8 +1126,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "dehydrateWarning": "இந்த செயலை செயல்தவிர்க்க முடியாது. காப்புப்பிரதி கோப்பை பாதுகாப்பாக சேமித்து வைக்கவும்.",
-    "@dehydrateWarning": {},
     "loadMore": "மேலும் ஏற்றவும்…",
     "@loadMore": {
         "type": "String",
@@ -7699,16 +7695,11 @@
         "type": "String",
         "placeholders": {}
     },
-    "blockLemmaConfirmation": "இந்த சொல் உங்கள் பகுப்பாய்வில் நிரந்தரமாக நீக்கப்படும்",
     "woman": "பெண்",
     "man": "ஆண்",
     "otherGender": "மற்றவை",
     "unselectedGender": "ஒரு பாலின விருப்பத்தை தேர்வு செய்யவும்",
     "chatParticipantTooltip": "இந்த உரையாடலில் உள்ள அனைவரும் இதுவே. எந்த பயனரின் உருவத்தை கிளிக் செய்து \"உரையாடலை தொடங்கவும்\" என்பதன் மூலம் ஒரு நேரடி செய்தி அனுப்பவும்.",
-    "@blockLemmaConfirmation": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@woman": {
         "type": "String",
         "placeholders": {}
@@ -9804,6 +9795,21 @@
     "builtForConnection": "இணைப்பிற்காக உருவாக்கப்பட்டது",
     "aiWhenYouNeedIt": "உங்களுக்குத் தேவைப்படும்போது AI",
     "practiceTailoredForYou": "உங்களுக்காக வடிவமைக்கப்பட்ட பயிற்சி",
+    "deletedVocab": "நீக்கப்பட்ட வார்த்தைகள்",
+    "blockLemmaConfirmation": "இந்த வார்த்தை உங்கள் சொல்லகராதியிலிருந்து நீக்கப்பட்டு, XP பெறுவதை நிறுத்திவிடும். நீக்கப்பட்ட வார்த்தைகளிலிருந்து இதை மீண்டும் கொண்டு வரலாம்.",
+    "deletedVocabListBody": "இந்த வார்த்தைகள் உங்கள் சொல்லகராதியிலிருந்து மறைக்கப்பட்டு, XP ஐப் பெறாது. அதை மீண்டும் கொண்டு வர ஒன்றை மீட்டெடுக்கவும்.",
+    "deletedVocabListBodyEmpty": "நீங்கள் எந்த வார்த்தைகளையும் நீக்கவில்லை. உங்கள் சொல்லகராதியிலிருந்து நீக்கும் வார்த்தைகள் இங்கே தோன்றும், எனவே நீங்கள் அவற்றை மீண்டும் கொண்டு வரலாம்.",
+    "deletedVocabListLabel": "நீக்கப்பட்ட வார்த்தைகள்",
+    "restore": "மீட்டெடு",
+    "deletedWordLabel": "{lemma}, நீக்கப்பட்டது",
+    "restoredWords": "{count, plural, =1{1 வார்த்தை மீட்டெடுக்கப்பட்டது} other{{count} வார்த்தைகள் மீட்டெடுக்கப்பட்டன}}",
+    "chatSearchPageLabel": "அரட்டைத் தேடல் பக்கம்",
+    "selectImageLabel": "படத்தைத் தேர்ந்தெடுக்கவும்",
+    "userSearchTagsLabel": "இதில் தேடவும்...",
+    "courseDetails": "பாட விவரங்கள்",
+    "objective": "நோக்கம்",
+    "pingedLabel": "பிங் செய்யப்பட்டது",
+    "mapFilterPlayerCount": "{count} வீரர்கள்",
     "practiceFeedbackButtonTooltip": "இந்த பயிற்சியில் உள்ள சிக்கலைப் புகாரளிக்கவும்",
     "practiceFeedbackDialogTitle": "பயிற்சி குறித்த கருத்து",
     "practiceFeedbackSelectPair": "எந்த ஜோடி தவறாகத் தெரிகிறது?",
