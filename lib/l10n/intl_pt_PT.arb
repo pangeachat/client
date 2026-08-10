@@ -2568,7 +2568,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-05 11:42:16.160610",
+    "@@last_modified": "2026-08-10 14:04:55.210818",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10628,5 +10628,12 @@
     "conversationFromDayOne": "Conversar desde o primeiro dia",
     "builtForConnection": "Criado para a ligação",
     "aiWhenYouNeedIt": "IA quando precisar",
-    "practiceTailoredForYou": "Prática à sua medida"
+    "practiceTailoredForYou": "Prática à sua medida",
+    "practiceFeedbackButtonTooltip": "Reportar um problema com este exercício",
+    "practiceFeedbackDialogTitle": "Feedback do Exercício de Prática",
+    "practiceFeedbackSelectPair": "Qual par parece errado?",
+    "practiceFeedbackUserSetEmoji": "Selecionou este emoji — altere-o no cartão da palavra",
+    "practiceFeedbackAlreadyMatched": "Já correspondido corretamente",
+    "practiceFeedbackUpdated": "Obrigado! O exercício foi atualizado com base no seu feedback.",
+    "practiceFeedbackUnchanged": "Obrigado! O seu relatório foi registado, mas o conteúdo permaneceu inalterado."
 }

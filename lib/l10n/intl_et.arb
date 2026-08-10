@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-05 11:42:11.804535",
+    "@@last_modified": "2026-08-10 14:04:43.248676",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9708,5 +9708,12 @@
     "conversationFromDayOne": "Vestlus esimesest päevast alates",
     "builtForConnection": "Loodud ühenduse loomiseks",
     "aiWhenYouNeedIt": "AI siis, kui seda vajad",
-    "practiceTailoredForYou": "Sulle kohandatud praktika"
+    "practiceTailoredForYou": "Sulle kohandatud praktika",
+    "practiceFeedbackButtonTooltip": "Teata probleemist selle harjutusega",
+    "practiceFeedbackDialogTitle": "Harjutuse tagasiside",
+    "practiceFeedbackSelectPair": "Milline paar tundub vale?",
+    "practiceFeedbackUserSetEmoji": "Valisid selle emotikoni – muuda seda sõnakaardilt",
+    "practiceFeedbackAlreadyMatched": "Juba õigesti sobitatud",
+    "practiceFeedbackUpdated": "Aitäh! Harjutust on teie tagasiside põhjal värskendatud.",
+    "practiceFeedbackUnchanged": "Aitäh! Teie teade salvestati, kuid sisu jäi muutmata."
 }

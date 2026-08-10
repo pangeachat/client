@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-05 11:42:18.410365",
+    "@@last_modified": "2026-08-10 14:05:33.490153",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Ìfọ̀rọ̀wérọ̀ láti Ọjọ́ Kìíní",
     "builtForConnection": "Ti a kọ́ fún ìsopọ̀",
     "aiWhenYouNeedIt": "AI nígbàtí o bá nílò rẹ̀",
-    "practiceTailoredForYou": "Ìdánilẹ́kọ̀ọ́ tí a ṣe fún ọ"
+    "practiceTailoredForYou": "Ìdánilẹ́kọ̀ọ́ tí a ṣe fún ọ",
+    "practiceFeedbackButtonTooltip": "Jábọ̀ ìṣòro kan pẹ̀lú ìdánilẹ́kọ̀ọ́ yìí",
+    "practiceFeedbackDialogTitle": "Èsì Ìdánilẹ́kọ̀ọ́",
+    "practiceFeedbackSelectPair": "Èwo nínú àwọn méjì yìí ló dàbí èyí tí kò tọ́?",
+    "practiceFeedbackUserSetEmoji": "Ìwọ ló yan èrè-ìmọ̀lára yìí — yí i padà láti orí kaadi ọ̀rọ̀",
+    "practiceFeedbackAlreadyMatched": "Tí a ti bá a mu dáadáa tẹ́lẹ̀",
+    "practiceFeedbackUpdated": "Ó ṣeun! A ti ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà nípa lílo èsì rẹ.",
+    "practiceFeedbackUnchanged": "Ó ṣeun! A ti gba ìròyìn rẹ sílẹ̀, ṣùgbọ́n ohun tó wà nínú rẹ̀ kò yí padà."
 }

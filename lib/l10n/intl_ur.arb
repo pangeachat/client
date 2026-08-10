@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-05 11:42:17.898149",
+    "@@last_modified": "2026-08-10 14:04:59.762663",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "پہلے دن سے گفتگو",
     "builtForConnection": "رابطے کے لیے بنایا گیا",
     "aiWhenYouNeedIt": "جب آپ کو ضرورت ہو تو AI",
-    "practiceTailoredForYou": "آپ کے لیے تیار کردہ مشق"
+    "practiceTailoredForYou": "آپ کے لیے تیار کردہ مشق",
+    "practiceFeedbackButtonTooltip": "اس مشق کے ساتھ ایک مسئلہ کی اطلاع دیں",
+    "practiceFeedbackDialogTitle": "مشق کی رائے",
+    "practiceFeedbackSelectPair": "کون سا جوڑا غلط لگتا ہے؟",
+    "practiceFeedbackUserSetEmoji": "آپ نے یہ ایموجی منتخب کیا ہے — اسے ورڈ کارڈ سے تبدیل کریں",
+    "practiceFeedbackAlreadyMatched": "پہلے ہی صحیح طریقے سے مماثل ہے",
+    "practiceFeedbackUpdated": "شکریہ! آپ کی رائے کی بنیاد پر مشق کو اپ ڈیٹ کر دیا گیا ہے۔",
+    "practiceFeedbackUnchanged": "شکریہ! آپ کی رپورٹ ریکارڈ کر لی گئی ہے، لیکن مواد میں کوئی تبدیلی نہیں کی گئی۔"
 }

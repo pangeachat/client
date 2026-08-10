@@ -3415,7 +3415,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-05 11:42:11.249576",
+    "@@last_modified": "2026-08-10 14:04:42.586190",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10592,5 +10592,12 @@
     "conversationFromDayOne": "Συζήτηση από την πρώτη μέρα",
     "builtForConnection": "Φτιαγμένο για σύνδεση",
     "aiWhenYouNeedIt": "AI όταν το χρειάζεστε",
-    "practiceTailoredForYou": "Εξάσκηση προσαρμοσμένη για εσάς"
+    "practiceTailoredForYou": "Εξάσκηση προσαρμοσμένη για εσάς",
+    "practiceFeedbackButtonTooltip": "Αναφέρετε ένα πρόβλημα με αυτήν την άσκηση",
+    "practiceFeedbackDialogTitle": "Σχόλια για την άσκηση πρακτικής",
+    "practiceFeedbackSelectPair": "Ποιο ζευγάρι φαίνεται λάθος;",
+    "practiceFeedbackUserSetEmoji": "Επιλέξατε αυτό το emoji — αλλάξτε το από την κάρτα λέξης",
+    "practiceFeedbackAlreadyMatched": "Ήδη αντιστοιχισμένο σωστά",
+    "practiceFeedbackUpdated": "Ευχαριστούμε! Η άσκηση έχει ενημερωθεί βάσει των σχολίων σας.",
+    "practiceFeedbackUnchanged": "Ευχαριστούμε! Η αναφορά σας καταγράφηκε, αλλά το περιεχόμενο παρέμεινε αμετάβλητο."
 }

@@ -2877,7 +2877,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-05 11:42:17.950261",
+    "@@last_modified": "2026-08-10 14:05:00.347567",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9715,5 +9715,12 @@
     "conversationFromDayOne": "Birinchi kundan suhbat",
     "builtForConnection": "Aloqa uchun yaratilgan",
     "aiWhenYouNeedIt": "Kerak bo'lganda AI",
-    "practiceTailoredForYou": "Sizga moslashtirilgan amaliyot"
+    "practiceTailoredForYou": "Sizga moslashtirilgan amaliyot",
+    "practiceFeedbackButtonTooltip": "Ushbu mashq bilan bogʻliq muammoni xabar qiling",
+    "practiceFeedbackDialogTitle": "Mashq boʻyicha fikr-mulohaza",
+    "practiceFeedbackSelectPair": "Qaysi juftlik notoʻgʻri koʻrinadi?",
+    "practiceFeedbackUserSetEmoji": "Siz ushbu emojini tanladingiz — uni soʻz kartasidan oʻzgartiring",
+    "practiceFeedbackAlreadyMatched": "Allaqachon toʻgʻri moslashtirilgan",
+    "practiceFeedbackUpdated": "Rahmat! Mashq sizning fikr-mulohazangiz asosida yangilandi.",
+    "practiceFeedbackUnchanged": "Rahmat! Sizning hisobotingiz qayd etildi, ammo tarkib oʻzgarishsiz qoldi."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-05 11:42:13.447371",
+    "@@last_modified": "2026-08-10 14:04:47.658579",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Pacelathon wiwit dina kapisan",
     "builtForConnection": "Digawe kanggo sesambungan",
     "aiWhenYouNeedIt": "AI nalika sampeyan butuh",
-    "practiceTailoredForYou": "Latihan sing cocog kanggo sampeyan"
+    "practiceTailoredForYou": "Latihan sing cocog kanggo sampeyan",
+    "practiceFeedbackButtonTooltip": "Laporake masalah karo gladhen iki",
+    "practiceFeedbackDialogTitle": "Umpan Balik Gladhen",
+    "practiceFeedbackSelectPair": "Pasangan endi sing katon salah?",
+    "practiceFeedbackUserSetEmoji": "Sampeyan milih emoji iki — ganti saka kertu tembung",
+    "practiceFeedbackAlreadyMatched": "Wis cocog kanthi bener",
+    "practiceFeedbackUpdated": "Matur nuwun! Gladhen wis dianyari adhedhasar umpan balik sampeyan.",
+    "practiceFeedbackUnchanged": "Matur nuwun! Laporan sampeyan wis direkam, nanging isine ora owah."
 }

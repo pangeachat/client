@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-05 11:42:15.856833",
+    "@@last_modified": "2026-08-10 14:04:54.414919",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "ਪਹਿਲੇ ਦਿਨ ਤੋਂ ਗੱਲਬਾਤ",
     "builtForConnection": "ਕਨੈਕਸ਼ਨ ਲਈ ਬਣਾਇਆ ਗਿਆ",
     "aiWhenYouNeedIt": "ਜਦੋਂ ਤੁਹਾਨੂੰ ਲੋੜ ਹੋਵੇ AI",
-    "practiceTailoredForYou": "ਤੁਹਾਡੇ ਲਈ ਤਿਆਰ ਕੀਤਾ ਅਭਿਆਸ"
+    "practiceTailoredForYou": "ਤੁਹਾਡੇ ਲਈ ਤਿਆਰ ਕੀਤਾ ਅਭਿਆਸ",
+    "practiceFeedbackButtonTooltip": "ਇਸ ਅਭਿਆਸ ਨਾਲ ਇੱਕ ਸਮੱਸਿਆ ਦੀ ਰਿਪੋਰਟ ਕਰੋ",
+    "practiceFeedbackDialogTitle": "ਅਭਿਆਸ ਫੀਡਬੈਕ",
+    "practiceFeedbackSelectPair": "ਕਿਹੜਾ ਜੋੜਾ ਗਲਤ ਲੱਗਦਾ ਹੈ?",
+    "practiceFeedbackUserSetEmoji": "ਤੁਸੀਂ ਇਹ ਇਮੋਜੀ ਚੁਣਿਆ ਹੈ — ਇਸਨੂੰ ਸ਼ਬਦ ਕਾਰਡ ਤੋਂ ਬਦਲੋ",
+    "practiceFeedbackAlreadyMatched": "ਪਹਿਲਾਂ ਹੀ ਸਹੀ ਮੇਲ ਖਾਂਦਾ ਹੈ",
+    "practiceFeedbackUpdated": "ਧੰਨਵਾਦ! ਤੁਹਾਡੇ ਫੀਡਬੈਕ ਦੇ ਆਧਾਰ 'ਤੇ ਅਭਿਆਸ ਨੂੰ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ ਹੈ।",
+    "practiceFeedbackUnchanged": "ਧੰਨਵਾਦ! ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਦਰਜ ਕੀਤੀ ਗਈ ਸੀ, ਪਰ ਸਮੱਗਰੀ ਬਿਨਾਂ ਬਦਲੇ ਵਾਪਸ ਆਈ ਹੈ।"
 }

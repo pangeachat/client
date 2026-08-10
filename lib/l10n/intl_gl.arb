@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-05 11:42:12.267678",
+    "@@last_modified": "2026-08-10 14:04:44.446940",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9711,5 +9711,12 @@
     "conversationFromDayOne": "Conversa dende o primeiro día",
     "builtForConnection": "Feito para conectar",
     "aiWhenYouNeedIt": "IA cando a precises",
-    "practiceTailoredForYou": "Práctica adaptada para ti"
+    "practiceTailoredForYou": "Práctica adaptada para ti",
+    "practiceFeedbackButtonTooltip": "Informar dun problema con este exercicio",
+    "practiceFeedbackDialogTitle": "Comentarios sobre o exercicio de práctica",
+    "practiceFeedbackSelectPair": "Que par parece incorrecto?",
+    "practiceFeedbackUserSetEmoji": "Escolleches este emoji; cámbiao desde a tarxeta de palabras",
+    "practiceFeedbackAlreadyMatched": "Xa coincide correctamente",
+    "practiceFeedbackUpdated": "Grazas! O exercicio actualizouse en función dos teus comentarios.",
+    "practiceFeedbackUnchanged": "Grazas! O teu informe foi rexistrado, pero o contido volveu sen cambios."
 }

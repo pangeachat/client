@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-05 11:42:17.562128",
+    "@@last_modified": "2026-08-10 14:05:00.441285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "بىرىنچى كۈندىن باشلاپ پاراڭلىشىش",
     "builtForConnection": "ئالاقە ئۈچۈن ياسالغان",
     "aiWhenYouNeedIt": "سىزگە لازىم بولغاندا سۈنئىي ئىدراك",
-    "practiceTailoredForYou": "سىز ئۈچۈن خاسلاشتۇرۇلغان مەشىق"
+    "practiceTailoredForYou": "سىز ئۈچۈن خاسلاشتۇرۇلغان مەشىق",
+    "practiceFeedbackButtonTooltip": "بۇ مەشىقتىكى مەسىلە توغرىسىدا دوكلات قىلىڭ",
+    "practiceFeedbackDialogTitle": "مەشىق ئىنكاسى",
+    "practiceFeedbackSelectPair": "قايسى جۈپ خاتا كۆرۈنىدۇ؟",
+    "practiceFeedbackUserSetEmoji": "سىز بۇ ئېموجىنى تاللىدىڭىز — ئۇنى سۆز كارتىسىدىن ئۆزگەرتىڭ",
+    "practiceFeedbackAlreadyMatched": "ئاللىبۇرۇن توغرا ماسلاشتۇرۇلغان",
+    "practiceFeedbackUpdated": "رەھمەت! مەشىق سىزنىڭ ئىنكاسىڭىزغا ئاساسەن يېڭىلاندى.",
+    "practiceFeedbackUnchanged": "رەھمەت! دوكلاتىڭىز خاتىرىلەندى، ئەمما مەزمۇن ئۆزگەرمىدى."
 }

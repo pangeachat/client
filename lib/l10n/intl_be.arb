@@ -3557,7 +3557,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-05 11:42:10.528821",
+    "@@last_modified": "2026-08-10 14:04:41.006268",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9725,5 +9725,12 @@
     "conversationFromDayOne": "Размова з першага дня",
     "builtForConnection": "Створана для сувязі",
     "aiWhenYouNeedIt": "ШІ, калі ён вам патрэбны",
-    "practiceTailoredForYou": "Практыка, адаптаваная для вас"
+    "practiceTailoredForYou": "Практыка, адаптаваная для вас",
+    "practiceFeedbackButtonTooltip": "Паведаміць пра праблему з гэтым практыкаваннем",
+    "practiceFeedbackDialogTitle": "Водгук аб практыкаванні",
+    "practiceFeedbackSelectPair": "Якая пара выглядае няправільна?",
+    "practiceFeedbackUserSetEmoji": "Вы выбралі гэты эмодзі — змяніце яго з карткі слова",
+    "practiceFeedbackAlreadyMatched": "Ужо супадае правільна",
+    "practiceFeedbackUpdated": "Дзякуй! Практыкаванне было абноўлена на аснове вашага водгуку.",
+    "practiceFeedbackUnchanged": "Дзякуй! Ваша паведамленне было запісана, але змест застаўся без змен."
 }

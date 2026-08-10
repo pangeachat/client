@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-05 11:42:16.071645",
+    "@@last_modified": "2026-08-10 14:04:54.527597",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Kukambirana kuyambira Tsiku Loyamba",
     "builtForConnection": "Yopangidwira kulumikizana",
     "aiWhenYouNeedIt": "AI mukafuna",
-    "practiceTailoredForYou": "Zochita zopangidwira inu"
+    "practiceTailoredForYou": "Zochita zopangidwira inu",
+    "practiceFeedbackButtonTooltip": "Nenani vuto ndi masewera olimbitsa thupi awa",
+    "practiceFeedbackDialogTitle": "Ndemanga pa Zochita Zochita",
+    "practiceFeedbackSelectPair": "Kodi ndi awiri ati omwe akuwoneka olakwika?",
+    "practiceFeedbackUserSetEmoji": "Munasankha emoji iyi — isintheni kuchokera pa khadi la mawu",
+    "practiceFeedbackAlreadyMatched": "Zafanana kale molondola",
+    "practiceFeedbackUpdated": "Zikomo! Zochita zasintha potengera ndemanga zanu.",
+    "practiceFeedbackUnchanged": "Zikomo! Lipoti lanu lalembedwa, koma zomwe zili mkati sizinakhudzidwe."
 }

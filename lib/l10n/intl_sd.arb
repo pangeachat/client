@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-05 11:42:16.621962",
+    "@@last_modified": "2026-08-10 14:04:56.225628",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "پهرين ڏينهن کان ڳالهه ٻولهه",
     "builtForConnection": "رابطي لاءِ ٺهيل",
     "aiWhenYouNeedIt": "جڏهن توهان کي ضرورت هجي ته AI",
-    "practiceTailoredForYou": "توهان لاءِ تيار ڪيل مشق"
+    "practiceTailoredForYou": "توهان لاءِ تيار ڪيل مشق",
+    "practiceFeedbackButtonTooltip": "هن مشق سان مسئلو ٻڌايو",
+    "practiceFeedbackDialogTitle": "مشق جي راءِ",
+    "practiceFeedbackSelectPair": "ڪهڙو جوڙو غلط لڳي ٿو؟",
+    "practiceFeedbackUserSetEmoji": "توهان هي ايموجي چونڊيو آهي — ان کي لفظ ڪارڊ مان تبديل ڪريو",
+    "practiceFeedbackAlreadyMatched": "اڳ ۾ ئي صحيح نموني سان ملائي وئي آهي",
+    "practiceFeedbackUpdated": "مهرباني! مشق توهان جي راءِ جي بنياد تي اپڊيٽ ڪئي وئي آهي.",
+    "practiceFeedbackUnchanged": "مهرباني! توهان جي رپورٽ رڪارڊ ڪئي وئي، پر مواد اڻ تبديل ٿيل رهيو."
 }

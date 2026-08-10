@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:13.426260",
+    "@@last_modified": "2026-08-10 14:04:46.741985",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9784,5 +9784,12 @@
     "conversationFromDayOne": "Conversazione dal primo giorno",
     "builtForConnection": "Costruito per la connessione",
     "aiWhenYouNeedIt": "AI quando ne hai bisogno",
-    "practiceTailoredForYou": "Pratica su misura per te"
+    "practiceTailoredForYou": "Pratica su misura per te",
+    "practiceFeedbackButtonTooltip": "Segnala un problema con questo esercizio",
+    "practiceFeedbackDialogTitle": "Feedback sull'esercizio di pratica",
+    "practiceFeedbackSelectPair": "Quale coppia sembra sbagliata?",
+    "practiceFeedbackUserSetEmoji": "Hai scelto questa emoji — cambiala dalla scheda della parola",
+    "practiceFeedbackAlreadyMatched": "Già abbinato correttamente",
+    "practiceFeedbackUpdated": "Grazie! L'esercizio è stato aggiornato in base al tuo feedback.",
+    "practiceFeedbackUnchanged": "Grazie! La tua segnalazione è stata registrata, ma il contenuto è rimasto invariato."
 }

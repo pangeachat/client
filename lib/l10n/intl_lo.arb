@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-05 11:42:14.298242",
+    "@@last_modified": "2026-08-10 14:04:50.325156",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "ສົນທະນາຕັ້ງແຕ່ມື້ທຳອິດ",
     "builtForConnection": "ສ້າງຂຶ້ນເພື່ອການເຊື່ອມຕໍ່",
     "aiWhenYouNeedIt": "AI ເມື່ອທ່ານຕ້ອງການ",
-    "practiceTailoredForYou": "ການຝຶກຝົນທີ່ເໝາະສົມກັບທ່ານ"
+    "practiceTailoredForYou": "ການຝຶກຝົນທີ່ເໝາະສົມກັບທ່ານ",
+    "practiceFeedbackButtonTooltip": "ລາຍງານບັນຫາຂອງບົດຝຶກຫັດນີ້",
+    "practiceFeedbackDialogTitle": "ຄຳຄິດເຫັນກ່ຽວກັບບົດຝຶກຫັດ",
+    "practiceFeedbackSelectPair": "ຄູ່ໃດເບິ່ງຄືວ່າຜິດ?",
+    "practiceFeedbackUserSetEmoji": "ທ່ານເລືອກອີໂມຈິນີ້ — ປ່ຽນມັນຈາກບັດຄຳສັບ",
+    "practiceFeedbackAlreadyMatched": "ຈັບຄູ່ຖືກຕ້ອງແລ້ວ",
+    "practiceFeedbackUpdated": "ຂອບໃຈ! ບົດຝຶກຫັດໄດ້ຖືກອັບເດດຕາມຄຳຄິດເຫັນຂອງທ່ານ.",
+    "practiceFeedbackUnchanged": "ຂອບໃຈ! ລາຍງານຂອງທ່ານໄດ້ຖືກບັນທຶກໄວ້, ແຕ່ເນື້ອຫາບໍ່ມີການປ່ຽນແປງ."
 }

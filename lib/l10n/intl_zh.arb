@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-05 11:42:18.317504",
+    "@@last_modified": "2026-08-10 14:05:00.895222",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9711,5 +9711,12 @@
     "conversationFromDayOne": "从第一天就开始对话",
     "builtForConnection": "为连接而生",
     "aiWhenYouNeedIt": "随时随地，AI相伴",
-    "practiceTailoredForYou": "为你量身定制的练习"
+    "practiceTailoredForYou": "为你量身定制的练习",
+    "practiceFeedbackButtonTooltip": "报告此练习的问题",
+    "practiceFeedbackDialogTitle": "练习反馈",
+    "practiceFeedbackSelectPair": "哪一组看起来不对？",
+    "practiceFeedbackUserSetEmoji": "你选择了这个表情符号 — 从单词卡中更改它",
+    "practiceFeedbackAlreadyMatched": "已正确匹配",
+    "practiceFeedbackUpdated": "谢谢！练习已根据您的反馈进行了更新。",
+    "practiceFeedbackUnchanged": "谢谢！您的报告已记录，但内容未更改。"
 }

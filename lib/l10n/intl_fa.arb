@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:11.842939",
+    "@@last_modified": "2026-08-10 14:04:43.257579",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9799,5 +9799,12 @@
     "conversationFromDayOne": "مکالمه از روز اول",
     "builtForConnection": "ساخته شده برای ارتباط",
     "aiWhenYouNeedIt": "هوش مصنوعی هر زمان که به آن نیاز داشتید",
-    "practiceTailoredForYou": "تمرین متناسب با شما"
+    "practiceTailoredForYou": "تمرین متناسب با شما",
+    "practiceFeedbackButtonTooltip": "گزارش مشکل در این تمرین",
+    "practiceFeedbackDialogTitle": "بازخورد تمرین",
+    "practiceFeedbackSelectPair": "کدام جفت اشتباه به نظر می‌رسد؟",
+    "practiceFeedbackUserSetEmoji": "شما این ایموجی را انتخاب کردید — آن را از کارت کلمه تغییر دهید",
+    "practiceFeedbackAlreadyMatched": "قبلاً به درستی مطابقت داده شده است",
+    "practiceFeedbackUpdated": "متشکریم! تمرین بر اساس بازخورد شما به‌روزرسانی شد.",
+    "practiceFeedbackUnchanged": "متشکریم! گزارش شما ثبت شد، اما محتوا بدون تغییر باقی ماند."
 }

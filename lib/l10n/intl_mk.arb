@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-05 11:42:14.788124",
+    "@@last_modified": "2026-08-10 14:04:51.140409",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Разговор од првиот ден",
     "builtForConnection": "Создадено за поврзување",
     "aiWhenYouNeedIt": "Вештачка интелигенција кога ви е потребна",
-    "practiceTailoredForYou": "Вежбање прилагодено за вас"
+    "practiceTailoredForYou": "Вежбање прилагодено за вас",
+    "practiceFeedbackButtonTooltip": "Пријави проблем со оваа вежба",
+    "practiceFeedbackDialogTitle": "Повратни информации за вежбата",
+    "practiceFeedbackSelectPair": "Кој пар изгледа погрешно?",
+    "practiceFeedbackUserSetEmoji": "Го избравте ова емоџи – променете го од картичката со зборови",
+    "practiceFeedbackAlreadyMatched": "Веќе точно совпаднато",
+    "practiceFeedbackUpdated": "Ви благодариме! Вежбата е ажурирана врз основа на вашите повратни информации.",
+    "practiceFeedbackUnchanged": "Ви благодариме! Вашиот извештај е запишан, но содржината остана непроменета."
 }

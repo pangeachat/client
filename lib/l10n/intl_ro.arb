@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:16.127212",
+    "@@last_modified": "2026-08-10 14:04:55.587048",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10443,5 +10443,12 @@
     "conversationFromDayOne": "Conversație din prima zi",
     "builtForConnection": "Conceput pentru conectare",
     "aiWhenYouNeedIt": "AI când ai nevoie",
-    "practiceTailoredForYou": "Exerciții personalizate pentru tine"
+    "practiceTailoredForYou": "Exerciții personalizate pentru tine",
+    "practiceFeedbackButtonTooltip": "Raportează o problemă cu acest exercițiu",
+    "practiceFeedbackDialogTitle": "Feedback exercițiu de practică",
+    "practiceFeedbackSelectPair": "Care pereche pare greșită?",
+    "practiceFeedbackUserSetEmoji": "Ai ales acest emoji — schimbă-l din cartonașul cuvântului",
+    "practiceFeedbackAlreadyMatched": "Deja potrivit corect",
+    "practiceFeedbackUpdated": "Mulțumim! Exercițiul a fost actualizat pe baza feedback-ului tău.",
+    "practiceFeedbackUnchanged": "Mulțumim! Raportul tău a fost înregistrat, dar conținutul a rămas neschimbat."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-05 11:42:13.031581",
+    "@@last_modified": "2026-08-10 14:04:46.973553",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Զրույց առաջին իսկ օրվանից",
     "builtForConnection": "Ստեղծված կապի համար",
     "aiWhenYouNeedIt": "AI-ն, երբ ձեզ անհրաժեշտ է",
-    "practiceTailoredForYou": "Ձեզ համար հարմարեցված պրակտիկա"
+    "practiceTailoredForYou": "Ձեզ համար հարմարեցված պրակտիկա",
+    "practiceFeedbackButtonTooltip": "Հաղորդել խնդրի մասին այս վարժության հետ կապված",
+    "practiceFeedbackDialogTitle": "Վարժության հետադարձ կապ",
+    "practiceFeedbackSelectPair": "Ո՞ր զույգն է սխալ թվում:",
+    "practiceFeedbackUserSetEmoji": "Դուք ընտրել եք այս էմոջին. փոխեք այն բառի քարտից",
+    "practiceFeedbackAlreadyMatched": "Արդեն ճիշտ համընկնում է",
+    "practiceFeedbackUpdated": "Շնորհակալություն։ Վարժությունը թարմացվել է ձեր կարծիքի հիման վրա։",
+    "practiceFeedbackUnchanged": "Շնորհակալություն։ Ձեր հաղորդումը գրանցվել է, բայց բովանդակությունը մնացել է անփոփոխ։"
 }

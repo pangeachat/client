@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-05 11:42:10.567229",
+    "@@last_modified": "2026-08-10 14:04:40.409342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Gesprek van Dag Een af",
     "builtForConnection": "Gebou vir verbinding",
     "aiWhenYouNeedIt": "KI wanneer jy dit nodig het",
-    "practiceTailoredForYou": "Oefening op maat vir jou"
+    "practiceTailoredForYou": "Oefening op maat vir jou",
+    "practiceFeedbackButtonTooltip": "Rapporteer 'n probleem met hierdie oefening",
+    "practiceFeedbackDialogTitle": "Terugvoer oor Oefening",
+    "practiceFeedbackSelectPair": "Watter paar lyk verkeerd?",
+    "practiceFeedbackUserSetEmoji": "Jy het hierdie emoji gekies — verander dit vanaf die woordkaart",
+    "practiceFeedbackAlreadyMatched": "Reeds korrek gepas",
+    "practiceFeedbackUpdated": "Dankie! Die oefening is opgedateer op grond van jou terugvoer.",
+    "practiceFeedbackUnchanged": "Dankie! Jou verslag is aangeteken, maar die inhoud het onveranderd gebly."
 }

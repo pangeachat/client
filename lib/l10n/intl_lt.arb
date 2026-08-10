@@ -2976,7 +2976,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-05 11:42:14.374325",
+    "@@last_modified": "2026-08-10 14:04:49.895244",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10492,5 +10492,12 @@
     "conversationFromDayOne": "Pokalbiai nuo pat pirmos dienos",
     "builtForConnection": "Sukurta ryšiui",
     "aiWhenYouNeedIt": "DI, kai jums jos reikia",
-    "practiceTailoredForYou": "Jums pritaikyta praktika"
+    "practiceTailoredForYou": "Jums pritaikyta praktika",
+    "practiceFeedbackButtonTooltip": "Pranešti apie problemą su šiuo pratimu",
+    "practiceFeedbackDialogTitle": "Pratimo atsiliepimai",
+    "practiceFeedbackSelectPair": "Kuri pora atrodo neteisinga?",
+    "practiceFeedbackUserSetEmoji": "Pasirinkote šį jaustuką – pakeiskite jį žodžio kortelėje",
+    "practiceFeedbackAlreadyMatched": "Jau teisingai suderinta",
+    "practiceFeedbackUpdated": "Ačiū! Pratimas atnaujintas pagal jūsų atsiliepimus.",
+    "practiceFeedbackUnchanged": "Ačiū! Jūsų ataskaita buvo užregistruota, bet turinys liko nepakeistas."
 }

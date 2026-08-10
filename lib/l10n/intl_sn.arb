@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-05 11:42:16.702701",
+    "@@last_modified": "2026-08-10 14:04:58.210328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Kukurukurirana kubva pazuva rekutanga",
     "builtForConnection": "Yakavakwa yekubatanidza",
     "aiWhenYouNeedIt": "AI paunenge uchiida",
-    "practiceTailoredForYou": "Kudzidzira kwakagadzirirwa iwe"
+    "practiceTailoredForYou": "Kudzidzira kwakagadzirirwa iwe",
+    "practiceFeedbackButtonTooltip": "Taura dambudziko riri pabasa iri",
+    "practiceFeedbackDialogTitle": "Mhinduro Yebasa Rekudzidzira",
+    "practiceFeedbackSelectPair": "Ndeipi pair inoita seyakanganisa?",
+    "practiceFeedbackUserSetEmoji": "Wasarudza emoji iyi — chinja kubva pakadhi rezwi",
+    "practiceFeedbackAlreadyMatched": "Yatofananidzwa nemazvo",
+    "practiceFeedbackUpdated": "Ndatenda! Basa racho rakagadziridzwa zvichibva pamhinduro yako.",
+    "practiceFeedbackUnchanged": "Ndatenda! Chirevo chako chakanyorwa, asi zviri mukati hazvina kuchinja."
 }

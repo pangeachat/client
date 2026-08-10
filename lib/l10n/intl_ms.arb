@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-05 11:42:15.177802",
+    "@@last_modified": "2026-08-10 14:04:52.367356",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Perbualan dari Hari Pertama",
     "builtForConnection": "Dibina untuk perhubungan",
     "aiWhenYouNeedIt": "AI apabila anda memerlukannya",
-    "practiceTailoredForYou": "Latihan yang disesuaikan untuk anda"
+    "practiceTailoredForYou": "Latihan yang disesuaikan untuk anda",
+    "practiceFeedbackButtonTooltip": "Laporkan masalah dengan latihan ini",
+    "practiceFeedbackDialogTitle": "Maklum Balas Latihan Amali",
+    "practiceFeedbackSelectPair": "Pasangan yang manakah kelihatan salah?",
+    "practiceFeedbackUserSetEmoji": "Anda memilih emoji ini — ubahnya daripada kad perkataan",
+    "practiceFeedbackAlreadyMatched": "Sudah dipadankan dengan betul",
+    "practiceFeedbackUpdated": "Terima kasih! Latihan telah dikemas kini berdasarkan maklum balas anda.",
+    "practiceFeedbackUnchanged": "Terima kasih! Laporan anda telah direkodkan, tetapi kandungan tidak berubah."
 }

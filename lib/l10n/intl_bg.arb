@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-05 11:42:10.367055",
+    "@@last_modified": "2026-08-10 14:04:40.571468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Разговор от първия ден",
     "builtForConnection": "Създадено за връзка",
     "aiWhenYouNeedIt": "Изкуствен интелект, когато имаш нужда",
-    "practiceTailoredForYou": "Практика, съобразена с теб"
+    "practiceTailoredForYou": "Практика, съобразена с теб",
+    "practiceFeedbackButtonTooltip": "Докладвайте проблем с това упражнение",
+    "practiceFeedbackDialogTitle": "Обратна връзка за упражнението",
+    "practiceFeedbackSelectPair": "Коя двойка изглежда грешна?",
+    "practiceFeedbackUserSetEmoji": "Избрахте това емоджи – променете го от картата с думи",
+    "practiceFeedbackAlreadyMatched": "Вече съвпада правилно",
+    "practiceFeedbackUpdated": "Благодарим! Упражнението е актуализирано въз основа на вашата обратна връзка.",
+    "practiceFeedbackUnchanged": "Благодарим! Вашият доклад беше записан, но съдържанието остана непроменено."
 }

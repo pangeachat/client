@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-05 11:42:17.369462",
+    "@@last_modified": "2026-08-10 14:05:13.671040",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Mazungumzo tangu Siku ya Kwanza",
     "builtForConnection": "Imeundwa kwa ajili ya muunganisho",
     "aiWhenYouNeedIt": "AI unapohitaji",
-    "practiceTailoredForYou": "Mazoezi yaliyoundwa kwa ajili yako"
+    "practiceTailoredForYou": "Mazoezi yaliyoundwa kwa ajili yako",
+    "practiceFeedbackButtonTooltip": "Ripoti tatizo na zoezi hili",
+    "practiceFeedbackDialogTitle": "Maoni ya Zoezi la Mazoezi",
+    "practiceFeedbackSelectPair": "Ni jozi gani inaonekana si sahihi?",
+    "practiceFeedbackUserSetEmoji": "Ulichagua emoji hii — ibadilishe kutoka kwenye kadi ya neno",
+    "practiceFeedbackAlreadyMatched": "Tayari imelinganishwa kwa usahihi",
+    "practiceFeedbackUpdated": "Asante! Zoezi limesasishwa kulingana na maoni yako.",
+    "practiceFeedbackUnchanged": "Asante! Ripoti yako imerekodiwa, lakini maudhui hayajabadilika."
 }

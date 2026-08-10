@@ -2926,7 +2926,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-05 11:42:10.594557",
+    "@@last_modified": "2026-08-10 14:04:41.955519",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9322,5 +9322,12 @@
     "conversationFromDayOne": "ཉིན་དང་པོ་ནས་བཟུང་གླེང་མོལ།",
     "builtForConnection": "འབྲེལ་མཐུད་ཆེད་དུ་བསྐྲུན་པ།",
     "aiWhenYouNeedIt": "ཁྱེད་ལ་དགོས་པའི་སྐབས་ཀྱི་རང་བྱུང་རིག་ནུས།",
-    "practiceTailoredForYou": "ཁྱེད་རང་ལ་འཚམས་པའི་སྦྱོང་བརྡར།"
+    "practiceTailoredForYou": "ཁྱེད་རང་ལ་འཚམས་པའི་སྦྱོང་བརྡར།",
+    "practiceFeedbackButtonTooltip": "སྦྱོང་ཚན་འདིར་གནད་དོན་ཞིག་བྱུང་ན་སྙན་ཞུ་གནང་།",
+    "practiceFeedbackDialogTitle": "སྦྱོང་ཚན་ལས་འདས་པའི་ལན་འདེབས།",
+    "practiceFeedbackSelectPair": "ཟུང་གང་ཞིག་ནོར་འདུག",
+    "practiceFeedbackUserSetEmoji": "ཁྱེད་ཀྱིས་ཨི་མོ་ཇི་འདི་བདམས་འདུག ཚིག་བྱང་ནས་བསྒྱུར་བཅོས་གནང་།",
+    "practiceFeedbackAlreadyMatched": "སྔ་ས་ནས་འགྲིག་པོ་བྱུང་འདུག",
+    "practiceFeedbackUpdated": "ཐུགས་རྗེ་ཆེ། ཁྱེད་ཀྱི་ལན་འདེབས་ལ་གཞིགས་ནས་སྦྱོང་ཚན་དེ་བསྐྱར་བཅོས་བྱས་ཡོད།",
+    "practiceFeedbackUnchanged": "ཐུགས་རྗེ་ཆེ། ཁྱེད་ཀྱི་སྙན་ཞུ་དེ་ཟིན་ཐོ་བཀོད་ཡོད་ཀྱང་། ནང་དོན་ལ་འགྱུར་བ་མེད།"
 }

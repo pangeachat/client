@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-05 11:42:16.613172",
+    "@@last_modified": "2026-08-10 14:04:56.268142",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "මුල් දවසේ සිට සංවාදය",
     "builtForConnection": "සම්බන්ධතාවය සඳහා ගොඩනගා ඇත",
     "aiWhenYouNeedIt": "ඔබට අවශ්‍ය විට AI",
-    "practiceTailoredForYou": "ඔබට ගැලපෙන පරිදි පුහුණුවීම්"
+    "practiceTailoredForYou": "ඔබට ගැලපෙන පරිදි පුහුණුවීම්",
+    "practiceFeedbackButtonTooltip": "මෙම අභ්‍යාසයේ ගැටලුවක් වාර්තා කරන්න",
+    "practiceFeedbackDialogTitle": "පුහුණු අභ්‍යාස ප්‍රතිපෝෂණය",
+    "practiceFeedbackSelectPair": "වැරදි යුවල කුමක්ද?",
+    "practiceFeedbackUserSetEmoji": "ඔබ මෙම ඉමොජිය තෝරා ගත්තා — එය වචන කාඩ්පතෙන් වෙනස් කරන්න",
+    "practiceFeedbackAlreadyMatched": "දැනටමත් නිවැරදිව ගැලපේ",
+    "practiceFeedbackUpdated": "ස්තූතියි! ඔබගේ ප්‍රතිපෝෂණය මත පදනම්ව අභ්‍යාසය යාවත්කාලීන කර ඇත.",
+    "practiceFeedbackUnchanged": "ස්තූතියි! ඔබගේ වාර්තාව සටහන් කර ඇත, නමුත් අන්තර්ගතය වෙනස් නොවීය."
 }

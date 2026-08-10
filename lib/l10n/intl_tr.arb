@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-05 11:42:17.332493",
+    "@@last_modified": "2026-08-10 14:04:59.251072",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10012,5 +10012,12 @@
     "conversationFromDayOne": "İlk Günden İtibaren Sohbet",
     "builtForConnection": "Bağlantı için tasarlandı",
     "aiWhenYouNeedIt": "İhtiyacınız olduğunda yapay zeka",
-    "practiceTailoredForYou": "Size özel pratik"
+    "practiceTailoredForYou": "Size özel pratik",
+    "practiceFeedbackButtonTooltip": "Bu alıştırmayla ilgili bir sorun bildir",
+    "practiceFeedbackDialogTitle": "Alıştırma Geri Bildirimi",
+    "practiceFeedbackSelectPair": "Hangi çift yanlış görünüyor?",
+    "practiceFeedbackUserSetEmoji": "Bu emojiyi sen seçtin — kelime kartından değiştir",
+    "practiceFeedbackAlreadyMatched": "Zaten doğru eşleştirildi",
+    "practiceFeedbackUpdated": "Teşekkürler! Alıştırma, geri bildirimine göre güncellendi.",
+    "practiceFeedbackUnchanged": "Teşekkürler! Raporun kaydedildi, ancak içerik değişmeden kaldı."
 }

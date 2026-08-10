@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-05 11:42:13.544604",
+    "@@last_modified": "2026-08-10 14:04:46.760333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Samræður frá fyrsta degi",
     "builtForConnection": "Hannað fyrir tengingu",
     "aiWhenYouNeedIt": "Gervigreind þegar þú þarft á henni að halda",
-    "practiceTailoredForYou": "Æfing sérsniðin fyrir þig"
+    "practiceTailoredForYou": "Æfing sérsniðin fyrir þig",
+    "practiceFeedbackButtonTooltip": "Tilkynna vandamál með þessa æfingu",
+    "practiceFeedbackDialogTitle": "Endurgjöf um æfingu",
+    "practiceFeedbackSelectPair": "Hvert par virðist rangt?",
+    "practiceFeedbackUserSetEmoji": "Þú valdir þetta emoji — breyttu því á orðaspjaldinu",
+    "practiceFeedbackAlreadyMatched": "Þegar rétt samsvarað",
+    "practiceFeedbackUpdated": "Takk! Æfingin hefur verið uppfærð út frá endurgjöf þinni.",
+    "practiceFeedbackUnchanged": "Takk! Tilkynning þín var skráð, en innihaldið var óbreytt."
 }

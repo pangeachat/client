@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-05 11:42:15.957937",
+    "@@last_modified": "2026-08-10 14:04:54.679475",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "ପ୍ରଥମ ଦିନରୁ କଥାବାର୍ତ୍ତା",
     "builtForConnection": "ସଂଯୋଗ ପାଇଁ ନିର୍ମିତ",
     "aiWhenYouNeedIt": "ଆପଣଙ୍କୁ ଆବଶ୍ୟକ ହେଲେ AI",
-    "practiceTailoredForYou": "ଆପଣଙ୍କ ପାଇଁ ଉପଯୁକ୍ତ ଅଭ୍ୟାସ"
+    "practiceTailoredForYou": "ଆପଣଙ୍କ ପାଇଁ ଉପଯୁକ୍ତ ଅଭ୍ୟାସ",
+    "practiceFeedbackButtonTooltip": "ଏହି ଅଭ୍ୟାସରେ ଥିବା ସମସ୍ୟା ବିଷୟରେ ଜଣାନ୍ତୁ",
+    "practiceFeedbackDialogTitle": "ଅଭ୍ୟାସ ଅଭ୍ୟାସ ମତାମତ",
+    "practiceFeedbackSelectPair": "କେଉଁ ଯୋଡ଼ି ଭୁଲ୍ ଦେଖାଯାଉଛି?",
+    "practiceFeedbackUserSetEmoji": "ଆପଣ ଏହି ଇମୋଜି ବାଛିଛନ୍ତି — ଏହାକୁ ୱାର୍ଡ କାର୍ଡରୁ ପରିବର୍ତ୍ତନ କରନ୍ତୁ",
+    "practiceFeedbackAlreadyMatched": "ପୂର୍ବରୁ ସଠିକ୍ ଭାବରେ ମିଳିତ ହୋଇଛି",
+    "practiceFeedbackUpdated": "ଧନ୍ୟବାଦ! ଆପଣଙ୍କ ମତାମତ ଆଧାରରେ ଅଭ୍ୟାସ ଅପଡେଟ୍ ହୋଇଛି।",
+    "practiceFeedbackUnchanged": "ଧନ୍ୟବାଦ! ଆପଣଙ୍କ ରିପୋର୍ଟ ରେକର୍ଡ କରାଯାଇଛି, କିନ୍ତୁ ବିଷୟବସ୍ତୁ ଅପରିବର୍ତ୍ତିତ ରହିଛି।"
 }

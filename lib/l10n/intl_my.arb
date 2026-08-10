@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-05 11:42:15.341678",
+    "@@last_modified": "2026-08-10 14:04:53.906340",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "ပထမဆုံးနေ့ကတည်းက စကားပြောဆိုမှု",
     "builtForConnection": "ချိတ်ဆက်မှုအတွက် တည်ဆောက်ထားသည်",
     "aiWhenYouNeedIt": "လိုအပ်သည့်အခါတိုင်း AI",
-    "practiceTailoredForYou": "သင့်အတွက် အံဝင်ခွင်ကျ လေ့ကျင့်မှု"
+    "practiceTailoredForYou": "သင့်အတွက် အံဝင်ခွင်ကျ လေ့ကျင့်မှု",
+    "practiceFeedbackButtonTooltip": "ဤလေ့ကျင့်ခန်းနှင့်ပတ်သက်၍ ပြဿနာတစ်ခုခုကို သတင်းပို့ပါ",
+    "practiceFeedbackDialogTitle": "လေ့ကျင့်ခန်း တုံ့ပြန်ချက်",
+    "practiceFeedbackSelectPair": "မည်သည့်အတွဲက မှားနေပါသလဲ။",
+    "practiceFeedbackUserSetEmoji": "သင်သည် ဤအီမိုဂျီကို ရွေးချယ်ခဲ့သည် — ၎င်းကို စကားလုံးကတ်မှ ပြောင်းလဲပါ",
+    "practiceFeedbackAlreadyMatched": "မှန်ကန်စွာ တွဲပြီးသားဖြစ်သည်",
+    "practiceFeedbackUpdated": "ကျေးဇူးတင်ပါသည်။ သင်၏တုံ့ပြန်ချက်အပေါ် အခြေခံ၍ လေ့ကျင့်ခန်းကို အပ်ဒိတ်လုပ်ထားပါသည်။",
+    "practiceFeedbackUnchanged": "ကျေးဇူးတင်ပါသည်။ သင်၏သတင်းပို့ချက်ကို မှတ်တမ်းတင်ထားသော်လည်း အကြောင်းအရာသည် မပြောင်းလဲဘဲ ပြန်ရောက်လာပါသည်။"
 }

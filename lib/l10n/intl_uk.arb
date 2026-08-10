@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-05 11:42:17.554508",
+    "@@last_modified": "2026-08-10 14:04:59.766088",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9711,5 +9711,12 @@
     "conversationFromDayOne": "Розмова з першого дня",
     "builtForConnection": "Створено для спілкування",
     "aiWhenYouNeedIt": "ШІ, коли він вам потрібен",
-    "practiceTailoredForYou": "Практика, адаптована для вас"
+    "practiceTailoredForYou": "Практика, адаптована для вас",
+    "practiceFeedbackButtonTooltip": "Повідомити про проблему з цією вправою",
+    "practiceFeedbackDialogTitle": "Відгук про практичну вправу",
+    "practiceFeedbackSelectPair": "Яка пара виглядає неправильно?",
+    "practiceFeedbackUserSetEmoji": "Ви обрали цей емодзі — змініть його з картки слова",
+    "practiceFeedbackAlreadyMatched": "Вже правильно зіставлено",
+    "practiceFeedbackUpdated": "Дякуємо! Вправу оновлено на основі вашого відгуку.",
+    "practiceFeedbackUnchanged": "Дякуємо! Ваш звіт було записано, але вміст залишився без змін."
 }

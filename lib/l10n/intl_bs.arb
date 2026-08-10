@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-05 11:42:10.503712",
+    "@@last_modified": "2026-08-10 14:04:40.497787",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Razgovor od prvog dana",
     "builtForConnection": "Kreirano za povezivanje",
     "aiWhenYouNeedIt": "AI kada vam zatreba",
-    "practiceTailoredForYou": "Praksa prilagođena vama"
+    "practiceTailoredForYou": "Praksa prilagođena vama",
+    "practiceFeedbackButtonTooltip": "Prijavi problem sa ovom vježbom",
+    "practiceFeedbackDialogTitle": "Povratne informacije o vježbi",
+    "practiceFeedbackSelectPair": "Koji par izgleda pogrešno?",
+    "practiceFeedbackUserSetEmoji": "Odabrali ste ovaj emoji – promijenite ga sa kartice riječi",
+    "practiceFeedbackAlreadyMatched": "Već ispravno usklađeno",
+    "practiceFeedbackUpdated": "Hvala! Vježba je ažurirana na osnovu vaših povratnih informacija.",
+    "practiceFeedbackUnchanged": "Hvala! Vaš izvještaj je zabilježen, ali sadržaj je ostao nepromijenjen."
 }

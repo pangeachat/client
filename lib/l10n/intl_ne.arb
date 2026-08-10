@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-05 11:42:15.854629",
+    "@@last_modified": "2026-08-10 14:04:52.955905",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "पहिलो दिनदेखि नै कुराकानी",
     "builtForConnection": "जडानका लागि निर्मित",
     "aiWhenYouNeedIt": "तपाईंलाई आवश्यक पर्दा AI",
-    "practiceTailoredForYou": "तपाईंको लागि तयार पारिएको अभ्यास"
+    "practiceTailoredForYou": "तपाईंको लागि तयार पारिएको अभ्यास",
+    "practiceFeedbackButtonTooltip": "यस अभ्यासमा समस्या रिपोर्ट गर्नुहोस्",
+    "practiceFeedbackDialogTitle": "अभ्यास प्रतिक्रिया",
+    "practiceFeedbackSelectPair": "कुन जोडी गलत देखिन्छ?",
+    "practiceFeedbackUserSetEmoji": "तपाईंले यो इमोजी रोज्नुभयो — यसलाई शब्द कार्डबाट परिवर्तन गर्नुहोस्",
+    "practiceFeedbackAlreadyMatched": "पहिले नै सही मिलान भयो",
+    "practiceFeedbackUpdated": "धन्यवाद! तपाईंको प्रतिक्रियाको आधारमा अभ्यास अद्यावधिक गरिएको छ।",
+    "practiceFeedbackUnchanged": "धन्यवाद! तपाईंको रिपोर्ट रेकर्ड गरिएको थियो, तर सामग्री अपरिवर्तित फिर्ता आयो।"
 }

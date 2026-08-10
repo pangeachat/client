@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:15.517402",
+    "@@last_modified": "2026-08-10 14:04:53.055805",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9711,5 +9711,12 @@
     "conversationFromDayOne": "Gesprek vanaf dag één",
     "builtForConnection": "Gebouwd voor verbinding",
     "aiWhenYouNeedIt": "AI wanneer je het nodig hebt",
-    "practiceTailoredForYou": "Oefening op maat voor jou"
+    "practiceTailoredForYou": "Oefening op maat voor jou",
+    "practiceFeedbackButtonTooltip": "Meld een probleem met deze oefening",
+    "practiceFeedbackDialogTitle": "Feedback oefening",
+    "practiceFeedbackSelectPair": "Welk paar ziet er verkeerd uit?",
+    "practiceFeedbackUserSetEmoji": "Je hebt deze emoji gekozen — wijzig deze via de woordkaart",
+    "practiceFeedbackAlreadyMatched": "Al correct gematcht",
+    "practiceFeedbackUpdated": "Bedankt! De oefening is bijgewerkt op basis van je feedback.",
+    "practiceFeedbackUnchanged": "Bedankt! Je melding is geregistreerd, maar de inhoud is ongewijzigd gebleven."
 }

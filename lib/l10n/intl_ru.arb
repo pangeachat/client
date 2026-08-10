@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-05 11:42:16.448601",
+    "@@last_modified": "2026-08-10 14:04:55.430865",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10685,5 +10685,12 @@
     "conversationFromDayOne": "Общение с первого дня",
     "builtForConnection": "Создано для общения",
     "aiWhenYouNeedIt": "ИИ, когда он вам нужен",
-    "practiceTailoredForYou": "Практика, адаптированная для вас"
+    "practiceTailoredForYou": "Практика, адаптированная для вас",
+    "practiceFeedbackButtonTooltip": "Сообщить о проблеме с этим упражнением",
+    "practiceFeedbackDialogTitle": "Отзыв об упражнении",
+    "practiceFeedbackSelectPair": "Какая пара выглядит неправильно?",
+    "practiceFeedbackUserSetEmoji": "Вы выбрали этот эмодзи — измените его на карточке слова",
+    "practiceFeedbackAlreadyMatched": "Уже сопоставлено правильно",
+    "practiceFeedbackUpdated": "Спасибо! Упражнение было обновлено на основе вашего отзыва.",
+    "practiceFeedbackUnchanged": "Спасибо! Ваш отчет был записан, но содержание осталось без изменений."
 }

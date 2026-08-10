@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-05 11:42:17.809271",
+    "@@last_modified": "2026-08-10 14:04:59.023524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Муколама аз рӯзи аввал",
     "builtForConnection": "Барои пайвастшавӣ сохта шудааст",
     "aiWhenYouNeedIt": "AI вақте ки ба шумо лозим аст",
-    "practiceTailoredForYou": "Машқ барои шумо мутобиқ карда шудааст"
+    "practiceTailoredForYou": "Машқ барои шумо мутобиқ карда шудааст",
+    "practiceFeedbackButtonTooltip": "Мушкили машқро гузориш диҳед",
+    "practiceFeedbackDialogTitle": "Фикру мулоҳиза оид ба машқ",
+    "practiceFeedbackSelectPair": "Кадом ҷуфт нодуруст ба назар мерасад?",
+    "practiceFeedbackUserSetEmoji": "Шумо ин эмодзиро интихоб кардед — онро аз корти калима иваз кунед",
+    "practiceFeedbackAlreadyMatched": "Аллакай дуруст мувофиқат карда шудааст",
+    "practiceFeedbackUpdated": "Ташаккур! Машқ дар асоси фикру мулоҳизаи шумо нав карда шуд.",
+    "practiceFeedbackUnchanged": "Ташаккур! Гузориши шумо сабт шуд, аммо мундариҷа бетағйир монд."
 }

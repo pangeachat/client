@@ -1341,7 +1341,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-05 11:42:11.001268",
+    "@@last_modified": "2026-08-10 14:04:42.025503",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10637,5 +10637,12 @@
     "conversationFromDayOne": "Samtale fra dag ét",
     "builtForConnection": "Bygget til forbindelse",
     "aiWhenYouNeedIt": "AI, når du har brug for det",
-    "practiceTailoredForYou": "Øvelse skræddersyet til dig"
+    "practiceTailoredForYou": "Øvelse skræddersyet til dig",
+    "practiceFeedbackButtonTooltip": "Rapportér et problem med denne øvelse",
+    "practiceFeedbackDialogTitle": "Feedback på øvelse",
+    "practiceFeedbackSelectPair": "Hvilket par ser forkert ud?",
+    "practiceFeedbackUserSetEmoji": "Du valgte denne emoji – skift den fra ordkortet",
+    "practiceFeedbackAlreadyMatched": "Allerede matchet korrekt",
+    "practiceFeedbackUpdated": "Tak! Øvelsen er blevet opdateret baseret på din feedback.",
+    "practiceFeedbackUnchanged": "Tak! Din rapport blev registreret, men indholdet er uændret."
 }

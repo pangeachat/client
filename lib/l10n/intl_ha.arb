@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-05 11:42:12.290679",
+    "@@last_modified": "2026-08-10 14:04:45.144115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Tattaunawa daga Rana ta Farko",
     "builtForConnection": "An gina shi don haɗi",
     "aiWhenYouNeedIt": "AI lokacin da kake buƙata",
-    "practiceTailoredForYou": "Aiwatar da aka keɓance maka"
+    "practiceTailoredForYou": "Aiwatar da aka keɓance maka",
+    "practiceFeedbackButtonTooltip": "Bayar da rahoto game da matsala a wannan atisayen",
+    "practiceFeedbackDialogTitle": "Ra'ayi Game da Atisayen Koyarwa",
+    "practiceFeedbackSelectPair": "Wane nau'i ne yake kama da ba daidai ba?",
+    "practiceFeedbackUserSetEmoji": "Ka zaɓi wannan emoji — canza shi daga katin kalmar",
+    "practiceFeedbackAlreadyMatched": "An riga an daidaita shi daidai",
+    "practiceFeedbackUpdated": "Godiya! An sabunta atisayen bisa ga ra'ayinka.",
+    "practiceFeedbackUnchanged": "Godiya! An rubuta rahotonka, amma abun ciki bai canza ba."
 }

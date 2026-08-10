@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-05 11:42:14.651996",
+    "@@last_modified": "2026-08-10 14:04:49.712673",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Gespréicher vum éischten Dag un",
     "builtForConnection": "Gemaach fir Verbindung",
     "aiWhenYouNeedIt": "AI wann Dir se braucht",
-    "practiceTailoredForYou": "Praxis op Iech ugepasst"
+    "practiceTailoredForYou": "Praxis op Iech ugepasst",
+    "practiceFeedbackButtonTooltip": "Mellt e Problem mat dëser Übung",
+    "practiceFeedbackDialogTitle": "Feedback zu der Übung",
+    "practiceFeedbackSelectPair": "Wéi ee Pair gesäit falsch aus?",
+    "practiceFeedbackUserSetEmoji": "Dir hutt dësen Emoji gewielt – ännert en op der Wuertkaart",
+    "practiceFeedbackAlreadyMatched": "Scho richteg ugepasst",
+    "practiceFeedbackUpdated": "Merci! D'Übung gouf op Basis vun Ärem Feedback aktualiséiert.",
+    "practiceFeedbackUnchanged": "Merci! Äre Bericht gouf opgeholl, awer den Inhalt ass onverännert bliwwen."
 }

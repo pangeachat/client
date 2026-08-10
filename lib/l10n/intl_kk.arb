@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-05 11:42:15.522344",
+    "@@last_modified": "2026-08-10 14:04:48.581203",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Бірінші күннен бастап сөйлесу",
     "builtForConnection": "Байланыс үшін жасалған",
     "aiWhenYouNeedIt": "Қажет болғанда AI",
-    "practiceTailoredForYou": "Сізге арналған жаттығу"
+    "practiceTailoredForYou": "Сізге арналған жаттығу",
+    "practiceFeedbackButtonTooltip": "Бұл жаттығуға қатысты мәселе туралы хабарлау",
+    "practiceFeedbackDialogTitle": "Жаттығуға қатысты кері байланыс",
+    "practiceFeedbackSelectPair": "Қай жұп қате көрінеді?",
+    "practiceFeedbackUserSetEmoji": "Сіз осы эмодзиді таңдадыңыз — оны сөз картасынан өзгертіңіз",
+    "practiceFeedbackAlreadyMatched": "Дұрыс сәйкестендірілген",
+    "practiceFeedbackUpdated": "Рахмет! Жаттығу сіздің кері байланысыңыз негізінде жаңартылды.",
+    "practiceFeedbackUnchanged": "Рахмет! Сіздің есебіңіз тіркелді, бірақ мазмұн өзгеріссіз қалды."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-05 11:42:14.444523",
+    "@@last_modified": "2026-08-10 14:04:49.793150",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Биринчи күндөн баштап баарлашуу",
     "builtForConnection": "Байланыш үчүн курулган",
     "aiWhenYouNeedIt": "Керек болгондо жасалма интеллект",
-    "practiceTailoredForYou": "Сизге ылайыкташтырылган практика"
+    "practiceTailoredForYou": "Сизге ылайыкташтырылган практика",
+    "practiceFeedbackButtonTooltip": "Бул көнүгүүдөгү көйгөй тууралуу билдирүү",
+    "practiceFeedbackDialogTitle": "Көнүгүү боюнча пикир",
+    "practiceFeedbackSelectPair": "Кайсы жуп туура эмес көрүнөт?",
+    "practiceFeedbackUserSetEmoji": "Сиз бул эмодзини тандадыңыз — аны сөз картасынан өзгөртүңүз",
+    "practiceFeedbackAlreadyMatched": "Буга чейин туура дал келтирилген",
+    "practiceFeedbackUpdated": "Рахмат! Көнүгүү сиздин пикириңиздин негизинде жаңыртылды.",
+    "practiceFeedbackUnchanged": "Рахмат! Сиздин билдирүүңүз катталды, бирок мазмун өзгөрүүсүз калды."
 }

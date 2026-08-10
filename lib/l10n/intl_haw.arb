@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-05 11:42:12.396480",
+    "@@last_modified": "2026-08-10 14:04:45.097946",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Kūkākūkā mai ka lā ʻekahi",
     "builtForConnection": "Kūkulu ʻia no ka pilina",
     "aiWhenYouNeedIt": "AI ke pono ʻoe",
-    "practiceTailoredForYou": "Hoʻomaʻamaʻa i hoʻopilikino ʻia nāu"
+    "practiceTailoredForYou": "Hoʻomaʻamaʻa i hoʻopilikino ʻia nāu",
+    "practiceFeedbackButtonTooltip": "Hōʻike i kahi pilikia me kēia haʻawina",
+    "practiceFeedbackDialogTitle": "Manaʻo Hoʻoikaika Hoʻomaʻamaʻa",
+    "practiceFeedbackSelectPair": "ʻO wai ka paʻa i hewa?",
+    "practiceFeedbackUserSetEmoji": "Ua koho ʻoe i kēia emoji — e hoʻololi mai ke kāleka huaʻōlelo",
+    "practiceFeedbackAlreadyMatched": "Ua hoʻohālikelike pololei ʻia",
+    "practiceFeedbackUpdated": "Mahalo! Ua hōʻano hou ʻia ka haʻawina ma muli o kāu manaʻo.",
+    "practiceFeedbackUnchanged": "Mahalo! Ua hoʻopaʻa ʻia kāu hōʻike, akā ʻaʻole i loli ka ʻike."
 }

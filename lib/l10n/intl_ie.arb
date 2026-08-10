@@ -3102,7 +3102,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-05 11:42:13.003639",
+    "@@last_modified": "2026-08-10 14:04:46.880877",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10343,5 +10343,12 @@
     "conversationFromDayOne": "Comhrá ón gCéad Lá",
     "builtForConnection": "Tógtha le haghaidh ceangail",
     "aiWhenYouNeedIt": "AI nuair a bhíonn sé uait",
-    "practiceTailoredForYou": "Cleachtadh saincheaptha duit"
+    "practiceTailoredForYou": "Cleachtadh saincheaptha duit",
+    "practiceFeedbackButtonTooltip": "Tuairiscigh fadhb leis an gcleachtadh seo",
+    "practiceFeedbackDialogTitle": "Aiseolas Cleachtaidh",
+    "practiceFeedbackSelectPair": "Cén péire atá mícheart?",
+    "practiceFeedbackUserSetEmoji": "Roghnú an emoji seo — athraigh é ón gcárta focal",
+    "practiceFeedbackAlreadyMatched": "Meaitseáilte cheana féin i gceart",
+    "practiceFeedbackUpdated": "Go raibh maith agat! Nuashonraíodh an cleachtadh bunaithe ar d'aiseolas.",
+    "practiceFeedbackUnchanged": "Go raibh maith agat! Taifeadadh do thuairisc, ach níor athraíodh an t-ábhar."
 }

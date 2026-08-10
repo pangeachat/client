@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-05 11:42:12.920881",
+    "@@last_modified": "2026-08-10 14:05:06.802657",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Sib tham txij hnub ib",
     "builtForConnection": "Tsim los rau kev sib txuas",
     "aiWhenYouNeedIt": "AI thaum koj xav tau",
-    "practiceTailoredForYou": "Kev xyaum tsim nyog rau koj"
+    "practiceTailoredForYou": "Kev xyaum tsim nyog rau koj",
+    "practiceFeedbackButtonTooltip": "Qhia txog qhov teeb meem nrog qhov kev kawm no",
+    "practiceFeedbackDialogTitle": "Kev Kawm Tawm Tswv Yim",
+    "practiceFeedbackSelectPair": "Daim twg zoo li tsis raug?",
+    "practiceFeedbackUserSetEmoji": "Koj xaiv lub emoji no — hloov nws ntawm daim npav lo lus",
+    "practiceFeedbackAlreadyMatched": "Twb phim lawm",
+    "practiceFeedbackUpdated": "Ua tsaug! Qhov kev kawm tau hloov kho raws li koj cov lus qhia.",
+    "practiceFeedbackUnchanged": "Ua tsaug! Koj daim ntawv qhia tau raug sau tseg, tiam sis cov ntsiab lus tsis hloov."
 }

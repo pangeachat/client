@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-05 11:42:14.279391",
+    "@@last_modified": "2026-08-10 14:04:49.708431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Sermo ab initio",
     "builtForConnection": "Ad coniunctionem aedificatum",
     "aiWhenYouNeedIt": "AI cum opus est",
-    "practiceTailoredForYou": "Exercitatio tibi aptata"
+    "practiceTailoredForYou": "Exercitatio tibi aptata",
+    "practiceFeedbackButtonTooltip": "Refer de quaestione huius exercitationis",
+    "practiceFeedbackDialogTitle": "Responsio de Exercitatione",
+    "practiceFeedbackSelectPair": "Quae paria errata videntur?",
+    "practiceFeedbackUserSetEmoji": "Hoc emoji elegisti — muta id ex charta verbi",
+    "practiceFeedbackAlreadyMatched": "Iam recte compositum",
+    "practiceFeedbackUpdated": "Gratias! Exercitatio renovata est secundum tuam responsionem.",
+    "practiceFeedbackUnchanged": "Gratias! Tua relatio notata est, sed contentum immutatum remansit."
 }

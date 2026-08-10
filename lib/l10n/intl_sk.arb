@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-05 11:42:16.731113",
+    "@@last_modified": "2026-08-10 14:04:55.869566",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10662,5 +10662,12 @@
     "conversationFromDayOne": "Konverzácia od prvého dňa",
     "builtForConnection": "Stvorené pre spojenie",
     "aiWhenYouNeedIt": "AI, keď ju potrebuješ",
-    "practiceTailoredForYou": "Cvičenie šité na mieru"
+    "practiceTailoredForYou": "Cvičenie šité na mieru",
+    "practiceFeedbackButtonTooltip": "Nahlásiť problém s týmto cvičením",
+    "practiceFeedbackDialogTitle": "Spätná väzba k cvičeniu",
+    "practiceFeedbackSelectPair": "Ktorý pár vyzerá nesprávne?",
+    "practiceFeedbackUserSetEmoji": "Vybrali ste tento emoji – zmeňte ho z kartičky slova",
+    "practiceFeedbackAlreadyMatched": "Už správne spárované",
+    "practiceFeedbackUpdated": "Ďakujeme! Cvičenie bolo aktualizované na základe vašej spätnej väzby.",
+    "practiceFeedbackUnchanged": "Ďakujeme! Váš hlásenie bolo zaznamenané, ale obsah zostal nezmenený."
 }

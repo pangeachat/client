@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-05 11:42:18.397299",
+    "@@last_modified": "2026-08-10 14:05:01.505130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "שמועס פֿון טאָג איין",
     "builtForConnection": "געבויט פֿאַר פֿאַרבינדונג",
     "aiWhenYouNeedIt": "ק״ק ווען איר דאַרפֿט עס",
-    "practiceTailoredForYou": "פּראַקטיק צוגעפּאַסט פֿאַר דיר"
+    "practiceTailoredForYou": "פּראַקטיק צוגעפּאַסט פֿאַר דיר",
+    "practiceFeedbackButtonTooltip": "מעלדן אַ פּראָבלעם מיט דעם איבונג",
+    "practiceFeedbackDialogTitle": "באַמערקונגען וועגן פּראַקטישע איבונג",
+    "practiceFeedbackSelectPair": "וועלכע פּאָר זעט אויס פאַלש?",
+    "practiceFeedbackUserSetEmoji": "איר האָט אויסגעקליבן דעם עמאָדזשי — ענדערט עס פֿון דער וואָרט קאַרטל",
+    "practiceFeedbackAlreadyMatched": "שוין ריכטיק צוגעפּאַסט",
+    "practiceFeedbackUpdated": "אַ דאַנק! די איבונג איז דערהייַנטיקט געוואָרן לויט אייערע באַמערקונגען.",
+    "practiceFeedbackUnchanged": "אַ דאַנק! אייער באַריכט איז רעקאָרדירט געוואָרן, אָבער דער אינהאַלט איז געבליבן אומגעענדערט."
 }

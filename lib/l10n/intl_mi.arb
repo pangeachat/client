@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-05 11:42:14.565199",
+    "@@last_modified": "2026-08-10 14:04:51.614505",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Kōrerorero mai i te Rā Tuatahi",
     "builtForConnection": "Hangaia mō te hononga",
     "aiWhenYouNeedIt": "AI ina hiahia koe",
-    "practiceTailoredForYou": "Whakaharatau i whakaritea māu"
+    "practiceTailoredForYou": "Whakaharatau i whakaritea māu",
+    "practiceFeedbackButtonTooltip": "Kōrero mai he raruraru ki tēnei mahi",
+    "practiceFeedbackDialogTitle": "Urupare Mahi Whakaharatau",
+    "practiceFeedbackSelectPair": "Ko tēhea takirua te ahua hē ana?",
+    "practiceFeedbackUserSetEmoji": "I kōwhiria e koe tēnei emoji — hurihia mai i te kāri kupu",
+    "practiceFeedbackAlreadyMatched": "Kua ōrite kē te tika",
+    "practiceFeedbackUpdated": "Ngā mihi! Kua whakahōutia te mahi i runga i tō urupare.",
+    "practiceFeedbackUnchanged": "Ngā mihi! Kua tuhia tō pūrongo, engari kāore i rerekē te ihirangi."
 }

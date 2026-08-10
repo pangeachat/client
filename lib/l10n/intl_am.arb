@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-05 11:42:10.343463",
+    "@@last_modified": "2026-08-10 14:04:41.294073",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "ከመጀመሪያው ቀን ጀምሮ ውይይት",
     "builtForConnection": "ለመገናኘት የተሰራ",
     "aiWhenYouNeedIt": "ሲያስፈልግህ AI",
-    "practiceTailoredForYou": "ለእርስዎ የተበጀ ልምምድ"
+    "practiceTailoredForYou": "ለእርስዎ የተበጀ ልምምድ",
+    "practiceFeedbackButtonTooltip": "በዚህ ልምምድ ላይ ችግር ሪፖርት ያድርጉ",
+    "practiceFeedbackDialogTitle": "የልምምድ መልመጃ ግብረመልስ",
+    "practiceFeedbackSelectPair": "የትኛው ጥንድ ስህተት ይመስላል?",
+    "practiceFeedbackUserSetEmoji": "ይህን ኢሞጂ መርጠዋል — ከቃሉ ካርድ ይቀይሩት",
+    "practiceFeedbackAlreadyMatched": "አስቀድሞ በትክክል ተዛምዷል",
+    "practiceFeedbackUpdated": "እናመሰግናለን! መልመጃው በእርስዎ ግብረመልስ መሰረት ተዘምኗል።",
+    "practiceFeedbackUnchanged": "እናመሰግናለን! ሪፖርትዎ ተመዝግቧል፣ ነገር ግን ይዘቱ ሳይለወጥ ተመልሷል።"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:13.855055",
+    "@@last_modified": "2026-08-10 14:04:48.175493",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9904,5 +9904,12 @@
     "conversationFromDayOne": "첫날부터 대화 시작",
     "builtForConnection": "연결을 위해 구축",
     "aiWhenYouNeedIt": "필요할 때 AI",
-    "practiceTailoredForYou": "나만을 위한 맞춤 연습"
+    "practiceTailoredForYou": "나만을 위한 맞춤 연습",
+    "practiceFeedbackButtonTooltip": "이 연습 문제에 대한 문제 보고",
+    "practiceFeedbackDialogTitle": "연습 문제 피드백",
+    "practiceFeedbackSelectPair": "어떤 쌍이 잘못되었나요?",
+    "practiceFeedbackUserSetEmoji": "이 이모티콘을 선택하셨습니다. 단어 카드에서 변경하세요.",
+    "practiceFeedbackAlreadyMatched": "이미 올바르게 일치함",
+    "practiceFeedbackUpdated": "감사합니다! 회원님의 피드백을 바탕으로 연습 문제가 업데이트되었습니다.",
+    "practiceFeedbackUnchanged": "감사합니다! 회원님의 보고서는 기록되었지만, 내용은 변경되지 않았습니다."
 }

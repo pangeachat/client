@@ -3544,7 +3544,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-05 11:42:14.491611",
+    "@@last_modified": "2026-08-10 14:04:50.329447",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9711,5 +9711,12 @@
     "conversationFromDayOne": "Sarunas no pirmās dienas",
     "builtForConnection": "Radīts savienojumam",
     "aiWhenYouNeedIt": "AI, kad tas nepieciešams",
-    "practiceTailoredForYou": "Jums pielāgota prakse"
+    "practiceTailoredForYou": "Jums pielāgota prakse",
+    "practiceFeedbackButtonTooltip": "Ziņot par problēmu šajā uzdevumā",
+    "practiceFeedbackDialogTitle": "Atsauksmes par prakses uzdevumu",
+    "practiceFeedbackSelectPair": "Kurš pāris izskatās nepareizi?",
+    "practiceFeedbackUserSetEmoji": "Jūs izvēlējāties šo emocijzīmi — mainiet to vārdu kartītē",
+    "practiceFeedbackAlreadyMatched": "Jau pareizi saskaņots",
+    "practiceFeedbackUpdated": "Paldies! Uzdevums ir atjaunināts, pamatojoties uz jūsu atsauksmēm.",
+    "practiceFeedbackUnchanged": "Paldies! Jūsu ziņojums tika ierakstīts, taču saturs palika nemainīgs."
 }

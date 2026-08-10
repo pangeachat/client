@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-05 11:42:15.086737",
+    "@@last_modified": "2026-08-10 14:04:51.623895",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "पहिल्या दिवसापासून संभाषण",
     "builtForConnection": "कनेक्शनसाठी बनवले आहे",
     "aiWhenYouNeedIt": "जेव्हा तुम्हाला गरज असेल तेव्हा AI",
-    "practiceTailoredForYou": "तुमच्यासाठी तयार केलेला सराव"
+    "practiceTailoredForYou": "तुमच्यासाठी तयार केलेला सराव",
+    "practiceFeedbackButtonTooltip": "या व्यायामातील समस्येची तक्रार करा",
+    "practiceFeedbackDialogTitle": "सराव व्यायामाबद्दल अभिप्राय",
+    "practiceFeedbackSelectPair": "कोणती जोडी चुकीची दिसते?",
+    "practiceFeedbackUserSetEmoji": "तुम्ही ही इमोजी निवडली आहे — ती शब्द कार्डमधून बदला",
+    "practiceFeedbackAlreadyMatched": "आधीच योग्यरित्या जुळले आहे",
+    "practiceFeedbackUpdated": "धन्यवाद! तुमच्या अभिप्रायाच्या आधारावर व्यायाम अद्यतनित केला गेला आहे.",
+    "practiceFeedbackUnchanged": "धन्यवाद! तुमच्या तक्रारीची नोंद घेतली गेली आहे, परंतु सामग्रीमध्ये कोणताही बदल झालेला नाही."
 }

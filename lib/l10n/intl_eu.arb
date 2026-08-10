@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-05 11:42:11.671100",
+    "@@last_modified": "2026-08-10 14:04:43.609438",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9711,5 +9711,12 @@
     "conversationFromDayOne": "Elkarrizketa lehen egunetik",
     "builtForConnection": "Konexiorako eraikia",
     "aiWhenYouNeedIt": "Adimen artifiziala behar duzunean",
-    "practiceTailoredForYou": "Zuretzat egokitutako praktika"
+    "practiceTailoredForYou": "Zuretzat egokitutako praktika",
+    "practiceFeedbackButtonTooltip": "Ariketa honekin arazo bat dagoela jakinarazi",
+    "practiceFeedbackDialogTitle": "Ariketa-praktikaren iritzia",
+    "practiceFeedbackSelectPair": "Zein bikote dirudi okerra?",
+    "practiceFeedbackUserSetEmoji": "Emoji hau aukeratu duzu — aldatu hitz-txarteletik",
+    "practiceFeedbackAlreadyMatched": "Dagoeneko zuzen parekatuta",
+    "practiceFeedbackUpdated": "Eskerrik asko! Ariketa zure iritziaren arabera eguneratu da.",
+    "practiceFeedbackUnchanged": "Eskerrik asko! Zure txostena erregistratu da, baina edukia aldatu gabe itzuli da."
 }

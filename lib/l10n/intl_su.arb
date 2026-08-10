@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-05 11:42:18.227878",
+    "@@last_modified": "2026-08-10 14:04:57.786417",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Paguneman ti Poé Kahiji",
     "builtForConnection": "Dijieun pikeun sambungan",
     "aiWhenYouNeedIt": "AI nalika anjeun butuh",
-    "practiceTailoredForYou": "Latihan anu disaluyukeun pikeun anjeun"
+    "practiceTailoredForYou": "Latihan anu disaluyukeun pikeun anjeun",
+    "practiceFeedbackButtonTooltip": "Laporkeun masalah sareng latihan ieu",
+    "practiceFeedbackDialogTitle": "Eupan Balik Latihan Prakték",
+    "practiceFeedbackSelectPair": "Pasangan mana anu katingalina salah?",
+    "practiceFeedbackUserSetEmoji": "Anjeun milih emoji ieu — gentos tina kartu kecap",
+    "practiceFeedbackAlreadyMatched": "Geus cocog kalawan bener",
+    "practiceFeedbackUpdated": "Hatur nuhun! Latihan parantos diropéa dumasar kana eupan balik anjeun.",
+    "practiceFeedbackUnchanged": "Hatur nuhun! Laporan anjeun parantos kacatet, tapi eusina teu robih."
 }

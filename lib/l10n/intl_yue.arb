@@ -1270,7 +1270,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-05 11:42:18.229779",
+    "@@last_modified": "2026-08-10 14:05:00.968039",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10674,5 +10674,12 @@
     "conversationFromDayOne": "從第一日開始對話",
     "builtForConnection": "為連結而生",
     "aiWhenYouNeedIt": "隨時為你提供AI",
-    "practiceTailoredForYou": "為你度身訂造的練習"
+    "practiceTailoredForYou": "為你度身訂造的練習",
+    "practiceFeedbackButtonTooltip": "報告此練習的問題",
+    "practiceFeedbackDialogTitle": "練習反饋",
+    "practiceFeedbackSelectPair": "哪一對看起來不對？",
+    "practiceFeedbackUserSetEmoji": "你選了這個表情符號 — 從詞卡更改它",
+    "practiceFeedbackAlreadyMatched": "已經正確配對",
+    "practiceFeedbackUpdated": "謝謝！練習已根據你的反饋更新。",
+    "practiceFeedbackUnchanged": "謝謝！你的報告已記錄，但內容未有更改。"
 }

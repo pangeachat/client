@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-05 11:42:13.804789",
+    "@@last_modified": "2026-08-10 14:04:48.211788",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "ಮೊದಲ ದಿನದಿಂದಲೇ ಸಂಭಾಷಣೆ",
     "builtForConnection": "ಸಂಪರ್ಕಕ್ಕಾಗಿ ನಿರ್ಮಿಸಲಾಗಿದೆ",
     "aiWhenYouNeedIt": "ನಿಮಗೆ ಬೇಕಾದಾಗ AI",
-    "practiceTailoredForYou": "ನಿಮಗಾಗಿ ರೂಪಿಸಿದ ಅಭ್ಯಾಸ"
+    "practiceTailoredForYou": "ನಿಮಗಾಗಿ ರೂಪಿಸಿದ ಅಭ್ಯಾಸ",
+    "practiceFeedbackButtonTooltip": "ಈ ವ್ಯಾಯಾಮದಲ್ಲಿನ ಸಮಸ್ಯೆಯನ್ನು ವರದಿ ಮಾಡಿ",
+    "practiceFeedbackDialogTitle": "ಅಭ್ಯಾಸದ ವ್ಯಾಯಾಮದ ಪ್ರತಿಕ್ರಿಯೆ",
+    "practiceFeedbackSelectPair": "ಯಾವ ಜೋಡಿ ತಪ್ಪಾಗಿದೆ?",
+    "practiceFeedbackUserSetEmoji": "ನೀವು ಈ ಎಮೋಜಿಯನ್ನು ಆರಿಸಿದ್ದೀರಿ — ಪದ ಕಾರ್ಡ್‌ನಿಂದ ಅದನ್ನು ಬದಲಾಯಿಸಿ",
+    "practiceFeedbackAlreadyMatched": "ಈಗಾಗಲೇ ಸರಿಯಾಗಿ ಹೊಂದಾಣಿಕೆಯಾಗಿದೆ",
+    "practiceFeedbackUpdated": "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಪ್ರತಿಕ್ರಿಯೆಯ ಆಧಾರದ ಮೇಲೆ ವ್ಯಾಯಾಮವನ್ನು ನವೀಕರಿಸಲಾಗಿದೆ.",
+    "practiceFeedbackUnchanged": "ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ವರದಿಯನ್ನು ದಾಖಲಿಸಲಾಗಿದೆ, ಆದರೆ ವಿಷಯವು ಬದಲಾಗದೆ ಮರಳಿದೆ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-05 11:42:10.437474",
+    "@@last_modified": "2026-08-10 14:04:41.222683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "প্ৰথম দিনৰ পৰাই কথা-বতৰা",
     "builtForConnection": "সংযোগৰ বাবে নিৰ্মিত",
     "aiWhenYouNeedIt": "আপোনাক প্ৰয়োজন হ’লে AI",
-    "practiceTailoredForYou": "আপোনাৰ বাবে উপযোগী অনুশীলন"
+    "practiceTailoredForYou": "আপোনাৰ বাবে উপযোগী অনুশীলন",
+    "practiceFeedbackButtonTooltip": "এই অনুশীলনটোৰ সৈতে থকা সমস্যা এটাৰ বিষয়ে জনাওক",
+    "practiceFeedbackDialogTitle": "অনুশীলনৰ ওপৰত মতামত",
+    "practiceFeedbackSelectPair": "কোনটো যোৰ ভুল যেন লাগিছে?",
+    "practiceFeedbackUserSetEmoji": "আপুনি এই ইম'জিটো বাছি লৈছিল — ইয়াক শব্দ কাৰ্ডৰ পৰা সলনি কৰক",
+    "practiceFeedbackAlreadyMatched": "ইতিমধ্যে শুদ্ধকৈ মিলোৱা হৈছে",
+    "practiceFeedbackUpdated": "ধন্যবাদ! আপোনাৰ মতামতৰ ওপৰত ভিত্তি কৰি অনুশীলনটো আপডেইট কৰা হৈছে।",
+    "practiceFeedbackUnchanged": "ধন্যবাদ! আপোনাৰ প্ৰতিবেদনটো ৰেকৰ্ড কৰা হৈছিল, কিন্তু বিষয়বস্তু অপৰিৱৰ্তিত হৈ থাকিল।"
 }

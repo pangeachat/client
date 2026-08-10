@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:11.297179",
+    "@@last_modified": "2026-08-10 14:04:41.926780",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9838,5 +9838,12 @@
     "conversationFromDayOne": "Conversa des del primer dia",
     "builtForConnection": "Dissenyat per a la connexió",
     "aiWhenYouNeedIt": "IA quan la necessitis",
-    "practiceTailoredForYou": "Pràctica personalitzada per a tu"
+    "practiceTailoredForYou": "Pràctica personalitzada per a tu",
+    "practiceFeedbackButtonTooltip": "Informar d'un problema amb aquest exercici",
+    "practiceFeedbackDialogTitle": "Comentaris sobre l'exercici de pràctica",
+    "practiceFeedbackSelectPair": "Quina parella sembla incorrecta?",
+    "practiceFeedbackUserSetEmoji": "Has triat aquest emoji; canvia'l des de la targeta de paraules",
+    "practiceFeedbackAlreadyMatched": "Ja s'ha emparellat correctament",
+    "practiceFeedbackUpdated": "Gràcies! L'exercici s'ha actualitzat segons els teus comentaris.",
+    "practiceFeedbackUnchanged": "Gràcies! El teu informe s'ha registrat, però el contingut no ha canviat."
 }

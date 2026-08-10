@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-05 11:42:15.882924",
+    "@@last_modified": "2026-08-10 14:04:54.178362",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9796,5 +9796,12 @@
     "conversationFromDayOne": "Rozmowa od pierwszego dnia",
     "builtForConnection": "Stworzone do nawiązywania kontaktów",
     "aiWhenYouNeedIt": "AI, kiedy jej potrzebujesz",
-    "practiceTailoredForYou": "Praktyka dopasowana do Ciebie"
+    "practiceTailoredForYou": "Praktyka dopasowana do Ciebie",
+    "practiceFeedbackButtonTooltip": "Zgłoś problem z tym ćwiczeniem",
+    "practiceFeedbackDialogTitle": "Opinia o ćwiczeniu",
+    "practiceFeedbackSelectPair": "Która para wygląda na błędną?",
+    "practiceFeedbackUserSetEmoji": "Wybrano tę emotikonę — zmień ją z karty słowa",
+    "practiceFeedbackAlreadyMatched": "Już poprawnie dopasowane",
+    "practiceFeedbackUpdated": "Dziękujemy! Ćwiczenie zostało zaktualizowane na podstawie Twojej opinii.",
+    "practiceFeedbackUnchanged": "Dziękujemy! Twoje zgłoszenie zostało zarejestrowane, ale treść pozostała niezmieniona."
 }

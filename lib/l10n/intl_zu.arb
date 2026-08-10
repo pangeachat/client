@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-05 11:42:18.637592",
+    "@@last_modified": "2026-08-10 14:05:02.199368",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Ingxoxo kusukela osukwini lokuqala",
     "builtForConnection": "Yakhelwe ukuxhumana",
     "aiWhenYouNeedIt": "I-AI uma uyidinga",
-    "practiceTailoredForYou": "Ukuzijwayeza okuklanyelwe wena"
+    "practiceTailoredForYou": "Ukuzijwayeza okuklanyelwe wena",
+    "practiceFeedbackButtonTooltip": "Bika inkinga ngalo msebenzi",
+    "practiceFeedbackDialogTitle": "Impendulo Yomsebenzi Wokuzijwayeza",
+    "practiceFeedbackSelectPair": "Iyiphi ipheya ebukeka ingalungile?",
+    "practiceFeedbackUserSetEmoji": "Ukhethe le emoji — yishintshe kusuka ekhadini lamagama",
+    "practiceFeedbackAlreadyMatched": "Sekufaniswe kahle kakade",
+    "practiceFeedbackUpdated": "Siyabonga! Umsebenzi ubuyekezwe ngokusekelwe empendulweni yakho.",
+    "practiceFeedbackUnchanged": "Siyabonga! Umbiko wakho urekhodiwe, kodwa okuqukethwe kubuye kungashintshile."
 }

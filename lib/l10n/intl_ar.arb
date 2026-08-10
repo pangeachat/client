@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-05 11:42:10.378529",
+    "@@last_modified": "2026-08-10 14:04:40.437111",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10017,5 +10017,12 @@
     "conversationFromDayOne": "المحادثة من اليوم الأول",
     "builtForConnection": "مصمم للتواصل",
     "aiWhenYouNeedIt": "الذكاء الاصطناعي عندما تحتاجه",
-    "practiceTailoredForYou": "تدريب مصمم خصيصًا لك"
+    "practiceTailoredForYou": "تدريب مصمم خصيصًا لك",
+    "practiceFeedbackButtonTooltip": "الإبلاغ عن مشكلة في هذا التمرين",
+    "practiceFeedbackDialogTitle": "ملاحظات حول تمرين الممارسة",
+    "practiceFeedbackSelectPair": "أي زوج يبدو خاطئًا؟",
+    "practiceFeedbackUserSetEmoji": "لقد اخترت هذا الرمز التعبيري — يمكنك تغييره من بطاقة الكلمة",
+    "practiceFeedbackAlreadyMatched": "تمت المطابقة بشكل صحيح بالفعل",
+    "practiceFeedbackUpdated": "شكرًا! تم تحديث التمرين بناءً على ملاحظاتك.",
+    "practiceFeedbackUnchanged": "شكرًا! تم تسجيل تقريرك، ولكن المحتوى لم يتغير."
 }

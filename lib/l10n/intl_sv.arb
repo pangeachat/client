@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:17.635414",
+    "@@last_modified": "2026-08-10 14:04:57.322646",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10229,5 +10229,12 @@
     "conversationFromDayOne": "Konversation från första dagen",
     "builtForConnection": "Byggd för anslutning",
     "aiWhenYouNeedIt": "AI när du behöver det",
-    "practiceTailoredForYou": "Övning anpassad för dig"
+    "practiceTailoredForYou": "Övning anpassad för dig",
+    "practiceFeedbackButtonTooltip": "Rapportera ett problem med den här övningen",
+    "practiceFeedbackDialogTitle": "Feedback på övning",
+    "practiceFeedbackSelectPair": "Vilket par ser fel ut?",
+    "practiceFeedbackUserSetEmoji": "Du valde den här emojin – ändra den från ordkortet",
+    "practiceFeedbackAlreadyMatched": "Redan korrekt matchat",
+    "practiceFeedbackUpdated": "Tack! Övningen har uppdaterats baserat på din feedback.",
+    "practiceFeedbackUnchanged": "Tack! Din rapport registrerades, men innehållet förblev oförändrat."
 }

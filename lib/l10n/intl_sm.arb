@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-05 11:42:16.736775",
+    "@@last_modified": "2026-08-10 14:04:57.082537",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Talanoaga mai le Aso Muamua",
     "builtForConnection": "Fausia mo feso'ota'iga",
     "aiWhenYouNeedIt": "AI pe a e mana'omia",
-    "practiceTailoredForYou": "Fa'ata'ita'iga fa'apitoa mo oe"
+    "practiceTailoredForYou": "Fa'ata'ita'iga fa'apitoa mo oe",
+    "practiceFeedbackButtonTooltip": "Lipoti se fa'afitauli i lenei fa'amalositino",
+    "practiceFeedbackDialogTitle": "Fa'amatalaga Fa'amalositino",
+    "practiceFeedbackSelectPair": "O le fea paga e foliga sese?",
+    "practiceFeedbackUserSetEmoji": "Na e filifilia lenei emoji — sui mai le kata upu",
+    "practiceFeedbackAlreadyMatched": "Ua uma ona fetaui lelei",
+    "practiceFeedbackUpdated": "Fa'afetai! Ua fa'afouina le fa'amalositino e fa'atatau i lau fa'amatalaga.",
+    "practiceFeedbackUnchanged": "Fa'afetai! Na fa'amauina lau lipoti, ae e le'i suia le anotusi."
 }

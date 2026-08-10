@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-05 11:42:13.595371",
+    "@@last_modified": "2026-08-10 14:04:47.145580",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10480,5 +10480,12 @@
     "conversationFromDayOne": "初日から会話",
     "builtForConnection": "つながりのために作られました",
     "aiWhenYouNeedIt": "必要なときにAIを",
-    "practiceTailoredForYou": "あなたに合わせた練習"
+    "practiceTailoredForYou": "あなたに合わせた練習",
+    "practiceFeedbackButtonTooltip": "この練習問題の問題を報告する",
+    "practiceFeedbackDialogTitle": "練習問題のフィードバック",
+    "practiceFeedbackSelectPair": "どのペアが間違っていますか？",
+    "practiceFeedbackUserSetEmoji": "あなたが選んだ絵文字です — 単語カードから変更してください",
+    "practiceFeedbackAlreadyMatched": "すでに正しく一致しています",
+    "practiceFeedbackUpdated": "ありがとうございます！あなたのフィードバックに基づいて練習問題が更新されました。",
+    "practiceFeedbackUnchanged": "ありがとうございます！報告は記録されましたが、内容は変更されませんでした。"
 }

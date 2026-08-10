@@ -1809,7 +1809,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-05 11:42:16.566366",
+    "@@last_modified": "2026-08-10 14:04:56.294269",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10662,5 +10662,12 @@
     "conversationFromDayOne": "Pogovor od prvega dne",
     "builtForConnection": "Ustvarjeno za povezovanje",
     "aiWhenYouNeedIt": "AI, ko ga potrebuješ",
-    "practiceTailoredForYou": "Praksa, prilagojena tebi"
+    "practiceTailoredForYou": "Praksa, prilagojena tebi",
+    "practiceFeedbackButtonTooltip": "Prijavi težavo s to vajo",
+    "practiceFeedbackDialogTitle": "Povratne informacije o vaji",
+    "practiceFeedbackSelectPair": "Kateri par se zdi napačen?",
+    "practiceFeedbackUserSetEmoji": "Izbrali ste ta emoji – spremenite ga na kartici z besedo",
+    "practiceFeedbackAlreadyMatched": "Že pravilno usklajeno",
+    "practiceFeedbackUpdated": "Hvala! Vaja je bila posodobljena na podlagi vaših povratnih informacij.",
+    "practiceFeedbackUnchanged": "Hvala! Vaše poročilo je bilo zabeleženo, vendar vsebina ostaja nespremenjena."
 }

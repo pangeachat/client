@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:13.221476",
+    "@@last_modified": "2026-08-10 14:04:46.048298",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9784,5 +9784,12 @@
     "conversationFromDayOne": "Percakapan sejak Hari Pertama",
     "builtForConnection": "Dibuat untuk koneksi",
     "aiWhenYouNeedIt": "AI saat Anda membutuhkannya",
-    "practiceTailoredForYou": "Latihan yang disesuaikan untuk Anda"
+    "practiceTailoredForYou": "Latihan yang disesuaikan untuk Anda",
+    "practiceFeedbackButtonTooltip": "Laporkan masalah dengan latihan ini",
+    "practiceFeedbackDialogTitle": "Umpan Balik Latihan",
+    "practiceFeedbackSelectPair": "Pasangan mana yang terlihat salah?",
+    "practiceFeedbackUserSetEmoji": "Anda memilih emoji ini — ubah dari kartu kata",
+    "practiceFeedbackAlreadyMatched": "Sudah cocok dengan benar",
+    "practiceFeedbackUpdated": "Terima kasih! Latihan telah diperbarui berdasarkan umpan balik Anda.",
+    "practiceFeedbackUnchanged": "Terima kasih! Laporan Anda telah dicatat, tetapi kontennya tidak berubah."
 }

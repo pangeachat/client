@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-05 11:42:12.969377",
+    "@@last_modified": "2026-08-10 14:04:45.718374",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Konvèsasyon depi premye jou a",
     "builtForConnection": "Bati pou koneksyon",
     "aiWhenYouNeedIt": "AI lè w bezwen li",
-    "practiceTailoredForYou": "Pratik adapte pou ou"
+    "practiceTailoredForYou": "Pratik adapte pou ou",
+    "practiceFeedbackButtonTooltip": "Rapòte yon pwoblèm ak egzèsis sa a",
+    "practiceFeedbackDialogTitle": "Feedback Egzèsis Pratik",
+    "practiceFeedbackSelectPair": "Ki pè ki sanble mal?",
+    "practiceFeedbackUserSetEmoji": "Ou te chwazi emoji sa a — chanje li nan kat mo a",
+    "practiceFeedbackAlreadyMatched": "Deja matche kòrèkteman",
+    "practiceFeedbackUpdated": "Mèsi! Egzèsis la te mete ajou baze sou feedback ou.",
+    "practiceFeedbackUnchanged": "Mèsi! Rapò ou te anrejistre, men kontni an rete san chanjman."
 }

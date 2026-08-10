@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-05 11:42:16.653727",
+    "@@last_modified": "2026-08-10 14:04:57.187200",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Bisedë që nga Dita e Parë",
     "builtForConnection": "Ndërtuar për lidhje",
     "aiWhenYouNeedIt": "AI kur ju nevojitet",
-    "practiceTailoredForYou": "Praktikë e përshtatur për ju"
+    "practiceTailoredForYou": "Praktikë e përshtatur për ju",
+    "practiceFeedbackButtonTooltip": "Raporto një problem me këtë ushtrim",
+    "practiceFeedbackDialogTitle": "Reagime për Ushtrimin Praktik",
+    "practiceFeedbackSelectPair": "Cili çift duket gabim?",
+    "practiceFeedbackUserSetEmoji": "Ju zgjodhët këtë emoji — ndryshojeni nga karta e fjalës",
+    "practiceFeedbackAlreadyMatched": "Përputhur tashmë saktë",
+    "practiceFeedbackUpdated": "Faleminderit! Ushtrimi është përditësuar bazuar në reagimet tuaja.",
+    "practiceFeedbackUnchanged": "Faleminderit! Raporti juaj u regjistrua, por përmbajtja mbeti e pandryshuar."
 }

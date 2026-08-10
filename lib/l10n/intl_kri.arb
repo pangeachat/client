@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-05 11:42:13.935676",
+    "@@last_modified": "2026-08-10 14:04:48.843221",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Tɔk frɔm di fɔs de",
     "builtForConnection": "Mek fɔ kɔnɛkshɔn",
     "aiWhenYouNeedIt": "AI we yu nid am",
-    "practiceTailoredForYou": "Pratkis we dɛn mek fɔ yu"
+    "practiceTailoredForYou": "Pratkis we dɛn mek fɔ yu",
+    "practiceFeedbackButtonTooltip": "Ripɔt prɔblɛm wit dis ɛksasayz",
+    "practiceFeedbackDialogTitle": "Pratkis Ɛksasayz Fidbak",
+    "practiceFeedbackSelectPair": "Us peya luk rɔng?",
+    "practiceFeedbackUserSetEmoji": "Yu pik dis ɛmoji — chenj am frɔm di wɔd kad",
+    "practiceFeedbackAlreadyMatched": "Dɔn mach kɔrɛkt wan",
+    "practiceFeedbackUpdated": "Tɛnki! Di ɛksasayz dɔn chenj bay wetin yu se.",
+    "practiceFeedbackUnchanged": "Tɛnki! Wi dɔn mek not fɔ yu ripɔt, bɔt di kɔntɛnt nɔ chenj."
 }

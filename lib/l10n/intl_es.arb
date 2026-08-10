@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-05 11:42:11.167805",
+    "@@last_modified": "2026-08-10 14:04:43.072463",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7914,5 +7914,12 @@
     "conversationFromDayOne": "Conversación desde el primer día",
     "builtForConnection": "Diseñado para conectar",
     "aiWhenYouNeedIt": "IA cuando la necesites",
-    "practiceTailoredForYou": "Práctica personalizada para ti"
+    "practiceTailoredForYou": "Práctica personalizada para ti",
+    "practiceFeedbackButtonTooltip": "Reportar un problema con este ejercicio",
+    "practiceFeedbackDialogTitle": "Comentarios sobre el ejercicio de práctica",
+    "practiceFeedbackSelectPair": "¿Qué par parece incorrecto?",
+    "practiceFeedbackUserSetEmoji": "Elegiste este emoji; cámbialo desde la tarjeta de la palabra",
+    "practiceFeedbackAlreadyMatched": "Ya se ha emparejado correctamente",
+    "practiceFeedbackUpdated": "¡Gracias! El ejercicio se ha actualizado según tus comentarios.",
+    "practiceFeedbackUnchanged": "¡Gracias! Tu informe fue registrado, pero el contenido no ha cambiado."
 }

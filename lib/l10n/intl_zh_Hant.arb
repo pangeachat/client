@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:18.624855",
+    "@@last_modified": "2026-08-10 14:05:01.427790",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9817,5 +9817,12 @@
     "conversationFromDayOne": "從第一天起就開始對話",
     "builtForConnection": "為連結而生",
     "aiWhenYouNeedIt": "隨時隨地為您提供 AI",
-    "practiceTailoredForYou": "為您量身打造的練習"
+    "practiceTailoredForYou": "為您量身打造的練習",
+    "practiceFeedbackButtonTooltip": "回報此練習的問題",
+    "practiceFeedbackDialogTitle": "練習回饋",
+    "practiceFeedbackSelectPair": "哪一組看起來有問題？",
+    "practiceFeedbackUserSetEmoji": "您選擇了這個表情符號 — 從單字卡中更改它",
+    "practiceFeedbackAlreadyMatched": "已正確配對",
+    "practiceFeedbackUpdated": "謝謝！練習已根據您的回饋進行更新。",
+    "practiceFeedbackUnchanged": "謝謝！您的回報已記錄，但內容未更改。"
 }

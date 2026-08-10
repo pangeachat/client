@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-05 11:42:11.066655",
+    "@@last_modified": "2026-08-10 14:04:42.206292",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "Cunversazione da u primu ghjornu",
     "builtForConnection": "Custruitu per a cunnessione",
     "aiWhenYouNeedIt": "IA quandu ne avete bisognu",
-    "practiceTailoredForYou": "Pratica persunalizata per voi"
+    "practiceTailoredForYou": "Pratica persunalizata per voi",
+    "practiceFeedbackButtonTooltip": "Signalà un prublema cù stu eserciziu",
+    "practiceFeedbackDialogTitle": "Feedback di l'eserciziu di pratica",
+    "practiceFeedbackSelectPair": "Quale paru pare sbagliatu?",
+    "practiceFeedbackUserSetEmoji": "Avete sceltu st'emoji — cambiatelu da a carta di parolla",
+    "practiceFeedbackAlreadyMatched": "Ghjà assuciatu currettamente",
+    "practiceFeedbackUpdated": "Grazie! L'eserciziu hè statu aghjurnatu secondu u vostru feedback.",
+    "practiceFeedbackUnchanged": "Grazie! U vostru rapportu hè statu arregistratu, ma u cuntenutu hè restatu invariatu."
 }

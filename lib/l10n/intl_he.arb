@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:12.884174",
+    "@@last_modified": "2026-08-10 14:04:44.707045",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10631,5 +10631,12 @@
     "conversationFromDayOne": "שיחה מהיום הראשון",
     "builtForConnection": "נבנה לחיבור",
     "aiWhenYouNeedIt": "בינה מלאכותית כשאתה צריך אותה",
-    "practiceTailoredForYou": "תרגול המותאם אישית עבורך"
+    "practiceTailoredForYou": "תרגול המותאם אישית עבורך",
+    "practiceFeedbackButtonTooltip": "דווח על בעיה בתרגיל זה",
+    "practiceFeedbackDialogTitle": "משוב על תרגיל",
+    "practiceFeedbackSelectPair": "איזה זוג נראה שגוי?",
+    "practiceFeedbackUserSetEmoji": "בחרת את האימוג'י הזה — שנה אותו מכרטיס המילה",
+    "practiceFeedbackAlreadyMatched": "כבר תואם נכון",
+    "practiceFeedbackUpdated": "תודה! התרגיל עודכן בהתאם למשוב שלך.",
+    "practiceFeedbackUnchanged": "תודה! הדיווח שלך נרשם, אך התוכן נשאר ללא שינוי."
 }

@@ -1369,7 +1369,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-05 11:42:12.905219",
+    "@@last_modified": "2026-08-10 14:04:46.437561",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10653,5 +10653,12 @@
     "conversationFromDayOne": "Conversation desde le prime die",
     "builtForConnection": "Construite pro connexion",
     "aiWhenYouNeedIt": "IA quando tu lo besonia",
-    "practiceTailoredForYou": "Practica adaptate a te"
+    "practiceTailoredForYou": "Practica adaptate a te",
+    "practiceFeedbackButtonTooltip": "Reportar un problema con iste exercitio",
+    "practiceFeedbackDialogTitle": "Commentario super le Exerctio Practic",
+    "practiceFeedbackSelectPair": "Qual par pare incorrecte?",
+    "practiceFeedbackUserSetEmoji": "Tu ha seligite iste emoji — cambia lo del carta de parola",
+    "practiceFeedbackAlreadyMatched": "Ja correspondite correctemente",
+    "practiceFeedbackUpdated": "Gratias! Le exercitio ha essite actualisate basate super tu commentario.",
+    "practiceFeedbackUnchanged": "Gratias! Tu reporto ha essite registrate, ma le contento remane inalterate."
 }

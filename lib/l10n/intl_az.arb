@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-05 11:42:10.359054",
+    "@@last_modified": "2026-08-10 14:04:43.437815",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2093,5 +2093,12 @@
     "conversationFromDayOne": "İlk gündən söhbət",
     "builtForConnection": "Əlaqə üçün qurulub",
     "aiWhenYouNeedIt": "Ehtiyacınız olanda süni intellekt",
-    "practiceTailoredForYou": "Sizin üçün fərdi təcrübə"
+    "practiceTailoredForYou": "Sizin üçün fərdi təcrübə",
+    "practiceFeedbackButtonTooltip": "Bu tapşırıqla bağlı problemi bildirin",
+    "practiceFeedbackDialogTitle": "Təcrübə Tapşırığı Rəyi",
+    "practiceFeedbackSelectPair": "Hansı cütlük səhv görünür?",
+    "practiceFeedbackUserSetEmoji": "Siz bu emojini seçdiniz — onu söz kartından dəyişdirin",
+    "practiceFeedbackAlreadyMatched": "Artıq düzgün uyğunlaşdırılıb",
+    "practiceFeedbackUpdated": "Təşəkkürlər! Tapşırıq rəyiniz əsasında yeniləndi.",
+    "practiceFeedbackUnchanged": "Təşəkkürlər! Hesabatınız qeydə alındı, lakin məzmun dəyişməz qaldı."
 }

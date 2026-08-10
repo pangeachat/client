@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-05 11:42:16.804478",
+    "@@last_modified": "2026-08-10 14:04:57.087179",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10666,5 +10666,12 @@
     "conversationFromDayOne": "Razgovor od prvog dana",
     "builtForConnection": "Napravljeno za povezivanje",
     "aiWhenYouNeedIt": "AI kada vam zatreba",
-    "practiceTailoredForYou": "Vežba krojena po vašoj meri"
+    "practiceTailoredForYou": "Vežba krojena po vašoj meri",
+    "practiceFeedbackButtonTooltip": "Prijavite problem sa ovom vežbom",
+    "practiceFeedbackDialogTitle": "Povratne informacije o vežbi",
+    "practiceFeedbackSelectPair": "Koji par izgleda pogrešno?",
+    "practiceFeedbackUserSetEmoji": "Izabrali ste ovaj emodži — promenite ga sa kartice reči",
+    "practiceFeedbackAlreadyMatched": "Već je tačno upareno",
+    "practiceFeedbackUpdated": "Hvala! Vežba je ažurirana na osnovu vaših povratnih informacija.",
+    "practiceFeedbackUnchanged": "Hvala! Vaš izveštaj je zabeležen, ali sadržaj je ostao nepromenjen."
 }
