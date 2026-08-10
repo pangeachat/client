@@ -13,7 +13,6 @@ import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreo_record_model.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_representation_event.dart';
@@ -937,29 +936,33 @@ class PangeaMessageEvent {
           );
   }
 
-  /// Persists a token-info-feedback correction ([tokensSent]) for this
-  /// message.
-  Future<void> sendTokenCorrection(
+  /// Persists a token-info-feedback correction ([tokensSent]) as an atomic
+  /// correction representation: a child `pangea.representation` event with
+  /// the corrected tokens embedded in its content. Not an `m.replace` edit —
+  /// a third party cannot edit someone else's message (the read path discards
+  /// such edits, spec-correctly), but anyone may relate a correction event,
+  /// so this works on received messages too.
+  Future<Event?> sendTokenCorrection(
     String fullText,
     PangeaMessageTokens tokensSent,
   ) async {
-    // No dosage message-envelope emit here: this is an EDIT/re-send of an
-    // already-counted message (token-feedback correction), not a new learner
-    // turn — emitting would double-count. A.3 reconciles turns from the
-    // event_log by distinct message, so the original send already counts.
-    await room.pangeaSendTextEvent(
-      fullText,
-      editEventId: eventId,
-      originalWritten: originalWritten?.content,
-      tokensSent: tokensSent,
-      tokensWritten: originalWritten?.tokens != null
-          ? PangeaMessageTokens(
-              tokens: originalWritten!.tokens!,
-              detections: originalWritten?.detections,
-            )
-          : null,
-      choreo: originalSent?.choreo,
-      messageTag: ChoreoConstants.tokenFeedbackEdit,
+    final representation = PangeaRepresentation(
+      langCode:
+          tokensSent.detections?.firstOrNull?.langCode ??
+          correctedSent?.langCode ??
+          LanguageKeys.unknownLanguage,
+      text: fullText,
+      originalSent: false,
+      originalWritten: false,
+      isCorrection: true,
+      tokens: tokensSent,
+    );
+
+    _representations = null;
+    return room.sendPangeaEvent(
+      content: representation.toJson(),
+      parentEventId: _latestEdit.eventId,
+      type: PangeaEventTypes.representation,
     );
   }
 
