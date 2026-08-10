@@ -10,7 +10,7 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// the panel header's expanding search toggle (mounted on demand with
 /// [autofocus] so opening search lands the keyboard in the field, and
 /// [onClose] so the field's close control also collapses the row).
-class PangeaChatListSearchField extends StatelessWidget {
+class PangeaChatListSearchField extends StatefulWidget {
   final ChatListController controller;
   final bool globalSearch;
   final bool autofocus;
@@ -24,14 +24,34 @@ class PangeaChatListSearchField extends StatelessWidget {
     this.onClose,
   });
 
+  @override
+  State<PangeaChatListSearchField> createState() =>
+      _PangeaChatListSearchFieldState();
+}
+
+class _PangeaChatListSearchFieldState extends State<PangeaChatListSearchField> {
+  @override
+  void initState() {
+    super.initState();
+    // TextField.autofocus is a no-op when the surrounding scope already has
+    // a focused node — which it does right after the user taps the search
+    // toggle — so request focus explicitly once the field is mounted.
+    if (widget.autofocus) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) widget.controller.searchFocusNode.requestFocus();
+      });
+    }
+  }
+
   void _close() {
-    controller.cancelSearch();
-    onClose?.call();
+    widget.controller.cancelSearch();
+    widget.onClose?.call();
   }
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final controller = widget.controller;
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: AnimatedSize(
@@ -39,11 +59,11 @@ class PangeaChatListSearchField extends StatelessWidget {
         child: PangeaSearchBar(
           controller: controller.searchController,
           onChanged: (text) =>
-              controller.onSearchEnter(text, globalSearch: globalSearch),
+              controller.onSearchEnter(text, globalSearch: widget.globalSearch),
           labelText: L10n.of(context).searchChatsHint,
           focusNode: controller.searchFocusNode,
-          autofocus: autofocus,
-          suffixIcon: onClose != null
+          autofocus: widget.autofocus,
+          suffixIcon: widget.onClose != null
               ? IconButton(
                   tooltip: L10n.of(context).cancel,
                   icon: const Icon(Icons.close_outlined),
