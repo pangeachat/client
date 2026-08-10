@@ -60,6 +60,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
@@ -3380,7 +3381,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (confirmed != OkCancelResult.ok) return;
     final result = await showFutureLoadingDialog(
       context: context,
-      future: widget.room.leave,
+      future: widget.room.leaveIgnoringUnknownRoom,
     );
 
     if (result.isError) return;

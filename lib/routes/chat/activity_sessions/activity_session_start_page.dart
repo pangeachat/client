@@ -23,6 +23,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
+import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
@@ -423,7 +424,9 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
   /// Leave the session room of a removed activity and close its panel — the
   /// only exit for a session that can never be continued (#8064). Same
   /// confirm-then-wait-for-sync flow as the chat's own leave, so the room is
-  /// gone from the list before the panel closes.
+  /// gone from the list before the panel closes. A session this old is often
+  /// one the homeserver has already forgotten, hence
+  /// [LeaveRoomExtension.leaveIgnoringUnknownRoom].
   Future<void> leaveArchivedSession() async {
     final room = activityRoom;
     if (room == null) return;
@@ -440,7 +443,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
 
     final result = await showFutureLoadingDialog(
       context: context,
-      future: room.leave,
+      future: room.leaveIgnoringUnknownRoom,
     );
     if (result.isError || !mounted) return;
 

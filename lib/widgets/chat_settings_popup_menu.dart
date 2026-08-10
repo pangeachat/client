@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -74,7 +75,7 @@ class ChatSettingsPopupMenuState extends State<ChatSettingsPopupMenu> {
                 if (confirmed != OkCancelResult.ok) return;
                 final result = await showFutureLoadingDialog(
                   context: context,
-                  future: () => widget.room.leave(),
+                  future: () => widget.room.leaveIgnoringUnknownRoom(),
                 );
                 if (result.error == null) {
                   router.go(PRoutes.chatsList);
