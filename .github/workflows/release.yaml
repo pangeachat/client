@@ -107,109 +107,6 @@ jobs:
           asset_name: pangeachat-web.tar.gz
           asset_content_type: application/gzip
 
-  build_apk:
-    needs: create_release
-    runs-on: ubuntu-latest
-    environment: production
-    env:
-      WEB_APP_ENV: ${{ vars.WEB_APP_ENV }}
-    steps:
-      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
-      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: "zulu"
-      - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          cache: true
-      - name: Add Firebase Messaging
-        env:
-          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
-        run: ./scripts/configure-firebase-messaging.sh
-      - name: Set up Android SDK
-        if: ${{ env.ACT }} # Only run on local act setups, as GitHub Actions provides the Android SDK on Ubuntu
-        uses: android-actions/setup-android@7c5672355aaa8fde5f97a91aa9a99616d1ace6bc # v2
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@6ca151fd1bfcfd6fe0c4eb6837eb0584d0134a0c # v1
-        with:
-          ruby-version: "3.3"
-      - name: Update env files to selected environment
-        run: |
-          rm -f .env
-          echo "$WEB_APP_ENV" > .env
-      - name: Apply .env patch
-        run: git apply ./scripts/enable_mobile_env.patch
-      - name: Remove Emoji Font
-        run: |
-          rm -rf fonts/NotoEmoji
-          yq -i 'del( .flutter.fonts[] | select(.family == "NotoEmoji") )' pubspec.yaml
-      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
-      - run: flutter pub get
-      - name: Prepare Android Release Build
-        env:
-          PLAY_STORE_UPLOAD_KEY: ${{ secrets.PLAY_STORE_UPLOAD_KEY }}
-          PLAY_STORE_KEYSTORE_KEY_ALIAS: ${{ secrets.PLAY_STORE_KEYSTORE_KEY_ALIAS }}
-          PLAY_STORE_KEYSTORE_STORE_PASSWORD: ${{ secrets.PLAY_STORE_KEYSTORE_STORE_PASSWORD }}
-          PLAY_STORE_KEYSTORE_KEY_PASSWORD: ${{ secrets.PLAY_STORE_KEYSTORE_KEY_PASSWORD }}
-          PLAY_STORE_CONFIG_JSON: ${{ secrets.PLAY_STORE_CONFIG_JSON }}
-        run: ./scripts/prepare-android-release.sh
-      - run: flutter build apk --release --target-platform android-arm,android-arm64
-      - name: Upload to release
-        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
-        with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: build/app/outputs/flutter-apk/app-release.apk
-          asset_name: pangeachat.apk
-          asset_content_type: application/vnd.android.package-archive
-
-  build_ios:
-    needs: create_release
-    uses: ./.github/workflows/ios-testflight.yml
-    with:
-      environment: production
-    secrets: inherit
-
-  deploy_playstore:
-    needs: create_release
-    uses: ./.github/workflows/android-playstore.yml
-    with:
-      environment: production
-    secrets: inherit
-
-  build_linux:
-    strategy:
-      matrix:
-        arch: [x64]
-    runs-on: ubuntu-latest
-    needs: create_release
-    steps:
-      - uses: actions/checkout@93cb6efe18208431cddfb8368fd83d5badbf9bfd # v5
-      - run: cat .github/workflows/versions.env >> $GITHUB_ENV
-      - name: Install dependencies
-        run: sudo apt-get update && sudo apt-get install curl clang cmake ninja-build pkg-config libgtk-3-dev libblkid-dev liblzma-dev libjsoncpp-dev cmake-data libsecret-1-dev libsecret-1-0 librhash0 libssl-dev libwebkit2gtk-4.1-dev -y
-      - name: Install Flutter
-        run: |
-          git clone --branch ${{ env.FLUTTER_VERSION }} https://github.com/flutter/flutter.git
-          ./flutter/bin/flutter doctor
-      - uses: moonrepo/setup-rust@ede6de059f8046a5e236c94046823e2af11ca670 # v1
-      - run: ./flutter/bin/flutter pub get
-      - run: ./flutter/bin/flutter build linux --target-platform linux-${{ matrix.arch }}
-      - name: Create archive
-        run: tar -czf fluffychat-linux-${{ matrix.arch }}.tar.gz -C build/linux/${{ matrix.arch }}/release/bundle/ .
-      - name: Upload to release
-        uses: actions/upload-release-asset@e8f9f06c4b078e705bd2ea027f0926603fc9b4d5 # v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
-        with:
-          upload_url: ${{ needs.create_release.outputs.upload_url }}
-          asset_path: pangeachat-linux-${{ matrix.arch }}.tar.gz
-          asset_name: pangeachat-linux-${{ matrix.arch }}.tar.gz
-          asset_content_type: application/gzip
-
   deploy_web:
     runs-on: ubuntu-latest
     needs: build_web
@@ -235,6 +132,12 @@ jobs:
         # that owns the environment.
         run: |
           echo "$WEB_APP_ENV" > build/web/.env
+          # Production streaming-STT client gate (Environment.liveStreamingSttEnabled),
+          # enabled the same way staging does in main_deploy.yaml. The choreo backend
+          # gates the actual behavior: while prod streaming is still dark, the session
+          # fails pre-`ready` and the recorder falls back to batch (today's behavior),
+          # so this is safe to ship ahead of the backend flip.
+          echo "LIVE_STREAMING_STT_ENABLED=true" >> build/web/.env
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
         with:
@@ -374,5 +277,5 @@ jobs:
           path: build/web
       - name: Update packages
         run: flutter pub get
-      - name: Upload source maps to Sentry
+      - name: Update sentry
         run: flutter packages pub run sentry_dart_plugin
