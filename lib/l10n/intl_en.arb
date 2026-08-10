@@ -4834,6 +4834,11 @@
     "joinableLabel": "Joinable",
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
+    "chatSearchPageLabel": "Chat search page",
+    "selectImageLabel": "Select image", 
+    "userSearchTagsLabel": "Search in...",
+    "courseDetails": "Course details",
+    "objective": "Objective",
     "emptyInviteSearchHint": "Can't find who you're looking for? They may need to allow their profile to be found in search. Check Edit Profile in Settings.",
     "exitVocabPracticeSession": "Your current vocab practice session progress won't be saved.",
     "exitGrammarPracticeSession": "Your current grammar practice session progress won't be saved.",
@@ -4925,6 +4930,15 @@
     "streamingSttDegradedLiveBanner": "Live transcription is running on a backup service. Quality may vary, please check the text.",
     "streamingSttDegradedToBatchBanner": "Live transcription is unavailable right now. Your message was transcribed the standard way, without live editing. We're working to restore it.",
     "streamingSttLanguageUnsupportedBanner": "Live transcription isn't available for this language yet. We're working on it.",
+    "pingedLabel": "Pinged",
+    "mapFilterPlayerCount": "{count} players",
+    "@mapFilterPlayerCount": {
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "formLabel": "{name} form",
     "@formLabel": {
         "placeholders": {

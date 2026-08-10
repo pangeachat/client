@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/svg.dart';
 
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
@@ -52,27 +53,35 @@ class LevelDisplayName extends StatelessWidget {
                   children: [
                     if (base != null && target != null) ...[
                       if (showFlags) ...[
-                        SvgPicture.network(
-                          base.svgUrl.toString(),
-                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                          placeholderBuilder: (_) => Center(
-                            child: const CircularProgressIndicator(
-                              strokeWidth: 0.5,
+                        ExcludeSemantics(
+                          child: SvgPicture.network(
+                            base.svgUrl.toString(),
+                            errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                            placeholderBuilder: (_) => Center(
+                              child: const CircularProgressIndicator(
+                                strokeWidth: 0.5,
+                              ),
                             ),
+                            width: iconSize ?? 12.0,
+                            height: iconSize ?? 12.0,
                           ),
-                          width: iconSize ?? 12.0,
-                          height: iconSize ?? 12.0,
                         ),
                         SizedBox(width: 4.0),
                       ],
-                      Text(
-                        base.langCodeShort.toUpperCase(),
-                        style:
-                            textStyle ??
-                            TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
+                      Semantics(
+                        label:
+                            "${L10n.of(context).sourceLanguage}: ${base.displayName}",
+                        child: ExcludeSemantics(
+                          child: Text(
+                            base.langCodeShort.toUpperCase(),
+                            style:
+                                textStyle ??
+                                TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                          ),
+                        ),
                       ),
                       Icon(
                         Icons.chevron_right_outlined,
@@ -81,27 +90,35 @@ class LevelDisplayName extends StatelessWidget {
                     ],
                     if (target != null) ...[
                       if (showFlags) ...[
-                        SvgPicture.network(
-                          target.svgUrl.toString(),
-                          errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                          placeholderBuilder: (_) => Center(
-                            child: const CircularProgressIndicator(
-                              strokeWidth: 0.5,
+                        ExcludeSemantics(
+                          child: SvgPicture.network(
+                            target.svgUrl.toString(),
+                            errorBuilder: (_, _, _) => const SizedBox.shrink(),
+                            placeholderBuilder: (_) => Center(
+                              child: const CircularProgressIndicator(
+                                strokeWidth: 0.5,
+                              ),
                             ),
+                            width: iconSize ?? 12.0,
+                            height: iconSize ?? 12.0,
                           ),
-                          width: iconSize ?? 12.0,
-                          height: iconSize ?? 12.0,
                         ),
                         SizedBox(width: 4.0),
                       ],
-                      Text(
-                        target.langCodeShort.toUpperCase(),
-                        style:
-                            textStyle ??
-                            TextStyle(
-                              fontWeight: FontWeight.bold,
-                              color: Theme.of(context).colorScheme.primary,
-                            ),
+                      Semantics(
+                        label:
+                            "${L10n.of(context).targetLanguage}: ${target.displayName}",
+                        child: ExcludeSemantics(
+                          child: Text(
+                            target.langCodeShort.toUpperCase(),
+                            style:
+                                textStyle ??
+                                TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Theme.of(context).colorScheme.primary,
+                                ),
+                          ),
+                        ),
                       ),
                     ],
                     const SizedBox(width: 4.0),

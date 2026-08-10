@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-07 13:12:58.206050",
+    "@@last_modified": "2026-08-07 16:23:26.962117",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "حذف شدہ الفاظ",
     "restore": "بحال کریں",
     "deletedWordLabel": "{lemma}، حذف شدہ",
-    "restoredWords": "{count, plural, =1{1 لفظ بحال کیا گیا} other{{count} الفاظ بحال کیے گئے}}"
+    "restoredWords": "{count, plural, =1{1 لفظ بحال کیا گیا} other{{count} الفاظ بحال کیے گئے}}",
+    "chatSearchPageLabel": "چیٹ سرچ پیج",
+    "selectImageLabel": "تصویر منتخب کریں",
+    "userSearchTagsLabel": "تلاش کریں...",
+    "courseDetails": "کورس کی تفصیلات",
+    "objective": "مقصد",
+    "pingedLabel": "پنگ کیا گیا",
+    "mapFilterPlayerCount": "{count} کھلاڑی"
 }

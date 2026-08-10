@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:55.330912",
+    "@@last_modified": "2026-08-07 16:23:25.718401",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10659,5 +10659,12 @@
     "deletedVocabListLabel": "Izbrisane reči",
     "restore": "Vrati",
     "deletedWordLabel": "{lemma}, izbrisano",
-    "restoredWords": "{count, plural, =1{Vraćena 1 reč} other{Vraćeno {count} reči}}"
+    "restoredWords": "{count, plural, =1{Vraćena 1 reč} other{Vraćeno {count} reči}}",
+    "chatSearchPageLabel": "Stranica za pretragu ćaskanja",
+    "selectImageLabel": "Izaberite sliku",
+    "userSearchTagsLabel": "Pretraži u...",
+    "courseDetails": "Detalji kursa",
+    "objective": "Cilj",
+    "pingedLabel": "Pingovano",
+    "mapFilterPlayerCount": "{count} igrača"
 }

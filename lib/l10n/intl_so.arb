@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-07 13:12:55.171526",
+    "@@last_modified": "2026-08-07 16:23:26.093787",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Erayada la tirtiray",
     "restore": "Soo celi",
     "deletedWordLabel": "{lemma}, la tirtiray",
-    "restoredWords": "{count, plural, =1{Waxaa la soo celiyey 1 eray} other{Waxaa la soo celiyey {count} eray}}"
+    "restoredWords": "{count, plural, =1{Waxaa la soo celiyey 1 eray} other{Waxaa la soo celiyey {count} eray}}",
+    "chatSearchPageLabel": "Bogga raadinta sheekaysiga",
+    "selectImageLabel": "Dooro sawir",
+    "userSearchTagsLabel": "Ka raadi...",
+    "courseDetails": "Faahfaahinta koorsada",
+    "objective": "Ujeeddo",
+    "pingedLabel": "La ping-gareeyay",
+    "mapFilterPlayerCount": "{count} ciyaartoy"
 }

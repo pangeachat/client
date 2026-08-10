@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:56.740825",
+    "@@last_modified": "2026-08-07 16:23:26.425016",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9802,5 +9802,12 @@
     "deletedVocabListLabel": "நீக்கப்பட்ட வார்த்தைகள்",
     "restore": "மீட்டெடு",
     "deletedWordLabel": "{lemma}, நீக்கப்பட்டது",
-    "restoredWords": "{count, plural, =1{1 வார்த்தை மீட்டெடுக்கப்பட்டது} other{{count} வார்த்தைகள் மீட்டெடுக்கப்பட்டன}}"
+    "restoredWords": "{count, plural, =1{1 வார்த்தை மீட்டெடுக்கப்பட்டது} other{{count} வார்த்தைகள் மீட்டெடுக்கப்பட்டன}}",
+    "chatSearchPageLabel": "அரட்டைத் தேடல் பக்கம்",
+    "selectImageLabel": "படத்தைத் தேர்ந்தெடுக்கவும்",
+    "userSearchTagsLabel": "இதில் தேடவும்...",
+    "courseDetails": "பாட விவரங்கள்",
+    "objective": "நோக்கம்",
+    "pingedLabel": "பிங் செய்யப்பட்டது",
+    "mapFilterPlayerCount": "{count} வீரர்கள்"
 }

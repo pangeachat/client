@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-07 13:12:43.011817",
+    "@@last_modified": "2026-08-07 16:23:20.622053",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10146,5 +10146,12 @@
     "deletedVocabListLabel": "Izbrisane riječi",
     "restore": "Vrati",
     "deletedWordLabel": "{lemma}, izbrisano",
-    "restoredWords": "{count, plural, =1{Vraćena 1 riječ} other{Vraćeno {count} riječi}}"
+    "restoredWords": "{count, plural, =1{Vraćena 1 riječ} other{Vraćeno {count} riječi}}",
+    "chatSearchPageLabel": "Stranica za pretraživanje čavrljanja",
+    "selectImageLabel": "Odaberi sliku",
+    "userSearchTagsLabel": "Pretraži u...",
+    "courseDetails": "Detalji tečaja",
+    "objective": "Cilj",
+    "pingedLabel": "Pingano",
+    "mapFilterPlayerCount": "{count} igrača"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:36.783460",
+    "@@last_modified": "2026-08-07 16:23:17.851388",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10338,5 +10338,12 @@
     "deletedVocabListLabel": "মুছে ফেলা শব্দ",
     "restore": "পুনরুদ্ধার করুন",
     "deletedWordLabel": "{lemma}, মুছে ফেলা হয়েছে",
-    "restoredWords": "{count, plural, =1{১টি শব্দ পুনরুদ্ধার করা হয়েছে} other{{count}টি শব্দ পুনরুদ্ধার করা হয়েছে}}"
+    "restoredWords": "{count, plural, =1{১টি শব্দ পুনরুদ্ধার করা হয়েছে} other{{count}টি শব্দ পুনরুদ্ধার করা হয়েছে}}",
+    "chatSearchPageLabel": "চ্যাট অনুসন্ধান পৃষ্ঠা",
+    "selectImageLabel": "ছবি নির্বাচন করুন",
+    "userSearchTagsLabel": "অনুসন্ধান করুন...",
+    "courseDetails": "কোর্সের বিবরণ",
+    "objective": "উদ্দেশ্য",
+    "pingedLabel": "পিং করা হয়েছে",
+    "mapFilterPlayerCount": "{count} জন খেলোয়াড়"
 }

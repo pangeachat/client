@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-07 13:12:52.934681",
+    "@@last_modified": "2026-08-07 16:23:24.774297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "ଡିଲିଟ୍ ହୋଇଥିବା ଶବ୍ଦ",
     "restore": "ରିଷ୍ଟୋର କରନ୍ତୁ",
     "deletedWordLabel": "{lemma}, ଡିଲିଟ୍ ହୋଇଛି",
-    "restoredWords": "{count, plural, =1{1ଟି ଶବ୍ଦ ରିଷ୍ଟୋର ହୋଇଛି} other{{count}ଟି ଶବ୍ଦ ରିଷ୍ଟୋର ହୋଇଛି}}"
+    "restoredWords": "{count, plural, =1{1ଟି ଶବ୍ଦ ରିଷ୍ଟୋର ହୋଇଛି} other{{count}ଟି ଶବ୍ଦ ରିଷ୍ଟୋର ହୋଇଛି}}",
+    "chatSearchPageLabel": "ଚାଟ୍ ସନ୍ଧାନ ପୃଷ୍ଠା",
+    "selectImageLabel": "ଛବି ବାଛନ୍ତୁ",
+    "userSearchTagsLabel": "ଏଥିରେ ଖୋଜନ୍ତୁ...",
+    "courseDetails": "ପାଠ୍ୟକ୍ରମର ବିବରଣୀ",
+    "objective": "ଉଦ୍ଦେଶ୍ୟ",
+    "pingedLabel": "ପିଙ୍ଗ୍ ହୋଇଛି",
+    "mapFilterPlayerCount": "{count} ଖେଳାଳୀ"
 }

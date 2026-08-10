@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-07 13:12:52.771408",
+    "@@last_modified": "2026-08-07 16:23:24.681050",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9795,5 +9795,12 @@
     "deletedVocabListLabel": "Usunięte słowa",
     "restore": "Przywróć",
     "deletedWordLabel": "{lemma}, usunięte",
-    "restoredWords": "{count, plural, =1{Przywrócono 1 słowo} other{Przywrócono {count} słów}}"
+    "restoredWords": "{count, plural, =1{Przywrócono 1 słowo} other{Przywrócono {count} słów}}",
+    "chatSearchPageLabel": "Strona wyszukiwania czatów",
+    "selectImageLabel": "Wybierz obraz",
+    "userSearchTagsLabel": "Szukaj w...",
+    "courseDetails": "Szczegóły kursu",
+    "objective": "Cel",
+    "pingedLabel": "Pingowano",
+    "mapFilterPlayerCount": "{count} graczy"
 }

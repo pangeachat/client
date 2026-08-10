@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-07 13:12:51.194179",
+    "@@last_modified": "2026-08-07 16:23:24.243923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "ဖျက်ထားသောစကားလုံးများ",
     "restore": "ပြန်ယူရန်",
     "deletedWordLabel": "{lemma}, ဖျက်ပြီး",
-    "restoredWords": "{count, plural, =1{စကားလုံး ၁ လုံး ပြန်ယူပြီး} other{စကားလုံး {count} လုံး ပြန်ယူပြီး}}"
+    "restoredWords": "{count, plural, =1{စကားလုံး ၁ လုံး ပြန်ယူပြီး} other{စကားလုံး {count} လုံး ပြန်ယူပြီး}}",
+    "chatSearchPageLabel": "ချက်ရှာဖွေမှုစာမျက်နှာ",
+    "selectImageLabel": "ပုံရွေးပါ",
+    "userSearchTagsLabel": "ရှာဖွေရန်...",
+    "courseDetails": "သင်တန်းအသေးစိတ်",
+    "objective": "ရည်ရွယ်ချက်",
+    "pingedLabel": "ပင်းခေါ်ထားသည်",
+    "mapFilterPlayerCount": "{count} ကစားသမား"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:38.396691",
+    "@@last_modified": "2026-08-07 16:23:18.541041",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9837,5 +9837,12 @@
     "deletedVocabListLabel": "Paraules suprimides",
     "restore": "Restaurar",
     "deletedWordLabel": "{lemma}, suprimit",
-    "restoredWords": "{count, plural, =1{S'ha restaurat 1 paraula} other{S'han restaurat {count} paraules}}"
+    "restoredWords": "{count, plural, =1{S'ha restaurat 1 paraula} other{S'han restaurat {count} paraules}}",
+    "chatSearchPageLabel": "Pàgina de cerca del xat",
+    "selectImageLabel": "Selecciona una imatge",
+    "userSearchTagsLabel": "Cerca a...",
+    "courseDetails": "Detalls del curs",
+    "objective": "Objectiu",
+    "pingedLabel": "Fet ping",
+    "mapFilterPlayerCount": "{count} jugadors"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-07 13:12:42.509366",
+    "@@last_modified": "2026-08-07 16:23:20.578716",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Kalmomin da aka goge",
     "restore": "Maido",
     "deletedWordLabel": "{lemma}, an goge",
-    "restoredWords": "{count, plural, =1{An maido da kalma 1} other{An maido da kalmomi {count}}}"
+    "restoredWords": "{count, plural, =1{An maido da kalma 1} other{An maido da kalmomi {count}}}",
+    "chatSearchPageLabel": "Shafin binciken taɗi",
+    "selectImageLabel": "Zaɓi hoto",
+    "userSearchTagsLabel": "Bincika a...",
+    "courseDetails": "Cikakkun bayanai na darasi",
+    "objective": "Manufa",
+    "pingedLabel": "An yi ping",
+    "mapFilterPlayerCount": "{count} 'yan wasa"
 }

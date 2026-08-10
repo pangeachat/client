@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-07 13:12:55.722646",
+    "@@last_modified": "2026-08-07 16:23:25.909060",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Upu ua tapeina",
     "restore": "Toe faafoʻi",
     "deletedWordLabel": "{lemma}, ua tapeina",
-    "restoredWords": "{count, plural, =1{Ua toe faafoʻi le 1 upu} other{Ua toe faafoʻi upu e {count}}}"
+    "restoredWords": "{count, plural, =1{Ua toe faafoʻi le 1 upu} other{Ua toe faafoʻi upu e {count}}}",
+    "chatSearchPageLabel": "Itulau su'esu'e talatalanoaga",
+    "selectImageLabel": "Filifili ata",
+    "userSearchTagsLabel": "Su'e i totonu...",
+    "courseDetails": "Fa'amatalaga o le kosi",
+    "objective": "Fa'amoemoe",
+    "pingedLabel": "Fa'ailoaina",
+    "mapFilterPlayerCount": "{count} tagata ta'aalo"
 }

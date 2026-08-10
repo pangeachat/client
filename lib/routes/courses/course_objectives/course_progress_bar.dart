@@ -112,15 +112,16 @@ class ProgressBarRow extends StatelessWidget {
       ),
     );
 
-    final result = Semantics(label: label, value: label, child: bar);
-
     // Tap (mobile) and hover (desktop) both surface the exact count.
-    return label == null
-        ? result
-        : Tooltip(
-            message: label,
-            triggerMode: TooltipTriggerMode.tap,
-            child: result,
-          );
+    return Semantics(
+      container: true,
+      child: label == null
+          ? bar
+          : Tooltip(
+              message: label,
+              triggerMode: TooltipTriggerMode.tap,
+              child: bar,
+            ),
+    );
   }
 }

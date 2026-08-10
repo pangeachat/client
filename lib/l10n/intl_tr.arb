@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-07 13:12:57.627744",
+    "@@last_modified": "2026-08-07 16:23:26.858294",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10011,5 +10011,12 @@
     "deletedVocabListLabel": "Silinen kelimeler",
     "restore": "Geri Yükle",
     "deletedWordLabel": "{lemma}, silindi",
-    "restoredWords": "{count, plural, =1{1 kelime geri yüklendi} other{{count} kelime geri yüklendi}}"
+    "restoredWords": "{count, plural, =1{1 kelime geri yüklendi} other{{count} kelime geri yüklendi}}",
+    "chatSearchPageLabel": "Sohbet arama sayfası",
+    "selectImageLabel": "Resim seç",
+    "userSearchTagsLabel": "Araştır...",
+    "courseDetails": "Kurs detayları",
+    "objective": "Hedef",
+    "pingedLabel": "Pinglendi",
+    "mapFilterPlayerCount": "{count} oyuncu"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-07 13:12:55.850223",
+    "@@last_modified": "2026-08-07 16:23:25.765191",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Mashoko akadzimwa",
     "restore": "Dzosera",
     "deletedWordLabel": "{lemma}, yakadzimwa",
-    "restoredWords": "{count, plural, =1{Dzosera izwi rimwe chete} other{Dzosera mazwi {count}}}"
+    "restoredWords": "{count, plural, =1{Dzosera izwi rimwe chete} other{Dzosera mazwi {count}}}",
+    "chatSearchPageLabel": "Peji yekutsvaga chat",
+    "selectImageLabel": "Sarudza mufananidzo",
+    "userSearchTagsLabel": "Tsvaga mu...",
+    "courseDetails": "Ruzivo rwekirasi",
+    "objective": "Chinangwa",
+    "pingedLabel": "Yapindurwa",
+    "mapFilterPlayerCount": "Vatambi {count}"
 }

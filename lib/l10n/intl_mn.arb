@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-07 13:12:50.013944",
+    "@@last_modified": "2026-08-07 16:23:23.487534",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Устгасан үгс",
     "restore": "Сэргээх",
     "deletedWordLabel": "{lemma}, устгасан",
-    "restoredWords": "{count, plural, =1{1 үг сэргээгдсэн} other{{count} үг сэргээгдсэн}}"
+    "restoredWords": "{count, plural, =1{1 үг сэргээгдсэн} other{{count} үг сэргээгдсэн}}",
+    "chatSearchPageLabel": "Чат хайх хуудас",
+    "selectImageLabel": "Зураг сонгох",
+    "userSearchTagsLabel": "Хайх...",
+    "courseDetails": "Хичээлийн дэлгэрэнгүй",
+    "objective": "Зорилго",
+    "pingedLabel": "Дуудсан",
+    "mapFilterPlayerCount": "{count} тоглогч"
 }

@@ -104,8 +104,7 @@ class WorldMapFilterBar extends StatelessWidget {
       ),
       for (final p in WorldMapFilter.partySizeOptions)
         _FilterMenuEntry(
-          label: '$p',
-          leading: groups,
+          label: l10n.mapFilterPlayerCount(p),
           selected: filter.partySize == p,
           onSelected: () => onSetPartySize(p),
         ),
@@ -175,17 +174,14 @@ class WorldMapFilterBar extends StatelessWidget {
   }
 }
 
-/// One option in a filter pill's dropdown: its [label], an optional [leading]
-/// glyph (the people icon for party sizes), whether it is the current
+/// One option in a filter pill's dropdown: its [label], whether it is the current
 /// [selected] value (shown with a check), and the [onSelected] action.
 class _FilterMenuEntry {
   final String label;
-  final Widget? leading;
   final bool selected;
   final VoidCallback onSelected;
   const _FilterMenuEntry({
     required this.label,
-    this.leading,
     required this.selected,
     required this.onSelected,
   });
@@ -217,7 +213,6 @@ class _FilterDropdownPill extends StatelessWidget {
     final fg = active ? scheme.onPrimaryContainer : scheme.onSurfaceVariant;
 
     return PopupMenuButton<_FilterMenuEntry>(
-      tooltip: label,
       position: PopupMenuPosition.under,
       onSelected: (e) => e.onSelected(),
       itemBuilder: (context) => [
@@ -232,13 +227,6 @@ class _FilterDropdownPill extends StatelessWidget {
                       ? Icon(Icons.check, size: 18, color: scheme.primary)
                       : null,
                 ),
-                if (e.leading != null) ...[
-                  IconTheme.merge(
-                    data: const IconThemeData(size: 16),
-                    child: e.leading!,
-                  ),
-                  const SizedBox(width: 6),
-                ],
                 Text(e.label),
               ],
             ),

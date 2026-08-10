@@ -2972,7 +2972,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-07 13:12:48.015788",
+    "@@last_modified": "2026-08-07 16:23:23.023923",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10491,5 +10491,12 @@
     "deletedVocabListLabel": "Ištrinti žodžiai",
     "restore": "Atkurti",
     "deletedWordLabel": "{lemma}, ištrinta",
-    "restoredWords": "{count, plural, =1{Atkurtas 1 žodis} other{Atkurti {count} žodžiai}}"
+    "restoredWords": "{count, plural, =1{Atkurtas 1 žodis} other{Atkurti {count} žodžiai}}",
+    "chatSearchPageLabel": "Pokalbių paieškos puslapis",
+    "selectImageLabel": "Pasirinkti atvaizdą",
+    "userSearchTagsLabel": "Ieškoti...",
+    "courseDetails": "Kurso detalės",
+    "objective": "Tikslas",
+    "pingedLabel": "Papingavo",
+    "mapFilterPlayerCount": "{count} žaidėjų"
 }

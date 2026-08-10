@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-07 13:12:45.147979",
+    "@@last_modified": "2026-08-07 16:23:21.749611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Tembung sing dibusak",
     "restore": "Pulihake",
     "deletedWordLabel": "{lemma}, dibusak",
-    "restoredWords": "{count, plural, =1{1 tembung dipulihake} other{{count} tembung dipulihake}}"
+    "restoredWords": "{count, plural, =1{1 tembung dipulihake} other{{count} tembung dipulihake}}",
+    "chatSearchPageLabel": "Kaca panggolekan obrolan",
+    "selectImageLabel": "Pilih gambar",
+    "userSearchTagsLabel": "Golek ing...",
+    "courseDetails": "Rincian kursus",
+    "objective": "Ancas",
+    "pingedLabel": "Diping",
+    "mapFilterPlayerCount": "{count} pamuter"
 }

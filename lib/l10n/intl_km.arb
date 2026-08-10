@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-07 13:12:45.983313",
+    "@@last_modified": "2026-08-07 16:23:22.257641",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "ពាក្យដែលបានលុប",
     "restore": "ស្ដារ",
     "deletedWordLabel": "{lemma} ដែលបានលុប",
-    "restoredWords": "{count, plural, =1{បានស្ដារពាក្យ ១} other{បានស្ដារពាក្យ {count}}}"
+    "restoredWords": "{count, plural, =1{បានស្ដារពាក្យ ១} other{បានស្ដារពាក្យ {count}}}",
+    "chatSearchPageLabel": "ទំព័រស្វែងរកការជជែក",
+    "selectImageLabel": "ជ្រើសរើសរូបភាព",
+    "userSearchTagsLabel": "ស្វែងរកក្នុង...",
+    "courseDetails": "ព័ត៌មានលម្អិតវគ្គសិក្សា",
+    "objective": "គោលបំណង",
+    "pingedLabel": "បាន Ping",
+    "mapFilterPlayerCount": "{count} អ្នកលេង"
 }

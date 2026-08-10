@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 13:12:40.666659",
+    "@@last_modified": "2026-08-07 16:23:19.428160",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9798,5 +9798,12 @@
     "deletedVocabListLabel": "واژه‌های حذف‌شده",
     "restore": "بازیابی",
     "deletedWordLabel": "{lemma}، حذف‌شده",
-    "restoredWords": "{count, plural, =1{۱ واژه بازیابی شد} other{{count} واژه بازیابی شد}}"
+    "restoredWords": "{count, plural, =1{۱ واژه بازیابی شد} other{{count} واژه بازیابی شد}}",
+    "chatSearchPageLabel": "صفحه جستجوی چت",
+    "selectImageLabel": "انتخاب تصویر",
+    "userSearchTagsLabel": "جستجو در...",
+    "courseDetails": "جزئیات دوره",
+    "objective": "هدف",
+    "pingedLabel": "پینگ شد",
+    "mapFilterPlayerCount": "{count} بازیکن"
 }

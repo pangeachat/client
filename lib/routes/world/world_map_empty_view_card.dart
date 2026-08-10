@@ -58,7 +58,10 @@ class WorldMapEmptyViewCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(message, style: theme.textTheme.bodyMedium),
+            Semantics(
+              container: true,
+              child: Text(message, style: theme.textTheme.bodyMedium),
+            ),
             if (offersZoom || offersWiden) ...[
               const SizedBox(height: 8),
               Wrap(

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-07 13:12:54.607202",
+    "@@last_modified": "2026-08-07 16:23:25.365378",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "මකා දැමූ වචන",
     "restore": "ප්‍රතිසාධනය කරන්න",
     "deletedWordLabel": "{lemma}, මකා දමා ඇත",
-    "restoredWords": "{count, plural, =1{වචන 1ක් ප්‍රතිසාධනය කරන ලදී} other{වචන {count}ක් ප්‍රතිසාධනය කරන ලදී}}"
+    "restoredWords": "{count, plural, =1{වචන 1ක් ප්‍රතිසාධනය කරන ලදී} other{වචන {count}ක් ප්‍රතිසාධනය කරන ලදී}}",
+    "chatSearchPageLabel": "චැට් සෙවුම් පිටුව",
+    "selectImageLabel": "රූපය තෝරන්න",
+    "userSearchTagsLabel": "සොයන්න...",
+    "courseDetails": "පාඨමාලා විස්තර",
+    "objective": "අරමුණ",
+    "pingedLabel": "පිං කරන ලදී",
+    "mapFilterPlayerCount": "{count} ක්‍රීඩකයන්"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-07 13:12:47.852200",
+    "@@last_modified": "2026-08-07 16:23:23.135341",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "ຄຳສັບທີ່ຖືກລຶບ",
     "restore": "ກູ້ຄືນ",
     "deletedWordLabel": "{lemma}, ຖືກລຶບ",
-    "restoredWords": "{count, plural, =1{ກູ້ຄືນ 1 ຄຳສັບແລ້ວ} other{ກູ້ຄືນ {count} ຄຳສັບແລ້ວ}}"
+    "restoredWords": "{count, plural, =1{ກູ້ຄືນ 1 ຄຳສັບແລ້ວ} other{ກູ້ຄືນ {count} ຄຳສັບແລ້ວ}}",
+    "chatSearchPageLabel": "ໜ້າຊອກຫາການສົນທະນາ",
+    "selectImageLabel": "ເລືອກຮູບພາບ",
+    "userSearchTagsLabel": "ຊອກຫາໃນ...",
+    "courseDetails": "ລາຍລະອຽດຫຼັກສູດ",
+    "objective": "ຈຸດປະສົງ",
+    "pingedLabel": "ຖືກປິງແລ້ວ",
+    "mapFilterPlayerCount": "{count} ຜູ້ຫຼິ້ນ"
 }

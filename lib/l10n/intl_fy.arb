@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-07 13:12:41.607491",
+    "@@last_modified": "2026-08-07 16:23:19.705853",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2098,5 +2098,12 @@
     "deletedVocabListLabel": "Wiskje wurden",
     "restore": "Weromsette",
     "deletedWordLabel": "{lemma}, wiske",
-    "restoredWords": "{count, plural, =1{1 wurd weromset} other{{count} wurden weromset}}"
+    "restoredWords": "{count, plural, =1{1 wurd weromset} other{{count} wurden weromset}}",
+    "chatSearchPageLabel": "Petear sykpagina",
+    "selectImageLabel": "Ofbylding selektearje",
+    "userSearchTagsLabel": "Sykje yn...",
+    "courseDetails": "Kursusdetails",
+    "objective": "Doel",
+    "pingedLabel": "Pingd",
+    "mapFilterPlayerCount": "{count} spilers"
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
@@ -164,12 +165,18 @@ class _WorldMapSearchOverlayState extends State<WorldMapSearchOverlay> {
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            subtitle: Text(
-                              [card.l2, card.cefr]
-                                  .where((s) => s != null && s.isNotEmpty)
-                                  .join(' · '),
-                              maxLines: 1,
-                              overflow: TextOverflow.ellipsis,
+                            subtitle: Semantics(
+                              label:
+                                  "${PLanguageStore.byLangCode(card.l2)?.displayName ?? card.l2}, ${card.cefr}",
+                              child: ExcludeSemantics(
+                                child: Text(
+                                  [card.l2, card.cefr]
+                                      .where((s) => s != null && s.isNotEmpty)
+                                      .join(' · '),
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
                             ),
                             onTap: () => widget.onResultTap(card),
                           );

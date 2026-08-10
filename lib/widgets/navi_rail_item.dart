@@ -107,6 +107,10 @@ class NaviRailItem extends StatelessWidget {
                               borderRadius: borderRadius,
                               child: Tooltip(
                                 message: toolTip,
+                                // Delay so items sweeping under the cursor
+                                // while the rail scrolls don't spawn tooltips
+                                // and stall the scroll (#8215).
+                                waitDuration: const Duration(milliseconds: 500),
                                 child: InkWell(
                                   borderRadius: borderRadius,
                                   onTap: onTap,

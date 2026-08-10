@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/customized_svg.dart';
 
 /// The gold ribbon/shield that represents a learner's level across the app —
@@ -45,27 +46,30 @@ class LevelRibbon extends StatelessWidget {
     final level = this.level;
     if (level == null) return ribbon;
 
-    return SizedBox(
-      width: width,
-      height: height,
-      child: Stack(
-        alignment: Alignment.center,
-        children: [
-          ribbon,
-          // The number sits slightly above the ribbon's notched base.
-          Padding(
-            padding: EdgeInsets.only(bottom: height * 0.11),
-            child: Text(
-              '$level',
-              style: TextStyle(
-                fontSize: height * 0.42,
-                height: 1.0,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
+    return Semantics(
+      label: L10n.of(context).level,
+      child: SizedBox(
+        width: width,
+        height: height,
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            ribbon,
+            // The number sits slightly above the ribbon's notched base.
+            Padding(
+              padding: EdgeInsets.only(bottom: height * 0.11),
+              child: Text(
+                '$level',
+                style: TextStyle(
+                  fontSize: height * 0.42,
+                  height: 1.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
