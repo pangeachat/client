@@ -89,7 +89,6 @@ class UserDialog extends StatelessWidget {
 
               return SingleChildScrollView(
                 child: Column(
-                  spacing: 8,
                   mainAxisSize: .min,
                   crossAxisAlignment: .stretch,
                   children: [
@@ -149,6 +148,7 @@ class UserDialog extends StatelessWidget {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 8),
                     Center(
                       child: ExcludeSemantics(
                         child: Avatar(
@@ -165,21 +165,28 @@ class UserDialog extends StatelessWidget {
                         ),
                       ),
                     ),
-                    if (presenceText != null)
+                    if (presenceText != null) ...[
+                      const SizedBox(height: 8),
                       Text(
                         presenceText,
                         style: const TextStyle(fontSize: 10),
                         textAlign: TextAlign.center,
                       ),
-                    Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Column(
-                        children: [
-                          LevelDisplayName(userId: profile.userId),
-                          CountryDisplay(userId: profile.userId),
-                          AboutMeDisplay(userId: profile.userId),
-                        ],
-                      ),
+                    ],
+                    // Each of these draws nothing at all when the user has no
+                    // such data — the bot has none of it — so nothing may pad
+                    // or space them from the outside: that padding is what left
+                    // an empty band under the activeness status (#8238). Each
+                    // line brings its own spacing when it has something to say.
+                    Column(
+                      children: [
+                        LevelDisplayName(
+                          userId: profile.userId,
+                          padding: const EdgeInsets.symmetric(vertical: 8.0),
+                        ),
+                        CountryDisplay(userId: profile.userId),
+                        AboutMeDisplay(userId: profile.userId),
+                      ],
                     ),
                   ],
                 ),
