@@ -144,6 +144,7 @@ class ActivityRatingCardState extends State<ActivityRatingCard> {
                         )
                       : Column(
                           mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
                           spacing: 8.0,
                           children: [
                             Row(
