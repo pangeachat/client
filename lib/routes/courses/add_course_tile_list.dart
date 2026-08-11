@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/courses/add_course_tile.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 
@@ -32,9 +33,23 @@ class AddCourseTileList extends StatelessWidget {
           final adjustedIndex = index - content.length;
           return extraContent?[adjustedIndex] ?? SizedBox.shrink();
         }
-        return AddCourseTile(
-          content: content[index],
-          onTap: () => onTap(index),
+        // Mobile has no nav rail, so the courses list is where an admin sees
+        // that someone is knocking — the same red "!" the rail's course avatar
+        // wears (#8246). Only room-backed tiles can have a knock; previews and
+        // course-plan suggestions skip the member request entirely.
+        final tileContent = content[index];
+        final space = tileContent.space;
+        if (space == null) {
+          return AddCourseTile(content: tileContent, onTap: () => onTap(index));
+        }
+
+        return KnockingUsersBuilder(
+          room: space,
+          builder: (context, knockingUsers) => AddCourseTile(
+            content: tileContent,
+            onTap: () => onTap(index),
+            hasKnockingUsers: knockingUsers.isNotEmpty,
+          ),
         );
       },
     );

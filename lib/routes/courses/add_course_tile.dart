@@ -11,11 +11,17 @@ class AddCourseTile extends StatelessWidget {
   final VoidCallback? onTap;
   final bool expanded;
 
+  /// Someone is knocking on this course and the viewer is an admin who can act
+  /// on it — the avatar wears the red "!" badge, outranking the course-ping
+  /// bell. Supplied by [AddCourseTileList], which watches the member list.
+  final bool hasKnockingUsers;
+
   const AddCourseTile({
     super.key,
     required this.content,
     this.onTap,
     this.expanded = false,
+    this.hasKnockingUsers = false,
   });
 
   @override
@@ -31,11 +37,18 @@ class AddCourseTile extends StatelessWidget {
 
     // An invited course hides its member/level chips, so the participant count
     // would announce detail that isn't on screen — lead with the state instead.
-    final label = invited
+    final courseLabel = invited
         ? '$title, ${L10n.of(context).invited}'
         : members != null
         ? '$title, ${L10n.of(context).countParticipants(members)}'
         : title;
+
+    // The knock badge is a bare icon nested inside the tile's own labeled
+    // button node, so the state rides the tile label as well — the same way
+    // `invited` does — rather than relying on the nested node being announced.
+    final label = hasKnockingUsers
+        ? '$courseLabel, ${L10n.of(context).aUserIsKnocking}'
+        : courseLabel;
 
     return Material(
       type: MaterialType.transparency,
@@ -67,6 +80,7 @@ class AddCourseTile extends StatelessWidget {
                       unreadCoursePingEvent: unreadCoursePingEvent,
                       courseChildrenIds: courseChildrenIds,
                       invite: invited,
+                      hasKnockingUsers: hasKnockingUsers,
                     ),
                     Expanded(
                       child: Column(
