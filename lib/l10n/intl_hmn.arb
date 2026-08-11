@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-11 13:17:27.437610",
+    "@@last_modified": "2026-08-11 14:01:24.732771",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Thaum muaj lus tshiab tuaj",
     "audioOnNewMessageDescription": "Nyeem cov lus tshiab uas tau txais hauv koj hom lus kaw kom nrov nrov.",
     "audioOnMessageClickToolName": "Thaum nias lus",
-    "audioOnMessageClickDescription": "Nyeem ib cov lus kom nrov nrov hauv koj hom lus kaw thaum koj nias rau nws."
+    "audioOnMessageClickDescription": "Nyeem ib cov lus kom nrov nrov hauv koj hom lus kaw thaum koj nias rau nws.",
+    "audioSettingDisabledTitle": "{toolName} lub suab raug kaw",
+    "audioSettingDisabledBody": "Koj tuaj yeem qhib {toolName} lub suab hauv koj qhov chaw kawm",
+    "audioSettingDisabledEnable": "Qhib"
 }

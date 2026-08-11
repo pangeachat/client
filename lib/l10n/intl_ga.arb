@@ -3568,7 +3568,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-11 13:17:26.233278",
+    "@@last_modified": "2026-08-11 14:01:24.085875",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9737,5 +9737,8 @@
     "audioOnNewMessageToolName": "Ar theachtaireacht nua",
     "audioOnNewMessageDescription": "Léigh teachtaireachtaí nua a fhaightear os ard go huathoibríoch i do sprioc-theanga.",
     "audioOnMessageClickToolName": "Ar chliceáil teachtaireachta",
-    "audioOnMessageClickDescription": "Léigh teachtaireacht os ard i do sprioc-theanga nuair a chliceálann tú uirthi."
+    "audioOnMessageClickDescription": "Léigh teachtaireacht os ard i do sprioc-theanga nuair a chliceálann tú uirthi.",
+    "audioSettingDisabledTitle": "Fuaime {toolName} díchumasaithe",
+    "audioSettingDisabledBody": "Is féidir leat fuaim {toolName} a chumasú i do shocruithe foghlama",
+    "audioSettingDisabledEnable": "Cumasaigh"
 }

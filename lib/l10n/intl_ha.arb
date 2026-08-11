@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-11 13:17:27.083078",
+    "@@last_modified": "2026-08-11 14:01:23.976991",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "A sabon saƙo",
     "audioOnNewMessageDescription": "Karanta sabbin saƙonnin da aka karɓa da babbar murya ta atomatik a cikin yaren da kake so.",
     "audioOnMessageClickToolName": "A danna saƙo",
-    "audioOnMessageClickDescription": "Karanta saƙo da babbar murya a cikin yaren da kake so lokacin da ka danna shi."
+    "audioOnMessageClickDescription": "Karanta saƙo da babbar murya a cikin yaren da kake so lokacin da ka danna shi.",
+    "audioSettingDisabledTitle": "An kashe sautin {toolName}",
+    "audioSettingDisabledBody": "Kuna iya kunna sautin {toolName} a saitunan koyon ku",
+    "audioSettingDisabledEnable": "Kunna"
 }

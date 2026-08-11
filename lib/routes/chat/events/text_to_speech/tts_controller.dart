@@ -507,7 +507,7 @@ class TtsController {
         );
       }
     } else if (targetID != null && context != null) {
-      TtsDisabledPopup.show(context, targetID);
+      TtsDisabledPopup.show(context, targetID, gate);
     }
 
     onStop?.call();

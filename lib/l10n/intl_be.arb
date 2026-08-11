@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-11 13:17:23.600606",
+    "@@last_modified": "2026-08-11 14:01:21.484003",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9740,5 +9740,8 @@
     "audioOnNewMessageToolName": "На новае паведамленне",
     "audioOnNewMessageDescription": "Аўтаматычна чытаць услых новыя атрыманыя паведамленні на вашай мэтавай мове.",
     "audioOnMessageClickToolName": "Па кліку на паведамленне",
-    "audioOnMessageClickDescription": "Чытаць паведамленне ўслых на вашай мэтавай мове, калі вы націскаеце на яго."
+    "audioOnMessageClickDescription": "Чытаць паведамленне ўслых на вашай мэтавай мове, калі вы націскаеце на яго.",
+    "audioSettingDisabledTitle": "Аўдыё {toolName} адключана",
+    "audioSettingDisabledBody": "Вы можаце ўключыць аўдыё {toolName} у наладах навучання",
+    "audioSettingDisabledEnable": "Уключыць"
 }

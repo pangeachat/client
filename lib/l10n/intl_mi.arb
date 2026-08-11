@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-11 13:17:30.388048",
+    "@@last_modified": "2026-08-11 14:01:27.271917",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "I te karere hou",
     "audioOnNewMessageDescription": "Pānuitia aunoatia ngā karere hou ka tae mai i tō reo whāinga.",
     "audioOnMessageClickToolName": "I te pāwhiritanga karere",
-    "audioOnMessageClickDescription": "Pānuitia te karere i tō reo whāinga ina pāwhiri koe i runga."
+    "audioOnMessageClickDescription": "Pānuitia te karere i tō reo whāinga ina pāwhiri koe i runga.",
+    "audioSettingDisabledTitle": "Kua monokia te oro {toolName}",
+    "audioSettingDisabledBody": "Ka taea e koe te whakahohe i te oro {toolName} i roto i ō tautuhinga ako",
+    "audioSettingDisabledEnable": "Whakahohe"
 }

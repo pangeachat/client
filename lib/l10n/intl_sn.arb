@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-11 13:17:34.040230",
+    "@@last_modified": "2026-08-11 14:01:30.652905",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Pamusoro pemeseji itsva",
     "audioOnNewMessageDescription": "Verenga meseji itsva dzagamuchirwa zvinonzwika mururimi rwako rwaunoda.",
     "audioOnMessageClickToolName": "Pakudzvanya meseji",
-    "audioOnMessageClickDescription": "Verenga meseji zvinonzwika mururimi rwako rwaunoda paunoidzvanya."
+    "audioOnMessageClickDescription": "Verenga meseji zvinonzwika mururimi rwako rwaunoda paunoidzvanya.",
+    "audioSettingDisabledTitle": "Ruzha rwe {toolName} rwakadzimwa",
+    "audioSettingDisabledBody": "Unogona kubatidza ruzha rwe {toolName} muzvirongwa zvako zvekudzidza",
+    "audioSettingDisabledEnable": "Batidza"
 }

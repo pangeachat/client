@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-11 13:17:31.591342",
+    "@@last_modified": "2026-08-11 14:01:28.281079",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "नयाँ सन्देशमा",
     "audioOnNewMessageDescription": "तपाईंको लक्षित भाषामा नयाँ प्राप्त सन्देशहरू स्वचालित रूपमा ठूलो स्वरमा पढ्नुहोस्।",
     "audioOnMessageClickToolName": "सन्देश क्लिकमा",
-    "audioOnMessageClickDescription": "तपाईंले सन्देशमा क्लिक गर्दा त्यसलाई तपाईंको लक्षित भाषामा ठूलो स्वरमा पढ्नुहोस्।"
+    "audioOnMessageClickDescription": "तपाईंले सन्देशमा क्लिक गर्दा त्यसलाई तपाईंको लक्षित भाषामा ठूलो स्वरमा पढ्नुहोस्।",
+    "audioSettingDisabledTitle": "{toolName} अडियो असक्षम पारिएको छ",
+    "audioSettingDisabledBody": "तपाईंले आफ्नो सिकाइ सेटिङहरूमा {toolName} अडियो सक्षम पार्न सक्नुहुन्छ",
+    "audioSettingDisabledEnable": "सक्षम पार्नुहोस्"
 }

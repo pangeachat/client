@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-11 13:17:29.196256",
+    "@@last_modified": "2026-08-11 14:01:25.833002",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "ಹೊಸ ಸಂದೇಶದಲ್ಲಿ",
     "audioOnNewMessageDescription": "ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯಲ್ಲಿ ಹೊಸದಾಗಿ ಸ್ವೀಕರಿಸಿದ ಸಂದೇಶಗಳನ್ನು ಸ್ವಯಂಚಾಲಿತವಾಗಿ ಗಟ್ಟಿಯಾಗಿ ಓದಿ.",
     "audioOnMessageClickToolName": "ಸಂದೇಶದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ",
-    "audioOnMessageClickDescription": "ನೀವು ಸಂದೇಶದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ಅದನ್ನು ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯಲ್ಲಿ ಗಟ್ಟಿಯಾಗಿ ಓದಿ."
+    "audioOnMessageClickDescription": "ನೀವು ಸಂದೇಶದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ಅದನ್ನು ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯಲ್ಲಿ ಗಟ್ಟಿಯಾಗಿ ಓದಿ.",
+    "audioSettingDisabledTitle": "{toolName} ಆಡಿಯೋ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
+    "audioSettingDisabledBody": "ನಿಮ್ಮ ಕಲಿಕೆಯ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀವು {toolName} ಆಡಿಯೋವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಬಹುದು",
+    "audioSettingDisabledEnable": "ಸಕ್ರಿಯಗೊಳಿಸಿ"
 }
