@@ -258,7 +258,15 @@ extension ActivityRolesRoomExtension on Room {
   /// `ownRoleState.archivedAt` right after this races the sync echo and can read
   /// null). Returns the existing archived-at when the role is already archived
   /// (no re-write), or null when there is no finished role to archive.
-  Future<DateTime?> archiveActivity() async {
+  ///
+  /// [at] re-persists an archived-at this client already banked instead of
+  /// stamping a fresh one. Every role lives in ONE shared state event, so
+  /// archiving is a read-modify-write of the whole role map and a co-player
+  /// archiving from a stale read drops this user's `archived_at` (#8258). The
+  /// re-write that repairs that must replay the original instant, or the room
+  /// would end up disagreeing with the dosage outcome already emitted against
+  /// it.
+  Future<DateTime?> archiveActivity({DateTime? at}) async {
     final currentRoles = activityRoles ?? ActivityRolesModel.empty;
     final role = ownRoleState;
     if (role == null || !role.isFinished) return null;
@@ -267,7 +275,7 @@ extension ActivityRolesRoomExtension on Room {
     // UTC so the persisted archived_at (and the dosage completed_at derived from
     // it) is an unambiguous instant with an offset, never a bare local
     // wall-clock the server would have to guess a zone for.
-    final archivedAt = DateTime.now().toUtc();
+    final archivedAt = at ?? DateTime.now().toUtc();
     role.archivedAt = archivedAt;
     currentRoles.updateRole(role);
     await client.setRoomStateWithKey(

@@ -120,6 +120,28 @@ void main() {
     },
   );
 
+  test('re-archiving after a co-player overwrote the role map replays the '
+      'original instant, not a fresh one', () async {
+    // Every role lives in ONE shared state event, so a co-player archiving
+    // from a stale read drops this user's archived_at (#8258): the session
+    // pops back into the chat list and its stars unbank. The repair write
+    // must carry the instant this client first banked, or the room would
+    // disagree with the dosage outcome already emitted against it.
+    final banked = DateTime.utc(2026, 1, 1, 12, 30);
+    final room = roomWithRole(finishedRole());
+    FakeMatrixApi.calledEndpoints.clear();
+
+    final returned = await room.archiveActivity(at: banked);
+
+    expect(returned, banked);
+    final body = lastRolePutBody();
+    expect(body, isNotNull, reason: 'the repair was persisted');
+    expect(
+      ((body!['roles'] as Map)['role-1'] as Map)['archived_at'],
+      banked.toIso8601String(),
+    );
+  });
+
   test('returns null when there is no finished role to archive', () async {
     final room = roomWithRole(
       ActivityRoleModel(id: 'role-1', userId: userId, role: 'Interviewer'),
