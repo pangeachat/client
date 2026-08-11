@@ -19,7 +19,7 @@ update_fastlane
 default_platform(:android)
 
 # Date-encoded build code: YYMMDDnn in UTC, e.g. 26081103 for the third build
-# on 2026-08-10. Mirrored in ios/fastlane/Fastfile so one integer is valid on
+# on 2026-08-11. Mirrored in ios/fastlane/Fastfile so one integer is valid on
 # both stores. A store build code has to be a monotonic integer, so it can
 # order builds but never say what is in one — encoding the date at least makes
 # the ordering readable at a glance. The commit SHA is what identifies the

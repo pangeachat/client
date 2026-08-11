@@ -37,7 +37,7 @@ Settings shows `Version: <semver>+<build>` with the build's commit SHA beneath i
 | Platform | Stamped from |
 |---|---|
 | Web | a UTC `ddHHMM` timestamp, applied identically by both web workflows |
-| Android, iOS | a UTC `YYMMDDnn` date code — `26081103` is the third build on 2026-08-10 — assigned by fastlane |
+| Android, iOS | a UTC `YYMMDDnn` date code — `26081103` is the third build on 2026-08-11 — assigned by fastlane |
 
 - **One date code serves both stores.** Google requires a strictly increasing integer across every upload (ceiling 2,100,000,000), and Apple requires one that increases within a version train, so a single always-rising number satisfies both at once. Fastlane takes whichever is higher: the date code, or the store's current highest build plus one. The store is the floor, which is what makes the number strictly increasing rather than merely usually increasing.
 - **The web stamp identifies a build; it does not order one.** Dropping year and month keeps it short, at the cost of resetting on the 1st — so a later build can carry a smaller number, and web build numbers must not be compared to judge which is newer. That reset is also why web's scheme cannot be reused for mobile. Both web workflows share one scheme so staging and production draw from the same sequence; per-workflow run counters were tried first and drifted thousands of builds apart.
