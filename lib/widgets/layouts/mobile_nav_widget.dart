@@ -162,6 +162,14 @@ class MobileNavWidget extends StatefulWidget {
   /// settle a few pt low (#7754). Zero when no keyboard is up.
   final double keyboardInset;
 
+  /// Whether this cavity persists its rest height across opens (the static
+  /// [_heightByKey] memory that lets a course/chats sheet reopen at the size the
+  /// learner left it). False for the activity plan: its open stop is
+  /// deterministic — every open re-derives to the default (minimized), and a
+  /// manual drag/expand is never remembered — so a maximized activity can't
+  /// carry that height into a later reopen (activity-start-page.instructions.md).
+  final bool rememberHeight;
+
   const MobileNavWidget({
     required this.activeSection,
     this.courseShortcutIcon,
@@ -185,6 +193,7 @@ class MobileNavWidget extends StatefulWidget {
     this.tapBodyExpands = false,
     this.hideRail = false,
     this.keyboardInset = 0.0,
+    this.rememberHeight = true,
     super.key,
   });
 
@@ -368,6 +377,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     // close FORGETS the entry ([didUpdateWidget]), so a fresh open with no stored
     // height falls back to the peek default — the deterministic entry state
     // (#7609). Section sheets read the same memory (#7510).
+    // A non-remembering cavity (the activity plan) ignores the stored height and
+    // always re-derives its default, so every open is deterministic.
+    if (!widget.rememberHeight) return _defaultHeight();
     final key = widget.cavityKey;
     if (key == null) return NavCavityHeight.collapsed;
     return MobileNavWidget._heightByKey[key] ?? _defaultHeight();
@@ -378,6 +390,8 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
       : NavCavityHeight.half;
 
   void _remember(NavCavityHeight height) {
+    // The activity plan never persists its height (see [rememberHeight]).
+    if (!widget.rememberHeight) return;
     final key = widget.cavityKey;
     if (key == null) return;
     // Dragging a SECTION sheet fully down is a dismissal, not a height
@@ -936,8 +950,16 @@ class _NavCavity extends StatelessWidget {
     // the cavity is always a hit target: without it, taps on the sheet's dead
     // space fell through to the world map behind and deselected the course
     // (#7609).
+    // Excluded from semantics: with the a11y tree on, a tappable node becomes a
+    // `pointer-events: all` DOM element on Flutter web that blankets the map and
+    // swallows pin/empty-map clicks (the #8013 class). The body tap-to-expand is
+    // a sighted-pointer convenience only — the drag handle below carries the
+    // accessible expand (its own `Semantics(button, onTap: onHandleTap)`), so
+    // dropping this node loses nothing for AT. The opaque hit-test (so dead-space
+    // taps don't fall through and deselect, #7609) is unaffected.
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
+      excludeFromSemantics: true,
       onTap: onBodyTap,
       onVerticalDragStart: onDragStart,
       onVerticalDragUpdate: onDragUpdate,

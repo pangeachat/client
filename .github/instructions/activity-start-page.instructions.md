@@ -32,6 +32,8 @@ Below the info row the middle content (media carousel, description, suggested vo
 - otherwise, if any **joinable** open session exists, **Join open session** is primary (Start becomes a following chip);
 - otherwise **Start** is primary.
 
+When the chips fit the row, the primary CTA **stretches to fill** the free width; the row falls back to horizontal scrolling only when they overflow.
+
 A **Completed** chip appears only when the viewer has completed sessions to review — their own, or (for a course admin) everyone's with their own listed first — and opens the completed-sessions subpage. Every chip already has a destination — the selection logic is [`_NotStartedSessionCTAButtons`](../../lib/routes/chat/activity_sessions/activity_session_button_widget.dart) and the state machine in [`activity_session_start_page.dart`](../../lib/routes/chat/activity_sessions/activity_session_start_page.dart); this change is about layout, not about adding destinations. Every non-primary chip — including share and flag — uses the light filled-container style, not a bare outline.
 
 **On web** the CTA section is a vertical list carrying the same colour hierarchy as the mobile row: exactly one **primary** (darker, filled) action on top — chosen by the same ongoing → Join → Start rule — with every following action a fully filled but **lighter** (primaryContainer) button, not a bare outline. A **Completed** button joins the list on the same terms as the mobile chip. The waiting room is the one exception to the single-primary rule: ping the course, play with the bot, and invite a friend are equally valid ways forward, so none leads and all take the lighter style. There is no horizontal CTA row on web.

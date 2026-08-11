@@ -149,9 +149,6 @@ class NotStartedSessionController extends State<NotStartedSession>
   ActivitySessionsStatusModel get activityStatuses =>
       widget.summaries.activitySessionStatuses;
 
-  /// A course admin oversees the whole course, so their Completed view lists
-  /// every finished session; a regular learner — and anyone on a standalone
-  /// activity, which has no course to be admin of — sees only their own.
   bool get isCourseAdmin => widget.course?.isRoomAdmin == true;
 
   String? get _ownUserId => Matrix.of(context).client.userID;
@@ -159,25 +156,22 @@ class NotStartedSessionController extends State<NotStartedSession>
   Map<String, RoomSummaryResponse> get _completedSessions =>
       activityStatuses.getSessionsByStatus(ActivitySummaryStatus.completed);
 
-  /// Completed sessions the current learner personally finished — their role in
-  /// the session is archived ([RoomSummaryResponse.isCompleteByUserId]), so a
-  /// session others wrapped up after they left doesn't read as theirs.
-  Map<String, RoomSummaryResponse> get _ownCompletedSessions {
-    final userId = _ownUserId;
-    if (userId == null) return {};
-    return Map.fromEntries(
-      _completedSessions.entries.where(
-        (e) => e.value.isCompleteByUserId(userId),
-      ),
-    );
-  }
-
-  /// The completed sessions the Completed subpage lists for this viewer: an
-  /// admin sees them all with their own floated to the top; everyone else sees
-  /// only their own.
+  /// The completed sessions the Completed subpage lists for this viewer. A course admin oversees
+  /// the whole course, so they see every finished session with their own floated
+  /// to the top; everyone else — including anyone on a standalone activity,
+  /// which has no course to administer — sees only the sessions they personally
+  /// finished (their role archived, [RoomSummaryResponse.isCompleteByUserId], so
+  /// one others wrapped up after they left doesn't read as theirs).
   Map<String, RoomSummaryResponse> get visibleCompletedSessions {
-    if (!isCourseAdmin) return _ownCompletedSessions;
     final userId = _ownUserId;
+    if (!isCourseAdmin) {
+      if (userId == null) return {};
+      return Map.fromEntries(
+        _completedSessions.entries.where(
+          (e) => e.value.isCompleteByUserId(userId),
+        ),
+      );
+    }
     final entries = _completedSessions.entries.toList();
     if (userId != null) {
       entries.sort((a, b) {
@@ -189,10 +183,14 @@ class NotStartedSessionController extends State<NotStartedSession>
     return Map.fromEntries(entries);
   }
 
-  /// The Completed CTA and subpage appear when this viewer has at least one
-  /// completed session to review: any completed session for an admin, or one
-  /// the learner finished themselves otherwise.
-  bool get hasCompletedSessions => visibleCompletedSessions.isNotEmpty;
+  /// Whether [visibleCompletedSessions] has anything — tested cheaply (no build
+  /// or sort of the collection) since it gates several CTAs on every rebuild.
+  bool get hasCompletedSessions {
+    if (isCourseAdmin) return _completedSessions.isNotEmpty;
+    final userId = _ownUserId;
+    return userId != null &&
+        _completedSessions.values.any((s) => s.isCompleteByUserId(userId));
+  }
 
   Future<int> get neededCourseParticipants async {
     // No course: the session launches standalone (the bot fills in), so no
@@ -211,7 +209,8 @@ class NotStartedSessionController extends State<NotStartedSession>
   }
 
   void startNewActivity() {
-    widget.scrollController.jumpTo(0);
+    //Nothing to jump to if container is minimized, so skip
+    if (widget.scrollController.hasClients) widget.scrollController.jumpTo(0);
     final course = widget.course;
     // With a course, launch scoped to it; otherwise launch the activity as a
     // standalone immersive panel over the map (no course context to clear —

@@ -208,12 +208,12 @@ class ActivitySessionStartView extends StatelessWidget {
                     final compact =
                         constraints.maxHeight.isFinite &&
                         constraints.maxHeight < kActivityCompactMaxHeight;
-                    // Snug: no scroll content, so no Expanded — the CTA sits
-                    // directly under the info row (mirrors the course card's
-                    // compact peek).
+                    // No scroll content at this rest, so fill the short sheet and
+                    // space the info row and CTA evenly down it — the slack reads
+                    // as breathing room rather than a gap under the CTA.
                     if (compact) {
                       return Column(
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           _ActivityStartInfoRow(activity: activity),
                           ActivitySessionButtons(

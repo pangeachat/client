@@ -36,7 +36,7 @@ class ActivitySessionButtons extends StatelessWidget {
     if (compact) {
       return Padding(
         padding: const EdgeInsets.fromLTRB(12.0, 4.0, 8.0, 12.0),
-        child: _SessionCTAButtons(sessionController),
+        child: _SessionCTAButtons(sessionController, compact: compact),
       );
     }
 
@@ -73,7 +73,7 @@ class ActivitySessionButtons extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                       ),
-                    _SessionCTAButtons(sessionController),
+                    _SessionCTAButtons(sessionController, compact: compact),
                   ],
                 ),
               ),
@@ -147,7 +147,11 @@ class ActivitySessionCTAButton extends StatelessWidget {
 class _SessionCTAButtons extends StatelessWidget {
   final ActivitySessionStateController controller;
 
-  const _SessionCTAButtons(this.controller);
+  /// True at the minimized mobile rest — lets the not-started CTAs drop actions
+  /// that don't fit (and aren't needed) in the short sheet.
+  final bool compact;
+
+  const _SessionCTAButtons(this.controller, {this.compact = false});
 
   @override
   Widget build(BuildContext context) {
@@ -162,7 +166,7 @@ class _SessionCTAButtons extends StatelessWidget {
     }
 
     if (controller is NotStartedSessionController) {
-      return _NotStartedSessionCTAButtons(controller);
+      return _NotStartedSessionCTAButtons(controller, compact: compact);
     }
 
     if (controller is ConfirmedRoleSessionController) {
@@ -207,7 +211,8 @@ class _FullSessionCTAButtons extends StatelessWidget {
 
 class _NotStartedSessionCTAButtons extends StatelessWidget {
   final NotStartedSessionController controller;
-  const _NotStartedSessionCTAButtons(this.controller);
+  final bool compact;
+  const _NotStartedSessionCTAButtons(this.controller, {this.compact = false});
 
   @override
   Widget build(BuildContext context) {
@@ -252,13 +257,17 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                   L10n.of(context).inviteFriendsToCourse,
                   controller.inviteToCourse,
                 ),
-              // Primary only when it leads — with invite above it, it drops to
-              // the lighter secondary so a single darker CTA stays on top.
-              ActivitySessionCTAButton(
-                L10n.of(context).pickDifferentActivity,
-                controller.goToCourse,
-                secondary: controller.canInviteToCourse,
-              ),
+              // Only when the sheet is roomy (maximized / web). It just leaves
+              // the activity — unnecessary in the minimized map view, and it
+              // wouldn't fit the short rest. Maximized it returns to the course
+              // card, or closes back to the map. Primary only when it leads;
+              // with invite above it, it drops to the lighter secondary.
+              if (!compact)
+                ActivitySessionCTAButton(
+                  L10n.of(context).pickDifferentActivity,
+                  controller.goToCourse,
+                  secondary: controller.canInviteToCourse,
+                ),
             ],
           );
         }
@@ -301,9 +310,8 @@ class _NotStartedSessionCTAButtons extends StatelessWidget {
                   icon: ActivityPinState.available.icon,
                 ),
             ],
-            // Completed sits below the start/join choice for any learner with
-            // finished sessions to review (an admin sees all; everyone else
-            // sees their own), de-emphasized like the mobile chip.
+            // Completed sits below the start/join choice, de-emphasized, for any
+            // viewer with sessions to review (see [hasCompletedSessions]).
             if (controller.hasCompletedSessions)
               ActivitySessionCTAButton(
                 L10n.of(context).mapFilterCompleted,
@@ -379,8 +387,7 @@ class _NotStartedMobileCtaRow extends StatelessWidget {
       );
     }
 
-    // Opens the Completed subpage — the learner's own finished sessions, or all
-    // of them (their own first) for a course admin.
+    // Opens the per-viewer Completed subpage (see [hasCompletedSessions]).
     if (controller.hasCompletedSessions) {
       chips.add(
         _ActivityCtaChip(
