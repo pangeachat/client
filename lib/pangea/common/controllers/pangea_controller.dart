@@ -37,6 +37,7 @@ class PangeaController {
   StreamSubscription? _languageSubscription;
   StreamSubscription? _settingsSubscription;
   StreamSubscription? _joinSpaceSubscription;
+  StreamSubscription? _analyticsRoomMuteSubscription;
 
   ///Matrix Variables
   final MatrixState matrixState;
@@ -113,9 +114,11 @@ class PangeaController {
     _languageSubscription?.cancel();
     _settingsSubscription?.cancel();
     _joinSpaceSubscription?.cancel();
+    _analyticsRoomMuteSubscription?.cancel();
     _languageSubscription = null;
     _settingsSubscription = null;
     _joinSpaceSubscription = null;
+    _analyticsRoomMuteSubscription = null;
 
     GoogleAnalytics.logout();
     _clearCache();
@@ -164,6 +167,11 @@ class PangeaController {
     _joinSpaceSubscription ??= matrixState.client.onSync.stream
         .where(matrixState.client.isJoinSpaceSyncUpdate)
         .listen((_) => matrixState.client.addAnalyticsRoomsToSpaces());
+
+    _analyticsRoomMuteSubscription?.cancel();
+    _analyticsRoomMuteSubscription = matrixState.client.onSync.stream
+        .where(matrixState.client.isNewAnalyticsRoomSyncUpdate)
+        .listen((_) => matrixState.client.setPangeaPushRules());
   }
 
   Future<void> _clearCache({List<String> exclude = const []}) async {
