@@ -521,7 +521,7 @@ class _ArchivedSessionCTAButtons extends StatelessWidget {
     if (!page.canLeaveArchivedSession) return const SizedBox.shrink();
     return ActivitySessionCTAButton(
       L10n.of(context).leave,
-      page.leaveArchivedSession,
+      page.leaveSession,
     );
   }
 }

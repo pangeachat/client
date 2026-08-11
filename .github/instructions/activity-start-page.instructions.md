@@ -40,7 +40,8 @@ A **Completed** chip appears only when the viewer has completed sessions to revi
 
 **Share** and **flag** do not sit in the web CTA list. **Share** is an app-bar action to the left of focus. **Flag** sits in the top-right of the text-content (description) section under the hero — so it rides the main step, not the join/completed sub-pages, where there is no description to anchor it. On mobile both stay as chips appended to the bottom CTA row.
 
-Share is new to this page — today only a flag button and an unrelated in-session popup menu exist ([`ActivitySessionPopupMenu`](../../lib/routes/chat/activity_sessions/activity_session_popup_menu.dart)); it reuses the workspace-level share plumbing.
+While a confirmed session waits to fill (chat not started), a **"…"** menu takes the app-bar share slot on web — and is net-new on mobile, which has no app-bar share — offering **Leave**, plus **Delete** for the room's admin (the same exit chat gives). It displaces share here so inviting people isn't confused with sharing the link.
+
 
 ## Owning the container: nav rail and analytics bar
 

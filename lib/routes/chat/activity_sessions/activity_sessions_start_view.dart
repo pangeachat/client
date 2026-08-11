@@ -160,9 +160,15 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
+              // While a confirmed session waits to fill, the "…" menu (leave /
+              // delete) stands in for share on web and is a net-new action on
+              // mobile — so nobody confuses sharing the activity with inviting
+              // people into the room. See activity-start-page.instructions.md.
+              if (controller.isPendingSession)
+                _WaitingRoomMenuButton(controller)
               // Web hosts share in the app bar, left of focus; mobile keeps it
               // as a chip in the bottom CTA row instead.
-              if (FluffyThemes.isColumnMode(context))
+              else if (FluffyThemes.isColumnMode(context))
                 IconButton(
                   tooltip: L10n.of(context).share,
                   icon: const Icon(Icons.share_outlined),
@@ -350,6 +356,56 @@ class ActivitySessionStartView extends StatelessWidget {
   }
 }
 
+enum _WaitingRoomAction { leave, delete }
+
+/// The waiting-room "…" menu in the app bar: leave the session, or — if you own
+/// the room ([ActivitySessionStartState.canDeleteSession]) — delete it for
+/// everyone. The same exit chat offers, surfaced while a confirmed session
+/// waits to fill. See activity-start-page.instructions.md.
+class _WaitingRoomMenuButton extends StatelessWidget {
+  final ActivitySessionStartState controller;
+
+  const _WaitingRoomMenuButton(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<_WaitingRoomAction>(
+      tooltip: L10n.of(context).moreOptions,
+      onSelected: (action) {
+        switch (action) {
+          case _WaitingRoomAction.leave:
+            controller.leaveSession();
+          case _WaitingRoomAction.delete:
+            controller.deleteSession();
+        }
+      },
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          value: _WaitingRoomAction.leave,
+          child: Row(
+            children: [
+              const Icon(Icons.logout_outlined),
+              const SizedBox(width: 12.0),
+              Text(L10n.of(context).leave),
+            ],
+          ),
+        ),
+        if (controller.canDeleteSession)
+          PopupMenuItem(
+            value: _WaitingRoomAction.delete,
+            child: Row(
+              children: [
+                const Icon(Icons.delete_outlined),
+                const SizedBox(width: 12.0),
+                Text(L10n.of(context).delete),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+}
+
 /// The always-visible second row under the title: who made the activity and
 /// its at-a-glance facts (L2, level, participant count, rating). It sits above
 /// the scrollable body so a map explorer sees the essentials without expanding
@@ -500,7 +556,7 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
             if (controller.canLeaveArchivedSession) ...[
               ActivitySessionCTAButton(
                 L10n.of(context).leave,
-                controller.leaveArchivedSession,
+                controller.leaveSession,
               ),
               const SizedBox(height: 16.0),
             ],

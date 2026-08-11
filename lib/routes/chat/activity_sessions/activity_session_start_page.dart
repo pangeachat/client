@@ -26,11 +26,13 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -422,19 +424,54 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     membership: activityRoom?.membership,
   );
 
-  /// Leave the session room of a removed activity and close its panel — the
-  /// only exit for a session that can never be continued (#8064). Same
-  /// confirm-then-wait-for-sync flow as the chat's own leave, so the room is
-  /// gone from the list before the panel closes.
-  Future<void> leaveArchivedSession() async {
+  /// The learner has confirmed a role and is waiting for the room to fill, but
+  /// the activity chat hasn't begun — the one live state where they can still
+  /// back out via the app-bar "…" menu. See activity-start-page.instructions.md.
+  bool get isPendingSession {
+    final room = activityRoom;
+    return _sessionState == SessionState.confirmedRole &&
+        room != null &&
+        !room.isActivityStarted;
+  }
+
+  /// Only the room's admin (its creator, under the default power levels) can
+  /// delete it for everyone; a plain member can only leave — mirroring chat's
+  /// own leave/delete gating.
+  bool get canDeleteSession => activityRoom?.isRoomAdmin == true;
+
+  /// Leave the current session room and close its panel. Shared by the
+  /// waiting-room menu and the archived fallback's lone exit — a session that
+  /// can never continue would otherwise sit in the chat list forever (#8064).
+  Future<void> leaveSession() => _exitSessionRoom(
+    action: (room) => room.leave(),
+    message: L10n.of(context).leaveRoomDescription,
+    okLabel: L10n.of(context).leave,
+  );
+
+  /// Delete the session room for everyone — admin-only ([canDeleteSession]),
+  /// the same purge chat's delete uses — then close its panel.
+  Future<void> deleteSession() => _exitSessionRoom(
+    action: (room) => room.delete(),
+    message: L10n.of(context).deleteChatDesc,
+    okLabel: L10n.of(context).delete,
+  );
+
+  /// Confirm, run [action] on the session room, wait for the resulting leave to
+  /// land in sync, then close the panel — so the room is gone from the chat
+  /// list before its panel closes.
+  Future<void> _exitSessionRoom({
+    required Future<void> Function(Room room) action,
+    required String message,
+    required String okLabel,
+  }) async {
     final room = activityRoom;
     if (room == null) return;
 
     final confirmed = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).areYouSure,
-      message: L10n.of(context).leaveRoomDescription,
-      okLabel: L10n.of(context).leave,
+      message: message,
+      okLabel: okLabel,
       cancelLabel: L10n.of(context).cancel,
       isDestructive: true,
     );
@@ -442,7 +479,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
 
     final result = await showFutureLoadingDialog(
       context: context,
-      future: room.leave,
+      future: () => action(room),
     );
     if (result.isError || !mounted) return;
 
