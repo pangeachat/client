@@ -93,10 +93,13 @@ jobs:
       - name: Capture build version
         id: version
         # prepare-android-release.sh (set_build_code_internal) rewrites pubspec
-        # with the Play Store build code, so this reads e.g. "5.0.0+3828".
+        # with the date-encoded build code, so this reads e.g. "5.0.0+26081103".
         run: echo "version=$(grep -m1 '^version:' pubspec.yaml | awk '{print $2}')" >> $GITHUB_OUTPUT
       - name: Build Android Release
-        run: flutter build appbundle --target-platform android-arm,android-arm64,android-x64
+        # BUILD_COMMIT_SHA is the only part of the version display that says
+        # which code is in the build — the Play Store owns the build code, so
+        # it orders builds without identifying them. See ci.instructions.md.
+        run: flutter build appbundle --target-platform android-arm,android-arm64,android-x64 --dart-define=BUILD_COMMIT_SHA=${GITHUB_SHA::8}
       - name: Deploy Android Release
         env:
           RELEASE_NOTES: ${{ inputs.new_release_notes }}

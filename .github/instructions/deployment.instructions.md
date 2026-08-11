@@ -36,6 +36,8 @@ The semantic version in `pubspec.yaml` is bumped by hand. (The build number afte
 
 Choosing a level is answering one question: *would we ever force someone onto this?* If no, it is a patch. A yes driven by a breaking change is also the deploy-note trigger: that change needs a `deploy-note` issue (org [deployment § Deploy Notes](https://github.com/pangeachat/.github/blob/main/.github/instructions/deployment.instructions.md#deploy-notes)), and the eventual fleet retirement is the floor-flip deploy note.
 
+These definitions are analogous to the SemVer standard definitions for these version numbers, except defined in terms of the need for user-side forced updates instead of in terms of backwards compatibility.
+
 **Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must bump `+N` regardless, because the release workflow tags from the full version string and silently fails on a tag that already exists.
 
 ## Environment Config (`.env`)
