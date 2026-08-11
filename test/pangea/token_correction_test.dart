@@ -138,11 +138,12 @@ void main() {
       senderId: client.userID!,
       originServerTs: ts,
       content: {
-        PangeaEventTypes.representation: PangeaMessageEvent.buildTokenCorrection(
-          fullText: text,
-          tokensSent: tokensSent ?? _splitTokens(),
-          fallbackLangCode: 'es',
-        ).toJson(),
+        PangeaEventTypes.representation:
+            PangeaMessageEvent.buildTokenCorrection(
+              fullText: text,
+              tokensSent: tokensSent ?? _splitTokens(),
+              fallbackLangCode: 'es',
+            ).toJson(),
       },
       room: room,
     );

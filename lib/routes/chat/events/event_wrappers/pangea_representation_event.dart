@@ -85,7 +85,7 @@ class RepresentationEvent {
     // tokens embedded in the representation content (an atomic correction)
     // take precedence over child token events
     final embedded = content.tokens;
-    if (embedded != null) {
+    if (embedded != null && embedded.tokens.isNotEmpty) {
       _tokens = embedded;
       return embedded.tokens;
     }

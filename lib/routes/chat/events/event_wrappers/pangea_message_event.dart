@@ -248,11 +248,19 @@ class PangeaMessageEvent {
   /// The newest correction representation with usable tokens, if any.
   /// Corrections without usable tokens are ignored, so a partial or malformed
   /// correction can never override a token-rich original.
-  RepresentationEvent? get _sentCorrection => representations.firstWhereOrNull(
-    (element) =>
-        element.content.isCorrection &&
-        hasUsableRepresentationTokens(element.tokens),
-  );
+  RepresentationEvent? get _sentCorrection =>
+      representations.firstWhereOrNull(_isUsableCorrection);
+
+  /// A malformed related representation must be treated as absent, never throw
+  /// out of the display path.
+  static bool _isUsableCorrection(RepresentationEvent rep) {
+    try {
+      return rep.content.isCorrection &&
+          hasUsableRepresentationTokens(rep.tokens);
+    } catch (_) {
+      return false;
+    }
+  }
 
   /// The sent representation with any correction applied. Language-identity
   /// and interactive-token consumers read this; provenance, choreo, and
