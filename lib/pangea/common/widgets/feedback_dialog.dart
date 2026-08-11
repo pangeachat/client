@@ -23,10 +23,12 @@ class FeedbackDialog extends StatefulWidget {
 
 class _FeedbackDialogState extends State<FeedbackDialog> {
   final TextEditingController _feedbackController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void dispose() {
     _feedbackController.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -92,7 +94,16 @@ class _FeedbackDialogState extends State<FeedbackDialog> {
               ),
             ],
           ),
-          Flexible(child: SingleChildScrollView(child: content)),
+          Flexible(
+            child: Scrollbar(
+              controller: _scrollController,
+              thumbVisibility: true,
+              child: SingleChildScrollView(
+                controller: _scrollController,
+                child: content,
+              ),
+            ),
+          ),
           ValueListenableBuilder<TextEditingValue>(
             valueListenable: _feedbackController,
             builder: (context, value, _) {
