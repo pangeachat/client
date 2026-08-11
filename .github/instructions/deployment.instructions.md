@@ -28,13 +28,13 @@ Production is periodically synced from `main` via merge PRs. Between syncs, the 
 
 The semantic version in `pubspec.yaml` is bumped by hand. (The build number after the `+` is stamped automatically per platform at build time — see [ci.instructions.md](ci.instructions.md).)
 
-**Which level to bump.** The levels are defined by what they let you do to the fleet, because major and minor are the only two that can wall a user out: the client raises a mandatory-update wall when the force-upgrade floor's major *or* minor exceeds the running client's. Patch never can. Raising that floor is a separate, deliberate release step — see [client-version-gating.instructions.md](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/client-version-gating.instructions.md).
+**Which level to bump.** The wall itself is mechanical: the force-upgrade floor walls out any client strictly below it, at **any** level — patch included. The levels are policy, defined by what we plan to do to the fleet. Raising the floor is a separate, deliberate release step — see [client-version-gating.instructions.md](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/client-version-gating.instructions.md).
 
 - **Major** — a release you intend to eventually force the whole fleet onto: a protocol or stored-data break, or a cutover that ends coexistence with the previous line.
 - **Minor** — a release you may later want to force: a notable feature, or a migration users must land on before old clients become a liability.
-- **Patch** — the default, and right for most work including most feature work. Never used to retire a fleet.
+- **Patch** — the default, and right for most work including most feature work. Not used for planned fleet retirement; a patch-level floor raise is the emergency lever (e.g. forcing a security fix onto the fleet).
 
-Choosing a level is answering one question: *would we ever force someone onto this?* If no, it is a patch.
+Choosing a level is answering one question: *would we ever force someone onto this?* If no, it is a patch. A yes driven by a breaking change is also the deploy-note trigger: that change needs a `deploy-note` issue (org [deployment § Deploy Notes](https://github.com/pangeachat/.github/blob/main/.github/instructions/deployment.instructions.md#deploy-notes)), and the eventual fleet retirement is the floor-flip deploy note.
 
 **Bumping is a judgment call, not a per-PR obligation** — most PRs need none. Raise it when a PR is the thing a future floor-raise would target, or when a release is being cut. A release must bump `+N` regardless, because the release workflow tags from the full version string and silently fails on a tag that already exists.
 
