@@ -367,7 +367,14 @@ class AnalyticsPracticeState extends State<AnalyticsPractice>
       _l2!.langCodeShort,
     );
 
-    if (!notifier.exerciseComplete(exercise)) return;
+    if (!notifier.exerciseComplete(exercise)) {
+      AnalyticsPracticeUiController.playChoiceAudio(
+        exercise,
+        choiceContent,
+        _l2!.langCodeShort,
+      );
+      return;
+    }
 
     _playExerciseAudio(exercise);
 
