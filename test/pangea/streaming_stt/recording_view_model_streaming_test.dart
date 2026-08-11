@@ -280,10 +280,16 @@ void main() {
       await tester.pump();
 
       expect(state.isStreaming, isTrue);
+      // While live-streaming the primary button STOPS (to the editable
+      // transcript), so it must show a stop icon, not send (#8292).
+      expect(find.byIcon(Icons.send_outlined), findsNothing);
+      expect(find.byIcon(Icons.stop_circle_outlined), findsOneWidget);
       // Exactly ONE read-only transcript line, rendered ABOVE the controls Row.
       expect(find.text('live one'), findsOneWidget);
       final lineDy = tester.getTopLeft(find.text('live one')).dy;
-      final sendDy = tester.getTopLeft(find.byIcon(Icons.send_outlined)).dy;
+      final sendDy = tester
+          .getTopLeft(find.byIcon(Icons.stop_circle_outlined))
+          .dy;
       expect(
         lineDy,
         lessThan(sendDy),

@@ -113,13 +113,28 @@ class RecordingInputRow extends StatelessWidget {
                   backgroundColor: theme.bubbleColor,
                   foregroundColor: theme.onBubbleColor,
                 ),
-                tooltip: L10n.of(context).sendAudio,
+                // #Pangea
+                // tooltip: L10n.of(context).sendAudio,
+                // While the button's press stops the live stream rather than
+                // sending (#8292), it must look like a stop control; it reverts
+                // to the send icon once the transcript is editable.
+                tooltip: state.shouldStopStreamingToEditable
+                    ? L10n.of(context).stop
+                    : L10n.of(context).sendAudio,
+                // Pangea#
                 icon: state.isSending
                     ? const SizedBox.square(
                         dimension: 24,
                         child: CircularProgressIndicator.adaptive(),
                       )
-                    : const Icon(Icons.send_outlined),
+                    // #Pangea
+                    // : const Icon(Icons.send_outlined),
+                    : Icon(
+                        state.shouldStopStreamingToEditable
+                            ? Icons.stop_circle_outlined
+                            : Icons.send_outlined,
+                      ),
+                // Pangea#
                 // #Pangea
                 // Streaming, still recording: the primary button STOPS to the
                 // editable transcript (D7 finalizing -> editableClean) rather
