@@ -59,8 +59,9 @@ class WorldMapFilterBar extends StatelessWidget {
     ActivityPinState.inProgress,
   ];
 
-  // A short pill/dropdown label for a level — the CEFR code (Pre-A1 spelled
-  // prettily). Picking a level filters to exactly that level.
+  // The compact pill label for a selected level — the CEFR code (Pre-A1
+  // spelled prettily). The dropdown entries use the full ACTFL+CEFR title
+  // instead (LanguageLevelTypeEnum.title, e.g. "Novice Mid (A1)").
   String _levelLabel(LanguageLevelTypeEnum lvl) =>
       lvl == LanguageLevelTypeEnum.preA1 ? 'Pre-A1' : lvl.string;
 
@@ -90,7 +91,7 @@ class WorldMapFilterBar extends StatelessWidget {
       ),
       for (final lvl in _levelOptions)
         _FilterMenuEntry(
-          label: _levelLabel(lvl),
+          label: lvl.title(context),
           selected: level == lvl,
           onSelected: () => onSetLevel(lvl),
         ),
@@ -227,7 +228,10 @@ class _FilterDropdownPill extends StatelessWidget {
                       ? Icon(Icons.check, size: 18, color: scheme.primary)
                       : null,
                 ),
-                Text(e.label),
+                // Flexible so a label longer than the menu's max width (the
+                // ACTFL level titles, long translations) wraps instead of
+                // overflowing the row.
+                Flexible(child: Text(e.label)),
               ],
             ),
           ),
