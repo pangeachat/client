@@ -38,7 +38,7 @@ class DeleteSpaceDialog extends StatefulWidget {
 
     List<String>? deleteRoomIds;
     if (roomChunks.isNotEmpty) {
-      final deleteRoomIds = await showDialog<List<String>?>(
+      deleteRoomIds = await showDialog<List<String>?>(
         context: context,
         builder: (_) => DeleteSpaceDialog(roomsChunks: roomChunks),
       );
