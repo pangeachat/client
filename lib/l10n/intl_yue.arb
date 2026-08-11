@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-11 14:01:31.720366",
+    "@@last_modified": "2026-08-11 15:43:24.117530",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10686,5 +10686,6 @@
     "audioOnMessageClickDescription": "當你點擊訊息時，以你的目標語言讀出該訊息。",
     "audioSettingDisabledTitle": "{toolName} 語音已停用",
     "audioSettingDisabledBody": "你可以在學習設定中啟用 {toolName} 語音",
-    "audioSettingDisabledEnable": "啟用"
+    "audioSettingDisabledEnable": "啟用",
+    "rejoinedTheActivity": "🔄 {username} 重新加入此活動"
 }

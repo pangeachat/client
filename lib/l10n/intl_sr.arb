@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 14:01:29.856212",
+    "@@last_modified": "2026-08-11 15:43:21.808387",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10678,5 +10678,6 @@
     "audioOnMessageClickDescription": "Pročitaj poruku naglas na ciljnom jeziku kada klikneš na nju.",
     "audioSettingDisabledTitle": "Zvuk za {toolName} je isključen",
     "audioSettingDisabledBody": "Možete uključiti zvuk za {toolName} u podešavanjima učenja",
-    "audioSettingDisabledEnable": "Omogući"
+    "audioSettingDisabledEnable": "Omogući",
+    "rejoinedTheActivity": "🔄 {username} se ponovo pridružio/la ovoj aktivnosti"
 }

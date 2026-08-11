@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 14:01:30.405554",
+    "@@last_modified": "2026-08-11 15:43:22.225125",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9821,5 +9821,6 @@
     "audioOnMessageClickDescription": "ஒரு செய்தியைக் கிளிக் செய்யும்போது அதை உங்கள் இலக்கு மொழியில் சத்தமாகப் படிக்கும்.",
     "audioSettingDisabledTitle": "{toolName} ஆடியோ முடக்கப்பட்டது",
     "audioSettingDisabledBody": "உங்கள் கற்றல் அமைப்புகளில் {toolName} ஆடியோவை இயக்கலாம்",
-    "audioSettingDisabledEnable": "இயக்கு"
+    "audioSettingDisabledEnable": "இயக்கு",
+    "rejoinedTheActivity": "🔄 {username} இந்தச் செயல்பாட்டில் மீண்டும் இணைந்தார்"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-11 14:01:23.056943",
+    "@@last_modified": "2026-08-11 15:43:16.115731",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9729,5 +9729,6 @@
     "audioOnMessageClickDescription": "Mezu bat ozenki irakurri zure xede-hizkuntzan, gainean klik egitean.",
     "audioSettingDisabledTitle": "{toolName} audioa desgaituta",
     "audioSettingDisabledBody": "{toolName} audioa gaitu dezakezu zure ikaskuntza-ezarpenetan",
-    "audioSettingDisabledEnable": "Gaitu"
+    "audioSettingDisabledEnable": "Gaitu",
+    "rejoinedTheActivity": "🔄 {username} jarduera honetara itzuli da"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-11 14:01:29.779095",
+    "@@last_modified": "2026-08-11 15:43:21.841043",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Ku akhri farriin kor adiga oo isticmaalaya luqadda aad bartay marka aad gujiso.",
     "audioSettingDisabledTitle": "Codka {toolName} waa dansan yahay",
     "audioSettingDisabledBody": "Waxaad shidi kartaa codka {toolName} goobaha waxbarashadaada",
-    "audioSettingDisabledEnable": "Daar"
+    "audioSettingDisabledEnable": "Daar",
+    "rejoinedTheActivity": "🔄 {username} wuxuu dib ugu soo biiray hawshan"
 }

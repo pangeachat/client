@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-11 14:01:29.986846",
+    "@@last_modified": "2026-08-11 15:43:21.842922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Bala molaetsa ka lentsoe le phahameng ka puo eo u e batlang ha o tobetsa ho ona.",
     "audioSettingDisabledTitle": "Molumo oa {toolName} o tingoe",
     "audioSettingDisabledBody": "O ka bulela molumo oa {toolName} ho di-setting tsa thuto ya hao",
-    "audioSettingDisabledEnable": "Bulela"
+    "audioSettingDisabledEnable": "Bulela",
+    "rejoinedTheActivity": "🔄 {username} o boetse a kenela mosebetsi ona"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-11 14:01:28.386918",
+    "@@last_modified": "2026-08-11 15:43:20.705530",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "ଆପଣ କ୍ଲିକ୍ କଲେ ଆପଣଙ୍କ ଲକ୍ଷ୍ୟ ଭାଷାରେ ଏକ ବାର୍ତ୍ତା ପଢ଼ନ୍ତୁ।",
     "audioSettingDisabledTitle": "{toolName} ଅଡିଓ ଅକ୍ଷମ କରାଯାଇଛି",
     "audioSettingDisabledBody": "ଆପଣ ଆପଣଙ୍କ ଶିକ୍ଷଣ ସେଟିଙ୍ଗ୍ସରେ {toolName} ଅଡିଓ ସକ୍ଷମ କରିପାରିବେ",
-    "audioSettingDisabledEnable": "ସକ୍ଷମ କରନ୍ତୁ"
+    "audioSettingDisabledEnable": "ସକ୍ଷମ କରନ୍ତୁ",
+    "rejoinedTheActivity": "🔄 {username} ଏହି କାର୍ଯ୍ୟକଳାପରେ ପୁନଃ ଯୋଗ ଦେଇଛନ୍ତି"
 }

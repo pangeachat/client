@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-11 14:01:25.704889",
+    "@@last_modified": "2026-08-11 15:43:18.406349",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "អានសារឮៗជាភាសាគោលដៅរបស់អ្នកនៅពេលអ្នកចុចលើវា។",
     "audioSettingDisabledTitle": "សំឡេង {toolName} ត្រូវបានបិទ",
     "audioSettingDisabledBody": "អ្នកអាចបើកសំឡេង {toolName} នៅក្នុងការកំណត់ការរៀនរបស់អ្នក",
-    "audioSettingDisabledEnable": "បើក"
+    "audioSettingDisabledEnable": "បើក",
+    "rejoinedTheActivity": "🔄 {username} បានចូលរួមសកម្មភាពនេះឡើងវិញ"
 }

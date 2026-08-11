@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-11 14:01:31.183692",
+    "@@last_modified": "2026-08-11 15:43:22.865982",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "بىر ئۇچۇرنى چەككەندە، ئۇنى نىشان تىلىڭىزدا ئاۋازلىق ئوقۇيدۇ.",
     "audioSettingDisabledTitle": "{toolName} ئاۋازى چەكلەندى",
     "audioSettingDisabledBody": "سىز ئۆگىنىش تەڭشەكلىرىڭىزدە {toolName} ئاۋازىنى قوزغىتالايدۇ",
-    "audioSettingDisabledEnable": "قوزغىتىش"
+    "audioSettingDisabledEnable": "قوزغىتىش",
+    "rejoinedTheActivity": "🔄 {username} بۇ پائالىيەتكە قايتا قاتناشتى"
 }

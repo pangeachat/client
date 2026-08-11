@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-11 14:01:26.523630",
+    "@@last_modified": "2026-08-11 15:43:18.967558",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "پەیامێک بە دەنگی بەرز بە زمانی ئامانجەکەت بخوێنەرەوە کاتێک کرتەی لەسەر دەکەیت.",
     "audioSettingDisabledTitle": "دەنگی {toolName} ناچالاک کراوە",
     "audioSettingDisabledBody": "دەتوانیت دەنگی {toolName} لە ڕێکخستنەکانی فێربووندا چالاک بکەیت",
-    "audioSettingDisabledEnable": "چالاککردن"
+    "audioSettingDisabledEnable": "چالاککردن",
+    "rejoinedTheActivity": "🔄 {username} دووبارە بەشداریی ئەم چالاکییەی کردەوە"
 }

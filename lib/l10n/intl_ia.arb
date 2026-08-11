@@ -1367,7 +1367,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-11 14:01:24.817512",
+    "@@last_modified": "2026-08-11 15:43:17.458246",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10665,5 +10665,6 @@
     "audioOnMessageClickDescription": "Lege un message a alte voce in tu lingua de scopo quando tu clicca super illo.",
     "audioSettingDisabledTitle": "Audio de {toolName} disactivate",
     "audioSettingDisabledBody": "Tu pote activar le audio de {toolName} in tu preferentias de apprender",
-    "audioSettingDisabledEnable": "Activar"
+    "audioSettingDisabledEnable": "Activar",
+    "rejoinedTheActivity": "🔄 {username} ha reunite a iste activitate"
 }

@@ -20,15 +20,24 @@ class ActivityRoleModel {
 
   bool get isArchived => archivedAt != null;
 
-  String? stateEventMessage(String displayName, L10n l10n) {
+  /// [previous] is this role's entry in the state event's prev_content, if
+  /// any — it's what distinguishes a rejoin (finished → unfinished, #8288)
+  /// from a role claim (absent → unfinished), which stays silent.
+  String? stateEventMessage(
+    String displayName,
+    L10n l10n, {
+    ActivityRoleModel? previous,
+  }) {
     // Only the transition into finished gets a timeline row. The automatic
     // save re-writes the same role state (adding archived_at), and rendering
     // that write too would repeat the row on every completed session.
     if (isFinished && !isArchived) {
       return l10n.finishedTheActivity(displayName);
-    } else {
-      return null;
     }
+    if (!isFinished && (previous?.isFinished ?? false)) {
+      return l10n.rejoinedTheActivity(displayName);
+    }
+    return null;
   }
 
   factory ActivityRoleModel.fromJson(Map<String, dynamic> json) {

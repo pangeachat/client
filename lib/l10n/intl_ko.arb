@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 14:01:26.024067",
+    "@@last_modified": "2026-08-11 15:43:18.387642",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9922,5 +9922,6 @@
     "audioOnMessageClickDescription": "메시지를 클릭하면 학습 언어로 소리 내어 읽습니다.",
     "audioSettingDisabledTitle": "{toolName} 오디오 비활성화됨",
     "audioSettingDisabledBody": "학습 설정에서 {toolName} 오디오를 활성화할 수 있습니다",
-    "audioSettingDisabledEnable": "활성화"
+    "audioSettingDisabledEnable": "활성화",
+    "rejoinedTheActivity": "🔄 {username}님이 활동에 다시 참여했습니다"
 }

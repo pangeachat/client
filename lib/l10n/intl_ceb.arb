@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-11 14:01:22.100771",
+    "@@last_modified": "2026-08-11 15:43:15.844989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Basahon og kusog ang usa ka mensahe sa imong target nga pinulongan kon imong i-klik kini.",
     "audioSettingDisabledTitle": "Ang {toolName} audio gi-disable",
     "audioSettingDisabledBody": "Mahimo nimong i-enable ang {toolName} audio sa imong learning settings",
-    "audioSettingDisabledEnable": "I-enable"
+    "audioSettingDisabledEnable": "I-enable",
+    "rejoinedTheActivity": "🔄 Si {username} miapil pag-usab niini nga kalihokan"
 }

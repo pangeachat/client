@@ -1942,7 +1942,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-11 14:01:25.464279",
+    "@@last_modified": "2026-08-11 15:43:18.293551",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10629,5 +10629,6 @@
     "audioOnMessageClickDescription": "წაიკითხეთ შეტყობინება ხმამაღლა თქვენს სამიზნე ენაზე, როდესაც დააწკაპუნებთ მასზე.",
     "audioSettingDisabledTitle": "{toolName} აუდიო გამორთულია",
     "audioSettingDisabledBody": "შეგიძლიათ ჩართოთ {toolName} აუდიო თქვენს სასწავლო პარამეტრებში",
-    "audioSettingDisabledEnable": "ჩართვა"
+    "audioSettingDisabledEnable": "ჩართვა",
+    "rejoinedTheActivity": "🔄 {username} კვლავ შეუერთდა ამ აქტივობას"
 }

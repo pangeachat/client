@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 14:01:27.871311",
+    "@@last_modified": "2026-08-11 15:43:19.965419",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9786,5 +9786,6 @@
     "audioOnMessageClickDescription": "Les en melding høyt på målspråket ditt når du klikker på den.",
     "audioSettingDisabledTitle": "{toolName}-lyd deaktivert",
     "audioSettingDisabledBody": "Du kan aktivere {toolName}-lyd i læringsinnstillingene dine",
-    "audioSettingDisabledEnable": "Aktiver"
+    "audioSettingDisabledEnable": "Aktiver",
+    "rejoinedTheActivity": "🔄 {username} ble med i denne aktiviteten igjen"
 }

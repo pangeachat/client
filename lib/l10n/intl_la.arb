@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-11 14:01:26.283593",
+    "@@last_modified": "2026-08-11 15:43:18.845192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Nuntium clare in lingua tua discenda lege cum in eum clicaveris.",
     "audioSettingDisabledTitle": "Sonus {toolName} off",
     "audioSettingDisabledBody": "Sonum {toolName} in optionibus discendi tuis efficere potes",
-    "audioSettingDisabledEnable": "Efficere"
+    "audioSettingDisabledEnable": "Efficere",
+    "rejoinedTheActivity": "🔄 {username} ad hanc actionem rediit"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 14:01:21.368538",
+    "@@last_modified": "2026-08-11 15:43:14.901461",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10357,5 +10357,6 @@
     "audioOnMessageClickDescription": "একটি মেসেজে ক্লিক করলে আপনার লক্ষ্য ভাষায় সেটি জোরে জোরে পড়ুন।",
     "audioSettingDisabledTitle": "{toolName} অডিও নিষ্ক্রিয় করা হয়েছে",
     "audioSettingDisabledBody": "আপনি আপনার শেখার সেটিংসে {toolName} অডিও সক্ষম করতে পারেন",
-    "audioSettingDisabledEnable": "সক্ষম করুন"
+    "audioSettingDisabledEnable": "সক্ষম করুন",
+    "rejoinedTheActivity": "🔄 {username} এই কার্যকলাপে পুনরায় যোগদান করেছেন"
 }

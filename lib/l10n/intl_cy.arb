@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-11 14:01:23.684417",
+    "@@last_modified": "2026-08-11 15:43:18.243793",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Darllenwch neges yn uchel yn eich iaith darged pan fyddwch chi'n clicio arni.",
     "audioSettingDisabledTitle": "Sain {toolName} wedi'i analluogi",
     "audioSettingDisabledBody": "Gallwch alluogi sain {toolName} yn eich gosodiadau dysgu",
-    "audioSettingDisabledEnable": "Galluogi"
+    "audioSettingDisabledEnable": "Galluogi",
+    "rejoinedTheActivity": "🔄 Ymunodd {username} â'r gweithgaredd hwn eto"
 }

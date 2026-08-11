@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-11 14:01:23.939385",
+    "@@last_modified": "2026-08-11 15:43:21.356023",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9729,5 +9729,6 @@
     "audioOnMessageClickDescription": "Ler unha mensaxe en voz alta no teu idioma de destino cando fagas clic nela.",
     "audioSettingDisabledTitle": "Audio de {toolName} desactivado",
     "audioSettingDisabledBody": "Podes activar o audio de {toolName} na túa configuración de aprendizaxe",
-    "audioSettingDisabledEnable": "Activar"
+    "audioSettingDisabledEnable": "Activar",
+    "rejoinedTheActivity": "🔄 {username} volveu unirse a esta actividade"
 }

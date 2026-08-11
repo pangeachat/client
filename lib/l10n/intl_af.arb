@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-11 14:01:21.434235",
+    "@@last_modified": "2026-08-11 15:43:15.174935",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Lees 'n boodskap hardop in jou doeltaal wanneer jy daarop klik.",
     "audioSettingDisabledTitle": "{toolName} oudio gedeaktiveer",
     "audioSettingDisabledBody": "Jy kan {toolName} oudio in jou leerinstellings aktiveer",
-    "audioSettingDisabledEnable": "Aktiveer"
+    "audioSettingDisabledEnable": "Aktiveer",
+    "rejoinedTheActivity": "🔄 {username} het weer by hierdie aktiwiteit aangesluit"
 }

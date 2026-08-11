@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-11 14:01:22.446862",
+    "@@last_modified": "2026-08-11 15:43:15.622669",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9716,5 +9716,6 @@
     "audioOnMessageClickDescription": "Eine Nachricht in Ihrer Zielsprache vorlesen, wenn Sie darauf klicken.",
     "audioSettingDisabledTitle": "{toolName}-Audio deaktiviert",
     "audioSettingDisabledBody": "Sie können {toolName}-Audio in Ihren Lerneinstellungen aktivieren",
-    "audioSettingDisabledEnable": "Aktivieren"
+    "audioSettingDisabledEnable": "Aktivieren",
+    "rejoinedTheActivity": "🔄 {username} ist dieser Aktivität wieder beigetreten"
 }

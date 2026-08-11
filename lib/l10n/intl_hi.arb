@@ -3098,7 +3098,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-11 14:01:24.299292",
+    "@@last_modified": "2026-08-11 15:43:17.300001",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10361,5 +10361,6 @@
     "audioOnMessageClickDescription": "जब आप किसी संदेश पर क्लिक करते हैं तो उसे अपनी लक्ष्य भाषा में ज़ोर से पढ़ें।",
     "audioSettingDisabledTitle": "{toolName} ऑडियो अक्षम किया गया",
     "audioSettingDisabledBody": "आप अपनी सीखने की सेटिंग में {toolName} ऑडियो सक्षम कर सकते हैं",
-    "audioSettingDisabledEnable": "सक्षम करें"
+    "audioSettingDisabledEnable": "सक्षम करें",
+    "rejoinedTheActivity": "🔄 {username} इस गतिविधि में फिर से शामिल हो गए"
 }

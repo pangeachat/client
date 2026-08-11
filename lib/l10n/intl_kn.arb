@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-11 14:01:25.833002",
+    "@@last_modified": "2026-08-11 15:43:18.708137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "ನೀವು ಸಂದೇಶದ ಮೇಲೆ ಕ್ಲಿಕ್ ಮಾಡಿದಾಗ ಅದನ್ನು ನಿಮ್ಮ ಗುರಿ ಭಾಷೆಯಲ್ಲಿ ಗಟ್ಟಿಯಾಗಿ ಓದಿ.",
     "audioSettingDisabledTitle": "{toolName} ಆಡಿಯೋ ನಿಷ್ಕ್ರಿಯಗೊಳಿಸಲಾಗಿದೆ",
     "audioSettingDisabledBody": "ನಿಮ್ಮ ಕಲಿಕೆಯ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀವು {toolName} ಆಡಿಯೋವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಬಹುದು",
-    "audioSettingDisabledEnable": "ಸಕ್ರಿಯಗೊಳಿಸಿ"
+    "audioSettingDisabledEnable": "ಸಕ್ರಿಯಗೊಳಿಸಿ",
+    "rejoinedTheActivity": "🔄 {username} ಈ ಚಟುವಟಿಕೆಗೆ ಮರುಸೇರ್ಪಡೆಯಾದರು"
 }
