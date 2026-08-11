@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-11 14:01:22.040596",
+    "@@last_modified": "2026-08-11 15:43:15.003918",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Pročitajte poruku naglas na vašem ciljnom jeziku kada kliknete na nju.",
     "audioSettingDisabledTitle": "{toolName} zvuk onemogućen",
     "audioSettingDisabledBody": "Možete omogućiti {toolName} zvuk u postavkama učenja",
-    "audioSettingDisabledEnable": "Omogući"
+    "audioSettingDisabledEnable": "Omogući",
+    "rejoinedTheActivity": "🔄 {username} se ponovo pridružio ovoj aktivnosti"
 }

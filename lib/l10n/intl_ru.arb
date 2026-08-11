@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-11 14:01:29.057077",
+    "@@last_modified": "2026-08-11 15:43:20.993001",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,6 @@
     "audioOnMessageClickDescription": "Читать сообщение вслух на вашем целевом языке при нажатии на него.",
     "audioSettingDisabledTitle": "Аудио {toolName} отключено",
     "audioSettingDisabledBody": "Вы можете включить аудио {toolName} в настройках обучения",
-    "audioSettingDisabledEnable": "Включить"
+    "audioSettingDisabledEnable": "Включить",
+    "rejoinedTheActivity": "🔄 {username} снова присоединился к занятию"
 }

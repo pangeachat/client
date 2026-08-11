@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-11 14:01:31.896084",
+    "@@last_modified": "2026-08-11 15:43:23.538650",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9729,5 +9729,6 @@
     "audioOnMessageClickDescription": "当您点击消息时，用您的目标语言朗读该消息。",
     "audioSettingDisabledTitle": "{toolName}音频已禁用",
     "audioSettingDisabledBody": "您可以在学习设置中启用{toolName}音频",
-    "audioSettingDisabledEnable": "启用"
+    "audioSettingDisabledEnable": "启用",
+    "rejoinedTheActivity": "🔄 {username} 重新加入了此活动"
 }

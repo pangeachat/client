@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-11 14:01:27.420891",
+    "@@last_modified": "2026-08-11 15:43:19.779162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Baca mesej dengan kuat dalam bahasa sasaran anda apabila anda mengkliknya.",
     "audioSettingDisabledTitle": "Audio {toolName} dilumpuhkan",
     "audioSettingDisabledBody": "Anda boleh mendayakan audio {toolName} dalam tetapan pembelajaran anda",
-    "audioSettingDisabledEnable": "Dayakan"
+    "audioSettingDisabledEnable": "Dayakan",
+    "rejoinedTheActivity": "🔄 {username} menyertai semula aktiviti ini"
 }

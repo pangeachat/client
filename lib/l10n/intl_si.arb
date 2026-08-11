@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-11 14:01:43.739669",
+    "@@last_modified": "2026-08-11 15:43:21.138011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "ඔබ පණිවිඩයක් ක්ලික් කළ විට එය ඔබේ ඉලක්ක භාෂාවෙන් ශබ්ද නඟා කියවන්න.",
     "audioSettingDisabledTitle": "{toolName} ශ්‍රව්‍ය අක්‍රිය කර ඇත",
     "audioSettingDisabledBody": "ඔබගේ ඉගෙනුම් සැකසීම් තුළ {toolName} ශ්‍රව්‍ය සක්‍රිය කළ හැක",
-    "audioSettingDisabledEnable": "සක්‍රිය කරන්න"
+    "audioSettingDisabledEnable": "සක්‍රිය කරන්න",
+    "rejoinedTheActivity": "🔄 {username} මෙම ක්‍රියාකාරකත්වයට නැවත සම්බන්ධ විය"
 }

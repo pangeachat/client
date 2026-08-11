@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-11 14:01:27.343515",
+    "@@last_modified": "2026-08-11 15:43:19.769653",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Мессеж дээр дарахад таны сурч буй хэлээр чангаар уншина.",
     "audioSettingDisabledTitle": "{toolName} дууг идэвхгүй болгосон",
     "audioSettingDisabledBody": "Та сурах тохиргооноосоо {toolName} дууг идэвхжүүлж болно",
-    "audioSettingDisabledEnable": "Идэвхжүүлэх"
+    "audioSettingDisabledEnable": "Идэвхжүүлэх",
+    "rejoinedTheActivity": "🔄 {username} энэ үйл ажиллагаанд дахин нэгдлээ"
 }

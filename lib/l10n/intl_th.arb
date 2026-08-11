@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-11 14:01:30.664804",
+    "@@last_modified": "2026-08-11 15:43:22.406160",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10361,5 +10361,6 @@
     "audioOnMessageClickDescription": "อ่านข้อความออกเสียงเป็นภาษาเป้าหมายของคุณเมื่อคุณคลิกที่ข้อความนั้น",
     "audioSettingDisabledTitle": "ปิดเสียง {toolName}",
     "audioSettingDisabledBody": "คุณสามารถเปิดเสียง {toolName} ได้ในการตั้งค่าการเรียนรู้ของคุณ",
-    "audioSettingDisabledEnable": "เปิดใช้งาน"
+    "audioSettingDisabledEnable": "เปิดใช้งาน",
+    "rejoinedTheActivity": "🔄 {username} กลับเข้าร่วมกิจกรรมนี้แล้ว"
 }

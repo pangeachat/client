@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-11 14:01:30.939944",
+    "@@last_modified": "2026-08-11 15:43:22.762622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "جب آپ کسی پیغام پر کلک کریں تو اسے اپنی ہدف زبان میں بلند آواز میں پڑھیں۔",
     "audioSettingDisabledTitle": "{toolName} آڈیو غیر فعال ہے",
     "audioSettingDisabledBody": "آپ اپنی سیکھنے کی ترتیبات میں {toolName} آڈیو کو فعال کر سکتے ہیں",
-    "audioSettingDisabledEnable": "فعال کریں"
+    "audioSettingDisabledEnable": "فعال کریں",
+    "rejoinedTheActivity": "🔄 {username} اس سرگرمی میں دوبارہ شامل ہو گیا"
 }

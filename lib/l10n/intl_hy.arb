@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-11 14:01:24.990645",
+    "@@last_modified": "2026-08-11 15:43:17.612446",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2117,5 +2117,6 @@
     "audioOnMessageClickDescription": "Բարձրաձայն կարդալ հաղորդագրությունը ձեր թիրախային լեզվով, երբ սեղմում եք դրա վրա։",
     "audioSettingDisabledTitle": "{toolName} աուդիոն անջատված է",
     "audioSettingDisabledBody": "Դուք կարող եք միացնել {toolName} աուդիոն ձեր ուսուցման կարգավորումներում",
-    "audioSettingDisabledEnable": "Միացնել"
+    "audioSettingDisabledEnable": "Միացնել",
+    "rejoinedTheActivity": "🔄 {username}-ը միացավ այս ակտիվությանը"
 }

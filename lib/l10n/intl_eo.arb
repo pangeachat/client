@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 14:01:22.948399",
+    "@@last_modified": "2026-08-11 15:43:16.249017",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10674,5 +10674,6 @@
     "audioOnMessageClickDescription": "Laŭtlegi mesaĝon en via cellingvo kiam vi klakas sur ĝi.",
     "audioSettingDisabledTitle": "Aŭdio de {toolName} malŝaltita",
     "audioSettingDisabledBody": "Vi povas ŝalti la aŭdion de {toolName} en viaj lernaj agordoj",
-    "audioSettingDisabledEnable": "Ŝalti"
+    "audioSettingDisabledEnable": "Ŝalti",
+    "rejoinedTheActivity": "🔄 {username} realiĝis al ĉi tiu agado"
 }

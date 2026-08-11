@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-11 14:01:24.470857",
+    "@@last_modified": "2026-08-11 15:43:17.210115",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10165,5 +10165,6 @@
     "audioOnMessageClickDescription": "Pročitaj poruku naglas na ciljnom jeziku kada klikneš na nju.",
     "audioSettingDisabledTitle": "Zvuk {toolName} je onemogućen",
     "audioSettingDisabledBody": "Zvuk {toolName} možete omogućiti u postavkama učenja",
-    "audioSettingDisabledEnable": "Omogući"
+    "audioSettingDisabledEnable": "Omogući",
+    "rejoinedTheActivity": "🔄 {username} se ponovno pridružio ovoj aktivnosti"
 }

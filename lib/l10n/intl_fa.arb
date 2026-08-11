@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 14:01:23.172475",
+    "@@last_modified": "2026-08-11 15:43:16.087076",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9817,5 +9817,6 @@
     "audioOnMessageClickDescription": "با کلیک روی یک پیام، آن را با صدای بلند به زبان مقصد شما بخواند.",
     "audioSettingDisabledTitle": "صدای {toolName} غیرفعال شد",
     "audioSettingDisabledBody": "می‌توانید صدای {toolName} را در تنظیمات یادگیری خود فعال کنید",
-    "audioSettingDisabledEnable": "فعال کردن"
+    "audioSettingDisabledEnable": "فعال کردن",
+    "rejoinedTheActivity": "🔄 {username} دوباره به این فعالیت پیوست"
 }
