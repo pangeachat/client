@@ -50,10 +50,13 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
   bool? get isCorrect => widget.isCorrect;
 
-  /// Anchor for the tts-disabled popup. Registered as a transform target in
-  /// [build] — an unregistered id makes the popup silently not show (#8276).
+  /// Anchor for the tts-disabled popup: the overlay message's stable transform
+  /// target — an unregistered id makes the popup silently not show (#8276).
+  /// Deliberately not a per-choice anchor: choice items rebuild on every
+  /// selection and swap wholesale between exercises, so a popup anchored into
+  /// that subtree links to a leader that keeps unmounting under it.
   String get _targetId =>
-      'practice-match-item-${widget.controller.pangeaMessageEvent.eventId}-${widget.constructForm.choiceContent}';
+      'overlay_message_${widget.controller.pangeaMessageEvent.eventId}';
 
   Future<void> play() async {
     if (widget.audioContent == null) {
@@ -161,15 +164,11 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
       data: widget.constructForm,
       feedback: Material(type: MaterialType.transparency, child: content),
       onDragStarted: onTap,
-      child: CompositedTransformTarget(
-        link: MatrixState.pAnyState.layerLinkAndKey(_targetId).link,
-        child: InkWell(
-          key: MatrixState.pAnyState.layerLinkAndKey(_targetId).key,
-          onHover: (isHovered) => setState(() => _isHovered = isHovered),
-          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-          onTap: onTap,
-          child: ShimmerBackground(enabled: widget.shimmer, child: content),
-        ),
+      child: InkWell(
+        onHover: (isHovered) => setState(() => _isHovered = isHovered),
+        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+        onTap: onTap,
+        child: ShimmerBackground(enabled: widget.shimmer, child: content),
       ),
     );
   }

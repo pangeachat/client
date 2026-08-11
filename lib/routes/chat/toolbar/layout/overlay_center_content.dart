@@ -71,6 +71,10 @@ class OverlayCenterContent extends StatelessWidget {
                 : CrossAxisAlignment.start,
             children: [
               CompositedTransformTarget(
+                // The key makes this target resolvable via getRenderBox, so
+                // positioned cards (e.g. the tts-disabled popup, #8276) can
+                // anchor to the overlay message.
+                key: overlayController.overlayMessageLayerLink.key,
                 link: overlayController.overlayMessageLayerLink.link,
                 child: MeasureRenderBox(
                   onChange: onChangeMessageSize,
