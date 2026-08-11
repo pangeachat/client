@@ -136,12 +136,18 @@ class MobileNavWidget extends StatefulWidget {
   /// barrier: tap-outside collapse is their whole dismissal model.
   final bool mapStaysLive;
 
-  /// Fires when the hosted cavity settles at (or leaves) its FULL height, so
-  /// the shell can drop the floating search bar over a full course sheet and
-  /// hand that reserved strip to the course content (#7697). Latched to the
-  /// settled rest state — it deliberately does NOT toggle mid-drag, so the
-  /// reserved height (and thus the drag's coordinate space) stays stable while
-  /// the finger moves.
+  /// Reports whether the hosted cavity is settled at its FULL height, so the
+  /// shell can drop the floating search bar over a full course sheet and hand
+  /// that reserved strip to the course content (#7697). Latched to the settled
+  /// rest state — it deliberately does NOT toggle mid-drag, so the reserved
+  /// height (and thus the drag's coordinate space) stays stable while the
+  /// finger moves.
+  ///
+  /// LEVEL-triggered, not edge-triggered: the latched value is re-sent after
+  /// every frame, including the first frame of a fresh mount. Consumers must
+  /// dedupe (#8247 — the shell's consumer is a process-global the shell reads
+  /// even when this widget is gone, so the live State has to keep asserting it
+  /// rather than assume a previous instance left it false).
   final ValueChanged<bool>? onCavityFullChanged;
 
   /// A tap on the hosted surface's dead space (not a button) expands the cavity
@@ -269,10 +275,6 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// mid-drag. That keeps the shell's search-bar reservation (#7697) from
   /// thrashing (and the box from jumping) while the finger is dragging.
   bool _fullLatched = false;
-
-  /// Last value handed to [MobileNavWidget.onCavityFullChanged]; the post-frame
-  /// notify in [build] fires only on a real change.
-  bool _reportedFull = false;
 
   /// Something inside [MobileNavWidget.cavityChild] holds focus — in practice a
   /// text input the learner just tapped. Drives the grow-to-full below. (The
@@ -445,14 +447,24 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     setState(() => _restState = height);
   }
 
-  /// Notify the shell of a latched full-height change AFTER the frame — calling
+  /// Re-assert the latched full height to the shell AFTER the frame — calling
   /// back synchronously from build would `setState` the shell mid-build.
+  ///
+  /// Unconditional, every build. The report used to be edge-triggered off a
+  /// per-State `_reportedFull`, which stranded the shell's PROCESS-GLOBAL
+  /// `ActivitySheetFull` at true whenever this State was disposed while full
+  /// — launching a session from a full activity plan drops the plan token
+  /// (`liveView` siblings), tearing the widget down with nothing left to
+  /// report false. The next State started at false, matched its own latched
+  /// false, and stayed silent, so the analytics bar rendered at opacity 0 for
+  /// the rest of the process (#8247). The value the shell derives also folds
+  /// in ITS own state (`isActivityCavity && full`), which an edge trigger on
+  /// our half alone can never track. `ActivitySheetFull.set` dedupes, so the
+  /// repeats cost nothing.
   void _syncFullReport() {
-    if (_fullLatched == _reportedFull) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || _fullLatched == _reportedFull) return;
-      _reportedFull = _fullLatched;
-      widget.onCavityFullChanged?.call(_reportedFull);
+      if (!mounted) return;
+      widget.onCavityFullChanged?.call(_fullLatched);
     });
   }
 

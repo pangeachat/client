@@ -1272,7 +1272,11 @@ void main() {
     });
   });
 
-  group('full-height reporting (#7697)', () {
+  group('full-height reporting (#7697, #8247)', () {
+    // The report is LEVEL-triggered: the latched value is re-sent after every
+    // frame, so these assert the LAST report, not the exact sequence. The
+    // repeats are what keeps the shell's process-global honest across a
+    // dispose (#8247, below).
     testWidgets('reports full only on settle, and toggles back on collapse', (
       tester,
     ) async {
@@ -1284,18 +1288,18 @@ void main() {
         maxHeightFraction: 0.75,
         onCavityFullChanged: reports.add,
       );
-      // Opens at half — never full — so nothing is reported yet.
-      expect(reports, isEmpty);
+      // Opens at half — never full — so it reports not-full.
+      expect(reports.last, isFalse);
 
-      // Handle tap settles at full: one true report.
+      // Handle tap settles at full.
       await tester.tap(handleFinder());
       await tester.pumpAndSettle();
-      expect(reports, [true]);
+      expect(reports.last, isTrue);
 
-      // Handle tap settles back at half: reports false. Only real changes fire.
+      // Handle tap settles back at half.
       await tester.tap(handleFinder());
       await tester.pumpAndSettle();
-      expect(reports, [true, false]);
+      expect(reports.last, isFalse);
     });
 
     testWidgets('an ephemeral tap-outside collapse reports not-full', (
@@ -1313,12 +1317,40 @@ void main() {
       );
       await tester.tap(handleFinder()); // -> full
       await tester.pumpAndSettle();
-      expect(reports, [true]);
+      expect(reports.last, isTrue);
 
       // Tap outside collapses ephemerally — the sheet is no longer full.
       await tester.tapAt(const Offset(200, 20));
       await tester.pumpAndSettle();
-      expect(reports, [true, false]);
+      expect(reports.last, isFalse);
+    });
+
+    testWidgets('a fresh mount re-asserts not-full after a full sheet was '
+        'disposed (#8247)', (tester) async {
+      final reports = <bool>[];
+      await pumpNav(
+        tester,
+        cavityChild: const Text('Activity plan'),
+        cavityKey: 'activity:a',
+        maxHeightFraction: 0.75,
+        onCavityFullChanged: reports.add,
+      );
+      await tester.tap(handleFinder()); // -> full
+      await tester.pumpAndSettle();
+      expect(reports.last, isTrue);
+
+      // Launching the session drops the plan token (`liveView` siblings), so
+      // the widget goes away WITHOUT a close: didUpdateWidget's closedNow
+      // branch never runs and the State is disposed still latched full.
+      await unmountNav(tester);
+      reports.clear();
+
+      // Back at the bare map: a genuinely fresh State with no cavity. It must
+      // assert not-full rather than assume the last instance left it that way
+      // — otherwise the shell's ActivitySheetFull stays true and the analytics
+      // bar renders at opacity 0 for the rest of the process.
+      await pumpNav(tester, onCavityFullChanged: reports.add);
+      expect(reports.last, isFalse);
     });
   });
 }
