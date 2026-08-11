@@ -50,13 +50,15 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
   bool? get isCorrect => widget.isCorrect;
 
-  /// Anchor for the tts-disabled popup: the overlay message's stable transform
-  /// target — an unregistered id makes the popup silently not show (#8276).
+  /// Anchor for the tts-disabled popup: the practice-mode centered message
+  /// (key attached by OverlayMessage, leader mounted by OverlayCenterContent —
+  /// `overlay_message_*` is the non-practice layout and is unmounted here).
+  /// An unregistered id makes the popup silently not show (#8276).
   /// Deliberately not a per-choice anchor: choice items rebuild on every
   /// selection and swap wholesale between exercises, so a popup anchored into
   /// that subtree links to a leader that keeps unmounting under it.
   String get _targetId =>
-      'overlay_message_${widget.controller.pangeaMessageEvent.eventId}';
+      'overlay_center_message_${widget.controller.pangeaMessageEvent.eventId}';
 
   Future<void> play() async {
     if (widget.audioContent == null) {

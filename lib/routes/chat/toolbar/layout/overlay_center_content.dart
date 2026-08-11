@@ -10,6 +10,7 @@ import 'package:fluffychat/routes/chat/toolbar/layout/overlay_message.dart';
 import 'package:fluffychat/routes/chat/toolbar/layout/reading_assistance_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 
 class OverlayCenterContent extends StatelessWidget {
   final Event event;
@@ -71,11 +72,14 @@ class OverlayCenterContent extends StatelessWidget {
                 : CrossAxisAlignment.start,
             children: [
               CompositedTransformTarget(
-                // The key makes this target resolvable via getRenderBox, so
-                // positioned cards (e.g. the tts-disabled popup, #8276) can
-                // anchor to the overlay message.
-                key: overlayController.overlayMessageLayerLink.key,
-                link: overlayController.overlayMessageLayerLink.link,
+                // Lead the link matching this instance's own overlayKey (the
+                // same id whose GlobalKey OverlayMessage attaches below). A
+                // fixed link here put two leaders on one LayerLink whenever
+                // two instances mount together (practice-mode transition +
+                // centered message), breaking anything following it (#8276).
+                // No key here: OverlayMessage already attaches it; attaching
+                // it twice is a duplicate-GlobalKey crash.
+                link: MatrixState.pAnyState.layerLinkAndKey(overlayKey).link,
                 child: MeasureRenderBox(
                   onChange: onChangeMessageSize,
                   child: OverlayMessage(
