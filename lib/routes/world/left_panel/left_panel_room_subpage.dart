@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 
+import 'package:go_router/go_router.dart';
+
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
+import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
@@ -74,6 +78,23 @@ class LeftPanelRoomSubpage extends StatelessWidget {
     // archived rooms, and those stay viewable as read-only chats (#8148).
     if (room == null || room.isSpace) {
       return emptyPage;
+    }
+
+    // An analytics room is an internal construct store, never a chat surface
+    // (#8268). Every list hides it (isHiddenRoom), but a direct URL or a stale
+    // history entry can still name it in a panel token — drop that token as a
+    // history REPLACE (so back does not land here again), revealing the course
+    // context or map beneath, instead of rendering its timeline.
+    if (room.isAnalyticsRoom) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (!context.mounted) return;
+        final close = roomTokenCloseLocation(
+          GoRouterState.of(context).uri,
+          roomId,
+        );
+        if (close != null) context.replace(close);
+      });
+      return const SizedBox.shrink();
     }
 
     // A jump-to-message (`e/<eventId>`) parses with no subPage, so it falls
