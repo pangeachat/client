@@ -1111,17 +1111,20 @@ void main() {
       expect(cavityHeightOf(tester), closeTo(maxHeightPx * 0.5 - 200.0, 1.0));
     });
 
-    testWidgets('a keyboard taller than the cavity clamps to zero, not '
-        'negative', (tester) async {
+    testWidgets('a keyboard taller than the cavity stops at the floor, '
+        'keeping the surface mounted', (tester) async {
       await pumpNav(
         tester,
         cavityChild: const Text('Chat list'),
         cavityKey: 'chats',
         maxHeightFraction: 0.75,
-        // Half height is 300px; a 500px inset would drive it negative.
+        // Half height is 300px; a 500px inset would trim past zero. The floor
+        // holds instead: trimming to nothing unmounts the hosted surface, and
+        // with it whatever interaction summoned the keyboard (#8072).
         keyboardInset: 500.0,
       );
-      expect(cavityHeightOf(tester), 0.0);
+      expect(cavityHeightOf(tester), closeTo(96.0, 1.0));
+      expect(find.text('Chat list'), findsOneWidget);
     });
   });
 
@@ -1211,13 +1214,61 @@ void main() {
       expect(cavityHeightOf(tester), closeTo(128.0, 1.0));
     });
 
-    testWidgets('leaves an unfocused cavity to the plain #7754 trim', (
+    testWidgets('holds the floor — but does not grow — without cavity focus', (
       tester,
     ) async {
-      // The search bar riding ABOVE the widget owns this keyboard; nothing in
-      // the cavity is focused, so the cavity neither grows nor holds a floor.
+      // A keyboard whose owner is outside the cavity's focus subtree (the
+      // search bar above the widget, or a hosted dropdown's overlay menu).
+      // The cavity must not grow to full — that height belongs to an
+      // in-cavity input — but it must keep the floor: the keyboard's owner
+      // can still be anchored inside (the dropdown case below).
       await pumpCourseCavity(tester, keyboardInset: 300.0);
-      expect(cavityHeightOf(tester), 0.0);
+      expect(cavityHeightOf(tester), closeTo(96.0, 1.0));
+      expect(find.byType(TextField), findsOneWidget);
+    });
+
+    testWidgets('keeps a hosted dropdown\'s menu open when a keyboard trims '
+        'the cavity', (tester) async {
+      // Kel's reopen of #8072: the add-course language dropdown opens an
+      // overlay-route menu with its own search field. That field's keyboard
+      // trims the cavity; focus lives in the OVERLAY, not the cavity subtree,
+      // so the focus-gated floor didn't hold — the trim unmounted the hosted
+      // flow, disposing the menu's anchor and dismissing menu + keyboard.
+      final dropdown = DropdownButton<String>(
+        value: 'de',
+        items: const [
+          DropdownMenuItem(value: 'de', child: Text('German')),
+          DropdownMenuItem(value: 'el', child: Text('Greek')),
+        ],
+        onChanged: (_) {},
+      );
+      Future<void> pumpDropdownCavity(
+        WidgetTester tester, {
+        double keyboardInset = 0.0,
+      }) => pumpNav(
+        tester,
+        cavityChild: dropdown,
+        cavityKey: 'course-a',
+        cavityContextId: 'course-a',
+        cavityDefaultsToPeek: true,
+        maxHeightFraction: 0.75,
+        keyboardInset: keyboardInset,
+      );
+
+      await pumpDropdownCavity(tester);
+      await tester.tap(find.text('German'));
+      await tester.pumpAndSettle();
+      // Menu open: the unselected option is visible in the overlay.
+      expect(find.text('Greek'), findsOneWidget);
+
+      // The menu's search field summons a keyboard taller than the peek.
+      await pumpDropdownCavity(tester, keyboardInset: 500.0);
+      expect(
+        find.text('Greek'),
+        findsOneWidget,
+        reason: 'the trim must not unmount the menu\'s anchor',
+      );
+      expect(find.byType(DropdownButton<String>), findsOneWidget);
     });
   });
 

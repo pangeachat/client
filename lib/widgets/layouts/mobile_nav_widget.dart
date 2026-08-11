@@ -237,14 +237,19 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const double _peekHeight = 128.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
-  /// The least the keyboard trim may leave of a cavity that HOLDS FOCUS — the
-  /// drag handle plus one text-field row. Trimming past it drops the hosted
-  /// surface entirely (see `showContent` in [build]), which disposes the
-  /// focused field's node, which closes the keyboard, which un-trims the
-  /// cavity, which remounts the field: the #8072 loop where a tapped input
-  /// deselects itself. Applies only while something inside the cavity is
-  /// focused, so the plain keyboard trim of #7754 is unchanged.
-  static const double _focusedKeyboardFloor = 96.0;
+  /// The least the keyboard trim may leave of an OPEN cavity — the drag handle
+  /// plus one text-field row. Trimming past it drops the hosted surface
+  /// entirely (see `showContent` in [build]), and whatever interaction summoned
+  /// the keyboard dies with it: a focused field's node is disposed, which
+  /// closes the keyboard, which un-trims the cavity, which remounts the field —
+  /// the #8072 loop where a tapped input deselects itself. The floor is
+  /// UNCONDITIONAL (any open cavity, any keyboard) because the keyboard's owner
+  /// can sit outside the cavity's focus subtree while its anchor sits inside:
+  /// a hosted dropdown opens an overlay-route menu whose search field summons
+  /// the keyboard, and gating the floor on in-cavity focus let the trim unmount
+  /// the menu's anchor and dismiss it (#8072 reopened). The trim itself
+  /// (#7754) still absorbs everything above the floor.
+  static const double _keyboardFloor = 96.0;
 
   /// The rest stop the cavity currently sits at. Non-null means the drawn
   /// fraction is DERIVED from this each build ([_currentFraction]), so it
@@ -270,8 +275,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   bool _reportedFull = false;
 
   /// Something inside [MobileNavWidget.cavityChild] holds focus — in practice a
-  /// text input the learner just tapped. Drives both the grow-to-full below and
-  /// the [_focusedKeyboardFloor] in [build].
+  /// text input the learner just tapped. Drives the grow-to-full below. (The
+  /// [_keyboardFloor] deliberately does NOT depend on this: focus can live in
+  /// an overlay route — a dropdown's menu — that is not a cavity descendant.)
   bool _cavityHasFocus = false;
 
   /// The grow-to-full has already fired for the current focus/keyboard episode,
@@ -694,18 +700,15 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                     0.0,
                                     animatedHeight,
                                   );
-                              // Hold the floor while the cavity holds focus, so
-                              // the grow-to-full above has frames to run in
-                              // without the trim unmounting the very field that
-                              // triggered it (#8072).
-                              final visible =
-                                  _cavityHasFocus && baseCavityPx > 0
+                              // Hold the floor for every open cavity, so the
+                              // trim can never unmount the hosted surface —
+                              // and with it the field or overlay anchor whose
+                              // keyboard caused the trim (#8072). A no-op
+                              // whenever the trim leaves more than the floor.
+                              final visible = baseCavityPx > 0
                                   ? max(
                                       trimmed,
-                                      min(
-                                        animatedHeight,
-                                        _focusedKeyboardFloor,
-                                      ),
+                                      min(animatedHeight, _keyboardFloor),
                                     )
                                   : trimmed;
                               // Drop the content the instant the cavity is
