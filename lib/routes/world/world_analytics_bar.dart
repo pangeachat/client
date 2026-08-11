@@ -323,6 +323,10 @@ class _PowerupsRow extends StatelessWidget {
                         // overhangs.
                         child: LevelUpBadgeCelebration(
                           levelUpdates: viewModel.levelUpdates,
+                          // The badge overhangs the pill near the screen's
+                          // left edge here, so the chip drops below it — beside
+                          // it, the chip ran off-screen (#8257).
+                          chipBelow: true,
                           child: HexLevelBadge(
                             level: level,
                             selected:
