@@ -15,6 +15,8 @@ void main() {
       expect(config.showMoreButton, isTrue);
       expect(config.showReactionPicker, isTrue);
       expect(config.enableWordCardAnalyticsNavigation, isTrue);
+      // Chat mirrors the timeline: own messages anchor right.
+      expect(config.alignMessageLeft, isFalse);
     });
 
     test('analyticsExample preset hides chat-only surfaces', () {
@@ -23,6 +25,9 @@ void main() {
       expect(config.showMoreButton, isFalse);
       expect(config.showReactionPicker, isFalse);
       expect(config.enableWordCardAnalyticsNavigation, isFalse);
+      // Example chips are left-aligned whoever sent them, so the word card
+      // grows right instead of being squeezed against the left edge (#8252).
+      expect(config.alignMessageLeft, isTrue);
     });
   });
 

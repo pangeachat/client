@@ -46,11 +46,19 @@ class MessageToolbarConfig {
   /// page underneath the open overlay.
   final bool enableWordCardAnalyticsNavigation;
 
+  /// Lay the overlay out from the left edge of the message, whatever the
+  /// sender. Chat mirrors the timeline, so the user's own messages anchor
+  /// right and the word card grows leftward. Hosts that left-align every
+  /// message (the analytics example chips) set this so the card grows into
+  /// the free space on the right instead of being squeezed (#8252).
+  final bool alignMessageLeft;
+
   const MessageToolbarConfig({
     required this.showPracticeButton,
     required this.showMoreButton,
     required this.showReactionPicker,
     required this.enableWordCardAnalyticsNavigation,
+    required this.alignMessageLeft,
   });
 
   static const chat = MessageToolbarConfig(
@@ -58,6 +66,7 @@ class MessageToolbarConfig {
     showMoreButton: true,
     showReactionPicker: true,
     enableWordCardAnalyticsNavigation: true,
+    alignMessageLeft: false,
   );
 
   static const analyticsExample = MessageToolbarConfig(
@@ -65,5 +74,6 @@ class MessageToolbarConfig {
     showMoreButton: false,
     showReactionPicker: false,
     enableWordCardAnalyticsNavigation: false,
+    alignMessageLeft: true,
   );
 }
