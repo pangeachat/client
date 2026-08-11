@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-11 13:17:32.544585",
+    "@@last_modified": "2026-08-11 14:01:28.388874",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Pa uthenga watsopano",
     "audioOnNewMessageDescription": "Werengani zokha mauthenga atsopano omwe alandilidwa mokweza m'chinenero chanu chofuna kuphunzira.",
     "audioOnMessageClickToolName": "Pa kudina uthenga",
-    "audioOnMessageClickDescription": "Werengani uthenga mokweza m'chinenero chanu chofuna kuphunzira mukadina."
+    "audioOnMessageClickDescription": "Werengani uthenga mokweza m'chinenero chanu chofuna kuphunzira mukadina.",
+    "audioSettingDisabledTitle": "Mawu a {toolName} alephereka",
+    "audioSettingDisabledBody": "Mungathe kuyatsa mawu a {toolName} mu zoikamo zanu zophunzirira",
+    "audioSettingDisabledEnable": "Yatsani"
 }

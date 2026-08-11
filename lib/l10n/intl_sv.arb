@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:34.534436",
+    "@@last_modified": "2026-08-11 14:01:30.124591",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10244,5 +10244,8 @@
     "audioOnNewMessageToolName": "Vid nytt meddelande",
     "audioOnNewMessageDescription": "Läs automatiskt upp nya mottagna meddelanden på ditt målspråk.",
     "audioOnMessageClickToolName": "Vid meddelandeklick",
-    "audioOnMessageClickDescription": "Läs upp ett meddelande på ditt målspråk när du klickar på det."
+    "audioOnMessageClickDescription": "Läs upp ett meddelande på ditt målspråk när du klickar på det.",
+    "audioSettingDisabledTitle": "{toolName}-ljud inaktiverat",
+    "audioSettingDisabledBody": "Du kan aktivera {toolName}-ljud i dina inlärningsinställningar",
+    "audioSettingDisabledEnable": "Aktivera"
 }

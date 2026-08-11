@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-11 13:17:34.712066",
+    "@@last_modified": "2026-08-11 14:01:30.182232",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Kwenye ujumbe mpya",
     "audioOnNewMessageDescription": "Soma kiotomatiki ujumbe mpya uliopokelewa kwa sauti katika lugha unayolenga.",
     "audioOnMessageClickToolName": "Kwenye kubofya ujumbe",
-    "audioOnMessageClickDescription": "Soma ujumbe kwa sauti katika lugha unayolenga unapoubofya."
+    "audioOnMessageClickDescription": "Soma ujumbe kwa sauti katika lugha unayolenga unapoubofya.",
+    "audioSettingDisabledTitle": "Sauti ya {toolName} imezimwa",
+    "audioSettingDisabledBody": "Unaweza kuwasha sauti ya {toolName} katika mipangilio yako ya kujifunza",
+    "audioSettingDisabledEnable": "Washa"
 }

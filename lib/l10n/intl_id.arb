@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:27.837285",
+    "@@last_modified": "2026-08-11 14:01:24.870408",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9799,5 +9799,8 @@
     "audioOnNewMessageToolName": "Pada pesan baru",
     "audioOnNewMessageDescription": "Secara otomatis membacakan pesan baru yang diterima dalam bahasa target Anda.",
     "audioOnMessageClickToolName": "Pada klik pesan",
-    "audioOnMessageClickDescription": "Membacakan pesan dalam bahasa target Anda saat Anda mengekliknya."
+    "audioOnMessageClickDescription": "Membacakan pesan dalam bahasa target Anda saat Anda mengekliknya.",
+    "audioSettingDisabledTitle": "Audio {toolName} dinonaktifkan",
+    "audioSettingDisabledBody": "Anda dapat mengaktifkan audio {toolName} di pengaturan belajar Anda",
+    "audioSettingDisabledEnable": "Aktifkan"
 }

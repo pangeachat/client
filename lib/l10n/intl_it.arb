@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:28.481935",
+    "@@last_modified": "2026-08-11 14:01:25.185898",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9799,5 +9799,8 @@
     "audioOnNewMessageToolName": "Al nuovo messaggio",
     "audioOnNewMessageDescription": "Leggi automaticamente i nuovi messaggi ricevuti ad alta voce nella tua lingua di destinazione.",
     "audioOnMessageClickToolName": "Al clic sul messaggio",
-    "audioOnMessageClickDescription": "Leggi un messaggio ad alta voce nella tua lingua di destinazione quando ci clicchi sopra."
+    "audioOnMessageClickDescription": "Leggi un messaggio ad alta voce nella tua lingua di destinazione quando ci clicchi sopra.",
+    "audioSettingDisabledTitle": "Audio di {toolName} disabilitato",
+    "audioSettingDisabledBody": "Puoi abilitare l'audio di {toolName} nelle impostazioni di apprendimento",
+    "audioSettingDisabledEnable": "Abilita"
 }

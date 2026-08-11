@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-11 13:17:24.374933",
+    "@@last_modified": "2026-08-11 14:01:22.293096",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10220,5 +10220,8 @@
     "audioOnNewMessageToolName": "Při nové zprávě",
     "audioOnNewMessageDescription": "Automaticky nahlas přečíst nové přijaté zprávy ve vašem cílovém jazyce.",
     "audioOnMessageClickToolName": "Při kliknutí na zprávu",
-    "audioOnMessageClickDescription": "Přečíst zprávu nahlas ve vašem cílovém jazyce, když na ni kliknete."
+    "audioOnMessageClickDescription": "Přečíst zprávu nahlas ve vašem cílovém jazyce, když na ni kliknete.",
+    "audioSettingDisabledTitle": "Zvuk {toolName} je vypnutý",
+    "audioSettingDisabledBody": "Zvuk {toolName} můžete zapnout v nastavení učení",
+    "audioSettingDisabledEnable": "Zapnout"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-11 13:17:29.562924",
+    "@@last_modified": "2026-08-11 14:01:26.313678",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Жаңы билдирүү келгенде",
     "audioOnNewMessageDescription": "Жаңы келген билдирүүлөрдү автоматтык түрдө максаттуу тилиңизде үн чыгарып окуйт.",
     "audioOnMessageClickToolName": "Билдирүүнү басканда",
-    "audioOnMessageClickDescription": "Билдирүүнү басканда аны максаттуу тилиңизде үн чыгарып окуйт."
+    "audioOnMessageClickDescription": "Билдирүүнү басканда аны максаттуу тилиңизде үн чыгарып окуйт.",
+    "audioSettingDisabledTitle": "{toolName} аудиосу өчүрүлгөн",
+    "audioSettingDisabledBody": "Сиз {toolName} аудиосун окуу жөндөөлөрүңүздөн иштете аласыз",
+    "audioSettingDisabledEnable": "Иштетүү"
 }

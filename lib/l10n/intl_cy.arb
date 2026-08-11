@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-11 13:17:25.024935",
+    "@@last_modified": "2026-08-11 14:01:23.684417",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Ar neges newydd",
     "audioOnNewMessageDescription": "Darllenwch negeseuon newydd a dderbyniwyd yn awtomatig yn uchel yn eich iaith darged.",
     "audioOnMessageClickToolName": "Ar glic neges",
-    "audioOnMessageClickDescription": "Darllenwch neges yn uchel yn eich iaith darged pan fyddwch chi'n clicio arni."
+    "audioOnMessageClickDescription": "Darllenwch neges yn uchel yn eich iaith darged pan fyddwch chi'n clicio arni.",
+    "audioSettingDisabledTitle": "Sain {toolName} wedi'i analluogi",
+    "audioSettingDisabledBody": "Gallwch alluogi sain {toolName} yn eich gosodiadau dysgu",
+    "audioSettingDisabledEnable": "Galluogi"
 }

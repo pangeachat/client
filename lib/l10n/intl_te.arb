@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-11 13:17:34.894585",
+    "@@last_modified": "2026-08-11 14:01:30.641539",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10676,5 +10676,8 @@
     "audioOnNewMessageToolName": "కొత్త సందేశం వచ్చినప్పుడు",
     "audioOnNewMessageDescription": "మీ లక్ష్య భాషలో కొత్తగా వచ్చిన సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి.",
     "audioOnMessageClickToolName": "సందేశంపై క్లిక్ చేసినప్పుడు",
-    "audioOnMessageClickDescription": "మీరు సందేశంపై క్లిక్ చేసినప్పుడు మీ లక్ష్య భాషలో బిగ్గరగా చదవండి."
+    "audioOnMessageClickDescription": "మీరు సందేశంపై క్లిక్ చేసినప్పుడు మీ లక్ష్య భాషలో బిగ్గరగా చదవండి.",
+    "audioSettingDisabledTitle": "{toolName} ఆడియో నిలిపివేయబడింది",
+    "audioSettingDisabledBody": "మీరు మీ అభ్యాస సెట్టింగ్‌లలో {toolName} ఆడియోను ప్రారంభించవచ్చు",
+    "audioSettingDisabledEnable": "ప్రారంభించు"
 }

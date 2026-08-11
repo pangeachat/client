@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-11 13:17:28.439874",
+    "@@last_modified": "2026-08-11 14:01:25.564108",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10495,5 +10495,8 @@
     "audioOnNewMessageToolName": "新着メッセージ受信時",
     "audioOnNewMessageDescription": "新しく受信したメッセージを、学習言語で自動的に読み上げます。",
     "audioOnMessageClickToolName": "メッセージクリック時",
-    "audioOnMessageClickDescription": "メッセージをクリックすると、学習言語で読み上げます。"
+    "audioOnMessageClickDescription": "メッセージをクリックすると、学習言語で読み上げます。",
+    "audioSettingDisabledTitle": "{toolName}の音声が無効です",
+    "audioSettingDisabledBody": "学習設定で{toolName}の音声を有効にできます",
+    "audioSettingDisabledEnable": "有効にする"
 }

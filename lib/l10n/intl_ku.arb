@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-11 13:17:30.000601",
+    "@@last_modified": "2026-08-11 14:01:26.523630",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "لە کاتی پەیامی نوێدا",
     "audioOnNewMessageDescription": "بە شێوەیەکی خۆکارانە پەیامە نوێ وەرگیراوەکان بە دەنگی بەرز بە زمانی ئامانجەکەت بخوێنەرەوە.",
     "audioOnMessageClickToolName": "لە کاتی کرتەکردن لەسەر پەیام",
-    "audioOnMessageClickDescription": "پەیامێک بە دەنگی بەرز بە زمانی ئامانجەکەت بخوێنەرەوە کاتێک کرتەی لەسەر دەکەیت."
+    "audioOnMessageClickDescription": "پەیامێک بە دەنگی بەرز بە زمانی ئامانجەکەت بخوێنەرەوە کاتێک کرتەی لەسەر دەکەیت.",
+    "audioSettingDisabledTitle": "دەنگی {toolName} ناچالاک کراوە",
+    "audioSettingDisabledBody": "دەتوانیت دەنگی {toolName} لە ڕێکخستنەکانی فێربووندا چالاک بکەیت",
+    "audioSettingDisabledEnable": "چالاککردن"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-11 13:17:32.904072",
+    "@@last_modified": "2026-08-11 14:01:28.285818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "ਨਵੇਂ ਸੁਨੇਹੇ 'ਤੇ",
     "audioOnNewMessageDescription": "ਤੁਹਾਡੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਨਵੇਂ ਪ੍ਰਾਪਤ ਸੁਨੇਹਿਆਂ ਨੂੰ ਆਪਣੇ ਆਪ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ।",
     "audioOnMessageClickToolName": "ਸੁਨੇਹੇ 'ਤੇ ਕਲਿੱਕ ਕਰਨ 'ਤੇ",
-    "audioOnMessageClickDescription": "ਜਦੋਂ ਤੁਸੀਂ ਇਸ 'ਤੇ ਕਲਿੱਕ ਕਰਦੇ ਹੋ ਤਾਂ ਤੁਹਾਡੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ।"
+    "audioOnMessageClickDescription": "ਜਦੋਂ ਤੁਸੀਂ ਇਸ 'ਤੇ ਕਲਿੱਕ ਕਰਦੇ ਹੋ ਤਾਂ ਤੁਹਾਡੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ।",
+    "audioSettingDisabledTitle": "{toolName} ਆਡੀਓ ਅਸਮਰੱਥ ਹੈ",
+    "audioSettingDisabledBody": "ਤੁਸੀਂ ਆਪਣੀਆਂ ਸਿੱਖਣ ਸੈਟਿੰਗਾਂ ਵਿੱਚ {toolName} ਆਡੀਓ ਨੂੰ ਸਮਰੱਥ ਕਰ ਸਕਦੇ ਹੋ",
+    "audioSettingDisabledEnable": "ਸਮਰੱਥ ਕਰੋ"
 }

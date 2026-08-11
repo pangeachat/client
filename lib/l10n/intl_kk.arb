@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-11 13:17:29.153935",
+    "@@last_modified": "2026-08-11 14:01:25.586819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Жаңа хабарламада",
     "audioOnNewMessageDescription": "Жаңа алынған хабарламаларды мақсатты тіліңізде автоматты түрде дауыстап оқыңыз.",
     "audioOnMessageClickToolName": "Хабарламаны басқанда",
-    "audioOnMessageClickDescription": "Хабарламаны басқан кезде оны мақсатты тіліңізде дауыстап оқыңыз."
+    "audioOnMessageClickDescription": "Хабарламаны басқан кезде оны мақсатты тіліңізде дауыстап оқыңыз.",
+    "audioSettingDisabledTitle": "{toolName} аудиосы өшірілген",
+    "audioSettingDisabledBody": "Оқу параметрлеріңізде {toolName} аудиосын қосуға болады",
+    "audioSettingDisabledEnable": "Қосу"
 }

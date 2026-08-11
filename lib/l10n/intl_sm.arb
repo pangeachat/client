@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-11 13:17:34.319793",
+    "@@last_modified": "2026-08-11 14:01:29.423942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "I le feʻau fou",
     "audioOnNewMessageDescription": "Faitau otometi feʻau fou ua maua i lau gagana o loʻo e aʻoaʻoina.",
     "audioOnMessageClickToolName": "I le kilikiina o le feʻau",
-    "audioOnMessageClickDescription": "Faitau se feʻau i lau gagana o loʻo e aʻoaʻoina pe a e kiliki i ai."
+    "audioOnMessageClickDescription": "Faitau se feʻau i lau gagana o loʻo e aʻoaʻoina pe a e kiliki i ai.",
+    "audioSettingDisabledTitle": "Leo {toolName} ua lē mafai",
+    "audioSettingDisabledBody": "E mafai ona e faʻagaoioia le leo {toolName} i au faʻatulagaga aʻoaʻoga",
+    "audioSettingDisabledEnable": "Faʻagaoioia"
 }

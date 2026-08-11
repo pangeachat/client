@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-11 13:17:30.641850",
+    "@@last_modified": "2026-08-11 14:01:27.165287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "പുതിയ സന്ദേശത്തിൽ",
     "audioOnNewMessageDescription": "പുതിയതായി ലഭിക്കുന്ന സന്ദേശങ്ങൾ നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിൽ സ്വയമേവ വായിക്കുക.",
     "audioOnMessageClickToolName": "സന്ദേശത്തിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ",
-    "audioOnMessageClickDescription": "ഒരു സന്ദേശത്തിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ അത് നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിൽ വായിക്കുക."
+    "audioOnMessageClickDescription": "ഒരു സന്ദേശത്തിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ അത് നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിൽ വായിക്കുക.",
+    "audioSettingDisabledTitle": "{toolName} ഓഡിയോ പ്രവർത്തനരഹിതമാക്കി",
+    "audioSettingDisabledBody": "നിങ്ങളുടെ പഠന ക്രമീകരണങ്ങളിൽ {toolName} ഓഡിയോ പ്രവർത്തനക്ഷമമാക്കാം",
+    "audioSettingDisabledEnable": "പ്രവർത്തനക്ഷമമാക്കുക"
 }

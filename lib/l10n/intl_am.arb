@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-11 13:17:24.853531",
+    "@@last_modified": "2026-08-11 14:01:21.645298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "አዲስ መልዕክት ሲመጣ",
     "audioOnNewMessageDescription": "አዲስ የተቀበሉትን መልዕክት በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብሎ ያንብቡ።",
     "audioOnMessageClickToolName": "መልዕክት ሲጫኑ",
-    "audioOnMessageClickDescription": "መልዕክትን ሲጫኑ በዒላማ ቋንቋዎ ጮክ ብሎ ያንብቡ።"
+    "audioOnMessageClickDescription": "መልዕክትን ሲጫኑ በዒላማ ቋንቋዎ ጮክ ብሎ ያንብቡ።",
+    "audioSettingDisabledTitle": "{toolName} ድምጽ ተሰናክሏል",
+    "audioSettingDisabledBody": "በመማሪያ ቅንብሮችዎ ውስጥ የ{toolName} ድምጽን ማንቃት ይችላሉ።",
+    "audioSettingDisabledEnable": "አንቃ"
 }

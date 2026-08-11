@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-11 13:17:32.736577",
+    "@@last_modified": "2026-08-11 14:01:28.918343",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10643,5 +10643,8 @@
     "audioOnNewMessageToolName": "Em nova mensagem",
     "audioOnNewMessageDescription": "Lê automaticamente as novas mensagens recebidas em voz alta no seu idioma de destino.",
     "audioOnMessageClickToolName": "Ao clicar na mensagem",
-    "audioOnMessageClickDescription": "Lê uma mensagem em voz alta no seu idioma de destino quando clica nela."
+    "audioOnMessageClickDescription": "Lê uma mensagem em voz alta no seu idioma de destino quando clica nela.",
+    "audioSettingDisabledTitle": "Áudio {toolName} desativado",
+    "audioSettingDisabledBody": "Pode ativar o áudio {toolName} nas suas definições de aprendizagem",
+    "audioSettingDisabledEnable": "Ativar"
 }

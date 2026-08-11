@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-11 13:17:27.442070",
+    "@@last_modified": "2026-08-11 14:01:24.694980",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Lè gen nouvo mesaj",
     "audioOnNewMessageDescription": "Li nouvo mesaj ou resevwa yo awotomatikman nan lang w ap aprann nan.",
     "audioOnMessageClickToolName": "Lè w klike sou yon mesaj",
-    "audioOnMessageClickDescription": "Li yon mesaj awotomatikman nan lang w ap aprann nan lè w klike sou li."
+    "audioOnMessageClickDescription": "Li yon mesaj awotomatikman nan lang w ap aprann nan lè w klike sou li.",
+    "audioSettingDisabledTitle": "Odyo {toolName} enfim",
+    "audioSettingDisabledBody": "Ou ka aktive odyo {toolName} nan paramèt aprantisaj ou",
+    "audioSettingDisabledEnable": "Aktive"
 }

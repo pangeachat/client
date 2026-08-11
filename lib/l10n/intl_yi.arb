@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-11 13:17:36.321785",
+    "@@last_modified": "2026-08-11 14:01:31.666313",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "אויף אַ נײַעם מעסעדזש",
     "audioOnNewMessageDescription": "לייענט אויס אויטאָמאַטיש נײַע באַקומענע מעסעדזשעס הויך אין דײַן צילשפּראַך.",
     "audioOnMessageClickToolName": "אויף מעסעדזש קליק",
-    "audioOnMessageClickDescription": "לייענט אויס אַ מעסעדזש הויך אין דײַן צילשפּראַך ווען דו קליקסט דערויף."
+    "audioOnMessageClickDescription": "לייענט אויס אַ מעסעדזש הויך אין דײַן צילשפּראַך ווען דו קליקסט דערויף.",
+    "audioSettingDisabledTitle": "{toolName} אַודיאָ אויסגעדרייט",
+    "audioSettingDisabledBody": "איר קענט אָנצינדן {toolName} אַודיאָ אין אייערע לערנען סעטינגס",
+    "audioSettingDisabledEnable": "אָנצינדן"
 }

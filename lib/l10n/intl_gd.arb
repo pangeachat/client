@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-11 13:17:26.812748",
+    "@@last_modified": "2026-08-11 14:01:24.183237",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Air teachdaireachd ùr",
     "audioOnNewMessageDescription": "Leugh teachdaireachdan ùra a gheibhear a-mach gu fèin-obrachail anns a’ chànan targaid agad.",
     "audioOnMessageClickToolName": "Air cliog teachdaireachd",
-    "audioOnMessageClickDescription": "Leugh teachdaireachd a-mach anns a’ chànan targaid agad nuair a bhriogas tu oirre."
+    "audioOnMessageClickDescription": "Leugh teachdaireachd a-mach anns a’ chànan targaid agad nuair a bhriogas tu oirre.",
+    "audioSettingDisabledTitle": "Fuaim {toolName} à comas",
+    "audioSettingDisabledBody": "Faidhidh tu fuaim {toolName} a chomasachadh ann an roghainnean an ionnsachaidh agad",
+    "audioSettingDisabledEnable": "Comasaich"
 }

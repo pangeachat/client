@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-11 13:17:35.168428",
+    "@@last_modified": "2026-08-11 14:01:30.989234",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2114,5 +2114,8 @@
     "audioOnNewMessageToolName": "Ҳангоми паёми нав",
     "audioOnNewMessageDescription": "Паёмҳои нави қабулшударо ба таври худкор бо забони мақсадноки шумо баланд хонед.",
     "audioOnMessageClickToolName": "Ҳангоми клик кардани паём",
-    "audioOnMessageClickDescription": "Ҳангоми клик кардани паём онро бо забони мақсадноки худ баланд хонед."
+    "audioOnMessageClickDescription": "Ҳангоми клик кардани паём онро бо забони мақсадноки худ баланд хонед.",
+    "audioSettingDisabledTitle": "Аудиои {toolName} ғайрифаъол аст",
+    "audioSettingDisabledBody": "Шумо метавонед аудиои {toolName}-ро дар танзимоти омӯзиши худ фаъол созед",
+    "audioSettingDisabledEnable": "Фаъол кардан"
 }

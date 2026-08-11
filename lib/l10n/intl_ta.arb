@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:34.745594",
+    "@@last_modified": "2026-08-11 14:01:30.405554",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9818,5 +9818,8 @@
     "audioOnNewMessageToolName": "புதிய செய்தி வரும்போது",
     "audioOnNewMessageDescription": "புதிதாகப் பெறப்பட்ட செய்திகளை உங்கள் இலக்கு மொழியில் தானாகவே சத்தமாகப் படிக்கும்.",
     "audioOnMessageClickToolName": "செய்தியைக் கிளிக் செய்யும்போது",
-    "audioOnMessageClickDescription": "ஒரு செய்தியைக் கிளிக் செய்யும்போது அதை உங்கள் இலக்கு மொழியில் சத்தமாகப் படிக்கும்."
+    "audioOnMessageClickDescription": "ஒரு செய்தியைக் கிளிக் செய்யும்போது அதை உங்கள் இலக்கு மொழியில் சத்தமாகப் படிக்கும்.",
+    "audioSettingDisabledTitle": "{toolName} ஆடியோ முடக்கப்பட்டது",
+    "audioSettingDisabledBody": "உங்கள் கற்றல் அமைப்புகளில் {toolName} ஆடியோவை இயக்கலாம்",
+    "audioSettingDisabledEnable": "இயக்கு"
 }

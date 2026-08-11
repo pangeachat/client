@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:29.181608",
+    "@@last_modified": "2026-08-11 14:01:26.024067",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9919,5 +9919,8 @@
     "audioOnNewMessageToolName": "새 메시지 수신 시",
     "audioOnNewMessageDescription": "새로 받은 메시지를 학습 언어로 자동으로 소리 내어 읽습니다.",
     "audioOnMessageClickToolName": "메시지 클릭 시",
-    "audioOnMessageClickDescription": "메시지를 클릭하면 학습 언어로 소리 내어 읽습니다."
+    "audioOnMessageClickDescription": "메시지를 클릭하면 학습 언어로 소리 내어 읽습니다.",
+    "audioSettingDisabledTitle": "{toolName} 오디오 비활성화됨",
+    "audioSettingDisabledBody": "학습 설정에서 {toolName} 오디오를 활성화할 수 있습니다",
+    "audioSettingDisabledEnable": "활성화"
 }
