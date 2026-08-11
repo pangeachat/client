@@ -170,6 +170,16 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
 
   void _showWordCard(Vocab vocab) {
     final target = _vocabKey(vocab);
+    // A pointer can't reach a chip while a card is open — the tap lands on
+    // the card's backdrop and dismisses it — but a screen reader activates
+    // chips straight through the semantics tree, stacking one card + backdrop
+    // per chip until every one has been dismissed (#8279). Close this
+    // widget's other card first so only one is ever open.
+    for (final other in widget.vocab) {
+      if (other != vocab) {
+        MatrixState.pAnyState.closeOverlay(_vocabKey(other));
+      }
+    }
     WidgetsBinding.instance.addPostFrameCallback(
       (_) => OverlayUtil.showPositionedCard(
         context: context,
@@ -179,7 +189,11 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           target: target,
           onClose: () {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              if (mounted) setState(() => _selectedVocab = null);
+              // When closed as a side effect of opening another chip's card,
+              // _selectedVocab already points at the newer card — leave it.
+              if (mounted && _selectedVocab == vocab) {
+                setState(() => _selectedVocab = null);
+              }
             });
           },
         ),
