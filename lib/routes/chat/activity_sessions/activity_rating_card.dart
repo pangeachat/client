@@ -13,7 +13,8 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// Post-play rating prompt, pinned to the bottom of a finished activity chat
 /// (issue #7194): thumbs up/down, an optional comment, submit, and a
-/// dismiss X.
+/// dismiss X. The comment field and submit button stay hidden until a thumb
+/// is chosen, keeping the card short (issue #8286).
 ///
 /// Visibility contract (Ava's design): appears once the learner's own role is
 /// finished ("I'm done" or an admin's "End for all"), disappears for good
@@ -180,39 +181,39 @@ class ActivityRatingCardState extends State<ActivityRatingCard> {
                                 ),
                               ],
                             ),
-                            TextField(
-                              controller: commentController,
-                              minLines: 1,
-                              maxLines: 3,
-                              maxLength: 2000,
-                              decoration: InputDecoration(
-                                hintText: l10n.rateActivityCommentHint,
-                                counterText: "",
-                                isDense: true,
-                              ),
-                            ),
-                            if (errorMessage != null)
-                              Text(
-                                errorMessage!,
-                                style: theme.textTheme.bodySmall?.copyWith(
-                                  color: theme.colorScheme.error,
+                            if (selectedRating != null) ...[
+                              TextField(
+                                controller: commentController,
+                                minLines: 1,
+                                maxLines: 3,
+                                maxLength: 2000,
+                                decoration: InputDecoration(
+                                  hintText: l10n.rateActivityCommentHint,
+                                  counterText: "",
+                                  isDense: true,
                                 ),
-                                textAlign: TextAlign.center,
                               ),
-                            ElevatedButton(
-                              onPressed: selectedRating == null || submitting
-                                  ? null
-                                  : submit,
-                              child: submitting
-                                  ? const SizedBox(
-                                      height: 20.0,
-                                      width: 20.0,
-                                      child: CircularProgressIndicator(
-                                        strokeWidth: 2.0,
-                                      ),
-                                    )
-                                  : Text(l10n.submit),
-                            ),
+                              if (errorMessage != null)
+                                Text(
+                                  errorMessage!,
+                                  style: theme.textTheme.bodySmall?.copyWith(
+                                    color: theme.colorScheme.error,
+                                  ),
+                                  textAlign: TextAlign.center,
+                                ),
+                              ElevatedButton(
+                                onPressed: submitting ? null : submit,
+                                child: submitting
+                                    ? const SizedBox(
+                                        height: 20.0,
+                                        width: 20.0,
+                                        child: CircularProgressIndicator(
+                                          strokeWidth: 2.0,
+                                        ),
+                                      )
+                                    : Text(l10n.submit),
+                              ),
+                            ],
                           ],
                         ),
                 ),
