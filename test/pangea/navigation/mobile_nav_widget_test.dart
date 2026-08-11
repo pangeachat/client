@@ -35,6 +35,7 @@ void main() {
     ValueChanged<bool>? onCavityFullChanged,
     double keyboardInset = 0.0,
     Widget Function(Widget child)? chatsBadgeBuilder,
+    Widget Function(Widget child)? coursesBadgeBuilder,
     bool settle = true,
   }) async {
     tester.view.physicalSize = const Size(400, 800);
@@ -63,6 +64,7 @@ void main() {
             onCavityFullChanged: onCavityFullChanged,
             keyboardInset: keyboardInset,
             chatsBadgeBuilder: chatsBadgeBuilder,
+            coursesBadgeBuilder: coursesBadgeBuilder,
           ),
         ),
       ),
@@ -201,6 +203,43 @@ void main() {
             ),
             findsNothing,
             reason: 'only the Chats item carries the unread badge',
+          );
+        }
+      },
+    );
+
+    testWidgets(
+      'the injected badge wraps the Courses item — and only the Courses item '
+      '(#8190)',
+      (tester) async {
+        // Same seam as the Chats badge, for the invited-course envelope the
+        // shell injects when a course invitation is pending.
+        const badgeKey = ValueKey('invitedCourseBadge');
+        await pumpNav(
+          tester,
+          coursesBadgeBuilder: (child) =>
+              KeyedSubtree(key: badgeKey, child: child),
+        );
+
+        expect(
+          find.descendant(
+            of: find.byKey(badgeKey),
+            matching: find.ancestor(
+              of: find.byTooltip('Courses'),
+              matching: find.byType(IconButton),
+            ),
+          ),
+          findsOneWidget,
+          reason: 'the badge must enclose the Courses rail item',
+        );
+        for (final other in ['World', 'All chats', 'Add a course']) {
+          expect(
+            find.descendant(
+              of: find.byKey(badgeKey),
+              matching: find.byTooltip(other),
+            ),
+            findsNothing,
+            reason: 'only the Courses item carries the invite badge',
           );
         }
       },
