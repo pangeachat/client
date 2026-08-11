@@ -50,6 +50,11 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
   bool? get isCorrect => widget.isCorrect;
 
+  /// Anchor for the tts-disabled popup. Registered as a transform target in
+  /// [build] — an unregistered id makes the popup silently not show (#8276).
+  String get _targetId =>
+      'practice-match-item-${widget.controller.pangeaMessageEvent.eventId}-${widget.constructForm.choiceContent}';
+
   Future<void> play() async {
     if (widget.audioContent == null) {
       return;
@@ -76,7 +81,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
           await TtsController.tryToSpeak(
             widget.audioContent!,
             context: context,
-            targetID: 'word-audio-button',
+            targetID: _targetId,
             langCode: l2,
             useCase: TtsUseCase.choices,
             pos: widget.token?.pos,
@@ -156,11 +161,15 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
       data: widget.constructForm,
       feedback: Material(type: MaterialType.transparency, child: content),
       onDragStarted: onTap,
-      child: InkWell(
-        onHover: (isHovered) => setState(() => _isHovered = isHovered),
-        borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-        onTap: onTap,
-        child: ShimmerBackground(enabled: widget.shimmer, child: content),
+      child: CompositedTransformTarget(
+        link: MatrixState.pAnyState.layerLinkAndKey(_targetId).link,
+        child: InkWell(
+          key: MatrixState.pAnyState.layerLinkAndKey(_targetId).key,
+          onHover: (isHovered) => setState(() => _isHovered = isHovered),
+          borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+          onTap: onTap,
+          child: ShimmerBackground(enabled: widget.shimmer, child: content),
+        ),
       ),
     );
   }
