@@ -167,10 +167,13 @@ class TtsController {
   /// the same gate `tryToSpeak` applies before read-aloud playback, so a
   /// caller checking upfront (the settings toggle) can never disagree with
   /// what playback will do. See message-read-aloud.instructions.md.
+  ///
+  /// Always re-queries the engine: the user may have just downloaded an
+  /// Enhanced/Premium voice after the dialog sent them to system settings, and
+  /// the cached list predates it (#8282). The refreshed list is shared with
+  /// playback, which then selects the new voice too.
   static Future<bool> hasKnownGoodVoiceFor(String langCode) async {
-    if (_availableLangCodes.isEmpty || kIsWeb) {
-      await setAvailableLanguages();
-    }
+    await setAvailableLanguages();
     return TtsRouting.selectVoice(_voices, langCode, isWeb: kIsWeb).isKnownGood;
   }
 
