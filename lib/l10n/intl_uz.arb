@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-10 14:05:00.347567",
+    "@@last_modified": "2026-08-11 13:17:35.816246",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9684,8 +9684,6 @@
     "audioWordsDescription": "So'zga tekkanda uning audiosini ijro eting.",
     "audioChoicesToolName": "Tanlovlar",
     "audioChoicesDescription": "Mashq faoliyatlarida javob tanlovlari uchun audio ijro eting.",
-    "audioIncomingMessagesToolName": "Kiruvchi xabarlar",
-    "audioIncomingMessagesDescription": "Tinglash amaliyoti uchun qabul qilingan xabarlarni avtomatik ravishda maqsadli tilingizda ovoz chiqarib o'qing.",
     "choosePangeaAvatar": "Pangea avatarini tanlang",
     "readAloudNoVoiceTitle": "Yuqori sifatli {language} ovozi topilmadi",
     "readAloudNoVoiceDesktopWeb": "Bu brauzer yuqori sifatli {language} ovozini taklif qilmaydi, shuning uchun xabarlar bu yerda yaxshi o'qilmaydi. Chrome va Edge odatda yuqori sifatli ovozlarni o'z ichiga oladi.",
@@ -9728,5 +9726,9 @@
     "practiceFeedbackUserSetEmoji": "Siz ushbu emojini tanladingiz — uni soʻz kartasidan oʻzgartiring",
     "practiceFeedbackAlreadyMatched": "Allaqachon toʻgʻri moslashtirilgan",
     "practiceFeedbackUpdated": "Rahmat! Mashq sizning fikr-mulohazangiz asosida yangilandi.",
-    "practiceFeedbackUnchanged": "Rahmat! Sizning hisobotingiz qayd etildi, ammo tarkib oʻzgarishsiz qoldi."
+    "practiceFeedbackUnchanged": "Rahmat! Sizning hisobotingiz qayd etildi, ammo tarkib oʻzgarishsiz qoldi.",
+    "audioOnNewMessageToolName": "Yangi xabar kelganda",
+    "audioOnNewMessageDescription": "Yangi kelgan xabarlarni avtomatik ravishda maqsadli tilingizda ovoz chiqarib o'qing.",
+    "audioOnMessageClickToolName": "Xabarni bosganda",
+    "audioOnMessageClickDescription": "Xabarni bosganingizda uni maqsadli tilingizda ovoz chiqarib o'qing."
 }

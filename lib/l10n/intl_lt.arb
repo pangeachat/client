@@ -2972,7 +2972,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-10 14:04:49.895244",
+    "@@last_modified": "2026-08-11 13:17:30.428886",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10461,8 +10461,6 @@
     "audioWordsDescription": "Paleiskite žodžio garsą, kai jį paliečiate.",
     "audioChoicesToolName": "Pasirinkimai",
     "audioChoicesDescription": "Paleiskite atsakymų variantų garsą praktikos veiklose.",
-    "audioIncomingMessagesToolName": "Gaunami pranešimai",
-    "audioIncomingMessagesDescription": "Automatiškai garsiai perskaitykite gautus pranešimus jūsų tiksline kalba, kad lavintumėte klausymą.",
     "choosePangeaAvatar": "Pasirinkite „Pangea“ pseudoportretą",
     "readAloudNoVoiceTitle": "Nerasta aukštos kokybės {language} balso",
     "readAloudNoVoiceDesktopWeb": "Ši naršyklė nepasiūlo aukštos kokybės {language} balso, todėl pranešimai čia negali būti gerai perskaityti. „Chrome“ ir „Edge“ paprastai turi aukštos kokybės balsus.",
@@ -10505,5 +10503,9 @@
     "practiceFeedbackUserSetEmoji": "Pasirinkote šį jaustuką – pakeiskite jį žodžio kortelėje",
     "practiceFeedbackAlreadyMatched": "Jau teisingai suderinta",
     "practiceFeedbackUpdated": "Ačiū! Pratimas atnaujintas pagal jūsų atsiliepimus.",
-    "practiceFeedbackUnchanged": "Ačiū! Jūsų ataskaita buvo užregistruota, bet turinys liko nepakeistas."
+    "practiceFeedbackUnchanged": "Ačiū! Jūsų ataskaita buvo užregistruota, bet turinys liko nepakeistas.",
+    "audioOnNewMessageToolName": "Gavus naują žinutę",
+    "audioOnNewMessageDescription": "Automatiškai perskaityti naujas gautas žinutes garsiai jūsų tiksline kalba.",
+    "audioOnMessageClickToolName": "Paspaudus žinutę",
+    "audioOnMessageClickDescription": "Perskaityti žinutę garsiai jūsų tiksline kalba, kai ją paspausite."
 }

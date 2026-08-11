@@ -11,7 +11,8 @@ enum ToolSetting {
   autoIGC,
   audioWords,
   audioChoices,
-  audioIncomingMessages,
+  audioOnNewMessage,
+  audioOnMessageClick,
   enableAutocorrect;
 
   String toolName(BuildContext context) {
@@ -30,8 +31,10 @@ enum ToolSetting {
         return L10n.of(context).audioWordsToolName;
       case ToolSetting.audioChoices:
         return L10n.of(context).audioChoicesToolName;
-      case ToolSetting.audioIncomingMessages:
-        return L10n.of(context).audioIncomingMessagesToolName;
+      case ToolSetting.audioOnNewMessage:
+        return L10n.of(context).audioOnNewMessageToolName;
+      case ToolSetting.audioOnMessageClick:
+        return L10n.of(context).audioOnMessageClickToolName;
       case ToolSetting.enableAutocorrect:
         return L10n.of(context).enableAutocorrectToolName;
     }
@@ -54,8 +57,10 @@ enum ToolSetting {
         return L10n.of(context).audioWordsDescription;
       case ToolSetting.audioChoices:
         return L10n.of(context).audioChoicesDescription;
-      case ToolSetting.audioIncomingMessages:
-        return L10n.of(context).audioIncomingMessagesDescription;
+      case ToolSetting.audioOnNewMessage:
+        return L10n.of(context).audioOnNewMessageDescription;
+      case ToolSetting.audioOnMessageClick:
+        return L10n.of(context).audioOnMessageClickDescription;
       case ToolSetting.enableAutocorrect:
         return L10n.of(context).enableAutocorrectDescription;
     }
@@ -72,7 +77,8 @@ enum ToolSetting {
       case ToolSetting.autoIGC:
       case ToolSetting.audioWords:
       case ToolSetting.audioChoices:
-      case ToolSetting.audioIncomingMessages:
+      case ToolSetting.audioOnNewMessage:
+      case ToolSetting.audioOnMessageClick:
         return true;
     }
   }
@@ -81,12 +87,19 @@ enum ToolSetting {
     switch (this) {
       case ToolSetting.audioWords:
       case ToolSetting.audioChoices:
-      case ToolSetting.audioIncomingMessages:
+      case ToolSetting.audioOnNewMessage:
+      case ToolSetting.audioOnMessageClick:
         return true;
       default:
         return false;
     }
   }
+
+  /// The message read-aloud toggles, which enable through the known-good-voice
+  /// gate rather than directly. See message-read-aloud.instructions.md.
+  bool get isMessageAudioSetting =>
+      this == ToolSetting.audioOnNewMessage ||
+      this == ToolSetting.audioOnMessageClick;
 
   static List<ToolSetting> get audioSettings =>
       values.where((setting) => setting.isAudioSetting).toList();

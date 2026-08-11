@@ -8,8 +8,8 @@ import 'package:fluffychat/routes/settings/settings_learning/audio_settings_sect
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 
-/// #8117 — the Audio section of learning settings: the three per-surface audio
-/// toggles (Words, Choices, Incoming messages).
+/// #8117 / #8264 — the Audio section of learning settings: the per-surface
+/// audio toggles (Words, Choices, On new message, On message click).
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -38,56 +38,55 @@ void main() {
     await tester.pumpAndSettle();
   }
 
-  testWidgets('renders the section header and three toggles', (tester) async {
+  testWidgets('renders the section header and four toggles', (tester) async {
     await pumpSection(tester, makeViewModel());
 
     expect(find.text('Audio'), findsOneWidget);
-    // The bot voice picker is gone: the bot no longer generates TTS, so the
-    // control did nothing. See message-read-aloud.instructions.md.
-    expect(find.text('Pangea Bot audio message voice'), findsNothing);
     expect(find.text('Words'), findsOneWidget);
     expect(find.text('Choices'), findsOneWidget);
-    expect(find.text('Incoming messages'), findsOneWidget);
-    expect(find.byType(SwitchListTile), findsNWidgets(3));
+    expect(find.text('On new message'), findsOneWidget);
+    expect(find.text('On message click'), findsOneWidget);
+    expect(find.byType(SwitchListTile), findsNWidgets(4));
 
-    // The retired toggles are gone.
-    expect(find.text('Enabled text-to-speech'), findsNothing);
-    expect(
-      find.text('Automatically read aloud all received messages'),
-      findsNothing,
-    );
+    // The retired single message-audio toggle is gone (#8264).
+    expect(find.text('Incoming messages'), findsNothing);
   });
 
-  testWidgets('turning off the incoming messages toggle updates the view '
-      'model', (tester) async {
-    final viewModel = makeViewModel(
-      toolSettings: const UserToolSettings(audioIncomingMessages: true),
-    );
-    await pumpSection(tester, viewModel);
-
-    expect(viewModel.getToolSetting(ToolSetting.audioIncomingMessages), isTrue);
-
-    // Disabling is ungated (the known-good-voice gate only guards enabling).
-    await tester.tap(find.text('Incoming messages'));
-    await tester.pumpAndSettle();
-
-    expect(
-      viewModel.getToolSetting(ToolSetting.audioIncomingMessages),
-      isFalse,
-    );
-  });
-
-  testWidgets('enabling incoming messages without a target language is '
-      'blocked by the voice gate', (tester) async {
+  testWidgets('turning off the message toggles updates the view model', (
+    tester,
+  ) async {
     final viewModel = makeViewModel();
     await pumpSection(tester, viewModel);
 
-    await tester.tap(find.text('Incoming messages'));
+    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isTrue);
+    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isTrue);
+
+    // Disabling is ungated (the known-good-voice gate only guards enabling).
+    await tester.tap(find.text('On new message'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('On message click'));
     await tester.pumpAndSettle();
 
-    expect(
-      viewModel.getToolSetting(ToolSetting.audioIncomingMessages),
-      isFalse,
+    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isFalse);
+    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isFalse);
+  });
+
+  testWidgets('enabling a message toggle without a target language is '
+      'blocked by the voice gate', (tester) async {
+    final viewModel = makeViewModel(
+      toolSettings: const UserToolSettings(
+        audioOnNewMessage: false,
+        audioOnMessageClick: false,
+      ),
     );
+    await pumpSection(tester, viewModel);
+
+    await tester.tap(find.text('On new message'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('On message click'));
+    await tester.pumpAndSettle();
+
+    expect(viewModel.getToolSetting(ToolSetting.audioOnNewMessage), isFalse);
+    expect(viewModel.getToolSetting(ToolSetting.audioOnMessageClick), isFalse);
   });
 }

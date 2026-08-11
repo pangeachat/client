@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-10 14:04:43.470375",
+    "@@last_modified": "2026-08-11 13:17:26.129425",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10540,8 +10540,6 @@
     "audioWordsDescription": "I-play ang audio ng salita kapag tinap mo ito.",
     "audioChoicesToolName": "Mga Pagpipilian",
     "audioChoicesDescription": "I-play ang audio para sa mga pagpipilian sa sagot sa mga aktibidad sa pagsasanay.",
-    "audioIncomingMessagesToolName": "Mga Papasok na Mensahe",
-    "audioIncomingMessagesDescription": "Awtomatikong basahin nang malakas ang mga natanggap na mensahe sa iyong target na wika para sa pagsasanay sa pakikinig.",
     "choosePangeaAvatar": "Pumili ng Pangea avatar",
     "readAloudNoVoiceTitle": "Walang nakitang de-kalidad na boses sa {language}",
     "readAloudNoVoiceDesktopWeb": "Hindi nag-aalok ang browser na ito ng de-kalidad na boses sa {language}, kaya hindi mababasa nang maayos ang mga mensahe dito. Karaniwang may kasamang de-kalidad na boses ang Chrome at Edge.",
@@ -10584,5 +10582,9 @@
     "practiceFeedbackUserSetEmoji": "Pinili mo ang emoji na ito — baguhin ito mula sa word card",
     "practiceFeedbackAlreadyMatched": "Naitugma na nang tama",
     "practiceFeedbackUpdated": "Salamat! Na-update ang pagsasanay batay sa iyong feedback.",
-    "practiceFeedbackUnchanged": "Salamat! Naitala ang iyong ulat, ngunit nanatiling hindi nagbago ang nilalaman."
+    "practiceFeedbackUnchanged": "Salamat! Naitala ang iyong ulat, ngunit nanatiling hindi nagbago ang nilalaman.",
+    "audioOnNewMessageToolName": "Sa bagong mensahe",
+    "audioOnNewMessageDescription": "Awtomatikong basahin nang malakas ang mga bagong natanggap na mensahe sa iyong target na wika.",
+    "audioOnMessageClickToolName": "Sa pag-click ng mensahe",
+    "audioOnMessageClickDescription": "Basahin nang malakas ang isang mensahe sa iyong target na wika kapag nag-click ka rito."
 }

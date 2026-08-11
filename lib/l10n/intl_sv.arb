@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:57.322646",
+    "@@last_modified": "2026-08-11 13:17:34.534436",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10198,8 +10198,6 @@
     "audioWordsDescription": "Spela upp ljud för ett ord när du trycker på det.",
     "audioChoicesToolName": "Val",
     "audioChoicesDescription": "Spela upp ljud för svarsalternativ i övningsaktiviteter.",
-    "audioIncomingMessagesToolName": "Inkommande meddelanden",
-    "audioIncomingMessagesDescription": "Läs automatiskt upp mottagna meddelanden på ditt målspråk för lyssningsövning.",
     "choosePangeaAvatar": "Välj en Pangea-avatar",
     "readAloudNoVoiceTitle": "Ingen högkvalitativ {language}-röst hittades",
     "readAloudNoVoiceDesktopWeb": "Den här webbläsaren erbjuder ingen högkvalitativ {language}-röst, så meddelanden kan inte läsas upp ordentligt här. Chrome och Edge inkluderar vanligtvis högkvalitativa röster.",
@@ -10242,5 +10240,9 @@
     "practiceFeedbackUserSetEmoji": "Du valde den här emojin – ändra den från ordkortet",
     "practiceFeedbackAlreadyMatched": "Redan korrekt matchat",
     "practiceFeedbackUpdated": "Tack! Övningen har uppdaterats baserat på din feedback.",
-    "practiceFeedbackUnchanged": "Tack! Din rapport registrerades, men innehållet förblev oförändrat."
+    "practiceFeedbackUnchanged": "Tack! Din rapport registrerades, men innehållet förblev oförändrat.",
+    "audioOnNewMessageToolName": "Vid nytt meddelande",
+    "audioOnNewMessageDescription": "Läs automatiskt upp nya mottagna meddelanden på ditt målspråk.",
+    "audioOnMessageClickToolName": "Vid meddelandeklick",
+    "audioOnMessageClickDescription": "Läs upp ett meddelande på ditt målspråk när du klickar på det."
 }

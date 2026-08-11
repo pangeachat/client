@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-10 14:05:00.968039",
+    "@@last_modified": "2026-08-11 13:17:36.012472",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10637,8 +10637,6 @@
     "audioWordsDescription": "點擊單字時播放其音訊。",
     "audioChoicesToolName": "選項",
     "audioChoicesDescription": "在練習活動中為答案選項播放音訊。",
-    "audioIncomingMessagesToolName": "收到的訊息",
-    "audioIncomingMessagesDescription": "自動以您的目標語言朗讀收到的訊息，以進行聽力練習。",
     "choosePangeaAvatar": "揀一個 Pangea 頭像",
     "readAloudNoVoiceTitle": "搵唔到高質素嘅{language}語音",
     "readAloudNoVoiceDesktopWeb": "呢個瀏覽器冇提供高質素嘅{language}語音，所以喺度讀出訊息嘅效果唔好。Chrome同Edge通常都有高質素嘅語音。",
@@ -10681,5 +10679,9 @@
     "practiceFeedbackUserSetEmoji": "你選了這個表情符號 — 從詞卡更改它",
     "practiceFeedbackAlreadyMatched": "已經正確配對",
     "practiceFeedbackUpdated": "謝謝！練習已根據你的反饋更新。",
-    "practiceFeedbackUnchanged": "謝謝！你的報告已記錄，但內容未有更改。"
+    "practiceFeedbackUnchanged": "謝謝！你的報告已記錄，但內容未有更改。",
+    "audioOnNewMessageToolName": "有新訊息時",
+    "audioOnNewMessageDescription": "自動以你的目標語言讀出新收到的訊息。",
+    "audioOnMessageClickToolName": "點擊訊息時",
+    "audioOnMessageClickDescription": "當你點擊訊息時，以你的目標語言讀出該訊息。"
 }

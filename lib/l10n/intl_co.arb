@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-10 14:04:42.206292",
+    "@@last_modified": "2026-08-11 13:17:24.440077",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Riproduce l'audio di una parolla quandu a toccate.",
     "audioChoicesToolName": "Scelte",
     "audioChoicesDescription": "Riproduce l'audio per e scelte di risposta in l'attività di pratica.",
-    "audioIncomingMessagesToolName": "Missaghji entranti",
-    "audioIncomingMessagesDescription": "Leghje automaticamente i missaghji ricevuti à voce alta in a vostra lingua di destinazione per a pratica d'ascoltu.",
     "choosePangeaAvatar": "Sceglite un avatar Pangea",
     "readAloudNoVoiceTitle": "Nisuna voce di alta qualità in {language} truvata",
     "readAloudNoVoiceDesktopWeb": "Stu navigatore ùn offre micca una voce di alta qualità in {language}, dunque i messaghji ùn ponu micca esse letti bè quì. Chrome è Edge includenu di solitu voci di alta qualità.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Avete sceltu st'emoji — cambiatelu da a carta di parolla",
     "practiceFeedbackAlreadyMatched": "Ghjà assuciatu currettamente",
     "practiceFeedbackUpdated": "Grazie! L'eserciziu hè statu aghjurnatu secondu u vostru feedback.",
-    "practiceFeedbackUnchanged": "Grazie! U vostru rapportu hè statu arregistratu, ma u cuntenutu hè restatu invariatu."
+    "practiceFeedbackUnchanged": "Grazie! U vostru rapportu hè statu arregistratu, ma u cuntenutu hè restatu invariatu.",
+    "audioOnNewMessageToolName": "À u novu messagiu",
+    "audioOnNewMessageDescription": "Leghje automaticamente à voce alta i novi messaghji ricevuti in a vostra lingua di destinazione.",
+    "audioOnMessageClickToolName": "À u clicu di u messagiu",
+    "audioOnMessageClickDescription": "Leghje un messagiu à voce alta in a vostra lingua di destinazione quandu ci cliccate sopra."
 }

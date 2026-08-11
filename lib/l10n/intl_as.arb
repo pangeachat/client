@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-10 14:04:41.222683",
+    "@@last_modified": "2026-08-11 13:17:23.853083",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "এটা শব্দত টেপ কৰিলে তাৰ অডিঅ’ বজাওক।",
     "audioChoicesToolName": "বিকল্পসমূহ",
     "audioChoicesDescription": "অনুশীলন কাৰ্য্যকলাপত উত্তৰৰ বিকল্পসমূহৰ বাবে অডিঅ’ বজাওক।",
-    "audioIncomingMessagesToolName": "আগতীয়াকৈ অহা বাৰ্তাসমূহ",
-    "audioIncomingMessagesDescription": "শুনাৰ অনুশীলনৰ বাবে আপোনাৰ লক্ষ্য ভাষাত পোৱা বাৰ্তাসমূহ স্বয়ংক্ৰিয়ভাৱে পঢ়ক।",
     "choosePangeaAvatar": "পেঞ্জিয়াৰ এটা আৱতাৰ বাছনি কৰক",
     "readAloudNoVoiceTitle": "উচ্চ মানদণ্ডৰ {language} ভইচ পোৱা নগ'ল",
     "readAloudNoVoiceDesktopWeb": "এই ব্ৰাউজাৰটোৱে উচ্চ মানদণ্ডৰ {language} ভইচ আগবঢ়োৱা নাই, সেয়েহে ইয়াত বাৰ্তাবোৰ ভালদৰে পঢ়িব নোৱাৰি। ক্ৰোম আৰু এজত সাধাৰণতে উচ্চ মানদণ্ডৰ ভইচ থাকে।",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "আপুনি এই ইম'জিটো বাছি লৈছিল — ইয়াক শব্দ কাৰ্ডৰ পৰা সলনি কৰক",
     "practiceFeedbackAlreadyMatched": "ইতিমধ্যে শুদ্ধকৈ মিলোৱা হৈছে",
     "practiceFeedbackUpdated": "ধন্যবাদ! আপোনাৰ মতামতৰ ওপৰত ভিত্তি কৰি অনুশীলনটো আপডেইট কৰা হৈছে।",
-    "practiceFeedbackUnchanged": "ধন্যবাদ! আপোনাৰ প্ৰতিবেদনটো ৰেকৰ্ড কৰা হৈছিল, কিন্তু বিষয়বস্তু অপৰিৱৰ্তিত হৈ থাকিল।"
+    "practiceFeedbackUnchanged": "ধন্যবাদ! আপোনাৰ প্ৰতিবেদনটো ৰেকৰ্ড কৰা হৈছিল, কিন্তু বিষয়বস্তু অপৰিৱৰ্তিত হৈ থাকিল।",
+    "audioOnNewMessageToolName": "নতুন বাৰ্তা পালে",
+    "audioOnNewMessageDescription": "আপোনাৰ লক্ষ্য ভাষাত নতুনকৈ পোৱা বাৰ্তাসমূহ স্বয়ংক্ৰিয়ভাৱে উচ্চস্বৰে পঢ়ক।",
+    "audioOnMessageClickToolName": "বাৰ্তাত ক্লিক কৰিলে",
+    "audioOnMessageClickDescription": "আপুনি ক্লিক কৰিলে আপোনাৰ লক্ষ্য ভাষাত এটা বাৰ্তা উচ্চস্বৰে পঢ়ক।"
 }

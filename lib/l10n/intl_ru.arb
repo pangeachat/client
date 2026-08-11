@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-10 14:04:55.430865",
+    "@@last_modified": "2026-08-11 13:17:32.769485",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10652,8 +10652,6 @@
     "audioWordsDescription": "Воспроизводить аудио слова при нажатии на него.",
     "audioChoicesToolName": "Варианты",
     "audioChoicesDescription": "Воспроизводить аудио для вариантов ответа в практических заданиях.",
-    "audioIncomingMessagesToolName": "Входящие сообщения",
-    "audioIncomingMessagesDescription": "Автоматически читать вслух полученные сообщения на вашем целевом языке для практики аудирования.",
     "choosePangeaAvatar": "Выберите аватар Pangea",
     "readAloudNoVoiceTitle": "Высококачественный голос {language} не найден",
     "readAloudNoVoiceDesktopWeb": "Этот браузер не предлагает высококачественный голос {language}, поэтому сообщения не могут быть хорошо прочитаны вслух. Chrome и Edge обычно включают высококачественные голоса.",
@@ -10696,5 +10694,9 @@
     "practiceFeedbackUserSetEmoji": "Вы выбрали этот эмодзи — измените его на карточке слова",
     "practiceFeedbackAlreadyMatched": "Уже сопоставлено правильно",
     "practiceFeedbackUpdated": "Спасибо! Упражнение было обновлено на основе вашего отзыва.",
-    "practiceFeedbackUnchanged": "Спасибо! Ваш отчет был записан, но содержание осталось без изменений."
+    "practiceFeedbackUnchanged": "Спасибо! Ваш отчет был записан, но содержание осталось без изменений.",
+    "audioOnNewMessageToolName": "При новом сообщении",
+    "audioOnNewMessageDescription": "Автоматически читать вслух новые полученные сообщения на вашем целевом языке.",
+    "audioOnMessageClickToolName": "При нажатии на сообщение",
+    "audioOnMessageClickDescription": "Читать сообщение вслух на вашем целевом языке при нажатии на него."
 }

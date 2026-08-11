@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-10 14:04:43.480353",
+    "@@last_modified": "2026-08-11 13:17:25.573621",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9717,8 +9717,6 @@
     "audioWordsDescription": "Toista sanan ääni napauttamalla sitä.",
     "audioChoicesToolName": "Vaihtoehdot",
     "audioChoicesDescription": "Toista vastausvaihtoehtojen ääni harjoitustehtävissä.",
-    "audioIncomingMessagesToolName": "Saapuvat viestit",
-    "audioIncomingMessagesDescription": "Lue vastaanotetut viestit automaattisesti ääneen kohdekielellä kuunteluharjoitusta varten.",
     "choosePangeaAvatar": "Valitse Pangea-avatar",
     "readAloudNoVoiceTitle": "Laadukasta {language}-ääntä ei löydy",
     "readAloudNoVoiceDesktopWeb": "Tämä selain ei tarjoa laadukasta {language}-ääntä, joten viestejä ei voida lukea ääneen kunnolla. Chrome ja Edge sisältävät yleensä laadukkaita ääniä.",
@@ -9761,5 +9759,9 @@
     "practiceFeedbackUserSetEmoji": "Valitsit tämän emojin – vaihda se sanakortista",
     "practiceFeedbackAlreadyMatched": "Jo yhdistetty oikein",
     "practiceFeedbackUpdated": "Kiitos! Harjoitusta on päivitetty palautteesi perusteella.",
-    "practiceFeedbackUnchanged": "Kiitos! Ilmoituksesi kirjattiin, mutta sisältö pysyi ennallaan."
+    "practiceFeedbackUnchanged": "Kiitos! Ilmoituksesi kirjattiin, mutta sisältö pysyi ennallaan.",
+    "audioOnNewMessageToolName": "Uudesta viestistä",
+    "audioOnNewMessageDescription": "Lue uudet saapuneet viestit automaattisesti ääneen kohdekielelläsi.",
+    "audioOnMessageClickToolName": "Viestin napsautuksesta",
+    "audioOnMessageClickDescription": "Lue viesti ääneen kohdekielelläsi, kun napsautat sitä."
 }

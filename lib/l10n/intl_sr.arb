@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:57.087179",
+    "@@last_modified": "2026-08-11 13:17:33.902859",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10629,8 +10629,6 @@
     "audioWordsDescription": "Reprodukujte zvuk reči kada je dodirnete.",
     "audioChoicesToolName": "Izbori",
     "audioChoicesDescription": "Reprodukujte zvuk za ponuđene odgovore u vežbama.",
-    "audioIncomingMessagesToolName": "Dolazne poruke",
-    "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na ciljnom jeziku radi vežbanja slušanja.",
     "choosePangeaAvatar": "Izaberite Pangea avatar",
     "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
     "readAloudNoVoiceDesktopWeb": "Ovaj pregledač ne nudi visokokvalitetan glas za {language}, tako da se poruke ovde ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
@@ -10673,5 +10671,9 @@
     "practiceFeedbackUserSetEmoji": "Izabrali ste ovaj emodži — promenite ga sa kartice reči",
     "practiceFeedbackAlreadyMatched": "Već je tačno upareno",
     "practiceFeedbackUpdated": "Hvala! Vežba je ažurirana na osnovu vaših povratnih informacija.",
-    "practiceFeedbackUnchanged": "Hvala! Vaš izveštaj je zabeležen, ali sadržaj je ostao nepromenjen."
+    "practiceFeedbackUnchanged": "Hvala! Vaš izveštaj je zabeležen, ali sadržaj je ostao nepromenjen.",
+    "audioOnNewMessageToolName": "Na novu poruku",
+    "audioOnNewMessageDescription": "Automatski čitaj naglas nove primljene poruke na ciljnom jeziku.",
+    "audioOnMessageClickToolName": "Na klik poruke",
+    "audioOnMessageClickDescription": "Pročitaj poruku naglas na ciljnom jeziku kada klikneš na nju."
 }

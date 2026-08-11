@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-10 14:04:40.409342",
+    "@@last_modified": "2026-08-11 13:17:23.244652",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Speel 'n woord se oudio wanneer jy daarop tik.",
     "audioChoicesToolName": "Keuses",
     "audioChoicesDescription": "Speel oudio vir antwoordkeuses in oefenaktiwiteite.",
-    "audioIncomingMessagesToolName": "Inkomende boodskappe",
-    "audioIncomingMessagesDescription": "Lees outomaties ontvangde boodskappe hardop in jou doeltaal vir luisteroefening.",
     "choosePangeaAvatar": "Kies 'n Pangea-avatar",
     "readAloudNoVoiceTitle": "Geen hoëgehalte {language}-stem gevind nie",
     "readAloudNoVoiceDesktopWeb": "Hierdie blaaier bied nie 'n hoëgehalte {language}-stem nie, so boodskappe kan nie goed hier voorgelees word nie. Chrome en Edge sluit gewoonlik hoëgehalte stemme in.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Jy het hierdie emoji gekies — verander dit vanaf die woordkaart",
     "practiceFeedbackAlreadyMatched": "Reeds korrek gepas",
     "practiceFeedbackUpdated": "Dankie! Die oefening is opgedateer op grond van jou terugvoer.",
-    "practiceFeedbackUnchanged": "Dankie! Jou verslag is aangeteken, maar die inhoud het onveranderd gebly."
+    "practiceFeedbackUnchanged": "Dankie! Jou verslag is aangeteken, maar die inhoud het onveranderd gebly.",
+    "audioOnNewMessageToolName": "Op nuwe boodskap",
+    "audioOnNewMessageDescription": "Lees nuwe ontvangde boodskappe outomaties hardop in jou doeltaal.",
+    "audioOnMessageClickToolName": "Op boodskapklik",
+    "audioOnMessageClickDescription": "Lees 'n boodskap hardop in jou doeltaal wanneer jy daarop klik."
 }

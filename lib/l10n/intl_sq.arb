@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-10 14:04:57.187200",
+    "@@last_modified": "2026-08-11 13:17:33.848865",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Luaj audion e një fjale kur e prek.",
     "audioChoicesToolName": "Zgjedhjet",
     "audioChoicesDescription": "Luaj audion për zgjedhjet e përgjigjeve në aktivitetet praktike.",
-    "audioIncomingMessagesToolName": "Mesazhet hyrëse",
-    "audioIncomingMessagesDescription": "Lexo automatikisht me zë të lartë mesazhet e marra në gjuhën tuaj të synuar për praktikë dëgjimi.",
     "choosePangeaAvatar": "Zgjidh një avatar Pangea",
     "readAloudNoVoiceTitle": "Nuk u gjet asnjë zë me cilësi të lartë {language}",
     "readAloudNoVoiceDesktopWeb": "Ky shfletues nuk ofron një zë me cilësi të lartë {language}, kështu që mesazhet nuk mund të lexohen me zë të lartë mirë këtu. Chrome dhe Edge zakonisht përfshijnë zëra me cilësi të lartë.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Ju zgjodhët këtë emoji — ndryshojeni nga karta e fjalës",
     "practiceFeedbackAlreadyMatched": "Përputhur tashmë saktë",
     "practiceFeedbackUpdated": "Faleminderit! Ushtrimi është përditësuar bazuar në reagimet tuaja.",
-    "practiceFeedbackUnchanged": "Faleminderit! Raporti juaj u regjistrua, por përmbajtja mbeti e pandryshuar."
+    "practiceFeedbackUnchanged": "Faleminderit! Raporti juaj u regjistrua, por përmbajtja mbeti e pandryshuar.",
+    "audioOnNewMessageToolName": "Në mesazh të ri",
+    "audioOnNewMessageDescription": "Lexoni automatikisht me zë të lartë mesazhet e reja të marra në gjuhën tuaj të synuar.",
+    "audioOnMessageClickToolName": "Në klikimin e mesazhit",
+    "audioOnMessageClickDescription": "Lexoni një mesazh me zë të lartë në gjuhën tuaj të synuar kur klikoni mbi të."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-10 14:04:46.018398",
+    "@@last_modified": "2026-08-11 13:17:27.903637",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9783,8 +9783,6 @@
     "audioWordsDescription": "Érintsd meg a szót a hang lejátszásához.",
     "audioChoicesToolName": "Választási lehetőségek",
     "audioChoicesDescription": "A gyakorló feladatokban a válaszlehetőségek hangjának lejátszása.",
-    "audioIncomingMessagesToolName": "Bejövő üzenetek",
-    "audioIncomingMessagesDescription": "A bejövő üzenetek automatikus felolvasása a célnyelven a hallásgyakorláshoz.",
     "choosePangeaAvatar": "Válassz Pangea avatart",
     "readAloudNoVoiceTitle": "Nincs kiváló minőségű {language} hang",
     "readAloudNoVoiceDesktopWeb": "Ez a böngésző nem kínál kiváló minőségű {language} hangot, így az üzenetek nem olvashatók fel jól. A Chrome és az Edge általában tartalmaz kiváló minőségű hangokat.",
@@ -9827,5 +9825,9 @@
     "practiceFeedbackUserSetEmoji": "Ezt az emojit választottad – módosítsd a szókártyáról",
     "practiceFeedbackAlreadyMatched": "Már helyesen párosítva",
     "practiceFeedbackUpdated": "Köszönjük! A feladat a visszajelzésed alapján frissült.",
-    "practiceFeedbackUnchanged": "Köszönjük! A jelentésed rögzítésre került, de a tartalom változatlan maradt."
+    "practiceFeedbackUnchanged": "Köszönjük! A jelentésed rögzítésre került, de a tartalom változatlan maradt.",
+    "audioOnNewMessageToolName": "Új üzenet érkezésekor",
+    "audioOnNewMessageDescription": "Automatikusan felolvassa a beérkező üzeneteket a célnyelven.",
+    "audioOnMessageClickToolName": "Üzenetre kattintva",
+    "audioOnMessageClickDescription": "Felolvassa az üzenetet a célnyelven, ha rákattint."
 }

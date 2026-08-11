@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-10 14:04:41.294073",
+    "@@last_modified": "2026-08-11 13:17:24.853531",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "አንድን ቃል ሲነኩት ድምጹን ያጫውቱ።",
     "audioChoicesToolName": "ምርጫዎች",
     "audioChoicesDescription": "በልምምድ እንቅስቃሴዎች ውስጥ ለመልስ ምርጫዎች ድምጽ ያጫውቱ።",
-    "audioIncomingMessagesToolName": "ገቢ መልዕክቶች",
-    "audioIncomingMessagesDescription": "ለማዳመጥ ልምምድ የተቀበሉ መልዕክቶችን በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብለው ያንብቡ።",
     "choosePangeaAvatar": "የፓንጋያ አቫታር ይምረጡ",
     "readAloudNoVoiceTitle": "ከፍተኛ ጥራት ያለው የ{language} ድምጽ አልተገኘም",
     "readAloudNoVoiceDesktopWeb": "ይህ አሳሽ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይሰጥም፣ ስለዚህ መልዕክቶች እዚህ በደንብ ሊነበቡ አይችሉም። Chrome እና Edge ብዙውን ጊዜ ከፍተኛ ጥራት ያላቸውን ድምፆች ያካትታሉ።",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "ይህን ኢሞጂ መርጠዋል — ከቃሉ ካርድ ይቀይሩት",
     "practiceFeedbackAlreadyMatched": "አስቀድሞ በትክክል ተዛምዷል",
     "practiceFeedbackUpdated": "እናመሰግናለን! መልመጃው በእርስዎ ግብረመልስ መሰረት ተዘምኗል።",
-    "practiceFeedbackUnchanged": "እናመሰግናለን! ሪፖርትዎ ተመዝግቧል፣ ነገር ግን ይዘቱ ሳይለወጥ ተመልሷል።"
+    "practiceFeedbackUnchanged": "እናመሰግናለን! ሪፖርትዎ ተመዝግቧል፣ ነገር ግን ይዘቱ ሳይለወጥ ተመልሷል።",
+    "audioOnNewMessageToolName": "አዲስ መልዕክት ሲመጣ",
+    "audioOnNewMessageDescription": "አዲስ የተቀበሉትን መልዕክት በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብሎ ያንብቡ።",
+    "audioOnMessageClickToolName": "መልዕክት ሲጫኑ",
+    "audioOnMessageClickDescription": "መልዕክትን ሲጫኑ በዒላማ ቋንቋዎ ጮክ ብሎ ያንብቡ።"
 }

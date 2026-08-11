@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-10 14:04:52.770901",
+    "@@last_modified": "2026-08-11 13:17:31.613246",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Iddoqq l-awdjo ta' kelma meta ttektek fuqha.",
     "audioChoicesToolName": "Għażliet",
     "audioChoicesDescription": "Iddoqq awdjo għall-għażliet tat-tweġibiet f'attivitajiet ta' prattika.",
-    "audioIncomingMessagesToolName": "Messaġġi deħlin",
-    "audioIncomingMessagesDescription": "Awtomatikament aqra messaġġi riċevuti b'leħen għoli fil-lingwa fil-mira tiegħek għall-prattika tas-smigħ.",
     "choosePangeaAvatar": "Agħżel avatar ta' Pangea",
     "readAloudNoVoiceTitle": "Ma nstabet l-ebda vuċi ta' kwalità għolja bil-{language}",
     "readAloudNoVoiceDesktopWeb": "Dan il-browser ma joffrix vuċi ta' kwalità għolja bil-{language}, għalhekk il-messaġġi ma jistgħux jinqraw b'leħen għoli sew hawn. Chrome u Edge normalment jinkludu vuċijiet ta' kwalità għolja.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Int għażilt din l-emoji — ibdelha mill-karta tal-kelma",
     "practiceFeedbackAlreadyMatched": "Diġà mqabbel b'mod korrett",
     "practiceFeedbackUpdated": "Grazzi! L-eżerċizzju ġie aġġornat abbażi tal-feedback tiegħek.",
-    "practiceFeedbackUnchanged": "Grazzi! Ir-rapport tiegħek ġie rreġistrat, iżda l-kontenut baqa' l-istess."
+    "practiceFeedbackUnchanged": "Grazzi! Ir-rapport tiegħek ġie rreġistrat, iżda l-kontenut baqa' l-istess.",
+    "audioOnNewMessageToolName": "Fuq messaġġ ġdid",
+    "audioOnNewMessageDescription": "Aqra awtomatikament messaġġi ġodda riċevuti b'leħen għoli fil-lingwa fil-mira tiegħek.",
+    "audioOnMessageClickToolName": "Fuq klikk tal-messaġġ",
+    "audioOnMessageClickDescription": "Aqra messaġġ b'leħen għoli fil-lingwa fil-mira tiegħek meta tikklikkja fuqu."
 }

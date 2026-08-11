@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-10 14:04:47.658579",
+    "@@last_modified": "2026-08-11 13:17:28.436723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Putar audio tembung nalika sampeyan nutul.",
     "audioChoicesToolName": "Pilihan",
     "audioChoicesDescription": "Putar audio kanggo pilihan jawaban ing aktivitas latihan.",
-    "audioIncomingMessagesToolName": "Pesen mlebu",
-    "audioIncomingMessagesDescription": "Otomatis maca pesen sing ditampa kanthi banter ing basa target sampeyan kanggo latihan ngrungokake.",
     "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Swara {language} kualitas dhuwur ora ditemokake",
     "readAloudNoVoiceDesktopWeb": "Browser iki ora nyedhiyakake swara {language} kualitas dhuwur, mula pesen ora bisa diwaca kanthi apik ing kene. Chrome lan Edge biasane nyakup swara kualitas dhuwur.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Sampeyan milih emoji iki — ganti saka kertu tembung",
     "practiceFeedbackAlreadyMatched": "Wis cocog kanthi bener",
     "practiceFeedbackUpdated": "Matur nuwun! Gladhen wis dianyari adhedhasar umpan balik sampeyan.",
-    "practiceFeedbackUnchanged": "Matur nuwun! Laporan sampeyan wis direkam, nanging isine ora owah."
+    "practiceFeedbackUnchanged": "Matur nuwun! Laporan sampeyan wis direkam, nanging isine ora owah.",
+    "audioOnNewMessageToolName": "Ing pesen anyar",
+    "audioOnNewMessageDescription": "Otomatis maca pesen anyar sing ditampa kanthi banter ing basa target sampeyan.",
+    "audioOnMessageClickToolName": "Ing klik pesen",
+    "audioOnMessageClickDescription": "Maca pesen kanthi banter ing basa target sampeyan nalika sampeyan ngeklik."
 }

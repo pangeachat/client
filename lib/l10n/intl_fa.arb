@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:43.257579",
+    "@@last_modified": "2026-08-11 13:17:25.591852",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9768,8 +9768,6 @@
     "audioWordsDescription": "با ضربه زدن روی کلمه، صدای آن را پخش کنید.",
     "audioChoicesToolName": "گزینه‌ها",
     "audioChoicesDescription": "پخش صدا برای گزینه‌های پاسخ در فعالیت‌های تمرینی.",
-    "audioIncomingMessagesToolName": "پیام‌های ورودی",
-    "audioIncomingMessagesDescription": "برای تمرین شنیداری، پیام‌های دریافتی را به صورت خودکار با صدای بلند به زبان مقصد شما بخواند.",
     "choosePangeaAvatar": "یک آواتار Pangea انتخاب کنید",
     "readAloudNoVoiceTitle": "صدای با کیفیت بالا برای {language} یافت نشد",
     "readAloudNoVoiceDesktopWeb": "این مرورگر صدای با کیفیت بالا برای {language} ارائه نمی‌دهد، بنابراین پیام‌ها به خوبی در اینجا خوانده نمی‌شوند. کروم و اج معمولاً شامل صداهای با کیفیت بالا هستند.",
@@ -9812,5 +9810,9 @@
     "practiceFeedbackUserSetEmoji": "شما این ایموجی را انتخاب کردید — آن را از کارت کلمه تغییر دهید",
     "practiceFeedbackAlreadyMatched": "قبلاً به درستی مطابقت داده شده است",
     "practiceFeedbackUpdated": "متشکریم! تمرین بر اساس بازخورد شما به‌روزرسانی شد.",
-    "practiceFeedbackUnchanged": "متشکریم! گزارش شما ثبت شد، اما محتوا بدون تغییر باقی ماند."
+    "practiceFeedbackUnchanged": "متشکریم! گزارش شما ثبت شد، اما محتوا بدون تغییر باقی ماند.",
+    "audioOnNewMessageToolName": "در پیام جدید",
+    "audioOnNewMessageDescription": "پیام‌های جدید دریافتی را به‌طور خودکار با صدای بلند به زبان مقصد شما بخواند.",
+    "audioOnMessageClickToolName": "با کلیک روی پیام",
+    "audioOnMessageClickDescription": "با کلیک روی یک پیام، آن را با صدای بلند به زبان مقصد شما بخواند."
 }

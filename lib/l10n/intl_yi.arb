@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-10 14:05:01.505130",
+    "@@last_modified": "2026-08-11 13:17:36.321785",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "שפּיל אַ וואָרטס אַודיאָ ווען איר קלאַפּט אויף עס.",
     "audioChoicesToolName": "אויסוואַלן",
     "audioChoicesDescription": "שפּיל אַודיאָ פֿאַר ענטפֿערס אין פּראַקטישע אַקטיוויטעטן.",
-    "audioIncomingMessagesToolName": "אַרײַנקומענדיקע מעסעדזשעס",
-    "audioIncomingMessagesDescription": "לייען אויטאָמאַטיש אויס באַקומענע מעסעדזשעס הויך אין דיין ציל-שפּראַך פֿאַר צוהערן פּראַקטיק.",
     "choosePangeaAvatar": "קלייַבן אַ פּאַנגעאַ אַוואַטאַר",
     "readAloudNoVoiceTitle": "קיין הויך-קוואַליטעט {language} שטימע ניט געפֿונען",
     "readAloudNoVoiceDesktopWeb": "דער בלעטערער אָפפערט ניט קיין הויך-קוואַליטעט {language} שטימע, אַזוי מעסעדזשעס קענען ניט גוט אויסגעלייענט ווערן דאָ. קראָום און עדזש אַרייַננעמען געוויינטלעך הויך-קוואַליטעט שטימעס.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "איר האָט אויסגעקליבן דעם עמאָדזשי — ענדערט עס פֿון דער וואָרט קאַרטל",
     "practiceFeedbackAlreadyMatched": "שוין ריכטיק צוגעפּאַסט",
     "practiceFeedbackUpdated": "אַ דאַנק! די איבונג איז דערהייַנטיקט געוואָרן לויט אייערע באַמערקונגען.",
-    "practiceFeedbackUnchanged": "אַ דאַנק! אייער באַריכט איז רעקאָרדירט געוואָרן, אָבער דער אינהאַלט איז געבליבן אומגעענדערט."
+    "practiceFeedbackUnchanged": "אַ דאַנק! אייער באַריכט איז רעקאָרדירט געוואָרן, אָבער דער אינהאַלט איז געבליבן אומגעענדערט.",
+    "audioOnNewMessageToolName": "אויף אַ נײַעם מעסעדזש",
+    "audioOnNewMessageDescription": "לייענט אויס אויטאָמאַטיש נײַע באַקומענע מעסעדזשעס הויך אין דײַן צילשפּראַך.",
+    "audioOnMessageClickToolName": "אויף מעסעדזש קליק",
+    "audioOnMessageClickDescription": "לייענט אויס אַ מעסעדזש הויך אין דײַן צילשפּראַך ווען דו קליקסט דערויף."
 }

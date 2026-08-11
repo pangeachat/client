@@ -9,13 +9,13 @@ import 'package:fluffychat/routes/settings/settings_learning/read_aloud_voice_di
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 
 /// The audio section of the learning settings page: the per-surface audio
-/// toggles (words, choices, incoming messages).
+/// toggles (words, choices, on new message, on message click).
 class AudioSettingsSection extends StatelessWidget {
   final LearningSettingsViewModel viewModel;
 
   const AudioSettingsSection({super.key, required this.viewModel});
 
-  /// Auto-read-aloud only enables when the device offers a known-good voice
+  /// Message read-aloud only enables when the device offers a known-good voice
   /// for the selected target language; otherwise the toggle stays off and the
   /// dialog points to where a qualifying voice can be found. See
   /// message-read-aloud.instructions.md.
@@ -50,7 +50,7 @@ class AudioSettingsSection extends StatelessWidget {
           ),
         ),
         ...ToolSetting.audioSettings
-            .where((setting) => setting != ToolSetting.audioIncomingMessages)
+            .where((setting) => !setting.isMessageAudioSetting)
             .map(
               (setting) => ProfileSettingsSwitchListTile.adaptive(
                 defaultValue: viewModel.getToolSetting(setting),
@@ -59,21 +59,23 @@ class AudioSettingsSection extends StatelessWidget {
                 onChange: (v) => viewModel.updateToolSetting(setting, v),
               ),
             ),
-        SwitchListTile.adaptive(
-          value: viewModel.getToolSetting(ToolSetting.audioIncomingMessages),
-          title: Text(ToolSetting.audioIncomingMessages.toolName(context)),
-          subtitle: Text(
-            ToolSetting.audioIncomingMessages.toolDescription(context),
-          ),
-          activeThumbColor: AppConfig.activeToggleColor,
-          onChanged: (v) async {
-            if (v) {
-              final enabled = await _onEnableReadAloud(context);
-              if (!enabled) return;
-            }
-            viewModel.updateToolSetting(ToolSetting.audioIncomingMessages, v);
-          },
-        ),
+        ...ToolSetting.audioSettings
+            .where((setting) => setting.isMessageAudioSetting)
+            .map(
+              (setting) => SwitchListTile.adaptive(
+                value: viewModel.getToolSetting(setting),
+                title: Text(setting.toolName(context)),
+                subtitle: Text(setting.toolDescription(context)),
+                activeThumbColor: AppConfig.activeToggleColor,
+                onChanged: (v) async {
+                  if (v) {
+                    final enabled = await _onEnableReadAloud(context);
+                    if (!enabled) return;
+                  }
+                  viewModel.updateToolSetting(setting, v);
+                },
+              ),
+            ),
       ],
     );
   }

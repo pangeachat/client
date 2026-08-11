@@ -113,8 +113,10 @@ class LearningSettingsViewModel extends ChangeNotifier {
         return _updatedProfile.userSettings.targetLanguage != null &&
             _selectedTargetLanguage != null &&
             toolSettings.audioChoices;
-      case ToolSetting.audioIncomingMessages:
-        return toolSettings.audioIncomingMessages;
+      case ToolSetting.audioOnNewMessage:
+        return toolSettings.audioOnNewMessage;
+      case ToolSetting.audioOnMessageClick:
+        return toolSettings.audioOnMessageClick;
       case ToolSetting.enableAutocorrect:
         return toolSettings.enableAutocorrect;
     }
@@ -151,9 +153,12 @@ class LearningSettingsViewModel extends ChangeNotifier {
         audioChoices: toolSetting == ToolSetting.audioChoices
             ? value
             : _updatedProfile.toolSettings.audioChoices,
-        audioIncomingMessages: toolSetting == ToolSetting.audioIncomingMessages
+        audioOnNewMessage: toolSetting == ToolSetting.audioOnNewMessage
             ? value
-            : _updatedProfile.toolSettings.audioIncomingMessages,
+            : _updatedProfile.toolSettings.audioOnNewMessage,
+        audioOnMessageClick: toolSetting == ToolSetting.audioOnMessageClick
+            ? value
+            : _updatedProfile.toolSettings.audioOnMessageClick,
         enableAutocorrect: toolSetting == ToolSetting.enableAutocorrect
             ? value
             : _updatedProfile.toolSettings.enableAutocorrect,

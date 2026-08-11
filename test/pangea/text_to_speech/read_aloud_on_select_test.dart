@@ -2,11 +2,11 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/routes/chat/events/text_to_speech/message_read_aloud_controller.dart';
 
-// Reading on select: tapping a message is a deliberate request to hear it, so
-// for a learner who opted into read-aloud it speaks that message. Same toggle,
-// no second setting -- the same feature reached a second way.
+// Reading on click: tapping a message is a deliberate request to hear it, so
+// it speaks that message -- own messages included -- behind the "On message
+// click" toggle (#8264).
 //
-// Design ("Reading on select"):
+// Design ("Reading on click"):
 // client/.github/instructions/message-read-aloud.instructions.md
 
 void main() {
@@ -22,8 +22,8 @@ void main() {
       );
     });
 
-    // No second setting: a learner who never opted into read-aloud must not
-    // start getting unrequested audio out of an ordinary message tap.
+    // A learner who turned the click toggle off must not get audio out of an
+    // ordinary message tap.
     test('the setting off reads nothing on select', () {
       expect(
         MessageReadAloudController.readsOnSelect(

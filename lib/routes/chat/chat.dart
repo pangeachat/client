@@ -2891,8 +2891,8 @@ class ChatController extends State<ChatPageWithRoom>
       );
     }
 
-    // A deliberate tap on a message is a request to hear it, for learners who
-    // opted into read-aloud. The controller owns which selections qualify.
+    // A deliberate tap on a message is a request to hear it, own messages
+    // included. The controller owns which selections qualify.
     readAloudController.readSelectedMessage(
       pangeaMessageEvent ??
           PangeaMessageEvent(

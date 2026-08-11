@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-10 14:04:58.880640",
+    "@@last_modified": "2026-08-11 13:17:34.753479",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10312,8 +10312,6 @@
     "audioWordsDescription": "เล่นเสียงของคำเมื่อคุณแตะ",
     "audioChoicesToolName": "ตัวเลือก",
     "audioChoicesDescription": "เล่นเสียงสำหรับตัวเลือกคำตอบในกิจกรรมฝึกหัด",
-    "audioIncomingMessagesToolName": "ข้อความขาเข้า",
-    "audioIncomingMessagesDescription": "อ่านข้อความที่ได้รับโดยอัตโนมัติในภาษาเป้าหมายของคุณเพื่อฝึกการฟัง",
     "choosePangeaAvatar": "เลือกอวตาร Pangea",
     "readAloudNoVoiceTitle": "ไม่พบเสียงคุณภาพสูงสำหรับภาษา {language}",
     "readAloudNoVoiceDesktopWeb": "เบราว์เซอร์นี้ไม่มีเสียงคุณภาพสูงสำหรับภาษา {language} ดังนั้นจึงไม่สามารถอ่านข้อความออกเสียงได้ดีที่นี่ โดยปกติแล้ว Chrome และ Edge จะมีเสียงคุณภาพสูงให้ใช้งาน",
@@ -10356,5 +10354,9 @@
     "practiceFeedbackUserSetEmoji": "คุณเลือกอิโมจินี้ — เปลี่ยนจากบัตรคำศัพท์",
     "practiceFeedbackAlreadyMatched": "จับคู่ถูกต้องแล้ว",
     "practiceFeedbackUpdated": "ขอบคุณ! แบบฝึกหัดได้รับการอัปเดตตามข้อเสนอแนะของคุณแล้ว",
-    "practiceFeedbackUnchanged": "ขอบคุณ! รายงานของคุณถูกบันทึกแล้ว แต่เนื้อหายังคงไม่เปลี่ยนแปลง"
+    "practiceFeedbackUnchanged": "ขอบคุณ! รายงานของคุณถูกบันทึกแล้ว แต่เนื้อหายังคงไม่เปลี่ยนแปลง",
+    "audioOnNewMessageToolName": "เมื่อมีข้อความใหม่",
+    "audioOnNewMessageDescription": "อ่านข้อความที่ได้รับใหม่โดยอัตโนมัติออกเสียงเป็นภาษาเป้าหมายของคุณ",
+    "audioOnMessageClickToolName": "เมื่อคลิกข้อความ",
+    "audioOnMessageClickDescription": "อ่านข้อความออกเสียงเป็นภาษาเป้าหมายของคุณเมื่อคุณคลิกที่ข้อความนั้น"
 }

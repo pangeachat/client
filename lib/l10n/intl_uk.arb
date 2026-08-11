@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-10 14:04:59.766088",
+    "@@last_modified": "2026-08-11 13:17:35.620152",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9680,8 +9680,6 @@
     "audioWordsDescription": "Відтворювати аудіо слова, коли ви натискаєте на нього.",
     "audioChoicesToolName": "Варіанти",
     "audioChoicesDescription": "Відтворювати аудіо для варіантів відповідей у практичних завданнях.",
-    "audioIncomingMessagesToolName": "Вхідні повідомлення",
-    "audioIncomingMessagesDescription": "Автоматично читати отримані повідомлення вголос вашою цільовою мовою для практики слухання.",
     "choosePangeaAvatar": "Виберіть аватар Pangea",
     "readAloudNoVoiceTitle": "Не знайдено високоякісного голосу {language}",
     "readAloudNoVoiceDesktopWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Chrome та Edge зазвичай мають високоякісні голоси.",
@@ -9724,5 +9722,9 @@
     "practiceFeedbackUserSetEmoji": "Ви обрали цей емодзі — змініть його з картки слова",
     "practiceFeedbackAlreadyMatched": "Вже правильно зіставлено",
     "practiceFeedbackUpdated": "Дякуємо! Вправу оновлено на основі вашого відгуку.",
-    "practiceFeedbackUnchanged": "Дякуємо! Ваш звіт було записано, але вміст залишився без змін."
+    "practiceFeedbackUnchanged": "Дякуємо! Ваш звіт було записано, але вміст залишився без змін.",
+    "audioOnNewMessageToolName": "На нове повідомлення",
+    "audioOnNewMessageDescription": "Автоматично читати вголос нові отримані повідомлення цільовою мовою.",
+    "audioOnMessageClickToolName": "Натискання на повідомлення",
+    "audioOnMessageClickDescription": "Читати повідомлення вголос цільовою мовою, коли ви натискаєте на нього."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-10 14:04:52.955905",
+    "@@last_modified": "2026-08-11 13:17:31.591342",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "शब्दमा ट्याप गर्दा त्यसको अडियो बजाउनुहोस्।",
     "audioChoicesToolName": "विकल्पहरू",
     "audioChoicesDescription": "अभ्यास गतिविधिहरूमा उत्तर विकल्पहरूको लागि अडियो बजाउनुहोस्।",
-    "audioIncomingMessagesToolName": "आउने सन्देशहरू",
-    "audioIncomingMessagesDescription": "सुन्ने अभ्यासको लागि तपाईंको लक्षित भाषामा प्राप्त सन्देशहरू स्वतः ठूलो स्वरमा पढ्नुहोस्।",
     "choosePangeaAvatar": "पान्गेया अवतार छान्नुहोस्",
     "readAloudNoVoiceTitle": "उच्च गुणस्तरको {language} आवाज फेला परेन",
     "readAloudNoVoiceDesktopWeb": "यो ब्राउजरले उच्च गुणस्तरको {language} आवाज प्रदान गर्दैन, त्यसैले यहाँ सन्देशहरू राम्ररी पढ्न सकिँदैन। क्रोम र एजमा सामान्यतया उच्च गुणस्तरका आवाजहरू समावेश हुन्छन्।",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "तपाईंले यो इमोजी रोज्नुभयो — यसलाई शब्द कार्डबाट परिवर्तन गर्नुहोस्",
     "practiceFeedbackAlreadyMatched": "पहिले नै सही मिलान भयो",
     "practiceFeedbackUpdated": "धन्यवाद! तपाईंको प्रतिक्रियाको आधारमा अभ्यास अद्यावधिक गरिएको छ।",
-    "practiceFeedbackUnchanged": "धन्यवाद! तपाईंको रिपोर्ट रेकर्ड गरिएको थियो, तर सामग्री अपरिवर्तित फिर्ता आयो।"
+    "practiceFeedbackUnchanged": "धन्यवाद! तपाईंको रिपोर्ट रेकर्ड गरिएको थियो, तर सामग्री अपरिवर्तित फिर्ता आयो।",
+    "audioOnNewMessageToolName": "नयाँ सन्देशमा",
+    "audioOnNewMessageDescription": "तपाईंको लक्षित भाषामा नयाँ प्राप्त सन्देशहरू स्वचालित रूपमा ठूलो स्वरमा पढ्नुहोस्।",
+    "audioOnMessageClickToolName": "सन्देश क्लिकमा",
+    "audioOnMessageClickDescription": "तपाईंले सन्देशमा क्लिक गर्दा त्यसलाई तपाईंको लक्षित भाषामा ठूलो स्वरमा पढ्नुहोस्।"
 }

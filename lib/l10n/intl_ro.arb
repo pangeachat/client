@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:55.587048",
+    "@@last_modified": "2026-08-11 13:17:32.793683",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10412,8 +10412,6 @@
     "audioWordsDescription": "Redă sunetul unui cuvânt când apeși pe el.",
     "audioChoicesToolName": "Opțiuni",
     "audioChoicesDescription": "Redă sunetul pentru opțiunile de răspuns în activitățile de exersare.",
-    "audioIncomingMessagesToolName": "Mesaje primite",
-    "audioIncomingMessagesDescription": "Citește automat mesajele primite cu voce tare în limba țintă pentru exersarea ascultării.",
     "choosePangeaAvatar": "Alege un avatar Pangea",
     "readAloudNoVoiceTitle": "Nu s-a găsit o voce {language} de înaltă calitate",
     "readAloudNoVoiceDesktopWeb": "Acest browser nu oferă o voce {language} de înaltă calitate, așa că mesajele nu pot fi citite cu voce tare în mod corespunzător aici. Chrome și Edge includ de obicei voci de înaltă calitate.",
@@ -10456,5 +10454,9 @@
     "practiceFeedbackUserSetEmoji": "Ai ales acest emoji — schimbă-l din cartonașul cuvântului",
     "practiceFeedbackAlreadyMatched": "Deja potrivit corect",
     "practiceFeedbackUpdated": "Mulțumim! Exercițiul a fost actualizat pe baza feedback-ului tău.",
-    "practiceFeedbackUnchanged": "Mulțumim! Raportul tău a fost înregistrat, dar conținutul a rămas neschimbat."
+    "practiceFeedbackUnchanged": "Mulțumim! Raportul tău a fost înregistrat, dar conținutul a rămas neschimbat.",
+    "audioOnNewMessageToolName": "La mesaj nou",
+    "audioOnNewMessageDescription": "Citește automat cu voce tare mesajele noi primite în limba țintă.",
+    "audioOnMessageClickToolName": "La clic pe mesaj",
+    "audioOnMessageClickDescription": "Citește un mesaj cu voce tare în limba țintă atunci când apeși pe el."
 }
