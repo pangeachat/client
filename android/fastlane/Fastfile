@@ -18,6 +18,22 @@ update_fastlane
 
 default_platform(:android)
 
+# Date-encoded build code: YYMMDDnn in UTC, e.g. 26081103 for the third build
+# on 2026-08-10. Mirrored in ios/fastlane/Fastfile so one integer is valid on
+# both stores. A store build code has to be a monotonic integer, so it can
+# order builds but never say what is in one — encoding the date at least makes
+# the ordering readable at a glance. The commit SHA is what identifies the
+# code; see ci.instructions.md.
+#
+# Never below the store's current max + 1, so the switch away from the old
+# sequential codes cannot regress and Google's strictly-increasing rule holds.
+# Google's ceiling is 2,100,000,000; this scheme peaks at 99,123,199. Past 99
+# builds in one UTC day the counter rolls into the next day's slot — still
+# increasing and still accepted, just no longer readable as a date.
+def date_encoded_build_code(last_version)
+  [Time.now.utc.strftime("%y%m%d").to_i * 100 + 1, last_version.to_i + 1].max
+end
+
 platform :android do
   lane :set_build_code_internal do
     versions = google_play_track_version_codes(
@@ -25,12 +41,13 @@ platform :android do
         json_key: "./keys.json"
       )
     last_version = versions.map(&:to_i).max
+    build_code = date_encoded_build_code(last_version)
     Dir.chdir("../..") do
       re = /version:\s([0-9]*\.[0-9]*\.[0-9]*)\+[0-9]*/i
       config = File.read("./pubspec.yaml")
       version_name = config.match(re).captures
 
-      subst = "version: #{version_name[0]}+#{last_version+1}"
+      subst = "version: #{version_name[0]}+#{build_code}"
 
       result = config.gsub(re, subst)
 
@@ -39,15 +56,18 @@ platform :android do
   end
 
   lane :deploy_internal_test do
-    versions = google_play_track_version_codes(
-        track: "internal",
-        json_key: "./keys.json"
-      )
-    last_version = versions.map(&:to_i).max
+    # Read back what set_build_code_internal wrote rather than deriving it a
+    # second time: gradle already baked that number into the .aab as the
+    # versionCode, and a second derivation is a second chance to disagree.
+    build_code = nil
+    Dir.chdir("../..") do
+      config = File.read("./pubspec.yaml")
+      build_code = config.match(/version:\s[0-9]*\.[0-9]*\.[0-9]*\+([0-9]*)/i).captures[0]
+    end
     upload_to_play_store(
       track: 'internal',
       aab: '../build/app/outputs/bundle/release/app-release.aab',
-      version_code: "#{last_version+1}",
+      version_code: build_code,
     )
   end
 

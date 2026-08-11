@@ -48,13 +48,15 @@ jobs:
         # production share one sequence instead of each workflow's own run_number
         # (those had drifted to 3890 vs 104). Build-time only — nothing is
         # committed back, and the release tag still reads pubspec's `+N`.
-        # Resets monthly, so it identifies a build, never orders one.
-        # See ci.instructions.md.
+        # Resets monthly, so it identifies a build, never orders one — the
+        # BUILD_COMMIT_SHA dart-define is what says which code is running, and
+        # Settings shows it next to the version. Same define in release.yaml
+        # and both mobile workflows. See ci.instructions.md.
         run: |
           flutter config --enable-web
           flutter clean
           flutter pub get
-          ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile --source-maps --build-number=$(date -u +%d%H%M)
+          ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile --source-maps --build-number=$(date -u +%d%H%M) --dart-define=BUILD_COMMIT_SHA=${GITHUB_SHA::8}
 
       - name: Version Material Icons font
         run: |
@@ -71,6 +73,13 @@ jobs:
           echo "Renamed $OLD_NAME -> $NEW_NAME"
 
       - name: Inject build version into index.html
+        # Fills the __BUILD_VERSION__ placeholder index.html ships with. That
+        # token is the Sentry release for the service-worker killswitch and the
+        # `?v=` cache-buster index.html appends to the four asset manifests, so
+        # leaving it unsubstituted pins every deploy to one release and one
+        # cache key, and browsers keep serving stale manifests. Must run before
+        # any step that copies build/web. Identical step in release.yaml, which
+        # went without it until #8245.
         run: |
           VERSION=${GITHUB_SHA::8}
           sed -i "s|__BUILD_VERSION__|$VERSION|g" build/web/index.html

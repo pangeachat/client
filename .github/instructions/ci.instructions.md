@@ -26,22 +26,24 @@ Branch protection is **non-strict** — a PR need not be rebased onto the latest
 - **On push to `main`:** the above **plus** `build_debug_apk` and `build_debug_ios` (gated by `if: github.event_name == 'push'`). This catches native regressions at merge, where a break is cheap to spot, without paying for a native build on every PR push.
 - **`concurrency: cancel-in-progress`** for `pull_request` only. Superseded PR-iteration pushes cancel; `merge_group` and `main` runs finish (they gate merges / warm caches).
 
-## Version and build number
+## Version, build number, and commit
 
-Settings shows `Version: <semver>+<build>` as a debugging aid. The two halves come from different places.
+Settings shows `Version: <semver>+<build>` with the build's commit SHA beneath it, as a debugging aid. The three parts answer different questions.
 
 **The semantic version** lives in `pubspec.yaml` and is bumped by hand. Pubspec's `+N` is no longer what web users see, but it still gates the release tag, so a release must still bump it. When to bump, and at which level, is part of the release process — see [deployment.instructions.md](deployment.instructions.md).
 
-**The build number is stamped at build time, from three unrelated per-platform sources:**
+**The build number is stamped at build time, by one of two schemes:**
 
 | Platform | Stamped from |
 |---|---|
 | Web | a UTC `ddHHMM` timestamp, applied identically by both web workflows |
-| Android | the Play Store internal track's highest version code, via fastlane |
-| iOS | the latest TestFlight build number, via fastlane |
+| Android, iOS | a UTC `YYMMDDnn` date code — `26081103` is the third build on 2026-08-10 — assigned by fastlane |
 
-- **A build number only identifies a build within its own platform.** Mobile numbers come from store state, web from a clock. They are not comparable, and mobile cannot be folded into the web sequence — the stores own those counters. Capture the platform alongside the number when logging a bug report.
-- **The web stamp identifies a build; it does not order one.** Dropping year and month keeps it short, at the cost of resetting on the 1st — so a later build can carry a smaller number, and web build numbers must not be compared to judge which is newer. Both web workflows share one scheme so staging and production draw from the same sequence; per-workflow run counters were tried first and drifted thousands of builds apart.
+- **One date code serves both stores.** Google requires a strictly increasing integer across every upload (ceiling 2,100,000,000), and Apple requires one that increases within a version train, so a single always-rising number satisfies both at once. Fastlane takes whichever is higher: the date code, or the store's current highest build plus one. The store is the floor, which is what makes the number strictly increasing rather than merely usually increasing.
+- **The web stamp identifies a build; it does not order one.** Dropping year and month keeps it short, at the cost of resetting on the 1st — so a later build can carry a smaller number, and web build numbers must not be compared to judge which is newer. That reset is also why web's scheme cannot be reused for mobile. Both web workflows share one scheme so staging and production draw from the same sequence; per-workflow run counters were tried first and drifted thousands of builds apart.
+- **Web and mobile numbers are still not comparable** — one is a clock reading, the other a date code. Capture the platform alongside the number.
+
+**The commit SHA says what code is in the build.** A build number has to be a monotonic integer, which makes it good at ordering builds and bad at identifying one — so it is not asked to. Every build workflow passes the 8-character SHA it built from into the app as a compile-time define, and Settings shows it under the version. **This is what to capture in a bug report**: the number orders builds, the SHA resolves back to code. It is empty on a locally-run build, which has no pushed commit, and Settings then shows nothing. The web deploys stamp the same SHA into `index.html`, where it serves as the Sentry release and as the cache-busting token on the asset manifests.
 
 **Latent coupling.** [`app_version_util.dart`](../../lib/routes/chat_list/app_version_util.dart) also compares build numbers numerically when deciding whether to prompt an update. That path is inert: the force-upgrade gate is semantic-version-based by design, and the endpoint's build number is vestigial — see [client-version-gating.instructions.md](https://github.com/pangeachat/2-step-choreographer/blob/main/.github/instructions/client-version-gating.instructions.md). If that ever changes, the monthly reset would suppress the web update prompt; revisit the stamp format then.
 
