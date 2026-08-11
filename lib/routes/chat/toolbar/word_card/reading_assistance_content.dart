@@ -32,7 +32,7 @@ class ReadingAssistanceContent extends StatelessWidget {
       return const SizedBox();
     }
 
-    final tokens = overlayController.pangeaMessageEvent.originalSent?.tokens;
+    final tokens = overlayController.pangeaMessageEvent.correctedSent?.tokens;
     final selectedToken = overlayController.selectedToken;
     final selectedTokenIndex = selectedToken != null
         ? tokens?.indexWhere((t) => t.text == selectedToken.text) ?? -1

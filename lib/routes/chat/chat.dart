@@ -705,7 +705,7 @@ class ChatController extends State<ChatPageWithRoom>
       ownMessage: event.senderId == Matrix.of(context).client.userID,
     );
 
-    final msgLang = pangeaMessageEvent.originalSent?.langCode.split('-').first;
+    final msgLang = pangeaMessageEvent.correctedSent?.langCode.split('-').first;
 
     if (msgLang != l2) return;
 
@@ -714,7 +714,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
     if (newTokens.isEmpty) return;
     final newTokenText = newTokens.first;
-    final token = pangeaMessageEvent.originalSent?.tokens?.firstWhereOrNull(
+    final token = pangeaMessageEvent.correctedSent?.tokens?.firstWhereOrNull(
       (t) => newTokenText == t.text,
     );
     if (token == null) return;
