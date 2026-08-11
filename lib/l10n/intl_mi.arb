@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-10 14:04:51.614505",
+    "@@last_modified": "2026-08-11 13:17:30.388048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Whakatangihia te oro o tētahi kupu ina pēhi koe i taua kupu.",
     "audioChoicesToolName": "Kōwhiringa",
     "audioChoicesDescription": "Whakatangihia te oro mō ngā kōwhiringa whakautu i roto i ngā mahi whakaharatau.",
-    "audioIncomingMessagesToolName": "Karere taumai",
-    "audioIncomingMessagesDescription": "Pānuitia aunoatia ngā karere kua tae mai i tō reo whāinga mō te whakaharatau whakarongo.",
     "choosePangeaAvatar": "Kōwhiria tētahi avata Pangea",
     "readAloudNoVoiceTitle": "Kāore i kitea he reo {language} kounga teitei",
     "readAloudNoVoiceDesktopWeb": "Kāore tēnei pūtirotiro e tuku reo {language} kounga teitei, nō reira kāore e pai te pānui nui i ngā karere i konei. Ko Chrome me Edge te tikanga he reo kounga teitei.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "I kōwhiria e koe tēnei emoji — hurihia mai i te kāri kupu",
     "practiceFeedbackAlreadyMatched": "Kua ōrite kē te tika",
     "practiceFeedbackUpdated": "Ngā mihi! Kua whakahōutia te mahi i runga i tō urupare.",
-    "practiceFeedbackUnchanged": "Ngā mihi! Kua tuhia tō pūrongo, engari kāore i rerekē te ihirangi."
+    "practiceFeedbackUnchanged": "Ngā mihi! Kua tuhia tō pūrongo, engari kāore i rerekē te ihirangi.",
+    "audioOnNewMessageToolName": "I te karere hou",
+    "audioOnNewMessageDescription": "Pānuitia aunoatia ngā karere hou ka tae mai i tō reo whāinga.",
+    "audioOnMessageClickToolName": "I te pāwhiritanga karere",
+    "audioOnMessageClickDescription": "Pānuitia te karere i tō reo whāinga ina pāwhiri koe i runga."
 }

@@ -3540,7 +3540,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-10 14:04:50.329447",
+    "@@last_modified": "2026-08-11 13:17:30.398465",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9680,8 +9680,6 @@
     "audioWordsDescription": "Atskaņojiet vārda audio, kad tam pieskaraties.",
     "audioChoicesToolName": "Izvēles",
     "audioChoicesDescription": "Atskaņojiet audio atbilžu variantiem prakses aktivitātēs.",
-    "audioIncomingMessagesToolName": "Ienākošās ziņas",
-    "audioIncomingMessagesDescription": "Automātiski nolasīt saņemtās ziņas skaļi jūsu mērķa valodā, lai praktizētu klausīšanos.",
     "choosePangeaAvatar": "Izvēlieties Pangea iemiesojumu",
     "readAloudNoVoiceTitle": "Nav atrasta augstas kvalitātes {language} balss",
     "readAloudNoVoiceDesktopWeb": "Šī pārlūkprogramma nepiedāvā augstas kvalitātes {language} balsi, tāpēc ziņojumus šeit nevar labi nolasīt. Chrome un Edge parasti ietver augstas kvalitātes balsis.",
@@ -9724,5 +9722,9 @@
     "practiceFeedbackUserSetEmoji": "Jūs izvēlējāties šo emocijzīmi — mainiet to vārdu kartītē",
     "practiceFeedbackAlreadyMatched": "Jau pareizi saskaņots",
     "practiceFeedbackUpdated": "Paldies! Uzdevums ir atjaunināts, pamatojoties uz jūsu atsauksmēm.",
-    "practiceFeedbackUnchanged": "Paldies! Jūsu ziņojums tika ierakstīts, taču saturs palika nemainīgs."
+    "practiceFeedbackUnchanged": "Paldies! Jūsu ziņojums tika ierakstīts, taču saturs palika nemainīgs.",
+    "audioOnNewMessageToolName": "Par jaunu ziņu",
+    "audioOnNewMessageDescription": "Automātiski nolasīt jaunas saņemtās ziņas skaļi jūsu mērķa valodā.",
+    "audioOnMessageClickToolName": "Par ziņas klikšķi",
+    "audioOnMessageClickDescription": "Nolasīt ziņu skaļi jūsu mērķa valodā, kad uz tās noklikšķināt."
 }

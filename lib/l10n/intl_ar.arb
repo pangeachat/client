@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-10 14:04:40.437111",
+    "@@last_modified": "2026-08-11 13:17:23.225251",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9986,8 +9986,6 @@
     "audioWordsDescription": "شغّل صوت الكلمة عند النقر عليها.",
     "audioChoicesToolName": "الخيارات",
     "audioChoicesDescription": "شغّل الصوت لخيارات الإجابة في أنشطة التدريب.",
-    "audioIncomingMessagesToolName": "الرسائل الواردة",
-    "audioIncomingMessagesDescription": "اقرأ الرسائل المستلمة تلقائيًا بصوت عالٍ بلغتك المستهدفة لممارسة الاستماع.",
     "choosePangeaAvatar": "اختر صورة بانجيا الرمزية",
     "readAloudNoVoiceTitle": "لم يتم العثور على صوت عالي الجودة لـ {language}",
     "readAloudNoVoiceDesktopWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يتضمن Chrome و Edge عادةً أصواتًا عالية الجودة.",
@@ -10030,5 +10028,9 @@
     "practiceFeedbackUserSetEmoji": "لقد اخترت هذا الرمز التعبيري — يمكنك تغييره من بطاقة الكلمة",
     "practiceFeedbackAlreadyMatched": "تمت المطابقة بشكل صحيح بالفعل",
     "practiceFeedbackUpdated": "شكرًا! تم تحديث التمرين بناءً على ملاحظاتك.",
-    "practiceFeedbackUnchanged": "شكرًا! تم تسجيل تقريرك، ولكن المحتوى لم يتغير."
+    "practiceFeedbackUnchanged": "شكرًا! تم تسجيل تقريرك، ولكن المحتوى لم يتغير.",
+    "audioOnNewMessageToolName": "عند رسالة جديدة",
+    "audioOnNewMessageDescription": "قراءة الرسائل الجديدة المستلمة تلقائيًا بصوت عالٍ بلغتك الهدف.",
+    "audioOnMessageClickToolName": "عند النقر على الرسالة",
+    "audioOnMessageClickDescription": "قراءة الرسالة بصوت عالٍ بلغتك الهدف عند النقر عليها."
 }

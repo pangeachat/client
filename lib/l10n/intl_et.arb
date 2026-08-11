@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-10 14:04:43.248676",
+    "@@last_modified": "2026-08-11 13:17:25.437777",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9677,8 +9677,6 @@
     "audioWordsDescription": "Esita sõna heli, kui sellele koputad.",
     "audioChoicesToolName": "Valikud",
     "audioChoicesDescription": "Esita harjutuste vastusevalikute heli.",
-    "audioIncomingMessagesToolName": "Sissetulevad sõnumid",
-    "audioIncomingMessagesDescription": "Loe vastuvõetud sõnumid automaatselt sihtkeeles ette kuulamisharjutuste jaoks.",
     "choosePangeaAvatar": "Vali Pangea avatar",
     "readAloudNoVoiceTitle": "Kvaliteetset {language} häält ei leitud",
     "readAloudNoVoiceDesktopWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Chrome ja Edge sisaldavad tavaliselt kvaliteetseid hääli.",
@@ -9721,5 +9719,9 @@
     "practiceFeedbackUserSetEmoji": "Valisid selle emotikoni – muuda seda sõnakaardilt",
     "practiceFeedbackAlreadyMatched": "Juba õigesti sobitatud",
     "practiceFeedbackUpdated": "Aitäh! Harjutust on teie tagasiside põhjal värskendatud.",
-    "practiceFeedbackUnchanged": "Aitäh! Teie teade salvestati, kuid sisu jäi muutmata."
+    "practiceFeedbackUnchanged": "Aitäh! Teie teade salvestati, kuid sisu jäi muutmata.",
+    "audioOnNewMessageToolName": "Uue sõnumi korral",
+    "audioOnNewMessageDescription": "Loe uued vastuvõetud sõnumid automaatselt sihtkeeles ette.",
+    "audioOnMessageClickToolName": "Sõnumi klõpsamisel",
+    "audioOnMessageClickDescription": "Loe sõnum sihtkeeles ette, kui sellele klõpsate."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-10 14:05:02.199368",
+    "@@last_modified": "2026-08-11 13:17:37.125564",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Dlala umsindo wegama uma ulithinta.",
     "audioChoicesToolName": "Izinketho",
     "audioChoicesDescription": "Dlala umsindo wezinketho zempendulo emisebenzini yokuzijwayeza.",
-    "audioIncomingMessagesToolName": "Imilayezo engenayo",
-    "audioIncomingMessagesDescription": "Funda ngokuzenzakalelayo imilayezo etholiwe ngokuzwakalayo ngolimi oluqondile ukuze uzilolonge ukulalela.",
     "choosePangeaAvatar": "Khetha i-avatar yePangea",
     "readAloudNoVoiceTitle": "Ayikho izwi lekhwalithi ephezulu lesi-{language} elitholakele",
     "readAloudNoVoiceDesktopWeb": "Lesi siphequluli asihlinzeki ngezwi lesi-{language} elisezingeni eliphezulu, ngakho-ke imilayezo ayikwazi ukufundwa kahle lapha. I-Chrome ne-Edge ngokuvamile zifaka amazwi asezingeni eliphezulu.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Ukhethe le emoji — yishintshe kusuka ekhadini lamagama",
     "practiceFeedbackAlreadyMatched": "Sekufaniswe kahle kakade",
     "practiceFeedbackUpdated": "Siyabonga! Umsebenzi ubuyekezwe ngokusekelwe empendulweni yakho.",
-    "practiceFeedbackUnchanged": "Siyabonga! Umbiko wakho urekhodiwe, kodwa okuqukethwe kubuye kungashintshile."
+    "practiceFeedbackUnchanged": "Siyabonga! Umbiko wakho urekhodiwe, kodwa okuqukethwe kubuye kungashintshile.",
+    "audioOnNewMessageToolName": "Kumlayezo omusha",
+    "audioOnNewMessageDescription": "Funda ngokuzenzakalelayo imilayezo emisha etholiwe ngokuzwakalayo ngolimi oluqondiwe.",
+    "audioOnMessageClickToolName": "Ekuchofozweni komlayezo",
+    "audioOnMessageClickDescription": "Funda umlayezo ngokuzwakalayo ngolimi oluqondiwe uma uwuchofoza."
 }

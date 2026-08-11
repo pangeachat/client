@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-10 14:04:44.713661",
+    "@@last_modified": "2026-08-11 13:17:26.764936",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "જ્યારે તમે તેના પર ટૅપ કરો ત્યારે શબ્દનો ઑડિયો ચલાવો.",
     "audioChoicesToolName": "પસંદગીઓ",
     "audioChoicesDescription": "પ્રેક્ટિસ પ્રવૃત્તિઓમાં જવાબની પસંદગીઓ માટે ઑડિયો ચલાવો.",
-    "audioIncomingMessagesToolName": "આવનારા સંદેશા",
-    "audioIncomingMessagesDescription": "સાંભળવાની પ્રેક્ટિસ માટે તમારી લક્ષ્ય ભાષામાં પ્રાપ્ત થયેલા સંદેશાઓને આપમેળે મોટેથી વાંચો.",
     "choosePangeaAvatar": "પેંગિયા અવતાર પસંદ કરો",
     "readAloudNoVoiceTitle": "ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ મળ્યો નથી",
     "readAloudNoVoiceDesktopWeb": "આ બ્રાઉઝર ઉચ્ચ-ગુણવત્તાવાળો {language} અવાજ પ્રદાન કરતું નથી, તેથી અહીં સંદેશાઓ સારી રીતે વાંચી શકાતા નથી. Chrome અને Edge માં સામાન્ય રીતે ઉચ્ચ-ગુણવત્તાવાળા અવાજો શામેલ હોય છે.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "તમે આ ઇમોજી પસંદ કર્યું છે — તેને વર્ડ કાર્ડમાંથી બદલો",
     "practiceFeedbackAlreadyMatched": "પહેલેથી જ યોગ્ય રીતે મેચ થયેલ છે",
     "practiceFeedbackUpdated": "આભાર! તમારા પ્રતિસાદના આધારે કવાયત અપડેટ કરવામાં આવી છે.",
-    "practiceFeedbackUnchanged": "આભાર! તમારો અહેવાલ નોંધવામાં આવ્યો હતો, પરંતુ સામગ્રી યથાવત રહી."
+    "practiceFeedbackUnchanged": "આભાર! તમારો અહેવાલ નોંધવામાં આવ્યો હતો, પરંતુ સામગ્રી યથાવત રહી.",
+    "audioOnNewMessageToolName": "નવા સંદેશા પર",
+    "audioOnNewMessageDescription": "તમારી લક્ષ્ય ભાષામાં નવા પ્રાપ્ત થયેલા સંદેશાઓ આપમેળે મોટેથી વાંચો.",
+    "audioOnMessageClickToolName": "સંદેશા પર ક્લિક કરવા પર",
+    "audioOnMessageClickDescription": "જ્યારે તમે તેના પર ક્લિક કરો ત્યારે તમારી લક્ષ્ય ભાષામાં સંદેશ મોટેથી વાંચો."
 }

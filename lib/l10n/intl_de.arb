@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-10 14:04:42.188429",
+    "@@last_modified": "2026-08-11 13:17:24.442457",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9667,8 +9667,6 @@
     "audioWordsDescription": "Spielt das Audio eines Wortes ab, wenn Sie darauf tippen.",
     "audioChoicesToolName": "Auswahlmöglichkeiten",
     "audioChoicesDescription": "Spielt Audio für Antwortmöglichkeiten in Übungsaktivitäten ab.",
-    "audioIncomingMessagesToolName": "Eingehende Nachrichten",
-    "audioIncomingMessagesDescription": "Liest empfangene Nachrichten in Ihrer Zielsprache automatisch vor, um das Hörverständnis zu üben.",
     "choosePangeaAvatar": "Wähle einen Pangea-Avatar",
     "readAloudNoVoiceTitle": "Keine hochwertige {language}-Stimme gefunden",
     "readAloudNoVoiceDesktopWeb": "Dieser Browser bietet keine hochwertige {language}-Stimme, daher können Nachrichten hier nicht gut vorgelesen werden. Chrome und Edge enthalten normalerweise hochwertige Stimmen.",
@@ -9711,5 +9709,9 @@
     "practiceFeedbackUserSetEmoji": "Du hast dieses Emoji ausgewählt – ändere es auf der Wortkarte",
     "practiceFeedbackAlreadyMatched": "Bereits korrekt zugeordnet",
     "practiceFeedbackUpdated": "Danke! Die Übung wurde basierend auf deinem Feedback aktualisiert.",
-    "practiceFeedbackUnchanged": "Danke! Dein Bericht wurde erfasst, aber der Inhalt blieb unverändert."
+    "practiceFeedbackUnchanged": "Danke! Dein Bericht wurde erfasst, aber der Inhalt blieb unverändert.",
+    "audioOnNewMessageToolName": "Bei neuer Nachricht",
+    "audioOnNewMessageDescription": "Neue empfangene Nachrichten automatisch in Ihrer Zielsprache vorlesen.",
+    "audioOnMessageClickToolName": "Beim Klicken auf Nachricht",
+    "audioOnMessageClickDescription": "Eine Nachricht in Ihrer Zielsprache vorlesen, wenn Sie darauf klicken."
 }

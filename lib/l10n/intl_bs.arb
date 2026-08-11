@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-10 14:04:40.497787",
+    "@@last_modified": "2026-08-11 13:17:23.292319",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Reproducirajte audiozapis riječi kada je dodirnete.",
     "audioChoicesToolName": "Izbori",
     "audioChoicesDescription": "Reproducirajte audiozapis za opcije odgovora u vježbama.",
-    "audioIncomingMessagesToolName": "Dolazne poruke",
-    "audioIncomingMessagesDescription": "Automatski čitajte primljene poruke naglas na vašem ciljnom jeziku za vježbanje slušanja.",
     "choosePangeaAvatar": "Odaberite Pangea avatar",
     "readAloudNoVoiceTitle": "Nije pronađen visokokvalitetan glas za {language}",
     "readAloudNoVoiceDesktopWeb": "Ovaj preglednik ne nudi visokokvalitetan glas za {language}, tako da se poruke ovdje ne mogu dobro čitati naglas. Chrome i Edge obično uključuju visokokvalitetne glasove.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Odabrali ste ovaj emoji – promijenite ga sa kartice riječi",
     "practiceFeedbackAlreadyMatched": "Već ispravno usklađeno",
     "practiceFeedbackUpdated": "Hvala! Vježba je ažurirana na osnovu vaših povratnih informacija.",
-    "practiceFeedbackUnchanged": "Hvala! Vaš izvještaj je zabilježen, ali sadržaj je ostao nepromijenjen."
+    "practiceFeedbackUnchanged": "Hvala! Vaš izvještaj je zabilježen, ali sadržaj je ostao nepromijenjen.",
+    "audioOnNewMessageToolName": "Na novu poruku",
+    "audioOnNewMessageDescription": "Automatski čitaj naglas nove primljene poruke na vašem ciljnom jeziku.",
+    "audioOnMessageClickToolName": "Na klik poruke",
+    "audioOnMessageClickDescription": "Pročitajte poruku naglas na vašem ciljnom jeziku kada kliknete na nju."
 }

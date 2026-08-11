@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:05:01.427790",
+    "@@last_modified": "2026-08-11 13:17:36.511187",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9786,8 +9786,6 @@
     "audioWordsDescription": "點擊單字時播放其音訊。",
     "audioChoicesToolName": "選項",
     "audioChoicesDescription": "在練習活動中播放答案選項的音訊。",
-    "audioIncomingMessagesToolName": "接收訊息",
-    "audioIncomingMessagesDescription": "自動朗讀以您的目標語言接收的訊息，以進行聽力練習。",
     "choosePangeaAvatar": "選擇 Pangea 頭像",
     "readAloudNoVoiceTitle": "找不到高品質的{language}語音",
     "readAloudNoVoiceDesktopWeb": "此瀏覽器不提供高品質的{language}語音，因此無法在此處良好地朗讀訊息。Chrome 和 Edge 通常包含高品質的語音。",
@@ -9830,5 +9828,9 @@
     "practiceFeedbackUserSetEmoji": "您選擇了這個表情符號 — 從單字卡中更改它",
     "practiceFeedbackAlreadyMatched": "已正確配對",
     "practiceFeedbackUpdated": "謝謝！練習已根據您的回饋進行更新。",
-    "practiceFeedbackUnchanged": "謝謝！您的回報已記錄，但內容未更改。"
+    "practiceFeedbackUnchanged": "謝謝！您的回報已記錄，但內容未更改。",
+    "audioOnNewMessageToolName": "收到新訊息時",
+    "audioOnNewMessageDescription": "自動以您的目標語言朗讀新收到的訊息。",
+    "audioOnMessageClickToolName": "點擊訊息時",
+    "audioOnMessageClickDescription": "當您點擊訊息時，以您的目標語言朗讀該訊息。"
 }

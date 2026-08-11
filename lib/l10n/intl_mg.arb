@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-10 14:04:51.471257",
+    "@@last_modified": "2026-08-11 13:17:30.583352",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Alefaso ny feon'ny teny iray rehefa tsindrianao izany.",
     "audioChoicesToolName": "Safidy",
     "audioChoicesDescription": "Alefaso ny feon'ireo safidy valiny amin'ny hetsika fampiharana.",
-    "audioIncomingMessagesToolName": "Hafatra miditra",
-    "audioIncomingMessagesDescription": "Vakio ho azy amin'ny feo avo ireo hafatra voaray amin'ny fiteny kendrenao mba hanaovana fampiharana fihainoana.",
     "choosePangeaAvatar": "Fidio ny avatar Pangea",
     "readAloudNoVoiceTitle": "Tsy misy feo {language} avo lenta hita",
     "readAloudNoVoiceDesktopWeb": "Ity navigateur ity dia tsy manolotra feo {language} avo lenta, ka tsy azo vakiana tsara eto ny hafatra. Matetika ny Chrome sy Edge dia ahitana feo avo lenta.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Ity emoji ity no nofidinao — ovay avy amin'ny karatra teny",
     "practiceFeedbackAlreadyMatched": "Efa nifanaraka tsara",
     "practiceFeedbackUpdated": "Misaotra! Nohavaozina ny fanazaran-tena araka ny fanehoan-kevitrao.",
-    "practiceFeedbackUnchanged": "Misaotra! Voarakitra ny tatitrao, saingy tsy niova ny votoatiny."
+    "practiceFeedbackUnchanged": "Misaotra! Voarakitra ny tatitrao, saingy tsy niova ny votoatiny.",
+    "audioOnNewMessageToolName": "Amin'ny hafatra vaovao",
+    "audioOnNewMessageDescription": "Vakio mafy ho azy amin'ny fiteny kendrenao ireo hafatra vaovao voaray.",
+    "audioOnMessageClickToolName": "Rehefa tsindriana ny hafatra",
+    "audioOnMessageClickDescription": "Vakio mafy amin'ny fiteny kendrenao ny hafatra iray rehefa tsindrianao izany."
 }

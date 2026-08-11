@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-10 14:04:50.325156",
+    "@@last_modified": "2026-08-11 13:17:30.393254",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "ເປີດສຽງຂອງຄຳສັບເມື່ອທ່ານແຕະໃສ່ມັນ.",
     "audioChoicesToolName": "ຕົວເລືອກ",
     "audioChoicesDescription": "ເປີດສຽງສຳລັບຕົວເລືອກຄຳຕອບໃນກິດຈະກຳການຝຶກຊ້ອມ.",
-    "audioIncomingMessagesToolName": "ຂໍ້ຄວາມທີ່ເຂົ້າມາ",
-    "audioIncomingMessagesDescription": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບໂດຍອັດຕະໂນມັດອອກສຽງດັງໃນພາສາເປົ້າໝາຍຂອງທ່ານສຳລັບການຝຶກຟັງ.",
     "choosePangeaAvatar": "ເລືອກຮູບແທນຕົວ Pangea",
     "readAloudNoVoiceTitle": "ບໍ່ພົບສຽງ {language} ຄຸນນະພາບສູງ",
     "readAloudNoVoiceDesktopWeb": "ບຣາວເຊີນີ້ບໍ່ມີສຽງ {language} ທີ່ມີຄຸນນະພາບສູງ, ສະນັ້ນຂໍ້ຄວາມຈຶ່ງບໍ່ສາມາດອ່ານອອກສຽງໄດ້ດີຢູ່ບ່ອນນີ້. ປົກກະຕິແລ້ວ Chrome ແລະ Edge ຈະມີສຽງທີ່ມີຄຸນນະພາບສູງ.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "ທ່ານເລືອກອີໂມຈິນີ້ — ປ່ຽນມັນຈາກບັດຄຳສັບ",
     "practiceFeedbackAlreadyMatched": "ຈັບຄູ່ຖືກຕ້ອງແລ້ວ",
     "practiceFeedbackUpdated": "ຂອບໃຈ! ບົດຝຶກຫັດໄດ້ຖືກອັບເດດຕາມຄຳຄິດເຫັນຂອງທ່ານ.",
-    "practiceFeedbackUnchanged": "ຂອບໃຈ! ລາຍງານຂອງທ່ານໄດ້ຖືກບັນທຶກໄວ້, ແຕ່ເນື້ອຫາບໍ່ມີການປ່ຽນແປງ."
+    "practiceFeedbackUnchanged": "ຂອບໃຈ! ລາຍງານຂອງທ່ານໄດ້ຖືກບັນທຶກໄວ້, ແຕ່ເນື້ອຫາບໍ່ມີການປ່ຽນແປງ.",
+    "audioOnNewMessageToolName": "ໃນຂໍ້ຄວາມໃໝ່",
+    "audioOnNewMessageDescription": "ອ່ານຂໍ້ຄວາມທີ່ໄດ້ຮັບໃໝ່ໂດຍອັດຕະໂນມັດອອກສຽງດັງໃນພາສາເປົ້າໝາຍຂອງທ່ານ.",
+    "audioOnMessageClickToolName": "ເມື່ອກົດຂໍ້ຄວາມ",
+    "audioOnMessageClickDescription": "ອ່ານຂໍ້ຄວາມອອກສຽງດັງໃນພາສາເປົ້າໝາຍຂອງທ່ານເມື່ອທ່ານຄລິກໃສ່ມັນ."
 }

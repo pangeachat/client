@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:52.661847",
+    "@@last_modified": "2026-08-11 13:17:31.652799",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9737,8 +9737,6 @@
     "audioWordsDescription": "Spill av lyden for et ord når du trykker på det.",
     "audioChoicesToolName": "Valg",
     "audioChoicesDescription": "Spill av lyd for svaralternativer i øvelser.",
-    "audioIncomingMessagesToolName": "Innkommende meldinger",
-    "audioIncomingMessagesDescription": "Les automatisk mottatte meldinger høyt på målspråket ditt for lytteøvelser.",
     "choosePangeaAvatar": "Velg en Pangea-avatar",
     "readAloudNoVoiceTitle": "Fant ingen {language}-stemme av høy kvalitet",
     "readAloudNoVoiceDesktopWeb": "Denne nettleseren tilbyr ikke en {language}-stemme av høy kvalitet, så meldinger kan ikke leses høyt på en god måte her. Chrome og Edge inkluderer vanligvis stemmer av høy kvalitet.",
@@ -9781,5 +9779,9 @@
     "practiceFeedbackUserSetEmoji": "Du valgte denne emojien – endre den fra ordkortet",
     "practiceFeedbackAlreadyMatched": "Allerede riktig matchet",
     "practiceFeedbackUpdated": "Takk! Øvelsen er oppdatert basert på din tilbakemelding.",
-    "practiceFeedbackUnchanged": "Takk! Rapporten din ble registrert, men innholdet ble ikke endret."
+    "practiceFeedbackUnchanged": "Takk! Rapporten din ble registrert, men innholdet ble ikke endret.",
+    "audioOnNewMessageToolName": "Ved ny melding",
+    "audioOnNewMessageDescription": "Les automatisk nye mottatte meldinger høyt på målspråket ditt.",
+    "audioOnMessageClickToolName": "Ved meldingsklikk",
+    "audioOnMessageClickDescription": "Les en melding høyt på målspråket ditt når du klikker på den."
 }

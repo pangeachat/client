@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-10 14:04:54.414919",
+    "@@last_modified": "2026-08-11 13:17:32.904072",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "ਜਦੋਂ ਤੁਸੀਂ ਕਿਸੇ ਸ਼ਬਦ 'ਤੇ ਟੈਪ ਕਰਦੇ ਹੋ, ਤਾਂ ਉਸਦਾ ਆਡੀਓ ਚਲਾਓ।",
     "audioChoicesToolName": "ਚੋਣਾਂ",
     "audioChoicesDescription": "ਅਭਿਆਸ ਗਤੀਵਿਧੀਆਂ ਵਿੱਚ ਜਵਾਬ ਚੋਣਾਂ ਲਈ ਆਡੀਓ ਚਲਾਓ।",
-    "audioIncomingMessagesToolName": "ਆਉਣ ਵਾਲੇ ਸੁਨੇਹੇ",
-    "audioIncomingMessagesDescription": "ਸੁਣਨ ਦੇ ਅਭਿਆਸ ਲਈ ਆਪਣੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਪ੍ਰਾਪਤ ਸੁਨੇਹਿਆਂ ਨੂੰ ਆਪਣੇ ਆਪ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ।",
     "choosePangeaAvatar": "ਇੱਕ ਪੈਂਜੀਆ ਅਵਤਾਰ ਚੁਣੋ",
     "readAloudNoVoiceTitle": "ਕੋਈ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਨਹੀਂ ਮਿਲੀ",
     "readAloudNoVoiceDesktopWeb": "ਇਹ ਬ੍ਰਾਊਜ਼ਰ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀ {language} ਆਵਾਜ਼ ਦੀ ਪੇਸ਼ਕਸ਼ ਨਹੀਂ ਕਰਦਾ, ਇਸ ਲਈ ਸੁਨੇਹੇ ਇੱਥੇ ਚੰਗੀ ਤਰ੍ਹਾਂ ਪੜ੍ਹੇ ਨਹੀਂ ਜਾ ਸਕਦੇ। Chrome ਅਤੇ Edge ਵਿੱਚ ਆਮ ਤੌਰ 'ਤੇ ਉੱਚ-ਗੁਣਵੱਤਾ ਵਾਲੀਆਂ ਆਵਾਜ਼ਾਂ ਸ਼ਾਮਲ ਹੁੰਦੀਆਂ ਹਨ।",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "ਤੁਸੀਂ ਇਹ ਇਮੋਜੀ ਚੁਣਿਆ ਹੈ — ਇਸਨੂੰ ਸ਼ਬਦ ਕਾਰਡ ਤੋਂ ਬਦਲੋ",
     "practiceFeedbackAlreadyMatched": "ਪਹਿਲਾਂ ਹੀ ਸਹੀ ਮੇਲ ਖਾਂਦਾ ਹੈ",
     "practiceFeedbackUpdated": "ਧੰਨਵਾਦ! ਤੁਹਾਡੇ ਫੀਡਬੈਕ ਦੇ ਆਧਾਰ 'ਤੇ ਅਭਿਆਸ ਨੂੰ ਅੱਪਡੇਟ ਕੀਤਾ ਗਿਆ ਹੈ।",
-    "practiceFeedbackUnchanged": "ਧੰਨਵਾਦ! ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਦਰਜ ਕੀਤੀ ਗਈ ਸੀ, ਪਰ ਸਮੱਗਰੀ ਬਿਨਾਂ ਬਦਲੇ ਵਾਪਸ ਆਈ ਹੈ।"
+    "practiceFeedbackUnchanged": "ਧੰਨਵਾਦ! ਤੁਹਾਡੀ ਰਿਪੋਰਟ ਦਰਜ ਕੀਤੀ ਗਈ ਸੀ, ਪਰ ਸਮੱਗਰੀ ਬਿਨਾਂ ਬਦਲੇ ਵਾਪਸ ਆਈ ਹੈ।",
+    "audioOnNewMessageToolName": "ਨਵੇਂ ਸੁਨੇਹੇ 'ਤੇ",
+    "audioOnNewMessageDescription": "ਤੁਹਾਡੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਨਵੇਂ ਪ੍ਰਾਪਤ ਸੁਨੇਹਿਆਂ ਨੂੰ ਆਪਣੇ ਆਪ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ।",
+    "audioOnMessageClickToolName": "ਸੁਨੇਹੇ 'ਤੇ ਕਲਿੱਕ ਕਰਨ 'ਤੇ",
+    "audioOnMessageClickDescription": "ਜਦੋਂ ਤੁਸੀਂ ਇਸ 'ਤੇ ਕਲਿੱਕ ਕਰਦੇ ਹੋ ਤਾਂ ਤੁਹਾਡੀ ਨਿਸ਼ਾਨਾ ਭਾਸ਼ਾ ਵਿੱਚ ਇੱਕ ਸੁਨੇਹਾ ਉੱਚੀ ਆਵਾਜ਼ ਵਿੱਚ ਪੜ੍ਹੋ।"
 }

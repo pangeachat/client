@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-10 14:04:51.109261",
+    "@@last_modified": "2026-08-11 13:17:30.641850",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "ഒരു വാക്കിൽ ടാപ്പ് ചെയ്യുമ്പോൾ അതിന്റെ ഓഡിയോ പ്ലേ ചെയ്യുക.",
     "audioChoicesToolName": "തിരഞ്ഞെടുക്കലുകൾ",
     "audioChoicesDescription": "പരിശീലന പ്രവർത്തനങ്ങളിലെ ഉത്തര തിരഞ്ഞെടുപ്പുകൾക്കായി ഓഡിയോ പ്ലേ ചെയ്യുക.",
-    "audioIncomingMessagesToolName": "വരുന്ന സന്ദേശങ്ങൾ",
-    "audioIncomingMessagesDescription": "കേൾവി പരിശീലനത്തിനായി നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിൽ ലഭിച്ച സന്ദേശങ്ങൾ സ്വയമേവ വായിക്കുക.",
     "choosePangeaAvatar": "ഒരു പാഞ്ജിയ അവതാർ തിരഞ്ഞെടുക്കുക",
     "readAloudNoVoiceTitle": "ഉയർന്ന നിലവാരമുള്ള {language} വോയിസ് കണ്ടെത്തിയില്ല",
     "readAloudNoVoiceDesktopWeb": "ഈ ബ്രൗസർ ഉയർന്ന നിലവാരമുള്ള {language} വോയിസ് നൽകുന്നില്ല, അതിനാൽ സന്ദേശങ്ങൾ ഇവിടെ നന്നായി വായിക്കാൻ കഴിയില്ല. Chrome-ലും Edge-ലും സാധാരണയായി ഉയർന്ന നിലവാരമുള്ള വോയിസുകൾ ഉൾപ്പെടുന്നു.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "നിങ്ങൾ ഈ ഇമോജി തിരഞ്ഞെടുത്തു — വേഡ് കാർഡിൽ നിന്ന് ഇത് മാറ്റുക",
     "practiceFeedbackAlreadyMatched": "മുൻപേ ശരിയായി യോജിപ്പിച്ചു",
     "practiceFeedbackUpdated": "നന്ദി! നിങ്ങളുടെ ഫീഡ്‌ബാക്കിന്റെ അടിസ്ഥാനത്തിൽ അഭ്യാസം അപ്‌ഡേറ്റ് ചെയ്തിട്ടുണ്ട്.",
-    "practiceFeedbackUnchanged": "നന്ദി! നിങ്ങളുടെ റിപ്പോർട്ട് രേഖപ്പെടുത്തിയിട്ടുണ്ട്, പക്ഷേ ഉള്ളടക്കം മാറ്റമില്ലാതെ തിരിച്ചെത്തി."
+    "practiceFeedbackUnchanged": "നന്ദി! നിങ്ങളുടെ റിപ്പോർട്ട് രേഖപ്പെടുത്തിയിട്ടുണ്ട്, പക്ഷേ ഉള്ളടക്കം മാറ്റമില്ലാതെ തിരിച്ചെത്തി.",
+    "audioOnNewMessageToolName": "പുതിയ സന്ദേശത്തിൽ",
+    "audioOnNewMessageDescription": "പുതിയതായി ലഭിക്കുന്ന സന്ദേശങ്ങൾ നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിൽ സ്വയമേവ വായിക്കുക.",
+    "audioOnMessageClickToolName": "സന്ദേശത്തിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ",
+    "audioOnMessageClickDescription": "ഒരു സന്ദേശത്തിൽ ക്ലിക്ക് ചെയ്യുമ്പോൾ അത് നിങ്ങളുടെ ടാർഗെറ്റ് ഭാഷയിൽ വായിക്കുക."
 }

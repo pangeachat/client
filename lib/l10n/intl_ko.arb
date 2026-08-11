@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:48.175493",
+    "@@last_modified": "2026-08-11 13:17:29.181608",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9873,8 +9873,6 @@
     "audioWordsDescription": "단어를 탭하면 오디오가 재생됩니다.",
     "audioChoicesToolName": "선택지",
     "audioChoicesDescription": "연습 활동에서 답변 선택지에 대한 오디오를 재생합니다.",
-    "audioIncomingMessagesToolName": "수신 메시지",
-    "audioIncomingMessagesDescription": "듣기 연습을 위해 수신된 메시지를 학습 언어로 자동으로 소리 내어 읽습니다.",
     "choosePangeaAvatar": "판게아 아바타 선택",
     "readAloudNoVoiceTitle": "고품질 {language} 음성을 찾을 수 없음",
     "readAloudNoVoiceDesktopWeb": "이 브라우저는 고품질 {language} 음성을 제공하지 않아 메시지를 제대로 읽어줄 수 없습니다. Chrome 및 Edge는 일반적으로 고품질 음성을 포함합니다.",
@@ -9917,5 +9915,9 @@
     "practiceFeedbackUserSetEmoji": "이 이모티콘을 선택하셨습니다. 단어 카드에서 변경하세요.",
     "practiceFeedbackAlreadyMatched": "이미 올바르게 일치함",
     "practiceFeedbackUpdated": "감사합니다! 회원님의 피드백을 바탕으로 연습 문제가 업데이트되었습니다.",
-    "practiceFeedbackUnchanged": "감사합니다! 회원님의 보고서는 기록되었지만, 내용은 변경되지 않았습니다."
+    "practiceFeedbackUnchanged": "감사합니다! 회원님의 보고서는 기록되었지만, 내용은 변경되지 않았습니다.",
+    "audioOnNewMessageToolName": "새 메시지 수신 시",
+    "audioOnNewMessageDescription": "새로 받은 메시지를 학습 언어로 자동으로 소리 내어 읽습니다.",
+    "audioOnMessageClickToolName": "메시지 클릭 시",
+    "audioOnMessageClickDescription": "메시지를 클릭하면 학습 언어로 소리 내어 읽습니다."
 }

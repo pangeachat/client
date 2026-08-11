@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:41.926780",
+    "@@last_modified": "2026-08-11 13:17:24.323291",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9807,8 +9807,6 @@
     "audioWordsDescription": "Reprodueix l'àudio d'una paraula quan la toques.",
     "audioChoicesToolName": "Opcions",
     "audioChoicesDescription": "Reprodueix l'àudio de les opcions de resposta en les activitats de pràctica.",
-    "audioIncomingMessagesToolName": "Missatges entrants",
-    "audioIncomingMessagesDescription": "Llegeix automàticament els missatges rebuts en veu alta en el teu idioma objectiu per practicar l'escolta.",
     "choosePangeaAvatar": "Tria un avatar de Pangea",
     "readAloudNoVoiceTitle": "No s'ha trobat cap veu d'alta qualitat per a {language}",
     "readAloudNoVoiceDesktopWeb": "Aquest navegador no ofereix una veu d'alta qualitat per a {language}, així que els missatges no es poden llegir en veu alta correctament aquí. Chrome i Edge solen incloure veus d'alta qualitat.",
@@ -9851,5 +9849,9 @@
     "practiceFeedbackUserSetEmoji": "Has triat aquest emoji; canvia'l des de la targeta de paraules",
     "practiceFeedbackAlreadyMatched": "Ja s'ha emparellat correctament",
     "practiceFeedbackUpdated": "Gràcies! L'exercici s'ha actualitzat segons els teus comentaris.",
-    "practiceFeedbackUnchanged": "Gràcies! El teu informe s'ha registrat, però el contingut no ha canviat."
+    "practiceFeedbackUnchanged": "Gràcies! El teu informe s'ha registrat, però el contingut no ha canviat.",
+    "audioOnNewMessageToolName": "En un missatge nou",
+    "audioOnNewMessageDescription": "Llegeix automàticament els missatges nous rebuts en veu alta en el teu idioma objectiu.",
+    "audioOnMessageClickToolName": "En fer clic al missatge",
+    "audioOnMessageClickDescription": "Llegeix un missatge en veu alta en el teu idioma objectiu quan hi facis clic."
 }

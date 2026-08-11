@@ -10,12 +10,15 @@ enum TtsUseCase {
   /// reinforcement, match items.
   choices,
 
-  /// Automatic read-aloud of received messages.
-  incomingMessage,
+  /// Automatic read-aloud of newly received messages.
+  newMessage,
+
+  /// Read-aloud of a message the learner clicked.
+  messageClick,
 
   /// The bot's reply to a voice message the learner just sent.
   ///
-  /// Ungated on purpose: `audioIncomingMessages` governs *unprompted* audio —
+  /// Ungated on purpose: `audioOnNewMessage` governs *unprompted* audio —
   /// messages arriving unbidden while the chat is open. A reply to something
   /// the learner just said out loud is not unprompted, and it is bounded by
   /// their own voice messages rather than by how much other people type. The
@@ -30,8 +33,10 @@ enum TtsUseCase {
         return ToolSetting.audioWords;
       case TtsUseCase.choices:
         return ToolSetting.audioChoices;
-      case TtsUseCase.incomingMessage:
-        return ToolSetting.audioIncomingMessages;
+      case TtsUseCase.newMessage:
+        return ToolSetting.audioOnNewMessage;
+      case TtsUseCase.messageClick:
+        return ToolSetting.audioOnMessageClick;
       case TtsUseCase.voiceReply:
         return null;
     }

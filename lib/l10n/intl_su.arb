@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-10 14:04:57.786417",
+    "@@last_modified": "2026-08-11 13:17:34.688473",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Putar audio kecap nalika anjeun ngetok éta.",
     "audioChoicesToolName": "Pilihan",
     "audioChoicesDescription": "Putar audio pikeun pilihan jawaban dina kagiatan latihan.",
-    "audioIncomingMessagesToolName": "Pesen asup",
-    "audioIncomingMessagesDescription": "Otomatis maca pesen anu ditampi kalayan tarik dina basa target anjeun pikeun latihan ngupingkeun.",
     "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Teu kapanggih sora {language} nu kualitasna luhur",
     "readAloudNoVoiceDesktopWeb": "Panyungsi ieu teu nyadiakeun sora {language} nu kualitasna luhur, jadi pesen moal bisa dibacakeun kalawan hadé di dieu. Chrome jeung Edge biasana nyadiakeun sora nu kualitasna luhur.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Anjeun milih emoji ieu — gentos tina kartu kecap",
     "practiceFeedbackAlreadyMatched": "Geus cocog kalawan bener",
     "practiceFeedbackUpdated": "Hatur nuhun! Latihan parantos diropéa dumasar kana eupan balik anjeun.",
-    "practiceFeedbackUnchanged": "Hatur nuhun! Laporan anjeun parantos kacatet, tapi eusina teu robih."
+    "practiceFeedbackUnchanged": "Hatur nuhun! Laporan anjeun parantos kacatet, tapi eusina teu robih.",
+    "audioOnNewMessageToolName": "Dina talatah anyar",
+    "audioOnNewMessageDescription": "Otomatis maca talatah anyar nu ditarima kalawan tarik dina basa target anjeun.",
+    "audioOnMessageClickToolName": "Dina klik talatah",
+    "audioOnMessageClickDescription": "Maca talatah kalawan tarik dina basa target anjeun nalika anjeun ngaklik éta."
 }

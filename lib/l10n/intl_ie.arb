@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-10 14:04:46.880877",
+    "@@last_modified": "2026-08-11 13:17:28.234059",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10312,8 +10312,6 @@
     "audioWordsDescription": "Seinn fuaim focal nuair a thapálann tú air.",
     "audioChoicesToolName": "Roghanna",
     "audioChoicesDescription": "Seinn fuaim do roghanna freagraí i ngníomhaíochtaí cleachtaidh.",
-    "audioIncomingMessagesToolName": "Teachtaireachtaí isteach",
-    "audioIncomingMessagesDescription": "Léigh teachtaireachtaí a fhaightear os ard go huathoibríoch i do sprioc-theanga le haghaidh cleachtadh éisteachta.",
     "choosePangeaAvatar": "Roghnaigh avatar Pangea",
     "readAloudNoVoiceTitle": "Níor aimsíodh guth {language} ardchaighdeáin",
     "readAloudNoVoiceDesktopWeb": "Ní thairgeann an brabhsálaí seo guth {language} ardchaighdeáin, mar sin ní féidir teachtaireachtaí a léamh os ard go maith anseo. De ghnáth bíonn guthanna ardchaighdeáin san áireamh i Chrome agus Edge.",
@@ -10356,5 +10354,9 @@
     "practiceFeedbackUserSetEmoji": "Roghnú an emoji seo — athraigh é ón gcárta focal",
     "practiceFeedbackAlreadyMatched": "Meaitseáilte cheana féin i gceart",
     "practiceFeedbackUpdated": "Go raibh maith agat! Nuashonraíodh an cleachtadh bunaithe ar d'aiseolas.",
-    "practiceFeedbackUnchanged": "Go raibh maith agat! Taifeadadh do thuairisc, ach níor athraíodh an t-ábhar."
+    "practiceFeedbackUnchanged": "Go raibh maith agat! Taifeadadh do thuairisc, ach níor athraíodh an t-ábhar.",
+    "audioOnNewMessageToolName": "Ar theachtaireacht nua",
+    "audioOnNewMessageDescription": "Léigh teachtaireachtaí nua a fhaightear os ard go huathoibríoch i do sprioctheanga.",
+    "audioOnMessageClickToolName": "Ar chliceáil teachtaireachta",
+    "audioOnMessageClickDescription": "Léigh teachtaireacht os ard i do sprioctheanga nuair a chliceálann tú uirthi."
 }

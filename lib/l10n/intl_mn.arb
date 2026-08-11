@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-10 14:04:51.933328",
+    "@@last_modified": "2026-08-11 13:17:30.899674",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Үгэн дээр дарахад дууг нь тоглуулна.",
     "audioChoicesToolName": "Сонголтууд",
     "audioChoicesDescription": "Дасгалын хариултын сонголтуудын дууг тоглуулна.",
-    "audioIncomingMessagesToolName": "Ирж буй мессежүүд",
-    "audioIncomingMessagesDescription": "Сонсох дасгал хийх зорилгоор хүлээн авсан мессежүүдийг таны сурч буй хэлээр автоматаар чангаар уншина.",
     "choosePangeaAvatar": "Пангеагийн аватар сонгох",
     "readAloudNoVoiceTitle": "Өндөр чанартай {language} дуу хоолой олдсонгүй",
     "readAloudNoVoiceDesktopWeb": "Энэ хөтөч өндөр чанартай {language} дуу хоолой санал болгохгүй тул энд мессежийг сайн унших боломжгүй. Chrome болон Edge ихэвчлэн өндөр чанартай дуу хоолойг агуулдаг.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Та энэ эможиг сонгосон байна — үүнийг үгийн картаас өөрчилнө үү",
     "practiceFeedbackAlreadyMatched": "Аль хэдийн зөв таарсан байна",
     "practiceFeedbackUpdated": "Баярлалаа! Таны санал хүсэлтэд үндэслэн дасгалыг шинэчиллээ.",
-    "practiceFeedbackUnchanged": "Баярлалаа! Таны мэдээллийг бүртгэсэн боловч агуулга өөрчлөгдөөгүй байна."
+    "practiceFeedbackUnchanged": "Баярлалаа! Таны мэдээллийг бүртгэсэн боловч агуулга өөрчлөгдөөгүй байна.",
+    "audioOnNewMessageToolName": "Шинэ мессеж ирэхэд",
+    "audioOnNewMessageDescription": "Шинээр ирсэн мессежүүдийг таны сурч буй хэлээр автоматаар чангаар уншина.",
+    "audioOnMessageClickToolName": "Мессеж дээр дарахад",
+    "audioOnMessageClickDescription": "Мессеж дээр дарахад таны сурч буй хэлээр чангаар уншина."
 }

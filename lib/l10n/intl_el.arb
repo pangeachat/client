@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-10 14:04:42.586190",
+    "@@last_modified": "2026-08-11 13:17:25.038783",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10555,8 +10555,6 @@
     "audioWordsDescription": "Αναπαραγωγή ήχου μιας λέξης όταν την πατάτε.",
     "audioChoicesToolName": "Επιλογές",
     "audioChoicesDescription": "Αναπαραγωγή ήχου για τις επιλογές απάντησης σε δραστηριότητες εξάσκησης.",
-    "audioIncomingMessagesToolName": "Εισερχόμενα μηνύματα",
-    "audioIncomingMessagesDescription": "Αυτόματη ανάγνωση των εισερχόμενων μηνυμάτων δυνατά στη γλώσσα-στόχο σας για εξάσκηση στην ακρόαση.",
     "choosePangeaAvatar": "Επιλέξτε ένα avatar Pangea",
     "readAloudNoVoiceTitle": "Δεν βρέθηκε φωνή υψηλής ποιότητας για {language}",
     "readAloudNoVoiceDesktopWeb": "Αυτό το πρόγραμμα περιήγησης δεν προσφέρει φωνή υψηλής ποιότητας για {language}, επομένως τα μηνύματα δεν μπορούν να διαβαστούν καλά εδώ. Το Chrome και το Edge συνήθως περιλαμβάνουν φωνές υψηλής ποιότητας.",
@@ -10599,5 +10597,9 @@
     "practiceFeedbackUserSetEmoji": "Επιλέξατε αυτό το emoji — αλλάξτε το από την κάρτα λέξης",
     "practiceFeedbackAlreadyMatched": "Ήδη αντιστοιχισμένο σωστά",
     "practiceFeedbackUpdated": "Ευχαριστούμε! Η άσκηση έχει ενημερωθεί βάσει των σχολίων σας.",
-    "practiceFeedbackUnchanged": "Ευχαριστούμε! Η αναφορά σας καταγράφηκε, αλλά το περιεχόμενο παρέμεινε αμετάβλητο."
+    "practiceFeedbackUnchanged": "Ευχαριστούμε! Η αναφορά σας καταγράφηκε, αλλά το περιεχόμενο παρέμεινε αμετάβλητο.",
+    "audioOnNewMessageToolName": "Σε νέο μήνυμα",
+    "audioOnNewMessageDescription": "Αυτόματη ανάγνωση των νέων εισερχόμενων μηνυμάτων δυνατά στη γλώσσα-στόχο σας.",
+    "audioOnMessageClickToolName": "Στο κλικ μηνύματος",
+    "audioOnMessageClickDescription": "Ανάγνωση ενός μηνύματος δυνατά στη γλώσσα-στόχο σας όταν κάνετε κλικ σε αυτό."
 }

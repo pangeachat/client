@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:46.048298",
+    "@@last_modified": "2026-08-11 13:17:27.837285",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9753,8 +9753,6 @@
     "audioWordsDescription": "Putar audio kata saat Anda mengetuknya.",
     "audioChoicesToolName": "Pilihan",
     "audioChoicesDescription": "Putar audio untuk pilihan jawaban dalam aktivitas latihan.",
-    "audioIncomingMessagesToolName": "Pesan masuk",
-    "audioIncomingMessagesDescription": "Secara otomatis membacakan pesan yang diterima dalam bahasa target Anda untuk latihan mendengarkan.",
     "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Tidak ditemukan suara {language} berkualitas tinggi",
     "readAloudNoVoiceDesktopWeb": "Browser ini tidak menawarkan suara {language} berkualitas tinggi, sehingga pesan tidak dapat dibacakan dengan baik di sini. Chrome dan Edge biasanya menyertakan suara berkualitas tinggi.",
@@ -9797,5 +9795,9 @@
     "practiceFeedbackUserSetEmoji": "Anda memilih emoji ini — ubah dari kartu kata",
     "practiceFeedbackAlreadyMatched": "Sudah cocok dengan benar",
     "practiceFeedbackUpdated": "Terima kasih! Latihan telah diperbarui berdasarkan umpan balik Anda.",
-    "practiceFeedbackUnchanged": "Terima kasih! Laporan Anda telah dicatat, tetapi kontennya tidak berubah."
+    "practiceFeedbackUnchanged": "Terima kasih! Laporan Anda telah dicatat, tetapi kontennya tidak berubah.",
+    "audioOnNewMessageToolName": "Pada pesan baru",
+    "audioOnNewMessageDescription": "Secara otomatis membacakan pesan baru yang diterima dalam bahasa target Anda.",
+    "audioOnMessageClickToolName": "Pada klik pesan",
+    "audioOnMessageClickDescription": "Membacakan pesan dalam bahasa target Anda saat Anda mengekliknya."
 }

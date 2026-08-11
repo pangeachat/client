@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-10 14:04:58.819965",
+    "@@last_modified": "2026-08-11 13:17:33.938170",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Ku ciyaar maqaalka erayga marka aad taabato.",
     "audioChoicesToolName": "Xulashooyin",
     "audioChoicesDescription": "Ku ciyaar maqal xulashooyinka jawaabaha ee hawlaha tababarka.",
-    "audioIncomingMessagesToolName": "Fariimaha soo galaya",
-    "audioIncomingMessagesDescription": "Si toos ah u akhri fariimaha la helay si cod ah luqadda aad bartayso si aad u tababarto dhageysiga.",
     "choosePangeaAvatar": "Dooro sawirka Pangea",
     "readAloudNoVoiceTitle": "Lama helin cod tayo sare leh oo {language} ah",
     "readAloudNoVoiceDesktopWeb": "Browser-kani ma bixiyo cod tayo sare leh oo {language} ah, sidaa darteed fariimaha si fiican looma akhrin karo halkan. Chrome iyo Edge inta badan waxaa ku jira codad tayo sare leh.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "Waxaad dooratay emoji-gan — ka beddel kaarka ereyga",
     "practiceFeedbackAlreadyMatched": "Horey ayaa si sax ah loo isku daray",
     "practiceFeedbackUpdated": "Waad ku mahadsan tahay! Layliga waa la cusboonaysiiyay iyadoo lagu saleynayo jawaab celintaada.",
-    "practiceFeedbackUnchanged": "Waad ku mahadsan tahay! Warbixintaada waa la diiwaan geliyay, laakiin waxa ku jira waxba iskama beddelin."
+    "practiceFeedbackUnchanged": "Waad ku mahadsan tahay! Warbixintaada waa la diiwaan geliyay, laakiin waxa ku jira waxba iskama beddelin.",
+    "audioOnNewMessageToolName": "Farriin cusub oo la helo",
+    "audioOnNewMessageDescription": "Si toos ah u akhri farriimaha cusub ee la helo adiga oo isticmaalaya luqadda aad bartay.",
+    "audioOnMessageClickToolName": "Marka farriinta la gujiyo",
+    "audioOnMessageClickDescription": "Ku akhri farriin kor adiga oo isticmaalaya luqadda aad bartay marka aad gujiso."
 }

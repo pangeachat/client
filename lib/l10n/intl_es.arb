@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-10 14:04:43.072463",
+    "@@last_modified": "2026-08-11 13:17:25.362244",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7883,8 +7883,6 @@
     "audioWordsDescription": "Reproduce el audio de una palabra al tocarla.",
     "audioChoicesToolName": "Opciones",
     "audioChoicesDescription": "Reproduce el audio de las opciones de respuesta en las actividades de práctica.",
-    "audioIncomingMessagesToolName": "Mensajes entrantes",
-    "audioIncomingMessagesDescription": "Lee automáticamente en voz alta los mensajes recibidos en tu idioma objetivo para practicar la escucha.",
     "choosePangeaAvatar": "Elige un avatar de Pangea",
     "readAloudNoVoiceTitle": "No se encontró una voz de {language} de alta calidad",
     "readAloudNoVoiceDesktopWeb": "Este navegador no ofrece una voz de {language} de alta calidad, por lo que los mensajes no se pueden leer en voz alta correctamente aquí. Chrome y Edge suelen incluir voces de alta calidad.",
@@ -7927,5 +7925,9 @@
     "practiceFeedbackUserSetEmoji": "Elegiste este emoji; cámbialo desde la tarjeta de la palabra",
     "practiceFeedbackAlreadyMatched": "Ya se ha emparejado correctamente",
     "practiceFeedbackUpdated": "¡Gracias! El ejercicio se ha actualizado según tus comentarios.",
-    "practiceFeedbackUnchanged": "¡Gracias! Tu informe fue registrado, pero el contenido no ha cambiado."
+    "practiceFeedbackUnchanged": "¡Gracias! Tu informe fue registrado, pero el contenido no ha cambiado.",
+    "audioOnNewMessageToolName": "Al recibir un mensaje nuevo",
+    "audioOnNewMessageDescription": "Lee automáticamente en voz alta los mensajes nuevos recibidos en tu idioma de destino.",
+    "audioOnMessageClickToolName": "Al hacer clic en un mensaje",
+    "audioOnMessageClickDescription": "Lee un mensaje en voz alta en tu idioma de destino cuando hagas clic en él."
 }

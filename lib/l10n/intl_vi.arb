@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:59.989509",
+    "@@last_modified": "2026-08-11 13:17:35.639991",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -6956,8 +6956,6 @@
     "audioWordsDescription": "Phát âm thanh của một từ khi bạn chạm vào từ đó.",
     "audioChoicesToolName": "Lựa chọn",
     "audioChoicesDescription": "Phát âm thanh cho các lựa chọn trả lời trong các hoạt động luyện tập.",
-    "audioIncomingMessagesToolName": "Tin nhắn đến",
-    "audioIncomingMessagesDescription": "Tự động đọc to các tin nhắn đã nhận bằng ngôn ngữ mục tiêu của bạn để luyện nghe.",
     "choosePangeaAvatar": "Chọn ảnh đại diện Pangea",
     "readAloudNoVoiceTitle": "Không tìm thấy giọng đọc {language} chất lượng cao",
     "readAloudNoVoiceDesktopWeb": "Trình duyệt này không cung cấp giọng đọc {language} chất lượng cao, nên không thể đọc to tin nhắn tốt ở đây. Chrome và Edge thường có giọng đọc chất lượng cao.",
@@ -7000,5 +6998,9 @@
     "practiceFeedbackUserSetEmoji": "Bạn đã chọn biểu tượng cảm xúc này — hãy thay đổi nó từ thẻ từ",
     "practiceFeedbackAlreadyMatched": "Đã khớp chính xác",
     "practiceFeedbackUpdated": "Cảm ơn! Bài tập đã được cập nhật dựa trên phản hồi của bạn.",
-    "practiceFeedbackUnchanged": "Cảm ơn! Báo cáo của bạn đã được ghi lại, nhưng nội dung không thay đổi."
+    "practiceFeedbackUnchanged": "Cảm ơn! Báo cáo của bạn đã được ghi lại, nhưng nội dung không thay đổi.",
+    "audioOnNewMessageToolName": "Khi có tin nhắn mới",
+    "audioOnNewMessageDescription": "Tự động đọc to các tin nhắn mới nhận được bằng ngôn ngữ mục tiêu của bạn.",
+    "audioOnMessageClickToolName": "Khi nhấp vào tin nhắn",
+    "audioOnMessageClickDescription": "Đọc to một tin nhắn bằng ngôn ngữ mục tiêu của bạn khi bạn nhấp vào tin nhắn đó."
 }

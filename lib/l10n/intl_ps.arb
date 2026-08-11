@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-10 14:04:54.561884",
+    "@@last_modified": "2026-08-11 13:17:32.843995",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "کله چې په یوه کلمه ټایپ کړئ، د هغې آډیو غږول کیږي.",
     "audioChoicesToolName": "انتخابونه",
     "audioChoicesDescription": "د تمرین فعالیتونو کې د ځواب انتخابونو لپاره آډیو غږول.",
-    "audioIncomingMessagesToolName": "راتلونکي پیغامونه",
-    "audioIncomingMessagesDescription": "د اوریدلو تمرین لپاره په اتوماتيک ډول ستاسو په هدف ژبه کې ترلاسه شوي پیغامونه په لوړ غږ ولولئ.",
     "choosePangeaAvatar": "د پانګیا اوتار وټاکئ",
     "readAloudNoVoiceTitle": "د {language} لوړ کیفیت غږ ونه موندل شو",
     "readAloudNoVoiceDesktopWeb": "دا براوزر د {language} لوړ کیفیت غږ نه وړاندې کوي، نو پیغامونه دلته په ښه توګه لوستل کیدی نشي. کروم او ایج معمولا لوړ کیفیت غږونه لري.",
@@ -2112,5 +2110,9 @@
     "practiceFeedbackUserSetEmoji": "تاسو دا ایموجي غوره کړې — دا د کلمې کارت څخه بدل کړئ",
     "practiceFeedbackAlreadyMatched": "دمخه په سمه توګه سمون شوی",
     "practiceFeedbackUpdated": "مننه! تمرین ستاسو د فیډبیک پراساس تازه شوی.",
-    "practiceFeedbackUnchanged": "مننه! ستاسو راپور ثبت شو، مګر مینځپانګه بې بدله پاتې شوه."
+    "practiceFeedbackUnchanged": "مننه! ستاسو راپور ثبت شو، مګر مینځپانګه بې بدله پاتې شوه.",
+    "audioOnNewMessageToolName": "په نوې پیغام",
+    "audioOnNewMessageDescription": "په اتوماتيک ډول نوي ترلاسه شوي پیغامونه په لوړ غږ ستاسو په هدف ژبه ولولئ.",
+    "audioOnMessageClickToolName": "په پیغام کلیک",
+    "audioOnMessageClickDescription": "کله چې تاسو په پیغام کلیک وکړئ، په لوړ غږ یې ستاسو په هدف ژبه ولولئ."
 }

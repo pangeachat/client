@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-10 14:04:58.416876",
+    "@@last_modified": "2026-08-11 13:17:34.745594",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9772,8 +9772,6 @@
     "audioWordsDescription": "ஒரு வார்த்தையைத் தட்டும்போது அதன் ஆடியோவை இயக்கவும்.",
     "audioChoicesToolName": "தேர்வுகள்",
     "audioChoicesDescription": "பயிற்சி நடவடிக்கைகளில் பதில்களுக்கான ஆடியோவை இயக்கவும்.",
-    "audioIncomingMessagesToolName": "உள்வரும் செய்திகள்",
-    "audioIncomingMessagesDescription": "கேட்கும் பயிற்சிக்காக உங்கள் இலக்கு மொழியில் பெறப்பட்ட செய்திகளை தானாகவே சத்தமாகப் படிக்கவும்.",
     "choosePangeaAvatar": "பங்கேயா அவதாரத்தைத் தேர்வுசெய்யவும்",
     "readAloudNoVoiceTitle": "உயர்தரமான {language} குரல் கண்டறியப்படவில்லை",
     "readAloudNoVoiceDesktopWeb": "இந்த உலாவியில் உயர்தரமான {language} குரல் இல்லை, எனவே செய்திகளை இங்கே நன்றாகப் படிக்க முடியாது. Chrome மற்றும் Edge பொதுவாக உயர்தரமான குரல்களைக் கொண்டுள்ளன.",
@@ -9816,5 +9814,9 @@
     "practiceFeedbackUserSetEmoji": "நீங்கள் இந்த ஈமோஜியைத் தேர்ந்தெடுத்தீர்கள் — அதை வார்த்தை அட்டையிலிருந்து மாற்றவும்",
     "practiceFeedbackAlreadyMatched": "ஏற்கனவே சரியாகப் பொருத்தப்பட்டுள்ளது",
     "practiceFeedbackUpdated": "நன்றி! உங்கள் கருத்தின் அடிப்படையில் பயிற்சி புதுப்பிக்கப்பட்டுள்ளது.",
-    "practiceFeedbackUnchanged": "நன்றி! உங்கள் அறிக்கை பதிவு செய்யப்பட்டது, ஆனால் உள்ளடக்கம் மாறாமல் உள்ளது."
+    "practiceFeedbackUnchanged": "நன்றி! உங்கள் அறிக்கை பதிவு செய்யப்பட்டது, ஆனால் உள்ளடக்கம் மாறாமல் உள்ளது.",
+    "audioOnNewMessageToolName": "புதிய செய்தி வரும்போது",
+    "audioOnNewMessageDescription": "புதிதாகப் பெறப்பட்ட செய்திகளை உங்கள் இலக்கு மொழியில் தானாகவே சத்தமாகப் படிக்கும்.",
+    "audioOnMessageClickToolName": "செய்தியைக் கிளிக் செய்யும்போது",
+    "audioOnMessageClickDescription": "ஒரு செய்தியைக் கிளிக் செய்யும்போது அதை உங்கள் இலக்கு மொழியில் சத்தமாகப் படிக்கும்."
 }
