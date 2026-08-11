@@ -49,22 +49,25 @@ class ActivityAutoSaveService {
   StreamSubscription? _roleStateSub;
   final Set<String> _saving = {};
 
-  /// DURABLE idempotency (across process restarts) is NOT these in-memory sets —
-  /// it is the SERVER-AUTHORITATIVE `archived_at` in the role state: [start]
-  /// waits for the first `/sync` before sweeping, so a restart sees the archived
-  /// role, `hasArchivedActivity` is true, the gate (`!hasArchivedActivity`) is
-  /// closed, and the session is never re-saved or re-emitted. The two sets below
-  /// only close the INTRA-RUN pre-sync window (before that first sync echoes the
-  /// archive back), and a restart resets them harmlessly.
+  /// DURABLE idempotency (across process restarts) is NOT in-memory state — it
+  /// is the SERVER-AUTHORITATIVE `archived_at` in the role state: [start] waits
+  /// for the first `/sync` before sweeping, so a restart sees the archived role,
+  /// `hasArchivedActivity` is true, the gate (`!hasArchivedActivity`) is closed,
+  /// and the session is never re-saved or re-emitted.
   ///
-  /// Session rooms this run has already SAVED (analytics + archive). Without
-  /// this, a pre-sync sweep would re-archive and stamp a NEWER `archived_at`,
-  /// leaving the already-emitted outcome's timestamp stale. Once saved, the
-  /// first archive is authoritative and the room is never re-saved this run.
-  final Set<String> _saved = {};
+  /// The archived-at this run persisted per session room. An archive is NOT
+  /// final once written: every role lives in one shared `pangea.activity_roles`
+  /// event, so a co-player archiving from a stale read overwrites the whole map
+  /// and drops this user's `archived_at` — the session pops back into the chat
+  /// list and its stars unbank until the next app start (#8258). The role-state
+  /// listener sees that overwrite and the gate re-opens, so the repair is simply
+  /// to archive again — replaying the REMEMBERED instant, so the repaired room
+  /// state still matches the dosage outcome already emitted against it.
+  final Map<String, DateTime> _archivedAt = {};
 
   /// Session rooms whose dosage outcome has already been emitted this run (the
-  /// intra-run outcome guard; see [_saved] for why a restart can't double-emit).
+  /// intra-run outcome guard; a restart can't double-emit because the synced
+  /// `archived_at` closes the gate before the sweep runs).
   final Set<String> _emittedOutcomes = {};
   bool _disposed = false;
 
@@ -111,11 +114,6 @@ class ActivityAutoSaveService {
       return;
     }
 
-    // Already saved this run: the first archive is authoritative. The gate above
-    // stays open until the archive syncs back, so without this a pre-sync sweep
-    // would re-archive with a newer timestamp.
-    if (!shouldSave(room.id, _saved)) return;
-
     // Reading the plan triggers hydration for reference rooms; a null here is
     // retried via the repo listener. A room with no resolvable plan at all
     // can't determine its target language and is skipped.
@@ -128,6 +126,9 @@ class ActivityAutoSaveService {
     if (lang == null) return;
 
     if (!_saving.add(room.id)) return;
+    // A repair pass re-persists an archive a co-player's write dropped; the
+    // session completed once, so it must not be COUNTED again.
+    final isRepair = _archivedAt.containsKey(room.id);
     try {
       // Analytics room first: if this write fails, archived_at stays unset and
       // the save retries on the next role-state event or sweep.
@@ -135,39 +136,35 @@ class ActivityAutoSaveService {
       // archiveActivity returns the canonical archived-at it persisted, so the
       // outcome below uses it directly instead of re-reading room state the
       // archive write may not have synced back yet — a race that would skip the
-      // emit permanently once the gate closes on the archived role.
-      final archivedAt = await room.archiveActivity();
+      // emit permanently once the gate closes on the archived role. Replaying
+      // `_archivedAt` keeps a repair write (see the field doc) on the instant
+      // this run first banked, so a second pass is idempotent in content.
+      final archivedAt = await room.archiveActivity(at: _archivedAt[room.id]);
 
-      // Saved successfully: mark authoritative FIRST — BEFORE any best-effort
-      // telemetry — so a pre-sync sweep can't re-archive with a newer timestamp,
-      // and a throw from the emit below can never leave a completed archive
-      // unmarked. On archive failure this line isn't reached and it retries on
-      // the next role-state event or sweep.
-      _saved.add(room.id);
+      // Remember the canonical instant FIRST — BEFORE any best-effort telemetry
+      // — so a throw from the emit below can never lose it. On archive failure
+      // this line isn't reached and it retries on the next role-state event or
+      // sweep.
+      if (archivedAt != null) _archivedAt[room.id] = archivedAt;
 
       // Best-effort dosage session outcome at the archive moment (stars bank
       // here). Fire-and-forget + fully guarded; never blocks or fails the save.
       _emitDosageSessionOutcome(room, archivedAt);
 
-      GoogleAnalytics.completeActivity(
-        plan.activityId,
-        room.id,
-        versionPinHonored: !plan.usedFallbackVersion,
-        fallbackCause: plan.fallbackCause,
-      );
+      if (!isRepair) {
+        GoogleAnalytics.completeActivity(
+          plan.activityId,
+          room.id,
+          versionPinHonored: !plan.usedFallbackVersion,
+          fallbackCause: plan.fallbackCause,
+        );
+      }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {'roomId': room.id});
     } finally {
       _saving.remove(room.id);
     }
   }
-
-  /// Whether a session room still needs saving: false once it has been saved
-  /// this run (the first archive is authoritative). The gate that keeps a
-  /// pre-sync sweep from re-archiving with a newer timestamp.
-  @visibleForTesting
-  static bool shouldSave(String roomId, Set<String> saved) =>
-      !saved.contains(roomId);
 
   /// Fire-and-forget the best-effort dosage session-outcome signal at the
   /// archive moment. Every field is a client-side HINT the server re-verifies
