@@ -181,7 +181,15 @@ class CourseChatsController extends State<CourseChats> with CoursePlanProvider {
 
   bool showDefaultChatCreation(CourseDefaultChatsEnum type) {
     if (space == null || !space!.isRoomAdmin) return false;
-    return !space!.dismissedDefaultChat(type) && !space!.hasDefaultChat(type);
+    if (space!.dismissedDefaultChat(type) || space!.hasDefaultChat(type)) {
+      return false;
+    }
+    // The chat can exist without being joined yet, in which case it's not in
+    // client.rooms (which hasDefaultChat checks) but in the discovered
+    // hierarchy children.
+    return !(_discoveredChildren ?? []).any(
+      (chunk) => (chunk.canonicalAlias?.localpart ?? '').startsWith(type.alias),
+    );
   }
 
   void _setRoomSubscription() {
