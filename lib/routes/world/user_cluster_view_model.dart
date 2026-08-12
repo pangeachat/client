@@ -74,6 +74,7 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   final ValueNotifier<String?> _displayName = ValueNotifier(null);
 
   late final Stream<LevelUpdate> _levelUpdates;
+  late final StreamSubscription<String> _ownProfileUpdates;
 
   WorldUserClusterViewModel({
     required this.analyticsService,
@@ -87,6 +88,11 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
               .showSubscriptionGatedContent,
         );
     ActivityPlanRepo.instance.addListener(_onPlanHydrate);
+    // The cluster outlives the profile page that changes the avatar, so its
+    // only signal is the member event sync raises for the change (#8330).
+    _ownProfileUpdates = client.onUserProfileUpdate.stream
+        .where((userId) => userId == client.userID)
+        .listen((_) => _loadProfile());
   }
 
   final StreamController<void> _planHydrationStream =
@@ -99,6 +105,7 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
   @override
   void dispose() {
     ActivityPlanRepo.instance.removeListener(_onPlanHydrate);
+    _ownProfileUpdates.cancel();
     _planHydrationStream.close();
     _avatarUrl.dispose();
     _displayName.dispose();
@@ -261,13 +268,21 @@ class WorldUserClusterViewModel implements UserClusterViewModel {
     ),
   );
 
+  bool _loadingProfile = false;
+
   Future<void> _loadProfile() async {
+    // One avatar edit rewrites the member event in every joined room, so the
+    // update stream arrives as a burst — one fetch covers the whole burst.
+    if (_loadingProfile) return;
+    _loadingProfile = true;
     try {
       final profile = await client.fetchOwnProfile();
       _avatarUrl.value = profile.avatarUrl;
       _displayName.value = profile.displayName;
     } catch (_) {
       // Avatar falls back to the initial; not worth surfacing.
+    } finally {
+      _loadingProfile = false;
     }
   }
 }
