@@ -41,25 +41,16 @@ extension InvitationFiltersRoomExtension on Room {
   /// The course whose roster the "in this course" filter offers, or null when
   /// there is none to offer.
   ///
-  /// For an activity session this is the course the session was LAUNCHED from
-  /// (`source_course_id`) — NOT merely a space parent. Launching also shares the
-  /// session into every other eligible joined course as an `m.space.child` (see
-  /// `activities.instructions.md`), so a session started from the world map
-  /// collects course parents it was never "in". Offering those rosters reads as
-  /// "invite this course" to someone who is not in a course at all, and the
-  /// launcher has no reason to expect them (#8097). A world-launched session
-  /// pins no source course, so it gets no course filter.
+  /// For an activity session this is [Room.sourceCourse] — the course the session
+  /// was LAUNCHED from, not merely a space parent — so a world-launched session
+  /// gets no course filter (#8097).
   ///
   /// Every other room keeps the plain first-space-parent rule: a chat inside a
   /// course space really is "in this course".
   Room? get invitationCourseSpace {
+    if (isActivitySession) return sourceCourse;
     final parents = pangeaSpaceParents;
-    if (parents.isEmpty) return null;
-    if (!isActivitySession) return parents.first;
-
-    final sourceCourseId = pinnedSourceCourseId;
-    if (sourceCourseId == null) return null;
-    return parents.firstWhereOrNull((p) => p.id == sourceCourseId);
+    return parents.isEmpty ? null : parents.first;
   }
 
   /// Whether the invite page offers a roster ("participants") filter.
