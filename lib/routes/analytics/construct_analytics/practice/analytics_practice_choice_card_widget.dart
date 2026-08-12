@@ -20,6 +20,7 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
   final bool enabled;
   final bool shrinkWrap;
   final bool showHint;
+  final bool isSelected;
 
   const AnalyticsPracticeExerciseChoiceCard({
     super.key,
@@ -31,6 +32,7 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
     required this.choiceText,
     required this.choiceEmoji,
     required this.showHint,
+    required this.isSelected,
     this.enabled = true,
     this.shrinkWrap = false,
   });
@@ -57,6 +59,7 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
+          isSelected: isSelected,
         );
 
       case PracticeExerciseTypeEnum.lemmaAudio:
@@ -71,6 +74,7 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           onPressed: onPressed,
           isCorrect: isCorrect,
           isEnabled: enabled,
+          isSelected: isSelected,
           showHint: showHint,
         );
 
@@ -88,6 +92,7 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           isCorrect: isCorrect,
           height: cardHeight,
           enabled: enabled,
+          isSelected: isSelected,
         );
 
       case PracticeExerciseTypeEnum.grammarError:
@@ -103,6 +108,7 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
+          isSelected: isSelected,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(choiceText),
@@ -120,6 +126,7 @@ class AnalyticsPracticeExerciseChoiceCard extends StatelessWidget {
           isCorrect: isCorrect,
           height: cardHeight,
           isEnabled: enabled,
+          isSelected: isSelected,
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 8.0),
             child: Text(choiceText),
