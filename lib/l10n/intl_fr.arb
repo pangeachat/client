@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-11 15:43:16.148993",
+    "@@last_modified": "2026-08-12 11:17:08.850534",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10085,5 +10085,6 @@
     "audioSettingDisabledTitle": "Audio {toolName} désactivé",
     "audioSettingDisabledBody": "Vous pouvez activer l'audio {toolName} dans vos paramètres d'apprentissage",
     "audioSettingDisabledEnable": "Activer",
-    "rejoinedTheActivity": "🔄 {username} a rejoint cette activité"
+    "rejoinedTheActivity": "🔄 {username} a rejoint cette activité",
+    "shareAnalytics": "Partager les analyses"
 }

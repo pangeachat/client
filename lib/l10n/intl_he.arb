@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 15:43:16.830612",
+    "@@last_modified": "2026-08-12 11:17:09.550081",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10644,5 +10644,6 @@
     "audioSettingDisabledTitle": "שמע של {toolName} מושבת",
     "audioSettingDisabledBody": "ניתן להפעיל את השמע של {toolName} בהגדרות הלמידה שלך",
     "audioSettingDisabledEnable": "הפעל",
-    "rejoinedTheActivity": "🔄 {username} הצטרף/ה מחדש לפעילות זו"
+    "rejoinedTheActivity": "🔄 {username} הצטרף/ה מחדש לפעילות זו",
+    "shareAnalytics": "שיתוף נתונים סטטיסטיים"
 }

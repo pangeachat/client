@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 15:43:15.525522",
+    "@@last_modified": "2026-08-12 11:17:07.822440",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9857,5 +9857,6 @@
     "audioSettingDisabledTitle": "Àudio de {toolName} desactivat",
     "audioSettingDisabledBody": "Pots activar l'àudio de {toolName} a la configuració d'aprenentatge",
     "audioSettingDisabledEnable": "Activa",
-    "rejoinedTheActivity": "🔄 {username} s'ha tornat a unir a aquesta activitat"
+    "rejoinedTheActivity": "🔄 {username} s'ha tornat a unir a aquesta activitat",
+    "shareAnalytics": "Compartir analítiques"
 }

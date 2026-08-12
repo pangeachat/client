@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-11 15:43:21.841043",
+    "@@last_modified": "2026-08-12 11:17:14.511418",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "Codka {toolName} waa dansan yahay",
     "audioSettingDisabledBody": "Waxaad shidi kartaa codka {toolName} goobaha waxbarashadaada",
     "audioSettingDisabledEnable": "Daar",
-    "rejoinedTheActivity": "🔄 {username} wuxuu dib ugu soo biiray hawshan"
+    "rejoinedTheActivity": "🔄 {username} wuxuu dib ugu soo biiray hawshan",
+    "shareAnalytics": "La wadaag Falanqaynta"
 }

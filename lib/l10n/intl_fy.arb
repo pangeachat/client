@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-11 15:43:16.538585",
+    "@@last_modified": "2026-08-12 11:17:08.771410",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "{toolName} audio útskeakele",
     "audioSettingDisabledBody": "Jo kinne {toolName} audio ynskeakelje yn jo learynstellings",
     "audioSettingDisabledEnable": "Ynskeakelje",
-    "rejoinedTheActivity": "🔄 {username} docht wer mei oan dizze aktiviteit"
+    "rejoinedTheActivity": "🔄 {username} docht wer mei oan dizze aktiviteit",
+    "shareAnalytics": "Diel Analytics"
 }

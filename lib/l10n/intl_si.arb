@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-11 15:43:21.138011",
+    "@@last_modified": "2026-08-12 11:17:13.542367",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "{toolName} ශ්‍රව්‍ය අක්‍රිය කර ඇත",
     "audioSettingDisabledBody": "ඔබගේ ඉගෙනුම් සැකසීම් තුළ {toolName} ශ්‍රව්‍ය සක්‍රිය කළ හැක",
     "audioSettingDisabledEnable": "සක්‍රිය කරන්න",
-    "rejoinedTheActivity": "🔄 {username} මෙම ක්‍රියාකාරකත්වයට නැවත සම්බන්ධ විය"
+    "rejoinedTheActivity": "🔄 {username} මෙම ක්‍රියාකාරකත්වයට නැවත සම්බන්ධ විය",
+    "shareAnalytics": "විශ්ලේෂණ බෙදාගන්න"
 }

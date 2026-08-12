@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-11 15:43:15.481057",
+    "@@last_modified": "2026-08-12 11:17:07.774251",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10650,5 +10650,6 @@
     "audioSettingDisabledTitle": "{toolName}-lyd deaktiveret",
     "audioSettingDisabledBody": "Du kan aktivere {toolName}-lyd i dine læringsindstillinger",
     "audioSettingDisabledEnable": "Aktiver",
-    "rejoinedTheActivity": "🔄 {username} er vendt tilbage til denne aktivitet"
+    "rejoinedTheActivity": "🔄 {username} er vendt tilbage til denne aktivitet",
+    "shareAnalytics": "Del analyser"
 }

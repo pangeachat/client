@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-11 15:43:16.241695",
+    "@@last_modified": "2026-08-12 11:17:08.701427",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10590,5 +10590,6 @@
     "audioSettingDisabledTitle": "Naka-disable ang audio ng {toolName}",
     "audioSettingDisabledBody": "Puwede mong i-enable ang audio ng {toolName} sa iyong mga setting ng pag-aaral",
     "audioSettingDisabledEnable": "I-enable",
-    "rejoinedTheActivity": "🔄 Muling sumali si {username} sa aktibidad na ito"
+    "rejoinedTheActivity": "🔄 Muling sumali si {username} sa aktibidad na ito",
+    "shareAnalytics": "Ibahagi ang Analytics"
 }

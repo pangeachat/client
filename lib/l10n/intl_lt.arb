@@ -2972,7 +2972,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-11 15:43:19.166722",
+    "@@last_modified": "2026-08-12 11:17:12.322954",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10511,5 +10511,6 @@
     "audioSettingDisabledTitle": "{toolName} garsas išjungtas",
     "audioSettingDisabledBody": "Galite įjungti {toolName} garsą savo mokymosi nustatymuose",
     "audioSettingDisabledEnable": "Įjungti",
-    "rejoinedTheActivity": "🔄 {username} vėl prisijungė prie šios veiklos"
+    "rejoinedTheActivity": "🔄 {username} vėl prisijungė prie šios veiklos",
+    "shareAnalytics": "Bendrinti analizę"
 }

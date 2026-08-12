@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-11 15:43:16.098135",
+    "@@last_modified": "2026-08-12 11:17:08.404237",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9727,5 +9727,6 @@
     "audioSettingDisabledTitle": "{toolName} heli on keelatud",
     "audioSettingDisabledBody": "Saate lubada {toolName} heli oma õppeseadetes",
     "audioSettingDisabledEnable": "Luba",
-    "rejoinedTheActivity": "🔄 {username} liitus tegevusega uuesti"
+    "rejoinedTheActivity": "🔄 {username} liitus tegevusega uuesti",
+    "shareAnalytics": "Jaga analüütikat"
 }

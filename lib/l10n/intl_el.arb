@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-11 15:43:15.670499",
+    "@@last_modified": "2026-08-12 11:17:08.151642",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10605,5 +10605,6 @@
     "audioSettingDisabledTitle": "Ο ήχος {toolName} είναι απενεργοποιημένος",
     "audioSettingDisabledBody": "Μπορείτε να ενεργοποιήσετε τον ήχο {toolName} στις ρυθμίσεις εκμάθησής σας",
     "audioSettingDisabledEnable": "Ενεργοποίηση",
-    "rejoinedTheActivity": "🔄 Ο/Η {username} επανήλθε σε αυτήν τη δραστηριότητα"
+    "rejoinedTheActivity": "🔄 Ο/Η {username} επανήλθε σε αυτήν τη δραστηριότητα",
+    "shareAnalytics": "Κοινή χρήση αναλυτικών στοιχείων"
 }

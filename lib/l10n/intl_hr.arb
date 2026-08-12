@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-11 15:43:17.210115",
+    "@@last_modified": "2026-08-12 11:17:09.621509",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10166,5 +10166,6 @@
     "audioSettingDisabledTitle": "Zvuk {toolName} je onemogućen",
     "audioSettingDisabledBody": "Zvuk {toolName} možete omogućiti u postavkama učenja",
     "audioSettingDisabledEnable": "Omogući",
-    "rejoinedTheActivity": "🔄 {username} se ponovno pridružio ovoj aktivnosti"
+    "rejoinedTheActivity": "🔄 {username} se ponovno pridružio ovoj aktivnosti",
+    "shareAnalytics": "Dijeli analitiku"
 }
