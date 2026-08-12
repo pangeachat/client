@@ -71,6 +71,10 @@ class ChatDetailsController extends State<ChatDetails>
   late CourseInfoSummariesModel roomSummariesModel;
   late final QuestObjectivesLoader _objectivesProvider;
 
+  /// A ping can land WHILE the course page is open — nothing remounts then,
+  /// so re-run the ping capture when this course's timeline gains one.
+  StreamSubscription? _coursePingSub;
+
   @override
   void initState() {
     super.initState();
@@ -99,6 +103,19 @@ class ChatDetailsController extends State<ChatDetails>
         if (!mounted) return;
         Matrix.of(context).showEnableNotificationsDialog(context);
       });
+
+      _coursePingSub = room.client.onSync.stream
+          .where((sync) {
+            final events = sync.rooms?.join?[widget.roomId]?.timeline?.events;
+            return events?.any(
+                  (e) =>
+                      e.content[CoursePingConstants.coursePingActivityId]
+                          is String &&
+                      e.content[CoursePingConstants.coursePingRoomId] is String,
+                ) ??
+                false;
+          })
+          .listen((_) => _handleCoursePing());
     }
   }
 
@@ -123,6 +140,7 @@ class ChatDetailsController extends State<ChatDetails>
 
   @override
   void dispose() {
+    _coursePingSub?.cancel();
     _objectivesProvider.dispose();
     super.dispose();
   }

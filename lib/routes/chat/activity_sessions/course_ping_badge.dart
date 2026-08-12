@@ -25,10 +25,33 @@ class CoursePingBadgeCache {
     null,
   );
 
-  static void set(CoursePingBadgeData data) => instance.value = data;
+  /// The learner opened the pinged activity, so the ping has served its
+  /// purpose and the next return to the course may clear it.
+  static bool _followed = false;
 
+  static void set(CoursePingBadgeData data) {
+    // Re-capturing the SAME unread ping (a second course-page mount racing
+    // the read marker's round trip) must not reset the followed flag.
+    if (instance.value != data) _followed = false;
+    instance.value = data;
+  }
+
+  /// Record that the activity a ping pointed at was opened. Hooked where the
+  /// activity start page mounts, so it covers the course-plan card, a map
+  /// pin, and a deep link alike.
+  static void markFollowed(String activityId) {
+    if (instance.value?.activityId == activityId) _followed = true;
+  }
+
+  /// Called by a course-page mount that found no unread ping. Only a FOLLOWED
+  /// ping is cleared: the read marker is set the moment the course page first
+  /// opens, so a premature remount (compact peek expanding, a route rebuild)
+  /// finds the ping already read and would otherwise wipe the badges before
+  /// the learner ever saw them.
   static void clearForCourse(String courseId) {
-    if (instance.value?.courseId == courseId) instance.value = null;
+    if (_followed && instance.value?.courseId == courseId) {
+      instance.value = null;
+    }
   }
 }
 

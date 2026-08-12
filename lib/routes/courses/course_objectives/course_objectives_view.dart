@@ -82,9 +82,12 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   /// floating ping-bar can tell whether it's on screen and scroll to it.
   final GlobalKey _pingedSectionKey = GlobalKey();
 
-  /// Latches once the pinged section has been in view — the ping-bar hides
-  /// and never comes back this visit (#8319).
-  bool _pingedSectionSeen = false;
+  /// The pinged activity whose section has been in view — its ping-bar hides
+  /// and never comes back this visit. Per-activity, so a NEW ping landing
+  /// while the plan is open gets its own bar (#8319).
+  String? _seenPingedActivityId;
+
+  bool get _pingedSectionSeen => _seenPingedActivityId == _pingedActivityId;
 
   @override
   void initState() {
@@ -155,7 +158,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
     // Seen once a meaningful slice of the section (or all of it, when the
     // learner scrolled past) is inside the viewport.
     if (top < listBox.size.height - 100.0) {
-      setState(() => _pingedSectionSeen = true);
+      setState(() => _seenPingedActivityId = _pingedActivityId);
     }
   }
 
