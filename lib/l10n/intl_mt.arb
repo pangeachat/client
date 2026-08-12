@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-11 13:17:31.613246",
+    "@@last_modified": "2026-08-12 11:17:13.302197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Fuq messaġġ ġdid",
     "audioOnNewMessageDescription": "Aqra awtomatikament messaġġi ġodda riċevuti b'leħen għoli fil-lingwa fil-mira tiegħek.",
     "audioOnMessageClickToolName": "Fuq klikk tal-messaġġ",
-    "audioOnMessageClickDescription": "Aqra messaġġ b'leħen għoli fil-lingwa fil-mira tiegħek meta tikklikkja fuqu."
+    "audioOnMessageClickDescription": "Aqra messaġġ b'leħen għoli fil-lingwa fil-mira tiegħek meta tikklikkja fuqu.",
+    "audioSettingDisabledTitle": "L-awdjo ta' {toolName} diżattivat",
+    "audioSettingDisabledBody": "Tista' tattiva l-awdjo ta' {toolName} fis-settings tat-tagħlim tiegħek",
+    "audioSettingDisabledEnable": "Attiva",
+    "rejoinedTheActivity": "🔄 {username} reġa' ngħaqad ma' din l-attività",
+    "shareAnalytics": "Aqsam l-Analiżi"
 }

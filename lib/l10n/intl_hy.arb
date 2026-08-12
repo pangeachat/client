@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-11 13:17:28.278910",
+    "@@last_modified": "2026-08-12 11:17:09.723813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Նոր հաղորդագրության դեպքում",
     "audioOnNewMessageDescription": "Ավտոմատ կերպով բարձրաձայն կարդալ նոր ստացված հաղորդագրությունները ձեր թիրախային լեզվով։",
     "audioOnMessageClickToolName": "Հաղորդագրության վրա սեղմելիս",
-    "audioOnMessageClickDescription": "Բարձրաձայն կարդալ հաղորդագրությունը ձեր թիրախային լեզվով, երբ սեղմում եք դրա վրա։"
+    "audioOnMessageClickDescription": "Բարձրաձայն կարդալ հաղորդագրությունը ձեր թիրախային լեզվով, երբ սեղմում եք դրա վրա։",
+    "audioSettingDisabledTitle": "{toolName} աուդիոն անջատված է",
+    "audioSettingDisabledBody": "Դուք կարող եք միացնել {toolName} աուդիոն ձեր ուսուցման կարգավորումներում",
+    "audioSettingDisabledEnable": "Միացնել",
+    "rejoinedTheActivity": "🔄 {username}-ը միացավ այս ակտիվությանը",
+    "shareAnalytics": "Կիսվել վերլուծություններով"
 }

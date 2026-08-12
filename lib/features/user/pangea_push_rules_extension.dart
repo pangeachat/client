@@ -2,8 +2,31 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 
 extension PangeaPushRulesExtension on Client {
+  /// Whether this sync update contains an analytics room newly appearing as
+  /// joined or invited. Rooms that appear mid-session need their dontNotify
+  /// rule set then — [setPangeaPushRules] alone only covers rooms present at
+  /// app start.
+  bool isNewAnalyticsRoomSyncUpdate(SyncUpdate update) {
+    bool isAnalyticsCreate(StrippedStateEvent event) =>
+        event.type == EventTypes.RoomCreate &&
+        event.content['type'] == PangeaRoomTypes.analytics;
+
+    final joined =
+        update.rooms?.join?.values.any(
+          (room) => room.state?.any(isAnalyticsCreate) ?? false,
+        ) ??
+        false;
+    final invited =
+        update.rooms?.invite?.values.any(
+          (room) => room.inviteState?.any(isAnalyticsCreate) ?? false,
+        ) ??
+        false;
+    return joined || invited;
+  }
+
   Future<void> setPangeaPushRules() async {
     if (!isLogged()) return;
     if (prevBatch == null) await onSync.stream.first;

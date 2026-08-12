@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-11 13:17:33.848865",
+    "@@last_modified": "2026-08-12 11:17:14.206737",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Në mesazh të ri",
     "audioOnNewMessageDescription": "Lexoni automatikisht me zë të lartë mesazhet e reja të marra në gjuhën tuaj të synuar.",
     "audioOnMessageClickToolName": "Në klikimin e mesazhit",
-    "audioOnMessageClickDescription": "Lexoni një mesazh me zë të lartë në gjuhën tuaj të synuar kur klikoni mbi të."
+    "audioOnMessageClickDescription": "Lexoni një mesazh me zë të lartë në gjuhën tuaj të synuar kur klikoni mbi të.",
+    "audioSettingDisabledTitle": "Audioja {toolName} është çaktivizuar",
+    "audioSettingDisabledBody": "Mund ta aktivizosh audion {toolName} te cilësimet e të mësuarit",
+    "audioSettingDisabledEnable": "Aktivizo",
+    "rejoinedTheActivity": "🔄 {username} iu bashkua sërish këtij aktiviteti",
+    "shareAnalytics": "Ndani Analizat"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:32.521624",
+    "@@last_modified": "2026-08-12 11:17:12.823076",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10670,5 +10670,10 @@
     "audioOnNewMessageToolName": "Em nova mensagem",
     "audioOnNewMessageDescription": "Leia automaticamente as novas mensagens recebidas em voz alta no seu idioma de destino.",
     "audioOnMessageClickToolName": "Ao clicar na mensagem",
-    "audioOnMessageClickDescription": "Leia uma mensagem em voz alta no seu idioma de destino ao clicar nela."
+    "audioOnMessageClickDescription": "Leia uma mensagem em voz alta no seu idioma de destino ao clicar nela.",
+    "audioSettingDisabledTitle": "Áudio do {toolName} desativado",
+    "audioSettingDisabledBody": "Você pode ativar o áudio do {toolName} nas suas configurações de aprendizado",
+    "audioSettingDisabledEnable": "Ativar",
+    "rejoinedTheActivity": "🔄 {username} voltou para esta atividade",
+    "shareAnalytics": "Compartilhar Análises"
 }

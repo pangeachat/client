@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-11 13:17:31.406240",
+    "@@last_modified": "2026-08-12 11:17:11.746354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Pada mesej baharu",
     "audioOnNewMessageDescription": "Baca mesej baharu yang diterima secara automatik dalam bahasa sasaran anda.",
     "audioOnMessageClickToolName": "Pada klik mesej",
-    "audioOnMessageClickDescription": "Baca mesej dengan kuat dalam bahasa sasaran anda apabila anda mengkliknya."
+    "audioOnMessageClickDescription": "Baca mesej dengan kuat dalam bahasa sasaran anda apabila anda mengkliknya.",
+    "audioSettingDisabledTitle": "Audio {toolName} dilumpuhkan",
+    "audioSettingDisabledBody": "Anda boleh mendayakan audio {toolName} dalam tetapan pembelajaran anda",
+    "audioSettingDisabledEnable": "Dayakan",
+    "rejoinedTheActivity": "🔄 {username} menyertai semula aktiviti ini",
+    "shareAnalytics": "Kongsi Analitis"
 }

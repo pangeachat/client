@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-11 13:17:27.903637",
+    "@@last_modified": "2026-08-12 11:17:09.585607",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9829,5 +9829,10 @@
     "audioOnNewMessageToolName": "Új üzenet érkezésekor",
     "audioOnNewMessageDescription": "Automatikusan felolvassa a beérkező üzeneteket a célnyelven.",
     "audioOnMessageClickToolName": "Üzenetre kattintva",
-    "audioOnMessageClickDescription": "Felolvassa az üzenetet a célnyelven, ha rákattint."
+    "audioOnMessageClickDescription": "Felolvassa az üzenetet a célnyelven, ha rákattint.",
+    "audioSettingDisabledTitle": "{toolName} hang letiltva",
+    "audioSettingDisabledBody": "A {toolName} hangot a tanulási beállításokban engedélyezheti",
+    "audioSettingDisabledEnable": "Engedélyezés",
+    "rejoinedTheActivity": "🔄 {username} újra csatlakozott ehhez a tevékenységhez",
+    "shareAnalytics": "Analitika megosztása"
 }

@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-11 13:17:26.129425",
+    "@@last_modified": "2026-08-12 11:17:08.701427",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10586,5 +10586,10 @@
     "audioOnNewMessageToolName": "Sa bagong mensahe",
     "audioOnNewMessageDescription": "Awtomatikong basahin nang malakas ang mga bagong natanggap na mensahe sa iyong target na wika.",
     "audioOnMessageClickToolName": "Sa pag-click ng mensahe",
-    "audioOnMessageClickDescription": "Basahin nang malakas ang isang mensahe sa iyong target na wika kapag nag-click ka rito."
+    "audioOnMessageClickDescription": "Basahin nang malakas ang isang mensahe sa iyong target na wika kapag nag-click ka rito.",
+    "audioSettingDisabledTitle": "Naka-disable ang audio ng {toolName}",
+    "audioSettingDisabledBody": "Puwede mong i-enable ang audio ng {toolName} sa iyong mga setting ng pag-aaral",
+    "audioSettingDisabledEnable": "I-enable",
+    "rejoinedTheActivity": "🔄 Muling sumali si {username} sa aktibidad na ito",
+    "shareAnalytics": "Ibahagi ang Analytics"
 }

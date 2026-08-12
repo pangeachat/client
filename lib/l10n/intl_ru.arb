@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-11 13:17:32.769485",
+    "@@last_modified": "2026-08-12 11:17:13.131035",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10698,5 +10698,10 @@
     "audioOnNewMessageToolName": "При новом сообщении",
     "audioOnNewMessageDescription": "Автоматически читать вслух новые полученные сообщения на вашем целевом языке.",
     "audioOnMessageClickToolName": "При нажатии на сообщение",
-    "audioOnMessageClickDescription": "Читать сообщение вслух на вашем целевом языке при нажатии на него."
+    "audioOnMessageClickDescription": "Читать сообщение вслух на вашем целевом языке при нажатии на него.",
+    "audioSettingDisabledTitle": "Аудио {toolName} отключено",
+    "audioSettingDisabledBody": "Вы можете включить аудио {toolName} в настройках обучения",
+    "audioSettingDisabledEnable": "Включить",
+    "rejoinedTheActivity": "🔄 {username} снова присоединился к занятию",
+    "shareAnalytics": "Поделиться аналитикой"
 }

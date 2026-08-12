@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-11 13:17:33.653282",
+    "@@last_modified": "2026-08-12 11:17:13.548989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "نئين پيغام تي",
     "audioOnNewMessageDescription": "نئين موصول ٿيل پيغامن کي خودڪار طريقي سان توهان جي ٽارگيٽ ٻولي ۾ بلند آواز سان پڙهو.",
     "audioOnMessageClickToolName": "پيغام تي ڪلڪ ڪرڻ تي",
-    "audioOnMessageClickDescription": "جڏهن توهان ڪنهن پيغام تي ڪلڪ ڪندا آهيو ته ان کي توهان جي ٽارگيٽ ٻولي ۾ بلند آواز سان پڙهو."
+    "audioOnMessageClickDescription": "جڏهن توهان ڪنهن پيغام تي ڪلڪ ڪندا آهيو ته ان کي توهان جي ٽارگيٽ ٻولي ۾ بلند آواز سان پڙهو.",
+    "audioSettingDisabledTitle": "{toolName} آڊيو غير فعال",
+    "audioSettingDisabledBody": "توهان پنهنجي سکيا جي سيٽنگن ۾ {toolName} آڊيو فعال ڪري سگهو ٿا",
+    "audioSettingDisabledEnable": "فعال ڪريو",
+    "rejoinedTheActivity": "🔄 {username} هن سرگرمي ۾ ٻيهر شامل ٿيو",
+    "shareAnalytics": "تجزيي جي ڄاڻ شيئر ڪريو"
 }

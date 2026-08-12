@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-11 13:17:23.244652",
+    "@@last_modified": "2026-08-12 11:17:07.193168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Op nuwe boodskap",
     "audioOnNewMessageDescription": "Lees nuwe ontvangde boodskappe outomaties hardop in jou doeltaal.",
     "audioOnMessageClickToolName": "Op boodskapklik",
-    "audioOnMessageClickDescription": "Lees 'n boodskap hardop in jou doeltaal wanneer jy daarop klik."
+    "audioOnMessageClickDescription": "Lees 'n boodskap hardop in jou doeltaal wanneer jy daarop klik.",
+    "audioSettingDisabledTitle": "{toolName} oudio gedeaktiveer",
+    "audioSettingDisabledBody": "Jy kan {toolName} oudio in jou leerinstellings aktiveer",
+    "audioSettingDisabledEnable": "Aktiveer",
+    "rejoinedTheActivity": "🔄 {username} het weer by hierdie aktiwiteit aangesluit",
+    "shareAnalytics": "Deel Analise"
 }

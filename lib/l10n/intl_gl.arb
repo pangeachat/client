@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-11 13:17:26.382324",
+    "@@last_modified": "2026-08-12 11:17:08.996397",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9726,5 +9726,10 @@
     "audioOnNewMessageToolName": "En nova mensaxe",
     "audioOnNewMessageDescription": "Ler automaticamente as novas mensaxes recibidas en voz alta no teu idioma de destino.",
     "audioOnMessageClickToolName": "Ao facer clic na mensaxe",
-    "audioOnMessageClickDescription": "Ler unha mensaxe en voz alta no teu idioma de destino cando fagas clic nela."
+    "audioOnMessageClickDescription": "Ler unha mensaxe en voz alta no teu idioma de destino cando fagas clic nela.",
+    "audioSettingDisabledTitle": "Audio de {toolName} desactivado",
+    "audioSettingDisabledBody": "Podes activar o audio de {toolName} na túa configuración de aprendizaxe",
+    "audioSettingDisabledEnable": "Activar",
+    "rejoinedTheActivity": "🔄 {username} volveu unirse a esta actividade",
+    "shareAnalytics": "Compartir datos de uso"
 }

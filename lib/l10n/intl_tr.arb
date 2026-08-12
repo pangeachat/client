@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-11 13:17:34.906893",
+    "@@last_modified": "2026-08-12 11:17:15.189303",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10027,5 +10027,10 @@
     "audioOnNewMessageToolName": "Yeni mesajda",
     "audioOnNewMessageDescription": "Alınan yeni mesajları hedef dilinizde otomatik olarak yüksek sesle okuyun.",
     "audioOnMessageClickToolName": "Mesaj tıklamasında",
-    "audioOnMessageClickDescription": "Bir mesaja tıkladığınızda hedef dilinizde yüksek sesle okuyun."
+    "audioOnMessageClickDescription": "Bir mesaja tıkladığınızda hedef dilinizde yüksek sesle okuyun.",
+    "audioSettingDisabledTitle": "{toolName} sesi devre dışı",
+    "audioSettingDisabledBody": "Öğrenme ayarlarınızdan {toolName} sesini etkinleştirebilirsiniz",
+    "audioSettingDisabledEnable": "Etkinleştir",
+    "rejoinedTheActivity": "🔄 {username} bu etkinliğe yeniden katıldı",
+    "shareAnalytics": "Analizleri Paylaş"
 }

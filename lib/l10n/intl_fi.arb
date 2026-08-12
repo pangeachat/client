@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-11 13:17:25.573621",
+    "@@last_modified": "2026-08-12 11:17:08.379007",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9763,5 +9763,10 @@
     "audioOnNewMessageToolName": "Uudesta viestistä",
     "audioOnNewMessageDescription": "Lue uudet saapuneet viestit automaattisesti ääneen kohdekielelläsi.",
     "audioOnMessageClickToolName": "Viestin napsautuksesta",
-    "audioOnMessageClickDescription": "Lue viesti ääneen kohdekielelläsi, kun napsautat sitä."
+    "audioOnMessageClickDescription": "Lue viesti ääneen kohdekielelläsi, kun napsautat sitä.",
+    "audioSettingDisabledTitle": "{toolName}-ääni poissa käytöstä",
+    "audioSettingDisabledBody": "Voit ottaa {toolName}-äänen käyttöön oppimisasetuksistasi",
+    "audioSettingDisabledEnable": "Ota käyttöön",
+    "rejoinedTheActivity": "🔄 {username} liittyi takaisin tähän aktiviteettiin",
+    "shareAnalytics": "Jaa analytiikka"
 }

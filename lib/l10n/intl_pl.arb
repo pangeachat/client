@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-11 13:17:32.415554",
+    "@@last_modified": "2026-08-12 11:17:12.644965",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9811,5 +9811,10 @@
     "audioOnNewMessageToolName": "Przy nowej wiadomości",
     "audioOnNewMessageDescription": "Automatycznie czytaj nowe wiadomości na głos w Twoim języku docelowym.",
     "audioOnMessageClickToolName": "Po kliknięciu wiadomości",
-    "audioOnMessageClickDescription": "Czytaj wiadomość na głos w Twoim języku docelowym po kliknięciu."
+    "audioOnMessageClickDescription": "Czytaj wiadomość na głos w Twoim języku docelowym po kliknięciu.",
+    "audioSettingDisabledTitle": "Dźwięk {toolName} wyłączony",
+    "audioSettingDisabledBody": "Możesz włączyć dźwięk {toolName} w ustawieniach nauki",
+    "audioSettingDisabledEnable": "Włącz",
+    "rejoinedTheActivity": "🔄 Użytkownik {username} ponownie dołączył do tej aktywności",
+    "shareAnalytics": "Udostępnij dane analityczne"
 }

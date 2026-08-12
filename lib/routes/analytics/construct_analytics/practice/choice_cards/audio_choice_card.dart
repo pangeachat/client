@@ -14,6 +14,7 @@ class AudioChoiceCard extends StatelessWidget {
   final bool isCorrect;
   final bool isEnabled;
   final bool showHint;
+  final bool isSelected;
 
   const AudioChoiceCard({
     required this.choiceId,
@@ -24,6 +25,7 @@ class AudioChoiceCard extends StatelessWidget {
     required this.isCorrect,
     this.isEnabled = true,
     this.showHint = false,
+    this.isSelected = false,
     super.key,
   });
 
@@ -37,6 +39,7 @@ class AudioChoiceCard extends StatelessWidget {
       onPressed: onPressed,
       isCorrect: isCorrect,
       isEnabled: isEnabled,
+      isSelected: isSelected,
       shrinkWrap: true,
       child: Column(
         mainAxisSize: MainAxisSize.min,

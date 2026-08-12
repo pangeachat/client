@@ -3594,8 +3594,25 @@
     "enableAutocorrectDescription": "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.",
     "autocorrectMobileOnly": "Mobile only",
     "autocorrectMobileOnlyWarning": "Device autocorrect is only available on the mobile app.",
-    "ttsDisbledTitle": "Text-to-speech disabled",
-    "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
+    "audioSettingDisabledTitle": "{toolName} audio disabled",
+    "@audioSettingDisabledTitle": {
+        "type": "String",
+        "placeholders": {
+            "toolName": {
+                "type": "String"
+            }
+        }
+    },
+    "audioSettingDisabledBody": "You can enable {toolName} audio in your learning settings",
+    "@audioSettingDisabledBody": {
+        "type": "String",
+        "placeholders": {
+            "toolName": {
+                "type": "String"
+            }
+        }
+    },
+    "audioSettingDisabledEnable": "Enable",
     "noSpaceDescriptionYet": "No course description created yet.",
     "tooLargeToSend": "This message is too large to send",
     "enableAutocorrectPopupTitle": "Add your target language keyboard by going to:",
@@ -3771,6 +3788,15 @@
     "openRoleLabel": "OPEN",
     "finishedTheActivity": "🎯 {username} wrapped up this activity",
     "@finishedTheActivity": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
+    "rejoinedTheActivity": "🔄 {username} rejoined this activity",
+    "@rejoinedTheActivity": {
         "type": "String",
         "placeholders": {
             "username": {
@@ -4524,8 +4550,9 @@
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
-    "analyticsAccessNoticeTitle": "Analytics Access Required",
-    "analyticsAccessNoticeDesc": "By joining this course, you agree to grant admins access to your learning analytics.",
+    "analyticsAccessNoticeTitle": "Learning Analytics Required",
+    "analyticsAccessNoticeDesc": "Admins of this course want to view your analytics to track your learning progress. Allow them access to join.",
+    "shareAnalytics": "Share Analytics",
     "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
     "reportContentIssue": "Report content issue",
     "userTypeTitle": "I use Pangea Chat to",

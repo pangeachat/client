@@ -806,6 +806,8 @@ class Message extends StatelessWidget {
                                                                       nextEvent,
                                                                   prevEvent:
                                                                       previousEvent,
+                                                                  useTokenKeys:
+                                                                      true,
                                                                   // Pangea#
                                                                 ),
                                                                 if (event

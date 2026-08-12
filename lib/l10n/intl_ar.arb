@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-11 13:17:23.225251",
+    "@@last_modified": "2026-08-12 11:17:07.167163",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10032,5 +10032,10 @@
     "audioOnNewMessageToolName": "عند رسالة جديدة",
     "audioOnNewMessageDescription": "قراءة الرسائل الجديدة المستلمة تلقائيًا بصوت عالٍ بلغتك الهدف.",
     "audioOnMessageClickToolName": "عند النقر على الرسالة",
-    "audioOnMessageClickDescription": "قراءة الرسالة بصوت عالٍ بلغتك الهدف عند النقر عليها."
+    "audioOnMessageClickDescription": "قراءة الرسالة بصوت عالٍ بلغتك الهدف عند النقر عليها.",
+    "audioSettingDisabledTitle": "تم تعطيل صوت {toolName}",
+    "audioSettingDisabledBody": "يمكنك تمكين صوت {toolName} في إعدادات التعلم الخاصة بك",
+    "audioSettingDisabledEnable": "تمكين",
+    "rejoinedTheActivity": "🔄 انضم {username} مرة أخرى إلى هذا النشاط",
+    "shareAnalytics": "مشاركة التحليلات"
 }

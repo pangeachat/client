@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-11 13:17:25.668334",
+    "@@last_modified": "2026-08-12 11:17:08.399647",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9726,5 +9726,10 @@
     "audioOnNewMessageToolName": "Mezu berri bat jasotzean",
     "audioOnNewMessageDescription": "Jasotako mezu berriak automatikoki ozenki irakurri zure xede-hizkuntzan.",
     "audioOnMessageClickToolName": "Mezuan klik egitean",
-    "audioOnMessageClickDescription": "Mezu bat ozenki irakurri zure xede-hizkuntzan, gainean klik egitean."
+    "audioOnMessageClickDescription": "Mezu bat ozenki irakurri zure xede-hizkuntzan, gainean klik egitean.",
+    "audioSettingDisabledTitle": "{toolName} audioa desgaituta",
+    "audioSettingDisabledBody": "{toolName} audioa gaitu dezakezu zure ikaskuntza-ezarpenetan",
+    "audioSettingDisabledEnable": "Gaitu",
+    "rejoinedTheActivity": "🔄 {username} jarduera honetara itzuli da",
+    "shareAnalytics": "Partekatu analisiak"
 }

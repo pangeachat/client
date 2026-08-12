@@ -9,7 +9,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 enum InstructionsEnum {
   clickMessage,
   chooseLemmaMeaning,
-  ttsDisabled,
   chooseEmoji,
   chooseWordAudio,
   chooseMorphs,
@@ -44,8 +43,6 @@ extension InstructionsEnumExtension on InstructionsEnum {
     switch (this) {
       case InstructionsEnum.clickMessage:
         return l10n.clickMessageTitle;
-      case InstructionsEnum.ttsDisabled:
-        return l10n.ttsDisbledTitle;
       case InstructionsEnum.chooseWordAudio:
       case InstructionsEnum.selectMeaning:
       case InstructionsEnum.chooseEmoji:
@@ -93,8 +90,6 @@ extension InstructionsEnumExtension on InstructionsEnum {
         return l10n.chooseLemmaMeaningInstructionsBody;
       case InstructionsEnum.chooseEmoji:
         return l10n.chooseEmojiInstructionsBody;
-      case InstructionsEnum.ttsDisabled:
-        return l10n.ttsDisabledBody;
       case InstructionsEnum.chooseWordAudio:
         return l10n.chooseWordAudioInstructionsBody;
       case InstructionsEnum.chooseMorphs:

@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-11 13:17:28.450174",
+    "@@last_modified": "2026-08-12 11:17:10.139941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Við ný skilaboð",
     "audioOnNewMessageDescription": "Lesa ný móttekin skilaboð sjálfkrafa upphátt á markmálinu þínu.",
     "audioOnMessageClickToolName": "Við smell á skilaboð",
-    "audioOnMessageClickDescription": "Lesa skilaboð upphátt á markmálinu þínu þegar þú smellir á þau."
+    "audioOnMessageClickDescription": "Lesa skilaboð upphátt á markmálinu þínu þegar þú smellir á þau.",
+    "audioSettingDisabledTitle": "Hljóð {toolName} óvirkt",
+    "audioSettingDisabledBody": "Þú getur virkjað hljóð {toolName} í námsstillingunum þínum",
+    "audioSettingDisabledEnable": "Virkja",
+    "rejoinedTheActivity": "🔄 {username} tók aftur þátt í þessari virkni",
+    "shareAnalytics": "Deila notkunargögnum"
 }

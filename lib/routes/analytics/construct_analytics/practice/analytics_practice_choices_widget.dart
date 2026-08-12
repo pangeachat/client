@@ -19,6 +19,10 @@ class AnalyticsPracticeExerciseChoices extends StatelessWidget {
   final bool showHint;
   final Function(String) onSelectChoice;
 
+  /// Choices already picked in this exercise, held by the session rather than
+  /// the cards, so reopening the panel mid-exercise restores them (#8309).
+  final Set<String> selectedChoices;
+
   final List<InlineSpan>? audioExampleMessage;
   final String? audioTranslation;
 
@@ -30,6 +34,7 @@ class AnalyticsPracticeExerciseChoices extends StatelessWidget {
     required this.isComplete,
     required this.showHint,
     required this.onSelectChoice,
+    required this.selectedChoices,
     this.audioExampleMessage,
     this.audioTranslation,
   });
@@ -71,6 +76,7 @@ class AnalyticsPracticeExerciseChoices extends StatelessWidget {
                           choiceText: choice.choiceText,
                           choiceEmoji: choice.choiceEmoji,
                           enabled: !isComplete,
+                          isSelected: selectedChoices.contains(choice.choiceId),
                           shrinkWrap: true,
                         ),
                       )
@@ -98,6 +104,7 @@ class AnalyticsPracticeExerciseChoices extends StatelessWidget {
               choiceText: choice.choiceText,
               choiceEmoji: choice.choiceEmoji,
               enabled: !isComplete,
+              isSelected: selectedChoices.contains(choice.choiceId),
             ),
           )
           .toList(),

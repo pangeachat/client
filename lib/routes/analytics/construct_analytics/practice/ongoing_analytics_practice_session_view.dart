@@ -185,6 +185,8 @@ class OngoingAnalyticsPracticeSessionView extends StatelessWidget {
                                       .exerciseComplete(exercise),
                                   showHint: controller.notifier.showHint,
                                   onSelectChoice: controller.onSelectChoice,
+                                  selectedChoices:
+                                      controller.notifier.selectedChoices,
                                   audioExampleMessage: audioExampleMessage,
                                   audioTranslation: audioTranslation,
                                 );

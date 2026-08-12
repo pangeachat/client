@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:35.639991",
+    "@@last_modified": "2026-08-12 11:17:15.978826",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7002,5 +7002,10 @@
     "audioOnNewMessageToolName": "Khi có tin nhắn mới",
     "audioOnNewMessageDescription": "Tự động đọc to các tin nhắn mới nhận được bằng ngôn ngữ mục tiêu của bạn.",
     "audioOnMessageClickToolName": "Khi nhấp vào tin nhắn",
-    "audioOnMessageClickDescription": "Đọc to một tin nhắn bằng ngôn ngữ mục tiêu của bạn khi bạn nhấp vào tin nhắn đó."
+    "audioOnMessageClickDescription": "Đọc to một tin nhắn bằng ngôn ngữ mục tiêu của bạn khi bạn nhấp vào tin nhắn đó.",
+    "audioSettingDisabledTitle": "Âm thanh {toolName} đã tắt",
+    "audioSettingDisabledBody": "Bạn có thể bật âm thanh {toolName} trong phần cài đặt học tập của mình",
+    "audioSettingDisabledEnable": "Bật",
+    "rejoinedTheActivity": "🔄 {username} đã tham gia lại hoạt động này",
+    "shareAnalytics": "Chia sẻ dữ liệu phân tích"
 }

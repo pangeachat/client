@@ -306,21 +306,45 @@ void main() {
       );
     });
 
-    test('phoneme playback never falls back to device', () {
-      // Device TTS would speak a different reading than the transcription
-      // on screen — silence is honest, mismatched audio teaches the wrong
-      // pronunciation.
+    test('phoneme playback falls back too, rather than going silent', () {
+      // Refusing this made every backend failure total silence for
+      // heteronyms (#8076 QA: 还 played nothing on web staging and prod).
+      // The correct reading is protected by the full backendTimeout, not by
+      // withholding audio when the backend has genuinely failed.
       expect(
         TtsRouting.allowDeviceFallback(hasPhoneme: true, hasVoice: true),
-        isFalse,
+        isTrue,
       );
     });
 
     test('no device voice, nothing to fall back to', () {
-      expect(
-        TtsRouting.allowDeviceFallback(hasPhoneme: false, hasVoice: false),
-        isFalse,
-      );
+      for (final hasPhoneme in [true, false]) {
+        expect(
+          TtsRouting.allowDeviceFallback(
+            hasPhoneme: hasPhoneme,
+            hasVoice: false,
+          ),
+          isFalse,
+          reason: 'hasPhoneme: $hasPhoneme',
+        );
+      }
     });
+
+    test(
+      'a phoneme still never loses the race — it waits the full deadline',
+      () {
+        // The pairing that makes the fallback safe: by the time fallback is
+        // consulted on the phoneme route, 10s have passed, so device audio
+        // replaces a real failure rather than a slow success.
+        expect(
+          TtsRouting.backendTimeout(hasPhoneme: true, hasVoice: true),
+          const Duration(seconds: 10),
+        );
+        expect(
+          TtsRouting.allowDeviceFallback(hasPhoneme: true, hasVoice: true),
+          isTrue,
+        );
+      },
+    );
   });
 }

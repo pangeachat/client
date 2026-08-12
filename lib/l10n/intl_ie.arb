@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-11 13:17:28.234059",
+    "@@last_modified": "2026-08-12 11:17:10.158742",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10358,5 +10358,10 @@
     "audioOnNewMessageToolName": "Ar theachtaireacht nua",
     "audioOnNewMessageDescription": "Léigh teachtaireachtaí nua a fhaightear os ard go huathoibríoch i do sprioctheanga.",
     "audioOnMessageClickToolName": "Ar chliceáil teachtaireachta",
-    "audioOnMessageClickDescription": "Léigh teachtaireacht os ard i do sprioctheanga nuair a chliceálann tú uirthi."
+    "audioOnMessageClickDescription": "Léigh teachtaireacht os ard i do sprioctheanga nuair a chliceálann tú uirthi.",
+    "audioSettingDisabledTitle": "Fuaim {toolName} díchumasaithe",
+    "audioSettingDisabledBody": "Is féidir leat fuaim {toolName} a chumasú i do shocruithe foghlama",
+    "audioSettingDisabledEnable": "Cumasaigh",
+    "rejoinedTheActivity": "🔄 {username} ath-cheangail an gnìomhachd seo",
+    "shareAnalytics": "Roinn Anailísí"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-11 13:17:31.802073",
+    "@@last_modified": "2026-08-12 11:17:11.735849",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "অনৌবা মেসেজ তারকপদা",
     "audioOnNewMessageDescription": "অনৌবা মেসেজশিং অতোমতিক ওইনা মীপাও শন্দোকপা ঙম্নবা অদোমগী লোনদা লাউডস্পীকারদা পাওনবা থমবীয়ু।",
     "audioOnMessageClickToolName": "মেসেজ ক্লিক তৌবদা",
-    "audioOnMessageClickDescription": "অদোমনা মেসেজ অমা ক্লিক তৌবদা অদোমগী লোনদা লাউডস্পীকারদা পাওনবা থমবীয়ু।"
+    "audioOnMessageClickDescription": "অদোমনা মেসেজ অমা ক্লিক তৌবদা অদোমগী লোনদা লাউডস্পীকারদা পাওনবা থমবীয়ু।",
+    "audioSettingDisabledTitle": "{toolName} অডিও থিংদোকখ্রে",
+    "audioSettingDisabledBody": "নখোয়গী লার্নিং সেটিংস্টা {toolName} অডিও অন তৌবা য়াই",
+    "audioSettingDisabledEnable": "অন তৌব",
+    "rejoinedTheActivity": "🔄 {username} অসিনা হায়রিবা থবক অসিদা অমুক হিংনরে",
+    "shareAnalytics": "এনালাইটিক্স শেয়ার তৌব"
 }

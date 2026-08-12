@@ -102,7 +102,9 @@ class _HubButton extends StatelessWidget {
         style: FilledButton.styleFrom(
           backgroundColor: theme.colorScheme.primaryContainer,
           foregroundColor: theme.colorScheme.onPrimaryContainer,
-          padding: const EdgeInsets.symmetric(vertical: 14.0),
+          // Long labels (German, Greek) wrap and fill the button, so without
+          // horizontal padding the leading icon sits against the edge (#8299).
+          padding: const EdgeInsets.symmetric(vertical: 14.0, horizontal: 16.0),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10.0),
           ),

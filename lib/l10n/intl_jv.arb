@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-11 13:17:28.436723",
+    "@@last_modified": "2026-08-12 11:17:10.476443",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Ing pesen anyar",
     "audioOnNewMessageDescription": "Otomatis maca pesen anyar sing ditampa kanthi banter ing basa target sampeyan.",
     "audioOnMessageClickToolName": "Ing klik pesen",
-    "audioOnMessageClickDescription": "Maca pesen kanthi banter ing basa target sampeyan nalika sampeyan ngeklik."
+    "audioOnMessageClickDescription": "Maca pesen kanthi banter ing basa target sampeyan nalika sampeyan ngeklik.",
+    "audioSettingDisabledTitle": "Swara {toolName} dipateni",
+    "audioSettingDisabledBody": "Sampeyan bisa ngaktifake swara {toolName} ing setelan sinau sampeyan",
+    "audioSettingDisabledEnable": "Aktifake",
+    "rejoinedTheActivity": "🔄 {username} gabung maneh ing aktivitas iki",
+    "shareAnalytics": "Nuduhake Analitis"
 }

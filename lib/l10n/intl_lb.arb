@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-11 13:17:29.707889",
+    "@@last_modified": "2026-08-12 11:17:11.119801",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Bei neiem Message",
     "audioOnNewMessageDescription": "Liest nei empfaangen Messagen automatesch haart an Ärer Zilssprooch vir.",
     "audioOnMessageClickToolName": "Beim Message-Klick",
-    "audioOnMessageClickDescription": "Liest e Message haart an Ärer Zilssprooch vir, wann Dir drop klickt."
+    "audioOnMessageClickDescription": "Liest e Message haart an Ärer Zilssprooch vir, wann Dir drop klickt.",
+    "audioSettingDisabledTitle": "{toolName} Audio deaktivéiert",
+    "audioSettingDisabledBody": "Dir kënnt den {toolName} Audio an Ären Léierastellungen aktivéieren",
+    "audioSettingDisabledEnable": "Aktivéieren",
+    "rejoinedTheActivity": "🔄 {username} ass dëser Aktivitéit nees bäigetrueden",
+    "shareAnalytics": "Analysen deelen"
 }

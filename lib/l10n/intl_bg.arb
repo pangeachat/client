@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-11 13:17:23.346697",
+    "@@last_modified": "2026-08-12 11:17:07.146913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "При ново съобщение",
     "audioOnNewMessageDescription": "Автоматично прочитайте на глас новополучените съобщения на целевия език.",
     "audioOnMessageClickToolName": "При щракване върху съобщение",
-    "audioOnMessageClickDescription": "Прочетете съобщение на глас на целевия език, когато щракнете върху него."
+    "audioOnMessageClickDescription": "Прочетете съобщение на глас на целевия език, когато щракнете върху него.",
+    "audioSettingDisabledTitle": "Аудиото на {toolName} е деактивирано",
+    "audioSettingDisabledBody": "Можете да активирате аудиото на {toolName} в настройките си за обучение",
+    "audioSettingDisabledEnable": "Активиране",
+    "rejoinedTheActivity": "🔄 {username} се присъедини отново към тази дейност",
+    "shareAnalytics": "Споделяне на анализи"
 }

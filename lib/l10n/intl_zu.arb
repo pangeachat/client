@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-11 13:17:37.125564",
+    "@@last_modified": "2026-08-12 11:17:16.467013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Kumlayezo omusha",
     "audioOnNewMessageDescription": "Funda ngokuzenzakalelayo imilayezo emisha etholiwe ngokuzwakalayo ngolimi oluqondiwe.",
     "audioOnMessageClickToolName": "Ekuchofozweni komlayezo",
-    "audioOnMessageClickDescription": "Funda umlayezo ngokuzwakalayo ngolimi oluqondiwe uma uwuchofoza."
+    "audioOnMessageClickDescription": "Funda umlayezo ngokuzwakalayo ngolimi oluqondiwe uma uwuchofoza.",
+    "audioSettingDisabledTitle": "Umsindo we-{toolName} uvaliwe",
+    "audioSettingDisabledBody": "Ungavula umsindo we-{toolName} kuzilungiselelo zakho zokufunda",
+    "audioSettingDisabledEnable": "Vula",
+    "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi",
+    "shareAnalytics": "Yabelana Ngokuhlaziya"
 }

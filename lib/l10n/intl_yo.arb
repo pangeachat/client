@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-11 13:17:36.187443",
+    "@@last_modified": "2026-08-12 11:17:15.938392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Lori ifiranṣẹ tuntun",
     "audioOnNewMessageDescription": "Ka awọn ifiranṣẹ titun ti o gba ni gbangba ni ede ibi-afẹde rẹ.",
     "audioOnMessageClickToolName": "Lori tite ifiranṣẹ",
-    "audioOnMessageClickDescription": "Ka ifiranṣẹ kan ni gbangba ni ede ibi-afẹde rẹ nigbati o ba tẹ lori rẹ."
+    "audioOnMessageClickDescription": "Ka ifiranṣẹ kan ni gbangba ni ede ibi-afẹde rẹ nigbati o ba tẹ lori rẹ.",
+    "audioSettingDisabledTitle": "Ohun {toolName} ti wa ni pipa",
+    "audioSettingDisabledBody": "O le tan ohun {toolName} ninu eto ikẹkọ rẹ",
+    "audioSettingDisabledEnable": "Tan-an",
+    "rejoinedTheActivity": "🔄 {username} ti darapọ mọ iṣẹ yii",
+    "shareAnalytics": "Pín Àtúpalẹ̀"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-11 13:17:32.843995",
+    "@@last_modified": "2026-08-12 11:17:13.546355",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "په نوې پیغام",
     "audioOnNewMessageDescription": "په اتوماتيک ډول نوي ترلاسه شوي پیغامونه په لوړ غږ ستاسو په هدف ژبه ولولئ.",
     "audioOnMessageClickToolName": "په پیغام کلیک",
-    "audioOnMessageClickDescription": "کله چې تاسو په پیغام کلیک وکړئ، په لوړ غږ یې ستاسو په هدف ژبه ولولئ."
+    "audioOnMessageClickDescription": "کله چې تاسو په پیغام کلیک وکړئ، په لوړ غږ یې ستاسو په هدف ژبه ولولئ.",
+    "audioSettingDisabledTitle": "{toolName} آډیو غیر فعال شوی",
+    "audioSettingDisabledBody": "تاسو کولی شئ په خپلو زده کړو ترتیباتو کې {toolName} آډیو فعال کړئ",
+    "audioSettingDisabledEnable": "فعالول",
+    "rejoinedTheActivity": "🔄 {username} بېرته دې فعالیت ته راستون شو",
+    "shareAnalytics": "تحلیل شریک کړئ"
 }

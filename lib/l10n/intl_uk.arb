@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-11 13:17:35.620152",
+    "@@last_modified": "2026-08-12 11:17:15.203248",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9726,5 +9726,10 @@
     "audioOnNewMessageToolName": "На нове повідомлення",
     "audioOnNewMessageDescription": "Автоматично читати вголос нові отримані повідомлення цільовою мовою.",
     "audioOnMessageClickToolName": "Натискання на повідомлення",
-    "audioOnMessageClickDescription": "Читати повідомлення вголос цільовою мовою, коли ви натискаєте на нього."
+    "audioOnMessageClickDescription": "Читати повідомлення вголос цільовою мовою, коли ви натискаєте на нього.",
+    "audioSettingDisabledTitle": "Аудіо {toolName} вимкнено",
+    "audioSettingDisabledBody": "Ви можете ввімкнути аудіо {toolName} у налаштуваннях навчання",
+    "audioSettingDisabledEnable": "Увімкнути",
+    "rejoinedTheActivity": "🔄 {username} знову приєднався до цієї активності",
+    "shareAnalytics": "Поділитися аналітикою"
 }

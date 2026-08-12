@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:26.840436",
+    "@@last_modified": "2026-08-12 11:17:09.550081",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10640,5 +10640,10 @@
     "audioOnNewMessageToolName": "בהודעה חדשה",
     "audioOnNewMessageDescription": "הקרא אוטומטית הודעות חדשות שהתקבלו בשפת היעד שלך.",
     "audioOnMessageClickToolName": "בלחיצה על הודעה",
-    "audioOnMessageClickDescription": "הקרא הודעה בשפת היעד שלך בלחיצה עליה."
+    "audioOnMessageClickDescription": "הקרא הודעה בשפת היעד שלך בלחיצה עליה.",
+    "audioSettingDisabledTitle": "שמע של {toolName} מושבת",
+    "audioSettingDisabledBody": "ניתן להפעיל את השמע של {toolName} בהגדרות הלמידה שלך",
+    "audioSettingDisabledEnable": "הפעל",
+    "rejoinedTheActivity": "🔄 {username} הצטרף/ה מחדש לפעילות זו",
+    "shareAnalytics": "שיתוף נתונים סטטיסטיים"
 }

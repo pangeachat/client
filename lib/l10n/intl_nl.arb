@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:31.541909",
+    "@@last_modified": "2026-08-12 11:17:14.478605",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9726,5 +9726,10 @@
     "audioOnNewMessageToolName": "Bij nieuw bericht",
     "audioOnNewMessageDescription": "Lees nieuwe ontvangen berichten automatisch hardop voor in je doeltaal.",
     "audioOnMessageClickToolName": "Bij klikken op bericht",
-    "audioOnMessageClickDescription": "Lees een bericht hardop voor in je doeltaal wanneer je erop klikt."
+    "audioOnMessageClickDescription": "Lees een bericht hardop voor in je doeltaal wanneer je erop klikt.",
+    "audioSettingDisabledTitle": "{toolName}-audio uitgeschakeld",
+    "audioSettingDisabledBody": "Je kunt {toolName}-audio inschakelen in je leerinstellingen",
+    "audioSettingDisabledEnable": "Inschakelen",
+    "rejoinedTheActivity": "🔄 {username} heeft zich weer bij deze activiteit gevoegd",
+    "shareAnalytics": "Analyse delen"
 }

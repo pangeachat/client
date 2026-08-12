@@ -74,6 +74,9 @@ void main() {
         EditableTranscriptState.editableClean,
       );
       expect(state.streamingSendData!.isEdited, isFalse);
+      // Once stopped, the primary button reverts from stop to send (#8292).
+      expect(find.byIcon(Icons.stop_circle_outlined), findsNothing);
+      expect(find.byIcon(Icons.send_outlined), findsOneWidget);
 
       state.cancel();
       await tester.pump();

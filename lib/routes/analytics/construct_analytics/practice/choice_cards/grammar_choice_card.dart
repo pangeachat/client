@@ -17,6 +17,7 @@ class GrammarChoiceCard extends StatelessWidget {
   final bool isCorrect;
   final double height;
   final bool enabled;
+  final bool isSelected;
 
   const GrammarChoiceCard({
     required this.choiceId,
@@ -27,6 +28,7 @@ class GrammarChoiceCard extends StatelessWidget {
     required this.isCorrect,
     this.height = 72.0,
     this.enabled = true,
+    this.isSelected = false,
     super.key,
   });
 
@@ -50,6 +52,7 @@ class GrammarChoiceCard extends StatelessWidget {
       isCorrect: isCorrect,
       height: height,
       isEnabled: enabled,
+      isSelected: isSelected,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

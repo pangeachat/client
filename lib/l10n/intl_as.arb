@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-11 13:17:23.853083",
+    "@@last_modified": "2026-08-12 11:17:07.296607",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "নতুন বাৰ্তা পালে",
     "audioOnNewMessageDescription": "আপোনাৰ লক্ষ্য ভাষাত নতুনকৈ পোৱা বাৰ্তাসমূহ স্বয়ংক্ৰিয়ভাৱে উচ্চস্বৰে পঢ়ক।",
     "audioOnMessageClickToolName": "বাৰ্তাত ক্লিক কৰিলে",
-    "audioOnMessageClickDescription": "আপুনি ক্লিক কৰিলে আপোনাৰ লক্ষ্য ভাষাত এটা বাৰ্তা উচ্চস্বৰে পঢ়ক।"
+    "audioOnMessageClickDescription": "আপুনি ক্লিক কৰিলে আপোনাৰ লক্ষ্য ভাষাত এটা বাৰ্তা উচ্চস্বৰে পঢ়ক।",
+    "audioSettingDisabledTitle": "{toolName} অডিঅ' নিষ্ক্রিয় কৰা হৈছে",
+    "audioSettingDisabledBody": "আপুনি আপোনাৰ শিক্ষণ ছেটিংছত {toolName} অডিঅ' সক্ষম কৰিব পাৰে",
+    "audioSettingDisabledEnable": "সক্ষম কৰক",
+    "rejoinedTheActivity": "🔄 {username} এই কাৰ্য্যকলাপত পুনৰ যোগদান কৰিছে",
+    "shareAnalytics": "বিশ্লেষণ ভাগ বতৰা কৰক"
 }

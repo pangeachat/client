@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-11 13:17:31.053173",
+    "@@last_modified": "2026-08-12 11:17:11.154038",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "De nuntio novo",
     "audioOnNewMessageDescription": "Nuntios novos acceptos sponte in lingua tua discenda clare lege.",
     "audioOnMessageClickToolName": "De nuntio clicto",
-    "audioOnMessageClickDescription": "Nuntium clare in lingua tua discenda lege cum in eum clicaveris."
+    "audioOnMessageClickDescription": "Nuntium clare in lingua tua discenda lege cum in eum clicaveris.",
+    "audioSettingDisabledTitle": "Sonus {toolName} off",
+    "audioSettingDisabledBody": "Sonum {toolName} in optionibus discendi tuis efficere potes",
+    "audioSettingDisabledEnable": "Efficere",
+    "rejoinedTheActivity": "🔄 {username} ad hanc actionem rediit",
+    "shareAnalytics": "Communica Analytica"
 }

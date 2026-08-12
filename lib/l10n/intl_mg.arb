@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-11 13:17:30.583352",
+    "@@last_modified": "2026-08-12 11:17:11.421807",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Amin'ny hafatra vaovao",
     "audioOnNewMessageDescription": "Vakio mafy ho azy amin'ny fiteny kendrenao ireo hafatra vaovao voaray.",
     "audioOnMessageClickToolName": "Rehefa tsindriana ny hafatra",
-    "audioOnMessageClickDescription": "Vakio mafy amin'ny fiteny kendrenao ny hafatra iray rehefa tsindrianao izany."
+    "audioOnMessageClickDescription": "Vakio mafy amin'ny fiteny kendrenao ny hafatra iray rehefa tsindrianao izany.",
+    "audioSettingDisabledTitle": "Tsy mandeha ny feon'ny {toolName}",
+    "audioSettingDisabledBody": "Azonao atao ny mampandeha ny feon'ny {toolName} ao amin'ny fikandranao fianarana",
+    "audioSettingDisabledEnable": "Alefaso",
+    "rejoinedTheActivity": "🔄 Niditra indray tamin'ity hetsika ity i {username}",
+    "shareAnalytics": "Zarao ny Analytics"
 }

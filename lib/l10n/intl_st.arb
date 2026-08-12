@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-11 13:17:35.884469",
+    "@@last_modified": "2026-08-12 11:17:14.486631",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Molaetsa o mocha",
     "audioOnNewMessageDescription": "Bala melaetsa e mecha e amohetsoeng ka lentsoe le phahameng ka boits'oaro ka puo eo u e batlang.",
     "audioOnMessageClickToolName": "Ha o tobetsa molaetsa",
-    "audioOnMessageClickDescription": "Bala molaetsa ka lentsoe le phahameng ka puo eo u e batlang ha o tobetsa ho ona."
+    "audioOnMessageClickDescription": "Bala molaetsa ka lentsoe le phahameng ka puo eo u e batlang ha o tobetsa ho ona.",
+    "audioSettingDisabledTitle": "Molumo oa {toolName} o tingoe",
+    "audioSettingDisabledBody": "O ka bulela molumo oa {toolName} ho di-setting tsa thuto ya hao",
+    "audioSettingDisabledEnable": "Bulela",
+    "rejoinedTheActivity": "🔄 {username} o boetse a kenela mosebetsi ona",
+    "shareAnalytics": "Arolelana Litlhahlobo"
 }

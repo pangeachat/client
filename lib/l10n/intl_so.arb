@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-11 13:17:33.938170",
+    "@@last_modified": "2026-08-12 11:17:14.511418",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2114,5 +2114,10 @@
     "audioOnNewMessageToolName": "Farriin cusub oo la helo",
     "audioOnNewMessageDescription": "Si toos ah u akhri farriimaha cusub ee la helo adiga oo isticmaalaya luqadda aad bartay.",
     "audioOnMessageClickToolName": "Marka farriinta la gujiyo",
-    "audioOnMessageClickDescription": "Ku akhri farriin kor adiga oo isticmaalaya luqadda aad bartay marka aad gujiso."
+    "audioOnMessageClickDescription": "Ku akhri farriin kor adiga oo isticmaalaya luqadda aad bartay marka aad gujiso.",
+    "audioSettingDisabledTitle": "Codka {toolName} waa dansan yahay",
+    "audioSettingDisabledBody": "Waxaad shidi kartaa codka {toolName} goobaha waxbarashadaada",
+    "audioSettingDisabledEnable": "Daar",
+    "rejoinedTheActivity": "🔄 {username} wuxuu dib ugu soo biiray hawshan",
+    "shareAnalytics": "La wadaag Falanqaynta"
 }

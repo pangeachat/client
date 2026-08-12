@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-11 13:17:35.816246",
+    "@@last_modified": "2026-08-12 11:17:15.885890",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9730,5 +9730,10 @@
     "audioOnNewMessageToolName": "Yangi xabar kelganda",
     "audioOnNewMessageDescription": "Yangi kelgan xabarlarni avtomatik ravishda maqsadli tilingizda ovoz chiqarib o'qing.",
     "audioOnMessageClickToolName": "Xabarni bosganda",
-    "audioOnMessageClickDescription": "Xabarni bosganingizda uni maqsadli tilingizda ovoz chiqarib o'qing."
+    "audioOnMessageClickDescription": "Xabarni bosganingizda uni maqsadli tilingizda ovoz chiqarib o'qing.",
+    "audioSettingDisabledTitle": "{toolName} audiosi oʻchirilgan",
+    "audioSettingDisabledBody": "Siz oʻrganish sozlamalarida {toolName} audiosini yoqishingiz mumkin",
+    "audioSettingDisabledEnable": "Yoqish",
+    "rejoinedTheActivity": "🔄 {username} ushbu mashg'ulotga qaytdi",
+    "shareAnalytics": "Analitikani ulashish"
 }

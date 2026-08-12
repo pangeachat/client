@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 13:17:32.793683",
+    "@@last_modified": "2026-08-12 11:17:13.396210",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10458,5 +10458,10 @@
     "audioOnNewMessageToolName": "La mesaj nou",
     "audioOnNewMessageDescription": "Citește automat cu voce tare mesajele noi primite în limba țintă.",
     "audioOnMessageClickToolName": "La clic pe mesaj",
-    "audioOnMessageClickDescription": "Citește un mesaj cu voce tare în limba țintă atunci când apeși pe el."
+    "audioOnMessageClickDescription": "Citește un mesaj cu voce tare în limba țintă atunci când apeși pe el.",
+    "audioSettingDisabledTitle": "Audio {toolName} dezactivat",
+    "audioSettingDisabledBody": "Poți activa audio {toolName} în setările tale de învățare",
+    "audioSettingDisabledEnable": "Activează",
+    "rejoinedTheActivity": "🔄 {username} s-a alăturat din nou acestei activități",
+    "shareAnalytics": "Partajează datele analitice"
 }

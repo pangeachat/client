@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-11 13:17:33.512878",
+    "@@last_modified": "2026-08-12 11:17:13.583473",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10671,5 +10671,10 @@
     "audioOnNewMessageToolName": "Pri novej správe",
     "audioOnNewMessageDescription": "Automaticky nahlas prečítať nové prijaté správy vo vašom cieľovom jazyku.",
     "audioOnMessageClickToolName": "Pri kliknutí na správu",
-    "audioOnMessageClickDescription": "Nahlas prečítať správu vo vašom cieľovom jazyku po kliknutí na ňu."
+    "audioOnMessageClickDescription": "Nahlas prečítať správu vo vašom cieľovom jazyku po kliknutí na ňu.",
+    "audioSettingDisabledTitle": "Zvuk {toolName} je vypnutý",
+    "audioSettingDisabledBody": "Zvuk {toolName} môžete zapnúť v nastaveniach učenia",
+    "audioSettingDisabledEnable": "Zapnúť",
+    "rejoinedTheActivity": "🔄 {username} sa znova pripojil k tejto aktivite",
+    "shareAnalytics": "Zdieľať analýzy"
 }

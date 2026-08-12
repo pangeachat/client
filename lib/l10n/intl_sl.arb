@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-11 13:17:33.661707",
+    "@@last_modified": "2026-08-12 11:17:13.873454",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10671,5 +10671,10 @@
     "audioOnNewMessageToolName": "Ob novem sporočilu",
     "audioOnNewMessageDescription": "Samodejno prebere nova prejeta sporočila na glas v vašem ciljnem jeziku.",
     "audioOnMessageClickToolName": "Ob kliku na sporočilo",
-    "audioOnMessageClickDescription": "Prebere sporočilo na glas v vašem ciljnem jeziku, ko kliknete nanj."
+    "audioOnMessageClickDescription": "Prebere sporočilo na glas v vašem ciljnem jeziku, ko kliknete nanj.",
+    "audioSettingDisabledTitle": "Zvok {toolName} je onemogočen",
+    "audioSettingDisabledBody": "Zvok {toolName} lahko omogočite v nastavitvah učenja",
+    "audioSettingDisabledEnable": "Omogoči",
+    "rejoinedTheActivity": "🔄 {username} se je znova pridružil tej dejavnosti",
+    "shareAnalytics": "Deli analitiko"
 }
