@@ -49,7 +49,7 @@ abstract class FluffyShare {
       //   ownProfile.displayName ?? client.userID!,
       //   'https://matrix.to/#/${client.userID}?client=im.fluffychat',
       // ),
-      "${Environment.frontendURL}/#/invite_user/${Uri.encodeComponent(shortUserId(client.userID!))}",
+      inviteLinkForUser(Environment.frontendURL, client.userID!),
       // Pangea#
       context,
     );

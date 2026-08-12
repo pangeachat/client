@@ -24,6 +24,19 @@ String shortUserId(String id, {String? domain}) =>
 String fullUserId(String segment, {String? domain}) =>
     fullRoomId(segment, domain: domain);
 
+/// The "Share invite link" URL that opens a DM with [userId].
+///
+/// A path, **not** a `/#/` link. Web runs under `usePathUrlStrategy`, where a
+/// fragment is not part of the route, so a hash link boots the app at `/` and
+/// the invite route never fires. Only the native app_links path ever unwrapped
+/// the fragment ([MatrixState.incomingUriToPath]), which is why a hash link
+/// worked on iOS and did nothing at all on web. CloudFront serves the SPA shell
+/// for every path, so a direct path load boots. [domain] overrides the home
+/// domain (for tests).
+String inviteLinkForUser(String frontendURL, String userId, {String? domain}) =>
+    '$frontendURL/invite_user/'
+    '${Uri.encodeComponent(shortUserId(userId, domain: domain))}';
+
 /// Read the `/invite_user/:userID` path param into the full mxid to open a DM
 /// with. The router percent-decodes a path param once on its own, but a shared
 /// link can reach us encoded twice — the share text encodes the id, and a chat
