@@ -162,7 +162,6 @@ class LearningProgressIndicators extends StatelessWidget {
                                               context,
                                             ).colorScheme.primary,
                                           ),
-                                      textScaler: TextScaler.noScaling,
                                     ),
                                   if (userL1 != null && userL2 != null)
                                     const Icon(Icons.chevron_right_outlined),
@@ -178,7 +177,6 @@ class LearningProgressIndicators extends StatelessWidget {
                                               context,
                                             ).colorScheme.primary,
                                           ),
-                                      textScaler: TextScaler.noScaling,
                                     ),
                                 ],
                               ),

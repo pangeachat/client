@@ -97,6 +97,7 @@ class GrammarErrorExampleWidget extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           RichText(
+            textScaler: MediaQuery.textScalerOf(context),
             text: TextSpan(
               style: textStyle?.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary,

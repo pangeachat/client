@@ -381,6 +381,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     messenger.showSnackBarAnnounced(
       SnackBar(
         content: RichText(
+          textScaler: MediaQuery.textScalerOf(context),
           textAlign: TextAlign.center,
           text: TextSpan(
             style: TextStyle(color: Theme.of(context).colorScheme.surface),

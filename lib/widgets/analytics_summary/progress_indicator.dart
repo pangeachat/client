@@ -115,11 +115,7 @@ class AnimatedFloatingNumberState extends State<AnimatedFloatingNumber>
               child: Text("$_floatingNumber", style: indicatorStyle),
             ),
           ),
-        Text(
-          widget.number.toString(),
-          style: indicatorStyle,
-          textScaler: TextScaler.noScaling,
-        ),
+        Text(widget.number.toString(), style: indicatorStyle),
       ],
     );
   }

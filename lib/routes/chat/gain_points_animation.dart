@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -57,9 +56,9 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
   static const double gravity = 15;
   static const int duration = 2000;
 
-  /// Size of the "+" / "-" particles. Deliberately independent of
-  /// [AppSettings.fontSizeFactor] — these are decorative animation particles,
-  /// not readable text, so they stay the same size at every font size setting.
+  /// Size of the "+" / "-" particles. Deliberately independent of the device
+  /// text scaler — these are decorative animation particles, not readable
+  /// text, so they stay the same size at every text size setting.
   static const double _particleFontSize = AppConfig.messageFontSize * 1.2;
 
   @override
@@ -137,6 +136,10 @@ class PointsGainedAnimationState extends State<PointsGainedAnimation>
 
     final plusWidget = Text(
       _points > 0 ? "+" : "-",
+      // The particles fly along trajectories measured in fixed pixels, so a
+      // scaled glyph would drift off its own path. Decoration is the one thing
+      // the device text scaler does not drive (issue #7719).
+      textScaler: TextScaler.noScaling,
       style: TextStyle(
         fontSize: _particleFontSize,
         color: textColor ?? Theme.of(context).colorScheme.primary,

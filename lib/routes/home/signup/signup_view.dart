@@ -60,6 +60,7 @@ class SignupPageView extends StatelessWidget {
                   if (controller.prevInfo != null)
                     MergeSemantics(
                       child: RichText(
+                        textScaler: MediaQuery.textScalerOf(context),
                         text: TextSpan(
                           style: TextStyle(color: theme.colorScheme.onSurface),
                           children: [

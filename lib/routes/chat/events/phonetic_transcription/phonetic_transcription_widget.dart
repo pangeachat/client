@@ -186,7 +186,6 @@ class _PhoneticTranscriptionWidgetState
                       Flexible(
                         child: Text(
                           label,
-                          textScaler: TextScaler.noScaling,
                           style: _textStyle(context),
                           maxLines: widget.maxLines,
                           overflow: TextOverflow.ellipsis,
@@ -242,7 +241,6 @@ class _PhoneticTranscriptionWidgetState
                 pos: widget.pos,
                 morph: widget.morph,
               ).displayTranscription,
-              textScaler: TextScaler.noScaling,
               style: widget.style ?? Theme.of(context).textTheme.bodyMedium,
               maxLines: widget.maxLines,
               overflow: TextOverflow.ellipsis,

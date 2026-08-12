@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/analytics_practice_message_widget.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_example_widget.dart';
 import 'package:fluffychat/routes/chat/audio_player.dart';
@@ -52,8 +51,7 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
             key: ValueKey('audio_${exercise.eventId}'),
             color: Theme.of(context).colorScheme.primary,
             linkColor: Theme.of(context).colorScheme.secondary,
-            fontSize:
-                AppSettings.fontSizeFactor.value * AppConfig.messageFontSize,
+            fontSize: AppConfig.messageFontSize,
             eventId: '${exercise.eventId}_practice',
             roomId: exercise.roomId!,
             senderId: Matrix.of(context).client.userID!,

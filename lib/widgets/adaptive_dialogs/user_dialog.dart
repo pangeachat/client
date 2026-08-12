@@ -109,6 +109,7 @@ class UserDialog extends StatelessWidget {
                                 });
                               },
                               child: RichText(
+                                textScaler: MediaQuery.textScalerOf(context),
                                 text: TextSpan(
                                   children: [
                                     WidgetSpan(

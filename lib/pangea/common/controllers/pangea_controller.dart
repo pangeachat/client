@@ -8,7 +8,6 @@ import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
@@ -74,7 +73,6 @@ class PangeaController {
 
     if (userID != null) {
       StyleSettingsRepo.settings(userID).then((settings) {
-        AppSettings.fontSizeFactor.setItem(settings.fontSizeFactor);
         AppConfig.useActivityImageAsChatBackground =
             settings.useActivityImageBackground;
       });

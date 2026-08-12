@@ -40,6 +40,12 @@ class UnderlineText extends StatelessWidget {
       ],
     );
 
+    // RichText and TextPainter both default to TextScaler.noScaling, so the
+    // device text size reaches neither unless it is passed explicitly. The
+    // underline is painted from a separate layout of the same span, so the
+    // two must be given the same scaler or every underline lands off its word.
+    final textScaler = MediaQuery.textScalerOf(context);
+
     return CustomPaint(
       painter: _UnderlinePainter(
         span: span,
@@ -47,8 +53,13 @@ class UnderlineText extends StatelessWidget {
         underlineColor: underlineColor ?? Colors.transparent,
         underlineHeight: underlineHeight,
         gap: gap,
+        textScaler: textScaler,
       ),
-      child: RichText(textDirection: textDirection, text: span),
+      child: RichText(
+        textDirection: textDirection,
+        text: span,
+        textScaler: textScaler,
+      ),
     );
   }
 }
@@ -59,6 +70,7 @@ class _UnderlinePainter extends CustomPainter {
   final Color underlineColor;
   final double underlineHeight;
   final double gap;
+  final TextScaler textScaler;
 
   _UnderlinePainter({
     required this.span,
@@ -66,11 +78,16 @@ class _UnderlinePainter extends CustomPainter {
     required this.underlineColor,
     required this.underlineHeight,
     required this.gap,
+    required this.textScaler,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    final textPainter = TextPainter(text: span, textDirection: textDirection);
+    final textPainter = TextPainter(
+      text: span,
+      textDirection: textDirection,
+      textScaler: textScaler,
+    );
 
     textPainter.layout(maxWidth: size.width);
 
@@ -96,6 +113,7 @@ class _UnderlinePainter extends CustomPainter {
     return oldDelegate.span != span ||
         oldDelegate.underlineColor != underlineColor ||
         oldDelegate.gap != gap ||
-        oldDelegate.underlineHeight != underlineHeight;
+        oldDelegate.underlineHeight != underlineHeight ||
+        oldDelegate.textScaler != textScaler;
   }
 }

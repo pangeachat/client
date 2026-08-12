@@ -29,6 +29,7 @@ class ErrorIndicator extends StatelessWidget {
     final content = Semantics(
       liveRegion: true,
       child: RichText(
+        textScaler: MediaQuery.textScalerOf(context),
         text: TextSpan(
           children: [
             WidgetSpan(

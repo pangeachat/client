@@ -57,7 +57,6 @@ class SttTranscriptTokens extends StatelessWidget {
       return Text(
         model.transcript.text,
         style: style ?? DefaultTextStyle.of(context).style,
-        textScaler: TextScaler.noScaling,
       );
     }
 
@@ -67,7 +66,7 @@ class SttTranscriptTokens extends StatelessWidget {
         TokensUtil.instance.getNewTokens(eventId, tokens, model.langCode);
 
     return RichText(
-      textScaler: TextScaler.noScaling,
+      textScaler: MediaQuery.textScalerOf(context),
       text: TextSpan(
         style: style ?? DefaultTextStyle.of(context).style,
         children: TokensUtil.instance

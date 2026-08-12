@@ -256,6 +256,7 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
     messenger!.showSnackBarAnnounced(
       SnackBar(
         content: RichText(
+          textScaler: MediaQuery.textScalerOf(context),
           text: TextSpan(
             style: TextStyle(color: Theme.of(context).colorScheme.surface),
             children: [

@@ -14,6 +14,7 @@ class TOSIndicator extends StatelessWidget {
     final theme = Theme.of(context);
     return MergeSemantics(
       child: RichText(
+        textScaler: MediaQuery.textScalerOf(context),
         textAlign: TextAlign.justify,
         text: TextSpan(
           children: [

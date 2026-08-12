@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 
 abstract class AppConfig {
@@ -131,7 +130,7 @@ abstract class AppConfig {
   static String errorSubscriptionId = "pangea_subscription_error";
 
   static TextStyle messageTextStyle(Event? event, Color textColor) {
-    final fontSize = messageFontSize * AppSettings.fontSizeFactor.value;
+    final fontSize = messageFontSize;
     final bigEmotes =
         event != null &&
         event.onlyEmotes &&

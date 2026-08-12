@@ -509,6 +509,7 @@ class HtmlMessage extends StatelessWidget {
           Theme.of(context).colorScheme.primary.withAlpha(200),
           existingStyle,
           fontSize,
+          MediaQuery.textScalerOf(context),
         );
 
         final tokenTargetKey = !useTokenKeys
@@ -680,12 +681,6 @@ class HtmlMessage extends StatelessWidget {
               splashColor: Colors.transparent,
               onTap: () => UrlLauncher(context, href, node.text).launchUrl(),
               child: Text.rich(
-                // #Pangea
-                // Text.rich applies the device's textScaleFactor
-                // overriding this one since non-html messages don't
-                // abide by the device's textScaleFactor
-                textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: _renderWithLineBreaks(
                     node.nodes,
@@ -728,9 +723,6 @@ class HtmlMessage extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: fontSize),
             child: Text.rich(
-              // #Pangea
-              textScaler: TextScaler.noScaling,
-              // Pangea#
               TextSpan(
                 children: [
                   if (!isCheckbox) ...[
@@ -809,9 +801,6 @@ class HtmlMessage extends StatelessWidget {
               border: Border(left: BorderSide(color: textColor, width: 5)),
             ),
             child: Text.rich(
-              // #Pangea
-              textScaler: TextScaler.noScaling,
-              // Pangea#
               TextSpan(
                 children: _renderWithLineBreaks(
                   node.nodes,
@@ -903,9 +892,6 @@ class HtmlMessage extends StatelessWidget {
                 obscure = !obscure;
               }),
               child: Text.rich(
-                // #Pangea
-                textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: [
                     WidgetSpan(
@@ -964,9 +950,6 @@ class HtmlMessage extends StatelessWidget {
                 obscure = !obscure;
               }),
               child: Text.rich(
-                // #Pangea
-                textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: _renderWithLineBreaks(
                     node.nodes,
@@ -1032,6 +1015,7 @@ class HtmlMessage extends StatelessWidget {
                   textColor: textColor,
                 ),
               RichText(
+                textScaler: MediaQuery.textScalerOf(context),
                 text: TextSpan(
                   style: textStyle.merge(style),
                   children: _renderWithLineBreaks(
@@ -1126,7 +1110,6 @@ class HtmlMessage extends StatelessWidget {
             }
           : null,
       child: Text.rich(
-        textScaler: TextScaler.noScaling,
         _renderHtml(
           parsed,
           context,
@@ -1202,7 +1185,7 @@ class MatrixPill extends StatelessWidget {
       // Pangea#
       // #Pangea
       child: RichText(
-        textScaler: TextScaler.noScaling,
+        textScaler: MediaQuery.textScalerOf(context),
         text: TextSpan(
           children: [
             WidgetSpan(

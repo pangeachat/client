@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 
 class TextLoadingShimmer extends StatelessWidget {
   final double width;
@@ -21,9 +20,7 @@ class TextLoadingShimmer extends StatelessWidget {
           borderRadius: BorderRadius.circular(4.0),
           color: Theme.of(context).colorScheme.primary,
         ),
-        height:
-            height ??
-            (AppConfig.messageFontSize * AppSettings.fontSizeFactor.value),
+        height: height ?? (AppConfig.messageFontSize),
         width: width,
       ),
     );

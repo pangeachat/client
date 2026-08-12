@@ -48,9 +48,11 @@ class TokenEmojiButton extends StatelessWidget with LemmaEmojiSetter {
               ? InkWell(
                   onTap: enabled ? onTap : null,
                   borderRadius: BorderRadius.circular(99),
+                  // The glyph scales with the device text size, so the button
+                  // has to grow with it or the emoji is clipped by its box.
                   child: SizedBox(
-                    width: _buttonSize,
-                    height: _buttonSize,
+                    width: MediaQuery.textScalerOf(context).scale(_buttonSize),
+                    height: MediaQuery.textScalerOf(context).scale(_buttonSize),
                     child: Center(
                       child: _EmojiText(
                         token: token,
@@ -106,7 +108,6 @@ class _EmojiText extends StatelessWidget {
         return Text(
           emoji ?? "-",
           style: TextStyle(fontSize: fontSize, color: textColor),
-          textScaler: TextScaler.noScaling,
         );
       },
     );

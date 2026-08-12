@@ -27,6 +27,7 @@ class AnalyticsPracticeExerciseExampleMessage extends StatelessWidget {
             borderRadius: BorderRadius.circular(16),
           ),
           child: RichText(
+            textScaler: MediaQuery.textScalerOf(context),
             text: TextSpan(
               style: textStyle?.copyWith(
                 color: Theme.of(context).colorScheme.onPrimary,

@@ -43,6 +43,9 @@ class GrammarConstructExample extends StatelessWidget {
       }
     }
 
-    return RichText(text: TextSpan(children: children));
+    return RichText(
+      textScaler: MediaQuery.textScalerOf(context),
+      text: TextSpan(children: children),
+    );
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
@@ -60,7 +59,7 @@ class _StyleExampleMessage extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
       color: Theme.of(context).colorScheme.onPrimary,
-      fontSize: AppConfig.messageFontSize * AppSettings.fontSizeFactor.value,
+      fontSize: AppConfig.messageFontSize,
     );
     return Container(
       constraints: BoxConstraints(maxWidth: FluffyThemes.maxTimelineWidth),
@@ -71,6 +70,7 @@ class _StyleExampleMessage extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         child: RichText(
+          textScaler: MediaQuery.textScalerOf(context),
           text: TextSpan(
             children: [
               WidgetSpan(
