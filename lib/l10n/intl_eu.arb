@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-12 11:17:08.399647",
+    "@@last_modified": "2026-08-12 13:18:20.980218",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9731,5 +9731,7 @@
     "audioSettingDisabledBody": "{toolName} audioa gaitu dezakezu zure ikaskuntza-ezarpenetan",
     "audioSettingDisabledEnable": "Gaitu",
     "rejoinedTheActivity": "🔄 {username} jarduera honetara itzuli da",
-    "shareAnalytics": "Partekatu analisiak"
+    "shareAnalytics": "Partekatu analisiak",
+    "courseNoLongerAvailableTitle": "Ikastaroa ez dago erabilgarri",
+    "courseDeletedDialogDesc": "Ikastaro hau ezabatu egin da."
 }

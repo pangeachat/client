@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-12 11:17:15.288911",
+    "@@last_modified": "2026-08-12 13:18:26.516700",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Unaweza kuwasha sauti ya {toolName} katika mipangilio yako ya kujifunza",
     "audioSettingDisabledEnable": "Washa",
     "rejoinedTheActivity": "🔄 {username} amejiunga tena na shughuli hii",
-    "shareAnalytics": "Shiriki Takwimu"
+    "shareAnalytics": "Shiriki Takwimu",
+    "courseNoLongerAvailableTitle": "Kozi haipatikani",
+    "courseDeletedDialogDesc": "Kozi hii imefutwa."
 }

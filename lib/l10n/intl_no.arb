@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-12 11:17:12.126752",
+    "@@last_modified": "2026-08-12 13:18:24.749524",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Du kan aktivere {toolName}-lyd i læringsinnstillingene dine",
     "audioSettingDisabledEnable": "Aktiver",
     "rejoinedTheActivity": "🔄 {username} ble med i denne aktiviteten igjen",
-    "shareAnalytics": "Del analyser"
+    "shareAnalytics": "Del analyser",
+    "courseNoLongerAvailableTitle": "Kurset er ikke tilgjengelig",
+    "courseDeletedDialogDesc": "Dette kurset er slettet."
 }

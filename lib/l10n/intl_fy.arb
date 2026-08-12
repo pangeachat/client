@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-12 11:17:08.771410",
+    "@@last_modified": "2026-08-12 13:18:20.861178",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Jo kinne {toolName} audio ynskeakelje yn jo learynstellings",
     "audioSettingDisabledEnable": "Ynskeakelje",
     "rejoinedTheActivity": "🔄 {username} docht wer mei oan dizze aktiviteit",
-    "shareAnalytics": "Diel Analytics"
+    "shareAnalytics": "Diel Analytics",
+    "courseNoLongerAvailableTitle": "Kursus net beskikber",
+    "courseDeletedDialogDesc": "Dizze kursus is fuortsmiten."
 }

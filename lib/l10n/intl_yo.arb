@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-12 11:17:15.938392",
+    "@@last_modified": "2026-08-12 13:18:27.705823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "O le tan ohun {toolName} ninu eto ikẹkọ rẹ",
     "audioSettingDisabledEnable": "Tan-an",
     "rejoinedTheActivity": "🔄 {username} ti darapọ mọ iṣẹ yii",
-    "shareAnalytics": "Pín Àtúpalẹ̀"
+    "shareAnalytics": "Pín Àtúpalẹ̀",
+    "courseNoLongerAvailableTitle": "Ìdánilẹ́kọ̀ọ́ kò sí mọ́",
+    "courseDeletedDialogDesc": "Wọ́n ti pa ìdánilẹ́kọ̀ọ́ yìí rẹ́."
 }

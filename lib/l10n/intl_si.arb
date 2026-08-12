@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-12 11:17:13.542367",
+    "@@last_modified": "2026-08-12 13:18:25.842521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "ඔබගේ ඉගෙනුම් සැකසීම් තුළ {toolName} ශ්‍රව්‍ය සක්‍රිය කළ හැක",
     "audioSettingDisabledEnable": "සක්‍රිය කරන්න",
     "rejoinedTheActivity": "🔄 {username} මෙම ක්‍රියාකාරකත්වයට නැවත සම්බන්ධ විය",
-    "shareAnalytics": "විශ්ලේෂණ බෙදාගන්න"
+    "shareAnalytics": "විශ්ලේෂණ බෙදාගන්න",
+    "courseNoLongerAvailableTitle": "පාඨමාලාව නොමැත",
+    "courseDeletedDialogDesc": "මෙම පාඨමාලාව මකා දමා ඇත."
 }

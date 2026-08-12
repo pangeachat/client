@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-12 11:17:12.369368",
+    "@@last_modified": "2026-08-12 13:18:24.953380",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Mungathe kuyatsa mawu a {toolName} mu zoikamo zanu zophunzirira",
     "audioSettingDisabledEnable": "Yatsani",
     "rejoinedTheActivity": "🔄 {username} wabwereranso ku ntchito iyi",
-    "shareAnalytics": "Gawana Zomwe Zasonyezedwa"
+    "shareAnalytics": "Gawana Zomwe Zasonyezedwa",
+    "courseNoLongerAvailableTitle": "Maphunziro kulibe",
+    "courseDeletedDialogDesc": "Maphunzirowa achotsedwa."
 }

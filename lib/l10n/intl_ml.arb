@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-12 11:17:11.459294",
+    "@@last_modified": "2026-08-12 13:18:23.983206",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "നിങ്ങളുടെ പഠന ക്രമീകരണങ്ങളിൽ {toolName} ഓഡിയോ പ്രവർത്തനക്ഷമമാക്കാം",
     "audioSettingDisabledEnable": "പ്രവർത്തനക്ഷമമാക്കുക",
     "rejoinedTheActivity": "🔄 {username} ഈ പ്രവർത്തനത്തിൽ വീണ്ടും ചേർന്നു",
-    "shareAnalytics": "അനലിറ്റിക്സ് പങ്കിടുക"
+    "shareAnalytics": "അനലിറ്റിക്സ് പങ്കിടുക",
+    "courseNoLongerAvailableTitle": "കോഴ്‌സ് ലഭ്യമല്ല",
+    "courseDeletedDialogDesc": "ഈ കോഴ്‌സ് ഇല്ലാതാക്കിയിരിക്കുന്നു."
 }

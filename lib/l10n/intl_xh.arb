@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-12 11:17:16.068644",
+    "@@last_modified": "2026-08-12 13:18:27.638580",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Ungasivula isandi se-{toolName} kuseto lwakho lokufunda",
     "audioSettingDisabledEnable": "Vula",
     "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi",
-    "shareAnalytics": "Yabelana nge-Analytics"
+    "shareAnalytics": "Yabelana nge-Analytics",
+    "courseNoLongerAvailableTitle": "Ikhosi ayifumaneki",
+    "courseDeletedDialogDesc": "Le khosi icinyiwe."
 }

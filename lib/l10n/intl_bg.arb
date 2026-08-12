@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-12 11:17:07.146913",
+    "@@last_modified": "2026-08-12 13:18:19.304197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Можете да активирате аудиото на {toolName} в настройките си за обучение",
     "audioSettingDisabledEnable": "Активиране",
     "rejoinedTheActivity": "🔄 {username} се присъедини отново към тази дейност",
-    "shareAnalytics": "Споделяне на анализи"
+    "shareAnalytics": "Споделяне на анализи",
+    "courseNoLongerAvailableTitle": "Курсът не е наличен",
+    "courseDeletedDialogDesc": "Този курс е изтрит."
 }

@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-12 11:17:07.512385",
+    "@@last_modified": "2026-08-12 13:18:19.418292",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9745,5 +9745,7 @@
     "audioSettingDisabledBody": "Вы можаце ўключыць аўдыё {toolName} у наладах навучання",
     "audioSettingDisabledEnable": "Уключыць",
     "rejoinedTheActivity": "🔄 {username} далучыўся да занятку",
-    "shareAnalytics": "Падзяліцца аналітыкай"
+    "shareAnalytics": "Падзяліцца аналітыкай",
+    "courseNoLongerAvailableTitle": "Курс недаступны",
+    "courseDeletedDialogDesc": "Гэты курс быў выдалены."
 }

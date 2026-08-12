@@ -4383,6 +4383,8 @@
     "unbanFromSpace": "Unban from course",
     "cannotJoinBannedRoom": "Banned. Unable to join.",
     "removedFromCourseError": "You've been removed from this course. Contact your teacher.",
+    "courseNoLongerAvailableTitle": "Course unavailable",
+    "courseDeletedDialogDesc": "This course has been deleted.",
     "sessionFull": "Too late! This activity is full.",
     "returnToCourse": "Return to course",
     "returnHome": "Return home",

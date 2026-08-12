@@ -18,6 +18,7 @@ import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/space_gone_gate.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/pangea_room_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -95,15 +96,30 @@ class ChatDetailsController extends State<ChatDetails>
         _handleCoursePing();
 
         if (!mounted) return;
+        await SpaceGoneGate.maybeShowDialog(context, widget.roomId);
+
+        if (!mounted) return;
         Matrix.of(context).showEnableNotificationsDialog(context);
       });
+
+      // A deletion or kick while this space is open arrives as a leave sync
+      _spaceGoneSubscription = Matrix.of(context).client.onSync.stream
+          .where((s) => s.rooms?.leave?.containsKey(widget.roomId) ?? false)
+          .listen((_) {
+            if (mounted) SpaceGoneGate.maybeShowDialog(context, widget.roomId);
+          });
     }
   }
+
+  StreamSubscription? _spaceGoneSubscription;
 
   @override
   void didUpdateWidget(covariant ChatDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.roomId != widget.roomId) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (mounted) SpaceGoneGate.maybeShowDialog(context, widget.roomId);
+      });
       _handleCoursePing();
       _objectivesProvider.loadOutline(
         _questId,
@@ -121,6 +137,7 @@ class ChatDetailsController extends State<ChatDetails>
 
   @override
   void dispose() {
+    _spaceGoneSubscription?.cancel();
     _objectivesProvider.dispose();
     super.dispose();
   }

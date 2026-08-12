@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-12 11:17:13.546355",
+    "@@last_modified": "2026-08-12 13:18:25.239188",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "تاسو کولی شئ په خپلو زده کړو ترتیباتو کې {toolName} آډیو فعال کړئ",
     "audioSettingDisabledEnable": "فعالول",
     "rejoinedTheActivity": "🔄 {username} بېرته دې فعالیت ته راستون شو",
-    "shareAnalytics": "تحلیل شریک کړئ"
+    "shareAnalytics": "تحلیل شریک کړئ",
+    "courseNoLongerAvailableTitle": "کورس شتون نلري",
+    "courseDeletedDialogDesc": "دا کورس حذف شوی دی."
 }

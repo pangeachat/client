@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-12 11:17:11.678899",
+    "@@last_modified": "2026-08-12 13:18:24.111777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Та сурах тохиргооноосоо {toolName} дууг идэвхжүүлж болно",
     "audioSettingDisabledEnable": "Идэвхжүүлэх",
     "rejoinedTheActivity": "🔄 {username} энэ үйл ажиллагаанд дахин нэгдлээ",
-    "shareAnalytics": "Шинжилгээгээ хуваалцах"
+    "shareAnalytics": "Шинжилгээгээ хуваалцах",
+    "courseNoLongerAvailableTitle": "Хичээл боломжгүй",
+    "courseDeletedDialogDesc": "Энэ хичээл устгагдсан байна."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-12 11:17:11.735849",
+    "@@last_modified": "2026-08-12 13:18:24.515782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "নখোয়গী লার্নিং সেটিংস্টা {toolName} অডিও অন তৌবা য়াই",
     "audioSettingDisabledEnable": "অন তৌব",
     "rejoinedTheActivity": "🔄 {username} অসিনা হায়রিবা থবক অসিদা অমুক হিংনরে",
-    "shareAnalytics": "এনালাইটিক্স শেয়ার তৌব"
+    "shareAnalytics": "এনালাইটিক্স শেয়ার তৌব",
+    "courseNoLongerAvailableTitle": "কোর্স ফংদ্রে",
+    "courseDeletedDialogDesc": "অসিগুম্বা কোর্স অসি মুতখ্রে।"
 }

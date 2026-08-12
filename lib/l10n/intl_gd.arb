@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-12 11:17:09.026029",
+    "@@last_modified": "2026-08-12 13:18:21.139786",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Faidhidh tu fuaim {toolName} a chomasachadh ann an roghainnean an ionnsachaidh agad",
     "audioSettingDisabledEnable": "Comasaich",
     "rejoinedTheActivity": "🔄 Thill {username} don ghnìomhachd seo",
-    "shareAnalytics": "Co-roinn Anailisean"
+    "shareAnalytics": "Co-roinn Anailisean",
+    "courseNoLongerAvailableTitle": "Cùrsa neo-làthaireach",
+    "courseDeletedDialogDesc": "Chaidh an cùrsa seo a sguabadh às."
 }

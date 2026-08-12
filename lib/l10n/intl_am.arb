@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-12 11:17:07.330042",
+    "@@last_modified": "2026-08-12 13:18:19.269599",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "በመማሪያ ቅንብሮችዎ ውስጥ የ{toolName} ድምጽን ማንቃት ይችላሉ።",
     "audioSettingDisabledEnable": "አንቃ",
     "rejoinedTheActivity": "🔄 {username} ወደዚህ እንቅስቃሴ ተመልሷል",
-    "shareAnalytics": "ትንተና አጋራ"
+    "shareAnalytics": "ትንተና አጋራ",
+    "courseNoLongerAvailableTitle": "ኮርስ የለም",
+    "courseDeletedDialogDesc": "ይህ ኮርስ ተሰርዟል።"
 }

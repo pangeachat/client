@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-12 11:17:12.644965",
+    "@@last_modified": "2026-08-12 13:18:25.602932",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9816,5 +9816,7 @@
     "audioSettingDisabledBody": "Możesz włączyć dźwięk {toolName} w ustawieniach nauki",
     "audioSettingDisabledEnable": "Włącz",
     "rejoinedTheActivity": "🔄 Użytkownik {username} ponownie dołączył do tej aktywności",
-    "shareAnalytics": "Udostępnij dane analityczne"
+    "shareAnalytics": "Udostępnij dane analityczne",
+    "courseNoLongerAvailableTitle": "Kurs niedostępny",
+    "courseDeletedDialogDesc": "Ten kurs został usunięty."
 }

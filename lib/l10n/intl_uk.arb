@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-12 11:17:15.203248",
+    "@@last_modified": "2026-08-12 13:18:27.303171",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9731,5 +9731,7 @@
     "audioSettingDisabledBody": "Ви можете ввімкнути аудіо {toolName} у налаштуваннях навчання",
     "audioSettingDisabledEnable": "Увімкнути",
     "rejoinedTheActivity": "🔄 {username} знову приєднався до цієї активності",
-    "shareAnalytics": "Поділитися аналітикою"
+    "shareAnalytics": "Поділитися аналітикою",
+    "courseNoLongerAvailableTitle": "Курс недоступний",
+    "courseDeletedDialogDesc": "Цей курс було видалено."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:07.822440",
+    "@@last_modified": "2026-08-12 13:18:20.252490",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9858,5 +9858,7 @@
     "audioSettingDisabledBody": "Pots activar l'àudio de {toolName} a la configuració d'aprenentatge",
     "audioSettingDisabledEnable": "Activa",
     "rejoinedTheActivity": "🔄 {username} s'ha tornat a unir a aquesta activitat",
-    "shareAnalytics": "Compartir analítiques"
+    "shareAnalytics": "Compartir analítiques",
+    "courseNoLongerAvailableTitle": "Curs no disponible",
+    "courseDeletedDialogDesc": "Aquest curs s'ha eliminat."
 }

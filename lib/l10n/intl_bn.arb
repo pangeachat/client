@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:07.224900",
+    "@@last_modified": "2026-08-12 13:18:19.246473",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10359,5 +10359,7 @@
     "audioSettingDisabledBody": "আপনি আপনার শেখার সেটিংসে {toolName} অডিও সক্ষম করতে পারেন",
     "audioSettingDisabledEnable": "সক্ষম করুন",
     "rejoinedTheActivity": "🔄 {username} এই কার্যকলাপে পুনরায় যোগদান করেছেন",
-    "shareAnalytics": "অ্যানালিটিক্স শেয়ার করুন"
+    "shareAnalytics": "অ্যানালিটিক্স শেয়ার করুন",
+    "courseNoLongerAvailableTitle": "কোর্সটি অনুপলব্ধ",
+    "courseDeletedDialogDesc": "এই কোর্সটি মুছে ফেলা হয়েছে।"
 }

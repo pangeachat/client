@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-12 11:17:13.131035",
+    "@@last_modified": "2026-08-12 13:18:25.419355",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10703,5 +10703,7 @@
     "audioSettingDisabledBody": "Вы можете включить аудио {toolName} в настройках обучения",
     "audioSettingDisabledEnable": "Включить",
     "rejoinedTheActivity": "🔄 {username} снова присоединился к занятию",
-    "shareAnalytics": "Поделиться аналитикой"
+    "shareAnalytics": "Поделиться аналитикой",
+    "courseNoLongerAvailableTitle": "Курс недоступен",
+    "courseDeletedDialogDesc": "Этот курс был удален."
 }

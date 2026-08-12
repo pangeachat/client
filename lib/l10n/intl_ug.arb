@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-12 11:17:15.468620",
+    "@@last_modified": "2026-08-12 13:18:27.465064",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "سىز ئۆگىنىش تەڭشەكلىرىڭىزدە {toolName} ئاۋازىنى قوزغىتالايدۇ",
     "audioSettingDisabledEnable": "قوزغىتىش",
     "rejoinedTheActivity": "🔄 {username} بۇ پائالىيەتكە قايتا قاتناشتى",
-    "shareAnalytics": "تەھلىل سانلىق مەلۇماتلىرىنى ھەمبەھىرلەش"
+    "shareAnalytics": "تەھلىل سانلىق مەلۇماتلىرىنى ھەمبەھىرلەش",
+    "courseNoLongerAvailableTitle": "دەرسلىك تەمىنلەنمەيدۇ",
+    "courseDeletedDialogDesc": "بۇ دەرسلىك ئۆچۈرۈلدى."
 }

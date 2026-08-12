@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-12 11:17:07.815477",
+    "@@last_modified": "2026-08-12 13:18:19.891179",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10225,5 +10225,7 @@
     "audioSettingDisabledBody": "Zvuk {toolName} můžete zapnout v nastavení učení",
     "audioSettingDisabledEnable": "Zapnout",
     "rejoinedTheActivity": "🔄 {username} se znovu připojil k této aktivitě",
-    "shareAnalytics": "Sdílet analýzy"
+    "shareAnalytics": "Sdílet analýzy",
+    "courseNoLongerAvailableTitle": "Kurz není k dispozici",
+    "courseDeletedDialogDesc": "Tento kurz byl smazán."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-12 11:17:07.167163",
+    "@@last_modified": "2026-08-12 13:18:19.649213",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10037,5 +10037,7 @@
     "audioSettingDisabledBody": "يمكنك تمكين صوت {toolName} في إعدادات التعلم الخاصة بك",
     "audioSettingDisabledEnable": "تمكين",
     "rejoinedTheActivity": "🔄 انضم {username} مرة أخرى إلى هذا النشاط",
-    "shareAnalytics": "مشاركة التحليلات"
+    "shareAnalytics": "مشاركة التحليلات",
+    "courseNoLongerAvailableTitle": "الدورة غير متاحة",
+    "courseDeletedDialogDesc": "تم حذف هذه الدورة."
 }

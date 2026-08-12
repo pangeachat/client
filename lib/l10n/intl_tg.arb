@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-12 11:17:15.061312",
+    "@@last_modified": "2026-08-12 13:18:26.826438",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Шумо метавонед аудиои {toolName}-ро дар танзимоти омӯзиши худ фаъол созед",
     "audioSettingDisabledEnable": "Фаъол кардан",
     "rejoinedTheActivity": "🔄 {username} ба ин машғулият дубора ҳамроҳ шуд",
-    "shareAnalytics": "Мубодилаи таҳлилҳо"
+    "shareAnalytics": "Мубодилаи таҳлилҳо",
+    "courseNoLongerAvailableTitle": "Курс дастнорас аст",
+    "courseDeletedDialogDesc": "Ин курс нест карда шудааст."
 }

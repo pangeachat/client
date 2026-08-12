@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:09.139453",
+    "@@last_modified": "2026-08-12 13:18:20.239558",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10676,5 +10676,7 @@
     "audioSettingDisabledBody": "Vi povas ŝalti la aŭdion de {toolName} en viaj lernaj agordoj",
     "audioSettingDisabledEnable": "Ŝalti",
     "rejoinedTheActivity": "🔄 {username} realiĝis al ĉi tiu agado",
-    "shareAnalytics": "Kunhavigi Analizojn"
+    "shareAnalytics": "Kunhavigi Analizojn",
+    "courseNoLongerAvailableTitle": "Kurso ne disponebla",
+    "courseDeletedDialogDesc": "Ĉi tiu kurso estas forigita."
 }

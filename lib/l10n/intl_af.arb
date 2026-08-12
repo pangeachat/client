@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-12 11:17:07.193168",
+    "@@last_modified": "2026-08-12 13:18:19.280424",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Jy kan {toolName} oudio in jou leerinstellings aktiveer",
     "audioSettingDisabledEnable": "Aktiveer",
     "rejoinedTheActivity": "🔄 {username} het weer by hierdie aktiwiteit aangesluit",
-    "shareAnalytics": "Deel Analise"
+    "shareAnalytics": "Deel Analise",
+    "courseNoLongerAvailableTitle": "Kursus onbeskikbaar",
+    "courseDeletedDialogDesc": "Hierdie kursus is uitgevee."
 }
