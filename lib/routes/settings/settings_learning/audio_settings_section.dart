@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_settings_switch_list_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/read_aloud_voice_dialog.dart';
@@ -22,7 +21,7 @@ class AudioSettingsSection extends StatelessWidget {
   Future<bool> _onEnableReadAloud(BuildContext context) async {
     final language = viewModel.selectedTargetLanguage;
     if (language == null) return false;
-    if (await TtsController.hasKnownGoodVoiceFor(language.langCode)) {
+    if (await viewModel.refreshKnownGoodVoice()) {
       return true;
     }
     if (context.mounted) {
