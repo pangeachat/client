@@ -137,13 +137,30 @@ void main() {
     expect(find.text('Widen search'), findsNothing);
   });
 
-  testWidgets('at the zoom floor the Zoom out lever greys out, not hides', (
+  testWidgets('off-screen matches keep the lever live at the zoom floor', (
+    tester,
+  ) async {
+    // #8121: the lever re-centers as well as zooms, and a narrow screen at the
+    // floor still can't show the whole world — so matches loaded off-screen
+    // are exactly when it must stay pressable, not grey out.
+    var zoomedOut = false;
+    await pumpBar(
+      tester,
+      emptyVerdict: () => MapEmptyVerdict.matchesOffscreen,
+      canZoomOut: () => false,
+      onZoomOut: () => zoomedOut = true,
+    );
+    await tester.tap(find.text('Zoom out'));
+    expect(zoomedOut, isTrue);
+  });
+
+  testWidgets('an empty area greys the lever out at the floor, not hides', (
     tester,
   ) async {
     var zoomedOut = false;
     await pumpBar(
       tester,
-      emptyVerdict: () => MapEmptyVerdict.matchesOffscreen,
+      emptyVerdict: () => MapEmptyVerdict.noActivities,
       canZoomOut: () => false,
       onZoomOut: () => zoomedOut = true,
     );
