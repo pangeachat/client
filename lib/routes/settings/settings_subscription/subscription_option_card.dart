@@ -32,6 +32,12 @@ class SubscriptionOptionCard extends StatelessWidget {
         ? AppConfig.goldByTheme(context)
         : theme.colorScheme.primaryContainer;
 
+    // The title sits on [frameColor], so its ink follows the frame — gold is a
+    // light fill in both themes, where onPrimaryContainer is unreadable (#8303).
+    final foregroundColor = selected
+        ? AppConfig.onGoldByTheme(context)
+        : theme.colorScheme.onPrimaryContainer;
+
     return Semantics(
       button: true,
       selected: selected,
@@ -49,11 +55,7 @@ class SubscriptionOptionCard extends StatelessWidget {
             title: plan.duration.cardTitle(l10n),
             frameColor: frameColor,
             backgroundColor: theme.colorScheme.surface,
-            foregroundColor: selected
-                ? (theme.brightness == Brightness.light
-                      ? theme.colorScheme.onSurface
-                      : theme.colorScheme.surface)
-                : theme.colorScheme.onPrimaryContainer,
+            foregroundColor: foregroundColor,
             padding: EdgeInsets.all(8.0),
             titlePadding: EdgeInsetsGeometry.symmetric(
               vertical: 8.0,
@@ -62,7 +64,7 @@ class SubscriptionOptionCard extends StatelessWidget {
             borderRadius: _borderRadius,
             titleStyle: textStyle?.copyWith(
               fontWeight: FontWeight.bold,
-              color: theme.colorScheme.onPrimaryContainer,
+              color: foregroundColor,
             ),
             child: Column(
               spacing: 8.0,
