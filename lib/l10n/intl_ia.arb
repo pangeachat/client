@@ -1367,7 +1367,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-12 11:17:10.893824",
+    "@@last_modified": "2026-08-12 13:18:22.008363",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10667,5 +10667,7 @@
     "audioSettingDisabledBody": "Tu pote activar le audio de {toolName} in tu preferentias de apprender",
     "audioSettingDisabledEnable": "Activar",
     "rejoinedTheActivity": "🔄 {username} ha reunite a iste activitate",
-    "shareAnalytics": "Compartir datos analytic"
+    "shareAnalytics": "Compartir datos analytic",
+    "courseNoLongerAvailableTitle": "Curso non disponibile",
+    "courseDeletedDialogDesc": "Iste curso ha essite delite."
 }

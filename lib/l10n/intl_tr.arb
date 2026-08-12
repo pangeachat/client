@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-12 11:17:15.189303",
+    "@@last_modified": "2026-08-12 13:18:26.876012",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10032,5 +10032,7 @@
     "audioSettingDisabledBody": "Öğrenme ayarlarınızdan {toolName} sesini etkinleştirebilirsiniz",
     "audioSettingDisabledEnable": "Etkinleştir",
     "rejoinedTheActivity": "🔄 {username} bu etkinliğe yeniden katıldı",
-    "shareAnalytics": "Analizleri Paylaş"
+    "shareAnalytics": "Analizleri Paylaş",
+    "courseNoLongerAvailableTitle": "Kurs kullanılamıyor",
+    "courseDeletedDialogDesc": "Bu kurs silindi."
 }

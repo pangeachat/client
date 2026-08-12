@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-12 11:17:10.819644",
+    "@@last_modified": "2026-08-12 13:18:23.382481",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Сиз {toolName} аудиосун окуу жөндөөлөрүңүздөн иштете аласыз",
     "audioSettingDisabledEnable": "Иштетүү",
     "rejoinedTheActivity": "🔄 {username} бул аракетке кайра кошулду",
-    "shareAnalytics": "Аналитика менен бөлүшүү"
+    "shareAnalytics": "Аналитика менен бөлүшүү",
+    "courseNoLongerAvailableTitle": "Курс жеткиликсиз",
+    "courseDeletedDialogDesc": "Бул курс өчүрүлдү."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:15.978826",
+    "@@last_modified": "2026-08-12 13:18:27.161587",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7007,5 +7007,7 @@
     "audioSettingDisabledBody": "Bạn có thể bật âm thanh {toolName} trong phần cài đặt học tập của mình",
     "audioSettingDisabledEnable": "Bật",
     "rejoinedTheActivity": "🔄 {username} đã tham gia lại hoạt động này",
-    "shareAnalytics": "Chia sẻ dữ liệu phân tích"
+    "shareAnalytics": "Chia sẻ dữ liệu phân tích",
+    "courseNoLongerAvailableTitle": "Khóa học không có sẵn",
+    "courseDeletedDialogDesc": "Khóa học này đã bị xóa."
 }

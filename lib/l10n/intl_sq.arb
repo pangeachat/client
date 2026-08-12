@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-12 11:17:14.206737",
+    "@@last_modified": "2026-08-12 13:18:26.212374",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Mund ta aktivizosh audion {toolName} te cilësimet e të mësuarit",
     "audioSettingDisabledEnable": "Aktivizo",
     "rejoinedTheActivity": "🔄 {username} iu bashkua sërish këtij aktiviteti",
-    "shareAnalytics": "Ndani Analizat"
+    "shareAnalytics": "Ndani Analizat",
+    "courseNoLongerAvailableTitle": "Kurs i padisponueshëm",
+    "courseDeletedDialogDesc": "Ky kurs është fshirë."
 }

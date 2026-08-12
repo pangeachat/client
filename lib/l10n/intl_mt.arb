@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-12 11:17:13.302197",
+    "@@last_modified": "2026-08-12 13:18:24.531242",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Tista' tattiva l-awdjo ta' {toolName} fis-settings tat-tagħlim tiegħek",
     "audioSettingDisabledEnable": "Attiva",
     "rejoinedTheActivity": "🔄 {username} reġa' ngħaqad ma' din l-attività",
-    "shareAnalytics": "Aqsam l-Analiżi"
+    "shareAnalytics": "Aqsam l-Analiżi",
+    "courseNoLongerAvailableTitle": "Kors mhux disponibbli",
+    "courseDeletedDialogDesc": "Dan il-kors tħassar."
 }

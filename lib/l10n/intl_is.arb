@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-12 11:17:10.139941",
+    "@@last_modified": "2026-08-12 13:18:24.570947",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Þú getur virkjað hljóð {toolName} í námsstillingunum þínum",
     "audioSettingDisabledEnable": "Virkja",
     "rejoinedTheActivity": "🔄 {username} tók aftur þátt í þessari virkni",
-    "shareAnalytics": "Deila notkunargögnum"
+    "shareAnalytics": "Deila notkunargögnum",
+    "courseNoLongerAvailableTitle": "Námskeið ekki í boði",
+    "courseDeletedDialogDesc": "Þessu námskeiði hefur verið eytt."
 }

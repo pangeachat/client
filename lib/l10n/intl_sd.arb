@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-12 11:17:13.548989",
+    "@@last_modified": "2026-08-12 13:18:25.686085",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "توهان پنهنجي سکيا جي سيٽنگن ۾ {toolName} آڊيو فعال ڪري سگهو ٿا",
     "audioSettingDisabledEnable": "فعال ڪريو",
     "rejoinedTheActivity": "🔄 {username} هن سرگرمي ۾ ٻيهر شامل ٿيو",
-    "shareAnalytics": "تجزيي جي ڄاڻ شيئر ڪريو"
+    "shareAnalytics": "تجزيي جي ڄاڻ شيئر ڪريو",
+    "courseNoLongerAvailableTitle": "ڪورس موجود ناهي",
+    "courseDeletedDialogDesc": "هي ڪورس ختم ڪيو ويو آهي."
 }

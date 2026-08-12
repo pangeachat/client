@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-12 11:17:09.546531",
+    "@@last_modified": "2026-08-12 13:18:21.743069",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Koj tuaj yeem qhib {toolName} lub suab hauv koj qhov chaw kawm",
     "audioSettingDisabledEnable": "Qhib",
     "rejoinedTheActivity": "🔄 {username} rov koom nrog qhov kev ua no",
-    "shareAnalytics": "Qhia Kev Ntsuam Xyuas"
+    "shareAnalytics": "Qhia Kev Ntsuam Xyuas",
+    "courseNoLongerAvailableTitle": "Cov kev kawm tsis muaj lawm",
+    "courseDeletedDialogDesc": "Cov kev kawm no raug muab rho tawm lawm."
 }

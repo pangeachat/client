@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-12 11:17:11.673755",
+    "@@last_modified": "2026-08-12 13:18:24.040858",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Ka taea e koe te whakahohe i te oro {toolName} i roto i ō tautuhinga ako",
     "audioSettingDisabledEnable": "Whakahohe",
     "rejoinedTheActivity": "🔄 Kua hono anō a {username} ki tēnei mahi",
-    "shareAnalytics": "Tirihia ngā Tauanga"
+    "shareAnalytics": "Tirihia ngā Tauanga",
+    "courseNoLongerAvailableTitle": "Kāore te akoranga i te wātea",
+    "courseDeletedDialogDesc": "Kua mukua tēnei akoranga."
 }

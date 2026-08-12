@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-12 11:17:10.630498",
+    "@@last_modified": "2026-08-12 13:18:22.782792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "ನಿಮ್ಮ ಕಲಿಕೆಯ ಸೆಟ್ಟಿಂಗ್‌ಗಳಲ್ಲಿ ನೀವು {toolName} ಆಡಿಯೋವನ್ನು ಸಕ್ರಿಯಗೊಳಿಸಬಹುದು",
     "audioSettingDisabledEnable": "ಸಕ್ರಿಯಗೊಳಿಸಿ",
     "rejoinedTheActivity": "🔄 {username} ಈ ಚಟುವಟಿಕೆಗೆ ಮರುಸೇರ್ಪಡೆಯಾದರು",
-    "shareAnalytics": "ಅನಾಲಿಟಿಕ್ಸ್ ಹಂಚಿಕೊಳ್ಳಿ"
+    "shareAnalytics": "ಅನಾಲಿಟಿಕ್ಸ್ ಹಂಚಿಕೊಳ್ಳಿ",
+    "courseNoLongerAvailableTitle": "ಕೋರ್ಸ್ ಲಭ್ಯವಿಲ್ಲ",
+    "courseDeletedDialogDesc": "ಈ ಕೋರ್ಸ್ ಅನ್ನು ಅಳಿಸಲಾಗಿದೆ."
 }

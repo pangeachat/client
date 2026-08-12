@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-12 11:17:15.780547",
+    "@@last_modified": "2026-08-12 13:18:27.623925",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10688,5 +10688,7 @@
     "audioSettingDisabledBody": "你可以在學習設定中啟用 {toolName} 語音",
     "audioSettingDisabledEnable": "啟用",
     "rejoinedTheActivity": "🔄 {username} 重新加入此活動",
-    "shareAnalytics": "分享分析數據"
+    "shareAnalytics": "分享分析數據",
+    "courseNoLongerAvailableTitle": "課程無法使用",
+    "courseDeletedDialogDesc": "此課程已被刪除。"
 }

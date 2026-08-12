@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-12 11:17:11.119801",
+    "@@last_modified": "2026-08-12 13:18:23.394730",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Dir kënnt den {toolName} Audio an Ären Léierastellungen aktivéieren",
     "audioSettingDisabledEnable": "Aktivéieren",
     "rejoinedTheActivity": "🔄 {username} ass dëser Aktivitéit nees bäigetrueden",
-    "shareAnalytics": "Analysen deelen"
+    "shareAnalytics": "Analysen deelen",
+    "courseNoLongerAvailableTitle": "Cours net méi disponibel",
+    "courseDeletedDialogDesc": "Dëse Cours gouf geläscht."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-12 11:17:15.217279",
+    "@@last_modified": "2026-08-12 13:18:26.030521",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "E mafai ona e faʻagaoioia le leo {toolName} i au faʻatulagaga aʻoaʻoga",
     "audioSettingDisabledEnable": "Faʻagaoioia",
     "rejoinedTheActivity": "🔄 Na toe auai {username} i lenei gaioiga",
-    "shareAnalytics": "Fa'asoa Fa'amaumauga"
+    "shareAnalytics": "Fa'asoa Fa'amaumauga",
+    "courseNoLongerAvailableTitle": "E le o maua le kosi",
+    "courseDeletedDialogDesc": "Ua tapeina lenei kosi."
 }

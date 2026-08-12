@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-12 11:17:11.214472",
+    "@@last_modified": "2026-08-12 13:18:23.540027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "ທ່ານສາມາດເປີດສຽງ {toolName} ໄດ້ໃນການຕັ້ງຄ່າການຮຽນຮູ້ຂອງທ່ານ",
     "audioSettingDisabledEnable": "ເປີດໃຊ້ງານ",
     "rejoinedTheActivity": "🔄 {username} ເຂົ້າຮ່ວມກິດຈະກຳນີ້ອີກຄັ້ງ",
-    "shareAnalytics": "ແບ່ງປັນການວິເຄາະ"
+    "shareAnalytics": "ແບ່ງປັນການວິເຄາະ",
+    "courseNoLongerAvailableTitle": "ຫຼັກສູດບໍ່ສາມາດໃຊ້ໄດ້",
+    "courseDeletedDialogDesc": "ຫຼັກສູດນີ້ຖືກລຶບແລ້ວ."
 }

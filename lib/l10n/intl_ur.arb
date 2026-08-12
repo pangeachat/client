@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-12 11:17:15.764517",
+    "@@last_modified": "2026-08-12 13:18:36.961633",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "آپ اپنی سیکھنے کی ترتیبات میں {toolName} آڈیو کو فعال کر سکتے ہیں",
     "audioSettingDisabledEnable": "فعال کریں",
     "rejoinedTheActivity": "🔄 {username} اس سرگرمی میں دوبارہ شامل ہو گیا",
-    "shareAnalytics": "تجزیات شیئر کریں"
+    "shareAnalytics": "تجزیات شیئر کریں",
+    "courseNoLongerAvailableTitle": "کورس دستیاب نہیں",
+    "courseDeletedDialogDesc": "یہ کورس حذف کر دیا گیا ہے۔"
 }

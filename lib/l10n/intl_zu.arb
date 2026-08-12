@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-12 11:17:16.467013",
+    "@@last_modified": "2026-08-12 13:18:27.965776",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Ungavula umsindo we-{toolName} kuzilungiselelo zakho zokufunda",
     "audioSettingDisabledEnable": "Vula",
     "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi",
-    "shareAnalytics": "Yabelana Ngokuhlaziya"
+    "shareAnalytics": "Yabelana Ngokuhlaziya",
+    "courseNoLongerAvailableTitle": "Ikosi ayitholakali",
+    "courseDeletedDialogDesc": "Le khosi isusiwe."
 }

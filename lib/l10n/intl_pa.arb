@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-12 11:17:12.757480",
+    "@@last_modified": "2026-08-12 13:18:25.253517",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "ਤੁਸੀਂ ਆਪਣੀਆਂ ਸਿੱਖਣ ਸੈਟਿੰਗਾਂ ਵਿੱਚ {toolName} ਆਡੀਓ ਨੂੰ ਸਮਰੱਥ ਕਰ ਸਕਦੇ ਹੋ",
     "audioSettingDisabledEnable": "ਸਮਰੱਥ ਕਰੋ",
     "rejoinedTheActivity": "🔄 {username} ਇਸ ਗਤੀਵਿਧੀ ਵਿੱਚ ਦੁਬਾਰਾ ਸ਼ਾਮਲ ਹੋ ਗਿਆ",
-    "shareAnalytics": "ਵਿਸ਼ਲੇਸ਼ਣ ਸਾਂਝਾ ਕਰੋ"
+    "shareAnalytics": "ਵਿਸ਼ਲੇਸ਼ਣ ਸਾਂਝਾ ਕਰੋ",
+    "courseNoLongerAvailableTitle": "ਕੋਰਸ ਉਪਲਬਧ ਨਹੀਂ",
+    "courseDeletedDialogDesc": "ਇਹ ਕੋਰਸ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।"
 }

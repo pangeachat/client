@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-12 11:17:11.569107",
+    "@@last_modified": "2026-08-12 13:18:23.998545",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Можете да го овозможите аудиото на {toolName} во вашите поставки за учење",
     "audioSettingDisabledEnable": "Овозможи",
     "rejoinedTheActivity": "🔄 {username} повторно се приклучи на оваа активност",
-    "shareAnalytics": "Сподели аналитика"
+    "shareAnalytics": "Сподели аналитика",
+    "courseNoLongerAvailableTitle": "Курсот е недостапен",
+    "courseDeletedDialogDesc": "Овој курс е избришан."
 }

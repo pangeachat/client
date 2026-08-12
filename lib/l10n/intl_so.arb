@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-12 11:17:14.511418",
+    "@@last_modified": "2026-08-12 13:18:26.454319",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Waxaad shidi kartaa codka {toolName} goobaha waxbarashadaada",
     "audioSettingDisabledEnable": "Daar",
     "rejoinedTheActivity": "🔄 {username} wuxuu dib ugu soo biiray hawshan",
-    "shareAnalytics": "La wadaag Falanqaynta"
+    "shareAnalytics": "La wadaag Falanqaynta",
+    "courseNoLongerAvailableTitle": "Koorsada lama heli karo",
+    "courseDeletedDialogDesc": "Koorsadan waa la tirtiray."
 }

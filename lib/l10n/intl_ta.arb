@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:14.622964",
+    "@@last_modified": "2026-08-12 13:18:26.813885",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9823,5 +9823,7 @@
     "audioSettingDisabledBody": "உங்கள் கற்றல் அமைப்புகளில் {toolName} ஆடியோவை இயக்கலாம்",
     "audioSettingDisabledEnable": "இயக்கு",
     "rejoinedTheActivity": "🔄 {username} இந்தச் செயல்பாட்டில் மீண்டும் இணைந்தார்",
-    "shareAnalytics": "பகுப்பாய்வுகளைப் பகிரவும்"
+    "shareAnalytics": "பகுப்பாய்வுகளைப் பகிரவும்",
+    "courseNoLongerAvailableTitle": "பாடநெறி கிடைக்கவில்லை",
+    "courseDeletedDialogDesc": "இந்த பாடநெறி நீக்கப்பட்டுவிட்டது."
 }

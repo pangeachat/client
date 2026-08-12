@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-12 11:17:09.482372",
+    "@@last_modified": "2026-08-12 13:18:21.973629",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Ou ka aktive odyo {toolName} nan paramèt aprantisaj ou",
     "audioSettingDisabledEnable": "Aktive",
     "rejoinedTheActivity": "🔄 {username} rejwenn aktivite sa a",
-    "shareAnalytics": "Pataje Analiz"
+    "shareAnalytics": "Pataje Analiz",
+    "courseNoLongerAvailableTitle": "Kou a pa disponib",
+    "courseDeletedDialogDesc": "Kou sa a te efase."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-12 11:17:13.976780",
+    "@@last_modified": "2026-08-12 13:18:26.145080",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Unogona kubatidza ruzha rwe {toolName} muzvirongwa zvako zvekudzidza",
     "audioSettingDisabledEnable": "Batidza",
     "rejoinedTheActivity": "🔄 {username} akabatana zvakare chiitiko ichi",
-    "shareAnalytics": "Goverana Ongororo"
+    "shareAnalytics": "Goverana Ongororo",
+    "courseNoLongerAvailableTitle": "Kosi haipo",
+    "courseDeletedDialogDesc": "Kosi iyi yakadzimwa."
 }

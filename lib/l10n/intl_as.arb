@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-12 11:17:07.296607",
+    "@@last_modified": "2026-08-12 13:18:19.237797",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "আপুনি আপোনাৰ শিক্ষণ ছেটিংছত {toolName} অডিঅ' সক্ষম কৰিব পাৰে",
     "audioSettingDisabledEnable": "সক্ষম কৰক",
     "rejoinedTheActivity": "🔄 {username} এই কাৰ্য্যকলাপত পুনৰ যোগদান কৰিছে",
-    "shareAnalytics": "বিশ্লেষণ ভাগ বতৰা কৰক"
+    "shareAnalytics": "বিশ্লেষণ ভাগ বতৰা কৰক",
+    "courseNoLongerAvailableTitle": "কোর্স উপলব্ধ নহয়",
+    "courseDeletedDialogDesc": "এইটো পাঠ্যক্ৰম বিলোপ কৰা হৈছে।"
 }
