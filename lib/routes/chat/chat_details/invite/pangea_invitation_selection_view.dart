@@ -34,7 +34,13 @@ class PangeaInvitationSelectionView extends StatelessWidget {
     ).client.getRoomById(controller.widget.roomId);
     if (room == null) {
       return Scaffold(
-        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
+        appBar: AppBar(
+          // Give the error state the panel's close control (#8327) so an
+          // unresolvable `?c=` course id can't strand the user, the same fix
+          // the course card got in #8322.
+          leading: controller.widget.embeddedCloseButton,
+          title: Text(L10n.of(context).oopsSomethingWentWrong),
+        ),
         body: Center(
           child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
         ),
