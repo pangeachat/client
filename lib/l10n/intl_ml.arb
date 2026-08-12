@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-12 13:18:23.983206",
+    "@@last_modified": "2026-08-12 14:33:40.761430",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ഈ പ്രവർത്തനത്തിൽ വീണ്ടും ചേർന്നു",
     "shareAnalytics": "അനലിറ്റിക്സ് പങ്കിടുക",
     "courseNoLongerAvailableTitle": "കോഴ്‌സ് ലഭ്യമല്ല",
-    "courseDeletedDialogDesc": "ഈ കോഴ്‌സ് ഇല്ലാതാക്കിയിരിക്കുന്നു."
+    "courseDeletedDialogDesc": "ഈ കോഴ്‌സ് ഇല്ലാതാക്കിയിരിക്കുന്നു.",
+    "pingedActivity": "പിംഗ് ചെയ്ത പ്രവർത്തനം"
 }

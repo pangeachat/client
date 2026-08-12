@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-12 13:18:22.749016",
+    "@@last_modified": "2026-08-12 14:33:38.720972",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} abanyela ọrụ a ọzọ",
     "shareAnalytics": "Kekọrịta Nyocha",
     "courseNoLongerAvailableTitle": "Ọmụmụ ihe adịghịzi",
-    "courseDeletedDialogDesc": "Ehichapụla ọmụmụ ihe a."
+    "courseDeletedDialogDesc": "Ehichapụla ọmụmụ ihe a.",
+    "pingedActivity": "Ọrụ pinged"
 }

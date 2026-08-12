@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-12 13:18:24.812929",
+    "@@last_modified": "2026-08-12 14:33:41.479041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} यस गतिविधिमा पुन: सामेल हुनुभयो",
     "shareAnalytics": "विश्लेषणहरू साझेदारी गर्नुहोस्",
     "courseNoLongerAvailableTitle": "कोर्स उपलब्ध छैन",
-    "courseDeletedDialogDesc": "यो कोर्स मेटाइएको छ।"
+    "courseDeletedDialogDesc": "यो कोर्स मेटाइएको छ।",
+    "pingedActivity": "पिङ गरिएको गतिविधि"
 }

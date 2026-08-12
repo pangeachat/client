@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-12 13:18:19.886636",
+    "@@last_modified": "2026-08-12 14:33:36.488829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} hà riunitu sta attività",
     "shareAnalytics": "Sparte l'Analitiche",
     "courseNoLongerAvailableTitle": "Corsu micca dispunibule",
-    "courseDeletedDialogDesc": "Stu corsu hè statu sguassatu."
+    "courseDeletedDialogDesc": "Stu corsu hè statu sguassatu.",
+    "pingedActivity": "Attività pingata"
 }

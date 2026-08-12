@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-12 13:18:24.749524",
+    "@@last_modified": "2026-08-12 14:33:41.505749",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ble med i denne aktiviteten igjen",
     "shareAnalytics": "Del analyser",
     "courseNoLongerAvailableTitle": "Kurset er ikke tilgjengelig",
-    "courseDeletedDialogDesc": "Dette kurset er slettet."
+    "courseDeletedDialogDesc": "Dette kurset er slettet.",
+    "pingedActivity": "Pinget aktivitet"
 }

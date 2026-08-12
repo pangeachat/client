@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-12 13:18:25.253517",
+    "@@last_modified": "2026-08-12 14:33:41.496413",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ਇਸ ਗਤੀਵਿਧੀ ਵਿੱਚ ਦੁਬਾਰਾ ਸ਼ਾਮਲ ਹੋ ਗਿਆ",
     "shareAnalytics": "ਵਿਸ਼ਲੇਸ਼ਣ ਸਾਂਝਾ ਕਰੋ",
     "courseNoLongerAvailableTitle": "ਕੋਰਸ ਉਪਲਬਧ ਨਹੀਂ",
-    "courseDeletedDialogDesc": "ਇਹ ਕੋਰਸ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।"
+    "courseDeletedDialogDesc": "ਇਹ ਕੋਰਸ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।",
+    "pingedActivity": "ਪਿੰਗ ਕੀਤੀ ਗਤੀਵਿਧੀ"
 }

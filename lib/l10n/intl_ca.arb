@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:20.252490",
+    "@@last_modified": "2026-08-12 14:33:37.095534",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9860,5 +9860,6 @@
     "rejoinedTheActivity": "🔄 {username} s'ha tornat a unir a aquesta activitat",
     "shareAnalytics": "Compartir analítiques",
     "courseNoLongerAvailableTitle": "Curs no disponible",
-    "courseDeletedDialogDesc": "Aquest curs s'ha eliminat."
+    "courseDeletedDialogDesc": "Aquest curs s'ha eliminat.",
+    "pingedActivity": "Activitat de ping"
 }

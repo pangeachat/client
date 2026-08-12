@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-12 13:18:26.545534",
+    "@@last_modified": "2026-08-12 14:33:42.872182",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ngagabung deui kana kagiatan ieu",
     "shareAnalytics": "Bagikeun Analitik",
     "courseNoLongerAvailableTitle": "Kursus teu sayogi",
-    "courseDeletedDialogDesc": "Kursus ieu parantos dihapus."
+    "courseDeletedDialogDesc": "Kursus ieu parantos dihapus.",
+    "pingedActivity": "kagiatan anu diping"
 }

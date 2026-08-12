@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-12 13:18:24.040858",
+    "@@last_modified": "2026-08-12 14:33:40.818607",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 Kua hono anō a {username} ki tēnei mahi",
     "shareAnalytics": "Tirihia ngā Tauanga",
     "courseNoLongerAvailableTitle": "Kāore te akoranga i te wātea",
-    "courseDeletedDialogDesc": "Kua mukua tēnei akoranga."
+    "courseDeletedDialogDesc": "Kua mukua tēnei akoranga.",
+    "pingedActivity": "Mahi i pīngia"
 }

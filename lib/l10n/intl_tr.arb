@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-12 13:18:26.876012",
+    "@@last_modified": "2026-08-12 14:33:43.862294",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10034,5 +10034,6 @@
     "rejoinedTheActivity": "🔄 {username} bu etkinliğe yeniden katıldı",
     "shareAnalytics": "Analizleri Paylaş",
     "courseNoLongerAvailableTitle": "Kurs kullanılamıyor",
-    "courseDeletedDialogDesc": "Bu kurs silindi."
+    "courseDeletedDialogDesc": "Bu kurs silindi.",
+    "pingedActivity": "Etkinlik pinglendi"
 }

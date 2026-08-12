@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-12 13:18:24.953380",
+    "@@last_modified": "2026-08-12 14:33:41.481288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} wabwereranso ku ntchito iyi",
     "shareAnalytics": "Gawana Zomwe Zasonyezedwa",
     "courseNoLongerAvailableTitle": "Maphunziro kulibe",
-    "courseDeletedDialogDesc": "Maphunzirowa achotsedwa."
+    "courseDeletedDialogDesc": "Maphunzirowa achotsedwa.",
+    "pingedActivity": "Zochitika zomwe zatumizidwa"
 }

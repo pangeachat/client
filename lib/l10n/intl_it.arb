@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:22.476198",
+    "@@last_modified": "2026-08-12 14:33:39.402245",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9806,5 +9806,6 @@
     "rejoinedTheActivity": "🔄 {username} ha ripreso questa attività",
     "shareAnalytics": "Condividi dati analitici",
     "courseNoLongerAvailableTitle": "Corso non disponibile",
-    "courseDeletedDialogDesc": "Questo corso è stato eliminato."
+    "courseDeletedDialogDesc": "Questo corso è stato eliminato.",
+    "pingedActivity": "Attività con ping"
 }

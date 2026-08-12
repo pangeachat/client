@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-12 13:18:19.186685",
+    "@@last_modified": "2026-08-12 14:33:35.965243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} bu fəaliyyətə yenidən qoşuldu",
     "shareAnalytics": "Analitikaları paylaşın",
     "courseNoLongerAvailableTitle": "Kurs mövcud deyil",
-    "courseDeletedDialogDesc": "Bu kurs silinib."
+    "courseDeletedDialogDesc": "Bu kurs silinib.",
+    "pingedActivity": "Bildiriş göndərilən fəaliyyət"
 }

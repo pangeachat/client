@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-12 13:18:27.520982",
+    "@@last_modified": "2026-08-12 14:33:43.871058",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9737,5 +9737,6 @@
     "rejoinedTheActivity": "🔄 {username} ushbu mashg'ulotga qaytdi",
     "shareAnalytics": "Analitikani ulashish",
     "courseNoLongerAvailableTitle": "Kurs mavjud emas",
-    "courseDeletedDialogDesc": "Bu kurs oʻchirib tashlangan."
+    "courseDeletedDialogDesc": "Bu kurs oʻchirib tashlangan.",
+    "pingedActivity": "Faoliyat ping qilingan"
 }

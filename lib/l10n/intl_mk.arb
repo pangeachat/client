@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-12 13:18:23.998545",
+    "@@last_modified": "2026-08-12 14:33:40.813875",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} повторно се приклучи на оваа активност",
     "shareAnalytics": "Сподели аналитика",
     "courseNoLongerAvailableTitle": "Курсот е недостапен",
-    "courseDeletedDialogDesc": "Овој курс е избришан."
+    "courseDeletedDialogDesc": "Овој курс е избришан.",
+    "pingedActivity": "Пингувана активност"
 }

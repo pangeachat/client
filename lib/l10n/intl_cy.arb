@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-12 13:18:20.006276",
+    "@@last_modified": "2026-08-12 14:33:36.610310",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 Ymunodd {username} â'r gweithgaredd hwn eto",
     "shareAnalytics": "Rhannu Dadansoddeg",
     "courseNoLongerAvailableTitle": "Cwrs ddim ar gael",
-    "courseDeletedDialogDesc": "Mae'r cwrs hwn wedi'i ddileu."
+    "courseDeletedDialogDesc": "Mae'r cwrs hwn wedi'i ddileu.",
+    "pingedActivity": "Gweithgaredd a biniwyd"
 }

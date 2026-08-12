@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-12 13:18:23.222623",
+    "@@last_modified": "2026-08-12 14:33:39.879061",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} دووبارە بەشداریی ئەم چالاکییەی کردەوە",
     "shareAnalytics": "شیکردنەوەکان هاوبەش بکە",
     "courseNoLongerAvailableTitle": "کۆرس بەردەست نییە",
-    "courseDeletedDialogDesc": "ئەم کۆرسە سڕاوەتەوە."
+    "courseDeletedDialogDesc": "ئەم کۆرسە سڕاوەتەوە.",
+    "pingedActivity": "چالاکیی پینگکراو"
 }

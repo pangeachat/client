@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:21.375348",
+    "@@last_modified": "2026-08-12 14:33:38.560078",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10647,5 +10647,6 @@
     "rejoinedTheActivity": "🔄 {username} הצטרף/ה מחדש לפעילות זו",
     "shareAnalytics": "שיתוף נתונים סטטיסטיים",
     "courseNoLongerAvailableTitle": "הקורס אינו זמין",
-    "courseDeletedDialogDesc": "הקורס נמחק."
+    "courseDeletedDialogDesc": "הקורס נמחק.",
+    "pingedActivity": "פעילות עם תזכורת"
 }

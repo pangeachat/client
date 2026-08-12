@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-12 13:18:36.961633",
+    "@@last_modified": "2026-08-12 14:33:43.909345",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} اس سرگرمی میں دوبارہ شامل ہو گیا",
     "shareAnalytics": "تجزیات شیئر کریں",
     "courseNoLongerAvailableTitle": "کورس دستیاب نہیں",
-    "courseDeletedDialogDesc": "یہ کورس حذف کر دیا گیا ہے۔"
+    "courseDeletedDialogDesc": "یہ کورس حذف کر دیا گیا ہے۔",
+    "pingedActivity": "پِنگ کی گئی سرگرمی"
 }

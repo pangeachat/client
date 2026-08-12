@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-12 13:18:23.394730",
+    "@@last_modified": "2026-08-12 14:33:40.308036",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ass dëser Aktivitéit nees bäigetrueden",
     "shareAnalytics": "Analysen deelen",
     "courseNoLongerAvailableTitle": "Cours net méi disponibel",
-    "courseDeletedDialogDesc": "Dëse Cours gouf geläscht."
+    "courseDeletedDialogDesc": "Dëse Cours gouf geläscht.",
+    "pingedActivity": "Gepingt Aktivitéit"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-12 13:18:23.382481",
+    "@@last_modified": "2026-08-12 14:33:40.194528",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} бул аракетке кайра кошулду",
     "shareAnalytics": "Аналитика менен бөлүшүү",
     "courseNoLongerAvailableTitle": "Курс жеткиликсиз",
-    "courseDeletedDialogDesc": "Бул курс өчүрүлдү."
+    "courseDeletedDialogDesc": "Бул курс өчүрүлдү.",
+    "pingedActivity": "Пинделген аракет"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-12 13:18:21.145694",
+    "@@last_modified": "2026-08-12 14:33:37.900417",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} આ પ્રવૃત્તિમાં ફરીથી જોડાયા",
     "shareAnalytics": "એનાલિટિક્સ શેર કરો",
     "courseNoLongerAvailableTitle": "કોર્સ અનુપલબ્ધ છે",
-    "courseDeletedDialogDesc": "આ કોર્સ ડિલીટ કરવામાં આવ્યો છે."
+    "courseDeletedDialogDesc": "આ કોર્સ ડિલીટ કરવામાં આવ્યો છે.",
+    "pingedActivity": "પિંગ કરેલી પ્રવૃત્તિ"
 }

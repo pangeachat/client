@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-12 13:18:21.241442",
+    "@@last_modified": "2026-08-12 14:33:38.198557",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9733,5 +9733,6 @@
     "rejoinedTheActivity": "🔄 {username} volveu unirse a esta actividade",
     "shareAnalytics": "Compartir datos de uso",
     "courseNoLongerAvailableTitle": "Curso non dispoñible",
-    "courseDeletedDialogDesc": "Este curso foi eliminado."
+    "courseDeletedDialogDesc": "Este curso foi eliminado.",
+    "pingedActivity": "Actividade mencionada"
 }

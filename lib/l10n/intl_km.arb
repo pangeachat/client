@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-12 13:18:22.888318",
+    "@@last_modified": "2026-08-12 14:33:39.690664",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} បានចូលរួមសកម្មភាពនេះឡើងវិញ",
     "shareAnalytics": "ចែករំលែកការវិភាគ",
     "courseNoLongerAvailableTitle": "វគ្គសិក្សាមិនមានទេ",
-    "courseDeletedDialogDesc": "វគ្គសិក្សានេះត្រូវបានលុបហើយ។"
+    "courseDeletedDialogDesc": "វគ្គសិក្សានេះត្រូវបានលុបហើយ។",
+    "pingedActivity": "សកម្មភាពដែលបានខ្ទាស់"
 }

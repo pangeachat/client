@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:25.573650",
+    "@@last_modified": "2026-08-12 14:33:42.247585",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10465,5 +10465,6 @@
     "rejoinedTheActivity": "🔄 {username} s-a alăturat din nou acestei activități",
     "shareAnalytics": "Partajează datele analitice",
     "courseNoLongerAvailableTitle": "Curs indisponibil",
-    "courseDeletedDialogDesc": "Acest curs a fost șters."
+    "courseDeletedDialogDesc": "Acest curs a fost șters.",
+    "pingedActivity": "Activitate pinguită"
 }

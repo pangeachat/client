@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-12 13:18:22.236815",
+    "@@last_modified": "2026-08-12 14:33:38.823940",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username}-ը միացավ այս ակտիվությանը",
     "shareAnalytics": "Կիսվել վերլուծություններով",
     "courseNoLongerAvailableTitle": "Դասընթացն անհասանելի է",
-    "courseDeletedDialogDesc": "Այս դասընթացը ջնջվել է։"
+    "courseDeletedDialogDesc": "Այս դասընթացը ջնջվել է։",
+    "pingedActivity": "Հիշեցված ակտիվություն"
 }

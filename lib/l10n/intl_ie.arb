@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-12 13:18:22.364918",
+    "@@last_modified": "2026-08-12 14:33:38.859286",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10365,5 +10365,6 @@
     "rejoinedTheActivity": "🔄 {username} ath-cheangail an gnìomhachd seo",
     "shareAnalytics": "Roinn Anailísí",
     "courseNoLongerAvailableTitle": "Cúrsa neamh-infhaighte",
-    "courseDeletedDialogDesc": "Tá an cúrsa seo scriosta."
+    "courseDeletedDialogDesc": "Tá an cúrsa seo scriosta.",
+    "pingedActivity": "Gníomhaíocht phingáilte"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-12 13:18:24.183048",
+    "@@last_modified": "2026-08-12 14:33:41.139568",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} या अ‍ॅक्टिव्हिटीमध्ये पुन्हा सामील झाले",
     "shareAnalytics": "ॲनालिटिक्स शेअर करा",
     "courseNoLongerAvailableTitle": "कोर्स अनुपलब्ध",
-    "courseDeletedDialogDesc": "हा कोर्स हटवला गेला आहे."
+    "courseDeletedDialogDesc": "हा कोर्स हटवला गेला आहे.",
+    "pingedActivity": "पिंग केलेली अ‍ॅक्टिव्हिटी"
 }

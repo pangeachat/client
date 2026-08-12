@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-12 13:18:24.570947",
+    "@@last_modified": "2026-08-12 14:33:39.488663",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} tók aftur þátt í þessari virkni",
     "shareAnalytics": "Deila notkunargögnum",
     "courseNoLongerAvailableTitle": "Námskeið ekki í boði",
-    "courseDeletedDialogDesc": "Þessu námskeiði hefur verið eytt."
+    "courseDeletedDialogDesc": "Þessu námskeiði hefur verið eytt.",
+    "pingedActivity": "Virkni sem var pinguð"
 }

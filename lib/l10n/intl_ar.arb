@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-12 13:18:19.649213",
+    "@@last_modified": "2026-08-12 14:33:35.966863",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10039,5 +10039,6 @@
     "rejoinedTheActivity": "🔄 انضم {username} مرة أخرى إلى هذا النشاط",
     "shareAnalytics": "مشاركة التحليلات",
     "courseNoLongerAvailableTitle": "الدورة غير متاحة",
-    "courseDeletedDialogDesc": "تم حذف هذه الدورة."
+    "courseDeletedDialogDesc": "تم حذف هذه الدورة.",
+    "pingedActivity": "نشاط تم الإشارة إليه"
 }
