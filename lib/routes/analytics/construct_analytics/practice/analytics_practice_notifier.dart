@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
@@ -57,6 +59,8 @@ class AnalyticsPracticeNotifier extends ChangeNotifier {
   }
 
   bool hasSelectedChoice(String choice) => _clickedChoices.contains(choice);
+
+  Set<String> get selectedChoices => UnmodifiableSetView(_clickedChoices);
 
   void clearExerciseState() {
     _lastSelectedChoice = null;

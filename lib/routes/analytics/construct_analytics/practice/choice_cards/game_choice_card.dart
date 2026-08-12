@@ -16,6 +16,11 @@ class GameChoiceCard extends StatefulWidget {
   final bool isEnabled;
   final bool shrinkWrap;
 
+  /// Whether this choice was already picked in the session. The tint and the
+  /// flipped face are otherwise local State, so a card rebuilt after the
+  /// practice panel closed would come back blank (#8309).
+  final bool isSelected;
+
   const GameChoiceCard({
     required this.child,
     required this.onPressed,
@@ -26,6 +31,7 @@ class GameChoiceCard extends StatefulWidget {
     this.shouldFlip = false,
     this.isEnabled = true,
     this.shrinkWrap = false,
+    this.isSelected = false,
     super.key,
   });
 
@@ -38,8 +44,11 @@ class _GameChoiceCardState extends State<GameChoiceCard>
   late final AnimationController _controller;
   late final Animation<double> _scaleAnim;
 
-  bool _clicked = false;
-  bool _revealed = false;
+  late bool _clicked = widget.isSelected;
+
+  /// Seeded, not derived: an in-progress tap sets [widget.isSelected] before
+  /// the flip animation runs, so deriving it would skip the animation.
+  late bool _revealed = widget.isSelected;
 
   @override
   void initState() {
