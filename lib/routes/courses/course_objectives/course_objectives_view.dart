@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
@@ -451,9 +452,8 @@ class _PingedActivityBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     return Material(
-      color: scheme.primaryContainer,
+      color: AppConfig.green,
       elevation: 4.0,
       borderRadius: BorderRadius.circular(24.0),
       child: InkWell(
@@ -468,20 +468,16 @@ class _PingedActivityBar extends StatelessWidget {
               Icon(
                 Icons.notifications_outlined,
                 size: 18.0,
-                color: scheme.onPrimaryContainer,
+                color: Colors.white,
               ),
               Text(
                 L10n.of(context).pingedActivity,
                 style: TextStyle(
-                  color: scheme.onPrimaryContainer,
+                  color: Colors.white,
                   fontWeight: FontWeight.w600,
                 ),
               ),
-              Icon(
-                Icons.arrow_downward,
-                size: 18.0,
-                color: scheme.onPrimaryContainer,
-              ),
+              Icon(Icons.arrow_downward, size: 18.0, color: Colors.white),
             ],
           ),
         ),
