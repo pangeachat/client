@@ -23,7 +23,6 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 class ConfirmedRoleSession extends StatefulWidget {
   final Room room;
-  final Room? course;
   final String activityId;
   final ActivityPlanModel? activity;
   final ActivitySessionStartState controller;
@@ -33,7 +32,6 @@ class ConfirmedRoleSession extends StatefulWidget {
     required this.room,
     required this.activityId,
     required this.controller,
-    this.course,
     this.activity,
   });
 
@@ -60,7 +58,13 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
     super.dispose();
   }
 
-  bool get showPingCourse => widget.course != null;
+  /// The course whose roster the ping reaches: the one this session was launched
+  /// from, never a course it was merely fanned out into ([Room.sourceCourse]).
+  /// The page's borrowed course context can be any space parent, so it can't
+  /// drive a write against the course (#8097).
+  Room? get _course => widget.room.sourceCourse;
+
+  bool get showPingCourse => _course != null;
 
   bool get showInviteOptions => widget.room.isRoomAdmin;
 
@@ -128,7 +132,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
   Set<String> completedGoalIdsForRole(String id) => {};
 
   Future<bool> get canPingParticipants async {
-    final course = widget.course;
+    final course = _course;
     if (course == null) return false;
     if (_pingCooldown != null && _pingCooldown!.isActive) return false;
 
@@ -161,8 +165,9 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       showFutureLoadingDialog(context: context, future: _pingCourse);
 
   Future<void> _pingCourse() async {
-    if (widget.course == null) {
-      throw Exception("Activity is not part of a course");
+    final course = _course;
+    if (course == null) {
+      throw Exception("Activity was not launched from a course");
     }
 
     if (!(await canPingParticipants)) {
@@ -175,7 +180,7 @@ class ConfirmedRoleSessionController extends State<ConfirmedRoleSession>
       if (mounted) setState(() {});
     });
 
-    await widget.room.courseParent!.sendActivityPing(
+    await course.sendActivityPing(
       L10n.of(context).pingParticipantsNotification(
         widget.room.client.userID!.localpart ?? widget.room.client.userID!,
         widget.room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),

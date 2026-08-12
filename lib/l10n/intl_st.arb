@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-11 15:43:21.842922",
+    "@@last_modified": "2026-08-12 14:33:42.858792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2118,5 +2118,9 @@
     "audioSettingDisabledTitle": "Molumo oa {toolName} o tingoe",
     "audioSettingDisabledBody": "O ka bulela molumo oa {toolName} ho di-setting tsa thuto ya hao",
     "audioSettingDisabledEnable": "Bulela",
-    "rejoinedTheActivity": "🔄 {username} o boetse a kenela mosebetsi ona"
+    "rejoinedTheActivity": "🔄 {username} o boetse a kenela mosebetsi ona",
+    "shareAnalytics": "Arolelana Litlhahlobo",
+    "courseNoLongerAvailableTitle": "Thupelo ha e sa fumaneha",
+    "courseDeletedDialogDesc": "Thupelo ena e hlakotsoe.",
+    "pingedActivity": "Mosebetsi o pingilweng"
 }

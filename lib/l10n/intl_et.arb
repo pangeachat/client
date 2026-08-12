@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-11 15:43:16.098135",
+    "@@last_modified": "2026-08-12 14:33:37.190401",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9727,5 +9727,9 @@
     "audioSettingDisabledTitle": "{toolName} heli on keelatud",
     "audioSettingDisabledBody": "Saate lubada {toolName} heli oma õppeseadetes",
     "audioSettingDisabledEnable": "Luba",
-    "rejoinedTheActivity": "🔄 {username} liitus tegevusega uuesti"
+    "rejoinedTheActivity": "🔄 {username} liitus tegevusega uuesti",
+    "shareAnalytics": "Jaga analüütikat",
+    "courseNoLongerAvailableTitle": "Kursus pole saadaval",
+    "courseDeletedDialogDesc": "See kursus on kustutatud.",
+    "pingedActivity": "Märgitud tegevus"
 }

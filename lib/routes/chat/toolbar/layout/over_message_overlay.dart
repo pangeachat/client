@@ -65,6 +65,7 @@ class OverMessageOverlay extends StatelessWidget {
                       overlayKey:
                           'overlay_message_${controller.widget.event.eventId}',
                       reactionsWidth: controller.reactionNotifier,
+                      useTokenKeys: true,
                     );
                   },
                 ),

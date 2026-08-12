@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-11 15:43:15.844989",
+    "@@last_modified": "2026-08-12 14:33:36.678137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2118,5 +2118,9 @@
     "audioSettingDisabledTitle": "Ang {toolName} audio gi-disable",
     "audioSettingDisabledBody": "Mahimo nimong i-enable ang {toolName} audio sa imong learning settings",
     "audioSettingDisabledEnable": "I-enable",
-    "rejoinedTheActivity": "🔄 Si {username} miapil pag-usab niini nga kalihokan"
+    "rejoinedTheActivity": "🔄 Si {username} miapil pag-usab niini nga kalihokan",
+    "shareAnalytics": "Ipakigbahin ang Analytics",
+    "courseNoLongerAvailableTitle": "Dili na magamit ang kurso",
+    "courseDeletedDialogDesc": "Gipapas na kini nga kurso.",
+    "pingedActivity": "Gi-ping nga kalihokan"
 }

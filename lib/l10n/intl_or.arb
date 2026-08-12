@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-11 15:43:20.705530",
+    "@@last_modified": "2026-08-12 14:33:41.781436",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2118,5 +2118,9 @@
     "audioSettingDisabledTitle": "{toolName} ଅଡିଓ ଅକ୍ଷମ କରାଯାଇଛି",
     "audioSettingDisabledBody": "ଆପଣ ଆପଣଙ୍କ ଶିକ୍ଷଣ ସେଟିଙ୍ଗ୍ସରେ {toolName} ଅଡିଓ ସକ୍ଷମ କରିପାରିବେ",
     "audioSettingDisabledEnable": "ସକ୍ଷମ କରନ୍ତୁ",
-    "rejoinedTheActivity": "🔄 {username} ଏହି କାର୍ଯ୍ୟକଳାପରେ ପୁନଃ ଯୋଗ ଦେଇଛନ୍ତି"
+    "rejoinedTheActivity": "🔄 {username} ଏହି କାର୍ଯ୍ୟକଳାପରେ ପୁନଃ ଯୋଗ ଦେଇଛନ୍ତି",
+    "shareAnalytics": "ବିଶ୍ଳେଷଣ ବାଣ୍ଟନ୍ତୁ",
+    "courseNoLongerAvailableTitle": "କୋର୍ସ ଉପଲବ୍ଧ ନାହିଁ",
+    "courseDeletedDialogDesc": "ଏହି କୋର୍ସଟିକୁ ଡିଲିଟ୍ କରାଯାଇଛି।",
+    "pingedActivity": "ପିଙ୍ଗ୍ ହୋଇଥିବା କାର୍ଯ୍ୟକଳାପ"
 }

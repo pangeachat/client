@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 15:43:18.387642",
+    "@@last_modified": "2026-08-12 14:33:39.506458",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9923,5 +9923,9 @@
     "audioSettingDisabledTitle": "{toolName} 오디오 비활성화됨",
     "audioSettingDisabledBody": "학습 설정에서 {toolName} 오디오를 활성화할 수 있습니다",
     "audioSettingDisabledEnable": "활성화",
-    "rejoinedTheActivity": "🔄 {username}님이 활동에 다시 참여했습니다"
+    "rejoinedTheActivity": "🔄 {username}님이 활동에 다시 참여했습니다",
+    "shareAnalytics": "분석 공유",
+    "courseNoLongerAvailableTitle": "코스를 이용할 수 없음",
+    "courseDeletedDialogDesc": "이 코스는 삭제되었습니다.",
+    "pingedActivity": "핑 활동"
 }

@@ -21,7 +21,12 @@ class PangeaRoomDetailsView extends StatelessWidget {
       return Semantics(
         container: true,
         child: Scaffold(
-          appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
+          appBar: AppBar(
+            // Give the error state the panel's close control (#8322) so a
+            // stale or hand-edited course ID can't strand the user.
+            leading: controller.widget.embeddedCloseButton,
+            title: Text(L10n.of(context).oopsSomethingWentWrong),
+          ),
           body: Center(
             child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
           ),

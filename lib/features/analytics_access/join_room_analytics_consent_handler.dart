@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics_access/access_notice_extension.dart';
+import 'package:fluffychat/features/analytics_access/analytics_access_notice_dialog.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
-import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 
 class JoinRoomAnalyticsConsentHandler {
@@ -51,11 +51,10 @@ class JoinRoomAnalyticsConsentHandler {
       return true;
     }
 
-    final noticeResp = await showOkCancelAlertDialog(
+    final noticeResp = await showDialog<OkCancelResult>(
       context: context,
-      title: L10n.of(context).analyticsAccessNoticeTitle,
-      message: L10n.of(context).analyticsAccessNoticeDesc,
       barrierDismissible: false,
+      builder: (context) => const AnalyticsAccessNoticeDialog(),
     );
 
     if (noticeResp != OkCancelResult.cancel) {

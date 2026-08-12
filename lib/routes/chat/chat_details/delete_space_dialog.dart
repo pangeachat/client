@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/space_gone_gate.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
@@ -45,6 +46,8 @@ class DeleteSpaceDialog extends StatefulWidget {
       if (deleteRoomIds == null) return;
     }
 
+    // The admin's own marked self-leave must not pop the space-gone dialog
+    SpaceGoneGate.suppressFor(room.id);
     final result = await showFutureLoadingDialog(
       context: context,
       future: () => room.deleteSpace(deleteRoomIds ?? []),

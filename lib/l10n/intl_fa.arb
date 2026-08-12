@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 15:43:16.087076",
+    "@@last_modified": "2026-08-12 14:33:37.214452",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9818,5 +9818,9 @@
     "audioSettingDisabledTitle": "صدای {toolName} غیرفعال شد",
     "audioSettingDisabledBody": "می‌توانید صدای {toolName} را در تنظیمات یادگیری خود فعال کنید",
     "audioSettingDisabledEnable": "فعال کردن",
-    "rejoinedTheActivity": "🔄 {username} دوباره به این فعالیت پیوست"
+    "rejoinedTheActivity": "🔄 {username} دوباره به این فعالیت پیوست",
+    "shareAnalytics": "اشتراک‌گذاری تحلیل‌ها",
+    "courseNoLongerAvailableTitle": "دوره در دسترس نیست",
+    "courseDeletedDialogDesc": "این دوره حذف شده است.",
+    "pingedActivity": "فعالیت پینگ‌شده"
 }

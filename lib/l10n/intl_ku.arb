@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-11 15:43:18.967558",
+    "@@last_modified": "2026-08-12 14:33:39.879061",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2118,5 +2118,9 @@
     "audioSettingDisabledTitle": "دەنگی {toolName} ناچالاک کراوە",
     "audioSettingDisabledBody": "دەتوانیت دەنگی {toolName} لە ڕێکخستنەکانی فێربووندا چالاک بکەیت",
     "audioSettingDisabledEnable": "چالاککردن",
-    "rejoinedTheActivity": "🔄 {username} دووبارە بەشداریی ئەم چالاکییەی کردەوە"
+    "rejoinedTheActivity": "🔄 {username} دووبارە بەشداریی ئەم چالاکییەی کردەوە",
+    "shareAnalytics": "شیکردنەوەکان هاوبەش بکە",
+    "courseNoLongerAvailableTitle": "کۆرس بەردەست نییە",
+    "courseDeletedDialogDesc": "ئەم کۆرسە سڕاوەتەوە.",
+    "pingedActivity": "چالاکیی پینگکراو"
 }

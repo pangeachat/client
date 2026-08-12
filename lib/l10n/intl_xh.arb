@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-11 15:43:23.456856",
+    "@@last_modified": "2026-08-12 14:33:43.962535",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2118,5 +2118,9 @@
     "audioSettingDisabledTitle": "Isandi se-{toolName} sivaliwe",
     "audioSettingDisabledBody": "Ungasivula isandi se-{toolName} kuseto lwakho lokufunda",
     "audioSettingDisabledEnable": "Vula",
-    "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi"
+    "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi",
+    "shareAnalytics": "Yabelana nge-Analytics",
+    "courseNoLongerAvailableTitle": "Ikhosi ayifumaneki",
+    "courseDeletedDialogDesc": "Le khosi icinyiwe.",
+    "pingedActivity": "Umsebenzi opingwe"
 }

@@ -28,7 +28,6 @@ class TtsDisabledPopup extends StatelessWidget {
         transformTargetId: targetID,
         closePrevOverlay: false,
         overlayKey: _overlayKey,
-        backDropToDismiss: false,
       ),
     );
   }

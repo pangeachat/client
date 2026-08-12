@@ -188,6 +188,7 @@ class CenteredMessage extends StatelessWidget {
                           "overlay_center_message_${controller.widget.event.eventId}",
                       readingAssistanceMode: controller.readingAssistanceMode,
                       reactionsWidth: controller.reactionNotifier,
+                      useTokenKeys: finished,
                     ),
                   ),
                   const SizedBox(

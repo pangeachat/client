@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-11 15:43:20.574679",
+    "@@last_modified": "2026-08-12 14:33:41.090303",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2118,5 +2118,9 @@
     "audioSettingDisabledTitle": "{toolName} အသံ ပိတ်ထားသည်",
     "audioSettingDisabledBody": "သင်၏ သင်ယူမှု ဆက်တင်များတွင် {toolName} အသံကို ဖွင့်နိုင်သည်။",
     "audioSettingDisabledEnable": "ဖွင့်ရန်",
-    "rejoinedTheActivity": "🔄 {username} သည် ဤလုပ်ဆောင်ချက်သို့ ပြန်လည်ဝင်ရောက်ခဲ့သည်"
+    "rejoinedTheActivity": "🔄 {username} သည် ဤလုပ်ဆောင်ချက်သို့ ပြန်လည်ဝင်ရောက်ခဲ့သည်",
+    "shareAnalytics": "ခွဲခြမ်းစိတ်ဖြာမှုများကို မျှဝေပါ",
+    "courseNoLongerAvailableTitle": "သင်တန်းမရနိုင်တော့ပါ",
+    "courseDeletedDialogDesc": "ဤသင်တန်းကို ဖျက်လိုက်ပါပြီ။",
+    "pingedActivity": "ပင်းခေါ်ထားသည့် လုပ်ဆောင်ချက်"
 }

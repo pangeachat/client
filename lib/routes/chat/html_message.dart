@@ -57,6 +57,7 @@ class HtmlMessage extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final bool isPracticeMode;
+  final bool useTokenKeys;
 
   /// Rendered as an example-message chip on a construct's analytics details
   /// page. Selects that render context's token target-key namespace so the
@@ -99,6 +100,7 @@ class HtmlMessage extends StatelessWidget {
     this.onClick,
     this.isTransitionAnimation = false,
     this.isPracticeMode = false,
+    this.useTokenKeys = false,
     this.isAnalyticsExample = false,
     this.vocabLemmas,
     // Pangea#
@@ -509,7 +511,9 @@ class HtmlMessage extends StatelessWidget {
           fontSize,
         );
 
-        final tokenTargetKey = isPracticeMode
+        final tokenTargetKey = !useTokenKeys
+            ? null
+            : isPracticeMode
             ? token?.practiceModeTargetKey(event.eventId)
             : overlayController != null
             ? token?.overlayTargetKey(event.eventId)
@@ -529,7 +533,9 @@ class HtmlMessage extends StatelessWidget {
                   : PlaceholderAlignment.middle,
               child: Column(
                 children: [
-                  if (token != null && overlayController != null)
+                  if (token != null &&
+                      overlayController != null &&
+                      !isPracticeMode)
                     TokenEmojiButton(
                       token: token,
                       enabled: token.lemma.saveVocab,

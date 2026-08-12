@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-11 15:43:16.909736",
+    "@@last_modified": "2026-08-12 14:33:37.392612",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7933,5 +7933,9 @@
     "audioSettingDisabledTitle": "Audio de {toolName} deshabilitado",
     "audioSettingDisabledBody": "Puedes habilitar el audio de {toolName} en tu configuración de aprendizaje",
     "audioSettingDisabledEnable": "Habilitar",
-    "rejoinedTheActivity": "🔄 {username} se reincorporó a esta actividad"
+    "rejoinedTheActivity": "🔄 {username} se reincorporó a esta actividad",
+    "shareAnalytics": "Compartir análisis",
+    "courseNoLongerAvailableTitle": "Curso no disponible",
+    "courseDeletedDialogDesc": "Este curso ha sido eliminado.",
+    "pingedActivity": "Actividad mencionada"
 }

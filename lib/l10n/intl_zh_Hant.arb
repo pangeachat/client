@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 15:43:24.067480",
+    "@@last_modified": "2026-08-12 14:33:44.829792",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9836,5 +9836,9 @@
     "audioSettingDisabledTitle": "{toolName} 音訊已停用",
     "audioSettingDisabledBody": "您可以在學習設定中啟用 {toolName} 音訊",
     "audioSettingDisabledEnable": "啟用",
-    "rejoinedTheActivity": "🔄 {username} 已重新加入此活動"
+    "rejoinedTheActivity": "🔄 {username} 已重新加入此活動",
+    "shareAnalytics": "分享分析數據",
+    "courseNoLongerAvailableTitle": "課程無法使用",
+    "courseDeletedDialogDesc": "此課程已刪除。",
+    "pingedActivity": "已標記的活動"
 }

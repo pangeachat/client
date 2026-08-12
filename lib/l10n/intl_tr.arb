@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-11 15:43:22.774481",
+    "@@last_modified": "2026-08-12 14:33:43.862294",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10031,5 +10031,9 @@
     "audioSettingDisabledTitle": "{toolName} sesi devre dışı",
     "audioSettingDisabledBody": "Öğrenme ayarlarınızdan {toolName} sesini etkinleştirebilirsiniz",
     "audioSettingDisabledEnable": "Etkinleştir",
-    "rejoinedTheActivity": "🔄 {username} bu etkinliğe yeniden katıldı"
+    "rejoinedTheActivity": "🔄 {username} bu etkinliğe yeniden katıldı",
+    "shareAnalytics": "Analizleri Paylaş",
+    "courseNoLongerAvailableTitle": "Kurs kullanılamıyor",
+    "courseDeletedDialogDesc": "Bu kurs silindi.",
+    "pingedActivity": "Etkinlik pinglendi"
 }

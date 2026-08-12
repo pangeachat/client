@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 15:43:18.318483",
+    "@@last_modified": "2026-08-12 14:33:39.402245",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9803,5 +9803,9 @@
     "audioSettingDisabledTitle": "Audio di {toolName} disabilitato",
     "audioSettingDisabledBody": "Puoi abilitare l'audio di {toolName} nelle impostazioni di apprendimento",
     "audioSettingDisabledEnable": "Abilita",
-    "rejoinedTheActivity": "🔄 {username} ha ripreso questa attività"
+    "rejoinedTheActivity": "🔄 {username} ha ripreso questa attività",
+    "shareAnalytics": "Condividi dati analitici",
+    "courseNoLongerAvailableTitle": "Corso non disponibile",
+    "courseDeletedDialogDesc": "Questo corso è stato eliminato.",
+    "pingedActivity": "Attività con ping"
 }

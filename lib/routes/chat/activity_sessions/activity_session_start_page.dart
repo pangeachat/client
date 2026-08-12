@@ -26,6 +26,7 @@ import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
@@ -126,6 +127,10 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
   @override
   void initState() {
     super.initState();
+    // Opening the pinged activity is what lets the next course-page visit
+    // clear the ping badges (#8319). The session tile badge still renders
+    // from the cache while this page is up.
+    CoursePingBadgeCache.markFollowed(widget.activityId);
     _initSummariesFromCache();
     _load();
   }
@@ -514,7 +519,6 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
           room: activityRoom!,
           activityId: widget.activityId,
           activity: activity,
-          course: course,
           controller: this,
         );
       case SessionState.selectedSessionFull:

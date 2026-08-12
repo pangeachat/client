@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-11 15:43:22.274821",
+    "@@last_modified": "2026-08-12 14:33:42.959039",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10680,5 +10680,9 @@
     "audioSettingDisabledTitle": "{toolName} ఆడియో నిలిపివేయబడింది",
     "audioSettingDisabledBody": "మీరు మీ అభ్యాస సెట్టింగ్‌లలో {toolName} ఆడియోను ప్రారంభించవచ్చు",
     "audioSettingDisabledEnable": "ప్రారంభించు",
-    "rejoinedTheActivity": "🔄 {username} ఈ కార్యాచరణలో తిరిగి చేరారు"
+    "rejoinedTheActivity": "🔄 {username} ఈ కార్యాచరణలో తిరిగి చేరారు",
+    "shareAnalytics": "విశ్లేషణలను భాగస్వామ్యం చేయండి",
+    "courseNoLongerAvailableTitle": "కోర్సు అందుబాటులో లేదు",
+    "courseDeletedDialogDesc": "ఈ కోర్సు తొలగించబడింది.",
+    "pingedActivity": "పింగ్ చేయబడిన కార్యాచరణ"
 }

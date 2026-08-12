@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-11 15:43:21.338366",
+    "@@last_modified": "2026-08-12 14:33:42.301931",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10675,5 +10675,9 @@
     "audioSettingDisabledTitle": "Zvuk {toolName} je vypnutý",
     "audioSettingDisabledBody": "Zvuk {toolName} môžete zapnúť v nastaveniach učenia",
     "audioSettingDisabledEnable": "Zapnúť",
-    "rejoinedTheActivity": "🔄 {username} sa znova pripojil k tejto aktivite"
+    "rejoinedTheActivity": "🔄 {username} sa znova pripojil k tejto aktivite",
+    "shareAnalytics": "Zdieľať analýzy",
+    "courseNoLongerAvailableTitle": "Kurz nedostupný",
+    "courseDeletedDialogDesc": "Tento kurz bol vymazaný.",
+    "pingedActivity": "Aktivita s upozornením"
 }

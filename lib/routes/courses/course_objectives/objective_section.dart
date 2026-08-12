@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -42,6 +43,10 @@ class ObjectiveSection extends StatefulWidget {
   /// nothing to show (preview, or the rollup hasn't resolved yet).
   final MissionProgress? progress;
 
+  /// The activity a course ping pointed at, when it lives in this section —
+  /// its card gets the bell badge (#8319). Null everywhere else.
+  final String? pingedActivityId;
+
   const ObjectiveSection({
     super.key,
     required this.index,
@@ -52,6 +57,7 @@ class ObjectiveSection extends StatefulWidget {
     required this.liveStateByActivity,
     required this.availableParticipants,
     required this.progress,
+    this.pingedActivityId,
     this.spacing = 16.0,
     this.cardWidth,
     this.cardHeight,
@@ -292,6 +298,14 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                                     ),
                                   ),
                                 ),
+                              // The course-ping bell, top-left so it shares
+                              // the banner's row without covering it (#8319).
+                              if (ref.activityId == widget.pingedActivityId)
+                                const Positioned(
+                                  top: 8.0,
+                                  left: 6.0,
+                                  child: CoursePingBadge(),
+                                ),
                             ],
                           ),
                         ),
@@ -299,26 +313,15 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                     },
                   ),
                 ),
-                // Drop the card semantics beneath the arrows so a tap on an arrow
-                // can't fall through to a card on Flutter web (#7803). A single
-                // blocker painted after the ListView but before the arrows keeps
-                // the two arrows from clobbering each other's semantics: a
-                // per-arrow BlockSemantics would also drop the sibling arrow
-                // painted before it, routing its taps to the wrong arrow.
-                ListenableBuilder(
-                  listenable: Listenable.merge([
-                    _showBackArrowNotifier,
-                    _showForwardArrowNotifier,
-                  ]),
-                  builder: (context, _) {
-                    final blocking =
-                        _showBackArrowNotifier.value ||
-                        _showForwardArrowNotifier.value;
-                    return blocking
-                        ? const BlockSemantics()
-                        : const SizedBox.shrink();
-                  },
-                ),
+                // No BlockSemantics here (#8011): blocking is tree-order, not
+                // geometric, so it would drop every card's semantics node in the
+                // row — and on Flutter web with the semantics tree on (staging
+                // forces it via ENABLE_SEMANTICS) a node-less card cannot be
+                // clicked at all. Worse, the section's labeled container then
+                // merges with the only surviving node (the arrow) into one
+                // row-sized button, so every card click scrolls. Each arrow
+                // instead defends its own strip with an opaque semantics hit
+                // test — see ObjectiveSectionScrollArrow.
                 // The scroll arrows overlay the ends of the ListView. Only mount
                 // the arrow that is currently usable — a hidden-but-present arrow
                 // (IgnorePointer / opacity 0) still leaves a semantics node at the

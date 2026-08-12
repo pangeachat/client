@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-11 15:43:14.987476",
+    "@@last_modified": "2026-08-12 14:33:35.965243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2118,5 +2118,9 @@
     "audioSettingDisabledTitle": "{toolName} səsi deaktiv edilib",
     "audioSettingDisabledBody": "Öyrənmə parametrlərində {toolName} səsini aktiv edə bilərsiniz",
     "audioSettingDisabledEnable": "Aktiv et",
-    "rejoinedTheActivity": "🔄 {username} bu fəaliyyətə yenidən qoşuldu"
+    "rejoinedTheActivity": "🔄 {username} bu fəaliyyətə yenidən qoşuldu",
+    "shareAnalytics": "Analitikaları paylaşın",
+    "courseNoLongerAvailableTitle": "Kurs mövcud deyil",
+    "courseDeletedDialogDesc": "Bu kurs silinib.",
+    "pingedActivity": "Bildiriş göndərilən fəaliyyət"
 }

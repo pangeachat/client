@@ -4383,6 +4383,8 @@
     "unbanFromSpace": "Unban from course",
     "cannotJoinBannedRoom": "Banned. Unable to join.",
     "removedFromCourseError": "You've been removed from this course. Contact your teacher.",
+    "courseNoLongerAvailableTitle": "Course unavailable",
+    "courseDeletedDialogDesc": "This course has been deleted.",
     "sessionFull": "Too late! This activity is full.",
     "returnToCourse": "Return to course",
     "returnHome": "Return home",
@@ -4548,8 +4550,9 @@
     "requireAnalyticsAccessTitle": "Require analytics access to join",
     "requireAnalyticsAccessDesc": "Participants must grant access to their learning analytics to join this course",
     "moreOptions": "More options",
-    "analyticsAccessNoticeTitle": "Analytics Access Required",
-    "analyticsAccessNoticeDesc": "By joining this course, you agree to grant admins access to your learning analytics.",
+    "analyticsAccessNoticeTitle": "Learning Analytics Required",
+    "analyticsAccessNoticeDesc": "Admins of this course want to view your analytics to track your learning progress. Allow them access to join.",
+    "shareAnalytics": "Share Analytics",
     "setPermissionsLevelDesc": "Please choose a predefined role below or enter a custom permission level. Pick a whole number between 0 and 100.",
     "reportContentIssue": "Report content issue",
     "userTypeTitle": "I use Pangea Chat to",
@@ -4966,6 +4969,7 @@
     "streamingSttDegradedToBatchBanner": "Live transcription is unavailable right now. Your message was transcribed the standard way, without live editing. We're working to restore it.",
     "streamingSttLanguageUnsupportedBanner": "Live transcription isn't available for this language yet. We're working on it.",
     "pingedLabel": "Pinged",
+    "pingedActivity": "Pinged activity",
     "mapFilterPlayerCount": "{count} players",
     "@mapFilterPlayerCount": {
         "placeholders": {

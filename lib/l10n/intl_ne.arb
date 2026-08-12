@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-11 15:43:19.922516",
+    "@@last_modified": "2026-08-12 14:33:41.479041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2118,5 +2118,9 @@
     "audioSettingDisabledTitle": "{toolName} अडियो असक्षम पारिएको छ",
     "audioSettingDisabledBody": "तपाईंले आफ्नो सिकाइ सेटिङहरूमा {toolName} अडियो सक्षम पार्न सक्नुहुन्छ",
     "audioSettingDisabledEnable": "सक्षम पार्नुहोस्",
-    "rejoinedTheActivity": "🔄 {username} यस गतिविधिमा पुन: सामेल हुनुभयो"
+    "rejoinedTheActivity": "🔄 {username} यस गतिविधिमा पुन: सामेल हुनुभयो",
+    "shareAnalytics": "विश्लेषणहरू साझेदारी गर्नुहोस्",
+    "courseNoLongerAvailableTitle": "कोर्स उपलब्ध छैन",
+    "courseDeletedDialogDesc": "यो कोर्स मेटाइएको छ।",
+    "pingedActivity": "पिङ गरिएको गतिविधि"
 }
