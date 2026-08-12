@@ -44,10 +44,19 @@ platform :android do
         json_key: "./keys.json"
       )
     last_version = versions.map(&:to_i).max
+    # A build upload delivers a bundle and nothing else. Left to itself supply
+    # finds fastlane/metadata/android/ and republishes the whole store listing
+    # on every internal build — the icon, the descriptions, and a changelog
+    # still carrying upstream FluffyChat release notes. The listing is
+    # maintained in the Play Console; the checked-in copy is not its source.
     upload_to_play_store(
       track: 'internal',
       aab: '../build/app/outputs/bundle/release/app-release.aab',
       version_code: "#{last_version+1}",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_changelogs: true,
     )
   end
 
