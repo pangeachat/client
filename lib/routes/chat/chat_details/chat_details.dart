@@ -18,6 +18,8 @@ import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_constants.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/pangea_room_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -275,11 +277,29 @@ class ChatDetailsController extends State<ChatDetails>
     if (room == null) return;
 
     final event = await room.unreadCoursePingEvent;
-    if (event != null) {
-      try {
-        await room.setReadMarker(event.eventId);
-      } catch (_) {}
+    if (event == null) {
+      // Back on the course with no unread ping left: this course's badge
+      // pass (course plan card, session tile) is over. See #8319.
+      CoursePingBadgeCache.clearForCourse(room.id);
+      return;
     }
+
+    // Stash the pinged activity/session BEFORE setting the read marker — the
+    // badges render from this cache for the rest of the visit, while the
+    // marker makes the next visit start clean.
+    final activityId = event.content[CoursePingConstants.coursePingActivityId];
+    final sessionRoomId = event.content[CoursePingConstants.coursePingRoomId];
+    if (activityId is String && sessionRoomId is String) {
+      CoursePingBadgeCache.set((
+        courseId: room.id,
+        activityId: activityId,
+        sessionRoomId: sessionRoomId,
+      ));
+    }
+
+    try {
+      await room.setReadMarker(event.eventId);
+    } catch (_) {}
   }
 
   // #Pangea

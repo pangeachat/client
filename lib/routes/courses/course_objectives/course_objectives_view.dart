@@ -19,6 +19,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/error_indicator.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 import 'package:fluffychat/routes/world/world_map_room_extension.dart';
@@ -77,10 +78,22 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   int? _availableParticipants;
   StreamSubscription? _availableParticipantsSub;
 
+  /// Attached to the ObjectiveSection holding the pinged activity, so the
+  /// floating ping-bar can tell whether it's on screen and scroll to it.
+  final GlobalKey _pingedSectionKey = GlobalKey();
+
+  /// Latches once the pinged section has been in view — the ping-bar hides
+  /// and never comes back this visit (#8319).
+  bool _pingedSectionSeen = false;
+
   @override
   void initState() {
     super.initState();
     _loadAvailableParticipants();
+    // The course page stashes the ping asynchronously (it reads the timeline),
+    // usually after this list first builds — rebuild when it lands.
+    CoursePingBadgeCache.instance.addListener(_onLiveStateSourcesChanged);
+    _scrollController.addListener(_checkPingedSectionSeen);
     // Open state is read off the map's discovery cache, which discovery updates
     // out-of-band (async, throttled). Rebuild the instant it changes — a session
     // discovered or removed — so a card turns Open / back to plain live, not only
@@ -107,6 +120,7 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
   @override
   void dispose() {
     DiscoveredSessionsCache.instance.removeListener(_onLiveStateSourcesChanged);
+    CoursePingBadgeCache.instance.removeListener(_onLiveStateSourcesChanged);
     _availableParticipantsSub?.cancel();
     _scrollController.dispose();
     super.dispose();
@@ -114,6 +128,62 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
 
   void _onLiveStateSourcesChanged() {
     if (mounted) setState(() {});
+  }
+
+  /// The activity a course ping pointed at, when it's for THIS course.
+  /// Previews (no room) never match. See [CoursePingBadgeCache].
+  String? get _pingedActivityId {
+    final ping = CoursePingBadgeCache.instance.value;
+    if (ping == null || ping.courseId != widget.room?.id) return null;
+    return ping.activityId;
+  }
+
+  /// Hide the ping-bar for good once the pinged section shows in the
+  /// viewport. Checked on scroll and post-frame; the section not being built
+  /// at all (lazy list, far below the fold) counts as not seen.
+  void _checkPingedSectionSeen() {
+    if (_pingedSectionSeen || _pingedActivityId == null) return;
+    final sectionBox = _pingedSectionKey.currentContext?.findRenderObject();
+    final listBox = context.findRenderObject();
+    if (sectionBox is! RenderBox ||
+        listBox is! RenderBox ||
+        !sectionBox.attached ||
+        !listBox.attached) {
+      return;
+    }
+    final top = sectionBox.localToGlobal(Offset.zero, ancestor: listBox).dy;
+    // Seen once a meaningful slice of the section (or all of it, when the
+    // learner scrolled past) is inside the viewport.
+    if (top < listBox.size.height - 100.0) {
+      setState(() => _pingedSectionSeen = true);
+    }
+  }
+
+  /// Scroll to the pinged activity's section. The list builds lazily, so an
+  /// unbuilt target has no context to ensureVisible — step down a viewport at
+  /// a time until it mounts, then settle on it.
+  Future<void> _scrollToPinged() async {
+    while (_pingedSectionKey.currentContext == null &&
+        _scrollController.hasClients) {
+      final position = _scrollController.position;
+      if (position.pixels >= position.maxScrollExtent) break;
+      await _scrollController.animateTo(
+        (position.pixels + position.viewportDimension * 0.8).clamp(
+          0.0,
+          position.maxScrollExtent,
+        ),
+        duration: const Duration(milliseconds: 150),
+        curve: Curves.linear,
+      );
+    }
+    final sectionContext = _pingedSectionKey.currentContext;
+    if (sectionContext == null) return;
+    await Scrollable.ensureVisible(
+      sectionContext,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
+      alignment: 0.1,
+    );
   }
 
   Future<void> _loadAvailableParticipants() async {
@@ -252,6 +322,24 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                   final hasProgress =
                       widget.room != null &&
                       widget.objectivesProvider.hasResolvedProgress;
+                  // The pinged activity's section, for the card badge and the
+                  // floating ping-bar. A ping for an activity no longer in the
+                  // plan resolves to no badge at all.
+                  final pingedActivityId = _pingedActivityId;
+                  final pingedGroupIndex = pingedActivityId == null
+                      ? -1
+                      : groups.indexWhere(
+                          (g) => g.activities.any(
+                            (a) => a.activityId == pingedActivityId,
+                          ),
+                        );
+                  if (pingedGroupIndex >= 0 && !_pingedSectionSeen) {
+                    // Catch the initially-visible case (and any relayout)
+                    // that the scroll listener alone would miss.
+                    WidgetsBinding.instance.addPostFrameCallback(
+                      (_) => _checkPingedSectionSeen(),
+                    );
+                  }
                   final list = ListView.separated(
                     controller: widget.shrinkWrap ? null : _scrollController,
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -264,6 +352,10 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                     itemBuilder: (context, i) {
                       final group = groups[i];
                       return ObjectiveSection(
+                        key: i == pingedGroupIndex ? _pingedSectionKey : null,
+                        pingedActivityId: i == pingedGroupIndex
+                            ? pingedActivityId
+                            : null,
                         index: i,
                         group: group,
                         hasCompletedActivity: widget.hasCompletedActivity,
@@ -320,12 +412,76 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                   return Listener(
                     behavior: HitTestBehavior.opaque,
                     onPointerSignal: _claimVerticalScroll,
-                    child: list,
+                    child: Stack(
+                      children: [
+                        list,
+                        // The pinged activity is below the fold: float a bar
+                        // that scrolls to it. It latches hidden once the
+                        // section has been seen (#8319).
+                        if (pingedGroupIndex >= 0 && !_pingedSectionSeen)
+                          Positioned(
+                            bottom: 16.0,
+                            left: 0,
+                            right: 0,
+                            child: Center(
+                              child: _PingedActivityBar(onTap: _scrollToPinged),
+                            ),
+                          ),
+                      ],
+                    ),
                   );
                 },
               );
           }
         },
+      ),
+    );
+  }
+}
+
+/// The floating "pinged activity below" pill: bell + label + down arrow.
+/// Tapping it scrolls the plan to the pinged activity's section.
+class _PingedActivityBar extends StatelessWidget {
+  final VoidCallback onTap;
+
+  const _PingedActivityBar({required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Material(
+      color: scheme.primaryContainer,
+      elevation: 4.0,
+      borderRadius: BorderRadius.circular(24.0),
+      child: InkWell(
+        borderRadius: BorderRadius.circular(24.0),
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            spacing: 8.0,
+            children: [
+              Icon(
+                Icons.notifications_outlined,
+                size: 18.0,
+                color: scheme.onPrimaryContainer,
+              ),
+              Text(
+                L10n.of(context).pingedActivity,
+                style: TextStyle(
+                  color: scheme.onPrimaryContainer,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+              Icon(
+                Icons.arrow_downward,
+                size: 18.0,
+                color: scheme.onPrimaryContainer,
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

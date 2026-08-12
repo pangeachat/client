@@ -7,6 +7,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/activity_suggestion_card.dart';
 import 'package:fluffychat/routes/courses/course_objectives/objective_section_scroll_arrow.dart';
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
@@ -42,6 +43,10 @@ class ObjectiveSection extends StatefulWidget {
   /// nothing to show (preview, or the rollup hasn't resolved yet).
   final MissionProgress? progress;
 
+  /// The activity a course ping pointed at, when it lives in this section —
+  /// its card gets the bell badge (#8319). Null everywhere else.
+  final String? pingedActivityId;
+
   const ObjectiveSection({
     super.key,
     required this.index,
@@ -52,6 +57,7 @@ class ObjectiveSection extends StatefulWidget {
     required this.liveStateByActivity,
     required this.availableParticipants,
     required this.progress,
+    this.pingedActivityId,
     this.spacing = 16.0,
     this.cardWidth,
     this.cardHeight,
@@ -291,6 +297,14 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                                       height: 48.0,
                                     ),
                                   ),
+                                ),
+                              // The course-ping bell, top-left so it shares
+                              // the banner's row without covering it (#8319).
+                              if (ref.activityId == widget.pingedActivityId)
+                                const Positioned(
+                                  top: 8.0,
+                                  left: 6.0,
+                                  child: CoursePingBadge(),
                                 ),
                             ],
                           ),
