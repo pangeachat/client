@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:26.285986",
+    "@@last_modified": "2026-08-12 14:33:42.889214",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10682,5 +10682,6 @@
     "rejoinedTheActivity": "🔄 {username} se ponovo pridružio/la ovoj aktivnosti",
     "shareAnalytics": "Delite analitiku",
     "courseNoLongerAvailableTitle": "Kurs nedostupan",
-    "courseDeletedDialogDesc": "Ovaj kurs je obrisan."
+    "courseDeletedDialogDesc": "Ovaj kurs je obrisan.",
+    "pingedActivity": "Pingovana aktivnost"
 }

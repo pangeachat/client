@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-12 13:18:25.239188",
+    "@@last_modified": "2026-08-12 14:33:41.686166",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} بېرته دې فعالیت ته راستون شو",
     "shareAnalytics": "تحلیل شریک کړئ",
     "courseNoLongerAvailableTitle": "کورس شتون نلري",
-    "courseDeletedDialogDesc": "دا کورس حذف شوی دی."
+    "courseDeletedDialogDesc": "دا کورس حذف شوی دی.",
+    "pingedActivity": "پینګ شوې فعالیت"
 }

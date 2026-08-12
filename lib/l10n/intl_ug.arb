@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-12 13:18:27.465064",
+    "@@last_modified": "2026-08-12 14:33:43.856279",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} بۇ پائالىيەتكە قايتا قاتناشتى",
     "shareAnalytics": "تەھلىل سانلىق مەلۇماتلىرىنى ھەمبەھىرلەش",
     "courseNoLongerAvailableTitle": "دەرسلىك تەمىنلەنمەيدۇ",
-    "courseDeletedDialogDesc": "بۇ دەرسلىك ئۆچۈرۈلدى."
+    "courseDeletedDialogDesc": "بۇ دەرسلىك ئۆچۈرۈلدى.",
+    "pingedActivity": "پىڭلانغان پائالىيەت"
 }

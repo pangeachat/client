@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:25.618103",
+    "@@last_modified": "2026-08-12 14:33:41.670668",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10677,5 +10677,6 @@
     "rejoinedTheActivity": "🔄 {username} voltou para esta atividade",
     "shareAnalytics": "Compartilhar Análises",
     "courseNoLongerAvailableTitle": "Curso indisponível",
-    "courseDeletedDialogDesc": "Este curso foi excluído."
+    "courseDeletedDialogDesc": "Este curso foi excluído.",
+    "pingedActivity": "Atividade com ping"
 }

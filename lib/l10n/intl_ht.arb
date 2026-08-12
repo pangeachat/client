@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-12 13:18:21.973629",
+    "@@last_modified": "2026-08-12 14:33:38.665947",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} rejwenn aktivite sa a",
     "shareAnalytics": "Pataje Analiz",
     "courseNoLongerAvailableTitle": "Kou a pa disponib",
-    "courseDeletedDialogDesc": "Kou sa a te efase."
+    "courseDeletedDialogDesc": "Kou sa a te efase.",
+    "pingedActivity": "Aktivite ki te ping"
 }

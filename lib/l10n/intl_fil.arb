@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-12 13:18:20.876734",
+    "@@last_modified": "2026-08-12 14:33:37.550279",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10593,5 +10593,6 @@
     "rejoinedTheActivity": "🔄 Muling sumali si {username} sa aktibidad na ito",
     "shareAnalytics": "Ibahagi ang Analytics",
     "courseNoLongerAvailableTitle": "Hindi available ang kurso",
-    "courseDeletedDialogDesc": "Na-delete na ang kursong ito."
+    "courseDeletedDialogDesc": "Na-delete na ang kursong ito.",
+    "pingedActivity": "Na-ping na aktibidad"
 }

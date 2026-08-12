@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-12 13:18:26.826438",
+    "@@last_modified": "2026-08-12 14:33:44.001782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ба ин машғулият дубора ҳамроҳ шуд",
     "shareAnalytics": "Мубодилаи таҳлилҳо",
     "courseNoLongerAvailableTitle": "Курс дастнорас аст",
-    "courseDeletedDialogDesc": "Ин курс нест карда шудааст."
+    "courseDeletedDialogDesc": "Ин курс нест карда шудааст.",
+    "pingedActivity": "Фаъолияти пингшуда"
 }

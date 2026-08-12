@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:27.161587",
+    "@@last_modified": "2026-08-12 14:33:43.949995",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7009,5 +7009,6 @@
     "rejoinedTheActivity": "🔄 {username} đã tham gia lại hoạt động này",
     "shareAnalytics": "Chia sẻ dữ liệu phân tích",
     "courseNoLongerAvailableTitle": "Khóa học không có sẵn",
-    "courseDeletedDialogDesc": "Khóa học này đã bị xóa."
+    "courseDeletedDialogDesc": "Khóa học này đã bị xóa.",
+    "pingedActivity": "Hoạt động được gắn thẻ"
 }

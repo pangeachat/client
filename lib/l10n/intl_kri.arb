@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-12 13:18:23.261636",
+    "@@last_modified": "2026-08-12 14:33:40.012439",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} kam bak to dis aktiviti",
     "shareAnalytics": "Share Analytics",
     "courseNoLongerAvailableTitle": "Di kos nɔ de igen",
-    "courseDeletedDialogDesc": "Dɛn dilit dis kos."
+    "courseDeletedDialogDesc": "Dɛn dilit dis kos.",
+    "pingedActivity": "Pinged aktiviti"
 }

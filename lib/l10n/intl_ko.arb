@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:23.118799",
+    "@@last_modified": "2026-08-12 14:33:39.506458",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9926,5 +9926,6 @@
     "rejoinedTheActivity": "🔄 {username}님이 활동에 다시 참여했습니다",
     "shareAnalytics": "분석 공유",
     "courseNoLongerAvailableTitle": "코스를 이용할 수 없음",
-    "courseDeletedDialogDesc": "이 코스는 삭제되었습니다."
+    "courseDeletedDialogDesc": "이 코스는 삭제되었습니다.",
+    "pingedActivity": "핑 활동"
 }

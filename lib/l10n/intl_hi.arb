@@ -3098,7 +3098,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-12 13:18:21.500226",
+    "@@last_modified": "2026-08-12 14:33:38.095656",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10365,5 +10365,6 @@
     "rejoinedTheActivity": "🔄 {username} इस गतिविधि में फिर से शामिल हो गए",
     "shareAnalytics": "एनालिटिक्स शेयर करें",
     "courseNoLongerAvailableTitle": "कोर्स अनुपलब्ध है",
-    "courseDeletedDialogDesc": "यह कोर्स हटा दिया गया है।"
+    "courseDeletedDialogDesc": "यह कोर्स हटा दिया गया है।",
+    "pingedActivity": "पिंग की गई गतिविधि"
 }

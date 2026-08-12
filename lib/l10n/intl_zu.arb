@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-12 13:18:27.965776",
+    "@@last_modified": "2026-08-12 14:33:44.589399",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi",
     "shareAnalytics": "Yabelana Ngokuhlaziya",
     "courseNoLongerAvailableTitle": "Ikosi ayitholakali",
-    "courseDeletedDialogDesc": "Le khosi isusiwe."
+    "courseDeletedDialogDesc": "Le khosi isusiwe.",
+    "pingedActivity": "Umsebenzi okhonjiwe"
 }

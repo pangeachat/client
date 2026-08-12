@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-12 13:18:20.807927",
+    "@@last_modified": "2026-08-12 14:33:37.413078",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10088,5 +10088,6 @@
     "rejoinedTheActivity": "🔄 {username} a rejoint cette activité",
     "shareAnalytics": "Partager les analyses",
     "courseNoLongerAvailableTitle": "Cours non disponible",
-    "courseDeletedDialogDesc": "Ce cours a été supprimé."
+    "courseDeletedDialogDesc": "Ce cours a été supprimé.",
+    "pingedActivity": "Activité pingée"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-12 13:18:24.275508",
+    "@@last_modified": "2026-08-12 14:33:40.939264",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} menyertai semula aktiviti ini",
     "shareAnalytics": "Kongsi Analitis",
     "courseNoLongerAvailableTitle": "Kurs tidak tersedia",
-    "courseDeletedDialogDesc": "Kursus ini telah dipadamkan."
+    "courseDeletedDialogDesc": "Kursus ini telah dipadamkan.",
+    "pingedActivity": "Aktiviti yang diping"
 }

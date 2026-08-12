@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-12 13:18:21.699168",
+    "@@last_modified": "2026-08-12 14:33:38.203427",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 Ua hui hou ʻo {username} i kēia hana",
     "shareAnalytics": "Kaʻana like i nā ʻIkepili",
     "courseNoLongerAvailableTitle": "ʻAʻole loaʻa hou ka papa",
-    "courseDeletedDialogDesc": "Ua kāpae ʻia kēia papa."
+    "courseDeletedDialogDesc": "Ua kāpae ʻia kēia papa.",
+    "pingedActivity": "Hana i kīkī ʻia"
 }

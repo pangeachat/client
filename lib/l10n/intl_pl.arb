@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-12 13:18:25.602932",
+    "@@last_modified": "2026-08-12 14:33:41.689138",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9818,5 +9818,6 @@
     "rejoinedTheActivity": "🔄 Użytkownik {username} ponownie dołączył do tej aktywności",
     "shareAnalytics": "Udostępnij dane analityczne",
     "courseNoLongerAvailableTitle": "Kurs niedostępny",
-    "courseDeletedDialogDesc": "Ten kurs został usunięty."
+    "courseDeletedDialogDesc": "Ten kurs został usunięty.",
+    "pingedActivity": "Aktywność z powiadomieniem"
 }

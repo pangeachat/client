@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-12 13:18:26.454319",
+    "@@last_modified": "2026-08-12 14:33:42.989478",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} wuxuu dib ugu soo biiray hawshan",
     "shareAnalytics": "La wadaag Falanqaynta",
     "courseNoLongerAvailableTitle": "Koorsada lama heli karo",
-    "courseDeletedDialogDesc": "Koorsadan waa la tirtiray."
+    "courseDeletedDialogDesc": "Koorsadan waa la tirtiray.",
+    "pingedActivity": "Hawlaha la soo sheegay"
 }

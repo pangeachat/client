@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:24.616839",
+    "@@last_modified": "2026-08-12 14:33:42.863337",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9733,5 +9733,6 @@
     "rejoinedTheActivity": "🔄 {username} heeft zich weer bij deze activiteit gevoegd",
     "shareAnalytics": "Analyse delen",
     "courseNoLongerAvailableTitle": "Cursus niet beschikbaar",
-    "courseDeletedDialogDesc": "Deze cursus is verwijderd."
+    "courseDeletedDialogDesc": "Deze cursus is verwijderd.",
+    "pingedActivity": "Gepingde activiteit"
 }

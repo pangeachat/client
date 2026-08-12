@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-12 13:18:23.540027",
+    "@@last_modified": "2026-08-12 14:33:40.372315",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ເຂົ້າຮ່ວມກິດຈະກຳນີ້ອີກຄັ້ງ",
     "shareAnalytics": "ແບ່ງປັນການວິເຄາະ",
     "courseNoLongerAvailableTitle": "ຫຼັກສູດບໍ່ສາມາດໃຊ້ໄດ້",
-    "courseDeletedDialogDesc": "ຫຼັກສູດນີ້ຖືກລຶບແລ້ວ."
+    "courseDeletedDialogDesc": "ຫຼັກສູດນີ້ຖືກລຶບແລ້ວ.",
+    "pingedActivity": "ກິດຈະກຳທີ່ຖືກປິງ"
 }

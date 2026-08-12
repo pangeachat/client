@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-12 13:18:24.515782",
+    "@@last_modified": "2026-08-12 14:33:40.796541",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} অসিনা হায়রিবা থবক অসিদা অমুক হিংনরে",
     "shareAnalytics": "এনালাইটিক্স শেয়ার তৌব",
     "courseNoLongerAvailableTitle": "কোর্স ফংদ্রে",
-    "courseDeletedDialogDesc": "অসিগুম্বা কোর্স অসি মুতখ্রে।"
+    "courseDeletedDialogDesc": "অসিগুম্বা কোর্স অসি মুতখ্রে।",
+    "pingedActivity": "পিং তৌরবা এক্টিভিটি"
 }

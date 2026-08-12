@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-12 13:18:27.623925",
+    "@@last_modified": "2026-08-12 14:33:44.550741",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10690,5 +10690,6 @@
     "rejoinedTheActivity": "🔄 {username} 重新加入此活動",
     "shareAnalytics": "分享分析數據",
     "courseNoLongerAvailableTitle": "課程無法使用",
-    "courseDeletedDialogDesc": "此課程已被刪除。"
+    "courseDeletedDialogDesc": "此課程已被刪除。",
+    "pingedActivity": "已標註的動態"
 }

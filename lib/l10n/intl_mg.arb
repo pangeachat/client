@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-12 13:18:23.836884",
+    "@@last_modified": "2026-08-12 14:33:40.331956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 Niditra indray tamin'ity hetsika ity i {username}",
     "shareAnalytics": "Zarao ny Analytics",
     "courseNoLongerAvailableTitle": "Tsy misy intsony ny taranja",
-    "courseDeletedDialogDesc": "Voafafa ity taranja ity."
+    "courseDeletedDialogDesc": "Voafafa ity taranja ity.",
+    "pingedActivity": "Hetsika voatsindry"
 }

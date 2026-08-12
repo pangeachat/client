@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-12 13:18:21.963389",
+    "@@last_modified": "2026-08-12 14:33:38.594977",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9836,5 +9836,6 @@
     "rejoinedTheActivity": "🔄 {username} újra csatlakozott ehhez a tevékenységhez",
     "shareAnalytics": "Analitika megosztása",
     "courseNoLongerAvailableTitle": "Tanfolyam nem elérhető",
-    "courseDeletedDialogDesc": "Ez a tanfolyam törölve lett."
+    "courseDeletedDialogDesc": "Ez a tanfolyam törölve lett.",
+    "pingedActivity": "Pingelt tevékenység"
 }

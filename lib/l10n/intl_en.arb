@@ -4969,6 +4969,7 @@
     "streamingSttDegradedToBatchBanner": "Live transcription is unavailable right now. Your message was transcribed the standard way, without live editing. We're working to restore it.",
     "streamingSttLanguageUnsupportedBanner": "Live transcription isn't available for this language yet. We're working on it.",
     "pingedLabel": "Pinged",
+    "pingedActivity": "Pinged activity",
     "mapFilterPlayerCount": "{count} players",
     "@mapFilterPlayerCount": {
         "placeholders": {

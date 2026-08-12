@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-12 13:18:24.531242",
+    "@@last_modified": "2026-08-12 14:33:40.928178",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} reġa' ngħaqad ma' din l-attività",
     "shareAnalytics": "Aqsam l-Analiżi",
     "courseNoLongerAvailableTitle": "Kors mhux disponibbli",
-    "courseDeletedDialogDesc": "Dan il-kors tħassar."
+    "courseDeletedDialogDesc": "Dan il-kors tħassar.",
+    "pingedActivity": "Attività pingjata"
 }

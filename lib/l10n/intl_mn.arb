@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-12 13:18:24.111777",
+    "@@last_modified": "2026-08-12 14:33:41.086820",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} энэ үйл ажиллагаанд дахин нэгдлээ",
     "shareAnalytics": "Шинжилгээгээ хуваалцах",
     "courseNoLongerAvailableTitle": "Хичээл боломжгүй",
-    "courseDeletedDialogDesc": "Энэ хичээл устгагдсан байна."
+    "courseDeletedDialogDesc": "Энэ хичээл устгагдсан байна.",
+    "pingedActivity": "Идэвхжүүлсэн үйл ажиллагаа"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-12 13:18:27.640156",
+    "@@last_modified": "2026-08-12 14:33:43.905598",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} האָט זיך צוריק באַטייליקט אין דער אַקטיוויטעט",
     "shareAnalytics": "טיילן אַנאַליטיקס",
     "courseNoLongerAvailableTitle": "קורס ניט בנימצא",
-    "courseDeletedDialogDesc": "דער קורס איז אויסגעמעקט געוואָרן."
+    "courseDeletedDialogDesc": "דער קורס איז אויסגעמעקט געוואָרן.",
+    "pingedActivity": "פּינגד טעטיקייט"
 }

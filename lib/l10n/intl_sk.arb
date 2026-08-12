@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-12 13:18:25.893607",
+    "@@last_modified": "2026-08-12 14:33:42.301931",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10678,5 +10678,6 @@
     "rejoinedTheActivity": "🔄 {username} sa znova pripojil k tejto aktivite",
     "shareAnalytics": "Zdieľať analýzy",
     "courseNoLongerAvailableTitle": "Kurz nedostupný",
-    "courseDeletedDialogDesc": "Tento kurz bol vymazaný."
+    "courseDeletedDialogDesc": "Tento kurz bol vymazaný.",
+    "pingedActivity": "Aktivita s upozornením"
 }

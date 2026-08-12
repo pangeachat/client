@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-12 13:18:27.795147",
+    "@@last_modified": "2026-08-12 14:33:44.531405",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9733,5 +9733,6 @@
     "rejoinedTheActivity": "🔄 {username} 重新加入了此活动",
     "shareAnalytics": "分享分析数据",
     "courseNoLongerAvailableTitle": "课程不可用",
-    "courseDeletedDialogDesc": "此课程已被删除。"
+    "courseDeletedDialogDesc": "此课程已被删除。",
+    "pingedActivity": "已提及的活动"
 }

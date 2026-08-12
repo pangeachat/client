@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-12 13:18:20.861178",
+    "@@last_modified": "2026-08-12 14:33:38.083716",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} docht wer mei oan dizze aktiviteit",
     "shareAnalytics": "Diel Analytics",
     "courseNoLongerAvailableTitle": "Kursus net beskikber",
-    "courseDeletedDialogDesc": "Dizze kursus is fuortsmiten."
+    "courseDeletedDialogDesc": "Dizze kursus is fuortsmiten.",
+    "pingedActivity": "Pinge aktiviteit"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-12 13:18:23.205397",
+    "@@last_modified": "2026-08-12 14:33:40.203994",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ad hanc actionem rediit",
     "shareAnalytics": "Communica Analytica",
     "courseNoLongerAvailableTitle": "Cursus non praesto",
-    "courseDeletedDialogDesc": "Hic cursus deletus est."
+    "courseDeletedDialogDesc": "Hic cursus deletus est.",
+    "pingedActivity": "Actio pulsata"
 }

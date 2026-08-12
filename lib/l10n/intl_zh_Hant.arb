@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 13:18:27.989721",
+    "@@last_modified": "2026-08-12 14:33:44.829792",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9839,5 +9839,6 @@
     "rejoinedTheActivity": "🔄 {username} 已重新加入此活動",
     "shareAnalytics": "分享分析數據",
     "courseNoLongerAvailableTitle": "課程無法使用",
-    "courseDeletedDialogDesc": "此課程已刪除。"
+    "courseDeletedDialogDesc": "此課程已刪除。",
+    "pingedActivity": "已標記的活動"
 }

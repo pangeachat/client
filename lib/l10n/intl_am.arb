@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-12 13:18:19.269599",
+    "@@last_modified": "2026-08-12 14:33:36.009212",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2121,5 +2121,6 @@
     "rejoinedTheActivity": "🔄 {username} ወደዚህ እንቅስቃሴ ተመልሷል",
     "shareAnalytics": "ትንተና አጋራ",
     "courseNoLongerAvailableTitle": "ኮርስ የለም",
-    "courseDeletedDialogDesc": "ይህ ኮርስ ተሰርዟል።"
+    "courseDeletedDialogDesc": "ይህ ኮርስ ተሰርዟል።",
+    "pingedActivity": "የተጠቆመ እንቅስቃሴ"
 }
