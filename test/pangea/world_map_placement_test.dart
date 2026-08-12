@@ -34,6 +34,23 @@ void main() {
     largeEligibleIds: largeEligibleIds ?? offsets.keys.toSet(),
   );
 
+  // The mid teardrop footprint: head 44 wide, point 10 tall, anchored tip at
+  // the offset, box extending UP — a pin at (x, y) occupies x[x-22, x+22],
+  // y[y-54, y]. Heads 44px wide, so centres <44px apart horizontally overlap.
+  MidPlacementResult placeMid({
+    required Map<String, Offset?> offsets,
+    List<String>? ordered,
+    String? focusedId,
+    int midBudget = 10,
+    List<Rect> obstacleRects = const [],
+  }) => placeMidPins(
+    orderedCandidates: ordered ?? offsets.keys.toList(),
+    focusedId: focusedId,
+    screenOffsetOf: (id) => offsets[id],
+    midBudget: midBudget,
+    obstacleRects: obstacleRects,
+  );
+
   group('placeLargeCards — fit and overlap', () {
     test('well-separated candidates both fit', () {
       final r = place(
@@ -177,12 +194,13 @@ void main() {
   });
 
   group(
-    'placeLargeCards — large-tier hard gate (available/completed never large)',
+    'placeLargeCards — respects the large-eligible set (completed excluded)',
     () {
       test('a non-eligible id is never placed large, however well it fits', () {
         // 'a' fits fine geometrically and is even first in ranked order, but it's
-        // not in largeEligibleIds (e.g. an available/completed pin) — it must
-        // never place large. 'b' is eligible and back-fills the slot.
+        // not in largeEligibleIds (e.g. a completed trail-star pin, the one state
+        // the view leaves out) — it must never place large. 'b' is eligible and
+        // back-fills the slot.
         final r = place(
           offsets: {'a': const Offset(200, 300), 'b': const Offset(600, 300)},
           largeEligibleIds: {'b'},
@@ -213,4 +231,70 @@ void main() {
       );
     },
   );
+
+  group('placeMidPins — overlap demotion', () {
+    // A large card's footprint at pin point (x, y): x[x-130, x+130], y[y-184, y].
+    Rect cardAt(Offset o) => Rect.fromLTWH(o.dx - 130, o.dy - 184, 260, 184);
+
+    test('well-separated mid pins all place', () {
+      final r = placeMid(
+        offsets: {'a': const Offset(100, 300), 'b': const Offset(300, 300)},
+      );
+      expect(r.midIds, {'a', 'b'});
+    });
+
+    test('two overlapping mids: the higher-scored wins, the other demotes', () {
+      // 20px apart horizontally → the 44px heads overlap.
+      final r = placeMid(
+        offsets: {'hi': const Offset(100, 300), 'lo': const Offset(120, 300)},
+        ordered: ['hi', 'lo'], // 'hi' ranks first
+      );
+      expect(r.midIds, {'hi'});
+    });
+
+    test('a mid pin under a placed large card is demoted', () {
+      final r = placeMid(
+        offsets: {'under': const Offset(200, 300)},
+        obstacleRects: [cardAt(const Offset(200, 300))],
+      );
+      expect(r.midIds, isEmpty);
+    });
+
+    test('a mid pin clear of the card keeps its tier', () {
+      final r = placeMid(
+        offsets: {'clear': const Offset(600, 300)},
+        obstacleRects: [cardAt(const Offset(200, 300))],
+      );
+      expect(r.midIds, {'clear'});
+    });
+
+    test('a focused mid is placed first and keeps its spot over a '
+        'higher-scored overlapping peer', () {
+      final r = placeMid(
+        offsets: {'hi': const Offset(100, 300), 'f': const Offset(115, 300)},
+        ordered: ['hi', 'f'], // 'hi' scores higher, but 'f' is focused
+        focusedId: 'f',
+      );
+      expect(r.midIds, {'f'});
+    });
+
+    test('the mid budget bounds the placed count', () {
+      final r = placeMid(
+        offsets: {
+          'a': const Offset(100, 300),
+          'b': const Offset(300, 300),
+          'c': const Offset(500, 300),
+        },
+        midBudget: 2,
+      );
+      expect(r.midIds.length, 2);
+    });
+
+    test('a candidate off the projection is skipped, not blocking others', () {
+      final r = placeMid(
+        offsets: {'gone': null, 'here': const Offset(300, 300)},
+      );
+      expect(r.midIds, {'here'});
+    });
+  });
 }
