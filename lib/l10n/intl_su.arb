@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-11 15:43:22.311053",
+    "@@last_modified": "2026-08-12 11:17:14.172265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "{toolName} audio dipareuman",
     "audioSettingDisabledBody": "Anjeun tiasa ngaktipkeun audio {toolName} dina setelan diajar anjeun",
     "audioSettingDisabledEnable": "Aktifkeun",
-    "rejoinedTheActivity": "🔄 {username} ngagabung deui kana kagiatan ieu"
+    "rejoinedTheActivity": "🔄 {username} ngagabung deui kana kagiatan ieu",
+    "shareAnalytics": "Bagikeun Analitik"
 }

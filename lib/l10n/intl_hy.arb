@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-11 15:43:17.612446",
+    "@@last_modified": "2026-08-12 11:17:09.723813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "{toolName} աուդիոն անջատված է",
     "audioSettingDisabledBody": "Դուք կարող եք միացնել {toolName} աուդիոն ձեր ուսուցման կարգավորումներում",
     "audioSettingDisabledEnable": "Միացնել",
-    "rejoinedTheActivity": "🔄 {username}-ը միացավ այս ակտիվությանը"
+    "rejoinedTheActivity": "🔄 {username}-ը միացավ այս ակտիվությանը",
+    "shareAnalytics": "Կիսվել վերլուծություններով"
 }

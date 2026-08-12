@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-11 15:43:14.865944",
+    "@@last_modified": "2026-08-12 11:17:07.330042",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "{toolName} ድምጽ ተሰናክሏል",
     "audioSettingDisabledBody": "በመማሪያ ቅንብሮችዎ ውስጥ የ{toolName} ድምጽን ማንቃት ይችላሉ።",
     "audioSettingDisabledEnable": "አንቃ",
-    "rejoinedTheActivity": "🔄 {username} ወደዚህ እንቅስቃሴ ተመልሷል"
+    "rejoinedTheActivity": "🔄 {username} ወደዚህ እንቅስቃሴ ተመልሷል",
+    "shareAnalytics": "ትንተና አጋራ"
 }

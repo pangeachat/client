@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-11 15:43:21.670281",
+    "@@last_modified": "2026-08-12 11:17:14.206737",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "Audioja {toolName} është çaktivizuar",
     "audioSettingDisabledBody": "Mund ta aktivizosh audion {toolName} te cilësimet e të mësuarit",
     "audioSettingDisabledEnable": "Aktivizo",
-    "rejoinedTheActivity": "🔄 {username} iu bashkua sërish këtij aktiviteti"
+    "rejoinedTheActivity": "🔄 {username} iu bashkua sërish këtij aktiviteti",
+    "shareAnalytics": "Ndani Analizat"
 }

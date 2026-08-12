@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-11 15:43:22.547586",
+    "@@last_modified": "2026-08-12 11:17:15.203248",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9730,5 +9730,6 @@
     "audioSettingDisabledTitle": "Аудіо {toolName} вимкнено",
     "audioSettingDisabledBody": "Ви можете ввімкнути аудіо {toolName} у налаштуваннях навчання",
     "audioSettingDisabledEnable": "Увімкнути",
-    "rejoinedTheActivity": "🔄 {username} знову приєднався до цієї активності"
+    "rejoinedTheActivity": "🔄 {username} знову приєднався до цієї активності",
+    "shareAnalytics": "Поділитися аналітикою"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 15:43:20.360603",
+    "@@last_modified": "2026-08-12 11:17:12.823076",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10674,5 +10674,6 @@
     "audioSettingDisabledTitle": "Áudio do {toolName} desativado",
     "audioSettingDisabledBody": "Você pode ativar o áudio do {toolName} nas suas configurações de aprendizado",
     "audioSettingDisabledEnable": "Ativar",
-    "rejoinedTheActivity": "🔄 {username} voltou para esta atividade"
+    "rejoinedTheActivity": "🔄 {username} voltou para esta atividade",
+    "shareAnalytics": "Compartilhar Análises"
 }

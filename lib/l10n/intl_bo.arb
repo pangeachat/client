@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-11 15:43:15.104958",
+    "@@last_modified": "2026-08-12 11:17:07.484211",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9341,5 +9341,6 @@
     "audioSettingDisabledTitle": "{toolName} སྒྲ་མེད་པ།",
     "audioSettingDisabledBody": "ཁྱེད་ཀྱིས་སློབ་སྦྱོང་སྒྲིག་འགོད་ནང་ {toolName} སྒྲ་སྒོ་འབྱེད་ཐུབ།",
     "audioSettingDisabledEnable": "སྒོ་འབྱེད།",
-    "rejoinedTheActivity": "🔄 {username} བྱ་འགུལ་འདིར་བསྐྱར་དུ་མཉམ་ཞུགས་བྱས་སོང་།"
+    "rejoinedTheActivity": "🔄 {username} བྱ་འགུལ་འདིར་བསྐྱར་དུ་མཉམ་ཞུགས་བྱས་སོང་།",
+    "shareAnalytics": "དབྱེ་ཞིབ་གྲངས་གཞི་མཉམ་སྤྱོད།"
 }

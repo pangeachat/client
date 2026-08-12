@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-11 15:43:22.612502",
+    "@@last_modified": "2026-08-12 11:17:15.061312",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "Аудиои {toolName} ғайрифаъол аст",
     "audioSettingDisabledBody": "Шумо метавонед аудиои {toolName}-ро дар танзимоти омӯзиши худ фаъол созед",
     "audioSettingDisabledEnable": "Фаъол кардан",
-    "rejoinedTheActivity": "🔄 {username} ба ин машғулият дубора ҳамроҳ шуд"
+    "rejoinedTheActivity": "🔄 {username} ба ин машғулият дубора ҳамроҳ шуд",
+    "shareAnalytics": "Мубодилаи таҳлилҳо"
 }

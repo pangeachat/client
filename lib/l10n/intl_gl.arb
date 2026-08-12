@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-11 15:43:21.356023",
+    "@@last_modified": "2026-08-12 11:17:08.996397",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9730,5 +9730,6 @@
     "audioSettingDisabledTitle": "Audio de {toolName} desactivado",
     "audioSettingDisabledBody": "Podes activar o audio de {toolName} na túa configuración de aprendizaxe",
     "audioSettingDisabledEnable": "Activar",
-    "rejoinedTheActivity": "🔄 {username} volveu unirse a esta actividade"
+    "rejoinedTheActivity": "🔄 {username} volveu unirse a esta actividade",
+    "shareAnalytics": "Compartir datos de uso"
 }

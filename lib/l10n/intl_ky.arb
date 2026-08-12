@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-11 15:43:18.904407",
+    "@@last_modified": "2026-08-12 11:17:10.819644",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "{toolName} аудиосу өчүрүлгөн",
     "audioSettingDisabledBody": "Сиз {toolName} аудиосун окуу жөндөөлөрүңүздөн иштете аласыз",
     "audioSettingDisabledEnable": "Иштетүү",
-    "rejoinedTheActivity": "🔄 {username} бул аракетке кайра кошулду"
+    "rejoinedTheActivity": "🔄 {username} бул аракетке кайра кошулду",
+    "shareAnalytics": "Аналитика менен бөлүшүү"
 }

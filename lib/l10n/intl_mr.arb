@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-11 15:43:19.673464",
+    "@@last_modified": "2026-08-12 11:17:11.631976",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "{toolName} ऑडिओ अक्षम केला आहे",
     "audioSettingDisabledBody": "तुम्ही तुमच्या शिक्षण सेटिंग्जमध्ये {toolName} ऑडिओ सक्षम करू शकता",
     "audioSettingDisabledEnable": "सक्षम करा",
-    "rejoinedTheActivity": "🔄 {username} या अ‍ॅक्टिव्हिटीमध्ये पुन्हा सामील झाले"
+    "rejoinedTheActivity": "🔄 {username} या अ‍ॅक्टिव्हिटीमध्ये पुन्हा सामील झाले",
+    "shareAnalytics": "ॲनालिटिक्स शेअर करा"
 }

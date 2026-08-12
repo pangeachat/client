@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-11 15:43:19.965419",
+    "@@last_modified": "2026-08-12 11:17:12.121924",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9787,5 +9787,6 @@
     "audioSettingDisabledTitle": "{toolName}-lyd deaktivert",
     "audioSettingDisabledBody": "Du kan aktivere {toolName}-lyd i læringsinnstillingene dine",
     "audioSettingDisabledEnable": "Aktiver",
-    "rejoinedTheActivity": "🔄 {username} ble med i denne aktiviteten igjen"
+    "rejoinedTheActivity": "🔄 {username} ble med i denne aktiviteten igjen",
+    "shareAnalytics": "Del analyser"
 }

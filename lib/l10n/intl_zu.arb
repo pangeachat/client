@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-11 15:43:23.557239",
+    "@@last_modified": "2026-08-12 11:17:16.467013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "Umsindo we-{toolName} uvaliwe",
     "audioSettingDisabledBody": "Ungavula umsindo we-{toolName} kuzilungiselelo zakho zokufunda",
     "audioSettingDisabledEnable": "Vula",
-    "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi"
+    "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi",
+    "shareAnalytics": "Yabelana Ngokuhlaziya"
 }

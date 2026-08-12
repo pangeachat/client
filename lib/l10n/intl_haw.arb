@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-11 15:43:16.844969",
+    "@@last_modified": "2026-08-12 11:17:09.578280",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "Ua pio ke kani o {toolName}",
     "audioSettingDisabledBody": "Hiki iā ʻoe ke hoʻā i ke kani o {toolName} ma kāu hoʻonohonoho aʻo",
     "audioSettingDisabledEnable": "Hoʻā",
-    "rejoinedTheActivity": "🔄 Ua hui hou ʻo {username} i kēia hana"
+    "rejoinedTheActivity": "🔄 Ua hui hou ʻo {username} i kēia hana",
+    "shareAnalytics": "Kaʻana like i nā ʻIkepili"
 }

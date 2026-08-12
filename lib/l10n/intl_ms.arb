@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-11 15:43:19.779162",
+    "@@last_modified": "2026-08-12 11:17:11.746354",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2118,5 +2118,6 @@
     "audioSettingDisabledTitle": "Audio {toolName} dilumpuhkan",
     "audioSettingDisabledBody": "Anda boleh mendayakan audio {toolName} dalam tetapan pembelajaran anda",
     "audioSettingDisabledEnable": "Dayakan",
-    "rejoinedTheActivity": "🔄 {username} menyertai semula aktiviti ini"
+    "rejoinedTheActivity": "🔄 {username} menyertai semula aktiviti ini",
+    "shareAnalytics": "Kongsi Analitis"
 }
