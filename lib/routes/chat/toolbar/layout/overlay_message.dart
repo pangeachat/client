@@ -46,6 +46,7 @@ class OverlayMessage extends StatelessWidget {
   final ReadingAssistanceMode? readingAssistanceMode;
   final String overlayKey;
   final bool canRefresh;
+  final bool useTokenKeys;
 
   const OverlayMessage(
     this.event, {
@@ -61,6 +62,7 @@ class OverlayMessage extends StatelessWidget {
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
     this.canRefresh = false,
+    this.useTokenKeys = false,
     super.key,
   });
 
@@ -218,6 +220,7 @@ class OverlayMessage extends StatelessWidget {
               readingAssistanceMode: readingAssistanceMode,
               selected: true,
               vocabLemmas: overlayController.highlightVocabLemmas,
+              useTokenKeys: useTokenKeys,
             ),
           ),
           if (event.hasAggregatedEvents(timeline, RelationshipTypes.edit))

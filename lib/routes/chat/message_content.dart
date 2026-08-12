@@ -47,6 +47,7 @@ class MessageContent extends StatelessWidget {
   final Event? prevEvent;
   final bool isTransitionAnimation;
   final ReadingAssistanceMode? readingAssistanceMode;
+  final bool useTokenKeys;
 
   /// Overrides the default token-tap behavior (select in the open overlay,
   /// else open the chat toolbar). The analytics example messages use this to
@@ -81,6 +82,7 @@ class MessageContent extends StatelessWidget {
     this.prevEvent,
     this.isTransitionAnimation = false,
     this.readingAssistanceMode,
+    this.useTokenKeys = false,
     this.onTokenClick,
     this.vocabLemmas,
     this.isAnalyticsExample = false,
@@ -395,6 +397,7 @@ class MessageContent extends StatelessWidget {
                       readingAssistanceMode ==
                       ReadingAssistanceMode.practiceMode,
                   isAnalyticsExample: isAnalyticsExample,
+                  useTokenKeys: useTokenKeys,
                   // Pangea#
                 ),
               ),
