@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-12 11:17:11.154038",
+    "@@last_modified": "2026-08-12 13:18:23.205397",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Sonum {toolName} in optionibus discendi tuis efficere potes",
     "audioSettingDisabledEnable": "Efficere",
     "rejoinedTheActivity": "🔄 {username} ad hanc actionem rediit",
-    "shareAnalytics": "Communica Analytica"
+    "shareAnalytics": "Communica Analytica",
+    "courseNoLongerAvailableTitle": "Cursus non praesto",
+    "courseDeletedDialogDesc": "Hic cursus deletus est."
 }

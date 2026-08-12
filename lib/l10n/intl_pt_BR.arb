@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:12.845850",
+    "@@last_modified": "2026-08-12 13:18:25.285448",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9731,5 +9731,7 @@
     "audioSettingDisabledBody": "Você pode ativar o áudio do {toolName} nas suas configurações de aprendizado",
     "audioSettingDisabledEnable": "Ativar",
     "rejoinedTheActivity": "🔄 {username} voltou para a atividade",
-    "shareAnalytics": "Compartilhar Análises"
+    "shareAnalytics": "Compartilhar Análises",
+    "courseNoLongerAvailableTitle": "Curso indisponível",
+    "courseDeletedDialogDesc": "Este curso foi excluído."
 }

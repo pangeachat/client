@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:10.417711",
+    "@@last_modified": "2026-08-12 13:18:22.088851",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9804,5 +9804,7 @@
     "audioSettingDisabledBody": "Anda dapat mengaktifkan audio {toolName} di pengaturan belajar Anda",
     "audioSettingDisabledEnable": "Aktifkan",
     "rejoinedTheActivity": "🔄 {username} bergabung kembali dengan aktivitas ini",
-    "shareAnalytics": "Bagikan Analitik"
+    "shareAnalytics": "Bagikan Analitik",
+    "courseNoLongerAvailableTitle": "Kursus tidak tersedia",
+    "courseDeletedDialogDesc": "Kursus ini telah dihapus."
 }

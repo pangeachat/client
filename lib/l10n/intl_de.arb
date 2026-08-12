@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-12 11:17:08.904199",
+    "@@last_modified": "2026-08-12 13:18:22.108171",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9718,5 +9718,7 @@
     "audioSettingDisabledBody": "Sie können {toolName}-Audio in Ihren Lerneinstellungen aktivieren",
     "audioSettingDisabledEnable": "Aktivieren",
     "rejoinedTheActivity": "🔄 {username} ist dieser Aktivität wieder beigetreten",
-    "shareAnalytics": "Analysedaten teilen"
+    "shareAnalytics": "Analysedaten teilen",
+    "courseNoLongerAvailableTitle": "Kurs nicht verfügbar",
+    "courseDeletedDialogDesc": "Dieser Kurs wurde gelöscht."
 }

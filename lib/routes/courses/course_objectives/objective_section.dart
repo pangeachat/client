@@ -313,26 +313,15 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                     },
                   ),
                 ),
-                // Drop the card semantics beneath the arrows so a tap on an arrow
-                // can't fall through to a card on Flutter web (#7803). A single
-                // blocker painted after the ListView but before the arrows keeps
-                // the two arrows from clobbering each other's semantics: a
-                // per-arrow BlockSemantics would also drop the sibling arrow
-                // painted before it, routing its taps to the wrong arrow.
-                ListenableBuilder(
-                  listenable: Listenable.merge([
-                    _showBackArrowNotifier,
-                    _showForwardArrowNotifier,
-                  ]),
-                  builder: (context, _) {
-                    final blocking =
-                        _showBackArrowNotifier.value ||
-                        _showForwardArrowNotifier.value;
-                    return blocking
-                        ? const BlockSemantics()
-                        : const SizedBox.shrink();
-                  },
-                ),
+                // No BlockSemantics here (#8011): blocking is tree-order, not
+                // geometric, so it would drop every card's semantics node in the
+                // row — and on Flutter web with the semantics tree on (staging
+                // forces it via ENABLE_SEMANTICS) a node-less card cannot be
+                // clicked at all. Worse, the section's labeled container then
+                // merges with the only surviving node (the arrow) into one
+                // row-sized button, so every card click scrolls. Each arrow
+                // instead defends its own strip with an opaque semantics hit
+                // test — see ObjectiveSectionScrollArrow.
                 // The scroll arrows overlay the ends of the ListView. Only mount
                 // the arrow that is currently usable — a hidden-but-present arrow
                 // (IgnorePointer / opacity 0) still leaves a semantics node at the

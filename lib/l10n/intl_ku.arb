@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-12 11:17:11.161682",
+    "@@last_modified": "2026-08-12 13:18:23.222623",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "دەتوانیت دەنگی {toolName} لە ڕێکخستنەکانی فێربووندا چالاک بکەیت",
     "audioSettingDisabledEnable": "چالاککردن",
     "rejoinedTheActivity": "🔄 {username} دووبارە بەشداریی ئەم چالاکییەی کردەوە",
-    "shareAnalytics": "شیکردنەوەکان هاوبەش بکە"
+    "shareAnalytics": "شیکردنەوەکان هاوبەش بکە",
+    "courseNoLongerAvailableTitle": "کۆرس بەردەست نییە",
+    "courseDeletedDialogDesc": "ئەم کۆرسە سڕاوەتەوە."
 }

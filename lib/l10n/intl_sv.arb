@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:14.513042",
+    "@@last_modified": "2026-08-12 13:18:26.827938",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10249,5 +10249,7 @@
     "audioSettingDisabledBody": "Du kan aktivera {toolName}-ljud i dina inlärningsinställningar",
     "audioSettingDisabledEnable": "Aktivera",
     "rejoinedTheActivity": "🔄 {username} återanslöt till aktiviteten",
-    "shareAnalytics": "Dela analysdata"
+    "shareAnalytics": "Dela analysdata",
+    "courseNoLongerAvailableTitle": "Kursen är inte tillgänglig",
+    "courseDeletedDialogDesc": "Den här kursen har tagits bort."
 }

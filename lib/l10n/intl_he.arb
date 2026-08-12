@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:09.550081",
+    "@@last_modified": "2026-08-12 13:18:21.375348",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10645,5 +10645,7 @@
     "audioSettingDisabledBody": "ניתן להפעיל את השמע של {toolName} בהגדרות הלמידה שלך",
     "audioSettingDisabledEnable": "הפעל",
     "rejoinedTheActivity": "🔄 {username} הצטרף/ה מחדש לפעילות זו",
-    "shareAnalytics": "שיתוף נתונים סטטיסטיים"
+    "shareAnalytics": "שיתוף נתונים סטטיסטיים",
+    "courseNoLongerAvailableTitle": "הקורס אינו זמין",
+    "courseDeletedDialogDesc": "הקורס נמחק."
 }

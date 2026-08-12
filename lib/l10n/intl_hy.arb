@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-12 11:17:09.723813",
+    "@@last_modified": "2026-08-12 13:18:22.236815",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Դուք կարող եք միացնել {toolName} աուդիոն ձեր ուսուցման կարգավորումներում",
     "audioSettingDisabledEnable": "Միացնել",
     "rejoinedTheActivity": "🔄 {username}-ը միացավ այս ակտիվությանը",
-    "shareAnalytics": "Կիսվել վերլուծություններով"
+    "shareAnalytics": "Կիսվել վերլուծություններով",
+    "courseNoLongerAvailableTitle": "Դասընթացն անհասանելի է",
+    "courseDeletedDialogDesc": "Այս դասընթացը ջնջվել է։"
 }

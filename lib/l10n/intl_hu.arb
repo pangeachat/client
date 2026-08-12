@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-12 11:17:09.585607",
+    "@@last_modified": "2026-08-12 13:18:21.963389",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9834,5 +9834,7 @@
     "audioSettingDisabledBody": "A {toolName} hangot a tanulási beállításokban engedélyezheti",
     "audioSettingDisabledEnable": "Engedélyezés",
     "rejoinedTheActivity": "🔄 {username} újra csatlakozott ehhez a tevékenységhez",
-    "shareAnalytics": "Analitika megosztása"
+    "shareAnalytics": "Analitika megosztása",
+    "courseNoLongerAvailableTitle": "Tanfolyam nem elérhető",
+    "courseDeletedDialogDesc": "Ez a tanfolyam törölve lett."
 }

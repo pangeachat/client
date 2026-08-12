@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-12 11:17:10.908819",
+    "@@last_modified": "2026-08-12 13:18:23.261636",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Yu go ebul fɔ mek {toolName} odyo wok insay yu lɔn-sɛtin dɛn",
     "audioSettingDisabledEnable": "Mek i wok",
     "rejoinedTheActivity": "🔄 {username} kam bak to dis aktiviti",
-    "shareAnalytics": "Share Analytics"
+    "shareAnalytics": "Share Analytics",
+    "courseNoLongerAvailableTitle": "Di kos nɔ de igen",
+    "courseDeletedDialogDesc": "Dɛn dilit dis kos."
 }

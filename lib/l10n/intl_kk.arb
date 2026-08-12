@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-12 11:17:10.887677",
+    "@@last_modified": "2026-08-12 13:18:22.628816",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Оқу параметрлеріңізде {toolName} аудиосын қосуға болады",
     "audioSettingDisabledEnable": "Қосу",
     "rejoinedTheActivity": "🔄 {username} бұл әрекетке қайта қосылды",
-    "shareAnalytics": "Аналитикамен бөлісу"
+    "shareAnalytics": "Аналитикамен бөлісу",
+    "courseNoLongerAvailableTitle": "Курс қолжетімсіз",
+    "courseDeletedDialogDesc": "Бұл курс жойылды."
 }

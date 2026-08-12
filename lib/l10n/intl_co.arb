@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-12 11:17:08.043004",
+    "@@last_modified": "2026-08-12 13:18:19.886636",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Pudete attivà l'audio {toolName} in i vostri paràmetri d'apprendimentu",
     "audioSettingDisabledEnable": "Attivà",
     "rejoinedTheActivity": "🔄 {username} hà riunitu sta attività",
-    "shareAnalytics": "Sparte l'Analitiche"
+    "shareAnalytics": "Sparte l'Analitiche",
+    "courseNoLongerAvailableTitle": "Corsu micca dispunibule",
+    "courseDeletedDialogDesc": "Stu corsu hè statu sguassatu."
 }

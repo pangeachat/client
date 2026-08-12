@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-12 11:17:08.567029",
+    "@@last_modified": "2026-08-12 13:18:20.006276",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Gallwch alluogi sain {toolName} yn eich gosodiadau dysgu",
     "audioSettingDisabledEnable": "Galluogi",
     "rejoinedTheActivity": "🔄 Ymunodd {username} â'r gweithgaredd hwn eto",
-    "shareAnalytics": "Rhannu Dadansoddeg"
+    "shareAnalytics": "Rhannu Dadansoddeg",
+    "courseNoLongerAvailableTitle": "Cwrs ddim ar gael",
+    "courseDeletedDialogDesc": "Mae'r cwrs hwn wedi'i ddileu."
 }

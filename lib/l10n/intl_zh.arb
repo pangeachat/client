@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-12 11:17:16.163115",
+    "@@last_modified": "2026-08-12 13:18:27.795147",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9731,5 +9731,7 @@
     "audioSettingDisabledBody": "您可以在学习设置中启用{toolName}音频",
     "audioSettingDisabledEnable": "启用",
     "rejoinedTheActivity": "🔄 {username} 重新加入了此活动",
-    "shareAnalytics": "分享分析数据"
+    "shareAnalytics": "分享分析数据",
+    "courseNoLongerAvailableTitle": "课程不可用",
+    "courseDeletedDialogDesc": "此课程已被删除。"
 }

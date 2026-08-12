@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-12 11:17:09.029834",
+    "@@last_modified": "2026-08-12 13:18:21.145694",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "તમે તમારી શીખવાની સેટિંગ્સમાં {toolName} ઑડિયો સક્ષમ કરી શકો છો",
     "audioSettingDisabledEnable": "સક્ષમ કરો",
     "rejoinedTheActivity": "🔄 {username} આ પ્રવૃત્તિમાં ફરીથી જોડાયા",
-    "shareAnalytics": "એનાલિટિક્સ શેર કરો"
+    "shareAnalytics": "એનાલિટિક્સ શેર કરો",
+    "courseNoLongerAvailableTitle": "કોર્સ અનુપલબ્ધ છે",
+    "courseDeletedDialogDesc": "આ કોર્સ ડિલીટ કરવામાં આવ્યો છે."
 }

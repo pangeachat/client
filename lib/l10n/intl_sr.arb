@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:15.788982",
+    "@@last_modified": "2026-08-12 13:18:26.285986",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10680,5 +10680,7 @@
     "audioSettingDisabledBody": "Možete uključiti zvuk za {toolName} u podešavanjima učenja",
     "audioSettingDisabledEnable": "Omogući",
     "rejoinedTheActivity": "🔄 {username} se ponovo pridružio/la ovoj aktivnosti",
-    "shareAnalytics": "Delite analitiku"
+    "shareAnalytics": "Delite analitiku",
+    "courseNoLongerAvailableTitle": "Kurs nedostupan",
+    "courseDeletedDialogDesc": "Ovaj kurs je obrisan."
 }

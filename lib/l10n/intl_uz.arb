@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-12 11:17:15.885890",
+    "@@last_modified": "2026-08-12 13:18:27.520982",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9735,5 +9735,7 @@
     "audioSettingDisabledBody": "Siz oʻrganish sozlamalarida {toolName} audiosini yoqishingiz mumkin",
     "audioSettingDisabledEnable": "Yoqish",
     "rejoinedTheActivity": "🔄 {username} ushbu mashg'ulotga qaytdi",
-    "shareAnalytics": "Analitikani ulashish"
+    "shareAnalytics": "Analitikani ulashish",
+    "courseNoLongerAvailableTitle": "Kurs mavjud emas",
+    "courseDeletedDialogDesc": "Bu kurs oʻchirib tashlangan."
 }

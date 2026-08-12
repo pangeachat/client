@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 11:17:13.396210",
+    "@@last_modified": "2026-08-12 13:18:25.573650",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10463,5 +10463,7 @@
     "audioSettingDisabledBody": "Poți activa audio {toolName} în setările tale de învățare",
     "audioSettingDisabledEnable": "Activează",
     "rejoinedTheActivity": "🔄 {username} s-a alăturat din nou acestei activități",
-    "shareAnalytics": "Partajează datele analitice"
+    "shareAnalytics": "Partajează datele analitice",
+    "courseNoLongerAvailableTitle": "Curs indisponibil",
+    "courseDeletedDialogDesc": "Acest curs a fost șters."
 }

@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-12 11:17:08.151642",
+    "@@last_modified": "2026-08-12 13:18:20.093935",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10606,5 +10606,7 @@
     "audioSettingDisabledBody": "Μπορείτε να ενεργοποιήσετε τον ήχο {toolName} στις ρυθμίσεις εκμάθησής σας",
     "audioSettingDisabledEnable": "Ενεργοποίηση",
     "rejoinedTheActivity": "🔄 Ο/Η {username} επανήλθε σε αυτήν τη δραστηριότητα",
-    "shareAnalytics": "Κοινή χρήση αναλυτικών στοιχείων"
+    "shareAnalytics": "Κοινή χρήση αναλυτικών στοιχείων",
+    "courseNoLongerAvailableTitle": "Το μάθημα δεν είναι διαθέσιμο",
+    "courseDeletedDialogDesc": "Αυτό το μάθημα έχει διαγραφεί."
 }

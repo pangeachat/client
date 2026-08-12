@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-12 11:17:09.621509",
+    "@@last_modified": "2026-08-12 13:18:21.748167",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10167,5 +10167,7 @@
     "audioSettingDisabledBody": "Zvuk {toolName} možete omogućiti u postavkama učenja",
     "audioSettingDisabledEnable": "Omogući",
     "rejoinedTheActivity": "🔄 {username} se ponovno pridružio ovoj aktivnosti",
-    "shareAnalytics": "Dijeli analitiku"
+    "shareAnalytics": "Dijeli analitiku",
+    "courseNoLongerAvailableTitle": "Tečaj nije dostupan",
+    "courseDeletedDialogDesc": "Ovaj je tečaj izbrisan."
 }

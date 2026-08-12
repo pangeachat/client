@@ -1,3 +1,5 @@
+import 'dart:ui' as ui show SemanticsHitTestBehavior;
+
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
@@ -33,11 +35,17 @@ class ObjectiveSectionScrollArrow extends StatelessWidget {
     // accessibility layer is active, pointer events are dispatched through the
     // semantics DOM tree rather than the render tree, so the arrow needs its own
     // tappable semantics node that sits on top of the activity cards beneath it.
-    // The caller drops the card semantics underneath (a sibling BlockSemantics)
-    // so the cards can't intercept the tap (#7803). Do NOT wrap this in an
-    // AbsorbPointer / IgnorePointer: those strip this node's semantics and
-    // reintroduce the click-through.
+    // The opaque hit test is what keeps a tap on the arrow from falling through
+    // to the card node it overlaps (#7803): the engine gives this node pointer
+    // events and z-orders it above earlier-painted siblings — same tool
+    // ModalRoute uses, and the same fix as the WA span card (#8181). It guards
+    // only the arrow's own strip, so the cards keep their nodes (#8011). Do NOT
+    // wrap this in an AbsorbPointer / IgnorePointer (strips this node's
+    // semantics) and do NOT re-add a BlockSemantics beside the arrows (drops
+    // every card node in the row).
     return Semantics(
+      container: true,
+      hitTestBehavior: ui.SemanticsHitTestBehavior.opaque,
       button: true,
       label: direction.label(L10n.of(context)),
       child: MouseRegion(

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-12 11:17:11.746354",
+    "@@last_modified": "2026-08-12 13:18:24.275508",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Anda boleh mendayakan audio {toolName} dalam tetapan pembelajaran anda",
     "audioSettingDisabledEnable": "Dayakan",
     "rejoinedTheActivity": "🔄 {username} menyertai semula aktiviti ini",
-    "shareAnalytics": "Kongsi Analitis"
+    "shareAnalytics": "Kongsi Analitis",
+    "courseNoLongerAvailableTitle": "Kurs tidak tersedia",
+    "courseDeletedDialogDesc": "Kursus ini telah dipadamkan."
 }

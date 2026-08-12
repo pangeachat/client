@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-12 11:17:07.471331",
+    "@@last_modified": "2026-08-12 13:18:19.190841",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2119,5 +2119,7 @@
     "audioSettingDisabledBody": "Možete omogućiti {toolName} zvuk u postavkama učenja",
     "audioSettingDisabledEnable": "Omogući",
     "rejoinedTheActivity": "🔄 {username} se ponovo pridružio ovoj aktivnosti",
-    "shareAnalytics": "Dijeli analitiku"
+    "shareAnalytics": "Dijeli analitiku",
+    "courseNoLongerAvailableTitle": "Kurs nedostupan",
+    "courseDeletedDialogDesc": "Ovaj kurs je obrisan."
 }

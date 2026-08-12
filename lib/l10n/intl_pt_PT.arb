@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-12 11:17:12.932101",
+    "@@last_modified": "2026-08-12 13:18:25.926029",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10648,5 +10648,7 @@
     "audioSettingDisabledBody": "Pode ativar o áudio {toolName} nas suas definições de aprendizagem",
     "audioSettingDisabledEnable": "Ativar",
     "rejoinedTheActivity": "🔄 {username} voltou a esta atividade",
-    "shareAnalytics": "Partilhar Análise"
+    "shareAnalytics": "Partilhar Análise",
+    "courseNoLongerAvailableTitle": "Curso indisponível",
+    "courseDeletedDialogDesc": "Este curso foi eliminado."
 }

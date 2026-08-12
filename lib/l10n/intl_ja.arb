@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-12 11:17:10.053630",
+    "@@last_modified": "2026-08-12 13:18:22.431082",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10500,5 +10500,7 @@
     "audioSettingDisabledBody": "学習設定で{toolName}の音声を有効にできます",
     "audioSettingDisabledEnable": "有効にする",
     "rejoinedTheActivity": "🔄 {username}がアクティビティに再参加しました",
-    "shareAnalytics": "分析を共有"
+    "shareAnalytics": "分析を共有",
+    "courseNoLongerAvailableTitle": "コースを利用できません",
+    "courseDeletedDialogDesc": "このコースは削除されました。"
 }
