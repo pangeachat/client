@@ -519,10 +519,7 @@ class _ArchivedSessionCTAButtons extends StatelessWidget {
   Widget build(BuildContext context) {
     final page = controller.widget.controller;
     if (!page.canLeaveArchivedSession) return const SizedBox.shrink();
-    return ActivitySessionCTAButton(
-      L10n.of(context).leave,
-      page.leaveSession,
-    );
+    return ActivitySessionCTAButton(L10n.of(context).leave, page.leaveSession);
   }
 }
 
