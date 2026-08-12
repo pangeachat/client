@@ -23,7 +23,14 @@ class EmotesSettingsView extends StatelessWidget {
   Widget build(BuildContext context) {
     if (controller.widget.roomId != null && controller.room == null) {
       return Scaffold(
-        appBar: AppBar(title: Text(L10n.of(context).oopsSomethingWentWrong)),
+        appBar: AppBar(
+          // Give the error state the panel's close control (#8327) so an
+          // unresolvable `?c=` course id can't strand the user, the same fix
+          // the course card got in #8322. The save-mode cancel button that
+          // takes priority below can't apply here — there is no pack to edit.
+          leading: controller.widget.embeddedCloseButton,
+          title: Text(L10n.of(context).oopsSomethingWentWrong),
+        ),
         body: Center(
           child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
         ),
