@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The activity and session a course ping pointed at.
@@ -56,7 +57,8 @@ class CoursePingBadgeCache {
 }
 
 /// The circular bell badge marking the pinged activity card / session tile.
-/// Matches the ping badge on the course avatar ([CourseAvatar]).
+/// Its fill is the Open/joinable state green ([ActivityPinState.joinable]) so
+/// it reads as part of the open session it points at, per the #8319 designs.
 class CoursePingBadge extends StatelessWidget {
   final double size;
 
@@ -64,11 +66,10 @@ class CoursePingBadge extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
     return Semantics(
       label: L10n.of(context).pingedLabel,
       child: Material(
-        color: scheme.primaryContainer,
+        color: AppConfig.green,
         elevation: 4.0,
         shape: const CircleBorder(),
         child: SizedBox(
@@ -77,7 +78,7 @@ class CoursePingBadge extends StatelessWidget {
           child: Icon(
             Icons.notifications_outlined,
             size: size * 0.6,
-            color: scheme.onPrimaryContainer,
+            color: Colors.white,
           ),
         ),
       ),
