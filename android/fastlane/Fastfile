@@ -64,10 +64,19 @@ platform :android do
       config = File.read("./pubspec.yaml")
       build_code = config.match(/version:\s[0-9]*\.[0-9]*\.[0-9]*\+([0-9]*)/i).captures[0]
     end
+    # A build upload delivers a bundle and nothing else. Left to itself supply
+    # finds fastlane/metadata/android/ and republishes the whole store listing
+    # on every internal build — the icon, the descriptions, and a changelog
+    # still carrying upstream FluffyChat release notes. The listing is
+    # maintained in the Play Console; the checked-in copy is not its source.
     upload_to_play_store(
       track: 'internal',
       aab: '../build/app/outputs/bundle/release/app-release.aab',
       version_code: build_code,
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true,
+      skip_upload_changelogs: true,
     )
   end
 
