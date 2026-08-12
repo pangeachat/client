@@ -186,6 +186,7 @@ class LemmaUseExampleMessagesState extends State<LemmaUseExampleMessages> {
                 // token target-key namespace they collide with the same event
                 // in the open chat timeline (#6803).
                 isAnalyticsExample: true,
+                useTokenKeys: true,
               ),
             ),
           ),

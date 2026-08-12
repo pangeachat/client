@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
@@ -50,6 +51,12 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
   bool? get isCorrect => widget.isCorrect;
 
+  String get _targetId =>
+      "practice-choice-item-${widget.constructForm.choiceContent}";
+
+  LayerLinkAndKey get _target =>
+      MatrixState.pAnyState.layerLinkAndKey(_targetId);
+
   Future<void> play() async {
     if (widget.audioContent == null) {
       return;
@@ -76,7 +83,7 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
           await TtsController.tryToSpeak(
             widget.audioContent!,
             context: context,
-            targetID: 'word-audio-button',
+            targetID: _targetId,
             langCode: l2,
             useCase: TtsUseCase.choices,
             pos: widget.token?.pos,
@@ -129,22 +136,27 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
 
   @override
   Widget build(BuildContext context) {
-    final content = Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Flexible(
-          child: Container(
-            decoration: BoxDecoration(
-              color: color(context).withAlpha((0.4 * 255).toInt()),
-              borderRadius: BorderRadius.circular(AppConfig.borderRadius),
-              border: isSelected
-                  ? Border.all(color: color(context).withAlpha(255), width: 2)
-                  : Border.all(color: Colors.transparent, width: 2),
+    final target = _target;
+    final content = CompositedTransformTarget(
+      link: target.link,
+      child: Row(
+        key: target.key,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Flexible(
+            child: Container(
+              decoration: BoxDecoration(
+                color: color(context).withAlpha((0.4 * 255).toInt()),
+                borderRadius: BorderRadius.circular(AppConfig.borderRadius),
+                border: isSelected
+                    ? Border.all(color: color(context).withAlpha(255), width: 2)
+                    : Border.all(color: Colors.transparent, width: 2),
+              ),
+              child: widget.content,
             ),
-            child: widget.content,
           ),
-        ),
-      ],
+        ],
+      ),
     );
 
     // Disable feedback and dragging when the answer is correct to prevent unnecessary interactions
