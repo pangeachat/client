@@ -124,16 +124,22 @@ class TtsRouting {
       ? const Duration(seconds: 10)
       : const Duration(seconds: 1);
 
-  /// Whether a failed backend fetch may fall back to a device voice.
+  /// Whether a failed backend attempt may fall back to a device voice.
   ///
-  /// Never for phoneme playback — device TTS would speak a different reading
-  /// than the transcription on screen (word-text-to-speech.instructions.md
-  /// grants the phoneme route no device fallback). Silence is honest;
-  /// mismatched audio teaches the wrong pronunciation.
+  /// Yes whenever the device has something to play, phoneme or not. What
+  /// protects the phoneme's correct reading is [backendTimeout], not this:
+  /// the phoneme route waits the full deadline, so reaching here means the
+  /// backend genuinely failed rather than merely lost a one-second race.
+  ///
+  /// Refusing the fallback on the phoneme route (the first cut of #8076) made
+  /// every such failure total silence — QA heard nothing at all for 还 on web
+  /// staging and production, while other words were fine because only
+  /// heteronyms take this route. An arbitrary reading is a poor outcome;
+  /// no audio at all is a worse one, and it reads as the feature being broken.
   static bool allowDeviceFallback({
     required bool hasPhoneme,
     required bool hasVoice,
-  }) => !hasPhoneme && hasVoice;
+  }) => hasVoice;
 
   static bool isGoodWebVoiceName(String name) {
     final lower = name.toLowerCase();
