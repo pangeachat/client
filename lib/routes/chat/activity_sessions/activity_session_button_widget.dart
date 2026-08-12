@@ -86,8 +86,10 @@ class ActivitySessionButtons extends StatelessWidget {
 }
 
 /// The session page's call-to-action button: a full-width filled button in the
-/// primary container colour. Public because the archived fallback body renders
-/// its own leave CTA outside this footer (#8064).
+/// darker `primary` colour when it leads, dropping to the lighter
+/// `primaryContainer` [secondary] style for any action that follows it. Public
+/// because the archived fallback body renders its own leave CTA outside this
+/// footer (#8064).
 class ActivitySessionCTAButton extends StatelessWidget {
   final String text;
   final VoidCallback? onPressed;
