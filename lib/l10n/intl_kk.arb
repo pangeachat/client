@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-07 16:23:22.149834",
+    "@@last_modified": "2026-08-11 15:43:18.183376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Сөзді басқан кезде оның аудиосын ойнатыңыз.",
     "audioChoicesToolName": "Таңдаулар",
     "audioChoicesDescription": "Тәжірибелік әрекеттерде жауап таңдаулары үшін аудио ойнатыңыз.",
-    "audioIncomingMessagesToolName": "Кіріс хабарламалар",
-    "audioIncomingMessagesDescription": "Тыңдау тәжірибесі үшін алынған хабарламаларды мақсатты тіліңізде автоматты түрде дауыстап оқыңыз.",
     "choosePangeaAvatar": "Pangea аватарын таңдаңыз",
     "readAloudNoVoiceTitle": "Жоғары сапалы {language} дауысы табылмады",
     "readAloudNoVoiceDesktopWeb": "Бұл браузер жоғары сапалы {language} дауысын ұсынбайды, сондықтан хабарламаларды мұнда жақсы оқу мүмкін емес. Chrome және Edge әдетте жоғары сапалы дауыстарды қамтиды.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Курс мәліметтері",
     "objective": "Мақсат",
     "pingedLabel": "Пинг жіберілді",
-    "mapFilterPlayerCount": "{count} ойыншы"
+    "mapFilterPlayerCount": "{count} ойыншы",
+    "practiceFeedbackButtonTooltip": "Бұл жаттығуға қатысты мәселе туралы хабарлау",
+    "practiceFeedbackDialogTitle": "Жаттығуға қатысты кері байланыс",
+    "practiceFeedbackSelectPair": "Қай жұп қате көрінеді?",
+    "practiceFeedbackUserSetEmoji": "Сіз осы эмодзиді таңдадыңыз — оны сөз картасынан өзгертіңіз",
+    "practiceFeedbackAlreadyMatched": "Дұрыс сәйкестендірілген",
+    "practiceFeedbackUpdated": "Рахмет! Жаттығу сіздің кері байланысыңыз негізінде жаңартылды.",
+    "practiceFeedbackUnchanged": "Рахмет! Сіздің есебіңіз тіркелді, бірақ мазмұн өзгеріссіз қалды.",
+    "audioOnNewMessageToolName": "Жаңа хабарламада",
+    "audioOnNewMessageDescription": "Жаңа алынған хабарламаларды мақсатты тіліңізде автоматты түрде дауыстап оқыңыз.",
+    "audioOnMessageClickToolName": "Хабарламаны басқанда",
+    "audioOnMessageClickDescription": "Хабарламаны басқан кезде оны мақсатты тіліңізде дауыстап оқыңыз.",
+    "audioSettingDisabledTitle": "{toolName} аудиосы өшірілген",
+    "audioSettingDisabledBody": "Оқу параметрлеріңізде {toolName} аудиосын қосуға болады",
+    "audioSettingDisabledEnable": "Қосу",
+    "rejoinedTheActivity": "🔄 {username} бұл әрекетке қайта қосылды"
 }

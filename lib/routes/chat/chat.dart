@@ -60,6 +60,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/pangea/morphs/morph_icon.dart';
@@ -704,7 +705,7 @@ class ChatController extends State<ChatPageWithRoom>
       ownMessage: event.senderId == Matrix.of(context).client.userID,
     );
 
-    final msgLang = pangeaMessageEvent.originalSent?.langCode.split('-').first;
+    final msgLang = pangeaMessageEvent.correctedSent?.langCode.split('-').first;
 
     if (msgLang != l2) return;
 
@@ -713,7 +714,7 @@ class ChatController extends State<ChatPageWithRoom>
     );
     if (newTokens.isEmpty) return;
     final newTokenText = newTokens.first;
-    final token = pangeaMessageEvent.originalSent?.tokens?.firstWhereOrNull(
+    final token = pangeaMessageEvent.correctedSent?.tokens?.firstWhereOrNull(
       (t) => newTokenText == t.text,
     );
     if (token == null) return;
@@ -754,7 +755,12 @@ class ChatController extends State<ChatPageWithRoom>
         final token = tutorialToken;
         if (event == null) return;
         // Re-open the toolbar so SelectModeButtons mounts and picks up the queued tutorial.
-        showToolbar(event, bypassBlockingOverlays: true, selectedToken: token);
+        showToolbar(
+          event,
+          bypassBlockingOverlays: true,
+          selectedToken: token,
+          isTutorial: true,
+        );
         return;
       case TutorialEnum.writingAssistance:
         // The writing-assistance tutorial starts from the text input which is
@@ -778,7 +784,11 @@ class ChatController extends State<ChatPageWithRoom>
           TutorialStepData(
             targetKey: event.eventId,
             onTap: () async {
-              showToolbar(event, bypassBlockingOverlays: true);
+              showToolbar(
+                event,
+                bypassBlockingOverlays: true,
+                isTutorial: true,
+              );
             },
             canShowNextStep: () => isToolbarOpen,
           ),
@@ -2774,6 +2784,12 @@ class ChatController extends State<ChatPageWithRoom>
     Event? nextEvent,
     Event? prevEvent,
     bool bypassBlockingOverlays = false,
+
+    /// Whether a tutorial opened the toolbar rather than the learner. Marked at
+    /// the call site rather than inferred, so read-aloud does not talk over the
+    /// tutorial's own instruction. See "Reading on select" in
+    /// client/.github/instructions/message-read-aloud.instructions.md
+    bool isTutorial = false,
   }) async {
     if (event.redacted ||
         event.text == '' ||
@@ -2874,6 +2890,19 @@ class ChatController extends State<ChatPageWithRoom>
         ),
       );
     }
+
+    // A deliberate tap on a message is a request to hear it, own messages
+    // included. The controller owns which selections qualify.
+    readAloudController.readSelectedMessage(
+      pangeaMessageEvent ??
+          PangeaMessageEvent(
+            event: event,
+            timeline: timeline!,
+            ownMessage: event.senderId == event.room.client.userID,
+          ),
+      isTutorial: isTutorial,
+      tokenSelected: selectedToken != null,
+    );
 
     GoogleAnalytics.openMessageToolbar();
   }
@@ -3352,7 +3381,7 @@ class ChatController extends State<ChatPageWithRoom>
     if (confirmed != OkCancelResult.ok) return;
     final result = await showFutureLoadingDialog(
       context: context,
-      future: widget.room.leave,
+      future: widget.room.leaveIgnoringUnknownRoom,
     );
 
     if (result.isError) return;

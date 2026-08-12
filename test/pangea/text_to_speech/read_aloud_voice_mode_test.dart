@@ -5,7 +5,7 @@ import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 
 // Voice mode: the learner sent a voice message, so the bot's reply to it is
-// read aloud whether or not audioIncomingMessages is on, and may reach backend
+// read aloud whether or not audioOnNewMessage is on, and may reach backend
 // TTS rather than staying silent when the device has no known-good L2 voice.
 //
 // Both properties belonged to the bot-generated audio this replaces: it always
@@ -60,9 +60,9 @@ void main() {
       );
     });
 
-    // The regression this guards: with audioIncomingMessages off (the default)
-    // a voice message would otherwise get a silent reply, where the bot used to
-    // speak it automatically.
+    // The regression this guards: with audioOnNewMessage off, a voice message
+    // would otherwise get a silent reply, where the bot used to speak it
+    // automatically.
     test('a voice reply is read even with the setting off', () {
       expect(
         MessageReadAloudController.qualifies(
@@ -92,9 +92,10 @@ void main() {
     test('every other use case is gated by its own toggle', () {
       expect(TtsUseCase.words.toolSetting, ToolSetting.audioWords);
       expect(TtsUseCase.choices.toolSetting, ToolSetting.audioChoices);
+      expect(TtsUseCase.newMessage.toolSetting, ToolSetting.audioOnNewMessage);
       expect(
-        TtsUseCase.incomingMessage.toolSetting,
-        ToolSetting.audioIncomingMessages,
+        TtsUseCase.messageClick.toolSetting,
+        ToolSetting.audioOnMessageClick,
       );
     });
 

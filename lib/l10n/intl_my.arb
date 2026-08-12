@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-07 16:23:24.243923",
+    "@@last_modified": "2026-08-11 15:43:20.574679",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "စကားလုံးတစ်ခုကို နှိပ်လိုက်တဲ့အခါ အသံဖွင့်ပါ။",
     "audioChoicesToolName": "ရွေးချယ်စရာများ",
     "audioChoicesDescription": "လေ့ကျင့်ခန်းများတွင် အဖြေရွေးချယ်စရာများအတွက် အသံဖွင့်ပါ။",
-    "audioIncomingMessagesToolName": "ဝင်လာသော မက်ဆေ့ချ်များ",
-    "audioIncomingMessagesDescription": "နားထောင်လေ့ကျင့်ရန်အတွက် သင်၏ပစ်မှတ်ဘာသာစကားဖြင့် လက်ခံရရှိသော မက်ဆေ့ချ်များကို အလိုအလျောက် ဖတ်ပြပါ။",
     "choosePangeaAvatar": "Pangea အသားပေးပုံ ရွေးပါ",
     "readAloudNoVoiceTitle": "အရည်အသွေးမြင့် {language} အသံ မတွေ့ရှိပါ",
     "readAloudNoVoiceDesktopWeb": "ဤဘရောက်ဆာတွင် အရည်အသွေးမြင့် {language} အသံ မရှိသောကြောင့် မက်ဆေ့ချ်များကို ကောင်းစွာ ဖတ်၍မရပါ။ Chrome နှင့် Edge တွင် အရည်အသွေးမြင့် အသံများ ပါဝင်လေ့ရှိပါသည်။",
@@ -2105,5 +2103,20 @@
     "courseDetails": "သင်တန်းအသေးစိတ်",
     "objective": "ရည်ရွယ်ချက်",
     "pingedLabel": "ပင်းခေါ်ထားသည်",
-    "mapFilterPlayerCount": "{count} ကစားသမား"
+    "mapFilterPlayerCount": "{count} ကစားသမား",
+    "practiceFeedbackButtonTooltip": "ဤလေ့ကျင့်ခန်းနှင့်ပတ်သက်၍ ပြဿနာတစ်ခုခုကို သတင်းပို့ပါ",
+    "practiceFeedbackDialogTitle": "လေ့ကျင့်ခန်း တုံ့ပြန်ချက်",
+    "practiceFeedbackSelectPair": "မည်သည့်အတွဲက မှားနေပါသလဲ။",
+    "practiceFeedbackUserSetEmoji": "သင်သည် ဤအီမိုဂျီကို ရွေးချယ်ခဲ့သည် — ၎င်းကို စကားလုံးကတ်မှ ပြောင်းလဲပါ",
+    "practiceFeedbackAlreadyMatched": "မှန်ကန်စွာ တွဲပြီးသားဖြစ်သည်",
+    "practiceFeedbackUpdated": "ကျေးဇူးတင်ပါသည်။ သင်၏တုံ့ပြန်ချက်အပေါ် အခြေခံ၍ လေ့ကျင့်ခန်းကို အပ်ဒိတ်လုပ်ထားပါသည်။",
+    "practiceFeedbackUnchanged": "ကျေးဇူးတင်ပါသည်။ သင်၏သတင်းပို့ချက်ကို မှတ်တမ်းတင်ထားသော်လည်း အကြောင်းအရာသည် မပြောင်းလဲဘဲ ပြန်ရောက်လာပါသည်။",
+    "audioOnNewMessageToolName": "မက်ဆေ့ချ်အသစ်ရောက်ရှိပါက",
+    "audioOnNewMessageDescription": "လက်ခံရရှိသော မက်ဆေ့ချ်အသစ်များကို သင့်ပစ်မှတ်ဘာသာစကားဖြင့် အလိုအလျောက် အသံထွက်ဖတ်ပါ။",
+    "audioOnMessageClickToolName": "မက်ဆေ့ချ်ကို နှိပ်ပါက",
+    "audioOnMessageClickDescription": "မက်ဆေ့ချ်တစ်ခုကို နှိပ်လိုက်သောအခါ သင့်ပစ်မှတ်ဘာသာစကားဖြင့် အသံထွက်ဖတ်ပါ။",
+    "audioSettingDisabledTitle": "{toolName} အသံ ပိတ်ထားသည်",
+    "audioSettingDisabledBody": "သင်၏ သင်ယူမှု ဆက်တင်များတွင် {toolName} အသံကို ဖွင့်နိုင်သည်။",
+    "audioSettingDisabledEnable": "ဖွင့်ရန်",
+    "rejoinedTheActivity": "🔄 {username} သည် ဤလုပ်ဆောင်ချက်သို့ ပြန်လည်ဝင်ရောက်ခဲ့သည်"
 }

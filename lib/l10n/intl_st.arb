@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-07 16:23:26.077468",
+    "@@last_modified": "2026-08-11 15:43:21.842922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Bapala modumo wa lentswe ha o le tlanya.",
     "audioChoicesToolName": "Dikgetho",
     "audioChoicesDescription": "Bapala modumo bakeng sa dikgetho tsa dikarabo ditshebedisong tsa boitsebelo.",
-    "audioIncomingMessagesToolName": "Melaetsa e kenang",
-    "audioIncomingMessagesDescription": "Bala melaetsa e amohetsweng ka boyona ka lentswe le phahameng ka puo eo o e ithutang bakeng sa boitsebelo ba ho mamela.",
     "choosePangeaAvatar": "Kgetha avatar ya Pangea",
     "readAloudNoVoiceTitle": "Ha ho lentsoe la boleng bo holimo la {language} le fumanoeng",
     "readAloudNoVoiceDesktopWeb": "Sebatli sena ha se fane ka lentsoe la boleng bo holimo la {language}, kahoo melaetsa e ke ke ea baloa hantle mona. Chrome le Edge hangata li kenyelletsa mantsoe a boleng bo holimo.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Lintlha tsa thupelo",
     "objective": "Sepheo",
     "pingedLabel": "E rometsoe",
-    "mapFilterPlayerCount": "Libapali tse {count}"
+    "mapFilterPlayerCount": "Libapali tse {count}",
+    "practiceFeedbackButtonTooltip": "Tlaleha bothata ka boikoetliso bona",
+    "practiceFeedbackDialogTitle": "Maikutlo a Boikoetliso ba ho Ithuta",
+    "practiceFeedbackSelectPair": "Ke para efe e shebahalang e fosahetse?",
+    "practiceFeedbackUserSetEmoji": "U khethile emoji ena — e fetole ho tsoa kareteneng ea lentsoe",
+    "practiceFeedbackAlreadyMatched": "E se e tsamaisane hantle",
+    "practiceFeedbackUpdated": "Kea leboha! Boikoetliso bo ntlafalitsoe ho latela maikutlo a hau.",
+    "practiceFeedbackUnchanged": "Kea leboha! Tlaleho ea hau e tlalehiloe, empa litaba ha lia fetoha.",
+    "audioOnNewMessageToolName": "Molaetsa o mocha",
+    "audioOnNewMessageDescription": "Bala melaetsa e mecha e amohetsoeng ka lentsoe le phahameng ka boits'oaro ka puo eo u e batlang.",
+    "audioOnMessageClickToolName": "Ha o tobetsa molaetsa",
+    "audioOnMessageClickDescription": "Bala molaetsa ka lentsoe le phahameng ka puo eo u e batlang ha o tobetsa ho ona.",
+    "audioSettingDisabledTitle": "Molumo oa {toolName} o tingoe",
+    "audioSettingDisabledBody": "O ka bulela molumo oa {toolName} ho di-setting tsa thuto ya hao",
+    "audioSettingDisabledEnable": "Bulela",
+    "rejoinedTheActivity": "🔄 {username} o boetse a kenela mosebetsi ona"
 }

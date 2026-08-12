@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-07 16:23:18.611760",
+    "@@last_modified": "2026-08-11 15:43:15.684883",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10174,8 +10174,6 @@
     "audioWordsDescription": "Přehrát zvuk slova po klepnutí.",
     "audioChoicesToolName": "Možnosti",
     "audioChoicesDescription": "Přehrát zvuk pro možnosti odpovědí v procvičovacích aktivitách.",
-    "audioIncomingMessagesToolName": "Příchozí zprávy",
-    "audioIncomingMessagesDescription": "Automaticky nahlas přečíst přijaté zprávy ve vašem cílovém jazyce pro poslechové cvičení.",
     "choosePangeaAvatar": "Vyberte si avatara Pangea",
     "readAloudNoVoiceTitle": "Nenalezena žádná vysoce kvalitní hlasová syntéza pro jazyk {language}",
     "readAloudNoVoiceDesktopWeb": "Tento prohlížeč nenabízí vysoce kvalitní hlasovou syntézu pro jazyk {language}, takže zprávy zde nelze dobře přečíst nahlas. Chrome a Edge obvykle obsahují vysoce kvalitní hlasy.",
@@ -10211,5 +10209,20 @@
     "courseDetails": "Podrobnosti kurzu",
     "objective": "Cíl",
     "pingedLabel": "Pingnuto",
-    "mapFilterPlayerCount": "{count} hráčů"
+    "mapFilterPlayerCount": "{count} hráčů",
+    "practiceFeedbackButtonTooltip": "Nahlásit problém s tímto cvičením",
+    "practiceFeedbackDialogTitle": "Zpětná vazba k cvičení",
+    "practiceFeedbackSelectPair": "Který pár vypadá špatně?",
+    "practiceFeedbackUserSetEmoji": "Vybrali jste tento emotikon – změňte jej z kartičky se slovem",
+    "practiceFeedbackAlreadyMatched": "Již správně spárováno",
+    "practiceFeedbackUpdated": "Děkujeme! Cvičení bylo aktualizováno na základě vaší zpětné vazby.",
+    "practiceFeedbackUnchanged": "Děkujeme! Váš report byl zaznamenán, ale obsah zůstal nezměněn.",
+    "audioOnNewMessageToolName": "Při nové zprávě",
+    "audioOnNewMessageDescription": "Automaticky nahlas přečíst nové přijaté zprávy ve vašem cílovém jazyce.",
+    "audioOnMessageClickToolName": "Při kliknutí na zprávu",
+    "audioOnMessageClickDescription": "Přečíst zprávu nahlas ve vašem cílovém jazyce, když na ni kliknete.",
+    "audioSettingDisabledTitle": "Zvuk {toolName} je vypnutý",
+    "audioSettingDisabledBody": "Zvuk {toolName} můžete zapnout v nastavení učení",
+    "audioSettingDisabledEnable": "Zapnout",
+    "rejoinedTheActivity": "🔄 {username} se znovu připojil k této aktivitě"
 }

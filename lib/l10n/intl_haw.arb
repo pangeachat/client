@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-07 16:23:20.494405",
+    "@@last_modified": "2026-08-11 15:43:16.844969",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Hoʻokani i ka leo o ka huaʻōlelo ke paʻi ʻoe ma luna.",
     "audioChoicesToolName": "Nā Koho",
     "audioChoicesDescription": "Hoʻokani i ka leo no nā koho pane i nā hana hoʻomaʻamaʻa.",
-    "audioIncomingMessagesToolName": "Nā Leho E Hiki Mai Ana",
-    "audioIncomingMessagesDescription": "Heluhelu ʻakomi i nā leka i loaʻa me ka leo nui ma kāu ʻōlelo i manaʻo ʻia no ka hoʻomaʻamaʻa hoʻolohe.",
     "choosePangeaAvatar": "E koho i kiʻi avatar Pangea",
     "readAloudNoVoiceTitle": "ʻAʻohe leo {language} maikaʻi i loaʻa",
     "readAloudNoVoiceDesktopWeb": "ʻAʻole hāʻawi kēia polokalamu kele pūnaewele i kahi leo {language} maikaʻi, no laila ʻaʻole hiki ke heluhelu maikaʻi ʻia nā leka ma ʻaneʻi. Hoʻokomo pinepine ʻo Chrome a me Edge i nā leo maikaʻi.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Nā kikoʻī papa",
     "objective": "Pahuhopu",
     "pingedLabel": "Ua kīkē ʻia",
-    "mapFilterPlayerCount": "{count} mau mea pāʻani"
+    "mapFilterPlayerCount": "{count} mau mea pāʻani",
+    "practiceFeedbackButtonTooltip": "Hōʻike i kahi pilikia me kēia haʻawina",
+    "practiceFeedbackDialogTitle": "Manaʻo Hoʻoikaika Hoʻomaʻamaʻa",
+    "practiceFeedbackSelectPair": "ʻO wai ka paʻa i hewa?",
+    "practiceFeedbackUserSetEmoji": "Ua koho ʻoe i kēia emoji — e hoʻololi mai ke kāleka huaʻōlelo",
+    "practiceFeedbackAlreadyMatched": "Ua hoʻohālikelike pololei ʻia",
+    "practiceFeedbackUpdated": "Mahalo! Ua hōʻano hou ʻia ka haʻawina ma muli o kāu manaʻo.",
+    "practiceFeedbackUnchanged": "Mahalo! Ua hoʻopaʻa ʻia kāu hōʻike, akā ʻaʻole i loli ka ʻike.",
+    "audioOnNewMessageToolName": "Ma ka leka hou",
+    "audioOnNewMessageDescription": "Heluhelu 'akomi i nā leka hou i loa'a me ka leo nui ma kāu 'ōlelo i mana'o ai.",
+    "audioOnMessageClickToolName": "Ma ke kaomi 'ana i ka leka",
+    "audioOnMessageClickDescription": "Heluhelu i ka leka me ka leo nui ma kāu 'ōlelo i mana'o ai ke kaomi 'oe ma luna ona.",
+    "audioSettingDisabledTitle": "Ua pio ke kani o {toolName}",
+    "audioSettingDisabledBody": "Hiki iā ʻoe ke hoʻā i ke kani o {toolName} ma kāu hoʻonohonoho aʻo",
+    "audioSettingDisabledEnable": "Hoʻā",
+    "rejoinedTheActivity": "🔄 Ua hui hou ʻo {username} i kēia hana"
 }

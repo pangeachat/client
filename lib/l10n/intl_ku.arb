@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-07 16:23:22.591141",
+    "@@last_modified": "2026-08-11 15:43:18.967558",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "کاتێک دەست لە وشەیەک دەدەیت، دەنگەکەی لێدەدات.",
     "audioChoicesToolName": "هەڵبژاردنەکان",
     "audioChoicesDescription": "دەنگ بۆ هەڵبژاردنەکانی وەڵام لە چالاکییەکانی ڕاهێناندا لێبدە.",
-    "audioIncomingMessagesToolName": "نامە وەرگیراوەکان",
-    "audioIncomingMessagesDescription": "بە شێوەیەکی خۆکارانە نامە وەرگیراوەکان بە دەنگی بەرز بە زمانی ئامانجەکەت بخوێنەرەوە بۆ ڕاهێنانی گوێگرتن.",
     "choosePangeaAvatar": "وێنەیەکی پەنجه‌ئا هەڵبژێرە",
     "readAloudNoVoiceTitle": "هیچ دەنگێکی {language}ی کوالیتی بەرز نەدۆزرایەوە",
     "readAloudNoVoiceDesktopWeb": "ئەم وێبگەڕە دەنگێکی {language}ی کوالیتی بەرزی تێدا نییە، بۆیە نامەکان لێرە بە باشی ناخوێندرێنەوە. کرۆم و ئێدج بەزۆری دەنگی کوالیتی بەرزیان تێدایە.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "وردەکارییەکانی خول",
     "objective": "ئامانج",
     "pingedLabel": "پینگ کرا",
-    "mapFilterPlayerCount": "{count} یاریزان"
+    "mapFilterPlayerCount": "{count} یاریزان",
+    "practiceFeedbackButtonTooltip": "کێشەیەک لەم ڕاهێنانەدا ڕاپۆرت بکە",
+    "practiceFeedbackDialogTitle": "فیدباکی ڕاهێنانی پراکتیکی",
+    "practiceFeedbackSelectPair": "کام جووتە هەڵە دەردەکەوێت؟",
+    "practiceFeedbackUserSetEmoji": "تۆ ئەم ئیمۆجییەت هەڵبژاردووە — لە کارتی وشەکە بیگۆڕە",
+    "practiceFeedbackAlreadyMatched": "پێشتر بە دروستی گونجاوە",
+    "practiceFeedbackUpdated": "سوپاس! ڕاهێنانەکە نوێکرایەوە بە پشتبەستن بە فیدباکی تۆ.",
+    "practiceFeedbackUnchanged": "سوپاس! ڕاپۆرتەکەت تۆمارکرا، بەڵام ناوەڕۆکەکە وەک خۆی مایەوە.",
+    "audioOnNewMessageToolName": "لە کاتی پەیامی نوێدا",
+    "audioOnNewMessageDescription": "بە شێوەیەکی خۆکارانە پەیامە نوێ وەرگیراوەکان بە دەنگی بەرز بە زمانی ئامانجەکەت بخوێنەرەوە.",
+    "audioOnMessageClickToolName": "لە کاتی کرتەکردن لەسەر پەیام",
+    "audioOnMessageClickDescription": "پەیامێک بە دەنگی بەرز بە زمانی ئامانجەکەت بخوێنەرەوە کاتێک کرتەی لەسەر دەکەیت.",
+    "audioSettingDisabledTitle": "دەنگی {toolName} ناچالاک کراوە",
+    "audioSettingDisabledBody": "دەتوانیت دەنگی {toolName} لە ڕێکخستنەکانی فێربووندا چالاک بکەیت",
+    "audioSettingDisabledEnable": "چالاککردن",
+    "rejoinedTheActivity": "🔄 {username} دووبارە بەشداریی ئەم چالاکییەی کردەوە"
 }

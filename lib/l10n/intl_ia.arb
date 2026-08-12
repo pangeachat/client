@@ -1367,7 +1367,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-07 16:23:21.317408",
+    "@@last_modified": "2026-08-11 15:43:17.458246",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10616,8 +10616,6 @@
     "audioWordsDescription": "Reproducer le audio de un parola quando tu lo tocca.",
     "audioChoicesToolName": "Optiones",
     "audioChoicesDescription": "Reproducer audio pro le optiones de responsa in activitates de practica.",
-    "audioIncomingMessagesToolName": "Messages entrante",
-    "audioIncomingMessagesDescription": "Leger automaticamente le messages recipite a alte voce in tu lingua de destination pro practica de ascolta.",
     "choosePangeaAvatar": "Selige un avatar de Pangea",
     "readAloudNoVoiceTitle": "Nulle voce de alte qualitate pro {language} trovate",
     "readAloudNoVoiceDesktopWeb": "Iste navigator non offere un voce de alte qualitate pro {language}, dunque le messages non pote esser legite ben hic. Chrome e Edge usualmente include voces de alte qualitate.",
@@ -10653,5 +10651,20 @@
     "courseDetails": "Detalios del curso",
     "objective": "Objectivo",
     "pingedLabel": "Pingeva",
-    "mapFilterPlayerCount": "{count} jocatores"
+    "mapFilterPlayerCount": "{count} jocatores",
+    "practiceFeedbackButtonTooltip": "Reportar un problema con iste exercitio",
+    "practiceFeedbackDialogTitle": "Commentario super le Exerctio Practic",
+    "practiceFeedbackSelectPair": "Qual par pare incorrecte?",
+    "practiceFeedbackUserSetEmoji": "Tu ha seligite iste emoji — cambia lo del carta de parola",
+    "practiceFeedbackAlreadyMatched": "Ja correspondite correctemente",
+    "practiceFeedbackUpdated": "Gratias! Le exercitio ha essite actualisate basate super tu commentario.",
+    "practiceFeedbackUnchanged": "Gratias! Tu reporto ha essite registrate, ma le contento remane inalterate.",
+    "audioOnNewMessageToolName": "Super nove messages",
+    "audioOnNewMessageDescription": "Lege automaticamente nove messages recipite a alte voce in tu lingua de scopo.",
+    "audioOnMessageClickToolName": "Super clic de message",
+    "audioOnMessageClickDescription": "Lege un message a alte voce in tu lingua de scopo quando tu clicca super illo.",
+    "audioSettingDisabledTitle": "Audio de {toolName} disactivate",
+    "audioSettingDisabledBody": "Tu pote activar le audio de {toolName} in tu preferentias de apprender",
+    "audioSettingDisabledEnable": "Activar",
+    "rejoinedTheActivity": "🔄 {username} ha reunite a iste activitate"
 }

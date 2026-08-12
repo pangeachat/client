@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-07 16:23:25.517121",
+    "@@last_modified": "2026-08-11 15:43:21.606001",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "جڏهن توهان ڪنهن لفظ تي ٽيپ ڪندا ته ان جو آڊيو هلي ويندو.",
     "audioChoicesToolName": "چونڊون",
     "audioChoicesDescription": "مشق جي سرگرمين ۾ جوابي چونڊن لاءِ آڊيو هلايو.",
-    "audioIncomingMessagesToolName": "ايندڙ پيغام",
-    "audioIncomingMessagesDescription": "ٻڌڻ جي مشق لاءِ توهان جي مقصد واري ٻولي ۾ وصول ٿيل پيغامن کي پاڻمرادو بلند آواز سان پڙهو.",
     "choosePangeaAvatar": "پينجيا اوتار چونڊيو",
     "readAloudNoVoiceTitle": "ڪا به اعليٰ معيار جي {language} آواز نه ملي سگهي",
     "readAloudNoVoiceDesktopWeb": "هي برائوزر اعليٰ معيار جي {language} آواز پيش نٿو ڪري، تنهنڪري هتي پيغامن کي چڱيءَ طرح پڙهي نٿو سگهجي. ڪروم ۽ ايج ۾ عام طور تي اعليٰ معيار جا آواز شامل هوندا آهن.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "ڪورس جا تفصيل",
     "objective": "مقصد",
     "pingedLabel": "پنگ ڪيو ويو",
-    "mapFilterPlayerCount": "{count} رانديگر"
+    "mapFilterPlayerCount": "{count} رانديگر",
+    "practiceFeedbackButtonTooltip": "هن مشق سان مسئلو ٻڌايو",
+    "practiceFeedbackDialogTitle": "مشق جي راءِ",
+    "practiceFeedbackSelectPair": "ڪهڙو جوڙو غلط لڳي ٿو؟",
+    "practiceFeedbackUserSetEmoji": "توهان هي ايموجي چونڊيو آهي — ان کي لفظ ڪارڊ مان تبديل ڪريو",
+    "practiceFeedbackAlreadyMatched": "اڳ ۾ ئي صحيح نموني سان ملائي وئي آهي",
+    "practiceFeedbackUpdated": "مهرباني! مشق توهان جي راءِ جي بنياد تي اپڊيٽ ڪئي وئي آهي.",
+    "practiceFeedbackUnchanged": "مهرباني! توهان جي رپورٽ رڪارڊ ڪئي وئي، پر مواد اڻ تبديل ٿيل رهيو.",
+    "audioOnNewMessageToolName": "نئين پيغام تي",
+    "audioOnNewMessageDescription": "نئين موصول ٿيل پيغامن کي خودڪار طريقي سان توهان جي ٽارگيٽ ٻولي ۾ بلند آواز سان پڙهو.",
+    "audioOnMessageClickToolName": "پيغام تي ڪلڪ ڪرڻ تي",
+    "audioOnMessageClickDescription": "جڏهن توهان ڪنهن پيغام تي ڪلڪ ڪندا آهيو ته ان کي توهان جي ٽارگيٽ ٻولي ۾ بلند آواز سان پڙهو.",
+    "audioSettingDisabledTitle": "{toolName} آڊيو غير فعال",
+    "audioSettingDisabledBody": "توهان پنهنجي سکيا جي سيٽنگن ۾ {toolName} آڊيو فعال ڪري سگهو ٿا",
+    "audioSettingDisabledEnable": "فعال ڪريو",
+    "rejoinedTheActivity": "🔄 {username} هن سرگرمي ۾ ٻيهر شامل ٿيو"
 }

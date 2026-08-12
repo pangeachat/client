@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-07 16:23:27.454089",
+    "@@last_modified": "2026-08-11 15:43:23.456856",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Dlala isandi segama xa ucofa kulo.",
     "audioChoicesToolName": "Ukukhetha",
     "audioChoicesDescription": "Dlala isandi sokukhetha iimpendulo kwimisebenzi yokuziqhelanisa.",
-    "audioIncomingMessagesToolName": "Imiyalezo engenayo",
-    "audioIncomingMessagesDescription": "Funda ngokuzenzekelayo imiyalezo efumanekileyo ngelizwi elikhulu ngolwimi olujoliswe kulo ukuze uziqhelanise nokuphulaphula.",
     "choosePangeaAvatar": "Khetha i-avatar yePangea",
     "readAloudNoVoiceTitle": "Akukho lizwi {language} elikumgangatho ophezulu elifunyenweyo",
     "readAloudNoVoiceDesktopWeb": "Le bhrawuza ayiliniki ilizwi {language} elikumgangatho ophezulu, ngoko ke imiyalezo ayinakufundwa kakuhle apha. I-Chrome kunye ne-Edge zihlala zibandakanya amazwi akumgangatho ophezulu.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Iinkcukacha zekhosi",
     "objective": "Injongo",
     "pingedLabel": "Ubhaliwe",
-    "mapFilterPlayerCount": "Abadlali abali-{count}"
+    "mapFilterPlayerCount": "Abadlali abali-{count}",
+    "practiceFeedbackButtonTooltip": "Xela ingxaki ngalo msebenzi",
+    "practiceFeedbackDialogTitle": "Ingxelo yoMsebenzi woQheliso",
+    "practiceFeedbackSelectPair": "Yeyiphi ipere ebonakala ingachananga?",
+    "practiceFeedbackUserSetEmoji": "Ukhethe le emoji — yitshintshe kwikhadi legama",
+    "practiceFeedbackAlreadyMatched": "Sele ifaniswe ngokuchanekileyo",
+    "practiceFeedbackUpdated": "Enkosi! Umsebenzi uhlaziywe ngokwesiphakamiso sakho.",
+    "practiceFeedbackUnchanged": "Enkosi! Ingxelo yakho irekhodiwe, kodwa umxholo awutshintshanga.",
+    "audioOnNewMessageToolName": "Kwincoko entsha",
+    "audioOnNewMessageDescription": "Funda ngokuzenzekelayo imiyalezo emitsha efumanekayo ngolwimi olufunayo.",
+    "audioOnMessageClickToolName": "Xa ucofa umyalezo",
+    "audioOnMessageClickDescription": "Funda umyalezo ngolwimi olufunayo xa uwucofa.",
+    "audioSettingDisabledTitle": "Isandi se-{toolName} sivaliwe",
+    "audioSettingDisabledBody": "Ungasivula isandi se-{toolName} kuseto lwakho lokufunda",
+    "audioSettingDisabledEnable": "Vula",
+    "rejoinedTheActivity": "🔄 {username} uphinde wajoyina lo msebenzi"
 }

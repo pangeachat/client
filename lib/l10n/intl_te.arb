@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-07 16:23:26.559238",
+    "@@last_modified": "2026-08-11 15:43:22.274821",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10630,8 +10630,6 @@
     "audioWordsDescription": "పదంపై నొక్కినప్పుడు దాని ఆడియోను ప్లే చేయండి.",
     "audioChoicesToolName": "ఎంపికలు",
     "audioChoicesDescription": "అభ్యాస కార్యకలాపాలలో సమాధాన ఎంపికల కోసం ఆడియోను ప్లే చేయండి.",
-    "audioIncomingMessagesToolName": "ఇన్‌కమింగ్ సందేశాలు",
-    "audioIncomingMessagesDescription": "వినే అభ్యాసం కోసం మీ లక్ష్య భాషలో స్వీకరించిన సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి.",
     "choosePangeaAvatar": "పంగేయా అవతార్‌ను ఎంచుకోండి",
     "readAloudNoVoiceTitle": "అధిక-నాణ్యత గల {language} వాయిస్ కనుగొనబడలేదు",
     "readAloudNoVoiceDesktopWeb": "ఈ బ్రౌజర్ అధిక-నాణ్యత గల {language} వాయిస్‌ను అందించదు, కాబట్టి సందేశాలను ఇక్కడ సరిగ్గా చదవలేము. Chrome మరియు Edge సాధారణంగా అధిక-నాణ్యత గల వాయిస్‌లను కలిగి ఉంటాయి.",
@@ -10667,5 +10665,20 @@
     "courseDetails": "కోర్సు వివరాలు",
     "objective": "లక్ష్యం",
     "pingedLabel": "పింగ్ చేయబడింది",
-    "mapFilterPlayerCount": "{count} ఆటగాళ్ళు"
+    "mapFilterPlayerCount": "{count} ఆటగాళ్ళు",
+    "practiceFeedbackButtonTooltip": "ఈ అభ్యాసంలో సమస్యను నివేదించండి",
+    "practiceFeedbackDialogTitle": "అభ్యాస వ్యాయామం అభిప్రాయం",
+    "practiceFeedbackSelectPair": "ఏ జత తప్పుగా కనిపిస్తుంది?",
+    "practiceFeedbackUserSetEmoji": "మీరు ఈ ఎమోజిని ఎంచుకున్నారు — పద కార్డ్ నుండి దీన్ని మార్చండి",
+    "practiceFeedbackAlreadyMatched": "ఇప్పటికే సరిగ్గా సరిపోలింది",
+    "practiceFeedbackUpdated": "ధన్యవాదాలు! మీ అభిప్రాయం ఆధారంగా వ్యాయామం నవీకరించబడింది.",
+    "practiceFeedbackUnchanged": "ధన్యవాదాలు! మీ నివేదిక రికార్డ్ చేయబడింది, కానీ కంటెంట్ మారకుండా తిరిగి వచ్చింది.",
+    "audioOnNewMessageToolName": "కొత్త సందేశం వచ్చినప్పుడు",
+    "audioOnNewMessageDescription": "మీ లక్ష్య భాషలో కొత్తగా వచ్చిన సందేశాలను స్వయంచాలకంగా బిగ్గరగా చదవండి.",
+    "audioOnMessageClickToolName": "సందేశంపై క్లిక్ చేసినప్పుడు",
+    "audioOnMessageClickDescription": "మీరు సందేశంపై క్లిక్ చేసినప్పుడు మీ లక్ష్య భాషలో బిగ్గరగా చదవండి.",
+    "audioSettingDisabledTitle": "{toolName} ఆడియో నిలిపివేయబడింది",
+    "audioSettingDisabledBody": "మీరు మీ అభ్యాస సెట్టింగ్‌లలో {toolName} ఆడియోను ప్రారంభించవచ్చు",
+    "audioSettingDisabledEnable": "ప్రారంభించు",
+    "rejoinedTheActivity": "🔄 {username} ఈ కార్యాచరణలో తిరిగి చేరారు"
 }

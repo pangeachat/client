@@ -16,13 +16,16 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// while the learner has the chat open, so a conversation doubles as listening
 /// practice.
 ///
-/// Gated by [ToolSetting.audioIncomingMessages]. [voiceMode] does not change
+/// Gated by [ToolSetting.audioOnNewMessage]. [voiceMode] does not change
 /// *whether* a message is read, only whether the bot's reply to a voice message
 /// may reach backend TTS instead of staying silent. See "Voice mode" in the
 /// design doc.
 ///
 /// Decides which arriving messages qualify; [ReadAloudQueue] owns the
 /// one-at-a-time playback scheduling.
+///
+/// A message the learner deliberately taps is read via [readSelectedMessage],
+/// behind its own toggle, [ToolSetting.audioOnMessageClick].
 ///
 /// Design — what qualifies to be read, the single waiting slot, and the stop
 /// conditions: client/.github/instructions/message-read-aloud.instructions.md
@@ -88,12 +91,15 @@ class MessageReadAloudController {
     if (wasSpeaking) TtsController.forceStop();
   }
 
-  bool get _isEnabled => MatrixState.pangeaController.userController
-      .isToolEnabled(ToolSetting.audioIncomingMessages);
+  bool get _isAutoReadEnabled => MatrixState.pangeaController.userController
+      .isToolEnabled(ToolSetting.audioOnNewMessage);
+
+  bool get _isClickReadEnabled => MatrixState.pangeaController.userController
+      .isToolEnabled(ToolSetting.audioOnMessageClick);
 
   /// Whether this is the bot answering a voice message the learner just sent.
   ///
-  /// Such a reply is read aloud whether or not `audioIncomingMessages` is on,
+  /// Such a reply is read aloud whether or not `audioOnNewMessage` is on,
   /// because the learner asked for it by speaking — see [TtsUseCase.voiceReply].
   /// Restricted to the bot so that one voice message in a busy activity room
   /// cannot start speaking every other participant.
@@ -120,7 +126,7 @@ class MessageReadAloudController {
 
   /// Live, so the queue re-reads it before draining its waiting slot: sending a
   /// text message ends voice mode and the pending reply is dropped.
-  bool get _canReadSomething => _isEnabled || voiceMode;
+  bool get _canReadSomething => _isAutoReadEnabled || voiceMode;
 
   void _onSync(SyncUpdate update) {
     if (!_canReadSomething) return;
@@ -149,23 +155,87 @@ class MessageReadAloudController {
     // Nothing retroactive: a backlog of unheard messages would be noise rather
     // than practice, so only what arrives after the chat opens is read.
     if (!event.originServerTs.isAfter(openedAt)) return false;
+    // Received only: the learner's own sends (including echoes from another
+    // device) offer no listening practice unprompted. A click is different —
+    // see readSelectedMessage.
     if (event.senderId == room.client.userID) return false;
+    if (!_isReadableContent(event)) return false;
+    return qualifies(
+      settingEnabled: _isAutoReadEnabled,
+      voiceReply: _isVoiceReply(event),
+    );
+  }
+
+  /// Whether the event is the kind of message read-aloud can speak at all,
+  /// independent of what prompted the read. Shared by arrival and by
+  /// [readSelectedMessage].
+  bool _isReadableContent(Event event) {
     if (event.type != EventTypes.Message) return false;
     if (event.messageType != MessageTypes.Text) return false;
-    if (!qualifies(
-      settingEnabled: _isEnabled,
-      voiceReply: _isVoiceReply(event),
-    )) {
-      return false;
-    }
     return !event.redacted && event.status.isSynced;
+  }
+
+  /// Whether opening the toolbar over a message should speak that message.
+  ///
+  /// Gated on [ToolSetting.audioOnMessageClick], independent of the
+  /// new-message toggle. A tutorial that opens the toolbar on the learner's
+  /// behalf speaks its own instruction over it, and a tapped token plays the
+  /// word instead: the more specific request wins.
+  ///
+  /// Pure so the decision is unit-testable without Matrix, TTS or app state.
+  @visibleForTesting
+  static bool readsOnSelect({
+    required bool settingEnabled,
+    required bool isTutorial,
+    required bool tokenSelected,
+  }) => settingEnabled && !isTutorial && !tokenSelected;
+
+  /// Reads a message the learner deliberately selected.
+  ///
+  /// Same qualifying conditions as an arriving message, minus two: the
+  /// arrived-while-open rule (it stops a backlog playing at once, and a tapped
+  /// message is on screen and asked for by definition) and the received-only
+  /// rule — the learner's own L2 messages are read on click too, since a click
+  /// asks to hear that message, whoever sent it (#8264).
+  ///
+  /// Device-only and gated: voice mode's backend exception does not extend
+  /// here, because a tap is not a spoken exchange.
+  ///
+  /// Design — "Reading on click":
+  /// client/.github/instructions/message-read-aloud.instructions.md
+  Future<void> readSelectedMessage(
+    PangeaMessageEvent message, {
+    required bool isTutorial,
+    required bool tokenSelected,
+  }) {
+    if (!readsOnSelect(
+      settingEnabled: _isClickReadEnabled,
+      isTutorial: isTutorial,
+      tokenSelected: tokenSelected,
+    )) {
+      return Future.value();
+    }
+    if (!_isReadableContent(message.event)) return Future.value();
+    if (!_isInTargetLanguage(message)) return Future.value();
+
+    // Ends the automatic read first. Selecting a message clears the queue
+    // anyway, but that happens once the overlay registers the selection — after
+    // this call — and would otherwise stop the audio being started here.
+    stopAndClear();
+
+    return TtsController.tryToSpeak(
+      message.messageDisplayText,
+      langCode: message.messageDisplayLangCode,
+      useCase: TtsUseCase.messageClick,
+      allowChoreoPlay: false,
+    );
   }
 
   bool _isInTargetLanguage(PangeaMessageEvent message) {
     final targetLangCode =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
     if (targetLangCode == null) return false;
-    final messageLangCode = message.originalSent?.langCode.split('-').first;
+    final messageLangCode = message.correctedSent?.langCode.split('-').first;
     return messageLangCode == targetLangCode;
   }
 
@@ -185,7 +255,7 @@ class MessageReadAloudController {
     return TtsController.tryToSpeak(
       message.messageDisplayText,
       langCode: message.messageDisplayLangCode,
-      useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.incomingMessage,
+      useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.newMessage,
       allowChoreoPlay: voiceReply,
     );
   }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-07 16:23:22.461258",
+    "@@last_modified": "2026-08-11 15:43:18.845192",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Sonum verbi audies cum id attigeris.",
     "audioChoicesToolName": "Optiones",
     "audioChoicesDescription": "Sonum optionum responsionis in exercitationibus audi.",
-    "audioIncomingMessagesToolName": "Nuntii advenientes",
-    "audioIncomingMessagesDescription": "Nuntios acceptos sponte legere voce clara in lingua tua discenda ad audiendum exercendum.",
     "choosePangeaAvatar": "Elige imaginem Pangeae",
     "readAloudNoVoiceTitle": "Nulla vox {language} optima reperta",
     "readAloudNoVoiceDesktopWeb": "Hic navigatrum nullam vocem {language} optimam praebet, ergo nuntii hic bene legi non possunt. Chrome et Edge plerumque voces optimas includunt.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Singula cursus",
     "objective": "Propositum",
     "pingedLabel": "Pulsatus",
-    "mapFilterPlayerCount": "{count} lusores"
+    "mapFilterPlayerCount": "{count} lusores",
+    "practiceFeedbackButtonTooltip": "Refer de quaestione huius exercitationis",
+    "practiceFeedbackDialogTitle": "Responsio de Exercitatione",
+    "practiceFeedbackSelectPair": "Quae paria errata videntur?",
+    "practiceFeedbackUserSetEmoji": "Hoc emoji elegisti — muta id ex charta verbi",
+    "practiceFeedbackAlreadyMatched": "Iam recte compositum",
+    "practiceFeedbackUpdated": "Gratias! Exercitatio renovata est secundum tuam responsionem.",
+    "practiceFeedbackUnchanged": "Gratias! Tua relatio notata est, sed contentum immutatum remansit.",
+    "audioOnNewMessageToolName": "De nuntio novo",
+    "audioOnNewMessageDescription": "Nuntios novos acceptos sponte in lingua tua discenda clare lege.",
+    "audioOnMessageClickToolName": "De nuntio clicto",
+    "audioOnMessageClickDescription": "Nuntium clare in lingua tua discenda lege cum in eum clicaveris.",
+    "audioSettingDisabledTitle": "Sonus {toolName} off",
+    "audioSettingDisabledBody": "Sonum {toolName} in optionibus discendi tuis efficere potes",
+    "audioSettingDisabledEnable": "Efficere",
+    "rejoinedTheActivity": "🔄 {username} ad hanc actionem rediit"
 }

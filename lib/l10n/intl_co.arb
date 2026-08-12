@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-07 16:23:18.732713",
+    "@@last_modified": "2026-08-11 15:43:15.462311",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Riproduce l'audio di una parolla quandu a toccate.",
     "audioChoicesToolName": "Scelte",
     "audioChoicesDescription": "Riproduce l'audio per e scelte di risposta in l'attività di pratica.",
-    "audioIncomingMessagesToolName": "Missaghji entranti",
-    "audioIncomingMessagesDescription": "Leghje automaticamente i missaghji ricevuti à voce alta in a vostra lingua di destinazione per a pratica d'ascoltu.",
     "choosePangeaAvatar": "Sceglite un avatar Pangea",
     "readAloudNoVoiceTitle": "Nisuna voce di alta qualità in {language} truvata",
     "readAloudNoVoiceDesktopWeb": "Stu navigatore ùn offre micca una voce di alta qualità in {language}, dunque i messaghji ùn ponu micca esse letti bè quì. Chrome è Edge includenu di solitu voci di alta qualità.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Dettagli di u corsu",
     "objective": "Obiettivu",
     "pingedLabel": "Pingatu",
-    "mapFilterPlayerCount": "{count} ghjucadori"
+    "mapFilterPlayerCount": "{count} ghjucadori",
+    "practiceFeedbackButtonTooltip": "Signalà un prublema cù stu eserciziu",
+    "practiceFeedbackDialogTitle": "Feedback di l'eserciziu di pratica",
+    "practiceFeedbackSelectPair": "Quale paru pare sbagliatu?",
+    "practiceFeedbackUserSetEmoji": "Avete sceltu st'emoji — cambiatelu da a carta di parolla",
+    "practiceFeedbackAlreadyMatched": "Ghjà assuciatu currettamente",
+    "practiceFeedbackUpdated": "Grazie! L'eserciziu hè statu aghjurnatu secondu u vostru feedback.",
+    "practiceFeedbackUnchanged": "Grazie! U vostru rapportu hè statu arregistratu, ma u cuntenutu hè restatu invariatu.",
+    "audioOnNewMessageToolName": "À u novu messagiu",
+    "audioOnNewMessageDescription": "Leghje automaticamente à voce alta i novi messaghji ricevuti in a vostra lingua di destinazione.",
+    "audioOnMessageClickToolName": "À u clicu di u messagiu",
+    "audioOnMessageClickDescription": "Leghje un messagiu à voce alta in a vostra lingua di destinazione quandu ci cliccate sopra.",
+    "audioSettingDisabledTitle": "Audio {toolName} disattivatu",
+    "audioSettingDisabledBody": "Pudete attivà l'audio {toolName} in i vostri paràmetri d'apprendimentu",
+    "audioSettingDisabledEnable": "Attivà",
+    "rejoinedTheActivity": "🔄 {username} hà riunitu sta attività"
 }

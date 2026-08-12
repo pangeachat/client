@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-07 16:23:23.180126",
+    "@@last_modified": "2026-08-11 15:43:19.398966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Пуштете го аудиото на зборот кога ќе го допрете.",
     "audioChoicesToolName": "Избори",
     "audioChoicesDescription": "Пуштете аудио за изборите на одговори во вежбите за вежбање.",
-    "audioIncomingMessagesToolName": "Дојдовни пораки",
-    "audioIncomingMessagesDescription": "Автоматски читајте ги примените пораки на глас на вашиот целен јазик за вежбање слушање.",
     "choosePangeaAvatar": "Изберете Pangea аватар",
     "readAloudNoVoiceTitle": "Не е пронајден висококвалитетен глас за {language}",
     "readAloudNoVoiceDesktopWeb": "Овој прелистувач не нуди висококвалитетен глас за {language}, па пораките не може добро да се читаат на глас овде. Chrome и Edge обично вклучуваат висококвалитетни гласови.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Детали за курсот",
     "objective": "Цел",
     "pingedLabel": "Пингувано",
-    "mapFilterPlayerCount": "{count} играчи"
+    "mapFilterPlayerCount": "{count} играчи",
+    "practiceFeedbackButtonTooltip": "Пријави проблем со оваа вежба",
+    "practiceFeedbackDialogTitle": "Повратни информации за вежбата",
+    "practiceFeedbackSelectPair": "Кој пар изгледа погрешно?",
+    "practiceFeedbackUserSetEmoji": "Го избравте ова емоџи – променете го од картичката со зборови",
+    "practiceFeedbackAlreadyMatched": "Веќе точно совпаднато",
+    "practiceFeedbackUpdated": "Ви благодариме! Вежбата е ажурирана врз основа на вашите повратни информации.",
+    "practiceFeedbackUnchanged": "Ви благодариме! Вашиот извештај е запишан, но содржината остана непроменета.",
+    "audioOnNewMessageToolName": "На нова порака",
+    "audioOnNewMessageDescription": "Автоматски читај ги новите примени пораки на глас на вашиот целен јазик.",
+    "audioOnMessageClickToolName": "При клик на порака",
+    "audioOnMessageClickDescription": "Прочитајте порака на глас на вашиот целен јазик кога ќе кликнете на неа.",
+    "audioSettingDisabledTitle": "Аудиото на {toolName} е оневозможено",
+    "audioSettingDisabledBody": "Можете да го овозможите аудиото на {toolName} во вашите поставки за учење",
+    "audioSettingDisabledEnable": "Овозможи",
+    "rejoinedTheActivity": "🔄 {username} повторно се приклучи на оваа активност"
 }

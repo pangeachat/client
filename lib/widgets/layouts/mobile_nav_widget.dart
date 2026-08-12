@@ -55,6 +55,12 @@ class MobileNavWidget extends StatefulWidget {
   /// button.
   final Widget Function(Widget child)? chatsBadgeBuilder;
 
+  /// Wraps the Courses rail item with the invited-course badge, so a pending
+  /// course invitation is visible without opening the hub (#8190). Injected by
+  /// the shell for the same reason as [chatsBadgeBuilder]. Null renders the
+  /// plain button.
+  final Widget Function(Widget child)? coursesBadgeBuilder;
+
   /// The open section/course content hosted in the cavity. Null means nothing
   /// is cavity-hosted (rail-only, no matter the last height).
   final Widget? cavityChild;
@@ -130,12 +136,18 @@ class MobileNavWidget extends StatefulWidget {
   /// barrier: tap-outside collapse is their whole dismissal model.
   final bool mapStaysLive;
 
-  /// Fires when the hosted cavity settles at (or leaves) its FULL height, so
-  /// the shell can drop the floating search bar over a full course sheet and
-  /// hand that reserved strip to the course content (#7697). Latched to the
-  /// settled rest state — it deliberately does NOT toggle mid-drag, so the
-  /// reserved height (and thus the drag's coordinate space) stays stable while
-  /// the finger moves.
+  /// Reports whether the hosted cavity is settled at its FULL height, so the
+  /// shell can drop the floating search bar over a full course sheet and hand
+  /// that reserved strip to the course content (#7697). Latched to the settled
+  /// rest state — it deliberately does NOT toggle mid-drag, so the reserved
+  /// height (and thus the drag's coordinate space) stays stable while the
+  /// finger moves.
+  ///
+  /// LEVEL-triggered, not edge-triggered: the latched value is re-sent after
+  /// every frame, including the first frame of a fresh mount. Consumers must
+  /// dedupe (#8247 — the shell's consumer is a process-global the shell reads
+  /// even when this widget is gone, so the live State has to keep asserting it
+  /// rather than assume a previous instance left it false).
   final ValueChanged<bool>? onCavityFullChanged;
 
   /// A tap on the hosted surface's dead space (not a button) expands the cavity
@@ -178,6 +190,7 @@ class MobileNavWidget extends StatefulWidget {
     required this.onCourseShortcutTap,
     required this.onSectionTap,
     this.chatsBadgeBuilder,
+    this.coursesBadgeBuilder,
     this.cavityChild,
     this.cavitySection,
     this.courseShortcutHostsCavity = false,
@@ -239,14 +252,19 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   static const double _peekHeight = 128.0;
   static const Duration _animationDuration = Duration(milliseconds: 240);
 
-  /// The least the keyboard trim may leave of a cavity that HOLDS FOCUS — the
-  /// drag handle plus one text-field row. Trimming past it drops the hosted
-  /// surface entirely (see `showContent` in [build]), which disposes the
-  /// focused field's node, which closes the keyboard, which un-trims the
-  /// cavity, which remounts the field: the #8072 loop where a tapped input
-  /// deselects itself. Applies only while something inside the cavity is
-  /// focused, so the plain keyboard trim of #7754 is unchanged.
-  static const double _focusedKeyboardFloor = 96.0;
+  /// The least the keyboard trim may leave of an OPEN cavity — the drag handle
+  /// plus one text-field row. Trimming past it drops the hosted surface
+  /// entirely (see `showContent` in [build]), and whatever interaction summoned
+  /// the keyboard dies with it: a focused field's node is disposed, which
+  /// closes the keyboard, which un-trims the cavity, which remounts the field —
+  /// the #8072 loop where a tapped input deselects itself. The floor is
+  /// UNCONDITIONAL (any open cavity, any keyboard) because the keyboard's owner
+  /// can sit outside the cavity's focus subtree while its anchor sits inside:
+  /// a hosted dropdown opens an overlay-route menu whose search field summons
+  /// the keyboard, and gating the floor on in-cavity focus let the trim unmount
+  /// the menu's anchor and dismiss it (#8072 reopened). The trim itself
+  /// (#7754) still absorbs everything above the floor.
+  static const double _keyboardFloor = 96.0;
 
   /// The rest stop the cavity currently sits at. Non-null means the drawn
   /// fraction is DERIVED from this each build ([_currentFraction]), so it
@@ -267,13 +285,10 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
   /// thrashing (and the box from jumping) while the finger is dragging.
   bool _fullLatched = false;
 
-  /// Last value handed to [MobileNavWidget.onCavityFullChanged]; the post-frame
-  /// notify in [build] fires only on a real change.
-  bool _reportedFull = false;
-
   /// Something inside [MobileNavWidget.cavityChild] holds focus — in practice a
-  /// text input the learner just tapped. Drives both the grow-to-full below and
-  /// the [_focusedKeyboardFloor] in [build].
+  /// text input the learner just tapped. Drives the grow-to-full below. (The
+  /// [_keyboardFloor] deliberately does NOT depend on this: focus can live in
+  /// an overlay route — a dropdown's menu — that is not a cavity descendant.)
   bool _cavityHasFocus = false;
 
   /// The grow-to-full has already fired for the current focus/keyboard episode,
@@ -446,14 +461,24 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
     setState(() => _restState = height);
   }
 
-  /// Notify the shell of a latched full-height change AFTER the frame — calling
+  /// Re-assert the latched full height to the shell AFTER the frame — calling
   /// back synchronously from build would `setState` the shell mid-build.
+  ///
+  /// Unconditional, every build. The report used to be edge-triggered off a
+  /// per-State `_reportedFull`, which stranded the shell's PROCESS-GLOBAL
+  /// `ActivitySheetFull` at true whenever this State was disposed while full
+  /// — launching a session from a full activity plan drops the plan token
+  /// (`liveView` siblings), tearing the widget down with nothing left to
+  /// report false. The next State started at false, matched its own latched
+  /// false, and stayed silent, so the analytics bar rendered at opacity 0 for
+  /// the rest of the process (#8247). The value the shell derives also folds
+  /// in ITS own state (`isActivityCavity && full`), which an edge trigger on
+  /// our half alone can never track. `ActivitySheetFull.set` dedupes, so the
+  /// repeats cost nothing.
   void _syncFullReport() {
-    if (_fullLatched == _reportedFull) return;
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted || _fullLatched == _reportedFull) return;
-      _reportedFull = _fullLatched;
-      widget.onCavityFullChanged?.call(_reportedFull);
+      if (!mounted) return;
+      widget.onCavityFullChanged?.call(_fullLatched);
     });
   }
 
@@ -564,6 +589,9 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
 
   Widget _withChatsBadge(Widget child) =>
       widget.chatsBadgeBuilder?.call(child) ?? child;
+
+  Widget _withCoursesBadge(Widget child) =>
+      widget.coursesBadgeBuilder?.call(child) ?? child;
 
   void _onCourseShortcutTap() {
     // The shortcut's own toggle: when its course IS the hosted sheet, the tap
@@ -698,18 +726,15 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                     0.0,
                                     animatedHeight,
                                   );
-                              // Hold the floor while the cavity holds focus, so
-                              // the grow-to-full above has frames to run in
-                              // without the trim unmounting the very field that
-                              // triggered it (#8072).
-                              final visible =
-                                  _cavityHasFocus && baseCavityPx > 0
+                              // Hold the floor for every open cavity, so the
+                              // trim can never unmount the hosted surface —
+                              // and with it the field or overlay anchor whose
+                              // keyboard caused the trim (#8072). A no-op
+                              // whenever the trim leaves more than the floor.
+                              final visible = baseCavityPx > 0
                                   ? max(
                                       trimmed,
-                                      min(
-                                        animatedHeight,
-                                        _focusedKeyboardFloor,
-                                      ),
+                                      min(animatedHeight, _keyboardFloor),
                                     )
                                   : trimmed;
                               // Drop the content the instant the cavity is
@@ -779,18 +804,20 @@ class _MobileNavWidgetState extends State<MobileNavWidget> {
                                       ),
                                     ),
                                   ),
-                                  _RailButton(
-                                    icon: Icons.map_outlined,
-                                    selectedIcon: Icons.map,
-                                    // The specific course's highlight (the
-                                    // shortcut) outranks the section icon.
-                                    selected:
-                                        widget.activeSection ==
-                                            AppSection.courses &&
-                                        !widget.courseShortcutSelected,
-                                    tooltip: l10n.courses,
-                                    onTap: () =>
-                                        _onRailItemTap(AppSection.courses),
+                                  _withCoursesBadge(
+                                    _RailButton(
+                                      icon: Icons.map_outlined,
+                                      selectedIcon: Icons.map,
+                                      // The specific course's highlight (the
+                                      // shortcut) outranks the section icon.
+                                      selected:
+                                          widget.activeSection ==
+                                              AppSection.courses &&
+                                          !widget.courseShortcutSelected,
+                                      tooltip: l10n.courses,
+                                      onTap: () =>
+                                          _onRailItemTap(AppSection.courses),
+                                    ),
                                   ),
                                   _CourseShortcutButton(
                                     icon: widget.courseShortcutIcon,

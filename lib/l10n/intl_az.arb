@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-07 16:23:18.026026",
+    "@@last_modified": "2026-08-11 15:43:14.987476",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Sözə toxunduğunuzda onun audiosunu səsləndirin.",
     "audioChoicesToolName": "Seçimlər",
     "audioChoicesDescription": "Təcrübə fəaliyyətlərində cavab seçimləri üçün audio səsləndirin.",
-    "audioIncomingMessagesToolName": "Gələn mesajlar",
-    "audioIncomingMessagesDescription": "Dinləmə təcrübəsi üçün qəbul edilmiş mesajları hədəf dilinizdə avtomatik olaraq yüksək səslə oxuyun.",
     "choosePangeaAvatar": "Pangea avatarı seçin",
     "readAloudNoVoiceTitle": "{language} üçün yüksək keyfiyyətli səs tapılmadı",
     "readAloudNoVoiceDesktopWeb": "Bu brauzer yüksək keyfiyyətli {language} səsi təklif etmir, ona görə də mesajlar burada yaxşı oxuna bilməz. Chrome və Edge adətən yüksək keyfiyyətli səslərə malikdir.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Kurs təfərrüatları",
     "objective": "Məqsəd",
     "pingedLabel": "Bildiriş göndərildi",
-    "mapFilterPlayerCount": "{count} oyunçu"
+    "mapFilterPlayerCount": "{count} oyunçu",
+    "practiceFeedbackButtonTooltip": "Bu tapşırıqla bağlı problemi bildirin",
+    "practiceFeedbackDialogTitle": "Təcrübə Tapşırığı Rəyi",
+    "practiceFeedbackSelectPair": "Hansı cütlük səhv görünür?",
+    "practiceFeedbackUserSetEmoji": "Siz bu emojini seçdiniz — onu söz kartından dəyişdirin",
+    "practiceFeedbackAlreadyMatched": "Artıq düzgün uyğunlaşdırılıb",
+    "practiceFeedbackUpdated": "Təşəkkürlər! Tapşırıq rəyiniz əsasında yeniləndi.",
+    "practiceFeedbackUnchanged": "Təşəkkürlər! Hesabatınız qeydə alındı, lakin məzmun dəyişməz qaldı.",
+    "audioOnNewMessageToolName": "Yeni mesajda",
+    "audioOnNewMessageDescription": "Yeni gələn mesajları hədəf dilinizdə avtomatik olaraq ucadan oxuyun.",
+    "audioOnMessageClickToolName": "Mesaja klikləyəndə",
+    "audioOnMessageClickDescription": "Mesaja kliklədiyiniz zaman onu hədəf dilinizdə ucadan oxuyun.",
+    "audioSettingDisabledTitle": "{toolName} səsi deaktiv edilib",
+    "audioSettingDisabledBody": "Öyrənmə parametrlərində {toolName} səsini aktiv edə bilərsiniz",
+    "audioSettingDisabledEnable": "Aktiv et",
+    "rejoinedTheActivity": "🔄 {username} bu fəaliyyətə yenidən qoşuldu"
 }

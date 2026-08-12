@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:19.151881",
+    "@@last_modified": "2026-08-11 15:43:16.249017",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10625,8 +10625,6 @@
     "audioWordsDescription": "Ludu la aŭdion de vorto kiam vi frapetas ĝin.",
     "audioChoicesToolName": "Elektoj",
     "audioChoicesDescription": "Ludu aŭdion por respondaj elektoj en praktikaj agadoj.",
-    "audioIncomingMessagesToolName": "Alvenantaj mesaĝoj",
-    "audioIncomingMessagesDescription": "Aŭtomate laŭtlegi ricevitajn mesaĝojn en via cellingvo por aŭskulta praktiko.",
     "choosePangeaAvatar": "Elektu Pangean avataron",
     "readAloudNoVoiceTitle": "Neniu altkvalita {language} voĉo trovita",
     "readAloudNoVoiceDesktopWeb": "Ĉi tiu retumilo ne ofertas altkvalitan {language} voĉon, do mesaĝoj ne povas esti bone laŭtlegitaj ĉi tie. Chrome kaj Edge kutime inkluzivas altkvalitajn voĉojn.",
@@ -10662,5 +10660,20 @@
     "courseDetails": "Kursaj detaloj",
     "objective": "Celo",
     "pingedLabel": "Pingita",
-    "mapFilterPlayerCount": "{count} ludantoj"
+    "mapFilterPlayerCount": "{count} ludantoj",
+    "practiceFeedbackButtonTooltip": "Raporti problemon pri ĉi tiu ekzerco",
+    "practiceFeedbackDialogTitle": "Reago pri Ekzerco",
+    "practiceFeedbackSelectPair": "Kiu paro aspektas malĝusta?",
+    "practiceFeedbackUserSetEmoji": "Vi elektis ĉi tiun emoji-on — ŝanĝu ĝin de la vortkarto",
+    "practiceFeedbackAlreadyMatched": "Jam ĝuste kongruigita",
+    "practiceFeedbackUpdated": "Dankon! La ekzerco estis ĝisdatigita laŭ via reago.",
+    "practiceFeedbackUnchanged": "Dankon! Via raporto estis registrita, sed la enhavo restis senŝanĝa.",
+    "audioOnNewMessageToolName": "Je nova mesaĝo",
+    "audioOnNewMessageDescription": "Aŭtomate laŭtlegi novajn ricevitajn mesaĝojn en via cellingvo.",
+    "audioOnMessageClickToolName": "Je mesaĝklako",
+    "audioOnMessageClickDescription": "Laŭtlegi mesaĝon en via cellingvo kiam vi klakas sur ĝi.",
+    "audioSettingDisabledTitle": "Aŭdio de {toolName} malŝaltita",
+    "audioSettingDisabledBody": "Vi povas ŝalti la aŭdion de {toolName} en viaj lernaj agordoj",
+    "audioSettingDisabledEnable": "Ŝalti",
+    "rejoinedTheActivity": "🔄 {username} realiĝis al ĉi tiu agado"
 }

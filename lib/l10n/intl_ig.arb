@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-07 16:23:21.537735",
+    "@@last_modified": "2026-08-11 15:43:17.886688",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Kpọọ ọdịyo okwu mgbe ị pịrị ya.",
     "audioChoicesToolName": "Nhọrọ",
     "audioChoicesDescription": "Kpọọ ọdịyo maka nhọrọ azịza n'ime mmemme omume.",
-    "audioIncomingMessagesToolName": "Ozi na-abata",
-    "audioIncomingMessagesDescription": "Gụọ ozi enwetara na-akpaghị aka n'olu dara ụda n'asụsụ ebumnuche gị maka omume ige ntị.",
     "choosePangeaAvatar": "Họrọ avatar Pangea",
     "readAloudNoVoiceTitle": "Achọtaghị olu {language} dị elu",
     "readAloudNoVoiceDesktopWeb": "Ihe nchọgharị a anaghị enye olu {language} dị elu, yabụ enweghị ike ịgụ ozi n'olu dara ụda ebe a. Chrome na Edge na-enwekarị olu dị elu.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Nkọwa ọmụmụ",
     "objective": "Ebumnuche",
     "pingedLabel": "Kpọọrọ",
-    "mapFilterPlayerCount": "{count} ndị egwuregwu"
+    "mapFilterPlayerCount": "{count} ndị egwuregwu",
+    "practiceFeedbackButtonTooltip": "Kọọ nsogbu gbasara mmega ahụ a",
+    "practiceFeedbackDialogTitle": "Nzaghachi Mmega Ahụ",
+    "practiceFeedbackSelectPair": "Nke abụọ n'ime ndị a ka dị njọ?",
+    "practiceFeedbackUserSetEmoji": "Ị họọrọ emoji a — gbanwee ya na kaadị okwu",
+    "practiceFeedbackAlreadyMatched": "Emeela ya nke ọma",
+    "practiceFeedbackUpdated": "Daalụ! Emelitere mmega ahụ ahụ dabere na nzaghachi gị.",
+    "practiceFeedbackUnchanged": "Daalụ! Edere akụkọ gị, mana ọdịnaya ahụ agbanweghị.",
+    "audioOnNewMessageToolName": "Na ozi ọhụrụ",
+    "audioOnNewMessageDescription": "Gụọ ozi ọhụrụ enwetara n'olu dara ụda na-akpaghị aka n'asụsụ ebumnuche gị.",
+    "audioOnMessageClickToolName": "Na ịpị ozi",
+    "audioOnMessageClickDescription": "Gụọ ozi n'olu dara ụda n'asụsụ ebumnuche gị mgbe ị pịrị ya.",
+    "audioSettingDisabledTitle": "Emebiela ọdịyo {toolName}",
+    "audioSettingDisabledBody": "Ị nwere ike ime ka ọdịyo {toolName} rụọ ọrụ na ntọala mmụta gị",
+    "audioSettingDisabledEnable": "Mee ka ọ rụọ ọrụ",
+    "rejoinedTheActivity": "🔄 {username} abanyela ọrụ a ọzọ"
 }

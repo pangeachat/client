@@ -108,6 +108,9 @@ class GrammarErrorTargetGenerator {
     final List<AnalyticsPracticeTarget> targets = [];
     final l2Code =
         MatrixState.pangeaController.userController.userL2!.langCodeShort;
+    // Deliberately originalSent, not correctedSent: these targets derive from
+    // the send-time choreo record, and the tokens must stay aligned with it —
+    // token-feedback corrections carry no choreo.
     final originalSent = event.originalSent;
     if (originalSent?.langCode.split("-").first != l2Code) {
       return targets;

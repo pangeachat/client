@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-07 16:23:20.578716",
+    "@@last_modified": "2026-08-11 15:43:16.898314",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Kunna sautin kalma idan ka danna ta.",
     "audioChoicesToolName": "Zaɓuɓɓuka",
     "audioChoicesDescription": "Kunna sauti don zaɓuɓɓukan amsa a ayyukan aiki.",
-    "audioIncomingMessagesToolName": "Saƙonni masu shigowa",
-    "audioIncomingMessagesDescription": "Karanta saƙonnin da aka karɓa ta atomatik da babbar murya a cikin harshen da kake so don aikin sauraro.",
     "choosePangeaAvatar": "Zaɓi hoton Pangea",
     "readAloudNoVoiceTitle": "Ba a sami ingantacciyar murya ta {language} ba",
     "readAloudNoVoiceDesktopWeb": "Wannan burauzar ba ta samar da ingantacciyar murya ta {language} ba, don haka ba za a iya karanta saƙonni da kyau a nan ba. Chrome da Edge galibi suna haɗa da ingantattun muryoyi.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Cikakkun bayanai na darasi",
     "objective": "Manufa",
     "pingedLabel": "An yi ping",
-    "mapFilterPlayerCount": "{count} 'yan wasa"
+    "mapFilterPlayerCount": "{count} 'yan wasa",
+    "practiceFeedbackButtonTooltip": "Bayar da rahoto game da matsala a wannan atisayen",
+    "practiceFeedbackDialogTitle": "Ra'ayi Game da Atisayen Koyarwa",
+    "practiceFeedbackSelectPair": "Wane nau'i ne yake kama da ba daidai ba?",
+    "practiceFeedbackUserSetEmoji": "Ka zaɓi wannan emoji — canza shi daga katin kalmar",
+    "practiceFeedbackAlreadyMatched": "An riga an daidaita shi daidai",
+    "practiceFeedbackUpdated": "Godiya! An sabunta atisayen bisa ga ra'ayinka.",
+    "practiceFeedbackUnchanged": "Godiya! An rubuta rahotonka, amma abun ciki bai canza ba.",
+    "audioOnNewMessageToolName": "A sabon saƙo",
+    "audioOnNewMessageDescription": "Karanta sabbin saƙonnin da aka karɓa da babbar murya ta atomatik a cikin yaren da kake so.",
+    "audioOnMessageClickToolName": "A danna saƙo",
+    "audioOnMessageClickDescription": "Karanta saƙo da babbar murya a cikin yaren da kake so lokacin da ka danna shi.",
+    "audioSettingDisabledTitle": "An kashe sautin {toolName}",
+    "audioSettingDisabledBody": "Kuna iya kunna sautin {toolName} a saitunan koyon ku",
+    "audioSettingDisabledEnable": "Kunna",
+    "rejoinedTheActivity": "🔄 {username} ya sake shiga wannan aikin"
 }

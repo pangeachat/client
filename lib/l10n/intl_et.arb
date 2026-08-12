@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-07 16:23:19.363059",
+    "@@last_modified": "2026-08-11 15:43:16.098135",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9677,8 +9677,6 @@
     "audioWordsDescription": "Esita sõna heli, kui sellele koputad.",
     "audioChoicesToolName": "Valikud",
     "audioChoicesDescription": "Esita harjutuste vastusevalikute heli.",
-    "audioIncomingMessagesToolName": "Sissetulevad sõnumid",
-    "audioIncomingMessagesDescription": "Loe vastuvõetud sõnumid automaatselt sihtkeeles ette kuulamisharjutuste jaoks.",
     "choosePangeaAvatar": "Vali Pangea avatar",
     "readAloudNoVoiceTitle": "Kvaliteetset {language} häält ei leitud",
     "readAloudNoVoiceDesktopWeb": "See brauser ei paku kvaliteetset {language} häält, seega ei saa sõnumeid siin hästi ette lugeda. Chrome ja Edge sisaldavad tavaliselt kvaliteetseid hääli.",
@@ -9714,5 +9712,20 @@
     "courseDetails": "Kursuse üksikasjad",
     "objective": "Eesmärk",
     "pingedLabel": "Pingitud",
-    "mapFilterPlayerCount": "{count} mängijat"
+    "mapFilterPlayerCount": "{count} mängijat",
+    "practiceFeedbackButtonTooltip": "Teata probleemist selle harjutusega",
+    "practiceFeedbackDialogTitle": "Harjutuse tagasiside",
+    "practiceFeedbackSelectPair": "Milline paar tundub vale?",
+    "practiceFeedbackUserSetEmoji": "Valisid selle emotikoni – muuda seda sõnakaardilt",
+    "practiceFeedbackAlreadyMatched": "Juba õigesti sobitatud",
+    "practiceFeedbackUpdated": "Aitäh! Harjutust on teie tagasiside põhjal värskendatud.",
+    "practiceFeedbackUnchanged": "Aitäh! Teie teade salvestati, kuid sisu jäi muutmata.",
+    "audioOnNewMessageToolName": "Uue sõnumi korral",
+    "audioOnNewMessageDescription": "Loe uued vastuvõetud sõnumid automaatselt sihtkeeles ette.",
+    "audioOnMessageClickToolName": "Sõnumi klõpsamisel",
+    "audioOnMessageClickDescription": "Loe sõnum sihtkeeles ette, kui sellele klõpsate.",
+    "audioSettingDisabledTitle": "{toolName} heli on keelatud",
+    "audioSettingDisabledBody": "Saate lubada {toolName} heli oma õppeseadetes",
+    "audioSettingDisabledEnable": "Luba",
+    "rejoinedTheActivity": "🔄 {username} liitus tegevusega uuesti"
 }

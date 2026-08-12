@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-07 16:23:19.503530",
+    "@@last_modified": "2026-08-11 15:43:16.148993",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10035,8 +10035,6 @@
     "audioWordsDescription": "Écoutez l'audio d'un mot en appuyant dessus.",
     "audioChoicesToolName": "Choix",
     "audioChoicesDescription": "Écoutez l'audio des choix de réponse dans les activités pratiques.",
-    "audioIncomingMessagesToolName": "Messages entrants",
-    "audioIncomingMessagesDescription": "Lisez automatiquement les messages reçus à voix haute dans votre langue cible pour la pratique de l'écoute.",
     "choosePangeaAvatar": "Choisir un avatar Pangea",
     "readAloudNoVoiceTitle": "Aucune voix {language} de haute qualité trouvée",
     "readAloudNoVoiceDesktopWeb": "Ce navigateur n'offre pas de voix {language} de haute qualité, les messages ne peuvent donc pas être lus correctement ici. Chrome et Edge incluent généralement des voix de haute qualité.",
@@ -10072,5 +10070,20 @@
     "courseDetails": "Détails du cours",
     "objective": "Objectif",
     "pingedLabel": "Pingé",
-    "mapFilterPlayerCount": "{count} joueurs"
+    "mapFilterPlayerCount": "{count} joueurs",
+    "practiceFeedbackButtonTooltip": "Signaler un problème avec cet exercice",
+    "practiceFeedbackDialogTitle": "Commentaires sur l'exercice pratique",
+    "practiceFeedbackSelectPair": "Quelle paire semble incorrecte ?",
+    "practiceFeedbackUserSetEmoji": "Vous avez choisi cet emoji — modifiez-le depuis la carte de mot",
+    "practiceFeedbackAlreadyMatched": "Déjà correctement associé",
+    "practiceFeedbackUpdated": "Merci ! L'exercice a été mis à jour en fonction de vos commentaires.",
+    "practiceFeedbackUnchanged": "Merci ! Votre signalement a été enregistré, mais le contenu est resté inchangé.",
+    "audioOnNewMessageToolName": "Lors d'un nouveau message",
+    "audioOnNewMessageDescription": "Lit automatiquement à voix haute les nouveaux messages reçus dans votre langue cible.",
+    "audioOnMessageClickToolName": "Lors du clic sur un message",
+    "audioOnMessageClickDescription": "Lit un message à voix haute dans votre langue cible lorsque vous cliquez dessus.",
+    "audioSettingDisabledTitle": "Audio {toolName} désactivé",
+    "audioSettingDisabledBody": "Vous pouvez activer l'audio {toolName} dans vos paramètres d'apprentissage",
+    "audioSettingDisabledEnable": "Activer",
+    "rejoinedTheActivity": "🔄 {username} a rejoint cette activité"
 }

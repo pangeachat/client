@@ -1942,7 +1942,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-07 16:23:22.210998",
+    "@@last_modified": "2026-08-11 15:43:18.293551",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10580,8 +10580,6 @@
     "audioWordsDescription": "დაუკარით სიტყვის აუდიო, როდესაც მასზე დააკლიკებთ.",
     "audioChoicesToolName": "არჩევანი",
     "audioChoicesDescription": "დაუკარით აუდიო სავარჯიშო აქტივობებში პასუხის ვარიანტებისთვის.",
-    "audioIncomingMessagesToolName": "შემომავალი შეტყობინებები",
-    "audioIncomingMessagesDescription": "ავტომატურად წაიკითხეთ მიღებული შეტყობინებები ხმამაღლა თქვენს სამიზნე ენაზე მოსმენის პრაქტიკისთვის.",
     "choosePangeaAvatar": "აირჩიეთ Pangea-ს ავატარი",
     "readAloudNoVoiceTitle": "ვერ მოიძებნა მაღალი ხარისხის {language} ხმა",
     "readAloudNoVoiceDesktopWeb": "ეს ბრაუზერი არ გთავაზობთ მაღალი ხარისხის {language} ხმას, ამიტომ შეტყობინებების ხმამაღლა წაკითხვა აქ კარგად ვერ მოხერხდება. Chrome და Edge, როგორც წესი, მოიცავს მაღალი ხარისხის ხმებს.",
@@ -10617,5 +10615,20 @@
     "courseDetails": "კურსის დეტალები",
     "objective": "მიზანი",
     "pingedLabel": "დაპინგულია",
-    "mapFilterPlayerCount": "{count} მოთამაშე"
+    "mapFilterPlayerCount": "{count} მოთამაშე",
+    "practiceFeedbackButtonTooltip": "შეატყობინეთ პრობლემის შესახებ ამ სავარჯიშოში",
+    "practiceFeedbackDialogTitle": "სავარჯიშოს უკუკავშირი",
+    "practiceFeedbackSelectPair": "რომელი წყვილი გამოიყურება არასწორად?",
+    "practiceFeedbackUserSetEmoji": "თქვენ აირჩიეთ ეს emoji — შეცვალეთ ის სიტყვის ბარათიდან",
+    "practiceFeedbackAlreadyMatched": "უკვე სწორად არის შეხამებული",
+    "practiceFeedbackUpdated": "გმადლობთ! სავარჯიშო განახლდა თქვენი უკუკავშირის საფუძველზე.",
+    "practiceFeedbackUnchanged": "გმადლობთ! თქვენი შეტყობინება ჩაიწერა, მაგრამ შინაარსი უცვლელი დარჩა.",
+    "audioOnNewMessageToolName": "ახალ შეტყობინებაზე",
+    "audioOnNewMessageDescription": "ავტომატურად წაიკითხეთ ხმამაღლა ახალი მიღებული შეტყობინებები თქვენს სამიზნე ენაზე.",
+    "audioOnMessageClickToolName": "შეტყობინებაზე დაწკაპუნებით",
+    "audioOnMessageClickDescription": "წაიკითხეთ შეტყობინება ხმამაღლა თქვენს სამიზნე ენაზე, როდესაც დააწკაპუნებთ მასზე.",
+    "audioSettingDisabledTitle": "{toolName} აუდიო გამორთულია",
+    "audioSettingDisabledBody": "შეგიძლიათ ჩართოთ {toolName} აუდიო თქვენს სასწავლო პარამეტრებში",
+    "audioSettingDisabledEnable": "ჩართვა",
+    "rejoinedTheActivity": "🔄 {username} კვლავ შეუერთდა ამ აქტივობას"
 }

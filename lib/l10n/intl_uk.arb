@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-07 16:23:26.895404",
+    "@@last_modified": "2026-08-11 15:43:22.547586",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9680,8 +9680,6 @@
     "audioWordsDescription": "Відтворювати аудіо слова, коли ви натискаєте на нього.",
     "audioChoicesToolName": "Варіанти",
     "audioChoicesDescription": "Відтворювати аудіо для варіантів відповідей у практичних завданнях.",
-    "audioIncomingMessagesToolName": "Вхідні повідомлення",
-    "audioIncomingMessagesDescription": "Автоматично читати отримані повідомлення вголос вашою цільовою мовою для практики слухання.",
     "choosePangeaAvatar": "Виберіть аватар Pangea",
     "readAloudNoVoiceTitle": "Не знайдено високоякісного голосу {language}",
     "readAloudNoVoiceDesktopWeb": "Цей браузер не пропонує високоякісного голосу {language}, тому повідомлення не можуть бути добре озвучені тут. Chrome та Edge зазвичай мають високоякісні голоси.",
@@ -9717,5 +9715,20 @@
     "courseDetails": "Деталі курсу",
     "objective": "Мета",
     "pingedLabel": "Надіслано запит",
-    "mapFilterPlayerCount": "{count} гравців"
+    "mapFilterPlayerCount": "{count} гравців",
+    "practiceFeedbackButtonTooltip": "Повідомити про проблему з цією вправою",
+    "practiceFeedbackDialogTitle": "Відгук про практичну вправу",
+    "practiceFeedbackSelectPair": "Яка пара виглядає неправильно?",
+    "practiceFeedbackUserSetEmoji": "Ви обрали цей емодзі — змініть його з картки слова",
+    "practiceFeedbackAlreadyMatched": "Вже правильно зіставлено",
+    "practiceFeedbackUpdated": "Дякуємо! Вправу оновлено на основі вашого відгуку.",
+    "practiceFeedbackUnchanged": "Дякуємо! Ваш звіт було записано, але вміст залишився без змін.",
+    "audioOnNewMessageToolName": "На нове повідомлення",
+    "audioOnNewMessageDescription": "Автоматично читати вголос нові отримані повідомлення цільовою мовою.",
+    "audioOnMessageClickToolName": "Натискання на повідомлення",
+    "audioOnMessageClickDescription": "Читати повідомлення вголос цільовою мовою, коли ви натискаєте на нього.",
+    "audioSettingDisabledTitle": "Аудіо {toolName} вимкнено",
+    "audioSettingDisabledBody": "Ви можете ввімкнути аудіо {toolName} у налаштуваннях навчання",
+    "audioSettingDisabledEnable": "Увімкнути",
+    "rejoinedTheActivity": "🔄 {username} знову приєднався до цієї активності"
 }

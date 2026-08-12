@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-07 16:23:28.061771",
+    "@@last_modified": "2026-08-11 15:43:23.364055",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Ṣí ohùn ọ̀rọ̀ kan nígbà tí o bá tẹ́ ẹ.",
     "audioChoicesToolName": "Àwọn Àṣàyàn",
     "audioChoicesDescription": "Ṣí ohùn fún àwọn àṣàyàn ìdáhùn nínú àwọn iṣẹ́ ìdánilẹ́kọ̀ọ́.",
-    "audioIncomingMessagesToolName": "Àwọn ìránṣẹ́ tí ń wọlé",
-    "audioIncomingMessagesDescription": "Ka àwọn ìránṣẹ́ tí o gbà jáde fúnra rẹ ní èdè tí o fẹ́ kọ́ fún ìdánilẹ́kọ̀ọ́ gbígbọ́.",
     "choosePangeaAvatar": "Yan aworan Pangea",
     "readAloudNoVoiceTitle": "Kò sí ohùn {language} tó dára tó rárá",
     "readAloudNoVoiceDesktopWeb": "Ẹrọ aṣawakiri yii kò ní ohùn {language} tó dára tó, nítorí náà a kò lè ka àwọn ìfiranṣẹ jáde dáadáa níbí. Chrome àti Edge sábà máa ń ní àwọn ohùn tó dára tó.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Àwọn àlàyé kúkúrú nípa ẹ̀kọ́",
     "objective": "Ète",
     "pingedLabel": "Píngì",
-    "mapFilterPlayerCount": "{count} àwọn agbábọ́ọ̀lù"
+    "mapFilterPlayerCount": "{count} àwọn agbábọ́ọ̀lù",
+    "practiceFeedbackButtonTooltip": "Jábọ̀ ìṣòro kan pẹ̀lú ìdánilẹ́kọ̀ọ́ yìí",
+    "practiceFeedbackDialogTitle": "Èsì Ìdánilẹ́kọ̀ọ́",
+    "practiceFeedbackSelectPair": "Èwo nínú àwọn méjì yìí ló dàbí èyí tí kò tọ́?",
+    "practiceFeedbackUserSetEmoji": "Ìwọ ló yan èrè-ìmọ̀lára yìí — yí i padà láti orí kaadi ọ̀rọ̀",
+    "practiceFeedbackAlreadyMatched": "Tí a ti bá a mu dáadáa tẹ́lẹ̀",
+    "practiceFeedbackUpdated": "Ó ṣeun! A ti ṣe àtúnṣe ìdánilẹ́kọ̀ọ́ náà nípa lílo èsì rẹ.",
+    "practiceFeedbackUnchanged": "Ó ṣeun! A ti gba ìròyìn rẹ sílẹ̀, ṣùgbọ́n ohun tó wà nínú rẹ̀ kò yí padà.",
+    "audioOnNewMessageToolName": "Lori ifiranṣẹ tuntun",
+    "audioOnNewMessageDescription": "Ka awọn ifiranṣẹ titun ti o gba ni gbangba ni ede ibi-afẹde rẹ.",
+    "audioOnMessageClickToolName": "Lori tite ifiranṣẹ",
+    "audioOnMessageClickDescription": "Ka ifiranṣẹ kan ni gbangba ni ede ibi-afẹde rẹ nigbati o ba tẹ lori rẹ.",
+    "audioSettingDisabledTitle": "Ohun {toolName} ti wa ni pipa",
+    "audioSettingDisabledBody": "O le tan ohun {toolName} ninu eto ikẹkọ rẹ",
+    "audioSettingDisabledEnable": "Tan-an",
+    "rejoinedTheActivity": "🔄 {username} ti darapọ mọ iṣẹ yii"
 }

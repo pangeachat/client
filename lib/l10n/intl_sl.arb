@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-07 16:23:25.520273",
+    "@@last_modified": "2026-08-11 15:43:21.313221",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10625,8 +10625,6 @@
     "audioWordsDescription": "Predvajaj zvok besede, ko se je dotakneš.",
     "audioChoicesToolName": "Izbire",
     "audioChoicesDescription": "Predvajaj zvok za izbire odgovorov v vajah.",
-    "audioIncomingMessagesToolName": "Dohodne sporočila",
-    "audioIncomingMessagesDescription": "Samodejno preberi prejeta sporočila na glas v ciljnem jeziku za vajo poslušanja.",
     "choosePangeaAvatar": "Izberite avatar Pangea",
     "readAloudNoVoiceTitle": "Ni najdenega visokokakovostnega glasu za {language}",
     "readAloudNoVoiceDesktopWeb": "Ta brskalnik ne ponuja visokokakovostnega glasu za {language}, zato sporočil ni mogoče dobro prebrati na glas. Chrome in Edge običajno vključujeta visokokakovostne glasove.",
@@ -10662,5 +10660,20 @@
     "courseDetails": "Podrobnosti tečaja",
     "objective": "Cilj",
     "pingedLabel": "Pingano",
-    "mapFilterPlayerCount": "{count} igralcev"
+    "mapFilterPlayerCount": "{count} igralcev",
+    "practiceFeedbackButtonTooltip": "Prijavi težavo s to vajo",
+    "practiceFeedbackDialogTitle": "Povratne informacije o vaji",
+    "practiceFeedbackSelectPair": "Kateri par se zdi napačen?",
+    "practiceFeedbackUserSetEmoji": "Izbrali ste ta emoji – spremenite ga na kartici z besedo",
+    "practiceFeedbackAlreadyMatched": "Že pravilno usklajeno",
+    "practiceFeedbackUpdated": "Hvala! Vaja je bila posodobljena na podlagi vaših povratnih informacij.",
+    "practiceFeedbackUnchanged": "Hvala! Vaše poročilo je bilo zabeleženo, vendar vsebina ostaja nespremenjena.",
+    "audioOnNewMessageToolName": "Ob novem sporočilu",
+    "audioOnNewMessageDescription": "Samodejno prebere nova prejeta sporočila na glas v vašem ciljnem jeziku.",
+    "audioOnMessageClickToolName": "Ob kliku na sporočilo",
+    "audioOnMessageClickDescription": "Prebere sporočilo na glas v vašem ciljnem jeziku, ko kliknete nanj.",
+    "audioSettingDisabledTitle": "Zvok {toolName} je onemogočen",
+    "audioSettingDisabledBody": "Zvok {toolName} lahko omogočite v nastavitvah učenja",
+    "audioSettingDisabledEnable": "Omogoči",
+    "rejoinedTheActivity": "🔄 {username} se je znova pridružil tej dejavnosti"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:22.097383",
+    "@@last_modified": "2026-08-11 15:43:18.387642",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9873,8 +9873,6 @@
     "audioWordsDescription": "단어를 탭하면 오디오가 재생됩니다.",
     "audioChoicesToolName": "선택지",
     "audioChoicesDescription": "연습 활동에서 답변 선택지에 대한 오디오를 재생합니다.",
-    "audioIncomingMessagesToolName": "수신 메시지",
-    "audioIncomingMessagesDescription": "듣기 연습을 위해 수신된 메시지를 학습 언어로 자동으로 소리 내어 읽습니다.",
     "choosePangeaAvatar": "판게아 아바타 선택",
     "readAloudNoVoiceTitle": "고품질 {language} 음성을 찾을 수 없음",
     "readAloudNoVoiceDesktopWeb": "이 브라우저는 고품질 {language} 음성을 제공하지 않아 메시지를 제대로 읽어줄 수 없습니다. Chrome 및 Edge는 일반적으로 고품질 음성을 포함합니다.",
@@ -9910,5 +9908,20 @@
     "courseDetails": "코스 상세 정보",
     "objective": "목표",
     "pingedLabel": "핑됨",
-    "mapFilterPlayerCount": "{count}명"
+    "mapFilterPlayerCount": "{count}명",
+    "practiceFeedbackButtonTooltip": "이 연습 문제에 대한 문제 보고",
+    "practiceFeedbackDialogTitle": "연습 문제 피드백",
+    "practiceFeedbackSelectPair": "어떤 쌍이 잘못되었나요?",
+    "practiceFeedbackUserSetEmoji": "이 이모티콘을 선택하셨습니다. 단어 카드에서 변경하세요.",
+    "practiceFeedbackAlreadyMatched": "이미 올바르게 일치함",
+    "practiceFeedbackUpdated": "감사합니다! 회원님의 피드백을 바탕으로 연습 문제가 업데이트되었습니다.",
+    "practiceFeedbackUnchanged": "감사합니다! 회원님의 보고서는 기록되었지만, 내용은 변경되지 않았습니다.",
+    "audioOnNewMessageToolName": "새 메시지 수신 시",
+    "audioOnNewMessageDescription": "새로 받은 메시지를 학습 언어로 자동으로 소리 내어 읽습니다.",
+    "audioOnMessageClickToolName": "메시지 클릭 시",
+    "audioOnMessageClickDescription": "메시지를 클릭하면 학습 언어로 소리 내어 읽습니다.",
+    "audioSettingDisabledTitle": "{toolName} 오디오 비활성화됨",
+    "audioSettingDisabledBody": "학습 설정에서 {toolName} 오디오를 활성화할 수 있습니다",
+    "audioSettingDisabledEnable": "활성화",
+    "rejoinedTheActivity": "🔄 {username}님이 활동에 다시 참여했습니다"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-07 16:23:23.487534",
+    "@@last_modified": "2026-08-11 15:43:19.769653",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Үгэн дээр дарахад дууг нь тоглуулна.",
     "audioChoicesToolName": "Сонголтууд",
     "audioChoicesDescription": "Дасгалын хариултын сонголтуудын дууг тоглуулна.",
-    "audioIncomingMessagesToolName": "Ирж буй мессежүүд",
-    "audioIncomingMessagesDescription": "Сонсох дасгал хийх зорилгоор хүлээн авсан мессежүүдийг таны сурч буй хэлээр автоматаар чангаар уншина.",
     "choosePangeaAvatar": "Пангеагийн аватар сонгох",
     "readAloudNoVoiceTitle": "Өндөр чанартай {language} дуу хоолой олдсонгүй",
     "readAloudNoVoiceDesktopWeb": "Энэ хөтөч өндөр чанартай {language} дуу хоолой санал болгохгүй тул энд мессежийг сайн унших боломжгүй. Chrome болон Edge ихэвчлэн өндөр чанартай дуу хоолойг агуулдаг.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Хичээлийн дэлгэрэнгүй",
     "objective": "Зорилго",
     "pingedLabel": "Дуудсан",
-    "mapFilterPlayerCount": "{count} тоглогч"
+    "mapFilterPlayerCount": "{count} тоглогч",
+    "practiceFeedbackButtonTooltip": "Энэ дасгалын талаар асуудал мэдээлэх",
+    "practiceFeedbackDialogTitle": "Дасгалын талаарх санал хүсэлт",
+    "practiceFeedbackSelectPair": "Аль хослол нь буруу харагдаж байна вэ?",
+    "practiceFeedbackUserSetEmoji": "Та энэ эможиг сонгосон байна — үүнийг үгийн картаас өөрчилнө үү",
+    "practiceFeedbackAlreadyMatched": "Аль хэдийн зөв таарсан байна",
+    "practiceFeedbackUpdated": "Баярлалаа! Таны санал хүсэлтэд үндэслэн дасгалыг шинэчиллээ.",
+    "practiceFeedbackUnchanged": "Баярлалаа! Таны мэдээллийг бүртгэсэн боловч агуулга өөрчлөгдөөгүй байна.",
+    "audioOnNewMessageToolName": "Шинэ мессеж ирэхэд",
+    "audioOnNewMessageDescription": "Шинээр ирсэн мессежүүдийг таны сурч буй хэлээр автоматаар чангаар уншина.",
+    "audioOnMessageClickToolName": "Мессеж дээр дарахад",
+    "audioOnMessageClickDescription": "Мессеж дээр дарахад таны сурч буй хэлээр чангаар уншина.",
+    "audioSettingDisabledTitle": "{toolName} дууг идэвхгүй болгосон",
+    "audioSettingDisabledBody": "Та сурах тохиргооноосоо {toolName} дууг идэвхжүүлж болно",
+    "audioSettingDisabledEnable": "Идэвхжүүлэх",
+    "rejoinedTheActivity": "🔄 {username} энэ үйл ажиллагаанд дахин нэгдлээ"
 }

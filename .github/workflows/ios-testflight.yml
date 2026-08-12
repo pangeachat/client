@@ -48,7 +48,7 @@ jobs:
       - name: Capture build version
         id: version
         # Semantic version only — fastlane assigns the iOS build number itself
-        # (latest TestFlight build + 1), so pubspec's +N is not meaningful here.
+        # (a date-encoded YYMMDDnn code), so pubspec's +N is not meaningful here.
         run: echo "version=$(grep -m1 '^version:' pubspec.yaml | awk '{print $2}' | cut -d+ -f1)" >> $GITHUB_OUTPUT
       - uses: subosito/flutter-action@fd55f4c5af5b953cc57a2be44cb082c8f6635e8e # v2
         with:
@@ -74,6 +74,10 @@ jobs:
         run: |
           rm -f .env
           echo "$WEB_APP_ENV" > .env
+          # Live streaming-STT client gate, same as the web deploy (release.yaml).
+          # Dark until the choreo backend is enabled: the session fails pre-`ready`
+          # and the recorder falls back to batch (today's behavior).
+          echo "LIVE_STREAMING_STT_ENABLED=true" >> .env
       - name: Apply .env patch
         run: git apply ./scripts/enable_mobile_env.patch
       - name: Remove Emoji Font
@@ -82,7 +86,11 @@ jobs:
           yq -i 'del( .flutter.fonts[] | select(.family == "NotoEmoji") )' pubspec.yaml
       - run: flutter pub get
       - name: Build iOS (unsigned)
-        run: flutter build ios --release --no-codesign
+        # BUILD_COMMIT_SHA is the only part of the version display that says
+        # which code is in the build — fastlane derives the build number from
+        # TestFlight state, so it orders builds without identifying them.
+        # See ci.instructions.md.
+        run: flutter build ios --release --no-codesign --dart-define=BUILD_COMMIT_SHA=${GITHUB_SHA::8}
       - name: Load match repo deploy key
         uses: webfactory/ssh-agent@a6f90b1f127823b31d4d4a8d96047790581349bd # v0.9.1
         with:

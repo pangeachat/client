@@ -20,6 +20,7 @@ import 'package:fluffychat/features/navigation/token_params/room_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
+import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
@@ -769,6 +770,27 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             badgePosition: BadgePosition.topEnd(top: -1, end: -1),
             child: child,
           ),
+        ),
+        // The same gold envelope the invited course's own avatar wears in the
+        // hub list, on the tab that opens it: a pending invitation is
+        // otherwise invisible until the learner opens the Courses hub (#8190).
+        // Same invited-space predicate as `sortedCourses`, so the badge shows
+        // exactly when the hub has an invited course to show.
+        coursesBadgeBuilder: (child) => StreamBuilder(
+          stream: client.onSync.stream
+              .where((s) => s.hasRoomUpdate)
+              .rateLimit(const Duration(seconds: 1)),
+          builder: (context, _) =>
+              client.rooms.any(
+                (r) => r.isSpace && r.membership == Membership.invite,
+              )
+              ? InvitedCourseBadge(
+                  // The unread badge's position on the sibling Chats tab —
+                  // both ride the corner of a 24px rail icon.
+                  position: BadgePosition.topEnd(top: -1, end: -1),
+                  child: child,
+                )
+              : child,
         ),
         onSectionTap: (section) => context.go(switch (section) {
           // World is home: clear every panel and reveal the full map.

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-07 16:23:22.395647",
+    "@@last_modified": "2026-08-11 15:43:18.904407",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Сөздү басканда анын аудиосун ойнот.",
     "audioChoicesToolName": "Тандоолор",
     "audioChoicesDescription": "Практикалык иш-чаралардагы жооп тандоолору үчүн аудиону ойнот.",
-    "audioIncomingMessagesToolName": "Кирүүчү билдирүүлөр",
-    "audioIncomingMessagesDescription": "Угуу практикасы үчүн келген билдирүүлөрдү автоматтык түрдө максаттуу тилиңизде үн чыгарып окуңуз.",
     "choosePangeaAvatar": "Pangea аватарын тандаңыз",
     "readAloudNoVoiceTitle": "{language} тилинде жогорку сапаттагы үн табылган жок",
     "readAloudNoVoiceDesktopWeb": "Бул браузер жогорку сапаттагы {language} үнүн сунуштабайт, андыктан билдирүүлөр бул жерде жакшы окулбайт. Chrome жана Edge адатта жогорку сапаттагы үндөрдү камтыйт.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Курстун чоо-жайы",
     "objective": "Максат",
     "pingedLabel": "Пингделди",
-    "mapFilterPlayerCount": "{count} оюнчу"
+    "mapFilterPlayerCount": "{count} оюнчу",
+    "practiceFeedbackButtonTooltip": "Бул көнүгүүдөгү көйгөй тууралуу билдирүү",
+    "practiceFeedbackDialogTitle": "Көнүгүү боюнча пикир",
+    "practiceFeedbackSelectPair": "Кайсы жуп туура эмес көрүнөт?",
+    "practiceFeedbackUserSetEmoji": "Сиз бул эмодзини тандадыңыз — аны сөз картасынан өзгөртүңүз",
+    "practiceFeedbackAlreadyMatched": "Буга чейин туура дал келтирилген",
+    "practiceFeedbackUpdated": "Рахмат! Көнүгүү сиздин пикириңиздин негизинде жаңыртылды.",
+    "practiceFeedbackUnchanged": "Рахмат! Сиздин билдирүүңүз катталды, бирок мазмун өзгөрүүсүз калды.",
+    "audioOnNewMessageToolName": "Жаңы билдирүү келгенде",
+    "audioOnNewMessageDescription": "Жаңы келген билдирүүлөрдү автоматтык түрдө максаттуу тилиңизде үн чыгарып окуйт.",
+    "audioOnMessageClickToolName": "Билдирүүнү басканда",
+    "audioOnMessageClickDescription": "Билдирүүнү басканда аны максаттуу тилиңизде үн чыгарып окуйт.",
+    "audioSettingDisabledTitle": "{toolName} аудиосу өчүрүлгөн",
+    "audioSettingDisabledBody": "Сиз {toolName} аудиосун окуу жөндөөлөрүңүздөн иштете аласыз",
+    "audioSettingDisabledEnable": "Иштетүү",
+    "rejoinedTheActivity": "🔄 {username} бул аракетке кайра кошулду"
 }

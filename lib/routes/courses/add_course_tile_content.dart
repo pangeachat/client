@@ -19,6 +19,12 @@ abstract class AddCourseTileContent {
   /// chips read the same quest outline the course itself does.
   String? get courseRoomId => null;
 
+  /// The course space behind this tile, for the tile chrome that needs the
+  /// live room rather than a snapshot of it — currently the knock badge, which
+  /// watches the member list. Null for tiles with no room yet (public-course
+  /// previews, course-plan suggestions), which skip that chrome entirely.
+  Room? get space => null;
+
   bool get isKnock => false;
 
   bool? get invited => null;
@@ -31,6 +37,7 @@ abstract class AddCourseTileContent {
 }
 
 class RoomAddCourseTileContent extends AddCourseTileContent {
+  @override
   final Room space;
   RoomAddCourseTileContent(this.space);
 

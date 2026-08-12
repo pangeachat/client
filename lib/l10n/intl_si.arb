@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-07 16:23:25.365378",
+    "@@last_modified": "2026-08-11 15:43:21.138011",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "වචනයක් මත තට්ටු කළ විට එහි ශ්‍රව්‍ය වාදනය කරන්න.",
     "audioChoicesToolName": "තේරීම්",
     "audioChoicesDescription": "පුහුණු ක්‍රියාකාරකම්වලදී පිළිතුරු තේරීම් සඳහා ශ්‍රව්‍ය වාදනය කරන්න.",
-    "audioIncomingMessagesToolName": "එන පණිවිඩ",
-    "audioIncomingMessagesDescription": "සවන් දීමේ පුහුණුව සඳහා ලැබුණු පණිවිඩ ස්වයංක්‍රීයව ඔබේ ඉලක්ක භාෂාවෙන් ශබ්ද නඟා කියවන්න.",
     "choosePangeaAvatar": "Pangea අවතාරයක් තෝරන්න",
     "readAloudNoVoiceTitle": "උසස් තත්ත්වයේ {language} හඬක් හමු නොවීය",
     "readAloudNoVoiceDesktopWeb": "මෙම බ්‍රවුසරය උසස් තත්ත්වයේ {language} හඬක් ලබා නොදෙන නිසා, මෙහිදී පණිවිඩ හොඳින් කියවිය නොහැක. Chrome සහ Edge සාමාන්‍යයෙන් උසස් තත්ත්වයේ හඬවල් ඇතුළත් කරයි.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "පාඨමාලා විස්තර",
     "objective": "අරමුණ",
     "pingedLabel": "පිං කරන ලදී",
-    "mapFilterPlayerCount": "{count} ක්‍රීඩකයන්"
+    "mapFilterPlayerCount": "{count} ක්‍රීඩකයන්",
+    "practiceFeedbackButtonTooltip": "මෙම අභ්‍යාසයේ ගැටලුවක් වාර්තා කරන්න",
+    "practiceFeedbackDialogTitle": "පුහුණු අභ්‍යාස ප්‍රතිපෝෂණය",
+    "practiceFeedbackSelectPair": "වැරදි යුවල කුමක්ද?",
+    "practiceFeedbackUserSetEmoji": "ඔබ මෙම ඉමොජිය තෝරා ගත්තා — එය වචන කාඩ්පතෙන් වෙනස් කරන්න",
+    "practiceFeedbackAlreadyMatched": "දැනටමත් නිවැරදිව ගැලපේ",
+    "practiceFeedbackUpdated": "ස්තූතියි! ඔබගේ ප්‍රතිපෝෂණය මත පදනම්ව අභ්‍යාසය යාවත්කාලීන කර ඇත.",
+    "practiceFeedbackUnchanged": "ස්තූතියි! ඔබගේ වාර්තාව සටහන් කර ඇත, නමුත් අන්තර්ගතය වෙනස් නොවීය.",
+    "audioOnNewMessageToolName": "නව පණිවිඩයක් ලැබුණු විට",
+    "audioOnNewMessageDescription": "නව ලැබුණු පණිවිඩ ස්වයංක්‍රීයව ඔබේ ඉලක්ක භාෂාවෙන් ශබ්ද නඟා කියවන්න.",
+    "audioOnMessageClickToolName": "පණිවිඩය ක්ලික් කළ විට",
+    "audioOnMessageClickDescription": "ඔබ පණිවිඩයක් ක්ලික් කළ විට එය ඔබේ ඉලක්ක භාෂාවෙන් ශබ්ද නඟා කියවන්න.",
+    "audioSettingDisabledTitle": "{toolName} ශ්‍රව්‍ය අක්‍රිය කර ඇත",
+    "audioSettingDisabledBody": "ඔබගේ ඉගෙනුම් සැකසීම් තුළ {toolName} ශ්‍රව්‍ය සක්‍රිය කළ හැක",
+    "audioSettingDisabledEnable": "සක්‍රිය කරන්න",
+    "rejoinedTheActivity": "🔄 {username} මෙම ක්‍රියාකාරකත්වයට නැවත සම්බන්ධ විය"
 }

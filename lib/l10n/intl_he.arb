@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:20.342558",
+    "@@last_modified": "2026-08-11 15:43:16.830612",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10594,8 +10594,6 @@
     "audioWordsDescription": "השמעת מילה בלחיצה עליה.",
     "audioChoicesToolName": "אפשרויות",
     "audioChoicesDescription": "השמעת אודיו עבור אפשרויות התשובה בפעילויות תרגול.",
-    "audioIncomingMessagesToolName": "הודעות נכנסות",
-    "audioIncomingMessagesDescription": "הקראה אוטומטית של הודעות שהתקבלו בקול רם בשפת היעד שלך לתרגול הקשבה.",
     "choosePangeaAvatar": "בחר אווטאר של Pangea",
     "readAloudNoVoiceTitle": "לא נמצא קול {language} באיכות גבוהה",
     "readAloudNoVoiceDesktopWeb": "דפדפן זה אינו מציע קול {language} באיכות גבוהה, ולכן לא ניתן להקריא הודעות היטב כאן. Chrome ו-Edge בדרך כלל כוללים קולות באיכות גבוהה.",
@@ -10631,5 +10629,20 @@
     "courseDetails": "פרטי הקורס",
     "objective": "מטרה",
     "pingedLabel": "תויג",
-    "mapFilterPlayerCount": "{count} שחקנים"
+    "mapFilterPlayerCount": "{count} שחקנים",
+    "practiceFeedbackButtonTooltip": "דווח על בעיה בתרגיל זה",
+    "practiceFeedbackDialogTitle": "משוב על תרגיל",
+    "practiceFeedbackSelectPair": "איזה זוג נראה שגוי?",
+    "practiceFeedbackUserSetEmoji": "בחרת את האימוג'י הזה — שנה אותו מכרטיס המילה",
+    "practiceFeedbackAlreadyMatched": "כבר תואם נכון",
+    "practiceFeedbackUpdated": "תודה! התרגיל עודכן בהתאם למשוב שלך.",
+    "practiceFeedbackUnchanged": "תודה! הדיווח שלך נרשם, אך התוכן נשאר ללא שינוי.",
+    "audioOnNewMessageToolName": "בהודעה חדשה",
+    "audioOnNewMessageDescription": "הקרא אוטומטית הודעות חדשות שהתקבלו בשפת היעד שלך.",
+    "audioOnMessageClickToolName": "בלחיצה על הודעה",
+    "audioOnMessageClickDescription": "הקרא הודעה בשפת היעד שלך בלחיצה עליה.",
+    "audioSettingDisabledTitle": "שמע של {toolName} מושבת",
+    "audioSettingDisabledBody": "ניתן להפעיל את השמע של {toolName} בהגדרות הלמידה שלך",
+    "audioSettingDisabledEnable": "הפעל",
+    "rejoinedTheActivity": "🔄 {username} הצטרף/ה מחדש לפעילות זו"
 }

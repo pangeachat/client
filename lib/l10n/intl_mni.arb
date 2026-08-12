@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-07 16:23:23.660030",
+    "@@last_modified": "2026-08-11 15:43:19.810511",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "ꯑꯦꯟꯁꯔ ꯆꯣꯏꯁꯁꯤꯡꯒꯤꯗꯃꯛ ꯑꯣꯗꯤꯑꯣ ꯊꯥꯡꯒꯅꯤ ꯄ꯭ꯔꯦꯛꯇꯤꯁ ꯑꯦꯛꯇꯤꯕꯤꯇꯤꯁꯤꯡꯗꯥ꯫",
     "audioChoicesToolName": "ꯈꯟꯗꯣꯛꯄꯁꯤꯡ",
     "audioChoicesDescription": "ꯄ꯭ꯔꯦꯛꯇꯤꯁ ꯑꯦꯛꯇꯤꯕꯤꯇꯤꯁꯤꯡꯗꯥ ꯑꯦꯟꯁꯔ ꯆꯣꯏꯁꯁꯤꯡꯒꯤꯗꯃꯛ ꯑꯣꯗꯤꯑꯣ ꯊꯥꯡꯒꯅꯤ꯫",
-    "audioIncomingMessagesToolName": "ꯂꯥꯛꯂꯤꯕ ꯃꯦꯁꯦꯖꯁꯤꯡ",
-    "audioIncomingMessagesDescription": "ꯅꯍꯥꯛꯅ ꯐꯪꯂꯤꯕ ꯃꯦꯁꯦꯖꯁꯤꯡ ꯑꯣꯇꯣꯃꯦꯇꯤꯛ ꯑꯣꯏꯅ ꯅꯍꯥꯛꯀꯤ ꯇꯥꯔꯒꯦꯠ ꯂꯣꯟꯗ ꯂꯤꯁ꯭ꯇꯦꯅꯤꯡ ꯄ꯭ꯔꯦꯛꯇꯤꯁꯀꯤꯗꯃꯛ ꯈꯣꯟꯊꯥ ꯊꯣꯀꯍꯅꯕꯤꯌꯨ꯫",
     "choosePangeaAvatar": "Pangea avatar ama khetnaba",
     "readAloudNoVoiceTitle": "ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯐꯪꯗꯦ",
     "readAloudNoVoiceDesktopWeb": "ꯁꯤꯅꯥ ꯕ꯭ꯔꯥꯎꯖꯔ ꯑꯁꯤꯗꯥ ꯐꯖꯕꯥ {language} ꯈꯣꯡꯎꯝ ꯑꯃꯠꯇꯥ ꯐꯪꯗꯦ, ꯃꯔꯝ ꯑꯗꯨꯅꯥ ꯃꯦꯁꯦꯖꯁꯤꯡ ꯑꯁꯤ ꯌꯥꯝꯅꯥ ꯐꯖꯅꯥ ꯈꯣꯡꯎꯝ ꯊꯤꯕꯥ ꯉꯃꯗꯦ. Chrome ꯑꯃꯁꯨꯡ Edge ꯅꯥ ꯈ꯭ꯕꯥꯏꯗꯒꯤ ꯐꯖꯕꯥ ꯈꯣꯡꯎꯝꯁꯤꯡ ꯂꯧꯊꯣꯛꯏ.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "কোর্সকী খুদমশিং",
     "objective": "পাঙ্গল",
     "pingedLabel": "পিং তৌরে",
-    "mapFilterPlayerCount": "{count} প্লেয়ারশিং"
+    "mapFilterPlayerCount": "{count} প্লেয়ারশিং",
+    "practiceFeedbackButtonTooltip": "অসাইনবমেন্ত অসিদা অৱাবা অমত্তা লৈরবদি ফোংদোকউ",
+    "practiceFeedbackDialogTitle": "প্রেকটিস এক্সারসাইজ ফিডব্যাক",
+    "practiceFeedbackSelectPair": "করি পেয়ার অসি মাকল লৈরিবগে?",
+    "practiceFeedbackUserSetEmoji": "নখোয়না ইমোজি অসি খল্লিবনি — ৱার্ড কার্ডদগী হোংদোকউ",
+    "practiceFeedbackAlreadyMatched": "মমাংদগী চুনখ্রে",
+    "practiceFeedbackUpdated": "থাগৎচরি! নখোয়গী ফিডব্যাক মতুং ইন্না এক্সারসাইজ অসি আপডেট তৌখ্রে.",
+    "practiceFeedbackUnchanged": "থাগৎচরি! নখোয়গী রিপোর্ট অদু রেকোর্ড তৌখ্রে, অদুবু কন্টেন্ট অদু হোংদোকখিদে.",
+    "audioOnNewMessageToolName": "অনৌবা মেসেজ তারকপদা",
+    "audioOnNewMessageDescription": "অনৌবা মেসেজশিং অতোমতিক ওইনা মীপাও শন্দোকপা ঙম্নবা অদোমগী লোনদা লাউডস্পীকারদা পাওনবা থমবীয়ু।",
+    "audioOnMessageClickToolName": "মেসেজ ক্লিক তৌবদা",
+    "audioOnMessageClickDescription": "অদোমনা মেসেজ অমা ক্লিক তৌবদা অদোমগী লোনদা লাউডস্পীকারদা পাওনবা থমবীয়ু।",
+    "audioSettingDisabledTitle": "{toolName} অডিও থিংদোকখ্রে",
+    "audioSettingDisabledBody": "নখোয়গী লার্নিং সেটিংস্টা {toolName} অডিও অন তৌবা য়াই",
+    "audioSettingDisabledEnable": "অন তৌব",
+    "rejoinedTheActivity": "🔄 {username} অসিনা হায়রিবা থবক অসিদা অমুক হিংনরে"
 }

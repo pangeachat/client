@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-07 16:23:22.257641",
+    "@@last_modified": "2026-08-11 15:43:18.406349",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "ចាក់​សំឡេង​ពាក្យ​នៅ​ពេល​អ្នក​ប៉ះ​វា។",
     "audioChoicesToolName": "ជម្រើស",
     "audioChoicesDescription": "ចាក់​សំឡេង​សម្រាប់​ជម្រើស​ចម្លើយ​ក្នុង​សកម្មភាព​អនុវត្ត។",
-    "audioIncomingMessagesToolName": "សារ​ចូល",
-    "audioIncomingMessagesDescription": "អាន​សារ​ដែល​បាន​ទទួល​ដោយ​ស្វ័យ​ប្រវត្តិ​ឮៗ​ជា​ភាសា​គោលដៅ​របស់​អ្នក​សម្រាប់​ការ​អនុវត្ត​ការ​ស្ដាប់។",
     "choosePangeaAvatar": "ជ្រើសរើសរូបតំណាង Pangea",
     "readAloudNoVoiceTitle": "រកមិនឃើញសំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ",
     "readAloudNoVoiceDesktopWeb": "កម្មវិធីរុករកនេះមិនផ្ដល់សំឡេង{language}ដែលមានគុណភាពខ្ពស់ទេ ដូច្នេះសារមិនអាចអានឮបានល្អនៅទីនេះទេ។ ជាទូទៅ Chrome និង Edge រួមបញ្ចូលសំឡេងដែលមានគុណភាពខ្ពស់។",
@@ -2105,5 +2103,20 @@
     "courseDetails": "ព័ត៌មានលម្អិតវគ្គសិក្សា",
     "objective": "គោលបំណង",
     "pingedLabel": "បាន Ping",
-    "mapFilterPlayerCount": "{count} អ្នកលេង"
+    "mapFilterPlayerCount": "{count} អ្នកលេង",
+    "practiceFeedbackButtonTooltip": "រាយការណ៍បញ្ហាជាមួយលំហាត់នេះ",
+    "practiceFeedbackDialogTitle": "មតិកែលម្អលំហាត់អនុវត្ត",
+    "practiceFeedbackSelectPair": "គូមួយណាដែលមើលទៅខុស?",
+    "practiceFeedbackUserSetEmoji": "អ្នកបានជ្រើសរើសរូបអារម្មណ៍នេះ — ផ្លាស់ប្ដូរវាពីកាតពាក្យ",
+    "practiceFeedbackAlreadyMatched": "បានផ្គូផ្គងត្រឹមត្រូវរួចហើយ",
+    "practiceFeedbackUpdated": "អរគុណ! លំហាត់ត្រូវបានអាប់ដេតដោយផ្អែកលើមតិកែលម្អរបស់អ្នក។",
+    "practiceFeedbackUnchanged": "អរគុណ! របាយការណ៍របស់អ្នកត្រូវបានកត់ត្រា ប៉ុន្តែមាតិកានៅតែមិនផ្លាស់ប្តូរ។",
+    "audioOnNewMessageToolName": "នៅពេលមានសារថ្មី",
+    "audioOnNewMessageDescription": "អានសារថ្មីដែលបានទទួលដោយស្វ័យប្រវត្តិឮៗជាភាសាគោលដៅរបស់អ្នក។",
+    "audioOnMessageClickToolName": "នៅពេលចុចលើសារ",
+    "audioOnMessageClickDescription": "អានសារឮៗជាភាសាគោលដៅរបស់អ្នកនៅពេលអ្នកចុចលើវា។",
+    "audioSettingDisabledTitle": "សំឡេង {toolName} ត្រូវបានបិទ",
+    "audioSettingDisabledBody": "អ្នកអាចបើកសំឡេង {toolName} នៅក្នុងការកំណត់ការរៀនរបស់អ្នក",
+    "audioSettingDisabledEnable": "បើក",
+    "rejoinedTheActivity": "🔄 {username} បានចូលរួមសកម្មភាពនេះឡើងវិញ"
 }

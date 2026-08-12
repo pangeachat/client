@@ -61,7 +61,8 @@ class RepresentationEvent {
 
   String get langCode => content.langCode;
 
-  List<LanguageDetectionModel>? get detections => _tokens?.detections;
+  List<LanguageDetectionModel>? get detections =>
+      (_tokens ?? content.tokens)?.detections;
 
   Set<Event> get tokenEvents =>
       _event?.aggregatedEvents(timeline, PangeaEventTypes.tokens) ?? {};
@@ -80,6 +81,15 @@ class RepresentationEvent {
 
   List<PangeaToken>? get tokens {
     if (_tokens != null) return _tokens!.tokens;
+
+    // tokens embedded in the representation content (an atomic correction)
+    // take precedence over child token events
+    final embedded = content.tokens;
+    if (embedded != null && embedded.tokens.isNotEmpty) {
+      _tokens = embedded;
+      return embedded.tokens;
+    }
+
     if (_event == null) return null;
 
     if (tokenEvents.isEmpty) return null;

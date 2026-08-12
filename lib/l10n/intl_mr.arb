@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-07 16:23:23.346487",
+    "@@last_modified": "2026-08-11 15:43:19.673464",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "शब्दावर टॅप केल्यास त्याचा ऑडिओ प्ले होईल.",
     "audioChoicesToolName": "पर्याय",
     "audioChoicesDescription": "सराव क्रियाकलापांमध्ये उत्तरांच्या पर्यायांसाठी ऑडिओ प्ले करा.",
-    "audioIncomingMessagesToolName": "येणारे संदेश",
-    "audioIncomingMessagesDescription": "ऐकण्याच्या सरावासाठी प्राप्त झालेले संदेश तुमच्या लक्ष्यित भाषेत आपोआप मोठ्याने वाचा.",
     "choosePangeaAvatar": "पँजिया अवतार निवडा",
     "readAloudNoVoiceTitle": "उच्च-गुणवत्तेचा {language} आवाज सापडला नाही",
     "readAloudNoVoiceDesktopWeb": "हा ब्राउझर उच्च-गुणवत्तेचा {language} आवाज देत नाही, त्यामुळे येथे संदेश चांगल्या प्रकारे वाचले जाऊ शकत नाहीत. Chrome आणि Edge मध्ये सहसा उच्च-गुणवत्तेचे आवाज समाविष्ट असतात.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "अभ्यासक्रमाचे तपशील",
     "objective": "उद्दिष्ट",
     "pingedLabel": "पिंग केले",
-    "mapFilterPlayerCount": "{count} खेळाडू"
+    "mapFilterPlayerCount": "{count} खेळाडू",
+    "practiceFeedbackButtonTooltip": "या व्यायामातील समस्येची तक्रार करा",
+    "practiceFeedbackDialogTitle": "सराव व्यायामाबद्दल अभिप्राय",
+    "practiceFeedbackSelectPair": "कोणती जोडी चुकीची दिसते?",
+    "practiceFeedbackUserSetEmoji": "तुम्ही ही इमोजी निवडली आहे — ती शब्द कार्डमधून बदला",
+    "practiceFeedbackAlreadyMatched": "आधीच योग्यरित्या जुळले आहे",
+    "practiceFeedbackUpdated": "धन्यवाद! तुमच्या अभिप्रायाच्या आधारावर व्यायाम अद्यतनित केला गेला आहे.",
+    "practiceFeedbackUnchanged": "धन्यवाद! तुमच्या तक्रारीची नोंद घेतली गेली आहे, परंतु सामग्रीमध्ये कोणताही बदल झालेला नाही.",
+    "audioOnNewMessageToolName": "नवीन संदेशावर",
+    "audioOnNewMessageDescription": "तुमच्या लक्ष्य भाषेत नवीन प्राप्त झालेले संदेश आपोआप मोठ्याने वाचा.",
+    "audioOnMessageClickToolName": "संदेशावर क्लिक केल्यावर",
+    "audioOnMessageClickDescription": "तुम्ही संदेशावर क्लिक केल्यावर तो तुमच्या लक्ष्य भाषेत मोठ्याने वाचा.",
+    "audioSettingDisabledTitle": "{toolName} ऑडिओ अक्षम केला आहे",
+    "audioSettingDisabledBody": "तुम्ही तुमच्या शिक्षण सेटिंग्जमध्ये {toolName} ऑडिओ सक्षम करू शकता",
+    "audioSettingDisabledEnable": "सक्षम करा",
+    "rejoinedTheActivity": "🔄 {username} या अ‍ॅक्टिव्हिटीमध्ये पुन्हा सामील झाले"
 }

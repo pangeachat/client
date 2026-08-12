@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-07 16:23:26.858294",
+    "@@last_modified": "2026-08-11 15:43:22.774481",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -9981,8 +9981,6 @@
     "audioWordsDescription": "Bir kelimeye dokunduğunuzda sesini çalın.",
     "audioChoicesToolName": "Seçenekler",
     "audioChoicesDescription": "Alıştırma etkinliklerindeki cevap seçenekleri için ses çalın.",
-    "audioIncomingMessagesToolName": "Gelen mesajlar",
-    "audioIncomingMessagesDescription": "Dinleme pratiği için alınan mesajları hedef dilinizde otomatik olarak yüksek sesle okuyun.",
     "choosePangeaAvatar": "Pangea avatarı seç",
     "readAloudNoVoiceTitle": "Yüksek kaliteli {language} sesi bulunamadı",
     "readAloudNoVoiceDesktopWeb": "Bu tarayıcı yüksek kaliteli bir {language} sesi sunmuyor, bu nedenle mesajlar burada iyi okunamıyor. Chrome ve Edge genellikle yüksek kaliteli sesler içerir.",
@@ -10018,5 +10016,20 @@
     "courseDetails": "Kurs detayları",
     "objective": "Hedef",
     "pingedLabel": "Pinglendi",
-    "mapFilterPlayerCount": "{count} oyuncu"
+    "mapFilterPlayerCount": "{count} oyuncu",
+    "practiceFeedbackButtonTooltip": "Bu alıştırmayla ilgili bir sorun bildir",
+    "practiceFeedbackDialogTitle": "Alıştırma Geri Bildirimi",
+    "practiceFeedbackSelectPair": "Hangi çift yanlış görünüyor?",
+    "practiceFeedbackUserSetEmoji": "Bu emojiyi sen seçtin — kelime kartından değiştir",
+    "practiceFeedbackAlreadyMatched": "Zaten doğru eşleştirildi",
+    "practiceFeedbackUpdated": "Teşekkürler! Alıştırma, geri bildirimine göre güncellendi.",
+    "practiceFeedbackUnchanged": "Teşekkürler! Raporun kaydedildi, ancak içerik değişmeden kaldı.",
+    "audioOnNewMessageToolName": "Yeni mesajda",
+    "audioOnNewMessageDescription": "Alınan yeni mesajları hedef dilinizde otomatik olarak yüksek sesle okuyun.",
+    "audioOnMessageClickToolName": "Mesaj tıklamasında",
+    "audioOnMessageClickDescription": "Bir mesaja tıkladığınızda hedef dilinizde yüksek sesle okuyun.",
+    "audioSettingDisabledTitle": "{toolName} sesi devre dışı",
+    "audioSettingDisabledBody": "Öğrenme ayarlarınızdan {toolName} sesini etkinleştirebilirsiniz",
+    "audioSettingDisabledEnable": "Etkinleştir",
+    "rejoinedTheActivity": "🔄 {username} bu etkinliğe yeniden katıldı"
 }

@@ -452,8 +452,10 @@ class UserController {
         return profile.toolSettings.audioWords;
       case ToolSetting.audioChoices:
         return profile.toolSettings.audioChoices;
-      case ToolSetting.audioIncomingMessages:
-        return profile.toolSettings.audioIncomingMessages;
+      case ToolSetting.audioOnNewMessage:
+        return profile.toolSettings.audioOnNewMessage;
+      case ToolSetting.audioOnMessageClick:
+        return profile.toolSettings.audioOnMessageClick;
     }
   }
 

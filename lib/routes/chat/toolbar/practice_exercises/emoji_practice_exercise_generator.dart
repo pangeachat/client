@@ -7,6 +7,25 @@ import 'package:fluffychat/routes/chat/toolbar/practice_exercises/match_practice
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/message_practice_exercise_request.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 
+/// Pick the emoji to display for one token: the first candidate that is
+/// neither already used by another token nor the content the user flagged
+/// as wrong via practice feedback. Falls back to the flagged content when
+/// it is the only unused candidate — a regenerated row that kept it as the
+/// sole option is served as-is rather than failing the exercise. Kept pure
+/// so it can be unit-tested without Matrix state.
+///
+/// Throws [StateError] when every candidate is already used.
+String pickEmojiChoice({
+  required List<String> candidates,
+  required List<String> used,
+  String? avoid,
+}) {
+  return candidates.firstWhere(
+    (e) => !used.contains(e) && e != avoid,
+    orElse: () => candidates.firstWhere((e) => !used.contains(e)),
+  );
+}
+
 class EmojiPracticeExerciseGenerator {
   static Future<MessagePracticeExerciseResponse> get(
     MessagePracticeExerciseRequest req, {
@@ -51,11 +70,16 @@ class EmojiPracticeExerciseGenerator {
         throw lemmaInfos[i].asError!.error;
       }
 
-      final e = lemmaInfos[i].asValue!.value.emoji.firstWhere(
-        (e) => !usedEmojis.contains(e),
-        orElse: () =>
-            throw Exception("Not enough unique emojis for tokens in message"),
-      );
+      final String e;
+      try {
+        e = pickEmojiChoice(
+          candidates: lemmaInfos[i].asValue!.value.emoji,
+          used: usedEmojis,
+          avoid: req.avoidContent[missingEmojis[i].vocabConstructID],
+        );
+      } on StateError {
+        throw Exception("Not enough unique emojis for tokens in message");
+      }
 
       final token = missingEmojis[i];
       matchInfo[token.vocabForm] ??= [];

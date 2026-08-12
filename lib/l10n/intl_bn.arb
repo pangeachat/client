@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:17.851388",
+    "@@last_modified": "2026-08-11 15:43:14.901461",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10308,8 +10308,6 @@
     "audioWordsDescription": "একটি শব্দে ট্যাপ করলে সেটির অডিও বাজান।",
     "audioChoicesToolName": "পছন্দ",
     "audioChoicesDescription": "অনুশীলন কার্যক্রমে উত্তরের পছন্দের জন্য অডিও বাজান।",
-    "audioIncomingMessagesToolName": "আগত বার্তা",
-    "audioIncomingMessagesDescription": "শোনার অনুশীলনের জন্য আপনার লক্ষ্য ভাষায় প্রাপ্ত বার্তাগুলো স্বয়ংক্রিয়ভাবে জোরে পড়ুন।",
     "choosePangeaAvatar": "একটি প্যানজিয়া অবতার চয়ন করুন",
     "readAloudNoVoiceTitle": "উচ্চ-মানের {language} ভয়েস পাওয়া যায়নি",
     "readAloudNoVoiceDesktopWeb": "এই ব্রাউজারে উচ্চ-মানের {language} ভয়েস নেই, তাই এখানে বার্তাগুলি ভালোভাবে পড়ে শোনানো যাবে না। Chrome এবং Edge-এ সাধারণত উচ্চ-মানের ভয়েস থাকে।",
@@ -10345,5 +10343,20 @@
     "courseDetails": "কোর্সের বিবরণ",
     "objective": "উদ্দেশ্য",
     "pingedLabel": "পিং করা হয়েছে",
-    "mapFilterPlayerCount": "{count} জন খেলোয়াড়"
+    "mapFilterPlayerCount": "{count} জন খেলোয়াড়",
+    "practiceFeedbackButtonTooltip": "এই অনুশীলনে একটি সমস্যা রিপোর্ট করুন",
+    "practiceFeedbackDialogTitle": "অনুশীলন সংক্রান্ত প্রতিক্রিয়া",
+    "practiceFeedbackSelectPair": "কোন জোড়াটি ভুল দেখাচ্ছে?",
+    "practiceFeedbackUserSetEmoji": "আপনি এই ইমোজিটি বেছে নিয়েছেন — শব্দ কার্ড থেকে এটি পরিবর্তন করুন",
+    "practiceFeedbackAlreadyMatched": "ইতিমধ্যেই সঠিকভাবে মিলেছে",
+    "practiceFeedbackUpdated": "ধন্যবাদ! আপনার মতামতের ভিত্তিতে অনুশীলনটি আপডেট করা হয়েছে।",
+    "practiceFeedbackUnchanged": "ধন্যবাদ! আপনার রিপোর্ট রেকর্ড করা হয়েছে, কিন্তু বিষয়বস্তু অপরিবর্তিত রয়েছে।",
+    "audioOnNewMessageToolName": "নতুন মেসেজে",
+    "audioOnNewMessageDescription": "আপনার লক্ষ্য ভাষায় নতুন প্রাপ্ত মেসেজগুলি স্বয়ংক্রিয়ভাবে জোরে জোরে পড়ুন।",
+    "audioOnMessageClickToolName": "মেসেজে ক্লিক করলে",
+    "audioOnMessageClickDescription": "একটি মেসেজে ক্লিক করলে আপনার লক্ষ্য ভাষায় সেটি জোরে জোরে পড়ুন।",
+    "audioSettingDisabledTitle": "{toolName} অডিও নিষ্ক্রিয় করা হয়েছে",
+    "audioSettingDisabledBody": "আপনি আপনার শেখার সেটিংসে {toolName} অডিও সক্ষম করতে পারেন",
+    "audioSettingDisabledEnable": "সক্ষম করুন",
+    "rejoinedTheActivity": "🔄 {username} এই কার্যকলাপে পুনরায় যোগদান করেছেন"
 }

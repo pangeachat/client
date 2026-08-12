@@ -41,8 +41,19 @@ class QuestPlansRepo {
   /// Translate a v1-style [CourseFilter] into a v3 quest-plans `where` clause.
   /// Field names differ (v1: top-level ``l1``/``l2``/``cefrLevel``; v3: nested
   /// under ``req.target_l1``/``req.target_language``/``req.target_cefr``).
+  ///
+  /// The ``hidden`` clause is unconditional: a retired quest must not be
+  /// reachable from the picker by paging or by any filter combination. It is
+  /// scoped to *search* on purpose — [get] and [getMany] stay unfiltered so a
+  /// learner whose course was built from a since-hidden quest keeps resolving
+  /// it. Hiding a quest never touches the activities under its objectives;
+  /// those carry their own ``hidden`` flag.
   static Map<String, dynamic> _whereFor(CourseFilter filter) {
-    final clauses = <Map<String, dynamic>>[];
+    final clauses = <Map<String, dynamic>>[
+      {
+        'hidden': {'not_equals': true},
+      },
+    ];
     if (filter.targetLanguage != null) {
       clauses.add({
         'req.target_language': {'equals': filter.targetLanguage!.langCodeShort},
@@ -60,7 +71,6 @@ class QuestPlansRepo {
         'req.target_cefr': {'equals': filter.cefrLevel!.string},
       });
     }
-    if (clauses.isEmpty) return const {};
     if (clauses.length == 1) return clauses.first;
     return {'and': clauses};
   }

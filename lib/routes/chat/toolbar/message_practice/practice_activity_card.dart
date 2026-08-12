@@ -6,10 +6,12 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/pangea/common/widgets/card_error_widget.dart';
 import 'package:fluffychat/pangea/common/widgets/content_loading_indicator.dart';
+import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_morph_choice.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_controller.dart';
+import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_exercise_feedback_dialog.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/practice_match_card.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
@@ -25,12 +27,18 @@ class PracticeActivityCard extends StatefulWidget {
   final PangeaToken? selectedToken;
   final double maxWidth;
 
+  /// Slot owned by the input bar. Set to a callback when the loaded
+  /// exercise supports content feedback; the bar shows a flag button
+  /// pinned to its corner, above the scrolling content, while non-null.
+  final ValueNotifier<VoidCallback?> flagAction;
+
   const PracticeActivityCard({
     super.key,
     required this.targetTokensAndActivityType,
     required this.controller,
     required this.selectedToken,
     required this.maxWidth,
+    required this.flagAction,
   });
 
   @override
@@ -46,6 +54,7 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
   @override
   void initState() {
     super.initState();
+    _activityState.addListener(_publishFlagAction);
     WidgetsBinding.instance.addPostFrameCallback((_) => _fetchActivity());
   }
 
@@ -60,9 +69,29 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
 
   @override
   void dispose() {
+    _activityState.removeListener(_publishFlagAction);
+    widget.flagAction.value = null;
     _activityState.dispose();
     _playbackSpeedController.dispose();
     super.dispose();
+  }
+
+  /// Exercises whose content comes from the lemma dictionary (emoji /
+  /// meaning) can be flagged as wrong. Listening exercises are also match
+  /// exercises, but their content is generated locally, so there is
+  /// nothing to report.
+  void _publishFlagAction() {
+    final state = _activityState.value;
+    final activity = state is AsyncLoaded<PracticeExerciseModel>
+        ? state.value
+        : null;
+    if (activity is EmojiPracticeExerciseModel ||
+        activity is LemmaMeaningPracticeExerciseModel) {
+      widget.flagAction.value = () =>
+          _onFlagExercise(activity as MatchPracticeExerciseModel);
+    } else {
+      widget.flagAction.value = null;
+    }
   }
 
   Future<void> _fetchActivity() async {
@@ -91,6 +120,38 @@ class PracticeActivityCardState extends State<PracticeActivityCard> {
         "Error fetching activity: ${result.asError}",
       );
     }
+  }
+
+  Future<void> _onFlagExercise(MatchPracticeExerciseModel activity) async {
+    final loadedTarget = widget.targetTokensAndActivityType;
+    final outcome = await showDialog<PracticeFeedbackOutcome>(
+      context: context,
+      builder: (context) => PracticeExerciseFeedbackDialog(
+        activity: activity,
+        target: loadedTarget,
+        controller: widget.controller,
+      ),
+    );
+    if (outcome == null || !mounted) return;
+
+    // Rebuild the exercise from the corrected lemma content — unless the
+    // target changed while the dialog was open, in which case the card has
+    // already refetched.
+    if (loadedTarget == widget.targetTokensAndActivityType) {
+      await _fetchActivity();
+    }
+    if (!mounted) return;
+
+    final unchanged = outcome.prior == outcome.updated;
+    await showDialog(
+      context: context,
+      builder: (context) => FeedbackResponseDialog(
+        title: L10n.of(context).practiceFeedbackDialogTitle,
+        feedback: unchanged
+            ? L10n.of(context).practiceFeedbackUnchanged
+            : L10n.of(context).practiceFeedbackUpdated,
+      ),
+    );
   }
 
   @override

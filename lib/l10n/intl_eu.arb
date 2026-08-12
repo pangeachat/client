@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-07 16:23:19.469708",
+    "@@last_modified": "2026-08-11 15:43:16.115731",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9680,8 +9680,6 @@
     "audioWordsDescription": "Sakatu hitz bat haren audioa entzuteko.",
     "audioChoicesToolName": "Aukerak",
     "audioChoicesDescription": "Praktikatzeko jardueretan erantzun-aukerei dagokien audioa erreproduzitu.",
-    "audioIncomingMessagesToolName": "Jasotako mezuak",
-    "audioIncomingMessagesDescription": "Jasotako mezuak automatikoki irakurri ozenki zure xede-hizkuntzan, entzuteko praktikatzeko.",
     "choosePangeaAvatar": "Aukeratu Pangea avatar bat",
     "readAloudNoVoiceTitle": "Ez da kalitate handiko {language} ahotsik aurkitu",
     "readAloudNoVoiceDesktopWeb": "Nabigatzaile honek ez du kalitate handiko {language} ahotsik eskaintzen, beraz, mezuak ezin dira ondo irakurri hemen. Chrome eta Edge-k kalitate handiko ahotsak izan ohi dituzte.",
@@ -9717,5 +9715,20 @@
     "courseDetails": "Ikastaroaren xehetasunak",
     "objective": "Helburua",
     "pingedLabel": "Pingatuta",
-    "mapFilterPlayerCount": "{count} jokalari"
+    "mapFilterPlayerCount": "{count} jokalari",
+    "practiceFeedbackButtonTooltip": "Ariketa honekin arazo bat dagoela jakinarazi",
+    "practiceFeedbackDialogTitle": "Ariketa-praktikaren iritzia",
+    "practiceFeedbackSelectPair": "Zein bikote dirudi okerra?",
+    "practiceFeedbackUserSetEmoji": "Emoji hau aukeratu duzu — aldatu hitz-txarteletik",
+    "practiceFeedbackAlreadyMatched": "Dagoeneko zuzen parekatuta",
+    "practiceFeedbackUpdated": "Eskerrik asko! Ariketa zure iritziaren arabera eguneratu da.",
+    "practiceFeedbackUnchanged": "Eskerrik asko! Zure txostena erregistratu da, baina edukia aldatu gabe itzuli da.",
+    "audioOnNewMessageToolName": "Mezu berri bat jasotzean",
+    "audioOnNewMessageDescription": "Jasotako mezu berriak automatikoki ozenki irakurri zure xede-hizkuntzan.",
+    "audioOnMessageClickToolName": "Mezuan klik egitean",
+    "audioOnMessageClickDescription": "Mezu bat ozenki irakurri zure xede-hizkuntzan, gainean klik egitean.",
+    "audioSettingDisabledTitle": "{toolName} audioa desgaituta",
+    "audioSettingDisabledBody": "{toolName} audioa gaitu dezakezu zure ikaskuntza-ezarpenetan",
+    "audioSettingDisabledEnable": "Gaitu",
+    "rejoinedTheActivity": "🔄 {username} jarduera honetara itzuli da"
 }

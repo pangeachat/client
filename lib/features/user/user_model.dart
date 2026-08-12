@@ -197,10 +197,9 @@ class UserSettings {
 
 /// The user's language tool settings.
 class UserToolSettings {
-  // Keys of the retired enableTTS/autoReadAloudMessages toggles, kept as
-  // read-fallbacks so stored profiles seed the per-surface audio toggles.
+  // Key of the retired enableTTS toggle, kept as a read-fallback so stored
+  // profiles seed the words/choices audio toggles.
   static const _legacyEnableTTSKey = 'ToolSetting.enableTTS';
-  static const _legacyAutoReadAloudKey = 'autoReadAloudMessages';
 
   final bool interactiveTranslator;
   final bool interactiveGrammar;
@@ -209,7 +208,8 @@ class UserToolSettings {
   final bool autoIGC;
   final bool audioWords;
   final bool audioChoices;
-  final bool audioIncomingMessages;
+  final bool audioOnNewMessage;
+  final bool audioOnMessageClick;
   final bool enableAutocorrect;
   final bool showDeveloperOptions;
 
@@ -221,7 +221,8 @@ class UserToolSettings {
     this.autoIGC = true,
     this.audioWords = true,
     this.audioChoices = true,
-    this.audioIncomingMessages = false,
+    this.audioOnNewMessage = true,
+    this.audioOnMessageClick = true,
     this.enableAutocorrect = false,
     this.showDeveloperOptions = false,
   });
@@ -237,8 +238,12 @@ class UserToolSettings {
     autoIGC: json[UserConstants.autoIGC] ?? true,
     audioWords: json["audioWords"] ?? json[_legacyEnableTTSKey] ?? true,
     audioChoices: json["audioChoices"] ?? json[_legacyEnableTTSKey] ?? true,
-    audioIncomingMessages:
-        json["audioIncomingMessages"] ?? json[_legacyAutoReadAloudKey] ?? false,
+    // Deliberately not seeded from the retired audioIncomingMessages key: it
+    // was opt-in default-off, so a stored false is almost always the old
+    // default rather than a choice, and #8264 turns message audio on for
+    // everyone.
+    audioOnNewMessage: json["audioOnNewMessage"] ?? true,
+    audioOnMessageClick: json["audioOnMessageClick"] ?? true,
     enableAutocorrect: json["enableAutocorrect"] ?? false,
     showDeveloperOptions: json["showDeveloperOptions"] ?? false,
   );
@@ -252,7 +257,8 @@ class UserToolSettings {
     data[UserConstants.autoIGC] = autoIGC;
     data["audioWords"] = audioWords;
     data["audioChoices"] = audioChoices;
-    data["audioIncomingMessages"] = audioIncomingMessages;
+    data["audioOnNewMessage"] = audioOnNewMessage;
+    data["audioOnMessageClick"] = audioOnMessageClick;
     data["enableAutocorrect"] = enableAutocorrect;
     data["showDeveloperOptions"] = showDeveloperOptions;
     return data;
@@ -296,7 +302,8 @@ class UserToolSettings {
     bool? autoIGC,
     bool? audioWords,
     bool? audioChoices,
-    bool? audioIncomingMessages,
+    bool? audioOnNewMessage,
+    bool? audioOnMessageClick,
     bool? enableAutocorrect,
     bool? showDeveloperOptions,
   }) {
@@ -309,8 +316,8 @@ class UserToolSettings {
       autoIGC: autoIGC ?? this.autoIGC,
       audioWords: audioWords ?? this.audioWords,
       audioChoices: audioChoices ?? this.audioChoices,
-      audioIncomingMessages:
-          audioIncomingMessages ?? this.audioIncomingMessages,
+      audioOnNewMessage: audioOnNewMessage ?? this.audioOnNewMessage,
+      audioOnMessageClick: audioOnMessageClick ?? this.audioOnMessageClick,
       enableAutocorrect: enableAutocorrect ?? this.enableAutocorrect,
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
     );
@@ -328,7 +335,8 @@ class UserToolSettings {
         other.autoIGC == autoIGC &&
         other.audioWords == audioWords &&
         other.audioChoices == audioChoices &&
-        other.audioIncomingMessages == audioIncomingMessages &&
+        other.audioOnNewMessage == audioOnNewMessage &&
+        other.audioOnMessageClick == audioOnMessageClick &&
         other.enableAutocorrect == enableAutocorrect &&
         other.showDeveloperOptions == showDeveloperOptions;
   }
@@ -342,7 +350,8 @@ class UserToolSettings {
     autoIGC.hashCode,
     audioWords.hashCode,
     audioChoices.hashCode,
-    audioIncomingMessages.hashCode,
+    audioOnNewMessage.hashCode,
+    audioOnMessageClick.hashCode,
     enableAutocorrect.hashCode,
     showDeveloperOptions.hashCode,
   ]);

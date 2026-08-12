@@ -169,7 +169,7 @@ class AnalyticsPracticeDataService {
       ownMessage: event.senderId == client.userID,
     );
 
-    final tokens = pangeaEvent.originalSent?.tokens;
+    final tokens = pangeaEvent.correctedSent?.tokens;
     if (tokens == null || tokens.length > 25) {
       throw Exception("Too many tokens in _prefetchAudioInfo");
     }

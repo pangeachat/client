@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-07 16:23:26.962117",
+    "@@last_modified": "2026-08-11 15:43:22.762622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "جب آپ کسی لفظ پر ٹیپ کریں تو اس کی آڈیو چلائیں۔",
     "audioChoicesToolName": "انتخابات",
     "audioChoicesDescription": "مشق کی سرگرمیوں میں جواب کے انتخاب کے لیے آڈیو چلائیں۔",
-    "audioIncomingMessagesToolName": "آنے والے پیغامات",
-    "audioIncomingMessagesDescription": "سننے کی مشق کے لیے اپنی ہدف کی زبان میں موصول ہونے والے پیغامات کو خود بخود بلند آواز میں پڑھیں۔",
     "choosePangeaAvatar": "پینجیا اوتار منتخب کریں",
     "readAloudNoVoiceTitle": "اعلیٰ معیار کی {language} آواز نہیں ملی",
     "readAloudNoVoiceDesktopWeb": "یہ براؤزر اعلیٰ معیار کی {language} آواز پیش نہیں کرتا، لہذا یہاں پیغامات کو اچھی طرح سے پڑھا نہیں جا سکتا۔ کروم اور ایج میں عام طور پر اعلیٰ معیار کی آوازیں شامل ہوتی ہیں۔",
@@ -2105,5 +2103,20 @@
     "courseDetails": "کورس کی تفصیلات",
     "objective": "مقصد",
     "pingedLabel": "پنگ کیا گیا",
-    "mapFilterPlayerCount": "{count} کھلاڑی"
+    "mapFilterPlayerCount": "{count} کھلاڑی",
+    "practiceFeedbackButtonTooltip": "اس مشق کے ساتھ ایک مسئلہ کی اطلاع دیں",
+    "practiceFeedbackDialogTitle": "مشق کی رائے",
+    "practiceFeedbackSelectPair": "کون سا جوڑا غلط لگتا ہے؟",
+    "practiceFeedbackUserSetEmoji": "آپ نے یہ ایموجی منتخب کیا ہے — اسے ورڈ کارڈ سے تبدیل کریں",
+    "practiceFeedbackAlreadyMatched": "پہلے ہی صحیح طریقے سے مماثل ہے",
+    "practiceFeedbackUpdated": "شکریہ! آپ کی رائے کی بنیاد پر مشق کو اپ ڈیٹ کر دیا گیا ہے۔",
+    "practiceFeedbackUnchanged": "شکریہ! آپ کی رپورٹ ریکارڈ کر لی گئی ہے، لیکن مواد میں کوئی تبدیلی نہیں کی گئی۔",
+    "audioOnNewMessageToolName": "نئے پیغام پر",
+    "audioOnNewMessageDescription": "آپ کی ہدف زبان میں موصول ہونے والے نئے پیغامات کو خود بخود بلند آواز میں پڑھیں۔",
+    "audioOnMessageClickToolName": "پیغام پر کلک کرنے پر",
+    "audioOnMessageClickDescription": "جب آپ کسی پیغام پر کلک کریں تو اسے اپنی ہدف زبان میں بلند آواز میں پڑھیں۔",
+    "audioSettingDisabledTitle": "{toolName} آڈیو غیر فعال ہے",
+    "audioSettingDisabledBody": "آپ اپنی سیکھنے کی ترتیبات میں {toolName} آڈیو کو فعال کر سکتے ہیں",
+    "audioSettingDisabledEnable": "فعال کریں",
+    "rejoinedTheActivity": "🔄 {username} اس سرگرمی میں دوبارہ شامل ہو گیا"
 }

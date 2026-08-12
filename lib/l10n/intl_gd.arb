@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-07 16:23:20.384874",
+    "@@last_modified": "2026-08-11 15:43:17.075509",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Cluich fuaim facail nuair a thapas tu air.",
     "audioChoicesToolName": "Roghainnean",
     "audioChoicesDescription": "Cluich fuaim airson roghainnean freagairt ann an gnìomhachdan cleachdaidh.",
-    "audioIncomingMessagesToolName": "Teachdaireachdan a tha a' tighinn a-steach",
-    "audioIncomingMessagesDescription": "Leugh teachdaireachdan a fhuaireadh gu fèin-obrachail a-mach anns an targaid-chànain agad airson cleachdadh èisteachd.",
     "choosePangeaAvatar": "Tagh avatar Pangea",
     "readAloudNoVoiceTitle": "Cha deach guth {language} de chàileachd àrd a lorg",
     "readAloudNoVoiceDesktopWeb": "Chan eil an brabhsair seo a’ tabhann guth {language} de chàileachd àrd, is mar sin chan urrainnear teachdaireachdan a leughadh a-mach gu math an seo. Mar as trice bidh Chrome is Edge a’ toirt a-steach guthan de chàileachd àrd.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Mion-fhiosrachadh cùrsa",
     "objective": "Amas",
     "pingedLabel": "Air a phingadh",
-    "mapFilterPlayerCount": "{count} cluicheadairean"
+    "mapFilterPlayerCount": "{count} cluicheadairean",
+    "practiceFeedbackButtonTooltip": "Thoir cunntas air duilgheadas leis an eacarsaich seo",
+    "practiceFeedbackDialogTitle": "Aiseag air Eacarsaich Cleachdaidh",
+    "practiceFeedbackSelectPair": "Dè am paidhir a tha a’ coimhead ceàrr?",
+    "practiceFeedbackUserSetEmoji": "Thagh thu an emoji seo – atharraich e bhon chairt-fhacail",
+    "practiceFeedbackAlreadyMatched": "Air a mhaidseadh gu ceart mu thràth",
+    "practiceFeedbackUpdated": "Tapadh leat! Chaidh an eacarsaich ùrachadh stèidhichte air an aiseag agad.",
+    "practiceFeedbackUnchanged": "Tapadh leat! Chaidh an aithisg agad a chlàradh, ach cha tàinig atharrachadh sam bith air an t-susbaint.",
+    "audioOnNewMessageToolName": "Air teachdaireachd ùr",
+    "audioOnNewMessageDescription": "Leugh teachdaireachdan ùra a gheibhear a-mach gu fèin-obrachail anns a’ chànan targaid agad.",
+    "audioOnMessageClickToolName": "Air cliog teachdaireachd",
+    "audioOnMessageClickDescription": "Leugh teachdaireachd a-mach anns a’ chànan targaid agad nuair a bhriogas tu oirre.",
+    "audioSettingDisabledTitle": "Fuaim {toolName} à comas",
+    "audioSettingDisabledBody": "Faidhidh tu fuaim {toolName} a chomasachadh ann an roghainnean an ionnsachaidh agad",
+    "audioSettingDisabledEnable": "Comasaich",
+    "rejoinedTheActivity": "🔄 Thill {username} don ghnìomhachd seo"
 }

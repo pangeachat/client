@@ -225,10 +225,17 @@ class SettingsView extends StatelessWidget {
                               ),
                               onTap: () async {
                                 if (snapshot.data == null) return;
+                                // The commit SHA is what makes a pasted bug
+                                // report reproducible — build numbers are
+                                // per-platform counters and do not identify
+                                // code — so it rides along in the copy.
                                 await Clipboard.setData(
                                   ClipboardData(
-                                    text:
-                                        "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
+                                    text: [
+                                      "${snapshot.data!.version}+${snapshot.data!.buildNumber}",
+                                      if (Environment.buildCommitSha.isNotEmpty)
+                                        Environment.buildCommitSha,
+                                    ].join(" "),
                                   ),
                                 );
                                 ScaffoldMessenger.of(
@@ -249,6 +256,12 @@ class SettingsView extends StatelessWidget {
                                       )
                                     : L10n.of(context).versionNotFound,
                               ),
+                              // A commit SHA is an identifier, not copy, so it
+                              // is shown raw rather than through a translated
+                              // label. Absent on local builds.
+                              subtitle: Environment.buildCommitSha.isEmpty
+                                  ? null
+                                  : Text(Environment.buildCommitSha),
                             );
                           } else if (snapshot.hasError) {
                             return ListTile(

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-07 16:23:26.645437",
+    "@@last_modified": "2026-08-11 15:43:22.612502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Ҳангоми пахш кардани калима аудиои онро навозед.",
     "audioChoicesToolName": "Интихобҳо",
     "audioChoicesDescription": "Аудиоро барои интихоби ҷавобҳо дар машқҳо навозед.",
-    "audioIncomingMessagesToolName": "Паёмҳои воридотӣ",
-    "audioIncomingMessagesDescription": "Барои машқи гӯш кардан паёмҳои қабулшударо ба таври худкор бо забони мақсадноки худ баланд хонед.",
     "choosePangeaAvatar": "Аватар Pangea-ро интихоб кунед",
     "readAloudNoVoiceTitle": "Овози баландсифати {language} ёфт нашуд",
     "readAloudNoVoiceDesktopWeb": "Ин браузер овози баландсифати {language}-ро пешниҳод намекунад, аз ин рӯ паёмҳоро дар ин ҷо хуб хондан мумкин нест. Chrome ва Edge одатан овозҳои баландсифатро дар бар мегиранд.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Тафсилоти курс",
     "objective": "Мақсад",
     "pingedLabel": "Пинг шуд",
-    "mapFilterPlayerCount": "{count} бозигар"
+    "mapFilterPlayerCount": "{count} бозигар",
+    "practiceFeedbackButtonTooltip": "Мушкили машқро гузориш диҳед",
+    "practiceFeedbackDialogTitle": "Фикру мулоҳиза оид ба машқ",
+    "practiceFeedbackSelectPair": "Кадом ҷуфт нодуруст ба назар мерасад?",
+    "practiceFeedbackUserSetEmoji": "Шумо ин эмодзиро интихоб кардед — онро аз корти калима иваз кунед",
+    "practiceFeedbackAlreadyMatched": "Аллакай дуруст мувофиқат карда шудааст",
+    "practiceFeedbackUpdated": "Ташаккур! Машқ дар асоси фикру мулоҳизаи шумо нав карда шуд.",
+    "practiceFeedbackUnchanged": "Ташаккур! Гузориши шумо сабт шуд, аммо мундариҷа бетағйир монд.",
+    "audioOnNewMessageToolName": "Ҳангоми паёми нав",
+    "audioOnNewMessageDescription": "Паёмҳои нави қабулшударо ба таври худкор бо забони мақсадноки шумо баланд хонед.",
+    "audioOnMessageClickToolName": "Ҳангоми клик кардани паём",
+    "audioOnMessageClickDescription": "Ҳангоми клик кардани паём онро бо забони мақсадноки худ баланд хонед.",
+    "audioSettingDisabledTitle": "Аудиои {toolName} ғайрифаъол аст",
+    "audioSettingDisabledBody": "Шумо метавонед аудиои {toolName}-ро дар танзимоти омӯзиши худ фаъол созед",
+    "audioSettingDisabledEnable": "Фаъол кардан",
+    "rejoinedTheActivity": "🔄 {username} ба ин машғулият дубора ҳамроҳ шуд"
 }

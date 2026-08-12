@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-07 16:23:18.221602",
+    "@@last_modified": "2026-08-11 15:43:14.865944",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "አንድን ቃል ሲነኩት ድምጹን ያጫውቱ።",
     "audioChoicesToolName": "ምርጫዎች",
     "audioChoicesDescription": "በልምምድ እንቅስቃሴዎች ውስጥ ለመልስ ምርጫዎች ድምጽ ያጫውቱ።",
-    "audioIncomingMessagesToolName": "ገቢ መልዕክቶች",
-    "audioIncomingMessagesDescription": "ለማዳመጥ ልምምድ የተቀበሉ መልዕክቶችን በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብለው ያንብቡ።",
     "choosePangeaAvatar": "የፓንጋያ አቫታር ይምረጡ",
     "readAloudNoVoiceTitle": "ከፍተኛ ጥራት ያለው የ{language} ድምጽ አልተገኘም",
     "readAloudNoVoiceDesktopWeb": "ይህ አሳሽ ከፍተኛ ጥራት ያለው የ{language} ድምጽ አይሰጥም፣ ስለዚህ መልዕክቶች እዚህ በደንብ ሊነበቡ አይችሉም። Chrome እና Edge ብዙውን ጊዜ ከፍተኛ ጥራት ያላቸውን ድምፆች ያካትታሉ።",
@@ -2105,5 +2103,20 @@
     "courseDetails": "የኮርስ ዝርዝሮች",
     "objective": "ዓላማ",
     "pingedLabel": "ፒንግ ተደርጓል",
-    "mapFilterPlayerCount": "{count} ተጫዋቾች"
+    "mapFilterPlayerCount": "{count} ተጫዋቾች",
+    "practiceFeedbackButtonTooltip": "በዚህ ልምምድ ላይ ችግር ሪፖርት ያድርጉ",
+    "practiceFeedbackDialogTitle": "የልምምድ መልመጃ ግብረመልስ",
+    "practiceFeedbackSelectPair": "የትኛው ጥንድ ስህተት ይመስላል?",
+    "practiceFeedbackUserSetEmoji": "ይህን ኢሞጂ መርጠዋል — ከቃሉ ካርድ ይቀይሩት",
+    "practiceFeedbackAlreadyMatched": "አስቀድሞ በትክክል ተዛምዷል",
+    "practiceFeedbackUpdated": "እናመሰግናለን! መልመጃው በእርስዎ ግብረመልስ መሰረት ተዘምኗል።",
+    "practiceFeedbackUnchanged": "እናመሰግናለን! ሪፖርትዎ ተመዝግቧል፣ ነገር ግን ይዘቱ ሳይለወጥ ተመልሷል።",
+    "audioOnNewMessageToolName": "አዲስ መልዕክት ሲመጣ",
+    "audioOnNewMessageDescription": "አዲስ የተቀበሉትን መልዕክት በዒላማ ቋንቋዎ በራስ-ሰር ጮክ ብሎ ያንብቡ።",
+    "audioOnMessageClickToolName": "መልዕክት ሲጫኑ",
+    "audioOnMessageClickDescription": "መልዕክትን ሲጫኑ በዒላማ ቋንቋዎ ጮክ ብሎ ያንብቡ።",
+    "audioSettingDisabledTitle": "{toolName} ድምጽ ተሰናክሏል",
+    "audioSettingDisabledBody": "በመማሪያ ቅንብሮችዎ ውስጥ የ{toolName} ድምጽን ማንቃት ይችላሉ።",
+    "audioSettingDisabledEnable": "አንቃ",
+    "rejoinedTheActivity": "🔄 {username} ወደዚህ እንቅስቃሴ ተመልሷል"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-07 16:23:25.909060",
+    "@@last_modified": "2026-08-11 15:43:21.731188",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Faʻalogologo i le leo o se upu pe a e tago i ai.",
     "audioChoicesToolName": "Filifiliga",
     "audioChoicesDescription": "Faʻalogologo i le leo mo filifiliga tali i galuega faʻataʻitaʻi.",
-    "audioIncomingMessagesToolName": "Feʻau o loʻo oʻo mai",
-    "audioIncomingMessagesDescription": "Faitau otometi feʻau na maua i lau gagana e aʻoaʻoina mo le faʻataʻitaʻiga faʻalogologo.",
     "choosePangeaAvatar": "Filifili se ata Pangea",
     "readAloudNoVoiceTitle": "E le'i maua se leo maualuga {language}",
     "readAloudNoVoiceDesktopWeb": "E le ofoina mai e lenei su'esu'ega se leo maualuga {language}, o lea e le mafai ai ona faitau lelei fe'au iinei. E masani ona aofia ai e le Chrome ma le Edge leo maualuga.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Fa'amatalaga o le kosi",
     "objective": "Fa'amoemoe",
     "pingedLabel": "Fa'ailoaina",
-    "mapFilterPlayerCount": "{count} tagata ta'aalo"
+    "mapFilterPlayerCount": "{count} tagata ta'aalo",
+    "practiceFeedbackButtonTooltip": "Lipoti se fa'afitauli i lenei fa'amalositino",
+    "practiceFeedbackDialogTitle": "Fa'amatalaga Fa'amalositino",
+    "practiceFeedbackSelectPair": "O le fea paga e foliga sese?",
+    "practiceFeedbackUserSetEmoji": "Na e filifilia lenei emoji — sui mai le kata upu",
+    "practiceFeedbackAlreadyMatched": "Ua uma ona fetaui lelei",
+    "practiceFeedbackUpdated": "Fa'afetai! Ua fa'afouina le fa'amalositino e fa'atatau i lau fa'amatalaga.",
+    "practiceFeedbackUnchanged": "Fa'afetai! Na fa'amauina lau lipoti, ae e le'i suia le anotusi.",
+    "audioOnNewMessageToolName": "I le feʻau fou",
+    "audioOnNewMessageDescription": "Faitau otometi feʻau fou ua maua i lau gagana o loʻo e aʻoaʻoina.",
+    "audioOnMessageClickToolName": "I le kilikiina o le feʻau",
+    "audioOnMessageClickDescription": "Faitau se feʻau i lau gagana o loʻo e aʻoaʻoina pe a e kiliki i ai.",
+    "audioSettingDisabledTitle": "Leo {toolName} ua lē mafai",
+    "audioSettingDisabledBody": "E mafai ona e faʻagaoioia le leo {toolName} i au faʻatulagaga aʻoaʻoga",
+    "audioSettingDisabledEnable": "Faʻagaoioia",
+    "rejoinedTheActivity": "🔄 Na toe auai {username} i lenei gaioiga"
 }

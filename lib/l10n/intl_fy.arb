@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-07 16:23:19.705853",
+    "@@last_modified": "2026-08-11 15:43:16.538585",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Spielje de audio fan in wurd ôf as jo derop tikje.",
     "audioChoicesToolName": "Keuzes",
     "audioChoicesDescription": "Spielje audio ôf foar antwurdopsjes yn oefenaktiviteiten.",
-    "audioIncomingMessagesToolName": "Ynkommende berjochten",
-    "audioIncomingMessagesDescription": "Lês ûntfongen berjochten automatysk lûdop foar yn jo doeltaal foar harkûefening.",
     "choosePangeaAvatar": "Kies in Pangea-avatar",
     "readAloudNoVoiceTitle": "Gjin {language} stim fan hege kwaliteit fûn",
     "readAloudNoVoiceDesktopWeb": "Dizze browser biedt gjin {language} stim fan hege kwaliteit, dus berjochten kinne hjir net goed foarlêzen wurde. Chrome en Edge befetsje meastentiids stimmen fan hege kwaliteit.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Kursusdetails",
     "objective": "Doel",
     "pingedLabel": "Pingd",
-    "mapFilterPlayerCount": "{count} spilers"
+    "mapFilterPlayerCount": "{count} spilers",
+    "practiceFeedbackButtonTooltip": "Meld in probleem mei dizze oefening",
+    "practiceFeedbackDialogTitle": "Feedback oer oefening",
+    "practiceFeedbackSelectPair": "Hokker pear liket ferkeard?",
+    "practiceFeedbackUserSetEmoji": "Jo hawwe dizze emoji keazen — feroarje it fan de wurdkaart",
+    "practiceFeedbackAlreadyMatched": "Al korrekt oerienkomme",
+    "practiceFeedbackUpdated": "Tank! De oefening is bywurke op basis fan jo feedback.",
+    "practiceFeedbackUnchanged": "Tank! Jo melding is opnommen, mar de ynhâld is net feroare.",
+    "audioOnNewMessageToolName": "By nij berjocht",
+    "audioOnNewMessageDescription": "Lês nije ûntfongen berjochten automatysk foar yn jo doeltaal.",
+    "audioOnMessageClickToolName": "By berjochtklik",
+    "audioOnMessageClickDescription": "Lês in berjocht foar yn jo doeltaal as jo derop klikke.",
+    "audioSettingDisabledTitle": "{toolName} audio útskeakele",
+    "audioSettingDisabledBody": "Jo kinne {toolName} audio ynskeakelje yn jo learynstellings",
+    "audioSettingDisabledEnable": "Ynskeakelje",
+    "rejoinedTheActivity": "🔄 {username} docht wer mei oan dizze aktiviteit"
 }

@@ -202,6 +202,42 @@ void main() {
       expect(find.text(chipText), findsNothing);
       await controller.close();
     });
+
+    testWidgets('the chip stays on-screen on a narrow phone (#8257)', (
+      tester,
+    ) async {
+      // The bug: the badge overhangs the pill's left end near the screen's
+      // edge, so a chip hanging off its LEADING edge was mostly cut off. The
+      // bar passes `chipBelow`, which drops it under the badge instead.
+      tester.view.physicalSize = const Size(375, 812);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+
+      final controller = StreamController<LevelUpdate>.broadcast();
+      final viewModel = MockUserClusterViewModel(
+        levelUpdates: controller.stream,
+      );
+      await pumpBar(tester, viewModel: viewModel);
+      final chipText = l10nOf(tester).levelUpChip(2);
+
+      controller.add(const LevelUpdate(prevLevel: 1, newLevel: 2));
+      await tester.pump();
+      await tester.pump();
+
+      final badge = tester.getRect(find.byType(HexLevelBadge));
+      final chip = tester.getRect(find.text(chipText));
+      expect(chip.top, greaterThanOrEqualTo(badge.bottom));
+      expect(chip.left, greaterThanOrEqualTo(0.0));
+      expect(chip.right, lessThanOrEqualTo(375.0));
+
+      await tester.pump(LevelUpBadgeCelebration.defaultPulseDuration);
+      await tester.pump(
+        LevelUpBadgeCelebration.defaultChipDuration +
+            const Duration(milliseconds: 300),
+      );
+      await tester.pumpAndSettle();
+      await controller.close();
+    });
   });
 
   /// The open-panel highlight: the bar is the single-column rendering of the

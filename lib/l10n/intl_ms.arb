@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-07 16:23:23.873334",
+    "@@last_modified": "2026-08-11 15:43:19.779162",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Mainkan audio perkataan apabila anda mengetiknya.",
     "audioChoicesToolName": "Pilihan",
     "audioChoicesDescription": "Mainkan audio untuk pilihan jawapan dalam aktiviti latihan.",
-    "audioIncomingMessagesToolName": "Mesej masuk",
-    "audioIncomingMessagesDescription": "Baca mesej yang diterima secara automatik dengan kuat dalam bahasa sasaran anda untuk latihan mendengar.",
     "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Tiada suara {language} berkualiti tinggi ditemui",
     "readAloudNoVoiceDesktopWeb": "Penyemak imbas ini tidak menawarkan suara {language} berkualiti tinggi, jadi mesej tidak dapat dibacakan dengan baik di sini. Chrome dan Edge biasanya menyertakan suara berkualiti tinggi.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Butiran kursus",
     "objective": "Objektif",
     "pingedLabel": "Diping",
-    "mapFilterPlayerCount": "{count} pemain"
+    "mapFilterPlayerCount": "{count} pemain",
+    "practiceFeedbackButtonTooltip": "Laporkan masalah dengan latihan ini",
+    "practiceFeedbackDialogTitle": "Maklum Balas Latihan Amali",
+    "practiceFeedbackSelectPair": "Pasangan yang manakah kelihatan salah?",
+    "practiceFeedbackUserSetEmoji": "Anda memilih emoji ini — ubahnya daripada kad perkataan",
+    "practiceFeedbackAlreadyMatched": "Sudah dipadankan dengan betul",
+    "practiceFeedbackUpdated": "Terima kasih! Latihan telah dikemas kini berdasarkan maklum balas anda.",
+    "practiceFeedbackUnchanged": "Terima kasih! Laporan anda telah direkodkan, tetapi kandungan tidak berubah.",
+    "audioOnNewMessageToolName": "Pada mesej baharu",
+    "audioOnNewMessageDescription": "Baca mesej baharu yang diterima secara automatik dalam bahasa sasaran anda.",
+    "audioOnMessageClickToolName": "Pada klik mesej",
+    "audioOnMessageClickDescription": "Baca mesej dengan kuat dalam bahasa sasaran anda apabila anda mengkliknya.",
+    "audioSettingDisabledTitle": "Audio {toolName} dilumpuhkan",
+    "audioSettingDisabledBody": "Anda boleh mendayakan audio {toolName} dalam tetapan pembelajaran anda",
+    "audioSettingDisabledEnable": "Dayakan",
+    "rejoinedTheActivity": "🔄 {username} menyertai semula aktiviti ini"
 }

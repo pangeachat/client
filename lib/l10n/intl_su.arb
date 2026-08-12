@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-07 16:23:26.234355",
+    "@@last_modified": "2026-08-11 15:43:22.311053",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Putar audio kecap nalika anjeun ngetok éta.",
     "audioChoicesToolName": "Pilihan",
     "audioChoicesDescription": "Putar audio pikeun pilihan jawaban dina kagiatan latihan.",
-    "audioIncomingMessagesToolName": "Pesen asup",
-    "audioIncomingMessagesDescription": "Otomatis maca pesen anu ditampi kalayan tarik dina basa target anjeun pikeun latihan ngupingkeun.",
     "choosePangeaAvatar": "Pilih avatar Pangea",
     "readAloudNoVoiceTitle": "Teu kapanggih sora {language} nu kualitasna luhur",
     "readAloudNoVoiceDesktopWeb": "Panyungsi ieu teu nyadiakeun sora {language} nu kualitasna luhur, jadi pesen moal bisa dibacakeun kalawan hadé di dieu. Chrome jeung Edge biasana nyadiakeun sora nu kualitasna luhur.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Rincian kursus",
     "objective": "Tujuan",
     "pingedLabel": "Dipung",
-    "mapFilterPlayerCount": "{count} pamaén"
+    "mapFilterPlayerCount": "{count} pamaén",
+    "practiceFeedbackButtonTooltip": "Laporkeun masalah sareng latihan ieu",
+    "practiceFeedbackDialogTitle": "Eupan Balik Latihan Prakték",
+    "practiceFeedbackSelectPair": "Pasangan mana anu katingalina salah?",
+    "practiceFeedbackUserSetEmoji": "Anjeun milih emoji ieu — gentos tina kartu kecap",
+    "practiceFeedbackAlreadyMatched": "Geus cocog kalawan bener",
+    "practiceFeedbackUpdated": "Hatur nuhun! Latihan parantos diropéa dumasar kana eupan balik anjeun.",
+    "practiceFeedbackUnchanged": "Hatur nuhun! Laporan anjeun parantos kacatet, tapi eusina teu robih.",
+    "audioOnNewMessageToolName": "Dina talatah anyar",
+    "audioOnNewMessageDescription": "Otomatis maca talatah anyar nu ditarima kalawan tarik dina basa target anjeun.",
+    "audioOnMessageClickToolName": "Dina klik talatah",
+    "audioOnMessageClickDescription": "Maca talatah kalawan tarik dina basa target anjeun nalika anjeun ngaklik éta.",
+    "audioSettingDisabledTitle": "{toolName} audio dipareuman",
+    "audioSettingDisabledBody": "Anjeun tiasa ngaktipkeun audio {toolName} dina setelan diajar anjeun",
+    "audioSettingDisabledEnable": "Aktifkeun",
+    "rejoinedTheActivity": "🔄 {username} ngagabung deui kana kagiatan ieu"
 }

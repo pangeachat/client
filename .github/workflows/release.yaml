@@ -73,9 +73,22 @@ jobs:
         # production share one sequence instead of each workflow's own run_number
         # (those had drifted to 3890 vs 104). Build-time only — nothing is
         # committed back, and the release tag still reads pubspec's `+N`.
-        # Resets monthly, so it identifies a build, never orders one.
-        # See ci.instructions.md.
-        run: ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --release --source-maps --build-number=$(date -u +%d%H%M)
+        # Resets monthly, so it identifies a build, never orders one — the
+        # BUILD_COMMIT_SHA dart-define is what says which code is running, and
+        # Settings shows it next to the version. Same define in main_deploy.yaml
+        # and both mobile workflows. See ci.instructions.md.
+        run: ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --release --source-maps --build-number=$(date -u +%d%H%M) --dart-define=BUILD_COMMIT_SHA=${GITHUB_SHA::8}
+      - name: Inject build version into index.html
+        # Fills the __BUILD_VERSION__ placeholder index.html ships with. That
+        # token is the Sentry release for the service-worker killswitch and the
+        # `?v=` cache-buster index.html appends to the four asset manifests, so
+        # leaving it unsubstituted pins every deploy to one release and one
+        # cache key, and browsers keep serving stale manifests. Must run before
+        # any step that copies build/web. Identical step in main_deploy.yaml;
+        # this workflow went without it until #8245.
+        run: |
+          VERSION=${GITHUB_SHA::8}
+          sed -i "s|__BUILD_VERSION__|$VERSION|g" build/web/index.html
       # The web app fetches /.env from the web root at runtime; it is not a
       # bundled asset, so the build output needs an explicit copy.
       - name: Add env to web root
@@ -132,6 +145,12 @@ jobs:
         # that owns the environment.
         run: |
           echo "$WEB_APP_ENV" > build/web/.env
+          # Production streaming-STT client gate (Environment.liveStreamingSttEnabled),
+          # enabled the same way staging does in main_deploy.yaml. The choreo backend
+          # gates the actual behavior: while prod streaming is still dark, the session
+          # fails pre-`ready` and the recorder falls back to batch (today's behavior),
+          # so this is safe to ship ahead of the backend flip.
+          echo "LIVE_STREAMING_STT_ENABLED=true" >> build/web/.env
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@e3dd6a429d7300a6a4c196c26e071d42e0343502 # v4
         with:

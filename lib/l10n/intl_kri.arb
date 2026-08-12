@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-07 16:23:22.495512",
+    "@@last_modified": "2026-08-11 15:43:18.914454",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2068,8 +2068,6 @@
     "audioWordsDescription": "Ple di wɔd in sound we yu tap pan am.",
     "audioChoicesToolName": "Chɔys dɛn",
     "audioChoicesDescription": "Ple di sound fɔ di ansa chɔys dɛn insay di praktis gem dɛn.",
-    "audioIncomingMessagesToolName": "Mɛsej dɛn we de kam",
-    "audioIncomingMessagesDescription": "Rɛd di mɛsej dɛn we yu gɛt ɔtomatikal wan insay di langwej we yu de lan fɔ praktis lisin.",
     "choosePangeaAvatar": "Pik wan Pangea avata",
     "readAloudNoVoiceTitle": "No gɛt kwaliti {language} vɔys",
     "readAloudNoVoiceDesktopWeb": "Dis brauza nɔ gɛt kwaliti {language} vɔys, so dɛn nɔ go ebul rid mɛsej dɛn gud wan. Chrome ɛn Edge kin gɛt kwaliti vɔys dɛn.",
@@ -2105,5 +2103,20 @@
     "courseDetails": "Di kos im detel dɛn",
     "objective": "Wetín yu want foh du",
     "pingedLabel": "Kɔl yu",
-    "mapFilterPlayerCount": "{count} pleya dɛn"
+    "mapFilterPlayerCount": "{count} pleya dɛn",
+    "practiceFeedbackButtonTooltip": "Ripɔt prɔblɛm wit dis ɛksasayz",
+    "practiceFeedbackDialogTitle": "Pratkis Ɛksasayz Fidbak",
+    "practiceFeedbackSelectPair": "Us peya luk rɔng?",
+    "practiceFeedbackUserSetEmoji": "Yu pik dis ɛmoji — chenj am frɔm di wɔd kad",
+    "practiceFeedbackAlreadyMatched": "Dɔn mach kɔrɛkt wan",
+    "practiceFeedbackUpdated": "Tɛnki! Di ɛksasayz dɔn chenj bay wetin yu se.",
+    "practiceFeedbackUnchanged": "Tɛnki! Wi dɔn mek not fɔ yu ripɔt, bɔt di kɔntɛnt nɔ chenj.",
+    "audioOnNewMessageToolName": "Pan nyu messej",
+    "audioOnNewMessageDescription": "Rɛd nyu messej dɛn we yu gɛt ɔtomatikkali insay yu tɛgɛt langwej.",
+    "audioOnMessageClickToolName": "Pan messej klik",
+    "audioOnMessageClickDescription": "Rɛd wan messej ɔtomatikkali insay yu tɛgɛt langwej we yu klik pan am.",
+    "audioSettingDisabledTitle": "{toolName} odyo nɔ de wok",
+    "audioSettingDisabledBody": "Yu go ebul fɔ mek {toolName} odyo wok insay yu lɔn-sɛtin dɛn",
+    "audioSettingDisabledEnable": "Mek i wok",
+    "rejoinedTheActivity": "🔄 {username} kam bak to dis aktiviti"
 }

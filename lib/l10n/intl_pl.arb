@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-07 16:23:24.681050",
+    "@@last_modified": "2026-08-11 15:43:20.587886",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9765,8 +9765,6 @@
     "audioWordsDescription": "Odtwórz dźwięk słowa po dotknięciu.",
     "audioChoicesToolName": "Wybory",
     "audioChoicesDescription": "Odtwarzaj dźwięk dla opcji odpowiedzi w ćwiczeniach praktycznych.",
-    "audioIncomingMessagesToolName": "Wiadomości przychodzące",
-    "audioIncomingMessagesDescription": "Automatycznie czytaj otrzymane wiadomości na głos w języku docelowym, aby ćwiczyć słuchanie.",
     "choosePangeaAvatar": "Wybierz awatar Pangea",
     "readAloudNoVoiceTitle": "Nie znaleziono wysokiej jakości głosu {language}",
     "readAloudNoVoiceDesktopWeb": "Ta przeglądarka nie oferuje wysokiej jakości głosu {language}, więc wiadomości nie mogą być tu dobrze odczytywane. Chrome i Edge zazwyczaj zawierają wysokiej jakości głosy.",
@@ -9802,5 +9800,20 @@
     "courseDetails": "Szczegóły kursu",
     "objective": "Cel",
     "pingedLabel": "Pingowano",
-    "mapFilterPlayerCount": "{count} graczy"
+    "mapFilterPlayerCount": "{count} graczy",
+    "practiceFeedbackButtonTooltip": "Zgłoś problem z tym ćwiczeniem",
+    "practiceFeedbackDialogTitle": "Opinia o ćwiczeniu",
+    "practiceFeedbackSelectPair": "Która para wygląda na błędną?",
+    "practiceFeedbackUserSetEmoji": "Wybrano tę emotikonę — zmień ją z karty słowa",
+    "practiceFeedbackAlreadyMatched": "Już poprawnie dopasowane",
+    "practiceFeedbackUpdated": "Dziękujemy! Ćwiczenie zostało zaktualizowane na podstawie Twojej opinii.",
+    "practiceFeedbackUnchanged": "Dziękujemy! Twoje zgłoszenie zostało zarejestrowane, ale treść pozostała niezmieniona.",
+    "audioOnNewMessageToolName": "Przy nowej wiadomości",
+    "audioOnNewMessageDescription": "Automatycznie czytaj nowe wiadomości na głos w Twoim języku docelowym.",
+    "audioOnMessageClickToolName": "Po kliknięciu wiadomości",
+    "audioOnMessageClickDescription": "Czytaj wiadomość na głos w Twoim języku docelowym po kliknięciu.",
+    "audioSettingDisabledTitle": "Dźwięk {toolName} wyłączony",
+    "audioSettingDisabledBody": "Możesz włączyć dźwięk {toolName} w ustawieniach nauki",
+    "audioSettingDisabledEnable": "Włącz",
+    "rejoinedTheActivity": "🔄 Użytkownik {username} ponownie dołączył do tej aktywności"
 }

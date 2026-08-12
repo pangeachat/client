@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-07 16:23:18.529995",
+    "@@last_modified": "2026-08-11 15:43:15.104958",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9291,8 +9291,6 @@
     "audioWordsDescription": "ཚིག་གཅིག་གི་སྒྲ་སྐད་ཉན་པར་དེའི་སྟེང་དུ་མནོན།",
     "audioChoicesToolName": "འདེམས་གཞི།",
     "audioChoicesDescription": "སྦྱོང་བརྡར་བྱེད་སྐབས་ཀྱི་ལན་འདེམས་གཞིའི་སྒྲ་སྐད་ཉོན།",
-    "audioIncomingMessagesToolName": "འབྱོར་བཞིན་པའི་འཕྲིན་ཡིག",
-    "audioIncomingMessagesDescription": "ཉན་པའི་སྦྱོང་བརྡར་ཆེད་དུ་རང་གི་དམིགས་ཡུལ་སྐད་ཡིག་ནང་དུ་འབྱོར་བཞིན་པའི་འཕྲིན་ཡིག་རྣམས་རང་འགུལ་ངང་སྐད་བསྒྱུར་བྱེད།",
     "choosePangeaAvatar": "པན་གྷི་ཡ་གི་མི་སྣ་ཞིག་འདེམས་",
     "readAloudNoVoiceTitle": "སྤུས་ཚད་མཐོ་བའི་{language}སྐད་མི་འདུག",
     "readAloudNoVoiceDesktopWeb": "བརའུ་ཟར་འདིའི་ནང་སྤུས་ཚད་མཐོ་བའི་{language}སྐད་མེད་པས། འདིར་བརྡ་ལན་རྣམས་ཡག་པོ་ཀློག་མི་ཐུབ། ཁོ་རོམ་དང་ཨེ་ཇི་ནང་སྤུས་ཚད་མཐོ་བའི་སྐད་ཡོད།",
@@ -9328,5 +9326,20 @@
     "courseDetails": "སློབ་ཚན་གྱི་ཞིབ་ཕྲ།",
     "objective": "དམིགས་ཡུལ།",
     "pingedLabel": "བརྡ་བཏང་བ།",
-    "mapFilterPlayerCount": "རྩེད་མོ་བ་ {count} ཡོད།"
+    "mapFilterPlayerCount": "རྩེད་མོ་བ་ {count} ཡོད།",
+    "practiceFeedbackButtonTooltip": "སྦྱོང་ཚན་འདིར་གནད་དོན་ཞིག་བྱུང་ན་སྙན་ཞུ་གནང་།",
+    "practiceFeedbackDialogTitle": "སྦྱོང་ཚན་ལས་འདས་པའི་ལན་འདེབས།",
+    "practiceFeedbackSelectPair": "ཟུང་གང་ཞིག་ནོར་འདུག",
+    "practiceFeedbackUserSetEmoji": "ཁྱེད་ཀྱིས་ཨི་མོ་ཇི་འདི་བདམས་འདུག ཚིག་བྱང་ནས་བསྒྱུར་བཅོས་གནང་།",
+    "practiceFeedbackAlreadyMatched": "སྔ་ས་ནས་འགྲིག་པོ་བྱུང་འདུག",
+    "practiceFeedbackUpdated": "ཐུགས་རྗེ་ཆེ། ཁྱེད་ཀྱི་ལན་འདེབས་ལ་གཞིགས་ནས་སྦྱོང་ཚན་དེ་བསྐྱར་བཅོས་བྱས་ཡོད།",
+    "practiceFeedbackUnchanged": "ཐུགས་རྗེ་ཆེ། ཁྱེད་ཀྱི་སྙན་ཞུ་དེ་ཟིན་ཐོ་བཀོད་ཡོད་ཀྱང་། ནང་དོན་ལ་འགྱུར་བ་མེད།",
+    "audioOnNewMessageToolName": "གསར་པའི་འཕྲིན་ཐུང་ཐོན་སྐབས།",
+    "audioOnNewMessageDescription": "རང་ཉིད་ཀྱི་དམིགས་ཡུལ་སྐད་ཡིག་ནང་དུ་འཕྲིན་ཐུང་གསར་པ་རྣམས་རང་འགུལ་ངང་ཀློག་པ།",
+    "audioOnMessageClickToolName": "འཕྲིན་ཐུང་གི་སྟེང་དུ་མནན་སྐབས།",
+    "audioOnMessageClickDescription": "འཕྲིན་ཐུང་གི་སྟེང་དུ་མནན་སྐབས་དམིགས་ཡུལ་སྐད་ཡིག་ནང་དུ་ཀློག་པ།",
+    "audioSettingDisabledTitle": "{toolName} སྒྲ་མེད་པ།",
+    "audioSettingDisabledBody": "ཁྱེད་ཀྱིས་སློབ་སྦྱོང་སྒྲིག་འགོད་ནང་ {toolName} སྒྲ་སྒོ་འབྱེད་ཐུབ།",
+    "audioSettingDisabledEnable": "སྒོ་འབྱེད།",
+    "rejoinedTheActivity": "🔄 {username} བྱ་འགུལ་འདིར་བསྐྱར་དུ་མཉམ་ཞུགས་བྱས་སོང་།"
 }

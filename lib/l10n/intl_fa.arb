@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-07 16:23:19.428160",
+    "@@last_modified": "2026-08-11 15:43:16.087076",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9768,8 +9768,6 @@
     "audioWordsDescription": "با ضربه زدن روی کلمه، صدای آن را پخش کنید.",
     "audioChoicesToolName": "گزینه‌ها",
     "audioChoicesDescription": "پخش صدا برای گزینه‌های پاسخ در فعالیت‌های تمرینی.",
-    "audioIncomingMessagesToolName": "پیام‌های ورودی",
-    "audioIncomingMessagesDescription": "برای تمرین شنیداری، پیام‌های دریافتی را به صورت خودکار با صدای بلند به زبان مقصد شما بخواند.",
     "choosePangeaAvatar": "یک آواتار Pangea انتخاب کنید",
     "readAloudNoVoiceTitle": "صدای با کیفیت بالا برای {language} یافت نشد",
     "readAloudNoVoiceDesktopWeb": "این مرورگر صدای با کیفیت بالا برای {language} ارائه نمی‌دهد، بنابراین پیام‌ها به خوبی در اینجا خوانده نمی‌شوند. کروم و اج معمولاً شامل صداهای با کیفیت بالا هستند.",
@@ -9805,5 +9803,20 @@
     "courseDetails": "جزئیات دوره",
     "objective": "هدف",
     "pingedLabel": "پینگ شد",
-    "mapFilterPlayerCount": "{count} بازیکن"
+    "mapFilterPlayerCount": "{count} بازیکن",
+    "practiceFeedbackButtonTooltip": "گزارش مشکل در این تمرین",
+    "practiceFeedbackDialogTitle": "بازخورد تمرین",
+    "practiceFeedbackSelectPair": "کدام جفت اشتباه به نظر می‌رسد؟",
+    "practiceFeedbackUserSetEmoji": "شما این ایموجی را انتخاب کردید — آن را از کارت کلمه تغییر دهید",
+    "practiceFeedbackAlreadyMatched": "قبلاً به درستی مطابقت داده شده است",
+    "practiceFeedbackUpdated": "متشکریم! تمرین بر اساس بازخورد شما به‌روزرسانی شد.",
+    "practiceFeedbackUnchanged": "متشکریم! گزارش شما ثبت شد، اما محتوا بدون تغییر باقی ماند.",
+    "audioOnNewMessageToolName": "در پیام جدید",
+    "audioOnNewMessageDescription": "پیام‌های جدید دریافتی را به‌طور خودکار با صدای بلند به زبان مقصد شما بخواند.",
+    "audioOnMessageClickToolName": "با کلیک روی پیام",
+    "audioOnMessageClickDescription": "با کلیک روی یک پیام، آن را با صدای بلند به زبان مقصد شما بخواند.",
+    "audioSettingDisabledTitle": "صدای {toolName} غیرفعال شد",
+    "audioSettingDisabledBody": "می‌توانید صدای {toolName} را در تنظیمات یادگیری خود فعال کنید",
+    "audioSettingDisabledEnable": "فعال کردن",
+    "rejoinedTheActivity": "🔄 {username} دوباره به این فعالیت پیوست"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-07 16:23:25.608315",
+    "@@last_modified": "2026-08-11 15:43:21.338366",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10625,8 +10625,6 @@
     "audioWordsDescription": "Prehrajte zvuk slova, keď naň ťuknete.",
     "audioChoicesToolName": "Možnosti",
     "audioChoicesDescription": "Prehrajte zvuk pre možnosti odpovedí v cvičeniach.",
-    "audioIncomingMessagesToolName": "Prichádzajúce správy",
-    "audioIncomingMessagesDescription": "Automaticky čítajte prijaté správy nahlas vo vašom cieľovom jazyku pre cvičenie počúvania.",
     "choosePangeaAvatar": "Vyberte si avatara Pangea",
     "readAloudNoVoiceTitle": "Nenašiel sa kvalitný hlas pre jazyk {language}",
     "readAloudNoVoiceDesktopWeb": "Tento prehliadač neponúka kvalitný hlas pre jazyk {language}, takže správy tu nemožno dobre nahlas prečítať. Prehliadače Chrome a Edge zvyčajne obsahujú kvalitné hlasy.",
@@ -10662,5 +10660,20 @@
     "courseDetails": "Podrobnosti kurzu",
     "objective": "Cieľ",
     "pingedLabel": "Pingnuté",
-    "mapFilterPlayerCount": "{count} hráčov"
+    "mapFilterPlayerCount": "{count} hráčov",
+    "practiceFeedbackButtonTooltip": "Nahlásiť problém s týmto cvičením",
+    "practiceFeedbackDialogTitle": "Spätná väzba k cvičeniu",
+    "practiceFeedbackSelectPair": "Ktorý pár vyzerá nesprávne?",
+    "practiceFeedbackUserSetEmoji": "Vybrali ste tento emoji – zmeňte ho z kartičky slova",
+    "practiceFeedbackAlreadyMatched": "Už správne spárované",
+    "practiceFeedbackUpdated": "Ďakujeme! Cvičenie bolo aktualizované na základe vašej spätnej väzby.",
+    "practiceFeedbackUnchanged": "Ďakujeme! Váš hlásenie bolo zaznamenané, ale obsah zostal nezmenený.",
+    "audioOnNewMessageToolName": "Pri novej správe",
+    "audioOnNewMessageDescription": "Automaticky nahlas prečítať nové prijaté správy vo vašom cieľovom jazyku.",
+    "audioOnMessageClickToolName": "Pri kliknutí na správu",
+    "audioOnMessageClickDescription": "Nahlas prečítať správu vo vašom cieľovom jazyku po kliknutí na ňu.",
+    "audioSettingDisabledTitle": "Zvuk {toolName} je vypnutý",
+    "audioSettingDisabledBody": "Zvuk {toolName} môžete zapnúť v nastaveniach učenia",
+    "audioSettingDisabledEnable": "Zapnúť",
+    "rejoinedTheActivity": "🔄 {username} sa znova pripojil k tejto aktivite"
 }

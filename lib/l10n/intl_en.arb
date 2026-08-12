@@ -3511,8 +3511,10 @@
     "audioWordsDescription": "Play a word's audio when you tap on it.",
     "audioChoicesToolName": "Choices",
     "audioChoicesDescription": "Play audio for answer choices in practice activities.",
-    "audioIncomingMessagesToolName": "Incoming messages",
-    "audioIncomingMessagesDescription": "Automatically read received messages aloud in your target language for listening practice.",
+    "audioOnNewMessageToolName": "On new message",
+    "audioOnNewMessageDescription": "Automatically read new received messages aloud in your target language.",
+    "audioOnMessageClickToolName": "On message click",
+    "audioOnMessageClickDescription": "Read a message aloud in your target language when you click on it.",
     "yourUsername": "Your username",
     "yourEmail": "Your email",
     "iWantToLearn": "I want to learn",
@@ -3592,8 +3594,25 @@
     "enableAutocorrectDescription": "If your device supports the language you're learning, you can enable device autocorrect to fix common errors as you type.",
     "autocorrectMobileOnly": "Mobile only",
     "autocorrectMobileOnlyWarning": "Device autocorrect is only available on the mobile app.",
-    "ttsDisbledTitle": "Text-to-speech disabled",
-    "ttsDisabledBody": "You can enable text-to-speech in your learning settings",
+    "audioSettingDisabledTitle": "{toolName} audio disabled",
+    "@audioSettingDisabledTitle": {
+        "type": "String",
+        "placeholders": {
+            "toolName": {
+                "type": "String"
+            }
+        }
+    },
+    "audioSettingDisabledBody": "You can enable {toolName} audio in your learning settings",
+    "@audioSettingDisabledBody": {
+        "type": "String",
+        "placeholders": {
+            "toolName": {
+                "type": "String"
+            }
+        }
+    },
+    "audioSettingDisabledEnable": "Enable",
     "noSpaceDescriptionYet": "No course description created yet.",
     "tooLargeToSend": "This message is too large to send",
     "enableAutocorrectPopupTitle": "Add your target language keyboard by going to:",
@@ -3769,6 +3788,15 @@
     "openRoleLabel": "OPEN",
     "finishedTheActivity": "🎯 {username} wrapped up this activity",
     "@finishedTheActivity": {
+        "type": "String",
+        "placeholders": {
+            "username": {
+                "type": "String"
+            }
+        }
+    },
+    "rejoinedTheActivity": "🔄 {username} rejoined this activity",
+    "@rejoinedTheActivity": {
         "type": "String",
         "placeholders": {
             "username": {
@@ -3959,6 +3987,13 @@
     "reportGrammarIssueTooltip": "Report grammar information issue",
     "grammarFeedbackDialogTitle": "Grammar Information Feedback",
     "grammarFeedbackSubmittedDesc": "Thanks! The explanation has been updated based on your feedback.",
+    "practiceFeedbackButtonTooltip": "Report a problem with this exercise",
+    "practiceFeedbackDialogTitle": "Practice Exercise Feedback",
+    "practiceFeedbackSelectPair": "Which pair looks wrong?",
+    "practiceFeedbackUserSetEmoji": "You picked this emoji — change it from the word card",
+    "practiceFeedbackAlreadyMatched": "Already matched correctly",
+    "practiceFeedbackUpdated": "Thanks! The exercise has been updated based on your feedback.",
+    "practiceFeedbackUnchanged": "Thanks! Your report was recorded, but the content came back unchanged.",
     "noPublicCoursesFound": "No public courses found. Would you like to create one?",
     "noCourseTemplatesFound": "We couldn't find any courses for your target language. You can chat with Pangea Bot in the meantime, and check back later for more courses.",
     "botActivityJoinFailMessage": "Pangea Bot is taking a while to respond. Please try again later, or invite a friend.",

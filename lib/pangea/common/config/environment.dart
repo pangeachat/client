@@ -9,6 +9,21 @@ import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 class Environment {
+  /// The 8-character git commit SHA this build was compiled from, passed in by
+  /// the build workflows as `--dart-define=BUILD_COMMIT_SHA=...`.
+  ///
+  /// This is the only part of the version display that identifies *what code*
+  /// is running. Build numbers cannot: they are per-platform monotonic counters
+  /// owned by the stores (or, on web, a clock), so they order builds without
+  /// saying what is in one. See `ci.instructions.md`.
+  ///
+  /// Compile-time, so it must be `const` — a non-const read would always be
+  /// empty. Empty on any locally-run build, which is not built from a pushed
+  /// commit; the Settings tile omits it then.
+  static const String buildCommitSha = String.fromEnvironment(
+    "BUILD_COMMIT_SHA",
+  );
+
   static bool get itIsTime =>
       DateTime.utc(2023, 1, 25).isBefore(DateTime.now());
 

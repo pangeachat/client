@@ -18,13 +18,14 @@ class ActivityRolesEvent extends StatelessWidget {
     final theme = Theme.of(context);
 
     Set<ActivityRoleModel> difference = {};
+    Set<ActivityRoleModel> previousRoles = {};
     try {
       final currentRoles = (event.content['roles'] as Map<String, dynamic>)
           .values
           .map((v) => ActivityRoleModel.fromJson(v))
           .toSet();
 
-      final previousRoles =
+      previousRoles =
           (event.prevContent?['roles'] as Map<String, dynamic>?)?.values
               .map((v) => ActivityRoleModel.fromJson(v))
               .toSet() ??
@@ -50,7 +51,17 @@ class ActivityRolesEvent extends StatelessWidget {
             role.userId.localpart ??
             role.userId;
 
-        final message = role.stateEventMessage(displayName, L10n.of(context));
+        // Same-seat, same-holder only: a vacated seat reclaimed by another
+        // user is a fresh claim, not that user rejoining.
+        final previous = previousRoles.firstWhereOrNull(
+          (r) => r.id == role.id && r.userId == role.userId,
+        );
+
+        final message = role.stateEventMessage(
+          displayName,
+          L10n.of(context),
+          previous: previous,
+        );
         if (message == null) {
           return const SizedBox();
         }
@@ -67,7 +78,7 @@ class ActivityRolesEvent extends StatelessWidget {
                   vertical: 4.0,
                 ),
                 child: Text(
-                  "${role.stateEventMessage(displayName, L10n.of(context))}",
+                  message,
                   textAlign: TextAlign.center,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,

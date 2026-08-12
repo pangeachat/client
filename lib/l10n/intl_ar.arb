@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-07 16:23:17.706305",
+    "@@last_modified": "2026-08-11 15:43:14.870150",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -9986,8 +9986,6 @@
     "audioWordsDescription": "شغّل صوت الكلمة عند النقر عليها.",
     "audioChoicesToolName": "الخيارات",
     "audioChoicesDescription": "شغّل الصوت لخيارات الإجابة في أنشطة التدريب.",
-    "audioIncomingMessagesToolName": "الرسائل الواردة",
-    "audioIncomingMessagesDescription": "اقرأ الرسائل المستلمة تلقائيًا بصوت عالٍ بلغتك المستهدفة لممارسة الاستماع.",
     "choosePangeaAvatar": "اختر صورة بانجيا الرمزية",
     "readAloudNoVoiceTitle": "لم يتم العثور على صوت عالي الجودة لـ {language}",
     "readAloudNoVoiceDesktopWeb": "لا يقدم هذا المتصفح صوتًا عالي الجودة لـ {language}، لذا لا يمكن قراءة الرسائل بصوت عالٍ بشكل جيد هنا. يتضمن Chrome و Edge عادةً أصواتًا عالية الجودة.",
@@ -10023,5 +10021,20 @@
     "courseDetails": "تفاصيل الدورة",
     "objective": "الهدف",
     "pingedLabel": "تم التنبيه",
-    "mapFilterPlayerCount": "{count} لاعبين"
+    "mapFilterPlayerCount": "{count} لاعبين",
+    "practiceFeedbackButtonTooltip": "الإبلاغ عن مشكلة في هذا التمرين",
+    "practiceFeedbackDialogTitle": "ملاحظات حول تمرين الممارسة",
+    "practiceFeedbackSelectPair": "أي زوج يبدو خاطئًا؟",
+    "practiceFeedbackUserSetEmoji": "لقد اخترت هذا الرمز التعبيري — يمكنك تغييره من بطاقة الكلمة",
+    "practiceFeedbackAlreadyMatched": "تمت المطابقة بشكل صحيح بالفعل",
+    "practiceFeedbackUpdated": "شكرًا! تم تحديث التمرين بناءً على ملاحظاتك.",
+    "practiceFeedbackUnchanged": "شكرًا! تم تسجيل تقريرك، ولكن المحتوى لم يتغير.",
+    "audioOnNewMessageToolName": "عند رسالة جديدة",
+    "audioOnNewMessageDescription": "قراءة الرسائل الجديدة المستلمة تلقائيًا بصوت عالٍ بلغتك الهدف.",
+    "audioOnMessageClickToolName": "عند النقر على الرسالة",
+    "audioOnMessageClickDescription": "قراءة الرسالة بصوت عالٍ بلغتك الهدف عند النقر عليها.",
+    "audioSettingDisabledTitle": "تم تعطيل صوت {toolName}",
+    "audioSettingDisabledBody": "يمكنك تمكين صوت {toolName} في إعدادات التعلم الخاصة بك",
+    "audioSettingDisabledEnable": "تمكين",
+    "rejoinedTheActivity": "🔄 انضم {username} مرة أخرى إلى هذا النشاط"
 }

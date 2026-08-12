@@ -104,6 +104,18 @@ class _FakeWakelock extends WakelockPlusPlatformInterface
   Future<bool> get enabled async => false;
 }
 
+/// No-op send for the NON-EMPTY-transcript tests: they settle a real transcript
+/// ('hola mundo'), so `stopStreamingToEditable` takes the editable-review path
+/// and NEVER auto-sends — this callback exists only to satisfy the signature and
+/// must not fire on those paths.
+Future<void> _noopSend(
+  String path,
+  int duration,
+  List<int> waveform,
+  String? fileName, {
+  StreamingSttSendData? streamedTranscript,
+}) async {}
+
 void main() {
   final List<String> writtenPaths = <String>[];
   Future<String> tempWriter(Uint8List wav) async {
@@ -181,7 +193,7 @@ void main() {
 
       // Stop -> the bounded drain runs, subscriptions are cancelled, the socket
       // closes, and the settled final becomes the editable buffer.
-      await tester.runAsync(() => state.stopStreamingToEditable());
+      await tester.runAsync(() => state.stopStreamingToEditable(_noopSend));
       await tester.pump();
 
       expect(state.isEditingTranscript, isTrue);
@@ -271,8 +283,8 @@ void main() {
       // `_editable == null` check across the drain await and each run a full
       // stopAndSynthesize -> two WAV writes + an overwritten (leaked) buffer.
       await tester.runAsync(() async {
-        final f1 = state.stopStreamingToEditable();
-        final f2 = state.stopStreamingToEditable();
+        final f1 = state.stopStreamingToEditable(_noopSend);
+        final f2 = state.stopStreamingToEditable(_noopSend);
         await Future.wait([f1, f2]);
       });
       await tester.pump();
@@ -344,7 +356,7 @@ void main() {
       // while it is in flight, then let the stop resume. cancel() bumps the
       // generation + nulls _streaming, so the resumed continuation must bail.
       await tester.runAsync(() async {
-        final stop = state.stopStreamingToEditable();
+        final stop = state.stopStreamingToEditable(_noopSend);
         state.cancel();
         await stop;
       });
@@ -466,7 +478,7 @@ void main() {
           speechFinal: false,
         ),
       );
-      await tester.runAsync(() => state.stopStreamingToEditable());
+      await tester.runAsync(() => state.stopStreamingToEditable(_noopSend));
       await tester.pump();
 
       StreamingSttSendData? captured;
@@ -488,6 +500,99 @@ void main() {
       // the recording-time session lang.
       expect(captured, isNotNull);
       expect(captured!.langCode, 'es');
+    },
+  );
+
+  testWidgets(
+    '#8209 empty-stream auto-send: a settled EMPTY final AUTO-SENDS via the batch '
+    'path on the single stop tap — onSend fires once and NO editable review opens',
+    (tester) async {
+      final capture = _FakeCapture();
+      final channel = _FakeWebSocketChannel();
+      final repo = SttStreamRepo(
+        wsUrl: 'wss://api.example/choreo/speech_to_text/stream',
+        accessToken: 'TOKEN',
+        connector: (uri, {protocols}) => channel,
+      );
+      final session = StreamingSttSession(
+        capture: capture,
+        repo: repo,
+        tempFileWriter: tempWriter,
+        finalizeTimeout: const Duration(milliseconds: 40),
+        frameWatchdogTimeout: const Duration(seconds: 30),
+      );
+
+      late RecordingViewModelState state;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: RecordingViewModel(
+            streamingSessionFactory: () => session,
+            builder: (context, s) {
+              state = s;
+              return const SizedBox.shrink();
+            },
+          ),
+        ),
+      );
+
+      await tester.runAsync(() => session.start());
+      state.debugAttachStreamingSession(session);
+
+      // Real audio (non-silence) so the empty-AUDIO guard passes — there IS a WAV
+      // to send; only the TRANSCRIPT is empty (the ~1/10 provider miss #8209
+      // targets).
+      final loud = Uint8List.fromList(<int>[0, 64, 0, 64, 0, 64, 0, 64]);
+      capture.pushFrame(loud);
+      capture.pushFrame(loud);
+      // Settle an EMPTY final: the provider streamed but produced no transcript.
+      session.debugApplyPartial(
+        const SttPartial(
+          transcript: '',
+          words: <SttWord>[],
+          isFinal: true,
+          speechFinal: false,
+        ),
+      );
+
+      var sends = 0;
+      Future<void> onSend(
+        String path,
+        int duration,
+        List<int> waveform,
+        String? fileName, {
+        StreamingSttSendData? streamedTranscript,
+      }) async {
+        sends++;
+      }
+
+      // A single stop tap. Pre-#8209 this parked in batch-ready (isEditing false
+      // but sends == 0) and forced a SECOND tap to send. Post-fix the empty
+      // stream auto-sends through the batch path on this one call.
+      await tester.runAsync(() async {
+        await state.stopStreamingToEditable(onSend);
+        // The batch send auto-disposes the retained WAV via cancel()'s
+        // fire-and-forget teardown (_disposeTempArtifact). Drain the real event
+        // loop until that delete lands so the shared tearDown does not race it
+        // (a harmless PathNotFound on the same path otherwise).
+        for (var i = 0; i < 200; i++) {
+          if (writtenPaths.every((p) => !File(p).existsSync())) break;
+          await Future<void>.delayed(const Duration(milliseconds: 5));
+        }
+      });
+      await tester.pump();
+
+      expect(
+        sends,
+        1,
+        reason:
+            'an empty streamed transcript must auto-send once on the single stop '
+            'tap (batch path) — not wait for a second tap',
+      );
+      expect(
+        state.isEditingTranscript,
+        isFalse,
+        reason: 'an empty transcript has nothing to review — no editable field',
+      );
     },
   );
 }
