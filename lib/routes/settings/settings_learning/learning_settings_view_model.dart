@@ -9,6 +9,7 @@ import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/language_service.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/user_model.dart';
+import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/gender_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
@@ -20,18 +21,38 @@ class LearningSettingsViewModel extends ChangeNotifier {
 
   LearningSettingsViewModel(Profile profile, {this.onUpdateProfile}) {
     _updatedProfile = profile;
+    refreshKnownGoodVoice();
   }
 
   Timer? _textDebounce;
   bool _hasResetTooltips = false;
+  bool _hasKnownGoodVoice = false;
+  bool _disposed = false;
 
   @override
   void dispose() {
     _textDebounce?.cancel();
+    _disposed = true;
     super.dispose();
   }
 
   bool get hasResetTooltips => _hasResetTooltips;
+
+  /// Re-runs the known-good-voice gate for the selected target language and
+  /// notifies if the answer changed, so the message-audio toggles show the
+  /// device's current state after the learner downloads a voice.
+  Future<bool> refreshKnownGoodVoice() async {
+    final langCode = selectedTargetLanguage?.langCode;
+    final hasVoice =
+        langCode != null && await TtsController.hasKnownGoodVoiceFor(langCode);
+    // The engine query outlives a page the learner backs out of.
+    if (_disposed) return hasVoice;
+    if (hasVoice != _hasKnownGoodVoice) {
+      _hasKnownGoodVoice = hasVoice;
+      notifyListeners();
+    }
+    return hasVoice;
+  }
 
   bool get haveSettingsChanged {
     final originalProfile = MatrixState.pangeaController.userController.profile;
@@ -113,10 +134,13 @@ class LearningSettingsViewModel extends ChangeNotifier {
         return _updatedProfile.userSettings.targetLanguage != null &&
             _selectedTargetLanguage != null &&
             toolSettings.audioChoices;
+      // Read-aloud is silent without a known-good device voice, so the toggle
+      // reads off there whatever the account setting says — otherwise a
+      // default-on toggle claims audio the device cannot produce (#8326).
       case ToolSetting.audioOnNewMessage:
-        return toolSettings.audioOnNewMessage;
+        return _hasKnownGoodVoice && toolSettings.audioOnNewMessage;
       case ToolSetting.audioOnMessageClick:
-        return toolSettings.audioOnMessageClick;
+        return _hasKnownGoodVoice && toolSettings.audioOnMessageClick;
       case ToolSetting.enableAutocorrect:
         return toolSettings.enableAutocorrect;
     }
@@ -215,6 +239,8 @@ class LearningSettingsViewModel extends ChangeNotifier {
     }
 
     _updateProfile(updated);
+    // The voice gate is per-language, so a new target language re-runs it.
+    if (targetLanguage != null) refreshKnownGoodVoice();
   }
 
   void setGender(GenderEnum? gender) {
