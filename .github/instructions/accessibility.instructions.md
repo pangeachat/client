@@ -19,6 +19,32 @@ Three independent checks; all must hold.
 - **Keyboard alone** — every action is reachable and triggerable without a mouse; focus is always visible and never trapped.
 - **Low vision** — sufficient contrast, text survives zoom/resize, nothing conveyed by color alone.
 
+## Text scaling
+
+**The device's text-size setting is the only text-size control.** The app ships no
+font-size setting of its own — a per-app slider duplicates a control the user has
+already set at the OS level.
+
+Two Flutter defaults work against this, and both are invisible at 1.0× — a surface can
+look correct in every screenshot and still ignore the setting entirely:
+
+- **`RichText` defaults to `TextScaler.noScaling`.** It reads no `MediaQuery`. Any
+  `RichText` must be passed `textScaler: MediaQuery.textScalerOf(context)`. Plain
+  `Text` and `Text.rich` resolve the scaler themselves and need nothing.
+- **`TextPainter` defaults to `TextScaler.noScaling` too.** Where text is measured and
+  rendered separately — the token underlines and highlight boxes — the painter and the
+  widget must be given the *same* scaler, or the decoration lands off its word. A width
+  cache keyed on text and font size alone is stale the moment the scale changes; the
+  scale belongs in the key.
+
+**Decoration is the exemption.** Non-text glyphs that are not read — XP particles,
+emoji bursts — stay at a fixed size, because they travel along trajectories measured in
+pixels and a scaled glyph drifts off its own path. Mark them `TextScaler.noScaling`
+explicitly and say why; an unmarked fixed size is indistinguishable from an oversight.
+
+**Fixed-size boxes around text must grow with it.** A glyph inside a hard-coded
+`SizedBox` is clipped at 2×. Scale the box from the same scaler, or let it size itself.
+
 ## Automated auditing proves only part
 
 We run axe-core (WCAG 2.1 AA) against the semantics overlay. Two decisions shape coverage:
