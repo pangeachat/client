@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -16,6 +18,24 @@ class AnalyticsPracticeUiController {
     String choiceId,
     String language,
   ) {
+    // The audio exercise asks the learner to match a sound to a written word,
+    // so its choices are the words themselves — speaking the tapped one is the
+    // feedback the exercise is about (#8310). Only words drawn from the example
+    // message have a token; distractors speak with no pos or morph.
+    if (exercise is VocabAudioPracticeExerciseModel) {
+      final token = exercise.tokens.firstWhereOrNull(
+        (t) => t.text.content.toLowerCase() == choiceId.toLowerCase(),
+      );
+      TtsController.tryToSpeak(
+        choiceId,
+        langCode: language,
+        useCase: TtsUseCase.choices,
+        pos: token?.pos,
+        morph: token?.morph.map((k, v) => MapEntry(k.name, v)),
+      );
+      return;
+    }
+
     if (exercise is! VocabMeaningPracticeExerciseModel) return;
 
     final cId = ConstructIdentifier.fromString(choiceId);
