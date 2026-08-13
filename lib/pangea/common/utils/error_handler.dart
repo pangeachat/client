@@ -23,16 +23,18 @@ class ErrorHandler {
   ErrorHandler();
 
   static Future<void> initialize() async {
-    await SentryFlutter.init((options) {
-      options.dsn = Environment.sentryDsn;
-      options.tracesSampleRate = 0.02;
-      options.debug = kDebugMode;
-      options.environment = kDebugMode
-          ? "debug"
-          : Environment.isStagingEnvironment
-          ? "staging"
-          : "productionC";
-    });
+    // Debug builds never init Sentry: local-dev errors are visible in the
+    // console already, and reporting them buries staging/production signal.
+    // Every capture below no-ops without init.
+    if (!kDebugMode) {
+      await SentryFlutter.init((options) {
+        options.dsn = Environment.sentryDsn;
+        options.tracesSampleRate = 0.02;
+        options.environment = Environment.isStagingEnvironment
+            ? "staging"
+            : "production";
+      });
+    }
 
     // Error handling
     FlutterError.onError = (FlutterErrorDetails details) async {
