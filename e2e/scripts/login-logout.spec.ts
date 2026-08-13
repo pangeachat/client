@@ -61,7 +61,7 @@ test.describe("Should be able to Login and logout", () => {
     await page.waitForTimeout(3000);
 
     // Open the settings panel (world_v2: ?right=settings) and log out.
-    await page.goto("/#/?right=settings");
+    await page.goto("/?right=settings");
     await page.getByRole("button", { name: intl.logout }).click();
     await page.getByRole("button", { name: intl.logout }).click();
     await expect(page.getByRole("button", { name: intl.loginToAccount })).toBeVisible({ timeout: 30000 });
