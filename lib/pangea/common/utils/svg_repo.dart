@@ -15,7 +15,7 @@ class _SvgCacheEntry {
   Map<String, dynamic> toJson() => {'svg': svg, 'timestamp': timestamp};
 
   factory _SvgCacheEntry.fromJson(Map<String, dynamic> json) {
-    return _SvgCacheEntry(json['svg'] as String, json['timestamp'] as int);
+    return _SvgCacheEntry(json['svg'] as String?, json['timestamp'] as int);
   }
 
   static const Duration cacheDuration = Duration(days: 1);
@@ -25,8 +25,18 @@ class _SvgCacheEntry {
   ).isBefore(DateTime.now().subtract(cacheDuration));
 }
 
+/// Fetches SVG assets and owns their failures, per the repo contract in
+/// repos-and-error-handling.instructions.md: nothing escapes to the caller as a
+/// thrown exception, and each failure is reported to Sentry exactly once.
+///
+/// Successes persist for a day; failures are remembered for the session only,
+/// so a moment offline doesn't blank an icon until tomorrow.
 class SvgRepo {
   static final GetStorage _storage = GetStorage('svg_cache');
+
+  /// In-flight and settled fetches, keyed by URL. Deduping here is what keeps
+  /// a list of ~100 flags on a dead connection to one fetch and one report per
+  /// URL instead of one per widget per rebuild (#8338).
   static final Map<String, Future<Result<String>>> _cache = {};
 
   static Future<Result<String>> get(String url) async {
@@ -42,11 +52,7 @@ class SvgRepo {
   static Future<Result<String>> _fetch(String url) async {
     try {
       final cached = await _getCached(url);
-      if (cached != null) {
-        return cached.svg != null
-            ? Result.value(cached.svg!)
-            : Result.error(Exception('Failed to load SVG at $url'));
-      }
+      if (cached?.svg != null) return Result.value(cached!.svg!);
 
       final response = await http.get(Uri.parse(url));
       if (response.statusCode != 200) {
@@ -55,7 +61,6 @@ class SvgRepo {
           data: {"url": url},
           level: SentryLevel.warning,
         );
-        await _setCached(url, null);
         return Result.error(Exception('Failed to load SVG at $url'));
       }
 
@@ -68,8 +73,13 @@ class SvgRepo {
         e: Exception('Error fetching SVG: $e'),
         data: {"url": url},
         s: stack,
+        // A transport failure — offline, dropped connection, a blocked
+        // request — is transient and the caller renders a fallback. Anything
+        // else here is a bug in how we asked for the file.
+        level: e is http.ClientException
+            ? SentryLevel.warning
+            : SentryLevel.error,
       );
-      await _setCached(url, null);
       return Result.error(Exception('Failed to load SVG at $url'));
     }
   }
@@ -81,7 +91,9 @@ class SvgRepo {
 
     try {
       final svg = _SvgCacheEntry.fromJson(entry);
-      if (svg.isExpired) {
+      // A null body is a failure written by an older build; failures are no
+      // longer persisted, so treat it as a miss and drop it.
+      if (svg.isExpired || svg.svg == null) {
         await _storage.remove(url);
         return null;
       }
@@ -92,8 +104,8 @@ class SvgRepo {
     }
   }
 
-  static Future<void> _setCached(String url, String? svg) async {
-    if (svg != null && svg.length > 5200000) {
+  static Future<void> _setCached(String url, String svg) async {
+    if (svg.length > 5200000) {
       Logs().w('SVG content is very large, skipping cache for $url');
       return;
     }
