@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
@@ -7,8 +5,8 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
-import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_response_model.dart';
@@ -53,6 +51,11 @@ class ActivityUserSummaries extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(16.0),
             margin: const EdgeInsets.all(16.0),
+            // The block keeps the width the goal header and plan page use, so
+            // a long feedback grows downward instead of running edge to edge.
+            constraints: const BoxConstraints(
+              maxWidth: FluffyThemes.columnWidth * 1.5,
+            ),
             decoration: BoxDecoration(
               color: Theme.of(context).colorScheme.surface.withAlpha(128),
               borderRadius: BorderRadius.circular(12.0),
@@ -89,7 +92,7 @@ class ActivityUserSummaries extends StatelessWidget {
                         ),
                     ],
                   ),
-                ButtonControlledCarouselView(
+                ActivityParticipantSummaries(
                   summary: summary,
                   controller: controller,
                 ),
@@ -148,237 +151,231 @@ class _SummaryLoading extends StatelessWidget {
   }
 }
 
-class ButtonControlledCarouselView extends StatelessWidget {
+/// Whose feedback the summary shows: whoever the learner picked, else their
+/// own, else the first participant so the card is never empty (#8289).
+ParticipantSummaryModel selectedParticipantSummary({
+  required List<ParticipantSummaryModel> summaries,
+  required String? highlightedUserId,
+  required String? ownUserId,
+}) =>
+    summaries.firstWhereOrNull((p) => p.participantId == highlightedUserId) ??
+    summaries.firstWhereOrNull((p) => p.participantId == ownUserId) ??
+    summaries.first;
+
+/// The feedback body of the summary: one participant's card at a time — the
+/// viewer's own by default — with a picker for everyone else. A single card is
+/// what keeps the section free of horizontal scrolling (#8289).
+class ActivityParticipantSummaries extends StatelessWidget {
   final ActivitySummaryResponseModel summary;
   final ChatController controller;
-  const ButtonControlledCarouselView({
+
+  const ActivityParticipantSummaries({
     super.key,
     required this.summary,
     required this.controller,
   });
 
-  void _scrollToUser(ActivityRoleModel role, int index, double cardWidth) {
-    controller.activityController.highlightRole(role);
+  Room get room => controller.room;
 
-    final scrollController = controller.activityController.carouselController;
-
-    if (!scrollController.hasClients) return;
-
-    const spacing = 5.0;
-    final itemExtent = cardWidth + spacing;
-
-    final viewportWidth = scrollController.position.viewportDimension;
-
-    final itemCenter = (index * itemExtent) + (cardWidth / 2);
-
-    final targetOffset = itemCenter - (viewportWidth / 2);
-
-    final clampedOffset = targetOffset.clamp(
-      scrollController.position.minScrollExtent,
-      scrollController.position.maxScrollExtent,
-    );
-
-    scrollController.animateTo(
-      clampedOffset,
-      duration: const Duration(milliseconds: 300),
-      curve: Curves.easeOutCubic,
-    );
+  /// The summaries the room still holds a role for, in the plan's role order.
+  List<ParticipantSummaryModel> get _roleSummaries {
+    final assignedRoles = room.assignedRoles?.values ?? const [];
+    return summary.participants
+        .where(
+          (p) => assignedRoles.any((role) => role.userId == p.participantId),
+        )
+        .toList();
   }
 
   @override
   Widget build(BuildContext context) {
-    final room = controller.room;
     // Reference plan may not be hydrated yet; the surface rebuilds once it
     // lands (ActivityPlanRepo).
-    final activity = room.activityPlan;
-    if (activity == null) return const SizedBox.shrink();
-    final superlatives = room.activitySummaryByL1?.analytics
-        ?.generateSuperlatives();
-    final availableRoles = activity.roles;
-    final assignedRoles = room.assignedRoles ?? {};
-    final userSummaries = summary.participants
-        .where(
-          (p) => assignedRoles.values.any(
-            (role) => role.userId == p.participantId,
-          ),
-        )
-        .toList();
+    if (room.activityPlan == null) return const SizedBox.shrink();
 
-    if (userSummaries.isEmpty) {
-      return const SizedBox();
-    }
+    final roleSummaries = _roleSummaries;
+    if (roleSummaries.isEmpty) return const SizedBox();
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final cardWidth = userSummaries.length == 1
-            ? min(500.0, constraints.maxWidth)
-            : 335.0;
+    return ValueListenableBuilder(
+      valueListenable: controller.activityController.highlightedRole,
+      builder: (context, highlightedRole, _) {
+        final selected = selectedParticipantSummary(
+          summaries: roleSummaries,
+          highlightedUserId: highlightedRole?.userId,
+          ownUserId: room.client.userID,
+        );
         return Column(
+          spacing: 12.0,
+          mainAxisSize: MainAxisSize.min,
           children: [
-            SizedBox(
-              height: 300.0,
-              child: ListView.builder(
-                key: PageStorageKey('summaries-carousel-${room.id}'),
-                shrinkWrap: true,
-                controller: controller.activityController.carouselController,
-                scrollDirection: Axis.horizontal,
-                itemCount: userSummaries.length,
-                itemBuilder: (context, i) {
-                  final p = userSummaries[i];
-                  final user = room.getParticipants().firstWhereOrNull(
-                    (u) => u.id == p.participantId,
-                  );
-                  final userRole = assignedRoles.values.firstWhere(
-                    (role) => role.userId == p.participantId,
-                  );
-                  return Container(
-                    width: cardWidth,
-                    margin: i == userSummaries.length - 1
-                        ? null
-                        : const EdgeInsets.only(right: 5.0),
-                    padding: const EdgeInsets.all(12.0),
-                    decoration: ShapeDecoration(
-                      color: Color.alphaBlend(
-                        Theme.of(context).colorScheme.surface.withAlpha(70),
-                        AppConfig.gold,
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12),
-                      ),
+            if (roleSummaries.length > 1)
+              Wrap(
+                spacing: 8.0,
+                runSpacing: 8.0,
+                alignment: WrapAlignment.center,
+                children: [
+                  for (final participant in roleSummaries)
+                    _ParticipantPickerTile(
+                      participant: participant,
+                      controller: controller,
+                      selected:
+                          participant.participantId == selected.participantId,
                     ),
-                    child: Column(
-                      spacing: 4.0,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          spacing: 10.0,
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Avatar(
-                              name: p.participantId.localpart,
-                              mxContent: user?.avatarUrl,
-                              size: 40,
-                            ),
-                            Flexible(
-                              child: Text(
-                                "${userRole.role ?? L10n.of(context).participant} | ${user?.localizedDisplayname(L10n.of(context)) ?? p.participantId.localpart}",
-                                style: const TextStyle(fontSize: 14.0),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Flexible(
-                          child: _SummaryText(
-                            text: p.displayFeedback(
-                              user?.localizedDisplayname(L10n.of(context)) ??
-                                  p.participantId.localpart ??
-                                  p.participantId,
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Center(
-                            child: Wrap(
-                              alignment: WrapAlignment.center,
-                              spacing: 12,
-                              runSpacing: 8,
-                              children: [
-                                Text(
-                                  p.cefrLevel,
-                                  style: const TextStyle(fontSize: 14.0),
-                                ),
-                                //const SizedBox(width: 8),
-                                if (superlatives != null &&
-                                    (superlatives['vocab']!.contains(
-                                      p.participantId,
-                                    ))) ...[
-                                  const SuperlativeTile(
-                                    icon: Symbols.dictionary,
-                                  ),
-                                ],
-                                if (superlatives != null &&
-                                    (superlatives['grammar']!.contains(
-                                      p.participantId,
-                                    ))) ...[
-                                  const SuperlativeTile(
-                                    icon: Symbols.toys_and_games,
-                                  ),
-                                ],
-                                if (superlatives != null &&
-                                    (superlatives['xp']!.contains(
-                                      p.participantId,
-                                    ))) ...[
-                                  const SuperlativeTile(icon: Icons.star),
-                                ],
-                                if (p.superlatives.isNotEmpty) ...[
-                                  Text(
-                                    p.superlatives.first,
-                                    style: const TextStyle(fontSize: 14.0),
-                                  ),
-                                ],
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  );
-                },
+                ],
               ),
-            ),
-            const SizedBox(height: 12),
-            SizedBox(
-              height: 125.0,
-              child: ValueListenableBuilder(
-                valueListenable: controller.activityController.highlightedRole,
-                builder: (context, highlightedRole, _) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemCount: userSummaries.length,
-                    itemBuilder: (context, index) {
-                      final p = userSummaries[index];
-                      final user = room.getParticipants().firstWhereOrNull(
-                        (u) => u.id == p.participantId,
-                      );
-                      final userRole = assignedRoles.values.firstWhere(
-                        (role) => role.userId == p.participantId,
-                      );
-                      // The assigned role id can be missing from the resolved
-                      // plan when the pinned plan version was evicted and a
-                      // fallback version (with regenerated role ids) was
-                      // served — fall back to the role name in room state.
-                      final roleName =
-                          availableRoles[userRole.id]?.name ??
-                          userRole.role ??
-                          L10n.of(context).participant;
-                      return SizedBox(
-                        width: 100.0,
-                        height: 125.0,
-                        child: Center(
-                          child: ActivityParticipantIndicator(
-                            name: roleName,
-                            userId: p.participantId,
-                            user: user,
-                            borderRadius: BorderRadius.circular(4),
-                            selected: highlightedRole?.id == userRole.id,
-                            onTap: () =>
-                                _scrollToUser(userRole, index, cardWidth),
-                            room: controller.room,
-                          ),
-                        ),
-                      );
-                    },
-                  );
-                },
-              ),
+            _ParticipantSummaryCard(
+              participant: selected,
+              controller: controller,
             ),
           ],
         );
       },
+    );
+  }
+}
+
+/// One face in the picker row. Tapping it swaps the card below.
+class _ParticipantPickerTile extends StatelessWidget {
+  final ParticipantSummaryModel participant;
+  final ChatController controller;
+  final bool selected;
+
+  const _ParticipantPickerTile({
+    required this.participant,
+    required this.controller,
+    required this.selected,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final room = controller.room;
+    final role = room.assignedRoles?.values.firstWhereOrNull(
+      (role) => role.userId == participant.participantId,
+    );
+    if (role == null) return const SizedBox.shrink();
+
+    // The assigned role id can be missing from the resolved plan when the
+    // pinned plan version was evicted and a fallback version (with regenerated
+    // role ids) was served — fall back to the role name in room state.
+    final roleName =
+        room.activityPlan?.roles[role.id]?.name ??
+        role.role ??
+        L10n.of(context).participant;
+
+    return SizedBox(
+      width: 100.0,
+      child: ActivityParticipantIndicator(
+        name: roleName,
+        userId: participant.participantId,
+        user: room.getParticipants().firstWhereOrNull(
+          (u) => u.id == participant.participantId,
+        ),
+        borderRadius: BorderRadius.circular(4),
+        selected: selected,
+        onTap: () => controller.activityController.highlightRole(role),
+        room: room,
+      ),
+    );
+  }
+}
+
+/// One participant's feedback. The card grows to its text rather than
+/// scrolling inside a fixed height (#8289).
+class _ParticipantSummaryCard extends StatelessWidget {
+  final ParticipantSummaryModel participant;
+  final ChatController controller;
+
+  const _ParticipantSummaryCard({
+    required this.participant,
+    required this.controller,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final room = controller.room;
+    final user = room.getParticipants().firstWhereOrNull(
+      (u) => u.id == participant.participantId,
+    );
+    final role = room.assignedRoles?.values.firstWhereOrNull(
+      (role) => role.userId == participant.participantId,
+    );
+    final displayName =
+        user?.localizedDisplayname(L10n.of(context)) ??
+        participant.participantId.localpart ??
+        participant.participantId;
+    final superlatives = room.activitySummaryByL1?.analytics
+        ?.generateSuperlatives();
+
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(12.0),
+      decoration: ShapeDecoration(
+        color: Color.alphaBlend(
+          Theme.of(context).colorScheme.surface.withAlpha(70),
+          AppConfig.gold,
+        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      ),
+      child: Column(
+        spacing: 8.0,
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            spacing: 10.0,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Avatar(
+                name: participant.participantId.localpart,
+                mxContent: user?.avatarUrl,
+                size: 40,
+              ),
+              Flexible(
+                child: Text(
+                  "${role?.role ?? L10n.of(context).participant} | $displayName",
+                  style: const TextStyle(fontSize: 14.0),
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
+          Text(
+            participant.displayFeedback(displayName),
+            style: const TextStyle(fontSize: 14.0),
+          ),
+          Center(
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 12,
+              runSpacing: 8,
+              children: [
+                Text(
+                  participant.cefrLevel,
+                  style: const TextStyle(fontSize: 14.0),
+                ),
+                if (superlatives?['vocab']?.contains(
+                      participant.participantId,
+                    ) ==
+                    true)
+                  const SuperlativeTile(icon: Symbols.dictionary),
+                if (superlatives?['grammar']?.contains(
+                      participant.participantId,
+                    ) ==
+                    true)
+                  const SuperlativeTile(icon: Symbols.toys_and_games),
+                if (superlatives?['xp']?.contains(participant.participantId) ==
+                    true)
+                  const SuperlativeTile(icon: Icons.star),
+                if (participant.superlatives.isNotEmpty)
+                  Text(
+                    participant.superlatives.first,
+                    style: const TextStyle(fontSize: 14.0),
+                  ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -397,36 +394,6 @@ class SuperlativeTile extends StatelessWidget {
         const SizedBox(width: 2),
         const Text("1st", style: TextStyle(fontSize: 14.0)),
       ],
-    );
-  }
-}
-
-class _SummaryText extends StatefulWidget {
-  final String text;
-  const _SummaryText({required this.text});
-
-  @override
-  State<_SummaryText> createState() => _SummaryTextState();
-}
-
-class _SummaryTextState extends State<_SummaryText> {
-  final ScrollController _scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    _scrollController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scrollbar(
-      controller: _scrollController,
-      thumbVisibility: true,
-      child: SingleChildScrollView(
-        controller: _scrollController,
-        child: Text(widget.text, style: const TextStyle(fontSize: 14.0)),
-      ),
     );
   }
 }
