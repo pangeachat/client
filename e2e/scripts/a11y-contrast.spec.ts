@@ -22,10 +22,10 @@ import { expect, test } from "../fixtures";
 
 async function gotoSurface(
   page: import("@playwright/test").Page,
-  hash: string,
+  path: string,
   sentinel: import("@playwright/test").Locator,
 ) {
-  await page.goto(hash);
+  await page.goto(path);
   await page.mouse.move(640, 400);
   await page.mouse.wheel(0, -500);
   await expect(sentinel).toBeVisible({ timeout: 90_000 });
@@ -219,15 +219,15 @@ test.describe("Contrast triage report (non-gating)", () => {
   );
 
   test("sample contrast and emit triage candidates", async ({ page }) => {
-    const surfaces: { name: string; hash: string; sentinel: import("@playwright/test").Locator }[] = [
-      { name: "world map", hash: "/#/", sentinel: page.getByRole("textbox", { name: intl.mapSearchHint }) },
-      { name: "chat list", hash: "/#/?left=chats", sentinel: page.getByRole("button", { name: intl.chatWithSupport }).first() },
-      { name: "settings", hash: "/#/?right=settings", sentinel: page.getByRole("button", { name: intl.learningSettings }).first() },
+    const surfaces: { name: string; path: string; sentinel: import("@playwright/test").Locator }[] = [
+      { name: "world map", path: "/", sentinel: page.getByRole("textbox", { name: intl.mapSearchHint }) },
+      { name: "chat list", path: "/?left=chats", sentinel: page.getByRole("button", { name: intl.chatWithSupport }).first() },
+      { name: "settings", path: "/?right=settings", sentinel: page.getByRole("button", { name: intl.learningSettings }).first() },
     ];
 
     const candidates: (Sample & { surface: string; confidence: string })[] = [];
     for (const s of surfaces) {
-      await gotoSurface(page, s.hash, s.sentinel);
+      await gotoSurface(page, s.path, s.sentinel);
       const samples = await sampleContrast(page);
       report(s.name, samples);
       for (const sm of samples) {

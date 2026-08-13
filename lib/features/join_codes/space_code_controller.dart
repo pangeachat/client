@@ -11,9 +11,9 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
+import 'package:fluffychat/features/join_codes/joined_target.dart';
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/join_codes/too_many_requests_dialog.dart';
@@ -39,12 +39,10 @@ class SpaceCodeController {
   /// page, the public course preview): run the analytics-consent step where
   /// the room is available locally, then open the course. When sync hasn't
   /// surfaced the room yet the join is STILL done (the join API call
-  /// succeeded), so navigate to the course anyway — its panel renders a
-  /// loading state until sync catches up — instead of silently stranding the
-  /// user on the join page as a secret member of the course (#7579). The
-  /// course route is the right default for the not-yet-local case; the
-  /// consent notice, skipped here, resurfaces through the course-settings
-  /// listener.
+  /// succeeded), so resolve the landing from the room's state over HTTP
+  /// instead of silently stranding the user on the join page as a secret
+  /// member of the course (#7579); the consent notice, skipped there,
+  /// resurfaces through the course-settings listener.
   static Future<void> navigateAfterJoin(
     BuildContext context,
     Client client,
@@ -56,24 +54,26 @@ class SpaceCodeController {
   }
 
   /// The async half of the post-join hop: run the analytics-consent step where
-  /// the room is available locally, and resolve where to land — the course
-  /// plan page, also when the code's room is a child of a course (see below).
+  /// the room is available locally, and resolve where to land
+  /// ([JoinedTargetRoomExtension.joinedTarget]).
   /// Null means the learner declined consent — don't navigate. When sync
   /// hasn't surfaced the room yet the join is STILL done (the join API call
-  /// succeeded), so resolve to the course anyway — its panel renders a
-  /// loading state until sync catches up — instead of silently stranding the
-  /// user on the join page as a secret member of the course (#7579); the
-  /// consent notice, skipped there, resurfaces through the course-settings
-  /// listener.
-  static Future<({String roomId, bool isSpace, String? activityId})?>
-  resolveJoinedTarget(
+  /// succeeded, and its bounded sync-wait already ran out — see `_loadRoom`),
+  /// so resolve the landing from the room's state over HTTP instead of
+  /// silently stranding the user on the join page as a secret member of the
+  /// course (#7579); the consent notice, skipped there, resurfaces through
+  /// the course-settings listener.
+  static Future<JoinedTarget?> resolveJoinedTarget(
     BuildContext context,
     Client client,
     JoinResponse joinResp,
   ) async {
     final room = client.getRoomById(joinResp.roomId);
     if (room == null) {
-      return (roomId: joinResp.roomId, isSpace: true, activityId: null);
+      // Assuming "course" here sent an activity-session joiner to a course
+      // panel scoped to the session room's id, which can never resolve
+      // (#8047) — the membership is real, so ask the server what we joined.
+      return client.resolveUnsyncedJoinedTarget(joinResp.roomId);
     }
 
     // Recompute the notice from the room as it stands NOW: when the join-time
@@ -89,45 +89,14 @@ class SpaceCodeController {
     );
     final joinedRoomId = await handler.handle(context);
     if (joinedRoomId == null) return null;
-    if (room.isSpace) {
-      return (roomId: joinedRoomId, isSpace: true, activityId: null);
-    }
-
-    // An activity-session code is an invite INTO that session: land on the
-    // activity page with the session room bound (join/resume), never the
-    // parent course. Routing a shared-course invitee to the course hid the
-    // activity entirely, and a no-shared-course invitee dragged an
-    // unjoinable course panel open beside it (#8047).
-    final activityId = room.activityId;
-    if (room.isActivitySession && activityId != null) {
-      return (roomId: joinedRoomId, isSpace: false, activityId: activityId);
-    }
-
-    // A code can attach to a CHAT within a course (announcements,
-    // introductions). A join still lands on the course plan page, not inside
-    // that chat: resolve to the room's joined parent course when one exists.
-    // Only without any joined parent (a standalone coded chat) does the join
-    // open the room itself.
-    final parentCourse = room.spaceParents
-        .map((p) => p.roomId == null ? null : client.getRoomById(p.roomId!))
-        .whereType<Room>()
-        .firstWhereOrNull(
-          (parent) => parent.isSpace && parent.membership == Membership.join,
-        );
-    if (parentCourse != null) {
-      return (roomId: parentCourse.id, isSpace: true, activityId: null);
-    }
-    return (roomId: joinedRoomId, isSpace: false, activityId: null);
+    return room.joinedTarget;
   }
 
   /// The synchronous half of the post-join hop, split from
   /// [resolveJoinedTarget] so a caller that must rewrite its own URL first
   /// (the inbound-coded join page consuming its trigger, #7579) can do both
   /// in one tick — before the rebuild the rewrite schedules can dispose it.
-  static void goToJoinedTarget(
-    BuildContext context,
-    ({String roomId, bool isSpace, String? activityId}) target,
-  ) {
+  static void goToJoinedTarget(BuildContext context, JoinedTarget target) {
     final activityId = target.activityId;
     if (activityId != null) {
       context.go(
