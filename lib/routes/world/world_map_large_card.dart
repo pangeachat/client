@@ -4,6 +4,8 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/languages/language_flag_chip.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
@@ -111,12 +113,17 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
   }
 }
 
-/// The large featured map card. Eligible for only two colour-states
-/// (world-map.instructions.md, "Pin display"): `joinable` never renders here —
-/// `available`/`inProgress`/`completed` are excluded by the ranking/placement
-/// hard gate before this widget is ever built, so its body only has real
-/// content for `joinable`, `ongoingPending`, and `ongoingActive`.
+/// The large featured map card. Eligible for four colour-states
+/// (world-map.instructions.md, "Pin display"): only the completed trail star
+/// (`inProgress`) never renders here — it is a gold-star dot, excluded by the
+/// ranking/placement gate before this widget is ever built.
 ///
+/// - **Available** (border maps the mid pin's body colour — light-purple in
+///   light mode, the darker `AppConfig.primaryColorDark` purple in dark;
+///   dark-purple title) — title, then a row with the L2 language flag, CEFR
+///   level, and designed party size (a people icon + the role count). No session
+///   exists yet, so no participant avatars, rating, or stars. Dimmed to 50% when
+///   [understaffed] (course-scoped).
 /// - **Joinable** (green border) — title, then a door icon + the participant
 ///   row (filled/unfilled avatar circles, one per role). No image, stars, or
 ///   message preview.
@@ -127,10 +134,12 @@ class _WorldMapLargeCardAnimatedState extends State<WorldMapLargeCardAnimated>
 ///   last chat event, then the row of currently-gained stars — the only
 ///   large-card state that shows stars.
 ///
-/// The full [plan] carries the goal total (the hydration fetch localizes;
-/// choreo #2736) — null while it hydrates. [liveRoom] is the learner's own
-/// session room for an Ongoing card (participants for Pending, last event for
-/// Active). Tapping the card opens the activity's plan page.
+/// The full [plan] carries the goal total AND the L1-localized title (the
+/// hydration fetch localizes; choreo #2736) — null while it hydrates, so the
+/// title falls back to the canonical [card] title until the plan lands (and
+/// re-hydrates on an L1 change, per the map's L1 warmup). [liveRoom] is the
+/// learner's own session room for an Ongoing card (participants for Pending,
+/// last event for Active). Tapping the card opens the activity's plan page.
 class WorldMapLargeCard extends StatelessWidget {
   /// Height of the downward caret that tethers the card to its pin. The marker
   /// reserves this beneath the card so the tail isn't clipped (#7153).
@@ -169,6 +178,12 @@ class WorldMapLargeCard extends StatelessWidget {
   /// from selection and featuring. See world-map.instructions.md.
   final bool isFocused;
 
+  /// When true, this `available` card's activity can't currently be staffed by
+  /// the course — the whole card renders at 50% opacity, the large-tier mirror
+  /// of an understaffed mid pin (world-map.instructions.md, "Understaffed
+  /// pins"). Course-scoped only; never set for a live/completed card.
+  final bool understaffed;
+
   /// When non-null, the card shows an explicit dismiss (X) that **demotes** the
   /// activity out of the large tier for the session — it re-renders as a mid pin
   /// or dot, never leaving the map (#7207). On a focused card the X also clears
@@ -189,6 +204,7 @@ class WorldMapLargeCard extends StatelessWidget {
     this.participants = const [],
     this.openSlots = 0,
     this.starLevel = ActivityStarLevel.none,
+    this.understaffed = false,
   });
 
   /// The activity's star total, never hydration-gated (#7602): the learner's
@@ -204,14 +220,32 @@ class WorldMapLargeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // The outer frame (border + caret) maps the mid pin's BODY colour, so the
+    // card and its pin read as one state. That is theme-aware: for `available`
+    // in dark mode it is the darker `AppConfig.primaryColorDark` purple
+    // (matching the dark-mode available pin, #8174), not the light-mode
+    // light-purple fill. `bodyColor` == the state hue for every other state and
+    // for light mode, so only available-in-dark changes here.
+    final baseAccent = state.bodyColor(context);
+
     // Selected (focused) treatment: NO outline. The state-accent frame darkens
     // slightly and a soft state-coloured glow haloes the whole balloon — matched
     // to a selected pin ([WorldMapSelection], #7349). The plain accent frame
     // shows when not focused; the glow's downward bleed covers the caret below,
     // so the halo wraps card + tail as one continuous shape.
     final accent = isFocused
-        ? WorldMapSelection.darken(state.accent)
-        : state.accent;
+        ? WorldMapSelection.darken(baseAccent)
+        : baseAccent;
+
+    // The title (and, on the available card, its body glyphs) use the state's
+    // LABEL colour, which differs from the border accent only for `available`:
+    // its light-purple fill/border is too low-contrast for a light-purple
+    // title on the white card, so the title uses dark purple instead
+    // (world-map.instructions.md, "Pin state"). For every live state
+    // labelColor == accent, so this is a no-op there.
+    final titleColor = isFocused
+        ? WorldMapSelection.darken(state.labelColor)
+        : state.labelColor;
 
     final cardButton = Semantics(
       label:
@@ -226,20 +260,23 @@ class WorldMapLargeCard extends StatelessWidget {
           decoration: isFocused
               ? BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
-                  boxShadow: WorldMapSelection.glow(state.accent),
+                  boxShadow: WorldMapSelection.glow(baseAccent),
                 )
               : const BoxDecoration(),
           child: Material(
             elevation: 6,
             borderRadius: BorderRadius.circular(12),
             color: Theme.of(context).colorScheme.surface,
-            // Cap the width but let the card shrink to its content, so a
-            // 2-role pending card doesn't stretch to fill the full width —
-            // a little size variety (world-map Figma). The marker box stays
-            // the max width and centres the card, so the tail still lands on
-            // the pin.
+            // Let the card shrink to its content between a floor and the max
+            // width, so an available card with a short title (or a 2-role
+            // pending one) doesn't stretch to fill the full width — a little
+            // size variety (world-map Figma). The marker box stays the max
+            // width and centres the card, so the tail still lands on the pin.
             child: Container(
-              constraints: const BoxConstraints(maxWidth: PinSize.largeWidth),
+              constraints: const BoxConstraints(
+                minWidth: PinSize.largeMinWidth,
+                maxWidth: PinSize.largeWidth,
+              ),
               padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
@@ -252,12 +289,14 @@ class WorldMapLargeCard extends StatelessWidget {
                 children: [
                   _CardTitleRow(
                     title: plan?.title ?? card.title,
-                    accent: accent,
+                    titleColor: titleColor,
                     onClose: onClose,
                   ),
                   _CardBody(
+                    card: card,
                     state: state,
                     accent: accent,
+                    titleColor: titleColor,
                     liveRoom: liveRoom,
                     participants: participants,
                     openSlots: openSlots,
@@ -330,26 +369,32 @@ class WorldMapLargeCard extends StatelessWidget {
     // stacked on top: the star peeks below the caret tip exactly like a mid pin
     // (shared [CompletionStarBelowTip]; world-map.instructions.md, "Goal
     // Progress"). Only when the learner has earned it — never on the caret alone.
-    if (starLevel == ActivityStarLevel.none) return cardVisual;
-    return CompletionStarBelowTip(
-      superStar: starLevel == ActivityStarLevel.superStar,
-      child: cardVisual,
-    );
+    final Widget content = starLevel == ActivityStarLevel.none
+        ? cardVisual
+        : CompletionStarBelowTip(
+            superStar: starLevel == ActivityStarLevel.superStar,
+            child: cardVisual,
+          );
+
+    // An understaffed `available` card dims to 50%, matching its mid pin — purely
+    // cosmetic, it still taps and opens the plan (world-map.instructions.md,
+    // "Understaffed pins").
+    return understaffed ? Opacity(opacity: 0.5, child: content) : content;
   }
 }
 
 /// The large-card title row: the dismiss X inline at the left (so it can never
-/// overlap the title — #7207) followed by the bold, [accent]-coloured activity
+/// overlap the title — #7207) followed by the bold, [titleColor]ed activity
 /// name (world-map.instructions.md, "Pin display", world-map Figma). The X is
 /// omitted when [onClose] is null (widget-test / exiting-card reuse).
 class _CardTitleRow extends StatelessWidget {
   final String title;
-  final Color accent;
+  final Color titleColor;
   final VoidCallback? onClose;
 
   const _CardTitleRow({
     required this.title,
-    required this.accent,
+    required this.titleColor,
     this.onClose,
   });
 
@@ -375,7 +420,7 @@ class _CardTitleRow extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 13,
-                color: accent,
+                color: titleColor,
               ),
             ),
           ),
@@ -386,14 +431,15 @@ class _CardTitleRow extends StatelessWidget {
 }
 
 /// Dispatches to the one content layout that's real for this card's state.
-/// `available`/`inProgress` never reach here in production (the ranking/
-/// placement large-tier hard gate excludes them before this widget is ever
-/// built — world-map.instructions.md, "Pin display") but a defensive empty
-/// body keeps the widget well-defined if a test constructs it directly with
-/// one of those states.
+/// `inProgress` never reaches here in production (the completed trail star is a
+/// gold-star dot, excluded by the ranking/placement gate before this widget is
+/// ever built — world-map.instructions.md, "Pin display"), so it renders a
+/// defensive empty body if a test constructs it directly.
 class _CardBody extends StatelessWidget {
+  final QuestActivityCard card;
   final ActivityPinState state;
   final Color accent;
+  final Color titleColor;
   final Room? liveRoom;
   final List<String> participants;
   final int openSlots;
@@ -401,8 +447,10 @@ class _CardBody extends StatelessWidget {
   final int starsEarned;
 
   const _CardBody({
+    required this.card,
     required this.state,
     required this.accent,
+    required this.titleColor,
     required this.liveRoom,
     required this.participants,
     required this.openSlots,
@@ -412,6 +460,10 @@ class _CardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => switch (state) {
+    ActivityPinState.available => _AvailableBody(
+      card: card,
+      accent: titleColor,
+    ),
     ActivityPinState.joinable => ActivityParticipantRow(
       icon: Icons.meeting_room,
       accent: accent,
@@ -429,9 +481,70 @@ class _CardBody extends StatelessWidget {
       starsTotal: starsTotal,
       starsEarned: starsEarned,
     ),
-    ActivityPinState.available ||
     ActivityPinState.inProgress => const SizedBox.shrink(),
   };
+}
+
+/// The Available body (world-map.instructions.md, "Pin display"): the activity's
+/// L2 language flag, its CEFR level, and its designed party size — a people
+/// glyph and the role count. No session exists yet, so there is no participant
+/// row, rating, or star row; the [card]'s thin metadata (`l2`, `cefr`,
+/// `roleCount`) carries everything shown, so this needs no plan hydration.
+/// [accent] is the card's dark title colour.
+class _AvailableBody extends StatelessWidget {
+  final QuestActivityCard card;
+  final Color accent;
+
+  const _AvailableBody({required this.card, required this.accent});
+
+  @override
+  Widget build(BuildContext context) {
+    final roleCount = card.roleCount;
+    final langShort = card.l2.split('-').first;
+    final cefr = card.cefr;
+    return Row(
+      // Shrink to the info row's own width (like the joinable participant row)
+      // so the card doesn't stretch to the full max width — see the card's
+      // width constraints.
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        LanguageFlagChip(
+          language: PLanguageStore.byLangCode(langShort),
+          langCode: card.l2,
+          width: 28,
+          height: 20,
+          fontSize: 11,
+          radius: 4,
+          borderWidth: 1.5,
+          alwaysShowCode: false,
+        ),
+        if (cefr != null && cefr.isNotEmpty) ...[
+          const SizedBox(width: 12),
+          Text(
+            cefr.toUpperCase(),
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: accent,
+            ),
+          ),
+        ],
+        if (roleCount != null) ...[
+          const SizedBox(width: 12),
+          Icon(Icons.groups, size: 20, color: accent),
+          const SizedBox(width: 4),
+          Text(
+            '$roleCount',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w600,
+              color: accent,
+            ),
+          ),
+        ],
+      ],
+    );
+  }
 }
 
 /// The Ongoing/Active body: a chat-list tile — the last chat event beneath the

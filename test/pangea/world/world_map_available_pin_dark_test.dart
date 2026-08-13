@@ -12,8 +12,11 @@ import 'package:fluffychat/routes/world/world_map_state_dot.dart';
 /// Covers #8174: the `available` pin's light-brand fill is near-white, which
 /// over the dark theme's near-black basemap made the map's LEAST urgent state
 /// its loudest mark. In the dark theme it fills darker instead — while every
-/// other state, and the whole light theme, are untouched, and the white plus
-/// glyph stays white (the fill is dark enough to carry it).
+/// other state's fill, and the light-theme fill, are untouched.
+///
+/// Also #8243: the plus glyph is white in the dark theme (the deep fill carries
+/// it) but dark-purple in light mode (the pale light-brand fill is too low
+/// contrast for white) — scoped to the available pin; live pins keep white.
 void main() {
   const card = QuestActivityCard(
     activityId: 'a1',
@@ -139,10 +142,10 @@ void main() {
       );
       expect(
         mid,
-        themeFor(Brightness.dark).colorScheme.primaryContainer,
+        AppConfig.primaryColorDark,
         reason:
-            'the dark fill comes from the scheme, not a hand-picked constant, '
-            'so it follows the learner theme seed',
+            'the dark fill is the fixed darker-purple brand constant, not the '
+            'theme-seeded primaryContainer',
       );
       expect(
         mid,
@@ -183,8 +186,48 @@ void main() {
         icon.color,
         Colors.white,
         reason:
-            '#8174 darkened the fill rather than darkening the glyph — the '
-            'plus stays white on every state pin',
+            'in the dark theme the deep primaryContainer fill carries a white '
+            'plus, so the glyph stays white there',
+      );
+    });
+
+    testWidgets('the plus glyph is dark in the light theme (#8243)', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        brightness: Brightness.light,
+        state: ActivityPinState.available,
+        tier: PinTier.mid,
+      );
+
+      final icon = tester.widget<Icon>(find.byIcon(Icons.add));
+      expect(
+        icon.color,
+        ActivityPinState.available.labelColor,
+        reason:
+            'the light-purple fill is too pale for a white plus, so in light '
+            'mode the glyph takes the pin\'s dark-purple label colour',
+      );
+    });
+
+    testWidgets('a live pin keeps a white icon in the light theme', (
+      tester,
+    ) async {
+      await pump(
+        tester,
+        brightness: Brightness.light,
+        state: ActivityPinState.joinable,
+        tier: PinTier.mid,
+      );
+
+      final icon = tester.widget<Icon>(find.byIcon(Icons.meeting_room));
+      expect(
+        icon.color,
+        Colors.white,
+        reason:
+            'the dark-icon treatment is scoped to the pale available fill — a '
+            'green joinable pin still carries a white door in light mode',
       );
     });
 

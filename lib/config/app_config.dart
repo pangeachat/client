@@ -18,6 +18,7 @@ abstract class AppConfig {
 
   static const Color primaryColor = Color(0xFF8560E0);
   static const Color primaryColorLight = Color(0xFFDBC9FF);
+  static const Color primaryColorDark = Color.fromARGB(255, 81, 66, 126);
   static const Color secondaryColor = Color.fromARGB(255, 253, 191, 1);
 
   static const Color chatColor = primaryColor;
