@@ -19,6 +19,8 @@ abstract class OnboardingStep {
 
   bool get customView => false;
 
+  double get contentMaxWidth => 600.0;
+
   String get stepDestination => PRoutes.chatsList;
 
   /// The joined-course space id this step should land on, or null for every

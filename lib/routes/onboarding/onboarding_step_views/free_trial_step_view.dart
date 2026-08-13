@@ -64,8 +64,14 @@ class FreeTrialStepView extends StatelessWidget {
             ),
             Center(
               child: Container(
-                width: 350,
-                padding: const EdgeInsets.only(bottom: 20.0),
+                // Matches the wizard shell in onboarding_page.dart.
+                width: double.infinity,
+                constraints: const BoxConstraints(maxWidth: 600.0),
+                padding: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                  bottom: 20.0,
+                ),
                 child: Column(
                   children: [
                     Expanded(

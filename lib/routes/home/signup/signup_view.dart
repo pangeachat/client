@@ -31,7 +31,7 @@ class SignupPageView extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: SizedBox(
-              width: 450,
+              width: 600,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -44,8 +44,9 @@ class SignupPageView extends StatelessWidget {
             automaticallyImplyLeading: false,
           ),
           body: Center(
-            child: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
+            child: Container(
+              constraints: const BoxConstraints(maxWidth: 600, maxHeight: 600),
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
               child: Column(
                 spacing: 16.0,
                 mainAxisAlignment: MainAxisAlignment.end,

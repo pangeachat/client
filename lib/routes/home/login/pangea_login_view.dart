@@ -20,7 +20,7 @@ class PasswordLoginView extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 450),
+              constraints: const BoxConstraints(maxWidth: 600),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -36,8 +36,11 @@ class PasswordLoginView extends StatelessWidget {
           ),
           body: Center(
             child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 16.0),
-              constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 16.0,
+              ),
+              constraints: const BoxConstraints(maxWidth: 600, maxHeight: 600),
               child: Column(
                 spacing: 16.0,
                 mainAxisAlignment: MainAxisAlignment.end,

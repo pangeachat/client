@@ -184,7 +184,8 @@ class OnboardingController extends State<Onboarding> {
             appBar: AppBar(
               centerTitle: true,
               title: ConstrainedBox(
-                constraints: const BoxConstraints(maxWidth: 450),
+                // Fixed at the widest step's width (840, the language grid)
+                constraints: const BoxConstraints(maxWidth: 840.0),
                 child: Row(
                   children: [
                     _navigation.hasPrevStep
@@ -203,9 +204,17 @@ class OnboardingController extends State<Onboarding> {
               automaticallyImplyLeading: false,
             ),
             body: Center(
+              // Cap the column at the step's width and pad the sides, so it
+              // never runs into the edges on a narrow window (the norm the rest
+              // of the app uses, e.g. `MaxWidthBody`). `width: infinity` makes
+              // the column fill up to the cap rather than shrink to its content.
               child: Container(
-                width: 350.0,
-                padding: EdgeInsets.symmetric(vertical: 48.0),
+                width: double.infinity,
+                constraints: BoxConstraints(maxWidth: step.contentMaxWidth),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16.0,
+                  vertical: 48.0,
+                ),
                 child: content,
               ),
             ),
