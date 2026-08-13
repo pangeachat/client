@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -11,6 +10,7 @@ import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/features/navigation/token_params/add_course_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 import 'package:fluffychat/pangea/spaces/space_constants.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -258,8 +258,9 @@ class CourseCodePageState extends State<CourseCodePage> {
                       ),
                     ),
                     ExcludeSemantics(
-                      child: SvgPicture.network(
-                        "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
+                      child: NetworkSvg(
+                        svgUrl:
+                            "${AppConfig.assetsBaseURL}/${SpaceConstants.mapUnlockFileName}",
                         width: 120.0,
                         height: 120.0,
                         colorFilter: ColorFilter.mode(

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/svg.dart';
-
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/users/level_ribbon.dart';
 
@@ -76,13 +75,10 @@ class LevelDisplayName extends StatelessWidget {
               if (base != null && target != null) ...[
                 if (showFlags) ...[
                   ExcludeSemantics(
-                    child: SvgPicture.network(
-                      base.svgUrl.toString(),
-                      errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                      placeholderBuilder: (_) => Center(
-                        child: const CircularProgressIndicator(
-                          strokeWidth: 0.5,
-                        ),
+                    child: NetworkSvg(
+                      svgUrl: base.svgUrl.toString(),
+                      placeholder: const Center(
+                        child: CircularProgressIndicator(strokeWidth: 0.5),
                       ),
                       width: iconSize ?? 12.0,
                       height: iconSize ?? 12.0,
@@ -110,13 +106,10 @@ class LevelDisplayName extends StatelessWidget {
               if (target != null) ...[
                 if (showFlags) ...[
                   ExcludeSemantics(
-                    child: SvgPicture.network(
-                      target.svgUrl.toString(),
-                      errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                      placeholderBuilder: (_) => Center(
-                        child: const CircularProgressIndicator(
-                          strokeWidth: 0.5,
-                        ),
+                    child: NetworkSvg(
+                      svgUrl: target.svgUrl.toString(),
+                      placeholder: const Center(
+                        child: CircularProgressIndicator(strokeWidth: 0.5),
                       ),
                       width: iconSize ?? 12.0,
                       height: iconSize ?? 12.0,

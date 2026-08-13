@@ -599,4 +599,53 @@ void main() {
       },
     );
   });
+
+  testWidgets(
+    'a send that lands AFTER the recorder unmounts does not setState on a '
+    'defunct State (CLIENT-AN1)',
+    (tester) async {
+      late RecordingViewModelState state;
+      await tester.pumpWidget(
+        MaterialApp(
+          home: RecordingViewModel(
+            streamingSessionFactory: null,
+            builder: (context, s) {
+              state = s;
+              return const SizedBox.shrink();
+            },
+          ),
+        ),
+      );
+
+      final upload = Completer<void>();
+      late Future<void> send;
+      await tester.runAsync(() async {
+        await state.startRecording(room);
+        // Tick the amplitude timer so the send is not an EmptyAudioException.
+        await Future<void>.delayed(const Duration(milliseconds: 150));
+        send = state.stopAndSend(
+          (_, _, _, _, {streamedTranscript}) => upload.future,
+        );
+        await Future<void>.delayed(const Duration(milliseconds: 50));
+      });
+
+      // The user leaves the chat while the upload is still in flight.
+      await tester.pumpWidget(const MaterialApp(home: SizedBox.shrink()));
+
+      // stopAndSend still runs its trailing cancel() once the upload lands —
+      // on a State that is no longer in the tree.
+      Object? error;
+      await tester.runAsync(() async {
+        upload.complete();
+        try {
+          await send;
+        } catch (e) {
+          error = e;
+        }
+      });
+      await tester.pump();
+
+      expect(error, isNull);
+    },
+  );
 }

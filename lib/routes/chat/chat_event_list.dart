@@ -56,6 +56,13 @@ class ChatEventList extends StatelessWidget {
       child: NotificationListener<ScrollMetricsNotification>(
         onNotification: (_) {
           WidgetsBinding.instance.addPostFrameCallback((_) {
+            // The list can detach (or the controller can be disposed) between
+            // the notification and this callback — leaving the chat, switching
+            // threads, or the timeline going null. Reading position then throws.
+            if (!controller.mounted ||
+                !controller.scrollController.hasClients) {
+              return;
+            }
             try {
               final scrollable =
                   controller.scrollController.position.maxScrollExtent > 0;

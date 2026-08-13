@@ -142,18 +142,44 @@ class ActivityPlanRepo
     return req.get(url: uri.toString());
   }
 
+  /// The `?? 'en'` covers a set-up controller whose user has no L1 yet — a
+  /// different case from the controller not existing, which [_request] gates.
   String get _viewerL1 =>
       MatrixState.pangeaController.userController.userL1Code ?? 'en';
 
-  ActivityPlanFetchRequest _request(
+  /// Null until `MatrixState` has assigned `pangeaController`, which it does in
+  /// `initState` after `initMatrix()`. Every entry point below turns that null
+  /// into its own "could not do it" value, so nothing in this repo touches the
+  /// controller — or the network — before it exists.
+  ///
+  /// The gate is on the whole request, not just on [_viewerL1], because the
+  /// repo reaches the controller down THREE paths and two of them ignore [l1]:
+  ///  - [_viewerL1] here, which crashed outright (Sentry CLIENT-D43): it runs
+  ///    while building the request, outside `BaseRepo._fetch`'s try/catch, so
+  ///    the `LateInitializationError` escaped the repo.
+  ///  - `BaseRepo.createRequests()`, for the access token — inside that
+  ///    try/catch, so it degrades to `Result.error`.
+  ///  - `PersistentRepoCache.init()`, via `BaseRepo._cacheInit`. This one is
+  ///    the reason an explicit [l1] is not exempt: `_cacheInit` is a
+  ///    `late final` Future, so ONE early failure is memoized and re-thrown by
+  ///    every later `get` for the life of the process, from outside any
+  ///    try/catch. Letting a single early call through would wedge the repo's
+  ///    cache permanently, not just lose that one plan.
+  ///
+  /// Declining is not reported: too early is expected during startup and
+  /// non-actionable, so it is not worth a Sentry event.
+  ActivityPlanFetchRequest? _request(
     String activityId,
     String? l1, {
     String? version,
-  }) => ActivityPlanFetchRequest(
-    activityId: activityId,
-    l1: l1 ?? _viewerL1,
-    version: version,
-  );
+  }) {
+    if (!MatrixState.isPangeaControllerInitialized) return null;
+    return ActivityPlanFetchRequest(
+      activityId: activityId,
+      l1: l1 ?? _viewerL1,
+      version: version,
+    );
+  }
 
   /// The plan for [activityId], localized to [l1] (viewer L1 by default), with
   /// media resolved. Cached (TTL + in-flight dedup); null on fetch failure.
@@ -185,6 +211,11 @@ class ActivityPlanRepo
     bool forceRefresh = false,
   }) async {
     final request = _request(activityId, l1, version: version);
+    // Not knowable yet, not gone: `failed` is the transient status, so callers
+    // keep the activity and retry rather than treating it as removed.
+    if (request == null) {
+      return const ActivityPlanLookup(ActivityPlanLookupStatus.failed);
+    }
     final result = await get(request, forceRefresh: forceRefresh);
     if (result.isError) {
       final error = result.asError!.error;
@@ -249,6 +280,9 @@ class ActivityPlanRepo
     String? version,
   }) {
     final request = _request(activityId, l1, version: version);
+    // Same answer as a cache miss, and the caller's next move is the same:
+    // [ensure], which will also decline until the controller lands.
+    if (request == null) return null;
     final raw = getCached(request);
     if (raw == null) {
       _resolved.remove(request.storageKey);
@@ -281,7 +315,12 @@ class ActivityPlanRepo
     // A confirmed-removed id can't hydrate; re-fetching on every rebuild of
     // the sync getter would loop 404s.
     if (_confirmedRemoved.contains(activityId)) return false;
-    final key = _request(activityId, l1, version: version).storageKey;
+    final request = _request(activityId, l1, version: version);
+    // Declines WITHOUT parking the key: the controller lands within a frame or
+    // two of startup, so the next rebuild must be free to fetch. Parking here
+    // would spend a 60s cooldown on a condition that clears in milliseconds.
+    if (request == null) return false;
+    final key = request.storageKey;
     // Checked before `_revalidated.add` so a revalidate token is never spent
     // on a call that is about to bail.
     if (_hydrating.contains(key)) return false;

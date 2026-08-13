@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 
 /// The primary-tinted language chip shared by the analytics cluster's
 /// `ClusterLanguageFlag` and the activity start page's info row. It never
@@ -79,14 +78,13 @@ class LanguageFlagChip extends StatelessWidget {
               borderRadius: BorderRadius.circular(radius),
               child: Stack(
                 children: [
-                  SvgPicture.network(
-                    language!.svgUrl.toString(),
+                  NetworkSvg(
+                    svgUrl: language!.svgUrl.toString(),
                     width: width,
                     height: height,
                     fit: BoxFit.cover,
-                    errorBuilder: (_, _, _) => outlinedText,
-                    placeholderBuilder: (_) =>
-                        SizedBox(width: width, height: height),
+                    errorWidget: outlinedText,
+                    placeholder: SizedBox(width: width, height: height),
                   ),
                   if (alwaysShowCode)
                     Positioned(child: Center(child: outlinedText)),
