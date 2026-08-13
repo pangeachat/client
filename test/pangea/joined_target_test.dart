@@ -1,13 +1,13 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/join_codes/space_code_controller.dart';
+import 'package:fluffychat/features/join_codes/joined_target.dart';
 
-/// [SpaceCodeController.resolveTargetFromRoomState] — the landing-target
-/// resolution for a joined room sync has not yet surfaced (#8047), over raw
-/// `GET /rooms/{id}/state` events. Must mirror the local-room branches of
-/// `resolveJoinedTarget`: space → course, activity session → activity page,
-/// coded chat under a joined course → that course, anything else → the room.
+/// [JoinedTarget.fromRoomState] — the landing-target resolution for a joined
+/// room sync has not yet surfaced (#8047), over raw `GET /rooms/{id}/state`
+/// events. Must mirror [JoinedTargetRoomExtension.joinedTarget]: space →
+/// course, activity session → activity page, coded chat under a joined
+/// course → that course, anything else → the room.
 void main() {
   const roomId = '!session:example.com';
   const courseId = '!course:example.com';
@@ -49,47 +49,46 @@ void main() {
   bool noJoinedSpaces(String _) => false;
 
   test('a space resolves to itself as a course', () {
-    final target = SpaceCodeController.resolveTargetFromRoomState(roomId, [
+    final target = JoinedTarget.fromRoomState(roomId, [
       createEvent('m.space'),
     ], noJoinedSpaces);
-    expect(target, (roomId: roomId, isSpace: true, activityId: null));
+    expect(target, const JoinedTarget.course(roomId));
   });
 
   test('a v3 activity session resolves the id from the room-type suffix', () {
-    final target = SpaceCodeController.resolveTargetFromRoomState(roomId, [
+    final target = JoinedTarget.fromRoomState(roomId, [
       createEvent('p.activity.session:abc-123'),
     ], noJoinedSpaces);
-    expect(target, (roomId: roomId, isSpace: false, activityId: 'abc-123'));
+    expect(target, const JoinedTarget.activitySession(roomId, 'abc-123'));
   });
 
   test('a legacy embedded plan resolves the id from state', () {
-    final target = SpaceCodeController.resolveTargetFromRoomState(roomId, [
+    final target = JoinedTarget.fromRoomState(roomId, [
       createEvent(null),
       state('pangea.activity_plan', embeddedPlanContent(idKey: 'activity_id')),
     ], noJoinedSpaces);
-    expect(target, (
-      roomId: roomId,
-      isSpace: false,
-      activityId: 'legacy-activity',
-    ));
+    expect(
+      target,
+      const JoinedTarget.activitySession(roomId, 'legacy-activity'),
+    );
   });
 
   test('a deprecated (bookmark) embedded plan is not a session', () {
-    final target = SpaceCodeController.resolveTargetFromRoomState(roomId, [
+    final target = JoinedTarget.fromRoomState(roomId, [
       createEvent(null),
       state('pangea.activity_plan', embeddedPlanContent(idKey: 'bookmark_id')),
     ], noJoinedSpaces);
-    expect(target, (roomId: roomId, isSpace: false, activityId: null));
+    expect(target, const JoinedTarget.room(roomId));
   });
 
   test('a chat under a locally-joined course resolves to the course', () {
-    final target = SpaceCodeController.resolveTargetFromRoomState(roomId, [
+    final target = JoinedTarget.fromRoomState(roomId, [
       createEvent(null),
       state(EventTypes.SpaceParent, {
         'via': ['example.com'],
       }, stateKey: courseId),
     ], (id) => id == courseId);
-    expect(target, (roomId: courseId, isSpace: true, activityId: null));
+    expect(target, const JoinedTarget.course(courseId));
   });
 
   test('a parent without via, or not locally joined, is ignored', () {
@@ -101,20 +100,16 @@ void main() {
         'via': ['example.com'],
       }, stateKey: '!other:example.com'),
     ]) {
-      final target = SpaceCodeController.resolveTargetFromRoomState(roomId, [
+      final target = JoinedTarget.fromRoomState(roomId, [
         createEvent(null),
         parent,
       ], (id) => id == courseId);
-      expect(target, (roomId: roomId, isSpace: false, activityId: null));
+      expect(target, const JoinedTarget.room(roomId));
     }
   });
 
   test('an unrecognized room resolves to itself as a room, not a course', () {
-    final target = SpaceCodeController.resolveTargetFromRoomState(
-      roomId,
-      [],
-      noJoinedSpaces,
-    );
-    expect(target, (roomId: roomId, isSpace: false, activityId: null));
+    final target = JoinedTarget.fromRoomState(roomId, [], noJoinedSpaces);
+    expect(target, const JoinedTarget.room(roomId));
   });
 }
