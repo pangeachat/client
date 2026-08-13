@@ -11,7 +11,9 @@ import 'package:http/http.dart' hide Client;
 import 'package:matrix/matrix.dart' hide Result;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_session_constants.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_access_extension.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/join_codes/knock_with_code_extension.dart';
@@ -23,6 +25,8 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_room_types.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -39,12 +43,10 @@ class SpaceCodeController {
   /// page, the public course preview): run the analytics-consent step where
   /// the room is available locally, then open the course. When sync hasn't
   /// surfaced the room yet the join is STILL done (the join API call
-  /// succeeded), so navigate to the course anyway — its panel renders a
-  /// loading state until sync catches up — instead of silently stranding the
-  /// user on the join page as a secret member of the course (#7579). The
-  /// course route is the right default for the not-yet-local case; the
-  /// consent notice, skipped here, resurfaces through the course-settings
-  /// listener.
+  /// succeeded), so resolve the landing from the room's state over HTTP
+  /// instead of silently stranding the user on the join page as a secret
+  /// member of the course (#7579); the consent notice, skipped there,
+  /// resurfaces through the course-settings listener.
   static Future<void> navigateAfterJoin(
     BuildContext context,
     Client client,
@@ -60,11 +62,11 @@ class SpaceCodeController {
   /// plan page, also when the code's room is a child of a course (see below).
   /// Null means the learner declined consent — don't navigate. When sync
   /// hasn't surfaced the room yet the join is STILL done (the join API call
-  /// succeeded), so resolve to the course anyway — its panel renders a
-  /// loading state until sync catches up — instead of silently stranding the
-  /// user on the join page as a secret member of the course (#7579); the
-  /// consent notice, skipped there, resurfaces through the course-settings
-  /// listener.
+  /// succeeded, and its bounded sync-wait already ran out — see `_loadRoom`),
+  /// so resolve the landing from the room's state over HTTP instead of
+  /// silently stranding the user on the join page as a secret member of the
+  /// course (#7579); the consent notice, skipped there, resurfaces through
+  /// the course-settings listener.
   static Future<({String roomId, bool isSpace, String? activityId})?>
   resolveJoinedTarget(
     BuildContext context,
@@ -73,7 +75,10 @@ class SpaceCodeController {
   ) async {
     final room = client.getRoomById(joinResp.roomId);
     if (room == null) {
-      return (roomId: joinResp.roomId, isSpace: true, activityId: null);
+      // Assuming "course" here sent an activity-session joiner to a course
+      // panel scoped to the session room's id, which can never resolve
+      // (#8047) — the membership is real, so ask the server what we joined.
+      return _resolveUnsyncedTarget(client, joinResp.roomId);
     }
 
     // Recompute the notice from the room as it stands NOW: when the join-time
@@ -118,6 +123,102 @@ class SpaceCodeController {
       return (roomId: parentCourse.id, isSpace: true, activityId: null);
     }
     return (roomId: joinedRoomId, isSpace: false, activityId: null);
+  }
+
+  /// Resolve the landing for a joined room sync has not yet surfaced, from
+  /// the room's state over HTTP — the join succeeded, so the state endpoints
+  /// work even mid-initial-sync. The analytics-consent step needs the local
+  /// room and stays skipped here (see [resolveJoinedTarget]).
+  static Future<({String roomId, bool isSpace, String? activityId})>
+  _resolveUnsyncedTarget(Client client, String roomId) async {
+    try {
+      final state = await client.getRoomState(roomId);
+      return resolveTargetFromRoomState(roomId, state, (id) {
+        final parent = client.getRoomById(id);
+        return parent != null &&
+            parent.isSpace &&
+            parent.membership == Membership.join;
+      });
+    } catch (e, s) {
+      ErrorHandler.logError(e: e, s: s, data: {"roomId": roomId});
+      // Land on the room AS A ROOM: a wrong room-open shows a chat view the
+      // user can leave, while a wrong course-open spins forever (#8047).
+      return (roomId: roomId, isSpace: false, activityId: null);
+    }
+  }
+
+  /// The unsynced twin of [resolveJoinedTarget]'s local-room branches, over
+  /// raw state events: a space opens as a course; an activity session lands
+  /// on the activity page; a coded chat under a joined course (per
+  /// [isJoinedSpace], which reads LOCAL rooms — the joiner's own courses have
+  /// been in their store since before this fresh page load) lands on that
+  /// course; anything else opens as a room. Pure — unit-tested
+  /// (resolve_target_from_room_state_test.dart).
+  static ({String roomId, bool isSpace, String? activityId})
+  resolveTargetFromRoomState(
+    String roomId,
+    List<MatrixEvent> state,
+    bool Function(String roomId) isJoinedSpace,
+  ) {
+    final roomType = state
+        .firstWhereOrNull((e) => e.type == EventTypes.RoomCreate)
+        ?.content
+        .tryGet<String>('type');
+    if (roomType == RoomCreationTypes.mSpace) {
+      return (roomId: roomId, isSpace: true, activityId: null);
+    }
+
+    final activityId = _activityIdFromState(roomType, state);
+    if (activityId != null) {
+      return (roomId: roomId, isSpace: false, activityId: activityId);
+    }
+
+    final parentCourseId = state
+        .where(
+          (e) =>
+              e.type == EventTypes.SpaceParent &&
+              e.content.tryGetList<String>('via')?.isNotEmpty == true,
+        )
+        .map((e) => e.stateKey)
+        .whereType<String>()
+        .firstWhereOrNull(isJoinedSpace);
+    if (parentCourseId != null) {
+      return (roomId: parentCourseId, isSpace: true, activityId: null);
+    }
+    return (roomId: roomId, isSpace: false, activityId: null);
+  }
+
+  /// [ActivityRoomExtension.isActivitySession] + [activityId] without a local
+  /// [Room]: the v3 room-type suffix (`p.activity.session:<activity_id>`) is
+  /// authoritative; a legacy room embeds the full plan in
+  /// `pangea.activity_plan` state (`bookmark_id` marks the deprecated model,
+  /// excluded like the synced path). A v3 reference plan WITHOUT the room
+  /// type would need CMS hydration to be recognized; that shape isn't minted
+  /// (the type is set at session creation), and an unhydrated plan resolves
+  /// as a plain room locally too.
+  static String? _activityIdFromState(
+    String? roomType,
+    List<MatrixEvent> state,
+  ) {
+    final planContent = state
+        .firstWhereOrNull((e) => e.type == PangeaEventTypes.activityPlan)
+        ?.content;
+    ActivityPlanModel? embeddedPlan;
+    if (planContent != null &&
+        planContent[ActivitySessionConstants.activityPlanRequest] != null) {
+      try {
+        embeddedPlan = ActivityPlanModel.fromJson(planContent);
+      } catch (_) {
+        embeddedPlan = null;
+      }
+    }
+
+    if (roomType?.startsWith(PangeaRoomTypes.activitySession) == true) {
+      if (embeddedPlan?.isDeprecatedModel == true) return null;
+      return roomType!.split(':').last;
+    }
+    if (embeddedPlan == null || embeddedPlan.isDeprecatedModel) return null;
+    return embeddedPlan.activityId;
   }
 
   /// The synchronous half of the post-join hop, split from
