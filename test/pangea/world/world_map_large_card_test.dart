@@ -294,17 +294,16 @@ void main() {
       expect(cardBorderColor(tester), AppConfig.primaryColorDark);
     });
 
-    testWidgets(
-      'inProgress (the completed trail star) renders no body content',
-      (tester) async {
-        // inProgress never reaches this widget in production — the completed
-        // trail star is a gold-star dot, excluded before the card is built.
-        // This confirms the defensive default doesn't crash or show a stray icon.
-        await pumpCard(tester, state: ActivityPinState.inProgress);
-        expect(find.byIcon(Icons.meeting_room), findsNothing);
-        expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
-        expect(find.byIcon(Icons.groups), findsNothing);
-      },
-    );
+    testWidgets('inProgress (the completed trail star) renders no body content', (
+      tester,
+    ) async {
+      // inProgress never reaches this widget in production — the completed
+      // trail star is a gold-star dot, excluded before the card is built.
+      // This confirms the defensive default doesn't crash or show a stray icon.
+      await pumpCard(tester, state: ActivityPinState.inProgress);
+      expect(find.byIcon(Icons.meeting_room), findsNothing);
+      expect(find.byIcon(Icons.hourglass_bottom), findsNothing);
+      expect(find.byIcon(Icons.groups), findsNothing);
+    });
   });
 }

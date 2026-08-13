@@ -590,21 +590,24 @@ void main() {
       expect(result.midIds, {'done'});
     });
 
-    test('a finished pin still appears on the map when nothing else competes', () {
-      final result = rank(
-        [
-          _card('done', refs: ['k1']),
-        ],
-        {'done': const PinSignals(completionFraction: 1.0)},
-        largeBudget: 1,
-        midBudget: 10,
-      );
-      // The −0.5 completed weight demotes but never excludes it: it stays in
-      // the ranked set. (Whether a completed activity renders as a card is a
-      // view-level display-state question — the completed trail star never
-      // does — not something ranking, which can't see completion, decides.)
-      expect(result.ordered, ['done']);
-    });
+    test(
+      'a finished pin still appears on the map when nothing else competes',
+      () {
+        final result = rank(
+          [
+            _card('done', refs: ['k1']),
+          ],
+          {'done': const PinSignals(completionFraction: 1.0)},
+          largeBudget: 1,
+          midBudget: 10,
+        );
+        // The −0.5 completed weight demotes but never excludes it: it stays in
+        // the ranked set. (Whether a completed activity renders as a card is a
+        // view-level display-state question — the completed trail star never
+        // does — not something ranking, which can't see completion, decides.)
+        expect(result.ordered, ['done']);
+      },
+    );
   });
 
   group('rankPins — dismissed is demoted, not excluded (#7207/#7245)', () {

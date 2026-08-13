@@ -460,7 +460,10 @@ class _CardBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => switch (state) {
-    ActivityPinState.available => _AvailableBody(card: card, accent: titleColor),
+    ActivityPinState.available => _AvailableBody(
+      card: card,
+      accent: titleColor,
+    ),
     ActivityPinState.joinable => ActivityParticipantRow(
       icon: Icons.meeting_room,
       accent: accent,
