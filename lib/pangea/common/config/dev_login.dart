@@ -16,8 +16,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 ///
 /// It is **opt-in per page load** via the `?devlogin=1` query parameter — a
 /// normal load (`/`) shows the real login flow untouched, so the login UI stays
-/// testable in debug. Append the param (`/?devlogin=1`, or inside a hash route
-/// `/#/world?devlogin=1`) to bypass it.
+/// testable in debug. Append the param (`/?devlogin=1`) to bypass it.
 ///
 /// Triple-gated so it can NEVER touch production:
 ///   1. debug builds only — staging and production ship release builds, where
@@ -91,7 +90,8 @@ Future<void> maybeDevLogin(MatrixState matrix) async {
 /// Whether the current URL opted into the dev login via `?devlogin=1`.
 ///
 /// Checks both the top-level query string (`/?devlogin=1`) and the fragment, so
-/// it works with the web build's hash routing (`/#/world?devlogin=1`).
+/// legacy hash-form URLs (`/#/world?devlogin=1`) still opt in — the web build
+/// itself is path-routed (`usePathUrlStrategy`, #7820).
 @visibleForTesting
 bool devLoginRequested([Uri? url]) {
   final uri = url ?? Uri.base;
