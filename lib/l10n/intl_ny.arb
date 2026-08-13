@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-12 14:33:41.481288",
+    "@@last_modified": "2026-08-13 15:50:51.354800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Gawana Zomwe Zasonyezedwa",
     "courseNoLongerAvailableTitle": "Maphunziro kulibe",
     "courseDeletedDialogDesc": "Maphunzirowa achotsedwa.",
-    "pingedActivity": "Zochitika zomwe zatumizidwa"
+    "pingedActivity": "Zochitika zomwe zatumizidwa",
+    "appInTargetLanguageStaysInBaseLanguage": "(Kukhazikitsa kumeneku kumakhala m'chilankhulo chanu choyambirira kuti muzitha kuchipeza nthawi zonse.)"
 }

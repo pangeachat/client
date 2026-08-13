@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-12 14:33:42.815967",
+    "@@last_modified": "2026-08-13 15:50:52.613645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Ndani Analizat",
     "courseNoLongerAvailableTitle": "Kurs i padisponueshëm",
     "courseDeletedDialogDesc": "Ky kurs është fshirë.",
-    "pingedActivity": "Aktivitet i ping-uar"
+    "pingedActivity": "Aktivitet i ping-uar",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ky cilësim mbetet në gjuhën tënde amtare, që ta gjesh gjithmonë.)"
 }

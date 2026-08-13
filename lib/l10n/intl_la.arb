@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-12 14:33:40.203994",
+    "@@last_modified": "2026-08-13 15:50:49.644940",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Communica Analytica",
     "courseNoLongerAvailableTitle": "Cursus non praesto",
     "courseDeletedDialogDesc": "Hic cursus deletus est.",
-    "pingedActivity": "Actio pulsata"
+    "pingedActivity": "Actio pulsata",
+    "appInTargetLanguageStaysInBaseLanguage": "(Haec occasio in lingua tua vernacula manet ut semper eam invenire possis.)"
 }

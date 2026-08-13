@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-12 14:33:38.198557",
+    "@@last_modified": "2026-08-13 15:50:47.552584",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9734,5 +9734,6 @@
     "shareAnalytics": "Compartir datos de uso",
     "courseNoLongerAvailableTitle": "Curso non dispoñible",
     "courseDeletedDialogDesc": "Este curso foi eliminado.",
-    "pingedActivity": "Actividade mencionada"
+    "pingedActivity": "Actividade mencionada",
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuración permanece no teu idioma nativo para que sempre a poidas atopar.)"
 }

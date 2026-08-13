@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-12 14:33:42.231777",
+    "@@last_modified": "2026-08-13 15:50:51.831321",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10706,5 +10706,6 @@
     "shareAnalytics": "Поделиться аналитикой",
     "courseNoLongerAvailableTitle": "Курс недоступен",
     "courseDeletedDialogDesc": "Этот курс был удален.",
-    "pingedActivity": "Активность с упоминанием"
+    "pingedActivity": "Активность с упоминанием",
+    "appInTargetLanguageStaysInBaseLanguage": "(Эта настройка останется на вашем родном языке, чтобы вы всегда могли ее найти.)"
 }

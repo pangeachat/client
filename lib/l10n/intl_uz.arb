@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-12 14:33:43.871058",
+    "@@last_modified": "2026-08-13 15:50:53.724203",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9738,5 +9738,6 @@
     "shareAnalytics": "Analitikani ulashish",
     "courseNoLongerAvailableTitle": "Kurs mavjud emas",
     "courseDeletedDialogDesc": "Bu kurs oʻchirib tashlangan.",
-    "pingedActivity": "Faoliyat ping qilingan"
+    "pingedActivity": "Faoliyat ping qilingan",
+    "appInTargetLanguageStaysInBaseLanguage": "(Bu sozlama har doim topishingiz uchun ona tilingizda qoladi.)"
 }

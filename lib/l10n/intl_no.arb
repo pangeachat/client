@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-12 14:33:41.505749",
+    "@@last_modified": "2026-08-13 15:50:51.129118",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Del analyser",
     "courseNoLongerAvailableTitle": "Kurset er ikke tilgjengelig",
     "courseDeletedDialogDesc": "Dette kurset er slettet.",
-    "pingedActivity": "Pinget aktivitet"
+    "pingedActivity": "Pinget aktivitet",
+    "appInTargetLanguageStaysInBaseLanguage": "(Denne innstillingen forblir på morsmålet ditt, slik at du alltid kan finne den.)"
 }

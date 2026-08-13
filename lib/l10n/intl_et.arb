@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-12 14:33:37.190401",
+    "@@last_modified": "2026-08-13 15:50:47.115317",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9731,5 +9731,6 @@
     "shareAnalytics": "Jaga analüütikat",
     "courseNoLongerAvailableTitle": "Kursus pole saadaval",
     "courseDeletedDialogDesc": "See kursus on kustutatud.",
-    "pingedActivity": "Märgitud tegevus"
+    "pingedActivity": "Märgitud tegevus",
+    "appInTargetLanguageStaysInBaseLanguage": "(See säte jääb teie emakeelde, et saaksite selle alati üles leida.)"
 }

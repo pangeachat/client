@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-12 14:33:39.398431",
+    "@@last_modified": "2026-08-13 15:50:49.238631",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "ಅನಾಲಿಟಿಕ್ಸ್ ಹಂಚಿಕೊಳ್ಳಿ",
     "courseNoLongerAvailableTitle": "ಕೋರ್ಸ್ ಲಭ್ಯವಿಲ್ಲ",
     "courseDeletedDialogDesc": "ಈ ಕೋರ್ಸ್ ಅನ್ನು ಅಳಿಸಲಾಗಿದೆ.",
-    "pingedActivity": "ಪಿಂಗ್ ಮಾಡಿದ ಚಟುವಟಿಕೆ"
+    "pingedActivity": "ಪಿಂಗ್ ಮಾಡಿದ ಚಟುವಟಿಕೆ",
+    "appInTargetLanguageStaysInBaseLanguage": "(ಈ ಸೆಟ್ಟಿಂಗ್ ನಿಮ್ಮ ಸ್ಥಳೀಯ ಭಾಷೆಯಲ್ಲಿಯೇ ಇರುತ್ತದೆ, ಆದ್ದರಿಂದ ನೀವು ಅದನ್ನು ಯಾವಾಗಲೂ ಹುಡುಕಬಹುದು.)"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-12 14:33:40.813875",
+    "@@last_modified": "2026-08-13 15:50:50.502751",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Сподели аналитика",
     "courseNoLongerAvailableTitle": "Курсот е недостапен",
     "courseDeletedDialogDesc": "Овој курс е избришан.",
-    "pingedActivity": "Пингувана активност"
+    "pingedActivity": "Пингувана активност",
+    "appInTargetLanguageStaysInBaseLanguage": "(Оваа поставка останува на вашиот мајчин јазик за секогаш да можете да ја најдете.)"
 }

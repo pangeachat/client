@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:41.272803",
+    "@@last_modified": "2026-08-13 15:50:50.779828",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9791,5 +9791,6 @@
     "shareAnalytics": "Del analyser",
     "courseNoLongerAvailableTitle": "Kurset er ikke tilgjengelig",
     "courseDeletedDialogDesc": "Dette kurset er slettet.",
-    "pingedActivity": "Pinget aktivitet"
+    "pingedActivity": "Pinget aktivitet",
+    "appInTargetLanguageStaysInBaseLanguage": "(Denne innstillingen forblir på morsmålet ditt, slik at du alltid kan finne den.)"
 }

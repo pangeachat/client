@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-12 14:33:43.862294",
+    "@@last_modified": "2026-08-13 15:50:53.622041",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10035,5 +10035,6 @@
     "shareAnalytics": "Analizleri Paylaş",
     "courseNoLongerAvailableTitle": "Kurs kullanılamıyor",
     "courseDeletedDialogDesc": "Bu kurs silindi.",
-    "pingedActivity": "Etkinlik pinglendi"
+    "pingedActivity": "Etkinlik pinglendi",
+    "appInTargetLanguageStaysInBaseLanguage": "(Bu ayar, her zaman bulabilmeniz için ana dilinizde kalır.)"
 }

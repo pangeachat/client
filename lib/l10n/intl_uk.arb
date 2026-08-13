@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-12 14:33:44.007796",
+    "@@last_modified": "2026-08-13 15:50:53.789055",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9734,5 +9734,6 @@
     "shareAnalytics": "Поділитися аналітикою",
     "courseNoLongerAvailableTitle": "Курс недоступний",
     "courseDeletedDialogDesc": "Цей курс було видалено.",
-    "pingedActivity": "Діяльність, що була відзначена"
+    "pingedActivity": "Діяльність, що була відзначена",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ця настройка залишається вашою рідною мовою, щоб ви завжди могли її знайти.)"
 }

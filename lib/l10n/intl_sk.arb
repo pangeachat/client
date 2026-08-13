@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-12 14:33:42.301931",
+    "@@last_modified": "2026-08-13 15:50:52.292924",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10679,5 +10679,6 @@
     "shareAnalytics": "Zdieľať analýzy",
     "courseNoLongerAvailableTitle": "Kurz nedostupný",
     "courseDeletedDialogDesc": "Tento kurz bol vymazaný.",
-    "pingedActivity": "Aktivita s upozornením"
+    "pingedActivity": "Aktivita s upozornením",
+    "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavenie zostane vo vašom rodnom jazyku, aby ste ho vždy našli.)"
 }

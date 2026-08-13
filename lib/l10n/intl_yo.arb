@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-12 14:33:44.445082",
+    "@@last_modified": "2026-08-13 15:50:54.399895",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Pín Àtúpalẹ̀",
     "courseNoLongerAvailableTitle": "Ìdánilẹ́kọ̀ọ́ kò sí mọ́",
     "courseDeletedDialogDesc": "Wọ́n ti pa ìdánilẹ́kọ̀ọ́ yìí rẹ́.",
-    "pingedActivity": "Iṣẹ-ṣiṣe ti a fi ranṣẹ"
+    "pingedActivity": "Iṣẹ-ṣiṣe ti a fi ranṣẹ",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ètò yìí wà ní èdè ìbílẹ̀ rẹ kí o lè rí i nígbà gbogbo.)"
 }

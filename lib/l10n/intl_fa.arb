@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:37.214452",
+    "@@last_modified": "2026-08-13 15:50:47.103902",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9822,5 +9822,6 @@
     "shareAnalytics": "اشتراک‌گذاری تحلیل‌ها",
     "courseNoLongerAvailableTitle": "دوره در دسترس نیست",
     "courseDeletedDialogDesc": "این دوره حذف شده است.",
-    "pingedActivity": "فعالیت پینگ‌شده"
+    "pingedActivity": "فعالیت پینگ‌شده",
+    "appInTargetLanguageStaysInBaseLanguage": "(این تنظیمات به زبان مادری شما باقی می‌ماند تا همیشه بتوانید آن را پیدا کنید.)"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-12 14:33:39.690664",
+    "@@last_modified": "2026-08-13 15:50:49.302562",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "ចែករំលែកការវិភាគ",
     "courseNoLongerAvailableTitle": "វគ្គសិក្សាមិនមានទេ",
     "courseDeletedDialogDesc": "វគ្គសិក្សានេះត្រូវបានលុបហើយ។",
-    "pingedActivity": "សកម្មភាពដែលបានខ្ទាស់"
+    "pingedActivity": "សកម្មភាពដែលបានខ្ទាស់",
+    "appInTargetLanguageStaysInBaseLanguage": "(ការកំណត់នេះនៅតែជាភាសាកំណើតរបស់អ្នក ដូច្នេះអ្នកអាចស្វែងរកវាបានជានិច្ច។)"
 }

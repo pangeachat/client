@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-12 14:33:37.900417",
+    "@@last_modified": "2026-08-13 15:50:47.573154",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "એનાલિટિક્સ શેર કરો",
     "courseNoLongerAvailableTitle": "કોર્સ અનુપલબ્ધ છે",
     "courseDeletedDialogDesc": "આ કોર્સ ડિલીટ કરવામાં આવ્યો છે.",
-    "pingedActivity": "પિંગ કરેલી પ્રવૃત્તિ"
+    "pingedActivity": "પિંગ કરેલી પ્રવૃત્તિ",
+    "appInTargetLanguageStaysInBaseLanguage": "(આ સેટિંગ તમારી મૂળ ભાષામાં જ રહેશે જેથી તમે તેને હંમેશા શોધી શકો.)"
 }

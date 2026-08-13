@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:44.829792",
+    "@@last_modified": "2026-08-13 15:50:54.364588",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9840,5 +9840,6 @@
     "shareAnalytics": "分享分析數據",
     "courseNoLongerAvailableTitle": "課程無法使用",
     "courseDeletedDialogDesc": "此課程已刪除。",
-    "pingedActivity": "已標記的活動"
+    "pingedActivity": "已標記的活動",
+    "appInTargetLanguageStaysInBaseLanguage": "(此設定會保留為您的母語，以便您隨時找到它。)"
 }

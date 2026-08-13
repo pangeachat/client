@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-12 14:33:35.972068",
+    "@@last_modified": "2026-08-13 15:50:45.702231",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Deel Analise",
     "courseNoLongerAvailableTitle": "Kursus onbeskikbaar",
     "courseDeletedDialogDesc": "Hierdie kursus is uitgevee.",
-    "pingedActivity": "Gepingde aktiwiteit"
+    "pingedActivity": "Gepingde aktiwiteit",
+    "appInTargetLanguageStaysInBaseLanguage": "(Hierdie instelling bly in jou moedertaal sodat jy dit altyd kan vind.)"
 }

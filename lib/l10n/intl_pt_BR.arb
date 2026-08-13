@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:41.717518",
+    "@@last_modified": "2026-08-13 15:50:51.703224",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9734,5 +9734,6 @@
     "shareAnalytics": "Compartilhar Análises",
     "courseNoLongerAvailableTitle": "Curso indisponível",
     "courseDeletedDialogDesc": "Este curso foi excluído.",
-    "pingedActivity": "Atividade mencionada"
+    "pingedActivity": "Atividade mencionada",
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)"
 }

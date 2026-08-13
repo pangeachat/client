@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-12 14:33:39.488663",
+    "@@last_modified": "2026-08-13 15:50:48.617295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Deila notkunargögnum",
     "courseNoLongerAvailableTitle": "Námskeið ekki í boði",
     "courseDeletedDialogDesc": "Þessu námskeiði hefur verið eytt.",
-    "pingedActivity": "Virkni sem var pinguð"
+    "pingedActivity": "Virkni sem var pinguð",
+    "appInTargetLanguageStaysInBaseLanguage": "(Þessi stilling helst á móðurmáli þínu svo þú getir alltaf fundið hana.)"
 }

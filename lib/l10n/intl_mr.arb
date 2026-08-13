@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-12 14:33:41.139568",
+    "@@last_modified": "2026-08-13 15:50:50.326573",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "ॲनालिटिक्स शेअर करा",
     "courseNoLongerAvailableTitle": "कोर्स अनुपलब्ध",
     "courseDeletedDialogDesc": "हा कोर्स हटवला गेला आहे.",
-    "pingedActivity": "पिंग केलेली अ‍ॅक्टिव्हिटी"
+    "pingedActivity": "पिंग केलेली अ‍ॅक्टिव्हिटी",
+    "appInTargetLanguageStaysInBaseLanguage": "(ही सेटिंग तुमच्या मूळ भाषेतच राहील जेणेकरून तुम्हाला ती नेहमी सापडेल.)"
 }

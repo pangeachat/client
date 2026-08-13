@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-12 14:33:36.605253",
+    "@@last_modified": "2026-08-13 15:50:46.428084",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10654,5 +10654,6 @@
     "shareAnalytics": "Del analyser",
     "courseNoLongerAvailableTitle": "Kursus ikke tilgængeligt",
     "courseDeletedDialogDesc": "Dette kursus er blevet slettet.",
-    "pingedActivity": "Pinget aktivitet"
+    "pingedActivity": "Pinget aktivitet",
+    "appInTargetLanguageStaysInBaseLanguage": "(Denne indstilling forbliver på dit modersmål, så du altid kan finde den.)"
 }

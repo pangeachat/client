@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-12 14:33:42.989478",
+    "@@last_modified": "2026-08-13 15:50:53.093937",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "La wadaag Falanqaynta",
     "courseNoLongerAvailableTitle": "Koorsada lama heli karo",
     "courseDeletedDialogDesc": "Koorsadan waa la tirtiray.",
-    "pingedActivity": "Hawlaha la soo sheegay"
+    "pingedActivity": "Hawlaha la soo sheegay",
+    "appInTargetLanguageStaysInBaseLanguage": "(Dejintani waxay ku sii jiraysaa luqaddaada hooyo si aad mar walba u hesho.)"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-12 14:33:42.312480",
+    "@@last_modified": "2026-08-13 15:50:52.786297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Goverana Ongororo",
     "courseNoLongerAvailableTitle": "Kosi haipo",
     "courseDeletedDialogDesc": "Kosi iyi yakadzimwa.",
-    "pingedActivity": "Chiitiko chakanongedzwa"
+    "pingedActivity": "Chiitiko chakanongedzwa",
+    "appInTargetLanguageStaysInBaseLanguage": "(Iyi setingi inoramba iri mumutauro wako wekuzvarwa kuti ugone kuwana nguva dzose.)"
 }

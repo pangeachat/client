@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-12 14:33:39.662508",
+    "@@last_modified": "2026-08-13 15:50:48.937775",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Аналитикамен бөлісу",
     "courseNoLongerAvailableTitle": "Курс қолжетімсіз",
     "courseDeletedDialogDesc": "Бұл курс жойылды.",
-    "pingedActivity": "Пингтелген әрекет"
+    "pingedActivity": "Пингтелген әрекет",
+    "appInTargetLanguageStaysInBaseLanguage": "(Бұл параметр ана тіліңізде қалады, сондықтан оны әрқашан таба аласыз.)"
 }
