@@ -76,6 +76,26 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   String? activeBundle;
   // #Pangea
   static late PangeaController pangeaController;
+
+  /// Whether [pangeaController] has been assigned yet.
+  ///
+  /// It is assigned in [initState], after `initMatrix()`, but widgets build —
+  /// and repos are reached from `build()` — before that runs. Reading the
+  /// field first throws `LateInitializationError`, which escapes any caller
+  /// that is not already inside a try/catch.
+  ///
+  /// Dart exposes no initialization check for a `late` field, so the read is
+  /// the test. Caught untyped on purpose: the error the runtime throws is
+  /// `LateError` from `dart:_internal`, which application code cannot name.
+  static bool get isPangeaControllerInitialized {
+    try {
+      pangeaController;
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   static PangeaAnyState pAnyState = PangeaAnyState();
   late StreamSubscription? _uriListener;
 

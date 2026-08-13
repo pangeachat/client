@@ -8,6 +8,8 @@ import 'package:get_storage/get_storage.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_fetch_response.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_repo.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import 'fake_pangea_controller.dart';
 
 /// Regression: staging 2026-08-04.
 ///
@@ -22,10 +24,13 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 /// The fix parks a key on the ATTEMPT, before the I/O, so it is total over
 /// outcomes nobody enumerated — including ones added later.
 ///
-/// These tests drive the real singleton. `createRequests()` reaches into
-/// `MatrixState`, which does not exist under test, so every fetch fails inside
-/// `BaseRepo._fetch`'s try/catch and surfaces as `Result.error`. That is
-/// exactly the shape under test: a failing fetch must not re-arm.
+/// These tests drive the real singleton. A stub controller is installed so the
+/// repo gets past its "is `MatrixState.pangeaController` assigned yet" gate
+/// (#8339) — the stub has no access token, so `createRequests()` still fails
+/// inside `BaseRepo._fetch`'s try/catch and every fetch surfaces as
+/// `Result.error`. That is exactly the shape under test: a failing fetch must
+/// not re-arm. Without the stub every `ensure` below would decline for the
+/// wrong reason and prove nothing about backoff.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
@@ -43,7 +48,10 @@ void main() {
   final repo = ActivityPlanRepo.instance;
   var clock = DateTime(2026, 8, 4, 12);
 
-  setUpAll(() => GetStorage.init('activity_plan_storage'));
+  setUpAll(() {
+    MatrixState.pangeaController = FakePangeaController();
+    return GetStorage.init('activity_plan_storage');
+  });
 
   setUp(() {
     clock = DateTime(2026, 8, 4, 12);
