@@ -849,6 +849,11 @@ class RecordingViewModelState extends State<RecordingViewModel> {
     // Invalidate any in-flight streaming start so a pending start aborts instead
     // of falling through to the batch recorder after this teardown.
     _startGeneration++;
+    // Every send path calls cancel() AFTER awaiting onSend, so the recorder can
+    // already be gone by then (the user left the chat mid-upload). dispose() has
+    // run _reset() in that case, so there is nothing left to tear down — and
+    // setState on a defunct State throws (CLIENT-AN1).
+    if (!mounted) return;
     // Pangea#
     setState(() {
       _reset();
