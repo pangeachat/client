@@ -73,9 +73,7 @@ void main() {
     tester,
   ) async {
     await tester.pumpWidget(
-      wrap(
-        const ActivitySessionCTAButton('Join', null, icon: Icons.group),
-      ),
+      wrap(const ActivitySessionCTAButton('Join', null, icon: Icons.group)),
     );
 
     expect(find.byIcon(Icons.group), findsOneWidget);
