@@ -7,6 +7,7 @@ import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_role_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
@@ -16,6 +17,8 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_participant_indicator.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/goal_status_widget.dart';
+import 'package:fluffychat/routes/chat/choreographer/activity_orchestrator/orchestrator_room_extension.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 
 class ActivityUserSummaries extends StatelessWidget {
@@ -42,6 +45,8 @@ class ActivityUserSummaries extends StatelessWidget {
           : const SizedBox();
     }
 
+    final goals = room.ownRole?.allGoals ?? const <ActivityRoleGoal>[];
+
     return Center(
       child: Stack(
         children: [
@@ -66,6 +71,24 @@ class ActivityUserSummaries extends StatelessWidget {
                     ],
                   ),
                 ),
+                // The goal header steps aside once the summary lands, so the
+                // learner's stars come along with it (#8289).
+                if (goals.isNotEmpty)
+                  Column(
+                    spacing: 8.0,
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      for (final goal in goals)
+                        GoalStatusWidget(
+                          goal: goal,
+                          complete: room.isOwnGoalCompleted(
+                            goal.id,
+                            goalSlug: goal.goalSlug,
+                          ),
+                        ),
+                    ],
+                  ),
                 ButtonControlledCarouselView(
                   summary: summary,
                   controller: controller,
