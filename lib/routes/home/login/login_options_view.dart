@@ -64,9 +64,8 @@ class LoginOptionsViewState extends State<LoginOptionsView> {
           automaticallyImplyLeading: false,
         ),
         body: Center(
-          child: Container(
-            constraints: const BoxConstraints(maxWidth: 600, maxHeight: 600),
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 300, maxHeight: 600),
             child: Column(
               spacing: 16.0,
               mainAxisAlignment: MainAxisAlignment.end,

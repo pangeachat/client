@@ -19,7 +19,9 @@ abstract class OnboardingStep {
 
   bool get customView => false;
 
-  double get contentMaxWidth => 600.0;
+  static const double defaultContentMaxWidth = 600.0;
+
+  double get contentMaxWidth => defaultContentMaxWidth;
 
   String get stepDestination => PRoutes.chatsList;
 
