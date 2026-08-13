@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-12 14:33:36.253925",
+    "@@last_modified": "2026-08-13 15:50:45.698459",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Споделяне на анализи",
     "courseNoLongerAvailableTitle": "Курсът не е наличен",
     "courseDeletedDialogDesc": "Този курс е изтрит.",
-    "pingedActivity": "Пингната активност"
+    "pingedActivity": "Пингната активност",
+    "appInTargetLanguageStaysInBaseLanguage": "(Тази настройка остава на родния ви език, за да можете винаги да я намерите.)"
 }

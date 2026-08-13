@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-12 14:33:42.872182",
+    "@@last_modified": "2026-08-13 15:50:52.981300",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Bagikeun Analitik",
     "courseNoLongerAvailableTitle": "Kursus teu sayogi",
     "courseDeletedDialogDesc": "Kursus ieu parantos dihapus.",
-    "pingedActivity": "kagiatan anu diping"
+    "pingedActivity": "kagiatan anu diping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Setélan ieu tetep dina basa asli anjeun supados anjeun tiasa salawasna mendakanana.)"
 }

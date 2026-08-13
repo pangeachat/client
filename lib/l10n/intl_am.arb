@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-12 14:33:36.009212",
+    "@@last_modified": "2026-08-13 15:50:45.743722",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "ትንተና አጋራ",
     "courseNoLongerAvailableTitle": "ኮርስ የለም",
     "courseDeletedDialogDesc": "ይህ ኮርስ ተሰርዟል።",
-    "pingedActivity": "የተጠቆመ እንቅስቃሴ"
+    "pingedActivity": "የተጠቆመ እንቅስቃሴ",
+    "appInTargetLanguageStaysInBaseLanguage": "(ይህ ቅንብር ሁልጊዜ እንዲያገኙት በአፍ መፍቻ ቋንቋዎ ይቆያል።)"
 }

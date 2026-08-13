@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-12 14:33:37.893726",
+    "@@last_modified": "2026-08-13 15:50:46.441146",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9721,5 +9721,6 @@
     "shareAnalytics": "Analysedaten teilen",
     "courseNoLongerAvailableTitle": "Kurs nicht verfügbar",
     "courseDeletedDialogDesc": "Dieser Kurs wurde gelöscht.",
-    "pingedActivity": "Gepingte Aktivität"
+    "pingedActivity": "Gepingte Aktivität",
+    "appInTargetLanguageStaysInBaseLanguage": "(Diese Einstellung bleibt in Ihrer Muttersprache, damit Sie sie immer finden können.)"
 }

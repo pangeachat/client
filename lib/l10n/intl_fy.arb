@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-12 14:33:38.083716",
+    "@@last_modified": "2026-08-13 15:50:47.566425",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Diel Analytics",
     "courseNoLongerAvailableTitle": "Kursus net beskikber",
     "courseDeletedDialogDesc": "Dizze kursus is fuortsmiten.",
-    "pingedActivity": "Pinge aktiviteit"
+    "pingedActivity": "Pinge aktiviteit",
+    "appInTargetLanguageStaysInBaseLanguage": "(Dizze ynstelling bliuwt yn jo memmetaal, sadat jo it altyd fine kinne.)"
 }

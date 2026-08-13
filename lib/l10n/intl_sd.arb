@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-12 14:33:42.267219",
+    "@@last_modified": "2026-08-13 15:50:52.148791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "تجزيي جي ڄاڻ شيئر ڪريو",
     "courseNoLongerAvailableTitle": "ڪورس موجود ناهي",
     "courseDeletedDialogDesc": "هي ڪورس ختم ڪيو ويو آهي.",
-    "pingedActivity": "پنگ ٿيل سرگرمي"
+    "pingedActivity": "پنگ ٿيل سرگرمي",
+    "appInTargetLanguageStaysInBaseLanguage": "(هي سيٽنگ توهان جي مادري زبان ۾ رهي ٿي ته جيئن توهان ان کي هميشه ڳولي سگهو.)"
 }

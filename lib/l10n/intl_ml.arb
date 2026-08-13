@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-12 14:33:40.761430",
+    "@@last_modified": "2026-08-13 15:50:50.229622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "അനലിറ്റിക്സ് പങ്കിടുക",
     "courseNoLongerAvailableTitle": "കോഴ്‌സ് ലഭ്യമല്ല",
     "courseDeletedDialogDesc": "ഈ കോഴ്‌സ് ഇല്ലാതാക്കിയിരിക്കുന്നു.",
-    "pingedActivity": "പിംഗ് ചെയ്ത പ്രവർത്തനം"
+    "pingedActivity": "പിംഗ് ചെയ്ത പ്രവർത്തനം",
+    "appInTargetLanguageStaysInBaseLanguage": "(നിങ്ങളുടെ മാതൃഭാഷയിൽ ഈ ക്രമീകരണം നിലനിൽക്കുന്നതിനാൽ നിങ്ങൾക്ക് ഇത് എപ്പോഴും കണ്ടെത്താനാകും.)"
 }

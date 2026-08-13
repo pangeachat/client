@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-12 14:33:36.488829",
+    "@@last_modified": "2026-08-13 15:50:46.539693",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Sparte l'Analitiche",
     "courseNoLongerAvailableTitle": "Corsu micca dispunibule",
     "courseDeletedDialogDesc": "Stu corsu hè statu sguassatu.",
-    "pingedActivity": "Attività pingata"
+    "pingedActivity": "Attività pingata",
+    "appInTargetLanguageStaysInBaseLanguage": "(Stu paràmetru ferma in a vostra lingua materna per chì pudete sempre truvallu.)"
 }

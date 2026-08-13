@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-12 14:33:36.083302",
+    "@@last_modified": "2026-08-13 15:50:45.695148",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Dijeli analitiku",
     "courseNoLongerAvailableTitle": "Kurs nedostupan",
     "courseDeletedDialogDesc": "Ovaj kurs je obrisan.",
-    "pingedActivity": "Pingovana aktivnost"
+    "pingedActivity": "Pingovana aktivnost",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem maternjem jeziku kako biste je uvijek mogli pronaći.)"
 }

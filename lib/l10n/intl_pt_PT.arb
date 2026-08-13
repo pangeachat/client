@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-12 14:33:42.197745",
+    "@@last_modified": "2026-08-13 15:50:51.763538",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10651,5 +10651,6 @@
     "shareAnalytics": "Partilhar Análise",
     "courseNoLongerAvailableTitle": "Curso indisponível",
     "courseDeletedDialogDesc": "Este curso foi eliminado.",
-    "pingedActivity": "Atividade com ping"
+    "pingedActivity": "Atividade com ping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta definição permanece no seu idioma nativo para que a possa encontrar sempre.)"
 }

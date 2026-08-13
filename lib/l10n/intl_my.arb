@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-12 14:33:41.090303",
+    "@@last_modified": "2026-08-13 15:50:50.961341",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "ခွဲခြမ်းစိတ်ဖြာမှုများကို မျှဝေပါ",
     "courseNoLongerAvailableTitle": "သင်တန်းမရနိုင်တော့ပါ",
     "courseDeletedDialogDesc": "ဤသင်တန်းကို ဖျက်လိုက်ပါပြီ။",
-    "pingedActivity": "ပင်းခေါ်ထားသည့် လုပ်ဆောင်ချက်"
+    "pingedActivity": "ပင်းခေါ်ထားသည့် လုပ်ဆောင်ချက်",
+    "appInTargetLanguageStaysInBaseLanguage": "(ဤဆက်တင်သည် သင်အမြဲရှာဖွေနိုင်ရန် သင့်မိခင်ဘာသာစကားအတိုင်း ရှိနေပါမည်။)"
 }

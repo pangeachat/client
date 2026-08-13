@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-12 14:33:40.331956",
+    "@@last_modified": "2026-08-13 15:50:49.998269",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Zarao ny Analytics",
     "courseNoLongerAvailableTitle": "Tsy misy intsony ny taranja",
     "courseDeletedDialogDesc": "Voafafa ity taranja ity.",
-    "pingedActivity": "Hetsika voatsindry"
+    "pingedActivity": "Hetsika voatsindry",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ity toe-javatra ity dia mijanona amin'ny fitenin-drazanao mba ho hitanao foana.)"
 }

@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-12 14:33:35.950891",
+    "@@last_modified": "2026-08-13 15:50:45.722285",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9748,5 +9748,6 @@
     "shareAnalytics": "Падзяліцца аналітыкай",
     "courseNoLongerAvailableTitle": "Курс недаступны",
     "courseDeletedDialogDesc": "Гэты курс быў выдалены.",
-    "pingedActivity": "Актыўнасць з пінкам"
+    "pingedActivity": "Актыўнасць з пінкам",
+    "appInTargetLanguageStaysInBaseLanguage": "(Гэтая налада застаецца на вашай роднай мове, каб вы заўсёды маглі яе знайсці.)"
 }

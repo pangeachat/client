@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-12 14:33:38.639972",
+    "@@last_modified": "2026-08-13 15:50:48.182232",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10170,5 +10170,6 @@
     "shareAnalytics": "Dijeli analitiku",
     "courseNoLongerAvailableTitle": "Tečaj nije dostupan",
     "courseDeletedDialogDesc": "Ovaj je tečaj izbrisan.",
-    "pingedActivity": "Pingana aktivnost"
+    "pingedActivity": "Pingana aktivnost",
+    "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem materinjem jeziku kako biste je uvijek mogli pronaći.)"
 }

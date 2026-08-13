@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:38.866378",
+    "@@last_modified": "2026-08-13 15:50:48.281114",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9807,5 +9807,6 @@
     "shareAnalytics": "Bagikan Analitik",
     "courseNoLongerAvailableTitle": "Kursus tidak tersedia",
     "courseDeletedDialogDesc": "Kursus ini telah dihapus.",
-    "pingedActivity": "Aktivitas yang di-ping"
+    "pingedActivity": "Aktivitas yang di-ping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Pengaturan ini tetap dalam bahasa ibu Anda agar Anda selalu dapat menemukannya.)"
 }

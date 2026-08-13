@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-12 14:33:39.530292",
+    "@@last_modified": "2026-08-13 15:50:48.765793",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10503,5 +10503,6 @@
     "shareAnalytics": "分析を共有",
     "courseNoLongerAvailableTitle": "コースを利用できません",
     "courseDeletedDialogDesc": "このコースは削除されました。",
-    "pingedActivity": "アクティビティをピン留めしました"
+    "pingedActivity": "アクティビティをピン留めしました",
+    "appInTargetLanguageStaysInBaseLanguage": "（この設定は、いつでも見つけられるように母国語のままになります。）"
 }

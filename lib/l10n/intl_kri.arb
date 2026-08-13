@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-12 14:33:40.012439",
+    "@@last_modified": "2026-08-13 15:50:49.587719",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Share Analytics",
     "courseNoLongerAvailableTitle": "Di kos nɔ de igen",
     "courseDeletedDialogDesc": "Dɛn dilit dis kos.",
-    "pingedActivity": "Pinged aktiviti"
+    "pingedActivity": "Pinged aktiviti",
+    "appInTargetLanguageStaysInBaseLanguage": "(Dis setin de na yu yon langwej so yu go ebul fɛn am ɔltɛm.)"
 }

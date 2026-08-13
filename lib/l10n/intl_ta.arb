@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:43.152995",
+    "@@last_modified": "2026-08-13 15:50:53.042982",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9826,5 +9826,6 @@
     "shareAnalytics": "பகுப்பாய்வுகளைப் பகிரவும்",
     "courseNoLongerAvailableTitle": "பாடநெறி கிடைக்கவில்லை",
     "courseDeletedDialogDesc": "இந்த பாடநெறி நீக்கப்பட்டுவிட்டது.",
-    "pingedActivity": "பிங் செய்யப்பட்ட செயல்பாடு"
+    "pingedActivity": "பிங் செய்யப்பட்ட செயல்பாடு",
+    "appInTargetLanguageStaysInBaseLanguage": "(இந்த அமைப்பு உங்கள் தாய்மொழியிலேயே இருக்கும், எனவே நீங்கள் அதை எப்போதும் கண்டறியலாம்.)"
 }
