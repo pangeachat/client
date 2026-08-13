@@ -219,17 +219,11 @@ class _SmallDotContent extends StatelessWidget {
   );
 }
 
-/// The mid-pin glyph, matching its large-card counterpart icon-for-icon
-/// (world-map.instructions.md, "Pin display"): `available` a plus, `joinable`
-/// a door, `ongoingPending` an hourglass, `ongoingActive` a chat bubble.
-/// `inProgress` renders no glyph — its body is a gold star, not a coloured pin.
-IconData? _mediumGlyph(ActivityPinState state) => switch (state) {
-  ActivityPinState.available => Icons.add,
-  ActivityPinState.joinable => Icons.meeting_room,
-  ActivityPinState.ongoingPending => Icons.hourglass_bottom,
-  ActivityPinState.ongoingActive => Icons.chat_bubble_outline,
-  ActivityPinState.inProgress => null,
-};
+/// The mid-pin glyph (world-map.instructions.md, "Pin display"): each state's
+/// shared [ActivityPinState.icon], except `inProgress` (Completed) whose pin
+/// body is a gold star rather than a coloured pin, so it shows no mid-glyph.
+IconData? _mediumGlyph(ActivityPinState state) =>
+    state == ActivityPinState.inProgress ? null : state.icon;
 
 /// The mid-pin "num/num" participant-count label — `joinable`/`ongoingPending`
 /// only (never `ongoingActive`, which shows no count — world-map.instructions.md,

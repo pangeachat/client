@@ -13,6 +13,8 @@ One widget renders in two hosts, and the platform difference lives in the host, 
 
 On mobile the sheet has **two visible stops**: a **minimized** rest and **full**. The mid-level was dropped — its only extra over minimized was a sliver of the media, which isn't worth a stop. Minimized shows just the header, info row, and CTA (no media, description, or roles); full is the whole plan. Dragging up (or tapping the minimized sheet's dead space) opens full; dragging down past minimized dismisses the sheet (the Google-Maps pull-away). Under the hood this reuses the cavity's `half` stop, sized to the minimized height via `preferredCavityHeightPx`, so there is no taller stop between it and `full` ([`NavCavityHeight`](../../lib/widgets/layouts/mobile_nav_widget.dart)); `collapsed` remains the drag-down dismissal. Heights are approximate, so a sliver may peek — acceptable, and preferable to snapping to a content boundary.
 
+The sheet **never remembers a manual resize**: it always re-opens at the minimized rest, so a maximized activity that is closed and reopened comes back minimized (`rememberHeight` is off for the activity cavity in [`workspace_shell.dart`](../../lib/widgets/layouts/workspace_shell.dart)).
+
 The reason this needs **no** scroll-vs-grow coordination: the minimized view has no scrollable content at all. A `LayoutBuilder` in the start page drops the media/description/roles below a height threshold (`kActivityCompactMaxHeight`), exactly as the course card's compact peek does ([`_kCompactCardMaxHeight`](../../lib/routes/chat/chat_details/space_details_content.dart)) — so at minimized an upward drag simply grows the sheet (nothing competes for the gesture), and the content mounts and scrolls once the sheet is full. Tap-to-expand rides the same `tapBodyExpands` path the course peek uses.
 
 ## Top row and info row
@@ -32,11 +34,18 @@ Below the info row the middle content (media carousel, description, suggested vo
 - otherwise, if any **joinable** open session exists, **Join open session** is primary (Start becomes a following chip);
 - otherwise **Start** is primary.
 
-A **Completed** chip appears only when completed sessions exist. Every chip already has a destination — the selection logic is [`_NotStartedSessionCTAButtons`](../../lib/routes/chat/activity_sessions/activity_session_button_widget.dart) and the state machine in [`activity_session_start_page.dart`](../../lib/routes/chat/activity_sessions/activity_session_start_page.dart); this change is about layout, not about adding destinations. Every non-primary chip — including share and flag — uses the light filled-container style, not a bare outline.
+When the chips fit the row, the primary CTA **stretches to fill** the free width; the row falls back to horizontal scrolling only when they overflow.
 
-**On web** the CTA section keeps its current vertical layout. The only move is **share** and **flag**: they leave the app bar and become two de-emphasized bare-outline container buttons placed directly under the info row (as in the web mock). There is no horizontal CTA row on web.
+A **Completed** chip appears only when the viewer has completed sessions to review — their own, or (for a course admin) everyone's with their own listed first — and opens the completed-sessions subpage. Every chip already has a destination — the selection logic is [`_NotStartedSessionCTAButtons`](../../lib/routes/chat/activity_sessions/activity_session_button_widget.dart) and the state machine in [`activity_session_start_page.dart`](../../lib/routes/chat/activity_sessions/activity_session_start_page.dart); this change is about layout, not about adding destinations. Every non-primary chip — including share and flag — uses the light filled-container style, not a bare outline.
 
-Share is new to this page — today only a flag button and an unrelated in-session popup menu exist ([`ActivitySessionPopupMenu`](../../lib/routes/chat/activity_sessions/activity_session_popup_menu.dart)); it reuses the workspace-level share plumbing.
+When a session still needs more participants, the blocking notice keeps **Invite** at every size but drops **pick a different activity** at the minimized rest — it only navigates away and wouldn't fit the short sheet — restoring it once the sheet is maximized (and always on web).
+
+**On web** the CTA section is a vertical list carrying the same colour hierarchy as the mobile row: exactly one **primary** (darker, filled) action on top — chosen by the same ongoing → Join → Start rule — with every following action a fully filled but **lighter** (primaryContainer) button, not a bare outline. A **Completed** button joins the list on the same terms as the mobile chip. The waiting room is the one exception to the single-primary rule: ping the course, play with the bot, and invite a friend are equally valid ways forward, so none leads and all take the lighter style. There is no horizontal CTA row on web.
+
+**Share** and **flag** do not sit in the web CTA list. **Share** is an app-bar action to the left of focus. **Flag** sits in the top-right of the text-content (description) section under the hero — so it rides the main step, not the join/completed sub-pages, where there is no description to anchor it. On mobile both stay as chips appended to the bottom CTA row.
+
+While a confirmed session waits to fill (chat not started), a **"…"** menu takes the app-bar share slot on web — and is net-new on mobile, which has no app-bar share — offering **Leave**, plus **Delete** for the room's admin (the same exit chat gives). It displaces share here so inviting people isn't confused with sharing the link.
+
 
 ## Owning the container: nav rail and analytics bar
 

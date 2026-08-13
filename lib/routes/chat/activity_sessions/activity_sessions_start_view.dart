@@ -89,6 +89,9 @@ class ActivitySessionStartView extends StatelessWidget {
 
         return Scaffold(
           appBar: AppBar(
+            scrolledUnderElevation: FluffyThemes.isColumnMode(context)
+                ? 0.0
+                : null,
             leadingWidth: 52.0,
             // With no plan, an archived session falls back to the room name —
             // it was set from the plan's title at room creation.
@@ -157,6 +160,20 @@ class ActivitySessionStartView extends StatelessWidget {
               ),
             ),
             actions: [
+              // While a confirmed session waits to fill, the "…" menu (leave /
+              // delete) stands in for share on web and is a net-new action on
+              // mobile — so nobody confuses sharing the activity with inviting
+              // people into the room. See activity-start-page.instructions.md.
+              if (controller.isPendingSession)
+                _WaitingRoomMenuButton(controller)
+              // Web hosts share in the app bar, left of focus; mobile keeps it
+              // as a chip in the bottom CTA row instead.
+              else if (FluffyThemes.isColumnMode(context))
+                IconButton(
+                  tooltip: L10n.of(context).share,
+                  icon: const Icon(Icons.share_outlined),
+                  onPressed: controller.copyActivityLink,
+                ),
               // The one camera path that zooms (#7616): selection only pans,
               // so this button zoom+pans the map to the activity's pin.
               IconButton(
@@ -197,12 +214,12 @@ class ActivitySessionStartView extends StatelessWidget {
                     final compact =
                         constraints.maxHeight.isFinite &&
                         constraints.maxHeight < kActivityCompactMaxHeight;
-                    // Snug: no scroll content, so no Expanded — the CTA sits
-                    // directly under the info row (mirrors the course card's
-                    // compact peek).
+                    // No scroll content at this rest, so fill the short sheet and
+                    // space the info row and CTA evenly down it — the slack reads
+                    // as breathing room rather than a gap under the CTA.
                     if (compact) {
                       return Column(
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           _ActivityStartInfoRow(activity: activity),
                           ActivitySessionButtons(
@@ -216,11 +233,6 @@ class ActivitySessionStartView extends StatelessWidget {
                     return Column(
                       children: [
                         _ActivityStartInfoRow(activity: activity),
-                        // Web keeps the vertical CTA at the bottom; share and flag
-                        // sit here as de-emphasized buttons instead. On mobile they
-                        // are chips in the bottom CTA row.
-                        if (FluffyThemes.isColumnMode(context))
-                          _ActivityStartShareFlagRow(controller),
                         Expanded(
                           child: SingleChildScrollView(
                             controller: controller.scrollController,
@@ -248,26 +260,57 @@ class ActivitySessionStartView extends StatelessWidget {
                                             CrossAxisAlignment.start,
                                         spacing: 12.0,
                                         children: [
-                                          Linkify(
-                                            text: activity.description,
-                                            options: const LinkifyOptions(
-                                              humanize: false,
-                                            ),
-                                            useMouseRegion: true,
-                                            style: theme.textTheme.bodyLarge,
-                                            linkStyle: theme.textTheme.bodyLarge
-                                                ?.copyWith(
-                                                  color:
-                                                      theme.colorScheme.primary,
-                                                  decoration:
-                                                      TextDecoration.underline,
-                                                  decorationColor:
-                                                      theme.colorScheme.primary,
+                                          Row(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Expanded(
+                                                child: Linkify(
+                                                  text: activity.description,
+                                                  options: const LinkifyOptions(
+                                                    humanize: false,
+                                                  ),
+                                                  useMouseRegion: true,
+                                                  style:
+                                                      theme.textTheme.bodyLarge,
+                                                  linkStyle: theme
+                                                      .textTheme
+                                                      .bodyLarge
+                                                      ?.copyWith(
+                                                        color: theme
+                                                            .colorScheme
+                                                            .primary,
+                                                        decoration:
+                                                            TextDecoration
+                                                                .underline,
+                                                        decorationColor: theme
+                                                            .colorScheme
+                                                            .primary,
+                                                      ),
+                                                  onOpen: (link) => UrlLauncher(
+                                                    context,
+                                                    link.url,
+                                                  ).launchUrl(),
                                                 ),
-                                            onOpen: (link) => UrlLauncher(
-                                              context,
-                                              link.url,
-                                            ).launchUrl(),
+                                              ),
+                                              // Web relocates the flag out of the
+                                              // old share/flag row to here, the
+                                              // top-right of the text content;
+                                              // mobile keeps its CTA-row chip.
+                                              if (FluffyThemes.isColumnMode(
+                                                context,
+                                              ))
+                                                IconButton(
+                                                  tooltip: L10n.of(
+                                                    context,
+                                                  ).feedbackButton,
+                                                  icon: const Icon(
+                                                    Icons.flag_outlined,
+                                                  ),
+                                                  onPressed: controller
+                                                      .submitActivityFeedback,
+                                                ),
+                                            ],
                                           ),
                                           if (activity.vocab.isNotEmpty)
                                             ActivityVocabWidget(
@@ -313,6 +356,56 @@ class ActivitySessionStartView extends StatelessWidget {
   }
 }
 
+enum _WaitingRoomAction { leave, delete }
+
+/// The waiting-room "…" menu in the app bar: leave the session, or — if you own
+/// the room ([ActivitySessionStartState.canDeleteSession]) — delete it for
+/// everyone. The same exit chat offers, surfaced while a confirmed session
+/// waits to fill. See activity-start-page.instructions.md.
+class _WaitingRoomMenuButton extends StatelessWidget {
+  final ActivitySessionStartState controller;
+
+  const _WaitingRoomMenuButton(this.controller);
+
+  @override
+  Widget build(BuildContext context) {
+    return PopupMenuButton<_WaitingRoomAction>(
+      tooltip: L10n.of(context).moreOptions,
+      onSelected: (action) {
+        switch (action) {
+          case _WaitingRoomAction.leave:
+            controller.leaveSession();
+          case _WaitingRoomAction.delete:
+            controller.deleteSession();
+        }
+      },
+      itemBuilder: (context) => [
+        PopupMenuItem(
+          value: _WaitingRoomAction.leave,
+          child: Row(
+            children: [
+              const Icon(Icons.logout_outlined),
+              const SizedBox(width: 12.0),
+              Text(L10n.of(context).leave),
+            ],
+          ),
+        ),
+        if (controller.canDeleteSession)
+          PopupMenuItem(
+            value: _WaitingRoomAction.delete,
+            child: Row(
+              children: [
+                const Icon(Icons.delete_outlined),
+                const SizedBox(width: 12.0),
+                Text(L10n.of(context).delete),
+              ],
+            ),
+          ),
+      ],
+    );
+  }
+}
+
 /// The always-visible second row under the title: who made the activity and
 /// its at-a-glance facts (L2, level, participant count, rating). It sits above
 /// the scrollable body so a map explorer sees the essentials without expanding
@@ -329,7 +422,8 @@ class _ActivityStartInfoRow extends StatelessWidget {
     final language = PLanguageStore.byLangCode(activity.req.targetLanguage);
     final onVariant = theme.colorScheme.onSurfaceVariant;
 
-    return Padding(
+    return Container(
+      color: theme.colorScheme.surface,
       padding: const EdgeInsets.fromLTRB(12.0, 0.0, 8.0, 8.0),
       child: Row(
         children: [
@@ -418,52 +512,6 @@ class _IconLabel extends StatelessWidget {
   }
 }
 
-/// Web's share and flag actions, sitting under the info row as two
-/// de-emphasized bare-outline buttons (mobile puts them in the bottom CTA row
-/// instead). See activity-start-page.instructions.md.
-class _ActivityStartShareFlagRow extends StatelessWidget {
-  final ActivitySessionStartState controller;
-
-  const _ActivityStartShareFlagRow(this.controller);
-
-  @override
-  Widget build(BuildContext context) {
-    final l10n = L10n.of(context);
-    final shape = RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(20.0),
-    );
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(12.0, 0.0, 12.0, 8.0),
-      child: Row(
-        spacing: 8.0,
-        children: [
-          Expanded(
-            child: Tooltip(
-              message: l10n.share,
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(shape: shape),
-                onPressed: controller.copyActivityLink,
-                child: const Icon(Icons.share_outlined),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Tooltip(
-              message: l10n.feedbackButton,
-              child: OutlinedButton(
-                style: OutlinedButton.styleFrom(shape: shape),
-                onPressed: controller.submitActivityFeedback,
-                child: const Icon(Icons.flag_outlined),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
 /// Archived body for a removed activity with no plan recoverable from room
 /// state (the last rung of the fallback ladder in activities.instructions.md):
 /// the "no longer supported" notice, plus whatever the room itself holds —
@@ -508,7 +556,7 @@ class _ArchivedSessionFallbackBody extends StatelessWidget {
             if (controller.canLeaveArchivedSession) ...[
               ActivitySessionCTAButton(
                 L10n.of(context).leave,
-                controller.leaveArchivedSession,
+                controller.leaveSession,
               ),
               const SizedBox(height: 16.0),
             ],

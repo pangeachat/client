@@ -69,6 +69,19 @@ enum ActivityPinState {
     ActivityPinState.available => l10n.availableLabel,
   };
 
+  /// The glyph for this state — the single source of truth for the status
+  /// iconography, shared by the map pin, the status filter, the activity
+  /// suggestion card, and the start-page CTA row. `inProgress` (Completed) is a
+  /// star; the pin renders it as its gold body rather than a glyph, so the
+  /// pin's mid-glyph suppresses it (see `world_map_state_dot.dart`).
+  IconData get icon => switch (this) {
+    ActivityPinState.available => Icons.add,
+    ActivityPinState.inProgress => Icons.star,
+    ActivityPinState.joinable => Icons.meeting_room,
+    ActivityPinState.ongoingPending => Icons.hourglass_bottom,
+    ActivityPinState.ongoingActive => Icons.chat_bubble_outline,
+  };
+
   /// The accent used for a large card's border / foreground — the state hue.
   Color get accent => color;
 
