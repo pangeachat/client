@@ -13,12 +13,19 @@ import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/pick_language_onboarding_step.dart';
 import 'package:fluffychat/routes/onboarding/user_type_enum.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
+
+// This step's page is capped wider than the rest of onboarding (840, for the
+// language grid), so its bottom controls take the standard step's inner width —
+// the shared cap less the page shell's 16px side padding — to come out the same
+// size as every other step's CTA.
+const double _controlMaxWidth = OnboardingStep.defaultContentMaxWidth - 32.0;
 
 class PickLanguageStepView extends StatefulWidget {
   final PickLanguageOnboardingStep step;
@@ -263,10 +270,13 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                                     }, childCount: filtered.length),
                                     gridDelegate:
                                         const SliverGridDelegateWithMaxCrossAxisExtent(
-                                          maxCrossAxisExtent: 180.0,
+                                          // Bigger tiles than the old 180 so
+                                          // cells stay legible as the grid
+                                          // densens.
+                                          maxCrossAxisExtent: 220.0,
                                           mainAxisSpacing: 12.0,
                                           crossAxisSpacing: 12.0,
-                                          childAspectRatio: 1.1,
+                                          mainAxisExtent: 150.0,
                                         ),
                                   );
                                 },
@@ -287,16 +297,24 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
                   builder: (context, _) => AnimatedSize(
                     duration: FluffyThemes.animationDuration,
                     child: _hasIdenticalLanguages
-                        ? Padding(
-                            padding: EdgeInsets.only(top: 12.0),
-                            child: PLanguageDropdown(
-                              languages: _languages,
-                              onChange: _setBaseLanguage,
-                              initialLanguage: _selectedBaseLanguage.value,
-                              decorationText: L10n.of(context).alreadySpeak,
-                              error: widget.error is IdenticalLanguageException
-                                  ? L10n.of(context).noIdenticalLanguages
-                                  : null,
+                        ? Center(
+                            child: ConstrainedBox(
+                              constraints: const BoxConstraints(
+                                maxWidth: _controlMaxWidth,
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.only(top: 12.0),
+                                child: PLanguageDropdown(
+                                  languages: _languages,
+                                  onChange: _setBaseLanguage,
+                                  initialLanguage: _selectedBaseLanguage.value,
+                                  decorationText: L10n.of(context).alreadySpeak,
+                                  error:
+                                      widget.error is IdenticalLanguageException
+                                      ? L10n.of(context).noIdenticalLanguages
+                                      : null,
+                                ),
+                              ),
                             ),
                           )
                         : const SizedBox(),
@@ -311,31 +329,36 @@ class PickLanguageStepViewState extends State<PickLanguageStepView> {
             _selectedBaseLanguage,
             _selectedTargetLanguage,
           ]),
-          builder: (context, _) => ElevatedButton(
-            onPressed: _step.enableGoForward ? widget.forward : null,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: theme.colorScheme.primaryContainer,
-              foregroundColor: theme.colorScheme.onPrimaryContainer,
-              minimumSize: const Size.fromHeight(48),
-            ),
-            child: SizedBox(
-              height: 24,
-              child: Center(
-                child: AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 200),
-                  child: widget.loading
-                      ? SizedBox(
-                          key: const ValueKey('loading'),
-                          width: double.infinity,
-                          child: const LinearProgressIndicator(),
-                        )
-                      : Text(
-                          widget.hasNextStep
-                              ? _step.nextStepText(L10n.of(context))
-                              : _step.lastStepText(L10n.of(context)),
-                          key: const ValueKey('text'),
-                          textAlign: TextAlign.center,
-                        ),
+          builder: (context, _) => Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: _controlMaxWidth),
+              child: ElevatedButton(
+                onPressed: _step.enableGoForward ? widget.forward : null,
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: theme.colorScheme.primaryContainer,
+                  foregroundColor: theme.colorScheme.onPrimaryContainer,
+                  minimumSize: const Size.fromHeight(48),
+                ),
+                child: SizedBox(
+                  height: 24,
+                  child: Center(
+                    child: AnimatedSwitcher(
+                      duration: const Duration(milliseconds: 200),
+                      child: widget.loading
+                          ? SizedBox(
+                              key: const ValueKey('loading'),
+                              width: double.infinity,
+                              child: const LinearProgressIndicator(),
+                            )
+                          : Text(
+                              widget.hasNextStep
+                                  ? _step.nextStepText(L10n.of(context))
+                                  : _step.lastStepText(L10n.of(context)),
+                              key: const ValueKey('text'),
+                              textAlign: TextAlign.center,
+                            ),
+                    ),
+                  ),
                 ),
               ),
             ),

@@ -31,7 +31,7 @@ class SignupPageView extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: SizedBox(
-              width: 450,
+              width: 600,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
