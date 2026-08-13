@@ -21,10 +21,18 @@ class LearningSettingsViewModel extends ChangeNotifier {
 
   LearningSettingsViewModel(Profile profile, {this.onUpdateProfile}) {
     _updatedProfile = profile;
+    final userController = MatrixState.pangeaController.userController;
+    _profileListeners = [
+      userController.settingsUpdateStream.stream.listen(
+        (_) => _onProfileSynced(),
+      ),
+      userController.languageStream.stream.listen((_) => _onProfileSynced()),
+    ];
     refreshKnownGoodVoice();
   }
 
   Timer? _textDebounce;
+  late final List<StreamSubscription> _profileListeners;
   bool _hasResetTooltips = false;
   bool _hasKnownGoodVoice = false;
   bool _disposed = false;
@@ -32,8 +40,30 @@ class LearningSettingsViewModel extends ChangeNotifier {
   @override
   void dispose() {
     _textDebounce?.cancel();
+    for (final listener in _profileListeners) {
+      listener.cancel();
+    }
     _disposed = true;
     super.dispose();
+  }
+
+  /// The profile also changes from outside this page — the word card's audio
+  /// prompt writes the same profile, as do the language-mismatch prompts and
+  /// other devices. Adopt what synced so the tiles stop showing the snapshot
+  /// this page opened with (#8334).
+  void _onProfileSynced() {
+    final synced = MatrixState.pangeaController.userController.profile;
+    if (synced == _updatedProfile) return;
+
+    final targetLanguageChanged =
+        synced.userSettings.targetLanguage !=
+        _updatedProfile.userSettings.targetLanguage;
+
+    _updatedProfile = synced;
+    notifyListeners();
+
+    // The voice gate is per-language, so a new target language re-runs it.
+    if (targetLanguageChanged) refreshKnownGoodVoice();
   }
 
   bool get hasResetTooltips => _hasResetTooltips;

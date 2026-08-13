@@ -508,7 +508,7 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   /// `kActivityCompactMaxHeight` in activity_sessions_start_view.dart, which
   /// tells the body to drop its content below this height. See
   /// activity-start-page.instructions.md.
-  static const double _activitySheetMinimizedHeight = 180.0;
+  static const double _activitySheetMinimizedHeight = 200.0;
 
   GoRouterState get state => widget.state;
   _ShellLayout get layout => widget.layout;
@@ -868,6 +868,11 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
             ActivitySheetFull.set(value: isActivityCavity && full),
         maxHeightFraction: maxHeightFraction,
         preferredCavityHeightPx: preferredCavityHeight,
+        // The activity plan's open stop is deterministic: it never remembers a
+        // manual resize, so a maximized activity reopens minimized rather than
+        // carrying its height over (activity-start-page.instructions.md). Other
+        // cavities keep their remembered height.
+        rememberHeight: !isActivityCavity,
         topAttachment: searchBar,
         keyboardInset: widget.keyboardInset,
       ),

@@ -1,13 +1,27 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_test/flutter_test.dart';
+import 'package:matrix/matrix.dart' show Client;
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/features/user/user_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/autocorrect_settings_tile.dart';
 import 'package:fluffychat/routes/settings/settings_learning/enable_autocorrect_dialog.dart';
 import 'package:fluffychat/routes/settings/settings_learning/learning_settings_view_model.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
+import 'package:fluffychat/widgets/matrix.dart';
+import '../utils/test_client.dart';
+
+class _FakeMatrixState extends MatrixState {
+  _FakeMatrixState(this._client);
+
+  final Client _client;
+
+  @override
+  Client get client => _client;
+}
 
 /// #8112 — on web the autocorrect toggle is disabled with a "Mobile only"
 /// subtitle instead of opening a warning dialog. Tapping the disabled tile
@@ -18,6 +32,21 @@ void main() {
   const mobileOnlyLabel = 'Mobile only';
   const snackBarWarning =
       'Device autocorrect is only available on the mobile app.';
+
+  late Client client;
+
+  setUpAll(() async {
+    // The view model listens to the user controller's profile streams, so it
+    // needs a controller to reach through MatrixState. The controller builds a
+    // PLanguageStore, which reads its cache from shared preferences.
+    SharedPreferences.setMockInitialValues({});
+    client = await prepareTestClient();
+    MatrixState.pangeaController = PangeaController(
+      matrixState: _FakeMatrixState(client),
+    );
+  });
+
+  tearDownAll(() => client.dispose());
 
   LearningSettingsViewModel makeViewModel({bool autocorrectOn = false}) =>
       LearningSettingsViewModel(

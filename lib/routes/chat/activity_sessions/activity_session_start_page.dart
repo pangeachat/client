@@ -14,7 +14,10 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_session_discovery.dart';
 import 'package:fluffychat/features/activity_sessions/discovered_sessions_cache.dart';
+import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
+import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summaries_model.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
@@ -24,12 +27,14 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_dialog.dart';
 import 'package:fluffychat/pangea/common/widgets/feedback_response_dialog.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/archived_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/confirmed_role_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/full_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/not_started_session_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/select_role_session_controller.dart';
+import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
@@ -346,15 +351,24 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     }
   }
 
-  /// Copy the activity's standalone shareable link (`/<activityId>`, the
-  /// inbound contract folded by LegacyRedirects) to the clipboard. Mirrors the
-  /// course [ShareRoomButton]: copy-only (never the OS share sheet), and
+  /// Copy the activity's standalone shareable link to the clipboard. Mirrors
+  /// the course [ShareRoomButton]: copy-only (never the OS share sheet), and
   /// `hideCurrentSnackBar` + `showCloseIcon` so rapid taps replace the toast
   /// (with a dismissal X) instead of queueing a backlog. See
   /// activity-start-page.instructions.md.
+  ///
+  /// Path URL strategy (main.dart) means the link carries no `#` — on web a
+  /// fragment is ignored (`shouldNavigateToIncomingUri` is false there) and the
+  /// link would dead-end on the world map. A first-class UUID rides the pretty
+  /// `/<uuid>` contract that LegacyRedirects folds in.
   Future<void> copyActivityLink() async {
+    final activityId = widget.activityId;
+    final path = PRoutes.isWorldObjectId(activityId)
+        ? PRoutes.worldObject(activityId)
+        : '${PRoutes.world}?left='
+              '${ActivityPanelToken(ActivityTokenParam(activityId: activityId)).encode()}';
     await Clipboard.setData(
-      ClipboardData(text: '${Environment.frontendURL}/#/${widget.activityId}'),
+      ClipboardData(text: '${Environment.frontendURL}$path'),
     );
     if (!mounted) return;
     final messenger = ScaffoldMessenger.of(context);
@@ -426,21 +440,56 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
     membership: activityRoom?.membership,
   );
 
-  /// Leave the session room of a removed activity and close its panel — the
-  /// only exit for a session that can never be continued (#8064). Same
-  /// confirm-then-wait-for-sync flow as the chat's own leave, so the room is
-  /// gone from the list before the panel closes. A session this old is often
-  /// one the homeserver has already forgotten, hence
-  /// [LeaveRoomExtension.leaveIgnoringUnknownRoom].
-  Future<void> leaveArchivedSession() async {
+  /// The learner has confirmed a role and is waiting for the room to fill, but
+  /// the activity chat hasn't begun — the one live state where they can still
+  /// back out via the app-bar "…" menu. See activity-start-page.instructions.md.
+  bool get isPendingSession {
+    final room = activityRoom;
+    return _sessionState == SessionState.confirmedRole &&
+        room != null &&
+        !room.isActivityStarted;
+  }
+
+  /// Only the room's admin (its creator, under the default power levels) can
+  /// delete it for everyone; a plain member can only leave — mirroring chat's
+  /// own leave/delete gating.
+  bool get canDeleteSession => activityRoom?.isRoomAdmin == true;
+
+  /// Leave the current session room and close its panel. Shared by the
+  /// waiting-room menu and the archived fallback's lone exit — a session that
+  /// can never continue would otherwise sit in the chat list forever (#8064).
+  /// An archived session is often one the homeserver has already forgotten, so
+  /// it leaves via [LeaveRoomExtension.leaveIgnoringUnknownRoom].
+  Future<void> leaveSession() => _exitSessionRoom(
+    action: (room) => room.leaveIgnoringUnknownRoom(),
+    message: L10n.of(context).leaveRoomDescription,
+    okLabel: L10n.of(context).leave,
+  );
+
+  /// Delete the session room for everyone — admin-only ([canDeleteSession]),
+  /// the same purge chat's delete uses — then close its panel.
+  Future<void> deleteSession() => _exitSessionRoom(
+    action: (room) => room.delete(),
+    message: L10n.of(context).deleteChatDesc,
+    okLabel: L10n.of(context).delete,
+  );
+
+  /// Confirm, run [action] on the session room, wait for the resulting leave to
+  /// land in sync, then close the panel — so the room is gone from the chat
+  /// list before its panel closes.
+  Future<void> _exitSessionRoom({
+    required Future<void> Function(Room room) action,
+    required String message,
+    required String okLabel,
+  }) async {
     final room = activityRoom;
     if (room == null) return;
 
     final confirmed = await showOkCancelAlertDialog(
       context: context,
       title: L10n.of(context).areYouSure,
-      message: L10n.of(context).leaveRoomDescription,
-      okLabel: L10n.of(context).leave,
+      message: message,
+      okLabel: okLabel,
       cancelLabel: L10n.of(context).cancel,
       isDestructive: true,
     );
@@ -448,7 +497,7 @@ class ActivitySessionStartState extends State<ActivitySessionStartPage> {
 
     final result = await showFutureLoadingDialog(
       context: context,
-      future: room.leaveIgnoringUnknownRoom,
+      future: () => action(room),
     );
     if (result.isError || !mounted) return;
 
