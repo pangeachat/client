@@ -20,7 +20,6 @@ import 'package:fluffychat/routes/world/exiting_large_markers_layer.dart';
 import 'package:fluffychat/routes/world/exiting_markers_layer.dart';
 import 'package:fluffychat/routes/world/large_markers_layer.dart';
 import 'package:fluffychat/routes/world/map_exit_tracker.dart';
-import 'package:fluffychat/routes/world/mid_size_pin_labels_layer.dart';
 import 'package:fluffychat/routes/world/world_map.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/routes/world/world_map_constants.dart';
@@ -55,16 +54,6 @@ class _PinRenderer {
   /// another activity is focused (#7349). See world-map.instructions.md.
   final String? focusedId;
 
-  /// Which mid pins show an activity-name side-label and on which side, from
-  /// the [placePinLabels] geometry pass (world-map.instructions.md, "Pin
-  /// display"). Frozen with the rest of the model while the camera moves.
-  final LabelPlacementResult labels;
-
-  /// The measured pixel [Size] of each labelled mid pin's label (matches
-  /// [kPinLabelTextStyle]), so [_labelMarkers] reuses it instead of
-  /// re-measuring.
-  final Map<String, Size> labelSizes;
-
   /// Ids of `available` pins the learner can't start yet — their role count
   /// exceeds the course's available members (course-scoped map only). These
   /// pins and their labels render at half opacity. Never holds joinable /
@@ -78,8 +67,6 @@ class _PinRenderer {
     required this.activityIdToPingStatus,
     required this.activityIdToTier,
     required this.focusedId,
-    this.labels = const LabelPlacementResult(),
-    this.labelSizes = const {},
     this.nonStartableIds = const {},
   });
 
@@ -146,6 +133,13 @@ class LargeCardSnapshot {
   final int openSlots;
   final ActivityStarLevel starLevel;
 
+  /// True when this is an `available` card the course can't currently staff
+  /// (its role count outruns the available members) — the card renders at 50%
+  /// opacity, the large-tier mirror of an understaffed mid pin
+  /// (world-map.instructions.md, "Understaffed pins"). Course-scoped only; never
+  /// set on the world map or for a live/completed card.
+  final bool understaffed;
+
   const LargeCardSnapshot({
     required this.card,
     required this.state,
@@ -156,6 +150,7 @@ class LargeCardSnapshot {
     required this.participants,
     required this.openSlots,
     required this.starLevel,
+    this.understaffed = false,
   });
 }
 
@@ -220,98 +215,21 @@ class _WorldMapViewState extends State<WorldMapView> {
   /// flutter_map's `alignment` is inverted from intuition — `Alignment.topCenter`
   /// puts the marker *above* the point (so the point lands at the box's bottom).
   /// [Marker.computePixelAlignment] does that sign for us from the tip's pixel
-  /// offset down the box, so this stays correct even if a label row below the
-  /// tip is ever reintroduced. Every other case (small dot, inProgress star) is
-  /// a plain box with no point, so the default centre anchor is already correct.
+  /// offset down the box. Every other case (small dot, inProgress star) is a
+  /// plain box with no point, so the default centre anchor is already correct.
   static Alignment _markerAlignment(ActivityPinState state, PinTier tier) {
     if (tier != PinTier.mid || state == ActivityPinState.inProgress) {
       return Alignment.center;
     }
+    // The teardrop's tip (its geographic anchor) is the box's lowest point —
+    // the head + point stack, with no reserved label row below it.
     final tipY = PinSize.midDiameter + PinSize.midPointHeight;
-    final boxHeight = tipY + PinSize.midLabelHeight;
     return Marker.computePixelAlignment(
       width: PinSize.midDiameter,
-      height: boxHeight,
+      height: tipY,
       left: PinSize.midDiameter / 2,
       top: tipY,
     );
-  }
-
-  /// Measure a mid-pin label at [kPinLabelTextStyle] (honouring the platform
-  /// text scaler) so the placement pass and the marker box use the painted
-  /// size. Capped at [kPinLabelMaxWidth]; [kPinLabelHaloPad] leaves room for the
-  /// white halo stroke so it isn't clipped and collisions include it.
-  Size _measureLabel(BuildContext context, String title) {
-    final tp = TextPainter(
-      text: TextSpan(text: title, style: kPinLabelTextStyle),
-      maxLines: 1,
-      ellipsis: '…',
-      textDirection: Directionality.of(context),
-      textScaler: MediaQuery.textScalerOf(context),
-    )..layout(maxWidth: kPinLabelMaxWidth);
-    final size = Size(
-      tp.width + 2 * kPinLabelHaloPad,
-      tp.height + 2 * kPinLabelHaloPad,
-    );
-    tp.dispose();
-    return size;
-  }
-
-  /// Choose each labelable mid pin's side via the live camera projection,
-  /// mirroring [_placeLarge]: same safe area (viewport minus the side overlays),
-  /// with the placed large cards as obstacles so a label never lands on a card.
-  /// Falls back to no labels on the rare frame the camera isn't laid out yet.
-  LabelPlacementResult _placeLabels({
-    required List<String> orderedIds,
-    required Map<String, QuestActivityCard> cardById,
-    required Map<String, Size> labelSizes,
-    required Set<String> largeIds,
-  }) {
-    if (orderedIds.isEmpty) return const LabelPlacementResult();
-    try {
-      final camera = widget.controller.mapController.camera;
-      final size = camera.size;
-      const margin = 12.0;
-      final safeArea = Rect.fromLTRB(
-        widget.controller.widget.leftOverlayWidth + margin,
-        margin,
-        size.width - widget.controller.widget.rightOverlayWidth - margin,
-        size.height - margin,
-      );
-      Offset? offsetOf(String id) {
-        final p = cardById[id]?.point;
-        return p == null ? null : camera.latLngToScreenOffset(p);
-      }
-
-      // Placed large cards sit above labels, so treat their footprints as
-      // obstacles — a label never paints under a card. The card box is anchored
-      // bottom-centre on the pin (topCenter marker), matching placeLargeCards.
-      final cardSize = Size(
-        PinTier.large.dotWidth,
-        PinTier.large.dotHeight(ActivityPinState.joinable),
-      );
-      final obstacles = <Rect>[
-        for (final id in largeIds)
-          if (offsetOf(id) case final o?)
-            Rect.fromLTWH(
-              o.dx - cardSize.width / 2,
-              o.dy - cardSize.height,
-              cardSize.width,
-              cardSize.height,
-            ),
-      ];
-
-      return placePinLabels(
-        orderedIds: orderedIds,
-        screenOffsetOf: offsetOf,
-        labelSizeOf: (id) => labelSizes[id] ?? Size.zero,
-        safeArea: safeArea,
-        obstacleRects: obstacles,
-        previousSides: _lastSettledRenderer?.labels.sides ?? const {},
-      );
-    } catch (_) {
-      return const LabelPlacementResult();
-    }
   }
 
   /// Whether [point] currently falls inside the camera's visible bounds — the
@@ -400,6 +318,18 @@ class _WorldMapViewState extends State<WorldMapView> {
       budget: budget,
     );
 
+    // The large-tier eligibility gate: `available`, `joinable`, and `ongoing`
+    // pins can all render as a large card; the one exclusion is the completed
+    // trail star (`inProgress`), which is only ever a gold-star dot
+    // (world-map.instructions.md, "Priority matrix"). Resolved here, not in
+    // ranking, because it needs each pin's display state — the pins manager
+    // alone distinguishes a plain `available` pin from a completed one.
+    final largeEligibleIds = {
+      for (final c in visible)
+        if (widget.controller.displayStateOf(c) != ActivityPinState.inProgress)
+          c.activityId,
+    };
+
     // Large cards exist only where the width affords them (budget.large > 0). The
     // placement pass fits the candidates' footprints to the screen (no overlap, no
     // edge spill, not under a panel), focused-first — see world-map.instructions.md
@@ -411,21 +341,26 @@ class _WorldMapViewState extends State<WorldMapView> {
       visible: visible,
       candidates: ranking.ordered,
       largeBudget: budget.large,
-      largeEligibleIds: ranking.largeEligibleIds,
+      largeEligibleIds: largeEligibleIds,
     );
 
-    // Split the ordered list by the caps: large = what placement fit, then mid,
-    // then small takes the remainder of the N-capped list (so an unfilled large
-    // slot flows down to lighter tiers rather than crowding).
+    // Split the ordered list by the caps: large = what placement fit, then a
+    // geometric mid pass (purely by score — there is no live-session mid gate
+    // any more), then small takes the remainder of the N-capped list (so an
+    // unfilled large slot flows down to lighter tiers rather than crowding).
     final largeIds = placement.largeIds.toSet();
     final rest = ranking.ordered.where((id) => !largeIds.contains(id)).toList();
-    // Under the live-session gate, only live sessions are eligible for mid; every
-    // other pin drops to small (world-map.instructions.md, the heavy-tier gate).
-    final heavy = ranking.heavyEligibleIds;
-    final mediumIds = rest
-        .where((id) => heavy == null || heavy.contains(id))
-        .take(budget.mid)
-        .toSet();
+    // Mid placement mirrors the large pass: a mid pin that would sit UNDER a
+    // placed large card, or ON a higher-scored mid pin, is demoted to a small
+    // dot — so mid pins never stack and never hide beneath a card
+    // (world-map.instructions.md, pipeline step 4).
+    final midPlacement = _placeMid(
+      visible: visible,
+      candidates: rest,
+      midBudget: budget.mid,
+      largeIds: largeIds,
+    );
+    final mediumIds = midPlacement.midIds;
     final smallIds = rest.where((id) => !mediumIds.contains(id)).toSet();
 
     final render = _createPinRenderer(
@@ -500,6 +435,63 @@ class _WorldMapViewState extends State<WorldMapView> {
           ...eligible.where((id) => id != focusedId),
         ].take(largeBudget).toList(),
       );
+    }
+  }
+
+  /// Footprint-aware placement of the mid pins, the mirror of [_placeLarge]:
+  /// projects each candidate's pin tip via the live camera and admits it as
+  /// `mid` only if its teardrop footprint overlaps neither a placed large card
+  /// (the [largeIds] footprints, drawn above) nor a higher-scored mid pin
+  /// already placed — otherwise it is demoted to a small dot. Falls back to the
+  /// static top-[midBudget] on the rare frame the camera isn't laid out yet (the
+  /// next settle re-places geometrically). See world-map.instructions.md
+  /// (pipeline step 4).
+  MidPlacementResult _placeMid({
+    required List<QuestActivityCard> visible,
+    required List<String> candidates,
+    required int midBudget,
+    required Set<String> largeIds,
+  }) {
+    if (midBudget <= 0) return const MidPlacementResult();
+    final pointById = <String, LatLng>{
+      for (final c in visible) c.activityId: ?c.point,
+    };
+    try {
+      final camera = widget.controller.mapController.camera;
+      Offset? offsetOf(String id) {
+        final p = pointById[id];
+        return p == null ? null : camera.latLngToScreenOffset(p);
+      }
+
+      // Placed large cards are obstacles: a mid pin whose head lands under one
+      // is demoted to a dot. The card box is anchored bottom-centre on its pin
+      // (topCenter marker), the same footprint the large pass reserves.
+      final cardSize = Size(
+        PinTier.large.dotWidth,
+        PinTier.large.dotHeight(ActivityPinState.joinable),
+      );
+      final obstacles = <Rect>[
+        for (final id in largeIds)
+          if (offsetOf(id) case final o?)
+            Rect.fromLTWH(
+              o.dx - cardSize.width / 2,
+              o.dy - cardSize.height,
+              cardSize.width,
+              cardSize.height,
+            ),
+      ];
+
+      return placeMidPins(
+        orderedCandidates: candidates,
+        focusedId: widget.controller.focusedActivityId,
+        screenOffsetOf: offsetOf,
+        midBudget: midBudget,
+        obstacleRects: obstacles,
+      );
+    } catch (_) {
+      // Camera not laid out yet: budget-only, no geometry — the next
+      // camera-ready frame does the real placement.
+      return MidPlacementResult(midIds: candidates.take(midBudget).toSet());
     }
   }
 
@@ -594,29 +586,6 @@ class _WorldMapViewState extends State<WorldMapView> {
       }
     }
 
-    // Mid pins carry a Google-Maps-style activity-name label; small dots and
-    // the gold-star (inProgress) state never do (world-map.instructions.md,
-    // "Pin display"). Measure + place here so the labels freeze into the
-    // settled snapshot alongside the tiers (the isActivelyMoving guard).
-    final cardById = {for (final c in visible) c.activityId: c};
-    final labelableIds = [
-      for (final id in mediumIds)
-        if (states[id] != null &&
-            states[id] != ActivityPinState.inProgress &&
-            cardById[id]?.point != null)
-          id,
-    ];
-    final labelSizes = {
-      for (final id in labelableIds)
-        id: _measureLabel(context, cardById[id]!.title),
-    };
-    final labels = _placeLabels(
-      orderedIds: labelableIds,
-      cardById: cardById,
-      labelSizes: labelSizes,
-      largeIds: largeIds,
-    );
-
     return _PinRenderer(
       visible: visible,
       activityIdToStarLevel: starLevels,
@@ -624,8 +593,6 @@ class _WorldMapViewState extends State<WorldMapView> {
       activityIdToState: states,
       activityIdToTier: tiers,
       focusedId: focusedId,
-      labels: labels,
-      labelSizes: labelSizes,
       nonStartableIds: nonStartableIds,
     );
   }
@@ -729,6 +696,9 @@ class _WorldMapViewState extends State<WorldMapView> {
       // The completed-activity trail tier (all-time), so a live large card on a
       // previously-completed activity still shows its star below the caret.
       starLevel: render.starLevelOf(card.activityId),
+      // Dim an available card the course can't yet staff (course-scoped; the
+      // renderer only ever flags `available` pins here).
+      understaffed: render.nonStartableOf(card.activityId),
     );
   }
 
@@ -941,17 +911,6 @@ class _WorldMapViewState extends State<WorldMapView> {
                   // clustering); the large featured cards render unclustered above so
                   // they're always visible.
                   _ShimmerLayer(active: warming, child: dotLayer),
-                  // Activity-name labels for mid pins, above the dots but below the
-                  // large cards (world-map.instructions.md, "Pin display"; z-order:
-                  // small < mid < labels < large).
-                  MidSizePinLabelsLayer(
-                    nonLargeCards: render.nonLargeCards,
-                    sideOf: render.labels.sideOf,
-                    sizeOf: (id) => render.labelSizes[id],
-                    stateOf: render.stateOf,
-                    nonStartableOf: render.nonStartableOf,
-                    onTap: widget.controller.openActivity,
-                  ).layer(),
                   // Dying pins (a separate layer) so they don't disturb the live pins
                   // while animating out.
                   ExitingMarkersLayer(

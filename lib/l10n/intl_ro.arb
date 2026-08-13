@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:42.247585",
+    "@@last_modified": "2026-08-13 15:50:51.784015",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10466,5 +10466,6 @@
     "shareAnalytics": "Partajează datele analitice",
     "courseNoLongerAvailableTitle": "Curs indisponibil",
     "courseDeletedDialogDesc": "Acest curs a fost șters.",
-    "pingedActivity": "Activitate pinguită"
+    "pingedActivity": "Activitate pinguită",
+    "appInTargetLanguageStaysInBaseLanguage": "(Această setare rămâne în limba dvs. maternă, astfel încât să o puteți găsi oricând.)"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-12 14:33:42.281566",
+    "@@last_modified": "2026-08-13 15:50:52.444104",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Fa'asoa Fa'amaumauga",
     "courseNoLongerAvailableTitle": "E le o maua le kosi",
     "courseDeletedDialogDesc": "Ua tapeina lenei kosi.",
-    "pingedActivity": "Gaioiga na pingina"
+    "pingedActivity": "Gaioiga na pingina",
+    "appInTargetLanguageStaysInBaseLanguage": "(O lenei fa'atulagaga e tumau i lau gagana moni ina ia mafai ona e mauaina i taimi uma.)"
 }

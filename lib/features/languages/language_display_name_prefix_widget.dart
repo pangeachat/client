@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:flutter_svg/flutter_svg.dart';
-
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 
 class LanguageDisplayNamePrefixWidget extends StatelessWidget {
   final LanguageModel language;
@@ -28,12 +27,11 @@ class LanguageDisplayNamePrefixWidget extends StatelessWidget {
           width: iconSize,
           height: iconSize,
           child: language.shouldShowFlag
-              ? SvgPicture.network(
-                  language.svgUrl.toString(),
+              ? NetworkSvg(
+                  svgUrl: language.svgUrl.toString(),
                   width: iconSize,
                   height: iconSize,
-                  errorBuilder: (_, _, _) => const SizedBox.shrink(),
-                  placeholderBuilder: (_) => const Center(
+                  placeholder: const Center(
                     child: CircularProgressIndicator(strokeWidth: 0.5),
                   ),
                 )

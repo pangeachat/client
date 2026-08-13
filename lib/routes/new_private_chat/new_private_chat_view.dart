@@ -170,54 +170,6 @@ class NewPrivateChatView extends StatelessWidget {
                               //     title: Text(L10n.of(context).scanQrCode),
                               //     onTap: controller.openScannerAction,
                               //   ),
-                              // Center(
-                              //   child: Padding(
-                              //     padding: const EdgeInsets.symmetric(
-                              //       horizontal: 64.0,
-                              //       vertical: 24.0,
-                              //     ),
-                              //     child: Material(
-                              //       shape: RoundedRectangleBorder(
-                              //         borderRadius: BorderRadius.circular(
-                              //           AppConfig.borderRadius,
-                              //         ),
-                              //         side: BorderSide(
-                              //           width: 3,
-                              //           color: theme.colorScheme.primary,
-                              //         ),
-                              //       ),
-                              //       color: Colors.transparent,
-                              //       clipBehavior: Clip.hardEdge,
-                              //       child: InkWell(
-                              //         borderRadius: BorderRadius.circular(
-                              //           AppConfig.borderRadius,
-                              //         ),
-                              //         onTap: () =>
-                              //             showQrCodeViewer(context, userId),
-                              //         child: Padding(
-                              //           padding: const EdgeInsets.all(16.0),
-                              //           child: ConstrainedBox(
-                              //             constraints: const BoxConstraints(
-                              //               maxWidth: 200,
-                              //             ),
-                              //             child: PrettyQrView.data(
-                              //               // #Pangea
-                              //               // data: 'https://matrix.to/#/$userId',
-                              //               data: Environment.frontendURL,
-                              //               // Pangea#
-                              //               decoration: PrettyQrDecoration(
-                              //                 shape: PrettyQrSmoothSymbol(
-                              //                   roundFactor: 1,
-                              //                   color: theme.colorScheme.primary,
-                              //                 ),
-                              //               ),
-                              //             ),
-                              //           ),
-                              //         ),
-                              //       ),
-                              //     ),
-                              //   ),
-                              // ),
                               // Pangea#
                             ],
                           )

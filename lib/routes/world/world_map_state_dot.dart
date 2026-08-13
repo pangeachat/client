@@ -219,17 +219,11 @@ class _SmallDotContent extends StatelessWidget {
   );
 }
 
-/// The mid-pin glyph, matching its large-card counterpart icon-for-icon
-/// (world-map.instructions.md, "Pin display"): `available` a plus, `joinable`
-/// a door, `ongoingPending` an hourglass, `ongoingActive` a chat bubble.
-/// `inProgress` renders no glyph — its body is a gold star, not a coloured pin.
-IconData? _mediumGlyph(ActivityPinState state) => switch (state) {
-  ActivityPinState.available => Icons.add,
-  ActivityPinState.joinable => Icons.meeting_room,
-  ActivityPinState.ongoingPending => Icons.hourglass_bottom,
-  ActivityPinState.ongoingActive => Icons.chat_bubble_outline,
-  ActivityPinState.inProgress => null,
-};
+/// The mid-pin glyph (world-map.instructions.md, "Pin display"): each state's
+/// shared [ActivityPinState.icon], except `inProgress` (Completed) whose pin
+/// body is a gold star rather than a coloured pin, so it shows no mid-glyph.
+IconData? _mediumGlyph(ActivityPinState state) =>
+    state == ActivityPinState.inProgress ? null : state.icon;
 
 /// The mid-pin "num/num" participant-count label — `joinable`/`ongoingPending`
 /// only (never `ongoingActive`, which shows no count — world-map.instructions.md,
@@ -270,6 +264,19 @@ class _MediumDotContent extends StatelessWidget {
       participantsTotal,
     );
 
+    // The glyph is white on every mid pin EXCEPT `available` in light mode: its
+    // light-purple fill is too pale for a white "+" to stand out, so there the
+    // icon takes the pin's dark-purple label colour to match the designs (its
+    // former outside label used the same colour). Dark mode keeps white — the
+    // `available` pin fills with the darker `AppConfig.primaryColorDark` purple
+    // there, which a white glyph reads cleanly over (world-map.instructions.md,
+    // "Pin state").
+    final glyphColor =
+        state == ActivityPinState.available &&
+            Theme.of(context).brightness == Brightness.light
+        ? state.labelColor
+        : Colors.white;
+
     // The icon and (for joinable/ongoing-pending) the "num/num" count stack
     // together as a single glyph inside the circular head, rather than the
     // count sitting in its own reserved row below the pin — so the pin reads
@@ -279,14 +286,14 @@ class _MediumDotContent extends StatelessWidget {
       final icon => Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 16, color: Colors.white),
+          Icon(icon, size: 16, color: glyphColor),
           if (label != null)
             Text(
               label,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: glyphColor,
               ),
             ),
         ],

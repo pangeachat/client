@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-12 14:33:43.905598",
+    "@@last_modified": "2026-08-13 15:50:55.723462",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "טיילן אַנאַליטיקס",
     "courseNoLongerAvailableTitle": "קורס ניט בנימצא",
     "courseDeletedDialogDesc": "דער קורס איז אויסגעמעקט געוואָרן.",
-    "pingedActivity": "פּינגד טעטיקייט"
+    "pingedActivity": "פּינגד טעטיקייט",
+    "appInTargetLanguageStaysInBaseLanguage": "(די באַשטעטיקונג בלײַבט אין דײַן מוטערשפּראַך, כּדי דו זאָלסט זי שטענדיק געפֿינען קענען.)"
 }

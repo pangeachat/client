@@ -58,7 +58,7 @@ enum ActivityPinState {
   Color bodyColor(BuildContext context) =>
       this == ActivityPinState.available &&
           Theme.of(context).brightness == Brightness.dark
-      ? Theme.of(context).colorScheme.primaryContainer
+      ? AppConfig.primaryColorDark
       : color;
 
   String label(L10n l10n) => switch (this) {
@@ -67,6 +67,19 @@ enum ActivityPinState {
     ActivityPinState.joinable => l10n.joinableLabel,
     ActivityPinState.inProgress => l10n.inProgressLabel,
     ActivityPinState.available => l10n.availableLabel,
+  };
+
+  /// The glyph for this state — the single source of truth for the status
+  /// iconography, shared by the map pin, the status filter, the activity
+  /// suggestion card, and the start-page CTA row. `inProgress` (Completed) is a
+  /// star; the pin renders it as its gold body rather than a glyph, so the
+  /// pin's mid-glyph suppresses it (see `world_map_state_dot.dart`).
+  IconData get icon => switch (this) {
+    ActivityPinState.available => Icons.add,
+    ActivityPinState.inProgress => Icons.star,
+    ActivityPinState.joinable => Icons.meeting_room,
+    ActivityPinState.ongoingPending => Icons.hourglass_bottom,
+    ActivityPinState.ongoingActive => Icons.chat_bubble_outline,
   };
 
   /// The accent used for a large card's border / foreground — the state hue.
@@ -89,8 +102,7 @@ enum PinTier {
 
   double dotHeight(ActivityPinState state) => switch (this) {
     PinTier.small => PinSize.smallDiameter,
-    PinTier.mid =>
-      PinSize.midDiameter + PinSize.midPointHeight + PinSize.midLabelHeight,
+    PinTier.mid => PinSize.midDiameter + PinSize.midPointHeight,
     PinTier.large => switch (state) {
       ActivityPinState.joinable ||
       ActivityPinState.ongoingPending => PinSize.largeHeightJoinable,
@@ -132,6 +144,13 @@ class PinSignals {
 /// cards actually fit on screen; where placement can't run (unit tests, or the
 /// non-column fallback) the [largeIds] / [midIds] getters give the static top-N
 /// split by the budgets. No rotation — a static ranking.
+///
+/// Ranking carries **no tier eligibility gate**: `mid` fills purely by score,
+/// and the sole large-tier rule left — the completed trail star is never a large
+/// card (`available`/`joinable`/`ongoing` all are) — needs each pin's resolved
+/// display state, which only the view holds, so it is applied downstream in
+/// [placeLargeCards] via the `largeEligibleIds` the view computes
+/// (world-map.instructions.md, "Priority matrix").
 class RankingResult {
   /// Candidate ids highest-score-first, after the per-objective diversity cap and
   /// trail reservation, truncated to the total cap `N` (large + mid + small).
@@ -140,53 +159,22 @@ class RankingResult {
   final int midBudget;
   final int smallBudget;
 
-  /// The **large-tier hard gate**: only `joinable`/`ongoing` (pending or active)
-  /// pins are ever eligible for a large card — `available`/`completed` never
-  /// are, at any score or view (world-map.instructions.md, "Pin display" /
-  /// "Priority matrix"). Always populated (never null/inert) — unlike
-  /// [heavyEligibleIds] below, this gate does not relax when nothing live is in
-  /// view.
-  final Set<String> largeEligibleIds;
-
-  /// The **conditional live-session gate**: when the shown set holds any
-  /// `ongoing`/`joinable` session, the ids eligible for the `mid` tier — those
-  /// live sessions — while every other pin renders `small`, however high it
-  /// scores. Null when nothing live is in view (the gate is inert for `mid`;
-  /// all pins compete for it by score). Not used for `large` any more — see
-  /// [largeEligibleIds]. See world-map.instructions.md ("Priority matrix").
-  final Set<String>? heavyEligibleIds;
-
   const RankingResult({
     required this.ordered,
     this.largeBudget = 3,
     this.midBudget = 10,
     this.smallBudget = 0,
-    this.largeEligibleIds = const {},
-    this.heavyEligibleIds,
   });
 
-  bool _heavyEligible(String id) =>
-      heavyEligibleIds == null || heavyEligibleIds!.contains(id);
+  /// The static top-[largeBudget] slice, budget-split only (used where geometric
+  /// placement can't run — unit tests / the non-column fallback). Large-tier
+  /// eligibility (the completed trail star is never large) is applied by the
+  /// view, which alone resolves each pin's display state — see [placeLargeCards].
+  List<String> get largeIds => ordered.take(largeBudget).toList();
 
-  /// The static top-[largeBudget] eligible for the large tier (used where
-  /// geometric placement can't run).
-  List<String> get largeIds =>
-      ordered.where(largeEligibleIds.contains).take(largeBudget).toList();
-
-  /// The [midBudget] heavy-eligible candidates not already claimed by
-  /// [largeIds]. Excludes whatever [largeIds] actually contains rather than
-  /// skipping a fixed [largeBudget] prefix of [ordered] — large no longer
-  /// necessarily consumes a prefix of `ordered` now that it's a state-based
-  /// gate rather than a score-ordered slice (mirrors the `rest` computation in
-  /// `world_map_view.dart`'s `_resolvePinRender`).
-  Set<String> get midIds {
-    final large = largeIds.toSet();
-    return ordered
-        .where((id) => !large.contains(id))
-        .where(_heavyEligible)
-        .take(midBudget)
-        .toSet();
-  }
+  /// The [midBudget] candidates after the large slice. Mid has no eligibility
+  /// gate — it fills purely by score.
+  Set<String> get midIds => ordered.skip(largeBudget).take(midBudget).toSet();
 }
 
 /// The relevance band (0..2) for a pin: the next-Mission gradient when the pin
@@ -402,24 +390,17 @@ RankingResult rankPins({
     progressedIds: progressedIds,
   );
 
-  // The large-tier hard gate: only joinable/ongoing pins are EVER eligible for
-  // a large card, unconditionally — available/completed never are, at any
-  // score or view (world-map.instructions.md, "Priority matrix"). Unlike the
-  // mid-tier gate below, this one never relaxes.
-  final largeEligibleIds = ordered.where((id) => sig(id).state.isLive).toSet();
-
-  // The conditional mid-tier gate: when the shown set holds any ongoing/joinable
-  // session, only those are eligible for mid; every other pin is small, however
-  // high it scores. Inert (null) when nothing live is in view.
-  final liveIds = largeEligibleIds;
-
+  // No tier eligibility gate lives here any more: `mid` fills purely by score,
+  // and the one surviving large-tier rule — the completed trail star is never a
+  // large card — needs each pin's resolved display state (which distinguishes a
+  // plain `available` pin from a completed one), so the view applies it when it
+  // computes `largeEligibleIds` for [placeLargeCards]. See
+  // world-map.instructions.md ("Priority matrix").
   return RankingResult(
     ordered: ordered,
     largeBudget: largeBudget,
     midBudget: midBudget,
     smallBudget: smallBudget,
-    largeEligibleIds: largeEligibleIds,
-    heavyEligibleIds: liveIds.isEmpty ? null : liveIds,
   );
 }
 
@@ -510,12 +491,14 @@ PlacementResult placeLargeCards({
     cardSize.height,
   );
 
-  // The large-tier hard gate: only joinable/ongoing pins are ever eligible for a
-  // large card, unconditionally — available/completed never are, so a non-live
-  // pin — even the focused one — stays a dot (world-map.instructions.md,
-  // "Priority matrix"). An X-dismissed pin (#7207) is likewise never large — it
-  // falls through to the mid/small pass, so the dismissal demotes rather than
-  // removes.
+  // The large-tier eligibility gate: [largeEligibleIds] is every in-view pin
+  // whose resolved display state is `available`, `joinable`, or `ongoing` — the
+  // one exclusion is the completed trail star (`inProgress`), which is only ever
+  // a gold-star dot, never a card (world-map.instructions.md, "Priority matrix").
+  // The caller (the view) resolves it, since display state — a plain `available`
+  // pin vs a completed one — isn't visible to pure ranking. An X-dismissed pin
+  // (#7207) is likewise never large — it falls through to the mid/small pass, so
+  // the dismissal demotes rather than removes.
   final candidates = orderedCandidates
       .where((id) => !dismissedIds.contains(id))
       .where(largeEligibleIds.contains)
@@ -552,49 +535,11 @@ bool _fitsWithin(Rect outer, Rect inner) =>
     inner.right <= outer.right &&
     inner.bottom <= outer.bottom;
 
-// ---------------------------------------------------------------------------
-// Mid-pin activity-name labels (world-map.instructions.md, "Pin display"): a
-// Google-Maps-style place label beside each mid pin, right by default and
-// flipped left where the right side has no room. The geometry is a pure,
-// view-level pass mirroring [placeLargeCards] — global screen coords let it
-// deconflict labels against pins, each other, and the large cards.
-// ---------------------------------------------------------------------------
-
-/// Which side of a mid pin its activity-name label sits on.
-enum LabelSide { right, left }
-
-/// Horizontal gap between a mid pin's head edge and its label text.
-const double kPinLabelGap = 6.0;
-
-/// Max label width (logical px) before the title ellipsizes — keeps a long
-/// name from dominating the map or blocking many neighbours (Google-Maps place
-/// labels are short). Tunable alongside [PinSize].
-const double kPinLabelMaxWidth = 140.0;
-
-/// Padding baked into the measured label [Size] so the white halo stroke isn't
-/// clipped and collision tests include it.
-const double kPinLabelHaloPad = 3.0;
-
-/// The text style the label is BOTH measured and rendered with, so the measured
-/// [Size] equals the painted size (see `_measureLabel` in world_map_view.dart).
-const TextStyle kPinLabelTextStyle = TextStyle(
-  fontSize: 12,
-  fontWeight: FontWeight.w600,
-);
-
-/// The outcome of [placePinLabels]: the chosen side per shown label. An id
-/// absent from [sides] had no room this pass and is not drawn.
-class LabelPlacementResult {
-  final Map<String, LabelSide> sides;
-  const LabelPlacementResult({this.sides = const {}});
-
-  bool shows(String id) => sides.containsKey(id);
-  LabelSide? sideOf(String id) => sides[id];
-}
-
 /// The teardrop bounding box for a mid pin whose tip (its geographic point) is
-/// at screen [tip]: head on top (diameter [headDiameter]), point of height
-/// [pointHeight] below, so the box's bottom edge is the tip.
+/// at screen [tip]: circular head on top (diameter [headDiameter]), point of
+/// height [pointHeight] below, so the box's bottom edge is the tip. Mirrors how
+/// the mid marker is anchored — tip at the point, box extending up (see
+/// `_markerAlignment` in world_map_view.dart).
 Rect midPinRect(
   Offset tip, {
   double headDiameter = PinSize.midDiameter,
@@ -606,92 +551,64 @@ Rect midPinRect(
   headDiameter + pointHeight,
 );
 
-/// The screen rect a label of [size] occupies on [side] of a mid pin whose tip
-/// is at [tip] — offset [gap] outside the head, vertically centred on the head.
-/// Shared by [placePinLabels] and the marker alignment so the two never drift.
-Rect pinLabelRect(
-  Offset tip,
-  Size size,
-  LabelSide side, {
-  double headDiameter = PinSize.midDiameter,
-  double pointHeight = PinSize.midPointHeight,
-  double gap = kPinLabelGap,
-}) {
-  final headR = headDiameter / 2;
-  final top = tip.dy - pointHeight - headR - size.height / 2;
-  final left = side == LabelSide.right
-      ? tip.dx + headR + gap
-      : tip.dx - headR - gap - size.width;
-  return Rect.fromLTWH(left, top, size.width, size.height);
+/// The outcome of the mid-pin placement pass ([placeMidPins]): which candidates
+/// render as `mid`. A candidate absent from [midIds] was demoted to a small dot
+/// — either its footprint overlapped a placed large card (large draws above, so
+/// the mid would sit under it) or it overlapped a higher-scored mid pin already
+/// placed this pass (world-map.instructions.md, pipeline step 4).
+class MidPlacementResult {
+  final Set<String> midIds;
+  const MidPlacementResult({this.midIds = const {}});
 }
 
-/// Choose each mid pin's label side (right preferred, flip left) or hide it
-/// where neither side has room — the pure geometry pass mirroring
-/// [placeLargeCards]. Walks [orderedIds] in score order so a higher-scored pin
-/// claims its preferred side first and lower ones yield around it. A label is
-/// admitted on a side iff its rect fits [safeArea] and overlaps none of: every
-/// projectable mid pin's teardrop rect, an already-placed label, or an
-/// [obstacleRects] entry (the large-card footprints). [previousSides] is tried
-/// first per id (hysteresis) so a small pan doesn't ping-pong labels.
-LabelPlacementResult placePinLabels({
-  required List<String> orderedIds,
+/// Lay the score-ordered mid candidates onto real screen positions, mirroring
+/// [placeLargeCards]: a candidate earns `mid` only if its teardrop footprint
+/// ([midPinRect]) overlaps neither a placed large card ([obstacleRects]) nor a
+/// mid pin already placed this pass. One that can't is demoted to a small dot
+/// (it falls through to the small tier), so two mid pins never stack and a mid
+/// pin never sits under a large card (the two overlaps this pass prevents).
+///
+/// [focusedId] is placed **first** when it is a candidate, so an open pin keeps
+/// its mid spot and lower-scored neighbours yield around it (priority Focused →
+/// by score, like the large pass). The count is emergent — `min(midBudget, what
+/// fits)`; a demoted candidate frees the walk to keep trying lower-scored ones
+/// that do fit. [screenOffsetOf] projects an id to its pin tip (null off the
+/// projection); injecting it keeps this geometry unit-testable without a live
+/// camera.
+MidPlacementResult placeMidPins({
+  required List<String> orderedCandidates,
+  required String? focusedId,
   required Offset? Function(String id) screenOffsetOf,
-  required Size Function(String id) labelSizeOf,
-  required Rect safeArea,
+  int midBudget = 10,
   List<Rect> obstacleRects = const [],
-  Map<String, LabelSide> previousSides = const {},
   double headDiameter = PinSize.midDiameter,
   double pointHeight = PinSize.midPointHeight,
-  double gap = kPinLabelGap,
 }) {
-  // Every projectable mid pin's body is an obstacle — a label must never cover
-  // a pin head, whether or not that pin's own label is placed.
-  final offsets = <String, Offset>{};
-  final pinRects = <Rect>[];
-  for (final id in orderedIds) {
+  // Focused pin first when it is a candidate, so an open pin claims its spot
+  // and the rest yield around it (mirrors placeLargeCards).
+  final ordered = <String>[
+    if (focusedId != null && orderedCandidates.contains(focusedId)) focusedId,
+    ...orderedCandidates.where((id) => id != focusedId),
+  ];
+
+  final midIds = <String>{};
+  final placedRects = <Rect>[];
+  for (final id in ordered) {
+    if (midIds.length >= midBudget) break;
     final o = screenOffsetOf(id);
     if (o == null) continue;
-    offsets[id] = o;
-    pinRects.add(
-      midPinRect(o, headDiameter: headDiameter, pointHeight: pointHeight),
+    final rect = midPinRect(
+      o,
+      headDiameter: headDiameter,
+      pointHeight: pointHeight,
     );
+    // Under a placed large card, or over a higher-scored mid pin: demote to a
+    // dot (skip — it isn't added to midIds, so it falls to the small tier).
+    if (obstacleRects.any(rect.overlaps)) continue;
+    if (placedRects.any(rect.overlaps)) continue;
+    midIds.add(id);
+    placedRects.add(rect);
   }
 
-  final sides = <String, LabelSide>{};
-  final placedLabels = <Rect>[];
-
-  bool freeAt(Rect r) =>
-      _fitsWithin(safeArea, r) &&
-      !pinRects.any(r.overlaps) &&
-      !placedLabels.any(r.overlaps) &&
-      !obstacleRects.any(r.overlaps);
-
-  for (final id in orderedIds) {
-    final o = offsets[id];
-    if (o == null) continue;
-    final size = labelSizeOf(id);
-
-    final preferred = previousSides[id] ?? LabelSide.right;
-    final order = [
-      preferred,
-      preferred == LabelSide.right ? LabelSide.left : LabelSide.right,
-    ];
-    for (final side in order) {
-      final r = pinLabelRect(
-        o,
-        size,
-        side,
-        headDiameter: headDiameter,
-        pointHeight: pointHeight,
-        gap: gap,
-      );
-      if (freeAt(r)) {
-        sides[id] = side;
-        placedLabels.add(r);
-        break;
-      }
-    }
-  }
-
-  return LabelPlacementResult(sides: sides);
+  return MidPlacementResult(midIds: midIds);
 }

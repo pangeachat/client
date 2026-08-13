@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-12 14:33:38.637014",
+    "@@last_modified": "2026-08-13 15:50:48.029920",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Qhia Kev Ntsuam Xyuas",
     "courseNoLongerAvailableTitle": "Cov kev kawm tsis muaj lawm",
     "courseDeletedDialogDesc": "Cov kev kawm no raug muab rho tawm lawm.",
-    "pingedActivity": "Kev ua ub no pinged"
+    "pingedActivity": "Kev ua ub no pinged",
+    "appInTargetLanguageStaysInBaseLanguage": "(Qhov chaw no nyob hauv koj hom lus kom koj nrhiav tau ib txwm.)"
 }

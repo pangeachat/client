@@ -106,18 +106,18 @@ abstract class PinSize {
   /// Extra height below the mid pin's circular head for the teardrop's
   /// pointed tip, which sits at the pin's geographic anchor (Figma
   /// `Activity pin v3`; world-map.instructions.md, "Pin display"). Small pins
-  /// stay a plain circle and don't use this.
+  /// stay a plain circle and don't use this. A mid pin's "num/num" participant
+  /// count (joinable / ongoing-pending only) stacks inside the circular head
+  /// under its icon glyph, so the marker box is just head + point — no reserved
+  /// row below the tip, and no outside activity-name label any more.
   static const double midPointHeight = 10.0;
 
-  /// No longer a separate reserved row: a mid pin's "num/num" participant
-  /// count (joinable / ongoing-pending only) now stacks inside the circular
-  /// head under its icon glyph (world-map.instructions.md, "Pin display"), so
-  /// the marker box needs no extra height below the teardrop's point. Kept at
-  /// 0 (rather than removed) so the box-height/anchor math in
-  /// `world_map_ranking.dart`/`world_map_view.dart` stays a single formula.
-  static const double midLabelHeight = 0.0;
-
-  /// Large card width.
+  /// Large card width bounds. Cards size to their content (title + info row)
+  /// between these — [largeMinWidth] keeps a short-title card from collapsing to
+  /// a sliver, [largeWidth] caps a long one (its title wraps to two lines and
+  /// then ellipsizes rather than growing past it). The marker box is always the
+  /// max width and centres the card, so the tail still lands on the pin.
+  static const double largeMinWidth = 150.0;
   static const double largeWidth = 260.0;
 
   /// Large card height — taller when a joinable session shows its participant row.

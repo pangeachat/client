@@ -168,6 +168,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "appInTargetLanguageStaysInBaseLanguage": "(This setting stays in your native language so you can always find it.)",
+    "@appInTargetLanguageStaysInBaseLanguage": {
+        "type": "String",
+        "placeholders": {}
+    },
     "appLock": "App lock",
     "@appLock": {
         "type": "String",
@@ -4622,7 +4627,6 @@
     "playAgain": "Play again",
     "reviewActivity": "Review",
     "back": "Back",
-    "viewCurrentOrFinished": "View current or finished",
     "pronunciationTools": "Pronunciation tools",
     "audioTranscription": "AI audio transcription",
     "visualLearnerSupport": "Visual learner support",

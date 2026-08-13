@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-12 14:33:38.665947",
+    "@@last_modified": "2026-08-13 15:50:48.179059",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Pataje Analiz",
     "courseNoLongerAvailableTitle": "Kou a pa disponib",
     "courseDeletedDialogDesc": "Kou sa a te efase.",
-    "pingedActivity": "Aktivite ki te ping"
+    "pingedActivity": "Aktivite ki te ping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Anviwònman sa a rete nan lang natif natal ou pou ou ka toujou jwenn li.)"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-12 14:33:42.278078",
+    "@@last_modified": "2026-08-13 15:50:52.137776",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "විශ්ලේෂණ බෙදාගන්න",
     "courseNoLongerAvailableTitle": "පාඨමාලාව නොමැත",
     "courseDeletedDialogDesc": "මෙම පාඨමාලාව මකා දමා ඇත.",
-    "pingedActivity": "පිං කළ ක්‍රියාකාරකම්"
+    "pingedActivity": "පිං කළ ක්‍රියාකාරකම්",
+    "appInTargetLanguageStaysInBaseLanguage": "(මෙම සැකසුම ඔබේ මව් භාෂාවෙන් පවතින්නේ ඔබට එය සැමවිටම සොයා ගැනීමට හැකි වන පරිදිය.)"
 }

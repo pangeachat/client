@@ -21,7 +21,7 @@ class SignupWithEmailView extends StatelessWidget {
           appBar: AppBar(
             centerTitle: true,
             title: ConstrainedBox(
-              constraints: const BoxConstraints(maxWidth: 450),
+              constraints: const BoxConstraints(maxWidth: 600),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

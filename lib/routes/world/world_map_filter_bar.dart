@@ -122,6 +122,7 @@ class WorldMapFilterBar extends StatelessWidget {
           label: _statusLabel(context, s),
           selected: filter.status == s,
           onSelected: () => onSetStatus(s),
+          icon: s.icon,
         ),
     ];
 
@@ -149,6 +150,7 @@ class WorldMapFilterBar extends StatelessWidget {
             label: filter.status == null
                 ? l10n.mapFilterAllStatuses
                 : _statusLabel(context, filter.status!),
+            icon: filter.status != null ? Icon(filter.status!.icon) : null,
             active: filter.status != null,
             entries: statusEntries,
           ),
@@ -181,10 +183,15 @@ class _FilterMenuEntry {
   final String label;
   final bool selected;
   final VoidCallback onSelected;
+
+  /// An optional leading glyph — the status entries carry their
+  /// [ActivityPinState.icon] so the dropdown matches the map pins.
+  final IconData? icon;
   const _FilterMenuEntry({
     required this.label,
     required this.selected,
     required this.onSelected,
+    this.icon,
   });
 }
 
@@ -228,6 +235,10 @@ class _FilterDropdownPill extends StatelessWidget {
                       ? Icon(Icons.check, size: 18, color: scheme.primary)
                       : null,
                 ),
+                if (e.icon != null) ...[
+                  Icon(e.icon, size: 18, color: scheme.onSurfaceVariant),
+                  const SizedBox(width: 8),
+                ],
                 // Flexible so a label longer than the menu's max width (the
                 // ACTFL level titles, long translations) wraps instead of
                 // overflowing the row.

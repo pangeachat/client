@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-12 14:33:39.794550",
+    "@@last_modified": "2026-08-13 15:50:48.829382",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Nuduhake Analitis",
     "courseNoLongerAvailableTitle": "Kursus ora kasedhiya",
     "courseDeletedDialogDesc": "Kursus iki wis dibusak.",
-    "pingedActivity": "Aktivitas sing di-ping"
+    "pingedActivity": "Aktivitas sing di-ping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Setelan iki tetep nganggo basa asli sampeyan supaya sampeyan mesthi bisa nemokake.)"
 }

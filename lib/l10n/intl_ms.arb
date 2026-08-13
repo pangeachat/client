@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-12 14:33:40.939264",
+    "@@last_modified": "2026-08-13 15:50:50.543588",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Kongsi Analitis",
     "courseNoLongerAvailableTitle": "Kurs tidak tersedia",
     "courseDeletedDialogDesc": "Kursus ini telah dipadamkan.",
-    "pingedActivity": "Aktiviti yang diping"
+    "pingedActivity": "Aktiviti yang diping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Tetapan ini kekal dalam bahasa ibunda anda supaya anda sentiasa dapat mencarinya.)"
 }

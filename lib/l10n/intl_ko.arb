@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:39.506458",
+    "@@last_modified": "2026-08-13 15:50:49.296619",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9927,5 +9927,6 @@
     "shareAnalytics": "분석 공유",
     "courseNoLongerAvailableTitle": "코스를 이용할 수 없음",
     "courseDeletedDialogDesc": "이 코스는 삭제되었습니다.",
-    "pingedActivity": "핑 활동"
+    "pingedActivity": "핑 활동",
+    "appInTargetLanguageStaysInBaseLanguage": "(이 설정은 항상 찾을 수 있도록 모국어로 유지됩니다.)"
 }

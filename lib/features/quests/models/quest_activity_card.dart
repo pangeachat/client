@@ -171,6 +171,11 @@ class QuestActivityCard {
       learningObjectiveRefs: refs
           .map((e) => e is Map ? e['id'] as String : e as String)
           .toList(),
+      // The CEFR level from the same `res.plan` node the full plan mapper reads
+      // ([activityPlanFromV2]'s `plan['cefr_level']`), so a course-scoped card
+      // shows its level on the large card and bands by it — the world-map bbox
+      // card already carries this; the course path had simply dropped it (#8243).
+      cefr: plan['cefr_level'] as String?,
       // Participant count == role count (the value activityPlanFromV2 derives
       // and the card shows), so a course-scoped pin can dim when the course
       // lacks enough members to start it. Null when roles weren't projected.

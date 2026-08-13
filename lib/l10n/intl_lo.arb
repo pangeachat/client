@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-12 14:33:40.372315",
+    "@@last_modified": "2026-08-13 15:50:49.748735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "ແບ່ງປັນການວິເຄາະ",
     "courseNoLongerAvailableTitle": "ຫຼັກສູດບໍ່ສາມາດໃຊ້ໄດ້",
     "courseDeletedDialogDesc": "ຫຼັກສູດນີ້ຖືກລຶບແລ້ວ.",
-    "pingedActivity": "ກິດຈະກຳທີ່ຖືກປິງ"
+    "pingedActivity": "ກິດຈະກຳທີ່ຖືກປິງ",
+    "appInTargetLanguageStaysInBaseLanguage": "(ການຕັ້ງຄ່ານີ້ຈະຢູ່ໃນພາສາກຳເນີດຂອງທ່ານ ເພື່ອໃຫ້ທ່ານສາມາດຊອກຫາມັນໄດ້ສະເໝີ.)"
 }

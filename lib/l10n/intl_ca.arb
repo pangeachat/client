@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-12 14:33:37.095534",
+    "@@last_modified": "2026-08-13 15:50:46.396814",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9861,5 +9861,6 @@
     "shareAnalytics": "Compartir analítiques",
     "courseNoLongerAvailableTitle": "Curs no disponible",
     "courseDeletedDialogDesc": "Aquest curs s'ha eliminat.",
-    "pingedActivity": "Activitat de ping"
+    "pingedActivity": "Activitat de ping",
+    "appInTargetLanguageStaysInBaseLanguage": "(Aquesta configuració es manté en el teu idioma nadiu perquè sempre la puguis trobar.)"
 }

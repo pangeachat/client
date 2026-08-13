@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-12 14:33:43.823946",
+    "@@last_modified": "2026-08-13 15:50:53.401351",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10366,5 +10366,6 @@
     "shareAnalytics": "แชร์ข้อมูลวิเคราะห์",
     "courseNoLongerAvailableTitle": "หลักสูตรไม่พร้อมใช้งาน",
     "courseDeletedDialogDesc": "หลักสูตรนี้ถูกลบไปแล้ว",
-    "pingedActivity": "กิจกรรมที่ถูกปิง"
+    "pingedActivity": "กิจกรรมที่ถูกปิง",
+    "appInTargetLanguageStaysInBaseLanguage": "(การตั้งค่านี้จะยังคงเป็นภาษาแม่ของคุณ เพื่อให้คุณสามารถค้นหาได้เสมอ)"
 }

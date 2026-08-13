@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-12 14:33:40.308036",
+    "@@last_modified": "2026-08-13 15:50:49.648760",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2122,5 +2122,6 @@
     "shareAnalytics": "Analysen deelen",
     "courseNoLongerAvailableTitle": "Cours net méi disponibel",
     "courseDeletedDialogDesc": "Dëse Cours gouf geläscht.",
-    "pingedActivity": "Gepingt Aktivitéit"
+    "pingedActivity": "Gepingt Aktivitéit",
+    "appInTargetLanguageStaysInBaseLanguage": "(Dës Astellung bleift an Ärer Mammesprooch, sou datt Dir se ëmmer fanne kënnt.)"
 }
