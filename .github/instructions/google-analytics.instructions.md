@@ -132,13 +132,7 @@ reporting:
 
 ## Attribution
 
-The client is hash-routed (`app.pangea.chat/#/…` — see
-[deep-linking.instructions.md](../../../.github/.github/instructions/deep-linking.instructions.md)).
-Web attribution params (`utm_*`, `gclid`) belong in the **real query string,
-before the `#`**, where GA's web layer reads them at page load; the router only
-ever sees the fragment, so routing and its no-loose-params rule never touch
-attribution. Link producers (campaigns, emails, the website) put attribution
-before the `#`, never inside the fragment route. No in-app code consumes
+The client URL path is always '/', with no fragment (see [deep-linking](../../../.github/.github/instructions/deep-linking.instructions.md)). Web attribution params (utm_*, gclid) belong in the query string, where GA's web layer reads them at page load. The router reads the path and its own token params, so attribution never collides with routing or its no-loose-params rule. Link producers put attribution in the query string. No in-app code consumes
 `utm_*` today; if acquisition tracking ever needs it in-app, it enters through
 the analytics layer, not the router.
 
