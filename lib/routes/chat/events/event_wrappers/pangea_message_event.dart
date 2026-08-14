@@ -649,8 +649,14 @@ class PangeaMessageEvent {
 
     final result = await TextToSpeechRepo.instance.get(request);
 
-    if (result.error != null) {
-      throw Exception("Error getting text to speech: ${result.error}");
+    // Rethrow the repo's typed failure rather than wrapping it: the wrapper
+    // erased the type, so UnsubscribedException stopped reading as control flow
+    // and every cause arrived in Sentry as `Instance of '...'` (#8375).
+    if (result.isError) {
+      Error.throwWithStackTrace(
+        result.asError!.error,
+        result.asError!.stackTrace,
+      );
     }
 
     final response = result.result!;
