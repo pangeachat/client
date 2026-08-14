@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-14 11:32:19.365630",
+    "@@last_modified": "2026-08-14 12:53:28.807474",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Chaidh an cùrsa seo a sguabadh às.",
     "pingedActivity": "Gnìomhachd air a phingigeadh",
     "appInTargetLanguageStaysInBaseLanguage": "(Fanaidh an roghainn seo sa chànan dhùthchasach agad gus am bi e comasach dhut a lorg an-còmhnaidh.)",
-    "usernameTakenPleaseChooseAnother": "Tha an t-ainm-cleachdaiche sin ga chleachdadh mu thràth. Tagh fear eile, mas e do thoil e."
+    "usernameTakenPleaseChooseAnother": "Tha an t-ainm-cleachdaiche sin ga chleachdadh mu thràth. Tagh fear eile, mas e do thoil e.",
+    "messageLanguageIs": "Tha an teachdaireachd seo air a suidheachadh gu {language}.",
+    "updateMessageLanguage": "Briog an seo gus cànan na teachdaireachd atharrachadh.",
+    "messageLanguage": "Cànan teachdaireachd",
+    "messageLanguageUpdated": "Cànan teachdaireachd air ùrachadh!"
 }

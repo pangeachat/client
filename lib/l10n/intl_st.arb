@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-14 11:32:27.426473",
+    "@@last_modified": "2026-08-14 12:53:33.416137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Thupelo ena e hlakotsoe.",
     "pingedActivity": "Mosebetsi o pingilweng",
     "appInTargetLanguageStaysInBaseLanguage": "(Tokiso ena e dula e le puong ya heno ya tlhaho hore o tle o kgone ho e fumana kamehla.)",
-    "usernameTakenPleaseChooseAnother": "Lebitso leo la mosebedisi le se le ntse le le teng. Ka kopo kgetha le leng."
+    "usernameTakenPleaseChooseAnother": "Lebitso leo la mosebedisi le se le ntse le le teng. Ka kopo kgetha le leng.",
+    "messageLanguageIs": "Molaetsa ona o behiloe ho {language}.",
+    "updateMessageLanguage": "Tobetsa mona ho fetola puo ea molaetsa.",
+    "messageLanguage": "Puo ea molaetsa",
+    "messageLanguageUpdated": "Puo ea molaetsa e ntlafalitsoe!"
 }

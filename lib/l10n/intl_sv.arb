@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 11:32:27.056891",
+    "@@last_modified": "2026-08-14 12:53:33.666262",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10254,5 +10254,9 @@
     "courseDeletedDialogDesc": "Den här kursen har tagits bort.",
     "pingedActivity": "Pingad aktivitet",
     "appInTargetLanguageStaysInBaseLanguage": "(Denna inställning förblir på ditt modersmål så att du alltid kan hitta den.)",
-    "usernameTakenPleaseChooseAnother": "Användarnamnet är redan upptaget. Välj ett annat."
+    "usernameTakenPleaseChooseAnother": "Användarnamnet är redan upptaget. Välj ett annat.",
+    "messageLanguageIs": "Detta meddelande är inställt på {language}.",
+    "updateMessageLanguage": "Klicka här för att ändra meddelandets språk.",
+    "messageLanguage": "Meddelandespråk",
+    "messageLanguageUpdated": "Meddelandespråk uppdaterat!"
 }

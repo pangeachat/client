@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-14 11:32:28.522154",
+    "@@last_modified": "2026-08-14 12:53:34.836656",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Wọ́n ti pa ìdánilẹ́kọ̀ọ́ yìí rẹ́.",
     "pingedActivity": "Iṣẹ-ṣiṣe ti a fi ranṣẹ",
     "appInTargetLanguageStaysInBaseLanguage": "(Ètò yìí wà ní èdè ìbílẹ̀ rẹ kí o lè rí i nígbà gbogbo.)",
-    "usernameTakenPleaseChooseAnother": "Orukọ olumulo yẹn ti wa ni lilo tẹlẹ. Jọwọ yan omiran."
+    "usernameTakenPleaseChooseAnother": "Orukọ olumulo yẹn ti wa ni lilo tẹlẹ. Jọwọ yan omiran.",
+    "messageLanguageIs": "Ìfọ̀rọ̀ránṣẹ́ yìí wà ní èdè {language}.",
+    "updateMessageLanguage": "Tẹ níbí láti yí èdè ìfọ̀rọ̀ránṣẹ́ padà.",
+    "messageLanguage": "Èdè ìfọ̀rọ̀ránṣẹ́",
+    "messageLanguageUpdated": "Èdè ìfọ̀rọ̀ránṣẹ́ ti yí padà!"
 }

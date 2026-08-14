@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-14 11:32:22.190563",
+    "@@last_modified": "2026-08-14 12:53:30.283850",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "វគ្គសិក្សានេះត្រូវបានលុបហើយ។",
     "pingedActivity": "សកម្មភាពដែលបានខ្ទាស់",
     "appInTargetLanguageStaysInBaseLanguage": "(ការកំណត់នេះនៅតែជាភាសាកំណើតរបស់អ្នក ដូច្នេះអ្នកអាចស្វែងរកវាបានជានិច្ច។)",
-    "usernameTakenPleaseChooseAnother": "ឈ្មោះអ្នកប្រើប្រាស់នោះត្រូវបានប្រើប្រាស់រួចហើយ។ សូមជ្រើសរើសឈ្មោះផ្សេងទៀត។"
+    "usernameTakenPleaseChooseAnother": "ឈ្មោះអ្នកប្រើប្រាស់នោះត្រូវបានប្រើប្រាស់រួចហើយ។ សូមជ្រើសរើសឈ្មោះផ្សេងទៀត។",
+    "messageLanguageIs": "សារនេះត្រូវបានកំណត់ជាភាសា{language}។",
+    "updateMessageLanguage": "ចុចទីនេះដើម្បីផ្លាស់ប្ដូរភាសារបស់សារ។",
+    "messageLanguage": "ភាសារបស់សារ",
+    "messageLanguageUpdated": "បានអាប់ដេតភាសារបស់សារ!"
 }

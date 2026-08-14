@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-14 11:32:27.537459",
+    "@@last_modified": "2026-08-14 12:53:33.680302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Kozi hii imefutwa.",
     "pingedActivity": "Shughuli iliyopigiwa ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Mpangilio huu unabaki katika lugha yako ya asili ili uweze kuupata kila wakati.)",
-    "usernameTakenPleaseChooseAnother": "Jina hilo la mtumiaji tayari linatumika. Tafadhali chagua lingine."
+    "usernameTakenPleaseChooseAnother": "Jina hilo la mtumiaji tayari linatumika. Tafadhali chagua lingine.",
+    "messageLanguageIs": "Ujumbe huu umewekwa kuwa {language}.",
+    "updateMessageLanguage": "Bofya hapa kubadilisha lugha ya ujumbe.",
+    "messageLanguage": "Lugha ya ujumbe",
+    "messageLanguageUpdated": "Lugha ya ujumbe imesasishwa!"
 }

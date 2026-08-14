@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-14 11:32:28.286468",
+    "@@last_modified": "2026-08-14 12:53:34.060442",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10037,5 +10037,9 @@
     "courseDeletedDialogDesc": "Bu kurs silindi.",
     "pingedActivity": "Etkinlik pinglendi",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu ayar, her zaman bulabilmeniz için ana dilinizde kalır.)",
-    "usernameTakenPleaseChooseAnother": "Bu kullanıcı adı zaten alınmış. Lütfen başka bir tane seçin."
+    "usernameTakenPleaseChooseAnother": "Bu kullanıcı adı zaten alınmış. Lütfen başka bir tane seçin.",
+    "messageLanguageIs": "Bu mesaj {language} olarak ayarlandı.",
+    "updateMessageLanguage": "Mesajın dilini değiştirmek için buraya tıklayın.",
+    "messageLanguage": "Mesaj dili",
+    "messageLanguageUpdated": "Mesaj dili güncellendi!"
 }

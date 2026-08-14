@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-14 11:32:23.948505",
+    "@@last_modified": "2026-08-14 12:53:30.951891",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Овој курс е избришан.",
     "pingedActivity": "Пингувана активност",
     "appInTargetLanguageStaysInBaseLanguage": "(Оваа поставка останува на вашиот мајчин јазик за секогаш да можете да ја најдете.)",
-    "usernameTakenPleaseChooseAnother": "Тоа корисничко име е веќе зафатено. Ве молиме изберете друго."
+    "usernameTakenPleaseChooseAnother": "Тоа корисничко име е веќе зафатено. Ве молиме изберете друго.",
+    "messageLanguageIs": "Оваа порака е поставена на {language}.",
+    "updateMessageLanguage": "Кликнете овде за да го промените јазикот на пораката.",
+    "messageLanguage": "Јазик на пораката",
+    "messageLanguageUpdated": "Јазикот на пораката е ажуриран!"
 }

@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-14 11:32:27.554262",
+    "@@last_modified": "2026-08-14 12:53:33.773131",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10686,5 +10686,9 @@
     "courseDeletedDialogDesc": "ఈ కోర్సు తొలగించబడింది.",
     "pingedActivity": "పింగ్ చేయబడిన కార్యాచరణ",
     "appInTargetLanguageStaysInBaseLanguage": "(ఈ సెట్టింగ్ మీ స్థానిక భాషలోనే ఉంటుంది, కాబట్టి మీరు దీన్ని ఎల్లప్పుడూ కనుగొనగలరు.)",
-    "usernameTakenPleaseChooseAnother": "ఆ యూజర్‌నేమ్ ఇప్పటికే ఉంది. దయచేసి మరొకటి ఎంచుకోండి."
+    "usernameTakenPleaseChooseAnother": "ఆ యూజర్‌నేమ్ ఇప్పటికే ఉంది. దయచేసి మరొకటి ఎంచుకోండి.",
+    "messageLanguageIs": "ఈ సందేశం {language}కి సెట్ చేయబడింది.",
+    "updateMessageLanguage": "సందేశం యొక్క భాషను మార్చడానికి ఇక్కడ క్లిక్ చేయండి.",
+    "messageLanguage": "సందేశ భాష",
+    "messageLanguageUpdated": "సందేశ భాష నవీకరించబడింది!"
 }

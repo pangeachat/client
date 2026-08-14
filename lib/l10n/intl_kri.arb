@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-14 11:32:22.791929",
+    "@@last_modified": "2026-08-14 12:53:30.375066",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Dɛn dilit dis kos.",
     "pingedActivity": "Pinged aktiviti",
     "appInTargetLanguageStaysInBaseLanguage": "(Dis setin de na yu yon langwej so yu go ebul fɛn am ɔltɛm.)",
-    "usernameTakenPleaseChooseAnother": "Dat yuzaneim dɔn de. Duya pik ɔda wan."
+    "usernameTakenPleaseChooseAnother": "Dat yuzaneim dɔn de. Duya pik ɔda wan.",
+    "messageLanguageIs": "Dis patta na {language}.",
+    "updateMessageLanguage": "Klik ya fɔ chenj di patta in langwej.",
+    "messageLanguage": "Patta in langwej",
+    "messageLanguageUpdated": "Patta in langwej dɔn chenj!"
 }

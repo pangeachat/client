@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-14 11:32:17.121449",
+    "@@last_modified": "2026-08-14 12:53:27.345351",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Stu corsu hè statu sguassatu.",
     "pingedActivity": "Attività pingata",
     "appInTargetLanguageStaysInBaseLanguage": "(Stu paràmetru ferma in a vostra lingua materna per chì pudete sempre truvallu.)",
-    "usernameTakenPleaseChooseAnother": "Stu nome d'utilizatore hè digià pigliatu. Per piacè, sceglite un altru."
+    "usernameTakenPleaseChooseAnother": "Stu nome d'utilizatore hè digià pigliatu. Per piacè, sceglite un altru.",
+    "messageLanguageIs": "Stu messagiu hè impostu à {language}.",
+    "updateMessageLanguage": "Cliccate quì per cambià a lingua di u messagiu.",
+    "messageLanguage": "Lingua di u messagiu",
+    "messageLanguageUpdated": "Lingua di u messagiu aghjurnata!"
 }

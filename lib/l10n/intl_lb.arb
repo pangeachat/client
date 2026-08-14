@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-14 11:32:23.238580",
+    "@@last_modified": "2026-08-14 12:53:30.555357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Dëse Cours gouf geläscht.",
     "pingedActivity": "Gepingt Aktivitéit",
     "appInTargetLanguageStaysInBaseLanguage": "(Dës Astellung bleift an Ärer Mammesprooch, sou datt Dir se ëmmer fanne kënnt.)",
-    "usernameTakenPleaseChooseAnother": "Dëse Benotzernumm gëtt et schonn. Wielt w.e.g. en aneren."
+    "usernameTakenPleaseChooseAnother": "Dëse Benotzernumm gëtt et schonn. Wielt w.e.g. en aneren.",
+    "messageLanguageIs": "Dëse Message ass op {language} gesat.",
+    "updateMessageLanguage": "Klickt hei fir d'Sprooch vum Message z'änneren.",
+    "messageLanguage": "Sprooch vum Message",
+    "messageLanguageUpdated": "Sprooch vum Message aktualiséiert!"
 }

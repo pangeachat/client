@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-14 11:32:17.469195",
+    "@@last_modified": "2026-08-14 12:53:27.911268",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Mae'r cwrs hwn wedi'i ddileu.",
     "pingedActivity": "Gweithgaredd a biniwyd",
     "appInTargetLanguageStaysInBaseLanguage": "(Mae'r gosodiad hwn yn aros yn eich iaith frodorol fel y gallwch chi bob amser ddod o hyd iddo.)",
-    "usernameTakenPleaseChooseAnother": "Mae'r enw defnyddiwr hwnnw eisoes wedi'i gymryd. Dewiswch un arall."
+    "usernameTakenPleaseChooseAnother": "Mae'r enw defnyddiwr hwnnw eisoes wedi'i gymryd. Dewiswch un arall.",
+    "messageLanguageIs": "Mae'r neges hon wedi'i gosod i {language}.",
+    "updateMessageLanguage": "Cliciwch yma i newid iaith y neges.",
+    "messageLanguage": "Iaith y neges",
+    "messageLanguageUpdated": "Iaith y neges wedi'i diweddaru!"
 }
