@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-14 11:32:24.922601",
+    "@@last_modified": "2026-08-14 12:53:32.284908",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Maphunzirowa achotsedwa.",
     "pingedActivity": "Zochitika zomwe zatumizidwa",
     "appInTargetLanguageStaysInBaseLanguage": "(Kukhazikitsa kumeneku kumakhala m'chilankhulo chanu choyambirira kuti muzitha kuchipeza nthawi zonse.)",
-    "usernameTakenPleaseChooseAnother": "Dzina la wosuta limenelo lagwiritsidwa kale. Chonde sankhani lina."
+    "usernameTakenPleaseChooseAnother": "Dzina la wosuta limenelo lagwiritsidwa kale. Chonde sankhani lina.",
+    "messageLanguageIs": "Uthenga uwu wayikidwa ku {language}.",
+    "updateMessageLanguage": "Dinani apa kuti musinthe chilankhulo cha uthenga.",
+    "messageLanguage": "Chilankhulo cha uthenga",
+    "messageLanguageUpdated": "Chilankhulo cha uthenga chasintha!"
 }

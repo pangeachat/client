@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-14 11:32:23.244749",
+    "@@last_modified": "2026-08-14 12:53:30.716271",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "ئەم کۆرسە سڕاوەتەوە.",
     "pingedActivity": "چالاکیی پینگکراو",
     "appInTargetLanguageStaysInBaseLanguage": "(ئەم ڕێکخستنە بە زمانی دایکیی خۆت دەمێنێتەوە بۆ ئەوەی هەمیشە بیدۆزیتەوە.)",
-    "usernameTakenPleaseChooseAnother": "ئەو ناوی بەکارهێنەرە پێشتر بەکارهێنراوە. تکایە یەکێکی تر هەڵبژێرە."
+    "usernameTakenPleaseChooseAnother": "ئەو ناوی بەکارهێنەرە پێشتر بەکارهێنراوە. تکایە یەکێکی تر هەڵبژێرە.",
+    "messageLanguageIs": "ئەم پەیامە بە زمانی {language} دانراوە.",
+    "updateMessageLanguage": "لێرە کرتە بکە بۆ گۆڕینی زمانی پەیامەکە.",
+    "messageLanguage": "زمانی پەیام",
+    "messageLanguageUpdated": "زمانی پەیام نوێکرایەوە!"
 }

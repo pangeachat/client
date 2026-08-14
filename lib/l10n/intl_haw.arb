@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-14 11:32:20.284346",
+    "@@last_modified": "2026-08-14 12:53:28.872971",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Ua kāpae ʻia kēia papa.",
     "pingedActivity": "Hana i kīkī ʻia",
     "appInTargetLanguageStaysInBaseLanguage": "(Noho kēia hoʻonohonoho ma kāu ʻōlelo ʻōiwi i hiki iā ʻoe ke loaʻa mau.)",
-    "usernameTakenPleaseChooseAnother": "Ua hoʻohana ʻia kēlā inoa mea hoʻohana. E koho i kekahi inoa ʻē aʻe."
+    "usernameTakenPleaseChooseAnother": "Ua hoʻohana ʻia kēlā inoa mea hoʻohana. E koho i kekahi inoa ʻē aʻe.",
+    "messageLanguageIs": "Ua hoʻonohonoho ʻia kēia leka i ka ʻōlelo {language}.",
+    "updateMessageLanguage": "Kaomi ma ʻaneʻi e hoʻololi i ka ʻōlelo o ka leka.",
+    "messageLanguage": "ʻŌlelo leka",
+    "messageLanguageUpdated": "Ua hōʻano hou ʻia ka ʻōlelo leka!"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-14 11:32:20.834698",
+    "@@last_modified": "2026-08-14 12:53:29.439068",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Այս դասընթացը ջնջվել է։",
     "pingedActivity": "Հիշեցված ակտիվություն",
     "appInTargetLanguageStaysInBaseLanguage": "(Այս կարգավորումը մնում է ձեր մայրենի լեզվով, որպեսզի միշտ կարողանաք գտնել այն։)",
-    "usernameTakenPleaseChooseAnother": "Այդ օգտանունն արդեն զբաղված է։ Ընտրեք մեկ այլ օգտանուն։"
+    "usernameTakenPleaseChooseAnother": "Այդ օգտանունն արդեն զբաղված է։ Ընտրեք մեկ այլ օգտանուն։",
+    "messageLanguageIs": "Այս հաղորդագրությունը սահմանված է {language} լեզվով։",
+    "updateMessageLanguage": "Սեղմեք այստեղ՝ հաղորդագրության լեզուն փոխելու համար։",
+    "messageLanguage": "Հաղորդագրության լեզուն",
+    "messageLanguageUpdated": "Հաղորդագրության լեզուն թարմացվել է։"
 }

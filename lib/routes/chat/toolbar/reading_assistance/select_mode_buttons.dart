@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'package:collection/collection.dart';
 import 'package:just_audio/just_audio.dart';
@@ -11,8 +12,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
-import 'package:fluffychat/features/languages/language_model.dart';
-import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
 import 'package:fluffychat/features/tutorials/tutorial_step_model.dart';
@@ -24,9 +23,11 @@ import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
+import 'package:fluffychat/routes/chat/events/utils/message_language_correction.dart';
 import 'package:fluffychat/routes/chat/events/utils/report_message.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_toolbar_host.dart';
+import 'package:fluffychat/routes/chat/toolbar/reading_assistance/message_language_dialog.dart';
 import 'package:fluffychat/routes/chat/toolbar/reading_assistance/select_mode_controller.dart';
 import 'package:fluffychat/utils/multi_platform_audio_player.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
@@ -166,6 +167,13 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       ? allModes
       : allModes.where((mode) => mode != SelectMode.practice).toList();
 
+  /// Long enough to read as "until dismissed": the mode-disabled snackbar is
+  /// closed on the message closing, not on a timer.
+  static const Duration _modeDisabledSnackBarDuration = Duration(days: 1);
+
+  ScaffoldFeatureController<SnackBar, SnackBarClosedReason>?
+  _modeDisabledSnackBar;
+
   StreamSubscription? _playerStateSub;
   final ValueNotifier<bool> _isPlayingNotifier = ValueNotifier(false);
 
@@ -220,6 +228,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       tutorial.resetTutorial();
     }
 
+    _closeModeDisabledSnackBar();
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = null;
     matrix?.voiceMessageEventId.value = null;
@@ -366,56 +375,109 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
   }
 
-  Future<void> modeDisabled() async {
-    final chat = widget.controller.chatController;
-    final targetLangCode = controller.messageEvent.correctedSent?.langCode;
-    LanguageModel? targetLang;
-    if (targetLangCode != null) {
-      targetLang = PLanguageStore.byLangCode(targetLangCode);
-    }
+  /// Dismisses the mode-disabled snackbar. With accessible navigation on, a
+  /// close removes the snackbar SYNCHRONOUSLY, so closing from [dispose] lands
+  /// mid-unmount — the messenger's rebuild throws there and the snackbar is
+  /// stranded on screen. Defer whenever we're inside a frame.
+  void _closeModeDisabledSnackBar() {
+    final snackBar = _modeDisabledSnackBar;
+    if (snackBar == null) return;
+    _modeDisabledSnackBar = null;
 
+    final phase = SchedulerBinding.instance.schedulerPhase;
+    if (phase == SchedulerPhase.idle ||
+        phase == SchedulerPhase.postFrameCallbacks) {
+      snackBar.close();
+      return;
+    }
+    WidgetsBinding.instance.addPostFrameCallback((_) => snackBar.close());
+  }
+
+  /// Explains why a mode is greyed out, names the language the message is
+  /// assigned, and offers the two ways out: correct that assignment, or move
+  /// your target language onto it. Stays up while the message is open (closed
+  /// in [dispose]) — the user needs it under the language picker it opens.
+  Future<void> modeDisabled() async {
+    final l10n = L10n.of(context);
+    final theme = Theme.of(context);
+    final chat = widget.controller.chatController;
+
+    final assignedLanguage = MessageLanguageCorrection.assignedLanguage(
+      messageEvent,
+    );
     final l1 = MatrixState.pangeaController.userController.userL1;
+
+    // Only a text message's language is correctable: an audio message takes its
+    // language from the speech-to-text transcription, which a representation
+    // correction does not feed.
+    final canSetMessageLanguage =
+        messageEvent.event.messageType == MessageTypes.Text;
+    final canSetTargetLanguage =
+        chat != null &&
+        assignedLanguage != null &&
+        assignedLanguage.langCodeShort != l1?.langCodeShort;
+
+    final explanation = assignedLanguage == null
+        ? l10n.modeDisabled
+        : '${l10n.modeDisabled} '
+              '${l10n.messageLanguageIs(assignedLanguage.getDisplayName(l10n))}';
 
     final messenger = ScaffoldMessenger.of(context);
     messenger.hideCurrentSnackBar();
-    messenger.showSnackBarAnnounced(
+    _modeDisabledSnackBar = messenger.showSnackBarAnnounced(
       SnackBar(
-        content: RichText(
-          textAlign: TextAlign.center,
-          text: TextSpan(
-            style: TextStyle(color: Theme.of(context).colorScheme.surface),
-            children: [
-              TextSpan(text: L10n.of(context).modeDisabled),
-              if (chat != null &&
-                  targetLang != null &&
-                  targetLang.langCodeShort != l1?.langCodeShort) ...[
-                const TextSpan(text: ' '),
-                WidgetSpan(
-                  alignment: PlaceholderAlignment.baseline,
-                  baseline: TextBaseline.alphabetic,
-                  child: InkWell(
-                    onTap: () {
-                      messenger.hideCurrentSnackBar();
-                      chat.updateLanguageOnMismatch(targetLang!);
-                    },
-                    child: Text(
-                      L10n.of(context).clickToUpdateTargetLanguage,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primaryContainer,
-                        decoration: TextDecoration.underline,
-                        decorationColor: Theme.of(
-                          context,
-                        ).colorScheme.primaryContainer,
-                      ),
-                    ),
-                  ),
-                ),
-              ],
-            ],
-          ),
-        ),
+        duration: _modeDisabledSnackBarDuration,
         showCloseIcon: true,
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          spacing: 4.0,
+          children: [
+            Text(
+              explanation,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: theme.colorScheme.surface),
+            ),
+            if (canSetMessageLanguage)
+              _SnackBarLink(
+                label: l10n.updateMessageLanguage,
+                onTap: _showMessageLanguageDialog,
+              ),
+            if (canSetTargetLanguage)
+              _SnackBarLink(
+                label: l10n.clickToUpdateTargetLanguage,
+                onTap: () {
+                  _closeModeDisabledSnackBar();
+                  chat.updateLanguageOnMismatch(assignedLanguage);
+                },
+              ),
+          ],
+        ),
       ),
+      announcement: [
+        explanation,
+        if (canSetMessageLanguage) l10n.updateMessageLanguage,
+        if (canSetTargetLanguage) l10n.clickToUpdateTargetLanguage,
+      ].join(' '),
+    );
+  }
+
+  /// The corrected language re-tokenizes the message, so every token-derived
+  /// surface the overlay is showing is stale: close it and confirm, the same
+  /// way token-info feedback does, rather than half-refresh it in place.
+  Future<void> _showMessageLanguageDialog() async {
+    final messenger = ScaffoldMessenger.of(context);
+    final updatedMessage = L10n.of(context).messageLanguageUpdated;
+
+    final updated = await showDialog<bool>(
+      context: context,
+      builder: (_) => MessageLanguageDialog(messageEvent: messageEvent),
+    );
+    if (updated != true) return;
+
+    _closeModeDisabledSnackBar();
+    widget.controller.clearSelectedEvents();
+    messenger.showSnackBarAnnounced(
+      SnackBar(content: Text(updatedMessage, textAlign: TextAlign.center)),
     );
   }
 
@@ -661,6 +723,32 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
               );
             }
           }),
+        ),
+      ),
+    );
+  }
+}
+
+/// A tappable line inside the mode-disabled snackbar, styled to read as a link
+/// against the snackbar's inverted surface.
+class _SnackBarLink extends StatelessWidget {
+  final String label;
+  final VoidCallback onTap;
+
+  const _SnackBarLink({required this.label, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    final color = Theme.of(context).colorScheme.primaryContainer;
+    return InkWell(
+      onTap: onTap,
+      child: Text(
+        label,
+        textAlign: TextAlign.center,
+        style: TextStyle(
+          color: color,
+          decoration: TextDecoration.underline,
+          decorationColor: color,
         ),
       ),
     );

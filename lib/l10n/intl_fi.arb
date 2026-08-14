@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-14 11:32:19.038481",
+    "@@last_modified": "2026-08-14 12:53:28.093328",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9773,5 +9773,9 @@
     "courseDeletedDialogDesc": "Tämä kurssi on poistettu.",
     "pingedActivity": "Pingattu toiminta",
     "appInTargetLanguageStaysInBaseLanguage": "(Tämä asetus pysyy omalla kielelläsi, jotta löydät sen aina.)",
-    "usernameTakenPleaseChooseAnother": "Käyttäjätunnus on jo varattu. Valitse toinen."
+    "usernameTakenPleaseChooseAnother": "Käyttäjätunnus on jo varattu. Valitse toinen.",
+    "messageLanguageIs": "Tämän viestin kieli on {language}.",
+    "updateMessageLanguage": "Vaihda viestin kieli napsauttamalla tästä.",
+    "messageLanguage": "Viestin kieli",
+    "messageLanguageUpdated": "Viestin kieli päivitetty!"
 }

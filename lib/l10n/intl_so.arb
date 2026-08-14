@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-14 11:32:26.790791",
+    "@@last_modified": "2026-08-14 12:53:33.436900",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Koorsadan waa la tirtiray.",
     "pingedActivity": "Hawlaha la soo sheegay",
     "appInTargetLanguageStaysInBaseLanguage": "(Dejintani waxay ku sii jiraysaa luqaddaada hooyo si aad mar walba u hesho.)",
-    "usernameTakenPleaseChooseAnother": "Magaca isticmaalaha waa la qaatay. Fadlan mid kale dooro."
+    "usernameTakenPleaseChooseAnother": "Magaca isticmaalaha waa la qaatay. Fadlan mid kale dooro.",
+    "messageLanguageIs": "Fariintani waxay ku qoran tahay {language}.",
+    "updateMessageLanguage": "Halkan ku dhufo si aad u beddesho luqadda fariinta.",
+    "messageLanguage": "Luqadda fariinta",
+    "messageLanguageUpdated": "Luqadda fariinta waa la cusboonaysiiyay!"
 }
