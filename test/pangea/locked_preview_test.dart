@@ -137,9 +137,7 @@ void main() {
       final l10n = L10n.of(context);
 
       expect(
-        {
-          for (final mode in SelectMode.values) mode: mode.unlockLabel(context),
-        },
+        {for (final mode in SelectMode.values) mode: mode.unlockLabel(context)},
         {
           SelectMode.audio: l10n.unlockPremiumAudio,
           SelectMode.translate: l10n.unlockTranslations,
@@ -166,7 +164,9 @@ void main() {
         ),
       );
 
-      final l10n = L10n.of(tester.element(find.byType(MessageUnsubscribedCard)));
+      final l10n = L10n.of(
+        tester.element(find.byType(MessageUnsubscribedCard)),
+      );
       expect(find.text('Deutsch'), findsOneWidget);
       expect(find.byIcon(Icons.close), findsOneWidget);
       expect(
@@ -198,7 +198,9 @@ void main() {
     testWidgets('practice page keeps its stars and goes gold', (tester) async {
       await pump(tester, const UnsubscribedPracticePage());
 
-      final l10n = L10n.of(tester.element(find.byType(UnsubscribedPracticePage)));
+      final l10n = L10n.of(
+        tester.element(find.byType(UnsubscribedPracticePage)),
+      );
       expect(find.byType(DecorativeStar), findsNWidgets(4));
       expect(
         find.widgetWithText(UnlockButton, l10n.unlockPracticeActivities),
