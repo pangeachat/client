@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:28.740950",
+    "@@last_modified": "2026-08-14 15:02:49.283987",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10654,5 +10654,6 @@
     "messageLanguageIs": "הודעה זו מוגדרת ל{language}.",
     "updateMessageLanguage": "לחץ כאן כדי לשנות את שפת ההודעה.",
     "messageLanguage": "שפת ההודעה",
-    "messageLanguageUpdated": "שפת ההודעה עודכנה!"
+    "messageLanguageUpdated": "שפת ההודעה עודכנה!",
+    "pickCefrLevelStepSubtitle": "תוכל לשנות זאת מאוחר יותר"
 }

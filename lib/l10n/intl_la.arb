@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-14 12:53:30.515361",
+    "@@last_modified": "2026-08-14 15:02:50.523168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Haec epistula ad {language} posita est.",
     "updateMessageLanguage": "Hic preme ut linguam epistulae mutes.",
     "messageLanguage": "Lingua epistulae",
-    "messageLanguageUpdated": "Lingua epistulae renovata est!"
+    "messageLanguageUpdated": "Lingua epistulae renovata est!",
+    "pickCefrLevelStepSubtitle": "Hoc postea mutare potes"
 }

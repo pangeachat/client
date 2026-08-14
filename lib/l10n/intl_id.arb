@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:29.331257",
+    "@@last_modified": "2026-08-14 15:02:49.853120",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9813,5 +9813,6 @@
     "messageLanguageIs": "Pesan ini diatur ke {language}.",
     "updateMessageLanguage": "Klik di sini untuk mengubah bahasa pesan.",
     "messageLanguage": "Bahasa pesan",
-    "messageLanguageUpdated": "Bahasa pesan diperbarui!"
+    "messageLanguageUpdated": "Bahasa pesan diperbarui!",
+    "pickCefrLevelStepSubtitle": "Anda dapat mengubah ini nanti"
 }

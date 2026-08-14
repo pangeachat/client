@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-14 12:53:28.807474",
+    "@@last_modified": "2026-08-14 15:02:49.289126",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Tha an teachdaireachd seo air a suidheachadh gu {language}.",
     "updateMessageLanguage": "Briog an seo gus cànan na teachdaireachd atharrachadh.",
     "messageLanguage": "Cànan teachdaireachd",
-    "messageLanguageUpdated": "Cànan teachdaireachd air ùrachadh!"
+    "messageLanguageUpdated": "Cànan teachdaireachd air ùrachadh!",
+    "pickCefrLevelStepSubtitle": "Faodaidh tu seo atharrachadh nas fhaide air adhart"
 }

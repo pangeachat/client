@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:27.559369",
+    "@@last_modified": "2026-08-14 15:02:48.486142",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10685,5 +10685,6 @@
     "messageLanguageIs": "Ĉi tiu mesaĝo estas agordita al {language}.",
     "updateMessageLanguage": "Alklaku ĉi tie por ŝanĝi la lingvon de la mesaĝo.",
     "messageLanguage": "Lingvo de mesaĝo",
-    "messageLanguageUpdated": "Lingvo de mesaĝo ĝisdatigita!"
+    "messageLanguageUpdated": "Lingvo de mesaĝo ĝisdatigita!",
+    "pickCefrLevelStepSubtitle": "Vi povas ŝanĝi tion poste"
 }

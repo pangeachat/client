@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-14 12:53:31.405833",
+    "@@last_modified": "2026-08-14 15:02:51.118026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Ity hafatra ity dia voatendry ho amin'ny teny {language}.",
     "updateMessageLanguage": "Tsindrio eto hanovana ny fitenin'ny hafatra.",
     "messageLanguage": "Fitenin'ny hafatra",
-    "messageLanguageUpdated": "Voasolo ny fitenin'ny hafatra!"
+    "messageLanguageUpdated": "Voasolo ny fitenin'ny hafatra!",
+    "pickCefrLevelStepSubtitle": "Azonao ovaina any aoriana izany"
 }

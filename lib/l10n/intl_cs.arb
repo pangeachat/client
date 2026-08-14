@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-14 12:53:27.233174",
+    "@@last_modified": "2026-08-14 15:02:48.131424",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10234,5 +10234,6 @@
     "messageLanguageIs": "Tato zpráva je nastavena na {language}.",
     "updateMessageLanguage": "Klikněte zde pro změnu jazyka zprávy.",
     "messageLanguage": "Jazyk zprávy",
-    "messageLanguageUpdated": "Jazyk zprávy aktualizován!"
+    "messageLanguageUpdated": "Jazyk zprávy aktualizován!",
+    "pickCefrLevelStepSubtitle": "Můžete to změnit později"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-14 12:53:29.871066",
+    "@@last_modified": "2026-08-14 15:02:50.401479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Бұл хабар {language} тіліне орнатылған.",
     "updateMessageLanguage": "Хабар тілін өзгерту үшін осы жерді басыңыз.",
     "messageLanguage": "Хабар тілі",
-    "messageLanguageUpdated": "Хабар тілі жаңартылды!"
+    "messageLanguageUpdated": "Хабар тілі жаңартылды!",
+    "pickCefrLevelStepSubtitle": "Мұны кейінірек өзгертуге болады"
 }

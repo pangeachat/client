@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-14 12:53:28.181105",
+    "@@last_modified": "2026-08-14 15:02:48.934001",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9740,5 +9740,6 @@
     "messageLanguageIs": "Mezu hau {language} hizkuntzan dago ezarrita.",
     "updateMessageLanguage": "Egin klik hemen mezuaren hizkuntza aldatzeko.",
     "messageLanguage": "Mezuaren hizkuntza",
-    "messageLanguageUpdated": "Mezuaren hizkuntza eguneratu da!"
+    "messageLanguageUpdated": "Mezuaren hizkuntza eguneratu da!",
+    "pickCefrLevelStepSubtitle": "Geroago alda dezakezu"
 }

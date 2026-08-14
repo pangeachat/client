@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-14 12:53:32.302492",
+    "@@last_modified": "2026-08-14 15:02:51.974769",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "دا پیغام {language} ته ټاکل شوی دی.",
     "updateMessageLanguage": "د پیغام ژبې بدلولو لپاره دلته کلیک وکړئ.",
     "messageLanguage": "د پیغام ژبه",
-    "messageLanguageUpdated": "د پیغام ژبه تازه شوه!"
+    "messageLanguageUpdated": "د پیغام ژبه تازه شوه!",
+    "pickCefrLevelStepSubtitle": "تاسو کولی شئ دا وروسته بدل کړئ"
 }

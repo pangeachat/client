@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-14 12:53:34.212675",
+    "@@last_modified": "2026-08-14 15:02:53.595526",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "اس پیغام کی زبان {language} پر سیٹ ہے۔",
     "updateMessageLanguage": "پیغام کی زبان تبدیل کرنے کے لیے یہاں کلک کریں۔",
     "messageLanguage": "پیغام کی زبان",
-    "messageLanguageUpdated": "پیغام کی زبان اپ ڈیٹ ہو گئی!"
+    "messageLanguageUpdated": "پیغام کی زبان اپ ڈیٹ ہو گئی!",
+    "pickCefrLevelStepSubtitle": "آپ اسے بعد میں تبدیل کر سکتے ہیں"
 }

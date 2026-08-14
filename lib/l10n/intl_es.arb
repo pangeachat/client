@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-14 12:53:27.427180",
+    "@@last_modified": "2026-08-14 15:02:48.597745",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7943,5 +7943,6 @@
     "messageLanguageIs": "Este mensaje está configurado en {language}.",
     "updateMessageLanguage": "Haz clic aquí para cambiar el idioma del mensaje.",
     "messageLanguage": "Idioma del mensaje",
-    "messageLanguageUpdated": "¡Idioma del mensaje actualizado!"
+    "messageLanguageUpdated": "¡Idioma del mensaje actualizado!",
+    "pickCefrLevelStepSubtitle": "Puedes cambiar esto más tarde"
 }

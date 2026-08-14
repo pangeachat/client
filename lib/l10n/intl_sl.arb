@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-14 12:53:33.114067",
+    "@@last_modified": "2026-08-14 15:02:52.380248",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10685,5 +10685,6 @@
     "messageLanguageIs": "Jezik sporočila je nastavljen na {language}.",
     "updateMessageLanguage": "Kliknite tukaj za spremembo jezika sporočila.",
     "messageLanguage": "Jezik sporočila",
-    "messageLanguageUpdated": "Jezik sporočila je posodobljen!"
+    "messageLanguageUpdated": "Jezik sporočila je posodobljen!",
+    "pickCefrLevelStepSubtitle": "To lahko pozneje spremenite"
 }

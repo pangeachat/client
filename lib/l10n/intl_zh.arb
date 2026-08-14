@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-14 12:53:34.471545",
+    "@@last_modified": "2026-08-14 15:02:53.738685",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9740,5 +9740,6 @@
     "messageLanguageIs": "此消息已设置为{language}。",
     "updateMessageLanguage": "点击此处更改消息语言。",
     "messageLanguage": "消息语言",
-    "messageLanguageUpdated": "消息语言已更新！"
+    "messageLanguageUpdated": "消息语言已更新！",
+    "pickCefrLevelStepSubtitle": "稍后可更改"
 }

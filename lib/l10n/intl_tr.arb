@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-14 12:53:34.060442",
+    "@@last_modified": "2026-08-14 15:02:53.196683",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10041,5 +10041,6 @@
     "messageLanguageIs": "Bu mesaj {language} olarak ayarlandı.",
     "updateMessageLanguage": "Mesajın dilini değiştirmek için buraya tıklayın.",
     "messageLanguage": "Mesaj dili",
-    "messageLanguageUpdated": "Mesaj dili güncellendi!"
+    "messageLanguageUpdated": "Mesaj dili güncellendi!",
+    "pickCefrLevelStepSubtitle": "Bunu daha sonra değiştirebilirsin"
 }

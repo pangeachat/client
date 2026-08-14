@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-14 12:53:30.719558",
+    "@@last_modified": "2026-08-14 15:02:51.027115",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "ຂໍ້ຄວາມນີ້ຖືກຕັ້ງເປັນ {language}.",
     "updateMessageLanguage": "ຄລິກທີ່ນີ້ເພື່ອປ່ຽນພາສາຂອງຂໍ້ຄວາມ.",
     "messageLanguage": "ພາສາຂໍ້ຄວາມ",
-    "messageLanguageUpdated": "ອັບເດດພາສາຂໍ້ຄວາມແລ້ວ!"
+    "messageLanguageUpdated": "ອັບເດດພາສາຂໍ້ຄວາມແລ້ວ!",
+    "pickCefrLevelStepSubtitle": "ທ່ານສາມາດປ່ຽນແປງສິ່ງນີ້ໄດ້ໃນພາຍຫຼັງ"
 }

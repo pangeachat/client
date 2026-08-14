@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-14 12:53:34.269351",
+    "@@last_modified": "2026-08-14 15:02:53.656276",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9744,5 +9744,6 @@
     "messageLanguageIs": "Bu xabar {language} tiliga oʻrnatilgan.",
     "updateMessageLanguage": "Xabar tilini oʻzgartirish uchun shu yerni bosing.",
     "messageLanguage": "Xabar tili",
-    "messageLanguageUpdated": "Xabar tili yangilandi!"
+    "messageLanguageUpdated": "Xabar tili yangilandi!",
+    "pickCefrLevelStepSubtitle": "Buni keyinroq oʻzgartirishingiz mumkin"
 }

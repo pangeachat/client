@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-14 12:53:30.951891",
+    "@@last_modified": "2026-08-14 15:02:51.025114",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Оваа порака е поставена на {language}.",
     "updateMessageLanguage": "Кликнете овде за да го промените јазикот на пораката.",
     "messageLanguage": "Јазик на пораката",
-    "messageLanguageUpdated": "Јазикот на пораката е ажуриран!"
+    "messageLanguageUpdated": "Јазикот на пораката е ажуриран!",
+    "pickCefrLevelStepSubtitle": "Може да го промените подоцна"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:27.930231",
+    "@@last_modified": "2026-08-14 15:02:48.697614",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9828,5 +9828,6 @@
     "messageLanguageIs": "زبان این پیام روی {language} تنظیم شده است.",
     "updateMessageLanguage": "برای تغییر زبان پیام اینجا کلیک کنید.",
     "messageLanguage": "زبان پیام",
-    "messageLanguageUpdated": "زبان پیام به‌روز شد!"
+    "messageLanguageUpdated": "زبان پیام به‌روز شد!",
+    "pickCefrLevelStepSubtitle": "بعداً می‌توانید این را تغییر دهید"
 }

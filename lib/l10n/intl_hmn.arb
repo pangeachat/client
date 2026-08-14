@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-14 12:53:28.985588",
+    "@@last_modified": "2026-08-14 15:02:49.497273",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Cov lus no yog teeb rau {language}.",
     "updateMessageLanguage": "Nyem qhov no los hloov cov lus hom lus.",
     "messageLanguage": "Lus hom lus",
-    "messageLanguageUpdated": "Lus hom lus hloov tshiab lawm!"
+    "messageLanguageUpdated": "Lus hom lus hloov tshiab lawm!",
+    "pickCefrLevelStepSubtitle": "Koj hloov tau tom qab"
 }

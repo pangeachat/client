@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-14 12:53:28.944465",
+    "@@last_modified": "2026-08-14 15:02:49.675818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Mesaj sa a mete sou {language}.",
     "updateMessageLanguage": "Klike la a pou chanje lang mesaj la.",
     "messageLanguage": "Lang mesaj",
-    "messageLanguageUpdated": "Lang mesaj la mete ajou!"
+    "messageLanguageUpdated": "Lang mesaj la mete ajou!",
+    "pickCefrLevelStepSubtitle": "Ou ka chanje sa pita"
 }

@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-14 12:53:32.391075",
+    "@@last_modified": "2026-08-14 15:02:52.064513",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10657,5 +10657,6 @@
     "messageLanguageIs": "Esta mensagem está definida para {language}.",
     "updateMessageLanguage": "Clique aqui para alterar o idioma da mensagem.",
     "messageLanguage": "Idioma da mensagem",
-    "messageLanguageUpdated": "Idioma da mensagem atualizado!"
+    "messageLanguageUpdated": "Idioma da mensagem atualizado!",
+    "pickCefrLevelStepSubtitle": "Pode alterar isto mais tarde"
 }

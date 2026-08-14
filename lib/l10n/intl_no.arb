@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-14 12:53:31.936164",
+    "@@last_modified": "2026-08-14 15:02:51.710823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Denne meldingen er satt til {language}.",
     "updateMessageLanguage": "Klikk her for å endre meldingens språk.",
     "messageLanguage": "Meldingsspråk",
-    "messageLanguageUpdated": "Meldingsspråk oppdatert!"
+    "messageLanguageUpdated": "Meldingsspråk oppdatert!",
+    "pickCefrLevelStepSubtitle": "Du kan endre dette senere"
 }

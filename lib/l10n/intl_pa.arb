@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-14 12:53:32.268431",
+    "@@last_modified": "2026-08-14 15:02:51.903632",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "ਇਹ ਸੁਨੇਹਾ {language} 'ਤੇ ਸੈੱਟ ਕੀਤਾ ਗਿਆ ਹੈ।",
     "updateMessageLanguage": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਬਦਲਣ ਲਈ ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ।",
     "messageLanguage": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ",
-    "messageLanguageUpdated": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਅੱਪਡੇਟ ਕੀਤੀ ਗਈ!"
+    "messageLanguageUpdated": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਅੱਪਡੇਟ ਕੀਤੀ ਗਈ!",
+    "pickCefrLevelStepSubtitle": "ਤੁਸੀਂ ਇਸਨੂੰ ਬਾਅਦ ਵਿੱਚ ਬਦਲ ਸਕਦੇ ਹੋ"
 }

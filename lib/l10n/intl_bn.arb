@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:26.510106",
+    "@@last_modified": "2026-08-14 15:02:47.717099",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10368,5 +10368,6 @@
     "messageLanguageIs": "এই বার্তার ভাষা {language} এ সেট করা আছে।",
     "updateMessageLanguage": "বার্তার ভাষা পরিবর্তন করতে এখানে ক্লিক করুন।",
     "messageLanguage": "বার্তার ভাষা",
-    "messageLanguageUpdated": "বার্তার ভাষা আপডেট করা হয়েছে!"
+    "messageLanguageUpdated": "বার্তার ভাষা আপডেট করা হয়েছে!",
+    "pickCefrLevelStepSubtitle": "আপনি পরে এটি পরিবর্তন করতে পারবেন"
 }

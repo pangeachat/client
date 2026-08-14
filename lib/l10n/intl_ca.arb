@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:26.515916",
+    "@@last_modified": "2026-08-14 15:02:48.121406",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9867,5 +9867,6 @@
     "messageLanguageIs": "Aquest missatge està configurat en {language}.",
     "updateMessageLanguage": "Feu clic aquí per canviar l'idioma del missatge.",
     "messageLanguage": "Idioma del missatge",
-    "messageLanguageUpdated": "Idioma del missatge actualitzat!"
+    "messageLanguageUpdated": "Idioma del missatge actualitzat!",
+    "pickCefrLevelStepSubtitle": "Pots canviar-ho més tard"
 }

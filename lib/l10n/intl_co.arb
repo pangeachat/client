@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-14 12:53:27.345351",
+    "@@last_modified": "2026-08-14 15:02:48.105291",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Stu messagiu hè impostu à {language}.",
     "updateMessageLanguage": "Cliccate quì per cambià a lingua di u messagiu.",
     "messageLanguage": "Lingua di u messagiu",
-    "messageLanguageUpdated": "Lingua di u messagiu aghjurnata!"
+    "messageLanguageUpdated": "Lingua di u messagiu aghjurnata!",
+    "pickCefrLevelStepSubtitle": "Pudete cambià questu dopu"
 }

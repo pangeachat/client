@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-14 12:53:27.392969",
+    "@@last_modified": "2026-08-14 15:02:49.033772",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9727,5 +9727,6 @@
     "messageLanguageIs": "Diese Nachricht ist auf {language} eingestellt.",
     "updateMessageLanguage": "Klicke hier, um die Sprache der Nachricht zu ändern.",
     "messageLanguage": "Nachrichtensprache",
-    "messageLanguageUpdated": "Nachrichtensprache aktualisiert!"
+    "messageLanguageUpdated": "Nachrichtensprache aktualisiert!",
+    "pickCefrLevelStepSubtitle": "Das kannst du später ändern"
 }
