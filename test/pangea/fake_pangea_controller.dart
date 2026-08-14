@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 
@@ -36,6 +38,13 @@ class _FakeUserController implements UserController {
   String get accessToken =>
       _accessToken ??
       (throw "Trying to get accessToken with null token. User is not logged in.");
+
+  /// Left uncompleted, which is what the real controller looks like before the
+  /// profile lands. Callers that read it — `InstructionsEnum.isToggledOff`, for
+  /// one — take their "profile not ready" branch, rather than the
+  /// `Null is not a subtype of Completer` they'd get from [noSuchMethod].
+  @override
+  Completer<void> initCompleter = Completer<void>();
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;

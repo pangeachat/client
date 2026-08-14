@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_linkify/flutter_linkify.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -142,50 +143,54 @@ class ChatDetailsContent extends StatelessWidget {
                   ),
                 ],
               ),
-              Stack(
-                children: [
-                  if (room.isRoomAdmin)
-                    Positioned(
-                      right: 4,
-                      top: 4,
-                      child: IconButton(
-                        tooltip: L10n.of(context).edit,
-                        onPressed: controller.setTopicAction,
-                        icon: const Icon(Icons.edit_outlined),
+              // A DM — with another user or with the bot — has no use for a
+              // chat description, so neither the text nor its edit control
+              // belongs here; the empty state is pure distractor (#8400).
+              if (!room.isDirectChat && !room.isBotDM)
+                Stack(
+                  children: [
+                    if (room.isRoomAdmin)
+                      Positioned(
+                        right: 4,
+                        top: 4,
+                        child: IconButton(
+                          tooltip: L10n.of(context).edit,
+                          onPressed: controller.setTopicAction,
+                          icon: const Icon(Icons.edit_outlined),
+                        ),
+                      ),
+                    Padding(
+                      padding: const EdgeInsets.only(
+                        left: 32.0,
+                        right: 32.0,
+                        top: 16.0,
+                        bottom: 16.0,
+                      ),
+                      child: SelectableLinkify(
+                        text: room.topic.isEmpty
+                            ? room.isSpace
+                                  ? L10n.of(context).noSpaceDescriptionYet
+                                  : L10n.of(context).noChatDescriptionYet
+                            : room.topic,
+                        options: const LinkifyOptions(humanize: false),
+                        linkStyle: const TextStyle(
+                          color: Colors.blueAccent,
+                          decorationColor: Colors.blueAccent,
+                        ),
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontStyle: room.topic.isEmpty
+                              ? FontStyle.italic
+                              : FontStyle.normal,
+                          color: theme.textTheme.bodyMedium!.color,
+                          decorationColor: theme.textTheme.bodyMedium!.color,
+                        ),
+                        onOpen: (url) =>
+                            UrlLauncher(context, url.url).launchUrl(),
                       ),
                     ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 32.0,
-                      right: 32.0,
-                      top: 16.0,
-                      bottom: 16.0,
-                    ),
-                    child: SelectableLinkify(
-                      text: room.topic.isEmpty
-                          ? room.isSpace
-                                ? L10n.of(context).noSpaceDescriptionYet
-                                : L10n.of(context).noChatDescriptionYet
-                          : room.topic,
-                      options: const LinkifyOptions(humanize: false),
-                      linkStyle: const TextStyle(
-                        color: Colors.blueAccent,
-                        decorationColor: Colors.blueAccent,
-                      ),
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontStyle: room.topic.isEmpty
-                            ? FontStyle.italic
-                            : FontStyle.normal,
-                        color: theme.textTheme.bodyMedium!.color,
-                        decorationColor: theme.textTheme.bodyMedium!.color,
-                      ),
-                      onOpen: (url) =>
-                          UrlLauncher(context, url.url).launchUrl(),
-                    ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16.0),
                 child: ChatDetailsButtonRow(controller: controller, room: room),
