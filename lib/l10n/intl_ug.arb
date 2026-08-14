@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-14 12:53:34.464319",
+    "@@last_modified": "2026-08-14 11:32:28.749248",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "بۇ دەرسلىك ئۆچۈرۈلدى.",
     "pingedActivity": "پىڭلانغان پائالىيەت",
     "appInTargetLanguageStaysInBaseLanguage": "(بۇ تەڭشەك ئانا تىلىڭىزدا تۇرىدۇ، شۇڭا سىز ئۇنى ھەمىشە تاپالايسىز.)",
-    "usernameTakenPleaseChooseAnother": "بۇ ئىشلەتكۈچى نامى ئاللىبۇرۇن ئېلىنىپ بولغان. باشقا بىرنى تاللاڭ.",
-    "messageLanguageIs": "بۇ ئۇچۇر {language} غا تەڭشەلدى.",
-    "updateMessageLanguage": "ئۇچۇر تىلىنى ئۆزگەرتىش ئۈچۈن بۇ يەرنى چېكىڭ.",
-    "messageLanguage": "ئۇچۇر تىلى",
-    "messageLanguageUpdated": "ئۇچۇر تىلى يېڭىلاندى!"
+    "usernameTakenPleaseChooseAnother": "بۇ ئىشلەتكۈچى نامى ئاللىبۇرۇن ئېلىنىپ بولغان. باشقا بىرنى تاللاڭ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-14 12:53:30.719558",
+    "@@last_modified": "2026-08-14 11:32:23.755678",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "ຫຼັກສູດນີ້ຖືກລຶບແລ້ວ.",
     "pingedActivity": "ກິດຈະກຳທີ່ຖືກປິງ",
     "appInTargetLanguageStaysInBaseLanguage": "(ການຕັ້ງຄ່ານີ້ຈະຢູ່ໃນພາສາກຳເນີດຂອງທ່ານ ເພື່ອໃຫ້ທ່ານສາມາດຊອກຫາມັນໄດ້ສະເໝີ.)",
-    "usernameTakenPleaseChooseAnother": "ຊື່ຜູ້ໃຊ້ນີ້ມີຄົນໃຊ້ແລ້ວ. ກະລຸນາເລືອກຊື່ອື່ນ.",
-    "messageLanguageIs": "ຂໍ້ຄວາມນີ້ຖືກຕັ້ງເປັນ {language}.",
-    "updateMessageLanguage": "ຄລິກທີ່ນີ້ເພື່ອປ່ຽນພາສາຂອງຂໍ້ຄວາມ.",
-    "messageLanguage": "ພາສາຂໍ້ຄວາມ",
-    "messageLanguageUpdated": "ອັບເດດພາສາຂໍ້ຄວາມແລ້ວ!"
+    "usernameTakenPleaseChooseAnother": "ຊື່ຜູ້ໃຊ້ນີ້ມີຄົນໃຊ້ແລ້ວ. ກະລຸນາເລືອກຊື່ອື່ນ."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-14 12:53:33.412159",
+    "@@last_modified": "2026-08-14 11:32:27.538586",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Kursus ieu parantos dihapus.",
     "pingedActivity": "kagiatan anu diping",
     "appInTargetLanguageStaysInBaseLanguage": "(Setélan ieu tetep dina basa asli anjeun supados anjeun tiasa salawasna mendakanana.)",
-    "usernameTakenPleaseChooseAnother": "Ngaran pamaké éta geus aya. Mangga pilih nu sanés.",
-    "messageLanguageIs": "Pesen ieu disetel ka {language}.",
-    "updateMessageLanguage": "Pencét di dieu pikeun ngarobah basa pesen.",
-    "messageLanguage": "Basa pesen",
-    "messageLanguageUpdated": "Basa pesen geus diropéa!"
+    "usernameTakenPleaseChooseAnother": "Ngaran pamaké éta geus aya. Mangga pilih nu sanés."
 }

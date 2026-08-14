@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-14 12:53:31.936164",
+    "@@last_modified": "2026-08-14 11:32:25.170039",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Dette kurset er slettet.",
     "pingedActivity": "Pinget aktivitet",
     "appInTargetLanguageStaysInBaseLanguage": "(Denne innstillingen forblir på morsmålet ditt, slik at du alltid kan finne den.)",
-    "usernameTakenPleaseChooseAnother": "Det brukernavnet er allerede tatt. Velg et annet.",
-    "messageLanguageIs": "Denne meldingen er satt til {language}.",
-    "updateMessageLanguage": "Klikk her for å endre meldingens språk.",
-    "messageLanguage": "Meldingsspråk",
-    "messageLanguageUpdated": "Meldingsspråk oppdatert!"
+    "usernameTakenPleaseChooseAnother": "Det brukernavnet er allerede tatt. Velg et annet."
 }

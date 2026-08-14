@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-14 12:53:34.082222",
+    "@@last_modified": "2026-08-14 11:32:28.590675",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9736,9 +9736,5 @@
     "courseDeletedDialogDesc": "Цей курс було видалено.",
     "pingedActivity": "Діяльність, що була відзначена",
     "appInTargetLanguageStaysInBaseLanguage": "(Ця настройка залишається вашою рідною мовою, щоб ви завжди могли її знайти.)",
-    "usernameTakenPleaseChooseAnother": "Це ім’я користувача вже зайняте. Будь ласка, виберіть інше.",
-    "messageLanguageIs": "Це повідомлення налаштовано на {language}.",
-    "updateMessageLanguage": "Натисніть тут, щоб змінити мову повідомлення.",
-    "messageLanguage": "Мова повідомлення",
-    "messageLanguageUpdated": "Мову повідомлення оновлено!"
+    "usernameTakenPleaseChooseAnother": "Це ім’я користувача вже зайняте. Будь ласка, виберіть інше."
 }

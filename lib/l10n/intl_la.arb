@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-14 12:53:30.515361",
+    "@@last_modified": "2026-08-14 11:32:23.608578",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Hic cursus deletus est.",
     "pingedActivity": "Actio pulsata",
     "appInTargetLanguageStaysInBaseLanguage": "(Haec occasio in lingua tua vernacula manet ut semper eam invenire possis.)",
-    "usernameTakenPleaseChooseAnother": "Nomen usoris iam in usu est. Aliud elige.",
-    "messageLanguageIs": "Haec epistula ad {language} posita est.",
-    "updateMessageLanguage": "Hic preme ut linguam epistulae mutes.",
-    "messageLanguage": "Lingua epistulae",
-    "messageLanguageUpdated": "Lingua epistulae renovata est!"
+    "usernameTakenPleaseChooseAnother": "Nomen usoris iam in usu est. Aliud elige."
 }

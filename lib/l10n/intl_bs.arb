@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-14 12:53:26.410998",
+    "@@last_modified": "2026-08-14 11:32:15.759847",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Ovaj kurs je obrisan.",
     "pingedActivity": "Pingovana aktivnost",
     "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem maternjem jeziku kako biste je uvijek mogli pronaći.)",
-    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Molimo odaberite drugo.",
-    "messageLanguageIs": "Ova poruka je postavljena na {language}.",
-    "updateMessageLanguage": "Kliknite ovdje da promijenite jezik poruke.",
-    "messageLanguage": "Jezik poruke",
-    "messageLanguageUpdated": "Jezik poruke ažuriran!"
+    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Molimo odaberite drugo."
 }

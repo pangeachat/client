@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-14 12:53:28.181105",
+    "@@last_modified": "2026-08-14 11:32:18.049855",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9736,9 +9736,5 @@
     "courseDeletedDialogDesc": "Ikastaro hau ezabatu egin da.",
     "pingedActivity": "Pingatutako jarduera",
     "appInTargetLanguageStaysInBaseLanguage": "(Ezarpen hau zure jatorrizko hizkuntzan mantentzen da, beti aurkitu ahal izateko.)",
-    "usernameTakenPleaseChooseAnother": "Erabiltzaile-izen hori hartuta dago. Mesedez, aukeratu beste bat.",
-    "messageLanguageIs": "Mezu hau {language} hizkuntzan dago ezarrita.",
-    "updateMessageLanguage": "Egin klik hemen mezuaren hizkuntza aldatzeko.",
-    "messageLanguage": "Mezuaren hizkuntza",
-    "messageLanguageUpdated": "Mezuaren hizkuntza eguneratu da!"
+    "usernameTakenPleaseChooseAnother": "Erabiltzaile-izen hori hartuta dago. Mesedez, aukeratu beste bat."
 }

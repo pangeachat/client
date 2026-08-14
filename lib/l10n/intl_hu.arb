@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-14 12:53:29.169020",
+    "@@last_modified": "2026-08-14 11:32:20.615873",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9839,9 +9839,5 @@
     "courseDeletedDialogDesc": "Ez a tanfolyam törölve lett.",
     "pingedActivity": "Pingelt tevékenység",
     "appInTargetLanguageStaysInBaseLanguage": "(Ez a beállítás az Ön anyanyelvén marad, hogy mindig megtalálhassa.)",
-    "usernameTakenPleaseChooseAnother": "Ez a felhasználónév már foglalt. Kérjük, válasszon másikat.",
-    "messageLanguageIs": "Ez az üzenet {language} nyelven van beállítva.",
-    "updateMessageLanguage": "Kattintson ide az üzenet nyelvének megváltoztatásához.",
-    "messageLanguage": "Üzenet nyelve",
-    "messageLanguageUpdated": "Üzenet nyelve frissítve!"
+    "usernameTakenPleaseChooseAnother": "Ez a felhasználónév már foglalt. Kérjük, válasszon másikat."
 }

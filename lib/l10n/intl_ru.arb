@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-14 12:53:32.993627",
+    "@@last_modified": "2026-08-14 11:32:26.276564",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10708,9 +10708,5 @@
     "courseDeletedDialogDesc": "Этот курс был удален.",
     "pingedActivity": "Активность с упоминанием",
     "appInTargetLanguageStaysInBaseLanguage": "(Эта настройка останется на вашем родном языке, чтобы вы всегда могли ее найти.)",
-    "usernameTakenPleaseChooseAnother": "Это имя пользователя уже занято. Выберите другое.",
-    "messageLanguageIs": "Язык этого сообщения: {language}.",
-    "updateMessageLanguage": "Нажмите здесь, чтобы изменить язык сообщения.",
-    "messageLanguage": "Язык сообщения",
-    "messageLanguageUpdated": "Язык сообщения обновлен!"
+    "usernameTakenPleaseChooseAnother": "Это имя пользователя уже занято. Выберите другое."
 }

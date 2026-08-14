@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-14 12:53:31.405833",
+    "@@last_modified": "2026-08-14 11:32:23.656501",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Voafafa ity taranja ity.",
     "pingedActivity": "Hetsika voatsindry",
     "appInTargetLanguageStaysInBaseLanguage": "(Ity toe-javatra ity dia mijanona amin'ny fitenin-drazanao mba ho hitanao foana.)",
-    "usernameTakenPleaseChooseAnother": "Efa misy io solonanarana io. Mifidiana hafa azafady.",
-    "messageLanguageIs": "Ity hafatra ity dia voatendry ho amin'ny teny {language}.",
-    "updateMessageLanguage": "Tsindrio eto hanovana ny fitenin'ny hafatra.",
-    "messageLanguage": "Fitenin'ny hafatra",
-    "messageLanguageUpdated": "Voasolo ny fitenin'ny hafatra!"
+    "usernameTakenPleaseChooseAnother": "Efa misy io solonanarana io. Mifidiana hafa azafady."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-14 12:53:32.914272",
+    "@@last_modified": "2026-08-14 11:32:26.769128",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "هي ڪورس ختم ڪيو ويو آهي.",
     "pingedActivity": "پنگ ٿيل سرگرمي",
     "appInTargetLanguageStaysInBaseLanguage": "(هي سيٽنگ توهان جي مادري زبان ۾ رهي ٿي ته جيئن توهان ان کي هميشه ڳولي سگهو.)",
-    "usernameTakenPleaseChooseAnother": "اهو يوزرنيم اڳ ۾ ئي ورتو ويو آهي. مهرباني ڪري ٻيو چونڊيو.",
-    "messageLanguageIs": "ھي پيغام {language} تي سيٽ ٿيل آھي.",
-    "updateMessageLanguage": "پيغام جي ٻولي تبديل ڪرڻ لاءِ ھتي ڪلڪ ڪريو.",
-    "messageLanguage": "پيغام جي ٻولي",
-    "messageLanguageUpdated": "پيغام جي ٻولي اپڊيٽ ٿي وئي!"
+    "usernameTakenPleaseChooseAnother": "اهو يوزرنيم اڳ ۾ ئي ورتو ويو آهي. مهرباني ڪري ٻيو چونڊيو."
 }

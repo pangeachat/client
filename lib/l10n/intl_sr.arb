@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:33.053513",
+    "@@last_modified": "2026-08-14 11:32:26.922784",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10685,9 +10685,5 @@
     "courseDeletedDialogDesc": "Ovaj kurs je obrisan.",
     "pingedActivity": "Pingovana aktivnost",
     "appInTargetLanguageStaysInBaseLanguage": "(Ovo podešavanje ostaje na vašem maternjem jeziku kako biste ga uvek mogli pronaći.)",
-    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Izaberite drugo.",
-    "messageLanguageIs": "Ova poruka je podešena na {language}.",
-    "updateMessageLanguage": "Kliknite ovde da promenite jezik poruke.",
-    "messageLanguage": "Jezik poruke",
-    "messageLanguageUpdated": "Jezik poruke je ažuriran!"
+    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Izaberite drugo."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-14 12:53:32.977466",
+    "@@last_modified": "2026-08-14 11:32:26.780847",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "මෙම පාඨමාලාව මකා දමා ඇත.",
     "pingedActivity": "පිං කළ ක්‍රියාකාරකම්",
     "appInTargetLanguageStaysInBaseLanguage": "(මෙම සැකසුම ඔබේ මව් භාෂාවෙන් පවතින්නේ ඔබට එය සැමවිටම සොයා ගැනීමට හැකි වන පරිදිය.)",
-    "usernameTakenPleaseChooseAnother": "එම පරිශීලක නාමය දැනටමත් භාවිතයේ ඇත. කරුණාකර වෙනත් එකක් තෝරන්න.",
-    "messageLanguageIs": "මෙම පණිවිඩය {language} ලෙස සකසා ඇත.",
-    "updateMessageLanguage": "පණිවිඩයේ භාෂාව වෙනස් කිරීමට මෙතන ක්ලික් කරන්න.",
-    "messageLanguage": "පණිවිඩ භාෂාව",
-    "messageLanguageUpdated": "පණිවිඩ භාෂාව යාවත්කාලීන කරන ලදී!"
+    "usernameTakenPleaseChooseAnother": "එම පරිශීලක නාමය දැනටමත් භාවිතයේ ඇත. කරුණාකර වෙනත් එකක් තෝරන්න."
 }

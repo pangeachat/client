@@ -3540,7 +3540,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-14 12:53:30.709482",
+    "@@last_modified": "2026-08-14 11:32:23.530410",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9736,9 +9736,5 @@
     "courseDeletedDialogDesc": "Šis kurss ir dzēsts.",
     "pingedActivity": "Paziņojumu darbība",
     "appInTargetLanguageStaysInBaseLanguage": "(Šis iestatījums paliek jūsu dzimtajā valodā, lai jūs to vienmēr varētu atrast.)",
-    "usernameTakenPleaseChooseAnother": "Šis lietotājvārds jau ir aizņemts. Lūdzu, izvēlieties citu.",
-    "messageLanguageIs": "Šī ziņa ir iestatīta uz {language}.",
-    "updateMessageLanguage": "Noklikšķiniet šeit, lai mainītu ziņas valodu.",
-    "messageLanguage": "Ziņas valoda",
-    "messageLanguageUpdated": "Ziņas valoda atjaunināta!"
+    "usernameTakenPleaseChooseAnother": "Šis lietotājvārds jau ir aizņemts. Lūdzu, izvēlieties citu."
 }

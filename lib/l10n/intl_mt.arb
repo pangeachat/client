@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-14 12:53:31.814322",
+    "@@last_modified": "2026-08-14 11:32:24.648370",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Dan il-kors tħassar.",
     "pingedActivity": "Attività pingjata",
     "appInTargetLanguageStaysInBaseLanguage": "(Din l-issettjar tibqa' fil-lingwa nattiva tiegħek biex dejjem tkun tista' ssibha.)",
-    "usernameTakenPleaseChooseAnother": "Dan l-isem tal-utent diġà qed jintuża. Jekk jogħġbok agħżel ieħor.",
-    "messageLanguageIs": "Dan il-messaġġ huwa ssettjat għal {language}.",
-    "updateMessageLanguage": "Ikklikkja hawn biex tibdel il-lingwa tal-messaġġ.",
-    "messageLanguage": "Lingwa tal-messaġġ",
-    "messageLanguageUpdated": "Il-lingwa tal-messaġġ ġiet aġġornata!"
+    "usernameTakenPleaseChooseAnother": "Dan l-isem tal-utent diġà qed jintuża. Jekk jogħġbok agħżel ieħor."
 }

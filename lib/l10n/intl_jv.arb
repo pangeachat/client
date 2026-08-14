@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-14 12:53:29.701489",
+    "@@last_modified": "2026-08-14 11:32:21.669479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Kursus iki wis dibusak.",
     "pingedActivity": "Aktivitas sing di-ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Setelan iki tetep nganggo basa asli sampeyan supaya sampeyan mesthi bisa nemokake.)",
-    "usernameTakenPleaseChooseAnother": "Jeneng pangguna wis ana. Mangga pilih liyane.",
-    "messageLanguageIs": "Pesen iki disetel menyang {language}.",
-    "updateMessageLanguage": "Klik kene kanggo ngganti basa pesen.",
-    "messageLanguage": "Basa pesen",
-    "messageLanguageUpdated": "Basa pesen wis dianyari!"
+    "usernameTakenPleaseChooseAnother": "Jeneng pangguna wis ana. Mangga pilih liyane."
 }

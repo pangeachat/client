@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-14 12:53:35.099931",
+    "@@last_modified": "2026-08-14 11:32:29.222069",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Le khosi isusiwe.",
     "pingedActivity": "Umsebenzi okhonjiwe",
     "appInTargetLanguageStaysInBaseLanguage": "(Lesi silungiselelo sihlala ngolimi lwakho lwendabuko ukuze uhlale usithola.)",
-    "usernameTakenPleaseChooseAnother": "Lelo gama lomsebenzisi selivele likhona. Sicela ukhethe elinye.",
-    "messageLanguageIs": "Lo mlayezo usethelwe ku-{language}.",
-    "updateMessageLanguage": "Chofoza lapha ukuze ushintshe ulimi lomlayezo.",
-    "messageLanguage": "Ulimi lomlayezo",
-    "messageLanguageUpdated": "Ulimi lomlayezo lubuyekeziwe!"
+    "usernameTakenPleaseChooseAnother": "Lelo gama lomsebenzisi selivele likhona. Sicela ukhethe elinye."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-14 12:53:33.273565",
+    "@@last_modified": "2026-08-14 11:32:26.622736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Kosi iyi yakadzimwa.",
     "pingedActivity": "Chiitiko chakanongedzwa",
     "appInTargetLanguageStaysInBaseLanguage": "(Iyi setingi inoramba iri mumutauro wako wekuzvarwa kuti ugone kuwana nguva dzose.)",
-    "usernameTakenPleaseChooseAnother": "Zita rekushandisa iroro ratorwa. Ndapota sarudza rimwe.",
-    "messageLanguageIs": "Meseji iyi yakaiswa ku {language}.",
-    "updateMessageLanguage": "Dzvanya pano kuti uchinje mutauro wemeseji.",
-    "messageLanguage": "Mutauro wemeseji",
-    "messageLanguageUpdated": "Mutauro wemeseji wachinjwa!"
+    "usernameTakenPleaseChooseAnother": "Zita rekushandisa iroro ratorwa. Ndapota sarudza rimwe."
 }
