@@ -69,19 +69,28 @@ class ErrorHandler {
     StackTrace? s,
     String? m,
     required Map<String, dynamic> data,
-    SentryLevel level = SentryLevel.error,
+    SentryLevel? level,
   }) async {
     if (!_reportedOnceKeys.add(key)) return false;
     await logError(e: e, s: s, m: m, data: data, level: level);
     return true;
   }
 
+  /// Reports [e] to Sentry at [level], defaulting to the one severity table
+  /// ([PangeaHttpException.severityOf]): a timeout and the routine statuses
+  /// (401, 404, 410, 429) are warnings, everything else — including any
+  /// failure carrying no HTTP status — an error. Severity is a property of the
+  /// failure, not of the author's judgment at the call site, so it is decided
+  /// here rather than at each of ~240 reporting sites, which is where it
+  /// drifted before (repos-and-error-handling.instructions.md § Severity
+  /// policy). An explicit [level] still wins: a caller with context the
+  /// failure lacks may escalate.
   static Future<void> logError({
     Object? e,
     StackTrace? s,
     String? m,
     required Map<String, dynamic> data,
-    SentryLevel level = SentryLevel.error,
+    SentryLevel? level,
   }) async {
     if (e is PangeaWarningError) {
       // Custom handling for PangeaWarningError
@@ -97,7 +106,7 @@ class ErrorHandler {
       e ?? Exception(m ?? "no message supplied"),
       stackTrace: s ?? StackTrace.current,
       withScope: (scope) {
-        scope.level = level;
+        scope.level = level ?? PangeaHttpException.severityOf(e);
       },
     );
   }

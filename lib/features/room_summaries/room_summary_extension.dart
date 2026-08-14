@@ -15,6 +15,7 @@ import 'package:fluffychat/features/activity_sessions/activity_session_constants
 import 'package:fluffychat/features/activity_sessions/activity_summary_model.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_event.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
@@ -34,8 +35,10 @@ extension RoomSummaryExtension on Api {
     final responseBody = await response.stream.toBytes();
     final responseString = utf8.decode(responseBody);
     if (response.statusCode != 200) {
-      throw Exception(
-        'HTTP error response: statusCode=${response.statusCode}, body=$responseString',
+      throw PangeaHttpException.fromStreamedResponse(
+        request,
+        response,
+        responseBody,
       );
     }
     final json = jsonDecode(responseString);
