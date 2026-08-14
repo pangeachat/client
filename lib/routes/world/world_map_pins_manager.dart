@@ -288,15 +288,22 @@ class WorldMapPinsManager {
   /// for the host's recruit ping (carries `pangea.activity.id`), within a day.
   /// A ping leaves no persistent room state, so this proxy is intentionally
   /// approximate — its efficacy is worth watching (world-map.instructions.md).
+  ///
+  /// Reads the spaces through [ActivitySessionDiscovery.joinedCourseSpaces],
+  /// which snapshots `client.rooms` — load-bearing here, not just DRY (#8361,
+  /// CLIENT-DBW). The SDK mutates `client.rooms` IN PLACE from its sync handler
+  /// (`rooms.insert` on a join, `rooms.removeAt` on a leave), and this loop
+  /// awaits a timeline per space, so a lazy `where` view over that list threw
+  /// `Concurrent modification during iteration` when a course arrived or left
+  /// mid-scan — aborting the pass and stranding pinged pins stale until the
+  /// next clean one. The room list moving is correct SDK behaviour the map
+  /// can't block, so the scan reads a snapshot and picks up a course that
+  /// joined mid-pass on the next sync tick (which that join itself produces).
   Future<void> recomputePinged(Client client) async {
     final pinged = <String>{};
     final cutoff = DateTime.now().subtract(const Duration(hours: 24));
-    final spaces = client.rooms.where(
-      (r) =>
-          r.isSpace && r.membership == Membership.join && r.coursePlan != null,
-    );
 
-    for (final space in spaces) {
+    for (final space in client.joinedCourseRooms) {
       try {
         final timeline = await space.getTimeline();
         for (final e in timeline.events) {
