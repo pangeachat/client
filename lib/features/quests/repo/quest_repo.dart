@@ -15,6 +15,7 @@ import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/activity_v2_mapper.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -187,13 +188,30 @@ class QuestRepo {
     };
   }
 
+  /// Repo-wide pause after choreo rate-limits the activity reads (#8360).
+  ///
+  /// [RateLimitPause] carries the reasoning; what this instance decides is its
+  /// SCOPE. Shared with `ActivityMapRepo` because the world map fires both
+  /// reads — the course-scoped quest listing here and the viewport bbox query
+  /// there — against the same `/choreo` activities budget, so honouring a 429
+  /// on one while hammering the other honours nothing. Not shared any wider:
+  /// choreo meters `/subscription` separately, and an activity 429 must never
+  /// stall checkout. `ActivityPlanRepo` holds its own for the same reason.
+  static final RateLimitPause activityReadPause = RateLimitPause();
+
   /// The quest's activities from the choreo course listing — the
   /// membership-aware read that may include the quest owner's private
   /// activities when [courseRoomId] names a course the caller has joined.
+  ///
+  /// Returns a [RateLimitedException] WITHOUT asking while
+  /// [activityReadPause] is running, and without reporting: the 429 that
+  /// started the pause was already captured once, and a second event for our
+  /// own deliberate suppression would be noise, not signal.
   static Future<Result<List<Map<String, dynamic>>>> _questActivityEntries(
     String questId, {
     String? courseRoomId,
   }) async {
+    if (activityReadPause.isPaused) return Result.error(RateLimitedException());
     try {
       final uri = Uri.parse(PApiUrls.questActivities(questId)).replace(
         queryParameters: {
@@ -213,6 +231,8 @@ class QuestRepo {
         questActivityEntriesFromJson(jsonDecode(response.body)),
       );
     } catch (e, s) {
+      // Before the report, so the pause is armed even if reporting throws.
+      activityReadPause.recordFailure(e);
       ErrorHandler.logError(
         e: e,
         s: s,

@@ -19,6 +19,7 @@ import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -676,6 +677,10 @@ class WorldMapPinsManager {
     );
     final activityCards = activityCardsResult.result;
     if (activityCards == null) {
+      // A rate-limit pause means we never asked (#8360), so the course is not
+      // known to be empty — hold the pins we have instead of blanking the map
+      // for the length of the pause. Any real failure still empties it.
+      if (activityCardsResult.error is RateLimitedException) return;
       _pins = [];
       return;
     }
@@ -720,6 +725,10 @@ class WorldMapPinsManager {
     String? l2,
     String? l1,
   }) async {
-    _pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
+    final pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
+    // Null is "suppressed by the rate-limit pause", not "no activities here"
+    // (#8360) — keep the current pins rather than blanking the map.
+    if (pins == null) return;
+    _pins = pins;
   }
 }
