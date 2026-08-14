@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-14 12:53:31.891226",
+    "@@last_modified": "2026-08-14 15:02:51.657961",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "असी मेसेज असि {language} दा सेत तौरे।",
     "updateMessageLanguage": "मेसेज असिगी लोन्गी मात्तिक तोक्नबा नत्त्रगा होन्गदनबा अदोना मासिदा क्लिक तौबियु।",
     "messageLanguage": "मेसेज लोन्",
-    "messageLanguageUpdated": "मेसेज लोन् होन्गले!"
+    "messageLanguageUpdated": "मेसेज लोन् होन्गले!",
+    "pickCefrLevelStepSubtitle": "ꯑꯗꯨꯕꯨ ꯅꯍꯥꯛꯅ ꯃꯇꯨꯡꯗ ꯃꯁꯤ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ"
 }

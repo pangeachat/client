@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:33.666262",
+    "@@last_modified": "2026-08-14 15:02:52.796714",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10258,5 +10258,6 @@
     "messageLanguageIs": "Detta meddelande är inställt på {language}.",
     "updateMessageLanguage": "Klicka här för att ändra meddelandets språk.",
     "messageLanguage": "Meddelandespråk",
-    "messageLanguageUpdated": "Meddelandespråk uppdaterat!"
+    "messageLanguageUpdated": "Meddelandespråk uppdaterat!",
+    "pickCefrLevelStepSubtitle": "Du kan ändra detta senare"
 }

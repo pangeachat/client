@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-14 12:53:29.169020",
+    "@@last_modified": "2026-08-14 15:02:49.785668",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9843,5 +9843,6 @@
     "messageLanguageIs": "Ez az üzenet {language} nyelven van beállítva.",
     "updateMessageLanguage": "Kattintson ide az üzenet nyelvének megváltoztatásához.",
     "messageLanguage": "Üzenet nyelve",
-    "messageLanguageUpdated": "Üzenet nyelve frissítve!"
+    "messageLanguageUpdated": "Üzenet nyelve frissítve!",
+    "pickCefrLevelStepSubtitle": "Ezt később megváltoztathatod"
 }

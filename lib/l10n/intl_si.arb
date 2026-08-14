@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-14 12:53:32.977466",
+    "@@last_modified": "2026-08-14 15:02:52.321447",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "මෙම පණිවිඩය {language} ලෙස සකසා ඇත.",
     "updateMessageLanguage": "පණිවිඩයේ භාෂාව වෙනස් කිරීමට මෙතන ක්ලික් කරන්න.",
     "messageLanguage": "පණිවිඩ භාෂාව",
-    "messageLanguageUpdated": "පණිවිඩ භාෂාව යාවත්කාලීන කරන ලදී!"
+    "messageLanguageUpdated": "පණිවිඩ භාෂාව යාවත්කාලීන කරන ලදී!",
+    "pickCefrLevelStepSubtitle": "ඔබට මෙය පසුව වෙනස් කළ හැක"
 }

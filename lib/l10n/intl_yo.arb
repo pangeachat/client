@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-14 12:53:34.836656",
+    "@@last_modified": "2026-08-14 15:02:53.832922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Ìfọ̀rọ̀ránṣẹ́ yìí wà ní èdè {language}.",
     "updateMessageLanguage": "Tẹ níbí láti yí èdè ìfọ̀rọ̀ránṣẹ́ padà.",
     "messageLanguage": "Èdè ìfọ̀rọ̀ránṣẹ́",
-    "messageLanguageUpdated": "Èdè ìfọ̀rọ̀ránṣẹ́ ti yí padà!"
+    "messageLanguageUpdated": "Èdè ìfọ̀rọ̀ránṣẹ́ ti yí padà!",
+    "pickCefrLevelStepSubtitle": "O le yí èyí padà nígbà tó bá yá"
 }

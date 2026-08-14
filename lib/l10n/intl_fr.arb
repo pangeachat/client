@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-14 12:53:28.290024",
+    "@@last_modified": "2026-08-14 15:02:48.710534",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10095,5 +10095,6 @@
     "messageLanguageIs": "Ce message est défini sur {language}.",
     "updateMessageLanguage": "Cliquez ici pour changer la langue du message.",
     "messageLanguage": "Langue du message",
-    "messageLanguageUpdated": "Langue du message mise à jour !"
+    "messageLanguageUpdated": "Langue du message mise à jour !",
+    "pickCefrLevelStepSubtitle": "Vous pourrez modifier cela plus tard"
 }

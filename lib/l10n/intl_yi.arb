@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-14 12:53:34.799817",
+    "@@last_modified": "2026-08-14 15:02:53.642973",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "די מעסעדזש איז באַשטימט צו {language}.",
     "updateMessageLanguage": "דריקט דאָ צו ענדערן די שפּראַך פון דער מעסעדזש.",
     "messageLanguage": "מעסעדזש שפּראַך",
-    "messageLanguageUpdated": "מעסעדזש שפּראַך דערהייַנטיקט!"
+    "messageLanguageUpdated": "מעסעדזש שפּראַך דערהייַנטיקט!",
+    "pickCefrLevelStepSubtitle": "איר קענט דאָס שפּעטער טוישן"
 }

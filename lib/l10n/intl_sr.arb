@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:33.053513",
+    "@@last_modified": "2026-08-14 15:02:53.067086",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10689,5 +10689,6 @@
     "messageLanguageIs": "Ova poruka je podešena na {language}.",
     "updateMessageLanguage": "Kliknite ovde da promenite jezik poruke.",
     "messageLanguage": "Jezik poruke",
-    "messageLanguageUpdated": "Jezik poruke je ažuriran!"
+    "messageLanguageUpdated": "Jezik poruke je ažuriran!",
+    "pickCefrLevelStepSubtitle": "Ovo možete promeniti kasnije"
 }

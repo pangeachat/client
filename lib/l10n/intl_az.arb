@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-14 12:53:26.567331",
+    "@@last_modified": "2026-08-14 15:02:47.557513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Bu mesaj {language} dilinə təyin edilib.",
     "updateMessageLanguage": "Mesajın dilini dəyişmək üçün bura klikləyin.",
     "messageLanguage": "Mesaj dili",
-    "messageLanguageUpdated": "Mesaj dili yeniləndi!"
+    "messageLanguageUpdated": "Mesaj dili yeniləndi!",
+    "pickCefrLevelStepSubtitle": "Bunu daha sonra dəyişə bilərsiniz"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-14 12:53:30.076610",
+    "@@last_modified": "2026-08-14 15:02:50.353186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "ಈ ಸಂದೇಶವನ್ನು {language} ಗೆ ಹೊಂದಿಸಲಾಗಿದೆ.",
     "updateMessageLanguage": "ಸಂದೇಶದ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ.",
     "messageLanguage": "ಸಂದೇಶ ಭಾಷೆ",
-    "messageLanguageUpdated": "ಸಂದೇಶ ಭಾಷೆ ನವೀಕರಿಸಲಾಗಿದೆ!"
+    "messageLanguageUpdated": "ಸಂದೇಶ ಭಾಷೆ ನವೀಕರಿಸಲಾಗಿದೆ!",
+    "pickCefrLevelStepSubtitle": "ನೀವು ಇದನ್ನು ನಂತರ ಬದಲಾಯಿಸಬಹುದು"
 }

@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-14 12:53:34.481589",
+    "@@last_modified": "2026-08-14 15:02:53.619149",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10697,5 +10697,6 @@
     "messageLanguageIs": "此訊息已設定為{language}。",
     "updateMessageLanguage": "點擊此處更改訊息語言。",
     "messageLanguage": "訊息語言",
-    "messageLanguageUpdated": "訊息語言已更新！"
+    "messageLanguageUpdated": "訊息語言已更新！",
+    "pickCefrLevelStepSubtitle": "你之後可以再更改"
 }

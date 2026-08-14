@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-14 12:53:29.660308",
+    "@@last_modified": "2026-08-14 15:02:50.041739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Þetta skilaboð eru stillt á {language}.",
     "updateMessageLanguage": "Smelltu hér til að breyta tungumáli skilaboðanna.",
     "messageLanguage": "Tungumál skilaboða",
-    "messageLanguageUpdated": "Tungumáli skilaboðanna hefur verið breytt!"
+    "messageLanguageUpdated": "Tungumáli skilaboðanna hefur verið breytt!",
+    "pickCefrLevelStepSubtitle": "Þú getur breytt þessu síðar"
 }

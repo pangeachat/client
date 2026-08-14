@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-14 12:53:33.257229",
+    "@@last_modified": "2026-08-14 15:02:52.671609",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Ky mesazh është vendosur në {language}.",
     "updateMessageLanguage": "Kliko këtu për të ndryshuar gjuhën e mesazhit.",
     "messageLanguage": "Gjuha e mesazhit",
-    "messageLanguageUpdated": "Gjuha e mesazhit u përditësua!"
+    "messageLanguageUpdated": "Gjuha e mesazhit u përditësua!",
+    "pickCefrLevelStepSubtitle": "Mund ta ndryshosh më vonë"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-14 12:53:31.991361",
+    "@@last_modified": "2026-08-14 15:02:51.587751",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "ဤမက်ဆေ့ချ်ကို {language} အဖြစ် သတ်မှတ်ထားသည်။",
     "updateMessageLanguage": "မက်ဆေ့ချ်၏ ဘာသာစကားကို ပြောင်းရန် ဤနေရာကို နှိပ်ပါ။",
     "messageLanguage": "မက်ဆေ့ချ်ဘာသာစကား",
-    "messageLanguageUpdated": "မက်ဆေ့ချ်ဘာသာစကား အပ်ဒိတ်လုပ်ပြီးပါပြီ။"
+    "messageLanguageUpdated": "မက်ဆေ့ချ်ဘာသာစကား အပ်ဒိတ်လုပ်ပြီးပါပြီ။",
+    "pickCefrLevelStepSubtitle": "နောက်မှ ပြောင်းလဲနိုင်ပါတယ်"
 }

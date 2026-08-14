@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-14 12:53:27.911268",
+    "@@last_modified": "2026-08-14 15:02:48.190195",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Mae'r neges hon wedi'i gosod i {language}.",
     "updateMessageLanguage": "Cliciwch yma i newid iaith y neges.",
     "messageLanguage": "Iaith y neges",
-    "messageLanguageUpdated": "Iaith y neges wedi'i diweddaru!"
+    "messageLanguageUpdated": "Iaith y neges wedi'i diweddaru!",
+    "pickCefrLevelStepSubtitle": "Gallwch newid hyn yn ddiweddarach"
 }

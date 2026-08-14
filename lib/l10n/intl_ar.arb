@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-14 12:53:27.767345",
+    "@@last_modified": "2026-08-14 15:02:48.512454",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,6 @@
     "messageLanguageIs": "هذه الرسالة مضبوطة على {language}.",
     "updateMessageLanguage": "انقر هنا لتغيير لغة الرسالة.",
     "messageLanguage": "لغة الرسالة",
-    "messageLanguageUpdated": "تم تحديث لغة الرسالة!"
+    "messageLanguageUpdated": "تم تحديث لغة الرسالة!",
+    "pickCefrLevelStepSubtitle": "يمكنك تغيير هذا لاحقًا"
 }

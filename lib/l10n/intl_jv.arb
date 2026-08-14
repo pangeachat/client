@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-14 12:53:29.701489",
+    "@@last_modified": "2026-08-14 15:02:50.163164",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Pesen iki disetel menyang {language}.",
     "updateMessageLanguage": "Klik kene kanggo ngganti basa pesen.",
     "messageLanguage": "Basa pesen",
-    "messageLanguageUpdated": "Basa pesen wis dianyari!"
+    "messageLanguageUpdated": "Basa pesen wis dianyari!",
+    "pickCefrLevelStepSubtitle": "Sampeyan bisa ngowahi iki mengko"
 }

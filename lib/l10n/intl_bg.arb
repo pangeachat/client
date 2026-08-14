@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-14 12:53:26.414117",
+    "@@last_modified": "2026-08-14 15:02:47.639803",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Това съобщение е на {language}.",
     "updateMessageLanguage": "Натиснете тук, за да промените езика на съобщението.",
     "messageLanguage": "Език на съобщението",
-    "messageLanguageUpdated": "Езикът на съобщението е актуализиран!"
+    "messageLanguageUpdated": "Езикът на съобщението е актуализиран!",
+    "pickCefrLevelStepSubtitle": "Можете да промените това по-късно"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-14 12:53:30.555357",
+    "@@last_modified": "2026-08-14 15:02:50.701370",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Dëse Message ass op {language} gesat.",
     "updateMessageLanguage": "Klickt hei fir d'Sprooch vum Message z'änneren.",
     "messageLanguage": "Sprooch vum Message",
-    "messageLanguageUpdated": "Sprooch vum Message aktualiséiert!"
+    "messageLanguageUpdated": "Sprooch vum Message aktualiséiert!",
+    "pickCefrLevelStepSubtitle": "Dir kënnt dat méi spéit änneren"
 }

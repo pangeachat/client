@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-14 12:53:33.360782",
+    "@@last_modified": "2026-08-14 15:02:52.536716",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "O lenei feʻau ua seti i le {language}.",
     "updateMessageLanguage": "Kiliki iinei e sui ai le gagana o le feʻau.",
     "messageLanguage": "Gagana o le feʻau",
-    "messageLanguageUpdated": "Ua faʻafouina le gagana o le feʻau!"
+    "messageLanguageUpdated": "Ua faʻafouina le gagana o le feʻau!",
+    "pickCefrLevelStepSubtitle": "E mafai ona e suia lenei mea mulimuli ane"
 }

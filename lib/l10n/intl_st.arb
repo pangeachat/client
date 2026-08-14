@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-14 12:53:33.416137",
+    "@@last_modified": "2026-08-14 15:02:53.080140",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Molaetsa ona o behiloe ho {language}.",
     "updateMessageLanguage": "Tobetsa mona ho fetola puo ea molaetsa.",
     "messageLanguage": "Puo ea molaetsa",
-    "messageLanguageUpdated": "Puo ea molaetsa e ntlafalitsoe!"
+    "messageLanguageUpdated": "Puo ea molaetsa e ntlafalitsoe!",
+    "pickCefrLevelStepSubtitle": "O ka fetola sena hamorao"
 }

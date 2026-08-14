@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-14 12:53:33.436900",
+    "@@last_modified": "2026-08-14 15:02:52.658852",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2128,5 +2128,6 @@
     "messageLanguageIs": "Fariintani waxay ku qoran tahay {language}.",
     "updateMessageLanguage": "Halkan ku dhufo si aad u beddesho luqadda fariinta.",
     "messageLanguage": "Luqadda fariinta",
-    "messageLanguageUpdated": "Luqadda fariinta waa la cusboonaysiiyay!"
+    "messageLanguageUpdated": "Luqadda fariinta waa la cusboonaysiiyay!",
+    "pickCefrLevelStepSubtitle": "Tan dambe ayaad beddeli kartaa"
 }

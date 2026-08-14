@@ -4585,6 +4585,7 @@
     "pickLanguageTeacherStepTitle": "What language are you teaching?",
     "pickCefrLevelTeacherStepTitle": "What level do you teach?",
     "pickCefrLevelStudentStepTitle": "What level are you?",
+    "pickCefrLevelStepSubtitle": "You can change this later",
     "customCourseStepTitle": "Fill this form to get a custom course",
     "courseCodeStepErrorMessage": "Please check your code and try again",
     "institution": "Institution",

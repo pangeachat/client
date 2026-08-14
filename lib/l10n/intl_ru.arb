@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-14 12:53:32.993627",
+    "@@last_modified": "2026-08-14 15:02:52.256135",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10712,5 +10712,6 @@
     "messageLanguageIs": "Язык этого сообщения: {language}.",
     "updateMessageLanguage": "Нажмите здесь, чтобы изменить язык сообщения.",
     "messageLanguage": "Язык сообщения",
-    "messageLanguageUpdated": "Язык сообщения обновлен!"
+    "messageLanguageUpdated": "Язык сообщения обновлен!",
+    "pickCefrLevelStepSubtitle": "Вы сможете изменить это позже"
 }

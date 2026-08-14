@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:32.566813",
+    "@@last_modified": "2026-08-14 15:02:52.131782",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10472,5 +10472,6 @@
     "messageLanguageIs": "Acest mesaj este setat la {language}.",
     "updateMessageLanguage": "Apăsați aici pentru a schimba limba mesajului.",
     "messageLanguage": "Limba mesajului",
-    "messageLanguageUpdated": "Limba mesajului a fost actualizată!"
+    "messageLanguageUpdated": "Limba mesajului a fost actualizată!",
+    "pickCefrLevelStepSubtitle": "Poți schimba asta mai târziu"
 }

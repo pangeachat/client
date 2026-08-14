@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-14 12:53:33.092413",
+    "@@last_modified": "2026-08-14 15:02:52.457886",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10685,5 +10685,6 @@
     "messageLanguageIs": "Tento text je nastavený na jazyk {language}.",
     "updateMessageLanguage": "Kliknutím sem zmeníte jazyk správy.",
     "messageLanguage": "Jazyk správy",
-    "messageLanguageUpdated": "Jazyk správy bol aktualizovaný!"
+    "messageLanguageUpdated": "Jazyk správy bol aktualizovaný!",
+    "pickCefrLevelStepSubtitle": "Môžete to zmeniť neskôr"
 }
