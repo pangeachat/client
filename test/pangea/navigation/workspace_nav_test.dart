@@ -386,6 +386,30 @@ void main() {
       expect(backParam.expanded, isFalse);
     });
 
+    test('a subpage pops via the token, keeping the card\'s slot (#8357)', () {
+      // `<section>/all` is a pushed subpage, so the PANEL's close control
+      // owns the back arrow (the close-affordance rule) — the token must
+      // read as pushed and pop to the plain section.
+      const token = CoursePanelToken(
+        CourseDetailsTokenParam(
+          activeTab: SpaceSettingsTabs.participants,
+          expanded: true,
+        ),
+      );
+      expect(token.param?.isPushed, isTrue);
+      expect(token.popped?.param?.expanded, isFalse);
+      expect(token.popped?.param?.activeTab, SpaceSettingsTabs.participants);
+
+      // The pop replaces the card token IN PLACE: with a detail open beside
+      // the card (invite opened from the card, then "All participants"
+      // pushed), the master must not land after its detail.
+      final loc = u('/?c=!s&left=course:participants/all,coursepage:invite');
+      final left = parseOpenPanels(u(WorkspaceNav.popPage(loc, token))).left;
+      expect(left.first.type, PanelTypesEnum.course);
+      expect((left.first.param as CourseDetailsTokenParam).expanded, isFalse);
+      expect(left.last.type, PanelTypesEnum.coursepage);
+    });
+
     test('an unknown segment after the section parses as not expanded', () {
       final param = CourseDetailsTokenParam.parse('chat/bogus');
       expect(param.activeTab, SpaceSettingsTabs.chat);

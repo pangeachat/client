@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:collection/collection.dart';
-import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart';
 
@@ -13,7 +12,6 @@ import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dar
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -26,6 +24,7 @@ import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
+import 'package:fluffychat/routes/world/panel_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
@@ -46,7 +45,7 @@ enum SpaceSettingsTabs {
   }
 
   /// The section's display title — shared by the course page's section
-  /// headers and the pushed subpage's back row, so the two can't drift.
+  /// headers and the pushed subpage's header title, so the two can't drift.
   String title(BuildContext context) => switch (this) {
     SpaceSettingsTabs.course => L10n.of(context).coursePlan,
     SpaceSettingsTabs.chat => L10n.of(context).chats,
@@ -55,11 +54,121 @@ enum SpaceSettingsTabs {
   };
 }
 
+/// The course card's render-state dispatcher. Each state is its own widget,
+/// in precedence order: the compact peek (just the progress bar) wins over
+/// everything, then a pushed section subpage ([_CourseSectionSubpage]), then
+/// the full card ([_CourseCardBody]). Titles and the close control live in
+/// [SpaceDetailsHeader], above this body.
 class SpaceDetailsContent extends StatelessWidget {
   final SpaceDetailsController controller;
   final Room room;
 
   const SpaceDetailsContent(this.controller, this.room, {super.key});
+
+  /// Below this incoming BODY height (the card minus its header) the course
+  /// card renders only the progress bar — the collapsed mobile peek (the nav
+  /// cavity clips there). The wide/web panel and the expanded sheet are always
+  /// well above it. The old whole-card threshold was 168 with the ~56px header
+  /// row inside the body; the header now sits above the body, so the same
+  /// cavity heights trigger at 112. See [build].
+  static const double _kCompactCardMaxHeight = 112.0;
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        // The collapsed mobile peek gives the card just enough height for the
+        // header + progress bar and the nav cavity clips there. A section
+        // subpage can't shrink into that short box (it overflows), so compact
+        // outranks the subpage token; the sections slide in when the learner
+        // drags the sheet up (#7597).
+        final compact =
+            constraints.maxHeight.isFinite &&
+            constraints.maxHeight < _kCompactCardMaxHeight;
+        if (compact) {
+          return CourseProgressBar(
+            objectivesProvider: controller.objectivesProvider,
+          );
+        }
+
+        final section = controller.expandedSection;
+        if (section != null) {
+          return _CourseSectionSubpage(controller, room, section);
+        }
+        return _CourseCardBody(controller, room);
+      },
+    );
+  }
+}
+
+/// The course card's header — the shared [PanelHeader] chrome, so the card's
+/// spacing and left-aligned title can't drift from the other workspace panels
+/// (the chat list, settings). The panel's close control rides at the leading
+/// edge — X/← for the card, and, because `<section>/all` reads as pushed from
+/// the token, a pop-one-level ← titled with the section on its subpage (the
+/// close-affordance rule, routing.instructions.md).
+class SpaceDetailsHeader extends StatelessWidget {
+  final SpaceDetailsController controller;
+  final Room room;
+
+  const SpaceDetailsHeader(this.controller, this.room, {super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final leading =
+        controller.widget.embeddedCloseButton ?? const SizedBox.shrink();
+    final section = controller.expandedSection;
+    if (section != null) {
+      return PanelHeader(leading: leading, title: section.title(context));
+    }
+    return PanelHeader(
+      leading: leading,
+      title: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+      trailing: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          // Normalized with the activity start page: share on the left,
+          // focus on the right, and the shared `my_location` focus icon.
+          if (room.joinCode != null)
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ShareRoomButton(
+                room: room,
+                tooltip: L10n.of(context).shareCourse,
+                child: const Icon(Icons.share_outlined),
+              ),
+            ),
+          // The one camera path that zooms (#7616): course selection
+          // only pans, so this button zoom+pan-fits the map to all of
+          // the course's activities.
+          ValueListenableBuilder(
+            valueListenable: controller.objectivesProvider.questLoader,
+            builder: (context, _, _) {
+              if (controller
+                  .objectivesProvider
+                  .filteredObjectiveGroups
+                  .isNotEmpty) {
+                return IconButton(
+                  tooltip: L10n.of(context).focusOnMap,
+                  icon: const Icon(Icons.my_location),
+                  onPressed: MapCameraFocusRequests.request,
+                );
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+/// The full course card: the single scrollable sections page.
+class _CourseCardBody extends StatelessWidget {
+  final SpaceDetailsController controller;
+  final Room room;
+
+  const _CourseCardBody(this.controller, this.room);
 
   /// The More section's rows. Every setting shows inline; admin-only rows are
   /// disabled (not hidden) for non-admins — one layout for all roles (#8357).
@@ -159,202 +268,78 @@ class SpaceDetailsContent extends StatelessWidget {
     ];
   }
 
-  /// Below this incoming height the course card renders only its header and
-  /// progress bar — the collapsed mobile peek (the nav cavity clips there). The
-  /// wide/web panel and the expanded sheet are always well above it. See
-  /// [build].
-  static const double _kCompactCardMaxHeight = 168.0;
-
   @override
   Widget build(BuildContext context) {
-    final isColumnMode = FluffyThemes.isColumnMode(context);
-    final displayname = room.getLocalizedDisplayname(
-      MatrixLocals(L10n.of(context)),
-    );
-    final expandedSection = controller.expandedSection;
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        // The collapsed mobile peek gives the card just enough height for the
-        // header + progress bar and the nav cavity clips there. The section
-        // page can't shrink into that short box (it overflows), so below the
-        // threshold we render ONLY the header + bar; the sections slide in
-        // when the learner drags the sheet up (#7597).
-        final compact =
-            constraints.maxHeight.isFinite &&
-            constraints.maxHeight < _kCompactCardMaxHeight;
-        if (!compact && expandedSection != null) {
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // A pushed subpage swaps the card header for a back row — the
-              // back arrow pops to the course page at the section it came from
-              // (the close-affordance rule, routing.instructions.md).
-              Row(
-                children: [
-                  IconButton(
-                    tooltip: L10n.of(context).back,
-                    icon: const Icon(Icons.arrow_back),
-                    onPressed: () => context.go(
-                      WorkspaceNav.openCourseTab(
-                        GoRouterState.of(context).uri,
-                        tab: expandedSection,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Text(
-                      expandedSection.title(context),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8.0),
-              Expanded(
-                child: _ExpandedSectionBody(controller, room, expandedSection),
-              ),
-            ],
-          );
-        }
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // world_v2: a space has no AppBar ([SpaceDetails] renders none),
-            // so the left-panel close control — an X on desktop, a
-            // back arrow on mobile — rides at the leading edge of the card
-            // header. Dropping it would leave the course card with no way to
-            // close. See routing.instructions.md.
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                if (controller.widget.embeddedCloseButton != null)
-                  controller.widget.embeddedCloseButton!,
-                Expanded(
-                  child: Text(
-                    displayname,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                ),
-                // Normalized with the activity start page: share on the left,
-                // focus on the right, and the shared `my_location` focus icon.
-                if (room.joinCode != null)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: ShareRoomButton(
-                      room: room,
-                      tooltip: L10n.of(context).shareCourse,
-                      child: const Icon(Icons.share_outlined),
-                    ),
-                  ),
-                // The one camera path that zooms (#7616): course selection
-                // only pans, so this button zoom+pan-fits the map to all of
-                // the course's activities.
-                ValueListenableBuilder(
-                  valueListenable: controller.objectivesProvider.questLoader,
-                  builder: (context, _, _) {
-                    if (controller
-                        .objectivesProvider
-                        .filteredObjectiveGroups
-                        .isNotEmpty) {
-                      return IconButton(
-                        tooltip: L10n.of(context).focusOnMap,
-                        icon: const Icon(Icons.my_location),
-                        onPressed: MapCameraFocusRequests.request,
-                      );
-                    }
-                    return const SizedBox.shrink();
-                  },
-                ),
-              ],
-            ),
-            const SizedBox(height: 12.0),
-            if (compact)
-              // The collapsed peek keeps the progress bar under the header;
-              // on the full page it lives in the Course-plan section (#8357).
-              CourseProgressBar(
-                objectivesProvider: controller.objectivesProvider,
-              )
-            else
-              Expanded(
-                child: CourseOverview(
-                  controller: controller,
-                  room: room,
-                  moreButtons: _moreButtons(context),
-                  onInvite: controller.openInvite,
-                  initialSection: controller.widget.activeTab,
-                ),
-              ),
-            if (!compact) SizedBox(height: isColumnMode ? 12.0 : 4.0),
-          ],
-        );
-      },
+    return Padding(
+      padding: EdgeInsets.only(
+        bottom: FluffyThemes.isColumnMode(context) ? 12.0 : 4.0,
+      ),
+      child: CourseOverview(
+        controller: controller,
+        room: room,
+        moreButtons: _moreButtons(context),
+        onInvite: controller.openInvite,
+        initialSection: controller.widget.activeTab,
+      ),
     );
   }
 }
 
-/// The body of a section's full subpage, pushed within the card
-/// (`<section>/all` in the course token): the full course plan, the complete
-/// chat list, or the member cards.
-class _ExpandedSectionBody extends StatelessWidget {
+/// A section's full subpage, pushed within the card (`<section>/all` in the
+/// course token): the full course plan, the complete chat list, or the member
+/// cards. Its back control and section title are the card's header
+/// ([SpaceDetailsHeader]) — this body renders no navigation of its own.
+class _CourseSectionSubpage extends StatelessWidget {
   final SpaceDetailsController controller;
   final Room room;
   final SpaceSettingsTabs section;
 
-  const _ExpandedSectionBody(this.controller, this.room, this.section);
+  const _CourseSectionSubpage(this.controller, this.room, this.section);
 
   @override
   Widget build(BuildContext context) {
-    switch (section) {
-      case SpaceSettingsTabs.course:
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // Pinned above the plan so course totals stay visible while
-            // scrolling the Missions.
-            CourseProgressBar(
-              objectivesProvider: controller.objectivesProvider,
-            ),
-            const SizedBox(height: 8.0),
-            Expanded(
-              child: ListenableBuilder(
-                listenable: Listenable.merge([
-                  controller.objectivesProvider.questLoader,
-                  controller.objectivesProvider.progression,
-                ]),
-                builder: (context, _) => CourseObjectivesList(
-                  room: room,
-                  collapsibleMissions: true,
-                  hasCompletedActivity: (activityId) => controller
-                      .roomSummariesModel
-                      .hasCompletedActivity(room.client.userID!, activityId),
-                  objectivesProvider: controller.objectivesProvider,
-                ),
+    return switch (section) {
+      SpaceSettingsTabs.course => Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Pinned above the plan so course totals stay visible while
+          // scrolling the Missions.
+          CourseProgressBar(objectivesProvider: controller.objectivesProvider),
+          const SizedBox(height: 8.0),
+          Expanded(
+            child: ListenableBuilder(
+              listenable: Listenable.merge([
+                controller.objectivesProvider.questLoader,
+                controller.objectivesProvider.progression,
+              ]),
+              builder: (context, _) => CourseObjectivesList(
+                room: room,
+                collapsibleMissions: true,
+                hasCompletedActivity: (activityId) => controller
+                    .roomSummariesModel
+                    .hasCompletedActivity(room.client.userID!, activityId),
+                objectivesProvider: controller.objectivesProvider,
               ),
             ),
-          ],
-        );
-      case SpaceSettingsTabs.chat:
-        return CourseChats(room.id, activeChat: null, client: room.client);
-      default:
-        return SingleChildScrollView(
-          child: Column(
-            children: [
-              const InstructionsInlineTooltip(
-                instructionsEnum: InstructionsEnum.courseParticipantTooltip,
-                padding: EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
-              ),
-              RoomParticipantsSection(room: room),
-            ],
           ),
-        );
-    }
+        ],
+      ),
+      SpaceSettingsTabs.chat => CourseChats(
+        room.id,
+        activeChat: null,
+        client: room.client,
+      ),
+      _ => SingleChildScrollView(
+        child: Column(
+          children: [
+            const InstructionsInlineTooltip(
+              instructionsEnum: InstructionsEnum.courseParticipantTooltip,
+              padding: EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+            ),
+            RoomParticipantsSection(room: room),
+          ],
+        ),
+      ),
+    };
   }
 }

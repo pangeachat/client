@@ -643,8 +643,13 @@ abstract class WorkspaceNav {
   static String pushPage(Uri current, PanelToken token) {
     final col = token.type.def.column == PanelColumn.right ? 'right' : 'left';
     return _mutate(current, col, (tokens) {
-      final next = tokens.where((t) => t.type != token.type).toList();
-      next.add(token);
+      // Replace in place: list order is the allocator's entry order, so a
+      // panel keeps its layout slot when pushing or popping its own pages —
+      // popping a master with its detail open must not reorder the two.
+      final index = tokens.indexWhere((t) => t.type == token.type);
+      if (index == -1) return [...tokens, token];
+      final next = [...tokens];
+      next[index] = token;
       return next;
     });
   }

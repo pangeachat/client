@@ -37,10 +37,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 
 /// The course (space) details page: owns the course-scoped state — the quest
 /// outline, the space children's summaries, and the course-ping / space-gone
-/// subscriptions — and renders [SpaceDetailsContent] inside the space page
-/// chrome (no AppBar; the card header carries the close control). Non-space
-/// rooms render through [ChatDetailsContent] instead — see the shared
-/// `ChatDetails` entry.
+/// subscriptions — and renders [SpaceDetailsContent] under the card's header
+/// ([SpaceDetailsHeader], the shared panel chrome seating the panel's close
+/// control). Non-space rooms render through [ChatDetailsContent] instead —
+/// see the shared `ChatDetails` entry.
 class SpaceDetails extends StatefulWidget {
   final Room room;
   final Widget? embeddedCloseButton;
@@ -414,19 +414,26 @@ class SpaceDetailsController extends State<SpaceDetails> {
       label: L10n.of(context).pageLabel(L10n.of(context).courseDetails),
       container: true,
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsetsGeometry.only(
-            top: 16.0,
-            left: 16.0,
-            right: 16.0,
-          ),
-          child: MaxWidthBody(
-            maxWidth: 900,
-            showBorder: false,
-            innerPadding: const EdgeInsets.symmetric(horizontal: 16.0),
-            withScrolling: false,
-            child: SpaceDetailsContent(this, room),
-          ),
+        body: Column(
+          children: [
+            SpaceDetailsHeader(this, room),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsetsGeometry.only(
+                  top: 16.0,
+                  left: 16.0,
+                  right: 16.0,
+                ),
+                child: MaxWidthBody(
+                  maxWidth: 900,
+                  showBorder: false,
+                  innerPadding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  withScrolling: false,
+                  child: SpaceDetailsContent(this, room),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );

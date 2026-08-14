@@ -18,6 +18,16 @@ class CourseDetailsTokenParam extends TokenParam {
 
   static const String _expandedSegment = 'all';
 
+  /// `<section>/all` is a pushed subpage, so the panel's close control renders
+  /// the back arrow and pops it — the page renders no navigation of its own
+  /// (the close-affordance rule, routing.instructions.md).
+  @override
+  bool get isPushed => expanded;
+
+  @override
+  CourseDetailsTokenParam? get poppedParam =>
+      expanded ? CourseDetailsTokenParam(activeTab: activeTab) : null;
+
   @override
   String build() {
     final tab = activeTab;
