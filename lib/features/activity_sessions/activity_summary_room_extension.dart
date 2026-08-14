@@ -49,6 +49,11 @@ extension ActivitySummaryRoomExtension on Room {
     return _activitySummary(l1);
   }
 
+  /// True once a generated summary is on screen. The summary carries the
+  /// learner's goals from then on, so the goal header steps aside (#8289).
+  bool get hasGeneratedActivitySummary =>
+      visibleActivitySummaryByL1?.summary != null;
+
   Future<void> _setActivitySummary(
     ActivitySummaryModel summary,
     String langCode,

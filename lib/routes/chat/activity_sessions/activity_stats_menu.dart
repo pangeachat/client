@@ -9,6 +9,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
+import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
@@ -88,7 +89,9 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
 
   @override
   Widget build(BuildContext context) {
-    if (!room.showActivityChatUI) {
+    // Once the summary is on screen it carries the goals itself, so the header
+    // has nothing left to show and all completion lives in one place (#8289).
+    if (!room.showActivityChatUI || room.hasGeneratedActivitySummary) {
       return const SizedBox.shrink();
     }
 
