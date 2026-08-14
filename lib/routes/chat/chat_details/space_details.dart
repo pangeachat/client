@@ -418,16 +418,14 @@ class SpaceDetailsController extends State<SpaceDetails> {
           children: [
             SpaceDetailsHeader(this, room),
             Expanded(
+              // Top inset only: sections pad themselves horizontally
+              // ([SpaceDetailsContent.sectionPadding]) so the dividers
+              // between them run edge-to-edge (#8357 design).
               child: Padding(
-                padding: const EdgeInsetsGeometry.only(
-                  top: 16.0,
-                  left: 16.0,
-                  right: 16.0,
-                ),
+                padding: const EdgeInsetsGeometry.only(top: 16.0),
                 child: MaxWidthBody(
                   maxWidth: 900,
                   showBorder: false,
-                  innerPadding: const EdgeInsets.symmetric(horizontal: 16.0),
                   withScrolling: false,
                   child: SpaceDetailsContent(this, room),
                 ),

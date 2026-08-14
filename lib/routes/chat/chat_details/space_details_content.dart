@@ -65,6 +65,13 @@ class SpaceDetailsContent extends StatelessWidget {
 
   const SpaceDetailsContent(this.controller, this.room, {super.key});
 
+  /// The card's horizontal content inset. Sections apply it individually —
+  /// the page itself carries no horizontal padding — so the dividers between
+  /// sections run edge-to-edge (#8357 design).
+  static const EdgeInsets sectionPadding = EdgeInsets.symmetric(
+    horizontal: 16.0,
+  );
+
   /// Below this incoming BODY height (the card minus its header) the course
   /// card renders only the progress bar — the collapsed mobile peek (the nav
   /// cavity clips there). The wide/web panel and the expanded sheet are always
@@ -86,8 +93,11 @@ class SpaceDetailsContent extends StatelessWidget {
             constraints.maxHeight.isFinite &&
             constraints.maxHeight < _kCompactCardMaxHeight;
         if (compact) {
-          return CourseProgressBar(
-            objectivesProvider: controller.objectivesProvider,
+          return Padding(
+            padding: sectionPadding,
+            child: CourseProgressBar(
+              objectivesProvider: controller.objectivesProvider,
+            ),
           );
         }
 
@@ -298,48 +308,53 @@ class _CourseSectionSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return switch (section) {
-      SpaceSettingsTabs.course => Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          // Pinned above the plan so course totals stay visible while
-          // scrolling the Missions.
-          CourseProgressBar(objectivesProvider: controller.objectivesProvider),
-          const SizedBox(height: 8.0),
-          Expanded(
-            child: ListenableBuilder(
-              listenable: Listenable.merge([
-                controller.objectivesProvider.questLoader,
-                controller.objectivesProvider.progression,
-              ]),
-              builder: (context, _) => CourseObjectivesList(
-                room: room,
-                collapsibleMissions: true,
-                hasCompletedActivity: (activityId) => controller
-                    .roomSummariesModel
-                    .hasCompletedActivity(room.client.userID!, activityId),
-                objectivesProvider: controller.objectivesProvider,
+    return Padding(
+      padding: SpaceDetailsContent.sectionPadding,
+      child: switch (section) {
+        SpaceSettingsTabs.course => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            // Pinned above the plan so course totals stay visible while
+            // scrolling the Missions.
+            CourseProgressBar(
+              objectivesProvider: controller.objectivesProvider,
+            ),
+            const SizedBox(height: 8.0),
+            Expanded(
+              child: ListenableBuilder(
+                listenable: Listenable.merge([
+                  controller.objectivesProvider.questLoader,
+                  controller.objectivesProvider.progression,
+                ]),
+                builder: (context, _) => CourseObjectivesList(
+                  room: room,
+                  collapsibleMissions: true,
+                  hasCompletedActivity: (activityId) => controller
+                      .roomSummariesModel
+                      .hasCompletedActivity(room.client.userID!, activityId),
+                  objectivesProvider: controller.objectivesProvider,
+                ),
               ),
             ),
-          ),
-        ],
-      ),
-      SpaceSettingsTabs.chat => CourseChats(
-        room.id,
-        activeChat: null,
-        client: room.client,
-      ),
-      _ => SingleChildScrollView(
-        child: Column(
-          children: [
-            const InstructionsInlineTooltip(
-              instructionsEnum: InstructionsEnum.courseParticipantTooltip,
-              padding: EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
-            ),
-            RoomParticipantsSection(room: room),
           ],
         ),
-      ),
-    };
+        SpaceSettingsTabs.chat => CourseChats(
+          room.id,
+          activeChat: null,
+          client: room.client,
+        ),
+        _ => SingleChildScrollView(
+          child: Column(
+            children: [
+              const InstructionsInlineTooltip(
+                instructionsEnum: InstructionsEnum.courseParticipantTooltip,
+                padding: EdgeInsets.only(bottom: 16.0, left: 16.0, right: 16.0),
+              ),
+              RoomParticipantsSection(room: room),
+            ],
+          ),
+        ),
+      },
+    );
   }
 }

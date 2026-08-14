@@ -134,116 +134,145 @@ class _CourseOverviewState extends State<CourseOverview> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // The course description leads the page (#8357 review feedback),
-            // with the language/level/module chips directly below it.
-            if (room.topic.isNotEmpty)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12.0),
-                child: Text(room.topic),
-              ),
-            if (room.coursePlan != null)
-              Padding(
-                padding: const EdgeInsets.only(bottom: 12.0),
-                child: CourseInfoChips(
-                  room.coursePlan!.uuid,
-                  courseRoomId: room.id,
-                  fontSize: 12.0,
-                  iconSize: 12.0,
-                ),
-              ),
-            CourseCatchUp(room: room),
-            AnalyticsRequestIndicator(room: room),
-            Column(
-              key: _sectionKeys[SpaceSettingsTabs.course],
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CourseSectionHeader(
-                  title: SpaceSettingsTabs.course.title(context),
-                ),
-                CourseProgressBar(
-                  objectivesProvider: widget.controller.objectivesProvider,
-                ),
-                const SizedBox(height: 8.0),
-                Text(
-                  l10n.upNext.toUpperCase(),
-                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                    color: Theme.of(context).colorScheme.primary,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 0.8,
+            // Each section pads itself ([SpaceDetailsContent.sectionPadding])
+            // rather than the page, so the dividers between sections run
+            // edge-to-edge (#8357 design).
+            Padding(
+              padding: SpaceDetailsContent.sectionPadding,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // The course description leads the page (#8357 review
+                  // feedback), with the language/level/module chips directly
+                  // below it.
+                  if (room.topic.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12.0),
+                      child: Text(room.topic),
+                    ),
+                  if (room.coursePlan != null)
+                    Padding(
+                      padding: const EdgeInsets.only(bottom: 12.0),
+                      child: CourseInfoChips(
+                        room.coursePlan!.uuid,
+                        courseRoomId: room.id,
+                        fontSize: 12.0,
+                        iconSize: 12.0,
+                      ),
+                    ),
+                  CourseCatchUp(room: room),
+                  AnalyticsRequestIndicator(room: room),
+                  Column(
+                    key: _sectionKeys[SpaceSettingsTabs.course],
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      CourseSectionHeader(
+                        title: SpaceSettingsTabs.course.title(context),
+                      ),
+                      CourseProgressBar(
+                        objectivesProvider:
+                            widget.controller.objectivesProvider,
+                      ),
+                      const SizedBox(height: 8.0),
+                      Text(
+                        l10n.upNext.toUpperCase(),
+                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.8,
+                        ),
+                      ),
+                      ListenableBuilder(
+                        listenable: Listenable.merge([
+                          widget.controller.objectivesProvider.questLoader,
+                          widget.controller.objectivesProvider.progression,
+                        ]),
+                        builder: (context, _) => CourseObjectivesList(
+                          room: room,
+                          shrinkWrap: true,
+                          upNextOnly: true,
+                          hasCompletedActivity: (activityId) => widget
+                              .controller
+                              .roomSummariesModel
+                              .hasCompletedActivity(
+                                room.client.userID!,
+                                activityId,
+                              ),
+                          objectivesProvider:
+                              widget.controller.objectivesProvider,
+                        ),
+                      ),
+                      CourseSectionLink(
+                        label: l10n.seeFullCoursePlan,
+                        onTap: () => _openSubpage(SpaceSettingsTabs.course),
+                      ),
+                    ],
                   ),
-                ),
-                ListenableBuilder(
-                  listenable: Listenable.merge([
-                    widget.controller.objectivesProvider.questLoader,
-                    widget.controller.objectivesProvider.progression,
-                  ]),
-                  builder: (context, _) => CourseObjectivesList(
-                    room: room,
-                    shrinkWrap: true,
-                    upNextOnly: true,
-                    hasCompletedActivity: (activityId) => widget
-                        .controller
-                        .roomSummariesModel
-                        .hasCompletedActivity(room.client.userID!, activityId),
-                    objectivesProvider: widget.controller.objectivesProvider,
+                ],
+              ),
+            ),
+            const Divider(),
+            Padding(
+              padding: SpaceDetailsContent.sectionPadding,
+              child: Column(
+                key: _sectionKeys[SpaceSettingsTabs.chat],
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  CourseSectionHeader(
+                    title: SpaceSettingsTabs.chat.title(context),
                   ),
-                ),
-                CourseSectionLink(
-                  label: l10n.seeFullCoursePlan,
-                  onTap: () => _openSubpage(SpaceSettingsTabs.course),
-                ),
-              ],
+                  CourseChatsPreview(room: room),
+                  CourseSectionLink(
+                    label: l10n.allChats,
+                    onTap: () => _openSubpage(SpaceSettingsTabs.chat),
+                  ),
+                ],
+              ),
             ),
             const Divider(),
-            Column(
-              key: _sectionKeys[SpaceSettingsTabs.chat],
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CourseSectionHeader(
-                  title: SpaceSettingsTabs.chat.title(context),
-                ),
-                CourseChatsPreview(room: room),
-                CourseSectionLink(
-                  label: l10n.allChats,
-                  onTap: () => _openSubpage(SpaceSettingsTabs.chat),
-                ),
-              ],
+            Padding(
+              padding: SpaceDetailsContent.sectionPadding,
+              child: Column(
+                key: _sectionKeys[SpaceSettingsTabs.participants],
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  CourseSectionHeader(
+                    title: SpaceSettingsTabs.participants.title(context),
+                    trailing: room.canInvite
+                        ? FilledButton.tonalIcon(
+                            onPressed: widget.onInvite,
+                            icon: const Icon(
+                              Icons.person_add_outlined,
+                              size: 16,
+                            ),
+                            label: Text(l10n.invite),
+                            style: FilledButton.styleFrom(
+                              visualDensity: VisualDensity.compact,
+                            ),
+                          )
+                        : null,
+                  ),
+                  CourseParticipantsPreview(room: room),
+                  CourseSectionLink(
+                    label: l10n.allParticipants,
+                    onTap: () => _openSubpage(SpaceSettingsTabs.participants),
+                  ),
+                ],
+              ),
             ),
             const Divider(),
-            Column(
-              key: _sectionKeys[SpaceSettingsTabs.participants],
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                CourseSectionHeader(
-                  title: SpaceSettingsTabs.participants.title(context),
-                  trailing: room.canInvite
-                      ? FilledButton.tonalIcon(
-                          onPressed: widget.onInvite,
-                          icon: const Icon(Icons.person_add_outlined, size: 16),
-                          label: Text(l10n.invite),
-                          style: FilledButton.styleFrom(
-                            visualDensity: VisualDensity.compact,
-                          ),
-                        )
-                      : null,
-                ),
-                CourseParticipantsPreview(room: room),
-                CourseSectionLink(
-                  label: l10n.allParticipants,
-                  onTap: () => _openSubpage(SpaceSettingsTabs.participants),
-                ),
-              ],
-            ),
-            const Divider(),
-            Column(
-              key: _sectionKeys[SpaceSettingsTabs.more],
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CourseSectionHeader(
-                  title: SpaceSettingsTabs.more.title(context),
-                ),
-                _MoreButtonList(buttons: widget.moreButtons),
-              ],
+            Padding(
+              padding: SpaceDetailsContent.sectionPadding,
+              child: Column(
+                key: _sectionKeys[SpaceSettingsTabs.more],
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CourseSectionHeader(
+                    title: SpaceSettingsTabs.more.title(context),
+                  ),
+                  _MoreButtonList(buttons: widget.moreButtons),
+                ],
+              ),
             ),
           ],
         ),
