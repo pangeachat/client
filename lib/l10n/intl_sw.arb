@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-13 15:50:53.015324",
+    "@@last_modified": "2026-08-14 11:32:27.537459",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "Kozi haipatikani",
     "courseDeletedDialogDesc": "Kozi hii imefutwa.",
     "pingedActivity": "Shughuli iliyopigiwa ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Mpangilio huu unabaki katika lugha yako ya asili ili uweze kuupata kila wakati.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Mpangilio huu unabaki katika lugha yako ya asili ili uweze kuupata kila wakati.)",
+    "usernameTakenPleaseChooseAnother": "Jina hilo la mtumiaji tayari linatumika. Tafadhali chagua lingine."
 }

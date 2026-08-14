@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-13 15:50:46.374176",
+    "@@last_modified": "2026-08-14 11:32:16.951943",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10229,5 +10229,6 @@
     "courseNoLongerAvailableTitle": "Kurz není k dispozici",
     "courseDeletedDialogDesc": "Tento kurz byl smazán.",
     "pingedActivity": "Aktivita s upozorněním",
-    "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavení zůstane ve vašem rodném jazyce, abyste ho vždy našli.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavení zůstane ve vašem rodném jazyce, abyste ho vždy našli.)",
+    "usernameTakenPleaseChooseAnother": "Toto uživatelské jméno je již obsazeno. Zvolte prosím jiné."
 }

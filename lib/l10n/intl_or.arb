@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-13 15:50:51.507513",
+    "@@last_modified": "2026-08-14 11:32:26.243913",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "କୋର୍ସ ଉପଲବ୍ଧ ନାହିଁ",
     "courseDeletedDialogDesc": "ଏହି କୋର୍ସଟିକୁ ଡିଲିଟ୍ କରାଯାଇଛି।",
     "pingedActivity": "ପିଙ୍ଗ୍ ହୋଇଥିବା କାର୍ଯ୍ୟକଳାପ",
-    "appInTargetLanguageStaysInBaseLanguage": "(ଏହି ସେଟିଂ ଆପଣଙ୍କ ମୂଳ ଭାଷାରେ ରହିଥାଏ ଯାହାଦ୍ୱାରା ଆପଣ ଏହାକୁ ସବୁବେଳେ ଖୋଜିପାରିବେ।)"
+    "appInTargetLanguageStaysInBaseLanguage": "(ଏହି ସେଟିଂ ଆପଣଙ୍କ ମୂଳ ଭାଷାରେ ରହିଥାଏ ଯାହାଦ୍ୱାରା ଆପଣ ଏହାକୁ ସବୁବେଳେ ଖୋଜିପାରିବେ।)",
+    "usernameTakenPleaseChooseAnother": "ସେହି ଉପଯୋଗକର୍ତ୍ତା ନାମ ପୂର୍ବରୁ ବ୍ୟବହୃତ ହୋଇସାରିଛି। ଦୟାକରି ଅନ୍ୟଟିଏ ବାଛନ୍ତୁ।"
 }

@@ -3568,7 +3568,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-13 15:50:47.513080",
+    "@@last_modified": "2026-08-14 11:32:19.686405",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9746,5 +9746,6 @@
     "courseNoLongerAvailableTitle": "Cúrsa neamh-infhaighte",
     "courseDeletedDialogDesc": "Scriosadh an cúrsa seo.",
     "pingedActivity": "Gníomhaíocht phingáilte",
-    "appInTargetLanguageStaysInBaseLanguage": "(Fanann an socrú seo i do theanga dhúchais ionas go mbíonn tú in ann é a aimsiú i gcónaí.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Fanann an socrú seo i do theanga dhúchais ionas go mbíonn tú in ann é a aimsiú i gcónaí.)",
+    "usernameTakenPleaseChooseAnother": "Tá an t-ainm úsáideora sin in úsáid cheana féin. Roghnaigh ceann eile, le do thoil."
 }

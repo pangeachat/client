@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-13 15:50:46.625237",
+    "@@last_modified": "2026-08-14 11:32:17.084112",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "Dili na magamit ang kurso",
     "courseDeletedDialogDesc": "Gipapas na kini nga kurso.",
     "pingedActivity": "Gi-ping nga kalihokan",
-    "appInTargetLanguageStaysInBaseLanguage": "(Kini nga setting magpabilin sa imong lumad nga pinulongan aron kanunay nimo kining makit-an.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Kini nga setting magpabilin sa imong lumad nga pinulongan aron kanunay nimo kining makit-an.)",
+    "usernameTakenPleaseChooseAnother": "Gigamit na kanang username. Palihug pagpili og lain."
 }

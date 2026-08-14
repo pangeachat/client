@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-13 15:50:53.093937",
+    "@@last_modified": "2026-08-14 11:32:26.790791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "Koorsada lama heli karo",
     "courseDeletedDialogDesc": "Koorsadan waa la tirtiray.",
     "pingedActivity": "Hawlaha la soo sheegay",
-    "appInTargetLanguageStaysInBaseLanguage": "(Dejintani waxay ku sii jiraysaa luqaddaada hooyo si aad mar walba u hesho.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Dejintani waxay ku sii jiraysaa luqaddaada hooyo si aad mar walba u hesho.)",
+    "usernameTakenPleaseChooseAnother": "Magaca isticmaalaha waa la qaatay. Fadlan mid kale dooro."
 }

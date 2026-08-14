@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-13 15:50:45.796058",
+    "@@last_modified": "2026-08-14 11:32:16.582051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "কোর্স উপলব্ধ নহয়",
     "courseDeletedDialogDesc": "এইটো পাঠ্যক্ৰম বিলোপ কৰা হৈছে।",
     "pingedActivity": "পিং কৰা কাৰ্যকলাপ",
-    "appInTargetLanguageStaysInBaseLanguage": "(এই ছেটিংছটো আপোনাৰ মাতৃভাষাত থাকিব যাতে আপুনি ইয়াক সদায় বিচাৰি পায়।)"
+    "appInTargetLanguageStaysInBaseLanguage": "(এই ছেটিংছটো আপোনাৰ মাতৃভাষাত থাকিব যাতে আপুনি ইয়াক সদায় বিচাৰি পায়।)",
+    "usernameTakenPleaseChooseAnother": "সেই ব্যৱহাৰকাৰীৰ নামটো ইতিমধ্যে লোৱা হৈছে। অনুগ্ৰহ কৰি আন এটা বাছক।"
 }

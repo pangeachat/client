@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-13 15:50:48.182232",
+    "@@last_modified": "2026-08-14 11:32:22.186359",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10171,5 +10171,6 @@
     "courseNoLongerAvailableTitle": "Tečaj nije dostupan",
     "courseDeletedDialogDesc": "Ovaj je tečaj izbrisan.",
     "pingedActivity": "Pingana aktivnost",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem materinjem jeziku kako biste je uvijek mogli pronaći.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem materinjem jeziku kako biste je uvijek mogli pronaći.)",
+    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Odaberite drugo."
 }
