@@ -61,8 +61,11 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
           ),
         ),
       ),
+      // The example message scales with the device text size, so the slot it
+      // sits in has to grow with it — a fixed 100 clips the bubble outright at
+      // large text sizes (accessibility.instructions.md, Text scaling).
       _ => SizedBox(
-        height: 100.0,
+        height: MediaQuery.textScalerOf(context).scale(100.0),
         child: Center(
           child: AnalyticsPracticeExerciseExampleMessage(exampleMessage),
         ),

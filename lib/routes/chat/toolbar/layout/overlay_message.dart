@@ -239,11 +239,15 @@ class OverlayMessage extends StatelessWidget {
                     color: textColor.withAlpha(164),
                     size: 14,
                   ),
-                  Text(
-                    displayEvent.originServerTs.localizedTimeShort(context),
-                    style: TextStyle(
-                      color: textColor.withAlpha(164),
-                      fontSize: 11,
+                  // Flexible: the timestamp scales with the device text size
+                  // now, and this row is inside the bubble's width budget.
+                  Flexible(
+                    child: Text(
+                      displayEvent.originServerTs.localizedTimeShort(context),
+                      style: TextStyle(
+                        color: textColor.withAlpha(164),
+                        fontSize: 11,
+                      ),
                     ),
                   ),
                 ],

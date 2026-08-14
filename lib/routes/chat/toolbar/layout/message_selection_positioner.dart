@@ -286,8 +286,11 @@ class MessageSelectionPositionerState extends State<MessageSelectionPositioner>
   }
 
   double get overheadContentHeight {
+    // The word card grows with the device text size, so the room reserved for
+    // it above the message has to grow by the same factor — otherwise the card
+    // is laid out over the message it belongs to.
     return (widget.overlayController.selectedToken != null
-            ? AppConfig.toolbarMaxHeight
+            ? AppConfig.scaledToolbarMaxHeight(context)
             : 40.0) +
         4.0;
   }

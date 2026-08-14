@@ -130,6 +130,16 @@ abstract class AppConfig {
   static const double readingAssistanceInputBarHeight = 175.0;
   static String errorSubscriptionId = "pangea_subscription_error";
 
+  /// [toolbarMaxHeight] grown by the device text scaler.
+  ///
+  /// The word card is a fixed-height box whose whole content is text — the
+  /// word, its transcription and its meaning — so at a large device text size
+  /// the unscaled 250 clips it. Everything that reserves room for that card
+  /// must use the same value, or the card and the space held for it disagree.
+  /// See accessibility.instructions.md, Text scaling.
+  static double scaledToolbarMaxHeight(BuildContext context) =>
+      MediaQuery.textScalerOf(context).scale(toolbarMaxHeight);
+
   static TextStyle messageTextStyle(Event? event, Color textColor) {
     final fontSize = messageFontSize;
     final bigEmotes =

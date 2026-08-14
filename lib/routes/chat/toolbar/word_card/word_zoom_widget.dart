@@ -94,7 +94,7 @@ class WordZoomWidget extends StatelessWidget {
             .showSubscriptionGatedContent
         ? MessageUnsubscribedCard(token: token, onClose: onClose)
         : Container(
-            height: AppConfig.toolbarMaxHeight - 8,
+            height: AppConfig.scaledToolbarMaxHeight(context) - 8,
             padding: const EdgeInsets.all(12.0),
             constraints: BoxConstraints(
               maxWidth: maxWidth ?? AppConfig.toolbarMinWidth,
@@ -166,7 +166,7 @@ class WordZoomWidget extends StatelessWidget {
             ),
             borderRadius: const BorderRadius.all(Radius.circular(25)),
           ),
-          height: AppConfig.toolbarMaxHeight,
+          height: AppConfig.scaledToolbarMaxHeight(context),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -250,8 +250,11 @@ class _WordCardHeaderState extends State<_WordCardHeader>
   Widget build(BuildContext context) {
     final showRestore = _blocked && widget.enableRestore;
 
+    // The word itself is 28pt text, so the header slot has to grow with the
+    // device text size or the word is clipped by its own row
+    // (accessibility.instructions.md, Text scaling).
     return SizedBox(
-      height: 40.0,
+      height: MediaQuery.textScalerOf(context).scale(40.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
