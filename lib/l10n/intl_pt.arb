@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:51.674886",
+    "@@last_modified": "2026-08-14 11:32:25.334040",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10679,5 +10679,6 @@
     "courseNoLongerAvailableTitle": "Curso indisponível",
     "courseDeletedDialogDesc": "Este curso foi excluído.",
     "pingedActivity": "Atividade com ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)",
+    "usernameTakenPleaseChooseAnother": "Esse nome de usuário já está em uso. Por favor, escolha outro."
 }

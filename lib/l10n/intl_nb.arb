@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:50.779828",
+    "@@last_modified": "2026-08-14 11:32:25.097851",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9792,5 +9792,6 @@
     "courseNoLongerAvailableTitle": "Kurset er ikke tilgjengelig",
     "courseDeletedDialogDesc": "Dette kurset er slettet.",
     "pingedActivity": "Pinget aktivitet",
-    "appInTargetLanguageStaysInBaseLanguage": "(Denne innstillingen forblir på morsmålet ditt, slik at du alltid kan finne den.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Denne innstillingen forblir på morsmålet ditt, slik at du alltid kan finne den.)",
+    "usernameTakenPleaseChooseAnother": "Det brukernavnet er allerede tatt. Velg et annet."
 }

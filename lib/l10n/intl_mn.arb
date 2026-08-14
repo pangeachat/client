@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-13 15:50:50.486364",
+    "@@last_modified": "2026-08-14 11:32:24.119015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "Хичээл боломжгүй",
     "courseDeletedDialogDesc": "Энэ хичээл устгагдсан байна.",
     "pingedActivity": "Идэвхжүүлсэн үйл ажиллагаа",
-    "appInTargetLanguageStaysInBaseLanguage": "(Энэ тохиргоо нь таны эх хэл дээр байх тул та үүнийг үргэлж олох боломжтой.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Энэ тохиргоо нь таны эх хэл дээр байх тул та үүнийг үргэлж олох боломжтой.)",
+    "usernameTakenPleaseChooseAnother": "Энэ хэрэглэгчийн нэр аль хэдийнэ бүртгэгдсэн байна. Өөр нэр сонгоно уу."
 }
