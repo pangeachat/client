@@ -8,8 +8,8 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 /// to actually reach the network path must install one of these. By default it
 /// has no access token, so the fetch still fails inside `BaseRepo._fetch`'s
 /// try/catch and surfaces as `Result.error` — the shape most repo tests want.
-/// Pass [accessToken] when the test needs the request to be built and answered
-/// by an `http` MockClient instead.
+/// Pass [accessToken] to get past that and drive the real request path (against
+/// a `MockClient`), which is what a test of the failure *contract* needs.
 class FakePangeaController implements PangeaController {
   @override
   final UserController userController;
@@ -30,8 +30,8 @@ class _FakeUserController implements UserController {
   @override
   String? get userL1Code => _userL1Code;
 
-  /// Mirrors the real getter: non-nullable, and throws when the user is not
-  /// logged in — which is what makes the token-less default fail the fetch.
+  /// Mirrors the real controller, which throws rather than serving a null token
+  /// when nobody is logged in.
   @override
   String get accessToken =>
       _accessToken ??
