@@ -924,6 +924,15 @@ class ChatController extends State<ChatPageWithRoom>
       currentTimeline: () => timeline,
       isSuppressed: () =>
           selectMode ||
+          // The open toolbar is the app-wide "a message is open" state, and
+          // this controller's own selection list is only a proxy for it
+          // (#8396). The two diverge: the overlay is registered a frame before
+          // the selection lands, a host can own its selection and never set one
+          // here (the analytics example message), and a second controller for
+          // the same room has an empty list while the visible one has the
+          // message open. Read from the shared overlay registry so every one of
+          // those stays quiet.
+          isToolbarOpen ||
           sendController.text.isNotEmpty ||
           !isFocused ||
           // Recording is inline, not modal, so none of the conditions above
