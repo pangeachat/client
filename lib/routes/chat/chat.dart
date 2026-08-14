@@ -2178,7 +2178,10 @@ class ChatController extends State<ChatPageWithRoom>
     final clients = Matrix.of(context).currentBundle;
     for (final event in selectedEvents) {
       if (!event.status.isSent) return false;
-      if (event.canRedact == false &&
+      // #Pangea
+      // if (event.canRedact == false &&
+      if (!room.canRedactEventFrom(event.senderId) &&
+          // Pangea#
           !(clients!.any((cl) => event.senderId == cl!.userID))) {
         return false;
       }

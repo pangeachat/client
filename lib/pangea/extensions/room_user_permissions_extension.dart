@@ -6,6 +6,16 @@ extension UserPermissionsRoomExtension on Room {
 
   bool get isRoomAdmin => ownPowerLevel >= SpaceConstants.powerLevelOfAdmin;
 
+  /// Whether the user may redact an event sent by [senderId].
+  ///
+  /// Direct chats are created with the `trusted_private_chat` preset, so both
+  /// members sit at admin power and [canRedact] alone would let each delete the
+  /// other's messages. Direct chats follow every other room instead — your own
+  /// messages only — while moderators keep the power level rule elsewhere
+  /// (#8402).
+  bool canRedactEventFrom(String senderId) =>
+      senderId == client.userID || (!isDirectChat && canRedact);
+
   /// The users currently knocking on this room, from the locally loaded member
   /// list. Empty for non-admins: only an admin can accept/deny a knock, so
   /// knock indicators are admin-only by design (#8139). Callers that need the
