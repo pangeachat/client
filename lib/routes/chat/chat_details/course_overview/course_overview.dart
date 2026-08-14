@@ -8,7 +8,6 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
@@ -16,6 +15,7 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_secti
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_link.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_request_indicator.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
@@ -27,7 +27,7 @@ import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.
 /// analytics-access requests) ride at the top and self-hide when empty. A
 /// section in the course token's param scrolls the page to that section.
 class CourseOverview extends StatefulWidget {
-  final ChatDetailsController controller;
+  final SpaceDetailsController controller;
   final Room room;
 
   /// The More section's rows (admin actions disabled for non-admins).
@@ -134,12 +134,22 @@ class _CourseOverviewState extends State<CourseOverview> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // The course description leads the page (#8357 review feedback);
-            // the language/level/module chips stay with the More section.
+            // The course description leads the page (#8357 review feedback),
+            // with the language/level/module chips directly below it.
             if (room.topic.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.only(bottom: 12.0),
                 child: Text(room.topic),
+              ),
+            if (room.coursePlan != null)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+                child: CourseInfoChips(
+                  room.coursePlan!.uuid,
+                  courseRoomId: room.id,
+                  fontSize: 12.0,
+                  iconSize: 12.0,
+                ),
               ),
             CourseCatchUp(room: room),
             AnalyticsRequestIndicator(room: room),
@@ -147,7 +157,9 @@ class _CourseOverviewState extends State<CourseOverview> {
               key: _sectionKeys[SpaceSettingsTabs.course],
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CourseSectionHeader(title: l10n.coursePlan),
+                CourseSectionHeader(
+                  title: SpaceSettingsTabs.course.title(context),
+                ),
                 CourseProgressBar(
                   objectivesProvider: widget.controller.objectivesProvider,
                 ),
@@ -187,7 +199,9 @@ class _CourseOverviewState extends State<CourseOverview> {
               key: _sectionKeys[SpaceSettingsTabs.chat],
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                CourseSectionHeader(title: l10n.chats),
+                CourseSectionHeader(
+                  title: SpaceSettingsTabs.chat.title(context),
+                ),
                 CourseChatsPreview(room: room),
                 CourseSectionLink(
                   label: l10n.allChats,
@@ -201,7 +215,7 @@ class _CourseOverviewState extends State<CourseOverview> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 CourseSectionHeader(
-                  title: l10n.participants,
+                  title: SpaceSettingsTabs.participants.title(context),
                   trailing: room.canInvite
                       ? FilledButton.tonalIcon(
                           onPressed: widget.onInvite,
@@ -225,17 +239,9 @@ class _CourseOverviewState extends State<CourseOverview> {
               key: _sectionKeys[SpaceSettingsTabs.more],
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CourseSectionHeader(title: l10n.more),
-                if (room.coursePlan != null)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
-                    child: CourseInfoChips(
-                      room.coursePlan!.uuid,
-                      courseRoomId: room.id,
-                      fontSize: 12.0,
-                      iconSize: 12.0,
-                    ),
-                  ),
+                CourseSectionHeader(
+                  title: SpaceSettingsTabs.more.title(context),
+                ),
                 _MoreButtonList(buttons: widget.moreButtons),
               ],
             ),

@@ -31,6 +31,17 @@ enum InvitationFilter {
   static InvitationFilter? fromString(String value) =>
       InvitationFilter.values.firstWhereOrNull((e) => e.name == value);
 
+  /// The most relevant starting filter for [room]'s invite flow: knocking
+  /// users first, then the parent space's members, then contacts.
+  static InvitationFilter defaultForRoom(Room room) {
+    if (room.getParticipants([Membership.knock]).isNotEmpty) {
+      return InvitationFilter.knocking;
+    }
+    return room.pangeaSpaceParents.isNotEmpty
+        ? InvitationFilter.space
+        : InvitationFilter.contacts;
+  }
+
   static InvitationFilter? fromNullableString(String? value) =>
       value == null ? null : fromString(value);
 }

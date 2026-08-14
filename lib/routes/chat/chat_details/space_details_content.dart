@@ -15,22 +15,18 @@ import 'package:fluffychat/features/join_codes/share_room_button.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
-import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_overview.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_space_dialog.dart';
-import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
+import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_text_input_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 /// The course page's sections (the retired tab row's identities, kept as the
@@ -48,52 +44,22 @@ enum SpaceSettingsTabs {
   static SpaceSettingsTabs? fromString(String value) {
     return SpaceSettingsTabs.values.firstWhereOrNull((e) => e.name == value);
   }
+
+  /// The section's display title — shared by the course page's section
+  /// headers and the pushed subpage's back row, so the two can't drift.
+  String title(BuildContext context) => switch (this) {
+    SpaceSettingsTabs.course => L10n.of(context).coursePlan,
+    SpaceSettingsTabs.chat => L10n.of(context).chats,
+    SpaceSettingsTabs.participants => L10n.of(context).participants,
+    _ => L10n.of(context).more,
+  };
 }
 
 class SpaceDetailsContent extends StatelessWidget {
-  final ChatDetailsController controller;
+  final SpaceDetailsController controller;
   final Room room;
 
   const SpaceDetailsContent(this.controller, this.room, {super.key});
-
-  /// The sections with a full "See all" subpage. `more` shows everything
-  /// inline, so an expanded token for it degrades to the section scroll.
-  static const Set<SpaceSettingsTabs> _expandableSections = {
-    SpaceSettingsTabs.course,
-    SpaceSettingsTabs.chat,
-    SpaceSettingsTabs.participants,
-  };
-
-  SpaceSettingsTabs? get _expandedSection {
-    final tab = controller.widget.activeTab;
-    if (tab == null || !controller.widget.expandedSection) return null;
-    return _expandableSections.contains(tab) ? tab : null;
-  }
-
-  /// Open the invite flow beside the card, seated on the most relevant contact
-  /// filter (knocking users first). See `routing.instructions.md`.
-  void _openInvite(BuildContext context) {
-    InvitationFilter filter = InvitationFilter.knocking;
-    if (room.getParticipants([Membership.knock]).isEmpty) {
-      filter = room.pangeaSpaceParents.isNotEmpty
-          ? InvitationFilter.space
-          : InvitationFilter.contacts;
-    }
-    context.go(
-      WorkspaceNav.openCoursePage(
-        GoRouterState.of(context).uri,
-        RoomSubpageEnum.invite,
-        filter: filter,
-      ),
-    );
-  }
-
-  /// Open a course-management page (edit / access / permissions / change-course)
-  /// as the card's DETAIL — a `coursepage` panel beside the card that coexists
-  /// when width allows and folds to a push when not, keeping the `?m=` filter
-  /// and the rest of the workspace. See `routing.instructions.md`.
-  void _openCoursePage(BuildContext context, RoomSubpageEnum page) => context
-      .go(WorkspaceNav.openCoursePage(GoRouterState.of(context).uri, page));
 
   /// The More section's rows. Every setting shows inline; admin-only rows are
   /// disabled (not hidden) for non-admins — one layout for all roles (#8357).
@@ -104,14 +70,14 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.editCourse,
         description: l10n.editCourseDesc,
         icon: const Icon(Icons.edit_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, RoomSubpageEnum.edit),
+        onPressed: () => controller.openCoursePage(RoomSubpageEnum.edit),
         enabled: room.isRoomAdmin,
       ),
       ButtonDetails(
         title: l10n.changeCourse,
         description: l10n.changeCourseDesc,
         icon: const Icon(Icons.assignment_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, RoomSubpageEnum.addcourse),
+        onPressed: () => controller.openCoursePage(RoomSubpageEnum.addcourse),
         enabled: room.isRoomAdmin,
       ),
       ButtonDetails(
@@ -132,7 +98,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.starsToUnlockObjectiveTitle,
         description: l10n.starsToUnlockObjectiveDesc,
         icon: const Icon(Icons.star_outline, size: 30.0),
-        onPressed: () => _setStarsToUnlockObjective(context),
+        onPressed: controller.setStarsToUnlockObjective,
         enabled: room.isRoomAdmin,
         trailing: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -158,14 +124,14 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.permissions,
         description: l10n.permissionsDesc,
         icon: const Icon(Icons.edit_attributes_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, RoomSubpageEnum.permissions),
+        onPressed: () => controller.openCoursePage(RoomSubpageEnum.permissions),
         enabled: room.isRoomAdmin,
       ),
       ButtonDetails(
         title: l10n.access,
         description: l10n.accessDesc,
         icon: const Icon(Icons.shield_outlined, size: 30.0),
-        onPressed: () => _openCoursePage(context, RoomSubpageEnum.access),
+        onPressed: () => controller.openCoursePage(RoomSubpageEnum.access),
         enabled: room.isRoomAdmin && room.spaceParents.isEmpty,
       ),
       ButtonDetails(
@@ -180,7 +146,7 @@ class SpaceDetailsContent extends StatelessWidget {
         title: l10n.leave,
         description: l10n.leaveDesc,
         icon: const Icon(Icons.logout_outlined, size: 30.0),
-        onPressed: () => _leaveCourse(context),
+        onPressed: controller.leaveCourse,
         enabled: room.membership == Membership.join,
       ),
       ButtonDetails(
@@ -192,100 +158,6 @@ class SpaceDetailsContent extends StatelessWidget {
       ),
     ];
   }
-
-  Future<void> _setStarsToUnlockObjective(BuildContext context) async {
-    // The cap is the lowest-content Mission's earnable stars — the sum
-    // of one player's earnable stars (goals per role) across its
-    // activities. A value above it could never be satisfied there; the
-    // resolver also clamps at resolve time as content changes
-    // (quests.instructions.md; #7663).
-    int maxStars = 0;
-    if (room.coursePlan != null) {
-      final resp = await showFutureLoadingDialog(
-        context: context,
-        future: () async {
-          final outline = await QuestRepo.outline(
-            room.coursePlan!.uuid,
-            // Course-admin read from inside the space: include the
-            // owner's private activities so the star cap counts them.
-            courseRoomId: room.id,
-          );
-          return outline.result?.groups
-              .map(
-                (g) => g.activities.fold(
-                  0,
-                  (sum, a) => sum + a.plan.earnableStars,
-                ),
-              )
-              .min;
-        },
-        showError: (e) => false,
-      );
-
-      if (resp.result != null) {
-        maxStars = resp.result!;
-      }
-    }
-    final current =
-        room.teacherMode.starsToUnlockObjective ??
-        kDefaultStarsToUnlockObjective;
-    if (!context.mounted) return;
-    final resp = await showTextInputDialog(
-      context: context,
-      title: L10n.of(context).starsToUnlockObjectiveTitle,
-      keyboardType: TextInputType.number,
-      maxLength: 2,
-      maxLines: 1,
-      validator: (input) {
-        final value = int.tryParse(input);
-        if (value == null || value < 1) {
-          return L10n.of(context).enterNumber;
-        }
-        if (maxStars > 0 && value > maxStars) {
-          return L10n.of(context).maxStarsPerMissionWarning(maxStars);
-        }
-        return null;
-      },
-      initialText: "$current",
-    );
-
-    if (resp == null || !context.mounted) return;
-    await showFutureLoadingDialog(
-      context: context,
-      future: () => room.setTeacherMode(
-        room.teacherMode.copyWith(starsToUnlockObjective: int.parse(resp)),
-      ),
-    );
-  }
-
-  Future<void> _leaveCourse(BuildContext context) async {
-    final confirmed = await showOkCancelAlertDialog(
-      context: context,
-      title: L10n.of(context).areYouSure,
-      okLabel: L10n.of(context).leave,
-      cancelLabel: L10n.of(context).no,
-      message: L10n.of(context).leaveSpaceDescription,
-      isDestructive: true,
-    );
-    if (confirmed != OkCancelResult.ok || !context.mounted) return;
-    final resp = await showFutureLoadingDialog(
-      context: context,
-      future: room.leaveSpace,
-    );
-    if (!resp.isError && context.mounted) {
-      // Leaving a course is the World/home reset: drop every panel and the
-      // `?c=` scope, back to the world map at its personal default.
-      context.go(WorkspaceNav.clearAll());
-    }
-  }
-
-  String _sectionTitle(BuildContext context, SpaceSettingsTabs section) =>
-      switch (section) {
-        SpaceSettingsTabs.course => L10n.of(context).coursePlan,
-        SpaceSettingsTabs.chat => L10n.of(context).chats,
-        SpaceSettingsTabs.participants => L10n.of(context).participants,
-        _ => L10n.of(context).more,
-      };
 
   /// Below this incoming height the course card renders only its header and
   /// progress bar — the collapsed mobile peek (the nav cavity clips there). The
@@ -299,7 +171,7 @@ class SpaceDetailsContent extends StatelessWidget {
     final displayname = room.getLocalizedDisplayname(
       MatrixLocals(L10n.of(context)),
     );
-    final expandedSection = _expandedSection;
+    final expandedSection = controller.expandedSection;
     return LayoutBuilder(
       builder: (context, constraints) {
         // The collapsed mobile peek gives the card just enough height for the
@@ -331,7 +203,7 @@ class SpaceDetailsContent extends StatelessWidget {
                   ),
                   Expanded(
                     child: Text(
-                      _sectionTitle(context, expandedSection),
+                      expandedSection.title(context),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -351,8 +223,8 @@ class SpaceDetailsContent extends StatelessWidget {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            // world_v2: a space has no AppBar (PangeaRoomDetailsView passes null
-            // for spaces), so the left-panel close control — an X on desktop, a
+            // world_v2: a space has no AppBar ([SpaceDetails] renders none),
+            // so the left-panel close control — an X on desktop, a
             // back arrow on mobile — rides at the leading edge of the card
             // header. Dropping it would leave the course card with no way to
             // close. See routing.instructions.md.
@@ -416,7 +288,7 @@ class SpaceDetailsContent extends StatelessWidget {
                   controller: controller,
                   room: room,
                   moreButtons: _moreButtons(context),
-                  onInvite: () => _openInvite(context),
+                  onInvite: controller.openInvite,
                   initialSection: controller.widget.activeTab,
                 ),
               ),
@@ -432,7 +304,7 @@ class SpaceDetailsContent extends StatelessWidget {
 /// (`<section>/all` in the course token): the full course plan, the complete
 /// chat list, or the member cards.
 class _ExpandedSectionBody extends StatelessWidget {
-  final ChatDetailsController controller;
+  final SpaceDetailsController controller;
   final Room room;
   final SpaceSettingsTabs section;
 
