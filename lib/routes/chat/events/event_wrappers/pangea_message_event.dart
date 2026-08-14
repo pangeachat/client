@@ -650,7 +650,11 @@ class PangeaMessageEvent {
     final result = await TextToSpeechRepo.instance.get(request);
 
     if (result.error != null) {
-      throw Exception("Error getting text to speech: ${result.error}");
+      // Rethrow the repo's error rather than wrapping it: wrapping erased the
+      // type, so an UnsubscribedException arrived at the audio card's catch as
+      // a generic Exception that no guard could recognize (#8373), and every
+      // other failure lost the diagnosable toString its own type carries.
+      throw result.error!;
     }
 
     final response = result.result!;

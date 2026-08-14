@@ -8,6 +8,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class PangeaWarningError implements Exception {
@@ -38,6 +39,7 @@ class ErrorHandler {
 
     // Error handling
     FlutterError.onError = (FlutterErrorDetails details) async {
+      if (!shouldReport(details.exception)) return;
       if (!kDebugMode || PlatformInfos.isMobile) {
         Sentry.captureException(
           details.exception,
@@ -51,6 +53,20 @@ class ErrorHandler {
       return true;
     };
   }
+
+  /// Whether [e] belongs in Sentry at all. [UnsubscribedException] does not:
+  /// it is control flow — an unsubscribed user reaching a paid endpoint — and
+  /// repos-and-error-handling.instructions.md states it is never reported.
+  ///
+  /// The invariant is enforced here, at the one sink, rather than by an
+  /// `is! UnsubscribedException` guard at each call site. The guard had been
+  /// copied to four sites while every hand-rolled repo that bypasses
+  /// [BaseRepo], every `showFutureLoadingDialog`, and the global
+  /// unhandled-async sink in [initialize] had no guard at all — so it reached
+  /// production
+  /// as `Instance of 'UnsubscribedException'` (CLIENT-E4T, #8373). A rule
+  /// copied per call site drifts; a rule with one home cannot.
+  static bool shouldReport(Object? e) => e is! UnsubscribedException;
 
   /// Keys already reported this session via [logErrorOnce].
   static final Set<String> _reportedOnceKeys = {};
@@ -71,6 +87,9 @@ class ErrorHandler {
     required Map<String, dynamic> data,
     SentryLevel level = SentryLevel.error,
   }) async {
+    // Checked before the key is spent, so suppressing control flow does not
+    // consume the one report a genuine failure on this key is owed.
+    if (!shouldReport(e)) return false;
     if (!_reportedOnceKeys.add(key)) return false;
     await logError(e: e, s: s, m: m, data: data, level: level);
     return true;
@@ -83,6 +102,8 @@ class ErrorHandler {
     required Map<String, dynamic> data,
     SentryLevel level = SentryLevel.error,
   }) async {
+    if (!shouldReport(e)) return;
+
     if (e is PangeaWarningError) {
       // Custom handling for PangeaWarningError
       debugPrint("PangeaWarningError: ${e.message}");
