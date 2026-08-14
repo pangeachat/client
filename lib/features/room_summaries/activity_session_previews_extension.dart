@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 
 /// Consumer of the Synapse `activity_session_previews` module — space-scoped
 /// activity-session discovery. Given course-space ids, the server enumerates
@@ -35,8 +36,10 @@ extension ActivitySessionPreviewsApi on Api {
     final responseBody = await response.stream.toBytes();
     final responseString = utf8.decode(responseBody);
     if (response.statusCode != 200) {
-      throw Exception(
-        'HTTP error response: statusCode=${response.statusCode}, body=$responseString',
+      throw PangeaHttpException.fromStreamedResponse(
+        request,
+        response,
+        responseBody,
       );
     }
     final json = jsonDecode(responseString);
