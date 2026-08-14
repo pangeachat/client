@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 
 import 'package:async/async.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/activity_sessions/activity_media_block.dart';
 import 'package:fluffychat/features/activity_sessions/activity_media_repo.dart';
@@ -14,6 +15,7 @@ import 'package:fluffychat/features/quests/models/quest_activity_card.dart';
 import 'package:fluffychat/features/quests/models/quest_plan_model.dart';
 import 'package:fluffychat/features/quests/repo/activity_v2_mapper.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/pangea/common/network/matrix_session.dart';
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
@@ -32,6 +34,24 @@ class MissingQuestException implements Exception {
   @override
   String toString() =>
       'MissingQuestException: quest plan not found in CMS (confirmed 404)';
+}
+
+/// How a failed quest read is classified before anything is reported: the
+/// error callers receive, and the level to report it at — or nothing, when the
+/// failure is a known benign state that must not reach Sentry at all.
+class QuestReadFailure {
+  /// The error handed back to callers.
+  final Object error;
+
+  /// The Sentry level to report at, or null to not report this failure.
+  final SentryLevel? reportAt;
+
+  /// A benign, known state — surfaced to callers, never reported.
+  const QuestReadFailure.silent(this.error) : reportAt = null;
+
+  /// A failure worth reporting, at [level].
+  const QuestReadFailure.report(this.error, SentryLevel level)
+    : reportAt = level;
 }
 
 /// The single home of the per-course activity-pin rule (org quests doc,
@@ -262,6 +282,52 @@ class QuestRepo {
     accessToken: MatrixState.pangeaController.userController.accessToken,
   );
 
+  /// Test seam for [_tokenRejected]: replaces the live homeserver probe, so
+  /// the 403 classification is testable without a Matrix client.
+  @visibleForTesting
+  static Future<bool> Function()? debugTokenRejected;
+
+  static Future<bool> _tokenRejected() =>
+      (debugTokenRejected ??
+      () => matrixTokenRejected(
+        MatrixState.pangeaController.userController.client,
+      ))();
+
+  /// Classify a failed quest-plans read into what callers get and what Sentry
+  /// gets.
+  ///
+  /// The 403 branch is the reason this exists (#8372). CMS read access to
+  /// `quest-plans` is `isMatrixUser || isServiceUser || isAdmin` — there is no
+  /// membership or course scoping on the collection, so a learner reading a
+  /// quest they have not joined is explicitly allowed and **cannot** be what a
+  /// 403 means. What a 403 does mean is that Payload resolved no user at all:
+  /// an absent, expired, refreshed-away or invalidated Matrix token yields the
+  /// identical 403 that a genuine permission failure would. The client's
+  /// severity policy reads every 403 as "we asked for something we should not
+  /// have — a code bug", which mis-files a routine token-lifecycle event as an
+  /// error the way the 401 row exists to prevent.
+  ///
+  /// So the 403 is **discriminated, never downgraded**: we re-ask the
+  /// homeserver the same question the CMS asked. Only a positive rejection
+  /// reclassifies ([matrixTokenRejected] is conservative by construction); a
+  /// 403 with a live token stays an `error`, because then it really is the
+  /// permission bug the policy is there to catch.
+  @visibleForTesting
+  static Future<QuestReadFailure> classifyQuestReadFailure(
+    Object e, {
+    required Future<bool> Function() tokenRejected,
+  }) async {
+    final status = PangeaHttpException.statusCodeOf(e);
+    if (status == 404) return QuestReadFailure.silent(MissingQuestException());
+    if (status == 403 && await tokenRejected()) {
+      return QuestReadFailure.report(
+        SessionExpiredException(),
+        SentryLevel.warning,
+      );
+    }
+    return QuestReadFailure.report(e, PangeaHttpException.severityOf(e));
+  }
+
   /// The quest with its ordered Learning Objective ids (one read). LO text is
   /// NOT populated by depth (Payload leaves the relationship-in-array a bare
   /// id), so [_learningObjectives] resolves it in a separate batch read.
@@ -274,17 +340,19 @@ class QuestRepo {
       );
       return Result.value(quest);
     } catch (e, s) {
-      if (PangeaHttpException.statusCodeOf(e) == 404) {
-        return Result.error(MissingQuestException());
-      }
-
-      ErrorHandler.logError(
-        e: e,
-        s: s,
-        data: {"quest_id": questId},
-        level: PangeaHttpException.severityOf(e),
+      final failure = await classifyQuestReadFailure(
+        e,
+        tokenRejected: _tokenRejected,
       );
-      return Result.error(e);
+      if (failure.reportAt != null) {
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {"quest_id": questId},
+          level: failure.reportAt!,
+        );
+      }
+      return Result.error(failure.error);
     }
   }
 
@@ -476,6 +544,14 @@ class QuestRepo {
   /// it for the process lifetime, so every retry — the world map's empty-cache
   /// self-heal, a panel reopen — would replay the stale error instead of ever
   /// recovering (#8083); those stay uncached.
+  ///
+  /// A [SessionExpiredException] is emphatically NOT cached (#8372). A 404 is
+  /// a statement about the *resource*; a rejected token is a statement about
+  /// *this moment's credentials*, and the SDK's own soft-logout refresh is
+  /// expected to heal it seconds later. Memoizing it would pin every quest the
+  /// learner touched during a token refresh to "unavailable" for the life of
+  /// the process — the exact #8083 failure, and worse than the 403s it would
+  /// silence.
   ///
   /// A [MissingQuestException] is the exception, on the same reasoning as
   /// `ActivityPlanRepo._confirmedRemoved`: the CMS has *stated* the quest is

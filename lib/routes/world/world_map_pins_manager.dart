@@ -19,6 +19,7 @@ import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/pangea/common/network/matrix_session.dart';
 import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
@@ -54,11 +55,22 @@ bool needsParticipantRefill({
 /// course panel renders it as a known state — so re-reporting it at `error`
 /// re-severitized a handled condition (CLIENT-DQC, #8094). It still reports at
 /// `warning` (once per course per session) because a dropped course blanks
-/// relevance banding with no other visible signal. Everything else keeps
-/// `error`: the outline read failing for any other reason is real breakage.
+/// relevance banding with no other visible signal.
+///
+/// [SessionExpiredException] rides the same rule (#8372). The repo already
+/// established, by asking the homeserver, that the CMS 403 was our token being
+/// rejected rather than a permission bug; this rebuild fans out over every
+/// joined course, so a single expired token would otherwise land one `error`
+/// per course. Escalating it here would re-severitize the very condition the
+/// repo just classified — the #8094 mistake again, at a different site.
+///
+/// Everything else keeps `error`: the outline read failing for any other reason
+/// is real breakage.
 @visibleForTesting
 SentryLevel courseOutlineErrorLevel(Object error) =>
-    error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
+    error is MissingQuestException || error is SessionExpiredException
+    ? SentryLevel.warning
+    : SentryLevel.error;
 
 /// Minimum spacing between empty-cache self-heal rebuilds of the objective
 /// cache. A set-change rebuild (course join/leave) is never subject to it —
