@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-14 12:27:45.104800",
+    "@@last_modified": "2026-08-14 12:54:59.509505",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Ua kāpae ʻia kēia papa.",
     "pingedActivity": "Hana i kīkī ʻia",
     "appInTargetLanguageStaysInBaseLanguage": "(Noho kēia hoʻonohonoho ma kāu ʻōlelo ʻōiwi i hiki iā ʻoe ke loaʻa mau.)",
+    "usernameTakenPleaseChooseAnother": "Ua hoʻohana ʻia kēlā inoa mea hoʻohana. E koho i kekahi inoa ʻē aʻe.",
     "allParticipants": "Nā mea komo a pau",
     "seeFullCoursePlan": "E ʻike i ka papa hoʻolālā piha",
     "upNext": "Aʻe"

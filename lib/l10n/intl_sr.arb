@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:49.559755",
+    "@@last_modified": "2026-08-14 12:55:03.843082",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10685,6 +10685,7 @@
     "courseDeletedDialogDesc": "Ovaj kurs je obrisan.",
     "pingedActivity": "Pingovana aktivnost",
     "appInTargetLanguageStaysInBaseLanguage": "(Ovo podešavanje ostaje na vašem maternjem jeziku kako biste ga uvek mogli pronaći.)",
+    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Izaberite drugo.",
     "allParticipants": "Svi učesnici",
     "seeFullCoursePlan": "Pogledajte ceo plan kursa",
     "upNext": "Sledeće"

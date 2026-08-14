@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-14 12:27:51.112688",
+    "@@last_modified": "2026-08-14 12:55:05.485473",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "דער קורס איז אויסגעמעקט געוואָרן.",
     "pingedActivity": "פּינגד טעטיקייט",
     "appInTargetLanguageStaysInBaseLanguage": "(די באַשטעטיקונג בלײַבט אין דײַן מוטערשפּראַך, כּדי דו זאָלסט זי שטענדיק געפֿינען קענען.)",
+    "usernameTakenPleaseChooseAnother": "דער באַניצער־נאָמען איז שוין פֿאַרנומען. ביטע קלויבט אַן אַנדערן.",
     "allParticipants": "אַלע באַטייליקטע",
     "seeFullCoursePlan": "זען פולן קורס פּלאַן",
     "upNext": "קומענדיקע"

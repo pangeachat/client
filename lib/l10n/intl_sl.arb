@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-14 12:27:50.981413",
+    "@@last_modified": "2026-08-14 12:55:03.729822",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10681,6 +10681,7 @@
     "courseDeletedDialogDesc": "Ta tečaj je bil izbrisan.",
     "pingedActivity": "Dejavnost pinga",
     "appInTargetLanguageStaysInBaseLanguage": "(Ta nastavitev ostane v vašem maternem jeziku, da jo lahko vedno najdete.)",
+    "usernameTakenPleaseChooseAnother": "To uporabniško ime je že zasedeno. Izberite drugo.",
     "allParticipants": "Vsi udeleženci",
     "seeFullCoursePlan": "Oglejte si celoten načrt tečaja",
     "upNext": "Sledi"

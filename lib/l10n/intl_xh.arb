@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-14 12:27:51.066664",
+    "@@last_modified": "2026-08-14 12:55:05.334287",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Le khosi icinyiwe.",
     "pingedActivity": "Umsebenzi opingwe",
     "appInTargetLanguageStaysInBaseLanguage": "(Olu seto luhlala kulwimi lwakho lwenkobe ukuze uhlale ulufumana.)",
+    "usernameTakenPleaseChooseAnother": "Eli gama lomsebenzisi sele lisetyenziswa. Nceda ukhethe elinye.",
     "allParticipants": "Bonke abathathi-nxaxheba",
     "seeFullCoursePlan": "Bona isicwangciso esipheleleyo sekhosi",
     "upNext": "Okulandelayo"

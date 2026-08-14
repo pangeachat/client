@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-14 12:27:50.416749",
+    "@@last_modified": "2026-08-14 12:55:04.638088",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9736,6 +9736,7 @@
     "courseDeletedDialogDesc": "Цей курс було видалено.",
     "pingedActivity": "Діяльність, що була відзначена",
     "appInTargetLanguageStaysInBaseLanguage": "(Ця настройка залишається вашою рідною мовою, щоб ви завжди могли її знайти.)",
+    "usernameTakenPleaseChooseAnother": "Це ім’я користувача вже зайняте. Будь ласка, виберіть інше.",
     "allParticipants": "Усі учасники",
     "seeFullCoursePlan": "Переглянути повний план курсу",
     "upNext": "Далі"

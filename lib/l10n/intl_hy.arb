@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-14 12:27:45.587700",
+    "@@last_modified": "2026-08-14 12:55:00.109563",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Այս դասընթացը ջնջվել է։",
     "pingedActivity": "Հիշեցված ակտիվություն",
     "appInTargetLanguageStaysInBaseLanguage": "(Այս կարգավորումը մնում է ձեր մայրենի լեզվով, որպեսզի միշտ կարողանաք գտնել այն։)",
+    "usernameTakenPleaseChooseAnother": "Այդ օգտանունն արդեն զբաղված է։ Ընտրեք մեկ այլ օգտանուն։",
     "allParticipants": "Բոլոր մասնակիցները",
     "seeFullCoursePlan": "Դիտել դասընթացի ամբողջական պլանը",
     "upNext": "Հաջորդը"

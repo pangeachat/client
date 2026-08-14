@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-14 12:27:48.491720",
+    "@@last_modified": "2026-08-14 12:55:02.982257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "ਇਹ ਕੋਰਸ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।",
     "pingedActivity": "ਪਿੰਗ ਕੀਤੀ ਗਤੀਵਿਧੀ",
     "appInTargetLanguageStaysInBaseLanguage": "(ਇਹ ਸੈਟਿੰਗ ਤੁਹਾਡੀ ਮੂਲ ਭਾਸ਼ਾ ਵਿੱਚ ਰਹਿੰਦੀ ਹੈ ਤਾਂ ਜੋ ਤੁਸੀਂ ਇਸਨੂੰ ਹਮੇਸ਼ਾ ਲੱਭ ਸਕੋ।)",
+    "usernameTakenPleaseChooseAnother": "ਉਹ ਯੂਜ਼ਰਨੇਮ ਪਹਿਲਾਂ ਹੀ ਵਰਤੋਂ ਵਿੱਚ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਕੋਈ ਹੋਰ ਚੁਣੋ।",
     "allParticipants": "ਸਾਰੇ ਭਾਗੀਦਾਰ",
     "seeFullCoursePlan": "ਪੂਰੀ ਕੋਰਸ ਯੋਜਨਾ ਦੇਖੋ",
     "upNext": "ਅੱਗੇ"

@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-14 12:27:42.964436",
+    "@@last_modified": "2026-08-14 12:54:57.560963",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Този курс е изтрит.",
     "pingedActivity": "Пингната активност",
     "appInTargetLanguageStaysInBaseLanguage": "(Тази настройка остава на родния ви език, за да можете винаги да я намерите.)",
+    "usernameTakenPleaseChooseAnother": "Това потребителско име вече е заето. Моля, изберете друго.",
     "allParticipants": "Всички участници",
     "seeFullCoursePlan": "Вижте пълния план на курса",
     "upNext": "Предстои"

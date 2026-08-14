@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-14 12:27:47.895460",
+    "@@last_modified": "2026-08-14 12:55:02.679950",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2124,7 +2124,8 @@
     "courseDeletedDialogDesc": "অসিগুম্বা কোর্স অসি মুতখ্রে।",
     "pingedActivity": "পিং তৌরবা এক্টিভিটি",
     "appInTargetLanguageStaysInBaseLanguage": "(असेटिंग असिना नंगना कैना फंगना नंगगी लोयनिंगब लोल्दा लैनिगनि।)",
-    "allParticipants": "পুম্নমক শরুক য়াওবশিং",
-    "seeFullCoursePlan": "কোর্স প্লান পুম্নমক উবা",
+    "usernameTakenPleaseChooseAnother": "ꯃꯤꯡ ꯑꯁꯤ ꯂꯩꯔꯦ꯫ ꯑꯇꯣꯞꯄꯥ ꯑꯃꯥ ꯈꯟꯕꯤꯌꯨ꯫",
+    "allParticipants": "পুম্নমক্না শরুক য়াবশিং",
+    "seeFullCoursePlan": "কোর্স প্লান পুম্নমক উবীয়ু",
     "upNext": "হৌজিক্কী মতুংদা"
 }

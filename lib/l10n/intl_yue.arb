@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-14 12:27:51.006424",
+    "@@last_modified": "2026-08-14 12:55:05.455007",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10693,7 +10693,8 @@
     "courseDeletedDialogDesc": "此課程已被刪除。",
     "pingedActivity": "已標註的動態",
     "appInTargetLanguageStaysInBaseLanguage": "(此設定會保留為您的母語，以便您隨時找到它。)",
+    "usernameTakenPleaseChooseAnother": "呢個用戶名已經有人用咗喇。請揀過另一個啦。",
     "allParticipants": "所有參與者",
     "seeFullCoursePlan": "查看完整課程計劃",
-    "upNext": "即將推出"
+    "upNext": "即將播放"
 }

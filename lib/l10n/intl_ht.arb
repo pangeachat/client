@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-14 12:27:45.576952",
+    "@@last_modified": "2026-08-14 12:55:00.039135",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2124,7 +2124,8 @@
     "courseDeletedDialogDesc": "Kou sa a te efase.",
     "pingedActivity": "Aktivite ki te ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Anviwònman sa a rete nan lang natif natal ou pou ou ka toujou jwenn li.)",
+    "usernameTakenPleaseChooseAnother": "Non itilizatè sa a deja pran. Tanpri chwazi yon lòt.",
     "allParticipants": "Tout patisipan yo",
-    "seeFullCoursePlan": "Gade tout plan kou a",
+    "seeFullCoursePlan": "Gade plan kou konplè a",
     "upNext": "Apre sa"
 }

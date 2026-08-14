@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-14 12:27:49.853847",
+    "@@last_modified": "2026-08-14 12:55:04.102056",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Thupelo ena e hlakotsoe.",
     "pingedActivity": "Mosebetsi o pingilweng",
     "appInTargetLanguageStaysInBaseLanguage": "(Tokiso ena e dula e le puong ya heno ya tlhaho hore o tle o kgone ho e fumana kamehla.)",
+    "usernameTakenPleaseChooseAnother": "Lebitso leo la mosebedisi le se le ntse le le teng. Ka kopo kgetha le leng.",
     "allParticipants": "Barupeluoa bohle",
     "seeFullCoursePlan": "Bona moralo o felletseng oa thupelo",
     "upNext": "Se latelang"

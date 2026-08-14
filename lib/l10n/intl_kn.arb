@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-14 12:27:46.664174",
+    "@@last_modified": "2026-08-14 12:55:00.986724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "ಈ ಕೋರ್ಸ್ ಅನ್ನು ಅಳಿಸಲಾಗಿದೆ.",
     "pingedActivity": "ಪಿಂಗ್ ಮಾಡಿದ ಚಟುವಟಿಕೆ",
     "appInTargetLanguageStaysInBaseLanguage": "(ಈ ಸೆಟ್ಟಿಂಗ್ ನಿಮ್ಮ ಸ್ಥಳೀಯ ಭಾಷೆಯಲ್ಲಿಯೇ ಇರುತ್ತದೆ, ಆದ್ದರಿಂದ ನೀವು ಅದನ್ನು ಯಾವಾಗಲೂ ಹುಡುಕಬಹುದು.)",
+    "usernameTakenPleaseChooseAnother": "ಆ ಬಳಕೆದಾರಹೆಸರು ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಇನ್ನೊಂದನ್ನು ಆರಿಸಿ.",
     "allParticipants": "ಎಲ್ಲಾ ಭಾಗವಹಿಸುವವರು",
     "seeFullCoursePlan": "ಸಂಪೂರ್ಣ ಕೋರ್ಸ್ ಯೋಜನೆಯನ್ನು ನೋಡಿ",
     "upNext": "ಮುಂದೆ"

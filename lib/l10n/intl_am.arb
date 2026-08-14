@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-14 12:27:42.993106",
+    "@@last_modified": "2026-08-14 12:54:57.739502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "ይህ ኮርስ ተሰርዟል።",
     "pingedActivity": "የተጠቆመ እንቅስቃሴ",
     "appInTargetLanguageStaysInBaseLanguage": "(ይህ ቅንብር ሁልጊዜ እንዲያገኙት በአፍ መፍቻ ቋንቋዎ ይቆያል።)",
+    "usernameTakenPleaseChooseAnother": "ይህ የተጠቃሚ ስም አስቀድሞ ተይዟል። እባክዎ ሌላ ይምረጡ።",
     "allParticipants": "ሁሉም ተሳታፊዎች",
     "seeFullCoursePlan": "ሙሉ የኮርስ እቅድ ይመልከቱ",
     "upNext": "በመቀጠል"

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-14 12:27:46.644937",
+    "@@last_modified": "2026-08-14 12:55:00.118783",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9839,7 +9839,8 @@
     "courseDeletedDialogDesc": "Ez a tanfolyam törölve lett.",
     "pingedActivity": "Pingelt tevékenység",
     "appInTargetLanguageStaysInBaseLanguage": "(Ez a beállítás az Ön anyanyelvén marad, hogy mindig megtalálhassa.)",
-    "allParticipants": "Összes résztvevő",
-    "seeFullCoursePlan": "Teljes tanterv megtekintése",
+    "usernameTakenPleaseChooseAnother": "Ez a felhasználónév már foglalt. Kérjük, válasszon másikat.",
+    "allParticipants": "Minden résztvevő",
+    "seeFullCoursePlan": "Teljes kurzusterv megtekintése",
     "upNext": "Következő"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-14 12:27:46.653790",
+    "@@last_modified": "2026-08-14 12:55:00.888294",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Бұл курс жойылды.",
     "pingedActivity": "Пингтелген әрекет",
     "appInTargetLanguageStaysInBaseLanguage": "(Бұл параметр ана тіліңізде қалады, сондықтан оны әрқашан таба аласыз.)",
+    "usernameTakenPleaseChooseAnother": "Бұл пайдаланушы аты бос емес. Басқасын таңдаңыз.",
     "allParticipants": "Барлық қатысушылар",
     "seeFullCoursePlan": "Курстың толық жоспарын қарау",
     "upNext": "Келесі"

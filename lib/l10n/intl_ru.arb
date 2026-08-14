@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-14 12:27:48.725276",
+    "@@last_modified": "2026-08-14 12:55:03.347127",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10708,6 +10708,7 @@
     "courseDeletedDialogDesc": "Этот курс был удален.",
     "pingedActivity": "Активность с упоминанием",
     "appInTargetLanguageStaysInBaseLanguage": "(Эта настройка останется на вашем родном языке, чтобы вы всегда могли ее найти.)",
+    "usernameTakenPleaseChooseAnother": "Это имя пользователя уже занято. Выберите другое.",
     "allParticipants": "Все участники",
     "seeFullCoursePlan": "Посмотреть полный план курса",
     "upNext": "Далее"

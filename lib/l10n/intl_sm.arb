@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-14 12:27:49.694518",
+    "@@last_modified": "2026-08-14 12:55:04.081793",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2124,7 +2124,8 @@
     "courseDeletedDialogDesc": "Ua tapeina lenei kosi.",
     "pingedActivity": "Gaioiga na pingina",
     "appInTargetLanguageStaysInBaseLanguage": "(O lenei fa'atulagaga e tumau i lau gagana moni ina ia mafai ona e mauaina i taimi uma.)",
-    "allParticipants": "Tagata auai uma",
+    "usernameTakenPleaseChooseAnother": "Ua uma ona fa'aaoga lena igoa fa'aoga. Fa'amolemole filifili se isi.",
+    "allParticipants": "Tagata uma o lo'o auai",
     "seeFullCoursePlan": "Va'ai le fuafuaga atoa o le kosi",
     "upNext": "Le isi"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:46.634317",
+    "@@last_modified": "2026-08-14 12:55:00.925210",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9929,6 +9929,7 @@
     "courseDeletedDialogDesc": "이 코스는 삭제되었습니다.",
     "pingedActivity": "핑 활동",
     "appInTargetLanguageStaysInBaseLanguage": "(이 설정은 항상 찾을 수 있도록 모국어로 유지됩니다.)",
+    "usernameTakenPleaseChooseAnother": "사용자 이름이 이미 사용 중입니다. 다른 이름을 선택해 주세요.",
     "allParticipants": "모든 참여자",
     "seeFullCoursePlan": "전체 학습 계획 보기",
     "upNext": "다음"

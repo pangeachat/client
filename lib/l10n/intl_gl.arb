@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-14 12:27:44.842892",
+    "@@last_modified": "2026-08-14 12:54:59.311911",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9736,7 +9736,8 @@
     "courseDeletedDialogDesc": "Este curso foi eliminado.",
     "pingedActivity": "Actividade mencionada",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta configuración permanece no teu idioma nativo para que sempre a poidas atopar.)",
+    "usernameTakenPleaseChooseAnother": "Ese nome de usuario xa está en uso. Escolle outro.",
     "allParticipants": "Todos os participantes",
-    "seeFullCoursePlan": "Ver plan de curso completo",
+    "seeFullCoursePlan": "Ver o plan completo do curso",
     "upNext": "A seguir"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-14 12:27:43.327134",
+    "@@last_modified": "2026-08-14 12:54:57.752324",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Ovaj kurs je obrisan.",
     "pingedActivity": "Pingovana aktivnost",
     "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem maternjem jeziku kako biste je uvijek mogli pronaći.)",
+    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Molimo odaberite drugo.",
     "allParticipants": "Svi učesnici",
     "seeFullCoursePlan": "Pogledajte cijeli plan kursa",
     "upNext": "Sljedeće"

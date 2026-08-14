@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-14 12:27:49.143619",
+    "@@last_modified": "2026-08-14 12:55:03.586433",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10681,6 +10681,7 @@
     "courseDeletedDialogDesc": "Tento kurz bol vymazaný.",
     "pingedActivity": "Aktivita s upozornením",
     "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavenie zostane vo vašom rodnom jazyku, aby ste ho vždy našli.)",
+    "usernameTakenPleaseChooseAnother": "Toto používateľské meno je už obsadené. Vyberte si iné.",
     "allParticipants": "Všetci účastníci",
     "seeFullCoursePlan": "Zobraziť celý plán kurzu",
     "upNext": "Ďalej"

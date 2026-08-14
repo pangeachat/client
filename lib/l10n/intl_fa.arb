@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:44.294072",
+    "@@last_modified": "2026-08-14 12:54:59.322659",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9824,6 +9824,7 @@
     "courseDeletedDialogDesc": "این دوره حذف شده است.",
     "pingedActivity": "فعالیت پینگ‌شده",
     "appInTargetLanguageStaysInBaseLanguage": "(این تنظیمات به زبان مادری شما باقی می‌ماند تا همیشه بتوانید آن را پیدا کنید.)",
+    "usernameTakenPleaseChooseAnother": "این نام کاربری قبلاً استفاده شده است. لطفاً نام دیگری انتخاب کنید.",
     "allParticipants": "همه شرکت‌کنندگان",
     "seeFullCoursePlan": "مشاهده برنامه کامل دوره",
     "upNext": "بعدی"

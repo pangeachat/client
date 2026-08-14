@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-14 12:27:47.508692",
+    "@@last_modified": "2026-08-14 12:55:01.933444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Овој курс е избришан.",
     "pingedActivity": "Пингувана активност",
     "appInTargetLanguageStaysInBaseLanguage": "(Оваа поставка останува на вашиот мајчин јазик за секогаш да можете да ја најдете.)",
+    "usernameTakenPleaseChooseAnother": "Тоа корисничко име е веќе зафатено. Ве молиме изберете друго.",
     "allParticipants": "Сите учесници",
     "seeFullCoursePlan": "Погледнете го целиот план на курсот",
     "upNext": "Следно"

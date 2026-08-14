@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:50.280854",
+    "@@last_modified": "2026-08-14 12:55:04.561598",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9828,7 +9828,8 @@
     "courseDeletedDialogDesc": "இந்த பாடநெறி நீக்கப்பட்டுவிட்டது.",
     "pingedActivity": "பிங் செய்யப்பட்ட செயல்பாடு",
     "appInTargetLanguageStaysInBaseLanguage": "(இந்த அமைப்பு உங்கள் தாய்மொழியிலேயே இருக்கும், எனவே நீங்கள் அதை எப்போதும் கண்டறியலாம்.)",
-    "allParticipants": "அனைத்து பங்கேற்பாளர்கள்",
+    "usernameTakenPleaseChooseAnother": "அந்தப் பயனர் பெயர் ஏற்கனவே எடுக்கப்பட்டது. வேறு ஒன்றைத் தேர்ந்தெடுக்கவும்.",
+    "allParticipants": "அனைத்து பங்கேற்பாளர்களும்",
     "seeFullCoursePlan": "முழு பாடத்திட்டத்தையும் காண்க",
-    "upNext": "அடுத்து வருபவை"
+    "upNext": "அடுத்து"
 }

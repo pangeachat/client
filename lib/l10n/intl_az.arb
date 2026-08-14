@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-14 12:27:42.967477",
+    "@@last_modified": "2026-08-14 12:54:57.410748",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Bu kurs silinib.",
     "pingedActivity": "Bildiriş göndərilən fəaliyyət",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu tənzimləmə ana dilinizdə qalır ki, onu həmişə tapa biləsiniz.)",
+    "usernameTakenPleaseChooseAnother": "Bu istifadəçi adı artıq istifadə olunur. Zəhmət olmasa başqa bir ad seçin.",
     "allParticipants": "Bütün iştirakçılar",
     "seeFullCoursePlan": "Tam kurs planına baxın",
     "upNext": "Növbəti"

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-14 12:27:44.333410",
+    "@@last_modified": "2026-08-14 12:54:58.686628",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9736,6 +9736,7 @@
     "courseDeletedDialogDesc": "Ikastaro hau ezabatu egin da.",
     "pingedActivity": "Pingatutako jarduera",
     "appInTargetLanguageStaysInBaseLanguage": "(Ezarpen hau zure jatorrizko hizkuntzan mantentzen da, beti aurkitu ahal izateko.)",
+    "usernameTakenPleaseChooseAnother": "Erabiltzaile-izen hori hartuta dago. Mesedez, aukeratu beste bat.",
     "allParticipants": "Parte-hartzaile guztiak",
     "seeFullCoursePlan": "Ikusi ikastaroaren plan osoa",
     "upNext": "Hurrengoa"

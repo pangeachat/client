@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-14 12:27:44.304551",
+    "@@last_modified": "2026-08-14 12:54:58.878105",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10091,6 +10091,7 @@
     "courseDeletedDialogDesc": "Ce cours a été supprimé.",
     "pingedActivity": "Activité pingée",
     "appInTargetLanguageStaysInBaseLanguage": "(Ce paramètre reste dans votre langue maternelle afin que vous puissiez toujours le retrouver.)",
+    "usernameTakenPleaseChooseAnother": "Ce nom d'utilisateur est déjà pris. Veuillez en choisir un autre.",
     "allParticipants": "Tous les participants",
     "seeFullCoursePlan": "Voir le plan de cours complet",
     "upNext": "À suivre"

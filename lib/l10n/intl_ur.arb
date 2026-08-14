@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-14 12:27:50.669632",
+    "@@last_modified": "2026-08-14 12:55:04.852727",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "یہ کورس حذف کر دیا گیا ہے۔",
     "pingedActivity": "پِنگ کی گئی سرگرمی",
     "appInTargetLanguageStaysInBaseLanguage": "(یہ سیٹنگ آپ کی مادری زبان میں ہی رہے گی تاکہ آپ اسے ہمیشہ تلاش کر سکیں۔)",
+    "usernameTakenPleaseChooseAnother": "یہ صارف نام پہلے سے موجود ہے۔ براہ کرم کوئی اور منتخب کریں۔",
     "allParticipants": "تمام شرکاء",
     "seeFullCoursePlan": "مکمل کورس کا منصوبہ دیکھیں",
     "upNext": "اگلا"

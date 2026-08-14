@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-14 12:27:47.505419",
+    "@@last_modified": "2026-08-14 12:55:01.828210",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Kua mukua tēnei akoranga.",
     "pingedActivity": "Mahi i pīngia",
     "appInTargetLanguageStaysInBaseLanguage": "(Ka noho tonu tēnei tautuhinga ki tō reo taketake kia kitea ai e koe i ngā wā katoa.)",
+    "usernameTakenPleaseChooseAnother": "Kua tangohia kē tērā ingoa kaiwhakamahi. Tēnā kōwhiria tētahi atu.",
     "allParticipants": "Ngā kaiuru katoa",
     "seeFullCoursePlan": "Tirohia te mahere akoranga katoa",
     "upNext": "Panuku"

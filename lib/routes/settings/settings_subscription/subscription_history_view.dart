@@ -122,29 +122,42 @@ class SubscriptionHistoryView extends StatelessWidget {
                                               ? theme.textTheme.titleMedium
                                               : theme.textTheme.titleSmall,
                                         ),
-                                      UserSubscriptionPlanCard(
-                                        subscriptionTitle:
-                                            displayEntitlement
-                                                ?.subscriptionTitle(l10n) ??
-                                            l10n.currentSubscription,
-                                        paymentPeriodDescription:
-                                            displayEntitlement
-                                                ?.paymentPeriodDescription(
-                                                  l10n,
-                                                ),
-                                        priceDisplay:
-                                            subscriptionPlan?.priceDisplay ??
-                                            displayEntitlement?.priceDisplay(
-                                              l10n,
-                                            ),
-                                        showCancel: true,
-                                        canCancelNotifier:
-                                            canCancelSubscriptionNotifier,
-                                        onCancel: onCancelSubscription,
-                                        showManage: true,
-                                        canManageNotifier:
+                                      // The manage action is offered only once
+                                      // a billing portal actually resolved. A
+                                      // user with no billing account has no
+                                      // saved card to change, so the button is
+                                      // absent rather than permanently dead
+                                      // (#8374).
+                                      ValueListenableBuilder(
+                                        valueListenable:
                                             canManageSubscriptionNotifier,
-                                        onManage: onManageSubscription,
+                                        builder: (context, canManage, _) =>
+                                            UserSubscriptionPlanCard(
+                                              subscriptionTitle:
+                                                  displayEntitlement
+                                                      ?.subscriptionTitle(
+                                                        l10n,
+                                                      ) ??
+                                                  l10n.currentSubscription,
+                                              paymentPeriodDescription:
+                                                  displayEntitlement
+                                                      ?.paymentPeriodDescription(
+                                                        l10n,
+                                                      ),
+                                              priceDisplay:
+                                                  subscriptionPlan
+                                                      ?.priceDisplay ??
+                                                  displayEntitlement
+                                                      ?.priceDisplay(l10n),
+                                              showCancel: true,
+                                              canCancelNotifier:
+                                                  canCancelSubscriptionNotifier,
+                                              onCancel: onCancelSubscription,
+                                              showManage: canManage,
+                                              canManageNotifier:
+                                                  canManageSubscriptionNotifier,
+                                              onManage: onManageSubscription,
+                                            ),
                                       ),
                                     ],
                                   );

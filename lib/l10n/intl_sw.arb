@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-14 12:27:49.938294",
+    "@@last_modified": "2026-08-14 12:55:04.352178",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Kozi hii imefutwa.",
     "pingedActivity": "Shughuli iliyopigiwa ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Mpangilio huu unabaki katika lugha yako ya asili ili uweze kuupata kila wakati.)",
+    "usernameTakenPleaseChooseAnother": "Jina hilo la mtumiaji tayari linatumika. Tafadhali chagua lingine.",
     "allParticipants": "Washiriki wote",
     "seeFullCoursePlan": "Angalia mpango kamili wa kozi",
     "upNext": "Inayofuata"

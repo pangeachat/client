@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:43.516136",
+    "@@last_modified": "2026-08-14 12:54:57.934707",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10364,7 +10364,8 @@
     "courseDeletedDialogDesc": "এই কোর্সটি মুছে ফেলা হয়েছে।",
     "pingedActivity": "পিং করা কার্যকলাপ",
     "appInTargetLanguageStaysInBaseLanguage": "(এই সেটিংটি আপনার স্থানীয় ভাষাতেই থাকবে যাতে আপনি এটি সবসময় খুঁজে পান।)",
+    "usernameTakenPleaseChooseAnother": "এই ব্যবহারকারীর নাম ইতিমধ্যেই নেওয়া হয়েছে। অনুগ্রহ করে অন্য একটি বেছে নিন।",
     "allParticipants": "সকল অংশগ্রহণকারী",
-    "seeFullCoursePlan": "সম্পূর্ণ কোর্স পরিকল্পনা দেখুন",
+    "seeFullCoursePlan": "সম্পূর্ণ কোর্স প্ল্যান দেখুন",
     "upNext": "এরপর"
 }

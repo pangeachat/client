@@ -3098,7 +3098,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-14 12:27:45.177644",
+    "@@last_modified": "2026-08-14 12:54:59.602035",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10368,7 +10368,8 @@
     "courseDeletedDialogDesc": "यह कोर्स हटा दिया गया है।",
     "pingedActivity": "पिंग की गई गतिविधि",
     "appInTargetLanguageStaysInBaseLanguage": "(यह सेटिंग आपकी मूल भाषा में रहती है ताकि आप इसे हमेशा ढूंढ सकें।)",
+    "usernameTakenPleaseChooseAnother": "यह उपयोगकर्ता नाम पहले से उपयोग में है। कृपया कोई दूसरा चुनें।",
     "allParticipants": "सभी प्रतिभागी",
     "seeFullCoursePlan": "पूरा कोर्स प्लान देखें",
-    "upNext": "आगे क्या है"
+    "upNext": "आगे क्या"
 }

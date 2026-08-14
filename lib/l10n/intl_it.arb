@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:45.795657",
+    "@@last_modified": "2026-08-14 12:55:00.581010",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9809,7 +9809,8 @@
     "courseDeletedDialogDesc": "Questo corso è stato eliminato.",
     "pingedActivity": "Attività con ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Questa impostazione rimane nella tua lingua madre in modo che tu possa sempre trovarla.)",
+    "usernameTakenPleaseChooseAnother": "Questo nome utente è già in uso. Scegline un altro.",
     "allParticipants": "Tutti i partecipanti",
-    "seeFullCoursePlan": "Vedi il piano del corso completo",
+    "seeFullCoursePlan": "Vedi il piano completo del corso",
     "upNext": "Prossimamente"
 }

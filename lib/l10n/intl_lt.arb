@@ -2972,7 +2972,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-14 12:27:47.268769",
+    "@@last_modified": "2026-08-14 12:55:01.486022",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10517,7 +10517,8 @@
     "courseDeletedDialogDesc": "Šis kursas buvo ištrintas.",
     "pingedActivity": "Pažymėta veikla",
     "appInTargetLanguageStaysInBaseLanguage": "(Šis nustatymas lieka jūsų gimtąja kalba, kad visada galėtumėte jį rasti.)",
+    "usernameTakenPleaseChooseAnother": "Toks vartotojo vardas jau užimtas. Pasirinkite kitą.",
     "allParticipants": "Visi dalyviai",
-    "seeFullCoursePlan": "Žr. visą kurso planą",
+    "seeFullCoursePlan": "Žiūrėti visą kurso planą",
     "upNext": "Kitas"
 }

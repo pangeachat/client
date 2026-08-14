@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-14 12:27:48.519108",
+    "@@last_modified": "2026-08-14 12:55:02.988007",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9821,6 +9821,7 @@
     "courseDeletedDialogDesc": "Ten kurs został usunięty.",
     "pingedActivity": "Aktywność z powiadomieniem",
     "appInTargetLanguageStaysInBaseLanguage": "(To ustawienie pozostaje w Twoim języku ojczystym, aby zawsze można je było znaleźć.)",
+    "usernameTakenPleaseChooseAnother": "Ta nazwa użytkownika jest już zajęta. Wybierz inną.",
     "allParticipants": "Wszyscy uczestnicy",
     "seeFullCoursePlan": "Zobacz pełny plan kursu",
     "upNext": "Następne"

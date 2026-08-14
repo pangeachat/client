@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-14 12:27:50.292632",
+    "@@last_modified": "2026-08-14 12:55:04.650101",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Ин курс нест карда шудааст.",
     "pingedActivity": "Фаъолияти пингшуда",
     "appInTargetLanguageStaysInBaseLanguage": "(Ин танзимот бо забони модарии шумо боқӣ мемонад, то шумо ҳамеша онро пайдо карда тавонед.)",
+    "usernameTakenPleaseChooseAnother": "Ин номи корбарӣ аллакай гирифта шудааст. Лутфан, дигареро интихоб кунед.",
     "allParticipants": "Ҳамаи иштирокчиён",
     "seeFullCoursePlan": "Нақшаи пурраи курсро бинед",
     "upNext": "Навбатӣ"

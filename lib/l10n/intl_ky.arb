@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-14 12:27:46.884892",
+    "@@last_modified": "2026-08-14 12:55:01.261295",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Бул курс өчүрүлдү.",
     "pingedActivity": "Пинделген аракет",
     "appInTargetLanguageStaysInBaseLanguage": "(Бул жөндөө ар дайым таба алышыңыз үчүн эне тилиңизде калат.)",
+    "usernameTakenPleaseChooseAnother": "Бул колдонуучу аты мурунтан эле колдонулуп жатат. Башкасын тандаңыз.",
     "allParticipants": "Бардык катышуучулар",
     "seeFullCoursePlan": "Курстун толук планын көрүү",
     "upNext": "Кийинки"

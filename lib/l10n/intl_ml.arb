@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-14 12:27:47.675540",
+    "@@last_modified": "2026-08-14 12:55:01.976705",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "ഈ കോഴ്‌സ് ഇല്ലാതാക്കിയിരിക്കുന്നു.",
     "pingedActivity": "പിംഗ് ചെയ്ത പ്രവർത്തനം",
     "appInTargetLanguageStaysInBaseLanguage": "(നിങ്ങളുടെ മാതൃഭാഷയിൽ ഈ ക്രമീകരണം നിലനിൽക്കുന്നതിനാൽ നിങ്ങൾക്ക് ഇത് എപ്പോഴും കണ്ടെത്താനാകും.)",
+    "usernameTakenPleaseChooseAnother": "ആ ഉപയോക്തൃനാമം ഇതിനകം ഉപയോഗത്തിലാണ്. മറ്റൊന്ന് തിരഞ്ഞെടുക്കുക.",
     "allParticipants": "എല്ലാ പങ്കാളികളും",
     "seeFullCoursePlan": "മുഴുവൻ കോഴ്‌സ് പ്ലാനും കാണുക",
     "upNext": "അടുത്തത്"

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-14 12:27:43.753378",
+    "@@last_modified": "2026-08-14 12:54:58.459734",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9723,6 +9723,7 @@
     "courseDeletedDialogDesc": "Dieser Kurs wurde gelöscht.",
     "pingedActivity": "Gepingte Aktivität",
     "appInTargetLanguageStaysInBaseLanguage": "(Diese Einstellung bleibt in Ihrer Muttersprache, damit Sie sie immer finden können.)",
+    "usernameTakenPleaseChooseAnother": "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen.",
     "allParticipants": "Alle Teilnehmer",
     "seeFullCoursePlan": "Vollständigen Kursplan ansehen",
     "upNext": "Als Nächstes"

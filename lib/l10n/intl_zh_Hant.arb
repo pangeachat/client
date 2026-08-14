@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:51.268824",
+    "@@last_modified": "2026-08-14 12:55:05.414044",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9842,7 +9842,8 @@
     "courseDeletedDialogDesc": "此課程已刪除。",
     "pingedActivity": "已標記的活動",
     "appInTargetLanguageStaysInBaseLanguage": "(此設定會保留為您的母語，以便您隨時找到它。)",
+    "usernameTakenPleaseChooseAnother": "該用戶名已被使用。請選擇另一個。",
     "allParticipants": "所有參與者",
     "seeFullCoursePlan": "查看完整課程計畫",
-    "upNext": "即將開始"
+    "upNext": "即將推出"
 }

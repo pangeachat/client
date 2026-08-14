@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-14 12:27:47.175372",
+    "@@last_modified": "2026-08-14 12:55:01.412013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "ئەم کۆرسە سڕاوەتەوە.",
     "pingedActivity": "چالاکیی پینگکراو",
     "appInTargetLanguageStaysInBaseLanguage": "(ئەم ڕێکخستنە بە زمانی دایکیی خۆت دەمێنێتەوە بۆ ئەوەی هەمیشە بیدۆزیتەوە.)",
+    "usernameTakenPleaseChooseAnother": "ئەو ناوی بەکارهێنەرە پێشتر بەکارهێنراوە. تکایە یەکێکی تر هەڵبژێرە.",
     "allParticipants": "هەموو بەشداربووان",
     "seeFullCoursePlan": "بینینی پلانی تەواوی خولەکە",
     "upNext": "دواتر"

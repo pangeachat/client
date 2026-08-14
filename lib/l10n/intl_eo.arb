@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:44.023520",
+    "@@last_modified": "2026-08-14 12:54:58.633766",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10681,7 +10681,8 @@
     "courseDeletedDialogDesc": "Ĉi tiu kurso estas forigita.",
     "pingedActivity": "Pingita agado",
     "appInTargetLanguageStaysInBaseLanguage": "(Ĉi tiu agordo restas en via denaska lingvo, por ke vi ĉiam povu trovi ĝin.)",
+    "usernameTakenPleaseChooseAnother": "Tiu uzantnomo jam estas prenita. Bonvolu elekti alian.",
     "allParticipants": "Ĉiuj partoprenantoj",
-    "seeFullCoursePlan": "Vidi plenan kursplanon",
+    "seeFullCoursePlan": "Vidi la plenan kursplanon",
     "upNext": "Poste"
 }

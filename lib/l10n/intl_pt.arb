@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:48.809869",
+    "@@last_modified": "2026-08-14 12:55:03.197799",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10680,6 +10680,7 @@
     "courseDeletedDialogDesc": "Este curso foi excluído.",
     "pingedActivity": "Atividade com ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)",
+    "usernameTakenPleaseChooseAnother": "Esse nome de usuário já está em uso. Por favor, escolha outro.",
     "allParticipants": "Todos os participantes",
     "seeFullCoursePlan": "Ver plano de curso completo",
     "upNext": "A seguir"

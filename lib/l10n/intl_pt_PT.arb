@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-14 12:27:48.864275",
+    "@@last_modified": "2026-08-14 12:55:03.060548",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10653,6 +10653,7 @@
     "courseDeletedDialogDesc": "Este curso foi eliminado.",
     "pingedActivity": "Atividade com ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta definição permanece no seu idioma nativo para que a possa encontrar sempre.)",
+    "usernameTakenPleaseChooseAnother": "Este nome de utilizador já está em uso. Por favor, escolha outro.",
     "allParticipants": "Todos os participantes",
     "seeFullCoursePlan": "Ver plano de curso completo",
     "upNext": "A seguir"

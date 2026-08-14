@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-14 12:27:47.809657",
+    "@@last_modified": "2026-08-14 12:55:02.235888",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Kursus ini telah dipadamkan.",
     "pingedActivity": "Aktiviti yang diping",
     "appInTargetLanguageStaysInBaseLanguage": "(Tetapan ini kekal dalam bahasa ibunda anda supaya anda sentiasa dapat mencarinya.)",
+    "usernameTakenPleaseChooseAnother": "Nama pengguna itu sudah digunakan. Sila pilih yang lain.",
     "allParticipants": "Semua peserta",
     "seeFullCoursePlan": "Lihat rancangan kursus penuh",
     "upNext": "Seterusnya"

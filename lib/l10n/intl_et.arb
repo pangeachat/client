@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-14 12:27:44.278773",
+    "@@last_modified": "2026-08-14 12:54:58.651225",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9733,6 +9733,7 @@
     "courseDeletedDialogDesc": "See kursus on kustutatud.",
     "pingedActivity": "Märgitud tegevus",
     "appInTargetLanguageStaysInBaseLanguage": "(See säte jääb teie emakeelde, et saaksite selle alati üles leida.)",
+    "usernameTakenPleaseChooseAnother": "See kasutajanimi on juba võetud. Palun vali mõni teine.",
     "allParticipants": "Kõik osalejad",
     "seeFullCoursePlan": "Vaata kogu kursuse plaani",
     "upNext": "Järgmisena"

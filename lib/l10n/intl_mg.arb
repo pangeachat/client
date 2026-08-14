@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-14 12:27:47.502171",
+    "@@last_modified": "2026-08-14 12:55:01.936346",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Voafafa ity taranja ity.",
     "pingedActivity": "Hetsika voatsindry",
     "appInTargetLanguageStaysInBaseLanguage": "(Ity toe-javatra ity dia mijanona amin'ny fitenin-drazanao mba ho hitanao foana.)",
+    "usernameTakenPleaseChooseAnother": "Efa misy io solonanarana io. Mifidiana hafa azafady.",
     "allParticipants": "Ireo mpandray anjara rehetra",
     "seeFullCoursePlan": "Jereo ny drafitry ny taranja feno",
     "upNext": "Manaraka"

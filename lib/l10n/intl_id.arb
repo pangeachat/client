@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:46.240468",
+    "@@last_modified": "2026-08-14 12:55:00.125849",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9809,6 +9809,7 @@
     "courseDeletedDialogDesc": "Kursus ini telah dihapus.",
     "pingedActivity": "Aktivitas yang di-ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Pengaturan ini tetap dalam bahasa ibu Anda agar Anda selalu dapat menemukannya.)",
+    "usernameTakenPleaseChooseAnother": "Nama pengguna tersebut sudah digunakan. Mohon pilih yang lain.",
     "allParticipants": "Semua peserta",
     "seeFullCoursePlan": "Lihat rencana kursus lengkap",
     "upNext": "Berikutnya"

@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-14 12:27:50.994806",
+    "@@last_modified": "2026-08-14 12:55:05.282998",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9736,6 +9736,7 @@
     "courseDeletedDialogDesc": "此课程已被删除。",
     "pingedActivity": "已提及的活动",
     "appInTargetLanguageStaysInBaseLanguage": "（此设置将保留为您的母语，以便您随时找到它。）",
+    "usernameTakenPleaseChooseAnother": "该用户名已被占用。请选择其他用户名。",
     "allParticipants": "所有参与者",
     "seeFullCoursePlan": "查看完整课程计划",
     "upNext": "即将开始"

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-14 12:27:47.917891",
+    "@@last_modified": "2026-08-14 12:55:02.264904",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Dan il-kors tħassar.",
     "pingedActivity": "Attività pingjata",
     "appInTargetLanguageStaysInBaseLanguage": "(Din l-issettjar tibqa' fil-lingwa nattiva tiegħek biex dejjem tkun tista' ssibha.)",
+    "usernameTakenPleaseChooseAnother": "Dan l-isem tal-utent diġà qed jintuża. Jekk jogħġbok agħżel ieħor.",
     "allParticipants": "Il-parteċipanti kollha",
     "seeFullCoursePlan": "Ara l-pjan sħiħ tal-kors",
     "upNext": "Li jmiss"

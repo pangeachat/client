@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-14 12:27:49.572700",
+    "@@last_modified": "2026-08-14 12:55:03.926778",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2124,7 +2124,8 @@
     "courseDeletedDialogDesc": "Koorsadan waa la tirtiray.",
     "pingedActivity": "Hawlaha la soo sheegay",
     "appInTargetLanguageStaysInBaseLanguage": "(Dejintani waxay ku sii jiraysaa luqaddaada hooyo si aad mar walba u hesho.)",
+    "usernameTakenPleaseChooseAnother": "Magaca isticmaalaha waa la qaatay. Fadlan mid kale dooro.",
     "allParticipants": "Dhammaan ka qaybgalayaasha",
-    "seeFullCoursePlan": "Fiiri qorshaha koorsada oo dhan",
+    "seeFullCoursePlan": "Eeg qorshaha koorsada oo dhan",
     "upNext": "Ku xiga"
 }

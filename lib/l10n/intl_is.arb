@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-14 12:27:45.984146",
+    "@@last_modified": "2026-08-14 12:55:00.384247",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Þessu námskeiði hefur verið eytt.",
     "pingedActivity": "Virkni sem var pinguð",
     "appInTargetLanguageStaysInBaseLanguage": "(Þessi stilling helst á móðurmáli þínu svo þú getir alltaf fundið hana.)",
+    "usernameTakenPleaseChooseAnother": "Þetta notendanafn er þegar í notkun. Vinsamlegast veldu annað.",
     "allParticipants": "Allir þátttakendur",
     "seeFullCoursePlan": "Sjá alla námsáætlun",
     "upNext": "Næst á dagskrá"

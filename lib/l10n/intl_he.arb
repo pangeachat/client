@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:45.114603",
+    "@@last_modified": "2026-08-14 12:54:59.625291",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10650,6 +10650,7 @@
     "courseDeletedDialogDesc": "הקורס נמחק.",
     "pingedActivity": "פעילות עם תזכורת",
     "appInTargetLanguageStaysInBaseLanguage": "(הגדרה זו נשארת בשפת האם שלך כדי שתוכל תמיד למצוא אותה.)",
+    "usernameTakenPleaseChooseAnother": "שם המשתמש הזה כבר תפוס. אנא בחר שם אחר.",
     "allParticipants": "כל המשתתפים",
     "seeFullCoursePlan": "הצג את תוכנית הקורס המלאה",
     "upNext": "הבא בתור"

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:50.738131",
+    "@@last_modified": "2026-08-14 12:55:05.273846",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7012,6 +7012,7 @@
     "courseDeletedDialogDesc": "Khóa học này đã bị xóa.",
     "pingedActivity": "Hoạt động được gắn thẻ",
     "appInTargetLanguageStaysInBaseLanguage": "(Cài đặt này vẫn giữ nguyên ngôn ngữ mẹ đẻ của bạn để bạn luôn có thể tìm thấy nó.)",
+    "usernameTakenPleaseChooseAnother": "Tên người dùng này đã có người sử dụng. Vui lòng chọn tên khác.",
     "allParticipants": "Tất cả người tham gia",
     "seeFullCoursePlan": "Xem toàn bộ giáo trình",
     "upNext": "Tiếp theo"

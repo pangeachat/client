@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-14 12:27:45.942840",
+    "@@last_modified": "2026-08-14 12:55:00.363826",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10368,6 +10368,7 @@
     "courseDeletedDialogDesc": "Tá an cúrsa seo scriosta.",
     "pingedActivity": "Gníomhaíocht phingáilte",
     "appInTargetLanguageStaysInBaseLanguage": "(Fanann an socrú seo i do theanga dhúchais ionas gur féidir leat é a aimsiú i gcónaí.)",
+    "usernameTakenPleaseChooseAnother": "Tá an t-ainm úsáideora sin in úsáid cheana féin. Roghnaigh ceann eile, le do thoil.",
     "allParticipants": "Gach rannpháirtí",
     "seeFullCoursePlan": "Féach ar an bplean cúrsa iomlán",
     "upNext": "Ar aghaidh"

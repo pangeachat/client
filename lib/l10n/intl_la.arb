@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-14 12:27:46.887710",
+    "@@last_modified": "2026-08-14 12:55:01.650947",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2124,6 +2124,7 @@
     "courseDeletedDialogDesc": "Hic cursus deletus est.",
     "pingedActivity": "Actio pulsata",
     "appInTargetLanguageStaysInBaseLanguage": "(Haec occasio in lingua tua vernacula manet ut semper eam invenire possis.)",
+    "usernameTakenPleaseChooseAnother": "Nomen usoris iam in usu est. Aliud elige.",
     "allParticipants": "Omnes participes",
     "seeFullCoursePlan": "Vide totum consilium cursus",
     "upNext": "Deinceps"

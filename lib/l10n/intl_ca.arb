@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:27:43.505279",
+    "@@last_modified": "2026-08-14 12:54:58.028526",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9863,6 +9863,7 @@
     "courseDeletedDialogDesc": "Aquest curs s'ha eliminat.",
     "pingedActivity": "Activitat de ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Aquesta configuració es manté en el teu idioma nadiu perquè sempre la puguis trobar.)",
+    "usernameTakenPleaseChooseAnother": "Aquest nom d'usuari ja està en ús. Si us plau, tria'n un altre.",
     "allParticipants": "Tots els participants",
     "seeFullCoursePlan": "Veure el pla de curs complet",
     "upNext": "A continuació"
