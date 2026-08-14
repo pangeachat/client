@@ -452,10 +452,19 @@ class QuestRepo {
   /// GetStorage) because [QuestOutline] carries session-scoped media CDN URLs —
   /// same reasoning as `ActivityPlanRepo`'s in-memory resolve cache.
   ///
-  /// Holds SUCCESSES ONLY: caching an error would pin a transient failure (or
-  /// a since-restored quest) for the process lifetime, so every retry — the
-  /// world map's empty-cache self-heal, a panel reopen — would replay the
-  /// stale error instead of ever recovering (#8083).
+  /// Holds successes and confirmed 404s. Caching a TRANSIENT error would pin
+  /// it for the process lifetime, so every retry — the world map's empty-cache
+  /// self-heal, a panel reopen — would replay the stale error instead of ever
+  /// recovering (#8083); those stay uncached.
+  ///
+  /// A [MissingQuestException] is the exception, on the same reasoning as
+  /// `ActivityPlanRepo._confirmedRemoved`: the CMS has *stated* the quest is
+  /// gone, which is a fact about the resource rather than a failure to reach
+  /// it, and old course rooms keep referencing removed quests indefinitely — so
+  /// an uncached 404 is re-requested for the life of the process (~1,973 events
+  /// / 24 users in 10 days, CLIENT-DWK, #8358). Recovery is not lost: a
+  /// [forceRefresh] read bypasses the memo and a success replaces it, and the
+  /// cache is process-scoped, so a restarted app re-checks a restored quest.
   static final Map<String, Result<QuestOutline>> _outlineCache = {};
   static final Map<String, Future<Result<QuestOutline>>> _outlineInflight = {};
 
@@ -476,8 +485,9 @@ class QuestRepo {
   }
 
   /// The full outline: quest + objective groups (LOs in order, each with its
-  /// matching activities). Successes are cached per (quest id, course room);
-  /// errors are returned but never cached (see [_outlineCache]). Concurrent
+  /// matching activities). Successes and confirmed 404s are cached per (quest
+  /// id, course room); transient errors are returned but never cached (see
+  /// [_outlineCache]). Concurrent
   /// calls for the same key share one in-flight read. [courseRoomId] admits
   /// the quest owner's private activities when the caller is a joined member
   /// of that course. Pass [forceRefresh] to bypass the cache.
@@ -502,7 +512,7 @@ class QuestRepo {
 
     final outline = await future;
 
-    if (outline.isValue) {
+    if (outline.isValue || outline.error is MissingQuestException) {
       _outlineCache[cacheKey] = outline;
     }
     _outlineInflight.remove(cacheKey);
