@@ -103,4 +103,14 @@ class Requests {
   }
 }
 
-class UnsubscribedException implements Exception {}
+/// A 401 whose `detail` says the user has no active subscription. Control flow
+/// rather than an error — never reported
+/// (repos-and-error-handling.instructions.md).
+///
+/// Carries a `toString()` for the same reason [PangeaHttpException] does: an
+/// exception without one renders as `Instance of '<minified class>'` wherever
+/// it is interpolated or captured (#8375).
+class UnsubscribedException implements Exception {
+  @override
+  String toString() => 'UnsubscribedException';
+}

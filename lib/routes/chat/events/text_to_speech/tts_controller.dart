@@ -349,26 +349,42 @@ class TtsController {
 
     onStart?.call();
 
-    await _tryToSpeak(
-      strippedText,
-      ttsPhoneme: ttsPhoneme,
-      requestId: requestId,
-      langCode: langCode,
-      useCase: useCase,
-      targetID: targetID,
-      context: context,
-      chatController: chatController,
-      onStart: onStart,
-      onStop: onStop,
-      tid: transactionId,
-      speed: speed,
-      allowChoreoPlay: allowChoreoPlay,
-    );
-
-    // Only the active request may clear shared request state.
-    if (_isCurrentRequestId(requestId)) {
-      _currentRequest = null;
-      _activeRequestId = null;
+    try {
+      await _tryToSpeak(
+        strippedText,
+        ttsPhoneme: ttsPhoneme,
+        requestId: requestId,
+        langCode: langCode,
+        useCase: useCase,
+        targetID: targetID,
+        context: context,
+        chatController: chatController,
+        onStart: onStart,
+        onStop: onStop,
+        tid: transactionId,
+        speed: speed,
+        allowChoreoPlay: allowChoreoPlay,
+      );
+    } catch (e, s) {
+      // An affordance marked playing by onStart renders that state until
+      // onStop clears it, and _tryToSpeak only calls onStop on the exits it
+      // reaches — so a throw in between left the indicator stuck (#8375).
+      // Backend and device playback failures are already handled inside; this
+      // catches the setup around them.
+      _log('tryToSpeak: failed before playback completed: $e', transactionId);
+      onStop?.call();
+      error_handler.ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {'langCode': langCode, 'useCase': useCase.name},
+      );
+    } finally {
+      // Only the active request may clear shared request state. Stranding it
+      // makes `stop` decline to stop every later word.
+      if (_isCurrentRequestId(requestId)) {
+        _currentRequest = null;
+        _activeRequestId = null;
+      }
     }
   }
 
