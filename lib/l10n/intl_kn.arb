@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-14 12:55:00.986724",
+    "@@last_modified": "2026-08-14 13:12:14.308448",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "ಆ ಬಳಕೆದಾರಹೆಸರು ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಇನ್ನೊಂದನ್ನು ಆರಿಸಿ.",
     "allParticipants": "ಎಲ್ಲಾ ಭಾಗವಹಿಸುವವರು",
     "seeFullCoursePlan": "ಸಂಪೂರ್ಣ ಕೋರ್ಸ್ ಯೋಜನೆಯನ್ನು ನೋಡಿ",
-    "upNext": "ಮುಂದೆ"
+    "upNext": "ಮುಂದೆ",
+    "catchUp": "ಕ್ಯಾಚ್ ಅಪ್"
 }

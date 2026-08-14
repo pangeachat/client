@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-14 12:55:02.526340",
+    "@@last_modified": "2026-08-14 13:12:15.442519",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Det brukernavnet er allerede tatt. Velg et annet.",
     "allParticipants": "Alle deltakere",
     "seeFullCoursePlan": "Se hele kursplanen",
-    "upNext": "Neste"
+    "upNext": "Neste",
+    "catchUp": "Ta igjen"
 }

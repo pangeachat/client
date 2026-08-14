@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:04.245632",
+    "@@last_modified": "2026-08-14 13:12:16.841371",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10257,5 +10257,6 @@
     "usernameTakenPleaseChooseAnother": "Användarnamnet är redan upptaget. Välj ett annat.",
     "allParticipants": "Alla deltagare",
     "seeFullCoursePlan": "Se hela kursplanen",
-    "upNext": "Nästa"
+    "upNext": "Nästa",
+    "catchUp": "Kom ikapp"
 }

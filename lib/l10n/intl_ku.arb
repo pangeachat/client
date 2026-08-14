@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-14 12:55:01.412013",
+    "@@last_modified": "2026-08-14 13:12:14.684915",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "ئەو ناوی بەکارهێنەرە پێشتر بەکارهێنراوە. تکایە یەکێکی تر هەڵبژێرە.",
     "allParticipants": "هەموو بەشداربووان",
     "seeFullCoursePlan": "بینینی پلانی تەواوی خولەکە",
-    "upNext": "دواتر"
+    "upNext": "دواتر",
+    "catchUp": "خۆت بگەیەنە"
 }

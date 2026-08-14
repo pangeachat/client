@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-14 12:55:04.578701",
+    "@@last_modified": "2026-08-14 13:12:17.252326",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10040,5 +10040,6 @@
     "usernameTakenPleaseChooseAnother": "Bu kullanıcı adı zaten alınmış. Lütfen başka bir tane seçin.",
     "allParticipants": "Tüm katılımcılar",
     "seeFullCoursePlan": "Tüm ders planını gör",
-    "upNext": "Sırada"
+    "upNext": "Sırada",
+    "catchUp": "Yakala"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:05.414044",
+    "@@last_modified": "2026-08-14 13:12:17.854874",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9845,5 +9845,6 @@
     "usernameTakenPleaseChooseAnother": "該用戶名已被使用。請選擇另一個。",
     "allParticipants": "所有參與者",
     "seeFullCoursePlan": "查看完整課程計畫",
-    "upNext": "即將推出"
+    "upNext": "即將推出",
+    "catchUp": "追進度"
 }

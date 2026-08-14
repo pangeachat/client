@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:54:58.633766",
+    "@@last_modified": "2026-08-14 13:12:12.158203",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10684,5 +10684,6 @@
     "usernameTakenPleaseChooseAnother": "Tiu uzantnomo jam estas prenita. Bonvolu elekti alian.",
     "allParticipants": "Ĉiuj partoprenantoj",
     "seeFullCoursePlan": "Vidi la plenan kursplanon",
-    "upNext": "Poste"
+    "upNext": "Poste",
+    "catchUp": "Reatingi"
 }

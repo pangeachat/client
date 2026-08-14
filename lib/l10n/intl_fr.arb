@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-14 12:54:58.878105",
+    "@@last_modified": "2026-08-14 13:12:12.682765",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10094,5 +10094,6 @@
     "usernameTakenPleaseChooseAnother": "Ce nom d'utilisateur est déjà pris. Veuillez en choisir un autre.",
     "allParticipants": "Tous les participants",
     "seeFullCoursePlan": "Voir le plan de cours complet",
-    "upNext": "À suivre"
+    "upNext": "À suivre",
+    "catchUp": "Rattraper"
 }

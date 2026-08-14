@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-14 12:55:05.169845",
+    "@@last_modified": "2026-08-14 13:12:17.370313",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "بۇ ئىشلەتكۈچى نامى ئاللىبۇرۇن ئېلىنىپ بولغان. باشقا بىرنى تاللاڭ.",
     "allParticipants": "بارلىق ئىشتىراكچىلار",
     "seeFullCoursePlan": "تولۇق دەرس پىلانىنى كۆرۈڭ",
-    "upNext": "كېيىنكى"
+    "upNext": "كېيىنكى",
+    "catchUp": "يېتىۋېلىش"
 }

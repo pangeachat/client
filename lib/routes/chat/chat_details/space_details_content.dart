@@ -459,6 +459,7 @@ class _ExpandedSectionBody extends StatelessWidget {
                 ]),
                 builder: (context, _) => CourseObjectivesList(
                   room: room,
+                  collapsibleMissions: true,
                   hasCompletedActivity: (activityId) => controller
                       .roomSummariesModel
                       .hasCompletedActivity(room.client.userID!, activityId),

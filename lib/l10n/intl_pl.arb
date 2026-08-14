@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-14 12:55:02.988007",
+    "@@last_modified": "2026-08-14 13:12:15.961426",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9824,5 +9824,6 @@
     "usernameTakenPleaseChooseAnother": "Ta nazwa użytkownika jest już zajęta. Wybierz inną.",
     "allParticipants": "Wszyscy uczestnicy",
     "seeFullCoursePlan": "Zobacz pełny plan kursu",
-    "upNext": "Następne"
+    "upNext": "Następne",
+    "catchUp": "Nadrób zaległości"
 }

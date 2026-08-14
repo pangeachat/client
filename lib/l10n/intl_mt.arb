@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-14 12:55:02.264904",
+    "@@last_modified": "2026-08-14 13:12:15.368668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Dan l-isem tal-utent diġà qed jintuża. Jekk jogħġbok agħżel ieħor.",
     "allParticipants": "Il-parteċipanti kollha",
     "seeFullCoursePlan": "Ara l-pjan sħiħ tal-kors",
-    "upNext": "Li jmiss"
+    "upNext": "Li jmiss",
+    "catchUp": "Ilaħħqu"
 }

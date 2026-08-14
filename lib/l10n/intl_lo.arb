@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-14 12:55:01.726118",
+    "@@last_modified": "2026-08-14 13:12:14.489106",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "ຊື່ຜູ້ໃຊ້ນີ້ມີຄົນໃຊ້ແລ້ວ. ກະລຸນາເລືອກຊື່ອື່ນ.",
     "allParticipants": "ຜູ້ເຂົ້າຮ່ວມທັງໝົດ",
     "seeFullCoursePlan": "ເບິ່ງແຜນການຮຽນເຕັມ",
-    "upNext": "ຕໍ່ໄປ"
+    "upNext": "ຕໍ່ໄປ",
+    "catchUp": "ຕິດຕາມ"
 }

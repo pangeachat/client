@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-14 12:55:00.384247",
+    "@@last_modified": "2026-08-14 13:12:14.012924",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Þetta notendanafn er þegar í notkun. Vinsamlegast veldu annað.",
     "allParticipants": "Allir þátttakendur",
     "seeFullCoursePlan": "Sjá alla námsáætlun",
-    "upNext": "Næst á dagskrá"
+    "upNext": "Næst á dagskrá",
+    "catchUp": "Ná í"
 }

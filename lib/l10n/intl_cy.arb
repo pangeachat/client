@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-14 12:54:58.259404",
+    "@@last_modified": "2026-08-14 13:12:11.871116",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Mae'r enw defnyddiwr hwnnw eisoes wedi'i gymryd. Dewiswch un arall.",
     "allParticipants": "Pob cyfranogwr",
     "seeFullCoursePlan": "Gweler cynllun cwrs llawn",
-    "upNext": "Nesaf"
+    "upNext": "Nesaf",
+    "catchUp": "Dal i fyny"
 }

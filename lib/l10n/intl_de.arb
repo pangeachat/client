@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-14 12:54:58.459734",
+    "@@last_modified": "2026-08-14 13:12:12.009464",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9726,5 +9726,6 @@
     "usernameTakenPleaseChooseAnother": "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen.",
     "allParticipants": "Alle Teilnehmer",
     "seeFullCoursePlan": "Vollständigen Kursplan ansehen",
-    "upNext": "Als Nächstes"
+    "upNext": "Als Nächstes",
+    "catchUp": "Aufholen"
 }

@@ -114,6 +114,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "catchUp": "Catch up",
+    "@catchUp": {
+        "type": "String",
+        "placeholders": {}
+    },
     "seeFullCoursePlan": "See full course plan",
     "@seeFullCoursePlan": {
         "type": "String",

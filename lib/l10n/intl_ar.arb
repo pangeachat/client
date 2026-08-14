@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-14 12:54:57.412356",
+    "@@last_modified": "2026-08-14 13:12:11.220080",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10045,5 +10045,6 @@
     "usernameTakenPleaseChooseAnother": "اسم المستخدم هذا مستخدم بالفعل. الرجاء اختيار اسم آخر.",
     "allParticipants": "جميع المشاركين",
     "seeFullCoursePlan": "الاطلاع على الخطة الدراسية الكاملة",
-    "upNext": "التالي"
+    "upNext": "التالي",
+    "catchUp": "المتابعة"
 }

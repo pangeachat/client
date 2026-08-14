@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-14 12:55:02.679950",
+    "@@last_modified": "2026-08-14 13:12:15.032776",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "ꯃꯤꯡ ꯑꯁꯤ ꯂꯩꯔꯦ꯫ ꯑꯇꯣꯞꯄꯥ ꯑꯃꯥ ꯈꯟꯕꯤꯌꯨ꯫",
     "allParticipants": "পুম্নমক্না শরুক য়াবশিং",
     "seeFullCoursePlan": "কোর্স প্লান পুম্নমক উবীয়ু",
-    "upNext": "হৌজিক্কী মতুংদা"
+    "upNext": "হৌজিক্কী মতুংদা",
+    "catchUp": "খংজিনবা"
 }

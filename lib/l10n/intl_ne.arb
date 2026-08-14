@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-14 12:55:02.488682",
+    "@@last_modified": "2026-08-14 13:12:15.826211",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "त्यो प्रयोगकर्ता नाम पहिले नै लिइएको छ। कृपया अर्को छान्नुहोस्।",
     "allParticipants": "सबै सहभागीहरू",
     "seeFullCoursePlan": "पूर्ण पाठ्यक्रम योजना हेर्नुहोस्",
-    "upNext": "अर्को"
+    "upNext": "अर्को",
+    "catchUp": "भेट्नुहोस्"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-14 12:54:57.752324",
+    "@@last_modified": "2026-08-14 13:12:12.583841",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Molimo odaberite drugo.",
     "allParticipants": "Svi učesnici",
     "seeFullCoursePlan": "Pogledajte cijeli plan kursa",
-    "upNext": "Sljedeće"
+    "upNext": "Sljedeće",
+    "catchUp": "Sustići"
 }

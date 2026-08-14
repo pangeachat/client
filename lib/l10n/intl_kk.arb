@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-14 12:55:00.888294",
+    "@@last_modified": "2026-08-14 13:12:14.015576",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Бұл пайдаланушы аты бос емес. Басқасын таңдаңыз.",
     "allParticipants": "Барлық қатысушылар",
     "seeFullCoursePlan": "Курстың толық жоспарын қарау",
-    "upNext": "Келесі"
+    "upNext": "Келесі",
+    "catchUp": "Жетіп ал"
 }

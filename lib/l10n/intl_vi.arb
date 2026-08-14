@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:05.273846",
+    "@@last_modified": "2026-08-14 13:12:17.410874",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7015,5 +7015,6 @@
     "usernameTakenPleaseChooseAnother": "Tên người dùng này đã có người sử dụng. Vui lòng chọn tên khác.",
     "allParticipants": "Tất cả người tham gia",
     "seeFullCoursePlan": "Xem toàn bộ giáo trình",
-    "upNext": "Tiếp theo"
+    "upNext": "Tiếp theo",
+    "catchUp": "Bắt kịp"
 }

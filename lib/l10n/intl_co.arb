@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-14 12:54:58.053994",
+    "@@last_modified": "2026-08-14 13:12:11.737392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Stu nome d'utilizatore hè digià pigliatu. Per piacè, sceglite un altru.",
     "allParticipants": "Tutti i participanti",
     "seeFullCoursePlan": "Vede u pianu di u corsu cumpletu",
-    "upNext": "Dopu"
+    "upNext": "Dopu",
+    "catchUp": "Righjunghje"
 }

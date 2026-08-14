@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-14 12:55:01.650947",
+    "@@last_modified": "2026-08-14 13:12:14.816731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Nomen usoris iam in usu est. Aliud elige.",
     "allParticipants": "Omnes participes",
     "seeFullCoursePlan": "Vide totum consilium cursus",
-    "upNext": "Deinceps"
+    "upNext": "Deinceps",
+    "catchUp": "Recuperare"
 }

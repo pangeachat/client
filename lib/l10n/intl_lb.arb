@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-14 12:55:01.652122",
+    "@@last_modified": "2026-08-14 13:12:14.471943",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Dëse Benotzernumm gëtt et schonn. Wielt w.e.g. en aneren.",
     "allParticipants": "All Participanten",
     "seeFullCoursePlan": "Kuckt de komplette Coursplang",
-    "upNext": "Als nächst"
+    "upNext": "Als nächst",
+    "catchUp": "Nohuelen"
 }

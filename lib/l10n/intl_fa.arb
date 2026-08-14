@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:54:59.322659",
+    "@@last_modified": "2026-08-14 13:12:12.416819",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9827,5 +9827,6 @@
     "usernameTakenPleaseChooseAnother": "این نام کاربری قبلاً استفاده شده است. لطفاً نام دیگری انتخاب کنید.",
     "allParticipants": "همه شرکت‌کنندگان",
     "seeFullCoursePlan": "مشاهده برنامه کامل دوره",
-    "upNext": "بعدی"
+    "upNext": "بعدی",
+    "catchUp": "به‌روزرسانی"
 }

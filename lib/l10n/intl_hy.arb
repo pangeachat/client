@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-14 12:55:00.109563",
+    "@@last_modified": "2026-08-14 13:12:13.428774",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Այդ օգտանունն արդեն զբաղված է։ Ընտրեք մեկ այլ օգտանուն։",
     "allParticipants": "Բոլոր մասնակիցները",
     "seeFullCoursePlan": "Դիտել դասընթացի ամբողջական պլանը",
-    "upNext": "Հաջորդը"
+    "upNext": "Հաջորդը",
+    "catchUp": "Հասնել"
 }

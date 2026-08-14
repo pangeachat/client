@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:54:58.028526",
+    "@@last_modified": "2026-08-14 13:12:11.654612",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9866,5 +9866,6 @@
     "usernameTakenPleaseChooseAnother": "Aquest nom d'usuari ja està en ús. Si us plau, tria'n un altre.",
     "allParticipants": "Tots els participants",
     "seeFullCoursePlan": "Veure el pla de curs complet",
-    "upNext": "A continuació"
+    "upNext": "A continuació",
+    "catchUp": "Posa't al dia"
 }

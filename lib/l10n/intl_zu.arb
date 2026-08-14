@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-14 12:55:05.919058",
+    "@@last_modified": "2026-08-14 13:12:17.882800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Lelo gama lomsebenzisi selivele likhona. Sicela ukhethe elinye.",
     "allParticipants": "Bonke abahlanganyeli",
     "seeFullCoursePlan": "Bona uhlelo oluphelele lwesifundo",
-    "upNext": "Okulandelayo"
+    "upNext": "Okulandelayo",
+    "catchUp": "Thola okusha"
 }

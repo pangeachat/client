@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-14 12:54:59.348089",
+    "@@last_modified": "2026-08-14 13:12:12.950319",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Tha an t-ainm-cleachdaiche sin ga chleachdadh mu thràth. Tagh fear eile, mas e do thoil e.",
     "allParticipants": "A h-uile com-pàirtiche",
     "seeFullCoursePlan": "Faic làn phlana a’ chùrsa",
-    "upNext": "An ath rud"
+    "upNext": "An ath rud",
+    "catchUp": "Dèan suas"
 }

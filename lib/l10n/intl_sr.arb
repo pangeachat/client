@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:03.843082",
+    "@@last_modified": "2026-08-14 13:12:16.981375",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10688,5 +10688,6 @@
     "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Izaberite drugo.",
     "allParticipants": "Svi učesnici",
     "seeFullCoursePlan": "Pogledajte ceo plan kursa",
-    "upNext": "Sledeće"
+    "upNext": "Sledeće",
+    "catchUp": "Sustići"
 }

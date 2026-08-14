@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-14 12:55:04.638088",
+    "@@last_modified": "2026-08-14 13:12:17.339444",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9739,5 +9739,6 @@
     "usernameTakenPleaseChooseAnother": "Це ім’я користувача вже зайняте. Будь ласка, виберіть інше.",
     "allParticipants": "Усі учасники",
     "seeFullCoursePlan": "Переглянути повний план курсу",
-    "upNext": "Далі"
+    "upNext": "Далі",
+    "catchUp": "Наздогнати"
 }

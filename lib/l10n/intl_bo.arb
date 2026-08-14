@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-14 12:54:57.743152",
+    "@@last_modified": "2026-08-14 13:12:11.520162",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9350,5 +9350,6 @@
     "usernameTakenPleaseChooseAnother": "མིང་དེ་སྔོན་ནས་བེད་སྤྱོད་བྱས་ཟིན། གཞན་ཞིག་འདེམས་རོགས།",
     "allParticipants": "མཉམ་ཞུགས་པ་ཚང་མ།",
     "seeFullCoursePlan": "སློབ་ཚན་གྱི་འཆར་གཞི་ཆ་ཚང་ལ་ལྟ་བ།",
-    "upNext": "རྗེས་མ།"
+    "upNext": "རྗེས་མ།",
+    "catchUp": "འཕྲལ་དུ་སློབ་སྦྱོང་བྱེད་"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-14 12:55:04.650101",
+    "@@last_modified": "2026-08-14 13:12:16.958871",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Ин номи корбарӣ аллакай гирифта шудааст. Лутфан, дигареро интихоб кунед.",
     "allParticipants": "Ҳамаи иштирокчиён",
     "seeFullCoursePlan": "Нақшаи пурраи курсро бинед",
-    "upNext": "Навбатӣ"
+    "upNext": "Навбатӣ",
+    "catchUp": "Навсозӣ"
 }

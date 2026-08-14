@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-14 12:55:05.485473",
+    "@@last_modified": "2026-08-14 13:12:17.517493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "דער באַניצער־נאָמען איז שוין פֿאַרנומען. ביטע קלויבט אַן אַנדערן.",
     "allParticipants": "אַלע באַטייליקטע",
     "seeFullCoursePlan": "זען פולן קורס פּלאַן",
-    "upNext": "קומענדיקע"
+    "upNext": "קומענדיקע",
+    "catchUp": "כאַפּן זיך"
 }

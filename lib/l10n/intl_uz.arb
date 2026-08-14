@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-14 12:55:05.076644",
+    "@@last_modified": "2026-08-14 13:12:17.615179",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9743,5 +9743,6 @@
     "usernameTakenPleaseChooseAnother": "Bu foydalanuvchi nomi band. Iltimos, boshqasini tanlang.",
     "allParticipants": "Barcha ishtirokchilar",
     "seeFullCoursePlan": "Toʻliq kurs rejasini koʻrish",
-    "upNext": "Keyingisi"
+    "upNext": "Keyingisi",
+    "catchUp": "Yetib oling"
 }

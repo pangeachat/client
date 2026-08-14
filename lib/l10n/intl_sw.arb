@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-14 12:55:04.352178",
+    "@@last_modified": "2026-08-14 13:12:16.914819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Jina hilo la mtumiaji tayari linatumika. Tafadhali chagua lingine.",
     "allParticipants": "Washiriki wote",
     "seeFullCoursePlan": "Angalia mpango kamili wa kozi",
-    "upNext": "Inayofuata"
+    "upNext": "Inayofuata",
+    "catchUp": "Pata habari"
 }

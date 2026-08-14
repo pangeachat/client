@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-14 12:55:00.553911",
+    "@@last_modified": "2026-08-14 13:12:14.063873",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "A na-eji aha njirimara ahụ. Biko họrọ nke ọzọ.",
     "allParticipants": "Ndị niile so na ya",
     "seeFullCoursePlan": "Lee atụmatụ ọmụmụ ihe zuru ezu",
-    "upNext": "Ihe na-abịa"
+    "upNext": "Ihe na-abịa",
+    "catchUp": "Mee ngwa ngwa"
 }

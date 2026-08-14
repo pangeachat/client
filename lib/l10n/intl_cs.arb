@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-14 12:54:58.127928",
+    "@@last_modified": "2026-08-14 13:12:11.862116",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10233,5 +10233,6 @@
     "usernameTakenPleaseChooseAnother": "Toto uživatelské jméno je již obsazeno. Zvolte prosím jiné.",
     "allParticipants": "Všichni účastníci",
     "seeFullCoursePlan": "Zobrazit celý plán kurzu",
-    "upNext": "Další na řadě"
+    "upNext": "Další na řadě",
+    "catchUp": "Dohnat"
 }

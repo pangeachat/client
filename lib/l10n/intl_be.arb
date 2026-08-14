@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-14 12:54:57.420193",
+    "@@last_modified": "2026-08-14 13:12:11.204706",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9753,5 +9753,6 @@
     "usernameTakenPleaseChooseAnother": "Гэтае імя карыстальніка ўжо занята. Калі ласка, выберыце іншае.",
     "allParticipants": "Усе ўдзельнікі",
     "seeFullCoursePlan": "Глядзець поўны план курса",
-    "upNext": "Далей"
+    "upNext": "Далей",
+    "catchUp": "Нагнаць"
 }

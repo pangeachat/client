@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-14 12:55:00.885397",
+    "@@last_modified": "2026-08-14 13:12:14.253739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "ឈ្មោះអ្នកប្រើប្រាស់នោះត្រូវបានប្រើប្រាស់រួចហើយ។ សូមជ្រើសរើសឈ្មោះផ្សេងទៀត។",
     "allParticipants": "អ្នកចូលរួមទាំងអស់",
     "seeFullCoursePlan": "មើលផែនការវគ្គសិក្សាពេញលេញ",
-    "upNext": "បន្ទាប់"
+    "upNext": "បន្ទាប់",
+    "catchUp": "តាមទាន់"
 }

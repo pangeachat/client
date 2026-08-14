@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-14 12:55:04.852727",
+    "@@last_modified": "2026-08-14 13:12:17.345860",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "یہ صارف نام پہلے سے موجود ہے۔ براہ کرم کوئی اور منتخب کریں۔",
     "allParticipants": "تمام شرکاء",
     "seeFullCoursePlan": "مکمل کورس کا منصوبہ دیکھیں",
-    "upNext": "اگلا"
+    "upNext": "اگلا",
+    "catchUp": "معلوم کریں"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:00.925210",
+    "@@last_modified": "2026-08-14 13:12:14.333515",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9932,5 +9932,6 @@
     "usernameTakenPleaseChooseAnother": "사용자 이름이 이미 사용 중입니다. 다른 이름을 선택해 주세요.",
     "allParticipants": "모든 참여자",
     "seeFullCoursePlan": "전체 학습 계획 보기",
-    "upNext": "다음"
+    "upNext": "다음",
+    "catchUp": "따라잡기"
 }

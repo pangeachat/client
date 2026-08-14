@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-14 12:54:58.142719",
+    "@@last_modified": "2026-08-14 13:12:11.926434",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10659,5 +10659,6 @@
     "usernameTakenPleaseChooseAnother": "Brugernavnet er allerede taget. Vælg venligst et andet.",
     "allParticipants": "Alle deltagere",
     "seeFullCoursePlan": "Se hele kursusplanen",
-    "upNext": "Næste"
+    "upNext": "Næste",
+    "catchUp": "Indhent det forsømte"
 }

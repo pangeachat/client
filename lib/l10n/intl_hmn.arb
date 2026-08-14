@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-14 12:55:00.059379",
+    "@@last_modified": "2026-08-14 13:12:13.218974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Tus username ntawd muaj lawm. Thov xaiv lwm tus.",
     "allParticipants": "Sawv daws koom",
     "seeFullCoursePlan": "Saib tag nrho cov kev kawm",
-    "upNext": "Tom ntej no"
+    "upNext": "Tom ntej no",
+    "catchUp": "Nrhiav kom paub"
 }

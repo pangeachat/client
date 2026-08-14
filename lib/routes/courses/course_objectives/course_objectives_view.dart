@@ -60,6 +60,10 @@ class CourseObjectivesList extends StatefulWidget {
   /// Course-plan section highlight; the full list is its "See all" subpage.
   final bool upNextOnly;
 
+  /// Mission headers collapse/expand their carousels (the full course plan
+  /// subpage, #8357). Off in previews and the Up-next highlight.
+  final bool collapsibleMissions;
+
   final QuestObjectivesLoader objectivesProvider;
 
   const CourseObjectivesList({
@@ -69,6 +73,7 @@ class CourseObjectivesList extends StatefulWidget {
     this.hasCompletedActivity,
     this.shrinkWrap = false,
     this.upNextOnly = false,
+    this.collapsibleMissions = false,
     super.key,
   });
 
@@ -373,6 +378,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         pingedActivityId: i == pingedGroupIndex
                             ? pingedActivityId
                             : null,
+                        collapsible: widget.collapsibleMissions,
+                        isUpNext: group.objective.id == anchorId,
                         index: i,
                         group: group,
                         hasCompletedActivity: widget.hasCompletedActivity,

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-14 12:55:01.976705",
+    "@@last_modified": "2026-08-14 13:12:15.078041",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "ആ ഉപയോക്തൃനാമം ഇതിനകം ഉപയോഗത്തിലാണ്. മറ്റൊന്ന് തിരഞ്ഞെടുക്കുക.",
     "allParticipants": "എല്ലാ പങ്കാളികളും",
     "seeFullCoursePlan": "മുഴുവൻ കോഴ്‌സ് പ്ലാനും കാണുക",
-    "upNext": "അടുത്തത്"
+    "upNext": "അടുത്തത്",
+    "catchUp": "പുതിയത് നേടുക"
 }

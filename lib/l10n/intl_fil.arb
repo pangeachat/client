@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-14 12:54:58.801517",
+    "@@last_modified": "2026-08-14 13:12:12.434690",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10599,5 +10599,6 @@
     "usernameTakenPleaseChooseAnother": "Kinuha na ang username na iyan. Mangyaring pumili ng iba.",
     "allParticipants": "Lahat ng kalahok",
     "seeFullCoursePlan": "Tingnan ang buong plano ng kurso",
-    "upNext": "Susunod"
+    "upNext": "Susunod",
+    "catchUp": "Bumawi"
 }

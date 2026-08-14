@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-14 12:55:00.118783",
+    "@@last_modified": "2026-08-14 13:12:13.402273",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9842,5 +9842,6 @@
     "usernameTakenPleaseChooseAnother": "Ez a felhasználónév már foglalt. Kérjük, válasszon másikat.",
     "allParticipants": "Minden résztvevő",
     "seeFullCoursePlan": "Teljes kurzusterv megtekintése",
-    "upNext": "Következő"
+    "upNext": "Következő",
+    "catchUp": "Felzárkózás"
 }

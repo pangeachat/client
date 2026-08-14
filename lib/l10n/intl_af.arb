@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-14 12:54:57.312325",
+    "@@last_modified": "2026-08-14 13:12:11.484194",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Daardie gebruikersnaam is reeds geneem. Kies asseblief 'n ander een.",
     "allParticipants": "Alle deelnemers",
     "seeFullCoursePlan": "Sien volledige kursusplan",
-    "upNext": "Volgende"
+    "upNext": "Volgende",
+    "catchUp": "Plaas in"
 }

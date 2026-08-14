@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-14 12:54:57.560963",
+    "@@last_modified": "2026-08-14 13:12:11.179300",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Това потребителско име вече е заето. Моля, изберете друго.",
     "allParticipants": "Всички участници",
     "seeFullCoursePlan": "Вижте пълния план на курса",
-    "upNext": "Предстои"
+    "upNext": "Предстои",
+    "catchUp": "Наваксване"
 }

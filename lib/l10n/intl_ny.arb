@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-14 12:55:02.985122",
+    "@@last_modified": "2026-08-14 13:12:15.652207",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Dzina la wosuta limenelo lagwiritsidwa kale. Chonde sankhani lina.",
     "allParticipants": "Ophunzira onse",
     "seeFullCoursePlan": "Onani dongosolo lonse la maphunziro",
-    "upNext": "Chotsatira"
+    "upNext": "Chotsatira",
+    "catchUp": "Pezani zatsopano"
 }

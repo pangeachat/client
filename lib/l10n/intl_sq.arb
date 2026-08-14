@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-14 12:55:03.818906",
+    "@@last_modified": "2026-08-14 13:12:16.786921",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Ky emër përdoruesi është zënë. Ju lutemi zgjidhni një tjetër.",
     "allParticipants": "Të gjithë pjesëmarrësit",
     "seeFullCoursePlan": "Shiko planin e plotë të kursit",
-    "upNext": "Në vazhdim"
+    "upNext": "Në vazhdim",
+    "catchUp": "Ndiqni"
 }

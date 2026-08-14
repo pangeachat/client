@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-14 12:55:01.261295",
+    "@@last_modified": "2026-08-14 13:12:14.443818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Бул колдонуучу аты мурунтан эле колдонулуп жатат. Башкасын тандаңыз.",
     "allParticipants": "Бардык катышуучулар",
     "seeFullCoursePlan": "Курстун толук планын көрүү",
-    "upNext": "Кийинки"
+    "upNext": "Кийинки",
+    "catchUp": "Жетишип ал"
 }

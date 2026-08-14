@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-14 12:54:58.686628",
+    "@@last_modified": "2026-08-14 13:12:12.249157",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9739,5 +9739,6 @@
     "usernameTakenPleaseChooseAnother": "Erabiltzaile-izen hori hartuta dago. Mesedez, aukeratu beste bat.",
     "allParticipants": "Parte-hartzaile guztiak",
     "seeFullCoursePlan": "Ikusi ikastaroaren plan osoa",
-    "upNext": "Hurrengoa"
+    "upNext": "Hurrengoa",
+    "catchUp": "Harrapatu"
 }

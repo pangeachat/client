@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-14 12:55:05.455007",
+    "@@last_modified": "2026-08-14 13:12:17.747482",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10696,5 +10696,6 @@
     "usernameTakenPleaseChooseAnother": "呢個用戶名已經有人用咗喇。請揀過另一個啦。",
     "allParticipants": "所有參與者",
     "seeFullCoursePlan": "查看完整課程計劃",
-    "upNext": "即將播放"
+    "upNext": "即將播放",
+    "catchUp": "追返進度"
 }

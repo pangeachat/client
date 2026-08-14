@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-14 12:55:05.282998",
+    "@@last_modified": "2026-08-14 13:12:17.870707",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9739,5 +9739,6 @@
     "usernameTakenPleaseChooseAnother": "该用户名已被占用。请选择其他用户名。",
     "allParticipants": "所有参与者",
     "seeFullCoursePlan": "查看完整课程计划",
-    "upNext": "即将开始"
+    "upNext": "即将开始",
+    "catchUp": "赶上进度"
 }

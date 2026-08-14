@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-14 12:55:00.039135",
+    "@@last_modified": "2026-08-14 13:12:13.375333",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Non itilizatè sa a deja pran. Tanpri chwazi yon lòt.",
     "allParticipants": "Tout patisipan yo",
     "seeFullCoursePlan": "Gade plan kou konplè a",
-    "upNext": "Apre sa"
+    "upNext": "Apre sa",
+    "catchUp": "Ratrapaj"
 }

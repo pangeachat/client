@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-14 12:55:03.586433",
+    "@@last_modified": "2026-08-14 13:12:16.392319",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10684,5 +10684,6 @@
     "usernameTakenPleaseChooseAnother": "Toto používateľské meno je už obsadené. Vyberte si iné.",
     "allParticipants": "Všetci účastníci",
     "seeFullCoursePlan": "Zobraziť celý plán kurzu",
-    "upNext": "Ďalej"
+    "upNext": "Ďalej",
+    "catchUp": "Dohnať"
 }

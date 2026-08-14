@@ -8,8 +8,8 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/spaces/knocking_users_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
@@ -134,7 +134,14 @@ class _CourseOverviewState extends State<CourseOverview> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            KnockingUsersIndicator(room: room),
+            // The course description leads the page (#8357 review feedback);
+            // the language/level/module chips stay with the More section.
+            if (room.topic.isNotEmpty)
+              Padding(
+                padding: const EdgeInsets.only(bottom: 12.0),
+                child: Text(room.topic),
+              ),
+            CourseCatchUp(room: room),
             AnalyticsRequestIndicator(room: room),
             Column(
               key: _sectionKeys[SpaceSettingsTabs.course],
@@ -219,11 +226,6 @@ class _CourseOverviewState extends State<CourseOverview> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CourseSectionHeader(title: l10n.more),
-                if (room.topic.isNotEmpty)
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 12.0),
-                    child: Text(room.topic),
-                  ),
                 if (room.coursePlan != null)
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12.0),

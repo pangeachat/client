@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:02.494060",
+    "@@last_modified": "2026-08-14 13:12:15.539468",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9796,5 +9796,6 @@
     "usernameTakenPleaseChooseAnother": "Det brukernavnet er allerede tatt. Velg et annet.",
     "allParticipants": "Alle deltakere",
     "seeFullCoursePlan": "Se fullstendig kursplan",
-    "upNext": "Neste"
+    "upNext": "Neste",
+    "catchUp": "Ta igjen"
 }

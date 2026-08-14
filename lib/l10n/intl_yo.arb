@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-14 12:55:05.363679",
+    "@@last_modified": "2026-08-14 13:12:17.602927",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Orukọ olumulo yẹn ti wa ni lilo tẹlẹ. Jọwọ yan omiran.",
     "allParticipants": "Gbogbo àwọn tó kopa",
     "seeFullCoursePlan": "Wo gbogbo ètò ẹ̀kọ́",
-    "upNext": "Tó ń bọ̀"
+    "upNext": "Tó ń bọ̀",
+    "catchUp": "Bá wa sọ̀rọ̀"
 }

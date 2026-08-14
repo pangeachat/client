@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:03.178384",
+    "@@last_modified": "2026-08-14 13:12:16.278084",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10471,5 +10471,6 @@
     "usernameTakenPleaseChooseAnother": "Acest nume de utilizator este deja folosit. Te rugăm să alegi altul.",
     "allParticipants": "Toți participanții",
     "seeFullCoursePlan": "Vezi planul complet al cursului",
-    "upNext": "Urmează"
+    "upNext": "Urmează",
+    "catchUp": "Recuperează"
 }

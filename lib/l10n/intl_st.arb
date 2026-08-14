@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-14 12:55:04.102056",
+    "@@last_modified": "2026-08-14 13:12:16.908588",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Lebitso leo la mosebedisi le se le ntse le le teng. Ka kopo kgetha le leng.",
     "allParticipants": "Barupeluoa bohle",
     "seeFullCoursePlan": "Bona moralo o felletseng oa thupelo",
-    "upNext": "Se latelang"
+    "upNext": "Se latelang",
+    "catchUp": "Tšoara"
 }

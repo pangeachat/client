@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-14 12:55:03.926778",
+    "@@last_modified": "2026-08-14 13:12:16.789143",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Magaca isticmaalaha waa la qaatay. Fadlan mid kale dooro.",
     "allParticipants": "Dhammaan ka qaybgalayaasha",
     "seeFullCoursePlan": "Eeg qorshaha koorsada oo dhan",
-    "upNext": "Ku xiga"
+    "upNext": "Ku xiga",
+    "catchUp": "La socodsiin"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-14 12:55:00.772082",
+    "@@last_modified": "2026-08-14 13:12:14.004828",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10508,5 +10508,6 @@
     "usernameTakenPleaseChooseAnother": "そのユーザー名はすでに使用されています。別のユーザー名を選択してください。",
     "allParticipants": "すべての参加者",
     "seeFullCoursePlan": "コースプラン全体を見る",
-    "upNext": "次"
+    "upNext": "次",
+    "catchUp": "キャッチアップ"
 }

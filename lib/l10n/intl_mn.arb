@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-14 12:55:02.181308",
+    "@@last_modified": "2026-08-14 13:12:15.022732",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Энэ хэрэглэгчийн нэр аль хэдийнэ бүртгэгдсэн байна. Өөр нэр сонгоно уу.",
     "allParticipants": "Бүх оролцогчид",
     "seeFullCoursePlan": "Хичээлийн бүрэн төлөвлөгөөг харах",
-    "upNext": "Дараагийнх"
+    "upNext": "Дараагийнх",
+    "catchUp": "Гүйцэх"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-14 12:55:01.936346",
+    "@@last_modified": "2026-08-14 13:12:14.884052",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Efa misy io solonanarana io. Mifidiana hafa azafady.",
     "allParticipants": "Ireo mpandray anjara rehetra",
     "seeFullCoursePlan": "Jereo ny drafitry ny taranja feno",
-    "upNext": "Manaraka"
+    "upNext": "Manaraka",
+    "catchUp": "Hahatratra"
 }

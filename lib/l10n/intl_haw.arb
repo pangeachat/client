@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-14 12:54:59.509505",
+    "@@last_modified": "2026-08-14 13:12:12.904561",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Ua hoʻohana ʻia kēlā inoa mea hoʻohana. E koho i kekahi inoa ʻē aʻe.",
     "allParticipants": "Nā mea komo a pau",
     "seeFullCoursePlan": "E ʻike i ka papa hoʻolālā piha",
-    "upNext": "Aʻe"
+    "upNext": "Aʻe",
+    "catchUp": "Hoʻopaʻa"
 }

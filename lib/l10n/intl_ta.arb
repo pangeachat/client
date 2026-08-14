@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:04.561598",
+    "@@last_modified": "2026-08-14 13:12:17.017672",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9831,5 +9831,6 @@
     "usernameTakenPleaseChooseAnother": "அந்தப் பயனர் பெயர் ஏற்கனவே எடுக்கப்பட்டது. வேறு ஒன்றைத் தேர்ந்தெடுக்கவும்.",
     "allParticipants": "அனைத்து பங்கேற்பாளர்களும்",
     "seeFullCoursePlan": "முழு பாடத்திட்டத்தையும் காண்க",
-    "upNext": "அடுத்து"
+    "upNext": "அடுத்து",
+    "catchUp": "பின்தங்கியவற்றைப் பார்க்கவும்"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:00.581010",
+    "@@last_modified": "2026-08-14 13:12:13.831219",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9812,5 +9812,6 @@
     "usernameTakenPleaseChooseAnother": "Questo nome utente è già in uso. Scegline un altro.",
     "allParticipants": "Tutti i partecipanti",
     "seeFullCoursePlan": "Vedi il piano completo del corso",
-    "upNext": "Prossimamente"
+    "upNext": "Prossimamente",
+    "catchUp": "Recupera"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-14 12:55:05.360440",
+    "@@last_modified": "2026-08-14 13:12:16.876516",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Ngaran pamaké éta geus aya. Mangga pilih nu sanés.",
     "allParticipants": "Sadaya pamilon",
     "seeFullCoursePlan": "Tingali rencana kursus lengkep",
-    "upNext": "Salajengna"
+    "upNext": "Salajengna",
+    "catchUp": "Susulan"
 }

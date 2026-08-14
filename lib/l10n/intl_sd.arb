@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-14 12:55:03.851667",
+    "@@last_modified": "2026-08-14 13:12:16.329463",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "اهو يوزرنيم اڳ ۾ ئي ورتو ويو آهي. مهرباني ڪري ٻيو چونڊيو.",
     "allParticipants": "سڀئي شرڪت ڪندڙ",
     "seeFullCoursePlan": "مڪمل ڪورس پلان ڏسو",
-    "upNext": "اڳيان"
+    "upNext": "اڳيان",
+    "catchUp": "پوئتي پيل سبق پورو ڪريو"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-14 12:55:02.235888",
+    "@@last_modified": "2026-08-14 13:12:15.207937",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Nama pengguna itu sudah digunakan. Sila pilih yang lain.",
     "allParticipants": "Semua peserta",
     "seeFullCoursePlan": "Lihat rancangan kursus penuh",
-    "upNext": "Seterusnya"
+    "upNext": "Seterusnya",
+    "catchUp": "Ikuti perkembangan"
 }

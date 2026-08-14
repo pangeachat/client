@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-14 12:55:02.561789",
+    "@@last_modified": "2026-08-14 13:12:15.312334",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "အသုံးပြုသူအမည်ကို အသုံးပြုပြီးသားဖြစ်ပါသည်။ အခြားတစ်ခုကို ရွေးချယ်ပါ။",
     "allParticipants": "ပါဝင်သူအားလုံး",
     "seeFullCoursePlan": "သင်တန်းအစီအစဉ်အပြည့်အစုံကို ကြည့်ရန်",
-    "upNext": "နောက်တစ်ခု"
+    "upNext": "နောက်တစ်ခု",
+    "catchUp": "ပြန်လည်စတင်ရန်"
 }

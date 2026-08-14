@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-14 12:55:01.828210",
+    "@@last_modified": "2026-08-14 13:12:14.948601",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Kua tangohia kē tērā ingoa kaiwhakamahi. Tēnā kōwhiria tētahi atu.",
     "allParticipants": "Ngā kaiuru katoa",
     "seeFullCoursePlan": "Tirohia te mahere akoranga katoa",
-    "upNext": "Panuku"
+    "upNext": "Panuku",
+    "catchUp": "Whai ake"
 }

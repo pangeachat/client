@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-14 12:55:02.269219",
+    "@@last_modified": "2026-08-14 13:12:15.183447",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "ते वापरकर्तानाव आधीच घेतले आहे. कृपया दुसरे निवडा.",
     "allParticipants": "सर्व सहभागी",
     "seeFullCoursePlan": "संपूर्ण अभ्यासक्रम योजना पहा",
-    "upNext": "पुढील"
+    "upNext": "पुढील",
+    "catchUp": "माहिती मिळवा"
 }

@@ -9,9 +9,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/spaces/knocking_users_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_request_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat_list/activity_template_chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
@@ -61,23 +59,15 @@ class CourseChatsView extends StatelessWidget {
                   joinedSessions.length +
                   discoveredGroupChats.length +
                   discoveredSessions.length +
-                  9,
+                  7,
               itemBuilder: (context, i) {
                 // Chats-tab title slot. The progress header moved to
                 // Analytics; the standalone chat-bubble icon was redundant
                 // with the Chats tab itself — both removed (world_v2).
+                // Knock + analytics-request attention rows moved to the course
+                // page's Catch up section (#8357).
                 if (i == 0) {
                   return const SizedBox();
-                }
-                i--;
-
-                if (i == 0) {
-                  return KnockingUsersIndicator(room: room);
-                }
-                i--;
-
-                if (i == 0) {
-                  return AnalyticsRequestIndicator(room: room);
                 }
                 i--;
 

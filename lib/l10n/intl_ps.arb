@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-14 12:55:03.176901",
+    "@@last_modified": "2026-08-14 13:12:15.855988",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "دا کارن نوم لا دمخه اخیستل شوی دی. مهرباني وکړئ بل انتخاب کړئ.",
     "allParticipants": "ټول ګډونوال",
     "seeFullCoursePlan": "د کورس بشپړ پلان وګورئ",
-    "upNext": "بل"
+    "upNext": "بل",
+    "catchUp": "ځان ورسوه"
 }

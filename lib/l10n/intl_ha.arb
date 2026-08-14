@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-14 12:54:59.507651",
+    "@@last_modified": "2026-08-14 13:12:12.962796",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "An riga an yi amfani da wannan sunan mai amfani. Da fatan za a zaɓi wani daban.",
     "allParticipants": "Duk mahalarta",
     "seeFullCoursePlan": "Duba cikakken tsarin darasi",
-    "upNext": "Na gaba"
+    "upNext": "Na gaba",
+    "catchUp": "Ci gaba"
 }

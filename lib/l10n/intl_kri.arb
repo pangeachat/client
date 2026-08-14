@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-14 12:55:01.247510",
+    "@@last_modified": "2026-08-14 13:12:14.454941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Dat yuzaneim dɔn de. Duya pik ɔda wan.",
     "allParticipants": "Ɔl dɛn we de insaid",
     "seeFullCoursePlan": "Si di ful kos plan",
-    "upNext": "Di nɛks wan"
+    "upNext": "Di nɛks wan",
+    "catchUp": "Kech op"
 }

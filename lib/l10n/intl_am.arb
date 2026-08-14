@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-14 12:54:57.739502",
+    "@@last_modified": "2026-08-14 13:12:11.168658",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "ይህ የተጠቃሚ ስም አስቀድሞ ተይዟል። እባክዎ ሌላ ይምረጡ።",
     "allParticipants": "ሁሉም ተሳታፊዎች",
     "seeFullCoursePlan": "ሙሉ የኮርስ እቅድ ይመልከቱ",
-    "upNext": "በመቀጠል"
+    "upNext": "በመቀጠል",
+    "catchUp": "ያግኙ"
 }

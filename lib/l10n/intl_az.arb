@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-14 12:54:57.410748",
+    "@@last_modified": "2026-08-14 13:12:11.462699",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Bu istifadəçi adı artıq istifadə olunur. Zəhmət olmasa başqa bir ad seçin.",
     "allParticipants": "Bütün iştirakçılar",
     "seeFullCoursePlan": "Tam kurs planına baxın",
-    "upNext": "Növbəti"
+    "upNext": "Növbəti",
+    "catchUp": "Çatdır"
 }

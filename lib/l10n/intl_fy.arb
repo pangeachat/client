@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-14 12:54:59.176493",
+    "@@last_modified": "2026-08-14 13:12:12.581901",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Dy brûkersnamme is al yn gebrûk. Kies asjebleaft in oare.",
     "allParticipants": "Alle dielnimmers",
     "seeFullCoursePlan": "Sjoch folslein kursusplan",
-    "upNext": "Folgjende"
+    "upNext": "Folgjende",
+    "catchUp": "Ynhelje"
 }

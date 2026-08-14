@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-14 12:55:03.729822",
+    "@@last_modified": "2026-08-14 13:12:16.434780",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10684,5 +10684,6 @@
     "usernameTakenPleaseChooseAnother": "To uporabniško ime je že zasedeno. Izberite drugo.",
     "allParticipants": "Vsi udeleženci",
     "seeFullCoursePlan": "Oglejte si celoten načrt tečaja",
-    "upNext": "Sledi"
+    "upNext": "Sledi",
+    "catchUp": "Nadaljuj"
 }

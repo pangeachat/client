@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-14 12:54:58.651225",
+    "@@last_modified": "2026-08-14 13:12:12.229388",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9736,5 +9736,6 @@
     "usernameTakenPleaseChooseAnother": "See kasutajanimi on juba võetud. Palun vali mõni teine.",
     "allParticipants": "Kõik osalejad",
     "seeFullCoursePlan": "Vaata kogu kursuse plaani",
-    "upNext": "Järgmisena"
+    "upNext": "Järgmisena",
+    "catchUp": "Järele jõudma"
 }

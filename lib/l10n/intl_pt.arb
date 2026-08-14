@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:03.197799",
+    "@@last_modified": "2026-08-14 13:12:15.954527",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10683,5 +10683,6 @@
     "usernameTakenPleaseChooseAnother": "Esse nome de usuário já está em uso. Por favor, escolha outro.",
     "allParticipants": "Todos os participantes",
     "seeFullCoursePlan": "Ver plano de curso completo",
-    "upNext": "A seguir"
+    "upNext": "A seguir",
+    "catchUp": "Recuperar"
 }

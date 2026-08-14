@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-14 12:55:03.750277",
+    "@@last_modified": "2026-08-14 13:12:16.380620",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "එම පරිශීලක නාමය දැනටමත් භාවිතයේ ඇත. කරුණාකර වෙනත් එකක් තෝරන්න.",
     "allParticipants": "සියලුම සහභාගිවන්නන්",
     "seeFullCoursePlan": "සම්පූර්ණ පාඨමාලා සැලැස්ම බලන්න",
-    "upNext": "ඊළඟට"
+    "upNext": "ඊළඟට",
+    "catchUp": "අලුත් දේ බලන්න"
 }

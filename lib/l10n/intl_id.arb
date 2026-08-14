@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:55:00.125849",
+    "@@last_modified": "2026-08-14 13:12:13.448548",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9812,5 +9812,6 @@
     "usernameTakenPleaseChooseAnother": "Nama pengguna tersebut sudah digunakan. Mohon pilih yang lain.",
     "allParticipants": "Semua peserta",
     "seeFullCoursePlan": "Lihat rencana kursus lengkap",
-    "upNext": "Berikutnya"
+    "upNext": "Berikutnya",
+    "catchUp": "Ikuti"
 }

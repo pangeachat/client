@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-14 12:55:04.081793",
+    "@@last_modified": "2026-08-14 13:12:16.475923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2127,5 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Ua uma ona fa'aaoga lena igoa fa'aoga. Fa'amolemole filifili se isi.",
     "allParticipants": "Tagata uma o lo'o auai",
     "seeFullCoursePlan": "Va'ai le fuafuaga atoa o le kosi",
-    "upNext": "Le isi"
+    "upNext": "Le isi",
+    "catchUp": "Fa'afou"
 }
