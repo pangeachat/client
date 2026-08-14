@@ -1,0 +1,110 @@
+import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart';
+import 'package:http/testing.dart';
+import 'package:matrix/matrix_api_lite/generated/api.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
+
+import 'package:fluffychat/features/analytics_access/grant_analytics_access_extension.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+
+/// The grant call is the one live raw-`Response` throw site of #8362: it
+/// bypasses `Requests` entirely (Synapse endpoint, Matrix SDK client and
+/// token), so nothing upstream types its failures for it. Thrown raw, every
+/// grant failure arrived in Sentry titled `Instance of 'Response'`.
+///
+/// These tests pin the contract the doc actually asks for
+/// (repos-and-error-handling.instructions.md): the failure is a
+/// `PangeaHttpException`, its `toString()` names the endpoint, and it maps onto
+/// the one severity table.
+void main() {
+  const courseRoomId = '!course:staging.pangea.chat';
+  const analyticsRoomId = '!analytics:staging.pangea.chat';
+  const grantPath =
+      '/_synapse/client/pangea/v1/grant_instructor_analytics_access';
+
+  Api apiReturning(int status, {String body = ''}) => Api(
+    baseUri: Uri.parse('https://matrix.staging.pangea.chat'),
+    bearerToken: 'syt_test_token',
+    httpClient: MockClient(
+      (request) async => Response(body, status, request: request),
+    ),
+  );
+
+  /// The thrown object, or null when the call succeeded.
+  Future<Object?> grantFailure(Api api) async {
+    try {
+      await api.grantInstructorAnalyticsAccess(courseRoomId, analyticsRoomId);
+      return null;
+    } catch (e) {
+      return e;
+    }
+  }
+
+  group('grantInstructorAnalyticsAccess', () {
+    test('a 200 completes without throwing', () async {
+      expect(await grantFailure(apiReturning(200)), isNull);
+    });
+
+    test('throws the typed exception, never the response', () async {
+      final error = await grantFailure(apiReturning(403));
+
+      expect(error, isA<PangeaHttpException>());
+      // The regression itself: a thrown response has no toString() override.
+      expect(error, isNot(isA<BaseResponse>()));
+      expect(error.toString(), isNot(contains('Instance of')));
+    });
+
+    test('toString carries status, method, and the endpoint path', () async {
+      expect(
+        (await grantFailure(apiReturning(502))).toString(),
+        'PangeaHttpException: 502 POST $grantPath',
+      );
+    });
+
+    test('reports the status the server actually sent', () async {
+      for (final status in [400, 403, 404, 429, 500]) {
+        expect(
+          PangeaHttpException.statusCodeOf(
+            await grantFailure(apiReturning(status)),
+          ),
+          status,
+        );
+      }
+    });
+
+    test('the failure lands on the shared severity table', () async {
+      // The two callers in join_room_analytics_access_extension.dart report
+      // with exactly this level, so a routine 404 stops paging as an error.
+      for (final status in [401, 404, 410, 429]) {
+        expect(
+          PangeaHttpException.severityOf(
+            await grantFailure(apiReturning(status)),
+          ),
+          SentryLevel.warning,
+          reason: '$status is routine — the resource is gone or will retry',
+        );
+      }
+      for (final status in [400, 403, 500, 502]) {
+        expect(
+          PangeaHttpException.severityOf(
+            await grantFailure(apiReturning(status)),
+          ),
+          SentryLevel.error,
+          reason: '$status is a code bug or a backend regression',
+        );
+      }
+    });
+
+    test('never carries the response body', () async {
+      // Bodies carry learner content; only the parsed `detail` may travel.
+      final error =
+          await grantFailure(
+                apiReturning(500, body: '{"error":"secret learner text"}'),
+              )
+              as PangeaHttpException;
+
+      expect(error.detail, isNull);
+      expect(error.toString(), isNot(contains('secret learner text')));
+    });
+  });
+}
