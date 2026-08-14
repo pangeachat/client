@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-14 12:53:31.457931",
+    "@@last_modified": "2026-08-14 11:32:24.119015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Энэ хичээл устгагдсан байна.",
     "pingedActivity": "Идэвхжүүлсэн үйл ажиллагаа",
     "appInTargetLanguageStaysInBaseLanguage": "(Энэ тохиргоо нь таны эх хэл дээр байх тул та үүнийг үргэлж олох боломжтой.)",
-    "usernameTakenPleaseChooseAnother": "Энэ хэрэглэгчийн нэр аль хэдийнэ бүртгэгдсэн байна. Өөр нэр сонгоно уу.",
-    "messageLanguageIs": "Энэ мессеж {language} хэл дээр байна.",
-    "updateMessageLanguage": "Мессежийн хэлийг өөрчлөхийн тулд энд дарна уу.",
-    "messageLanguage": "Мессежийн хэл",
-    "messageLanguageUpdated": "Мессежийн хэл шинэчлэгдлээ!"
+    "usernameTakenPleaseChooseAnother": "Энэ хэрэглэгчийн нэр аль хэдийнэ бүртгэгдсэн байна. Өөр нэр сонгоно уу."
 }

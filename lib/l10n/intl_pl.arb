@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-14 12:53:32.272381",
+    "@@last_modified": "2026-08-14 11:32:25.999513",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9821,9 +9821,5 @@
     "courseDeletedDialogDesc": "Ten kurs został usunięty.",
     "pingedActivity": "Aktywność z powiadomieniem",
     "appInTargetLanguageStaysInBaseLanguage": "(To ustawienie pozostaje w Twoim języku ojczystym, aby zawsze można je było znaleźć.)",
-    "usernameTakenPleaseChooseAnother": "Ta nazwa użytkownika jest już zajęta. Wybierz inną.",
-    "messageLanguageIs": "Ten komunikat jest ustawiony na {language}.",
-    "updateMessageLanguage": "Kliknij tutaj, aby zmienić język wiadomości.",
-    "messageLanguage": "Język wiadomości",
-    "messageLanguageUpdated": "Język wiadomości zaktualizowany!"
+    "usernameTakenPleaseChooseAnother": "Ta nazwa użytkownika jest już zajęta. Wybierz inną."
 }

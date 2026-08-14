@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-14 12:53:27.754841",
+    "@@last_modified": "2026-08-14 11:32:17.830347",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9733,9 +9733,5 @@
     "courseDeletedDialogDesc": "See kursus on kustutatud.",
     "pingedActivity": "Märgitud tegevus",
     "appInTargetLanguageStaysInBaseLanguage": "(See säte jääb teie emakeelde, et saaksite selle alati üles leida.)",
-    "usernameTakenPleaseChooseAnother": "See kasutajanimi on juba võetud. Palun vali mõni teine.",
-    "messageLanguageIs": "Selle sõnumi keeleks on määratud {language}.",
-    "updateMessageLanguage": "Sõnumi keele muutmiseks klõpsa siia.",
-    "messageLanguage": "Sõnumi keel",
-    "messageLanguageUpdated": "Sõnumi keel uuendatud!"
+    "usernameTakenPleaseChooseAnother": "See kasutajanimi on juba võetud. Palun vali mõni teine."
 }

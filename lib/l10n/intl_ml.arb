@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-14 12:53:31.156211",
+    "@@last_modified": "2026-08-14 11:32:24.036265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "ഈ കോഴ്‌സ് ഇല്ലാതാക്കിയിരിക്കുന്നു.",
     "pingedActivity": "പിംഗ് ചെയ്ത പ്രവർത്തനം",
     "appInTargetLanguageStaysInBaseLanguage": "(നിങ്ങളുടെ മാതൃഭാഷയിൽ ഈ ക്രമീകരണം നിലനിൽക്കുന്നതിനാൽ നിങ്ങൾക്ക് ഇത് എപ്പോഴും കണ്ടെത്താനാകും.)",
-    "usernameTakenPleaseChooseAnother": "ആ ഉപയോക്തൃനാമം ഇതിനകം ഉപയോഗത്തിലാണ്. മറ്റൊന്ന് തിരഞ്ഞെടുക്കുക.",
-    "messageLanguageIs": "ഈ സന്ദേശം {language} എന്നതിലേക്ക് സജ്ജീകരിച്ചിരിക്കുന്നു.",
-    "updateMessageLanguage": "സന്ദേശത്തിന്റെ ഭാഷ മാറ്റാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക.",
-    "messageLanguage": "സന്ദേശ ഭാഷ",
-    "messageLanguageUpdated": "സന്ദേശ ഭാഷ അപ്ഡേറ്റ് ചെയ്തു!"
+    "usernameTakenPleaseChooseAnother": "ആ ഉപയോക്തൃനാമം ഇതിനകം ഉപയോഗത്തിലാണ്. മറ്റൊന്ന് തിരഞ്ഞെടുക്കുക."
 }

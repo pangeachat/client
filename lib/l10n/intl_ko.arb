@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:30.179633",
+    "@@last_modified": "2026-08-14 11:32:23.628441",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9929,9 +9929,5 @@
     "courseDeletedDialogDesc": "이 코스는 삭제되었습니다.",
     "pingedActivity": "핑 활동",
     "appInTargetLanguageStaysInBaseLanguage": "(이 설정은 항상 찾을 수 있도록 모국어로 유지됩니다.)",
-    "usernameTakenPleaseChooseAnother": "사용자 이름이 이미 사용 중입니다. 다른 이름을 선택해 주세요.",
-    "messageLanguageIs": "이 메시지는 {language}로 설정되어 있습니다.",
-    "updateMessageLanguage": "메시지 언어를 변경하려면 여기를 클릭하세요.",
-    "messageLanguage": "메시지 언어",
-    "messageLanguageUpdated": "메시지 언어가 업데이트되었습니다!"
+    "usernameTakenPleaseChooseAnother": "사용자 이름이 이미 사용 중입니다. 다른 이름을 선택해 주세요."
 }

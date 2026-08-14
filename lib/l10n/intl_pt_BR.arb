@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:32.355631",
+    "@@last_modified": "2026-08-14 11:32:25.370019",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9736,9 +9736,5 @@
     "courseDeletedDialogDesc": "Este curso foi excluído.",
     "pingedActivity": "Atividade mencionada",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)",
-    "usernameTakenPleaseChooseAnother": "Esse nome de usuário já está em uso. Por favor, escolha outro.",
-    "messageLanguageIs": "Esta mensagem está definida para {language}.",
-    "updateMessageLanguage": "Clique aqui para mudar o idioma da mensagem.",
-    "messageLanguage": "Idioma da mensagem",
-    "messageLanguageUpdated": "Idioma da mensagem atualizado!"
+    "usernameTakenPleaseChooseAnother": "Esse nome de usuário já está em uso. Por favor, escolha outro."
 }

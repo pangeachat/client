@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-14 12:53:26.710679",
+    "@@last_modified": "2026-08-14 11:32:16.582051",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "এইটো পাঠ্যক্ৰম বিলোপ কৰা হৈছে।",
     "pingedActivity": "পিং কৰা কাৰ্যকলাপ",
     "appInTargetLanguageStaysInBaseLanguage": "(এই ছেটিংছটো আপোনাৰ মাতৃভাষাত থাকিব যাতে আপুনি ইয়াক সদায় বিচাৰি পায়।)",
-    "usernameTakenPleaseChooseAnother": "সেই ব্যৱহাৰকাৰীৰ নামটো ইতিমধ্যে লোৱা হৈছে। অনুগ্ৰহ কৰি আন এটা বাছক।",
-    "messageLanguageIs": "এই বাৰ্তাটি {language} ভাষাত ছেট কৰা হৈছে।",
-    "updateMessageLanguage": "বাৰ্তাৰ ভাষা সলনি কৰিবলৈ ইয়াত ক্লিক কৰক।",
-    "messageLanguage": "বাৰ্তাৰ ভাষা",
-    "messageLanguageUpdated": "বাৰ্তাৰ ভাষা আপডেইট কৰা হ'ল!"
+    "usernameTakenPleaseChooseAnother": "সেই ব্যৱহাৰকাৰীৰ নামটো ইতিমধ্যে লোৱা হৈছে। অনুগ্ৰহ কৰি আন এটা বাছক।"
 }

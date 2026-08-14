@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-14 12:53:34.471545",
+    "@@last_modified": "2026-08-14 11:32:29.056756",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9736,9 +9736,5 @@
     "courseDeletedDialogDesc": "此课程已被删除。",
     "pingedActivity": "已提及的活动",
     "appInTargetLanguageStaysInBaseLanguage": "（此设置将保留为您的母语，以便您随时找到它。）",
-    "usernameTakenPleaseChooseAnother": "该用户名已被占用。请选择其他用户名。",
-    "messageLanguageIs": "此消息已设置为{language}。",
-    "updateMessageLanguage": "点击此处更改消息语言。",
-    "messageLanguage": "消息语言",
-    "messageLanguageUpdated": "消息语言已更新！"
+    "usernameTakenPleaseChooseAnother": "该用户名已被占用。请选择其他用户名。"
 }

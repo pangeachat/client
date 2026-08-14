@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:26.510106",
+    "@@last_modified": "2026-08-14 11:32:15.899009",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10364,9 +10364,5 @@
     "courseDeletedDialogDesc": "এই কোর্সটি মুছে ফেলা হয়েছে।",
     "pingedActivity": "পিং করা কার্যকলাপ",
     "appInTargetLanguageStaysInBaseLanguage": "(এই সেটিংটি আপনার স্থানীয় ভাষাতেই থাকবে যাতে আপনি এটি সবসময় খুঁজে পান।)",
-    "usernameTakenPleaseChooseAnother": "এই ব্যবহারকারীর নাম ইতিমধ্যেই নেওয়া হয়েছে। অনুগ্রহ করে অন্য একটি বেছে নিন।",
-    "messageLanguageIs": "এই বার্তার ভাষা {language} এ সেট করা আছে।",
-    "updateMessageLanguage": "বার্তার ভাষা পরিবর্তন করতে এখানে ক্লিক করুন।",
-    "messageLanguage": "বার্তার ভাষা",
-    "messageLanguageUpdated": "বার্তার ভাষা আপডেট করা হয়েছে!"
+    "usernameTakenPleaseChooseAnother": "এই ব্যবহারকারীর নাম ইতিমধ্যেই নেওয়া হয়েছে। অনুগ্রহ করে অন্য একটি বেছে নিন।"
 }

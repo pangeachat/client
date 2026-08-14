@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-14 12:53:32.391075",
+    "@@last_modified": "2026-08-14 11:32:25.652591",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10653,9 +10653,5 @@
     "courseDeletedDialogDesc": "Este curso foi eliminado.",
     "pingedActivity": "Atividade com ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta definição permanece no seu idioma nativo para que a possa encontrar sempre.)",
-    "usernameTakenPleaseChooseAnother": "Este nome de utilizador já está em uso. Por favor, escolha outro.",
-    "messageLanguageIs": "Esta mensagem está definida para {language}.",
-    "updateMessageLanguage": "Clique aqui para alterar o idioma da mensagem.",
-    "messageLanguage": "Idioma da mensagem",
-    "messageLanguageUpdated": "Idioma da mensagem atualizado!"
+    "usernameTakenPleaseChooseAnother": "Este nome de utilizador já está em uso. Por favor, escolha outro."
 }

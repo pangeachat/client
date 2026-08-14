@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-14 12:53:27.625687",
+    "@@last_modified": "2026-08-14 11:32:16.004847",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9347,9 +9347,5 @@
     "courseDeletedDialogDesc": "སློབ་ཚན་འདི་བསུབས་ཟིན།",
     "pingedActivity": "སྒུལ་བསྐྱོད་བྱས་པའི་བྱེད་སྒོ།",
     "appInTargetLanguageStaysInBaseLanguage": "(ཁྱེད་ཀྱིས་རྟག་ཏུ་རྙེད་ཐུབ་པའི་ཆེད་དུ་སྒྲིག་འགོད་འདི་ཁྱེད་ཀྱི་སྐད་ཡིག་རང་དུ་གནས་པ་ཡིན།)",
-    "usernameTakenPleaseChooseAnother": "མིང་དེ་སྔོན་ནས་བེད་སྤྱོད་བྱས་ཟིན། གཞན་ཞིག་འདེམས་རོགས།",
-    "messageLanguageIs": "འདིའི་བརྡ་འཕྲིན་ {language} ལ་སྒྲིག་ཡོད།",
-    "updateMessageLanguage": "བརྡ་འཕྲིན་གྱི་སྐད་ཡིག་བསྒྱུར་བར་འདིར་མནོན།",
-    "messageLanguage": "བརྡ་འཕྲིན་སྐད་ཡིག",
-    "messageLanguageUpdated": "བརྡ་འཕྲིན་སྐད་ཡིག་གསར་སྒྱུར་བྱས་ཟིན།"
+    "usernameTakenPleaseChooseAnother": "མིང་དེ་སྔོན་ནས་བེད་སྤྱོད་བྱས་ཟིན། གཞན་ཞིག་འདེམས་རོགས།"
 }

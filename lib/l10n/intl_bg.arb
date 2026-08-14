@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-14 12:53:26.414117",
+    "@@last_modified": "2026-08-14 11:32:16.216298",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Този курс е изтрит.",
     "pingedActivity": "Пингната активност",
     "appInTargetLanguageStaysInBaseLanguage": "(Тази настройка остава на родния ви език, за да можете винаги да я намерите.)",
-    "usernameTakenPleaseChooseAnother": "Това потребителско име вече е заето. Моля, изберете друго.",
-    "messageLanguageIs": "Това съобщение е на {language}.",
-    "updateMessageLanguage": "Натиснете тук, за да промените езика на съобщението.",
-    "messageLanguage": "Език на съобщението",
-    "messageLanguageUpdated": "Езикът на съобщението е актуализиран!"
+    "usernameTakenPleaseChooseAnother": "Това потребителско име вече е заето. Моля, изберете друго."
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:29.331257",
+    "@@last_modified": "2026-08-14 11:32:20.981180",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9809,9 +9809,5 @@
     "courseDeletedDialogDesc": "Kursus ini telah dihapus.",
     "pingedActivity": "Aktivitas yang di-ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Pengaturan ini tetap dalam bahasa ibu Anda agar Anda selalu dapat menemukannya.)",
-    "usernameTakenPleaseChooseAnother": "Nama pengguna tersebut sudah digunakan. Mohon pilih yang lain.",
-    "messageLanguageIs": "Pesan ini diatur ke {language}.",
-    "updateMessageLanguage": "Klik di sini untuk mengubah bahasa pesan.",
-    "messageLanguage": "Bahasa pesan",
-    "messageLanguageUpdated": "Bahasa pesan diperbarui!"
+    "usernameTakenPleaseChooseAnother": "Nama pengguna tersebut sudah digunakan. Mohon pilih yang lain."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-14 12:53:26.567331",
+    "@@last_modified": "2026-08-14 11:32:18.795049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Bu kurs silinib.",
     "pingedActivity": "Bildiriş göndərilən fəaliyyət",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu tənzimləmə ana dilinizdə qalır ki, onu həmişə tapa biləsiniz.)",
-    "usernameTakenPleaseChooseAnother": "Bu istifadəçi adı artıq istifadə olunur. Zəhmət olmasa başqa bir ad seçin.",
-    "messageLanguageIs": "Bu mesaj {language} dilinə təyin edilib.",
-    "updateMessageLanguage": "Mesajın dilini dəyişmək üçün bura klikləyin.",
-    "messageLanguage": "Mesaj dili",
-    "messageLanguageUpdated": "Mesaj dili yeniləndi!"
+    "usernameTakenPleaseChooseAnother": "Bu istifadəçi adı artıq istifadə olunur. Zəhmət olmasa başqa bir ad seçin."
 }

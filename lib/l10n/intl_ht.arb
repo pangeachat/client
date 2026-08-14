@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-14 12:53:28.944465",
+    "@@last_modified": "2026-08-14 11:32:20.752509",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Kou sa a te efase.",
     "pingedActivity": "Aktivite ki te ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Anviwònman sa a rete nan lang natif natal ou pou ou ka toujou jwenn li.)",
-    "usernameTakenPleaseChooseAnother": "Non itilizatè sa a deja pran. Tanpri chwazi yon lòt.",
-    "messageLanguageIs": "Mesaj sa a mete sou {language}.",
-    "updateMessageLanguage": "Klike la a pou chanje lang mesaj la.",
-    "messageLanguage": "Lang mesaj",
-    "messageLanguageUpdated": "Lang mesaj la mete ajou!"
+    "usernameTakenPleaseChooseAnother": "Non itilizatè sa a deja pran. Tanpri chwazi yon lòt."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-14 12:53:28.985588",
+    "@@last_modified": "2026-08-14 11:32:20.715889",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Cov kev kawm no raug muab rho tawm lawm.",
     "pingedActivity": "Kev ua ub no pinged",
     "appInTargetLanguageStaysInBaseLanguage": "(Qhov chaw no nyob hauv koj hom lus kom koj nrhiav tau ib txwm.)",
-    "usernameTakenPleaseChooseAnother": "Tus username ntawd muaj lawm. Thov xaiv lwm tus.",
-    "messageLanguageIs": "Cov lus no yog teeb rau {language}.",
-    "updateMessageLanguage": "Nyem qhov no los hloov cov lus hom lus.",
-    "messageLanguage": "Lus hom lus",
-    "messageLanguageUpdated": "Lus hom lus hloov tshiab lawm!"
+    "usernameTakenPleaseChooseAnother": "Tus username ntawd muaj lawm. Thov xaiv lwm tus."
 }

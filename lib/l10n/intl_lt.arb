@@ -2972,7 +2972,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-14 12:53:30.570100",
+    "@@last_modified": "2026-08-14 11:32:23.239823",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10517,9 +10517,5 @@
     "courseDeletedDialogDesc": "Šis kursas buvo ištrintas.",
     "pingedActivity": "Pažymėta veikla",
     "appInTargetLanguageStaysInBaseLanguage": "(Šis nustatymas lieka jūsų gimtąja kalba, kad visada galėtumėte jį rasti.)",
-    "usernameTakenPleaseChooseAnother": "Toks vartotojo vardas jau užimtas. Pasirinkite kitą.",
-    "messageLanguageIs": "Ši žinutė nustatyta į {language}.",
-    "updateMessageLanguage": "Spustelėkite čia, kad pakeistumėte žinutės kalbą.",
-    "messageLanguage": "Žinutės kalba",
-    "messageLanguageUpdated": "Žinutės kalba atnaujinta!"
+    "usernameTakenPleaseChooseAnother": "Toks vartotojo vardas jau užimtas. Pasirinkite kitą."
 }

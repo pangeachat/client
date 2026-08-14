@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-14 12:53:28.083394",
+    "@@last_modified": "2026-08-14 11:32:19.457785",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10596,9 +10596,5 @@
     "courseDeletedDialogDesc": "Na-delete na ang kursong ito.",
     "pingedActivity": "Na-ping na aktibidad",
     "appInTargetLanguageStaysInBaseLanguage": "(Ang setting na ito ay mananatili sa iyong sariling wika para lagi mo itong mahanap.)",
-    "usernameTakenPleaseChooseAnother": "Kinuha na ang username na iyan. Mangyaring pumili ng iba.",
-    "messageLanguageIs": "Ang mensaheng ito ay nakatakda sa {language}.",
-    "updateMessageLanguage": "Mag-click dito upang baguhin ang wika ng mensahe.",
-    "messageLanguage": "Wika ng mensahe",
-    "messageLanguageUpdated": "Na-update ang wika ng mensahe!"
+    "usernameTakenPleaseChooseAnother": "Kinuha na ang username na iyan. Mangyaring pumili ng iba."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-14 12:53:30.076610",
+    "@@last_modified": "2026-08-14 11:32:22.800111",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "ಈ ಕೋರ್ಸ್ ಅನ್ನು ಅಳಿಸಲಾಗಿದೆ.",
     "pingedActivity": "ಪಿಂಗ್ ಮಾಡಿದ ಚಟುವಟಿಕೆ",
     "appInTargetLanguageStaysInBaseLanguage": "(ಈ ಸೆಟ್ಟಿಂಗ್ ನಿಮ್ಮ ಸ್ಥಳೀಯ ಭಾಷೆಯಲ್ಲಿಯೇ ಇರುತ್ತದೆ, ಆದ್ದರಿಂದ ನೀವು ಅದನ್ನು ಯಾವಾಗಲೂ ಹುಡುಕಬಹುದು.)",
-    "usernameTakenPleaseChooseAnother": "ಆ ಬಳಕೆದಾರಹೆಸರು ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಇನ್ನೊಂದನ್ನು ಆರಿಸಿ.",
-    "messageLanguageIs": "ಈ ಸಂದೇಶವನ್ನು {language} ಗೆ ಹೊಂದಿಸಲಾಗಿದೆ.",
-    "updateMessageLanguage": "ಸಂದೇಶದ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ.",
-    "messageLanguage": "ಸಂದೇಶ ಭಾಷೆ",
-    "messageLanguageUpdated": "ಸಂದೇಶ ಭಾಷೆ ನವೀಕರಿಸಲಾಗಿದೆ!"
+    "usernameTakenPleaseChooseAnother": "ಆ ಬಳಕೆದಾರಹೆಸರು ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಇನ್ನೊಂದನ್ನು ಆರಿಸಿ."
 }

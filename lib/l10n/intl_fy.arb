@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-14 12:53:28.315836",
+    "@@last_modified": "2026-08-14 11:32:20.087288",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2124,9 +2124,5 @@
     "courseDeletedDialogDesc": "Dizze kursus is fuortsmiten.",
     "pingedActivity": "Pinge aktiviteit",
     "appInTargetLanguageStaysInBaseLanguage": "(Dizze ynstelling bliuwt yn jo memmetaal, sadat jo it altyd fine kinne.)",
-    "usernameTakenPleaseChooseAnother": "Dy brûkersnamme is al yn gebrûk. Kies asjebleaft in oare.",
-    "messageLanguageIs": "Dit berjocht is ynsteld op {language}.",
-    "updateMessageLanguage": "Klik hjir om de taal fan it berjocht te feroarjen.",
-    "messageLanguage": "Berjochtetaal",
-    "messageLanguageUpdated": "Berjochtetaal bywurke!"
+    "usernameTakenPleaseChooseAnother": "Dy brûkersnamme is al yn gebrûk. Kies asjebleaft in oare."
 }

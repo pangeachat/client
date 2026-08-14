@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 12:53:27.559369",
+    "@@last_modified": "2026-08-14 11:32:17.744603",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10681,9 +10681,5 @@
     "courseDeletedDialogDesc": "Ĉi tiu kurso estas forigita.",
     "pingedActivity": "Pingita agado",
     "appInTargetLanguageStaysInBaseLanguage": "(Ĉi tiu agordo restas en via denaska lingvo, por ke vi ĉiam povu trovi ĝin.)",
-    "usernameTakenPleaseChooseAnother": "Tiu uzantnomo jam estas prenita. Bonvolu elekti alian.",
-    "messageLanguageIs": "Ĉi tiu mesaĝo estas agordita al {language}.",
-    "updateMessageLanguage": "Alklaku ĉi tie por ŝanĝi la lingvon de la mesaĝo.",
-    "messageLanguage": "Lingvo de mesaĝo",
-    "messageLanguageUpdated": "Lingvo de mesaĝo ĝisdatigita!"
+    "usernameTakenPleaseChooseAnother": "Tiu uzantnomo jam estas prenita. Bonvolu elekti alian."
 }
