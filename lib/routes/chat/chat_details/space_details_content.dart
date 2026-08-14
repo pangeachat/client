@@ -223,7 +223,7 @@ class _CourseCardBody extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text(
             "${room.teacherMode.starsToUnlockObjective ?? kDefaultStarsToUnlockObjective}",
-            style: Theme.of(context).textTheme.labelLarge,
+            style: Theme.of(context).textTheme.bodyMedium,
           ),
         ),
       ),

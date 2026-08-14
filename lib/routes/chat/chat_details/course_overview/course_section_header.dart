@@ -20,7 +20,7 @@ class CourseSectionHeader extends StatelessWidget {
               title,
               style: Theme.of(
                 context,
-              ).textTheme.titleSmall?.copyWith(fontWeight: FontWeight.w700),
+              ).textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600),
             ),
           ),
           ?trailing,

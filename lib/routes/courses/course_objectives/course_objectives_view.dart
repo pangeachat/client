@@ -380,7 +380,6 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                             : null,
                         collapsible: widget.collapsibleMissions,
                         isUpNext: group.objective.id == anchorId,
-                        index: i,
                         group: group,
                         hasCompletedActivity: widget.hasCompletedActivity,
                         progress: hasProgress

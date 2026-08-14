@@ -10,10 +10,10 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_link.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
+import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_request_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -148,7 +148,10 @@ class _CourseOverviewState extends State<CourseOverview> {
                   if (room.topic.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 12.0),
-                      child: Text(room.topic),
+                      child: Text(
+                        room.topic,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
                     ),
                   if (room.coursePlan != null)
                     Padding(
@@ -156,57 +159,56 @@ class _CourseOverviewState extends State<CourseOverview> {
                       child: CourseInfoChips(
                         room.coursePlan!.uuid,
                         courseRoomId: room.id,
-                        fontSize: 12.0,
+                        fontSize: Theme.of(
+                          context,
+                        ).textTheme.bodySmall?.fontSize,
                         iconSize: 12.0,
                       ),
                     ),
                   CourseCatchUp(room: room),
                   AnalyticsRequestIndicator(room: room),
-                  Column(
-                    key: _sectionKeys[SpaceSettingsTabs.course],
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      CourseSectionHeader(
-                        title: SpaceSettingsTabs.course.title(context),
-                      ),
-                      CourseProgressBar(
-                        objectivesProvider:
-                            widget.controller.objectivesProvider,
-                      ),
-                      const SizedBox(height: 8.0),
-                      Text(
-                        l10n.upNext.toUpperCase(),
-                        style: Theme.of(context).textTheme.labelSmall?.copyWith(
-                          color: Theme.of(context).colorScheme.primary,
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 0.8,
-                        ),
-                      ),
-                      ListenableBuilder(
-                        listenable: Listenable.merge([
-                          widget.controller.objectivesProvider.questLoader,
-                          widget.controller.objectivesProvider.progression,
-                        ]),
-                        builder: (context, _) => CourseObjectivesList(
-                          room: room,
-                          shrinkWrap: true,
-                          upNextOnly: true,
-                          hasCompletedActivity: (activityId) => widget
-                              .controller
-                              .roomSummariesModel
-                              .hasCompletedActivity(
-                                room.client.userID!,
-                                activityId,
-                              ),
-                          objectivesProvider:
-                              widget.controller.objectivesProvider,
-                        ),
-                      ),
-                      CourseSectionLink(
-                        label: l10n.seeFullCoursePlan,
-                        onTap: () => _openSubpage(SpaceSettingsTabs.course),
-                      ),
-                    ],
+                ],
+              ),
+            ),
+            // Hidden when the intro block above is empty, so the page can't
+            // open on a stray divider.
+            if (room.topic.isNotEmpty || room.coursePlan != null)
+              const Divider(),
+            Padding(
+              padding: SpaceDetailsContent.sectionPadding,
+              child: Column(
+                key: _sectionKeys[SpaceSettingsTabs.course],
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  CourseSectionHeader(
+                    title: SpaceSettingsTabs.course.title(context),
+                  ),
+                  CourseProgressBar(
+                    objectivesProvider: widget.controller.objectivesProvider,
+                  ),
+                  const SizedBox(height: 8.0),
+                  ListenableBuilder(
+                    listenable: Listenable.merge([
+                      widget.controller.objectivesProvider.questLoader,
+                      widget.controller.objectivesProvider.progression,
+                    ]),
+                    builder: (context, _) => CourseObjectivesList(
+                      room: room,
+                      shrinkWrap: true,
+                      upNextOnly: true,
+                      hasCompletedActivity: (activityId) => widget
+                          .controller
+                          .roomSummariesModel
+                          .hasCompletedActivity(
+                            room.client.userID!,
+                            activityId,
+                          ),
+                      objectivesProvider: widget.controller.objectivesProvider,
+                    ),
+                  ),
+                  CourseSectionLink(
+                    label: l10n.seeFullCoursePlan,
+                    onTap: () => _openSubpage(SpaceSettingsTabs.course),
                   ),
                 ],
               ),
@@ -245,14 +247,17 @@ class _CourseOverviewState extends State<CourseOverview> {
                               Icons.person_add_outlined,
                               size: 16,
                             ),
-                            label: Text(l10n.invite),
+                            label: Text(
+                              l10n.invite,
+                              style: Theme.of(context).textTheme.bodyMedium,
+                            ),
                             style: FilledButton.styleFrom(
                               visualDensity: VisualDensity.compact,
                             ),
                           )
                         : null,
                   ),
-                  CourseParticipantsPreview(room: room),
+                  RoomParticipantsSection(room: room, maxParticipants: 8),
                   CourseSectionLink(
                     label: l10n.allParticipants,
                     onTap: () => _openSubpage(SpaceSettingsTabs.participants),
@@ -290,24 +295,29 @@ class _MoreButtonList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final textTheme = Theme.of(context).textTheme;
     return Column(
       spacing: 10.0,
       mainAxisSize: MainAxisSize.min,
       children: buttons.where((b) => b.visible).map((b) {
+        final title = Text(b.title, style: textTheme.bodyMedium);
+        final subtitle = b.description != null
+            ? Text(b.description!, style: textTheme.bodySmall)
+            : null;
         return Opacity(
           opacity: b.enabled ? 1.0 : 0.5,
           child: b.isToggle
               ? SwitchListTile(
-                  title: Text(b.title),
-                  subtitle: b.description != null ? Text(b.description!) : null,
+                  title: title,
+                  subtitle: subtitle,
                   secondary: b.icon,
                   value: b.value,
                   onChanged: b.enabled ? (value) => b.onPressed?.call() : null,
                   activeThumbColor: AppConfig.activeToggleColor,
                 )
               : ListTile(
-                  title: Text(b.title),
-                  subtitle: b.description != null ? Text(b.description!) : null,
+                  title: title,
+                  subtitle: subtitle,
                   leading: b.icon,
                   onTap: b.enabled ? () => b.onPressed?.call() : null,
                   trailing: b.trailing,

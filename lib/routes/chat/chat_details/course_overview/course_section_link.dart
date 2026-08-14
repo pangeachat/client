@@ -24,10 +24,9 @@ class CourseSectionLink extends StatelessWidget {
           children: [
             Text(
               label,
-              style: Theme.of(context).textTheme.labelLarge?.copyWith(
-                color: color,
-                fontWeight: FontWeight.w600,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium?.copyWith(color: color),
             ),
             Icon(Icons.chevron_right, size: 18.0, color: color),
           ],

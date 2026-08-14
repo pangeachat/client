@@ -82,8 +82,8 @@ class _CourseCatchUpState extends State<CourseCatchUp> {
                     const SizedBox(width: 10.0),
                     Text(
                       l10n.catchUp,
-                      style: Theme.of(context).textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w700,
+                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                        fontWeight: FontWeight.w600,
                       ),
                     ),
                   ],
@@ -99,7 +99,12 @@ class _CourseCatchUpState extends State<CourseCatchUp> {
                   Center(
                     child: TextButton(
                       onPressed: () => setState(() => _expanded = true),
-                      child: Text(l10n.loadMore),
+                      child: Text(
+                        l10n.loadMore,
+                        style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                      ),
                     ),
                   ),
               ],
@@ -137,15 +142,11 @@ class _CatchUpKnockRow extends StatelessWidget {
                   displayname,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                    fontSize: 13.0,
-                    fontWeight: FontWeight.w600,
-                  ),
+                  style: Theme.of(context).textTheme.bodyMedium,
                 ),
                 Text(
                   l10n.knocking,
-                  style: TextStyle(
-                    fontSize: 11.5,
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
                     color: Theme.of(context).colorScheme.outline,
                   ),
                 ),
@@ -155,7 +156,10 @@ class _CatchUpKnockRow extends StatelessWidget {
           FilledButton.tonal(
             onPressed: onApprove,
             style: FilledButton.styleFrom(visualDensity: VisualDensity.compact),
-            child: Text(l10n.approve),
+            child: Text(
+              l10n.approve,
+              style: Theme.of(context).textTheme.bodyMedium,
+            ),
           ),
         ],
       ),

@@ -13,7 +13,6 @@ import 'package:fluffychat/routes/courses/course_objectives/objective_section_sc
 import 'package:fluffychat/routes/world/world_map_ranking.dart';
 
 class ObjectiveSection extends StatefulWidget {
-  final int index;
   final QuestObjectiveGroup group;
   final void Function(QuestActivity) onTap;
   final int Function(String) userStarsByActivity;
@@ -58,7 +57,6 @@ class ObjectiveSection extends StatefulWidget {
 
   const ObjectiveSection({
     super.key,
-    required this.index,
     required this.group,
     required this.onTap,
     required this.userStarsByActivity,
@@ -168,10 +166,10 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Objective header: placeholder icon + the can-do statement, with the
-          // Mission's earned/threshold stars when the shared rollup is in. The
-          // Up-next Mission's statement wears the accent; a collapsible header
-          // (the full plan) toggles the carousel and shows a chevron.
+          // Objective header, left to right: the collapse chevron (full plan
+          // only), the Mission's earned/threshold stars when the shared
+          // rollup is in, then the can-do statement. The Up-next Mission's
+          // statement wears the accent.
           Semantics(
             // Without an explicit button container the toggle flattens into
             // the section's group semantics and is unreachable on web, where
@@ -186,22 +184,15 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _ObjectivePlaceholderIcon(index: widget.index),
-                  const SizedBox(width: 12.0),
-                  Expanded(
-                    child: Text(
-                      widget.group.objective.objective,
-                      style: TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w600,
-                        color: widget.isUpNext
-                            ? theme.colorScheme.primary
-                            : null,
-                      ),
+                  if (widget.collapsible) ...[
+                    AnimatedRotation(
+                      turns: _collapsed ? -0.25 : 0,
+                      duration: FluffyThemes.animationDuration,
+                      child: const Icon(Icons.expand_more, size: 20.0),
                     ),
-                  ),
+                    const SizedBox(width: 4.0),
+                  ],
                   if (widget.progress != null) ...[
-                    const SizedBox(width: 8.0),
                     Semantics(
                       label: L10n.of(context).starsEarnedOfTotal(
                         widget.progress!.stars,
@@ -221,24 +212,24 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                               // Raw stars over the satisfaction threshold — surplus
                               // shows (12/7); only the quest header caps.
                               '${widget.progress!.stars}/${widget.progress!.threshold}',
-                              style: const TextStyle(
-                                fontSize: 14.0,
-                                fontWeight: FontWeight.w600,
-                              ),
+                              style: theme.textTheme.bodyMedium,
                             ),
                           ),
                         ],
                       ),
                     ),
+                    const SizedBox(width: 8.0),
                   ],
-                  if (widget.collapsible) ...[
-                    const SizedBox(width: 4.0),
-                    AnimatedRotation(
-                      turns: _collapsed ? -0.25 : 0,
-                      duration: FluffyThemes.animationDuration,
-                      child: const Icon(Icons.expand_more, size: 20.0),
+                  Expanded(
+                    child: Text(
+                      widget.group.objective.objective,
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: widget.isUpNext
+                            ? theme.colorScheme.primary
+                            : null,
+                      ),
                     ),
-                  ],
+                  ),
                 ],
               ),
             ),
@@ -405,32 +396,6 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
             ),
         ],
       ),
-    );
-  }
-}
-
-/// Placeholder objective icon until real learning-objective icons exist.
-/// Deterministic color per position so the list reads as distinct items.
-class _ObjectivePlaceholderIcon extends StatelessWidget {
-  final int index;
-  const _ObjectivePlaceholderIcon({required this.index});
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    final palette = [
-      scheme.primaryContainer,
-      scheme.secondaryContainer,
-      scheme.tertiaryContainer,
-    ];
-    return Container(
-      width: 40.0,
-      height: 40.0,
-      decoration: BoxDecoration(
-        color: palette[index % palette.length],
-        borderRadius: BorderRadius.circular(10.0),
-      ),
-      child: Icon(Icons.flag_outlined, size: 22.0, color: scheme.onSurface),
     );
   }
 }

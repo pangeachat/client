@@ -18,7 +18,16 @@ import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 class RoomParticipantsSection extends StatelessWidget {
   final Room room;
 
-  const RoomParticipantsSection({required this.room, super.key});
+  /// Caps the member cards rendered — the course page's Participants section
+  /// shows a preview this way. Null renders every participant (the full
+  /// participant list page). The invite tile renders regardless.
+  final int? maxParticipants;
+
+  const RoomParticipantsSection({
+    required this.room,
+    this.maxParticipants,
+    super.key,
+  });
 
   final double _width = 100.0;
 
@@ -67,11 +76,15 @@ class RoomParticipantsSection extends StatelessWidget {
             );
           }
 
+          final visibleParticipants = maxParticipants != null
+              ? filteredParticipants.take(maxParticipants!).toList()
+              : filteredParticipants;
+
           return Wrap(
             spacing: 8.0,
             alignment: WrapAlignment.center,
             runAlignment: WrapAlignment.center,
-            children: [...filteredParticipants, null].mapIndexed((index, user) {
+            children: [...visibleParticipants, null].mapIndexed((index, user) {
               if (user == null) {
                 return room.canInvite && !room.isDirectChat
                     ? MouseRegion(
