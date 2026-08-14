@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-14 11:32:21.850057",
+    "@@last_modified": "2026-08-14 12:53:29.674804",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Ehichapụla ọmụmụ ihe a.",
     "pingedActivity": "Ọrụ pinged",
     "appInTargetLanguageStaysInBaseLanguage": "(Ntọala a na-anọ n'asụsụ obodo gị ka ị nwee ike ịchọta ya mgbe niile.)",
-    "usernameTakenPleaseChooseAnother": "A na-eji aha njirimara ahụ. Biko họrọ nke ọzọ."
+    "usernameTakenPleaseChooseAnother": "A na-eji aha njirimara ahụ. Biko họrọ nke ọzọ.",
+    "messageLanguageIs": "Edoziri ozi a ka ọ bụrụ {language}.",
+    "updateMessageLanguage": "Pịa ebe a ka ịgbanwee asụsụ ozi ahụ.",
+    "messageLanguage": "Asụsụ ozi",
+    "messageLanguageUpdated": "Emelitere asụsụ ozi!"
 }

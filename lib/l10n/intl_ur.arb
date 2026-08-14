@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-14 11:32:28.473460",
+    "@@last_modified": "2026-08-14 12:53:34.212675",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "یہ کورس حذف کر دیا گیا ہے۔",
     "pingedActivity": "پِنگ کی گئی سرگرمی",
     "appInTargetLanguageStaysInBaseLanguage": "(یہ سیٹنگ آپ کی مادری زبان میں ہی رہے گی تاکہ آپ اسے ہمیشہ تلاش کر سکیں۔)",
-    "usernameTakenPleaseChooseAnother": "یہ صارف نام پہلے سے موجود ہے۔ براہ کرم کوئی اور منتخب کریں۔"
+    "usernameTakenPleaseChooseAnother": "یہ صارف نام پہلے سے موجود ہے۔ براہ کرم کوئی اور منتخب کریں۔",
+    "messageLanguageIs": "اس پیغام کی زبان {language} پر سیٹ ہے۔",
+    "updateMessageLanguage": "پیغام کی زبان تبدیل کرنے کے لیے یہاں کلک کریں۔",
+    "messageLanguage": "پیغام کی زبان",
+    "messageLanguageUpdated": "پیغام کی زبان اپ ڈیٹ ہو گئی!"
 }

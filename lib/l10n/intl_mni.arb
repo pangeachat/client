@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-14 11:32:24.657762",
+    "@@last_modified": "2026-08-14 12:53:31.891226",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "অসিগুম্বা কোর্স অসি মুতখ্রে।",
     "pingedActivity": "পিং তৌরবা এক্টিভিটি",
     "appInTargetLanguageStaysInBaseLanguage": "(असेटिंग असिना नंगना कैना फंगना नंगगी लोयनिंगब लोल्दा लैनिगनि।)",
-    "usernameTakenPleaseChooseAnother": "ꯃꯤꯡ ꯑꯁꯤ ꯂꯩꯔꯦ꯫ ꯑꯇꯣꯞꯄꯥ ꯑꯃꯥ ꯈꯟꯕꯤꯌꯨ꯫"
+    "usernameTakenPleaseChooseAnother": "ꯃꯤꯡ ꯑꯁꯤ ꯂꯩꯔꯦ꯫ ꯑꯇꯣꯞꯄꯥ ꯑꯃꯥ ꯈꯟꯕꯤꯌꯨ꯫",
+    "messageLanguageIs": "असी मेसेज असि {language} दा सेत तौरे।",
+    "updateMessageLanguage": "मेसेज असिगी लोन्गी मात्तिक तोक्नबा नत्त्रगा होन्गदनबा अदोना मासिदा क्लिक तौबियु।",
+    "messageLanguage": "मेसेज लोन्",
+    "messageLanguageUpdated": "मेसेज लोन् होन्गले!"
 }

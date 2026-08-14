@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-14 11:32:25.332901",
+    "@@last_modified": "2026-08-14 12:53:32.268431",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "ਇਹ ਕੋਰਸ ਮਿਟਾ ਦਿੱਤਾ ਗਿਆ ਹੈ।",
     "pingedActivity": "ਪਿੰਗ ਕੀਤੀ ਗਤੀਵਿਧੀ",
     "appInTargetLanguageStaysInBaseLanguage": "(ਇਹ ਸੈਟਿੰਗ ਤੁਹਾਡੀ ਮੂਲ ਭਾਸ਼ਾ ਵਿੱਚ ਰਹਿੰਦੀ ਹੈ ਤਾਂ ਜੋ ਤੁਸੀਂ ਇਸਨੂੰ ਹਮੇਸ਼ਾ ਲੱਭ ਸਕੋ।)",
-    "usernameTakenPleaseChooseAnother": "ਉਹ ਯੂਜ਼ਰਨੇਮ ਪਹਿਲਾਂ ਹੀ ਵਰਤੋਂ ਵਿੱਚ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਕੋਈ ਹੋਰ ਚੁਣੋ।"
+    "usernameTakenPleaseChooseAnother": "ਉਹ ਯੂਜ਼ਰਨੇਮ ਪਹਿਲਾਂ ਹੀ ਵਰਤੋਂ ਵਿੱਚ ਹੈ। ਕਿਰਪਾ ਕਰਕੇ ਕੋਈ ਹੋਰ ਚੁਣੋ।",
+    "messageLanguageIs": "ਇਹ ਸੁਨੇਹਾ {language} 'ਤੇ ਸੈੱਟ ਕੀਤਾ ਗਿਆ ਹੈ।",
+    "updateMessageLanguage": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਬਦਲਣ ਲਈ ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ।",
+    "messageLanguage": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ",
+    "messageLanguageUpdated": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਅੱਪਡੇਟ ਕੀਤੀ ਗਈ!"
 }

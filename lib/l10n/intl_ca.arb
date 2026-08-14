@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 11:32:17.214053",
+    "@@last_modified": "2026-08-14 12:53:26.515916",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9863,5 +9863,9 @@
     "courseDeletedDialogDesc": "Aquest curs s'ha eliminat.",
     "pingedActivity": "Activitat de ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Aquesta configuració es manté en el teu idioma nadiu perquè sempre la puguis trobar.)",
-    "usernameTakenPleaseChooseAnother": "Aquest nom d'usuari ja està en ús. Si us plau, tria'n un altre."
+    "usernameTakenPleaseChooseAnother": "Aquest nom d'usuari ja està en ús. Si us plau, tria'n un altre.",
+    "messageLanguageIs": "Aquest missatge està configurat en {language}.",
+    "updateMessageLanguage": "Feu clic aquí per canviar l'idioma del missatge.",
+    "messageLanguage": "Idioma del missatge",
+    "messageLanguageUpdated": "Idioma del missatge actualitzat!"
 }

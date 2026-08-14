@@ -4495,6 +4495,17 @@
     "loginFinishedLabel": "Finalizing...",
     "loginErrorLabel": "An error occurred during login",
     "clickToUpdateTargetLanguage": "Click here to update your target language.",
+    "messageLanguageIs": "This message is set to {language}.",
+    "@messageLanguageIs": {
+        "placeholders": {
+            "language": {
+                "type": "String"
+            }
+        }
+    },
+    "updateMessageLanguage": "Click here to change the message's language.",
+    "messageLanguage": "Message language",
+    "messageLanguageUpdated": "Message language updated!",
     "closeEmojiMenu": "Close emoji menu",
     "visibilityToggleTitle": "Allow others to search for your course",
     "subscribedToUnlockTools": "Subscribe to unlock interactive translation and grammar checking, audio playback, personalized practice exercises, and learning analytics!",

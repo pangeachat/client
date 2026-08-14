@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 11:32:27.427639",
+    "@@last_modified": "2026-08-14 12:53:33.814620",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9828,5 +9828,9 @@
     "courseDeletedDialogDesc": "இந்த பாடநெறி நீக்கப்பட்டுவிட்டது.",
     "pingedActivity": "பிங் செய்யப்பட்ட செயல்பாடு",
     "appInTargetLanguageStaysInBaseLanguage": "(இந்த அமைப்பு உங்கள் தாய்மொழியிலேயே இருக்கும், எனவே நீங்கள் அதை எப்போதும் கண்டறியலாம்.)",
-    "usernameTakenPleaseChooseAnother": "அந்தப் பயனர் பெயர் ஏற்கனவே எடுக்கப்பட்டது. வேறு ஒன்றைத் தேர்ந்தெடுக்கவும்."
+    "usernameTakenPleaseChooseAnother": "அந்தப் பயனர் பெயர் ஏற்கனவே எடுக்கப்பட்டது. வேறு ஒன்றைத் தேர்ந்தெடுக்கவும்.",
+    "messageLanguageIs": "இந்தச் செய்தியின் மொழி {language} என அமைக்கப்பட்டுள்ளது.",
+    "updateMessageLanguage": "செய்தியின் மொழியை மாற்ற இங்கே கிளிக் செய்யவும்.",
+    "messageLanguage": "செய்தி மொழி",
+    "messageLanguageUpdated": "செய்தி மொழி புதுப்பிக்கப்பட்டது!"
 }
