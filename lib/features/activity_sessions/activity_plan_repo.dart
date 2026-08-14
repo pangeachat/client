@@ -76,8 +76,17 @@ class ActivityPlanRepo
   final Set<String> _hydrating = {};
   final Set<String> _revalidated = {};
 
-  /// Activity ids the backend confirmed removed (404) this app session, so
-  /// [ensure] stops re-fetching a known-missing id on every widget rebuild.
+  /// Activity ids the backend confirmed removed (404) this app session, so the
+  /// repo stops re-fetching a known-missing id.
+  ///
+  /// Enforced in [lookup], the shared read path — NOT only in [ensure], which
+  /// is where this gate first lived. [getPlan] delegates to [lookup] and
+  /// [ensure] calls [getPlan], so gating there is what makes the suppression
+  /// total over entry points; gating only in [ensure] left the start page and
+  /// the summary read re-requesting a gone activity for as long as the surface
+  /// stayed open (Sentry CLIENT-DWH: 753 events / 9 users in 24h, all for a
+  /// single activity id). Keyed by activity id, not by storage key: the
+  /// activity is gone, so no l1 or pinned version of it can resolve either.
   final Set<String> _confirmedRemoved = {};
 
   /// Earliest wall-clock time [ensure] may re-attempt a key.
@@ -115,11 +124,15 @@ class ActivityPlanRepo
   @visibleForTesting
   static DateTime Function() now = DateTime.now;
 
-  /// Drops all backoff state. Exposed for tests and for an explicit
-  /// user-initiated refresh, which must never be suppressed.
+  /// Drops all suppression state. Exposed for tests and for an explicit
+  /// user-initiated refresh, which must never be suppressed — which is why
+  /// [_confirmedRemoved] clears here too. It is the only way back out of the
+  /// removed gate, since nothing else can clear an id the repo refuses to
+  /// re-request.
   @visibleForTesting
   void resetBackoff() {
     _nextAttempt.clear();
+    _confirmedRemoved.clear();
     _rateLimitedUntil = null;
   }
 
@@ -210,6 +223,13 @@ class ActivityPlanRepo
     String? version,
     bool forceRefresh = false,
   }) async {
+    // Answered from memory, before any request is built: this is the same
+    // answer the backend already gave for this id, so re-asking can only cost a
+    // round trip and another 404. Checked ahead of [_request] so the gate does
+    // not depend on the controller being up, mirroring [ensure]'s ordering.
+    if (_confirmedRemoved.contains(activityId)) {
+      return const ActivityPlanLookup(ActivityPlanLookupStatus.removed);
+    }
     final request = _request(activityId, l1, version: version);
     // Not knowable yet, not gone: `failed` is the transient status, so callers
     // keep the activity and retry rather than treating it as removed.
@@ -313,7 +333,10 @@ class ActivityPlanRepo
     bool revalidate = false,
   }) {
     // A confirmed-removed id can't hydrate; re-fetching on every rebuild of
-    // the sync getter would loop 404s.
+    // the sync getter would loop 404s. [lookup] gates on the same set, so this
+    // is not what makes the suppression correct — it is what keeps a hydration
+    // that cannot succeed from spending a `_hydrating` slot and a 60s
+    // `_nextAttempt` park, and what lets the caller see `false`.
     if (_confirmedRemoved.contains(activityId)) return false;
     final request = _request(activityId, l1, version: version);
     // Declines WITHOUT parking the key: the controller lands within a frame or
