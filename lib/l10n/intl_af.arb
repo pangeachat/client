@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-13 15:50:45.702231",
+    "@@last_modified": "2026-08-14 11:32:15.929989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "Kursus onbeskikbaar",
     "courseDeletedDialogDesc": "Hierdie kursus is uitgevee.",
     "pingedActivity": "Gepingde aktiwiteit",
-    "appInTargetLanguageStaysInBaseLanguage": "(Hierdie instelling bly in jou moedertaal sodat jy dit altyd kan vind.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Hierdie instelling bly in jou moedertaal sodat jy dit altyd kan vind.)",
+    "usernameTakenPleaseChooseAnother": "Daardie gebruikersnaam is reeds geneem. Kies asseblief 'n ander een."
 }

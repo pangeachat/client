@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-13 15:50:47.130278",
+    "@@last_modified": "2026-08-14 11:32:19.457785",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10595,5 +10595,6 @@
     "courseNoLongerAvailableTitle": "Hindi available ang kurso",
     "courseDeletedDialogDesc": "Na-delete na ang kursong ito.",
     "pingedActivity": "Na-ping na aktibidad",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ang setting na ito ay mananatili sa iyong sariling wika para lagi mo itong mahanap.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ang setting na ito ay mananatili sa iyong sariling wika para lagi mo itong mahanap.)",
+    "usernameTakenPleaseChooseAnother": "Kinuha na ang username na iyan. Mangyaring pumili ng iba."
 }

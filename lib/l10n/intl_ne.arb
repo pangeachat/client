@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-13 15:50:51.170215",
+    "@@last_modified": "2026-08-14 11:32:25.186737",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "कोर्स उपलब्ध छैन",
     "courseDeletedDialogDesc": "यो कोर्स मेटाइएको छ।",
     "pingedActivity": "पिङ गरिएको गतिविधि",
-    "appInTargetLanguageStaysInBaseLanguage": "(यो सेटिङ तपाईंको मातृभाषामा रहन्छ ताकि तपाईंले यसलाई सधैं फेला पार्न सक्नुहुन्छ।)"
+    "appInTargetLanguageStaysInBaseLanguage": "(यो सेटिङ तपाईंको मातृभाषामा रहन्छ ताकि तपाईंले यसलाई सधैं फेला पार्न सक्नुहुन्छ।)",
+    "usernameTakenPleaseChooseAnother": "त्यो प्रयोगकर्ता नाम पहिले नै लिइएको छ। कृपया अर्को छान्नुहोस्।"
 }

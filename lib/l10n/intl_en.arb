@@ -3409,6 +3409,11 @@
     },
     "pleaseEnterValidEmail": "Please enter a valid email address.",
     "pleaseChooseAUsername": "Please choose a username",
+    "usernameTakenPleaseChooseAnother": "That username is already taken. Please choose another.",
+    "@usernameTakenPleaseChooseAnother": {
+        "type": "text",
+        "description": "Shown in the email signup form when the homeserver reports the chosen username is already registered."
+    },
     "listen": "Listen",
     "trialPeriodExpired": "Your trial period has expired",
     "translations": "translations",

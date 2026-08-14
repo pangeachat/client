@@ -58,8 +58,14 @@ void main() {
   group('UnsubscribedException renders legibly', () {
     test('names itself instead of falling back to Object.toString', () {
       // In a release web build a class with no `toString()` renders as
-      // `Instance of 'minified:xs'` — the exact title on CLIENT-E4H.
-      expect(UnsubscribedException().toString(), 'UnsubscribedException');
+      // `Instance of 'minified:xs'` — the exact title on CLIENT-E4H. The
+      // message body is owned by #8373, so assert the prefix rather than the
+      // exact wording; a removed `toString()` yields `Instance of '...'`,
+      // which still fails this.
+      expect(
+        UnsubscribedException().toString(),
+        startsWith('UnsubscribedException'),
+      );
     });
 
     test('stays legible when interpolated into a message', () {

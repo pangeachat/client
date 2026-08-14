@@ -103,14 +103,16 @@ class Requests {
   }
 }
 
-/// A 401 whose `detail` says the user has no active subscription. Control flow
-/// rather than an error — never reported
+/// An unsubscribed user reached a paid endpoint (401 + `No active
+/// subscription found`). Control flow, not an error — callers render a
+/// paywall, and [ErrorHandler.shouldReport] keeps it out of Sentry entirely
 /// (repos-and-error-handling.instructions.md).
 ///
-/// Carries a `toString()` for the same reason [PangeaHttpException] does: an
-/// exception without one renders as `Instance of '<minified class>'` wherever
-/// it is interpolated or captured (#8375).
+/// The `toString()` is a backstop for the day it escapes that gate anyway:
+/// without it every such event grouped under the useless title `Instance of
+/// 'UnsubscribedException'` (CLIENT-E4T, #8373) — the same failure a real
+/// `toString()` fixed for [PangeaHttpException] and `MissingQuestException`.
 class UnsubscribedException implements Exception {
   @override
-  String toString() => 'UnsubscribedException';
+  String toString() => 'UnsubscribedException: no active subscription (401)';
 }

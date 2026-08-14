@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-13 15:50:47.244627",
+    "@@last_modified": "2026-08-14 11:32:18.864453",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10090,5 +10090,6 @@
     "courseNoLongerAvailableTitle": "Cours non disponible",
     "courseDeletedDialogDesc": "Ce cours a été supprimé.",
     "pingedActivity": "Activité pingée",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ce paramètre reste dans votre langue maternelle afin que vous puissiez toujours le retrouver.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ce paramètre reste dans votre langue maternelle afin que vous puissiez toujours le retrouver.)",
+    "usernameTakenPleaseChooseAnother": "Ce nom d'utilisateur est déjà pris. Veuillez en choisir un autre."
 }

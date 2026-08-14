@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-13 15:50:47.910630",
+    "@@last_modified": "2026-08-14 11:32:19.871086",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2123,5 +2123,6 @@
     "courseNoLongerAvailableTitle": "Darasi baya nan",
     "courseDeletedDialogDesc": "An goge wannan darasin.",
     "pingedActivity": "Ayyukan da aka yiwa ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Wannan saitin yana zama a cikin yarenku na asali don ku iya samunsa koyaushe.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Wannan saitin yana zama a cikin yarenku na asali don ku iya samunsa koyaushe.)",
+    "usernameTakenPleaseChooseAnother": "An riga an yi amfani da wannan sunan mai amfani. Da fatan za a zaɓi wani daban."
 }
