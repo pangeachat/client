@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-14 11:32:28.514779",
+    "@@last_modified": "2026-08-14 12:53:34.269351",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9740,5 +9740,9 @@
     "courseDeletedDialogDesc": "Bu kurs oʻchirib tashlangan.",
     "pingedActivity": "Faoliyat ping qilingan",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu sozlama har doim topishingiz uchun ona tilingizda qoladi.)",
-    "usernameTakenPleaseChooseAnother": "Bu foydalanuvchi nomi band. Iltimos, boshqasini tanlang."
+    "usernameTakenPleaseChooseAnother": "Bu foydalanuvchi nomi band. Iltimos, boshqasini tanlang.",
+    "messageLanguageIs": "Bu xabar {language} tiliga oʻrnatilgan.",
+    "updateMessageLanguage": "Xabar tilini oʻzgartirish uchun shu yerni bosing.",
+    "messageLanguage": "Xabar tili",
+    "messageLanguageUpdated": "Xabar tili yangilandi!"
 }

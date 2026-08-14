@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 11:32:18.178738",
+    "@@last_modified": "2026-08-14 12:53:27.930231",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9824,5 +9824,9 @@
     "courseDeletedDialogDesc": "این دوره حذف شده است.",
     "pingedActivity": "فعالیت پینگ‌شده",
     "appInTargetLanguageStaysInBaseLanguage": "(این تنظیمات به زبان مادری شما باقی می‌ماند تا همیشه بتوانید آن را پیدا کنید.)",
-    "usernameTakenPleaseChooseAnother": "این نام کاربری قبلاً استفاده شده است. لطفاً نام دیگری انتخاب کنید."
+    "usernameTakenPleaseChooseAnother": "این نام کاربری قبلاً استفاده شده است. لطفاً نام دیگری انتخاب کنید.",
+    "messageLanguageIs": "زبان این پیام روی {language} تنظیم شده است.",
+    "updateMessageLanguage": "برای تغییر زبان پیام اینجا کلیک کنید.",
+    "messageLanguage": "زبان پیام",
+    "messageLanguageUpdated": "زبان پیام به‌روز شد!"
 }

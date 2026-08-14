@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-14 11:32:25.186737",
+    "@@last_modified": "2026-08-14 12:53:31.633357",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "यो कोर्स मेटाइएको छ।",
     "pingedActivity": "पिङ गरिएको गतिविधि",
     "appInTargetLanguageStaysInBaseLanguage": "(यो सेटिङ तपाईंको मातृभाषामा रहन्छ ताकि तपाईंले यसलाई सधैं फेला पार्न सक्नुहुन्छ।)",
-    "usernameTakenPleaseChooseAnother": "त्यो प्रयोगकर्ता नाम पहिले नै लिइएको छ। कृपया अर्को छान्नुहोस्।"
+    "usernameTakenPleaseChooseAnother": "त्यो प्रयोगकर्ता नाम पहिले नै लिइएको छ। कृपया अर्को छान्नुहोस्।",
+    "messageLanguageIs": "यो सन्देश {language} मा सेट गरिएको छ।",
+    "updateMessageLanguage": "सन्देशको भाषा परिवर्तन गर्न यहाँ क्लिक गर्नुहोस्।",
+    "messageLanguage": "सन्देश भाषा",
+    "messageLanguageUpdated": "सन्देश भाषा अद्यावधिक गरियो!"
 }

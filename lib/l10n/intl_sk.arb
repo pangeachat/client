@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-14 11:32:26.544204",
+    "@@last_modified": "2026-08-14 12:53:33.092413",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10681,5 +10681,9 @@
     "courseDeletedDialogDesc": "Tento kurz bol vymazaný.",
     "pingedActivity": "Aktivita s upozornením",
     "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavenie zostane vo vašom rodnom jazyku, aby ste ho vždy našli.)",
-    "usernameTakenPleaseChooseAnother": "Toto používateľské meno je už obsadené. Vyberte si iné."
+    "usernameTakenPleaseChooseAnother": "Toto používateľské meno je už obsadené. Vyberte si iné.",
+    "messageLanguageIs": "Tento text je nastavený na jazyk {language}.",
+    "updateMessageLanguage": "Kliknutím sem zmeníte jazyk správy.",
+    "messageLanguage": "Jazyk správy",
+    "messageLanguageUpdated": "Jazyk správy bol aktualizovaný!"
 }

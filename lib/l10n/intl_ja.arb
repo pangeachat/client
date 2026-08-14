@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-14 11:32:21.401718",
+    "@@last_modified": "2026-08-14 12:53:29.662589",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10505,5 +10505,9 @@
     "courseDeletedDialogDesc": "このコースは削除されました。",
     "pingedActivity": "アクティビティをピン留めしました",
     "appInTargetLanguageStaysInBaseLanguage": "（この設定は、いつでも見つけられるように母国語のままになります。）",
-    "usernameTakenPleaseChooseAnother": "そのユーザー名はすでに使用されています。別のユーザー名を選択してください。"
+    "usernameTakenPleaseChooseAnother": "そのユーザー名はすでに使用されています。別のユーザー名を選択してください。",
+    "messageLanguageIs": "このメッセージは{language}に設定されています。",
+    "updateMessageLanguage": "メッセージの言語を変更するには、ここをクリックしてください。",
+    "messageLanguage": "メッセージの言語",
+    "messageLanguageUpdated": "メッセージの言語が更新されました！"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-14 11:32:23.417359",
+    "@@last_modified": "2026-08-14 12:53:30.814468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Бул курс өчүрүлдү.",
     "pingedActivity": "Пинделген аракет",
     "appInTargetLanguageStaysInBaseLanguage": "(Бул жөндөө ар дайым таба алышыңыз үчүн эне тилиңизде калат.)",
-    "usernameTakenPleaseChooseAnother": "Бул колдонуучу аты мурунтан эле колдонулуп жатат. Башкасын тандаңыз."
+    "usernameTakenPleaseChooseAnother": "Бул колдонуучу аты мурунтан эле колдонулуп жатат. Башкасын тандаңыз.",
+    "messageLanguageIs": "Бул билдирүү {language} тилинде.",
+    "updateMessageLanguage": "Билдирүүнүн тилин өзгөртүү үчүн бул жерди басыңыз.",
+    "messageLanguage": "Билдирүү тили",
+    "messageLanguageUpdated": "Билдирүүнүн тили жаңыртылды!"
 }

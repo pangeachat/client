@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 11:32:21.348734",
+    "@@last_modified": "2026-08-14 12:53:29.427620",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9809,5 +9809,9 @@
     "courseDeletedDialogDesc": "Questo corso è stato eliminato.",
     "pingedActivity": "Attività con ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Questa impostazione rimane nella tua lingua madre in modo che tu possa sempre trovarla.)",
-    "usernameTakenPleaseChooseAnother": "Questo nome utente è già in uso. Scegline un altro."
+    "usernameTakenPleaseChooseAnother": "Questo nome utente è già in uso. Scegline un altro.",
+    "messageLanguageIs": "Questo messaggio è impostato su {language}.",
+    "updateMessageLanguage": "Clicca qui per cambiare la lingua del messaggio.",
+    "messageLanguage": "Lingua del messaggio",
+    "messageLanguageUpdated": "Lingua del messaggio aggiornata!"
 }

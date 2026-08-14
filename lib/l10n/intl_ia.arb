@@ -1367,7 +1367,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-14 11:32:21.749122",
+    "@@last_modified": "2026-08-14 12:53:29.131413",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10672,5 +10672,9 @@
     "courseDeletedDialogDesc": "Iste curso ha essite delite.",
     "pingedActivity": "Activitate pingite",
     "appInTargetLanguageStaysInBaseLanguage": "(Iste parametro remane in tu lingua native a fin que tu pote semper trovar lo.)",
-    "usernameTakenPleaseChooseAnother": "Iste nomine de usator es jam prendite. Per favor selige un altere."
+    "usernameTakenPleaseChooseAnother": "Iste nomine de usator es jam prendite. Per favor selige un altere.",
+    "messageLanguageIs": "Iste message es configurate a {language}.",
+    "updateMessageLanguage": "Clicca hic pro cambiar le lingua del message.",
+    "messageLanguage": "Lingua del message",
+    "messageLanguageUpdated": "Lingua del message actualisate!"
 }

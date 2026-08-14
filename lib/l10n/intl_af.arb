@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-14 11:32:15.929989",
+    "@@last_modified": "2026-08-14 12:53:26.508821",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "Hierdie kursus is uitgevee.",
     "pingedActivity": "Gepingde aktiwiteit",
     "appInTargetLanguageStaysInBaseLanguage": "(Hierdie instelling bly in jou moedertaal sodat jy dit altyd kan vind.)",
-    "usernameTakenPleaseChooseAnother": "Daardie gebruikersnaam is reeds geneem. Kies asseblief 'n ander een."
+    "usernameTakenPleaseChooseAnother": "Daardie gebruikersnaam is reeds geneem. Kies asseblief 'n ander een.",
+    "messageLanguageIs": "Hierdie boodskap is gestel op {language}.",
+    "updateMessageLanguage": "Klik hier om die boodskap se taal te verander.",
+    "messageLanguage": "Boodskaptaal",
+    "messageLanguageUpdated": "Boodskaptaal opgedateer!"
 }

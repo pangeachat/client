@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 11:32:26.446849",
+    "@@last_modified": "2026-08-14 12:53:32.566813",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10468,5 +10468,9 @@
     "courseDeletedDialogDesc": "Acest curs a fost șters.",
     "pingedActivity": "Activitate pinguită",
     "appInTargetLanguageStaysInBaseLanguage": "(Această setare rămâne în limba dvs. maternă, astfel încât să o puteți găsi oricând.)",
-    "usernameTakenPleaseChooseAnother": "Acest nume de utilizator este deja folosit. Te rugăm să alegi altul."
+    "usernameTakenPleaseChooseAnother": "Acest nume de utilizator este deja folosit. Te rugăm să alegi altul.",
+    "messageLanguageIs": "Acest mesaj este setat la {language}.",
+    "updateMessageLanguage": "Apăsați aici pentru a schimba limba mesajului.",
+    "messageLanguage": "Limba mesajului",
+    "messageLanguageUpdated": "Limba mesajului a fost actualizată!"
 }

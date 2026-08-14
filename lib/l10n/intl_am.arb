@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-14 11:32:18.701392",
+    "@@last_modified": "2026-08-14 12:53:27.351184",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2124,5 +2124,9 @@
     "courseDeletedDialogDesc": "ይህ ኮርስ ተሰርዟል።",
     "pingedActivity": "የተጠቆመ እንቅስቃሴ",
     "appInTargetLanguageStaysInBaseLanguage": "(ይህ ቅንብር ሁልጊዜ እንዲያገኙት በአፍ መፍቻ ቋንቋዎ ይቆያል።)",
-    "usernameTakenPleaseChooseAnother": "ይህ የተጠቃሚ ስም አስቀድሞ ተይዟል። እባክዎ ሌላ ይምረጡ።"
+    "usernameTakenPleaseChooseAnother": "ይህ የተጠቃሚ ስም አስቀድሞ ተይዟል። እባክዎ ሌላ ይምረጡ።",
+    "messageLanguageIs": "ይህ መልዕክት ወደ {language} ተቀናብሯል።",
+    "updateMessageLanguage": "የመልዕክቱን ቋንቋ ለመቀየር እዚህ ይጫኑ።",
+    "messageLanguage": "የመልዕክት ቋንቋ",
+    "messageLanguageUpdated": "የመልዕክት ቋንቋ ተዘምኗል!"
 }
