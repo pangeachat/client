@@ -47,6 +47,10 @@ class ChatDetails extends StatefulWidget {
   final Widget? embeddedCloseButton;
   // #Pangea
   final SpaceSettingsTabs? activeTab;
+
+  /// Whether [activeTab]'s full subpage ("See all") is pushed over the
+  /// course card, from the course token's `<section>/all` param.
+  final bool expandedSection;
   // Pangea#
 
   const ChatDetails({
@@ -55,6 +59,7 @@ class ChatDetails extends StatefulWidget {
     this.embeddedCloseButton,
     // #Pangea
     this.activeTab,
+    this.expandedSection = false,
     // Pangea#
   });
 

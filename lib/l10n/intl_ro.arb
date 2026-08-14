@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:51.784015",
+    "@@last_modified": "2026-08-14 12:27:48.683731",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10467,5 +10467,8 @@
     "courseNoLongerAvailableTitle": "Curs indisponibil",
     "courseDeletedDialogDesc": "Acest curs a fost șters.",
     "pingedActivity": "Activitate pinguită",
-    "appInTargetLanguageStaysInBaseLanguage": "(Această setare rămâne în limba dvs. maternă, astfel încât să o puteți găsi oricând.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Această setare rămâne în limba dvs. maternă, astfel încât să o puteți găsi oricând.)",
+    "allParticipants": "Toți participanții",
+    "seeFullCoursePlan": "Vezi planul complet al cursului",
+    "upNext": "Urmează"
 }

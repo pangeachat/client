@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-13 15:50:51.831321",
+    "@@last_modified": "2026-08-14 12:27:48.725276",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10707,5 +10707,8 @@
     "courseNoLongerAvailableTitle": "Курс недоступен",
     "courseDeletedDialogDesc": "Этот курс был удален.",
     "pingedActivity": "Активность с упоминанием",
-    "appInTargetLanguageStaysInBaseLanguage": "(Эта настройка останется на вашем родном языке, чтобы вы всегда могли ее найти.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Эта настройка останется на вашем родном языке, чтобы вы всегда могли ее найти.)",
+    "allParticipants": "Все участники",
+    "seeFullCoursePlan": "Посмотреть полный план курса",
+    "upNext": "Далее"
 }

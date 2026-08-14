@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-13 15:50:52.148791",
+    "@@last_modified": "2026-08-14 12:27:49.338933",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "ڪورس موجود ناهي",
     "courseDeletedDialogDesc": "هي ڪورس ختم ڪيو ويو آهي.",
     "pingedActivity": "پنگ ٿيل سرگرمي",
-    "appInTargetLanguageStaysInBaseLanguage": "(هي سيٽنگ توهان جي مادري زبان ۾ رهي ٿي ته جيئن توهان ان کي هميشه ڳولي سگهو.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(هي سيٽنگ توهان جي مادري زبان ۾ رهي ٿي ته جيئن توهان ان کي هميشه ڳولي سگهو.)",
+    "allParticipants": "سڀئي شرڪت ڪندڙ",
+    "seeFullCoursePlan": "مڪمل ڪورس پلان ڏسو",
+    "upNext": "اڳيان"
 }

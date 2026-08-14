@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-13 15:50:47.616621",
+    "@@last_modified": "2026-08-14 12:27:44.924974",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "Cùrsa neo-làthaireach",
     "courseDeletedDialogDesc": "Chaidh an cùrsa seo a sguabadh às.",
     "pingedActivity": "Gnìomhachd air a phingigeadh",
-    "appInTargetLanguageStaysInBaseLanguage": "(Fanaidh an roghainn seo sa chànan dhùthchasach agad gus am bi e comasach dhut a lorg an-còmhnaidh.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Fanaidh an roghainn seo sa chànan dhùthchasach agad gus am bi e comasach dhut a lorg an-còmhnaidh.)",
+    "allParticipants": "A h-uile com-pàirtiche",
+    "seeFullCoursePlan": "Faic làn phlana a’ chùrsa",
+    "upNext": "An ath rud"
 }

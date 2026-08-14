@@ -73,6 +73,10 @@ class QuestObjectivesLoader {
   /// the star display at all.
   bool get hasResolvedProgress => _scopedQuest != null;
 
+  /// The "Up next" Mission — the shared resolver's anchor — or null until the
+  /// resolution lands. Callers fall back to the first Mission in the outline.
+  String? get anchorMissionId => _scopedQuest?.anchorMissionId;
+
   /// This course's rollup for [missionId]. Null means "not resolved", never
   /// "zero" — the caller renders no star display rather than a false 0.
   MissionProgress? missionProgress(String missionId) =>

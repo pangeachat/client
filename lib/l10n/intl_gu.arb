@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-13 15:50:47.573154",
+    "@@last_modified": "2026-08-14 12:27:45.055560",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "કોર્સ અનુપલબ્ધ છે",
     "courseDeletedDialogDesc": "આ કોર્સ ડિલીટ કરવામાં આવ્યો છે.",
     "pingedActivity": "પિંગ કરેલી પ્રવૃત્તિ",
-    "appInTargetLanguageStaysInBaseLanguage": "(આ સેટિંગ તમારી મૂળ ભાષામાં જ રહેશે જેથી તમે તેને હંમેશા શોધી શકો.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(આ સેટિંગ તમારી મૂળ ભાષામાં જ રહેશે જેથી તમે તેને હંમેશા શોધી શકો.)",
+    "allParticipants": "બધા સહભાગીઓ",
+    "seeFullCoursePlan": "સંપૂર્ણ કોર્સ પ્લાન જુઓ",
+    "upNext": "આગળ"
 }

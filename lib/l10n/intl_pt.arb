@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:51.674886",
+    "@@last_modified": "2026-08-14 12:27:48.809869",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10679,5 +10679,8 @@
     "courseNoLongerAvailableTitle": "Curso indisponível",
     "courseDeletedDialogDesc": "Este curso foi excluído.",
     "pingedActivity": "Atividade com ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver plano de curso completo",
+    "upNext": "A seguir"
 }

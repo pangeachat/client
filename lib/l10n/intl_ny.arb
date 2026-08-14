@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-13 15:50:51.354800",
+    "@@last_modified": "2026-08-14 12:27:49.042969",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "Maphunziro kulibe",
     "courseDeletedDialogDesc": "Maphunzirowa achotsedwa.",
     "pingedActivity": "Zochitika zomwe zatumizidwa",
-    "appInTargetLanguageStaysInBaseLanguage": "(Kukhazikitsa kumeneku kumakhala m'chilankhulo chanu choyambirira kuti muzitha kuchipeza nthawi zonse.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Kukhazikitsa kumeneku kumakhala m'chilankhulo chanu choyambirira kuti muzitha kuchipeza nthawi zonse.)",
+    "allParticipants": "Ophunzira onse",
+    "seeFullCoursePlan": "Onani dongosolo lonse la maphunziro",
+    "upNext": "Chotsatira"
 }

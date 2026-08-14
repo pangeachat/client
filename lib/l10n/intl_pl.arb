@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-13 15:50:51.322601",
+    "@@last_modified": "2026-08-14 12:27:48.519108",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9820,5 +9820,8 @@
     "courseNoLongerAvailableTitle": "Kurs niedostępny",
     "courseDeletedDialogDesc": "Ten kurs został usunięty.",
     "pingedActivity": "Aktywność z powiadomieniem",
-    "appInTargetLanguageStaysInBaseLanguage": "(To ustawienie pozostaje w Twoim języku ojczystym, aby zawsze można je było znaleźć.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(To ustawienie pozostaje w Twoim języku ojczystym, aby zawsze można je było znaleźć.)",
+    "allParticipants": "Wszyscy uczestnicy",
+    "seeFullCoursePlan": "Zobacz pełny plan kursu",
+    "upNext": "Następne"
 }

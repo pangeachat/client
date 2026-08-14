@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-13 15:50:46.681580",
+    "@@last_modified": "2026-08-14 12:27:43.661964",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "Cwrs ddim ar gael",
     "courseDeletedDialogDesc": "Mae'r cwrs hwn wedi'i ddileu.",
     "pingedActivity": "Gweithgaredd a biniwyd",
-    "appInTargetLanguageStaysInBaseLanguage": "(Mae'r gosodiad hwn yn aros yn eich iaith frodorol fel y gallwch chi bob amser ddod o hyd iddo.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Mae'r gosodiad hwn yn aros yn eich iaith frodorol fel y gallwch chi bob amser ddod o hyd iddo.)",
+    "allParticipants": "Pob cyfranogwr",
+    "seeFullCoursePlan": "Gweler cynllun cwrs llawn",
+    "upNext": "Nesaf"
 }

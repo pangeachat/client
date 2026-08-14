@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-13 15:50:54.212616",
+    "@@last_modified": "2026-08-14 12:27:50.713964",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "دەرسلىك تەمىنلەنمەيدۇ",
     "courseDeletedDialogDesc": "بۇ دەرسلىك ئۆچۈرۈلدى.",
     "pingedActivity": "پىڭلانغان پائالىيەت",
-    "appInTargetLanguageStaysInBaseLanguage": "(بۇ تەڭشەك ئانا تىلىڭىزدا تۇرىدۇ، شۇڭا سىز ئۇنى ھەمىشە تاپالايسىز.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(بۇ تەڭشەك ئانا تىلىڭىزدا تۇرىدۇ، شۇڭا سىز ئۇنى ھەمىشە تاپالايسىز.)",
+    "allParticipants": "بارلىق ئىشتىراكچىلار",
+    "seeFullCoursePlan": "تولۇق دەرس پىلانىنى كۆرۈڭ",
+    "upNext": "كېيىنكىسى"
 }

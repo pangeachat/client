@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-13 15:50:53.538748",
+    "@@last_modified": "2026-08-14 12:27:50.153151",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10685,5 +10685,8 @@
     "courseNoLongerAvailableTitle": "కోర్సు అందుబాటులో లేదు",
     "courseDeletedDialogDesc": "ఈ కోర్సు తొలగించబడింది.",
     "pingedActivity": "పింగ్ చేయబడిన కార్యాచరణ",
-    "appInTargetLanguageStaysInBaseLanguage": "(ఈ సెట్టింగ్ మీ స్థానిక భాషలోనే ఉంటుంది, కాబట్టి మీరు దీన్ని ఎల్లప్పుడూ కనుగొనగలరు.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(ఈ సెట్టింగ్ మీ స్థానిక భాషలోనే ఉంటుంది, కాబట్టి మీరు దీన్ని ఎల్లప్పుడూ కనుగొనగలరు.)",
+    "allParticipants": "అందరూ పాల్గొనేవారు",
+    "seeFullCoursePlan": "పూర్తి కోర్సు ప్లాన్ చూడండి",
+    "upNext": "తరువాత"
 }

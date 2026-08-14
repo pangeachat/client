@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-13 15:50:48.096834",
+    "@@last_modified": "2026-08-14 12:27:46.644937",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9838,5 +9838,8 @@
     "courseNoLongerAvailableTitle": "Tanfolyam nem elérhető",
     "courseDeletedDialogDesc": "Ez a tanfolyam törölve lett.",
     "pingedActivity": "Pingelt tevékenység",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ez a beállítás az Ön anyanyelvén marad, hogy mindig megtalálhassa.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ez a beállítás az Ön anyanyelvén marad, hogy mindig megtalálhassa.)",
+    "allParticipants": "Összes résztvevő",
+    "seeFullCoursePlan": "Teljes tanterv megtekintése",
+    "upNext": "Következő"
 }

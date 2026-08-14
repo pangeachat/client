@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-13 15:50:48.765793",
+    "@@last_modified": "2026-08-14 12:27:46.129611",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10504,5 +10504,8 @@
     "courseNoLongerAvailableTitle": "コースを利用できません",
     "courseDeletedDialogDesc": "このコースは削除されました。",
     "pingedActivity": "アクティビティをピン留めしました",
-    "appInTargetLanguageStaysInBaseLanguage": "（この設定は、いつでも見つけられるように母国語のままになります。）"
+    "appInTargetLanguageStaysInBaseLanguage": "（この設定は、いつでも見つけられるように母国語のままになります。）",
+    "allParticipants": "すべての参加者",
+    "seeFullCoursePlan": "コースプラン全体を見る",
+    "upNext": "次"
 }

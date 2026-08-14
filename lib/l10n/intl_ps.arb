@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-13 15:50:51.501172",
+    "@@last_modified": "2026-08-14 12:27:48.542216",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "کورس شتون نلري",
     "courseDeletedDialogDesc": "دا کورس حذف شوی دی.",
     "pingedActivity": "پینګ شوې فعالیت",
-    "appInTargetLanguageStaysInBaseLanguage": "(دا ترتیب ستاسو په مورنۍ ژبه کې پاتې کیږي ترڅو تاسو تل دا ومومئ.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(دا ترتیب ستاسو په مورنۍ ژبه کې پاتې کیږي ترڅو تاسو تل دا ومومئ.)",
+    "allParticipants": "ټول ګډونوال",
+    "seeFullCoursePlan": "د کورس بشپړ پلان وګورئ",
+    "upNext": "بل"
 }

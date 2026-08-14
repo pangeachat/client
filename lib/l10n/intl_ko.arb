@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:49.296619",
+    "@@last_modified": "2026-08-14 12:27:46.634317",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9928,5 +9928,8 @@
     "courseNoLongerAvailableTitle": "코스를 이용할 수 없음",
     "courseDeletedDialogDesc": "이 코스는 삭제되었습니다.",
     "pingedActivity": "핑 활동",
-    "appInTargetLanguageStaysInBaseLanguage": "(이 설정은 항상 찾을 수 있도록 모국어로 유지됩니다.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(이 설정은 항상 찾을 수 있도록 모국어로 유지됩니다.)",
+    "allParticipants": "모든 참여자",
+    "seeFullCoursePlan": "전체 학습 계획 보기",
+    "upNext": "다음"
 }

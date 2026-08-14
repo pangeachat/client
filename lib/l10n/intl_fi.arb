@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-13 15:50:47.062154",
+    "@@last_modified": "2026-08-14 12:27:44.419419",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9772,5 +9772,8 @@
     "courseNoLongerAvailableTitle": "Kurssi ei saatavilla",
     "courseDeletedDialogDesc": "Tämä kurssi on poistettu.",
     "pingedActivity": "Pingattu toiminta",
-    "appInTargetLanguageStaysInBaseLanguage": "(Tämä asetus pysyy omalla kielelläsi, jotta löydät sen aina.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Tämä asetus pysyy omalla kielelläsi, jotta löydät sen aina.)",
+    "allParticipants": "Kaikki osallistujat",
+    "seeFullCoursePlan": "Katso koko kurssisuunnitelma",
+    "upNext": "Seuraavaksi"
 }

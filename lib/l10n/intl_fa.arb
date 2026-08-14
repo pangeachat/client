@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:47.103902",
+    "@@last_modified": "2026-08-14 12:27:44.294072",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9823,5 +9823,8 @@
     "courseNoLongerAvailableTitle": "دوره در دسترس نیست",
     "courseDeletedDialogDesc": "این دوره حذف شده است.",
     "pingedActivity": "فعالیت پینگ‌شده",
-    "appInTargetLanguageStaysInBaseLanguage": "(این تنظیمات به زبان مادری شما باقی می‌ماند تا همیشه بتوانید آن را پیدا کنید.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(این تنظیمات به زبان مادری شما باقی می‌ماند تا همیشه بتوانید آن را پیدا کنید.)",
+    "allParticipants": "همه شرکت‌کنندگان",
+    "seeFullCoursePlan": "مشاهده برنامه کامل دوره",
+    "upNext": "بعدی"
 }

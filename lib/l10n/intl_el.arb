@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-13 15:50:46.541857",
+    "@@last_modified": "2026-08-14 12:27:44.007212",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10610,5 +10610,8 @@
     "courseNoLongerAvailableTitle": "Το μάθημα δεν είναι διαθέσιμο",
     "courseDeletedDialogDesc": "Αυτό το μάθημα έχει διαγραφεί.",
     "pingedActivity": "Δραστηριότητα με ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Αυτή η ρύθμιση παραμένει στη μητρική σας γλώσσα, ώστε να μπορείτε πάντα να τη βρίσκετε.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Αυτή η ρύθμιση παραμένει στη μητρική σας γλώσσα, ώστε να μπορείτε πάντα να τη βρίσκετε.)",
+    "allParticipants": "Όλοι οι συμμετέχοντες",
+    "seeFullCoursePlan": "Δείτε το πλήρες πρόγραμμα μαθημάτων",
+    "upNext": "Στη συνέχεια"
 }

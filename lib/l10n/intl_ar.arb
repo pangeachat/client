@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-13 15:50:45.705952",
+    "@@last_modified": "2026-08-14 12:27:42.789717",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10041,5 +10041,8 @@
     "courseNoLongerAvailableTitle": "الدورة غير متاحة",
     "courseDeletedDialogDesc": "تم حذف هذه الدورة.",
     "pingedActivity": "نشاط تم الإشارة إليه",
-    "appInTargetLanguageStaysInBaseLanguage": "(يبقى هذا الإعداد بلغتك الأم حتى تتمكن دائمًا من العثور عليه.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(يبقى هذا الإعداد بلغتك الأم حتى تتمكن دائمًا من العثور عليه.)",
+    "allParticipants": "جميع المشاركين",
+    "seeFullCoursePlan": "اطلع على الخطة الدراسية كاملة",
+    "upNext": "التالي"
 }

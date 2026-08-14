@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:52.833011",
+    "@@last_modified": "2026-08-14 12:27:49.857724",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10253,5 +10253,8 @@
     "courseNoLongerAvailableTitle": "Kursen är inte tillgänglig",
     "courseDeletedDialogDesc": "Den här kursen har tagits bort.",
     "pingedActivity": "Pingad aktivitet",
-    "appInTargetLanguageStaysInBaseLanguage": "(Denna inställning förblir på ditt modersmål så att du alltid kan hitta den.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Denna inställning förblir på ditt modersmål så att du alltid kan hitta den.)",
+    "allParticipants": "Alla deltagare",
+    "seeFullCoursePlan": "Se hela kursplanen",
+    "upNext": "Nästa"
 }

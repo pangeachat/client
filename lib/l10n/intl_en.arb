@@ -109,6 +109,21 @@
         "type": "String",
         "placeholders": {}
     },
+    "allParticipants": "All participants",
+    "@allParticipants": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "seeFullCoursePlan": "See full course plan",
+    "@seeFullCoursePlan": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "upNext": "Up next",
+    "@upNext": {
+        "type": "String",
+        "placeholders": {}
+    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",

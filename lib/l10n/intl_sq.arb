@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-13 15:50:52.613645",
+    "@@last_modified": "2026-08-14 12:27:50.147056",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "Kurs i padisponueshëm",
     "courseDeletedDialogDesc": "Ky kurs është fshirë.",
     "pingedActivity": "Aktivitet i ping-uar",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ky cilësim mbetet në gjuhën tënde amtare, që ta gjesh gjithmonë.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ky cilësim mbetet në gjuhën tënde amtare, që ta gjesh gjithmonë.)",
+    "allParticipants": "Të gjithë pjesëmarrësit",
+    "seeFullCoursePlan": "Shiko planin e plotë të kursit",
+    "upNext": "Në vazhdim"
 }

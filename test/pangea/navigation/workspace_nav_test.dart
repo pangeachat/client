@@ -359,6 +359,39 @@ void main() {
       );
     });
 
+    test('a section subpage rides the param as <section>/all (#8357)', () {
+      final loc = WorkspaceNav.openCourseTab(
+        u('/?c=!s'),
+        tab: SpaceSettingsTabs.chat,
+        expanded: true,
+      );
+      expect(u(loc).queryParameters['left'], 'course:chat/all');
+
+      final param =
+          parseOpenPanels(u(loc)).left.single.param as CourseDetailsTokenParam;
+      expect(param.activeTab, SpaceSettingsTabs.chat);
+      expect(param.expanded, isTrue);
+
+      // Back from the subpage: the plain section param, not expanded.
+      final backParam =
+          parseOpenPanels(
+                u(
+                  WorkspaceNav.openCourseTab(
+                    u(loc),
+                    tab: SpaceSettingsTabs.chat,
+                  ),
+                ),
+              ).left.single.param
+              as CourseDetailsTokenParam;
+      expect(backParam.expanded, isFalse);
+    });
+
+    test('an unknown segment after the section parses as not expanded', () {
+      final param = CourseDetailsTokenParam.parse('chat/bogus');
+      expect(param.activeTab, SpaceSettingsTabs.chat);
+      expect(param.expanded, isFalse);
+    });
+
     test('keeps a live room beside the course (a course can scope a room)', () {
       // A course-scoped room: the `?m=course:` filter is set, the room is live,
       // and opening the course card keeps the room beside it.

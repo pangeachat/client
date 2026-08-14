@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-13 15:50:47.115317",
+    "@@last_modified": "2026-08-14 12:27:44.278773",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9732,5 +9732,8 @@
     "courseNoLongerAvailableTitle": "Kursus pole saadaval",
     "courseDeletedDialogDesc": "See kursus on kustutatud.",
     "pingedActivity": "Märgitud tegevus",
-    "appInTargetLanguageStaysInBaseLanguage": "(See säte jääb teie emakeelde, et saaksite selle alati üles leida.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(See säte jääb teie emakeelde, et saaksite selle alati üles leida.)",
+    "allParticipants": "Kõik osalejad",
+    "seeFullCoursePlan": "Vaata kogu kursuse plaani",
+    "upNext": "Järgmisena"
 }

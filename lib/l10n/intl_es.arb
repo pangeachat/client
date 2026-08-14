@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-13 15:50:46.918223",
+    "@@last_modified": "2026-08-14 12:27:44.092806",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7938,5 +7938,8 @@
     "courseNoLongerAvailableTitle": "Curso no disponible",
     "courseDeletedDialogDesc": "Este curso ha sido eliminado.",
     "pingedActivity": "Actividad mencionada",
-    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuración permanece en tu idioma nativo para que siempre puedas encontrarla.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuración permanece en tu idioma nativo para que siempre puedas encontrarla.)",
+    "allParticipants": "Todos los participantes",
+    "seeFullCoursePlan": "Ver plan de curso completo",
+    "upNext": "A continuación"
 }

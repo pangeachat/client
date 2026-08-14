@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-13 15:50:52.137776",
+    "@@last_modified": "2026-08-14 12:27:49.402925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "පාඨමාලාව නොමැත",
     "courseDeletedDialogDesc": "මෙම පාඨමාලාව මකා දමා ඇත.",
     "pingedActivity": "පිං කළ ක්‍රියාකාරකම්",
-    "appInTargetLanguageStaysInBaseLanguage": "(මෙම සැකසුම ඔබේ මව් භාෂාවෙන් පවතින්නේ ඔබට එය සැමවිටම සොයා ගැනීමට හැකි වන පරිදිය.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(මෙම සැකසුම ඔබේ මව් භාෂාවෙන් පවතින්නේ ඔබට එය සැමවිටම සොයා ගැනීමට හැකි වන පරිදිය.)",
+    "allParticipants": "සියලුම සහභාගිවන්නන්",
+    "seeFullCoursePlan": "සම්පූර්ණ පාඨමාලා සැලැස්ම බලන්න",
+    "upNext": "ඊළඟට"
 }

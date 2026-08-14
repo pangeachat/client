@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-13 15:50:46.539693",
+    "@@last_modified": "2026-08-14 12:27:43.664632",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "Corsu micca dispunibule",
     "courseDeletedDialogDesc": "Stu corsu hè statu sguassatu.",
     "pingedActivity": "Attività pingata",
-    "appInTargetLanguageStaysInBaseLanguage": "(Stu paràmetru ferma in a vostra lingua materna per chì pudete sempre truvallu.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Stu paràmetru ferma in a vostra lingua materna per chì pudete sempre truvallu.)",
+    "allParticipants": "Tutti i participanti",
+    "seeFullCoursePlan": "Vede u pianu di u corsu cumpletu",
+    "upNext": "Dopu"
 }

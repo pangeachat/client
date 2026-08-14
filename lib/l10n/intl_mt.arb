@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-13 15:50:50.563172",
+    "@@last_modified": "2026-08-14 12:27:47.917891",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2123,5 +2123,8 @@
     "courseNoLongerAvailableTitle": "Kors mhux disponibbli",
     "courseDeletedDialogDesc": "Dan il-kors tħassar.",
     "pingedActivity": "Attività pingjata",
-    "appInTargetLanguageStaysInBaseLanguage": "(Din l-issettjar tibqa' fil-lingwa nattiva tiegħek biex dejjem tkun tista' ssibha.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Din l-issettjar tibqa' fil-lingwa nattiva tiegħek biex dejjem tkun tista' ssibha.)",
+    "allParticipants": "Il-parteċipanti kollha",
+    "seeFullCoursePlan": "Ara l-pjan sħiħ tal-kors",
+    "upNext": "Li jmiss"
 }
