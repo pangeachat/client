@@ -296,6 +296,11 @@ void main() {
       // voice for the language. `allowChoreoPlay: false` then forces the device
       // route, which is the only one reachable without a network.
       MatrixState.pangeaController = _PlayablePangeaController();
+      // What the ENGINE was asked to do. Without it this test would still pass
+      // for an implementation that reported a start and returned success
+      // without speaking — which counts audio nobody heard, the same defect in
+      // the opposite direction.
+      final spoken = <String>[];
       TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
           .setMockMethodCallHandler(ttsChannel, (call) async {
             if (call.method == 'getVoices') {
@@ -305,6 +310,7 @@ void main() {
                 {'name': 'Paulina', 'locale': 'es-ES', 'quality': 'enhanced'},
               ];
             }
+            if (call.method == 'speak') spoken.add('${call.arguments}');
             return 1;
           });
 
@@ -328,6 +334,10 @@ void main() {
         allowChoreoPlay: false,
         listening: DosageListeningMeasurement.measured(probe),
       );
+
+      // The engine really was asked to speak, once, with this text. Everything
+      // below only means "listening" if this holds.
+      expect(spoken, ['hola'], reason: 'the device engine spoke the text once');
 
       expect(probe.starts, 1, reason: 'the device route was asked to play');
       expect(probe.aborts, 0, reason: 'and it did play');
