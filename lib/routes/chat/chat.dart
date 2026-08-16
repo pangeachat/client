@@ -1913,6 +1913,41 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
+    // Best-effort dosage envelope for the voice send — the ONE client call site
+    // speaking needs (#104). NO DURATION CROSSES THE WIRE: the server reads
+    // `info.duration` out of the `m.audio` event it already fetches by id to
+    // verify the use's claimed room, and today discards. What the server cannot
+    // derive is that the message EXISTS: nothing enumerates a room's timeline,
+    // so it learns of a voice message only through a client-originated row.
+    //
+    // The other such row is a `pvm` construct use, and that has two holes this
+    // envelope is immune to — a message whose tokens are all unsavable produces
+    // none, and a streamed send's `pvm` uses arrive only via a background
+    // enrichment pass that can be interrupted. Emitted here, immediately after
+    // the send resolves and BEFORE either analytics branch, so neither hole can
+    // take the envelope with it.
+    //
+    // Fire-and-forget, unlike listening: a lost envelope is recoverable because
+    // the `m.audio` event is still in Matrix for the server to re-derive from.
+    DosageMessageSignals.emitForSentMessage(
+      roomId: capturedRoomId,
+      userId: capturedClientUserId,
+      deviceId: capturedRoom.client.deviceID,
+      accessToken: capturedRoom.client.accessToken,
+      msgEventId: eventId,
+      // Counts only; `body` is never transmitted, only its length. A voice
+      // message with no usable transcript still counts as a message — the
+      // envelope's job is to say one exists.
+      body: stt?.hasUsableTranscript == true ? stt!.transcript.text : "",
+      // A decoupled or streamed send embeds `stt_tokens: []` and tokenizes in
+      // the background, so an explicit 0 would be a claim rather than a count.
+      // Pass null there and let the whitespace fallback approximate it.
+      tokenCount: stt?.hasUsableTokens == true
+          ? stt!.transcript.sttTokens.length
+          : null,
+      langCode: stt?.hasUsableTranscript == true ? stt!.langCode : null,
+    );
+
     // The voice note is on the wire, so the learner is in a spoken exchange:
     // read the bot's next reply aloud. Set only after the send succeeds — a
     // failed upload must not leave the mode stuck on. Mirrors the rule the bot

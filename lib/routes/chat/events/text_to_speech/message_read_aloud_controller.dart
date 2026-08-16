@@ -5,6 +5,9 @@ import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
+import 'package:fluffychat/features/dosage/dosage_playback_meter.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/read_aloud_queue.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -250,13 +253,47 @@ class MessageReadAloudController {
   /// L2 (Safari, desktop Chrome without a Google voice, Android without a
   /// high-quality voice). Both were true of the bot-generated audio this
   /// replaces, which always played and always cost a paid request.
-  Future<void> _speak(PangeaMessageEvent message) {
+  Future<void> _speak(PangeaMessageEvent message) async {
     final voiceReply = _isVoiceReply(message.event);
-    return TtsController.tryToSpeak(
-      message.messageDisplayText,
-      langCode: message.messageDisplayLangCode,
-      useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.newMessage,
-      allowChoreoPlay: voiceReply,
-    );
+
+    // Listening category 2 (#104): AUTOMATIC read-aloud of a received message.
+    //
+    // Category 2 even in voice-reply mode, where this reaches the paid backend
+    // voice. The categories split on who INITIATED the playback, not on who paid
+    // for it — the learner tapped nothing here, the message simply arrived.
+    // Naming the counters after cost would make them mean different things in
+    // different modes.
+    //
+    // The room is threaded from here because [TtsController.tryToSpeak] takes
+    // neither a room nor an event id and serves word and choice taps too; it
+    // could not name the category or the room if it wanted to.
+    final meter = DosagePlaybackMeter();
+    try {
+      await TtsController.tryToSpeak(
+        message.messageDisplayText,
+        langCode: message.messageDisplayLangCode,
+        useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.newMessage,
+        allowChoreoPlay: voiceReply,
+        // Fires only if audio really starts, so the silent exits — no
+        // known-good device voice with the backend disallowed, tool setting
+        // off, request superseded — measure nothing rather than banking a
+        // near-zero interval for audio that never played.
+        onPlaybackStarted: () => meter.setPlaying(true),
+      );
+    } finally {
+      // In `finally` so a throw out of TTS still closes the measurement, and
+      // AFTER the await so nothing here can delay speech. `finish` returns null
+      // when playback never started.
+      final elapsed = meter.finish();
+      if (elapsed != null) {
+        DosageAudioSignals.recordPlayback(
+          category: DosageListeningCategory.autoRead,
+          roomId: room.id,
+          elapsed: elapsed,
+          userId: room.client.userID,
+          accessToken: room.client.accessToken,
+        );
+      }
+    }
   }
 }

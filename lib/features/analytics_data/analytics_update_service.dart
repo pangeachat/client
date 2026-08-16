@@ -13,6 +13,7 @@ import 'package:fluffychat/features/analytics/saved_analytics_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
@@ -30,8 +31,12 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   /// of the per-account registry.
   final DosageEngagementTracker? _injectedTracker;
 
-  AnalyticsUpdateService(this.dataService, {DosageEngagementTracker? tracker})
-    : _injectedTracker = tracker {
+  AnalyticsUpdateService(
+    this.dataService, {
+    DosageEngagementTracker? tracker,
+    DosageAudioBuffer? audioBuffer,
+  }) : _injectedTracker = tracker,
+       _injectedAudioBuffer = audioBuffer {
     // Pin the account mxid AT CONSTRUCTION when the client is already logged in.
     // The authoritative pin is [pinAccountId] called from
     // [AnalyticsDataService._initDatabase] the moment `loggedIn` is observed
@@ -61,6 +66,27 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
   DosageEngagementTracker? get _tracker =>
       _injectedTracker ?? DosageEngagementTracker.forAccount(_accountUserId);
 
+  /// This account's audio-signal buffer. It rides the SAME three hooks as the
+  /// engagement tracker — the 5-minute heartbeat, any move off `resumed`, and
+  /// teardown — rather than owning a timer of its own. One lifecycle means the
+  /// coverage period, which must be declared whether or not audio occurred, can
+  /// never drift out of step with the events it covers.
+  DosageAudioBuffer? get _audioBuffer =>
+      _injectedAudioBuffer ?? DosageAudioBuffer.forAccount(_accountUserId);
+
+  /// Test-only injected audio buffer; when set, teardown drains it directly
+  /// instead of going through the per-account registry.
+  final DosageAudioBuffer? _injectedAudioBuffer;
+
+  /// Flushes the audio buffer against this account's live bearer. Fire-and-
+  /// forget on the heartbeat and lifecycle paths; awaited only on teardown.
+  Future<void> _flushAudio({bool drainAll = false}) =>
+      _audioBuffer?.flush(
+        drainAll: drainAll,
+        accessToken: dataService.accountAccessToken,
+      ) ??
+      Future.value();
+
   Completer<void>? _updateCompleter;
   Timer? _periodicTimer;
 
@@ -74,10 +100,17 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     WidgetsBinding.instance
       ..removeObserver(this)
       ..addObserver(this);
+    // Open the audio coverage period HERE, not at the first playback: a build
+    // that instrumented listening and heard none has to say it was watching, or
+    // its zero cannot be told apart from an unknown.
+    _audioBuffer?.start();
     _periodicTimer?.cancel();
     _periodicTimer = Timer.periodic(const Duration(minutes: 5), (_) {
       // Heartbeat flush of any open engagement span (no-op when none / dark).
       unawaited(_tracker?.flushOpenSpan() ?? Future.value());
+      // Heartbeat flush of buffered audio signals + this period's coverage
+      // declarations (no-op when dark). Fire-and-forget: nothing waits on it.
+      unawaited(_flushAudio());
       if (!dataService.isLogged) {
         ErrorHandler.logError(
           e: "User not logged in on periodic analytics update",
@@ -105,6 +138,21 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     } else {
       await DosageEngagementTracker.disposeAccount(_accountUserId);
     }
+    // Same rule for the audio lane: drain EVERYTHING under the still-valid
+    // bearer. A listening observation has no Matrix artefact to re-derive it
+    // from, so this is its last chance.
+    final injectedBuffer = _injectedAudioBuffer;
+    if (injectedBuffer != null) {
+      await injectedBuffer.flush(
+        drainAll: true,
+        accessToken: dataService.accountAccessToken,
+      );
+    } else {
+      await DosageAudioBuffer.disposeAccount(
+        _accountUserId,
+        accessToken: dataService.accountAccessToken,
+      );
+    }
   }
 
   @override
@@ -114,6 +162,9 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     // the next learner activity.
     if (state != AppLifecycleState.resumed) {
       unawaited(_tracker?.flushOpenSpan() ?? Future.value());
+      // Backgrounding is where a session most often ends without a teardown, so
+      // it is the audio lane's best chance to land the period it just observed.
+      unawaited(_flushAudio());
     }
   }
 

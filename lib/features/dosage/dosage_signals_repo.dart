@@ -6,6 +6,8 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/dosage/dosage_audio_coverage.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_span.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
@@ -148,7 +150,47 @@ class DosageSignalsRepo {
     );
   }
 
-  /// Shared ship-dark gate + token guard for all three signals.
+  /// Best-effort POST of one period's audio playback signals TOGETHER WITH that
+  /// period's coverage declarations, in one body so the server can persist both
+  /// in one transaction.
+  ///
+  /// Unlike the other three signals this one REPORTS ITS OUTCOME, because
+  /// listening is the one signal with no Matrix artefact behind it: a lost POST
+  /// is an observation gone forever, so [DosageAudioBuffer] has to know whether
+  /// to keep the batch. Returns true only on a 2xx. A 404 (the route not
+  /// deployed yet, or its flag off) is false — undelivered, not an error — so
+  /// the batch is retried rather than dropped.
+  ///
+  /// A batch with no events AND no coverage says nothing and is not sent; a
+  /// batch with only coverage IS sent, because "the instrument was running and
+  /// heard nothing" is exactly the observation that turns a null into an honest
+  /// zero.
+  static Future<bool> postAudioSignals({
+    required List<DosageAudioEvent> events,
+    required List<DosageAudioCoverage> coverage,
+    required String? accessToken,
+    http.Client? client,
+  }) async {
+    if (!_canPost(accessToken)) return false;
+    final validEvents = events
+        .where((e) => e.roomId.isNotEmpty && e.elapsedMs > 0)
+        .toList();
+    final validCoverage = coverage.where((c) => c.isValid).toList();
+    if (validEvents.isEmpty && validCoverage.isEmpty) return false;
+    return _postForDelivery(
+      url: PApiUrls.dosageAudioSignals,
+      body: {
+        "events": validEvents.map((e) => e.toJson()).toList(),
+        "coverage": validCoverage.map((c) => c.toJson()).toList(),
+      },
+      accessToken: accessToken!,
+      client: client,
+      signal: "audio-signals",
+      count: validEvents.length + validCoverage.length,
+    );
+  }
+
+  /// Shared ship-dark gate + token guard for every signal.
   static bool _canPost(String? accessToken) =>
       isEnabled && accessToken != null && accessToken.isNotEmpty;
 
@@ -189,6 +231,52 @@ class DosageSignalsRepo {
         m: "Best-effort dosage signal POST failed (swallowed)",
         data: {"signal": signal, "count": count},
       );
+    } finally {
+      if (ownsClient) httpClient.close();
+    }
+  }
+
+  /// As [_post], but reports whether the server actually took the body. Only a
+  /// 2xx counts as delivered; anything else — a 404 while the route is
+  /// undeployed, a 5xx, a timeout, an offline socket — is undelivered and the
+  /// caller retries.
+  ///
+  /// A non-2xx status is NOT logged. It is the expected steady state until the
+  /// server ships this route, and reporting it would put one warning per
+  /// heartbeat per user into Sentry for a condition that is by design. Transport
+  /// exceptions are logged exactly as the other signals log them.
+  static Future<bool> _postForDelivery({
+    required String url,
+    required Map<String, dynamic> body,
+    required String accessToken,
+    required http.Client? client,
+    required String signal,
+    required int count,
+  }) async {
+    final http.Client httpClient = client ?? clientFactory();
+    final bool ownsClient = client == null;
+    try {
+      final response = await httpClient
+          .post(
+            Uri.parse(url),
+            headers: {
+              "Content-Type": "application/json",
+              "Accept": "application/json",
+              "Authorization": "Bearer $accessToken",
+            },
+            body: jsonEncode(body),
+          )
+          .timeout(requestTimeout);
+      return response.statusCode >= 200 && response.statusCode < 300;
+    } catch (err, s) {
+      ErrorHandler.logError(
+        e: err,
+        s: s,
+        level: SentryLevel.warning,
+        m: "Best-effort dosage signal POST failed (swallowed)",
+        data: {"signal": signal, "count": count},
+      );
+      return false;
     } finally {
       if (ownsClient) httpClient.close();
     }
