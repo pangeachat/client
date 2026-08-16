@@ -99,25 +99,352 @@ void main() {
       });
     });
 
-    test('periods are contiguous across flushes — no unclaimed gap', () async {
+    test('a period EXTENDS across flushes rather than minting a new one', () async {
+      // The defect this replaced: a fresh period_start every seal banked five new
+      // rows per flush — sixty an hour — and walked into the server's per-day
+      // coverage cap after three or four hours of app-open time, after which the
+      // learner's listening counters withheld for the rest of the UTC day.
       final bodies = <Map<String, dynamic>>[];
       final buffer = DosageAudioBuffer(
         now: () => clock,
         httpClient: _recorder(bodies),
       );
       buffer.start();
+      final opened = clock;
+      for (var i = 0; i < 6; i++) {
+        clock = clock.add(const Duration(minutes: 5));
+        await buffer.flush(accessToken: token);
+      }
+
+      expect(bodies, hasLength(6));
+      // The server banks one row per (category, period_start). Six flushes of
+      // five categories must still be five rows, not thirty.
+      final rows = bodies
+          .expand((b) => (b['coverage'] as List).cast<Map<String, dynamic>>())
+          .map((c) => '${c['category']}@${c['period_start']}')
+          .toSet();
+      expect(
+        rows,
+        hasLength(DosageCoverageCategory.values.length),
+        reason: 'one banked row per category, lengthened — not one per seal',
+      );
+
+      final peer = bodies
+          .map((b) => _coverageOf(b, 'peer'))
+          .toList(growable: false);
+      for (final declaration in peer) {
+        expect(declaration['period_start'], opened.toIso8601String());
+      }
+      final ends = peer.map((c) => DateTime.parse(c['period_end'] as String));
+      expect(
+        ends.toList(),
+        orderedEquals([
+          for (var i = 1; i <= 6; i++)
+            opened.add(Duration(minutes: 5 * i)).toUtc(),
+        ]),
+        reason: 'the end advances; that is the whole extension',
+      );
+    });
+
+    test('the claimed union covers the observed time exactly', () async {
+      // Extending moves the end, which is where a claim can drift off what was
+      // watched. What every flush declared, unioned, must be precisely the stretch
+      // from the instrument opening to the last seal: no gap nobody declared, and
+      // no overlap reaching past what was observed.
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(bodies),
+      );
+      buffer.start();
+      final opened = clock;
+      for (var i = 0; i < 5; i++) {
+        clock = clock.add(const Duration(minutes: 5));
+        buffer.record(playback(), accessToken: token);
+        await buffer.flush(accessToken: token);
+      }
+      final lastSeal = clock;
+
+      final merged = _union(_periodsFor(bodies, 'peer'));
+      expect(
+        merged,
+        hasLength(1),
+        reason: 'a second interval would be a stretch nobody declared',
+      );
+      expect(merged.single.start, opened.toUtc());
+      expect(merged.single.end, lastSeal.toUtc());
+    });
+
+    test('a fresh process never extends a period it did not observe', () async {
+      // The buffer is in-memory, so a restart forgets both the observation cursor
+      // and the anchor. That is the rollover rule for a restart: a period whose
+      // start is gone cannot be lengthened, and the interval while nothing was
+      // running is one nobody watched.
+      final first = <Map<String, dynamic>>[];
+      final before = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(first),
+      );
+      before.start();
       clock = clock.add(const Duration(minutes: 5));
+      await before.flush(accessToken: token);
+
+      // The process dies here; three hours later a new one starts.
+      clock = clock.add(const Duration(hours: 3));
+      final restartedAt = clock;
+      final second = <Map<String, dynamic>>[];
+      final after = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(second),
+      );
+      after.start();
+      clock = clock.add(const Duration(minutes: 5));
+      await after.flush(accessToken: token);
+
+      expect(
+        _coverageOf(second.single, 'peer')['period_start'],
+        restartedAt.toIso8601String(),
+        reason: 'the three hours the app was not running are not claimed',
+      );
+      final merged = _union([
+        ..._periodsFor(first, 'peer'),
+        ..._periodsFor(second, 'peer'),
+      ]);
+      expect(
+        merged,
+        hasLength(2),
+        reason: 'the gap between the two processes stays a gap',
+      );
+    });
+
+    test('a period does not extend across a UTC midnight', () async {
+      // The server buckets its per-day coverage cap on period_start's day, so one
+      // row spanning days would be counted against a day it barely touches — and
+      // an open period that never rolls has no bound at all.
+      clock = DateTime.utc(2026, 1, 1, 23, 57);
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(bodies),
+      );
+      buffer.start();
+      final opened = clock;
+      final midnight = DateTime.utc(2026, 1, 2);
+
+      clock = DateTime.utc(2026, 1, 2, 0, 2);
       await buffer.flush(accessToken: token);
+      clock = DateTime.utc(2026, 1, 2, 0, 7);
+      await buffer.flush(accessToken: token);
+
+      final crossing = (bodies[0]['coverage'] as List)
+          .cast<Map<String, dynamic>>()
+          .where((c) => c['category'] == 'peer')
+          .toList();
+      expect(
+        crossing,
+        hasLength(2),
+        reason: 'the seal that crossed midnight declares one row per day',
+      );
+      expect(crossing[0]['period_start'], opened.toIso8601String());
+      expect(
+        crossing[0]['period_end'],
+        midnight.toIso8601String(),
+        reason: 'and they abut exactly, so the union has no gap',
+      );
+      expect(crossing[1]['period_start'], midnight.toIso8601String());
+
+      // The next seal extends the NEW day's row, not the old one.
+      expect(
+        _coverageOf(bodies[1], 'peer')['period_start'],
+        midnight.toIso8601String(),
+      );
+      expect(
+        _union(_periodsFor(bodies, 'peer')),
+        hasLength(1),
+        reason: 'rolling at the boundary must not open a hole at it',
+      );
+    });
+
+    test('a 202 over a FAILED WRITE does not extend anything', () async {
+      // The route answers 202 for any well-formed batch even when its database
+      // write failed, and reports the rows it actually wrote. Treating the 202 as
+      // the acknowledgement would have the next seal lengthen a row the server
+      // never held — covering the failed batch's interval without its events.
+      final bodies = <Map<String, dynamic>>[];
+      var writing = false;
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: MockClient((req) async {
+          final body = jsonDecode(req.body) as Map<String, dynamic>;
+          bodies.add(body);
+          return http.Response(
+            jsonEncode({
+              'status': 'accepted',
+              'playbacks': writing ? (body['events'] as List).length : 0,
+              'coverage': writing ? (body['coverage'] as List).length : 0,
+            }),
+            202,
+          );
+        }),
+      );
+
+      buffer.start();
+      final swallowedFrom = clock;
+      clock = clock.add(const Duration(minutes: 5));
+      final swallowedTo = clock;
+      await buffer.flush(accessToken: token);
+      expect(
+        buffer.pendingBatches,
+        isEmpty,
+        reason: 'a 202 is still a 202: the batch is not retried',
+      );
+
+      writing = true;
       clock = clock.add(const Duration(minutes: 5));
       await buffer.flush(accessToken: token);
 
-      final firstEnd = _coverageOf(bodies[0], 'peer')['period_end'];
-      final secondStart = _coverageOf(bodies[1], 'peer')['period_start'];
       expect(
-        secondStart,
-        firstEnd,
-        reason: 'a gap between periods is an hour nobody declared',
+        _coverageOf(bodies[1], 'peer')['period_start'],
+        swallowedTo.toIso8601String(),
+        reason: 'a fresh period after the hole, not an extension across it',
       );
+      for (final period in _periodsFor([bodies[1]], 'peer')) {
+        expect(
+          period.start.isBefore(swallowedTo.toUtc()) &&
+              period.end.isAfter(swallowedFrom.toUtc()),
+          isFalse,
+          reason: 'the swallowed interval stays uncovered',
+        );
+      }
+    });
+
+    test('a PARTIAL write does not extend anything either', () async {
+      // The count is an aggregate — rows written, not which ones. The server drops
+      // individual declarations that hit its per-day coverage cap, so a batch of
+      // five that reports one written leaves four unaccounted for. Banking on that
+      // would anchor rows the server does not hold.
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: MockClient((req) async {
+          final body = jsonDecode(req.body) as Map<String, dynamic>;
+          bodies.add(body);
+          final declared = (body['coverage'] as List).length;
+          return http.Response(
+            jsonEncode({
+              'status': 'accepted',
+              'playbacks': (body['events'] as List).length,
+              // One of the five landed; the rest hit the daily cap.
+              'coverage': declared > 1 ? 1 : declared,
+            }),
+            202,
+          );
+        }),
+      );
+
+      buffer.start();
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+      final secondStart = clock;
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+
+      expect(
+        _coverageOf(bodies[1], 'peer')['period_start'],
+        secondStart.toIso8601String(),
+        reason: 'a partial count proves nothing about any particular row',
+      );
+    });
+
+    test('an unreadable response is not an acknowledgement', () async {
+      // Anything the client cannot read as a written-row count — an empty body, a
+      // proxy's own page, a shape that changed — resolves to "not acknowledged".
+      // The cost is one extra coverage row per flush; the alternative is claiming
+      // a period on the strength of a response nobody could parse.
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: MockClient((req) async {
+          bodies.add(jsonDecode(req.body) as Map<String, dynamic>);
+          return http.Response('<html>accepted</html>', 202);
+        }),
+      );
+      buffer.start();
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+      final secondStart = clock;
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+
+      expect(
+        _coverageOf(bodies[1], 'peer')['period_start'],
+        secondStart.toIso8601String(),
+      );
+      expect(
+        _union(_periodsFor(bodies, 'peer')),
+        hasLength(1),
+        reason: 'still contiguous — the periods abut, they just do not merge',
+      );
+    });
+
+    test('a dropped batch takes its interval with it, for good', () async {
+      // The bound drops a whole batch — its events AND its declaration together —
+      // so the server withholds that stretch. Extending is where that could quietly
+      // come undone: a later seal that anchored back past the hole would restore the
+      // coverage without the events, leaving a covered period that looks empty. That
+      // is the fabricated zero this feature exists to prevent, so no declaration may
+      // reach back over an interval the ingest never acknowledged.
+      const poisonRoom = '!undeliverable:example.org';
+      final delivered = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: MockClient((req) async {
+          final body = jsonDecode(req.body) as Map<String, dynamic>;
+          final undeliverable = (body['events'] as List)
+              .cast<Map<String, dynamic>>()
+              .any((e) => e['room_id'] == poisonRoom);
+          if (undeliverable) return http.Response('', 503);
+          delivered.add(body);
+          return http.Response('', 202);
+        }),
+      );
+
+      buffer.start();
+      final opened = clock;
+      buffer.record(
+        DosageAudioEvent.fromPlayback(
+          playbackId: 'aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa',
+          roomId: poisonRoom,
+          category: DosageListeningCategory.peer,
+          elapsed: const Duration(seconds: 3),
+          endedAt: clock,
+        ),
+        accessToken: token,
+      );
+      clock = clock.add(const Duration(minutes: 5));
+      final lost = clock;
+      await buffer.flush(accessToken: token);
+
+      // Every later flush delivers; the first batch exhausts its attempts and is
+      // dropped, so [opened, lost] is an interval nobody ever acknowledged.
+      for (var i = 0; i < 40; i++) {
+        clock = clock.add(const Duration(minutes: 5));
+        await buffer.flush(accessToken: token);
+      }
+      expect(buffer.pendingBatches, isEmpty);
+      expect(buffer.droppedBatches, greaterThanOrEqualTo(1));
+      expect(delivered, isNotEmpty);
+
+      for (final period in _periodsFor(delivered, 'peer')) {
+        expect(
+          period.start.isBefore(lost.toUtc()) &&
+              period.end.isAfter(opened.toUtc()),
+          isFalse,
+          reason:
+              'nothing delivered may overlap the dropped batch\'s interval — its '
+              'events are gone, so covering it would serve a confident zero',
+        );
+      }
     });
 
     test('the period a build never observed is NEVER claimed', () async {
@@ -153,7 +480,7 @@ void main() {
         isEmpty,
         reason: 'the two hours before the buffer was reachable are not claimed',
       );
-      final opened = buffer.periodStart;
+      final opened = buffer.observedFrom;
       expect(opened, isNotNull);
 
       clock = clock.add(const Duration(minutes: 5));
@@ -634,6 +961,91 @@ void main() {
       );
       expect(buffer.pendingBatches, hasLength(1));
     });
+
+    test('a suspended process claims NONE of the time it slept', () async {
+      // A flush fires every five minutes while this buffer is running, so a
+      // stretch far longer than that is one where the timer was not ticking and
+      // nothing was watching. Coverage says the instrument was RUNNING, so none
+      // of it may be declared — not even the recent part, which would be the same
+      // fabricated zero in a shorter window.
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(bodies),
+      );
+      buffer.start();
+      buffer.record(playback(), accessToken: token);
+      clock = clock.add(const Duration(days: 30));
+      final wokeAt = clock;
+      await buffer.flush(accessToken: token);
+
+      expect(
+        _periodsFor(bodies, 'peer'),
+        isEmpty,
+        reason: 'thirty days nobody watched are not coverage',
+      );
+      expect(
+        (bodies.single['events'] as List),
+        hasLength(1),
+        reason: 'the playback itself is still a real observation and is sent',
+      );
+
+      // And the next seal opens a fresh period after the gap rather than
+      // extending across it.
+      bodies.clear();
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+      expect(
+        _coverageOf(bodies.single, 'peer')['period_start'],
+        wokeAt.toIso8601String(),
+      );
+    });
+
+    test('one seal can never build a coverage list past its budget', () async {
+      // The route caps playbacks and coverage TOGETHER, so the reserve carved out
+      // of the event budget has to hold for the biggest coverage list a single
+      // seal can produce. Both halves of that arithmetic are pinned here.
+      expect(
+        DosageAudioBuffer.maxObservedGap,
+        lessThan(const Duration(days: 1)),
+        reason:
+            'a longer gap could cross two midnights and need three segments',
+      );
+      expect(
+        DosageCoverageCategory.values.length *
+            DosageAudioBuffer.maxCoverageSegmentsPerSeal,
+        DosageAudioBuffer.maxCoverageItemsPerBatch,
+        reason: 'adding a coverage category must shrink the event budget',
+      );
+
+      // The worst real case: a seal at its longest permitted interval, crossing a
+      // midnight, on a batch already full of events.
+      clock = DateTime.utc(2026, 1, 1, 23, 50);
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(bodies),
+      );
+      buffer.start();
+      for (var i = 0; i < DosageAudioBuffer.maxEventsPerBatch; i++) {
+        buffer.record(playback(), accessToken: token);
+      }
+      clock = clock.add(DosageAudioBuffer.maxObservedGap);
+      await buffer.flush(drainAll: true, accessToken: token);
+
+      expect(bodies, isNotEmpty);
+      for (final body in bodies) {
+        expect(
+          (body['coverage'] as List).length,
+          lessThanOrEqualTo(DosageAudioBuffer.maxCoverageItemsPerBatch),
+        );
+        expect(
+          (body['events'] as List).length + (body['coverage'] as List).length,
+          lessThanOrEqualTo(DosageAudioBuffer.maxItemsPerBatch),
+          reason: 'a body the route would 413 loses that period whole',
+        );
+      }
+    });
   });
 
   group('inert while the surface does not exist', () {
@@ -708,7 +1120,7 @@ void main() {
       clock = clock.add(const Duration(minutes: 5));
       await buffer.flush(accessToken: token);
 
-      expect(buffer.periodStart, isNull);
+      expect(buffer.observedFrom, isNull);
       expect(buffer.bufferedEvents, isEmpty);
       expect(posts, 0);
     });
@@ -748,25 +1160,60 @@ void main() {
     test('only a 2xx counts as delivered', () async {
       for (final status in [200, 202, 204]) {
         expect(
-          await DosageSignalsRepo.postAudioSignals(
+          (await DosageSignalsRepo.postAudioSignals(
             events: [playback()],
             coverage: const [],
             accessToken: token,
             client: MockClient((_) async => http.Response('', status)),
-          ),
+          )).delivered,
           isTrue,
         );
       }
       for (final status in [400, 401, 404, 413, 422, 500, 503]) {
         expect(
-          await DosageSignalsRepo.postAudioSignals(
+          (await DosageSignalsRepo.postAudioSignals(
             events: [playback()],
             coverage: const [],
             accessToken: token,
             client: MockClient((_) async => http.Response('', status)),
-          ),
+          )).delivered,
           isFalse,
           reason: '$status is undelivered, so the batch is retried',
+        );
+      }
+    });
+
+    test('the written-row count is read off the accepted response', () async {
+      // Separate from delivery on purpose: 202 means "do not retry", the count
+      // means "the write happened". Only the second licenses an extension.
+      Future<DosageAudioPostResult> post(String body) =>
+          DosageSignalsRepo.postAudioSignals(
+            events: [playback()],
+            coverage: const [],
+            accessToken: token,
+            client: MockClient((_) async => http.Response(body, 202)),
+          );
+
+      expect(
+        (await post(
+          '{"status":"accepted","playbacks":1,"coverage":4}',
+        )).coverageWritten,
+        4,
+      );
+      expect(
+        (await post(
+          '{"status":"accepted","playbacks":0,"coverage":0}',
+        )).coverageWritten,
+        0,
+        reason: 'a write that stored nothing must not license an extension',
+      );
+      for (final unreadable in ['', 'not json', '[]', '{"coverage":"four"}']) {
+        final result = await post(unreadable);
+        expect(result.delivered, isTrue);
+        expect(
+          result.coverageWritten,
+          isNull,
+          reason: 'unreadable is unknown, never assumed written',
         );
       }
     });
@@ -795,12 +1242,12 @@ void main() {
         return http.Response('', 202);
       });
       expect(
-        await DosageSignalsRepo.postAudioSignals(
+        (await DosageSignalsRepo.postAudioSignals(
           events: const [],
           coverage: const [],
           accessToken: token,
           client: client,
-        ),
+        )).delivered,
         isFalse,
       );
       expect(posts, 0);
@@ -810,13 +1257,67 @@ void main() {
 
 int _seq = 0;
 
+/// A stand-in for the real ingest: records each body and answers the way the
+/// route does — 202 with the count of rows it WROTE. The count is what lets the
+/// client tell a real write from a 202 over a failed one, so a mock that returned
+/// a bare 202 would silently test a contract the server does not offer.
 MockClient _recorder(List<Map<String, dynamic>> sink) =>
     MockClient((req) async {
-      sink.add(jsonDecode(req.body) as Map<String, dynamic>);
-      return http.Response('', 202);
+      final body = jsonDecode(req.body) as Map<String, dynamic>;
+      sink.add(body);
+      return http.Response(
+        jsonEncode({
+          'status': 'accepted',
+          'playbacks': (body['events'] as List).length,
+          'coverage': (body['coverage'] as List).length,
+        }),
+        202,
+      );
     });
 
 Map<String, dynamic> _coverageOf(Map<String, dynamic> body, String category) =>
     (body['coverage'] as List).cast<Map<String, dynamic>>().firstWhere(
       (c) => c['category'] == category,
     );
+
+/// One declared period, read back off the wire.
+class _Period {
+  const _Period(this.start, this.end);
+  final DateTime start;
+  final DateTime end;
+
+  @override
+  String toString() => '${start.toIso8601String()}..${end.toIso8601String()}';
+}
+
+/// Every period one category was declared over, across all posted bodies.
+List<_Period> _periodsFor(List<Map<String, dynamic>> bodies, String category) =>
+    bodies
+        .expand((b) => (b['coverage'] as List).cast<Map<String, dynamic>>())
+        .where((c) => c['category'] == category)
+        .map(
+          (c) => _Period(
+            DateTime.parse(c['period_start'] as String),
+            DateTime.parse(c['period_end'] as String),
+          ),
+        )
+        .toList();
+
+/// Merge overlapping AND ADJACENT periods, exactly as the server's
+/// `union_intervals` does — abutting spans are one continuous covered stretch.
+/// A result of length one is the proof that the claims tile the observed time
+/// with no gap; its bounds are the proof that they do not run past it.
+List<_Period> _union(List<_Period> periods) {
+  final sorted = [...periods]..sort((a, b) => a.start.compareTo(b.start));
+  final merged = <_Period>[];
+  for (final period in sorted) {
+    if (merged.isEmpty || period.start.isAfter(merged.last.end)) {
+      merged.add(period);
+      continue;
+    }
+    if (period.end.isAfter(merged.last.end)) {
+      merged[merged.length - 1] = _Period(merged.last.start, period.end);
+    }
+  }
+  return merged;
+}

@@ -35,6 +35,23 @@ class DosageAudioBatch {
   bool get isEmpty => events.isEmpty && coverage.isEmpty;
 }
 
+/// One coverage row the ingest has WRITTEN for a category — the period the
+/// server currently holds open, as far as this client can tell.
+///
+/// It is the anchor a later seal extends from, and it moves only when a response
+/// reports rows actually written. That is the whole reason it exists: a
+/// declaration may only reach back to an instant the server already holds, so the
+/// interval a batch ADDS is exactly the interval that batch observed. Lose the
+/// batch, lose nothing but its own interval — which is the property the events
+/// and their declaration riding in one body was always for.
+@immutable
+class _BankedPeriod {
+  const _BankedPeriod({required this.start, required this.end});
+
+  final DateTime start;
+  final DateTime end;
+}
+
 /// Buffers audio-playback signals and their coverage declarations, and retries
 /// delivery until the server takes them.
 ///
@@ -60,15 +77,91 @@ class DosageAudioBatch {
 /// those events goes with them and the server withholds that period instead of
 /// serving a short total.
 ///
+/// **Coverage EXTENDS an open period; it does not mint a new one every seal.**
+/// A coverage row's identity on the server is the natural key
+/// `(sender, category, period_start)` under an extend-only upsert, so
+/// re-declaring the same `period_start` with a later `period_end` lengthens ONE
+/// row. Minting a fresh start each seal instead banks a new row every time —
+/// five categories × twelve heartbeats an hour = sixty rows an hour, which walks
+/// into the server's per-day anti-abuse cap after three or four hours of app-open
+/// time, at which point coverage is dropped and the learner's listening counters
+/// withhold for the rest of the UTC day. Extending is what the server's key was
+/// built for, and what keeps a whole school day inside the cap.
+///
+/// Two rules keep extending honest, and both are about never claiming an
+/// interval nobody watched:
+///
+///  * **A declaration may only reach back to an instant the ingest has already
+///    WRITTEN** ([_banked]) — written, not merely accepted, since the route
+///    answers 202 even for a failed write and reports the rows it really wrote.
+///    So the interval a batch ADDS is exactly the interval it observed, and a
+///    batch dropped by a bound, a bad route or a failed write takes its own
+///    interval with it — the property that made events and coverage ride in one
+///    body, preserved rather than traded away.
+///  * **A period never crosses a UTC midnight.** The server buckets its cap on
+///    `period_start`'s day, so one row spanning a week would be counted against a
+///    day it barely touches; and an open period that never rolls has no bound at
+///    all. Rolling at midnight splits the observed interval into segments that
+///    ABUT exactly, and the server unions adjacent periods, so the union still
+///    covers what was observed with no gap and no overlap.
+///
+/// A period also ends where OBSERVATION did. A stretch longer than
+/// [maxObservedGap] means no flush fired across it, so the process was suspended
+/// and nothing was watching: it is declared not in part but not at all, and the
+/// next seal opens a fresh period after it.
+///
+/// Process restart needs no rule of its own: this buffer is in-memory, so a new
+/// process starts with nothing banked, cannot extend a period whose start it has
+/// forgotten, and declares from its own [start] — which is honest, because the
+/// interval while it was not running is one nobody observed.
+///
 /// PER-ACCOUNT, like [DosageEngagementTracker]: the app runs multiple Matrix
 /// accounts and a shared buffer would let one account's teardown flush another's
 /// observations under the wrong bearer.
 ///
 /// Design: docs/research/104-speaking-listening-minutes-v2.md, §2b and §6.
 class DosageAudioBuffer {
-  /// Server batch cap for the ingest route. The accumulator seals a batch when
-  /// it reaches this, so a body is never built that the route would 413.
-  static const int maxEventsPerBatch = 200;
+  /// Items the ingest route accepts in ONE body. It counts playbacks and
+  /// coverage declarations TOGETHER — they travel in one body and are written in
+  /// one transaction — and a body over the cap is a 413, which is not a partial
+  /// accept but the loss of that whole period's observations.
+  static const int maxItemsPerBatch = 200;
+
+  /// The longest interval one seal may declare as CONTINUOUS OBSERVATION.
+  ///
+  /// A flush fires on the analytics heartbeat every five minutes, on any move off
+  /// `resumed`, and at teardown — so while this buffer is genuinely running, the
+  /// stretch between two seals is minutes. A far longer one means no flush
+  /// happened, which means the timer was not ticking, which means the process was
+  /// suspended: a mobile app the OS froze, a laptop closed, a browser tab
+  /// discarded. Nothing was observed then, and coverage says the instrument was
+  /// RUNNING, so such a stretch is declared not in part but NOT AT ALL — the
+  /// counter withholds for it and the next seal opens a fresh period after it.
+  ///
+  /// Six heartbeats: generous against timer drift, a slow drain and a brief
+  /// device sleep, and far under any real suspension.
+  static const Duration maxObservedGap = Duration(minutes: 30);
+
+  /// Day segments one declared interval can be cut into. [maxObservedGap] is well
+  /// under a day, so an interval crosses at most one midnight — two segments.
+  static const int maxCoverageSegmentsPerSeal = 2;
+
+  /// The most coverage declarations one seal can produce: every category, times
+  /// the segments its interval can be cut into.
+  ///
+  /// Restated as a literal rather than computed because [maxEventsPerBatch] must
+  /// be a compile-time constant. `dosage_audio_buffer_test.dart` pins it against
+  /// [DosageCoverageCategory.values] and against [maxObservedGap], so adding a
+  /// category — or widening the gap past a day — is a failing test rather than a
+  /// batch the route silently 413s.
+  static const int maxCoverageItemsPerBatch = 5 * maxCoverageSegmentsPerSeal;
+
+  /// Playbacks accumulated before the accumulator seals. The route's cap minus
+  /// the room the same body's coverage needs, so a full batch plus its
+  /// declarations is still a body the route accepts — which is what the cap was
+  /// always for, and what counting only the events would quietly miss.
+  static const int maxEventsPerBatch =
+      maxItemsPerBatch - maxCoverageItemsPerBatch;
 
   /// Undelivered batches held at once. Twelve covers an hour of heartbeat
   /// flushes with the route absent, which is the realistic "server not deployed
@@ -169,7 +262,19 @@ class DosageAudioBuffer {
 
   final List<DosageAudioEvent> _events = [];
   final List<DosageAudioBatch> _batches = [];
-  DateTime? _periodStart;
+
+  /// Start of the interval this buffer has OBSERVED and not yet sealed.
+  ///
+  /// Deliberately not called a period start any more: it is the observation
+  /// cursor, and it advances to the seal instant every time. What goes on the
+  /// wire as `period_start` is [_banked]-anchored and can reach further back —
+  /// but only as far as an instant the server has already acknowledged.
+  DateTime? _observedFrom;
+
+  /// The coverage row the ingest has acknowledged per category — the anchor a
+  /// seal extends. Written on a 2xx and nowhere else; see [_BankedPeriod].
+  final Map<DosageCoverageCategory, _BankedPeriod> _banked = {};
+
   String? _accessToken;
   Future<void>? _flushing;
 
@@ -190,7 +295,7 @@ class DosageAudioBuffer {
   List<DosageAudioEvent> get bufferedEvents => List.unmodifiable(_events);
 
   @visibleForTesting
-  DateTime? get periodStart => _periodStart;
+  DateTime? get observedFrom => _observedFrom;
 
   @visibleForTesting
   bool get voiceSendCoveredForTest => _voiceSendCovered;
@@ -203,7 +308,7 @@ class DosageAudioBuffer {
   /// silently discard the interval since it opened.
   void start() {
     if (!DosageSignalsRepo.isEnabled) return;
-    _periodStart ??= _now().toUtc();
+    _observedFrom ??= _now().toUtc();
   }
 
   /// Records one finished playback. Synchronous, allocation-only and never
@@ -215,7 +320,7 @@ class DosageAudioBuffer {
   void record(DosageAudioEvent event, {required String? accessToken}) {
     if (!DosageSignalsRepo.isEnabled) return;
     if (event.roomId.isEmpty || event.elapsedMs <= 0) return;
-    _periodStart ??= _now().toUtc();
+    _observedFrom ??= _now().toUtc();
     if (accessToken != null && accessToken.isNotEmpty) {
       // Keep the freshest bearer for the eventual flush; tokens refresh
       // mid-session and a stale one would post under an expired bearer.
@@ -241,7 +346,7 @@ class DosageAudioBuffer {
   /// leaves the category undeclared and the counter withheld.
   void noteVoiceSendPending() {
     if (!DosageSignalsRepo.isEnabled) return;
-    _periodStart ??= _now().toUtc();
+    _observedFrom ??= _now().toUtc();
     _voiceSendsInFlight++;
   }
 
@@ -260,9 +365,14 @@ class DosageAudioBuffer {
   /// toward a confident zero.
   bool get _voiceSendCovered => _voiceSendsInFlight == 0 && !_voiceSendLost;
 
-  /// Seals the current period into a pending batch: its events plus a coverage
-  /// declaration for EVERY category this build instruments, whether or not any
-  /// audio occurred, and restarts the period from this instant.
+  /// Seals the observed interval into a pending batch: its events plus a
+  /// coverage declaration for EVERY category this build instruments, whether or
+  /// not any audio occurred, and moves the observation cursor to this instant.
+  ///
+  /// The DECLARED period is not the observed interval. It runs from the anchor
+  /// [_declarationsFor] picks — this batch's own observed start, or, when the
+  /// server has already acknowledged coverage right up to it, that acknowledged
+  /// row's start, so the upsert extends one row instead of banking another.
   ///
   /// The declaration set is [DosageCoverageCategory.values] — all five, including
   /// `voiceSend`. This is the one place the build asserts what it instruments,
@@ -276,11 +386,15 @@ class DosageAudioBuffer {
   /// withholds that counter for it rather than serving its silence as a zero.
   ///
   /// The four LISTENING categories are always declared: their events ride in
-  /// this same batch, so a lost batch loses the declaration with it.
-  /// `voiceSend` is declared only when [_voiceSendCovered] — see there for why
-  /// it alone needs the extra condition.
+  /// this same batch, so a lost batch loses the declaration with it — and, since
+  /// no later seal may anchor past an interval the ingest never acknowledged,
+  /// loses it for good rather than having a subsequent extension quietly cover
+  /// the hole. `voiceSend` is declared only when [_voiceSendCovered], and the
+  /// same anchor rule is what withholds the skipped stretch: the next seal cannot
+  /// abut a row that was never declared, so it starts a fresh period after the
+  /// gap instead of extending across it.
   void _seal() {
-    final DateTime? start = _periodStart;
+    final DateTime? start = _observedFrom;
     // Nothing observed and no period open: seal nothing and, crucially, START
     // nothing. Opening a period as a side effect of an empty seal would make the
     // one fact this class asserts — when the instrument was running — depend on
@@ -290,10 +404,20 @@ class DosageAudioBuffer {
     if (start == null && _events.isEmpty) return;
 
     final DateTime end = _now().toUtc();
-    _periodStart = end;
+    _observedFrom = end;
     final bool voiceSendCovered = _voiceSendCovered;
 
-    final List<DosageAudioCoverage> coverage = start == null
+    // A stretch longer than [maxObservedGap] is a suspension, not an
+    // observation: no flush fired across it, so the instrument was not running
+    // and nothing may be declared for ANY of it. Claiming the recent part would
+    // be the same fabricated zero in a shorter window. The events keep their own
+    // timestamps and are still sent; without coverage the server withholds,
+    // which is the honest answer for a stretch nobody watched.
+    final bool observedContinuously =
+        start != null && end.difference(start) <= maxObservedGap;
+
+    final List<DosageAudioCoverage> coverage =
+        start == null || !observedContinuously
         ? const []
         : DosageCoverageCategory.values
               .where(
@@ -301,12 +425,11 @@ class DosageAudioBuffer {
                     category != DosageCoverageCategory.voiceSend ||
                     voiceSendCovered,
               )
-              .map(
-                (category) => DosageAudioCoverage(
-                  coverageId: DosageSignalIdentity.uuidV4(),
+              .expand(
+                (category) => _declarationsFor(
                   category: category,
-                  periodStart: start,
-                  periodEnd: end,
+                  observedStart: start,
+                  observedEnd: end,
                 ),
               )
               .where((declaration) => declaration.isValid)
@@ -330,12 +453,122 @@ class DosageAudioBuffer {
 
     // Capacity: drop the OLDEST batch whole. Its events and the declaration that
     // licensed them go together, so the server sees an undeclared period and
-    // withholds rather than serving the remaining events as a total.
+    // withholds rather than serving the remaining events as a total. The
+    // surviving batches cannot undo that: each one was anchored at ITS seal to
+    // what the ingest had acknowledged by then, which never includes an interval
+    // this eviction is about to discard.
     while (_batches.length >= maxPendingBatches) {
       _batches.removeAt(0);
       droppedBatches++;
     }
     _batches.add(batch);
+  }
+
+  /// One category's declarations for the interval `[observedStart, observedEnd]`.
+  ///
+  /// The caller has already established that this interval was continuously
+  /// observed (see [maxObservedGap]); two things happen here, and each one is a
+  /// rule from the class doc made concrete.
+  ///
+  /// **Anchor.** If the ingest has acknowledged this category right up to the
+  /// instant this interval begins, the declaration starts at THAT row's start and
+  /// the server's extend-only upsert lengthens it. The condition is exact
+  /// abutment — `banked.end` is the observed start, to the microsecond — because
+  /// that is what makes `[anchor, observedEnd]` equal "coverage the server
+  /// already has" ∪ "the interval this batch observed", and nothing else. An
+  /// unacknowledged batch anchors nothing, so a batch a bound or a 404 dropped
+  /// takes its own interval down with it and the server withholds that stretch.
+  ///
+  /// **Split.** The remainder is cut at each UTC midnight, so no row spans a day
+  /// the server's cap would then mis-bucket, and no open period grows without
+  /// bound. Segments abut exactly and the server merges adjacent periods, so the
+  /// union is unchanged: no gap, no overlap.
+  Iterable<DosageAudioCoverage> _declarationsFor({
+    required DosageCoverageCategory category,
+    required DateTime observedStart,
+    required DateTime observedEnd,
+  }) {
+    final List<DosageAudioCoverage> declarations = [];
+    if (!observedEnd.isAfter(observedStart)) return declarations;
+
+    DateTime cursor = observedStart;
+    final _BankedPeriod? open = _banked[category];
+    // Same UTC day as well as exact abutment: a row that ends ON a midnight is
+    // the previous day's, and extending it would produce the very period that
+    // crosses a boundary this split exists to avoid.
+    DateTime segmentStart =
+        open != null &&
+            open.end.isAtSameMomentAs(cursor) &&
+            _isSameUtcDay(open.start, cursor)
+        ? open.start
+        : cursor;
+
+    while (cursor.isBefore(observedEnd)) {
+      final DateTime midnight = _nextUtcMidnight(cursor);
+      final DateTime segmentEnd = midnight.isBefore(observedEnd)
+          ? midnight
+          : observedEnd;
+      declarations.add(
+        DosageAudioCoverage(
+          coverageId: DosageSignalIdentity.uuidV4(),
+          category: category,
+          periodStart: segmentStart,
+          periodEnd: segmentEnd,
+        ),
+      );
+      cursor = segmentEnd;
+      segmentStart = segmentEnd;
+    }
+    return declarations;
+  }
+
+  /// Records what the ingest just acknowledged, so the next seal can extend it.
+  ///
+  /// Only ever moves an anchor FORWARD. A batch delivered out of order — one
+  /// held back by its own backoff while a later one went through — must not pull
+  /// the anchor back to an older end, which would cost the next seal its
+  /// extension for no gain.
+  ///
+  /// Called only when the response accounted for EVERY declaration the batch
+  /// sent. Two things make that the bar rather than a mere 202.
+  ///
+  /// The route answers 202 for any well-formed batch even when the database write
+  /// failed, so a 202 is not evidence a row exists; banking on one would let the
+  /// next seal lengthen a row the server never held, covering an interval whose
+  /// events went down with the failed write.
+  ///
+  /// And the count it reports is an AGGREGATE — rows written, not which ones. The
+  /// server drops individual declarations that hit its per-day coverage cap or
+  /// its staleness bound, so a partial count cannot say which of this batch's
+  /// rows survived. Only a count equal to what was sent proves they all did.
+  ///
+  /// Every other outcome — a failed write, a partial count, an unreadable body, a
+  /// retry the extend-only upsert resolved to a no-op — leaves the anchor where it
+  /// was, and the next seal opens a fresh period. That costs one coverage row and
+  /// claims nothing the server cannot corroborate.
+  void _bankDelivered(List<DosageAudioCoverage> coverage) {
+    for (final declaration in coverage) {
+      final _BankedPeriod? open = _banked[declaration.category];
+      if (open == null || declaration.periodEnd.isAfter(open.end)) {
+        _banked[declaration.category] = _BankedPeriod(
+          start: declaration.periodStart,
+          end: declaration.periodEnd,
+        );
+      }
+    }
+  }
+
+  /// Midnight UTC strictly after [instant] — the next day boundary, and for an
+  /// instant that IS a midnight the following one rather than itself.
+  static DateTime _nextUtcMidnight(DateTime instant) {
+    final DateTime utc = instant.toUtc();
+    return DateTime.utc(utc.year, utc.month, utc.day + 1);
+  }
+
+  static bool _isSameUtcDay(DateTime a, DateTime b) {
+    final DateTime x = a.toUtc();
+    final DateTime y = b.toUtc();
+    return x.year == y.year && x.month == y.month && x.day == y.day;
   }
 
   /// The longest a caller may WAIT on a flush. Teardown and logout await this
@@ -381,7 +614,7 @@ class DosageAudioBuffer {
     _accessToken = accessToken;
     if (!DosageSignalsRepo.isEnabled) return Future.value();
 
-    final bool alreadyOpen = _periodStart != null;
+    final bool alreadyOpen = _observedFrom != null;
     // A flush only happens on the analytics heartbeat, on backgrounding, or at
     // teardown — all of which mean this buffer is live and reachable by every
     // emit site, so the instrument IS running from here whether or not [start]
@@ -465,13 +698,22 @@ class DosageAudioBuffer {
 
       batch.attempts++;
       sent++;
-      final bool ok = await DosageSignalsRepo.postAudioSignals(
-        events: batch.events,
-        coverage: batch.coverage,
-        accessToken: token,
-        client: _httpClient,
-      );
-      if (ok) {
+      final DosageAudioPostResult result =
+          await DosageSignalsRepo.postAudioSignals(
+            events: batch.events,
+            coverage: batch.coverage,
+            accessToken: token,
+            client: _httpClient,
+          );
+      if (result.delivered) {
+        // The anchor moves ONLY here, and only when the server's own count of
+        // rows WRITTEN accounts for EVERY declaration this batch sent — not on
+        // the 202, which it answers even for a failed write, and not on a partial
+        // count, which cannot say WHICH rows it covered.
+        if (batch.coverage.isNotEmpty &&
+            result.coverageWritten == batch.coverage.length) {
+          _bankDelivered(batch.coverage);
+        }
         delivered.add(batch);
         continue;
       }

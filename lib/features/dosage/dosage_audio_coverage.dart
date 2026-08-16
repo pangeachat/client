@@ -24,12 +24,31 @@ import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 ///
 /// Design: docs/research/104-speaking-listening-minutes-v2.md, §2b and D-V2-9.
 class DosageAudioCoverage {
-  /// Client-minted opaque UUIDv4 idempotency key, as for a playback event.
+  /// Client-minted opaque UUIDv4, FRESH PER DECLARATION — never reused across the
+  /// seals that extend one period.
+  ///
+  /// Unlike a playback's id this is not an idempotency key, and the difference is
+  /// the point. A playback is banked by `(sender, playback_id)`, so a retry of the
+  /// same id is a no-op. A coverage row is banked by the natural key
+  /// `(sender, category, period_start)` under an extend-only upsert: the server
+  /// accepts this field and deliberately does not store it, because keying on it
+  /// would bank a second row for a period the client meant to LENGTHEN — which is
+  /// exactly the row explosion the extend-only key exists to prevent.
+  ///
+  /// So it stays per declaration rather than becoming per period. It carries no
+  /// wire meaning to make stable, a stable one would suggest a deduplication the
+  /// server does not perform, and one seal can legitimately emit several
+  /// declarations for the same category when a period is cut at a UTC midnight —
+  /// two distinct rows that a shared id would misrepresent as one.
   final String coverageId;
 
   final DosageCoverageCategory category;
 
-  /// Start of the declared period, UTC, inclusive.
+  /// Start of the declared period, UTC, inclusive. NOT necessarily where the
+  /// declaring flush began observing: a seal whose interval abuts a period the
+  /// ingest has already acknowledged re-declares that period's start so the
+  /// upsert extends one row. What the declaration ADDS is still only the interval
+  /// its own flush observed.
   final DateTime periodStart;
 
   /// End of the declared period, UTC. Never in the future: a build cannot

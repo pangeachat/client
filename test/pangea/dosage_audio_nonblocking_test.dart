@@ -212,10 +212,10 @@ void main() {
       _TokenDataService(mxid, token),
       audioBuffer: buffer,
     );
-    expect(buffer.periodStart, isNull);
+    expect(buffer.observedFrom, isNull);
     svc.start();
     expect(
-      buffer.periodStart,
+      buffer.observedFrom,
       isNotNull,
       reason:
           'a build that instrumented listening and heard none still has to '
