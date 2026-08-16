@@ -402,6 +402,54 @@ void main() {
       );
     });
 
+    test(
+      'the period ends when the flush was ASKED FOR, not when it ran',
+      () async {
+        // A drain can run seconds after its flush — chained behind another pass,
+        // or waiting on a slow POST. At teardown the account is tombstoned the
+        // moment disposal starts, so sealing inside the drain would claim a
+        // period during which every emit site was already recording nothing.
+        final bodies = <Map<String, dynamic>>[];
+        final gate = Completer<http.Response>();
+        var gated = true;
+        final buffer = DosageAudioBuffer(
+          now: () => clock,
+          httpClient: MockClient((req) {
+            bodies.add(jsonDecode(req.body) as Map<String, dynamic>);
+            if (gated) return gate.future;
+            return Future.value(http.Response('', 202));
+          }),
+        );
+        buffer.start();
+        buffer.record(playback(), accessToken: token);
+        clock = clock.add(const Duration(minutes: 5));
+
+        final first = buffer.flush(accessToken: token);
+        await pumpEventQueue();
+
+        // Teardown asks while the first POST is still hanging.
+        final askedAt = clock;
+        final teardown = buffer.flush(drainAll: true, accessToken: token);
+        // The drain only runs much later.
+        clock = clock.add(const Duration(minutes: 30));
+        gated = false;
+        gate.complete(http.Response('', 202));
+        await first;
+        await teardown;
+
+        final periods = bodies
+            .expand((b) => (b['coverage'] as List).cast<Map<String, dynamic>>())
+            .map((c) => c['period_end'] as String)
+            .toSet();
+        expect(
+          periods,
+          everyElement(isNot(contains('T12:35'))),
+          reason: 'no period may end at the drain time, 30 minutes later',
+        );
+        expect(periods, contains(askedAt.toUtc().toIso8601String()));
+      },
+    );
+
     test('concurrent flushes coalesce onto one drain', () async {
       var posts = 0;
       final gate = Completer<http.Response>();

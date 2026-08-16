@@ -371,6 +371,14 @@ class DosageAudioBuffer {
     // where [start] ran while the flags were still dark, which would otherwise
     // leave the counters withheld for the whole session.
     start();
+    // Seal SYNCHRONOUSLY, at the moment the flush was asked for, never inside
+    // the drain. A drain can run seconds later — chained behind another pass, or
+    // waiting on a slow POST — and sealing there would end the period at that
+    // later instant. At teardown that is a period the buffer did not observe:
+    // the account is tombstoned the moment disposal starts, so every emit site
+    // is already recording nothing. This is the request time, which is exactly
+    // the last moment the instrument was running.
+    _seal();
 
     final inFlight = _flushing;
     if (inFlight != null && !drainAll) {
@@ -403,7 +411,6 @@ class DosageAudioBuffer {
   }
 
   Future<void> _drain({required bool drainAll}) async {
-    _seal();
     if (_batches.isEmpty) return;
 
     // No bearer yet (a flush before login resolves, or after it is invalidated):
@@ -426,6 +433,12 @@ class DosageAudioBuffer {
     for (final batch in List.of(_batches)) {
       if (!drainAll && sent >= maxSendsPerFlush) break;
       if (!drainAll && batch.backoffTicks > 0) continue;
+      // The snapshot can outlive its contents: `record` can seal a fresh batch
+      // during one of the awaits below, and sealing can evict the oldest to stay
+      // inside the bound. A batch already counted as dropped must not then be
+      // sent — the send would be harmless (the ids are idempotent) but the
+      // bookkeeping would be a lie about what the bound actually did.
+      if (!_batches.contains(batch)) continue;
 
       batch.attempts++;
       sent++;
