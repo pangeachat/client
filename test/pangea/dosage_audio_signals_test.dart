@@ -15,8 +15,9 @@ import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_shared_player_tracker.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 
-/// The three listening categories, the emitter, and the shared-player tracker.
+/// The four listening categories, the emitter, and the two playback trackers.
 ///
 /// The failure this suite exists to catch is **a category attributed to the
 /// wrong caller**. The app plays every sound through ONE global player, and
@@ -60,10 +61,33 @@ void main() {
         'peer',
         'auto_read',
         'tap_read',
+        'toolbar_read',
       ]);
     });
 
-    test('coverage has FOUR categories — voiceSend is not a listening one', () {
+    test('toolbar-open read-aloud is its OWN category, not tap_read', () {
+      // Both are learner-initiated, which is why the temptation to merge them
+      // exists and why it is wrong. They are different affordances: the speaker
+      // button is a deliberate request to hear a message again, on the paid
+      // backend voice; opening the toolbar reads the message on open, device
+      // only, and happens every time a learner selects anything. One counter
+      // holding both would mean two things at once.
+      expect(
+        DosageListeningCategory.toolbarRead.wireName,
+        isNot(DosageListeningCategory.tapRead.wireName),
+      );
+      expect(
+        DosageListeningCategory.toolbarRead.coverage,
+        isNot(DosageListeningCategory.tapRead.coverage),
+      );
+      // Nor is it category 2. That one means "nobody asked".
+      expect(
+        DosageListeningCategory.toolbarRead.wireName,
+        isNot(DosageListeningCategory.autoRead.wireName),
+      );
+    });
+
+    test('coverage has FIVE categories — voiceSend is not a listening one', () {
       // Speaking's magnitude is derived server-side, so there is no speaking
       // playback event; but the server only learns a voice message exists from a
       // client row, so its DENOMINATOR still needs a declaration (D-V2-15).
@@ -71,6 +95,7 @@ void main() {
         'peer',
         'auto_read',
         'tap_read',
+        'toolbar_read',
         'voice_send',
       ]);
       // The type system, not a convention, is what stops a listening event being
@@ -618,6 +643,181 @@ void main() {
       t.close();
 
       expect(buffer.bufferedEvents.single.elapsedMs, 6000);
+    });
+  });
+
+  group('read-aloud attribution (categories 2 and 4)', () {
+    late DosageAudioBuffer buffer;
+    late DateTime clock;
+
+    DosageTtsListeningProbe probe(DosageListeningCategory category) =>
+        DosageTtsListeningProbe(
+          category: category,
+          roomId: roomId,
+          userId: () => mxid,
+          accessToken: () => token,
+          now: () => clock,
+          buffer: buffer,
+        );
+
+    setUp(() {
+      buffer = DosageAudioBuffer();
+      clock = DateTime.utc(2026, 1, 1, 12);
+    });
+
+    void advance(Duration d) => clock = clock.add(d);
+
+    test('opening the toolbar books category 4, and ONLY category 4', () {
+      // The fourth category's own trigger: `readSelectedMessage` runs when the
+      // learner opens the toolbar on a message, and it speaks through the same
+      // `tryToSpeak` entry point as the automatic read and every word tap.
+      final p = probe(DosageListeningCategory.toolbarRead);
+      p.started();
+      advance(const Duration(seconds: 7));
+      p.finish();
+
+      expect(buffer.bufferedEvents, hasLength(1));
+      final event = buffer.bufferedEvents.single;
+      expect(event.category, DosageListeningCategory.toolbarRead);
+      expect(event.category.wireName, 'toolbar_read');
+      expect(event.elapsedMs, 7000);
+      // The counter it must NOT land in. The speaker button is a different
+      // affordance on a different surface, and its playback goes through the
+      // shared player, not through TTS.
+      expect(
+        buffer.bufferedEvents.map((e) => e.category),
+        isNot(contains(DosageListeningCategory.tapRead)),
+      );
+      expect(
+        buffer.bufferedEvents.map((e) => e.category),
+        isNot(contains(DosageListeningCategory.autoRead)),
+      );
+    });
+
+    test('the speaker button books category 3, and never category 4', () {
+      // The mirror. Category 3's trigger is the toolbar's speaker button, which
+      // owns the shared player under the `_button` id; nothing about it reaches
+      // the toolbar-open path.
+      final speakerButton = DosageSharedPlayerTracker(
+        category: DosageListeningCategory.tapRead,
+        roomId: roomId,
+        ownerId: r'$msg:example.org_button',
+        userId: () => mxid,
+        accessToken: () => token,
+        now: () => clock,
+        buffer: buffer,
+      );
+      speakerButton.update(
+        playing: true,
+        completed: false,
+        currentOwnerId: r'$msg:example.org_button',
+      );
+      advance(const Duration(seconds: 11));
+      speakerButton.update(
+        playing: false,
+        completed: true,
+        currentOwnerId: r'$msg:example.org_button',
+      );
+
+      expect(buffer.bufferedEvents, hasLength(1));
+      expect(
+        buffer.bufferedEvents.single.category,
+        DosageListeningCategory.tapRead,
+      );
+      expect(
+        buffer.bufferedEvents.map((e) => e.category),
+        isNot(contains(DosageListeningCategory.toolbarRead)),
+      );
+    });
+
+    test('one toolbar session then a speaker tap books one of each', () {
+      // The real sequence: the toolbar opens and reads the message (4), then the
+      // learner taps the speaker to hear it again (3). Two playbacks, two
+      // categories, neither borrowing the other's magnitude.
+      final opened = probe(DosageListeningCategory.toolbarRead);
+      opened.started();
+      advance(const Duration(seconds: 3));
+      opened.finish();
+
+      final speakerButton = DosageSharedPlayerTracker(
+        category: DosageListeningCategory.tapRead,
+        roomId: roomId,
+        ownerId: 'button',
+        userId: () => mxid,
+        accessToken: () => token,
+        now: () => clock,
+        buffer: buffer,
+      );
+      speakerButton.update(
+        playing: true,
+        completed: false,
+        currentOwnerId: 'button',
+      );
+      advance(const Duration(seconds: 8));
+      speakerButton.update(
+        playing: false,
+        completed: true,
+        currentOwnerId: 'button',
+      );
+
+      expect(buffer.bufferedEvents, hasLength(2));
+      expect(
+        {for (final e in buffer.bufferedEvents) e.category: e.elapsedMs},
+        {
+          DosageListeningCategory.toolbarRead: 3000,
+          DosageListeningCategory.tapRead: 8000,
+        },
+      );
+    });
+
+    test('an automatic read is still category 2, not category 4', () {
+      // Same probe, same entry point, different caller. The category is the one
+      // argument that differs, which is the point of it being an argument.
+      final p = probe(DosageListeningCategory.autoRead);
+      p.started();
+      advance(const Duration(seconds: 5));
+      p.finish();
+
+      expect(
+        buffer.bufferedEvents.single.category,
+        DosageListeningCategory.autoRead,
+      );
+    });
+
+    test('a silent TTS exit measures nothing', () {
+      // `allowChoreoPlay: false` with no known-good device voice returns near
+      // instantly and still fires `onStop`. Nothing was asked to play, so
+      // `started` never fires and there is nothing to bank.
+      final p = probe(DosageListeningCategory.toolbarRead);
+      advance(const Duration(seconds: 2));
+      p.finish();
+
+      expect(buffer.bufferedEvents, isEmpty);
+    });
+
+    test('an aborted route does not bank the time it spent failing', () {
+      final p = probe(DosageListeningCategory.toolbarRead);
+      p.started();
+      advance(const Duration(seconds: 4));
+      p.aborted();
+      advance(const Duration(seconds: 30));
+      p.finish();
+
+      expect(
+        buffer.bufferedEvents,
+        isEmpty,
+        reason: 'a route that made no sound is not listening',
+      );
+    });
+
+    test('finishing twice emits ONCE', () {
+      final p = probe(DosageListeningCategory.toolbarRead);
+      p.started();
+      advance(const Duration(seconds: 6));
+      p.finish();
+      p.finish();
+
+      expect(buffer.bufferedEvents, hasLength(1));
     });
   });
 }

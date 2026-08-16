@@ -6,8 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
-import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
-import 'package:fluffychat/features/dosage/dosage_playback_meter.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/read_aloud_queue.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -210,28 +209,53 @@ class MessageReadAloudController {
     PangeaMessageEvent message, {
     required bool isTutorial,
     required bool tokenSelected,
-  }) {
+  }) async {
     if (!readsOnSelect(
       settingEnabled: _isClickReadEnabled,
       isTutorial: isTutorial,
       tokenSelected: tokenSelected,
     )) {
-      return Future.value();
+      return;
     }
-    if (!_isReadableContent(message.event)) return Future.value();
-    if (!_isInTargetLanguage(message)) return Future.value();
+    if (!_isReadableContent(message.event)) return;
+    if (!_isInTargetLanguage(message)) return;
 
     // Ends the automatic read first. Selecting a message clears the queue
     // anyway, but that happens once the overlay registers the selection — after
     // this call — and would otherwise stop the audio being started here.
     stopAndClear();
 
-    return TtsController.tryToSpeak(
-      message.messageDisplayText,
-      langCode: message.messageDisplayLangCode,
-      useCase: TtsUseCase.messageClick,
-      allowChoreoPlay: false,
-    );
+    // Listening category 4 (#104): TOOLBAR-OPEN read-aloud.
+    //
+    // Its own category, not folded into either neighbour. Not category 2: the
+    // learner opened the toolbar, so this playback was initiated by them, and
+    // category 2's entire meaning is "nobody asked". Not category 3 either: that
+    // is the speaker button, a separate affordance on a different surface, fired
+    // deliberately to hear a message again and routed to the paid backend voice.
+    // This is device-only and comes free with selecting a message, so it is far
+    // more frequent and means something else. Merging either way would give one
+    // counter two meanings and make a teacher-visible number unreadable.
+    //
+    // The category is a constant HERE because `tryToSpeak` serves this, the
+    // automatic read above, and every word and choice tap, and cannot tell them
+    // apart.
+    final probe = _listeningProbe(DosageListeningCategory.toolbarRead);
+    try {
+      await TtsController.tryToSpeak(
+        message.messageDisplayText,
+        langCode: message.messageDisplayLangCode,
+        useCase: TtsUseCase.messageClick,
+        allowChoreoPlay: false,
+        // `allowChoreoPlay: false` with no known-good device voice returns near
+        // instantly and still fires `onStop`, so the returned future cannot tell
+        // silence from speech. This pair can: it brackets a route that was
+        // actually asked to play, and only that.
+        onPlaybackStarted: probe.started,
+        onPlaybackAborted: probe.aborted,
+      );
+    } finally {
+      probe.finish();
+    }
   }
 
   bool _isInTargetLanguage(PangeaMessageEvent message) {
@@ -267,7 +291,7 @@ class MessageReadAloudController {
     // The room is threaded from here because [TtsController.tryToSpeak] takes
     // neither a room nor an event id and serves word and choice taps too; it
     // could not name the category or the room if it wanted to.
-    final meter = DosagePlaybackMeter();
+    final probe = _listeningProbe(DosageListeningCategory.autoRead);
     try {
       await TtsController.tryToSpeak(
         message.messageDisplayText,
@@ -278,26 +302,32 @@ class MessageReadAloudController {
         // known-good device voice with the backend disallowed, tool setting
         // off, request superseded — measure nothing rather than banking a
         // near-zero interval for audio that never played.
-        onPlaybackStarted: () => meter.setPlaying(true),
+        onPlaybackStarted: probe.started,
         // And whether a route DID play is only knowable after it was asked. A
         // backend attempt that fails and falls back to the device must not have
         // the failure, or the switch, counted as audio the learner heard.
-        onPlaybackAborted: meter.discardRunningInterval,
+        onPlaybackAborted: probe.aborted,
       );
     } finally {
       // In `finally` so a throw out of TTS still closes the measurement, and
-      // AFTER the await so nothing here can delay speech. `finish` returns null
-      // when playback never started.
-      final elapsed = meter.finish();
-      if (elapsed != null) {
-        DosageAudioSignals.recordPlayback(
-          category: DosageListeningCategory.autoRead,
-          roomId: room.id,
-          elapsed: elapsed,
-          userId: room.client.userID,
-          accessToken: room.client.accessToken,
-        );
-      }
+      // AFTER the await so nothing here can delay speech. It emits nothing when
+      // playback never started.
+      probe.finish();
     }
   }
+
+  /// One measurement of one `tryToSpeak` call, tagged with the category this
+  /// controller's caller is asking for.
+  ///
+  /// The controller reads aloud for TWO different reasons and they are two
+  /// different categories — see the call sites. The category is the only thing
+  /// that differs, which is exactly why it is an argument here and a constant
+  /// there, rather than something this method could decide for itself.
+  DosageTtsListeningProbe _listeningProbe(DosageListeningCategory category) =>
+      DosageTtsListeningProbe(
+        category: category,
+        roomId: room.id,
+        userId: () => room.client.userID,
+        accessToken: () => room.client.accessToken,
+      );
 }

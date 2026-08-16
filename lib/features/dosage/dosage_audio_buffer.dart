@@ -264,13 +264,18 @@ class DosageAudioBuffer {
   /// declaration for EVERY category this build instruments, whether or not any
   /// audio occurred, and restarts the period from this instant.
   ///
-  /// The declaration set is [DosageCoverageCategory.values] — all four, including
+  /// The declaration set is [DosageCoverageCategory.values] — all five, including
   /// `voiceSend`. This is the one place the build asserts what it instruments,
   /// so if an emitter is ever removed without removing its category here, the
   /// server is told a counter is covered that nothing feeds. The parity test
   /// exists to make that a failing test rather than a silent zero.
   ///
-  /// The three LISTENING categories are always declared: their events ride in
+  /// Reading the enum rather than a hand-written list is what makes a NEW
+  /// category safe: adding one to the enum and its emitter declares it here with
+  /// no edit, and an older build that has neither declares neither, so the server
+  /// withholds that counter for it rather than serving its silence as a zero.
+  ///
+  /// The four LISTENING categories are always declared: their events ride in
   /// this same batch, so a lost batch loses the declaration with it.
   /// `voiceSend` is declared only when [_voiceSendCovered] — see there for why
   /// it alone needs the extra condition.

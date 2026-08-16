@@ -2,7 +2,7 @@
 /// a build declares.
 ///
 /// The two are deliberately different types. A playback event is always one of
-/// the three LISTENING categories; `voiceSend` is a coverage category only —
+/// the four LISTENING categories; `voiceSend` is a coverage category only —
 /// speaking's magnitude is derived server-side from the `m.audio` event, so
 /// there is no client-side speaking playback event for it to label. Splitting
 /// the enums makes "emit a listening event tagged voiceSend" unrepresentable
@@ -18,8 +18,9 @@ library;
 /// (D-V2-1). The shared playback components cannot tell these apart: one
 /// `AudioPlayerWidget` serves the timeline, the practice card and the analytics
 /// practice widget, and one `TtsController.tryToSpeak` serves automatic
-/// read-aloud, word taps and choice taps. Only the CALLER knows which kind of
-/// listening it is asking for, so only the caller may name it.
+/// read-aloud, toolbar-open read-aloud, word taps and choice taps. Only the
+/// CALLER knows which kind of listening it is asking for, so only the caller may
+/// name it.
 enum DosageListeningCategory {
   /// The learner played a voice message somebody else sent — a peer or the bot.
   /// Emitted from the timeline's `AudioPlayerWidget` call site only.
@@ -31,7 +32,22 @@ enum DosageListeningCategory {
   autoRead('auto_read'),
 
   /// The learner tapped the speaker button on a message in conversation.
-  tapRead('tap_read');
+  tapRead('tap_read'),
+
+  /// The learner opened the message toolbar and the message was read aloud on
+  /// open — `MessageReadAloudController.readSelectedMessage`, behind
+  /// `ToolSetting.audioOnMessageClick`.
+  ///
+  /// Learner-initiated, like [tapRead], and deliberately NOT merged into it. The
+  /// categories split on who initiated the playback, and a fourth bucket is what
+  /// keeps that split honest when the same learner has two different affordances:
+  /// opening the toolbar is an incidental read that comes with selecting a
+  /// message, tapping the speaker is a deliberate request to hear it again. They
+  /// carry different intent, different volume and different cost — this one is
+  /// device-only (`allowChoreoPlay: false`), the speaker button is the paid
+  /// backend route — so folding either into the other would make one counter
+  /// mean two things.
+  toolbarRead('toolbar_read');
 
   const DosageListeningCategory(this.wireName);
 
@@ -43,6 +59,7 @@ enum DosageListeningCategory {
     DosageListeningCategory.peer => DosageCoverageCategory.peer,
     DosageListeningCategory.autoRead => DosageCoverageCategory.autoRead,
     DosageListeningCategory.tapRead => DosageCoverageCategory.tapRead,
+    DosageListeningCategory.toolbarRead => DosageCoverageCategory.toolbarRead,
   };
 
   /// The category for a TIMELINE audio message, or null when this playback is
@@ -75,15 +92,22 @@ enum DosageListeningCategory {
 ///
 /// Coverage is what converts "no signal" into "zero" rather than "unknown", so
 /// a category that is NOT declared is uncovered and its counter is withheld.
-/// There are four, not three: `voiceSend` covers the `onVoiceMessageSend`
+/// There are five, not four: `voiceSend` covers the `onVoiceMessageSend`
 /// envelope and therefore `speakingMinutes` and `voiceMessagesSent` (D-V2-15).
 /// Speaking's MEASUREMENT is server-side, but the server never learns a voice
 /// message exists without a client-originated row, so its DENOMINATOR is
 /// client-side and needs the same declaration.
+///
+/// A build that ships three of the four listening emitters must declare exactly
+/// those three: an older build that has no `toolbarRead` emitter never declares
+/// `toolbar_read`, so the server withholds that counter for it rather than
+/// serving its silence as a real zero. That is the whole reason coverage is per
+/// category and not per lane.
 enum DosageCoverageCategory {
   peer('peer'),
   autoRead('auto_read'),
   tapRead('tap_read'),
+  toolbarRead('toolbar_read'),
   voiceSend('voice_send');
 
   const DosageCoverageCategory(this.wireName);

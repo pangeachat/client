@@ -61,12 +61,81 @@ void main() {
         'lib/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart',
       ]);
     });
+
+    test('toolbar-open read-aloud is named ONLY by its controller', () {
+      expect(callersOf('DosageListeningCategory.toolbarRead'), [
+        'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart',
+      ]);
+    });
+  });
+
+  group('the two read-aloud categories cannot swap', () {
+    // Categories 2 and 4 share a file, a probe and an entry point, and differ
+    // ONLY in the constant each method passes. That is the one thing a
+    // whole-file check cannot see, so it is sliced per method here. Getting it
+    // wrong would book every toolbar open as unprompted listening — a counter
+    // whose entire meaning is "nobody asked".
+    const controller =
+        'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart';
+
+    String methodBody(String source, String signature, String nextSymbol) {
+      final start = source.indexOf(signature);
+      expect(start, greaterThan(-1), reason: '$signature moved');
+      final end = source.indexOf(nextSymbol, start);
+      expect(end, greaterThan(start), reason: '$nextSymbol moved');
+      return source.substring(start, end);
+    }
+
+    test('the toolbar-open read names category 4 and nothing else', () {
+      final body = methodBody(
+        read(controller),
+        'Future<void> readSelectedMessage(',
+        'bool _isInTargetLanguage(',
+      );
+      expect(body.contains('DosageListeningCategory.toolbarRead'), isTrue);
+      for (final other in ['autoRead', 'tapRead', 'peer']) {
+        expect(
+          body.contains('DosageListeningCategory.$other'),
+          isFalse,
+          reason: 'the toolbar-open read is category 4, never $other',
+        );
+      }
+    });
+
+    test('the automatic read names category 2 and nothing else', () {
+      final body = methodBody(
+        read(controller),
+        'Future<void> _speak(',
+        'DosageTtsListeningProbe _listeningProbe(',
+      );
+      expect(body.contains('DosageListeningCategory.autoRead'), isTrue);
+      for (final other in ['toolbarRead', 'tapRead', 'peer']) {
+        expect(
+          body.contains('DosageListeningCategory.$other'),
+          isFalse,
+          reason: 'an arriving message is category 2, never $other',
+        );
+      }
+    });
+
+    test('the speaker button never names the toolbar-open category', () {
+      expect(
+        read(
+          'lib/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart',
+        ).contains('DosageListeningCategory.toolbarRead'),
+        isFalse,
+        reason:
+            'the speaker button is a deliberate second listen on the paid '
+            'route; folding it into the read-on-open counter would give that '
+            'counter two meanings',
+      );
+    });
   });
 
   group('shared components name no category', () {
     test('the shared audio player only RECEIVES one', () {
       final source = read('lib/routes/chat/audio_player.dart');
-      for (final category in ['peer', 'autoRead', 'tapRead']) {
+      for (final category in ['peer', 'autoRead', 'tapRead', 'toolbarRead']) {
         expect(
           source.contains('DosageListeningCategory.$category'),
           isFalse,

@@ -65,7 +65,7 @@ void main() {
   tearDown(DosageAudioBuffer.debugResetAccounts);
 
   group('coverage declaration', () {
-    test('every flush declares ALL FOUR categories, even with no audio', () {
+    test('every flush declares ALL FIVE categories, even with no audio', () {
       final bodies = <Map<String, dynamic>>[];
       final buffer = DosageAudioBuffer(
         now: () => clock,
@@ -88,6 +88,7 @@ void main() {
           'peer',
           'auto_read',
           'tap_read',
+          'toolbar_read',
           'voice_send',
         });
         expect((bodies.single['events'] as List), isEmpty);
@@ -238,7 +239,7 @@ void main() {
           .cast<Map<String, dynamic>>()
           .map((c) => c['category'])
           .toSet();
-      expect(declared, {'peer', 'auto_read', 'tap_read'});
+      expect(declared, {'peer', 'auto_read', 'tap_read', 'toolbar_read'});
       expect(
         declared,
         isNot(contains('voice_send')),
@@ -288,7 +289,7 @@ void main() {
               .cast<Map<String, dynamic>>()
               .map((c) => c['category'])
               .toSet(),
-          {'peer', 'auto_read', 'tap_read', 'voice_send'},
+          {'peer', 'auto_read', 'tap_read', 'toolbar_read', 'voice_send'},
         );
       },
     );
@@ -332,7 +333,7 @@ void main() {
       // its declaration landed would have the server serve an undercount as a
       // confident total.
       expect((bodies.single['events'] as List), hasLength(1));
-      expect((bodies.single['coverage'] as List), hasLength(4));
+      expect((bodies.single['coverage'] as List), hasLength(5));
     });
   });
 
@@ -586,7 +587,7 @@ void main() {
       // licensed them. The server then sees an undeclared period and withholds,
       // rather than serving the surviving events as a total.
       for (final batch in buffer.pendingBatches) {
-        expect(batch.coverage, hasLength(4));
+        expect(batch.coverage, hasLength(5));
       }
     });
 
