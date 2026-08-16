@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -300,6 +301,14 @@ class VocabAnalyticsListView extends StatelessWidget {
                                         .userL2Code!,
                                     useCase: TtsUseCase.words,
                                     pos: vocabItem.id.category,
+                                    // The vocab list is not in a room, so this
+                                    // waits on a category AND on a wire that
+                                    // accepts a null room.
+                                    listening:
+                                        const DosageListeningMeasurement.notMeasured(
+                                          DosageListeningExemption
+                                              .awaitingRoomAndCategory,
+                                        ),
                                   );
                                   AnalyticsNavigationUtil.navigateToAnalytics(
                                     context: context,

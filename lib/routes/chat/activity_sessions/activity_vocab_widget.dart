@@ -8,6 +8,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/overlay/overlay.dart';
 import 'package:fluffychat/features/overlay/overlay_display_details.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -153,6 +154,14 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
       vocab.lemma,
       langCode: widget.langCode,
       useCase: TtsUseCase.words,
+      // A tapped vocab chip speaks the word: listening, but a WORD rather than
+      // a message, which no current category covers. The room is also not
+      // guaranteed — this widget serves the in-chat activity summary, which has
+      // one, AND the session start page, which has none until a session room
+      // exists — so it needs the room to be optional too.
+      listening: const DosageListeningMeasurement.notMeasured(
+        DosageListeningExemption.awaitingRoomAndCategory,
+      ),
     );
     _showWordCard(vocab);
   }
