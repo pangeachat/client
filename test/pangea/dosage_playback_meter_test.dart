@@ -80,6 +80,30 @@ void main() {
     );
   });
 
+  test('an attempt that did not play banks nothing', () {
+    // A device `speak` that throws, or a backend `play` that fails. The route
+    // was asked to start, so the clock opened; it never made a sound, so the
+    // interval is not listening.
+    final m = meter();
+    m.setPlaying(true);
+    advance(const Duration(milliseconds: 800));
+    m.discardRunningInterval();
+    expect(m.finish(), isNull);
+  });
+
+  test('a failed backend attempt does not inflate the device fallback', () {
+    // The real sequence: backend asked to play, fails after 700 ms, falls back
+    // to the device, which plays for 3 s. Only the 3 s was heard.
+    final m = meter();
+    m.setPlaying(true);
+    advance(const Duration(milliseconds: 700));
+    m.discardRunningInterval();
+    advance(const Duration(milliseconds: 250)); // switching routes
+    m.setPlaying(true);
+    advance(const Duration(seconds: 3));
+    expect(m.finish(), const Duration(seconds: 3));
+  });
+
   test('a backwards clock jump can never produce a negative magnitude', () {
     // Wall time, not a monotonic source: an NTP correction or a timezone change
     // mid-playback can move it backwards.

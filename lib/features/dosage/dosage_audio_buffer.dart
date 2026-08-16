@@ -173,6 +173,12 @@ class DosageAudioBuffer {
   String? _accessToken;
   Future<void>? _flushing;
 
+  /// Voice-send envelopes posted but not yet acknowledged.
+  int _voiceSendsInFlight = 0;
+
+  /// Whether a voice-send envelope in THIS period is known to have been lost.
+  bool _voiceSendLost = false;
+
   /// Batches dropped by a bound, for diagnostics and for tests to assert the
   /// bound actually bites.
   int droppedBatches = 0;
@@ -185,6 +191,9 @@ class DosageAudioBuffer {
 
   @visibleForTesting
   DateTime? get periodStart => _periodStart;
+
+  @visibleForTesting
+  bool get voiceSendCoveredForTest => _voiceSendCovered;
 
   /// Opens the coverage period. Called when the account's analytics service
   /// starts, so the declared period begins when the instrument began running
@@ -216,6 +225,41 @@ class DosageAudioBuffer {
     _events.add(event);
   }
 
+  /// A voice-send envelope has been posted and not yet acknowledged.
+  ///
+  /// **`voice_send` coverage is the one declaration this lane cannot make
+  /// atomic.** The other three categories ride in the same body as the events
+  /// they license, so losing the events loses the declaration. Speaking's
+  /// evidence is a message envelope on a DIFFERENT route, and it is the only
+  /// evidence the server ever gets that the voice message exists — nothing
+  /// enumerates a room's timeline. So a declaration that landed while its
+  /// envelope did not would have the server serve a confident zero for speech
+  /// it never saw.
+  ///
+  /// The answer is to declare `voice_send` only for a period whose envelopes we
+  /// can vouch for. Anything else — one in flight at seal time, one known lost —
+  /// leaves the category undeclared and the counter withheld.
+  void noteVoiceSendPending() {
+    if (!DosageSignalsRepo.isEnabled) return;
+    _periodStart ??= _now().toUtc();
+    _voiceSendsInFlight++;
+  }
+
+  /// The outcome of a voice-send envelope reported by [noteVoiceSendPending].
+  void noteVoiceSendSettled({required bool delivered}) {
+    if (_voiceSendsInFlight > 0) _voiceSendsInFlight--;
+    if (!delivered) _voiceSendLost = true;
+  }
+
+  /// Whether this period's `voice_send` coverage may be declared.
+  ///
+  /// Deliberately pessimistic on both counts. An envelope still in flight at
+  /// seal time is UNKNOWN, not delivered; and a loss reported after its own
+  /// period was sealed withholds the current one instead, which withholds a
+  /// period that was probably fine. Both err toward a withheld counter, never
+  /// toward a confident zero.
+  bool get _voiceSendCovered => _voiceSendsInFlight == 0 && !_voiceSendLost;
+
   /// Seals the current period into a pending batch: its events plus a coverage
   /// declaration for EVERY category this build instruments, whether or not any
   /// audio occurred, and restarts the period from this instant.
@@ -225,14 +269,26 @@ class DosageAudioBuffer {
   /// so if an emitter is ever removed without removing its category here, the
   /// server is told a counter is covered that nothing feeds. The parity test
   /// exists to make that a failing test rather than a silent zero.
+  ///
+  /// The three LISTENING categories are always declared: their events ride in
+  /// this same batch, so a lost batch loses the declaration with it.
+  /// `voiceSend` is declared only when [_voiceSendCovered] — see there for why
+  /// it alone needs the extra condition.
   void _seal() {
     final DateTime end = _now().toUtc();
     final DateTime? start = _periodStart;
     _periodStart = end;
+    final bool voiceSendCovered = _voiceSendCovered;
+    _voiceSendLost = false;
 
     final List<DosageAudioCoverage> coverage = start == null
         ? const []
         : DosageCoverageCategory.values
+              .where(
+                (category) =>
+                    category != DosageCoverageCategory.voiceSend ||
+                    voiceSendCovered,
+              )
               .map(
                 (category) => DosageAudioCoverage(
                   coverageId: DosageSignalIdentity.uuidV4(),
@@ -277,31 +333,58 @@ class DosageAudioBuffer {
   /// [drainAll] to make one final attempt at everything under the still-valid
   /// bearer.
   ///
-  /// Never throws. **Concurrent flushes coalesce onto the ONE drain in flight,
-  /// but each caller awaits its own [flushDeadline]-bounded VIEW of it.** The
-  /// timeout is deliberately applied to the view and never to the latch: a
-  /// timed-out latch would clear while the real drain was still posting and let
-  /// a second drain start on the same batches, double-counting their attempts.
-  /// Same shape, and for the same reason, as the env-load latch in
+  /// Never throws, and never runs two drains at once.
+  ///
+  /// **An ordinary flush COALESCES onto a drain in flight; a [drainAll] one
+  /// CHAINS behind it.** The difference matters at teardown: coalescing a
+  /// drain-all onto a heartbeat drain would have teardown wait on a pass that
+  /// sends only [maxSendsPerFlush] and honours backoff, and then drop the buffer
+  /// with batches still in it. So a drain-all always gets its own pass —
+  /// queued behind the current one rather than racing it.
+  ///
+  /// Each caller awaits its own [flushDeadline]-bounded VIEW. The timeout is
+  /// deliberately applied to the view and never to the latch: a timed-out latch
+  /// would clear while the real drain was still posting and let a second drain
+  /// start on the same batches, double-counting their attempts. Same shape, and
+  /// the same reason, as the env-load latch in
   /// [DosageMessageSignals.ensureDosageEnvLoaded].
   ///
-  /// A caller that times out has NOT lost anything: the drain keeps running and
-  /// the batches stay buffered either way.
+  /// A caller that times out has not lost anything by timing out: the drain
+  /// keeps running and the batches stay buffered either way.
   Future<void> flush({bool drainAll = false, String? accessToken}) {
     if (accessToken != null && accessToken.isNotEmpty) {
       _accessToken = accessToken;
     }
     if (!DosageSignalsRepo.isEnabled) return Future.value();
-    final raw = _flushing ??= () async {
-      try {
-        await _drain(drainAll: drainAll);
-      } catch (_) {
-        // Best-effort: a flush can never surface to the learner.
-      } finally {
-        _flushing = null;
-      }
-    }();
-    return raw.timeout(flushDeadline, onTimeout: () {});
+
+    final inFlight = _flushing;
+    if (inFlight != null && !drainAll) {
+      return inFlight.timeout(flushDeadline, onTimeout: () {});
+    }
+
+    late final Future<void> pass;
+    pass = inFlight == null
+        ? _guardedDrain(drainAll)
+        : inFlight.then((_) => _guardedDrain(drainAll));
+    _flushing = pass;
+    // Clear the latch only if it is still OURS: a drain-all chained behind this
+    // pass has already replaced it, and clearing that would let a third drain
+    // start alongside it.
+    unawaited(
+      pass.whenComplete(() {
+        if (identical(_flushing, pass)) _flushing = null;
+      }),
+    );
+    return pass.timeout(flushDeadline, onTimeout: () {});
+  }
+
+  /// One drain pass that can never throw into the latch.
+  Future<void> _guardedDrain(bool drainAll) async {
+    try {
+      await _drain(drainAll: drainAll);
+    } catch (_) {
+      // Best-effort: a flush can never surface to the learner.
+    }
   }
 
   Future<void> _drain({required bool drainAll}) async {

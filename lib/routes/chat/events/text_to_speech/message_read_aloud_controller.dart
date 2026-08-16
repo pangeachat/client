@@ -274,11 +274,15 @@ class MessageReadAloudController {
         langCode: message.messageDisplayLangCode,
         useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.newMessage,
         allowChoreoPlay: voiceReply,
-        // Fires only if audio really starts, so the silent exits — no
+        // Fires only when a route is asked to play, so the silent exits — no
         // known-good device voice with the backend disallowed, tool setting
         // off, request superseded — measure nothing rather than banking a
         // near-zero interval for audio that never played.
         onPlaybackStarted: () => meter.setPlaying(true),
+        // And whether a route DID play is only knowable after it was asked. A
+        // backend attempt that fails and falls back to the device must not have
+        // the failure, or the switch, counted as audio the learner heard.
+        onPlaybackAborted: meter.discardRunningInterval,
       );
     } finally {
       // In `finally` so a throw out of TTS still closes the measurement, and

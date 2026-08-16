@@ -100,6 +100,36 @@ class DosageSignalsRepo {
     );
   }
 
+  /// As [postMessageEvents], but reports whether the server took the body.
+  ///
+  /// Used ONLY by the voice send. A voice message's envelope is the only
+  /// evidence the server ever gets that the message exists — nothing enumerates
+  /// a room's timeline — so `voice_send` coverage may only be declared for a
+  /// period whose envelopes we can vouch for. Every other caller keeps the
+  /// fire-and-forget path above, unchanged.
+  ///
+  /// Returns false when there was nothing to post, so a caller cannot mistake
+  /// "no envelope" for "envelope delivered".
+  static Future<bool> postMessageEventsForDelivery({
+    required List<DosageMessageEvent> events,
+    required String? accessToken,
+    http.Client? client,
+  }) async {
+    if (!_canPost(accessToken)) return false;
+    final valid = events
+        .where((e) => e.roomId.isNotEmpty && e.msgId.trim().isNotEmpty)
+        .toList();
+    if (valid.isEmpty) return false;
+    return _postForDelivery(
+      url: PApiUrls.dosageMessageEvents,
+      body: {"events": valid.map((e) => e.toJson()).toList()},
+      accessToken: accessToken!,
+      client: client,
+      signal: "message-events",
+      count: valid.length,
+    );
+  }
+
   /// Best-effort POST of one or more engagement spans. Skips a span with an
   /// empty device/span id or a non-positive duration (`span_end > span_start`
   /// is a server CHECK).

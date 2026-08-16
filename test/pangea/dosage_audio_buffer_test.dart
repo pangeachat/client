@@ -132,6 +132,104 @@ void main() {
       expect(bodies, isEmpty);
     });
 
+    test('voice_send is WITHHELD when an envelope was lost', () async {
+      // The one coverage category whose evidence rides a different route. A
+      // declaration that landed while its envelope did not would license the
+      // server to serve a confident speaking ZERO for a message it never saw.
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(bodies),
+      );
+      buffer.start();
+      buffer.noteVoiceSendPending();
+      buffer.noteVoiceSendSettled(delivered: false);
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+
+      final declared = (bodies.single['coverage'] as List)
+          .cast<Map<String, dynamic>>()
+          .map((c) => c['category'])
+          .toSet();
+      expect(declared, {'peer', 'auto_read', 'tap_read'});
+      expect(
+        declared,
+        isNot(contains('voice_send')),
+        reason: 'we cannot vouch for that period, so we do not claim it',
+      );
+    });
+
+    test(
+      'voice_send is WITHHELD while an envelope is still unconfirmed',
+      () async {
+        final bodies = <Map<String, dynamic>>[];
+        final buffer = DosageAudioBuffer(
+          now: () => clock,
+          httpClient: _recorder(bodies),
+        );
+        buffer.start();
+        buffer.noteVoiceSendPending();
+        clock = clock.add(const Duration(minutes: 5));
+        await buffer.flush(accessToken: token);
+
+        expect(
+          (bodies.single['coverage'] as List).cast<Map<String, dynamic>>().map(
+            (c) => c['category'],
+          ),
+          isNot(contains('voice_send')),
+          reason: 'in flight is UNKNOWN, not delivered',
+        );
+      },
+    );
+
+    test(
+      'voice_send is declared once its envelopes are acknowledged',
+      () async {
+        final bodies = <Map<String, dynamic>>[];
+        final buffer = DosageAudioBuffer(
+          now: () => clock,
+          httpClient: _recorder(bodies),
+        );
+        buffer.start();
+        buffer.noteVoiceSendPending();
+        buffer.noteVoiceSendSettled(delivered: true);
+        clock = clock.add(const Duration(minutes: 5));
+        await buffer.flush(accessToken: token);
+
+        expect(
+          (bodies.single['coverage'] as List)
+              .cast<Map<String, dynamic>>()
+              .map((c) => c['category'])
+              .toSet(),
+          {'peer', 'auto_read', 'tap_read', 'voice_send'},
+        );
+      },
+    );
+
+    test('a loss darkens only the period it is reported in', () async {
+      // The flag is per period, not sticky: one lost envelope must not withhold
+      // speaking for the rest of the session.
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(bodies),
+      );
+      buffer.start();
+      buffer.noteVoiceSendPending();
+      buffer.noteVoiceSendSettled(delivered: false);
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+
+      expect(
+        (bodies[1]['coverage'] as List).cast<Map<String, dynamic>>().map(
+          (c) => c['category'],
+        ),
+        contains('voice_send'),
+      );
+    });
+
     test('events and their coverage travel in ONE body', () async {
       final bodies = <Map<String, dynamic>>[];
       final buffer = DosageAudioBuffer(
@@ -226,6 +324,50 @@ void main() {
 
       await buffer.flush(accessToken: token);
       expect(posts, 1);
+    });
+
+    test('a teardown drain is NOT swallowed by an in-flight heartbeat', () async {
+      // disposeAccount removes the buffer and then drains. If the drain-all
+      // coalesced onto a heartbeat drain already in flight, teardown would wait
+      // on a pass that sends only maxSendsPerFlush and honours backoff, and the
+      // buffer would then be dropped with batches still in it.
+      final gate = Completer<http.Response>();
+      var gated = true;
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: MockClient((_) {
+          if (gated) return gate.future;
+          return Future.value(http.Response('', 202));
+        }),
+      );
+      buffer.start();
+
+      // More pending batches than one ordinary pass can send. Built with no
+      // bearer, so each flush seals a batch and holds it without attempting it.
+      for (var i = 0; i < DosageAudioBuffer.maxSendsPerFlush + 3; i++) {
+        buffer.record(playback(), accessToken: null);
+        clock = clock.add(const Duration(minutes: 5));
+        await buffer.flush();
+      }
+      expect(
+        buffer.pendingBatches.length,
+        greaterThan(DosageAudioBuffer.maxSendsPerFlush),
+      );
+
+      final heartbeat = buffer.flush(accessToken: token);
+      await pumpEventQueue();
+
+      final teardown = buffer.flush(drainAll: true, accessToken: token);
+      gated = false;
+      gate.complete(http.Response('', 202));
+      await heartbeat;
+      await teardown;
+
+      expect(
+        buffer.pendingBatches,
+        isEmpty,
+        reason: 'the teardown pass ran its own drain rather than coalescing',
+      );
     });
 
     test('concurrent flushes coalesce onto one drain', () async {

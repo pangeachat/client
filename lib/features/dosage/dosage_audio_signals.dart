@@ -21,6 +21,37 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 class DosageAudioSignals {
   DosageAudioSignals._();
 
+  /// Opens an unconfirmed voice-send envelope on [userId]'s buffer and returns
+  /// the callback that settles it.
+  ///
+  /// Speaking's magnitude is derived server-side from the `m.audio` event, but
+  /// its DENOMINATOR is not: the server learns a voice message exists only from
+  /// a client-originated row. So `voice_send` coverage — the declaration that
+  /// licenses the server to serve a speaking zero — may only be made for a
+  /// period whose envelopes actually landed. This is what connects the two.
+  ///
+  /// Returns a no-op callback for an unknown account, so the call site is
+  /// unconditional. Never throws.
+  static void Function(bool delivered) voiceSendReporter({
+    required String? userId,
+  }) {
+    DosageAudioBuffer? buffer;
+    try {
+      buffer = DosageAudioBuffer.forAccount(userId ?? "");
+      buffer?.noteVoiceSendPending();
+    } catch (_) {
+      buffer = null;
+    }
+    var settled = false;
+    return (delivered) {
+      if (settled) return;
+      settled = true;
+      try {
+        buffer?.noteVoiceSendSettled(delivered: delivered);
+      } catch (_) {}
+    };
+  }
+
   /// Records one finished playback against [category].
   ///
   /// [roomId] is required and is the ONLY identifier that travels: no source

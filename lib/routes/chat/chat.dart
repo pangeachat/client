@@ -31,6 +31,7 @@ import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart'
 import 'package:fluffychat/features/bot/bot_event_extension.dart';
 import 'package:fluffychat/features/bot/bot_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
@@ -1946,6 +1947,14 @@ class ChatController extends State<ChatPageWithRoom>
           ? stt!.transcript.sttTokens.length
           : null,
       langCode: stt?.hasUsableTranscript == true ? stt!.langCode : null,
+      // This envelope is the ONLY evidence the server gets that a voice message
+      // exists, so `voice_send` coverage — which licenses it to serve a speaking
+      // ZERO — may only be declared for a period whose envelopes landed. Report
+      // the outcome so a lost one withholds the period instead. Still
+      // fire-and-forget for this send: nothing below is awaited.
+      onEnvelopeSettled: DosageAudioSignals.voiceSendReporter(
+        userId: capturedClientUserId,
+      ),
     );
 
     // The voice note is on the wire, so the learner is in a spoken exchange:

@@ -5,12 +5,15 @@ import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
+import 'package:http/http.dart' as http;
+import 'package:http/testing.dart';
 
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_coverage.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_signals.dart';
+import 'package:fluffychat/features/dosage/dosage_message_signals.dart';
 import 'package:fluffychat/features/dosage/dosage_shared_player_tracker.dart';
 
 /// The three listening categories, the emitter, and the shared-player tracker.
@@ -301,6 +304,101 @@ void main() {
         ),
         returnsNormally,
       );
+    });
+  });
+
+  group('voice-send coverage is backed by a delivered envelope', () {
+    test('a lost envelope withholds voice_send for that period', () async {
+      final buffer = DosageAudioBuffer(now: DateTime.now);
+      DosageAudioBuffer.debugPutAccount(mxid, buffer);
+      buffer.start();
+
+      DosageMessageSignals.emitForSentMessage(
+        roomId: roomId,
+        userId: mxid,
+        deviceId: 'DEVICE-A',
+        accessToken: token,
+        msgEventId: r'$voice:example.org',
+        body: 'hola',
+        // The route is not deployed yet — the normal case for now.
+        client: MockClient((_) async => http.Response('', 404)),
+        onEnvelopeSettled: DosageAudioSignals.voiceSendReporter(userId: mxid),
+      );
+      await pumpEventQueue();
+
+      expect(
+        buffer.voiceSendCoveredForTest,
+        isFalse,
+        reason:
+            'the server never learned the message exists, so it must not be '
+            'licensed to serve a speaking zero for this period',
+      );
+    });
+
+    test('a delivered envelope leaves voice_send declarable', () async {
+      final buffer = DosageAudioBuffer(now: DateTime.now);
+      DosageAudioBuffer.debugPutAccount(mxid, buffer);
+      buffer.start();
+
+      DosageMessageSignals.emitForSentMessage(
+        roomId: roomId,
+        userId: mxid,
+        deviceId: 'DEVICE-A',
+        accessToken: token,
+        msgEventId: r'$voice:example.org',
+        body: 'hola',
+        client: MockClient((_) async => http.Response('', 202)),
+        onEnvelopeSettled: DosageAudioSignals.voiceSendReporter(userId: mxid),
+      );
+      await pumpEventQueue();
+
+      expect(buffer.voiceSendCoveredForTest, isTrue);
+    });
+
+    test('an unresolved send leaves nothing outstanding', () async {
+      // The send never landed, so there is no message the server could be
+      // missing — this must not withhold speaking for the period.
+      final buffer = DosageAudioBuffer(now: DateTime.now);
+      DosageAudioBuffer.debugPutAccount(mxid, buffer);
+      buffer.start();
+
+      DosageMessageSignals.emitForSentMessage(
+        roomId: roomId,
+        userId: mxid,
+        deviceId: 'DEVICE-A',
+        accessToken: token,
+        msgEventId: null,
+        body: 'hola',
+        client: MockClient((_) async => http.Response('', 202)),
+        onEnvelopeSettled: DosageAudioSignals.voiceSendReporter(userId: mxid),
+      );
+      await pumpEventQueue();
+
+      expect(
+        buffer.voiceSendCoveredForTest,
+        isTrue,
+        reason: 'a guard exit must settle, or the counter is dark forever',
+      );
+    });
+
+    test('text sends are untouched: no delivery inspection, no coverage', () {
+      // The shared emitter must behave exactly as before for every other
+      // caller — the settle path is opt-in.
+      final buffer = DosageAudioBuffer(now: DateTime.now);
+      DosageAudioBuffer.debugPutAccount(mxid, buffer);
+      buffer.start();
+
+      DosageMessageSignals.emitForSentMessage(
+        roomId: roomId,
+        userId: mxid,
+        deviceId: 'DEVICE-A',
+        accessToken: token,
+        msgEventId: r'$text:example.org',
+        body: 'hola',
+        client: MockClient((_) async => http.Response('', 404)),
+      );
+
+      expect(buffer.voiceSendCoveredForTest, isTrue);
     });
   });
 

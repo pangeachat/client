@@ -58,6 +58,19 @@ class DosagePlaybackMeter {
     _runningSince = null;
   }
 
+  /// Drops the currently running interval instead of banking it.
+  ///
+  /// For a playback attempt that turned out not to play. Some routes can only be
+  /// known to have failed AFTER they were asked to start — a device `speak` that
+  /// throws, or a backend `play` that fails and falls back — and the time spent
+  /// failing is not listening. Without this the meter would bank the failure and,
+  /// on the fallback path, the time spent switching routes as well.
+  ///
+  /// Deliberately does NOT clear [hasStarted]: a later attempt in the same
+  /// request may still play, and an attempt that banks nothing yields null from
+  /// [finish] anyway.
+  void discardRunningInterval() => _runningSince = null;
+
   /// Closes the measurement and returns the total, or null when playback never
   /// started or measured nothing. Resets, so a re-entrant or duplicated finish
   /// (a stop transition immediately followed by dispose) returns null the second
