@@ -132,6 +132,38 @@ void main() {
       expect(bodies, isEmpty);
     });
 
+    test('a period opens where the instrument is KNOWN to be running', () async {
+      // A flush means the buffer is live and reachable by every emit site, so
+      // the period may open there — but it opens explicitly, never as a side
+      // effect of sealing nothing. The distinction matters because when the
+      // period starts is the one fact this class asserts, and it must not depend
+      // on when a flush happened to fire.
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(bodies),
+      );
+
+      // Never started. Two hours pass before anything flushes.
+      clock = clock.add(const Duration(hours: 2));
+      await buffer.flush(accessToken: token);
+      expect(
+        bodies,
+        isEmpty,
+        reason: 'the two hours before the buffer was reachable are not claimed',
+      );
+      final opened = buffer.periodStart;
+      expect(opened, isNotNull);
+
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+      expect(
+        _coverageOf(bodies.single, 'peer')['period_start'],
+        opened!.toIso8601String(),
+        reason: 'the declared period starts where the instrument did',
+      );
+    });
+
     test('voice_send is WITHHELD when an envelope was lost', () async {
       // The one coverage category whose evidence rides a different route. A
       // declaration that landed while its envelope did not would license the

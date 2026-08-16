@@ -275,8 +275,16 @@ class DosageAudioBuffer {
   /// `voiceSend` is declared only when [_voiceSendCovered] — see there for why
   /// it alone needs the extra condition.
   void _seal() {
-    final DateTime end = _now().toUtc();
     final DateTime? start = _periodStart;
+    // Nothing observed and no period open: seal nothing and, crucially, START
+    // nothing. Opening a period as a side effect of an empty seal would make the
+    // one fact this class asserts — when the instrument was running — depend on
+    // when a flush happened to fire. [start] and [record] and the explicit open
+    // in [flush] are the three places that genuinely know, and they are the only
+    // places allowed to say so.
+    if (start == null && _events.isEmpty) return;
+
+    final DateTime end = _now().toUtc();
     _periodStart = end;
     final bool voiceSendCovered = _voiceSendCovered;
     _voiceSendLost = false;
@@ -356,6 +364,13 @@ class DosageAudioBuffer {
       _accessToken = accessToken;
     }
     if (!DosageSignalsRepo.isEnabled) return Future.value();
+    // A flush only happens on the analytics heartbeat, on backgrounding, or at
+    // teardown — all of which mean this buffer is live and reachable by every
+    // emit site, so the instrument IS running from here whether or not [start]
+    // was reached. Opening the period explicitly here also self-heals the case
+    // where [start] ran while the flags were still dark, which would otherwise
+    // leave the counters withheld for the whole session.
+    start();
 
     final inFlight = _flushing;
     if (inFlight != null && !drainAll) {
