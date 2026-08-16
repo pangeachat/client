@@ -94,6 +94,41 @@ void main() {
     });
   });
 
+  group('both shared-player surfaces watch ownership', () {
+    test('each closes its measurement from the owner notifier', () {
+      // A player-state subscription alone is not enough. A surface that takes
+      // the one global player stops and DISPOSES the player the other surface
+      // is subscribed to, and a disposed player closes its state stream — so
+      // the transition that would have closed the measurement may never arrive.
+      // The meter would keep running and, at dispose, book the other surface's
+      // playback under this one's category.
+      //
+      // Ownership changes through the notifier whether or not a state event
+      // follows, so both surfaces must watch it. Pinned mechanically because
+      // the two implementations are separate and only one of them had it.
+      for (final path in [
+        'lib/routes/chat/audio_player.dart',
+        'lib/routes/chat/toolbar/reading_assistance/select_mode_buttons.dart',
+      ]) {
+        final source = read(path);
+        expect(
+          source.contains(
+            'voiceMessageEventId.addListener(_onListeningOwnershipChange)',
+          ),
+          isTrue,
+          reason: '$path must close its measurement when it loses the player',
+        );
+        expect(
+          source.contains(
+            'voiceMessageEventId.removeListener(_onListeningOwnershipChange)',
+          ),
+          isTrue,
+          reason: '$path must drop that listener on dispose',
+        );
+      }
+    });
+  });
+
   group('the practice surfaces stay out of scope', () {
     test('neither practice call site passes a category', () {
       // Both are message-scoped and one is paid, so both COULD be counted. They

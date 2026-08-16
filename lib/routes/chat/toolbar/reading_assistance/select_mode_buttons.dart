@@ -207,6 +207,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     controller.playTokenNotifier.addListener(_playToken);
+    // #Pangea
+    matrix?.voiceMessageEventId.addListener(_onListeningOwnershipChange);
+    // Pangea#
 
     final chat = widget.controller.chatController;
     if (chat != null &&
@@ -245,7 +248,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     // #Pangea
     // BEFORE the player is torn down and the owner id cleared: a playback the
     // learner closed the toolbar on is still listening that happened, and its
-    // measurement would be lost once ownership is gone.
+    // measurement would be lost once ownership is gone. The listener comes off
+    // first so clearing the notifier below cannot re-enter this.
+    matrix?.voiceMessageEventId.removeListener(_onListeningOwnershipChange);
     _listeningTracker?.close();
     // Pangea#
     matrix?.audioPlayer?.dispose();
@@ -616,6 +621,24 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
       completed: state.processingState == ProcessingState.completed,
       currentOwnerId: matrix?.voiceMessageEventId.value,
     );
+  }
+
+  /// Closes the measurement the moment another surface takes the shared player.
+  ///
+  /// The player-state subscription above is NOT sufficient on its own, and this
+  /// is why: a surface that takes the player stops and DISPOSES the one this
+  /// widget is subscribed to, and a disposed player closes its state stream —
+  /// so the transition that would have closed the measurement may never be
+  /// delivered. The meter would then keep running and, at toolbar dispose, book
+  /// however long the learner spent listening to somebody else's voice message
+  /// as a speaker-button read-aloud.
+  ///
+  /// Ownership changes through the notifier whether or not a state event
+  /// follows, so the notifier is the reliable signal. The timeline player guards
+  /// itself the same way, and an invariant test pins that both do.
+  void _onListeningOwnershipChange() {
+    if (matrix?.voiceMessageEventId.value == _playerOwnerId) return;
+    _listeningTracker?.close();
   }
   // Pangea#
 

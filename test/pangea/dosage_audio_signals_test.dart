@@ -568,6 +568,35 @@ void main() {
       expect(buffer.bufferedEvents, hasLength(1));
     });
 
+    test(
+      'losing the player with NO further state event cannot inflate the total',
+      () {
+        // The surface that takes the player disposes the one we are subscribed
+        // to, so the closing transition may never be delivered. Ownership is the
+        // reliable signal, and closing on it is what stops the meter running on
+        // through somebody else's playback until this surface is disposed.
+        final t = tracker(
+          category: DosageListeningCategory.tapRead,
+          ownerId: 'toolbar',
+        );
+        t.update(playing: true, completed: false, currentOwnerId: 'toolbar');
+        advance(const Duration(seconds: 3));
+
+        // Ownership moves; the surface closes on the notifier rather than
+        // waiting for a state event that is not coming.
+        t.close();
+        advance(const Duration(minutes: 4));
+        t.close();
+
+        expect(buffer.bufferedEvents, hasLength(1));
+        expect(
+          buffer.bufferedEvents.single.elapsedMs,
+          3000,
+          reason: 'the 4 minutes after the handover belong to another surface',
+        );
+      },
+    );
+
     test('closing without playback emits nothing', () {
       final t = tracker(
         category: DosageListeningCategory.tapRead,
