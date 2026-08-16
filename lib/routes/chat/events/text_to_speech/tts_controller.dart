@@ -310,8 +310,59 @@ class TtsController {
     /// eligible incoming message and so must not spend backend calls. See
     /// message-read-aloud.instructions.md.
     bool allowChoreoPlay = true,
+
+    /// Fires immediately before a route is asked to play — never on an exit that
+    /// turns out to be silent.
+    ///
+    /// A caller measuring how long the learner listened cannot use the returned
+    /// future alone, because several exits resolve it having played nothing: the
+    /// per-surface tool setting is off, the request was superseded, backend and
+    /// device both failed, or — the one this exists for — `allowChoreoPlay` is
+    /// false and the device has no known-good voice, which returns near
+    /// instantly and still fires `onStop`. A naive wrapper records a near-zero
+    /// interval for audio nobody heard.
+    ///
+    /// [onStart] cannot serve: it fires unconditionally before routing, so it is
+    /// true of the silent exits too. This fires after every one of them, so
+    /// "playback never began" is expressed by this NOT firing.
+    ///
+    /// PAIRED with [onPlaybackAborted]. Whether a route played can only be known
+    /// after it was asked to, so this is an intent to play and the pair is what
+    /// makes it an observation. Never awaited and fully guarded: a throwing
+    /// callback cannot disturb speech.
+    VoidCallback? onPlaybackStarted,
+
+    /// Fires when a route that was asked to play did NOT play — a device `speak`
+    /// that threw, or a backend `play` that failed before falling back.
+    ///
+    /// The caller drops the interval opened by [onPlaybackStarted]. Without it,
+    /// a failed backend attempt banks the time spent failing AND the time spent
+    /// switching to the device, and a route that never made a sound still
+    /// reports listening.
+    VoidCallback? onPlaybackAborted,
   }) async {
     final requestId = ++_requestCounter;
+    // Deliberately NOT latched: start and abort are paired PER ROUTE, so a
+    // backend failure that falls back to the device is start/abort/start/end —
+    // one banked interval, the failed one discarded. A latch would suppress the
+    // device route's start and leave the meter running from the failed attempt.
+    void guarded(VoidCallback? callback, String name) {
+      try {
+        callback?.call();
+      } catch (e, s) {
+        error_handler.ErrorHandler.logError(
+          e: e,
+          s: s,
+          data: {'m': '$name threw (swallowed)'},
+        );
+      }
+    }
+
+    void reportPlaybackStarted() =>
+        guarded(onPlaybackStarted, 'onPlaybackStarted');
+    void reportPlaybackAborted() =>
+        guarded(onPlaybackAborted, 'onPlaybackAborted');
+
     final strippedText = stripEmojis(text);
     final request = _AudioRequest(
       text: strippedText,
@@ -364,6 +415,8 @@ class TtsController {
         tid: transactionId,
         speed: speed,
         allowChoreoPlay: allowChoreoPlay,
+        onPlaybackStarted: reportPlaybackStarted,
+        onPlaybackAborted: reportPlaybackAborted,
       );
     } catch (e, s) {
       // An affordance marked playing by onStart renders that state until
@@ -405,6 +458,8 @@ class TtsController {
     required String tid,
     double speed = 1.0,
     bool allowChoreoPlay = true,
+    VoidCallback? onPlaybackStarted,
+    VoidCallback? onPlaybackAborted,
   }) async {
     chatController?.stopMediaStream.add(null);
     MatrixState.pangeaController.matrixState.audioPlayer?.stop();
@@ -490,7 +545,12 @@ class TtsController {
           ),
           tid: tid,
           speed: speed,
+          onPlaybackStarted: onPlaybackStarted,
         );
+        // The backend was asked to play and did not. Whatever interval it opened
+        // is not listening — drop it BEFORE the fallback opens its own, or the
+        // time spent failing and switching routes is banked as audio heard.
+        if (!success) onPlaybackAborted?.call();
 
         final allowFallback = TtsRouting.allowDeviceFallback(
           hasPhoneme: ttsPhoneme != null,
@@ -498,7 +558,7 @@ class TtsController {
         );
         if (!success && allowFallback && _isCurrentRequestId(requestId)) {
           _log('tryToSpeak: speaking from device on backend failure', tid);
-          await _speakFromDevice(
+          final rescued = await _speakFromDevice(
             text,
             langCode,
             [token],
@@ -506,7 +566,9 @@ class TtsController {
             requestId: requestId,
             speed: speed,
             voice: selection.voice,
+            onPlaybackStarted: onPlaybackStarted,
           );
+          if (!rescued) onPlaybackAborted?.call();
         } else if (!success) {
           _log(
             'tryToSpeak: no device fallback '
@@ -515,7 +577,7 @@ class TtsController {
           );
         }
       } else {
-        await _speakFromDevice(
+        final played = await _speakFromDevice(
           text,
           langCode,
           [token],
@@ -523,7 +585,9 @@ class TtsController {
           requestId: requestId,
           speed: speed,
           voice: selection.voice,
+          onPlaybackStarted: onPlaybackStarted,
         );
+        if (!played) onPlaybackAborted?.call();
       }
     } else if (targetID != null && context != null) {
       TtsDisabledPopup.show(context, targetID, gate);
@@ -543,6 +607,7 @@ class TtsController {
     /// The device voice to use, as `{name, locale}`. When omitted, the engine's
     /// default voice for the language (set via `_setSpeakingLanguage`) is used.
     Map<String, String>? voice,
+    VoidCallback? onPlaybackStarted,
   }) async {
     if (!_isCurrentRequestId(requestId)) {
       _log('Skipping device playback for superseded request', tid);
@@ -569,6 +634,10 @@ class TtsController {
         }
       }
       _tts.setSpeechRate(setSpeed);
+      // Device audio starts here. `awaitSpeakCompletion(true)` is set, so the
+      // await below resolves at playback END — the pair brackets the elapsed
+      // wall clock a listening measurement needs.
+      onPlaybackStarted?.call();
       await Future(() => (_tts.speak(text)));
       _log('Audio playback from device completed', tid);
       return true;
@@ -590,6 +659,7 @@ class TtsController {
     Duration timeout = const Duration(seconds: 10),
     required String tid,
     double speed = 1.0,
+    VoidCallback? onPlaybackStarted,
   }) async {
     _log('_speakFromChoreo: text="$text" ttsPhoneme=$ttsPhoneme', tid);
     TextToSpeechResponseModel? ttsRes;
@@ -648,6 +718,8 @@ class TtsController {
         );
         return false;
       }
+      // Backend audio starts here; `play()` resolves at playback end.
+      onPlaybackStarted?.call();
       await player.play();
       _log('Audio playback from choreo completed', tid);
       return true;

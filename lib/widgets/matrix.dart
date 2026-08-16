@@ -19,6 +19,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -618,14 +619,27 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// Never throws or blocks the logout.
   Future<void> flushAccountTelemetry(String clientName) async {
     try {
-      final userId = _analyticsServices[clientName]?.accountUserId;
+      final service = _analyticsServices[clientName];
+      final userId = service?.accountUserId;
       if (userId == null || userId.isEmpty) return;
       // Tombstoned, non-destructive flush: KEEPS the tracker (so a failed logout
       // leaves it live) but blocks a new span from opening during the awaited
       // POST — which would otherwise flush only after logout kills the bearer.
-      await DosageEngagementTracker.flushForLogout(
-        userId,
-      ).timeout(const Duration(seconds: 5));
+      //
+      // The audio buffer gets the same treatment and, unlike the span, it is
+      // handed the bearer explicitly: a listening observation has no Matrix
+      // artefact to re-derive it from, so this is the last moment it can be
+      // delivered at all. Both are bounded and independent — one timing out must
+      // not cost the other its flush.
+      await Future.wait([
+        DosageEngagementTracker.flushForLogout(
+          userId,
+        ).timeout(const Duration(seconds: 5)).catchError((_) {}),
+        DosageAudioBuffer.flushForLogout(
+          userId,
+          accessToken: service?.accountAccessToken,
+        ).timeout(const Duration(seconds: 5)).catchError((_) {}),
+      ]);
     } catch (_) {
       // Telemetry is best-effort; a flush failure must never block logout.
     }

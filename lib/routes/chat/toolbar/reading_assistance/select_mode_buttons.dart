@@ -11,6 +11,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_shared_player_tracker.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_enum.dart';
 import 'package:fluffychat/features/tutorials/tutorial_model.dart';
@@ -177,6 +179,17 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   StreamSubscription? _playerStateSub;
   final ValueNotifier<bool> _isPlayingNotifier = ValueNotifier(false);
 
+  /// Elapsed-playback accounting for listening category 3 (#104). Driven from
+  /// [_onUpdatePlayerState], which this widget already subscribes to for the
+  /// play/pause button state, so the measurement adds no new subscription and no
+  /// new work on the playback path.
+  DosageSharedPlayerTracker? _listeningTracker;
+
+  /// This widget's key in the shared player's owner notifier. The same string
+  /// [playAudio] and [_reloadAndPlayAudio] set, and the reason a timeline
+  /// bubble's peer measurement cannot claim this playback: the ids differ.
+  String get _playerOwnerId => "${messageEvent.eventId}_button";
+
   StreamSubscription? _audioSub;
   StreamSubscription? _tutorialSub;
 
@@ -194,6 +207,9 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     controller.playTokenNotifier.addListener(_playToken);
+    // #Pangea
+    matrix?.voiceMessageEventId.addListener(_onListeningOwnershipChange);
+    // Pangea#
 
     final chat = widget.controller.chatController;
     if (chat != null &&
@@ -229,6 +245,14 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
     }
 
     _closeModeDisabledSnackBar();
+    // #Pangea
+    // BEFORE the player is torn down and the owner id cleared: a playback the
+    // learner closed the toolbar on is still listening that happened, and its
+    // measurement would be lost once ownership is gone. The listener comes off
+    // first so clearing the notifier below cannot re-enter this.
+    matrix?.voiceMessageEventId.removeListener(_onListeningOwnershipChange);
+    _listeningTracker?.close();
+    // Pangea#
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = null;
     matrix?.voiceMessageEventId.value = null;
@@ -482,7 +506,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   }
 
   Future<void> playAudio() async {
-    final playerID = "${messageEvent.eventId}_button";
+    final playerID = _playerOwnerId;
     final isPlaying =
         matrix?.audioPlayer != null &&
         matrix?.voiceMessageEventId.value == playerID &&
@@ -502,7 +526,7 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
   Future<void> _reloadAndPlayAudio({Duration? seek}) async {
     matrix?.audioPlayer?.dispose();
     matrix?.audioPlayer = AudioPlayer();
-    matrix?.voiceMessageEventId.value = "${messageEvent.eventId}_button";
+    matrix?.voiceMessageEventId.value = _playerOwnerId;
 
     _playerStateSub?.cancel();
     _playerStateSub = matrix?.audioPlayer?.playerStateStream.listen(
@@ -564,7 +588,59 @@ class SelectModeButtonsState extends State<SelectModeButtons> {
             state.processingState == ProcessingState.completed)) {
       _isPlayingNotifier.value = false;
     }
+    // #Pangea
+    _trackListening(state);
+    // Pangea#
   }
+
+  // #Pangea
+  /// Accumulates listening category 3 off the same player state the button
+  /// already reads: the learner TAPPED the speaker button on a message in
+  /// conversation.
+  ///
+  /// This is the paid backend TTS path, but that is not what defines the
+  /// category — a learner-initiated playback is category 3 whoever paid, and an
+  /// automatic read-aloud is category 2 even when it uses the same paid voice
+  /// (D-V2-3). Deliberately NOT emitted for the message practice card, which
+  /// also fetches paid TTS for a specific message and so also has a room: it is
+  /// a practice surface, and blending drill behaviour into a conversation metric
+  /// would produce a precise number about an undefined scope.
+  ///
+  /// Synchronous: an in-memory append, no await, nothing the learner can
+  /// perceive.
+  void _trackListening(PlayerState state) {
+    _listeningTracker ??= DosageSharedPlayerTracker(
+      category: DosageListeningCategory.tapRead,
+      roomId: messageEvent.event.room.id,
+      ownerId: _playerOwnerId,
+      userId: () => matrix?.client.userID,
+      accessToken: () => matrix?.client.accessToken,
+    );
+    _listeningTracker!.update(
+      playing: state.playing,
+      completed: state.processingState == ProcessingState.completed,
+      currentOwnerId: matrix?.voiceMessageEventId.value,
+    );
+  }
+
+  /// Closes the measurement the moment another surface takes the shared player.
+  ///
+  /// The player-state subscription above is NOT sufficient on its own, and this
+  /// is why: a surface that takes the player stops and DISPOSES the one this
+  /// widget is subscribed to, and a disposed player closes its state stream —
+  /// so the transition that would have closed the measurement may never be
+  /// delivered. The meter would then keep running and, at toolbar dispose, book
+  /// however long the learner spent listening to somebody else's voice message
+  /// as a speaker-button read-aloud.
+  ///
+  /// Ownership changes through the notifier whether or not a state event
+  /// follows, so the notifier is the reliable signal. The timeline player guards
+  /// itself the same way, and an invariant test pins that both do.
+  void _onListeningOwnershipChange() {
+    if (matrix?.voiceMessageEventId.value == _playerOwnerId) return;
+    _listeningTracker?.close();
+  }
+  // Pangea#
 
   void _playToken() {
     final token = controller.playTokenNotifier.value.$1;

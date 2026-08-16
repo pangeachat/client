@@ -82,7 +82,21 @@ class DosageMessageSignals {
     DateTime? ts,
     http.Client? client,
     DosageEngagementTracker? tracker,
+    void Function(bool delivered)? onEnvelopeSettled,
   }) {
+    // Called on EVERY exit, exactly once, whenever a caller supplied it. A
+    // caller that tracks unconfirmed envelopes (the voice send, whose coverage
+    // depends on them) would otherwise be left with one outstanding forever on
+    // the guard paths below, and withhold its counter permanently.
+    var settled = false;
+    void settle({required bool delivered}) {
+      if (settled) return;
+      settled = true;
+      try {
+        onEnvelopeSettled?.call(delivered);
+      } catch (_) {}
+    }
+
     // Best-effort BOUNDARY: nothing in the dosage emit — including the
     // synchronous envelope build and the engagement tick — may ever escape into
     // the caller's send/save flow. The whole body is guarded and swallowed.
@@ -91,29 +105,57 @@ class DosageMessageSignals {
       // learner turn. Emitting for it would add a second message envelope and a
       // second engagement tick for one turn, so a send that targets an edit
       // ([editEventId] set) counts nothing here.
-      if (editEventId != null) return;
+      if (editEventId != null) {
+        // Nothing was sent, so nothing is outstanding — not a loss.
+        settle(delivered: true);
+        return;
+      }
 
       // The server rejects placeholder ids, so an unresolved send counts nothing
       // — neither the envelope nor the engagement tick. Matches the repo's
       // blank-id guard (trim) so a whitespace-only id records nothing either.
-      if (msgEventId == null || msgEventId.trim().isEmpty) return;
+      if (msgEventId == null || msgEventId.trim().isEmpty) {
+        // The send itself did not land, so there is no message for the server to
+        // be missing. Nothing outstanding.
+        settle(delivered: true);
+        return;
+      }
 
-      unawaited(
-        DosageSignalsRepo.postMessageEvents(
-          events: [
-            DosageMessageEvent.fromSentMessage(
-              roomId: roomId,
-              msgId: msgEventId,
-              ts: ts ?? DateTime.now(),
-              body: body,
-              tokenCount: tokenCount,
-              langCode: langCode,
-            ),
-          ],
-          accessToken: accessToken,
-          client: client,
-        ).catchError((_) {}),
-      );
+      final events = [
+        DosageMessageEvent.fromSentMessage(
+          roomId: roomId,
+          msgId: msgEventId,
+          ts: ts ?? DateTime.now(),
+          body: body,
+          tokenCount: tokenCount,
+          langCode: langCode,
+        ),
+      ];
+
+      if (onEnvelopeSettled == null) {
+        // The unchanged path every text send takes: fire, forget, never inspect
+        // the status.
+        unawaited(
+          DosageSignalsRepo.postMessageEvents(
+            events: events,
+            accessToken: accessToken,
+            client: client,
+          ).catchError((_) {}),
+        );
+      } else {
+        // Still fire-and-forget for the CALLER — nothing below is awaited — but
+        // the outcome is reported so a coverage declaration can depend on it.
+        unawaited(
+          DosageSignalsRepo.postMessageEventsForDelivery(
+            events: events,
+            accessToken: accessToken,
+            client: client,
+          ).then(
+            (delivered) => settle(delivered: delivered),
+            onError: (_) => settle(delivered: false),
+          ),
+        );
+      }
 
       // Resolve the ACCOUNT's tracker (per-account, so accounts never merge);
       // an unknown account (empty userId) records no engagement tick. The
@@ -125,6 +167,10 @@ class DosageMessageSignals {
         accessToken: accessToken,
       );
     } catch (e, s) {
+      // A throw somewhere in the emit means we cannot claim the envelope was
+      // sent. Reporting it as undelivered withholds the period rather than
+      // licensing a zero we did not observe.
+      settle(delivered: false);
       // Even the error report is best-effort. ErrorHandler.logError is async, so
       // a Sentry failure (e.g. uninitialised in a bare background isolate)
       // surfaces as a REJECTED future, which a synchronous try/catch can't
