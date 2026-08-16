@@ -164,6 +164,61 @@ void main() {
       );
     });
 
+    test(
+      'opening a period does not also declare it, on a REAL clock',
+      () async {
+        // The seal is what puts a period on the wire, so a flush that OPENS a
+        // period must not seal it in the same call: the period would be however
+        // long two clock reads happened to take. A fixed-clock test cannot see
+        // this, so this one uses the real one.
+        final bodies = <Map<String, dynamic>>[];
+        final buffer = DosageAudioBuffer(httpClient: _recorder(bodies));
+        await buffer.flush(accessToken: token);
+        expect(
+          bodies,
+          isEmpty,
+          reason: 'a microsecond-long period is noise, not an observation',
+        );
+      },
+    );
+
+    test('a loss survives a seal that declared nothing', () async {
+      // The withhold flag is the entire mechanism, so it must outlive a seal
+      // that emitted no coverage — otherwise the loss is erased without any
+      // period having been withheld for it, and the next period declares
+      // voice_send for a message the server never saw.
+      final bodies = <Map<String, dynamic>>[];
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: _recorder(bodies),
+      );
+      buffer.start();
+      buffer.noteVoiceSendPending();
+      buffer.noteVoiceSendSettled(delivered: false);
+      // An event, so the seal below DOES produce a batch — it just produces one
+      // with no coverage in it. That is the case where the flag could be
+      // discharged by a seal that declared nothing.
+      buffer.record(playback(), accessToken: token);
+
+      // A seal at the same instant the period opened: zero length, so its
+      // coverage is all invalid and the batch carries events only.
+      await buffer.flush(accessToken: token);
+      expect(bodies, hasLength(1));
+      expect((bodies.single['coverage'] as List), isEmpty);
+      expect((bodies.single['events'] as List), hasLength(1));
+      bodies.clear();
+
+      clock = clock.add(const Duration(minutes: 5));
+      await buffer.flush(accessToken: token);
+      expect(
+        (bodies.single['coverage'] as List).cast<Map<String, dynamic>>().map(
+          (c) => c['category'],
+        ),
+        isNot(contains('voice_send')),
+        reason: 'the loss was never discharged, so it must still withhold',
+      );
+    });
+
     test('voice_send is WITHHELD when an envelope was lost', () async {
       // The one coverage category whose evidence rides a different route. A
       // declaration that landed while its envelope did not would license the
@@ -449,6 +504,34 @@ void main() {
         expect(periods, contains(askedAt.toUtc().toIso8601String()));
       },
     );
+
+    test('an invalidated bearer holds the batches, it does not post', () async {
+      // Every production caller reads the account's bearer live. Logout nulls
+      // it, and the buffer must treat that as "hold" rather than reach for the
+      // last token it saw — which is dead, and would spend the batches' retry
+      // budget on requests that cannot succeed.
+      var posts = 0;
+      final buffer = DosageAudioBuffer(
+        now: () => clock,
+        httpClient: MockClient((_) async {
+          posts++;
+          return http.Response('', 202);
+        }),
+      );
+      buffer.start();
+      buffer.record(playback(), accessToken: token);
+      clock = clock.add(const Duration(minutes: 5));
+
+      await buffer.flush(accessToken: null);
+
+      expect(posts, 0, reason: 'no request under a bearer that is gone');
+      expect(buffer.pendingBatches, hasLength(1));
+      expect(
+        buffer.pendingBatches.single.attempts,
+        0,
+        reason: 'and no attempt spent on one',
+      );
+    });
 
     test('concurrent flushes coalesce onto one drain', () async {
       var posts = 0;

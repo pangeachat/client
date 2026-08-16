@@ -287,7 +287,6 @@ class DosageAudioBuffer {
     final DateTime end = _now().toUtc();
     _periodStart = end;
     final bool voiceSendCovered = _voiceSendCovered;
-    _voiceSendLost = false;
 
     final List<DosageAudioCoverage> coverage = start == null
         ? const []
@@ -309,6 +308,14 @@ class DosageAudioBuffer {
               .toList();
 
     if (_events.isEmpty && coverage.isEmpty) return;
+
+    // Only a period that actually DECLARED something discharges a known voice
+    // envelope loss. Clearing the flag on a seal that emitted no coverage — a
+    // zero-length period, say — would erase the loss without any period having
+    // been withheld for it, and the next period would then declare `voice_send`
+    // for a message the server never saw. The flag is the whole mechanism; it
+    // must outlive a seal that said nothing.
+    if (coverage.isNotEmpty) _voiceSendLost = false;
 
     final batch = DosageAudioBatch(
       events: List.of(_events),
@@ -360,10 +367,16 @@ class DosageAudioBuffer {
   /// A caller that times out has not lost anything by timing out: the drain
   /// keeps running and the batches stay buffered either way.
   Future<void> flush({bool drainAll = false, String? accessToken}) {
-    if (accessToken != null && accessToken.isNotEmpty) {
-      _accessToken = accessToken;
-    }
+    // AUTHORITATIVE, including when null. Every production caller reads the
+    // account's bearer live at the moment it flushes, so a null means the token
+    // is gone — after logout invalidated it — and the drain must hold rather
+    // than post under a dead credential. Keeping the last-seen token here
+    // instead would have teardown spend the batches' retry budget on requests
+    // that cannot succeed.
+    _accessToken = accessToken;
     if (!DosageSignalsRepo.isEnabled) return Future.value();
+
+    final bool alreadyOpen = _periodStart != null;
     // A flush only happens on the analytics heartbeat, on backgrounding, or at
     // teardown — all of which mean this buffer is live and reachable by every
     // emit site, so the instrument IS running from here whether or not [start]
@@ -378,7 +391,12 @@ class DosageAudioBuffer {
     // the account is tombstoned the moment disposal starts, so every emit site
     // is already recording nothing. This is the request time, which is exactly
     // the last moment the instrument was running.
-    _seal();
+    //
+    // But only a period that was ALREADY open. If this call is what opened one,
+    // there is nothing between its start and now to declare, and sealing it
+    // would put a period on the wire whose length is however long two clock
+    // reads happened to take.
+    if (alreadyOpen) _seal();
 
     final inFlight = _flushing;
     if (inFlight != null && !drainAll) {
@@ -445,7 +463,7 @@ class DosageAudioBuffer {
       final bool ok = await DosageSignalsRepo.postAudioSignals(
         events: batch.events,
         coverage: batch.coverage,
-        accessToken: _accessToken ?? token,
+        accessToken: token,
         client: _httpClient,
       );
       if (ok) {
