@@ -6,6 +6,7 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics_data/widgets/analytics_future_builder.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/lemmas/lemma.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_response.dart';
@@ -36,8 +37,9 @@ class VocabDetailsView extends StatelessWidget with ConstructRestorer {
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
     final analyticsService = Matrix.of(context).analyticsDataService;
-    return FutureBuilder(
-      future: l2 != null
+    return AnalyticsFutureBuilder<ConstructUses>(
+      dependencies: [constructId, l2],
+      fetch: () => l2 != null
           ? analyticsService.getConstructUse(constructId, l2)
           : Future.value(
               ConstructUses(

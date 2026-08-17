@@ -5,6 +5,7 @@ import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics_data/widgets/analytics_future_builder.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
@@ -84,6 +85,14 @@ class MorphFeatureBox extends StatelessWidget {
 
     final featureEnum = MorphFeaturesEnum.fromString(feature.value);
     final analyticsService = Matrix.of(context).analyticsDataService;
+    final tagIds = [
+      for (final morphTag in tags)
+        ConstructIdentifier(
+          lemma: morphTag.value,
+          type: ConstructTypeEnum.morph,
+          category: feature.value,
+        ),
+    ];
 
     return Container(
       padding: const EdgeInsets.all(16.0),
@@ -119,40 +128,42 @@ class MorphFeatureBox extends StatelessWidget {
             ],
           ),
           const SizedBox(height: 16.0),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Wrap(
-                  alignment: WrapAlignment.center,
-                  spacing: 16.0,
-                  runSpacing: 16.0,
-                  children: tags.map((morphTag) {
-                    final id = ConstructIdentifier(
-                      lemma: morphTag.value,
-                      type: ConstructTypeEnum.morph,
-                      category: feature.value,
-                    );
-
-                    return FutureBuilder(
-                      future: analyticsService.getConstructUse(id, language),
-                      builder: (context, snapshot) => MorphTagChip(
-                        feature: featureEnum,
-                        tag: morphTag,
-                        constructAnalytics: snapshot.data,
-                        onTap: () {
-                          AnalyticsNavigationUtil.navigateToAnalytics(
-                            context: context,
-                            view: ProgressIndicatorEnum.morphsUsed,
-                            construct: id,
-                          );
-                        },
-                      ),
-                    );
-                  }).toList(),
-                ),
-              ),
+          // One batched read for every tag of this feature, re-issued only
+          // when analytics change — not per rebuild (#8433).
+          AnalyticsFutureBuilder<Map<ConstructIdentifier, ConstructUses>>(
+            dependencies: [
+              feature.value,
+              language,
+              ...tags.map((tag) => tag.value),
             ],
+            fetch: () => analyticsService.getConstructUses(tagIds, language),
+            builder: (context, snapshot) => Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  child: Wrap(
+                    alignment: WrapAlignment.center,
+                    spacing: 16.0,
+                    runSpacing: 16.0,
+                    children: [
+                      for (var i = 0; i < tags.length; i++)
+                        MorphTagChip(
+                          feature: featureEnum,
+                          tag: tags[i],
+                          constructAnalytics: snapshot.data?[tagIds[i]],
+                          onTap: () {
+                            AnalyticsNavigationUtil.navigateToAnalytics(
+                              context: context,
+                              view: ProgressIndicatorEnum.morphsUsed,
+                              construct: tagIds[i],
+                            );
+                          },
+                        ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),

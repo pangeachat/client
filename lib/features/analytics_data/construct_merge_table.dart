@@ -34,6 +34,8 @@ class ConstructMergeTable {
       accepted.add(id);
       (lemmaTypeGroups[id.compositeKey] ??= {}).add(id);
     }
+    if (accepted.isEmpty) return;
+    _invalidateCounts();
 
     // Variants already in the table from earlier calls take part too.
     for (final id in accepted) {
@@ -56,6 +58,7 @@ class ConstructMergeTable {
   }
 
   void removeConstruct(ConstructIdentifier id) {
+    _invalidateCounts();
     final composite = id.compositeKey;
     final group = lemmaTypeGroups[composite];
     if (group == null) return;
@@ -98,7 +101,17 @@ class ConstructMergeTable {
     return keys;
   }
 
-  int uniqueConstructsByType(ConstructTypeEnum type) {
+  /// Memo of [uniqueConstructsByType] per type; cleared by every mutator.
+  /// It is read in `build()` of the top-bar indicators and the world user
+  /// cluster, where recomputing over every group per rebuild adds up.
+  final Map<ConstructTypeEnum, int> _uniqueCountByType = {};
+
+  void _invalidateCounts() => _uniqueCountByType.clear();
+
+  int uniqueConstructsByType(ConstructTypeEnum type) =>
+      _uniqueCountByType[type] ??= _computeUniqueConstructsByType(type);
+
+  int _computeUniqueConstructsByType(ConstructTypeEnum type) {
     final keys = lemmaTypeGroups.keys.where(
       (composite) => composite.endsWith('|${type.name}'),
     );
@@ -118,5 +131,6 @@ class ConstructMergeTable {
   void clear() {
     lemmaTypeGroups.clear();
     caseInsensitive.clear();
+    _invalidateCounts();
   }
 }
