@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-17 16:01:10.955204",
+    "@@last_modified": "2026-08-17 16:29:45.218078",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Машқи паёмро кушоед",
     "unlockWritingAssistance": "Кӯмаки хаттиро кушоед",
     "showMore": "Бештар нишон додан",
-    "showLess": "Камтар нишон додан"
+    "showLess": "Камтар нишон додан",
+    "countNewMessages": "{count, plural, =1{1 паёми нав} other{{count} паёмҳои нав}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-17 16:01:12.708935",
+    "@@last_modified": "2026-08-17 16:29:45.071988",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Fungua mazoezi ya ujumbe",
     "unlockWritingAssistance": "Fungua usaidizi wa kuandika",
     "showMore": "Onyesha zaidi",
-    "showLess": "Onyesha kidogo"
+    "showLess": "Onyesha kidogo",
+    "countNewMessages": "{count, plural, =1{ujumbe 1 mpya} other{jumbe {count} mpya}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-17 16:01:06.884568",
+    "@@last_modified": "2026-08-17 16:29:42.279007",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Sokafy ny fanazaran-tena amin'ny hafatra",
     "unlockWritingAssistance": "Sokafy ny fanampiana amin'ny fanoratana",
     "showMore": "Asehoy misimisy kokoa",
-    "showLess": "Asehoy kely kokoa"
+    "showLess": "Asehoy kely kokoa",
+    "countNewMessages": "{count, plural, =1{1 hafatra vaovao} other{{count} hafatra vaovao}}"
 }

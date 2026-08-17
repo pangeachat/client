@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-17 16:01:11.619549",
+    "@@last_modified": "2026-08-17 16:29:45.497178",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10697,5 +10697,6 @@
     "unlockMessagePractice": "Odomknúť precvičovanie správ",
     "unlockWritingAssistance": "Odomknúť pomoc pri písaní",
     "showMore": "Zobraziť viac",
-    "showLess": "Zobraziť menej"
+    "showLess": "Zobraziť menej",
+    "countNewMessages": "{count, plural, =1{1 nová správa} other{{count} nových správ}}"
 }

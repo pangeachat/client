@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-17 16:01:07.501072",
+    "@@last_modified": "2026-08-17 16:29:46.518542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "မက်ဆေ့ချ်လေ့ကျင့်မှုကို လော့ခ်ဖွင့်ပါ",
     "unlockWritingAssistance": "စာရေးအကူအညီကို လော့ခ်ဖွင့်ပါ",
     "showMore": "ပိုပြရန်",
-    "showLess": "လျှော့ပြရန်"
+    "showLess": "လျှော့ပြရန်",
+    "countNewMessages": "{count, plural, =1{စာအသစ် ၁ စောင်} other{စာအသစ် {count} စောင်}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-17 16:01:05.521639",
+    "@@last_modified": "2026-08-17 16:29:40.684638",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9855,5 +9855,6 @@
     "unlockMessagePractice": "Üzenetgyakorlás feloldása",
     "unlockWritingAssistance": "Írássegéd feloldása",
     "showMore": "Több megjelenítése",
-    "showLess": "Kevesebb megjelenítése"
+    "showLess": "Kevesebb megjelenítése",
+    "countNewMessages": "{count, plural, =1{1 új üzenet} other{{count} új üzenet}}"
 }

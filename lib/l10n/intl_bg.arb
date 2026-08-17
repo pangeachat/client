@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-17 16:01:03.274736",
+    "@@last_modified": "2026-08-17 16:29:38.622049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Отключете практика за съобщения",
     "unlockWritingAssistance": "Отключете помощ при писане",
     "showMore": "Покажи още",
-    "showLess": "Покажи по-малко"
+    "showLess": "Покажи по-малко",
+    "countNewMessages": "{count, plural, =1{1 ново съобщение} other{{count} нови съобщения}}"
 }

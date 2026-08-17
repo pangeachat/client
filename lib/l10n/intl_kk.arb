@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-17 16:01:06.153185",
+    "@@last_modified": "2026-08-17 16:29:41.403581",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Хабарлама жазу жаттығуының құлпын ашу",
     "unlockWritingAssistance": "Жазуға көмектесудің құлпын ашу",
     "showMore": "Көбірек көрсету",
-    "showLess": "Азырақ көрсету"
+    "showLess": "Азырақ көрсету",
+    "countNewMessages": "{count, plural, =1{1 жаңа хабар} other{{count} жаңа хабарлар}}"
 }

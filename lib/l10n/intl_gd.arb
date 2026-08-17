@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-17 16:01:04.606298",
+    "@@last_modified": "2026-08-17 16:29:40.166531",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Cleachdadh teachdaireachd fhuasgladh",
     "unlockWritingAssistance": "Taic sgrìobhaidh fhuasgladh",
     "showMore": "Seall barrachd",
-    "showLess": "Seall nas lugha"
+    "showLess": "Seall nas lugha",
+    "countNewMessages": "{count, plural, =1{1 teachdaireachd ùr} other{{count} teachdaireachdan ùra}}"
 }

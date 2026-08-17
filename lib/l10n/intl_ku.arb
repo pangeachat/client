@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-17 16:01:06.524884",
+    "@@last_modified": "2026-08-17 16:29:41.828474",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "ڕاهێنانی نامە ناردن بکەرەوە",
     "unlockWritingAssistance": "یارمەتی نووسین بکەرەوە",
     "showMore": "زیاتر نیشان بدە",
-    "showLess": "کەمتر نیشان بدە"
+    "showLess": "کەمتر نیشان بدە",
+    "countNewMessages": "{count, plural, =1{١ پەیامی نوێ} other{{count} پەیامی نوێ}}"
 }

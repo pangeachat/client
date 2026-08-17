@@ -129,6 +129,15 @@
         "type": "String",
         "placeholders": {}
     },
+    "countNewMessages": "{count, plural, =1{1 new message} other{{count} new messages}}",
+    "@countNewMessages": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
     "seeFullCoursePlan": "See full course plan",
     "@seeFullCoursePlan": {
         "type": "String",

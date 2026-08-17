@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:07.820752",
+    "@@last_modified": "2026-08-17 16:29:42.832721",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,6 @@
     "unlockMessagePractice": "Ontgrendel berichtoefening",
     "unlockWritingAssistance": "Ontgrendel schrijfhulp",
     "showMore": "Meer weergeven",
-    "showLess": "Minder weergeven"
+    "showLess": "Minder weergeven",
+    "countNewMessages": "{count, plural, =1{1 nieuw bericht} other{{count} nieuwe berichten}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-17 16:01:08.730432",
+    "@@last_modified": "2026-08-17 16:29:43.924829",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "පණිවිඩ පුහුණුව අගුළු හරින්න",
     "unlockWritingAssistance": "ලිවීමේ සහාය අගුළු හරින්න",
     "showMore": "තවත් පෙන්වන්න",
-    "showLess": "අඩු පෙන්වන්න"
+    "showLess": "අඩු පෙන්වන්න",
+    "countNewMessages": "{count, plural, =1{නව පණිවිඩ 1ක්} other{නව පණිවිඩ {count}ක්}}"
 }

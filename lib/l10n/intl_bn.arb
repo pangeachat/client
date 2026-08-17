@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:03.360620",
+    "@@last_modified": "2026-08-17 16:29:38.565839",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10380,5 +10380,6 @@
     "unlockMessagePractice": "মেসেজ অনুশীলন আনলক করুন",
     "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন",
     "showMore": "আরও দেখান",
-    "showLess": "কম দেখান"
+    "showLess": "কম দেখান",
+    "countNewMessages": "{count, plural, =1{১টি নতুন বার্তা} other{{count}টি নতুন বার্তা}}"
 }

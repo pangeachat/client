@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-17 16:01:04.380703",
+    "@@last_modified": "2026-08-17 16:29:40.022812",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,6 @@
     "unlockMessagePractice": "Desblokeatu mezuen praktika",
     "unlockWritingAssistance": "Desblokeatu idazketa-laguntza",
     "showMore": "Gehiago erakutsi",
-    "showLess": "Gutxiago erakutsi"
+    "showLess": "Gutxiago erakutsi",
+    "countNewMessages": "{count, plural, =1{mezu berri 1} other{{count} mezu berri}}"
 }

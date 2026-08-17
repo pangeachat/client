@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-17 16:01:04.522756",
+    "@@last_modified": "2026-08-17 16:29:40.165515",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Untskoattelje berjochtpraktyk",
     "unlockWritingAssistance": "Untskoattelje skriuwassistinsje",
     "showMore": "Mear sjen litte",
-    "showLess": "Minder sjen litte"
+    "showLess": "Minder sjen litte",
+    "countNewMessages": "{count, plural, =1{1 nij berjocht} other{{count} nije berjochten}}"
 }

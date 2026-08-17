@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-17 16:01:13.259927",
+    "@@last_modified": "2026-08-17 16:29:45.576087",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "پیغام کی مشق اَن لاک کریں",
     "unlockWritingAssistance": "تحریری معاونت اَن لاک کریں",
     "showMore": "مزید دکھائیں",
-    "showLess": "کم دکھائیں"
+    "showLess": "کم دکھائیں",
+    "countNewMessages": "{count, plural, =1{1 نیا پیغام} other{{count} نئے پیغامات}}"
 }

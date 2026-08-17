@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-17 16:01:06.131855",
+    "@@last_modified": "2026-08-17 16:29:41.409183",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "ដោះសោការអនុវត្តសារ",
     "unlockWritingAssistance": "ដោះសោជំនួយការសរសេរ",
     "showMore": "បង្ហាញបន្ថែម",
-    "showLess": "បង្ហាញតិច"
+    "showLess": "បង្ហាញតិច",
+    "countNewMessages": "{count, plural, =1{សារថ្មី ១} other{សារថ្មី {count}}}"
 }

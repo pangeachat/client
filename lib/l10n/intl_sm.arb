@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-17 16:01:10.271815",
+    "@@last_modified": "2026-08-17 16:29:44.003698",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Tatala le fa'ata'ita'iga fe'au",
     "unlockWritingAssistance": "Tatala le fesoasoani tusitusi",
     "showMore": "Fa'aali atili",
-    "showLess": "Fa'aali itiiti"
+    "showLess": "Fa'aali itiiti",
+    "countNewMessages": "{count, plural, =1{1 feʻau fou} other{{count} feʻau fou}}"
 }

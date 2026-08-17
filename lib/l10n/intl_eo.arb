@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:04.025923",
+    "@@last_modified": "2026-08-17 16:29:39.211987",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10697,5 +10697,6 @@
     "unlockMessagePractice": "Malŝlosi mesaĝan praktikon",
     "unlockWritingAssistance": "Malŝlosi skriban helpon",
     "showMore": "Montri pli",
-    "showLess": "Montri malpli"
+    "showLess": "Montri malpli",
+    "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-17 16:01:05.164407",
+    "@@last_modified": "2026-08-17 16:29:40.552612",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Qhib kev xyaum sau ntawv",
     "unlockWritingAssistance": "Qhib kev pab sau ntawv",
     "showMore": "Qhia ntxiv",
-    "showLess": "Qhia tsawg dua"
+    "showLess": "Qhia tsawg dua",
+    "countNewMessages": "{count, plural, =1{1 tsab lus tshiab} other{{count} tsab lus tshiab}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-17 16:01:03.874829",
+    "@@last_modified": "2026-08-17 16:29:39.145933",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9739,5 +9739,6 @@
     "unlockMessagePractice": "Nachrichtenübung freischalten",
     "unlockWritingAssistance": "Schreibassistenz freischalten",
     "showMore": "Mehr anzeigen",
-    "showLess": "Weniger anzeigen"
+    "showLess": "Weniger anzeigen",
+    "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}"
 }

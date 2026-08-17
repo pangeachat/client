@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-17 16:01:03.429197",
+    "@@last_modified": "2026-08-17 16:29:38.644277",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "የመልእክት ልምምድ ይክፈቱ",
     "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ",
     "showMore": "ተጨማሪ አሳይ",
-    "showLess": "ጥቂት አሳይ"
+    "showLess": "ጥቂት አሳይ",
+    "countNewMessages": "{count, plural, =1{1 አዲስ መልእክት} other{{count} አዲስ መልእክቶች}}"
 }

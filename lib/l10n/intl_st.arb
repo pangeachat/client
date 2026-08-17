@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-17 16:01:10.155819",
+    "@@last_modified": "2026-08-17 16:29:44.583811",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Notlolla tloaelo ea melaetsa",
     "unlockWritingAssistance": "Notlolla thuso ea ho ngola",
     "showMore": "Bontsha ho feta",
-    "showLess": "Bontsha hanyane"
+    "showLess": "Bontsha hanyane",
+    "countNewMessages": "{count, plural, =1{1 molaetsa o motjha} other{melaetsa e metjha e {count}}}"
 }

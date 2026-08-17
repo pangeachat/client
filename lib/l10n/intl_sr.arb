@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:11.611686",
+    "@@last_modified": "2026-08-17 16:29:44.367768",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,6 @@
     "unlockMessagePractice": "Otključajte vežbanje poruka",
     "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
     "showMore": "Prikaži više",
-    "showLess": "Prikaži manje"
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}"
 }

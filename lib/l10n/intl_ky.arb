@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-17 16:01:06.515019",
+    "@@last_modified": "2026-08-17 16:29:41.901502",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Кабарды практикалоонун кулпусун ачуу",
     "unlockWritingAssistance": "Жазууга жардам берүүнүн кулпусун ачуу",
     "showMore": "Көбүрөөк көрсөтүү",
-    "showLess": "Азыраак көрсөтүү"
+    "showLess": "Азыраак көрсөтүү",
+    "countNewMessages": "{count, plural, =1{1 жаңы билдирүү} other{{count} жаңы билдирүүлөр}}"
 }

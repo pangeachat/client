@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-17 16:01:08.874635",
+    "@@last_modified": "2026-08-17 16:29:44.366734",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Fur ku celcelinta fariimaha",
     "unlockWritingAssistance": "Fur caawinta qorista",
     "showMore": "Muuji wax badan",
-    "showLess": "Muuji wax yar"
+    "showLess": "Muuji wax yar",
+    "countNewMessages": "{count, plural, =1{1 fariin cusub} other{{count} fariimo cusub}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-17 16:01:07.922417",
+    "@@last_modified": "2026-08-17 16:29:43.351603",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9837,5 +9837,6 @@
     "unlockMessagePractice": "Odblokuj ćwiczenia z wiadomościami",
     "unlockWritingAssistance": "Odblokuj pomoc w pisaniu",
     "showMore": "Pokaż więcej",
-    "showLess": "Pokaż mniej"
+    "showLess": "Pokaż mniej",
+    "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}"
 }

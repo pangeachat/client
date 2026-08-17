@@ -3568,7 +3568,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-17 16:01:04.547612",
+    "@@last_modified": "2026-08-17 16:29:39.847991",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9763,5 +9763,6 @@
     "unlockMessagePractice": "Díghlasáil cleachtadh teachtaireachtaí",
     "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta",
     "showMore": "Taispeáin níos mó",
-    "showLess": "Taispeáin níos lú"
+    "showLess": "Taispeáin níos lú",
+    "countNewMessages": "{count, plural, =1{1 theachtaireacht nua} other{{count} theachtaireacht nua}}"
 }

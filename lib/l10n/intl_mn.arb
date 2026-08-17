@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-17 16:01:07.334440",
+    "@@last_modified": "2026-08-17 16:29:42.298600",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Мессежний дадлагыг нээх",
     "unlockWritingAssistance": "Бичихэд туслахыг нээх",
     "showMore": "Илүү ихийг харах",
-    "showLess": "Бага харах"
+    "showLess": "Бага харах",
+    "countNewMessages": "{count, plural, =1{1 шинэ мессеж} other{{count} шинэ мессеж}}"
 }

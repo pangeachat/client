@@ -15,7 +15,6 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_parti
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_link.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_request_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
@@ -168,7 +167,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                       ),
                     ),
                   CourseCatchUp(room: room),
-                  AnalyticsRequestIndicator(room: room),
                   // The course-wide progress bar rides the intro block, under
                   // the attention cards; the Course plan section below starts
                   // straight at its header, with no divider between them.

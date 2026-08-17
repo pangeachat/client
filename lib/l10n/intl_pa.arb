@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-17 16:01:08.008950",
+    "@@last_modified": "2026-08-17 16:29:43.029960",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "ਸੁਨੇਹਾ ਅਭਿਆਸ ਅਨਲੌਕ ਕਰੋ",
     "unlockWritingAssistance": "ਲਿਖਣ ਸਹਾਇਤਾ ਅਨਲੌਕ ਕਰੋ",
     "showMore": "ਹੋਰ ਦਿਖਾਓ",
-    "showLess": "ਘੱਟ ਦਿਖਾਓ"
+    "showLess": "ਘੱਟ ਦਿਖਾਓ",
+    "countNewMessages": "{count, plural, =1{1 ਨਵਾਂ ਸੁਨੇਹਾ} other{{count} ਨਵੇਂ ਸੁਨੇਹੇ}}"
 }

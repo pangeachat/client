@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-17 16:01:15.325566",
+    "@@last_modified": "2026-08-17 16:29:45.805888",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9752,5 +9752,6 @@
     "unlockMessagePractice": "Розблокувати практику повідомлень",
     "unlockWritingAssistance": "Розблокувати допомогу з письмом",
     "showMore": "Показати більше",
-    "showLess": "Показати менше"
+    "showLess": "Показати менше",
+    "countNewMessages": "{count, plural, =1{1 нове повідомлення} other{{count} нових повідомлень}}"
 }

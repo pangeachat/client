@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-17 16:01:09.953765",
+    "@@last_modified": "2026-08-17 16:29:44.515742",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Zhblo praktikën e mesazheve",
     "unlockWritingAssistance": "Zhblo asistencën e shkrimit",
     "showMore": "Shfaq më shumë",
-    "showLess": "Shfaq më pak"
+    "showLess": "Shfaq më pak",
+    "countNewMessages": "{count, plural, =1{1 mesazh i ri} other{{count} mesazhe të reja}}"
 }

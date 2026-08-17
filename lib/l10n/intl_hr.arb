@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-17 16:01:05.073023",
+    "@@last_modified": "2026-08-17 16:29:40.795146",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10188,5 +10188,6 @@
     "unlockMessagePractice": "Otključaj vježbanje poruka",
     "unlockWritingAssistance": "Otključaj pomoć pri pisanju",
     "showMore": "Prikaži više",
-    "showLess": "Prikaži manje"
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} nove poruke}}"
 }

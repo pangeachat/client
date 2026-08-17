@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-17 16:01:03.998589",
+    "@@last_modified": "2026-08-17 16:29:39.156298",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10627,5 +10627,6 @@
     "unlockMessagePractice": "Ξεκλείδωμα εξάσκησης μηνυμάτων",
     "unlockWritingAssistance": "Ξεκλείδωμα βοήθειας γραφής",
     "showMore": "Εμφάνιση περισσότερων",
-    "showLess": "Εμφάνιση λιγότερων"
+    "showLess": "Εμφάνιση λιγότερων",
+    "countNewMessages": "{count, plural, =1{1 νέο μήνυμα} other{{count} νέα μηνύματα}}"
 }

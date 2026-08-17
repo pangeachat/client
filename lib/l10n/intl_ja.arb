@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-17 16:01:05.968707",
+    "@@last_modified": "2026-08-17 16:29:41.252476",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10521,5 +10521,6 @@
     "unlockMessagePractice": "メッセージ練習をアンロック",
     "unlockWritingAssistance": "ライティングアシスタンスをアンロック",
     "showMore": "もっと見る",
-    "showLess": "一部を表示"
+    "showLess": "一部を表示",
+    "countNewMessages": "{count, plural, =1{新着メッセージ1件} other{新着メッセージ{count}件}}"
 }

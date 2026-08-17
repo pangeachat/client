@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:12.790331",
+    "@@last_modified": "2026-08-17 16:29:44.911751",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9844,5 +9844,6 @@
     "unlockMessagePractice": "செய்திப் பயிற்சியைத் திறக்கவும்",
     "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்",
     "showMore": "மேலும் காட்டு",
-    "showLess": "குறைவாக காட்டு"
+    "showLess": "குறைவாக காட்டு",
+    "countNewMessages": "{count, plural, =1{1 புதிய செய்தி} other{{count} புதிய செய்திகள்}}"
 }

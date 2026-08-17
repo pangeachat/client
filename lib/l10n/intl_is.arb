@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-17 16:01:05.697370",
+    "@@last_modified": "2026-08-17 16:29:41.257662",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Aflæsa skilaboðavenjum",
     "unlockWritingAssistance": "Aflæsa ritunaraðstoð",
     "showMore": "Sýna meira",
-    "showLess": "Sýna minna"
+    "showLess": "Sýna minna",
+    "countNewMessages": "{count, plural, =1{1 ný skilaboð} other{{count} ný skilaboð}}"
 }

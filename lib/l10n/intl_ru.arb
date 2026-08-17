@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-17 16:01:08.364530",
+    "@@last_modified": "2026-08-17 16:29:43.840159",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10724,5 +10724,6 @@
     "unlockMessagePractice": "Разблокировать практику сообщений",
     "unlockWritingAssistance": "Разблокировать помощь в написании",
     "showMore": "Показать больше",
-    "showLess": "Показать меньше"
+    "showLess": "Показать меньше",
+    "countNewMessages": "{count, plural, =1{1 новое сообщение} other{{count} новых сообщений}}"
 }

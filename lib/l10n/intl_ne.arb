@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-17 16:01:08.850580",
+    "@@last_modified": "2026-08-17 16:29:42.807198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "सन्देश अभ्यास अनलक गर्नुहोस्",
     "unlockWritingAssistance": "लेखन सहायता अनलक गर्नुहोस्",
     "showMore": "थप देखाउनुहोस्",
-    "showLess": "कम देखाउनुहोस्"
+    "showLess": "कम देखाउनुहोस्",
+    "countNewMessages": "{count, plural, =1{१ नयाँ सन्देश} other{{count} नयाँ सन्देशहरू}}"
 }

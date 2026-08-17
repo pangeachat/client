@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:06.182410",
+    "@@last_modified": "2026-08-17 16:29:41.762026",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9945,5 +9945,6 @@
     "unlockMessagePractice": "메시지 연습 잠금 해제",
     "unlockWritingAssistance": "작문 지원 잠금 해제",
     "showMore": "더 보기",
-    "showLess": "간략히 보기"
+    "showLess": "간략히 보기",
+    "countNewMessages": "{count, plural, =1{새 메시지 1개} other{새 메시지 {count}개}}"
 }

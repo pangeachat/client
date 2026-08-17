@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-17 16:01:03.431521",
+    "@@last_modified": "2026-08-17 16:29:38.611223",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10058,5 +10058,6 @@
     "unlockMessagePractice": "افتح ممارسة الرسائل",
     "unlockWritingAssistance": "افتح مساعدة الكتابة",
     "showMore": "عرض المزيد",
-    "showLess": "عرض أقل"
+    "showLess": "عرض أقل",
+    "countNewMessages": "{count, plural, =1{رسالة جديدة واحدة} other{{count} رسائل جديدة}}"
 }

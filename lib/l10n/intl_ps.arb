@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-17 16:01:08.073594",
+    "@@last_modified": "2026-08-17 16:29:43.356490",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "د پیغام تمرین خلاص کړئ",
     "unlockWritingAssistance": "د لیکلو مرسته خلاص کړئ",
     "showMore": "نور وښایاست",
-    "showLess": "لږ وښایاست"
+    "showLess": "لږ وښایاست",
+    "countNewMessages": "{count, plural, =1{۱ نوې پيغام} other{{count} نوې پيغامونه}}"
 }

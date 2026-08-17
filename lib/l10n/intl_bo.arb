@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-17 16:01:03.394064",
+    "@@last_modified": "2026-08-17 16:29:38.639892",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9363,5 +9363,6 @@
     "unlockMessagePractice": "འཕྲིན་ཡིག་སྦྱོང་བརྡར་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
     "unlockWritingAssistance": "ཡིག་གཟུགས་རོགས་རམ་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
     "showMore": "མང་ཙམ་བསྟན་",
-    "showLess": "ཉུང་ཙམ་བསྟན་"
+    "showLess": "ཉུང་ཙམ་བསྟན་",
+    "countNewMessages": "{count, plural, =1{សារགསར་པ་ ༡} other{សារགསར་པ་ {count}}}"
 }

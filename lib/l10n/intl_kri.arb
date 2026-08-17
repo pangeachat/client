@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-17 16:01:06.285235",
+    "@@last_modified": "2026-08-17 16:29:41.795403",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Open di mɛsej praktis",
     "unlockWritingAssistance": "Open di raytin ɛlp",
     "showMore": "Sho mo",
-    "showLess": "Sho men"
+    "showLess": "Sho men",
+    "countNewMessages": "{count, plural, =1{1 nyu messej} other{{count} nyu messej dɛn}}"
 }

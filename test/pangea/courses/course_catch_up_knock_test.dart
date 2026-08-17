@@ -45,6 +45,19 @@ void main() {
       client: client,
       membership: Membership.join,
     );
+    // A real course room IS a space — the card reads `spaceChildren` (for
+    // the unread-chat rollups), which the SDK gates on `isSpace`.
+    room.setState(
+      Event(
+        type: EventTypes.RoomCreate,
+        content: {'type': 'm.space'},
+        stateKey: '',
+        senderId: userId,
+        eventId: '\$create',
+        originServerTs: DateTime.now(),
+        room: room,
+      ),
+    );
     room.setState(
       Event(
         type: EventTypes.RoomPowerLevels,

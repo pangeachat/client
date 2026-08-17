@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:07.627533",
+    "@@last_modified": "2026-08-17 16:29:42.918404",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -9809,5 +9809,6 @@
     "unlockMessagePractice": "Lås opp meldingsøvelse",
     "unlockWritingAssistance": "Lås opp skrivehjelp",
     "showMore": "Vis mer",
-    "showLess": "Vis mindre"
+    "showLess": "Vis mindre",
+    "countNewMessages": "{count, plural, =1{1 ny melding} other{{count} nye meldinger}}"
 }

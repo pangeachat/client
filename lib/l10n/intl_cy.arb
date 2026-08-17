@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-17 16:01:03.846976",
+    "@@last_modified": "2026-08-17 16:29:39.140382",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Datgloi ymarfer negeseuon",
     "unlockWritingAssistance": "Datgloi cymorth ysgrifennu",
     "showMore": "Dangos mwy",
-    "showLess": "Dangos llai"
+    "showLess": "Dangos llai",
+    "countNewMessages": "{count, plural, =1{1 neges newydd} other{{count} neges newydd}}"
 }

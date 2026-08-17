@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-17 16:01:07.280782",
+    "@@last_modified": "2026-08-17 16:29:42.347803",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Buka kunci latihan mesej",
     "unlockWritingAssistance": "Buka kunci bantuan penulisan",
     "showMore": "Tunjukkan lebih banyak",
-    "showLess": "Tunjukkan lebih sedikit"
+    "showLess": "Tunjukkan lebih sedikit",
+    "countNewMessages": "{count, plural, =1{1 mesej baharu} other{{count} mesej baharu}}"
 }

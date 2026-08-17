@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-17 16:01:05.585559",
+    "@@last_modified": "2026-08-17 16:29:40.959376",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Բացել հաղորդագրությունների պրակտիկան",
     "unlockWritingAssistance": "Բացել գրելու աջակցությունը",
     "showMore": "Տեսնել ավելին",
-    "showLess": "Տեսնել ավելի քիչ"
+    "showLess": "Տեսնել ավելի քիչ",
+    "countNewMessages": "{count, plural, =1{1 նոր հաղորդագրություն} other{{count} նոր հաղորդագրություն}}"
 }

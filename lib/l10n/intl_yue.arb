@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-17 16:01:13.275404",
+    "@@last_modified": "2026-08-17 16:29:46.110796",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10709,5 +10709,6 @@
     "unlockMessagePractice": "解鎖訊息練習",
     "unlockWritingAssistance": "解鎖寫作輔助",
     "showMore": "顯示更多",
-    "showLess": "顯示較少"
+    "showLess": "顯示較少",
+    "countNewMessages": "{count, plural, =1{1 個新訊息} other{{count} 個新訊息}}"
 }

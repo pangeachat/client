@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:04.370411",
+    "@@last_modified": "2026-08-17 16:29:39.862211",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9840,5 +9840,6 @@
     "unlockMessagePractice": "باز کردن تمرین پیام",
     "unlockWritingAssistance": "باز کردن کمک نوشتاری",
     "showMore": "نمایش بیشتر",
-    "showLess": "نمایش کمتر"
+    "showLess": "نمایش کمتر",
+    "countNewMessages": "{count, plural, =1{۱ پیام جدید} other{{count} پیام جدید}}"
 }

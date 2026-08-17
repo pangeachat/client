@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-17 16:01:05.320877",
+    "@@last_modified": "2026-08-17 16:29:40.689289",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Debloke pratik mesaj",
     "unlockWritingAssistance": "Debloke asistans pou ekri",
     "showMore": "Montre plis",
-    "showLess": "Montre mwens"
+    "showLess": "Montre mwens",
+    "countNewMessages": "{count, plural, =1{1 nouvo mesaj} other{{count} nouvo mesaj}}"
 }

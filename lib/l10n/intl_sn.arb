@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-17 16:01:11.854310",
+    "@@last_modified": "2026-08-17 16:29:44.372518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Vhura kudzidzira mameseji",
     "unlockWritingAssistance": "Vhura rubatsiro rwekunyora",
     "showMore": "Ratidza zvimwe",
-    "showLess": "Ratidza zvishoma"
+    "showLess": "Ratidza zvishoma",
+    "countNewMessages": "{count, plural, =1{1 meseji itsva} other{{count} meseji itsva}}"
 }

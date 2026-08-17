@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-17 16:01:07.608747",
+    "@@last_modified": "2026-08-17 16:29:42.818169",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Lås opp meldingsøvelse",
     "unlockWritingAssistance": "Lås opp skrivehjelp",
     "showMore": "Vis mer",
-    "showLess": "Vis mindre"
+    "showLess": "Vis mindre",
+    "countNewMessages": "{count, plural, =1{1 ny melding} other{{count} nye meldinger}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-17 16:01:06.617444",
+    "@@last_modified": "2026-08-17 16:29:41.884013",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Spär Message Praxis op",
     "unlockWritingAssistance": "Spär Schreifhëllef op",
     "showMore": "Méi weisen",
-    "showLess": "Manner weisen"
+    "showLess": "Manner weisen",
+    "countNewMessages": "{count, plural, =1{1 neie Message} other{{count} nei Messagen}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-17 16:01:12.080344",
+    "@@last_modified": "2026-08-17 16:29:45.670283",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,6 @@
     "unlockMessagePractice": "Mesaj pratiğinin kilidini aç",
     "unlockWritingAssistance": "Yazma yardımının kilidini aç",
     "showMore": "Daha fazla göster",
-    "showLess": "Daha az göster"
+    "showLess": "Daha az göster",
+    "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:09.404938",
+    "@@last_modified": "2026-08-17 16:29:43.347117",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10696,5 +10696,6 @@
     "unlockMessagePractice": "Desbloquear prática de mensagens",
     "unlockWritingAssistance": "Desbloquear assistência de escrita",
     "showMore": "Mostrar mais",
-    "showLess": "Mostrar menos"
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}"
 }

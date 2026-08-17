@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-17 16:01:06.851179",
+    "@@last_modified": "2026-08-17 16:29:45.168517",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Wewete i te mahi karere",
     "unlockWritingAssistance": "Wewete i te āwhina tuhi",
     "showMore": "Whakaatu anō",
-    "showLess": "Whakaatu iti iho"
+    "showLess": "Whakaatu iti iho",
+    "countNewMessages": "{count, plural, =1{1 karere hou} other{{count} karere hou}}"
 }

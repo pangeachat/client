@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-17 16:01:07.832228",
+    "@@last_modified": "2026-08-17 16:29:45.788004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Tsegulani kuyeseza mauthenga",
     "unlockWritingAssistance": "Tsegulani thandizo lolemba",
     "showMore": "Onjezani zambiri",
-    "showLess": "Chepetsani"
+    "showLess": "Chepetsani",
+    "countNewMessages": "{count, plural, =1{uthenga umodzi watsopano} other{mameseji {count} atsopano}}"
 }

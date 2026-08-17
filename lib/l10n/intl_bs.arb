@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-17 16:01:03.293302",
+    "@@last_modified": "2026-08-17 16:29:38.580764",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Otključajte vježbanje poruka",
     "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
     "showMore": "Prikaži više",
-    "showLess": "Prikaži manje"
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}"
 }

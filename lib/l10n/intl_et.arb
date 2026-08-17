@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-17 16:01:06.296683",
+    "@@last_modified": "2026-08-17 16:29:39.637879",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9749,5 +9749,6 @@
     "unlockMessagePractice": "Ava sõnumite harjutamine",
     "unlockWritingAssistance": "Ava kirjutamisabi",
     "showMore": "Näita rohkem",
-    "showLess": "Näita vähem"
+    "showLess": "Näita vähem",
+    "countNewMessages": "{count, plural, =1{1 uus sõnum} other{{count} uut sõnumit}}"
 }

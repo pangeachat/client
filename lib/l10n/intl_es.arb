@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-17 16:01:06.841587",
+    "@@last_modified": "2026-08-17 16:29:39.262121",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7955,5 +7955,6 @@
     "unlockMessagePractice": "Desbloquear práctica de mensajes",
     "unlockWritingAssistance": "Desbloquear asistencia de escritura",
     "showMore": "Mostrar más",
-    "showLess": "Mostrar menos"
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 mensaje nuevo} other{{count} mensajes nuevos}}"
 }

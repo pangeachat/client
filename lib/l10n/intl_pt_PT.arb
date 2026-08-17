@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-17 16:01:08.264137",
+    "@@last_modified": "2026-08-17 16:29:43.490213",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10669,5 +10669,6 @@
     "unlockMessagePractice": "Desbloquear prática de mensagens",
     "unlockWritingAssistance": "Desbloquear assistência de escrita",
     "showMore": "Mostrar mais",
-    "showLess": "Mostrar menos"
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}"
 }

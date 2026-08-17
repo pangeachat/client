@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:05.047841",
+    "@@last_modified": "2026-08-17 16:29:40.316783",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10666,5 +10666,6 @@
     "unlockMessagePractice": "פתיחת תרגול הודעות",
     "unlockWritingAssistance": "פתיחת סיוע בכתיבה",
     "showMore": "הצג עוד",
-    "showLess": "הצג פחות"
+    "showLess": "הצג פחות",
+    "countNewMessages": "{count, plural, =1{הודעה חדשה אחת} other{{count} הודעות חדשות}}"
 }

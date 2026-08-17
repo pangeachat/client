@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-17 16:01:07.360685",
+    "@@last_modified": "2026-08-17 16:29:42.524683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Nisfruttaw il-prattika tal-messaġġi",
     "unlockWritingAssistance": "Nisfruttaw l-għajnuna fil-kitba",
     "showMore": "Uri aktar",
-    "showLess": "Uri inqas"
+    "showLess": "Uri inqas",
+    "countNewMessages": "{count, plural, =1{1 messaġġ ġdid} other{{count} messaġġi ġodda}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-17 16:01:06.637059",
+    "@@last_modified": "2026-08-17 16:29:41.794410",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Reserare nuntium exercitium",
     "unlockWritingAssistance": "Reserare scripturae auxilium",
     "showMore": "Plura ostende",
-    "showLess": "Pauciora ostende"
+    "showLess": "Pauciora ostende",
+    "countNewMessages": "{count, plural, =1{1 nuntius novus} other{{count} nuntii novi}}"
 }

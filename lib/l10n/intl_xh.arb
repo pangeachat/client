@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-17 16:01:13.050130",
+    "@@last_modified": "2026-08-17 16:29:46.165739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2140,5 +2140,6 @@
     "unlockMessagePractice": "Vula umthambo wemiyalezo",
     "unlockWritingAssistance": "Vula uncedo lokubhala",
     "showMore": "Bonisa okungakumbi",
-    "showLess": "Bonisa okuncinci"
+    "showLess": "Bonisa okuncinci",
+    "countNewMessages": "{count, plural, =1{1 umyalezo omtsha} other{imiyalezo emitsha eli-{count}}}"
 }

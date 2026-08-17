@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:13.513865",
+    "@@last_modified": "2026-08-17 16:29:45.689029",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7028,5 +7028,6 @@
     "unlockMessagePractice": "Mở khóa luyện tập tin nhắn",
     "unlockWritingAssistance": "Mở khóa hỗ trợ viết",
     "showMore": "Hiển thị thêm",
-    "showLess": "Hiển thị bớt"
+    "showLess": "Hiển thị bớt",
+    "countNewMessages": "{count, plural, =1{1 tin nhắn mới} other{{count} tin nhắn mới}}"
 }

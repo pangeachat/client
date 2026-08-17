@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:01:05.790541",
+    "@@last_modified": "2026-08-17 16:29:41.166731",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9825,5 +9825,6 @@
     "unlockMessagePractice": "Sblocca la pratica dei messaggi",
     "unlockWritingAssistance": "Sblocca l'assistenza alla scrittura",
     "showMore": "Mostra altro",
-    "showLess": "Mostra meno"
+    "showLess": "Mostra meno",
+    "countNewMessages": "{count, plural, =1{1 nuovo messaggio} other{{count} nuovi messaggi}}"
 }
