@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/read_aloud_queue.dart';
@@ -239,23 +240,19 @@ class MessageReadAloudController {
     // The category is a constant HERE because `tryToSpeak` serves this, the
     // automatic read above, and every word and choice tap, and cannot tell them
     // apart.
-    final probe = _listeningProbe(DosageListeningCategory.toolbarRead);
-    try {
-      await TtsController.tryToSpeak(
-        message.messageDisplayText,
-        langCode: message.messageDisplayLangCode,
-        useCase: TtsUseCase.messageClick,
-        allowChoreoPlay: false,
-        // `allowChoreoPlay: false` with no known-good device voice returns near
-        // instantly and still fires `onStop`, so the returned future cannot tell
-        // silence from speech. This pair can: it brackets a route that was
-        // actually asked to play, and only that.
-        onPlaybackStarted: probe.started,
-        onPlaybackAborted: probe.aborted,
-      );
-    } finally {
-      probe.finish();
-    }
+    await TtsController.tryToSpeak(
+      message.messageDisplayText,
+      langCode: message.messageDisplayLangCode,
+      useCase: TtsUseCase.messageClick,
+      allowChoreoPlay: false,
+      // `allowChoreoPlay: false` with no known-good device voice returns near
+      // instantly and still fires `onStop`, so the returned future cannot tell
+      // silence from speech. The probe can: `tryToSpeak` brackets it around a
+      // route that was actually asked to play, and only that.
+      listening: DosageListeningMeasurement.measured(
+        _listeningProbe(DosageListeningCategory.toolbarRead),
+      ),
+    );
   }
 
   bool _isInTargetLanguage(PangeaMessageEvent message) {
@@ -291,29 +288,22 @@ class MessageReadAloudController {
     // The room is threaded from here because [TtsController.tryToSpeak] takes
     // neither a room nor an event id and serves word and choice taps too; it
     // could not name the category or the room if it wanted to.
-    final probe = _listeningProbe(DosageListeningCategory.autoRead);
-    try {
-      await TtsController.tryToSpeak(
-        message.messageDisplayText,
-        langCode: message.messageDisplayLangCode,
-        useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.newMessage,
-        allowChoreoPlay: voiceReply,
-        // Fires only when a route is asked to play, so the silent exits — no
-        // known-good device voice with the backend disallowed, tool setting
-        // off, request superseded — measure nothing rather than banking a
-        // near-zero interval for audio that never played.
-        onPlaybackStarted: probe.started,
-        // And whether a route DID play is only knowable after it was asked. A
-        // backend attempt that fails and falls back to the device must not have
-        // the failure, or the switch, counted as audio the learner heard.
-        onPlaybackAborted: probe.aborted,
-      );
-    } finally {
-      // In `finally` so a throw out of TTS still closes the measurement, and
-      // AFTER the await so nothing here can delay speech. It emits nothing when
-      // playback never started.
-      probe.finish();
-    }
+    await TtsController.tryToSpeak(
+      message.messageDisplayText,
+      langCode: message.messageDisplayLangCode,
+      useCase: voiceReply ? TtsUseCase.voiceReply : TtsUseCase.newMessage,
+      allowChoreoPlay: voiceReply,
+      // The probe opens only when a route is asked to play, so the silent
+      // exits — no known-good device voice with the backend disallowed, tool
+      // setting off, request superseded — measure nothing rather than banking a
+      // near-zero interval for audio that never played. And whether a route DID
+      // play is only knowable after it was asked, so a backend attempt that
+      // fails and falls back to the device has neither the failure nor the
+      // switch counted as audio the learner heard.
+      listening: DosageListeningMeasurement.measured(
+        _listeningProbe(DosageListeningCategory.autoRead),
+      ),
+    );
   }
 
   /// One measurement of one `tryToSpeak` call, tagged with the category this

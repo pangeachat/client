@@ -10,6 +10,7 @@ import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/utils/strip_emojis.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -311,37 +312,32 @@ class TtsController {
     /// message-read-aloud.instructions.md.
     bool allowChoreoPlay = true,
 
-    /// Fires immediately before a route is asked to play — never on an exit that
-    /// turns out to be silent.
+    /// REQUIRED: whether this playback counts as listening, and as what.
     ///
-    /// A caller measuring how long the learner listened cannot use the returned
-    /// future alone, because several exits resolve it having played nothing: the
-    /// per-surface tool setting is off, the request was superseded, backend and
-    /// device both failed, or — the one this exists for — `allowChoreoPlay` is
-    /// false and the device has no known-good voice, which returns near
-    /// instantly and still fires `onStop`. A naive wrapper records a near-zero
-    /// interval for audio nobody heard.
+    /// Every call here plays target-language audio at a learner, so every call is
+    /// listening — and the served figure is a TOTAL, so a path that measures
+    /// nothing shortens the headline number rather than leaving a hole in a
+    /// slice. Making this required is what stops the next read-aloud path from
+    /// undercounting silently: it cannot compile without saying, in one word,
+    /// either which category it is or why it is exempt.
     ///
-    /// [onStart] cannot serve: it fires unconditionally before routing, so it is
-    /// true of the silent exits too. This fires after every one of them, so
-    /// "playback never began" is expressed by this NOT firing.
-    ///
-    /// PAIRED with [onPlaybackAborted]. Whether a route played can only be known
-    /// after it was asked to, so this is an intent to play and the pair is what
-    /// makes it an observation. Never awaited and fully guarded: a throwing
-    /// callback cannot disturb speech.
-    VoidCallback? onPlaybackStarted,
-
-    /// Fires when a route that was asked to play did NOT play — a device `speak`
-    /// that threw, or a backend `play` that failed before falling back.
-    ///
-    /// The caller drops the interval opened by [onPlaybackStarted]. Without it,
-    /// a failed backend attempt banks the time spent failing AND the time spent
-    /// switching to the device, and a route that never made a sound still
-    /// reports listening.
-    VoidCallback? onPlaybackAborted,
+    /// This entry point cannot decide it. One `tryToSpeak` serves automatic
+    /// read-aloud, toolbar-open read-aloud, word taps and choice taps, and it
+    /// takes neither a room nor an event id — only the CALLER knows which kind of
+    /// listening it is asking for. So the caller builds the probe and this
+    /// method does the bracketing, which is the half that is easy to forget.
+    required DosageListeningMeasurement listening,
   }) async {
     final requestId = ++_requestCounter;
+    // The measurement for THIS call. Bracketed here rather than at each call
+    // site: the returned future cannot tell speech from silence (several exits
+    // resolve having played nothing — the tool setting is off, the request was
+    // superseded, or `allowChoreoPlay: false` met a device with no known-good
+    // voice, which returns near instantly and still fires `onStop`), so timing
+    // the call banks a near-zero interval for audio nobody heard. The
+    // start/abort pair below brackets a route that was actually asked to play,
+    // and only that.
+    final probe = listening.probe;
     // Deliberately NOT latched: start and abort are paired PER ROUTE, so a
     // backend failure that falls back to the device is start/abort/start/end —
     // one banked interval, the failed one discarded. A latch would suppress the
@@ -359,9 +355,9 @@ class TtsController {
     }
 
     void reportPlaybackStarted() =>
-        guarded(onPlaybackStarted, 'onPlaybackStarted');
+        guarded(probe?.started, 'onPlaybackStarted');
     void reportPlaybackAborted() =>
-        guarded(onPlaybackAborted, 'onPlaybackAborted');
+        guarded(probe?.aborted, 'onPlaybackAborted');
 
     final strippedText = stripEmojis(text);
     final request = _AudioRequest(
@@ -438,6 +434,13 @@ class TtsController {
         _currentRequest = null;
         _activeRequestId = null;
       }
+      // Close the measurement HERE: in a `finally`, so a throw out of TTS still
+      // closes it, and AFTER the await, so nothing about it can delay speech.
+      // It is synchronous and allocation-only — it appends to an in-memory
+      // buffer and returns — and it emits nothing when playback never started.
+      // Guarded like the other two, so telemetry can never surface to the
+      // learner.
+      guarded(probe?.finish, 'listening.finish');
     }
   }
 

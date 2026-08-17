@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
@@ -64,6 +65,13 @@ class ChoicesArray<T> extends StatelessWidget {
                   targetID: null,
                   langCode: langCode!,
                   useCase: TtsUseCase.choices,
+                  // A tapped choice spoken back to the learner IS listening.
+                  // Nothing in the closed category vocabulary describes it —
+                  // all four are about a message — so it is exempt rather than
+                  // filed under a counter that means something narrower.
+                  listening: const DosageListeningMeasurement.notMeasured(
+                    DosageListeningExemption.awaitingCategory,
+                  ),
                 );
               }
             },

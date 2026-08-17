@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
+import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -125,6 +126,14 @@ class _PhoneticTranscriptionWidgetState
         pos: widget.pos,
         morph: widget.morph,
         ttsPhoneme: ttsPhoneme,
+        // A pronunciation button is a deliberate request to hear a word, so it
+        // is listening — but a word, not a message, and no current category
+        // covers that. This widget also spans surfaces with and without a room:
+        // the word card in chat has one, the analytics practice session does
+        // not. Both halves have to land before it can emit.
+        listening: const DosageListeningMeasurement.notMeasured(
+          DosageListeningExemption.awaitingRoomAndCategory,
+        ),
         onStart: () {
           if (mounted) setState(() => _playingId = targetId);
         },
