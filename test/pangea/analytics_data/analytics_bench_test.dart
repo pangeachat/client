@@ -7,7 +7,8 @@
 //
 // It reproduces, in isolation, the work done by:
 //   A. AnalyticsDatabase.getAggregatedConstructs (vocab + morph) + points fold
-//      — the body of AnalyticsDataService._recomputeTotalXP.
+//      — the body of the pre-#8418 AnalyticsDataService._recomputeTotalXP.
+//   A2. AnalyticsDatabase.getAggregateXPSums + foldTotalXP — the #8418 body.
 //   B. AnalyticsDataService.getAggregatedConstructs' merge loop shape:
 //      ConstructUses.merge of case-variant pairs.
 //   C. Repeated `points` / `cappedLastUse` reads over every aggregate — the
@@ -28,12 +29,29 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'analytics_fixtures.dart';
 
 const _vocabConstructs = 4000;
 const _morphConstructs = 150;
 const _morphUsesEach = 400;
 const _runs = 5;
+
+/// Real UD feature names so morph rows pass ConstructIdentifier.isInvalid.
+const _morphFeatures = [
+  'Aspect',
+  'Case',
+  'Definite',
+  'Degree',
+  'Gender',
+  'Mood',
+  'Number',
+  'Person',
+  'Polarity',
+  'Tense',
+  'VerbForm',
+  'Voice',
+];
 
 int _bestOf(int runs, void Function() body) {
   var best = 1 << 62;
@@ -94,7 +112,7 @@ void main() {
             xpEach: 5,
             startMinute: rng.nextInt(100000),
             type: ConstructTypeEnum.morph,
-            category: 'feat${i % 12}',
+            category: _morphFeatures[i % _morphFeatures.length],
           ),
         );
       }
@@ -122,6 +140,20 @@ void main() {
           testLang,
         );
         lastTotal = [...vocab, ...morph].fold(0, (t, c) => t + c.points);
+      });
+
+      // ---- A2. recompute via raw xp sums (#8418) ---------------------------
+      int lastTotal2 = 0;
+      final a2Micros = await _bestOfAsync(_runs, () async {
+        final sums = await Future.wait([
+          db.getAggregateXPSums(ConstructTypeEnum.vocab, testLang),
+          db.getAggregateXPSums(ConstructTypeEnum.morph, testLang),
+        ]);
+        lastTotal2 = AnalyticsDataService.foldTotalXP(
+          sums.expand((s) => s),
+          resolve: (id) => id,
+          blocked: const {},
+        );
       });
 
       // Materialise once for the in-memory sections.
@@ -223,6 +255,9 @@ void main() {
         )
         ..writeln(
           '  A recompute total XP (DB read+fold)  ${_ms(aMicros)} ms  (total=$lastTotal)',
+        )
+        ..writeln(
+          '  A2 recompute via raw xp sums + fold  ${_ms(a2Micros)} ms  (total=$lastTotal2)',
         )
         ..writeln('  B service merge loop (variant merge) ${_ms(bMicros)} ms')
         ..writeln('  C 5x points/cappedLastUse/level     ${_ms(cMicros)} ms')

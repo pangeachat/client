@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'dart:math';
+
+import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
@@ -698,22 +701,52 @@ class AnalyticsDataService {
   }
 
   /// Recomputes the language's XP total and level from the current aggregate.
+  ///
+  /// Reads per-row uncapped xp sums straight from the aggregate JSON
+  /// ([AnalyticsDatabase.getAggregateXPSums]) and folds them with
+  /// [foldTotalXP] — the same grouping, blocked/invalid filter and per-construct
+  /// cap that [getAggregatedConstructs] applies, without deserializing every
+  /// stored use (#8418).
   Future<void> _recomputeTotalXP(String language) async {
-    final vocab = await getAggregatedConstructs(
-      ConstructTypeEnum.vocab,
-      language,
+    final db = _analyticsClientGetter.database;
+    final sums = await Future.wait([
+      db.getAggregateXPSums(ConstructTypeEnum.vocab, language),
+      db.getAggregateXPSums(ConstructTypeEnum.morph, language),
+    ]);
+    final totalXP = foldTotalXP(
+      sums.expand((s) => s),
+      resolve: _mergeTable.resolve,
+      blocked: blockedConstructs,
     );
-    final morphs = await getAggregatedConstructs(
-      ConstructTypeEnum.morph,
-      language,
-    );
-    final constructs = [...vocab.values, ...morphs.values];
-    final totalXP = constructs.fold(0, (total, c) => total + c.points);
 
     await MatrixState.pangeaController.userController.updateAnalyticsProfile(
       level: DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP),
     );
-    await _analyticsClientGetter.database.updateTotalXP(totalXP, language);
+    await db.updateTotalXP(totalXP, language);
+  }
+
+  /// Total XP over per-row uncapped xp [sums]: rows are grouped by their
+  /// merge-table canonical id ([resolve]), groups whose canonical is blocked or
+  /// invalid are dropped, and each remaining group contributes
+  /// `min(sum, xpForFlower)` — exactly what summing [ConstructUses.points]
+  /// over [getAggregatedConstructs] yields.
+  @visibleForTesting
+  static int foldTotalXP(
+    Iterable<({ConstructIdentifier id, int xp})> sums, {
+    required ConstructIdentifier Function(ConstructIdentifier) resolve,
+    required Set<ConstructIdentifier> blocked,
+  }) {
+    final byCanonical = <ConstructIdentifier, int>{};
+    for (final row in sums) {
+      final canonical = resolve(row.id);
+      if (blocked.contains(canonical) || canonical.isInvalid) continue;
+      byCanonical[canonical] = (byCanonical[canonical] ?? 0) + row.xp;
+    }
+    var total = 0;
+    for (final xp in byCanonical.values) {
+      total += min(xp, AnalyticsConstants.xpForFlower);
+    }
+    return total;
   }
 
   Future<void> updateBlockedConstructs(
