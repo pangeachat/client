@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-14 15:02:53.177811",
+    "@@last_modified": "2026-08-17 09:31:43.717577",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Барои тағйир додани забони паём инҷоро клик кунед.",
     "messageLanguage": "Забони паём",
     "messageLanguageUpdated": "Забони паём навсозӣ шуд!",
-    "pickCefrLevelStepSubtitle": "Шумо метавонед инро баъдтар тағйир диҳед"
+    "pickCefrLevelStepSubtitle": "Шумо метавонед инро баъдтар тағйир диҳед",
+    "unlockPremiumAudio": "Аудиои мукофотиро кушоед",
+    "unlockTranslations": "Тарҷумаҳоро кушоед",
+    "unlockEmojiMode": "Ҳолати эмодзиро кушоед",
+    "unlockMessagePractice": "Машқи паёмро кушоед",
+    "unlockWritingAssistance": "Кӯмаки хаттиро кушоед"
 }

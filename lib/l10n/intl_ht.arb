@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-14 15:02:49.675818",
+    "@@last_modified": "2026-08-17 09:30:29.224197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Klike la a pou chanje lang mesaj la.",
     "messageLanguage": "Lang mesaj",
     "messageLanguageUpdated": "Lang mesaj la mete ajou!",
-    "pickCefrLevelStepSubtitle": "Ou ka chanje sa pita"
+    "pickCefrLevelStepSubtitle": "Ou ka chanje sa pita",
+    "unlockPremiumAudio": "Debloke odyo prim",
+    "unlockTranslations": "Debloke tradiksyon",
+    "unlockEmojiMode": "Debloke mòd emoji",
+    "unlockMessagePractice": "Debloke pratik mesaj",
+    "unlockWritingAssistance": "Debloke asistans pou ekri"
 }

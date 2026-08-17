@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-14 15:02:48.934001",
+    "@@last_modified": "2026-08-17 09:30:26.366640",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9741,5 +9741,10 @@
     "updateMessageLanguage": "Egin klik hemen mezuaren hizkuntza aldatzeko.",
     "messageLanguage": "Mezuaren hizkuntza",
     "messageLanguageUpdated": "Mezuaren hizkuntza eguneratu da!",
-    "pickCefrLevelStepSubtitle": "Geroago alda dezakezu"
+    "pickCefrLevelStepSubtitle": "Geroago alda dezakezu",
+    "unlockPremiumAudio": "Desblokeatu premium audioa",
+    "unlockTranslations": "Desblokeatu itzulpenak",
+    "unlockEmojiMode": "Desblokeatu emoji modua",
+    "unlockMessagePractice": "Desblokeatu mezuen praktika",
+    "unlockWritingAssistance": "Desblokeatu idazketa-laguntza"
 }

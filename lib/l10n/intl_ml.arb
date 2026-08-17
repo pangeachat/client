@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-14 15:02:51.002499",
+    "@@last_modified": "2026-08-17 09:30:57.036415",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "സന്ദേശത്തിന്റെ ഭാഷ മാറ്റാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക.",
     "messageLanguage": "സന്ദേശ ഭാഷ",
     "messageLanguageUpdated": "സന്ദേശ ഭാഷ അപ്ഡേറ്റ് ചെയ്തു!",
-    "pickCefrLevelStepSubtitle": "നിങ്ങൾക്ക് ഇത് പിന്നീട് മാറ്റാവുന്നതാണ്"
+    "pickCefrLevelStepSubtitle": "നിങ്ങൾക്ക് ഇത് പിന്നീട് മാറ്റാവുന്നതാണ്",
+    "unlockPremiumAudio": "പ്രീമിയം ഓഡിയോ അൺലോക്ക് ചെയ്യുക",
+    "unlockTranslations": "വിവർത്തനങ്ങൾ അൺലോക്ക് ചെയ്യുക",
+    "unlockEmojiMode": "ഇമോജി മോഡ് അൺലോക്ക് ചെയ്യുക",
+    "unlockMessagePractice": "സന്ദേശ പരിശീലനം അൺലോക്ക് ചെയ്യുക",
+    "unlockWritingAssistance": "എഴുത്ത് സഹായം അൺലോക്ക് ചെയ്യുക"
 }

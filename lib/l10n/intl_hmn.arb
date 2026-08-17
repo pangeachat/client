@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-14 15:02:49.497273",
+    "@@last_modified": "2026-08-17 09:30:31.881699",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Nyem qhov no los hloov cov lus hom lus.",
     "messageLanguage": "Lus hom lus",
     "messageLanguageUpdated": "Lus hom lus hloov tshiab lawm!",
-    "pickCefrLevelStepSubtitle": "Koj hloov tau tom qab"
+    "pickCefrLevelStepSubtitle": "Koj hloov tau tom qab",
+    "unlockPremiumAudio": "Qhib lub suab zoo tshaj",
+    "unlockTranslations": "Qhib kev txhais lus",
+    "unlockEmojiMode": "Qhib hom emoji",
+    "unlockMessagePractice": "Qhib kev xyaum sau ntawv",
+    "unlockWritingAssistance": "Qhib kev pab sau ntawv"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-14 15:02:52.507449",
+    "@@last_modified": "2026-08-17 09:31:13.157670",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Dzvanya pano kuti uchinje mutauro wemeseji.",
     "messageLanguage": "Mutauro wemeseji",
     "messageLanguageUpdated": "Mutauro wemeseji wachinjwa!",
-    "pickCefrLevelStepSubtitle": "Unogona kuzvichinja gare gare"
+    "pickCefrLevelStepSubtitle": "Unogona kuzvichinja gare gare",
+    "unlockPremiumAudio": "Vhura odhiyo yepamusoro",
+    "unlockTranslations": "Vhura shanduro",
+    "unlockEmojiMode": "Vhura emoji mode",
+    "unlockMessagePractice": "Vhura kudzidzira mameseji",
+    "unlockWritingAssistance": "Vhura rubatsiro rwekunyora"
 }

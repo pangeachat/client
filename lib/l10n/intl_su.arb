@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-14 15:02:52.925692",
+    "@@last_modified": "2026-08-17 09:31:16.956228",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Pencét di dieu pikeun ngarobah basa pesen.",
     "messageLanguage": "Basa pesen",
     "messageLanguageUpdated": "Basa pesen geus diropéa!",
-    "pickCefrLevelStepSubtitle": "Anjeun tiasa ngarobih ieu engké"
+    "pickCefrLevelStepSubtitle": "Anjeun tiasa ngarobih ieu engké",
+    "unlockPremiumAudio": "Buka konci audio premium",
+    "unlockTranslations": "Buka konci tarjamahan",
+    "unlockEmojiMode": "Buka konci mode emoji",
+    "unlockMessagePractice": "Buka konci latihan pesen",
+    "unlockWritingAssistance": "Buka konci bantuan nulis"
 }

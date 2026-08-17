@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-14 15:02:50.401479",
+    "@@last_modified": "2026-08-17 09:30:44.513592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Хабар тілін өзгерту үшін осы жерді басыңыз.",
     "messageLanguage": "Хабар тілі",
     "messageLanguageUpdated": "Хабар тілі жаңартылды!",
-    "pickCefrLevelStepSubtitle": "Мұны кейінірек өзгертуге болады"
+    "pickCefrLevelStepSubtitle": "Мұны кейінірек өзгертуге болады",
+    "unlockPremiumAudio": "Премиум аудионың құлпын ашу",
+    "unlockTranslations": "Аудармалардың құлпын ашу",
+    "unlockEmojiMode": "Эмодзи режимінің құлпын ашу",
+    "unlockMessagePractice": "Хабарлама жазу жаттығуының құлпын ашу",
+    "unlockWritingAssistance": "Жазуға көмектесудің құлпын ашу"
 }

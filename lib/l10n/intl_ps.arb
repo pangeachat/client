@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-14 15:02:51.974769",
+    "@@last_modified": "2026-08-17 09:31:01.123979",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "د پیغام ژبې بدلولو لپاره دلته کلیک وکړئ.",
     "messageLanguage": "د پیغام ژبه",
     "messageLanguageUpdated": "د پیغام ژبه تازه شوه!",
-    "pickCefrLevelStepSubtitle": "تاسو کولی شئ دا وروسته بدل کړئ"
+    "pickCefrLevelStepSubtitle": "تاسو کولی شئ دا وروسته بدل کړئ",
+    "unlockPremiumAudio": "پریمیم آډیو خلاص کړئ",
+    "unlockTranslations": "ژباړې خلاص کړئ",
+    "unlockEmojiMode": "ایموجي حالت خلاص کړئ",
+    "unlockMessagePractice": "د پیغام تمرین خلاص کړئ",
+    "unlockWritingAssistance": "د لیکلو مرسته خلاص کړئ"
 }

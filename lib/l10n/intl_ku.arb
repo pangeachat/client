@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-14 15:02:50.772867",
+    "@@last_modified": "2026-08-17 09:30:45.843390",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "لێرە کرتە بکە بۆ گۆڕینی زمانی پەیامەکە.",
     "messageLanguage": "زمانی پەیام",
     "messageLanguageUpdated": "زمانی پەیام نوێکرایەوە!",
-    "pickCefrLevelStepSubtitle": "دەتوانیت دواتر ئەمە بگۆڕیت"
+    "pickCefrLevelStepSubtitle": "دەتوانیت دواتر ئەمە بگۆڕیت",
+    "unlockPremiumAudio": "دەنگی پریمیۆم بکەرەوە",
+    "unlockTranslations": "وەرگێڕانەکان بکەرەوە",
+    "unlockEmojiMode": "دۆخی ئیمۆجی بکەرەوە",
+    "unlockMessagePractice": "ڕاهێنانی نامە ناردن بکەرەوە",
+    "unlockWritingAssistance": "یارمەتی نووسین بکەرەوە"
 }

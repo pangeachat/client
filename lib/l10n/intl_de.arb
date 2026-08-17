@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-14 15:02:49.033772",
+    "@@last_modified": "2026-08-17 09:30:26.065334",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9728,5 +9728,10 @@
     "updateMessageLanguage": "Klicke hier, um die Sprache der Nachricht zu ändern.",
     "messageLanguage": "Nachrichtensprache",
     "messageLanguageUpdated": "Nachrichtensprache aktualisiert!",
-    "pickCefrLevelStepSubtitle": "Das kannst du später ändern"
+    "pickCefrLevelStepSubtitle": "Das kannst du später ändern",
+    "unlockPremiumAudio": "Premium-Audio freischalten",
+    "unlockTranslations": "Übersetzungen freischalten",
+    "unlockEmojiMode": "Emoji-Modus freischalten",
+    "unlockMessagePractice": "Nachrichtenübung freischalten",
+    "unlockWritingAssistance": "Schreibassistenz freischalten"
 }

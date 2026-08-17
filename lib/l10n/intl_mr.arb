@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-14 15:02:51.249258",
+    "@@last_modified": "2026-08-17 09:30:52.544158",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "संदेशाची भाषा बदलण्यासाठी येथे क्लिक करा.",
     "messageLanguage": "संदेश भाषा",
     "messageLanguageUpdated": "संदेश भाषा अद्यतनित केली!",
-    "pickCefrLevelStepSubtitle": "तुम्ही हे नंतर बदलू शकता"
+    "pickCefrLevelStepSubtitle": "तुम्ही हे नंतर बदलू शकता",
+    "unlockPremiumAudio": "प्रीमियम ऑडिओ अनलॉक करा",
+    "unlockTranslations": "भाषांतरे अनलॉक करा",
+    "unlockEmojiMode": "इमोजी मोड अनलॉक करा",
+    "unlockMessagePractice": "संदेश सराव अनलॉक करा",
+    "unlockWritingAssistance": "लेखन सहाय्य अनलॉक करा"
 }

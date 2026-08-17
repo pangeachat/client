@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-14 15:02:50.353186",
+    "@@last_modified": "2026-08-17 09:30:42.490171",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "ಸಂದೇಶದ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ.",
     "messageLanguage": "ಸಂದೇಶ ಭಾಷೆ",
     "messageLanguageUpdated": "ಸಂದೇಶ ಭಾಷೆ ನವೀಕರಿಸಲಾಗಿದೆ!",
-    "pickCefrLevelStepSubtitle": "ನೀವು ಇದನ್ನು ನಂತರ ಬದಲಾಯಿಸಬಹುದು"
+    "pickCefrLevelStepSubtitle": "ನೀವು ಇದನ್ನು ನಂತರ ಬದಲಾಯಿಸಬಹುದು",
+    "unlockPremiumAudio": "ಪ್ರೀಮಿಯಂ ಆಡಿಯೊ ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "unlockTranslations": "ಅನುವಾದಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "unlockEmojiMode": "ಎಮೋಜಿ ಮೋಡ್ ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "unlockMessagePractice": "ಸಂದೇಶ ಅಭ್ಯಾಸವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "unlockWritingAssistance": "ಬರವಣಿಗೆ ಸಹಾಯವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ"
 }

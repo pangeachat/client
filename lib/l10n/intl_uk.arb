@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-14 15:02:53.407950",
+    "@@last_modified": "2026-08-17 09:31:29.349579",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9741,5 +9741,10 @@
     "updateMessageLanguage": "Натисніть тут, щоб змінити мову повідомлення.",
     "messageLanguage": "Мова повідомлення",
     "messageLanguageUpdated": "Мову повідомлення оновлено!",
-    "pickCefrLevelStepSubtitle": "Ви можете змінити це пізніше"
+    "pickCefrLevelStepSubtitle": "Ви можете змінити це пізніше",
+    "unlockPremiumAudio": "Розблокувати преміум аудіо",
+    "unlockTranslations": "Розблокувати переклади",
+    "unlockEmojiMode": "Розблокувати режим емодзі",
+    "unlockMessagePractice": "Розблокувати практику повідомлень",
+    "unlockWritingAssistance": "Розблокувати допомогу з письмом"
 }

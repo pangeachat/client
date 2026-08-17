@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-14 15:02:51.118026",
+    "@@last_modified": "2026-08-17 09:30:53.016399",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Tsindrio eto hanovana ny fitenin'ny hafatra.",
     "messageLanguage": "Fitenin'ny hafatra",
     "messageLanguageUpdated": "Voasolo ny fitenin'ny hafatra!",
-    "pickCefrLevelStepSubtitle": "Azonao ovaina any aoriana izany"
+    "pickCefrLevelStepSubtitle": "Azonao ovaina any aoriana izany",
+    "unlockPremiumAudio": "Sokafy ny feo premium",
+    "unlockTranslations": "Sokafy ny fandikana",
+    "unlockEmojiMode": "Sokafy ny fomba emoji",
+    "unlockMessagePractice": "Sokafy ny fanazaran-tena amin'ny hafatra",
+    "unlockWritingAssistance": "Sokafy ny fanampiana amin'ny fanoratana"
 }

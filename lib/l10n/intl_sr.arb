@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:53.067086",
+    "@@last_modified": "2026-08-17 09:31:29.822369",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10690,5 +10690,10 @@
     "updateMessageLanguage": "Kliknite ovde da promenite jezik poruke.",
     "messageLanguage": "Jezik poruke",
     "messageLanguageUpdated": "Jezik poruke je ažuriran!",
-    "pickCefrLevelStepSubtitle": "Ovo možete promeniti kasnije"
+    "pickCefrLevelStepSubtitle": "Ovo možete promeniti kasnije",
+    "unlockPremiumAudio": "Otključajte premium audio",
+    "unlockTranslations": "Otključajte prevode",
+    "unlockEmojiMode": "Otključajte emoji režim",
+    "unlockMessagePractice": "Otključajte vežbanje poruka",
+    "unlockWritingAssistance": "Otključajte pomoć pri pisanju"
 }

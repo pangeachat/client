@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-14 15:02:51.027115",
+    "@@last_modified": "2026-08-17 09:30:50.806513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "ຄລິກທີ່ນີ້ເພື່ອປ່ຽນພາສາຂອງຂໍ້ຄວາມ.",
     "messageLanguage": "ພາສາຂໍ້ຄວາມ",
     "messageLanguageUpdated": "ອັບເດດພາສາຂໍ້ຄວາມແລ້ວ!",
-    "pickCefrLevelStepSubtitle": "ທ່ານສາມາດປ່ຽນແປງສິ່ງນີ້ໄດ້ໃນພາຍຫຼັງ"
+    "pickCefrLevelStepSubtitle": "ທ່ານສາມາດປ່ຽນແປງສິ່ງນີ້ໄດ້ໃນພາຍຫຼັງ",
+    "unlockPremiumAudio": "ປົດລັອກສຽງພຣີມຽມ",
+    "unlockTranslations": "ປົດລັອກການແປ",
+    "unlockEmojiMode": "ປົດລັອກໂໝດອີໂມຈິ",
+    "unlockMessagePractice": "ປົດລັອກການຝຶກຊ້ອມຂໍ້ຄວາມ",
+    "unlockWritingAssistance": "ປົດລັອກຕົວຊ່ວຍຂຽນ"
 }

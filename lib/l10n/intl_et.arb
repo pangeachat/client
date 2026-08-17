@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-14 15:02:48.796527",
+    "@@last_modified": "2026-08-17 09:30:21.146983",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9738,5 +9738,10 @@
     "updateMessageLanguage": "Sõnumi keele muutmiseks klõpsa siia.",
     "messageLanguage": "Sõnumi keel",
     "messageLanguageUpdated": "Sõnumi keel uuendatud!",
-    "pickCefrLevelStepSubtitle": "Saad seda hiljem muuta"
+    "pickCefrLevelStepSubtitle": "Saad seda hiljem muuta",
+    "unlockPremiumAudio": "Ava esmaklassiline heli",
+    "unlockTranslations": "Ava tõlked",
+    "unlockEmojiMode": "Ava emotikonirežiim",
+    "unlockMessagePractice": "Ava sõnumite harjutamine",
+    "unlockWritingAssistance": "Ava kirjutamisabi"
 }

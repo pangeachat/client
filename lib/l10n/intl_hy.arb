@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-14 15:02:49.772062",
+    "@@last_modified": "2026-08-17 09:30:35.062278",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Սեղմեք այստեղ՝ հաղորդագրության լեզուն փոխելու համար։",
     "messageLanguage": "Հաղորդագրության լեզուն",
     "messageLanguageUpdated": "Հաղորդագրության լեզուն թարմացվել է։",
-    "pickCefrLevelStepSubtitle": "Սա կարող եք փոխել ավելի ուշ"
+    "pickCefrLevelStepSubtitle": "Սա կարող եք փոխել ավելի ուշ",
+    "unlockPremiumAudio": "Բացել պրեմիում աուդիոն",
+    "unlockTranslations": "Բացել թարգմանությունները",
+    "unlockEmojiMode": "Բացել էմոջի ռեժիմը",
+    "unlockMessagePractice": "Բացել հաղորդագրությունների պրակտիկան",
+    "unlockWritingAssistance": "Բացել գրելու աջակցությունը"
 }

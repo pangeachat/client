@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-14 15:02:52.064513",
+    "@@last_modified": "2026-08-17 09:31:06.559373",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10658,5 +10658,10 @@
     "updateMessageLanguage": "Clique aqui para alterar o idioma da mensagem.",
     "messageLanguage": "Idioma da mensagem",
     "messageLanguageUpdated": "Idioma da mensagem atualizado!",
-    "pickCefrLevelStepSubtitle": "Pode alterar isto mais tarde"
+    "pickCefrLevelStepSubtitle": "Pode alterar isto mais tarde",
+    "unlockPremiumAudio": "Desbloquear áudio premium",
+    "unlockTranslations": "Desbloquear traduções",
+    "unlockEmojiMode": "Desbloquear modo emoji",
+    "unlockMessagePractice": "Desbloquear prática de mensagens",
+    "unlockWritingAssistance": "Desbloquear assistência de escrita"
 }
