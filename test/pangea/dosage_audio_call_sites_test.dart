@@ -365,6 +365,38 @@ void main() {
         );
       }
     });
+
+    test('the shared choices widget cannot be given a default room', () {
+      // `ChoicesArray` is generic, shared, and has no room of its own — only
+      // its caller knows one. A room a caller MAY omit is a room a caller will
+      // omit, and the emit would then have to invent one or go dark, which is
+      // how this gap opened in the first place. Required is what makes a third
+      // caller a compile error rather than a silent undercount, and a default
+      // slipped in later would look like a tidy convenience.
+      expect(
+        read(
+          'lib/pangea/common/widgets/choice_array.dart',
+        ).contains('required this.roomId'),
+        isTrue,
+        reason: 'ChoicesArray must take its room, never assume one',
+      );
+
+      // And both callers hand it a REAL room rather than a literal. A hardcoded
+      // string here would put every learner's choice audio in one room.
+      const callers = {
+        'lib/routes/chat/choreographer/igc/span_card.dart':
+            '_choreographer.room.id',
+        'lib/routes/chat/choreographer/activity_orchestrator/suggestion_card.dart':
+            'widget.controller.room.id',
+      };
+      callers.forEach((path, expression) {
+        expect(
+          read(path).contains('roomId: $expression'),
+          isTrue,
+          reason: '$path must pass its own room to ChoicesArray',
+        );
+      });
+    });
   });
 
   group('the shared-player practice surfaces are still dark', () {
