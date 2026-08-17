@@ -323,7 +323,9 @@ class DosageAudioBuffer {
   /// sent.
   void record(DosageAudioEvent event, {required String? accessToken}) {
     if (!DosageSignalsRepo.isEnabled) return;
-    if (event.roomId.isEmpty || event.elapsedMs <= 0) return;
+    // A null room is a surface that has none and says so; an EMPTY one is a
+    // room that failed to arrive. Only the second is dropped.
+    if (!event.hasWellFormedRoom || event.elapsedMs <= 0) return;
     _observedFrom ??= _now().toUtc();
     if (accessToken != null && accessToken.isNotEmpty) {
       // Keep the freshest bearer for the eventual flush; tokens refresh

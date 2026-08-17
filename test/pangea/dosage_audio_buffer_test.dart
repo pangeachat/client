@@ -1174,6 +1174,31 @@ void main() {
     });
   });
 
+  group('a room the wire can carry', () {
+    test('the accumulator takes a null room and refuses an empty one', () {
+      // Six of the ten read-aloud sites have no room and emit through this
+      // accumulator alongside the four that do. The guard here used to reject
+      // anything that was not a non-empty string, so the distinction it now has
+      // to make is between "this surface has no room" — kept — and "a room was
+      // meant to be here" — dropped, because that is a call-site bug and
+      // banking it would file it as a legitimate roomless playback.
+      DosageAudioEvent withRoom(String? room) => DosageAudioEvent.fromPlayback(
+        playbackId: 'id-${_seq++}',
+        roomId: room,
+        category: DosageListeningCategory.wordAudio,
+        elapsed: const Duration(seconds: 3),
+        endedAt: clock,
+      );
+
+      final buffer = DosageAudioBuffer(now: () => clock);
+      buffer.record(withRoom(null), accessToken: token);
+      buffer.record(withRoom(''), accessToken: token);
+
+      expect(buffer.bufferedEvents, hasLength(1));
+      expect(buffer.bufferedEvents.single.roomId, isNull);
+    });
+  });
+
   group('the repo contract', () {
     test('only a 2xx counts as delivered', () async {
       for (final status in [200, 202, 204]) {
@@ -1251,6 +1276,37 @@ void main() {
       expect(body!.keys.toSet(), {'events', 'coverage'});
       final event = (body!['events'] as List).single as Map<String, dynamic>;
       expect(event.keys, isNot(contains('sender')));
+    });
+
+    test('a ROOMLESS event is sent; an EMPTY-room one is dropped', () async {
+      // Two guards drop a malformed event — the buffer on the way in and this
+      // repo on the way out — and they have to agree on what malformed MEANS,
+      // or a roomless playback is buffered here and silently filtered there.
+      // Null is a surface with no room and travels; the empty string is a room
+      // that failed to arrive and does not.
+      DosageAudioEvent roomless(String? room) => DosageAudioEvent.fromPlayback(
+        playbackId: 'id-${_seq++}',
+        roomId: room,
+        category: DosageListeningCategory.wordAudio,
+        elapsed: const Duration(seconds: 3),
+        endedAt: clock,
+      );
+
+      Map<String, dynamic>? body;
+      await DosageSignalsRepo.postAudioSignals(
+        events: [roomless(null), roomless('')],
+        coverage: const [],
+        accessToken: token,
+        client: MockClient((req) async {
+          body = jsonDecode(req.body) as Map<String, dynamic>;
+          return http.Response('', 202);
+        }),
+      );
+
+      final events = (body!['events'] as List).cast<Map<String, dynamic>>();
+      expect(events, hasLength(1));
+      expect(events.single.containsKey('room_id'), isTrue);
+      expect(events.single['room_id'], isNull);
     });
 
     test('a body that says nothing is not sent', () async {

@@ -9,7 +9,6 @@ import 'package:get_storage/get_storage.dart';
 
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
@@ -31,8 +30,10 @@ class _SpyProbe extends DosageTtsListeningProbe {
     super.buffer,
     super.now,
     super.category = DosageListeningCategory.autoRead,
+    // Defaults to a real room; the roomless surfaces pass null explicitly,
+    // which is the whole point of the argument being nullable AND required.
+    super.roomId = '!room:example.org',
   }) : super(
-         roomId: '!room:example.org',
          userId: () => '@learner:example.org',
          accessToken: () => 'syt_token',
        );
@@ -146,6 +147,17 @@ void main() {
 
   const ttsChannel = MethodChannel('flutter_tts');
 
+  /// A probe for the tests below that are about the `onStart`/`onStop` pair
+  /// rather than about the measurement. Every call to `tryToSpeak` measures now
+  /// — there is no unmeasured form to pass — so these tests hand over a real
+  /// probe and simply assert something else.
+  DosageTtsListeningProbe plainProbe() => DosageTtsListeningProbe(
+    category: DosageListeningCategory.wordAudio,
+    roomId: '!room:example.org',
+    userId: () => '@learner:example.org',
+    accessToken: () => 'syt_token',
+  );
+
   setUpAll(() async {
     dotenv.testLoad(
       mergeWith: {
@@ -191,9 +203,7 @@ void main() {
         'hola',
         langCode: 'es',
         useCase: TtsUseCase.words,
-        listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingRoom,
-        ),
+        listening: plainProbe(),
         onStart: () => started++,
         onStop: () => stopped++,
       );
@@ -221,9 +231,7 @@ void main() {
       'hola',
       langCode: 'es',
       useCase: TtsUseCase.words,
-      listening: const DosageListeningMeasurement.notMeasured(
-        DosageListeningExemption.awaitingRoom,
-      ),
+      listening: plainProbe(),
     );
 
     // A stranded id makes `stop` treat every later word as "not the current
@@ -234,9 +242,7 @@ void main() {
       'adios',
       langCode: 'es',
       useCase: TtsUseCase.words,
-      listening: const DosageListeningMeasurement.notMeasured(
-        DosageListeningExemption.awaitingRoom,
-      ),
+      listening: plainProbe(),
       onStop: () => stoppedLater++,
     );
 
@@ -251,7 +257,7 @@ void main() {
         'hola',
         langCode: 'es',
         useCase: TtsUseCase.words,
-        listening: DosageListeningMeasurement.measured(probe),
+        listening: probe,
       );
 
       // The teeth. This harness has no Matrix state behind the controller, so
@@ -274,7 +280,7 @@ void main() {
         'hola',
         langCode: 'es',
         useCase: TtsUseCase.words,
-        listening: DosageListeningMeasurement.measured(probe),
+        listening: probe,
       );
 
       // Closing a measurement is not the same as banking one. No route was ever
@@ -334,7 +340,7 @@ void main() {
         langCode: 'es',
         useCase: TtsUseCase.newMessage,
         allowChoreoPlay: false,
-        listening: DosageListeningMeasurement.measured(probe),
+        listening: probe,
       );
 
       // The engine really was asked to speak, once, with this text. Everything
@@ -398,7 +404,7 @@ void main() {
           // forces the device route, the only one reachable without a network.
           useCase: TtsUseCase.words,
           allowChoreoPlay: false,
-          listening: DosageListeningMeasurement.measured(probe),
+          listening: probe,
         );
 
         expect(spoken, ['hola'], reason: 'the device engine spoke the text');
@@ -417,22 +423,65 @@ void main() {
       });
     }
 
-    test('an exempt call touches no measurement and still speaks', () async {
+    test('a ROOMLESS tap banks a playback whose room is null', () async {
+      // The six surfaces that have no room emit through exactly this path
+      // (#8445). They were dark until now, so the failure to guard against is
+      // not a wrong number — it is a null being treated as the empty room the
+      // emitter drops, which would leave them silently dark while looking
+      // wired. Driven through a route that really plays, end to end, because
+      // every guard between the tap and the batch is shared with the roomed
+      // sites and any one of them could swallow this.
+      MatrixState.pangeaController = _PlayablePangeaController();
+      final spoken = <String>[];
+      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+          .setMockMethodCallHandler(ttsChannel, (call) async {
+            if (call.method == 'getVoices') {
+              return <Map<String, String>>[
+                {'name': 'Paulina', 'locale': 'es-ES', 'quality': 'enhanced'},
+              ];
+            }
+            if (call.method == 'speak') spoken.add('${call.arguments}');
+            return 1;
+          });
+
+      final buffer = DosageAudioBuffer();
+      var clock = DateTime.utc(2026, 1, 1, 12);
       var stopped = 0;
+      final probe = _SpyProbe(
+        buffer: buffer,
+        category: DosageListeningCategory.wordAudio,
+        roomId: null,
+        now: () {
+          clock = clock.add(const Duration(seconds: 1));
+          return clock;
+        },
+      );
 
       await TtsController.tryToSpeak(
         'hola',
         langCode: 'es',
         useCase: TtsUseCase.words,
-        listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingRoom,
-        ),
+        allowChoreoPlay: false,
+        listening: probe,
         onStop: () => stopped++,
       );
 
-      // The six roomless call sites take this path on every tap. Nothing about
-      // being unmeasured may change what the learner gets.
+      // Nothing about having no room may change what the learner gets.
+      expect(spoken, ['hola'], reason: 'the device engine spoke the text');
       expect(stopped, greaterThan(0));
+
+      expect(
+        buffer.bufferedEvents,
+        hasLength(1),
+        reason: 'a roomless surface is measured, not dropped',
+      );
+      final json = buffer.bufferedEvents.single.toJson();
+      // The KEY is present and its VALUE is null. The ingest model is
+      // `extra="forbid"` and reads an absent `room_id` differently from a null
+      // one, so dropping the key would be a different statement, not a tidier
+      // one.
+      expect(json.containsKey('room_id'), isTrue);
+      expect(json['room_id'], isNull);
     });
   });
 }

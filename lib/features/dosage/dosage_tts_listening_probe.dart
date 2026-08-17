@@ -41,8 +41,16 @@ class DosageTtsListeningProbe {
   /// caller, and never derived from the request or its route.
   final DosageListeningCategory category;
 
-  /// The room the playback belongs to. The only identifier that travels.
-  final String roomId;
+  /// The room the playback belongs to, or null when this surface has none. The
+  /// only identifier that travels.
+  ///
+  /// Required despite being nullable. Four of the ten read-aloud sites have a
+  /// room, four have none, and two have one on some taps and not others — so
+  /// null is an answer a site must GIVE, never one it can fall into by leaving
+  /// an argument out. Never fabricate one: a placeholder would put a room's
+  /// worth of invented listening into a table the serving side buckets and
+  /// authorizes on.
+  final String? roomId;
 
   /// Read LIVE at emit time rather than captured: an account switch or a token
   /// refresh mid-playback must not post under a stale identity.

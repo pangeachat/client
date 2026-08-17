@@ -4,7 +4,6 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/choice_animation.dart';
@@ -89,21 +88,16 @@ class ChoicesArray<T> extends StatelessWidget {
                   // an account switch mid-playback must not post under a stale
                   // one. A fresh probe per call: it holds a running
                   // measurement.
-                  listening: DosageListeningMeasurement.measured(
-                    DosageTtsListeningProbe(
-                      category: DosageListeningCategory.practiceAudio,
-                      roomId: roomId,
-                      userId: () => MatrixState
-                          .pangeaController
-                          .matrixState
-                          .client
-                          .userID,
-                      accessToken: () => MatrixState
-                          .pangeaController
-                          .matrixState
-                          .client
-                          .accessToken,
-                    ),
+                  listening: DosageTtsListeningProbe(
+                    category: DosageListeningCategory.practiceAudio,
+                    roomId: roomId,
+                    userId: () =>
+                        MatrixState.pangeaController.matrixState.client.userID,
+                    accessToken: () => MatrixState
+                        .pangeaController
+                        .matrixState
+                        .client
+                        .accessToken,
                   ),
                 );
               }

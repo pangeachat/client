@@ -28,7 +28,7 @@ void main() {
   /// A `Type.member` reference that survives the formatter.
   ///
   /// `dart format` breaks a long expression at the dot, so a deeply indented
-  /// call site can read `DosageListeningExemption\n    .awaitingRoom`. A plain
+  /// call site can read `DosageListeningCategory\n    .wordAudio`. A plain
   /// substring probe reports that file as naming NOTHING — which is the silent
   /// pass an invariant test exists to prevent, and it cost one debugging round
   /// here before it cost one in review.
@@ -45,18 +45,6 @@ void main() {
           .where((f) => f.path.endsWith('.dart'))
           .where((f) => !f.path.contains('lib/features/dosage/'))
           .where((f) => f.readAsStringSync().contains(needle))
-          .map((f) => f.path)
-          .toList()
-        ..sort();
-
-  /// [callersOf] for a reference the formatter may have wrapped.
-  List<String> callersMatching(RegExp pattern) =>
-      Directory('lib')
-          .listSync(recursive: true)
-          .whereType<File>()
-          .where((f) => f.path.endsWith('.dart'))
-          .where((f) => !f.path.contains('lib/features/dosage/'))
-          .where((f) => pattern.hasMatch(f.readAsStringSync()))
           .map((f) => f.path)
           .toList()
         ..sort();
@@ -90,12 +78,16 @@ void main() {
       ]);
     });
 
-    test('word audio is named ONLY where a WORD was tapped', () {
-      // One site, and it is the word-card tap on a token in a message. The
-      // other word surfaces — the vocab list tile, the activity vocab chip, the
-      // pronunciation button — are the same category and are still exempt for
-      // want of a room, so this list grows when the room does, not before.
+    test('word audio is named ONLY where a WORD was played', () {
+      // All four word surfaces, now that a roomless one can emit: the word-card
+      // tap on a token in a message, the vocab list tile, the activity vocab
+      // chip, and the pronunciation button. Adding a fifth file here means a new
+      // surface started counting, which changes what a teacher-visible total
+      // contains.
       expect(callersOf('DosageListeningCategory.wordAudio'), [
+        'lib/routes/analytics/construct_analytics/vocab_analytics_list_view.dart',
+        'lib/routes/chat/activity_sessions/activity_vocab_widget.dart',
+        'lib/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart',
         'lib/routes/chat/toolbar/message_selection_overlay.dart',
       ]);
     });
@@ -103,19 +95,28 @@ void main() {
     test('practice audio is named ONLY by drill surfaces', () {
       expect(callersOf('DosageListeningCategory.practiceAudio'), [
         'lib/pangea/common/widgets/choice_array.dart',
+        'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart',
         'lib/routes/chat/toolbar/message_practice/practice_controller.dart',
         'lib/routes/chat/toolbar/message_practice/practice_match_item.dart',
       ]);
     });
 
     test('a word tap and a drill tap cannot swap categories', () {
-      // The two new categories are the split the app already makes to decide
-      // gating — `TtsUseCase.words` against `TtsUseCase.choices` — so a site
-      // filed under the wrong one is invisible in a diff and produces two
-      // precise counters that both mean something else. Pinned per site.
+      // The two categories are the split the app already makes to decide gating
+      // — `TtsUseCase.words` against `TtsUseCase.choices` — so a site filed
+      // under the wrong one is invisible in a diff and produces two precise
+      // counters that both mean something else. Pinned per file, for all eight.
       const expected = {
+        'lib/routes/analytics/construct_analytics/vocab_analytics_list_view.dart':
+            'wordAudio',
+        'lib/routes/chat/activity_sessions/activity_vocab_widget.dart':
+            'wordAudio',
+        'lib/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart':
+            'wordAudio',
         'lib/routes/chat/toolbar/message_selection_overlay.dart': 'wordAudio',
         'lib/pangea/common/widgets/choice_array.dart': 'practiceAudio',
+        'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart':
+            'practiceAudio',
         'lib/routes/chat/toolbar/message_practice/practice_controller.dart':
             'practiceAudio',
         'lib/routes/chat/toolbar/message_practice/practice_match_item.dart':
@@ -277,91 +278,199 @@ void main() {
     });
   });
 
-  group('every read-aloud path says what it measures', () {
-    // `tryToSpeak` takes a REQUIRED measurement, so a new read-aloud path
-    // cannot compile without naming either a category or an exemption. That
-    // closes the omission but not the drift: an exempt site can be flipped to
-    // measured, or a new measured site added, in a diff nobody reads closely.
-    // Both lists are pinned here so either move is a failing test.
+  group('every read-aloud path measures, and says which room', () {
+    // `tryToSpeak` takes a REQUIRED probe, so a new read-aloud path cannot
+    // compile without naming a category and a room. That closes the omission
+    // but not the drift: a site can change category, change room, or be added,
+    // in a diff nobody reads closely. All three are pinned here.
 
-    test('five files measure listening through tryToSpeak', () {
-      // Four of these were exempt until the category vocabulary grew. Adding a
-      // sixth file here means a new surface started counting, which is a change
-      // to what a teacher-visible total contains — it is meant to be a visible
-      // diff, not a silent one.
+    /// Every `lib/` file that builds a listening probe, with its site count.
+    Map<String, int> probeSites() {
+      final pattern = RegExp(r'DosageTtsListeningProbe\(');
+      return {
+        for (final path in callersOf('DosageTtsListeningProbe('))
+          path: pattern.allMatches(read(path)).length,
+      };
+    }
+
+    test('ten read-aloud sites emit, plus the two message reads', () {
+      // The ten (pangeachat/client#8408, review) are every `TtsUseCase.words`
+      // and `TtsUseCase.choices` playback; the message read-aloud controller's
+      // two are categories 2 and 4 and came first. Twelve `tryToSpeak` sites,
+      // twelve probes, no exemptions — a file appearing or vanishing here means
+      // a surface started or stopped counting, which changes what a
+      // teacher-visible total contains. That is meant to be a visible diff.
+      expect(probeSites(), {
+        'lib/pangea/common/widgets/choice_array.dart': 1,
+        'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart':
+            1,
+        'lib/routes/analytics/construct_analytics/vocab_analytics_list_view.dart':
+            1,
+        'lib/routes/chat/activity_sessions/activity_vocab_widget.dart': 1,
+        'lib/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart':
+            1,
+        'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart':
+            1,
+        'lib/routes/chat/toolbar/message_practice/practice_controller.dart': 1,
+        'lib/routes/chat/toolbar/message_practice/practice_match_item.dart': 1,
+        'lib/routes/chat/toolbar/message_selection_overlay.dart': 1,
+      });
+
+      // Nine probe expressions, TWELVE call sites: two files funnel several
+      // sites through one private builder, so the count that matters for
+      // "everything emits" is the `tryToSpeak` calls, asserted here.
+      final calls = callersOf('TtsController.tryToSpeak(')
+          .map(
+            (path) => RegExp(
+              r'TtsController\.tryToSpeak\(',
+            ).allMatches(read(path)).length,
+          )
+          .fold<int>(0, (a, b) => a + b);
+      expect(calls, 12);
+    });
+
+    test('the exemption vocabulary is gone, not merely unused', () {
+      // With every site measured, `DosageListeningMeasurement` and
+      // `DosageListeningExemption` have no callers. Leaving the types behind
+      // would leave the next roomless surface an off-ramp that reads as
+      // sanctioned — the undercount they were invented to make visible, back
+      // again with a name that says it is fine.
+      expect(callersOf('DosageListeningMeasurement'), isEmpty);
+      expect(callersOf('DosageListeningExemption'), isEmpty);
       expect(
-        callersMatching(memberRef('DosageListeningMeasurement', 'measured')),
-        [
-          'lib/pangea/common/widgets/choice_array.dart',
-          'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart',
-          'lib/routes/chat/toolbar/message_practice/practice_controller.dart',
-          'lib/routes/chat/toolbar/message_practice/practice_match_item.dart',
-          'lib/routes/chat/toolbar/message_selection_overlay.dart',
-        ],
+        File(
+          'lib/features/dosage/dosage_listening_measurement.dart',
+        ).existsSync(),
+        isFalse,
       );
     });
 
-    test('six sites across four files are exempt, each with its reason', () {
-      // What is left of the ten (pangeachat/client#8408, review) once
-      // `word_audio` and `practice_audio` landed. Every one of these is
-      // listening and none is counted, so the served total is still short by
-      // whatever they play — but the blocker is no longer the vocabulary. It is
-      // the room: `room_id` is `min_length=1` on the wire and `NOT NULL` on
-      // `dosage_audio_playback`, and, more to the point, `?bucket=course`
-      // filters playbacks on the room while coverage carries no room conjunct,
-      // so a null-room row would leave the student marked covered while their
-      // rows are filtered out — a real 0 served for a learner who did listen.
+    test('a roomless site passes null, never an invented room', () {
+      // The room is the ONE argument that differs between two sites of the same
+      // category, and the failure mode is silent both ways: a fabricated room
+      // files a learner's listening under a course they were never in, and a
+      // null where a room existed drops it out of the course bucket while the
+      // whole-language total still looks right. Neither shows up as a broken
+      // playback, so both are pinned as expressions.
+      //
+      // Read from the probe's own argument list, not the whole file: two of
+      // these files pass a `roomId` to a WIDGET as well, and a file-wide probe
+      // would happily match that instead.
+      Set<String> probeRooms(String path) {
+        final source = read(path);
+        final rooms = <String>{};
+        for (final match in RegExp(
+          r'DosageTtsListeningProbe\(',
+        ).allMatches(source)) {
+          final tail = source.substring(match.end);
+          // The probe's four arguments are written in this order everywhere;
+          // `userId` bounds the slice so a later `roomId:` cannot leak in.
+          final end = tail.indexOf('userId:');
+          expect(
+            end,
+            greaterThan(-1),
+            reason: '$path: a probe with no identity',
+          );
+          final room = RegExp(
+            r'roomId:\s*([^,]+),',
+          ).firstMatch(tail.substring(0, end));
+          expect(room, isNotNull, reason: '$path: a probe that names no room');
+          rooms.add(room!.group(1)!.replaceAll(RegExp(r'\s+'), ' ').trim());
+        }
+        return rooms;
+      }
+
       const expected = {
-        'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart':
-            'awaitingRoom',
+        // Roomed: the message, the exercise's message, the caller's room.
+        'lib/routes/chat/toolbar/message_selection_overlay.dart': {
+          'pangeaMessageEvent.room.id',
+        },
+        'lib/routes/chat/toolbar/message_practice/practice_controller.dart': {
+          'pangeaMessageEvent.room.id',
+        },
+        'lib/routes/chat/toolbar/message_practice/practice_match_item.dart': {
+          'widget.controller.pangeaMessageEvent.room.id',
+        },
+        'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart':
+            {'room.id'},
+        'lib/pangea/common/widgets/choice_array.dart': {'roomId'},
+        // Permanently roomless: a cross-room aggregate has no one room, and
+        // choosing one of the rooms a word came from would be a guess.
         'lib/routes/analytics/construct_analytics/vocab_analytics_list_view.dart':
-            'awaitingRoom',
-        'lib/routes/chat/activity_sessions/activity_vocab_widget.dart':
-            'awaitingRoom',
+            {'null'},
+        // Sometimes roomed: the widget's own room, null where the surface that
+        // built it has none. NOT a target id, an event id or a cache key — each
+        // of those is a non-room string in scope at these sites.
+        'lib/routes/chat/activity_sessions/activity_vocab_widget.dart': {
+          'widget.roomId',
+        },
         'lib/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart':
-            'awaitingRoom',
+            {'widget.roomId'},
+        // Forwards its own parameter; the call sites are pinned below.
+        'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart':
+            {'roomId'},
       };
 
-      final notMeasured = memberRef(
-        'DosageListeningMeasurement',
-        'notMeasured',
+      expected.forEach((path, rooms) {
+        expect(probeRooms(path), rooms, reason: '$path names these rooms');
+      });
+
+      // Where a probe reads a NAME rather than an expression, pin where that
+      // name gets its value — otherwise the assertion above says only that some
+      // variable was passed along.
+      expect(
+        RegExp(r'_listeningProbe\(([^)]*)\)')
+            .allMatches(
+              read(
+                'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart',
+              ),
+            )
+            .map((m) => m.group(1)!.trim())
+            .toSet(),
+        // The audio exercise is built from a real message and carries its room;
+        // the meaning exercises are assembled from construct history and have
+        // none. `String? roomId` is the builder's own signature.
+        {'String? roomId', 'exercise.roomId', 'null'},
       );
-      expect(callersMatching(notMeasured), expected.keys.toList()..sort());
 
-      // Six CALL SITES, not six files: `analytics_practice_ui_controller`
-      // carries three and the rest one each. Asserted rather than implied by the
-      // file list, so a site added to a file already on it still shows up.
-      final exemptSites = expected.keys
-          .map((path) => notMeasured.allMatches(read(path)).length)
-          .fold<int>(0, (a, b) => a + b);
-      expect(exemptSites, 6);
-
-      expected.forEach((path, reason) {
-        // Read the members actually named, rather than probing for one at a
-        // time: a substring probe silently passes when one member's name is a
-        // prefix of another's, which is exactly how the first draft of this test
-        // reported a file as claiming both reasons.
-        final named = memberRef(
-          'DosageListeningExemption',
-        ).allMatches(read(path)).map((m) => m.group(1)).toSet();
-        // One member, and it names the room. A file that reintroduced a
-        // category-shaped reason would be claiming a blocker that no longer
-        // exists, and would send the follow-up work to the wrong repo.
-        expect(named, {reason}, reason: '$path is blocked on $reason alone');
+      // The two widgets that span roomed and roomless hosts. Their room is a
+      // REQUIRED argument, so a new host has to answer the question rather than
+      // inherit a default — and what each host answers is pinned here, because
+      // "the room went missing" looks identical to a working feature: the audio
+      // plays, the minutes count, they just stop reaching a course.
+      const hosts = {
+        // The in-chat activity summary has a session room; the start page runs
+        // before one exists.
+        'lib/routes/chat/activity_sessions/activity_summary_widget.dart':
+            'roomId: room?.id,',
+        'lib/routes/chat/activity_sessions/activity_sessions_start_view.dart':
+            'roomId: null,',
+        // The word card is opened from a message when there is one; the
+        // analytics practice hosts have none.
+        'lib/routes/chat/toolbar/word_card/word_zoom_widget.dart':
+            'roomId: event?.room.id,',
+        'lib/routes/analytics/construct_analytics/practice/ongoing_analytics_practice_session_view.dart':
+            'roomId: null,',
+      };
+      hosts.forEach((path, expression) {
+        expect(
+          read(path).contains(expression),
+          isTrue,
+          reason: '$path must hand down `$expression`',
+        );
       });
     });
 
-    test('no exempt site names a category', () {
-      // An exemption plus a category is a contradiction that would read, to the
-      // next person, as a wired site — and would go on reading that way for as
-      // long as nobody checked whether a probe was actually built.
-      for (final path in callersMatching(
-        memberRef('DosageListeningMeasurement', 'notMeasured'),
-      )) {
+    test('no probe is handed a hardcoded room', () {
+      // A string literal here would put every learner's listening in one room —
+      // a per-room table the serving side buckets and authorizes on. It is the
+      // one shortcut that makes the numbers look plausible while being wrong
+      // for everybody.
+      for (final path in probeSites().keys) {
         expect(
-          memberRef('DosageListeningCategory').hasMatch(read(path)),
+          RegExp(r"""roomId:\s*['"]""").hasMatch(read(path)),
           isFalse,
-          reason: '$path is exempt and must name no category',
+          reason: '$path must never name a room literally',
         );
       }
     });
@@ -379,6 +488,18 @@ void main() {
         ).contains('required this.roomId'),
         isTrue,
         reason: 'ChoicesArray must take its room, never assume one',
+      );
+
+      // And NON-nullable, unlike the widgets that span roomed and roomless
+      // hosts. Both of this one's callers have a real room, so null here would
+      // not be a roomless surface reporting itself — it would be a caller that
+      // lost its room, silently downgraded to "no course".
+      expect(
+        read(
+          'lib/pangea/common/widgets/choice_array.dart',
+        ).contains('final String roomId;'),
+        isTrue,
+        reason: 'ChoicesArray has no roomless caller to be nullable for',
       );
 
       // And both callers hand it a REAL room rather than a literal. A hardcoded
@@ -403,10 +524,10 @@ void main() {
     test('neither practice call site passes a category', () {
       // These two are the AudioPlayerWidget half of the same gap: both are
       // message-scoped and one is paid, so both COULD be counted, and the
-      // decision is now that they SHOULD be. `practice_audio` describes them,
-      // so what keeps them dark is no longer the vocabulary — it is that they
-      // come through a different entry point, wired differently, and are their
-      // own change (#8411). This assertion holds until that one lands.
+      // decision is now that they SHOULD be. Neither the vocabulary nor the
+      // room blocks them any more — what keeps them dark is that they come
+      // through a different entry point, wired differently, and are their own
+      // change (#8411). This assertion holds until that one lands.
       for (final path in [
         'lib/routes/chat/toolbar/message_practice/message_audio_card.dart',
         'lib/routes/analytics/construct_analytics/practice/analytics_practice_content_widget.dart',

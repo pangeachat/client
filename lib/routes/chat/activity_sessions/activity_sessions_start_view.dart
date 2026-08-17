@@ -324,6 +324,10 @@ class ActivitySessionStartView extends StatelessWidget {
                                               usedVocab: null,
                                               activityLangCode:
                                                   activity.req.targetLanguage,
+                                              // The start page precedes the
+                                              // session room, so a chip tapped
+                                              // here belongs to no room at all.
+                                              roomId: null,
                                             ),
                                         ],
                                       ),

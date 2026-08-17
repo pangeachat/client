@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -97,19 +96,13 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
             //
             // The room comes from the exercise's own message. A fresh probe per
             // call: it holds a running measurement.
-            listening: DosageListeningMeasurement.measured(
-              DosageTtsListeningProbe(
-                category: DosageListeningCategory.practiceAudio,
-                roomId: widget.controller.pangeaMessageEvent.room.id,
-                userId: () =>
-                    widget.controller.pangeaMessageEvent.room.client.userID,
-                accessToken: () => widget
-                    .controller
-                    .pangeaMessageEvent
-                    .room
-                    .client
-                    .accessToken,
-              ),
+            listening: DosageTtsListeningProbe(
+              category: DosageListeningCategory.practiceAudio,
+              roomId: widget.controller.pangeaMessageEvent.room.id,
+              userId: () =>
+                  widget.controller.pangeaMessageEvent.room.client.userID,
+              accessToken: () =>
+                  widget.controller.pangeaMessageEvent.room.client.accessToken,
             ),
           );
         }
