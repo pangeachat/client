@@ -129,7 +129,25 @@ class SpaceDetailsHeader extends StatelessWidget {
         controller.widget.embeddedCloseButton ?? const SizedBox.shrink();
     final section = controller.expandedSection;
     if (section != null) {
-      return PanelHeader(leading: leading, title: section.title(context));
+      // Breadcrumb: only the course title truncates, so the subpage's own
+      // name is always fully visible.
+      return PanelHeader(
+        leading: leading,
+        title: section.title(context),
+        titleWidget: Row(
+          children: [
+            Flexible(
+              child: Text(
+                room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+              ),
+            ),
+            const Text(' > '),
+            Text(section.title(context)),
+          ],
+        ),
+      );
     }
     return PanelHeader(
       leading: leading,

@@ -20,12 +20,19 @@ class PanelHeader extends StatelessWidget {
   /// its own title.
   final String title;
 
+  /// Rendered in the title slot instead of [title] when set — for titles a
+  /// single string can't express (the course subpage's breadcrumb). It
+  /// inherits the header's canonical text style, so composed titles can't
+  /// drift from plain ones.
+  final Widget? titleWidget;
+
   final Widget? trailing;
 
   const PanelHeader({
     super.key,
     required this.leading,
     required this.title,
+    this.titleWidget,
     this.trailing,
   });
 
@@ -42,8 +49,7 @@ class PanelHeader extends StatelessWidget {
           const SizedBox(width: 8),
           Expanded(
             child: ExcludeSemantics(
-              child: Text(
-                title,
+              child: DefaultTextStyle.merge(
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: FluffyThemes.isColumnMode(context)
@@ -51,6 +57,7 @@ class PanelHeader extends StatelessWidget {
                     : Theme.of(context).textTheme.titleMedium?.copyWith(
                         fontWeight: FontWeight.w600,
                       ),
+                child: titleWidget ?? Text(title),
               ),
             ),
           ),
