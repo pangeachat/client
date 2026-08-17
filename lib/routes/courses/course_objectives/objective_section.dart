@@ -153,6 +153,48 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    final statement = Text(
+      widget.group.objective.objective,
+      style: theme.textTheme.bodyMedium?.copyWith(
+        color: widget.isUpNext ? theme.colorScheme.primary : null,
+      ),
+    );
+    final starFraction = widget.progress == null
+        ? null
+        : Semantics(
+            label: L10n.of(context).starsEarnedOfTotal(
+              widget.progress!.stars,
+              widget.progress!.threshold,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  Icons.star,
+                  size: 18.0,
+                  color: AppConfig.goldByTheme(context),
+                ),
+                const SizedBox(width: 4.0),
+                ExcludeSemantics(
+                  child: Text(
+                    // Raw stars over the satisfaction threshold — surplus
+                    // shows (12/7); only the quest header caps.
+                    '${widget.progress!.stars}/${widget.progress!.threshold}',
+                    style: theme.textTheme.bodyMedium,
+                  ),
+                ),
+              ],
+            ),
+          );
+    final collapseChevron = widget.collapsible
+        ? AnimatedRotation(
+            turns: _collapsed ? -0.25 : 0,
+            duration: FluffyThemes.animationDuration,
+            child: const Icon(Icons.expand_more, size: 20.0),
+          )
+        : null;
+
     final activities = widget.group.activities;
     activities.sort(
       (a, b) => a.plan.req.numberOfParticipants.compareTo(
@@ -181,57 +223,41 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                   ? () => setState(() => _collapsed = !_collapsed)
                   : null,
               borderRadius: BorderRadius.circular(8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  if (widget.collapsible) ...[
-                    AnimatedRotation(
-                      turns: _collapsed ? -0.25 : 0,
-                      duration: FluffyThemes.animationDuration,
-                      child: const Icon(Icons.expand_more, size: 20.0),
-                    ),
-                    const SizedBox(width: 4.0),
-                  ],
-                  if (widget.progress != null) ...[
-                    Semantics(
-                      label: L10n.of(context).starsEarnedOfTotal(
-                        widget.progress!.stars,
-                        widget.progress!.threshold,
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.star,
-                            size: 18.0,
-                            color: AppConfig.goldByTheme(context),
-                          ),
+              // The star fraction leads and the collapse chevron trails. In
+              // column mode the row has room for the statement between them;
+              // on narrow screens the statement drops to its own full-width
+              // row so a wrapped statement never shares lines with the icons.
+              child: _isColumnMode
+                  ? Row(
+                      children: [
+                        if (starFraction != null) ...[
+                          starFraction,
+                          const SizedBox(width: 8.0),
+                        ],
+                        Expanded(child: statement),
+                        if (collapseChevron != null) ...[
                           const SizedBox(width: 4.0),
-                          ExcludeSemantics(
-                            child: Text(
-                              // Raw stars over the satisfaction threshold — surplus
-                              // shows (12/7); only the quest header caps.
-                              '${widget.progress!.stars}/${widget.progress!.threshold}',
-                              style: theme.textTheme.bodyMedium,
+                          collapseChevron,
+                        ],
+                      ],
+                    )
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        if (collapseChevron != null || starFraction != null)
+                          Padding(
+                            padding: const EdgeInsets.only(bottom: 4.0),
+                            child: Row(
+                              children: [
+                                ?starFraction,
+                                const Spacer(),
+                                ?collapseChevron,
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        statement,
+                      ],
                     ),
-                    const SizedBox(width: 8.0),
-                  ],
-                  Expanded(
-                    child: Text(
-                      widget.group.objective.objective,
-                      style: theme.textTheme.bodyMedium?.copyWith(
-                        color: widget.isUpNext
-                            ? theme.colorScheme.primary
-                            : null,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
             ),
           ),
           // No per-Mission progress bar — only the overall course has a bar (in

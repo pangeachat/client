@@ -214,22 +214,34 @@ class _CourseOverviewState extends State<CourseOverview> {
               ),
             ),
             const Divider(),
-            Padding(
-              padding: SpaceDetailsContent.sectionPadding,
-              child: Column(
-                key: _sectionKeys[SpaceSettingsTabs.chat],
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  CourseSectionHeader(
+            Column(
+              key: _sectionKeys[SpaceSettingsTabs.chat],
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: SpaceDetailsContent.sectionPadding,
+                  child: CourseSectionHeader(
                     title: SpaceSettingsTabs.chat.title(context),
                   ),
-                  CourseChatsPreview(room: room),
-                  CourseSectionLink(
+                ),
+                // The chat rows carry their own 8px wrapper (ChatListItem /
+                // DefaultChatCreationTile), so the section pads them by the
+                // difference — their content then sits at the same inset as
+                // every other section.
+                Padding(
+                  padding:
+                      SpaceDetailsContent.sectionPadding -
+                      const EdgeInsets.symmetric(horizontal: 8.0),
+                  child: CourseChatsPreview(room: room),
+                ),
+                Padding(
+                  padding: SpaceDetailsContent.sectionPadding,
+                  child: CourseSectionLink(
                     label: l10n.allChats,
                     onTap: () => _openSubpage(SpaceSettingsTabs.chat),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             const Divider(),
             Padding(
