@@ -17,6 +17,11 @@ jobs:
   build_web:
     runs-on: ubuntu-latest
     environment: staging
+    outputs:
+      # Consumed by update_sentry so the artifacts it uploads carry the same
+      # release and dist the running app reports. See the step that sets them.
+      sentry_release: ${{ steps.sentry_version.outputs.release }}
+      sentry_dist: ${{ steps.sentry_version.outputs.dist }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
@@ -43,6 +48,21 @@ jobs:
         run: ./scripts/prepare-web.sh
       - run: rm ./assets/vodozemac/.gitignore
       - run: flutter pub get
+      - name: Resolve Sentry release and dist
+        id: sentry_version
+        # The build number is what the running app reports to Sentry, as
+        # `<pubspec name>@<pubspec version>+<build number>` with the build
+        # number also sent as `dist`. sentry_dart_plugin instead defaults both
+        # to pubspec's `version:` (`+N`), so until #8413 every source map
+        # uploaded to a release no event ever reported, and web frames stayed
+        # minified in Sentry. Resolving the stamp once here and feeding it to
+        # both the build and the upload is what keeps the two sides equal.
+        run: |
+          DIST=$(date -u +%d%H%M)
+          NAME=$(yq '.name' pubspec.yaml)
+          VERSION=$(yq '.version' pubspec.yaml | cut -d'+' -f1)
+          echo "dist=$DIST" >> $GITHUB_OUTPUT
+          echo "release=$NAME@$VERSION+$DIST" >> $GITHUB_OUTPUT
       - name: Build Release Web
         # UTC ddHHMM stamp, identical scheme in release.yaml, so staging and
         # production share one sequence instead of each workflow's own run_number
@@ -56,7 +76,7 @@ jobs:
           flutter config --enable-web
           flutter clean
           flutter pub get
-          ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile --source-maps --build-number=$(date -u +%d%H%M) --dart-define=BUILD_COMMIT_SHA=${GITHUB_SHA::8}
+          ./scripts/build-web-versioned-canvaskit.sh --pwa-strategy=none --profile --source-maps --build-number=${{ steps.sentry_version.outputs.dist }} --dart-define=BUILD_COMMIT_SHA=${GITHUB_SHA::8}
 
       - name: Version Material Icons font
         run: |
@@ -273,6 +293,11 @@ jobs:
       SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       SENTRY_PROJECT: client
       SENTRY_ORG: pangea-chat
+      # sentry.properties sets no `release`/`dist`, so sentry_dart_plugin falls
+      # back to these (configuration.dart) instead of pubspec's `+N`. Without
+      # them the artifacts land on a release nothing reports. See #8413.
+      SENTRY_RELEASE: ${{ needs.build_web.outputs.sentry_release }}
+      SENTRY_DIST: ${{ needs.build_web.outputs.sentry_dist }}
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
       - run: cat .github/workflows/versions.env >> $GITHUB_ENV
