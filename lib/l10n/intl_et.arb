@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-14 13:12:12.229388",
+    "@@last_modified": "2026-08-14 15:02:48.796527",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9737,5 +9737,10 @@
     "allParticipants": "Kõik osalejad",
     "seeFullCoursePlan": "Vaata kogu kursuse plaani",
     "upNext": "Järgmisena",
-    "catchUp": "Järele jõudma"
+    "catchUp": "Järele jõudma",
+    "messageLanguageIs": "Selle sõnumi keeleks on määratud {language}.",
+    "updateMessageLanguage": "Sõnumi keele muutmiseks klõpsa siia.",
+    "messageLanguage": "Sõnumi keel",
+    "messageLanguageUpdated": "Sõnumi keel uuendatud!",
+    "pickCefrLevelStepSubtitle": "Saad seda hiljem muuta"
 }

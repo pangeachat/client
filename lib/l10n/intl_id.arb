@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 13:12:13.448548",
+    "@@last_modified": "2026-08-14 15:02:49.853120",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9813,5 +9813,10 @@
     "allParticipants": "Semua peserta",
     "seeFullCoursePlan": "Lihat rencana kursus lengkap",
     "upNext": "Berikutnya",
-    "catchUp": "Ikuti"
+    "catchUp": "Ikuti",
+    "messageLanguageIs": "Pesan ini diatur ke {language}.",
+    "updateMessageLanguage": "Klik di sini untuk mengubah bahasa pesan.",
+    "messageLanguage": "Bahasa pesan",
+    "messageLanguageUpdated": "Bahasa pesan diperbarui!",
+    "pickCefrLevelStepSubtitle": "Anda dapat mengubah ini nanti"
 }

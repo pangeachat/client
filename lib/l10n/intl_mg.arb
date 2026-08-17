@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-14 13:12:14.884052",
+    "@@last_modified": "2026-08-14 15:02:51.118026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Ireo mpandray anjara rehetra",
     "seeFullCoursePlan": "Jereo ny drafitry ny taranja feno",
     "upNext": "Manaraka",
-    "catchUp": "Hahatratra"
+    "catchUp": "Hahatratra",
+    "messageLanguageIs": "Ity hafatra ity dia voatendry ho amin'ny teny {language}.",
+    "updateMessageLanguage": "Tsindrio eto hanovana ny fitenin'ny hafatra.",
+    "messageLanguage": "Fitenin'ny hafatra",
+    "messageLanguageUpdated": "Voasolo ny fitenin'ny hafatra!",
+    "pickCefrLevelStepSubtitle": "Azonao ovaina any aoriana izany"
 }

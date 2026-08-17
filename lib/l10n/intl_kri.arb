@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-14 13:12:14.454941",
+    "@@last_modified": "2026-08-14 15:02:50.423255",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Ɔl dɛn we de insaid",
     "seeFullCoursePlan": "Si di ful kos plan",
     "upNext": "Di nɛks wan",
-    "catchUp": "Kech op"
+    "catchUp": "Kech op",
+    "messageLanguageIs": "Dis patta na {language}.",
+    "updateMessageLanguage": "Klik ya fɔ chenj di patta in langwej.",
+    "messageLanguage": "Patta in langwej",
+    "messageLanguageUpdated": "Patta in langwej dɔn chenj!",
+    "pickCefrLevelStepSubtitle": "Yu go ebul chenj dis leta"
 }

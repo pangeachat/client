@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-14 13:12:14.063873",
+    "@@last_modified": "2026-08-14 15:02:49.966800",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Ndị niile so na ya",
     "seeFullCoursePlan": "Lee atụmatụ ọmụmụ ihe zuru ezu",
     "upNext": "Ihe na-abịa",
-    "catchUp": "Mee ngwa ngwa"
+    "catchUp": "Mee ngwa ngwa",
+    "messageLanguageIs": "Edoziri ozi a ka ọ bụrụ {language}.",
+    "updateMessageLanguage": "Pịa ebe a ka ịgbanwee asụsụ ozi ahụ.",
+    "messageLanguage": "Asụsụ ozi",
+    "messageLanguageUpdated": "Emelitere asụsụ ozi!",
+    "pickCefrLevelStepSubtitle": "Ị nwere ike ịgbanwe nke a ma emechaa"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-14 13:12:15.652207",
+    "@@last_modified": "2026-08-14 15:02:51.730893",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Ophunzira onse",
     "seeFullCoursePlan": "Onani dongosolo lonse la maphunziro",
     "upNext": "Chotsatira",
-    "catchUp": "Pezani zatsopano"
+    "catchUp": "Pezani zatsopano",
+    "messageLanguageIs": "Uthenga uwu wayikidwa ku {language}.",
+    "updateMessageLanguage": "Dinani apa kuti musinthe chilankhulo cha uthenga.",
+    "messageLanguage": "Chilankhulo cha uthenga",
+    "messageLanguageUpdated": "Chilankhulo cha uthenga chasintha!",
+    "pickCefrLevelStepSubtitle": "Mungasinthe izi pambuyo pake"
 }

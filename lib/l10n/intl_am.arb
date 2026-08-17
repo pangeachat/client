@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-14 13:12:11.168658",
+    "@@last_modified": "2026-08-14 15:02:47.591044",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2128,5 +2128,10 @@
     "allParticipants": "ሁሉም ተሳታፊዎች",
     "seeFullCoursePlan": "ሙሉ የኮርስ እቅድ ይመልከቱ",
     "upNext": "በመቀጠል",
-    "catchUp": "ያግኙ"
+    "catchUp": "ያግኙ",
+    "messageLanguageIs": "ይህ መልዕክት ወደ {language} ተቀናብሯል።",
+    "updateMessageLanguage": "የመልዕክቱን ቋንቋ ለመቀየር እዚህ ይጫኑ።",
+    "messageLanguage": "የመልዕክት ቋንቋ",
+    "messageLanguageUpdated": "የመልዕክት ቋንቋ ተዘምኗል!",
+    "pickCefrLevelStepSubtitle": "ይህን በኋላ መቀየር ይችላሉ"
 }

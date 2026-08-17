@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 13:12:17.410874",
+    "@@last_modified": "2026-08-14 15:02:53.521148",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7016,5 +7016,10 @@
     "allParticipants": "Tất cả người tham gia",
     "seeFullCoursePlan": "Xem toàn bộ giáo trình",
     "upNext": "Tiếp theo",
-    "catchUp": "Bắt kịp"
+    "catchUp": "Bắt kịp",
+    "messageLanguageIs": "Tin nhắn này được đặt thành {language}.",
+    "updateMessageLanguage": "Nhấp vào đây để thay đổi ngôn ngữ của tin nhắn.",
+    "messageLanguage": "Ngôn ngữ tin nhắn",
+    "messageLanguageUpdated": "Đã cập nhật ngôn ngữ tin nhắn!",
+    "pickCefrLevelStepSubtitle": "Bạn có thể thay đổi điều này sau"
 }

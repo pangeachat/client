@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-14 13:12:16.329463",
+    "@@last_modified": "2026-08-14 15:02:52.280764",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "سڀئي شرڪت ڪندڙ",
     "seeFullCoursePlan": "مڪمل ڪورس پلان ڏسو",
     "upNext": "اڳيان",
-    "catchUp": "پوئتي پيل سبق پورو ڪريو"
+    "catchUp": "پوئتي پيل سبق پورو ڪريو",
+    "messageLanguageIs": "ھي پيغام {language} تي سيٽ ٿيل آھي.",
+    "updateMessageLanguage": "پيغام جي ٻولي تبديل ڪرڻ لاءِ ھتي ڪلڪ ڪريو.",
+    "messageLanguage": "پيغام جي ٻولي",
+    "messageLanguageUpdated": "پيغام جي ٻولي اپڊيٽ ٿي وئي!",
+    "pickCefrLevelStepSubtitle": "توهان ان کي بعد ۾ تبديل ڪري سگهو ٿا"
 }

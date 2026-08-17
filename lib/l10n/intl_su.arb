@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-14 13:12:16.876516",
+    "@@last_modified": "2026-08-14 15:02:52.925692",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Sadaya pamilon",
     "seeFullCoursePlan": "Tingali rencana kursus lengkep",
     "upNext": "Salajengna",
-    "catchUp": "Susulan"
+    "catchUp": "Susulan",
+    "messageLanguageIs": "Pesen ieu disetel ka {language}.",
+    "updateMessageLanguage": "Pencét di dieu pikeun ngarobah basa pesen.",
+    "messageLanguage": "Basa pesen",
+    "messageLanguageUpdated": "Basa pesen geus diropéa!",
+    "pickCefrLevelStepSubtitle": "Anjeun tiasa ngarobih ieu engké"
 }

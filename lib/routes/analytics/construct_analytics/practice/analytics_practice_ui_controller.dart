@@ -2,6 +2,7 @@ import 'package:collection/collection.dart';
 
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
+import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
@@ -32,6 +33,13 @@ class AnalyticsPracticeUiController {
         useCase: TtsUseCase.choices,
         pos: token?.pos,
         morph: token?.morph.map((k, v) => MapEntry(k.name, v)),
+        // Analytics practice is drill listening and is not in a room at all, so
+        // it waits on BOTH halves: a category that describes it, and a wire that
+        // accepts a null room. A placeholder room is not an alternative — these
+        // rows are bucketed and authorized per room downstream.
+        listening: const DosageListeningMeasurement.notMeasured(
+          DosageListeningExemption.awaitingRoomAndCategory,
+        ),
       );
       return;
     }
@@ -45,6 +53,10 @@ class AnalyticsPracticeUiController {
       langCode: language,
       useCase: TtsUseCase.choices,
       pos: cId.category,
+      // Roomless drill listening — see [playChoiceAudio] above.
+      listening: const DosageListeningMeasurement.notMeasured(
+        DosageListeningExemption.awaitingRoomAndCategory,
+      ),
     );
   }
 
@@ -62,6 +74,10 @@ class AnalyticsPracticeUiController {
       useCase: TtsUseCase.choices,
       pos: token.pos,
       morph: token.morph.map((k, v) => MapEntry(k.name, v)),
+      // Roomless drill listening — see [playChoiceAudio] above.
+      listening: const DosageListeningMeasurement.notMeasured(
+        DosageListeningExemption.awaitingRoomAndCategory,
+      ),
     );
   }
 }

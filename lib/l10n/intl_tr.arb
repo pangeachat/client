@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-14 13:12:17.252326",
+    "@@last_modified": "2026-08-14 15:02:53.196683",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10041,5 +10041,10 @@
     "allParticipants": "Tüm katılımcılar",
     "seeFullCoursePlan": "Tüm ders planını gör",
     "upNext": "Sırada",
-    "catchUp": "Yakala"
+    "catchUp": "Yakala",
+    "messageLanguageIs": "Bu mesaj {language} olarak ayarlandı.",
+    "updateMessageLanguage": "Mesajın dilini değiştirmek için buraya tıklayın.",
+    "messageLanguage": "Mesaj dili",
+    "messageLanguageUpdated": "Mesaj dili güncellendi!",
+    "pickCefrLevelStepSubtitle": "Bunu daha sonra değiştirebilirsin"
 }

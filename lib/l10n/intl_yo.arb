@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-14 13:12:17.602927",
+    "@@last_modified": "2026-08-14 15:02:53.832922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Gbogbo àwọn tó kopa",
     "seeFullCoursePlan": "Wo gbogbo ètò ẹ̀kọ́",
     "upNext": "Tó ń bọ̀",
-    "catchUp": "Bá wa sọ̀rọ̀"
+    "catchUp": "Bá wa sọ̀rọ̀",
+    "messageLanguageIs": "Ìfọ̀rọ̀ránṣẹ́ yìí wà ní èdè {language}.",
+    "updateMessageLanguage": "Tẹ níbí láti yí èdè ìfọ̀rọ̀ránṣẹ́ padà.",
+    "messageLanguage": "Èdè ìfọ̀rọ̀ránṣẹ́",
+    "messageLanguageUpdated": "Èdè ìfọ̀rọ̀ránṣẹ́ ti yí padà!",
+    "pickCefrLevelStepSubtitle": "O le yí èyí padà nígbà tó bá yá"
 }

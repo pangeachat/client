@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-14 13:12:17.339444",
+    "@@last_modified": "2026-08-14 15:02:53.407950",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9740,5 +9740,10 @@
     "allParticipants": "Усі учасники",
     "seeFullCoursePlan": "Переглянути повний план курсу",
     "upNext": "Далі",
-    "catchUp": "Наздогнати"
+    "catchUp": "Наздогнати",
+    "messageLanguageIs": "Це повідомлення налаштовано на {language}.",
+    "updateMessageLanguage": "Натисніть тут, щоб змінити мову повідомлення.",
+    "messageLanguage": "Мова повідомлення",
+    "messageLanguageUpdated": "Мову повідомлення оновлено!",
+    "pickCefrLevelStepSubtitle": "Ви можете змінити це пізніше"
 }

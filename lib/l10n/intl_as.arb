@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-14 13:12:11.346874",
+    "@@last_modified": "2026-08-14 15:02:47.708475",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2128,5 +2128,10 @@
     "allParticipants": "সকলো অংশগ্ৰহণকাৰী",
     "seeFullCoursePlan": "সম্পূৰ্ণ পাঠ্যক্ৰম পৰিকল্পনা চাওক",
     "upNext": "আগত কি আছে",
-    "catchUp": "ধৰি পেলাওক"
+    "catchUp": "ধৰি পেলাওক",
+    "messageLanguageIs": "এই বাৰ্তাটি {language} ভাষাত ছেট কৰা হৈছে।",
+    "updateMessageLanguage": "বাৰ্তাৰ ভাষা সলনি কৰিবলৈ ইয়াত ক্লিক কৰক।",
+    "messageLanguage": "বাৰ্তাৰ ভাষা",
+    "messageLanguageUpdated": "বাৰ্তাৰ ভাষা আপডেইট কৰা হ'ল!",
+    "pickCefrLevelStepSubtitle": "আপুনি এইটো পিছত সলনি কৰিব পাৰিব"
 }

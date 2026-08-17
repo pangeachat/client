@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-14 13:12:12.009464",
+    "@@last_modified": "2026-08-14 15:02:49.033772",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9727,5 +9727,10 @@
     "allParticipants": "Alle Teilnehmer",
     "seeFullCoursePlan": "Vollständigen Kursplan ansehen",
     "upNext": "Als Nächstes",
-    "catchUp": "Aufholen"
+    "catchUp": "Aufholen",
+    "messageLanguageIs": "Diese Nachricht ist auf {language} eingestellt.",
+    "updateMessageLanguage": "Klicke hier, um die Sprache der Nachricht zu ändern.",
+    "messageLanguage": "Nachrichtensprache",
+    "messageLanguageUpdated": "Nachrichtensprache aktualisiert!",
+    "pickCefrLevelStepSubtitle": "Das kannst du später ändern"
 }

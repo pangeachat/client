@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-14 13:12:16.380620",
+    "@@last_modified": "2026-08-14 15:02:52.321447",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "සියලුම සහභාගිවන්නන්",
     "seeFullCoursePlan": "සම්පූර්ණ පාඨමාලා සැලැස්ම බලන්න",
     "upNext": "ඊළඟට",
-    "catchUp": "අලුත් දේ බලන්න"
+    "catchUp": "අලුත් දේ බලන්න",
+    "messageLanguageIs": "මෙම පණිවිඩය {language} ලෙස සකසා ඇත.",
+    "updateMessageLanguage": "පණිවිඩයේ භාෂාව වෙනස් කිරීමට මෙතන ක්ලික් කරන්න.",
+    "messageLanguage": "පණිවිඩ භාෂාව",
+    "messageLanguageUpdated": "පණිවිඩ භාෂාව යාවත්කාලීන කරන ලදී!",
+    "pickCefrLevelStepSubtitle": "ඔබට මෙය පසුව වෙනස් කළ හැක"
 }

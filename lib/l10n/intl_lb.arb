@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-14 13:12:14.471943",
+    "@@last_modified": "2026-08-14 15:02:50.701370",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "All Participanten",
     "seeFullCoursePlan": "Kuckt de komplette Coursplang",
     "upNext": "Als nächst",
-    "catchUp": "Nohuelen"
+    "catchUp": "Nohuelen",
+    "messageLanguageIs": "Dëse Message ass op {language} gesat.",
+    "updateMessageLanguage": "Klickt hei fir d'Sprooch vum Message z'änneren.",
+    "messageLanguage": "Sprooch vum Message",
+    "messageLanguageUpdated": "Sprooch vum Message aktualiséiert!",
+    "pickCefrLevelStepSubtitle": "Dir kënnt dat méi spéit änneren"
 }

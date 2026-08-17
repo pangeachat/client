@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-14 13:12:11.220080",
+    "@@last_modified": "2026-08-14 15:02:48.512454",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,10 @@
     "allParticipants": "جميع المشاركين",
     "seeFullCoursePlan": "الاطلاع على الخطة الدراسية الكاملة",
     "upNext": "التالي",
-    "catchUp": "المتابعة"
+    "catchUp": "المتابعة",
+    "messageLanguageIs": "هذه الرسالة مضبوطة على {language}.",
+    "updateMessageLanguage": "انقر هنا لتغيير لغة الرسالة.",
+    "messageLanguage": "لغة الرسالة",
+    "messageLanguageUpdated": "تم تحديث لغة الرسالة!",
+    "pickCefrLevelStepSubtitle": "يمكنك تغيير هذا لاحقًا"
 }

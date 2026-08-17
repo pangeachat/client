@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-14 13:12:12.249157",
+    "@@last_modified": "2026-08-14 15:02:48.934001",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9740,5 +9740,10 @@
     "allParticipants": "Parte-hartzaile guztiak",
     "seeFullCoursePlan": "Ikusi ikastaroaren plan osoa",
     "upNext": "Hurrengoa",
-    "catchUp": "Harrapatu"
+    "catchUp": "Harrapatu",
+    "messageLanguageIs": "Mezu hau {language} hizkuntzan dago ezarrita.",
+    "updateMessageLanguage": "Egin klik hemen mezuaren hizkuntza aldatzeko.",
+    "messageLanguage": "Mezuaren hizkuntza",
+    "messageLanguageUpdated": "Mezuaren hizkuntza eguneratu da!",
+    "pickCefrLevelStepSubtitle": "Geroago alda dezakezu"
 }

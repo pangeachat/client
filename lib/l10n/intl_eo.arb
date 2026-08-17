@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 13:12:12.158203",
+    "@@last_modified": "2026-08-14 15:02:48.486142",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10685,5 +10685,10 @@
     "allParticipants": "Ĉiuj partoprenantoj",
     "seeFullCoursePlan": "Vidi la plenan kursplanon",
     "upNext": "Poste",
-    "catchUp": "Reatingi"
+    "catchUp": "Reatingi",
+    "messageLanguageIs": "Ĉi tiu mesaĝo estas agordita al {language}.",
+    "updateMessageLanguage": "Alklaku ĉi tie por ŝanĝi la lingvon de la mesaĝo.",
+    "messageLanguage": "Lingvo de mesaĝo",
+    "messageLanguageUpdated": "Lingvo de mesaĝo ĝisdatigita!",
+    "pickCefrLevelStepSubtitle": "Vi povas ŝanĝi tion poste"
 }

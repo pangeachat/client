@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-14 13:12:15.855988",
+    "@@last_modified": "2026-08-14 15:02:51.974769",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "ټول ګډونوال",
     "seeFullCoursePlan": "د کورس بشپړ پلان وګورئ",
     "upNext": "بل",
-    "catchUp": "ځان ورسوه"
+    "catchUp": "ځان ورسوه",
+    "messageLanguageIs": "دا پیغام {language} ته ټاکل شوی دی.",
+    "updateMessageLanguage": "د پیغام ژبې بدلولو لپاره دلته کلیک وکړئ.",
+    "messageLanguage": "د پیغام ژبه",
+    "messageLanguageUpdated": "د پیغام ژبه تازه شوه!",
+    "pickCefrLevelStepSubtitle": "تاسو کولی شئ دا وروسته بدل کړئ"
 }

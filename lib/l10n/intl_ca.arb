@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 13:12:11.654612",
+    "@@last_modified": "2026-08-14 15:02:48.121406",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9867,5 +9867,10 @@
     "allParticipants": "Tots els participants",
     "seeFullCoursePlan": "Veure el pla de curs complet",
     "upNext": "A continuació",
-    "catchUp": "Posa't al dia"
+    "catchUp": "Posa't al dia",
+    "messageLanguageIs": "Aquest missatge està configurat en {language}.",
+    "updateMessageLanguage": "Feu clic aquí per canviar l'idioma del missatge.",
+    "messageLanguage": "Idioma del missatge",
+    "messageLanguageUpdated": "Idioma del missatge actualitzat!",
+    "pickCefrLevelStepSubtitle": "Pots canviar-ho més tard"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-14 13:12:11.484194",
+    "@@last_modified": "2026-08-14 15:02:47.574836",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Alle deelnemers",
     "seeFullCoursePlan": "Sien volledige kursusplan",
     "upNext": "Volgende",
-    "catchUp": "Plaas in"
+    "catchUp": "Plaas in",
+    "messageLanguageIs": "Hierdie boodskap is gestel op {language}.",
+    "updateMessageLanguage": "Klik hier om die boodskap se taal te verander.",
+    "messageLanguage": "Boodskaptaal",
+    "messageLanguageUpdated": "Boodskaptaal opgedateer!",
+    "pickCefrLevelStepSubtitle": "Jy kan dit later verander"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-14 13:12:15.727844",
+    "@@last_modified": "2026-08-14 15:02:51.903632",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2128,5 +2128,10 @@
     "allParticipants": "ਸਾਰੇ ਭਾਗੀਦਾਰ",
     "seeFullCoursePlan": "ਪੂਰੀ ਕੋਰਸ ਯੋਜਨਾ ਦੇਖੋ",
     "upNext": "ਅੱਗੇ",
-    "catchUp": "ਪੂਰਾ ਕਰੋ"
+    "catchUp": "ਪੂਰਾ ਕਰੋ",
+    "messageLanguageIs": "ਇਹ ਸੁਨੇਹਾ {language} 'ਤੇ ਸੈੱਟ ਕੀਤਾ ਗਿਆ ਹੈ।",
+    "updateMessageLanguage": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਬਦਲਣ ਲਈ ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ।",
+    "messageLanguage": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ",
+    "messageLanguageUpdated": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਅੱਪਡੇਟ ਕੀਤੀ ਗਈ!",
+    "pickCefrLevelStepSubtitle": "ਤੁਸੀਂ ਇਸਨੂੰ ਬਾਅਦ ਵਿੱਚ ਬਦਲ ਸਕਦੇ ਹੋ"
 }

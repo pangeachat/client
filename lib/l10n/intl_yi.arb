@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-14 13:12:17.517493",
+    "@@last_modified": "2026-08-14 15:02:53.642973",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "אַלע באַטייליקטע",
     "seeFullCoursePlan": "זען פולן קורס פּלאַן",
     "upNext": "קומענדיקע",
-    "catchUp": "כאַפּן זיך"
+    "catchUp": "כאַפּן זיך",
+    "messageLanguageIs": "די מעסעדזש איז באַשטימט צו {language}.",
+    "updateMessageLanguage": "דריקט דאָ צו ענדערן די שפּראַך פון דער מעסעדזש.",
+    "messageLanguage": "מעסעדזש שפּראַך",
+    "messageLanguageUpdated": "מעסעדזש שפּראַך דערהייַנטיקט!",
+    "pickCefrLevelStepSubtitle": "איר קענט דאָס שפּעטער טוישן"
 }

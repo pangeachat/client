@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-14 13:12:14.443818",
+    "@@last_modified": "2026-08-14 15:02:50.685668",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Бардык катышуучулар",
     "seeFullCoursePlan": "Курстун толук планын көрүү",
     "upNext": "Кийинки",
-    "catchUp": "Жетишип ал"
+    "catchUp": "Жетишип ал",
+    "messageLanguageIs": "Бул билдирүү {language} тилинде.",
+    "updateMessageLanguage": "Билдирүүнүн тилин өзгөртүү үчүн бул жерди басыңыз.",
+    "messageLanguage": "Билдирүү тили",
+    "messageLanguageUpdated": "Билдирүүнүн тили жаңыртылды!",
+    "pickCefrLevelStepSubtitle": "Муну кийинчерээк өзгөртсөңүз болот"
 }

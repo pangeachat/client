@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-14 13:12:16.297378",
+    "@@last_modified": "2026-08-14 15:02:52.256135",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10712,5 +10712,10 @@
     "allParticipants": "Все участники",
     "seeFullCoursePlan": "Посмотреть полный план курса",
     "upNext": "Далее",
-    "catchUp": "Наверстать упущенное"
+    "catchUp": "Наверстать упущенное",
+    "messageLanguageIs": "Язык этого сообщения: {language}.",
+    "updateMessageLanguage": "Нажмите здесь, чтобы изменить язык сообщения.",
+    "messageLanguage": "Язык сообщения",
+    "messageLanguageUpdated": "Язык сообщения обновлен!",
+    "pickCefrLevelStepSubtitle": "Вы сможете изменить это позже"
 }

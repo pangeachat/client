@@ -77,11 +77,24 @@ class PickCefrLevelStepViewState extends State<PickCefrLevelStepView> {
               children: [
                 Semantics(
                   container: true,
-                  child: Text(
-                    title,
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
+                  child: Column(
+                    spacing: 4.0,
+                    children: [
+                      Text(
+                        title,
+                        style: theme.textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        L10n.of(context).pickCefrLevelStepSubtitle,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          fontStyle: FontStyle.italic,
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 Expanded(

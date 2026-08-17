@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-14 13:12:14.012924",
+    "@@last_modified": "2026-08-14 15:02:50.041739",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Allir þátttakendur",
     "seeFullCoursePlan": "Sjá alla námsáætlun",
     "upNext": "Næst á dagskrá",
-    "catchUp": "Ná í"
+    "catchUp": "Ná í",
+    "messageLanguageIs": "Þetta skilaboð eru stillt á {language}.",
+    "updateMessageLanguage": "Smelltu hér til að breyta tungumáli skilaboðanna.",
+    "messageLanguage": "Tungumál skilaboða",
+    "messageLanguageUpdated": "Tungumáli skilaboðanna hefur verið breytt!",
+    "pickCefrLevelStepSubtitle": "Þú getur breytt þessu síðar"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 13:12:17.017672",
+    "@@last_modified": "2026-08-14 15:02:53.035496",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9832,5 +9832,10 @@
     "allParticipants": "அனைத்து பங்கேற்பாளர்களும்",
     "seeFullCoursePlan": "முழு பாடத்திட்டத்தையும் காண்க",
     "upNext": "அடுத்து",
-    "catchUp": "பின்தங்கியவற்றைப் பார்க்கவும்"
+    "catchUp": "பின்தங்கியவற்றைப் பார்க்கவும்",
+    "messageLanguageIs": "இந்தச் செய்தியின் மொழி {language} என அமைக்கப்பட்டுள்ளது.",
+    "updateMessageLanguage": "செய்தியின் மொழியை மாற்ற இங்கே கிளிக் செய்யவும்.",
+    "messageLanguage": "செய்தி மொழி",
+    "messageLanguageUpdated": "செய்தி மொழி புதுப்பிக்கப்பட்டது!",
+    "pickCefrLevelStepSubtitle": "இதை நீங்கள் பிறகு மாற்றிக்கொள்ளலாம்"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-14 13:12:14.004828",
+    "@@last_modified": "2026-08-14 15:02:50.082225",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10509,5 +10509,10 @@
     "allParticipants": "すべての参加者",
     "seeFullCoursePlan": "コースプラン全体を見る",
     "upNext": "次",
-    "catchUp": "キャッチアップ"
+    "catchUp": "キャッチアップ",
+    "messageLanguageIs": "このメッセージは{language}に設定されています。",
+    "updateMessageLanguage": "メッセージの言語を変更するには、ここをクリックしてください。",
+    "messageLanguage": "メッセージの言語",
+    "messageLanguageUpdated": "メッセージの言語が更新されました！",
+    "pickCefrLevelStepSubtitle": "後で変更できます"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-14 13:12:15.671594",
+    "@@last_modified": "2026-08-14 15:02:51.775191",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2128,5 +2128,10 @@
     "allParticipants": "ସମସ୍ତ ଅଂଶଗ୍ରହଣକାରୀ",
     "seeFullCoursePlan": "ସମ୍ପୂର୍ଣ୍ଣ ପାଠ୍ୟକ୍ରମ ଯୋଜନା ଦେଖନ୍ତୁ",
     "upNext": "ପରବର୍ତ୍ତୀ",
-    "catchUp": "କ୍ୟାଚ୍ ଅପ୍"
+    "catchUp": "କ୍ୟାଚ୍ ଅପ୍",
+    "messageLanguageIs": "ଏହି ବାର୍ତ୍ତା {language} ରେ ସେଟ୍ ହୋଇଛି।",
+    "updateMessageLanguage": "ବାର୍ତ୍ତାର ଭାଷା ପରିବର୍ତ୍ତନ କରିବାକୁ ଏଠାରେ କ୍ଲିକ୍ କରନ୍ତୁ।",
+    "messageLanguage": "ବାର୍ତ୍ତା ଭାଷା",
+    "messageLanguageUpdated": "ବାର୍ତ୍ତା ଭାଷା ଅପଡେଟ୍ ହୋଇଛି!",
+    "pickCefrLevelStepSubtitle": "ଆପଣ ଏହାକୁ ପରେ ବଦଳାଇ ପାରିବେ"
 }

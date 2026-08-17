@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-14 13:12:15.207937",
+    "@@last_modified": "2026-08-14 15:02:51.289196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Semua peserta",
     "seeFullCoursePlan": "Lihat rancangan kursus penuh",
     "upNext": "Seterusnya",
-    "catchUp": "Ikuti perkembangan"
+    "catchUp": "Ikuti perkembangan",
+    "messageLanguageIs": "Mesej ini ditetapkan kepada {language}.",
+    "updateMessageLanguage": "Klik di sini untuk menukar bahasa mesej.",
+    "messageLanguage": "Bahasa mesej",
+    "messageLanguageUpdated": "Bahasa mesej dikemas kini!",
+    "pickCefrLevelStepSubtitle": "Anda boleh mengubahnya kemudian"
 }

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 
@@ -119,6 +120,56 @@ class ActivityPlanRepo
   static const Duration _attemptCooldown = Duration(seconds: 60);
   static const Duration _rateLimitPause = Duration(seconds: 60);
 
+  /// Ceiling on hydrations in flight at once.
+  ///
+  /// Staging 2026-08-14: 18 reads left in 30ms and 11 more in 4ms, spending the
+  /// whole per-user `/choreo/*` minute budget in one frame and starving the next
+  /// unrelated call — `/choreo/tokenize`, which backs free message rendering.
+  ///
+  /// No backoff can prevent that, and [_rateLimitedUntil] is not a counter-
+  /// example: every guard in [ensure] is temporal or outcome-keyed, so on a COLD
+  /// view all of them are empty BY DEFINITION. Nothing has resolved, nothing has
+  /// been attempted, and no pause can be armed because no response has come back
+  /// yet. [ensure] is reached from `build()`, so K cards in one frame means K
+  /// synchronous passes that each clear every guard. Backoff reacts to a
+  /// response; the first wave happens before any response exists. Only a bound
+  /// on CONCURRENCY closes that, which is why this is a separate mechanism
+  /// rather than another cooldown.
+  ///
+  /// 6 is chosen to be small against the 60/min budget (a cold view of 60 pins
+  /// drains over seconds instead of one frame) while still hydrating a visible
+  /// screen fast enough that cards do not pop in one at a time.
+  static const int _maxInFlight = 6;
+
+  /// Ceiling on ACCEPTED-but-not-yet-dispatched hydrations. A view with more
+  /// distinct keys than this is offering more work than the budget can absorb;
+  /// [ensure] declines the excess WITHOUT parking it, so the next frame is free
+  /// to re-offer it once the backlog drains. Declining costs a map lookup and
+  /// issues no I/O, so the frame-rate re-offer is bounded CPU, never traffic.
+  static const int _maxQueued = 120;
+
+  int _inFlight = 0;
+
+  /// Hydrations accepted by [ensure] and awaiting a free slot. Keys here are in
+  /// [_hydrating] (so a rebuild cannot enqueue them twice) and parked in
+  /// [_nextAttempt] (so dropping one cannot produce a frame-rate retry).
+  final Queue<
+    ({
+      String activityId,
+      String? l1,
+      String? version,
+      String key,
+      bool forceRefresh,
+    })
+  >
+  _queued = Queue();
+
+  @visibleForTesting
+  int get inFlightCount => _inFlight;
+
+  @visibleForTesting
+  int get queuedCount => _queued.length;
+
   /// Test seam: [ensure]'s clock. Backoff is wall-clock, so tests would
   /// otherwise need real delays.
   @visibleForTesting
@@ -134,6 +185,17 @@ class ActivityPlanRepo
     _nextAttempt.clear();
     _confirmedRemoved.clear();
     _rateLimitedUntil = null;
+    // The backlog goes too. Dropping it loses nothing: clearing [_nextAttempt]
+    // above un-parks every queued key, so `build()` re-offers them on the next
+    // frame and they hydrate under the fresh budget. Keeping them would instead
+    // replay a pre-refresh backlog against the post-refresh view. In-flight
+    // requests are deliberately NOT touched — [_inFlight] is decremented by
+    // their own completion, and zeroing it here would let the next [_pump]
+    // exceed [_maxInFlight].
+    for (final item in _queued) {
+      _hydrating.remove(item.key);
+    }
+    _queued.clear();
   }
 
   /// Test seam: simulate the repo having just been rate-limited, without
@@ -323,9 +385,12 @@ class ActivityPlanRepo
   /// does NOT revalidate (one fetch per visible pin would be a fetch storm).
   /// Stale-while-revalidate: [cachedPlan] keeps serving the old plan until the
   /// fresh one lands, so there is no loading flicker.
-  /// Returns whether this call actually issued a fetch. Callers may ignore it;
-  /// it exists so the suppression policy is observable without reaching into
-  /// private state.
+  /// Returns whether this call ACCEPTED the work — dispatched it, or queued it
+  /// behind [_maxInFlight]. It is not a promise that a request left the device:
+  /// a queued entry is dropped if the backend rate-limits us before its slot
+  /// comes up. Callers may ignore it; it exists so the suppression policy is
+  /// observable without reaching into private state. Tests that need dispatch
+  /// rather than acceptance read [inFlightCount] / [queuedCount].
   bool ensure(
     String activityId, {
     String? l1,
@@ -347,40 +412,105 @@ class ActivityPlanRepo
     // Checked before `_revalidated.add` so a revalidate token is never spent
     // on a call that is about to bail.
     if (_hydrating.contains(key)) return false;
+    final at = now();
+    // The repo-wide pause is tested BEFORE [revalidate] is resolved, for two
+    // separate reasons.
+    //
+    // It has to gate revalidating calls too. A 429 is a statement about RATE,
+    // not about a key, so "we stop when the server says stop" cannot carry an
+    // exemption — and the block below is skipped wholesale by a revalidate,
+    // because re-fetching PAST a cached, already-attempted entry is the entire
+    // point of revalidate. Leaving the pause inside that block therefore made
+    // every revalidating call walk straight through an armed pause.
+    //
+    // And it has to run before `_revalidated.add`, so bailing here cannot spend
+    // the once-per-session revalidate token on a call that never fetched.
+    final pausedUntil = _rateLimitedUntil;
+    if (pausedUntil != null) {
+      if (at.isBefore(pausedUntil)) return false;
+      _rateLimitedUntil = null;
+    }
     final doRevalidate = revalidate && _revalidated.add(key);
     if (!doRevalidate) {
       if (_resolved.containsKey(key)) return false;
-      final at = now();
-      final pausedUntil = _rateLimitedUntil;
-      if (pausedUntil != null) {
-        if (at.isBefore(pausedUntil)) return false;
-        _rateLimitedUntil = null;
-      }
       final retryAt = _nextAttempt[key];
       if (retryAt != null && at.isBefore(retryAt)) return false;
     }
+    // Declines WITHOUT parking: a saturated backlog is a statement about the
+    // queue, not about this key, so the next frame must be free to re-offer it.
+    if (_queued.length >= _maxQueued) return false;
     // PARK BEFORE THE I/O, not after it resolves. Every failure mode — 429,
     // 5xx, network, timeout, a `.plan` mapping throw, and anything added
     // later — is covered by this single line, because it does not depend on
     // classifying the outcome. This is the guard the three outcome-keyed sets
-    // above could never be.
+    // above could never be. Parking at ENQUEUE, not at dispatch, is what keeps
+    // a queued key from being re-offered on every frame while it waits.
     _nextAttempt[key] = now().add(_attemptCooldown);
     _hydrating.add(key);
-    getPlan(activityId, l1: l1, version: version, forceRefresh: doRevalidate)
-        .catchError((Object e, StackTrace s) {
-          // `getPlan` is fire-and-forget here, and `.plan`'s mapping runs outside
-          // BaseRepo's try/catch, so without this a malformed body is an unhandled
-          // async error. The parked entry stays put, so it cannot re-arm.
-          ErrorHandler.logError(
-            e: e,
-            s: s,
-            data: {'activityId': activityId, 'l1': l1, 'version': version},
-            level: SentryLevel.warning,
-          );
-          return null;
-        })
-        .whenComplete(() => _hydrating.remove(key));
+    _queued.add((
+      activityId: activityId,
+      l1: l1,
+      version: version,
+      key: key,
+      forceRefresh: doRevalidate,
+    ));
+    _pump();
     return true;
+  }
+
+  /// Dispatches from [_queued] while a slot is free, then stops.
+  ///
+  /// Re-entered from each completion, so one freed slot starts exactly one
+  /// successor. The loop is safe against its own dispatches: `getPlan` hands
+  /// back its Future synchronously and `whenComplete` cannot run before this
+  /// method yields, so [_inFlight] is already incremented for every dispatch by
+  /// the time the next iteration tests it.
+  void _pump() {
+    while (_inFlight < _maxInFlight && _queued.isNotEmpty) {
+      final pausedUntil = _rateLimitedUntil;
+      if (pausedUntil != null && now().isBefore(pausedUntil)) {
+        // Rate-limited while this backlog waited. Draining it anyway would just
+        // spend the NEXT window the moment the pause lifts: the same burst,
+        // spread thin, not prevented. Dropping is safe because every queued key
+        // is parked in [_nextAttempt], so `build()` re-offers it once both the
+        // pause and the cooldown have lapsed.
+        for (final item in _queued) {
+          _hydrating.remove(item.key);
+        }
+        _queued.clear();
+        return;
+      }
+      final item = _queued.removeFirst();
+      _inFlight++;
+      getPlan(
+            item.activityId,
+            l1: item.l1,
+            version: item.version,
+            forceRefresh: item.forceRefresh,
+          )
+          .catchError((Object e, StackTrace s) {
+            // `getPlan` is fire-and-forget here, and `.plan`'s mapping runs
+            // outside BaseRepo's try/catch, so without this a malformed body is
+            // an unhandled async error. The parked entry stays put, so it
+            // cannot re-arm.
+            ErrorHandler.logError(
+              e: e,
+              s: s,
+              data: {
+                'activityId': item.activityId,
+                'l1': item.l1,
+                'version': item.version,
+              },
+              level: SentryLevel.warning,
+            );
+            return null;
+          })
+          .whenComplete(() {
+            _inFlight--;
+            _hydrating.remove(item.key);
+            _pump();
+          });
+    }
   }
 
   /// Resolves upload-referenced media blocks to CDN urls. Applied to every

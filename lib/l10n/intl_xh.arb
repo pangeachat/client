@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-14 13:12:17.478330",
+    "@@last_modified": "2026-08-14 15:02:53.674001",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Bonke abathathi-nxaxheba",
     "seeFullCoursePlan": "Bona isicwangciso esipheleleyo sekhosi",
     "upNext": "Okulandelayo",
-    "catchUp": "Fumana okutsha"
+    "catchUp": "Fumana okutsha",
+    "messageLanguageIs": "Lo myalezo usetwe ku-{language}.",
+    "updateMessageLanguage": "Cofa apha ukuze utshintshe ulwimi lomyalezo.",
+    "messageLanguage": "Ulwimi lomyalezo",
+    "messageLanguageUpdated": "Ulwimi lomyalezo luhlaziyiwe!",
+    "pickCefrLevelStepSubtitle": "Ungakutshintsha oku kamva"
 }

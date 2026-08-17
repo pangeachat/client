@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-14 13:12:12.583841",
+    "@@last_modified": "2026-08-14 15:02:47.572740",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Svi učesnici",
     "seeFullCoursePlan": "Pogledajte cijeli plan kursa",
     "upNext": "Sljedeće",
-    "catchUp": "Sustići"
+    "catchUp": "Sustići",
+    "messageLanguageIs": "Ova poruka je postavljena na {language}.",
+    "updateMessageLanguage": "Kliknite ovdje da promijenite jezik poruke.",
+    "messageLanguage": "Jezik poruke",
+    "messageLanguageUpdated": "Jezik poruke ažuriran!",
+    "pickCefrLevelStepSubtitle": "Ovo možete promijeniti kasnije"
 }

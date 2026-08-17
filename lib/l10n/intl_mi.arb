@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-14 13:12:14.948601",
+    "@@last_modified": "2026-08-14 15:02:50.988989",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Ngā kaiuru katoa",
     "seeFullCoursePlan": "Tirohia te mahere akoranga katoa",
     "upNext": "Panuku",
-    "catchUp": "Whai ake"
+    "catchUp": "Whai ake",
+    "messageLanguageIs": "Kua tautuhia tēnei karere ki te reo {language}.",
+    "updateMessageLanguage": "Pāwhiri ki konei ki te huri i te reo o te karere.",
+    "messageLanguage": "Reo karere",
+    "messageLanguageUpdated": "Kua whakahōutia te reo karere!",
+    "pickCefrLevelStepSubtitle": "Ka taea e koe te huri i tēnei ā muri ake nei"
 }

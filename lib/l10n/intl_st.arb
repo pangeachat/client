@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-14 13:12:16.908588",
+    "@@last_modified": "2026-08-14 15:02:53.080140",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Barupeluoa bohle",
     "seeFullCoursePlan": "Bona moralo o felletseng oa thupelo",
     "upNext": "Se latelang",
-    "catchUp": "Tšoara"
+    "catchUp": "Tšoara",
+    "messageLanguageIs": "Molaetsa ona o behiloe ho {language}.",
+    "updateMessageLanguage": "Tobetsa mona ho fetola puo ea molaetsa.",
+    "messageLanguage": "Puo ea molaetsa",
+    "messageLanguageUpdated": "Puo ea molaetsa e ntlafalitsoe!",
+    "pickCefrLevelStepSubtitle": "O ka fetola sena hamorao"
 }

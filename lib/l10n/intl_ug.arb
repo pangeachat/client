@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-14 13:12:17.370313",
+    "@@last_modified": "2026-08-14 15:02:53.598151",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "بارلىق ئىشتىراكچىلار",
     "seeFullCoursePlan": "تولۇق دەرس پىلانىنى كۆرۈڭ",
     "upNext": "كېيىنكى",
-    "catchUp": "يېتىۋېلىش"
+    "catchUp": "يېتىۋېلىش",
+    "messageLanguageIs": "بۇ ئۇچۇر {language} غا تەڭشەلدى.",
+    "updateMessageLanguage": "ئۇچۇر تىلىنى ئۆزگەرتىش ئۈچۈن بۇ يەرنى چېكىڭ.",
+    "messageLanguage": "ئۇچۇر تىلى",
+    "messageLanguageUpdated": "ئۇچۇر تىلى يېڭىلاندى!",
+    "pickCefrLevelStepSubtitle": "بۇنى كېيىن ئۆزگەرتەلەيسىز"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-14 13:12:14.816731",
+    "@@last_modified": "2026-08-14 15:02:50.523168",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Omnes participes",
     "seeFullCoursePlan": "Vide totum consilium cursus",
     "upNext": "Deinceps",
-    "catchUp": "Recuperare"
+    "catchUp": "Recuperare",
+    "messageLanguageIs": "Haec epistula ad {language} posita est.",
+    "updateMessageLanguage": "Hic preme ut linguam epistulae mutes.",
+    "messageLanguage": "Lingua epistulae",
+    "messageLanguageUpdated": "Lingua epistulae renovata est!",
+    "pickCefrLevelStepSubtitle": "Hoc postea mutare potes"
 }

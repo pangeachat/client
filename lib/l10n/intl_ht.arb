@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-14 13:12:13.375333",
+    "@@last_modified": "2026-08-14 15:02:49.675818",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Tout patisipan yo",
     "seeFullCoursePlan": "Gade plan kou konplè a",
     "upNext": "Apre sa",
-    "catchUp": "Ratrapaj"
+    "catchUp": "Ratrapaj",
+    "messageLanguageIs": "Mesaj sa a mete sou {language}.",
+    "updateMessageLanguage": "Klike la a pou chanje lang mesaj la.",
+    "messageLanguage": "Lang mesaj",
+    "messageLanguageUpdated": "Lang mesaj la mete ajou!",
+    "pickCefrLevelStepSubtitle": "Ou ka chanje sa pita"
 }

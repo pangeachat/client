@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-14 13:12:15.368668",
+    "@@last_modified": "2026-08-14 15:02:51.464861",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Il-parteċipanti kollha",
     "seeFullCoursePlan": "Ara l-pjan sħiħ tal-kors",
     "upNext": "Li jmiss",
-    "catchUp": "Ilaħħqu"
+    "catchUp": "Ilaħħqu",
+    "messageLanguageIs": "Dan il-messaġġ huwa ssettjat għal {language}.",
+    "updateMessageLanguage": "Ikklikkja hawn biex tibdel il-lingwa tal-messaġġ.",
+    "messageLanguage": "Lingwa tal-messaġġ",
+    "messageLanguageUpdated": "Il-lingwa tal-messaġġ ġiet aġġornata!",
+    "pickCefrLevelStepSubtitle": "Tista' tibdel dan aktar tard"
 }

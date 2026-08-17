@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-14 13:12:12.434690",
+    "@@last_modified": "2026-08-14 15:02:48.742552",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10600,5 +10600,10 @@
     "allParticipants": "Lahat ng kalahok",
     "seeFullCoursePlan": "Tingnan ang buong plano ng kurso",
     "upNext": "Susunod",
-    "catchUp": "Bumawi"
+    "catchUp": "Bumawi",
+    "messageLanguageIs": "Ang mensaheng ito ay nakatakda sa {language}.",
+    "updateMessageLanguage": "Mag-click dito upang baguhin ang wika ng mensahe.",
+    "messageLanguage": "Wika ng mensahe",
+    "messageLanguageUpdated": "Na-update ang wika ng mensahe!",
+    "pickCefrLevelStepSubtitle": "Maaari mo itong baguhin sa ibang pagkakataon"
 }

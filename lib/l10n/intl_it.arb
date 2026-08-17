@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 13:12:13.831219",
+    "@@last_modified": "2026-08-14 15:02:50.070624",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9813,5 +9813,10 @@
     "allParticipants": "Tutti i partecipanti",
     "seeFullCoursePlan": "Vedi il piano completo del corso",
     "upNext": "Prossimamente",
-    "catchUp": "Recupera"
+    "catchUp": "Recupera",
+    "messageLanguageIs": "Questo messaggio è impostato su {language}.",
+    "updateMessageLanguage": "Clicca qui per cambiare la lingua del messaggio.",
+    "messageLanguage": "Lingua del messaggio",
+    "messageLanguageUpdated": "Lingua del messaggio aggiornata!",
+    "pickCefrLevelStepSubtitle": "Puoi cambiarlo in seguito"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 13:12:13.249749",
+    "@@last_modified": "2026-08-14 15:02:49.283987",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10654,5 +10654,10 @@
     "allParticipants": "כל המשתתפים",
     "seeFullCoursePlan": "הצג את תוכנית הקורס המלאה",
     "upNext": "הבא בתור",
-    "catchUp": "להתעדכן"
+    "catchUp": "להתעדכן",
+    "messageLanguageIs": "הודעה זו מוגדרת ל{language}.",
+    "updateMessageLanguage": "לחץ כאן כדי לשנות את שפת ההודעה.",
+    "messageLanguage": "שפת ההודעה",
+    "messageLanguageUpdated": "שפת ההודעה עודכנה!",
+    "pickCefrLevelStepSubtitle": "תוכל לשנות זאת מאוחר יותר"
 }

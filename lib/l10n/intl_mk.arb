@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-14 13:12:15.319783",
+    "@@last_modified": "2026-08-14 15:02:51.025114",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Сите учесници",
     "seeFullCoursePlan": "Погледнете го целиот план на курсот",
     "upNext": "Следно",
-    "catchUp": "Стигни"
+    "catchUp": "Стигни",
+    "messageLanguageIs": "Оваа порака е поставена на {language}.",
+    "updateMessageLanguage": "Кликнете овде за да го промените јазикот на пораката.",
+    "messageLanguage": "Јазик на пораката",
+    "messageLanguageUpdated": "Јазикот на пораката е ажуриран!",
+    "pickCefrLevelStepSubtitle": "Може да го промените подоцна"
 }

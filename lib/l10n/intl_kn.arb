@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-14 13:12:14.308448",
+    "@@last_modified": "2026-08-14 15:02:50.353186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "ಎಲ್ಲಾ ಭಾಗವಹಿಸುವವರು",
     "seeFullCoursePlan": "ಸಂಪೂರ್ಣ ಕೋರ್ಸ್ ಯೋಜನೆಯನ್ನು ನೋಡಿ",
     "upNext": "ಮುಂದೆ",
-    "catchUp": "ಕ್ಯಾಚ್ ಅಪ್"
+    "catchUp": "ಕ್ಯಾಚ್ ಅಪ್",
+    "messageLanguageIs": "ಈ ಸಂದೇಶವನ್ನು {language} ಗೆ ಹೊಂದಿಸಲಾಗಿದೆ.",
+    "updateMessageLanguage": "ಸಂದೇಶದ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ.",
+    "messageLanguage": "ಸಂದೇಶ ಭಾಷೆ",
+    "messageLanguageUpdated": "ಸಂದೇಶ ಭಾಷೆ ನವೀಕರಿಸಲಾಗಿದೆ!",
+    "pickCefrLevelStepSubtitle": "ನೀವು ಇದನ್ನು ನಂತರ ಬದಲಾಯಿಸಬಹುದು"
 }

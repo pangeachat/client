@@ -65,6 +65,21 @@ The known-good-voice gate in [word-text-to-speech.instructions.md](word-text-to-
 
 **Voice-mode replies are the one exception** (`useBackendTts()`): they take the normal device-first routing and fall back to backend when the device has no known-good voice. Two reasons the rule above does not apply. Their volume is bounded by the learner's own voice messages — the bound the setting-driven case lacks — and silence is not an acceptable outcome here: the bot used to guarantee an audible reply on every device, so device-only would break the spoken exchange, with no error and no indicator, on Safari, on desktop Chrome without a Google voice, and on Android without a high-quality voice.
 
+## Counting what the learner hears
+
+Every read-aloud path plays target-language audio at a learner, so every one of them is listening, and the served figure is a **total** rather than a per-surface slice. A path that counts nothing therefore does not leave a gap in a chart — it shortens the headline number, and on a heavy practice day the drill surfaces are most of what is missing.
+
+So speaking a message, a word or a drill choice is one decision with two halves, and both are made by the **caller**:
+
+- **Which category of listening this is.** One entry point serves automatic read-aloud, toolbar-open read-aloud, word taps and choice taps, and it is handed neither a room nor an event, so it cannot tell them apart. Categories split on **who initiated the playback** — never on who paid for it, never on which widget rendered it.
+- **Whether it is counted at all.** Declaring this is **required**, with an explicit exemption for paths that are not. Optional instrumentation makes forgetting it the default: a new read-aloud path would compile, analyze clean, pass every behavioural test, and quietly undercount. Required-with-an-opt-out makes the omission a build failure instead.
+
+The bracketing is not the caller's job. A caller cannot measure by timing the call — several exits resolve having played nothing, and timing those banks a near-zero interval for audio nobody heard — so the measurement opens when a route is actually asked to play, closes in a `finally`, and lives in one place rather than at each site. Nothing about it is ever awaited: telemetry must never be something a learner can feel.
+
+**The category vocabulary is closed, and it is the server's.** A category the ingest does not know rejects the whole batch, and a batch carries every category's coverage declaration alongside its events — so one unrecognised value takes down the categories that do work. New categories land on the serving side first. Until then a surface that has no category that fits declares an exemption rather than borrowing the nearest one: `tap_read` means a whole message on the paid route, and widening it in place would give one counter two meanings.
+
+**The room travels wherever it exists, and its absence is expected.** Room-scoped rows sum into a total; a total never decomposes back into rooms, so dropping the room is a one-way door for one string. Some surfaces genuinely have none — analytics practice and the vocab list are not in a room — and those emit with an absent room rather than not emitting. A synthetic placeholder is never the answer: these rows are bucketed and authorized per room downstream, so a fabricated one is fabricated listening in somebody's course.
+
 ## One message at a time
 Playback holds a single waiting slot: while a message is being read, at most one message waits, and a newer arrival replaces whichever message was waiting. The learner stays at most one message behind the conversation, so what they hear is still on screen. Reading every message in order would fall progressively further behind; ignoring everything that arrives mid-playback would instead skip the newest messages and drift the audio away from where the learner is looking.
 

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-14 13:12:15.078041",
+    "@@last_modified": "2026-08-14 15:02:51.002499",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "എല്ലാ പങ്കാളികളും",
     "seeFullCoursePlan": "മുഴുവൻ കോഴ്‌സ് പ്ലാനും കാണുക",
     "upNext": "അടുത്തത്",
-    "catchUp": "പുതിയത് നേടുക"
+    "catchUp": "പുതിയത് നേടുക",
+    "messageLanguageIs": "ഈ സന്ദേശം {language} എന്നതിലേക്ക് സജ്ജീകരിച്ചിരിക്കുന്നു.",
+    "updateMessageLanguage": "സന്ദേശത്തിന്റെ ഭാഷ മാറ്റാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക.",
+    "messageLanguage": "സന്ദേശ ഭാഷ",
+    "messageLanguageUpdated": "സന്ദേശ ഭാഷ അപ്ഡേറ്റ് ചെയ്തു!",
+    "pickCefrLevelStepSubtitle": "നിങ്ങൾക്ക് ഇത് പിന്നീട് മാറ്റാവുന്നതാണ്"
 }

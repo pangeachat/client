@@ -69,6 +69,13 @@ class AnalyticsDataService {
   /// the account's open span + tracker).
   String? get accountUserId => _accountClient.userID;
 
+  /// The account's current bearer, for the best-effort dosage lane. Read live
+  /// for the same reason as [accountUserId]: tokens refresh mid-session, and a
+  /// snapshot taken at construction would post a heartbeat flush under a stale
+  /// one. Null after logout invalidates it, which the buffer treats as "hold,
+  /// do not attempt".
+  String? get accountAccessToken => _accountClient.accessToken;
+
   late final AnalyticsUpdateDispatcher updateDispatcher;
   late final AnalyticsUpdateService updateService;
   AnalyticsSyncController? _syncController;

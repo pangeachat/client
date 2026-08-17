@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-14 13:12:15.183447",
+    "@@last_modified": "2026-08-14 15:02:51.249258",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "सर्व सहभागी",
     "seeFullCoursePlan": "संपूर्ण अभ्यासक्रम योजना पहा",
     "upNext": "पुढील",
-    "catchUp": "माहिती मिळवा"
+    "catchUp": "माहिती मिळवा",
+    "messageLanguageIs": "हा संदेश {language} वर सेट केला आहे.",
+    "updateMessageLanguage": "संदेशाची भाषा बदलण्यासाठी येथे क्लिक करा.",
+    "messageLanguage": "संदेश भाषा",
+    "messageLanguageUpdated": "संदेश भाषा अद्यतनित केली!",
+    "pickCefrLevelStepSubtitle": "तुम्ही हे नंतर बदलू शकता"
 }

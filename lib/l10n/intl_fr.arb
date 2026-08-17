@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-14 13:12:12.682765",
+    "@@last_modified": "2026-08-14 15:02:48.710534",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10095,5 +10095,10 @@
     "allParticipants": "Tous les participants",
     "seeFullCoursePlan": "Voir le plan de cours complet",
     "upNext": "À suivre",
-    "catchUp": "Rattraper"
+    "catchUp": "Rattraper",
+    "messageLanguageIs": "Ce message est défini sur {language}.",
+    "updateMessageLanguage": "Cliquez ici pour changer la langue du message.",
+    "messageLanguage": "Langue du message",
+    "messageLanguageUpdated": "Langue du message mise à jour !",
+    "pickCefrLevelStepSubtitle": "Vous pourrez modifier cela plus tard"
 }

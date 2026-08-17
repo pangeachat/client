@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-14 13:12:16.392319",
+    "@@last_modified": "2026-08-14 15:02:52.457886",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10685,5 +10685,10 @@
     "allParticipants": "Všetci účastníci",
     "seeFullCoursePlan": "Zobraziť celý plán kurzu",
     "upNext": "Ďalej",
-    "catchUp": "Dohnať"
+    "catchUp": "Dohnať",
+    "messageLanguageIs": "Tento text je nastavený na jazyk {language}.",
+    "updateMessageLanguage": "Kliknutím sem zmeníte jazyk správy.",
+    "messageLanguage": "Jazyk správy",
+    "messageLanguageUpdated": "Jazyk správy bol aktualizovaný!",
+    "pickCefrLevelStepSubtitle": "Môžete to zmeniť neskôr"
 }

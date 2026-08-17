@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-14 13:12:12.242357",
+    "@@last_modified": "2026-08-14 15:02:48.597745",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7943,5 +7943,10 @@
     "allParticipants": "Todos los participantes",
     "seeFullCoursePlan": "Ver plan de curso completo",
     "upNext": "A continuación",
-    "catchUp": "Ponerse al día"
+    "catchUp": "Ponerse al día",
+    "messageLanguageIs": "Este mensaje está configurado en {language}.",
+    "updateMessageLanguage": "Haz clic aquí para cambiar el idioma del mensaje.",
+    "messageLanguage": "Idioma del mensaje",
+    "messageLanguageUpdated": "¡Idioma del mensaje actualizado!",
+    "pickCefrLevelStepSubtitle": "Puedes cambiar esto más tarde"
 }

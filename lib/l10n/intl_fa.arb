@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 13:12:12.416819",
+    "@@last_modified": "2026-08-14 15:02:48.697614",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9828,5 +9828,10 @@
     "allParticipants": "همه شرکت‌کنندگان",
     "seeFullCoursePlan": "مشاهده برنامه کامل دوره",
     "upNext": "بعدی",
-    "catchUp": "به‌روزرسانی"
+    "catchUp": "به‌روزرسانی",
+    "messageLanguageIs": "زبان این پیام روی {language} تنظیم شده است.",
+    "updateMessageLanguage": "برای تغییر زبان پیام اینجا کلیک کنید.",
+    "messageLanguage": "زبان پیام",
+    "messageLanguageUpdated": "زبان پیام به‌روز شد!",
+    "pickCefrLevelStepSubtitle": "بعداً می‌توانید این را تغییر دهید"
 }

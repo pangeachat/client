@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-14 13:12:12.904561",
+    "@@last_modified": "2026-08-14 15:02:49.254425",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2128,5 +2128,10 @@
     "allParticipants": "Nā mea komo a pau",
     "seeFullCoursePlan": "E ʻike i ka papa hoʻolālā piha",
     "upNext": "Aʻe",
-    "catchUp": "Hoʻopaʻa"
+    "catchUp": "Hoʻopaʻa",
+    "messageLanguageIs": "Ua hoʻonohonoho ʻia kēia leka i ka ʻōlelo {language}.",
+    "updateMessageLanguage": "Kaomi ma ʻaneʻi e hoʻololi i ka ʻōlelo o ka leka.",
+    "messageLanguage": "ʻŌlelo leka",
+    "messageLanguageUpdated": "Ua hōʻano hou ʻia ka ʻōlelo leka!",
+    "pickCefrLevelStepSubtitle": "Hiki iā ʻoe ke hoʻololi i kēia ma hope"
 }
