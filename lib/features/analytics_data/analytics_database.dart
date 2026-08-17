@@ -442,6 +442,61 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return _aggregateConstructs(grouped, existingMap);
   }
 
+  /// The uncapped xp sum of every stored aggregate of [type] for [language] —
+  /// one entry per storage row (server and local rows for the same construct
+  /// are returned separately; callers add them), each tagged with the row's
+  /// [ConstructIdentifier].
+  ///
+  /// This is the cheap read behind the total-XP recompute (#8418): it walks the
+  /// raw aggregate JSON and sums `xp` per use, without constructing a
+  /// [OneConstructUse] (no DateTime parsing, no enum lookups beyond the
+  /// legacy `xp`-less fallback). It must stay equivalent to
+  /// `getAggregatedConstructs(...).fold((c) => c.uses.fold(xp))` — see the
+  /// differential test in `analytics_database_test.dart`.
+  Future<List<({ConstructIdentifier id, int xp})>> getAggregateXPSums(
+    ConstructTypeEnum type,
+    String language,
+  ) async {
+    final results = <({ConstructIdentifier id, int xp})>[];
+
+    Future<void> read(Box<Map> box) async {
+      final keys = (await box.getAllKeys())
+          .where((key) => _isLanguageKey(key, language))
+          .toList();
+      if (keys.isEmpty) return;
+      final values = await box.getAll(keys);
+      for (final raw in values) {
+        if (raw == null) continue;
+        final id = ConstructIdentifier.fromJson(
+          Map<String, dynamic>.from(raw['construct_id']),
+        );
+        results.add((id: id, xp: _rawUsesXP(raw['uses'])));
+      }
+    }
+
+    await Future.wait([read(_aggBox(type, false)), read(_aggBox(type, true))]);
+    return results;
+  }
+
+  /// Sum of `xp` over a raw `uses` JSON list, mirroring
+  /// [OneConstructUse.fromJson]'s `xp ?? useType.pointValue` fallback.
+  static int _rawUsesXP(dynamic uses) {
+    if (uses is! List) return 0;
+    var total = 0;
+    for (final u in uses) {
+      if (u is! Map) continue;
+      final xp = u['xp'];
+      if (xp is int) {
+        total += xp;
+      } else if (xp is num) {
+        total += xp.toInt();
+      } else {
+        total += ConstructUseTypeEnum.fromString(u['useType']).pointValue;
+      }
+    }
+    return total;
+  }
+
   Future<List<ConstructUses>> getAggregatedConstructs(
     ConstructTypeEnum type,
     String language,

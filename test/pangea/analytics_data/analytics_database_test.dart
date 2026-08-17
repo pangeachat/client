@@ -400,6 +400,89 @@ void main() {
     });
   });
 
+  group('getAggregateXPSums', () {
+    /// The reference: uncapped per-row xp via full deserialization.
+    Future<Map<String, int>> referenceSums(ConstructTypeEnum type) async {
+      final out = <String, int>{};
+      for (final c in await db.getAggregatedConstructs(type, testLang)) {
+        out[c.id.storageKey] =
+            (out[c.id.storageKey] ?? 0) + c.uses.fold(0, (t, u) => t + u.xp);
+      }
+      return out;
+    }
+
+    Map<String, int> byKey(List<({ConstructIdentifier id, int xp})> rows) {
+      final out = <String, int>{};
+      for (final r in rows) {
+        out[r.id.storageKey] = (out[r.id.storageKey] ?? 0) + r.xp;
+      }
+      return out;
+    }
+
+    test('empty database yields no rows', () async {
+      expect(
+        await db.getAggregateXPSums(ConstructTypeEnum.vocab, testLang),
+        isEmpty,
+      );
+    });
+
+    test('matches full deserialization: negatives, over-cap, server+local, '
+        'case variants, morphs, other language', () async {
+      await db.updateServerAnalytics([
+        events.event([
+          ...usesFor('casa', count: 30, xpEach: 5), // 150 uncapped
+          ...usesFor('Casa', count: 2, xpEach: 5), // case variant row
+          ...usesFor('perro', count: 3, xpEach: 5),
+          use(lemma: 'perro', ts: at(50), xp: -20), // negative
+          ...usesFor(
+            'Pres',
+            count: 4,
+            xpEach: 5,
+            type: ConstructTypeEnum.morph,
+            category: 'tense',
+          ),
+          use(
+            lemma: 'Past',
+            ts: at(1),
+            xp: -3,
+            type: ConstructTypeEnum.morph,
+            category: 'tense',
+          ),
+        ], ts: at(60)),
+      ], testLang);
+      // local rows for an existing and a new key
+      await db.updateLocalAnalytics([
+        ...usesFor('casa', count: 2, xpEach: 5, startMinute: 100),
+        ...usesFor('gato', count: 1, xpEach: 7, startMinute: 100),
+      ], testLang);
+      // another language must not leak in
+      await db.updateServerAnalytics([
+        events.event(usesFor('house', count: 4), ts: at(60)),
+      ], 'en');
+
+      for (final type in ConstructTypeEnum.values) {
+        final rows = await db.getAggregateXPSums(type, testLang);
+        expect(byKey(rows), await referenceSums(type), reason: type.name);
+      }
+
+      // spot-check the raw values themselves
+      final vocab = byKey(
+        await db.getAggregateXPSums(ConstructTypeEnum.vocab, testLang),
+      );
+      expect(vocab[vocabId('casa').storageKey], 160); // 150 server + 10 local
+      expect(vocab[vocabId('Casa').storageKey], 10);
+      expect(vocab[vocabId('perro').storageKey], -5);
+      expect(vocab[vocabId('gato').storageKey], 7);
+      expect(vocab.containsKey(vocabId('house').storageKey), isFalse);
+      // server and local rows for casa are separate rows
+      final casaRows = (await db.getAggregateXPSums(
+        ConstructTypeEnum.vocab,
+        testLang,
+      )).where((r) => r.id.storageKey == vocabId('casa').storageKey);
+      expect(casaRows.length, 2);
+    });
+  });
+
   group('recompute-equivalent fold', () {
     test('sum of capped points across aggregates', () async {
       await db.updateServerAnalytics([
