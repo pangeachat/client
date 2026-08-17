@@ -131,7 +131,11 @@ class MorphFeatureBox extends StatelessWidget {
           // One batched read for every tag of this feature, re-issued only
           // when analytics change — not per rebuild (#8433).
           AnalyticsFutureBuilder<Map<ConstructIdentifier, ConstructUses>>(
-            dependencies: [feature.value, language],
+            dependencies: [
+              feature.value,
+              language,
+              ...tags.map((tag) => tag.value),
+            ],
             fetch: () => analyticsService.getConstructUses(tagIds, language),
             builder: (context, snapshot) => Row(
               mainAxisAlignment: MainAxisAlignment.center,

@@ -20,18 +20,27 @@ class AnalyticsFutureBuilder<T> extends StatelessWidget {
   final Future<T> Function() fetch;
   final AsyncWidgetBuilder<T> builder;
 
+  /// Test hook: stands in for the dispatcher's construct stream so the
+  /// widget can be driven without a [Matrix] ancestor.
+  @visibleForTesting
+  final Stream<AnalyticsStreamUpdate>? stream;
+
   const AnalyticsFutureBuilder({
     super.key,
     required this.dependencies,
     required this.fetch,
     required this.builder,
+    this.stream,
   });
 
   @override
   Widget build(BuildContext context) {
-    final service = Matrix.of(context).analyticsDataService;
     return StreamBuilder<AnalyticsStreamUpdate>(
-      stream: service.updateDispatcher.constructUpdateStream.stream,
+      stream:
+          stream ??
+          Matrix.of(
+            context,
+          ).analyticsDataService.updateDispatcher.constructUpdateStream.stream,
       builder: (context, snapshot) => MemoizedFutureBuilder<T>(
         // A new AnalyticsStreamUpdate object per emission; the same object
         // across plain rebuilds — so it is a clean "stream ticked" key.

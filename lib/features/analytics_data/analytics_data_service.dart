@@ -15,17 +15,16 @@ import 'package:fluffychat/features/analytics/constructs_event.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database_builder.dart';
-import 'package:fluffychat/features/analytics_data/analytics_settings_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_sync_controller.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_service.dart';
+import 'package:fluffychat/features/analytics_data/blocked_constructs_cache.dart';
 import 'package:fluffychat/features/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class _AnalyticsClient {
@@ -291,7 +290,7 @@ class AnalyticsDataService {
 
   void _clearLocalCaches() {
     _invalidateCaches();
-    _clearBlockedMemo();
+    _blockedCache.clear();
     _mergeTable.clear();
   }
 
@@ -338,63 +337,19 @@ class AnalyticsDataService {
   int uniqueConstructsByType(ConstructTypeEnum type) =>
       _mergeTable.uniqueConstructsByType(type);
 
-  // ---- blocked-constructs memo (#8433) -----------------------------------
-  //
-  // `blockedConstructs` is read per token on the chat render path and once
-  // per data read. Uncached it scans every room to find the analytics room
-  // and re-parses the analytics-settings state event into a fresh set each
-  // time. Both are memoized here:
-  //  * the room, keyed by L2 and re-validated with O(1) checks (same object
-  //    still registered under its id, unchanged room count — any join/leave
-  //    forces a rescan, which is how a canonical-room change would show up);
-  //  * the parsed set, keyed by the identity of the settings state event —
-  //    the SDK installs a new event object whenever the state changes.
-  String? _blockedRoomL2;
-  Room? _blockedRoom;
-  int _blockedRoomCount = -1;
-  StrippedStateEvent? _blockedSettingsEvent;
-  Set<ConstructIdentifier> _blockedSet = const {};
-
-  Room? _analyticsRoomForBlocked() {
-    final client = _analyticsClientGetter.client;
-    final l2 = MatrixState.pangeaController.userController.userL2;
-    if (l2 == null) return null;
-    final cached = _blockedRoom;
-    if (cached != null &&
-        _blockedRoomL2 == l2.langCodeShort &&
-        _blockedRoomCount == client.rooms.length &&
-        identical(client.getRoomById(cached.id), cached)) {
-      return cached;
-    }
-    final room = client.ownAnalyticsRoomLocalByL2;
-    _blockedRoom = room;
-    _blockedRoomL2 = l2.langCodeShort;
-    _blockedRoomCount = client.rooms.length;
-    return room;
-  }
+  /// See [BlockedConstructsCache] for what is memoized and why (#8433).
+  final BlockedConstructsCache _blockedCache = BlockedConstructsCache();
 
   /// The user's blocked constructs for the current L2. Read-only: callers
   /// must not mutate the returned set (it is shared between reads).
   Set<ConstructIdentifier> get blockedConstructs {
-    final analyticsRoom = _analyticsRoomForBlocked();
-    if (analyticsRoom == null) return const {};
-    final event = analyticsRoom.getState(PangeaEventTypes.analyticsSettings);
-    if (event == null) return const {};
-    if (!identical(event, _blockedSettingsEvent)) {
-      _blockedSet = Set.unmodifiable(
-        AnalyticsSettingsModel.fromJson(event.content).blockedConstructs,
-      );
-      _blockedSettingsEvent = event;
-    }
-    return _blockedSet;
-  }
-
-  void _clearBlockedMemo() {
-    _blockedRoom = null;
-    _blockedRoomL2 = null;
-    _blockedRoomCount = -1;
-    _blockedSettingsEvent = null;
-    _blockedSet = const {};
+    final client = _analyticsClientGetter.client;
+    return _blockedCache.read(
+      l2: MatrixState.pangeaController.userController.userL2?.langCodeShort,
+      roomCount: client.rooms.length,
+      roomById: client.getRoomById,
+      resolveAnalyticsRoom: () => client.ownAnalyticsRoomLocalByL2,
+    );
   }
 
   Future<void> waitForSync(String analyticsRoomID) async {
