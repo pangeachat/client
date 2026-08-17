@@ -77,6 +77,21 @@ class HtmlMessage extends StatelessWidget {
   /// neither an override nor an activity plan exists.
   late final Set<String>? _activityVocabLemmas =
       vocabLemmas ?? controller.room.activityPlan?.vocabLemmas;
+
+  /// Message-level inputs of the per-node render, computed once per build
+  /// instead of once per HTML node (issue #8393): the message text style
+  /// runs emoji regexes over the body, and the new-token set walks the
+  /// message representations.
+  late final TextStyle? _messageTextStyle = pangeaMessageEvent != null
+      ? AppConfig.messageTextStyle(pangeaMessageEvent!.event, textColor)
+      : null;
+
+  late final Set<PangeaTokenText> _newTokens =
+      pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
+      ? TokensUtil.instance.getNewTokensByEvent(pangeaMessageEvent!)
+      : <PangeaTokenText>{};
+
+  late final TokenRenderingUtil _renderer = TokenRenderingUtil();
   // Pangea#
 
   HtmlMessage({
@@ -185,20 +200,30 @@ class HtmlMessage extends StatelessWidget {
   };
 
   // #Pangea
-  List<PangeaToken>? get tokens => pangeaMessageEvent
+  static final RegExp _digitRegex = RegExp(r'[0-9]');
+  static const Set<String> _skippedPos = {'SYM'};
+
+  /// Interactive tokens of the display representation, computed once per
+  /// build so the per-token loops in [_addTokenTags] and [_renderHtml] don't
+  /// refilter the list on every call (issue #8393).
+  late final List<PangeaToken>? tokens = pangeaMessageEvent
       ?.messageDisplayRepresentation
       ?.tokens
       ?.where(
         (t) =>
-            !["SYM"].contains(t.pos) &&
-            !t.lemma.text.contains(RegExp(r'[0-9]')),
+            !_skippedPos.contains(t.pos) && !t.lemma.text.contains(_digitRegex),
       )
       .toList();
 
+  /// Reversed so that on a position collision the first token in [tokens]
+  /// wins, matching the previous firstWhereOrNull lookup.
+  late final Map<String, PangeaToken> _tokensByPosition = {
+    for (final token in (tokens ?? const <PangeaToken>[]).reversed)
+      '${token.text.offset}:${token.text.length}': token,
+  };
+
   PangeaToken? getToken(String text, int offset, int length) =>
-      tokens?.firstWhereOrNull(
-        (token) => token.text.offset == offset && token.text.length == length,
-      );
+      _tokensByPosition['$offset:$length'];
 
   String _addTokenTags() {
     if (html.contains("<a href")) return html;
@@ -445,27 +470,13 @@ class HtmlMessage extends StatelessWidget {
           this.fontSize;
     }
 
-    final existingStyle = pangeaMessageEvent != null
-        ? textStyle
-              .merge(
-                AppConfig.messageTextStyle(
-                  pangeaMessageEvent!.event,
-                  textColor,
-                ),
-              )
-              .copyWith(fontSize: fontSize)
-        : textStyle.copyWith(fontSize: fontSize);
-
-    final renderer = TokenRenderingUtil();
+    final existingStyle = textStyle
+        .merge(_messageTextStyle)
+        .copyWith(fontSize: fontSize);
 
     final underlineColor = pangeaMessageEvent!.ownMessage
         ? Theme.of(context).colorScheme.primaryContainer.withAlpha(200)
         : Theme.of(context).colorScheme.primary.withAlpha(200);
-
-    final newTokens =
-        pangeaMessageEvent != null && !pangeaMessageEvent!.ownMessage
-        ? TokensUtil.instance.getNewTokensByEvent(pangeaMessageEvent!)
-        : <PangeaTokenText>{};
 
     final practiceMode = overlayController?.practiceController.practiceMode;
     // Pangea#
@@ -487,11 +498,11 @@ class HtmlMessage extends StatelessWidget {
             ? overlayController!.isTokenHighlighted(token)
             : false;
 
-        final isNew = token != null && newTokens.contains(token.text);
+        final isNew = token != null && _newTokens.contains(token.text);
         final isFirstNewToken =
             isNew &&
             controller.chatController?.buttonEventID == event.eventId &&
-            newTokens.first == token.text;
+            _newTokens.first == token.text;
         final showShimmer =
             !InstructionsEnum.shimmerNewToken.isToggledOff &&
             !isPracticeMode &&
@@ -504,7 +515,7 @@ class HtmlMessage extends StatelessWidget {
               _activityVocabLemmas,
             );
 
-        final tokenWidth = renderer.tokenTextWidthForContainer(
+        final tokenWidth = _renderer.tokenTextWidthForContainer(
           node.text,
           Theme.of(context).colorScheme.primary.withAlpha(200),
           existingStyle,
