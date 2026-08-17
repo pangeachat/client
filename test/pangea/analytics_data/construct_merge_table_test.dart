@@ -57,6 +57,47 @@ void main() {
     expect(t.uniqueConstructsByType(ConstructTypeEnum.vocab), 2);
   });
 
+  test('uniqueConstructsByType stays correct across add / remove / clear', () {
+    final t = ConstructMergeTable();
+    int recompute(ConstructTypeEnum type) {
+      final unique = <ConstructIdentifier>{};
+      for (final e in t.lemmaTypeGroups.entries) {
+        if (!e.key.endsWith('|${type.name}')) continue;
+        unique.addAll(e.value.map(t.resolve));
+      }
+      return unique.length;
+    }
+
+    expect(t.uniqueConstructsByType(ConstructTypeEnum.vocab), 0);
+    t.addIdentifiers([vocab('Casa'), vocab('casa'), vocab('perro')], {});
+    expect(t.uniqueConstructsByType(ConstructTypeEnum.vocab), 2);
+    // memoized: a second read is the same
+    expect(t.uniqueConstructsByType(ConstructTypeEnum.vocab), 2);
+    t.addIdentifiers([vocab('gato')], {});
+    expect(t.uniqueConstructsByType(ConstructTypeEnum.vocab), 3);
+    expect(
+      t.uniqueConstructsByType(ConstructTypeEnum.vocab),
+      recompute(ConstructTypeEnum.vocab),
+    );
+    // an excluded-only call must not disturb the memo
+    t.addIdentifiers([vocab('bloq')], {vocab('bloq')});
+    expect(t.uniqueConstructsByType(ConstructTypeEnum.vocab), 3);
+    t.removeConstruct(vocab('perro'));
+    expect(t.uniqueConstructsByType(ConstructTypeEnum.vocab), 2);
+    expect(
+      t.uniqueConstructsByType(ConstructTypeEnum.vocab),
+      recompute(ConstructTypeEnum.vocab),
+    );
+    t.removeConstruct(vocab('casa'));
+    expect(
+      t.uniqueConstructsByType(ConstructTypeEnum.vocab),
+      recompute(ConstructTypeEnum.vocab),
+    );
+    t.clear();
+    expect(t.uniqueConstructsByType(ConstructTypeEnum.vocab), 0);
+    expect(t.uniqueConstructsByType(ConstructTypeEnum.morph), 0);
+  });
+
   test('property: one id per row == every capped use of every row', () {
     final rng = Random(99);
     for (var trial = 0; trial < 80; trial++) {

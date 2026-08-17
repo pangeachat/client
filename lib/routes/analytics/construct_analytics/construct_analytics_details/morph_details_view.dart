@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics_data/widgets/analytics_future_builder.dart';
 import 'package:fluffychat/pangea/morphs/grammar_construct_example.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -45,11 +46,11 @@ class MorphDetailsView extends StatelessWidget {
       feature: feature,
     );
 
-    return FutureBuilder(
-      future: l2 != null
-          ? Matrix.of(
-              context,
-            ).analyticsDataService.getConstructUse(constructId, l2)
+    final analyticsService = Matrix.of(context).analyticsDataService;
+    return AnalyticsFutureBuilder<ConstructUses>(
+      dependencies: [constructId, l2],
+      fetch: () => l2 != null
+          ? analyticsService.getConstructUse(constructId, l2)
           : Future.value(
               ConstructUses(
                 uses: [],

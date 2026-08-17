@@ -207,6 +207,28 @@ void main() {
           ..addIdentifiers(m, {});
       });
 
+      // ---- K. numConstructs: first (compute) vs repeated (memo) -----------
+      final seededTable = ConstructMergeTable();
+      {
+        final (v, m) = await (
+          db.getAggregateIds(ConstructTypeEnum.vocab, testLang),
+          db.getAggregateIds(ConstructTypeEnum.morph, testLang),
+        ).wait;
+        seededTable
+          ..addIdentifiers(v, {})
+          ..addIdentifiers(m, {});
+      }
+      final kFirstMicros = _bestOf(1, () {
+        seededTable.uniqueConstructsByType(ConstructTypeEnum.vocab);
+        seededTable.uniqueConstructsByType(ConstructTypeEnum.morph);
+      });
+      final kRepeatMicros = _bestOf(_runs, () {
+        for (var i = 0; i < 1000; i++) {
+          seededTable.uniqueConstructsByType(ConstructTypeEnum.vocab);
+          seededTable.uniqueConstructsByType(ConstructTypeEnum.morph);
+        }
+      });
+
       // ---- A. recompute-equivalent ---------------------------------------
       int lastTotal = 0;
       final aMicros = await _bestOfAsync(_runs, () async {
@@ -356,6 +378,12 @@ void main() {
         )
         ..writeln(
           '  J2 init merge table, ids only        ${_ms(jNewMicros)} ms',
+        )
+        ..writeln(
+          '  K  numConstructs first call (compute) ${_ms(kFirstMicros)} ms',
+        )
+        ..writeln(
+          '  K2 numConstructs x1000 (memoized)     ${_ms(kRepeatMicros)} ms',
         )
         ..writeln('  F fromJson all aggregates            ${_ms(fMicros)} ms')
         ..writeln('  G construct from parsed uses (sort)  ${_ms(gMicros)} ms');

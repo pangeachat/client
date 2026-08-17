@@ -15,11 +15,11 @@ import 'package:fluffychat/features/analytics/constructs_event.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database.dart';
 import 'package:fluffychat/features/analytics_data/analytics_database_builder.dart';
-import 'package:fluffychat/features/analytics_data/analytics_settings_extension.dart';
 import 'package:fluffychat/features/analytics_data/analytics_sync_controller.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_dispatcher.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_events.dart';
 import 'package:fluffychat/features/analytics_data/analytics_update_service.dart';
+import 'package:fluffychat/features/analytics_data/blocked_constructs_cache.dart';
 import 'package:fluffychat/features/analytics_data/construct_merge_table.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
@@ -290,6 +290,7 @@ class AnalyticsDataService {
 
   void _clearLocalCaches() {
     _invalidateCaches();
+    _blockedCache.clear();
     _mergeTable.clear();
   }
 
@@ -336,10 +337,19 @@ class AnalyticsDataService {
   int uniqueConstructsByType(ConstructTypeEnum type) =>
       _mergeTable.uniqueConstructsByType(type);
 
+  /// See [BlockedConstructsCache] for what is memoized and why (#8433).
+  final BlockedConstructsCache _blockedCache = BlockedConstructsCache();
+
+  /// The user's blocked constructs for the current L2. Read-only: callers
+  /// must not mutate the returned set (it is shared between reads).
   Set<ConstructIdentifier> get blockedConstructs {
-    final analyticsRoom =
-        _analyticsClientGetter.client.ownAnalyticsRoomLocalByL2;
-    return analyticsRoom?.blockedConstructs ?? {};
+    final client = _analyticsClientGetter.client;
+    return _blockedCache.read(
+      l2: MatrixState.pangeaController.userController.userL2?.langCodeShort,
+      roomCount: client.rooms.length,
+      roomById: client.getRoomById,
+      resolveAnalyticsRoom: () => client.ownAnalyticsRoomLocalByL2,
+    );
   }
 
   Future<void> waitForSync(String analyticsRoomID) async {
@@ -481,6 +491,29 @@ class AnalyticsDataService {
 
     stopwatch.stop();
     return cleaned;
+  }
+
+  /// The keys [getAggregatedConstructs] would return — every visible canonical
+  /// construct of [type] — read from row identifiers alone
+  /// ([AnalyticsDatabase.getAggregateIds]), so callers that only need the ids
+  /// (practice distractors) skip deserializing every use.
+  Future<Set<ConstructIdentifier>> getAggregatedConstructIds(
+    ConstructTypeEnum type,
+    String language,
+  ) async {
+    await _ensureInitialized();
+    final ids = await _analyticsClientGetter.database.getAggregateIds(
+      type,
+      language,
+    );
+    final blocked = blockedConstructs;
+    final result = <ConstructIdentifier>{};
+    for (final id in ids) {
+      final canonical = _mergeTable.resolve(id);
+      if (blocked.contains(canonical) || canonical.isInvalid) continue;
+      result.add(canonical);
+    }
+    return result;
   }
 
   /// The inverse of [getAggregatedConstructs]: only the constructs the user has
