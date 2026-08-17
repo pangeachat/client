@@ -21,6 +21,7 @@ import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dar
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/tokens_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
+import 'package:fluffychat/routes/chat/html_message_parse_cache.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_practice_mode_enum.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/token_practice_button.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_selection_overlay.dart';
@@ -203,12 +204,17 @@ class HtmlMessage extends StatelessWidget {
   static final RegExp _digitRegex = RegExp(r'[0-9]');
   static const Set<String> _skippedPos = {'SYM'};
 
+  /// The display representation's raw token list. Also the parse-cache
+  /// identity key: the list object is stable across rebuilds while nothing
+  /// changed, and is replaced when tokens arrive or the display language
+  /// switches (issue #8423).
+  late final List<PangeaToken>? _displayTokens =
+      pangeaMessageEvent?.messageDisplayRepresentation?.tokens;
+
   /// Interactive tokens of the display representation, computed once per
   /// build so the per-token loops in [_addTokenTags] and [_renderHtml] don't
   /// refilter the list on every call (issue #8393).
-  late final List<PangeaToken>? tokens = pangeaMessageEvent
-      ?.messageDisplayRepresentation
-      ?.tokens
+  late final List<PangeaToken>? tokens = _displayTokens
       ?.where(
         (t) =>
             !_skippedPos.contains(t.pos) && !t.lemma.text.contains(_digitRegex),
@@ -1118,7 +1124,13 @@ class HtmlMessage extends StatelessWidget {
     //   overflow: TextOverflow.fade,
     //   selectionColor: textColor.withAlpha(128)
     // );
-    final parsed = parser.parse(_addTokenTags()).body ?? dom.Element.html('');
+    final parsed = HtmlMessageParseCache.get(
+      event.eventId,
+      html: html,
+      tokensIdentity: _displayTokens,
+      textDirection: pangeaMessageEvent?.textDirection,
+      parse: () => parser.parse(_addTokenTags()).body ?? dom.Element.html(''),
+    );
     return GestureDetector(
       // Null (instead of a no-op) when there is neither a toolbar to open nor
       // an open overlay to shield, so the tap falls through to the host's own
