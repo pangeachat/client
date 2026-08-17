@@ -558,6 +558,57 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return results;
   }
 
+  /// The identifier of every stored aggregate of [type] for [language] that
+  /// has at least one use — server rows first in box order, then local-only
+  /// rows — with server and local rows for the same construct collapsed to
+  /// one entry, exactly the order and membership `getAggregatedConstructs`
+  /// yields (its rows with an empty use list contribute nothing downstream).
+  ///
+  /// This is what the merge table needs at init: it only ever consumed the
+  /// identifier of each use, and every use in a row carries the row's
+  /// identifier, so the uses themselves are never deserialized here.
+  Future<List<ConstructIdentifier>> getAggregateIds(
+    ConstructTypeEnum type,
+    String language,
+  ) async {
+    // key → id when the row has uses, null placeholder to hold the server
+    // row's position when only its local counterpart has uses.
+    final byKey = <String, ConstructIdentifier?>{};
+
+    Future<void> read(Box<Map> box, {required bool server}) async {
+      final keys = (await box.getAllKeys())
+          .where((key) => _isLanguageKey(key, language))
+          .toList();
+      if (keys.isEmpty) return;
+      final values = await box.getAll(keys);
+      for (var i = 0; i < keys.length; i++) {
+        final raw = values[i];
+        if (raw == null) continue;
+        final key = keys[i];
+        final uses = raw['uses'];
+        final hasUses = uses is List && uses.isNotEmpty;
+        if (server) {
+          byKey[key] = hasUses
+              ? ConstructIdentifier.fromJson(
+                  Map<String, dynamic>.from(raw['construct_id']),
+                )
+              : null;
+        } else if (hasUses && byKey[key] == null) {
+          // Either a local-only row (appended) or a server row without uses
+          // (position kept — LinkedHashMap keeps insertion order on update).
+          byKey[key] = ConstructIdentifier.fromJson(
+            Map<String, dynamic>.from(raw['construct_id']),
+          );
+        }
+      }
+    }
+
+    // Server first so its rows come first; local must see server's placeholders.
+    await read(_aggBox(type, false), server: true);
+    await read(_aggBox(type, true), server: false);
+    return byKey.values.nonNulls.toList();
+  }
+
   /// Sum of `xp` over a raw `uses` JSON list, mirroring
   /// [OneConstructUse.fromJson]'s `xp ?? useType.pointValue` fallback.
   static int _rawUsesXP(dynamic uses) {
