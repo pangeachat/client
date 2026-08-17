@@ -414,18 +414,32 @@ void main() {
         },
         'lib/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart':
             {'widget.roomId'},
-        // Forwards its own parameter; the call sites are pinned below.
+        // Permanently roomless, all three exercise types. The audio exercise is
+        // built from a real message whose room the model carries, but that is
+        // where the CONTENT came from, not where the learner was listening — see
+        // the builder-signature pin below, which is what stops it being passed.
         'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart':
-            {'roomId'},
+            {'null'},
       };
 
       expected.forEach((path, rooms) {
         expect(probeRooms(path), rooms, reason: '$path names these rooms');
       });
 
-      // Where a probe reads a NAME rather than an expression, pin where that
-      // name gets its value — otherwise the assertion above says only that some
-      // variable was passed along.
+      // Analytics practice takes NO room from anywhere, so its probe builder
+      // takes no argument at all and the only legal call is the empty one.
+      //
+      // This pins the fix for a real defect rather than a style preference. The
+      // audio exercise is built from a real message and its model carries that
+      // message's room, so `exercise.roomId` is right there and reads as the
+      // obvious thing to pass. It is the provenance of the CONTENT, not the
+      // location of the LISTENING: the learner is drilling in analytics, not
+      // reading in that chat. Passing it posts a playback claiming they listened
+      // in that course's room, which inflates that course's listening with drill
+      // minutes belonging to the whole-language figure — and only for one of the
+      // three exercise types, so one practice session would emit some roomed and
+      // some roomless rows. A builder that cannot accept a room is the version of
+      // this rule that survives the next person who sees the field going spare.
       expect(
         RegExp(r'_listeningProbe\(([^)]*)\)')
             .allMatches(
@@ -435,10 +449,7 @@ void main() {
             )
             .map((m) => m.group(1)!.trim())
             .toSet(),
-        // The audio exercise is built from a real message and carries its room;
-        // the meaning exercises are assembled from construct history and have
-        // none. `String? roomId` is the builder's own signature.
-        {'String? roomId', 'exercise.roomId', 'null'},
+        {''},
       );
 
       // The two widgets that span roomed and roomless hosts. Their room is a
