@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:52.796714",
+    "@@last_modified": "2026-08-17 09:31:22.677700",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10259,5 +10259,10 @@
     "updateMessageLanguage": "Klicka här för att ändra meddelandets språk.",
     "messageLanguage": "Meddelandespråk",
     "messageLanguageUpdated": "Meddelandespråk uppdaterat!",
-    "pickCefrLevelStepSubtitle": "Du kan ändra detta senare"
+    "pickCefrLevelStepSubtitle": "Du kan ändra detta senare",
+    "unlockPremiumAudio": "Lås upp premiumljud",
+    "unlockTranslations": "Lås upp översättningar",
+    "unlockEmojiMode": "Lås upp emojiläge",
+    "unlockMessagePractice": "Lås upp meddelandeövning",
+    "unlockWritingAssistance": "Lås upp skrivhjälp"
 }

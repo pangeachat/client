@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:47.717099",
+    "@@last_modified": "2026-08-17 09:30:14.274709",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10369,5 +10369,10 @@
     "updateMessageLanguage": "বার্তার ভাষা পরিবর্তন করতে এখানে ক্লিক করুন।",
     "messageLanguage": "বার্তার ভাষা",
     "messageLanguageUpdated": "বার্তার ভাষা আপডেট করা হয়েছে!",
-    "pickCefrLevelStepSubtitle": "আপনি পরে এটি পরিবর্তন করতে পারবেন"
+    "pickCefrLevelStepSubtitle": "আপনি পরে এটি পরিবর্তন করতে পারবেন",
+    "unlockPremiumAudio": "প্রিমিয়াম অডিও আনলক করুন",
+    "unlockTranslations": "অনুবাদ আনলক করুন",
+    "unlockEmojiMode": "ইমোজি মোড আনলক করুন",
+    "unlockMessagePractice": "মেসেজ অনুশীলন আনলক করুন",
+    "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-14 15:02:53.595526",
+    "@@last_modified": "2026-08-17 09:31:45.881370",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "پیغام کی زبان تبدیل کرنے کے لیے یہاں کلک کریں۔",
     "messageLanguage": "پیغام کی زبان",
     "messageLanguageUpdated": "پیغام کی زبان اپ ڈیٹ ہو گئی!",
-    "pickCefrLevelStepSubtitle": "آپ اسے بعد میں تبدیل کر سکتے ہیں"
+    "pickCefrLevelStepSubtitle": "آپ اسے بعد میں تبدیل کر سکتے ہیں",
+    "unlockPremiumAudio": "پریمیم آڈیو اَن لاک کریں",
+    "unlockTranslations": "تراجم اَن لاک کریں",
+    "unlockEmojiMode": "ایموجی موڈ اَن لاک کریں",
+    "unlockMessagePractice": "پیغام کی مشق اَن لاک کریں",
+    "unlockWritingAssistance": "تحریری معاونت اَن لاک کریں"
 }

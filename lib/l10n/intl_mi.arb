@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-14 15:02:50.988989",
+    "@@last_modified": "2026-08-17 09:31:01.525471",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Pāwhiri ki konei ki te huri i te reo o te karere.",
     "messageLanguage": "Reo karere",
     "messageLanguageUpdated": "Kua whakahōutia te reo karere!",
-    "pickCefrLevelStepSubtitle": "Ka taea e koe te huri i tēnei ā muri ake nei"
+    "pickCefrLevelStepSubtitle": "Ka taea e koe te huri i tēnei ā muri ake nei",
+    "unlockPremiumAudio": "Wewete i te oro moni",
+    "unlockTranslations": "Wewete i ngā whakamaoritanga",
+    "unlockEmojiMode": "Wewete i te aratau emoji",
+    "unlockMessagePractice": "Wewete i te mahi karere",
+    "unlockWritingAssistance": "Wewete i te āwhina tuhi"
 }

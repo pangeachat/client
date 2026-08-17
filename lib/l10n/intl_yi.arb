@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-14 15:02:53.642973",
+    "@@last_modified": "2026-08-17 09:31:40.852316",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "דריקט דאָ צו ענדערן די שפּראַך פון דער מעסעדזש.",
     "messageLanguage": "מעסעדזש שפּראַך",
     "messageLanguageUpdated": "מעסעדזש שפּראַך דערהייַנטיקט!",
-    "pickCefrLevelStepSubtitle": "איר קענט דאָס שפּעטער טוישן"
+    "pickCefrLevelStepSubtitle": "איר קענט דאָס שפּעטער טוישן",
+    "unlockPremiumAudio": "אַנשליסן פּרעמיום אַודיאָ",
+    "unlockTranslations": "אַנשליסן איבערזעצונגען",
+    "unlockEmojiMode": "אַנשליסן עמאָדזשי מאָדע",
+    "unlockMessagePractice": "אַנשליסן מעסעדזש פּראַקטיק",
+    "unlockWritingAssistance": "אַנשליסן שרייבן הילף"
 }

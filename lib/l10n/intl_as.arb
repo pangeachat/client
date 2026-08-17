@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-14 15:02:47.708475",
+    "@@last_modified": "2026-08-17 09:30:08.782008",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "বাৰ্তাৰ ভাষা সলনি কৰিবলৈ ইয়াত ক্লিক কৰক।",
     "messageLanguage": "বাৰ্তাৰ ভাষা",
     "messageLanguageUpdated": "বাৰ্তাৰ ভাষা আপডেইট কৰা হ'ল!",
-    "pickCefrLevelStepSubtitle": "আপুনি এইটো পিছত সলনি কৰিব পাৰিব"
+    "pickCefrLevelStepSubtitle": "আপুনি এইটো পিছত সলনি কৰিব পাৰিব",
+    "unlockPremiumAudio": "প্ৰিমিয়াম অডিঅ' আনলক কৰক",
+    "unlockTranslations": "অনুবাদসমূহ আনলক কৰক",
+    "unlockEmojiMode": "ইম'জি ম'ড আনলক কৰক",
+    "unlockMessagePractice": "বাৰ্তা অনুশীলন আনলক কৰক",
+    "unlockWritingAssistance": "লিখনি সহায় আনলক কৰক"
 }

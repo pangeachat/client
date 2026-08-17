@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-14 15:02:51.587751",
+    "@@last_modified": "2026-08-17 09:31:02.522790",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "မက်ဆေ့ချ်၏ ဘာသာစကားကို ပြောင်းရန် ဤနေရာကို နှိပ်ပါ။",
     "messageLanguage": "မက်ဆေ့ချ်ဘာသာစကား",
     "messageLanguageUpdated": "မက်ဆေ့ချ်ဘာသာစကား အပ်ဒိတ်လုပ်ပြီးပါပြီ။",
-    "pickCefrLevelStepSubtitle": "နောက်မှ ပြောင်းလဲနိုင်ပါတယ်"
+    "pickCefrLevelStepSubtitle": "နောက်မှ ပြောင်းလဲနိုင်ပါတယ်",
+    "unlockPremiumAudio": "ပရီမီယံအသံကို လော့ခ်ဖွင့်ပါ",
+    "unlockTranslations": "ဘာသာပြန်များကို လော့ခ်ဖွင့်ပါ",
+    "unlockEmojiMode": "အီမိုဂျီမုဒ်ကို လော့ခ်ဖွင့်ပါ",
+    "unlockMessagePractice": "မက်ဆေ့ချ်လေ့ကျင့်မှုကို လော့ခ်ဖွင့်ပါ",
+    "unlockWritingAssistance": "စာရေးအကူအညီကို လော့ခ်ဖွင့်ပါ"
 }

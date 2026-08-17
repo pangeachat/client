@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:49.853120",
+    "@@last_modified": "2026-08-17 09:30:30.769411",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9814,5 +9814,10 @@
     "updateMessageLanguage": "Klik di sini untuk mengubah bahasa pesan.",
     "messageLanguage": "Bahasa pesan",
     "messageLanguageUpdated": "Bahasa pesan diperbarui!",
-    "pickCefrLevelStepSubtitle": "Anda dapat mengubah ini nanti"
+    "pickCefrLevelStepSubtitle": "Anda dapat mengubah ini nanti",
+    "unlockPremiumAudio": "Buka audio premium",
+    "unlockTranslations": "Buka terjemahan",
+    "unlockEmojiMode": "Buka mode emoji",
+    "unlockMessagePractice": "Buka latihan pesan",
+    "unlockWritingAssistance": "Buka bantuan menulis"
 }

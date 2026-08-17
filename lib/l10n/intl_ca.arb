@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:48.121406",
+    "@@last_modified": "2026-08-17 09:30:16.784300",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9868,5 +9868,10 @@
     "updateMessageLanguage": "Feu clic aquí per canviar l'idioma del missatge.",
     "messageLanguage": "Idioma del missatge",
     "messageLanguageUpdated": "Idioma del missatge actualitzat!",
-    "pickCefrLevelStepSubtitle": "Pots canviar-ho més tard"
+    "pickCefrLevelStepSubtitle": "Pots canviar-ho més tard",
+    "unlockPremiumAudio": "Desbloqueja l'àudio prèmium",
+    "unlockTranslations": "Desbloqueja les traduccions",
+    "unlockEmojiMode": "Desbloqueja el mode emoji",
+    "unlockMessagePractice": "Desbloqueja la pràctica de missatges",
+    "unlockWritingAssistance": "Desbloqueja l'assistència d'escriptura"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:48.697614",
+    "@@last_modified": "2026-08-17 09:30:19.181817",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9829,5 +9829,10 @@
     "updateMessageLanguage": "برای تغییر زبان پیام اینجا کلیک کنید.",
     "messageLanguage": "زبان پیام",
     "messageLanguageUpdated": "زبان پیام به‌روز شد!",
-    "pickCefrLevelStepSubtitle": "بعداً می‌توانید این را تغییر دهید"
+    "pickCefrLevelStepSubtitle": "بعداً می‌توانید این را تغییر دهید",
+    "unlockPremiumAudio": "باز کردن صدای پریمیوم",
+    "unlockTranslations": "باز کردن ترجمه‌ها",
+    "unlockEmojiMode": "باز کردن حالت اموجی",
+    "unlockMessagePractice": "باز کردن تمرین پیام",
+    "unlockWritingAssistance": "باز کردن کمک نوشتاری"
 }

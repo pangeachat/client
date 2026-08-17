@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-14 15:02:51.464861",
+    "@@last_modified": "2026-08-17 09:31:08.674779",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Ikklikkja hawn biex tibdel il-lingwa tal-messaġġ.",
     "messageLanguage": "Lingwa tal-messaġġ",
     "messageLanguageUpdated": "Il-lingwa tal-messaġġ ġiet aġġornata!",
-    "pickCefrLevelStepSubtitle": "Tista' tibdel dan aktar tard"
+    "pickCefrLevelStepSubtitle": "Tista' tibdel dan aktar tard",
+    "unlockPremiumAudio": "Nisfruttaw l-awdjo premium",
+    "unlockTranslations": "Nisfruttaw it-traduzzjonijiet",
+    "unlockEmojiMode": "Nisfruttaw il-modalità emoji",
+    "unlockMessagePractice": "Nisfruttaw il-prattika tal-messaġġi",
+    "unlockWritingAssistance": "Nisfruttaw l-għajnuna fil-kitba"
 }

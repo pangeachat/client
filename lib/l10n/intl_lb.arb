@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-14 15:02:50.701370",
+    "@@last_modified": "2026-08-17 09:30:51.561999",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Klickt hei fir d'Sprooch vum Message z'änneren.",
     "messageLanguage": "Sprooch vum Message",
     "messageLanguageUpdated": "Sprooch vum Message aktualiséiert!",
-    "pickCefrLevelStepSubtitle": "Dir kënnt dat méi spéit änneren"
+    "pickCefrLevelStepSubtitle": "Dir kënnt dat méi spéit änneren",
+    "unlockPremiumAudio": "Spär Premium Audio op",
+    "unlockTranslations": "Spär Iwwersetzunge op",
+    "unlockEmojiMode": "Spär Emoji Modus op",
+    "unlockMessagePractice": "Spär Message Praxis op",
+    "unlockWritingAssistance": "Spär Schreifhëllef op"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-14 15:02:52.280764",
+    "@@last_modified": "2026-08-17 09:31:06.763595",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "پيغام جي ٻولي تبديل ڪرڻ لاءِ ھتي ڪلڪ ڪريو.",
     "messageLanguage": "پيغام جي ٻولي",
     "messageLanguageUpdated": "پيغام جي ٻولي اپڊيٽ ٿي وئي!",
-    "pickCefrLevelStepSubtitle": "توهان ان کي بعد ۾ تبديل ڪري سگهو ٿا"
+    "pickCefrLevelStepSubtitle": "توهان ان کي بعد ۾ تبديل ڪري سگهو ٿا",
+    "unlockPremiumAudio": "پريميئم آڊيو کوليو",
+    "unlockTranslations": "ترجما کوليو",
+    "unlockEmojiMode": "ايموجي موڊ کوليو",
+    "unlockMessagePractice": "پيغام جي مشق کوليو",
+    "unlockWritingAssistance": "لکڻ جي مدد کوليو"
 }

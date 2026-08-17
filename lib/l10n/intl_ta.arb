@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:53.035496",
+    "@@last_modified": "2026-08-17 09:31:21.244406",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9833,5 +9833,10 @@
     "updateMessageLanguage": "செய்தியின் மொழியை மாற்ற இங்கே கிளிக் செய்யவும்.",
     "messageLanguage": "செய்தி மொழி",
     "messageLanguageUpdated": "செய்தி மொழி புதுப்பிக்கப்பட்டது!",
-    "pickCefrLevelStepSubtitle": "இதை நீங்கள் பிறகு மாற்றிக்கொள்ளலாம்"
+    "pickCefrLevelStepSubtitle": "இதை நீங்கள் பிறகு மாற்றிக்கொள்ளலாம்",
+    "unlockPremiumAudio": "பிரீமியம் ஆடியோவைத் திறக்கவும்",
+    "unlockTranslations": "மொழிபெயர்ப்புகளைத் திறக்கவும்",
+    "unlockEmojiMode": "எமோஜி பயன்முறையைத் திறக்கவும்",
+    "unlockMessagePractice": "செய்திப் பயிற்சியைத் திறக்கவும்",
+    "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்"
 }

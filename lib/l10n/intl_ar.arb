@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-14 15:02:48.512454",
+    "@@last_modified": "2026-08-17 09:30:09.512500",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10047,5 +10047,10 @@
     "updateMessageLanguage": "انقر هنا لتغيير لغة الرسالة.",
     "messageLanguage": "لغة الرسالة",
     "messageLanguageUpdated": "تم تحديث لغة الرسالة!",
-    "pickCefrLevelStepSubtitle": "يمكنك تغيير هذا لاحقًا"
+    "pickCefrLevelStepSubtitle": "يمكنك تغيير هذا لاحقًا",
+    "unlockPremiumAudio": "افتح الصوت المميز",
+    "unlockTranslations": "افتح الترجمات",
+    "unlockEmojiMode": "افتح وضع الإيموجي",
+    "unlockMessagePractice": "افتح ممارسة الرسائل",
+    "unlockWritingAssistance": "افتح مساعدة الكتابة"
 }

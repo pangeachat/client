@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:50.070624",
+    "@@last_modified": "2026-08-17 09:30:35.092834",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9814,5 +9814,10 @@
     "updateMessageLanguage": "Clicca qui per cambiare la lingua del messaggio.",
     "messageLanguage": "Lingua del messaggio",
     "messageLanguageUpdated": "Lingua del messaggio aggiornata!",
-    "pickCefrLevelStepSubtitle": "Puoi cambiarlo in seguito"
+    "pickCefrLevelStepSubtitle": "Puoi cambiarlo in seguito",
+    "unlockPremiumAudio": "Sblocca l'audio premium",
+    "unlockTranslations": "Sblocca le traduzioni",
+    "unlockEmojiMode": "Sblocca la modalità emoji",
+    "unlockMessagePractice": "Sblocca la pratica dei messaggi",
+    "unlockWritingAssistance": "Sblocca l'assistenza alla scrittura"
 }

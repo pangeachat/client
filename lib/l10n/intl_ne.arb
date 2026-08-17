@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-14 15:02:51.504114",
+    "@@last_modified": "2026-08-17 09:30:57.583243",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "सन्देशको भाषा परिवर्तन गर्न यहाँ क्लिक गर्नुहोस्।",
     "messageLanguage": "सन्देश भाषा",
     "messageLanguageUpdated": "सन्देश भाषा अद्यावधिक गरियो!",
-    "pickCefrLevelStepSubtitle": "तपाईंले यसलाई पछि परिवर्तन गर्न सक्नुहुन्छ"
+    "pickCefrLevelStepSubtitle": "तपाईंले यसलाई पछि परिवर्तन गर्न सक्नुहुन्छ",
+    "unlockPremiumAudio": "प्रिमियम अडियो अनलक गर्नुहोस्",
+    "unlockTranslations": "अनुवादहरू अनलक गर्नुहोस्",
+    "unlockEmojiMode": "इमोजी मोड अनलक गर्नुहोस्",
+    "unlockMessagePractice": "सन्देश अभ्यास अनलक गर्नुहोस्",
+    "unlockWritingAssistance": "लेखन सहायता अनलक गर्नुहोस्"
 }

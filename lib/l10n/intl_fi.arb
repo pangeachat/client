@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-14 15:02:48.650776",
+    "@@last_modified": "2026-08-17 09:30:22.321046",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9778,5 +9778,10 @@
     "updateMessageLanguage": "Vaihda viestin kieli napsauttamalla tästä.",
     "messageLanguage": "Viestin kieli",
     "messageLanguageUpdated": "Viestin kieli päivitetty!",
-    "pickCefrLevelStepSubtitle": "Voit muuttaa tätä myöhemmin"
+    "pickCefrLevelStepSubtitle": "Voit muuttaa tätä myöhemmin",
+    "unlockPremiumAudio": "Avaa premium-ääni",
+    "unlockTranslations": "Avaa käännökset",
+    "unlockEmojiMode": "Avaa emojitila",
+    "unlockMessagePractice": "Avaa viestiharjoittelu",
+    "unlockWritingAssistance": "Avaa kirjoitusapu"
 }

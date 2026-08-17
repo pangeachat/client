@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-14 15:02:49.785668",
+    "@@last_modified": "2026-08-17 09:30:34.651023",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9844,5 +9844,10 @@
     "updateMessageLanguage": "Kattintson ide az üzenet nyelvének megváltoztatásához.",
     "messageLanguage": "Üzenet nyelve",
     "messageLanguageUpdated": "Üzenet nyelve frissítve!",
-    "pickCefrLevelStepSubtitle": "Ezt később megváltoztathatod"
+    "pickCefrLevelStepSubtitle": "Ezt később megváltoztathatod",
+    "unlockPremiumAudio": "Prémium hanganyag feloldása",
+    "unlockTranslations": "Fordítások feloldása",
+    "unlockEmojiMode": "Emoji mód feloldása",
+    "unlockMessagePractice": "Üzenetgyakorlás feloldása",
+    "unlockWritingAssistance": "Írássegéd feloldása"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:52.131782",
+    "@@last_modified": "2026-08-17 09:31:07.415614",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10473,5 +10473,10 @@
     "updateMessageLanguage": "Apăsați aici pentru a schimba limba mesajului.",
     "messageLanguage": "Limba mesajului",
     "messageLanguageUpdated": "Limba mesajului a fost actualizată!",
-    "pickCefrLevelStepSubtitle": "Poți schimba asta mai târziu"
+    "pickCefrLevelStepSubtitle": "Poți schimba asta mai târziu",
+    "unlockPremiumAudio": "Deblocați audio premium",
+    "unlockTranslations": "Deblocați traducerile",
+    "unlockEmojiMode": "Deblocați modul emoji",
+    "unlockMessagePractice": "Deblocați exersarea mesajelor",
+    "unlockWritingAssistance": "Deblocați asistența la scriere"
 }

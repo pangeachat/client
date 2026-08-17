@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-14 15:02:54.070528",
+    "@@last_modified": "2026-08-17 09:31:56.716190",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Chofoza lapha ukuze ushintshe ulimi lomlayezo.",
     "messageLanguage": "Ulimi lomlayezo",
     "messageLanguageUpdated": "Ulimi lomlayezo lubuyekeziwe!",
-    "pickCefrLevelStepSubtitle": "Ungakushintsha lokhu ngokuhamba kwesikhathi"
+    "pickCefrLevelStepSubtitle": "Ungakushintsha lokhu ngokuhamba kwesikhathi",
+    "unlockPremiumAudio": "Vula umsindo we-premium",
+    "unlockTranslations": "Vula izinguqulo",
+    "unlockEmojiMode": "Vula imodi ye-emoji",
+    "unlockMessagePractice": "Vula ukuzijwayeza imilayezo",
+    "unlockWritingAssistance": "Vula usizo lokubhala"
 }

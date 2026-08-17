@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-14 15:02:53.098243",
+    "@@last_modified": "2026-08-17 09:31:25.044731",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10373,5 +10373,10 @@
     "updateMessageLanguage": "คลิกที่นี่เพื่อเปลี่ยนภาษาของข้อความ",
     "messageLanguage": "ภาษาของข้อความ",
     "messageLanguageUpdated": "อัปเดตภาษาของข้อความแล้ว!",
-    "pickCefrLevelStepSubtitle": "คุณสามารถเปลี่ยนได้ในภายหลัง"
+    "pickCefrLevelStepSubtitle": "คุณสามารถเปลี่ยนได้ในภายหลัง",
+    "unlockPremiumAudio": "ปลดล็อกเสียงพรีเมียม",
+    "unlockTranslations": "ปลดล็อกการแปล",
+    "unlockEmojiMode": "ปลดล็อกโหมดอิโมจิ",
+    "unlockMessagePractice": "ปลดล็อกการฝึกข้อความ",
+    "unlockWritingAssistance": "ปลดล็อกตัวช่วยการเขียน"
 }

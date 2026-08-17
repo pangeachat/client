@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-14 15:02:52.457886",
+    "@@last_modified": "2026-08-17 09:31:27.336730",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10686,5 +10686,10 @@
     "updateMessageLanguage": "Kliknutím sem zmeníte jazyk správy.",
     "messageLanguage": "Jazyk správy",
     "messageLanguageUpdated": "Jazyk správy bol aktualizovaný!",
-    "pickCefrLevelStepSubtitle": "Môžete to zmeniť neskôr"
+    "pickCefrLevelStepSubtitle": "Môžete to zmeniť neskôr",
+    "unlockPremiumAudio": "Odomknúť prémiové audio",
+    "unlockTranslations": "Odomknúť preklady",
+    "unlockEmojiMode": "Odomknúť režim emoji",
+    "unlockMessagePractice": "Odomknúť precvičovanie správ",
+    "unlockWritingAssistance": "Odomknúť pomoc pri písaní"
 }

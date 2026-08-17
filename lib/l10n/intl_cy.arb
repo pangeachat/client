@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-14 15:02:48.190195",
+    "@@last_modified": "2026-08-17 09:30:16.947627",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Cliciwch yma i newid iaith y neges.",
     "messageLanguage": "Iaith y neges",
     "messageLanguageUpdated": "Iaith y neges wedi'i diweddaru!",
-    "pickCefrLevelStepSubtitle": "Gallwch newid hyn yn ddiweddarach"
+    "pickCefrLevelStepSubtitle": "Gallwch newid hyn yn ddiweddarach",
+    "unlockPremiumAudio": "Datgloi sain premiwm",
+    "unlockTranslations": "Datgloi cyfieithiadau",
+    "unlockEmojiMode": "Datgloi modd emoji",
+    "unlockMessagePractice": "Datgloi ymarfer negeseuon",
+    "unlockWritingAssistance": "Datgloi cymorth ysgrifennu"
 }

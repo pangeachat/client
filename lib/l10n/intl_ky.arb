@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-14 15:02:50.685668",
+    "@@last_modified": "2026-08-17 09:30:54.912966",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "Билдирүүнүн тилин өзгөртүү үчүн бул жерди басыңыз.",
     "messageLanguage": "Билдирүү тили",
     "messageLanguageUpdated": "Билдирүүнүн тили жаңыртылды!",
-    "pickCefrLevelStepSubtitle": "Муну кийинчерээк өзгөртсөңүз болот"
+    "pickCefrLevelStepSubtitle": "Муну кийинчерээк өзгөртсөңүз болот",
+    "unlockPremiumAudio": "Премиум аудионун кулпусун ачуу",
+    "unlockTranslations": "Котормолордун кулпусун ачуу",
+    "unlockEmojiMode": "Эмодзи режиминин кулпусун ачуу",
+    "unlockMessagePractice": "Кабарды практикалоонун кулпусун ачуу",
+    "unlockWritingAssistance": "Жазууга жардам берүүнүн кулпусун ачуу"
 }

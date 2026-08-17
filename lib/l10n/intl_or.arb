@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-14 15:02:51.775191",
+    "@@last_modified": "2026-08-17 09:31:04.468196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2129,5 +2129,10 @@
     "updateMessageLanguage": "ବାର୍ତ୍ତାର ଭାଷା ପରିବର୍ତ୍ତନ କରିବାକୁ ଏଠାରେ କ୍ଲିକ୍ କରନ୍ତୁ।",
     "messageLanguage": "ବାର୍ତ୍ତା ଭାଷା",
     "messageLanguageUpdated": "ବାର୍ତ୍ତା ଭାଷା ଅପଡେଟ୍ ହୋଇଛି!",
-    "pickCefrLevelStepSubtitle": "ଆପଣ ଏହାକୁ ପରେ ବଦଳାଇ ପାରିବେ"
+    "pickCefrLevelStepSubtitle": "ଆପଣ ଏହାକୁ ପରେ ବଦଳାଇ ପାରିବେ",
+    "unlockPremiumAudio": "ପ୍ରିମିୟମ୍ ଅଡିଓ ଅନଲକ୍ କରନ୍ତୁ",
+    "unlockTranslations": "ଅନୁବାଦଗୁଡ଼ିକୁ ଅନଲକ୍ କରନ୍ତୁ",
+    "unlockEmojiMode": "ଇମୋଜି ମୋଡ୍ ଅନଲକ୍ କରନ୍ତୁ",
+    "unlockMessagePractice": "ମେସେଜ୍ ଅଭ୍ୟାସ ଅନଲକ୍ କରନ୍ତୁ",
+    "unlockWritingAssistance": "ଲେଖିବା ସହାୟତା ଅନଲକ୍ କରନ୍ତୁ"
 }
