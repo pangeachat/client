@@ -25,7 +25,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -732,18 +731,14 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // nav; the mirror of the analytics bar's closeSections).
         onCourseShortcutTap: () => context.go(
           shortcutCourse != null
+              // No section param even for a knock-badged course: knocks
+              // surface in the Catch up card at the top of the page (#8357),
+              // which a scroll-to-Chats would skip right past.
               ? WorkspaceNav.openCourseSection(
                   uri,
                   shortcutCourse.id,
                   keepRoom: false,
                   clearRight: true,
-                  // While users are knocking, land the admin on the Chats
-                  // tab — where the knock notification lives — instead of
-                  // the Course Plan default, until the knock is accepted or
-                  // denied (#8139).
-                  tab: shortcutCourse.knockingUsers.isNotEmpty
-                      ? SpaceSettingsTabs.chat
-                      : null,
                 )
               : WorkspaceNav.setSection(
                   uri,

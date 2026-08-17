@@ -6,6 +6,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details_content.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
+import 'package:fluffychat/utils/stream_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The shared room-details entry: resolves the room, shows the gone/left
@@ -51,10 +52,16 @@ class ChatDetails extends StatelessWidget {
       );
     }
 
+    // Rate-limited: loading a course's member list ingests the /members
+    // response as one state update PER MEMBER, and unthrottled that rebuilt
+    // the whole page once per member — the participants preview visibly
+    // reshuffled while its level-sorted order settled. The first event still
+    // emits immediately, so single updates (a rename, a topic edit) render
+    // without delay.
     return StreamBuilder(
-      stream: room.client.onRoomState.stream.where(
-        (update) => update.roomId == room.id,
-      ),
+      stream: room.client.onRoomState.stream
+          .where((update) => update.roomId == room.id)
+          .rateLimit(const Duration(seconds: 1)),
       builder: (context, snapshot) => room.isSpace
           ? SpaceDetails(
               room: room,

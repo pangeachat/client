@@ -309,7 +309,6 @@ class _MoreButtonList extends StatelessWidget {
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
     return Column(
-      spacing: 10.0,
       mainAxisSize: MainAxisSize.min,
       children: buttons.where((b) => b.visible).map((b) {
         final title = Text(b.title, style: textTheme.bodyMedium);
@@ -326,6 +325,12 @@ class _MoreButtonList extends StatelessWidget {
                   value: b.value,
                   onChanged: b.enabled ? (value) => b.onPressed?.call() : null,
                   activeThumbColor: AppConfig.activeToggleColor,
+                  // The section already carries the page inset, so the tile
+                  // keeps just enough of its own to breathe against the
+                  // hover surface's edge; compact so the settings read as
+                  // one tight list.
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  visualDensity: VisualDensity.compact,
                 )
               : ListTile(
                   title: title,
@@ -333,6 +338,8 @@ class _MoreButtonList extends StatelessWidget {
                   leading: b.icon,
                   onTap: b.enabled ? () => b.onPressed?.call() : null,
                   trailing: b.trailing,
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 8.0),
+                  visualDensity: VisualDensity.compact,
                 ),
         );
       }).toList(),

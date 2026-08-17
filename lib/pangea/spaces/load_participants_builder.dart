@@ -110,14 +110,22 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
   }
 
   Future<void> _cacheLevels() async {
-    for (final user in participants) {
-      if (_levelsCache[user.id] == null && user.membership == Membership.join) {
-        _levelsCache[user.id] = await MatrixState
-            .pangeaController
-            .userController
-            .getPublicAnalyticsProfile(user.id);
-      }
-    }
+    // In parallel: awaiting each profile serially made levels trickle in one
+    // at a time, so the level-sorted lists reshuffled as each landed.
+    await Future.wait(
+      participants
+          .where(
+            (user) =>
+                _levelsCache[user.id] == null &&
+                user.membership == Membership.join,
+          )
+          .map((user) async {
+            _levelsCache[user.id] = await MatrixState
+                .pangeaController
+                .userController
+                .getPublicAnalyticsProfile(user.id);
+          }),
+    );
   }
 
   AnalyticsProfileModel? getAnalyticsProfile(String userId) {

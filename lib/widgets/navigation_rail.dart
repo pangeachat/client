@@ -15,7 +15,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/home/pangea_logo_svg.dart';
 import 'package:fluffychat/routes/world/workspace_dock.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
@@ -251,15 +250,10 @@ class _SpaceItem extends StatelessWidget {
       context.go(
         // A left-nav click replaces the open left panels rather than stacking
         // beside them (drop any open room/section). See routing.instructions.md.
-        WorkspaceNav.openCourseSection(
-          uri,
-          space.id,
-          keepRoom: false,
-          // While users are knocking, land the admin on the Chats tab — where
-          // the knock notification lives — instead of the Course Plan default,
-          // every time, until the knock is accepted or denied (#8139).
-          tab: space.knockingUsers.isNotEmpty ? SpaceSettingsTabs.chat : null,
-        ),
+        // No section param even for a knock-badged course: knocks surface in
+        // the Catch up card at the top of the page (#8357), which a
+        // scroll-to-Chats would skip right past.
+        WorkspaceNav.openCourseSection(uri, space.id, keepRoom: false),
       );
       return;
     }
