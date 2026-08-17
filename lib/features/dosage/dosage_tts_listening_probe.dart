@@ -11,8 +11,8 @@ import 'package:fluffychat/features/dosage/dosage_playback_meter.dart';
 /// `tryToSpeak` reads arriving messages aloud, reads a message the toolbar was
 /// opened on, and plays word and choice taps, and it takes neither a room nor an
 /// event id — it could not name a category if it wanted to. So [category] is a
-/// CONSTRUCTION-TIME CONSTANT supplied by the caller (D-V2-1), and the two
-/// read-aloud call sites differ in exactly that one argument.
+/// CONSTRUCTION-TIME CONSTANT supplied by the caller (D-V2-1), and the call
+/// sites that build one differ in that argument and the room, nothing else.
 ///
 /// **Why the returned future is not enough to measure with.** Several exits from
 /// `tryToSpeak` resolve having played nothing — the tool setting is off, the

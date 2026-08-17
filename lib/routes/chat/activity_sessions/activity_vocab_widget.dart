@@ -154,13 +154,14 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
       vocab.lemma,
       langCode: widget.langCode,
       useCase: TtsUseCase.words,
-      // A tapped vocab chip speaks the word: listening, but a WORD rather than
-      // a message, which no current category covers. The room is also not
-      // guaranteed — this widget serves the in-chat activity summary, which has
-      // one, AND the session start page, which has none until a session room
-      // exists — so it needs the room to be optional too.
+      // A tapped vocab chip speaks the word, which `word_audio` covers. The
+      // room is what is missing: this widget serves the in-chat activity
+      // summary, which has one, AND the session start page, which has none
+      // until a session room exists. One of the two surfaces having a room is
+      // not enough — the emit is here, not per surface, and a room borrowed
+      // from the other surface would be fabricated.
       listening: const DosageListeningMeasurement.notMeasured(
-        DosageListeningExemption.awaitingRoomAndCategory,
+        DosageListeningExemption.awaitingRoom,
       ),
     );
     _showWordCard(vocab);

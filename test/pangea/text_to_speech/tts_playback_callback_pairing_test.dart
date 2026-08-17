@@ -27,13 +27,15 @@ import '../fake_pangea_controller.dart';
 /// per-site property and became one guarantee to pin. This counts the three
 /// transitions so the guarantee is asserted rather than assumed.
 class _SpyProbe extends DosageTtsListeningProbe {
-  _SpyProbe({super.buffer, super.now})
-    : super(
-        category: DosageListeningCategory.autoRead,
-        roomId: '!room:example.org',
-        userId: () => '@learner:example.org',
-        accessToken: () => 'syt_token',
-      );
+  _SpyProbe({
+    super.buffer,
+    super.now,
+    super.category = DosageListeningCategory.autoRead,
+  }) : super(
+         roomId: '!room:example.org',
+         userId: () => '@learner:example.org',
+         accessToken: () => 'syt_token',
+       );
 
   int starts = 0;
   int aborts = 0;
@@ -190,7 +192,7 @@ void main() {
         langCode: 'es',
         useCase: TtsUseCase.words,
         listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingCategory,
+          DosageListeningExemption.awaitingRoom,
         ),
         onStart: () => started++,
         onStop: () => stopped++,
@@ -220,7 +222,7 @@ void main() {
       langCode: 'es',
       useCase: TtsUseCase.words,
       listening: const DosageListeningMeasurement.notMeasured(
-        DosageListeningExemption.awaitingCategory,
+        DosageListeningExemption.awaitingRoom,
       ),
     );
 
@@ -233,7 +235,7 @@ void main() {
       langCode: 'es',
       useCase: TtsUseCase.words,
       listening: const DosageListeningMeasurement.notMeasured(
-        DosageListeningExemption.awaitingCategory,
+        DosageListeningExemption.awaitingRoom,
       ),
       onStop: () => stoppedLater++,
     );
@@ -353,6 +355,68 @@ void main() {
       expect(buffer.bufferedEvents.single.elapsedMs, greaterThan(0));
     });
 
+    // The two categories the newly wired sites name (#8411). Adding a member to
+    // the enum is not the same as a tap being counted: the category has to
+    // survive the whole path — through `tryToSpeak`'s bracketing, the meter, the
+    // signals emitter — into a buffered event carrying the wire name the server
+    // validates against. Everything between the tap and the batch is shared, so
+    // the test that would catch a category lost or rewritten in the middle is
+    // this one, driven through a route that really plays.
+    for (final (category, wireName) in [
+      (DosageListeningCategory.wordAudio, 'word_audio'),
+      (DosageListeningCategory.practiceAudio, 'practice_audio'),
+    ]) {
+      test('a ${category.name} tap banks a ${category.name} playback', () async {
+        MatrixState.pangeaController = _PlayablePangeaController();
+        final spoken = <String>[];
+        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+            .setMockMethodCallHandler(ttsChannel, (call) async {
+              if (call.method == 'getVoices') {
+                return <Map<String, String>>[
+                  {'name': 'Paulina', 'locale': 'es-ES', 'quality': 'enhanced'},
+                ];
+              }
+              if (call.method == 'speak') spoken.add('${call.arguments}');
+              return 1;
+            });
+
+        final buffer = DosageAudioBuffer();
+        var clock = DateTime.utc(2026, 1, 1, 12);
+        final probe = _SpyProbe(
+          buffer: buffer,
+          category: category,
+          now: () {
+            clock = clock.add(const Duration(seconds: 1));
+            return clock;
+          },
+        );
+
+        await TtsController.tryToSpeak(
+          'hola',
+          langCode: 'es',
+          // What the word and choice call sites pass. `allowChoreoPlay: false`
+          // forces the device route, the only one reachable without a network.
+          useCase: TtsUseCase.words,
+          allowChoreoPlay: false,
+          listening: DosageListeningMeasurement.measured(probe),
+        );
+
+        expect(spoken, ['hola'], reason: 'the device engine spoke the text');
+        expect(probe.starts, 1, reason: 'the device route was asked to play');
+        expect(probe.aborts, 0, reason: 'and it did play');
+
+        expect(buffer.bufferedEvents, hasLength(1));
+        final banked = buffer.bufferedEvents.single;
+        expect(banked.category, category);
+        expect(banked.elapsedMs, greaterThan(0));
+        // The wire name, not just the Dart member: the ingest validates this
+        // string against a closed vocabulary and 422s the WHOLE batch — every
+        // other category's events and declarations with it — on a value it does
+        // not recognise.
+        expect(banked.toJson()['category'], wireName);
+      });
+    }
+
     test('an exempt call touches no measurement and still speaks', () async {
       var stopped = 0;
 
@@ -361,12 +425,12 @@ void main() {
         langCode: 'es',
         useCase: TtsUseCase.words,
         listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingRoomAndCategory,
+          DosageListeningExemption.awaitingRoom,
         ),
         onStop: () => stopped++,
       );
 
-      // The ten exempt call sites take this path on every tap. Nothing about
+      // The six roomless call sites take this path on every tap. Nothing about
       // being unmeasured may change what the learner gets.
       expect(stopped, greaterThan(0));
     });

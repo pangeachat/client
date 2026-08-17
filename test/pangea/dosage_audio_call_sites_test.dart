@@ -28,10 +28,10 @@ void main() {
   /// A `Type.member` reference that survives the formatter.
   ///
   /// `dart format` breaks a long expression at the dot, so a deeply indented
-  /// call site can read `DosageListeningExemption\n    .awaitingCategory`. A
-  /// plain substring probe reports that file as naming NOTHING — which is the
-  /// silent pass an invariant test exists to prevent, and it cost one debugging
-  /// round here before it cost one in review.
+  /// call site can read `DosageListeningExemption\n    .awaitingRoom`. A plain
+  /// substring probe reports that file as naming NOTHING — which is the silent
+  /// pass an invariant test exists to prevent, and it cost one debugging round
+  /// here before it cost one in review.
   RegExp memberRef(String type, [String member = r'\w+']) =>
       RegExp('$type\\s*\\.\\s*($member)');
 
@@ -88,6 +88,53 @@ void main() {
       expect(callersOf('DosageListeningCategory.toolbarRead'), [
         'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart',
       ]);
+    });
+
+    test('word audio is named ONLY where a WORD was tapped', () {
+      // One site, and it is the word-card tap on a token in a message. The
+      // other word surfaces — the vocab list tile, the activity vocab chip, the
+      // pronunciation button — are the same category and are still exempt for
+      // want of a room, so this list grows when the room does, not before.
+      expect(callersOf('DosageListeningCategory.wordAudio'), [
+        'lib/routes/chat/toolbar/message_selection_overlay.dart',
+      ]);
+    });
+
+    test('practice audio is named ONLY by drill surfaces', () {
+      expect(callersOf('DosageListeningCategory.practiceAudio'), [
+        'lib/pangea/common/widgets/choice_array.dart',
+        'lib/routes/chat/toolbar/message_practice/practice_controller.dart',
+        'lib/routes/chat/toolbar/message_practice/practice_match_item.dart',
+      ]);
+    });
+
+    test('a word tap and a drill tap cannot swap categories', () {
+      // The two new categories are the split the app already makes to decide
+      // gating — `TtsUseCase.words` against `TtsUseCase.choices` — so a site
+      // filed under the wrong one is invisible in a diff and produces two
+      // precise counters that both mean something else. Pinned per site.
+      const expected = {
+        'lib/routes/chat/toolbar/message_selection_overlay.dart': 'wordAudio',
+        'lib/pangea/common/widgets/choice_array.dart': 'practiceAudio',
+        'lib/routes/chat/toolbar/message_practice/practice_controller.dart':
+            'practiceAudio',
+        'lib/routes/chat/toolbar/message_practice/practice_match_item.dart':
+            'practiceAudio',
+      };
+
+      expected.forEach((path, category) {
+        // Set equality on the members actually named, not a substring probe:
+        // `wordAudio` and `practiceAudio` are both suffixed `Audio`, and a
+        // probe for one that matched inside the other is exactly the silent
+        // pass this idiom exists to prevent.
+        expect(
+          memberRef(
+            'DosageListeningCategory',
+          ).allMatches(read(path)).map((m) => m.group(1)).toSet(),
+          {category},
+          reason: '$path is $category listening and nothing else',
+        );
+      });
     });
   });
 
@@ -157,7 +204,17 @@ void main() {
   group('shared components name no category', () {
     test('the shared audio player only RECEIVES one', () {
       final source = read('lib/routes/chat/audio_player.dart');
-      for (final category in ['peer', 'autoRead', 'tapRead', 'toolbarRead']) {
+      // `practiceAudio` is on this list deliberately: the practice card is one
+      // of the three surfaces this player serves, so it is the category most
+      // likely to look correct here and attribute all three to one.
+      for (final category in [
+        'peer',
+        'autoRead',
+        'tapRead',
+        'toolbarRead',
+        'wordAudio',
+        'practiceAudio',
+      ]) {
         expect(
           source.contains('DosageListeningCategory.$category'),
           isFalse,
@@ -227,41 +284,42 @@ void main() {
     // measured, or a new measured site added, in a diff nobody reads closely.
     // Both lists are pinned here so either move is a failing test.
 
-    test('exactly one file measures listening through tryToSpeak', () {
+    test('five files measure listening through tryToSpeak', () {
+      // Four of these were exempt until the category vocabulary grew. Adding a
+      // sixth file here means a new surface started counting, which is a change
+      // to what a teacher-visible total contains — it is meant to be a visible
+      // diff, not a silent one.
       expect(
         callersMatching(memberRef('DosageListeningMeasurement', 'measured')),
         [
+          'lib/pangea/common/widgets/choice_array.dart',
           'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart',
+          'lib/routes/chat/toolbar/message_practice/practice_controller.dart',
+          'lib/routes/chat/toolbar/message_practice/practice_match_item.dart',
+          'lib/routes/chat/toolbar/message_selection_overlay.dart',
         ],
       );
     });
 
-    test('ten sites across eight files are exempt, each with its reason', () {
-      // The surfaces Will asked for (pangeachat/client#8408, review). They are
-      // listening and they are NOT counted, so the served total is short by
-      // whatever they play. What blocks each one is recorded at the call site
-      // and mirrored here: `awaitingCategory` where only the vocabulary is
-      // missing, `awaitingRoomAndCategory` where the surface has no room either.
-      //
-      // Flipping any of these on means editing this list, which is the point —
-      // lighting up a category the server has not accepted 422s the whole batch
-      // and takes the four working categories down with it.
+    test('six sites across four files are exempt, each with its reason', () {
+      // What is left of the ten (pangeachat/client#8408, review) once
+      // `word_audio` and `practice_audio` landed. Every one of these is
+      // listening and none is counted, so the served total is still short by
+      // whatever they play — but the blocker is no longer the vocabulary. It is
+      // the room: `room_id` is `min_length=1` on the wire and `NOT NULL` on
+      // `dosage_audio_playback`, and, more to the point, `?bucket=course`
+      // filters playbacks on the room while coverage carries no room conjunct,
+      // so a null-room row would leave the student marked covered while their
+      // rows are filtered out — a real 0 served for a learner who did listen.
       const expected = {
-        'lib/pangea/common/widgets/choice_array.dart': 'awaitingCategory',
         'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart':
-            'awaitingRoomAndCategory',
+            'awaitingRoom',
         'lib/routes/analytics/construct_analytics/vocab_analytics_list_view.dart':
-            'awaitingRoomAndCategory',
+            'awaitingRoom',
         'lib/routes/chat/activity_sessions/activity_vocab_widget.dart':
-            'awaitingRoomAndCategory',
+            'awaitingRoom',
         'lib/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart':
-            'awaitingRoomAndCategory',
-        'lib/routes/chat/toolbar/message_practice/practice_controller.dart':
-            'awaitingCategory',
-        'lib/routes/chat/toolbar/message_practice/practice_match_item.dart':
-            'awaitingCategory',
-        'lib/routes/chat/toolbar/message_selection_overlay.dart':
-            'awaitingCategory',
+            'awaitingRoom',
       };
 
       final notMeasured = memberRef(
@@ -270,14 +328,13 @@ void main() {
       );
       expect(callersMatching(notMeasured), expected.keys.toList()..sort());
 
-      // Ten CALL SITES, not ten files: `analytics_practice_ui_controller`
-      // carries three and the rest one each. The count is the headline number in
-      // the review that asked for this, so it is asserted rather than implied by
-      // the file list.
+      // Six CALL SITES, not six files: `analytics_practice_ui_controller`
+      // carries three and the rest one each. Asserted rather than implied by the
+      // file list, so a site added to a file already on it still shows up.
       final exemptSites = expected.keys
           .map((path) => notMeasured.allMatches(read(path)).length)
           .fold<int>(0, (a, b) => a + b);
-      expect(exemptSites, 10);
+      expect(exemptSites, 6);
 
       expected.forEach((path, reason) {
         // Read the members actually named, rather than probing for one at a
@@ -287,9 +344,9 @@ void main() {
         final named = memberRef(
           'DosageListeningExemption',
         ).allMatches(read(path)).map((m) => m.group(1)).toSet();
-        // The reasons are not interchangeable: one says "a category would be
-        // enough", the other says "a category is not enough". Reading the wrong
-        // one off this file would send the follow-up work to the wrong repo.
+        // One member, and it names the room. A file that reintroduced a
+        // category-shaped reason would be claiming a blocker that no longer
+        // exists, and would send the follow-up work to the wrong repo.
         expect(named, {reason}, reason: '$path is blocked on $reason alone');
       });
     });
@@ -314,9 +371,10 @@ void main() {
     test('neither practice call site passes a category', () {
       // These two are the AudioPlayerWidget half of the same gap: both are
       // message-scoped and one is paid, so both COULD be counted, and the
-      // decision is now that they SHOULD be. They stay dark for the same reason
-      // the ten TTS sites do — no category in the server's closed vocabulary
-      // describes drill audio — and this assertion holds until one lands.
+      // decision is now that they SHOULD be. `practice_audio` describes them,
+      // so what keeps them dark is no longer the vocabulary — it is that they
+      // come through a different entry point, wired differently, and are their
+      // own change (#8411). This assertion holds until that one lands.
       for (final path in [
         'lib/routes/chat/toolbar/message_practice/message_audio_card.dart',
         'lib/routes/analytics/construct_analytics/practice/analytics_practice_content_widget.dart',

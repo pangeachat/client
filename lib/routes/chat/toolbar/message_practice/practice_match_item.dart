@@ -4,7 +4,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/widgets/shimmer_background.dart';
@@ -90,12 +92,24 @@ class PracticeMatchItemState extends State<PracticeMatchItem> {
             pos: widget.token?.pos,
             morph: widget.token?.morph.map((k, v) => MapEntry(k.name, v)),
             speed: widget.playbackSpeedController.playbackSpeed.value,
-            // A play button on a match item: deliberate, repeatable listening,
-            // and the room is in hand via
-            // `widget.controller.pangeaMessageEvent.room.id`. Only the category
-            // is missing.
-            listening: const DosageListeningMeasurement.notMeasured(
-              DosageListeningExemption.awaitingCategory,
+            // Listening category 6 (#104): audio a DRILL played — a match
+            // item's play button, deliberate and repeatable.
+            //
+            // The room comes from the exercise's own message. A fresh probe per
+            // call: it holds a running measurement.
+            listening: DosageListeningMeasurement.measured(
+              DosageTtsListeningProbe(
+                category: DosageListeningCategory.practiceAudio,
+                roomId: widget.controller.pangeaMessageEvent.room.id,
+                userId: () =>
+                    widget.controller.pangeaMessageEvent.room.client.userID,
+                accessToken: () => widget
+                    .controller
+                    .pangeaMessageEvent
+                    .room
+                    .client
+                    .accessToken,
+              ),
             ),
           );
         }

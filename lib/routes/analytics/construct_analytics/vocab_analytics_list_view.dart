@@ -301,13 +301,14 @@ class VocabAnalyticsListView extends StatelessWidget {
                                         .userL2Code!,
                                     useCase: TtsUseCase.words,
                                     pos: vocabItem.id.category,
-                                    // The vocab list is not in a room, so this
-                                    // waits on a category AND on a wire that
-                                    // accepts a null room.
+                                    // `word_audio` describes this tap; the room
+                                    // does not exist. The vocab list is a
+                                    // cross-room aggregate, so there is no one
+                                    // room this listening belongs to and none
+                                    // may be invented.
                                     listening:
                                         const DosageListeningMeasurement.notMeasured(
-                                          DosageListeningExemption
-                                              .awaitingRoomAndCategory,
+                                          DosageListeningExemption.awaitingRoom,
                                         ),
                                   );
                                   AnalyticsNavigationUtil.navigateToAnalytics(

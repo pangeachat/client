@@ -6,7 +6,9 @@ import 'package:collection/collection.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/pangea/common/models/llm_feedback_model.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/lemmas/lemma_info_repo.dart';
@@ -259,12 +261,18 @@ class PracticeController with ChangeNotifier {
         useCase: TtsUseCase.choices,
         pos: token.pos,
         morph: token.morph.map((k, v) => MapEntry(k.name, v)),
-        // Drill audio played back after an answer. The room is available here
-        // (`pangeaMessageEvent.room.id`); what is missing is a category — the
-        // four that exist are all about a message being read, not a practice
-        // token being spoken.
-        listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingCategory,
+        // Listening category 6 (#104): audio a DRILL played — here, the token
+        // spoken back once an answer has been given.
+        //
+        // Not a word tap: the learner asked for an exercise, not for this word.
+        // A fresh probe per call: it holds a running measurement.
+        listening: DosageListeningMeasurement.measured(
+          DosageTtsListeningProbe(
+            category: DosageListeningCategory.practiceAudio,
+            roomId: pangeaMessageEvent.room.id,
+            userId: () => pangeaMessageEvent.room.client.userID,
+            accessToken: () => pangeaMessageEvent.room.client.accessToken,
+          ),
         ),
       );
     }

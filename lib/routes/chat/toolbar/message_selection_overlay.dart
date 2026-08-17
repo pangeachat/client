@@ -10,7 +10,9 @@ import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -243,13 +245,18 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         useCase: TtsUseCase.words,
         pos: selectedToken!.pos,
         morph: selectedToken!.morph.map((k, v) => MapEntry(k.name, v)),
-        // Tapping a word in a message speaks that word. Learner-initiated
-        // listening with a room in hand (`pangeaMessageEvent.room.id`), but it
-        // is not the speaker button and not the message — `tap_read` means the
-        // whole message on the paid route, and widening it here would give that
-        // counter two meanings. Waiting on a category of its own.
-        listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingCategory,
+        // Listening category 5 (#104): a WORD the learner tapped.
+        //
+        // Not `tap_read`, which means the whole message on the paid route —
+        // widening it here would give that counter two meanings. A fresh probe
+        // per call: it holds a running measurement.
+        listening: DosageListeningMeasurement.measured(
+          DosageTtsListeningProbe(
+            category: DosageListeningCategory.wordAudio,
+            roomId: pangeaMessageEvent.room.id,
+            userId: () => pangeaMessageEvent.room.client.userID,
+            accessToken: () => pangeaMessageEvent.room.client.accessToken,
+          ),
         ),
       );
     }

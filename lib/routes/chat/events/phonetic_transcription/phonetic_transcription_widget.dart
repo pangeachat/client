@@ -126,13 +126,13 @@ class _PhoneticTranscriptionWidgetState
         pos: widget.pos,
         morph: widget.morph,
         ttsPhoneme: ttsPhoneme,
-        // A pronunciation button is a deliberate request to hear a word, so it
-        // is listening — but a word, not a message, and no current category
-        // covers that. This widget also spans surfaces with and without a room:
-        // the word card in chat has one, the analytics practice session does
-        // not. Both halves have to land before it can emit.
+        // A pronunciation button is a deliberate request to hear a word, which
+        // `word_audio` covers. The room is what is missing: this widget spans
+        // surfaces with and without one — the word card in chat has a room, the
+        // analytics practice session does not — and the emit is here, so it
+        // cannot have a room on only some taps.
         listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingRoomAndCategory,
+          DosageListeningExemption.awaitingRoom,
         ),
         onStart: () {
           if (mounted) setState(() => _playingId = targetId);

@@ -33,12 +33,15 @@ class AnalyticsPracticeUiController {
         useCase: TtsUseCase.choices,
         pos: token?.pos,
         morph: token?.morph.map((k, v) => MapEntry(k.name, v)),
-        // Analytics practice is drill listening and is not in a room at all, so
-        // it waits on BOTH halves: a category that describes it, and a wire that
-        // accepts a null room. A placeholder room is not an alternative — these
-        // rows are bucketed and authorized per room downstream.
+        // `practice_audio` describes this exactly; what is missing is the room.
+        // Analytics practice is not in a room at all, and the wire has no way
+        // to say so — nor does the serving side, which filters playbacks on the
+        // room under course bucketing while coverage carries no room, so a
+        // null-room row would read as a real 0 for a learner who did listen. A
+        // placeholder room is not an alternative: these rows are bucketed and
+        // authorized per room downstream.
         listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingRoomAndCategory,
+          DosageListeningExemption.awaitingRoom,
         ),
       );
       return;
@@ -55,7 +58,7 @@ class AnalyticsPracticeUiController {
       pos: cId.category,
       // Roomless drill listening — see [playChoiceAudio] above.
       listening: const DosageListeningMeasurement.notMeasured(
-        DosageListeningExemption.awaitingRoomAndCategory,
+        DosageListeningExemption.awaitingRoom,
       ),
     );
   }
@@ -76,7 +79,7 @@ class AnalyticsPracticeUiController {
       morph: token.morph.map((k, v) => MapEntry(k.name, v)),
       // Roomless drill listening — see [playChoiceAudio] above.
       listening: const DosageListeningMeasurement.notMeasured(
-        DosageListeningExemption.awaitingRoomAndCategory,
+        DosageListeningExemption.awaitingRoom,
       ),
     );
   }

@@ -170,6 +170,9 @@ class SuggestionCardState extends State<SuggestionCard> {
                     selectedChoiceIndex: selected == null
                         ? null
                         : suggestionsModel.shuffledChoices.indexOf(selected),
+                    // The orchestrator is per activity room, so a suggestion's
+                    // audio belongs to the room the activity runs in.
+                    roomId: widget.controller.room.id,
                     getDisplayCopy: (value) => value.text,
                   ),
                 ),

@@ -53,37 +53,31 @@ class DosageListeningMeasurement {
 
 /// Why a read-aloud path that IS listening still emits nothing.
 ///
-/// Every member is a blocker with an owner, not a judgement that the surface
-/// does not matter. They exist so "this is not counted" is a named, greppable
-/// state with a reason attached, rather than the absence of a line of code.
+/// The single member is a blocker with an owner, not a judgement that the
+/// surface does not matter. It exists so "this is not counted" is a named,
+/// greppable state with a reason attached, rather than the absence of a line of
+/// code.
 ///
-/// Both members are blocked on the same first thing: **the category vocabulary
-/// is closed on the server** (`app/analytics/dosage/audio_categories.py` in
-/// admin-dash-api validates both a playback's and a declaration's `category`
-/// against a fixed set). A client that invented a category would not merely fail
-/// to count these surfaces — the unknown value 422s the WHOLE batch, and since a
-/// batch carries every category's coverage declaration alongside its events, one
-/// unknown category takes the four categories that DO work down with it. So the
-/// vocabulary grows on the server first, and only then here.
+/// The category vocabulary is no longer what blocks anything here: `word_audio`
+/// and `practice_audio` describe every one of these surfaces. What is left is
+/// the room.
 enum DosageListeningExemption {
-  /// The surface has a room; it is waiting only on a category that describes it.
+  /// The surface has NO room, and the wire has no way to say so.
   ///
-  /// None of the four listening categories does. They are all about a MESSAGE —
-  /// a voice message from a peer, a message read aloud on arrival, a message the
-  /// speaker button was tapped on, a message the toolbar was opened on — and
-  /// these surfaces play a WORD or a drill choice. Folding them into `tap_read`
-  /// (the only learner-initiated one) would silently redefine a counter that
-  /// already means something narrower on both ends of the wire.
-  awaitingCategory,
-
-  /// The surface has NO room, and is waiting on a category AND on the room
-  /// becoming optional.
+  /// `room_id` is `min_length=1` on the ingest model and `NOT NULL` on
+  /// `dosage_audio_playback`, so a roomless playback cannot be sent as it is.
+  /// Dropping the `NOT NULL` is the easy half; what blocks it is what a null
+  /// room MEANS downstream. `?bucket=course` filters playbacks on the room while
+  /// coverage carries no room conjunct, so a null-room row would leave the
+  /// student marked COVERED for its category while every one of their rows in it
+  /// is filtered out of the course bucket — served as a real 0 for a learner who
+  /// did listen. That is a fabricated zero manufactured by the change meant to
+  /// fix an undercount, so the coverage model needs a room dimension before
+  /// these can emit: a roomless category has to be WITHHELD under course
+  /// bucketing, not zeroed.
   ///
-  /// Analytics practice and the vocab list are not in a room at all. The
-  /// decision is that they emit with a null room rather than not emit, but the
-  /// wire rejects that today: `room_id` is `min_length=1` on the ingest model and
-  /// `NOT NULL` on `dosage_audio_playback`. A synthetic placeholder room is not
-  /// an option — it would put a room's worth of fabricated listening into a
-  /// per-room table that the serving side buckets and authorizes on.
-  awaitingRoomAndCategory,
+  /// Never fabricate a room id. A synthetic placeholder would put a room's worth
+  /// of invented listening into a per-room table that the serving side buckets
+  /// and authorizes on.
+  awaitingRoom,
 }
