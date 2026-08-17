@@ -262,16 +262,19 @@ class AnalyticsDataService {
     }
   }
 
+  /// Seed the merge table from the stored aggregates. Reads identifiers only
+  /// ([AnalyticsDatabase.getAggregateIds]) — the table never needed the uses,
+  /// and deserializing them was the last full-corpus parse on the init path.
   Future<void> _initMergeTable(String language) async {
     final database = _analyticsClientGetter.database;
     final (vocab, morph) = await (
-      database.getAggregatedConstructs(ConstructTypeEnum.vocab, language),
-      database.getAggregatedConstructs(ConstructTypeEnum.morph, language),
+      database.getAggregateIds(ConstructTypeEnum.vocab, language),
+      database.getAggregateIds(ConstructTypeEnum.morph, language),
     ).wait;
 
     final blocked = blockedConstructs;
-    _mergeTable.addConstructs(vocab, blocked);
-    _mergeTable.addConstructs(morph, blocked);
+    _mergeTable.addIdentifiers(vocab, blocked);
+    _mergeTable.addIdentifiers(morph, blocked);
   }
 
   Future<void> reinitialize() async {
@@ -777,9 +780,16 @@ class AnalyticsDataService {
     _invalidateCaches();
   }
 
+  /// Drop the local (not-yet-uploaded) uses and aggregates, then re-derive
+  /// the XP total. This runs right after the uploaded copy has echoed back
+  /// from the analytics room; the recompute that echo triggered saw the
+  /// uses on both sides, so the total is settled here rather than on the
+  /// next unrelated sync.
   Future<void> clearLocalAnalytics(String language) async {
     _invalidateCaches();
     await _ensureInitialized();
     await _analyticsClientGetter.database.clearLocalConstructData(language);
+    _invalidateCaches();
+    await _recomputeTotalXP(language);
   }
 }

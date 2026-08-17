@@ -587,6 +587,64 @@ void main() {
     });
   });
 
+  group('getAggregateIds', () {
+    /// Reference: identifiers of the rows getAggregatedConstructs yields, in
+    /// its order, keeping only rows with uses.
+    Future<List<ConstructIdentifier>> reference(ConstructTypeEnum type) async =>
+        [
+          for (final c in await db.getAggregatedConstructs(type, testLang))
+            if (c.numTotalUses > 0) c.id,
+        ];
+
+    test('empty database yields nothing', () async {
+      expect(
+        await db.getAggregateIds(ConstructTypeEnum.vocab, testLang),
+        isEmpty,
+      );
+    });
+
+    test('same ids, same order as the full read; server+local collapse; '
+        'local-only appended; other language excluded', () async {
+      await db.updateServerAnalytics([
+        events.event([
+          ...usesFor('casa', count: 2),
+          ...usesFor('Casa', count: 1),
+          ...usesFor('perro', count: 1),
+          ...usesFor(
+            'Pres',
+            count: 2,
+            type: ConstructTypeEnum.morph,
+            category: 'tense',
+          ),
+        ], ts: at(10)),
+      ], testLang);
+      await db.updateLocalAnalytics([
+        ...usesFor('casa', count: 1, startMinute: 50), // also on server
+        ...usesFor('gato', count: 1, startMinute: 50), // local only
+      ], testLang);
+      await db.updateServerAnalytics([
+        events.event(usesFor('house', count: 1), ts: at(10)),
+      ], 'en');
+
+      for (final type in ConstructTypeEnum.values) {
+        final ids = await db.getAggregateIds(type, testLang);
+        expect(ids, await reference(type), reason: type.name);
+      }
+      final vocab = await db.getAggregateIds(ConstructTypeEnum.vocab, testLang);
+      expect(vocab.map((i) => i.lemma).toSet(), {
+        'casa',
+        'Casa',
+        'perro',
+        'gato',
+      });
+      expect(
+        vocab.last.lemma,
+        'gato',
+      ); // local-only rows come after server rows
+      expect(vocab.where((i) => i.lemma == 'casa').length, 1);
+    });
+  });
+
   group('recompute-equivalent fold', () {
     test('sum of capped points across aggregates', () async {
       await db.updateServerAnalytics([

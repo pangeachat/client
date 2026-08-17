@@ -20,6 +20,8 @@
 //   G. ConstructUses constructor over already-parsed uses (sort cost).
 //   H. AnalyticsDatabase.getUses — level page (count) and activity-summary
 //      (roomId + since) shapes over 400 extra server events.
+//   J. Merge-table init: getAggregatedConstructs + capped uses (before) vs
+//      getAggregateIds + addIdentifiers (after).
 //   I. AnalyticsDatabase.getConstructUses for 500 ids — the service getUses
 //      capped-last-use lookup, batched.
 //
@@ -35,6 +37,7 @@ import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/analytics_data/construct_merge_table.dart';
 import 'analytics_fixtures.dart';
 
 const _vocabConstructs = 4000;
@@ -184,6 +187,26 @@ void main() {
         }, testLang);
       });
 
+      // ---- J. merge-table init: full read vs ids-only ----------------------
+      final jOldMicros = await _bestOfAsync(_runs, () async {
+        final (v, m) = await (
+          db.getAggregatedConstructs(ConstructTypeEnum.vocab, testLang),
+          db.getAggregatedConstructs(ConstructTypeEnum.morph, testLang),
+        ).wait;
+        ConstructMergeTable()
+          ..addConstructsByUses(v.expand((c) => c.cappedUses).toList(), {})
+          ..addConstructsByUses(m.expand((c) => c.cappedUses).toList(), {});
+      });
+      final jNewMicros = await _bestOfAsync(_runs, () async {
+        final (v, m) = await (
+          db.getAggregateIds(ConstructTypeEnum.vocab, testLang),
+          db.getAggregateIds(ConstructTypeEnum.morph, testLang),
+        ).wait;
+        ConstructMergeTable()
+          ..addIdentifiers(v, {})
+          ..addIdentifiers(m, {});
+      });
+
       // ---- A. recompute-equivalent ---------------------------------------
       int lastTotal = 0;
       final aMicros = await _bestOfAsync(_runs, () async {
@@ -327,6 +350,12 @@ void main() {
         )
         ..writeln(
           '  Ic  same, cold box cache              ${_ms(iColdMicros)} ms',
+        )
+        ..writeln(
+          '  J  init merge table, full read       ${_ms(jOldMicros)} ms',
+        )
+        ..writeln(
+          '  J2 init merge table, ids only        ${_ms(jNewMicros)} ms',
         )
         ..writeln('  F fromJson all aggregates            ${_ms(fMicros)} ms')
         ..writeln('  G construct from parsed uses (sort)  ${_ms(gMicros)} ms');
