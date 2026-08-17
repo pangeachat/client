@@ -10,10 +10,10 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_link.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
-import 'package:fluffychat/routes/chat/chat_details/room_participants_widget.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_request_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -269,7 +269,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                           )
                         : null,
                   ),
-                  RoomParticipantsSection(room: room, maxParticipants: 8),
+                  CourseParticipantsPreview(room: room),
                   CourseSectionLink(
                     label: l10n.allParticipants,
                     onTap: () => _openSubpage(SpaceSettingsTabs.participants),

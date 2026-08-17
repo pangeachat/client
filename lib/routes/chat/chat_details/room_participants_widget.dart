@@ -1,39 +1,25 @@
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/spaces/load_participants_builder.dart';
+import 'package:fluffychat/routes/chat/chat_details/participant_card.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
-import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/hover_builder.dart';
-import 'package:fluffychat/widgets/users/level_display_name.dart';
-import 'package:fluffychat/widgets/users/member_actions_popup_menu_button.dart';
 
+/// The full participant list: every member as a [ParticipantCard] in a
+/// centered wrap, with a trailing invite tile. The course page's Participants
+/// section renders a single-line preview instead — CourseParticipantsPreview.
 class RoomParticipantsSection extends StatelessWidget {
   final Room room;
 
-  /// Caps the member cards rendered — the course page's Participants section
-  /// shows a preview this way. Null renders every participant (the full
-  /// participant list page). The invite tile renders regardless.
-  final int? maxParticipants;
-
-  const RoomParticipantsSection({
-    required this.room,
-    this.maxParticipants,
-    super.key,
-  });
-
-  final double _width = 100.0;
+  const RoomParticipantsSection({required this.room, super.key});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return Semantics(
       label: L10n.of(context).listLabel(L10n.of(context).participant),
       container: true,
@@ -41,267 +27,91 @@ class RoomParticipantsSection extends StatelessWidget {
         room: room,
         loadProfiles: true,
         builder: (context, participantsLoader) {
-          final filteredParticipants = participantsLoader.sortedParticipants;
-          final originalLeaders = filteredParticipants.take(3).toList();
-          filteredParticipants.sort((a, b) {
-            // Always put bot at the very end
-            final aIsBot = a.id == BotName.byEnvironment;
-            final bIsBot = b.id == BotName.byEnvironment;
-            if (aIsBot != bIsBot) {
-              return aIsBot ? 1 : -1;
-            }
-
-            int rankOf(p) {
-              // Admins first
-              if (p.powerLevel == 100) return 0;
-
-              switch (p.membership) {
-                case Membership.join:
-                  return 1;
-                case Membership.invite:
-                  return 2;
-                case Membership.knock:
-                  return 3;
-                default:
-                  return 4;
-              }
-            }
-
-            return rankOf(a).compareTo(rankOf(b));
-          });
+          final participants = participantsLoader.sortedParticipants;
+          final originalLeaders = participants.take(3).toList();
+          participants.sort(ParticipantCard.displayCompare);
 
           if (room.showActivityChatUI) {
-            filteredParticipants.removeWhere(
-              (u) => u.id == BotName.byEnvironment,
-            );
+            participants.removeWhere((u) => u.id == BotName.byEnvironment);
           }
-
-          final visibleParticipants = maxParticipants != null
-              ? filteredParticipants.take(maxParticipants!).toList()
-              : filteredParticipants;
 
           return Wrap(
             spacing: 8.0,
             alignment: WrapAlignment.center,
             runAlignment: WrapAlignment.center,
-            children: [...visibleParticipants, null].mapIndexed((index, user) {
-              if (user == null) {
-                return room.canInvite && !room.isDirectChat
-                    ? MouseRegion(
-                        cursor: SystemMouseCursors.click,
-                        child: GestureDetector(
-                          onTap: () => NavigationUtil.goToSpaceRoute(room.id, [
-                            'details',
-                            'invite',
-                          ], context),
-                          child: HoverBuilder(
-                            builder: (context, hovered) {
-                              return Container(
-                                decoration: BoxDecoration(
-                                  color: hovered
-                                      ? Theme.of(
-                                          context,
-                                        ).colorScheme.primary.withAlpha(50)
-                                      : Colors.transparent,
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
-                                padding: const EdgeInsets.symmetric(
-                                  vertical: 12.0,
-                                ),
-                                width: _width,
-                                child: Semantics(
-                                  container: true,
-                                  child: Column(
-                                    spacing: 4.0,
-                                    children: [
-                                      const Padding(
-                                        padding: EdgeInsets.all(12.0),
-                                        child: Icon(
-                                          Icons.person_add_outlined,
-                                          size: 50.0,
-                                        ),
-                                      ),
-                                      Text(
-                                        L10n.of(context).invite,
-                                        style: const TextStyle(fontSize: 16.0),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          ),
-                        ),
-                      )
-                    : const SizedBox();
-              }
-              final permissionBatch = user.powerLevel >= 100
-                  ? L10n.of(context).admin
-                  : user.powerLevel >= 50
-                  ? L10n.of(context).moderator
-                  : '';
-
-              final membershipBatch = switch (user.membership) {
-                Membership.ban => null,
-                Membership.invite => L10n.of(context).invited,
-                Membership.join => null,
-                Membership.knock => L10n.of(context).knocking,
-                Membership.leave => null,
-              };
-
-              final publicProfile = participantsLoader.getAnalyticsProfile(
-                user.id,
-              );
-
-              final leaderIndex = originalLeaders.indexOf(user);
-              LinearGradient? gradient;
-              if (leaderIndex != -1) {
-                gradient = leaderIndex.leaderboardGradient;
-                if (user.id == BotName.byEnvironment ||
-                    publicProfile == null ||
-                    publicProfile.level == null) {
-                  gradient = null;
-                }
-              }
-
-              return Semantics(
-                container: true,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 12.0),
-                  child: SizedBox(
-                    width: _width,
-                    child: Opacity(
-                      opacity: user.membership == Membership.join ? 1.0 : 0.5,
-                      child: Column(
-                        spacing: 4.0,
-                        children: [
-                          Stack(
-                            alignment: Alignment.center,
-                            children: [
-                              if (gradient != null)
-                                ExcludeSemantics(
-                                  child: CircleAvatar(
-                                    radius: _width / 2,
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        gradient: gradient,
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              else
-                                SizedBox(height: _width, width: _width),
-                              Builder(
-                                builder: (context) {
-                                  return MouseRegion(
-                                    cursor: SystemMouseCursors.click,
-                                    child: GestureDetector(
-                                      onTap: () => showMemberActionsPopupMenu(
-                                        context: context,
-                                        user: user,
-                                        room: room,
-                                      ),
-                                      child: Center(
-                                        child: ExcludeSemantics(
-                                          child: Avatar(
-                                            mxContent: user.avatarUrl,
-                                            name: user.localizedDisplayname(
-                                              L10n.of(context),
-                                            ),
-                                            size: _width - 6.0,
-                                            presenceUserId: user.id,
-                                            presenceOffset: const Offset(0, 0),
-                                            presenceSize: 18.0,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
-                                  );
-                                },
-                              ),
-                            ],
-                          ),
-                          Text(
-                            user.localizedDisplayname(L10n.of(context)),
-                            style: theme.textTheme.labelLarge?.copyWith(
-                              color: theme.colorScheme.primary,
-                              fontWeight: FontWeight.bold,
-                            ),
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                          Container(
-                            height: 20.0,
-                            alignment: Alignment.center,
-                            child: LevelDisplayName(
-                              userId: user.id,
-                              textStyle: theme.textTheme.labelSmall,
-                              showFlags: false,
-                            ),
-                          ),
-                          Container(
-                            height: 24.0,
-                            alignment: Alignment.center,
-                            child: membershipBatch != null
-                                ? Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color:
-                                          theme.colorScheme.secondaryContainer,
-                                      borderRadius: BorderRadius.circular(
-                                        AppConfig.borderRadius,
-                                      ),
-                                    ),
-                                    child: Text(
-                                      membershipBatch,
-                                      style: theme.textTheme.labelSmall
-                                          ?.copyWith(
-                                            color: theme
-                                                .colorScheme
-                                                .onSecondaryContainer,
-                                          ),
-                                    ),
-                                  )
-                                : permissionBatch.isNotEmpty
-                                ? Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 12,
-                                      vertical: 4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: user.powerLevel >= 100
-                                          ? theme.colorScheme.tertiary
-                                          : theme.colorScheme.tertiaryContainer,
-                                      borderRadius: BorderRadius.circular(
-                                        AppConfig.borderRadius,
-                                      ),
-                                    ),
-                                    child: Text(
-                                      permissionBatch,
-                                      style: theme.textTheme.labelSmall
-                                          ?.copyWith(
-                                            color: user.powerLevel >= 100
-                                                ? theme.colorScheme.onTertiary
-                                                : theme
-                                                      .colorScheme
-                                                      .onTertiaryContainer,
-                                          ),
-                                    ),
-                                  )
-                                : null,
-                          ),
-                        ],
-                      ),
-                    ),
+            children: [
+              ...participants.map(
+                (user) => ParticipantCard(
+                  user: user,
+                  room: room,
+                  gradient: ParticipantCard.leaderboardGradientFor(
+                    user,
+                    originalLeaders,
+                    hasLevel:
+                        participantsLoader
+                            .getAnalyticsProfile(user.id)
+                            ?.level !=
+                        null,
                   ),
                 ),
-              );
-            }).toList(),
+              ),
+              _InviteTile(room: room),
+            ],
           );
         },
+      ),
+    );
+  }
+}
+
+/// The wrap's trailing invite tile, sized like a member card. Hidden when the
+/// user can't invite (or in a DM).
+class _InviteTile extends StatelessWidget {
+  final Room room;
+
+  const _InviteTile({required this.room});
+
+  @override
+  Widget build(BuildContext context) {
+    if (!room.canInvite || room.isDirectChat) return const SizedBox();
+
+    return MouseRegion(
+      cursor: SystemMouseCursors.click,
+      child: GestureDetector(
+        onTap: () => NavigationUtil.goToSpaceRoute(room.id, [
+          'details',
+          'invite',
+        ], context),
+        child: HoverBuilder(
+          builder: (context, hovered) {
+            return Container(
+              decoration: BoxDecoration(
+                color: hovered
+                    ? Theme.of(context).colorScheme.primary.withAlpha(50)
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 12.0),
+              width: ParticipantCard.width,
+              child: Semantics(
+                container: true,
+                child: Column(
+                  spacing: 4.0,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(12.0),
+                      child: Icon(Icons.person_add_outlined, size: 50.0),
+                    ),
+                    Text(
+                      L10n.of(context).invite,
+                      style: const TextStyle(fontSize: 16.0),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
