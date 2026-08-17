@@ -1,4 +1,5 @@
 import 'package:fluffychat/features/navigation/room_id_url.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 
 /// User ids ride the invite-link URL as bare localparts (`@abc`) instead of
 /// the full Matrix id (`@abc:home.server`), mirroring [shortRoomId]/
@@ -24,6 +25,15 @@ String shortUserId(String id, {String? domain}) =>
 String fullUserId(String segment, {String? domain}) =>
     fullRoomId(segment, domain: domain);
 
+/// The in-app path of the DM invite landing for [userId] —
+/// `/invite_user/<localpart>`. The path half of [inviteLinkForUser], and what
+/// the `/` auth guard re-enters after the login bounce
+/// (PAuthGaurd.consumeCachedJoinCode). [domain] overrides the home domain
+/// (for tests).
+String dmInvitePath(String userId, {String? domain}) =>
+    '${PRoutes.dmInvite}/'
+    '${Uri.encodeComponent(shortUserId(userId, domain: domain))}';
+
 /// The "Share invite link" URL that opens a DM with [userId].
 ///
 /// A path, **not** a `/#/` link. Web runs under `usePathUrlStrategy`, where a
@@ -34,8 +44,7 @@ String fullUserId(String segment, {String? domain}) =>
 /// for every path, so a direct path load boots. [domain] overrides the home
 /// domain (for tests).
 String inviteLinkForUser(String frontendURL, String userId, {String? domain}) =>
-    '$frontendURL/invite_user/'
-    '${Uri.encodeComponent(shortUserId(userId, domain: domain))}';
+    '$frontendURL${dmInvitePath(userId, domain: domain)}';
 
 /// Read the `/invite_user/:userID` path param into the full mxid to open a DM
 /// with. The router percent-decodes a path param once on its own, but a shared
@@ -57,4 +66,23 @@ String userIdFromUrlParam(String param, {String? domain}) {
     }
   }
   return fullUserId(value, domain: domain);
+}
+
+/// The invited user id a location addresses — the full mxid when [uri] is a
+/// DM invite landing (`/invite_user/<id>`), else null. The URI-side twin of
+/// [userIdFromUrlParam]: `Uri.pathSegments` percent-decodes a segment once,
+/// exactly as the router decodes a path param, so both read the same link to
+/// the same id (pinned in invite_user_link_test.dart). Read by the auth guard
+/// to ferry an inbound invite across the login bounce and to recognise the
+/// landing it re-enters (PAuthGaurd). Logged out, the home domain is unknown,
+/// so a bare-localpart link reads back bare and is ferried that way; the
+/// landing re-reads it post-login (via [dmInvitePath] → the route param),
+/// which is when the domain attaches. [domain] overrides the home domain (for
+/// tests).
+String? dmInviteUserIdFor(Uri uri, {String? domain}) {
+  final segments = uri.pathSegments;
+  if (segments.length != 2 || '/${segments.first}' != PRoutes.dmInvite) {
+    return null;
+  }
+  return userIdFromUrlParam(segments.last, domain: domain);
 }

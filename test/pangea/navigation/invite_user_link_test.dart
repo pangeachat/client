@@ -145,4 +145,81 @@ void main() {
       expect(tester.takeException(), isNull);
     });
   });
+
+  // The auth guard reads the invited user off the URI (to ferry a logged-out
+  // click across the login bounce, and to recognise the landing it re-enters,
+  // #8436) — through [dmInviteUserIdFor], not the router's path param. Both
+  // must read the same link to the same id, or the guard could ferry one id
+  // and the landing open a DM with another.
+  group('dmInviteUserIdFor reads the same id the route builder gets', () {
+    Uri webLocation(String sharedLink) {
+      final uri = Uri.parse(sharedLink);
+      return Uri.parse(uri.hasQuery ? '${uri.path}?${uri.query}' : uri.path);
+    }
+
+    testWidgets('for the link the app shares', (tester) async {
+      final link = inviteLinkForUser(
+        _frontend,
+        '@william11:$_homeDomain',
+        domain: _homeDomain,
+      );
+      final viaRoute = await _resolveOnWeb(tester, link);
+      expect(
+        dmInviteUserIdFor(webLocation(link), domain: _homeDomain),
+        viaRoute,
+      );
+      expect(viaRoute, '@william11:$_homeDomain');
+    });
+
+    testWidgets('for a foreign-homeserver id', (tester) async {
+      const link = '$_frontend/invite_user/%40will%3Amatrix.org';
+      final viaRoute = await _resolveOnWeb(tester, link);
+      expect(
+        dmInviteUserIdFor(webLocation(link), domain: _homeDomain),
+        viaRoute,
+      );
+      expect(viaRoute, '@will:matrix.org');
+    });
+
+    testWidgets('for a double-encoded link', (tester) async {
+      const link =
+          '$_frontend/invite_user/%2540william11%253Astaging.pangea.chat';
+      final viaRoute = await _resolveOnWeb(tester, link);
+      expect(
+        dmInviteUserIdFor(webLocation(link), domain: _homeDomain),
+        viaRoute,
+      );
+      expect(viaRoute, '@william11:$_homeDomain');
+    });
+
+    test('is null for anything that is not an invite landing', () {
+      for (final location in [
+        '/',
+        '/?left=chats',
+        '/invite_user',
+        '/invite_user/%40will/extra',
+        '/rooms/%40will',
+        '/a1aed3f6-1ef7-4ed0-bc46-4a393aaf880b',
+      ]) {
+        expect(
+          dmInviteUserIdFor(Uri.parse(location), domain: _homeDomain),
+          isNull,
+          reason: location,
+        );
+      }
+    });
+
+    test(
+      'dmInvitePath is the path half of the shared link, and round-trips',
+      () {
+        const userId = '@william11:$_homeDomain';
+        final path = dmInvitePath(userId, domain: _homeDomain);
+        expect(
+          inviteLinkForUser(_frontend, userId, domain: _homeDomain),
+          '$_frontend$path',
+        );
+        expect(dmInviteUserIdFor(Uri.parse(path), domain: _homeDomain), userId);
+      },
+    );
+  });
 }

@@ -10,6 +10,7 @@ import 'package:fluffychat/features/navigation/panel_token.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/navigation/token_params/activity_token.dart';
+import 'package:fluffychat/features/navigation/user_id_url.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../controllers/pangea_controller.dart';
 
@@ -37,7 +38,10 @@ class PAuthGaurd {
     return !hasSetL2 ? '/registration' : PRoutes.world;
   }
 
-  /// Redirect for /rooms routes
+  /// The logged-in-only guard: the world root `/` and the DM invite landing
+  /// (`/invite_user/:userID`) wear it. Logged out, it is the caching half of
+  /// the login-bounce ferry ([_loginBounce]); logged in, the consumption half
+  /// ([consumeCachedJoinCode]).
   static FutureOr<String?> roomsRedirect(
     BuildContext context,
     GoRouterState state,
@@ -91,9 +95,20 @@ class PAuthGaurd {
     // anchored where the activity panel actually opens
     // (LeftPanelActivityDetailsSubpage).
     final activityId = SpaceCodeRepo.activityId;
-    if (activityId == null) return null;
-    if (activityInfoFor(current)?.activityId == activityId) return null;
-    return '${PRoutes.world}?left=${ActivityPanelToken(ActivityTokenParam(activityId: activityId)).encode()}';
+    if (activityId != null) {
+      if (activityInfoFor(current)?.activityId == activityId) return null;
+      return '${PRoutes.world}?left=${ActivityPanelToken(ActivityTokenParam(activityId: activityId)).encode()}';
+    }
+
+    // And a DM invite link (`/invite_user/<id>`, #8436), lowest in the same
+    // precedence: re-enter its landing route, which opens the DM and is the
+    // one consumer (DmInviteLandingPage). Any invite landing stays put — a
+    // logged-in click on a different invite than the cached one is the fresher
+    // intent, and the landing it renders consumes the ferry for both.
+    final dmInviteUserId = SpaceCodeRepo.dmInviteUserId;
+    if (dmInviteUserId == null) return null;
+    if (dmInviteUserIdFor(current) != null) return null;
+    return dmInvitePath(dmInviteUserId);
   }
 
   /// Bounce a logged-out user to /home. The bounce drops the destination URL,
@@ -103,7 +118,8 @@ class PAuthGaurd {
   /// user's next logged-in landing re-enters the join flow
   /// ([consumeCachedJoinCode]). The cache is time-stamped and expires
   /// (SpaceCodeRepo.cacheTTL) so a visitor who never logs in can't leave a
-  /// code that surprise-joins a much later login.
+  /// code that surprise-joins a much later login. The activity link and the
+  /// DM invite link ride the same ferry (below).
   static Future<String> _loginBounce(GoRouterState state) async {
     final joinCode = joinCodeFor(state.uri);
     if (joinCode != null) {
@@ -115,6 +131,13 @@ class PAuthGaurd {
     final activityId = activityInfoFor(state.uri)?.activityId;
     if (activityId != null) {
       await SpaceCodeRepo.setActivityId(activityId);
+    }
+    // So does a DM invite link (`/invite_user/<id>`, #8436): its landing
+    // route wears this same guard, so a logged-out click caches the invited
+    // user here and the post-login landing re-enters the landing route.
+    final dmInviteUserId = dmInviteUserIdFor(state.uri);
+    if (dmInviteUserId != null) {
+      await SpaceCodeRepo.setDmInviteUserId(dmInviteUserId);
     }
     return '/home';
   }
