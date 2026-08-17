@@ -282,7 +282,11 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     if (mounted) setState(() {});
   }
 
-  PangeaMessageEvent get pangeaMessageEvent => PangeaMessageEvent(
+  /// One wrapper per overlay lifetime — local mutations (translations,
+  /// corrections, STT) invalidate its memo internally, and a getter here
+  /// re-parsed every representation on each of the toolbar's many accesses
+  /// (#8393 stage 2).
+  late final PangeaMessageEvent pangeaMessageEvent = PangeaMessageEvent(
     event: widget._event,
     timeline: widget._timeline,
     ownMessage: widget._event.room.client.userID == widget._event.senderId,

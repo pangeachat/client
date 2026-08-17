@@ -175,25 +175,38 @@ void main() {
     final message = _BenchmarkMessage.ofLength(60);
     final event = messageEvent(message);
 
-    // Warm-up: module init, first layout, width/position caches.
+    const iterations = 40;
+
+    // Fresh-wrapper variant first (biases any residual warm-up advantage
+    // AGAINST the cached variant): a new wrapper per pump is what every
+    // timeline rebuild paid before the ChatController wrapper cache
+    // (#8393 stage 2), re-parsing the representation/token JSON each time.
+    for (var i = 0; i < 5; i++) {
+      await tester.pumpWidget(host(message, messageEvent(message)));
+    }
+    final freshStopwatch = Stopwatch()..start();
+    for (var i = 0; i < iterations; i++) {
+      await tester.pumpWidget(host(message, messageEvent(message)));
+    }
+    freshStopwatch.stop();
+
+    // Shared-wrapper variant: what the timeline pays with the cache.
     for (var i = 0; i < 5; i++) {
       await tester.pumpWidget(host(message, event));
     }
-
-    const iterations = 40;
-    final stopwatch = Stopwatch()..start();
+    final sharedStopwatch = Stopwatch()..start();
     for (var i = 0; i < iterations; i++) {
-      // A fresh HtmlMessage instance per pump, as the timeline produces on
-      // every sync-driven rebuild of an unchanged message.
       await tester.pumpWidget(host(message, event));
     }
-    stopwatch.stop();
+    sharedStopwatch.stop();
 
-    final msPerRebuild = stopwatch.elapsedMicroseconds / iterations / 1000.0;
+    String ms(Stopwatch s) =>
+        (s.elapsedMicroseconds / iterations / 1000.0).toStringAsFixed(2);
     // ignore: avoid_print
     print(
       'HTML_MESSAGE_BENCHMARK 60 tokens x $iterations rebuilds: '
-      '${msPerRebuild.toStringAsFixed(2)} ms/rebuild',
+      'fresh-wrapper ${ms(freshStopwatch)} ms/rebuild, '
+      'shared-wrapper ${ms(sharedStopwatch)} ms/rebuild',
     );
 
     expect(find.byType(UnderlineText), findsNWidgets(60));

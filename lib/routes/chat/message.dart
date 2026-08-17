@@ -116,9 +116,9 @@ class Message extends StatelessWidget {
     // #Pangea
     PangeaMessageEvent? pangeaMessageEvent;
     if (event.type == EventTypes.Message) {
-      pangeaMessageEvent = PangeaMessageEvent(
-        event: event,
-        timeline: timeline,
+      pangeaMessageEvent = controller.pangeaMessageEvents.get(
+        event,
+        timeline,
         ownMessage: event.senderId == Matrix.of(context).client.userID,
       );
     }
