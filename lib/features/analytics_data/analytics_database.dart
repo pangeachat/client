@@ -3,6 +3,8 @@
 import 'dart:async';
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common/sqflite.dart';
@@ -160,6 +162,20 @@ class AnalyticsDatabase with DatabaseFileStorage {
     await _collection.clear();
   }
 
+  /// Drop the boxes' in-memory decoded-value caches without touching stored
+  /// data, so a benchmark can measure cold (storage-backed) reads.
+  @visibleForTesting
+  void clearQuickAccessCaches() {
+    _lastEventTimestampBox.clearQuickAccessCache();
+    _serverConstructsBox.clearQuickAccessCache();
+    _localConstructsBox.clearQuickAccessCache();
+    _aggregatedServerVocabConstructsBox.clearQuickAccessCache();
+    _aggregatedLocalVocabConstructsBox.clearQuickAccessCache();
+    _aggregatedServerMorphConstructsBox.clearQuickAccessCache();
+    _aggregatedLocalMorphConstructsBox.clearQuickAccessCache();
+    _derivedStatsBox.clearQuickAccessCache();
+  }
+
   Future<T> _transaction<T>(Future<T> Function() action) {
     return _lock.synchronized(action);
   }
@@ -210,6 +226,19 @@ class AnalyticsDatabase with DatabaseFileStorage {
         : DerivedAnalyticsDataModel.fromJson(Map<String, dynamic>.from(raw));
   }
 
+  /// Server event keys are `lang|eventId|originServerTs`. When [since] is
+  /// set, keys whose event is older than `since - _sinceSkewAllowance` are
+  /// skipped before any read: a use is uploaded after it happens, so its
+  /// event's server timestamp is at or after the use's client timestamp
+  /// unless the client clock ran ahead of the server. The allowance keeps
+  /// that case correct for any plausible skew (#8420).
+  static const Duration _sinceSkewAllowance = Duration(days: 1);
+
+  /// How many server event keys are read per `getAll` while walking history
+  /// newest-first for [getUses]; small enough that a `count`-limited read
+  /// stops early, large enough to amortise the box round-trip.
+  static const int _serverKeyChunk = 64;
+
   Future<List<OneConstructUse>> getUses(
     String language, {
     int? count,
@@ -220,58 +249,72 @@ class AnalyticsDatabase with DatabaseFileStorage {
     final stopwatch = Stopwatch()..start();
     final results = <OneConstructUse>[];
 
-    bool addUseIfValid(OneConstructUse use) {
-      if (since != null && use.timeStamp.isBefore(since)) {
-        return false; // stop iteration entirely
-      }
-      if (roomId != null && use.metadata.roomId != roomId) {
-        return true; // skip but continue
-      }
-      if (types != null && !types.contains(use.useType)) {
-        return true; // skip but continue
-      }
-
+    /// Returns false when iteration of the current (desc-sorted) list should
+    /// stop: either everything remaining is older than [since], or [count]
+    /// has been reached.
+    bool addUse(OneConstructUse use) {
+      if (since != null && use.timeStamp.isBefore(since)) return false;
       results.add(use);
       return count == null || results.length < count;
     }
 
+    bool countReached() => count != null && results.length >= count;
+
     // ---- Local uses ----
-    final localUses = await getLocalUses(language)
-      ..sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
+    final localUses =
+        await _readLocalUses(language, roomId: roomId, types: types)
+          ..sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
 
     for (final use in localUses) {
-      if (!addUseIfValid(use)) break;
+      if (!addUse(use)) break;
     }
 
-    if (count != null && results.length >= count) {
+    if (countReached()) {
       stopwatch.stop();
       Logs().i("Get uses took ${stopwatch.elapsedMilliseconds} ms");
       return results;
     }
 
     // ---- Server uses ----
+    final sinceCutoff = since?.subtract(_sinceSkewAllowance);
     final serverKeys = (await _serverConstructsBox.getAllKeys())
         .where((key) => _isLanguageKey(key, language))
-        // Filter out malformed or legacy keys that don't have a timestamp
-        .where((key) {
+        .map((key) {
           final parts = key.split('|');
-          return parts.length >= 3 && int.tryParse(parts[2]) != null;
+          // Filter out malformed or legacy keys that don't have a timestamp
+          final ts = parts.length >= 3 ? int.tryParse(parts[2]) : null;
+          return ts == null ? null : (key: key, ts: ts);
         })
-        .sorted((a, b) {
-          final aTimestamp = int.parse(a.split('|')[2]);
-          final bTimestamp = int.parse(b.split('|')[2]);
-          return bTimestamp.compareTo(aTimestamp);
-        });
+        .nonNulls
+        .where(
+          (e) =>
+              sinceCutoff == null || e.ts >= sinceCutoff.millisecondsSinceEpoch,
+        )
+        .sorted((a, b) => b.ts.compareTo(a.ts))
+        .map((e) => e.key)
+        .toList();
 
-    for (final key in serverKeys) {
-      final serverUses = await getServerUses(key)
-        ..sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
+    for (
+      var i = 0;
+      i < serverKeys.length && !countReached();
+      i += _serverKeyChunk
+    ) {
+      final chunk = serverKeys.sublist(
+        i,
+        min(i + _serverKeyChunk, serverKeys.length),
+      );
+      final values = await _serverConstructsBox.getAll(chunk);
 
-      for (final use in serverUses) {
-        if (!addUseIfValid(use)) break;
+      for (final raw in values) {
+        final serverUses = _parseUses(raw, roomId: roomId, types: types)
+          ..sort((a, b) => b.timeStamp.compareTo(a.timeStamp));
+
+        for (final use in serverUses) {
+          if (!addUse(use)) break;
+        }
+
+        if (countReached()) break;
       }
-
-      if (count != null && results.length >= count) break;
     }
 
     stopwatch.stop();
@@ -279,30 +322,49 @@ class AnalyticsDatabase with DatabaseFileStorage {
     return results;
   }
 
-  Future<List<OneConstructUse>> getLocalUses(String language) async {
+  Future<List<OneConstructUse>> getLocalUses(String language) =>
+      _readLocalUses(language);
+
+  Future<List<OneConstructUse>> _readLocalUses(
+    String language, {
+    String? roomId,
+    List<ConstructUseTypeEnum>? types,
+  }) async {
     final List<OneConstructUse> uses = [];
     final localKeys = (await _localConstructsBox.getAllKeys())
         .where((key) => _isLanguageKey(key, language))
         .toList();
+    if (localKeys.isEmpty) return uses;
 
     final localValues = await _localConstructsBox.getAll(localKeys);
     for (final rawList in localValues) {
-      if (rawList == null) continue;
-      for (final raw in rawList) {
-        final use = OneConstructUse.fromJson(Map<String, dynamic>.from(raw));
-        uses.add(use);
-      }
+      uses.addAll(_parseUses(rawList, roomId: roomId, types: types));
     }
     return uses;
   }
 
-  Future<List<OneConstructUse>> getServerUses(String key) async {
-    final List<OneConstructUse> uses = [];
-    final serverValues = await _serverConstructsBox.get(key);
-    if (serverValues == null) return [];
+  Future<List<OneConstructUse>> getServerUses(String key) async =>
+      _parseUses(await _serverConstructsBox.get(key));
 
-    for (final entry in serverValues) {
-      uses.add(OneConstructUse.fromJson(Map<String, dynamic>.from(entry)));
+  /// Deserialize a stored uses list, applying the [roomId] / [types] filters
+  /// on the raw JSON first so non-matching uses are never constructed. The
+  /// raw fields mirror [OneConstructUse.toJson] (`chatId`, `useType`).
+  static List<OneConstructUse> _parseUses(
+    List? rawList, {
+    String? roomId,
+    List<ConstructUseTypeEnum>? types,
+  }) {
+    if (rawList == null) return const [];
+    final List<OneConstructUse> uses = [];
+    for (final raw in rawList) {
+      if (roomId != null && raw['chatId'] != roomId) continue;
+      if (types != null &&
+          !types.contains(
+            ConstructUseTypeEnum.fromString(raw['useType'] as String? ?? ''),
+          )) {
+        continue;
+      }
+      uses.add(OneConstructUse.fromJson(Map<String, dynamic>.from(raw)));
     }
     return uses;
   }
@@ -319,46 +381,64 @@ class AnalyticsDatabase with DatabaseFileStorage {
     String language,
   ) async {
     assert(ids.isNotEmpty);
-
-    final ConstructUses construct = ConstructUses(
-      uses: [],
-      constructType: ids.first.type,
-      lemma: ids.first.lemma,
-      category: ids.first.category,
-    );
-
-    for (final id in ids) {
-      final key = id.storageKey;
-
-      ConstructUses? server;
-      ConstructUses? local;
-
-      final serverBox = _aggBox(id.type, false);
-      final localBox = _aggBox(id.type, true);
-
-      final serverRaw = await serverBox.get(_langKey(key, language));
-      if (serverRaw != null) {
-        server = ConstructUses.fromJson(Map<String, dynamic>.from(serverRaw));
-      }
-
-      final localRaw = await localBox.get(_langKey(key, language));
-      if (localRaw != null) {
-        local = ConstructUses.fromJson(Map<String, dynamic>.from(localRaw));
-      }
-
-      if (server != null) construct.merge(server);
-      if (local != null) construct.merge(local);
-    }
-    return construct;
+    final result = await getConstructUses({ids.first: ids}, language);
+    return result[ids.first]!;
   }
 
+  /// One [ConstructUses] per key of [ids], each merged from the server and
+  /// local aggregates of every id in its group (server then local, in group
+  /// order). All rows are fetched with one `getAll` per box (#8420).
   Future<Map<ConstructIdentifier, ConstructUses>> getConstructUses(
     Map<ConstructIdentifier, List<ConstructIdentifier>> ids,
     String language,
   ) async {
+    // Collect the storage keys needed from each of the four aggregate boxes.
+    final wanted = <Box<Map>, Set<String>>{};
+    for (final group in ids.values) {
+      for (final id in group) {
+        final key = _langKey(id.storageKey, language);
+        (wanted[_aggBox(id.type, false)] ??= {}).add(key);
+        (wanted[_aggBox(id.type, true)] ??= {}).add(key);
+      }
+    }
+
+    final fetched = <Box<Map>, Map<String, Map?>>{};
+    await Future.wait(
+      wanted.entries.map((e) async {
+        final keys = e.value.toList();
+        final values = await e.key.getAll(keys);
+        fetched[e.key] = Map.fromIterables(keys, values);
+      }),
+    );
+
     final Map<ConstructIdentifier, ConstructUses> results = {};
     for (final entry in ids.entries) {
-      final construct = await getConstructUse(entry.value, language);
+      final group = entry.value;
+      // An empty group (id excluded by the merge table) yields an empty
+      // construct for the requested id, as the per-id path always did.
+      final head = group.isEmpty ? entry.key : group.first;
+      final construct = ConstructUses(
+        uses: [],
+        constructType: head.type,
+        lemma: head.lemma,
+        category: head.category,
+      );
+
+      for (final id in group) {
+        final key = _langKey(id.storageKey, language);
+        final serverRaw = fetched[_aggBox(id.type, false)]?[key];
+        final localRaw = fetched[_aggBox(id.type, true)]?[key];
+        if (serverRaw != null) {
+          construct.merge(
+            ConstructUses.fromJson(Map<String, dynamic>.from(serverRaw)),
+          );
+        }
+        if (localRaw != null) {
+          construct.merge(
+            ConstructUses.fromJson(Map<String, dynamic>.from(localRaw)),
+          );
+        }
+      }
       results[entry.key] = construct;
     }
     return results;

@@ -18,6 +18,10 @@
 //   E. Pure ConstructUses.merge of two large sorted lists.
 //   F. ConstructUses.fromJson over every aggregate (parse cost attribution).
 //   G. ConstructUses constructor over already-parsed uses (sort cost).
+//   H. AnalyticsDatabase.getUses — level page (count) and activity-summary
+//      (roomId + since) shapes over 400 extra server events.
+//   I. AnalyticsDatabase.getConstructUses for 500 ids — the service getUses
+//      capped-last-use lookup, batched.
 //
 // Output is a small table of best-of-N wall-clock milliseconds.
 
@@ -26,6 +30,7 @@ import 'dart:math';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
@@ -126,6 +131,57 @@ void main() {
         await db.updateServerAnalytics([
           events.event([...vocabUses, ...morphUses], ts: at(200000)),
         ], testLang);
+      });
+
+      // Plus a spread of small server events, so getUses walks real history.
+      for (var i = 0; i < 400; i++) {
+        await db.updateServerAnalytics([
+          events.event(
+            usesFor(
+              'w${i * 7}',
+              count: 5,
+              startMinute: 200000 + i * 5,
+              roomId: i % 10 == 0 ? '!hot' : '!r${i % 37}',
+            ),
+            ts: at(200001 + i * 5),
+          ),
+        ], testLang);
+      }
+
+      // ---- H. getUses shapes (level page / activity summary) --------------
+      final hMicros = await _bestOfAsync(_runs, () async {
+        await db.getUses(testLang, count: 100);
+      });
+      final h2Micros = await _bestOfAsync(_runs, () async {
+        await db.getUses(testLang, roomId: '!hot', since: at(200000 + 300 * 5));
+      });
+
+      // ---- I. batched aggregate lookup (service getUses hoist) -----------
+      final ids = List.generate(
+        500,
+        (i) => ConstructIdentifier(
+          lemma: 'w${i * 3}',
+          type: ConstructTypeEnum.vocab,
+          category: 'noun',
+        ),
+      );
+      final iMicros = await _bestOfAsync(_runs, () async {
+        await db.getConstructUses({
+          for (final id in ids) id: [id],
+        }, testLang);
+      });
+
+      // Cold variants: drop the boxes' decoded-value caches before each run so
+      // every box read is a real sqlite round-trip.
+      final h2ColdMicros = await _bestOfAsync(_runs, () async {
+        db.clearQuickAccessCaches();
+        await db.getUses(testLang, roomId: '!hot', since: at(200000 + 300 * 5));
+      });
+      final iColdMicros = await _bestOfAsync(_runs, () async {
+        db.clearQuickAccessCaches();
+        await db.getConstructUses({
+          for (final id in ids) id: [id],
+        }, testLang);
       });
 
       // ---- A. recompute-equivalent ---------------------------------------
@@ -263,6 +319,15 @@ void main() {
         ..writeln('  C 5x points/cappedLastUse/level     ${_ms(cMicros)} ms')
         ..writeln('  D per-sync aggregate update          ${_ms(dMicros)} ms')
         ..writeln('  E merge two 20k sorted lists         ${_ms(eMicros)} ms')
+        ..writeln('  H getUses(count:100)                 ${_ms(hMicros)} ms')
+        ..writeln('  H2 getUses(roomId, since 100 events) ${_ms(h2Micros)} ms')
+        ..writeln('  I getConstructUses(500 ids)          ${_ms(iMicros)} ms')
+        ..writeln(
+          '  H2c same, cold box cache              ${_ms(h2ColdMicros)} ms',
+        )
+        ..writeln(
+          '  Ic  same, cold box cache              ${_ms(iColdMicros)} ms',
+        )
         ..writeln('  F fromJson all aggregates            ${_ms(fMicros)} ms')
         ..writeln('  G construct from parsed uses (sort)  ${_ms(gMicros)} ms');
       // ignore: avoid_print
