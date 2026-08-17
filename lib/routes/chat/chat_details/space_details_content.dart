@@ -93,10 +93,17 @@ class SpaceDetailsContent extends StatelessWidget {
             constraints.maxHeight.isFinite &&
             constraints.maxHeight < _kCompactCardMaxHeight;
         if (compact) {
+          // The nav cavity hands the peek TIGHT height constraints, which
+          // would inflate the bar's fixed-height box to fill the slot; Align
+          // restores loose constraints so the peek bar renders at the same
+          // height as on the full page.
           return Padding(
             padding: sectionPadding,
-            child: CourseProgressBar(
-              objectivesProvider: controller.objectivesProvider,
+            child: Align(
+              alignment: Alignment.topCenter,
+              child: CourseProgressBar(
+                objectivesProvider: controller.objectivesProvider,
+              ),
             ),
           );
         }
