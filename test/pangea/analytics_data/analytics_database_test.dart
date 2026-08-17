@@ -256,6 +256,37 @@ void main() {
       expect(c.points, 10);
     });
 
+    test(
+      'getConstructUses: an empty group yields an empty construct for the key',
+      () async {
+        final result = await db.getConstructUses({
+          vocabId('nada'): [],
+        }, testLang);
+        expect(result[vocabId('nada')]!.numTotalUses, 0);
+        expect(result[vocabId('nada')]!.lemma, 'nada');
+      },
+    );
+
+    test(
+      'getConstructUses handles a large batch (> the 1000-key sql limit)',
+      () async {
+        final ids = List.generate(1200, (i) => vocabId('w$i'));
+        await db.updateServerAnalytics([
+          events.event([
+            for (var i = 0; i < 1200; i += 3)
+              ...usesFor('w$i', count: 1, xpEach: 5),
+          ], ts: at(10)),
+        ], testLang);
+        final result = await db.getConstructUses({
+          for (final id in ids) id: [id],
+        }, testLang);
+        expect(result.length, 1200);
+        expect(result[vocabId('w0')]!.points, 5);
+        expect(result[vocabId('w1')]!.points, 0);
+        expect(result[vocabId('w1197')]!.points, 5);
+      },
+    );
+
     test('getConstructUses returns one entry per requested key', () async {
       await db.updateServerAnalytics([
         events.event([
@@ -364,6 +395,79 @@ void main() {
       );
       expect(uses.length, 8);
     });
+
+    test('count across many server events stops at the right use', () async {
+      // 150 one-use events > the 64-key read chunk; newest event first.
+      for (var i = 0; i < 150; i++) {
+        await db.updateServerAnalytics([
+          events.event(usesFor('w$i', count: 1, startMinute: i), ts: at(i)),
+        ], testLang);
+      }
+      final uses = await db.getUses(testLang, count: 70);
+      expect(uses.length, 70);
+      expect(uses.first.lemma, 'w149');
+      expect(uses.last.lemma, 'w80');
+      expect(
+        uses.map((u) => u.timeStamp).toList(),
+        List.generate(70, (i) => at(149 - i)),
+      );
+
+      final all = await db.getUses(testLang);
+      expect(all.length, 150);
+      expect(all.last.lemma, 'w0');
+    });
+
+    test('since keeps uses in an event whose server timestamp trails them '
+        '(client clock ahead) inside the skew allowance', () async {
+      // Event stamped at minute 0 by the server, but the client-stamped uses
+      // inside it are at minute 30 and 31.
+      await db.updateServerAnalytics([
+        events.event(
+          usesFor('adelantado', count: 2, startMinute: 30),
+          ts: at(0),
+        ),
+      ], testLang);
+      // A genuinely old event, well outside the allowance.
+      await db.updateServerAnalytics([
+        events.event(
+          usesFor('viejo', count: 1, startMinute: 0),
+          ts: at(60 * 24 * 3),
+        ),
+      ], testLang);
+      final uses = await db.getUses(testLang, since: at(31));
+      expect(uses.map((u) => u.lemma).toList(), ['adelantado']);
+      expect(uses.single.timeStamp, at(31));
+
+      // Far beyond the allowance: an event 2 days older than `since` is not
+      // read at all, so its uses can never appear.
+      final later = await db.getUses(testLang, since: at(60 * 24 * 2 + 30));
+      expect(later, isEmpty);
+    });
+
+    test(
+      'roomId / types filters give the same result as filtering afterwards',
+      () async {
+        await seed();
+        final all = await db.getUses(testLang);
+        final expected = all
+            .where(
+              (u) =>
+                  u.metadata.roomId == '!a' &&
+                  u.useType == ConstructUseTypeEnum.corPA,
+            )
+            .toList();
+        final filtered = await db.getUses(
+          testLang,
+          roomId: '!a',
+          types: [ConstructUseTypeEnum.corPA],
+        );
+        expect(
+          filtered.map((u) => u.timeStamp),
+          expected.map((u) => u.timeStamp),
+        );
+        expect(filtered, isNotEmpty);
+      },
+    );
 
     test('empty database returns empty', () async {
       expect(await db.getUses(testLang), isEmpty);

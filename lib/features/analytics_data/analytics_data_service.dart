@@ -172,13 +172,12 @@ class AnalyticsDataService {
 
       _invalidateCaches();
       final l2 = MatrixState.pangeaController.userController.userL2;
-      final analyticsUserId = await _analyticsClientGetter.database.getUserID();
-      final storedLanguage = await _analyticsClientGetter.database
-          .getCurrentLanguage();
-
-      final storedAnalyticsRoomId = l2 != null
-          ? await _analyticsClientGetter.database.getAnalyticsRoomId()
-          : null;
+      final database = _analyticsClientGetter.database;
+      final (analyticsUserId, storedLanguage, storedAnalyticsRoomId) = await (
+        database.getUserID(),
+        database.getCurrentLanguage(),
+        l2 != null ? database.getAnalyticsRoomId() : Future<String?>.value(),
+      ).wait;
 
       final analyticsRoomId = l2 != null
           ? _getAnalyticsRoomLocal(l2)?.id
@@ -264,14 +263,11 @@ class AnalyticsDataService {
   }
 
   Future<void> _initMergeTable(String language) async {
-    final vocab = await _analyticsClientGetter.database.getAggregatedConstructs(
-      ConstructTypeEnum.vocab,
-      language,
-    );
-    final morph = await _analyticsClientGetter.database.getAggregatedConstructs(
-      ConstructTypeEnum.morph,
-      language,
-    );
+    final database = _analyticsClientGetter.database;
+    final (vocab, morph) = await (
+      database.getAggregatedConstructs(ConstructTypeEnum.vocab, language),
+      database.getAggregatedConstructs(ConstructTypeEnum.morph, language),
+    ).wait;
 
     final blocked = blockedConstructs;
     _mergeTable.addConstructs(vocab, blocked);
@@ -383,18 +379,26 @@ class AnalyticsDataService {
     );
 
     final blocked = blockedConstructs;
-    final List<OneConstructUse> filtered = [];
 
-    final Map<ConstructIdentifier, DateTime?> cappedLastUseCache = {};
-    for (final use in uses) {
-      if (blocked.contains(use.identifier)) continue;
-      if (use.identifier.isInvalid) continue;
-
-      if (!cappedLastUseCache.containsKey(use.identifier)) {
-        final constructs = await getConstructUse(use.identifier, language);
-        cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
+    // Every distinct, visible identifier in one batched aggregate read, so the
+    // per-use loop below never awaits (#8420).
+    final visibleIds = <ConstructIdentifier>{
+      for (final use in uses)
+        if (!blocked.contains(use.identifier) && !use.identifier.isInvalid)
+          use.identifier,
+    };
+    final Map<ConstructIdentifier, DateTime?> cappedLastUseById = {};
+    if (filterCapped && visibleIds.isNotEmpty) {
+      final constructs = await getConstructUses(visibleIds.toList(), language);
+      for (final entry in constructs.entries) {
+        cappedLastUseById[entry.key] = entry.value.cappedLastUse;
       }
-      final cappedLastUse = cappedLastUseCache[use.identifier];
+    }
+
+    final List<OneConstructUse> filtered = [];
+    for (final use in uses) {
+      if (!visibleIds.contains(use.identifier)) continue;
+      final cappedLastUse = cappedLastUseById[use.identifier];
       if (filterCapped &&
           (cappedLastUse != null && use.timeStamp.isAfter(cappedLastUse))) {
         continue;
