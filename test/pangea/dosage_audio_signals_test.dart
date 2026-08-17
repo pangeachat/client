@@ -62,7 +62,43 @@ void main() {
         'auto_read',
         'tap_read',
         'toolbar_read',
+        'word_audio',
+        'practice_audio',
       ]);
+    });
+
+    test('word and drill audio are their OWN categories, not message ones', () {
+      // The four that came first are all about a MESSAGE — a peer's voice
+      // message, a message read aloud on arrival, a message the speaker button
+      // was tapped on, a message the toolbar was opened on. A tapped word and a
+      // drill choice are neither, and `tap_read` is the one they would have been
+      // folded into: it is the only learner-initiated member, and it means the
+      // whole message on the paid route.
+      for (final category in [
+        DosageListeningCategory.wordAudio,
+        DosageListeningCategory.practiceAudio,
+      ]) {
+        for (final message in [
+          DosageListeningCategory.peer,
+          DosageListeningCategory.autoRead,
+          DosageListeningCategory.tapRead,
+          DosageListeningCategory.toolbarRead,
+        ]) {
+          expect(category.wireName, isNot(message.wireName));
+          expect(category.coverage, isNot(message.coverage));
+        }
+      }
+      // And not each other: looking a word up and drilling are two study
+      // behaviours, which is the whole reason there are two of these and not
+      // one.
+      expect(
+        DosageListeningCategory.wordAudio.wireName,
+        isNot(DosageListeningCategory.practiceAudio.wireName),
+      );
+      expect(
+        DosageListeningCategory.wordAudio.coverage,
+        isNot(DosageListeningCategory.practiceAudio.coverage),
+      );
     });
 
     test('toolbar-open read-aloud is its OWN category, not tap_read', () {
@@ -87,7 +123,7 @@ void main() {
       );
     });
 
-    test('coverage has FIVE categories — voiceSend is not a listening one', () {
+    test('coverage has SEVEN categories — voiceSend is not a listening one', () {
       // Speaking's magnitude is derived server-side, so there is no speaking
       // playback event; but the server only learns a voice message exists from a
       // client row, so its DENOMINATOR still needs a declaration (D-V2-15).
@@ -96,6 +132,8 @@ void main() {
         'auto_read',
         'tap_read',
         'toolbar_read',
+        'word_audio',
+        'practice_audio',
         'voice_send',
       ]);
       // The type system, not a convention, is what stops a listening event being

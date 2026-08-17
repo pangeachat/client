@@ -82,11 +82,13 @@ class _BankedPeriod {
 /// `(sender, category, period_start)` under an extend-only upsert, so
 /// re-declaring the same `period_start` with a later `period_end` lengthens ONE
 /// row. Minting a fresh start each seal instead banks a new row every time —
-/// five categories × twelve heartbeats an hour = sixty rows an hour, which walks
-/// into the server's per-day anti-abuse cap after three or four hours of app-open
-/// time, at which point coverage is dropped and the learner's listening counters
-/// withhold for the rest of the UTC day. Extending is what the server's key was
-/// built for, and what keeps a whole school day inside the cap.
+/// seven categories × twelve heartbeats an hour = eighty-four rows an hour,
+/// which walks into the server's per-day anti-abuse cap in a couple of hours of
+/// app-open time, at which point coverage is dropped and the learner's listening
+/// counters withhold for the rest of the UTC day. Extending is what the server's
+/// key was built for, and what keeps a whole school day inside the cap — and it
+/// is why growing the vocabulary costs a batch's event budget rather than a
+/// learner's whole afternoon of coverage.
 ///
 /// Two rules keep extending honest, and both are about never claiming an
 /// interval nobody watched:
@@ -149,12 +151,14 @@ class DosageAudioBuffer {
   /// The most coverage declarations one seal can produce: every category, times
   /// the segments its interval can be cut into.
   ///
-  /// Restated as a literal rather than computed because [maxEventsPerBatch] must
-  /// be a compile-time constant. `dosage_audio_buffer_test.dart` pins it against
-  /// [DosageCoverageCategory.values] and against [maxObservedGap], so adding a
-  /// category — or widening the gap past a day — is a failing test rather than a
-  /// batch the route silently 413s.
-  static const int maxCoverageItemsPerBatch = 5 * maxCoverageSegmentsPerSeal;
+  /// The 7 is [DosageCoverageCategory.values].length restated as a literal
+  /// rather than computed, because [maxEventsPerBatch] must be a compile-time
+  /// constant. So it is hand-bumped whenever a category is added, and
+  /// `dosage_audio_buffer_test.dart` pins it against
+  /// [DosageCoverageCategory.values] and against [maxObservedGap] — a category
+  /// added without bumping it here is a failing test rather than a batch the
+  /// route silently 413s.
+  static const int maxCoverageItemsPerBatch = 7 * maxCoverageSegmentsPerSeal;
 
   /// Playbacks accumulated before the accumulator seals. The route's cap minus
   /// the room the same body's coverage needs, so a full batch plus its
@@ -374,8 +378,9 @@ class DosageAudioBuffer {
   /// server has already acknowledged coverage right up to it, that acknowledged
   /// row's start, so the upsert extends one row instead of banking another.
   ///
-  /// The declaration set is [DosageCoverageCategory.values] — all five, including
-  /// `voiceSend`. This is the one place the build asserts what it instruments,
+  /// The declaration set is [DosageCoverageCategory.values] — all seven,
+  /// including `voiceSend`. This is the one place the build asserts what it
+  /// instruments,
   /// so if an emitter is ever removed without removing its category here, the
   /// server is told a counter is covered that nothing feeds. The parity test
   /// exists to make that a failing test rather than a silent zero.
@@ -385,7 +390,7 @@ class DosageAudioBuffer {
   /// no edit, and an older build that has neither declares neither, so the server
   /// withholds that counter for it rather than serving its silence as a zero.
   ///
-  /// The four LISTENING categories are always declared: their events ride in
+  /// The six LISTENING categories are always declared: their events ride in
   /// this same batch, so a lost batch loses the declaration with it — and, since
   /// no later seal may anchor past an interval the ingest never acknowledged,
   /// loses it for good rather than having a subsequent extension quietly cover

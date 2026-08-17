@@ -65,7 +65,7 @@ void main() {
   tearDown(DosageAudioBuffer.debugResetAccounts);
 
   group('coverage declaration', () {
-    test('every flush declares ALL FIVE categories, even with no audio', () {
+    test('every flush declares ALL SEVEN categories, even with no audio', () {
       final bodies = <Map<String, dynamic>>[];
       final buffer = DosageAudioBuffer(
         now: () => clock,
@@ -89,6 +89,8 @@ void main() {
           'auto_read',
           'tap_read',
           'toolbar_read',
+          'word_audio',
+          'practice_audio',
           'voice_send',
         });
         expect((bodies.single['events'] as List), isEmpty);
@@ -100,10 +102,11 @@ void main() {
     });
 
     test('a period EXTENDS across flushes rather than minting a new one', () async {
-      // The defect this replaced: a fresh period_start every seal banked five new
-      // rows per flush — sixty an hour — and walked into the server's per-day
-      // coverage cap after three or four hours of app-open time, after which the
-      // learner's listening counters withheld for the rest of the UTC day.
+      // The defect this replaced: a fresh period_start every seal banked one new
+      // row per category per flush — seven categories × twelve heartbeats is
+      // eighty-four an hour — and walked into the server's per-day coverage cap
+      // within a couple of hours of app-open time, after which the learner's
+      // listening counters withheld for the rest of the UTC day.
       final bodies = <Map<String, dynamic>>[];
       final buffer = DosageAudioBuffer(
         now: () => clock,
@@ -118,7 +121,7 @@ void main() {
 
       expect(bodies, hasLength(6));
       // The server banks one row per (category, period_start). Six flushes of
-      // five categories must still be five rows, not thirty.
+      // seven categories must still be seven rows, not forty-two.
       final rows = bodies
           .expand((b) => (b['coverage'] as List).cast<Map<String, dynamic>>())
           .map((c) => '${c['category']}@${c['period_start']}')
@@ -321,7 +324,7 @@ void main() {
     test('a PARTIAL write does not extend anything either', () async {
       // The count is an aggregate — rows written, not which ones. The server drops
       // individual declarations that hit its per-day coverage cap, so a batch of
-      // five that reports one written leaves four unaccounted for. Banking on that
+      // seven that reports one written leaves six unaccounted for. Banking on that
       // would anchor rows the server does not hold.
       final bodies = <Map<String, dynamic>>[];
       final buffer = DosageAudioBuffer(
@@ -334,7 +337,7 @@ void main() {
             jsonEncode({
               'status': 'accepted',
               'playbacks': (body['events'] as List).length,
-              // One of the five landed; the rest hit the daily cap.
+              // One of the seven landed; the rest hit the daily cap.
               'coverage': declared > 1 ? 1 : declared,
             }),
             202,
@@ -566,7 +569,14 @@ void main() {
           .cast<Map<String, dynamic>>()
           .map((c) => c['category'])
           .toSet();
-      expect(declared, {'peer', 'auto_read', 'tap_read', 'toolbar_read'});
+      expect(declared, {
+        'peer',
+        'auto_read',
+        'tap_read',
+        'toolbar_read',
+        'word_audio',
+        'practice_audio',
+      });
       expect(
         declared,
         isNot(contains('voice_send')),
@@ -616,7 +626,15 @@ void main() {
               .cast<Map<String, dynamic>>()
               .map((c) => c['category'])
               .toSet(),
-          {'peer', 'auto_read', 'tap_read', 'toolbar_read', 'voice_send'},
+          {
+            'peer',
+            'auto_read',
+            'tap_read',
+            'toolbar_read',
+            'word_audio',
+            'practice_audio',
+            'voice_send',
+          },
         );
       },
     );
@@ -660,7 +678,7 @@ void main() {
       // its declaration landed would have the server serve an undercount as a
       // confident total.
       expect((bodies.single['events'] as List), hasLength(1));
-      expect((bodies.single['coverage'] as List), hasLength(5));
+      expect((bodies.single['coverage'] as List), hasLength(7));
     });
   });
 
@@ -914,7 +932,7 @@ void main() {
       // licensed them. The server then sees an undeclared period and withholds,
       // rather than serving the surviving events as a total.
       for (final batch in buffer.pendingBatches) {
-        expect(batch.coverage, hasLength(5));
+        expect(batch.coverage, hasLength(7));
       }
     });
 
