@@ -574,40 +574,41 @@ class HtmlMessage extends StatelessWidget {
                     ),
                   CompositedTransformTarget(
                     link: layerLinkAndKey?.link ?? LayerLink(),
-                    child: MouseRegion(
-                      key: layerLinkAndKey?.key,
-                      cursor: SystemMouseCursors.click,
-                      child: GestureDetector(
-                        behavior: HitTestBehavior.translucent,
-                        onTap: onClick != null && token != null
-                            ? () => onClick?.call(token)
-                            : null,
-                        child: HoverBuilder(
-                          builder: (context, hovered) {
-                            final underlineTextWidget = UnderlineText(
-                              text: node.text.trim(),
-                              style: existingStyle,
-                              linkStyle: linkStyle,
-                              textDirection: pangeaMessageEvent?.textDirection,
-                              underlineColor: TokenRenderingUtil.underlineColor(
-                                underlineColor,
-                                selected: selected,
-                                highlighted: highlighted,
-                                isNew: isNew,
-                                practiceMode: isPracticeMode,
-                                hovered: hovered,
-                              ),
-                            );
-                            return ShimmerBackground(
-                              enabled: showShimmer,
-                              borderRadius: BorderRadius.circular(4.0),
-                              child: TokenRenderingUtil.vocabHighlight(
-                                highlight: isVocabHighlight,
-                                child: underlineTextWidget,
-                              ),
-                            );
-                          },
-                        ),
+                    child: GestureDetector(
+                      behavior: HitTestBehavior.translucent,
+                      onTap: onClick != null && token != null
+                          ? () => onClick?.call(token)
+                          : null,
+                      // One MouseRegion per token: HoverBuilder carries the
+                      // cursor and the overlay target key, replacing the
+                      // second wrapper region (issue #8426).
+                      child: HoverBuilder(
+                        key: layerLinkAndKey?.key,
+                        cursor: SystemMouseCursors.click,
+                        builder: (context, hovered) {
+                          final underlineTextWidget = UnderlineText(
+                            text: node.text.trim(),
+                            style: existingStyle,
+                            linkStyle: linkStyle,
+                            textDirection: pangeaMessageEvent?.textDirection,
+                            underlineColor: TokenRenderingUtil.underlineColor(
+                              underlineColor,
+                              selected: selected,
+                              highlighted: highlighted,
+                              isNew: isNew,
+                              practiceMode: isPracticeMode,
+                              hovered: hovered,
+                            ),
+                          );
+                          return ShimmerBackground(
+                            enabled: showShimmer,
+                            borderRadius: BorderRadius.circular(4.0),
+                            child: TokenRenderingUtil.vocabHighlight(
+                              highlight: isVocabHighlight,
+                              child: underlineTextWidget,
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),

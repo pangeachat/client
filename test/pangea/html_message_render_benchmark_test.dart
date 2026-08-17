@@ -168,6 +168,16 @@ void main() {
 
     expect(find.byType(UnderlineText), findsNWidgets(60));
     expect(find.byType(HtmlMessage), findsOneWidget);
+
+    // One MouseRegion per token — the wrapper region was collapsed into
+    // HoverBuilder (issue #8426).
+    expect(
+      find.descendant(
+        of: find.byType(HtmlMessage),
+        matching: find.byType(MouseRegion),
+      ),
+      findsNWidgets(60),
+    );
   });
 
   testWidgets('rebuild benchmark: 60-word message, 40 timeline-style '
