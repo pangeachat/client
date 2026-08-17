@@ -64,7 +64,6 @@ class _CourseCatchUpState extends State<CourseCatchUp> {
             padding: const EdgeInsets.all(12.0),
             decoration: BoxDecoration(
               color: gold.withAlpha(30),
-              border: Border.all(color: gold.withAlpha(120)),
               borderRadius: BorderRadius.circular(AppConfig.borderRadius),
             ),
             child: Column(

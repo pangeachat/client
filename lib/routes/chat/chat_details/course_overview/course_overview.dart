@@ -8,6 +8,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
@@ -194,23 +195,44 @@ class _CourseOverviewState extends State<CourseOverview> {
                       widget.controller.objectivesProvider.questLoader,
                       widget.controller.objectivesProvider.progression,
                     ]),
-                    builder: (context, _) => CourseObjectivesList(
-                      room: room,
-                      shrinkWrap: true,
-                      upNextOnly: true,
-                      hasCompletedActivity: (activityId) => widget
-                          .controller
-                          .roomSummariesModel
-                          .hasCompletedActivity(
-                            room.client.userID!,
-                            activityId,
+                    builder: (context, _) {
+                      final provider = widget.controller.objectivesProvider;
+                      // "See full course plan" only leads somewhere when a
+                      // plan can render: hidden when the course has none or
+                      // it failed to load (the list shows the error state
+                      // alone).
+                      final hasPlan = switch (provider.questLoader.value) {
+                        AsyncLoaded() =>
+                          provider.filteredObjectiveGroups.isNotEmpty,
+                        AsyncLoading() => true,
+                        AsyncError() || AsyncIdle() => false,
+                      };
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          CourseObjectivesList(
+                            room: room,
+                            shrinkWrap: true,
+                            upNextOnly: true,
+                            hasCompletedActivity: (activityId) => widget
+                                .controller
+                                .roomSummariesModel
+                                .hasCompletedActivity(
+                                  room.client.userID!,
+                                  activityId,
+                                ),
+                            objectivesProvider:
+                                widget.controller.objectivesProvider,
                           ),
-                      objectivesProvider: widget.controller.objectivesProvider,
-                    ),
-                  ),
-                  CourseSectionLink(
-                    label: l10n.seeFullCoursePlan,
-                    onTap: () => _openSubpage(SpaceSettingsTabs.course),
+                          if (hasPlan)
+                            CourseSectionLink(
+                              label: l10n.seeFullCoursePlan,
+                              onTap: () =>
+                                  _openSubpage(SpaceSettingsTabs.course),
+                            ),
+                        ],
+                      );
+                    },
                   ),
                 ],
               ),
