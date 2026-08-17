@@ -1,7 +1,6 @@
-import 'package:get_storage/get_storage.dart';
-
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/expiring_storage_box.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -10,32 +9,15 @@ import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_selec
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_target.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-class _PracticeSelectionCacheEntry {
-  final PracticeSelection selection;
-  final DateTime timestamp;
-
-  _PracticeSelectionCacheEntry({
-    required this.selection,
-    required this.timestamp,
-  });
-
-  bool get isExpired => DateTime.now().difference(timestamp).inDays > 1;
-
-  Map<String, dynamic> toJson() => {
-    'selection': selection.toJson(),
-    'timestamp': timestamp.toIso8601String(),
-  };
-
-  factory _PracticeSelectionCacheEntry.fromJson(Map<String, dynamic> json) {
-    return _PracticeSelectionCacheEntry(
-      selection: PracticeSelection.fromJson(json['selection']),
-      timestamp: DateTime.parse(json['timestamp']),
-    );
-  }
-}
-
 class PracticeSelectionRepo {
-  static final GetStorage _storage = GetStorage('practice_selection_cache');
+  /// Selections are keyed by eventId. The TTL matches the previous
+  /// `difference.inDays > 1` check, which (with truncation) meant an entry
+  /// lived through two full days.
+  static final ExpiringStorageBox _cache = ExpiringStorageBox(
+    'practice_selection_cache',
+    ttl: const Duration(days: 2),
+    payloadKey: 'selection',
+  );
 
   static Future<PracticeSelection?> get(
     String eventId,
@@ -92,30 +74,13 @@ class PracticeSelectionRepo {
   }
 
   static Future<PracticeSelection?> _getCached(String eventId) async {
-    try {
-      final keys = List.from(_storage.getKeys());
-      for (final String key in keys) {
-        final cacheEntry = _PracticeSelectionCacheEntry.fromJson(
-          _storage.read(key),
-        );
-        if (cacheEntry.isExpired) {
-          await _storage.remove(key);
-        }
-      }
-    } catch (e) {
-      await _storage.erase();
-      return null;
-    }
-
-    final entry = _storage.read(eventId);
-    if (entry == null) return null;
+    final json = _cache.read(eventId);
+    if (json == null) return null;
 
     try {
-      return _PracticeSelectionCacheEntry.fromJson(
-        _storage.read(eventId),
-      ).selection;
+      return PracticeSelection.fromJson(json);
     } catch (e) {
-      await _storage.remove(eventId);
+      await _cache.remove(eventId);
       return null;
     }
   }
@@ -125,11 +90,7 @@ class PracticeSelectionRepo {
     PracticeSelection entry,
   ) async {
     try {
-      final cachedEntry = _PracticeSelectionCacheEntry(
-        selection: entry,
-        timestamp: DateTime.now(),
-      );
-      await _storage.write(eventId, cachedEntry.toJson());
+      await _cache.write(eventId, entry.toJson());
     } catch (e, s) {
       ErrorHandler.logError(
         e: e,
