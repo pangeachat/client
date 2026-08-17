@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-17 09:31:27.336730",
+    "@@last_modified": "2026-08-17 16:01:11.619549",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10695,5 +10695,7 @@
     "unlockTranslations": "Odomknúť preklady",
     "unlockEmojiMode": "Odomknúť režim emoji",
     "unlockMessagePractice": "Odomknúť precvičovanie správ",
-    "unlockWritingAssistance": "Odomknúť pomoc pri písaní"
+    "unlockWritingAssistance": "Odomknúť pomoc pri písaní",
+    "showMore": "Zobraziť viac",
+    "showLess": "Zobraziť menej"
 }

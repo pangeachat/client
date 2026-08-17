@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-17 09:31:30.766959",
+    "@@last_modified": "2026-08-17 16:01:13.275404",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10707,5 +10707,7 @@
     "unlockTranslations": "解鎖翻譯",
     "unlockEmojiMode": "解鎖表情符號模式",
     "unlockMessagePractice": "解鎖訊息練習",
-    "unlockWritingAssistance": "解鎖寫作輔助"
+    "unlockWritingAssistance": "解鎖寫作輔助",
+    "showMore": "顯示更多",
+    "showLess": "顯示較少"
 }

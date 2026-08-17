@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-17 09:31:12.679311",
+    "@@last_modified": "2026-08-17 16:01:07.832228",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Tsegulani matembenuzidwe",
     "unlockEmojiMode": "Tsegulani mawonekedwe a emoji",
     "unlockMessagePractice": "Tsegulani kuyeseza mauthenga",
-    "unlockWritingAssistance": "Tsegulani thandizo lolemba"
+    "unlockWritingAssistance": "Tsegulani thandizo lolemba",
+    "showMore": "Onjezani zambiri",
+    "showLess": "Chepetsani"
 }

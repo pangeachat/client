@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-17 09:30:35.062278",
+    "@@last_modified": "2026-08-17 16:01:05.585559",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Բացել թարգմանությունները",
     "unlockEmojiMode": "Բացել էմոջի ռեժիմը",
     "unlockMessagePractice": "Բացել հաղորդագրությունների պրակտիկան",
-    "unlockWritingAssistance": "Բացել գրելու աջակցությունը"
+    "unlockWritingAssistance": "Բացել գրելու աջակցությունը",
+    "showMore": "Տեսնել ավելին",
+    "showLess": "Տեսնել ավելի քիչ"
 }

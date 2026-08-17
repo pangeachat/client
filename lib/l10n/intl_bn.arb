@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:14.274709",
+    "@@last_modified": "2026-08-17 16:01:03.360620",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10378,5 +10378,7 @@
     "unlockTranslations": "অনুবাদ আনলক করুন",
     "unlockEmojiMode": "ইমোজি মোড আনলক করুন",
     "unlockMessagePractice": "মেসেজ অনুশীলন আনলক করুন",
-    "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন"
+    "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন",
+    "showMore": "আরও দেখান",
+    "showLess": "কম দেখান"
 }

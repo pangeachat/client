@@ -21,6 +21,7 @@ import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/course_info_chip_widget.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_objectives_view.dart';
 import 'package:fluffychat/routes/courses/course_objectives/course_progress_bar.dart';
+import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// The single scrollable course page (#8357, replacing the tab row): Course
 /// plan / Chats / Participants / More as divider-separated sections, each with
@@ -149,7 +150,7 @@ class _CourseOverviewState extends State<CourseOverview> {
                   if (room.topic.isNotEmpty)
                     Padding(
                       padding: const EdgeInsets.only(bottom: 12.0),
-                      child: Text(
+                      child: ExpandableText(
                         room.topic,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-17 09:30:26.065334",
+    "@@last_modified": "2026-08-17 16:01:03.874829",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9737,5 +9737,7 @@
     "unlockTranslations": "Übersetzungen freischalten",
     "unlockEmojiMode": "Emoji-Modus freischalten",
     "unlockMessagePractice": "Nachrichtenübung freischalten",
-    "unlockWritingAssistance": "Schreibassistenz freischalten"
+    "unlockWritingAssistance": "Schreibassistenz freischalten",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen"
 }

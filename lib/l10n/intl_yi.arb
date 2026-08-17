@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-17 09:31:40.852316",
+    "@@last_modified": "2026-08-17 16:01:13.324813",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "אַנשליסן איבערזעצונגען",
     "unlockEmojiMode": "אַנשליסן עמאָדזשי מאָדע",
     "unlockMessagePractice": "אַנשליסן מעסעדזש פּראַקטיק",
-    "unlockWritingAssistance": "אַנשליסן שרייבן הילף"
+    "unlockWritingAssistance": "אַנשליסן שרייבן הילף",
+    "showMore": "ווייַזן מער",
+    "showLess": "ווייַזן ווייניקער"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-17 09:31:01.525471",
+    "@@last_modified": "2026-08-17 16:01:06.851179",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Wewete i ngā whakamaoritanga",
     "unlockEmojiMode": "Wewete i te aratau emoji",
     "unlockMessagePractice": "Wewete i te mahi karere",
-    "unlockWritingAssistance": "Wewete i te āwhina tuhi"
+    "unlockWritingAssistance": "Wewete i te āwhina tuhi",
+    "showMore": "Whakaatu anō",
+    "showLess": "Whakaatu iti iho"
 }

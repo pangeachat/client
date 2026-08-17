@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-17 09:30:20.161001",
+    "@@last_modified": "2026-08-17 16:01:03.274736",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Отключете преводи",
     "unlockEmojiMode": "Отключете режим емоджи",
     "unlockMessagePractice": "Отключете практика за съобщения",
-    "unlockWritingAssistance": "Отключете помощ при писане"
+    "unlockWritingAssistance": "Отключете помощ при писане",
+    "showMore": "Покажи още",
+    "showLess": "Покажи по-малко"
 }

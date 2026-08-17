@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-17 09:30:46.120353",
+    "@@last_modified": "2026-08-17 16:01:05.697370",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Aflæsa þýðingum",
     "unlockEmojiMode": "Aflæsa emoji-stillingu",
     "unlockMessagePractice": "Aflæsa skilaboðavenjum",
-    "unlockWritingAssistance": "Aflæsa ritunaraðstoð"
+    "unlockWritingAssistance": "Aflæsa ritunaraðstoð",
+    "showMore": "Sýna meira",
+    "showLess": "Sýna minna"
 }

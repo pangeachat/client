@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-17 09:30:13.865010",
+    "@@last_modified": "2026-08-17 16:01:03.293302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Otključajte prevode",
     "unlockEmojiMode": "Otključajte emoji način rada",
     "unlockMessagePractice": "Otključajte vježbanje poruka",
-    "unlockWritingAssistance": "Otključajte pomoć pri pisanju"
+    "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje"
 }

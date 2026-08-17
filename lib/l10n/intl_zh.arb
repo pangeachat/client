@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-17 09:31:43.271214",
+    "@@last_modified": "2026-08-17 16:01:13.330759",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9750,5 +9750,7 @@
     "unlockTranslations": "解锁翻译",
     "unlockEmojiMode": "解锁表情符号模式",
     "unlockMessagePractice": "解锁消息练习",
-    "unlockWritingAssistance": "解锁写作辅助"
+    "unlockWritingAssistance": "解锁写作辅助",
+    "showMore": "显示更多",
+    "showLess": "显示更少"
 }

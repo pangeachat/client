@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-17 09:31:12.848282",
+    "@@last_modified": "2026-08-17 16:01:07.922417",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9835,5 +9835,7 @@
     "unlockTranslations": "Odblokuj tłumaczenia",
     "unlockEmojiMode": "Odblokuj tryb emoji",
     "unlockMessagePractice": "Odblokuj ćwiczenia z wiadomościami",
-    "unlockWritingAssistance": "Odblokuj pomoc w pisaniu"
+    "unlockWritingAssistance": "Odblokuj pomoc w pisaniu",
+    "showMore": "Pokaż więcej",
+    "showLess": "Pokaż mniej"
 }

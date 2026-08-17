@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-17 09:30:10.906557",
+    "@@last_modified": "2026-08-17 16:01:03.764193",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "I-unlock ang mga hubad",
     "unlockEmojiMode": "I-unlock ang emoji mode",
     "unlockMessagePractice": "I-unlock ang pagpraktis sa mensahe",
-    "unlockWritingAssistance": "I-unlock ang tabang sa pagsulat"
+    "unlockWritingAssistance": "I-unlock ang tabang sa pagsulat",
+    "showMore": "Ipakita pa",
+    "showLess": "Ipakita gamay"
 }

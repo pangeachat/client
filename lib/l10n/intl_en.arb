@@ -119,6 +119,16 @@
         "type": "String",
         "placeholders": {}
     },
+    "showMore": "Show more",
+    "@showMore": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showLess": "Show less",
+    "@showLess": {
+        "type": "String",
+        "placeholders": {}
+    },
     "seeFullCoursePlan": "See full course plan",
     "@seeFullCoursePlan": {
         "type": "String",

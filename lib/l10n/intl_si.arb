@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-17 09:31:16.747285",
+    "@@last_modified": "2026-08-17 16:01:08.730432",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "පරිවර්තන අගුළු හරින්න",
     "unlockEmojiMode": "ඉමොජි මාදිලිය අගුළු හරින්න",
     "unlockMessagePractice": "පණිවිඩ පුහුණුව අගුළු හරින්න",
-    "unlockWritingAssistance": "ලිවීමේ සහාය අගුළු හරින්න"
+    "unlockWritingAssistance": "ලිවීමේ සහාය අගුළු හරින්න",
+    "showMore": "තවත් පෙන්වන්න",
+    "showLess": "අඩු පෙන්වන්න"
 }

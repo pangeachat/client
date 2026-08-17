@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-17 09:30:29.224197",
+    "@@last_modified": "2026-08-17 16:01:05.320877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Debloke tradiksyon",
     "unlockEmojiMode": "Debloke mòd emoji",
     "unlockMessagePractice": "Debloke pratik mesaj",
-    "unlockWritingAssistance": "Debloke asistans pou ekri"
+    "unlockWritingAssistance": "Debloke asistans pou ekri",
+    "showMore": "Montre plis",
+    "showLess": "Montre mwens"
 }

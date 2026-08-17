@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-17 09:30:25.050073",
+    "@@last_modified": "2026-08-17 16:01:05.136155",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Wehe i nā unuhi",
     "unlockEmojiMode": "Wehe i ke ʻano emoji",
     "unlockMessagePractice": "Wehe i ka hoʻomaʻamaʻa leka",
-    "unlockWritingAssistance": "Wehe i ke kōkua kākau"
+    "unlockWritingAssistance": "Wehe i ke kōkua kākau",
+    "showMore": "Hōʻike hou aku",
+    "showLess": "Hōʻike liʻiliʻi"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-17 09:31:02.522790",
+    "@@last_modified": "2026-08-17 16:01:07.501072",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "ဘာသာပြန်များကို လော့ခ်ဖွင့်ပါ",
     "unlockEmojiMode": "အီမိုဂျီမုဒ်ကို လော့ခ်ဖွင့်ပါ",
     "unlockMessagePractice": "မက်ဆေ့ချ်လေ့ကျင့်မှုကို လော့ခ်ဖွင့်ပါ",
-    "unlockWritingAssistance": "စာရေးအကူအညီကို လော့ခ်ဖွင့်ပါ"
+    "unlockWritingAssistance": "စာရေးအကူအညီကို လော့ခ်ဖွင့်ပါ",
+    "showMore": "ပိုပြရန်",
+    "showLess": "လျှော့ပြရန်"
 }

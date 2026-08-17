@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-17 09:31:25.474967",
+    "@@last_modified": "2026-08-17 16:01:10.155819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Notlolla liphetolelo",
     "unlockEmojiMode": "Notlolla mokhoa oa emoji",
     "unlockMessagePractice": "Notlolla tloaelo ea melaetsa",
-    "unlockWritingAssistance": "Notlolla thuso ea ho ngola"
+    "unlockWritingAssistance": "Notlolla thuso ea ho ngola",
+    "showMore": "Bontsha ho feta",
+    "showLess": "Bontsha hanyane"
 }

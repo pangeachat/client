@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-17 09:31:23.609941",
+    "@@last_modified": "2026-08-17 16:01:08.008950",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "ਅਨੁਵਾਦ ਅਨਲੌਕ ਕਰੋ",
     "unlockEmojiMode": "ਇਮੋਜੀ ਮੋਡ ਅਨਲੌਕ ਕਰੋ",
     "unlockMessagePractice": "ਸੁਨੇਹਾ ਅਭਿਆਸ ਅਨਲੌਕ ਕਰੋ",
-    "unlockWritingAssistance": "ਲਿਖਣ ਸਹਾਇਤਾ ਅਨਲੌਕ ਕਰੋ"
+    "unlockWritingAssistance": "ਲਿਖਣ ਸਹਾਇਤਾ ਅਨਲੌਕ ਕਰੋ",
+    "showMore": "ਹੋਰ ਦਿਖਾਓ",
+    "showLess": "ਘੱਟ ਦਿਖਾਓ"
 }

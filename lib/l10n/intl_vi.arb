@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:35.773500",
+    "@@last_modified": "2026-08-17 16:01:13.513865",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7026,5 +7026,7 @@
     "unlockTranslations": "Mở khóa bản dịch",
     "unlockEmojiMode": "Mở khóa chế độ biểu tượng cảm xúc",
     "unlockMessagePractice": "Mở khóa luyện tập tin nhắn",
-    "unlockWritingAssistance": "Mở khóa hỗ trợ viết"
+    "unlockWritingAssistance": "Mở khóa hỗ trợ viết",
+    "showMore": "Hiển thị thêm",
+    "showLess": "Hiển thị bớt"
 }

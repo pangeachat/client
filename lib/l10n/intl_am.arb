@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-17 09:30:24.272026",
+    "@@last_modified": "2026-08-17 16:01:03.429197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "ትርጉሞችን ይክፈቱ",
     "unlockEmojiMode": "የኢሞጂ ሁነታን ይክፈቱ",
     "unlockMessagePractice": "የመልእክት ልምምድ ይክፈቱ",
-    "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ"
+    "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ",
+    "showMore": "ተጨማሪ አሳይ",
+    "showLess": "ጥቂት አሳይ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-17 09:31:07.705310",
+    "@@last_modified": "2026-08-17 16:01:08.364530",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10722,5 +10722,7 @@
     "unlockTranslations": "Разблокировать переводы",
     "unlockEmojiMode": "Разблокировать режим эмодзи",
     "unlockMessagePractice": "Разблокировать практику сообщений",
-    "unlockWritingAssistance": "Разблокировать помощь в написании"
+    "unlockWritingAssistance": "Разблокировать помощь в написании",
+    "showMore": "Показать больше",
+    "showLess": "Показать меньше"
 }

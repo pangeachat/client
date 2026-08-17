@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-17 09:31:23.257112",
+    "@@last_modified": "2026-08-17 16:01:09.953765",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Zhblo përkthimet",
     "unlockEmojiMode": "Zhblo modalitetin emoji",
     "unlockMessagePractice": "Zhblo praktikën e mesazheve",
-    "unlockWritingAssistance": "Zhblo asistencën e shkrimit"
+    "unlockWritingAssistance": "Zhblo asistencën e shkrimit",
+    "showMore": "Shfaq më shumë",
+    "showLess": "Shfaq më pak"
 }

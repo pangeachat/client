@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-17 09:31:25.032755",
+    "@@last_modified": "2026-08-17 16:01:08.874635",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Fur turjumaadaha",
     "unlockEmojiMode": "Fur qaabka emoji",
     "unlockMessagePractice": "Fur ku celcelinta fariimaha",
-    "unlockWritingAssistance": "Fur caawinta qorista"
+    "unlockWritingAssistance": "Fur caawinta qorista",
+    "showMore": "Muuji wax badan",
+    "showLess": "Muuji wax yar"
 }

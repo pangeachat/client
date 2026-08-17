@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-17 09:30:48.399592",
+    "@@last_modified": "2026-08-17 16:01:07.127328",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Отклучи преводи",
     "unlockEmojiMode": "Отклучи емоџи режим",
     "unlockMessagePractice": "Отклучи вежбање пораки",
-    "unlockWritingAssistance": "Отклучи помош при пишување"
+    "unlockWritingAssistance": "Отклучи помош при пишување",
+    "showMore": "Прикажи повеќе",
+    "showLess": "Прикажи помалку"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-17 09:30:40.390843",
+    "@@last_modified": "2026-08-17 16:01:06.096588",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Mbukak kunci terjemahan",
     "unlockEmojiMode": "Mbukak kunci mode emoji",
     "unlockMessagePractice": "Mbukak kunci latihan pesen",
-    "unlockWritingAssistance": "Mbukak kunci bantuan nulis"
+    "unlockWritingAssistance": "Mbukak kunci bantuan nulis",
+    "showMore": "Tampilake luwih akeh",
+    "showLess": "Tampilake luwih sithik"
 }

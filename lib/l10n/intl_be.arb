@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-17 09:30:13.871595",
+    "@@last_modified": "2026-08-17 16:01:03.343032",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9764,5 +9764,7 @@
     "unlockTranslations": "Разблакіраваць пераклады",
     "unlockEmojiMode": "Разблакіраваць рэжым эмодзі",
     "unlockMessagePractice": "Разблакіраваць практыку паведамленняў",
-    "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні"
+    "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні",
+    "showMore": "Паказаць больш",
+    "showLess": "Паказаць менш"
 }

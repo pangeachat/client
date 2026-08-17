@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-17 09:31:06.763595",
+    "@@last_modified": "2026-08-17 16:01:12.788481",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "ترجما کوليو",
     "unlockEmojiMode": "ايموجي موڊ کوليو",
     "unlockMessagePractice": "پيغام جي مشق کوليو",
-    "unlockWritingAssistance": "لکڻ جي مدد کوليو"
+    "unlockWritingAssistance": "لکڻ جي مدد کوليو",
+    "showMore": "وڌيڪ ڏيکاريو",
+    "showLess": "گهٽ ڏيکاريو"
 }

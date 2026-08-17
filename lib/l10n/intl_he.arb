@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:36.271798",
+    "@@last_modified": "2026-08-17 16:01:05.047841",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10664,5 +10664,7 @@
     "unlockTranslations": "פתיחת תרגומים",
     "unlockEmojiMode": "פתיחת מצב אימוג'י",
     "unlockMessagePractice": "פתיחת תרגול הודעות",
-    "unlockWritingAssistance": "פתיחת סיוע בכתיבה"
+    "unlockWritingAssistance": "פתיחת סיוע בכתיבה",
+    "showMore": "הצג עוד",
+    "showLess": "הצג פחות"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:29.822369",
+    "@@last_modified": "2026-08-17 16:01:11.611686",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10699,5 +10699,7 @@
     "unlockTranslations": "Otključajte prevode",
     "unlockEmojiMode": "Otključajte emoji režim",
     "unlockMessagePractice": "Otključajte vežbanje poruka",
-    "unlockWritingAssistance": "Otključajte pomoć pri pisanju"
+    "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje"
 }

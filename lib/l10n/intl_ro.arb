@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:07.415614",
+    "@@last_modified": "2026-08-17 16:01:08.323476",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10482,5 +10482,7 @@
     "unlockTranslations": "Deblocați traducerile",
     "unlockEmojiMode": "Deblocați modul emoji",
     "unlockMessagePractice": "Deblocați exersarea mesajelor",
-    "unlockWritingAssistance": "Deblocați asistența la scriere"
+    "unlockWritingAssistance": "Deblocați asistența la scriere",
+    "showMore": "Afișează mai mult",
+    "showLess": "Afișează mai puțin"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-17 09:30:40.523197",
+    "@@last_modified": "2026-08-17 16:01:06.285235",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Open di transleshon dɛn",
     "unlockEmojiMode": "Open di emoji mod",
     "unlockMessagePractice": "Open di mɛsej praktis",
-    "unlockWritingAssistance": "Open di raytin ɛlp"
+    "unlockWritingAssistance": "Open di raytin ɛlp",
+    "showMore": "Sho mo",
+    "showLess": "Sho men"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:19.181817",
+    "@@last_modified": "2026-08-17 16:01:04.370411",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9838,5 +9838,7 @@
     "unlockTranslations": "باز کردن ترجمه‌ها",
     "unlockEmojiMode": "باز کردن حالت اموجی",
     "unlockMessagePractice": "باز کردن تمرین پیام",
-    "unlockWritingAssistance": "باز کردن کمک نوشتاری"
+    "unlockWritingAssistance": "باز کردن کمک نوشتاری",
+    "showMore": "نمایش بیشتر",
+    "showLess": "نمایش کمتر"
 }

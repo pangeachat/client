@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-17 09:30:51.561999",
+    "@@last_modified": "2026-08-17 16:01:06.617444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Spär Iwwersetzunge op",
     "unlockEmojiMode": "Spär Emoji Modus op",
     "unlockMessagePractice": "Spär Message Praxis op",
-    "unlockWritingAssistance": "Spär Schreifhëllef op"
+    "unlockWritingAssistance": "Spär Schreifhëllef op",
+    "showMore": "Méi weisen",
+    "showLess": "Manner weisen"
 }

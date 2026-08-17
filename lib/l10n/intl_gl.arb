@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-17 09:30:23.237156",
+    "@@last_modified": "2026-08-17 16:01:04.850004",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9750,5 +9750,7 @@
     "unlockTranslations": "Desbloquear traducións",
     "unlockEmojiMode": "Desbloquear modo emoji",
     "unlockMessagePractice": "Desbloquear práctica de mensaxes",
-    "unlockWritingAssistance": "Desbloquear asistencia de escritura"
+    "unlockWritingAssistance": "Desbloquear asistencia de escritura",
+    "showMore": "Mostrar máis",
+    "showLess": "Mostrar menos"
 }

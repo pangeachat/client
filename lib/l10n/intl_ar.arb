@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-17 09:30:09.512500",
+    "@@last_modified": "2026-08-17 16:01:03.431521",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10056,5 +10056,7 @@
     "unlockTranslations": "افتح الترجمات",
     "unlockEmojiMode": "افتح وضع الإيموجي",
     "unlockMessagePractice": "افتح ممارسة الرسائل",
-    "unlockWritingAssistance": "افتح مساعدة الكتابة"
+    "unlockWritingAssistance": "افتح مساعدة الكتابة",
+    "showMore": "عرض المزيد",
+    "showLess": "عرض أقل"
 }

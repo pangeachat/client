@@ -1,6 +1,6 @@
 {
     "@@locale": "tg",
-    "@@last_modified": "2026-08-17 09:31:43.717577",
+    "@@last_modified": "2026-08-17 16:01:10.955204",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Паролро такрор кунед",
     "notAnImage": "Файли тасвирӣ нест.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Тарҷумаҳоро кушоед",
     "unlockEmojiMode": "Ҳолати эмодзиро кушоед",
     "unlockMessagePractice": "Машқи паёмро кушоед",
-    "unlockWritingAssistance": "Кӯмаки хаттиро кушоед"
+    "unlockWritingAssistance": "Кӯмаки хаттиро кушоед",
+    "showMore": "Бештар нишон додан",
+    "showLess": "Камтар нишон додан"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-17 09:30:59.199478",
+    "@@last_modified": "2026-08-17 16:01:07.280782",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Buka kunci terjemahan",
     "unlockEmojiMode": "Buka kunci mod emoji",
     "unlockMessagePractice": "Buka kunci latihan mesej",
-    "unlockWritingAssistance": "Buka kunci bantuan penulisan"
+    "unlockWritingAssistance": "Buka kunci bantuan penulisan",
+    "showMore": "Tunjukkan lebih banyak",
+    "showLess": "Tunjukkan lebih sedikit"
 }

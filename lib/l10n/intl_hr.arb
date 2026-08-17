@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-17 09:30:31.454207",
+    "@@last_modified": "2026-08-17 16:01:05.073023",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10186,5 +10186,7 @@
     "unlockTranslations": "Otključaj prijevode",
     "unlockEmojiMode": "Otključaj način rada s emotikonima",
     "unlockMessagePractice": "Otključaj vježbanje poruka",
-    "unlockWritingAssistance": "Otključaj pomoć pri pisanju"
+    "unlockWritingAssistance": "Otključaj pomoć pri pisanju",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-17 09:30:34.651023",
+    "@@last_modified": "2026-08-17 16:01:05.521639",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9853,5 +9853,7 @@
     "unlockTranslations": "Fordítások feloldása",
     "unlockEmojiMode": "Emoji mód feloldása",
     "unlockMessagePractice": "Üzenetgyakorlás feloldása",
-    "unlockWritingAssistance": "Írássegéd feloldása"
+    "unlockWritingAssistance": "Írássegéd feloldása",
+    "showMore": "Több megjelenítése",
+    "showLess": "Kevesebb megjelenítése"
 }

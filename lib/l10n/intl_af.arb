@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-17 09:30:12.534147",
+    "@@last_modified": "2026-08-17 16:01:03.287954",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Ontsluit vertalings",
     "unlockEmojiMode": "Ontsluit emoji-modus",
     "unlockMessagePractice": "Ontsluit boodskappraktyk",
-    "unlockWritingAssistance": "Ontsluit skryfhulp"
+    "unlockWritingAssistance": "Ontsluit skryfhulp",
+    "showMore": "Wys meer",
+    "showLess": "Wys minder"
 }

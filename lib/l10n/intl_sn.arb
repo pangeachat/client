@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-17 09:31:13.157670",
+    "@@last_modified": "2026-08-17 16:01:11.854310",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Vhura shanduro",
     "unlockEmojiMode": "Vhura emoji mode",
     "unlockMessagePractice": "Vhura kudzidzira mameseji",
-    "unlockWritingAssistance": "Vhura rubatsiro rwekunyora"
+    "unlockWritingAssistance": "Vhura rubatsiro rwekunyora",
+    "showMore": "Ratidza zvimwe",
+    "showLess": "Ratidza zvishoma"
 }

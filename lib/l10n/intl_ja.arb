@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-17 09:30:37.973119",
+    "@@last_modified": "2026-08-17 16:01:05.968707",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10519,5 +10519,7 @@
     "unlockTranslations": "翻訳をアンロック",
     "unlockEmojiMode": "絵文字モードをアンロック",
     "unlockMessagePractice": "メッセージ練習をアンロック",
-    "unlockWritingAssistance": "ライティングアシスタンスをアンロック"
+    "unlockWritingAssistance": "ライティングアシスタンスをアンロック",
+    "showMore": "もっと見る",
+    "showLess": "一部を表示"
 }

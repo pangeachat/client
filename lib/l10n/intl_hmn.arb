@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-17 09:30:31.881699",
+    "@@last_modified": "2026-08-17 16:01:05.164407",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Qhib kev txhais lus",
     "unlockEmojiMode": "Qhib hom emoji",
     "unlockMessagePractice": "Qhib kev xyaum sau ntawv",
-    "unlockWritingAssistance": "Qhib kev pab sau ntawv"
+    "unlockWritingAssistance": "Qhib kev pab sau ntawv",
+    "showMore": "Qhia ntxiv",
+    "showLess": "Qhia tsawg dua"
 }

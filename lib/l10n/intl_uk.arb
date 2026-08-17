@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-17 09:31:29.349579",
+    "@@last_modified": "2026-08-17 16:01:15.325566",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9750,5 +9750,7 @@
     "unlockTranslations": "Розблокувати переклади",
     "unlockEmojiMode": "Розблокувати режим емодзі",
     "unlockMessagePractice": "Розблокувати практику повідомлень",
-    "unlockWritingAssistance": "Розблокувати допомогу з письмом"
+    "unlockWritingAssistance": "Розблокувати допомогу з письмом",
+    "showMore": "Показати більше",
+    "showLess": "Показати менше"
 }

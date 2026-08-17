@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:15.503282",
+    "@@last_modified": "2026-08-17 16:01:04.025923",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10695,5 +10695,7 @@
     "unlockTranslations": "Malŝlosi tradukojn",
     "unlockEmojiMode": "Malŝlosi emoji-reĝimon",
     "unlockMessagePractice": "Malŝlosi mesaĝan praktikon",
-    "unlockWritingAssistance": "Malŝlosi skriban helpon"
+    "unlockWritingAssistance": "Malŝlosi skriban helpon",
+    "showMore": "Montri pli",
+    "showLess": "Montri malpli"
 }

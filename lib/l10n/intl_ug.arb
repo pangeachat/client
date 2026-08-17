@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-17 09:31:50.148637",
+    "@@last_modified": "2026-08-17 16:01:12.687731",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "تەرجىمىلەرنى ئېچىڭ",
     "unlockEmojiMode": "ئېموجى ھالىتىنى ئېچىڭ",
     "unlockMessagePractice": "ئۇچۇر مەشىقىنى ئېچىڭ",
-    "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ"
+    "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ",
+    "showMore": "تېخىمۇ كۆپ كۆرسەت",
+    "showLess": "ئازراق كۆرسەت"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-17 09:30:08.782008",
+    "@@last_modified": "2026-08-17 16:01:03.387493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "অনুবাদসমূহ আনলক কৰক",
     "unlockEmojiMode": "ইম'জি ম'ড আনলক কৰক",
     "unlockMessagePractice": "বাৰ্তা অনুশীলন আনলক কৰক",
-    "unlockWritingAssistance": "লিখনি সহায় আনলক কৰক"
+    "unlockWritingAssistance": "লিখনি সহায় আনলক কৰক",
+    "showMore": "আৰু দেখুৱাওক",
+    "showLess": "কম দেখুৱাওক"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-17 09:31:36.654542",
+    "@@last_modified": "2026-08-17 16:01:13.050130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2138,5 +2138,7 @@
     "unlockTranslations": "Vula iinguqulelo",
     "unlockEmojiMode": "Vula imo ye-emoji",
     "unlockMessagePractice": "Vula umthambo wemiyalezo",
-    "unlockWritingAssistance": "Vula uncedo lokubhala"
+    "unlockWritingAssistance": "Vula uncedo lokubhala",
+    "showMore": "Bonisa okungakumbi",
+    "showLess": "Bonisa okuncinci"
 }
