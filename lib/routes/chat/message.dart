@@ -122,12 +122,16 @@ class Message extends StatelessWidget {
         ownMessage: event.senderId == Matrix.of(context).client.userID,
       );
     }
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (controller.pangeaEditingEvent?.eventId == event.eventId) {
-        pangeaMessageEvent?.updateLatestEdit();
-        controller.clearEditingEvent();
-      }
-    });
+    // Only schedule the post-frame edit check for the one message being
+    // edited, not for every visible message on every frame (issue #8393).
+    if (controller.pangeaEditingEvent?.eventId == event.eventId) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (controller.pangeaEditingEvent?.eventId == event.eventId) {
+          pangeaMessageEvent?.updateLatestEdit();
+          controller.clearEditingEvent();
+        }
+      });
+    }
     // Pangea#
     final theme = Theme.of(context);
 
