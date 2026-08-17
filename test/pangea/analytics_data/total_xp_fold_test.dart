@@ -114,6 +114,75 @@ void main() {
     );
   });
 
+  /// The service's getAggregatedConstructIds algorithm, inline.
+  Set<ConstructIdentifier> idsOnlyKeys(
+    Iterable<ConstructIdentifier> rowIds,
+    ConstructMergeTable table,
+    Set<ConstructIdentifier> blocked,
+  ) {
+    final out = <ConstructIdentifier>{};
+    for (final id in rowIds) {
+      final canonical = table.resolve(id);
+      if (blocked.contains(canonical) || canonical.isInvalid) continue;
+      out.add(canonical);
+    }
+    return out;
+  }
+
+  /// The pre-#8433 distractor input: getAggregatedConstructs(...).keys.
+  Set<ConstructIdentifier> legacyKeys(
+    List<ConstructUses> rows,
+    ConstructMergeTable table,
+    Set<ConstructIdentifier> blocked,
+  ) {
+    final cleaned = <ConstructIdentifier, ConstructUses>{};
+    for (final entry in rows) {
+      final canonical = table.resolve(entry.id);
+      final existing = cleaned[canonical];
+      if (existing != null) {
+        existing.merge(entry);
+      } else if (!blocked.contains(canonical) && !canonical.isInvalid) {
+        cleaned[canonical] = entry;
+      }
+    }
+    return cleaned.keys.toSet();
+  }
+
+  test('property: ids-only canonical set == legacy aggregated keys', () {
+    final rng = Random(77);
+    for (var trial = 0; trial < 60; trial++) {
+      final rows = <ConstructUses>[];
+      final allUses = <OneConstructUse>[];
+      for (var i = 0; i < 1 + rng.nextInt(12); i++) {
+        final base = 'w${rng.nextInt(6)}';
+        final lemma = rng.nextBool() ? base : base.toUpperCase();
+        final cat = rng.nextInt(7) == 0
+            ? ''
+            : (rng.nextBool() ? 'noun' : 'verb');
+        final uses = List.generate(
+          1 + rng.nextInt(5),
+          (k) => use(lemma: lemma, category: cat, ts: at(k), xp: 5),
+        );
+        allUses.addAll(uses);
+        rows.add(constructUses(lemma, category: cat, uses: uses));
+      }
+      final blocked = <ConstructIdentifier>{
+        for (final r in rows)
+          if (rng.nextInt(5) == 0) r.id,
+      };
+      final table = ConstructMergeTable()
+        ..addConstructsByUses(allUses, blocked);
+      final legacyRows = rows
+          .map((c) => ConstructUses.fromJson(c.toJson()))
+          .toList();
+      expect(
+        idsOnlyKeys(rows.map((r) => r.id), table, blocked),
+        legacyKeys(legacyRows, table, blocked),
+        reason: 'trial $trial',
+      );
+    }
+  });
+
   test('property: equals the legacy Σ points fold over random corpora', () {
     final rng = Random(2026);
     for (var trial = 0; trial < 60; trial++) {
