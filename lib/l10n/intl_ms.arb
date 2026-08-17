@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-14 15:02:51.289196",
+    "@@last_modified": "2026-08-17 09:30:59.199478",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Klik di sini untuk menukar bahasa mesej.",
     "messageLanguage": "Bahasa mesej",
     "messageLanguageUpdated": "Bahasa mesej dikemas kini!",
-    "pickCefrLevelStepSubtitle": "Anda boleh mengubahnya kemudian"
+    "pickCefrLevelStepSubtitle": "Anda boleh mengubahnya kemudian",
+    "unlockPremiumAudio": "Buka kunci audio premium",
+    "unlockTranslations": "Buka kunci terjemahan",
+    "unlockEmojiMode": "Buka kunci mod emoji",
+    "unlockMessagePractice": "Buka kunci latihan mesej",
+    "unlockWritingAssistance": "Buka kunci bantuan penulisan"
 }

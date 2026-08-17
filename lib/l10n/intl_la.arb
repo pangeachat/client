@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-14 15:02:50.523168",
+    "@@last_modified": "2026-08-17 09:31:01.329384",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Hic preme ut linguam epistulae mutes.",
     "messageLanguage": "Lingua epistulae",
     "messageLanguageUpdated": "Lingua epistulae renovata est!",
-    "pickCefrLevelStepSubtitle": "Hoc postea mutare potes"
+    "pickCefrLevelStepSubtitle": "Hoc postea mutare potes",
+    "unlockPremiumAudio": "Reserare praemium audio",
+    "unlockTranslations": "Reserare translationes",
+    "unlockEmojiMode": "Reserare modum emoji",
+    "unlockMessagePractice": "Reserare nuntium exercitium",
+    "unlockWritingAssistance": "Reserare scripturae auxilium"
 }

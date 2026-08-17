@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-14 15:02:52.671609",
+    "@@last_modified": "2026-08-17 09:31:23.257112",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Kliko këtu për të ndryshuar gjuhën e mesazhit.",
     "messageLanguage": "Gjuha e mesazhit",
     "messageLanguageUpdated": "Gjuha e mesazhit u përditësua!",
-    "pickCefrLevelStepSubtitle": "Mund ta ndryshosh më vonë"
+    "pickCefrLevelStepSubtitle": "Mund ta ndryshosh më vonë",
+    "unlockPremiumAudio": "Zhblo premium audio",
+    "unlockTranslations": "Zhblo përkthimet",
+    "unlockEmojiMode": "Zhblo modalitetin emoji",
+    "unlockMessagePractice": "Zhblo praktikën e mesazheve",
+    "unlockWritingAssistance": "Zhblo asistencën e shkrimit"
 }

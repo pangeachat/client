@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-14 15:02:53.832922",
+    "@@last_modified": "2026-08-17 09:31:35.175923",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Tẹ níbí láti yí èdè ìfọ̀rọ̀ránṣẹ́ padà.",
     "messageLanguage": "Èdè ìfọ̀rọ̀ránṣẹ́",
     "messageLanguageUpdated": "Èdè ìfọ̀rọ̀ránṣẹ́ ti yí padà!",
-    "pickCefrLevelStepSubtitle": "O le yí èyí padà nígbà tó bá yá"
+    "pickCefrLevelStepSubtitle": "O le yí èyí padà nígbà tó bá yá",
+    "unlockPremiumAudio": "Ṣí ohùn àgbáyé sílẹ̀",
+    "unlockTranslations": "Ṣí àwọn ìtumọ̀ sílẹ̀",
+    "unlockEmojiMode": "Ṣí ipò emoji sílẹ̀",
+    "unlockMessagePractice": "Ṣí ìdánilẹ́kọ̀ọ́ ìfiranṣẹ́ sílẹ̀",
+    "unlockWritingAssistance": "Ṣí ìrànlọ́wọ́ kíkọ sílẹ̀"
 }

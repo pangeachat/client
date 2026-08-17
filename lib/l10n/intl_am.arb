@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-14 15:02:47.591044",
+    "@@last_modified": "2026-08-17 09:30:24.272026",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "የመልዕክቱን ቋንቋ ለመቀየር እዚህ ይጫኑ።",
     "messageLanguage": "የመልዕክት ቋንቋ",
     "messageLanguageUpdated": "የመልዕክት ቋንቋ ተዘምኗል!",
-    "pickCefrLevelStepSubtitle": "ይህን በኋላ መቀየር ይችላሉ"
+    "pickCefrLevelStepSubtitle": "ይህን በኋላ መቀየር ይችላሉ",
+    "unlockPremiumAudio": "ፕሪሚየም ድምጽ ይክፈቱ",
+    "unlockTranslations": "ትርጉሞችን ይክፈቱ",
+    "unlockEmojiMode": "የኢሞጂ ሁነታን ይክፈቱ",
+    "unlockMessagePractice": "የመልእክት ልምምድ ይክፈቱ",
+    "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ"
 }

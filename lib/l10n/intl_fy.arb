@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-14 15:02:48.931166",
+    "@@last_modified": "2026-08-17 09:30:22.456181",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Klik hjir om de taal fan it berjocht te feroarjen.",
     "messageLanguage": "Berjochtetaal",
     "messageLanguageUpdated": "Berjochtetaal bywurke!",
-    "pickCefrLevelStepSubtitle": "Jo kinne dit letter feroarje"
+    "pickCefrLevelStepSubtitle": "Jo kinne dit letter feroarje",
+    "unlockPremiumAudio": "Untskoattelje premium audio",
+    "unlockTranslations": "Untskoattelje oersettingen",
+    "unlockEmojiMode": "Untskoattelje emoji-modus",
+    "unlockMessagePractice": "Untskoattelje berjochtpraktyk",
+    "unlockWritingAssistance": "Untskoattelje skriuwassistinsje"
 }

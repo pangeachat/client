@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-14 15:02:51.730893",
+    "@@last_modified": "2026-08-17 09:31:12.679311",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Dinani apa kuti musinthe chilankhulo cha uthenga.",
     "messageLanguage": "Chilankhulo cha uthenga",
     "messageLanguageUpdated": "Chilankhulo cha uthenga chasintha!",
-    "pickCefrLevelStepSubtitle": "Mungasinthe izi pambuyo pake"
+    "pickCefrLevelStepSubtitle": "Mungasinthe izi pambuyo pake",
+    "unlockPremiumAudio": "Tsegulani mawu apamwamba",
+    "unlockTranslations": "Tsegulani matembenuzidwe",
+    "unlockEmojiMode": "Tsegulani mawonekedwe a emoji",
+    "unlockMessagePractice": "Tsegulani kuyeseza mauthenga",
+    "unlockWritingAssistance": "Tsegulani thandizo lolemba"
 }

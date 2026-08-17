@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-14 15:02:48.140636",
+    "@@last_modified": "2026-08-17 09:30:10.906557",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Pag-klik dinhi aron usbon ang pinulongan sa mensahe.",
     "messageLanguage": "Pinulongan sa mensahe",
     "messageLanguageUpdated": "Na-update ang pinulongan sa mensahe!",
-    "pickCefrLevelStepSubtitle": "Mahimo nimo kining usbon sa ulahi"
+    "pickCefrLevelStepSubtitle": "Mahimo nimo kining usbon sa ulahi",
+    "unlockPremiumAudio": "I-unlock ang premium audio",
+    "unlockTranslations": "I-unlock ang mga hubad",
+    "unlockEmojiMode": "I-unlock ang emoji mode",
+    "unlockMessagePractice": "I-unlock ang pagpraktis sa mensahe",
+    "unlockWritingAssistance": "I-unlock ang tabang sa pagsulat"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-14 15:02:51.903632",
+    "@@last_modified": "2026-08-17 09:31:23.609941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਬਦਲਣ ਲਈ ਇੱਥੇ ਕਲਿੱਕ ਕਰੋ।",
     "messageLanguage": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ",
     "messageLanguageUpdated": "ਸੁਨੇਹੇ ਦੀ ਭਾਸ਼ਾ ਅੱਪਡੇਟ ਕੀਤੀ ਗਈ!",
-    "pickCefrLevelStepSubtitle": "ਤੁਸੀਂ ਇਸਨੂੰ ਬਾਅਦ ਵਿੱਚ ਬਦਲ ਸਕਦੇ ਹੋ"
+    "pickCefrLevelStepSubtitle": "ਤੁਸੀਂ ਇਸਨੂੰ ਬਾਅਦ ਵਿੱਚ ਬਦਲ ਸਕਦੇ ਹੋ",
+    "unlockPremiumAudio": "ਪ੍ਰੀਮੀਅਮ ਆਡੀਓ ਅਨਲੌਕ ਕਰੋ",
+    "unlockTranslations": "ਅਨੁਵਾਦ ਅਨਲੌਕ ਕਰੋ",
+    "unlockEmojiMode": "ਇਮੋਜੀ ਮੋਡ ਅਨਲੌਕ ਕਰੋ",
+    "unlockMessagePractice": "ਸੁਨੇਹਾ ਅਭਿਆਸ ਅਨਲੌਕ ਕਰੋ",
+    "unlockWritingAssistance": "ਲਿਖਣ ਸਹਾਇਤਾ ਅਨਲੌਕ ਕਰੋ"
 }

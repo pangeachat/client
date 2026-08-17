@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-14 15:02:50.082225",
+    "@@last_modified": "2026-08-17 09:30:37.973119",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10514,5 +10514,10 @@
     "updateMessageLanguage": "メッセージの言語を変更するには、ここをクリックしてください。",
     "messageLanguage": "メッセージの言語",
     "messageLanguageUpdated": "メッセージの言語が更新されました！",
-    "pickCefrLevelStepSubtitle": "後で変更できます"
+    "pickCefrLevelStepSubtitle": "後で変更できます",
+    "unlockPremiumAudio": "プレミアムオーディオをアンロック",
+    "unlockTranslations": "翻訳をアンロック",
+    "unlockEmojiMode": "絵文字モードをアンロック",
+    "unlockMessagePractice": "メッセージ練習をアンロック",
+    "unlockWritingAssistance": "ライティングアシスタンスをアンロック"
 }

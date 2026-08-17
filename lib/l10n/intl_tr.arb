@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-14 15:02:53.196683",
+    "@@last_modified": "2026-08-17 09:31:25.476196",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10046,5 +10046,10 @@
     "updateMessageLanguage": "Mesajın dilini değiştirmek için buraya tıklayın.",
     "messageLanguage": "Mesaj dili",
     "messageLanguageUpdated": "Mesaj dili güncellendi!",
-    "pickCefrLevelStepSubtitle": "Bunu daha sonra değiştirebilirsin"
+    "pickCefrLevelStepSubtitle": "Bunu daha sonra değiştirebilirsin",
+    "unlockPremiumAudio": "Premium sesi aç",
+    "unlockTranslations": "Çevirilerin kilidini aç",
+    "unlockEmojiMode": "Emoji modunun kilidini aç",
+    "unlockMessagePractice": "Mesaj pratiğinin kilidini aç",
+    "unlockWritingAssistance": "Yazma yardımının kilidini aç"
 }

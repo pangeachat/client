@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:48.486142",
+    "@@last_modified": "2026-08-17 09:30:15.503282",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10690,5 +10690,10 @@
     "updateMessageLanguage": "Alklaku ĉi tie por ŝanĝi la lingvon de la mesaĝo.",
     "messageLanguage": "Lingvo de mesaĝo",
     "messageLanguageUpdated": "Lingvo de mesaĝo ĝisdatigita!",
-    "pickCefrLevelStepSubtitle": "Vi povas ŝanĝi tion poste"
+    "pickCefrLevelStepSubtitle": "Vi povas ŝanĝi tion poste",
+    "unlockPremiumAudio": "Malŝlosi altkvalitan sonon",
+    "unlockTranslations": "Malŝlosi tradukojn",
+    "unlockEmojiMode": "Malŝlosi emoji-reĝimon",
+    "unlockMessagePractice": "Malŝlosi mesaĝan praktikon",
+    "unlockWritingAssistance": "Malŝlosi skriban helpon"
 }

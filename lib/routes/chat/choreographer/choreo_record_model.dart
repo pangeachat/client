@@ -171,6 +171,20 @@ class ChoreoRecordModel {
   }
 
   /// Get the text at [stepIndex]
+  ///
+  /// Replay stops early at the first edit that does not apply to the text built
+  /// so far, returning what has accumulated. A record built in-session is
+  /// self-consistent — [addRecord] diffs against [stepText] before appending —
+  /// but [fromJson] recovers [originalText] from stored step content and falls
+  /// back to a default, so a deserialized record can carry edits whose offsets
+  /// were measured against different text (Sentry CLIENT-E42, where an offset
+  /// of 18 landed on an 11-character string and `replaceRange` threw out of the
+  /// model, mid-send).
+  ///
+  /// Stopping beats skipping the one bad edit: every later edit's offset is
+  /// measured against the text its predecessor was supposed to produce, so once
+  /// one fails to apply the rest of the chain describes a string that no longer
+  /// exists, and applying it anyway would return plausible-looking wrong text.
   String stepText({int? stepIndex}) {
     stepIndex ??= choreoSteps.length - 1;
     if (stepIndex >= choreoSteps.length) {
@@ -184,6 +198,12 @@ class ChoreoRecordModel {
       final step = choreoSteps[i];
       if (step.edits == null) continue;
       final edits = step.edits!;
+
+      if (edits.offset < 0 ||
+          edits.length < 0 ||
+          edits.offset + edits.length > text.length) {
+        return text;
+      }
 
       text = text.replaceRange(
         edits.offset,

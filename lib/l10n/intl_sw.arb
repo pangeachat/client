@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-14 15:02:52.867155",
+    "@@last_modified": "2026-08-17 09:31:37.549715",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Bofya hapa kubadilisha lugha ya ujumbe.",
     "messageLanguage": "Lugha ya ujumbe",
     "messageLanguageUpdated": "Lugha ya ujumbe imesasishwa!",
-    "pickCefrLevelStepSubtitle": "Unaweza kubadilisha hili baadaye"
+    "pickCefrLevelStepSubtitle": "Unaweza kubadilisha hili baadaye",
+    "unlockPremiumAudio": "Fungua sauti ya malipo",
+    "unlockTranslations": "Fungua tafsiri",
+    "unlockEmojiMode": "Fungua hali ya emoji",
+    "unlockMessagePractice": "Fungua mazoezi ya ujumbe",
+    "unlockWritingAssistance": "Fungua usaidizi wa kuandika"
 }

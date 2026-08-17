@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-14 15:02:52.321447",
+    "@@last_modified": "2026-08-17 09:31:16.747285",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "පණිවිඩයේ භාෂාව වෙනස් කිරීමට මෙතන ක්ලික් කරන්න.",
     "messageLanguage": "පණිවිඩ භාෂාව",
     "messageLanguageUpdated": "පණිවිඩ භාෂාව යාවත්කාලීන කරන ලදී!",
-    "pickCefrLevelStepSubtitle": "ඔබට මෙය පසුව වෙනස් කළ හැක"
+    "pickCefrLevelStepSubtitle": "ඔබට මෙය පසුව වෙනස් කළ හැක",
+    "unlockPremiumAudio": "වාරික ශ්‍රව්‍ය අගුළු හරින්න",
+    "unlockTranslations": "පරිවර්තන අගුළු හරින්න",
+    "unlockEmojiMode": "ඉමොජි මාදිලිය අගුළු හරින්න",
+    "unlockMessagePractice": "පණිවිඩ පුහුණුව අගුළු හරින්න",
+    "unlockWritingAssistance": "ලිවීමේ සහාය අගුළු හරින්න"
 }

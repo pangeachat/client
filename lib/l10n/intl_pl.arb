@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-14 15:02:52.367459",
+    "@@last_modified": "2026-08-17 09:31:12.848282",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9830,5 +9830,10 @@
     "updateMessageLanguage": "Kliknij tutaj, aby zmienić język wiadomości.",
     "messageLanguage": "Język wiadomości",
     "messageLanguageUpdated": "Język wiadomości zaktualizowany!",
-    "pickCefrLevelStepSubtitle": "Możesz to później zmienić"
+    "pickCefrLevelStepSubtitle": "Możesz to później zmienić",
+    "unlockPremiumAudio": "Odblokuj dźwięk premium",
+    "unlockTranslations": "Odblokuj tłumaczenia",
+    "unlockEmojiMode": "Odblokuj tryb emoji",
+    "unlockMessagePractice": "Odblokuj ćwiczenia z wiadomościami",
+    "unlockWritingAssistance": "Odblokuj pomoc w pisaniu"
 }

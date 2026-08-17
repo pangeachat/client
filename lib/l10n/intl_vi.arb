@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:53.521148",
+    "@@last_modified": "2026-08-17 09:31:35.773500",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7021,5 +7021,10 @@
     "updateMessageLanguage": "Nhấp vào đây để thay đổi ngôn ngữ của tin nhắn.",
     "messageLanguage": "Ngôn ngữ tin nhắn",
     "messageLanguageUpdated": "Đã cập nhật ngôn ngữ tin nhắn!",
-    "pickCefrLevelStepSubtitle": "Bạn có thể thay đổi điều này sau"
+    "pickCefrLevelStepSubtitle": "Bạn có thể thay đổi điều này sau",
+    "unlockPremiumAudio": "Mở khóa âm thanh cao cấp",
+    "unlockTranslations": "Mở khóa bản dịch",
+    "unlockEmojiMode": "Mở khóa chế độ biểu tượng cảm xúc",
+    "unlockMessagePractice": "Mở khóa luyện tập tin nhắn",
+    "unlockWritingAssistance": "Mở khóa hỗ trợ viết"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:50.425850",
+    "@@last_modified": "2026-08-17 09:30:38.985646",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9938,5 +9938,10 @@
     "updateMessageLanguage": "메시지 언어를 변경하려면 여기를 클릭하세요.",
     "messageLanguage": "메시지 언어",
     "messageLanguageUpdated": "메시지 언어가 업데이트되었습니다!",
-    "pickCefrLevelStepSubtitle": "나중에 변경할 수 있습니다"
+    "pickCefrLevelStepSubtitle": "나중에 변경할 수 있습니다",
+    "unlockPremiumAudio": "프리미엄 오디오 잠금 해제",
+    "unlockTranslations": "번역 잠금 해제",
+    "unlockEmojiMode": "이모티콘 모드 잠금 해제",
+    "unlockMessagePractice": "메시지 연습 잠금 해제",
+    "unlockWritingAssistance": "작문 지원 잠금 해제"
 }

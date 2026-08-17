@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-14 15:02:47.572740",
+    "@@last_modified": "2026-08-17 09:30:13.865010",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Kliknite ovdje da promijenite jezik poruke.",
     "messageLanguage": "Jezik poruke",
     "messageLanguageUpdated": "Jezik poruke ažuriran!",
-    "pickCefrLevelStepSubtitle": "Ovo možete promijeniti kasnije"
+    "pickCefrLevelStepSubtitle": "Ovo možete promijeniti kasnije",
+    "unlockPremiumAudio": "Otključajte premium audio",
+    "unlockTranslations": "Otključajte prevode",
+    "unlockEmojiMode": "Otključajte emoji način rada",
+    "unlockMessagePractice": "Otključajte vježbanje poruka",
+    "unlockWritingAssistance": "Otključajte pomoć pri pisanju"
 }

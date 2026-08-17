@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-14 15:02:53.080140",
+    "@@last_modified": "2026-08-17 09:31:25.474967",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Tobetsa mona ho fetola puo ea molaetsa.",
     "messageLanguage": "Puo ea molaetsa",
     "messageLanguageUpdated": "Puo ea molaetsa e ntlafalitsoe!",
-    "pickCefrLevelStepSubtitle": "O ka fetola sena hamorao"
+    "pickCefrLevelStepSubtitle": "O ka fetola sena hamorao",
+    "unlockPremiumAudio": "Notlolla molumo oa boleng bo holimo",
+    "unlockTranslations": "Notlolla liphetolelo",
+    "unlockEmojiMode": "Notlolla mokhoa oa emoji",
+    "unlockMessagePractice": "Notlolla tloaelo ea melaetsa",
+    "unlockWritingAssistance": "Notlolla thuso ea ho ngola"
 }

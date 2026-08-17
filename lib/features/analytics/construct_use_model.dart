@@ -13,8 +13,13 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/practic
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_type_enum.dart';
 
 /// One lemma and a list of construct uses for that lemma
+///
+/// [_uses] is kept sorted chronologically at all times (oldest first). The
+/// derived values that hot paths read repeatedly ([points], [cappedUses],
+/// [cappedLastUse]) are memoized and invalidated by the only two mutators,
+/// [addUses] and [merge] — see #8416.
 class ConstructUses {
-  final List<OneConstructUse> _uses;
+  List<OneConstructUse> _uses;
   final ConstructTypeEnum constructType;
   final String lemma;
   String? _category;
@@ -29,16 +34,29 @@ class ConstructUses {
     _sortUses();
   }
 
-  // Total points for all uses of this lemma
-  int get points {
-    return min(
-      _uses.fold<int>(0, (total, use) => total + use.xp),
-      AnalyticsConstants.xpForFlower,
-    );
+  /// Memoized sum of xp over all uses, capped at [AnalyticsConstants.xpForFlower].
+  int? _pointsCache;
+
+  /// Memoized length of the [cappedUses] prefix.
+  int? _cappedLengthCache;
+
+  void _invalidateDerived() {
+    _pointsCache = null;
+    _cappedLengthCache = null;
   }
 
+  // Total points for all uses of this lemma
+  int get points => _pointsCache ??= min(
+    _uses.fold<int>(0, (total, use) => total + use.xp),
+    AnalyticsConstants.xpForFlower,
+  );
+
   DateTime? get lastUsed => _uses.lastOrNull?.timeStamp;
-  DateTime? get cappedLastUse => cappedUses.lastOrNull?.timeStamp;
+
+  DateTime? get cappedLastUse {
+    final n = _cappedLength;
+    return n == 0 ? null : _uses[n - 1].timeStamp;
+  }
 
   String get category {
     if (_category == null || _category!.isEmpty) return "other";
@@ -85,18 +103,26 @@ class ConstructUses {
     _ => ConstructLevelEnum.flowers,
   };
 
-  List<OneConstructUse> get cappedUses {
-    final result = <OneConstructUse>[];
-    var totalXp = 0;
+  /// Number of leading uses that make up [cappedUses]: the running xp total
+  /// is accumulated in chronological order and the walk stops once it has
+  /// reached the flower cap (the use that crosses the cap is included).
+  int get _cappedLength {
+    final cached = _cappedLengthCache;
+    if (cached != null) return cached;
 
+    var n = 0;
+    var totalXp = 0;
     for (final use in _uses) {
       if (totalXp >= AnalyticsConstants.xpForFlower) break;
       totalXp += use.xp;
-      result.add(use);
+      n++;
     }
-
-    return result;
+    return _cappedLengthCache = n;
   }
+
+  /// The chronological prefix of uses that counted toward the cap. Returns a
+  /// fresh list each call.
+  List<OneConstructUse> get cappedUses => _uses.sublist(0, _cappedLength);
 
   /// Read-only view of all uses, sorted chronologically (oldest first).
   List<OneConstructUse> get uses => List.unmodifiable(_uses);
@@ -290,13 +316,45 @@ class ConstructUses {
     );
   }
 
+  static int _byTime(OneConstructUse a, OneConstructUse b) =>
+      a.timeStamp.compareTo(b.timeStamp);
+
   void _sortUses() {
-    _uses.sort((a, b) => a.timeStamp.compareTo(b.timeStamp));
+    _uses.sort(_byTime);
+    _invalidateDerived();
+  }
+
+  /// Merge an already-sorted [incoming] list into the sorted [_uses] in
+  /// linear time. Existing uses win ties, so the result is stable.
+  void _mergeSorted(List<OneConstructUse> incoming) {
+    if (incoming.isEmpty) return;
+    _invalidateDerived();
+
+    // Common case: everything new is at least as recent as everything held.
+    if (_uses.isEmpty ||
+        !incoming.first.timeStamp.isBefore(_uses.last.timeStamp)) {
+      _uses.addAll(incoming);
+      return;
+    }
+
+    final merged = <OneConstructUse>[];
+    var i = 0, j = 0;
+    while (i < _uses.length && j < incoming.length) {
+      if (_byTime(incoming[j], _uses[i]) < 0) {
+        merged.add(incoming[j++]);
+      } else {
+        merged.add(_uses[i++]);
+      }
+    }
+    if (i < _uses.length) merged.addAll(_uses.sublist(i));
+    if (j < incoming.length) merged.addAll(incoming.sublist(j));
+    _uses = merged;
   }
 
   void addUses(List<OneConstructUse> uses) {
-    _uses.addAll(uses);
-    _sortUses();
+    if (uses.isEmpty) return;
+    final sorted = List<OneConstructUse>.from(uses)..sort(_byTime);
+    _mergeSorted(sorted);
   }
 
   void merge(ConstructUses other) {
@@ -307,8 +365,8 @@ class ConstructUses {
       );
     }
 
-    _uses.addAll(other._uses);
-    _sortUses();
+    // other._uses is sorted by the class invariant.
+    _mergeSorted(other._uses);
 
     if (category == 'other' && other.category != 'other') {
       _category = other.category;

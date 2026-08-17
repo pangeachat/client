@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-14 15:02:50.423255",
+    "@@last_modified": "2026-08-17 09:30:40.523197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Klik ya fɔ chenj di patta in langwej.",
     "messageLanguage": "Patta in langwej",
     "messageLanguageUpdated": "Patta in langwej dɔn chenj!",
-    "pickCefrLevelStepSubtitle": "Yu go ebul chenj dis leta"
+    "pickCefrLevelStepSubtitle": "Yu go ebul chenj dis leta",
+    "unlockPremiumAudio": "Open di premium audio",
+    "unlockTranslations": "Open di transleshon dɛn",
+    "unlockEmojiMode": "Open di emoji mod",
+    "unlockMessagePractice": "Open di mɛsej praktis",
+    "unlockWritingAssistance": "Open di raytin ɛlp"
 }

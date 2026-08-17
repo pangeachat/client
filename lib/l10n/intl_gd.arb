@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-14 15:02:49.289126",
+    "@@last_modified": "2026-08-17 09:30:24.259644",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Briog an seo gus cànan na teachdaireachd atharrachadh.",
     "messageLanguage": "Cànan teachdaireachd",
     "messageLanguageUpdated": "Cànan teachdaireachd air ùrachadh!",
-    "pickCefrLevelStepSubtitle": "Faodaidh tu seo atharrachadh nas fhaide air adhart"
+    "pickCefrLevelStepSubtitle": "Faodaidh tu seo atharrachadh nas fhaide air adhart",
+    "unlockPremiumAudio": "Fuaim prìseil fhuasgladh",
+    "unlockTranslations": "Eadar-theangachaidhean fhuasgladh",
+    "unlockEmojiMode": "Modh emoji fhuasgladh",
+    "unlockMessagePractice": "Cleachdadh teachdaireachd fhuasgladh",
+    "unlockWritingAssistance": "Taic sgrìobhaidh fhuasgladh"
 }

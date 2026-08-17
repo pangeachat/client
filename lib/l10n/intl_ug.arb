@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-14 15:02:53.598151",
+    "@@last_modified": "2026-08-17 09:31:50.148637",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "ئۇچۇر تىلىنى ئۆزگەرتىش ئۈچۈن بۇ يەرنى چېكىڭ.",
     "messageLanguage": "ئۇچۇر تىلى",
     "messageLanguageUpdated": "ئۇچۇر تىلى يېڭىلاندى!",
-    "pickCefrLevelStepSubtitle": "بۇنى كېيىن ئۆزگەرتەلەيسىز"
+    "pickCefrLevelStepSubtitle": "بۇنى كېيىن ئۆزگەرتەلەيسىز",
+    "unlockPremiumAudio": "ئالىي دەرىجىلىك ئاۋازنى ئېچىڭ",
+    "unlockTranslations": "تەرجىمىلەرنى ئېچىڭ",
+    "unlockEmojiMode": "ئېموجى ھالىتىنى ئېچىڭ",
+    "unlockMessagePractice": "ئۇچۇر مەشىقىنى ئېچىڭ",
+    "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ"
 }

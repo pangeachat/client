@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-14 15:02:51.245417",
+    "@@last_modified": "2026-08-17 09:31:00.141738",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Мессежийн хэлийг өөрчлөхийн тулд энд дарна уу.",
     "messageLanguage": "Мессежийн хэл",
     "messageLanguageUpdated": "Мессежийн хэл шинэчлэгдлээ!",
-    "pickCefrLevelStepSubtitle": "Та үүнийг дараа өөрчилж болно"
+    "pickCefrLevelStepSubtitle": "Та үүнийг дараа өөрчилж болно",
+    "unlockPremiumAudio": "Дээд зэргийн аудиог нээх",
+    "unlockTranslations": "Орчуулгыг нээх",
+    "unlockEmojiMode": "Эможи горимыг нээх",
+    "unlockMessagePractice": "Мессежний дадлагыг нээх",
+    "unlockWritingAssistance": "Бичихэд туслахыг нээх"
 }

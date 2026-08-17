@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-14 15:02:51.657961",
+    "@@last_modified": "2026-08-17 09:31:00.178137",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "मेसेज असिगी लोन्गी मात्तिक तोक्नबा नत्त्रगा होन्गदनबा अदोना मासिदा क्लिक तौबियु।",
     "messageLanguage": "मेसेज लोन्",
     "messageLanguageUpdated": "मेसेज लोन् होन्गले!",
-    "pickCefrLevelStepSubtitle": "ꯑꯗꯨꯕꯨ ꯅꯍꯥꯛꯅ ꯃꯇꯨꯡꯗ ꯃꯁꯤ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ"
+    "pickCefrLevelStepSubtitle": "ꯑꯗꯨꯕꯨ ꯅꯍꯥꯛꯅ ꯃꯇꯨꯡꯗ ꯃꯁꯤ ꯍꯣꯡꯗꯣꯛꯄ ꯌꯥꯏ",
+    "unlockPremiumAudio": "প্রিমিয়াম অডিও অনলক তৌবীয়ু",
+    "unlockTranslations": "অনুবাদশিং অনলক তৌবীয়ু",
+    "unlockEmojiMode": "ইমোজি মোড অনলক তৌবীয়ু",
+    "unlockMessagePractice": "মেসেজ প্র্যাকটিস অনলক তৌবীয়ু",
+    "unlockWritingAssistance": "রাইটিং এসিস্টেন্স অনলক তৌবীয়ু"
 }

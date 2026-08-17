@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-14 15:02:50.041739",
+    "@@last_modified": "2026-08-17 09:30:46.120353",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Smelltu hér til að breyta tungumáli skilaboðanna.",
     "messageLanguage": "Tungumál skilaboða",
     "messageLanguageUpdated": "Tungumáli skilaboðanna hefur verið breytt!",
-    "pickCefrLevelStepSubtitle": "Þú getur breytt þessu síðar"
+    "pickCefrLevelStepSubtitle": "Þú getur breytt þessu síðar",
+    "unlockPremiumAudio": "Aflæsa úrvalshljóði",
+    "unlockTranslations": "Aflæsa þýðingum",
+    "unlockEmojiMode": "Aflæsa emoji-stillingu",
+    "unlockMessagePractice": "Aflæsa skilaboðavenjum",
+    "unlockWritingAssistance": "Aflæsa ritunaraðstoð"
 }

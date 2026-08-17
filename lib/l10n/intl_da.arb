@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-14 15:02:48.228445",
+    "@@last_modified": "2026-08-17 09:30:17.526537",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10665,5 +10665,10 @@
     "updateMessageLanguage": "Klik her for at ændre beskedens sprog.",
     "messageLanguage": "Beskedsprog",
     "messageLanguageUpdated": "Beskedsprog opdateret!",
-    "pickCefrLevelStepSubtitle": "Du kan ændre dette senere"
+    "pickCefrLevelStepSubtitle": "Du kan ændre dette senere",
+    "unlockPremiumAudio": "Lås op for premium-lyd",
+    "unlockTranslations": "Lås op for oversættelser",
+    "unlockEmojiMode": "Lås op for emoji-tilstand",
+    "unlockMessagePractice": "Lås op for beskedøvelse",
+    "unlockWritingAssistance": "Lås op for skrivehjælp"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-14 15:02:52.658852",
+    "@@last_modified": "2026-08-17 09:31:25.032755",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Halkan ku dhufo si aad u beddesho luqadda fariinta.",
     "messageLanguage": "Luqadda fariinta",
     "messageLanguageUpdated": "Luqadda fariinta waa la cusboonaysiiyay!",
-    "pickCefrLevelStepSubtitle": "Tan dambe ayaad beddeli kartaa"
+    "pickCefrLevelStepSubtitle": "Tan dambe ayaad beddeli kartaa",
+    "unlockPremiumAudio": "Fur codka qaaliga ah",
+    "unlockTranslations": "Fur turjumaadaha",
+    "unlockEmojiMode": "Fur qaabka emoji",
+    "unlockMessagePractice": "Fur ku celcelinta fariimaha",
+    "unlockWritingAssistance": "Fur caawinta qorista"
 }

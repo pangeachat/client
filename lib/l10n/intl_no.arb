@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-14 15:02:51.710823",
+    "@@last_modified": "2026-08-17 09:30:59.474915",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Klikk her for å endre meldingens språk.",
     "messageLanguage": "Meldingsspråk",
     "messageLanguageUpdated": "Meldingsspråk oppdatert!",
-    "pickCefrLevelStepSubtitle": "Du kan endre dette senere"
+    "pickCefrLevelStepSubtitle": "Du kan endre dette senere",
+    "unlockPremiumAudio": "Lås opp premium lyd",
+    "unlockTranslations": "Lås opp oversettelser",
+    "unlockEmojiMode": "Lås opp emoji-modus",
+    "unlockMessagePractice": "Lås opp meldingsøvelse",
+    "unlockWritingAssistance": "Lås opp skrivehjelp"
 }

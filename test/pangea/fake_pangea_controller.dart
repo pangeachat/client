@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
+import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 
 /// The smallest controller that satisfies
 /// `MatrixState.isPangeaControllerInitialized` and serves a viewer L1.
@@ -45,6 +46,13 @@ class _FakeUserController implements UserController {
   /// `Null is not a subtype of Completer` they'd get from [noSuchMethod].
   @override
   Completer<void> initCompleter = Completer<void>();
+
+  /// Tool toggles read as off — the fresh-profile default. The message render
+  /// path reads `isToolEnabled(ToolSetting.immersionMode)`
+  /// ([PangeaMessageEvent.messageDisplayLangCode]), where the `noSuchMethod`
+  /// null would throw `Null is not a subtype of bool`.
+  @override
+  bool isToolEnabled(ToolSetting setting) => false;
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;

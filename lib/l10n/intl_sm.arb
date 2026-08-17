@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-14 15:02:52.536716",
+    "@@last_modified": "2026-08-17 09:31:28.377753",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Kiliki iinei e sui ai le gagana o le feʻau.",
     "messageLanguage": "Gagana o le feʻau",
     "messageLanguageUpdated": "Ua faʻafouina le gagana o le feʻau!",
-    "pickCefrLevelStepSubtitle": "E mafai ona e suia lenei mea mulimuli ane"
+    "pickCefrLevelStepSubtitle": "E mafai ona e suia lenei mea mulimuli ane",
+    "unlockPremiumAudio": "Tatala le leo maualuga",
+    "unlockTranslations": "Tatala fa'aliliuga",
+    "unlockEmojiMode": "Tatala le faiga emoji",
+    "unlockMessagePractice": "Tatala le fa'ata'ita'iga fe'au",
+    "unlockWritingAssistance": "Tatala le fesoasoani tusitusi"
 }

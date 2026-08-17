@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-14 15:02:49.283987",
+    "@@last_modified": "2026-08-17 09:30:36.271798",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10659,5 +10659,10 @@
     "updateMessageLanguage": "לחץ כאן כדי לשנות את שפת ההודעה.",
     "messageLanguage": "שפת ההודעה",
     "messageLanguageUpdated": "שפת ההודעה עודכנה!",
-    "pickCefrLevelStepSubtitle": "תוכל לשנות זאת מאוחר יותר"
+    "pickCefrLevelStepSubtitle": "תוכל לשנות זאת מאוחר יותר",
+    "unlockPremiumAudio": "פתיחת אודיו פרימיום",
+    "unlockTranslations": "פתיחת תרגומים",
+    "unlockEmojiMode": "פתיחת מצב אימוג'י",
+    "unlockMessagePractice": "פתיחת תרגול הודעות",
+    "unlockWritingAssistance": "פתיחת סיוע בכתיבה"
 }

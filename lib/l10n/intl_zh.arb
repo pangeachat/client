@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-14 15:02:53.738685",
+    "@@last_modified": "2026-08-17 09:31:43.271214",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9745,5 +9745,10 @@
     "updateMessageLanguage": "点击此处更改消息语言。",
     "messageLanguage": "消息语言",
     "messageLanguageUpdated": "消息语言已更新！",
-    "pickCefrLevelStepSubtitle": "稍后可更改"
+    "pickCefrLevelStepSubtitle": "稍后可更改",
+    "unlockPremiumAudio": "解锁高级音频",
+    "unlockTranslations": "解锁翻译",
+    "unlockEmojiMode": "解锁表情符号模式",
+    "unlockMessagePractice": "解锁消息练习",
+    "unlockWritingAssistance": "解锁写作辅助"
 }

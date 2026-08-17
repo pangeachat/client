@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-14 15:02:50.163164",
+    "@@last_modified": "2026-08-17 09:30:40.390843",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Klik kene kanggo ngganti basa pesen.",
     "messageLanguage": "Basa pesen",
     "messageLanguageUpdated": "Basa pesen wis dianyari!",
-    "pickCefrLevelStepSubtitle": "Sampeyan bisa ngowahi iki mengko"
+    "pickCefrLevelStepSubtitle": "Sampeyan bisa ngowahi iki mengko",
+    "unlockPremiumAudio": "Mbukak kunci audio premium",
+    "unlockTranslations": "Mbukak kunci terjemahan",
+    "unlockEmojiMode": "Mbukak kunci mode emoji",
+    "unlockMessagePractice": "Mbukak kunci latihan pesen",
+    "unlockWritingAssistance": "Mbukak kunci bantuan nulis"
 }

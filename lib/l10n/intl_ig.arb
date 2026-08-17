@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-14 15:02:49.966800",
+    "@@last_modified": "2026-08-17 09:30:42.865123",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Pịa ebe a ka ịgbanwee asụsụ ozi ahụ.",
     "messageLanguage": "Asụsụ ozi",
     "messageLanguageUpdated": "Emelitere asụsụ ozi!",
-    "pickCefrLevelStepSubtitle": "Ị nwere ike ịgbanwe nke a ma emechaa"
+    "pickCefrLevelStepSubtitle": "Ị nwere ike ịgbanwe nke a ma emechaa",
+    "unlockPremiumAudio": "Mepee ọdịyo adịchaghị mma",
+    "unlockTranslations": "Mepee ntụgharị asụsụ",
+    "unlockEmojiMode": "Mepee ọnọdụ emoji",
+    "unlockMessagePractice": "Mepee omume ozi",
+    "unlockWritingAssistance": "Mepee enyemaka ide ihe"
 }

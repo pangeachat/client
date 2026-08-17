@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-14 15:02:47.557513",
+    "@@last_modified": "2026-08-17 09:30:12.224768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Mesajın dilini dəyişmək üçün bura klikləyin.",
     "messageLanguage": "Mesaj dili",
     "messageLanguageUpdated": "Mesaj dili yeniləndi!",
-    "pickCefrLevelStepSubtitle": "Bunu daha sonra dəyişə bilərsiniz"
+    "pickCefrLevelStepSubtitle": "Bunu daha sonra dəyişə bilərsiniz",
+    "unlockPremiumAudio": "Premium səsi açın",
+    "unlockTranslations": "Tərcümələri açın",
+    "unlockEmojiMode": "Emoji rejimini açın",
+    "unlockMessagePractice": "Mesaj təcrübəsini açın",
+    "unlockWritingAssistance": "Yazı köməkliyini açın"
 }

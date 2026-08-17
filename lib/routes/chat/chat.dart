@@ -89,6 +89,7 @@ import 'package:fluffychat/routes/chat/event_too_large_dialog.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
+import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event_cache.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
 import 'package:fluffychat/routes/chat/events/models/representation_content_model.dart';
 import 'package:fluffychat/routes/chat/events/models/tokens_event_content_model.dart';
@@ -282,6 +283,12 @@ class ChatController extends State<ChatPageWithRoom>
 
   @override
   Timeline? timeline;
+
+  // #Pangea
+  /// Reused message-event wrappers so parsed representations survive
+  /// timeline rebuilds — see [PangeaMessageEventCache] (#8393 stage 2).
+  final PangeaMessageEventCache pangeaMessageEvents = PangeaMessageEventCache();
+  // Pangea#
 
   /// True while this room's timeline subscriptions are cancelled but the
   /// controller stays mounted (the panel lost focus without being removed). On
@@ -1306,6 +1313,7 @@ class ChatController extends State<ChatPageWithRoom>
     timeline = null;
     inputFocus.removeListener(_inputFocusListener);
     // #Pangea
+    pangeaMessageEvents.clear();
     WidgetsBinding.instance.removeObserver(this);
     _storeInputTimeoutTimer?.cancel();
     _displayChatDetailsColumn.dispose();

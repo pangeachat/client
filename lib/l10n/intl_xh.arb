@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-14 15:02:53.674001",
+    "@@last_modified": "2026-08-17 09:31:36.654542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Cofa apha ukuze utshintshe ulwimi lomyalezo.",
     "messageLanguage": "Ulwimi lomyalezo",
     "messageLanguageUpdated": "Ulwimi lomyalezo luhlaziyiwe!",
-    "pickCefrLevelStepSubtitle": "Ungakutshintsha oku kamva"
+    "pickCefrLevelStepSubtitle": "Ungakutshintsha oku kamva",
+    "unlockPremiumAudio": "Vula iaudio yeprimiyamu",
+    "unlockTranslations": "Vula iinguqulelo",
+    "unlockEmojiMode": "Vula imo ye-emoji",
+    "unlockMessagePractice": "Vula umthambo wemiyalezo",
+    "unlockWritingAssistance": "Vula uncedo lokubhala"
 }

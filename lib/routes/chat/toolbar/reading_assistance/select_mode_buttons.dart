@@ -63,6 +63,31 @@ enum SelectMode {
     }
   }
 
+  /// The call to action an unsubscribed user gets in place of this mode's
+  /// content. Named for the feature, so the gate advertises what the mode does
+  /// rather than that it is locked (#7929).
+  ///
+  /// **Null means the mode is not subscription-gated at all** — this is the one
+  /// place that decides, so a gate can't drift from the feature it guards.
+  /// [SelectMode.requestRegenerate] is free: anyone may re-ask the bot, so it
+  /// must never show a gate.
+  String? unlockLabel(BuildContext context) {
+    final l10n = L10n.of(context);
+    switch (this) {
+      case SelectMode.audio:
+        return l10n.unlockPremiumAudio;
+      case SelectMode.translate:
+      case SelectMode.speechTranslation:
+        return l10n.unlockTranslations;
+      case SelectMode.practice:
+        return l10n.unlockMessagePractice;
+      case SelectMode.emoji:
+        return l10n.unlockEmojiMode;
+      case SelectMode.requestRegenerate:
+        return null;
+    }
+  }
+
   String get buttonTarget => "select_mode_button_$name";
 }
 

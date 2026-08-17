@@ -1,4 +1,7 @@
 import 'dart:async';
+import 'dart:math';
+
+import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
@@ -169,13 +172,12 @@ class AnalyticsDataService {
 
       _invalidateCaches();
       final l2 = MatrixState.pangeaController.userController.userL2;
-      final analyticsUserId = await _analyticsClientGetter.database.getUserID();
-      final storedLanguage = await _analyticsClientGetter.database
-          .getCurrentLanguage();
-
-      final storedAnalyticsRoomId = l2 != null
-          ? await _analyticsClientGetter.database.getAnalyticsRoomId()
-          : null;
+      final database = _analyticsClientGetter.database;
+      final (analyticsUserId, storedLanguage, storedAnalyticsRoomId) = await (
+        database.getUserID(),
+        database.getCurrentLanguage(),
+        l2 != null ? database.getAnalyticsRoomId() : Future<String?>.value(),
+      ).wait;
 
       final analyticsRoomId = l2 != null
           ? _getAnalyticsRoomLocal(l2)?.id
@@ -261,14 +263,11 @@ class AnalyticsDataService {
   }
 
   Future<void> _initMergeTable(String language) async {
-    final vocab = await _analyticsClientGetter.database.getAggregatedConstructs(
-      ConstructTypeEnum.vocab,
-      language,
-    );
-    final morph = await _analyticsClientGetter.database.getAggregatedConstructs(
-      ConstructTypeEnum.morph,
-      language,
-    );
+    final database = _analyticsClientGetter.database;
+    final (vocab, morph) = await (
+      database.getAggregatedConstructs(ConstructTypeEnum.vocab, language),
+      database.getAggregatedConstructs(ConstructTypeEnum.morph, language),
+    ).wait;
 
     final blocked = blockedConstructs;
     _mergeTable.addConstructs(vocab, blocked);
@@ -380,18 +379,26 @@ class AnalyticsDataService {
     );
 
     final blocked = blockedConstructs;
-    final List<OneConstructUse> filtered = [];
 
-    final Map<ConstructIdentifier, DateTime?> cappedLastUseCache = {};
-    for (final use in uses) {
-      if (blocked.contains(use.identifier)) continue;
-      if (use.identifier.isInvalid) continue;
-
-      if (!cappedLastUseCache.containsKey(use.identifier)) {
-        final constructs = await getConstructUse(use.identifier, language);
-        cappedLastUseCache[use.identifier] = constructs.cappedLastUse;
+    // Every distinct, visible identifier in one batched aggregate read, so the
+    // per-use loop below never awaits (#8420).
+    final visibleIds = <ConstructIdentifier>{
+      for (final use in uses)
+        if (!blocked.contains(use.identifier) && !use.identifier.isInvalid)
+          use.identifier,
+    };
+    final Map<ConstructIdentifier, DateTime?> cappedLastUseById = {};
+    if (filterCapped && visibleIds.isNotEmpty) {
+      final constructs = await getConstructUses(visibleIds.toList(), language);
+      for (final entry in constructs.entries) {
+        cappedLastUseById[entry.key] = entry.value.cappedLastUse;
       }
-      final cappedLastUse = cappedLastUseCache[use.identifier];
+    }
+
+    final List<OneConstructUse> filtered = [];
+    for (final use in uses) {
+      if (!visibleIds.contains(use.identifier)) continue;
+      final cappedLastUse = cappedLastUseById[use.identifier];
       if (filterCapped &&
           (cappedLastUse != null && use.timeStamp.isAfter(cappedLastUse))) {
         continue;
@@ -698,22 +705,52 @@ class AnalyticsDataService {
   }
 
   /// Recomputes the language's XP total and level from the current aggregate.
+  ///
+  /// Reads per-row uncapped xp sums straight from the aggregate JSON
+  /// ([AnalyticsDatabase.getAggregateXPSums]) and folds them with
+  /// [foldTotalXP] — the same grouping, blocked/invalid filter and per-construct
+  /// cap that [getAggregatedConstructs] applies, without deserializing every
+  /// stored use (#8418).
   Future<void> _recomputeTotalXP(String language) async {
-    final vocab = await getAggregatedConstructs(
-      ConstructTypeEnum.vocab,
-      language,
+    final db = _analyticsClientGetter.database;
+    final sums = await Future.wait([
+      db.getAggregateXPSums(ConstructTypeEnum.vocab, language),
+      db.getAggregateXPSums(ConstructTypeEnum.morph, language),
+    ]);
+    final totalXP = foldTotalXP(
+      sums.expand((s) => s),
+      resolve: _mergeTable.resolve,
+      blocked: blockedConstructs,
     );
-    final morphs = await getAggregatedConstructs(
-      ConstructTypeEnum.morph,
-      language,
-    );
-    final constructs = [...vocab.values, ...morphs.values];
-    final totalXP = constructs.fold(0, (total, c) => total + c.points);
 
     await MatrixState.pangeaController.userController.updateAnalyticsProfile(
       level: DerivedAnalyticsDataModel.calculateLevelWithXp(totalXP),
     );
-    await _analyticsClientGetter.database.updateTotalXP(totalXP, language);
+    await db.updateTotalXP(totalXP, language);
+  }
+
+  /// Total XP over per-row uncapped xp [sums]: rows are grouped by their
+  /// merge-table canonical id ([resolve]), groups whose canonical is blocked or
+  /// invalid are dropped, and each remaining group contributes
+  /// `min(sum, xpForFlower)` — exactly what summing [ConstructUses.points]
+  /// over [getAggregatedConstructs] yields.
+  @visibleForTesting
+  static int foldTotalXP(
+    Iterable<({ConstructIdentifier id, int xp})> sums, {
+    required ConstructIdentifier Function(ConstructIdentifier) resolve,
+    required Set<ConstructIdentifier> blocked,
+  }) {
+    final byCanonical = <ConstructIdentifier, int>{};
+    for (final row in sums) {
+      final canonical = resolve(row.id);
+      if (blocked.contains(canonical) || canonical.isInvalid) continue;
+      byCanonical[canonical] = (byCanonical[canonical] ?? 0) + row.xp;
+    }
+    var total = 0;
+    for (final xp in byCanonical.values) {
+      total += min(xp, AnalyticsConstants.xpForFlower);
+    }
+    return total;
   }
 
   Future<void> updateBlockedConstructs(

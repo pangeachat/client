@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-14 15:02:47.639803",
+    "@@last_modified": "2026-08-17 09:30:20.161001",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Натиснете тук, за да промените езика на съобщението.",
     "messageLanguage": "Език на съобщението",
     "messageLanguageUpdated": "Езикът на съобщението е актуализиран!",
-    "pickCefrLevelStepSubtitle": "Можете да промените това по-късно"
+    "pickCefrLevelStepSubtitle": "Можете да промените това по-късно",
+    "unlockPremiumAudio": "Отключете премиум аудио",
+    "unlockTranslations": "Отключете преводи",
+    "unlockEmojiMode": "Отключете режим емоджи",
+    "unlockMessagePractice": "Отключете практика за съобщения",
+    "unlockWritingAssistance": "Отключете помощ при писане"
 }

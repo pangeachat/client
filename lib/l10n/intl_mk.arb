@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-14 15:02:51.025114",
+    "@@last_modified": "2026-08-17 09:30:48.399592",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "Кликнете овде за да го промените јазикот на пораката.",
     "messageLanguage": "Јазик на пораката",
     "messageLanguageUpdated": "Јазикот на пораката е ажуриран!",
-    "pickCefrLevelStepSubtitle": "Може да го промените подоцна"
+    "pickCefrLevelStepSubtitle": "Може да го промените подоцна",
+    "unlockPremiumAudio": "Отклучи премиум аудио",
+    "unlockTranslations": "Отклучи преводи",
+    "unlockEmojiMode": "Отклучи емоџи режим",
+    "unlockMessagePractice": "Отклучи вежбање пораки",
+    "unlockWritingAssistance": "Отклучи помош при пишување"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-14 15:02:50.355570",
+    "@@last_modified": "2026-08-17 09:30:40.077738",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2133,5 +2133,10 @@
     "updateMessageLanguage": "ចុចទីនេះដើម្បីផ្លាស់ប្ដូរភាសារបស់សារ។",
     "messageLanguage": "ភាសារបស់សារ",
     "messageLanguageUpdated": "បានអាប់ដេតភាសារបស់សារ!",
-    "pickCefrLevelStepSubtitle": "អ្នកអាចផ្លាស់ប្ដូរវានៅពេលក្រោយបាន"
+    "pickCefrLevelStepSubtitle": "អ្នកអាចផ្លាស់ប្ដូរវានៅពេលក្រោយបាន",
+    "unlockPremiumAudio": "ដោះសោអូឌីយ៉ូពិសេស",
+    "unlockTranslations": "ដោះសោការបកប្រែ",
+    "unlockEmojiMode": "ដោះសោរបៀប Emoji",
+    "unlockMessagePractice": "ដោះសោការអនុវត្តសារ",
+    "unlockWritingAssistance": "ដោះសោជំនួយការសរសេរ"
 }

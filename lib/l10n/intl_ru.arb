@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-14 15:02:52.256135",
+    "@@last_modified": "2026-08-17 09:31:07.705310",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10717,5 +10717,10 @@
     "updateMessageLanguage": "Нажмите здесь, чтобы изменить язык сообщения.",
     "messageLanguage": "Язык сообщения",
     "messageLanguageUpdated": "Язык сообщения обновлен!",
-    "pickCefrLevelStepSubtitle": "Вы сможете изменить это позже"
+    "pickCefrLevelStepSubtitle": "Вы сможете изменить это позже",
+    "unlockPremiumAudio": "Разблокировать премиум-аудио",
+    "unlockTranslations": "Разблокировать переводы",
+    "unlockEmojiMode": "Разблокировать режим эмодзи",
+    "unlockMessagePractice": "Разблокировать практику сообщений",
+    "unlockWritingAssistance": "Разблокировать помощь в написании"
 }

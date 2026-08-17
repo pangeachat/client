@@ -134,4 +134,76 @@ void main() async {
       );
     });
   });
+
+  group("stepText replay with an inapplicable edit", () {
+    // A deserialized record can carry edits measured against different text
+    // than the recovered originalText, so replay must not assume they apply.
+    // See Sentry CLIENT-E42.
+    ChoreoRecordModel recordWith(List<ChoreoEditModel> edits) =>
+        ChoreoRecordModel(
+          originalText: "hello world",
+          choreoSteps: edits
+              .map((e) => ChoreoRecordStepModel(edits: e))
+              .toList(),
+          openMatches: [],
+        );
+
+    test(
+      "stops at an edit reaching past the end, returning the text so far",
+      () {
+        // "hello world" is 11 chars; offset 18 is the production case.
+        final record = recordWith([
+          const ChoreoEditModel(offset: 0, length: 5, insert: "howdy"),
+          const ChoreoEditModel(offset: 18, length: 2, insert: "!!"),
+        ]);
+
+        expect(record.stepText(), "howdy world");
+      },
+    );
+
+    test(
+      "stops at an edit whose offset is in range but whose length is not",
+      () {
+        final record = recordWith([
+          const ChoreoEditModel(offset: 9, length: 40, insert: "x"),
+        ]);
+
+        expect(record.stepText(), "hello world");
+      },
+    );
+
+    test("stops at an edit with a negative offset or length", () {
+      expect(
+        recordWith([
+          const ChoreoEditModel(offset: -1, length: 2, insert: "x"),
+        ]).stepText(),
+        "hello world",
+      );
+      expect(
+        recordWith([
+          const ChoreoEditModel(offset: 0, length: -2, insert: "x"),
+        ]).stepText(),
+        "hello world",
+      );
+    });
+
+    test("addRecord does not throw when the stored chain is inconsistent", () {
+      final record = recordWith([
+        const ChoreoEditModel(offset: 18, length: 2, insert: "!!"),
+      ]);
+
+      expect(() => record.addRecord("hello world!"), returnsNormally);
+    });
+
+    test("an edit landing exactly at the end still applies", () {
+      // offset + length == text.length is in range, not past it — an append
+      // must not be mistaken for a broken edit.
+      final record = recordWith([
+        const ChoreoEditModel(offset: 11, length: 0, insert: "!"),
+        const ChoreoEditModel(offset: 6, length: 6, insert: "there!"),
+      ]);
+
+      expect(record.stepText(), "hello there!");
+    });
+  });
 }
