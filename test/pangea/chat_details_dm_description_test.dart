@@ -12,7 +12,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
-import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details_content.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -46,28 +45,6 @@ class _TestMatrix extends Matrix {
 
   @override
   MatrixState createState() => _TestMatrixState();
-}
-
-/// [ChatDetailsContent] reads only `widget.embeddedCloseButton` and `roomId`
-/// off the controller during build; the rest are callbacks behind `onPressed`.
-class _FakeChatDetailsController implements ChatDetailsController {
-  @override
-  final ChatDetails widget;
-
-  _FakeChatDetailsController(String roomId)
-    : widget = ChatDetails(roomId: roomId);
-
-  @override
-  String? get roomId => widget.roomId;
-
-  /// `State` mixes in `Diagnosticable`, whose `toString` takes a named
-  /// argument; `noSuchMethod` can't widen `Object.toString` to match it.
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) =>
-      '_FakeChatDetailsController';
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
 }
 
 void main() {
@@ -165,14 +142,8 @@ void main() {
           locale: const Locale('en'),
           localizationsDelegates: L10n.localizationsDelegates,
           supportedLocales: L10n.supportedLocales,
-          home: Scaffold(
-            body: SingleChildScrollView(
-              child: ChatDetailsContent(
-                _FakeChatDetailsController(room.id),
-                room,
-              ),
-            ),
-          ),
+          // The page brings its own Scaffold, AppBar, and scrolling.
+          home: ChatDetailsContent(room: room),
         ),
       ),
     );

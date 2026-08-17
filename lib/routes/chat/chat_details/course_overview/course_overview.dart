@@ -167,13 +167,18 @@ class _CourseOverviewState extends State<CourseOverview> {
                     ),
                   CourseCatchUp(room: room),
                   AnalyticsRequestIndicator(room: room),
+                  // The course-wide progress bar rides the intro block, under
+                  // the attention cards; the Course plan section below starts
+                  // straight at its header, with no divider between them.
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: CourseProgressBar(
+                      objectivesProvider: widget.controller.objectivesProvider,
+                    ),
+                  ),
                 ],
               ),
             ),
-            // Hidden when the intro block above is empty, so the page can't
-            // open on a stray divider.
-            if (room.topic.isNotEmpty || room.coursePlan != null)
-              const Divider(),
             Padding(
               padding: SpaceDetailsContent.sectionPadding,
               child: Column(
@@ -182,9 +187,6 @@ class _CourseOverviewState extends State<CourseOverview> {
                 children: [
                   CourseSectionHeader(
                     title: SpaceSettingsTabs.course.title(context),
-                  ),
-                  CourseProgressBar(
-                    objectivesProvider: widget.controller.objectivesProvider,
                   ),
                   const SizedBox(height: 8.0),
                   ListenableBuilder(

@@ -71,8 +71,8 @@ User taps the knock button → standard Matrix `knockRoom()` call → confirmati
 
 Admin notices the knock in one of three places:
 
-- **Notification badge** on the space icon in the navigation bar. TODO: need to add this.
-- **Chat list** for that space — the knocking user appears as a pending entry. TODO: make this a bit more attention-grabbing.
+- **Knock badge** — the red "!" on the course's avatar in the web nav rail, the courses list, and the mobile nav's course shortcut (#8139, #8246), clearing when the knock is accepted or denied.
+- **Catch up section** at the top of the course page (#8357) — a gold attention card listing each knocking user with an Approve action, updating in real time as knocks arrive or resolve (accepted → invite, denied → leave).
 - **Member list** (room participants page) — knocking users are sorted below joined members, labeled "Knocking."
 
 Admin taps the knocking user → popup menu shows "Approve" (only visible for `Membership.knock`) → `room.invite(userId)`.
