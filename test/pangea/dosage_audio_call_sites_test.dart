@@ -294,39 +294,47 @@ void main() {
     }
 
     test('ten read-aloud sites emit, plus the two message reads', () {
-      // The ten (pangeachat/client#8408, review) are every `TtsUseCase.words`
-      // and `TtsUseCase.choices` playback; the message read-aloud controller's
-      // two are categories 2 and 4 and came first. Twelve `tryToSpeak` sites,
-      // twelve probes, no exemptions — a file appearing or vanishing here means
-      // a surface started or stopped counting, which changes what a
-      // teacher-visible total contains. That is meant to be a visible diff.
-      expect(probeSites(), {
+      // The TEN (pangeachat/client#8408, review) are every `TtsUseCase.words`
+      // and `TtsUseCase.choices` playback, across eight files; the message
+      // read-aloud controller's two are categories 2 and 4 and came first.
+      // Pinned per file and per SITE, so a site added to a file already on the
+      // list still shows up — a file count alone would have missed the three
+      // that share the analytics practice controller.
+      //
+      // Twelve calls, and no exemptions: a number moving here means a surface
+      // started or stopped counting, which changes what a teacher-visible total
+      // contains. That is meant to be a visible diff, not a silent one.
+      final calls = {
+        for (final path in callersOf('TtsController.tryToSpeak('))
+          path: RegExp(
+            r'TtsController\.tryToSpeak\(',
+          ).allMatches(read(path)).length,
+      };
+      expect(calls, {
+        // The six drill sites.
         'lib/pangea/common/widgets/choice_array.dart': 1,
         'lib/routes/analytics/construct_analytics/practice/analytics_practice_ui_controller.dart':
-            1,
+            3,
+        'lib/routes/chat/toolbar/message_practice/practice_controller.dart': 1,
+        'lib/routes/chat/toolbar/message_practice/practice_match_item.dart': 1,
+        // The four word sites.
         'lib/routes/analytics/construct_analytics/vocab_analytics_list_view.dart':
             1,
         'lib/routes/chat/activity_sessions/activity_vocab_widget.dart': 1,
         'lib/routes/chat/events/phonetic_transcription/phonetic_transcription_widget.dart':
             1,
-        'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart':
-            1,
-        'lib/routes/chat/toolbar/message_practice/practice_controller.dart': 1,
-        'lib/routes/chat/toolbar/message_practice/practice_match_item.dart': 1,
         'lib/routes/chat/toolbar/message_selection_overlay.dart': 1,
+        // Categories 2 and 4, which came first.
+        'lib/routes/chat/events/text_to_speech/message_read_aloud_controller.dart':
+            2,
       });
+      expect(calls.values.fold<int>(0, (a, b) => a + b), 12);
 
-      // Nine probe expressions, TWELVE call sites: two files funnel several
-      // sites through one private builder, so the count that matters for
-      // "everything emits" is the `tryToSpeak` calls, asserted here.
-      final calls = callersOf('TtsController.tryToSpeak(')
-          .map(
-            (path) => RegExp(
-              r'TtsController\.tryToSpeak\(',
-            ).allMatches(read(path)).length,
-          )
-          .fold<int>(0, (a, b) => a + b);
-      expect(calls, 12);
+      // And every one of those files builds a probe. `tryToSpeak` takes a
+      // required one, so this cannot currently be false — which is the point:
+      // it fails the day somebody reintroduces an optional or exempt form and
+      // a site quietly stops emitting while still compiling.
+      expect(probeSites().keys.toSet(), calls.keys.toSet());
     });
 
     test('the exemption vocabulary is gone, not merely unused', () {
