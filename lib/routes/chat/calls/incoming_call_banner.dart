@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart' as matrix show Room;
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_page.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -26,28 +27,17 @@ class IncomingCallBanner extends StatefulWidget {
 }
 
 class _IncomingCallBannerState extends State<IncomingCallBanner> {
-  StreamSubscription<matrix.Room>? _calls;
+  StreamSubscription<IncomingCallNotification>? _rings;
   Timer? _stillRinging;
-  matrix.Room? _ringing;
+  IncomingCallNotification? _ringing;
   String? _listeningTo;
 
-  /// Rooms whose current call the learner has turned down.
+  /// Notification event ids the learner has turned down.
   ///
-  /// Held while that call is still live and dropped the moment it ends, so the
-  /// repeated discoveries that arrive while a caller waits are ignored and a
-  /// caller who hangs up and tries again gets through immediately.
-  ///
-  /// Observed rather than timed: nothing in a membership distinguishes one call
-  /// from the next, but "the caller is no longer there" is plain to see.
+  /// Keyed by the notification event, which is unique per call — so a decline
+  /// holds for exactly the call it declined, and the next call from the same
+  /// person (a different notification) rings normally.
   final Set<String> _declined = {};
-  Timer? _watchDeclined;
-
-  /// How long a call rings before it is taken as unanswered.
-  ///
-  /// A caller who closes their app without leaving cleanly stops renewing their
-  /// membership, but that takes longer to lapse than anyone will sit looking at
-  /// a prompt.
-  static const _ringFor = Duration(seconds: 60);
 
   @override
   void initState() {
@@ -61,8 +51,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     // The active account can change under this widget. Without re-subscribing,
-    // the banner would keep listening to the account that was active when it
-    // mounted and never ring for the one the learner switched to.
+    // the banner would keep listening to the account active when it mounted and
+    // never ring for the one the learner switched to.
     _listen();
   }
 
@@ -72,39 +62,35 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     final account = matrixState.client.clientName;
     if (account == _listeningTo) return;
 
-    _calls?.cancel();
+    _rings?.cancel();
     _listeningTo = account;
     // A prompt belonging to the account we just left is not this one's.
     if (_ringing != null) setState(() => _ringing = null);
 
-    final calls = matrixState.callService;
-    // Arms discovery. Without it an account that had never placed a call could
-    // never receive one — nothing would be watching for a membership to appear.
-    unawaited(calls.listenForCalls());
-    _calls = calls.incomingCalls.listen((room) {
+    _rings = matrixState.callService.incomingRings.listen((ring) {
       if (!mounted) return;
-      // One at a time. A second call arriving while the first is ringing keeps
-      // the first on screen rather than swapping under the learner's finger as
-      // they reach to answer.
-      if (_ringing != null) return;
-      if (_declined.contains(room.id)) return;
-      setState(() => _ringing = room);
-      _watchForGiveUp(room);
+      // One at a time, and never one already turned down.
+      if (_ringing != null || _declined.contains(ring.event.eventId)) return;
+      setState(() => _ringing = ring);
+      _watchForGiveUp(ring);
     });
   }
 
-  /// Dismisses the prompt when the caller stops calling.
+  /// Dismisses the prompt when the call stops ringing.
   ///
-  /// The call membership is the truth here: it goes when they hang up, and it
-  /// lapses when their app dies. Polling it is what keeps a prompt from
-  /// outliving the call — and from letting a learner answer into an empty room.
-  void _watchForGiveUp(matrix.Room room) {
+  /// A call ends three ways while a prompt is up: the caller gives up (their
+  /// membership goes), or the ring lifetime lapses, or the learner acts. The
+  /// first two are watched here so a prompt never outlives its call.
+  void _watchForGiveUp(IncomingCallNotification ring) {
     _stillRinging?.cancel();
-    final until = DateTime.now().add(_ringFor);
     _stillRinging = Timer.periodic(const Duration(seconds: 2), (timer) {
-      if (!mounted) return;
+      if (!mounted || _ringing?.event.eventId != ring.event.eventId) {
+        timer.cancel();
+        return;
+      }
       final calls = Matrix.of(context).callService;
-      if (calls.isRinging(room) && DateTime.now().isBefore(until)) return;
+      final expired = ring.hasExpiredBy(DateTime.now());
+      if (!expired && calls.isRinging(ring.event.room)) return;
       timer.cancel();
       _dismiss();
     });
@@ -112,42 +98,9 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
   @override
   void dispose() {
-    _calls?.cancel();
+    _rings?.cancel();
     _stillRinging?.cancel();
-    _watchDeclined?.cancel();
     super.dispose();
-  }
-
-  /// Turns the prompt down and remembers it, so the same call does not ask
-  /// again while the caller is still waiting.
-  void _decline() {
-    final room = _ringing;
-    if (room != null) {
-      // Told to the caller, so their phone stops ringing and they learn what
-      // happened, rather than being left to wonder.
-      unawaited(Matrix.of(context).callService.decline(room));
-      _declined.add(room.id);
-      _watchDeclinedCalls();
-    }
-    _dismiss();
-  }
-
-  /// Forgets a decline once that call has actually ended.
-  ///
-  /// Without this the learner would be unreachable from that conversation until
-  /// some arbitrary window lapsed — a caller who hung up and rang straight back
-  /// would not get through, which is exactly when someone rings back.
-  void _watchDeclinedCalls() {
-    _watchDeclined?.cancel();
-    _watchDeclined = Timer.periodic(const Duration(seconds: 2), (timer) {
-      if (!mounted || _declined.isEmpty) {
-        timer.cancel();
-        return;
-      }
-      final calls = Matrix.of(context).callService;
-      _declined.removeWhere((roomId) => !calls.isRingingIn(roomId));
-      if (_declined.isEmpty) timer.cancel();
-    });
   }
 
   void _dismiss() {
@@ -156,17 +109,26 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     if (mounted) setState(() => _ringing = null);
   }
 
-  Future<void> _answer(matrix.Room room) async {
-    // Answering clears any earlier decline: the learner has plainly changed
-    // their mind, and a lingering one would suppress the next call for nothing.
-    _declined.remove(room.id);
-    // Checked at the moment of answering, not when the prompt appeared. A
-    // caller can give up between the two, and joining then would open a call of
-    // one and write it to the room as though it happened.
-    final live = Matrix.of(context).callService.isRinging(room);
+  /// Turns the call down and tells the caller, so their phone stops ringing.
+  void _decline(IncomingCallNotification ring) {
+    _declined.add(ring.event.eventId);
+    unawaited(
+      Matrix.of(context).callService.decline(
+        ring.event.room,
+        notificationEventId: ring.event.eventId,
+      ),
+    );
+    _dismiss();
+  }
+
+  Future<void> _answer(IncomingCallNotification ring) async {
+    // A caller can give up between the prompt appearing and the tap. Joining a
+    // call nobody is on would open a call of one and write it to the room.
+    final calls = Matrix.of(context).callService;
+    final live = calls.isRinging(ring.event.room);
     _dismiss();
     if (!live || !mounted) return;
-    await CallPage.show(context, room, video: false);
+    await CallPage.show(context, ring.event.room, video: ring.isVideo);
   }
 
   @override
@@ -181,9 +143,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
             left: 8,
             right: 8,
             child: _Banner(
-              room: ringing,
+              room: ringing.event.room,
+              video: ringing.isVideo,
               onAnswer: () => _answer(ringing),
-              onDecline: _decline,
+              onDecline: () => _decline(ringing),
             ),
           ),
       ],
@@ -193,11 +156,13 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
 class _Banner extends StatelessWidget {
   final matrix.Room room;
+  final bool video;
   final VoidCallback onAnswer;
   final VoidCallback onDecline;
 
   const _Banner({
     required this.room,
+    required this.video,
     required this.onAnswer,
     required this.onDecline,
   });
@@ -215,7 +180,7 @@ class _Banner extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         child: Row(
           children: [
-            const Icon(Icons.call),
+            Icon(video ? Icons.videocam : Icons.call),
             const SizedBox(width: 12),
             Expanded(
               child: Column(

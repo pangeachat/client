@@ -38,16 +38,33 @@ class FakeCalls extends CallService {
   Stream<MatrixRTCCallEvent> get callEvents => _events.stream;
 
   final _declines = StreamController<Event>.broadcast();
+  String? ringedNotificationId;
 
   @override
-  Stream<Event> declinesIn(matrix.Room room) => _declines.stream;
+  Future<String?> ring(matrix.Room room, {required bool video}) async {
+    trace('ring');
+    return ringedNotificationId ??= '\$notification';
+  }
 
-  /// The other person turning the call down.
+  @override
+  Stream<Event> declinesOf(matrix.Room room, String notificationEventId) =>
+      _declines.stream.where(
+        (event) =>
+            (event.content['m.relates_to'] as Map?)?['event_id'] ==
+            notificationEventId,
+      );
+
+  /// The other person turning down the call this device rang.
   Future<void> peerDeclines() async {
     _declines.add(
       Event(
         type: 'decline',
-        content: const {},
+        content: {
+          'm.relates_to': {
+            'rel_type': 'm.reference',
+            'event_id': ringedNotificationId ?? '\$notification',
+          },
+        },
         eventId: '\$d',
         senderId: '@peer:server',
         originServerTs: DateTime.now(),
@@ -213,6 +230,7 @@ void main() {
         'connect(video: false)',
         'capture.start',
         'announce',
+        'ring',
       ]);
       expect(call.stage, CallStage.connected);
       expect(call.isRecording, isTrue);

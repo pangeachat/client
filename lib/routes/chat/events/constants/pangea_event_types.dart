@@ -20,6 +20,11 @@ class PangeaEventTypes {
   /// sides can show what happened. Named for MSC4310, which defines exactly this
   /// for MatrixRTC and is implemented in Element Call under the same unstable
   /// prefix — so a Matrix client that speaks it will understand ours.
+  /// A call announcing itself so the other side rings. A timeline event
+  /// because state changes do not fire push rules — MSC4075, matching what
+  /// Element Call sends today.
+  static const callNotification = "org.matrix.msc4075.rtc.notification";
+
   static const callDecline = "org.matrix.msc4310.rtc.decline";
 
   static const botOptions = "pangea.bot_options";

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/incoming_call.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
@@ -108,12 +109,7 @@ class CallService {
   /// `delegate.handleNewGroupCall` before returning, and it dereferences
   /// `delegate.mediaDevices` inline — so it must not run until the delegate is fully
   /// live, and should not run at all for an account that never places a call.
-  VoIP get voip => _voip ??= () {
-    // Wired here rather than in the constructor: the callback needs this
-    // service, and the delegate must be complete before VoIP dereferences it.
-    delegate.onGroupCallDiscovered = _onCallDiscovered;
-    return VoIP(client, delegate);
-  }();
+  VoIP get voip => _voip ??= VoIP(client, delegate);
 
   /// Whether a call is already running in [room], per room state rather than local
   /// belief — so a second device, or this device after a restart, sees the same answer.
@@ -203,59 +199,12 @@ class CallService {
     ];
   }
 
-  /// Calls arriving for this account that it is not already in.
+  /// Whether the other side is still ringing in [room] — someone else is in
+  /// the call and this account is not.
   ///
-  /// The SDK reports every call it discovers, including this device's own and
-  /// including ones everyone has left, so the decision is made here rather than
-  /// treating discovery as a ring.
-  Stream<Room> get incomingCalls => _incoming.stream;
-
-  /// Starts watching for calls arriving for this account.
-  ///
-  /// Receiving a call requires the SDK's VoIP to exist — it is what notices a
-  /// membership appearing — and that is built lazily, on placing a call. Without
-  /// this, an account that had never called could never be called: nothing was
-  /// listening.
-  Future<void> listenForCalls() async {
-    if (_disposed || isListening) return;
-    // A homeserver with no focus cannot carry calls, so there is nothing to
-    // listen for and no reason to pay for VoIP's scan of every joined room.
-    if (await resolveFocus() != null) {
-      if (_disposed) return;
-      voip; // Constructing it is what arms discovery.
-      return;
-    }
-    if (_disposed || _focus != null) return;
-
-    // The lookup did not answer. Left here, an account that hit one bad moment
-    // at startup would never ring again for the rest of the session — so it
-    // tries again rather than deciding it cannot be called.
-    _armRetry?.cancel();
-    _armRetry = Timer(_retryFocusAfter, () {
-      _resolving = null;
-      unawaited(listenForCalls());
-    });
-  }
-
-  Timer? _armRetry;
-
-  /// Whether this account can be called: it has a focus and is listening.
-  bool get isListening => _voip != null;
-  final StreamController<Room> _incoming = StreamController<Room>.broadcast();
-
-  void _onCallDiscovered(GroupCallSession session) {
-    if (_disposed) return;
-    // Direct messages only, matching where the call button is offered. A group
-    // room with a live call would otherwise ring every member of this app.
-    if (!session.room.isDirectChat) return;
-    if (isRinging(session.room)) _incoming.add(session.room);
-  }
-
-  /// Whether a call in [room] is still waiting for this account to answer.
-  ///
-  /// Asked again while a prompt is showing, because a caller can give up: a
-  /// banner that only ever appeared would ring for a room nobody is calling
-  /// from, and answering it would join a call of one.
+  /// Checked while a prompt is up, because a caller can give up: a banner that
+  /// only appeared once would ring for a call nobody is on, and answering it
+  /// would join a call of one.
   bool isRinging(Room room) {
     final me = client.userID;
     if (me == null || _disposed) return false;
@@ -267,39 +216,6 @@ class CallService {
       myUserId: me,
     ).shouldRing;
   }
-
-  /// [isRinging] by room id, for a caller that holds an id rather than a room.
-  bool isRingingIn(String roomId) {
-    final room = client.getRoomById(roomId);
-    return room != null && isRinging(room);
-  }
-
-  /// Tells the caller their call was turned down.
-  ///
-  /// Sent to the room rather than kept local, because a decline that only
-  /// dismissed a banner would leave the caller ringing at someone who has
-  /// already said no — which is what every other calling app avoids, and what
-  /// MSC4310 exists to fix.
-  Future<void> decline(Room room) async {
-    try {
-      await room.sendEvent({
-        'msgtype': PangeaEventTypes.callDecline,
-        'body': '',
-      }, type: PangeaEventTypes.callDecline);
-    } catch (e, s) {
-      // The learner's own side is already dismissed; failing to tell the caller
-      // costs them a few more seconds of ringing, not the decline.
-      Logs().w('Could not tell the caller the call was declined', e, s);
-    }
-  }
-
-  /// Fires when someone other than this account turns down a call in [room].
-  Stream<Event> declinesIn(Room room) => client.onTimelineEvent.stream.where(
-    (event) =>
-        event.roomId == room.id &&
-        event.type == PangeaEventTypes.callDecline &&
-        event.senderId != client.userID,
-  );
 
   /// Whether anyone other than this account is still in the call.
   ///
@@ -315,6 +231,113 @@ class CallService {
   /// Fires when participants join or leave the current call.
   Stream<MatrixRTCCallEvent>? get callEvents =>
       _current?.matrixRTCEventStream.stream;
+
+  /// Rings the other side, and returns the notification's event id.
+  ///
+  /// A timeline event rather than relying on membership: membership is room
+  /// state, and state changes do not fire push rules, so a learner whose app was
+  /// closed would never learn they were called. This is what push delivers.
+  ///
+  /// Referenced to our own membership event, per MSC4075 — that is how a
+  /// receiver knows which call it is, and it is what a decline points back at.
+  /// Null if our membership is not yet in room state, in which case the call
+  /// still works, it just does not ring: better silent than crashing.
+  Future<String?> ring(Room room, {required bool video}) async {
+    final membership = _myMembershipEventId(room);
+    if (membership == null) {
+      Logs().w('Cannot ring: our call membership is not in room state yet');
+      return null;
+    }
+    try {
+      return await room.sendEvent(
+        CallNotification(
+          membershipEventId: membership,
+          senderDeviceId: client.deviceID!,
+          video: video,
+        ).toContent(DateTime.now()),
+        type: PangeaEventTypes.callNotification,
+      );
+    } catch (e, s) {
+      Logs().w('Could not ring the other side', e, s);
+      return null;
+    }
+  }
+
+  /// Our own membership's event id in [room]'s current call, or null.
+  String? _myMembershipEventId(Room room) {
+    for (final m in room.getCallMembershipsForUser(
+      client.userID!,
+      client.deviceID!,
+      voip,
+    )) {
+      if (m.callId == _current?.groupCallId && !m.isExpired) return m.eventId;
+    }
+    return null;
+  }
+
+  /// Calls arriving for this account, decided from the notification event.
+  ///
+  /// Replaces ringing off membership discovery: a notification is a timeline
+  /// event, so it arrives the same way whether the app was open or woken by a
+  /// push, and it carries how long to ring and which call it is.
+  Stream<IncomingCallNotification> get incomingRings => client
+      .onTimelineEvent
+      .stream
+      .where((event) => event.type == PangeaEventTypes.callNotification)
+      .map(
+        (event) => IncomingCallNotification(
+          event: event,
+          myUserId: client.userID ?? '',
+          alreadyJoined: _amInCall(event.room, event),
+        ),
+      )
+      .where((ring) => ring.shouldRing(DateTime.now()));
+
+  bool _amInCall(Room room, Event notification) {
+    final me = client.userID;
+    if (me == null) return false;
+    return room
+        .getCallMembershipsFromRoom(voip)
+        .values
+        .expand((list) => list)
+        .any((m) => m.userId == me && !m.isExpired);
+  }
+
+  /// Turns down the call [notification] announced, telling its caller.
+  ///
+  /// Points back at the notification event, per MSC4310, so the caller matches
+  /// the decline to the exact call they rang rather than to the room.
+  Future<void> decline(Room room, {required String notificationEventId}) async {
+    try {
+      await room.sendEvent({
+        'msgtype': PangeaEventTypes.callDecline,
+        'body': '',
+        'm.relates_to': {
+          'rel_type': 'm.reference',
+          'event_id': notificationEventId,
+        },
+      }, type: PangeaEventTypes.callDecline);
+    } catch (e, s) {
+      Logs().w('Could not tell the caller the call was declined', e, s);
+    }
+  }
+
+  /// Fires when [notificationEventId]'s call is declined by the other side.
+  Stream<Event> declinesOf(Room room, String notificationEventId) =>
+      client.onTimelineEvent.stream.where(
+        (event) =>
+            event.room.id == room.id &&
+            event.type == PangeaEventTypes.callDecline &&
+            event.senderId != client.userID &&
+            _declineRefersTo(event) == notificationEventId,
+      );
+
+  String? _declineRefersTo(Event event) {
+    final relation = event.content['m.relates_to'];
+    if (relation is! Map || relation['rel_type'] != 'm.reference') return null;
+    final id = relation['event_id'];
+    return id is String ? id : null;
+  }
 
   /// Announces this device as a participant, so the peer sees us in the call.
   ///
@@ -390,12 +413,9 @@ class CallService {
     _disposed = true;
     // Cleared before the stream closes: the SDK's own listeners outlive this
     // service, and a late discovery would otherwise add to a closed controller.
-    delegate.onGroupCallDiscovered = null;
-    unawaited(_incoming.close());
+
     _focusRetry?.cancel();
     _focusRetry = null;
-    _armRetry?.cancel();
-    _armRetry = null;
     try {
       await retract();
     } catch (e, s) {

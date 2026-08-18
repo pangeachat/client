@@ -55,6 +55,7 @@ class ActiveCall extends ChangeNotifier {
   AudioTrack? _track;
   StreamSubscription? _participants;
   StreamSubscription? _declines;
+  String? _notificationId;
   Future<void> _handover = Future.value();
 
   /// What the election last decided. Read by [_reconcile] when it runs.
@@ -230,8 +231,6 @@ class ActiveCall extends ChangeNotifier {
       // missed — and this device would keep recording alongside a sibling, or
       // stay silent as the only one left.
       _participants = calls.callEvents?.listen((_) => _onParticipantsChanged());
-      // Ringing at someone who has already said no is what this avoids.
-      _declines = calls.declinesIn(room).listen((_) => _onDeclined());
 
       // Then elect, before announcing, so recording begins with the first word
       // rather than after a round-trip. The election reads room state, which
@@ -255,6 +254,16 @@ class ActiveCall extends ChangeNotifier {
 
       await calls.announce();
       if (_ending) return _abandon();
+
+      // Ring the other side. A timeline event, so it reaches them via push even
+      // if their app was closed — membership alone could not. Its id is what a
+      // decline points back at, so we keep it to match one.
+      _notificationId = await calls.ring(room, video: video);
+      if (_notificationId != null) {
+        _declines = calls
+            .declinesOf(room, _notificationId!)
+            .listen((_) => _onDeclined());
+      }
 
       // State may have moved while announcing. Awaited too, so start() leaves
       // nothing queued — a reconcile still pending when a hangup arrives would
