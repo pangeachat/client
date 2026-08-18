@@ -119,46 +119,70 @@ class _WorldMapDotState extends State<WorldMapDot>
 
   @override
   Widget build(BuildContext context) {
+    final isDot = widget.tier.isDot(widget.state);
     return ScaleTransition(
       scale: CurvedAnimation(
         parent: _ctrl,
         curve: Curves.easeOut,
         reverseCurve: Curves.easeIn,
       ),
-      child: Tooltip(
-        message: widget.card.title,
-        // Semantics below names the pin; exclude the Tooltip so the title isn't
-        // announced twice ("<title> <title>").
-        excludeFromSemantics: true,
-        child: Semantics(
-          button: !widget.dying,
-          label: widget.dying
-              ? ''
-              : "${L10n.of(context).activityLabel(widget.card.title)}, ${widget.state.label(L10n.of(context))}",
-          // excludeSemantics drops the DESCENDANT tree — including the
-          // GestureDetector's implicit tap action — so this node must carry
-          // its own onTap, or assistive tech can name the pin but never
-          // activate it (#7591).
-          onTap: widget.dying ? null : widget.onTap,
-          excludeSemantics: true,
-          child: GestureDetector(
+      // A dying pin is inert, and its layer sits ABOVE the live pins — so it
+      // must not hit-test at all, or its box (touch-target-sized for a dot)
+      // would shadow the live pin beneath for the length of the exit.
+      child: IgnorePointer(
+        ignoring: widget.dying,
+        child: Tooltip(
+          message: widget.card.title,
+          // Semantics below names the pin; exclude the Tooltip so the title
+          // isn't announced twice ("<title> <title>").
+          excludeFromSemantics: true,
+          child: Semantics(
+            button: !widget.dying,
+            label: widget.dying
+                ? ''
+                : "${L10n.of(context).activityLabel(widget.card.title)}, ${widget.state.label(L10n.of(context))}",
+            // excludeSemantics drops the DESCENDANT tree — including the
+            // GestureDetector's implicit tap action — so this node must carry
+            // its own onTap, or assistive tech can name the pin but never
+            // activate it (#7591).
             onTap: widget.dying ? null : widget.onTap,
-            child: _withCompletionStar(
-              widget.tier == PinTier.mid
-                  ? _MediumDotContent(
-                      state: widget.state,
-                      pinged: widget.pinged,
-                      unreadRoom: widget.unreadRoom,
-                      participantsFilled: widget.participantsFilled,
-                      participantsTotal: widget.participantsTotal,
-                      starLevel: widget.starLevel,
-                      isFocused: widget.isFocused,
-                    )
-                  : _SmallDotContent(
-                      state: widget.state,
-                      starLevel: widget.starLevel,
-                      isFocused: widget.isFocused,
-                    ),
+            excludeSemantics: true,
+            child: GestureDetector(
+              onTap: widget.dying ? null : widget.onTap,
+              // A dot's marker box is padded out past its painted circle to
+              // the min touch target ([PinSize.dotTouchTarget]); the whole box
+              // must take the tap, not just the tiny dot (#7688). A mid
+              // teardrop keeps deferring to its silhouette-only painter
+              // hit-test, so its transparent corners still fall through
+              // (#7920).
+              behavior: isDot
+                  ? HitTestBehavior.opaque
+                  : HitTestBehavior.deferToChild,
+              // Sized to the same [PinTier.markerBox] the MarkerLayer gives
+              // this pin, with the painted pin centred in it — a no-op for a
+              // teardrop (box == pin), the touch-target padding for a dot.
+              child: SizedBox.fromSize(
+                size: widget.tier.markerBox(widget.state),
+                child: Center(
+                  child: _withCompletionStar(
+                    widget.tier == PinTier.mid
+                        ? _MediumDotContent(
+                            state: widget.state,
+                            pinged: widget.pinged,
+                            unreadRoom: widget.unreadRoom,
+                            participantsFilled: widget.participantsFilled,
+                            participantsTotal: widget.participantsTotal,
+                            starLevel: widget.starLevel,
+                            isFocused: widget.isFocused,
+                          )
+                        : _SmallDotContent(
+                            state: widget.state,
+                            starLevel: widget.starLevel,
+                            isFocused: widget.isFocused,
+                          ),
+                  ),
+                ),
+              ),
             ),
           ),
         ),

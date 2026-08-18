@@ -16,6 +16,8 @@
 /// boundary").
 library;
 
+import 'package:flutter/material.dart' show kMinInteractiveDimension;
+
 /// A resolved per-view pin budget: the constituent tier caps plus the trail
 /// reservation. [total] (`N`) is the sum of the tier caps.
 class PinBudget {
@@ -98,6 +100,18 @@ abstract class PinSize {
   /// Small dot — intentionally tiny, Google-Maps style (was 18px before the
   /// maps-like redesign).
   static const double smallDiameter = 8.0;
+
+  /// The tappable box around a **dot-shaped** marker — a small-tier dot, or the
+  /// completed trail star at any tier (`PinTier.isDot`). The dot itself stays
+  /// [smallDiameter] / [starDotDiameter] (world-map.instructions.md: "a
+  /// deliberately small dot"); only its flutter_map marker box — and so its hit
+  /// target and semantics rect — is padded out, centred on the same anchor, to
+  /// Material's minimum interactive dimension (48 logical px, above WCAG
+  /// 2.5.5's 44) so a dot is tappable on a phone without zooming in until it
+  /// earns a mid pin (#7688). Overlapping dots overlap their targets too — a
+  /// tap between two dots lands on the one drawn on top, which the issue
+  /// accepted over dots that take several tries to hit.
+  static const double dotTouchTarget = kMinInteractiveDimension;
 
   /// Mid pin (activity-type glyph) diameter — the circular "head" of the
   /// teardrop marker.
