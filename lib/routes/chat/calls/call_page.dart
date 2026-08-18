@@ -223,7 +223,16 @@ class _CallPageState extends State<CallPage> {
         // rung, so a call someone saw and missed left no trace anywhere. A call
         // that rang nobody and connected to nothing is still not written —
         // nothing happened, and an entry would record a call that never began.
-        if (!_reachedCall && _call.notificationEventId == null) return;
+        // Did this call ever exist for anyone: did it reach the SFU, did we
+        // ring somebody, or were we rung. The last of those is the answering
+        // side, which never rings and so never has a notification of its own —
+        // checking only the outbound one lost its speaking analytics whenever
+        // the caller left before the call finished coming up.
+        final mattered =
+            _reachedCall ||
+            _call.notificationEventId != null ||
+            widget.notificationEventId != null;
+        if (!mattered) return;
         return _record.finish(
           duration: _endedAt!.difference(_startedAt),
           video: _usedVideo,

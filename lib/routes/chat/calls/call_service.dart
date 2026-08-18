@@ -135,6 +135,13 @@ class CallService {
 
   Future<CallToken> _join(Room room) async {
     final f = await resolveFocus();
+    // Checked before anything is constructed. Discovery is a network round-trip
+    // and the account can log out inside it; resuming here would build a fresh
+    // VoIP instance — with listeners on a client that is being torn down —
+    // after dispose had already run and found nothing to clean up.
+    if (_disposed) {
+      throw StateError('the call service was disposed while joining');
+    }
     if (f == null) {
       throw StateError('this homeserver advertises no MatrixRTC focus');
     }

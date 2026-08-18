@@ -290,4 +290,39 @@ void main() {
       },
     );
   });
+  test('a join that lands after logout does not build a call', () async {
+    // Discovery is a network round-trip and an account can log out inside it.
+    // Resuming would construct a VoIP instance, with listeners on a client
+    // being torn down, after teardown had already found nothing to clean up.
+    final client = await bareClient();
+    client.homeserver = Uri.parse('http://localhost:8008');
+
+    final held = Completer<void>();
+    final service = CallService(client, focusDiscovery: _HeldDiscovery(held));
+
+    final joining = service.join(Room(id: '!r:server', client: client));
+    await pumpEventQueue();
+    final disposing = service.dispose();
+    held.complete();
+    await disposing;
+
+    await expectLater(joining, throwsA(isA<StateError>()));
+    expect(
+      service.voipConstructed,
+      isFalse,
+      reason: 'nothing may be built for an account that has gone',
+    );
+  });
+}
+
+/// Discovery held open so a test can dispose the service mid-lookup.
+class _HeldDiscovery extends RtcFocusDiscovery {
+  final Completer<void> gate;
+  _HeldDiscovery(this.gate);
+
+  @override
+  Future<RtcFocus?> discover(Uri homeserver) async {
+    await gate.future;
+    return const RtcFocus(serviceUrl: 'http://sfu:7980');
+  }
 }
