@@ -15,8 +15,10 @@ import 'package:fluffychat/features/navigation/route_facts.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt_widget.dart';
 import 'package:fluffychat/widgets/matrix.dart';
+import 'fake_pangea_controller.dart';
 import 'get_test_client.dart';
 
 /// #8395 — playtesters keep asking whether they can use the app to talk with
@@ -144,6 +146,32 @@ void main() {
       addRoom('!bot:fakeServer.notExisting', directChatWith: botId);
       addRoom('!friend:fakeServer.notExisting', directChatWith: friendId);
       expect(client.hasFriendDM, isTrue);
+    });
+  });
+
+  // The mobile chats sheet's content-fit height counts these tiles as rows,
+  // so the prompt below them is not left behind a drag. The support tile also
+  // reads the profile's instruction settings, which the fake controller leaves
+  // "not ready" — the branch that suppresses the tile — so only the bot tile
+  // is exercised positively here.
+  group('DMListTile.tileCount', () {
+    setUpAll(() => MatrixState.pangeaController = FakePangeaController());
+
+    test('no bot DM: the bot tile renders and counts as a row', () {
+      expect(DMListTile.showsBotTile(client), isTrue);
+      expect(DMListTile.showsSupportTile(client), isFalse);
+      expect(DMListTile.tileCount(client), 1);
+    });
+
+    test('a bot DM removes the bot tile', () {
+      addRoom('!bot:fakeServer.notExisting', directChatWith: botId);
+      expect(DMListTile.showsBotTile(client), isFalse);
+      expect(DMListTile.tileCount(client), 0);
+    });
+
+    test('a support DM removes the support tile', () {
+      addRoom('!support:fakeServer.notExisting', directChatWith: supportId);
+      expect(DMListTile.showsSupportTile(client), isFalse);
     });
   });
 

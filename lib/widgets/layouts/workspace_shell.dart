@@ -26,6 +26,7 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
+import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/friend_dm_prompt_widget.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
@@ -643,9 +644,11 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // the analytics bar). Row height is an estimate (a two-line ChatListItem);
     // a slight overshoot only adds breathing room, and the cap absorbs long
     // lists. Uses the same visibility predicate as the list's all-chats
-    // filter so the estimate counts what actually renders. While the list
-    // carries the invite-a-friend prompt (#8395) it counts that too, so the
-    // prompt shows below the rows rather than waiting behind a drag.
+    // filter so the estimate counts what actually renders — the chat rooms
+    // plus the bot / support tiles (`DMListTile`), which take a row each
+    // without being rooms. While the list carries the invite-a-friend prompt
+    // (#8395) it counts that too, so the prompt shows below the rows rather
+    // than waiting behind a drag.
     double? preferredCavityHeight;
     if (isActivityCavity) {
       preferredCavityHeight = _activitySheetMinimizedHeight;
@@ -653,9 +656,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       final visibleChats = client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
           .length;
+      final visibleRows = visibleChats + DMListTile.tileCount(client);
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
-          visibleChats * _chatsSheetRowEstimate +
+          visibleRows * _chatsSheetRowEstimate +
           (client.hasFriendDM ? 0 : FriendDMPrompt.estimatedHeight);
     } else if (cavityToken?.type == PanelTypesEnum.addcourse &&
         cavityToken?.param is! AddCoursePageTokenParam) {
