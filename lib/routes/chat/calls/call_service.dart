@@ -27,6 +27,17 @@ class CallService {
   /// account would overwrite the first's identity.
   GroupCallSession? _current;
 
+  /// Claimed synchronously by [join] before its first await.
+  ///
+  /// Checking [_current] alone is check-then-act across three round-trips: two
+  /// joins would both pass the check, both create sessions, and the second
+  /// assignment would orphan the first — leaving a membership advertised that
+  /// nothing holds a handle to.
+  bool _joining = false;
+
+  /// The in-flight retract, so concurrent callers await one attempt.
+  Future<void>? _retracting;
+
   CallService(
     this.client, {
     PangeaVoipDelegate? delegate,
@@ -79,11 +90,20 @@ class CallService {
   Future<CallToken> join(Room room) async {
     // The SDK identifies our membership per VoIP instance, so a second join
     // would overwrite the first's identity and leave that call advertised with
-    // nobody able to retract it. Refuse rather than corrupt.
-    if (_current != null) {
+    // nobody able to retract it. The claim is taken before the first await, so
+    // there is no window for a second caller to pass the same check.
+    if (_current != null || _joining) {
       throw StateError('this account is already in a call');
     }
+    _joining = true;
+    try {
+      return await _join(room);
+    } finally {
+      _joining = false;
+    }
+  }
 
+  Future<CallToken> _join(Room room) async {
     final f = await resolveFocus();
     if (f == null) {
       throw StateError('this homeserver advertises no MatrixRTC focus');
@@ -123,13 +143,21 @@ class CallService {
 
   /// Retracts our membership and tears the session down.
   ///
-  /// Idempotent: the session is cleared first, so a hangup racing a disconnect
-  /// leaves exactly once.
-  Future<void> retract() async {
-    final session = _current;
-    _current = null;
-    await session?.leave();
-  }
+  /// The session is released only once leaving has actually succeeded. Clearing
+  /// it first would discard the only handle able to retry, so a failed retract
+  /// would leave the membership advertised with nothing left that could take it
+  /// back.
+  ///
+  /// Idempotent and safe to race: concurrent callers join the same attempt
+  /// rather than each sending their own leave.
+  Future<void> retract() => _retracting ??= () async {
+    try {
+      await _current?.leave();
+      _current = null;
+    } finally {
+      _retracting = null;
+    }
+  }();
 
   /// Tears the service down, retracting any membership it still holds.
   ///

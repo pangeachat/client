@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -143,10 +144,56 @@ void main() {
     test(
       'joining without a focus fails loudly rather than half-starting a call',
       () async {
-        final service = CallService(await bareClient());
-        expect(service.focus, isNull);
-        // The failure has to arrive before any Matrix state is published; a call
+        // The failure has to arrive before any Matrix state is published: a call
         // announced to the room but unreachable by media is worse than no call.
+        final client = await bareClient();
+        client.homeserver = Uri.parse('http://localhost:8008');
+        final service = CallService(
+          client,
+          focusDiscovery: RtcFocusDiscovery(
+            httpClient: MockClient(
+              (_) async => http.Response('{"errcode":"M_NOT_FOUND"}', 404),
+            ),
+          ),
+        );
+
+        await expectLater(
+          service.join(Room(id: '!r:server', client: client)),
+          throwsStateError,
+        );
+        expect(
+          service.voipConstructed,
+          isFalse,
+          reason: 'VoIP scans every room and can fire handlers on construction',
+        );
+        expect(service.hasJoinedSession, isFalse);
+      },
+    );
+
+    test(
+      'a second join is refused while the first is still connecting',
+      () async {
+        // Checking the current session alone is check-then-act across three
+        // round-trips: both callers would pass, both would create a session, and
+        // the second would orphan the first's membership.
+        final client = await bareClient();
+        client.homeserver = Uri.parse('http://localhost:8008');
+        final held = Completer<http.Response>();
+        final service = CallService(
+          client,
+          focusDiscovery: RtcFocusDiscovery(
+            httpClient: MockClient((_) => held.future),
+          ),
+        );
+
+        final first = service.join(Room(id: '!r:server', client: client));
+        await expectLater(
+          service.join(Room(id: '!r:server', client: client)),
+          throwsStateError,
+        );
+
+        held.complete(http.Response('{"errcode":"M_NOT_FOUND"}', 404));
+        await expectLater(first, throwsStateError);
       },
     );
   });

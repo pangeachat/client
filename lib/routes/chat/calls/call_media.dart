@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
+
 import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart' show Logs;
 
@@ -24,6 +26,8 @@ class CallMedia {
     echoCancellation: true,
     noiseSuppression: true,
   );
+
+  bool _released = false;
 
   CallMedia({Room? room}) : room = room ?? Room();
 
@@ -50,22 +54,37 @@ class CallMedia {
   /// Audio is published before video and awaited, so a caller can start
   /// recording the moment this returns rather than polling for a track that
   /// may still be negotiating.
+  /// Connecting is several round-trips, and a hangup can land inside any of
+  /// them. Each step checks first, so a call the user abandoned never ends up
+  /// opening a microphone or a camera after teardown has run.
   Future<void> connect(CallToken grant, {required bool video}) async {
-    await room.connect(grant.url, grant.jwt);
-    await room.localParticipant?.setMicrophoneEnabled(
-      true,
-      audioCaptureOptions: microphone,
-    );
-    if (video) {
-      await room.localParticipant?.setCameraEnabled(true);
-    }
+    if (_released) return;
+    await connectRoom(grant.url, grant.jwt);
+
+    if (_released) return;
+    await enableMicrophone(true);
+
+    if (_released || !video) return;
+    await enableCamera(true);
   }
 
-  Future<void> setMicrophoneEnabled(bool on) async => room.localParticipant
+  /// The three steps of coming up, named so the sequence and the checks between
+  /// them can be observed. A real LiveKit room cannot be stood up in a unit
+  /// test, and the ordering is the part worth testing.
+  @protected
+  Future<void> connectRoom(String url, String jwt) => room.connect(url, jwt);
+
+  @protected
+  Future<void> enableMicrophone(bool on) async => room.localParticipant
       ?.setMicrophoneEnabled(on, audioCaptureOptions: microphone);
 
-  Future<void> setCameraEnabled(bool on) async =>
+  @protected
+  Future<void> enableCamera(bool on) async =>
       room.localParticipant?.setCameraEnabled(on);
+
+  Future<void> setMicrophoneEnabled(bool on) => enableMicrophone(on);
+
+  Future<void> setCameraEnabled(bool on) => enableCamera(on);
 
   /// Leaves the SFU and releases the capture devices.
   ///
@@ -73,6 +92,7 @@ class CallMedia {
   /// retract and a recording to flush, and a failure to close a socket must not
   /// leave those undone.
   Future<void> disconnect() async {
+    _released = true;
     try {
       await room.disconnect();
     } catch (e, s) {
