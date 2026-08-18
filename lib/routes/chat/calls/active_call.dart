@@ -212,14 +212,13 @@ class ActiveCall extends ChangeNotifier {
   /// either exists completely or not at all.
   /// Places or joins a call.
   ///
-  /// [ring] is what separates the two: the caller rings the other side, the
-  /// answerer does not — a notification from the answerer would ring the caller
-  /// back, who is already in the call.
-  Future<void> start(
-    matrix.Room room, {
-    required bool video,
-    bool ring = true,
-  }) async {
+  /// Whether this rings the other side is NOT a caller's choice — it is a fact
+  /// about the room. A call that already exists is one this device is joining,
+  /// so it must not ring; an empty room is one this device is starting, so it
+  /// rings. Deriving it here rather than taking a flag means no call site — the
+  /// header button, the incoming banner, a future deep link — can get it wrong.
+  Future<void> start(matrix.Room room, {required bool video}) async {
+    final placing = !calls.hasActiveCall(room);
     try {
       final grant = await calls.join(room);
       _joined = true;
@@ -271,7 +270,7 @@ class ActiveCall extends ChangeNotifier {
       // membership alone could not. Its id is what a decline points back at, so
       // we keep it to match one. The answerer does not ring: a notification from
       // them would ring the caller, who is already here.
-      if (ring && membershipId != null) {
+      if (placing && membershipId != null) {
         _notificationId = await calls.ring(
           room,
           membershipEventId: membershipId,

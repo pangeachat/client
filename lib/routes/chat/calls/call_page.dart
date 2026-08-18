@@ -25,26 +25,16 @@ class CallPage extends StatefulWidget {
   final matrix.Room room;
   final bool video;
 
-  /// Whether this device is placing the call (and so rings the other side) or
-  /// answering one (and so must not).
-  final bool ring;
-
-  const CallPage({
-    required this.room,
-    required this.video,
-    this.ring = true,
-    super.key,
-  });
+  const CallPage({required this.room, required this.video, super.key});
 
   static Future<void> show(
     BuildContext context,
     matrix.Room room, {
     required bool video,
-    bool ring = true,
   }) => Navigator.of(context).push(
     MaterialPageRoute(
       fullscreenDialog: true,
-      builder: (_) => CallPage(room: room, video: video, ring: ring),
+      builder: (_) => CallPage(room: room, video: video),
     ),
   );
 
@@ -123,7 +113,7 @@ class _CallPageState extends State<CallPage> {
       media: _media,
       capture: CallCaptureService(sink: transcripts),
     )..addListener(_onCallChanged);
-    _call.start(room, video: widget.video, ring: widget.ring);
+    _call.start(room, video: widget.video);
   }
 
   void _onCallChanged() {

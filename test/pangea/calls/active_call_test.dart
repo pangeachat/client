@@ -27,6 +27,10 @@ class FakeCalls extends CallService {
   final _events = StreamController<MatrixRTCCallEvent>.broadcast();
   List<String> devicesInCall = const [];
   bool remotePresent = false;
+  bool callAlreadyExists = false;
+
+  @override
+  bool hasActiveCall(matrix.Room room) => callAlreadyExists;
 
   @override
   bool get hasRemoteParticipants => remotePresent;
@@ -228,17 +232,21 @@ void main() {
   matrix.Room roomStub(Client c) => matrix.Room(id: '!r:server', client: c);
 
   group('bringing a call up', () {
-    test('the caller rings the other side', () async {
+    test('placing into an empty room rings the other side', () async {
       final (call, calls, _, _) = await build();
+      calls.callAlreadyExists = false;
       await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, contains('ring'));
     });
 
-    test('the answerer does not ring the caller back', () async {
-      // A notification from the answerer would ring the caller, who is already
-      // in the call — only the placing side rings.
+    test('joining an existing call does not ring the caller back', () async {
+      // Whether to ring is a fact about the room, not the call site: a call
+      // that already exists is one this device is joining, and a ring from it
+      // would ring the caller who is already there. This holds however the join
+      // is reached — the banner, the header button, or a deep link.
       final (call, calls, _, _) = await build();
-      await call.start(roomStub(calls.client), video: false, ring: false);
+      calls.callAlreadyExists = true;
+      await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, isNot(contains('ring')));
       expect(call.stage, CallStage.connected);
     });
