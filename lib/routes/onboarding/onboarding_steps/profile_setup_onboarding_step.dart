@@ -1,5 +1,6 @@
 import 'dart:typed_data';
 
+import 'package:fluffychat/features/user/own_profile_client_extension.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_state_controller.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_steps/onboarding_step.dart';
@@ -38,14 +39,11 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
       }
     }
 
-    final userID = client.userID;
     final currentProfile = await client.fetchOwnProfile();
 
     try {
       if (avatarUrl != null && avatarUrl != currentProfile.avatarUrl) {
-        await client.setProfileField(userID!, 'avatar_url', {
-          'avatar_url': avatarUrl.toString(),
-        });
+        await client.setOwnAvatarUrl(avatarUrl);
       }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
@@ -54,9 +52,7 @@ class ProfileSetupOnboardingStep extends OnboardingStep {
     try {
       final displayName = state.displayName;
       if (displayName != null && displayName != currentProfile.displayName) {
-        await client.setProfileField(userID!, 'displayname', {
-          'displayname': displayName,
-        });
+        await client.setOwnDisplayName(displayName);
       }
     } catch (e, s) {
       ErrorHandler.logError(e: e, s: s, data: {});
