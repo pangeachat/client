@@ -8,7 +8,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_overview/catch_up_dismissal_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_attention_card.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_requests_builder.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_analytics/space_analytics_requested_dialog.dart';
@@ -23,8 +22,8 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 ///
 /// Row sources, in order: analytics-access requests from course admins
 /// (learner-side, via [AnalyticsRequestsBuilder]) and unread-message rollups
-/// for the course's chats. Both are things to catch up on and dismiss;
-/// pending join requests are a decision instead, and live in their own card
+/// for the course's chats. Pending join requests are a decision rather than
+/// something to catch up on, and live in their own card
 /// (`CourseKnockRequests`, #8462).
 class CourseCatchUp extends StatelessWidget {
   final Room room;
@@ -35,34 +34,14 @@ class CourseCatchUp extends StatelessWidget {
     WorkspaceNav.openRoomById(GoRouterState.of(context).uri, chat.id),
   );
 
-  /// The dismissal keys behind one analytics-access request (the admin may
-  /// have knocked several of the learner's analytics rooms).
-  List<String> _requestKeys(MapEntry<User, List<Room>> request) => request.value
-      .map(
-        (analyticsRoom) =>
-            CatchUpDismissalExtension.knockKey(analyticsRoom, request.key),
-      )
-      .toList();
-
-  /// Mark all read: clear every unread chat's indicator for real, and
-  /// dismiss the analytics requests from THIS CARD only — they stay pending
-  /// in the analytics settings until acted on.
-  Future<void> _markAllRead(
-    BuildContext context,
-    Set<String> pendingKeys,
-    List<Room> unreadChats,
-  ) => showFutureLoadingDialog(
-    context: context,
-    future: () async {
-      await Future.wait(unreadChats.map((chat) => chat.clearUnread()));
-      if (pendingKeys.isNotEmpty) {
-        await room.dismissCatchUpNotifications(
-          pendingKeys,
-          pendingKeys: pendingKeys,
-        );
-      }
-    },
-  );
+  /// Mark all read clears the unread chats' indicators, and nothing else:
+  /// a pending request is answered, never marked read (#8462).
+  Future<void> _markAllRead(BuildContext context, List<Room> unreadChats) =>
+      showFutureLoadingDialog(
+        context: context,
+        future: () =>
+            Future.wait(unreadChats.map((chat) => chat.clearUnread())),
+      );
 
   /// Joined, visible course chats with unread notifications — the same room
   /// set the Chats preview lists, narrowed to unreads.
@@ -93,25 +72,10 @@ class CourseCatchUp extends StatelessWidget {
             .rateLimit(const Duration(seconds: 1)),
         builder: (context, _) {
           final l10n = L10n.of(context);
-          // The dismissal layer: requests whose knock keys the user marked
-          // read stay out of the card (and only the card). Resolved requests
-          // leave the sources entirely, so dismissed keys go stale harmlessly
-          // and get pruned on the next write.
-          final dismissed = room.dismissedCatchUpKeys;
-          final visibleRequests = analyticsRequests.entries.where((request) {
-            final keys = _requestKeys(request);
-            return keys.isEmpty || !keys.every(dismissed.contains);
-          }).toList();
           final unreadChats = _unreadChats;
-          // Everything currently dismissable — what Mark-all-read writes, and
-          // the keep-set stale keys are pruned against.
-          final pendingKeys = <String>{
-            for (final request in analyticsRequests.entries)
-              ..._requestKeys(request),
-          };
 
           final rows = <Widget>[
-            ...visibleRequests.map(
+            ...analyticsRequests.entries.map(
               (request) => _CatchUpAnalyticsRow(
                 user: request.key,
                 onTap: () => SpaceAnalyticsRequestedDialog.show(
@@ -136,7 +100,7 @@ class CourseCatchUp extends StatelessWidget {
             ),
             title: l10n.catchUp,
             actionLabel: l10n.markAllRead,
-            onAction: () => _markAllRead(context, pendingKeys, unreadChats),
+            onAction: () => _markAllRead(context, unreadChats),
             rows: rows,
           );
         },
