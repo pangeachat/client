@@ -7,7 +7,7 @@ import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart'
 /// Writes the call to the room and returns the event id, or null if it could
 /// not be written.
 typedef CallEventSender =
-    Future<String?> Function(Map<String, dynamic> content);
+    Future<String?> Function(Map<String, dynamic> content, String txid);
 
 /// Records construct uses. The real caller passes the analytics service's
 /// `addAnalytics`, already bound to a service resolved while the screen was live.
@@ -33,6 +33,14 @@ class CallRecord {
   /// The call's timeline event, once written. Kept so a retry credits against
   /// the same event rather than posting a second call.
   String? _eventId;
+
+  /// One transaction id for every attempt at writing this call.
+  ///
+  /// A send whose response is lost may already have been persisted, and a retry
+  /// with a fresh id would post the call a second time. Reusing this makes the
+  /// homeserver return the event the first attempt actually created.
+  late final String _txid =
+      'pangea.call.${DateTime.now().microsecondsSinceEpoch}.$roomId';
 
   /// Whether the learner has actually been credited. Separate from the event
   /// being written, because the two fail independently and only one of them
@@ -198,7 +206,7 @@ class CallRecord {
     required String? callerId,
   }) async {
     try {
-      return await sendEvent({
+      return await sendEvent(<String, dynamic>{
         'msgtype': PangeaEventTypes.call,
         // The plaintext fallback every Matrix client falls back to when it does
         // not understand the msgtype. Without it a call reads as an empty
@@ -224,7 +232,7 @@ class CallRecord {
         // one card exists even when both people call at the same moment, and
         // that side is not always the caller.
         'caller': ?callerId,
-      });
+      }, _txid);
     } catch (e, s) {
       Logs().e('Could not write the call to the room', e, s);
       return null;

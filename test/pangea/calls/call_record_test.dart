@@ -8,10 +8,12 @@ import 'call_transcript_sink_test.dart' show chunk, silent, spokenWord;
 
 void main() {
   late List<Map<String, dynamic>> written;
+  late List<String> txids;
   late List<({String eventId, int uses, String lang})> recorded;
 
   setUp(() {
     written = [];
+    txids = [];
     recorded = [];
   });
 
@@ -38,7 +40,8 @@ void main() {
   }) => CallRecord(
     roomId: '!r:server',
     transcripts: transcripts,
-    sendEvent: (content) async {
+    sendEvent: (content, txid) async {
+      txids.add(txid);
       if (writeError != null) throw writeError;
       written.add(content);
       return eventId;
@@ -131,7 +134,7 @@ void main() {
     final r = CallRecord(
       roomId: '!r:server',
       transcripts: transcripts,
-      sendEvent: (content) async {
+      sendEvent: (content, txid) async {
         attempts++;
         if (attempts == 1) throw StateError('offline');
         written.add(content);
@@ -154,7 +157,7 @@ void main() {
     final r = CallRecord(
       roomId: '!r:server',
       transcripts: transcripts,
-      sendEvent: (_) async {
+      sendEvent: (_, _) async {
         attempts++;
         throw StateError('still offline');
       },
@@ -177,7 +180,7 @@ void main() {
     final r = CallRecord(
       roomId: '!r:server',
       transcripts: transcripts,
-      sendEvent: (content) async {
+      sendEvent: (content, txid) async {
         written.add(content);
         return '\$call';
       },
@@ -320,5 +323,30 @@ void main() {
       await r.finish(duration: const Duration(seconds: 30), video: false);
       expect(written.single.containsKey('caller'), isFalse);
     });
+  });
+  test('every attempt at writing the call reuses one transaction id', () async {
+    // A send whose response is lost may already have been persisted. Retrying
+    // with a fresh id would post the call a second time; reusing it makes the
+    // homeserver hand back the event the first attempt created.
+    var attempts = 0;
+    final transcripts = await sinkWith(() => spokenWord('hola'));
+    final r = CallRecord(
+      roomId: '!r:server',
+      transcripts: transcripts,
+      sendEvent: (content, txid) async {
+        txids.add(txid);
+        attempts++;
+        if (attempts == 1) throw StateError('response lost');
+        written.add(content);
+        return '\$call';
+      },
+      analytics: (id, uses, lang) async =>
+          recorded.add((eventId: id, uses: uses.length, lang: lang)),
+    );
+
+    await r.finish(duration: const Duration(seconds: 5), video: false);
+
+    expect(attempts, greaterThan(1), reason: 'the write was retried');
+    expect(txids.toSet(), hasLength(1));
   });
 }

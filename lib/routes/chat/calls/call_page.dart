@@ -92,6 +92,10 @@ class _CallPageState extends State<CallPage> {
   /// changes on its own, so it runs only while a call is actually up.
   Timer? _tick;
 
+  /// Read while the screen is alive; used after it is gone.
+  String? _myUserId;
+  String? _peerUserId;
+
   @override
   void initState() {
     super.initState();
@@ -104,6 +108,11 @@ class _CallPageState extends State<CallPage> {
     // ends when the user closes this screen, so anything read later would be
     // read from a context that has already gone.
     final matrix = Matrix.of(context);
+    // Captured now, not read later: this screen is gone by the time the record
+    // is written, and reading an inherited widget from a deactivated context
+    // throws — which would cost the call its analytics entirely.
+    _myUserId = matrix.client.userID;
+    _peerUserId = widget.room.directChatMatrixID;
     final user = MatrixState.pangeaController.userController;
     final transcripts = CallTranscriptSink(
       // The repo answers with a Result; the sink's contract is a value or a
@@ -127,8 +136,8 @@ class _CallPageState extends State<CallPage> {
       // HAPPENED in the conversation, so it belongs in the timeline as a
       // centred entry beside joins and invitations — not as a chat bubble
       // attributed to one side and aligned to their edge.
-      sendEvent: (content) =>
-          room.sendEvent(content, type: PangeaEventTypes.call),
+      sendEvent: (content, txid) =>
+          room.sendEvent(content, type: PangeaEventTypes.call, txid: txid),
       analytics: (eventId, uses, language) => matrix
           .analyticsDataService
           .updateService
@@ -252,13 +261,16 @@ class _CallPageState extends State<CallPage> {
           // genuinely had someone on it was recorded as missed.
           answered: _call.hadPeer,
           declined: _call.wasDeclined,
-          // Which side posts the card is decided by comparing the two user
-          // ids, not by who placed the call. Both sides run this same teardown,
-          // and when two people call each other at the same moment both believe
-          // they placed it — so keying on that wrote two cards, or none. An
-          // ordering both sides compute identically writes exactly one.
-          writeTimelineEvent: _writesTheCall,
-          callerId: _callerId,
+          // The side that placed the call writes it. Deciding this by
+          // comparing user ids instead looked more robust and was worse: a call
+          // nobody answers only ever runs this teardown on the caller's side,
+          // so whenever the caller sorted second, every missed call vanished.
+          //
+          // The cost is that two people calling each other in the same moment
+          // both believe they placed it and both write a card. That is a rare
+          // duplicate; losing every missed call is neither rare nor cosmetic.
+          writeTimelineEvent: _call.placedCall,
+          callerId: _call.placedCall ? _myUserId : _peerUserId,
           // The ring we answered, or failing that our own membership in the
           // call. A device that joined a call already under way has neither a
           // ring of its own nor one it answered, and with nothing to anchor to
@@ -267,25 +279,6 @@ class _CallPageState extends State<CallPage> {
         );
       }),
     );
-  }
-
-  /// The other person in this direct message.
-  String? get _peerId => widget.room.directChatMatrixID;
-
-  /// Who placed this call: us if we did, otherwise the only other person here.
-  String? get _callerId =>
-      _call.placedCall ? Matrix.of(context).client.userID : _peerId;
-
-  /// Whether this device is the one that writes the call to the room.
-  ///
-  /// Both sides compute the same answer from the two user ids, so exactly one
-  /// card is written however the call came about. Falls back to having placed
-  /// the call when there is no second party to compare against.
-  bool get _writesTheCall {
-    final me = Matrix.of(context).client.userID;
-    final peer = _peerId;
-    if (me == null || peer == null) return _call.placedCall;
-    return me.compareTo(peer) < 0;
   }
 
   Future<void> _toggleMute() async {
