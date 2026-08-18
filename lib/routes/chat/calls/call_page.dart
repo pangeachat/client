@@ -106,18 +106,18 @@ class _CallPageState extends State<CallPage> {
     if (_call.stage == CallStage.ended || _call.stage == CallStage.failed) {
       // Deliberately not awaited and deliberately not tied to this widget: the
       // recording outlives the screen, which is closing on the next line.
-      unawaited(
-        _record.finish(
-          duration: DateTime.now().difference(_startedAt),
-          video: widget.video,
-        ),
-      );
+      _finishRecording();
       Navigator.of(context).maybePop();
     }
   }
 
   @override
   void dispose() {
+    // Leaving by system back, a dismiss gesture, or the route being removed
+    // never runs the listener below, so the recording would be silently lost on
+    // an entirely ordinary exit. finish() is idempotent, so calling it here as
+    // well is safe when the listener did run.
+    _finishRecording();
     _call.removeListener(_onCallChanged);
     // ActiveCall.dispose hangs up. Leaving the screen ends the call — there is no
     // background call in v1, and a call still running behind a closed screen is
@@ -125,6 +125,15 @@ class _CallPageState extends State<CallPage> {
     _call.dispose();
     super.dispose();
   }
+
+  /// Writes the call and its analytics. Idempotent, and deliberately not awaited
+  /// or tied to this widget — it outlives the screen, which is closing.
+  void _finishRecording() => unawaited(
+    _record.finish(
+      duration: DateTime.now().difference(_startedAt),
+      video: widget.video,
+    ),
+  );
 
   Future<void> _toggleMute() async {
     final next = !_muted;

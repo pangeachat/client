@@ -99,6 +99,34 @@ void main() {
     expect(recorded, isEmpty);
   });
 
+  test('a write that failed can still be retried', () async {
+    // A network blip at hangup must not cost the whole call's credit. The
+    // transcripts are frozen and still correct, so a later attempt is right.
+    final transcripts = await sinkWith(() => spokenWord('hola'));
+    var failNext = true;
+    final r = CallRecord(
+      roomId: '!r:server',
+      transcripts: transcripts,
+      sendEvent: (content) async {
+        if (failNext) {
+          failNext = false;
+          throw StateError('offline');
+        }
+        written.add(content);
+        return '\$call';
+      },
+      analytics: (id, uses, lang) async =>
+          recorded.add((eventId: id, uses: uses.length, lang: lang)),
+    );
+
+    await r.finish(duration: const Duration(seconds: 10), video: false);
+    expect(recorded, isEmpty);
+
+    await r.finish(duration: const Duration(seconds: 10), video: false);
+    expect(written, hasLength(1), reason: 'the retry wrote the call');
+    expect(recorded, hasLength(1), reason: 'and credited it');
+  });
+
   test('nothing is credited when the room returns no event id', () async {
     final r = record(await sinkWith(() => spokenWord('hola')), eventId: null);
     await r.finish(duration: const Duration(seconds: 10), video: false);

@@ -99,14 +99,20 @@ class FakeMedia extends CallMedia {
 class FakeCapture extends CallCaptureService {
   final Trace trace;
   Object? stopError;
+  Object? startError;
+  Completer<void>? holdStop;
   FakeCapture(this.trace) : super(sink: _NullSink());
 
   @override
-  void start(covariant Object track) => trace('capture.start');
+  void start(covariant Object track) {
+    trace('capture.start');
+    if (startError != null) throw startError!;
+  }
 
   @override
   Future<void> stop() async {
     trace('capture.stop');
+    if (holdStop != null) await holdStop!.future;
     if (stopError != null) throw stopError!;
   }
 }
@@ -434,6 +440,41 @@ void main() {
       await calls.participantsBecome(['zzzzzzzzzz', calls.client.deviceID!]);
       expect(call.isRecording, isTrue);
       expect(trace.steps, isNot(contains('capture.stop')));
+    });
+
+    test('a recorder that will not start does not fail the call', () async {
+      // Recording is not the call. A tap that cannot open costs analytics; it
+      // must never stop someone placing a voice call.
+      final (call, calls, _, capture) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      capture.startError = StateError('no renderer available');
+
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(call.stage, CallStage.connected);
+      expect(trace.steps, contains('announce'));
+    });
+
+    test('a handover is not overtaken by the one before it', () async {
+      // A device can be displaced and reinstated faster than a flush completes.
+      // Starting the new recording while the old stop is still unwinding would
+      // let that stop cancel the new tap and close its sink underneath it.
+      final (call, calls, _, capture) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      trace.steps.clear();
+
+      capture.holdStop = Completer<void>();
+      await calls.participantsBecome(['AAAAAAAAAA', calls.client.deviceID!]);
+      await calls.participantsBecome([calls.client.deviceID!]);
+
+      expect(trace.steps, [
+        'capture.stop',
+      ], reason: 'the restart waits for the stop it follows');
+
+      capture.holdStop!.complete();
+      await pumpEventQueue();
+      expect(trace.steps, ['capture.stop', 'capture.start']);
     });
 
     test('participant changes after hangup are ignored', () async {

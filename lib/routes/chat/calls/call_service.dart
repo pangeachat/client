@@ -150,14 +150,17 @@ class CallService {
   List<String> get myDeviceIdsInCall {
     final session = _current;
     if (session == null) return const [];
-    final mine = session.room.getCallMembershipsForUser(
-      client.userID!,
-      client.deviceID!,
-      voip,
-    );
+    // Every state key, not the one this device's id resolves to. Where a room
+    // keys membership per device, asking for "this user's key" returns only this
+    // device — and every device would then believe it was alone and record.
     return [
-      for (final m in mine)
-        if (m.callId == session.groupCallId && !m.isExpired) m.deviceId,
+      for (final memberships
+          in session.room.getCallMembershipsFromRoom(voip).values)
+        for (final m in memberships)
+          if (m.userId == client.userID &&
+              m.callId == session.groupCallId &&
+              !m.isExpired)
+            m.deviceId,
     ];
   }
 

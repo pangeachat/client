@@ -50,6 +50,7 @@ class ActiveCall extends ChangeNotifier {
   bool _ending = false;
   AudioTrack? _track;
   StreamSubscription? _participants;
+  Future<void> _handover = Future.value();
 
   ActiveCall({required this.calls, required this.media, required this.capture});
 
@@ -72,21 +73,29 @@ class ActiveCall extends ChangeNotifier {
       siblingDeviceIds: calls.myDeviceIdsInCall.where((id) => id != me),
     ).shouldRecord;
 
-    if (elected && !_capturing) {
-      capture.start(track);
-      _capturing = true;
-      Logs().i('Recording this call on this device');
-    } else if (!elected && _capturing) {
-      _capturing = false;
-      // Flushes what was already said. Not awaited: this runs from a stream
-      // callback, and a slow flush must not delay noticing further changes.
-      unawaited(
-        capture.stop().catchError(
-          (Object e, StackTrace s) =>
-              Logs().e('Could not stop recording on handover', e, s),
-        ),
-      );
-      Logs().i('Another device of this account is recording this call');
+    if (elected == _capturing) return;
+    _capturing = elected;
+    // Handovers are serialised. A device can be displaced and reinstated faster
+    // than a flush completes, and starting a new recording while the previous
+    // stop is still unwinding would let that stop cancel the new tap and close
+    // its sink underneath it.
+    _handover = _handover.then((_) => _applyElection(elected, track));
+  }
+
+  Future<void> _applyElection(bool record, AudioTrack track) async {
+    if (_ending && record) return;
+    try {
+      if (record) {
+        capture.start(track);
+        Logs().i('Recording this call on this device');
+      } else {
+        await capture.stop();
+        Logs().i('Another device of this account is recording this call');
+      }
+    } catch (e, s) {
+      // Recording is not the call. A tap that will not open, or will not close,
+      // costs analytics — it must never take down a conversation.
+      Logs().e('Could not change recording state', e, s);
     }
   }
 
@@ -131,17 +140,26 @@ class ActiveCall extends ChangeNotifier {
         Logs().w('Call has no published audio track; not recording');
       }
 
-      // Before announcing, so recording can begin with the first word rather
-      // than after a round-trip. The election reads room state, which already
-      // lists any other device of this account — it does not need this one to be
-      // advertised first.
+      // Subscribe FIRST. The SDK's event stream is a plain broadcast, so a
+      // membership change between electing and subscribing would simply be
+      // missed — and this device would keep recording alongside a sibling, or
+      // stay silent as the only one left.
+      _participants = calls.callEvents?.listen((_) => _electRecorder());
+
+      // Then elect, before announcing, so recording begins with the first word
+      // rather than after a round-trip. The election reads room state, which
+      // already lists any other device of this account.
       _electRecorder();
+      // Settle the first election before announcing, so recording is already
+      // running when the peer learns this device is here. Handovers are queued,
+      // so without this the initial start would land a microtask later.
+      await _handover;
 
       await calls.announce();
       if (_ending) return _abandon();
 
-      // Watch for the other device leaving, or arriving later.
-      _participants = calls.callEvents?.listen((_) => _electRecorder());
+      // State may have moved while announcing.
+      _electRecorder();
 
       _to(CallStage.connected);
     } catch (e, s) {
@@ -215,6 +233,7 @@ class ActiveCall extends ChangeNotifier {
     if (_capturing) {
       _capturing = false;
       try {
+        await _handover;
         await capture.stop();
       } catch (e, s) {
         Logs().e('Could not flush the call recording', e, s);

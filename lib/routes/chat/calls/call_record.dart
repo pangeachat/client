@@ -31,6 +31,7 @@ class CallRecord {
   final String roomId;
 
   bool _finished = false;
+  bool _finishing = false;
 
   CallRecord({
     required this.sendEvent,
@@ -48,17 +49,30 @@ class CallRecord {
   /// Idempotent. Running twice would post a second timeline entry and credit the
   /// same words again, and a hangup racing a disconnect can reach here twice.
   Future<void> finish({required Duration duration, required bool video}) async {
-    if (_finished) return;
-    _finished = true;
+    if (_finished || _finishing) return;
+    _finishing = true;
+    try {
+      await _finish(duration: duration, video: video);
+    } finally {
+      _finishing = false;
+    }
+  }
 
+  Future<void> _finish({
+    required Duration duration,
+    required bool video,
+  }) async {
     final eventId = await _write(duration: duration, video: video);
     if (eventId == null) {
-      // Without an event there is nothing to anchor the uses to, and an unanchored
-      // use cannot be traced back to the call that earned it. The transcripts are
-      // still frozen, so a later retry against a real event would be correct.
+      // Nothing to anchor the uses to, and an unanchored use cannot be traced
+      // back to the call that earned it. Deliberately NOT marked finished: the
+      // transcripts are frozen and still correct, so a later attempt — a retry,
+      // or a second teardown path — can still record them. A network blip at
+      // hangup must not cost the whole call's credit.
       Logs().w('Call analytics not recorded: the call event was not written');
       return;
     }
+    _finished = true;
 
     final language = transcripts.langCode;
     if (language == null) return;
