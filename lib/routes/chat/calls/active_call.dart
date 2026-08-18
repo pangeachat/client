@@ -141,9 +141,13 @@ class ActiveCall extends ChangeNotifier {
     if (_ending) return;
 
     if (calls.hasRemoteParticipants) {
+      final firstArrival = !_peerArrived;
       _peerArrived = true;
       _waitingForPeer?.cancel();
       _waitingForPeer = null;
+      // The screen decides whether this was a real call from this, so it has to
+      // hear about it — the stage does not change when someone answers.
+      if (firstArrival && !_disposed) notifyListeners();
     } else if (_peerArrived) {
       // In a direct message there is nobody else to wait for. Staying would hold
       // a microphone open for a conversation that has ended, and the learner
@@ -155,6 +159,13 @@ class ActiveCall extends ChangeNotifier {
 
     _electRecorder();
   }
+
+  /// Whether anyone was ever actually on the other end.
+  ///
+  /// Connected means this device reached the SFU, not that a conversation
+  /// happened. A call that rang out unanswered is not a call, and writing one
+  /// would credit a learner for talking to nobody.
+  bool get hadPeer => _peerArrived;
 
   CallStage get stage => _stage;
   Object? get error => _error;

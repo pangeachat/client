@@ -49,9 +49,10 @@ class _CallPageState extends State<CallPage> {
   late final DateTime _startedAt;
   DateTime? _endedAt;
 
-  /// Whether the call ever actually connected. A call that failed to start is
-  /// not a call, and writing one to the room would leave a learner looking at a
-  /// conversation that never happened.
+  /// Whether a conversation actually happened: this device connected AND someone
+  /// answered. Reaching the SFU alone is not a call — a call that failed to
+  /// start, or rang out unanswered, would otherwise be written to the room and
+  /// credit the learner for talking to nobody.
   bool _wasConnected = false;
 
   /// Whether the camera was ever on. The call is recorded by what happened, not
@@ -113,7 +114,9 @@ class _CallPageState extends State<CallPage> {
   void _onCallChanged() {
     if (!mounted) return;
     setState(() {});
-    if (_call.stage == CallStage.connected) _wasConnected = true;
+    if (_call.stage == CallStage.connected && _call.hadPeer) {
+      _wasConnected = true;
+    }
     // A call that ended or failed has nothing left to show. Closing here rather
     // than leaving a dead screen up means the user never has to dismiss a call
     // that is already over.

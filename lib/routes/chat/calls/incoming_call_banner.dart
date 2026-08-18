@@ -31,13 +31,13 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   matrix.Room? _ringing;
   String? _listeningTo;
 
-  /// Calls the learner has already turned down, by the caller's session.
+  /// When each room's call was last turned down.
   ///
-  /// Keyed by session rather than by room: discovery repeats while a caller
-  /// waits, so without this a declined call would reappear on the next
-  /// membership renewal — but keyed by room it would silence the conversation
-  /// for good.
-  final Map<String, String> _declined = {};
+  /// A decline has to outlast the discoveries that repeat while a caller waits,
+  /// and has to lapse before that caller tries again. Nothing in a membership
+  /// distinguishes one call from the next, so time is what is left: it holds for
+  /// as long as a call would plausibly still be ringing.
+  final Map<String, DateTime> _declinedAt = {};
 
   /// How long a call rings before it is taken as unanswered.
   ///
@@ -84,8 +84,10 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // the first on screen rather than swapping under the learner's finger as
       // they reach to answer.
       if (_ringing != null) return;
-      final session = Matrix.of(context).callService.ringingSession(room);
-      if (session != null && _declined[room.id] == session) return;
+      final declined = _declinedAt[room.id];
+      if (declined != null && DateTime.now().difference(declined) < _ringFor) {
+        return;
+      }
       setState(() => _ringing = room);
       _watchForGiveUp(room);
     });
@@ -119,10 +121,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// again while the caller is still waiting.
   void _decline() {
     final room = _ringing;
-    if (room != null && mounted) {
-      final session = Matrix.of(context).callService.ringingSession(room);
-      if (session != null) _declined[room.id] = session;
-    }
+    if (room != null) _declinedAt[room.id] = DateTime.now();
     _dismiss();
   }
 
@@ -133,6 +132,9 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   }
 
   Future<void> _answer(matrix.Room room) async {
+    // Answering clears any earlier decline: the learner has plainly changed
+    // their mind, and a lingering one would suppress the next call for nothing.
+    _declinedAt.remove(room.id);
     // Checked at the moment of answering, not when the prompt appeared. A
     // caller can give up between the two, and joining then would open a call of
     // one and write it to the room as though it happened.

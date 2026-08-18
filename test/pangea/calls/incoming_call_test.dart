@@ -69,23 +69,6 @@ void main() {
       expect(call(const []).callerId, isNull);
     });
 
-    test('the call is identified by the caller session, not the room', () {
-      // A call id is derived from the room, so it cannot tell two calls apart.
-      // This is what lets a decline stick to the call it declined without
-      // silencing the conversation for good.
-      final first = call([FakeMembership(peer, membershipId: 'S1')]);
-      final second = call([FakeMembership(peer, membershipId: 'S2')]);
-
-      expect(first.callerSession, 'S1');
-      expect(second.callerSession, 'S2');
-      expect(first.callerSession, isNot(second.callerSession));
-    });
-
-    test('nothing ringing has no session', () {
-      expect(call(const []).callerSession, isNull);
-      expect(call([FakeMembership(me)]).callerSession, isNull);
-    });
-
     test('an expired membership is not someone in the call', () {
       // A device that crashed stops renewing. Ringing for it would mean a call
       // nobody is on keeps ringing until the state ages out.

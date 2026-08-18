@@ -34,12 +34,11 @@ class IncomingCall {
   /// Who is calling, for the prompt. Null when nobody is.
   String? get callerId => _caller?.userId;
 
-  /// Identifies THIS call, as distinct from the next one in the same room.
-  ///
-  /// A call id is derived from the room, so it cannot tell two calls apart. The
-  /// caller's membership is per-join, so it can — which is what lets a decline
-  /// stick to the call it declined without silencing the conversation forever.
-  String? get callerSession => _caller?.membershipId;
+  // Deliberately no per-call identity here. Nothing in a membership provides
+  // one: the call id is derived from the room, and `membershipId` is the SDK's
+  // session id, generated once per VoIP instance rather than per call. Two calls
+  // from one caller on one device are indistinguishable, so anything needing to
+  // tell them apart cannot get it from here.
 
   CallMembership? get _caller {
     for (final m in _live) {

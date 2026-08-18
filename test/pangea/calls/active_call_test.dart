@@ -444,6 +444,38 @@ void main() {
       expect(trace.steps, contains('retract'));
     });
 
+    test('an unanswered call is not treated as a conversation', () async {
+      // Reaching the SFU is not a call. Writing one would put a conversation in
+      // the timeline that never happened and credit talking to nobody.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(call.stage, CallStage.connected);
+      expect(call.hadPeer, isFalse, reason: 'nobody answered');
+    });
+
+    test('answering makes it a conversation, and says so', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+      await call.start(roomStub(calls.client), video: false);
+
+      var notified = 0;
+      call.addListener(() => notified++);
+
+      calls.remotePresent = true;
+      await calls.participantsBecome([calls.client.deviceID!]);
+
+      expect(call.hadPeer, isTrue);
+      expect(
+        notified,
+        greaterThan(0),
+        reason: 'the stage does not change, so the screen must be told',
+      );
+    });
+
     test('answering in time stops the giving up', () async {
       final (call, calls, _, _) = await build();
       calls.devicesInCall = [calls.client.deviceID!];
