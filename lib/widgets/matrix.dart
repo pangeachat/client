@@ -19,6 +19,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
@@ -106,6 +107,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
   final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
+  final Map<String, CallService> _callServices = {};
 
   /// Accounts whose services are being torn down, mapped to the in-flight
   /// disposal. Concurrent teardowns coalesce onto ONE disposal (no double-
@@ -190,6 +192,23 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// account's, and never resurrecting a service for a closing one.
   AnalyticsDataService? analyticsServiceFor(String clientName) =>
       _analyticsServices[clientName];
+
+  /// This account's calling service.
+  ///
+  /// One per account and never rebuilt while the account lives: the SDK's [VoIP]
+  /// is per-client and identifies our membership by instance, so a second one
+  /// would lose track of a call the first is still in. The service itself is
+  /// inert until something asks it to call — it holds no media and constructs
+  /// no [VoIP] on creation.
+  CallService get callService => callServiceFor(client.clientName);
+
+  /// The calling service for a SPECIFIC account, created on first use.
+  ///
+  /// Unlike [analyticsDataService] this needs no closing-account guard:
+  /// [disposeAccountServices] removes the entry, and a service created after
+  /// that point owns nothing that could outlive the account.
+  CallService callServiceFor(String clientName) => _callServices[clientName] ??=
+      CallService(widget.clients.firstWhere((c) => c.clientName == clientName));
   // Pangea#
 
   bool get isMultiAccount => widget.clients.length > 1;
@@ -657,9 +676,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     return _disposingServices[clientName] ??= () async {
       try {
         _activityAutoSaveServices[clientName]?.dispose();
+        _callServices[clientName]?.dispose();
         await _analyticsServices[clientName]?.dispose();
       } finally {
         _activityAutoSaveServices.remove(clientName);
+        _callServices.remove(clientName);
         _analyticsServices.remove(clientName);
         _disposingServices.remove(clientName);
       }
