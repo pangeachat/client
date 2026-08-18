@@ -53,6 +53,12 @@ class _CallPageState extends State<CallPage> {
   /// not a call, and writing one to the room would leave a learner looking at a
   /// conversation that never happened.
   bool _wasConnected = false;
+
+  /// Whether the camera was ever on. The call is recorded by what happened, not
+  /// by what was asked for — a voice call someone turns their camera on during
+  /// is a video call, and writing otherwise would put something untrue in the
+  /// learner's timeline.
+  late bool _usedVideo;
   bool _muted = false;
   late bool _camera;
 
@@ -60,6 +66,7 @@ class _CallPageState extends State<CallPage> {
   void initState() {
     super.initState();
     _camera = widget.video;
+    _usedVideo = widget.video;
     _startedAt = DateTime.now();
     _media = CallMedia();
 
@@ -162,7 +169,7 @@ class _CallPageState extends State<CallPage> {
         if (!_wasConnected) return null;
         return _record.finish(
           duration: _endedAt!.difference(_startedAt),
-          video: widget.video,
+          video: _usedVideo,
         );
       }),
     );
@@ -177,6 +184,7 @@ class _CallPageState extends State<CallPage> {
   Future<void> _toggleCamera() async {
     final next = !_camera;
     await _media.setCameraEnabled(next);
+    if (next) _usedVideo = true;
     if (mounted) setState(() => _camera = next);
   }
 

@@ -208,19 +208,48 @@ class CallService {
   /// including ones everyone has left, so the decision is made here rather than
   /// treating discovery as a ring.
   Stream<Room> get incomingCalls => _incoming.stream;
+
+  /// Starts watching for calls arriving for this account.
+  ///
+  /// Receiving a call requires the SDK's VoIP to exist — it is what notices a
+  /// membership appearing — and that is built lazily, on placing a call. Without
+  /// this, an account that had never called could never be called: nothing was
+  /// listening.
+  Future<void> listenForCalls() async {
+    if (_disposed) return;
+    // A homeserver with no focus cannot carry calls, so there is nothing to
+    // listen for and no reason to pay for VoIP's scan of every joined room.
+    if (await resolveFocus() == null || _disposed) return;
+    voip; // Constructing it is what arms discovery.
+  }
+
+  /// Whether this account can be called: it has a focus and is listening.
+  bool get isListening => _voip != null;
   final StreamController<Room> _incoming = StreamController<Room>.broadcast();
 
   void _onCallDiscovered(GroupCallSession session) {
+    if (_disposed) return;
+    // Direct messages only, matching where the call button is offered. A group
+    // room with a live call would otherwise ring every member of this app.
+    if (!session.room.isDirectChat) return;
+    if (isRinging(session.room)) _incoming.add(session.room);
+  }
+
+  /// Whether a call in [room] is still waiting for this account to answer.
+  ///
+  /// Asked again while a prompt is showing, because a caller can give up: a
+  /// banner that only ever appeared would ring for a room nobody is calling
+  /// from, and answering it would join a call of one.
+  bool isRinging(Room room) {
     final me = client.userID;
-    if (me == null) return;
-    final ring = IncomingCall(
+    if (me == null || _disposed) return false;
+    return IncomingCall(
       memberships: [
-        for (final list in session.room.getCallMembershipsFromRoom(voip).values)
-          ...list.where((m) => m.callId == session.groupCallId),
+        for (final list in room.getCallMembershipsFromRoom(voip).values)
+          ...list,
       ],
       myUserId: me,
-    );
-    if (ring.shouldRing) _incoming.add(session.room);
+    ).shouldRing;
   }
 
   /// Whether anyone other than this account is still in the call.
@@ -288,6 +317,9 @@ class CallService {
   /// account teardown reaches here while a call can still be live.
   Future<void> dispose() async {
     _disposed = true;
+    // Cleared before the stream closes: the SDK's own listeners outlive this
+    // service, and a late discovery would otherwise add to a closed controller.
+    delegate.onGroupCallDiscovered = null;
     unawaited(_incoming.close());
     _focusRetry?.cancel();
     _focusRetry = null;

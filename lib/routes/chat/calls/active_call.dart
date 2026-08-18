@@ -116,12 +116,34 @@ class ActiveCall extends ChangeNotifier {
   /// Their absence only means the call is over if they were ever there — before
   /// that it just means they have not answered yet.
   bool _peerArrived = false;
+  Timer? _waitingForPeer;
+
+  /// How long a call waits for someone to be on the other end.
+  ///
+  /// Covers both a callee who never answers and a caller who gave up moments
+  /// before this device joined. Without it either leaves a learner sitting in an
+  /// open call with an open microphone and nobody there.
+  static const _answerWithin = Duration(seconds: 60);
+
+  /// Fires the give-up now instead of after the wait. Sixty seconds of real
+  /// time in a test proves nothing the timer's own logic does not.
+  @visibleForTesting
+  Future<void> waitForPeerTimeoutForTest() async {
+    final waiting = _waitingForPeer;
+    if (waiting == null || !waiting.isActive) return;
+    waiting.cancel();
+    _waitingForPeer = null;
+    if (_ending || _peerArrived) return;
+    await hangUp();
+  }
 
   void _onParticipantsChanged() {
     if (_ending) return;
 
     if (calls.hasRemoteParticipants) {
       _peerArrived = true;
+      _waitingForPeer?.cancel();
+      _waitingForPeer = null;
     } else if (_peerArrived) {
       // In a direct message there is nobody else to wait for. Staying would hold
       // a microphone open for a conversation that has ended, and the learner
@@ -193,6 +215,13 @@ class ActiveCall extends ChangeNotifier {
       // Whether the peer is already here decides what their later absence
       // means: gone, or simply not answered yet.
       _peerArrived = calls.hasRemoteParticipants;
+      if (!_peerArrived) {
+        _waitingForPeer = Timer(_answerWithin, () {
+          if (_ending || _peerArrived) return;
+          Logs().i('Nobody joined the call; ending it');
+          unawaited(hangUp());
+        });
+      }
 
       await calls.announce();
       if (_ending) return _abandon();
@@ -259,6 +288,8 @@ class ActiveCall extends ChangeNotifier {
   /// membership standing.
   Future<void> _tearDown() async {
     _ending = true;
+    _waitingForPeer?.cancel();
+    _waitingForPeer = null;
     try {
       await _participants?.cancel();
     } catch (e, s) {

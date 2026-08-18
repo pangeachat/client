@@ -27,40 +27,97 @@ class IncomingCallBanner extends StatefulWidget {
 
 class _IncomingCallBannerState extends State<IncomingCallBanner> {
   StreamSubscription<matrix.Room>? _calls;
+  Timer? _stillRinging;
   matrix.Room? _ringing;
+  String? _listeningTo;
+
+  /// How long a call rings before it is taken as unanswered.
+  ///
+  /// A caller who closes their app without leaving cleanly stops renewing their
+  /// membership, but that takes longer to lapse than anyone will sit looking at
+  /// a prompt.
+  static const _ringFor = Duration(seconds: 60);
 
   @override
   void initState() {
     super.initState();
-    // Deferred: Matrix.of needs a context that has been mounted, and the call
-    // service is per-account and resolved from it.
+    // Deferred: Matrix.of needs a mounted context, and the call service is
+    // per-account and resolved from it.
     WidgetsBinding.instance.addPostFrameCallback((_) => _listen());
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    // The active account can change under this widget. Without re-subscribing,
+    // the banner would keep listening to the account that was active when it
+    // mounted and never ring for the one the learner switched to.
+    _listen();
   }
 
   void _listen() {
     if (!mounted) return;
-    _calls = Matrix.of(context).callService.incomingCalls.listen((room) {
+    final matrixState = Matrix.of(context);
+    final account = matrixState.client.clientName;
+    if (account == _listeningTo) return;
+
+    _calls?.cancel();
+    _listeningTo = account;
+    // A prompt belonging to the account we just left is not this one's.
+    if (_ringing != null) setState(() => _ringing = null);
+
+    final calls = matrixState.callService;
+    // Arms discovery. Without it an account that had never placed a call could
+    // never receive one — nothing would be watching for a membership to appear.
+    unawaited(calls.listenForCalls());
+    _calls = calls.incomingCalls.listen((room) {
       if (!mounted) return;
       // One at a time. A second call arriving while the first is ringing keeps
       // the first on screen rather than swapping under the learner's finger as
       // they reach to answer.
       if (_ringing != null) return;
       setState(() => _ringing = room);
+      _watchForGiveUp(room);
+    });
+  }
+
+  /// Dismisses the prompt when the caller stops calling.
+  ///
+  /// The call membership is the truth here: it goes when they hang up, and it
+  /// lapses when their app dies. Polling it is what keeps a prompt from
+  /// outliving the call — and from letting a learner answer into an empty room.
+  void _watchForGiveUp(matrix.Room room) {
+    _stillRinging?.cancel();
+    final until = DateTime.now().add(_ringFor);
+    _stillRinging = Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (!mounted) return;
+      final calls = Matrix.of(context).callService;
+      if (calls.isRinging(room) && DateTime.now().isBefore(until)) return;
+      timer.cancel();
+      _dismiss();
     });
   }
 
   @override
   void dispose() {
     _calls?.cancel();
+    _stillRinging?.cancel();
     super.dispose();
   }
 
   void _dismiss() {
+    _stillRinging?.cancel();
+    _stillRinging = null;
     if (mounted) setState(() => _ringing = null);
   }
 
   Future<void> _answer(matrix.Room room) async {
+    // Checked at the moment of answering, not when the prompt appeared. A
+    // caller can give up between the two, and joining then would open a call of
+    // one and write it to the room as though it happened.
+    final live = Matrix.of(context).callService.isRinging(room);
     _dismiss();
+    if (!live || !mounted) return;
     await CallPage.show(context, room, video: false);
   }
 

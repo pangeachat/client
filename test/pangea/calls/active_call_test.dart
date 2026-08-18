@@ -427,6 +427,37 @@ void main() {
     });
   });
 
+  group('when nobody is on the other end', () {
+    test('the call gives up rather than waiting forever', () async {
+      // Covers a callee who never answers and a caller who gave up moments
+      // before this device joined. Either leaves a learner in an open call,
+      // with an open microphone, and nobody there.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(call.stage, CallStage.connected, reason: 'still ringing out');
+      await call.waitForPeerTimeoutForTest();
+
+      expect(call.stage, CallStage.ended);
+      expect(trace.steps, contains('retract'));
+    });
+
+    test('answering in time stops the giving up', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+      await call.start(roomStub(calls.client), video: false);
+
+      calls.remotePresent = true;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      await call.waitForPeerTimeoutForTest();
+
+      expect(call.stage, CallStage.connected, reason: 'they answered');
+    });
+  });
+
   group('which device records', () {
     test('this one, when it is alone in the call', () async {
       final (call, calls, _, _) = await build();
