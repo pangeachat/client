@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 
 import 'package:livekit_client/livekit_client.dart' show AudioTrack;
-import 'package:matrix/matrix.dart' hide Room;
 import 'package:matrix/matrix.dart' as matrix show Room;
+import 'package:matrix/matrix.dart' hide Room;
 
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
-import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 
 enum CallStage {
   /// The other person turned the call down. Distinct from ended so the caller

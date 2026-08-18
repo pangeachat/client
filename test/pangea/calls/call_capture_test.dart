@@ -2,7 +2,6 @@ import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:livekit_client/livekit_client.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';

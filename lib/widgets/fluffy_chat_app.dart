@@ -7,7 +7,6 @@ import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
 import 'package:fluffychat/config/routes.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -16,6 +15,7 @@ import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
 import 'package:fluffychat/widgets/theme_builder.dart';
 import '../utils/custom_scroll_behaviour.dart';

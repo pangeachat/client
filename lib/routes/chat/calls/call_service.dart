@@ -4,11 +4,11 @@ import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Owns one account's MatrixRTC calling.
 ///

@@ -5,15 +5,15 @@ import 'package:flutter/material.dart';
 import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' as matrix show Room;
 
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
-import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
-import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The in-call screen.

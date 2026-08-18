@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics/construct_use_type_enum.dart';
+import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/audio_encoding_enum.dart';

@@ -1,10 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:livekit_client/livekit_client.dart' show AudioTrack;
-import 'package:matrix/matrix.dart' hide Room;
 import 'package:matrix/matrix.dart' as matrix show Room;
+import 'package:matrix/matrix.dart' hide Room;
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
