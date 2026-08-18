@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -323,11 +322,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
               final allGroups =
                   widget.objectivesProvider.filteredObjectiveGroups;
               final anchorId = widget.objectivesProvider.anchorMissionId;
-              final anchorGroup = allGroups.firstWhereOrNull(
-                (g) => g.objective.id == anchorId,
-              );
               final groups = widget.upNextOnly
-                  ? [?anchorGroup ?? allGroups.firstOrNull]
+                  ? [?widget.objectivesProvider.upNextGroup]
                   : allGroups;
               if (groups.isEmpty) {
                 return _QuestLoadErrorView(

@@ -6,9 +6,14 @@ class CourseSectionLink extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
 
+  /// An indicator after the chevron, inside the same tap surface — e.g. the
+  /// ping badge telling the learner the pinged activity is on the subpage.
+  final Widget? trailing;
+
   const CourseSectionLink({
     required this.label,
     required this.onTap,
+    this.trailing,
     super.key,
   });
 
@@ -34,6 +39,11 @@ class CourseSectionLink extends StatelessWidget {
                 ).textTheme.bodyMedium?.copyWith(color: color),
               ),
               Icon(Icons.chevron_right, size: 18.0, color: color),
+              if (trailing != null)
+                Padding(
+                  padding: const EdgeInsetsDirectional.only(start: 8.0),
+                  child: trailing,
+                ),
             ],
           ),
         ),

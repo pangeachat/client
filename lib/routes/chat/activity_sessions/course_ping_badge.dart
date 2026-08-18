@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:fluffychat/config/app_config.dart';
+import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// The activity and session a course ping pointed at.
@@ -9,6 +10,25 @@ typedef CoursePingBadgeData = ({
   String activityId,
   String sessionRoomId,
 });
+
+/// Whether the course page's Course-plan highlight — the Up-next Mission alone
+/// (#8357) — cannot show the pinged card, so the "See full course plan" link
+/// carries the ping badge to lead there instead (#8454). True when [ping] is
+/// for [courseId] and its activity is somewhere in [planGroups] but not in
+/// [upNextGroup]. A ping for an activity no longer in the plan badges nothing,
+/// matching the card rule in the full plan.
+bool coursePingLeadsToFullPlan({
+  required CoursePingBadgeData? ping,
+  required String courseId,
+  required List<QuestObjectiveGroup> planGroups,
+  required QuestObjectiveGroup? upNextGroup,
+}) {
+  if (ping == null || ping.courseId != courseId) return false;
+  bool holdsPinged(QuestObjectiveGroup g) =>
+      g.activities.any((a) => a.activityId == ping.activityId);
+  if (upNextGroup != null && holdsPinged(upNextGroup)) return false;
+  return planGroups.any(holdsPinged);
+}
 
 /// In-memory carrier for the ping the learner is following (#8319).
 ///
