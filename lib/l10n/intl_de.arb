@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-13 15:50:46.441146",
+    "@@last_modified": "2026-08-18 09:33:21.781290",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9722,5 +9722,26 @@
     "courseNoLongerAvailableTitle": "Kurs nicht verfügbar",
     "courseDeletedDialogDesc": "Dieser Kurs wurde gelöscht.",
     "pingedActivity": "Gepingte Aktivität",
-    "appInTargetLanguageStaysInBaseLanguage": "(Diese Einstellung bleibt in Ihrer Muttersprache, damit Sie sie immer finden können.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Diese Einstellung bleibt in Ihrer Muttersprache, damit Sie sie immer finden können.)",
+    "usernameTakenPleaseChooseAnother": "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen.",
+    "allParticipants": "Alle Teilnehmer",
+    "seeFullCoursePlan": "Vollständigen Kursplan ansehen",
+    "catchUp": "Aufholen",
+    "messageLanguageIs": "Diese Nachricht ist auf {language} eingestellt.",
+    "updateMessageLanguage": "Klicke hier, um die Sprache der Nachricht zu ändern.",
+    "messageLanguage": "Nachrichtensprache",
+    "messageLanguageUpdated": "Nachrichtensprache aktualisiert!",
+    "pickCefrLevelStepSubtitle": "Das kannst du später ändern",
+    "unlockPremiumAudio": "Premium-Audio freischalten",
+    "unlockTranslations": "Übersetzungen freischalten",
+    "unlockEmojiMode": "Emoji-Modus freischalten",
+    "unlockMessagePractice": "Nachrichtenübung freischalten",
+    "unlockWritingAssistance": "Schreibassistenz freischalten",
+    "courseSectionTeaching": "Unterricht",
+    "courseSectionLearning": "Lernen",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 Kurs} other{{count} Kurse}}",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen",
+    "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}",
+    "markAllRead": "Alle als gelesen markieren"
 }

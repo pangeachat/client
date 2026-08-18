@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:fluffychat/features/analytics/constructs_model.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/stt_token_enrichment.dart';
 
 /// The grammar + vocab counts shown in the transient analytics-feedback overlay.
@@ -40,6 +42,58 @@ Future<void> guardFeedbackDispatch(
     // Contain BOTH a synchronous throw and an async rejection of the logger's
     // returned Future (ErrorHandler.logError returns Future<void>), so a failing
     // logger can never escape as an unhandled async error.
+    reportErrorSafely(onError, e, s);
+  }
+}
+
+/// The flag-OFF (inline) counterpart of `runVoiceTranscriptEnrichment`'s
+/// analytics chain: the transcript is already tokenized when the send resolves,
+/// so there is nothing to enrich -- only the best-effort overlay and the record.
+///
+/// LIFECYCLE-INDEPENDENT, exactly like [buildVoiceAnalyticsRecorder]: [sink] is
+/// resolved at t0 while the widget is guaranteed live and passed in, so the
+/// record NEVER reads a `BuildContext` after the send's awaits. Resolving it
+/// late is unsound -- an unmounted `State.context` is `_element!`, which in a
+/// release build is a bare null-check crash, and the learner's spoken
+/// constructs go unrecorded (#8371).
+///
+/// Fully self-guarded so nothing escapes the caller's fire-and-forget: a
+/// throwing [sink], a throwing [showFeedback], and a rejecting [onError] logger
+/// are all contained. The returned future always completes normally.
+///
+/// [showFeedback] is dispatched BEFORE the record on purpose -- the overlay
+/// reports how many constructs are NEW, a count the record itself would zero.
+Future<void> recordInlineVoiceAnalytics({
+  required SpeechToTextResponseModel stt,
+  required String roomId,
+  required String eventId,
+  required VoiceAnalyticsSink sink,
+  Future<void> Function(
+    List<OneConstructUse> constructs,
+    String eventId,
+    String langCode,
+  )?
+  showFeedback,
+  FutureOr<void> Function(Object error, StackTrace stack)? onError,
+}) async {
+  try {
+    // An exhausted-fallback (`results: []`) or token-less transcript has
+    // nothing to score, and reading `transcript` on one would throw.
+    if (!stt.hasUsableTokens) return;
+    final constructs = stt.constructs(roomId, eventId);
+    if (constructs.isEmpty) return;
+    final langCode = stt.langCode.split('-').first;
+
+    if (showFeedback != null) {
+      unawaited(
+        guardFeedbackDispatch(
+          () => showFeedback(constructs, eventId, langCode),
+          (e, s) => reportErrorSafely(onError, e, s),
+        ),
+      );
+    }
+    await sink(eventId, constructs, langCode);
+  } catch (e, s) {
     reportErrorSafely(onError, e, s);
   }
 }

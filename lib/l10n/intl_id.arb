@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:48.281114",
+    "@@last_modified": "2026-08-18 09:33:30.935830",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9808,5 +9808,26 @@
     "courseNoLongerAvailableTitle": "Kursus tidak tersedia",
     "courseDeletedDialogDesc": "Kursus ini telah dihapus.",
     "pingedActivity": "Aktivitas yang di-ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Pengaturan ini tetap dalam bahasa ibu Anda agar Anda selalu dapat menemukannya.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Pengaturan ini tetap dalam bahasa ibu Anda agar Anda selalu dapat menemukannya.)",
+    "usernameTakenPleaseChooseAnother": "Nama pengguna tersebut sudah digunakan. Mohon pilih yang lain.",
+    "allParticipants": "Semua peserta",
+    "seeFullCoursePlan": "Lihat rencana kursus lengkap",
+    "catchUp": "Ikuti",
+    "messageLanguageIs": "Pesan ini diatur ke {language}.",
+    "updateMessageLanguage": "Klik di sini untuk mengubah bahasa pesan.",
+    "messageLanguage": "Bahasa pesan",
+    "messageLanguageUpdated": "Bahasa pesan diperbarui!",
+    "pickCefrLevelStepSubtitle": "Anda dapat mengubah ini nanti",
+    "unlockPremiumAudio": "Buka audio premium",
+    "unlockTranslations": "Buka terjemahan",
+    "unlockEmojiMode": "Buka mode emoji",
+    "unlockMessagePractice": "Buka latihan pesan",
+    "unlockWritingAssistance": "Buka bantuan menulis",
+    "courseSectionTeaching": "Mengajar",
+    "courseSectionLearning": "Belajar",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
+    "showMore": "Tampilkan lebih banyak",
+    "showLess": "Tampilkan lebih sedikit",
+    "countNewMessages": "{count, plural, =1{1 pesan baru} other{{count} pesan baru}}",
+    "markAllRead": "Tandai semua sudah dibaca"
 }

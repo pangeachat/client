@@ -535,15 +535,15 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
       mainAxisSize: .min,
       children: [
         // Ping, play with bot, and invite friends are all equally valid ways
-        // forward from the waiting room, so none is emphasized — every one is
-        // the lighter secondary.
+        // forward from the waiting room, so none leads — every one keeps the
+        // same primary fill as Start, rather than all dropping to the lighter
+        // secondary, which read as the buttons changing colour mid-flow (#8427).
         if (controller.showPingCourse) ...[
           FutureBuilder(
             future: controller.canPingParticipants,
             builder: (context, snapshot) => ActivitySessionCTAButton(
               L10n.of(context).pingParticipants,
               snapshot.data == true ? controller.pingCourse : null,
-              secondary: true,
             ),
           ),
           SizedBox(height: 16.0),
@@ -554,14 +554,12 @@ class _ConfirmedRoleSessionCTAButtons extends StatelessWidget {
             child: ActivitySessionCTAButton(
               L10n.of(context).playWithBot,
               controller.enablePlayWithBot ? controller.playWithBot : null,
-              secondary: true,
             ),
           ),
         if (controller.showInviteOptions)
           ActivitySessionCTAButton(
             L10n.of(context).inviteFriends,
             controller.inviteFriends,
-            secondary: true,
           ),
       ],
     );

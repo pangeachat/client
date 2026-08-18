@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:54.004571",
+    "@@last_modified": "2026-08-18 09:33:34.043983",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7011,5 +7011,26 @@
     "courseNoLongerAvailableTitle": "Khóa học không có sẵn",
     "courseDeletedDialogDesc": "Khóa học này đã bị xóa.",
     "pingedActivity": "Hoạt động được gắn thẻ",
-    "appInTargetLanguageStaysInBaseLanguage": "(Cài đặt này vẫn giữ nguyên ngôn ngữ mẹ đẻ của bạn để bạn luôn có thể tìm thấy nó.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Cài đặt này vẫn giữ nguyên ngôn ngữ mẹ đẻ của bạn để bạn luôn có thể tìm thấy nó.)",
+    "usernameTakenPleaseChooseAnother": "Tên người dùng này đã có người sử dụng. Vui lòng chọn tên khác.",
+    "allParticipants": "Tất cả người tham gia",
+    "seeFullCoursePlan": "Xem toàn bộ giáo trình",
+    "catchUp": "Bắt kịp",
+    "messageLanguageIs": "Tin nhắn này được đặt thành {language}.",
+    "updateMessageLanguage": "Nhấp vào đây để thay đổi ngôn ngữ của tin nhắn.",
+    "messageLanguage": "Ngôn ngữ tin nhắn",
+    "messageLanguageUpdated": "Đã cập nhật ngôn ngữ tin nhắn!",
+    "pickCefrLevelStepSubtitle": "Bạn có thể thay đổi điều này sau",
+    "unlockPremiumAudio": "Mở khóa âm thanh cao cấp",
+    "unlockTranslations": "Mở khóa bản dịch",
+    "unlockEmojiMode": "Mở khóa chế độ biểu tượng cảm xúc",
+    "unlockMessagePractice": "Mở khóa luyện tập tin nhắn",
+    "unlockWritingAssistance": "Mở khóa hỗ trợ viết",
+    "courseSectionTeaching": "Dạy",
+    "courseSectionLearning": "Học",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 khóa học} other{{count} khóa học}}",
+    "showMore": "Hiển thị thêm",
+    "showLess": "Hiển thị bớt",
+    "countNewMessages": "{count, plural, =1{1 tin nhắn mới} other{{count} tin nhắn mới}}",
+    "markAllRead": "Đánh dấu đã đọc tất cả"
 }

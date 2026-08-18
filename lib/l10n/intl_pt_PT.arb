@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-13 15:50:51.763538",
+    "@@last_modified": "2026-08-18 09:33:31.075468",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10652,5 +10652,26 @@
     "courseNoLongerAvailableTitle": "Curso indisponível",
     "courseDeletedDialogDesc": "Este curso foi eliminado.",
     "pingedActivity": "Atividade com ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Esta definição permanece no seu idioma nativo para que a possa encontrar sempre.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta definição permanece no seu idioma nativo para que a possa encontrar sempre.)",
+    "usernameTakenPleaseChooseAnother": "Este nome de utilizador já está em uso. Por favor, escolha outro.",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver plano de curso completo",
+    "catchUp": "Recuperar",
+    "messageLanguageIs": "Esta mensagem está definida para {language}.",
+    "updateMessageLanguage": "Clique aqui para alterar o idioma da mensagem.",
+    "messageLanguage": "Idioma da mensagem",
+    "messageLanguageUpdated": "Idioma da mensagem atualizado!",
+    "pickCefrLevelStepSubtitle": "Pode alterar isto mais tarde",
+    "unlockPremiumAudio": "Desbloquear áudio premium",
+    "unlockTranslations": "Desbloquear traduções",
+    "unlockEmojiMode": "Desbloquear modo emoji",
+    "unlockMessagePractice": "Desbloquear prática de mensagens",
+    "unlockWritingAssistance": "Desbloquear assistência de escrita",
+    "courseSectionTeaching": "Ensino",
+    "courseSectionLearning": "Aprendizagem",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Mostrar mais",
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
+    "markAllRead": "Marcar tudo como lido"
 }

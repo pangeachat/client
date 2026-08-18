@@ -331,25 +331,32 @@ abstract class WorkspaceNav {
     return WorkspaceQuery.location(PRoutes.world, query);
   }
 
-  /// Open a tab in the detail page for the currently focused course
-  static String openCourseTab(Uri current, {SpaceSettingsTabs? tab}) => _mutate(
-    current,
-    'left',
-    (tokens) {
-      // Drop any prior course token AND an open immersive `activity` — showing
-      // the course card is an exit from the activity, so the live-view activity
-      // must not co-render beside it (#7385). A live `room` is kept.
-      final next = tokens
-          .where(
-            (t) =>
-                t.type != PanelTypesEnum.course &&
-                t.type != PanelTypesEnum.activity,
-          )
-          .toList();
-      next.insert(0, CoursePanelToken(CourseDetailsTokenParam(activeTab: tab)));
-      return next;
-    },
-  );
+  /// Open a section of the currently focused course's single-page card —
+  /// scrolled to [tab]'s section, or, with [expanded], that section's full
+  /// subpage pushed within the card (`<section>/all` in the token param).
+  static String openCourseTab(
+    Uri current, {
+    SpaceSettingsTabs? tab,
+    bool expanded = false,
+  }) => _mutate(current, 'left', (tokens) {
+    // Drop any prior course token AND an open immersive `activity` — showing
+    // the course card is an exit from the activity, so the live-view activity
+    // must not co-render beside it (#7385). A live `room` is kept.
+    final next = tokens
+        .where(
+          (t) =>
+              t.type != PanelTypesEnum.course &&
+              t.type != PanelTypesEnum.activity,
+        )
+        .toList();
+    next.insert(
+      0,
+      CoursePanelToken(
+        CourseDetailsTokenParam(activeTab: tab, expanded: expanded),
+      ),
+    );
+    return next;
+  });
 
   /// Open a course-management page (invite / edit / access / permissions /
   /// emotes / change-course) as the course card's DETAIL — a `coursepage` panel
@@ -636,8 +643,13 @@ abstract class WorkspaceNav {
   static String pushPage(Uri current, PanelToken token) {
     final col = token.type.def.column == PanelColumn.right ? 'right' : 'left';
     return _mutate(current, col, (tokens) {
-      final next = tokens.where((t) => t.type != token.type).toList();
-      next.add(token);
+      // Replace in place: list order is the allocator's entry order, so a
+      // panel keeps its layout slot when pushing or popping its own pages —
+      // popping a master with its detail open must not reorder the two.
+      final index = tokens.indexWhere((t) => t.type == token.type);
+      if (index == -1) return [...tokens, token];
+      final next = [...tokens];
+      next[index] = token;
       return next;
     });
   }

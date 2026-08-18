@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-13 15:50:53.401351",
+    "@@last_modified": "2026-08-18 09:33:33.286148",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10367,5 +10367,26 @@
     "courseNoLongerAvailableTitle": "หลักสูตรไม่พร้อมใช้งาน",
     "courseDeletedDialogDesc": "หลักสูตรนี้ถูกลบไปแล้ว",
     "pingedActivity": "กิจกรรมที่ถูกปิง",
-    "appInTargetLanguageStaysInBaseLanguage": "(การตั้งค่านี้จะยังคงเป็นภาษาแม่ของคุณ เพื่อให้คุณสามารถค้นหาได้เสมอ)"
+    "appInTargetLanguageStaysInBaseLanguage": "(การตั้งค่านี้จะยังคงเป็นภาษาแม่ของคุณ เพื่อให้คุณสามารถค้นหาได้เสมอ)",
+    "usernameTakenPleaseChooseAnother": "ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว โปรดเลือกชื่ออื่น",
+    "allParticipants": "ผู้เข้าร่วมทั้งหมด",
+    "seeFullCoursePlan": "ดูแผนการเรียนฉบับเต็ม",
+    "catchUp": "ติดตาม",
+    "messageLanguageIs": "ข้อความนี้ตั้งค่าเป็น {language}",
+    "updateMessageLanguage": "คลิกที่นี่เพื่อเปลี่ยนภาษาของข้อความ",
+    "messageLanguage": "ภาษาของข้อความ",
+    "messageLanguageUpdated": "อัปเดตภาษาของข้อความแล้ว!",
+    "pickCefrLevelStepSubtitle": "คุณสามารถเปลี่ยนได้ในภายหลัง",
+    "unlockPremiumAudio": "ปลดล็อกเสียงพรีเมียม",
+    "unlockTranslations": "ปลดล็อกการแปล",
+    "unlockEmojiMode": "ปลดล็อกโหมดอิโมจิ",
+    "unlockMessagePractice": "ปลดล็อกการฝึกข้อความ",
+    "unlockWritingAssistance": "ปลดล็อกตัวช่วยการเขียน",
+    "courseSectionTeaching": "การสอน",
+    "courseSectionLearning": "การเรียนรู้",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 คอร์ส} other{{count} คอร์ส}}",
+    "showMore": "แสดงเพิ่มเติม",
+    "showLess": "แสดงน้อยลง",
+    "countNewMessages": "{count, plural, =1{1 ข้อความใหม่} other{{count} ข้อความใหม่}}",
+    "markAllRead": "ทำเครื่องหมายว่าอ่านแล้วทั้งหมด"
 }

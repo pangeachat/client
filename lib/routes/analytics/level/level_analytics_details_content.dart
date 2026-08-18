@@ -5,6 +5,7 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 import 'package:fluffychat/features/analytics_data/derived_analytics_data_model.dart';
+import 'package:fluffychat/features/analytics_data/widgets/analytics_future_builder.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -89,8 +90,9 @@ class LevelAnalyticsDetailsContent extends StatelessWidget {
                   },
                 ),
                 Expanded(
-                  child: FutureBuilder<List<OneConstructUse>>(
-                    future: language != null
+                  child: AnalyticsFutureBuilder<List<OneConstructUse>>(
+                    dependencies: [language],
+                    fetch: () => language != null
                         ? analyticsService.getUses(language, count: 100)
                         : Future.value(<OneConstructUse>[]),
                     builder: (context, snapshot) {

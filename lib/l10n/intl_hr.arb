@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-13 15:50:48.182232",
+    "@@last_modified": "2026-08-18 09:33:24.589111",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10171,5 +10171,26 @@
     "courseNoLongerAvailableTitle": "Tečaj nije dostupan",
     "courseDeletedDialogDesc": "Ovaj je tečaj izbrisan.",
     "pingedActivity": "Pingana aktivnost",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem materinjem jeziku kako biste je uvijek mogli pronaći.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem materinjem jeziku kako biste je uvijek mogli pronaći.)",
+    "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Odaberite drugo.",
+    "allParticipants": "Svi sudionici",
+    "seeFullCoursePlan": "Pogledajte cijeli plan tečaja",
+    "catchUp": "Nadoknadite",
+    "messageLanguageIs": "Jezik ove poruke je {language}.",
+    "updateMessageLanguage": "Kliknite ovdje za promjenu jezika poruke.",
+    "messageLanguage": "Jezik poruke",
+    "messageLanguageUpdated": "Jezik poruke ažuriran!",
+    "pickCefrLevelStepSubtitle": "Ovo možete promijeniti kasnije",
+    "unlockPremiumAudio": "Otključaj premium zvuk",
+    "unlockTranslations": "Otključaj prijevode",
+    "unlockEmojiMode": "Otključaj način rada s emotikonima",
+    "unlockMessagePractice": "Otključaj vježbanje poruka",
+    "unlockWritingAssistance": "Otključaj pomoć pri pisanju",
+    "courseSectionTeaching": "Predavanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 tečaj} other{{count} tečajeva}}",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} nove poruke}}",
+    "markAllRead": "Označi sve pročitano"
 }

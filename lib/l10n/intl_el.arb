@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-13 15:50:46.541857",
+    "@@last_modified": "2026-08-18 09:33:22.799608",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10610,5 +10610,26 @@
     "courseNoLongerAvailableTitle": "Το μάθημα δεν είναι διαθέσιμο",
     "courseDeletedDialogDesc": "Αυτό το μάθημα έχει διαγραφεί.",
     "pingedActivity": "Δραστηριότητα με ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Αυτή η ρύθμιση παραμένει στη μητρική σας γλώσσα, ώστε να μπορείτε πάντα να τη βρίσκετε.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Αυτή η ρύθμιση παραμένει στη μητρική σας γλώσσα, ώστε να μπορείτε πάντα να τη βρίσκετε.)",
+    "usernameTakenPleaseChooseAnother": "Αυτό το όνομα χρήστη χρησιμοποιείται ήδη. Παρακαλώ επιλέξτε άλλο.",
+    "allParticipants": "Όλοι οι συμμετέχοντες",
+    "seeFullCoursePlan": "Δείτε το πλήρες πρόγραμμα μαθημάτων",
+    "catchUp": "Ενημέρωση",
+    "messageLanguageIs": "Αυτό το μήνυμα έχει οριστεί σε {language}.",
+    "updateMessageLanguage": "Κάντε κλικ εδώ για να αλλάξετε τη γλώσσα του μηνύματος.",
+    "messageLanguage": "Γλώσσα μηνύματος",
+    "messageLanguageUpdated": "Η γλώσσα του μηνύματος ενημερώθηκε!",
+    "pickCefrLevelStepSubtitle": "Μπορείτε να το αλλάξετε αργότερα",
+    "unlockPremiumAudio": "Ξεκλείδωμα premium ήχου",
+    "unlockTranslations": "Ξεκλείδωμα μεταφράσεων",
+    "unlockEmojiMode": "Ξεκλείδωμα λειτουργίας emoji",
+    "unlockMessagePractice": "Ξεκλείδωμα εξάσκησης μηνυμάτων",
+    "unlockWritingAssistance": "Ξεκλείδωμα βοήθειας γραφής",
+    "courseSectionTeaching": "Διδασκαλία",
+    "courseSectionLearning": "Μάθηση",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 μάθημα} other{{count} μαθήματα}}",
+    "showMore": "Εμφάνιση περισσότερων",
+    "showLess": "Εμφάνιση λιγότερων",
+    "countNewMessages": "{count, plural, =1{1 νέο μήνυμα} other{{count} νέα μηνύματα}}",
+    "markAllRead": "Σήμανση όλων ως αναγνωσμένων"
 }

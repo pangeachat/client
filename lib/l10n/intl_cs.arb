@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-13 15:50:46.374176",
+    "@@last_modified": "2026-08-18 09:33:21.605710",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10229,5 +10229,26 @@
     "courseNoLongerAvailableTitle": "Kurz není k dispozici",
     "courseDeletedDialogDesc": "Tento kurz byl smazán.",
     "pingedActivity": "Aktivita s upozorněním",
-    "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavení zůstane ve vašem rodném jazyce, abyste ho vždy našli.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavení zůstane ve vašem rodném jazyce, abyste ho vždy našli.)",
+    "usernameTakenPleaseChooseAnother": "Toto uživatelské jméno je již obsazeno. Zvolte prosím jiné.",
+    "allParticipants": "Všichni účastníci",
+    "seeFullCoursePlan": "Zobrazit celý plán kurzu",
+    "catchUp": "Dohnat",
+    "messageLanguageIs": "Tato zpráva je nastavena na {language}.",
+    "updateMessageLanguage": "Klikněte zde pro změnu jazyka zprávy.",
+    "messageLanguage": "Jazyk zprávy",
+    "messageLanguageUpdated": "Jazyk zprávy aktualizován!",
+    "pickCefrLevelStepSubtitle": "Můžete to změnit později",
+    "unlockPremiumAudio": "Odemknout prémiové audio",
+    "unlockTranslations": "Odemknout překlady",
+    "unlockEmojiMode": "Odemknout režim emoji",
+    "unlockMessagePractice": "Odemknout procvičování zpráv",
+    "unlockWritingAssistance": "Odemknout asistenci při psaní",
+    "courseSectionTeaching": "Výuka",
+    "courseSectionLearning": "Učení",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzů}}",
+    "showMore": "Zobrazit více",
+    "showLess": "Zobrazit méně",
+    "countNewMessages": "{count, plural, =1{1 nová zpráva} other{{count} nových zpráv}}",
+    "markAllRead": "Označit vše jako přečtené"
 }

@@ -3,6 +3,8 @@ import 'dart:convert';
 import 'package:http/http.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+
 extension GrantAnalyticsAccessExtension on Api {
   Future<void> grantInstructorAnalyticsAccess(
     String courseRoomId,
@@ -22,7 +24,12 @@ extension GrantAnalyticsAccessExtension on Api {
     );
     final response = await httpClient.send(request);
     if (response.statusCode != 200) {
-      throw response;
+      // This call bypasses `Requests` (Synapse endpoint, Matrix SDK client and
+      // token), so it raises the typed failure itself rather than throwing the
+      // response — see repos-and-error-handling.instructions.md.
+      throw PangeaHttpException.fromResponse(
+        await Response.fromStream(response),
+      );
     }
   }
 }

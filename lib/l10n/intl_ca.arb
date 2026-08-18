@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:46.396814",
+    "@@last_modified": "2026-08-18 09:33:21.756157",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,26 @@
     "courseNoLongerAvailableTitle": "Curs no disponible",
     "courseDeletedDialogDesc": "Aquest curs s'ha eliminat.",
     "pingedActivity": "Activitat de ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Aquesta configuració es manté en el teu idioma nadiu perquè sempre la puguis trobar.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Aquesta configuració es manté en el teu idioma nadiu perquè sempre la puguis trobar.)",
+    "usernameTakenPleaseChooseAnother": "Aquest nom d'usuari ja està en ús. Si us plau, tria'n un altre.",
+    "allParticipants": "Tots els participants",
+    "seeFullCoursePlan": "Veure el pla de curs complet",
+    "catchUp": "Posa't al dia",
+    "messageLanguageIs": "Aquest missatge està configurat en {language}.",
+    "updateMessageLanguage": "Feu clic aquí per canviar l'idioma del missatge.",
+    "messageLanguage": "Idioma del missatge",
+    "messageLanguageUpdated": "Idioma del missatge actualitzat!",
+    "pickCefrLevelStepSubtitle": "Pots canviar-ho més tard",
+    "unlockPremiumAudio": "Desbloqueja l'àudio prèmium",
+    "unlockTranslations": "Desbloqueja les traduccions",
+    "unlockEmojiMode": "Desbloqueja el mode emoji",
+    "unlockMessagePractice": "Desbloqueja la pràctica de missatges",
+    "unlockWritingAssistance": "Desbloqueja l'assistència d'escriptura",
+    "courseSectionTeaching": "Ensenyament",
+    "courseSectionLearning": "Aprenentatge",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curs} other{{count} cursos}}",
+    "showMore": "Mostra més",
+    "showLess": "Mostra menys",
+    "countNewMessages": "{count, plural, =1{1 missatge nou} other{{count} missatges nous}}",
+    "markAllRead": "Marca-ho tot com a llegit"
 }

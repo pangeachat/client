@@ -1,61 +1,32 @@
-import 'dart:convert';
-
-import 'package:async/async.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
-import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/base_repo.dart';
+import 'package:fluffychat/pangea/common/utils/memory_repo_cache.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_request_model.dart';
 import 'package:fluffychat/routes/onboarding/custom_course_response_model.dart';
 
-class CustomCourseRepo {
-  static final Map<String, Future<Result<CustomCourseResponseModel>>> _cache =
-      {};
-
-  static Future<Result<CustomCourseResponseModel>> get(
-    CustomCourseRequestModel request,
-    String accessToken,
-  ) async {
-    final key = request.storageKey;
-
-    final cached = _cache[key];
-    if (cached != null) {
-      return cached;
-    }
-
-    final future = _fetch(request, accessToken);
-    _cache[key] = future;
-    final result = await future;
-
-    _cache.remove(key);
-    return result;
-  }
-
-  static Future<Result<CustomCourseResponseModel>> _fetch(
-    CustomCourseRequestModel request,
-    String accessToken,
-  ) async {
-    try {
-      final Requests req = Requests(accessToken: accessToken);
-      final Response res = await req.post(
-        url: PApiUrls.requestCustomCourse,
-        body: request.toJson(),
+class CustomCourseRepo
+    extends BaseRepo<CustomCourseRequestModel, CustomCourseResponseModel> {
+  CustomCourseRepo._internal()
+    : super(
+        cache: MemoryRepoCache(),
+        responseFromJson: CustomCourseResponseModel.fromJson,
+        cacheDuration: Duration.zero,
       );
 
-      if (res.statusCode != 200) {
-        throw res;
-      }
+  static final CustomCourseRepo _instance = CustomCourseRepo._internal();
+  static CustomCourseRepo get instance => _instance;
 
-      final Map<String, dynamic> json = jsonDecode(
-        utf8.decode(res.bodyBytes).toString(),
-      );
+  @override
+  Future<Response> fetch(Requests req, CustomCourseRequestModel request) =>
+      req.post(url: PApiUrls.requestCustomCourse, body: request.toJson());
 
-      final resp = CustomCourseResponseModel.fromJson(json);
-      return Result.value(resp);
-    } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: request.toJson());
-      return Result.error(e);
-    }
-  }
+  /// A submitted request is never memoized: each submission is its own backend
+  /// side effect, and the `generating` status it returns is stale the moment it
+  /// lands. `BaseRepo`'s in-flight dedupe still collapses a double-tap into one
+  /// POST, which is the only sharing this repo ever wanted.
+  @override
+  bool shouldCache(CustomCourseResponseModel response) => false;
 }

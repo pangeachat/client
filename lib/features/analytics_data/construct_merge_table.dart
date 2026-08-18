@@ -1,42 +1,56 @@
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_type_enum.dart';
-import 'package:fluffychat/features/analytics/construct_use_model.dart';
 import 'package:fluffychat/features/analytics/constructs_model.dart';
 
 class ConstructMergeTable {
   Map<String, Set<ConstructIdentifier>> lemmaTypeGroups = {};
   final Map<ConstructIdentifier, ConstructIdentifier> caseInsensitive = {};
 
-  void addConstructs(
-    List<ConstructUses> constructs,
-    Set<ConstructIdentifier> exclude,
-  ) {
-    addConstructsByUses(
-      constructs.expand((c) => c.cappedUses).toList(),
-      exclude,
-    );
-  }
-
   void addConstructsByUses(
     List<OneConstructUse> uses,
     Set<ConstructIdentifier> exclude,
+  ) => addIdentifiers(uses.map((u) => u.identifier), exclude);
+
+  /// Register [ids] (in order — order decides which case variant becomes
+  /// canonical: the last one seen wins for its variants) and skip any that
+  /// are in [exclude] or invalid.
+  ///
+  /// This is the whole merge-table input: [addConstructsByUses] only ever
+  /// contributed each use's identifier, so the
+  /// init path can feed identifiers read straight from the aggregate rows
+  /// without deserializing their uses (see
+  /// `AnalyticsDatabase.getAggregateIds`).
+  void addIdentifiers(
+    Iterable<ConstructIdentifier> ids,
+    Set<ConstructIdentifier> exclude,
   ) {
-    for (final use in uses) {
-      final id = use.identifier;
-      if (exclude.contains(id) || id.isInvalid) continue;
+    final accepted = <ConstructIdentifier>[];
+    // Case-insensitive `string` → the ids sharing it inside their group, so
+    // the second pass is a lookup rather than a scan of the group per id.
+    final byString = <String, Set<ConstructIdentifier>>{};
 
-      final composite = id.compositeKey;
-      (lemmaTypeGroups[composite] ??= {}).add(id);
+    for (final id in ids) {
+      if (exclude.contains(id) || id.isInvalid) continue;
+      accepted.add(id);
+      (lemmaTypeGroups[id.compositeKey] ??= {}).add(id);
     }
+    if (accepted.isEmpty) return;
+    _invalidateCounts();
 
-    for (final use in uses) {
-      final id = use.identifier;
-      if (exclude.contains(id) || id.isInvalid) continue;
-
+    // Variants already in the table from earlier calls take part too.
+    for (final id in accepted) {
       final group = lemmaTypeGroups[id.compositeKey];
       if (group == null) continue;
-      final matches = group.where((m) => m != id && m.string == id.string);
+      for (final m in group) {
+        (byString[m.string] ??= {}).add(m);
+      }
+    }
+
+    for (final id in accepted) {
+      final matches = byString[id.string];
+      if (matches == null) continue;
       for (final match in matches) {
+        if (match == id) continue;
         caseInsensitive[match] = id;
         caseInsensitive[id] = id;
       }
@@ -44,6 +58,7 @@ class ConstructMergeTable {
   }
 
   void removeConstruct(ConstructIdentifier id) {
+    _invalidateCounts();
     final composite = id.compositeKey;
     final group = lemmaTypeGroups[composite];
     if (group == null) return;
@@ -86,7 +101,17 @@ class ConstructMergeTable {
     return keys;
   }
 
-  int uniqueConstructsByType(ConstructTypeEnum type) {
+  /// Memo of [uniqueConstructsByType] per type; cleared by every mutator.
+  /// It is read in `build()` of the top-bar indicators and the world user
+  /// cluster, where recomputing over every group per rebuild adds up.
+  final Map<ConstructTypeEnum, int> _uniqueCountByType = {};
+
+  void _invalidateCounts() => _uniqueCountByType.clear();
+
+  int uniqueConstructsByType(ConstructTypeEnum type) =>
+      _uniqueCountByType[type] ??= _computeUniqueConstructsByType(type);
+
+  int _computeUniqueConstructsByType(ConstructTypeEnum type) {
     final keys = lemmaTypeGroups.keys.where(
       (composite) => composite.endsWith('|${type.name}'),
     );
@@ -106,5 +131,6 @@ class ConstructMergeTable {
   void clear() {
     lemmaTypeGroups.clear();
     caseInsensitive.clear();
+    _invalidateCounts();
   }
 }

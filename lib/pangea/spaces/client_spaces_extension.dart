@@ -4,6 +4,8 @@ import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/constants/default_power_level.dart';
 import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
+import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
+import 'package:fluffychat/pangea/spaces/course_role_groups.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 
 extension SpacesClientExtension on Client {
@@ -60,4 +62,27 @@ extension SpacesClientExtension on Client {
                 b.getLocalizedDisplayname(MatrixLocals(l10n)).toLowerCase(),
               );
         });
+
+  /// [sortedCourses] split by the learner's role in each course — the model
+  /// the Courses hub, the nav rail and the mobile sheet's height estimate all
+  /// read (#8425). Partitioning the sorted list keeps each group alphabetical.
+  CourseRoleGroups coursesByRole(L10n l10n) {
+    final invited = <Room>[];
+    final teaching = <Room>[];
+    final learning = <Room>[];
+    for (final course in sortedCourses(l10n)) {
+      if (course.membership == Membership.invite) {
+        invited.add(course);
+      } else if (course.isRoomAdmin) {
+        teaching.add(course);
+      } else {
+        learning.add(course);
+      }
+    }
+    return CourseRoleGroups(
+      invited: invited,
+      teaching: teaching,
+      learning: learning,
+    );
+  }
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-13 15:50:47.552584",
+    "@@last_modified": "2026-08-18 09:33:23.323210",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9735,5 +9735,26 @@
     "courseNoLongerAvailableTitle": "Curso non dispoñible",
     "courseDeletedDialogDesc": "Este curso foi eliminado.",
     "pingedActivity": "Actividade mencionada",
-    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuración permanece no teu idioma nativo para que sempre a poidas atopar.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuración permanece no teu idioma nativo para que sempre a poidas atopar.)",
+    "usernameTakenPleaseChooseAnother": "Ese nome de usuario xa está en uso. Escolle outro.",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver o plan completo do curso",
+    "catchUp": "Pórse ao día",
+    "messageLanguageIs": "Esta mensaxe está configurada en {language}.",
+    "updateMessageLanguage": "Fai clic aquí para cambiar o idioma da mensaxe.",
+    "messageLanguage": "Idioma da mensaxe",
+    "messageLanguageUpdated": "Idioma da mensaxe actualizado!",
+    "pickCefrLevelStepSubtitle": "Podes cambiar isto máis tarde",
+    "unlockPremiumAudio": "Desbloquear audio premium",
+    "unlockTranslations": "Desbloquear traducións",
+    "unlockEmojiMode": "Desbloquear modo emoji",
+    "unlockMessagePractice": "Desbloquear práctica de mensaxes",
+    "unlockWritingAssistance": "Desbloquear asistencia de escritura",
+    "courseSectionTeaching": "Ensino",
+    "courseSectionLearning": "Aprendizaxe",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Mostrar máis",
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 mensaxe nova} other{{count} mensaxes novas}}",
+    "markAllRead": "Marcar todo como lido"
 }

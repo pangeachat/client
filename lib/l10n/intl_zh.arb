@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-13 15:50:54.337104",
+    "@@last_modified": "2026-08-18 09:33:34.672373",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9735,5 +9735,26 @@
     "courseNoLongerAvailableTitle": "课程不可用",
     "courseDeletedDialogDesc": "此课程已被删除。",
     "pingedActivity": "已提及的活动",
-    "appInTargetLanguageStaysInBaseLanguage": "（此设置将保留为您的母语，以便您随时找到它。）"
+    "appInTargetLanguageStaysInBaseLanguage": "（此设置将保留为您的母语，以便您随时找到它。）",
+    "usernameTakenPleaseChooseAnother": "该用户名已被占用。请选择其他用户名。",
+    "allParticipants": "所有参与者",
+    "seeFullCoursePlan": "查看完整课程计划",
+    "catchUp": "赶上进度",
+    "messageLanguageIs": "此消息已设置为{language}。",
+    "updateMessageLanguage": "点击此处更改消息语言。",
+    "messageLanguage": "消息语言",
+    "messageLanguageUpdated": "消息语言已更新！",
+    "pickCefrLevelStepSubtitle": "稍后可更改",
+    "unlockPremiumAudio": "解锁高级音频",
+    "unlockTranslations": "解锁翻译",
+    "unlockEmojiMode": "解锁表情符号模式",
+    "unlockMessagePractice": "解锁消息练习",
+    "unlockWritingAssistance": "解锁写作辅助",
+    "courseSectionTeaching": "教学",
+    "courseSectionLearning": "学习",
+    "courseSectionLabel": "{title}，{count, plural, =1{1 门课程} other{{count} 门课程}}",
+    "showMore": "显示更多",
+    "showLess": "显示更少",
+    "countNewMessages": "{count, plural, =1{1 条新消息} other{{count} 条新消息}}",
+    "markAllRead": "全部标记为已读"
 }

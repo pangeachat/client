@@ -115,6 +115,23 @@ enum PinTier {
     PinTier.mid => PinSize.midDiameter,
     PinTier.large => PinSize.largeWidth,
   };
+
+  /// Whether a pin at this tier in [state] renders as a plain **dot** — the
+  /// small-tier circle, or the completed trail star that replaces a coloured
+  /// body at any tier — rather than a mid teardrop or a large card. A dot
+  /// anchors at its centre and takes the padded [markerBox].
+  bool isDot(ActivityPinState state) =>
+      this == PinTier.small || state == ActivityPinState.inProgress;
+
+  /// The flutter_map marker box for a pin at this tier: the tier's own size for
+  /// a teardrop or card, but a [PinSize.dotTouchTarget] square for a dot
+  /// ([isDot]) — painted at [PinSize.smallDiameter] / the star diameters, far
+  /// under a comfortable touch target — so the whole box is tappable while the
+  /// painted dot is unchanged and stays centred on its anchor (#7688). Also what
+  /// `WorldMapDot` sizes itself to, so the widget and its marker always agree.
+  Size markerBox(ActivityPinState state) => isDot(state)
+      ? const Size.square(PinSize.dotTouchTarget)
+      : Size(dotWidth, dotHeight(state));
 }
 
 /// Live signals for one activity derived from Matrix room state: its live-session

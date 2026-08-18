@@ -46,20 +46,28 @@ class UnderlineText extends StatelessWidget {
     // two must be given the same scaler or every underline lands off its word.
     final textScaler = MediaQuery.textScalerOf(context);
 
+    final richText = RichText(
+      textDirection: textDirection,
+      text: span,
+      textScaler: textScaler,
+    );
+    final color = underlineColor ?? Colors.transparent;
+
+    // A fully transparent underline draws nothing — the common case for
+    // ordinary tokens. Skip the CustomPaint and the second text layout its
+    // painter runs (issue #8426).
+    if (color.a == 0) return richText;
+
     return CustomPaint(
       painter: _UnderlinePainter(
         span: span,
         textDirection: textDirection ?? TextDirection.ltr,
-        underlineColor: underlineColor ?? Colors.transparent,
+        underlineColor: color,
         underlineHeight: underlineHeight,
         gap: gap,
         textScaler: textScaler,
       ),
-      child: RichText(
-        textDirection: textDirection,
-        text: span,
-        textScaler: textScaler,
-      ),
+      child: richText,
     );
   }
 }

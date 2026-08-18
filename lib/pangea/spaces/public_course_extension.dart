@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 import 'package:matrix/matrix_api_lite/generated/api.dart';
 
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 
 extension PublicCourseExtension on Api {
   Future<PublicCoursesResponse> getPublicCourses({
@@ -27,8 +28,10 @@ extension PublicCourseExtension on Api {
     final responseBody = await response.stream.toBytes();
     final responseString = utf8.decode(responseBody);
     if (response.statusCode != 200) {
-      throw Exception(
-        'HTTP error response: statusCode=${response.statusCode}, body=$responseString',
+      throw PangeaHttpException.fromStreamedResponse(
+        request,
+        response,
+        responseBody,
       );
     }
     final json = jsonDecode(responseString);

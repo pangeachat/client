@@ -33,7 +33,7 @@ class PApiUrls {
 
   ///   ---------------------- Dosage signals ----------------------------------
   /// Teacher-BFF (admin-dash-api) student-authenticated ingest for the
-  /// best-effort dosage signals (see [DosageSignalsRepo]). All three live on
+  /// best-effort dosage signals (see [DosageSignalsRepo]). All of them live on
   /// [Environment.teacherBffApi], NOT the choreo endpoint. Empty base => the
   /// signal POST is skipped.
   static String get dosageMessageEvents =>
@@ -42,6 +42,17 @@ class PApiUrls {
       "${Environment.teacherBffApi}/api/internal/dosage/engagement-spans";
   static String get dosageSessionOutcomes =>
       "${Environment.teacherBffApi}/api/internal/dosage/session-outcomes";
+
+  /// Audio playback signals AND their coverage declarations, in ONE body so the
+  /// server can write both in one transaction. A period whose events landed
+  /// while its declaration did not would let the server serve an undercount as a
+  /// confident total, so the two must never be separable in transit.
+  ///
+  /// Absent (404) until the server ships this route behind its ingest flag; the
+  /// client treats that as undelivered and retries, so the counters withhold
+  /// rather than lie.
+  static String get dosageAudioSignals =>
+      "${Environment.teacherBffApi}/api/internal/dosage/audio-signals";
 
   ///   ---------------------- Users --------------------------------------
   static String languageDetection =

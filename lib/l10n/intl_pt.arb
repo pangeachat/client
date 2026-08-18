@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:51.674886",
+    "@@last_modified": "2026-08-18 09:33:31.783810",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10679,5 +10679,26 @@
     "courseNoLongerAvailableTitle": "Curso indisponível",
     "courseDeletedDialogDesc": "Este curso foi excluído.",
     "pingedActivity": "Atividade com ping",
-    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Esta configuração permanece no seu idioma nativo para que você possa sempre encontrá-la.)",
+    "usernameTakenPleaseChooseAnother": "Esse nome de usuário já está em uso. Por favor, escolha outro.",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver plano de curso completo",
+    "catchUp": "Recuperar",
+    "messageLanguageIs": "Esta mensagem está definida para {language}.",
+    "updateMessageLanguage": "Clique aqui para alterar o idioma da mensagem.",
+    "messageLanguage": "Idioma da mensagem",
+    "messageLanguageUpdated": "Idioma da mensagem atualizado!",
+    "pickCefrLevelStepSubtitle": "Você pode mudar isso depois",
+    "unlockPremiumAudio": "Desbloquear áudio premium",
+    "unlockTranslations": "Desbloquear traduções",
+    "unlockEmojiMode": "Desbloquear modo emoji",
+    "unlockMessagePractice": "Desbloquear prática de mensagens",
+    "unlockWritingAssistance": "Desbloquear assistência de escrita",
+    "courseSectionTeaching": "Ensino",
+    "courseSectionLearning": "Aprendizagem",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Mostrar mais",
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
+    "markAllRead": "Marcar tudo como lido"
 }

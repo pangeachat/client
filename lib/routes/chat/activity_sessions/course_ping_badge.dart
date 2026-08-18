@@ -13,7 +13,7 @@ typedef CoursePingBadgeData = ({
 /// In-memory carrier for the ping the learner is following (#8319).
 ///
 /// The ping's read marker is set the moment the course page opens
-/// ([ChatDetailsController._handleCoursePing]), so the unread event can't be
+/// ([SpaceDetailsController._handleCoursePing]), so the unread event can't be
 /// re-queried by the surfaces that badge the pinged activity — the course
 /// plan's card list and the activity's join-session list. The course page
 /// stashes the ping here before marking it read; the next visit to the same

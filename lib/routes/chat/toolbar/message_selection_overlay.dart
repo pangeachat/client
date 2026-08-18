@@ -10,6 +10,8 @@ import 'package:matrix/matrix.dart' hide Result;
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/analytics_data/analytics_updater_mixin.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/overlay/layer_link_and_key.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
@@ -242,6 +244,17 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
         useCase: TtsUseCase.words,
         pos: selectedToken!.pos,
         morph: selectedToken!.morph.map((k, v) => MapEntry(k.name, v)),
+        // Listening category 5 (#104): a WORD the learner tapped.
+        //
+        // Not `tap_read`, which means the whole message on the paid route —
+        // widening it here would give that counter two meanings. A fresh probe
+        // per call: it holds a running measurement.
+        listening: DosageTtsListeningProbe(
+          category: DosageListeningCategory.wordAudio,
+          roomId: pangeaMessageEvent.room.id,
+          userId: () => pangeaMessageEvent.room.client.userID,
+          accessToken: () => pangeaMessageEvent.room.client.accessToken,
+        ),
       );
     }
     if (!MatrixState
@@ -273,7 +286,11 @@ class MessageOverlayController extends State<MessageSelectionOverlay>
     if (mounted) setState(() {});
   }
 
-  PangeaMessageEvent get pangeaMessageEvent => PangeaMessageEvent(
+  /// One wrapper per overlay lifetime — local mutations (translations,
+  /// corrections, STT) invalidate its memo internally, and a getter here
+  /// re-parsed every representation on each of the toolbar's many accesses
+  /// (#8393 stage 2).
+  late final PangeaMessageEvent pangeaMessageEvent = PangeaMessageEvent(
     event: widget._event,
     timeline: widget._timeline,
     ownMessage: widget._event.room.client.userID == widget._event.senderId,

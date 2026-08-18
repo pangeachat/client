@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-13 15:50:48.096834",
+    "@@last_modified": "2026-08-18 09:33:24.443587",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9838,5 +9838,26 @@
     "courseNoLongerAvailableTitle": "Tanfolyam nem elérhető",
     "courseDeletedDialogDesc": "Ez a tanfolyam törölve lett.",
     "pingedActivity": "Pingelt tevékenység",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ez a beállítás az Ön anyanyelvén marad, hogy mindig megtalálhassa.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ez a beállítás az Ön anyanyelvén marad, hogy mindig megtalálhassa.)",
+    "usernameTakenPleaseChooseAnother": "Ez a felhasználónév már foglalt. Kérjük, válasszon másikat.",
+    "allParticipants": "Minden résztvevő",
+    "seeFullCoursePlan": "Teljes kurzusterv megtekintése",
+    "catchUp": "Felzárkózás",
+    "messageLanguageIs": "Ez az üzenet {language} nyelven van beállítva.",
+    "updateMessageLanguage": "Kattintson ide az üzenet nyelvének megváltoztatásához.",
+    "messageLanguage": "Üzenet nyelve",
+    "messageLanguageUpdated": "Üzenet nyelve frissítve!",
+    "pickCefrLevelStepSubtitle": "Ezt később megváltoztathatod",
+    "unlockPremiumAudio": "Prémium hanganyag feloldása",
+    "unlockTranslations": "Fordítások feloldása",
+    "unlockEmojiMode": "Emoji mód feloldása",
+    "unlockMessagePractice": "Üzenetgyakorlás feloldása",
+    "unlockWritingAssistance": "Írássegéd feloldása",
+    "courseSectionTeaching": "Tanítás",
+    "courseSectionLearning": "Tanulás",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurzus} other{{count} kurzus}}",
+    "showMore": "Több megjelenítése",
+    "showLess": "Kevesebb megjelenítése",
+    "countNewMessages": "{count, plural, =1{1 új üzenet} other{{count} új üzenet}}",
+    "markAllRead": "Mindet olvasottnak jelöli"
 }

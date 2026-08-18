@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/home/signup/request_token_client_extension.dart';
+import 'package:fluffychat/routes/home/signup/signup_failure.dart';
 import 'package:fluffychat/routes/home/signup/signup_view.dart';
 import 'package:fluffychat/routes/home/signup/signup_with_email_view.dart';
 import 'package:fluffychat/routes/home/store_login_method_repo.dart';
@@ -140,7 +141,7 @@ class SignupPageController extends State<SignupPage> {
   String? signupError;
 
   void signup([dynamic _]) async {
-    setState(() => signupError = null);
+    setSignupError(null);
     final valid = formKey.currentState!.validate();
     if (!valid) return;
     setState(() => loadingSignup = true);
@@ -148,26 +149,37 @@ class SignupPageController extends State<SignupPage> {
     final resp = await showFutureLoadingDialog(
       context: context,
       future: _signupFuture,
-      popOnSuccess: false,
-      onError: (e, s) {
-        setState(() {
-          loadingSignup = false;
-        });
-        if (e.toString().contains("Request has been canceled")) {
-          Navigator.of(context).pop();
-          return null;
-        }
-
-        return e is MatrixException
-            ? e.errorMessage
-            : L10n.of(context).oopsSomethingWentWrong;
-      },
     );
 
-    if (!resp.isError) context.go('/registration');
+    if (!mounted) return;
+    setState(() => loadingSignup = false);
+
+    // An unexpected failure was reported and shown by the dialog itself.
+    if (resp.isError) return;
+
+    final failure = resp.asValue?.value;
+    if (failure == null) {
+      context.go('/registration');
+      return;
+    }
+    setSignupError(failure.localizedMessage(context));
   }
 
-  Future<void> _signupFuture() async {
+  /// Null on success. An expected outcome — a taken username, a rate limit, a
+  /// cancelled request — comes back as a value so it stays off the error path
+  /// and out of Sentry (#8370); anything else propagates and is reported.
+  Future<SignupFailure?> _signupFuture() async {
+    try {
+      await _register();
+      return null;
+    } catch (e) {
+      final failure = SignupFailure.from(e);
+      if (failure == null) rethrow;
+      return failure;
+    }
+  }
+
+  Future<void> _register() async {
     await LoginMethodRepo.clearStoredLoginMethod();
 
     final client = await Matrix.of(context).getLoginClient();

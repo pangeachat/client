@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-13 15:50:51.322601",
+    "@@last_modified": "2026-08-18 09:33:30.947694",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9820,5 +9820,26 @@
     "courseNoLongerAvailableTitle": "Kurs niedostępny",
     "courseDeletedDialogDesc": "Ten kurs został usunięty.",
     "pingedActivity": "Aktywność z powiadomieniem",
-    "appInTargetLanguageStaysInBaseLanguage": "(To ustawienie pozostaje w Twoim języku ojczystym, aby zawsze można je było znaleźć.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(To ustawienie pozostaje w Twoim języku ojczystym, aby zawsze można je było znaleźć.)",
+    "usernameTakenPleaseChooseAnother": "Ta nazwa użytkownika jest już zajęta. Wybierz inną.",
+    "allParticipants": "Wszyscy uczestnicy",
+    "seeFullCoursePlan": "Zobacz pełny plan kursu",
+    "catchUp": "Nadrób zaległości",
+    "messageLanguageIs": "Ten komunikat jest ustawiony na {language}.",
+    "updateMessageLanguage": "Kliknij tutaj, aby zmienić język wiadomości.",
+    "messageLanguage": "Język wiadomości",
+    "messageLanguageUpdated": "Język wiadomości zaktualizowany!",
+    "pickCefrLevelStepSubtitle": "Możesz to później zmienić",
+    "unlockPremiumAudio": "Odblokuj dźwięk premium",
+    "unlockTranslations": "Odblokuj tłumaczenia",
+    "unlockEmojiMode": "Odblokuj tryb emoji",
+    "unlockMessagePractice": "Odblokuj ćwiczenia z wiadomościami",
+    "unlockWritingAssistance": "Odblokuj pomoc w pisaniu",
+    "courseSectionTeaching": "Nauczanie",
+    "courseSectionLearning": "Nauka",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kursów}}",
+    "showMore": "Pokaż więcej",
+    "showLess": "Pokaż mniej",
+    "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}",
+    "markAllRead": "Oznacz wszystkie jako przeczytane"
 }

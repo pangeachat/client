@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-13 15:50:47.130278",
+    "@@last_modified": "2026-08-18 09:33:22.726156",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10595,5 +10595,26 @@
     "courseNoLongerAvailableTitle": "Hindi available ang kurso",
     "courseDeletedDialogDesc": "Na-delete na ang kursong ito.",
     "pingedActivity": "Na-ping na aktibidad",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ang setting na ito ay mananatili sa iyong sariling wika para lagi mo itong mahanap.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ang setting na ito ay mananatili sa iyong sariling wika para lagi mo itong mahanap.)",
+    "usernameTakenPleaseChooseAnother": "Kinuha na ang username na iyan. Mangyaring pumili ng iba.",
+    "allParticipants": "Lahat ng kalahok",
+    "seeFullCoursePlan": "Tingnan ang buong plano ng kurso",
+    "catchUp": "Bumawi",
+    "messageLanguageIs": "Ang mensaheng ito ay nakatakda sa {language}.",
+    "updateMessageLanguage": "Mag-click dito upang baguhin ang wika ng mensahe.",
+    "messageLanguage": "Wika ng mensahe",
+    "messageLanguageUpdated": "Na-update ang wika ng mensahe!",
+    "pickCefrLevelStepSubtitle": "Maaari mo itong baguhin sa ibang pagkakataon",
+    "unlockPremiumAudio": "I-unlock ang premium audio",
+    "unlockTranslations": "I-unlock ang mga pagsasalin",
+    "unlockEmojiMode": "I-unlock ang emoji mode",
+    "unlockMessagePractice": "I-unlock ang pagsasanay sa mensahe",
+    "unlockWritingAssistance": "I-unlock ang tulong sa pagsusulat",
+    "courseSectionTeaching": "Pagtuturo",
+    "courseSectionLearning": "Pag-aaral",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kurso}}",
+    "showMore": "Ipakita pa",
+    "showLess": "Ipakita nang kaunti",
+    "countNewMessages": "{count, plural, =1{1 bagong mensahe} other{{count} bagong mensahe}}",
+    "markAllRead": "Markahan lahat bilang nabasa"
 }

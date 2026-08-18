@@ -162,6 +162,10 @@ class ActivitySummary extends StatelessWidget {
                       targetId: "activity-summary-vocab",
                       activityLangCode: activity.req.targetLanguage,
                       usedVocab: usedVocab,
+                      // The session room this summary is rendered inside, when
+                      // there is one. Null on the render that has no room yet;
+                      // the vocab chips' listening is attributed accordingly.
+                      roomId: room?.id,
                     ),
                   ],
                 ),

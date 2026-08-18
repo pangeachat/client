@@ -19,6 +19,7 @@ import 'package:url_launcher/url_launcher_string.dart';
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/activity_sessions/activity_auto_save_service.dart';
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
@@ -97,7 +98,11 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   }
 
   static PangeaAnyState pAnyState = PangeaAnyState();
-  late StreamSubscription? _uriListener;
+
+  /// Not `late`: [dispose] cancels it unconditionally, so an [initState] that
+  /// never reached its assignment would crash teardown with a
+  /// LateInitializationError that buries whatever actually failed.
+  StreamSubscription? _uriListener;
 
   final Map<String, AnalyticsDataService> _analyticsServices = {};
   final Map<String, ActivityAutoSaveService> _activityAutoSaveServices = {};
@@ -121,18 +126,43 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   ValueNotifier<int> notifPermissionNotifier = ValueNotifier(0);
   // Pangea#
 
+  // #Pangea
+  /// The account [client] last resolved, retained so the getter keeps its
+  /// non-null contract while [Matrix.clients] holds none.
+  ///
+  /// Single-account logout empties that list (the `loggedOut` branch of
+  /// [_registerSubs]) and routes straight to `/home`, so every widget building
+  /// that route — auth guards, presence builders, the lifecycle observer —
+  /// reads [client] against an empty list. Handing back the account that just
+  /// logged out is truthful rather than silent: `isLogged()` is false, so
+  /// callers gate to the login screen exactly as they would for any signed-out
+  /// account, instead of the getter throwing `Bad state: No element` (#8368).
+  ///
+  /// Only ever a last resort — a live account in [Matrix.clients] always wins,
+  /// so the next login is never shadowed by the account it replaced.
+  Client? _lastResolvedClient;
+  // Pangea#
+
   Client get client {
     if (_activeClient < 0 || _activeClient >= widget.clients.length) {
       // #Pangea
-      currentBundle!.first!.homeserver = AppConfig.defaultHomeserverUri;
+      final fallback = currentBundle?.firstOrNull ?? _lastResolvedClient;
+      if (fallback == null) {
+        // Unreachable via ClientManager.getClients, which always yields at
+        // least one client. Named loudly so it can never read as the empty
+        // bundle above.
+        throw StateError('MatrixState.client read before any client existed');
+      }
+      fallback.homeserver = AppConfig.defaultHomeserverUri;
+      return _lastResolvedClient = fallback;
       // Pangea#
-      return currentBundle!.first!;
     }
 
     // #Pangea
-    widget.clients[_activeClient].homeserver = AppConfig.defaultHomeserverUri;
+    final activeClient = widget.clients[_activeClient];
+    activeClient.homeserver = AppConfig.defaultHomeserverUri;
+    return _lastResolvedClient = activeClient;
     // Pangea#
-    return widget.clients[_activeClient];
   }
 
   // #Pangea
@@ -589,14 +619,27 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// Never throws or blocks the logout.
   Future<void> flushAccountTelemetry(String clientName) async {
     try {
-      final userId = _analyticsServices[clientName]?.accountUserId;
+      final service = _analyticsServices[clientName];
+      final userId = service?.accountUserId;
       if (userId == null || userId.isEmpty) return;
       // Tombstoned, non-destructive flush: KEEPS the tracker (so a failed logout
       // leaves it live) but blocks a new span from opening during the awaited
       // POST — which would otherwise flush only after logout kills the bearer.
-      await DosageEngagementTracker.flushForLogout(
-        userId,
-      ).timeout(const Duration(seconds: 5));
+      //
+      // The audio buffer gets the same treatment and, unlike the span, it is
+      // handed the bearer explicitly: a listening observation has no Matrix
+      // artefact to re-derive it from, so this is the last moment it can be
+      // delivered at all. Both are bounded and independent — one timing out must
+      // not cost the other its flush.
+      await Future.wait([
+        DosageEngagementTracker.flushForLogout(
+          userId,
+        ).timeout(const Duration(seconds: 5)).catchError((_) {}),
+        DosageAudioBuffer.flushForLogout(
+          userId,
+          accessToken: service?.accountAccessToken,
+        ).timeout(const Duration(seconds: 5)).catchError((_) {}),
+      ]);
     } catch (_) {
       // Telemetry is best-effort; a flush failure must never block logout.
     }

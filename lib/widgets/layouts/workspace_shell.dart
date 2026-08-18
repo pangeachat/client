@@ -25,7 +25,6 @@ import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -501,6 +500,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _coursesSheetRowEstimate = 84.0;
   static const double _coursesSheetAddOptionsAllowance = 236.0;
 
+  /// One Invited / Teaching / Learning section header row, when the hub
+  /// groups by role (#8425): the row's text + 4px padding + the 8px separator.
+  static const double _coursesSheetSectionHeaderEstimate = 36.0;
+
   /// The activity plan's minimized rest height: the cavity handle + the start
   /// page's app bar, info row, and CTA row, with no media/description. This is
   /// the plan's opening stop (there is no taller mid-level); dragging up goes
@@ -667,12 +670,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // They fall through to the default (roughly half the screen), which is
       // what routing.instructions.md specifies for sections other than the
       // chats sheet and the Courses hub.
-      final courseCount = client.sortedCourses(l10n).length;
+      final groups = client.coursesByRole(l10n);
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
-          (courseCount == 0
+          (groups.courseCount == 0
               ? _coursesSheetAddOptionsAllowance
-              : courseCount * _coursesSheetRowEstimate);
+              : groups.courseCount * _coursesSheetRowEstimate +
+                    groups.sectionCount * _coursesSheetSectionHeaderEstimate);
     }
 
     String? cavityKey;
@@ -732,18 +736,14 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
         // nav; the mirror of the analytics bar's closeSections).
         onCourseShortcutTap: () => context.go(
           shortcutCourse != null
+              // No section param even for a knock-badged course: knocks
+              // surface in the Catch up card at the top of the page (#8357),
+              // which a scroll-to-Chats would skip right past.
               ? WorkspaceNav.openCourseSection(
                   uri,
                   shortcutCourse.id,
                   keepRoom: false,
                   clearRight: true,
-                  // While users are knocking, land the admin on the Chats
-                  // tab — where the knock notification lives — instead of
-                  // the Course Plan default, until the knock is accepted or
-                  // denied (#8139).
-                  tab: shortcutCourse.knockingUsers.isNotEmpty
-                      ? SpaceSettingsTabs.chat
-                      : null,
                 )
               : WorkspaceNav.setSection(
                   uri,

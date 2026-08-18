@@ -3568,7 +3568,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-13 15:50:47.513080",
+    "@@last_modified": "2026-08-18 09:33:23.677977",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9746,5 +9746,26 @@
     "courseNoLongerAvailableTitle": "Cúrsa neamh-infhaighte",
     "courseDeletedDialogDesc": "Scriosadh an cúrsa seo.",
     "pingedActivity": "Gníomhaíocht phingáilte",
-    "appInTargetLanguageStaysInBaseLanguage": "(Fanann an socrú seo i do theanga dhúchais ionas go mbíonn tú in ann é a aimsiú i gcónaí.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Fanann an socrú seo i do theanga dhúchais ionas go mbíonn tú in ann é a aimsiú i gcónaí.)",
+    "usernameTakenPleaseChooseAnother": "Tá an t-ainm úsáideora sin in úsáid cheana féin. Roghnaigh ceann eile, le do thoil.",
+    "allParticipants": "Gach rannpháirtí",
+    "seeFullCoursePlan": "Féach ar an bplean iomlán cúrsa",
+    "catchUp": "Teacht suas",
+    "messageLanguageIs": "Tá an teachtaireacht seo socraithe go {language}.",
+    "updateMessageLanguage": "Cliceáil anseo chun teanga na teachtaireachta a athrú.",
+    "messageLanguage": "Teanga na teachtaireachta",
+    "messageLanguageUpdated": "Teanga na teachtaireachta nuashonraithe!",
+    "pickCefrLevelStepSubtitle": "Is féidir leat é seo a athrú níos déanaí",
+    "unlockPremiumAudio": "Díghlasáil fuaime préimhe",
+    "unlockTranslations": "Díghlasáil aistriúcháin",
+    "unlockEmojiMode": "Díghlasáil mód emoji",
+    "unlockMessagePractice": "Díghlasáil cleachtadh teachtaireachtaí",
+    "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta",
+    "courseSectionTeaching": "Teagasc",
+    "courseSectionLearning": "Foghlaim",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 chúrsa} other{{count} cúrsa}}",
+    "showMore": "Taispeáin níos mó",
+    "showLess": "Taispeáin níos lú",
+    "countNewMessages": "{count, plural, =1{1 theachtaireacht nua} other{{count} theachtaireacht nua}}",
+    "markAllRead": "Marcáil uile mar léite"
 }

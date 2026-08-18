@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:async/async.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'package:fluffychat/pangea/common/utils/expiring_storage_box.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/grammar_error_practice_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/morph_category_practice_exercise_generator.dart';
 import 'package:fluffychat/routes/analytics/construct_analytics/practice/vocab_audio_practice_exercise_generator.dart';
@@ -23,35 +23,16 @@ import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exerc
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/word_audio_practice_exercise_generator.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
-/// Represents an item in the completion cache.
-class _RequestCacheItem {
-  final PracticeExerciseModel practiceExercise;
-  final DateTime timestamp;
-
-  _RequestCacheItem({required this.practiceExercise, required this.timestamp});
-
-  bool get isExpired =>
-      DateTime.now().difference(timestamp) > PracticeRepo._cacheDuration;
-
-  factory _RequestCacheItem.fromJson(Map<String, dynamic> json) {
-    return _RequestCacheItem(
-      practiceExercise: PracticeExerciseModel.fromJson(
-        json['practiceActivity'],
-      ),
-      timestamp: DateTime.parse(json['timestamp']),
-    );
-  }
-
-  Map<String, dynamic> toJson() => {
-    'practiceActivity': practiceExercise.toJson(),
-    'timestamp': timestamp.toIso8601String(),
-  };
-}
-
 /// Controller for handling exercise completions.
 class PracticeRepo {
-  static final GetStorage _storage = GetStorage('practice_activity_cache');
   static const Duration _cacheDuration = Duration(minutes: 1);
+
+  /// Generated exercises keyed by request hash.
+  static final ExpiringStorageBox _cache = ExpiringStorageBox(
+    'practice_activity_cache',
+    ttl: _cacheDuration,
+    payloadKey: 'practiceActivity',
+  );
 
   /// [event] is optional and used for saving the event to Matrix
   static Future<Result<PracticeExerciseModel>> getPracticeExercise(
@@ -147,40 +128,26 @@ class PracticeRepo {
   /// Drop the cached exercise for [req] so the next fetch regenerates it —
   /// e.g. after lemma content is corrected via user feedback.
   static Future<void> invalidate(MessagePracticeExerciseRequest req) =>
-      _storage.remove(req.hashCode.toString());
+      _cache.remove(_cacheKey(req));
+
+  static String _cacheKey(MessagePracticeExerciseRequest req) =>
+      req.hashCode.toString();
 
   static PracticeExerciseModel? _getCached(MessagePracticeExerciseRequest req) {
-    final keys = List.from(_storage.getKeys());
-    for (final k in keys) {
-      try {
-        final item = _RequestCacheItem.fromJson(_storage.read(k));
-        if (item.isExpired) {
-          _storage.remove(k);
-        }
-      } catch (e) {
-        _storage.remove(k);
-      }
-    }
+    final key = _cacheKey(req);
+    final json = _cache.read(key);
+    if (json == null) return null;
 
     try {
-      final entry = _RequestCacheItem.fromJson(
-        _storage.read(req.hashCode.toString()),
-      );
-      return entry.practiceExercise;
+      return PracticeExerciseModel.fromJson(json);
     } catch (e) {
-      _storage.remove(req.hashCode.toString());
+      _cache.remove(key);
+      return null;
     }
-    return null;
   }
 
   static Future<void> _setCached(
     MessagePracticeExerciseRequest req,
     MessagePracticeExerciseResponse res,
-  ) => _storage.write(
-    req.hashCode.toString(),
-    _RequestCacheItem(
-      practiceExercise: res.exercise,
-      timestamp: DateTime.now(),
-    ).toJson(),
-  );
+  ) => _cache.write(_cacheKey(req), res.exercise.toJson());
 }

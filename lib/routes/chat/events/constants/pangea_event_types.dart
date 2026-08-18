@@ -26,6 +26,10 @@ class PangeaEventTypes {
   static const orchestratorOutput = "pangea.orchestrator_output";
   static const orchestratorAwardedGoals = "pangea.orchestrator_awarded_goals";
 
+  /// Per-room account data on a course space: the knock keys the user
+  /// dismissed from the course page's Catch up card (#8357 "Mark all read").
+  static const dismissedCatchUp = "pangea.dismissed_catch_up";
+
   static const report = 'm.report';
   static const textToSpeechRule = "p.rule.text_to_speech";
   static const analyticsInviteRule = "p.rule.analytics_invite";

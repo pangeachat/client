@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:47.783797",
+    "@@last_modified": "2026-08-18 09:33:24.049486",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10649,5 +10649,26 @@
     "courseNoLongerAvailableTitle": "הקורס אינו זמין",
     "courseDeletedDialogDesc": "הקורס נמחק.",
     "pingedActivity": "פעילות עם תזכורת",
-    "appInTargetLanguageStaysInBaseLanguage": "(הגדרה זו נשארת בשפת האם שלך כדי שתוכל תמיד למצוא אותה.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(הגדרה זו נשארת בשפת האם שלך כדי שתוכל תמיד למצוא אותה.)",
+    "usernameTakenPleaseChooseAnother": "שם המשתמש הזה כבר תפוס. אנא בחר שם אחר.",
+    "allParticipants": "כל המשתתפים",
+    "seeFullCoursePlan": "הצג את תוכנית הקורס המלאה",
+    "catchUp": "להתעדכן",
+    "messageLanguageIs": "הודעה זו מוגדרת ל{language}.",
+    "updateMessageLanguage": "לחץ כאן כדי לשנות את שפת ההודעה.",
+    "messageLanguage": "שפת ההודעה",
+    "messageLanguageUpdated": "שפת ההודעה עודכנה!",
+    "pickCefrLevelStepSubtitle": "תוכל לשנות זאת מאוחר יותר",
+    "unlockPremiumAudio": "פתיחת אודיו פרימיום",
+    "unlockTranslations": "פתיחת תרגומים",
+    "unlockEmojiMode": "פתיחת מצב אימוג'י",
+    "unlockMessagePractice": "פתיחת תרגול הודעות",
+    "unlockWritingAssistance": "פתיחת סיוע בכתיבה",
+    "courseSectionTeaching": "מלמד",
+    "courseSectionLearning": "לומד",
+    "courseSectionLabel": "{title}, {count, plural, =1{קורס אחד} other{{count} קורסים}}",
+    "showMore": "הצג עוד",
+    "showLess": "הצג פחות",
+    "countNewMessages": "{count, plural, =1{הודעה חדשה אחת} other{{count} הודעות חדשות}}",
+    "markAllRead": "סמן הכל כנקרא"
 }

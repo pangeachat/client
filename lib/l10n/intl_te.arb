@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-13 15:50:53.538748",
+    "@@last_modified": "2026-08-18 09:33:35.499740",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10685,5 +10685,26 @@
     "courseNoLongerAvailableTitle": "కోర్సు అందుబాటులో లేదు",
     "courseDeletedDialogDesc": "ఈ కోర్సు తొలగించబడింది.",
     "pingedActivity": "పింగ్ చేయబడిన కార్యాచరణ",
-    "appInTargetLanguageStaysInBaseLanguage": "(ఈ సెట్టింగ్ మీ స్థానిక భాషలోనే ఉంటుంది, కాబట్టి మీరు దీన్ని ఎల్లప్పుడూ కనుగొనగలరు.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(ఈ సెట్టింగ్ మీ స్థానిక భాషలోనే ఉంటుంది, కాబట్టి మీరు దీన్ని ఎల్లప్పుడూ కనుగొనగలరు.)",
+    "usernameTakenPleaseChooseAnother": "ఆ యూజర్‌నేమ్ ఇప్పటికే ఉంది. దయచేసి మరొకటి ఎంచుకోండి.",
+    "allParticipants": "అందరూ పాల్గొనేవారు",
+    "seeFullCoursePlan": "పూర్తి కోర్సు ప్లాన్ చూడండి",
+    "catchUp": "తెలుసుకోండి",
+    "messageLanguageIs": "ఈ సందేశం {language}కి సెట్ చేయబడింది.",
+    "updateMessageLanguage": "సందేశం యొక్క భాషను మార్చడానికి ఇక్కడ క్లిక్ చేయండి.",
+    "messageLanguage": "సందేశ భాష",
+    "messageLanguageUpdated": "సందేశ భాష నవీకరించబడింది!",
+    "pickCefrLevelStepSubtitle": "మీరు దీన్ని తర్వాత మార్చవచ్చు",
+    "unlockPremiumAudio": "ప్రీమియం ఆడియోను అన్‌లాక్ చేయండి",
+    "unlockTranslations": "అనువాదాలను అన్‌లాక్ చేయండి",
+    "unlockEmojiMode": "ఎమోజి మోడ్‌ను అన్‌లాక్ చేయండి",
+    "unlockMessagePractice": "సందేశ అభ్యాసాన్ని అన్‌లాక్ చేయండి",
+    "unlockWritingAssistance": "రాత సహాయాన్ని అన్‌లాక్ చేయండి",
+    "courseSectionTeaching": "బోధన",
+    "courseSectionLearning": "నేర్చుకోవడం",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 కోర్సు} other{{count} కోర్సులు}}",
+    "showMore": "మరింత చూపించు",
+    "showLess": "తక్కువ చూపించు",
+    "countNewMessages": "{count, plural, =1{1 కొత్త సందేశం} other{{count} కొత్త సందేశాలు}}",
+    "markAllRead": "అన్నింటినీ చదివినట్లు గుర్తించు"
 }

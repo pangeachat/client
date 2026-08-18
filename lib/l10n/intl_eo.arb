@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:46.774138",
+    "@@last_modified": "2026-08-18 09:33:25.400976",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10680,5 +10680,26 @@
     "courseNoLongerAvailableTitle": "Kurso ne disponebla",
     "courseDeletedDialogDesc": "Ĉi tiu kurso estas forigita.",
     "pingedActivity": "Pingita agado",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ĉi tiu agordo restas en via denaska lingvo, por ke vi ĉiam povu trovi ĝin.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ĉi tiu agordo restas en via denaska lingvo, por ke vi ĉiam povu trovi ĝin.)",
+    "usernameTakenPleaseChooseAnother": "Tiu uzantnomo jam estas prenita. Bonvolu elekti alian.",
+    "allParticipants": "Ĉiuj partoprenantoj",
+    "seeFullCoursePlan": "Vidi la plenan kursplanon",
+    "catchUp": "Reatingi",
+    "messageLanguageIs": "Ĉi tiu mesaĝo estas agordita al {language}.",
+    "updateMessageLanguage": "Alklaku ĉi tie por ŝanĝi la lingvon de la mesaĝo.",
+    "messageLanguage": "Lingvo de mesaĝo",
+    "messageLanguageUpdated": "Lingvo de mesaĝo ĝisdatigita!",
+    "pickCefrLevelStepSubtitle": "Vi povas ŝanĝi tion poste",
+    "unlockPremiumAudio": "Malŝlosi altkvalitan sonon",
+    "unlockTranslations": "Malŝlosi tradukojn",
+    "unlockEmojiMode": "Malŝlosi emoji-reĝimon",
+    "unlockMessagePractice": "Malŝlosi mesaĝan praktikon",
+    "unlockWritingAssistance": "Malŝlosi skriban helpon",
+    "courseSectionTeaching": "Instruado",
+    "courseSectionLearning": "Lernado",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kursoj}}",
+    "showMore": "Montri pli",
+    "showLess": "Montri malpli",
+    "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}",
+    "markAllRead": "Marki ĉion kiel legitan"
 }

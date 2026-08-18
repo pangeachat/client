@@ -87,7 +87,6 @@ void main() {
           body: SizedBox(
             width: width,
             child: ObjectiveSection(
-              index: 0,
               group: objectiveGroup(),
               onTap: onTap ?? (_) {},
               userStarsByActivity: (_) => 0,

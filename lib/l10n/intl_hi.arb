@@ -3098,7 +3098,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-13 15:50:47.664649",
+    "@@last_modified": "2026-08-18 09:33:26.323937",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10367,5 +10367,26 @@
     "courseNoLongerAvailableTitle": "कोर्स अनुपलब्ध है",
     "courseDeletedDialogDesc": "यह कोर्स हटा दिया गया है।",
     "pingedActivity": "पिंग की गई गतिविधि",
-    "appInTargetLanguageStaysInBaseLanguage": "(यह सेटिंग आपकी मूल भाषा में रहती है ताकि आप इसे हमेशा ढूंढ सकें।)"
+    "appInTargetLanguageStaysInBaseLanguage": "(यह सेटिंग आपकी मूल भाषा में रहती है ताकि आप इसे हमेशा ढूंढ सकें।)",
+    "usernameTakenPleaseChooseAnother": "यह उपयोगकर्ता नाम पहले से उपयोग में है। कृपया कोई दूसरा चुनें।",
+    "allParticipants": "सभी प्रतिभागी",
+    "seeFullCoursePlan": "पूरा कोर्स प्लान देखें",
+    "catchUp": "पूरा करें",
+    "messageLanguageIs": "यह संदेश {language} पर सेट है।",
+    "updateMessageLanguage": "संदेश की भाषा बदलने के लिए यहां क्लिक करें।",
+    "messageLanguage": "संदेश की भाषा",
+    "messageLanguageUpdated": "संदेश की भाषा अपडेट की गई!",
+    "pickCefrLevelStepSubtitle": "आप इसे बाद में बदल सकते हैं",
+    "unlockPremiumAudio": "प्रीमियम ऑडियो अनलॉक करें",
+    "unlockTranslations": "अनुवाद अनलॉक करें",
+    "unlockEmojiMode": "इमोजी मोड अनलॉक करें",
+    "unlockMessagePractice": "मैसेज प्रैक्टिस अनलॉक करें",
+    "unlockWritingAssistance": "लेखन सहायता अनलॉक करें",
+    "courseSectionTeaching": "शिक्षण",
+    "courseSectionLearning": "सीखना",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 कोर्स} other{{count} कोर्स}}",
+    "showMore": "और दिखाएं",
+    "showLess": "कम दिखाएं",
+    "countNewMessages": "{count, plural, =1{1 नया संदेश} other{{count} नए संदेश}}",
+    "markAllRead": "सभी को पढ़ा गया के रूप में चिह्नित करें"
 }

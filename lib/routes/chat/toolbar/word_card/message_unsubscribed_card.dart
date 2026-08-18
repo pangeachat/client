@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 
-import 'package:go_router/go_router.dart';
-
 import 'package:fluffychat/config/app_config.dart';
-import 'package:fluffychat/features/navigation/workspace_nav.dart';
+import 'package:fluffychat/features/subscription/widgets/decorative_stars.dart';
+import 'package:fluffychat/features/subscription/widgets/locked_shimmer_box.dart';
+import 'package:fluffychat/features/subscription/widgets/unlock_button.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/common/widgets/pressable_button.dart';
-import 'package:fluffychat/pangea/common/widgets/shimmer_box.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_text_model.dart';
 
 class MessageUnsubscribedCard extends StatelessWidget {
+  /// The height the skeleton and the call to action share — enough to read as
+  /// the word card it stands in for.
+  static const double _bodyHeight = 170.0;
+
   final PangeaTokenText token;
   final VoidCallback? onClose;
 
@@ -19,128 +21,102 @@ class MessageUnsubscribedCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDarkMode = theme.brightness == Brightness.dark;
-    final placeholderColor = isDarkMode
-        ? Colors.white.withAlpha(50)
-        : Colors.black.withAlpha(50);
-    final primaryColor = theme.colorScheme.primary;
 
     return Container(
       constraints: const BoxConstraints(maxWidth: AppConfig.toolbarMinWidth),
       padding: const EdgeInsets.all(16),
-      child: Stack(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Positioned(
-            top: 50.0,
-            left: 0,
-            right: 0,
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
+          SizedBox(
+            height: 40.0,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ShimmerBox(
-                  baseColor: placeholderColor,
-                  highlightColor: primaryColor,
-                  width: 200,
-                  height: 30,
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    4,
-                    (index) => Padding(
-                      padding: EdgeInsets.only(left: index == 0 ? 0 : 8),
-                      child: ShimmerBox(
-                        baseColor: placeholderColor,
-                        highlightColor: primaryColor,
-                        width: 65,
-                        height: 65,
+                onClose != null
+                    ? IconButton(
+                        tooltip: L10n.of(context).close,
+                        color: theme.iconTheme.color,
+                        icon: const Icon(Icons.close),
+                        onPressed: onClose,
+                      )
+                    : const SizedBox(width: 40.0, height: 40.0),
+                Flexible(
+                  child: Container(
+                    constraints: const BoxConstraints(minHeight: 40.0),
+                    alignment: Alignment.center,
+                    child: SelectableText(
+                      token.content,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 28.0,
+                        fontWeight: FontWeight.w600,
+                        height: 1.2,
+                        color: isDarkMode
+                            ? AppConfig.yellowLight
+                            : AppConfig.yellowDark,
+                        overflow: TextOverflow.ellipsis,
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 12),
-                ShimmerBox(
-                  baseColor: placeholderColor,
-                  highlightColor: primaryColor,
-                  width: 250,
-                  height: 30,
-                ),
+                const SizedBox(width: 40.0, height: 40.0),
               ],
             ),
           ),
-          Column(
-            children: [
-              SizedBox(
-                height: 40.0,
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+          SizedBox(
+            height: _bodyHeight,
+            width: double.infinity,
+            child: Stack(
+              alignment: Alignment.center,
+              children: [
+                // A skeleton of the real word card: its meaning, the emoji
+                // choices, and the example line beneath them.
+                const Column(
+                  mainAxisSize: MainAxisSize.min,
                   children: [
-                    onClose != null
-                        ? IconButton(
-                            tooltip: L10n.of(context).close,
-                            color: theme.iconTheme.color,
-                            icon: const Icon(Icons.close),
-                            onPressed: onClose,
-                          )
-                        : const SizedBox(width: 40.0, height: 40.0),
-                    Flexible(
-                      child: Container(
-                        constraints: const BoxConstraints(minHeight: 40.0),
-                        alignment: Alignment.center,
-                        child: SelectableText(
-                          token.content,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 28.0,
-                            fontWeight: FontWeight.w600,
-                            height: 1.2,
-                            color: isDarkMode
-                                ? AppConfig.yellowLight
-                                : AppConfig.yellowDark,
-                            overflow: TextOverflow.ellipsis,
-                          ),
-                        ),
-                      ),
+                    SizedBox(height: 10.0),
+                    LockedShimmerBox(width: 200, height: 30),
+                    SizedBox(height: 12.0),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      spacing: 8.0,
+                      children: [
+                        LockedShimmerBox(width: 65, height: 65),
+                        LockedShimmerBox(width: 65, height: 65),
+                        LockedShimmerBox(width: 65, height: 65),
+                        LockedShimmerBox(width: 65, height: 65),
+                      ],
                     ),
-                    const SizedBox(width: 40.0, height: 40.0),
+                    SizedBox(height: 12.0),
+                    LockedShimmerBox(width: 250, height: 30),
                   ],
                 ),
-              ),
-              SizedBox(
-                width: double.infinity,
-                height: 170.0,
-                child: Center(
-                  child: PressableButton(
-                    borderRadius: BorderRadius.circular(36),
-                    color: primaryColor,
-                    onPressed: () => context.go(
-                      WorkspaceNav.openSettings(
-                        GoRouterState.of(context).uri,
-                        page: 'subscription',
-                      ),
+                // Off the corners, unequal insets, unmatched sizes — a matched
+                // pair at opposite corners framed the card rather than
+                // scattering across it (#7929 review).
+                const DecorativeStars(
+                  stars: [
+                    DecorativeStarSpec(
+                      size: 66.0,
+                      top: -6.0,
+                      left: 22.0,
+                      rotation: -0.24,
                     ),
-                    builder: (context, depressed, shadowColor) => Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 24,
-                        vertical: 12,
-                      ),
-                      decoration: BoxDecoration(
-                        color: depressed ? shadowColor : primaryColor,
-                        borderRadius: BorderRadius.circular(36),
-                      ),
-                      child: Text(
-                        L10n.of(context).unlockLearningTools,
-                        style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.w600,
-                          color: isDarkMode ? Colors.black : Colors.white,
-                        ),
-                      ),
+                    DecorativeStarSpec(
+                      size: 42.0,
+                      top: 104.0,
+                      right: 30.0,
+                      rotation: 0.5,
                     ),
-                  ),
+                  ],
                 ),
-              ),
-            ],
+                UnlockButton(
+                  label: L10n.of(context).unlockLearningTools,
+                  showStars: true,
+                ),
+              ],
+            ),
           ),
         ],
       ),

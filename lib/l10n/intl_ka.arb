@@ -1942,7 +1942,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-13 15:50:48.957089",
+    "@@last_modified": "2026-08-18 09:33:26.300563",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10635,5 +10635,26 @@
     "courseNoLongerAvailableTitle": "კურსი მიუწვდომელია",
     "courseDeletedDialogDesc": "ეს კურსი წაშლილია.",
     "pingedActivity": "აქტივობაზე შეტყობინება",
-    "appInTargetLanguageStaysInBaseLanguage": "(ეს პარამეტრი რჩება თქვენს მშობლიურ ენაზე, რათა ყოველთვის შეძლოთ მისი პოვნა.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(ეს პარამეტრი რჩება თქვენს მშობლიურ ენაზე, რათა ყოველთვის შეძლოთ მისი პოვნა.)",
+    "usernameTakenPleaseChooseAnother": "ეს მომხმარებლის სახელი უკვე დაკავებულია. გთხოვთ, აირჩიოთ სხვა.",
+    "allParticipants": "ყველა მონაწილე",
+    "seeFullCoursePlan": "იხილეთ კურსის სრული გეგმა",
+    "catchUp": "წამოეწიეთ",
+    "messageLanguageIs": "ამ შეტყობინების ენა არის {language}.",
+    "updateMessageLanguage": "შეტყობინების ენის შესაცვლელად დააჭირეთ აქ.",
+    "messageLanguage": "შეტყობინების ენა",
+    "messageLanguageUpdated": "შეტყობინების ენა განახლებულია!",
+    "pickCefrLevelStepSubtitle": "ამას მოგვიანებით შეცვლით",
+    "unlockPremiumAudio": "პრემიუმ აუდიოს განბლოკვა",
+    "unlockTranslations": "თარგმანების განბლოკვა",
+    "unlockEmojiMode": "ემოჯი რეჟიმის განბლოკვა",
+    "unlockMessagePractice": "შეტყობინებების პრაქტიკის განბლოკვა",
+    "unlockWritingAssistance": "წერის დახმარების განბლოკვა",
+    "courseSectionTeaching": "ასწავლის",
+    "courseSectionLearning": "სწავლობს",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 კურსი} other{{count} კურსი}}",
+    "showMore": "მეტი",
+    "showLess": "ნაკლები",
+    "countNewMessages": "{count, plural, =1{1 ახალი შეტყობინება} other{{count} ახალი შეტყობინება}}",
+    "markAllRead": "ყველას წაკითხულად მონიშვნა"
 }

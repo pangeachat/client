@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:52.833011",
+    "@@last_modified": "2026-08-18 09:33:33.481134",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10253,5 +10253,26 @@
     "courseNoLongerAvailableTitle": "Kursen är inte tillgänglig",
     "courseDeletedDialogDesc": "Den här kursen har tagits bort.",
     "pingedActivity": "Pingad aktivitet",
-    "appInTargetLanguageStaysInBaseLanguage": "(Denna inställning förblir på ditt modersmål så att du alltid kan hitta den.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Denna inställning förblir på ditt modersmål så att du alltid kan hitta den.)",
+    "usernameTakenPleaseChooseAnother": "Användarnamnet är redan upptaget. Välj ett annat.",
+    "allParticipants": "Alla deltagare",
+    "seeFullCoursePlan": "Se hela kursplanen",
+    "catchUp": "Kom ikapp",
+    "messageLanguageIs": "Detta meddelande är inställt på {language}.",
+    "updateMessageLanguage": "Klicka här för att ändra meddelandets språk.",
+    "messageLanguage": "Meddelandespråk",
+    "messageLanguageUpdated": "Meddelandespråk uppdaterat!",
+    "pickCefrLevelStepSubtitle": "Du kan ändra detta senare",
+    "unlockPremiumAudio": "Lås upp premiumljud",
+    "unlockTranslations": "Lås upp översättningar",
+    "unlockEmojiMode": "Lås upp emojiläge",
+    "unlockMessagePractice": "Lås upp meddelandeövning",
+    "unlockWritingAssistance": "Lås upp skrivhjälp",
+    "courseSectionTeaching": "Undervisning",
+    "courseSectionLearning": "Inlärning",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurser}}",
+    "showMore": "Visa mer",
+    "showLess": "Visa mindre",
+    "countNewMessages": "{count, plural, =1{1 nytt meddelande} other{{count} nya meddelanden}}",
+    "markAllRead": "Markera alla som lästa"
 }

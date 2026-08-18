@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-13 15:50:46.357168",
+    "@@last_modified": "2026-08-18 09:33:25.439751",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9346,5 +9346,26 @@
     "courseNoLongerAvailableTitle": "སློབ་ཚན་མེད་པ།",
     "courseDeletedDialogDesc": "སློབ་ཚན་འདི་བསུབས་ཟིན།",
     "pingedActivity": "སྒུལ་བསྐྱོད་བྱས་པའི་བྱེད་སྒོ།",
-    "appInTargetLanguageStaysInBaseLanguage": "(ཁྱེད་ཀྱིས་རྟག་ཏུ་རྙེད་ཐུབ་པའི་ཆེད་དུ་སྒྲིག་འགོད་འདི་ཁྱེད་ཀྱི་སྐད་ཡིག་རང་དུ་གནས་པ་ཡིན།)"
+    "appInTargetLanguageStaysInBaseLanguage": "(ཁྱེད་ཀྱིས་རྟག་ཏུ་རྙེད་ཐུབ་པའི་ཆེད་དུ་སྒྲིག་འགོད་འདི་ཁྱེད་ཀྱི་སྐད་ཡིག་རང་དུ་གནས་པ་ཡིན།)",
+    "usernameTakenPleaseChooseAnother": "མིང་དེ་སྔོན་ནས་བེད་སྤྱོད་བྱས་ཟིན། གཞན་ཞིག་འདེམས་རོགས།",
+    "allParticipants": "མཉམ་ཞུགས་པ་ཚང་མ།",
+    "seeFullCoursePlan": "སློབ་ཚན་གྱི་འཆར་གཞི་ཆ་ཚང་ལ་ལྟ་བ།",
+    "catchUp": "འཕྲལ་དུ་སློབ་སྦྱོང་བྱེད་",
+    "messageLanguageIs": "འདིའི་བརྡ་འཕྲིན་ {language} ལ་སྒྲིག་ཡོད།",
+    "updateMessageLanguage": "བརྡ་འཕྲིན་གྱི་སྐད་ཡིག་བསྒྱུར་བར་འདིར་མནོན།",
+    "messageLanguage": "བརྡ་འཕྲིན་སྐད་ཡིག",
+    "messageLanguageUpdated": "བརྡ་འཕྲིན་སྐད་ཡིག་གསར་སྒྱུར་བྱས་ཟིན།",
+    "pickCefrLevelStepSubtitle": "འདི་རྗེས་སུ་བསྒྱུར་ཆོག",
+    "unlockPremiumAudio": "སྒྲ་སྙན་མ་ལག་གི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
+    "unlockTranslations": "སྐད་སྒྱུར་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
+    "unlockEmojiMode": "རིས་མཚོན་གྱི་རྣམ་པ་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
+    "unlockMessagePractice": "འཕྲིན་ཡིག་སྦྱོང་བརྡར་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
+    "unlockWritingAssistance": "ཡིག་གཟུགས་རོགས་རམ་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
+    "courseSectionTeaching": "སློབ་ཁྲིད།",
+    "courseSectionLearning": "སློབ་སྦྱོང་།",
+    "courseSectionLabel": "{title}, {count, plural, =1{སློབ་ཚན་ ༡} other{སློབ་ཚན་ {count}}}",
+    "showMore": "མང་ཙམ་བསྟན་",
+    "showLess": "ཉུང་ཙམ་བསྟན་",
+    "countNewMessages": "{count, plural, =1{សារགསར་པ་ ༡} other{សារགསར་པ་ {count}}}",
+    "markAllRead": "ཚང་མ་བཀླགས་ཟིན་པར་མཚན་འཇོག་བྱེད་"
 }

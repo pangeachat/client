@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-13 15:50:54.196075",
+    "@@last_modified": "2026-08-18 09:33:31.702458",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10680,5 +10680,26 @@
     "courseNoLongerAvailableTitle": "Tečaj ni na voljo",
     "courseDeletedDialogDesc": "Ta tečaj je bil izbrisan.",
     "pingedActivity": "Dejavnost pinga",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ta nastavitev ostane v vašem maternem jeziku, da jo lahko vedno najdete.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ta nastavitev ostane v vašem maternem jeziku, da jo lahko vedno najdete.)",
+    "usernameTakenPleaseChooseAnother": "To uporabniško ime je že zasedeno. Izberite drugo.",
+    "allParticipants": "Vsi udeleženci",
+    "seeFullCoursePlan": "Oglejte si celoten načrt tečaja",
+    "catchUp": "Nadaljuj",
+    "messageLanguageIs": "Jezik sporočila je nastavljen na {language}.",
+    "updateMessageLanguage": "Kliknite tukaj za spremembo jezika sporočila.",
+    "messageLanguage": "Jezik sporočila",
+    "messageLanguageUpdated": "Jezik sporočila je posodobljen!",
+    "pickCefrLevelStepSubtitle": "To lahko pozneje spremenite",
+    "unlockPremiumAudio": "Odkleni premium zvok",
+    "unlockTranslations": "Odkleni prevode",
+    "unlockEmojiMode": "Odkleni način emoji",
+    "unlockMessagePractice": "Odkleni vajo sporočil",
+    "unlockWritingAssistance": "Odkleni pomoč pri pisanju",
+    "courseSectionTeaching": "Poučevanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 tečaj} other{{count} tečajev}}",
+    "showMore": "Pokaži več",
+    "showLess": "Pokaži manj",
+    "countNewMessages": "{count, plural, =1{1 novo sporočilo} other{{count} novih sporočil}}",
+    "markAllRead": "Označi vse kot prebrano"
 }

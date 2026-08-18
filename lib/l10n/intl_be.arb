@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-13 15:50:45.722285",
+    "@@last_modified": "2026-08-18 09:33:20.914103",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9749,5 +9749,26 @@
     "courseNoLongerAvailableTitle": "Курс недаступны",
     "courseDeletedDialogDesc": "Гэты курс быў выдалены.",
     "pingedActivity": "Актыўнасць з пінкам",
-    "appInTargetLanguageStaysInBaseLanguage": "(Гэтая налада застаецца на вашай роднай мове, каб вы заўсёды маглі яе знайсці.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Гэтая налада застаецца на вашай роднай мове, каб вы заўсёды маглі яе знайсці.)",
+    "usernameTakenPleaseChooseAnother": "Гэтае імя карыстальніка ўжо занята. Калі ласка, выберыце іншае.",
+    "allParticipants": "Усе ўдзельнікі",
+    "seeFullCoursePlan": "Глядзець поўны план курса",
+    "catchUp": "Нагнаць",
+    "messageLanguageIs": "Мова паведамлення: {language}.",
+    "updateMessageLanguage": "Націсніце тут, каб змяніць мову паведамлення.",
+    "messageLanguage": "Мова паведамлення",
+    "messageLanguageUpdated": "Мова паведамлення абноўлена!",
+    "pickCefrLevelStepSubtitle": "Вы можаце змяніць гэта пазней",
+    "unlockPremiumAudio": "Разблакіраваць прэміум-аўдыя",
+    "unlockTranslations": "Разблакіраваць пераклады",
+    "unlockEmojiMode": "Разблакіраваць рэжым эмодзі",
+    "unlockMessagePractice": "Разблакіраваць практыку паведамленняў",
+    "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні",
+    "courseSectionTeaching": "Выкладанне",
+    "courseSectionLearning": "Вывучэнне",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсаў}}",
+    "showMore": "Паказаць больш",
+    "showLess": "Паказаць менш",
+    "countNewMessages": "{count, plural, =1{1 новае паведамленне} other{{count} новых паведамленняў}}",
+    "markAllRead": "Адзначыць усе прачытанымі"
 }

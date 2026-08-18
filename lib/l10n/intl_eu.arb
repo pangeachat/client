@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-13 15:50:47.137424",
+    "@@last_modified": "2026-08-18 09:33:22.683592",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9735,5 +9735,26 @@
     "courseNoLongerAvailableTitle": "Ikastaroa ez dago erabilgarri",
     "courseDeletedDialogDesc": "Ikastaro hau ezabatu egin da.",
     "pingedActivity": "Pingatutako jarduera",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ezarpen hau zure jatorrizko hizkuntzan mantentzen da, beti aurkitu ahal izateko.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ezarpen hau zure jatorrizko hizkuntzan mantentzen da, beti aurkitu ahal izateko.)",
+    "usernameTakenPleaseChooseAnother": "Erabiltzaile-izen hori hartuta dago. Mesedez, aukeratu beste bat.",
+    "allParticipants": "Parte-hartzaile guztiak",
+    "seeFullCoursePlan": "Ikusi ikastaroaren plan osoa",
+    "catchUp": "Harrapatu",
+    "messageLanguageIs": "Mezu hau {language} hizkuntzan dago ezarrita.",
+    "updateMessageLanguage": "Egin klik hemen mezuaren hizkuntza aldatzeko.",
+    "messageLanguage": "Mezuaren hizkuntza",
+    "messageLanguageUpdated": "Mezuaren hizkuntza eguneratu da!",
+    "pickCefrLevelStepSubtitle": "Geroago alda dezakezu",
+    "unlockPremiumAudio": "Desblokeatu premium audioa",
+    "unlockTranslations": "Desblokeatu itzulpenak",
+    "unlockEmojiMode": "Desblokeatu emoji modua",
+    "unlockMessagePractice": "Desblokeatu mezuen praktika",
+    "unlockWritingAssistance": "Desblokeatu idazketa-laguntza",
+    "courseSectionTeaching": "Irakaskuntza",
+    "courseSectionLearning": "Ikaskuntza",
+    "courseSectionLabel": "{title}, {count, plural, =1{ikastaro 1} other{{count} ikastaro}}",
+    "showMore": "Gehiago erakutsi",
+    "showLess": "Gutxiago erakutsi",
+    "countNewMessages": "{count, plural, =1{mezu berri 1} other{{count} mezu berri}}",
+    "markAllRead": "Denak irakurritako gisa markatu"
 }

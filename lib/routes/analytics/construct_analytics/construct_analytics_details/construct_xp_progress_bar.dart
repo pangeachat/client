@@ -9,6 +9,7 @@ import 'package:fluffychat/features/analytics/analytics_constants.dart';
 import 'package:fluffychat/features/analytics/construct_identifier.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
+import 'package:fluffychat/features/analytics_data/widgets/analytics_future_builder.dart';
 import 'package:fluffychat/widgets/animated_progress_bar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -27,51 +28,44 @@ class ConstructXPProgressBar extends StatelessWidget {
     final l2 =
         MatrixState.pangeaController.userController.userL2?.langCodeShort;
 
-    return StreamBuilder(
-      stream: analyticsService.updateDispatcher.constructUpdateStream.stream,
+    return AnalyticsFutureBuilder<ConstructUses>(
+      dependencies: [construct, l2],
+      fetch: () => l2 != null
+          ? analyticsService.getConstructUse(construct, l2)
+          : Future.value(
+              ConstructUses(
+                uses: [],
+                constructType: construct.type,
+                lemma: construct.lemma,
+                category: construct.category,
+              ),
+            ),
       builder: (context, snapshot) {
-        return FutureBuilder(
-          future: l2 != null
-              ? analyticsService.getConstructUse(construct, l2)
-              : Future.value(
-                  ConstructUses(
-                    uses: [],
-                    constructType: construct.type,
-                    lemma: construct.lemma,
-                    category: construct.category,
+        final points = snapshot.data?.points ?? 0;
+        final progress = min(1.0, points / AnalyticsConstants.xpForFlower);
+        final level = snapshot.data?.constructLevel ?? ConstructLevelEnum.seeds;
+        const iconSize = 40.0;
+        return Column(
+          spacing: 8.0,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ...categories.map(
+                  (c) => Opacity(
+                    opacity: level == c ? 1.0 : 0.4,
+                    child: c.icon(iconSize),
                   ),
                 ),
-          builder: (context, snapshot) {
-            final points = snapshot.data?.points ?? 0;
-            final progress = min(1.0, points / AnalyticsConstants.xpForFlower);
-            final level =
-                snapshot.data?.constructLevel ?? ConstructLevelEnum.seeds;
-            const iconSize = 40.0;
-            return Column(
-              spacing: 8.0,
-              children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ...categories.map(
-                      (c) => Opacity(
-                        opacity: level == c ? 1.0 : 0.4,
-                        child: c.icon(iconSize),
-                      ),
-                    ),
-                  ],
-                ),
-                AnimatedProgressBar(
-                  height: 20.0,
-                  widthPercent: progress,
-                  barColor: AppConfig.goldLight,
-                  backgroundColor: Theme.of(
-                    context,
-                  ).colorScheme.secondaryContainer,
-                ),
               ],
-            );
-          },
+            ),
+            AnimatedProgressBar(
+              height: 20.0,
+              widthPercent: progress,
+              barColor: AppConfig.goldLight,
+              backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+            ),
+          ],
         );
       },
     );

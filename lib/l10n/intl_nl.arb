@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-13 15:50:51.162029",
+    "@@last_modified": "2026-08-18 09:33:29.747330",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9735,5 +9735,26 @@
     "courseNoLongerAvailableTitle": "Cursus niet beschikbaar",
     "courseDeletedDialogDesc": "Deze cursus is verwijderd.",
     "pingedActivity": "Gepingde activiteit",
-    "appInTargetLanguageStaysInBaseLanguage": "(Deze instelling blijft in je moedertaal, zodat je hem altijd kunt vinden.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Deze instelling blijft in je moedertaal, zodat je hem altijd kunt vinden.)",
+    "usernameTakenPleaseChooseAnother": "Die gebruikersnaam is al in gebruik. Kies een andere.",
+    "allParticipants": "Alle deelnemers",
+    "seeFullCoursePlan": "Bekijk het volledige cursusplan",
+    "catchUp": "Bijpraten",
+    "messageLanguageIs": "Dit bericht is ingesteld op {language}.",
+    "updateMessageLanguage": "Klik hier om de taal van het bericht te wijzigen.",
+    "messageLanguage": "Berichttaal",
+    "messageLanguageUpdated": "Berichttaal bijgewerkt!",
+    "pickCefrLevelStepSubtitle": "Je kunt dit later wijzigen",
+    "unlockPremiumAudio": "Ontgrendel premium audio",
+    "unlockTranslations": "Ontgrendel vertalingen",
+    "unlockEmojiMode": "Ontgrendel emoji-modus",
+    "unlockMessagePractice": "Ontgrendel berichtoefening",
+    "unlockWritingAssistance": "Ontgrendel schrijfhulp",
+    "courseSectionTeaching": "Lesgeven",
+    "courseSectionLearning": "Leren",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cursus} other{{count} cursussen}}",
+    "showMore": "Meer weergeven",
+    "showLess": "Minder weergeven",
+    "countNewMessages": "{count, plural, =1{1 nieuw bericht} other{{count} nieuwe berichten}}",
+    "markAllRead": "Alles als gelezen markeren"
 }

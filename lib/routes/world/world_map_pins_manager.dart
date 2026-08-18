@@ -19,6 +19,7 @@ import 'package:fluffychat/features/quests/repo/activity_map_repo.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
 import 'package:fluffychat/features/room_summaries/activity_session_previews_extension.dart';
 import 'package:fluffychat/features/room_summaries/room_summary_extension.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -288,15 +289,22 @@ class WorldMapPinsManager {
   /// for the host's recruit ping (carries `pangea.activity.id`), within a day.
   /// A ping leaves no persistent room state, so this proxy is intentionally
   /// approximate — its efficacy is worth watching (world-map.instructions.md).
+  ///
+  /// Reads the spaces through [ActivitySessionDiscovery.joinedCourseSpaces],
+  /// which snapshots `client.rooms` — load-bearing here, not just DRY (#8361,
+  /// CLIENT-DBW). The SDK mutates `client.rooms` IN PLACE from its sync handler
+  /// (`rooms.insert` on a join, `rooms.removeAt` on a leave), and this loop
+  /// awaits a timeline per space, so a lazy `where` view over that list threw
+  /// `Concurrent modification during iteration` when a course arrived or left
+  /// mid-scan — aborting the pass and stranding pinged pins stale until the
+  /// next clean one. The room list moving is correct SDK behaviour the map
+  /// can't block, so the scan reads a snapshot and picks up a course that
+  /// joined mid-pass on the next sync tick (which that join itself produces).
   Future<void> recomputePinged(Client client) async {
     final pinged = <String>{};
     final cutoff = DateTime.now().subtract(const Duration(hours: 24));
-    final spaces = client.rooms.where(
-      (r) =>
-          r.isSpace && r.membership == Membership.join && r.coursePlan != null,
-    );
 
-    for (final space in spaces) {
+    for (final space in client.joinedCourseRooms) {
       try {
         final timeline = await space.getTimeline();
         for (final e in timeline.events) {
@@ -669,6 +677,10 @@ class WorldMapPinsManager {
     );
     final activityCards = activityCardsResult.result;
     if (activityCards == null) {
+      // A rate-limit pause means we never asked (#8360), so the course is not
+      // known to be empty — hold the pins we have instead of blanking the map
+      // for the length of the pause. Any real failure still empties it.
+      if (activityCardsResult.error is RateLimitedException) return;
       _pins = [];
       return;
     }
@@ -713,6 +725,10 @@ class WorldMapPinsManager {
     String? l2,
     String? l1,
   }) async {
-    _pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
+    final pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
+    // Null is "suppressed by the rate-limit pause", not "no activities here"
+    // (#8360) — keep the current pins rather than blanking the map.
+    if (pins == null) return;
+    _pins = pins;
   }
 }

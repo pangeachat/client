@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-13 15:50:47.244627",
+    "@@last_modified": "2026-08-18 09:33:23.164667",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10090,5 +10090,26 @@
     "courseNoLongerAvailableTitle": "Cours non disponible",
     "courseDeletedDialogDesc": "Ce cours a été supprimé.",
     "pingedActivity": "Activité pingée",
-    "appInTargetLanguageStaysInBaseLanguage": "(Ce paramètre reste dans votre langue maternelle afin que vous puissiez toujours le retrouver.)"
+    "appInTargetLanguageStaysInBaseLanguage": "(Ce paramètre reste dans votre langue maternelle afin que vous puissiez toujours le retrouver.)",
+    "usernameTakenPleaseChooseAnother": "Ce nom d'utilisateur est déjà pris. Veuillez en choisir un autre.",
+    "allParticipants": "Tous les participants",
+    "seeFullCoursePlan": "Voir le plan de cours complet",
+    "catchUp": "Rattraper",
+    "messageLanguageIs": "Ce message est défini sur {language}.",
+    "updateMessageLanguage": "Cliquez ici pour changer la langue du message.",
+    "messageLanguage": "Langue du message",
+    "messageLanguageUpdated": "Langue du message mise à jour !",
+    "pickCefrLevelStepSubtitle": "Vous pourrez modifier cela plus tard",
+    "unlockPremiumAudio": "Débloquer l'audio premium",
+    "unlockTranslations": "Débloquer les traductions",
+    "unlockEmojiMode": "Débloquer le mode emoji",
+    "unlockMessagePractice": "Débloquer la pratique des messages",
+    "unlockWritingAssistance": "Débloquer l'aide à l'écriture",
+    "courseSectionTeaching": "Enseignement",
+    "courseSectionLearning": "Apprentissage",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cours} other{{count} cours}}",
+    "showMore": "Afficher plus",
+    "showLess": "Afficher moins",
+    "countNewMessages": "{count, plural, =1{1 nouveau message} other{{count} nouveaux messages}}",
+    "markAllRead": "Tout marquer comme lu"
 }

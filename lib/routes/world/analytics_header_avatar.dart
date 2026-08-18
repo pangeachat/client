@@ -112,96 +112,105 @@ class AnalyticsHeaderAvatarInternal extends StatelessWidget {
               child: GestureDetector(
                 behavior: HitTestBehavior.opaque,
                 onTap: () => viewModel.openAnalyticsSummary(context),
-                child: FutureBuilder<DerivedAnalyticsDataModel>(
-                  future: viewModel.derivedAnalyticsData,
-                  builder: (context, snapshot) {
-                    final derived =
-                        snapshot.data ?? viewModel.cachedDerivedAnalyticsData;
-                    final level = derived?.level ?? 1;
-                    final progress = (derived?.levelProgress ?? 0.0).clamp(
-                      0.0,
-                      1.0,
-                    );
-                    return Stack(
-                      clipBehavior: Clip.none,
-                      alignment: Alignment.center,
-                      children: [
-                        CustomPaint(
-                          size: Size.square(_avatarSize + 2 * _xpStroke),
-                          painter: CircularXpRingPainter(
-                            progress: progress,
-                            trackColor: const Color.fromARGB(
-                              130,
-                              135,
-                              135,
-                              135,
-                            ),
-                            progressColor: AppConfig.goldByTheme(context),
-                            stroke: _xpStroke,
-                          ),
-                          child: Padding(
-                            padding: EdgeInsets.all(_xpStroke),
-                            child: ListenableBuilder(
-                              listenable: Listenable.merge([
-                                viewModel.avatarUrl,
-                                viewModel.displayName,
-                              ]),
-                              builder: (context, _) => ClusterAvatar(
-                                avatarUrl: viewModel.avatarUrl.value,
-                                name: viewModel.displayName.value,
-                                onTap: () =>
-                                    viewModel.openAnalyticsSummary(context),
-                                size: _avatarSize,
-                              ),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: _badgeTopOffset,
-                          left: _badgeLeftOffset,
-                          child: IgnorePointer(
-                            child: Material(
-                              type: MaterialType.transparency,
-                              child: LevelUpBadgeCelebration(
-                                levelUpdates: viewModel.levelUpdates,
-                                child: HexLevelBadge(
-                                  level: level,
-                                  onTap: () =>
-                                      viewModel.openAnalyticsSummary(context),
-                                  width: _badgeWidth,
-                                  height: _badgeHeight,
-                                  fontSize: _badgeFontSize,
+                // Level + XP ring re-read on every construct-stream tick, the
+                // same way the full bar and the web cluster do — subscribed
+                // during build, per analytics-system.instructions.md "Key
+                // Contracts". Without this the badge froze at the level it
+                // mounted with while the chip celebrated a later one (#8437).
+                child: StreamBuilder(
+                  stream: viewModel.constructUpdateStream,
+                  builder: (context, _) =>
+                      FutureBuilder<DerivedAnalyticsDataModel>(
+                        future: viewModel.derivedAnalyticsData,
+                        builder: (context, snapshot) {
+                          final derived =
+                              snapshot.data ??
+                              viewModel.cachedDerivedAnalyticsData;
+                          final level = derived?.level ?? 1;
+                          final progress = (derived?.levelProgress ?? 0.0)
+                              .clamp(0.0, 1.0);
+                          return Stack(
+                            clipBehavior: Clip.none,
+                            alignment: Alignment.center,
+                            children: [
+                              CustomPaint(
+                                size: Size.square(_avatarSize + 2 * _xpStroke),
+                                painter: CircularXpRingPainter(
+                                  progress: progress,
+                                  trackColor: const Color.fromARGB(
+                                    130,
+                                    135,
+                                    135,
+                                    135,
+                                  ),
+                                  progressColor: AppConfig.goldByTheme(context),
+                                  stroke: _xpStroke,
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsets.all(_xpStroke),
+                                  child: ListenableBuilder(
+                                    listenable: Listenable.merge([
+                                      viewModel.avatarUrl,
+                                      viewModel.displayName,
+                                    ]),
+                                    builder: (context, _) => ClusterAvatar(
+                                      avatarUrl: viewModel.avatarUrl.value,
+                                      name: viewModel.displayName.value,
+                                      onTap: () => viewModel
+                                          .openAnalyticsSummary(context),
+                                      size: _avatarSize,
+                                    ),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ),
-                        ),
-                        if (l2 != null)
-                          Positioned(
-                            bottom: _flagBottomOffset,
-                            child: IgnorePointer(
-                              child:
-                                  flagBuilder?.call(
-                                    l2,
-                                    () =>
-                                        viewModel.openAnalyticsSummary(context),
-                                    _flagWidth,
-                                    _flagHeight,
-                                    _flagFontSize,
-                                  ) ??
-                                  ClusterLanguageFlag(
-                                    language: l2,
-                                    onTap: () =>
-                                        viewModel.openAnalyticsSummary(context),
-                                    width: _flagWidth,
-                                    height: _flagHeight,
-                                    fontSize: _flagFontSize,
+                              Positioned(
+                                top: _badgeTopOffset,
+                                left: _badgeLeftOffset,
+                                child: IgnorePointer(
+                                  child: Material(
+                                    type: MaterialType.transparency,
+                                    child: LevelUpBadgeCelebration(
+                                      levelUpdates: viewModel.levelUpdates,
+                                      child: HexLevelBadge(
+                                        level: level,
+                                        onTap: () => viewModel
+                                            .openAnalyticsSummary(context),
+                                        width: _badgeWidth,
+                                        height: _badgeHeight,
+                                        fontSize: _badgeFontSize,
+                                      ),
+                                    ),
                                   ),
-                            ),
-                          ),
-                      ],
-                    );
-                  },
+                                ),
+                              ),
+                              if (l2 != null)
+                                Positioned(
+                                  bottom: _flagBottomOffset,
+                                  child: IgnorePointer(
+                                    child:
+                                        flagBuilder?.call(
+                                          l2,
+                                          () => viewModel.openAnalyticsSummary(
+                                            context,
+                                          ),
+                                          _flagWidth,
+                                          _flagHeight,
+                                          _flagFontSize,
+                                        ) ??
+                                        ClusterLanguageFlag(
+                                          language: l2,
+                                          onTap: () => viewModel
+                                              .openAnalyticsSummary(context),
+                                          width: _flagWidth,
+                                          height: _flagHeight,
+                                          fontSize: _flagFontSize,
+                                        ),
+                                  ),
+                                ),
+                            ],
+                          );
+                        },
+                      ),
                 ),
               ),
             ),

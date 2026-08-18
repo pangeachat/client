@@ -11,7 +11,6 @@ import 'package:fluffychat/routes/onboarding/custom_course_response_model.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_client_extension.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
-import 'package:fluffychat/widgets/matrix.dart';
 
 abstract class CourseProvider {
   String? getCachedJoinCode();
@@ -67,10 +66,7 @@ class ClientCourseProvider implements CourseProvider {
   @override
   Future<Result<CustomCourseResponseModel>> requestCustomCourse(
     CustomCourseRequestModel request,
-  ) => CustomCourseRepo.get(
-    request,
-    MatrixState.pangeaController.userController.accessToken,
-  );
+  ) => CustomCourseRepo.instance.get(request);
 }
 
 class MockCourseProvider implements CourseProvider {

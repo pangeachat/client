@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
-import 'package:material_symbols_icons/symbols.dart';
 import 'package:matrix/matrix.dart' as sdk;
 import 'package:matrix/matrix.dart';
 
@@ -9,17 +8,14 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/spaces/knocking_users_indicator.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_analytics/analytics_request_indicator.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/chat_list/activity_template_chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/chat_list/course_default_chats_enum.dart';
+import 'package:fluffychat/routes/chat_list/default_chat_creation_tile.dart';
 import 'package:fluffychat/routes/chat_list/unjoined_chat_list_item.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
-import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class CourseChatsView extends StatelessWidget {
   final CourseChatsController controller;
@@ -61,38 +57,32 @@ class CourseChatsView extends StatelessWidget {
                   joinedSessions.length +
                   discoveredGroupChats.length +
                   discoveredSessions.length +
-                  9,
+                  7,
               itemBuilder: (context, i) {
                 // Chats-tab title slot. The progress header moved to
                 // Analytics; the standalone chat-bubble icon was redundant
                 // with the Chats tab itself — both removed (world_v2).
+                // Knock + analytics-request attention rows moved to the course
+                // page's Catch up section (#8357).
                 if (i == 0) {
                   return const SizedBox();
                 }
                 i--;
 
                 if (i == 0) {
-                  return KnockingUsersIndicator(room: room);
-                }
-                i--;
-
-                if (i == 0) {
-                  return AnalyticsRequestIndicator(room: room);
-                }
-                i--;
-
-                if (i == 0) {
-                  return _DefaultChatCreationTile(
+                  return DefaultChatCreationTile(
+                    space: room,
                     type: CourseDefaultChatsEnum.introductions,
-                    controller: controller,
+                    discoveredChildren: controller.discoveredChildren,
                   );
                 }
                 i--;
 
                 if (i == 0) {
-                  return _DefaultChatCreationTile(
+                  return DefaultChatCreationTile(
+                    space: room,
                     type: CourseDefaultChatsEnum.announcements,
-                    controller: controller,
+                    discoveredChildren: controller.discoveredChildren,
                   );
                 }
                 i--;
@@ -131,11 +121,12 @@ class CourseChatsView extends StatelessWidget {
                           title: Text(L10n.of(context).whatNow),
                           subtitle: Text(L10n.of(context).chooseNextActivity),
                           trailing: const Icon(Icons.arrow_forward),
+                          // No section param — it would scroll the course
+                          // page on open (#8357); the plan leads the page.
                           onTap: () => context.go(
                             WorkspaceNav.openCourse(
                               GoRouterState.of(context).uri,
                               room.id,
-                              tab: SpaceSettingsTabs.course,
                             ),
                           ),
                         )
@@ -246,42 +237,6 @@ class CourseChatsView extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-}
-
-class _DefaultChatCreationTile extends StatelessWidget {
-  final CourseDefaultChatsEnum type;
-  final CourseChatsController controller;
-
-  const _DefaultChatCreationTile({
-    required this.type,
-    required this.controller,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    if (!controller.showDefaultChatCreation(type)) {
-      return const SizedBox();
-    }
-
-    final l10n = L10n.of(context);
-    return ListTile(
-      leading: const Icon(Symbols.chat_add_on),
-      title: Text(type.creationTitle(l10n)),
-      subtitle: Text(type.creationDesc(l10n)),
-      trailing: IconButton(
-        tooltip: l10n.dismiss,
-        icon: const Icon(Icons.close),
-        onPressed: () => showFutureLoadingDialog(
-          context: context,
-          future: () => controller.dismissDefaultChatCreation(type),
-        ),
-      ),
-      onTap: () => showFutureLoadingDialog(
-        context: context,
-        future: () => controller.createDefaultChat(type),
-      ),
     );
   }
 }

@@ -11,6 +11,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/quests/repo/quest_plans_repo.dart';
+import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
@@ -206,7 +207,12 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
 
       await grantInstructorAnalyticsAccess(roomId, analyticsRoomId);
     } catch (e, s) {
-      ErrorHandler.logError(e: e, s: s, data: {"joining_room_id": roomId});
+      ErrorHandler.logError(
+        e: e,
+        s: s,
+        data: {"joining_room_id": roomId},
+        level: PangeaHttpException.severityOf(e),
+      );
     }
   }
 
@@ -245,6 +251,7 @@ extension JoinRoomAnalyticsAccessClientExtension on Client {
           "analytics_room_id": analyticsRoomId,
           "analytics_lang_code": analyticsLangCode,
         },
+        level: PangeaHttpException.severityOf(e),
       );
     }
   }
