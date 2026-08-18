@@ -5,6 +5,8 @@ import 'package:flutter/rendering.dart';
 
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:fluffychat/pangea/morphs/grammar_construct_example.dart';
+import 'package:fluffychat/pangea/morphs/grammar_constructs_response.dart';
 import 'package:fluffychat/routes/chat/events/tokens/token_rendering_util.dart';
 import 'package:fluffychat/routes/chat/events/tokens/underline_text_widget.dart';
 
@@ -137,5 +139,44 @@ void main() {
           'same text and fontSize at a different scale must not hit the '
           'cached width measured at the old scale',
     );
+  });
+
+  testWidgets('a token inside a WidgetSpan scales once, not twice', (
+    tester,
+  ) async {
+    // `RichText` scales every `WidgetSpan` child geometrically, on top of
+    // whatever the child does with the scaler itself (flutter#126962). A token
+    // that reads the scaler too renders at scale *squared* — at the browser's
+    // largest font size, message text half again as large as the rest of the
+    // app. Span children are pinned to `TextScaler.noScaling` for that reason;
+    // this is the check that the two scalings never both apply.
+    const tag = GrammarTag(
+      value: 'Pres',
+      description: 'present tense',
+      display: true,
+      example: 'She **walks** home.',
+      sequencePosition: 1.0,
+      title: 'Present',
+    );
+
+    // On-screen size of the token: its own box, times the scale of the
+    // placeholder transform it is painted through.
+    Future<Size> tokenSize(double scale) async {
+      await pumpAt(tester, scale, const GrammarConstructExample(tag: tag));
+      final box = tester.renderObject<RenderBox>(find.byType(RichText).last);
+      return box.size * box.getTransformTo(null).storage[0];
+    }
+
+    final normal = await tokenSize(1.0);
+    final large = await tokenSize(2.0);
+
+    expect(
+      large.height / normal.height,
+      closeTo(2.0, 0.05),
+      reason:
+          'the token must grow by the device scaler, not by its square — a '
+          'span child must not scale text the placeholder already scales',
+    );
+    expect(large.width / normal.width, closeTo(2.0, 0.05));
   });
 }

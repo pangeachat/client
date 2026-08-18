@@ -73,17 +73,24 @@ class _StyleExampleMessage extends StatelessWidget {
           textScaler: MediaQuery.textScalerOf(context),
           text: TextSpan(
             children: [
+              // A WidgetSpan child is already scaled by the placeholder it
+              // sits in; scaling its text here too squares the device text
+              // size (#7719).
               WidgetSpan(
-                child: UnderlineText(
-                  text: 'Hello',
-                  style: textStyle,
-                  underlineColor: Theme.of(
-                    context,
-                  ).colorScheme.primaryContainer.withAlpha(200),
+                child: MediaQuery.withNoTextScaling(
+                  child: UnderlineText(
+                    text: 'Hello',
+                    style: textStyle,
+                    underlineColor: Theme.of(
+                      context,
+                    ).colorScheme.primaryContainer.withAlpha(200),
+                  ),
                 ),
               ),
               WidgetSpan(
-                child: UnderlineText(text: ' world!', style: textStyle),
+                child: MediaQuery.withNoTextScaling(
+                  child: UnderlineText(text: ' world!', style: textStyle),
+                ),
               ),
             ],
             style: textStyle,

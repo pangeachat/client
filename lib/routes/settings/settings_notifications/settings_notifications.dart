@@ -265,24 +265,29 @@ class SettingsNotificationsController extends State<SettingsNotifications> {
               WidgetSpan(
                 alignment: PlaceholderAlignment.baseline,
                 baseline: TextBaseline.alphabetic,
-                child: InkWell(
-                  onTap: () {
-                    messenger!.hideCurrentSnackBar();
-                    context.go(
-                      WorkspaceNav.openSettings(
-                        GoRouterState.of(context).uri,
-                        page: 'security/3pid',
+                // A WidgetSpan child is already scaled by the placeholder it
+                // sits in; scaling its text here too squares the device text
+                // size (#7719).
+                child: MediaQuery.withNoTextScaling(
+                  child: InkWell(
+                    onTap: () {
+                      messenger!.hideCurrentSnackBar();
+                      context.go(
+                        WorkspaceNav.openSettings(
+                          GoRouterState.of(context).uri,
+                          page: 'security/3pid',
+                        ),
+                      );
+                    },
+                    child: Text(
+                      L10n.of(context).clickToAddEmail,
+                      style: TextStyle(
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                        decoration: TextDecoration.underline,
+                        decorationColor: Theme.of(
+                          context,
+                        ).colorScheme.primaryContainer,
                       ),
-                    );
-                  },
-                  child: Text(
-                    L10n.of(context).clickToAddEmail,
-                    style: TextStyle(
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                      decoration: TextDecoration.underline,
-                      decorationColor: Theme.of(
-                        context,
-                      ).colorScheme.primaryContainer,
                     ),
                   ),
                 ),
