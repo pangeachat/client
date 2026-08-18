@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
-import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details_content.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -15,7 +15,10 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// course page), any other room renders [ChatDetailsContent].
 class ChatDetails extends StatelessWidget {
   final String roomId;
-  final Widget? embeddedCloseButton;
+
+  /// The hosting panel's close control. Required: the gone/left error state
+  /// below renders its own chrome and must carry it (#8322).
+  final Widget embeddedCloseButton;
 
   /// The course-page section from the course token (spaces only).
   final SpaceSettingsTabs? activeTab;
@@ -27,7 +30,7 @@ class ChatDetails extends StatelessWidget {
   const ChatDetails({
     super.key,
     required this.roomId,
-    this.embeddedCloseButton,
+    required this.embeddedCloseButton,
     this.activeTab,
     this.expandedSection = false,
   });
@@ -36,20 +39,7 @@ class ChatDetails extends StatelessWidget {
   Widget build(BuildContext context) {
     final room = Matrix.of(context).client.getRoomById(roomId);
     if (room == null || room.membership == Membership.leave) {
-      return Semantics(
-        container: true,
-        child: Scaffold(
-          appBar: AppBar(
-            // Give the error state the panel's close control (#8322) so a
-            // stale or hand-edited course ID can't strand the user.
-            leading: embeddedCloseButton,
-            title: Text(L10n.of(context).oopsSomethingWentWrong),
-          ),
-          body: Center(
-            child: Text(L10n.of(context).youAreNoLongerParticipatingInThisChat),
-          ),
-        ),
-      );
+      return RoomUnavailablePanel(closeButton: embeddedCloseButton);
     }
 
     // Rate-limited: loading a course's member list ingests the /members

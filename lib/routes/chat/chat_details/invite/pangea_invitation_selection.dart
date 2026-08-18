@@ -77,16 +77,16 @@ class PangeaInvitationSelection extends StatefulWidget {
   final String roomId;
   final InvitationFilter? initialFilter;
 
-  /// world_v2: the leading affordance supplied by the host course panel (`←`
-  /// back to the card) when this is a `course:invite` push, replacing the
-  /// route-pop [BackButton]. See `routing.instructions.md`.
-  final Widget? embeddedCloseButton;
+  /// world_v2: the leading affordance supplied by the host panel (`←` back to
+  /// the card / chat). Required: the room-gone error state renders its own
+  /// chrome and must carry it (#8322, #8327). See `routing.instructions.md`.
+  final Widget embeddedCloseButton;
 
   const PangeaInvitationSelection({
     super.key,
     required this.roomId,
     this.initialFilter,
-    this.embeddedCloseButton,
+    required this.embeddedCloseButton,
   });
 
   @override

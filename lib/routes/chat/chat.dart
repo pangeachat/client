@@ -61,6 +61,7 @@ import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/pangea/extensions/leave_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/morphs/morph_features_enum.dart';
@@ -160,7 +161,9 @@ class ChatPage extends StatelessWidget {
   final String? eventId;
 
   // #Pangea
-  final Widget? backButton;
+  /// The hosting panel's close control. Required: the room-gone state below
+  /// renders its own chrome and must carry it (#7746, #8322).
+  final Widget backButton;
   // Pangea#
 
   const ChatPage({
@@ -169,7 +172,7 @@ class ChatPage extends StatelessWidget {
     this.eventId,
     this.shareItems,
     // #Pangea
-    this.backButton,
+    required this.backButton,
     // Pangea#
   });
 
@@ -188,21 +191,9 @@ class ChatPage extends StatelessWidget {
     }
 
     if (room == null) {
-      // if (room == null) {
-      // Pangea#
-      return Scaffold(
-        appBar: AppBar(leading: backButton),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              L10n.of(context).youAreNoLongerParticipatingInThisChat,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      );
+      return RoomUnavailablePanel(closeButton: backButton);
     }
+    // Pangea#
 
     return ChatPageWithRoom(
       key: Key('chat_page_${roomId}_$eventId'),

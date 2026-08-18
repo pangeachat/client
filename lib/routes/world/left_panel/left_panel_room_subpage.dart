@@ -7,7 +7,7 @@ import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/features/navigation/room_id_url.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_token.dart';
-import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/common/widgets/room_unavailable_panel.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
@@ -47,23 +47,7 @@ class LeftPanelRoomSubpage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Give the empty state the panel's close control (#7746)
-    // to avoid stranding the user
-    final emptyPage = Semantics(
-      container: true,
-      child: Scaffold(
-        appBar: AppBar(leading: closeButton),
-        body: Center(
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Text(
-              L10n.of(context).youAreNoLongerParticipatingInThisChat,
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ),
-      ),
-    );
+    final emptyPage = RoomUnavailablePanel(closeButton: closeButton);
 
     final id = param?.id;
     if (id == null) return emptyPage;
