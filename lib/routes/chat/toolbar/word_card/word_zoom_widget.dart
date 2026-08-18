@@ -22,6 +22,7 @@ import 'package:fluffychat/routes/chat/toolbar/word_card/lemma_meaning_display.d
 import 'package:fluffychat/routes/chat/toolbar/word_card/lemma_reaction_picker.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/message_unsubscribed_card.dart';
 import 'package:fluffychat/routes/chat/toolbar/word_card/token_feedback_button.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 import 'package:fluffychat/widgets/analytics_summary/progress_indicators_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -258,7 +259,7 @@ class _WordCardHeaderState extends State<_WordCardHeader>
     // device text size or the word is clipped by its own row
     // (accessibility.instructions.md, Text scaling).
     return SizedBox(
-      height: MediaQuery.textScalerOf(context).scale(40.0),
+      height: 40.0 * MediaQuery.textScalerOf(context).factorAt(28.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

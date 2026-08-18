@@ -8,6 +8,25 @@ import 'package:fluffychat/routes/analytics/construct_analytics/practice/analyti
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/multiple_choice_practice_exercise_model.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
+
+/// Stands in for the system scaler on Android 14+, where scaling is a curve
+/// rather than one multiplier: small text grows more than large text, so no
+/// single factor describes it and `scale(x)` is not `x * factor`.
+class _NonLinearTextScaler extends TextScaler {
+  const _NonLinearTextScaler();
+
+  static const double smallFactor = 3.0;
+  static const double largeFactor = 1.5;
+  static const double threshold = 20.0;
+
+  @override
+  double scale(double fontSize) =>
+      fontSize * (fontSize <= threshold ? smallFactor : largeFactor);
+
+  @override
+  double get textScaleFactor => smallFactor;
+}
 
 /// #7719 follow-up — the device text scaler now reaches surfaces that used to
 /// be pinned to `noScaling`, so every fixed-size box wrapped around one of them
@@ -19,15 +38,46 @@ import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exerc
 void main() {
   const maxDeviceScale = 3.0;
 
-  Future<void> pumpAt(WidgetTester tester, double scale, Widget child) =>
+  Future<void> pumpWith(WidgetTester tester, TextScaler scaler, Widget child) =>
       tester.pumpWidget(
         MaterialApp(
           home: MediaQuery(
-            data: MediaQueryData(textScaler: TextScaler.linear(scale)),
+            data: MediaQueryData(textScaler: scaler),
             child: Scaffold(body: child),
           ),
         ),
       );
+
+  Future<void> pumpAt(WidgetTester tester, double scale, Widget child) =>
+      pumpWith(tester, TextScaler.linear(scale), child);
+
+  group('TextScaler.factorAt', () {
+    test('is the plain factor for a linear scaler', () {
+      expect(TextScaler.linear(2.5).factorAt(16.0), 2.5);
+      expect(TextScaler.linear(2.5).factorAt(28.0), 2.5);
+      expect(TextScaler.noScaling.factorAt(16.0), 1.0);
+    });
+
+    test('reads a non-linear scaler at the font size asked for', () {
+      const scaler = _NonLinearTextScaler();
+
+      expect(scaler.factorAt(16.0), _NonLinearTextScaler.smallFactor);
+      expect(scaler.factorAt(28.0), _NonLinearTextScaler.largeFactor);
+    });
+
+    test('a raw dimension fed to scale() answers for the wrong size', () {
+      const scaler = _NonLinearTextScaler();
+
+      // The mistake this replaces: a 250px box asked as if it were a 250pt
+      // font lands on the far end of the curve, and grows by the factor large
+      // text gets rather than the one its 16pt contents get.
+      expect(scaler.scale(250.0), 250.0 * _NonLinearTextScaler.largeFactor);
+      expect(
+        250.0 * scaler.factorAt(AppConfig.messageFontSize),
+        250.0 * _NonLinearTextScaler.smallFactor,
+      );
+    });
+  });
 
   group('word card height', () {
     testWidgets('grows with the device text scaler', (tester) async {
@@ -65,6 +115,29 @@ void main() {
             'device text sizes',
       );
     });
+
+    testWidgets('follows a non-linear scaler at its text size', (tester) async {
+      late double height;
+
+      await pumpWith(
+        tester,
+        const _NonLinearTextScaler(),
+        Builder(
+          builder: (context) {
+            height = AppConfig.scaledToolbarMaxHeight(context);
+            return const SizedBox();
+          },
+        ),
+      );
+
+      expect(
+        height,
+        AppConfig.toolbarMaxHeight * _NonLinearTextScaler.smallFactor,
+        reason:
+            'the box has to grow the way its 16pt contents grow; handing 250 '
+            'to scale() reads the curve at a font size the card never renders',
+      );
+    });
   });
 
   group('analytics practice example-message slot', () {
@@ -81,13 +154,13 @@ void main() {
           ),
         );
 
-    Future<double> slotHeight(WidgetTester tester, double scale) async {
+    Future<double> slotHeight(WidgetTester tester, TextScaler scaler) async {
       final controller = AudioPlaybackSpeedController();
       addTearDown(controller.dispose);
 
-      await pumpAt(
+      await pumpWith(
         tester,
-        scale,
+        scaler,
         AnalyticsPracticeExerciseContent(
           analyticsPracticeExercise: exercise(),
           showHint: false,
@@ -103,8 +176,8 @@ void main() {
     }
 
     testWidgets('grows with the device text scaler', (tester) async {
-      final atOne = await slotHeight(tester, 1.0);
-      final atMax = await slotHeight(tester, maxDeviceScale);
+      final atOne = await slotHeight(tester, TextScaler.linear(1.0));
+      final atMax = await slotHeight(tester, TextScaler.linear(maxDeviceScale));
 
       expect(atOne, 100.0);
       expect(
@@ -113,6 +186,19 @@ void main() {
         reason:
             'the example message inside scales with the device text size, so '
             'a fixed 100 clips the bubble',
+      );
+      expect(tester.takeException(), isNull);
+    });
+
+    testWidgets('follows a non-linear scaler at its text size', (tester) async {
+      final height = await slotHeight(tester, const _NonLinearTextScaler());
+
+      expect(
+        height,
+        100.0 * _NonLinearTextScaler.smallFactor,
+        reason:
+            'the slot tracks the message text inside it, not what the curve '
+            'would do to a 100pt font',
       );
       expect(tester.takeException(), isNull);
     });

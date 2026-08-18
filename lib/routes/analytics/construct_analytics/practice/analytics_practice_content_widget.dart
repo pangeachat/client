@@ -7,6 +7,7 @@ import 'package:fluffychat/routes/chat/audio_player.dart';
 import 'package:fluffychat/routes/chat/events/audio_playback_speed_controller.dart';
 import 'package:fluffychat/routes/chat/toolbar/message_practice/message_audio_card.dart';
 import 'package:fluffychat/routes/chat/toolbar/practice_exercises/practice_exercise_model.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class AnalyticsPracticeExerciseContent extends StatelessWidget {
@@ -65,7 +66,11 @@ class AnalyticsPracticeExerciseContent extends StatelessWidget {
       // sits in has to grow with it — a fixed 100 clips the bubble outright at
       // large text sizes (accessibility.instructions.md, Text scaling).
       _ => SizedBox(
-        height: MediaQuery.textScalerOf(context).scale(100.0),
+        height:
+            100.0 *
+            MediaQuery.textScalerOf(
+              context,
+            ).factorAt(AppConfig.messageFontSize),
         child: Center(
           child: AnalyticsPracticeExerciseExampleMessage(exampleMessage),
         ),

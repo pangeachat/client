@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/pangea/common/config/environment.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 
 abstract class AppConfig {
   static String get defaultHomeserver => Environment.synapseURL;
@@ -137,8 +138,15 @@ abstract class AppConfig {
   /// the unscaled 250 clips it. Everything that reserves room for that card
   /// must use the same value, or the card and the space held for it disagree.
   /// See accessibility.instructions.md, Text scaling.
+  ///
+  /// The card's height is driven by its stack of body lines, so it grows by the
+  /// factor the scaler applies at [messageFontSize] — the card's smallest text,
+  /// which under a non-linear system scaler takes the largest factor of
+  /// anything in the card. The box therefore errs toward extra room rather than
+  /// clipping.
   static double scaledToolbarMaxHeight(BuildContext context) =>
-      MediaQuery.textScalerOf(context).scale(toolbarMaxHeight);
+      toolbarMaxHeight *
+      MediaQuery.textScalerOf(context).factorAt(messageFontSize);
 
   static TextStyle messageTextStyle(Event? event, Color textColor) {
     final fontSize = messageFontSize;

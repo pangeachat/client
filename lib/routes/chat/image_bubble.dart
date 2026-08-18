@@ -5,6 +5,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/utils/file_description.dart';
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 import 'package:fluffychat/widgets/image_viewer/image_viewer.dart';
 import 'package:fluffychat/widgets/url_image_widget.dart';
@@ -143,7 +144,11 @@ class ImageBubble extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Linkify(
                 text: fileDescription,
-                textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
+                // Linkify defaults this multiplier to 1.0 (= no scaling) and must
+                // be given one; see TextScalerFactorExtension.factorAt.
+                textScaleFactor: MediaQuery.textScalerOf(
+                  context,
+                ).factorAt(AppConfig.messageFontSize),
                 style: TextStyle(
                   color: textColor,
                   fontSize: AppConfig.messageFontSize,
