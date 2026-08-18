@@ -19,6 +19,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.da
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_menu.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_stats_menu.dart';
+import 'package:fluffychat/routes/chat/calls/call_page.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_title.dart';
@@ -74,7 +75,20 @@ class ChatView extends StatelessWidget {
       ];
     }
 
+    // v1 is direct messages only, and only where the homeserver advertises an
+    // RTC focus — offering a button that cannot work is worse than not offering
+    // one. Group calls are the same transport with more members and land later.
+    final callService = Matrix.of(context).callService;
+    final canCall = controller.room.isDirectChat && callService.isAvailable;
+
     return [
+      if (canCall)
+        IconButton(
+          icon: const Icon(Icons.call_outlined),
+          tooltip: L10n.of(context).startCall,
+          onPressed: () =>
+              CallPage.show(context, controller.room, video: false),
+        ),
       IconButton(
         icon: const Icon(Icons.search_outlined),
         tooltip: L10n.of(context).search,
