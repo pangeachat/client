@@ -30,6 +30,14 @@ enum CallStage {
   failed,
 }
 
+/// Thrown when a hangup overtakes a step of coming up.
+///
+/// Not an error: the user ended the call, and every partially built piece is
+/// unwound by the one handler that catches this.
+class _Abandoned implements Exception {
+  const _Abandoned();
+}
+
 /// One call, from tapping Call to hanging up.
 ///
 /// Exists as its own object rather than as widget state because the ordering
@@ -315,18 +323,36 @@ class ActiveCall extends ChangeNotifier {
     bool answering = false,
   }) => _starting = _start(room, video: video, answering: answering);
 
+  /// Runs one step of coming up, and gives up if a hangup has landed.
+  ///
+  /// Checked on BOTH sides of the await. Coming up is a sequence of network
+  /// round-trips and a hangup can land inside any of them, so every step needs
+  /// the same guard — and requiring each one to remember it is what made this
+  /// class of bug recur: a step added later simply would not have it. Going
+  /// through here means the guard cannot be left out.
+  Future<T> _step<T>(Future<T> Function() run) async {
+    if (_ending) throw const _Abandoned();
+    final result = await run();
+    if (_ending) throw const _Abandoned();
+    return result;
+  }
+
+  /// Gives up here if a hangup has landed, for the one step that must record
+  /// its result before deciding whether to continue.
+  void _abandonIfEnding() {
+    if (_ending) throw const _Abandoned();
+  }
+
   Future<void> _start(
     matrix.Room room, {
     required bool video,
     required bool answering,
   }) async {
     try {
-      final grant = await calls.join(room);
+      final grant = await _step(() => calls.join(room));
       _joined = true;
-      if (_ending) return _abandon();
 
-      await media.connect(grant, video: video);
-      if (_ending) return _abandon();
+      await _step(() => media.connect(grant, video: video));
 
       _track = media.publishedAudio;
       if (_track == null) {
@@ -363,7 +389,7 @@ class ActiveCall extends ChangeNotifier {
       // Settle the first election before announcing, so recording is already
       // running when the peer learns this device is here. Handovers are queued,
       // so without this the initial start would land a microtask later.
-      await _handover;
+      await _step(() => _handover);
 
       // Whether the peer is already here decides what their later absence
       // means: gone, or simply not answered yet. Read from the roster rather
@@ -383,8 +409,7 @@ class ActiveCall extends ChangeNotifier {
       // to echo — the ring needs it, so this is where the wait belongs. Kept,
       // because it is also the only event a device that JOINED a call — with no
       // ring of its own to point at — can anchor its speaking analytics to.
-      final membershipId = _membershipEventId = await calls.announce();
-      if (_ending) return _abandon();
+      final membershipId = _membershipEventId = await _step(calls.announce);
 
       // Ring the other side, if we are the one placing the call. A timeline
       // event, so it reaches them via push even if their app was closed —
@@ -409,7 +434,10 @@ class ActiveCall extends ChangeNotifier {
         );
         // A decline can beat our own send home; replay one if it did.
         _catchUpOnDeclines();
-        if (_ending) return _abandon();
+        // Not _step: the id above must be recorded even when we are giving up,
+        // because their phone rang and that is what makes this a call worth
+        // recording rather than nothing at all.
+        _abandonIfEnding();
       }
 
       // State may have moved while announcing. Awaited too, so start() leaves
@@ -417,18 +445,18 @@ class ActiveCall extends ChangeNotifier {
       // run inside teardown and stop the recording before the membership was
       // retracted, delaying what the peer sees by the length of a flush.
       _electRecorder();
-      await _handover;
-      // The last of them. Without this a hangup landing during the final
-      // reconcile would let the call report itself connected after it had been
-      // torn down, and the screen would show a live call that no longer exists.
-      if (_ending) return _abandon();
+      await _step(() => _handover);
 
       _to(CallStage.connected);
+    } on _Abandoned {
+      // The user ended the call while it was coming up. Every piece already
+      // built is unwound here, once, for whichever step gave up.
+      return _abandon();
     } catch (e, s) {
       if (_ending) {
-        // Tearing down underneath a step in flight is what made it throw. The
-        // user ended this call; telling them it failed would be untrue, and it
-        // would show an error where they expect the screen to simply close.
+        // Tearing down underneath a step in flight is what made it throw, so
+        // this is the same abandonment arriving as somebody else's error.
+        // Telling the user their call failed would be untrue.
         Logs().d('Call abandoned while coming up: $e');
         return _abandon();
       }

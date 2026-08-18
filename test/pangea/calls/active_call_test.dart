@@ -64,8 +64,10 @@ class FakeCalls extends CallService {
   final _declines = StreamController<Event>.broadcast();
   String? ringedNotificationId;
 
-  /// Held open to reproduce a hangup landing mid-ring.
+  /// Held open to reproduce a hangup landing mid-step.
   Completer<void>? holdRing;
+  Completer<void>? holdJoin;
+  Completer<void>? holdAnnounce;
 
   /// Whether anything is still subscribed for declines. A subscription made
   /// after teardown has nothing left able to cancel it.
@@ -125,6 +127,7 @@ class FakeCalls extends CallService {
   @override
   Future<CallToken> join(matrix.Room room) async {
     trace('join');
+    if (holdJoin != null) await holdJoin!.future;
     if (joinError != null) throw joinError!;
     return const CallToken(jwt: 'jwt', url: 'ws://sfu');
   }
@@ -132,6 +135,7 @@ class FakeCalls extends CallService {
   @override
   Future<String?> announce() async {
     trace('announce');
+    if (holdAnnounce != null) await holdAnnounce!.future;
     if (announceError != null) throw announceError!;
     return membershipId;
   }
@@ -1035,5 +1039,84 @@ void main() {
       expect(call.notificationEventId, isNull);
       expect(call.membershipEventId, isNotNull);
     });
+  });
+  group('a hangup during the LAST step of coming up', () {
+    test('abandons rather than reporting the call connected', () async {
+      // The final step is the one a missing guard actually shows up in: every
+      // earlier step is masked by the NEXT step's check, so only here can an
+      // unguarded await let a torn-down call report itself connected.
+      final (call, calls, _, capture) = await build();
+      final ringGate = Completer<void>();
+      final stopGate = Completer<void>();
+      calls.holdRing = ringGate;
+      capture.holdStop = stopGate;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+
+      // A sibling that outranks us appears, so the election queues a handover
+      // that the final step will wait on.
+      calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
+      await pumpEventQueue();
+      ringGate.complete();
+      await pumpEventQueue();
+
+      // Every stage this call ever reports. Asserting only the final one cannot
+      // see the defect: the hangup's own transition to ended lands afterwards
+      // and overwrites it, so a call that briefly announced itself connected
+      // looks identical to one that never did.
+      final seen = <CallStage>[];
+      call.addListener(() => seen.add(call.stage));
+
+      // Now the hangup lands, with only the final await left to catch it.
+      final hangingUp = call.hangUp();
+      stopGate.complete();
+      await starting;
+      await hangingUp;
+
+      expect(
+        seen,
+        isNot(contains(CallStage.connected)),
+        reason:
+            'a torn-down call must never report itself connected, even once',
+      );
+      expect(call.stage, CallStage.ended);
+    });
+  });
+
+  group('a hangup during any step of coming up', () {
+    // Coming up is a sequence of network round-trips and a hangup can land
+    // inside any of them. Every step must abandon the call, and this covers
+    // them ALL rather than the one a review happened to name — a step added
+    // later that forgets the guard fails here.
+    for (final step in const ['join', 'connect', 'announce', 'ring']) {
+      test('a hangup during $step abandons the call', () async {
+        final (call, calls, media, _) = await build();
+        final gate = Completer<void>();
+        switch (step) {
+          case 'join':
+            calls.holdJoin = gate;
+          case 'connect':
+            media.beforeConnect = gate.future;
+          case 'announce':
+            calls.holdAnnounce = gate;
+          case 'ring':
+            calls.holdRing = gate;
+        }
+
+        final starting = call.start(roomStub(calls.client), video: false);
+        await pumpEventQueue();
+        final hangingUp = call.hangUp();
+        gate.complete();
+        await starting;
+        await hangingUp;
+
+        expect(
+          call.stage,
+          CallStage.ended,
+          reason: 'a hangup during $step must abandon, not connect or fail',
+        );
+      });
+    }
   });
 }
