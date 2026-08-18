@@ -323,15 +323,20 @@ class CallService {
     }
   }
 
-  /// Fires when [notificationEventId]'s call is declined by the other side.
-  Stream<Event> declinesOf(Room room, String notificationEventId) =>
-      client.onTimelineEvent.stream.where(
-        (event) =>
-            event.room.id == room.id &&
-            event.type == PangeaEventTypes.callDecline &&
-            event.senderId != client.userID &&
-            _declineRefersTo(event) == notificationEventId,
-      );
+  /// Every decline sent by someone else in [room].
+  ///
+  /// Deliberately not filtered to one call: a caller has to be listening before
+  /// its own ring has finished sending, which is before it knows the id a
+  /// decline would point at. Matching is the caller's job.
+  Stream<Event> declinesIn(Room room) => client.onTimelineEvent.stream.where(
+    (event) =>
+        event.room.id == room.id &&
+        event.type == PangeaEventTypes.callDecline &&
+        event.senderId != client.userID,
+  );
+
+  /// The notification a decline points back at, or null if it points at nothing.
+  String? declineTarget(Event event) => _declineRefersTo(event);
 
   String? _declineRefersTo(Event event) {
     final relation = event.content['m.relates_to'];

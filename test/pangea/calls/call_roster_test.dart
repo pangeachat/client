@@ -103,6 +103,33 @@ void main() {
       expect(p.deviceId, isNull);
     });
 
+    test('this account own id is matched exactly, port and all', () {
+      // A homeserver may carry a port, so `@u:host:8448` is both a plausible
+      // bare user id and a plausible user-plus-device. Knowing our own id is
+      // what settles it — guessing wrong would read our own second device as
+      // another person and tell a caller their call had been answered.
+      const mine = '@learner:localhost:8448';
+      expect(
+        CallParticipant.parse(mine, myUserId: mine),
+        const CallParticipant(userId: mine),
+      );
+      expect(
+        CallParticipant.parse('$mine:PHONE', myUserId: mine),
+        const CallParticipant(userId: mine, deviceId: 'PHONE'),
+      );
+    });
+
+    test('our own device is never counted as a peer', () {
+      const mine = '@learner:localhost:8448';
+      final ported = TestRoster(room: room, myUserId: mine)
+        ..identities = {'$mine:PHONE'}
+        ..recompute();
+      addTearDown(ported.dispose);
+
+      expect(ported.hasPeer, isFalse);
+      expect(ported.siblingDeviceIds, ['PHONE']);
+    });
+
     test('a homeserver with a port still parses', () {
       final p = CallParticipant.parse('@learner:localhost:8008:DEVICE');
       expect(p.userId, '@learner:localhost:8008');

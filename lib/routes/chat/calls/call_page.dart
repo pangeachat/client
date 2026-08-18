@@ -71,12 +71,6 @@ class _CallPageState extends State<CallPage> {
   late final DateTime _startedAt;
   DateTime? _endedAt;
 
-  /// Whether a conversation actually happened: this device connected AND someone
-  /// answered. Reaching the SFU alone is not a call — a call that failed to
-  /// start, or rang out unanswered, would otherwise be written to the room and
-  /// credit the learner for talking to nobody.
-  bool _wasConnected = false;
-
   /// Whether this device got as far as an established call. A call that failed
   /// to start is not written at all; one that rang out unanswered is, as a
   /// missed call.
@@ -157,7 +151,6 @@ class _CallPageState extends State<CallPage> {
     if (_call.stage == CallStage.connected) {
       _reachedCall = true;
       if (_call.hadPeer) {
-        _wasConnected = true;
         _talkingSince ??= DateTime.now();
         _tick ??= Timer.periodic(const Duration(seconds: 1), (_) {
           if (mounted) setState(() {});
@@ -228,7 +221,12 @@ class _CallPageState extends State<CallPage> {
         return _record.finish(
           duration: _endedAt!.difference(_startedAt),
           video: _usedVideo,
-          answered: _wasConnected,
+          // Whether anyone was ever on the other end, read from the call
+          // itself. Latching this on observing the connected stage dropped a
+          // real case: a peer who was present and left while we were still
+          // announcing meant the stage never reached connected, and a call that
+          // genuinely had someone on it was recorded as missed.
+          answered: _call.hadPeer,
           declined: _call.wasDeclined,
           // Only the side that placed the call posts it. Both sides run this
           // same teardown, so writing from both would put two identical cards

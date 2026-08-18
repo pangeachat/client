@@ -19,13 +19,27 @@ class CallParticipant {
 
   const CallParticipant({required this.userId, this.deviceId});
 
-  /// Splits at the LAST colon: a Matrix user id contains one itself
-  /// (`@name:server`), so anything before the final segment belongs to it.
-  factory CallParticipant.parse(String identity) {
+  /// Splits a `@user:server:DEVICE` identity.
+  ///
+  /// [myUserId], when given, settles an ambiguity that cannot be settled by
+  /// looking at the string: a homeserver may carry a port, so `@u:host:8448` is
+  /// both a plausible bare user id and a plausible user-plus-device. Matching
+  /// this account's own id first means our own devices are never misread as
+  /// somebody else — which would have told a caller their call was answered
+  /// when the only other participant was themselves.
+  factory CallParticipant.parse(String identity, {String? myUserId}) {
+    if (myUserId != null && myUserId.isNotEmpty) {
+      if (identity == myUserId) return CallParticipant(userId: myUserId);
+      if (identity.startsWith('$myUserId:')) {
+        return CallParticipant(
+          userId: myUserId,
+          deviceId: identity.substring(myUserId.length + 1),
+        );
+      }
+    }
+    // Someone else. The last segment is taken as their device, which is what
+    // the token service always appends.
     final split = identity.lastIndexOf(':');
-    // A bare `@name:server` has its only colon inside the user id. Requiring a
-    // colon EARLIER than the split is what distinguishes an identity carrying a
-    // device from one that is just a user id.
     if (split <= 0 ||
         !identity.startsWith('@') ||
         identity.indexOf(':') == split) {
@@ -133,7 +147,9 @@ class CallRoster extends ChangeNotifier {
       return;
     }
 
-    final next = remoteIdentities.map(CallParticipant.parse).toSet();
+    final next = remoteIdentities
+        .map((id) => CallParticipant.parse(id, myUserId: myUserId))
+        .toSet();
     // Notified on reconnection even when the list is unchanged, because the
     // frozen window ended and listeners gated on connectedness need to know.
     if (wasConnected && setEquals(next, _participants)) return;

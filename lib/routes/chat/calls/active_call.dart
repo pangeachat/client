@@ -201,6 +201,15 @@ class ActiveCall extends ChangeNotifier {
     _electRecorder();
   }
 
+  /// A decline seen in the room. Matched against our own call HERE rather than
+  /// when subscribing, because the subscription is deliberately older than the
+  /// notification id it is matching.
+  void _onDeclineEvent(Event event) {
+    final ours = _notificationId;
+    if (ours == null || calls.declineTarget(event) != ours) return;
+    _onDeclined();
+  }
+
   void _onDeclined() {
     if (_ending || _peerArrived) return;
     Logs().i('The call was declined');
@@ -328,6 +337,13 @@ class ActiveCall extends ChangeNotifier {
       // membership alone could not. Its id is what a decline points back at, so
       // we keep it to match one. The answerer does not ring: a notification from
       // them would ring the caller, who is already here.
+      // Subscribed BEFORE the ring goes out. A decline can only follow the
+      // ring, but our own send has not necessarily returned by the time the
+      // callee acts, and a stream with no replay drops anything that lands in
+      // that gap — the caller would then sit through the whole ring instead of
+      // being told they were turned down.
+      _declines = calls.declinesIn(room).listen(_onDeclineEvent);
+
       if (placing && membershipId != null) {
         // Assigned before the check, so a hangup landing here still knows the
         // other side was rung — their phone rang, and that is what makes this a
@@ -338,11 +354,6 @@ class ActiveCall extends ChangeNotifier {
           video: video,
         );
         if (_ending) return _abandon();
-      }
-      if (_notificationId != null) {
-        _declines = calls
-            .declinesOf(room, _notificationId!)
-            .listen((_) => _onDeclined());
       }
 
       // State may have moved while announcing. Awaited too, so start() leaves
@@ -416,16 +427,19 @@ class ActiveCall extends ChangeNotifier {
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
     try {
-      // Detached before the media it reads is released, and disposed here
-      // rather than left to the media: it holds a listener on the room.
-      _roster?.removeListener(_onParticipantsChanged);
-      _roster?.dispose();
+      // Detached synchronously so nothing else arrives, but disposed only once
+      // the current notification has unwound. Teardown is routinely triggered BY
+      // a roster notification — the peer leaving — and disposing a notifier
+      // while it is still walking its listener list is how that becomes a crash.
+      final roster = _roster;
+      _roster = null;
+      roster?.removeListener(_onParticipantsChanged);
+      if (roster != null) scheduleMicrotask(roster.dispose);
     } catch (e, s) {
       // Every step of teardown is isolated. An error here once aborted the whole
       // unwind, leaving the membership advertised and the call unrecorded.
       Logs().w('Could not stop watching participants', e, s);
     }
-    _roster = null;
 
     if (_joined) {
       try {

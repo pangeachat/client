@@ -83,12 +83,11 @@ class FakeCalls extends CallService {
   }
 
   @override
-  Stream<Event> declinesOf(matrix.Room room, String notificationEventId) =>
-      _declines.stream.where(
-        (event) =>
-            (event.content['m.relates_to'] as Map?)?['event_id'] ==
-            notificationEventId,
-      );
+  Stream<Event> declinesIn(matrix.Room room) => _declines.stream;
+
+  @override
+  String? declineTarget(Event event) =>
+      (event.content['m.relates_to'] as Map?)?['event_id'] as String?;
 
   /// The other person turning down the call this device rang.
   Future<void> peerDeclines() async {
