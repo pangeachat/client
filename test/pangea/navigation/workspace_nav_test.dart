@@ -416,6 +416,25 @@ void main() {
       expect(param.expanded, isFalse);
     });
 
+    test('a trailing segment after /all is malformed, not a push', () {
+      final param = CourseDetailsTokenParam.parse('chat/all/bogus');
+      expect(param.activeTab, SpaceSettingsTabs.chat);
+      expect(param.expanded, isFalse);
+      expect(param.isPushed, isFalse);
+    });
+
+    test('an expanded non-expandable section is not pushed', () {
+      // `more` shows everything inline; its /all degrades to the section
+      // scroll, so the panel must not render a back arrow over the plain card.
+      const param = CourseDetailsTokenParam(
+        activeTab: SpaceSettingsTabs.more,
+        expanded: true,
+      );
+      expect(param.expandedSection, isNull);
+      expect(param.isPushed, isFalse);
+      expect(param.poppedParam, isNull);
+    });
+
     test('keeps a live room beside the course (a course can scope a room)', () {
       // A course-scoped room: the `?m=course:` filter is set, the room is live,
       // and opening the course card keeps the room beside it.

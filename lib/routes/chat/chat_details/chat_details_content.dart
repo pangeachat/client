@@ -50,7 +50,7 @@ class ChatDetailsContent extends StatelessWidget {
       cancelLabel: L10n.of(context).cancel,
       initialText: room.getLocalizedDisplayname(MatrixLocals(L10n.of(context))),
     );
-    if (input == null) return;
+    if (input == null || !context.mounted) return;
     final success = await showFutureLoadingDialog(
       context: context,
       future: () => room.setName(input),
@@ -269,7 +269,10 @@ class ChatDetailsContent extends StatelessWidget {
                                           room.id,
                                           ['details', 'invite'],
                                           context,
-                                          filter: InvitationFilter.participants,
+                                          filter:
+                                              InvitationFilter.defaultForRoom(
+                                                room,
+                                              ),
                                         ),
                                   icon: const Icon(
                                     Icons.group_outlined,

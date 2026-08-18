@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -52,9 +53,22 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
     if (widget.room == null ||
         widget.room!.membership != Membership.join ||
         widget.room!.participantListComplete) {
+      // A joined room whose list is already complete still needs profiles for
+      // level sorting/styling: this instance's cache starts empty regardless.
+      if (widget.loadProfiles && widget.room?.membership == Membership.join) {
+        try {
+          await _cacheLevels();
+        } catch (err, s) {
+          ErrorHandler.logError(
+            e: err,
+            s: s,
+            data: {'roomId': widget.room?.id},
+          );
+        }
+      }
       // loading starts true; a room that skips the fetch (e.g. one the user
       // has left) must still clear it or consumers spin forever (#8148).
-      if (loading) {
+      if (mounted && loading) {
         setState(() => loading = false);
       }
       return;
@@ -109,23 +123,29 @@ class LoadParticipantsBuilderState extends State<LoadParticipantsBuilder> {
     return participants;
   }
 
+  /// How many profile requests run at once. Parallel (not serial) so levels
+  /// land together instead of trickling and re-sorting the list per profile,
+  /// but bounded so a large course doesn't burst the analytics endpoint.
+  static const int _profileConcurrency = 8;
+
   Future<void> _cacheLevels() async {
-    // In parallel: awaiting each profile serially made levels trickle in one
-    // at a time, so the level-sorted lists reshuffled as each landed.
-    await Future.wait(
-      participants
-          .where(
-            (user) =>
-                _levelsCache[user.id] == null &&
-                user.membership == Membership.join,
-          )
-          .map((user) async {
-            _levelsCache[user.id] = await MatrixState
-                .pangeaController
-                .userController
-                .getPublicAnalyticsProfile(user.id);
-          }),
-    );
+    final pending = participants
+        .where(
+          (user) =>
+              _levelsCache[user.id] == null &&
+              user.membership == Membership.join,
+        )
+        .toList();
+    for (final batch in pending.slices(_profileConcurrency)) {
+      await Future.wait(
+        batch.map((user) async {
+          _levelsCache[user.id] = await MatrixState
+              .pangeaController
+              .userController
+              .getPublicAnalyticsProfile(user.id);
+        }),
+      );
+    }
   }
 
   AnalyticsProfileModel? getAnalyticsProfile(String userId) {

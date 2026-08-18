@@ -42,6 +42,7 @@ class CourseParticipantsPreview extends StatelessWidget {
                             (ParticipantCard.width + _spacing))
                         .floor()
                         .clamp(1, maxParticipants)
+                        .toInt()
                   : maxParticipants;
               return Row(
                 spacing: _spacing,

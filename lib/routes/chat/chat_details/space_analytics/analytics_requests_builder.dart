@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/analytics/client_analytics_extension.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// Loads and watches the course admins knocking on the user's analytics
 /// rooms with [room] (the course) as the reason — the analytics-access
@@ -51,15 +52,9 @@ class AnalyticsRequestsBuilderState extends State<AnalyticsRequestsBuilder> {
 
   Future<void> _init() async {
     final analyticsRooms = widget.room.client.allMyAnalyticsRooms;
-    final futures = analyticsRooms.map(
-      (r) => r.requestParticipants(
-        [Membership.join, Membership.invite, Membership.knock],
-        false,
-        true,
-      ),
-    );
-    await Future.wait(futures);
-
+    // Subscribe FIRST, so a member update landing while the initial load is
+    // in flight isn't missed — and so a failed initial load still leaves the
+    // section live for later updates.
     final analyticsRoomIds = analyticsRooms.map((r) => r.id).toSet();
     _analyticsRoomSub?.cancel();
     _analyticsRoomSub = widget.room.client.onSync.stream.listen((update) async {
@@ -93,25 +88,45 @@ class AnalyticsRequestsBuilderState extends State<AnalyticsRequestsBuilder> {
         setState(() {});
       }
     });
+
+    try {
+      await Future.wait(
+        analyticsRooms.map(
+          (r) => r.requestParticipants(
+            [Membership.join, Membership.invite, Membership.knock],
+            false,
+            true,
+          ),
+        ),
+      );
+    } catch (err, s) {
+      // The subscription above still refreshes on the next member update;
+      // log rather than let the initializer complete with an unhandled error.
+      ErrorHandler.logError(e: err, s: s, data: {'roomId': widget.room.id});
+    }
+    if (mounted) setState(() {});
   }
 
   /// Each requesting admin, with the analytics rooms they knocked on citing
-  /// this course.
+  /// this course. Grouped by user ID — `User ==` also compares room, so the
+  /// same admin knocking several analytics rooms would otherwise be listed
+  /// once per room; the first-seen `User` stands in for display and actions.
   Map<User, List<Room>> get requests {
-    final Map<User, List<Room>> knockingAdmins = {};
+    final Map<String, User> adminsById = {};
+    final Map<String, List<Room>> roomsByAdminId = {};
     for (final analyticsRoom in widget.room.client.allMyAnalyticsRooms) {
       final knocking = analyticsRoom
           .getParticipants([Membership.knock])
-          .where((u) => u.content['reason'] == widget.room.id)
-          .toList();
-
-      if (knocking.isEmpty) continue;
+          .where((u) => u.content['reason'] == widget.room.id);
       for (final admin in knocking) {
-        knockingAdmins.putIfAbsent(admin, () => []).add(analyticsRoom);
+        adminsById.putIfAbsent(admin.id, () => admin);
+        roomsByAdminId.putIfAbsent(admin.id, () => []).add(analyticsRoom);
       }
     }
-
-    return knockingAdmins;
+    return {
+      for (final entry in adminsById.entries)
+        entry.value: roomsByAdminId[entry.key]!,
+    };
   }
 
   @override

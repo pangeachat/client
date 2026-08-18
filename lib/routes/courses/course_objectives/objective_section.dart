@@ -218,6 +218,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
             // clicks route through the semantics DOM.
             button: widget.collapsible,
             container: widget.collapsible,
+            expanded: widget.collapsible ? !_collapsed : null,
             child: InkWell(
               onTap: widget.collapsible
                   ? () => setState(() => _collapsed = !_collapsed)

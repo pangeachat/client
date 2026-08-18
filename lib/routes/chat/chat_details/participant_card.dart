@@ -55,7 +55,10 @@ class ParticipantCard extends StatelessWidget {
       }
     }
 
-    return rankOf(a).compareTo(rankOf(b));
+    // Deterministic within a rank: List.sort is not stable, and callers hand
+    // in a level-sorted list whose order the tie-break must not scramble.
+    final byRank = rankOf(a).compareTo(rankOf(b));
+    return byRank != 0 ? byRank : a.id.compareTo(b.id);
   }
 
   /// The ring for [user]: its position among [leaders] (the level-sorted top

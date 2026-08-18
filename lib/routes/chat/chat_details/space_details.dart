@@ -9,6 +9,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
 import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
+import 'package:fluffychat/features/navigation/token_params/course_details_token.dart';
 import 'package:fluffychat/features/navigation/token_params/room_subpage_token.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/quests/lo_progression.dart';
@@ -78,19 +79,13 @@ class SpaceDetailsController extends State<SpaceDetails> {
 
   QuestObjectivesLoader get objectivesProvider => _objectivesProvider;
 
-  /// The sections with a full "See all" subpage. `more` shows everything
-  /// inline, so an expanded token for it degrades to the section scroll.
-  static const Set<SpaceSettingsTabs> _expandableSections = {
-    SpaceSettingsTabs.course,
-    SpaceSettingsTabs.chat,
-    SpaceSettingsTabs.participants,
-  };
-
-  SpaceSettingsTabs? get expandedSection {
-    final tab = widget.activeTab;
-    if (tab == null || !widget.expandedSection) return null;
-    return _expandableSections.contains(tab) ? tab : null;
-  }
+  /// The pushed subpage from the course token, sharing the token's own
+  /// expandable-section rule so the panel's back arrow and this page can't
+  /// disagree about what is pushed.
+  SpaceSettingsTabs? get expandedSection => CourseDetailsTokenParam(
+    activeTab: widget.activeTab,
+    expanded: widget.expandedSection,
+  ).expandedSection;
 
   String? get _questId => room.coursePlan?.uuid;
 
@@ -154,6 +149,13 @@ class SpaceDetailsController extends State<SpaceDetails> {
   void didUpdateWidget(covariant SpaceDetails oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.room.id != widget.room.id) {
+      // Clear the previous course's summaries synchronously so the new
+      // course can't briefly render the old completion marks while
+      // _loadSummaries is in flight.
+      roomSummariesModel = CourseInfoSummariesModel(
+        {},
+        activitiesToCompleteOverride: room.teacherMode.activitiesToUnlockTopic,
+      );
       WidgetsBinding.instance.addPostFrameCallback((_) {
         if (mounted) SpaceGoneGate.maybeShowDialog(context, room.id);
       });
@@ -208,14 +210,28 @@ class SpaceDetailsController extends State<SpaceDetails> {
   }
 
   /// Open the invite flow beside the card, seated on the most relevant contact
-  /// filter (knocking users first). See `routing.instructions.md`.
-  void openInvite() => context.go(
-    WorkspaceNav.openCoursePage(
-      GoRouterState.of(context).uri,
-      RoomSubpageEnum.invite,
-      filter: InvitationFilter.defaultForRoom(room),
-    ),
-  );
+  /// filter (knocking users first). Members are requested first so the knock
+  /// check can't run against a not-yet-loaded list (the SDK short-circuits
+  /// once the list is complete). See `routing.instructions.md`.
+  Future<void> openInvite() async {
+    try {
+      await room.requestParticipants(
+        [Membership.join, Membership.invite, Membership.knock],
+        false,
+        true,
+      );
+    } catch (_) {
+      // Fall through: the filter degrades to the non-knock default.
+    }
+    if (!mounted) return;
+    context.go(
+      WorkspaceNav.openCoursePage(
+        GoRouterState.of(context).uri,
+        RoomSubpageEnum.invite,
+        filter: InvitationFilter.defaultForRoom(room),
+      ),
+    );
+  }
 
   /// Open a course-management page (edit / access / permissions / change-course)
   /// as the card's DETAIL — a `coursepage` panel beside the card that coexists

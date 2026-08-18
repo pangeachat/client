@@ -26,6 +26,13 @@ class ExpandableTextState extends State<ExpandableText> {
     ..onTap = () => setState(() => _expanded = !_expanded);
 
   @override
+  void didUpdateWidget(covariant ExpandableText oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    // The slot is reused across courses; a new description starts collapsed.
+    if (oldWidget.text != widget.text) _expanded = false;
+  }
+
+  @override
   void dispose() {
     _toggleRecognizer.dispose();
     super.dispose();

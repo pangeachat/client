@@ -24,6 +24,7 @@ void main() {
 
   const userId = '@test:fakeServer.notExisting';
   const knockerId = '@knocker:fakeServer.notExisting';
+  const knockerName = 'Kai Knocker';
 
   setUpAll(() {
     // `Avatar` inside the knock row resolves the bot name from the environment
@@ -77,7 +78,7 @@ void main() {
     room.setState(
       Event(
         type: EventTypes.RoomMember,
-        content: {'membership': 'knock'},
+        content: {'membership': 'knock', 'displayname': knockerName},
         stateKey: knockerId,
         senderId: knockerId,
         eventId: '\$knock',
@@ -113,6 +114,8 @@ void main() {
 
     final context = tester.element(find.byType(CourseCatchUp));
     expect(find.text(L10n.of(context).catchUp), findsOneWidget);
+    // The row names the pending knocker, not just a generic label.
+    expect(find.text(knockerName), findsOneWidget);
     expect(find.text(L10n.of(context).knocking), findsOneWidget);
     expect(find.text(L10n.of(context).approve), findsOneWidget);
   });
