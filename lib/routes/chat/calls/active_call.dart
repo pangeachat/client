@@ -2,10 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/foundation.dart';
 
+import 'package:livekit_client/livekit_client.dart' show AudioTrack;
 import 'package:matrix/matrix.dart' hide Room;
 import 'package:matrix/matrix.dart' as matrix show Room;
 
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 
@@ -46,8 +48,47 @@ class ActiveCall extends ChangeNotifier {
   /// await, so a hangup that lands mid-connect stops the sequence instead of
   /// racing it to completion.
   bool _ending = false;
+  AudioTrack? _track;
+  StreamSubscription? _participants;
 
   ActiveCall({required this.calls, required this.media, required this.capture});
+
+  /// Starts or stops recording to match which device should be recording now.
+  ///
+  /// Runs whenever the call's participants change, because that is the only thing
+  /// that can change the answer. Idempotent — re-running it in the right state
+  /// does nothing — so it is safe to call on every event.
+  void _electRecorder() {
+    if (_ending) return;
+    final track = _track;
+    if (track == null) return;
+
+    final me = calls.client.deviceID ?? '';
+    final elected = CaptureElection(
+      myDeviceId: me,
+      // Siblings only. The election always counts the caller itself, so passing
+      // this device's own id would be harmless — filtering keeps the argument
+      // honest to its name.
+      siblingDeviceIds: calls.myDeviceIdsInCall.where((id) => id != me),
+    ).shouldRecord;
+
+    if (elected && !_capturing) {
+      capture.start(track);
+      _capturing = true;
+      Logs().i('Recording this call on this device');
+    } else if (!elected && _capturing) {
+      _capturing = false;
+      // Flushes what was already said. Not awaited: this runs from a stream
+      // callback, and a slow flush must not delay noticing further changes.
+      unawaited(
+        capture.stop().catchError(
+          (Object e, StackTrace s) =>
+              Logs().e('Could not stop recording on handover', e, s),
+        ),
+      );
+      Logs().i('Another device of this account is recording this call');
+    }
+  }
 
   CallStage get stage => _stage;
   Object? get error => _error;
@@ -83,18 +124,24 @@ class ActiveCall extends ChangeNotifier {
       await media.connect(grant, video: video);
       if (_ending) return _abandon();
 
-      final track = media.publishedAudio;
-      if (track != null) {
-        capture.start(track);
-        _capturing = true;
-      } else {
+      _track = media.publishedAudio;
+      if (_track == null) {
         // The call is still worth having without analytics; a call that refuses
         // to connect because it cannot be recorded is the worse failure.
         Logs().w('Call has no published audio track; not recording');
       }
 
+      // Before announcing, so recording can begin with the first word rather
+      // than after a round-trip. The election reads room state, which already
+      // lists any other device of this account — it does not need this one to be
+      // advertised first.
+      _electRecorder();
+
       await calls.announce();
       if (_ending) return _abandon();
+
+      // Watch for the other device leaving, or arriving later.
+      _participants = calls.callEvents?.listen((_) => _electRecorder());
 
       _to(CallStage.connected);
     } catch (e, s) {
@@ -151,6 +198,8 @@ class ActiveCall extends ChangeNotifier {
   /// membership standing.
   Future<void> _tearDown() async {
     _ending = true;
+    await _participants?.cancel();
+    _participants = null;
 
     if (_joined) {
       try {

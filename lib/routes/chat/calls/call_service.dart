@@ -134,6 +134,37 @@ class CallService {
     return grant;
   }
 
+  /// Every device of this account holding a live membership in the current call,
+  /// this one included.
+  ///
+  /// The SDK adds another of your own devices as an ordinary participant — it
+  /// excludes only the exact local device from mesh setup — so these come
+  /// straight off the session.
+  /// Read from room state rather than the session's participant list, because
+  /// this has to answer before this device has announced itself — the whole
+  /// point is to know whether to record from the first word, and the session
+  /// does not list anyone until membership changes have been processed.
+  ///
+  /// Expired memberships are skipped: a device that crashed stops renewing, and
+  /// treating it as present would hand it a recording it cannot make.
+  List<String> get myDeviceIdsInCall {
+    final session = _current;
+    if (session == null) return const [];
+    final mine = session.room.getCallMembershipsForUser(
+      client.userID!,
+      client.deviceID!,
+      voip,
+    );
+    return [
+      for (final m in mine)
+        if (m.callId == session.groupCallId && !m.isExpired) m.deviceId,
+    ];
+  }
+
+  /// Fires when participants join or leave the current call.
+  Stream<MatrixRTCCallEvent>? get callEvents =>
+      _current?.matrixRTCEventStream.stream;
+
   /// Announces this device as a participant, so the peer sees us in the call.
   ///
   /// Separate from [join] because the two are not simultaneous by design: media

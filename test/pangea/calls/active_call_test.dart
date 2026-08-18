@@ -24,6 +24,22 @@ class Trace {
 
 class FakeCalls extends CallService {
   final Trace trace;
+  final _events = StreamController<MatrixRTCCallEvent>.broadcast();
+  List<String> devicesInCall = const [];
+
+  @override
+  List<String> get myDeviceIdsInCall => devicesInCall;
+
+  @override
+  Stream<MatrixRTCCallEvent> get callEvents => _events.stream;
+
+  /// Publishes a new participant list, the way a join or leave would.
+  Future<void> participantsBecome(List<String> ids) async {
+    devicesInCall = ids;
+    _events.add(ParticipantsJoinEvent(participants: const []));
+    await pumpEventQueue();
+  }
+
   Object? joinError;
   Object? announceError;
   Object? retractError;
@@ -114,15 +130,28 @@ void main() {
 
   late Trace trace;
 
-  Future<Client> bareClient() async => Client(
-    'active-call-test',
-    httpClient: FakeMatrixApi(),
-    database: await MatrixSdkDatabase.init(
+  /// Logged in, because the recording election ranks this device against its
+  /// siblings by device id and a client that never logged in has none.
+  Future<Client> bareClient() async {
+    final client = Client(
       'active-call-test',
-      database: await databaseFactoryFfi.openDatabase(':memory:'),
-      sqfliteFactory: databaseFactoryFfi,
-    ),
-  );
+      httpClient: FakeMatrixApi(),
+      database: await MatrixSdkDatabase.init(
+        'active-call-test',
+        database: await databaseFactoryFfi.openDatabase(':memory:'),
+        sqfliteFactory: databaseFactoryFfi,
+      ),
+    );
+    await client.login(
+      LoginType.mLoginPassword,
+      token: 'abcd',
+      identifier: AuthenticationUserIdentifier(
+        user: '@test:fakeServer.notExisting',
+      ),
+      deviceId: 'GHTYAJCE',
+    );
+    return client;
+  }
 
   setUp(() => trace = Trace());
 
@@ -343,6 +372,80 @@ void main() {
       reason: 'a call the user abandoned must not finish assembling itself',
     );
     expect(trace.steps, contains('retract'));
+  });
+
+  group('which device records', () {
+    test('this one, when it is alone in the call', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isTrue);
+    });
+
+    test(
+      'not this one, when a device sorting lower is already there',
+      () async {
+        final (call, calls, _, _) = await build();
+        calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
+        await call.start(roomStub(calls.client), video: false);
+
+        expect(call.isRecording, isFalse);
+        expect(
+          trace.steps,
+          isNot(contains('capture.start')),
+          reason: 'the other device is recording; this one would double-count',
+        );
+      },
+    );
+
+    test('this one takes over when the other device leaves', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isFalse);
+
+      await calls.participantsBecome([calls.client.deviceID!]);
+      expect(call.isRecording, isTrue, reason: 'it is alone now');
+      expect(trace.steps, contains('capture.start'));
+    });
+
+    test('this one stops when a device sorting lower arrives', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isTrue);
+      trace.steps.clear();
+
+      await calls.participantsBecome(['AAAAAAAAAA', calls.client.deviceID!]);
+      expect(call.isRecording, isFalse);
+      expect(
+        trace.steps,
+        contains('capture.stop'),
+        reason: 'and what was already said is flushed, not dropped',
+      );
+    });
+
+    test('a device sorting higher does not displace this one', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      trace.steps.clear();
+
+      await calls.participantsBecome(['zzzzzzzzzz', calls.client.deviceID!]);
+      expect(call.isRecording, isTrue);
+      expect(trace.steps, isNot(contains('capture.stop')));
+    });
+
+    test('participant changes after hangup are ignored', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      await call.hangUp();
+      trace.steps.clear();
+
+      await calls.participantsBecome(['AAAAAAAAAA']);
+      expect(trace.steps, isEmpty, reason: 'the call is over');
+    });
   });
 
   test('notifies listeners as the stage changes', () async {
