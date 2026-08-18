@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-17 16:45:38.601327",
+    "@@last_modified": "2026-08-18 10:23:43.408977",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2141,5 +2141,6 @@
     "showMore": "Muuji wax badan",
     "showLess": "Muuji wax yar",
     "countNewMessages": "{count, plural, =1{1 fariin cusub} other{{count} fariimo cusub}}",
-    "markAllRead": "Dhammaan akhri"
+    "markAllRead": "Dhammaan akhri",
+    "inviteAFriend": "Saaxiib casuun"
 }

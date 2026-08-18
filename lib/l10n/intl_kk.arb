@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-17 16:45:36.358556",
+    "@@last_modified": "2026-08-18 10:23:40.007710",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2141,5 +2141,6 @@
     "showMore": "Көбірек көрсету",
     "showLess": "Азырақ көрсету",
     "countNewMessages": "{count, plural, =1{1 жаңа хабар} other{{count} жаңа хабарлар}}",
-    "markAllRead": "Барлығын оқылды деп белгілеу"
+    "markAllRead": "Барлығын оқылды деп белгілеу",
+    "inviteAFriend": "Досыңды шақыр"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:38.110746",
+    "@@last_modified": "2026-08-18 10:23:41.717861",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10485,5 +10485,6 @@
     "showMore": "Afișează mai mult",
     "showLess": "Afișează mai puțin",
     "countNewMessages": "{count, plural, =1{1 mesaj nou} other{{count} mesaje noi}}",
-    "markAllRead": "Marchează tot ca citit"
+    "markAllRead": "Marchează tot ca citit",
+    "inviteAFriend": "Invită un prieten"
 }

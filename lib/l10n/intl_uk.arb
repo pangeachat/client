@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-17 16:45:39.284867",
+    "@@last_modified": "2026-08-18 10:23:43.155555",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9753,5 +9753,6 @@
     "showMore": "Показати більше",
     "showLess": "Показати менше",
     "countNewMessages": "{count, plural, =1{1 нове повідомлення} other{{count} нових повідомлень}}",
-    "markAllRead": "Позначити всі як прочитані"
+    "markAllRead": "Позначити всі як прочитані",
+    "inviteAFriend": "Запросити друга"
 }

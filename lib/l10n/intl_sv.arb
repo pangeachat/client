@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:38.893772",
+    "@@last_modified": "2026-08-18 10:23:43.147931",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10271,5 +10271,6 @@
     "showMore": "Visa mer",
     "showLess": "Visa mindre",
     "countNewMessages": "{count, plural, =1{1 nytt meddelande} other{{count} nya meddelanden}}",
-    "markAllRead": "Markera alla som lästa"
+    "markAllRead": "Markera alla som lästa",
+    "inviteAFriend": "Bjud in en vän"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-17 16:45:38.204410",
+    "@@last_modified": "2026-08-18 10:23:42.346080",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10698,5 +10698,6 @@
     "showMore": "Zobraziť viac",
     "showLess": "Zobraziť menej",
     "countNewMessages": "{count, plural, =1{1 nová správa} other{{count} nových správ}}",
-    "markAllRead": "Označiť všetko ako prečítané"
+    "markAllRead": "Označiť všetko ako prečítané",
+    "inviteAFriend": "Pozvať priateľa"
 }

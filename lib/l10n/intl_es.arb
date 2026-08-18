@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-17 16:45:34.489915",
+    "@@last_modified": "2026-08-18 10:23:37.315494",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7956,5 +7956,6 @@
     "showMore": "Mostrar más",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 mensaje nuevo} other{{count} mensajes nuevos}}",
-    "markAllRead": "Marcar todo como leído"
+    "markAllRead": "Marcar todo como leído",
+    "inviteAFriend": "Invitar a un amigo"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:36.303833",
+    "@@last_modified": "2026-08-18 10:23:39.545832",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9946,5 +9946,6 @@
     "showMore": "더 보기",
     "showLess": "간략히 보기",
     "countNewMessages": "{count, plural, =1{새 메시지 1개} other{새 메시지 {count}개}}",
-    "markAllRead": "모두 읽음으로 표시"
+    "markAllRead": "모두 읽음으로 표시",
+    "inviteAFriend": "친구 초대"
 }

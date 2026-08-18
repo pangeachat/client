@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-17 16:45:33.487841",
+    "@@last_modified": "2026-08-18 10:23:36.392743",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2141,5 +2141,6 @@
     "showMore": "Wys meer",
     "showLess": "Wys minder",
     "countNewMessages": "{count, plural, =1{1 nuwe boodskap} other{{count} nuwe boodskappe}}",
-    "markAllRead": "Merk alles as gelees"
+    "markAllRead": "Merk alles as gelees",
+    "inviteAFriend": "Nooi 'n vriend"
 }

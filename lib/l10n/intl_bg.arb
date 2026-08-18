@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-17 16:45:33.560290",
+    "@@last_modified": "2026-08-18 10:23:36.321925",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2141,5 +2141,6 @@
     "showMore": "Покажи още",
     "showLess": "Покажи по-малко",
     "countNewMessages": "{count, plural, =1{1 ново съобщение} other{{count} нови съобщения}}",
-    "markAllRead": "Маркирай всички като прочетени"
+    "markAllRead": "Маркирай всички като прочетени",
+    "inviteAFriend": "Покани приятел"
 }

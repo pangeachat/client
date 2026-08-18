@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-17 16:45:37.179257",
+    "@@last_modified": "2026-08-18 10:23:40.723318",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2141,5 +2141,6 @@
     "showMore": "आणखी दाखवा",
     "showLess": "कमी दाखवा",
     "countNewMessages": "{count, plural, =1{1 नवीन संदेश} other{{count} नवीन संदेश}}",
-    "markAllRead": "सर्व वाचलेले म्हणून चिन्हांकित करा"
+    "markAllRead": "सर्व वाचलेले म्हणून चिन्हांकित करा",
+    "inviteAFriend": "मित्राला आमंत्रित करा"
 }

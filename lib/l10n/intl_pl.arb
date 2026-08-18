@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-17 16:45:37.849509",
+    "@@last_modified": "2026-08-18 10:23:41.261564",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9838,5 +9838,6 @@
     "showMore": "Pokaż więcej",
     "showLess": "Pokaż mniej",
     "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}",
-    "markAllRead": "Oznacz wszystkie jako przeczytane"
+    "markAllRead": "Oznacz wszystkie jako przeczytane",
+    "inviteAFriend": "Zaproś znajomego"
 }

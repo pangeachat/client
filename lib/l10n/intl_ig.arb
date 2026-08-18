@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-17 16:45:35.986317",
+    "@@last_modified": "2026-08-18 10:23:39.017157",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2141,5 +2141,6 @@
     "showMore": "Gosi ihe ndị ọzọ",
     "showLess": "Gosi ihe na-erughị",
     "countNewMessages": "{count, plural, =1{1 ozi ọhụrụ} other{{count} ozi ọhụrụ}}",
-    "markAllRead": "Kaa ihe niile ka agụọla"
+    "markAllRead": "Kaa ihe niile ka agụọla",
+    "inviteAFriend": "Kpọọ enyi"
 }

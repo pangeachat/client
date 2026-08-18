@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-17 16:45:38.457643",
+    "@@last_modified": "2026-08-18 10:23:42.343430",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2141,5 +2141,6 @@
     "showMore": "Fa'aali atili",
     "showLess": "Fa'aali itiiti",
     "countNewMessages": "{count, plural, =1{1 feʻau fou} other{{count} feʻau fou}}",
-    "markAllRead": "Faailoga uma ua faitauina"
+    "markAllRead": "Faailoga uma ua faitauina",
+    "inviteAFriend": "Valaaulia se uo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-17 16:45:34.152513",
+    "@@last_modified": "2026-08-18 10:23:36.916841",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9740,5 +9740,6 @@
     "showMore": "Mehr anzeigen",
     "showLess": "Weniger anzeigen",
     "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}",
-    "markAllRead": "Alle als gelesen markieren"
+    "markAllRead": "Alle als gelesen markieren",
+    "inviteAFriend": "Einen Freund einladen"
 }

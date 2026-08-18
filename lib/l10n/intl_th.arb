@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-17 16:45:39.041952",
+    "@@last_modified": "2026-08-18 10:23:42.907307",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10385,5 +10385,6 @@
     "showMore": "แสดงเพิ่มเติม",
     "showLess": "แสดงน้อยลง",
     "countNewMessages": "{count, plural, =1{1 ข้อความใหม่} other{{count} ข้อความใหม่}}",
-    "markAllRead": "ทำเครื่องหมายว่าอ่านแล้วทั้งหมด"
+    "markAllRead": "ทำเครื่องหมายว่าอ่านแล้วทั้งหมด",
+    "inviteAFriend": "เชิญเพื่อน"
 }

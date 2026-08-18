@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-17 16:45:37.040614",
+    "@@last_modified": "2026-08-18 10:23:40.127099",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2141,5 +2141,6 @@
     "showMore": "Asehoy misimisy kokoa",
     "showLess": "Asehoy kely kokoa",
     "countNewMessages": "{count, plural, =1{1 hafatra vaovao} other{{count} hafatra vaovao}}",
-    "markAllRead": "Mariho ho voavaky avokoa"
+    "markAllRead": "Mariho ho voavaky avokoa",
+    "inviteAFriend": "Manasa namana"
 }

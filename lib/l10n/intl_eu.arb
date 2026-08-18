@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-17 16:45:34.806570",
+    "@@last_modified": "2026-08-18 10:23:38.158103",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9753,5 +9753,6 @@
     "showMore": "Gehiago erakutsi",
     "showLess": "Gutxiago erakutsi",
     "countNewMessages": "{count, plural, =1{mezu berri 1} other{{count} mezu berri}}",
-    "markAllRead": "Denak irakurritako gisa markatu"
+    "markAllRead": "Denak irakurritako gisa markatu",
+    "inviteAFriend": "Gonbidatu lagun bat"
 }

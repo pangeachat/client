@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-17 16:45:34.145872",
+    "@@last_modified": "2026-08-18 10:23:36.541662",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9364,5 +9364,6 @@
     "showMore": "མང་ཙམ་བསྟན་",
     "showLess": "ཉུང་ཙམ་བསྟན་",
     "countNewMessages": "{count, plural, =1{សារགསར་པ་ ༡} other{សារགསར་པ་ {count}}}",
-    "markAllRead": "ཚང་མ་བཀླགས་ཟིན་པར་མཚན་འཇོག་བྱེད་"
+    "markAllRead": "ཚང་མ་བཀླགས་ཟིན་པར་མཚན་འཇོག་བྱེད་",
+    "inviteAFriend": "གྲོགས་པོ་ཞིག་ལ་གདན་ཞུ་བྱེད་"
 }

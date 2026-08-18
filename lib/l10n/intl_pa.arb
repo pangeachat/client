@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-17 16:45:37.765917",
+    "@@last_modified": "2026-08-18 10:23:41.731194",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2141,5 +2141,6 @@
     "showMore": "ਹੋਰ ਦਿਖਾਓ",
     "showLess": "ਘੱਟ ਦਿਖਾਓ",
     "countNewMessages": "{count, plural, =1{1 ਨਵਾਂ ਸੁਨੇਹਾ} other{{count} ਨਵੇਂ ਸੁਨੇਹੇ}}",
-    "markAllRead": "ਸਾਰਿਆਂ ਨੂੰ ਪੜ੍ਹਿਆ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਕਰੋ"
+    "markAllRead": "ਸਾਰਿਆਂ ਨੂੰ ਪੜ੍ਹਿਆ ਵਜੋਂ ਨਿਸ਼ਾਨਬੱਧ ਕਰੋ",
+    "inviteAFriend": "ਕਿਸੇ ਦੋਸਤ ਨੂੰ ਸੱਦਾ ਦਿਓ"
 }

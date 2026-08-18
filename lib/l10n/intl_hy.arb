@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-17 16:45:35.714724",
+    "@@last_modified": "2026-08-18 10:23:38.906772",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2141,5 +2141,6 @@
     "showMore": "Տեսնել ավելին",
     "showLess": "Տեսնել ավելի քիչ",
     "countNewMessages": "{count, plural, =1{1 նոր հաղորդագրություն} other{{count} նոր հաղորդագրություն}}",
-    "markAllRead": "Նշել բոլորը կարդացված"
+    "markAllRead": "Նշել բոլորը կարդացված",
+    "inviteAFriend": "Հրավիրել ընկերոջ"
 }

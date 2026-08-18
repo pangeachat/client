@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-17 16:45:36.573751",
+    "@@last_modified": "2026-08-18 10:23:40.304198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2141,5 +2141,6 @@
     "showMore": "زیاتر نیشان بدە",
     "showLess": "کەمتر نیشان بدە",
     "countNewMessages": "{count, plural, =1{١ پەیامی نوێ} other{{count} پەیامی نوێ}}",
-    "markAllRead": "هەمووی وەک خوێندراوە دیاری بکە"
+    "markAllRead": "هەمووی وەک خوێندراوە دیاری بکە",
+    "inviteAFriend": "هاوڕێیەک بانگهێشت بکە"
 }

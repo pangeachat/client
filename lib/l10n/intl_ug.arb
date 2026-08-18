@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-17 16:45:39.234296",
+    "@@last_modified": "2026-08-18 10:23:42.890538",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2141,5 +2141,6 @@
     "showMore": "تېخىمۇ كۆپ كۆرسەت",
     "showLess": "ئازراق كۆرسەت",
     "countNewMessages": "{count, plural, =1{1 يېڭى ئۇچۇر} other{{count} يېڭى ئۇچۇر}}",
-    "markAllRead": "ھەممىنى ئوقۇلدى قىل"
+    "markAllRead": "ھەممىنى ئوقۇلدى قىل",
+    "inviteAFriend": "دوست تەكلىپ قىلىڭ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-17 16:45:34.645518",
+    "@@last_modified": "2026-08-18 10:23:37.754049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2141,5 +2141,6 @@
     "showMore": "Mear sjen litte",
     "showLess": "Minder sjen litte",
     "countNewMessages": "{count, plural, =1{1 nij berjocht} other{{count} nije berjochten}}",
-    "markAllRead": "Alles as lêzen markearje"
+    "markAllRead": "Alles as lêzen markearje",
+    "inviteAFriend": "Nûgje in freon út"
 }

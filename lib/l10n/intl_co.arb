@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-17 16:45:34.132267",
+    "@@last_modified": "2026-08-18 10:23:36.819493",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2141,5 +2141,6 @@
     "showMore": "Mostra di più",
     "showLess": "Mostra di menu",
     "countNewMessages": "{count, plural, =1{1 novu messagiu} other{{count} novi messaghji}}",
-    "markAllRead": "Marcà tuttu cum'è lettu"
+    "markAllRead": "Marcà tuttu cum'è lettu",
+    "inviteAFriend": "Invita un amicu"
 }

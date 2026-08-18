@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-17 16:45:38.790937",
+    "@@last_modified": "2026-08-18 10:23:42.304798",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2141,5 +2141,6 @@
     "showMore": "Bontsha ho feta",
     "showLess": "Bontsha hanyane",
     "countNewMessages": "{count, plural, =1{1 molaetsa o motjha} other{melaetsa e metjha e {count}}}",
-    "markAllRead": "Tšoaea tsohle e le tse baliloeng"
+    "markAllRead": "Tšoaea tsohle e le tse baliloeng",
+    "inviteAFriend": "Memela motswalle"
 }

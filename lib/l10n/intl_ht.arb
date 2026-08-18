@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-17 16:45:35.350791",
+    "@@last_modified": "2026-08-18 10:23:38.644970",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2141,5 +2141,6 @@
     "showMore": "Montre plis",
     "showLess": "Montre mwens",
     "countNewMessages": "{count, plural, =1{1 nouvo mesaj} other{{count} nouvo mesaj}}",
-    "markAllRead": "Make tout li"
+    "markAllRead": "Make tout li",
+    "inviteAFriend": "Envite yon zanmi"
 }

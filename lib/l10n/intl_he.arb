@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:35.370392",
+    "@@last_modified": "2026-08-18 10:23:38.285467",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10667,5 +10667,6 @@
     "showMore": "הצג עוד",
     "showLess": "הצג פחות",
     "countNewMessages": "{count, plural, =1{הודעה חדשה אחת} other{{count} הודעות חדשות}}",
-    "markAllRead": "סמן הכל כנקרא"
+    "markAllRead": "סמן הכל כנקרא",
+    "inviteAFriend": "הזמן חבר"
 }

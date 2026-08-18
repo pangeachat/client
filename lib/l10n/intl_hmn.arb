@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-17 16:45:35.449128",
+    "@@last_modified": "2026-08-18 10:23:38.421558",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2141,5 +2141,6 @@
     "showMore": "Qhia ntxiv",
     "showLess": "Qhia tsawg dua",
     "countNewMessages": "{count, plural, =1{1 tsab lus tshiab} other{{count} tsab lus tshiab}}",
-    "markAllRead": "Kos tag nrho tias nyeem lawm"
+    "markAllRead": "Kos tag nrho tias nyeem lawm",
+    "inviteAFriend": "Caw ib tug phooj ywg"
 }

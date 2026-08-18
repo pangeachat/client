@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-17 16:45:38.399246",
+    "@@last_modified": "2026-08-18 10:23:42.173645",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10698,5 +10698,6 @@
     "showMore": "Pokaži več",
     "showLess": "Pokaži manj",
     "countNewMessages": "{count, plural, =1{1 novo sporočilo} other{{count} novih sporočil}}",
-    "markAllRead": "Označi vse kot prebrano"
+    "markAllRead": "Označi vse kot prebrano",
+    "inviteAFriend": "Povabi prijatelja"
 }

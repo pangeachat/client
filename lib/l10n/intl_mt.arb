@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-17 16:45:37.337339",
+    "@@last_modified": "2026-08-18 10:23:41.077136",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2141,5 +2141,6 @@
     "showMore": "Uri aktar",
     "showLess": "Uri inqas",
     "countNewMessages": "{count, plural, =1{1 messaġġ ġdid} other{{count} messaġġi ġodda}}",
-    "markAllRead": "Immarka kollox bħala moqri"
+    "markAllRead": "Immarka kollox bħala moqri",
+    "inviteAFriend": "Stieden ħabib"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:33.562440",
+    "@@last_modified": "2026-08-18 10:23:36.486841",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10381,5 +10381,6 @@
     "showMore": "আরও দেখান",
     "showLess": "কম দেখান",
     "countNewMessages": "{count, plural, =1{১টি নতুন বার্তা} other{{count}টি নতুন বার্তা}}",
-    "markAllRead": "সবগুলো পঠিত হিসেবে চিহ্নিত করুন"
+    "markAllRead": "সবগুলো পঠিত হিসেবে চিহ্নিত করুন",
+    "inviteAFriend": "একজন বন্ধুকে আমন্ত্রণ জানান"
 }

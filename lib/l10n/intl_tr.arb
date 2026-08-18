@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-17 16:45:39.084279",
+    "@@last_modified": "2026-08-18 10:23:43.267306",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,6 @@
     "showMore": "Daha fazla göster",
     "showLess": "Daha az göster",
     "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",
-    "markAllRead": "Tümünü okundu olarak işaretle"
+    "markAllRead": "Tümünü okundu olarak işaretle",
+    "inviteAFriend": "Bir arkadaşını davet et"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-17 16:45:39.672820",
+    "@@last_modified": "2026-08-18 10:23:44.094872",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2141,5 +2141,6 @@
     "showMore": "Fi siwaju si han",
     "showLess": "Fi kere si han",
     "countNewMessages": "{count, plural, =1{ìhìn tuntun 1} other{ìhìn tuntun {count}}}",
-    "markAllRead": "Samisi gbogbo rẹ bi o ti ka"
+    "markAllRead": "Samisi gbogbo rẹ bi o ti ka",
+    "inviteAFriend": "Pè ọ̀rẹ́ kan"
 }

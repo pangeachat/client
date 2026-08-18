@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-17 16:45:34.652375",
+    "@@last_modified": "2026-08-18 10:23:37.340281",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9750,5 +9750,6 @@
     "showMore": "Näita rohkem",
     "showLess": "Näita vähem",
     "countNewMessages": "{count, plural, =1{1 uus sõnum} other{{count} uut sõnumit}}",
-    "markAllRead": "Märgi kõik loetuks"
+    "markAllRead": "Märgi kõik loetuks",
+    "inviteAFriend": "Kutsu sõber"
 }

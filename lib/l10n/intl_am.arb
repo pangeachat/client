@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-17 16:45:33.746969",
+    "@@last_modified": "2026-08-18 10:23:36.492819",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2141,5 +2141,6 @@
     "showMore": "ተጨማሪ አሳይ",
     "showLess": "ጥቂት አሳይ",
     "countNewMessages": "{count, plural, =1{1 አዲስ መልእክት} other{{count} አዲስ መልእክቶች}}",
-    "markAllRead": "ሁሉንም እንደተነበበ ምልክት አድርግ"
+    "markAllRead": "ሁሉንም እንደተነበበ ምልክት አድርግ",
+    "inviteAFriend": "ጓደኛ ይጋብዙ"
 }

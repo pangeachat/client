@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-17 16:45:37.503719",
+    "@@last_modified": "2026-08-18 10:23:40.696284",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2141,5 +2141,6 @@
     "showMore": "Tunjukkan lebih banyak",
     "showLess": "Tunjukkan lebih sedikit",
     "countNewMessages": "{count, plural, =1{1 mesej baharu} other{{count} mesej baharu}}",
-    "markAllRead": "Tandakan semua sudah dibaca"
+    "markAllRead": "Tandakan semua sudah dibaca",
+    "inviteAFriend": "Jemput rakan"
 }

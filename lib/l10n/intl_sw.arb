@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-17 16:45:38.887069",
+    "@@last_modified": "2026-08-18 10:23:43.381777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2141,5 +2141,6 @@
     "showMore": "Onyesha zaidi",
     "showLess": "Onyesha kidogo",
     "countNewMessages": "{count, plural, =1{ujumbe 1 mpya} other{jumbe {count} mpya}}",
-    "markAllRead": "Weka zote kama zimesomwa"
+    "markAllRead": "Weka zote kama zimesomwa",
+    "inviteAFriend": "Mwalike rafiki"
 }

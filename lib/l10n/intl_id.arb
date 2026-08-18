@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:35.770872",
+    "@@last_modified": "2026-08-18 10:23:39.350920",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9826,5 +9826,6 @@
     "showMore": "Tampilkan lebih banyak",
     "showLess": "Tampilkan lebih sedikit",
     "countNewMessages": "{count, plural, =1{1 pesan baru} other{{count} pesan baru}}",
-    "markAllRead": "Tandai semua sudah dibaca"
+    "markAllRead": "Tandai semua sudah dibaca",
+    "inviteAFriend": "Undang teman"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:34.134008",
+    "@@last_modified": "2026-08-18 10:23:36.936786",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9880,5 +9880,6 @@
     "showMore": "Mostra més",
     "showLess": "Mostra menys",
     "countNewMessages": "{count, plural, =1{1 missatge nou} other{{count} missatges nous}}",
-    "markAllRead": "Marca-ho tot com a llegit"
+    "markAllRead": "Marca-ho tot com a llegit",
+    "inviteAFriend": "Convida un amic"
 }

@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-17 16:45:34.694236",
+    "@@last_modified": "2026-08-18 10:23:37.661496",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10613,5 +10613,6 @@
     "showMore": "Ipakita pa",
     "showLess": "Ipakita nang kaunti",
     "countNewMessages": "{count, plural, =1{1 bagong mensahe} other{{count} bagong mensahe}}",
-    "markAllRead": "Markahan lahat bilang nabasa"
+    "markAllRead": "Markahan lahat bilang nabasa",
+    "inviteAFriend": "Mag-imbita ng kaibigan"
 }

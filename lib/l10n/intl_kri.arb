@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-17 16:45:36.437461",
+    "@@last_modified": "2026-08-18 10:23:39.647975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2141,5 +2141,6 @@
     "showMore": "Sho mo",
     "showLess": "Sho men",
     "countNewMessages": "{count, plural, =1{1 nyu messej} other{{count} nyu messej dɛn}}",
-    "markAllRead": "Mak ɔl dɛn rid"
+    "markAllRead": "Mak ɔl dɛn rid",
+    "inviteAFriend": "Kɔl wan padi"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-17 16:45:35.966146",
+    "@@last_modified": "2026-08-18 10:23:39.233892",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2141,5 +2141,6 @@
     "showMore": "Tampilake luwih akeh",
     "showLess": "Tampilake luwih sithik",
     "countNewMessages": "{count, plural, =1{1 pesen anyar} other{{count} pesen anyar}}",
-    "markAllRead": "Tandhani kabeh wis diwaca"
+    "markAllRead": "Tandhani kabeh wis diwaca",
+    "inviteAFriend": "Ngunjuk kanca"
 }

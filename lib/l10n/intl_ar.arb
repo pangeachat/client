@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-17 16:45:33.587643",
+    "@@last_modified": "2026-08-18 10:23:36.776193",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10059,5 +10059,6 @@
     "showMore": "عرض المزيد",
     "showLess": "عرض أقل",
     "countNewMessages": "{count, plural, =1{رسالة جديدة واحدة} other{{count} رسائل جديدة}}",
-    "markAllRead": "وضع الكل كمقروء"
+    "markAllRead": "وضع الكل كمقروء",
+    "inviteAFriend": "ادعُ صديقًا"
 }

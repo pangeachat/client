@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-17 16:45:37.962556",
+    "@@last_modified": "2026-08-18 10:23:41.636711",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10670,5 +10670,6 @@
     "showMore": "Mostrar mais",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
-    "markAllRead": "Marcar tudo como lido"
+    "markAllRead": "Marcar tudo como lido",
+    "inviteAFriend": "Convidar um amigo"
 }

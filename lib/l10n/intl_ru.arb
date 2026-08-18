@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-17 16:45:38.144863",
+    "@@last_modified": "2026-08-18 10:23:41.816369",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10725,5 +10725,6 @@
     "showMore": "Показать больше",
     "showLess": "Показать меньше",
     "countNewMessages": "{count, plural, =1{1 новое сообщение} other{{count} новых сообщений}}",
-    "markAllRead": "Отметить все как прочитанное"
+    "markAllRead": "Отметить все как прочитанное",
+    "inviteAFriend": "Пригласить друга"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-17 16:45:33.576527",
+    "@@last_modified": "2026-08-18 10:23:36.482064",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2141,5 +2141,6 @@
     "showMore": "আৰু দেখুৱাওক",
     "showLess": "কম দেখুৱাওক",
     "countNewMessages": "{count, plural, =1{১টা নতুন বাৰ্তা} other{{count}টা নতুন বাৰ্তা}}",
-    "markAllRead": "সকলো পঢ়া বুলি চিহ্নিত কৰক"
+    "markAllRead": "সকলো পঢ়া বুলি চিহ্নিত কৰক",
+    "inviteAFriend": "এজন বন্ধুক আমন্ত্ৰণ কৰক"
 }

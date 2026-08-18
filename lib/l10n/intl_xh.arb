@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-17 16:45:39.506191",
+    "@@last_modified": "2026-08-18 10:23:43.688023",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2141,5 +2141,6 @@
     "showMore": "Bonisa okungakumbi",
     "showLess": "Bonisa okuncinci",
     "countNewMessages": "{count, plural, =1{1 umyalezo omtsha} other{imiyalezo emitsha eli-{count}}}",
-    "markAllRead": "Phawula konke okufundiweyo"
+    "markAllRead": "Phawula konke okufundiweyo",
+    "inviteAFriend": "Mema umhlobo"
 }

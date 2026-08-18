@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-17 16:45:38.455516",
+    "@@last_modified": "2026-08-18 10:23:41.999070",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2141,5 +2141,6 @@
     "showMore": "තවත් පෙන්වන්න",
     "showLess": "අඩු පෙන්වන්න",
     "countNewMessages": "{count, plural, =1{නව පණිවිඩ 1ක්} other{නව පණිවිඩ {count}ක්}}",
-    "markAllRead": "සියල්ල කියවූ ලෙස සලකුණු කරන්න"
+    "markAllRead": "සියල්ල කියවූ ලෙස සලකුණු කරන්න",
+    "inviteAFriend": "මිතුරෙකුට ආරාධනා කරන්න"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-17 16:45:38.789629",
+    "@@last_modified": "2026-08-18 10:23:42.625942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2141,5 +2141,6 @@
     "showMore": "Témbongkeun deui",
     "showLess": "Témbongkeun saeutik",
     "countNewMessages": "{count, plural, =1{1 talatah anyar} other{{count} talatah anyar}}",
-    "markAllRead": "Tandaan sadayana parantos dibaca"
+    "markAllRead": "Tandaan sadayana parantos dibaca",
+    "inviteAFriend": "Uleman babaturan"
 }

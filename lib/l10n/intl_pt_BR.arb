@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:38.064720",
+    "@@last_modified": "2026-08-18 10:23:41.654379",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9753,5 +9753,6 @@
     "showMore": "Mostrar mais",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
-    "markAllRead": "Marcar tudo como lido"
+    "markAllRead": "Marcar tudo como lido",
+    "inviteAFriend": "Convidar um amigo"
 }

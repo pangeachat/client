@@ -8,6 +8,7 @@ import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/dummy_chat_list_item.dart';
+import 'package:fluffychat/routes/chat_list/friend_dm_prompt_widget.dart';
 import 'package:fluffychat/routes/chat_list/pangea_chat_list_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -305,6 +306,15 @@ class ChatListViewBody extends StatelessWidget {
                 child: DMListTile(visible: !controller.isSearchMode),
               ),
             const SliverToBoxAdapter(child: SizedBox(height: 8.0)),
+            // Bottom-anchored under a short list; scrolls after a long one.
+            if (client.prevBatch != null)
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: FriendDMPrompt(visible: !controller.isSearchMode),
+                ),
+              ),
             // Pangea#
           ],
         );

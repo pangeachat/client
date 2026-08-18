@@ -21,10 +21,12 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/course_avatar.dart';
 import 'package:fluffychat/pangea/common/widgets/invited_course_badge.dart';
+import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_badge.dart';
 import 'package:fluffychat/pangea/spaces/knocking_users_builder.dart';
+import 'package:fluffychat/routes/chat_list/friend_dm_prompt_widget.dart';
 import 'package:fluffychat/routes/world/left_panel/workspace_left_panel.dart';
 import 'package:fluffychat/routes/world/map_context.dart';
 import 'package:fluffychat/routes/world/mobile_search_bar.dart';
@@ -641,16 +643,20 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
     // the analytics bar). Row height is an estimate (a two-line ChatListItem);
     // a slight overshoot only adds breathing room, and the cap absorbs long
     // lists. Uses the same visibility predicate as the list's all-chats
-    // filter so the estimate counts what actually renders.
+    // filter so the estimate counts what actually renders. While the list
+    // carries the invite-a-friend prompt (#8395) it counts that too, so the
+    // prompt shows below the rows rather than waiting behind a drag.
     double? preferredCavityHeight;
     if (isActivityCavity) {
       preferredCavityHeight = _activitySheetMinimizedHeight;
     } else if (cavityToken?.type == PanelTypesEnum.chats) {
-      final visibleChats = Matrix.of(context).client.rooms
+      final visibleChats = client.rooms
           .where((room) => !room.isHiddenRoom && !room.isSpace)
           .length;
       preferredCavityHeight =
-          _chatsSheetHeaderAllowance + visibleChats * _chatsSheetRowEstimate;
+          _chatsSheetHeaderAllowance +
+          visibleChats * _chatsSheetRowEstimate +
+          (client.hasFriendDM ? 0 : FriendDMPrompt.estimatedHeight);
     } else if (cavityToken?.type == PanelTypesEnum.addcourse &&
         cavityToken?.param is! AddCoursePageTokenParam) {
       // The Courses hub opens tall enough to show all joined courses (or the

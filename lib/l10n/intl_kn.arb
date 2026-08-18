@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-17 16:45:36.376539",
+    "@@last_modified": "2026-08-18 10:23:39.623332",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2141,5 +2141,6 @@
     "showMore": "ಇನ್ನಷ್ಟು ತೋರಿಸು",
     "showLess": "ಕಡಿಮೆ ತೋರಿಸು",
     "countNewMessages": "{count, plural, =1{1 ಹೊಸ ಸಂದೇಶ} other{{count} ಹೊಸ ಸಂದೇಶಗಳು}}",
-    "markAllRead": "ಎಲ್ಲವನ್ನೂ ಓದಿದಂತೆ ಗುರುತಿಸಿ"
+    "markAllRead": "ಎಲ್ಲವನ್ನೂ ಓದಿದಂತೆ ಗುರುತಿಸಿ",
+    "inviteAFriend": "ಸ್ನೇಹಿತರನ್ನು ಆಹ್ವಾನಿಸಿ"
 }

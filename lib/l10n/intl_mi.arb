@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-17 16:45:36.958968",
+    "@@last_modified": "2026-08-18 10:23:40.457735",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2141,5 +2141,6 @@
     "showMore": "Whakaatu anō",
     "showLess": "Whakaatu iti iho",
     "countNewMessages": "{count, plural, =1{1 karere hou} other{{count} karere hou}}",
-    "markAllRead": "Tohua kua pānuitia katoatia"
+    "markAllRead": "Tohua kua pānuitia katoatia",
+    "inviteAFriend": "Pōwhiritia tētahi hoa"
 }

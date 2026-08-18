@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-17 16:45:39.359381",
+    "@@last_modified": "2026-08-18 10:23:43.520468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2141,5 +2141,6 @@
     "showMore": "مزید دکھائیں",
     "showLess": "کم دکھائیں",
     "countNewMessages": "{count, plural, =1{1 نیا پیغام} other{{count} نئے پیغامات}}",
-    "markAllRead": "سب کو پڑھا ہوا نشان زد کریں"
+    "markAllRead": "سب کو پڑھا ہوا نشان زد کریں",
+    "inviteAFriend": "کسی دوست کو مدعو کریں"
 }

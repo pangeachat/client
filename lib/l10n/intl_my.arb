@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-17 16:45:37.446489",
+    "@@last_modified": "2026-08-18 10:23:40.810637",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2141,5 +2141,6 @@
     "showMore": "ပိုပြရန်",
     "showLess": "လျှော့ပြရန်",
     "countNewMessages": "{count, plural, =1{စာအသစ် ၁ စောင်} other{စာအသစ် {count} စောင်}}",
-    "markAllRead": "အားလုံးကို ဖတ်ပြီးအဖြစ် မှတ်သားရန်"
+    "markAllRead": "အားလုံးကို ဖတ်ပြီးအဖြစ် မှတ်သားရန်",
+    "inviteAFriend": "သူငယ်ချင်းတစ်ဦးကို ဖိတ်ခေါ်ပါ"
 }

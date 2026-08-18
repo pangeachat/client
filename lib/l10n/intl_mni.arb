@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-17 16:45:37.081426",
+    "@@last_modified": "2026-08-18 10:23:40.646303",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2141,5 +2141,6 @@
     "showMore": "ಹೆಚ್ಚು ತಾನು",
     "showLess": "ಕಮ್ಮಿ ತಾನು",
     "countNewMessages": "{count, plural, =1{1 অহোংবা পাও} other{{count} অহোংবা পাও}}",
-    "markAllRead": "পুম্নমক পাজরে হায়না থম্নবা"
+    "markAllRead": "পুম্নমক পাজরে হায়না থম্নবা",
+    "inviteAFriend": "ꯑꯃꯠꯇꯥ ꯀꯧꯕꯤꯌꯨ"
 }

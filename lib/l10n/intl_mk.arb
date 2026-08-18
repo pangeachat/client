@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-17 16:45:36.960335",
+    "@@last_modified": "2026-08-18 10:23:40.420805",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2141,5 +2141,6 @@
     "showMore": "Прикажи повеќе",
     "showLess": "Прикажи помалку",
     "countNewMessages": "{count, plural, =1{1 нова порака} other{{count} нови пораки}}",
-    "markAllRead": "Означи ги сите како прочитани"
+    "markAllRead": "Означи ги сите како прочитани",
+    "inviteAFriend": "Покани пријател"
 }
