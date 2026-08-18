@@ -297,10 +297,20 @@ class ActiveCall extends ChangeNotifier {
   /// rang somebody must not be written as though it never happened.
   Future<void> get settled => _starting ?? Future.value();
 
-  Future<void> start(matrix.Room room, {required bool video}) =>
-      _starting = _start(room, video: video);
+  /// [answering] is ground truth from the call site: this device was rung, so
+  /// it is joining whatever the state of the room looks like. Everything else
+  /// is derived, because no other call site can know.
+  Future<void> start(
+    matrix.Room room, {
+    required bool video,
+    bool answering = false,
+  }) => _starting = _start(room, video: video, answering: answering);
 
-  Future<void> _start(matrix.Room room, {required bool video}) async {
+  Future<void> _start(
+    matrix.Room room, {
+    required bool video,
+    required bool answering,
+  }) async {
     try {
       final grant = await calls.join(room);
       _joined = true;
@@ -329,13 +339,13 @@ class ActiveCall extends ChangeNotifier {
       _roster = roster;
       roster.addListener(_onParticipantsChanged);
 
-      // Placing or joining, decided by who is actually in the call. Read from
-      // the SFU rather than Matrix membership: a peer who crashed leaves a
-      // membership that reads as live for about twelve minutes, and trusting it
-      // would silence the ring on a genuine new call. Anyone at all — the peer
-      // or another of this account's devices — means this device is joining
-      // something already under way.
-      final placing = roster.participants.isEmpty;
+      // Placing or joining. Someone who was RUNG is answering, whatever the
+      // room looks like by the time they get there — deriving it would make a
+      // callee whose caller had already hung up look like a new caller and ring
+      // them back. For everyone else it is read from the SFU rather than Matrix
+      // membership, because a peer who crashed leaves a membership that reads as
+      // live for about twelve minutes and would silence a genuine new call.
+      final placing = !answering && roster.participants.isEmpty;
       _placed = placing;
 
       // Elect before announcing, so recording begins with the first word rather

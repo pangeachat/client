@@ -68,7 +68,6 @@ class _CallPageState extends State<CallPage> {
   late final CallMedia _media;
   late final ActiveCall _call;
   late final CallRecord _record;
-  late final DateTime _startedAt;
   DateTime? _endedAt;
 
   /// Whether this device got as far as an established call. A call that failed
@@ -98,7 +97,6 @@ class _CallPageState extends State<CallPage> {
     super.initState();
     _camera = widget.video;
     _usedVideo = widget.video;
-    _startedAt = DateTime.now();
     _media = CallMedia();
 
     // Everything the recording needs is captured HERE, while the screen is
@@ -142,7 +140,13 @@ class _CallPageState extends State<CallPage> {
       media: _media,
       capture: CallCaptureService(sink: transcripts),
     )..addListener(_onCallChanged);
-    _call.start(room, video: widget.video);
+    // Being rung is what makes this an answer. Derived from the room it would
+    // be wrong exactly when the caller had already given up.
+    _call.start(
+      room,
+      video: widget.video,
+      answering: widget.notificationEventId != null,
+    );
   }
 
   void _onCallChanged() {
@@ -234,7 +238,12 @@ class _CallPageState extends State<CallPage> {
             widget.notificationEventId != null;
         if (!mattered) return;
         return _record.finish(
-          duration: _endedAt!.difference(_startedAt),
+          // Time actually spent talking, not time the screen was open. Ringing
+          // and connecting are not conversation, and counting them made every
+          // call read as longer than it was.
+          duration: _talkingSince == null
+              ? Duration.zero
+              : _endedAt!.difference(_talkingSince!),
           video: _usedVideo,
           // Whether anyone was ever on the other end, read from the call
           // itself. Latching this on observing the connected stage dropped a

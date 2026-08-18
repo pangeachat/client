@@ -334,6 +334,21 @@ void main() {
       },
     );
 
+    test('answering never rings, even if the caller already left', () async {
+      // The callee reaches the SFU after the caller gave up, so the room looks
+      // empty. Deriving placing from that made the answerer ring the caller
+      // back — a call nobody placed, from the wrong side.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false, answering: true);
+
+      expect(trace.steps, isNot(contains('ring')));
+      expect(
+        call.placedCall,
+        isFalse,
+        reason: 'someone who was rung is never the one placing',
+      );
+    });
+
     test('joining an existing call does not ring the caller back', () async {
       // A call someone is already in is one this device is joining, and a ring
       // from it would ring the caller who is already there. This holds however
