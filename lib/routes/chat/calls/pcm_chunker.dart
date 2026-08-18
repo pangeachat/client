@@ -117,18 +117,30 @@ class PcmChunker {
   /// Samples not yet covered by a completed analysis window.
   final List<int> _window = [];
 
-  int _nextIndex = 0;
+  /// Where this chunker's numbering starts.
+  ///
+  /// A chunk index identifies a chunk within the CALL, not within a chunker, and
+  /// recording can stop and start again mid-call when another of the learner's
+  /// devices takes over and hands back. Restarting at zero would make the second
+  /// stretch look like a redelivery of the first, and it would be discarded.
+  int _nextIndex;
 
   PcmChunker({
     required this.sampleRate,
     required this.channels,
+    int firstIndex = 0,
     this.targetDuration = const Duration(seconds: 45),
     this.maxDuration = const Duration(seconds: 90),
     this.minSilence = const Duration(milliseconds: 400),
     this.silenceThreshold = 0.02,
-  }) : assert(sampleRate > 0),
+  }) : _nextIndex = firstIndex,
+       assert(sampleRate > 0),
        assert(channels > 0),
        assert(maxDuration >= targetDuration);
+
+  /// The index the next chunk would take. A caller resuming after a gap passes
+  /// this to the chunker that follows.
+  int get nextIndex => _nextIndex;
 
   int get _framesPerWindow => max(1, sampleRate * _windowMs ~/ 1000);
   int get _targetFrames => sampleRate * targetDuration.inMilliseconds ~/ 1000;

@@ -63,14 +63,22 @@ class CallService {
     try {
       return _focus = await _discovery.discover(homeserver);
     } catch (e) {
-      // Only a definitive answer is remembered. Caching a network blip would
-      // hide the call button for the rest of the session, so the next room
-      // opened asks again.
-      Logs().d('RTC focus lookup failed, will retry: $e');
-      _resolving = null;
+      // Only a definitive answer is remembered, so a blip does not hide the call
+      // button for the session. But the chat header asks on every direct room
+      // opened, so an outage would otherwise mean a request per room — the
+      // failure is held briefly to keep a retry from becoming a flood.
+      Logs().d('RTC focus lookup failed, will retry shortly: $e');
+      Future.delayed(_retryFocusAfter, () => _resolving = null);
       return null;
     }
   }();
+
+  /// How long a failed lookup is left in place before the next ask retries it.
+  static const _retryFocusAfter = Duration(seconds: 30);
+
+  /// Drops a held failure so the next [resolveFocus] asks immediately.
+  @visibleForTesting
+  void retryFocusNow() => _resolving = null;
 
   /// The focus, once [resolveFocus] has answered. Null before that, and null on a
   /// homeserver that advertises none.
@@ -193,7 +201,20 @@ class CallService {
   /// Separate from [join] because the two are not simultaneous by design: media
   /// comes up in between, so a peer never sees a participant who cannot yet be
   /// heard.
-  Future<void> announce() async => _current?.enter();
+  Future<void> announce() async {
+    final session = _current;
+    if (session == null) return;
+    // A leave that failed part-way can leave the SDK's session still entered,
+    // and it is reused by the next join. Entering it again throws, which would
+    // make every later call in that room fail for a transient error the learner
+    // never saw. Already-entered is the state we wanted.
+    if (session.state == GroupCallState.entered ||
+        session.state == GroupCallState.entering) {
+      Logs().i('Call session is already entered; not entering again');
+      return;
+    }
+    await session.enter();
+  }
 
   /// Retracts our membership and tears the session down.
   ///

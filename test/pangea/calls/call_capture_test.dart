@@ -86,12 +86,13 @@ void main() {
 
   CallCaptureService service({RecordingSink? withSink}) => CallCaptureService(
     sink: withSink ?? sink,
-    newChunker: () => PcmChunker(
+    newChunker: (firstIndex) => PcmChunker(
       sampleRate: captureSampleRate,
       channels: captureChannels,
       targetDuration: const Duration(milliseconds: 200),
       maxDuration: const Duration(milliseconds: 400),
       minSilence: const Duration(milliseconds: 100),
+      firstIndex: firstIndex,
     ),
   );
 
@@ -129,6 +130,34 @@ void main() {
 
       s.start(track);
       expect(s.isRecording, isTrue, reason: 'and a retry works');
+    });
+
+    test('numbering continues when recording resumes in the same call', () async {
+      // Another of the learner's devices can take over recording and hand it
+      // back within one call. A second stretch numbered from zero would look
+      // like a redelivery of the first and be discarded as already transcribed.
+      final s = service();
+      s.start(track);
+      for (var i = 0; i < 60; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      final firstRun = sink.delivered.map((c) => c.index).toList();
+      expect(firstRun, isNotEmpty);
+
+      s.start(track);
+      for (var i = 0; i < 60; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      final all = sink.delivered.map((c) => c.index).toList();
+      expect(
+        all,
+        List.generate(all.length, (i) => i),
+        reason: 'one unbroken run of indices across both stretches',
+      );
+      expect(all.length, greaterThan(firstRun.length));
     });
 
     test('a second start while recording is refused', () {

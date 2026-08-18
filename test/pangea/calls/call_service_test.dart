@@ -145,9 +145,34 @@ void main() {
       );
 
       expect(await service.resolveFocus(), isNull, reason: 'the blip');
+      // Past the pause that keeps a retry from becoming a flood.
+      await Future.delayed(const Duration(milliseconds: 1));
+      service.retryFocusNow();
       final focus = await service.resolveFocus();
       expect(focus, isNotNull, reason: 'and it asked again');
       expect(focus!.serviceUrl, 'http://sfu:7980');
+    });
+
+    test('a failed lookup is not re-asked on every room opened', () async {
+      // The chat header asks per direct room. Without a pause, an outage would
+      // mean one .well-known request for every room the learner opens.
+      var requests = 0;
+      final client = await bareClient();
+      client.homeserver = Uri.parse('http://localhost:8008');
+      final service = CallService(
+        client,
+        focusDiscovery: RtcFocusDiscovery(
+          httpClient: MockClient((_) async {
+            requests++;
+            throw const SocketException('offline');
+          }),
+        ),
+      );
+
+      await service.resolveFocus();
+      await service.resolveFocus();
+      await service.resolveFocus();
+      expect(requests, 1, reason: 'the failure is held briefly');
     });
 
     test('a non-200 that is not 404 is treated as unknown', () async {
@@ -165,6 +190,9 @@ void main() {
       );
 
       expect(await service.resolveFocus(), isNull);
+      // Held briefly like any failure, but never treated as an answer: asked
+      // again once the pause is dropped.
+      service.retryFocusNow();
       expect(await service.resolveFocus(), isNull);
       expect(requests, 2, reason: 'a 504 is not an answer about MatrixRTC');
     });

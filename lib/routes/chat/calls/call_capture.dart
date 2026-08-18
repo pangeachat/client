@@ -42,7 +42,13 @@ const captureChannels = 1;
 /// rather than a silent second recording.
 class CallCaptureService {
   final CallAudioSink sink;
-  final PcmChunker Function() _newChunker;
+  final PcmChunker Function(int firstIndex) _newChunker;
+
+  /// Chunk numbering continues across stop and start. Recording can be handed to
+  /// another of the learner's devices and handed back within one call, and a
+  /// second stretch numbered from zero would be taken for a redelivery of the
+  /// first and silently dropped.
+  int _nextIndex = 0;
 
   PcmChunker? _chunker;
   CancelListenFunc? _cancelTap;
@@ -52,13 +58,16 @@ class CallCaptureService {
   /// hangup does not abandon audio the learner already spoke.
   final List<Future<void>> _inFlight = [];
 
-  CallCaptureService({required this.sink, PcmChunker Function()? newChunker})
-    : _newChunker =
-          newChunker ??
-          (() => PcmChunker(
-            sampleRate: captureSampleRate,
-            channels: captureChannels,
-          ));
+  CallCaptureService({
+    required this.sink,
+    PcmChunker Function(int firstIndex)? newChunker,
+  }) : _newChunker =
+           newChunker ??
+           ((firstIndex) => PcmChunker(
+             sampleRate: captureSampleRate,
+             channels: captureChannels,
+             firstIndex: firstIndex,
+           ));
 
   bool get isRecording => _chunker != null;
 
@@ -72,7 +81,7 @@ class CallCaptureService {
       throw StateError('A call recording is already running');
     }
     _stopping = false;
-    final chunker = _newChunker();
+    final chunker = _newChunker(_nextIndex);
     try {
       // Registered before anything is recorded as running. A tap that throws
       // half-way would otherwise leave this looking started forever, and every
@@ -138,6 +147,9 @@ class CallCaptureService {
 
     final tail = chunker.flush();
     if (tail != null) _hand(tail);
+    // Remembered before the chunker is let go, so a later stretch of the same
+    // call numbers on from here.
+    _nextIndex = chunker.nextIndex;
 
     await Future.wait(List.of(_inFlight));
     await sink.close();
