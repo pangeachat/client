@@ -19,8 +19,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 ///   `MatrixState.incomingUriToPath`, which unwraps a fragment.
 ///
 /// Links come from [inviteLinkForUser], the same function `fluffy_share.dart`
-/// ships, and the builder calls [userIdFromUrlParam], the same one
-/// `routes.dart` calls — so these pin real behavior, not a copy of it.
+/// ships, and the fake route reads its param through [userIdFromUrlParam],
+/// the decode step behind [dmInviteUserIdFor] — what the real (redirect-only)
+/// route reads the link with — so these pin real behavior, not a copy of it.
 const _homeDomain = 'staging.pangea.chat';
 const _frontend = 'https://app.staging.pangea.chat';
 
@@ -146,12 +147,12 @@ void main() {
     });
   });
 
-  // The auth guard reads the invited user off the URI (to ferry a logged-out
-  // click across the login bounce, and to recognise the landing it re-enters,
-  // #8436) — through [dmInviteUserIdFor], not the router's path param. Both
-  // must read the same link to the same id, or the guard could ferry one id
-  // and the landing open a DM with another.
-  group('dmInviteUserIdFor reads the same id the route builder gets', () {
+  // The invite route is redirect-only (#8436): its redirect reads the invited
+  // user off the URI through [dmInviteUserIdFor], not a builder's path param.
+  // Both must read the same link to the same id — `Uri.pathSegments` and the
+  // router each decode once — or the redirect would cache a different id than
+  // a builder would have opened.
+  group('dmInviteUserIdFor reads the same id a route builder gets', () {
     Uri webLocation(String sharedLink) {
       final uri = Uri.parse(sharedLink);
       return Uri.parse(uri.hasQuery ? '${uri.path}?${uri.query}' : uri.path);

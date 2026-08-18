@@ -5,8 +5,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
-import 'package:fluffychat/features/navigation/user_id_url.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 
@@ -160,13 +160,16 @@ void main() {
     );
   });
 
-  // A DM invite link (`/invite_user/<id>`) rides the same ferry (#8436):
-  // cached across the bounce, re-entered on the logged-in landing, consumed
-  // only by the invite landing once the DM has actually opened
-  // (DmInviteLandingPage) — so a link click lands IN the DM instead of
-  // waiting for the user to open the chat list.
-  group('PAuthGaurd.consumeCachedJoinCode — DM invite links', () {
-    const invitedUser = '@william11:staging.pangea.chat';
+  // A DM invite link (`/invite_user/<id>`) rides the same ferry (#8436), but
+  // its consumer is the shell itself (DmInviteFerryConsumer →
+  // DmInviteController.consumePending), not a redirected-to page: the invite
+  // route's redirect caches the id and lands on the world map, and the guard
+  // has no DM arm — so a landing with only an invite pending stays where it
+  // is and the shell opens the DM over it. What is pinned here is the
+  // consumer's read of the ferry: domain re-attach, precedence, TTL.
+  group('DM invite links — the shell-side read of the ferry', () {
+    const domain = 'staging.pangea.chat';
+    const invitedUser = '@william11:$domain';
     final world = Uri.parse('/');
 
     setUp(() async {
@@ -174,58 +177,60 @@ void main() {
       await SpaceCodeRepo.clearDmInviteUserId();
     });
 
-    test(
-      'a fresh cached invite re-enters its landing route, cache kept',
-      () async {
-        await SpaceCodeRepo.setDmInviteUserId(invitedUser);
-
-        final redirect = await PAuthGaurd.consumeCachedJoinCode(world);
-        expect(redirect, isNotNull);
-        expect(dmInviteUserIdFor(Uri.parse(redirect!)), invitedUser);
-        // The cache survives the redirect: a landing disposed mid-open
-        // retries on the next logged-in landing.
-        expect(SpaceCodeRepo.dmInviteUserId, invitedUser);
-        // Landing on the redirected-to URL stays put (the landing consumes).
-        expect(
-          await PAuthGaurd.consumeCachedJoinCode(Uri.parse(redirect)),
-          isNull,
-        );
-        expect(SpaceCodeRepo.dmInviteUserId, invitedUser);
-      },
-    );
-
-    test('every landing on `/` — including token URLs — re-enters until the '
-        'landing consumes', () async {
+    test('the guard does not redirect for a pending invite — the shell '
+        'consumes it wherever the user lands', () async {
       await SpaceCodeRepo.setDmInviteUserId(invitedUser);
-      final chats = Uri.parse('/?left=chats');
-
-      expect(await PAuthGaurd.consumeCachedJoinCode(chats), isNotNull);
-      // The landing opening the DM is what consumes.
-      await SpaceCodeRepo.clearDmInviteUserId();
-      expect(await PAuthGaurd.consumeCachedJoinCode(chats), isNull);
+      expect(await PAuthGaurd.consumeCachedJoinCode(world), isNull);
+      expect(
+        await PAuthGaurd.consumeCachedJoinCode(Uri.parse('/?left=chats')),
+        isNull,
+      );
+      // And the read is a read: the ferry survives until the DM opens.
+      expect(SpaceCodeRepo.dmInviteUserId, invitedUser);
     });
 
-    test('any invite landing stays put, even for a different user — the '
-        'clicked link is the fresher intent', () async {
-      await SpaceCodeRepo.setDmInviteUserId(invitedUser);
-      final other = Uri.parse(dmInvitePath('@other:staging.pangea.chat'));
+    test('a fresh cached invite is pending, with the home domain '
+        're-attached to a bare localpart cached pre-login', () async {
+      await SpaceCodeRepo.setDmInviteUserId('@william11');
+      expect(
+        DmInviteController.pendingInviteUserId(domain: domain),
+        invitedUser,
+      );
 
-      expect(await PAuthGaurd.consumeCachedJoinCode(other), isNull);
+      await SpaceCodeRepo.setDmInviteUserId('@will:matrix.org');
+      expect(
+        DmInviteController.pendingInviteUserId(domain: domain),
+        '@will:matrix.org',
+      );
     });
 
-    test('a pending join code or activity outranks a cached invite', () async {
+    test('nothing cached means nothing pending', () {
+      expect(DmInviteController.pendingInviteUserId(domain: domain), isNull);
+    });
+
+    test('a pending join code or activity outranks the invite, which waits '
+        'its turn', () async {
       const uuid = 'a1aed3f6-1ef7-4ed0-bc46-4a393aaf880b';
       await SpaceCodeRepo.setDmInviteUserId(invitedUser);
-      await SpaceCodeRepo.setActivityId(uuid);
 
-      var redirect = await PAuthGaurd.consumeCachedJoinCode(world);
-      expect(redirect, contains(uuid));
-      expect(dmInviteUserIdFor(Uri.parse(redirect!)), isNull);
+      await SpaceCodeRepo.setActivityId(uuid);
+      expect(DmInviteController.pendingInviteUserId(domain: domain), isNull);
+      expect(await PAuthGaurd.consumeCachedJoinCode(world), contains(uuid));
 
       await SpaceCodeRepo.setSpaceCode('vj3pc8b');
-      redirect = await PAuthGaurd.consumeCachedJoinCode(world);
-      expect(redirect, contains('vj3pc8b'));
-      expect(dmInviteUserIdFor(Uri.parse(redirect!)), isNull);
+      expect(DmInviteController.pendingInviteUserId(domain: domain), isNull);
+      expect(
+        await PAuthGaurd.consumeCachedJoinCode(world),
+        contains('vj3pc8b'),
+      );
+
+      // Once both are consumed the invite is next.
+      await SpaceCodeRepo.clearSpaceCode();
+      await SpaceCodeRepo.clearActivityId();
+      expect(
+        DmInviteController.pendingInviteUserId(domain: domain),
+        invitedUser,
+      );
     });
 
     test(
@@ -240,7 +245,7 @@ void main() {
               .millisecondsSinceEpoch,
         );
 
-        expect(await PAuthGaurd.consumeCachedJoinCode(world), isNull);
+        expect(DmInviteController.pendingInviteUserId(domain: domain), isNull);
         expect(storage.read(PLocalKey.cachedDmInviteUserId), isNull);
       },
     );

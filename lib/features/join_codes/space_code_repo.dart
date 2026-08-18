@@ -94,10 +94,11 @@ class SpaceCodeRepo {
     PLocalKey.cachedActivityToOpenAt,
   );
 
-  /// The user id of a DM invite link (`/invite_user/<id>`) ferried across the
-  /// login bounce (#8436) — same box, same TTL, same contract; consumed by
-  /// the invite landing once it has actually opened the DM (or definitively
-  /// failed to), DmInviteLandingPage.
+  /// The user id of a DM invite link (`/invite_user/<id>`) — same box, same
+  /// TTL, same contract; cached by the invite route's redirect on every
+  /// landing (not only the login bounce, #8436) and consumed from inside the
+  /// shell once the DM has actually opened (or definitively failed to),
+  /// DmInviteController.consumePending.
   static String? get dmInviteUserId => _readFresh(
     PLocalKey.cachedDmInviteUserId,
     PLocalKey.cachedDmInviteUserIdAt,

@@ -95,8 +95,9 @@ the shareable standalone activity link (`/<uuid>`) and the course join link
 [`LegacyRedirects`](../../lib/features/navigation/legacy_redirects.dart) folds
 into their `activity` / `addcourse:private/<code>` tokens before render. The
 third, the DM invite link (`/invite_user/<id>`), resolves through its own route
-rather than a fold — a transient landing that opens the DM and lands the user
-in it over the chat list, never on the bare map (#8436) — see
+rather than a fold — a redirect-only route that lands on the world map with
+the chat list open, from where the shell opens the DM and lands the user in it
+(#8436) — see
 [Ids in URLs](#ids-in-urls). All are just app URLs the
 SPA serves directly; the older `/join_with_link` and `/join` join-link
 spellings are retired.
