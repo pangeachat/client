@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-18 09:33:32.576341",
+    "@@last_modified": "2026-08-18 15:48:49.045130",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2144,5 +2144,8 @@
     "showMore": "Shfaq më shumë",
     "showLess": "Shfaq më pak",
     "countNewMessages": "{count, plural, =1{1 mesazh i ri} other{{count} mesazhe të reja}}",
-    "markAllRead": "Shëno të gjitha si të lexuara"
+    "markAllRead": "Shëno të gjitha si të lexuara",
+    "usersAreTryingToJoinCourse": "Përdoruesit po përpiqen t'i bashkohen kursit tuaj",
+    "denyAllUsers": "Refuzo të gjithë përdoruesit",
+    "denyAllKnocksDescription": "Këta përdorues do të refuzohen nga kursi. Ata mund të provojnë t'i bashkohen sërish në çdo kohë."
 }

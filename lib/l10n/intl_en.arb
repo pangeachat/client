@@ -134,6 +134,21 @@
         "type": "String",
         "placeholders": {}
     },
+    "usersAreTryingToJoinCourse": "Users are trying to join your course",
+    "@usersAreTryingToJoinCourse": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "denyAllUsers": "Deny all users",
+    "@denyAllUsers": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "denyAllKnocksDescription": "These users will be rejected from the course. They may attempt to join again at any time.",
+    "@denyAllKnocksDescription": {
+        "type": "String",
+        "placeholders": {}
+    },
     "countNewMessages": "{count, plural, =1{1 new message} other{{count} new messages}}",
     "@countNewMessages": {
         "type": "String",

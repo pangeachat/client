@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-18 09:33:26.014733",
+    "@@last_modified": "2026-08-18 15:48:42.235622",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2144,5 +2144,8 @@
     "showMore": "વધુ બતાવો",
     "showLess": "ઓછું બતાવો",
     "countNewMessages": "{count, plural, =1{1 નવો સંદેશ} other{{count} નવા સંદેશા}}",
-    "markAllRead": "બધા વાંચેલા તરીકે ચિહ્નિત કરો"
+    "markAllRead": "બધા વાંચેલા તરીકે ચિહ્નિત કરો",
+    "usersAreTryingToJoinCourse": "વપરાશકર્તાઓ તમારા કોર્સમાં જોડાવાનો પ્રયાસ કરી રહ્યા છે",
+    "denyAllUsers": "બધા વપરાશકર્તાઓને નકારો",
+    "denyAllKnocksDescription": "આ વપરાશકર્તાઓને કોર્સમાંથી નકારવામાં આવશે. તેઓ કોઈપણ સમયે ફરીથી જોડાવાનો પ્રયાસ કરી શકે છે."
 }

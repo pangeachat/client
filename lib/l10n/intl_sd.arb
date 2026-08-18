@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-18 09:33:31.708517",
+    "@@last_modified": "2026-08-18 15:48:48.360571",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2144,5 +2144,8 @@
     "showMore": "وڌيڪ ڏيکاريو",
     "showLess": "گهٽ ڏيکاريو",
     "countNewMessages": "{count, plural, =1{1 نئون پيغام} other{{count} نوان پيغام}}",
-    "markAllRead": "سڀ پڙهيل نشان لڳايو"
+    "markAllRead": "سڀ پڙهيل نشان لڳايو",
+    "usersAreTryingToJoinCourse": "استعمال ڪندڙ توهان جي ڪورس ۾ شامل ٿيڻ جي ڪوشش ڪري رهيا آهن",
+    "denyAllUsers": "سڀني استعمال ڪندڙن کي رد ڪريو",
+    "denyAllKnocksDescription": "انهن استعمال ڪندڙن کي ڪورس مان رد ڪيو ويندو. اهي ڪنهن به وقت ٻيهر شامل ٿيڻ جي ڪوشش ڪري سگهن ٿا."
 }

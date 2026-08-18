@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-18 09:33:32.084018",
+    "@@last_modified": "2026-08-18 15:48:49.037527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2144,5 +2144,8 @@
     "showMore": "Muuji wax badan",
     "showLess": "Muuji wax yar",
     "countNewMessages": "{count, plural, =1{1 fariin cusub} other{{count} fariimo cusub}}",
-    "markAllRead": "Dhammaan akhri"
+    "markAllRead": "Dhammaan akhri",
+    "usersAreTryingToJoinCourse": "Isticmaalayaashu waxay isku dayayaan inay ku soo biiraan koorsadaada",
+    "denyAllUsers": "Diid dhammaan isticmaalayaasha",
+    "denyAllKnocksDescription": "Isticmaalayaashan waa laga diidi doonaa koorsada. Waxay isku dayi karaan inay mar kale soo biiraan wakhti kasta."
 }

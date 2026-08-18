@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-18 09:33:20.822634",
+    "@@last_modified": "2026-08-18 15:48:39.932425",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2144,5 +2144,8 @@
     "showMore": "Покажи още",
     "showLess": "Покажи по-малко",
     "countNewMessages": "{count, plural, =1{1 ново съобщение} other{{count} нови съобщения}}",
-    "markAllRead": "Маркирай всички като прочетени"
+    "markAllRead": "Маркирай всички като прочетени",
+    "usersAreTryingToJoinCourse": "Потребители се опитват да се присъединят към курса Ви",
+    "denyAllUsers": "Отказ на всички потребители",
+    "denyAllKnocksDescription": "Тези потребители ще бъдат отхвърлени от курса. Те могат да опитат да се присъединят отново по всяко време."
 }

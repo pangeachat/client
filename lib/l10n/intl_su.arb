@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-18 09:33:35.943742",
+    "@@last_modified": "2026-08-18 15:48:49.353723",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2144,5 +2144,8 @@
     "showMore": "Témbongkeun deui",
     "showLess": "Témbongkeun saeutik",
     "countNewMessages": "{count, plural, =1{1 talatah anyar} other{{count} talatah anyar}}",
-    "markAllRead": "Tandaan sadayana parantos dibaca"
+    "markAllRead": "Tandaan sadayana parantos dibaca",
+    "usersAreTryingToJoinCourse": "Pamaké nyobian ngagabung kursus anjeun",
+    "denyAllUsers": "Tolak sadaya pamaké",
+    "denyAllKnocksDescription": "Pamaké ieu bakal ditolak ti kursus. Maranéhna tiasa nyobian ngagabung deui iraha waé."
 }

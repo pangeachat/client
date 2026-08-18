@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-18 09:33:24.764292",
+    "@@last_modified": "2026-08-18 15:48:43.621942",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2144,5 +2144,8 @@
     "showMore": "Տեսնել ավելին",
     "showLess": "Տեսնել ավելի քիչ",
     "countNewMessages": "{count, plural, =1{1 նոր հաղորդագրություն} other{{count} նոր հաղորդագրություն}}",
-    "markAllRead": "Նշել բոլորը կարդացված"
+    "markAllRead": "Նշել բոլորը կարդացված",
+    "usersAreTryingToJoinCourse": "Օգտատերերը փորձում են միանալ Ձեր դասընթացին",
+    "denyAllUsers": "Մերժել բոլոր օգտատերերին",
+    "denyAllKnocksDescription": "Այս օգտատերերը կմերժվեն դասընթացից։ Նրանք կարող են ցանկացած պահի նորից փորձել միանալ։"
 }

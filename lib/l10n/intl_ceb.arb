@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-18 09:33:21.947079",
+    "@@last_modified": "2026-08-18 15:48:41.193104",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2144,5 +2144,8 @@
     "showMore": "Ipakita pa",
     "showLess": "Ipakita gamay",
     "countNewMessages": "{count, plural, =1{1 ka bag-ong mensahe} other{{count} ka bag-ong mensahe}}",
-    "markAllRead": "Markahi tanan nga nabasa na"
+    "markAllRead": "Markahi tanan nga nabasa na",
+    "usersAreTryingToJoinCourse": "Naay mga user nga naningkamot nga moapil sa imong kurso",
+    "denyAllUsers": "Balibaran tanang user",
+    "denyAllKnocksDescription": "Kining mga user balibaran sa kurso. Mahimo silang mosulay pag-apil pag-usab bisan unsang orasa."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-18 09:33:21.260320",
+    "@@last_modified": "2026-08-18 15:48:39.841832",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10062,5 +10062,8 @@
     "showMore": "عرض المزيد",
     "showLess": "عرض أقل",
     "countNewMessages": "{count, plural, =1{رسالة جديدة واحدة} other{{count} رسائل جديدة}}",
-    "markAllRead": "وضع الكل كمقروء"
+    "markAllRead": "وضع الكل كمقروء",
+    "usersAreTryingToJoinCourse": "يحاول المستخدمون الانضمام إلى دورتك التدريبية",
+    "denyAllUsers": "رفض جميع المستخدمين",
+    "denyAllKnocksDescription": "سيتم رفض هؤلاء المستخدمين من الدورة التدريبية. وقد يحاولون الانضمام مرة أخرى في أي وقت."
 }

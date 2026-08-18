@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-18 09:33:21.638266",
+    "@@last_modified": "2026-08-18 15:48:40.901377",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2144,5 +2144,8 @@
     "showMore": "Mostra di più",
     "showLess": "Mostra di menu",
     "countNewMessages": "{count, plural, =1{1 novu messagiu} other{{count} novi messaghji}}",
-    "markAllRead": "Marcà tuttu cum'è lettu"
+    "markAllRead": "Marcà tuttu cum'è lettu",
+    "usersAreTryingToJoinCourse": "L'utilizatori cercanu à unisce si à u vostru corsu",
+    "denyAllUsers": "Ricusà tutti l'utilizatori",
+    "denyAllKnocksDescription": "Questi utilizatori seranu ricusati da u corsu. Puderanu pruvà à unisce si di novu in ogni mumentu."
 }

@@ -11,6 +11,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_knock_requests.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
@@ -168,6 +169,9 @@ class _CourseOverviewState extends State<CourseOverview> {
                         iconSize: 12.0,
                       ),
                     ),
+                  // Pending join requests lead: they are a decision waiting on
+                  // the admin, above anything they can merely catch up on.
+                  CourseKnockRequests(room: room),
                   CourseCatchUp(room: room),
                   // The course-wide progress bar rides the intro block, under
                   // the attention cards; the Course plan section below starts

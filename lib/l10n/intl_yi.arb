@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-18 09:33:34.564384",
+    "@@last_modified": "2026-08-18 15:48:51.048896",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2144,5 +2144,8 @@
     "showMore": "ווייַזן מער",
     "showLess": "ווייַזן ווייניקער",
     "countNewMessages": "{count, plural, =1{1 נייַע אָנזאָג} other{{count} נייַע אַרטיקלען}}",
-    "markAllRead": "מאַרקירן אַלע געלייענט"
+    "markAllRead": "מאַרקירן אַלע געלייענט",
+    "usersAreTryingToJoinCourse": "באַניצערס פּרוּוון זיך צו פֿאַרבינדן צו דיין קורס",
+    "denyAllUsers": "אָפּזאָגן אַלע באַניצערס",
+    "denyAllKnocksDescription": "די באַניצערס וועלן ווערן אָפּגעוואָרפן פֿונעם קורס. זיי קענען פּרוּוון זיך ווידער צו פֿאַרבינדן אין יעדן צייט."
 }

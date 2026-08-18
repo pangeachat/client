@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-18 09:33:24.443587",
+    "@@last_modified": "2026-08-18 15:48:43.096606",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9859,5 +9859,8 @@
     "showMore": "Több megjelenítése",
     "showLess": "Kevesebb megjelenítése",
     "countNewMessages": "{count, plural, =1{1 új üzenet} other{{count} új üzenet}}",
-    "markAllRead": "Mindet olvasottnak jelöli"
+    "markAllRead": "Mindet olvasottnak jelöli",
+    "usersAreTryingToJoinCourse": "Felhasználók próbálnak csatlakozni a kurzusodhoz",
+    "denyAllUsers": "Összes felhasználó elutasítása",
+    "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni."
 }

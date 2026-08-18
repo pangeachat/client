@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-18 09:33:30.522468",
+    "@@last_modified": "2026-08-18 15:48:47.874297",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2144,5 +2144,8 @@
     "showMore": "ಹೆಚ್ಚು ತಾನು",
     "showLess": "ಕಮ್ಮಿ ತಾನು",
     "countNewMessages": "{count, plural, =1{1 অহোংবা পাও} other{{count} অহোংবা পাও}}",
-    "markAllRead": "পুম্নমক পাজরে হায়না থম্নবা"
+    "markAllRead": "পুম্নমক পাজরে হায়না থম্নবা",
+    "usersAreTryingToJoinCourse": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡꯅ ꯅꯍꯥꯛꯀꯤ ꯀꯣꯔꯁ ꯀꯥꯟꯅꯕꯥ ꯍꯣꯠꯅꯔꯤ",
+    "denyAllUsers": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡ ꯄꯨꯝꯅꯃꯛ ꯀꯥꯟꯅꯕꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ",
+    "denyAllKnocksDescription": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡ ꯑꯁꯤ ꯀꯣꯔꯁ ꯑꯁꯤꯗꯒꯤ ꯀꯥꯟꯅꯕꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ꯫ ꯃꯈꯣꯌꯅ ꯀꯔꯤꯒꯨꯝꯕ ꯃꯇꯝ ꯑꯃꯗ ꯑꯃꯨꯛ ꯍꯟꯅ ꯀꯥꯟꯅꯕꯥ ꯍꯣꯠꯅꯕ ꯌꯥꯏ꯫"
 }

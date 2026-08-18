@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-18 09:33:26.899003",
+    "@@last_modified": "2026-08-18 15:48:44.646257",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2144,5 +2144,8 @@
     "showMore": "បង្ហាញបន្ថែម",
     "showLess": "បង្ហាញតិច",
     "countNewMessages": "{count, plural, =1{សារថ្មី ១} other{សារថ្មី {count}}}",
-    "markAllRead": "សម្គាល់ថាបានអានទាំងអស់"
+    "markAllRead": "សម្គាល់ថាបានអានទាំងអស់",
+    "usersAreTryingToJoinCourse": "អ្នកប្រើប្រាស់កំពុងព្យាយាមចូលរួមវគ្គសិក្សារបស់អ្នក",
+    "denyAllUsers": "បដិសេធអ្នកប្រើប្រាស់ទាំងអស់",
+    "denyAllKnocksDescription": "អ្នកប្រើប្រាស់ទាំងនេះនឹងត្រូវបានបដិសេធពីវគ្គសិក្សា។ ពួកគេអាចព្យាយាមចូលរួមម្ដងទៀតនៅពេលណាក៏បាន។"
 }

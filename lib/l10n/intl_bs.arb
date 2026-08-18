@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-18 09:33:21.163262",
+    "@@last_modified": "2026-08-18 15:48:39.884098",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2144,5 +2144,8 @@
     "showMore": "Prikaži više",
     "showLess": "Prikaži manje",
     "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
-    "markAllRead": "Označi sve kao pročitano"
+    "markAllRead": "Označi sve kao pročitano",
+    "usersAreTryingToJoinCourse": "Korisnici pokušavaju da se pridruže vašem kursu",
+    "denyAllUsers": "Odbij sve korisnike",
+    "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku."
 }

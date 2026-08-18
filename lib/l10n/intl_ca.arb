@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 09:33:21.756157",
+    "@@last_modified": "2026-08-18 15:48:40.588581",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9883,5 +9883,8 @@
     "showMore": "Mostra més",
     "showLess": "Mostra menys",
     "countNewMessages": "{count, plural, =1{1 missatge nou} other{{count} missatges nous}}",
-    "markAllRead": "Marca-ho tot com a llegit"
+    "markAllRead": "Marca-ho tot com a llegit",
+    "usersAreTryingToJoinCourse": "Els usuaris estan intentant unir-se al teu curs",
+    "denyAllUsers": "Denegar tots els usuaris",
+    "denyAllKnocksDescription": "Aquests usuaris seran rebutjats del curs. Poden intentar unir-se de nou en qualsevol moment."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-18 09:33:22.683592",
+    "@@last_modified": "2026-08-18 15:48:41.770667",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,8 @@
     "showMore": "Gehiago erakutsi",
     "showLess": "Gutxiago erakutsi",
     "countNewMessages": "{count, plural, =1{mezu berri 1} other{{count} mezu berri}}",
-    "markAllRead": "Denak irakurritako gisa markatu"
+    "markAllRead": "Denak irakurritako gisa markatu",
+    "usersAreTryingToJoinCourse": "Erabiltzaileak zure ikastarora sartzen saiatzen ari dira",
+    "denyAllUsers": "Ukatu erabiltzaile guztiei",
+    "denyAllKnocksDescription": "Erabiltzaile hauek ikastarotik baztertuko dira. Edonoiz saia daitezke berriro sartzen."
 }

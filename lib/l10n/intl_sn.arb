@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-18 09:33:32.208154",
+    "@@last_modified": "2026-08-18 15:48:48.686956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2144,5 +2144,8 @@
     "showMore": "Ratidza zvimwe",
     "showLess": "Ratidza zvishoma",
     "countNewMessages": "{count, plural, =1{1 meseji itsva} other{{count} meseji itsva}}",
-    "markAllRead": "Maka zvese sekuverengwa"
+    "markAllRead": "Maka zvese sekuverengwa",
+    "usersAreTryingToJoinCourse": "Vashandisi vari kuedza kujoina kosi yako",
+    "denyAllUsers": "Ramba vashandisi vese",
+    "denyAllKnocksDescription": "Vashandisi ava vacharambwa kubva kukosi. Vanogona kuedza kujoina zvakare chero nguva."
 }

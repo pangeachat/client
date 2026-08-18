@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-18 09:33:22.313120",
+    "@@last_modified": "2026-08-18 15:48:41.149138",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2144,5 +2144,8 @@
     "showMore": "Dangos mwy",
     "showLess": "Dangos llai",
     "countNewMessages": "{count, plural, =1{1 neges newydd} other{{count} neges newydd}}",
-    "markAllRead": "Marcio pob un fel rhai a ddarllenwyd"
+    "markAllRead": "Marcio pob un fel rhai a ddarllenwyd",
+    "usersAreTryingToJoinCourse": "Mae defnyddwyr yn ceisio ymuno â'ch cwrs",
+    "denyAllUsers": "Gwrthod pob defnyddiwr",
+    "denyAllKnocksDescription": "Bydd y defnyddwyr hyn yn cael eu gwrthod o'r cwrs. Gallant geisio ymuno eto unrhyw bryd."
 }

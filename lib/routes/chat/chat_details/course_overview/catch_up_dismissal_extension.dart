@@ -2,9 +2,10 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
-/// The Catch up card's dismissal layer (#8357 "Mark all read"): the knocks
-/// the user dismissed FROM THE CARD ONLY — they stay pending everywhere else
-/// in the UI (member list, invite page).
+/// The Catch up card's dismissal layer (#8357 "Mark all read"): the
+/// analytics-access requests the user dismissed FROM THE CARD ONLY — they
+/// stay pending everywhere else in the UI. Course join requests are NOT
+/// dismissable: they are a decision, and live in their own card (#8462).
 ///
 /// Stored as per-room account data on the course space (not local storage)
 /// so dismissals roam across devices and survive cache clears, arriving back

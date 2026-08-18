@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-18 09:33:27.523704",
+    "@@last_modified": "2026-08-18 15:48:43.063742",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2144,5 +2144,8 @@
     "showMore": "Montre plis",
     "showLess": "Montre mwens",
     "countNewMessages": "{count, plural, =1{1 nouvo mesaj} other{{count} nouvo mesaj}}",
-    "markAllRead": "Make tout li"
+    "markAllRead": "Make tout li",
+    "usersAreTryingToJoinCourse": "Itilizatè yo ap eseye antre nan kou ou a",
+    "denyAllUsers": "Refize tout itilizatè yo",
+    "denyAllKnocksDescription": "Itilizatè sa yo pral rejte nan kou a. Yo ka eseye antre ankò nenpòt ki lè."
 }

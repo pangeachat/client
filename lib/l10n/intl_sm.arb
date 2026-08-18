@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-18 09:33:31.865875",
+    "@@last_modified": "2026-08-18 15:48:49.041198",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2144,5 +2144,8 @@
     "showMore": "Fa'aali atili",
     "showLess": "Fa'aali itiiti",
     "countNewMessages": "{count, plural, =1{1 feʻau fou} other{{count} feʻau fou}}",
-    "markAllRead": "Faailoga uma ua faitauina"
+    "markAllRead": "Faailoga uma ua faitauina",
+    "usersAreTryingToJoinCourse": "O lo'o taumafai tagata fa'aoga e auai i lau kosi",
+    "denyAllUsers": "Te'ena tagata fa'aoga uma",
+    "denyAllKnocksDescription": "O le a te'ena nei tagata fa'aoga mai le kosi. E mafai ona latou toe taumafai e auai i so'o se taimi."
 }

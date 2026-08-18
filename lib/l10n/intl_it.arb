@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 09:33:25.577149",
+    "@@last_modified": "2026-08-18 15:48:43.848625",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9829,5 +9829,8 @@
     "showMore": "Mostra altro",
     "showLess": "Mostra meno",
     "countNewMessages": "{count, plural, =1{1 nuovo messaggio} other{{count} nuovi messaggi}}",
-    "markAllRead": "Segna tutto come letto"
+    "markAllRead": "Segna tutto come letto",
+    "usersAreTryingToJoinCourse": "Gli utenti stanno cercando di unirsi al tuo corso",
+    "denyAllUsers": "Nega tutti gli utenti",
+    "denyAllKnocksDescription": "Questi utenti verranno rifiutati dal corso. Potranno tentare di unirsi di nuovo in qualsiasi momento."
 }

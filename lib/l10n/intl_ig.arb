@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-18 09:33:26.437325",
+    "@@last_modified": "2026-08-18 15:48:44.118718",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2144,5 +2144,8 @@
     "showMore": "Gosi ihe ndị ọzọ",
     "showLess": "Gosi ihe na-erughị",
     "countNewMessages": "{count, plural, =1{1 ozi ọhụrụ} other{{count} ozi ọhụrụ}}",
-    "markAllRead": "Kaa ihe niile ka agụọla"
+    "markAllRead": "Kaa ihe niile ka agụọla",
+    "usersAreTryingToJoinCourse": "Ndị ọrụ na-anwa isonye na nkuzi gị",
+    "denyAllUsers": "Jụ ndị ọrụ niile",
+    "denyAllKnocksDescription": "A ga-ajụ ndị ọrụ a na nkuzi ahụ. Ha nwere ike ịnwale isonye ọzọ n'oge ọ bụla."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-18 09:33:31.333670",
+    "@@last_modified": "2026-08-18 15:48:45.951007",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2144,5 +2144,8 @@
     "showMore": "Прикажи повеќе",
     "showLess": "Прикажи помалку",
     "countNewMessages": "{count, plural, =1{1 нова порака} other{{count} нови пораки}}",
-    "markAllRead": "Означи ги сите како прочитани"
+    "markAllRead": "Означи ги сите како прочитани",
+    "usersAreTryingToJoinCourse": "Корисници се обидуваат да се приклучат на вашиот курс",
+    "denyAllUsers": "Одбиј ги сите корисници",
+    "denyAllKnocksDescription": "Овие корисници ќе бидат одбиени од курсот. Тие може да се обидат повторно да се приклучат во секое време."
 }

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-18 09:33:34.000552",
+    "@@last_modified": "2026-08-18 15:48:50.158283",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9760,5 +9760,8 @@
     "showMore": "Koʻproq koʻrsatish",
     "showLess": "Kamroq koʻrsatish",
     "countNewMessages": "{count, plural, =1{1 ta yangi xabar} other{{count} ta yangi xabar}}",
-    "markAllRead": "Barchasini oʻqilgan deb belgilash"
+    "markAllRead": "Barchasini oʻqilgan deb belgilash",
+    "usersAreTryingToJoinCourse": "Foydalanuvchilar kursingizga qo‘shilishga harakat qilmoqda",
+    "denyAllUsers": "Barcha foydalanuvchilarni rad etish",
+    "denyAllKnocksDescription": "Bu foydalanuvchilar kursdan rad etiladi. Ular istalgan vaqtda qayta qo‘shilishga urinishlari mumkin."
 }
