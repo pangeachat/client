@@ -218,11 +218,13 @@ class _CallPageState extends State<CallPage> {
       // call its record. The write is what turns a conversation into analytics,
       // and it is correct whether or not the unwind was clean.
       _call.hangUp().whenComplete(() {
-        // A call that never reached the SFU is not written: nothing happened,
-        // and an entry would record a conversation that never began. One that
-        // connected but was never answered IS written, as a missed call —
-        // otherwise someone who was away would never know they had been called.
-        if (!_reachedCall) return null;
+        // Written when the call either got established OR rang the other side.
+        // Reaching the SFU alone was too narrow: hanging up while still
+        // connecting skipped the record even though their phone had already
+        // rung, so a call someone saw and missed left no trace anywhere. A call
+        // that rang nobody and connected to nothing is still not written —
+        // nothing happened, and an entry would record a call that never began.
+        if (!_reachedCall && _call.notificationEventId == null) return null;
         return _record.finish(
           duration: _endedAt!.difference(_startedAt),
           video: _usedVideo,

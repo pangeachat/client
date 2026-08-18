@@ -329,11 +329,15 @@ class ActiveCall extends ChangeNotifier {
       // we keep it to match one. The answerer does not ring: a notification from
       // them would ring the caller, who is already here.
       if (placing && membershipId != null) {
+        // Assigned before the check, so a hangup landing here still knows the
+        // other side was rung — their phone rang, and that is what makes this a
+        // call worth recording rather than nothing at all.
         _notificationId = await calls.ring(
           room,
           membershipEventId: membershipId,
           video: video,
         );
+        if (_ending) return _abandon();
       }
       if (_notificationId != null) {
         _declines = calls
@@ -347,6 +351,10 @@ class ActiveCall extends ChangeNotifier {
       // retracted, delaying what the peer sees by the length of a flush.
       _electRecorder();
       await _handover;
+      // The last of them. Without this a hangup landing during the final
+      // reconcile would let the call report itself connected after it had been
+      // torn down, and the screen would show a live call that no longer exists.
+      if (_ending) return _abandon();
 
       _to(CallStage.connected);
     } catch (e, s) {

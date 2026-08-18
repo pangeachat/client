@@ -64,6 +64,13 @@ class FakeCalls extends CallService {
   final _declines = StreamController<Event>.broadcast();
   String? ringedNotificationId;
 
+  /// Held open to reproduce a hangup landing mid-ring.
+  Completer<void>? holdRing;
+
+  /// Whether anything is still subscribed for declines. A subscription made
+  /// after teardown has nothing left able to cancel it.
+  bool get watchingForDeclines => _declines.hasListener;
+
   @override
   Future<String?> ring(
     matrix.Room room, {
@@ -71,6 +78,7 @@ class FakeCalls extends CallService {
     required bool video,
   }) async {
     trace('ring');
+    if (holdRing != null) await holdRing!.future;
     return ringedNotificationId ??= '\$notification';
   }
 
@@ -896,5 +904,69 @@ void main() {
     await call.start(roomStub(calls.client), video: false);
     await call.hangUp();
     expect(notifications, 2, reason: 'connected, then ended');
+  });
+  group('a hangup landing while the call is still coming up', () {
+    test('does not report the call connected after it was torn down', () async {
+      // start() checks for a hangup after every await for a reason: without the
+      // check after ringing, teardown runs, then start() resumes and moves the
+      // stage to connected. The screen then shows a live call that no longer
+      // exists, and the microphone is already released.
+      final (call, calls, _, _) = await build();
+      final held = Completer<void>();
+      calls.holdRing = held;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+
+      await call.hangUp();
+      held.complete();
+      await starting;
+
+      expect(call.stage, isNot(CallStage.connecting));
+      expect(
+        call.stage,
+        anyOf(CallStage.ended, CallStage.declined),
+        reason: 'a torn-down call must not come back as connected',
+      );
+    });
+
+    test('leaves nothing subscribed for a decline', () async {
+      // Teardown cancels the decline subscription, then start() resumed and
+      // made a NEW one — after the only thing that could cancel it had already
+      // run. It then outlived the call for the lifetime of the client.
+      final (call, calls, _, _) = await build();
+      final held = Completer<void>();
+      calls.holdRing = held;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      await call.hangUp();
+      held.complete();
+      await starting;
+      await pumpEventQueue();
+
+      expect(
+        calls.watchingForDeclines,
+        isFalse,
+        reason: 'an abandoned call must leave nothing subscribed',
+      );
+    });
+
+    test('still remembers that the other side was rung', () async {
+      // Their phone rang. A hangup a moment later must still leave a record —
+      // otherwise a call someone saw and missed leaves no trace at all.
+      final (call, calls, _, _) = await build();
+      final held = Completer<void>();
+      calls.holdRing = held;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      final hangingUp = call.hangUp();
+      held.complete();
+      await starting;
+      await hangingUp;
+
+      expect(call.notificationEventId, isNotNull);
+    });
   });
 }
