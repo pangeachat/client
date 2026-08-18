@@ -228,6 +228,21 @@ void main() {
   matrix.Room roomStub(Client c) => matrix.Room(id: '!r:server', client: c);
 
   group('bringing a call up', () {
+    test('the caller rings the other side', () async {
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      expect(trace.steps, contains('ring'));
+    });
+
+    test('the answerer does not ring the caller back', () async {
+      // A notification from the answerer would ring the caller, who is already
+      // in the call — only the placing side rings.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false, ring: false);
+      expect(trace.steps, isNot(contains('ring')));
+      expect(call.stage, CallStage.connected);
+    });
+
     test('media and recording start before the peer is told', () async {
       final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);

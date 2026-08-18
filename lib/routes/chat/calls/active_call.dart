@@ -210,7 +210,16 @@ class ActiveCall extends ChangeNotifier {
   ///
   /// A failure at any step tears down the steps that already succeeded. The call
   /// either exists completely or not at all.
-  Future<void> start(matrix.Room room, {required bool video}) async {
+  /// Places or joins a call.
+  ///
+  /// [ring] is what separates the two: the caller rings the other side, the
+  /// answerer does not — a notification from the answerer would ring the caller
+  /// back, who is already in the call.
+  Future<void> start(
+    matrix.Room room, {
+    required bool video,
+    bool ring = true,
+  }) async {
     try {
       final grant = await calls.join(room);
       _joined = true;
@@ -257,11 +266,12 @@ class ActiveCall extends ChangeNotifier {
       final membershipId = await calls.announce();
       if (_ending) return _abandon();
 
-      // Ring the other side. A timeline event, so it reaches them via push even
-      // if their app was closed — membership alone could not. Its id is what a
-      // decline points back at, so we keep it to match one. If the membership id
-      // never came, the call still works; it just cannot ring.
-      if (membershipId != null) {
+      // Ring the other side, if we are the one placing the call. A timeline
+      // event, so it reaches them via push even if their app was closed —
+      // membership alone could not. Its id is what a decline points back at, so
+      // we keep it to match one. The answerer does not ring: a notification from
+      // them would ring the caller, who is already here.
+      if (ring && membershipId != null) {
         _notificationId = await calls.ring(
           room,
           membershipEventId: membershipId,

@@ -128,7 +128,13 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     final live = calls.isRinging(ring.event.room);
     _dismiss();
     if (!live || !mounted) return;
-    await CallPage.show(context, ring.event.room, video: ring.isVideo);
+    await CallPage.show(
+      context,
+      ring.event.room,
+      video: ring.isVideo,
+      // Answering, not placing — the caller is already here and must not be rung.
+      ring: false,
+    );
   }
 
   @override
