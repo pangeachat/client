@@ -51,6 +51,10 @@ class CallService {
   /// The in-flight retract, so concurrent callers await one attempt.
   Future<bool>? _retracting;
 
+  /// The in-flight announce. Retracting waits for it, so a leave can never be
+  /// sent before the join it is undoing.
+  Future<void>? _entering;
+
   CallService(
     this.client, {
     PangeaVoipDelegate? delegate,
@@ -378,7 +382,16 @@ class CallService {
     // never saw. Already-entered is the state we wanted.
     if (session.state != GroupCallState.entered &&
         session.state != GroupCallState.entering) {
-      await session.enter();
+      // Held so a retract cannot overtake it. Leaving while the enter write is
+      // still in flight let that write land afterwards, advertising a
+      // membership with nothing left tracking it — and this SDK's memberships
+      // stand for minutes.
+      final entering = _entering = session.enter();
+      try {
+        await entering;
+      } finally {
+        if (identical(_entering, entering)) _entering = null;
+      }
     }
     return _awaitMembershipEventId(session.room);
   }
@@ -420,6 +433,10 @@ class CallService {
     final session = _current;
     try {
       if (session == null) return true;
+      // Never leave before the enter it undoes has landed.
+      try {
+        await _entering;
+      } catch (_) {}
       // Retried here, holding the session, because releasing it first left
       // nothing to retry WITH — a later attempt would find nothing to leave and
       // report success it had not achieved. The SDK's own leave() also stops

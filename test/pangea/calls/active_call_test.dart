@@ -334,6 +334,26 @@ void main() {
       },
     );
 
+    test('a call the user ended is not reported as failed', () async {
+      // Teardown running underneath a step in flight is what made it throw.
+      // Reporting that as a failure showed an error for a call the user had
+      // deliberately ended.
+      final (call, calls, media, _) = await build();
+      final gate = Completer<void>();
+      media.beforeConnect = gate.future;
+      media.connectError = StateError('socket closed by teardown');
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      await call.hangUp();
+      gate.complete();
+      await starting;
+      await call.settled;
+
+      expect(call.stage, isNot(CallStage.failed));
+      expect(call.stage, CallStage.ended);
+    });
+
     test('answering never rings, even if the caller already left', () async {
       // The callee reaches the SFU after the caller gave up, so the room looks
       // empty. Deriving placing from that made the answerer ring the caller
@@ -1001,6 +1021,19 @@ void main() {
       await hangingUp;
 
       expect(call.notificationEventId, isNotNull);
+    });
+
+    test('a call joined with no ring can still be credited', () async {
+      // Neither rang nor was rung — a device joining a call already under way.
+      // Its membership is the only event in the room it can anchor to, and
+      // without it every word its learner spoke went uncredited.
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(call.placedCall, isFalse);
+      expect(call.notificationEventId, isNull);
+      expect(call.membershipEventId, isNotNull);
     });
   });
 }

@@ -77,6 +77,15 @@ class ActiveCall extends ChangeNotifier {
   /// The notification this call rang with, once it has been sent.
   String? get notificationEventId => _notificationId;
 
+  String? _membershipEventId;
+
+  /// This device's membership event for the call.
+  ///
+  /// The fallback anchor for analytics on a device that neither rang nor was
+  /// rung — one joining a call already under way. Without it everything that
+  /// device's learner said went uncredited.
+  String? get membershipEventId => _membershipEventId;
+
   ActiveCall({required this.calls, required this.media, required this.capture});
 
   /// Starts or stops recording to match which device should be recording now.
@@ -371,8 +380,10 @@ class ActiveCall extends ChangeNotifier {
       }
 
       // announce returns our membership event id, waiting for the state write
-      // to echo — the ring needs it, so this is where the wait belongs.
-      final membershipId = await calls.announce();
+      // to echo — the ring needs it, so this is where the wait belongs. Kept,
+      // because it is also the only event a device that JOINED a call — with no
+      // ring of its own to point at — can anchor its speaking analytics to.
+      final membershipId = _membershipEventId = await calls.announce();
       if (_ending) return _abandon();
 
       // Ring the other side, if we are the one placing the call. A timeline
@@ -414,6 +425,13 @@ class ActiveCall extends ChangeNotifier {
 
       _to(CallStage.connected);
     } catch (e, s) {
+      if (_ending) {
+        // Tearing down underneath a step in flight is what made it throw. The
+        // user ended this call; telling them it failed would be untrue, and it
+        // would show an error where they expect the screen to simply close.
+        Logs().d('Call abandoned while coming up: $e');
+        return _abandon();
+      }
       Logs().e('Could not start the call', e, s);
       await _tearDown();
       _to(CallStage.failed, e);

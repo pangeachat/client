@@ -256,7 +256,11 @@ class _CallPageState extends State<CallPage> {
           // same teardown, so writing from both would put two identical cards
           // in the conversation.
           writeTimelineEvent: _call.placedCall,
-          anchorEventId: widget.notificationEventId,
+          // The ring we answered, or failing that our own membership in the
+          // call. A device that joined a call already under way has neither a
+          // ring of its own nor one it answered, and with nothing to anchor to
+          // every word its learner spoke was dropped.
+          anchorEventId: widget.notificationEventId ?? _call.membershipEventId,
         );
       }),
     );

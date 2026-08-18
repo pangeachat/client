@@ -31,10 +31,13 @@ class CallParticipant {
     if (myUserId != null && myUserId.isNotEmpty) {
       if (identity == myUserId) return CallParticipant(userId: myUserId);
       if (identity.startsWith('$myUserId:')) {
-        return CallParticipant(
-          userId: myUserId,
-          deviceId: identity.substring(myUserId.length + 1),
-        );
+        final rest = identity.substring(myUserId.length + 1);
+        // Only when what follows is a single segment. Another user whose id
+        // extends ours — ours with a port, say — would otherwise be read as one
+        // of our own devices, and a real peer would not count as present.
+        if (!rest.contains(':')) {
+          return CallParticipant(userId: myUserId, deviceId: rest);
+        }
       }
     }
     // Someone else. The last segment is taken as their device, which is what
