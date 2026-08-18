@@ -32,9 +32,18 @@ class IncomingCall {
   }
 
   /// Who is calling, for the prompt. Null when nobody is.
-  String? get callerId {
+  String? get callerId => _caller?.userId;
+
+  /// Identifies THIS call, as distinct from the next one in the same room.
+  ///
+  /// A call id is derived from the room, so it cannot tell two calls apart. The
+  /// caller's membership is per-join, so it can — which is what lets a decline
+  /// stick to the call it declined without silencing the conversation forever.
+  String? get callerSession => _caller?.membershipId;
+
+  CallMembership? get _caller {
     for (final m in _live) {
-      if (m.userId != myUserId) return m.userId;
+      if (m.userId != myUserId) return m;
     }
     return null;
   }

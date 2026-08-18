@@ -31,6 +31,14 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   matrix.Room? _ringing;
   String? _listeningTo;
 
+  /// Calls the learner has already turned down, by the caller's session.
+  ///
+  /// Keyed by session rather than by room: discovery repeats while a caller
+  /// waits, so without this a declined call would reappear on the next
+  /// membership renewal — but keyed by room it would silence the conversation
+  /// for good.
+  final Map<String, String> _declined = {};
+
   /// How long a call rings before it is taken as unanswered.
   ///
   /// A caller who closes their app without leaving cleanly stops renewing their
@@ -76,6 +84,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // the first on screen rather than swapping under the learner's finger as
       // they reach to answer.
       if (_ringing != null) return;
+      final session = Matrix.of(context).callService.ringingSession(room);
+      if (session != null && _declined[room.id] == session) return;
       setState(() => _ringing = room);
       _watchForGiveUp(room);
     });
@@ -103,6 +113,17 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _calls?.cancel();
     _stillRinging?.cancel();
     super.dispose();
+  }
+
+  /// Turns the prompt down and remembers it, so the same call does not ask
+  /// again while the caller is still waiting.
+  void _decline() {
+    final room = _ringing;
+    if (room != null && mounted) {
+      final session = Matrix.of(context).callService.ringingSession(room);
+      if (session != null) _declined[room.id] = session;
+    }
+    _dismiss();
   }
 
   void _dismiss() {
@@ -135,7 +156,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
             child: _Banner(
               room: ringing,
               onAnswer: () => _answer(ringing),
-              onDecline: _dismiss,
+              onDecline: _decline,
             ),
           ),
       ],

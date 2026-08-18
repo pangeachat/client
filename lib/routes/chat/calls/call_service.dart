@@ -250,6 +250,23 @@ class CallService {
     if (isRinging(session.room)) _incoming.add(session.room);
   }
 
+  /// Which call is ringing in [room], or null if none is.
+  ///
+  /// Distinct per call rather than per room, so a caller who hangs up and calls
+  /// again is a new call — and a decline that stuck to the old one does not
+  /// silence the new one.
+  String? ringingSession(Room room) {
+    final me = client.userID;
+    if (me == null || _disposed) return null;
+    return IncomingCall(
+      memberships: [
+        for (final list in room.getCallMembershipsFromRoom(voip).values)
+          ...list,
+      ],
+      myUserId: me,
+    ).callerSession;
+  }
+
   /// Whether a call in [room] is still waiting for this account to answer.
   ///
   /// Asked again while a prompt is showing, because a caller can give up: a
