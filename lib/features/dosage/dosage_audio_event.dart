@@ -31,10 +31,23 @@ class DosageAudioEvent {
   /// Matrix event id and must never be derived from one.
   final String playbackId;
 
-  /// The room the playback happened in. Required: without a room the signal
-  /// cannot be bucketed to a course at all — the exact defect `activeMinutes`
-  /// already demonstrates.
-  final String roomId;
+  /// The room the playback happened in, or null when the surface has none.
+  ///
+  /// **Null is a legitimate value and the empty string is not.** Six of the ten
+  /// read-aloud surfaces play outside any room at all — the vocab list is a
+  /// cross-room aggregate, analytics practice has no room, the activity start
+  /// page has none until a session room exists — and inventing one would put a
+  /// room's worth of fabricated listening into a table the serving side buckets
+  /// and authorizes on. So a roomless playback says so, and the serving side
+  /// answers it honestly: it lands in the whole-language width, whose room
+  /// conjunct is absent, and is excluded from the course width, where a zero
+  /// truthfully means "none attributable to this course".
+  ///
+  /// An EMPTY string is neither of those things. It is a room that was supposed
+  /// to arrive and did not — a bug at the call site wearing a roomless
+  /// surface's clothes — and it is dropped rather than sent. See
+  /// [hasWellFormedRoom].
+  final String? roomId;
 
   final DosageListeningCategory category;
 
@@ -61,7 +74,7 @@ class DosageAudioEvent {
   /// (D-V2-2).
   factory DosageAudioEvent.fromPlayback({
     required String playbackId,
-    required String roomId,
+    required String? roomId,
     required DosageListeningCategory category,
     required Duration elapsed,
     required DateTime endedAt,
@@ -73,6 +86,19 @@ class DosageAudioEvent {
     ts: endedAt.toUtc(),
   );
 
+  /// Whether [roomId] is something the wire can carry.
+  ///
+  /// The rule lives here rather than at each guard so the two places that drop
+  /// a malformed event — the buffer on the way in, the repo on the way out —
+  /// cannot drift apart on what "malformed" means. Null passes: it says the
+  /// surface has no room. The empty string does not: it says a room was meant
+  /// to be here.
+  bool get hasWellFormedRoom => roomId == null || roomId!.isNotEmpty;
+
+  /// The key set is the CONTRACT: the ingest model is `extra="forbid"` and it
+  /// distinguishes an ABSENT `room_id` from a null one. So a roomless playback
+  /// sends the key with a null value rather than dropping it — omitting it
+  /// would be a different statement to a server that reads the difference.
   Map<String, dynamic> toJson() => {
     "playback_id": playbackId,
     "room_id": roomId,

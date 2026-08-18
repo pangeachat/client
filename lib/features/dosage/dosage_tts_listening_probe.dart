@@ -11,8 +11,8 @@ import 'package:fluffychat/features/dosage/dosage_playback_meter.dart';
 /// `tryToSpeak` reads arriving messages aloud, reads a message the toolbar was
 /// opened on, and plays word and choice taps, and it takes neither a room nor an
 /// event id — it could not name a category if it wanted to. So [category] is a
-/// CONSTRUCTION-TIME CONSTANT supplied by the caller (D-V2-1), and the two
-/// read-aloud call sites differ in exactly that one argument.
+/// CONSTRUCTION-TIME CONSTANT supplied by the caller (D-V2-1), and the call
+/// sites that build one differ in that argument and the room, nothing else.
 ///
 /// **Why the returned future is not enough to measure with.** Several exits from
 /// `tryToSpeak` resolve having played nothing — the tool setting is off, the
@@ -41,8 +41,16 @@ class DosageTtsListeningProbe {
   /// caller, and never derived from the request or its route.
   final DosageListeningCategory category;
 
-  /// The room the playback belongs to. The only identifier that travels.
-  final String roomId;
+  /// The room the playback belongs to, or null when this surface has none. The
+  /// only identifier that travels.
+  ///
+  /// Required despite being nullable. Four of the ten read-aloud sites have a
+  /// room, four have none, and two have one on some taps and not others — so
+  /// null is an answer a site must GIVE, never one it can fall into by leaving
+  /// an argument out. Never fabricate one: a placeholder would put a room's
+  /// worth of invented listening into a table the serving side buckets and
+  /// authorizes on.
+  final String? roomId;
 
   /// Read LIVE at emit time rather than captured: an account switch or a token
   /// refresh mid-playback must not post under a stale identity.

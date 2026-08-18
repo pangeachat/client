@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/read_aloud_queue.dart';
@@ -249,9 +248,7 @@ class MessageReadAloudController {
       // instantly and still fires `onStop`, so the returned future cannot tell
       // silence from speech. The probe can: `tryToSpeak` brackets it around a
       // route that was actually asked to play, and only that.
-      listening: DosageListeningMeasurement.measured(
-        _listeningProbe(DosageListeningCategory.toolbarRead),
-      ),
+      listening: _listeningProbe(DosageListeningCategory.toolbarRead),
     );
   }
 
@@ -300,9 +297,7 @@ class MessageReadAloudController {
       // play is only knowable after it was asked, so a backend attempt that
       // fails and falls back to the device has neither the failure nor the
       // switch counted as audio the learner heard.
-      listening: DosageListeningMeasurement.measured(
-        _listeningProbe(DosageListeningCategory.autoRead),
-      ),
+      listening: _listeningProbe(DosageListeningCategory.autoRead),
     );
   }
 

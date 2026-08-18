@@ -236,7 +236,7 @@ class DosageSignalsRepo {
   }) async {
     if (!_canPost(accessToken)) return DosageAudioPostResult.undelivered;
     final validEvents = events
-        .where((e) => e.roomId.isNotEmpty && e.elapsedMs > 0)
+        .where((e) => e.hasWellFormedRoom && e.elapsedMs > 0)
         .toList();
     final validCoverage = coverage.where((c) => c.isValid).toList();
     if (validEvents.isEmpty && validCoverage.isEmpty) {

@@ -6,7 +6,8 @@ import 'package:go_router/go_router.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/analytics/construct_level_enum.dart';
 import 'package:fluffychat/features/analytics/construct_use_model.dart';
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/instructions/instructions_enum.dart';
 import 'package:fluffychat/features/instructions/instructions_inline_tooltip.dart';
 import 'package:fluffychat/features/navigation/route_facts.dart';
@@ -301,14 +302,36 @@ class VocabAnalyticsListView extends StatelessWidget {
                                         .userL2Code!,
                                     useCase: TtsUseCase.words,
                                     pos: vocabItem.id.category,
-                                    // The vocab list is not in a room, so this
-                                    // waits on a category AND on a wire that
-                                    // accepts a null room.
-                                    listening:
-                                        const DosageListeningMeasurement.notMeasured(
-                                          DosageListeningExemption
-                                              .awaitingRoomAndCategory,
-                                        ),
+                                    // Listening category 5 (#104): a WORD the
+                                    // learner tapped.
+                                    //
+                                    // Roomless, and permanently so. The vocab
+                                    // list is a cross-room aggregate of every
+                                    // word the learner has met, so there is no
+                                    // one room this tap belongs to — picking
+                                    // any of the rooms the word came from would
+                                    // be a guess dressed as a fact. Null says
+                                    // it plainly, and the serving side answers
+                                    // it the same way: counted in the language,
+                                    // absent from any course.
+                                    listening: DosageTtsListeningProbe(
+                                      category:
+                                          DosageListeningCategory.wordAudio,
+                                      roomId: null,
+                                      // Read live: an account switch or a token
+                                      // refresh mid-playback must not post
+                                      // under a stale identity.
+                                      userId: () => MatrixState
+                                          .pangeaController
+                                          .matrixState
+                                          .client
+                                          .userID,
+                                      accessToken: () => MatrixState
+                                          .pangeaController
+                                          .matrixState
+                                          .client
+                                          .accessToken,
+                                    ),
                                   );
                                   AnalyticsNavigationUtil.navigateToAnalytics(
                                     context: context,

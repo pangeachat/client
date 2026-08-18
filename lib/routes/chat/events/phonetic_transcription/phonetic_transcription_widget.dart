@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
+import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -41,11 +42,24 @@ class PhoneticTranscriptionWidget extends StatefulWidget {
   /// If true, only show the transcription text without audio controls or hover effects
   final bool textOnly;
 
+  /// The room a pronunciation tap's audio belongs to, or null where there is
+  /// none, for the listening measurement in [_handleAudioTap].
+  ///
+  /// Required despite being nullable, and despite meaning nothing under
+  /// [textOnly]. This widget spans surfaces that differ on exactly this point —
+  /// the word card in chat sits on a message and has a room, analytics practice
+  /// has none — so null has to be a caller's answer rather than the default a
+  /// new chat-side caller silently inherits. Getting that wrong does not look
+  /// like a bug: the audio still plays and the minutes still count, they simply
+  /// stop reaching the course the learner was in.
+  final String? roomId;
+
   const PhoneticTranscriptionWidget({
     super.key,
     required this.text,
     required this.textLanguage,
     required this.pos,
+    required this.roomId,
     this.morph,
     this.style,
     this.iconSize,
@@ -126,13 +140,19 @@ class _PhoneticTranscriptionWidgetState
         pos: widget.pos,
         morph: widget.morph,
         ttsPhoneme: ttsPhoneme,
-        // A pronunciation button is a deliberate request to hear a word, so it
-        // is listening — but a word, not a message, and no current category
-        // covers that. This widget also spans surfaces with and without a room:
-        // the word card in chat has one, the analytics practice session does
-        // not. Both halves have to land before it can emit.
-        listening: const DosageListeningMeasurement.notMeasured(
-          DosageListeningExemption.awaitingRoomAndCategory,
+        // Listening category 5 (#104): a WORD the learner asked to hear.
+        //
+        // The room comes from whichever surface built this widget and is null
+        // on the ones that have none — see [PhoneticTranscriptionWidget.roomId].
+        // A fresh probe per call: it holds a running measurement.
+        listening: DosageTtsListeningProbe(
+          category: DosageListeningCategory.wordAudio,
+          roomId: widget.roomId,
+          // Read live: an account switch or a token refresh mid-playback must
+          // not post under a stale identity.
+          userId: () => MatrixState.pangeaController.matrixState.client.userID,
+          accessToken: () =>
+              MatrixState.pangeaController.matrixState.client.accessToken,
         ),
         onStart: () {
           if (mounted) setState(() => _playingId = targetId);
