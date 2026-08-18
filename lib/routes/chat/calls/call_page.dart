@@ -48,6 +48,11 @@ class _CallPageState extends State<CallPage> {
   late final CallRecord _record;
   late final DateTime _startedAt;
   DateTime? _endedAt;
+
+  /// Whether the call ever actually connected. A call that failed to start is
+  /// not a call, and writing one to the room would leave a learner looking at a
+  /// conversation that never happened.
+  bool _wasConnected = false;
   bool _muted = false;
   late bool _camera;
 
@@ -101,6 +106,7 @@ class _CallPageState extends State<CallPage> {
   void _onCallChanged() {
     if (!mounted) return;
     setState(() {});
+    if (_call.stage == CallStage.connected) _wasConnected = true;
     // A call that ended or failed has nothing left to show. Closing here rather
     // than leaving a dead screen up means the user never has to dismiss a call
     // that is already over.
@@ -149,12 +155,16 @@ class _CallPageState extends State<CallPage> {
       // whenComplete, not then: a teardown that throws must not also cost the
       // call its record. The write is what turns a conversation into analytics,
       // and it is correct whether or not the unwind was clean.
-      _call.hangUp().whenComplete(
-        () => _record.finish(
+      _call.hangUp().whenComplete(() {
+        // A call that never connected is not written. There is nothing to
+        // credit and nothing happened, so a timeline entry would be a record of
+        // a conversation the learner never had.
+        if (!_wasConnected) return null;
+        return _record.finish(
           duration: _endedAt!.difference(_startedAt),
           video: widget.video,
-        ),
-      ),
+        );
+      }),
     );
   }
 

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/foundation.dart';
 
 import 'package:matrix/matrix.dart';
@@ -21,6 +23,11 @@ class CallService {
   VoIP? _voip;
   RtcFocus? _focus;
   Future<RtcFocus?>? _resolving;
+
+  /// Holds a failed lookup for a moment so a retry does not become a flood.
+  /// Cancelled on disposal — an untracked one would fire into a service the
+  /// account has already logged out of.
+  Timer? _focusRetry;
 
   /// The session this device has joined, if any. One at a time: the SDK's
   /// membership is per-VoIP-instance, so a second concurrent call on the same
@@ -68,7 +75,8 @@ class CallService {
       // opened, so an outage would otherwise mean a request per room — the
       // failure is held briefly to keep a retry from becoming a flood.
       Logs().d('RTC focus lookup failed, will retry shortly: $e');
-      Future.delayed(_retryFocusAfter, () => _resolving = null);
+      _focusRetry?.cancel();
+      _focusRetry = Timer(_retryFocusAfter, () => _resolving = null);
       return null;
     }
   }();
@@ -245,6 +253,8 @@ class CallService {
   /// until the state event expired, with nothing left able to retract it —
   /// account teardown reaches here while a call can still be live.
   Future<void> dispose() async {
+    _focusRetry?.cancel();
+    _focusRetry = null;
     try {
       await retract();
     } catch (e, s) {

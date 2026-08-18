@@ -175,6 +175,24 @@ void main() {
       expect(requests, 1, reason: 'the failure is held briefly');
     });
 
+    test('disposal cancels a held retry', () async {
+      // An untracked timer fires into a service whose account has already
+      // logged out.
+      final client = await bareClient();
+      client.homeserver = Uri.parse('http://localhost:8008');
+      final service = CallService(
+        client,
+        focusDiscovery: RtcFocusDiscovery(
+          httpClient: MockClient((_) async {
+            throw const SocketException('offline');
+          }),
+        ),
+      );
+
+      await service.resolveFocus();
+      await expectLater(service.dispose(), completes);
+    });
+
     test('a non-200 that is not 404 is treated as unknown', () async {
       var requests = 0;
       final client = await bareClient();
