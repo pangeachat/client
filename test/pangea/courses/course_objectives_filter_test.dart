@@ -61,4 +61,29 @@ void main() {
       );
     });
   });
+
+  group('upNextObjectiveGroup', () {
+    final groups = [
+      objGroup('1', withActivities: true),
+      objGroup('2', withActivities: true),
+      objGroup('3', withActivities: true),
+    ];
+
+    test("returns the anchor Mission's group", () {
+      expect(upNextObjectiveGroup(groups, '2')?.objective.id, '2');
+    });
+
+    test('falls back to the first group while the anchor is unresolved', () {
+      expect(upNextObjectiveGroup(groups, null)?.objective.id, '1');
+    });
+
+    test('falls back to the first group when the anchor is not in the '
+        'outline', () {
+      expect(upNextObjectiveGroup(groups, 'missing')?.objective.id, '1');
+    });
+
+    test('an empty outline has no Up-next Mission', () {
+      expect(upNextObjectiveGroup(const [], '1'), isNull);
+    });
+  });
 }

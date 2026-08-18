@@ -9,6 +9,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/async_state.dart';
+import 'package:fluffychat/routes/chat/activity_sessions/course_ping_badge.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch_up.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
@@ -194,6 +195,9 @@ class _CourseOverviewState extends State<CourseOverview> {
                     listenable: Listenable.merge([
                       widget.controller.objectivesProvider.questLoader,
                       widget.controller.objectivesProvider.progression,
+                      // The course page stashes a ping asynchronously (it
+                      // reads the timeline), usually after this first builds.
+                      CoursePingBadgeCache.instance,
                     ]),
                     builder: (context, _) {
                       final provider = widget.controller.objectivesProvider;
@@ -207,6 +211,16 @@ class _CourseOverviewState extends State<CourseOverview> {
                         AsyncLoading() => true,
                         AsyncError() || AsyncIdle() => false,
                       };
+                      // The Up-next highlight can't show a card pinged in
+                      // another Mission, so the link carries the ping badge
+                      // to lead the learner into the full plan (#8454), where
+                      // the card badge / floating ping-bar take over.
+                      final pingLeadsToFullPlan = coursePingLeadsToFullPlan(
+                        ping: CoursePingBadgeCache.instance.value,
+                        courseId: room.id,
+                        planGroups: provider.filteredObjectiveGroups,
+                        upNextGroup: provider.upNextGroup,
+                      );
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
@@ -229,6 +243,9 @@ class _CourseOverviewState extends State<CourseOverview> {
                               label: l10n.seeFullCoursePlan,
                               onTap: () =>
                                   _openSubpage(SpaceSettingsTabs.course),
+                              trailing: pingLeadsToFullPlan
+                                  ? const CoursePingBadge()
+                                  : null,
                             ),
                         ],
                       );
