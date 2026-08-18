@@ -111,10 +111,6 @@ class CallService {
   /// live, and should not run at all for an account that never places a call.
   VoIP get voip => _voip ??= VoIP(client, delegate);
 
-  /// Whether a call is already running in [room], per room state rather than local
-  /// belief — so a second device, or this device after a restart, sees the same answer.
-  bool hasActiveCall(Room room) => room.hasActiveGroupCall(voip);
-
   /// Joins (or starts) the call in [room], returning the grant needed to connect
   /// its media.
   ///
@@ -197,6 +193,23 @@ class CallService {
               !m.isExpired)
             m.deviceId,
     ];
+  }
+
+  /// Whether someone other than this account is already in a call in [room].
+  ///
+  /// This is what decides placing from joining: a plain "is any call active"
+  /// check counts this account's own membership, including a stale one a failed
+  /// retract left behind — so a genuine new call would see it, think it was
+  /// joining, and go out silent. Another user's live membership means a real
+  /// call to join.
+  bool otherUserInCall(Room room) {
+    final me = client.userID;
+    if (me == null || _disposed) return false;
+    return room
+        .getCallMembershipsFromRoom(voip)
+        .values
+        .expand((list) => list)
+        .any((m) => m.userId != me && !m.isExpired);
   }
 
   /// Whether the other side is still ringing in [room] — someone else is in

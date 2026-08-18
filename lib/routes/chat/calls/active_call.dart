@@ -213,12 +213,14 @@ class ActiveCall extends ChangeNotifier {
   /// Places or joins a call.
   ///
   /// Whether this rings the other side is NOT a caller's choice — it is a fact
-  /// about the room. A call that already exists is one this device is joining,
-  /// so it must not ring; an empty room is one this device is starting, so it
-  /// rings. Deriving it here rather than taking a flag means no call site — the
-  /// header button, the incoming banner, a future deep link — can get it wrong.
+  /// about the room. A call another user is already in is one this device is
+  /// joining, so it must not ring; a room with no other user in a call is one
+  /// this device is starting, so it rings. Deriving it here rather than taking a
+  /// flag means no call site — the header button, the banner, a deep link — can
+  /// get it wrong, and keying it on ANOTHER user rather than any active call
+  /// means this account's own stale membership does not silence a real call.
   Future<void> start(matrix.Room room, {required bool video}) async {
-    final placing = !calls.hasActiveCall(room);
+    final placing = !calls.otherUserInCall(room);
     try {
       final grant = await calls.join(room);
       _joined = true;

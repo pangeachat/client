@@ -27,10 +27,10 @@ class FakeCalls extends CallService {
   final _events = StreamController<MatrixRTCCallEvent>.broadcast();
   List<String> devicesInCall = const [];
   bool remotePresent = false;
-  bool callAlreadyExists = false;
+  bool otherUserPresent = false;
 
   @override
-  bool hasActiveCall(matrix.Room room) => callAlreadyExists;
+  bool otherUserInCall(matrix.Room room) => otherUserPresent;
 
   @override
   bool get hasRemoteParticipants => remotePresent;
@@ -234,10 +234,23 @@ void main() {
   group('bringing a call up', () {
     test('placing into an empty room rings the other side', () async {
       final (call, calls, _, _) = await build();
-      calls.callAlreadyExists = false;
+      calls.otherUserPresent = false;
       await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, contains('ring'));
     });
+
+    test(
+      'a stale membership of this account does not silence a new call',
+      () async {
+        // A failed retract can leave this account's own membership behind. Keyed
+        // on any active call it would look like joining, and the real caller would
+        // go out silent — so placing is keyed on ANOTHER user being present.
+        final (call, calls, _, _) = await build();
+        calls.otherUserPresent = false; // only our own stale membership, if any
+        await call.start(roomStub(calls.client), video: false);
+        expect(trace.steps, contains('ring'));
+      },
+    );
 
     test('joining an existing call does not ring the caller back', () async {
       // Whether to ring is a fact about the room, not the call site: a call
@@ -245,7 +258,7 @@ void main() {
       // would ring the caller who is already there. This holds however the join
       // is reached — the banner, the header button, or a deep link.
       final (call, calls, _, _) = await build();
-      calls.callAlreadyExists = true;
+      calls.otherUserPresent = true;
       await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, isNot(contains('ring')));
       expect(call.stage, CallStage.connected);
