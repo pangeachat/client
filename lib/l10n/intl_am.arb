@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-17 09:30:24.272026",
+    "@@last_modified": "2026-08-18 09:33:20.936059",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "ትርጉሞችን ይክፈቱ",
     "unlockEmojiMode": "የኢሞጂ ሁነታን ይክፈቱ",
     "unlockMessagePractice": "የመልእክት ልምምድ ይክፈቱ",
-    "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ"
+    "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ",
+    "courseSectionTeaching": "ማስተማር",
+    "courseSectionLearning": "መማር",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 ኮርስ} other{{count} ኮርሶች}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-17 09:30:19.566918",
+    "@@last_modified": "2026-08-18 09:33:23.164667",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10101,5 +10101,8 @@
     "unlockTranslations": "Débloquer les traductions",
     "unlockEmojiMode": "Débloquer le mode emoji",
     "unlockMessagePractice": "Débloquer la pratique des messages",
-    "unlockWritingAssistance": "Débloquer l'aide à l'écriture"
+    "unlockWritingAssistance": "Débloquer l'aide à l'écriture",
+    "courseSectionTeaching": "Enseignement",
+    "courseSectionLearning": "Apprentissage",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cours} other{{count} cours}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-17 09:30:43.174540",
+    "@@last_modified": "2026-08-18 09:33:23.562321",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Buɗe fassarori",
     "unlockEmojiMode": "Buɗe yanayin emoji",
     "unlockMessagePractice": "Buɗe aikin saƙo",
-    "unlockWritingAssistance": "Buɗe taimakon rubutu"
+    "unlockWritingAssistance": "Buɗe taimakon rubutu",
+    "courseSectionTeaching": "Koyarwa",
+    "courseSectionLearning": "Koyo",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 darasi} other{{count} darussa}}"
 }

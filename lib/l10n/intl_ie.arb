@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-17 09:30:44.936015",
+    "@@last_modified": "2026-08-18 09:33:27.467525",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10378,5 +10378,8 @@
     "unlockTranslations": "Díghlasáil aistriúcháin",
     "unlockEmojiMode": "Díghlasáil mód emoji",
     "unlockMessagePractice": "Díghlasáil cleachtadh teachtaireachtaí",
-    "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta"
+    "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta",
+    "courseSectionTeaching": "Teagasc",
+    "courseSectionLearning": "Foghlaim",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cúrsa} other{{count} cúrsaí}}"
 }

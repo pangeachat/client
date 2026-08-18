@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-17 09:31:25.032755",
+    "@@last_modified": "2026-08-18 09:33:32.084018",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Fur turjumaadaha",
     "unlockEmojiMode": "Fur qaabka emoji",
     "unlockMessagePractice": "Fur ku celcelinta fariimaha",
-    "unlockWritingAssistance": "Fur caawinta qorista"
+    "unlockWritingAssistance": "Fur caawinta qorista",
+    "courseSectionTeaching": "Barid",
+    "courseSectionLearning": "Barasho",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 koorso} other{{count} koorso}}"
 }

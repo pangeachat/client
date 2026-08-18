@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-17 09:30:57.036415",
+    "@@last_modified": "2026-08-18 09:33:28.380642",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "വിവർത്തനങ്ങൾ അൺലോക്ക് ചെയ്യുക",
     "unlockEmojiMode": "ഇമോജി മോഡ് അൺലോക്ക് ചെയ്യുക",
     "unlockMessagePractice": "സന്ദേശ പരിശീലനം അൺലോക്ക് ചെയ്യുക",
-    "unlockWritingAssistance": "എഴുത്ത് സഹായം അൺലോക്ക് ചെയ്യുക"
+    "unlockWritingAssistance": "എഴുത്ത് സഹായം അൺലോക്ക് ചെയ്യുക",
+    "courseSectionTeaching": "പഠിപ്പിക്കുന്നു",
+    "courseSectionLearning": "പഠിക്കുന്നു",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 കോഴ്സ്} other{{count} കോഴ്സുകൾ}}"
 }

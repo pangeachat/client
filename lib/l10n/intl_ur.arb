@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-17 09:31:45.881370",
+    "@@last_modified": "2026-08-18 09:33:33.908275",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "تراجم اَن لاک کریں",
     "unlockEmojiMode": "ایموجی موڈ اَن لاک کریں",
     "unlockMessagePractice": "پیغام کی مشق اَن لاک کریں",
-    "unlockWritingAssistance": "تحریری معاونت اَن لاک کریں"
+    "unlockWritingAssistance": "تحریری معاونت اَن لاک کریں",
+    "courseSectionTeaching": "تدریس",
+    "courseSectionLearning": "سیکھنا",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 کورس} other{{count} کورسز}}"
 }

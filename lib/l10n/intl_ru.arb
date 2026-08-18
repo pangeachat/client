@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-17 09:31:07.705310",
+    "@@last_modified": "2026-08-18 09:33:31.320135",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10718,5 +10718,8 @@
     "unlockTranslations": "Разблокировать переводы",
     "unlockEmojiMode": "Разблокировать режим эмодзи",
     "unlockMessagePractice": "Разблокировать практику сообщений",
-    "unlockWritingAssistance": "Разблокировать помощь в написании"
+    "unlockWritingAssistance": "Разблокировать помощь в написании",
+    "courseSectionTeaching": "Преподавание",
+    "courseSectionLearning": "Изучение",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсов}}"
 }

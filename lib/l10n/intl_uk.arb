@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-17 09:31:29.349579",
+    "@@last_modified": "2026-08-18 09:33:33.639433",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9746,5 +9746,8 @@
     "unlockTranslations": "Розблокувати переклади",
     "unlockEmojiMode": "Розблокувати режим емодзі",
     "unlockMessagePractice": "Розблокувати практику повідомлень",
-    "unlockWritingAssistance": "Розблокувати допомогу з письмом"
+    "unlockWritingAssistance": "Розблокувати допомогу з письмом",
+    "courseSectionTeaching": "Викладання",
+    "courseSectionLearning": "Навчання",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курси}}"
 }

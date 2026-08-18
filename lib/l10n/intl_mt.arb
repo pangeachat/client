@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-17 09:31:08.674779",
+    "@@last_modified": "2026-08-18 09:33:29.131009",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Nisfruttaw it-traduzzjonijiet",
     "unlockEmojiMode": "Nisfruttaw il-modalità emoji",
     "unlockMessagePractice": "Nisfruttaw il-prattika tal-messaġġi",
-    "unlockWritingAssistance": "Nisfruttaw l-għajnuna fil-kitba"
+    "unlockWritingAssistance": "Nisfruttaw l-għajnuna fil-kitba",
+    "courseSectionTeaching": "Tagħlim",
+    "courseSectionLearning": "Tgħallim",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kors} other{{count} korsijiet}}"
 }

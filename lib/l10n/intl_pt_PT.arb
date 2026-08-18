@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-17 09:31:06.559373",
+    "@@last_modified": "2026-08-18 09:33:31.075468",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10663,5 +10663,8 @@
     "unlockTranslations": "Desbloquear traduções",
     "unlockEmojiMode": "Desbloquear modo emoji",
     "unlockMessagePractice": "Desbloquear prática de mensagens",
-    "unlockWritingAssistance": "Desbloquear assistência de escrita"
+    "unlockWritingAssistance": "Desbloquear assistência de escrita",
+    "courseSectionTeaching": "Ensino",
+    "courseSectionLearning": "Aprendizagem",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}"
 }

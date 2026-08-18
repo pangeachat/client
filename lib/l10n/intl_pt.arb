@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:03.238317",
+    "@@last_modified": "2026-08-18 09:33:31.783810",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10690,5 +10690,8 @@
     "unlockTranslations": "Desbloquear traduções",
     "unlockEmojiMode": "Desbloquear modo emoji",
     "unlockMessagePractice": "Desbloquear prática de mensagens",
-    "unlockWritingAssistance": "Desbloquear assistência de escrita"
+    "unlockWritingAssistance": "Desbloquear assistência de escrita",
+    "courseSectionTeaching": "Ensino",
+    "courseSectionLearning": "Aprendizagem",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}"
 }

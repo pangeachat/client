@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-17 09:30:42.490171",
+    "@@last_modified": "2026-08-18 09:33:27.100219",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "ಅನುವಾದಗಳನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
     "unlockEmojiMode": "ಎಮೋಜಿ ಮೋಡ್ ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
     "unlockMessagePractice": "ಸಂದೇಶ ಅಭ್ಯಾಸವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
-    "unlockWritingAssistance": "ಬರವಣಿಗೆ ಸಹಾಯವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ"
+    "unlockWritingAssistance": "ಬರವಣಿಗೆ ಸಹಾಯವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
+    "courseSectionTeaching": "ಬೋಧನೆ",
+    "courseSectionLearning": "ಕಲಿಕೆ",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 ಕೋರ್ಸ್} other{{count} ಕೋರ್ಸ್‌ಗಳು}}"
 }

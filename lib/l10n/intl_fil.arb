@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-17 09:30:27.221036",
+    "@@last_modified": "2026-08-18 09:33:22.726156",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10606,5 +10606,8 @@
     "unlockTranslations": "I-unlock ang mga pagsasalin",
     "unlockEmojiMode": "I-unlock ang emoji mode",
     "unlockMessagePractice": "I-unlock ang pagsasanay sa mensahe",
-    "unlockWritingAssistance": "I-unlock ang tulong sa pagsusulat"
+    "unlockWritingAssistance": "I-unlock ang tulong sa pagsusulat",
+    "courseSectionTeaching": "Pagtuturo",
+    "courseSectionLearning": "Pag-aaral",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kurso}}"
 }

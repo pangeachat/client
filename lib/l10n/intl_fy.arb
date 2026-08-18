@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-17 09:30:22.456181",
+    "@@last_modified": "2026-08-18 09:33:23.113220",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Untskoattelje oersettingen",
     "unlockEmojiMode": "Untskoattelje emoji-modus",
     "unlockMessagePractice": "Untskoattelje berjochtpraktyk",
-    "unlockWritingAssistance": "Untskoattelje skriuwassistinsje"
+    "unlockWritingAssistance": "Untskoattelje skriuwassistinsje",
+    "courseSectionTeaching": "Lesjaan",
+    "courseSectionLearning": "Leare",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursussen}}"
 }

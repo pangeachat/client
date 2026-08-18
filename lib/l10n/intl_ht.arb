@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-17 09:30:29.224197",
+    "@@last_modified": "2026-08-18 09:33:27.523704",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Debloke tradiksyon",
     "unlockEmojiMode": "Debloke mòd emoji",
     "unlockMessagePractice": "Debloke pratik mesaj",
-    "unlockWritingAssistance": "Debloke asistans pou ekri"
+    "unlockWritingAssistance": "Debloke asistans pou ekri",
+    "courseSectionTeaching": "Anseye",
+    "courseSectionLearning": "Aprann",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kou} other{{count} kou}}"
 }

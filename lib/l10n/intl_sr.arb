@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:29.822369",
+    "@@last_modified": "2026-08-18 09:33:32.466836",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10695,5 +10695,8 @@
     "unlockTranslations": "Otključajte prevode",
     "unlockEmojiMode": "Otključajte emoji režim",
     "unlockMessagePractice": "Otključajte vežbanje poruka",
-    "unlockWritingAssistance": "Otključajte pomoć pri pisanju"
+    "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
+    "courseSectionTeaching": "Predavanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kursa}}"
 }

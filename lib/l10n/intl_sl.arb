@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-17 09:31:14.370047",
+    "@@last_modified": "2026-08-18 09:33:31.702458",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10691,5 +10691,8 @@
     "unlockTranslations": "Odkleni prevode",
     "unlockEmojiMode": "Odkleni način emoji",
     "unlockMessagePractice": "Odkleni vajo sporočil",
-    "unlockWritingAssistance": "Odkleni pomoč pri pisanju"
+    "unlockWritingAssistance": "Odkleni pomoč pri pisanju",
+    "courseSectionTeaching": "Poučevanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 tečaj} other{{count} tečajev}}"
 }

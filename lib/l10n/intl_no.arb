@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-17 09:30:59.474915",
+    "@@last_modified": "2026-08-18 09:33:29.998046",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Lås opp oversettelser",
     "unlockEmojiMode": "Lås opp emoji-modus",
     "unlockMessagePractice": "Lås opp meldingsøvelse",
-    "unlockWritingAssistance": "Lås opp skrivehjelp"
+    "unlockWritingAssistance": "Lås opp skrivehjelp",
+    "courseSectionTeaching": "Undervisning",
+    "courseSectionLearning": "Læring",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}"
 }

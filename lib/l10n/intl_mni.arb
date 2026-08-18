@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-17 09:31:00.178137",
+    "@@last_modified": "2026-08-18 09:33:30.522468",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "অনুবাদশিং অনলক তৌবীয়ু",
     "unlockEmojiMode": "ইমোজি মোড অনলক তৌবীয়ু",
     "unlockMessagePractice": "মেসেজ প্র্যাকটিস অনলক তৌবীয়ু",
-    "unlockWritingAssistance": "রাইটিং এসিস্টেন্স অনলক তৌবীয়ু"
+    "unlockWritingAssistance": "রাইটিং এসিস্টেন্স অনলক তৌবীয়ু",
+    "courseSectionTeaching": "খুরুমজরি",
+    "courseSectionLearning": "তম্বিরি",
+    "courseSectionLabel": "{title}, {count, plural, =1{১ কোর্স} other{{count} কোর্স}}"
 }

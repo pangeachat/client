@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-17 09:30:44.513592",
+    "@@last_modified": "2026-08-18 09:33:28.983460",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Аудармалардың құлпын ашу",
     "unlockEmojiMode": "Эмодзи режимінің құлпын ашу",
     "unlockMessagePractice": "Хабарлама жазу жаттығуының құлпын ашу",
-    "unlockWritingAssistance": "Жазуға көмектесудің құлпын ашу"
+    "unlockWritingAssistance": "Жазуға көмектесудің құлпын ашу",
+    "courseSectionTeaching": "Оқыту",
+    "courseSectionLearning": "Оқу",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}"
 }

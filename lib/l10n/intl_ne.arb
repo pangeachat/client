@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-17 09:30:57.583243",
+    "@@last_modified": "2026-08-18 09:33:29.771214",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "अनुवादहरू अनलक गर्नुहोस्",
     "unlockEmojiMode": "इमोजी मोड अनलक गर्नुहोस्",
     "unlockMessagePractice": "सन्देश अभ्यास अनलक गर्नुहोस्",
-    "unlockWritingAssistance": "लेखन सहायता अनलक गर्नुहोस्"
+    "unlockWritingAssistance": "लेखन सहायता अनलक गर्नुहोस्",
+    "courseSectionTeaching": "सिकाउने",
+    "courseSectionLearning": "सिक्ने",
+    "courseSectionLabel": "{title}, {count, plural, =1{१ कोर्स} other{{count} कोर्सहरू}}"
 }

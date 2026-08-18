@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-17 09:31:01.329384",
+    "@@last_modified": "2026-08-18 09:33:27.439452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Reserare translationes",
     "unlockEmojiMode": "Reserare modum emoji",
     "unlockMessagePractice": "Reserare nuntium exercitium",
-    "unlockWritingAssistance": "Reserare scripturae auxilium"
+    "unlockWritingAssistance": "Reserare scripturae auxilium",
+    "courseSectionTeaching": "Docens",
+    "courseSectionLearning": "Discens",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cursus} other{{count} cursus}}"
 }

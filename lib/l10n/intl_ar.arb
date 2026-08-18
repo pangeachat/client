@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-17 09:30:09.512500",
+    "@@last_modified": "2026-08-18 09:33:21.260320",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10052,5 +10052,8 @@
     "unlockTranslations": "افتح الترجمات",
     "unlockEmojiMode": "افتح وضع الإيموجي",
     "unlockMessagePractice": "افتح ممارسة الرسائل",
-    "unlockWritingAssistance": "افتح مساعدة الكتابة"
+    "unlockWritingAssistance": "افتح مساعدة الكتابة",
+    "courseSectionTeaching": "تدريس",
+    "courseSectionLearning": "تعلم",
+    "courseSectionLabel": "{title}, {count, plural, =1{دورة واحدة} other{{count} دورات}}"
 }

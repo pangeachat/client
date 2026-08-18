@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-17 09:30:46.120353",
+    "@@last_modified": "2026-08-18 09:33:25.586455",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Aflæsa þýðingum",
     "unlockEmojiMode": "Aflæsa emoji-stillingu",
     "unlockMessagePractice": "Aflæsa skilaboðavenjum",
-    "unlockWritingAssistance": "Aflæsa ritunaraðstoð"
+    "unlockWritingAssistance": "Aflæsa ritunaraðstoð",
+    "courseSectionTeaching": "Kennsla",
+    "courseSectionLearning": "Nám",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 námskeið} other{{count} námskeið}}"
 }

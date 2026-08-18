@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-17 09:31:04.468196",
+    "@@last_modified": "2026-08-18 09:33:30.418862",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "ଅନୁବାଦଗୁଡ଼ିକୁ ଅନଲକ୍ କରନ୍ତୁ",
     "unlockEmojiMode": "ଇମୋଜି ମୋଡ୍ ଅନଲକ୍ କରନ୍ତୁ",
     "unlockMessagePractice": "ମେସେଜ୍ ଅଭ୍ୟାସ ଅନଲକ୍ କରନ୍ତୁ",
-    "unlockWritingAssistance": "ଲେଖିବା ସହାୟତା ଅନଲକ୍ କରନ୍ତୁ"
+    "unlockWritingAssistance": "ଲେଖିବା ସହାୟତା ଅନଲକ୍ କରନ୍ତୁ",
+    "courseSectionTeaching": "ଶିକ୍ଷାଦାନ",
+    "courseSectionLearning": "ଶିକ୍ଷାଲାଭ",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 କୋର୍ସ} other{{count} କୋର୍ସ}}"
 }

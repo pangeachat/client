@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-17 09:31:30.766959",
+    "@@last_modified": "2026-08-18 09:33:35.966206",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10703,5 +10703,8 @@
     "unlockTranslations": "解鎖翻譯",
     "unlockEmojiMode": "解鎖表情符號模式",
     "unlockMessagePractice": "解鎖訊息練習",
-    "unlockWritingAssistance": "解鎖寫作輔助"
+    "unlockWritingAssistance": "解鎖寫作輔助",
+    "courseSectionTeaching": "教學",
+    "courseSectionLearning": "學習",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 課程} other{{count} 課程}}"
 }

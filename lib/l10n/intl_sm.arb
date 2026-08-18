@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-17 09:31:28.377753",
+    "@@last_modified": "2026-08-18 09:33:31.865875",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Tatala fa'aliliuga",
     "unlockEmojiMode": "Tatala le faiga emoji",
     "unlockMessagePractice": "Tatala le fa'ata'ita'iga fe'au",
-    "unlockWritingAssistance": "Tatala le fesoasoani tusitusi"
+    "unlockWritingAssistance": "Tatala le fesoasoani tusitusi",
+    "courseSectionTeaching": "Aʻoaʻoina",
+    "courseSectionLearning": "Aʻoaʻo",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kosi} other{{count} kosi}}"
 }

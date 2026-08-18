@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-17 09:30:22.199009",
+    "@@last_modified": "2026-08-18 09:33:21.605710",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10240,5 +10240,8 @@
     "unlockTranslations": "Odemknout překlady",
     "unlockEmojiMode": "Odemknout režim emoji",
     "unlockMessagePractice": "Odemknout procvičování zpráv",
-    "unlockWritingAssistance": "Odemknout asistenci při psaní"
+    "unlockWritingAssistance": "Odemknout asistenci při psaní",
+    "courseSectionTeaching": "Výuka",
+    "courseSectionLearning": "Učení",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzů}}"
 }

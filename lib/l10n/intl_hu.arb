@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-17 09:30:34.651023",
+    "@@last_modified": "2026-08-18 09:33:24.443587",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9849,5 +9849,8 @@
     "unlockTranslations": "Fordítások feloldása",
     "unlockEmojiMode": "Emoji mód feloldása",
     "unlockMessagePractice": "Üzenetgyakorlás feloldása",
-    "unlockWritingAssistance": "Írássegéd feloldása"
+    "unlockWritingAssistance": "Írássegéd feloldása",
+    "courseSectionTeaching": "Tanítás",
+    "courseSectionLearning": "Tanulás",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurzus} other{{count} kurzus}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-17 09:30:16.947627",
+    "@@last_modified": "2026-08-18 09:33:22.313120",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Datgloi cyfieithiadau",
     "unlockEmojiMode": "Datgloi modd emoji",
     "unlockMessagePractice": "Datgloi ymarfer negeseuon",
-    "unlockWritingAssistance": "Datgloi cymorth ysgrifennu"
+    "unlockWritingAssistance": "Datgloi cymorth ysgrifennu",
+    "courseSectionTeaching": "Addysgu",
+    "courseSectionLearning": "Dysgu",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cwrs} other{{count} cwrs}}"
 }

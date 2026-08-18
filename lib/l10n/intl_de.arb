@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-17 09:30:26.065334",
+    "@@last_modified": "2026-08-18 09:33:21.781290",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9733,5 +9733,8 @@
     "unlockTranslations": "Übersetzungen freischalten",
     "unlockEmojiMode": "Emoji-Modus freischalten",
     "unlockMessagePractice": "Nachrichtenübung freischalten",
-    "unlockWritingAssistance": "Schreibassistenz freischalten"
+    "unlockWritingAssistance": "Schreibassistenz freischalten",
+    "courseSectionTeaching": "Unterricht",
+    "courseSectionLearning": "Lernen",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 Kurs} other{{count} Kurse}}"
 }

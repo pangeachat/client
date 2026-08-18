@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-17 09:31:16.956228",
+    "@@last_modified": "2026-08-18 09:33:35.943742",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Buka konci tarjamahan",
     "unlockEmojiMode": "Buka konci mode emoji",
     "unlockMessagePractice": "Buka konci latihan pesen",
-    "unlockWritingAssistance": "Buka konci bantuan nulis"
+    "unlockWritingAssistance": "Buka konci bantuan nulis",
+    "courseSectionTeaching": "Ngajar",
+    "courseSectionLearning": "Diajar",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}"
 }

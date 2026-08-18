@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-17 09:30:24.259644",
+    "@@last_modified": "2026-08-18 09:33:23.292611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Eadar-theangachaidhean fhuasgladh",
     "unlockEmojiMode": "Modh emoji fhuasgladh",
     "unlockMessagePractice": "Cleachdadh teachdaireachd fhuasgladh",
-    "unlockWritingAssistance": "Taic sgrìobhaidh fhuasgladh"
+    "unlockWritingAssistance": "Taic sgrìobhaidh fhuasgladh",
+    "courseSectionTeaching": "Teagasg",
+    "courseSectionLearning": "Ionnsachadh",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 chùrsa} other{{count} cùrsaichean}}"
 }

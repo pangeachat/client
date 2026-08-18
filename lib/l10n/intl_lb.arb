@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-17 09:30:51.561999",
+    "@@last_modified": "2026-08-18 09:33:27.724245",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Spär Iwwersetzunge op",
     "unlockEmojiMode": "Spär Emoji Modus op",
     "unlockMessagePractice": "Spär Message Praxis op",
-    "unlockWritingAssistance": "Spär Schreifhëllef op"
+    "unlockWritingAssistance": "Spär Schreifhëllef op",
+    "courseSectionTeaching": "Léieren",
+    "courseSectionLearning": "Léieren",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 Cours} other{{count} Coursen}}"
 }

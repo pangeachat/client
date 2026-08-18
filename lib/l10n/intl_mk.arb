@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-17 09:30:48.399592",
+    "@@last_modified": "2026-08-18 09:33:31.333670",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Отклучи преводи",
     "unlockEmojiMode": "Отклучи емоџи режим",
     "unlockMessagePractice": "Отклучи вежбање пораки",
-    "unlockWritingAssistance": "Отклучи помош при пишување"
+    "unlockWritingAssistance": "Отклучи помош при пишување",
+    "courseSectionTeaching": "Предавање",
+    "courseSectionLearning": "Учење",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсеви}}"
 }

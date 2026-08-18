@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:21.244406",
+    "@@last_modified": "2026-08-18 09:33:32.876015",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9838,5 +9838,8 @@
     "unlockTranslations": "மொழிபெயர்ப்புகளைத் திறக்கவும்",
     "unlockEmojiMode": "எமோஜி பயன்முறையைத் திறக்கவும்",
     "unlockMessagePractice": "செய்திப் பயிற்சியைத் திறக்கவும்",
-    "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்"
+    "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்",
+    "courseSectionTeaching": "கற்பித்தல்",
+    "courseSectionLearning": "கற்றல்",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 பாடம்} other{{count} பாடங்கள்}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-17 09:30:26.366640",
+    "@@last_modified": "2026-08-18 09:33:22.683592",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9746,5 +9746,8 @@
     "unlockTranslations": "Desblokeatu itzulpenak",
     "unlockEmojiMode": "Desblokeatu emoji modua",
     "unlockMessagePractice": "Desblokeatu mezuen praktika",
-    "unlockWritingAssistance": "Desblokeatu idazketa-laguntza"
+    "unlockWritingAssistance": "Desblokeatu idazketa-laguntza",
+    "courseSectionTeaching": "Irakaskuntza",
+    "courseSectionLearning": "Ikaskuntza",
+    "courseSectionLabel": "{title}, {count, plural, =1{ikastaro 1} other{{count} ikastaro}}"
 }

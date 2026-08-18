@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-17 09:30:54.912966",
+    "@@last_modified": "2026-08-18 09:33:29.957301",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Котормолордун кулпусун ачуу",
     "unlockEmojiMode": "Эмодзи режиминин кулпусун ачуу",
     "unlockMessagePractice": "Кабарды практикалоонун кулпусун ачуу",
-    "unlockWritingAssistance": "Жазууга жардам берүүнүн кулпусун ачуу"
+    "unlockWritingAssistance": "Жазууга жардам берүүнүн кулпусун ачуу",
+    "courseSectionTeaching": "Окутуу",
+    "courseSectionLearning": "Үйрөнүү",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}"
 }

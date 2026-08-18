@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-17 09:31:25.044731",
+    "@@last_modified": "2026-08-18 09:33:33.286148",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10378,5 +10378,8 @@
     "unlockTranslations": "ปลดล็อกการแปล",
     "unlockEmojiMode": "ปลดล็อกโหมดอิโมจิ",
     "unlockMessagePractice": "ปลดล็อกการฝึกข้อความ",
-    "unlockWritingAssistance": "ปลดล็อกตัวช่วยการเขียน"
+    "unlockWritingAssistance": "ปลดล็อกตัวช่วยการเขียน",
+    "courseSectionTeaching": "การสอน",
+    "courseSectionLearning": "การเรียนรู้",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 คอร์ส} other{{count} คอร์ส}}"
 }

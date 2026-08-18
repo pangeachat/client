@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-17 09:31:37.549715",
+    "@@last_modified": "2026-08-18 09:33:34.898929",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Fungua tafsiri",
     "unlockEmojiMode": "Fungua hali ya emoji",
     "unlockMessagePractice": "Fungua mazoezi ya ujumbe",
-    "unlockWritingAssistance": "Fungua usaidizi wa kuandika"
+    "unlockWritingAssistance": "Fungua usaidizi wa kuandika",
+    "courseSectionTeaching": "Kufundisha",
+    "courseSectionLearning": "Kujifunza",
+    "courseSectionLabel": "{title}, {count, plural, =1{kozi 1} other{kozi {count}}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-17 09:30:40.523197",
+    "@@last_modified": "2026-08-18 09:33:27.146108",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Open di transleshon dɛn",
     "unlockEmojiMode": "Open di emoji mod",
     "unlockMessagePractice": "Open di mɛsej praktis",
-    "unlockWritingAssistance": "Open di raytin ɛlp"
+    "unlockWritingAssistance": "Open di raytin ɛlp",
+    "courseSectionTeaching": "Tichin",
+    "courseSectionLearning": "Lɛnin",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kos} other{{count} kos dɛn}}"
 }

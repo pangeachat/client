@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-17 09:31:23.257112",
+    "@@last_modified": "2026-08-18 09:33:32.576341",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Zhblo përkthimet",
     "unlockEmojiMode": "Zhblo modalitetin emoji",
     "unlockMessagePractice": "Zhblo praktikën e mesazheve",
-    "unlockWritingAssistance": "Zhblo asistencën e shkrimit"
+    "unlockWritingAssistance": "Zhblo asistencën e shkrimit",
+    "courseSectionTeaching": "Mësimdhënie",
+    "courseSectionLearning": "Të nxënit",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurse}}"
 }

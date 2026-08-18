@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:30.769411",
+    "@@last_modified": "2026-08-18 09:33:30.935830",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9819,5 +9819,8 @@
     "unlockTranslations": "Buka terjemahan",
     "unlockEmojiMode": "Buka mode emoji",
     "unlockMessagePractice": "Buka latihan pesan",
-    "unlockWritingAssistance": "Buka bantuan menulis"
+    "unlockWritingAssistance": "Buka bantuan menulis",
+    "courseSectionTeaching": "Mengajar",
+    "courseSectionLearning": "Belajar",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}"
 }

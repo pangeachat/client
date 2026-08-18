@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:15.503282",
+    "@@last_modified": "2026-08-18 09:33:25.400976",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10691,5 +10691,8 @@
     "unlockTranslations": "Malŝlosi tradukojn",
     "unlockEmojiMode": "Malŝlosi emoji-reĝimon",
     "unlockMessagePractice": "Malŝlosi mesaĝan praktikon",
-    "unlockWritingAssistance": "Malŝlosi skriban helpon"
+    "unlockWritingAssistance": "Malŝlosi skriban helpon",
+    "courseSectionTeaching": "Instruado",
+    "courseSectionLearning": "Lernado",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kursoj}}"
 }

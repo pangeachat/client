@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-17 09:30:45.843390",
+    "@@last_modified": "2026-08-18 09:33:27.049703",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "وەرگێڕانەکان بکەرەوە",
     "unlockEmojiMode": "دۆخی ئیمۆجی بکەرەوە",
     "unlockMessagePractice": "ڕاهێنانی نامە ناردن بکەرەوە",
-    "unlockWritingAssistance": "یارمەتی نووسین بکەرەوە"
+    "unlockWritingAssistance": "یارمەتی نووسین بکەرەوە",
+    "courseSectionTeaching": "وانەوتنەوە",
+    "courseSectionLearning": "فێربوون",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 خول} other{{count} خول}}"
 }

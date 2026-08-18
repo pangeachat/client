@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-17 09:30:12.534147",
+    "@@last_modified": "2026-08-18 09:33:20.907787",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Ontsluit vertalings",
     "unlockEmojiMode": "Ontsluit emoji-modus",
     "unlockMessagePractice": "Ontsluit boodskappraktyk",
-    "unlockWritingAssistance": "Ontsluit skryfhulp"
+    "unlockWritingAssistance": "Ontsluit skryfhulp",
+    "courseSectionTeaching": "Onderrig",
+    "courseSectionLearning": "Leer",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursusse}}"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-17 09:31:25.474967",
+    "@@last_modified": "2026-08-18 09:33:32.463614",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "Notlolla liphetolelo",
     "unlockEmojiMode": "Notlolla mokhoa oa emoji",
     "unlockMessagePractice": "Notlolla tloaelo ea melaetsa",
-    "unlockWritingAssistance": "Notlolla thuso ea ho ngola"
+    "unlockWritingAssistance": "Notlolla thuso ea ho ngola",
+    "courseSectionTeaching": "Ho ruta",
+    "courseSectionLearning": "Ho ithuta",
+    "courseSectionLabel": "{title}, {count, plural, =1{thuto e le 1} other{lithuto tse {count}}}"
 }

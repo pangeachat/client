@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-17 09:31:50.148637",
+    "@@last_modified": "2026-08-18 09:33:33.422214",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2134,5 +2134,8 @@
     "unlockTranslations": "تەرجىمىلەرنى ئېچىڭ",
     "unlockEmojiMode": "ئېموجى ھالىتىنى ئېچىڭ",
     "unlockMessagePractice": "ئۇچۇر مەشىقىنى ئېچىڭ",
-    "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ"
+    "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ",
+    "courseSectionTeaching": "ئۆگىتىش",
+    "courseSectionLearning": "ئۆگىنىش",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 دەرسلىك} other{{count} دەرسلىك}}"
 }
