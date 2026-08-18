@@ -52,7 +52,6 @@ class SessionBackup {
 }
 
 extension InitWithRestoreExtension on Client {
-  // #Pangea
   /// The keychain store for the session backup. Backups are written on every
   /// client init, including iOS background launches (push, prewarming) while
   /// the device is locked, where the plugin default accessibility
@@ -65,14 +64,10 @@ extension InitWithRestoreExtension on Client {
   static const sessionBackupStorage = FlutterSecureStorage(
     iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock),
   );
-  // Pangea#
 
   static Future<void> deleteSessionBackup(String clientName) async {
     final storage = PlatformInfos.isMobile || PlatformInfos.isLinux
-        // #Pangea
-        // ? const FlutterSecureStorage()
         ? sessionBackupStorage
-        // Pangea#
         : null;
     await storage?.delete(
       key: '${AppSettings.applicationName.value}_session_backup_$clientName',
@@ -83,10 +78,7 @@ extension InitWithRestoreExtension on Client {
     final storageKey =
         '${AppSettings.applicationName.value}_session_backup_$clientName';
     final storage = PlatformInfos.isMobile || PlatformInfos.isLinux
-        // #Pangea
-        // ? const FlutterSecureStorage()
         ? sessionBackupStorage
-        // Pangea#
         : null;
 
     try {
@@ -110,7 +102,6 @@ extension InitWithRestoreExtension on Client {
         assert(hasBackup);
         if (hasBackup) {
           Logs().v('Store session in backup');
-          // #Pangea
           // Deliberately not awaited (init latency), but no longer left to
           // fail as an unhandled async error either: a backup write can still
           // fail before the first unlock since boot, and that is a transient
@@ -140,7 +131,6 @@ extension InitWithRestoreExtension on Client {
                   ),
                 ),
           );
-          // Pangea#
         }
       }
     } catch (e, s) {
