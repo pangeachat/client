@@ -6,7 +6,6 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
-import 'package:fluffychat/routes/chat/calls/incoming_call.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
@@ -214,22 +213,21 @@ class CallService {
         .any((m) => m.deviceId != myDevice && !m.isExpired);
   }
 
-  /// Whether the other side is still ringing in [room] — someone else is in
-  /// the call and this account is not.
+  /// Whether the caller is still in the call in [room] — a live membership from
+  /// a user other than this account.
   ///
-  /// Checked while a prompt is up, because a caller can give up: a banner that
-  /// only appeared once would ring for a call nobody is on, and answering it
-  /// would join a call of one.
-  bool isRinging(Room room) {
+  /// Keyed on another USER, not this account, so this device's own stale
+  /// membership from a failed retract cannot make a real incoming call look
+  /// like a call of one. Checked before answering, so a caller who gave up is
+  /// not joined.
+  bool otherUserInCall(Room room) {
     final me = client.userID;
     if (me == null || _disposed) return false;
-    return IncomingCall(
-      memberships: [
-        for (final list in room.getCallMembershipsFromRoom(voip).values)
-          ...list,
-      ],
-      myUserId: me,
-    ).shouldRing;
+    return room
+        .getCallMembershipsFromRoom(voip)
+        .values
+        .expand((list) => list)
+        .any((m) => m.userId != me && !m.isExpired);
   }
 
   /// Whether anyone other than this account is still in the call.
@@ -242,6 +240,13 @@ class CallService {
     if (session == null) return false;
     return session.participants.any((p) => p.userId != client.userID);
   }
+
+  /// Whether THIS device is already in a call, anywhere.
+  ///
+  /// The local session, not room state — so a stale membership a failed retract
+  /// left behind does not read as busy and silence the next incoming call, and
+  /// a call genuinely in progress does suppress a second ring.
+  bool get isBusy => _current != null;
 
   /// Fires when participants join or leave the current call.
   Stream<MatrixRTCCallEvent>? get callEvents =>
@@ -306,20 +311,13 @@ class CallService {
         (event) => IncomingCallNotification(
           event: event,
           myUserId: client.userID ?? '',
-          alreadyJoined: _amInCall(event.room, event),
+          // Busy is read from the local session, so this device's own stale
+          // membership never suppresses a real incoming call, while a call
+          // genuinely in progress does.
+          alreadyJoined: isBusy,
         ),
       )
       .where((ring) => ring.shouldRing(DateTime.now()));
-
-  bool _amInCall(Room room, Event notification) {
-    final me = client.userID;
-    if (me == null) return false;
-    return room
-        .getCallMembershipsFromRoom(voip)
-        .values
-        .expand((list) => list)
-        .any((m) => m.userId == me && !m.isExpired);
-  }
 
   /// Turns down the call [notification] announced, telling its caller.
   ///
@@ -457,6 +455,11 @@ class CallService {
     }
     _tokens.close();
     _discovery.close();
+    // The SDK's VoIP has no dispose and its listeners are attached to the
+    // client's own streams, so they are torn down when the client is disposed
+    // on logout — which is when this runs. Dropping the reference is all this
+    // layer can do; the ring and answer paths are the only things that build it,
+    // so a receiver that only ever rings never constructs it at all.
     _voip = null;
     _focus = null;
     _resolving = null;

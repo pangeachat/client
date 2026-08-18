@@ -76,23 +76,19 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     });
   }
 
-  /// Dismisses the prompt when the call stops ringing.
+  /// Dismisses the prompt when the ring lifetime lapses.
   ///
-  /// A call ends three ways while a prompt is up: the caller gives up (their
-  /// membership goes), or the ring lifetime lapses, or the learner acts. The
-  /// first two are watched here so a prompt never outlives its call.
+  /// The notification carries how long it rings; after that the call is taken as
+  /// unanswered and the prompt goes. A caller who hangs up sooner is covered by
+  /// the check at answer time — the prompt may linger to the lifetime, but
+  /// answering a call the caller has left does not join one. Read from the
+  /// notification, so nothing here touches the call machinery for a call this
+  /// device has not joined.
   void _watchForGiveUp(IncomingCallNotification ring) {
     _stillRinging?.cancel();
-    _stillRinging = Timer.periodic(const Duration(seconds: 2), (timer) {
-      if (!mounted || _ringing?.event.eventId != ring.event.eventId) {
-        timer.cancel();
-        return;
-      }
-      final calls = Matrix.of(context).callService;
-      final expired = ring.hasExpiredBy(DateTime.now());
-      if (!expired && calls.isRinging(ring.event.room)) return;
-      timer.cancel();
-      _dismiss();
+    final remaining = ring.expiresAt.difference(DateTime.now());
+    _stillRinging = Timer(remaining.isNegative ? Duration.zero : remaining, () {
+      if (mounted && _ringing?.event.eventId == ring.event.eventId) _dismiss();
     });
   }
 
@@ -123,11 +119,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
   Future<void> _answer(IncomingCallNotification ring) async {
     // A caller can give up between the prompt appearing and the tap. Joining a
-    // call nobody is on would open a call of one and write it to the room.
+    // call the caller has left would open a call of one and write it to the
+    // room, so the caller's presence is checked at the moment of answering.
     final calls = Matrix.of(context).callService;
-    final live = calls.isRinging(ring.event.room);
+    final callerThere = calls.otherUserInCall(ring.event.room);
     _dismiss();
-    if (!live || !mounted) return;
+    if (!callerThere || !mounted) return;
     // Whether this rings is derived inside ActiveCall from whether the call
     // already exists — it does, so this joins without ringing.
     await CallPage.show(context, ring.event.room, video: ring.isVideo);
