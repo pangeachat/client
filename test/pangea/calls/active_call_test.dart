@@ -47,6 +47,7 @@ class FakeCalls extends CallService {
   Object? joinError;
   Object? announceError;
   Object? retractError;
+  bool retractFails = false;
 
   FakeCalls(super.client, this.trace);
 
@@ -64,9 +65,10 @@ class FakeCalls extends CallService {
   }
 
   @override
-  Future<void> retract() async {
+  Future<bool> retract() async {
     trace('retract');
     if (retractError != null) throw retractError!;
+    return !retractFails;
   }
 }
 
@@ -302,6 +304,27 @@ void main() {
         'media.dispose',
       ], reason: 'a stuck socket must not strand the rest of teardown');
       expect(call.stage, CallStage.ended);
+    });
+
+    test('a retract that reports failure stays retryable', () async {
+      // The service releases the session either way so calling is not blocked,
+      // so a failure that did not throw would otherwise be taken for success and
+      // the one retry that could help would never happen.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+
+      calls.retractFails = true;
+      await call.hangUp();
+      expect(trace.steps, contains('retract'));
+
+      calls.retractFails = false;
+      trace.steps.clear();
+      await call.hangUp();
+      expect(
+        trace.steps,
+        contains('retract'),
+        reason: 'the second hangup tries again',
+      );
     });
 
     test('a failed retract stays retryable', () async {

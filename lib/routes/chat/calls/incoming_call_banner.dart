@@ -31,13 +31,16 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   matrix.Room? _ringing;
   String? _listeningTo;
 
-  /// When each room's call was last turned down.
+  /// Rooms whose current call the learner has turned down.
   ///
-  /// A decline has to outlast the discoveries that repeat while a caller waits,
-  /// and has to lapse before that caller tries again. Nothing in a membership
-  /// distinguishes one call from the next, so time is what is left: it holds for
-  /// as long as a call would plausibly still be ringing.
-  final Map<String, DateTime> _declinedAt = {};
+  /// Held while that call is still live and dropped the moment it ends, so the
+  /// repeated discoveries that arrive while a caller waits are ignored and a
+  /// caller who hangs up and tries again gets through immediately.
+  ///
+  /// Observed rather than timed: nothing in a membership distinguishes one call
+  /// from the next, but "the caller is no longer there" is plain to see.
+  final Set<String> _declined = {};
+  Timer? _watchDeclined;
 
   /// How long a call rings before it is taken as unanswered.
   ///
@@ -84,10 +87,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       // the first on screen rather than swapping under the learner's finger as
       // they reach to answer.
       if (_ringing != null) return;
-      final declined = _declinedAt[room.id];
-      if (declined != null && DateTime.now().difference(declined) < _ringFor) {
-        return;
-      }
+      if (_declined.contains(room.id)) return;
       setState(() => _ringing = room);
       _watchForGiveUp(room);
     });
@@ -114,6 +114,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void dispose() {
     _calls?.cancel();
     _stillRinging?.cancel();
+    _watchDeclined?.cancel();
     super.dispose();
   }
 
@@ -121,8 +122,29 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// again while the caller is still waiting.
   void _decline() {
     final room = _ringing;
-    if (room != null) _declinedAt[room.id] = DateTime.now();
+    if (room != null) {
+      _declined.add(room.id);
+      _watchDeclinedCalls();
+    }
     _dismiss();
+  }
+
+  /// Forgets a decline once that call has actually ended.
+  ///
+  /// Without this the learner would be unreachable from that conversation until
+  /// some arbitrary window lapsed — a caller who hung up and rang straight back
+  /// would not get through, which is exactly when someone rings back.
+  void _watchDeclinedCalls() {
+    _watchDeclined?.cancel();
+    _watchDeclined = Timer.periodic(const Duration(seconds: 2), (timer) {
+      if (!mounted || _declined.isEmpty) {
+        timer.cancel();
+        return;
+      }
+      final calls = Matrix.of(context).callService;
+      _declined.removeWhere((roomId) => !calls.isRingingIn(roomId));
+      if (_declined.isEmpty) timer.cancel();
+    });
   }
 
   void _dismiss() {
@@ -134,7 +156,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   Future<void> _answer(matrix.Room room) async {
     // Answering clears any earlier decline: the learner has plainly changed
     // their mind, and a lingering one would suppress the next call for nothing.
-    _declinedAt.remove(room.id);
+    _declined.remove(room.id);
     // Checked at the moment of answering, not when the prompt appeared. A
     // caller can give up between the two, and joining then would open a call of
     // one and write it to the room as though it happened.

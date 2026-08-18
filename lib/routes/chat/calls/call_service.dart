@@ -48,7 +48,7 @@ class CallService {
   bool _joining = false;
 
   /// The in-flight retract, so concurrent callers await one attempt.
-  Future<void>? _retracting;
+  Future<bool>? _retracting;
 
   CallService(
     this.client, {
@@ -267,6 +267,12 @@ class CallService {
     ).shouldRing;
   }
 
+  /// [isRinging] by room id, for a caller that holds an id rather than a room.
+  bool isRingingIn(String roomId) {
+    final room = client.getRoomById(roomId);
+    return room != null && isRinging(room);
+  }
+
   /// Whether anyone other than this account is still in the call.
   ///
   /// A direct-message call is over when the other person leaves; there is nobody
@@ -311,14 +317,20 @@ class CallService {
   ///
   /// Idempotent and safe to race: concurrent callers join the same attempt
   /// rather than each sending their own leave.
-  Future<void> retract() => _retracting ??= () async {
+  /// Returns whether the membership was actually taken back.
+  ///
+  /// The session is released either way: the membership expires on its own, and
+  /// refusing every future call to preserve a retry nothing will invoke would
+  /// lock the learner out of calling over a failure they cannot see. But the
+  /// caller is told, because silently reporting success meant the one retry that
+  /// could have helped never happened.
+  Future<bool> retract() => _retracting ??= () async {
     try {
       await _current?.leave();
+      return true;
     } catch (e, s) {
-      // The membership expires on its own, and refusing every future call to
-      // preserve a retry nothing will invoke is the worse outcome — the learner
-      // would be locked out of calling by a failure they cannot see or act on.
       Logs().w('Could not retract the call membership; it will expire', e, s);
+      return false;
     } finally {
       _current = null;
       _retracting = null;

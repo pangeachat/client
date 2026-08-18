@@ -312,11 +312,11 @@ class ActiveCall extends ChangeNotifier {
 
     if (_joined) {
       try {
-        await calls.retract();
-        _joined = false;
+        // Deliberately still joined when it did not work: a hangup that failed
+        // to take the membership back should be tried again rather than
+        // remembered as done.
+        _joined = !await calls.retract();
       } catch (e, s) {
-        // Deliberately still joined: the service keeps the session so a retry
-        // can succeed, and clearing this would make us stop asking.
         Logs().e('Could not retract the call membership', e, s);
       }
     }
