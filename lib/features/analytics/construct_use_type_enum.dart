@@ -30,6 +30,9 @@ enum ConstructUseTypeEnum {
   /// produced in voice message
   pvm,
 
+  /// produced in a voice or video call
+  pvc,
+
   /// interactive translation activity
   corIt,
   ignIt,
@@ -168,6 +171,8 @@ enum ConstructUseTypeEnum {
         return L10n.of(context).constructUseEmojiDesc;
       case ConstructUseTypeEnum.pvm:
         return L10n.of(context).constructUsePvmDesc;
+      case ConstructUseTypeEnum.pvc:
+        return L10n.of(context).constructUsePvcDesc;
       case ConstructUseTypeEnum.corMM:
         return L10n.of(context).constructUseCorMmDesc;
       case ConstructUseTypeEnum.incMM:
@@ -248,6 +253,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.ignMM:
         return PracticeExerciseTypeEnum.messageMeaning.icon;
       case ConstructUseTypeEnum.pvm:
+      case ConstructUseTypeEnum.pvc:
         return Icons.mic;
       case ConstructUseTypeEnum.unk:
       case ConstructUseTypeEnum.nan:
@@ -279,6 +285,7 @@ enum ConstructUseTypeEnum {
         return 5;
 
       case ConstructUseTypeEnum.pvm:
+      case ConstructUseTypeEnum.pvc:
         return 4;
 
       case ConstructUseTypeEnum.wa:
@@ -342,6 +349,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incIGC:
       case ConstructUseTypeEnum.ignIGC:
       case ConstructUseTypeEnum.pvm:
+      case ConstructUseTypeEnum.pvc:
       case ConstructUseTypeEnum.sug:
         return true;
 
@@ -425,6 +433,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.incGE:
         return LearningSkillsEnum.reading;
       case ConstructUseTypeEnum.pvm:
+      case ConstructUseTypeEnum.pvc:
         return LearningSkillsEnum.speaking;
       case ConstructUseTypeEnum.bonus:
       case ConstructUseTypeEnum.nan:
@@ -439,6 +448,7 @@ enum ConstructUseTypeEnum {
       case ConstructUseTypeEnum.ta:
       case ConstructUseTypeEnum.unk:
       case ConstructUseTypeEnum.pvm:
+      case ConstructUseTypeEnum.pvc:
         return SpaceAnalyticsSummaryEnum.numWordsTyped;
 
       case ConstructUseTypeEnum.corIt:

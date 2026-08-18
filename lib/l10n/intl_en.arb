@@ -3585,6 +3585,7 @@
     "nan": "Not applicable",
     "instructions": "Instructions",
     "constructUsePvmDesc": "Produced in voice message",
+    "constructUsePvcDesc": "Produced in a call",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",
