@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' as matrix show Room;
+import 'package:matrix/matrix.dart' show EventTypes;
 
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -12,7 +13,6 @@ import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -25,16 +25,33 @@ class CallPage extends StatefulWidget {
   final matrix.Room room;
   final bool video;
 
-  const CallPage({required this.room, required this.video, super.key});
+  /// The notification this device was rung with, when answering.
+  ///
+  /// Null when placing a call. The answering side does not write the call to
+  /// the timeline — the caller does — so this is what its speaking analytics
+  /// are anchored to instead.
+  final String? notificationEventId;
+
+  const CallPage({
+    required this.room,
+    required this.video,
+    this.notificationEventId,
+    super.key,
+  });
 
   static Future<void> show(
     BuildContext context,
     matrix.Room room, {
     required bool video,
+    String? notificationEventId,
   }) => Navigator.of(context).push(
     MaterialPageRoute(
       fullscreenDialog: true,
-      builder: (_) => CallPage(room: room, video: video),
+      builder: (_) => CallPage(
+        room: room,
+        video: video,
+        notificationEventId: notificationEventId,
+      ),
     ),
   );
 
@@ -100,8 +117,11 @@ class _CallPageState extends State<CallPage> {
     _record = CallRecord(
       roomId: room.id,
       transcripts: transcripts,
-      sendEvent: (content) =>
-          room.sendEvent(content, type: PangeaEventTypes.call),
+      // Sent as an ordinary room message carrying a Pangea msgtype, NOT as a
+      // custom top-level event type. The timeline only renders m.room.message,
+      // so a custom type was written to the room and then drawn by nothing —
+      // the call happened and left no visible trace.
+      sendEvent: (content) => room.sendEvent(content, type: EventTypes.Message),
       analytics: (eventId, uses, language) => matrix
           .analyticsDataService
           .updateService
@@ -184,6 +204,11 @@ class _CallPageState extends State<CallPage> {
           video: _usedVideo,
           answered: _wasConnected,
           declined: _call.wasDeclined,
+          // Only the side that placed the call posts it. Both sides run this
+          // same teardown, so writing from both would put two identical cards
+          // in the conversation.
+          writeTimelineEvent: _call.placedCall,
+          anchorEventId: widget.notificationEventId,
         );
       }),
     );

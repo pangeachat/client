@@ -9,6 +9,7 @@ import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
+import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
@@ -23,25 +24,42 @@ class Trace {
 
 class FakeCalls extends CallService {
   final Trace trace;
-  final _events = StreamController<MatrixRTCCallEvent>.broadcast();
-  List<String> devicesInCall = const [];
-  bool remotePresent = false;
-  bool otherDevicePresent = false;
 
-  @override
-  bool otherDeviceInCall(matrix.Room room) => otherDevicePresent;
+  /// The SFU's roster, which is now the only source of presence. The knobs
+  /// below write into it, so a test still describes the world in terms of
+  /// "my devices" and "is the peer here".
+  FakeRoster? roster;
 
-  @override
-  bool get hasRemoteParticipants => remotePresent;
+  List<String> _devices = const [];
+  bool _remote = false;
 
-  @override
-  bool otherUserInCall(matrix.Room room) => remotePresent;
+  /// Devices of THIS account in the call, this one included — the way a test
+  /// naturally describes it. Our own id is dropped on the way in, because the
+  /// SFU only ever lists other participants.
+  List<String> get devicesInCall => _devices;
+  set devicesInCall(List<String> value) {
+    _devices = value;
+    _syncRoster();
+  }
 
-  @override
-  List<String> get myDeviceIdsInCall => devicesInCall;
+  bool get remotePresent => _remote;
+  set remotePresent(bool value) {
+    _remote = value;
+    _syncRoster();
+  }
 
-  @override
-  Stream<MatrixRTCCallEvent> get callEvents => _events.stream;
+  void _syncRoster() {
+    final r = roster;
+    if (r == null) return;
+    final me = client.deviceID;
+    r.identities = {
+      for (final device in _devices)
+        if (device != me) '${client.userID}:$device',
+      if (_remote) '@peer:server:PEERDEVICE',
+    };
+    // A real roster notifies the moment the SFU's list changes.
+    r.recompute();
+  }
 
   final _declines = StreamController<Event>.broadcast();
   String? ringedNotificationId;
@@ -87,7 +105,6 @@ class FakeCalls extends CallService {
   /// Publishes a new participant list, the way a join or leave would.
   Future<void> participantsBecome(List<String> ids) async {
     devicesInCall = ids;
-    _events.add(ParticipantsJoinEvent(participants: const []));
     await pumpEventQueue();
   }
 
@@ -142,6 +159,12 @@ class FakeMedia extends CallMedia {
 
   final _track = FakeTrack();
 
+  /// Supplied by the test rather than built from a live connection.
+  FakeRoster? fakeRoster;
+
+  @override
+  CallRoster roster({required String myUserId}) => fakeRoster!;
+
   @override
   AudioTrack? get publishedAudio => hasTrack ? _track : null;
 
@@ -170,6 +193,40 @@ class FakeCapture extends CallCaptureService {
     trace('capture.stop');
     if (holdStop != null) await holdStop!.future;
     if (stopError != null) throw stopError!;
+  }
+}
+
+/// The SFU's participant list, without an SFU.
+///
+/// Overrides only the two reads that need a live connection, so everything the
+/// real roster decides — who is a peer, who is a sibling device, and the freeze
+/// while disconnected — is the code under test rather than a stub.
+class FakeRoster extends CallRoster {
+  FakeRoster({required super.room, required super.myUserId});
+
+  Set<String> identities = {};
+  bool connected = true;
+  bool disposed = false;
+
+  @override
+  Iterable<String> get remoteIdentities => identities;
+
+  @override
+  bool get roomConnected => connected;
+
+  @override
+  void recompute() {
+    // A disposed roster is detached from its room and notifies nobody. Pinning
+    // it here means a teardown that forgot to dispose shows up as a test that
+    // keeps receiving presence after the call ended.
+    if (disposed) return;
+    super.recompute();
+  }
+
+  @override
+  void dispose() {
+    disposed = true;
+    super.dispose();
   }
 }
 
@@ -223,6 +280,12 @@ void main() {
     final calls = FakeCalls(await bareClient(), trace);
     final media = FakeMedia(trace, hasTrack: hasTrack);
     final capture = FakeCapture(trace);
+    final roster = FakeRoster(
+      room: media.room,
+      myUserId: calls.client.userID ?? '',
+    );
+    media.fakeRoster = roster;
+    calls.roster = roster;
     return (
       ActiveCall(calls: calls, media: media, capture: capture),
       calls,
@@ -234,50 +297,50 @@ void main() {
   matrix.Room roomStub(Client c) => matrix.Room(id: '!r:server', client: c);
 
   group('bringing a call up', () {
-    test('placing into an empty room rings the other side', () async {
+    test('placing into an empty call rings the other side', () async {
       final (call, calls, _, _) = await build();
-      calls.otherDevicePresent = false;
+      await call.start(roomStub(calls.client), video: false);
+      expect(trace.steps, contains('ring'));
+      expect(call.placedCall, isTrue);
+    });
+
+    test('a stale membership cannot silence a new call', () async {
+      // Placing is decided by who is actually in the call, per the SFU. Matrix
+      // membership is not consulted at all — it holds a crashed peer's entry
+      // for around twelve minutes, and reading it would send a genuine new call
+      // out silent.
+      final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, contains('ring'));
     });
 
     test(
-      'a stale membership of this account does not silence a new call',
-      () async {
-        // A failed retract can leave this account's own membership behind. Keyed
-        // on any active call it would look like joining, and the real caller would
-        // go out silent — so placing is keyed on ANOTHER user being present.
-        final (call, calls, _, _) = await build();
-        calls.otherDevicePresent =
-            false; // only our own stale membership, if any
-        await call.start(roomStub(calls.client), video: false);
-        expect(trace.steps, contains('ring'));
-      },
-    );
-
-    test(
       'this account own second device joining does not ring again',
       () async {
-        // The caller's second device is a different DEVICE of the same user.
-        // Keyed on the user it would look like placing and ring the callee a
-        // second time; keyed on the device it is correctly a join.
+        // The caller's second device is a different device of the same user.
+        // Anyone already in the call — peer or sibling — means this is a join.
         final (call, calls, _, _) = await build();
-        calls.otherDevicePresent = true; // the first device is already here
+        calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
         await call.start(roomStub(calls.client), video: false);
         expect(trace.steps, isNot(contains('ring')));
+        expect(call.placedCall, isFalse);
       },
     );
 
     test('joining an existing call does not ring the caller back', () async {
-      // Whether to ring is a fact about the room, not the call site: a call
-      // that already exists is one this device is joining, and a ring from it
-      // would ring the caller who is already there. This holds however the join
-      // is reached — the banner, the header button, or a deep link.
+      // A call someone is already in is one this device is joining, and a ring
+      // from it would ring the caller who is already there. This holds however
+      // the join is reached — the banner, the header button, or a deep link.
       final (call, calls, _, _) = await build();
-      calls.otherDevicePresent = true;
+      calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, isNot(contains('ring')));
       expect(call.stage, CallStage.connected);
+      expect(
+        call.placedCall,
+        isFalse,
+        reason: 'the answering side must not also write the call to the room',
+      );
     });
 
     test('media and recording start before the peer is told', () async {

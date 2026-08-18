@@ -2,11 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart' as matrix show Room;
+import 'package:matrix/matrix.dart' as matrix show Logs, Room, User;
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_page.dart';
+import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Announces a call arriving for this account, wherever the learner happens to
@@ -79,11 +81,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   /// Dismisses the prompt when the ring lifetime lapses.
   ///
   /// The notification carries how long it rings; after that the call is taken as
-  /// unanswered and the prompt goes. A caller who hangs up sooner is covered by
-  /// the check at answer time — the prompt may linger to the lifetime, but
-  /// answering a call the caller has left does not join one. Read from the
-  /// notification, so nothing here touches the call machinery for a call this
-  /// device has not joined.
+  /// unanswered and the prompt goes. Read from the notification, so nothing here
+  /// touches the call machinery for a call this device has not joined.
   void _watchForGiveUp(IncomingCallNotification ring) {
     _stillRinging?.cancel();
     final remaining = ring.expiresAt.difference(DateTime.now());
@@ -117,17 +116,40 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _dismiss();
   }
 
+  /// Turns the call down and says why, in the conversation itself.
+  ///
+  /// The decline still goes out first: the caller's phone should stop ringing
+  /// whether or not the message sends, and the message is the courtesy on top
+  /// rather than the mechanism.
+  void _declineWith(IncomingCallNotification ring, String message) {
+    final room = ring.event.room;
+    _decline(ring);
+    unawaited(
+      room.sendTextEvent(message).catchError((Object e, StackTrace s) {
+        // The call is already declined and the prompt already gone. A message
+        // that will not send must not resurrect either.
+        matrix.Logs().w('Could not send the quick reply', e, s);
+        return null;
+      }),
+    );
+  }
+
   Future<void> _answer(IncomingCallNotification ring) async {
-    // A caller can give up between the prompt appearing and the tap. Joining a
-    // call the caller has left would open a call of one and write it to the
-    // room, so the caller's presence is checked at the moment of answering.
-    final calls = Matrix.of(context).callService;
-    final callerThere = calls.otherUserInCall(ring.event.room);
     _dismiss();
-    if (!callerThere || !mounted) return;
-    // Whether this rings is derived inside ActiveCall from whether the call
-    // already exists — it does, so this joins without ringing.
-    await CallPage.show(context, ring.event.room, video: ring.isVideo);
+    if (!mounted) return;
+    // Deliberately NOT gated on the caller still being visible in Matrix room
+    // state. That read lags a join by seconds, so it was routinely empty at the
+    // moment someone tapped answer — and answering did nothing at all. The SFU
+    // is the rendezvous point: join it, and let presence decide from there
+    // whether anyone is actually on the other end.
+    await CallPage.show(
+      context,
+      ring.event.room,
+      video: ring.isVideo,
+      // Anchors this side's speaking analytics: the answering device does not
+      // write the call to the timeline, the caller does.
+      notificationEventId: ring.event.eventId,
+    );
   }
 
   @override
@@ -138,14 +160,24 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
         widget.child ?? const SizedBox.shrink(),
         if (ringing != null)
           Positioned(
-            top: MediaQuery.of(context).padding.top + 8,
-            left: 8,
-            right: 8,
-            child: _Banner(
-              room: ringing.event.room,
-              video: ringing.isVideo,
-              onAnswer: () => _answer(ringing),
-              onDecline: () => _decline(ringing),
+            top: MediaQuery.of(context).padding.top + 12,
+            left: 12,
+            right: 12,
+            child: Align(
+              alignment: Alignment.topCenter,
+              // A call card is not a page banner. Constrained and centred so it
+              // reads as a card on a tablet or a desktop window instead of a
+              // strip pinned across the whole width.
+              child: ConstrainedBox(
+                constraints: const BoxConstraints(maxWidth: 440),
+                child: _CallCard(
+                  key: ValueKey(ringing.event.eventId),
+                  ring: ringing,
+                  onAnswer: () => _answer(ringing),
+                  onDecline: () => _decline(ringing),
+                  onQuickReply: (message) => _declineWith(ringing, message),
+                ),
+              ),
             ),
           ),
       ],
@@ -153,54 +185,234 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   }
 }
 
-class _Banner extends StatelessWidget {
-  final matrix.Room room;
-  final bool video;
+/// The card itself: who is calling, and what can be done about it.
+class _CallCard extends StatefulWidget {
+  final IncomingCallNotification ring;
   final VoidCallback onAnswer;
   final VoidCallback onDecline;
+  final void Function(String message) onQuickReply;
 
-  const _Banner({
-    required this.room,
-    required this.video,
+  const _CallCard({
+    required this.ring,
     required this.onAnswer,
     required this.onDecline,
+    required this.onQuickReply,
+    super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final l10n = L10n.of(context);
-    final theme = Theme.of(context);
+  State<_CallCard> createState() => _CallCardState();
+}
 
-    return Material(
-      elevation: 8,
-      borderRadius: BorderRadius.circular(16),
-      color: theme.colorScheme.surfaceContainerHigh,
-      child: Padding(
-        padding: const EdgeInsets.all(12),
-        child: Row(
-          children: [
-            Icon(video ? Icons.videocam : Icons.call),
-            const SizedBox(width: 12),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    room.getLocalizedDisplayname(),
-                    style: theme.textTheme.titleSmall,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Text(l10n.callIncoming, style: theme.textTheme.bodySmall),
-                ],
-              ),
+class _CallCardState extends State<_CallCard>
+    with SingleTickerProviderStateMixin {
+  /// Whether the preset replies have taken over the card's action row.
+  ///
+  /// Shown in place rather than as a sheet on top: the card is already an
+  /// overlay, and stacking a second one over it puts the learner two dismissals
+  /// away from a ringing phone.
+  bool _choosingReply = false;
+
+  late final AnimationController _entrance = AnimationController(
+    vsync: this,
+    duration: const Duration(milliseconds: 260),
+  )..forward();
+
+  @override
+  void dispose() {
+    _entrance.dispose();
+    super.dispose();
+  }
+
+  matrix.Room get _room => widget.ring.event.room;
+
+  /// The caller, not the room. In a direct message the two usually agree, but a
+  /// room named after something else would otherwise show the wrong name on the
+  /// one screen where who is calling is the entire question.
+  matrix.User get _caller =>
+      _room.unsafeGetUserFromMemoryOrFallback(widget.ring.event.senderId);
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final l10n = L10n.of(context);
+    final caller = _caller;
+
+    final curve = CurvedAnimation(
+      parent: _entrance,
+      curve: Curves.easeOutCubic,
+    );
+
+    return SlideTransition(
+      position: Tween(
+        begin: const Offset(0, -0.25),
+        end: Offset.zero,
+      ).animate(curve),
+      child: FadeTransition(
+        opacity: curve,
+        child: Material(
+          elevation: 12,
+          shadowColor: Colors.black.withValues(alpha: 0.4),
+          borderRadius: BorderRadius.circular(20),
+          color: theme.colorScheme.surfaceContainerHigh,
+          clipBehavior: Clip.antiAlias,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _identity(theme, l10n, caller),
+                const SizedBox(height: 14),
+                AnimatedSize(
+                  duration: const Duration(milliseconds: 180),
+                  curve: Curves.easeOut,
+                  child: _choosingReply
+                      ? CallQuickReplyList(
+                          onPick: widget.onQuickReply,
+                          onBack: () => setState(() => _choosingReply = false),
+                        )
+                      : _actions(theme, l10n),
+                ),
+              ],
             ),
-            TextButton(onPressed: onDecline, child: Text(l10n.callDecline)),
-            const SizedBox(width: 4),
-            FilledButton(onPressed: onAnswer, child: Text(l10n.callAnswer)),
-          ],
+          ),
         ),
       ),
     );
   }
+
+  Widget _identity(ThemeData theme, L10n l10n, matrix.User caller) => Row(
+    children: [
+      Avatar(
+        mxContent: caller.avatarUrl,
+        name: caller.calcDisplayname(),
+        size: 52,
+        showPresence: false,
+      ),
+      const SizedBox(width: 14),
+      Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(
+              caller.calcDisplayname(),
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w600,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 1),
+            // The full Matrix id, so two people with the same display name are
+            // still distinguishable at the moment of answering.
+            Text(
+              caller.id,
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: theme.colorScheme.onSurfaceVariant,
+              ),
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 5),
+            Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(
+                  widget.ring.isVideo ? Icons.videocam : Icons.call,
+                  size: 15,
+                  color: theme.colorScheme.primary,
+                ),
+                const SizedBox(width: 5),
+                Text(
+                  widget.ring.isVideo
+                      ? l10n.callIncomingVideo
+                      : l10n.callIncomingVoice,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    color: theme.colorScheme.primary,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    ],
+  );
+
+  Widget _actions(ThemeData theme, L10n l10n) => Row(
+    children: [
+      Expanded(
+        child: TextButton.icon(
+          onPressed: () => setState(() => _choosingReply = true),
+          icon: const Icon(Icons.chat_bubble_outline, size: 18),
+          label: Text(l10n.callQuickReply, overflow: TextOverflow.ellipsis),
+          style: TextButton.styleFrom(
+            foregroundColor: theme.colorScheme.onSurfaceVariant,
+            padding: const EdgeInsets.symmetric(vertical: 12),
+          ),
+        ),
+      ),
+      const SizedBox(width: 8),
+      _CircleAction(
+        icon: Icons.call_end,
+        tooltip: l10n.callDecline,
+        background: theme.colorScheme.error,
+        foreground: theme.colorScheme.onError,
+        onPressed: widget.onDecline,
+      ),
+      const SizedBox(width: 10),
+      _CircleAction(
+        icon: widget.ring.isVideo ? Icons.videocam : Icons.call,
+        tooltip: l10n.callAnswer,
+        // Answer is the affirmative action and green is what every calling
+        // product uses for it; the scheme's primary is not reliably distinct
+        // from the decline colour across this app's themes.
+        background: const Color(0xFF2E7D32),
+        foreground: Colors.white,
+        onPressed: widget.onAnswer,
+      ),
+    ],
+  );
+}
+
+/// A round call action, sized to be an easy target on a phone.
+class _CircleAction extends StatelessWidget {
+  final IconData icon;
+  final String tooltip;
+  final Color background;
+  final Color foreground;
+  final VoidCallback onPressed;
+
+  const _CircleAction({
+    required this.icon,
+    required this.tooltip,
+    required this.background,
+    required this.foreground,
+    required this.onPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) => Tooltip(
+    message: tooltip,
+    child: Semantics(
+      button: true,
+      label: tooltip,
+      child: Material(
+        color: background,
+        shape: const CircleBorder(),
+        child: InkWell(
+          customBorder: const CircleBorder(),
+          onTap: onPressed,
+          child: SizedBox(
+            width: 48,
+            height: 48,
+            child: Icon(icon, color: foreground, size: 22),
+          ),
+        ),
+      ),
+    ),
+  );
 }

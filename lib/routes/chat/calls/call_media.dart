@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart' show Logs;
 
+import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 
 /// This device's media for one call.
@@ -48,6 +49,14 @@ class CallMedia {
       .firstOrNull;
 
   bool get isConnected => room.connectionState == ConnectionState.connected;
+
+  /// The SFU's view of who is in this call.
+  ///
+  /// Built here because this object owns the LiveKit room the roster reads, and
+  /// presence must come from the same connection the media does. Overridable so
+  /// a test can supply a roster without standing up a real connection.
+  CallRoster roster({required String myUserId}) =>
+      CallRoster(room: room, myUserId: myUserId);
 
   /// Connects to the SFU and publishes this device's media.
   ///

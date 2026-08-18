@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart' hide Room;
 
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
+import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 
@@ -47,21 +48,34 @@ class ActiveCall extends ChangeNotifier {
   bool _capturing = false;
   Future<void>? _hangUp;
   bool _disposed = false;
-  matrix.Room? _room;
 
   /// Set the moment anything asks the call to end. [start] checks it after every
   /// await, so a hangup that lands mid-connect stops the sequence instead of
   /// racing it to completion.
   bool _ending = false;
   AudioTrack? _track;
-  StreamSubscription? _participants;
   StreamSubscription? _declines;
-  Timer? _reelect;
   String? _notificationId;
+
+  /// Who is actually in the call, per the SFU. The single source of truth for
+  /// both presence and the recorder election, so the two can never disagree.
+  CallRoster? _roster;
   Future<void> _handover = Future.value();
 
   /// What the election last decided. Read by [_reconcile] when it runs.
   bool _wanted = false;
+
+  bool _placed = false;
+
+  /// Whether this device started the call rather than joining one.
+  ///
+  /// Decides which side writes the call to the timeline. Both sides run the
+  /// same lifecycle, so without this a two-person call would post two identical
+  /// cards to the conversation.
+  bool get placedCall => _placed;
+
+  /// The notification this call rang with, once it has been sent.
+  String? get notificationEventId => _notificationId;
 
   ActiveCall({required this.calls, required this.media, required this.capture});
 
@@ -70,7 +84,7 @@ class ActiveCall extends ChangeNotifier {
   /// Runs whenever the call's participants change, because that is the only thing
   /// that can change the answer. Idempotent — re-running it in the right state
   /// does nothing — so it is safe to call on every event.
-  /// Fires the periodic re-election now, for tests, instead of on the timer.
+  /// Re-runs the participant handler now, for tests, as a roster change would.
   @visibleForTesting
   Future<void> tickReelectionForTest() async {
     _onParticipantsChanged();
@@ -88,10 +102,12 @@ class ActiveCall extends ChangeNotifier {
     final me = calls.client.deviceID ?? '';
     final elected = CaptureElection(
       myDeviceId: me,
-      // Siblings only. The election always counts the caller itself, so passing
-      // this device's own id would be harmless — filtering keeps the argument
-      // honest to its name.
-      siblingDeviceIds: calls.myDeviceIdsInCall.where((id) => id != me),
+      // Siblings only, from the SFU's own participant list. The election has to
+      // agree with presence about who is in the call; reading a different source
+      // would let it defer to a device that is not actually here.
+      siblingDeviceIds: (_roster?.siblingDeviceIds ?? const <String>[]).where(
+        (id) => id != me,
+      ),
     ).shouldRecord;
 
     _wanted = elected;
@@ -157,12 +173,14 @@ class ActiveCall extends ChangeNotifier {
 
   void _onParticipantsChanged() {
     if (_ending) return;
-    final room = _room;
 
-    // From room state with expiry, not the SDK's participant set: that set only
-    // rebuilds on a membership event, so a peer who crashed without leaving
-    // would still read as present. A live membership from the peer does not.
-    final peerHere = room != null && calls.otherUserInCall(room);
+    // From the SFU, which is the only thing that knows who is actually here.
+    // Matrix membership cannot answer this: it is room state on a multi-minute
+    // expiry, so it lags a join by seconds and a crash by minutes. The roster
+    // holds its last picture while the connection is down, so a reconnect —
+    // which empties and refills the participant list — does not read as the
+    // other person hanging up.
+    final peerHere = _roster?.hasPeer ?? false;
     if (peerHere) {
       final firstArrival = !_peerArrived;
       _peerArrived = true;
@@ -241,8 +259,6 @@ class ActiveCall extends ChangeNotifier {
   /// membership (replaced by the new join) and its own second device joining
   /// are both handled.
   Future<void> start(matrix.Room room, {required bool video}) async {
-    _room = room;
-    final placing = !calls.otherDeviceInCall(room);
     try {
       final grant = await calls.join(room);
       _joined = true;
@@ -258,39 +274,42 @@ class ActiveCall extends ChangeNotifier {
         Logs().w('Call has no published audio track; not recording');
       }
 
-      // Subscribe FIRST. The SDK's event stream is a plain broadcast, so a
-      // membership change between electing and subscribing would simply be
-      // missed — and this device would keep recording alongside a sibling, or
-      // stay silent as the only one left.
-      _participants = calls.callEvents?.listen((_) => _onParticipantsChanged());
+      // The SFU's own participant list, read as state. Subscribed to before
+      // the first election so no change between the two is missed, and the
+      // whole picture is recomputed on every notification — so a missed
+      // notification costs nothing rather than leaving a tally adrift.
+      //
+      // This replaces both a Matrix membership subscription and a 30-second
+      // poll. Membership is room state on a multi-minute expiry: it lags a join
+      // and cannot see a crash until it lapses, which is why the poll existed
+      // at all. The SFU knows immediately, so neither is needed.
+      final roster = media.roster(myUserId: calls.client.userID ?? '');
+      _roster = roster;
+      roster.addListener(_onParticipantsChanged);
 
-      // Then elect, before announcing, so recording begins with the first word
-      // rather than after a round-trip. The election reads room state, which
-      // already lists any other device of this account.
+      // Placing or joining, decided by who is actually in the call. Read from
+      // the SFU rather than Matrix membership: a peer who crashed leaves a
+      // membership that reads as live for about twelve minutes, and trusting it
+      // would silence the ring on a genuine new call. Anyone at all — the peer
+      // or another of this account's devices — means this device is joining
+      // something already under way.
+      final placing = roster.participants.isEmpty;
+      _placed = placing;
+
+      // Elect before announcing, so recording begins with the first word rather
+      // than after a round-trip.
       _electRecorder();
-
-      // Re-run periodically as well as on participant changes. A sibling device
-      // that crashed leaves a membership that lapses on a timer, not an event,
-      // so without this a device deferring to that phantom would stay silent for
-      // the rest of the call. The tick drops it once it expires and this device
-      // takes over recording.
-      // Runs the full change handler, not just the election, because a
-      // membership lapses on a timer rather than an event: a crashed sibling
-      // that deferred recording, or a crashed PEER who leaves with no departure
-      // event, would otherwise go unnoticed — the mic held open for a
-      // conversation that ended. The tick catches both.
-      _reelect = Timer.periodic(
-        const Duration(seconds: 30),
-        (_) => _onParticipantsChanged(),
-      );
       // Settle the first election before announcing, so recording is already
       // running when the peer learns this device is here. Handovers are queued,
       // so without this the initial start would land a microtask later.
       await _handover;
 
       // Whether the peer is already here decides what their later absence
-      // means: gone, or simply not answered yet.
-      _peerArrived = calls.hasRemoteParticipants;
+      // means: gone, or simply not answered yet. Read from the roster rather
+      // than waited for as an event: someone already in the room when this
+      // device joined raises no join event, and that is exactly the person
+      // answering a call is joining.
+      _peerArrived = roster.hasPeer;
       if (!_peerArrived) {
         _waitingForPeer = Timer(_answerWithin, () {
           if (_ending || _peerArrived) return;
@@ -384,20 +403,21 @@ class ActiveCall extends ChangeNotifier {
   /// membership standing.
   Future<void> _tearDown() async {
     _ending = true;
-    _reelect?.cancel();
-    _reelect = null;
     unawaited(_declines?.cancel());
     _declines = null;
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
     try {
-      await _participants?.cancel();
+      // Detached before the media it reads is released, and disposed here
+      // rather than left to the media: it holds a listener on the room.
+      _roster?.removeListener(_onParticipantsChanged);
+      _roster?.dispose();
     } catch (e, s) {
       // Every step of teardown is isolated. An error here once aborted the whole
       // unwind, leaving the membership advertised and the call unrecorded.
       Logs().w('Could not stop watching participants', e, s);
     }
-    _participants = null;
+    _roster = null;
 
     if (_joined) {
       try {

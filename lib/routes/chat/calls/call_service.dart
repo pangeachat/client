@@ -194,25 +194,6 @@ class CallService {
     ];
   }
 
-  /// Whether any device OTHER than this one is already in a call in [room].
-  ///
-  /// This decides placing from joining, and it is keyed on the device rather
-  /// than the user for two reasons. This device's own leftover membership — a
-  /// failed retract's, which the new join replaces — is excluded, so a genuine
-  /// new call still rings. And another of this account's OWN devices already in
-  /// the call is included, so a second device joining does not ring again. Every
-  /// case reduces to: is there someone already here I am joining, where
-  /// "someone" is any device but mine.
-  bool otherDeviceInCall(Room room) {
-    if (_disposed) return false;
-    final myDevice = client.deviceID;
-    return room
-        .getCallMembershipsFromRoom(voip)
-        .values
-        .expand((list) => list)
-        .any((m) => m.deviceId != myDevice && !m.isExpired);
-  }
-
   /// Whether the caller is still in the call in [room] — a live membership from
   /// a user other than this account.
   ///

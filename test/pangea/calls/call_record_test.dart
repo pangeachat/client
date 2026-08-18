@@ -232,4 +232,72 @@ void main() {
 
     expect(recorded.single.uses, single * 3);
   });
+  group('which side writes the call', () {
+    test(
+      'the answering side credits its speech without posting a call',
+      () async {
+        // Both sides run the same teardown. If both wrote, every two-person call
+        // would leave two identical cards in the conversation.
+        final r = record(await sinkWith(() => spokenWord('hola')));
+        await r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          writeTimelineEvent: false,
+          anchorEventId: '\$notification',
+        );
+
+        expect(written, isEmpty, reason: 'the caller posts the call, not us');
+        expect(recorded, hasLength(1));
+        expect(
+          recorded.single.eventId,
+          '\$notification',
+          reason: 'the answering side anchors to the call it was rung with',
+        );
+      },
+    );
+
+    test('the placing side still writes the call', () async {
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        writeTimelineEvent: true,
+      );
+
+      expect(written, hasLength(1));
+      expect(recorded.single.eventId, '\$call');
+    });
+
+    test(
+      'an answering side with nothing to anchor to credits nothing',
+      () async {
+        // Rather than crediting speech against an event that does not exist,
+        // which could not be traced back to the call that earned it.
+        final r = record(await sinkWith(() => spokenWord('hola')));
+        await r.finish(
+          duration: const Duration(seconds: 30),
+          video: false,
+          writeTimelineEvent: false,
+        );
+
+        expect(written, isEmpty);
+        expect(recorded, isEmpty);
+      },
+    );
+
+    test(
+      'the written call carries a readable fallback for other clients',
+      () async {
+        final r = record(await sinkWith(() => spokenWord('hola')));
+        await r.finish(duration: const Duration(seconds: 92), video: false);
+        expect(written.single['body'], 'Voice call (1:32)');
+      },
+    );
+
+    test('a missed call says so in its fallback', () async {
+      final r = record(await sinkWith(() => silent));
+      await r.finish(duration: Duration.zero, video: false, answered: false);
+      expect(written.single['body'], 'Missed call');
+    });
+  });
 }

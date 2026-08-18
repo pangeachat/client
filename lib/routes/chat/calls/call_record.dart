@@ -55,11 +55,18 @@ class CallRecord {
   ///
   /// Idempotent. Running twice would post a second timeline entry and credit the
   /// same words again, and a hangup racing a disconnect can reach here twice.
+  /// [writeTimelineEvent] is false on the device that ANSWERED the call. Both
+  /// sides run the same lifecycle and both have speech to credit, but only one
+  /// card belongs in the conversation — so the answering side anchors its
+  /// analytics to [anchorEventId], the notification it was rung with, instead
+  /// of posting a second identical call.
   Future<void> finish({
     required Duration duration,
     required bool video,
     bool answered = true,
     bool declined = false,
+    bool writeTimelineEvent = true,
+    String? anchorEventId,
   }) async {
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
@@ -80,6 +87,8 @@ class CallRecord {
               video: video,
               answered: answered,
               declined: declined,
+              writeTimelineEvent: writeTimelineEvent,
+              anchorEventId: anchorEventId,
             );
           } catch (e, s) {
             // Caught here rather than around each step, so a failure is visible
@@ -106,15 +115,19 @@ class CallRecord {
     required bool video,
     required bool answered,
     required bool declined,
+    required bool writeTimelineEvent,
+    required String? anchorEventId,
   }) async {
     // Written once. A retry after the analytics failed must credit against the
     // call already in the timeline, not add another one.
-    final eventId = _eventId ??= await _write(
-      duration: duration,
-      video: video,
-      answered: answered,
-      declined: declined,
-    );
+    final eventId = _eventId ??= writeTimelineEvent
+        ? await _write(
+            duration: duration,
+            video: video,
+            answered: answered,
+            declined: declined,
+          )
+        : anchorEventId;
     if (eventId == null) {
       // Nothing to anchor the uses to, and an unanchored use cannot be traced
       // back to the call that earned it. Deliberately NOT marked finished: the
@@ -153,6 +166,26 @@ class CallRecord {
     _credited = true;
   }
 
+  /// What a client that cannot draw a call card shows instead.
+  ///
+  /// Deliberately not translated: this is the interop fallback stored in the
+  /// event, read by other clients and by search, while the card this app draws
+  /// is localised at render time. A stored translation would be the sender's
+  /// language, not the reader's.
+  static String _fallbackText({
+    required Duration duration,
+    required bool video,
+    required bool answered,
+    required bool declined,
+  }) {
+    if (declined) return 'Call declined';
+    if (!answered) return video ? 'Missed video call' : 'Missed call';
+    final seconds = duration.inSeconds;
+    final stamp =
+        '${seconds ~/ 60}:${(seconds % 60).toString().padLeft(2, '0')}';
+    return video ? 'Video call ($stamp)' : 'Voice call ($stamp)';
+  }
+
   Future<String?> _write({
     required Duration duration,
     required bool video,
@@ -162,7 +195,15 @@ class CallRecord {
     try {
       return await sendEvent({
         'msgtype': PangeaEventTypes.call,
-        'body': '',
+        // The plaintext fallback every Matrix client falls back to when it does
+        // not understand the msgtype. Without it a call reads as an empty
+        // message everywhere but here.
+        'body': _fallbackText(
+          duration: duration,
+          video: video,
+          answered: answered,
+          declined: declined,
+        ),
         'duration_ms': duration.inMilliseconds,
         'video': video,
         // A call nobody answered still belongs in the conversation. Every
