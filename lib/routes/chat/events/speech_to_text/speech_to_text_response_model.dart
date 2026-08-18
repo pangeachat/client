@@ -88,7 +88,14 @@ class SpeechToTextResponseModel extends BaseResponse {
     if (service != null) "service": service,
   };
 
-  List<OneConstructUse> constructs(String roomId, String eventId) {
+  /// [useType] says where the speech came from. It defaults to a voice message
+  /// because that is the only caller that predates calls; a call passes `pvc`,
+  /// which scores identically and also counts as speaking.
+  List<OneConstructUse> constructs(
+    String roomId,
+    String eventId, [
+    ConstructUseTypeEnum useType = ConstructUseTypeEnum.pvm,
+  ]) {
     final List<OneConstructUse> constructs = [];
     // Exhausted-fallback model: nothing was transcribed, so there are no
     // constructs to score. `transcript` assumes at least one result and
@@ -102,13 +109,7 @@ class SpeechToTextResponseModel extends BaseResponse {
     for (final sstToken in transcript.sttTokens) {
       final token = sstToken.token;
       if (!token.lemma.saveVocab) continue;
-      constructs.addAll(
-        token.allUses(
-          ConstructUseTypeEnum.pvm,
-          metadata,
-          ConstructUseTypeEnum.pvm.pointValue,
-        ),
-      );
+      constructs.addAll(token.allUses(useType, metadata, useType.pointValue));
     }
     return constructs;
   }
