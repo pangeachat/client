@@ -40,6 +40,7 @@ class ActiveCall extends ChangeNotifier {
   bool _joined = false;
   bool _capturing = false;
   Future<void>? _hangUp;
+  bool _disposed = false;
 
   ActiveCall({required this.calls, required this.media, required this.capture});
 
@@ -51,6 +52,11 @@ class ActiveCall extends ChangeNotifier {
     if (_stage == next && error == null) return;
     _stage = next;
     _error = error;
+    // Teardown is asynchronous and [dispose] starts it, so the final transition
+    // to ended routinely lands after this notifier is gone. Notifying then
+    // throws, and it would throw on the ordinary path of closing the call
+    // screen.
+    if (_disposed) return;
     notifyListeners();
   }
 
@@ -131,6 +137,7 @@ class ActiveCall extends ChangeNotifier {
 
   @override
   void dispose() {
+    _disposed = true;
     unawaited(hangUp());
     super.dispose();
   }

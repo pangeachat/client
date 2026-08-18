@@ -268,6 +268,21 @@ void main() {
     });
   });
 
+  test('disposing hangs up without notifying a disposed listener', () async {
+    // Teardown is asynchronous, so the transition to ended lands after dispose
+    // has returned. Notifying then throws — on the ordinary path of closing the
+    // call screen.
+    final (call, calls, _, _) = await build();
+    await call.start(roomStub(calls.client), video: false);
+    trace.steps.clear();
+
+    call.dispose();
+    await pumpEventQueue();
+
+    expect(trace.steps, ['capture.stop', 'media.dispose', 'retract']);
+    expect(call.stage, CallStage.ended);
+  });
+
   test('notifies listeners as the stage changes', () async {
     final (call, calls, _, _) = await build();
     var notifications = 0;
