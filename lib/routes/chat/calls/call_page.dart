@@ -55,6 +55,11 @@ class _CallPageState extends State<CallPage> {
   /// credit the learner for talking to nobody.
   bool _wasConnected = false;
 
+  /// Whether this device got as far as an established call. A call that failed
+  /// to start is not written at all; one that rang out unanswered is, as a
+  /// missed call.
+  bool _reachedCall = false;
+
   /// Whether the camera was ever on. The call is recorded by what happened, not
   /// by what was asked for — a voice call someone turns their camera on during
   /// is a video call, and writing otherwise would put something untrue in the
@@ -114,8 +119,9 @@ class _CallPageState extends State<CallPage> {
   void _onCallChanged() {
     if (!mounted) return;
     setState(() {});
-    if (_call.stage == CallStage.connected && _call.hadPeer) {
-      _wasConnected = true;
+    if (_call.stage == CallStage.connected) {
+      _reachedCall = true;
+      if (_call.hadPeer) _wasConnected = true;
     }
     // A call that ended or failed has nothing left to show. Closing here rather
     // than leaving a dead screen up means the user never has to dismiss a call
@@ -166,13 +172,15 @@ class _CallPageState extends State<CallPage> {
       // call its record. The write is what turns a conversation into analytics,
       // and it is correct whether or not the unwind was clean.
       _call.hangUp().whenComplete(() {
-        // A call that never connected is not written. There is nothing to
-        // credit and nothing happened, so a timeline entry would be a record of
-        // a conversation the learner never had.
-        if (!_wasConnected) return null;
+        // A call that never reached the SFU is not written: nothing happened,
+        // and an entry would record a conversation that never began. One that
+        // connected but was never answered IS written, as a missed call —
+        // otherwise someone who was away would never know they had been called.
+        if (!_reachedCall) return null;
         return _record.finish(
           duration: _endedAt!.difference(_startedAt),
           video: _usedVideo,
+          answered: _wasConnected,
         );
       }),
     );

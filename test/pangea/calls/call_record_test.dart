@@ -65,6 +65,30 @@ void main() {
     expect(recorded.single.uses, greaterThan(0));
   });
 
+  test('a missed call appears in the timeline but credits nothing', () async {
+    // Every calling product shows a missed call. Someone who was away would
+    // otherwise have no idea anyone had tried to reach them — and there is no
+    // conversation to credit, because nothing was said to anyone.
+    final r = record(await sinkWith(() => spokenWord('hola')));
+    await r.finish(
+      duration: const Duration(seconds: 45),
+      video: false,
+      answered: false,
+    );
+
+    expect(written, hasLength(1));
+    expect(written.single['answered'], isFalse);
+    expect(recorded, isEmpty, reason: 'nobody was there to talk to');
+  });
+
+  test('an answered call is recorded as answered', () async {
+    final r = record(await sinkWith(() => spokenWord('hola')));
+    await r.finish(duration: const Duration(seconds: 45), video: false);
+
+    expect(written.single['answered'], isTrue);
+    expect(recorded, hasLength(1));
+  });
+
   test('a silent call still appears in the timeline', () async {
     // The call happened. A learner looking back should see it whether or not it
     // earned them anything.

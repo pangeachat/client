@@ -55,7 +55,11 @@ class CallRecord {
   ///
   /// Idempotent. Running twice would post a second timeline entry and credit the
   /// same words again, and a hangup racing a disconnect can reach here twice.
-  Future<void> finish({required Duration duration, required bool video}) async {
+  Future<void> finish({
+    required Duration duration,
+    required bool video,
+    bool answered = true,
+  }) async {
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
     // Dropping one made a failed write unretryable in practice: the two callers
@@ -70,7 +74,7 @@ class CallRecord {
             await Future.delayed(Duration(seconds: attempt));
           }
           try {
-            await _finish(duration: duration, video: video);
+            await _finish(duration: duration, video: video, answered: answered);
           } catch (e, s) {
             // Caught here rather than around each step, so a failure is visible
             // to the loop and can be retried — and so nothing escapes into the
@@ -94,10 +98,15 @@ class CallRecord {
   Future<void> _finish({
     required Duration duration,
     required bool video,
+    required bool answered,
   }) async {
     // Written once. A retry after the analytics failed must credit against the
     // call already in the timeline, not add another one.
-    final eventId = _eventId ??= await _write(duration: duration, video: video);
+    final eventId = _eventId ??= await _write(
+      duration: duration,
+      video: video,
+      answered: answered,
+    );
     if (eventId == null) {
       // Nothing to anchor the uses to, and an unanchored use cannot be traced
       // back to the call that earned it. Deliberately NOT marked finished: the
@@ -105,6 +114,13 @@ class CallRecord {
       // or a second teardown path — can still record them. A network blip at
       // hangup must not cost the whole call's credit.
       Logs().w('Call analytics not recorded: the call event was not written');
+      return;
+    }
+
+    if (!answered) {
+      // Nothing was said to anyone. The call is in the timeline so it is not
+      // lost, but there is no conversation to credit.
+      _credited = true;
       return;
     }
 
@@ -132,6 +148,7 @@ class CallRecord {
   Future<String?> _write({
     required Duration duration,
     required bool video,
+    required bool answered,
   }) async {
     try {
       return await sendEvent({
@@ -139,6 +156,10 @@ class CallRecord {
         'body': '',
         'duration_ms': duration.inMilliseconds,
         'video': video,
+        // A call nobody answered still belongs in the conversation. Every
+        // calling product shows a missed call, and a learner who was away
+        // would otherwise have no idea anyone had tried to reach them.
+        'answered': answered,
       });
     } catch (e, s) {
       Logs().e('Could not write the call to the room', e, s);
