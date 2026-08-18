@@ -16,6 +16,7 @@ class CallService {
   final Client client;
   final PangeaVoipDelegate delegate;
   final CallTokenRepo _tokens;
+  final RtcFocusDiscovery _discovery;
 
   VoIP? _voip;
   RtcFocus? _focus;
@@ -30,8 +31,10 @@ class CallService {
     this.client, {
     PangeaVoipDelegate? delegate,
     CallTokenRepo? tokenRepo,
+    RtcFocusDiscovery? focusDiscovery,
   }) : delegate = delegate ?? PangeaVoipDelegate(),
-       _tokens = tokenRepo ?? CallTokenRepo();
+       _tokens = tokenRepo ?? CallTokenRepo(),
+       _discovery = focusDiscovery ?? RtcFocusDiscovery();
 
   /// The focus this homeserver advertises, or null if it advertises none.
   ///
@@ -44,14 +47,8 @@ class CallService {
   /// deployment fact, not a transient one, and re-asking on every chat screen
   /// would be a request per room opened.
   Future<RtcFocus?> resolveFocus() => _resolving ??= () async {
-    try {
-      _focus = RtcFocus.fromWellKnown(await client.getWellknown());
-    } catch (e) {
-      // A homeserver that serves no `.well-known` 404s here. That is the
-      // ordinary answer for a deployment without MatrixRTC, not a failure.
-      Logs().d('No RTC focus advertised: $e');
-      _focus = null;
-    }
+    final homeserver = client.homeserver;
+    _focus = homeserver == null ? null : await _discovery.discover(homeserver);
     return _focus;
   }();
 
@@ -117,7 +114,6 @@ class CallService {
     return grant;
   }
 
-  /// Publishes our membership, making the call visible to the other participant.
   /// Announces this device as a participant, so the peer sees us in the call.
   ///
   /// Separate from [join] because the two are not simultaneous by design: media
@@ -147,6 +143,7 @@ class CallService {
       Logs().w('Could not retract the call membership during teardown', e, s);
     }
     _tokens.close();
+    _discovery.close();
     _voip = null;
     _focus = null;
     _resolving = null;

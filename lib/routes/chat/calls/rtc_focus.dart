@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 
 /// Where a MatrixRTC call's media is relayed, and how a client authenticates to it.
@@ -25,8 +28,12 @@ class RtcFocus {
   /// Returns null rather than throwing when no focus is advertised: a homeserver
   /// without MatrixRTC configured is a normal state, and the caller decides whether
   /// that means "hide the call button" or "fall back to configuration".
-  static RtcFocus? fromWellKnown(DiscoveryInformation? wellKnown) {
-    final raw = wellKnown?.additionalProperties[wellKnownKey];
+  static RtcFocus? fromWellKnown(DiscoveryInformation? wellKnown) =>
+      fromJson(wellKnown?.additionalProperties);
+
+  /// Reads the focus out of a decoded `.well-known/matrix/client` document.
+  static RtcFocus? fromJson(Map<String, dynamic>? wellKnown) {
+    final raw = wellKnown?[wellKnownKey];
     if (raw is! List) return null;
 
     for (final entry in raw) {
@@ -61,4 +68,41 @@ class RtcFocus {
 
   @override
   String toString() => 'RtcFocus($serviceUrl)';
+}
+
+/// Fetches the RTC focus from the homeserver this session is connected to.
+///
+/// Deliberately not the SDK's `getWellknown`, which resolves `.well-known`
+/// against the *server name* — the delegation point a client uses to find a
+/// homeserver it does not yet know. This app never discovers its homeserver
+/// that way; it is configured with one. Asking the server name would query a
+/// host we are not talking to, and answer for a deployment that may not be ours.
+class RtcFocusDiscovery {
+  final http.Client _http;
+  final bool _ownsHttp;
+
+  RtcFocusDiscovery({http.Client? httpClient})
+    : _http = httpClient ?? http.Client(),
+      _ownsHttp = httpClient == null;
+
+  Future<RtcFocus?> discover(Uri homeserver) async {
+    try {
+      final response = await _http.get(
+        homeserver.replace(path: '/.well-known/matrix/client'),
+      );
+      if (response.statusCode != 200) return null;
+      final body = jsonDecode(response.body);
+      if (body is! Map<String, dynamic>) return null;
+      return RtcFocus.fromJson(body);
+    } catch (e) {
+      // A homeserver without MatrixRTC serves nothing here, and a malformed
+      // document is the same answer as none: calling is unavailable.
+      Logs().d('Could not read the RTC focus: $e');
+      return null;
+    }
+  }
+
+  void close() {
+    if (_ownsHttp) _http.close();
+  }
 }

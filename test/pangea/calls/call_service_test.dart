@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 
 /// Covers what CallService decides before any network or SDK object is involved:
 /// whether calling is offered at all, and that constructing the service does not
@@ -47,22 +48,19 @@ void main() {
 
   group('CallService focus discovery', () {
     test('finds the focus its homeserver advertises', () async {
-      final client = Client(
-        'focus-test',
-        httpClient: wellKnownServing({
-          'org.matrix.msc4143.rtc_foci': [
-            {'type': 'livekit', 'livekit_service_url': 'http://sfu:7980'},
-          ],
-        }),
-        database: await MatrixSdkDatabase.init(
-          'focus-test',
-          database: await databaseFactoryFfi.openDatabase(':memory:'),
-          sqfliteFactory: databaseFactoryFfi,
-        ),
-      );
+      final client = await bareClient();
       client.homeserver = Uri.parse('http://localhost:8008');
 
-      final service = CallService(client);
+      final service = CallService(
+        client,
+        focusDiscovery: RtcFocusDiscovery(
+          httpClient: wellKnownServing({
+            'org.matrix.msc4143.rtc_foci': [
+              {'type': 'livekit', 'livekit_service_url': 'http://sfu:7980'},
+            ],
+          }),
+        ),
+      );
       final focus = await service.resolveFocus();
 
       expect(focus, isNotNull);
@@ -70,23 +68,47 @@ void main() {
       expect(service.focus, same(focus), reason: 'and it is remembered');
     });
 
+    test(
+      'asks the homeserver we are connected to, not the server name',
+      () async {
+        // The SDK's own getWellknown resolves against the server name — the
+        // delegation point used to FIND a homeserver. This app is configured with
+        // one and never discovers it that way, so asking the server name would
+        // query a host we are not talking to.
+        final asked = <Uri>[];
+        final client = await bareClient();
+        client.homeserver = Uri.parse('http://localhost:8008');
+
+        await CallService(
+          client,
+          focusDiscovery: RtcFocusDiscovery(
+            httpClient: MockClient((request) async {
+              asked.add(request.url);
+              return http.Response('{}', 200);
+            }),
+          ),
+        ).resolveFocus();
+
+        expect(asked, [
+          Uri.parse('http://localhost:8008/.well-known/matrix/client'),
+        ]);
+      },
+    );
+
     test('asks once, including when the answer is no', () async {
       var requests = 0;
-      final client = Client(
-        'focus-count-test',
-        httpClient: MockClient((_) async {
-          requests++;
-          return http.Response('{"errcode":"M_NOT_FOUND"}', 404);
-        }),
-        database: await MatrixSdkDatabase.init(
-          'focus-count-test',
-          database: await databaseFactoryFfi.openDatabase(':memory:'),
-          sqfliteFactory: databaseFactoryFfi,
-        ),
-      );
+      final client = await bareClient();
       client.homeserver = Uri.parse('http://localhost:8008');
 
-      final service = CallService(client);
+      final service = CallService(
+        client,
+        focusDiscovery: RtcFocusDiscovery(
+          httpClient: MockClient((_) async {
+            requests++;
+            return http.Response('{"errcode":"M_NOT_FOUND"}', 404);
+          }),
+        ),
+      );
       expect(await service.resolveFocus(), isNull);
       expect(await service.resolveFocus(), isNull);
       expect(
