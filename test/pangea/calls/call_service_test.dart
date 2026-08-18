@@ -193,6 +193,33 @@ void main() {
       await expectLater(service.dispose(), completes);
     });
 
+    test('a failed arm tries again rather than never ringing', () async {
+      // An account that hit one bad moment at startup would otherwise be
+      // unreachable for the rest of the session: nothing would be watching for
+      // a call to arrive.
+      var requests = 0;
+      final client = await bareClient();
+      client.homeserver = Uri.parse('http://localhost:8008');
+      final service = CallService(
+        client,
+        focusDiscovery: RtcFocusDiscovery(
+          httpClient: MockClient((_) async {
+            requests++;
+            throw const SocketException('offline');
+          }),
+        ),
+      );
+
+      await service.listenForCalls();
+      expect(service.isListening, isFalse, reason: 'the blip');
+      expect(requests, 1);
+
+      // What the retry timer does when it fires.
+      service.retryFocusNow();
+      await service.listenForCalls();
+      expect(requests, 2, reason: 'it asked again');
+    });
+
     test('a non-200 that is not 404 is treated as unknown', () async {
       var requests = 0;
       final client = await bareClient();

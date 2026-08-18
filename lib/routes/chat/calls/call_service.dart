@@ -216,12 +216,27 @@ class CallService {
   /// this, an account that had never called could never be called: nothing was
   /// listening.
   Future<void> listenForCalls() async {
-    if (_disposed) return;
+    if (_disposed || isListening) return;
     // A homeserver with no focus cannot carry calls, so there is nothing to
     // listen for and no reason to pay for VoIP's scan of every joined room.
-    if (await resolveFocus() == null || _disposed) return;
-    voip; // Constructing it is what arms discovery.
+    if (await resolveFocus() != null) {
+      if (_disposed) return;
+      voip; // Constructing it is what arms discovery.
+      return;
+    }
+    if (_disposed || _focus != null) return;
+
+    // The lookup did not answer. Left here, an account that hit one bad moment
+    // at startup would never ring again for the rest of the session — so it
+    // tries again rather than deciding it cannot be called.
+    _armRetry?.cancel();
+    _armRetry = Timer(_retryFocusAfter, () {
+      _resolving = null;
+      unawaited(listenForCalls());
+    });
   }
+
+  Timer? _armRetry;
 
   /// Whether this account can be called: it has a focus and is listening.
   bool get isListening => _voip != null;
@@ -323,6 +338,8 @@ class CallService {
     unawaited(_incoming.close());
     _focusRetry?.cancel();
     _focusRetry = null;
+    _armRetry?.cancel();
+    _armRetry = null;
     try {
       await retract();
     } catch (e, s) {

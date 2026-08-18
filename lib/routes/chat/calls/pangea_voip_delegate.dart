@@ -98,8 +98,15 @@ class PangeaVoipDelegate implements WebRTCDelegate {
 
   @override
   Future<void> handleNewGroupCall(GroupCallSession groupCall) async {
-    // Fires on remote discovery and on our own enter(). Announce each call once.
-    if (!_presence.add(groupCall.groupCallId)) return;
+    // Deliberately NOT filtered by [_presence]. A call id is derived from the
+    // room, so every call in a conversation shares one — and a call that was
+    // declined never reaches handleGroupCallEnded to clear it. Suppressing
+    // repeats here meant declining once stopped that conversation ever ringing
+    // again.
+    //
+    // Whether a discovery is worth announcing is decided by whoever listens,
+    // from live membership rather than from what has been seen before.
+    _presence.add(groupCall.groupCallId);
     onGroupCallDiscovered?.call(groupCall);
   }
 
