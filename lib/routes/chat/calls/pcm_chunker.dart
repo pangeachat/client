@@ -1,0 +1,210 @@
+import 'dart:math';
+import 'dart:typed_data';
+
+/// One transcribable piece of a call: raw 16-bit PCM plus the format needed to
+/// interpret it.
+///
+/// A chunk is immutable and positionally identified. [index] is its place in the
+/// call, and it is what makes a chunk's transcript safe to freeze — the server
+/// keys a result by (capture session, index), so re-delivering the same chunk
+/// credits nothing twice.
+class PcmChunk {
+  /// Interleaved signed 16-bit samples, little-endian.
+  final Uint8List pcm;
+  final int sampleRate;
+  final int channels;
+
+  /// Zero-based position within the capture session.
+  final int index;
+
+  const PcmChunk({
+    required this.pcm,
+    required this.sampleRate,
+    required this.channels,
+    required this.index,
+  });
+
+  int get _bytesPerFrame => 2 * channels;
+
+  Duration get duration => Duration(
+    microseconds: (pcm.lengthInBytes ~/ _bytesPerFrame) * 1000000 ~/ sampleRate,
+  );
+
+  /// The chunk as a WAV file.
+  ///
+  /// Speech-to-text takes a container, not bare samples, and WAV is the one that
+  /// costs nothing to produce: a 44-byte header in front of the bytes we already
+  /// hold, with no re-encoding to lose fidelity the transcript depends on.
+  Uint8List toWav() {
+    const headerSize = 44;
+    final out = Uint8List(headerSize + pcm.lengthInBytes);
+    final view = ByteData.sublistView(out);
+
+    void ascii(int offset, String tag) {
+      for (var i = 0; i < tag.length; i++) {
+        out[offset + i] = tag.codeUnitAt(i);
+      }
+    }
+
+    ascii(0, 'RIFF');
+    view.setUint32(4, out.length - 8, Endian.little);
+    ascii(8, 'WAVE');
+    ascii(12, 'fmt ');
+    view.setUint32(16, 16, Endian.little); // fmt chunk size
+    view.setUint16(20, 1, Endian.little); // PCM, uncompressed
+    view.setUint16(22, channels, Endian.little);
+    view.setUint32(24, sampleRate, Endian.little);
+    view.setUint32(28, sampleRate * _bytesPerFrame, Endian.little);
+    view.setUint16(32, _bytesPerFrame, Endian.little);
+    view.setUint16(34, 16, Endian.little); // bits per sample
+    ascii(36, 'data');
+    view.setUint32(40, pcm.lengthInBytes, Endian.little);
+    out.setRange(headerSize, out.length, pcm);
+    return out;
+  }
+}
+
+/// Splits a call's continuous PCM into bounded chunks, cutting at pauses.
+///
+/// Two reasons this exists rather than recording the call to one file. The
+/// speech-to-text route caps a request, so a call of any length arrives in
+/// pieces regardless; and transcribing each piece as it completes is what lets a
+/// speaker's credit only ever grow, since a frozen chunk's transcript never
+/// changes underneath it.
+///
+/// The cost of chunking is the seam — a word spoken across a boundary can be
+/// split. Cutting at silence is what keeps that rare, and the hard ceiling is
+/// what keeps the seam bounded when a speaker never pauses.
+///
+/// Pure and synchronous by design: [add] returns the chunks it completed, so the
+/// splitting logic can be tested by feeding it audio, with no streams, timers,
+/// or upload machinery in the way.
+class PcmChunker {
+  final int sampleRate;
+  final int channels;
+
+  /// No cut is considered before a chunk reaches this length.
+  final Duration targetDuration;
+
+  /// A chunk is cut here whether or not the speaker has paused. Sized to the
+  /// upload cap, so it bounds the request rather than the conversation.
+  final Duration maxDuration;
+
+  /// How long the audio must stay quiet to count as a pause rather than a
+  /// breath between words.
+  final Duration minSilence;
+
+  /// RMS below which a window counts as quiet, as a fraction of full scale.
+  ///
+  /// A threshold rather than a silence detector: a fixed floor over a short
+  /// window is enough to find the gap between utterances, and the hard ceiling
+  /// covers it when the floor is wrong for a noisy room.
+  final double silenceThreshold;
+
+  /// Analysis window for the quiet test. Short enough that a pause is not
+  /// averaged away by the speech around it, and independent of the frame sizes
+  /// the audio device happens to deliver.
+  static const _windowMs = 20;
+
+  final BytesBuilder _buffer = BytesBuilder(copy: true);
+
+  /// Per-channel samples currently buffered.
+  int _framesBuffered = 0;
+
+  /// Length of the quiet run at the tail of the buffer, in per-channel samples.
+  int _quietFrames = 0;
+
+  /// Samples not yet covered by a completed analysis window.
+  final List<int> _window = [];
+
+  int _nextIndex = 0;
+
+  PcmChunker({
+    required this.sampleRate,
+    required this.channels,
+    this.targetDuration = const Duration(seconds: 45),
+    this.maxDuration = const Duration(seconds: 90),
+    this.minSilence = const Duration(milliseconds: 400),
+    this.silenceThreshold = 0.02,
+  }) : assert(sampleRate > 0),
+       assert(channels > 0),
+       assert(maxDuration >= targetDuration);
+
+  int get _framesPerWindow => max(1, sampleRate * _windowMs ~/ 1000);
+  int get _targetFrames => sampleRate * targetDuration.inMilliseconds ~/ 1000;
+  int get _maxFrames => sampleRate * maxDuration.inMilliseconds ~/ 1000;
+  int get _minSilenceFrames => sampleRate * minSilence.inMilliseconds ~/ 1000;
+
+  /// Adds one frame of captured audio, returning any chunks it completed.
+  ///
+  /// Cuts land only between calls, never inside one. That is what makes the
+  /// no-sample-lost invariant hold by construction rather than by arithmetic:
+  /// each frame is appended whole, so concatenating every emitted chunk with the
+  /// final [flush] reproduces the input exactly.
+  List<PcmChunk> add(Int16List samples) {
+    if (samples.isEmpty) return const [];
+
+    _buffer.add(
+      Uint8List.view(
+        samples.buffer,
+        samples.offsetInBytes,
+        samples.lengthInBytes,
+      ),
+    );
+    _framesBuffered += samples.length ~/ channels;
+    _trackQuiet(samples);
+
+    final out = <PcmChunk>[];
+    if (_framesBuffered >= _maxFrames ||
+        (_framesBuffered >= _targetFrames &&
+            _quietFrames >= _minSilenceFrames)) {
+      final chunk = _cut();
+      if (chunk != null) out.add(chunk);
+    }
+    return out;
+  }
+
+  /// Emits whatever remains, or null if nothing does.
+  ///
+  /// Called when the call ends. Idempotent: a second flush emits nothing, so a
+  /// hangup racing a disconnect cannot produce a duplicate tail.
+  PcmChunk? flush() {
+    _window.clear();
+    return _cut();
+  }
+
+  PcmChunk? _cut() {
+    if (_framesBuffered == 0) return null;
+    final chunk = PcmChunk(
+      pcm: _buffer.takeBytes(),
+      sampleRate: sampleRate,
+      channels: channels,
+      index: _nextIndex++,
+    );
+    _framesBuffered = 0;
+    _quietFrames = 0;
+    return chunk;
+  }
+
+  /// Extends or resets the tail quiet run over the newly added samples.
+  void _trackQuiet(Int16List samples) {
+    _window.addAll(samples);
+    final perWindow = _framesPerWindow * channels;
+    var consumed = 0;
+    while (_window.length - consumed >= perWindow) {
+      final quiet = _isQuiet(consumed, consumed + perWindow);
+      _quietFrames = quiet ? _quietFrames + _framesPerWindow : 0;
+      consumed += perWindow;
+    }
+    _window.removeRange(0, consumed);
+  }
+
+  bool _isQuiet(int start, int end) {
+    var sumSquares = 0.0;
+    for (var i = start; i < end; i++) {
+      final v = _window[i] / 32768.0;
+      sumSquares += v * v;
+    }
+    return sqrt(sumSquares / (end - start)) < silenceThreshold;
+  }
+}
