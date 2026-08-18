@@ -6,6 +6,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/incoming_call.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 
@@ -273,6 +274,33 @@ class CallService {
     return room != null && isRinging(room);
   }
 
+  /// Tells the caller their call was turned down.
+  ///
+  /// Sent to the room rather than kept local, because a decline that only
+  /// dismissed a banner would leave the caller ringing at someone who has
+  /// already said no — which is what every other calling app avoids, and what
+  /// MSC4310 exists to fix.
+  Future<void> decline(Room room) async {
+    try {
+      await room.sendEvent({
+        'msgtype': PangeaEventTypes.callDecline,
+        'body': '',
+      }, type: PangeaEventTypes.callDecline);
+    } catch (e, s) {
+      // The learner's own side is already dismissed; failing to tell the caller
+      // costs them a few more seconds of ringing, not the decline.
+      Logs().w('Could not tell the caller the call was declined', e, s);
+    }
+  }
+
+  /// Fires when someone other than this account turns down a call in [room].
+  Stream<Event> declinesIn(Room room) => client.onTimelineEvent.stream.where(
+    (event) =>
+        event.roomId == room.id &&
+        event.type == PangeaEventTypes.callDecline &&
+        event.senderId != client.userID,
+  );
+
   /// Whether anyone other than this account is still in the call.
   ///
   /// A direct-message call is over when the other person leaves; there is nobody
@@ -325,11 +353,27 @@ class CallService {
   /// caller is told, because silently reporting success meant the one retry that
   /// could have helped never happened.
   Future<bool> retract() => _retracting ??= () async {
+    final session = _current;
     try {
-      await _current?.leave();
-      return true;
-    } catch (e, s) {
-      Logs().w('Could not retract the call membership; it will expire', e, s);
+      if (session == null) return true;
+      // Retried here, holding the session, because releasing it first left
+      // nothing to retry WITH — a later attempt would find nothing to leave and
+      // report success it had not achieved. The SDK's own leave() also stops
+      // short of cleaning up when its first write throws, so the same session is
+      // what a retry has to reach.
+      for (var attempt = 0; attempt < 3; attempt++) {
+        try {
+          if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
+          await session.leave();
+          return true;
+        } catch (e, s) {
+          Logs().w('Retracting the call membership failed', e, s);
+        }
+      }
+      // Given up on. The membership expires by itself, and holding the session
+      // forever would refuse every later call over a failure the learner can
+      // neither see nor act on.
+      Logs().w('Gave up retracting the membership; it will expire');
       return false;
     } finally {
       _current = null;

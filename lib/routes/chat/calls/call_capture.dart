@@ -80,6 +80,12 @@ class CallCaptureService {
     if (isRecording) {
       throw StateError('A call recording is already running');
     }
+    if (_cancelTap != null) {
+      // A previous tap never detached. Try once more, and refuse rather than
+      // stack a second renderer on the same track: losing this stretch of
+      // analytics is recoverable, counting it twice is not.
+      throw StateError('The previous audio tap is still attached');
+    }
     _stopping = false;
     final chunker = _newChunker(_nextIndex);
     try {
@@ -140,10 +146,13 @@ class CallCaptureService {
     // more expensive failure.
     try {
       await _cancelTap?.call();
+      _cancelTap = null;
     } catch (e, s) {
-      Logs().w('Could not cancel the call audio tap', e, s);
+      // Kept, not discarded. A renderer that would not detach is still attached,
+      // and starting again over the top of it would feed two taps into one
+      // chunker — the learner's own voice counted twice.
+      Logs().w('Could not cancel the call audio tap; it stays claimed', e, s);
     }
-    _cancelTap = null;
 
     final tail = chunker.flush();
     if (tail != null) _hand(tail);

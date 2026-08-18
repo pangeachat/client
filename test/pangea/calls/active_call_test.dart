@@ -37,6 +37,26 @@ class FakeCalls extends CallService {
   @override
   Stream<MatrixRTCCallEvent> get callEvents => _events.stream;
 
+  final _declines = StreamController<Event>.broadcast();
+
+  @override
+  Stream<Event> declinesIn(matrix.Room room) => _declines.stream;
+
+  /// The other person turning the call down.
+  Future<void> peerDeclines() async {
+    _declines.add(
+      Event(
+        type: 'decline',
+        content: const {},
+        eventId: '\$d',
+        senderId: '@peer:server',
+        originServerTs: DateTime.now(),
+        room: matrix.Room(id: '!r:server', client: client),
+      ),
+    );
+    await pumpEventQueue();
+  }
+
   /// Publishes a new participant list, the way a join or leave would.
   Future<void> participantsBecome(List<String> ids) async {
     devicesInCall = ids;
@@ -447,6 +467,38 @@ void main() {
       calls.remotePresent = false;
       await calls.participantsBecome([calls.client.deviceID!]);
       expect(call.stage, CallStage.ended);
+    });
+  });
+
+  group('when the other person declines', () {
+    test('the caller stops ringing and is told why', () async {
+      // Ringing at someone who has already said no is what every other calling
+      // app avoids, and leaving the caller to wonder is the other half of it.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.stage, CallStage.connected);
+
+      await calls.peerDeclines();
+
+      expect(call.stage, CallStage.declined);
+      expect(call.wasDeclined, isTrue);
+      expect(trace.steps, contains('retract'));
+    });
+
+    test('a decline after they answered is ignored', () async {
+      // They are in the call. A stray decline event must not end a conversation
+      // that is actually happening.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+
+      await calls.peerDeclines();
+
+      expect(call.stage, CallStage.connected);
+      expect(call.wasDeclined, isFalse);
     });
   });
 

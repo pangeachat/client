@@ -123,6 +123,9 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void _decline() {
     final room = _ringing;
     if (room != null) {
+      // Told to the caller, so their phone stops ringing and they learn what
+      // happened, rather than being left to wonder.
+      unawaited(Matrix.of(context).callService.decline(room));
       _declined.add(room.id);
       _watchDeclinedCalls();
     }

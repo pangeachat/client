@@ -126,7 +126,9 @@ class _CallPageState extends State<CallPage> {
     // A call that ended or failed has nothing left to show. Closing here rather
     // than leaving a dead screen up means the user never has to dismiss a call
     // that is already over.
-    if (_call.stage == CallStage.ended || _call.stage == CallStage.failed) {
+    if (_call.stage == CallStage.ended ||
+        _call.stage == CallStage.failed ||
+        _call.stage == CallStage.declined) {
       // Deliberately not awaited and deliberately not tied to this widget: the
       // recording outlives the screen, which is closing on the next line.
       _finishRecording();
@@ -181,6 +183,7 @@ class _CallPageState extends State<CallPage> {
           duration: _endedAt!.difference(_startedAt),
           video: _usedVideo,
           answered: _wasConnected,
+          declined: _call.wasDeclined,
         );
       }),
     );
@@ -251,6 +254,8 @@ class _CallPageState extends State<CallPage> {
         return Text(l10n.callFailed);
       case CallStage.ended:
         return Text(l10n.callEnded);
+      case CallStage.declined:
+        return Text(l10n.callDeclinedByPeer);
     }
   }
 

@@ -16,6 +16,12 @@ class PangeaEventTypes {
   /// no other event to point at.
   static const call = "pangea.call";
 
+  /// Turning down a call, sent to the room so the caller stops ringing and both
+  /// sides can show what happened. Named for MSC4310, which defines exactly this
+  /// for MatrixRTC and is implemented in Element Call under the same unstable
+  /// prefix — so a Matrix client that speaks it will understand ours.
+  static const callDecline = "org.matrix.msc4310.rtc.decline";
+
   static const botOptions = "pangea.bot_options";
   static const capacity = "pangea.capacity";
 

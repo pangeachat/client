@@ -59,6 +59,7 @@ class CallRecord {
     required Duration duration,
     required bool video,
     bool answered = true,
+    bool declined = false,
   }) async {
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
@@ -74,7 +75,12 @@ class CallRecord {
             await Future.delayed(Duration(seconds: attempt));
           }
           try {
-            await _finish(duration: duration, video: video, answered: answered);
+            await _finish(
+              duration: duration,
+              video: video,
+              answered: answered,
+              declined: declined,
+            );
           } catch (e, s) {
             // Caught here rather than around each step, so a failure is visible
             // to the loop and can be retried — and so nothing escapes into the
@@ -99,6 +105,7 @@ class CallRecord {
     required Duration duration,
     required bool video,
     required bool answered,
+    required bool declined,
   }) async {
     // Written once. A retry after the analytics failed must credit against the
     // call already in the timeline, not add another one.
@@ -106,6 +113,7 @@ class CallRecord {
       duration: duration,
       video: video,
       answered: answered,
+      declined: declined,
     );
     if (eventId == null) {
       // Nothing to anchor the uses to, and an unanchored use cannot be traced
@@ -149,6 +157,7 @@ class CallRecord {
     required Duration duration,
     required bool video,
     required bool answered,
+    required bool declined,
   }) async {
     try {
       return await sendEvent({
@@ -160,6 +169,10 @@ class CallRecord {
         // calling product shows a missed call, and a learner who was away
         // would otherwise have no idea anyone had tried to reach them.
         'answered': answered,
+        // Turned down, as opposed to simply not picked up. Every calling product
+        // draws that line, and a learner reading their history should see the
+        // difference between being declined and being missed.
+        'declined': declined,
       });
     } catch (e, s) {
       Logs().e('Could not write the call to the room', e, s);

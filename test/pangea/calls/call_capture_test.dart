@@ -34,6 +34,7 @@ class RecordingSink implements CallAudioSink {
 class FakeTrack implements AudioTrack {
   AudioFrameCallback? onFrame;
   bool failNextRenderer = false;
+  bool failCancel = false;
   AudioRendererOptions? options;
   int cancels = 0;
 
@@ -50,6 +51,7 @@ class FakeTrack implements AudioTrack {
     this.options = options;
     return () async {
       cancels++;
+      if (failCancel) throw StateError('the renderer will not detach');
       this.onFrame = null;
     };
   }
@@ -158,6 +160,22 @@ void main() {
         reason: 'one unbroken run of indices across both stretches',
       );
       expect(all.length, greaterThan(firstRun.length));
+    });
+
+    test('a tap that will not detach is not stacked over', () async {
+      // Starting again over an attached renderer would feed two taps into one
+      // chunker and count the learner's own voice twice. Losing a stretch of
+      // analytics is recoverable; counting it twice is not.
+      final s = service();
+      s.start(track);
+      track.failCancel = true;
+      await s.stop();
+
+      expect(
+        () => s.start(track),
+        throwsStateError,
+        reason: 'refused rather than doubled',
+      );
     });
 
     test('a second start while recording is refused', () {

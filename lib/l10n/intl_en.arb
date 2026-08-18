@@ -3599,6 +3599,7 @@
     "callIncoming": "Incoming call",
     "callAnswer": "Answer",
     "callDecline": "Decline",
+    "callDeclinedByPeer": "Call declined",
     "leaveSpaceDescription": "By leaving the course, you will leave all of the chats within it. Other users will see that you have left the course.",
     "constructUseCorMmDesc": "Correct message meaning",
     "constructUseIncMmDesc": "Incorrect message meaning",

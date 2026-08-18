@@ -12,6 +12,10 @@ import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 
 enum CallStage {
+  /// The other person turned the call down. Distinct from ended so the caller
+  /// is told why, rather than watching their call stop for no visible reason.
+  declined,
+
   /// Joining the session, connecting media, and starting to record.
   connecting,
 
@@ -50,6 +54,7 @@ class ActiveCall extends ChangeNotifier {
   bool _ending = false;
   AudioTrack? _track;
   StreamSubscription? _participants;
+  StreamSubscription? _declines;
   Future<void> _handover = Future.value();
 
   /// What the election last decided. Read by [_reconcile] when it runs.
@@ -160,6 +165,18 @@ class ActiveCall extends ChangeNotifier {
     _electRecorder();
   }
 
+  void _onDeclined() {
+    if (_ending || _peerArrived) return;
+    Logs().i('The call was declined');
+    _declinedByPeer = true;
+    unawaited(hangUp());
+  }
+
+  bool _declinedByPeer = false;
+
+  /// Whether the other person turned the call down.
+  bool get wasDeclined => _declinedByPeer;
+
   /// Whether anyone was ever actually on the other end.
   ///
   /// Connected means this device reached the SFU, not that a conversation
@@ -213,6 +230,8 @@ class ActiveCall extends ChangeNotifier {
       // missed — and this device would keep recording alongside a sibling, or
       // stay silent as the only one left.
       _participants = calls.callEvents?.listen((_) => _onParticipantsChanged());
+      // Ringing at someone who has already said no is what this avoids.
+      _declines = calls.declinesIn(room).listen((_) => _onDeclined());
 
       // Then elect, before announcing, so recording begins with the first word
       // rather than after a round-trip. The election reads room state, which
@@ -259,7 +278,7 @@ class ActiveCall extends ChangeNotifier {
   /// behind a dismissed page.
   Future<void> _abandon() async {
     await _tearDown();
-    _to(CallStage.ended);
+    _to(_declinedByPeer ? CallStage.declined : CallStage.ended);
   }
 
   /// Ends the call.
@@ -272,7 +291,7 @@ class ActiveCall extends ChangeNotifier {
     return _hangUp ??= () async {
       try {
         await _tearDown();
-        _to(CallStage.ended);
+        _to(_declinedByPeer ? CallStage.declined : CallStage.ended);
       } finally {
         // A teardown that could not retract must not be remembered as done.
         // Memoizing it would make every later hangup return this same finished
@@ -299,6 +318,8 @@ class ActiveCall extends ChangeNotifier {
   /// membership standing.
   Future<void> _tearDown() async {
     _ending = true;
+    unawaited(_declines?.cancel());
+    _declines = null;
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
     try {
