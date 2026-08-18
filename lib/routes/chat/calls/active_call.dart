@@ -85,6 +85,18 @@ class ActiveCall extends ChangeNotifier {
   /// The notification this call rang with, once it has been sent.
   String? get notificationEventId => _notificationId;
 
+  StreamSubscription? _peerRings;
+
+  bool _peerAlsoPlaced = false;
+
+  /// Whether the other person was calling us at the same moment we called them.
+  ///
+  /// Both sides then believe they placed the call, so both would write it to
+  /// the room. Knowing it lets exactly one of them do so — and knowing it from
+  /// their ring rather than from an ordering means a call nobody answered,
+  /// which only ever runs teardown on the caller's side, is still written.
+  bool get peerAlsoPlaced => _peerAlsoPlaced;
+
   String? _membershipEventId;
 
   /// This device's membership event for the call.
@@ -422,6 +434,10 @@ class ActiveCall extends ChangeNotifier {
       // that gap — the caller would then sit through the whole ring instead of
       // being told they were turned down.
       _declines = calls.declinesIn(room).listen(_onDeclineEvent);
+      // Their ring, if they are calling us at the same time. Subscribed
+      // alongside the declines and before our own ring goes out, so a
+      // simultaneous call is seen however the two sends interleave.
+      _peerRings = calls.ringsIn(room).listen((_) => _peerAlsoPlaced = true);
 
       if (placing && membershipId != null) {
         // Assigned before the check, so a hangup landing here still knows the
@@ -523,6 +539,8 @@ class ActiveCall extends ChangeNotifier {
     _ending = true;
     unawaited(_declines?.cancel());
     _declines = null;
+    unawaited(_peerRings?.cancel());
+    _peerRings = null;
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
     try {

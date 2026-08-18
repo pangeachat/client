@@ -261,15 +261,7 @@ class _CallPageState extends State<CallPage> {
           // genuinely had someone on it was recorded as missed.
           answered: _call.hadPeer,
           declined: _call.wasDeclined,
-          // The side that placed the call writes it. Deciding this by
-          // comparing user ids instead looked more robust and was worse: a call
-          // nobody answers only ever runs this teardown on the caller's side,
-          // so whenever the caller sorted second, every missed call vanished.
-          //
-          // The cost is that two people calling each other in the same moment
-          // both believe they placed it and both write a card. That is a rare
-          // duplicate; losing every missed call is neither rare nor cosmetic.
-          writeTimelineEvent: _call.placedCall,
+          writeTimelineEvent: _writesTheCall,
           callerId: _call.placedCall ? _myUserId : _peerUserId,
           // The ring we answered, or failing that our own membership in the
           // call. A device that joined a call already under way has neither a
@@ -279,6 +271,24 @@ class _CallPageState extends State<CallPage> {
         );
       }),
     );
+  }
+
+  /// Whether this device writes the call to the room.
+  ///
+  /// The side that placed it writes it, because a call nobody answers only ever
+  /// runs this teardown on the caller's side — deciding by comparing user ids
+  /// instead made every missed call vanish whenever the caller sorted second.
+  ///
+  /// When both people called at the same moment both placed it, and both would
+  /// write. Their ring tells us that happened, and the two ids then settle which
+  /// of the two writes. Reads only values captured while the screen was alive.
+  bool get _writesTheCall {
+    if (!_call.placedCall) return false;
+    if (!_call.peerAlsoPlaced) return true;
+    final me = _myUserId;
+    final peer = _peerUserId;
+    if (me == null || peer == null) return true;
+    return me.compareTo(peer) < 0;
   }
 
   Future<void> _toggleMute() async {

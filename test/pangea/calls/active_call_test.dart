@@ -87,6 +87,26 @@ class FakeCalls extends CallService {
   @override
   Stream<Event> declinesIn(matrix.Room room) => _declines.stream;
 
+  final _rings = StreamController<Event>.broadcast();
+
+  @override
+  Stream<Event> ringsIn(matrix.Room room) => _rings.stream;
+
+  /// The other person calling us at the same moment we call them.
+  Future<void> peerAlsoCalls() async {
+    _rings.add(
+      Event(
+        type: 'ring',
+        content: const {},
+        eventId: '\$theirs',
+        senderId: '@peer:server',
+        originServerTs: DateTime.now(),
+        room: matrix.Room(id: '!r:server', client: client),
+      ),
+    );
+    await pumpEventQueue();
+  }
+
   @override
   String? declineTarget(Event event) =>
       (event.content['m.relates_to'] as Map?)?['event_id'] as String?;
@@ -1118,5 +1138,32 @@ void main() {
         );
       });
     }
+  });
+  group('when both people call at the same moment', () {
+    test('a caller alone does not think the peer also called', () async {
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.placedCall, isTrue);
+      expect(call.peerAlsoPlaced, isFalse);
+    });
+
+    test('the peer ringing us while we ring them is noticed', () async {
+      // Both then believe they placed the call, so both would write it to the
+      // room. Noticing it is what lets exactly one of them do so — and noticing
+      // it from their ring rather than from an ordering keeps a call nobody
+      // answered written, since only the caller runs that teardown.
+      final (call, calls, _, _) = await build();
+      final ringGate = Completer<void>();
+      calls.holdRing = ringGate;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      await calls.peerAlsoCalls();
+      ringGate.complete();
+      await starting;
+
+      expect(call.placedCall, isTrue);
+      expect(call.peerAlsoPlaced, isTrue);
+    });
   });
 }

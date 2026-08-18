@@ -35,6 +35,19 @@ class CallService {
   /// nothing left to schedule.
   bool _disposed = false;
 
+  /// Stops work that an account teardown has overtaken.
+  ///
+  /// Every await here is a place a logout can land, and resuming afterwards
+  /// rebuilds the very things dispose has just released — above all the SDK's
+  /// VoIP instance, whose listeners then outlive the client. Calling this after
+  /// each await is what keeps that impossible, rather than remembering to check
+  /// at the sites somebody happened to review.
+  void _stopIfDisposed() {
+    if (_disposed) {
+      throw StateError('the call service was disposed');
+    }
+  }
+
   /// The session this device has joined, if any. One at a time: the SDK's
   /// membership is per-VoIP-instance, so a second concurrent call on the same
   /// account would overwrite the first's identity.
@@ -132,6 +145,15 @@ class CallService {
     // would overwrite the first's identity and leave that call advertised with
     // nobody able to retract it. The claim is taken before the first await, so
     // there is no window for a second caller to pass the same check.
+    // A call whose leave was given up on is not live — nothing has been able to
+    // retract it — so it must never block a new one. This is what makes it safe
+    // to KEEP that session rather than release it: releasing it was how a later
+    // retry came to find nothing and report a success it had not achieved.
+    if (_abandonedMembership && _current != null) {
+      Logs().w('Discarding a call whose membership could not be retracted');
+      _current = null;
+      _abandonedMembership = false;
+    }
     if (_current != null || _joining) {
       throw StateError('this account is already in a call');
     }
@@ -145,13 +167,9 @@ class CallService {
 
   Future<CallToken> _join(Room room) async {
     final f = await resolveFocus();
-    // Checked before anything is constructed. Discovery is a network round-trip
-    // and the account can log out inside it; resuming here would build a fresh
-    // VoIP instance — with listeners on a client that is being torn down —
-    // after dispose had already run and found nothing to clean up.
-    if (_disposed) {
-      throw StateError('the call service was disposed while joining');
-    }
+    // Before anything is constructed: discovery is a network round-trip and the
+    // account can log out inside it.
+    _stopIfDisposed();
     if (f == null) {
       throw StateError('this homeserver advertises no MatrixRTC focus');
     }
@@ -352,6 +370,17 @@ class CallService {
     }
   }
 
+  /// Ring notifications sent by someone else in [room].
+  ///
+  /// Used to notice that the other person is calling us at the same moment we
+  /// are calling them, which decides which side writes the call to the room.
+  Stream<Event> ringsIn(Room room) => client.onTimelineEvent.stream.where(
+    (event) =>
+        event.room.id == room.id &&
+        event.type == PangeaEventTypes.callNotification &&
+        event.senderId != client.userID,
+  );
+
   /// Every decline sent by someone else in [room].
   ///
   /// Deliberately not filtered to one call: a caller has to be listening before
@@ -380,6 +409,7 @@ class CallService {
   /// comes up in between, so a peer never sees a participant who cannot yet be
   /// heard.
   Future<String?> announce() async {
+    _stopIfDisposed();
     final session = _current;
     if (session == null) return null;
     // A leave that failed part-way can leave the SDK's session still entered,
@@ -411,10 +441,15 @@ class CallService {
   /// is slow, so after the window the call proceeds unrung rather than stuck.
   Future<String?> _awaitMembershipEventId(Room room) async {
     for (var attempt = 0; attempt < 15; attempt++) {
+      // Three seconds of polling is ample time for a logout to land, and every
+      // read here reaches through the VoIP getter — which would rebuild the
+      // instance dispose had just dropped.
+      _stopIfDisposed();
       final id = _myMembershipEventId(room);
       if (id != null) return id;
       await Future.delayed(const Duration(milliseconds: 200));
     }
+    _stopIfDisposed();
     Logs().w('Membership event id did not appear; the call will not ring');
     return null;
   }
@@ -452,6 +487,7 @@ class CallService {
         try {
           if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
           await session.leave();
+          _abandonedMembership = false;
           return true;
         } catch (e, s) {
           Logs().w('Retracting the call membership failed', e, s);
@@ -464,7 +500,10 @@ class CallService {
       _abandonedMembership = true;
       return false;
     } finally {
-      _current = null;
+      // Released only when the membership was actually taken back. Keeping a
+      // session whose leave failed is what gives a later attempt something to
+      // retry WITH; a new call is not blocked by it, because join discards it.
+      if (!_abandonedMembership) _current = null;
       _retracting = null;
     }
   }();
