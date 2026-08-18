@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -10,114 +9,12 @@ import 'package:get_storage/get_storage.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
-import 'package:fluffychat/features/subscription/controllers/subscription_controller.dart';
-import 'package:fluffychat/features/user/user_controller.dart';
-import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_controller.dart';
 import 'package:fluffychat/routes/chat/events/text_to_speech/tts_use_case.dart';
-import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../fake_pangea_controller.dart';
-
-/// A probe that records what `tryToSpeak` did to it.
-///
-/// The measurement's bracketing moved OUT of the call sites and INTO
-/// `tryToSpeak` (#104), so "the caller remembered to close it" stopped being a
-/// per-site property and became one guarantee to pin. This counts the three
-/// transitions so the guarantee is asserted rather than assumed.
-class _SpyProbe extends DosageTtsListeningProbe {
-  _SpyProbe({
-    super.buffer,
-    super.now,
-    super.category = DosageListeningCategory.autoRead,
-    // Defaults to a real room; the roomless surfaces pass null explicitly,
-    // which is the whole point of the argument being nullable AND required.
-    super.roomId = '!room:example.org',
-  }) : super(
-         userId: () => '@learner:example.org',
-         accessToken: () => 'syt_token',
-       );
-
-  int starts = 0;
-  int aborts = 0;
-  int finishes = 0;
-
-  @override
-  void started() {
-    starts++;
-    super.started();
-  }
-
-  @override
-  void aborted() {
-    aborts++;
-    super.aborted();
-  }
-
-  @override
-  void finish() {
-    finishes++;
-    super.finish();
-  }
-}
-
-/// A controller complete enough for playback to actually REACH the device
-/// route, rather than throwing in setup like [FakePangeaController] does.
-///
-/// Three things stand between `tryToSpeak` and a route that plays, and all
-/// three read off the controller: the shared audio player it stops first, the
-/// per-surface tool setting that gates the use case, and the subscription flag
-/// the routing decision reads. A test that stops short of the route can only
-/// ever assert what happens when nothing plays.
-class _PlayablePangeaController implements PangeaController {
-  @override
-  final UserController userController = _EnabledUserController();
-
-  @override
-  final SubscriptionController subscriptionController =
-      _UnsubscribedController();
-
-  @override
-  MatrixState get matrixState => _NoPlayerMatrixState();
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
-
-class _EnabledUserController implements UserController {
-  @override
-  bool isToolEnabled(ToolSetting setting) => true;
-
-  @override
-  String? get userL1Code => 'en';
-
-  @override
-  Completer<void> initCompleter = Completer<void>();
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
-
-/// Unsubscribed on purpose. The device route is the one reachable without a
-/// network, and staying off the paid route is what keeps this test hermetic.
-class _UnsubscribedController implements SubscriptionController {
-  @override
-  bool get showSubscriptionGatedContent => false;
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
-
-/// A shared audio player that is simply absent, which is what `tryToSpeak`
-/// stopping it before every request has to tolerate.
-class _NoPlayerMatrixState implements MatrixState {
-  @override
-  String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) =>
-      '_NoPlayerMatrixState';
-
-  @override
-  dynamic noSuchMethod(Invocation invocation) => null;
-}
+import 'fake_tts_engine.dart';
+import 'tts_test_harness.dart';
 
 /// #8375, second half: a failed word-audio tap must not leave a stuck
 /// indicator.
@@ -251,7 +148,7 @@ void main() {
 
   group('tryToSpeak owns the measurement (#104)', () {
     test('it closes the measurement even when playback setup throws', () async {
-      final probe = _SpyProbe();
+      final probe = SpyProbe();
 
       await TtsController.tryToSpeak(
         'hola',
@@ -274,7 +171,7 @@ void main() {
 
     test('a setup that never played banks nothing', () async {
       final buffer = DosageAudioBuffer();
-      final probe = _SpyProbe(buffer: buffer);
+      final probe = SpyProbe(buffer: buffer);
 
       await TtsController.tryToSpeak(
         'hola',
@@ -303,31 +200,23 @@ void main() {
       // enabled tool setting and a subscription flag, plus a known-good device
       // voice for the language. `allowChoreoPlay: false` then forces the device
       // route, which is the only one reachable without a network.
-      MatrixState.pangeaController = _PlayablePangeaController();
+      MatrixState.pangeaController = PlayablePangeaController();
       // What the ENGINE was asked to do. Without it this test would still pass
       // for an implementation that reported a start and returned success
       // without speaking — which counts audio nobody heard, the same defect in
-      // the opposite direction.
-      final spoken = <String>[];
-      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-          .setMockMethodCallHandler(ttsChannel, (call) async {
-            if (call.method == 'getVoices') {
-              return <Map<String, String>>[
-                // `enhanced` ranks at the known-good threshold, which is what
-                // lets a device-only request play at all.
-                {'name': 'Paulina', 'locale': 'es-ES', 'quality': 'enhanced'},
-              ];
-            }
-            if (call.method == 'speak') spoken.add('${call.arguments}');
-            return 1;
-          });
+      // the opposite direction. The fake engine also reports a start and a
+      // completion back through the plugin's callbacks, as every real engine
+      // does (#8455): a `speak` that returns without the engine ever having
+      // started is now read as an utterance that never spoke, not as audio.
+      final engine = FakeTtsEngine()..install();
+      final spoken = engine.spoken;
 
       final buffer = DosageAudioBuffer();
       // The mocked engine returns instantly, so a real clock measures zero and
       // banks nothing. This one advances a second per reading, which is what
       // makes a positive elapsed observable at all.
       var clock = DateTime.utc(2026, 1, 1, 12);
-      final probe = _SpyProbe(
+      final probe = SpyProbe(
         buffer: buffer,
         now: () {
           clock = clock.add(const Duration(seconds: 1));
@@ -373,22 +262,12 @@ void main() {
       (DosageListeningCategory.practiceAudio, 'practice_audio'),
     ]) {
       test('a ${category.name} tap banks a ${category.name} playback', () async {
-        MatrixState.pangeaController = _PlayablePangeaController();
-        final spoken = <String>[];
-        TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-            .setMockMethodCallHandler(ttsChannel, (call) async {
-              if (call.method == 'getVoices') {
-                return <Map<String, String>>[
-                  {'name': 'Paulina', 'locale': 'es-ES', 'quality': 'enhanced'},
-                ];
-              }
-              if (call.method == 'speak') spoken.add('${call.arguments}');
-              return 1;
-            });
+        MatrixState.pangeaController = PlayablePangeaController();
+        final spoken = (FakeTtsEngine()..install()).spoken;
 
         final buffer = DosageAudioBuffer();
         var clock = DateTime.utc(2026, 1, 1, 12);
-        final probe = _SpyProbe(
+        final probe = SpyProbe(
           buffer: buffer,
           category: category,
           now: () {
@@ -431,23 +310,13 @@ void main() {
       // wired. Driven through a route that really plays, end to end, because
       // every guard between the tap and the batch is shared with the roomed
       // sites and any one of them could swallow this.
-      MatrixState.pangeaController = _PlayablePangeaController();
-      final spoken = <String>[];
-      TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
-          .setMockMethodCallHandler(ttsChannel, (call) async {
-            if (call.method == 'getVoices') {
-              return <Map<String, String>>[
-                {'name': 'Paulina', 'locale': 'es-ES', 'quality': 'enhanced'},
-              ];
-            }
-            if (call.method == 'speak') spoken.add('${call.arguments}');
-            return 1;
-          });
+      MatrixState.pangeaController = PlayablePangeaController();
+      final spoken = (FakeTtsEngine()..install()).spoken;
 
       final buffer = DosageAudioBuffer();
       var clock = DateTime.utc(2026, 1, 1, 12);
       var stopped = 0;
-      final probe = _SpyProbe(
+      final probe = SpyProbe(
         buffer: buffer,
         category: DosageListeningCategory.wordAudio,
         roomId: null,
