@@ -123,14 +123,31 @@ class CallTranscriptSink implements CallAudioSink {
     }
     return List<OneConstructUse>.unmodifiable([
       for (final index in _byIndex.keys.toList()..sort())
-        ..._usesByIndex.putIfAbsent(index, () {
-          final result = _byIndex[index]!;
-          return result.hasUsableTokens
-              ? result.constructs(roomId, eventId, ConstructUseTypeEnum.pvc)
-              : const [];
-        }),
+        ..._usesByIndex
+            .putIfAbsent(index, () {
+              final result = _byIndex[index]!;
+              return result.hasUsableTokens
+                  ? result.constructs(roomId, eventId, ConstructUseTypeEnum.pvc)
+                  : const [];
+            })
+            .map(_copyOf),
     ]);
   }
+
+  /// A use is a mutable object, so handing out the cached one would let any
+  /// caller change what a later read returns — including the timestamp the
+  /// freezing exists to hold still. Callers get their own; the recorded values
+  /// stay the recorded values.
+  static OneConstructUse _copyOf(OneConstructUse use) => OneConstructUse(
+    useType: use.useType,
+    lemma: use.lemma,
+    constructType: use.constructType,
+    metadata: use.metadata,
+    category: use.category,
+    form: use.form,
+    xp: use.xp,
+    id: use.id,
+  );
 
   /// The language the call was transcribed in, or null if nothing was.
   ///

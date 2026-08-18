@@ -20,25 +20,31 @@ PcmChunk chunk(int index, {int sampleRate = 16000}) => PcmChunk(
 SpeechToTextResponseModel get silent =>
     SpeechToTextResponseModel(results: const []);
 
+/// A response carrying one usable word.
+SpeechToTextResponseModel get spoken => spokenWord('hola');
+
 /// One transcribed word, in the shape the route actually returns — taken from a
 /// real response so the test exercises the same parse the app does.
-SpeechToTextResponseModel get spoken => SpeechToTextResponseModel.fromJson({
+SpeechToTextResponseModel spokenWord(
+  String word, {
+  String langCode = 'es-ES',
+}) => SpeechToTextResponseModel.fromJson({
   'results': [
     {
       'transcripts': [
         {
-          'transcript': 'hola',
+          'transcript': word,
           'confidence': 100,
-          'lang_code': 'es-ES',
+          'lang_code': langCode,
           'words_per_hr': 9391,
           'stt_tokens': [
             {
               'token': {
-                'text': {'offset': 0, 'content': 'hola', 'length': 4},
+                'text': {'offset': 0, 'content': word, 'length': word.length},
                 'lemma': [
                   {
-                    'text': 'hola',
-                    'form': 'hola',
+                    'text': word,
+                    'form': word,
                     'lang': 'es',
                     'save_vocab': true,
                   },
@@ -175,8 +181,26 @@ void main() {
 
       expect(first, isNotEmpty);
       for (var i = 0; i < first.length; i++) {
-        expect(identical(first[i], second[i]), isTrue);
+        expect(second[i].timeStamp, first[i].timeStamp);
+        expect(second[i].lemma, first[i].lemma);
+        expect(second[i].xp, first[i].xp);
       }
+    });
+
+    test('a caller cannot change what a later read returns', () async {
+      // A use is a mutable object. Handing out the cached one would let any
+      // caller rewrite the recorded credit.
+      final s = sink(respond: (_) => spoken);
+      await s.deliver(chunk(0));
+
+      final first = s.constructs(roomId: '!r:server', eventId: '\$e');
+      final originalXp = first.first.xp;
+      first.first.xp = 0;
+      first.first.lemma = 'tampered';
+
+      final second = s.constructs(roomId: '!r:server', eventId: '\$e');
+      expect(second.first.xp, originalXp);
+      expect(second.first.lemma, isNot('tampered'));
     });
 
     test('a chunk arriving after the batch was read still counts', () async {
@@ -191,8 +215,8 @@ void main() {
       expect(after.length, greaterThan(before.length));
       for (var i = 0; i < before.length; i++) {
         expect(
-          identical(before[i], after[i]),
-          isTrue,
+          after[i].timeStamp,
+          before[i].timeStamp,
           reason: 'and the uses already recorded are untouched',
         );
       }
@@ -207,19 +231,45 @@ void main() {
 
     test('transcripts are ordered by when the audio was spoken', () async {
       // Deliveries overlap by design, so a later chunk can come back from the
-      // provider first. Ordering by arrival would order the call by latency.
-      final s = sink();
+      // provider first. Ordering by arrival would order the call by latency, so
+      // each response here is distinguishable and they arrive out of order.
+      const words = ['uno', 'dos', 'tres'];
+      var call = 0;
+      final s = CallTranscriptSink(
+        userL1: 'en',
+        userL2: 'es',
+        transcribe: (_) async => spokenWord(words[call++]),
+      );
+
       await s.deliver(chunk(2));
       await s.deliver(chunk(0));
       await s.deliver(chunk(1));
 
-      expect(s.results, hasLength(3));
       expect(
-        sent.map((r) => r.config.sampleRateHertz),
-        everyElement(16000),
-        reason: 'sanity: all three reached the route',
+        s.results.map((r) => r.transcript.text),
+        // chunk 2 was transcribed first, so it holds 'uno'; ordering by arrival
+        // would put it first instead of last.
+        ['dos', 'tres', 'uno'],
       );
     });
+
+    test(
+      'the language comes from the earliest chunk, not the fastest',
+      () async {
+        var call = 0;
+        final s = CallTranscriptSink(
+          userL1: 'en',
+          userL2: 'es',
+          transcribe: (_) async =>
+              spokenWord('w', langCode: call++ == 0 ? 'de-DE' : 'es-ES'),
+        );
+
+        await s.deliver(chunk(1));
+        await s.deliver(chunk(0));
+
+        expect(s.langCode, 'es', reason: 'chunk 0 is the call\'s language');
+      },
+    );
 
     test('call speech is credited as pvc, which counts as speaking', () {
       // The type the client emits has to be one the server scores; an unknown
