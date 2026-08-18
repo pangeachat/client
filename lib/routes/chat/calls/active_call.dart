@@ -201,13 +201,32 @@ class ActiveCall extends ChangeNotifier {
     _electRecorder();
   }
 
-  /// A decline seen in the room. Matched against our own call HERE rather than
-  /// when subscribing, because the subscription is deliberately older than the
-  /// notification id it is matching.
+  /// Declines seen before this call knew which notification was its own.
+  ///
+  /// The subscription is deliberately older than the id it matches, so a
+  /// decline can arrive while the ring's own send is still returning. Dropping
+  /// it would leave the caller sitting through the full ring having already
+  /// been turned down.
+  final Set<String> _declinedBefore = {};
+
+  /// A decline seen in the room, matched against our own call HERE rather than
+  /// when subscribing.
   void _onDeclineEvent(Event event) {
+    final target = calls.declineTarget(event);
+    if (target == null) return;
     final ours = _notificationId;
-    if (ours == null || calls.declineTarget(event) != ours) return;
+    if (ours == null) {
+      _declinedBefore.add(target);
+      return;
+    }
+    if (target != ours) return;
     _onDeclined();
+  }
+
+  /// Replays a decline that arrived before this call had an id to match it to.
+  void _catchUpOnDeclines() {
+    final ours = _notificationId;
+    if (ours != null && _declinedBefore.remove(ours)) _onDeclined();
   }
 
   void _onDeclined() {
@@ -267,7 +286,21 @@ class ActiveCall extends ChangeNotifier {
   /// Keyed on another DEVICE, not another user, so this device's own stale
   /// membership (replaced by the new join) and its own second device joining
   /// are both handled.
-  Future<void> start(matrix.Room room, {required bool video}) async {
+  Future<void>? _starting;
+
+  /// Completes once coming up has finished unwinding, however it ended.
+  ///
+  /// Deliberately NOT awaited by [hangUp]: tearing down must never wait on the
+  /// network, or hanging up would stall for as long as a request in flight and
+  /// hold the microphone open. What this is for is the RECORD — whether the
+  /// other side was rung is only final once start has settled, and a call that
+  /// rang somebody must not be written as though it never happened.
+  Future<void> get settled => _starting ?? Future.value();
+
+  Future<void> start(matrix.Room room, {required bool video}) =>
+      _starting = _start(room, video: video);
+
+  Future<void> _start(matrix.Room room, {required bool video}) async {
     try {
       final grant = await calls.join(room);
       _joined = true;
@@ -353,6 +386,8 @@ class ActiveCall extends ChangeNotifier {
           membershipEventId: membershipId,
           video: video,
         );
+        // A decline can beat our own send home; replay one if it did.
+        _catchUpOnDeclines();
         if (_ending) return _abandon();
       }
 
@@ -420,7 +455,15 @@ class ActiveCall extends ChangeNotifier {
   /// Every step is isolated: a recording that fails to flush must not leave the
   /// microphone open, and a socket that fails to close must not leave the
   /// membership standing.
-  Future<void> _tearDown() async {
+  /// In flight, so a hangup and an abandoned start join one unwind rather than
+  /// running two at once. Cleared on completion, because a teardown that could
+  /// not retract must still be retryable.
+  Future<void>? _tearingDown;
+
+  Future<void> _tearDown() =>
+      _tearingDown ??= _unwind().whenComplete(() => _tearingDown = null);
+
+  Future<void> _unwind() async {
     _ending = true;
     unawaited(_declines?.cancel());
     _declines = null;

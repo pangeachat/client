@@ -951,6 +951,26 @@ void main() {
       );
     });
 
+    test('a decline that beats the ring home is not lost', () async {
+      // The subscription is older than the id it matches, so a decline can
+      // arrive while our own send is still returning. Dropping it left the
+      // caller ringing at someone who had already turned them down.
+      final (call, calls, _, _) = await build();
+      final held = Completer<void>();
+      calls.holdRing = held;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      // Turned down before ring() has even returned.
+      await calls.peerDeclines();
+      held.complete();
+      await starting;
+      await call.settled;
+
+      expect(call.wasDeclined, isTrue);
+      expect(call.stage, CallStage.declined);
+    });
+
     test('still remembers that the other side was rung', () async {
       // Their phone rang. A hangup a moment later must still leave a record —
       // otherwise a call someone saw and missed leaves no trace at all.

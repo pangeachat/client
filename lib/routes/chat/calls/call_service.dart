@@ -160,6 +160,18 @@ class CallService {
       focusServiceUrl: f.serviceUrl,
     );
 
+    if (_disposed) {
+      // The account went away while this join was in flight. Storing the
+      // session now would advertise a membership that nothing is left to
+      // retract, and it would stand until it expired minutes later.
+      try {
+        await session.leave();
+      } catch (e, st) {
+        Logs().w('Could not leave a call abandoned during teardown', e, st);
+      }
+      throw StateError('the call service was disposed while joining');
+    }
+
     _current = session;
     return grant;
   }
