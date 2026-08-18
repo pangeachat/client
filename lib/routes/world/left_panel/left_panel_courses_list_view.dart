@@ -6,10 +6,8 @@ import 'package:matrix/matrix.dart';
 import 'package:fluffychat/features/analytics_access/join_room_analytics_consent_handler.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/client_spaces_extension.dart';
 import 'package:fluffychat/pangea/spaces/course_role_groups.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/routes/courses/add_course_options.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_content.dart';
 import 'package:fluffychat/routes/courses/add_course_tile_list.dart';
@@ -107,15 +105,10 @@ class _LeftPanelCoursesListViewState extends State<LeftPanelCoursesListView> {
 
     if (!{Membership.invite, Membership.leave}.contains(membership)) {
       context.go(
-        WorkspaceNav.openCourseSection(
-          uri,
-          course.id,
-          keepRoom: false,
-          // Same as the web rail: a badged course opens on the Chats tab —
-          // where the knock notification lives — instead of the Course Plan
-          // default, every time, until the knock is accepted or denied (#8139).
-          tab: course.knockingUsers.isNotEmpty ? SpaceSettingsTabs.chat : null,
-        ),
+        // No section param even for a knock-badged course: knocks surface in
+        // the Catch up card at the top of the page (#8357), which a
+        // scroll-to-Chats would skip right past.
+        WorkspaceNav.openCourseSection(uri, course.id, keepRoom: false),
       );
       return;
     }

@@ -2125,6 +2125,9 @@
     "pingedActivity": "Pingovana aktivnost",
     "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem maternjem jeziku kako biste je uvijek mogli pronaći.)",
     "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Molimo odaberite drugo.",
+    "allParticipants": "Svi učesnici",
+    "seeFullCoursePlan": "Pogledajte cijeli plan kursa",
+    "catchUp": "Sustići",
     "messageLanguageIs": "Ova poruka je postavljena na {language}.",
     "updateMessageLanguage": "Kliknite ovdje da promijenite jezik poruke.",
     "messageLanguage": "Jezik poruke",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
     "courseSectionTeaching": "Predavanje",
     "courseSectionLearning": "Učenje",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurseva}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurseva}}",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
+    "markAllRead": "Označi sve kao pročitano"
 }

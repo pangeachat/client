@@ -9840,6 +9840,9 @@
     "pingedActivity": "Pingelt tevékenység",
     "appInTargetLanguageStaysInBaseLanguage": "(Ez a beállítás az Ön anyanyelvén marad, hogy mindig megtalálhassa.)",
     "usernameTakenPleaseChooseAnother": "Ez a felhasználónév már foglalt. Kérjük, válasszon másikat.",
+    "allParticipants": "Minden résztvevő",
+    "seeFullCoursePlan": "Teljes kurzusterv megtekintése",
+    "catchUp": "Felzárkózás",
     "messageLanguageIs": "Ez az üzenet {language} nyelven van beállítva.",
     "updateMessageLanguage": "Kattintson ide az üzenet nyelvének megváltoztatásához.",
     "messageLanguage": "Üzenet nyelve",
@@ -9852,5 +9855,9 @@
     "unlockWritingAssistance": "Írássegéd feloldása",
     "courseSectionTeaching": "Tanítás",
     "courseSectionLearning": "Tanulás",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurzus} other{{count} kurzus}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurzus} other{{count} kurzus}}",
+    "showMore": "Több megjelenítése",
+    "showLess": "Kevesebb megjelenítése",
+    "countNewMessages": "{count, plural, =1{1 új üzenet} other{{count} új üzenet}}",
+    "markAllRead": "Mindet olvasottnak jelöli"
 }

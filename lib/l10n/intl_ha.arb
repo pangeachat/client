@@ -2125,6 +2125,9 @@
     "pingedActivity": "Ayyukan da aka yiwa ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Wannan saitin yana zama a cikin yarenku na asali don ku iya samunsa koyaushe.)",
     "usernameTakenPleaseChooseAnother": "An riga an yi amfani da wannan sunan mai amfani. Da fatan za a zaɓi wani daban.",
+    "allParticipants": "Duk mahalarta",
+    "seeFullCoursePlan": "Duba cikakken tsarin darasi",
+    "catchUp": "Ci gaba",
     "messageLanguageIs": "An saita wannan saƙon zuwa {language}.",
     "updateMessageLanguage": "Danna nan don canza harshen saƙon.",
     "messageLanguage": "Harshen saƙo",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Buɗe taimakon rubutu",
     "courseSectionTeaching": "Koyarwa",
     "courseSectionLearning": "Koyo",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 darasi} other{{count} darussa}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 darasi} other{{count} darussa}}",
+    "showMore": "Nuna ƙari",
+    "showLess": "Nuna kaɗan",
+    "countNewMessages": "{count, plural, =1{saƙo 1 sabo} other{saƙonni {count} sababbi}}",
+    "markAllRead": "Alama duk an karanta"
 }

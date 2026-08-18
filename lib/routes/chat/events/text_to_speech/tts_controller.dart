@@ -10,7 +10,7 @@ import 'package:flutter_tts/flutter_tts.dart' as flutter_tts;
 import 'package:just_audio/just_audio.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
-import 'package:fluffychat/features/dosage/dosage_listening_measurement.dart';
+import 'package:fluffychat/features/dosage/dosage_tts_listening_probe.dart';
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/pangea/common/utils/strip_emojis.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
@@ -312,21 +312,33 @@ class TtsController {
     /// message-read-aloud.instructions.md.
     bool allowChoreoPlay = true,
 
-    /// REQUIRED: whether this playback counts as listening, and as what.
+    /// REQUIRED: the open measurement for this playback.
     ///
-    /// Every call here plays target-language audio at a learner, so every call is
-    /// listening — and the served figure is a TOTAL, so a path that measures
+    /// Every call here plays target-language audio at a learner, so every call
+    /// is listening — and the served figure is a TOTAL, so a path that measures
     /// nothing shortens the headline number rather than leaving a hole in a
-    /// slice. Making this required is what stops the next read-aloud path from
-    /// undercounting silently: it cannot compile without saying, in one word,
-    /// either which category it is or why it is exempt.
+    /// slice. Optional instrumentation would make forgetting it the default: a
+    /// new read-aloud path would compile, analyze clean, pass every behavioural
+    /// test, and silently shorten a teacher-visible total. Required is what
+    /// turns that omission into a compile error, which is the only form of the
+    /// rule that survives the next person who has never read this file.
     ///
-    /// This entry point cannot decide it. One `tryToSpeak` serves automatic
+    /// **Why a probe and not a bare category.** Naming a category is not enough
+    /// to be measured: a measurement also has to be opened before playback and
+    /// closed after it, in a `finally`, without awaiting anything. Taking a
+    /// category and leaving the bracketing to the caller would leave exactly the
+    /// hole this closes — a site that names a category and still counts nothing.
+    /// So the caller hands over a probe it has already built, and the bracketing
+    /// happens once, centrally, here.
+    ///
+    /// This entry point cannot build one. A single `tryToSpeak` serves automatic
     /// read-aloud, toolbar-open read-aloud, word taps and choice taps, and it
-    /// takes neither a room nor an event id — only the CALLER knows which kind of
-    /// listening it is asking for. So the caller builds the probe and this
-    /// method does the bracketing, which is the half that is easy to forget.
-    required DosageListeningMeasurement listening,
+    /// takes neither a room nor an event id — only the CALLER knows the category
+    /// and the room. Build a FRESH probe per call: it holds a running
+    /// measurement.
+    ///
+    /// Design: docs/research/104-speaking-listening-minutes-v2.md, D-V2-1.
+    required DosageTtsListeningProbe listening,
   }) async {
     final requestId = ++_requestCounter;
     // The measurement for THIS call. Bracketed here rather than at each call
@@ -337,14 +349,13 @@ class TtsController {
     // the call banks a near-zero interval for audio nobody heard. The
     // start/abort pair below brackets a route that was actually asked to play,
     // and only that.
-    final probe = listening.probe;
     // Deliberately NOT latched: start and abort are paired PER ROUTE, so a
     // backend failure that falls back to the device is start/abort/start/end —
     // one banked interval, the failed one discarded. A latch would suppress the
     // device route's start and leave the meter running from the failed attempt.
-    void guarded(VoidCallback? callback, String name) {
+    void guarded(VoidCallback callback, String name) {
       try {
-        callback?.call();
+        callback();
       } catch (e, s) {
         error_handler.ErrorHandler.logError(
           e: e,
@@ -355,9 +366,9 @@ class TtsController {
     }
 
     void reportPlaybackStarted() =>
-        guarded(probe?.started, 'onPlaybackStarted');
+        guarded(listening.started, 'onPlaybackStarted');
     void reportPlaybackAborted() =>
-        guarded(probe?.aborted, 'onPlaybackAborted');
+        guarded(listening.aborted, 'onPlaybackAborted');
 
     final strippedText = stripEmojis(text);
     final request = _AudioRequest(
@@ -440,7 +451,7 @@ class TtsController {
       // buffer and returns — and it emits nothing when playback never started.
       // Guarded like the other two, so telemetry can never surface to the
       // learner.
-      guarded(probe?.finish, 'listening.finish');
+      guarded(listening.finish, 'listening.finish');
     }
   }
 

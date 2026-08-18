@@ -2125,6 +2125,9 @@
     "pingedActivity": "Aktivitet i ping-uar",
     "appInTargetLanguageStaysInBaseLanguage": "(Ky cilësim mbetet në gjuhën tënde amtare, që ta gjesh gjithmonë.)",
     "usernameTakenPleaseChooseAnother": "Ky emër përdoruesi është zënë. Ju lutemi zgjidhni një tjetër.",
+    "allParticipants": "Të gjithë pjesëmarrësit",
+    "seeFullCoursePlan": "Shiko planin e plotë të kursit",
+    "catchUp": "Ndiqni",
     "messageLanguageIs": "Ky mesazh është vendosur në {language}.",
     "updateMessageLanguage": "Kliko këtu për të ndryshuar gjuhën e mesazhit.",
     "messageLanguage": "Gjuha e mesazhit",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Zhblo asistencën e shkrimit",
     "courseSectionTeaching": "Mësimdhënie",
     "courseSectionLearning": "Të nxënit",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurse}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurse}}",
+    "showMore": "Shfaq më shumë",
+    "showLess": "Shfaq më pak",
+    "countNewMessages": "{count, plural, =1{1 mesazh i ri} other{{count} mesazhe të reja}}",
+    "markAllRead": "Shëno të gjitha si të lexuara"
 }

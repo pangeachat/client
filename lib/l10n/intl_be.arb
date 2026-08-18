@@ -9751,6 +9751,9 @@
     "pingedActivity": "Актыўнасць з пінкам",
     "appInTargetLanguageStaysInBaseLanguage": "(Гэтая налада застаецца на вашай роднай мове, каб вы заўсёды маглі яе знайсці.)",
     "usernameTakenPleaseChooseAnother": "Гэтае імя карыстальніка ўжо занята. Калі ласка, выберыце іншае.",
+    "allParticipants": "Усе ўдзельнікі",
+    "seeFullCoursePlan": "Глядзець поўны план курса",
+    "catchUp": "Нагнаць",
     "messageLanguageIs": "Мова паведамлення: {language}.",
     "updateMessageLanguage": "Націсніце тут, каб змяніць мову паведамлення.",
     "messageLanguage": "Мова паведамлення",
@@ -9763,5 +9766,9 @@
     "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні",
     "courseSectionTeaching": "Выкладанне",
     "courseSectionLearning": "Вывучэнне",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсаў}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсаў}}",
+    "showMore": "Паказаць больш",
+    "showLess": "Паказаць менш",
+    "countNewMessages": "{count, plural, =1{1 новае паведамленне} other{{count} новых паведамленняў}}",
+    "markAllRead": "Адзначыць усе прачытанымі"
 }

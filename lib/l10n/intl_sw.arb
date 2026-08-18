@@ -2125,6 +2125,9 @@
     "pingedActivity": "Shughuli iliyopigiwa ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Mpangilio huu unabaki katika lugha yako ya asili ili uweze kuupata kila wakati.)",
     "usernameTakenPleaseChooseAnother": "Jina hilo la mtumiaji tayari linatumika. Tafadhali chagua lingine.",
+    "allParticipants": "Washiriki wote",
+    "seeFullCoursePlan": "Angalia mpango kamili wa kozi",
+    "catchUp": "Pata habari",
     "messageLanguageIs": "Ujumbe huu umewekwa kuwa {language}.",
     "updateMessageLanguage": "Bofya hapa kubadilisha lugha ya ujumbe.",
     "messageLanguage": "Lugha ya ujumbe",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Fungua usaidizi wa kuandika",
     "courseSectionTeaching": "Kufundisha",
     "courseSectionLearning": "Kujifunza",
-    "courseSectionLabel": "{title}, {count, plural, =1{kozi 1} other{kozi {count}}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{kozi 1} other{kozi {count}}}",
+    "showMore": "Onyesha zaidi",
+    "showLess": "Onyesha kidogo",
+    "countNewMessages": "{count, plural, =1{ujumbe 1 mpya} other{jumbe {count} mpya}}",
+    "markAllRead": "Weka zote kama zimesomwa"
 }

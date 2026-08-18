@@ -2125,6 +2125,9 @@
     "pingedActivity": "Пингувана активност",
     "appInTargetLanguageStaysInBaseLanguage": "(Оваа поставка останува на вашиот мајчин јазик за секогаш да можете да ја најдете.)",
     "usernameTakenPleaseChooseAnother": "Тоа корисничко име е веќе зафатено. Ве молиме изберете друго.",
+    "allParticipants": "Сите учесници",
+    "seeFullCoursePlan": "Погледнете го целиот план на курсот",
+    "catchUp": "Стигни",
     "messageLanguageIs": "Оваа порака е поставена на {language}.",
     "updateMessageLanguage": "Кликнете овде за да го промените јазикот на пораката.",
     "messageLanguage": "Јазик на пораката",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Отклучи помош при пишување",
     "courseSectionTeaching": "Предавање",
     "courseSectionLearning": "Учење",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсеви}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсеви}}",
+    "showMore": "Прикажи повеќе",
+    "showLess": "Прикажи помалку",
+    "countNewMessages": "{count, plural, =1{1 нова порака} other{{count} нови пораки}}",
+    "markAllRead": "Означи ги сите како прочитани"
 }

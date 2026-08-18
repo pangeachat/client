@@ -2125,6 +2125,9 @@
     "pingedActivity": "የተጠቆመ እንቅስቃሴ",
     "appInTargetLanguageStaysInBaseLanguage": "(ይህ ቅንብር ሁልጊዜ እንዲያገኙት በአፍ መፍቻ ቋንቋዎ ይቆያል።)",
     "usernameTakenPleaseChooseAnother": "ይህ የተጠቃሚ ስም አስቀድሞ ተይዟል። እባክዎ ሌላ ይምረጡ።",
+    "allParticipants": "ሁሉም ተሳታፊዎች",
+    "seeFullCoursePlan": "ሙሉ የኮርስ እቅድ ይመልከቱ",
+    "catchUp": "ያግኙ",
     "messageLanguageIs": "ይህ መልዕክት ወደ {language} ተቀናብሯል።",
     "updateMessageLanguage": "የመልዕክቱን ቋንቋ ለመቀየር እዚህ ይጫኑ።",
     "messageLanguage": "የመልዕክት ቋንቋ",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ",
     "courseSectionTeaching": "ማስተማር",
     "courseSectionLearning": "መማር",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ኮርስ} other{{count} ኮርሶች}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 ኮርስ} other{{count} ኮርሶች}}",
+    "showMore": "ተጨማሪ አሳይ",
+    "showLess": "ጥቂት አሳይ",
+    "countNewMessages": "{count, plural, =1{1 አዲስ መልእክት} other{{count} አዲስ መልእክቶች}}",
+    "markAllRead": "ሁሉንም እንደተነበበ ምልክት አድርግ"
 }

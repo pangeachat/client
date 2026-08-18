@@ -2125,6 +2125,9 @@
     "pingedActivity": "Фаъолияти пингшуда",
     "appInTargetLanguageStaysInBaseLanguage": "(Ин танзимот бо забони модарии шумо боқӣ мемонад, то шумо ҳамеша онро пайдо карда тавонед.)",
     "usernameTakenPleaseChooseAnother": "Ин номи корбарӣ аллакай гирифта шудааст. Лутфан, дигареро интихоб кунед.",
+    "allParticipants": "Ҳамаи иштирокчиён",
+    "seeFullCoursePlan": "Нақшаи пурраи курсро бинед",
+    "catchUp": "Навсозӣ",
     "messageLanguageIs": "Забони ин паём {language} аст.",
     "updateMessageLanguage": "Барои тағйир додани забони паём инҷоро клик кунед.",
     "messageLanguage": "Забони паём",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Кӯмаки хаттиро кушоед",
     "courseSectionTeaching": "Омӯзиш",
     "courseSectionLearning": "Таълим",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}",
+    "showMore": "Бештар нишон додан",
+    "showLess": "Камтар нишон додан",
+    "countNewMessages": "{count, plural, =1{1 паёми нав} other{{count} паёмҳои нав}}",
+    "markAllRead": "Ҳамаро хондашуда қайд кунед"
 }

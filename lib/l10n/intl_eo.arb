@@ -10682,6 +10682,9 @@
     "pingedActivity": "Pingita agado",
     "appInTargetLanguageStaysInBaseLanguage": "(Ĉi tiu agordo restas en via denaska lingvo, por ke vi ĉiam povu trovi ĝin.)",
     "usernameTakenPleaseChooseAnother": "Tiu uzantnomo jam estas prenita. Bonvolu elekti alian.",
+    "allParticipants": "Ĉiuj partoprenantoj",
+    "seeFullCoursePlan": "Vidi la plenan kursplanon",
+    "catchUp": "Reatingi",
     "messageLanguageIs": "Ĉi tiu mesaĝo estas agordita al {language}.",
     "updateMessageLanguage": "Alklaku ĉi tie por ŝanĝi la lingvon de la mesaĝo.",
     "messageLanguage": "Lingvo de mesaĝo",
@@ -10694,5 +10697,9 @@
     "unlockWritingAssistance": "Malŝlosi skriban helpon",
     "courseSectionTeaching": "Instruado",
     "courseSectionLearning": "Lernado",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kursoj}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kursoj}}",
+    "showMore": "Montri pli",
+    "showLess": "Montri malpli",
+    "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}",
+    "markAllRead": "Marki ĉion kiel legitan"
 }

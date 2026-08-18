@@ -2125,6 +2125,9 @@
     "pingedActivity": "Kev ua ub no pinged",
     "appInTargetLanguageStaysInBaseLanguage": "(Qhov chaw no nyob hauv koj hom lus kom koj nrhiav tau ib txwm.)",
     "usernameTakenPleaseChooseAnother": "Tus username ntawd muaj lawm. Thov xaiv lwm tus.",
+    "allParticipants": "Sawv daws koom",
+    "seeFullCoursePlan": "Saib tag nrho cov kev kawm",
+    "catchUp": "Nrhiav kom paub",
     "messageLanguageIs": "Cov lus no yog teeb rau {language}.",
     "updateMessageLanguage": "Nyem qhov no los hloov cov lus hom lus.",
     "messageLanguage": "Lus hom lus",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Qhib kev pab sau ntawv",
     "courseSectionTeaching": "Qhia",
     "courseSectionLearning": "Kawm",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 chav kawm} other{{count} chav kawm}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 chav kawm} other{{count} chav kawm}}",
+    "showMore": "Qhia ntxiv",
+    "showLess": "Qhia tsawg dua",
+    "countNewMessages": "{count, plural, =1{1 tsab lus tshiab} other{{count} tsab lus tshiab}}",
+    "markAllRead": "Kos tag nrho tias nyeem lawm"
 }

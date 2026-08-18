@@ -9737,6 +9737,9 @@
     "pingedActivity": "Paziņojumu darbība",
     "appInTargetLanguageStaysInBaseLanguage": "(Šis iestatījums paliek jūsu dzimtajā valodā, lai jūs to vienmēr varētu atrast.)",
     "usernameTakenPleaseChooseAnother": "Šis lietotājvārds jau ir aizņemts. Lūdzu, izvēlieties citu.",
+    "allParticipants": "Visi dalībnieki",
+    "seeFullCoursePlan": "Skatīt pilnu kursa plānu",
+    "catchUp": "Panākt",
     "messageLanguageIs": "Šī ziņa ir iestatīta uz {language}.",
     "updateMessageLanguage": "Noklikšķiniet šeit, lai mainītu ziņas valodu.",
     "messageLanguage": "Ziņas valoda",
@@ -9749,5 +9752,9 @@
     "unlockWritingAssistance": "Atbloķēt rakstīšanas palīdzību",
     "courseSectionTeaching": "Mācīšana",
     "courseSectionLearning": "Mācīšanās",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurss} other{{count} kursi}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurss} other{{count} kursi}}",
+    "showMore": "Rādīt vairāk",
+    "showLess": "Rādīt mazāk",
+    "countNewMessages": "{count, plural, =1{1 jauna ziņa} other{{count} jaunas ziņas}}",
+    "markAllRead": "Atzīmēt visu kā izlasītu"
 }

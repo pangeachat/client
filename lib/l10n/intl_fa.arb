@@ -9825,6 +9825,9 @@
     "pingedActivity": "فعالیت پینگ‌شده",
     "appInTargetLanguageStaysInBaseLanguage": "(این تنظیمات به زبان مادری شما باقی می‌ماند تا همیشه بتوانید آن را پیدا کنید.)",
     "usernameTakenPleaseChooseAnother": "این نام کاربری قبلاً استفاده شده است. لطفاً نام دیگری انتخاب کنید.",
+    "allParticipants": "همه شرکت‌کنندگان",
+    "seeFullCoursePlan": "مشاهده برنامه کامل دوره",
+    "catchUp": "به‌روزرسانی",
     "messageLanguageIs": "زبان این پیام روی {language} تنظیم شده است.",
     "updateMessageLanguage": "برای تغییر زبان پیام اینجا کلیک کنید.",
     "messageLanguage": "زبان پیام",
@@ -9837,5 +9840,9 @@
     "unlockWritingAssistance": "باز کردن کمک نوشتاری",
     "courseSectionTeaching": "آموزش",
     "courseSectionLearning": "یادگیری",
-    "courseSectionLabel": "{title}, {count, plural, =1{۱ دوره} other{{count} دوره}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{۱ دوره} other{{count} دوره}}",
+    "showMore": "نمایش بیشتر",
+    "showLess": "نمایش کمتر",
+    "countNewMessages": "{count, plural, =1{۱ پیام جدید} other{{count} پیام جدید}}",
+    "markAllRead": "علامت‌گذاری همه به عنوان خوانده‌شده"
 }

@@ -10518,6 +10518,9 @@
     "pingedActivity": "Pažymėta veikla",
     "appInTargetLanguageStaysInBaseLanguage": "(Šis nustatymas lieka jūsų gimtąja kalba, kad visada galėtumėte jį rasti.)",
     "usernameTakenPleaseChooseAnother": "Toks vartotojo vardas jau užimtas. Pasirinkite kitą.",
+    "allParticipants": "Visi dalyviai",
+    "seeFullCoursePlan": "Žiūrėti visą kurso planą",
+    "catchUp": "Pasivyti",
     "messageLanguageIs": "Ši žinutė nustatyta į {language}.",
     "updateMessageLanguage": "Spustelėkite čia, kad pakeistumėte žinutės kalbą.",
     "messageLanguage": "Žinutės kalba",
@@ -10530,5 +10533,9 @@
     "unlockWritingAssistance": "Atrakinti rašymo pagalbą",
     "courseSectionTeaching": "Mokymas",
     "courseSectionLearning": "Mokymasis",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursas} other{{count} kursai}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursas} other{{count} kursai}}",
+    "showMore": "Rodyti daugiau",
+    "showLess": "Rodyti mažiau",
+    "countNewMessages": "{count, plural, =1{1 nauja žinutė} other{{count} naujos žinutės}}",
+    "markAllRead": "Pažymėti visus kaip perskaitytus"
 }

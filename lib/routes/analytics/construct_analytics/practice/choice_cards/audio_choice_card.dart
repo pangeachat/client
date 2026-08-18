@@ -52,6 +52,9 @@ class AudioChoiceCard extends StatelessWidget {
                   text: displayText,
                   pos: 'other',
                   textLanguage: textLanguage,
+                  // Analytics practice is not in a room, and `textOnly` renders
+                  // no audio control here in any case.
+                  roomId: null,
                   textOnly: true,
                   style: theme.textTheme.bodySmall?.copyWith(
                     fontStyle: FontStyle.italic,

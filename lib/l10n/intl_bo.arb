@@ -9348,6 +9348,9 @@
     "pingedActivity": "སྒུལ་བསྐྱོད་བྱས་པའི་བྱེད་སྒོ།",
     "appInTargetLanguageStaysInBaseLanguage": "(ཁྱེད་ཀྱིས་རྟག་ཏུ་རྙེད་ཐུབ་པའི་ཆེད་དུ་སྒྲིག་འགོད་འདི་ཁྱེད་ཀྱི་སྐད་ཡིག་རང་དུ་གནས་པ་ཡིན།)",
     "usernameTakenPleaseChooseAnother": "མིང་དེ་སྔོན་ནས་བེད་སྤྱོད་བྱས་ཟིན། གཞན་ཞིག་འདེམས་རོགས།",
+    "allParticipants": "མཉམ་ཞུགས་པ་ཚང་མ།",
+    "seeFullCoursePlan": "སློབ་ཚན་གྱི་འཆར་གཞི་ཆ་ཚང་ལ་ལྟ་བ།",
+    "catchUp": "འཕྲལ་དུ་སློབ་སྦྱོང་བྱེད་",
     "messageLanguageIs": "འདིའི་བརྡ་འཕྲིན་ {language} ལ་སྒྲིག་ཡོད།",
     "updateMessageLanguage": "བརྡ་འཕྲིན་གྱི་སྐད་ཡིག་བསྒྱུར་བར་འདིར་མནོན།",
     "messageLanguage": "བརྡ་འཕྲིན་སྐད་ཡིག",
@@ -9360,5 +9363,9 @@
     "unlockWritingAssistance": "ཡིག་གཟུགས་རོགས་རམ་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
     "courseSectionTeaching": "སློབ་ཁྲིད།",
     "courseSectionLearning": "སློབ་སྦྱོང་།",
-    "courseSectionLabel": "{title}, {count, plural, =1{སློབ་ཚན་ ༡} other{སློབ་ཚན་ {count}}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{སློབ་ཚན་ ༡} other{སློབ་ཚན་ {count}}}",
+    "showMore": "མང་ཙམ་བསྟན་",
+    "showLess": "ཉུང་ཙམ་བསྟན་",
+    "countNewMessages": "{count, plural, =1{សារགསར་པ་ ༡} other{សារགསར་པ་ {count}}}",
+    "markAllRead": "ཚང་མ་བཀླགས་ཟིན་པར་མཚན་འཇོག་བྱེད་"
 }

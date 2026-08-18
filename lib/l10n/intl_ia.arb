@@ -10673,6 +10673,9 @@
     "pingedActivity": "Activitate pingite",
     "appInTargetLanguageStaysInBaseLanguage": "(Iste parametro remane in tu lingua native a fin que tu pote semper trovar lo.)",
     "usernameTakenPleaseChooseAnother": "Iste nomine de usator es jam prendite. Per favor selige un altere.",
+    "allParticipants": "Tote le participantes",
+    "seeFullCoursePlan": "Vider le plano complete del curso",
+    "catchUp": "Actualisar se",
     "messageLanguageIs": "Iste message es configurate a {language}.",
     "updateMessageLanguage": "Clicca hic pro cambiar le lingua del message.",
     "messageLanguage": "Lingua del message",
@@ -10685,5 +10688,9 @@
     "unlockWritingAssistance": "Diserara assistentia de scriptura",
     "courseSectionTeaching": "Inseniamento",
     "courseSectionLearning": "Apprendimento",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Monstrar plus",
+    "showLess": "Monstrar minus",
+    "countNewMessages": "{count, plural, =1{1 nove message} other{{count} nove messages}}",
+    "markAllRead": "Marcar tote legite"
 }

@@ -10506,6 +10506,9 @@
     "pingedActivity": "アクティビティをピン留めしました",
     "appInTargetLanguageStaysInBaseLanguage": "（この設定は、いつでも見つけられるように母国語のままになります。）",
     "usernameTakenPleaseChooseAnother": "そのユーザー名はすでに使用されています。別のユーザー名を選択してください。",
+    "allParticipants": "すべての参加者",
+    "seeFullCoursePlan": "コースプラン全体を見る",
+    "catchUp": "キャッチアップ",
     "messageLanguageIs": "このメッセージは{language}に設定されています。",
     "updateMessageLanguage": "メッセージの言語を変更するには、ここをクリックしてください。",
     "messageLanguage": "メッセージの言語",
@@ -10518,5 +10521,9 @@
     "unlockWritingAssistance": "ライティングアシスタンスをアンロック",
     "courseSectionTeaching": "教える",
     "courseSectionLearning": "学ぶ",
-    "courseSectionLabel": "{title}、{count, plural, =1{1コース} other{{count}コース}}"
+    "courseSectionLabel": "{title}、{count, plural, =1{1コース} other{{count}コース}}",
+    "showMore": "もっと見る",
+    "showLess": "一部を表示",
+    "countNewMessages": "{count, plural, =1{新着メッセージ1件} other{新着メッセージ{count}件}}",
+    "markAllRead": "すべて既読にする"
 }

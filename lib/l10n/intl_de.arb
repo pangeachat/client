@@ -9724,6 +9724,9 @@
     "pingedActivity": "Gepingte Aktivität",
     "appInTargetLanguageStaysInBaseLanguage": "(Diese Einstellung bleibt in Ihrer Muttersprache, damit Sie sie immer finden können.)",
     "usernameTakenPleaseChooseAnother": "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen.",
+    "allParticipants": "Alle Teilnehmer",
+    "seeFullCoursePlan": "Vollständigen Kursplan ansehen",
+    "catchUp": "Aufholen",
     "messageLanguageIs": "Diese Nachricht ist auf {language} eingestellt.",
     "updateMessageLanguage": "Klicke hier, um die Sprache der Nachricht zu ändern.",
     "messageLanguage": "Nachrichtensprache",
@@ -9736,5 +9739,9 @@
     "unlockWritingAssistance": "Schreibassistenz freischalten",
     "courseSectionTeaching": "Unterricht",
     "courseSectionLearning": "Lernen",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 Kurs} other{{count} Kurse}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 Kurs} other{{count} Kurse}}",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen",
+    "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}",
+    "markAllRead": "Alle als gelesen markieren"
 }

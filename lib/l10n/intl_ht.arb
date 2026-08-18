@@ -2125,6 +2125,9 @@
     "pingedActivity": "Aktivite ki te ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Anviwònman sa a rete nan lang natif natal ou pou ou ka toujou jwenn li.)",
     "usernameTakenPleaseChooseAnother": "Non itilizatè sa a deja pran. Tanpri chwazi yon lòt.",
+    "allParticipants": "Tout patisipan yo",
+    "seeFullCoursePlan": "Gade plan kou konplè a",
+    "catchUp": "Ratrapaj",
     "messageLanguageIs": "Mesaj sa a mete sou {language}.",
     "updateMessageLanguage": "Klike la a pou chanje lang mesaj la.",
     "messageLanguage": "Lang mesaj",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Debloke asistans pou ekri",
     "courseSectionTeaching": "Anseye",
     "courseSectionLearning": "Aprann",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kou} other{{count} kou}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kou} other{{count} kou}}",
+    "showMore": "Montre plis",
+    "showLess": "Montre mwens",
+    "countNewMessages": "{count, plural, =1{1 nouvo mesaj} other{{count} nouvo mesaj}}",
+    "markAllRead": "Make tout li"
 }

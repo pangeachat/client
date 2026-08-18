@@ -2125,6 +2125,9 @@
     "pingedActivity": "Pinge aktiviteit",
     "appInTargetLanguageStaysInBaseLanguage": "(Dizze ynstelling bliuwt yn jo memmetaal, sadat jo it altyd fine kinne.)",
     "usernameTakenPleaseChooseAnother": "Dy brûkersnamme is al yn gebrûk. Kies asjebleaft in oare.",
+    "allParticipants": "Alle dielnimmers",
+    "seeFullCoursePlan": "Sjoch folslein kursusplan",
+    "catchUp": "Ynhelje",
     "messageLanguageIs": "Dit berjocht is ynsteld op {language}.",
     "updateMessageLanguage": "Klik hjir om de taal fan it berjocht te feroarjen.",
     "messageLanguage": "Berjochtetaal",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Untskoattelje skriuwassistinsje",
     "courseSectionTeaching": "Lesjaan",
     "courseSectionLearning": "Leare",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursussen}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursussen}}",
+    "showMore": "Mear sjen litte",
+    "showLess": "Minder sjen litte",
+    "countNewMessages": "{count, plural, =1{1 nij berjocht} other{{count} nije berjochten}}",
+    "markAllRead": "Alles as lêzen markearje"
 }

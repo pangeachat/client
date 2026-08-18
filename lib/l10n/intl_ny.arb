@@ -2125,6 +2125,9 @@
     "pingedActivity": "Zochitika zomwe zatumizidwa",
     "appInTargetLanguageStaysInBaseLanguage": "(Kukhazikitsa kumeneku kumakhala m'chilankhulo chanu choyambirira kuti muzitha kuchipeza nthawi zonse.)",
     "usernameTakenPleaseChooseAnother": "Dzina la wosuta limenelo lagwiritsidwa kale. Chonde sankhani lina.",
+    "allParticipants": "Ophunzira onse",
+    "seeFullCoursePlan": "Onani dongosolo lonse la maphunziro",
+    "catchUp": "Pezani zatsopano",
     "messageLanguageIs": "Uthenga uwu wayikidwa ku {language}.",
     "updateMessageLanguage": "Dinani apa kuti musinthe chilankhulo cha uthenga.",
     "messageLanguage": "Chilankhulo cha uthenga",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Tsegulani thandizo lolemba",
     "courseSectionTeaching": "Kuphunzitsa",
     "courseSectionLearning": "Kuphunzira",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kosi} other{{count} makosi}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kosi} other{{count} makosi}}",
+    "showMore": "Onjezani zambiri",
+    "showLess": "Chepetsani",
+    "countNewMessages": "{count, plural, =1{uthenga umodzi watsopano} other{mameseji {count} atsopano}}",
+    "markAllRead": "Chongani zonse kuti zaŵerengedwa"
 }

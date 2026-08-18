@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gweithgaredd a biniwyd",
     "appInTargetLanguageStaysInBaseLanguage": "(Mae'r gosodiad hwn yn aros yn eich iaith frodorol fel y gallwch chi bob amser ddod o hyd iddo.)",
     "usernameTakenPleaseChooseAnother": "Mae'r enw defnyddiwr hwnnw eisoes wedi'i gymryd. Dewiswch un arall.",
+    "allParticipants": "Pob cyfranogwr",
+    "seeFullCoursePlan": "Gweler cynllun cwrs llawn",
+    "catchUp": "Dal i fyny",
     "messageLanguageIs": "Mae'r neges hon wedi'i gosod i {language}.",
     "updateMessageLanguage": "Cliciwch yma i newid iaith y neges.",
     "messageLanguage": "Iaith y neges",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Datgloi cymorth ysgrifennu",
     "courseSectionTeaching": "Addysgu",
     "courseSectionLearning": "Dysgu",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 cwrs} other{{count} cwrs}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cwrs} other{{count} cwrs}}",
+    "showMore": "Dangos mwy",
+    "showLess": "Dangos llai",
+    "countNewMessages": "{count, plural, =1{1 neges newydd} other{{count} neges newydd}}",
+    "markAllRead": "Marcio pob un fel rhai a ddarllenwyd"
 }

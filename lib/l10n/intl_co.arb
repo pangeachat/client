@@ -2125,6 +2125,9 @@
     "pingedActivity": "Attività pingata",
     "appInTargetLanguageStaysInBaseLanguage": "(Stu paràmetru ferma in a vostra lingua materna per chì pudete sempre truvallu.)",
     "usernameTakenPleaseChooseAnother": "Stu nome d'utilizatore hè digià pigliatu. Per piacè, sceglite un altru.",
+    "allParticipants": "Tutti i participanti",
+    "seeFullCoursePlan": "Vede u pianu di u corsu cumpletu",
+    "catchUp": "Righjunghje",
     "messageLanguageIs": "Stu messagiu hè impostu à {language}.",
     "updateMessageLanguage": "Cliccate quì per cambià a lingua di u messagiu.",
     "messageLanguage": "Lingua di u messagiu",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Sbloccà l'assistenza à a scrittura",
     "courseSectionTeaching": "Insignamentu",
     "courseSectionLearning": "Amparera",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 corsu} other{{count} corsi}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 corsu} other{{count} corsi}}",
+    "showMore": "Mostra di più",
+    "showLess": "Mostra di menu",
+    "countNewMessages": "{count, plural, =1{1 novu messagiu} other{{count} novi messaghji}}",
+    "markAllRead": "Marcà tuttu cum'è lettu"
 }

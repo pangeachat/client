@@ -2125,6 +2125,9 @@
     "pingedActivity": "پینګ شوې فعالیت",
     "appInTargetLanguageStaysInBaseLanguage": "(دا ترتیب ستاسو په مورنۍ ژبه کې پاتې کیږي ترڅو تاسو تل دا ومومئ.)",
     "usernameTakenPleaseChooseAnother": "دا کارن نوم لا دمخه اخیستل شوی دی. مهرباني وکړئ بل انتخاب کړئ.",
+    "allParticipants": "ټول ګډونوال",
+    "seeFullCoursePlan": "د کورس بشپړ پلان وګورئ",
+    "catchUp": "ځان ورسوه",
     "messageLanguageIs": "دا پیغام {language} ته ټاکل شوی دی.",
     "updateMessageLanguage": "د پیغام ژبې بدلولو لپاره دلته کلیک وکړئ.",
     "messageLanguage": "د پیغام ژبه",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "د لیکلو مرسته خلاص کړئ",
     "courseSectionTeaching": "تدریس",
     "courseSectionLearning": "زده کړه",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 کورس} other{{count} کورسونه}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 کورس} other{{count} کورسونه}}",
+    "showMore": "نور وښایاست",
+    "showLess": "لږ وښایاست",
+    "countNewMessages": "{count, plural, =1{۱ نوې پيغام} other{{count} نوې پيغامونه}}",
+    "markAllRead": "ټول لوستل شوي په نښه کړئ"
 }

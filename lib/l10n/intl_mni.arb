@@ -2125,6 +2125,9 @@
     "pingedActivity": "পিং তৌরবা এক্টিভিটি",
     "appInTargetLanguageStaysInBaseLanguage": "(असेटिंग असिना नंगना कैना फंगना नंगगी लोयनिंगब लोल्दा लैनिगनि।)",
     "usernameTakenPleaseChooseAnother": "ꯃꯤꯡ ꯑꯁꯤ ꯂꯩꯔꯦ꯫ ꯑꯇꯣꯞꯄꯥ ꯑꯃꯥ ꯈꯟꯕꯤꯌꯨ꯫",
+    "allParticipants": "পুম্নমক্না শরুক য়াবশিং",
+    "seeFullCoursePlan": "কোর্স প্লান পুম্নমক উবীয়ু",
+    "catchUp": "খংজিনবা",
     "messageLanguageIs": "असी मेसेज असि {language} दा सेत तौरे।",
     "updateMessageLanguage": "मेसेज असिगी लोन्गी मात्तिक तोक्नबा नत्त्रगा होन्गदनबा अदोना मासिदा क्लिक तौबियु।",
     "messageLanguage": "मेसेज लोन्",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "রাইটিং এসিস্টেন্স অনলক তৌবীয়ু",
     "courseSectionTeaching": "খুরুমজরি",
     "courseSectionLearning": "তম্বিরি",
-    "courseSectionLabel": "{title}, {count, plural, =1{১ কোর্স} other{{count} কোর্স}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{১ কোর্স} other{{count} কোর্স}}",
+    "showMore": "ಹೆಚ್ಚು ತಾನು",
+    "showLess": "ಕಮ್ಮಿ ತಾನು",
+    "countNewMessages": "{count, plural, =1{1 অহোংবা পাও} other{{count} অহোংবা পাও}}",
+    "markAllRead": "পুম্নমক পাজরে হায়না থম্নবা"
 }

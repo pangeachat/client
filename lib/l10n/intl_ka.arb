@@ -10637,6 +10637,9 @@
     "pingedActivity": "აქტივობაზე შეტყობინება",
     "appInTargetLanguageStaysInBaseLanguage": "(ეს პარამეტრი რჩება თქვენს მშობლიურ ენაზე, რათა ყოველთვის შეძლოთ მისი პოვნა.)",
     "usernameTakenPleaseChooseAnother": "ეს მომხმარებლის სახელი უკვე დაკავებულია. გთხოვთ, აირჩიოთ სხვა.",
+    "allParticipants": "ყველა მონაწილე",
+    "seeFullCoursePlan": "იხილეთ კურსის სრული გეგმა",
+    "catchUp": "წამოეწიეთ",
     "messageLanguageIs": "ამ შეტყობინების ენა არის {language}.",
     "updateMessageLanguage": "შეტყობინების ენის შესაცვლელად დააჭირეთ აქ.",
     "messageLanguage": "შეტყობინების ენა",
@@ -10649,5 +10652,9 @@
     "unlockWritingAssistance": "წერის დახმარების განბლოკვა",
     "courseSectionTeaching": "ასწავლის",
     "courseSectionLearning": "სწავლობს",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 კურსი} other{{count} კურსი}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 კურსი} other{{count} კურსი}}",
+    "showMore": "მეტი",
+    "showLess": "ნაკლები",
+    "countNewMessages": "{count, plural, =1{1 ახალი შეტყობინება} other{{count} ახალი შეტყობინება}}",
+    "markAllRead": "ყველას წაკითხულად მონიშვნა"
 }

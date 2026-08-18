@@ -10597,6 +10597,9 @@
     "pingedActivity": "Na-ping na aktibidad",
     "appInTargetLanguageStaysInBaseLanguage": "(Ang setting na ito ay mananatili sa iyong sariling wika para lagi mo itong mahanap.)",
     "usernameTakenPleaseChooseAnother": "Kinuha na ang username na iyan. Mangyaring pumili ng iba.",
+    "allParticipants": "Lahat ng kalahok",
+    "seeFullCoursePlan": "Tingnan ang buong plano ng kurso",
+    "catchUp": "Bumawi",
     "messageLanguageIs": "Ang mensaheng ito ay nakatakda sa {language}.",
     "updateMessageLanguage": "Mag-click dito upang baguhin ang wika ng mensahe.",
     "messageLanguage": "Wika ng mensahe",
@@ -10609,5 +10612,9 @@
     "unlockWritingAssistance": "I-unlock ang tulong sa pagsusulat",
     "courseSectionTeaching": "Pagtuturo",
     "courseSectionLearning": "Pag-aaral",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kurso}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} kurso}}",
+    "showMore": "Ipakita pa",
+    "showLess": "Ipakita nang kaunti",
+    "countNewMessages": "{count, plural, =1{1 bagong mensahe} other{{count} bagong mensahe}}",
+    "markAllRead": "Markahan lahat bilang nabasa"
 }

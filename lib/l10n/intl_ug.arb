@@ -2125,6 +2125,9 @@
     "pingedActivity": "پىڭلانغان پائالىيەت",
     "appInTargetLanguageStaysInBaseLanguage": "(بۇ تەڭشەك ئانا تىلىڭىزدا تۇرىدۇ، شۇڭا سىز ئۇنى ھەمىشە تاپالايسىز.)",
     "usernameTakenPleaseChooseAnother": "بۇ ئىشلەتكۈچى نامى ئاللىبۇرۇن ئېلىنىپ بولغان. باشقا بىرنى تاللاڭ.",
+    "allParticipants": "بارلىق ئىشتىراكچىلار",
+    "seeFullCoursePlan": "تولۇق دەرس پىلانىنى كۆرۈڭ",
+    "catchUp": "يېتىۋېلىش",
     "messageLanguageIs": "بۇ ئۇچۇر {language} غا تەڭشەلدى.",
     "updateMessageLanguage": "ئۇچۇر تىلىنى ئۆزگەرتىش ئۈچۈن بۇ يەرنى چېكىڭ.",
     "messageLanguage": "ئۇچۇر تىلى",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ",
     "courseSectionTeaching": "ئۆگىتىش",
     "courseSectionLearning": "ئۆگىنىش",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 دەرسلىك} other{{count} دەرسلىك}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 دەرسلىك} other{{count} دەرسلىك}}",
+    "showMore": "تېخىمۇ كۆپ كۆرسەت",
+    "showLess": "ئازراق كۆرسەت",
+    "countNewMessages": "{count, plural, =1{1 يېڭى ئۇچۇر} other{{count} يېڭى ئۇچۇر}}",
+    "markAllRead": "ھەممىنى ئوقۇلدى قىل"
 }

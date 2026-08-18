@@ -2125,6 +2125,9 @@
     "pingedActivity": "សកម្មភាពដែលបានខ្ទាស់",
     "appInTargetLanguageStaysInBaseLanguage": "(ការកំណត់នេះនៅតែជាភាសាកំណើតរបស់អ្នក ដូច្នេះអ្នកអាចស្វែងរកវាបានជានិច្ច។)",
     "usernameTakenPleaseChooseAnother": "ឈ្មោះអ្នកប្រើប្រាស់នោះត្រូវបានប្រើប្រាស់រួចហើយ។ សូមជ្រើសរើសឈ្មោះផ្សេងទៀត។",
+    "allParticipants": "អ្នកចូលរួមទាំងអស់",
+    "seeFullCoursePlan": "មើលផែនការវគ្គសិក្សាពេញលេញ",
+    "catchUp": "តាមទាន់",
     "messageLanguageIs": "សារនេះត្រូវបានកំណត់ជាភាសា{language}។",
     "updateMessageLanguage": "ចុចទីនេះដើម្បីផ្លាស់ប្ដូរភាសារបស់សារ។",
     "messageLanguage": "ភាសារបស់សារ",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "ដោះសោជំនួយការសរសេរ",
     "courseSectionTeaching": "ការបង្រៀន",
     "courseSectionLearning": "ការរៀន",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 វគ្គសិក្សា} other{{count} វគ្គសិក្សា}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 វគ្គសិក្សា} other{{count} វគ្គសិក្សា}}",
+    "showMore": "បង្ហាញបន្ថែម",
+    "showLess": "បង្ហាញតិច",
+    "countNewMessages": "{count, plural, =1{សារថ្មី ១} other{សារថ្មី {count}}}",
+    "markAllRead": "សម្គាល់ថាបានអានទាំងអស់"
 }

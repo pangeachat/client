@@ -109,6 +109,45 @@
         "type": "String",
         "placeholders": {}
     },
+    "allParticipants": "All participants",
+    "@allParticipants": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "catchUp": "Catch up",
+    "@catchUp": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showMore": "Show more",
+    "@showMore": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "showLess": "Show less",
+    "@showLess": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "markAllRead": "Mark all read",
+    "@markAllRead": {
+        "type": "String",
+        "placeholders": {}
+    },
+    "countNewMessages": "{count, plural, =1{1 new message} other{{count} new messages}}",
+    "@countNewMessages": {
+        "type": "String",
+        "placeholders": {
+            "count": {
+                "type": "int"
+            }
+        }
+    },
+    "seeFullCoursePlan": "See full course plan",
+    "@seeFullCoursePlan": {
+        "type": "String",
+        "placeholders": {}
+    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -4899,7 +4938,7 @@
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
     "chatSearchPageLabel": "Chat search page",
-    "selectImageLabel": "Select image", 
+    "selectImageLabel": "Select image",
     "userSearchTagsLabel": "Search in...",
     "courseDetails": "Course details",
     "objective": "Objective",

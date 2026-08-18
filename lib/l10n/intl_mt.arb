@@ -2125,6 +2125,9 @@
     "pingedActivity": "Attività pingjata",
     "appInTargetLanguageStaysInBaseLanguage": "(Din l-issettjar tibqa' fil-lingwa nattiva tiegħek biex dejjem tkun tista' ssibha.)",
     "usernameTakenPleaseChooseAnother": "Dan l-isem tal-utent diġà qed jintuża. Jekk jogħġbok agħżel ieħor.",
+    "allParticipants": "Il-parteċipanti kollha",
+    "seeFullCoursePlan": "Ara l-pjan sħiħ tal-kors",
+    "catchUp": "Ilaħħqu",
     "messageLanguageIs": "Dan il-messaġġ huwa ssettjat għal {language}.",
     "updateMessageLanguage": "Ikklikkja hawn biex tibdel il-lingwa tal-messaġġ.",
     "messageLanguage": "Lingwa tal-messaġġ",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Nisfruttaw l-għajnuna fil-kitba",
     "courseSectionTeaching": "Tagħlim",
     "courseSectionLearning": "Tgħallim",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kors} other{{count} korsijiet}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kors} other{{count} korsijiet}}",
+    "showMore": "Uri aktar",
+    "showLess": "Uri inqas",
+    "countNewMessages": "{count, plural, =1{1 messaġġ ġdid} other{{count} messaġġi ġodda}}",
+    "markAllRead": "Immarka kollox bħala moqri"
 }

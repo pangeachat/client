@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gi-ping nga kalihokan",
     "appInTargetLanguageStaysInBaseLanguage": "(Kini nga setting magpabilin sa imong lumad nga pinulongan aron kanunay nimo kining makit-an.)",
     "usernameTakenPleaseChooseAnother": "Gigamit na kanang username. Palihug pagpili og lain.",
+    "allParticipants": "Tanang partisipante",
+    "seeFullCoursePlan": "Tan-awa ang tibuok plano sa kurso",
+    "catchUp": "Apasi",
     "messageLanguageIs": "Kini nga mensahe giset sa {language}.",
     "updateMessageLanguage": "Pag-klik dinhi aron usbon ang pinulongan sa mensahe.",
     "messageLanguage": "Pinulongan sa mensahe",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "I-unlock ang tabang sa pagsulat",
     "courseSectionTeaching": "Pagtudlo",
     "courseSectionLearning": "Pagkat-on",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} ka kurso}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurso} other{{count} ka kurso}}",
+    "showMore": "Ipakita pa",
+    "showLess": "Ipakita gamay",
+    "countNewMessages": "{count, plural, =1{1 ka bag-ong mensahe} other{{count} ka bag-ong mensahe}}",
+    "markAllRead": "Markahi tanan nga nabasa na"
 }

@@ -9930,6 +9930,9 @@
     "pingedActivity": "핑 활동",
     "appInTargetLanguageStaysInBaseLanguage": "(이 설정은 항상 찾을 수 있도록 모국어로 유지됩니다.)",
     "usernameTakenPleaseChooseAnother": "사용자 이름이 이미 사용 중입니다. 다른 이름을 선택해 주세요.",
+    "allParticipants": "모든 참여자",
+    "seeFullCoursePlan": "전체 학습 계획 보기",
+    "catchUp": "따라잡기",
     "messageLanguageIs": "이 메시지는 {language}로 설정되어 있습니다.",
     "updateMessageLanguage": "메시지 언어를 변경하려면 여기를 클릭하세요.",
     "messageLanguage": "메시지 언어",
@@ -9942,5 +9945,9 @@
     "unlockWritingAssistance": "작문 지원 잠금 해제",
     "courseSectionTeaching": "가르치기",
     "courseSectionLearning": "배우기",
-    "courseSectionLabel": "{title}, {count, plural, =1{1개 코스} other{{count}개 코스}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1개 코스} other{{count}개 코스}}",
+    "showMore": "더 보기",
+    "showLess": "간략히 보기",
+    "countNewMessages": "{count, plural, =1{새 메시지 1개} other{새 메시지 {count}개}}",
+    "markAllRead": "모두 읽음으로 표시"
 }

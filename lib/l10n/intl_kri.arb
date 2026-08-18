@@ -2125,6 +2125,9 @@
     "pingedActivity": "Pinged aktiviti",
     "appInTargetLanguageStaysInBaseLanguage": "(Dis setin de na yu yon langwej so yu go ebul fɛn am ɔltɛm.)",
     "usernameTakenPleaseChooseAnother": "Dat yuzaneim dɔn de. Duya pik ɔda wan.",
+    "allParticipants": "Ɔl dɛn we de insaid",
+    "seeFullCoursePlan": "Si di ful kos plan",
+    "catchUp": "Kech op",
     "messageLanguageIs": "Dis patta na {language}.",
     "updateMessageLanguage": "Klik ya fɔ chenj di patta in langwej.",
     "messageLanguage": "Patta in langwej",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Open di raytin ɛlp",
     "courseSectionTeaching": "Tichin",
     "courseSectionLearning": "Lɛnin",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kos} other{{count} kos dɛn}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kos} other{{count} kos dɛn}}",
+    "showMore": "Sho mo",
+    "showLess": "Sho men",
+    "countNewMessages": "{count, plural, =1{1 nyu messej} other{{count} nyu messej dɛn}}",
+    "markAllRead": "Mak ɔl dɛn rid"
 }

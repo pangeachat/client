@@ -2125,6 +2125,9 @@
     "pingedActivity": "Пингтелген әрекет",
     "appInTargetLanguageStaysInBaseLanguage": "(Бұл параметр ана тіліңізде қалады, сондықтан оны әрқашан таба аласыз.)",
     "usernameTakenPleaseChooseAnother": "Бұл пайдаланушы аты бос емес. Басқасын таңдаңыз.",
+    "allParticipants": "Барлық қатысушылар",
+    "seeFullCoursePlan": "Курстың толық жоспарын қарау",
+    "catchUp": "Жетіп ал",
     "messageLanguageIs": "Бұл хабар {language} тіліне орнатылған.",
     "updateMessageLanguage": "Хабар тілін өзгерту үшін осы жерді басыңыз.",
     "messageLanguage": "Хабар тілі",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Жазуға көмектесудің құлпын ашу",
     "courseSectionTeaching": "Оқыту",
     "courseSectionLearning": "Оқу",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}",
+    "showMore": "Көбірек көрсету",
+    "showLess": "Азырақ көрсету",
+    "countNewMessages": "{count, plural, =1{1 жаңа хабар} other{{count} жаңа хабарлар}}",
+    "markAllRead": "Барлығын оқылды деп белгілеу"
 }

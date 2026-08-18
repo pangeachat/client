@@ -2125,6 +2125,9 @@
     "pingedActivity": "Идэвхжүүлсэн үйл ажиллагаа",
     "appInTargetLanguageStaysInBaseLanguage": "(Энэ тохиргоо нь таны эх хэл дээр байх тул та үүнийг үргэлж олох боломжтой.)",
     "usernameTakenPleaseChooseAnother": "Энэ хэрэглэгчийн нэр аль хэдийнэ бүртгэгдсэн байна. Өөр нэр сонгоно уу.",
+    "allParticipants": "Бүх оролцогчид",
+    "seeFullCoursePlan": "Хичээлийн бүрэн төлөвлөгөөг харах",
+    "catchUp": "Гүйцэх",
     "messageLanguageIs": "Энэ мессеж {language} хэл дээр байна.",
     "updateMessageLanguage": "Мессежийн хэлийг өөрчлөхийн тулд энд дарна уу.",
     "messageLanguage": "Мессежийн хэл",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Бичихэд туслахыг нээх",
     "courseSectionTeaching": "Заах",
     "courseSectionLearning": "Сурах",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 хичээл} other{{count} хичээл}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 хичээл} other{{count} хичээл}}",
+    "showMore": "Илүү ихийг харах",
+    "showLess": "Бага харах",
+    "countNewMessages": "{count, plural, =1{1 шинэ мессеж} other{{count} шинэ мессеж}}",
+    "markAllRead": "Бүгдийг уншсан гэж тэмдэглэх"
 }

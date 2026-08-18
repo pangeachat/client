@@ -9737,6 +9737,9 @@
     "pingedActivity": "Actividade mencionada",
     "appInTargetLanguageStaysInBaseLanguage": "(Esta configuración permanece no teu idioma nativo para que sempre a poidas atopar.)",
     "usernameTakenPleaseChooseAnother": "Ese nome de usuario xa está en uso. Escolle outro.",
+    "allParticipants": "Todos os participantes",
+    "seeFullCoursePlan": "Ver o plan completo do curso",
+    "catchUp": "Pórse ao día",
     "messageLanguageIs": "Esta mensaxe está configurada en {language}.",
     "updateMessageLanguage": "Fai clic aquí para cambiar o idioma da mensaxe.",
     "messageLanguage": "Idioma da mensaxe",
@@ -9749,5 +9752,9 @@
     "unlockWritingAssistance": "Desbloquear asistencia de escritura",
     "courseSectionTeaching": "Ensino",
     "courseSectionLearning": "Aprendizaxe",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
+    "showMore": "Mostrar máis",
+    "showLess": "Mostrar menos",
+    "countNewMessages": "{count, plural, =1{1 mensaxe nova} other{{count} mensaxes novas}}",
+    "markAllRead": "Marcar todo como lido"
 }

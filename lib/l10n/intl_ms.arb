@@ -2125,6 +2125,9 @@
     "pingedActivity": "Aktiviti yang diping",
     "appInTargetLanguageStaysInBaseLanguage": "(Tetapan ini kekal dalam bahasa ibunda anda supaya anda sentiasa dapat mencarinya.)",
     "usernameTakenPleaseChooseAnother": "Nama pengguna itu sudah digunakan. Sila pilih yang lain.",
+    "allParticipants": "Semua peserta",
+    "seeFullCoursePlan": "Lihat rancangan kursus penuh",
+    "catchUp": "Ikuti perkembangan",
     "messageLanguageIs": "Mesej ini ditetapkan kepada {language}.",
     "updateMessageLanguage": "Klik di sini untuk menukar bahasa mesej.",
     "messageLanguage": "Bahasa mesej",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Buka kunci bantuan penulisan",
     "courseSectionTeaching": "Pengajaran",
     "courseSectionLearning": "Pembelajaran",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
+    "showMore": "Tunjukkan lebih banyak",
+    "showLess": "Tunjukkan lebih sedikit",
+    "countNewMessages": "{count, plural, =1{1 mesej baharu} other{{count} mesej baharu}}",
+    "markAllRead": "Tandakan semua sudah dibaca"
 }

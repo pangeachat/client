@@ -10092,6 +10092,9 @@
     "pingedActivity": "Activité pingée",
     "appInTargetLanguageStaysInBaseLanguage": "(Ce paramètre reste dans votre langue maternelle afin que vous puissiez toujours le retrouver.)",
     "usernameTakenPleaseChooseAnother": "Ce nom d'utilisateur est déjà pris. Veuillez en choisir un autre.",
+    "allParticipants": "Tous les participants",
+    "seeFullCoursePlan": "Voir le plan de cours complet",
+    "catchUp": "Rattraper",
     "messageLanguageIs": "Ce message est défini sur {language}.",
     "updateMessageLanguage": "Cliquez ici pour changer la langue du message.",
     "messageLanguage": "Langue du message",
@@ -10104,5 +10107,9 @@
     "unlockWritingAssistance": "Débloquer l'aide à l'écriture",
     "courseSectionTeaching": "Enseignement",
     "courseSectionLearning": "Apprentissage",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 cours} other{{count} cours}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cours} other{{count} cours}}",
+    "showMore": "Afficher plus",
+    "showLess": "Afficher moins",
+    "countNewMessages": "{count, plural, =1{1 nouveau message} other{{count} nouveaux messages}}",
+    "markAllRead": "Tout marquer comme lu"
 }

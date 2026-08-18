@@ -9737,6 +9737,9 @@
     "pingedActivity": "Pingatutako jarduera",
     "appInTargetLanguageStaysInBaseLanguage": "(Ezarpen hau zure jatorrizko hizkuntzan mantentzen da, beti aurkitu ahal izateko.)",
     "usernameTakenPleaseChooseAnother": "Erabiltzaile-izen hori hartuta dago. Mesedez, aukeratu beste bat.",
+    "allParticipants": "Parte-hartzaile guztiak",
+    "seeFullCoursePlan": "Ikusi ikastaroaren plan osoa",
+    "catchUp": "Harrapatu",
     "messageLanguageIs": "Mezu hau {language} hizkuntzan dago ezarrita.",
     "updateMessageLanguage": "Egin klik hemen mezuaren hizkuntza aldatzeko.",
     "messageLanguage": "Mezuaren hizkuntza",
@@ -9749,5 +9752,9 @@
     "unlockWritingAssistance": "Desblokeatu idazketa-laguntza",
     "courseSectionTeaching": "Irakaskuntza",
     "courseSectionLearning": "Ikaskuntza",
-    "courseSectionLabel": "{title}, {count, plural, =1{ikastaro 1} other{{count} ikastaro}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{ikastaro 1} other{{count} ikastaro}}",
+    "showMore": "Gehiago erakutsi",
+    "showLess": "Gutxiago erakutsi",
+    "countNewMessages": "{count, plural, =1{mezu berri 1} other{{count} mezu berri}}",
+    "markAllRead": "Denak irakurritako gisa markatu"
 }

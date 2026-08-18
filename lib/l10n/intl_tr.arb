@@ -10038,6 +10038,9 @@
     "pingedActivity": "Etkinlik pinglendi",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu ayar, her zaman bulabilmeniz için ana dilinizde kalır.)",
     "usernameTakenPleaseChooseAnother": "Bu kullanıcı adı zaten alınmış. Lütfen başka bir tane seçin.",
+    "allParticipants": "Tüm katılımcılar",
+    "seeFullCoursePlan": "Tüm ders planını gör",
+    "catchUp": "Yakala",
     "messageLanguageIs": "Bu mesaj {language} olarak ayarlandı.",
     "updateMessageLanguage": "Mesajın dilini değiştirmek için buraya tıklayın.",
     "messageLanguage": "Mesaj dili",
@@ -10050,5 +10053,9 @@
     "unlockWritingAssistance": "Yazma yardımının kilidini aç",
     "courseSectionTeaching": "Öğretim",
     "courseSectionLearning": "Öğrenim",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
+    "showMore": "Daha fazla göster",
+    "showLess": "Daha az göster",
+    "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",
+    "markAllRead": "Tümünü okundu olarak işaretle"
 }

@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gnìomhachd air a phingigeadh",
     "appInTargetLanguageStaysInBaseLanguage": "(Fanaidh an roghainn seo sa chànan dhùthchasach agad gus am bi e comasach dhut a lorg an-còmhnaidh.)",
     "usernameTakenPleaseChooseAnother": "Tha an t-ainm-cleachdaiche sin ga chleachdadh mu thràth. Tagh fear eile, mas e do thoil e.",
+    "allParticipants": "A h-uile com-pàirtiche",
+    "seeFullCoursePlan": "Faic làn phlana a’ chùrsa",
+    "catchUp": "Dèan suas",
     "messageLanguageIs": "Tha an teachdaireachd seo air a suidheachadh gu {language}.",
     "updateMessageLanguage": "Briog an seo gus cànan na teachdaireachd atharrachadh.",
     "messageLanguage": "Cànan teachdaireachd",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Taic sgrìobhaidh fhuasgladh",
     "courseSectionTeaching": "Teagasg",
     "courseSectionLearning": "Ionnsachadh",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 chùrsa} other{{count} cùrsaichean}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 chùrsa} other{{count} cùrsaichean}}",
+    "showMore": "Seall barrachd",
+    "showLess": "Seall nas lugha",
+    "countNewMessages": "{count, plural, =1{1 teachdaireachd ùr} other{{count} teachdaireachdan ùra}}",
+    "markAllRead": "Comharraich na h-uile mar a chaidh a leughadh"
 }

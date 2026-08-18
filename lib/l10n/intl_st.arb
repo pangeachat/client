@@ -2125,6 +2125,9 @@
     "pingedActivity": "Mosebetsi o pingilweng",
     "appInTargetLanguageStaysInBaseLanguage": "(Tokiso ena e dula e le puong ya heno ya tlhaho hore o tle o kgone ho e fumana kamehla.)",
     "usernameTakenPleaseChooseAnother": "Lebitso leo la mosebedisi le se le ntse le le teng. Ka kopo kgetha le leng.",
+    "allParticipants": "Barupeluoa bohle",
+    "seeFullCoursePlan": "Bona moralo o felletseng oa thupelo",
+    "catchUp": "Tšoara",
     "messageLanguageIs": "Molaetsa ona o behiloe ho {language}.",
     "updateMessageLanguage": "Tobetsa mona ho fetola puo ea molaetsa.",
     "messageLanguage": "Puo ea molaetsa",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Notlolla thuso ea ho ngola",
     "courseSectionTeaching": "Ho ruta",
     "courseSectionLearning": "Ho ithuta",
-    "courseSectionLabel": "{title}, {count, plural, =1{thuto e le 1} other{lithuto tse {count}}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{thuto e le 1} other{lithuto tse {count}}}",
+    "showMore": "Bontsha ho feta",
+    "showLess": "Bontsha hanyane",
+    "countNewMessages": "{count, plural, =1{1 molaetsa o motjha} other{melaetsa e metjha e {count}}}",
+    "markAllRead": "Tšoaea tsohle e le tse baliloeng"
 }

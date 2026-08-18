@@ -9829,6 +9829,9 @@
     "pingedActivity": "பிங் செய்யப்பட்ட செயல்பாடு",
     "appInTargetLanguageStaysInBaseLanguage": "(இந்த அமைப்பு உங்கள் தாய்மொழியிலேயே இருக்கும், எனவே நீங்கள் அதை எப்போதும் கண்டறியலாம்.)",
     "usernameTakenPleaseChooseAnother": "அந்தப் பயனர் பெயர் ஏற்கனவே எடுக்கப்பட்டது. வேறு ஒன்றைத் தேர்ந்தெடுக்கவும்.",
+    "allParticipants": "அனைத்து பங்கேற்பாளர்களும்",
+    "seeFullCoursePlan": "முழு பாடத்திட்டத்தையும் காண்க",
+    "catchUp": "பின்தங்கியவற்றைப் பார்க்கவும்",
     "messageLanguageIs": "இந்தச் செய்தியின் மொழி {language} என அமைக்கப்பட்டுள்ளது.",
     "updateMessageLanguage": "செய்தியின் மொழியை மாற்ற இங்கே கிளிக் செய்யவும்.",
     "messageLanguage": "செய்தி மொழி",
@@ -9841,5 +9844,9 @@
     "unlockWritingAssistance": "எழுத்து உதவியைத் திறக்கவும்",
     "courseSectionTeaching": "கற்பித்தல்",
     "courseSectionLearning": "கற்றல்",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 பாடம்} other{{count} பாடங்கள்}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 பாடம்} other{{count} பாடங்கள்}}",
+    "showMore": "மேலும் காட்டு",
+    "showLess": "குறைவாக காட்டு",
+    "countNewMessages": "{count, plural, =1{1 புதிய செய்தி} other{{count} புதிய செய்திகள்}}",
+    "markAllRead": "அனைத்தையும் படித்ததாகக் குறி"
 }

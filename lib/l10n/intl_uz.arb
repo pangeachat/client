@@ -9741,6 +9741,9 @@
     "pingedActivity": "Faoliyat ping qilingan",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu sozlama har doim topishingiz uchun ona tilingizda qoladi.)",
     "usernameTakenPleaseChooseAnother": "Bu foydalanuvchi nomi band. Iltimos, boshqasini tanlang.",
+    "allParticipants": "Barcha ishtirokchilar",
+    "seeFullCoursePlan": "Toʻliq kurs rejasini koʻrish",
+    "catchUp": "Yetib oling",
     "messageLanguageIs": "Bu xabar {language} tiliga oʻrnatilgan.",
     "updateMessageLanguage": "Xabar tilini oʻzgartirish uchun shu yerni bosing.",
     "messageLanguage": "Xabar tili",
@@ -9753,5 +9756,9 @@
     "unlockWritingAssistance": "Yozish yordamini ochish",
     "courseSectionTeaching": "Oʻqitish",
     "courseSectionLearning": "Oʻrganish",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
+    "showMore": "Koʻproq koʻrsatish",
+    "showLess": "Kamroq koʻrsatish",
+    "countNewMessages": "{count, plural, =1{1 ta yangi xabar} other{{count} ta yangi xabar}}",
+    "markAllRead": "Barchasini oʻqilgan deb belgilash"
 }

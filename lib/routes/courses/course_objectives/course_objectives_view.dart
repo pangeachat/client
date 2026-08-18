@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
+import 'package:collection/collection.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
@@ -54,6 +55,15 @@ class CourseObjectivesList extends StatefulWidget {
   /// `Expanded`).
   final bool shrinkWrap;
 
+  /// Render only the "Up next" Mission — the shared resolver's anchor (first
+  /// Mission in the outline until resolution lands). The course page's
+  /// Course-plan section highlight; the full list is its "See all" subpage.
+  final bool upNextOnly;
+
+  /// Mission headers collapse/expand their carousels (the full course plan
+  /// subpage, #8357). Off in previews and the Up-next highlight.
+  final bool collapsibleMissions;
+
   final QuestObjectivesLoader objectivesProvider;
 
   const CourseObjectivesList({
@@ -62,6 +72,8 @@ class CourseObjectivesList extends StatefulWidget {
     this.questId,
     this.hasCompletedActivity,
     this.shrinkWrap = false,
+    this.upNextOnly = false,
+    this.collapsibleMissions = false,
     super.key,
   });
 
@@ -305,12 +317,18 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                 showAddCourse: widget.room?.isRoomAdmin == true,
               );
             case AsyncLoaded():
-              // The overall quest-star bar now lives in the course card header
-              // (above the tabs — [CourseProgressBar]), so it shows on every tab
-              // and in the collapsed mobile peek; the list is just the Missions.
               // Per-Mission stars still show once the shared rollup resolves; a
-              // preview has no learner progress.
-              final groups = widget.objectivesProvider.filteredObjectiveGroups;
+              // preview has no learner progress. (The overall quest-star bar
+              // lives in the course page's Course-plan section.)
+              final allGroups =
+                  widget.objectivesProvider.filteredObjectiveGroups;
+              final anchorId = widget.objectivesProvider.anchorMissionId;
+              final anchorGroup = allGroups.firstWhereOrNull(
+                (g) => g.objective.id == anchorId,
+              );
+              final groups = widget.upNextOnly
+                  ? [?anchorGroup ?? allGroups.firstOrNull]
+                  : allGroups;
               if (groups.isEmpty) {
                 return _QuestLoadErrorView(
                   MissingQuestException(),
@@ -360,7 +378,8 @@ class _CourseObjectivesListState extends State<CourseObjectivesList> {
                         pingedActivityId: i == pingedGroupIndex
                             ? pingedActivityId
                             : null,
-                        index: i,
+                        collapsible: widget.collapsibleMissions,
+                        isUpNext: group.objective.id == anchorId,
                         group: group,
                         hasCompletedActivity: widget.hasCompletedActivity,
                         progress: hasProgress

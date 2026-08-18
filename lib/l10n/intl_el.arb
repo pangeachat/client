@@ -10612,6 +10612,9 @@
     "pingedActivity": "Δραστηριότητα με ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Αυτή η ρύθμιση παραμένει στη μητρική σας γλώσσα, ώστε να μπορείτε πάντα να τη βρίσκετε.)",
     "usernameTakenPleaseChooseAnother": "Αυτό το όνομα χρήστη χρησιμοποιείται ήδη. Παρακαλώ επιλέξτε άλλο.",
+    "allParticipants": "Όλοι οι συμμετέχοντες",
+    "seeFullCoursePlan": "Δείτε το πλήρες πρόγραμμα μαθημάτων",
+    "catchUp": "Ενημέρωση",
     "messageLanguageIs": "Αυτό το μήνυμα έχει οριστεί σε {language}.",
     "updateMessageLanguage": "Κάντε κλικ εδώ για να αλλάξετε τη γλώσσα του μηνύματος.",
     "messageLanguage": "Γλώσσα μηνύματος",
@@ -10624,5 +10627,9 @@
     "unlockWritingAssistance": "Ξεκλείδωμα βοήθειας γραφής",
     "courseSectionTeaching": "Διδασκαλία",
     "courseSectionLearning": "Μάθηση",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 μάθημα} other{{count} μαθήματα}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 μάθημα} other{{count} μαθήματα}}",
+    "showMore": "Εμφάνιση περισσότερων",
+    "showLess": "Εμφάνιση λιγότερων",
+    "countNewMessages": "{count, plural, =1{1 νέο μήνυμα} other{{count} νέα μηνύματα}}",
+    "markAllRead": "Σήμανση όλων ως αναγνωσμένων"
 }

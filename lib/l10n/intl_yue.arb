@@ -10694,6 +10694,9 @@
     "pingedActivity": "已標註的動態",
     "appInTargetLanguageStaysInBaseLanguage": "(此設定會保留為您的母語，以便您隨時找到它。)",
     "usernameTakenPleaseChooseAnother": "呢個用戶名已經有人用咗喇。請揀過另一個啦。",
+    "allParticipants": "所有參與者",
+    "seeFullCoursePlan": "查看完整課程計劃",
+    "catchUp": "追返進度",
     "messageLanguageIs": "此訊息已設定為{language}。",
     "updateMessageLanguage": "點擊此處更改訊息語言。",
     "messageLanguage": "訊息語言",
@@ -10706,5 +10709,9 @@
     "unlockWritingAssistance": "解鎖寫作輔助",
     "courseSectionTeaching": "教學",
     "courseSectionLearning": "學習",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 課程} other{{count} 課程}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 課程} other{{count} 課程}}",
+    "showMore": "顯示更多",
+    "showLess": "顯示較少",
+    "countNewMessages": "{count, plural, =1{1 個新訊息} other{{count} 個新訊息}}",
+    "markAllRead": "全部標記為已讀"
 }

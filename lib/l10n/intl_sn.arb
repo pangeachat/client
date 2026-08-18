@@ -2125,6 +2125,9 @@
     "pingedActivity": "Chiitiko chakanongedzwa",
     "appInTargetLanguageStaysInBaseLanguage": "(Iyi setingi inoramba iri mumutauro wako wekuzvarwa kuti ugone kuwana nguva dzose.)",
     "usernameTakenPleaseChooseAnother": "Zita rekushandisa iroro ratorwa. Ndapota sarudza rimwe.",
+    "allParticipants": "Vese vatori vechikamu",
+    "seeFullCoursePlan": "Ona chirongwa chekosi chakazara",
+    "catchUp": "Bata",
     "messageLanguageIs": "Meseji iyi yakaiswa ku {language}.",
     "updateMessageLanguage": "Dzvanya pano kuti uchinje mutauro wemeseji.",
     "messageLanguage": "Mutauro wemeseji",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Vhura rubatsiro rwekunyora",
     "courseSectionTeaching": "Kudzidzisa",
     "courseSectionLearning": "Kudzidza",
-    "courseSectionLabel": "{title}, {count, plural, =1{kosi 1} other{makosi {count}}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{kosi 1} other{makosi {count}}}",
+    "showMore": "Ratidza zvimwe",
+    "showLess": "Ratidza zvishoma",
+    "countNewMessages": "{count, plural, =1{1 meseji itsva} other{{count} meseji itsva}}",
+    "markAllRead": "Maka zvese sekuverengwa"
 }

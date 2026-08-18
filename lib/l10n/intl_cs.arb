@@ -10231,6 +10231,9 @@
     "pingedActivity": "Aktivita s upozorněním",
     "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavení zůstane ve vašem rodném jazyce, abyste ho vždy našli.)",
     "usernameTakenPleaseChooseAnother": "Toto uživatelské jméno je již obsazeno. Zvolte prosím jiné.",
+    "allParticipants": "Všichni účastníci",
+    "seeFullCoursePlan": "Zobrazit celý plán kurzu",
+    "catchUp": "Dohnat",
     "messageLanguageIs": "Tato zpráva je nastavena na {language}.",
     "updateMessageLanguage": "Klikněte zde pro změnu jazyka zprávy.",
     "messageLanguage": "Jazyk zprávy",
@@ -10243,5 +10246,9 @@
     "unlockWritingAssistance": "Odemknout asistenci při psaní",
     "courseSectionTeaching": "Výuka",
     "courseSectionLearning": "Učení",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzů}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzů}}",
+    "showMore": "Zobrazit více",
+    "showLess": "Zobrazit méně",
+    "countNewMessages": "{count, plural, =1{1 nová zpráva} other{{count} nových zpráv}}",
+    "markAllRead": "Označit vše jako přečtené"
 }

@@ -2125,6 +2125,9 @@
     "pingedActivity": "Aktivitas sing di-ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Setelan iki tetep nganggo basa asli sampeyan supaya sampeyan mesthi bisa nemokake.)",
     "usernameTakenPleaseChooseAnother": "Jeneng pangguna wis ana. Mangga pilih liyane.",
+    "allParticipants": "Kabeh peserta",
+    "seeFullCoursePlan": "Deleng rencana kursus lengkap",
+    "catchUp": "Susul",
     "messageLanguageIs": "Pesen iki disetel menyang {language}.",
     "updateMessageLanguage": "Klik kene kanggo ngganti basa pesen.",
     "messageLanguage": "Basa pesen",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Mbukak kunci bantuan nulis",
     "courseSectionTeaching": "Piwulang",
     "courseSectionLearning": "Sinau",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
+    "showMore": "Tampilake luwih akeh",
+    "showLess": "Tampilake luwih sithik",
+    "countNewMessages": "{count, plural, =1{1 pesen anyar} other{{count} pesen anyar}}",
+    "markAllRead": "Tandhani kabeh wis diwaca"
 }

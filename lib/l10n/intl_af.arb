@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gepingde aktiwiteit",
     "appInTargetLanguageStaysInBaseLanguage": "(Hierdie instelling bly in jou moedertaal sodat jy dit altyd kan vind.)",
     "usernameTakenPleaseChooseAnother": "Daardie gebruikersnaam is reeds geneem. Kies asseblief 'n ander een.",
+    "allParticipants": "Alle deelnemers",
+    "seeFullCoursePlan": "Sien volledige kursusplan",
+    "catchUp": "Plaas in",
     "messageLanguageIs": "Hierdie boodskap is gestel op {language}.",
     "updateMessageLanguage": "Klik hier om die boodskap se taal te verander.",
     "messageLanguage": "Boodskaptaal",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Ontsluit skryfhulp",
     "courseSectionTeaching": "Onderrig",
     "courseSectionLearning": "Leer",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursusse}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursusse}}",
+    "showMore": "Wys meer",
+    "showLess": "Wys minder",
+    "countNewMessages": "{count, plural, =1{1 nuwe boodskap} other{{count} nuwe boodskappe}}",
+    "markAllRead": "Merk alles as gelees"
 }

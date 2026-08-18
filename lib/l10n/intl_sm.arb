@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gaioiga na pingina",
     "appInTargetLanguageStaysInBaseLanguage": "(O lenei fa'atulagaga e tumau i lau gagana moni ina ia mafai ona e mauaina i taimi uma.)",
     "usernameTakenPleaseChooseAnother": "Ua uma ona fa'aaoga lena igoa fa'aoga. Fa'amolemole filifili se isi.",
+    "allParticipants": "Tagata uma o lo'o auai",
+    "seeFullCoursePlan": "Va'ai le fuafuaga atoa o le kosi",
+    "catchUp": "Fa'afou",
     "messageLanguageIs": "O lenei feʻau ua seti i le {language}.",
     "updateMessageLanguage": "Kiliki iinei e sui ai le gagana o le feʻau.",
     "messageLanguage": "Gagana o le feʻau",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Tatala le fesoasoani tusitusi",
     "courseSectionTeaching": "Aʻoaʻoina",
     "courseSectionLearning": "Aʻoaʻo",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kosi} other{{count} kosi}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kosi} other{{count} kosi}}",
+    "showMore": "Fa'aali atili",
+    "showLess": "Fa'aali itiiti",
+    "countNewMessages": "{count, plural, =1{1 feʻau fou} other{{count} feʻau fou}}",
+    "markAllRead": "Faailoga uma ua faitauina"
 }

@@ -2125,6 +2125,9 @@
     "pingedActivity": "Umsebenzi okhonjiwe",
     "appInTargetLanguageStaysInBaseLanguage": "(Lesi silungiselelo sihlala ngolimi lwakho lwendabuko ukuze uhlale usithola.)",
     "usernameTakenPleaseChooseAnother": "Lelo gama lomsebenzisi selivele likhona. Sicela ukhethe elinye.",
+    "allParticipants": "Bonke abahlanganyeli",
+    "seeFullCoursePlan": "Bona uhlelo oluphelele lwesifundo",
+    "catchUp": "Thola okusha",
     "messageLanguageIs": "Lo mlayezo usethelwe ku-{language}.",
     "updateMessageLanguage": "Chofoza lapha ukuze ushintshe ulimi lomlayezo.",
     "messageLanguage": "Ulimi lomlayezo",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Vula usizo lokubhala",
     "courseSectionTeaching": "Ukufundisa",
     "courseSectionLearning": "Ukufunda",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ikhosi} other{{count} amakhosi}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 ikhosi} other{{count} amakhosi}}",
+    "showMore": "Bonisa okwengeziwe",
+    "showLess": "Bonisa okuncane",
+    "countNewMessages": "{count, plural, =1{Umlayezo ongu-1 omusha} other{Imilayezo emisha engu-{count}}}",
+    "markAllRead": "Maka konke kufundiwe"
 }

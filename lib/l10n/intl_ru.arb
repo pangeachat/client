@@ -10709,6 +10709,9 @@
     "pingedActivity": "Активность с упоминанием",
     "appInTargetLanguageStaysInBaseLanguage": "(Эта настройка останется на вашем родном языке, чтобы вы всегда могли ее найти.)",
     "usernameTakenPleaseChooseAnother": "Это имя пользователя уже занято. Выберите другое.",
+    "allParticipants": "Все участники",
+    "seeFullCoursePlan": "Посмотреть полный план курса",
+    "catchUp": "Наверстать упущенное",
     "messageLanguageIs": "Язык этого сообщения: {language}.",
     "updateMessageLanguage": "Нажмите здесь, чтобы изменить язык сообщения.",
     "messageLanguage": "Язык сообщения",
@@ -10721,5 +10724,9 @@
     "unlockWritingAssistance": "Разблокировать помощь в написании",
     "courseSectionTeaching": "Преподавание",
     "courseSectionLearning": "Изучение",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсов}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курсов}}",
+    "showMore": "Показать больше",
+    "showLess": "Показать меньше",
+    "countNewMessages": "{count, plural, =1{1 новое сообщение} other{{count} новых сообщений}}",
+    "markAllRead": "Отметить все как прочитанное"
 }

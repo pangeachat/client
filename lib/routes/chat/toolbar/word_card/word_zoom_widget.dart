@@ -124,6 +124,10 @@ class WordZoomWidget extends StatelessWidget {
                             LanguageModel.unknown,
                         pos: pos,
                         morph: morph,
+                        // The message this word was tapped in, where the card
+                        // was opened from a message at all. The analytics and
+                        // style-example hosts pass no event and are roomless.
+                        roomId: event?.room.id,
                         style: const TextStyle(fontSize: 14.0),
                         maxLines: 2,
                         reloadNotifier: reloadNotifier,

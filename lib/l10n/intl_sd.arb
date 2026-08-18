@@ -2125,6 +2125,9 @@
     "pingedActivity": "پنگ ٿيل سرگرمي",
     "appInTargetLanguageStaysInBaseLanguage": "(هي سيٽنگ توهان جي مادري زبان ۾ رهي ٿي ته جيئن توهان ان کي هميشه ڳولي سگهو.)",
     "usernameTakenPleaseChooseAnother": "اهو يوزرنيم اڳ ۾ ئي ورتو ويو آهي. مهرباني ڪري ٻيو چونڊيو.",
+    "allParticipants": "سڀئي شرڪت ڪندڙ",
+    "seeFullCoursePlan": "مڪمل ڪورس پلان ڏسو",
+    "catchUp": "پوئتي پيل سبق پورو ڪريو",
     "messageLanguageIs": "ھي پيغام {language} تي سيٽ ٿيل آھي.",
     "updateMessageLanguage": "پيغام جي ٻولي تبديل ڪرڻ لاءِ ھتي ڪلڪ ڪريو.",
     "messageLanguage": "پيغام جي ٻولي",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "لکڻ جي مدد کوليو",
     "courseSectionTeaching": "سيکارڻ",
     "courseSectionLearning": "سکڻ",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ڪورس} other{{count} ڪورس}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 ڪورس} other{{count} ڪورس}}",
+    "showMore": "وڌيڪ ڏيکاريو",
+    "showLess": "گهٽ ڏيکاريو",
+    "countNewMessages": "{count, plural, =1{1 نئون پيغام} other{{count} نوان پيغام}}",
+    "markAllRead": "سڀ پڙهيل نشان لڳايو"
 }

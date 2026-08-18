@@ -2125,6 +2125,9 @@
     "pingedActivity": "kagiatan anu diping",
     "appInTargetLanguageStaysInBaseLanguage": "(Setélan ieu tetep dina basa asli anjeun supados anjeun tiasa salawasna mendakanana.)",
     "usernameTakenPleaseChooseAnother": "Ngaran pamaké éta geus aya. Mangga pilih nu sanés.",
+    "allParticipants": "Sadaya pamilon",
+    "seeFullCoursePlan": "Tingali rencana kursus lengkep",
+    "catchUp": "Susulan",
     "messageLanguageIs": "Pesen ieu disetel ka {language}.",
     "updateMessageLanguage": "Pencét di dieu pikeun ngarobah basa pesen.",
     "messageLanguage": "Basa pesen",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Buka konci bantuan nulis",
     "courseSectionTeaching": "Ngajar",
     "courseSectionLearning": "Diajar",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
+    "showMore": "Témbongkeun deui",
+    "showLess": "Témbongkeun saeutik",
+    "countNewMessages": "{count, plural, =1{1 talatah anyar} other{{count} talatah anyar}}",
+    "markAllRead": "Tandaan sadayana parantos dibaca"
 }

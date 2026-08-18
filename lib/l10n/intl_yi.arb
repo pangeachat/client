@@ -2125,6 +2125,9 @@
     "pingedActivity": "פּינגד טעטיקייט",
     "appInTargetLanguageStaysInBaseLanguage": "(די באַשטעטיקונג בלײַבט אין דײַן מוטערשפּראַך, כּדי דו זאָלסט זי שטענדיק געפֿינען קענען.)",
     "usernameTakenPleaseChooseAnother": "דער באַניצער־נאָמען איז שוין פֿאַרנומען. ביטע קלויבט אַן אַנדערן.",
+    "allParticipants": "אַלע באַטייליקטע",
+    "seeFullCoursePlan": "זען פולן קורס פּלאַן",
+    "catchUp": "כאַפּן זיך",
     "messageLanguageIs": "די מעסעדזש איז באַשטימט צו {language}.",
     "updateMessageLanguage": "דריקט דאָ צו ענדערן די שפּראַך פון דער מעסעדזש.",
     "messageLanguage": "מעסעדזש שפּראַך",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "אַנשליסן שרייבן הילף",
     "courseSectionTeaching": "לערנען",
     "courseSectionLearning": "לערנונג",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 קורס} other{{count} קורסן}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 קורס} other{{count} קורסן}}",
+    "showMore": "ווייַזן מער",
+    "showLess": "ווייַזן ווייניקער",
+    "countNewMessages": "{count, plural, =1{1 נייַע אָנזאָג} other{{count} נייַע אַרטיקלען}}",
+    "markAllRead": "מאַרקירן אַלע געלייענט"
 }

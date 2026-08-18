@@ -2125,6 +2125,9 @@
     "pingedActivity": "Пинделген аракет",
     "appInTargetLanguageStaysInBaseLanguage": "(Бул жөндөө ар дайым таба алышыңыз үчүн эне тилиңизде калат.)",
     "usernameTakenPleaseChooseAnother": "Бул колдонуучу аты мурунтан эле колдонулуп жатат. Башкасын тандаңыз.",
+    "allParticipants": "Бардык катышуучулар",
+    "seeFullCoursePlan": "Курстун толук планын көрүү",
+    "catchUp": "Жетишип ал",
     "messageLanguageIs": "Бул билдирүү {language} тилинде.",
     "updateMessageLanguage": "Билдирүүнүн тилин өзгөртүү үчүн бул жерди басыңыз.",
     "messageLanguage": "Билдирүү тили",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Жазууга жардам берүүнүн кулпусун ачуу",
     "courseSectionTeaching": "Окутуу",
     "courseSectionLearning": "Үйрөнүү",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}",
+    "showMore": "Көбүрөөк көрсөтүү",
+    "showLess": "Азыраак көрсөтүү",
+    "countNewMessages": "{count, plural, =1{1 жаңы билдирүү} other{{count} жаңы билдирүүлөр}}",
+    "markAllRead": "Баарын окулган деп белгилөө"
 }

@@ -2125,6 +2125,9 @@
     "pingedActivity": "Hawlaha la soo sheegay",
     "appInTargetLanguageStaysInBaseLanguage": "(Dejintani waxay ku sii jiraysaa luqaddaada hooyo si aad mar walba u hesho.)",
     "usernameTakenPleaseChooseAnother": "Magaca isticmaalaha waa la qaatay. Fadlan mid kale dooro.",
+    "allParticipants": "Dhammaan ka qaybgalayaasha",
+    "seeFullCoursePlan": "Eeg qorshaha koorsada oo dhan",
+    "catchUp": "La socodsiin",
     "messageLanguageIs": "Fariintani waxay ku qoran tahay {language}.",
     "updateMessageLanguage": "Halkan ku dhufo si aad u beddesho luqadda fariinta.",
     "messageLanguage": "Luqadda fariinta",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "Fur caawinta qorista",
     "courseSectionTeaching": "Barid",
     "courseSectionLearning": "Barasho",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 koorso} other{{count} koorso}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 koorso} other{{count} koorso}}",
+    "showMore": "Muuji wax badan",
+    "showLess": "Muuji wax yar",
+    "countNewMessages": "{count, plural, =1{1 fariin cusub} other{{count} fariimo cusub}}",
+    "markAllRead": "Dhammaan akhri"
 }

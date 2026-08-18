@@ -2125,6 +2125,9 @@
     "pingedActivity": "ಪಿಂಗ್ ಮಾಡಿದ ಚಟುವಟಿಕೆ",
     "appInTargetLanguageStaysInBaseLanguage": "(ಈ ಸೆಟ್ಟಿಂಗ್ ನಿಮ್ಮ ಸ್ಥಳೀಯ ಭಾಷೆಯಲ್ಲಿಯೇ ಇರುತ್ತದೆ, ಆದ್ದರಿಂದ ನೀವು ಅದನ್ನು ಯಾವಾಗಲೂ ಹುಡುಕಬಹುದು.)",
     "usernameTakenPleaseChooseAnother": "ಆ ಬಳಕೆದಾರಹೆಸರು ಈಗಾಗಲೇ ಬಳಕೆಯಲ್ಲಿದೆ. ದಯವಿಟ್ಟು ಇನ್ನೊಂದನ್ನು ಆರಿಸಿ.",
+    "allParticipants": "ಎಲ್ಲಾ ಭಾಗವಹಿಸುವವರು",
+    "seeFullCoursePlan": "ಸಂಪೂರ್ಣ ಕೋರ್ಸ್ ಯೋಜನೆಯನ್ನು ನೋಡಿ",
+    "catchUp": "ಕ್ಯಾಚ್ ಅಪ್",
     "messageLanguageIs": "ಈ ಸಂದೇಶವನ್ನು {language} ಗೆ ಹೊಂದಿಸಲಾಗಿದೆ.",
     "updateMessageLanguage": "ಸಂದೇಶದ ಭಾಷೆಯನ್ನು ಬದಲಾಯಿಸಲು ಇಲ್ಲಿ ಕ್ಲಿಕ್ ಮಾಡಿ.",
     "messageLanguage": "ಸಂದೇಶ ಭಾಷೆ",
@@ -2137,5 +2140,9 @@
     "unlockWritingAssistance": "ಬರವಣಿಗೆ ಸಹಾಯವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
     "courseSectionTeaching": "ಬೋಧನೆ",
     "courseSectionLearning": "ಕಲಿಕೆ",
-    "courseSectionLabel": "{title}, {count, plural, =1{1 ಕೋರ್ಸ್} other{{count} ಕೋರ್ಸ್‌ಗಳು}}"
+    "courseSectionLabel": "{title}, {count, plural, =1{1 ಕೋರ್ಸ್} other{{count} ಕೋರ್ಸ್‌ಗಳು}}",
+    "showMore": "ಇನ್ನಷ್ಟು ತೋರಿಸು",
+    "showLess": "ಕಡಿಮೆ ತೋರಿಸು",
+    "countNewMessages": "{count, plural, =1{1 ಹೊಸ ಸಂದೇಶ} other{{count} ಹೊಸ ಸಂದೇಶಗಳು}}",
+    "markAllRead": "ಎಲ್ಲವನ್ನೂ ಓದಿದಂತೆ ಗುರುತಿಸಿ"
 }

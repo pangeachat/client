@@ -2,7 +2,7 @@
 /// a build declares.
 ///
 /// The two are deliberately different types. A playback event is always one of
-/// the four LISTENING categories; `voiceSend` is a coverage category only —
+/// the six LISTENING categories; `voiceSend` is a coverage category only —
 /// speaking's magnitude is derived server-side from the `m.audio` event, so
 /// there is no client-side speaking playback event for it to label. Splitting
 /// the enums makes "emit a listening event tagged voiceSend" unrepresentable
@@ -47,7 +47,33 @@ enum DosageListeningCategory {
   /// device-only (`allowChoreoPlay: false`), the speaker button is the paid
   /// backend route — so folding either into the other would make one counter
   /// mean two things.
-  toolbarRead('toolbar_read');
+  toolbarRead('toolbar_read'),
+
+  /// A word the learner tapped to hear: the word card opened on a token in a
+  /// message, a vocab chip in an activity, a tile in the vocab list, the
+  /// pronunciation button on a word card.
+  ///
+  /// The four above are all about a MESSAGE — a peer's voice message, a message
+  /// read aloud on arrival, a message the speaker button was tapped on, a
+  /// message the toolbar was opened on. A word tap is a different unit of
+  /// listening, which is why it had nowhere to go and was counted nowhere:
+  /// `tapRead` means the whole message on the paid route, so widening it here
+  /// would have made one counter mean two things.
+  ///
+  /// The split against [practiceAudio] is the one the app already makes to
+  /// decide gating — `TtsUseCase.words` against `TtsUseCase.choices` — promoted
+  /// onto the wire rather than invented for it. Looking a word up and drilling
+  /// are two study behaviours a teacher can act on separately.
+  wordAudio('word_audio'),
+
+  /// Audio a practice drill plays: an answer choice spoken back on tap, the
+  /// correct answer reinforced after a response, a match item's play button.
+  ///
+  /// Same reason as [wordAudio] — none of the four message categories describes
+  /// a drill — and the same distinction as [wordAudio] carries: this is
+  /// listening produced BY an exercise, whose volume tracks how much practice
+  /// the learner did, not how much conversation they read.
+  practiceAudio('practice_audio');
 
   const DosageListeningCategory(this.wireName);
 
@@ -60,6 +86,9 @@ enum DosageListeningCategory {
     DosageListeningCategory.autoRead => DosageCoverageCategory.autoRead,
     DosageListeningCategory.tapRead => DosageCoverageCategory.tapRead,
     DosageListeningCategory.toolbarRead => DosageCoverageCategory.toolbarRead,
+    DosageListeningCategory.wordAudio => DosageCoverageCategory.wordAudio,
+    DosageListeningCategory.practiceAudio =>
+      DosageCoverageCategory.practiceAudio,
   };
 
   /// The category for a TIMELINE audio message, or null when this playback is
@@ -92,22 +121,26 @@ enum DosageListeningCategory {
 ///
 /// Coverage is what converts "no signal" into "zero" rather than "unknown", so
 /// a category that is NOT declared is uncovered and its counter is withheld.
-/// There are five, not four: `voiceSend` covers the `onVoiceMessageSend`
+/// There are seven, not six: `voiceSend` covers the `onVoiceMessageSend`
 /// envelope and therefore `speakingMinutes` and `voiceMessagesSent` (D-V2-15).
 /// Speaking's MEASUREMENT is server-side, but the server never learns a voice
 /// message exists without a client-originated row, so its DENOMINATOR is
 /// client-side and needs the same declaration.
 ///
-/// A build that ships three of the four listening emitters must declare exactly
+/// A build that ships three of the six listening emitters must declare exactly
 /// those three: an older build that has no `toolbarRead` emitter never declares
 /// `toolbar_read`, so the server withholds that counter for it rather than
 /// serving its silence as a real zero. That is the whole reason coverage is per
-/// category and not per lane.
+/// category and not per lane — and it is what makes the two newest categories
+/// safe to add: a build that predates them declares neither, so the server
+/// withholds their counters for it rather than serving its silence as a zero.
 enum DosageCoverageCategory {
   peer('peer'),
   autoRead('auto_read'),
   tapRead('tap_read'),
   toolbarRead('toolbar_read'),
+  wordAudio('word_audio'),
+  practiceAudio('practice_audio'),
   voiceSend('voice_send');
 
   const DosageCoverageCategory(this.wireName);
