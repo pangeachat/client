@@ -252,13 +252,22 @@ class ActiveCall extends ChangeNotifier {
         });
       }
 
-      await calls.announce();
+      // announce returns our membership event id, waiting for the state write
+      // to echo — the ring needs it, so this is where the wait belongs.
+      final membershipId = await calls.announce();
       if (_ending) return _abandon();
 
       // Ring the other side. A timeline event, so it reaches them via push even
       // if their app was closed — membership alone could not. Its id is what a
-      // decline points back at, so we keep it to match one.
-      _notificationId = await calls.ring(room, video: video);
+      // decline points back at, so we keep it to match one. If the membership id
+      // never came, the call still works; it just cannot ring.
+      if (membershipId != null) {
+        _notificationId = await calls.ring(
+          room,
+          membershipEventId: membershipId,
+          video: video,
+        );
+      }
       if (_notificationId != null) {
         _declines = calls
             .declinesOf(room, _notificationId!)

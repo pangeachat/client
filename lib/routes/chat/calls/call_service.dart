@@ -242,16 +242,15 @@ class CallService {
   /// receiver knows which call it is, and it is what a decline points back at.
   /// Null if our membership is not yet in room state, in which case the call
   /// still works, it just does not ring: better silent than crashing.
-  Future<String?> ring(Room room, {required bool video}) async {
-    final membership = _myMembershipEventId(room);
-    if (membership == null) {
-      Logs().w('Cannot ring: our call membership is not in room state yet');
-      return null;
-    }
+  Future<String?> ring(
+    Room room, {
+    required String membershipEventId,
+    required bool video,
+  }) async {
     try {
       return await room.sendEvent(
         CallNotification(
-          membershipEventId: membership,
+          membershipEventId: membershipEventId,
           senderDeviceId: client.deviceID!,
           video: video,
         ).toContent(DateTime.now()),
@@ -283,7 +282,11 @@ class CallService {
   Stream<IncomingCallNotification> get incomingRings => client
       .onTimelineEvent
       .stream
-      .where((event) => event.type == PangeaEventTypes.callNotification)
+      .where(
+        (event) =>
+            event.type == PangeaEventTypes.callNotification &&
+            event.room.isDirectChat,
+      )
       .map(
         (event) => IncomingCallNotification(
           event: event,
@@ -344,19 +347,35 @@ class CallService {
   /// Separate from [join] because the two are not simultaneous by design: media
   /// comes up in between, so a peer never sees a participant who cannot yet be
   /// heard.
-  Future<void> announce() async {
+  Future<String?> announce() async {
     final session = _current;
-    if (session == null) return;
+    if (session == null) return null;
     // A leave that failed part-way can leave the SDK's session still entered,
     // and it is reused by the next join. Entering it again throws, which would
     // make every later call in that room fail for a transient error the learner
     // never saw. Already-entered is the state we wanted.
-    if (session.state == GroupCallState.entered ||
-        session.state == GroupCallState.entering) {
-      Logs().i('Call session is already entered; not entering again');
-      return;
+    if (session.state != GroupCallState.entered &&
+        session.state != GroupCallState.entering) {
+      await session.enter();
     }
-    await session.enter();
+    return _awaitMembershipEventId(session.room);
+  }
+
+  /// Our own membership's event id, waiting briefly for the state write to echo.
+  ///
+  /// `enter()` writes the membership but does not return its id, and the id only
+  /// appears in room state once the write echoes back. The ring references it,
+  /// so a blank wait would mean the call connects but never rings — the receiver
+  /// would be woken by nothing. Bounded: a caller must not hang because an echo
+  /// is slow, so after the window the call proceeds unrung rather than stuck.
+  Future<String?> _awaitMembershipEventId(Room room) async {
+    for (var attempt = 0; attempt < 15; attempt++) {
+      final id = _myMembershipEventId(room);
+      if (id != null) return id;
+      await Future.delayed(const Duration(milliseconds: 200));
+    }
+    Logs().w('Membership event id did not appear; the call will not ring');
+    return null;
   }
 
   /// Retracts our membership and tears the session down.

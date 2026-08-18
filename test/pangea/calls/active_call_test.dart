@@ -41,7 +41,11 @@ class FakeCalls extends CallService {
   String? ringedNotificationId;
 
   @override
-  Future<String?> ring(matrix.Room room, {required bool video}) async {
+  Future<String?> ring(
+    matrix.Room room, {
+    required String membershipEventId,
+    required bool video,
+  }) async {
     trace('ring');
     return ringedNotificationId ??= '\$notification';
   }
@@ -96,10 +100,13 @@ class FakeCalls extends CallService {
   }
 
   @override
-  Future<void> announce() async {
+  Future<String?> announce() async {
     trace('announce');
     if (announceError != null) throw announceError!;
+    return membershipId;
   }
+
+  String? membershipId = '\$membership';
 
   @override
   Future<bool> retract() async {

@@ -24,13 +24,11 @@ class PangeaVoipDelegate implements WebRTCDelegate {
 
   /// Notified when the set of known group calls changes, so the UI can react without
   /// this class importing widgets.
-  void Function(GroupCallSession call)? onGroupCallDiscovered;
   final void Function(GroupCallSession call)? onGroupCallEnded;
   final void Function(CallSession call)? onIncomingCall;
   final void Function(CallSession call)? onCallEnded;
 
   PangeaVoipDelegate({
-    this.onGroupCallDiscovered,
     this.onGroupCallEnded,
     this.onIncomingCall,
     this.onCallEnded,
@@ -98,16 +96,11 @@ class PangeaVoipDelegate implements WebRTCDelegate {
 
   @override
   Future<void> handleNewGroupCall(GroupCallSession groupCall) async {
-    // Deliberately NOT filtered by [_presence]. A call id is derived from the
-    // room, so every call in a conversation shares one — and a call that was
-    // declined never reaches handleGroupCallEnded to clear it. Suppressing
-    // repeats here meant declining once stopped that conversation ever ringing
-    // again.
-    //
-    // Whether a discovery is worth announcing is decided by whoever listens,
-    // from live membership rather than from what has been seen before.
+    // Tracks that a call exists so [canHandleNewCall] can refuse a second one.
+    // Ringing is NOT driven from here: the SDK reports every discovery including
+    // this device's own, and a state change cannot wake a closed app. Ringing
+    // rides an MSC4075 timeline notification instead.
     _presence.add(groupCall.groupCallId);
-    onGroupCallDiscovered?.call(groupCall);
   }
 
   @override

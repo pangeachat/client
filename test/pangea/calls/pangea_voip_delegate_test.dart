@@ -36,38 +36,18 @@ void main() {
   });
 
   group('discovering a call', () {
-    test('a second call in the same room is announced too', () async {
-      // A call id is derived from the room, so every call in a conversation
-      // shares one — and a declined call never reaches handleGroupCallEnded to
-      // clear it. Suppressing repeats here meant declining once stopped that
-      // conversation ever ringing again.
-      final announced = <String>[];
-      final delegate = PangeaVoipDelegate(
-        onGroupCallDiscovered: (call) => announced.add(call.groupCallId),
-      );
+    test('marks the account busy, so a second call is refused', () async {
+      // Discovery no longer rings — a state change cannot wake a closed app, so
+      // ringing rides an MSC4075 notification. Discovery's only job now is to
+      // know a call exists.
+      final delegate = PangeaVoipDelegate();
+      expect(delegate.canHandleNewCall, isTrue);
 
       await delegate.handleNewGroupCall(FakeGroupCall('!dm:server'));
-      await delegate.handleNewGroupCall(FakeGroupCall('!dm:server'));
-      await delegate.handleNewGroupCall(FakeGroupCall('!dm:server'));
+      expect(delegate.canHandleNewCall, isFalse);
 
-      expect(
-        announced,
-        ['!dm:server', '!dm:server', '!dm:server'],
-        reason: 'whether to ring is decided from live membership, not novelty',
-      );
-    });
-
-    test('a call that ended and started again is announced', () async {
-      final announced = <String>[];
-      final delegate = PangeaVoipDelegate(
-        onGroupCallDiscovered: (call) => announced.add(call.groupCallId),
-      );
-
-      await delegate.handleNewGroupCall(FakeGroupCall('!dm:server'));
       await delegate.handleGroupCallEnded(FakeGroupCall('!dm:server'));
-      await delegate.handleNewGroupCall(FakeGroupCall('!dm:server'));
-
-      expect(announced, hasLength(2));
+      expect(delegate.canHandleNewCall, isTrue);
     });
   });
 }
