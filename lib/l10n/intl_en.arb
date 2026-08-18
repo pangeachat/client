@@ -3587,6 +3587,7 @@
     "constructUsePvmDesc": "Produced in voice message",
     "constructUsePvcDesc": "Produced in a call",
     "startCall": "Call",
+    "startVideoCall": "Video call",
     "callConnecting": "Connecting",
     "callFailed": "Could not connect the call",
     "callEnded": "Call ended",

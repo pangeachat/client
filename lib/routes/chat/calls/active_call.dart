@@ -55,6 +55,7 @@ class ActiveCall extends ChangeNotifier {
   AudioTrack? _track;
   StreamSubscription? _participants;
   StreamSubscription? _declines;
+  Timer? _reelect;
   String? _notificationId;
   Future<void> _handover = Future.value();
 
@@ -68,6 +69,13 @@ class ActiveCall extends ChangeNotifier {
   /// Runs whenever the call's participants change, because that is the only thing
   /// that can change the answer. Idempotent — re-running it in the right state
   /// does nothing — so it is safe to call on every event.
+  /// Fires the periodic re-election now, for tests, instead of on the timer.
+  @visibleForTesting
+  Future<void> tickReelectionForTest() async {
+    _electRecorder();
+    await _handover;
+  }
+
   void _electRecorder() {
     if (_ending) return;
     final track = _track;
@@ -219,8 +227,12 @@ class ActiveCall extends ChangeNotifier {
   /// flag means no call site — the header button, the banner, a deep link — can
   /// get it wrong, and keying it on ANOTHER user rather than any active call
   /// means this account's own stale membership does not silence a real call.
+  ///
+  /// Keyed on another DEVICE, not another user, so this device's own stale
+  /// membership (replaced by the new join) and its own second device joining
+  /// are both handled.
   Future<void> start(matrix.Room room, {required bool video}) async {
-    final placing = !calls.otherUserInCall(room);
+    final placing = !calls.otherDeviceInCall(room);
     try {
       final grant = await calls.join(room);
       _joined = true;
@@ -246,6 +258,16 @@ class ActiveCall extends ChangeNotifier {
       // rather than after a round-trip. The election reads room state, which
       // already lists any other device of this account.
       _electRecorder();
+
+      // Re-run periodically as well as on participant changes. A sibling device
+      // that crashed leaves a membership that lapses on a timer, not an event,
+      // so without this a device deferring to that phantom would stay silent for
+      // the rest of the call. The tick drops it once it expires and this device
+      // takes over recording.
+      _reelect = Timer.periodic(
+        const Duration(seconds: 30),
+        (_) => _electRecorder(),
+      );
       // Settle the first election before announcing, so recording is already
       // running when the peer learns this device is here. Handovers are queued,
       // so without this the initial start would land a microtask later.
@@ -347,6 +369,8 @@ class ActiveCall extends ChangeNotifier {
   /// membership standing.
   Future<void> _tearDown() async {
     _ending = true;
+    _reelect?.cancel();
+    _reelect = null;
     unawaited(_declines?.cancel());
     _declines = null;
     _waitingForPeer?.cancel();

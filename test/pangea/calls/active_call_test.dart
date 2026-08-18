@@ -27,10 +27,10 @@ class FakeCalls extends CallService {
   final _events = StreamController<MatrixRTCCallEvent>.broadcast();
   List<String> devicesInCall = const [];
   bool remotePresent = false;
-  bool otherUserPresent = false;
+  bool otherDevicePresent = false;
 
   @override
-  bool otherUserInCall(matrix.Room room) => otherUserPresent;
+  bool otherDeviceInCall(matrix.Room room) => otherDevicePresent;
 
   @override
   bool get hasRemoteParticipants => remotePresent;
@@ -234,7 +234,7 @@ void main() {
   group('bringing a call up', () {
     test('placing into an empty room rings the other side', () async {
       final (call, calls, _, _) = await build();
-      calls.otherUserPresent = false;
+      calls.otherDevicePresent = false;
       await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, contains('ring'));
     });
@@ -246,9 +246,23 @@ void main() {
         // on any active call it would look like joining, and the real caller would
         // go out silent — so placing is keyed on ANOTHER user being present.
         final (call, calls, _, _) = await build();
-        calls.otherUserPresent = false; // only our own stale membership, if any
+        calls.otherDevicePresent =
+            false; // only our own stale membership, if any
         await call.start(roomStub(calls.client), video: false);
         expect(trace.steps, contains('ring'));
+      },
+    );
+
+    test(
+      'this account own second device joining does not ring again',
+      () async {
+        // The caller's second device is a different DEVICE of the same user.
+        // Keyed on the user it would look like placing and ring the callee a
+        // second time; keyed on the device it is correctly a join.
+        final (call, calls, _, _) = await build();
+        calls.otherDevicePresent = true; // the first device is already here
+        await call.start(roomStub(calls.client), video: false);
+        expect(trace.steps, isNot(contains('ring')));
       },
     );
 
@@ -258,7 +272,7 @@ void main() {
       // would ring the caller who is already there. This holds however the join
       // is reached — the banner, the header button, or a deep link.
       final (call, calls, _, _) = await build();
-      calls.otherUserPresent = true;
+      calls.otherDevicePresent = true;
       await call.start(roomStub(calls.client), video: false);
       expect(trace.steps, isNot(contains('ring')));
       expect(call.stage, CallStage.connected);
@@ -759,6 +773,22 @@ void main() {
       await calls.participantsBecome([calls.client.deviceID!, 'zzzzzzzzzz']);
       expect(trace.steps, contains('capture.start'));
       expect(call.isRecording, isTrue);
+    });
+
+    test('a phantom sibling is dropped by the periodic re-election', () async {
+      // A sibling device that crashed leaves a membership that lapses on a
+      // timer, not an event. This device deferred to it; the periodic tick is
+      // what lets it notice the phantom is gone and take over recording.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isFalse, reason: 'deferred to the lower id');
+
+      // The phantom expires and leaves room state.
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.tickReelectionForTest();
+
+      expect(call.isRecording, isTrue, reason: 'it took over');
     });
 
     test('participant changes after hangup are ignored', () async {

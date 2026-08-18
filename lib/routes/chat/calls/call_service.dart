@@ -195,21 +195,23 @@ class CallService {
     ];
   }
 
-  /// Whether someone other than this account is already in a call in [room].
+  /// Whether any device OTHER than this one is already in a call in [room].
   ///
-  /// This is what decides placing from joining: a plain "is any call active"
-  /// check counts this account's own membership, including a stale one a failed
-  /// retract left behind — so a genuine new call would see it, think it was
-  /// joining, and go out silent. Another user's live membership means a real
-  /// call to join.
-  bool otherUserInCall(Room room) {
-    final me = client.userID;
-    if (me == null || _disposed) return false;
+  /// This decides placing from joining, and it is keyed on the device rather
+  /// than the user for two reasons. This device's own leftover membership — a
+  /// failed retract's, which the new join replaces — is excluded, so a genuine
+  /// new call still rings. And another of this account's OWN devices already in
+  /// the call is included, so a second device joining does not ring again. Every
+  /// case reduces to: is there someone already here I am joining, where
+  /// "someone" is any device but mine.
+  bool otherDeviceInCall(Room room) {
+    if (_disposed) return false;
+    final myDevice = client.deviceID;
     return room
         .getCallMembershipsFromRoom(voip)
         .values
         .expand((list) => list)
-        .any((m) => m.userId != me && !m.isExpired);
+        .any((m) => m.deviceId != myDevice && !m.isExpired);
   }
 
   /// Whether the other side is still ringing in [room] — someone else is in

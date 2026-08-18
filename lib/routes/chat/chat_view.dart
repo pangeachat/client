@@ -87,11 +87,22 @@ class ChatView extends StatelessWidget {
           future: Matrix.of(context).callService.resolveFocus(),
           builder: (context, snapshot) => snapshot.data == null
               ? const SizedBox.shrink()
-              : IconButton(
-                  icon: const Icon(Icons.call_outlined),
-                  tooltip: L10n.of(context).startCall,
-                  onPressed: () =>
-                      CallPage.show(context, controller.room, video: false),
+              : Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    IconButton(
+                      icon: const Icon(Icons.videocam_outlined),
+                      tooltip: L10n.of(context).startVideoCall,
+                      onPressed: () =>
+                          CallPage.show(context, controller.room, video: true),
+                    ),
+                    IconButton(
+                      icon: const Icon(Icons.call_outlined),
+                      tooltip: L10n.of(context).startCall,
+                      onPressed: () =>
+                          CallPage.show(context, controller.room, video: false),
+                    ),
+                  ],
                 ),
         ),
       IconButton(
