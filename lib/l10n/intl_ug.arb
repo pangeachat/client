@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-17 09:31:50.148637",
+    "@@last_modified": "2026-08-17 16:45:39.234296",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "پىڭلانغان پائالىيەت",
     "appInTargetLanguageStaysInBaseLanguage": "(بۇ تەڭشەك ئانا تىلىڭىزدا تۇرىدۇ، شۇڭا سىز ئۇنى ھەمىشە تاپالايسىز.)",
     "usernameTakenPleaseChooseAnother": "بۇ ئىشلەتكۈچى نامى ئاللىبۇرۇن ئېلىنىپ بولغان. باشقا بىرنى تاللاڭ.",
+    "allParticipants": "بارلىق ئىشتىراكچىلار",
+    "seeFullCoursePlan": "تولۇق دەرس پىلانىنى كۆرۈڭ",
+    "catchUp": "يېتىۋېلىش",
     "messageLanguageIs": "بۇ ئۇچۇر {language} غا تەڭشەلدى.",
     "updateMessageLanguage": "ئۇچۇر تىلىنى ئۆزگەرتىش ئۈچۈن بۇ يەرنى چېكىڭ.",
     "messageLanguage": "ئۇچۇر تىلى",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "تەرجىمىلەرنى ئېچىڭ",
     "unlockEmojiMode": "ئېموجى ھالىتىنى ئېچىڭ",
     "unlockMessagePractice": "ئۇچۇر مەشىقىنى ئېچىڭ",
-    "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ"
+    "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ",
+    "showMore": "تېخىمۇ كۆپ كۆرسەت",
+    "showLess": "ئازراق كۆرسەت",
+    "countNewMessages": "{count, plural, =1{1 يېڭى ئۇچۇر} other{{count} يېڭى ئۇچۇر}}",
+    "markAllRead": "ھەممىنى ئوقۇلدى قىل"
 }

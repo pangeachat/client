@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-17 09:31:13.157670",
+    "@@last_modified": "2026-08-17 16:45:38.503779",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Chiitiko chakanongedzwa",
     "appInTargetLanguageStaysInBaseLanguage": "(Iyi setingi inoramba iri mumutauro wako wekuzvarwa kuti ugone kuwana nguva dzose.)",
     "usernameTakenPleaseChooseAnother": "Zita rekushandisa iroro ratorwa. Ndapota sarudza rimwe.",
+    "allParticipants": "Vese vatori vechikamu",
+    "seeFullCoursePlan": "Ona chirongwa chekosi chakazara",
+    "catchUp": "Bata",
     "messageLanguageIs": "Meseji iyi yakaiswa ku {language}.",
     "updateMessageLanguage": "Dzvanya pano kuti uchinje mutauro wemeseji.",
     "messageLanguage": "Mutauro wemeseji",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Vhura shanduro",
     "unlockEmojiMode": "Vhura emoji mode",
     "unlockMessagePractice": "Vhura kudzidzira mameseji",
-    "unlockWritingAssistance": "Vhura rubatsiro rwekunyora"
+    "unlockWritingAssistance": "Vhura rubatsiro rwekunyora",
+    "showMore": "Ratidza zvimwe",
+    "showLess": "Ratidza zvishoma",
+    "countNewMessages": "{count, plural, =1{1 meseji itsva} other{{count} meseji itsva}}",
+    "markAllRead": "Maka zvese sekuverengwa"
 }

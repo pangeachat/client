@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-17 09:30:48.399592",
+    "@@last_modified": "2026-08-17 16:45:36.960335",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Пингувана активност",
     "appInTargetLanguageStaysInBaseLanguage": "(Оваа поставка останува на вашиот мајчин јазик за секогаш да можете да ја најдете.)",
     "usernameTakenPleaseChooseAnother": "Тоа корисничко име е веќе зафатено. Ве молиме изберете друго.",
+    "allParticipants": "Сите учесници",
+    "seeFullCoursePlan": "Погледнете го целиот план на курсот",
+    "catchUp": "Стигни",
     "messageLanguageIs": "Оваа порака е поставена на {language}.",
     "updateMessageLanguage": "Кликнете овде за да го промените јазикот на пораката.",
     "messageLanguage": "Јазик на пораката",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Отклучи преводи",
     "unlockEmojiMode": "Отклучи емоџи режим",
     "unlockMessagePractice": "Отклучи вежбање пораки",
-    "unlockWritingAssistance": "Отклучи помош при пишување"
+    "unlockWritingAssistance": "Отклучи помош при пишување",
+    "showMore": "Прикажи повеќе",
+    "showLess": "Прикажи помалку",
+    "countNewMessages": "{count, plural, =1{1 нова порака} other{{count} нови пораки}}",
+    "markAllRead": "Означи ги сите како прочитани"
 }

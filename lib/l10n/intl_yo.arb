@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-17 09:31:35.175923",
+    "@@last_modified": "2026-08-17 16:45:39.672820",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Iṣẹ-ṣiṣe ti a fi ranṣẹ",
     "appInTargetLanguageStaysInBaseLanguage": "(Ètò yìí wà ní èdè ìbílẹ̀ rẹ kí o lè rí i nígbà gbogbo.)",
     "usernameTakenPleaseChooseAnother": "Orukọ olumulo yẹn ti wa ni lilo tẹlẹ. Jọwọ yan omiran.",
+    "allParticipants": "Gbogbo àwọn tó kopa",
+    "seeFullCoursePlan": "Wo gbogbo ètò ẹ̀kọ́",
+    "catchUp": "Bá wa sọ̀rọ̀",
     "messageLanguageIs": "Ìfọ̀rọ̀ránṣẹ́ yìí wà ní èdè {language}.",
     "updateMessageLanguage": "Tẹ níbí láti yí èdè ìfọ̀rọ̀ránṣẹ́ padà.",
     "messageLanguage": "Èdè ìfọ̀rọ̀ránṣẹ́",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Ṣí àwọn ìtumọ̀ sílẹ̀",
     "unlockEmojiMode": "Ṣí ipò emoji sílẹ̀",
     "unlockMessagePractice": "Ṣí ìdánilẹ́kọ̀ọ́ ìfiranṣẹ́ sílẹ̀",
-    "unlockWritingAssistance": "Ṣí ìrànlọ́wọ́ kíkọ sílẹ̀"
+    "unlockWritingAssistance": "Ṣí ìrànlọ́wọ́ kíkọ sílẹ̀",
+    "showMore": "Fi siwaju si han",
+    "showLess": "Fi kere si han",
+    "countNewMessages": "{count, plural, =1{ìhìn tuntun 1} other{ìhìn tuntun {count}}}",
+    "markAllRead": "Samisi gbogbo rẹ bi o ti ka"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-17 09:31:56.716190",
+    "@@last_modified": "2026-08-17 16:45:39.886084",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Umsebenzi okhonjiwe",
     "appInTargetLanguageStaysInBaseLanguage": "(Lesi silungiselelo sihlala ngolimi lwakho lwendabuko ukuze uhlale usithola.)",
     "usernameTakenPleaseChooseAnother": "Lelo gama lomsebenzisi selivele likhona. Sicela ukhethe elinye.",
+    "allParticipants": "Bonke abahlanganyeli",
+    "seeFullCoursePlan": "Bona uhlelo oluphelele lwesifundo",
+    "catchUp": "Thola okusha",
     "messageLanguageIs": "Lo mlayezo usethelwe ku-{language}.",
     "updateMessageLanguage": "Chofoza lapha ukuze ushintshe ulimi lomlayezo.",
     "messageLanguage": "Ulimi lomlayezo",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Vula izinguqulo",
     "unlockEmojiMode": "Vula imodi ye-emoji",
     "unlockMessagePractice": "Vula ukuzijwayeza imilayezo",
-    "unlockWritingAssistance": "Vula usizo lokubhala"
+    "unlockWritingAssistance": "Vula usizo lokubhala",
+    "showMore": "Bonisa okwengeziwe",
+    "showLess": "Bonisa okuncane",
+    "countNewMessages": "{count, plural, =1{Umlayezo ongu-1 omusha} other{Imilayezo emisha engu-{count}}}",
+    "markAllRead": "Maka konke kufundiwe"
 }

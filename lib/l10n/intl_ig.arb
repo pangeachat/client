@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-17 09:30:42.865123",
+    "@@last_modified": "2026-08-17 16:45:35.986317",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Ọrụ pinged",
     "appInTargetLanguageStaysInBaseLanguage": "(Ntọala a na-anọ n'asụsụ obodo gị ka ị nwee ike ịchọta ya mgbe niile.)",
     "usernameTakenPleaseChooseAnother": "A na-eji aha njirimara ahụ. Biko họrọ nke ọzọ.",
+    "allParticipants": "Ndị niile so na ya",
+    "seeFullCoursePlan": "Lee atụmatụ ọmụmụ ihe zuru ezu",
+    "catchUp": "Mee ngwa ngwa",
     "messageLanguageIs": "Edoziri ozi a ka ọ bụrụ {language}.",
     "updateMessageLanguage": "Pịa ebe a ka ịgbanwee asụsụ ozi ahụ.",
     "messageLanguage": "Asụsụ ozi",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Mepee ntụgharị asụsụ",
     "unlockEmojiMode": "Mepee ọnọdụ emoji",
     "unlockMessagePractice": "Mepee omume ozi",
-    "unlockWritingAssistance": "Mepee enyemaka ide ihe"
+    "unlockWritingAssistance": "Mepee enyemaka ide ihe",
+    "showMore": "Gosi ihe ndị ọzọ",
+    "showLess": "Gosi ihe na-erughị",
+    "countNewMessages": "{count, plural, =1{1 ozi ọhụrụ} other{{count} ozi ọhụrụ}}",
+    "markAllRead": "Kaa ihe niile ka agụọla"
 }

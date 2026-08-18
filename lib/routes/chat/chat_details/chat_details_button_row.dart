@@ -9,30 +9,26 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/navigation/room_close_location.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
-import 'package:fluffychat/routes/chat/chat_details/chat_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/invite/pangea_invitation_selection.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
+import 'package:fluffychat/utils/chat_download_provider.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 class ChatDetailsButtonRow extends StatefulWidget {
-  final ChatDetailsController controller;
   final Room room;
 
-  const ChatDetailsButtonRow({
-    super.key,
-    required this.controller,
-    required this.room,
-  });
+  const ChatDetailsButtonRow({super.key, required this.room});
 
   @override
   State<ChatDetailsButtonRow> createState() => ChatDetailsButtonRowState();
 }
 
-class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
+class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow>
+    with ChatDownloadProvider {
   StreamSubscription? notificationChangeSub;
 
   @override
@@ -98,41 +94,25 @@ class ChatDetailsButtonRowState extends State<ChatDetailsButtonRow> {
       ButtonDetails(
         title: l10n.invite,
         icon: const Icon(Icons.person_add_outlined, size: 30.0),
-        onPressed: () {
-          InvitationFilter filter = InvitationFilter.knocking;
-          if (room.getParticipants([Membership.knock]).isEmpty) {
-            filter = room.pangeaSpaceParents.isNotEmpty
-                ? InvitationFilter.space
-                : InvitationFilter.contacts;
-          }
-          NavigationUtil.goToSpaceRoute(
-            room.id,
-            ['details', 'invite'],
-            context,
-            filter: filter,
-          );
-        },
+        onPressed: () => NavigationUtil.goToSpaceRoute(
+          room.id,
+          ['details', 'invite'],
+          context,
+          filter: InvitationFilter.defaultForRoom(room),
+        ),
         enabled: room.canInvite,
         visible: !room.isDirectChat,
       ),
       ButtonDetails(
         title: l10n.download,
         icon: const Icon(Icons.download_outlined, size: 30.0),
-        onPressed: () => widget.controller.downloadChatAction(room.id, context),
+        onPressed: () => downloadChatAction(room.id, context),
         // Any room member can export the transcript — it only surfaces content
         // they can already read in the chat. Web/desktop only for now; the
         // native mobile download path is unvalidated, so mobile is deferred.
         visible: kIsWeb,
         showInMainView: false,
       ),
-      // ButtonDetails(
-      //   title: l10n.chatCapacity,
-      //   icon: const Icon(Icons.reduce_capacity, size: 30.0),
-      //   onPressed: widget.controller.setRoomCapacity,
-      //   visible: !room.showActivityChatUI && !room.isDirectChat,
-      //   enabled: room.canSendDefaultStates,
-      //   showInMainView: false,
-      // ),
       ButtonDetails(
         title: l10n.leave,
         icon: const Icon(Icons.logout_outlined, size: 30.0),

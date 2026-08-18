@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-17 09:30:22.456181",
+    "@@last_modified": "2026-08-17 16:45:34.645518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Pinge aktiviteit",
     "appInTargetLanguageStaysInBaseLanguage": "(Dizze ynstelling bliuwt yn jo memmetaal, sadat jo it altyd fine kinne.)",
     "usernameTakenPleaseChooseAnother": "Dy brûkersnamme is al yn gebrûk. Kies asjebleaft in oare.",
+    "allParticipants": "Alle dielnimmers",
+    "seeFullCoursePlan": "Sjoch folslein kursusplan",
+    "catchUp": "Ynhelje",
     "messageLanguageIs": "Dit berjocht is ynsteld op {language}.",
     "updateMessageLanguage": "Klik hjir om de taal fan it berjocht te feroarjen.",
     "messageLanguage": "Berjochtetaal",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Untskoattelje oersettingen",
     "unlockEmojiMode": "Untskoattelje emoji-modus",
     "unlockMessagePractice": "Untskoattelje berjochtpraktyk",
-    "unlockWritingAssistance": "Untskoattelje skriuwassistinsje"
+    "unlockWritingAssistance": "Untskoattelje skriuwassistinsje",
+    "showMore": "Mear sjen litte",
+    "showLess": "Minder sjen litte",
+    "countNewMessages": "{count, plural, =1{1 nij berjocht} other{{count} nije berjochten}}",
+    "markAllRead": "Alles as lêzen markearje"
 }

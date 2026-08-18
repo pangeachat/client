@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-17 09:30:11.980777",
+    "@@last_modified": "2026-08-17 16:45:34.132267",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Attività pingata",
     "appInTargetLanguageStaysInBaseLanguage": "(Stu paràmetru ferma in a vostra lingua materna per chì pudete sempre truvallu.)",
     "usernameTakenPleaseChooseAnother": "Stu nome d'utilizatore hè digià pigliatu. Per piacè, sceglite un altru.",
+    "allParticipants": "Tutti i participanti",
+    "seeFullCoursePlan": "Vede u pianu di u corsu cumpletu",
+    "catchUp": "Righjunghje",
     "messageLanguageIs": "Stu messagiu hè impostu à {language}.",
     "updateMessageLanguage": "Cliccate quì per cambià a lingua di u messagiu.",
     "messageLanguage": "Lingua di u messagiu",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Sbloccà e traduzzione",
     "unlockEmojiMode": "Sbloccà u modu emoji",
     "unlockMessagePractice": "Sbloccà a pratica di i messagi",
-    "unlockWritingAssistance": "Sbloccà l'assistenza à a scrittura"
+    "unlockWritingAssistance": "Sbloccà l'assistenza à a scrittura",
+    "showMore": "Mostra di più",
+    "showLess": "Mostra di menu",
+    "countNewMessages": "{count, plural, =1{1 novu messagiu} other{{count} novi messaghji}}",
+    "markAllRead": "Marcà tuttu cum'è lettu"
 }

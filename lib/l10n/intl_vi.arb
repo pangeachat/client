@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:35.773500",
+    "@@last_modified": "2026-08-17 16:45:39.326965",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7013,6 +7013,9 @@
     "pingedActivity": "Hoạt động được gắn thẻ",
     "appInTargetLanguageStaysInBaseLanguage": "(Cài đặt này vẫn giữ nguyên ngôn ngữ mẹ đẻ của bạn để bạn luôn có thể tìm thấy nó.)",
     "usernameTakenPleaseChooseAnother": "Tên người dùng này đã có người sử dụng. Vui lòng chọn tên khác.",
+    "allParticipants": "Tất cả người tham gia",
+    "seeFullCoursePlan": "Xem toàn bộ giáo trình",
+    "catchUp": "Bắt kịp",
     "messageLanguageIs": "Tin nhắn này được đặt thành {language}.",
     "updateMessageLanguage": "Nhấp vào đây để thay đổi ngôn ngữ của tin nhắn.",
     "messageLanguage": "Ngôn ngữ tin nhắn",
@@ -7022,5 +7025,9 @@
     "unlockTranslations": "Mở khóa bản dịch",
     "unlockEmojiMode": "Mở khóa chế độ biểu tượng cảm xúc",
     "unlockMessagePractice": "Mở khóa luyện tập tin nhắn",
-    "unlockWritingAssistance": "Mở khóa hỗ trợ viết"
+    "unlockWritingAssistance": "Mở khóa hỗ trợ viết",
+    "showMore": "Hiển thị thêm",
+    "showLess": "Hiển thị bớt",
+    "countNewMessages": "{count, plural, =1{1 tin nhắn mới} other{{count} tin nhắn mới}}",
+    "markAllRead": "Đánh dấu đã đọc tất cả"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-17 09:30:09.512500",
+    "@@last_modified": "2026-08-17 16:45:33.587643",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10043,6 +10043,9 @@
     "pingedActivity": "نشاط تم الإشارة إليه",
     "appInTargetLanguageStaysInBaseLanguage": "(يبقى هذا الإعداد بلغتك الأم حتى تتمكن دائمًا من العثور عليه.)",
     "usernameTakenPleaseChooseAnother": "اسم المستخدم هذا مستخدم بالفعل. الرجاء اختيار اسم آخر.",
+    "allParticipants": "جميع المشاركين",
+    "seeFullCoursePlan": "الاطلاع على الخطة الدراسية الكاملة",
+    "catchUp": "المتابعة",
     "messageLanguageIs": "هذه الرسالة مضبوطة على {language}.",
     "updateMessageLanguage": "انقر هنا لتغيير لغة الرسالة.",
     "messageLanguage": "لغة الرسالة",
@@ -10052,5 +10055,9 @@
     "unlockTranslations": "افتح الترجمات",
     "unlockEmojiMode": "افتح وضع الإيموجي",
     "unlockMessagePractice": "افتح ممارسة الرسائل",
-    "unlockWritingAssistance": "افتح مساعدة الكتابة"
+    "unlockWritingAssistance": "افتح مساعدة الكتابة",
+    "showMore": "عرض المزيد",
+    "showLess": "عرض أقل",
+    "countNewMessages": "{count, plural, =1{رسالة جديدة واحدة} other{{count} رسائل جديدة}}",
+    "markAllRead": "وضع الكل كمقروء"
 }

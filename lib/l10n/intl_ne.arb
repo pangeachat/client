@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-17 09:30:57.583243",
+    "@@last_modified": "2026-08-17 16:45:37.396196",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "पिङ गरिएको गतिविधि",
     "appInTargetLanguageStaysInBaseLanguage": "(यो सेटिङ तपाईंको मातृभाषामा रहन्छ ताकि तपाईंले यसलाई सधैं फेला पार्न सक्नुहुन्छ।)",
     "usernameTakenPleaseChooseAnother": "त्यो प्रयोगकर्ता नाम पहिले नै लिइएको छ। कृपया अर्को छान्नुहोस्।",
+    "allParticipants": "सबै सहभागीहरू",
+    "seeFullCoursePlan": "पूर्ण पाठ्यक्रम योजना हेर्नुहोस्",
+    "catchUp": "भेट्नुहोस्",
     "messageLanguageIs": "यो सन्देश {language} मा सेट गरिएको छ।",
     "updateMessageLanguage": "सन्देशको भाषा परिवर्तन गर्न यहाँ क्लिक गर्नुहोस्।",
     "messageLanguage": "सन्देश भाषा",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "अनुवादहरू अनलक गर्नुहोस्",
     "unlockEmojiMode": "इमोजी मोड अनलक गर्नुहोस्",
     "unlockMessagePractice": "सन्देश अभ्यास अनलक गर्नुहोस्",
-    "unlockWritingAssistance": "लेखन सहायता अनलक गर्नुहोस्"
+    "unlockWritingAssistance": "लेखन सहायता अनलक गर्नुहोस्",
+    "showMore": "थप देखाउनुहोस्",
+    "showLess": "कम देखाउनुहोस्",
+    "countNewMessages": "{count, plural, =1{१ नयाँ सन्देश} other{{count} नयाँ सन्देशहरू}}",
+    "markAllRead": "सबै पढेको रूपमा चिन्ह लगाउनुहोस्"
 }

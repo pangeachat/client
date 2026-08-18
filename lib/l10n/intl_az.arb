@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-17 09:30:12.224768",
+    "@@last_modified": "2026-08-17 16:45:33.543990",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Bildiriş göndərilən fəaliyyət",
     "appInTargetLanguageStaysInBaseLanguage": "(Bu tənzimləmə ana dilinizdə qalır ki, onu həmişə tapa biləsiniz.)",
     "usernameTakenPleaseChooseAnother": "Bu istifadəçi adı artıq istifadə olunur. Zəhmət olmasa başqa bir ad seçin.",
+    "allParticipants": "Bütün iştirakçılar",
+    "seeFullCoursePlan": "Tam kurs planına baxın",
+    "catchUp": "Çatdır",
     "messageLanguageIs": "Bu mesaj {language} dilinə təyin edilib.",
     "updateMessageLanguage": "Mesajın dilini dəyişmək üçün bura klikləyin.",
     "messageLanguage": "Mesaj dili",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Tərcümələri açın",
     "unlockEmojiMode": "Emoji rejimini açın",
     "unlockMessagePractice": "Mesaj təcrübəsini açın",
-    "unlockWritingAssistance": "Yazı köməkliyini açın"
+    "unlockWritingAssistance": "Yazı köməkliyini açın",
+    "showMore": "Daha çox göstər",
+    "showLess": "Daha az göstər",
+    "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",
+    "markAllRead": "Hamısını oxunmuş kimi qeyd et"
 }

@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-17 09:31:27.046368",
+    "@@last_modified": "2026-08-17 16:45:38.963352",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10687,6 +10687,9 @@
     "pingedActivity": "పింగ్ చేయబడిన కార్యాచరణ",
     "appInTargetLanguageStaysInBaseLanguage": "(ఈ సెట్టింగ్ మీ స్థానిక భాషలోనే ఉంటుంది, కాబట్టి మీరు దీన్ని ఎల్లప్పుడూ కనుగొనగలరు.)",
     "usernameTakenPleaseChooseAnother": "ఆ యూజర్‌నేమ్ ఇప్పటికే ఉంది. దయచేసి మరొకటి ఎంచుకోండి.",
+    "allParticipants": "అందరూ పాల్గొనేవారు",
+    "seeFullCoursePlan": "పూర్తి కోర్సు ప్లాన్ చూడండి",
+    "catchUp": "తెలుసుకోండి",
     "messageLanguageIs": "ఈ సందేశం {language}కి సెట్ చేయబడింది.",
     "updateMessageLanguage": "సందేశం యొక్క భాషను మార్చడానికి ఇక్కడ క్లిక్ చేయండి.",
     "messageLanguage": "సందేశ భాష",
@@ -10696,5 +10699,9 @@
     "unlockTranslations": "అనువాదాలను అన్‌లాక్ చేయండి",
     "unlockEmojiMode": "ఎమోజి మోడ్‌ను అన్‌లాక్ చేయండి",
     "unlockMessagePractice": "సందేశ అభ్యాసాన్ని అన్‌లాక్ చేయండి",
-    "unlockWritingAssistance": "రాత సహాయాన్ని అన్‌లాక్ చేయండి"
+    "unlockWritingAssistance": "రాత సహాయాన్ని అన్‌లాక్ చేయండి",
+    "showMore": "మరింత చూపించు",
+    "showLess": "తక్కువ చూపించు",
+    "countNewMessages": "{count, plural, =1{1 కొత్త సందేశం} other{{count} కొత్త సందేశాలు}}",
+    "markAllRead": "అన్నింటినీ చదివినట్లు గుర్తించు"
 }

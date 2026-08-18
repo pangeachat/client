@@ -3553,7 +3553,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-17 09:30:13.871595",
+    "@@last_modified": "2026-08-17 16:45:33.521150",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -9751,6 +9751,9 @@
     "pingedActivity": "Актыўнасць з пінкам",
     "appInTargetLanguageStaysInBaseLanguage": "(Гэтая налада застаецца на вашай роднай мове, каб вы заўсёды маглі яе знайсці.)",
     "usernameTakenPleaseChooseAnother": "Гэтае імя карыстальніка ўжо занята. Калі ласка, выберыце іншае.",
+    "allParticipants": "Усе ўдзельнікі",
+    "seeFullCoursePlan": "Глядзець поўны план курса",
+    "catchUp": "Нагнаць",
     "messageLanguageIs": "Мова паведамлення: {language}.",
     "updateMessageLanguage": "Націсніце тут, каб змяніць мову паведамлення.",
     "messageLanguage": "Мова паведамлення",
@@ -9760,5 +9763,9 @@
     "unlockTranslations": "Разблакіраваць пераклады",
     "unlockEmojiMode": "Разблакіраваць рэжым эмодзі",
     "unlockMessagePractice": "Разблакіраваць практыку паведамленняў",
-    "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні"
+    "unlockWritingAssistance": "Разблакіраваць дапамогу ў напісанні",
+    "showMore": "Паказаць больш",
+    "showLess": "Паказаць менш",
+    "countNewMessages": "{count, plural, =1{1 новае паведамленне} other{{count} новых паведамленняў}}",
+    "markAllRead": "Адзначыць усе прачытанымі"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-17 09:31:16.956228",
+    "@@last_modified": "2026-08-17 16:45:38.789629",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "kagiatan anu diping",
     "appInTargetLanguageStaysInBaseLanguage": "(Setélan ieu tetep dina basa asli anjeun supados anjeun tiasa salawasna mendakanana.)",
     "usernameTakenPleaseChooseAnother": "Ngaran pamaké éta geus aya. Mangga pilih nu sanés.",
+    "allParticipants": "Sadaya pamilon",
+    "seeFullCoursePlan": "Tingali rencana kursus lengkep",
+    "catchUp": "Susulan",
     "messageLanguageIs": "Pesen ieu disetel ka {language}.",
     "updateMessageLanguage": "Pencét di dieu pikeun ngarobah basa pesen.",
     "messageLanguage": "Basa pesen",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Buka konci tarjamahan",
     "unlockEmojiMode": "Buka konci mode emoji",
     "unlockMessagePractice": "Buka konci latihan pesen",
-    "unlockWritingAssistance": "Buka konci bantuan nulis"
+    "unlockWritingAssistance": "Buka konci bantuan nulis",
+    "showMore": "Témbongkeun deui",
+    "showLess": "Témbongkeun saeutik",
+    "countNewMessages": "{count, plural, =1{1 talatah anyar} other{{count} talatah anyar}}",
+    "markAllRead": "Tandaan sadayana parantos dibaca"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-17 09:30:51.561999",
+    "@@last_modified": "2026-08-17 16:45:36.522048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gepingt Aktivitéit",
     "appInTargetLanguageStaysInBaseLanguage": "(Dës Astellung bleift an Ärer Mammesprooch, sou datt Dir se ëmmer fanne kënnt.)",
     "usernameTakenPleaseChooseAnother": "Dëse Benotzernumm gëtt et schonn. Wielt w.e.g. en aneren.",
+    "allParticipants": "All Participanten",
+    "seeFullCoursePlan": "Kuckt de komplette Coursplang",
+    "catchUp": "Nohuelen",
     "messageLanguageIs": "Dëse Message ass op {language} gesat.",
     "updateMessageLanguage": "Klickt hei fir d'Sprooch vum Message z'änneren.",
     "messageLanguage": "Sprooch vum Message",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Spär Iwwersetzunge op",
     "unlockEmojiMode": "Spär Emoji Modus op",
     "unlockMessagePractice": "Spär Message Praxis op",
-    "unlockWritingAssistance": "Spär Schreifhëllef op"
+    "unlockWritingAssistance": "Spär Schreifhëllef op",
+    "showMore": "Méi weisen",
+    "showLess": "Manner weisen",
+    "countNewMessages": "{count, plural, =1{1 neie Message} other{{count} nei Messagen}}",
+    "markAllRead": "Alles als gelies markéieren"
 }

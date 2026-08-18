@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-17 09:30:13.865010",
+    "@@last_modified": "2026-08-17 16:45:33.542208",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Pingovana aktivnost",
     "appInTargetLanguageStaysInBaseLanguage": "(Ova postavka ostaje na vašem maternjem jeziku kako biste je uvijek mogli pronaći.)",
     "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Molimo odaberite drugo.",
+    "allParticipants": "Svi učesnici",
+    "seeFullCoursePlan": "Pogledajte cijeli plan kursa",
+    "catchUp": "Sustići",
     "messageLanguageIs": "Ova poruka je postavljena na {language}.",
     "updateMessageLanguage": "Kliknite ovdje da promijenite jezik poruke.",
     "messageLanguage": "Jezik poruke",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Otključajte prevode",
     "unlockEmojiMode": "Otključajte emoji način rada",
     "unlockMessagePractice": "Otključajte vježbanje poruka",
-    "unlockWritingAssistance": "Otključajte pomoć pri pisanju"
+    "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
+    "markAllRead": "Označi sve kao pročitano"
 }

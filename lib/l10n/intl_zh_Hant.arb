@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:49.446907",
+    "@@last_modified": "2026-08-17 16:45:39.614686",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9843,6 +9843,9 @@
     "pingedActivity": "已標記的活動",
     "appInTargetLanguageStaysInBaseLanguage": "(此設定會保留為您的母語，以便您隨時找到它。)",
     "usernameTakenPleaseChooseAnother": "該用戶名已被使用。請選擇另一個。",
+    "allParticipants": "所有參與者",
+    "seeFullCoursePlan": "查看完整課程計畫",
+    "catchUp": "追進度",
     "messageLanguageIs": "此訊息已設定為{language}。",
     "updateMessageLanguage": "點擊此處更改訊息語言。",
     "messageLanguage": "訊息語言",
@@ -9852,5 +9855,9 @@
     "unlockTranslations": "解鎖翻譯",
     "unlockEmojiMode": "解鎖表情符號模式",
     "unlockMessagePractice": "解鎖訊息練習",
-    "unlockWritingAssistance": "解鎖寫作輔助"
+    "unlockWritingAssistance": "解鎖寫作輔助",
+    "showMore": "顯示更多",
+    "showLess": "顯示較少",
+    "countNewMessages": "{count, plural, =1{1 條新訊息} other{{count} 條新訊息}}",
+    "markAllRead": "全部標記為已讀"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-17 09:30:25.050073",
+    "@@last_modified": "2026-08-17 16:45:35.309994",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Hana i kīkī ʻia",
     "appInTargetLanguageStaysInBaseLanguage": "(Noho kēia hoʻonohonoho ma kāu ʻōlelo ʻōiwi i hiki iā ʻoe ke loaʻa mau.)",
     "usernameTakenPleaseChooseAnother": "Ua hoʻohana ʻia kēlā inoa mea hoʻohana. E koho i kekahi inoa ʻē aʻe.",
+    "allParticipants": "Nā mea komo a pau",
+    "seeFullCoursePlan": "E ʻike i ka papa hoʻolālā piha",
+    "catchUp": "Hoʻopaʻa",
     "messageLanguageIs": "Ua hoʻonohonoho ʻia kēia leka i ka ʻōlelo {language}.",
     "updateMessageLanguage": "Kaomi ma ʻaneʻi e hoʻololi i ka ʻōlelo o ka leka.",
     "messageLanguage": "ʻŌlelo leka",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Wehe i nā unuhi",
     "unlockEmojiMode": "Wehe i ke ʻano emoji",
     "unlockMessagePractice": "Wehe i ka hoʻomaʻamaʻa leka",
-    "unlockWritingAssistance": "Wehe i ke kōkua kākau"
+    "unlockWritingAssistance": "Wehe i ke kōkua kākau",
+    "showMore": "Hōʻike hou aku",
+    "showLess": "Hōʻike liʻiliʻi",
+    "countNewMessages": "{count, plural, =1{1 leka hou} other{{count} mau leka hou}}",
+    "markAllRead": "E hōʻailona i nā mea a pau i heluhelu ʻia"
 }

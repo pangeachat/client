@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-17 09:31:29.349579",
+    "@@last_modified": "2026-08-17 16:45:39.284867",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9737,6 +9737,9 @@
     "pingedActivity": "Діяльність, що була відзначена",
     "appInTargetLanguageStaysInBaseLanguage": "(Ця настройка залишається вашою рідною мовою, щоб ви завжди могли її знайти.)",
     "usernameTakenPleaseChooseAnother": "Це ім’я користувача вже зайняте. Будь ласка, виберіть інше.",
+    "allParticipants": "Усі учасники",
+    "seeFullCoursePlan": "Переглянути повний план курсу",
+    "catchUp": "Наздогнати",
     "messageLanguageIs": "Це повідомлення налаштовано на {language}.",
     "updateMessageLanguage": "Натисніть тут, щоб змінити мову повідомлення.",
     "messageLanguage": "Мова повідомлення",
@@ -9746,5 +9749,9 @@
     "unlockTranslations": "Розблокувати переклади",
     "unlockEmojiMode": "Розблокувати режим емодзі",
     "unlockMessagePractice": "Розблокувати практику повідомлень",
-    "unlockWritingAssistance": "Розблокувати допомогу з письмом"
+    "unlockWritingAssistance": "Розблокувати допомогу з письмом",
+    "showMore": "Показати більше",
+    "showLess": "Показати менше",
+    "countNewMessages": "{count, plural, =1{1 нове повідомлення} other{{count} нових повідомлень}}",
+    "markAllRead": "Позначити всі як прочитані"
 }

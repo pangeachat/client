@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-17 09:30:35.062278",
+    "@@last_modified": "2026-08-17 16:45:35.714724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Հիշեցված ակտիվություն",
     "appInTargetLanguageStaysInBaseLanguage": "(Այս կարգավորումը մնում է ձեր մայրենի լեզվով, որպեսզի միշտ կարողանաք գտնել այն։)",
     "usernameTakenPleaseChooseAnother": "Այդ օգտանունն արդեն զբաղված է։ Ընտրեք մեկ այլ օգտանուն։",
+    "allParticipants": "Բոլոր մասնակիցները",
+    "seeFullCoursePlan": "Դիտել դասընթացի ամբողջական պլանը",
+    "catchUp": "Հասնել",
     "messageLanguageIs": "Այս հաղորդագրությունը սահմանված է {language} լեզվով։",
     "updateMessageLanguage": "Սեղմեք այստեղ՝ հաղորդագրության լեզուն փոխելու համար։",
     "messageLanguage": "Հաղորդագրության լեզուն",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Բացել թարգմանությունները",
     "unlockEmojiMode": "Բացել էմոջի ռեժիմը",
     "unlockMessagePractice": "Բացել հաղորդագրությունների պրակտիկան",
-    "unlockWritingAssistance": "Բացել գրելու աջակցությունը"
+    "unlockWritingAssistance": "Բացել գրելու աջակցությունը",
+    "showMore": "Տեսնել ավելին",
+    "showLess": "Տեսնել ավելի քիչ",
+    "countNewMessages": "{count, plural, =1{1 նոր հաղորդագրություն} other{{count} նոր հաղորդագրություն}}",
+    "markAllRead": "Նշել բոլորը կարդացված"
 }

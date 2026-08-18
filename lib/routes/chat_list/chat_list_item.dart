@@ -30,6 +30,12 @@ class ChatListItem extends StatelessWidget {
   final String? filter;
   // #Pangea
   final BorderRadius? borderRadius;
+
+  /// Optional text-size overrides so an embedding page (e.g. the course
+  /// page's Chats section) can match its own type ladder; null keeps the
+  /// chat list's defaults.
+  final double? titleFontSize;
+  final double? subtitleFontSize;
   // Pangea#
 
   const ChatListItem(
@@ -43,6 +49,8 @@ class ChatListItem extends StatelessWidget {
     super.key,
     // #Pangea
     this.borderRadius,
+    this.titleFontSize,
+    this.subtitleFontSize,
     // Pangea#
   });
 
@@ -230,6 +238,7 @@ class ChatListItem extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           softWrap: false,
                           style: TextStyle(
+                            fontSize: titleFontSize,
                             fontWeight: unread || room.hasNewMessages
                                 ? FontWeight.w500
                                 : null,
@@ -360,12 +369,18 @@ class ChatListItem extends StatelessWidget {
                             // ).countChats(room.spaceChildren.length),
                             L10n.of(context).countChats(room.spaceChildCount),
                             // Pangea#
-                            style: TextStyle(color: theme.colorScheme.outline),
+                            style: TextStyle(
+                              fontSize: subtitleFontSize,
+                              color: theme.colorScheme.outline,
+                            ),
                           )
                         : typingText.isNotEmpty
                         ? Text(
                             typingText,
-                            style: TextStyle(color: theme.colorScheme.primary),
+                            style: TextStyle(
+                              fontSize: subtitleFontSize,
+                              color: theme.colorScheme.primary,
+                            ),
                             maxLines: 1,
                             softWrap: false,
                           )
@@ -374,6 +389,7 @@ class ChatListItem extends StatelessWidget {
                         ? ChatListItemSubtitle(
                             room: room,
                             style: TextStyle(
+                              fontSize: subtitleFontSize,
                               fontWeight: unread || room.hasNewMessages
                                   ? FontWeight.bold
                                   : null,
@@ -430,6 +446,7 @@ class ChatListItem extends StatelessWidget {
                               maxLines: room.notificationCount >= 1 ? 2 : 1,
                               overflow: TextOverflow.ellipsis,
                               style: TextStyle(
+                                fontSize: subtitleFontSize,
                                 color: unread || room.hasNewMessages
                                     ? theme.colorScheme.onSurface
                                     : theme.colorScheme.outline,

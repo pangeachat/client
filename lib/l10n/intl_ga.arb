@@ -3568,7 +3568,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-17 09:30:20.915122",
+    "@@last_modified": "2026-08-17 16:45:34.816010",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -9748,6 +9748,9 @@
     "pingedActivity": "Gníomhaíocht phingáilte",
     "appInTargetLanguageStaysInBaseLanguage": "(Fanann an socrú seo i do theanga dhúchais ionas go mbíonn tú in ann é a aimsiú i gcónaí.)",
     "usernameTakenPleaseChooseAnother": "Tá an t-ainm úsáideora sin in úsáid cheana féin. Roghnaigh ceann eile, le do thoil.",
+    "allParticipants": "Gach rannpháirtí",
+    "seeFullCoursePlan": "Féach ar an bplean iomlán cúrsa",
+    "catchUp": "Teacht suas",
     "messageLanguageIs": "Tá an teachtaireacht seo socraithe go {language}.",
     "updateMessageLanguage": "Cliceáil anseo chun teanga na teachtaireachta a athrú.",
     "messageLanguage": "Teanga na teachtaireachta",
@@ -9757,5 +9760,9 @@
     "unlockTranslations": "Díghlasáil aistriúcháin",
     "unlockEmojiMode": "Díghlasáil mód emoji",
     "unlockMessagePractice": "Díghlasáil cleachtadh teachtaireachtaí",
-    "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta"
+    "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta",
+    "showMore": "Taispeáin níos mó",
+    "showLess": "Taispeáin níos lú",
+    "countNewMessages": "{count, plural, =1{1 theachtaireacht nua} other{{count} theachtaireacht nua}}",
+    "markAllRead": "Marcáil uile mar léite"
 }

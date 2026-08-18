@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-17 09:30:31.881699",
+    "@@last_modified": "2026-08-17 16:45:35.449128",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Kev ua ub no pinged",
     "appInTargetLanguageStaysInBaseLanguage": "(Qhov chaw no nyob hauv koj hom lus kom koj nrhiav tau ib txwm.)",
     "usernameTakenPleaseChooseAnother": "Tus username ntawd muaj lawm. Thov xaiv lwm tus.",
+    "allParticipants": "Sawv daws koom",
+    "seeFullCoursePlan": "Saib tag nrho cov kev kawm",
+    "catchUp": "Nrhiav kom paub",
     "messageLanguageIs": "Cov lus no yog teeb rau {language}.",
     "updateMessageLanguage": "Nyem qhov no los hloov cov lus hom lus.",
     "messageLanguage": "Lus hom lus",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Qhib kev txhais lus",
     "unlockEmojiMode": "Qhib hom emoji",
     "unlockMessagePractice": "Qhib kev xyaum sau ntawv",
-    "unlockWritingAssistance": "Qhib kev pab sau ntawv"
+    "unlockWritingAssistance": "Qhib kev pab sau ntawv",
+    "showMore": "Qhia ntxiv",
+    "showLess": "Qhia tsawg dua",
+    "countNewMessages": "{count, plural, =1{1 tsab lus tshiab} other{{count} tsab lus tshiab}}",
+    "markAllRead": "Kos tag nrho tias nyeem lawm"
 }

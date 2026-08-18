@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-17 09:30:57.036415",
+    "@@last_modified": "2026-08-17 16:45:36.980931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "പിംഗ് ചെയ്ത പ്രവർത്തനം",
     "appInTargetLanguageStaysInBaseLanguage": "(നിങ്ങളുടെ മാതൃഭാഷയിൽ ഈ ക്രമീകരണം നിലനിൽക്കുന്നതിനാൽ നിങ്ങൾക്ക് ഇത് എപ്പോഴും കണ്ടെത്താനാകും.)",
     "usernameTakenPleaseChooseAnother": "ആ ഉപയോക്തൃനാമം ഇതിനകം ഉപയോഗത്തിലാണ്. മറ്റൊന്ന് തിരഞ്ഞെടുക്കുക.",
+    "allParticipants": "എല്ലാ പങ്കാളികളും",
+    "seeFullCoursePlan": "മുഴുവൻ കോഴ്‌സ് പ്ലാനും കാണുക",
+    "catchUp": "പുതിയത് നേടുക",
     "messageLanguageIs": "ഈ സന്ദേശം {language} എന്നതിലേക്ക് സജ്ജീകരിച്ചിരിക്കുന്നു.",
     "updateMessageLanguage": "സന്ദേശത്തിന്റെ ഭാഷ മാറ്റാൻ ഇവിടെ ക്ലിക്ക് ചെയ്യുക.",
     "messageLanguage": "സന്ദേശ ഭാഷ",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "വിവർത്തനങ്ങൾ അൺലോക്ക് ചെയ്യുക",
     "unlockEmojiMode": "ഇമോജി മോഡ് അൺലോക്ക് ചെയ്യുക",
     "unlockMessagePractice": "സന്ദേശ പരിശീലനം അൺലോക്ക് ചെയ്യുക",
-    "unlockWritingAssistance": "എഴുത്ത് സഹായം അൺലോക്ക് ചെയ്യുക"
+    "unlockWritingAssistance": "എഴുത്ത് സഹായം അൺലോക്ക് ചെയ്യുക",
+    "showMore": "കൂടുതൽ കാണിക്കുക",
+    "showLess": "കുറവ് കാണിക്കുക",
+    "countNewMessages": "{count, plural, =1{പുതിയ ഒരു സന്ദേശം} other{പുതിയ {count} സന്ദേശങ്ങൾ}}",
+    "markAllRead": "എല്ലാം വായിച്ചതായി അടയാളപ്പെടുത്തുക"
 }

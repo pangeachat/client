@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-17 09:30:53.016399",
+    "@@last_modified": "2026-08-17 16:45:37.040614",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Hetsika voatsindry",
     "appInTargetLanguageStaysInBaseLanguage": "(Ity toe-javatra ity dia mijanona amin'ny fitenin-drazanao mba ho hitanao foana.)",
     "usernameTakenPleaseChooseAnother": "Efa misy io solonanarana io. Mifidiana hafa azafady.",
+    "allParticipants": "Ireo mpandray anjara rehetra",
+    "seeFullCoursePlan": "Jereo ny drafitry ny taranja feno",
+    "catchUp": "Hahatratra",
     "messageLanguageIs": "Ity hafatra ity dia voatendry ho amin'ny teny {language}.",
     "updateMessageLanguage": "Tsindrio eto hanovana ny fitenin'ny hafatra.",
     "messageLanguage": "Fitenin'ny hafatra",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Sokafy ny fandikana",
     "unlockEmojiMode": "Sokafy ny fomba emoji",
     "unlockMessagePractice": "Sokafy ny fanazaran-tena amin'ny hafatra",
-    "unlockWritingAssistance": "Sokafy ny fanampiana amin'ny fanoratana"
+    "unlockWritingAssistance": "Sokafy ny fanampiana amin'ny fanoratana",
+    "showMore": "Asehoy misimisy kokoa",
+    "showLess": "Asehoy kely kokoa",
+    "countNewMessages": "{count, plural, =1{1 hafatra vaovao} other{{count} hafatra vaovao}}",
+    "markAllRead": "Mariho ho voavaky avokoa"
 }

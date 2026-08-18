@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-17 09:31:45.881370",
+    "@@last_modified": "2026-08-17 16:45:39.359381",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "پِنگ کی گئی سرگرمی",
     "appInTargetLanguageStaysInBaseLanguage": "(یہ سیٹنگ آپ کی مادری زبان میں ہی رہے گی تاکہ آپ اسے ہمیشہ تلاش کر سکیں۔)",
     "usernameTakenPleaseChooseAnother": "یہ صارف نام پہلے سے موجود ہے۔ براہ کرم کوئی اور منتخب کریں۔",
+    "allParticipants": "تمام شرکاء",
+    "seeFullCoursePlan": "مکمل کورس کا منصوبہ دیکھیں",
+    "catchUp": "معلوم کریں",
     "messageLanguageIs": "اس پیغام کی زبان {language} پر سیٹ ہے۔",
     "updateMessageLanguage": "پیغام کی زبان تبدیل کرنے کے لیے یہاں کلک کریں۔",
     "messageLanguage": "پیغام کی زبان",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "تراجم اَن لاک کریں",
     "unlockEmojiMode": "ایموجی موڈ اَن لاک کریں",
     "unlockMessagePractice": "پیغام کی مشق اَن لاک کریں",
-    "unlockWritingAssistance": "تحریری معاونت اَن لاک کریں"
+    "unlockWritingAssistance": "تحریری معاونت اَن لاک کریں",
+    "showMore": "مزید دکھائیں",
+    "showLess": "کم دکھائیں",
+    "countNewMessages": "{count, plural, =1{1 نیا پیغام} other{{count} نئے پیغامات}}",
+    "markAllRead": "سب کو پڑھا ہوا نشان زد کریں"
 }

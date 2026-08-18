@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-17 09:30:50.806513",
+    "@@last_modified": "2026-08-17 16:45:36.926172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "ກິດຈະກຳທີ່ຖືກປິງ",
     "appInTargetLanguageStaysInBaseLanguage": "(ການຕັ້ງຄ່ານີ້ຈະຢູ່ໃນພາສາກຳເນີດຂອງທ່ານ ເພື່ອໃຫ້ທ່ານສາມາດຊອກຫາມັນໄດ້ສະເໝີ.)",
     "usernameTakenPleaseChooseAnother": "ຊື່ຜູ້ໃຊ້ນີ້ມີຄົນໃຊ້ແລ້ວ. ກະລຸນາເລືອກຊື່ອື່ນ.",
+    "allParticipants": "ຜູ້ເຂົ້າຮ່ວມທັງໝົດ",
+    "seeFullCoursePlan": "ເບິ່ງແຜນການຮຽນເຕັມ",
+    "catchUp": "ຕິດຕາມ",
     "messageLanguageIs": "ຂໍ້ຄວາມນີ້ຖືກຕັ້ງເປັນ {language}.",
     "updateMessageLanguage": "ຄລິກທີ່ນີ້ເພື່ອປ່ຽນພາສາຂອງຂໍ້ຄວາມ.",
     "messageLanguage": "ພາສາຂໍ້ຄວາມ",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "ປົດລັອກການແປ",
     "unlockEmojiMode": "ປົດລັອກໂໝດອີໂມຈິ",
     "unlockMessagePractice": "ປົດລັອກການຝຶກຊ້ອມຂໍ້ຄວາມ",
-    "unlockWritingAssistance": "ປົດລັອກຕົວຊ່ວຍຂຽນ"
+    "unlockWritingAssistance": "ປົດລັອກຕົວຊ່ວຍຂຽນ",
+    "showMore": "ສະແດງເພີ່ມເຕີມ",
+    "showLess": "ສະແດງໜ້ອຍລົງ",
+    "countNewMessages": "{count, plural, =1{1 ຂໍ້ຄວາມໃໝ່} other{{count} ຂໍ້ຄວາມໃໝ່}}",
+    "markAllRead": "ໝາຍວ່າອ່ານແລ້ວທັງໝົດ"
 }

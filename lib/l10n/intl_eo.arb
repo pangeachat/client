@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:15.503282",
+    "@@last_modified": "2026-08-17 16:45:34.326049",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10682,6 +10682,9 @@
     "pingedActivity": "Pingita agado",
     "appInTargetLanguageStaysInBaseLanguage": "(Ĉi tiu agordo restas en via denaska lingvo, por ke vi ĉiam povu trovi ĝin.)",
     "usernameTakenPleaseChooseAnother": "Tiu uzantnomo jam estas prenita. Bonvolu elekti alian.",
+    "allParticipants": "Ĉiuj partoprenantoj",
+    "seeFullCoursePlan": "Vidi la plenan kursplanon",
+    "catchUp": "Reatingi",
     "messageLanguageIs": "Ĉi tiu mesaĝo estas agordita al {language}.",
     "updateMessageLanguage": "Alklaku ĉi tie por ŝanĝi la lingvon de la mesaĝo.",
     "messageLanguage": "Lingvo de mesaĝo",
@@ -10691,5 +10694,9 @@
     "unlockTranslations": "Malŝlosi tradukojn",
     "unlockEmojiMode": "Malŝlosi emoji-reĝimon",
     "unlockMessagePractice": "Malŝlosi mesaĝan praktikon",
-    "unlockWritingAssistance": "Malŝlosi skriban helpon"
+    "unlockWritingAssistance": "Malŝlosi skriban helpon",
+    "showMore": "Montri pli",
+    "showLess": "Montri malpli",
+    "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}",
+    "markAllRead": "Marki ĉion kiel legitan"
 }

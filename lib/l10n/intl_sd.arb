@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-17 09:31:06.763595",
+    "@@last_modified": "2026-08-17 16:45:38.334302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "پنگ ٿيل سرگرمي",
     "appInTargetLanguageStaysInBaseLanguage": "(هي سيٽنگ توهان جي مادري زبان ۾ رهي ٿي ته جيئن توهان ان کي هميشه ڳولي سگهو.)",
     "usernameTakenPleaseChooseAnother": "اهو يوزرنيم اڳ ۾ ئي ورتو ويو آهي. مهرباني ڪري ٻيو چونڊيو.",
+    "allParticipants": "سڀئي شرڪت ڪندڙ",
+    "seeFullCoursePlan": "مڪمل ڪورس پلان ڏسو",
+    "catchUp": "پوئتي پيل سبق پورو ڪريو",
     "messageLanguageIs": "ھي پيغام {language} تي سيٽ ٿيل آھي.",
     "updateMessageLanguage": "پيغام جي ٻولي تبديل ڪرڻ لاءِ ھتي ڪلڪ ڪريو.",
     "messageLanguage": "پيغام جي ٻولي",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "ترجما کوليو",
     "unlockEmojiMode": "ايموجي موڊ کوليو",
     "unlockMessagePractice": "پيغام جي مشق کوليو",
-    "unlockWritingAssistance": "لکڻ جي مدد کوليو"
+    "unlockWritingAssistance": "لکڻ جي مدد کوليو",
+    "showMore": "وڌيڪ ڏيکاريو",
+    "showLess": "گهٽ ڏيکاريو",
+    "countNewMessages": "{count, plural, =1{1 نئون پيغام} other{{count} نوان پيغام}}",
+    "markAllRead": "سڀ پڙهيل نشان لڳايو"
 }

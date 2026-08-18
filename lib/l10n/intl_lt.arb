@@ -2972,7 +2972,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-17 09:30:56.684157",
+    "@@last_modified": "2026-08-17 16:45:36.736804",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10518,6 +10518,9 @@
     "pingedActivity": "Pažymėta veikla",
     "appInTargetLanguageStaysInBaseLanguage": "(Šis nustatymas lieka jūsų gimtąja kalba, kad visada galėtumėte jį rasti.)",
     "usernameTakenPleaseChooseAnother": "Toks vartotojo vardas jau užimtas. Pasirinkite kitą.",
+    "allParticipants": "Visi dalyviai",
+    "seeFullCoursePlan": "Žiūrėti visą kurso planą",
+    "catchUp": "Pasivyti",
     "messageLanguageIs": "Ši žinutė nustatyta į {language}.",
     "updateMessageLanguage": "Spustelėkite čia, kad pakeistumėte žinutės kalbą.",
     "messageLanguage": "Žinutės kalba",
@@ -10527,5 +10530,9 @@
     "unlockTranslations": "Atrakinti vertimus",
     "unlockEmojiMode": "Atrakinti jaustukų režimą",
     "unlockMessagePractice": "Atrakinti pranešimų praktiką",
-    "unlockWritingAssistance": "Atrakinti rašymo pagalbą"
+    "unlockWritingAssistance": "Atrakinti rašymo pagalbą",
+    "showMore": "Rodyti daugiau",
+    "showLess": "Rodyti mažiau",
+    "countNewMessages": "{count, plural, =1{1 nauja žinutė} other{{count} naujos žinutės}}",
+    "markAllRead": "Pažymėti visus kaip perskaitytus"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-17 09:31:25.032755",
+    "@@last_modified": "2026-08-17 16:45:38.601327",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Hawlaha la soo sheegay",
     "appInTargetLanguageStaysInBaseLanguage": "(Dejintani waxay ku sii jiraysaa luqaddaada hooyo si aad mar walba u hesho.)",
     "usernameTakenPleaseChooseAnother": "Magaca isticmaalaha waa la qaatay. Fadlan mid kale dooro.",
+    "allParticipants": "Dhammaan ka qaybgalayaasha",
+    "seeFullCoursePlan": "Eeg qorshaha koorsada oo dhan",
+    "catchUp": "La socodsiin",
     "messageLanguageIs": "Fariintani waxay ku qoran tahay {language}.",
     "updateMessageLanguage": "Halkan ku dhufo si aad u beddesho luqadda fariinta.",
     "messageLanguage": "Luqadda fariinta",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Fur turjumaadaha",
     "unlockEmojiMode": "Fur qaabka emoji",
     "unlockMessagePractice": "Fur ku celcelinta fariimaha",
-    "unlockWritingAssistance": "Fur caawinta qorista"
+    "unlockWritingAssistance": "Fur caawinta qorista",
+    "showMore": "Muuji wax badan",
+    "showLess": "Muuji wax yar",
+    "countNewMessages": "{count, plural, =1{1 fariin cusub} other{{count} fariimo cusub}}",
+    "markAllRead": "Dhammaan akhri"
 }

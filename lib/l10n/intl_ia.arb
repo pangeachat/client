@@ -1367,7 +1367,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-17 09:30:35.879883",
+    "@@last_modified": "2026-08-17 16:45:35.778941",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10673,6 +10673,9 @@
     "pingedActivity": "Activitate pingite",
     "appInTargetLanguageStaysInBaseLanguage": "(Iste parametro remane in tu lingua native a fin que tu pote semper trovar lo.)",
     "usernameTakenPleaseChooseAnother": "Iste nomine de usator es jam prendite. Per favor selige un altere.",
+    "allParticipants": "Tote le participantes",
+    "seeFullCoursePlan": "Vider le plano complete del curso",
+    "catchUp": "Actualisar se",
     "messageLanguageIs": "Iste message es configurate a {language}.",
     "updateMessageLanguage": "Clicca hic pro cambiar le lingua del message.",
     "messageLanguage": "Lingua del message",
@@ -10682,5 +10685,9 @@
     "unlockTranslations": "Diserara traductiones",
     "unlockEmojiMode": "Diserara modo emoji",
     "unlockMessagePractice": "Diserara practica de messages",
-    "unlockWritingAssistance": "Diserara assistentia de scriptura"
+    "unlockWritingAssistance": "Diserara assistentia de scriptura",
+    "showMore": "Monstrar plus",
+    "showLess": "Monstrar minus",
+    "countNewMessages": "{count, plural, =1{1 nove message} other{{count} nove messages}}",
+    "markAllRead": "Marcar tote legite"
 }

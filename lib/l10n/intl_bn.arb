@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:14.274709",
+    "@@last_modified": "2026-08-17 16:45:33.562440",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10365,6 +10365,9 @@
     "pingedActivity": "পিং করা কার্যকলাপ",
     "appInTargetLanguageStaysInBaseLanguage": "(এই সেটিংটি আপনার স্থানীয় ভাষাতেই থাকবে যাতে আপনি এটি সবসময় খুঁজে পান।)",
     "usernameTakenPleaseChooseAnother": "এই ব্যবহারকারীর নাম ইতিমধ্যেই নেওয়া হয়েছে। অনুগ্রহ করে অন্য একটি বেছে নিন।",
+    "allParticipants": "সকল অংশগ্রহণকারী",
+    "seeFullCoursePlan": "সম্পূর্ণ কোর্স প্ল্যান দেখুন",
+    "catchUp": "যোগাযোগ করুন",
     "messageLanguageIs": "এই বার্তার ভাষা {language} এ সেট করা আছে।",
     "updateMessageLanguage": "বার্তার ভাষা পরিবর্তন করতে এখানে ক্লিক করুন।",
     "messageLanguage": "বার্তার ভাষা",
@@ -10374,5 +10377,9 @@
     "unlockTranslations": "অনুবাদ আনলক করুন",
     "unlockEmojiMode": "ইমোজি মোড আনলক করুন",
     "unlockMessagePractice": "মেসেজ অনুশীলন আনলক করুন",
-    "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন"
+    "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন",
+    "showMore": "আরও দেখান",
+    "showLess": "কম দেখান",
+    "countNewMessages": "{count, plural, =1{১টি নতুন বার্তা} other{{count}টি নতুন বার্তা}}",
+    "markAllRead": "সবগুলো পঠিত হিসেবে চিহ্নিত করুন"
 }

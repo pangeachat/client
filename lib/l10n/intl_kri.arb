@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-17 09:30:40.523197",
+    "@@last_modified": "2026-08-17 16:45:36.437461",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Pinged aktiviti",
     "appInTargetLanguageStaysInBaseLanguage": "(Dis setin de na yu yon langwej so yu go ebul fɛn am ɔltɛm.)",
     "usernameTakenPleaseChooseAnother": "Dat yuzaneim dɔn de. Duya pik ɔda wan.",
+    "allParticipants": "Ɔl dɛn we de insaid",
+    "seeFullCoursePlan": "Si di ful kos plan",
+    "catchUp": "Kech op",
     "messageLanguageIs": "Dis patta na {language}.",
     "updateMessageLanguage": "Klik ya fɔ chenj di patta in langwej.",
     "messageLanguage": "Patta in langwej",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Open di transleshon dɛn",
     "unlockEmojiMode": "Open di emoji mod",
     "unlockMessagePractice": "Open di mɛsej praktis",
-    "unlockWritingAssistance": "Open di raytin ɛlp"
+    "unlockWritingAssistance": "Open di raytin ɛlp",
+    "showMore": "Sho mo",
+    "showLess": "Sho men",
+    "countNewMessages": "{count, plural, =1{1 nyu messej} other{{count} nyu messej dɛn}}",
+    "markAllRead": "Mak ɔl dɛn rid"
 }

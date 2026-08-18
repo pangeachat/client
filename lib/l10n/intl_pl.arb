@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-17 09:31:12.848282",
+    "@@last_modified": "2026-08-17 16:45:37.849509",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9822,6 +9822,9 @@
     "pingedActivity": "Aktywność z powiadomieniem",
     "appInTargetLanguageStaysInBaseLanguage": "(To ustawienie pozostaje w Twoim języku ojczystym, aby zawsze można je było znaleźć.)",
     "usernameTakenPleaseChooseAnother": "Ta nazwa użytkownika jest już zajęta. Wybierz inną.",
+    "allParticipants": "Wszyscy uczestnicy",
+    "seeFullCoursePlan": "Zobacz pełny plan kursu",
+    "catchUp": "Nadrób zaległości",
     "messageLanguageIs": "Ten komunikat jest ustawiony na {language}.",
     "updateMessageLanguage": "Kliknij tutaj, aby zmienić język wiadomości.",
     "messageLanguage": "Język wiadomości",
@@ -9831,5 +9834,9 @@
     "unlockTranslations": "Odblokuj tłumaczenia",
     "unlockEmojiMode": "Odblokuj tryb emoji",
     "unlockMessagePractice": "Odblokuj ćwiczenia z wiadomościami",
-    "unlockWritingAssistance": "Odblokuj pomoc w pisaniu"
+    "unlockWritingAssistance": "Odblokuj pomoc w pisaniu",
+    "showMore": "Pokaż więcej",
+    "showLess": "Pokaż mniej",
+    "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}",
+    "markAllRead": "Oznacz wszystkie jako przeczytane"
 }

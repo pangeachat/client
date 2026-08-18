@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:30.769411",
+    "@@last_modified": "2026-08-17 16:45:35.770872",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9810,6 +9810,9 @@
     "pingedActivity": "Aktivitas yang di-ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Pengaturan ini tetap dalam bahasa ibu Anda agar Anda selalu dapat menemukannya.)",
     "usernameTakenPleaseChooseAnother": "Nama pengguna tersebut sudah digunakan. Mohon pilih yang lain.",
+    "allParticipants": "Semua peserta",
+    "seeFullCoursePlan": "Lihat rencana kursus lengkap",
+    "catchUp": "Ikuti",
     "messageLanguageIs": "Pesan ini diatur ke {language}.",
     "updateMessageLanguage": "Klik di sini untuk mengubah bahasa pesan.",
     "messageLanguage": "Bahasa pesan",
@@ -9819,5 +9822,9 @@
     "unlockTranslations": "Buka terjemahan",
     "unlockEmojiMode": "Buka mode emoji",
     "unlockMessagePractice": "Buka latihan pesan",
-    "unlockWritingAssistance": "Buka bantuan menulis"
+    "unlockWritingAssistance": "Buka bantuan menulis",
+    "showMore": "Tampilkan lebih banyak",
+    "showLess": "Tampilkan lebih sedikit",
+    "countNewMessages": "{count, plural, =1{1 pesan baru} other{{count} pesan baru}}",
+    "markAllRead": "Tandai semua sudah dibaca"
 }

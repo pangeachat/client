@@ -3405,7 +3405,7 @@
     "playWithAI": "Παίξτε με την Τεχνητή Νοημοσύνη προς το παρόν",
     "courseStartDesc": "Ο Pangea Bot είναι έτοιμος να ξεκινήσει οποιαδήποτε στιγμή!\n\n...αλλά η μάθηση είναι καλύτερη με φίλους!",
     "@@locale": "el",
-    "@@last_modified": "2026-08-17 09:30:18.210835",
+    "@@last_modified": "2026-08-17 16:45:34.294685",
     "@checkList": {
         "type": "String",
         "placeholders": {}
@@ -10612,6 +10612,9 @@
     "pingedActivity": "Δραστηριότητα με ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Αυτή η ρύθμιση παραμένει στη μητρική σας γλώσσα, ώστε να μπορείτε πάντα να τη βρίσκετε.)",
     "usernameTakenPleaseChooseAnother": "Αυτό το όνομα χρήστη χρησιμοποιείται ήδη. Παρακαλώ επιλέξτε άλλο.",
+    "allParticipants": "Όλοι οι συμμετέχοντες",
+    "seeFullCoursePlan": "Δείτε το πλήρες πρόγραμμα μαθημάτων",
+    "catchUp": "Ενημέρωση",
     "messageLanguageIs": "Αυτό το μήνυμα έχει οριστεί σε {language}.",
     "updateMessageLanguage": "Κάντε κλικ εδώ για να αλλάξετε τη γλώσσα του μηνύματος.",
     "messageLanguage": "Γλώσσα μηνύματος",
@@ -10621,5 +10624,9 @@
     "unlockTranslations": "Ξεκλείδωμα μεταφράσεων",
     "unlockEmojiMode": "Ξεκλείδωμα λειτουργίας emoji",
     "unlockMessagePractice": "Ξεκλείδωμα εξάσκησης μηνυμάτων",
-    "unlockWritingAssistance": "Ξεκλείδωμα βοήθειας γραφής"
+    "unlockWritingAssistance": "Ξεκλείδωμα βοήθειας γραφής",
+    "showMore": "Εμφάνιση περισσότερων",
+    "showLess": "Εμφάνιση λιγότερων",
+    "countNewMessages": "{count, plural, =1{1 νέο μήνυμα} other{{count} νέα μηνύματα}}",
+    "markAllRead": "Σήμανση όλων ως αναγνωσμένων"
 }

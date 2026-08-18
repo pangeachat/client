@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-17 09:30:22.199009",
+    "@@last_modified": "2026-08-17 16:45:34.122462",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10231,6 +10231,9 @@
     "pingedActivity": "Aktivita s upozorněním",
     "appInTargetLanguageStaysInBaseLanguage": "(Toto nastavení zůstane ve vašem rodném jazyce, abyste ho vždy našli.)",
     "usernameTakenPleaseChooseAnother": "Toto uživatelské jméno je již obsazeno. Zvolte prosím jiné.",
+    "allParticipants": "Všichni účastníci",
+    "seeFullCoursePlan": "Zobrazit celý plán kurzu",
+    "catchUp": "Dohnat",
     "messageLanguageIs": "Tato zpráva je nastavena na {language}.",
     "updateMessageLanguage": "Klikněte zde pro změnu jazyka zprávy.",
     "messageLanguage": "Jazyk zprávy",
@@ -10240,5 +10243,9 @@
     "unlockTranslations": "Odemknout překlady",
     "unlockEmojiMode": "Odemknout režim emoji",
     "unlockMessagePractice": "Odemknout procvičování zpráv",
-    "unlockWritingAssistance": "Odemknout asistenci při psaní"
+    "unlockWritingAssistance": "Odemknout asistenci při psaní",
+    "showMore": "Zobrazit více",
+    "showLess": "Zobrazit méně",
+    "countNewMessages": "{count, plural, =1{1 nová zpráva} other{{count} nových zpráv}}",
+    "markAllRead": "Označit vše jako přečtené"
 }

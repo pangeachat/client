@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-17 09:30:08.782008",
+    "@@last_modified": "2026-08-17 16:45:33.576527",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "পিং কৰা কাৰ্যকলাপ",
     "appInTargetLanguageStaysInBaseLanguage": "(এই ছেটিংছটো আপোনাৰ মাতৃভাষাত থাকিব যাতে আপুনি ইয়াক সদায় বিচাৰি পায়।)",
     "usernameTakenPleaseChooseAnother": "সেই ব্যৱহাৰকাৰীৰ নামটো ইতিমধ্যে লোৱা হৈছে। অনুগ্ৰহ কৰি আন এটা বাছক।",
+    "allParticipants": "সকলো অংশগ্ৰহণকাৰী",
+    "seeFullCoursePlan": "সম্পূৰ্ণ পাঠ্যক্ৰম পৰিকল্পনা চাওক",
+    "catchUp": "ধৰি পেলাওক",
     "messageLanguageIs": "এই বাৰ্তাটি {language} ভাষাত ছেট কৰা হৈছে।",
     "updateMessageLanguage": "বাৰ্তাৰ ভাষা সলনি কৰিবলৈ ইয়াত ক্লিক কৰক।",
     "messageLanguage": "বাৰ্তাৰ ভাষা",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "অনুবাদসমূহ আনলক কৰক",
     "unlockEmojiMode": "ইম'জি ম'ড আনলক কৰক",
     "unlockMessagePractice": "বাৰ্তা অনুশীলন আনলক কৰক",
-    "unlockWritingAssistance": "লিখনি সহায় আনলক কৰক"
+    "unlockWritingAssistance": "লিখনি সহায় আনলক কৰক",
+    "showMore": "আৰু দেখুৱাওক",
+    "showLess": "কম দেখুৱাওক",
+    "countNewMessages": "{count, plural, =1{১টা নতুন বাৰ্তা} other{{count}টা নতুন বাৰ্তা}}",
+    "markAllRead": "সকলো পঢ়া বুলি চিহ্নিত কৰক"
 }

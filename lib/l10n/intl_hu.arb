@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-17 09:30:34.651023",
+    "@@last_modified": "2026-08-17 16:45:35.793525",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9840,6 +9840,9 @@
     "pingedActivity": "Pingelt tevékenység",
     "appInTargetLanguageStaysInBaseLanguage": "(Ez a beállítás az Ön anyanyelvén marad, hogy mindig megtalálhassa.)",
     "usernameTakenPleaseChooseAnother": "Ez a felhasználónév már foglalt. Kérjük, válasszon másikat.",
+    "allParticipants": "Minden résztvevő",
+    "seeFullCoursePlan": "Teljes kurzusterv megtekintése",
+    "catchUp": "Felzárkózás",
     "messageLanguageIs": "Ez az üzenet {language} nyelven van beállítva.",
     "updateMessageLanguage": "Kattintson ide az üzenet nyelvének megváltoztatásához.",
     "messageLanguage": "Üzenet nyelve",
@@ -9849,5 +9852,9 @@
     "unlockTranslations": "Fordítások feloldása",
     "unlockEmojiMode": "Emoji mód feloldása",
     "unlockMessagePractice": "Üzenetgyakorlás feloldása",
-    "unlockWritingAssistance": "Írássegéd feloldása"
+    "unlockWritingAssistance": "Írássegéd feloldása",
+    "showMore": "Több megjelenítése",
+    "showLess": "Kevesebb megjelenítése",
+    "countNewMessages": "{count, plural, =1{1 új üzenet} other{{count} új üzenet}}",
+    "markAllRead": "Mindet olvasottnak jelöli"
 }

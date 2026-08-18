@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-17 09:31:01.123979",
+    "@@last_modified": "2026-08-17 16:45:38.118496",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "پینګ شوې فعالیت",
     "appInTargetLanguageStaysInBaseLanguage": "(دا ترتیب ستاسو په مورنۍ ژبه کې پاتې کیږي ترڅو تاسو تل دا ومومئ.)",
     "usernameTakenPleaseChooseAnother": "دا کارن نوم لا دمخه اخیستل شوی دی. مهرباني وکړئ بل انتخاب کړئ.",
+    "allParticipants": "ټول ګډونوال",
+    "seeFullCoursePlan": "د کورس بشپړ پلان وګورئ",
+    "catchUp": "ځان ورسوه",
     "messageLanguageIs": "دا پیغام {language} ته ټاکل شوی دی.",
     "updateMessageLanguage": "د پیغام ژبې بدلولو لپاره دلته کلیک وکړئ.",
     "messageLanguage": "د پیغام ژبه",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "ژباړې خلاص کړئ",
     "unlockEmojiMode": "ایموجي حالت خلاص کړئ",
     "unlockMessagePractice": "د پیغام تمرین خلاص کړئ",
-    "unlockWritingAssistance": "د لیکلو مرسته خلاص کړئ"
+    "unlockWritingAssistance": "د لیکلو مرسته خلاص کړئ",
+    "showMore": "نور وښایاست",
+    "showLess": "لږ وښایاست",
+    "countNewMessages": "{count, plural, =1{۱ نوې پيغام} other{{count} نوې پيغامونه}}",
+    "markAllRead": "ټول لوستل شوي په نښه کړئ"
 }

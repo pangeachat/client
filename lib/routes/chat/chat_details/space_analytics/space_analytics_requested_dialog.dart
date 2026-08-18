@@ -9,6 +9,8 @@ import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/full_width_dialog.dart';
 import 'package:fluffychat/routes/analytics/analytics_page_constants.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/widgets/future_loading_dialog.dart';
 
 class SpaceAnalyticsRequestedDialog extends StatelessWidget {
   final Room room;
@@ -18,6 +20,42 @@ class SpaceAnalyticsRequestedDialog extends StatelessWidget {
     required this.room,
     required this.requestingUsers,
   });
+
+  /// Shows the review dialog and applies the decision: grant invites each
+  /// requesting admin into the learner's analytics rooms, deny kicks their
+  /// knocks. [requests] maps each requesting admin to the analytics rooms
+  /// they knocked on (AnalyticsRequestsBuilder's shape).
+  static Future<void> show(
+    BuildContext context,
+    Room room,
+    Map<User, List<Room>> requests,
+  ) async {
+    final resp = await showDialog(
+      context: context,
+      builder: (context) => SpaceAnalyticsRequestedDialog(
+        room: room,
+        requestingUsers: requests.keys.toList(),
+      ),
+    );
+    if (resp is! bool || !context.mounted) return;
+
+    await showFutureLoadingDialog(
+      context: context,
+      future: () async {
+        for (final entry in requests.entries) {
+          final futures = entry.value.map(
+            (analyticsRoom) => resp
+                ? analyticsRoom.invite(
+                    entry.key.id,
+                    reason: PangeaEventTypes.analyticsInviteContent,
+                  )
+                : analyticsRoom.kick(entry.key.id),
+          );
+          await Future.wait(futures);
+        }
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

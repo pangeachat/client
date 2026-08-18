@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-17 09:30:24.272026",
+    "@@last_modified": "2026-08-17 16:45:33.746969",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "የተጠቆመ እንቅስቃሴ",
     "appInTargetLanguageStaysInBaseLanguage": "(ይህ ቅንብር ሁልጊዜ እንዲያገኙት በአፍ መፍቻ ቋንቋዎ ይቆያል።)",
     "usernameTakenPleaseChooseAnother": "ይህ የተጠቃሚ ስም አስቀድሞ ተይዟል። እባክዎ ሌላ ይምረጡ።",
+    "allParticipants": "ሁሉም ተሳታፊዎች",
+    "seeFullCoursePlan": "ሙሉ የኮርስ እቅድ ይመልከቱ",
+    "catchUp": "ያግኙ",
     "messageLanguageIs": "ይህ መልዕክት ወደ {language} ተቀናብሯል።",
     "updateMessageLanguage": "የመልዕክቱን ቋንቋ ለመቀየር እዚህ ይጫኑ።",
     "messageLanguage": "የመልዕክት ቋንቋ",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "ትርጉሞችን ይክፈቱ",
     "unlockEmojiMode": "የኢሞጂ ሁነታን ይክፈቱ",
     "unlockMessagePractice": "የመልእክት ልምምድ ይክፈቱ",
-    "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ"
+    "unlockWritingAssistance": "የጽሑፍ ድጋፍ ይክፈቱ",
+    "showMore": "ተጨማሪ አሳይ",
+    "showLess": "ጥቂት አሳይ",
+    "countNewMessages": "{count, plural, =1{1 አዲስ መልእክት} other{{count} አዲስ መልእክቶች}}",
+    "markAllRead": "ሁሉንም እንደተነበበ ምልክት አድርግ"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:22.677700",
+    "@@last_modified": "2026-08-17 16:45:38.893772",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10255,6 +10255,9 @@
     "pingedActivity": "Pingad aktivitet",
     "appInTargetLanguageStaysInBaseLanguage": "(Denna inställning förblir på ditt modersmål så att du alltid kan hitta den.)",
     "usernameTakenPleaseChooseAnother": "Användarnamnet är redan upptaget. Välj ett annat.",
+    "allParticipants": "Alla deltagare",
+    "seeFullCoursePlan": "Se hela kursplanen",
+    "catchUp": "Kom ikapp",
     "messageLanguageIs": "Detta meddelande är inställt på {language}.",
     "updateMessageLanguage": "Klicka här för att ändra meddelandets språk.",
     "messageLanguage": "Meddelandespråk",
@@ -10264,5 +10267,9 @@
     "unlockTranslations": "Lås upp översättningar",
     "unlockEmojiMode": "Lås upp emojiläge",
     "unlockMessagePractice": "Lås upp meddelandeövning",
-    "unlockWritingAssistance": "Lås upp skrivhjälp"
+    "unlockWritingAssistance": "Lås upp skrivhjälp",
+    "showMore": "Visa mer",
+    "showLess": "Visa mindre",
+    "countNewMessages": "{count, plural, =1{1 nytt meddelande} other{{count} nya meddelanden}}",
+    "markAllRead": "Markera alla som lästa"
 }

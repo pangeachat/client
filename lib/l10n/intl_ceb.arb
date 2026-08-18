@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-17 09:30:10.906557",
+    "@@last_modified": "2026-08-17 16:45:33.957590",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gi-ping nga kalihokan",
     "appInTargetLanguageStaysInBaseLanguage": "(Kini nga setting magpabilin sa imong lumad nga pinulongan aron kanunay nimo kining makit-an.)",
     "usernameTakenPleaseChooseAnother": "Gigamit na kanang username. Palihug pagpili og lain.",
+    "allParticipants": "Tanang partisipante",
+    "seeFullCoursePlan": "Tan-awa ang tibuok plano sa kurso",
+    "catchUp": "Apasi",
     "messageLanguageIs": "Kini nga mensahe giset sa {language}.",
     "updateMessageLanguage": "Pag-klik dinhi aron usbon ang pinulongan sa mensahe.",
     "messageLanguage": "Pinulongan sa mensahe",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "I-unlock ang mga hubad",
     "unlockEmojiMode": "I-unlock ang emoji mode",
     "unlockMessagePractice": "I-unlock ang pagpraktis sa mensahe",
-    "unlockWritingAssistance": "I-unlock ang tabang sa pagsulat"
+    "unlockWritingAssistance": "I-unlock ang tabang sa pagsulat",
+    "showMore": "Ipakita pa",
+    "showLess": "Ipakita gamay",
+    "countNewMessages": "{count, plural, =1{1 ka bag-ong mensahe} other{{count} ka bag-ong mensahe}}",
+    "markAllRead": "Markahi tanan nga nabasa na"
 }

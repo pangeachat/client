@@ -1,6 +1,6 @@
 {
     "@@locale": "yi",
-    "@@last_modified": "2026-08-17 09:31:40.852316",
+    "@@last_modified": "2026-08-17 16:45:39.548673",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "איבערחזרן פּאַראָל",
     "notAnImage": "נישט קיין בילד טעקע.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "פּינגד טעטיקייט",
     "appInTargetLanguageStaysInBaseLanguage": "(די באַשטעטיקונג בלײַבט אין דײַן מוטערשפּראַך, כּדי דו זאָלסט זי שטענדיק געפֿינען קענען.)",
     "usernameTakenPleaseChooseAnother": "דער באַניצער־נאָמען איז שוין פֿאַרנומען. ביטע קלויבט אַן אַנדערן.",
+    "allParticipants": "אַלע באַטייליקטע",
+    "seeFullCoursePlan": "זען פולן קורס פּלאַן",
+    "catchUp": "כאַפּן זיך",
     "messageLanguageIs": "די מעסעדזש איז באַשטימט צו {language}.",
     "updateMessageLanguage": "דריקט דאָ צו ענדערן די שפּראַך פון דער מעסעדזש.",
     "messageLanguage": "מעסעדזש שפּראַך",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "אַנשליסן איבערזעצונגען",
     "unlockEmojiMode": "אַנשליסן עמאָדזשי מאָדע",
     "unlockMessagePractice": "אַנשליסן מעסעדזש פּראַקטיק",
-    "unlockWritingAssistance": "אַנשליסן שרייבן הילף"
+    "unlockWritingAssistance": "אַנשליסן שרייבן הילף",
+    "showMore": "ווייַזן מער",
+    "showLess": "ווייַזן ווייניקער",
+    "countNewMessages": "{count, plural, =1{1 נייַע אָנזאָג} other{{count} נייַע אַרטיקלען}}",
+    "markAllRead": "מאַרקירן אַלע געלייענט"
 }

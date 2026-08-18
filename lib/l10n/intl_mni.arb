@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-17 09:31:00.178137",
+    "@@last_modified": "2026-08-17 16:45:37.081426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "পিং তৌরবা এক্টিভিটি",
     "appInTargetLanguageStaysInBaseLanguage": "(असेटिंग असिना नंगना कैना फंगना नंगगी लोयनिंगब लोल्दा लैनिगनि।)",
     "usernameTakenPleaseChooseAnother": "ꯃꯤꯡ ꯑꯁꯤ ꯂꯩꯔꯦ꯫ ꯑꯇꯣꯞꯄꯥ ꯑꯃꯥ ꯈꯟꯕꯤꯌꯨ꯫",
+    "allParticipants": "পুম্নমক্না শরুক য়াবশিং",
+    "seeFullCoursePlan": "কোর্স প্লান পুম্নমক উবীয়ু",
+    "catchUp": "খংজিনবা",
     "messageLanguageIs": "असी मेसेज असि {language} दा सेत तौरे।",
     "updateMessageLanguage": "मेसेज असिगी लोन्गी मात्तिक तोक्नबा नत्त्रगा होन्गदनबा अदोना मासिदा क्लिक तौबियु।",
     "messageLanguage": "मेसेज लोन्",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "অনুবাদশিং অনলক তৌবীয়ু",
     "unlockEmojiMode": "ইমোজি মোড অনলক তৌবীয়ু",
     "unlockMessagePractice": "মেসেজ প্র্যাকটিস অনলক তৌবীয়ু",
-    "unlockWritingAssistance": "রাইটিং এসিস্টেন্স অনলক তৌবীয়ু"
+    "unlockWritingAssistance": "রাইটিং এসিস্টেন্স অনলক তৌবীয়ু",
+    "showMore": "ಹೆಚ್ಚು ತಾನು",
+    "showLess": "ಕಮ್ಮಿ ತಾನು",
+    "countNewMessages": "{count, plural, =1{1 অহোংবা পাও} other{{count} অহোংবা পাও}}",
+    "markAllRead": "পুম্নমক পাজরে হায়না থম্নবা"
 }

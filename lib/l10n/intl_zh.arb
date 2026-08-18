@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-17 09:31:43.271214",
+    "@@last_modified": "2026-08-17 16:45:39.565322",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9737,6 +9737,9 @@
     "pingedActivity": "已提及的活动",
     "appInTargetLanguageStaysInBaseLanguage": "（此设置将保留为您的母语，以便您随时找到它。）",
     "usernameTakenPleaseChooseAnother": "该用户名已被占用。请选择其他用户名。",
+    "allParticipants": "所有参与者",
+    "seeFullCoursePlan": "查看完整课程计划",
+    "catchUp": "赶上进度",
     "messageLanguageIs": "此消息已设置为{language}。",
     "updateMessageLanguage": "点击此处更改消息语言。",
     "messageLanguage": "消息语言",
@@ -9746,5 +9749,9 @@
     "unlockTranslations": "解锁翻译",
     "unlockEmojiMode": "解锁表情符号模式",
     "unlockMessagePractice": "解锁消息练习",
-    "unlockWritingAssistance": "解锁写作辅助"
+    "unlockWritingAssistance": "解锁写作辅助",
+    "showMore": "显示更多",
+    "showLess": "显示更少",
+    "countNewMessages": "{count, plural, =1{1 条新消息} other{{count} 条新消息}}",
+    "markAllRead": "全部标记为已读"
 }

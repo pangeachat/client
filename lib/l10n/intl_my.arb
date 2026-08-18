@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-17 09:31:02.522790",
+    "@@last_modified": "2026-08-17 16:45:37.446489",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "ပင်းခေါ်ထားသည့် လုပ်ဆောင်ချက်",
     "appInTargetLanguageStaysInBaseLanguage": "(ဤဆက်တင်သည် သင်အမြဲရှာဖွေနိုင်ရန် သင့်မိခင်ဘာသာစကားအတိုင်း ရှိနေပါမည်။)",
     "usernameTakenPleaseChooseAnother": "အသုံးပြုသူအမည်ကို အသုံးပြုပြီးသားဖြစ်ပါသည်။ အခြားတစ်ခုကို ရွေးချယ်ပါ။",
+    "allParticipants": "ပါဝင်သူအားလုံး",
+    "seeFullCoursePlan": "သင်တန်းအစီအစဉ်အပြည့်အစုံကို ကြည့်ရန်",
+    "catchUp": "ပြန်လည်စတင်ရန်",
     "messageLanguageIs": "ဤမက်ဆေ့ချ်ကို {language} အဖြစ် သတ်မှတ်ထားသည်။",
     "updateMessageLanguage": "မက်ဆေ့ချ်၏ ဘာသာစကားကို ပြောင်းရန် ဤနေရာကို နှိပ်ပါ။",
     "messageLanguage": "မက်ဆေ့ချ်ဘာသာစကား",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "ဘာသာပြန်များကို လော့ခ်ဖွင့်ပါ",
     "unlockEmojiMode": "အီမိုဂျီမုဒ်ကို လော့ခ်ဖွင့်ပါ",
     "unlockMessagePractice": "မက်ဆေ့ချ်လေ့ကျင့်မှုကို လော့ခ်ဖွင့်ပါ",
-    "unlockWritingAssistance": "စာရေးအကူအညီကို လော့ခ်ဖွင့်ပါ"
+    "unlockWritingAssistance": "စာရေးအကူအညီကို လော့ခ်ဖွင့်ပါ",
+    "showMore": "ပိုပြရန်",
+    "showLess": "လျှော့ပြရန်",
+    "countNewMessages": "{count, plural, =1{စာအသစ် ၁ စောင်} other{စာအသစ် {count} စောင်}}",
+    "markAllRead": "အားလုံးကို ဖတ်ပြီးအဖြစ် မှတ်သားရန်"
 }

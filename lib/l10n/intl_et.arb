@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-17 09:30:21.146983",
+    "@@last_modified": "2026-08-17 16:45:34.652375",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9734,6 +9734,9 @@
     "pingedActivity": "Märgitud tegevus",
     "appInTargetLanguageStaysInBaseLanguage": "(See säte jääb teie emakeelde, et saaksite selle alati üles leida.)",
     "usernameTakenPleaseChooseAnother": "See kasutajanimi on juba võetud. Palun vali mõni teine.",
+    "allParticipants": "Kõik osalejad",
+    "seeFullCoursePlan": "Vaata kogu kursuse plaani",
+    "catchUp": "Järele jõudma",
     "messageLanguageIs": "Selle sõnumi keeleks on määratud {language}.",
     "updateMessageLanguage": "Sõnumi keele muutmiseks klõpsa siia.",
     "messageLanguage": "Sõnumi keel",
@@ -9743,5 +9746,9 @@
     "unlockTranslations": "Ava tõlked",
     "unlockEmojiMode": "Ava emotikonirežiim",
     "unlockMessagePractice": "Ava sõnumite harjutamine",
-    "unlockWritingAssistance": "Ava kirjutamisabi"
+    "unlockWritingAssistance": "Ava kirjutamisabi",
+    "showMore": "Näita rohkem",
+    "showLess": "Näita vähem",
+    "countNewMessages": "{count, plural, =1{1 uus sõnum} other{{count} uut sõnumit}}",
+    "markAllRead": "Märgi kõik loetuks"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-17 09:31:07.705310",
+    "@@last_modified": "2026-08-17 16:45:38.144863",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10709,6 +10709,9 @@
     "pingedActivity": "Активность с упоминанием",
     "appInTargetLanguageStaysInBaseLanguage": "(Эта настройка останется на вашем родном языке, чтобы вы всегда могли ее найти.)",
     "usernameTakenPleaseChooseAnother": "Это имя пользователя уже занято. Выберите другое.",
+    "allParticipants": "Все участники",
+    "seeFullCoursePlan": "Посмотреть полный план курса",
+    "catchUp": "Наверстать упущенное",
     "messageLanguageIs": "Язык этого сообщения: {language}.",
     "updateMessageLanguage": "Нажмите здесь, чтобы изменить язык сообщения.",
     "messageLanguage": "Язык сообщения",
@@ -10718,5 +10721,9 @@
     "unlockTranslations": "Разблокировать переводы",
     "unlockEmojiMode": "Разблокировать режим эмодзи",
     "unlockMessagePractice": "Разблокировать практику сообщений",
-    "unlockWritingAssistance": "Разблокировать помощь в написании"
+    "unlockWritingAssistance": "Разблокировать помощь в написании",
+    "showMore": "Показать больше",
+    "showLess": "Показать меньше",
+    "countNewMessages": "{count, plural, =1{1 новое сообщение} other{{count} новых сообщений}}",
+    "markAllRead": "Отметить все как прочитанное"
 }

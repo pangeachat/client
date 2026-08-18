@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-17 09:30:12.534147",
+    "@@last_modified": "2026-08-17 16:45:33.487841",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gepingde aktiwiteit",
     "appInTargetLanguageStaysInBaseLanguage": "(Hierdie instelling bly in jou moedertaal sodat jy dit altyd kan vind.)",
     "usernameTakenPleaseChooseAnother": "Daardie gebruikersnaam is reeds geneem. Kies asseblief 'n ander een.",
+    "allParticipants": "Alle deelnemers",
+    "seeFullCoursePlan": "Sien volledige kursusplan",
+    "catchUp": "Plaas in",
     "messageLanguageIs": "Hierdie boodskap is gestel op {language}.",
     "updateMessageLanguage": "Klik hier om die boodskap se taal te verander.",
     "messageLanguage": "Boodskaptaal",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Ontsluit vertalings",
     "unlockEmojiMode": "Ontsluit emoji-modus",
     "unlockMessagePractice": "Ontsluit boodskappraktyk",
-    "unlockWritingAssistance": "Ontsluit skryfhulp"
+    "unlockWritingAssistance": "Ontsluit skryfhulp",
+    "showMore": "Wys meer",
+    "showLess": "Wys minder",
+    "countNewMessages": "{count, plural, =1{1 nuwe boodskap} other{{count} nuwe boodskappe}}",
+    "markAllRead": "Merk alles as gelees"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-17 09:31:00.141738",
+    "@@last_modified": "2026-08-17 16:45:37.089724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Идэвхжүүлсэн үйл ажиллагаа",
     "appInTargetLanguageStaysInBaseLanguage": "(Энэ тохиргоо нь таны эх хэл дээр байх тул та үүнийг үргэлж олох боломжтой.)",
     "usernameTakenPleaseChooseAnother": "Энэ хэрэглэгчийн нэр аль хэдийнэ бүртгэгдсэн байна. Өөр нэр сонгоно уу.",
+    "allParticipants": "Бүх оролцогчид",
+    "seeFullCoursePlan": "Хичээлийн бүрэн төлөвлөгөөг харах",
+    "catchUp": "Гүйцэх",
     "messageLanguageIs": "Энэ мессеж {language} хэл дээр байна.",
     "updateMessageLanguage": "Мессежийн хэлийг өөрчлөхийн тулд энд дарна уу.",
     "messageLanguage": "Мессежийн хэл",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Орчуулгыг нээх",
     "unlockEmojiMode": "Эможи горимыг нээх",
     "unlockMessagePractice": "Мессежний дадлагыг нээх",
-    "unlockWritingAssistance": "Бичихэд туслахыг нээх"
+    "unlockWritingAssistance": "Бичихэд туслахыг нээх",
+    "showMore": "Илүү ихийг харах",
+    "showLess": "Бага харах",
+    "countNewMessages": "{count, plural, =1{1 шинэ мессеж} other{{count} шинэ мессеж}}",
+    "markAllRead": "Бүгдийг уншсан гэж тэмдэглэх"
 }

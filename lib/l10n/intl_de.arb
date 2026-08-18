@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-17 09:30:26.065334",
+    "@@last_modified": "2026-08-17 16:45:34.152513",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9724,6 +9724,9 @@
     "pingedActivity": "Gepingte Aktivität",
     "appInTargetLanguageStaysInBaseLanguage": "(Diese Einstellung bleibt in Ihrer Muttersprache, damit Sie sie immer finden können.)",
     "usernameTakenPleaseChooseAnother": "Dieser Benutzername ist bereits vergeben. Bitte wähle einen anderen.",
+    "allParticipants": "Alle Teilnehmer",
+    "seeFullCoursePlan": "Vollständigen Kursplan ansehen",
+    "catchUp": "Aufholen",
     "messageLanguageIs": "Diese Nachricht ist auf {language} eingestellt.",
     "updateMessageLanguage": "Klicke hier, um die Sprache der Nachricht zu ändern.",
     "messageLanguage": "Nachrichtensprache",
@@ -9733,5 +9736,9 @@
     "unlockTranslations": "Übersetzungen freischalten",
     "unlockEmojiMode": "Emoji-Modus freischalten",
     "unlockMessagePractice": "Nachrichtenübung freischalten",
-    "unlockWritingAssistance": "Schreibassistenz freischalten"
+    "unlockWritingAssistance": "Schreibassistenz freischalten",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen",
+    "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}",
+    "markAllRead": "Alle als gelesen markieren"
 }

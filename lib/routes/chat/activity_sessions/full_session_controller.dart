@@ -9,7 +9,6 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_state_controller.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_sessions_start_view.dart';
-import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
 import 'package:fluffychat/utils/navigation_util.dart';
 
 class FullSession extends StatefulWidget {
@@ -71,14 +70,12 @@ class FullSessionController extends State<FullSession>
   void returnFromFullSession() {
     final course = widget.course;
     if (course != null) {
-      // world_v2: switch the workspace to this course's card on the course-plan
-      // tab (a token nav, not a stacked route push). See routing.instructions.md.
+      // world_v2: switch the workspace to this course's card (a token nav,
+      // not a stacked route push). No section param — it would scroll the
+      // page on open (#8357); the course plan already leads the page. See
+      // routing.instructions.md.
       context.go(
-        WorkspaceNav.openCourse(
-          GoRouterState.of(context).uri,
-          course.id,
-          tab: SpaceSettingsTabs.course,
-        ),
+        WorkspaceNav.openCourse(GoRouterState.of(context).uri, course.id),
       );
     } else {
       NavigationUtil.goToSpaceRoute(null, [], context);

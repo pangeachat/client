@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-17 09:31:28.377753",
+    "@@last_modified": "2026-08-17 16:45:38.457643",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Gaioiga na pingina",
     "appInTargetLanguageStaysInBaseLanguage": "(O lenei fa'atulagaga e tumau i lau gagana moni ina ia mafai ona e mauaina i taimi uma.)",
     "usernameTakenPleaseChooseAnother": "Ua uma ona fa'aaoga lena igoa fa'aoga. Fa'amolemole filifili se isi.",
+    "allParticipants": "Tagata uma o lo'o auai",
+    "seeFullCoursePlan": "Va'ai le fuafuaga atoa o le kosi",
+    "catchUp": "Fa'afou",
     "messageLanguageIs": "O lenei feʻau ua seti i le {language}.",
     "updateMessageLanguage": "Kiliki iinei e sui ai le gagana o le feʻau.",
     "messageLanguage": "Gagana o le feʻau",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Tatala fa'aliliuga",
     "unlockEmojiMode": "Tatala le faiga emoji",
     "unlockMessagePractice": "Tatala le fa'ata'ita'iga fe'au",
-    "unlockWritingAssistance": "Tatala le fesoasoani tusitusi"
+    "unlockWritingAssistance": "Tatala le fesoasoani tusitusi",
+    "showMore": "Fa'aali atili",
+    "showLess": "Fa'aali itiiti",
+    "countNewMessages": "{count, plural, =1{1 feʻau fou} other{{count} feʻau fou}}",
+    "markAllRead": "Faailoga uma ua faitauina"
 }

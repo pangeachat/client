@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-17 09:31:25.474967",
+    "@@last_modified": "2026-08-17 16:45:38.790937",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2125,6 +2125,9 @@
     "pingedActivity": "Mosebetsi o pingilweng",
     "appInTargetLanguageStaysInBaseLanguage": "(Tokiso ena e dula e le puong ya heno ya tlhaho hore o tle o kgone ho e fumana kamehla.)",
     "usernameTakenPleaseChooseAnother": "Lebitso leo la mosebedisi le se le ntse le le teng. Ka kopo kgetha le leng.",
+    "allParticipants": "Barupeluoa bohle",
+    "seeFullCoursePlan": "Bona moralo o felletseng oa thupelo",
+    "catchUp": "Tšoara",
     "messageLanguageIs": "Molaetsa ona o behiloe ho {language}.",
     "updateMessageLanguage": "Tobetsa mona ho fetola puo ea molaetsa.",
     "messageLanguage": "Puo ea molaetsa",
@@ -2134,5 +2137,9 @@
     "unlockTranslations": "Notlolla liphetolelo",
     "unlockEmojiMode": "Notlolla mokhoa oa emoji",
     "unlockMessagePractice": "Notlolla tloaelo ea melaetsa",
-    "unlockWritingAssistance": "Notlolla thuso ea ho ngola"
+    "unlockWritingAssistance": "Notlolla thuso ea ho ngola",
+    "showMore": "Bontsha ho feta",
+    "showLess": "Bontsha hanyane",
+    "countNewMessages": "{count, plural, =1{1 molaetsa o motjha} other{melaetsa e metjha e {count}}}",
+    "markAllRead": "Tšoaea tsohle e le tse baliloeng"
 }

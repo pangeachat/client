@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-17 09:30:44.936015",
+    "@@last_modified": "2026-08-17 16:45:35.784183",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10369,6 +10369,9 @@
     "pingedActivity": "Gníomhaíocht phingáilte",
     "appInTargetLanguageStaysInBaseLanguage": "(Fanann an socrú seo i do theanga dhúchais ionas gur féidir leat é a aimsiú i gcónaí.)",
     "usernameTakenPleaseChooseAnother": "Tá an t-ainm úsáideora sin in úsáid cheana féin. Roghnaigh ceann eile, le do thoil.",
+    "allParticipants": "Gach rannpháirtí",
+    "seeFullCoursePlan": "Féach ar an bplean cúrsa iomlán",
+    "catchUp": "Teacht suas",
     "messageLanguageIs": "Tá an teachtaireacht seo socraithe go {language}.",
     "updateMessageLanguage": "Cliceáil anseo chun teanga na teachtaireachta a athrú.",
     "messageLanguage": "Teanga teachtaireachta",
@@ -10378,5 +10381,9 @@
     "unlockTranslations": "Díghlasáil aistriúcháin",
     "unlockEmojiMode": "Díghlasáil mód emoji",
     "unlockMessagePractice": "Díghlasáil cleachtadh teachtaireachtaí",
-    "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta"
+    "unlockWritingAssistance": "Díghlasáil cúnamh scríbhneoireachta",
+    "showMore": "Taispeáin níos mó",
+    "showLess": "Taispeáin níos lú",
+    "countNewMessages": "{count, plural, =1{1 teachtaireacht nua} other{{count} teachtaireachtaí nua}}",
+    "markAllRead": "Marcáil go léir mar léite"
 }

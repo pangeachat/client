@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:31:29.822369",
+    "@@last_modified": "2026-08-17 16:45:38.638737",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10686,6 +10686,9 @@
     "pingedActivity": "Pingovana aktivnost",
     "appInTargetLanguageStaysInBaseLanguage": "(Ovo podešavanje ostaje na vašem maternjem jeziku kako biste ga uvek mogli pronaći.)",
     "usernameTakenPleaseChooseAnother": "To korisničko ime je već zauzeto. Izaberite drugo.",
+    "allParticipants": "Svi učesnici",
+    "seeFullCoursePlan": "Pogledajte ceo plan kursa",
+    "catchUp": "Sustići",
     "messageLanguageIs": "Ova poruka je podešena na {language}.",
     "updateMessageLanguage": "Kliknite ovde da promenite jezik poruke.",
     "messageLanguage": "Jezik poruke",
@@ -10695,5 +10698,9 @@
     "unlockTranslations": "Otključajte prevode",
     "unlockEmojiMode": "Otključajte emoji režim",
     "unlockMessagePractice": "Otključajte vežbanje poruka",
-    "unlockWritingAssistance": "Otključajte pomoć pri pisanju"
+    "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
+    "showMore": "Prikaži više",
+    "showLess": "Prikaži manje",
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
+    "markAllRead": "Označi sve kao pročitano"
 }

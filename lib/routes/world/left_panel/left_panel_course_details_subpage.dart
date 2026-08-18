@@ -22,6 +22,7 @@ class LeftPanelCourseDetailsSubpage extends StatelessWidget {
     return ChatDetails(
       roomId: spaceId,
       activeTab: param?.activeTab,
+      expandedSection: param?.expanded ?? false,
       embeddedCloseButton: closeButton,
     );
   }

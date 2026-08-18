@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 09:30:35.092834",
+    "@@last_modified": "2026-08-17 16:45:35.905386",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9810,6 +9810,9 @@
     "pingedActivity": "Attività con ping",
     "appInTargetLanguageStaysInBaseLanguage": "(Questa impostazione rimane nella tua lingua madre in modo che tu possa sempre trovarla.)",
     "usernameTakenPleaseChooseAnother": "Questo nome utente è già in uso. Scegline un altro.",
+    "allParticipants": "Tutti i partecipanti",
+    "seeFullCoursePlan": "Vedi il piano completo del corso",
+    "catchUp": "Recupera",
     "messageLanguageIs": "Questo messaggio è impostato su {language}.",
     "updateMessageLanguage": "Clicca qui per cambiare la lingua del messaggio.",
     "messageLanguage": "Lingua del messaggio",
@@ -9819,5 +9822,9 @@
     "unlockTranslations": "Sblocca le traduzioni",
     "unlockEmojiMode": "Sblocca la modalità emoji",
     "unlockMessagePractice": "Sblocca la pratica dei messaggi",
-    "unlockWritingAssistance": "Sblocca l'assistenza alla scrittura"
+    "unlockWritingAssistance": "Sblocca l'assistenza alla scrittura",
+    "showMore": "Mostra altro",
+    "showLess": "Mostra meno",
+    "countNewMessages": "{count, plural, =1{1 nuovo messaggio} other{{count} nuovi messaggi}}",
+    "markAllRead": "Segna tutto come letto"
 }
