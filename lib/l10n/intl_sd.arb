@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-17 16:29:43.817483",
+    "@@last_modified": "2026-08-17 16:45:38.334302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "لکڻ جي مدد کوليو",
     "showMore": "وڌيڪ ڏيکاريو",
     "showLess": "گهٽ ڏيکاريو",
-    "countNewMessages": "{count, plural, =1{1 نئون پيغام} other{{count} نوان پيغام}}"
+    "countNewMessages": "{count, plural, =1{1 نئون پيغام} other{{count} نوان پيغام}}",
+    "markAllRead": "سڀ پڙهيل نشان لڳايو"
 }

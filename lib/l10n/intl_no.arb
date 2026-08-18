@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-17 16:29:42.818169",
+    "@@last_modified": "2026-08-17 16:45:37.504752",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Lås opp skrivehjelp",
     "showMore": "Vis mer",
     "showLess": "Vis mindre",
-    "countNewMessages": "{count, plural, =1{1 ny melding} other{{count} nye meldinger}}"
+    "countNewMessages": "{count, plural, =1{1 ny melding} other{{count} nye meldinger}}",
+    "markAllRead": "Merk alle som lest"
 }

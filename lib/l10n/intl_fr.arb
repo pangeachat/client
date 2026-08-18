@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-17 16:29:41.433857",
+    "@@last_modified": "2026-08-17 16:45:34.799385",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10108,5 +10108,6 @@
     "unlockWritingAssistance": "Débloquer l'aide à l'écriture",
     "showMore": "Afficher plus",
     "showLess": "Afficher moins",
-    "countNewMessages": "{count, plural, =1{1 nouveau message} other{{count} nouveaux messages}}"
+    "countNewMessages": "{count, plural, =1{1 nouveau message} other{{count} nouveaux messages}}",
+    "markAllRead": "Tout marquer comme lu"
 }

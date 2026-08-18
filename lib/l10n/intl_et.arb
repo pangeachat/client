@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-17 16:29:39.637879",
+    "@@last_modified": "2026-08-17 16:45:34.652375",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9750,5 +9750,6 @@
     "unlockWritingAssistance": "Ava kirjutamisabi",
     "showMore": "Näita rohkem",
     "showLess": "Näita vähem",
-    "countNewMessages": "{count, plural, =1{1 uus sõnum} other{{count} uut sõnumit}}"
+    "countNewMessages": "{count, plural, =1{1 uus sõnum} other{{count} uut sõnumit}}",
+    "markAllRead": "Märgi kõik loetuks"
 }

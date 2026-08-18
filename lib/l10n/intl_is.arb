@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-17 16:29:41.257662",
+    "@@last_modified": "2026-08-17 16:45:35.904309",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Aflæsa ritunaraðstoð",
     "showMore": "Sýna meira",
     "showLess": "Sýna minna",
-    "countNewMessages": "{count, plural, =1{1 ný skilaboð} other{{count} ný skilaboð}}"
+    "countNewMessages": "{count, plural, =1{1 ný skilaboð} other{{count} ný skilaboð}}",
+    "markAllRead": "Merkja allt lesið"
 }

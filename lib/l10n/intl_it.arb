@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:29:41.166731",
+    "@@last_modified": "2026-08-17 16:45:35.905386",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9826,5 +9826,6 @@
     "unlockWritingAssistance": "Sblocca l'assistenza alla scrittura",
     "showMore": "Mostra altro",
     "showLess": "Mostra meno",
-    "countNewMessages": "{count, plural, =1{1 nuovo messaggio} other{{count} nuovi messaggi}}"
+    "countNewMessages": "{count, plural, =1{1 nuovo messaggio} other{{count} nuovi messaggi}}",
+    "markAllRead": "Segna tutto come letto"
 }

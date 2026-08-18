@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-17 16:29:42.524683",
+    "@@last_modified": "2026-08-17 16:45:37.337339",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Nisfruttaw l-għajnuna fil-kitba",
     "showMore": "Uri aktar",
     "showLess": "Uri inqas",
-    "countNewMessages": "{count, plural, =1{1 messaġġ ġdid} other{{count} messaġġi ġodda}}"
+    "countNewMessages": "{count, plural, =1{1 messaġġ ġdid} other{{count} messaġġi ġodda}}",
+    "markAllRead": "Immarka kollox bħala moqri"
 }

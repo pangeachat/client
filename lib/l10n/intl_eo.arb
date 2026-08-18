@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:29:39.211987",
+    "@@last_modified": "2026-08-17 16:45:34.326049",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10698,5 +10698,6 @@
     "unlockWritingAssistance": "Malŝlosi skriban helpon",
     "showMore": "Montri pli",
     "showLess": "Montri malpli",
-    "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}"
+    "countNewMessages": "{count, plural, =1{1 nova mesaĝo} other{{count} novaj mesaĝoj}}",
+    "markAllRead": "Marki ĉion kiel legitan"
 }

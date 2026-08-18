@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-17 16:29:39.660813",
+    "@@last_modified": "2026-08-17 16:45:34.694236",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10613,5 +10613,6 @@
     "unlockWritingAssistance": "I-unlock ang tulong sa pagsusulat",
     "showMore": "Ipakita pa",
     "showLess": "Ipakita nang kaunti",
-    "countNewMessages": "{count, plural, =1{1 bagong mensahe} other{{count} bagong mensahe}}"
+    "countNewMessages": "{count, plural, =1{1 bagong mensahe} other{{count} bagong mensahe}}",
+    "markAllRead": "Markahan lahat bilang nabasa"
 }

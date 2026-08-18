@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-17 16:29:46.202284",
+    "@@last_modified": "2026-08-17 16:45:39.565322",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9753,5 +9753,6 @@
     "unlockWritingAssistance": "解锁写作辅助",
     "showMore": "显示更多",
     "showLess": "显示更少",
-    "countNewMessages": "{count, plural, =1{1 条新消息} other{{count} 条新消息}}"
+    "countNewMessages": "{count, plural, =1{1 条新消息} other{{count} 条新消息}}",
+    "markAllRead": "全部标记为已读"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-17 16:29:45.788004",
+    "@@last_modified": "2026-08-17 16:45:37.699850",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Tsegulani thandizo lolemba",
     "showMore": "Onjezani zambiri",
     "showLess": "Chepetsani",
-    "countNewMessages": "{count, plural, =1{uthenga umodzi watsopano} other{mameseji {count} atsopano}}"
+    "countNewMessages": "{count, plural, =1{uthenga umodzi watsopano} other{mameseji {count} atsopano}}",
+    "markAllRead": "Chongani zonse kuti zaŵerengedwa"
 }

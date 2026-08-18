@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-17 16:29:38.580764",
+    "@@last_modified": "2026-08-17 16:45:33.542208",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
     "showMore": "Prikaži više",
     "showLess": "Prikaži manje",
-    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}"
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
+    "markAllRead": "Označi sve kao pročitano"
 }

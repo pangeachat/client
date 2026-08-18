@@ -1,6 +1,6 @@
 {
     "@@locale": "kn",
-    "@@last_modified": "2026-08-17 16:29:41.541754",
+    "@@last_modified": "2026-08-17 16:45:36.376539",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ಪಾಸ್‌ವರ್ಡ್ ಪುನರಾವರ್ತಿಸಿ",
     "notAnImage": "ಚಿತ್ರ ಫೈಲ್ ಅಲ್ಲ.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "ಬರವಣಿಗೆ ಸಹಾಯವನ್ನು ಅನ್‌ಲಾಕ್ ಮಾಡಿ",
     "showMore": "ಇನ್ನಷ್ಟು ತೋರಿಸು",
     "showLess": "ಕಡಿಮೆ ತೋರಿಸು",
-    "countNewMessages": "{count, plural, =1{1 ಹೊಸ ಸಂದೇಶ} other{{count} ಹೊಸ ಸಂದೇಶಗಳು}}"
+    "countNewMessages": "{count, plural, =1{1 ಹೊಸ ಸಂದೇಶ} other{{count} ಹೊಸ ಸಂದೇಶಗಳು}}",
+    "markAllRead": "ಎಲ್ಲವನ್ನೂ ಓದಿದಂತೆ ಗುರುತಿಸಿ"
 }

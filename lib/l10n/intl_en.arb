@@ -129,6 +129,11 @@
         "type": "String",
         "placeholders": {}
     },
+    "markAllRead": "Mark all read",
+    "@markAllRead": {
+        "type": "String",
+        "placeholders": {}
+    },
     "countNewMessages": "{count, plural, =1{1 new message} other{{count} new messages}}",
     "@countNewMessages": {
         "type": "String",

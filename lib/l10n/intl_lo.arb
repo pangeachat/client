@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-17 16:29:41.927098",
+    "@@last_modified": "2026-08-17 16:45:36.926172",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "ປົດລັອກຕົວຊ່ວຍຂຽນ",
     "showMore": "ສະແດງເພີ່ມເຕີມ",
     "showLess": "ສະແດງໜ້ອຍລົງ",
-    "countNewMessages": "{count, plural, =1{1 ຂໍ້ຄວາມໃໝ່} other{{count} ຂໍ້ຄວາມໃໝ່}}"
+    "countNewMessages": "{count, plural, =1{1 ຂໍ້ຄວາມໃໝ່} other{{count} ຂໍ້ຄວາມໃໝ່}}",
+    "markAllRead": "ໝາຍວ່າອ່ານແລ້ວທັງໝົດ"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ml",
-    "@@last_modified": "2026-08-17 16:29:42.311000",
+    "@@last_modified": "2026-08-17 16:45:36.980931",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "പാസ്‌വേഡ് ആവർത്തിക്കുക",
     "notAnImage": "ഒരു ചിത്ര ഫയൽ അല്ല.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "എഴുത്ത് സഹായം അൺലോക്ക് ചെയ്യുക",
     "showMore": "കൂടുതൽ കാണിക്കുക",
     "showLess": "കുറവ് കാണിക്കുക",
-    "countNewMessages": "{count, plural, =1{പുതിയ ഒരു സന്ദേശം} other{പുതിയ {count} സന്ദേശങ്ങൾ}}"
+    "countNewMessages": "{count, plural, =1{പുതിയ ഒരു സന്ദേശം} other{പുതിയ {count} സന്ദേശങ്ങൾ}}",
+    "markAllRead": "എല്ലാം വായിച്ചതായി അടയാളപ്പെടുത്തുക"
 }

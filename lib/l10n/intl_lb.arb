@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-17 16:29:41.884013",
+    "@@last_modified": "2026-08-17 16:45:36.522048",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Spär Schreifhëllef op",
     "showMore": "Méi weisen",
     "showLess": "Manner weisen",
-    "countNewMessages": "{count, plural, =1{1 neie Message} other{{count} nei Messagen}}"
+    "countNewMessages": "{count, plural, =1{1 neie Message} other{{count} nei Messagen}}",
+    "markAllRead": "Alles als gelies markéieren"
 }

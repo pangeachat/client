@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-17 16:29:46.285874",
+    "@@last_modified": "2026-08-17 16:45:39.886084",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Vula usizo lokubhala",
     "showMore": "Bonisa okwengeziwe",
     "showLess": "Bonisa okuncane",
-    "countNewMessages": "{count, plural, =1{Umlayezo ongu-1 omusha} other{Imilayezo emisha engu-{count}}}"
+    "countNewMessages": "{count, plural, =1{Umlayezo ongu-1 omusha} other{Imilayezo emisha engu-{count}}}",
+    "markAllRead": "Maka konke kufundiwe"
 }

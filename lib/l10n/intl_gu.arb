@@ -1,6 +1,6 @@
 {
     "@@locale": "gu",
-    "@@last_modified": "2026-08-17 16:29:40.175208",
+    "@@last_modified": "2026-08-17 16:45:35.200823",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "પાસવર્ડ ફરીથી લખો",
     "notAnImage": "આ ઇમેજ ફાઇલ નથી.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "લેખન સહાય અનલૉક કરો",
     "showMore": "વધુ બતાવો",
     "showLess": "ઓછું બતાવો",
-    "countNewMessages": "{count, plural, =1{1 નવો સંદેશ} other{{count} નવા સંદેશા}}"
+    "countNewMessages": "{count, plural, =1{1 નવો સંદેશ} other{{count} નવા સંદેશા}}",
+    "markAllRead": "બધા વાંચેલા તરીકે ચિહ્નિત કરો"
 }

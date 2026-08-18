@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:29:45.689029",
+    "@@last_modified": "2026-08-17 16:45:39.326965",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7029,5 +7029,6 @@
     "unlockWritingAssistance": "Mở khóa hỗ trợ viết",
     "showMore": "Hiển thị thêm",
     "showLess": "Hiển thị bớt",
-    "countNewMessages": "{count, plural, =1{1 tin nhắn mới} other{{count} tin nhắn mới}}"
+    "countNewMessages": "{count, plural, =1{1 tin nhắn mới} other{{count} tin nhắn mới}}",
+    "markAllRead": "Đánh dấu đã đọc tất cả"
 }

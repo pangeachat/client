@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-17 16:29:42.298600",
+    "@@last_modified": "2026-08-17 16:45:37.089724",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Бичихэд туслахыг нээх",
     "showMore": "Илүү ихийг харах",
     "showLess": "Бага харах",
-    "countNewMessages": "{count, plural, =1{1 шинэ мессеж} other{{count} шинэ мессеж}}"
+    "countNewMessages": "{count, plural, =1{1 шинэ мессеж} other{{count} шинэ мессеж}}",
+    "markAllRead": "Бүгдийг уншсан гэж тэмдэглэх"
 }

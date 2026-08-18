@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-17 16:29:42.279007",
+    "@@last_modified": "2026-08-17 16:45:37.040614",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Sokafy ny fanampiana amin'ny fanoratana",
     "showMore": "Asehoy misimisy kokoa",
     "showLess": "Asehoy kely kokoa",
-    "countNewMessages": "{count, plural, =1{1 hafatra vaovao} other{{count} hafatra vaovao}}"
+    "countNewMessages": "{count, plural, =1{1 hafatra vaovao} other{{count} hafatra vaovao}}",
+    "markAllRead": "Mariho ho voavaky avokoa"
 }

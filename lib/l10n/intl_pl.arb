@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-17 16:29:43.351603",
+    "@@last_modified": "2026-08-17 16:45:37.849509",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9838,5 +9838,6 @@
     "unlockWritingAssistance": "Odblokuj pomoc w pisaniu",
     "showMore": "Pokaż więcej",
     "showLess": "Pokaż mniej",
-    "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}"
+    "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}",
+    "markAllRead": "Oznacz wszystkie jako przeczytane"
 }

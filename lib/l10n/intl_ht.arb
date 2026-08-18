@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-17 16:29:40.689289",
+    "@@last_modified": "2026-08-17 16:45:35.350791",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Debloke asistans pou ekri",
     "showMore": "Montre plis",
     "showLess": "Montre mwens",
-    "countNewMessages": "{count, plural, =1{1 nouvo mesaj} other{{count} nouvo mesaj}}"
+    "countNewMessages": "{count, plural, =1{1 nouvo mesaj} other{{count} nouvo mesaj}}",
+    "markAllRead": "Make tout li"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:29:44.367768",
+    "@@last_modified": "2026-08-17 16:45:38.638737",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10702,5 +10702,6 @@
     "unlockWritingAssistance": "Otključajte pomoć pri pisanju",
     "showMore": "Prikaži više",
     "showLess": "Prikaži manje",
-    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}"
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} novih poruka}}",
+    "markAllRead": "Označi sve kao pročitano"
 }

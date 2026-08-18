@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-17 16:29:45.670283",
+    "@@last_modified": "2026-08-17 16:45:39.084279",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10054,5 +10054,6 @@
     "unlockWritingAssistance": "Yazma yardımının kilidini aç",
     "showMore": "Daha fazla göster",
     "showLess": "Daha az göster",
-    "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}"
+    "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",
+    "markAllRead": "Tümünü okundu olarak işaretle"
 }

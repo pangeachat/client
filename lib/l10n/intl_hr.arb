@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-17 16:29:40.795146",
+    "@@last_modified": "2026-08-17 16:45:35.375199",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10189,5 +10189,6 @@
     "unlockWritingAssistance": "Otključaj pomoć pri pisanju",
     "showMore": "Prikaži više",
     "showLess": "Prikaži manje",
-    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} nove poruke}}"
+    "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} nove poruke}}",
+    "markAllRead": "Označi sve pročitano"
 }

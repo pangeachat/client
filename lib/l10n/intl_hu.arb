@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-17 16:29:40.684638",
+    "@@last_modified": "2026-08-17 16:45:35.793525",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9856,5 +9856,6 @@
     "unlockWritingAssistance": "Írássegéd feloldása",
     "showMore": "Több megjelenítése",
     "showLess": "Kevesebb megjelenítése",
-    "countNewMessages": "{count, plural, =1{1 új üzenet} other{{count} új üzenet}}"
+    "countNewMessages": "{count, plural, =1{1 új üzenet} other{{count} új üzenet}}",
+    "markAllRead": "Mindet olvasottnak jelöli"
 }

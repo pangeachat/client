@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-17 16:29:38.623353",
+    "@@last_modified": "2026-08-17 16:45:33.543990",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Yazı köməkliyini açın",
     "showMore": "Daha çox göstər",
     "showLess": "Daha az göstər",
-    "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}"
+    "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",
+    "markAllRead": "Hamısını oxunmuş kimi qeyd et"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:29:39.862211",
+    "@@last_modified": "2026-08-17 16:45:34.791605",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9841,5 +9841,6 @@
     "unlockWritingAssistance": "باز کردن کمک نوشتاری",
     "showMore": "نمایش بیشتر",
     "showLess": "نمایش کمتر",
-    "countNewMessages": "{count, plural, =1{۱ پیام جدید} other{{count} پیام جدید}}"
+    "countNewMessages": "{count, plural, =1{۱ پیام جدید} other{{count} پیام جدید}}",
+    "markAllRead": "علامت‌گذاری همه به عنوان خوانده‌شده"
 }

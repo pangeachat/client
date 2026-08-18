@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-17 16:29:40.331053",
+    "@@last_modified": "2026-08-17 16:45:35.309994",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Wehe i ke kōkua kākau",
     "showMore": "Hōʻike hou aku",
     "showLess": "Hōʻike liʻiliʻi",
-    "countNewMessages": "{count, plural, =1{1 leka hou} other{{count} mau leka hou}}"
+    "countNewMessages": "{count, plural, =1{1 leka hou} other{{count} mau leka hou}}",
+    "markAllRead": "E hōʻailona i nā mea a pau i heluhelu ʻia"
 }

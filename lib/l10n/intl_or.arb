@@ -1,6 +1,6 @@
 {
     "@@locale": "or",
-    "@@last_modified": "2026-08-17 16:29:42.916775",
+    "@@last_modified": "2026-08-17 16:45:37.790705",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ପାସୱାର୍ଡ ପୁନରାବୃତ୍ତି କରନ୍ତୁ",
     "notAnImage": "ଏକ ଛବି ଫାଇଲ୍ ନୁହେଁ।",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "ଲେଖିବା ସହାୟତା ଅନଲକ୍ କରନ୍ତୁ",
     "showMore": "ଅଧିକ ଦେଖାନ୍ତୁ",
     "showLess": "କମ୍ ଦେଖାନ୍ତୁ",
-    "countNewMessages": "{count, plural, =1{ଗୋଟିଏ ନୂଆ ବାର୍ତ୍ତା} other{{count} ନୂଆ ବାର୍ତ୍ତା}}"
+    "countNewMessages": "{count, plural, =1{ଗୋଟିଏ ନୂଆ ବାର୍ତ୍ତା} other{{count} ନୂଆ ବାର୍ତ୍ତା}}",
+    "markAllRead": "ସବୁ ପଢ଼ା ହୋଇଛି ବୋଲି ଚିହ୍ନିତ କରନ୍ତୁ"
 }

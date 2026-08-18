@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-17 16:29:39.140382",
+    "@@last_modified": "2026-08-17 16:45:34.164816",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Datgloi cymorth ysgrifennu",
     "showMore": "Dangos mwy",
     "showLess": "Dangos llai",
-    "countNewMessages": "{count, plural, =1{1 neges newydd} other{{count} neges newydd}}"
+    "countNewMessages": "{count, plural, =1{1 neges newydd} other{{count} neges newydd}}",
+    "markAllRead": "Marcio pob un fel rhai a ddarllenwyd"
 }

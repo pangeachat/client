@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-17 16:29:44.372518",
+    "@@last_modified": "2026-08-17 16:45:38.503779",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Vhura rubatsiro rwekunyora",
     "showMore": "Ratidza zvimwe",
     "showLess": "Ratidza zvishoma",
-    "countNewMessages": "{count, plural, =1{1 meseji itsva} other{{count} meseji itsva}}"
+    "countNewMessages": "{count, plural, =1{1 meseji itsva} other{{count} meseji itsva}}",
+    "markAllRead": "Maka zvese sekuverengwa"
 }

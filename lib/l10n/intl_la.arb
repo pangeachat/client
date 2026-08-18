@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-17 16:29:41.794410",
+    "@@last_modified": "2026-08-17 16:45:36.461156",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2141,5 +2141,6 @@
     "unlockWritingAssistance": "Reserare scripturae auxilium",
     "showMore": "Plura ostende",
     "showLess": "Pauciora ostende",
-    "countNewMessages": "{count, plural, =1{1 nuntius novus} other{{count} nuntii novi}}"
+    "countNewMessages": "{count, plural, =1{1 nuntius novus} other{{count} nuntii novi}}",
+    "markAllRead": "Omnia lecta nota"
 }

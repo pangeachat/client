@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-17 16:29:38.611223",
+    "@@last_modified": "2026-08-17 16:45:33.587643",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10059,5 +10059,6 @@
     "unlockWritingAssistance": "افتح مساعدة الكتابة",
     "showMore": "عرض المزيد",
     "showLess": "عرض أقل",
-    "countNewMessages": "{count, plural, =1{رسالة جديدة واحدة} other{{count} رسائل جديدة}}"
+    "countNewMessages": "{count, plural, =1{رسالة جديدة واحدة} other{{count} رسائل جديدة}}",
+    "markAllRead": "وضع الكل كمقروء"
 }

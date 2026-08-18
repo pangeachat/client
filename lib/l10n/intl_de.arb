@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-17 16:29:39.145933",
+    "@@last_modified": "2026-08-17 16:45:34.152513",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9740,5 +9740,6 @@
     "unlockWritingAssistance": "Schreibassistenz freischalten",
     "showMore": "Mehr anzeigen",
     "showLess": "Weniger anzeigen",
-    "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}"
+    "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}",
+    "markAllRead": "Alle als gelesen markieren"
 }

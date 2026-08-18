@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-17 16:29:39.221480",
+    "@@last_modified": "2026-08-17 16:45:34.122462",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10247,5 +10247,6 @@
     "unlockWritingAssistance": "Odemknout asistenci při psaní",
     "showMore": "Zobrazit více",
     "showLess": "Zobrazit méně",
-    "countNewMessages": "{count, plural, =1{1 nová zpráva} other{{count} nových zpráv}}"
+    "countNewMessages": "{count, plural, =1{1 nová zpráva} other{{count} nových zpráv}}",
+    "markAllRead": "Označit vše jako přečtené"
 }
