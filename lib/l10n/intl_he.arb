@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:35.370392",
+    "@@last_modified": "2026-08-18 09:33:24.049486",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10664,6 +10664,9 @@
     "unlockEmojiMode": "פתיחת מצב אימוג'י",
     "unlockMessagePractice": "פתיחת תרגול הודעות",
     "unlockWritingAssistance": "פתיחת סיוע בכתיבה",
+    "courseSectionTeaching": "מלמד",
+    "courseSectionLearning": "לומד",
+    "courseSectionLabel": "{title}, {count, plural, =1{קורס אחד} other{{count} קורסים}}",
     "showMore": "הצג עוד",
     "showLess": "הצג פחות",
     "countNewMessages": "{count, plural, =1{הודעה חדשה אחת} other{{count} הודעות חדשות}}",

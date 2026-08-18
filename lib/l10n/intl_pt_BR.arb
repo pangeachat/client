@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:38.064720",
+    "@@last_modified": "2026-08-18 09:33:31.063922",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9750,6 +9750,9 @@
     "unlockEmojiMode": "Desbloquear modo emoji",
     "unlockMessagePractice": "Desbloquear prática de mensagens",
     "unlockWritingAssistance": "Desbloquear assistência de escrita",
+    "courseSectionTeaching": "Ensinando",
+    "courseSectionLearning": "Aprendendo",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curso} other{{count} cursos}}",
     "showMore": "Mostrar mais",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",

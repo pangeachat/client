@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-17 16:45:36.432349",
+    "@@last_modified": "2026-08-18 09:33:29.957301",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Эмодзи режиминин кулпусун ачуу",
     "unlockMessagePractice": "Кабарды практикалоонун кулпусун ачуу",
     "unlockWritingAssistance": "Жазууга жардам берүүнүн кулпусун ачуу",
+    "courseSectionTeaching": "Окутуу",
+    "courseSectionLearning": "Үйрөнүү",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курс}}",
     "showMore": "Көбүрөөк көрсөтүү",
     "showLess": "Азыраак көрсөтүү",
     "countNewMessages": "{count, plural, =1{1 жаңы билдирүү} other{{count} жаңы билдирүүлөр}}",

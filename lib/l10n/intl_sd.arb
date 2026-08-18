@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-17 16:45:38.334302",
+    "@@last_modified": "2026-08-18 09:33:31.708517",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "ايموجي موڊ کوليو",
     "unlockMessagePractice": "پيغام جي مشق کوليو",
     "unlockWritingAssistance": "لکڻ جي مدد کوليو",
+    "courseSectionTeaching": "سيکارڻ",
+    "courseSectionLearning": "سکڻ",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 ڪورس} other{{count} ڪورس}}",
     "showMore": "وڌيڪ ڏيکاريو",
     "showLess": "گهٽ ڏيکاريو",
     "countNewMessages": "{count, plural, =1{1 نئون پيغام} other{{count} نوان پيغام}}",

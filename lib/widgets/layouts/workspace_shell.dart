@@ -500,6 +500,10 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
   static const double _coursesSheetRowEstimate = 84.0;
   static const double _coursesSheetAddOptionsAllowance = 236.0;
 
+  /// One Invited / Teaching / Learning section header row, when the hub
+  /// groups by role (#8425): the row's text + 4px padding + the 8px separator.
+  static const double _coursesSheetSectionHeaderEstimate = 36.0;
+
   /// The activity plan's minimized rest height: the cavity handle + the start
   /// page's app bar, info row, and CTA row, with no media/description. This is
   /// the plan's opening stop (there is no taller mid-level); dragging up goes
@@ -666,12 +670,13 @@ class _MobileNavLayerState extends State<_MobileNavLayer> {
       // They fall through to the default (roughly half the screen), which is
       // what routing.instructions.md specifies for sections other than the
       // chats sheet and the Courses hub.
-      final courseCount = client.sortedCourses(l10n).length;
+      final groups = client.coursesByRole(l10n);
       preferredCavityHeight =
           _chatsSheetHeaderAllowance +
-          (courseCount == 0
+          (groups.courseCount == 0
               ? _coursesSheetAddOptionsAllowance
-              : courseCount * _coursesSheetRowEstimate);
+              : groups.courseCount * _coursesSheetRowEstimate +
+                    groups.sectionCount * _coursesSheetSectionHeaderEstimate);
     }
 
     String? cavityKey;

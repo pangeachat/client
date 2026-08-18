@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:39.614686",
+    "@@last_modified": "2026-08-18 09:33:34.764508",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9856,6 +9856,9 @@
     "unlockEmojiMode": "解鎖表情符號模式",
     "unlockMessagePractice": "解鎖訊息練習",
     "unlockWritingAssistance": "解鎖寫作輔助",
+    "courseSectionTeaching": "教學",
+    "courseSectionLearning": "學習",
+    "courseSectionLabel": "{title}，{count, plural, =1{1 門課程} other{{count} 門課程}}",
     "showMore": "顯示更多",
     "showLess": "顯示較少",
     "countNewMessages": "{count, plural, =1{1 條新訊息} other{{count} 條新訊息}}",

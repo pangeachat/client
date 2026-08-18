@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-17 16:45:33.560290",
+    "@@last_modified": "2026-08-18 09:33:20.822634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Отключете режим емоджи",
     "unlockMessagePractice": "Отключете практика за съобщения",
     "unlockWritingAssistance": "Отключете помощ при писане",
+    "courseSectionTeaching": "Преподаване",
+    "courseSectionLearning": "Учене",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 курс} other{{count} курса}}",
     "showMore": "Покажи още",
     "showLess": "Покажи по-малко",
     "countNewMessages": "{count, plural, =1{1 ново съобщение} other{{count} нови съобщения}}",

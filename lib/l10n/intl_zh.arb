@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-17 16:45:39.565322",
+    "@@last_modified": "2026-08-18 09:33:34.672373",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9750,6 +9750,9 @@
     "unlockEmojiMode": "解锁表情符号模式",
     "unlockMessagePractice": "解锁消息练习",
     "unlockWritingAssistance": "解锁写作辅助",
+    "courseSectionTeaching": "教学",
+    "courseSectionLearning": "学习",
+    "courseSectionLabel": "{title}，{count, plural, =1{1 门课程} other{{count} 门课程}}",
     "showMore": "显示更多",
     "showLess": "显示更少",
     "countNewMessages": "{count, plural, =1{1 条新消息} other{{count} 条新消息}}",

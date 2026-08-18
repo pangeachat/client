@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-17 16:45:37.699850",
+    "@@last_modified": "2026-08-18 09:33:30.357446",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Tsegulani mawonekedwe a emoji",
     "unlockMessagePractice": "Tsegulani kuyeseza mauthenga",
     "unlockWritingAssistance": "Tsegulani thandizo lolemba",
+    "courseSectionTeaching": "Kuphunzitsa",
+    "courseSectionLearning": "Kuphunzira",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kosi} other{{count} makosi}}",
     "showMore": "Onjezani zambiri",
     "showLess": "Chepetsani",
     "countNewMessages": "{count, plural, =1{uthenga umodzi watsopano} other{mameseji {count} atsopano}}",

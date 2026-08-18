@@ -5050,5 +5050,18 @@
                 "type": "String"
             }
         }
+    },
+    "courseSectionTeaching": "Teaching",
+    "courseSectionLearning": "Learning",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 course} other{{count} courses}}",
+    "@courseSectionLabel": {
+        "placeholders": {
+            "title": {
+                "type": "String"
+            },
+            "count": {
+                "type": "int"
+            }
+        }
     }
 }

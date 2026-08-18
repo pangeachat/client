@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-17 16:45:37.849509",
+    "@@last_modified": "2026-08-18 09:33:30.947694",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9835,6 +9835,9 @@
     "unlockEmojiMode": "Odblokuj tryb emoji",
     "unlockMessagePractice": "Odblokuj ćwiczenia z wiadomościami",
     "unlockWritingAssistance": "Odblokuj pomoc w pisaniu",
+    "courseSectionTeaching": "Nauczanie",
+    "courseSectionLearning": "Nauka",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kursów}}",
     "showMore": "Pokaż więcej",
     "showLess": "Pokaż mniej",
     "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}",

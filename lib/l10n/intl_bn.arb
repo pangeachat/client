@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:33.562440",
+    "@@last_modified": "2026-08-18 09:33:21.620626",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10378,6 +10378,9 @@
     "unlockEmojiMode": "ইমোজি মোড আনলক করুন",
     "unlockMessagePractice": "মেসেজ অনুশীলন আনলক করুন",
     "unlockWritingAssistance": "রাইটিং অ্যাসিস্টেন্স আনলক করুন",
+    "courseSectionTeaching": "শিক্ষাদান",
+    "courseSectionLearning": "শিক্ষাগ্রহন",
+    "courseSectionLabel": "{title}, {count, plural, =1{1টি কোর্স} other{{count}টি কোর্স}}",
     "showMore": "আরও দেখান",
     "showLess": "কম দেখান",
     "countNewMessages": "{count, plural, =1{১টি নতুন বার্তা} other{{count}টি নতুন বার্তা}}",

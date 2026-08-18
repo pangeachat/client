@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:39.326965",
+    "@@last_modified": "2026-08-18 09:33:34.043983",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7026,6 +7026,9 @@
     "unlockEmojiMode": "Mở khóa chế độ biểu tượng cảm xúc",
     "unlockMessagePractice": "Mở khóa luyện tập tin nhắn",
     "unlockWritingAssistance": "Mở khóa hỗ trợ viết",
+    "courseSectionTeaching": "Dạy",
+    "courseSectionLearning": "Học",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 khóa học} other{{count} khóa học}}",
     "showMore": "Hiển thị thêm",
     "showLess": "Hiển thị bớt",
     "countNewMessages": "{count, plural, =1{1 tin nhắn mới} other{{count} tin nhắn mới}}",

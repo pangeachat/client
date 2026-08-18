@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-17 16:45:38.118496",
+    "@@last_modified": "2026-08-18 09:33:30.945883",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "ایموجي حالت خلاص کړئ",
     "unlockMessagePractice": "د پیغام تمرین خلاص کړئ",
     "unlockWritingAssistance": "د لیکلو مرسته خلاص کړئ",
+    "courseSectionTeaching": "تدریس",
+    "courseSectionLearning": "زده کړه",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 کورس} other{{count} کورسونه}}",
     "showMore": "نور وښایاست",
     "showLess": "لږ وښایاست",
     "countNewMessages": "{count, plural, =1{۱ نوې پيغام} other{{count} نوې پيغامونه}}",

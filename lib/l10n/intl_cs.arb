@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-17 16:45:34.122462",
+    "@@last_modified": "2026-08-18 09:33:21.605710",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10244,6 +10244,9 @@
     "unlockEmojiMode": "Odemknout režim emoji",
     "unlockMessagePractice": "Odemknout procvičování zpráv",
     "unlockWritingAssistance": "Odemknout asistenci při psaní",
+    "courseSectionTeaching": "Výuka",
+    "courseSectionLearning": "Učení",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurz} other{{count} kurzů}}",
     "showMore": "Zobrazit více",
     "showLess": "Zobrazit méně",
     "countNewMessages": "{count, plural, =1{1 nová zpráva} other{{count} nových zpráv}}",

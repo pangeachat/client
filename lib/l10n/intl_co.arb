@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-17 16:45:34.132267",
+    "@@last_modified": "2026-08-18 09:33:21.638266",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Sbloccà u modu emoji",
     "unlockMessagePractice": "Sbloccà a pratica di i messagi",
     "unlockWritingAssistance": "Sbloccà l'assistenza à a scrittura",
+    "courseSectionTeaching": "Insignamentu",
+    "courseSectionLearning": "Amparera",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 corsu} other{{count} corsi}}",
     "showMore": "Mostra di più",
     "showLess": "Mostra di menu",
     "countNewMessages": "{count, plural, =1{1 novu messagiu} other{{count} novi messaghji}}",

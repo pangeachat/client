@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-17 16:45:33.587643",
+    "@@last_modified": "2026-08-18 09:33:21.260320",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10056,6 +10056,9 @@
     "unlockEmojiMode": "افتح وضع الإيموجي",
     "unlockMessagePractice": "افتح ممارسة الرسائل",
     "unlockWritingAssistance": "افتح مساعدة الكتابة",
+    "courseSectionTeaching": "تدريس",
+    "courseSectionLearning": "تعلم",
+    "courseSectionLabel": "{title}, {count, plural, =1{دورة واحدة} other{{count} دورات}}",
     "showMore": "عرض المزيد",
     "showLess": "عرض أقل",
     "countNewMessages": "{count, plural, =1{رسالة جديدة واحدة} other{{count} رسائل جديدة}}",

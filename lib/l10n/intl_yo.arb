@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-17 16:45:39.672820",
+    "@@last_modified": "2026-08-18 09:33:34.667163",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Ṣí ipò emoji sílẹ̀",
     "unlockMessagePractice": "Ṣí ìdánilẹ́kọ̀ọ́ ìfiranṣẹ́ sílẹ̀",
     "unlockWritingAssistance": "Ṣí ìrànlọ́wọ́ kíkọ sílẹ̀",
+    "courseSectionTeaching": "Kíkọ́ni",
+    "courseSectionLearning": "Kíkọ́",
+    "courseSectionLabel": "{title}, {count, plural, =1{ìkẹ́kọ̀ọ́ 1} other{ìkẹ́kọ̀ọ́ {count}}}",
     "showMore": "Fi siwaju si han",
     "showLess": "Fi kere si han",
     "countNewMessages": "{count, plural, =1{ìhìn tuntun 1} other{ìhìn tuntun {count}}}",

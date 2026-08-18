@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-17 16:45:34.652375",
+    "@@last_modified": "2026-08-18 09:33:22.466781",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9747,6 +9747,9 @@
     "unlockEmojiMode": "Ava emotikonirežiim",
     "unlockMessagePractice": "Ava sõnumite harjutamine",
     "unlockWritingAssistance": "Ava kirjutamisabi",
+    "courseSectionTeaching": "Õpetamine",
+    "courseSectionLearning": "Õppimine",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursust}}",
     "showMore": "Näita rohkem",
     "showLess": "Näita vähem",
     "countNewMessages": "{count, plural, =1{1 uus sõnum} other{{count} uut sõnumit}}",

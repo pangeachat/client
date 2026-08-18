@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-17 16:45:35.449128",
+    "@@last_modified": "2026-08-18 09:33:24.410968",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Qhib hom emoji",
     "unlockMessagePractice": "Qhib kev xyaum sau ntawv",
     "unlockWritingAssistance": "Qhib kev pab sau ntawv",
+    "courseSectionTeaching": "Qhia",
+    "courseSectionLearning": "Kawm",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 chav kawm} other{{count} chav kawm}}",
     "showMore": "Qhia ntxiv",
     "showLess": "Qhia tsawg dua",
     "countNewMessages": "{count, plural, =1{1 tsab lus tshiab} other{{count} tsab lus tshiab}}",

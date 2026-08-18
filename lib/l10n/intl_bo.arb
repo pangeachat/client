@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-17 16:45:34.145872",
+    "@@last_modified": "2026-08-18 09:33:25.439751",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9361,6 +9361,9 @@
     "unlockEmojiMode": "རིས་མཚོན་གྱི་རྣམ་པ་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
     "unlockMessagePractice": "འཕྲིན་ཡིག་སྦྱོང་བརྡར་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
     "unlockWritingAssistance": "ཡིག་གཟུགས་རོགས་རམ་གྱི་གསང་བའི་ལམ་ཁ་འབྱེད་པ།",
+    "courseSectionTeaching": "སློབ་ཁྲིད།",
+    "courseSectionLearning": "སློབ་སྦྱོང་།",
+    "courseSectionLabel": "{title}, {count, plural, =1{སློབ་ཚན་ ༡} other{སློབ་ཚན་ {count}}}",
     "showMore": "མང་ཙམ་བསྟན་",
     "showLess": "ཉུང་ཙམ་བསྟན་",
     "countNewMessages": "{count, plural, =1{សារགསར་པ་ ༡} other{សារགསར་པ་ {count}}}",

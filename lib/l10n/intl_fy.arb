@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-17 16:45:34.645518",
+    "@@last_modified": "2026-08-18 09:33:23.113220",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Untskoattelje emoji-modus",
     "unlockMessagePractice": "Untskoattelje berjochtpraktyk",
     "unlockWritingAssistance": "Untskoattelje skriuwassistinsje",
+    "courseSectionTeaching": "Lesjaan",
+    "courseSectionLearning": "Leare",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursussen}}",
     "showMore": "Mear sjen litte",
     "showLess": "Minder sjen litte",
     "countNewMessages": "{count, plural, =1{1 nij berjocht} other{{count} nije berjochten}}",

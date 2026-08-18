@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:36.303833",
+    "@@last_modified": "2026-08-18 09:33:26.746062",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9943,6 +9943,9 @@
     "unlockEmojiMode": "이모티콘 모드 잠금 해제",
     "unlockMessagePractice": "메시지 연습 잠금 해제",
     "unlockWritingAssistance": "작문 지원 잠금 해제",
+    "courseSectionTeaching": "가르치기",
+    "courseSectionLearning": "배우기",
+    "courseSectionLabel": "{title}, {count, plural, =1{1개 코스} other{{count}개 코스}}",
     "showMore": "더 보기",
     "showLess": "간략히 보기",
     "countNewMessages": "{count, plural, =1{새 메시지 1개} other{새 메시지 {count}개}}",

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:38.893772",
+    "@@last_modified": "2026-08-18 09:33:33.481134",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10268,6 +10268,9 @@
     "unlockEmojiMode": "Lås upp emojiläge",
     "unlockMessagePractice": "Lås upp meddelandeövning",
     "unlockWritingAssistance": "Lås upp skrivhjälp",
+    "courseSectionTeaching": "Undervisning",
+    "courseSectionLearning": "Inlärning",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurser}}",
     "showMore": "Visa mer",
     "showLess": "Visa mindre",
     "countNewMessages": "{count, plural, =1{1 nytt meddelande} other{{count} nya meddelanden}}",

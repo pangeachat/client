@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-17 16:45:37.040614",
+    "@@last_modified": "2026-08-18 09:33:28.516956",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Sokafy ny fomba emoji",
     "unlockMessagePractice": "Sokafy ny fanazaran-tena amin'ny hafatra",
     "unlockWritingAssistance": "Sokafy ny fanampiana amin'ny fanoratana",
+    "courseSectionTeaching": "Fampianarana",
+    "courseSectionLearning": "Fianarana",
+    "courseSectionLabel": "{title}, {count, plural, =1{fianarana 1} other{fianarana {count}}}",
     "showMore": "Asehoy misimisy kokoa",
     "showLess": "Asehoy kely kokoa",
     "countNewMessages": "{count, plural, =1{1 hafatra vaovao} other{{count} hafatra vaovao}}",

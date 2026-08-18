@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-17 16:45:34.127083",
+    "@@last_modified": "2026-08-18 09:33:21.790830",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10670,6 +10670,9 @@
     "unlockEmojiMode": "Lås op for emoji-tilstand",
     "unlockMessagePractice": "Lås op for beskedøvelse",
     "unlockWritingAssistance": "Lås op for skrivehjælp",
+    "courseSectionTeaching": "Undervisning",
+    "courseSectionLearning": "Læring",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kurser}}",
     "showMore": "Vis mere",
     "showLess": "Vis mindre",
     "countNewMessages": "{count, plural, =1{1 ny besked} other{{count} nye beskeder}}",

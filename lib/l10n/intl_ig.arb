@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-17 16:45:35.986317",
+    "@@last_modified": "2026-08-18 09:33:26.437325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Mepee ọnọdụ emoji",
     "unlockMessagePractice": "Mepee omume ozi",
     "unlockWritingAssistance": "Mepee enyemaka ide ihe",
+    "courseSectionTeaching": "Nkuzi",
+    "courseSectionLearning": "Mmụta",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 nkuzi} other{{count} nkuzi}}",
     "showMore": "Gosi ihe ndị ọzọ",
     "showLess": "Gosi ihe na-erughị",
     "countNewMessages": "{count, plural, =1{1 ozi ọhụrụ} other{{count} ozi ọhụrụ}}",

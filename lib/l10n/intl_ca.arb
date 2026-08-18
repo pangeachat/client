@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:34.134008",
+    "@@last_modified": "2026-08-18 09:33:21.756157",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9877,6 +9877,9 @@
     "unlockEmojiMode": "Desbloqueja el mode emoji",
     "unlockMessagePractice": "Desbloqueja la pràctica de missatges",
     "unlockWritingAssistance": "Desbloqueja l'assistència d'escriptura",
+    "courseSectionTeaching": "Ensenyament",
+    "courseSectionLearning": "Aprenentatge",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curs} other{{count} cursos}}",
     "showMore": "Mostra més",
     "showLess": "Mostra menys",
     "countNewMessages": "{count, plural, =1{1 missatge nou} other{{count} missatges nous}}",

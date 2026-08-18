@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-17 16:45:39.084279",
+    "@@last_modified": "2026-08-18 09:33:33.088054",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10051,6 +10051,9 @@
     "unlockEmojiMode": "Emoji modunun kilidini aç",
     "unlockMessagePractice": "Mesaj pratiğinin kilidini aç",
     "unlockWritingAssistance": "Yazma yardımının kilidini aç",
+    "courseSectionTeaching": "Öğretim",
+    "courseSectionLearning": "Öğrenim",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kurs} other{{count} kurs}}",
     "showMore": "Daha fazla göster",
     "showLess": "Daha az göster",
     "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",

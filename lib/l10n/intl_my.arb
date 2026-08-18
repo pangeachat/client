@@ -1,6 +1,6 @@
 {
     "@@locale": "my",
-    "@@last_modified": "2026-08-17 16:45:37.446489",
+    "@@last_modified": "2026-08-18 09:33:30.429538",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "စကားဝှက်ကို ထပ်ရိုက်ပါ",
     "notAnImage": "ရုပ်ပုံဖိုင် မဟုတ်ပါ။",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "အီမိုဂျီမုဒ်ကို လော့ခ်ဖွင့်ပါ",
     "unlockMessagePractice": "မက်ဆေ့ချ်လေ့ကျင့်မှုကို လော့ခ်ဖွင့်ပါ",
     "unlockWritingAssistance": "စာရေးအကူအညီကို လော့ခ်ဖွင့်ပါ",
+    "courseSectionTeaching": "သင်ကြားပို့ချမှု",
+    "courseSectionLearning": "သင်ယူမှု",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 သင်တန်း} other{{count} သင်တန်းများ}}",
     "showMore": "ပိုပြရန်",
     "showLess": "လျှော့ပြရန်",
     "countNewMessages": "{count, plural, =1{စာအသစ် ၁ စောင်} other{စာအသစ် {count} စောင်}}",

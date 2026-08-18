@@ -1329,7 +1329,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-17 16:45:38.963352",
+    "@@last_modified": "2026-08-18 09:33:35.499740",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10700,6 +10700,9 @@
     "unlockEmojiMode": "ఎమోజి మోడ్‌ను అన్‌లాక్ చేయండి",
     "unlockMessagePractice": "సందేశ అభ్యాసాన్ని అన్‌లాక్ చేయండి",
     "unlockWritingAssistance": "రాత సహాయాన్ని అన్‌లాక్ చేయండి",
+    "courseSectionTeaching": "బోధన",
+    "courseSectionLearning": "నేర్చుకోవడం",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 కోర్సు} other{{count} కోర్సులు}}",
     "showMore": "మరింత చూపించు",
     "showLess": "తక్కువ చూపించు",
     "countNewMessages": "{count, plural, =1{1 కొత్త సందేశం} other{{count} కొత్త సందేశాలు}}",

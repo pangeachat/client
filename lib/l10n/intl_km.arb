@@ -1,6 +1,6 @@
 {
     "@@locale": "km",
-    "@@last_modified": "2026-08-17 16:45:36.268096",
+    "@@last_modified": "2026-08-18 09:33:26.899003",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "បញ្ចូលពាក្យសម្ងាត់ម្ដងទៀត",
     "notAnImage": "មិនមែនជាឯកសាររូបភាពទេ។",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "ដោះសោរបៀប Emoji",
     "unlockMessagePractice": "ដោះសោការអនុវត្តសារ",
     "unlockWritingAssistance": "ដោះសោជំនួយការសរសេរ",
+    "courseSectionTeaching": "ការបង្រៀន",
+    "courseSectionLearning": "ការរៀន",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 វគ្គសិក្សា} other{{count} វគ្គសិក្សា}}",
     "showMore": "បង្ហាញបន្ថែម",
     "showLess": "បង្ហាញតិច",
     "countNewMessages": "{count, plural, =1{សារថ្មី ១} other{សារថ្មី {count}}}",

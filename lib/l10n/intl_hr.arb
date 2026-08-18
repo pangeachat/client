@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-17 16:45:35.375199",
+    "@@last_modified": "2026-08-18 09:33:24.589111",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10186,6 +10186,9 @@
     "unlockEmojiMode": "Otključaj način rada s emotikonima",
     "unlockMessagePractice": "Otključaj vježbanje poruka",
     "unlockWritingAssistance": "Otključaj pomoć pri pisanju",
+    "courseSectionTeaching": "Predavanje",
+    "courseSectionLearning": "Učenje",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 tečaj} other{{count} tečajeva}}",
     "showMore": "Prikaži više",
     "showLess": "Prikaži manje",
     "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} nove poruke}}",

@@ -1,6 +1,6 @@
 {
     "@@locale": "pa",
-    "@@last_modified": "2026-08-17 16:45:37.765917",
+    "@@last_modified": "2026-08-18 09:33:30.599092",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ਪਾਸਵਰਡ ਦੁਹਰਾਓ",
     "notAnImage": "ਇਹ ਕੋਈ ਚਿੱਤਰ ਫਾਈਲ ਨਹੀਂ ਹੈ।",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "ਇਮੋਜੀ ਮੋਡ ਅਨਲੌਕ ਕਰੋ",
     "unlockMessagePractice": "ਸੁਨੇਹਾ ਅਭਿਆਸ ਅਨਲੌਕ ਕਰੋ",
     "unlockWritingAssistance": "ਲਿਖਣ ਸਹਾਇਤਾ ਅਨਲੌਕ ਕਰੋ",
+    "courseSectionTeaching": "ਸਿਖਾਉਣਾ",
+    "courseSectionLearning": "ਸਿੱਖਣਾ",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 ਕੋਰਸ} other{{count} ਕੋਰਸ}}",
     "showMore": "ਹੋਰ ਦਿਖਾਓ",
     "showLess": "ਘੱਟ ਦਿਖਾਓ",
     "countNewMessages": "{count, plural, =1{1 ਨਵਾਂ ਸੁਨੇਹਾ} other{{count} ਨਵੇਂ ਸੁਨੇਹੇ}}",

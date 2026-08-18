@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-17 16:45:35.966146",
+    "@@last_modified": "2026-08-18 09:33:26.115504",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Mbukak kunci mode emoji",
     "unlockMessagePractice": "Mbukak kunci latihan pesen",
     "unlockWritingAssistance": "Mbukak kunci bantuan nulis",
+    "courseSectionTeaching": "Piwulang",
+    "courseSectionLearning": "Sinau",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kursus} other{{count} kursus}}",
     "showMore": "Tampilake luwih akeh",
     "showLess": "Tampilake luwih sithik",
     "countNewMessages": "{count, plural, =1{1 pesen anyar} other{{count} pesen anyar}}",

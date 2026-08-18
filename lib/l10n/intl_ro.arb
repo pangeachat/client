@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-17 16:45:38.110746",
+    "@@last_modified": "2026-08-18 09:33:33.945837",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10482,6 +10482,9 @@
     "unlockEmojiMode": "Deblocați modul emoji",
     "unlockMessagePractice": "Deblocați exersarea mesajelor",
     "unlockWritingAssistance": "Deblocați asistența la scriere",
+    "courseSectionTeaching": "Predare",
+    "courseSectionLearning": "Învățare",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 curs} other{{count} cursuri}}",
     "showMore": "Afișează mai mult",
     "showLess": "Afișează mai puțin",
     "countNewMessages": "{count, plural, =1{1 mesaj nou} other{{count} mesaje noi}}",

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-17 16:45:36.437461",
+    "@@last_modified": "2026-08-18 09:33:27.146108",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Open di emoji mod",
     "unlockMessagePractice": "Open di mɛsej praktis",
     "unlockWritingAssistance": "Open di raytin ɛlp",
+    "courseSectionTeaching": "Tichin",
+    "courseSectionLearning": "Lɛnin",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 kos} other{{count} kos dɛn}}",
     "showMore": "Sho mo",
     "showLess": "Sho men",
     "countNewMessages": "{count, plural, =1{1 nyu messej} other{{count} nyu messej dɛn}}",

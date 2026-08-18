@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-17 16:45:37.089724",
+    "@@last_modified": "2026-08-18 09:33:29.165920",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Эможи горимыг нээх",
     "unlockMessagePractice": "Мессежний дадлагыг нээх",
     "unlockWritingAssistance": "Бичихэд туслахыг нээх",
+    "courseSectionTeaching": "Заах",
+    "courseSectionLearning": "Сурах",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 хичээл} other{{count} хичээл}}",
     "showMore": "Илүү ихийг харах",
     "showLess": "Бага харах",
     "countNewMessages": "{count, plural, =1{1 шинэ мессеж} other{{count} шинэ мессеж}}",

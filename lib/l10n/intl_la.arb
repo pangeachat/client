@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-17 16:45:36.461156",
+    "@@last_modified": "2026-08-18 09:33:27.439452",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Reserare modum emoji",
     "unlockMessagePractice": "Reserare nuntium exercitium",
     "unlockWritingAssistance": "Reserare scripturae auxilium",
+    "courseSectionTeaching": "Docens",
+    "courseSectionLearning": "Discens",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 cursus} other{{count} cursus}}",
     "showMore": "Plura ostende",
     "showLess": "Pauciora ostende",
     "countNewMessages": "{count, plural, =1{1 nuntius novus} other{{count} nuntii novi}}",

@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-17 16:45:36.958968",
+    "@@last_modified": "2026-08-18 09:33:28.196855",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "Wewete i te aratau emoji",
     "unlockMessagePractice": "Wewete i te mahi karere",
     "unlockWritingAssistance": "Wewete i te āwhina tuhi",
+    "courseSectionTeaching": "Whakaako",
+    "courseSectionLearning": "Ako",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 akoranga} other{{count} akoranga}}",
     "showMore": "Whakaatu anō",
     "showLess": "Whakaatu iti iho",
     "countNewMessages": "{count, plural, =1{1 karere hou} other{{count} karere hou}}",

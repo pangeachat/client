@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-17 16:45:39.234296",
+    "@@last_modified": "2026-08-18 09:33:33.422214",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "ئېموجى ھالىتىنى ئېچىڭ",
     "unlockMessagePractice": "ئۇچۇر مەشىقىنى ئېچىڭ",
     "unlockWritingAssistance": "يېزىش ياردىمىنى ئېچىڭ",
+    "courseSectionTeaching": "ئۆگىتىش",
+    "courseSectionLearning": "ئۆگىنىش",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 دەرسلىك} other{{count} دەرسلىك}}",
     "showMore": "تېخىمۇ كۆپ كۆرسەت",
     "showLess": "ئازراق كۆرسەت",
     "countNewMessages": "{count, plural, =1{1 يېڭى ئۇچۇر} other{{count} يېڭى ئۇچۇر}}",

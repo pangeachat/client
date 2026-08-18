@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-17 16:45:38.455516",
+    "@@last_modified": "2026-08-18 09:33:31.689214",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2138,6 +2138,9 @@
     "unlockEmojiMode": "ඉමොජි මාදිලිය අගුළු හරින්න",
     "unlockMessagePractice": "පණිවිඩ පුහුණුව අගුළු හරින්න",
     "unlockWritingAssistance": "ලිවීමේ සහාය අගුළු හරින්න",
+    "courseSectionTeaching": "ඉගැන්වීම",
+    "courseSectionLearning": "ඉගෙනීම",
+    "courseSectionLabel": "{title}, {count, plural, =1{1 පාඨමාලාව} other{{count} පාඨමාලා}}",
     "showMore": "තවත් පෙන්වන්න",
     "showLess": "අඩු පෙන්වන්න",
     "countNewMessages": "{count, plural, =1{නව පණිවිඩ 1ක්} other{නව පණිවිඩ {count}ක්}}",
