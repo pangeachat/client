@@ -27,17 +27,13 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/features/subscription/widgets/subscription_snackbar.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
-import 'package:fluffychat/pangea/extensions/create_room_extension.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/chat_details/chat_context_menu_action.dart';
 import 'package:fluffychat/routes/chat_list/app_version_util.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_view.dart';
-import 'package:fluffychat/routes/invite_user/user_invite_controller.dart';
-import 'package:fluffychat/routes/invite_user/user_invite_link_repo.dart';
 import 'package:fluffychat/utils/chat_list_handle_space_tap.dart';
 import 'package:fluffychat/utils/localized_exception_extension.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
-import 'package:fluffychat/utils/navigation_util.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/show_scaffold_dialog.dart';
 import 'package:fluffychat/utils/show_update_snackbar.dart';
@@ -563,7 +559,6 @@ class ChatListController extends State<ChatList>
   }
 
   //#Pangea
-  StreamSubscription? _userInviteSubscription;
   StreamSubscription? _invitedSpaceSubscription;
   StreamSubscription? _roomCapacitySubscription;
   //Pangea#
@@ -606,16 +601,6 @@ class ChatListController extends State<ChatList>
     });
 
     //#Pangea
-    _userInviteSubscription?.cancel();
-    _userInviteSubscription = UserInviteController.userInviteStream.stream
-        .listen((userID) {
-          WidgetsBinding.instance.addPostFrameCallback((_) async {
-            if (!mounted) return;
-            final client = MatrixState.pangeaController.matrixState.client;
-            await _startDMWithCachedUserId(client);
-          });
-        });
-
     _invitedSpaceSubscription?.cancel();
     _invitedSpaceSubscription = Matrix.of(context).client.onSync.stream
         .where((event) => event.rooms?.invite != null)
@@ -625,7 +610,6 @@ class ChatListController extends State<ChatList>
         .addListener(_onSubscribe);
 
     final client = Matrix.of(context).client;
-    _startDMWithCachedUserId(client);
     _handlePendingCourseAnalyticsAccessRequests(client);
 
     // listen for room join events and leave room if over capacity
@@ -767,7 +751,6 @@ class ChatListController extends State<ChatList>
     _intentFileStreamSubscription?.cancel();
     //#Pangea
     // _intentUriStreamSubscription?.cancel();
-    _userInviteSubscription?.cancel();
     _invitedSpaceSubscription?.cancel();
     _roomCapacitySubscription?.cancel();
     MatrixState.pangeaController.subscriptionController.subscriptionNotifier
@@ -1163,22 +1146,6 @@ class ChatListController extends State<ChatList>
   }
 
   // #Pangea
-  Future<void> _startDMWithCachedUserId(Client client) async {
-    final userId = UserInviteLinkRepo.inviteUser;
-    await UserInviteLinkRepo.clearInviteUser();
-    if (userId == null || userId == Matrix.of(context).client.userID) return;
-
-    final resp = await showFutureLoadingDialog(
-      context: context,
-      future: () => client.createPangeaDirectChat(userId),
-    );
-    if (!mounted) return;
-    final roomId = resp.result;
-    if (roomId != null) {
-      NavigationUtil.goToSpaceRoute(roomId, const [], context);
-    }
-  }
-
   Future<void> _handlePendingCourseAnalyticsAccessRequests(
     Client client,
   ) async {

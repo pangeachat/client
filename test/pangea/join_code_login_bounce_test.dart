@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get_storage/get_storage.dart';
 
+import 'package:fluffychat/features/dm_invite/dm_invite_controller.dart';
 import 'package:fluffychat/features/join_codes/space_code_repo.dart';
 import 'package:fluffychat/pangea/common/constants/local.key.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
@@ -155,6 +156,97 @@ void main() {
 
         expect(await PAuthGaurd.consumeCachedJoinCode(world), isNull);
         expect(storage.read(PLocalKey.cachedActivityToOpen), isNull);
+      },
+    );
+  });
+
+  // A DM invite link (`/invite_user/<id>`) rides the same ferry (#8436), but
+  // its consumer is the shell itself (DmInviteFerryConsumer →
+  // DmInviteController.consumePending), not a redirected-to page: the invite
+  // route's redirect caches the id and lands on the world map, and the guard
+  // has no DM arm — so a landing with only an invite pending stays where it
+  // is and the shell opens the DM over it. What is pinned here is the
+  // consumer's read of the ferry: domain re-attach, precedence, TTL.
+  group('DM invite links — the shell-side read of the ferry', () {
+    const domain = 'staging.pangea.chat';
+    const invitedUser = '@william11:$domain';
+    final world = Uri.parse('/');
+
+    setUp(() async {
+      await SpaceCodeRepo.clearActivityId();
+      await SpaceCodeRepo.clearDmInviteUserId();
+    });
+
+    test('the guard does not redirect for a pending invite — the shell '
+        'consumes it wherever the user lands', () async {
+      await SpaceCodeRepo.setDmInviteUserId(invitedUser);
+      expect(await PAuthGaurd.consumeCachedJoinCode(world), isNull);
+      expect(
+        await PAuthGaurd.consumeCachedJoinCode(Uri.parse('/?left=chats')),
+        isNull,
+      );
+      // And the read is a read: the ferry survives until the DM opens.
+      expect(SpaceCodeRepo.dmInviteUserId, invitedUser);
+    });
+
+    test('a fresh cached invite is pending, with the home domain '
+        're-attached to a bare localpart cached pre-login', () async {
+      await SpaceCodeRepo.setDmInviteUserId('@william11');
+      expect(
+        DmInviteController.pendingInviteUserId(domain: domain),
+        invitedUser,
+      );
+
+      await SpaceCodeRepo.setDmInviteUserId('@will:matrix.org');
+      expect(
+        DmInviteController.pendingInviteUserId(domain: domain),
+        '@will:matrix.org',
+      );
+    });
+
+    test('nothing cached means nothing pending', () {
+      expect(DmInviteController.pendingInviteUserId(domain: domain), isNull);
+    });
+
+    test('a pending join code or activity outranks the invite, which waits '
+        'its turn', () async {
+      const uuid = 'a1aed3f6-1ef7-4ed0-bc46-4a393aaf880b';
+      await SpaceCodeRepo.setDmInviteUserId(invitedUser);
+
+      await SpaceCodeRepo.setActivityId(uuid);
+      expect(DmInviteController.pendingInviteUserId(domain: domain), isNull);
+      expect(await PAuthGaurd.consumeCachedJoinCode(world), contains(uuid));
+
+      await SpaceCodeRepo.setSpaceCode('vj3pc8b');
+      expect(DmInviteController.pendingInviteUserId(domain: domain), isNull);
+      expect(
+        await PAuthGaurd.consumeCachedJoinCode(world),
+        contains('vj3pc8b'),
+      );
+
+      // Once both are consumed the invite is next.
+      await SpaceCodeRepo.clearSpaceCode();
+      await SpaceCodeRepo.clearActivityId();
+      expect(
+        DmInviteController.pendingInviteUserId(domain: domain),
+        invitedUser,
+      );
+    });
+
+    test(
+      'a stale cached invite (past the TTL) is ignored and cleared',
+      () async {
+        final storage = GetStorage('class_storage');
+        await storage.write(PLocalKey.cachedDmInviteUserId, invitedUser);
+        await storage.write(
+          PLocalKey.cachedDmInviteUserIdAt,
+          DateTime.now()
+              .subtract(SpaceCodeRepo.cacheTTL + const Duration(minutes: 1))
+              .millisecondsSinceEpoch,
+        );
+
+        expect(DmInviteController.pendingInviteUserId(domain: domain), isNull);
+        expect(storage.read(PLocalKey.cachedDmInviteUserId), isNull);
       },
     );
   });

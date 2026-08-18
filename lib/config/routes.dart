@@ -4,12 +4,11 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 
-import 'package:fluffychat/features/navigation/user_id_url.dart';
+import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/pangea/common/utils/p_vguard.dart';
 import 'package:fluffychat/routes/home/login/login.dart';
 import 'package:fluffychat/routes/home/login_or_signup_view.dart';
 import 'package:fluffychat/routes/home/signup/signup.dart';
-import 'package:fluffychat/routes/invite_user/user_invite_link_page.dart';
 import 'package:fluffychat/routes/onboarding/onboarding_page.dart';
 import 'package:fluffychat/routes/registration/create_pangea_account_page.dart';
 import 'package:fluffychat/widgets/config_viewer.dart';
@@ -103,15 +102,15 @@ abstract class AppRoutes {
     // folds `/<code>` into the `left=addcourse:private/<code>` token before
     // anything renders, so the join-with-code page performs the join. Logged
     // out, the code is cached across the login bounce (PAuthGaurd.roomsRedirect).
+    //
+    // The DM invite link (`/invite_user/<id>`, the "Share invite link" URL)
+    // resolves through its own route, but that route never renders: its
+    // redirect caches the invited user in the login-bounce ferry and lands on
+    // the world map with the chat list open (or bounces to login), and the
+    // shell opens the DM from there — DmInviteFerryConsumer (#8436).
     GoRoute(
-      path: '/invite_user/:userID',
-      pageBuilder: (context, state) => defaultPageBuilder(
-        context,
-        state,
-        UserInviteLink(
-          userID: userIdFromUrlParam(state.pathParameters['userID']!),
-        ),
-      ),
+      path: '${PRoutes.dmInvite}/:userID',
+      redirect: PAuthGaurd.dmInviteRedirect,
     ),
     // Pangea#
     ShellRoute(

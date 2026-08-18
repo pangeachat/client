@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/course_plans/courses/course_plan_room_extension.dart';
+import 'package:fluffychat/features/dm_invite/dm_invite_ferry_consumer.dart';
 import 'package:fluffychat/features/navigation/app_section.dart';
 import 'package:fluffychat/features/navigation/panel_focus.dart';
 import 'package:fluffychat/features/navigation/panel_registry.dart';
@@ -265,6 +266,12 @@ class WorkspaceShell extends StatelessWidget {
                   availableVisibleMapWidth: l.availableVisibleMapWidth,
                   focus: mapFocusFor(state),
                 ),
+
+                /// Headless: opens a DM invite link's DM once the shell is up
+                /// (the invite route only caches + lands here — the map, not a
+                /// blank page, is what a slow first sync shows). Zero-size; it
+                /// is a shell resident so it exists exactly when logged in.
+                DmInviteFerryConsumer(uri: state.uri),
 
                 // Everything above the map respects the device safe area; the
                 // map itself does not (it is full-bleed, see above).

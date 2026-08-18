@@ -19,8 +19,9 @@ import 'package:fluffychat/widgets/matrix.dart';
 ///   `MatrixState.incomingUriToPath`, which unwraps a fragment.
 ///
 /// Links come from [inviteLinkForUser], the same function `fluffy_share.dart`
-/// ships, and the builder calls [userIdFromUrlParam], the same one
-/// `routes.dart` calls — so these pin real behavior, not a copy of it.
+/// ships, and the fake route reads its param through [userIdFromUrlParam],
+/// the decode step behind [dmInviteUserIdFor] — what the real (redirect-only)
+/// route reads the link with — so these pin real behavior, not a copy of it.
 const _homeDomain = 'staging.pangea.chat';
 const _frontend = 'https://app.staging.pangea.chat';
 
@@ -144,5 +145,82 @@ void main() {
       );
       expect(tester.takeException(), isNull);
     });
+  });
+
+  // The invite route is redirect-only (#8436): its redirect reads the invited
+  // user off the URI through [dmInviteUserIdFor], not a builder's path param.
+  // Both must read the same link to the same id — `Uri.pathSegments` and the
+  // router each decode once — or the redirect would cache a different id than
+  // a builder would have opened.
+  group('dmInviteUserIdFor reads the same id a route builder gets', () {
+    Uri webLocation(String sharedLink) {
+      final uri = Uri.parse(sharedLink);
+      return Uri.parse(uri.hasQuery ? '${uri.path}?${uri.query}' : uri.path);
+    }
+
+    testWidgets('for the link the app shares', (tester) async {
+      final link = inviteLinkForUser(
+        _frontend,
+        '@william11:$_homeDomain',
+        domain: _homeDomain,
+      );
+      final viaRoute = await _resolveOnWeb(tester, link);
+      expect(
+        dmInviteUserIdFor(webLocation(link), domain: _homeDomain),
+        viaRoute,
+      );
+      expect(viaRoute, '@william11:$_homeDomain');
+    });
+
+    testWidgets('for a foreign-homeserver id', (tester) async {
+      const link = '$_frontend/invite_user/%40will%3Amatrix.org';
+      final viaRoute = await _resolveOnWeb(tester, link);
+      expect(
+        dmInviteUserIdFor(webLocation(link), domain: _homeDomain),
+        viaRoute,
+      );
+      expect(viaRoute, '@will:matrix.org');
+    });
+
+    testWidgets('for a double-encoded link', (tester) async {
+      const link =
+          '$_frontend/invite_user/%2540william11%253Astaging.pangea.chat';
+      final viaRoute = await _resolveOnWeb(tester, link);
+      expect(
+        dmInviteUserIdFor(webLocation(link), domain: _homeDomain),
+        viaRoute,
+      );
+      expect(viaRoute, '@william11:$_homeDomain');
+    });
+
+    test('is null for anything that is not an invite landing', () {
+      for (final location in [
+        '/',
+        '/?left=chats',
+        '/invite_user',
+        '/invite_user/%40will/extra',
+        '/rooms/%40will',
+        '/a1aed3f6-1ef7-4ed0-bc46-4a393aaf880b',
+      ]) {
+        expect(
+          dmInviteUserIdFor(Uri.parse(location), domain: _homeDomain),
+          isNull,
+          reason: location,
+        );
+      }
+    });
+
+    test(
+      'dmInvitePath is the path half of the shared link, and round-trips',
+      () {
+        const userId = '@william11:$_homeDomain';
+        final path = dmInvitePath(userId, domain: _homeDomain);
+        expect(
+          inviteLinkForUser(_frontend, userId, domain: _homeDomain),
+          '$_frontend$path',
+        );
+        expect(dmInviteUserIdFor(Uri.parse(path), domain: _homeDomain), userId);
+      },
+    );
   });
 }
