@@ -55,6 +55,12 @@ class CallService {
   /// sent before the join it is undoing.
   Future<void>? _entering;
 
+  /// Set when a leave was given up on. The session is released either way — a
+  /// learner must not be locked out of calling by a failure they cannot see —
+  /// but the caller is told, so a teardown that did not actually take the
+  /// membership back is never recorded as clean.
+  bool _abandonedMembership = false;
+
   CallService(
     this.client, {
     PangeaVoipDelegate? delegate,
@@ -432,7 +438,7 @@ class CallService {
   Future<bool> retract() => _retracting ??= () async {
     final session = _current;
     try {
-      if (session == null) return true;
+      if (session == null) return !_abandonedMembership;
       // Never leave before the enter it undoes has landed.
       try {
         await _entering;
@@ -455,6 +461,7 @@ class CallService {
       // forever would refuse every later call over a failure the learner can
       // neither see nor act on.
       Logs().w('Gave up retracting the membership; it will expire');
+      _abandonedMembership = true;
       return false;
     } finally {
       _current = null;

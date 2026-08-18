@@ -67,6 +67,7 @@ class CallRecord {
     bool declined = false,
     bool writeTimelineEvent = true,
     String? anchorEventId,
+    String? callerId,
   }) async {
     if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
@@ -89,6 +90,7 @@ class CallRecord {
               declined: declined,
               writeTimelineEvent: writeTimelineEvent,
               anchorEventId: anchorEventId,
+              callerId: callerId,
             );
           } catch (e, s) {
             // Caught here rather than around each step, so a failure is visible
@@ -117,6 +119,7 @@ class CallRecord {
     required bool declined,
     required bool writeTimelineEvent,
     required String? anchorEventId,
+    required String? callerId,
   }) async {
     // Written once. A retry after the analytics failed must credit against the
     // call already in the timeline, not add another one.
@@ -126,6 +129,7 @@ class CallRecord {
             video: video,
             answered: answered,
             declined: declined,
+            callerId: callerId,
           )
         : anchorEventId;
     if (eventId == null) {
@@ -191,6 +195,7 @@ class CallRecord {
     required bool video,
     required bool answered,
     required bool declined,
+    required String? callerId,
   }) async {
     try {
       return await sendEvent({
@@ -214,6 +219,11 @@ class CallRecord {
         // draws that line, and a learner reading their history should see the
         // difference between being declined and being missed.
         'declined': declined,
+        // Who placed the call, stated rather than inferred from who wrote the
+        // event. Which side writes is decided deterministically so that exactly
+        // one card exists even when both people call at the same moment, and
+        // that side is not always the caller.
+        'caller': ?callerId,
       });
     } catch (e, s) {
       Logs().e('Could not write the call to the room', e, s);

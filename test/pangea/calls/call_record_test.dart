@@ -300,4 +300,25 @@ void main() {
       expect(written.single['body'], 'Missed call');
     });
   });
+  group('who is recorded as the caller', () {
+    test('is stated in the event, not left to be inferred', () async {
+      // Which side writes is decided by comparing user ids so exactly one card
+      // exists when both people call at once — and that side is not always the
+      // caller, so direction cannot be read from who wrote it.
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await r.finish(
+        duration: const Duration(seconds: 30),
+        video: false,
+        callerId: '@teacher:server',
+      );
+
+      expect(written.single['caller'], '@teacher:server');
+    });
+
+    test('is left out when there is nobody to name', () async {
+      final r = record(await sinkWith(() => spokenWord('hola')));
+      await r.finish(duration: const Duration(seconds: 30), video: false);
+      expect(written.single.containsKey('caller'), isFalse);
+    });
+  });
 }

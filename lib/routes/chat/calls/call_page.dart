@@ -252,10 +252,13 @@ class _CallPageState extends State<CallPage> {
           // genuinely had someone on it was recorded as missed.
           answered: _call.hadPeer,
           declined: _call.wasDeclined,
-          // Only the side that placed the call posts it. Both sides run this
-          // same teardown, so writing from both would put two identical cards
-          // in the conversation.
-          writeTimelineEvent: _call.placedCall,
+          // Which side posts the card is decided by comparing the two user
+          // ids, not by who placed the call. Both sides run this same teardown,
+          // and when two people call each other at the same moment both believe
+          // they placed it — so keying on that wrote two cards, or none. An
+          // ordering both sides compute identically writes exactly one.
+          writeTimelineEvent: _writesTheCall,
+          callerId: _callerId,
           // The ring we answered, or failing that our own membership in the
           // call. A device that joined a call already under way has neither a
           // ring of its own nor one it answered, and with nothing to anchor to
@@ -264,6 +267,25 @@ class _CallPageState extends State<CallPage> {
         );
       }),
     );
+  }
+
+  /// The other person in this direct message.
+  String? get _peerId => widget.room.directChatMatrixID;
+
+  /// Who placed this call: us if we did, otherwise the only other person here.
+  String? get _callerId =>
+      _call.placedCall ? Matrix.of(context).client.userID : _peerId;
+
+  /// Whether this device is the one that writes the call to the room.
+  ///
+  /// Both sides compute the same answer from the two user ids, so exactly one
+  /// card is written however the call came about. Falls back to having placed
+  /// the call when there is no second party to compare against.
+  bool get _writesTheCall {
+    final me = Matrix.of(context).client.userID;
+    final peer = _peerId;
+    if (me == null || peer == null) return _call.placedCall;
+    return me.compareTo(peer) < 0;
   }
 
   Future<void> _toggleMute() async {

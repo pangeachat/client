@@ -20,7 +20,17 @@ class CallTimelineEvent extends StatelessWidget {
 
   const CallTimelineEvent(this.event, {super.key});
 
-  bool get _outgoing => event.senderId == event.room.client.userID;
+  /// Whether this account placed the call.
+  ///
+  /// From the stated caller, not from who wrote the event: the writer is chosen
+  /// deterministically so exactly one card exists, and that is not always the
+  /// side that called. Older events carry no caller, so the sender stands in.
+  bool get _outgoing {
+    final me = event.room.client.userID;
+    final caller = event.content['caller'];
+    if (caller is String) return caller == me;
+    return event.senderId == me;
+  }
 
   bool get _video => event.content['video'] == true;
 
