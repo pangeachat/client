@@ -24,7 +24,7 @@ class PangeaVoipDelegate implements WebRTCDelegate {
 
   /// Notified when the set of known group calls changes, so the UI can react without
   /// this class importing widgets.
-  final void Function(GroupCallSession call)? onGroupCallDiscovered;
+  void Function(GroupCallSession call)? onGroupCallDiscovered;
   final void Function(GroupCallSession call)? onGroupCallEnded;
   final void Function(CallSession call)? onIncomingCall;
   final void Function(CallSession call)? onCallEnded;

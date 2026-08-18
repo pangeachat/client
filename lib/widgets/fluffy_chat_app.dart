@@ -7,6 +7,7 @@ import 'package:matrix/matrix.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
 import 'package:fluffychat/config/routes.dart';
 import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/config/themes.dart';
@@ -98,7 +99,10 @@ class FluffyChatApp extends StatelessWidget {
             child: Matrix(
               clients: clients,
               store: store,
-              child: testWidget ?? child,
+              // Inside Matrix, so the call service is resolvable; above the
+              // router, so a call announces itself wherever the learner is
+              // rather than only on the chat it belongs to.
+              child: IncomingCallBanner(child: testWidget ?? child),
             ),
           ),
         ),

@@ -5,6 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
+import 'package:fluffychat/routes/chat/calls/incoming_call.dart';
 import 'package:fluffychat/routes/chat/calls/pangea_voip_delegate.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 
@@ -28,6 +29,10 @@ class CallService {
   /// Cancelled on disposal — an untracked one would fire into a service the
   /// account has already logged out of.
   Timer? _focusRetry;
+
+  /// Set before anything is torn down, so work already in flight can see it has
+  /// nothing left to schedule.
+  bool _disposed = false;
 
   /// The session this device has joined, if any. One at a time: the SDK's
   /// membership is per-VoIP-instance, so a second concurrent call on the same
@@ -75,6 +80,9 @@ class CallService {
       // opened, so an outage would otherwise mean a request per room — the
       // failure is held briefly to keep a retry from becoming a flood.
       Logs().d('RTC focus lookup failed, will retry shortly: $e');
+      // A lookup already in flight when the account logs out resumes here, so
+      // the guard belongs at the point of scheduling, not only in dispose.
+      if (_disposed) return null;
       _focusRetry?.cancel();
       _focusRetry = Timer(_retryFocusAfter, () => _resolving = null);
       return null;
@@ -99,7 +107,12 @@ class CallService {
   /// `delegate.handleNewGroupCall` before returning, and it dereferences
   /// `delegate.mediaDevices` inline — so it must not run until the delegate is fully
   /// live, and should not run at all for an account that never places a call.
-  VoIP get voip => _voip ??= VoIP(client, delegate);
+  VoIP get voip => _voip ??= () {
+    // Wired here rather than in the constructor: the callback needs this
+    // service, and the delegate must be complete before VoIP dereferences it.
+    delegate.onGroupCallDiscovered = _onCallDiscovered;
+    return VoIP(client, delegate);
+  }();
 
   /// Whether a call is already running in [room], per room state rather than local
   /// belief — so a second device, or this device after a restart, sees the same answer.
@@ -189,6 +202,27 @@ class CallService {
     ];
   }
 
+  /// Calls arriving for this account that it is not already in.
+  ///
+  /// The SDK reports every call it discovers, including this device's own and
+  /// including ones everyone has left, so the decision is made here rather than
+  /// treating discovery as a ring.
+  Stream<Room> get incomingCalls => _incoming.stream;
+  final StreamController<Room> _incoming = StreamController<Room>.broadcast();
+
+  void _onCallDiscovered(GroupCallSession session) {
+    final me = client.userID;
+    if (me == null) return;
+    final ring = IncomingCall(
+      memberships: [
+        for (final list in session.room.getCallMembershipsFromRoom(voip).values)
+          ...list.where((m) => m.callId == session.groupCallId),
+      ],
+      myUserId: me,
+    );
+    if (ring.shouldRing) _incoming.add(session.room);
+  }
+
   /// Whether anyone other than this account is still in the call.
   ///
   /// A direct-message call is over when the other person leaves; there is nobody
@@ -253,6 +287,8 @@ class CallService {
   /// until the state event expired, with nothing left able to retract it —
   /// account teardown reaches here while a call can still be live.
   Future<void> dispose() async {
+    _disposed = true;
+    unawaited(_incoming.close());
     _focusRetry?.cancel();
     _focusRetry = null;
     try {
