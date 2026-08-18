@@ -720,10 +720,12 @@ class WorldMapPinsManager {
         .toList();
   }
 
+  /// Thin bbox cards are canonical, never localized (choreo #2736), so there is
+  /// no viewer language here — localized copy arrives with the plan hydration
+  /// each opened pin / large card runs.
   Future<void> loadWorldScopedPins({
     required LatLngBounds bounds,
     String? l2,
-    String? l1,
   }) async {
     final pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
     // Null is "suppressed by the rate-limit pause", not "no activities here"

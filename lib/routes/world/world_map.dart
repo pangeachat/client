@@ -128,6 +128,12 @@ class WorldMapController extends State<WorldMap>
 
   StreamSubscription<dynamic>? _syncSub;
   StreamSubscription? _languageSubscription;
+  StreamSubscription? _settingsSubscription;
+
+  /// The display language the plans last hydrated at, so a settings update can
+  /// tell an "App in target language" flip (which re-points every plan read,
+  /// #8397) from any other setting change.
+  String? _appLanguageCode;
 
   final WorldMapFilterState _filterState = WorldMapFilterState();
   final WorldMapPinsManager _pinsManager = WorldMapPinsManager();
@@ -174,12 +180,14 @@ class WorldMapController extends State<WorldMap>
   bool _loadingPins = false;
   Timer? _refetchDebounce;
 
-  /// True from an L1 (base-language) change until the activity plans re-hydrate
-  /// at the new L1. While true the view freezes the pins on their last-settled
-  /// tiers and paints them as a shimmer skeleton (see [WorldMapView]) instead of
-  /// letting them flash to `available` and snap back as the signals re-derive.
-  /// Cleared by the first plan hydrate ([_onPlanHydrate]) or the
-  /// [WorldMapConstants.l1WarmupMax] fallback so it can never stick.
+  /// True from an L1 (base-language) change — or an "App in target language"
+  /// flip, which likewise re-points every plan read — until the activity plans
+  /// re-hydrate at the new display language. While true the view freezes the
+  /// pins on their last-settled tiers and paints them as a shimmer skeleton (see
+  /// [WorldMapView]) instead of letting them flash to `available` and snap back
+  /// as the signals re-derive. Cleared by the first plan hydrate
+  /// ([_onPlanHydrate]) or the [WorldMapConstants.l1WarmupMax] fallback so it
+  /// can never stick.
   bool _warmingL1 = false;
   Timer? _warmingTimer;
 
@@ -203,8 +211,12 @@ class WorldMapController extends State<WorldMap>
 
     final user = MatrixState.pangeaController.userController;
 
+    _appLanguageCode = user.appLanguageCode;
     _languageSubscription?.cancel();
     _languageSubscription = user.languageStream.stream.listen((update) {
+      // Keep the toggle baseline current: a language change moves the display
+      // language too, but arrives on this stream, not the settings one.
+      _appLanguageCode = user.appLanguageCode;
       if (update.targetLang != _filterState.filter.l2) {
         _setL2(update.targetLang);
       }
@@ -212,6 +224,17 @@ class WorldMapController extends State<WorldMap>
       if (update.prevBaseLang != update.baseLang) {
         _beginL1Warmup();
       }
+    });
+
+    // The "App in target language" toggle is a non-language setting, so its
+    // flip lands here; it re-keys every plan read (#8397), the same
+    // re-hydration an L1 change causes → same shimmer window.
+    _settingsSubscription?.cancel();
+    _settingsSubscription = user.settingsUpdateStream.stream.listen((_) {
+      final appLanguageCode = user.appLanguageCode;
+      if (appLanguageCode == _appLanguageCode) return;
+      _appLanguageCode = appLanguageCode;
+      _beginL1Warmup();
     });
 
     // No settings-driven level default: the Level pill starts at "All levels"
@@ -300,6 +323,7 @@ class WorldMapController extends State<WorldMap>
   void dispose() {
     _syncSub?.cancel();
     _languageSubscription?.cancel();
+    _settingsSubscription?.cancel();
     _refetchDebounce?.cancel();
     _warmingTimer?.cancel();
     _fitDebounce?.cancel();
@@ -617,9 +641,11 @@ class WorldMapController extends State<WorldMap>
   }
 
   /// World pins for the current viewport, personalized to the user's language
-  /// (unless widened) and localized to their L1. No-op until the camera is laid
-  /// out (onMapReady retries). CEFR band, completion, and text search are
-  /// applied client-side over the result via [visiblePins].
+  /// (unless widened). The thin cards are canonical text; localized copy comes
+  /// with each large card's / opened pin's plan hydration, in the display
+  /// language. No-op until the camera is laid out (onMapReady retries). CEFR
+  /// band, completion, and text search are applied client-side over the result
+  /// via [visiblePins].
   Future<void> loadWorldPins() async {
     if (!isWorld) return;
     final LatLngBounds bounds;
@@ -629,7 +655,6 @@ class WorldMapController extends State<WorldMap>
       return; // camera not ready yet
     }
 
-    final user = MatrixState.pangeaController.userController;
     if (mounted) setState(() => _loadingPins = true);
 
     try {
@@ -638,7 +663,6 @@ class WorldMapController extends State<WorldMap>
         // Language is fixed by the learner's settings, not a map filter, so the
         // working set is always narrowed to their L2 (world-map.instructions.md).
         l2: _filterState.filter.l2?.langCodeShort,
-        l1: user.userL1?.langCodeShort,
       );
     } finally {
       if (mounted) {

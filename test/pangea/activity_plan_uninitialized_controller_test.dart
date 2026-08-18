@@ -85,7 +85,7 @@ void main() {
     });
 
     test('an explicit l1 is not an exemption', () {
-      // Supplying l1 skips `_viewerL1`, but NOT the other two controller reads
+      // Supplying l1 skips `_viewerLanguage`, but NOT the other two controller reads
       // on the same call. `PersistentRepoCache.init` is the dangerous one: it
       // runs via `BaseRepo._cacheInit`, a `late final` Future, so one early
       // failure is memoized and re-thrown by every later `get` for the life of

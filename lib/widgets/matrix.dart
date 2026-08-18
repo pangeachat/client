@@ -462,17 +462,14 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
 
   void _setAppLanguage() {
     try {
-      final settings = pangeaController.userController.profile.userSettings;
       // Immersion: show the app in the target language when the user opts in,
       // otherwise their source/native language. Falls back to source (then
-      // system) if the target isn't set.
-      final appLanguage = settings.appLanguageIsTarget
-          ? (settings.targetLanguage ?? settings.sourceLanguage)
-          : settings.sourceLanguage;
+      // system) if the target isn't set. The same resolved language localizes
+      // activity content (#8397), so the two can never disagree.
       Provider.of<LocaleProvider>(
         context,
         listen: false,
-      ).setLocale(appLanguage);
+      ).setLocale(pangeaController.userController.appLanguageCode);
     } catch (e, s) {
       Logs().e('Error setting app language', e);
       ErrorHandler.logError(e: e, s: s, data: {});

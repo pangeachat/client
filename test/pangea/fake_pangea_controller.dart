@@ -5,7 +5,8 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 
 /// The smallest controller that satisfies
-/// `MatrixState.isPangeaControllerInitialized` and serves a viewer L1.
+/// `MatrixState.isPangeaControllerInitialized` and serves a viewer L1 and
+/// display language.
 ///
 /// Repos gate their reads on that getter (#8339), so a test that wants the repo
 /// to actually reach the network path must install one of these. By default it
@@ -13,25 +14,43 @@ import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.
 /// try/catch and surfaces as `Result.error` — the shape most repo tests want.
 /// Pass [accessToken] to get past that and drive the real request path (against
 /// a `MockClient`), which is what a test of the failure *contract* needs.
+///
+/// [appLanguageCode] defaults to [userL1Code] — the "App in target language"
+/// toggle off, which is what every repo test not about the toggle expects.
 class FakePangeaController implements PangeaController {
   @override
   final UserController userController;
 
-  FakePangeaController({String? userL1Code = 'en', String? accessToken})
-    : userController = _FakeUserController(userL1Code, accessToken);
+  FakePangeaController({
+    String? userL1Code = 'en',
+    String? appLanguageCode,
+    String? accessToken,
+  }) : userController = _FakeUserController(
+         userL1Code,
+         appLanguageCode ?? userL1Code,
+         accessToken,
+       );
 
   @override
   dynamic noSuchMethod(Invocation invocation) => null;
 }
 
 class _FakeUserController implements UserController {
-  _FakeUserController(this._userL1Code, this._accessToken);
+  _FakeUserController(
+    this._userL1Code,
+    this._appLanguageCode,
+    this._accessToken,
+  );
 
   final String? _userL1Code;
+  final String? _appLanguageCode;
   final String? _accessToken;
 
   @override
   String? get userL1Code => _userL1Code;
+
+  @override
+  String? get appLanguageCode => _appLanguageCode;
 
   /// Mirrors the real controller, which throws rather than serving a null token
   /// when nobody is logged in.

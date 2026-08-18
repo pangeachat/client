@@ -471,6 +471,15 @@ class UserController {
     return target == null || target.isEmpty ? null : target;
   }
 
+  /// The one language the app presents itself in — its UI copy and the
+  /// localized content it shows, such as activity plans (#8397). The "App in
+  /// target language" toggle ([UserSettings.appLanguageIsTarget]) points it at
+  /// the L2; off, it is the L1 ([userL1Code]). A toggle with no L2 set yet
+  /// still resolves to the L1, so no reader has to special-case it.
+  String? get appLanguageCode =>
+      (profile.userSettings.appLanguageIsTarget ? userL2Code : null) ??
+      userL1Code;
+
   LanguageModel? get userL1 {
     if (userL1Code == null) return null;
     final langModel = PLanguageStore.byLangCode(userL1Code!);
