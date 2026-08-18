@@ -20,6 +20,11 @@ class CallService {
   VoIP? _voip;
   RtcFocus? _focus;
 
+  /// The session this device has joined, if any. One at a time: the SDK's
+  /// membership is per-VoIP-instance, so a second concurrent call on the same
+  /// account would overwrite the first's identity.
+  GroupCallSession? _current;
+
   CallService(
     this.client, {
     PangeaVoipDelegate? delegate,
@@ -52,14 +57,14 @@ class CallService {
   /// belief — so a second device, or this device after a restart, sees the same answer.
   bool hasActiveCall(Room room) => room.hasActiveGroupCall(voip);
 
-  /// Joins (or starts) the call in [room], returning the session and the grant needed
-  /// to connect its media.
+  /// Joins (or starts) the call in [room], returning the grant needed to connect
+  /// its media.
   ///
-  /// The two halves are deliberately returned together: the SDK's session carries the
-  /// Matrix side only, and the LiveKit grant is obtained separately by the app. A
-  /// caller holding one without the other has a call that either nobody can see or
-  /// nobody can hear.
-  Future<CallJoin> join(Room room) async {
+  /// The Matrix session is kept here rather than handed back. A caller does
+  /// nothing with it but pass it to [announce] and [retract], and the SDK object
+  /// cannot be stood up outside a live VoIP instance — so holding it here is both
+  /// simpler for callers and what lets the calling flow be tested at all.
+  Future<CallToken> join(Room room) async {
     final f = focus;
     if (f == null) {
       throw StateError('this homeserver advertises no MatrixRTC focus');
@@ -86,27 +91,37 @@ class CallService {
       focusServiceUrl: f.serviceUrl,
     );
 
-    return CallJoin(session: session, grant: grant);
+    _current = session;
+    return grant;
   }
 
   /// Publishes our membership, making the call visible to the other participant.
-  Future<void> enter(GroupCallSession session) => session.enter();
+  /// Announces this device as a participant, so the peer sees us in the call.
+  ///
+  /// Separate from [join] because the two are not simultaneous by design: media
+  /// comes up in between, so a peer never sees a participant who cannot yet be
+  /// heard.
+  Future<void> announce() async => _current?.enter();
 
   /// Retracts our membership and tears the session down.
-  Future<void> leave(GroupCallSession session) => session.leave();
+  ///
+  /// Idempotent: the session is cleared first, so a hangup racing a disconnect
+  /// leaves exactly once.
+  Future<void> retract() async {
+    final session = _current;
+    _current = null;
+    await session?.leave();
+  }
 
   void dispose() {
+    _current = null;
     _voip = null;
     _focus = null;
   }
 
   @visibleForTesting
-  bool get voipConstructed => _voip != null;
-}
+  bool get hasJoinedSession => _current != null;
 
-/// A joined call: the Matrix session, and permission to connect its media.
-class CallJoin {
-  final GroupCallSession session;
-  final CallToken grant;
-  const CallJoin({required this.session, required this.grant});
+  @visibleForTesting
+  bool get voipConstructed => _voip != null;
 }
