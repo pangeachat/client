@@ -44,8 +44,12 @@ class CallTranscriptSink implements CallAudioSink {
   final Map<int, SpeechToTextResponseModel> _byIndex = {};
   final Set<int> _transcribed = {};
 
-  /// The finished batch, kept once built. See [constructs].
-  ({String roomId, String eventId, List<OneConstructUse> uses})? _batch;
+  /// Each chunk's uses, built once and kept. See [constructs].
+  final Map<int, List<OneConstructUse>> _usesByIndex = {};
+
+  /// What [_usesByIndex] was built against. Different anchors are a different
+  /// batch, so the old one is discarded rather than mixed with the new.
+  ({String roomId, String eventId})? _anchor;
 
   CallTranscriptSink({
     required this.transcribe,
@@ -100,27 +104,32 @@ class CallTranscriptSink implements CallAudioSink {
   /// to the call's timeline event, and that event does not exist until the call
   /// does.
   ///
-  /// **Built once and kept.** Each use is stamped with the moment it was made,
-  /// so recomputing yields a batch that differs from the one already recorded.
-  /// The union has to be one fixed set of uses, not a recipe that produces a new
-  /// set every time it is read.
+  /// **Each chunk's uses are built once and kept.** A use is stamped with the
+  /// moment it was made, so rebuilding one would produce a use that differs from
+  /// the one already recorded. Caching the whole batch instead would have the
+  /// opposite problem: a chunk that arrived after the batch was read would be
+  /// silently dropped.
+  ///
+  /// Per-chunk is what satisfies both. Existing uses never change, and a late
+  /// chunk adds its own — which is the monotonicity this design rests on,
+  /// expressed in the code rather than only in the comment.
   List<OneConstructUse> constructs({
     required String roomId,
     required String eventId,
   }) {
-    final existing = _batch;
-    if (existing != null &&
-        existing.roomId == roomId &&
-        existing.eventId == eventId) {
-      return existing.uses;
+    if (_anchor?.roomId != roomId || _anchor?.eventId != eventId) {
+      _usesByIndex.clear();
+      _anchor = (roomId: roomId, eventId: eventId);
     }
-    final uses = List<OneConstructUse>.unmodifiable([
-      for (final result in results)
-        if (result.hasUsableTokens)
-          ...result.constructs(roomId, eventId, ConstructUseTypeEnum.pvc),
+    return List<OneConstructUse>.unmodifiable([
+      for (final index in _byIndex.keys.toList()..sort())
+        ..._usesByIndex.putIfAbsent(index, () {
+          final result = _byIndex[index]!;
+          return result.hasUsableTokens
+              ? result.constructs(roomId, eventId, ConstructUseTypeEnum.pvc)
+              : const [];
+        }),
     ]);
-    _batch = (roomId: roomId, eventId: eventId, uses: uses);
-    return uses;
   }
 
   /// The language the call was transcribed in, or null if nothing was.

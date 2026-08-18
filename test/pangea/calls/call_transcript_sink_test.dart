@@ -20,6 +20,43 @@ PcmChunk chunk(int index, {int sampleRate = 16000}) => PcmChunk(
 SpeechToTextResponseModel get silent =>
     SpeechToTextResponseModel(results: const []);
 
+/// One transcribed word, in the shape the route actually returns — taken from a
+/// real response so the test exercises the same parse the app does.
+SpeechToTextResponseModel get spoken => SpeechToTextResponseModel.fromJson({
+  'results': [
+    {
+      'transcripts': [
+        {
+          'transcript': 'hola',
+          'confidence': 100,
+          'lang_code': 'es-ES',
+          'words_per_hr': 9391,
+          'stt_tokens': [
+            {
+              'token': {
+                'text': {'offset': 0, 'content': 'hola', 'length': 4},
+                'lemma': [
+                  {
+                    'text': 'hola',
+                    'form': 'hola',
+                    'lang': 'es',
+                    'save_vocab': true,
+                  },
+                ],
+                'pos': 'INTJ',
+                'morph': {'Pos': 'INTJ'},
+              },
+              'start_time': 0,
+              'end_time': 400,
+              'confidence': 100,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+});
+
 void main() {
   late List<SpeechToTextRequestModel> sent;
 
@@ -127,15 +164,38 @@ void main() {
       expect(s.langCode, isNull);
     });
 
-    test('the batch is literally the same list, not an equal one', () async {
+    test('a use is built once and never rebuilt', () async {
       // Comparing lengths is not enough: each use is stamped with the moment it
-      // was built, so a recomputed batch would differ from the one already
-      // recorded while still having the same size.
-      final s = sink();
+      // was built, so a rebuilt one would differ from the one already recorded
+      // while the batch still had the same size.
+      final s = sink(respond: (_) => spoken);
       await s.deliver(chunk(0));
       final first = s.constructs(roomId: '!r:server', eventId: '\$e');
       final second = s.constructs(roomId: '!r:server', eventId: '\$e');
-      expect(identical(first, second), isTrue);
+
+      expect(first, isNotEmpty);
+      for (var i = 0; i < first.length; i++) {
+        expect(identical(first[i], second[i]), isTrue);
+      }
+    });
+
+    test('a chunk arriving after the batch was read still counts', () async {
+      // Caching the whole batch would silently drop it. Credit may only grow.
+      final s = sink(respond: (_) => spoken);
+      await s.deliver(chunk(0));
+      final before = s.constructs(roomId: '!r:server', eventId: '\$e');
+
+      await s.deliver(chunk(1));
+      final after = s.constructs(roomId: '!r:server', eventId: '\$e');
+
+      expect(after.length, greaterThan(before.length));
+      for (var i = 0; i < before.length; i++) {
+        expect(
+          identical(before[i], after[i]),
+          isTrue,
+          reason: 'and the uses already recorded are untouched',
+        );
+      }
     });
 
     test('the batch cannot be mutated by whoever receives it', () async {
