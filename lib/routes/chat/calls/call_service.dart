@@ -19,6 +19,7 @@ class CallService {
 
   VoIP? _voip;
   RtcFocus? _focus;
+  Future<RtcFocus?>? _resolving;
 
   /// The session this device has joined, if any. One at a time: the SDK's
   /// membership is per-VoIP-instance, so a second concurrent call on the same
@@ -34,15 +35,29 @@ class CallService {
 
   /// The focus this homeserver advertises, or null if it advertises none.
   ///
-  /// Read once per service: `.well-known` is fetched at login and does not change
-  /// under a running session.
-  RtcFocus? get focus => _focus ??= RtcFocus.fromWellKnown(client.wellKnown);
-
-  /// Whether calling is available for this account at all.
+  /// Resolved by fetching `.well-known` rather than reading [Client.wellKnown]:
+  /// this app configures its homeserver from its own environment and never calls
+  /// `checkHomeserver`, so that field is never populated and reading it would
+  /// report calling unavailable everywhere.
   ///
-  /// False on a homeserver with no RTC focus configured. Callers use this to hide
-  /// the call affordance rather than offering a button that cannot work.
-  bool get isAvailable => focus != null;
+  /// Memoized including the negative answer — a homeserver with no focus is a
+  /// deployment fact, not a transient one, and re-asking on every chat screen
+  /// would be a request per room opened.
+  Future<RtcFocus?> resolveFocus() => _resolving ??= () async {
+    try {
+      _focus = RtcFocus.fromWellKnown(await client.getWellknown());
+    } catch (e) {
+      // A homeserver that serves no `.well-known` 404s here. That is the
+      // ordinary answer for a deployment without MatrixRTC, not a failure.
+      Logs().d('No RTC focus advertised: $e');
+      _focus = null;
+    }
+    return _focus;
+  }();
+
+  /// The focus, once [resolveFocus] has answered. Null before that, and null on a
+  /// homeserver that advertises none.
+  RtcFocus? get focus => _focus;
 
   /// Constructed lazily and exactly once.
   ///
@@ -65,7 +80,7 @@ class CallService {
   /// cannot be stood up outside a live VoIP instance — so holding it here is both
   /// simpler for callers and what lets the calling flow be tested at all.
   Future<CallToken> join(Room room) async {
-    final f = focus;
+    final f = await resolveFocus();
     if (f == null) {
       throw StateError('this homeserver advertises no MatrixRTC focus');
     }
@@ -117,6 +132,7 @@ class CallService {
     _current = null;
     _voip = null;
     _focus = null;
+    _resolving = null;
   }
 
   @visibleForTesting

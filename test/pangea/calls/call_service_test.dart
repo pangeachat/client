@@ -28,8 +28,8 @@ void main() {
       // use this to hide the call affordance instead of offering a button that
       // cannot work.
       final service = CallService(await bareClient());
+      expect(await service.resolveFocus(), isNull);
       expect(service.focus, isNull);
-      expect(service.isAvailable, isFalse);
     });
 
     test('constructing the service does not construct VoIP', () async {
@@ -45,7 +45,7 @@ void main() {
       'joining without a focus fails loudly rather than half-starting a call',
       () async {
         final service = CallService(await bareClient());
-        expect(service.isAvailable, isFalse);
+        expect(service.focus, isNull);
         // The failure has to arrive before any Matrix state is published; a call
         // announced to the room but unreachable by media is worse than no call.
       },

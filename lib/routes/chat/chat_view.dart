@@ -78,16 +78,21 @@ class ChatView extends StatelessWidget {
     // v1 is direct messages only, and only where the homeserver advertises an
     // RTC focus — offering a button that cannot work is worse than not offering
     // one. Group calls are the same transport with more members and land later.
-    final callService = Matrix.of(context).callService;
-    final canCall = controller.room.isDirectChat && callService.isAvailable;
-
+    // The focus is discovered over the network, so the button appears once the
+    // answer is in rather than flickering on a guess. The future is memoized on
+    // the service, so this is one request per account, not one per room opened.
     return [
-      if (canCall)
-        IconButton(
-          icon: const Icon(Icons.call_outlined),
-          tooltip: L10n.of(context).startCall,
-          onPressed: () =>
-              CallPage.show(context, controller.room, video: false),
+      if (controller.room.isDirectChat)
+        FutureBuilder(
+          future: Matrix.of(context).callService.resolveFocus(),
+          builder: (context, snapshot) => snapshot.data == null
+              ? const SizedBox.shrink()
+              : IconButton(
+                  icon: const Icon(Icons.call_outlined),
+                  tooltip: L10n.of(context).startCall,
+                  onPressed: () =>
+                      CallPage.show(context, controller.room, video: false),
+                ),
         ),
       IconButton(
         icon: const Icon(Icons.search_outlined),
