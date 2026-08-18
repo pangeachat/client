@@ -47,6 +47,7 @@ class ActiveCall extends ChangeNotifier {
   bool _capturing = false;
   Future<void>? _hangUp;
   bool _disposed = false;
+  matrix.Room? _room;
 
   /// Set the moment anything asks the call to end. [start] checks it after every
   /// await, so a hangup that lands mid-connect stops the sequence instead of
@@ -72,8 +73,11 @@ class ActiveCall extends ChangeNotifier {
   /// Fires the periodic re-election now, for tests, instead of on the timer.
   @visibleForTesting
   Future<void> tickReelectionForTest() async {
-    _electRecorder();
+    _onParticipantsChanged();
     await _handover;
+    // A peer-gone tick triggers an unawaited hangup; wait it out so a test sees
+    // the settled state.
+    await _hangUp;
   }
 
   void _electRecorder() {
@@ -153,8 +157,13 @@ class ActiveCall extends ChangeNotifier {
 
   void _onParticipantsChanged() {
     if (_ending) return;
+    final room = _room;
 
-    if (calls.hasRemoteParticipants) {
+    // From room state with expiry, not the SDK's participant set: that set only
+    // rebuilds on a membership event, so a peer who crashed without leaving
+    // would still read as present. A live membership from the peer does not.
+    final peerHere = room != null && calls.otherUserInCall(room);
+    if (peerHere) {
       final firstArrival = !_peerArrived;
       _peerArrived = true;
       _waitingForPeer?.cancel();
@@ -232,6 +241,7 @@ class ActiveCall extends ChangeNotifier {
   /// membership (replaced by the new join) and its own second device joining
   /// are both handled.
   Future<void> start(matrix.Room room, {required bool video}) async {
+    _room = room;
     final placing = !calls.otherDeviceInCall(room);
     try {
       final grant = await calls.join(room);
@@ -264,9 +274,14 @@ class ActiveCall extends ChangeNotifier {
       // so without this a device deferring to that phantom would stay silent for
       // the rest of the call. The tick drops it once it expires and this device
       // takes over recording.
+      // Runs the full change handler, not just the election, because a
+      // membership lapses on a timer rather than an event: a crashed sibling
+      // that deferred recording, or a crashed PEER who leaves with no departure
+      // event, would otherwise go unnoticed — the mic held open for a
+      // conversation that ended. The tick catches both.
       _reelect = Timer.periodic(
         const Duration(seconds: 30),
-        (_) => _electRecorder(),
+        (_) => _onParticipantsChanged(),
       );
       // Settle the first election before announcing, so recording is already
       // running when the peer learns this device is here. Handovers are queued,

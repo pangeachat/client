@@ -36,6 +36,9 @@ class FakeCalls extends CallService {
   bool get hasRemoteParticipants => remotePresent;
 
   @override
+  bool otherUserInCall(matrix.Room room) => remotePresent;
+
+  @override
   List<String> get myDeviceIdsInCall => devicesInCall;
 
   @override
@@ -527,6 +530,27 @@ void main() {
       await calls.participantsBecome([calls.client.deviceID!]);
 
       expect(call.stage, CallStage.connected, reason: 'still ringing out');
+    });
+
+    test('a peer who crashes without a leave event still ends the call', () async {
+      // A membership lapses on a timer, not an event, so a crashed peer fires no
+      // participant change. The periodic re-check is what notices they are gone
+      // and stops holding the microphone open.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.stage, CallStage.connected);
+
+      // The peer's membership expires; NO participant event fires.
+      calls.remotePresent = false;
+      await call.tickReelectionForTest();
+
+      expect(
+        call.stage,
+        CallStage.ended,
+        reason: 'the periodic check caught it',
+      );
     });
 
     test('a peer arriving then leaving ends it', () async {

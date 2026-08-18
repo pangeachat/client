@@ -246,7 +246,11 @@ class CallService {
   /// The local session, not room state — so a stale membership a failed retract
   /// left behind does not read as busy and silence the next incoming call, and
   /// a call genuinely in progress does suppress a second ring.
-  bool get isBusy => _current != null;
+  /// Includes the join in flight, not just [_current]: a call is claimed by
+  /// [_joining] before the session exists, and a ring arriving in that window
+  /// would show a prompt whose answer could only fail when the second join is
+  /// refused.
+  bool get isBusy => _current != null || _joining;
 
   /// Fires when participants join or leave the current call.
   Stream<MatrixRTCCallEvent>? get callEvents =>
