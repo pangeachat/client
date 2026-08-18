@@ -65,6 +65,10 @@ dependencies:
   matrix:
     git:
       url: https://github.com/pangeachat/matrix-dart-sdk.git # repo
+      # Pinned deliberately. The MatrixRTC/LiveKit call work depends on SDK VoIP
+      # internals (LiveKitBackend, GroupCallSession, WebRTCDelegate); without a ref
+      # this resolves to HEAD and can change under us on any `pub upgrade`.
+      ref: cd3b04a0d696279ee48f9576fda48184d1121c4f
   # Pangea#
   mime: ^2.0.0
   opus_caf_converter_dart: ^1.0.1
