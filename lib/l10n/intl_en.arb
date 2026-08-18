@@ -3601,6 +3601,7 @@
     "callAnswer": "Answer",
     "callDecline": "Decline",
     "callDeclinedByPeer": "Call declined",
+    "callRinging": "Ringing...",
     "callIncomingVoice": "Incoming voice call",
     "callIncomingVideo": "Incoming video call",
     "callQuickReply": "Message",

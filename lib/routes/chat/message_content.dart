@@ -8,8 +8,6 @@ import 'package:fluffychat/config/setting_keys.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/localized_display_name_extension.dart';
-import 'package:fluffychat/routes/chat/calls/call_timeline_event.dart';
-import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/event_wrappers/pangea_message_event.dart';
 import 'package:fluffychat/routes/chat/events/extensions/pangea_event_extension.dart';
 import 'package:fluffychat/routes/chat/events/models/pangea_token_model.dart';
@@ -211,11 +209,6 @@ class MessageContent extends StatelessWidget {
             );
           case CuteEventContent.eventType:
             return CuteContent(event);
-          // A finished call. Carried as a msgtype on an ordinary room message
-          // so clients that do not know it still show the event's text
-          // fallback rather than hiding the call entirely.
-          case PangeaEventTypes.call:
-            return CallTimelineEvent(event);
           case MessageTypes.Audio:
             // #Pangea
             final Widget audioBody;

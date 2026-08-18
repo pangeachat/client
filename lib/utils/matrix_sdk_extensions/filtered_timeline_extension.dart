@@ -66,6 +66,10 @@ extension IsStateExtension on Event {
     EventTypes.Encrypted,
     EventTypes.RoomCreate,
     EventTypes.RoomTombstone,
+    // A call is the record of something that happened, not routine room
+    // bookkeeping. Collapsing it behind "more events" would hide the only
+    // trace a missed call leaves.
+    PangeaEventTypes.call,
   }.contains(type);
 
   bool get isKnownHiddenStates =>
@@ -88,6 +92,7 @@ extension IsStateExtension on Event {
       [
         PangeaEventTypes.activityPlan,
         PangeaEventTypes.activityRole,
+        PangeaEventTypes.call,
       ].contains(type);
 
   // we're filtering out some state events that we don't want to render
@@ -100,6 +105,7 @@ extension IsStateExtension on Event {
     PollEventContent.startType,
     PangeaEventTypes.activityPlan,
     PangeaEventTypes.activityRole,
+    PangeaEventTypes.call,
   };
   // Pangea#
 }

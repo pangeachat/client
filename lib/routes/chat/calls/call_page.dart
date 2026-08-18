@@ -3,8 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
-import 'package:matrix/matrix.dart' as matrix show Room;
-import 'package:matrix/matrix.dart' show EventTypes;
+import 'package:matrix/matrix.dart' as matrix show Room, User;
 
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -13,7 +12,9 @@ import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/routes/chat/calls/call_record.dart';
 import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The in-call screen.
@@ -44,7 +45,11 @@ class CallPage extends StatefulWidget {
     matrix.Room room, {
     required bool video,
     String? notificationEventId,
-  }) => Navigator.of(context).push(
+    // The ROOT navigator, not the enclosing one. On a wide window the chat sits
+    // in a pane with its own navigator, and pushing there rendered the call
+    // inside that pane — clipped at the pane's edge, which cut the controls off
+    // the bottom. A call is modal for as long as it lasts; it takes the screen.
+  }) => Navigator.of(context, rootNavigator: true).push(
     MaterialPageRoute(
       fullscreenDialog: true,
       builder: (_) => CallPage(
@@ -85,6 +90,15 @@ class _CallPageState extends State<CallPage> {
   bool _muted = false;
   late bool _camera;
 
+  /// When the two sides were first both present. The screen shows a running
+  /// timer from here, so it is the moment the conversation started rather than
+  /// the moment this device opened the screen.
+  DateTime? _talkingSince;
+
+  /// Redraws once a second so the timer advances. Nothing else on this screen
+  /// changes on its own, so it runs only while a call is actually up.
+  Timer? _tick;
+
   @override
   void initState() {
     super.initState();
@@ -117,11 +131,12 @@ class _CallPageState extends State<CallPage> {
     _record = CallRecord(
       roomId: room.id,
       transcripts: transcripts,
-      // Sent as an ordinary room message carrying a Pangea msgtype, NOT as a
-      // custom top-level event type. The timeline only renders m.room.message,
-      // so a custom type was written to the room and then drawn by nothing —
-      // the call happened and left no visible trace.
-      sendEvent: (content) => room.sendEvent(content, type: EventTypes.Message),
+      // Its own event type, not a room message. A call is something that
+      // HAPPENED in the conversation, so it belongs in the timeline as a
+      // centred entry beside joins and invitations — not as a chat bubble
+      // attributed to one side and aligned to their edge.
+      sendEvent: (content) =>
+          room.sendEvent(content, type: PangeaEventTypes.call),
       analytics: (eventId, uses, language) => matrix
           .analyticsDataService
           .updateService
@@ -141,7 +156,13 @@ class _CallPageState extends State<CallPage> {
     setState(() {});
     if (_call.stage == CallStage.connected) {
       _reachedCall = true;
-      if (_call.hadPeer) _wasConnected = true;
+      if (_call.hadPeer) {
+        _wasConnected = true;
+        _talkingSince ??= DateTime.now();
+        _tick ??= Timer.periodic(const Duration(seconds: 1), (_) {
+          if (mounted) setState(() {});
+        });
+      }
     }
     // A call that ended or failed has nothing left to show. Closing here rather
     // than leaving a dead screen up means the user never has to dismiss a call
@@ -149,6 +170,8 @@ class _CallPageState extends State<CallPage> {
     if (_call.stage == CallStage.ended ||
         _call.stage == CallStage.failed ||
         _call.stage == CallStage.declined) {
+      _tick?.cancel();
+      _tick = null;
       // Deliberately not awaited and deliberately not tied to this widget: the
       // recording outlives the screen, which is closing on the next line.
       _finishRecording();
@@ -162,6 +185,7 @@ class _CallPageState extends State<CallPage> {
     // never runs the listener below, so the recording would be silently lost on
     // an entirely ordinary exit. finish() is idempotent, so calling it here as
     // well is safe when the listener did run.
+    _tick?.cancel();
     _finishRecording();
     _call.removeListener(_onCallChanged);
     // ActiveCall.dispose hangs up. Leaving the screen ends the call — there is no
@@ -231,107 +255,295 @@ class _CallPageState extends State<CallPage> {
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
+    final tracks = _videoTracks();
 
     return Scaffold(
-      backgroundColor: theme.colorScheme.surfaceContainerHighest,
-      appBar: AppBar(
-        backgroundColor: Colors.transparent,
-        title: Text(widget.room.getLocalizedDisplayname()),
-        leading: IconButton(
-          icon: const Icon(Icons.close),
-          tooltip: l10n.callHangUp,
-          onPressed: _finishRecording,
-        ),
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            Expanded(child: Center(child: _stageBody(l10n))),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-              child: Text(
-                l10n.callRecordingNotice,
-                textAlign: TextAlign.center,
-                style: theme.textTheme.bodySmall,
-              ),
+      // Its own surface rather than the app's. A call takes over the screen, and
+      // every calling product darkens it — a flat container colour read as an
+      // unfinished page with a hole in it.
+      backgroundColor: const Color(0xFF14131A),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          // Video fills the screen when there is any; a voice call keeps the
+          // gradient, so the screen never looks like it failed to load.
+          if (tracks.isNotEmpty) _videoLayer(tracks) else _voiceBackdrop(theme),
+          SafeArea(
+            child: Column(
+              children: [
+                _topBar(l10n),
+                Expanded(
+                  child: tracks.isNotEmpty
+                      ? const SizedBox.shrink()
+                      // Scrollable so a short window shrinks the panel rather
+                      // than pushing the controls off the bottom. Hanging up
+                      // must never be the thing that goes missing.
+                      : Center(
+                          child: SingleChildScrollView(
+                            child: _peerPanel(l10n, theme),
+                          ),
+                        ),
+                ),
+                if (tracks.isNotEmpty)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 8),
+                    child: Text(
+                      _status(l10n),
+                      style: theme.textTheme.bodyMedium?.copyWith(
+                        color: Colors.white70,
+                      ),
+                    ),
+                  ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Text(
+                    l10n.callRecordingNotice,
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: Colors.white38,
+                    ),
+                  ),
+                ),
+                _controls(l10n),
+              ],
             ),
-            _controls(l10n),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
 
-  Widget _stageBody(L10n l10n) {
+  Widget _voiceBackdrop(ThemeData theme) => DecoratedBox(
+    decoration: BoxDecoration(
+      gradient: LinearGradient(
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+        colors: [
+          theme.colorScheme.primary.withValues(alpha: 0.28),
+          const Color(0xFF14131A),
+        ],
+      ),
+    ),
+  );
+
+  Widget _topBar(L10n l10n) => Align(
+    alignment: Alignment.centerLeft,
+    child: IconButton(
+      icon: const Icon(Icons.expand_more, color: Colors.white),
+      tooltip: l10n.callHangUp,
+      onPressed: _finishRecording,
+    ),
+  );
+
+  /// Who is on the call, and what it is doing.
+  Widget _peerPanel(L10n l10n, ThemeData theme) {
+    final peer = _peer();
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Avatar(
+          mxContent: peer?.avatarUrl,
+          name:
+              peer?.calcDisplayname() ?? widget.room.getLocalizedDisplayname(),
+          size: 108,
+          showPresence: false,
+        ),
+        const SizedBox(height: 20),
+        Text(
+          peer?.calcDisplayname() ?? widget.room.getLocalizedDisplayname(),
+          style: theme.textTheme.headlineSmall?.copyWith(
+            color: Colors.white,
+            fontWeight: FontWeight.w600,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        if (peer != null) ...[
+          const SizedBox(height: 4),
+          Text(
+            peer.id,
+            style: theme.textTheme.bodySmall?.copyWith(color: Colors.white38),
+          ),
+        ],
+        const SizedBox(height: 14),
+        Text(
+          _status(l10n),
+          style: theme.textTheme.titleMedium?.copyWith(color: Colors.white70),
+        ),
+      ],
+    );
+  }
+
+  /// The other person in a direct message, for the name and face on screen.
+  ///
+  /// The room's own name is the fallback rather than the answer: a direct chat
+  /// renamed to something else would otherwise leave the call screen showing
+  /// anything but who is on it.
+  matrix.User? _peer() {
+    final id = widget.room.directChatMatrixID;
+    if (id == null) return null;
+    return widget.room.unsafeGetUserFromMemoryOrFallback(id);
+  }
+
+  /// One line saying what the call is doing, which is the whole content of a
+  /// voice call's screen — silence with no explanation is what makes a call
+  /// feel broken.
+  String _status(L10n l10n) {
     switch (_call.stage) {
       case CallStage.connecting:
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const CircularProgressIndicator(),
-            const SizedBox(height: 16),
-            Text(l10n.callConnecting),
-          ],
-        );
+        return _call.placedCall ? l10n.callRinging : l10n.callConnecting;
       case CallStage.connected:
-        return _participants();
+        if (!_call.hadPeer) return l10n.callRinging;
+        return _formatDuration(_elapsed());
       case CallStage.failed:
-        return Text(l10n.callFailed);
+        return l10n.callFailed;
       case CallStage.ended:
-        return Text(l10n.callEnded);
+        return l10n.callEnded;
       case CallStage.declined:
-        return Text(l10n.callDeclinedByPeer);
+        return l10n.callDeclinedByPeer;
     }
+  }
+
+  Duration _elapsed() {
+    final since = _talkingSince;
+    if (since == null) return Duration.zero;
+    return DateTime.now().difference(since);
+  }
+
+  static String _formatDuration(Duration d) {
+    final seconds = d.inSeconds;
+    final s = (seconds % 60).toString().padLeft(2, '0');
+    final m = (seconds ~/ 60) % 60;
+    final h = seconds ~/ 3600;
+    if (h > 0) return '$h:${m.toString().padLeft(2, '0')}:$s';
+    return '$m:$s';
   }
 
   /// Every published video track in the call, this device's included.
   ///
   /// Audio needs no widget — LiveKit plays remote audio itself — so a voice call
-  /// renders an empty grid, and that is correct rather than a missing case.
-  Widget _participants() {
-    final tracks = <lk.VideoTrack>[
-      ...?_media.room.localParticipant?.videoTrackPublications
-          .map((p) => p.track)
-          .whereType<lk.VideoTrack>(),
-      ..._media.room.remoteParticipants.values
-          .expand((p) => p.videoTrackPublications)
-          .map((p) => p.track)
-          .whereType<lk.VideoTrack>(),
-    ];
+  /// has none, and that is correct rather than a missing case.
+  List<lk.VideoTrack> _videoTracks() => <lk.VideoTrack>[
+    ..._media.room.remoteParticipants.values
+        .expand((p) => p.videoTrackPublications)
+        .map((p) => p.track)
+        .whereType<lk.VideoTrack>(),
+    ...?_media.room.localParticipant?.videoTrackPublications
+        .map((p) => p.track)
+        .whereType<lk.VideoTrack>(),
+  ];
 
-    if (tracks.isEmpty) return const Icon(Icons.call, size: 64);
+  /// The peer full-bleed with this device inset, the layout every video call
+  /// uses — a two-up grid would give our own face equal billing with theirs.
+  Widget _videoLayer(List<lk.VideoTrack> tracks) => Stack(
+    fit: StackFit.expand,
+    children: [
+      lk.VideoTrackRenderer(tracks.first),
+      if (tracks.length > 1)
+        Positioned(
+          right: 16,
+          top: 72,
+          width: 108,
+          height: 160,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: lk.VideoTrackRenderer(tracks[1]),
+          ),
+        ),
+    ],
+  );
 
-    return GridView.count(
-      crossAxisCount: tracks.length > 1 ? 2 : 1,
-      children: [for (final track in tracks) lk.VideoTrackRenderer(track)],
+  Widget _controls(L10n l10n) {
+    final live = _call.stage == CallStage.connected;
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 28, top: 16),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _CallButton(
+            icon: _muted ? Icons.mic_off : Icons.mic,
+            label: _muted ? l10n.callUnmute : l10n.callMute,
+            background: Colors.white.withValues(alpha: 0.14),
+            foreground: Colors.white,
+            onPressed: live ? _toggleMute : null,
+          ),
+          const SizedBox(width: 22),
+          _CallButton(
+            icon: Icons.call_end,
+            label: l10n.callHangUp,
+            background: const Color(0xFFD32F2F),
+            foreground: Colors.white,
+            large: true,
+            onPressed: _finishRecording,
+          ),
+          const SizedBox(width: 22),
+          _CallButton(
+            icon: _camera ? Icons.videocam : Icons.videocam_off,
+            label: _camera ? l10n.callCameraOff : l10n.callCameraOn,
+            background: Colors.white.withValues(alpha: 0.14),
+            foreground: Colors.white,
+            onPressed: live ? _toggleCamera : null,
+          ),
+        ],
+      ),
     );
   }
+}
 
-  Widget _controls(L10n l10n) => Padding(
-    padding: const EdgeInsets.only(bottom: 24, top: 8),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+/// A round call control with its name under it.
+class _CallButton extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final Color background;
+  final Color foreground;
+  final bool large;
+  final VoidCallback? onPressed;
+
+  const _CallButton({
+    required this.icon,
+    required this.label,
+    required this.background,
+    required this.foreground,
+    required this.onPressed,
+    this.large = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final size = large ? 66.0 : 56.0;
+    final disabled = onPressed == null;
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        IconButton.filledTonal(
-          icon: Icon(_muted ? Icons.mic_off : Icons.mic),
-          tooltip: _muted ? l10n.callUnmute : l10n.callMute,
-          onPressed: _call.stage == CallStage.connected ? _toggleMute : null,
-        ),
-        IconButton.filled(
-          icon: const Icon(Icons.call_end),
-          tooltip: l10n.callHangUp,
-          style: IconButton.styleFrom(
-            backgroundColor: Theme.of(context).colorScheme.error,
-            foregroundColor: Theme.of(context).colorScheme.onError,
+        Opacity(
+          opacity: disabled ? 0.4 : 1,
+          child: Material(
+            color: background,
+            shape: const CircleBorder(),
+            child: InkWell(
+              customBorder: const CircleBorder(),
+              onTap: onPressed,
+              child: SizedBox(
+                width: size,
+                height: size,
+                child: Icon(icon, color: foreground, size: large ? 30 : 24),
+              ),
+            ),
           ),
-          onPressed: _finishRecording,
         ),
-        IconButton.filledTonal(
-          icon: Icon(_camera ? Icons.videocam : Icons.videocam_off),
-          tooltip: _camera ? l10n.callCameraOff : l10n.callCameraOn,
-          onPressed: _call.stage == CallStage.connected ? _toggleCamera : null,
+        const SizedBox(height: 8),
+        SizedBox(
+          width: 84,
+          child: Text(
+            label,
+            textAlign: TextAlign.center,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: Theme.of(
+              context,
+            ).textTheme.labelSmall?.copyWith(color: Colors.white60),
+          ),
         ),
       ],
-    ),
-  );
+    );
+  }
 }

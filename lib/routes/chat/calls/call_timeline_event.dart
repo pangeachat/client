@@ -2,20 +2,19 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 
 /// One finished call, drawn in the timeline.
 ///
-/// A call is written to the room as an `m.room.message` carrying the
-/// `pangea.call` msgtype, so a client without this renderer still shows the
-/// event's text fallback rather than hiding it. Here it becomes the compact
-/// call card every messaging app draws: an icon that says at a glance whether
-/// the call connected, was missed, or was turned down, and — when it connected —
-/// how long it lasted.
+/// Centred, like a join or an invitation, because a call is something that
+/// HAPPENED in the conversation rather than something one side said. Drawing it
+/// as a chat bubble would attribute it to whoever's client wrote it and align it
+/// to their edge, which reads as a message from them.
 ///
 /// The same event is read from both sides of a direct message, so direction is
-/// derived per viewer: the account that placed the call sees it as outgoing,
-/// the other as incoming.
+/// derived per viewer: the account that placed the call sees it as outgoing, the
+/// other as incoming.
 class CallTimelineEvent extends StatelessWidget {
   final Event event;
 
@@ -41,41 +40,48 @@ class CallTimelineEvent extends StatelessWidget {
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
     final missed = !_answered && !_declined;
+    final connected = _answered && !_declined;
 
-    // Missed and declined read as something to notice; a call that connected is
-    // ordinary. Colour follows that rather than the call's direction.
-    final color = missed || _declined
-        ? theme.colorScheme.error
-        : theme.colorScheme.primary;
+    // A call that connected is unremarkable; one that was missed or turned down
+    // is the thing a learner scrolls back to find. Colour follows that, not the
+    // call's direction.
+    final color = connected ? const Color(0xFF2E7D32) : theme.colorScheme.error;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 2),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(_icon(missed), size: 22, color: color),
-          const SizedBox(width: 10),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                _label(l10n, missed),
-                style: theme.textTheme.bodyLarge?.copyWith(
-                  color: color,
-                  fontWeight: FontWeight.w500,
-                ),
-              ),
-              if (_answered && !_declined)
-                Text(
-                  _formatDuration(_duration),
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    color: theme.colorScheme.onSurfaceVariant,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      child: Center(
+        child: Material(
+          color: theme.colorScheme.surface.withAlpha(128),
+          borderRadius: BorderRadius.circular(AppConfig.borderRadius / 3),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(_icon(missed), size: 16, color: color),
+                const SizedBox(width: 7),
+                Flexible(
+                  child: Text(
+                    _label(l10n, missed),
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: color,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-            ],
+                if (connected) ...[
+                  Text(
+                    '  ${_formatDuration(_duration)}',
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurfaceVariant,
+                    ),
+                  ),
+                ],
+              ],
+            ),
           ),
-        ],
+        ),
       ),
     );
   }
@@ -85,7 +91,7 @@ class CallTimelineEvent extends StatelessWidget {
     if (missed) {
       return _outgoing ? Icons.call_missed_outgoing : Icons.call_missed;
     }
-    if (_video) return Icons.videocam_outlined;
+    if (_video) return Icons.videocam;
     return _outgoing ? Icons.call_made : Icons.call_received;
   }
 
