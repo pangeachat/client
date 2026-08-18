@@ -143,12 +143,14 @@ void main() {
       );
 
       print('\ntranscripts:');
-      for (final result in sink.results) {
-        if (result.results.isEmpty) {
-          print('  (nothing transcribable)');
-        } else {
-          print('  "${result.transcript.text}"');
-        }
+      for (final text in sink.transcripts) {
+        print('  "$text"');
+      }
+      if (sink.transcripts.length < sink.chunkCount) {
+        print(
+          '  (${sink.chunkCount - sink.transcripts.length} '
+          'chunk(s) transcribed to nothing)',
+        );
       }
 
       _check(

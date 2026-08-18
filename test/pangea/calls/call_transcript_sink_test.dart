@@ -109,7 +109,22 @@ void main() {
       await s.deliver(chunk(0));
 
       expect(sent, hasLength(2));
-      expect(s.results, hasLength(2));
+      expect(s.chunkCount, 2);
+    });
+
+    test('the transcript view cannot be used to change the call', () async {
+      // The provider's response objects are mutable all the way down. Handing
+      // them out would let a caller empty one and change what the call is worth.
+      final s = sink(respond: (_) => spoken);
+      await s.deliver(chunk(0));
+
+      final before = s.transcripts;
+      expect(before, ['hola']);
+      before.clear();
+
+      expect(s.transcripts, ['hola']);
+      expect(s.hasTranscript, isTrue);
+      expect(s.constructs(roomId: '!r:server', eventId: '\$e'), isNotEmpty);
     });
 
     test('a chunk that fails costs its own words and no more', () async {
@@ -118,7 +133,7 @@ void main() {
       await s.deliver(chunk(1));
 
       expect(sent, hasLength(2), reason: 'the call carried on');
-      expect(s.results, hasLength(1));
+      expect(s.chunkCount, 1);
     });
 
     test('a failed chunk is not retried into a double charge', () async {
@@ -246,7 +261,7 @@ void main() {
       await s.deliver(chunk(1));
 
       expect(
-        s.results.map((r) => r.transcript.text),
+        s.transcripts,
         // chunk 2 was transcribed first, so it holds 'uno'; ordering by arrival
         // would put it first instead of last.
         ['dos', 'tres', 'uno'],

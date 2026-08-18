@@ -57,8 +57,24 @@ class CallTranscriptSink implements CallAudioSink {
     required this.userL2,
   });
 
-  /// Every transcript this call produced, in the order the audio was spoken.
-  List<SpeechToTextResponseModel> get results => [
+  /// What was said, in the order it was said, skipping chunks that produced
+  /// nothing readable.
+  ///
+  /// Strings rather than the provider's response objects. Those are mutable all
+  /// the way down — the response holds mutable lists of transcripts holding
+  /// mutable lists of tokens — so handing them out would let any caller empty
+  /// one and change what this call is worth. Nothing outside needs them; text is
+  /// what a transcript view or a log actually wants.
+  List<String> get transcripts => [
+    for (final result in _ordered)
+      if (result.hasUsableTranscript) result.transcript.text,
+  ];
+
+  /// How many chunks came back, readable or not. The count is what a caller can
+  /// have without a handle on anything mutable.
+  int get chunkCount => _byIndex.length;
+
+  List<SpeechToTextResponseModel> get _ordered => [
     for (final index in _byIndex.keys.toList()..sort()) _byIndex[index]!,
   ];
 
@@ -155,7 +171,7 @@ class CallTranscriptSink implements CallAudioSink {
   /// language is pinned for the whole call, so every chunk agrees and the
   /// earliest answer is the call's answer.
   String? get langCode {
-    for (final result in results) {
+    for (final result in _ordered) {
       if (result.hasUsableTranscript) {
         return result.langCode.split('-').first;
       }
