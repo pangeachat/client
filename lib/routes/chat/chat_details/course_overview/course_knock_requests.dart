@@ -67,11 +67,11 @@ class CourseKnockRequests extends StatelessWidget {
       room: room,
       builder: (context, knockingUsers) => CourseAttentionCard(
         icon: CircleAvatar(
-          radius: 12.0,
+          radius: CourseAttentionCard.iconSize / 2,
           backgroundColor: theme.colorScheme.error,
           child: Icon(
             KnockingUsersBadge.icon,
-            size: 16.0,
+            size: CourseAttentionCard.insetIconSize,
             color: theme.colorScheme.onError,
           ),
         ),

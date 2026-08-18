@@ -96,7 +96,10 @@ class CourseCatchUp extends StatelessWidget {
           return CourseAttentionCard(
             icon: Badge.count(
               count: rows.length,
-              child: const Icon(Icons.notifications_outlined, size: 20.0),
+              child: const Icon(
+                Icons.notifications_outlined,
+                size: CourseAttentionCard.iconSize,
+              ),
             ),
             title: l10n.catchUp,
             actionLabel: l10n.markAllRead,
