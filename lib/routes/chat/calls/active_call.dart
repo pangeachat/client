@@ -42,6 +42,11 @@ class ActiveCall extends ChangeNotifier {
   Future<void>? _hangUp;
   bool _disposed = false;
 
+  /// Set the moment anything asks the call to end. [start] checks it after every
+  /// await, so a hangup that lands mid-connect stops the sequence instead of
+  /// racing it to completion.
+  bool _ending = false;
+
   ActiveCall({required this.calls, required this.media, required this.capture});
 
   CallStage get stage => _stage;
@@ -73,7 +78,10 @@ class ActiveCall extends ChangeNotifier {
     try {
       final grant = await calls.join(room);
       _joined = true;
+      if (_ending) return _abandon();
+
       await media.connect(grant, video: video);
+      if (_ending) return _abandon();
 
       final track = media.publishedAudio;
       if (track != null) {
@@ -86,6 +94,8 @@ class ActiveCall extends ChangeNotifier {
       }
 
       await calls.announce();
+      if (_ending) return _abandon();
+
       _to(CallStage.connected);
     } catch (e, s) {
       Logs().e('Could not start the call', e, s);
@@ -94,22 +104,55 @@ class ActiveCall extends ChangeNotifier {
     }
   }
 
+  /// Unwinds a call that was asked to end while it was still coming up.
+  ///
+  /// Connecting takes network round-trips, and a user who closes the screen
+  /// during them must not end up in a call that finishes assembling itself
+  /// behind a dismissed page.
+  Future<void> _abandon() async {
+    await _tearDown();
+    _to(CallStage.ended);
+  }
+
   /// Ends the call.
   ///
   /// Idempotent and safe to race: a user tapping hang up while the peer's
   /// departure is already tearing the call down joins the same teardown rather
   /// than starting a second one.
-  Future<void> hangUp() => _hangUp ??= () async {
-    await _tearDown();
-    _to(CallStage.ended);
-  }();
+  Future<void> hangUp() {
+    _ending = true;
+    return _hangUp ??= () async {
+      await _tearDown();
+      _to(CallStage.ended);
+    }();
+  }
 
-  /// Unwinds whatever is up, in reverse, and never gives up partway.
+  /// Unwinds whatever is up, and never gives up partway.
   ///
-  /// Each step is isolated: a recording that fails to flush must not leave the
-  /// microphone open, and a socket that fails to close must not leave this
-  /// device advertised as a participant in a call it has left.
+  /// **Membership is retracted first**, not last. It is the only part of
+  /// teardown the peer can see, and everything after it is local work that can
+  /// be slow — flushing a recording waits on chunk delivery. Unwinding in strict
+  /// reverse would leave this device advertised as a participant for as long as
+  /// an upload took, so the peer would see someone who had already hung up.
+  ///
+  /// The rest still runs in reverse. Recording stops before media is released,
+  /// because the tap lives on the track that releasing it destroys.
+  ///
+  /// Every step is isolated: a recording that fails to flush must not leave the
+  /// microphone open, and a socket that fails to close must not leave the
+  /// membership standing.
   Future<void> _tearDown() async {
+    _ending = true;
+
+    if (_joined) {
+      _joined = false;
+      try {
+        await calls.retract();
+      } catch (e, s) {
+        Logs().e('Could not retract the call membership', e, s);
+      }
+    }
+
     if (_capturing) {
       _capturing = false;
       try {
@@ -123,15 +166,6 @@ class ActiveCall extends ChangeNotifier {
       await media.dispose();
     } catch (e, s) {
       Logs().e('Could not release the call media', e, s);
-    }
-
-    if (_joined) {
-      _joined = false;
-      try {
-        await calls.retract();
-      } catch (e, s) {
-        Logs().e('Could not retract the call membership', e, s);
-      }
     }
   }
 

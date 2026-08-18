@@ -135,31 +135,43 @@ class PcmChunker {
   int get _maxFrames => sampleRate * maxDuration.inMilliseconds ~/ 1000;
   int get _minSilenceFrames => sampleRate * minSilence.inMilliseconds ~/ 1000;
 
-  /// Adds one frame of captured audio, returning any chunks it completed.
+  /// Adds captured audio, returning any chunks it completed.
   ///
-  /// Cuts land only between calls, never inside one. That is what makes the
-  /// no-sample-lost invariant hold by construction rather than by arithmetic:
-  /// each frame is appended whole, so concatenating every emitted chunk with the
-  /// final [flush] reproduces the input exactly.
+  /// Cuts normally land between calls rather than inside one, which is what
+  /// makes the no-sample-lost invariant structural: each frame is appended whole
+  /// and never rewritten, so concatenating every emitted chunk with the final
+  /// [flush] reproduces the input exactly.
+  ///
+  /// Input larger than a whole chunk is the exception, and it has to be. A
+  /// renderer that batches its callbacks can hand over more audio in one call
+  /// than the ceiling allows, and appending it whole would produce a chunk the
+  /// upload cap rejects — so oversized input is split at an exact sample
+  /// boundary, which preserves the invariant just as well.
   List<PcmChunk> add(Int16List samples) {
     if (samples.isEmpty) return const [];
 
-    _buffer.add(
-      Uint8List.view(
-        samples.buffer,
-        samples.offsetInBytes,
-        samples.lengthInBytes,
-      ),
-    );
-    _framesBuffered += samples.length ~/ channels;
-    _trackQuiet(samples);
-
     final out = <PcmChunk>[];
-    if (_framesBuffered >= _maxFrames ||
-        (_framesBuffered >= _targetFrames &&
-            _quietFrames >= _minSilenceFrames)) {
-      final chunk = _cut();
-      if (chunk != null) out.add(chunk);
+    var offset = 0;
+    while (offset < samples.length) {
+      final room = (_maxFrames - _framesBuffered) * channels;
+      final take = room < samples.length - offset
+          ? room
+          : samples.length - offset;
+      final slice = Int16List.sublistView(samples, offset, offset + take);
+      offset += take;
+
+      _buffer.add(
+        Uint8List.view(slice.buffer, slice.offsetInBytes, slice.lengthInBytes),
+      );
+      _framesBuffered += slice.length ~/ channels;
+      _trackQuiet(slice);
+
+      if (_framesBuffered >= _maxFrames ||
+          (_framesBuffered >= _targetFrames &&
+              _quietFrames >= _minSilenceFrames)) {
+        final chunk = _cut();
+        if (chunk != null) out.add(chunk);
+      }
     }
     return out;
   }

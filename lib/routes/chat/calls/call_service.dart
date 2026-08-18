@@ -80,6 +80,13 @@ class CallService {
   /// cannot be stood up outside a live VoIP instance — so holding it here is both
   /// simpler for callers and what lets the calling flow be tested at all.
   Future<CallToken> join(Room room) async {
+    // The SDK identifies our membership per VoIP instance, so a second join
+    // would overwrite the first's identity and leave that call advertised with
+    // nobody able to retract it. Refuse rather than corrupt.
+    if (_current != null) {
+      throw StateError('this account is already in a call');
+    }
+
     final f = await resolveFocus();
     if (f == null) {
       throw StateError('this homeserver advertises no MatrixRTC focus');
@@ -128,8 +135,18 @@ class CallService {
     await session?.leave();
   }
 
-  void dispose() {
-    _current = null;
+  /// Tears the service down, retracting any membership it still holds.
+  ///
+  /// Dropping the session instead would leave this account advertised in a call
+  /// until the state event expired, with nothing left able to retract it —
+  /// account teardown reaches here while a call can still be live.
+  Future<void> dispose() async {
+    try {
+      await retract();
+    } catch (e, s) {
+      Logs().w('Could not retract the call membership during teardown', e, s);
+    }
+    _tokens.close();
     _voip = null;
     _focus = null;
     _resolving = null;

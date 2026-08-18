@@ -137,6 +137,31 @@ void main() {
       );
     });
 
+    test('one oversized frame is split rather than exceeding the ceiling', () {
+      // A renderer that batches its callbacks can hand over more audio in one
+      // call than the ceiling allows. Appending it whole would produce a chunk
+      // the upload cap rejects, and the earlier tests could not see it because
+      // they all feed 5-60ms frames.
+      final c = chunker();
+      final emitted = c.add(frame(10000)); // 10s against a 4s ceiling
+
+      expect(emitted.length, greaterThanOrEqualTo(2));
+      for (final chunk in emitted) {
+        expect(
+          chunk.duration.inMilliseconds,
+          lessThanOrEqualTo(4000),
+          reason: 'no chunk may exceed the ceiling the upload cap sets',
+        );
+      }
+      final tail = c.flush();
+      final all = [...emitted, ?tail];
+      expect(totalSamples(all), 24000 * 10, reason: 'and nothing is lost');
+      expect(
+        all.map((chunk) => chunk.index).toList(),
+        List.generate(all.length, (i) => i),
+      );
+    });
+
     /// The invariant the whole analytics contract rests on: a speaker's credit is
     /// the union of their chunks, so the chunks must be the input exactly once,
     /// in order. A dropped or duplicated sample is a silently wrong transcript.

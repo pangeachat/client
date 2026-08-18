@@ -1,4 +1,9 @@
+import 'dart:convert';
+
 import 'package:flutter_test/flutter_test.dart';
+
+import 'package:http/testing.dart';
+import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
@@ -21,6 +26,78 @@ void main() {
       sqfliteFactory: databaseFactoryFfi,
     ),
   );
+
+  /// Serves `.well-known` and nothing else, so a test can tell a real lookup
+  /// from a no-op. Reading a field the SDK only fills in `checkHomeserver` —
+  /// which this app never calls — looked correct and discovered nothing.
+  http.Client wellKnownServing(Map<String, dynamic> body) =>
+      MockClient((request) async {
+        if (request.url.path == '/.well-known/matrix/client') {
+          return http.Response(
+            jsonEncode({
+              'm.homeserver': {'base_url': 'http://localhost:8008'},
+              ...body,
+            }),
+            200,
+            headers: {'content-type': 'application/json'},
+          );
+        }
+        return http.Response('{"errcode":"M_NOT_FOUND"}', 404);
+      });
+
+  group('CallService focus discovery', () {
+    test('finds the focus its homeserver advertises', () async {
+      final client = Client(
+        'focus-test',
+        httpClient: wellKnownServing({
+          'org.matrix.msc4143.rtc_foci': [
+            {'type': 'livekit', 'livekit_service_url': 'http://sfu:7980'},
+          ],
+        }),
+        database: await MatrixSdkDatabase.init(
+          'focus-test',
+          database: await databaseFactoryFfi.openDatabase(':memory:'),
+          sqfliteFactory: databaseFactoryFfi,
+        ),
+      );
+      client.homeserver = Uri.parse('http://localhost:8008');
+
+      final service = CallService(client);
+      final focus = await service.resolveFocus();
+
+      expect(focus, isNotNull);
+      expect(focus!.serviceUrl, 'http://sfu:7980');
+      expect(service.focus, same(focus), reason: 'and it is remembered');
+    });
+
+    test('asks once, including when the answer is no', () async {
+      var requests = 0;
+      final client = Client(
+        'focus-count-test',
+        httpClient: MockClient((_) async {
+          requests++;
+          return http.Response('{"errcode":"M_NOT_FOUND"}', 404);
+        }),
+        database: await MatrixSdkDatabase.init(
+          'focus-count-test',
+          database: await databaseFactoryFfi.openDatabase(':memory:'),
+          sqfliteFactory: databaseFactoryFfi,
+        ),
+      );
+      client.homeserver = Uri.parse('http://localhost:8008');
+
+      final service = CallService(client);
+      expect(await service.resolveFocus(), isNull);
+      expect(await service.resolveFocus(), isNull);
+      expect(
+        requests,
+        1,
+        reason:
+            'a homeserver without MatrixRTC is a deployment fact, '
+            'not something to re-ask per room opened',
+      );
+    });
+  });
 
   group('CallService availability', () {
     test('is unavailable when the homeserver advertises no RTC focus', () async {

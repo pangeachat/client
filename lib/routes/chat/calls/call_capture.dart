@@ -115,7 +115,15 @@ class CallCaptureService {
     _stopping = true;
     _chunker = null;
 
-    await _cancelTap?.call();
+    // A tap that will not cancel must not cost the tail. The frames it may still
+    // deliver are already ignored (_stopping), so the worst case is a renderer
+    // left registered — losing the last seconds of what the learner said is the
+    // more expensive failure.
+    try {
+      await _cancelTap?.call();
+    } catch (e, s) {
+      Logs().w('Could not cancel the call audio tap', e, s);
+    }
     _cancelTap = null;
 
     final tail = chunker.flush();

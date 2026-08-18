@@ -33,8 +33,19 @@ class CallTokenException implements Exception {
 /// by choice.
 class CallTokenRepo {
   final http.Client _http;
+  final bool _ownsHttp;
+
   CallTokenRepo({http.Client? httpClient})
-    : _http = httpClient ?? http.Client();
+    : _http = httpClient ?? http.Client(),
+      _ownsHttp = httpClient == null;
+
+  /// Releases the HTTP client, but only if this repo created it.
+  ///
+  /// A caller that passed one in owns it and may still be using it — closing
+  /// another object's client is how a shared client dies mid-request.
+  void close() {
+    if (_ownsHttp) _http.close();
+  }
 
   /// Requests a grant for [roomId] on behalf of the logged-in user.
   ///

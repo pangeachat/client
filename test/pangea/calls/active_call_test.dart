@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:livekit_client/livekit_client.dart' show AudioTrack;
@@ -56,8 +58,12 @@ class FakeMedia extends CallMedia {
 
   FakeMedia(this.trace, {this.hasTrack = true});
 
+  /// Held open to reproduce a hangup landing mid-connect.
+  Future<void>? beforeConnect;
+
   @override
   Future<void> connect(CallToken grant, {required bool video}) async {
+    if (beforeConnect != null) await beforeConnect;
     trace('connect(video: $video)');
     if (connectError != null) throw connectError!;
   }
@@ -190,8 +196,8 @@ void main() {
       expect(trace.steps, [
         'join',
         'connect(video: false)',
-        'media.dispose',
         'retract',
+        'media.dispose',
       ]);
     });
 
@@ -206,9 +212,9 @@ void main() {
         'connect(video: false)',
         'capture.start',
         'announce',
+        'retract',
         'capture.stop',
         'media.dispose',
-        'retract',
       ], reason: 'the recording is flushed even on a failed call');
     });
   });
@@ -220,7 +226,7 @@ void main() {
       trace.steps.clear();
       await call.hangUp();
 
-      expect(trace.steps, ['capture.stop', 'media.dispose', 'retract']);
+      expect(trace.steps, ['retract', 'capture.stop', 'media.dispose']);
       expect(call.stage, CallStage.ended);
     });
 
@@ -229,7 +235,7 @@ void main() {
       await call.start(roomStub(calls.client), video: false);
       trace.steps.clear();
       await Future.wait([call.hangUp(), call.hangUp()]);
-      expect(trace.steps, ['capture.stop', 'media.dispose', 'retract']);
+      expect(trace.steps, ['retract', 'capture.stop', 'media.dispose']);
     });
 
     test('a recording that will not flush still frees the microphone '
@@ -240,22 +246,22 @@ void main() {
       trace.steps.clear();
       await call.hangUp();
 
-      expect(trace.steps, ['capture.stop', 'media.dispose', 'retract']);
+      expect(trace.steps, ['retract', 'capture.stop', 'media.dispose']);
       expect(call.stage, CallStage.ended);
     });
 
-    test('media that will not close still retracts the membership', () async {
+    test('media that will not close does not strand the rest', () async {
       final (call, calls, media, _) = await build();
       await call.start(roomStub(calls.client), video: false);
       media.disposeError = StateError('socket stuck');
       trace.steps.clear();
       await call.hangUp();
 
-      expect(
-        trace.steps,
-        ['capture.stop', 'media.dispose', 'retract'],
-        reason: 'a stuck socket must not advertise us in a call we have left',
-      );
+      expect(trace.steps, [
+        'retract',
+        'capture.stop',
+        'media.dispose',
+      ], reason: 'a stuck socket must not strand the rest of teardown');
       expect(call.stage, CallStage.ended);
     });
 
@@ -279,8 +285,43 @@ void main() {
     call.dispose();
     await pumpEventQueue();
 
-    expect(trace.steps, ['capture.stop', 'media.dispose', 'retract']);
+    expect(trace.steps, ['retract', 'capture.stop', 'media.dispose']);
     expect(call.stage, CallStage.ended);
+  });
+
+  test('the peer sees us leave before slow local cleanup runs', () async {
+    // Flushing a recording waits on chunk delivery, which with a real upload
+    // sink is the slowest part of hanging up. Retracting after it would leave
+    // this device advertised as a participant the whole time, so the peer would
+    // still see someone who had already hung up.
+    final (call, calls, _, _) = await build();
+    await call.start(roomStub(calls.client), video: false);
+    trace.steps.clear();
+
+    await call.hangUp();
+    expect(trace.steps.indexOf('retract'), 0);
+    expect(trace.steps.indexOf('capture.stop'), greaterThan(0));
+  });
+
+  test('a hangup during connect stops the call coming up', () async {
+    final (call, calls, media, _) = await build();
+    final connecting = Completer<void>();
+    media.beforeConnect = connecting.future;
+
+    final starting = call.start(roomStub(calls.client), video: false);
+    await pumpEventQueue();
+    final hangingUp = call.hangUp();
+
+    connecting.complete();
+    await Future.wait([starting, hangingUp]);
+
+    expect(call.stage, CallStage.ended);
+    expect(
+      trace.steps,
+      isNot(contains('announce')),
+      reason: 'a call the user abandoned must not finish assembling itself',
+    );
+    expect(trace.steps, contains('retract'));
   });
 
   test('notifies listeners as the stage changes', () async {

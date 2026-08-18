@@ -676,7 +676,7 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
     return _disposingServices[clientName] ??= () async {
       try {
         _activityAutoSaveServices[clientName]?.dispose();
-        _callServices[clientName]?.dispose();
+        await _callServices[clientName]?.dispose();
         await _analyticsServices[clientName]?.dispose();
       } finally {
         _activityAutoSaveServices.remove(clientName);
