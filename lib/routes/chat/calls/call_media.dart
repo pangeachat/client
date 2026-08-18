@@ -60,13 +60,23 @@ class CallMedia {
   Future<void> connect(CallToken grant, {required bool video}) async {
     if (_released) return;
     await connectRoom(grant.url, grant.jwt);
+    if (_released) return _releaseWhatOpened();
 
-    if (_released) return;
     await enableMicrophone(true);
+    if (_released) return _releaseWhatOpened();
 
-    if (_released || !video) return;
+    if (!video) return;
     await enableCamera(true);
+    if (_released) return _releaseWhatOpened();
   }
+
+  /// Releases anything a step finished opening after teardown had already run.
+  ///
+  /// Checking before each step is not enough on its own: a hangup landing while
+  /// `enableMicrophone` is in flight cannot stop it, so the microphone opens
+  /// anyway and simply returning would leave it open with nothing left to close
+  /// it. Reconciling after each step is what makes the check sufficient.
+  Future<void> _releaseWhatOpened() => disconnect();
 
   /// The three steps of coming up, named so the sequence and the checks between
   /// them can be observed. A real LiveKit room cannot be stood up in a unit

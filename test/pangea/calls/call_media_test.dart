@@ -8,6 +8,9 @@ import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 class RecordingMedia extends CallMedia {
   final List<String> steps = [];
   bool releaseDuringConnect = false;
+  bool releaseDuringMic = false;
+  bool releaseDuringCamera = false;
+  int disconnects = 0;
 
   @override
   Future<void> connectRoom(String url, String jwt) async {
@@ -16,10 +19,29 @@ class RecordingMedia extends CallMedia {
   }
 
   @override
-  Future<void> enableMicrophone(bool on) async => steps.add('mic:$on');
+  Future<void> enableMicrophone(bool on) async {
+    steps.add('mic:$on');
+    if (releaseDuringMic) {
+      releaseDuringMic = false;
+      await disconnect();
+    }
+  }
 
   @override
-  Future<void> enableCamera(bool on) async => steps.add('camera:$on');
+  Future<void> enableCamera(bool on) async {
+    steps.add('camera:$on');
+    if (releaseDuringCamera) {
+      releaseDuringCamera = false;
+      await disconnect();
+    }
+  }
+
+  @override
+  Future<void> disconnect() async {
+    disconnects++;
+    steps.add('disconnect');
+    await super.disconnect();
+  }
 }
 
 void main() {
@@ -44,7 +66,7 @@ void main() {
     final media = RecordingMedia()..releaseDuringConnect = true;
     await media.connect(grant, video: true);
 
-    expect(media.steps, ['connect']);
+    expect(media.steps, ['connect', 'disconnect', 'disconnect']);
     expect(
       media.steps,
       isNot(contains('mic:true')),
@@ -52,9 +74,36 @@ void main() {
     );
   });
 
+  test(
+    'a hangup landing WHILE the microphone opens still releases it',
+    () async {
+      // The check before each step cannot stop a step already in flight. The
+      // microphone opens anyway, so returning without releasing would leave it
+      // open with nothing left to close it.
+      final media = RecordingMedia()..releaseDuringMic = true;
+      await media.connect(grant, video: true);
+
+      expect(media.steps, ['connect', 'mic:true', 'disconnect', 'disconnect']);
+      expect(
+        media.steps,
+        isNot(contains('camera:true')),
+        reason: 'and nothing further is opened',
+      );
+    },
+  );
+
+  test('a hangup landing WHILE the camera opens still releases it', () async {
+    final media = RecordingMedia()..releaseDuringCamera = true;
+    await media.connect(grant, video: true);
+
+    expect(media.steps.last, 'disconnect');
+    expect(media.disconnects, 2, reason: 'the reconcile runs after the step');
+  });
+
   test('connect after release does nothing at all', () async {
     final media = RecordingMedia();
     await media.disconnect();
+    media.steps.clear();
     await media.connect(grant, video: true);
     expect(media.steps, isEmpty);
   });

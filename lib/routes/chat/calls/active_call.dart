@@ -122,8 +122,16 @@ class ActiveCall extends ChangeNotifier {
   Future<void> hangUp() {
     _ending = true;
     return _hangUp ??= () async {
-      await _tearDown();
-      _to(CallStage.ended);
+      try {
+        await _tearDown();
+        _to(CallStage.ended);
+      } finally {
+        // A teardown that could not retract must not be remembered as done.
+        // Memoizing it would make every later hangup return this same finished
+        // future, so the membership would stay advertised until it expired with
+        // nothing able to take it back.
+        if (_joined) _hangUp = null;
+      }
     }();
   }
 
@@ -145,10 +153,12 @@ class ActiveCall extends ChangeNotifier {
     _ending = true;
 
     if (_joined) {
-      _joined = false;
       try {
         await calls.retract();
+        _joined = false;
       } catch (e, s) {
+        // Deliberately still joined: the service keeps the session so a retry
+        // can succeed, and clearing this would make us stop asking.
         Logs().e('Could not retract the call membership', e, s);
       }
     }

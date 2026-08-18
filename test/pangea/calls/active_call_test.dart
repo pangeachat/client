@@ -265,6 +265,27 @@ void main() {
       expect(call.stage, CallStage.ended);
     });
 
+    test('a failed retract stays retryable', () async {
+      // Memoizing a teardown that could not retract would make every later
+      // hangup return that same finished future, so the membership would stay
+      // advertised until it expired with nothing able to take it back.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+
+      calls.retractError = StateError('server refused');
+      await call.hangUp();
+      expect(trace.steps, contains('retract'));
+
+      calls.retractError = null;
+      trace.steps.clear();
+      await call.hangUp();
+      expect(
+        trace.steps,
+        contains('retract'),
+        reason: 'the second hangup actually tries again',
+      );
+    });
+
     test('a membership that will not retract still ends the call', () async {
       final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);
