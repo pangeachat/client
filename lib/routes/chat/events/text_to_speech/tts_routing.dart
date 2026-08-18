@@ -141,6 +141,17 @@ class TtsRouting {
     required bool hasVoice,
   }) => hasVoice;
 
+  /// Whether a device utterance that FAILED — never produced audio and was
+  /// not stopped by the app — may be rescued by backend TTS. The mirror of
+  /// [allowDeviceFallback]: the request must be one that may reach the backend
+  /// at all (`allowChoreoPlay`, false for setting-driven read-aloud, which
+  /// stays silent by design) and the backend is Pro-only. A cancel is never
+  /// rescued; the caller asked for silence.
+  static bool allowBackendRescue({
+    required bool allowChoreoPlay,
+    required bool isSubscribed,
+  }) => allowChoreoPlay && isSubscribed;
+
   static bool isGoodWebVoiceName(String name) {
     final lower = name.toLowerCase();
     if (webExcludedVoiceNames.any((n) => n.toLowerCase() == lower)) {
