@@ -2127,7 +2127,6 @@
     "usernameTakenPleaseChooseAnother": "Энэ хэрэглэгчийн нэр аль хэдийнэ бүртгэгдсэн байна. Өөр нэр сонгоно уу.",
     "allParticipants": "Бүх оролцогчид",
     "seeFullCoursePlan": "Хичээлийн бүрэн төлөвлөгөөг харах",
-    "upNext": "Дараагийнх",
     "catchUp": "Гүйцэх",
     "messageLanguageIs": "Энэ мессеж {language} хэл дээр байна.",
     "updateMessageLanguage": "Мессежийн хэлийг өөрчлөхийн тулд энд дарна уу.",

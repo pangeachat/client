@@ -9932,7 +9932,6 @@
     "usernameTakenPleaseChooseAnother": "사용자 이름이 이미 사용 중입니다. 다른 이름을 선택해 주세요.",
     "allParticipants": "모든 참여자",
     "seeFullCoursePlan": "전체 학습 계획 보기",
-    "upNext": "다음",
     "catchUp": "따라잡기",
     "messageLanguageIs": "이 메시지는 {language}로 설정되어 있습니다.",
     "updateMessageLanguage": "메시지 언어를 변경하려면 여기를 클릭하세요.",

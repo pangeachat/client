@@ -10371,7 +10371,6 @@
     "usernameTakenPleaseChooseAnother": "ชื่อผู้ใช้นี้ถูกใช้ไปแล้ว โปรดเลือกชื่ออื่น",
     "allParticipants": "ผู้เข้าร่วมทั้งหมด",
     "seeFullCoursePlan": "ดูแผนการเรียนฉบับเต็ม",
-    "upNext": "ถัดไป",
     "catchUp": "ติดตาม",
     "messageLanguageIs": "ข้อความนี้ตั้งค่าเป็น {language}",
     "updateMessageLanguage": "คลิกที่นี่เพื่อเปลี่ยนภาษาของข้อความ",

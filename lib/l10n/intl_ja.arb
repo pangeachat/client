@@ -10508,7 +10508,6 @@
     "usernameTakenPleaseChooseAnother": "そのユーザー名はすでに使用されています。別のユーザー名を選択してください。",
     "allParticipants": "すべての参加者",
     "seeFullCoursePlan": "コースプラン全体を見る",
-    "upNext": "次",
     "catchUp": "キャッチアップ",
     "messageLanguageIs": "このメッセージは{language}に設定されています。",
     "updateMessageLanguage": "メッセージの言語を変更するには、ここをクリックしてください。",

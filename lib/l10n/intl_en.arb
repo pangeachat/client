@@ -148,11 +148,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "upNext": "Up next",
-    "@upNext": {
-        "type": "String",
-        "placeholders": {}
-    },
     "commandHint_roomupgrade": "Upgrade this room to the given room version",
     "@commandHint_roomupgrade": {},
     "commandHint_googly": "Send some googly eyes",
@@ -4943,7 +4938,7 @@
     "inProgressLabel": "Previously completed",
     "availableLabel": "Create activity",
     "chatSearchPageLabel": "Chat search page",
-    "selectImageLabel": "Select image", 
+    "selectImageLabel": "Select image",
     "userSearchTagsLabel": "Search in...",
     "courseDetails": "Course details",
     "objective": "Objective",

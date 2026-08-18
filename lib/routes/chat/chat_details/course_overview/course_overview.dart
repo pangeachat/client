@@ -24,9 +24,10 @@ import 'package:fluffychat/widgets/expandable_text.dart';
 
 /// The single scrollable course page (#8357, replacing the tab row): Course
 /// plan / Chats / Participants / More as divider-separated sections, each with
-/// its highlight inline and a link to its full subpage. Attention rows (knocks,
-/// analytics-access requests) ride at the top and self-hide when empty. A
-/// section in the course token's param scrolls the page to that section.
+/// its highlight inline and a link to its full subpage. The Catch up card
+/// (knocks, analytics-access requests, unread rollups) rides at the top and
+/// self-hides when empty. A section in the course token's param scrolls the
+/// page to that section.
 class CourseOverview extends StatefulWidget {
   final SpaceDetailsController controller;
   final Room room;
