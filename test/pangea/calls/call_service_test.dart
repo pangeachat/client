@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter_test/flutter_test.dart';
 
@@ -96,29 +97,76 @@ void main() {
       },
     );
 
-    test('asks once, including when the answer is no', () async {
+    test(
+      'a homeserver that answers 404 is remembered as having none',
+      () async {
+        var requests = 0;
+        final client = await bareClient();
+        client.homeserver = Uri.parse('http://localhost:8008');
+        final service = CallService(
+          client,
+          focusDiscovery: RtcFocusDiscovery(
+            httpClient: MockClient((_) async {
+              requests++;
+              return http.Response('{"errcode":"M_NOT_FOUND"}', 404);
+            }),
+          ),
+        );
+
+        expect(await service.resolveFocus(), isNull);
+        expect(await service.resolveFocus(), isNull);
+        expect(requests, 1, reason: 'a deployment without MatrixRTC is a fact');
+      },
+    );
+
+    test('a lookup that fails is asked again rather than remembered', () async {
+      // One bad moment must not hide the call button for the rest of the
+      // session. Only a definitive answer is worth caching.
       var requests = 0;
       final client = await bareClient();
       client.homeserver = Uri.parse('http://localhost:8008');
-
       final service = CallService(
         client,
         focusDiscovery: RtcFocusDiscovery(
           httpClient: MockClient((_) async {
             requests++;
-            return http.Response('{"errcode":"M_NOT_FOUND"}', 404);
+            if (requests == 1) throw const SocketException('offline');
+            return http.Response(
+              jsonEncode({
+                'org.matrix.msc4143.rtc_foci': [
+                  {'type': 'livekit', 'livekit_service_url': 'http://sfu:7980'},
+                ],
+              }),
+              200,
+              headers: {'content-type': 'application/json'},
+            );
           }),
         ),
       );
-      expect(await service.resolveFocus(), isNull);
-      expect(await service.resolveFocus(), isNull);
-      expect(
-        requests,
-        1,
-        reason:
-            'a homeserver without MatrixRTC is a deployment fact, '
-            'not something to re-ask per room opened',
+
+      expect(await service.resolveFocus(), isNull, reason: 'the blip');
+      final focus = await service.resolveFocus();
+      expect(focus, isNotNull, reason: 'and it asked again');
+      expect(focus!.serviceUrl, 'http://sfu:7980');
+    });
+
+    test('a non-200 that is not 404 is treated as unknown', () async {
+      var requests = 0;
+      final client = await bareClient();
+      client.homeserver = Uri.parse('http://localhost:8008');
+      final service = CallService(
+        client,
+        focusDiscovery: RtcFocusDiscovery(
+          httpClient: MockClient((_) async {
+            requests++;
+            return http.Response('gateway timeout', 504);
+          }),
+        ),
       );
+
+      expect(await service.resolveFocus(), isNull);
+      expect(await service.resolveFocus(), isNull);
+      expect(requests, 2, reason: 'a 504 is not an answer about MatrixRTC');
     });
   });
 

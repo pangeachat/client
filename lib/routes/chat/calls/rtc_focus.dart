@@ -85,21 +85,29 @@ class RtcFocusDiscovery {
     : _http = httpClient ?? http.Client(),
       _ownsHttp = httpClient == null;
 
+  /// Throws when the answer is unknown; returns null only when the homeserver
+  /// definitively advertises no focus.
+  ///
+  /// The distinction is what stops one bad moment from hiding the call button
+  /// for the rest of the session: "this deployment has no MatrixRTC" is worth
+  /// remembering, "the network was down just then" is not.
   Future<RtcFocus?> discover(Uri homeserver) async {
-    try {
-      final response = await _http.get(
-        homeserver.replace(path: '/.well-known/matrix/client'),
-      );
-      if (response.statusCode != 200) return null;
-      final body = jsonDecode(response.body);
-      if (body is! Map<String, dynamic>) return null;
-      return RtcFocus.fromJson(body);
-    } catch (e) {
-      // A homeserver without MatrixRTC serves nothing here, and a malformed
-      // document is the same answer as none: calling is unavailable.
-      Logs().d('Could not read the RTC focus: $e');
+    final response = await _http.get(
+      homeserver.replace(path: '/.well-known/matrix/client'),
+    );
+    if (response.statusCode == 404) {
+      // The homeserver answered and serves no `.well-known`. That is a fact
+      // about the deployment, not a hiccup.
       return null;
     }
+    if (response.statusCode != 200) {
+      throw StateError('.well-known returned ${response.statusCode}');
+    }
+    final body = jsonDecode(response.body);
+    if (body is! Map<String, dynamic>) {
+      throw const FormatException('.well-known is not an object');
+    }
+    return RtcFocus.fromJson(body);
   }
 
   void close() {

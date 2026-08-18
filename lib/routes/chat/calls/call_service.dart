@@ -59,8 +59,17 @@ class CallService {
   /// would be a request per room opened.
   Future<RtcFocus?> resolveFocus() => _resolving ??= () async {
     final homeserver = client.homeserver;
-    _focus = homeserver == null ? null : await _discovery.discover(homeserver);
-    return _focus;
+    if (homeserver == null) return null;
+    try {
+      return _focus = await _discovery.discover(homeserver);
+    } catch (e) {
+      // Only a definitive answer is remembered. Caching a network blip would
+      // hide the call button for the rest of the session, so the next room
+      // opened asks again.
+      Logs().d('RTC focus lookup failed, will retry: $e');
+      _resolving = null;
+      return null;
+    }
   }();
 
   /// The focus, once [resolveFocus] has answered. Null before that, and null on a
@@ -164,6 +173,17 @@ class CallService {
     ];
   }
 
+  /// Whether anyone other than this account is still in the call.
+  ///
+  /// A direct-message call is over when the other person leaves; there is nobody
+  /// left to talk to, and staying would hold a microphone open for a
+  /// conversation that has ended.
+  bool get hasRemoteParticipants {
+    final session = _current;
+    if (session == null) return false;
+    return session.participants.any((p) => p.userId != client.userID);
+  }
+
   /// Fires when participants join or leave the current call.
   Stream<MatrixRTCCallEvent>? get callEvents =>
       _current?.matrixRTCEventStream.stream;
@@ -187,8 +207,13 @@ class CallService {
   Future<void> retract() => _retracting ??= () async {
     try {
       await _current?.leave();
-      _current = null;
+    } catch (e, s) {
+      // The membership expires on its own, and refusing every future call to
+      // preserve a retry nothing will invoke is the worse outcome — the learner
+      // would be locked out of calling by a failure they cannot see or act on.
+      Logs().w('Could not retract the call membership; it will expire', e, s);
     } finally {
+      _current = null;
       _retracting = null;
     }
   }();

@@ -111,6 +111,29 @@ class ActiveCall extends ChangeNotifier {
     }
   }
 
+  /// True once the peer has been seen in the call.
+  ///
+  /// Their absence only means the call is over if they were ever there — before
+  /// that it just means they have not answered yet.
+  bool _peerArrived = false;
+
+  void _onParticipantsChanged() {
+    if (_ending) return;
+
+    if (calls.hasRemoteParticipants) {
+      _peerArrived = true;
+    } else if (_peerArrived) {
+      // In a direct message there is nobody else to wait for. Staying would hold
+      // a microphone open for a conversation that has ended, and the learner
+      // would have to notice and hang up on silence.
+      Logs().i('The other participant left; ending the call');
+      unawaited(hangUp());
+      return;
+    }
+
+    _electRecorder();
+  }
+
   CallStage get stage => _stage;
   Object? get error => _error;
   bool get isRecording => _capturing;
@@ -156,7 +179,7 @@ class ActiveCall extends ChangeNotifier {
       // membership change between electing and subscribing would simply be
       // missed — and this device would keep recording alongside a sibling, or
       // stay silent as the only one left.
-      _participants = calls.callEvents?.listen((_) => _electRecorder());
+      _participants = calls.callEvents?.listen((_) => _onParticipantsChanged());
 
       // Then elect, before announcing, so recording begins with the first word
       // rather than after a round-trip. The election reads room state, which
@@ -166,6 +189,10 @@ class ActiveCall extends ChangeNotifier {
       // running when the peer learns this device is here. Handovers are queued,
       // so without this the initial start would land a microtask later.
       await _handover;
+
+      // Whether the peer is already here decides what their later absence
+      // means: gone, or simply not answered yet.
+      _peerArrived = calls.hasRemoteParticipants;
 
       await calls.announce();
       if (_ending) return _abandon();

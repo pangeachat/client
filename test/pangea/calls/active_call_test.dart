@@ -26,6 +26,10 @@ class FakeCalls extends CallService {
   final Trace trace;
   final _events = StreamController<MatrixRTCCallEvent>.broadcast();
   List<String> devicesInCall = const [];
+  bool remotePresent = false;
+
+  @override
+  bool get hasRemoteParticipants => remotePresent;
 
   @override
   List<String> get myDeviceIdsInCall => devicesInCall;
@@ -378,6 +382,49 @@ void main() {
       reason: 'a call the user abandoned must not finish assembling itself',
     );
     expect(trace.steps, contains('retract'));
+  });
+
+  group('when the other person leaves', () {
+    test('the call ends rather than holding a microphone open', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.stage, CallStage.connected);
+
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+
+      expect(call.stage, CallStage.ended);
+      expect(trace.steps, contains('retract'));
+    });
+
+    test('a peer who has not answered yet does not end it', () async {
+      // Their absence only means the call is over if they were ever there.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+      await call.start(roomStub(calls.client), video: false);
+
+      await calls.participantsBecome([calls.client.deviceID!]);
+
+      expect(call.stage, CallStage.connected, reason: 'still ringing out');
+    });
+
+    test('a peer arriving then leaving ends it', () async {
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      calls.remotePresent = false;
+      await call.start(roomStub(calls.client), video: false);
+
+      calls.remotePresent = true;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      expect(call.stage, CallStage.connected);
+
+      calls.remotePresent = false;
+      await calls.participantsBecome([calls.client.deviceID!]);
+      expect(call.stage, CallStage.ended);
+    });
   });
 
   group('which device records', () {
