@@ -1,9 +1,12 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:matrix/matrix.dart';
+import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/config/setting_keys.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
 class SessionBackup {
@@ -49,9 +52,27 @@ class SessionBackup {
 }
 
 extension InitWithRestoreExtension on Client {
+  // #Pangea
+  /// The keychain store for the session backup. Backups are written on every
+  /// client init, including iOS background launches (push, prewarming) while
+  /// the device is locked, where the plugin default accessibility
+  /// (`kSecAttrAccessibleWhenUnlocked`) makes the item unreachable and the
+  /// write fails with `errSecInteractionNotAllowed` (-25308, Sentry
+  /// CLIENT-4ZN). `first_unlock` keeps it reachable after the first unlock
+  /// since boot — the same level the database cipher uses. Both the write and
+  /// the delete go through this one instance: the plugin filters deletes by
+  /// accessibility, so a mismatched delete would leave the backup behind.
+  static const sessionBackupStorage = FlutterSecureStorage(
+    iOptions: IOSOptions(accessibility: KeychainAccessibility.first_unlock),
+  );
+  // Pangea#
+
   static Future<void> deleteSessionBackup(String clientName) async {
     final storage = PlatformInfos.isMobile || PlatformInfos.isLinux
-        ? const FlutterSecureStorage()
+        // #Pangea
+        // ? const FlutterSecureStorage()
+        ? sessionBackupStorage
+        // Pangea#
         : null;
     await storage?.delete(
       key: '${AppSettings.applicationName.value}_session_backup_$clientName',
@@ -62,7 +83,10 @@ extension InitWithRestoreExtension on Client {
     final storageKey =
         '${AppSettings.applicationName.value}_session_backup_$clientName';
     final storage = PlatformInfos.isMobile || PlatformInfos.isLinux
-        ? const FlutterSecureStorage()
+        // #Pangea
+        // ? const FlutterSecureStorage()
+        ? sessionBackupStorage
+        // Pangea#
         : null;
 
     try {
@@ -86,17 +110,37 @@ extension InitWithRestoreExtension on Client {
         assert(hasBackup);
         if (hasBackup) {
           Logs().v('Store session in backup');
-          storage?.write(
-            key: storageKey,
-            value: SessionBackup(
-              olmAccount: encryption?.pickledOlmAccount,
-              accessToken: accessToken,
-              deviceId: deviceId,
-              homeserver: homeserver,
-              deviceName: deviceName,
-              userId: userId,
-            ).toString(),
+          // #Pangea
+          // Deliberately not awaited (init latency), but no longer left to
+          // fail as an unhandled async error either: a backup write can still
+          // fail before the first unlock since boot, and that is a transient
+          // the next launch retries — a warning, not an error. Handled here
+          // rather than awaited inside this try so a write failure can never
+          // trip the restore path below.
+          unawaited(
+            storage
+                ?.write(
+                  key: storageKey,
+                  value: SessionBackup(
+                    olmAccount: encryption?.pickledOlmAccount,
+                    accessToken: accessToken,
+                    deviceId: deviceId,
+                    homeserver: homeserver,
+                    deviceName: deviceName,
+                    userId: userId,
+                  ).toString(),
+                )
+                .catchError(
+                  (Object e, StackTrace s) => ErrorHandler.logError(
+                    e: e,
+                    s: s,
+                    m: 'Failed to store session backup',
+                    data: {'client_name': clientName},
+                    level: SentryLevel.warning,
+                  ),
+                ),
           );
+          // Pangea#
         }
       }
     } catch (e, s) {
