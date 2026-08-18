@@ -52,6 +52,9 @@ class ActiveCall extends ChangeNotifier {
   StreamSubscription? _participants;
   Future<void> _handover = Future.value();
 
+  /// What the election last decided. Read by [_reconcile] when it runs.
+  bool _wanted = false;
+
   ActiveCall({required this.calls, required this.media, required this.capture});
 
   /// Starts or stops recording to match which device should be recording now.
@@ -73,23 +76,32 @@ class ActiveCall extends ChangeNotifier {
       siblingDeviceIds: calls.myDeviceIdsInCall.where((id) => id != me),
     ).shouldRecord;
 
-    if (elected == _capturing) return;
-    _capturing = elected;
+    _wanted = elected;
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
     // stop is still unwinding would let that stop cancel the new tap and close
     // its sink underneath it.
-    _handover = _handover.then((_) => _applyElection(elected, track));
+    _handover = _handover.then((_) => _reconcile(track));
   }
 
-  Future<void> _applyElection(bool record, AudioTrack track) async {
-    if (_ending && record) return;
+  /// Brings what is actually recording into line with what should be.
+  ///
+  /// Reads the wanted state when it RUNS rather than when it was queued, so a
+  /// device displaced and reinstated while a flush unwinds settles on the latest
+  /// answer instead of replaying a stale one. [_capturing] moves only once the
+  /// change has actually happened, so a tap that fails to open is retried by the
+  /// next election rather than remembered as open.
+  Future<void> _reconcile(AudioTrack track) async {
+    final wanted = _wanted && !_ending;
+    if (wanted == _capturing) return;
     try {
-      if (record) {
+      if (wanted) {
         capture.start(track);
+        _capturing = true;
         Logs().i('Recording this call on this device');
       } else {
         await capture.stop();
+        _capturing = false;
         Logs().i('Another device of this account is recording this call');
       }
     } catch (e, s) {
@@ -158,8 +170,12 @@ class ActiveCall extends ChangeNotifier {
       await calls.announce();
       if (_ending) return _abandon();
 
-      // State may have moved while announcing.
+      // State may have moved while announcing. Awaited too, so start() leaves
+      // nothing queued — a reconcile still pending when a hangup arrives would
+      // run inside teardown and stop the recording before the membership was
+      // retracted, delaying what the peer sees by the length of a flush.
       _electRecorder();
+      await _handover;
 
       _to(CallStage.connected);
     } catch (e, s) {
@@ -230,10 +246,18 @@ class ActiveCall extends ChangeNotifier {
       }
     }
 
+    // Drained unconditionally and AFTER retracting. A device displaced moments
+    // before the hangup has a stop still unwinding while [_capturing] is already
+    // false, so waiting only when it is true would let teardown finish — and the
+    // call be written — while that flush was still running.
+    _wanted = false;
+    try {
+      await _handover;
+    } catch (_) {}
+
     if (_capturing) {
       _capturing = false;
       try {
-        await _handover;
         await capture.stop();
       } catch (e, s) {
         Logs().e('Could not flush the call recording', e, s);

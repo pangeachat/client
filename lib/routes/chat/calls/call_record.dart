@@ -31,7 +31,7 @@ class CallRecord {
   final String roomId;
 
   bool _finished = false;
-  bool _finishing = false;
+  Future<void>? _inFlight;
 
   CallRecord({
     required this.sendEvent,
@@ -49,13 +49,17 @@ class CallRecord {
   /// Idempotent. Running twice would post a second timeline entry and credit the
   /// same words again, and a hangup racing a disconnect can reach here twice.
   Future<void> finish({required Duration duration, required bool video}) async {
-    if (_finished || _finishing) return;
-    _finishing = true;
-    try {
-      await _finish(duration: duration, video: video);
-    } finally {
-      _finishing = false;
-    }
+    if (_finished) return;
+    // Concurrent callers join the in-flight attempt rather than being dropped.
+    // Dropping one made a failed write unretryable in practice: the two callers
+    // are the same hangup, and the discarded one was the only other chance.
+    return _inFlight ??= () async {
+      try {
+        await _finish(duration: duration, video: video);
+      } finally {
+        _inFlight = null;
+      }
+    }();
   }
 
   Future<void> _finish({

@@ -477,6 +477,44 @@ void main() {
       expect(trace.steps, ['capture.stop', 'capture.start']);
     });
 
+    test('hanging up waits for a flush already in progress', () async {
+      // A device displaced moments before the hangup has a stop still unwinding
+      // while it no longer counts as capturing. Finishing teardown then would
+      // let the call be written before the last words were transcribed.
+      final (call, calls, _, capture) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+
+      capture.holdStop = Completer<void>();
+      await calls.participantsBecome(['AAAAAAAAAA', calls.client.deviceID!]);
+
+      var torn = false;
+      final hangingUp = call.hangUp().then((_) => torn = true);
+      await pumpEventQueue();
+      expect(torn, isFalse, reason: 'teardown is waiting on the flush');
+
+      capture.holdStop!.complete();
+      await hangingUp;
+      expect(torn, isTrue);
+    });
+
+    test('a start that threw is retried by the next election', () async {
+      // Recording state must follow what actually happened, not what was
+      // intended, or a failed tap is remembered as open and never reattempted.
+      final (call, calls, _, capture) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      capture.startError = StateError('no renderer');
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(call.isRecording, isFalse, reason: 'it did not actually start');
+
+      capture.startError = null;
+      trace.steps.clear();
+      await calls.participantsBecome([calls.client.deviceID!, 'zzzzzzzzzz']);
+      expect(trace.steps, contains('capture.start'));
+      expect(call.isRecording, isTrue);
+    });
+
     test('participant changes after hangup are ignored', () async {
       final (call, calls, _, _) = await build();
       calls.devicesInCall = [calls.client.deviceID!];

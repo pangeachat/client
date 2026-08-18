@@ -126,12 +126,23 @@ class _CallPageState extends State<CallPage> {
     super.dispose();
   }
 
-  /// Writes the call and its analytics. Idempotent, and deliberately not awaited
-  /// or tied to this widget — it outlives the screen, which is closing.
+  /// Ends the call, then writes it and its analytics.
+  ///
+  /// **In that order.** Hanging up is what flushes the last chunk of audio and
+  /// waits for it to be transcribed; writing the call first would anchor
+  /// whatever had arrived so far and mark it done, silently losing the end of
+  /// what the learner said.
+  ///
+  /// `hangUp` is idempotent and returns the same teardown either way, so calling
+  /// this from both the ended listener and disposal waits on one teardown and
+  /// writes once. Deliberately not awaited and not tied to this widget — it
+  /// outlives the screen, which is closing.
   void _finishRecording() => unawaited(
-    _record.finish(
-      duration: DateTime.now().difference(_startedAt),
-      video: widget.video,
+    _call.hangUp().then(
+      (_) => _record.finish(
+        duration: DateTime.now().difference(_startedAt),
+        video: widget.video,
+      ),
     ),
   );
 
