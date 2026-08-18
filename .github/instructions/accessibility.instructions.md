@@ -42,8 +42,7 @@ emoji bursts — stay at a fixed size, because they travel along trajectories me
 pixels and a scaled glyph drifts off its own path. Mark them `TextScaler.noScaling`
 explicitly and say why; an unmarked fixed size is indistinguishable from an oversight.
 
-**Fixed-size boxes around text must grow with it.** A glyph inside a hard-coded
-`SizedBox` is clipped at 2×. Scale the box from the same scaler, or let it size itself.
+**Fixed-size boxes around text must grow with the text inside them.** A glyph in a hard-coded `SizedBox` is clipped at 2×: let the box size itself, or scale it by the factor the device scaler applies at the font size of the text it holds (`TextScaler.factorAt`). Scaling it by its own dimension is wrong — `TextScaler.scale` takes a font size, and Android 14+ answers from a curve where small text grows more than large, so a 250px word card is answered as if it were 250pt type: it grows by the factor huge text gets rather than the factor its 16pt contents get, and still clips. Anything that takes a plain scale multiplier needs the same factor.
 
 ## Automated auditing proves only part
 
