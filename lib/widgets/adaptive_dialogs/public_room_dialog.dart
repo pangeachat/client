@@ -128,6 +128,7 @@ class PublicRoomDialog extends StatelessWidget {
                               });
                             },
                             child: RichText(
+                              textScaler: MediaQuery.textScalerOf(context),
                               text: TextSpan(
                                 children: [
                                   WidgetSpan(

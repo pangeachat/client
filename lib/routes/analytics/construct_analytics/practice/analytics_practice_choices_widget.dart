@@ -177,6 +177,7 @@ class _AudioCompletionWidget extends StatelessWidget {
             ),
             // Main example message
             RichText(
+              textScaler: MediaQuery.textScalerOf(context),
               text: TextSpan(
                 style: textStyle?.copyWith(
                   color: Theme.of(context).colorScheme.onPrimary,

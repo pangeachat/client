@@ -115,19 +115,25 @@ class SettingsNotificationsView extends StatelessWidget {
                                     // Pangea#
                                     const TextSpan(text: ' '),
                                     WidgetSpan(
-                                      child: InkWell(
-                                        onTap: () => controller.editPushRule(
-                                          rule,
-                                          category.kind,
-                                        ),
-                                        child: Text(
-                                          L10n.of(context).more,
-                                          style: TextStyle(
-                                            color: theme.colorScheme.primary,
-                                            decoration:
-                                                TextDecoration.underline,
-                                            decorationColor:
-                                                theme.colorScheme.primary,
+                                      // A WidgetSpan child is already scaled
+                                      // by the placeholder it sits in; scaling
+                                      // its text here too squares the device
+                                      // text size (#7719).
+                                      child: MediaQuery.withNoTextScaling(
+                                        child: InkWell(
+                                          onTap: () => controller.editPushRule(
+                                            rule,
+                                            category.kind,
+                                          ),
+                                          child: Text(
+                                            L10n.of(context).more,
+                                            style: TextStyle(
+                                              color: theme.colorScheme.primary,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              decorationColor:
+                                                  theme.colorScheme.primary,
+                                            ),
                                           ),
                                         ),
                                       ),

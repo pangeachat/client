@@ -435,6 +435,19 @@ class HtmlMessage extends StatelessWidget {
   }
 
   /// Transforms a Node to an InlineSpan.
+  ///
+  /// **Nothing under a `WidgetSpan` here may scale its own text.** The
+  /// paragraph these spans are rendered into carries the device text scaler,
+  /// and `RichText` scales every `WidgetSpan` child a second time on top of
+  /// that: it wraps each one in `_AutoScaleInlineWidget`, which lays the child
+  /// out unscaled and then paints it through a scale transform
+  /// (flutter#126962). A span child that reads the scaler itself therefore
+  /// renders at scale squared — at the browser's largest font size, message
+  /// text half again as large as the rest of the app (#7719).
+  ///
+  /// So each span child below is pinned to `TextScaler.noScaling` where it
+  /// takes a scaler, and wrapped in `MediaQuery.withNoTextScaling` where it
+  /// resolves one itself, leaving the placeholder as the single scaler.
   // #Pangea
   // InlineSpan _renderHtml(dom.Node node, BuildContext context, {int depth = 1}) {
   InlineSpan _renderHtml(
@@ -526,6 +539,9 @@ class HtmlMessage extends StatelessWidget {
           Theme.of(context).colorScheme.primary.withAlpha(200),
           existingStyle,
           fontSize,
+          // Sizes boxes that live inside the token's own WidgetSpan, which is
+          // unscaled — the placeholder scales the whole subtree.
+          TextScaler.noScaling,
         );
 
         final tokenTargetKey = !useTokenKeys
@@ -548,91 +564,93 @@ class HtmlMessage extends StatelessWidget {
               alignment: isPracticeMode
                   ? PlaceholderAlignment.bottom
                   : PlaceholderAlignment.middle,
-              child: Column(
-                children: [
-                  if (token != null &&
-                      overlayController != null &&
-                      !isPracticeMode)
-                    TokenEmojiButton(
-                      token: token,
-                      enabled: token.lemma.saveVocab,
-                      targetId: overlayController!.tokenEmojiPopupKey(token),
-                      selectModeNotifier: overlayController!.selectedMode,
-                      onTap: () =>
-                          overlayController!.onClickOverlayMessageToken(token),
-                      textColor: textColor,
-                    ),
-                  if (isPracticeMode &&
-                      token != null &&
-                      overlayController != null)
-                    TokenPracticeButton(
-                      token: token,
-                      controller: overlayController!.practiceController,
-                      textStyle: existingStyle,
-                      width: tokenWidth,
-                      textColor: textColor,
-                    ),
-                  CompositedTransformTarget(
-                    link: layerLinkAndKey?.link ?? LayerLink(),
-                    child: GestureDetector(
-                      behavior: HitTestBehavior.translucent,
-                      onTap: onClick != null && token != null
-                          ? () => onClick?.call(token)
-                          : null,
-                      // One MouseRegion per token: HoverBuilder carries the
-                      // cursor and the overlay target key, replacing the
-                      // second wrapper region (issue #8426).
-                      child: HoverBuilder(
-                        key: layerLinkAndKey?.key,
-                        cursor: SystemMouseCursors.click,
-                        builder: (context, hovered) {
-                          final underlineTextWidget = UnderlineText(
-                            text: node.text.trim(),
-                            style: existingStyle,
-                            linkStyle: linkStyle,
-                            textDirection: pangeaMessageEvent?.textDirection,
-                            underlineColor: TokenRenderingUtil.underlineColor(
-                              underlineColor,
-                              selected: selected,
-                              highlighted: highlighted,
-                              isNew: isNew,
-                              practiceMode: isPracticeMode,
-                              hovered: hovered,
-                            ),
-                          );
-                          return ShimmerBackground(
-                            enabled: showShimmer,
-                            borderRadius: BorderRadius.circular(4.0),
-                            child: TokenRenderingUtil.vocabHighlight(
-                              highlight: isVocabHighlight,
-                              child: underlineTextWidget,
-                            ),
-                          );
-                        },
+              child: MediaQuery.withNoTextScaling(
+                child: Column(
+                  children: [
+                    if (token != null &&
+                        overlayController != null &&
+                        !isPracticeMode)
+                      TokenEmojiButton(
+                        token: token,
+                        enabled: token.lemma.saveVocab,
+                        targetId: overlayController!.tokenEmojiPopupKey(token),
+                        selectModeNotifier: overlayController!.selectedMode,
+                        onTap: () => overlayController!
+                            .onClickOverlayMessageToken(token),
+                        textColor: textColor,
                       ),
-                    ),
-                  ),
-                  if (isPracticeMode &&
-                      token != null &&
-                      overlayController != null)
-                    ListenableBuilder(
-                      listenable: overlayController!.practiceController,
-                      builder: (context, _) => AnimatedSize(
-                        duration: const Duration(
-                          milliseconds: AppConfig.overlayAnimationDuration,
-                        ),
-                        curve: Curves.easeOut,
-                        child: SizedBox(
-                          height:
-                              practiceMode != MessagePracticeMode.noneSelected
-                              ? 4.0
-                              : 0.0,
-                          width: tokenWidth,
+                    if (isPracticeMode &&
+                        token != null &&
+                        overlayController != null)
+                      TokenPracticeButton(
+                        token: token,
+                        controller: overlayController!.practiceController,
+                        textStyle: existingStyle,
+                        width: tokenWidth,
+                        textColor: textColor,
+                      ),
+                    CompositedTransformTarget(
+                      link: layerLinkAndKey?.link ?? LayerLink(),
+                      child: GestureDetector(
+                        behavior: HitTestBehavior.translucent,
+                        onTap: onClick != null && token != null
+                            ? () => onClick?.call(token)
+                            : null,
+                        // One MouseRegion per token: HoverBuilder carries the
+                        // cursor and the overlay target key, replacing the
+                        // second wrapper region (issue #8426).
+                        child: HoverBuilder(
+                          key: layerLinkAndKey?.key,
+                          cursor: SystemMouseCursors.click,
+                          builder: (context, hovered) {
+                            final underlineTextWidget = UnderlineText(
+                              text: node.text.trim(),
+                              style: existingStyle,
+                              linkStyle: linkStyle,
+                              textDirection: pangeaMessageEvent?.textDirection,
+                              underlineColor: TokenRenderingUtil.underlineColor(
+                                underlineColor,
+                                selected: selected,
+                                highlighted: highlighted,
+                                isNew: isNew,
+                                practiceMode: isPracticeMode,
+                                hovered: hovered,
+                              ),
+                            );
+                            return ShimmerBackground(
+                              enabled: showShimmer,
+                              borderRadius: BorderRadius.circular(4.0),
+                              child: TokenRenderingUtil.vocabHighlight(
+                                highlight: isVocabHighlight,
+                                child: underlineTextWidget,
+                              ),
+                            );
+                          },
                         ),
                       ),
                     ),
-                ],
-                // ),
+                    if (isPracticeMode &&
+                        token != null &&
+                        overlayController != null)
+                      ListenableBuilder(
+                        listenable: overlayController!.practiceController,
+                        builder: (context, _) => AnimatedSize(
+                          duration: const Duration(
+                            milliseconds: AppConfig.overlayAnimationDuration,
+                          ),
+                          curve: Curves.easeOut,
+                          child: SizedBox(
+                            height:
+                                practiceMode != MessagePracticeMode.noneSelected
+                                ? 4.0
+                                : 0.0,
+                            width: tokenWidth,
+                          ),
+                        ),
+                      ),
+                  ],
+                  // ),
+                ),
               ),
             ),
             if (node.text.endsWith('\n')) const TextSpan(text: '\n'),
@@ -654,17 +672,19 @@ class HtmlMessage extends StatelessWidget {
               // #Pangea
               alignment: .middle,
               // Pangea#
-              child: MatrixPill(
-                key: Key('user_pill_$matrixId'),
-                name: user.localizedDisplayname(L10n.of(context)),
-                avatar: user.avatarUrl,
-                uri: href,
-                outerContext: context,
-                fontSize: fontSize,
-                color: linkStyle.color,
-                // #Pangea
-                userId: user.id,
-                // Pangea#
+              child: MediaQuery.withNoTextScaling(
+                child: MatrixPill(
+                  key: Key('user_pill_$matrixId'),
+                  name: user.localizedDisplayname(L10n.of(context)),
+                  avatar: user.avatarUrl,
+                  uri: href,
+                  outerContext: context,
+                  fontSize: fontSize,
+                  color: linkStyle.color,
+                  // #Pangea
+                  userId: user.id,
+                  // Pangea#
+                ),
               ),
             );
           }
@@ -676,17 +696,19 @@ class HtmlMessage extends StatelessWidget {
               // #Pangea
               alignment: .middle,
               // Pangea#
-              child: MatrixPill(
-                name:
-                    room?.getLocalizedDisplayname(
-                      MatrixLocals(L10n.of(context)),
-                    ) ??
-                    matrixId,
-                avatar: room?.avatar,
-                uri: href,
-                outerContext: context,
-                fontSize: fontSize,
-                color: linkStyle.color,
+              child: MediaQuery.withNoTextScaling(
+                child: MatrixPill(
+                  name:
+                      room?.getLocalizedDisplayname(
+                        MatrixLocals(L10n.of(context)),
+                      ) ??
+                      matrixId,
+                  avatar: room?.avatar,
+                  uri: href,
+                  outerContext: context,
+                  fontSize: fontSize,
+                  color: linkStyle.color,
+                ),
               ),
             );
           }
@@ -698,12 +720,7 @@ class HtmlMessage extends StatelessWidget {
               splashColor: Colors.transparent,
               onTap: () => UrlLauncher(context, href, node.text).launchUrl(),
               child: Text.rich(
-                // #Pangea
-                // Text.rich applies the device's textScaleFactor
-                // overriding this one since non-html messages don't
-                // abide by the device's textScaleFactor
                 textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: _renderWithLineBreaks(
                     node.nodes,
@@ -746,9 +763,7 @@ class HtmlMessage extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.only(left: fontSize),
             child: Text.rich(
-              // #Pangea
               textScaler: TextScaler.noScaling,
-              // Pangea#
               TextSpan(
                 children: [
                   if (!isCheckbox) ...[
@@ -827,9 +842,7 @@ class HtmlMessage extends StatelessWidget {
               border: Border(left: BorderSide(color: textColor, width: 5)),
             ),
             child: Text.rich(
-              // #Pangea
               textScaler: TextScaler.noScaling,
-              // Pangea#
               TextSpan(
                 children: _renderWithLineBreaks(
                   node.nodes,
@@ -879,6 +892,7 @@ class HtmlMessage extends StatelessWidget {
                   ? const EdgeInsets.symmetric(horizontal: 4.0)
                   : const EdgeInsets.symmetric(horizontal: 8.0, vertical: 4.0),
               child: Text.rich(
+                textScaler: TextScaler.noScaling,
                 TextSpan(children: [_renderCodeBlockNode(element)]),
                 selectionColor: hightlightTextColor.withAlpha(128),
               ),
@@ -921,9 +935,7 @@ class HtmlMessage extends StatelessWidget {
                 obscure = !obscure;
               }),
               child: Text.rich(
-                // #Pangea
                 textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: [
                     WidgetSpan(
@@ -982,9 +994,7 @@ class HtmlMessage extends StatelessWidget {
                 obscure = !obscure;
               }),
               child: Text.rich(
-                // #Pangea
                 textScaler: TextScaler.noScaling,
-                // Pangea#
                 TextSpan(
                   children: _renderWithLineBreaks(
                     node.nodes,
@@ -1039,44 +1049,47 @@ class HtmlMessage extends StatelessWidget {
           alignment: isPracticeMode
               ? PlaceholderAlignment.bottom
               : PlaceholderAlignment.middle,
-          child: Column(
-            children: [
-              if (node.localName == 'nontoken' && overlayController != null)
-                // Use TokenEmojiButton to ensure consistent vertical alignment for non-token elements (e.g., emojis) in practice mode.
-                TokenEmojiButton(
-                  selectModeNotifier: overlayController!.selectedMode,
-                  onTap: () {},
-                  enabled: false,
-                  textColor: textColor,
-                ),
-              RichText(
-                text: TextSpan(
-                  style: textStyle.merge(style),
-                  children: _renderWithLineBreaks(
-                    node.nodes,
-                    context,
-                    textStyle.merge(style ?? const TextStyle()),
-                    depth: depth,
+          child: MediaQuery.withNoTextScaling(
+            child: Column(
+              children: [
+                if (node.localName == 'nontoken' && overlayController != null)
+                  // Use TokenEmojiButton to ensure consistent vertical alignment for non-token elements (e.g., emojis) in practice mode.
+                  TokenEmojiButton(
+                    selectModeNotifier: overlayController!.selectedMode,
+                    onTap: () {},
+                    enabled: false,
+                    textColor: textColor,
                   ),
-                ),
-              ),
-              if (overlayController != null)
-                ListenableBuilder(
-                  listenable: overlayController!.practiceController,
-                  builder: (context, _) => AnimatedSize(
-                    duration: const Duration(
-                      milliseconds: AppConfig.overlayAnimationDuration,
-                    ),
-                    curve: Curves.easeOut,
-                    child: SizedBox(
-                      height: practiceMode != MessagePracticeMode.noneSelected
-                          ? 4.0
-                          : 0.0,
-                      width: 0,
+                RichText(
+                  textScaler: TextScaler.noScaling,
+                  text: TextSpan(
+                    style: textStyle.merge(style),
+                    children: _renderWithLineBreaks(
+                      node.nodes,
+                      context,
+                      textStyle.merge(style ?? const TextStyle()),
+                      depth: depth,
                     ),
                   ),
                 ),
-            ],
+                if (overlayController != null)
+                  ListenableBuilder(
+                    listenable: overlayController!.practiceController,
+                    builder: (context, _) => AnimatedSize(
+                      duration: const Duration(
+                        milliseconds: AppConfig.overlayAnimationDuration,
+                      ),
+                      curve: Curves.easeOut,
+                      child: SizedBox(
+                        height: practiceMode != MessagePracticeMode.noneSelected
+                            ? 4.0
+                            : 0.0,
+                        width: 0,
+                      ),
+                    ),
+                  ),
+              ],
+            ),
           ),
         );
       // return TextSpan(
@@ -1150,7 +1163,6 @@ class HtmlMessage extends StatelessWidget {
             }
           : null,
       child: Text.rich(
-        textScaler: TextScaler.noScaling,
         _renderHtml(
           parsed,
           context,
@@ -1226,7 +1238,7 @@ class MatrixPill extends StatelessWidget {
       // Pangea#
       // #Pangea
       child: RichText(
-        textScaler: TextScaler.noScaling,
+        textScaler: MediaQuery.textScalerOf(context),
         text: TextSpan(
           children: [
             WidgetSpan(

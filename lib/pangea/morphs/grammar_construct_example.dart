@@ -32,17 +32,25 @@ class GrammarConstructExample extends StatelessWidget {
         children.add(
           WidgetSpan(
             alignment: PlaceholderAlignment.middle,
-            child: UnderlineText(
-              text: text,
-              style: exampleStyle,
-              gap: 3,
-              underlineColor: exampleStyle.color,
+            // A WidgetSpan child is already scaled by the placeholder it
+            // sits in; scaling its text here too squares the device text
+            // size (#7719).
+            child: MediaQuery.withNoTextScaling(
+              child: UnderlineText(
+                text: text,
+                style: exampleStyle,
+                gap: 3,
+                underlineColor: exampleStyle.color,
+              ),
             ),
           ),
         );
       }
     }
 
-    return RichText(text: TextSpan(children: children));
+    return RichText(
+      textScaler: MediaQuery.textScalerOf(context),
+      text: TextSpan(children: children),
+    );
   }
 }

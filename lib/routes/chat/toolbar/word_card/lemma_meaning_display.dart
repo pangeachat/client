@@ -47,6 +47,7 @@ class LemmaMeaningDisplay extends StatelessWidget {
             final pos = tagCopy ?? L10n.of(context).other;
             final lemma = constructId.lemma;
             return RichText(
+              textScaler: MediaQuery.textScalerOf(context),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               textAlign: TextAlign.center,

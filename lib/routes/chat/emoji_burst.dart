@@ -41,6 +41,9 @@ class BurstPainter extends CustomPainter {
       canvas.scale(animatedScale);
       canvas.rotate(particle.rotation * progress * (pi / 180));
 
+      // Decoration, so the device text scaler deliberately does not reach it
+      // (issue #7719): the burst particles are placed and rotated in fixed
+      // pixels, and a scaled glyph drifts off its own path.
       final textPainter = TextPainter(
         text: TextSpan(
           text: particle.emoji,
@@ -50,6 +53,7 @@ class BurstPainter extends CustomPainter {
           ),
         ),
         textDirection: TextDirection.ltr,
+        textScaler: TextScaler.noScaling,
       );
 
       textPainter.layout();

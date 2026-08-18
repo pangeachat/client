@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_linkify/flutter_linkify.dart';
 
+import 'package:fluffychat/utils/text_scaler_extension.dart';
 import 'package:fluffychat/utils/url_launcher.dart';
 
 class ChatAppBarListTile extends StatelessWidget {
@@ -37,7 +38,11 @@ class ChatAppBarListTile extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Linkify(
                   text: title,
-                  textScaleFactor: MediaQuery.textScalerOf(context).scale(1),
+                  // Linkify defaults this multiplier to 1.0 (= no scaling) and must
+                  // be given one; see TextScalerFactorExtension.factorAt.
+                  textScaleFactor: MediaQuery.textScalerOf(
+                    context,
+                  ).factorAt(14),
                   options: const LinkifyOptions(humanize: false),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,

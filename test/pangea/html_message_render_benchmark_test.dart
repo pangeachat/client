@@ -119,21 +119,27 @@ void main() {
     await client.dispose();
   });
 
-  Widget host(_BenchmarkMessage message, PangeaMessageEvent event) =>
-      MaterialApp(
-        home: Scaffold(
-          body: HtmlMessage(
-            html: message.body,
-            room: room,
-            fontSize: 16,
-            linkStyle: const TextStyle(),
-            onOpen: (_) {},
-            event: event.event,
-            pangeaMessageEvent: event,
-            controller: _FakeToolbarHost(room),
-          ),
+  Widget host(
+    _BenchmarkMessage message,
+    PangeaMessageEvent event, {
+    TextScaler textScaler = TextScaler.noScaling,
+  }) => MaterialApp(
+    home: MediaQuery(
+      data: MediaQueryData(textScaler: textScaler),
+      child: Scaffold(
+        body: HtmlMessage(
+          html: message.body,
+          room: room,
+          fontSize: 16,
+          linkStyle: const TextStyle(),
+          onOpen: (_) {},
+          event: event.event,
+          pangeaMessageEvent: event,
+          controller: _FakeToolbarHost(room),
         ),
-      );
+      ),
+    ),
+  );
 
   PangeaMessageEvent messageEvent(_BenchmarkMessage message) =>
       PangeaMessageEvent(
@@ -178,6 +184,45 @@ void main() {
       ),
       findsNWidgets(60),
     );
+  });
+
+  testWidgets('token text grows by the device scaler, not by its square', (
+    tester,
+  ) async {
+    // Every token is a WidgetSpan, and RichText scales span children
+    // geometrically on top of whatever they do themselves (flutter#126962).
+    // A token that reads the scaler as well renders at scale *squared* —
+    // message bubbles growing half again as fast as the rest of the app at the
+    // browser's largest font size (#7719).
+    final message = _BenchmarkMessage.ofLength(3);
+    final event = messageEvent(message);
+
+    // On-screen size of the first token: its own box, times the scale of the
+    // placeholder transform it is painted through.
+    Future<Size> tokenSize(TextScaler textScaler) async {
+      await tester.pumpWidget(host(message, event, textScaler: textScaler));
+      final box = tester.renderObject<RenderBox>(
+        find
+            .descendant(
+              of: find.byType(UnderlineText).first,
+              matching: find.byType(RichText),
+            )
+            .first,
+      );
+      return box.size * box.getTransformTo(null).storage[0];
+    }
+
+    final normal = await tokenSize(TextScaler.noScaling);
+    final large = await tokenSize(const TextScaler.linear(2.0));
+
+    expect(
+      large.height / normal.height,
+      closeTo(2.0, 0.05),
+      reason:
+          'the bubble must track the device text size exactly once — a span '
+          'child must not scale text the placeholder already scales',
+    );
+    expect(large.width / normal.width, closeTo(2.0, 0.05));
   });
 
   testWidgets('rebuild benchmark: 60-word message, 40 timeline-style '

@@ -237,7 +237,9 @@ class _VocabChipsState extends State<_VocabChips> with CollectableTokensMixin {
           closePrevOverlay: false,
           addBorder: false,
           maxWidth: AppConfig.toolbarMinWidth,
-          maxHeight: AppConfig.toolbarMaxHeight,
+          // Same scaled height the card itself uses — a fixed 250 here would
+          // clip the card back to its unscaled size at large device text.
+          maxHeight: AppConfig.scaledToolbarMaxHeight(context),
         ),
       ),
     );
