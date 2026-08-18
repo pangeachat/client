@@ -89,6 +89,26 @@ void main() {
       );
     });
 
+    test(
+      'a response with an empty nested transcript is not a transcript',
+      () async {
+        // A 200 whose results carry no usable text is a real answer, and reading
+        // its transcript throws — so it must not be reported as transcript-bearing.
+        final s = sink(
+          respond: (_) => SpeechToTextResponseModel.fromJson({
+            'results': [
+              {'transcripts': []},
+            ],
+          }),
+        );
+        await s.deliver(chunk(0));
+
+        expect(s.hasTranscript, isFalse);
+        expect(s.langCode, isNull);
+        expect(s.constructs(roomId: '!r:server', eventId: '\$e'), isEmpty);
+      },
+    );
+
     test('reports whether anything was actually said', () async {
       final s = sink();
       expect(s.hasTranscript, isFalse);
@@ -107,13 +127,38 @@ void main() {
       expect(s.langCode, isNull);
     });
 
-    test('the batch is the same however often it is asked for', () async {
-      // It is the union of frozen results, so asking twice is not a recount.
+    test('the batch is literally the same list, not an equal one', () async {
+      // Comparing lengths is not enough: each use is stamped with the moment it
+      // was built, so a recomputed batch would differ from the one already
+      // recorded while still having the same size.
       final s = sink();
       await s.deliver(chunk(0));
       final first = s.constructs(roomId: '!r:server', eventId: '\$e');
       final second = s.constructs(roomId: '!r:server', eventId: '\$e');
-      expect(first.length, second.length);
+      expect(identical(first, second), isTrue);
+    });
+
+    test('the batch cannot be mutated by whoever receives it', () async {
+      final s = sink();
+      await s.deliver(chunk(0));
+      final uses = s.constructs(roomId: '!r:server', eventId: '\$e');
+      expect(() => uses.clear(), throwsUnsupportedError);
+    });
+
+    test('transcripts are ordered by when the audio was spoken', () async {
+      // Deliveries overlap by design, so a later chunk can come back from the
+      // provider first. Ordering by arrival would order the call by latency.
+      final s = sink();
+      await s.deliver(chunk(2));
+      await s.deliver(chunk(0));
+      await s.deliver(chunk(1));
+
+      expect(s.results, hasLength(3));
+      expect(
+        sent.map((r) => r.config.sampleRateHertz),
+        everyElement(16000),
+        reason: 'sanity: all three reached the route',
+      );
     });
 
     test('call speech is credited as pvc, which counts as speaking', () {
