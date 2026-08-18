@@ -1,0 +1,135 @@
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_response_model.dart';
+
+import 'call_transcript_sink_test.dart' show chunk, silent, spokenWord;
+
+void main() {
+  late List<Map<String, dynamic>> written;
+  late List<({String eventId, int uses, String lang})> recorded;
+
+  setUp(() {
+    written = [];
+    recorded = [];
+  });
+
+  Future<CallTranscriptSink> sinkWith(
+    SpeechToTextResponseModel Function() respond, {
+    int chunks = 1,
+  }) async {
+    final sink = CallTranscriptSink(
+      userL1: 'en',
+      userL2: 'es',
+      transcribe: (_) async => respond(),
+    );
+    for (var i = 0; i < chunks; i++) {
+      await sink.deliver(chunk(i));
+    }
+    return sink;
+  }
+
+  CallRecord record(
+    CallTranscriptSink transcripts, {
+    String? eventId = '\$call',
+    Object? writeError,
+    Object? analyticsError,
+  }) => CallRecord(
+    roomId: '!r:server',
+    transcripts: transcripts,
+    sendEvent: (content) async {
+      if (writeError != null) throw writeError;
+      written.add(content);
+      return eventId;
+    },
+    analytics: (id, uses, lang) async {
+      if (analyticsError != null) throw analyticsError;
+      recorded.add((eventId: id, uses: uses.length, lang: lang));
+    },
+  );
+
+  test('writes the call to the room and records what was said', () async {
+    final r = record(await sinkWith(() => spokenWord('hola')));
+    await r.finish(duration: const Duration(seconds: 92), video: false);
+
+    expect(written, hasLength(1));
+    expect(written.single['msgtype'], PangeaEventTypes.call);
+    expect(written.single['duration_ms'], 92000);
+    expect(written.single['video'], isFalse);
+
+    expect(recorded, hasLength(1));
+    expect(recorded.single.eventId, '\$call');
+    expect(recorded.single.lang, 'es');
+    expect(recorded.single.uses, greaterThan(0));
+  });
+
+  test('a silent call still appears in the timeline', () async {
+    // The call happened. A learner looking back should see it whether or not it
+    // earned them anything.
+    final r = record(await sinkWith(() => silent));
+    await r.finish(duration: const Duration(seconds: 30), video: true);
+
+    expect(written, hasLength(1));
+    expect(written.single['video'], isTrue);
+    expect(recorded, isEmpty);
+  });
+
+  test('finishing twice writes one entry and credits once', () async {
+    // A hangup racing a disconnect reaches here twice; the second must not post
+    // a second entry or credit the same words again.
+    final r = record(await sinkWith(() => spokenWord('hola')));
+    await r.finish(duration: const Duration(seconds: 10), video: false);
+    await r.finish(duration: const Duration(seconds: 10), video: false);
+
+    expect(written, hasLength(1));
+    expect(recorded, hasLength(1));
+  });
+
+  test('nothing is credited when the call could not be written', () async {
+    // An unanchored use cannot be traced back to the call that earned it.
+    final r = record(
+      await sinkWith(() => spokenWord('hola')),
+      writeError: StateError('room rejected the event'),
+    );
+    await r.finish(duration: const Duration(seconds: 10), video: false);
+
+    expect(written, isEmpty);
+    expect(recorded, isEmpty);
+  });
+
+  test('nothing is credited when the room returns no event id', () async {
+    final r = record(await sinkWith(() => spokenWord('hola')), eventId: null);
+    await r.finish(duration: const Duration(seconds: 10), video: false);
+    expect(recorded, isEmpty);
+  });
+
+  test('a failed analytics write does not throw out of the hangup', () async {
+    final r = record(
+      await sinkWith(() => spokenWord('hola')),
+      analyticsError: StateError('analytics unavailable'),
+    );
+    await expectLater(
+      r.finish(duration: const Duration(seconds: 10), video: false),
+      completes,
+    );
+    expect(written, hasLength(1), reason: 'the call is still in the timeline');
+  });
+
+  test('a longer call credits more than a shorter one', () async {
+    // Three chunks of the same word must credit three times what one does — the
+    // batch is the union of the chunks, not whichever chunk happened to be read.
+    final one = record(await sinkWith(() => spokenWord('hola')));
+    await one.finish(duration: const Duration(seconds: 30), video: false);
+    final single = recorded.single.uses;
+
+    recorded.clear();
+    written.clear();
+
+    final three = record(await sinkWith(() => spokenWord('hola'), chunks: 3));
+    await three.finish(duration: const Duration(seconds: 90), video: false);
+
+    expect(recorded.single.uses, single * 3);
+  });
+}

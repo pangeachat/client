@@ -10,6 +10,12 @@ class PangeaEventTypes {
   static const sttTranslation = "pangea.stt_translation";
   static const textToSpeech = "pangea.text_to_speech";
 
+  /// A call that happened in this room: when, how long, and whether it carried
+  /// video. Written once when the call ends, and it is what a call's speaking
+  /// analytics are anchored to — construct uses need an event id, and a call has
+  /// no other event to point at.
+  static const call = "pangea.call";
+
   static const botOptions = "pangea.bot_options";
   static const capacity = "pangea.capacity";
 

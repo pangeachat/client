@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
@@ -5,7 +7,12 @@ import 'package:matrix/matrix.dart' as matrix show Room;
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/active_call.dart';
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
+import 'package:fluffychat/routes/chat/calls/call_record.dart';
+import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -38,6 +45,8 @@ class CallPage extends StatefulWidget {
 class _CallPageState extends State<CallPage> {
   late final CallMedia _media;
   late final ActiveCall _call;
+  late final CallRecord _record;
+  late final DateTime _startedAt;
   bool _muted = false;
   late bool _camera;
 
@@ -45,13 +54,47 @@ class _CallPageState extends State<CallPage> {
   void initState() {
     super.initState();
     _camera = widget.video;
+    _startedAt = DateTime.now();
     _media = CallMedia();
+
+    // Everything the recording needs is captured HERE, while the screen is
+    // alive: the analytics service, the room, the learner's languages. The call
+    // ends when the user closes this screen, so anything read later would be
+    // read from a context that has already gone.
+    final matrix = Matrix.of(context);
+    final user = MatrixState.pangeaController.userController;
+    final transcripts = CallTranscriptSink(
+      // The repo answers with a Result; the sink's contract is a value or a
+      // throw, and it already treats a throw as "this chunk's words are lost".
+      transcribe: (request) async {
+        final result = await SpeechToTextRepo.instance.get(request);
+        final value = result.asValue;
+        if (value == null) {
+          throw result.asError?.error ?? StateError('speech-to-text failed');
+        }
+        return value.value;
+      },
+      userL1: user.userL1Code ?? LanguageKeys.unknownLanguage,
+      userL2: user.userL2Code ?? LanguageKeys.unknownLanguage,
+    );
+    final room = widget.room;
+    _record = CallRecord(
+      roomId: room.id,
+      transcripts: transcripts,
+      sendEvent: (content) =>
+          room.sendEvent(content, type: PangeaEventTypes.call),
+      analytics: (eventId, uses, language) => matrix
+          .analyticsDataService
+          .updateService
+          .addAnalytics(eventId, uses, language),
+    );
+
     _call = ActiveCall(
-      calls: Matrix.of(context).callService,
+      calls: matrix.callService,
       media: _media,
-      capture: CallCaptureService(sink: const DiscardingSink()),
+      capture: CallCaptureService(sink: transcripts),
     )..addListener(_onCallChanged);
-    _call.start(widget.room, video: widget.video);
+    _call.start(room, video: widget.video);
   }
 
   void _onCallChanged() {
@@ -61,6 +104,14 @@ class _CallPageState extends State<CallPage> {
     // than leaving a dead screen up means the user never has to dismiss a call
     // that is already over.
     if (_call.stage == CallStage.ended || _call.stage == CallStage.failed) {
+      // Deliberately not awaited and deliberately not tied to this widget: the
+      // recording outlives the screen, which is closing on the next line.
+      unawaited(
+        _record.finish(
+          duration: DateTime.now().difference(_startedAt),
+          video: widget.video,
+        ),
+      );
       Navigator.of(context).maybePop();
     }
   }
@@ -192,19 +243,4 @@ class _CallPageState extends State<CallPage> {
       ],
     ),
   );
-}
-
-/// Accepts chunks and drops them.
-///
-/// Capture runs from the first call so the recording path is exercised for real,
-/// but transcription is a separate change: sending audio to speech-to-text before
-/// the transcript has anywhere to land would spend money to produce nothing.
-class DiscardingSink implements CallAudioSink {
-  const DiscardingSink();
-
-  @override
-  Future<void> deliver(chunk) async {}
-
-  @override
-  Future<void> close() async {}
 }
