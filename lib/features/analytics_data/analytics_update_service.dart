@@ -188,12 +188,35 @@ class AnalyticsUpdateService with WidgetsBindingObserver {
     );
   }
 
+  /// Whether uses tagged [language] belong to the analytics context this
+  /// service is recording into — i.e. [language] is the current L2's short
+  /// code, the key of the local database partition that is uploaded to the
+  /// analytics room and rebuilt from on every reinitialize.
+  ///
+  /// The in-memory reads ([AnalyticsDataService.numConstructs],
+  /// `hasUsedConstruct`, the derived-XP cache, the public-profile level) are
+  /// not partitioned: a use recorded under any other key would inflate them
+  /// until the next reinitialize (a language change, a restart), then vanish
+  /// for good, its row never uploaded (#7720). Voice messages are the path
+  /// that can carry another code — STT labels an utterance in the learner's
+  /// L1 as such — so the gate lives here, on the one write entry every
+  /// feature uses, rather than at each caller.
+  bool recordsLanguage(String language) => language == _l2?.langCodeShort;
+
   Future<void> addAnalytics(
     String? targetID,
     List<OneConstructUse> newConstructs,
     String language, {
     bool forceUpdate = false,
   }) async {
+    if (!recordsLanguage(language)) {
+      Logs().i(
+        "Skipping ${newConstructs.length} construct uses tagged '$language': "
+        "the analytics context is '${_l2?.langCodeShort}'.",
+      );
+      return;
+    }
+
     await dataService.updateDispatcher.sendLocalAnalyticsUpdate(
       AnalyticsUpdate(newConstructs, targetID: targetID),
       language,

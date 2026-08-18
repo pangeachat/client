@@ -3370,6 +3370,10 @@ class ChatController extends State<ChatPageWithRoom>
     // never throw a late-context error (and never affects the recording).
     if (!mounted) return;
     final analyticsService = Matrix.of(context).analyticsDataService;
+    // The overlay announces what the record will bank; a message the service
+    // won't record (a voice message STT labelled as the learner's L1) has
+    // nothing to announce (#7720).
+    if (!analyticsService.updateService.recordsLanguage(language)) return;
     final counts = await guardedAnalyticsFeedbackCounts(
       isMounted: () => mounted,
       fetchGrammar: () => analyticsService.getNewConstructCount(
