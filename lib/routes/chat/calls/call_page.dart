@@ -47,6 +47,7 @@ class _CallPageState extends State<CallPage> {
   late final ActiveCall _call;
   late final CallRecord _record;
   late final DateTime _startedAt;
+  DateTime? _endedAt;
   bool _muted = false;
   late bool _camera;
 
@@ -137,14 +138,23 @@ class _CallPageState extends State<CallPage> {
   /// this from both the ended listener and disposal waits on one teardown and
   /// writes once. Deliberately not awaited and not tied to this widget — it
   /// outlives the screen, which is closing.
-  void _finishRecording() => unawaited(
-    _call.hangUp().then(
-      (_) => _record.finish(
-        duration: DateTime.now().difference(_startedAt),
-        video: widget.video,
+  void _finishRecording() {
+    // Stamped when the call ends, not when teardown finishes. Flushing the last
+    // chunk and transcribing it can take seconds, and none of that is time the
+    // learner spent talking.
+    _endedAt ??= DateTime.now();
+    unawaited(
+      // whenComplete, not then: a teardown that throws must not also cost the
+      // call its record. The write is what turns a conversation into analytics,
+      // and it is correct whether or not the unwind was clean.
+      _call.hangUp().whenComplete(
+        () => _record.finish(
+          duration: _endedAt!.difference(_startedAt),
+          video: widget.video,
+        ),
       ),
-    ),
-  );
+    );
+  }
 
   Future<void> _toggleMute() async {
     final next = !_muted;

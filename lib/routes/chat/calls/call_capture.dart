@@ -72,15 +72,25 @@ class CallCaptureService {
       throw StateError('A call recording is already running');
     }
     _stopping = false;
-    _chunker = _newChunker();
-    _cancelTap = track.addAudioRenderer(
-      onFrame: _onFrame,
-      options: const AudioRendererOptions(
-        sampleRate: captureSampleRate,
-        channels: captureChannels,
-        format: AudioFormat.Int16,
-      ),
-    );
+    final chunker = _newChunker();
+    try {
+      // Registered before anything is recorded as running. A tap that throws
+      // half-way would otherwise leave this looking started forever, and every
+      // later attempt would be refused by the guard above — costing the call its
+      // analytics for a failure that was transient.
+      _cancelTap = track.addAudioRenderer(
+        onFrame: _onFrame,
+        options: const AudioRendererOptions(
+          sampleRate: captureSampleRate,
+          channels: captureChannels,
+          format: AudioFormat.Int16,
+        ),
+      );
+    } catch (_) {
+      _cancelTap = null;
+      rethrow;
+    }
+    _chunker = chunker;
   }
 
   void _onFrame(AudioFrame frame) {

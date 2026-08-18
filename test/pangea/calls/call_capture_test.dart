@@ -33,6 +33,7 @@ class RecordingSink implements CallAudioSink {
 /// recorder touches, and the real one is a plain callback registration.
 class FakeTrack implements AudioTrack {
   AudioFrameCallback? onFrame;
+  bool failNextRenderer = false;
   AudioRendererOptions? options;
   int cancels = 0;
 
@@ -41,6 +42,10 @@ class FakeTrack implements AudioTrack {
     required AudioFrameCallback onFrame,
     AudioRendererOptions options = const AudioRendererOptions(),
   }) {
+    if (failNextRenderer) {
+      failNextRenderer = false;
+      throw StateError('no renderer available');
+    }
     this.onFrame = onFrame;
     this.options = options;
     return () async {
@@ -110,6 +115,20 @@ void main() {
         reason: '600ms exceeds the 400ms ceiling',
       );
       await s.stop();
+    });
+
+    test('a tap that throws leaves nothing started', () {
+      // Recording it as started would refuse every later attempt with "already
+      // running", costing the call its analytics for a failure that may have
+      // been momentary.
+      final failing = FakeTrack()..failNextRenderer = true;
+      final s = service();
+
+      expect(() => s.start(failing), throwsStateError);
+      expect(s.isRecording, isFalse);
+
+      s.start(track);
+      expect(s.isRecording, isTrue, reason: 'and a retry works');
     });
 
     test('a second start while recording is refused', () {

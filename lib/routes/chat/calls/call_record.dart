@@ -55,7 +55,15 @@ class CallRecord {
     // are the same hangup, and the discarded one was the only other chance.
     return _inFlight ??= () async {
       try {
-        await _finish(duration: duration, video: video);
+        // Both callers are the same hangup, and the screen is gone afterwards —
+        // there is no later attempt. A transient failure at hangup would
+        // otherwise cost the whole call's credit, so the retry lives here.
+        for (var attempt = 0; attempt < 3 && !_finished; attempt++) {
+          if (attempt > 0) {
+            await Future.delayed(Duration(seconds: attempt));
+          }
+          await _finish(duration: duration, video: video);
+        }
       } finally {
         _inFlight = null;
       }

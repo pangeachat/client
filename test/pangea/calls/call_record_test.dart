@@ -99,19 +99,18 @@ void main() {
     expect(recorded, isEmpty);
   });
 
-  test('a write that failed can still be retried', () async {
-    // A network blip at hangup must not cost the whole call's credit. The
-    // transcripts are frozen and still correct, so a later attempt is right.
+  test('a transient write failure is retried without another caller', () async {
+    // Both production callers are the same hangup and the screen is gone
+    // afterwards, so nothing calls back later. A blip at hangup would otherwise
+    // cost the whole call's credit.
     final transcripts = await sinkWith(() => spokenWord('hola'));
-    var failNext = true;
+    var attempts = 0;
     final r = CallRecord(
       roomId: '!r:server',
       transcripts: transcripts,
       sendEvent: (content) async {
-        if (failNext) {
-          failNext = false;
-          throw StateError('offline');
-        }
+        attempts++;
+        if (attempts == 1) throw StateError('offline');
         written.add(content);
         return '\$call';
       },
@@ -120,11 +119,30 @@ void main() {
     );
 
     await r.finish(duration: const Duration(seconds: 10), video: false);
-    expect(recorded, isEmpty);
+
+    expect(attempts, 2, reason: 'it tried again on its own');
+    expect(written, hasLength(1), reason: 'and wrote the call exactly once');
+    expect(recorded, hasLength(1));
+  });
+
+  test('a write that keeps failing gives up rather than looping', () async {
+    final transcripts = await sinkWith(() => spokenWord('hola'));
+    var attempts = 0;
+    final r = CallRecord(
+      roomId: '!r:server',
+      transcripts: transcripts,
+      sendEvent: (_) async {
+        attempts++;
+        throw StateError('still offline');
+      },
+      analytics: (id, uses, lang) async =>
+          recorded.add((eventId: id, uses: uses.length, lang: lang)),
+    );
 
     await r.finish(duration: const Duration(seconds: 10), video: false);
-    expect(written, hasLength(1), reason: 'the retry wrote the call');
-    expect(recorded, hasLength(1), reason: 'and credited it');
+
+    expect(attempts, lessThanOrEqualTo(3));
+    expect(recorded, isEmpty);
   });
 
   test('nothing is credited when the room returns no event id', () async {

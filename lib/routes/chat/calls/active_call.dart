@@ -232,7 +232,13 @@ class ActiveCall extends ChangeNotifier {
   /// membership standing.
   Future<void> _tearDown() async {
     _ending = true;
-    await _participants?.cancel();
+    try {
+      await _participants?.cancel();
+    } catch (e, s) {
+      // Every step of teardown is isolated. An error here once aborted the whole
+      // unwind, leaving the membership advertised and the call unrecorded.
+      Logs().w('Could not stop watching participants', e, s);
+    }
     _participants = null;
 
     if (_joined) {
