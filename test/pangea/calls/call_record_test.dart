@@ -145,6 +145,37 @@ void main() {
     expect(recorded, isEmpty);
   });
 
+  test('a failed credit is retried against the same call event', () async {
+    // The event write and the credit fail independently. Marking the whole
+    // record done when only the event landed would lose the learner's analytics
+    // permanently — and a retry must not post a second call to the timeline.
+    final transcripts = await sinkWith(() => spokenWord('hola'));
+    var creditAttempts = 0;
+    final r = CallRecord(
+      roomId: '!r:server',
+      transcripts: transcripts,
+      sendEvent: (content) async {
+        written.add(content);
+        return '\$call';
+      },
+      analytics: (id, uses, lang) async {
+        creditAttempts++;
+        if (creditAttempts == 1) throw StateError('analytics unavailable');
+        recorded.add((eventId: id, uses: uses.length, lang: lang));
+      },
+    );
+
+    await r.finish(duration: const Duration(seconds: 10), video: false);
+
+    expect(creditAttempts, 2, reason: 'the credit was retried');
+    expect(recorded, hasLength(1));
+    expect(
+      written,
+      hasLength(1),
+      reason: 'and the retry reused the call already in the timeline',
+    );
+  });
+
   test('nothing is credited when the room returns no event id', () async {
     final r = record(await sinkWith(() => spokenWord('hola')), eventId: null);
     await r.finish(duration: const Duration(seconds: 10), video: false);

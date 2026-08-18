@@ -30,7 +30,14 @@ class CallRecord {
   final CallTranscriptSink transcripts;
   final String roomId;
 
-  bool _finished = false;
+  /// The call's timeline event, once written. Kept so a retry credits against
+  /// the same event rather than posting a second call.
+  String? _eventId;
+
+  /// Whether the learner has actually been credited. Separate from the event
+  /// being written, because the two fail independently and only one of them
+  /// being done is not done.
+  bool _credited = false;
   Future<void>? _inFlight;
 
   CallRecord({
@@ -49,7 +56,7 @@ class CallRecord {
   /// Idempotent. Running twice would post a second timeline entry and credit the
   /// same words again, and a hangup racing a disconnect can reach here twice.
   Future<void> finish({required Duration duration, required bool video}) async {
-    if (_finished) return;
+    if (_credited) return;
     // Concurrent callers join the in-flight attempt rather than being dropped.
     // Dropping one made a failed write unretryable in practice: the two callers
     // are the same hangup, and the discarded one was the only other chance.
@@ -58,11 +65,25 @@ class CallRecord {
         // Both callers are the same hangup, and the screen is gone afterwards —
         // there is no later attempt. A transient failure at hangup would
         // otherwise cost the whole call's credit, so the retry lives here.
-        for (var attempt = 0; attempt < 3 && !_finished; attempt++) {
+        for (var attempt = 0; attempt < 3 && !_credited; attempt++) {
           if (attempt > 0) {
             await Future.delayed(Duration(seconds: attempt));
           }
-          await _finish(duration: duration, video: video);
+          try {
+            await _finish(duration: duration, video: video);
+          } catch (e, s) {
+            // Caught here rather than around each step, so a failure is visible
+            // to the loop and can be retried — and so nothing escapes into the
+            // hangup path, which does not await this.
+            Logs().w(
+              'Recording the call failed (attempt ${attempt + 1})',
+              e,
+              s,
+            );
+          }
+        }
+        if (!_credited) {
+          Logs().e('Gave up recording this call; its analytics are lost');
         }
       } finally {
         _inFlight = null;
@@ -74,7 +95,9 @@ class CallRecord {
     required Duration duration,
     required bool video,
   }) async {
-    final eventId = await _write(duration: duration, video: video);
+    // Written once. A retry after the analytics failed must credit against the
+    // call already in the timeline, not add another one.
+    final eventId = _eventId ??= await _write(duration: duration, video: video);
     if (eventId == null) {
       // Nothing to anchor the uses to, and an unanchored use cannot be traced
       // back to the call that earned it. Deliberately NOT marked finished: the
@@ -84,19 +107,26 @@ class CallRecord {
       Logs().w('Call analytics not recorded: the call event was not written');
       return;
     }
-    _finished = true;
 
     final language = transcripts.langCode;
-    if (language == null) return;
+    final uses = language == null
+        ? const <OneConstructUse>[]
+        : transcripts.constructs(roomId: roomId, eventId: eventId);
 
-    final uses = transcripts.constructs(roomId: roomId, eventId: eventId);
-    if (uses.isEmpty) return;
-
-    try {
-      await analytics(eventId, uses, language);
-    } catch (e, s) {
-      Logs().e('Could not record call analytics', e, s);
+    if (uses.isEmpty) {
+      // Nothing was said that speech-to-text could read. The call is in the
+      // timeline and there is genuinely nothing to credit, so this is done
+      // rather than pending.
+      _credited = true;
+      return;
     }
+
+    // Marked only on success. Recording the whole thing as done when the event
+    // was written but the credit was not would lose the learner's analytics
+    // permanently — and the ordinary lifecycle calls this twice, so the second
+    // call is the retry.
+    await analytics(eventId, uses, language!);
+    _credited = true;
   }
 
   Future<String?> _write({

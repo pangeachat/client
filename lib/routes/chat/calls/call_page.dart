@@ -129,15 +129,17 @@ class _CallPageState extends State<CallPage> {
 
   /// Ends the call, then writes it and its analytics.
   ///
-  /// **In that order.** Hanging up is what flushes the last chunk of audio and
-  /// waits for it to be transcribed; writing the call first would anchor
-  /// whatever had arrived so far and mark it done, silently losing the end of
-  /// what the learner said.
+  /// **Every** way of leaving goes through here — both hangup buttons, the ended
+  /// listener, and disposal. A path that only hung up would stamp the end time
+  /// late and might never write the call at all.
   ///
-  /// `hangUp` is idempotent and returns the same teardown either way, so calling
-  /// this from both the ended listener and disposal waits on one teardown and
-  /// writes once. Deliberately not awaited and not tied to this widget — it
-  /// outlives the screen, which is closing.
+  /// The order matters: hanging up is what flushes the last chunk of audio and
+  /// waits for it to be transcribed, so writing first would anchor whatever had
+  /// arrived and mark it done, losing the end of what the learner said.
+  ///
+  /// `hangUp` is idempotent and returns the same teardown to every caller, so
+  /// the several entry points wait on one teardown and write once. Deliberately
+  /// not awaited and not tied to this widget — it outlives the screen.
   void _finishRecording() {
     // Stamped when the call ends, not when teardown finishes. Flushing the last
     // chunk and transcribing it can take seconds, and none of that is time the
@@ -181,7 +183,7 @@ class _CallPageState extends State<CallPage> {
         leading: IconButton(
           icon: const Icon(Icons.close),
           tooltip: l10n.callHangUp,
-          onPressed: () => _call.hangUp(),
+          onPressed: _finishRecording,
         ),
       ),
       body: SafeArea(
@@ -263,7 +265,7 @@ class _CallPageState extends State<CallPage> {
             backgroundColor: Theme.of(context).colorScheme.error,
             foregroundColor: Theme.of(context).colorScheme.onError,
           ),
-          onPressed: () => _call.hangUp(),
+          onPressed: _finishRecording,
         ),
         IconButton.filledTonal(
           icon: Icon(_camera ? Icons.videocam : Icons.videocam_off),
