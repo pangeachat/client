@@ -581,14 +581,15 @@ class ActiveCall extends ChangeNotifier {
       await _handover;
     } catch (_) {}
 
-    if (_capturing) {
-      _capturing = false;
-      try {
-        await capture.stop();
-      } catch (e, s) {
-        Logs().e('Could not flush the call recording', e, s);
-      }
+    // finish, not stop: this is the call ending, not recording moving to
+    // another of the learner's devices. Called whether or not this device was
+    // the one recording, so the sink is told the audio is complete exactly once.
+    try {
+      await capture.finish();
+    } catch (e, s) {
+      Logs().e('Could not flush the call recording', e, s);
     }
+    _capturing = false;
 
     try {
       await media.dispose();

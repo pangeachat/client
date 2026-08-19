@@ -72,7 +72,12 @@ class PangeaCallCapturePlugin :
       "start" -> result.success(attach())
       "stop" -> {
         detach()
-        result.success(null)
+        // Answered behind the audio, not ahead of it. Detaching hands over the
+        // last of what was gathered by the same queue, so replying immediately
+        // would tell the caller recording had stopped while the end of the
+        // conversation was still on its way — and the caller stops listening on
+        // that reply.
+        handler.post { result.success(null) }
       }
       else -> result.notImplemented()
     }
@@ -120,23 +125,21 @@ class PangeaCallCapturePlugin :
    * the capture thread, which has ten milliseconds to return before the next
    * frame is due, and a channel send is not something to do while it is waiting.
    */
+  /**
+   * Hands a batch to Flutter.
+   *
+   * Always through the same queue, never straight out, so audio arrives in the
+   * order it was captured. Sending the last of it directly — because detaching
+   * happens on this very thread — would have put it ahead of batches already
+   * waiting, which is worse than the delay it avoided.
+   */
   private fun deliver(pcm: ByteArray, sampleRateHz: Int) {
-    // Sent straight out when we are already on the thread that sends: the last
-    // audio of a call is flushed while detaching, and queueing it there would
-    // let the reply to "stop" overtake it — the caller would then stop listening
-    // before the tail arrived and drop the end of the conversation.
-    if (Looper.myLooper() == Looper.getMainLooper()) {
-      send(pcm, sampleRateHz)
-      return
+    handler.post {
+      events?.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
+      // Returned only once it has actually gone. The channel copies the bytes as
+      // it sends them, so the buffer is free to be filled again from here.
+      frames.handedOn(pcm)
     }
-    handler.post { send(pcm, sampleRateHz) }
-  }
-
-  private fun send(pcm: ByteArray, sampleRateHz: Int) {
-    events?.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
-    // Returned only once it has actually gone. The channel copies the bytes as
-    // it sends them, so the buffer is free to be filled again from here.
-    frames.handedOn(pcm)
   }
 }
 
@@ -190,6 +193,10 @@ internal class PostEchoCancellationFrames(
   /// that returns them, which is not the one that fills them.
   @Volatile
   private var batchBytes: Int = 0
+
+  /// How many buffers exist for the rate in use, so the set grows to its limit
+  /// and no further.
+  private var created: Int = 0
   private var filled: Int = 0
   private var batchRateHz: Int = 0
   private var dropped: Long = 0
@@ -245,6 +252,11 @@ internal class PostEchoCancellationFrames(
   }
 
   private fun collect(numFrames: Int, numBands: Int, buffer: ByteBuffer) {
+    // numFrames is the WHOLE frame, not one band of it. It reads as though the
+    // bands should be multiplied back in, and they should not: the module works
+    // the band count out FROM this number — four hundred and eighty frames is
+    // three bands — so multiplying would read three times what is there. The
+    // buffer holds exactly this many samples.
     val count = minOf(numFrames, buffer.remaining() / 4)
     if (count <= 0) return
 
@@ -259,7 +271,7 @@ internal class PostEchoCancellationFrames(
       val size = bytesForBatch(rate)
       batchBytes = size
       spares.clear()
-      repeat(MAX_PENDING_BATCHES - 1) { spares.offer(ByteArray(size)) }
+      created = 1
       batch = ByteArray(size)
       filled = 0
     }
@@ -288,7 +300,14 @@ internal class PostEchoCancellationFrames(
     val out = if (full) batch else batch.copyOf(filled)
     filled = 0
     if (full) {
-      val spare = spares.poll()
+      var spare = spares.poll()
+      if (spare == null && created < MAX_PENDING_BATCHES) {
+        // Grown one at a time, as the need appears. Cutting the whole set at
+        // once put a burst of allocation on the module's thread at exactly the
+        // moment a call starts.
+        created++
+        spare = ByteArray(batchBytes)
+      }
       if (spare == null) {
         // Nothing free means everything handed over is still in flight. Keep
         // filling the buffer we have rather than queue without limit.

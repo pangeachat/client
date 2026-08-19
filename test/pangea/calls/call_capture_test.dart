@@ -212,7 +212,7 @@ void main() {
         final s = service();
         await s.start(track);
         track.emit(100);
-        await s.stop();
+        await s.finish();
 
         expect(track.cancels, 1);
         expect(sink.delivered, hasLength(1), reason: 'the tail was flushed');
@@ -221,12 +221,12 @@ void main() {
       },
     );
 
-    test('stopping twice does not double-flush or double-close', () async {
+    test('finishing twice does not double-flush or double-close', () async {
       final s = service();
       await s.start(track);
       track.emit(100);
       await s.stop();
-      await s.stop();
+      await s.finish();
       expect(sink.delivered, hasLength(1));
       expect(sink.closes, 1);
     });
@@ -287,7 +287,7 @@ void main() {
           track.emit(20);
         }
         await pumpEventQueue();
-        await s.stop();
+        await s.finish();
 
         expect(failing.closes, 1, reason: 'the call still ended cleanly');
         expect(
@@ -445,7 +445,7 @@ void main() {
         track.emit(20);
       }
 
-      await Future.wait([s.stop(), s.stop()]);
+      await Future.wait([s.finish(), s.finish()]);
 
       expect(sink.closes, 1);
     });

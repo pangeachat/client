@@ -450,6 +450,7 @@ void main() {
       expect(call.error, isStateError);
       expect(trace.steps, [
         'join',
+        'capture.stop',
         'media.dispose',
       ], reason: 'nothing was announced and no membership to retract');
     });
@@ -464,6 +465,7 @@ void main() {
         'join',
         'connect(video: false)',
         'retract',
+        'capture.stop',
         'media.dispose',
       ]);
     });

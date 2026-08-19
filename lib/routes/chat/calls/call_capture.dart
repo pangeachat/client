@@ -252,8 +252,23 @@ class CallCaptureService {
     }
 
     await Future.wait(List.of(_inFlight));
+  }
+
+  /// Ends the call's recording for good.
+  ///
+  /// Separate from [stop], which ends one stretch of it. Recording moves between
+  /// a learner's devices during a call and comes back, so a stretch ending is
+  /// not the audio ending — and telling the sink otherwise, while chunks
+  /// numbered on from there were still to come, was a promise this could not
+  /// keep.
+  Future<void> finish() async {
+    await stop();
+    if (_finished) return;
+    _finished = true;
     await sink.close();
   }
+
+  bool _finished = false;
 
   /// The frame's samples as 16-bit PCM. Lives with the tap that produces them.
   @visibleForTesting
