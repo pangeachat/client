@@ -97,9 +97,13 @@ class PostEchoCancellationTap implements CallAudioTap {
       return null;
     }
 
-    return () {
-      unawaited(subscription.cancel());
-      unawaited(capture.stop());
+    // Returned rather than fired and forgotten: the caller awaits this before it
+    // considers the recording stopped, and a detach that is still running is a
+    // tap still attached. Discarding these also turned any failure in them into
+    // an unhandled async error, which the caller's own guard could never see.
+    return () async {
+      await subscription.cancel();
+      await capture.stop();
     };
   }
 

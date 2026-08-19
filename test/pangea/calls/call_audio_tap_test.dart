@@ -28,7 +28,12 @@ class FakeCapture extends PangeaCallCapture {
   }
 
   @override
-  Future<void> stop() async => stops++;
+  Future<void> stop() async {
+    // Deferred on purpose. A stop that completes synchronously cannot tell a
+    // detach that was awaited from one that was merely started.
+    await Future<void>.delayed(Duration.zero);
+    stops++;
+  }
 
   bool get watching => _frames.hasListener;
 
@@ -96,8 +101,10 @@ void main() {
       final tap = PostEchoCancellationTap(capture: platform);
 
       final detach = await tap.open(_noTrack, (_, _) {});
+      // Awaited with nothing pumped afterwards: a detach that only schedules the
+      // work would leave the tap attached at the moment the caller believes the
+      // recording has stopped.
       await detach!.call();
-      await pumpEventQueue();
 
       expect(platform.stops, 1);
       expect(platform.watching, isFalse);

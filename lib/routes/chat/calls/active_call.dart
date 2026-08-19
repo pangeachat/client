@@ -106,17 +106,7 @@ class ActiveCall extends ChangeNotifier {
   /// device's learner said went uncredited.
   String? get membershipEventId => _membershipEventId;
 
-  /// [captureAllowed] defaults to whether this platform's tap is known to sit
-  /// after echo cancellation. Injectable so the refusal can be tested without a
-  /// device.
-  ActiveCall({
-    required this.calls,
-    required this.media,
-    required this.capture,
-    bool? captureAllowed,
-  }) : _captureAllowed = captureAllowed ?? captureIsAfterEchoCancellation;
-
-  final bool _captureAllowed;
+  ActiveCall({required this.calls, required this.media, required this.capture});
 
   /// Starts or stops recording to match which device should be recording now.
   ///
@@ -137,13 +127,6 @@ class ActiveCall extends ChangeNotifier {
     if (_ending) return;
     final track = _track;
     if (track == null) return;
-    // A platform whose tap sits before echo cancellation records the other
-    // person's voice too, and every word that bled through would be credited to
-    // the wrong learner. Better no analytics from that device than wrong ones.
-    if (!_captureAllowed) {
-      _wanted = false;
-      return;
-    }
 
     final me = calls.client.deviceID ?? '';
     final elected = CaptureElection(

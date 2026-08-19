@@ -4,6 +4,7 @@ import 'dart:typed_data';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:livekit_client/livekit_client.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 
@@ -99,8 +100,12 @@ void main() {
     track = FakeTrack();
   });
 
-  CallCaptureService service({RecordingSink? withSink}) => CallCaptureService(
+  CallCaptureService service({
+    RecordingSink? withSink,
+    CallAudioTap? withTap,
+  }) => CallCaptureService(
     sink: withSink ?? sink,
+    tap: withTap,
     newChunker: (firstIndex, sampleRate) => PcmChunker(
       sampleRate: sampleRate,
       channels: captureChannels,
@@ -375,4 +380,27 @@ void main() {
       );
     });
   });
+  group('a device with no tap', () {
+    test('records nothing and leaves the call alone', () async {
+      // Some devices have no point to read from that sits after echo
+      // cancellation. Recording nothing costs the analytics; recording from the
+      // wrong point would credit the other person's words to this learner.
+      final s = service(withTap: _NoTap());
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(s.isRecording, isFalse);
+      expect(sink.delivered, isEmpty);
+    });
+  });
+}
+
+/// A device that offers no point to read from after echo cancellation.
+class _NoTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+      null;
 }

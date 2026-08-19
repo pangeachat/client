@@ -2,6 +2,8 @@ package chat.pangea.call_capture
 
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import java.util.concurrent.atomic.AtomicInteger
 import com.cloudwebrtc.webrtc.FlutterWebRTCPlugin
 import com.cloudwebrtc.webrtc.audio.AudioProcessingAdapter
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -114,6 +116,9 @@ class PangeaCallCapturePlugin :
   private fun deliver(pcm: ByteArray, sampleRateHz: Int) {
     handler.post {
       events?.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
+      // Counted back only once it has actually gone, so what is outstanding is
+      // what is really outstanding and the bound above means something.
+      frames.handedOn()
     }
   }
 }
@@ -129,6 +134,31 @@ internal class PostEchoCancellationFrames(
   private val emit: (ByteArray, Int) -> Unit,
 ) : AudioProcessingAdapter.ExternalAudioFrameProcessing {
 
+  private companion object {
+    const val TAG = "PangeaCallCapture"
+
+    /**
+     * How much audio is gathered before it is handed on.
+     *
+     * The module calls every ten milliseconds. Sending each of those separately
+     * is a hundred hand-offs a second, and it is the hand-off — not the
+     * conversion — that is expensive. Gathering a tenth of a second first cuts
+     * that by ten and lets the conversion write into one buffer that is
+     * allocated once, so the module's own thread does no allocation at all in
+     * the ordinary case.
+     */
+    const val BATCH_MS = 100
+
+    /**
+     * The most audio that may be waiting to be handed on.
+     *
+     * If whatever consumes these stalls, the audio behind it must not grow
+     * without limit. Two seconds is far more than any healthy consumer needs and
+     * small enough that the memory behind it never matters.
+     */
+    const val MAX_PENDING_BATCHES = 20
+  }
+
   /**
    * The rate the module is running at. Not fixed for the life of a call: it is
    * chosen from the device and the negotiated codec, and changes when either
@@ -137,12 +167,31 @@ internal class PostEchoCancellationFrames(
   @Volatile
   private var sampleRateHz: Int = 0
 
+  private var batch: ByteArray = ByteArray(0)
+  private var filled: Int = 0
+  private var batchRateHz: Int = 0
+  private val pending = AtomicInteger(0)
+  private var dropped: Long = 0
+
   override fun initialize(sampleRateHz: Int, numChannels: Int) {
-    this.sampleRateHz = sampleRateHz
+    onRate(sampleRateHz)
   }
 
   override fun reset(newRate: Int) {
-    sampleRateHz = newRate
+    onRate(newRate)
+  }
+
+  /**
+   * Takes a new rate.
+   *
+   * Anything already gathered was captured at the old one, so it is handed on
+   * as it stands. Mixing two rates into one run of samples would stretch or
+   * compress what the learner said.
+   */
+  private fun onRate(rateHz: Int) {
+    if (rateHz <= 0 || rateHz == sampleRateHz) return
+    flush()
+    sampleRateHz = rateHz
   }
 
   override fun process(numBands: Int, numFrames: Int, buffer: ByteBuffer) {
@@ -153,19 +202,56 @@ internal class PostEchoCancellationFrames(
     val count = minOf(numFrames, samples.remaining())
     if (count <= 0) return
 
-    val pcm = ByteArray(count * 2)
-    var at = 0
-    for (i in 0 until count) {
-      val sample = samples.get(i).roundToInt().coerceIn(-32768, 32767)
-      pcm[at++] = (sample and 0xff).toByte()
-      pcm[at++] = ((sample shr 8) and 0xff).toByte()
+    // The band count recovers the rate if audio arrives before the module has
+    // announced one: it runs at sixteen kilohertz per band by construction.
+    val rate = if (sampleRateHz > 0) sampleRateHz else numBands * 16000
+    if (rate != batchRateHz) {
+      flush()
+      batchRateHz = rate
+      batch = ByteArray(bytesForBatch(rate))
+      filled = 0
     }
 
-    // Copied out before returning. The buffer is the module's working memory and
+    for (i in 0 until count) {
+      if (filled + 2 > batch.size) flush()
+      // The module's scale is already that of a signed 16-bit sample, so this
+      // rounds rather than rescales.
+      val sample = samples.get(i).roundToInt().coerceIn(-32768, 32767)
+      batch[filled++] = (sample and 0xff).toByte()
+      batch[filled++] = ((sample shr 8) and 0xff).toByte()
+    }
+
+    // Copied out before returning: the buffer is the module's working memory and
     // is refilled every frame, so nothing here may outlive this call.
-    // Falling back to the band count recovers the rate if a frame somehow
-    // arrives before the module has announced one: the module runs at sixteen
-    // kilohertz per band by construction.
-    emit(pcm, if (sampleRateHz > 0) sampleRateHz else numBands * 16000)
+    if (filled >= batch.size) flush()
+  }
+
+  /** Hands on whatever has been gathered. */
+  private fun flush() {
+    if (filled <= 0 || batchRateHz <= 0) return
+    if (pending.get() >= MAX_PENDING_BATCHES) {
+      // Dropped rather than queued. Audio that cannot be kept up with is a lost
+      // stretch of transcript; audio queued without limit is a lost call.
+      dropped++
+      if (dropped % 10 == 1L) {
+        Log.w(TAG, "Dropped a stretch of call audio; $dropped so far")
+      }
+      filled = 0
+      return
+    }
+    val out = batch.copyOf(filled)
+    filled = 0
+    pending.incrementAndGet()
+    emit(out, batchRateHz)
+  }
+
+  /** Called when a batch has been handed on, so the next one may be gathered. */
+  fun handedOn() {
+    pending.decrementAndGet()
+  }
+
+  private fun bytesForBatch(rateHz: Int): Int {
+    val frames = rateHz * BATCH_MS / 1000
+    return maxOf(frames, 1) * 2
   }
 }

@@ -307,7 +307,6 @@ void main() {
 
   Future<(ActiveCall, FakeCalls, FakeMedia, FakeCapture)> build({
     bool hasTrack = true,
-    bool captureAllowed = true,
   }) async {
     final calls = FakeCalls(await bareClient(), trace);
     final media = FakeMedia(trace, hasTrack: hasTrack);
@@ -319,12 +318,7 @@ void main() {
     media.fakeRoster = roster;
     calls.roster = roster;
     return (
-      ActiveCall(
-        calls: calls,
-        media: media,
-        capture: capture,
-        captureAllowed: captureAllowed,
-      ),
+      ActiveCall(calls: calls, media: media, capture: capture),
       calls,
       media,
       capture,
@@ -1172,29 +1166,31 @@ void main() {
       expect(call.peerAlsoPlaced, isTrue);
     });
   });
-  group('a platform whose tap is before echo cancellation', () {
-    test('records nothing rather than crediting the wrong learner', () async {
-      // The peer's voice comes back out of the loudspeaker and would be
-      // transcribed as this learner's own speech. No analytics is the correct
-      // outcome; wrong analytics is not.
-      final (call, calls, _, _) = await build(captureAllowed: false);
+  group('when both people call at the same moment', () {
+    test('a caller alone does not think the peer also called', () async {
+      final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);
-
-      expect(trace.steps, isNot(contains('capture.start')));
-      expect(call.isRecording, isFalse);
-      expect(
-        call.stage,
-        CallStage.connected,
-        reason: 'the call itself still works; only recording is refused',
-      );
+      expect(call.placedCall, isTrue);
+      expect(call.peerAlsoPlaced, isFalse);
     });
 
-    test('a sibling appearing does not change that', () async {
-      final (call, calls, _, _) = await build(captureAllowed: false);
-      await call.start(roomStub(calls.client), video: false);
-      await calls.participantsBecome(['AAAAAAAAAA', calls.client.deviceID!]);
+    test('the peer ringing us while we ring them is noticed', () async {
+      // Both then believe they placed the call, so both would write it to the
+      // room. Noticing it is what lets exactly one of them do so — and noticing
+      // it from their ring rather than from an ordering keeps a call nobody
+      // answered written, since only the caller runs that teardown.
+      final (call, calls, _, _) = await build();
+      final ringGate = Completer<void>();
+      calls.holdRing = ringGate;
 
-      expect(trace.steps, isNot(contains('capture.start')));
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      await calls.peerAlsoCalls();
+      ringGate.complete();
+      await starting;
+
+      expect(call.placedCall, isTrue);
+      expect(call.peerAlsoPlaced, isTrue);
     });
   });
 }
