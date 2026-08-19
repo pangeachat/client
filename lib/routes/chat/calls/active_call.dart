@@ -581,6 +581,11 @@ class ActiveCall extends ChangeNotifier {
         );
         // A decline can beat our own send home; replay one if it did.
         _catchUpOnDeclines();
+        // A hangup landing inside the send above moves the stage to ended
+        // before this line runs, and nothing changes state afterwards. The
+        // record does not depend on one: it waits on [settled], which is this
+        // whole sequence unwinding, so the id assigned above is always in hand
+        // by the time the call is written.
         // Not _step: the id above must be recorded even when we are giving up,
         // because their phone rang and that is what makes this a call worth
         // recording rather than nothing at all.

@@ -48,6 +48,15 @@ class CallNotification {
     required this.video,
   });
 
+  /// The event content, in the shape MSC4075 specifies.
+  ///
+  /// The call's own fields sit INSIDE `application`, which is an object rather
+  /// than a bare type string — the proposal's own example reads
+  /// `"application": {"type": "m.call", "notification_type": ..., "sender_ts":
+  /// ..., "lifetime": ..., "m.call.intent": ...}`, with only the text, the
+  /// mentions and the relation at the top level. An earlier revision put them
+  /// at the top level, and reading this against that revision has been reported
+  /// as a spec violation; it is not.
   Map<String, dynamic> toContent(DateTime now) => {
     'application': {
       'type': 'm.call',

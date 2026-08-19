@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:livekit_client/livekit_client.dart' as lk;
 import 'package:matrix/matrix.dart' as matrix show Room, User;
+import 'package:matrix/matrix.dart' show Logs;
 
 import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/l10n/l10n.dart';
@@ -214,57 +215,67 @@ class _CallPageState extends State<CallPage> {
       // whenComplete, not then: a teardown that throws must not also cost the
       // call its record. The write is what turns a conversation into analytics,
       // and it is correct whether or not the unwind was clean.
-      _call.hangUp().whenComplete(() async {
-        // Let a start still unwinding finish before deciding what to write.
-        // After the hangup, never before it: teardown must not wait on the
-        // network, but the record must know whether the ring went out.
-        try {
-          await _call.settled;
-        } catch (_) {}
-        // Written when the call either got established OR rang the other side.
-        // Reaching the SFU alone was too narrow: hanging up while still
-        // connecting skipped the record even though their phone had already
-        // rung, so a call someone saw and missed left no trace anywhere. A call
-        // that rang nobody and connected to nothing is still not written —
-        // nothing happened, and an entry would record a call that never began.
-        // Did this call ever exist for anyone: did it reach the SFU, did we
-        // ring somebody, or were we rung. The last of those is the answering
-        // side, which never rings and so never has a notification of its own —
-        // checking only the outbound one lost its speaking analytics whenever
-        // the caller left before the call finished coming up.
-        final mattered =
-            _reachedCall ||
-            _call.hadPeer ||
-            _call.placedCall ||
-            _call.notificationEventId != null ||
-            widget.notificationEventId != null;
-        if (!mattered) return;
-        return _record.finish(
-          // Time actually spent talking, not time the screen was open. Ringing
-          // and connecting are not conversation, and counting them made every
-          // call read as longer than it was.
-          duration: _call.talkDuration,
-          video: _usedVideo,
-          // Whether anyone was ever on the other end, read from the call
-          // itself. Latching this on observing the connected stage dropped a
-          // real case: a peer who was present and left while we were still
-          // announcing meant the stage never reached connected, and a call that
-          // genuinely had someone on it was recorded as missed.
-          answered: _call.hadPeer,
-          declined: _call.wasDeclined,
-          writeTimelineEvent: _writesTheCall,
-          callerId: _call.placedCall ? _myUserId : _peerUserId,
-          // The ring we answered, or failing that our own membership in the
-          // call. The two sides of a call do not have to anchor to the same
-          // event — they never have: whoever answers anchors to the ring, and
-          // whoever called anchors to the card. What an anchor has to be is a
-          // real event of this call that can be traced back to it, and a
-          // membership is exactly that. A device that joined a call already under way has neither a
-          // ring of its own nor one it answered, and with nothing to anchor to
-          // every word its learner spoke was dropped.
-          anchorEventId: widget.notificationEventId ?? _call.membershipEventId,
-        );
-      }),
+      _call
+          .hangUp()
+          .whenComplete(() async {
+            // Let a start still unwinding finish before deciding what to write.
+            // After the hangup, never before it: teardown must not wait on the
+            // network, but the record must know whether the ring went out.
+            try {
+              await _call.settled;
+            } catch (_) {}
+            // Written when the call either got established OR rang the other side.
+            // Reaching the SFU alone was too narrow: hanging up while still
+            // connecting skipped the record even though their phone had already
+            // rung, so a call someone saw and missed left no trace anywhere. A call
+            // that rang nobody and connected to nothing is still not written —
+            // nothing happened, and an entry would record a call that never began.
+            // Did this call ever exist for anyone: did it reach the SFU, did we
+            // ring somebody, or were we rung. The last of those is the answering
+            // side, which never rings and so never has a notification of its own —
+            // checking only the outbound one lost its speaking analytics whenever
+            // the caller left before the call finished coming up.
+            final mattered =
+                _reachedCall ||
+                _call.hadPeer ||
+                _call.placedCall ||
+                _call.notificationEventId != null ||
+                widget.notificationEventId != null;
+            if (!mattered) return;
+            return _record.finish(
+              // Time actually spent talking, not time the screen was open. Ringing
+              // and connecting are not conversation, and counting them made every
+              // call read as longer than it was.
+              duration: _call.talkDuration,
+              video: _usedVideo,
+              // Whether anyone was ever on the other end, read from the call
+              // itself. Latching this on observing the connected stage dropped a
+              // real case: a peer who was present and left while we were still
+              // announcing meant the stage never reached connected, and a call that
+              // genuinely had someone on it was recorded as missed.
+              answered: _call.hadPeer,
+              declined: _call.wasDeclined,
+              writeTimelineEvent: _writesTheCall,
+              callerId: _call.placedCall ? _myUserId : _peerUserId,
+              // The ring we answered, or failing that our own membership in the
+              // call. The two sides of a call do not have to anchor to the same
+              // event — they never have: whoever answers anchors to the ring, and
+              // whoever called anchors to the card. What an anchor has to be is a
+              // real event of this call that can be traced back to it, and a
+              // membership is exactly that. A device that joined a call already under way has neither a
+              // ring of its own nor one it answered, and with nothing to anchor to
+              // every word its learner spoke was dropped.
+              anchorEventId:
+                  widget.notificationEventId ?? _call.membershipEventId,
+            );
+          })
+          .catchError((Object e, StackTrace s) {
+            // Caught here, not swallowed by whenComplete: that hands the error
+            // straight on, and with nothing awaiting this it surfaced as an
+            // unhandled async error long after the screen was gone. The record has
+            // already been written by the time anything can throw.
+            Logs().w('The call did not unwind cleanly', e, s);
+          }),
     );
   }
 

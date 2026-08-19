@@ -119,10 +119,12 @@ void main() {
     RecordingSink? withSink,
     CallAudioTap? withTap,
     Duration? timeout,
+    Duration? detach,
   }) => CallCaptureService(
     sink: withSink ?? sink,
     tap: withTap,
     deliveryTimeout: timeout ?? const Duration(seconds: 30),
+    detachTimeout: detach ?? const Duration(seconds: 5),
     newChunker: (firstIndex, sampleRate) => PcmChunker(
       sampleRate: sampleRate,
       channels: captureChannels,
@@ -510,6 +512,28 @@ void main() {
     });
   });
 
+  group('a tap whose detach never comes back', () {
+    test('does not hold the hangup open for ever', () async {
+      final capture = service(
+        withTap: _SilentDetachTap(),
+        detach: const Duration(milliseconds: 50),
+      );
+      await capture.start(track);
+
+      // Teardown waits on this. Unbounded, the hangup never finished: the call
+      // was never written and every word of it went uncredited, to protect a
+      // tap that was lost either way.
+      await capture.stop().timeout(
+        const Duration(seconds: 2),
+        onTimeout: () => fail('stop must not wait on a tap that is gone'),
+      );
+
+      // Kept, like any tap that would not come off, so the next stop tries it
+      // again and no new recording starts over the top of it.
+      await expectLater(capture.start(track), throwsStateError);
+    });
+  });
+
   group('a tap that will not let go', () {
     test('is kept rather than dropped when it arrives too late', () async {
       final tap = _StubbornSlowTap();
@@ -564,6 +588,13 @@ class _TailOnDetachTap implements CallAudioTap {
 
 /// A tap that takes its time attaching, so a stop can land inside it.
 /// Attaches slowly, and will not let go the first time it is asked.
+/// A tap whose detach never comes back — a platform call that has gone away.
+class _SilentDetachTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+      () => Completer<void>().future;
+}
+
 class _StubbornSlowTap implements CallAudioTap {
   final _attached = Completer<void>();
   int detachAttempts = 0;

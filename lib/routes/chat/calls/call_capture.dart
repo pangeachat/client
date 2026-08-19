@@ -51,6 +51,13 @@ const _deliveryAttempts = 3;
 /// connection would hold the end of the call open indefinitely.
 const _deliveryTimeout = Duration(seconds: 30);
 
+/// How long a tap is given to come off before it is treated as stuck.
+///
+/// Detaching is a platform call and should take no time at all, but teardown
+/// waits on it — and a hangup that never finishes never writes the call, so the
+/// learner loses both the record and every word of the conversation.
+const _detachTimeout = Duration(seconds: 5);
+
 /// Records this device's own outbound call audio.
 ///
 /// It taps the track being published, not the microphone. A microphone also
@@ -64,6 +71,9 @@ class CallCaptureService {
   final CallAudioSink sink;
   final CallAudioTap tap;
   final Duration deliveryTimeout;
+
+  /// How long a tap is given to detach. Injected so a test need not wait it out.
+  final Duration detachTimeout;
   final PcmChunker Function(int firstIndex, int sampleRate) _newChunker;
 
   /// Chunk numbering continues across stop and start. Recording can be handed to
@@ -95,6 +105,7 @@ class CallCaptureService {
     required this.sink,
     CallAudioTap? tap,
     this.deliveryTimeout = _deliveryTimeout,
+    this.detachTimeout = _detachTimeout,
     PcmChunker Function(int firstIndex, int sampleRate)? newChunker,
   }) : tap =
            tap ??
@@ -174,7 +185,14 @@ class CallCaptureService {
   Future<void> _release(DetachTap? detach) async {
     if (detach == null) return;
     try {
-      await detach();
+      // Bounded, because teardown waits on this. A platform call that never
+      // came back left the hangup unfinished for good: the call was never
+      // written and every word of it went uncredited, to protect a tap that
+      // was already lost either way. A timeout lands in the same place as a
+      // refusal — kept, and tried again by the next stop.
+      // Through Future.value because a tap may detach synchronously — the
+      // renderer's cancel does — and a timeout needs something to wait on.
+      await Future.value(detach()).timeout(detachTimeout);
     } catch (e, s) {
       _unreleased.add(detach);
       Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
