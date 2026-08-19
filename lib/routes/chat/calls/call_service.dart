@@ -80,10 +80,12 @@ class CallService {
     CallTokenRepo? tokenRepo,
     RtcFocusDiscovery? focusDiscovery,
     Duration? joinWithin,
+    Duration? leaveWithin,
   }) : delegate = delegate ?? PangeaVoipDelegate(),
        _tokens = tokenRepo ?? CallTokenRepo(),
        _discovery = focusDiscovery ?? RtcFocusDiscovery(),
-       _joinWithin = joinWithin ?? const Duration(seconds: 30);
+       _joinWithin = joinWithin ?? const Duration(seconds: 30),
+       _leaveWithin = leaveWithin ?? const Duration(seconds: 3);
 
   /// The focus this homeserver advertises, or null if it advertises none.
   ///
@@ -184,6 +186,9 @@ class CallService {
       _joining = false;
     }
   }
+
+  /// How long one attempt to take the membership back may take.
+  final Duration _leaveWithin;
 
   /// How long the whole join may take before it is treated as failed. Injected
   /// so a test can prove the claim is released without waiting out the real one.
@@ -345,7 +350,26 @@ class CallService {
   /// [_joining] before the session exists, and a ring arriving in that window
   /// would show a prompt whose answer could only fail when the second join is
   /// refused.
-  bool get isBusy => _current != null || _joining;
+  bool get isBusy => busyFrom(
+    hasSession: _current != null,
+    abandoned: _abandonedMembership,
+    joining: _joining,
+  );
+
+  /// Whether this account is in a call, for the purpose of refusing new ones and
+  /// suppressing rings.
+  ///
+  /// A session whose membership could not be taken back does NOT count. It is
+  /// kept only so a later attempt has something to retry with — nothing is live,
+  /// and the membership expires by itself. Counted, it went on suppressing every
+  /// incoming ring, so the learner simply stopped receiving calls until they
+  /// happened to place one themselves.
+  @visibleForTesting
+  static bool busyFrom({
+    required bool hasSession,
+    required bool abandoned,
+    required bool joining,
+  }) => (hasSession && !abandoned) || joining;
 
   /// Fires when participants join or leave the current call.
   Stream<MatrixRTCCallEvent>? get callEvents =>
@@ -609,9 +633,19 @@ class CallService {
       for (var attempt = 0; attempt < 3; attempt++) {
         try {
           if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
-          await session.leave();
+          // Bounded. Everything after this frees the microphone and the camera,
+          // and a leave that never came back held them open for as long as it
+          // hung — in a call the learner had already left.
+          await session.leave().timeout(_leaveWithin);
           _abandonedMembership = false;
           return true;
+        } on TimeoutException catch (e, s) {
+          // Not retried. The retries above are for a write that FAILED, which
+          // the next one may well not; one that never answered will not answer
+          // any faster on a second ask, and asking again doubles the time the
+          // microphone stays open.
+          Logs().w('Retracting the call membership did not answer', e, s);
+          break;
         } catch (e, s) {
           Logs().w('Retracting the call membership failed', e, s);
         }

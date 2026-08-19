@@ -105,6 +105,10 @@ class ActiveCall extends ChangeNotifier {
   /// calling at the same moment as us. Counting one would make this side stand
   /// aside from writing the call to the room while the other side, not being in
   /// a call at all, never writes it either — so the call would vanish.
+  /// When this call began. A ring older than this cannot be somebody calling
+  /// at the same moment as us, however recently it was sent.
+  DateTime? _startedAt;
+
   void _onPeerRing(Event event) {
     // Only while we are both still calling. Somebody who is in the call is not
     // ringing us, so a ring arriving after they arrived belongs to some other
@@ -119,6 +123,14 @@ class ActiveCall extends ChangeNotifier {
       alreadyJoined: false,
     );
     if (!ring.shouldRing(DateTime.now())) return;
+    // And only if it was sent after we began. A ring stays valid for up to a
+    // minute and a half, so one from a call of theirs that already ended — they
+    // rang, nobody answered, they hung up — is still unexpired when we call
+    // them back moments later. Counted, it makes this side stand aside from
+    // writing a call the other side is not writing either, and the call is
+    // missing from the conversation.
+    final began = _startedAt;
+    if (began != null && ring.sentAt.isBefore(began)) return;
     _peerAlsoPlaced = true;
   }
 
@@ -369,11 +381,41 @@ class ActiveCall extends ChangeNotifier {
     if (ours != null && _declinedBefore.remove(ours)) _onDeclined();
   }
 
+  /// How long a decline waits to see whether somebody answers anyway.
+  ///
+  /// A phone and a laptop both ring. Turning the call down on one while
+  /// answering on the other sends a decline that can reach the caller before
+  /// the answer does — the decline is a timeline event, the answer is a join
+  /// the SFU has to report — and acting on it immediately hung up a call that
+  /// had just been answered, and recorded it as turned down.
+  static const _declineLosesTo = Duration(milliseconds: 1500);
+
+  Timer? _decliding;
+
   void _onDeclined() {
-    if (_ending || _peerArrived) return;
+    if (_ending || _peerArrived || _decliding != null) return;
     Logs().i('The call was declined');
+    _decliding = Timer(_declineLosesTo, () {
+      _decliding = null;
+      // Re-read, not remembered. Somebody arriving in this window means the
+      // call was answered on another of their devices, and an answered call is
+      // not a declined one.
+      if (_ending || _peerArrived) return;
+      _declinedByPeer = true;
+      unawaited(hangUp());
+    });
+  }
+
+  /// Acts on a pending decline now instead of after the wait.
+  @visibleForTesting
+  Future<void> declineTimeoutForTest() async {
+    final pending = _decliding;
+    if (pending == null || !pending.isActive) return;
+    pending.cancel();
+    _decliding = null;
+    if (_ending || _peerArrived) return;
     _declinedByPeer = true;
-    unawaited(hangUp());
+    await hangUp();
   }
 
   bool _declinedByPeer = false;
@@ -488,6 +530,7 @@ class ActiveCall extends ChangeNotifier {
     required bool answering,
   }) async {
     _room = room;
+    _startedAt = DateTime.now();
     // Subscribed before anything else. Two people calling at the same moment is
     // decided by seeing their ring, and the window this has to cover starts when
     // ours does — not when our media happens to be ready.
@@ -734,6 +777,8 @@ class ActiveCall extends ChangeNotifier {
     _peerRings = null;
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
+    _decliding?.cancel();
+    _decliding = null;
     try {
       // Detached synchronously so nothing else arrives, but disposed only once
       // the current notification has unwound. Teardown is routinely triggered BY

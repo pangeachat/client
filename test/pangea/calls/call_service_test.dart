@@ -246,6 +246,43 @@ void main() {
     });
   });
 
+  group('a membership that could not be taken back', () {
+    test('does not go on suppressing calls to this account', () {
+      // Retracting is given up on when the server will not take it: the
+      // membership expires by itself in minutes. Until then the session is kept
+      // so a later attempt has something to retry WITH — and that kept session
+      // went on reading as a call in progress, so every incoming ring was
+      // suppressed and the learner simply stopped receiving calls.
+      expect(
+        CallService.busyFrom(hasSession: true, abandoned: true, joining: false),
+        isFalse,
+        reason: 'nothing is live: nothing was able to hold that membership',
+      );
+      expect(
+        CallService.busyFrom(
+          hasSession: true,
+          abandoned: false,
+          joining: false,
+        ),
+        isTrue,
+        reason: 'a call that is genuinely up',
+      );
+      expect(
+        CallService.busyFrom(hasSession: false, abandoned: true, joining: true),
+        isTrue,
+        reason: 'a join in flight claims the account before the session exists',
+      );
+      expect(
+        CallService.busyFrom(
+          hasSession: false,
+          abandoned: false,
+          joining: false,
+        ),
+        isFalse,
+      );
+    });
+  });
+
   group('a join that was given up on', () {
     // The session is fetched by ROOM, so the attempt that was abandoned and the
     // one that is live can be holding the very same object. Handing it back

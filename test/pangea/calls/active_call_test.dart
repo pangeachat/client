@@ -1044,10 +1044,34 @@ void main() {
       expect(call.stage, CallStage.connected);
 
       await calls.peerDeclines();
+      // A decline waits a moment to see whether somebody answers on another of
+      // their devices. Nobody does here, so it stands.
+      await call.declineTimeoutForTest();
 
       expect(call.stage, CallStage.declined);
       expect(call.wasDeclined, isTrue);
       expect(trace.steps, contains('retract'));
+    });
+
+    test('loses to somebody answering on their other device', () async {
+      // A phone and a laptop both ring. Turning it down on one while answering
+      // on the other sends a decline that can reach us before the answer does —
+      // the decline is a timeline event, the answer is a join the SFU has to
+      // report. Acted on at once, it hung up a call that had just been
+      // answered and wrote it down as turned down.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+
+      await calls.peerDeclines();
+      // They answer inside the window the decline is waiting out.
+      calls.remotePresent = true;
+      await pumpEventQueue();
+      await call.declineTimeoutForTest();
+
+      expect(call.wasDeclined, isFalse);
+      expect(call.stage, isNot(CallStage.declined));
+      expect(call.hadPeer, isTrue);
     });
 
     test('a decline after they answered is ignored', () async {
@@ -1385,6 +1409,7 @@ void main() {
       held.complete();
       await starting;
       await call.settled;
+      await call.declineTimeoutForTest();
 
       expect(call.wasDeclined, isTrue);
       expect(call.stage, CallStage.declined);
@@ -1539,6 +1564,19 @@ void main() {
       expect(call.hadPeer, isTrue);
 
       await calls.peerAlsoCalls();
+      expect(call.peerAlsoPlaced, isFalse);
+    });
+
+    test('a ring from a call of theirs that ended is not glare', () async {
+      // A ring stays valid for up to a minute and a half. One from a call that
+      // already ended — they rang, nobody answered, they hung up — is still
+      // unexpired when we call them back moments later. Counted, this side
+      // stands aside from writing a call the other side is not writing either,
+      // and it is missing from the conversation.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      // Sent twenty seconds ago and still well inside its lifetime.
+      await calls.peerAlsoCalls(age: const Duration(seconds: 20));
       expect(call.peerAlsoPlaced, isFalse);
     });
 
