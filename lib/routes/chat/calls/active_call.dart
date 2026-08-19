@@ -176,7 +176,10 @@ class ActiveCall extends ChangeNotifier {
     if (wanted == _capturing) return;
     try {
       if (wanted) {
-        capture.start(track);
+        // Awaited: attaching a tap is a platform call that can fail, and
+        // recording this as capturing before it succeeded would leave the
+        // election believing a device is recording when it is not.
+        await capture.start(track);
         _capturing = true;
         Logs().i('Recording this call on this device');
       } else {

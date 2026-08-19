@@ -101,8 +101,8 @@ void main() {
 
   CallCaptureService service({RecordingSink? withSink}) => CallCaptureService(
     sink: withSink ?? sink,
-    newChunker: (firstIndex) => PcmChunker(
-      sampleRate: captureSampleRate,
+    newChunker: (firstIndex, sampleRate) => PcmChunker(
+      sampleRate: sampleRate,
       channels: captureChannels,
       targetDuration: const Duration(milliseconds: 200),
       maxDuration: const Duration(milliseconds: 400),
@@ -112,15 +112,19 @@ void main() {
   );
 
   group('CallCaptureService', () {
-    test('requests the capture format rather than accepting the default', () {
-      service().start(track);
-      expect(track.options!.sampleRate, captureSampleRate);
-      expect(track.options!.channels, captureChannels);
-      expect(track.options!.format, AudioFormat.Int16);
-    });
+    test(
+      'requests the capture format rather than accepting the default',
+      () async {
+        await service().start(track);
+        expect(track.options!.sampleRate, captureSampleRate);
+        expect(track.options!.channels, captureChannels);
+        expect(track.options!.format, AudioFormat.Int16);
+      },
+    );
 
     test('delivers chunks as the call runs, not only at the end', () async {
-      final s = service()..start(track);
+      final s = service();
+      await s.start(track);
       for (var i = 0; i < 30; i++) {
         track.emit(20);
       }
@@ -133,17 +137,17 @@ void main() {
       await s.stop();
     });
 
-    test('a tap that throws leaves nothing started', () {
+    test('a tap that throws leaves nothing started', () async {
       // Recording it as started would refuse every later attempt with "already
       // running", costing the call its analytics for a failure that may have
       // been momentary.
       final failing = FakeTrack()..failNextRenderer = true;
       final s = service();
 
-      expect(() => s.start(failing), throwsStateError);
+      await expectLater(s.start(failing), throwsStateError);
       expect(s.isRecording, isFalse);
 
-      s.start(track);
+      await s.start(track);
       expect(s.isRecording, isTrue, reason: 'and a retry works');
     });
 
@@ -152,7 +156,7 @@ void main() {
       // back within one call. A second stretch numbered from zero would look
       // like a redelivery of the first and be discarded as already transcribed.
       final s = service();
-      s.start(track);
+      await s.start(track);
       for (var i = 0; i < 60; i++) {
         track.emit(20);
       }
@@ -160,7 +164,7 @@ void main() {
       final firstRun = sink.delivered.map((c) => c.index).toList();
       expect(firstRun, isNotEmpty);
 
-      s.start(track);
+      await s.start(track);
       for (var i = 0; i < 60; i++) {
         track.emit(20);
       }
@@ -180,26 +184,28 @@ void main() {
       // chunker and count the learner's own voice twice. Losing a stretch of
       // analytics is recoverable; counting it twice is not.
       final s = service();
-      s.start(track);
+      await s.start(track);
       track.failCancel = true;
       await s.stop();
 
       expect(
-        () => s.start(track),
+        s.start(track),
         throwsStateError,
         reason: 'refused rather than doubled',
       );
     });
 
-    test('a second start while recording is refused', () {
-      final s = service()..start(track);
-      expect(() => s.start(track), throwsStateError);
+    test('a second start while recording is refused', () async {
+      final s = service();
+      await s.start(track);
+      await expectLater(s.start(track), throwsStateError);
     });
 
     test(
       'stop cancels the tap, flushes the tail, and closes the sink',
       () async {
-        final s = service()..start(track);
+        final s = service();
+        await s.start(track);
         track.emit(100);
         await s.stop();
 
@@ -211,7 +217,8 @@ void main() {
     );
 
     test('stopping twice does not double-flush or double-close', () async {
-      final s = service()..start(track);
+      final s = service();
+      await s.start(track);
       track.emit(100);
       await s.stop();
       await s.stop();
@@ -225,7 +232,8 @@ void main() {
     });
 
     test('frames arriving after stop are ignored', () async {
-      final s = service()..start(track);
+      final s = service();
+      await s.start(track);
       final captured = track.onFrame;
       await s.stop();
       final before = sink.delivered.length;
@@ -244,7 +252,8 @@ void main() {
     });
 
     test('stop waits for chunks already handed to the sink', () async {
-      final s = service()..start(track);
+      final s = service();
+      await s.start(track);
       sink.block = Completer<void>();
       for (var i = 0; i < 30; i++) {
         track.emit(20);
@@ -267,7 +276,8 @@ void main() {
       'a chunk the sink refuses does not fail the call or the hangup',
       () async {
         final failing = RecordingSink(failIndices: [0]);
-        final s = service(withSink: failing)..start(track);
+        final s = service(withSink: failing);
+        await s.start(track);
         for (var i = 0; i < 60; i++) {
           track.emit(20);
         }
@@ -293,7 +303,7 @@ void main() {
       format: format,
     );
 
-    test('reads int16 samples little-endian', () {
+    test('reads int16 samples little-endian', () async {
       final src = Int16List.fromList([0, 1, -1, 32767, -32768]);
       final out = CallCaptureService.pcmOf(
         frameOf(src.buffer.asUint8List(), AudioFormat.Int16),
@@ -301,7 +311,7 @@ void main() {
       expect(out, src);
     });
 
-    test('reads a frame whose bytes sit at an odd offset', () {
+    test('reads a frame whose bytes sit at an odd offset', () async {
       final src = Int16List.fromList([5, -6, 7]);
       final padded = Uint8List(src.lengthInBytes + 1)
         ..setRange(1, src.lengthInBytes + 1, src.buffer.asUint8List());
@@ -314,7 +324,7 @@ void main() {
       expect(CallCaptureService.pcmOf(frameOf(window, AudioFormat.Int16)), src);
     });
 
-    test('converts float32 samples and clamps out-of-range values', () {
+    test('converts float32 samples and clamps out-of-range values', () async {
       final src = Float32List.fromList([0.0, 1.0, -1.0, 0.5, 2.0, -2.0]);
       final out = CallCaptureService.pcmOf(
         frameOf(src.buffer.asUint8List(), AudioFormat.Float32),
@@ -328,7 +338,8 @@ void main() {
       // second copy — the call is over by the time this fails. One request lost
       // on a weak connection used to lose all of it silently.
       final flaky = RecordingSink(failuresLeft: {0: 1});
-      final s = service(withSink: flaky)..start(track);
+      final s = service(withSink: flaky);
+      await s.start(track);
       for (var i = 0; i < 30; i++) {
         track.emit(20);
       }
@@ -350,7 +361,8 @@ void main() {
       // A chunk that will never send must not hold a hangup open forever, and
       // must not take the call down with it.
       final dead = RecordingSink(failIndices: const [0]);
-      final s = service(withSink: dead)..start(track);
+      final s = service(withSink: dead);
+      await s.start(track);
       for (var i = 0; i < 30; i++) {
         track.emit(20);
       }

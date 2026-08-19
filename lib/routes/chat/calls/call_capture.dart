@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
@@ -65,7 +66,8 @@ bool get captureIsAfterEchoCancellation => !PlatformInfos.isAndroid;
 /// rather than a silent second recording.
 class CallCaptureService {
   final CallAudioSink sink;
-  final PcmChunker Function(int firstIndex) _newChunker;
+  final CallAudioTap tap;
+  final PcmChunker Function(int firstIndex, int sampleRate) _newChunker;
 
   /// Chunk numbering continues across stop and start. Recording can be handed to
   /// another of the learner's devices and handed back within one call, and a
@@ -74,8 +76,12 @@ class CallCaptureService {
   int _nextIndex = 0;
 
   PcmChunker? _chunker;
-  CancelListenFunc? _cancelTap;
+  DetachTap? _detach;
   bool _stopping = false;
+
+  /// Whether a tap is attached. Separate from having a chunker, because the rate
+  /// is not known until audio actually arrives.
+  bool _running = false;
 
   /// Chunks handed to the sink but not yet acknowledged. Awaited on [stop] so a
   /// hangup does not abandon audio the learner already spoke.
@@ -83,58 +89,74 @@ class CallCaptureService {
 
   CallCaptureService({
     required this.sink,
-    PcmChunker Function(int firstIndex)? newChunker,
-  }) : _newChunker =
-           newChunker ??
-           ((firstIndex) => PcmChunker(
+    CallAudioTap? tap,
+    PcmChunker Function(int firstIndex, int sampleRate)? newChunker,
+  }) : tap =
+           tap ??
+           defaultCallAudioTap(
              sampleRate: captureSampleRate,
+             channels: captureChannels,
+           ),
+       _newChunker =
+           newChunker ??
+           ((firstIndex, sampleRate) => PcmChunker(
+             sampleRate: sampleRate,
              channels: captureChannels,
              firstIndex: firstIndex,
            ));
 
-  bool get isRecording => _chunker != null;
+  bool get isRecording => _running;
 
   /// Begins recording [track].
   ///
   /// Requests the capture format explicitly rather than accepting whatever the
   /// device happens to produce, so a chunk's bytes mean the same thing on every
   /// platform and the header we write over them is always true.
-  void start(AudioTrack track) {
-    if (isRecording) {
+  Future<void> start(AudioTrack track) async {
+    if (_running) {
       throw StateError('A call recording is already running');
     }
-    if (_cancelTap != null) {
-      // A previous tap never detached. Try once more, and refuse rather than
-      // stack a second renderer on the same track: losing this stretch of
-      // analytics is recoverable, counting it twice is not.
+    if (_detach != null) {
+      // A previous tap never detached. Refuse rather than stack a second tap on
+      // the same track: losing this stretch of analytics is recoverable,
+      // counting it twice is not.
       throw StateError('The previous audio tap is still attached');
     }
     _stopping = false;
-    final chunker = _newChunker(_nextIndex);
+    _running = true;
     try {
-      // Registered before anything is recorded as running. A tap that throws
-      // half-way would otherwise leave this looking started forever, and every
-      // later attempt would be refused by the guard above — costing the call its
-      // analytics for a failure that was transient.
-      _cancelTap = track.addAudioRenderer(
-        onFrame: _onFrame,
-        options: const AudioRendererOptions(
-          sampleRate: captureSampleRate,
-          channels: captureChannels,
-          format: AudioFormat.Int16,
-        ),
-      );
+      _detach = await tap.open(track, _onFrames);
     } catch (_) {
-      _cancelTap = null;
+      // Left clear so a transient failure can be retried by the next election.
+      // Recording as started forever would refuse every later attempt.
+      _running = false;
+      _detach = null;
       rethrow;
     }
-    _chunker = chunker;
+    if (_detach == null) {
+      // No tap on this device. Nothing is recorded, and the call is unaffected.
+      _running = false;
+    }
   }
 
-  void _onFrame(AudioFrame frame) {
-    final chunker = _chunker;
-    if (chunker == null || _stopping) return;
-    for (final chunk in chunker.add(pcmOf(frame))) {
+  /// Takes audio from the tap.
+  ///
+  /// The chunker is built here rather than at start, because the rate is not
+  /// known until audio arrives — and it can change mid-call when the device or
+  /// the negotiated codec does. A change ends the current chunk rather than
+  /// reinterpreting samples already collected at the old rate, which would
+  /// stretch or compress what the learner said.
+  void _onFrames(Int16List samples, int sampleRate) {
+    if (!_running || _stopping) return;
+    var chunker = _chunker;
+    if (chunker != null && chunker.sampleRate != sampleRate) {
+      final tail = chunker.flush();
+      if (tail != null) _hand(tail);
+      _nextIndex = chunker.nextIndex;
+      chunker = null;
+    }
+    chunker ??= _chunker = _newChunker(_nextIndex, sampleRate);
+    for (final chunk in chunker.add(samples)) {
       _hand(chunk);
     }
   }
@@ -180,55 +202,42 @@ class CallCaptureService {
   /// cancelled and the chunker cleared before anything is awaited, so a second
   /// call has nothing left to flush and cannot emit a duplicate tail.
   Future<void> stop() async {
-    final chunker = _chunker;
-    if (chunker == null) return;
+    // Checked against the tap as well as the chunker: a call can be attached
+    // with no chunker yet, because the chunker is not built until audio actually
+    // arrives, and returning early there would leave the tap attached.
+    if (!_running && _chunker == null && _detach == null) return;
     _stopping = true;
+    _running = false;
+    final chunker = _chunker;
     _chunker = null;
 
-    // A tap that will not cancel must not cost the tail. The frames it may still
-    // deliver are already ignored (_stopping), so the worst case is a renderer
-    // left registered — losing the last seconds of what the learner said is the
-    // more expensive failure.
+    // A tap that will not detach must not cost the tail. The frames it may still
+    // deliver are already ignored, so the worst case is a tap left registered —
+    // losing the last seconds of what the learner said is the more expensive
+    // failure.
     try {
-      await _cancelTap?.call();
-      _cancelTap = null;
+      await _detach?.call();
+      _detach = null;
     } catch (e, s) {
-      // Kept, not discarded. A renderer that would not detach is still attached,
-      // and starting again over the top of it would feed two taps into one
-      // chunker — the learner's own voice counted twice.
-      Logs().w('Could not cancel the call audio tap; it stays claimed', e, s);
+      // Kept, not discarded. A tap that would not detach is still attached, and
+      // starting again over the top of it would feed two taps into one chunker —
+      // the learner's own voice counted twice.
+      Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
     }
 
-    final tail = chunker.flush();
-    if (tail != null) _hand(tail);
-    // Remembered before the chunker is let go, so a later stretch of the same
-    // call numbers on from here.
-    _nextIndex = chunker.nextIndex;
+    if (chunker != null) {
+      final tail = chunker.flush();
+      if (tail != null) _hand(tail);
+      // Remembered before the chunker is let go, so a later stretch of the same
+      // call numbers on from here.
+      _nextIndex = chunker.nextIndex;
+    }
 
     await Future.wait(List.of(_inFlight));
     await sink.close();
   }
 
-  /// The frame's samples as 16-bit PCM.
-  ///
-  /// Copies rather than views the frame's bytes: a renderer may hand back a
-  /// window into a larger buffer at an odd offset, which cannot be reinterpreted
-  /// as 16-bit in place, and the frame is not ours to keep past this callback.
+  /// The frame's samples as 16-bit PCM. Lives with the tap that produces them.
   @visibleForTesting
-  static Int16List pcmOf(AudioFrame frame) {
-    final bytes = ByteData.sublistView(frame.data);
-    if (frame.format == AudioFormat.Float32) {
-      final out = Int16List(frame.data.lengthInBytes ~/ 4);
-      for (var i = 0; i < out.length; i++) {
-        final v = bytes.getFloat32(i * 4, Endian.little).clamp(-1.0, 1.0);
-        out[i] = (v * 32767).round();
-      }
-      return out;
-    }
-    final out = Int16List(frame.data.lengthInBytes ~/ 2);
-    for (var i = 0; i < out.length; i++) {
-      out[i] = bytes.getInt16(i * 2, Endian.little);
-    }
-    return out;
-  }
+  static Int16List pcmOf(AudioFrame frame) => pcmOfFrame(frame);
 }

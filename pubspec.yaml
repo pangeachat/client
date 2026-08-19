@@ -143,6 +143,8 @@ dependencies:
   web_socket_channel: ^3.0.3
   livekit_client: ^2.9.0
   # Pangea#
+  pangea_call_capture:
+    path: pangea_packages/pangea_call_capture
 
 dev_dependencies:
   flutter_lints: ^6.0.0

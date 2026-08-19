@@ -214,7 +214,7 @@ class FakeCapture extends CallCaptureService {
   FakeCapture(this.trace) : super(sink: _NullSink());
 
   @override
-  void start(covariant Object track) {
+  Future<void> start(covariant Object track) async {
     trace('capture.start');
     if (startError != null) throw startError!;
   }
