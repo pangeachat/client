@@ -135,6 +135,53 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  group('a call answered on another device', () {
+    testWidgets('takes the prompt away here', (tester) async {
+      final room = directChat();
+      await pumpBanner(tester);
+      client.onTimelineEvent.add(ring(room));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('\$ring')), findsOneWidget);
+
+      // The membership the answering device writes. Nothing else says the call
+      // was picked up, and until this prompt goes it is still offering to join
+      // a call somebody already answered — and to decline one.
+      client.onRoomState.add((
+        roomId: roomId,
+        state: StrippedStateEvent(
+          type: EventTypes.GroupCallMember,
+          stateKey: '_${me}_OTHERDEVICE',
+          senderId: me,
+          content: {'memberships': <Map<String, Object?>>[]},
+        ),
+      ));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('\$ring')), findsNothing);
+    });
+
+    testWidgets('a leave elsewhere is not an answer', (tester) async {
+      final room = directChat();
+      await pumpBanner(tester);
+      client.onTimelineEvent.add(ring(room));
+      await tester.pumpAndSettle();
+
+      // Leaving writes the same state event with nothing in it. Reading the
+      // event rather than its content would take the prompt away every time
+      // somebody's stale membership lapsed.
+      client.onRoomState.add((
+        roomId: roomId,
+        state: StrippedStateEvent(
+          type: EventTypes.GroupCallMember,
+          stateKey: '_${me}_OTHERDEVICE',
+          senderId: me,
+          content: const {},
+        ),
+      ));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('\$ring')), findsOneWidget);
+    });
+  });
+
   group('a caller who hangs up and tries again', () {
     testWidgets('gets the prompt pointed at the new call', (tester) async {
       final room = directChat();

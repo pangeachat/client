@@ -305,6 +305,11 @@ class ActiveCall extends ChangeNotifier {
       // The screen decides whether this was a real call from this, so it has to
       // hear about it — the stage does not change when someone answers.
       if (firstArrival && !_disposed) notifyListeners();
+      // Taken here as well, because this runs throughout the call while the
+      // teardown read happens once. A membership whose echo was still on its
+      // way at that single moment left a device with nothing to anchor its
+      // analytics to, and every word its learner spoke was dropped.
+      _rememberMembership();
     } else if (_peerArrived) {
       // In a direct message there is nobody else to wait for. Staying would hold
       // a microphone open for a conversation that has ended, and the learner
@@ -315,6 +320,18 @@ class ActiveCall extends ChangeNotifier {
     }
 
     _electRecorder();
+  }
+
+  /// Notes this device's own membership event once the room has echoed it.
+  ///
+  /// It is what a device that JOINED a call — with no ring of its own to point
+  /// at — anchors its speaking analytics to, and it can only be read while the
+  /// session is still here.
+  void _rememberMembership() {
+    if (_membershipEventId != null) return;
+    final room = _room;
+    if (room == null) return;
+    _membershipEventId = calls.membershipEventIdIn(room);
   }
 
   /// Declines seen before this call knew which notification was its own.
@@ -663,7 +680,14 @@ class ActiveCall extends ChangeNotifier {
   Future<void>? _releasing;
 
   Future<void> _release() async {
-    if (!_joined) return;
+    if (!_joined) {
+      // No membership to take back — the join never came back. The service is
+      // still holding this account's one call for it, though, and until that is
+      // handed over every incoming ring is suppressed and every new call
+      // refused, with the screen already closed.
+      calls.abandonJoin();
+      return;
+    }
     try {
       // Deliberately still joined when it did not work: a hangup that failed to
       // take the membership back should be tried again rather than remembered
@@ -723,9 +747,7 @@ class ActiveCall extends ChangeNotifier {
     // Read while the session is still here. Retracting releases it, and the
     // membership can no longer be matched to this call afterwards — which is
     // exactly when a device that joined one already under way needs it.
-    _membershipEventId ??= _room != null
-        ? calls.membershipEventIdIn(_room!)
-        : null;
+    _rememberMembership();
 
     await _releaseCall();
 

@@ -189,6 +189,20 @@ class CallService {
   /// so a test can prove the claim is released without waiting out the real one.
   final Duration _joinWithin;
 
+  /// Gives up a join this account no longer wants.
+  ///
+  /// Hanging up while a call is still coming up used to leave the claim held
+  /// until the network finally answered — up to the whole join timeout — and
+  /// for that long every incoming ring was suppressed and every new call
+  /// refused, with the screen already closed. Anything still in flight is
+  /// disowned so it cannot install itself afterwards.
+  void abandonJoin() {
+    if (!_joining) return;
+    _joinAttempt++;
+    _joining = false;
+    Logs().i('Gave up a join the user no longer wants');
+  }
+
   /// Whether a join that was given up on should hand its session back.
   ///
   /// It must not, when anyone else could be using it. The session is fetched by
@@ -479,6 +493,27 @@ class CallService {
         event.type == PangeaEventTypes.callDecline &&
         event.senderId != client.userID,
   );
+
+  /// This account joining a call, on whichever device.
+  ///
+  /// Read from room state rather than from the local session, because the whole
+  /// point is to hear about a DIFFERENT device. The membership is written by
+  /// whoever answers, so a phone still ringing learns the call was picked up
+  /// and can put its prompt away.
+  ///
+  /// Deliberately not routed through the SDK's VoIP helpers: asking those would
+  /// build a VoIP instance — listeners, a scan of every joined room — on a
+  /// device that is not in a call. A leave writes empty content, which is why
+  /// presence is read from the content rather than from the event existing.
+  Stream<String> ownCallJoins() => client.onRoomState.stream
+      .where(
+        (update) =>
+            update.state.type == EventTypes.GroupCallMember &&
+            (update.state.stateKey?.contains(client.userID ?? '\u0000') ??
+                false) &&
+            update.state.content.isNotEmpty,
+      )
+      .map((update) => update.roomId);
 
   /// Declines this account sent, from any of its devices.
   ///

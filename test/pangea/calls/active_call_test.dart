@@ -175,6 +175,14 @@ class FakeCalls extends CallService {
   }
 
   Object? joinError;
+
+  /// Modelled because it is the thing under test: the service holds a claim on
+  /// this account's one call from before the join returns until it is given
+  /// back, and a double that ignored it could not show it being released.
+  bool joinClaimed = false;
+
+  @override
+  void abandonJoin() => joinClaimed = false;
   Object? announceError;
   Object? retractError;
   bool retractFails = false;
@@ -184,6 +192,9 @@ class FakeCalls extends CallService {
   @override
   Future<CallToken> join(matrix.Room room) async {
     trace('join');
+    // Claimed before the first await, as the real one does: the claim exists
+    // precisely to cover the window this hold stands in for.
+    joinClaimed = true;
     if (holdJoin != null) await holdJoin!.future;
     if (joinError != null) throw joinError!;
     return const CallToken(jwt: 'jwt', url: 'ws://sfu');
@@ -527,6 +538,53 @@ void main() {
       media.fakeRoster!.recompute();
       await pumpEventQueue();
       expect(call.isRecording, isTrue, reason: 'and it picks back up');
+    });
+  });
+
+  group('what a joiner anchors its analytics to', () {
+    test('is taken while the call runs, not once at the end', () async {
+      // A device that JOINED a call has no ring of its own to point at, so its
+      // membership is the only thing its speaking analytics can hang on. That
+      // can only be read while the session is here.
+      final (call, calls, _, _) = await build();
+      calls.membershipId = null; // announce's own echo timed out
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false, answering: true);
+
+      // The echo lands during the call, as it does in practice.
+      calls.roomMembershipId = '\$membership';
+      await call.tickReelectionForTest();
+
+      // And by the time it ends, the room no longer answers — the single read
+      // at teardown would come back with nothing, and every word this learner
+      // spoke would be dropped for want of something to attach it to.
+      calls.roomMembershipId = null;
+      await call.hangUp();
+
+      expect(call.membershipEventId, '\$membership');
+    });
+  });
+
+  group('hanging up while the call is still coming up', () {
+    test('gives the account its calling back at once', () async {
+      final (call, calls, _, _) = await build();
+      calls.holdJoin = Completer<void>();
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      expect(calls.joinClaimed, isTrue);
+
+      // The screen is closed while the join is still out on the network. Held,
+      // the claim suppressed every incoming ring and refused every new call
+      // until the network finally answered.
+      await call.hangUp();
+      expect(
+        calls.joinClaimed,
+        isFalse,
+        reason: 'a call nobody is waiting for must not hold the account',
+      );
+
+      calls.holdJoin!.complete();
+      await starting;
     });
   });
 
