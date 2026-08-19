@@ -215,6 +215,37 @@ void main() {
     });
   });
 
+  group('a join that never comes back', () {
+    test('gives the account its calling back', () async {
+      // Focus discovery that answers nothing: the network is up but the request
+      // hangs, which is what a bad connection looks like from here.
+      final client = await bareClient();
+      client.homeserver = Uri.parse('http://localhost:8008');
+      final service = CallService(
+        client,
+        joinWithin: const Duration(milliseconds: 50),
+        focusDiscovery: RtcFocusDiscovery(
+          httpClient: MockClient((_) => Completer<http.Response>().future),
+        ),
+      );
+
+      await expectLater(
+        service.join(Room(id: '!r:server', client: client)),
+        throwsA(isA<TimeoutException>()),
+      );
+
+      // The claim on this account's one call has to come back. Held, it
+      // suppressed every incoming ring and refused every new call — and nothing
+      // could release it, because hanging up cannot give back a call that never
+      // arrived.
+      expect(
+        service.isBusy,
+        isFalse,
+        reason: 'a join that hung must not cost the account its calling',
+      );
+    });
+  });
+
   group('CallService availability', () {
     test('is unavailable when the homeserver advertises no RTC focus', () async {
       // The ordinary state for a homeserver without MatrixRTC configured. Callers

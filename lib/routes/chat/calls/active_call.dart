@@ -529,19 +529,6 @@ class ActiveCall extends ChangeNotifier {
       // running when the peer learns this device is here. Handovers are queued,
       // so without this the initial start would land a microtask later.
       await _step(() => _handover);
-      if (!_peerArrived) {
-        // Someone answering a call has somebody to answer; if nobody is there,
-        // the caller has already gone and waiting a full minute only holds the
-        // microphone open in an empty call. Someone placing one is waiting for
-        // an answer, which is what the longer wait is for.
-        final wait = answering ? _joinWithin : _answerWithin;
-        _waitingForPeer = Timer(wait, () {
-          if (_ending || _peerArrived) return;
-          Logs().i('Nobody joined the call; ending it');
-          unawaited(hangUp());
-        });
-      }
-
       // announce returns our membership event id, waiting for the state write
       // to echo — the ring needs it, so this is where the wait belongs. Kept,
       // because it is also the only event a device that JOINED a call — with no
@@ -574,6 +561,24 @@ class ActiveCall extends ChangeNotifier {
         // because their phone rang and that is what makes this a call worth
         // recording rather than nothing at all.
         _abandonIfEnding();
+      }
+
+      // Only now. Announcing waits for a state write to echo and ringing is
+      // another round-trip, and starting the clock before either meant the
+      // caller's patience was spent on its own setup: a slow network could have
+      // it give up and write a missed call while the callee's phone was still
+      // ringing and could still be answered.
+      if (!_peerArrived) {
+        // Someone answering a call has somebody to answer; if nobody is there,
+        // the caller has already gone and waiting a full minute only holds the
+        // microphone open in an empty call. Someone placing one is waiting for
+        // an answer, which is what the longer wait is for.
+        final wait = answering ? _joinWithin : _answerWithin;
+        _waitingForPeer = Timer(wait, () {
+          if (_ending || _peerArrived) return;
+          Logs().i('Nobody joined the call; ending it');
+          unawaited(hangUp());
+        });
       }
 
       // State may have moved while announcing. Awaited too, so start() leaves

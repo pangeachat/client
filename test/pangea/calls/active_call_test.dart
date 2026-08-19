@@ -530,6 +530,31 @@ void main() {
     });
   });
 
+  group('waiting for an answer', () {
+    test('does not start the clock before they have been rung', () async {
+      final (call, calls, _, _) = await build();
+      calls.holdRing = Completer<void>();
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+
+      // Their phone has not rung yet, so there is nothing to be waiting on.
+      // Started earlier, the caller's patience was spent on announcing and
+      // ringing — on a slow network it could give up and write a missed call
+      // while the callee was still being asked.
+      await call.waitForPeerTimeoutForTest();
+      expect(
+        call.stage,
+        isNot(CallStage.ended),
+        reason: 'nobody has been asked yet, so nobody has failed to answer',
+      );
+
+      calls.holdRing!.complete();
+      await starting;
+      await call.waitForPeerTimeoutForTest();
+      expect(call.stage, CallStage.ended, reason: 'and now it is running');
+    });
+  });
+
   group('bringing a call up', () {
     test('placing into an empty call rings the other side', () async {
       final (call, calls, _, _) = await build();

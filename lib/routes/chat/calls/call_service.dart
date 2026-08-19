@@ -79,9 +79,11 @@ class CallService {
     PangeaVoipDelegate? delegate,
     CallTokenRepo? tokenRepo,
     RtcFocusDiscovery? focusDiscovery,
+    Duration? joinWithin,
   }) : delegate = delegate ?? PangeaVoipDelegate(),
        _tokens = tokenRepo ?? CallTokenRepo(),
-       _discovery = focusDiscovery ?? RtcFocusDiscovery();
+       _discovery = focusDiscovery ?? RtcFocusDiscovery(),
+       _joinWithin = joinWithin ?? const Duration(seconds: 30);
 
   /// The focus this homeserver advertises, or null if it advertises none.
   ///
@@ -163,14 +165,36 @@ class CallService {
       throw StateError('this account is already in a call');
     }
     _joining = true;
+    final attempt = ++_joinAttempt;
     try {
-      return await _join(room);
+      // Bounded, because this claim is what stands between the account and
+      // every other call it could make or take. Three round-trips happen inside
+      // it — focus discovery, the session, the token — and any of them can hang
+      // on a bad network. Held for good, the claim suppressed every incoming
+      // ring and refused every new call until the app was restarted, with no
+      // way to release it: a hangup cannot give back a call that never arrived.
+      return await _join(room, attempt).timeout(_joinWithin);
+    } on TimeoutException {
+      // Whatever is still in flight belongs to nobody now, so it must not
+      // install itself as this account's call when it finally lands.
+      _joinAttempt++;
+      Logs().w('Gave up joining the call; it took too long to come up');
+      rethrow;
     } finally {
       _joining = false;
     }
   }
 
-  Future<CallToken> _join(Room room) async {
+  /// How long the whole join may take before it is treated as failed. Injected
+  /// so a test can prove the claim is released without waiting out the real one.
+  final Duration _joinWithin;
+
+  /// Which join is the live one. A join that was given up on keeps running —
+  /// there is no cancelling a request in flight — so it is told apart by this
+  /// rather than left to install itself over the top of whatever came after.
+  int _joinAttempt = 0;
+
+  Future<CallToken> _join(Room room, int attempt) async {
     final f = await resolveFocus();
     // Before anything is constructed: discovery is a network round-trip and the
     // account can log out inside it.
@@ -200,16 +224,17 @@ class CallService {
       focusServiceUrl: f.serviceUrl,
     );
 
-    if (_disposed) {
-      // The account went away while this join was in flight. Storing the
-      // session now would advertise a membership that nothing is left to
-      // retract, and it would stand until it expired minutes later.
+    if (_disposed || attempt != _joinAttempt) {
+      // The account went away while this join was in flight, or the join itself
+      // was given up on. Storing the session now would advertise a membership
+      // that nothing is left to retract, and it would stand until it expired
+      // minutes later.
       try {
         await session.leave();
       } catch (e, st) {
         Logs().w('Could not leave a call abandoned during teardown', e, st);
       }
-      throw StateError('the call service was disposed while joining');
+      throw StateError('the call was abandoned while joining');
     }
 
     _current = session;
@@ -430,6 +455,18 @@ class CallService {
         event.room.id == room.id &&
         event.type == PangeaEventTypes.callDecline &&
         event.senderId != client.userID,
+  );
+
+  /// Declines this account sent, from any of its devices.
+  ///
+  /// The mirror of [declinesIn], which deliberately leaves them out: a caller
+  /// must never be hung up by its own decline. A device that is still ringing is
+  /// the opposite case — somebody has answered this call on another phone, and
+  /// this one should stop offering to answer it.
+  Stream<Event> ownDeclines() => client.onTimelineEvent.stream.where(
+    (event) =>
+        event.type == PangeaEventTypes.callDecline &&
+        event.senderId == client.userID,
   );
 
   /// The notification a decline points back at, or null if it points at nothing.

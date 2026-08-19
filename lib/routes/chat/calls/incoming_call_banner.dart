@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'package:matrix/matrix.dart' as matrix show Logs, Room, User;
+import 'package:matrix/matrix.dart' as matrix show Event, Logs, Room, User;
 
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
@@ -30,6 +30,7 @@ class IncomingCallBanner extends StatefulWidget {
 
 class _IncomingCallBannerState extends State<IncomingCallBanner> {
   StreamSubscription<IncomingCallNotification>? _rings;
+  StreamSubscription<matrix.Event>? _ownDeclines;
   Timer? _stillRinging;
   IncomingCallNotification? _ringing;
   String? _listeningTo;
@@ -65,6 +66,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     if (account == _listeningTo) return;
 
     _rings?.cancel();
+    _ownDeclines?.cancel();
     _listeningTo = account;
     // A prompt belonging to the account we just left is not this one's.
     if (_ringing != null) setState(() => _ringing = null);
@@ -75,6 +77,20 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       if (_ringing != null || _declined.contains(ring.event.eventId)) return;
       setState(() => _ringing = ring);
       _watchForGiveUp(ring);
+    });
+
+    // Answering on one phone has to stop the others ringing. The decline this
+    // account sends carries the ring it refers to, so a device showing that ring
+    // can put its own prompt away — otherwise it goes on offering to answer a
+    // call the caller is already tearing down.
+    _ownDeclines = matrixState.callService.ownDeclines().listen((event) {
+      if (!mounted) return;
+      final target = matrixState.callService.declineTarget(event);
+      if (target == null) return;
+      // Remembered as well as dismissed, so a ring still working its way
+      // through the timeline cannot put the prompt back up.
+      _declined.add(target);
+      if (_ringing?.event.eventId == target) _dismiss();
     });
   }
 
@@ -94,6 +110,7 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   @override
   void dispose() {
     _rings?.cancel();
+    _ownDeclines?.cancel();
     _stillRinging?.cancel();
     super.dispose();
   }
