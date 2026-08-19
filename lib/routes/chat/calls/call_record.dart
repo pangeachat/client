@@ -231,6 +231,11 @@ class CallRecord {
         // event. Which side writes is decided deterministically so that exactly
         // one card exists even when both people call at the same moment, and
         // that side is not always the caller.
+        //
+        // The `?` before the value is a null-aware entry: the key is left out
+        // entirely when there is nobody to name. It reads like a mistake and is
+        // not — the analyser suggests this form, and it has been reported as a
+        // compile error twice by review.
         'caller': ?callerId,
       }, _txid);
     } catch (e, s) {

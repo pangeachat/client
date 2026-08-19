@@ -316,6 +316,11 @@ class CallService {
       video: video,
     ).toContent(DateTime.now());
 
+    // If both attempts lose their response while the event itself lands, the
+    // caller never learns its id and a decline cannot be matched to it: the call
+    // rings out and is recorded as unanswered rather than turned down. That is
+    // accepted. The alternative — treating any decline in the room as this
+    // call's — was tried and ended calls that had only just started, twice.
     for (var attempt = 0; attempt < 2; attempt++) {
       try {
         return await room.sendEvent(
