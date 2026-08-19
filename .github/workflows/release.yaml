@@ -190,6 +190,7 @@ jobs:
             --exclude ".env" \
             --exclude "main.dart.js" \
             --exclude "*.part.js" \
+            --exclude "native_executor.js*" \
             --exclude "flutter.js" \
             --exclude "flutter_bootstrap.js" \
             --exclude "flutter_service_worker.js" \
@@ -207,14 +208,19 @@ jobs:
             --cache-control "no-cache, must-revalidate"
 
           # =========================
-          # 3. DEFERRED FLUTTER CHUNKS
-          # Flutter .part.js filenames are NOT content hashed
-          # Must revalidate to avoid stale disk-cache crashes
+          # 3. DEFERRED FLUTTER CHUNKS + CRYPTO WEB WORKER
+          # Flutter .part.js filenames are NOT content hashed, and
+          # native_executor.js -- the Matrix crypto web worker, recompiled every
+          # deploy by scripts/prepare-web.sh -- has a stable name too. Cached as
+          # immutable it pinned a year-old worker against a fresh main.dart.js,
+          # the same skew build-web-versioned-canvaskit.sh describes (#8478).
+          # Must revalidate to avoid stale disk-cache crashes.
           # =========================
           aws s3 cp ./build/web s3://$WEBAPP_S3_BUCKET \
             --recursive \
             --exclude "*" \
             --include "*.part.js" \
+            --include "native_executor.js*" \
             --cache-control "no-cache, must-revalidate"
 
           # =========================
@@ -272,11 +278,19 @@ jobs:
               || { echo "::error::.well-known/$f is missing, invalid JSON, or lacks the app id (SPA fallback?)"; exit 1; }
           done
 
-          # 2. Runtime entry scripts — and the versioned CanvasKit dir this
-          #    exact build requests (scripts/build-web-versioned-canvaskit.sh)
-          #    — serve as JavaScript, not the SPA shell.
+          # 2. Runtime entry scripts — the crypto web worker, the versioned
+          #    CanvasKit dir this exact build requests
+          #    (scripts/build-web-versioned-canvaskit.sh), and one deferred
+          #    chunk — serve as JavaScript, not the SPA shell. The worker and
+          #    the chunks are the two surfaces that reported the fallback's
+          #    HTML as a SyntaxError / DeferredLoadException (#8478).
           CK_REV=$(ls build/web/canvaskit)
-          for f in flutter.js main.dart.js "canvaskit/$CK_REV/canvaskit.js"; do
+          SCRIPTS="flutter.js main.dart.js native_executor.js"
+          SCRIPTS="$SCRIPTS canvaskit/$CK_REV/canvaskit.js"
+          # .part.js names vary per build; check whichever one this build emitted.
+          PART=$(ls build/web/*.part.js 2>/dev/null | head -1)
+          if [ -n "$PART" ]; then SCRIPTS="$SCRIPTS $(basename "$PART")"; fi
+          for f in $SCRIPTS; do
             # First non-whitespace byte: canvaskit.js opens with a newline,
             # which a bare `head -c 1` + command substitution would eat.
             head=$(curl -sf "$BASE/$f" | tr -d '[:space:]' | head -c 1)
@@ -287,6 +301,16 @@ jobs:
           # 3. A deep path serves the SPA shell (the fallback is alive).
           curl -sf "$BASE/zz9smoke" | grep -qi "<html\|<base\|flutter" \
             || { echo "::error::deep path did not serve the SPA shell — fallback broken?"; exit 1; }
+
+          # 4. The __BUILD_VERSION__ sed actually ran. Left unsubstituted, the
+          #    `?v=` cache-buster on the asset manifests is one constant for
+          #    every deploy, so browsers keep serving stale manifests, and the
+          #    killswitch reports a literal token as its Sentry release.
+          #    Production shipped exactly this state (#8478).
+          if curl -sf "$BASE/index.html" | grep -q "__BUILD_VERSION__"; then
+            echo "::error::index.html still contains __BUILD_VERSION__ — the build-version sed did not run"
+            exit 1
+          fi
 
   update_sentry:
     runs-on: ubuntu-latest

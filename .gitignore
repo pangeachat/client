@@ -21,9 +21,6 @@ keys.json
 assets/.env.local_choreo
 *.env.prod
 envs.json
-# libolm package
-web/Imaging.js
-web/Imaging.wasm
 
 # IntelliJ related
 *.iml
