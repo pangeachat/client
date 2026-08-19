@@ -125,6 +125,10 @@ class CallService {
   /// open is the worse outcome.
   static const _settleEnterWithin = Duration(seconds: 5);
 
+  /// How long announcing this device's membership may take. Generous, because
+  /// it is a state write plus its echo, and giving up costs the call.
+  static const _announceWithin = Duration(seconds: 20);
+
   /// Drops a held failure so the next [resolveFocus] asks immediately.
   @visibleForTesting
   void retryFocusNow() => _resolving = null;
@@ -582,7 +586,13 @@ class CallService {
       // stand for minutes.
       final entering = _entering = session.enter();
       try {
-        await entering;
+        // Bounded like every other network step in a call's life. Announcing is
+        // awaited by the whole of coming up, and coming up is what the RECORD
+        // waits on — so an enter that never answered meant the call was never
+        // written and every word of it went uncredited, long after the learner
+        // had closed the screen. Held in [_entering] either way, so a retract
+        // still waits for it rather than racing it.
+        await entering.timeout(_announceWithin);
       } finally {
         if (identical(_entering, entering)) _entering = null;
       }
