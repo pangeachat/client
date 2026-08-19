@@ -202,6 +202,10 @@ class CallService {
     }
   }
 
+  /// How long one attempt to ring may take. Two attempts, so the caller waits
+  /// at most twice this before the call gets on with ringing out.
+  static const _ringWithin = Duration(seconds: 10);
+
   /// A leave that was given up on but is still running. The next call in this
   /// room waits for it rather than racing it.
   Future<void>? _leaving;
@@ -459,11 +463,20 @@ class CallService {
     // call's — was tried and ended calls that had only just started, twice.
     for (var attempt = 0; attempt < 2; attempt++) {
       try {
-        return await room.sendEvent(
-          content,
-          type: PangeaEventTypes.callNotification,
-          txid: txid,
-        );
+        // Bounded, like every other network step in a call's life. Coming up
+        // waits for this before it starts the clock on somebody answering, and
+        // the record waits for coming up — so a send that never came back left
+        // the call ringing for ever and never wrote it down. A send that times
+        // out may still have landed, which is what the stable transaction id
+        // above is for: the retry gets the same event back rather than ringing
+        // twice.
+        return await room
+            .sendEvent(
+              content,
+              type: PangeaEventTypes.callNotification,
+              txid: txid,
+            )
+            .timeout(_ringWithin);
       } catch (e, s) {
         Logs().w(
           'Could not ring the other side (attempt ${attempt + 1})',
