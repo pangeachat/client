@@ -343,23 +343,6 @@ class CallService {
     ];
   }
 
-  /// Whether the caller is still in the call in [room] — a live membership from
-  /// a user other than this account.
-  ///
-  /// Keyed on another USER, not this account, so this device's own stale
-  /// membership from a failed retract cannot make a real incoming call look
-  /// like a call of one. Checked before answering, so a caller who gave up is
-  /// not joined.
-  bool otherUserInCall(Room room) {
-    final me = client.userID;
-    if (me == null || _disposed) return false;
-    return room
-        .getCallMembershipsFromRoom(voip)
-        .values
-        .expand((list) => list)
-        .any((m) => m.userId != me && !m.isExpired);
-  }
-
   /// Whether anyone other than this account is still in the call.
   ///
   /// A direct-message call is over when the other person leaves; there is nobody
