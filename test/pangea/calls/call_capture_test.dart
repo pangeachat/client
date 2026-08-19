@@ -479,6 +479,37 @@ void main() {
     );
   });
 
+  group('a muted recorder', () {
+    test('drops frames so muted speech is never recorded', () async {
+      // LiveKit's mute only stops publishing to the peer; on Android the tap
+      // reads the capture module directly, upstream of that, so the recorder
+      // needs its own gate or a muted learner is still transcribed.
+      final s = service();
+      await s.start(track);
+      s.setMuted(true);
+      for (var i = 0; i < 60; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      expect(sink.delivered, isEmpty, reason: 'muted speech must not record');
+    });
+
+    test('resumes capturing once unmuted', () async {
+      final s = service();
+      await s.start(track);
+      s.setMuted(true);
+      for (var i = 0; i < 20; i++) {
+        track.emit(20);
+      }
+      s.setMuted(false);
+      for (var i = 0; i < 60; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+      expect(sink.delivered, isNotEmpty, reason: 'speech after unmute records');
+    });
+  });
+
   group('a close that fails', () {
     test('is tried again rather than remembered as done', () async {
       // Marking the call finished before the close had succeeded meant the one

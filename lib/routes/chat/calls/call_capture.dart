@@ -304,8 +304,21 @@ class CallCaptureService {
   /// the negotiated codec does. A change ends the current chunk rather than
   /// reinterpreting samples already collected at the old rate, which would
   /// stretch or compress what the learner said.
+  /// Whether the learner has muted. Frames are dropped while it is set.
+  ///
+  /// A gate the recorder owns, NOT LiveKit's mute. LiveKit's mute only stops
+  /// PUBLISHING to the peer; on Android this tap reads the audio module's
+  /// capture output directly, upstream of that, and `stopAudioCaptureOnMute` is
+  /// off so the module keeps running — so without this a muted learner would
+  /// still be recorded and transcribed. Dropping the frames means a mute is a
+  /// gap in the transcript, which is what a mute should be.
+  bool _muted = false;
+
+  /// Gates or ungates capture to match the microphone button.
+  void setMuted(bool muted) => _muted = muted;
+
   void _onFrames(Int16List samples, int sampleRate) {
-    if (!_running || _stopping) return;
+    if (!_running || _stopping || _muted) return;
     var chunker = _chunker;
     if (chunker != null && chunker.sampleRate != sampleRate) {
       final tail = chunker.flush();

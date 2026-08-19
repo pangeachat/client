@@ -200,6 +200,11 @@ class ActiveCall extends ChangeNotifier {
 
   ActiveCall({required this.calls, required this.media, required this.capture});
 
+  /// Gates the recording to match the microphone button. Muting stops LiveKit
+  /// publishing to the peer; this stops the recorder capturing too, which on
+  /// Android it otherwise would — the tap there is upstream of the publish mute.
+  void setMuted(bool muted) => capture.setMuted(muted);
+
   /// Starts or stops recording to match which device should be recording now.
   ///
   /// Runs whenever the call's participants change, because that is the only thing

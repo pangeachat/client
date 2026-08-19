@@ -339,13 +339,20 @@ class _CallPageState extends State<CallPage> {
 
   Future<void> _toggleMute() async {
     final next = !_muted;
+    // The recorder is gated FIRST, before the publish mute is even asked for, so
+    // there is no window in which muted speech is still captured — on Android
+    // the tap runs upstream of the publish mute and would otherwise keep going.
+    _call.setMuted(next);
     try {
       await _media.setMicrophoneEnabled(!next);
     } catch (e, s) {
       // This runs from a button's onTap, which drops the future — so an error
       // here has no caller to catch it and would surface as an unhandled async
-      // exception on a live call. Fail closed instead: leave the state as it
-      // was so the button keeps showing what the microphone is actually doing.
+      // exception on a live call. Fail closed instead: put the recorder gate
+      // back to match the microphone that did not change, and leave the state as
+      // it was so the button keeps showing what the microphone is actually
+      // doing.
+      _call.setMuted(!next);
       Logs().w('Could not ${next ? 'mute' : 'unmute'} the call', e, s);
       return;
     }
