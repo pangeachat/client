@@ -562,6 +562,31 @@ void main() {
       await capture.stop();
       await capture.start(track);
     });
+
+    test(
+      'frees itself the moment it answers, without waiting for a stop',
+      () async {
+        // Only a stop ever comes back to a held tap, and a stop happens at the
+        // END of a call. A tap that timed out and then detached a second later
+        // would block every recorder election until then, and this device would
+        // sit silent through the whole conversation.
+        final tap = _SilentDetachTap();
+        final capture = service(
+          withTap: tap,
+          detach: const Duration(milliseconds: 50),
+        );
+        await capture.start(track);
+        await capture.stop();
+        await expectLater(capture.start(track), throwsStateError);
+
+        // The platform finally answers, mid-call, with nothing else happening.
+        tap.finish.complete();
+        await pumpEventQueue();
+
+        await capture.start(track);
+        expect(capture.isRecording, isTrue);
+      },
+    );
   });
 
   group('a tap that will not let go', () {

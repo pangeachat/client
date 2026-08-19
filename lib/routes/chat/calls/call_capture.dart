@@ -212,16 +212,34 @@ class CallCaptureService {
     } catch (e, s) {
       // It threw, so nothing is running and the tap is certainly still on. This
       // one is worth asking again.
-      _unreleased.add(_UnreleasedTap(detach, null));
+      _hold(_UnreleasedTap(detach, null));
       Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
       return;
     }
     if (stillRunning) {
       // Kept along with what is running, so the next stop waits for THAT rather
       // than starting a second detach over the top of it.
-      _unreleased.add(_UnreleasedTap(detach, running));
+      _hold(_UnreleasedTap(detach, running));
       Logs().w('The call audio tap has not come off yet; it stays claimed');
     }
+  }
+
+  /// Holds a tap that has not come off, and lets go of it the moment it does.
+  ///
+  /// Only a stop ever comes back to these, and a stop happens at the END of a
+  /// call — so a tap that timed out and then detached a second later would
+  /// otherwise block every recorder election for the rest of the call, and this
+  /// device would sit silent through the whole conversation.
+  void _hold(_UnreleasedTap tap) {
+    _unreleased.add(tap);
+    tap.running
+        ?.then((_) => _unreleased.removeWhere((held) => identical(held, tap)))
+        // An error means it answered too: it is no longer in flight, so it may
+        // be asked again, which is what an entry with nothing running means.
+        .onError((Object _, StackTrace _) {
+          final at = _unreleased.indexWhere((held) => identical(held, tap));
+          if (at >= 0) _unreleased[at] = _UnreleasedTap(tap.detach, null);
+        });
   }
 
   /// Tries the taps that would not let go before. Taken and cleared first, so a
@@ -250,12 +268,12 @@ class CallCaptureService {
       } catch (e, s) {
         // It finally answered, with an error. Nothing is running now, so the
         // next stop may ask again.
-        _unreleased.add(_UnreleasedTap(tap.detach, null));
+        _hold(_UnreleasedTap(tap.detach, null));
         Logs().w('The call audio tap refused to come off', e, s);
         continue;
       }
       if (stillRunning) {
-        _unreleased.add(tap);
+        _hold(tap);
         Logs().w('The call audio tap has still not come off');
       }
     }
