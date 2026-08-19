@@ -39,6 +39,13 @@ const captureChannels = 1;
 /// it again.
 const _deliveryAttempts = 3;
 
+/// How long one attempt at delivering a chunk is given.
+///
+/// A request that fails says so; one that hangs says nothing, and a hangup waits
+/// for every chunk still in flight. Without a limit here a single stalled
+/// connection would hold the end of the call open indefinitely.
+const _deliveryTimeout = Duration(seconds: 30);
+
 /// Records this device's own outbound call audio.
 ///
 /// It taps the track being published, not the microphone. A microphone also
@@ -51,6 +58,7 @@ const _deliveryAttempts = 3;
 class CallCaptureService {
   final CallAudioSink sink;
   final CallAudioTap tap;
+  final Duration deliveryTimeout;
   final PcmChunker Function(int firstIndex, int sampleRate) _newChunker;
 
   /// Chunk numbering continues across stop and start. Recording can be handed to
@@ -76,9 +84,12 @@ class CallCaptureService {
   /// hangup does not abandon audio the learner already spoke.
   final List<Future<void>> _inFlight = [];
 
+  /// [deliveryTimeout] is how long one attempt is given before it is treated as
+  /// failed. Injectable so the stall can be tested without waiting for it.
   CallCaptureService({
     required this.sink,
     CallAudioTap? tap,
+    this.deliveryTimeout = _deliveryTimeout,
     PcmChunker Function(int firstIndex, int sampleRate)? newChunker,
   }) : tap =
            tap ??
@@ -179,7 +190,7 @@ class CallCaptureService {
     for (var attempt = 0; attempt < _deliveryAttempts; attempt++) {
       if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
       try {
-        await sink.deliver(chunk);
+        await sink.deliver(chunk).timeout(deliveryTimeout);
         return;
       } catch (e, s) {
         Logs().w(

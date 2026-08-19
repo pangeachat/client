@@ -112,9 +112,11 @@ void main() {
   CallCaptureService service({
     RecordingSink? withSink,
     CallAudioTap? withTap,
+    Duration? timeout,
   }) => CallCaptureService(
     sink: withSink ?? sink,
     tap: withTap,
+    deliveryTimeout: timeout ?? const Duration(seconds: 30),
     newChunker: (firstIndex, sampleRate) => PcmChunker(
       sampleRate: sampleRate,
       channels: captureChannels,
@@ -442,6 +444,31 @@ void main() {
       );
       expect(s.isRecording, isFalse);
     });
+  });
+
+  group('a delivery that hangs', () {
+    test(
+      'does not hold the end of the call open',
+      () async {
+        // A request that fails says so; one that hangs says nothing, and the
+        // hangup waits for every chunk still in flight.
+        final stuck = RecordingSink()..block = Completer<void>();
+        final s = service(
+          withSink: stuck,
+          timeout: const Duration(milliseconds: 20),
+        );
+        await s.start(track);
+        for (var i = 0; i < 30; i++) {
+          track.emit(20);
+        }
+
+        await expectLater(
+          s.finish().timeout(const Duration(seconds: 5)),
+          completes,
+        );
+      },
+      timeout: const Timeout(Duration(seconds: 20)),
+    );
   });
 
   group('a close that fails', () {
