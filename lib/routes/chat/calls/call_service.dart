@@ -655,21 +655,25 @@ class CallService {
     // object a stalled leave still holds; if this enter wrote its membership and
     // that leave then finally landed, the leave would take the fresh call's
     // membership back — the peer would watch us walk out of a call we had only
-    // just joined. Waiting here orders the two: the enter always follows the
-    // leave. `join` bounds how long it holds up connecting; this bounds nothing,
-    // because a membership published before its predecessor's retract is wrong,
-    // not merely slow — and the leave is itself a bounded network call, so it
-    // settles rather than hanging for ever. Media is already connected by the
-    // time this runs, so the wait costs a slower ring, never a silent call.
+    // just joined. Waiting here orders the two: the enter follows the leave.
+    //
+    // BOUNDED, though. `_leaving` can hold a raw session.leave() that never
+    // answers — its own waiter in retract() only timed out, it did not stop the
+    // call. Waiting on it without a limit would strand this new call in
+    // connecting with its microphone already open (media.connect ran before
+    // this) until something tore it down by hand, and the record's `settled`
+    // would wait for ever too. So past the window the enter goes ahead: the rare
+    // cost is that stale leave landing late and retracting this membership,
+    // which is recoverable, where a call held open for ever is not.
     final pendingLeave = _leaving;
     if (pendingLeave != null) {
       _stopIfDisposed();
       Logs().i('Holding the membership until the last leave finishes');
       try {
-        await pendingLeave;
+        await pendingLeave.timeout(_leaveWithin);
       } catch (_) {
-        // Its own retract path handles the failure; this only needed it to
-        // settle so the enter below cannot be overtaken by it.
+        // Settled, timed out, or failed — in every case the enter below may now
+        // proceed. Its retract path owns any failure of the leave itself.
       }
       _stopIfDisposed();
     }
