@@ -563,10 +563,17 @@ class ActiveCall extends ChangeNotifier {
   }) async {
     _room = room;
     _startedAt = DateTime.now();
-    // Subscribed before anything else. Two people calling at the same moment is
-    // decided by seeing their ring, and the window this has to cover starts when
-    // ours does — not when our media happens to be ready.
-    _peerRings = calls.ringsIn(room).listen(_onPeerRing);
+    // Subscribed before anything else, but only when PLACING. Two people
+    // calling at the same moment is decided by seeing the other's ring, and the
+    // window this has to cover starts when ours does — not when our media
+    // happens to be ready. Someone ANSWERING has no glare to detect: they did
+    // not place a call, so the caller's own ring — which lands on this same
+    // stream, inside the glare window of a quick answer — is not evidence the
+    // peer "also placed". Listening for it there just set a flag on the wrong
+    // side of the call.
+    if (!answering) {
+      _peerRings = calls.ringsIn(room).listen(_onPeerRing);
+    }
     try {
       // NOT through the guarded step. Joining leaves the service holding the
       // call, so that has to be written down before anything decides to give up

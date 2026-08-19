@@ -1668,6 +1668,25 @@ void main() {
       expect(call.peerRingSenderId, '@peer:server');
     });
 
+    test('an answerer does not mistake the caller ring for glare', () async {
+      // Answering shows a banner from the caller's own ring, and a quick answer
+      // lands inside the glare window of it. That ring is not evidence the peer
+      // ALSO placed a call — this side placed nothing — so it must not set the
+      // flag the who-writes decision reads. Glare is only ever between two
+      // callers, and an answerer is not one.
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true; // the caller is already on the call
+      await call.start(roomStub(calls.client), video: false, answering: true);
+      await calls.peerAlsoCalls(); // the caller's own ring, landing now
+
+      expect(call.placedCall, isFalse);
+      expect(
+        call.peerAlsoPlaced,
+        isFalse,
+        reason: 'an answered call has no glare to detect',
+      );
+    });
+
     test('is noticed even when they get here before their ring', () async {
       // Each side joins the SFU before it rings, so in a genuine simultaneous
       // call their presence routinely reaches us BEFORE their ring does.
