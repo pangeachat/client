@@ -23,9 +23,20 @@ class CallMedia {
   /// the whole attribution guarantee rests on it: without it this device
   /// publishes the peer's voice back into the call, and every word that bled
   /// through would be transcribed as the wrong learner's.
+  ///
+  /// `stopAudioCaptureOnMute` is turned OFF, against the LiveKit default of on.
+  /// On the default, muting STOPS the capture track and unmuting builds a brand
+  /// new one — and the recorder tap, attached once to the original track, is
+  /// left on a dead track, so everything the learner says after they unmute goes
+  /// unrecorded. Left running, mute only disables the track: it transmits
+  /// silence to the peer and the recorder captures that same silence, so a mute
+  /// reads as a pause in the transcript and speech after it is still captured on
+  /// the one continuous track. The cost is that the microphone stays claimed
+  /// while muted; the recording, which is the point of the call, is what wins.
   static const microphone = AudioCaptureOptions(
     echoCancellation: true,
     noiseSuppression: true,
+    stopAudioCaptureOnMute: false,
   );
 
   bool _released = false;
