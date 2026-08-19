@@ -87,11 +87,35 @@ class CallTranscriptSink implements CallAudioSink {
   bool get hasTranscript => _byIndex.values.any((r) => r.hasUsableTranscript);
 
   @override
-  Future<void> deliver(PcmChunk chunk) async {
+  Future<void> deliver(PcmChunk chunk) {
+    // A redelivery of a chunk still being transcribed joins that work rather
+    // than returning as though it were finished. The caller gives each attempt a
+    // limit and retries; without this, the retry reported success while the
+    // first attempt was still running, and the call's words could be read before
+    // it landed.
+    final running = _running[chunk.index];
+    if (running != null) return running;
+
     // A chunk is transcribed once. Redelivery — a retry, or a hangup racing a
     // flush — must not bill the route again or count the same words twice.
-    if (!_transcribed.add(chunk.index)) return;
+    if (!_transcribed.add(chunk.index)) return Future.value();
 
+    // A block, not an arrow. Removing from the map RETURNS the future being
+    // removed, and whenComplete waits for a future its callback returns — so
+    // the arrow form makes this future wait for itself and it never completes.
+    final work = _transcribeChunk(chunk).whenComplete(() {
+      _running.remove(chunk.index);
+    });
+    _running[chunk.index] = work;
+    return work;
+  }
+
+  /// Transcriptions still running, by chunk. Closing waits for these: the words
+  /// are read the moment the call is over, and one still in flight would be
+  /// missing from them.
+  final Map<int, Future<void>> _running = {};
+
+  Future<void> _transcribeChunk(PcmChunk chunk) async {
     try {
       _byIndex[chunk.index] = await transcribe(
         SpeechToTextRequestModel(
@@ -111,8 +135,28 @@ class CallTranscriptSink implements CallAudioSink {
     }
   }
 
+  /// How long closing waits for transcriptions still running.
+  ///
+  /// They carry their own limits, so this only exists so that a stuck one cannot
+  /// hold the end of a call open for ever.
+  static const _settleWithin = Duration(seconds: 60);
+
   @override
-  Future<void> close() async {}
+  Future<void> close() async {
+    // Waited for, not abandoned. The call's words are read as soon as this
+    // returns, and a transcription still running would simply be missing from
+    // them — the learner would lose that stretch with nothing to show why.
+    while (_running.isNotEmpty) {
+      try {
+        await Future.wait(List.of(_running.values)).timeout(_settleWithin);
+      } on TimeoutException {
+        Logs().w(
+          'Gave up waiting for a call transcription; its words are lost',
+        );
+        return;
+      }
+    }
+  }
 
   /// The call's speaking analytics, as one batch.
   ///

@@ -116,6 +116,11 @@ class CallService {
   /// How long a failed lookup is left in place before the next ask retries it.
   static const _retryFocusAfter = Duration(seconds: 30);
 
+  /// How long leaving waits for a join that has not landed. Past this the leave
+  /// goes anyway: the membership expires by itself, and holding the microphone
+  /// open is the worse outcome.
+  static const _settleEnterWithin = Duration(seconds: 5);
+
   /// Drops a held failure so the next [resolveFocus] asks immediately.
   @visibleForTesting
   void retryFocusNow() => _resolving = null;
@@ -315,6 +320,13 @@ class CallService {
   }
 
   /// Our own membership's event id in [room]'s current call, or null.
+  ///
+  /// Read again at the end of a call by a device that had none: the wait when
+  /// announcing is deliberately short so a caller is never left hanging, and a
+  /// device that joined a call already under way has nothing else to anchor its
+  /// analytics to.
+  String? membershipEventIdIn(Room room) => _myMembershipEventId(room);
+
   String? _myMembershipEventId(Room room) {
     for (final m in room.getCallMembershipsForUser(
       client.userID!,
@@ -474,9 +486,11 @@ class CallService {
     final session = _current;
     try {
       if (session == null) return !_abandonedMembership;
-      // Never leave before the enter it undoes has landed.
+      // Never leave before the enter it undoes has landed — but not for ever.
+      // Everything after this frees the microphone and the camera, so a join
+      // that is stuck would otherwise leave them open for as long as it hung.
       try {
-        await _entering;
+        await _entering?.timeout(_settleEnterWithin);
       } catch (_) {}
       // Retried here, holding the session, because releasing it first left
       // nothing to retry WITH — a later attempt would find nothing to leave and

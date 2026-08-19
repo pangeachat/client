@@ -13,6 +13,7 @@ import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/call_token_repo.dart';
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Records the order every step ran in, which is the property under test: the
 /// call comes up in one order and down in the reverse, and the failure paths
@@ -93,14 +94,29 @@ class FakeCalls extends CallService {
   Stream<Event> ringsIn(matrix.Room room) => _rings.stream;
 
   /// The other person calling us at the same moment we call them.
-  Future<void> peerAlsoCalls() async {
+  ///
+  /// A real notification, because only a live one counts: sync replays old
+  /// events, and a call from an hour ago is not somebody calling now.
+  Future<void> peerAlsoCalls({Duration age = Duration.zero}) async {
+    final sentAt = DateTime.now().subtract(age);
     _rings.add(
       Event(
-        type: 'ring',
-        content: const {},
+        type: PangeaEventTypes.callNotification,
+        content: {
+          'application': {
+            'type': 'm.call',
+            'notification_type': 'ring',
+            'sender_ts': sentAt.millisecondsSinceEpoch,
+            'lifetime': 30000,
+          },
+          'm.relates_to': {
+            'rel_type': 'm.reference',
+            'event_id': '\$theirmembership',
+          },
+        },
         eventId: '\$theirs',
         senderId: '@peer:server',
-        originServerTs: DateTime.now(),
+        originServerTs: sentAt,
         room: matrix.Room(id: '!r:server', client: client),
       ),
     );
@@ -213,15 +229,29 @@ class FakeCapture extends CallCaptureService {
   Completer<void>? holdStop;
   FakeCapture(this.trace) : super(sink: _NullSink());
 
+  /// Modelled, not assumed. The recorder reads this back after starting to
+  /// learn whether a tap actually attached, so a double that ignored it would
+  /// hide exactly the case that reading it exists to catch.
+  bool _recording = false;
+
+  /// A device with no point to record from: starting succeeds, and nothing is
+  /// recording afterwards.
+  bool attachesNothing = false;
+
+  @override
+  bool get isRecording => _recording;
+
   @override
   Future<void> start(covariant Object track) async {
     trace('capture.start');
     if (startError != null) throw startError!;
+    _recording = !attachesNothing;
   }
 
   @override
   Future<void> stop() async {
     trace('capture.stop');
+    _recording = false;
     if (holdStop != null) await holdStop!.future;
     if (stopError != null) throw stopError!;
   }
@@ -1167,6 +1197,23 @@ void main() {
       expect(call.placedCall, isTrue);
       expect(call.peerAlsoPlaced, isTrue);
     });
+
+    test('an old call of theirs is not somebody calling now', () async {
+      // Sync replays events. Counting a stale one would make this side stand
+      // aside from writing the call, while the other side — not in a call at
+      // all — never writes it either, and the call would vanish.
+      final (call, calls, _, _) = await build();
+      final ringGate = Completer<void>();
+      calls.holdRing = ringGate;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      await calls.peerAlsoCalls(age: const Duration(hours: 1));
+      ringGate.complete();
+      await starting;
+
+      expect(call.peerAlsoPlaced, isFalse);
+    });
   });
   group('when both people call at the same moment', () {
     test('a caller alone does not think the peer also called', () async {
@@ -1193,6 +1240,30 @@ void main() {
 
       expect(call.placedCall, isTrue);
       expect(call.peerAlsoPlaced, isTrue);
+    });
+  });
+  group('a device where no tap could be attached', () {
+    test('is tried again by the next election', () async {
+      // Starting succeeds and records nothing — no point to read from, or the
+      // platform side not up yet. Treating that as recording would stop every
+      // later election from trying, and the call would go uncredited for a
+      // failure that may have been momentary.
+      final (call, calls, _, capture) = await build();
+      capture.attachesNothing = true;
+      await call.start(roomStub(calls.client), video: false);
+
+      final first = trace.steps.where((s) => s == 'capture.start').length;
+      capture.attachesNothing = false;
+      // A real change to who is in the call, so an election actually runs.
+      calls.remotePresent = true;
+      await pumpEventQueue();
+
+      expect(
+        trace.steps.where((s) => s == 'capture.start').length,
+        greaterThan(first),
+        reason: 'a tap that did not attach must be attempted again',
+      );
+      expect(call.isRecording, isTrue);
     });
   });
 }

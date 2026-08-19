@@ -8,6 +8,7 @@ import 'package:matrix/matrix.dart' hide Room;
 
 import 'package:fluffychat/routes/chat/calls/call_capture.dart';
 import 'package:fluffychat/routes/chat/calls/call_media.dart';
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
@@ -89,6 +90,23 @@ class ActiveCall extends ChangeNotifier {
 
   bool _peerAlsoPlaced = false;
 
+  /// Whether the other person is calling us right now, as opposed to having
+  /// called at some point in the past.
+  ///
+  /// Sync replays old events, and a call from an hour ago is not somebody
+  /// calling at the same moment as us. Counting one would make this side stand
+  /// aside from writing the call to the room while the other side, not being in
+  /// a call at all, never writes it either — so the call would vanish.
+  void _onPeerRing(Event event) {
+    final ring = IncomingCallNotification(
+      event: event,
+      myUserId: calls.client.userID ?? '',
+      alreadyJoined: false,
+    );
+    if (!ring.shouldRing(DateTime.now())) return;
+    _peerAlsoPlaced = true;
+  }
+
   /// Whether the other person was calling us at the same moment we called them.
   ///
   /// Both sides then believe they placed the call, so both would write it to
@@ -99,12 +117,27 @@ class ActiveCall extends ChangeNotifier {
 
   String? _membershipEventId;
 
+  /// The room this call is in. Kept so the membership can be asked for again
+  /// once the call is over, when a device that joined one already under way has
+  /// nothing else to anchor its analytics to.
+  matrix.Room? _room;
+
   /// This device's membership event for the call.
   ///
   /// The fallback anchor for analytics on a device that neither rang nor was
   /// rung — one joining a call already under way. Without it everything that
   /// device's learner said went uncredited.
-  String? get membershipEventId => _membershipEventId;
+  ///
+  /// Asked again if announcing did not see it in time. That wait is deliberately
+  /// short so a caller is never left hanging, but by the time a call is over the
+  /// membership has long since arrived.
+  String? get membershipEventId {
+    final known = _membershipEventId;
+    if (known != null) return known;
+    final room = _room;
+    if (room == null) return null;
+    return _membershipEventId = calls.membershipEventIdIn(room);
+  }
 
   ActiveCall({required this.calls, required this.media, required this.capture});
 
@@ -163,7 +196,10 @@ class ActiveCall extends ChangeNotifier {
         // recording this as capturing before it succeeded would leave the
         // election believing a device is recording when it is not.
         await capture.start(track);
-        _capturing = true;
+        // Read back rather than assumed. A device with no point to record from
+        // returns without attaching one, and calling that "recording" would stop
+        // every later election from trying again.
+        _capturing = capture.isRecording;
         Logs().i('Recording this call on this device');
       } else {
         await capture.stop();
@@ -363,6 +399,7 @@ class ActiveCall extends ChangeNotifier {
     required bool video,
     required bool answering,
   }) async {
+    _room = room;
     try {
       final grant = await _step(() => calls.join(room));
       _joined = true;
@@ -440,7 +477,7 @@ class ActiveCall extends ChangeNotifier {
       // Their ring, if they are calling us at the same time. Subscribed
       // alongside the declines and before our own ring goes out, so a
       // simultaneous call is seen however the two sends interleave.
-      _peerRings = calls.ringsIn(room).listen((_) => _peerAlsoPlaced = true);
+      _peerRings = calls.ringsIn(room).listen(_onPeerRing);
 
       if (placing && membershipId != null) {
         // Assigned before the check, so a hangup landing here still knows the
