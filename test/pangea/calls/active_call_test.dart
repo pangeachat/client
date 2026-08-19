@@ -182,12 +182,16 @@ class FakeCalls extends CallService {
   bool joinClaimed = false;
 
   @override
-  void abandonJoin() => joinClaimed = false;
+  void abandonJoin(int attempt) => joinClaimed = false;
   Object? announceError;
   Object? retractError;
   bool retractFails = false;
 
   FakeCalls(super.client, this.trace);
+
+  @override
+  @override
+  int get joinAttempt => 0;
 
   @override
   Future<CallToken> join(matrix.Room room) async {

@@ -572,6 +572,10 @@ class ActiveCall extends ChangeNotifier {
       // call, so that has to be written down before anything decides to give up
       // — a hangup landing in between skipped the retract, and the service then
       // believed it was still in a call and refused every later one.
+      // Taken before the call: whatever attempt number the service is on when
+      // we ask is the one our join becomes, and it is what lets us give up OUR
+      // join later rather than whichever happens to be running by then.
+      _joinAttempt = calls.joinAttempt + 1;
       final grant = await calls.join(room);
       _joined = true;
       _abandonIfEnding();
@@ -703,6 +707,12 @@ class ActiveCall extends ChangeNotifier {
       // The user ended the call while it was coming up. Every piece already
       // built is unwound here, once, for whichever step gave up.
       return _abandon();
+    } on AlreadyInACall {
+      // Never held the account's claim, so it must not be given up here — that
+      // would cancel the join that DOES hold it, which is somebody else's call
+      // coming up.
+      _joinAttempt = null;
+      rethrow;
     } catch (e, s) {
       if (_ending) {
         // Tearing down underneath a step in flight is what made it throw, so
@@ -765,13 +775,17 @@ class ActiveCall extends ChangeNotifier {
 
   Future<void>? _releasing;
 
+  /// The service's join attempt this call owns, if it got that far.
+  int? _joinAttempt;
+
   Future<void> _release() async {
     if (!_joined) {
       // No membership to take back — the join never came back. The service is
       // still holding this account's one call for it, though, and until that is
       // handed over every incoming ring is suppressed and every new call
       // refused, with the screen already closed.
-      calls.abandonJoin();
+      final attempt = _joinAttempt;
+      if (attempt != null) calls.abandonJoin(attempt);
       return;
     }
     try {

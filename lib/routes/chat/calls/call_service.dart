@@ -168,7 +168,7 @@ class CallService {
       _abandonedMembership = false;
     }
     if (_current != null || _joining) {
-      throw StateError('this account is already in a call');
+      throw const AlreadyInACall();
     }
     _joining = true;
     final attempt = ++_joinAttempt;
@@ -185,13 +185,20 @@ class CallService {
       // way to release it: a hangup cannot give back a call that never arrived.
       return await _join(room, attempt).timeout(_joinWithin);
     } on TimeoutException {
-      // Whatever is still in flight belongs to nobody now, so it must not
+      // Released here rather than left to the guard below, which by then would
+      // see the bumped attempt and decline to touch a claim this call still
+      // owns. Whatever is still in flight belongs to nobody now, so it must not
       // install itself as this account's call when it finally lands.
+      _joining = false;
       _joinAttempt++;
       Logs().w('Gave up joining the call; it took too long to come up');
       rethrow;
     } finally {
-      _joining = false;
+      // Only if this attempt still owns the claim. A later join takes it over
+      // when this one has been given up on, and clearing it then reported the
+      // account free while that newer join was still in flight — so a third
+      // call could start on top of it.
+      if (attempt == _joinAttempt) _joining = false;
     }
   }
 
@@ -245,12 +252,19 @@ class CallService {
   /// for that long every incoming ring was suppressed and every new call
   /// refused, with the screen already closed. Anything still in flight is
   /// disowned so it cannot install itself afterwards.
-  void abandonJoin() {
-    if (!_joining) return;
+  void abandonJoin(int attempt) {
+    // Only the attempt that made the claim may give it up. A call refused
+    // because this account was already joining never held it, and cancelling on
+    // its way out took down somebody else's join in flight.
+    if (!_joining || attempt != _joinAttempt) return;
     _joinAttempt++;
     _joining = false;
     Logs().i('Gave up a join the user no longer wants');
   }
+
+  /// Which join attempt is current. A caller keeps this so it can give up its
+  /// OWN join later, and nobody else's.
+  int get joinAttempt => _joinAttempt;
 
   /// Whether a join that was given up on should hand its session back.
   ///
@@ -757,4 +771,16 @@ class CallService {
 
   @visibleForTesting
   bool get voipConstructed => _voip != null;
+}
+
+/// Raised when this account is already in a call, or already joining one.
+///
+/// A distinct type because the caller has to tell it apart from a join that
+/// failed: one that was refused never held the account's claim, and giving that
+/// claim up on the way out would cancel somebody else's join.
+class AlreadyInACall implements Exception {
+  const AlreadyInACall();
+
+  @override
+  String toString() => 'This account is already in a call';
 }

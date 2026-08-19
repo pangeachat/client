@@ -246,6 +246,44 @@ void main() {
     });
   });
 
+  group('a join refused because one is already running', () {
+    test('does not cancel the join that is actually running', () async {
+      // The refused call never held the account's claim. Giving it up on the
+      // way out cancelled the join that DOES hold it — somebody else's call,
+      // still coming up — and that call then lost its session.
+      final client = await bareClient();
+      client.homeserver = Uri.parse('http://localhost:8008');
+      final held = Completer<http.Response>();
+      final service = CallService(
+        client,
+        focusDiscovery: RtcFocusDiscovery(
+          httpClient: MockClient((_) => held.future),
+        ),
+      );
+
+      final room = Room(id: '!r:server', client: client);
+      final first = service.join(room);
+      final claimed = service.joinAttempt;
+      await expectLater(service.join(room), throwsA(isA<AlreadyInACall>()));
+
+      // What the refused call would do on its way out, with the attempt number
+      // it would have had.
+      service.abandonJoin(claimed + 1);
+      expect(
+        service.isBusy,
+        isTrue,
+        reason: 'the running join still holds the account',
+      );
+
+      // And the one that really owns it can still give it up.
+      service.abandonJoin(claimed);
+      expect(service.isBusy, isFalse);
+
+      held.complete(http.Response('{"errcode":"M_NOT_FOUND"}', 404));
+      await expectLater(first, throwsA(isA<Object>()));
+    });
+  });
+
   group('two calls that share a membership', () {
     test('do not ring with the same transaction id', () async {
       // A retract that failed leaves the membership in place, and the next call
@@ -471,7 +509,10 @@ void main() {
         final first = service.join(Room(id: '!r:server', client: client));
         await expectLater(
           service.join(Room(id: '!r:server', client: client)),
-          throwsStateError,
+          throwsA(isA<AlreadyInACall>()),
+          reason:
+              'a refusal is told apart from a join that failed, because the '
+              'refused one never held the claim and must not give it up',
         );
 
         held.complete(http.Response('{"errcode":"M_NOT_FOUND"}', 404));
