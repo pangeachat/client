@@ -6,6 +6,7 @@ import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_category.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
 import 'package:fluffychat/features/dosage/dosage_signal_identity.dart';
+import 'package:fluffychat/features/dosage/dosage_voice_message.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// The single place a finished playback becomes a dosage signal.
@@ -50,6 +51,66 @@ class DosageAudioSignals {
         buffer?.noteVoiceSendSettled(delivered: delivered);
       } catch (_) {}
     };
+  }
+
+  /// Records a sent voice message and its measured duration, so speaking can
+  /// populate for the DM / 1:1 / bot rooms the server's teacher-token path can
+  /// never read (admin-dash-api#150 / #104).
+  ///
+  /// [msgId] MUST be the resolved `m.audio` Matrix event id — the SAME id the
+  /// message's envelope and `pvm` uses carry — so the server dedups a retry on
+  /// `(sender, msg_id)` and correlates the duration to the right message.
+  /// [durationMs] is `content.info.duration`. Both are validated here and again
+  /// on the model, and an out-of-range duration or blank id is dropped rather
+  /// than sent — a bad row would 422 the whole audio-signals batch server-side.
+  ///
+  /// Synchronous and allocation-only: it appends to the in-memory buffer and
+  /// returns. Nothing is awaited, nothing is posted, and no user action waits on
+  /// it. Delivery rides the analytics heartbeat, and the buffer no-ops unless the
+  /// capability flag is on, so this stays inert until every server ships #150.
+  /// Never throws.
+  static void recordVoiceMessage({
+    required String? msgId,
+    required String? roomId,
+    required int durationMs,
+    required String? userId,
+    required String? accessToken,
+    DateTime? sentAt,
+    DosageAudioBuffer? buffer,
+  }) {
+    try {
+      if (msgId == null || msgId.trim().isEmpty) return;
+      if (roomId == null || roomId.isEmpty) return;
+      if (durationMs < 0 || durationMs > DosageVoiceMessage.maxDurationMs) {
+        return;
+      }
+      // An unknown account has no buffer to attribute this to; dropping it is
+      // right for the same reason a playback is dropped there.
+      final target = buffer ?? DosageAudioBuffer.forAccount(userId ?? "");
+      if (target == null) return;
+      target.recordVoiceMessage(
+        DosageVoiceMessage(
+          msgId: msgId,
+          roomId: roomId,
+          durationMs: durationMs,
+          ts: (sentAt ?? DateTime.now()).toUtc(),
+        ),
+        accessToken: accessToken,
+      );
+    } catch (e, s) {
+      // Best-effort, exactly like [recordPlayback]: the error report is async, so
+      // detach it lest a Sentry failure surface on the send path as an unhandled
+      // rejection.
+      unawaited(
+        ErrorHandler.logError(
+          e: e,
+          s: s,
+          level: SentryLevel.warning,
+          m: "Best-effort dosage voice-message emit failed (swallowed)",
+          data: const {"signal": "voice-message"},
+        ).catchError((_) {}),
+      );
+    }
   }
 
   /// Records one finished playback against [category].

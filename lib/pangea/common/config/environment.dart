@@ -142,6 +142,20 @@ class Environment {
         (dotenv.env["DOSAGE_SIGNALS_ENABLED"]?.toLowerCase() == 'true');
   }
 
+  /// Capability gate for the client-reported voice-message durations that
+  /// populate speaking (`voice_messages` on the audio-signals lane; see
+  /// [DosageSignalsRepo] and admin-dash-api#150). Defaults to `false` so it
+  /// ships dark, and it is deliberately SEPARATE from [dosageSignalsEnabled]:
+  /// the audio lane is already live against servers that predate the
+  /// `voice_messages` field, whose `extra="forbid"` ingest 422s an unknown key
+  /// and takes the sibling playback + coverage lanes down with it. So this flag
+  /// is turned on ONLY once every target server has shipped #150 — reversing the
+  /// usual client-ahead-of-server hazard the sibling routes guard against.
+  static bool get dosageVoiceMessagesEnabled {
+    return appConfigOverride?.dosageVoiceMessagesEnabled ??
+        (dotenv.env["DOSAGE_VOICE_MESSAGES_ENABLED"]?.toLowerCase() == 'true');
+  }
+
   /// Feature flag for the voice-transcript tokenizer-decouple send path.
   /// Defaults to `false` so it ships dark: when OFF, `onVoiceMessageSend` uses
   /// today's blocking tokenized path byte-for-byte. When ON, the send awaits
@@ -285,6 +299,7 @@ class AppConfigOverride {
   final String? teacherBffApi;
   final bool? analyticsDualWriteEnabled;
   final bool? dosageSignalsEnabled;
+  final bool? dosageVoiceMessagesEnabled;
   final bool? voiceTranscriptDecoupleEnabled;
   final bool? liveStreamingSttEnabled;
   final String? sentryDsn;
@@ -304,6 +319,7 @@ class AppConfigOverride {
     this.teacherBffApi,
     this.analyticsDualWriteEnabled,
     this.dosageSignalsEnabled,
+    this.dosageVoiceMessagesEnabled,
     this.voiceTranscriptDecoupleEnabled,
     this.liveStreamingSttEnabled,
     this.sentryDsn,
@@ -325,6 +341,7 @@ class AppConfigOverride {
       teacherBffApi: json['teacherBffApi'] as String?,
       analyticsDualWriteEnabled: json['analyticsDualWriteEnabled'] as bool?,
       dosageSignalsEnabled: json['dosageSignalsEnabled'] as bool?,
+      dosageVoiceMessagesEnabled: json['dosageVoiceMessagesEnabled'] as bool?,
       voiceTranscriptDecoupleEnabled:
           json['voiceTranscriptDecoupleEnabled'] as bool?,
       liveStreamingSttEnabled: json['liveStreamingSttEnabled'] as bool?,
@@ -349,6 +366,7 @@ class AppConfigOverride {
       'teacherBffApi': teacherBffApi,
       'analyticsDualWriteEnabled': analyticsDualWriteEnabled,
       'dosageSignalsEnabled': dosageSignalsEnabled,
+      'dosageVoiceMessagesEnabled': dosageVoiceMessagesEnabled,
       'voiceTranscriptDecoupleEnabled': voiceTranscriptDecoupleEnabled,
       'liveStreamingSttEnabled': liveStreamingSttEnabled,
       'sentryDsn': sentryDsn,
@@ -372,6 +390,7 @@ class AppConfigOverride {
         teacherBffApi.hashCode ^
         analyticsDualWriteEnabled.hashCode ^
         dosageSignalsEnabled.hashCode ^
+        dosageVoiceMessagesEnabled.hashCode ^
         voiceTranscriptDecoupleEnabled.hashCode ^
         liveStreamingSttEnabled.hashCode ^
         sentryDsn.hashCode ^
@@ -395,6 +414,7 @@ class AppConfigOverride {
         teacherBffApi == other.teacherBffApi &&
         analyticsDualWriteEnabled == other.analyticsDualWriteEnabled &&
         dosageSignalsEnabled == other.dosageSignalsEnabled &&
+        dosageVoiceMessagesEnabled == other.dosageVoiceMessagesEnabled &&
         voiceTranscriptDecoupleEnabled ==
             other.voiceTranscriptDecoupleEnabled &&
         liveStreamingSttEnabled == other.liveStreamingSttEnabled &&

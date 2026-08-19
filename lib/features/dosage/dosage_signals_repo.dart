@@ -11,6 +11,7 @@ import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_span.dart';
 import 'package:fluffychat/features/dosage/dosage_message_event.dart';
 import 'package:fluffychat/features/dosage/dosage_session_outcome.dart';
+import 'package:fluffychat/features/dosage/dosage_voice_message.dart';
 import 'package:fluffychat/pangea/common/config/environment.dart';
 import 'package:fluffychat/pangea/common/network/urls.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
@@ -109,6 +110,37 @@ class DosageSignalsRepo {
       return false;
     }
   }
+
+  /// Whether client-reported voice-message durations may be put on the wire.
+  ///
+  /// [isEnabled] PLUS the dedicated capability flag, and the AND is the whole
+  /// point. The `voice_messages` field is the ONE part of the audio-signals body
+  /// an older server cannot tolerate: its `extra="forbid"` ingest 422s an unknown
+  /// key and takes the sibling playback + coverage lanes in the same body down
+  /// with it. Those lanes are already live, so the field may reach a server ONLY
+  /// once a deployer has confirmed it ships #150 and flips this flag. Reading it
+  /// through one getter means the buffer (which stops RECORDING) and
+  /// [postAudioSignals] (which stops SENDING) can never disagree about whether the
+  /// field is safe. Resolves to false — never throws — if the env is unreadable,
+  /// for the same reason [isEnabled] does.
+  static bool get voiceMessagesEnabled {
+    try {
+      return isEnabled && Environment.dosageVoiceMessagesEnabled;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  /// The server's `MAX_BATCH`: the most items (playbacks + coverage + voice
+  /// messages, counted TOGETHER) one audio-signals body may carry before the
+  /// route 413s it and loses the whole period. Mirrors admin-dash-api's
+  /// `MAX_BATCH`; [DosageAudioBuffer.maxItemsPerBatch] is the buffer's own copy
+  /// of the same server contract (both reference the server, not each other, to
+  /// avoid a circular import). The wire builder uses it to bound the VOICE
+  /// contribution it adds; the events+coverage aggregate is the buffer's
+  /// invariant, which the wire cannot trim without breaking event↔coverage
+  /// co-travel (see [postAudioSignals]).
+  static const int _maxBatchItems = 200;
 
   /// Best-effort POST of one or more message-envelope signals. Skips silently
   /// when disabled, when there is no access token, or when every event is
@@ -231,6 +263,7 @@ class DosageSignalsRepo {
   static Future<DosageAudioPostResult> postAudioSignals({
     required List<DosageAudioEvent> events,
     required List<DosageAudioCoverage> coverage,
+    List<DosageVoiceMessage> voiceMessages = const [],
     required String? accessToken,
     http.Client? client,
   }) async {
@@ -239,20 +272,84 @@ class DosageSignalsRepo {
         .where((e) => e.hasWellFormedRoom && e.elapsedMs > 0)
         .toList();
     final validCoverage = coverage.where((c) => c.isValid).toList();
-    if (validEvents.isEmpty && validCoverage.isEmpty) {
+    // THE load-bearing old-server gate. This is the single place `voice_messages`
+    // enters the wire, and gating it on [voiceMessagesEnabled] makes the ONE
+    // safety-critical direction true by construction: the field is on the wire
+    // ONLY IF the flag is on — equivalently, flag off (the default, and the whole
+    // steady state until #150 is deployed) NEVER sends the key, leaving a body
+    // byte-identical to today's that every already-live server accepts. The
+    // converse does NOT hold: flag on merely PERMITS the field; whether it then
+    // actually appears also needs valid, non-empty voice rows with cap room (see
+    // the `if (validVoiceMessages.isNotEmpty)` on the body below). `events` and
+    // `coverage` keep posting regardless. Tying flag-on to "every target server
+    // has #150" is an OPERATIONAL contract (enable the flag only after #150
+    // deploys), not something the code proves — the 422 retry below is the net for
+    // when that contract slips. Invalid rows (out-of-bound duration, blank id) are
+    // dropped per-row so one bad row never 422s the batch.
+    //
+    // The wire cap trims VOICE so this change can never turn a within-budget body
+    // into a 413: it holds `voice <= _maxBatchItems - events - coverage`. The
+    // events+coverage aggregate stays the BUFFER's invariant (it seals at most 186
+    // observations + 14 coverage = 200) and the wire deliberately does NOT re-own
+    // it: trimming an event while keeping the coverage that declared its period
+    // would serve an undercount as a confident total, the very defect co-travel
+    // exists to avoid. So voice is the only list safe to trim here, and it is
+    // dropped first precisely so a trim can never touch the already-live lanes.
+    final int voiceRoom =
+        _maxBatchItems - validEvents.length - validCoverage.length;
+    final validVoiceMessages = voiceMessagesEnabled
+        ? voiceMessages
+              .where((v) => v.isValid)
+              .take(voiceRoom < 0 ? 0 : voiceRoom)
+              .toList()
+        : const <DosageVoiceMessage>[];
+    if (validEvents.isEmpty &&
+        validCoverage.isEmpty &&
+        validVoiceMessages.isEmpty) {
       return DosageAudioPostResult.undelivered;
     }
-    final http.Response? response = await _sendForDelivery(
+    final Map<String, dynamic> baseBody = {
+      "events": validEvents.map((e) => e.toJson()).toList(),
+      "coverage": validCoverage.map((c) => c.toJson()).toList(),
+    };
+    http.Response? response = await _sendForDelivery(
       url: PApiUrls.dosageAudioSignals,
-      body: {
-        "events": validEvents.map((e) => e.toJson()).toList(),
-        "coverage": validCoverage.map((c) => c.toJson()).toList(),
-      },
+      body: validVoiceMessages.isEmpty
+          ? baseBody
+          : {
+              ...baseBody,
+              "voice_messages": validVoiceMessages
+                  .map((v) => v.toJson())
+                  .toList(),
+            },
       accessToken: accessToken!,
       client: client,
       signal: "audio-signals",
-      count: validEvents.length + validCoverage.length,
+      count:
+          validEvents.length + validCoverage.length + validVoiceMessages.length,
     );
+    // Old-server safety net for the already-live lanes. A server that predates
+    // the `voice_messages` field 422s the unknown key and drops the WHOLE batch,
+    // listening included. The capability flag makes that unreachable in correct
+    // operation, but if the flag is ever enabled against such a server, retry
+    // ONCE with the field stripped so the playback + coverage lanes still land.
+    // Only on a 422 (a body-shape rejection), only when we actually sent the
+    // field, and only when there is a sibling lane to salvage — never for a
+    // 404/5xx, which the buffer's own retry handles. This is belt-and-suspenders
+    // on the siblings, never the primary gate, which stays the flag above.
+    if (validVoiceMessages.isNotEmpty &&
+        (validEvents.isNotEmpty || validCoverage.isNotEmpty) &&
+        response != null &&
+        response.statusCode == 422) {
+      response = await _sendForDelivery(
+        url: PApiUrls.dosageAudioSignals,
+        body: baseBody,
+        accessToken: accessToken,
+        client: client,
+        signal: "audio-signals",
+        count: validEvents.length + validCoverage.length,
+      );
+    }
     if (response == null || !_isDelivered(response.statusCode)) {
       return DosageAudioPostResult.undelivered;
     }
