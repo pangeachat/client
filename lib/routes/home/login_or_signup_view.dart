@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:collection/collection.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:go_router/go_router.dart';
 
 import 'package:fluffychat/config/app_config.dart';
@@ -58,10 +59,10 @@ class _LoginOrSignupViewState extends State<LoginOrSignupView> {
           fit: StackFit.expand,
           children: [
             if (isMobile)
-              Image.asset(
+              SvgPicture.asset(
                 theme.brightness == Brightness.dark
-                    ? 'assets/pangea/world_map_background_dark.png'
-                    : 'assets/pangea/world_map_background.png',
+                    ? 'assets/pangea/world-map-background-dark.svg'
+                    : 'assets/pangea/world-map-background.svg',
                 fit: BoxFit.cover,
                 excludeFromSemantics: true,
               )

@@ -25,10 +25,14 @@ See also: [returning-user-detection.instructions.md](returning-user-detection.in
 
 | Layout | Backdrop | Files |
 |---|---|---|
-| Narrow | World map | [`world_map_background.png`](../../assets/pangea/world_map_background.png) and [`world_map_background_dark.png`](../../assets/pangea/world_map_background_dark.png) |
+| Narrow | World map | [`world-map-background.svg`](../../assets/pangea/world-map-background.svg) and [`world-map-background-dark.svg`](../../assets/pangea/world-map-background-dark.svg) |
 | Wide | Stars over a base colour that follows the theme | [`star_background.png`](../../assets/pangea/star_background.png) |
 
-The star field needs only one file where the map needs two. It is a transparent image carrying nothing but the stars, so the base colour beneath it flips with the theme while the stars stay as they are. The map fills its whole frame with land and water, so it had to be rendered a second time in dark tones — there is no base showing through to do that work.
+**Where the map files come from.** Both are vendored copies of [`world-map-background.svg`](https://github.com/pangeachat/business/blob/main/brand/world-map-background.svg) and [`world-map-background-dark.svg`](https://github.com/pangeachat/business/blob/main/brand/world-map-background-dark.svg) in `pangeachat/business`, which is the source of truth for the artwork and for the `Map Land` / `Map Water` color tokens behind it. Refresh them by copying both files out of `business/brand/` into `assets/pangea/`; never edit them here, or the two repos drift.
+
+The client deliberately does **not** load these from `https://assets.pangea.chat/brand/`, where the same files are also published. Flutter bundles assets into the binary at build time, and this screen paints before the app has made any network call, so a remote URL would have nothing to fall back to. That is the same reasoning the website applies to its own copy.
+
+The star field needs only one file where the map needs two. It is a transparent image carrying nothing but the stars, so the base colour beneath it flips with the theme while the stars stay as they are. The map fills its whole frame with land and water, so it needs a second file in dark tones — there is no base showing through to do that work. Both map files are vector, two flat fills each, so the dark variant is the light one with its water and land fills swapped.
 
 The stars also give the wide layout something to fill the space around a slide with. Because a slide is capped rather than stretched, a broad window always leaves area around it, and that area now reads as part of the product rather than as an empty margin.
 
