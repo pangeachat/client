@@ -649,6 +649,31 @@ class CallService {
     _stopIfDisposed();
     final session = _current;
     if (session == null) return null;
+
+    // Never publish a membership while a leave that would retract it is still
+    // in flight. The session is fetched by room, so a redial lands on the same
+    // object a stalled leave still holds; if this enter wrote its membership and
+    // that leave then finally landed, the leave would take the fresh call's
+    // membership back — the peer would watch us walk out of a call we had only
+    // just joined. Waiting here orders the two: the enter always follows the
+    // leave. `join` bounds how long it holds up connecting; this bounds nothing,
+    // because a membership published before its predecessor's retract is wrong,
+    // not merely slow — and the leave is itself a bounded network call, so it
+    // settles rather than hanging for ever. Media is already connected by the
+    // time this runs, so the wait costs a slower ring, never a silent call.
+    final pendingLeave = _leaving;
+    if (pendingLeave != null) {
+      _stopIfDisposed();
+      Logs().i('Holding the membership until the last leave finishes');
+      try {
+        await pendingLeave;
+      } catch (_) {
+        // Its own retract path handles the failure; this only needed it to
+        // settle so the enter below cannot be overtaken by it.
+      }
+      _stopIfDisposed();
+    }
+
     // An enter already in flight is waited for, never doubled. The signal for
     // "in flight" is this future, not the session's state: with the LiveKit
     // backend enter() runs straight from an initialized state to `entered` and

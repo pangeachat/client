@@ -363,7 +363,12 @@ class _CallPageState extends State<CallPage> {
       Logs().w('Could not turn the camera ${next ? 'on' : 'off'}', e, s);
       return;
     }
-    if (next) _usedVideo = true;
+    // Only if the camera actually came on. Turning it on the instant the call
+    // ends is a no-op — the media guard refuses to open a device on a released
+    // call — but setCameraEnabled does not throw for it, so latching on the
+    // request alone wrote an ending voice call to the timeline as a video call
+    // the learner never had. The live connection is the proof it took.
+    if (next && _media.isConnected) _usedVideo = true;
     if (mounted) setState(() => _camera = next);
   }
 
