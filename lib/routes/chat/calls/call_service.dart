@@ -585,17 +585,24 @@ class CallService {
       // membership with nothing left tracking it — and this SDK's memberships
       // stand for minutes.
       final entering = _entering = session.enter();
-      try {
-        // Bounded like every other network step in a call's life. Announcing is
-        // awaited by the whole of coming up, and coming up is what the RECORD
-        // waits on — so an enter that never answered meant the call was never
-        // written and every word of it went uncredited, long after the learner
-        // had closed the screen. Held in [_entering] either way, so a retract
-        // still waits for it rather than racing it.
-        await entering.timeout(_announceWithin);
-      } finally {
-        if (identical(_entering, entering)) _entering = null;
-      }
+      // Released when the enter itself finishes, NOT when this stops waiting
+      // for it. Clearing it on the way out of a timeout let a retract go ahead
+      // without waiting, and the leave could then be overtaken by an enter that
+      // landed afterwards — advertising a membership with nothing left to take
+      // it back, for the minutes it takes to expire.
+      unawaited(
+        entering
+            .whenComplete(() {
+              if (identical(_entering, entering)) _entering = null;
+            })
+            .onError((Object _, StackTrace _) {}),
+      );
+      // Bounded like every other network step in a call's life. Announcing is
+      // awaited by the whole of coming up, and coming up is what the RECORD
+      // waits on — so an enter that never answered meant the call was never
+      // written and every word of it went uncredited, long after the learner
+      // had closed the screen.
+      await entering.timeout(_announceWithin);
     }
     return _awaitMembershipEventId(session.room);
   }
