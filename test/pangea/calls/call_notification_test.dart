@@ -206,6 +206,23 @@ void main() {
     });
   });
 
+  group('a notification from another kind of session', () {
+    test('does not ring', () {
+      // The proposal carries every MatrixRTC application through this one
+      // event, and any of them may ask to ring. A whiteboard announcing itself
+      // would otherwise put a call card on the learner's screen.
+      final whiteboard = notification(
+        application: {
+          'type': 'm.whiteboard',
+          'notification_type': 'ring',
+          'sender_ts': now.millisecondsSinceEpoch,
+          'lifetime': 30000,
+        },
+      );
+      expect(incoming(whiteboard).shouldRing(now), isFalse);
+    });
+  });
+
   group('a sender whose clock is wrong', () {
     test('is believed when it is close enough', () {
       final slightlyOff = notification(

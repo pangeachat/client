@@ -109,40 +109,49 @@ class ActiveCall extends ChangeNotifier {
   /// at the same moment as us, however recently it was sent.
   DateTime? _startedAt;
 
-  /// How far before this call began a ring can have been sent and still be the
-  /// two of us calling at once.
+  /// How far either side of this call beginning a ring can have been sent and
+  /// still be the two of us calling at once.
   ///
-  /// Not zero: a ring's timestamp is carried in whole milliseconds while this
-  /// clock reads in microseconds, so a genuinely simultaneous ring rounds down
-  /// to fractionally BEFORE the call it is simultaneous with. Wide enough to
-  /// absorb that and any ordinary clock granularity, and far narrower than the
-  /// minute and a half a ring stays valid for — which is the gap this is here
-  /// to exclude.
+  /// Both directions, because both are wrong in the same way. A ring sent
+  /// meaningfully BEFORE we began belongs to a call of theirs that already
+  /// ended — rings stay valid for a minute and a half, so one they gave up on
+  /// is still live when we call them back. A ring sent meaningfully AFTER
+  /// belongs to a new call of theirs, placed while we were already in this one.
+  /// Neither is the two of us reaching for the phone at the same moment.
+  ///
+  /// Not zero in either direction: a ring's timestamp is carried in whole
+  /// milliseconds while this clock reads in microseconds, so a genuinely
+  /// simultaneous ring can round to fractionally either side of the call it is
+  /// simultaneous with.
   static const _glareWindow = Duration(seconds: 3);
 
   void _onPeerRing(Event event) {
-    // Only while we are both still calling. Somebody who is in the call is not
-    // ringing us, so a ring arriving after they arrived belongs to some other
-    // call — and counting it here made this side believe the other had also
-    // placed THIS one. The write is then settled by comparing ids, and the one
-    // side that actually placed the call can end up standing aside: nobody
-    // writes it, and the call is missing from the conversation entirely.
-    if (_ending || _peerArrived) return;
+    // Deliberately NOT gated on whether they have arrived. In a genuine
+    // simultaneous call each side joins the SFU before it rings, so their
+    // presence routinely reaches us BEFORE their ring does — and standing that
+    // ring down because they were already here left both sides believing they
+    // alone had placed the call, so both wrote it and the conversation carried
+    // two cards for one call. When the ring was sent is what tells these apart,
+    // and it is checked below.
+    if (_ending) return;
     final ring = IncomingCallNotification(
       event: event,
       myUserId: calls.client.userID ?? '',
       alreadyJoined: false,
     );
     if (!ring.shouldRing(DateTime.now())) return;
-    // And only if it was sent after we began. A ring stays valid for up to a
-    // minute and a half, so one from a call of theirs that already ended — they
-    // rang, nobody answered, they hung up — is still unexpired when we call
-    // them back moments later. Counted, it makes this side stand aside from
-    // writing a call the other side is not writing either, and the call is
-    // missing from the conversation.
+    // And only if it was sent at about the moment this call began. Anything
+    // else is a different call of theirs — one they gave up on before we rang
+    // back, or a new one placed while we were already in this — and counting
+    // either made a side stand aside from writing a call nobody else was
+    // writing, so the call was missing from the conversation.
     final began = _startedAt;
-    if (began != null && ring.sentAt.isBefore(began.subtract(_glareWindow))) {
-      return;
+    if (began != null) {
+      final sent = ring.sentAt;
+      if (sent.isBefore(began.subtract(_glareWindow)) ||
+          sent.isAfter(began.add(_glareWindow))) {
+        return;
+      }
     }
     _peerAlsoPlaced = true;
   }

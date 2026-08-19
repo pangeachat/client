@@ -162,8 +162,16 @@ class IncomingCallNotification {
   /// Every reason to stay quiet is a real one seen in the wild: a notification
   /// this account sent, one for a call it is already in, one that arrived after
   /// the call was over, and one naming no call at all.
+  /// Whether this notification is about a CALL.
+  ///
+  /// The proposal carries other MatrixRTC applications through the same event —
+  /// a whiteboard session announcing itself, say — and any of them may ask to
+  /// ring. Without this, one of those would put a call card on screen.
+  bool get isCall => _application?['type'] == 'm.call';
+
   bool shouldRing(DateTime now) =>
       event.type == PangeaEventTypes.callNotification &&
+      isCall &&
       event.senderId != myUserId &&
       !alreadyJoined &&
       isRing &&

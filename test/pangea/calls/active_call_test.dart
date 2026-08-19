@@ -1568,20 +1568,37 @@ void main() {
       expect(call.peerAlsoPlaced, isTrue);
     });
 
-    test('a ring after they joined is some other call, not this one', () async {
-      // They are in the call, so they are not ringing us. Counting it made this
-      // side believe the other had also placed this call; the write is then
-      // settled by comparing ids, and the side that actually placed it can end
-      // up standing aside — so nobody writes it and the call is missing from
-      // the conversation.
+    test('a ring placed later is a new call of theirs, not this one', () async {
+      // A ring sent well after this call began belongs to a call they placed
+      // while we were already in one. Counted, this side believes the other
+      // also placed THIS call; the write is then settled by comparing ids, and
+      // the side that actually placed it can stand aside — so nobody writes it
+      // and the call is missing from the conversation.
       final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);
       calls.remotePresent = true;
       await pumpEventQueue();
       expect(call.hadPeer, isTrue);
 
-      await calls.peerAlsoCalls();
+      // A negative age is a timestamp in the future: sent well after we began.
+      await calls.peerAlsoCalls(age: const Duration(seconds: -30));
       expect(call.peerAlsoPlaced, isFalse);
+    });
+
+    test('is noticed even when they get here before their ring', () async {
+      // Each side joins the SFU before it rings, so in a genuine simultaneous
+      // call their presence routinely reaches us BEFORE their ring does.
+      // Standing the ring down because they were already here left both sides
+      // believing they alone had placed the call, so both wrote it and the
+      // conversation carried two cards for one call.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      calls.remotePresent = true;
+      await pumpEventQueue();
+      expect(call.hadPeer, isTrue, reason: 'they are here first');
+
+      await calls.peerAlsoCalls();
+      expect(call.peerAlsoPlaced, isTrue);
     });
 
     test('a ring from a call of theirs that ended is not glare', () async {
