@@ -243,4 +243,51 @@ void main() {
       expect(payload, f);
     });
   });
+  group('a stretch of the call with nothing in it', () {
+    test('is not emitted at all', () {
+      // The learner is listening. There are no words in it, so uploading it
+      // buys a transcription of silence: bytes on a phone's connection, a
+      // request that costs money, and an empty answer every time.
+      final c = chunker();
+      final emitted = <PcmChunk>[];
+      for (var i = 0; i < 60; i++) {
+        emitted.addAll(c.add(frame(100, amplitude: 0.0)));
+      }
+      emitted.addAll([?c.flush()]);
+
+      expect(emitted, isEmpty, reason: 'six seconds of nothing was sent');
+    });
+
+    test('does not spend an index that a real chunk will want', () {
+      // Indices number what was actually sent. A silent stretch that consumed
+      // one would leave a hole the server never fills, and the results are
+      // keyed by it.
+      final c = chunker();
+      for (var i = 0; i < 60; i++) {
+        c.add(frame(100, amplitude: 0.0));
+      }
+      final spoken = <PcmChunk>[];
+      for (var i = 0; i < 60; i++) {
+        spoken.addAll(c.add(frame(100)));
+      }
+      spoken.addAll([?c.flush()]);
+
+      expect(spoken, isNotEmpty);
+      expect(spoken.first.index, 0, reason: 'the first thing SAID is chunk 0');
+    });
+
+    test('a chunk with speech anywhere in it is still sent', () {
+      // Including speech that lands in the very last stretch, which the running
+      // silence count has never looked at.
+      final c = chunker();
+      final emitted = <PcmChunk>[];
+      for (var i = 0; i < 20; i++) {
+        emitted.addAll(c.add(frame(100, amplitude: 0.0)));
+      }
+      emitted.addAll(c.add(frame(100)));
+      emitted.addAll([?c.flush()]);
+
+      expect(emitted, isNotEmpty, reason: 'somebody spoke in there');
+    });
+  });
 }

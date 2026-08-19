@@ -199,15 +199,45 @@ class PcmChunker {
 
   PcmChunk? _cut() {
     if (_framesBuffered == 0) return null;
-    final chunk = PcmChunk(
-      pcm: _buffer.takeBytes(),
+    final pcm = _buffer.takeBytes();
+    _framesBuffered = 0;
+    _quietFrames = 0;
+
+    // Nothing was said here, so there is nothing to send. A stretch of a call
+    // where this learner is listening carries no words, and uploading it buys a
+    // transcription of silence: the bytes cost bandwidth on a phone, the
+    // request costs money, and the answer is always empty. In an ordinary
+    // conversation each side is quiet for roughly half of it.
+    //
+    // Measured over the whole chunk rather than trusted to the running count
+    // above, which only sees whole analysis windows — the remainder at the end
+    // has never been looked at, and speech that fell entirely inside it would
+    // be thrown away.
+    if (_hasNothingInIt(pcm)) return null;
+
+    return PcmChunk(
+      pcm: pcm,
       sampleRate: sampleRate,
       channels: channels,
       index: _nextIndex++,
     );
-    _framesBuffered = 0;
-    _quietFrames = 0;
-    return chunk;
+  }
+
+  /// Whether a whole chunk is below the level speech reaches.
+  ///
+  /// The same threshold the split points use, applied to everything at once.
+  /// Deliberately a low bar: it is there to recognise a microphone in a quiet
+  /// room, not to judge how loudly somebody spoke.
+  bool _hasNothingInIt(Uint8List pcm) {
+    final samples = pcm.lengthInBytes ~/ 2;
+    if (samples == 0) return true;
+    final view = ByteData.sublistView(pcm);
+    var sumSquares = 0.0;
+    for (var i = 0; i < samples; i++) {
+      final v = view.getInt16(i * 2, Endian.little) / 32768.0;
+      sumSquares += v * v;
+    }
+    return sqrt(sumSquares / samples) < silenceThreshold;
   }
 
   /// Extends or resets the tail quiet run over the newly added samples.
