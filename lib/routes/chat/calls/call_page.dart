@@ -265,7 +265,11 @@ class _CallPageState extends State<CallPage> {
           writeTimelineEvent: _writesTheCall,
           callerId: _call.placedCall ? _myUserId : _peerUserId,
           // The ring we answered, or failing that our own membership in the
-          // call. A device that joined a call already under way has neither a
+          // call. The two sides of a call do not have to anchor to the same
+          // event — they never have: whoever answers anchors to the ring, and
+          // whoever called anchors to the card. What an anchor has to be is a
+          // real event of this call that can be traced back to it, and a
+          // membership is exactly that. A device that joined a call already under way has neither a
           // ring of its own nor one it answered, and with nothing to anchor to
           // every word its learner spoke was dropped.
           anchorEventId: widget.notificationEventId ?? _call.membershipEventId,

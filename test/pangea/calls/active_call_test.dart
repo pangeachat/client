@@ -1281,6 +1281,31 @@ void main() {
       expect(call.isRecording, isTrue);
     });
   });
+  group('a hangup landing the instant a join returns', () {
+    test('still gives the call back', () async {
+      // The service holds the call from the moment joining returns. Giving up
+      // without writing that down skipped the retract, and the service then
+      // believed it was still in a call and refused every later one — the
+      // learner could not call again at all.
+      final (call, calls, _, _) = await build();
+      final joinGate = Completer<void>();
+      calls.holdJoin = joinGate;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      final hangingUp = call.hangUp();
+      joinGate.complete();
+      await starting;
+      await hangingUp;
+
+      expect(
+        trace.steps,
+        contains('retract'),
+        reason: 'a call that was joined must always be given back',
+      );
+    });
+  });
+
   group('the anchor a joining device credits its speech to', () {
     test('is read before the call is given up, not after', () async {
       // Retracting releases what identifies the call, and the membership can no

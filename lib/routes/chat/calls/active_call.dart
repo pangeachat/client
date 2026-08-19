@@ -90,6 +90,14 @@ class ActiveCall extends ChangeNotifier {
 
   bool _peerAlsoPlaced = false;
 
+  // Watched from a live stream rather than looked up in the room's history, so
+  // a ring that arrived in the moment between the call being asked for and this
+  // being attached is not seen. The cost is a second copy of the call card in
+  // the conversation, on the rare occasion two people call each other in the
+  // same instant AND their ring lands in that gap; the alternative is holding a
+  // subscription per account for the life of the app, or a history query at the
+  // end of every call, to tidy something nobody has reported.
+
   /// Whether the other person is calling us right now, as opposed to having
   /// called at some point in the past.
   ///
@@ -419,8 +427,13 @@ class ActiveCall extends ChangeNotifier {
     // ours does — not when our media happens to be ready.
     _peerRings = calls.ringsIn(room).listen(_onPeerRing);
     try {
-      final grant = await _step(() => calls.join(room));
+      // NOT through the guarded step. Joining leaves the service holding the
+      // call, so that has to be written down before anything decides to give up
+      // — a hangup landing in between skipped the retract, and the service then
+      // believed it was still in a call and refused every later one.
+      final grant = await calls.join(room);
       _joined = true;
+      _abandonIfEnding();
 
       await _step(() => media.connect(grant, video: video));
 
@@ -547,6 +560,12 @@ class ActiveCall extends ChangeNotifier {
   /// behind a dismissed page.
   Future<void> _abandon() async {
     await _tearDown();
+    // Again, and deliberately. Whether there is a call to give back can become
+    // true WHILE teardown is running — a hangup landing as the join returns —
+    // and a teardown already in flight has passed that question by. Skipping it
+    // left the service holding a call it would never be asked to release, and
+    // every later call refused.
+    await _releaseCall();
     _to(_declinedByPeer ? CallStage.declined : CallStage.ended);
   }
 
@@ -569,6 +588,28 @@ class ActiveCall extends ChangeNotifier {
         if (_joined) _hangUp = null;
       }
     }();
+  }
+
+  /// Gives the call back to the service.
+  ///
+  /// Its own step, because whether there is one to give back is not settled when
+  /// teardown starts: a hangup can land in the moment between the join returning
+  /// and this call knowing about it. Idempotent, and safe to ask twice.
+  Future<void> _releaseCall() =>
+      _releasing ??= _release().whenComplete(() => _releasing = null);
+
+  Future<void>? _releasing;
+
+  Future<void> _release() async {
+    if (!_joined) return;
+    try {
+      // Deliberately still joined when it did not work: a hangup that failed to
+      // take the membership back should be tried again rather than remembered
+      // as done.
+      _joined = !await calls.retract();
+    } catch (e, s) {
+      Logs().e('Could not retract the call membership', e, s);
+    }
   }
 
   /// Unwinds whatever is up, and never gives up partway.
@@ -623,16 +664,7 @@ class ActiveCall extends ChangeNotifier {
         ? calls.membershipEventIdIn(_room!)
         : null;
 
-    if (_joined) {
-      try {
-        // Deliberately still joined when it did not work: a hangup that failed
-        // to take the membership back should be tried again rather than
-        // remembered as done.
-        _joined = !await calls.retract();
-      } catch (e, s) {
-        Logs().e('Could not retract the call membership', e, s);
-      }
-    }
+    await _releaseCall();
 
     // Drained unconditionally and AFTER retracting. A device displaced moments
     // before the hangup has a stop still unwinding while [_capturing] is already
