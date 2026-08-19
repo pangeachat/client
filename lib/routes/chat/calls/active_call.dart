@@ -622,7 +622,13 @@ class ActiveCall extends ChangeNotifier {
       // to echo — the ring needs it, so this is where the wait belongs. Kept,
       // because it is also the only event a device that JOINED a call — with no
       // ring of its own to point at — can anchor its speaking analytics to.
-      final membershipId = _membershipEventId = await _step(calls.announce);
+      // NOT through the guarded step, for the same reason the ring below is
+      // not: the id must be recorded even when we are giving up. Through it,
+      // a hangup landing inside the announce threw after the id had come back
+      // but before it was kept, and a device with no ring of its own then had
+      // nothing to anchor its learner's words to.
+      final membershipId = _membershipEventId = await calls.announce();
+      _abandonIfEnding();
 
       // Ring the other side, if we are the one placing the call. A timeline
       // event, so it reaches them via push even if their app was closed —

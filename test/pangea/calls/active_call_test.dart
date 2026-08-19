@@ -542,6 +542,29 @@ void main() {
   });
 
   group('what a joiner anchors its analytics to', () {
+    test('survives a hangup landing inside the announce', () async {
+      // The id comes back and the hangup lands before it is kept. A device with
+      // no ring of its own — anyone who JOINED the call — then has nothing to
+      // attach its learner's words to, and the whole call goes uncredited.
+      final (call, calls, _, _) = await build();
+      calls.roomMembershipId = null; // the room has not echoed it yet
+      final announcing = Completer<void>();
+      calls.holdAnnounce = announcing;
+
+      final starting = call.start(
+        roomStub(calls.client),
+        video: false,
+        answering: true,
+      );
+      await pumpEventQueue();
+      final ending = call.hangUp();
+      announcing.complete();
+      await starting;
+      await ending;
+
+      expect(call.membershipEventId, '\$membership');
+    });
+
     test('is taken while the call runs, not once at the end', () async {
       // A device that JOINED a call has no ring of its own to point at, so its
       // membership is the only thing its speaking analytics can hang on. That
