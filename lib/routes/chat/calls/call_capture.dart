@@ -7,6 +7,7 @@ import 'package:livekit_client/livekit_client.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/pcm_chunker.dart';
+import 'package:fluffychat/utils/platform_infos.dart';
 
 /// Where a completed chunk goes.
 ///
@@ -30,6 +31,28 @@ abstract class CallAudioSink {
 /// request cap is never the binding constraint.
 const captureSampleRate = 16000;
 const captureChannels = 1;
+
+/// How many times a chunk's delivery is attempted.
+///
+/// A chunk is up to ninety seconds of somebody's speech and there is no second
+/// copy — the call is over by the time delivery fails, and nothing can record
+/// it again.
+const _deliveryAttempts = 3;
+
+/// Whether this platform's tap is known to sit AFTER echo cancellation.
+///
+/// Attribution rests on this. iOS registers the tap inside WebRTC's audio
+/// processing module, so echo cancellation, noise suppression and gain control
+/// have all run; the same path serves macOS. On the web the browser applies
+/// echo cancellation before it hands over the track at all.
+///
+/// Android is the exception: its tap is the audio device module's callback,
+/// which WebRTC's own source marks as being for debugging and which fires on
+/// the raw microphone buffer BEFORE that processing. The peer's voice, coming
+/// back out of the loudspeaker, would be transcribed and credited to the wrong
+/// learner. Recording is refused there rather than shipping attribution we know
+/// to be wrong; it is re-enabled when the post-processing tap lands.
+bool get captureIsAfterEchoCancellation => !PlatformInfos.isAndroid;
 
 /// Records this device's own outbound call audio.
 ///
@@ -118,15 +141,37 @@ class CallCaptureService {
 
   void _hand(PcmChunk chunk) {
     late final Future<void> delivery;
-    delivery = sink
-        .deliver(chunk)
-        .catchError((Object e, StackTrace s) {
-          // A chunk that never arrives costs its share of the transcript; it must
-          // not take the call down with it, and it must not stall the hangup.
-          Logs().w('Call audio chunk ${chunk.index} was not delivered', e, s);
-        })
-        .whenComplete(() => _inFlight.remove(delivery));
+    delivery = _deliver(chunk).whenComplete(() => _inFlight.remove(delivery));
     _inFlight.add(delivery);
+  }
+
+  /// Delivers a chunk, retrying a failure rather than dropping it.
+  ///
+  /// One request lost on a weak connection — ordinary on mobile — used to cost
+  /// up to ninety seconds of a learner's speech silently, and it fell hardest on
+  /// exactly the people with the worst connections. The attempts are bounded and
+  /// backed off: a chunk that will never send must not hold a hangup open.
+  ///
+  /// Never throws. A chunk that cannot be delivered costs its share of the
+  /// transcript; it must not take the call down with it.
+  Future<void> _deliver(PcmChunk chunk) async {
+    for (var attempt = 0; attempt < _deliveryAttempts; attempt++) {
+      if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
+      try {
+        await sink.deliver(chunk);
+        return;
+      } catch (e, s) {
+        Logs().w(
+          'Call audio chunk ${chunk.index} delivery attempt '
+          '${attempt + 1} of $_deliveryAttempts failed',
+          e,
+          s,
+        );
+      }
+    }
+    Logs().e(
+      'Gave up delivering call audio chunk ${chunk.index}; its words are lost',
+    );
   }
 
   /// Stops recording, flushes the tail, and waits for delivery to settle.

@@ -307,6 +307,7 @@ void main() {
 
   Future<(ActiveCall, FakeCalls, FakeMedia, FakeCapture)> build({
     bool hasTrack = true,
+    bool captureAllowed = true,
   }) async {
     final calls = FakeCalls(await bareClient(), trace);
     final media = FakeMedia(trace, hasTrack: hasTrack);
@@ -318,7 +319,12 @@ void main() {
     media.fakeRoster = roster;
     calls.roster = roster;
     return (
-      ActiveCall(calls: calls, media: media, capture: capture),
+      ActiveCall(
+        calls: calls,
+        media: media,
+        capture: capture,
+        captureAllowed: captureAllowed,
+      ),
       calls,
       media,
       capture,
@@ -1164,6 +1170,31 @@ void main() {
 
       expect(call.placedCall, isTrue);
       expect(call.peerAlsoPlaced, isTrue);
+    });
+  });
+  group('a platform whose tap is before echo cancellation', () {
+    test('records nothing rather than crediting the wrong learner', () async {
+      // The peer's voice comes back out of the loudspeaker and would be
+      // transcribed as this learner's own speech. No analytics is the correct
+      // outcome; wrong analytics is not.
+      final (call, calls, _, _) = await build(captureAllowed: false);
+      await call.start(roomStub(calls.client), video: false);
+
+      expect(trace.steps, isNot(contains('capture.start')));
+      expect(call.isRecording, isFalse);
+      expect(
+        call.stage,
+        CallStage.connected,
+        reason: 'the call itself still works; only recording is refused',
+      );
+    });
+
+    test('a sibling appearing does not change that', () async {
+      final (call, calls, _, _) = await build(captureAllowed: false);
+      await call.start(roomStub(calls.client), video: false);
+      await calls.participantsBecome(['AAAAAAAAAA', calls.client.deviceID!]);
+
+      expect(trace.steps, isNot(contains('capture.start')));
     });
   });
 }

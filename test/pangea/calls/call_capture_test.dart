@@ -13,11 +13,25 @@ class RecordingSink implements CallAudioSink {
   int closes = 0;
   Completer<void>? block;
 
-  RecordingSink({this.failIndices = const []});
+  /// How many times each chunk should fail before going through, so a test can
+  /// tell a retry that recovered from one that never happened.
+  final Map<int, int> failuresLeft;
+
+  /// Every delivery attempt, including the ones that failed.
+  final List<int> attempts = [];
+
+  RecordingSink({this.failIndices = const [], Map<int, int>? failuresLeft})
+    : failuresLeft = failuresLeft ?? {};
 
   @override
   Future<void> deliver(PcmChunk chunk) async {
     if (block != null) await block!.future;
+    attempts.add(chunk.index);
+    final left = failuresLeft[chunk.index] ?? 0;
+    if (left > 0) {
+      failuresLeft[chunk.index] = left - 1;
+      throw StateError('sink temporarily refused chunk ${chunk.index}');
+    }
     if (failIndices.contains(chunk.index)) {
       throw StateError('sink refused chunk ${chunk.index}');
     }
@@ -306,6 +320,47 @@ void main() {
         frameOf(src.buffer.asUint8List(), AudioFormat.Float32),
       );
       expect(out, [0, 32767, -32767, 16384, 32767, -32767]);
+    });
+  });
+  group('a chunk whose delivery fails', () {
+    test('is retried rather than dropped', () async {
+      // A chunk is up to ninety seconds of somebody's speech and there is no
+      // second copy — the call is over by the time this fails. One request lost
+      // on a weak connection used to lose all of it silently.
+      final flaky = RecordingSink(failuresLeft: {0: 1});
+      final s = service(withSink: flaky)..start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await s.stop();
+
+      expect(
+        flaky.attempts.where((i) => i == 0).length,
+        greaterThan(1),
+        reason: 'the failed attempt must be tried again',
+      );
+      expect(
+        flaky.delivered.map((c) => c.index),
+        contains(0),
+        reason: 'and the words must arrive',
+      );
+    });
+
+    test('is given up on quietly once the attempts run out', () async {
+      // A chunk that will never send must not hold a hangup open forever, and
+      // must not take the call down with it.
+      final dead = RecordingSink(failIndices: const [0]);
+      final s = service(withSink: dead)..start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+
+      await expectLater(s.stop(), completes);
+      expect(
+        dead.attempts.where((i) => i == 0).length,
+        3,
+        reason: 'bounded attempts, not an unbounded loop',
+      );
     });
   });
 }
