@@ -71,6 +71,15 @@ class CallMedia {
     await connectRoom(grant.url, grant.jwt);
     if (_released) return _releaseWhatOpened();
 
+    // The microphone is published before the camera, and that is not a leak,
+    // though a first read of it looks like one. This runs on exactly one path —
+    // ActiveCall._start, reached only when the user PLACES or ANSWERS a call —
+    // so by the time any audio reaches the peer the user has already chosen to
+    // be on the call and to be heard. Audio coming up before video, including
+    // while a camera permission prompt is still open, is how every calling
+    // product connects; the recording also needs the audio track first. A
+    // camera that then fails throws out of here and tears the whole call down,
+    // releasing this microphone with it — the guard below the enableCamera call.
     await enableMicrophone(true);
     if (_released) return _releaseWhatOpened();
 
