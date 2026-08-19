@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Aghjunghjite a tastiera di a vostra lingua di destinazione andendu in :",
     "enableAutocorrectPopupSteps": "  • Paràmetri\n  • Generale\n  • Tastiera\n  • Tastiere\n  • Aghjunghje una nova tastiera",
     "enableAutocorrectPopupDescription": "Una volta a lingua scelta, pudete cliccà nant'à a piccula icona di u mappamondu in bassu à manca di a vostra tastiera per attivà a nova tastiera stallata.",
-    "downloadGboardTitle": "Scaricà Gboard da u Google Play Store per attivà a currezzione autumatica è altre funziunalità di a tastiera :",
     "downloadGboardSteps": " • Scaricà Gboard\n  • Apre l'appiecazione\n  • Lingue\n  • Aghjunghje una tastiera\n  • Sceglie a lingua\n  • Sceglie u tippu di tastiera\n  • Fattu",
-    "downloadGboardDescription": "Una volta a lingua scelta, pudete cliccà nant'à a piccula icona di u mappamondu in bassu à manca di a vostra tastiera per attivà a nova tastiera stallata.",
     "enableAutocorrectWarning": "Attenzione ! Richiede l'aghjunta di a tastiera di a vostra lingua di destinazione",
     "displayName": "Nome d'utilizatore",
     "leaveRoomDescription": "Site sopr'à lascià sta discussione. L'altri utilizatori videranu chì avete lasciatu a discussione.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "L'utilizatori cercanu à unisce si à u vostru corsu",
     "denyAllUsers": "Ricusà tutti l'utilizatori",
     "denyAllKnocksDescription": "Questi utilizatori seranu ricusati da u corsu. Puderanu pruvà à unisce si di novu in ogni mumentu.",
-    "inviteAFriend": "Invità un amicu"
+    "inviteAFriend": "Invità un amicu",
+    "autocorrectAndroidDialogTitle": "Autucurrezzione in a vostra lingua di destinazione",
+    "autocorrectAndroidDialogBody": "Quandu scrivite in una chjachjarata, a vostra tastiera cambierà à a vostra lingua di destinazione è curreggerà l'ortografia in quella lingua.",
+    "autocorrectAndroidFallbackTitle": "Se a vostra tastiera ùn offre micca a vostra lingua di destinazione, stallate Gboard è aghjunghjite a lingua quì:"
 }

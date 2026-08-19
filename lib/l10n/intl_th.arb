@@ -2896,9 +2896,7 @@
     "enableAutocorrectPopupTitle": "เพิ่มแป้นพิมพ์ภาษาที่คุณตั้งเป้าไว้โดยไปที่:",
     "enableAutocorrectPopupSteps": "  • การตั้งค่า\n  • ทั่วไป\n  • คีย์บอร์ด\n  • คีย์บอร์ด\n  • เพิ่มคีย์บอร์ดใหม่",
     "enableAutocorrectPopupDescription": "เมื่อเลือกภาษาแล้ว คุณสามารถคลิกไอคอนโลกเล็กที่มุมล่างซ้ายของคีย์บอร์ดเพื่อเปิดใช้งานคีย์บอร์ดที่ติดตั้งใหม่",
-    "downloadGboardTitle": "ดาวน์โหลด Gboard จาก Google Play Store เพื่อเปิดใช้งานการแก้ไขอัตโนมัติและคุณสมบัติอื่น ๆ ของคีย์บอร์ด:",
     "downloadGboardSteps": " • ดาวน์โหลด Gboard\n  • เปิดแอป\n  • ภาษา\n  • เพิ่มคีย์บอร์ด\n  • เลือกภาษา\n  • เลือกประเภทคีย์บอร์ด\n  • เสร็จสิ้น",
-    "downloadGboardDescription": "เมื่อเลือกภาษาแล้ว คุณสามารถคลิกไอคอนโลกเล็กที่มุมล่างซ้ายของคีย์บอร์ดเพื่อเปิดใช้งานคีย์บอร์ดที่ติดตั้งใหม่",
     "enableAutocorrectWarning": "คำเตือน! ต้องเพิ่มคีย์บอร์ดภาษาที่คุณตั้งเป้าไว้",
     "displayName": "ชื่อแสดง",
     "leaveRoomDescription": "คุณกำลังจะออกจากแชทนี้ ผู้ใช้อื่นจะเห็นว่าคุณได้ออกจากแชทแล้ว",
@@ -6021,15 +6019,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10392,5 +10382,8 @@
     "usersAreTryingToJoinCourse": "ผู้ใช้กำลังพยายามเข้าร่วมคอร์สของคุณ",
     "denyAllUsers": "ปฏิเสธผู้ใช้ทั้งหมด",
     "denyAllKnocksDescription": "ผู้ใช้เหล่านี้จะถูกปฏิเสธไม่ให้เข้าร่วมคอร์ส พวกเขาอาจพยายามเข้าร่วมอีกครั้งได้ทุกเมื่อ",
-    "inviteAFriend": "เชิญเพื่อน"
+    "inviteAFriend": "เชิญเพื่อน",
+    "autocorrectAndroidDialogTitle": "การแก้ไขอัตโนมัติในภาษาเป้าหมายของคุณ",
+    "autocorrectAndroidDialogBody": "เมื่อคุณพิมพ์ในแชท แป้นพิมพ์ของคุณจะเปลี่ยนเป็นภาษาเป้าหมายและแก้ไขการสะกดในภาษานั้น",
+    "autocorrectAndroidFallbackTitle": "หากแป้นพิมพ์ของคุณไม่มีภาษาเป้าหมาย ให้ติดตั้ง Gboard และเพิ่มภาษาที่นั่น:"
 }

@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Fi keyboard èdè tí o fẹ́ kọ́ kún nípa lílọ sí:",
     "enableAutocorrectPopupSteps": "  • Àwọn Ètò\n  • Gbogbogbò\n  • Keyboard\n  • Àwọn Keyboard\n  • Fi Keyboard Tuntun Kún",
     "enableAutocorrectPopupDescription": "Lọ́gán tí a bá ti yan èdè náà, o lè tẹ àmì ayé kékeré tó wà ní ìsàlẹ̀ òsì keyboard rẹ láti mú keyboard tuntun tí a fi sínú ṣiṣẹ́.",
-    "downloadGboardTitle": "Ṣe ìgbàsílẹ̀ Gboard láti Google Play Store láti mú àtúnṣe-ara-ẹni àti àwọn àbùdá keyboard mìíràn ṣiṣẹ́:",
     "downloadGboardSteps": " • Ṣe ìgbàsílẹ̀ Gboard\n  • Ṣí app\n  • Àwọn Èdè\n  • Fi keyboard kún\n  • Yan Èdè\n  • Yan irú keyboard\n  • Ti ṣe",
-    "downloadGboardDescription": "Lọ́gán tí a bá ti yan èdè náà, o lè tẹ àmì ayé kékeré tó wà ní ìsàlẹ̀ òsì keyboard rẹ láti mú keyboard tuntun tí a fi sínú ṣiṣẹ́.",
     "enableAutocorrectWarning": "Ìkìlọ̀! Nílò fífi keyboard èdè tí o fẹ́ kọ́ kún",
     "displayName": "Orúkọ àfihàn",
     "leaveRoomDescription": "O fẹ́ fi ìjíròrò yìí sílẹ̀. Àwọn olùmúlò mìíràn yóò rí i pé o ti fi ìjíròrò náà sílẹ̀.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Àwọn olùmúlò n gbìyànjú láti darapọ̀ mọ́ ẹ̀kọ́ rẹ",
     "denyAllUsers": "Kọ gbogbo àwọn olùmúlò",
     "denyAllKnocksDescription": "A ó kọ àwọn olùmúlò wọ̀nyí láti inú ẹ̀kọ́ náà. Wọ́n lè gbìyànjú láti darapọ̀ mọ́ra ní àkókò kankan.",
-    "inviteAFriend": "Pe ọrẹ kan"
+    "inviteAFriend": "Pe ọrẹ kan",
+    "autocorrectAndroidDialogTitle": "Àtúnṣe-gbogbo-ara nínú èdè tí o fẹ́ kọ́",
+    "autocorrectAndroidDialogBody": "Nígbàtí o bá ń tẹ́kì nínú ìfọ̀rọ̀wéránṣẹ́, kíbọ́ọ̀dù rẹ yóò yí sí èdè tí o fẹ́ kọ́, yóò sì tún àṣìṣe ìkọ̀wé ṣe nínú èdè náà.",
+    "autocorrectAndroidFallbackTitle": "Tí kíbọ́ọ̀dù rẹ kò bá ní èdè tí o fẹ́ kọ́, fi Gboard sori ẹ̀rọ rẹ, kí o sì fi èdè náà kún un níbẹ̀:"
 }

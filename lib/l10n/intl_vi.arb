@@ -2326,9 +2326,7 @@
     "enableAutocorrectPopupTitle": "Thêm bàn phím ngôn ngữ mục tiêu của bạn bằng cách vào:",
     "enableAutocorrectPopupSteps": "  • Cài đặt\n  • Chung\n  • Bàn phím\n  • Bàn phím\n  • Thêm bàn phím mới",
     "enableAutocorrectPopupDescription": "Khi ngôn ngữ được chọn, bạn có thể nhấp vào biểu tượng quả địa cầu nhỏ ở góc dưới bên trái của bàn phím để kích hoạt bàn phím mới được cài đặt.",
-    "downloadGboardTitle": "Tải Gboard từ Google Play Store để kích hoạt tính năng tự động sửa và các tính năng bàn phím khác:",
     "downloadGboardSteps": " • Tải Gboard\n  • Mở ứng dụng\n  • Ngôn ngữ\n  • Thêm bàn phím\n  • Chọn ngôn ngữ\n  • Chọn loại bàn phím\n  • Xong",
-    "downloadGboardDescription": "Khi ngôn ngữ được chọn, bạn có thể nhấp vào biểu tượng quả địa cầu nhỏ ở góc dưới bên trái của bàn phím để kích hoạt bàn phím mới được cài đặt.",
     "enableAutocorrectWarning": "Cảnh báo! Cần thêm bàn phím ngôn ngữ mục tiêu của bạn",
     "displayName": "Tên hiển thị",
     "leaveRoomDescription": "Bạn sắp rời khỏi cuộc trò chuyện này. Những người dùng khác sẽ thấy rằng bạn đã rời khỏi cuộc trò chuyện.",
@@ -7036,5 +7034,8 @@
     "usersAreTryingToJoinCourse": "Người dùng đang cố gắng tham gia khóa học của bạn",
     "denyAllUsers": "Từ chối tất cả người dùng",
     "denyAllKnocksDescription": "Những người dùng này sẽ bị từ chối khỏi khóa học. Họ có thể thử tham gia lại bất cứ lúc nào.",
-    "inviteAFriend": "Mời một người bạn"
+    "inviteAFriend": "Mời một người bạn",
+    "autocorrectAndroidDialogTitle": "Tự động sửa lỗi bằng ngôn ngữ mục tiêu của bạn",
+    "autocorrectAndroidDialogBody": "Khi bạn nhập tin nhắn trong cuộc trò chuyện, bàn phím của bạn sẽ chuyển sang ngôn ngữ mục tiêu và sửa lỗi chính tả bằng ngôn ngữ đó.",
+    "autocorrectAndroidFallbackTitle": "Nếu bàn phím của bạn không hỗ trợ ngôn ngữ mục tiêu, hãy cài đặt Gboard và thêm ngôn ngữ đó tại đây:"
 }

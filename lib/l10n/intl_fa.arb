@@ -3268,9 +3268,7 @@
     "enableAutocorrectPopupTitle": "با رفتن به تنظیمات صفحه کلید زبان هدف خود را اضافه کنید:",
     "enableAutocorrectPopupSteps": "  • تنظیمات\n  • عمومی\n  • صفحه کلید\n  • صفحه کلیدها\n  • افزودن صفحه کلید جدید",
     "enableAutocorrectPopupDescription": "پس از انتخاب زبان، می‌توانید روی آیکون کوچک کره در پایین سمت چپ صفحه کلید خود کلیک کنید تا صفحه کلید نصب شده جدید فعال شود.",
-    "downloadGboardTitle": "برای فعال کردن تصحیح خودکار و ویژگی‌های دیگر صفحه کلید، Gboard را از فروشگاه Google Play دانلود کنید:",
     "downloadGboardSteps": " • دانلود Gboard\n  • باز کردن برنامه\n  • زبان‌ها\n  • افزودن صفحه کلید\n  • انتخاب زبان\n  • انتخاب نوع صفحه کلید\n  • انجام شد",
-    "downloadGboardDescription": "پس از انتخاب زبان، می‌توانید روی آیکون کوچک کره در پایین سمت چپ صفحه کلید خود کلیک کنید تا صفحه کلید نصب شده جدید فعال شود.",
     "enableAutocorrectWarning": "هشدار! نیاز به افزودن صفحه کلید زبان هدف دارید",
     "displayName": "نام نمایشی",
     "leaveRoomDescription": "در حال خروج از این چت هستید. سایر کاربران خواهند دید که شما چت را ترک کرده‌اید.",
@@ -5482,15 +5480,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9848,5 +9838,8 @@
     "usersAreTryingToJoinCourse": "کاربران در تلاش برای پیوستن به دوره شما هستند",
     "denyAllUsers": "رد کردن همه کاربران",
     "denyAllKnocksDescription": "این کاربران از دوره رد خواهند شد. آنها ممکن است در هر زمان دوباره برای پیوستن تلاش کنند.",
-    "inviteAFriend": "دعوت از یک دوست"
+    "inviteAFriend": "دعوت از یک دوست",
+    "autocorrectAndroidDialogTitle": "تصحیح خودکار در زبان مقصد شما",
+    "autocorrectAndroidDialogBody": "هنگامی که در یک چت تایپ می‌کنید، صفحه‌کلید شما به زبان مقصدتان تغییر می‌کند و املای کلمات را در آن زبان تصحیح می‌کند.",
+    "autocorrectAndroidFallbackTitle": "اگر صفحه‌کلید شما زبان مقصدتان را ارائه نمی‌دهد، Gboard را نصب کنید و زبان را در آنجا اضافه کنید:"
 }

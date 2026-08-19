@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Tambah papan kekunci bahasa sasaran anda dengan pergi ke:",
     "enableAutocorrectPopupSteps": "  • Tetapan\n  • Umum\n  • Papan Kekunci\n  • Papan Kekunci\n  • Tambah Papan Kekunci Baharu",
     "enableAutocorrectPopupDescription": "Setelah bahasa dipilih, anda boleh mengklik ikon glob kecil di bahagian bawah kiri papan kekunci anda untuk mengaktifkan papan kekunci yang baru dipasang.",
-    "downloadGboardTitle": "Muat turun Gboard dari Google Play Store untuk mendayakan pembetulan automatik dan ciri papan kekunci lain:",
     "downloadGboardSteps": " • Muat turun Gboard\n  • Buka aplikasi\n  • Bahasa\n  • Tambah papan kekunci\n  • Pilih Bahasa\n  • Pilih jenis papan kekunci\n  • Selesai",
-    "downloadGboardDescription": "Setelah bahasa dipilih, anda boleh mengklik ikon glob kecil di bahagian bawah kiri papan kekunci anda untuk mengaktifkan papan kekunci yang baru dipasang.",
     "enableAutocorrectWarning": "Amaran! Memerlukan penambahan papan kekunci bahasa sasaran anda",
     "displayName": "Nama paparan",
     "leaveRoomDescription": "Anda akan meninggalkan sembang ini. Pengguna lain akan melihat bahawa anda telah meninggalkan sembang.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Pengguna cuba menyertai kursus anda",
     "denyAllUsers": "Tolak semua pengguna",
     "denyAllKnocksDescription": "Pengguna ini akan ditolak daripada kursus. Mereka boleh cuba menyertai semula pada bila-bila masa.",
-    "inviteAFriend": "Jemput rakan"
+    "inviteAFriend": "Jemput rakan",
+    "autocorrectAndroidDialogTitle": "Autocorreksi dalam bahasa sasaran anda",
+    "autocorrectAndroidDialogBody": "Apabila anda menaip dalam sembang, papan kekunci anda akan bertukar kepada bahasa sasaran anda dan membetulkan ejaan dalam bahasa tersebut.",
+    "autocorrectAndroidFallbackTitle": "Jika papan kekunci anda tidak menawarkan bahasa sasaran anda, pasang Gboard dan tambah bahasa di sana:"
 }

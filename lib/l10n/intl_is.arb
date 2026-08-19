@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Bættu við lyklaborði fyrir markmálið þitt með því að fara í:",
     "enableAutocorrectPopupSteps": "  • Stillingar\n  • Almennt\n  • Lyklaborð\n  • Lyklaborð\n  • Bæta við nýju lyklaborði",
     "enableAutocorrectPopupDescription": "Þegar tungumálið hefur verið valið geturðu smellt á litla hnöttstáknið neðst til vinstri á lyklaborðinu þínu til að virkja nýuppsett lyklaborð.",
-    "downloadGboardTitle": "Sæktu Gboard frá Google Play Store til að virkja sjálfvirka leiðréttingu og aðra lyklaborðseiginleika:",
     "downloadGboardSteps": " • Sækja Gboard\n  • Opna forrit\n  • Tungumál\n  • Bæta við lyklaborði\n  • Velja tungumál\n  • Velja lyklaborðstegund\n  • Lokið",
-    "downloadGboardDescription": "Þegar tungumálið hefur verið valið geturðu smellt á litla hnöttstáknið neðst til vinstri á lyklaborðinu þínu til að virkja nýuppsett lyklaborð.",
     "enableAutocorrectWarning": "Viðvörun! Krefst þess að bæta við lyklaborði fyrir markmálið þitt",
     "displayName": "Birtingarnafn",
     "leaveRoomDescription": "Þú ert að fara að yfirgefa þetta spjall. Aðrir notendur munu sjá að þú hefur yfirgefið spjallið.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Notendur eru að reyna að taka þátt í námskeiðinu þínu",
     "denyAllUsers": "Hafna öllum notendum",
     "denyAllKnocksDescription": "Þessum notendum verður hafnað frá námskeiðinu. Þeir geta reynt að taka þátt aftur hvenær sem er.",
-    "inviteAFriend": "Bjóddu vini"
+    "inviteAFriend": "Bjóddu vini",
+    "autocorrectAndroidDialogTitle": "Sjálfvirk leiðrétting á markmálinu þínu",
+    "autocorrectAndroidDialogBody": "Þegar þú skrifar í spjalli mun lyklaborðið þitt skipta yfir í markmálið þitt og leiðrétta stafsetningu á því máli.",
+    "autocorrectAndroidFallbackTitle": "Ef lyklaborðið þitt býður ekki upp á markmálið þitt skaltu setja upp Gboard og bæta málinu við þar:"
 }

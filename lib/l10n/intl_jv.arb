@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Tambah keyboard basa target sampeyan kanthi pindhah menyang:",
     "enableAutocorrectPopupSteps": "  • Setelan\n  • Umum\n  • Keyboard\n  • Keyboard\n  • Tambah Keyboard Anyar",
     "enableAutocorrectPopupDescription": "Sawise basa dipilih, sampeyan bisa ngeklik ikon globe cilik ing sisih ngisor kiwa keyboard kanggo ngaktifake keyboard sing mentas diinstal.",
-    "downloadGboardTitle": "Unduh Gboard saka Google Play Store kanggo ngaktifake autocorrect lan fitur keyboard liyane:",
     "downloadGboardSteps": " • Unduh Gboard\n  • Bukak aplikasi\n  • Basa\n  • Tambah keyboard\n  • Pilih Basa\n  • Pilih jinis keyboard\n  • Rampung",
-    "downloadGboardDescription": "Sawise basa dipilih, sampeyan bisa ngeklik ikon globe cilik ing sisih ngisor kiwa keyboard kanggo ngaktifake keyboard sing mentas diinstal.",
     "enableAutocorrectWarning": "Pènget! Mbutuhake nambah keyboard basa target sampeyan",
     "displayName": "Jeneng tampilan",
     "leaveRoomDescription": "Sampeyan arep ninggalake obrolan iki. Pangguna liyane bakal ngerti yen sampeyan wis ninggalake obrolan.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Pangguna nyoba gabung kursusmu",
     "denyAllUsers": "Tolak kabeh pangguna",
     "denyAllKnocksDescription": "Pangguna iki bakal ditolak saka kursus. Dheweke bisa nyoba gabung maneh kapan wae.",
-    "inviteAFriend": "Ngunjuk kanca"
+    "inviteAFriend": "Ngunjuk kanca",
+    "autocorrectAndroidDialogTitle": "Autocorrect ing basa targetmu",
+    "autocorrectAndroidDialogBody": "Nalika ngetik ing obrolan, keyboard-mu bakal ganti menyang basa targetmu lan mbenerake ejaan ing basa kasebut.",
+    "autocorrectAndroidFallbackTitle": "Yen keyboard-mu ora nawakake basa targetmu, instal Gboard lan tambahake basa kasebut ing kana:"
 }

@@ -2965,9 +2965,7 @@
     "enableAutocorrectPopupTitle": "Přidejte klávesnici cílového jazyka přechodem na:",
     "enableAutocorrectPopupSteps": "  • Nastavení\n  • Obecné\n  • Klávesnice\n  • Klávesnice\n  • Přidat novou klávesnici",
     "enableAutocorrectPopupDescription": "Po výběru jazyka můžete kliknout na malou ikonu glóbu v levém dolním rohu klávesnice, abyste aktivovali nově nainstalovanou klávesnici.",
-    "downloadGboardTitle": "Stáhněte si Gboard z obchodu Google Play, abyste mohli používat automatické opravy a další funkce klávesnice:",
     "downloadGboardSteps": " • Stáhněte si Gboard\n  • Otevřete aplikaci\n  • Jazyky\n  • Přidat klávesnici\n  • Vyberte jazyk\n  • Vyberte typ klávesnice\n  • Hotovo",
-    "downloadGboardDescription": "Jakmile je jazyk vybrán, můžete kliknout na malou ikonu glóbu v levém dolním rohu klávesnice a aktivovat nově nainstalovanou klávesnici.",
     "enableAutocorrectWarning": "Upozornění! Vyžaduje přidání klávesnice cílového jazyka",
     "displayName": "Zobrazované jméno",
     "leaveRoomDescription": "Chystáte se opustit tento chat. Ostatní uživatelé uvidí, že jste chat opustili.",
@@ -5897,15 +5895,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10254,5 +10244,8 @@
     "usersAreTryingToJoinCourse": "Uživatelé se snaží připojit k vašemu kurzu",
     "denyAllUsers": "Odmítnout všechny uživatele",
     "denyAllKnocksDescription": "Tito uživatelé budou z kurzu odmítnuti. Mohou se kdykoli pokusit znovu připojit.",
-    "inviteAFriend": "Pozvat přítele"
+    "inviteAFriend": "Pozvat přítele",
+    "autocorrectAndroidDialogTitle": "Automatické opravy v cílovém jazyce",
+    "autocorrectAndroidDialogBody": "Když píšete do chatu, klávesnice se přepne na váš cílový jazyk a bude v něm opravovat pravopis.",
+    "autocorrectAndroidFallbackTitle": "Pokud vaše klávesnice nenabízí váš cílový jazyk, nainstalujte Gboard a přidejte jazyk tam:"
 }

@@ -2895,9 +2895,7 @@
     "enableAutocorrectPopupTitle": "अपनी लक्षित भाषा की कीबोर्ड जोड़ने के लिए जाएं:",
     "enableAutocorrectPopupSteps": "  • सेटिंग्स\n  • सामान्य\n  • कीबोर्ड\n  • कीबोर्ड्स\n  • नया कीबोर्ड जोड़ें",
     "enableAutocorrectPopupDescription": "एक बार भाषा का चयन करने के बाद, आप अपने कीबोर्ड के नीचे बाएं कोने में छोटे ग्लोब आइकन पर क्लिक कर सकते हैं ताकि नए इंस्टॉल किए गए कीबोर्ड को सक्रिय किया जा सके।",
-    "downloadGboardTitle": "ऑटोकरेक्ट और अन्य कीबोर्ड सुविधाओं को सक्षम करने के लिए Google Play Store से Gboard डाउनलोड करें:",
     "downloadGboardSteps": " • Gboard डाउनलोड करें\n  • ऐप खोलें\n  • भाषाएँ\n  • कीबोर्ड जोड़ें\n  • भाषा चुनें\n  • कीबोर्ड प्रकार चुनें\n  • पूरा",
-    "downloadGboardDescription": "एक बार भाषा का चयन करने के बाद, आप अपने कीबोर्ड के नीचे बाएं कोने में छोटे ग्लोब आइकन पर क्लिक कर सकते हैं ताकि नए इंस्टॉल किए गए कीबोर्ड को सक्रिय किया जा सके।",
     "enableAutocorrectWarning": "चेतावनी! अपने लक्ष्य भाषा की कीबोर्ड जोड़ने की आवश्यकता है",
     "displayName": "प्रदर्शन नाम",
     "leaveRoomDescription": "आप इस चैट को छोड़ने वाले हैं। अन्य उपयोगकर्ता देखेंगे कि आपने चैट छोड़ दी है।",
@@ -6021,15 +6019,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10392,5 +10382,8 @@
     "usersAreTryingToJoinCourse": "उपयोगकर्ता आपके कोर्स में शामिल होने का प्रयास कर रहे हैं",
     "denyAllUsers": "सभी उपयोगकर्ताओं को अस्वीकार करें",
     "denyAllKnocksDescription": "इन उपयोगकर्ताओं को कोर्स से अस्वीकार कर दिया जाएगा। वे किसी भी समय फिर से शामिल होने का प्रयास कर सकते हैं।",
-    "inviteAFriend": "किसी दोस्त को आमंत्रित करें"
+    "inviteAFriend": "किसी दोस्त को आमंत्रित करें",
+    "autocorrectAndroidDialogTitle": "आपकी लक्ष्य भाषा में स्वतः सुधार",
+    "autocorrectAndroidDialogBody": "जब आप चैट में टाइप करते हैं, तो आपका कीबोर्ड आपकी लक्ष्य भाषा में बदल जाएगा और उस भाषा में वर्तनी को सही करेगा।",
+    "autocorrectAndroidFallbackTitle": "यदि आपका कीबोर्ड आपकी लक्ष्य भाषा प्रदान नहीं करता है, तो Gboard इंस्टॉल करें और वहां भाषा जोड़ें:"
 }

@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Tinye ahụigodo asụsụ ebumnuche gị site na ịga na:",
     "enableAutocorrectPopupSteps": "  • Ntọala\n  • Izugbe\n  • Ahụigodo\n  • Ahụigodo\n  • Tinye Ahụigodo Ọhụrụ",
     "enableAutocorrectPopupDescription": "Ozugbo ahọpụtara asụsụ ahụ, ị nwere ike pịa akara ngosi ụwa dị n'aka ekpe ala nke ahụigodo gị iji mee ka ahụigodo ọhụrụ ahụ arụnyere rụọ ọrụ.",
-    "downloadGboardTitle": "Budata Gboard site na Google Play Store iji kwado nkwụziaka akpaaka na atụmatụ ahụigodo ndị ọzọ:",
     "downloadGboardSteps": " • Budata Gboard\n  • Mepee ngwa\n  • Asụsụ\n  • Tinye ahụigodo\n  • Họrọ Asụsụ\n  • Họrọ ụdị ahụigodo\n  • Emechaala",
-    "downloadGboardDescription": "Ozugbo ahọpụtara asụsụ ahụ, ị nwere ike pịa akara ngosi ụwa dị n'aka ekpe ala nke ahụigodo gị iji mee ka ahụigodo ọhụrụ ahụ arụnyere rụọ ọrụ.",
     "enableAutocorrectWarning": "Ịdọ aka ná ntị! Achọrọ ịgbakwunye ahụigodo asụsụ ebumnuche gị",
     "displayName": "Aha ngosi",
     "leaveRoomDescription": "Ị na-achọ ịhapụ nkata a. Ndị ọrụ ndị ọzọ ga-ahụ na ị hapụla nkata ahụ.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Ndị ọrụ na-anwa isonye na nkuzi gị",
     "denyAllUsers": "Jụ ndị ọrụ niile",
     "denyAllKnocksDescription": "A ga-ajụ ndị ọrụ a na nkuzi ahụ. Ha nwere ike ịnwale isonye ọzọ n'oge ọ bụla.",
-    "inviteAFriend": "Kpọọ enyi"
+    "inviteAFriend": "Kpọọ enyi",
+    "autocorrectAndroidDialogTitle": "Ndozighie onwe ya n'asụsụ ị na-amụ",
+    "autocorrectAndroidDialogBody": "Mgbe ị na-ede ihe na nkata, ahụigodo gị ga-agbanwe gaa n'asụsụ ị na-amụ ma dozie mkpoputa n'asụsụ ahụ.",
+    "autocorrectAndroidFallbackTitle": "Ọ bụrụ na ahụigodo gị anaghị enye asụsụ ị na-amụ, wụnye Gboard ma tinye asụsụ ahụ ebe ahụ:"
 }

@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Onjezani kiyibodi yanu ya chilankhulo chanu chofuna kuphunzira popita ku:",
     "enableAutocorrectPopupSteps": "  • Zokonda\n  • Zambiri\n  • Kiyibodi\n  • Kiyibodi\n  • Onjezani Kiyibodi Yatsopano",
     "enableAutocorrectPopupDescription": "Mukasankha chilankhulo, mutha kudina chizindikiro chaching'ono cha dziko lapansi pansi kumanzere kwa kiyibodi yanu kuti muyambitse kiyibodi yomwe yangoikidwa kumene.",
-    "downloadGboardTitle": "Tsitsani Gboard kuchokera ku Google Play Store kuti muyambitse kukonza zolakwika zokha ndi zina za kiyibodi:",
     "downloadGboardSteps": " • Tsitsani Gboard\n  • Tsegulani pulogalamu\n  • Zilankhulo\n  • Onjezani kiyibodi\n  • Sankhani Chilankhulo\n  • Sankhani mtundu wa kiyibodi\n  • Zatheka",
-    "downloadGboardDescription": "Mukasankha chilankhulo, mutha kudina chizindikiro chaching'ono cha dziko lapansi pansi kumanzere kwa kiyibodi yanu kuti muyambitse kiyibodi yomwe yangoikidwa kumene.",
     "enableAutocorrectWarning": "Chenjezo! Ikufuna kuwonjezera kiyibodi yanu ya chilankhulo chanu chofuna kuphunzira",
     "displayName": "Dzina lowonetsera",
     "leaveRoomDescription": "Muli pafupi kuchoka pamacheza awa. Ogwiritsa ntchito ena adzawona kuti mwachoka pamacheza.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Ogwiritsa ntchito akuyesera kulowa maphunziro anu",
     "denyAllUsers": "Kana ogwiritsa ntchito onse",
     "denyAllKnocksDescription": "Ogwiritsa ntchitowa adzakanidwa kulowa maphunzirowa. Atha kuyesanso kulowa nthawi iliyonse.",
-    "inviteAFriend": "Itanani bwenzi"
+    "inviteAFriend": "Itanani bwenzi",
+    "autocorrectAndroidDialogTitle": "Kukonza zolakwika zokha mu chilankhulo chanu",
+    "autocorrectAndroidDialogBody": "Mukamalemba mu macheza, kiyibodi yanu idzasintha kupita ku chilankhulo chanu ndikukonza zolakwika zolemba mu chilankhulocho.",
+    "autocorrectAndroidFallbackTitle": "Ngati kiyibodi yanu ilibe chilankhulo chanu, ikani Gboard ndikuwonjezera chilankhulocho kumeneko:"
 }

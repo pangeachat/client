@@ -205,7 +205,7 @@ Standalone practice requires an active subscription. [`UnsubscribedPracticePage`
 - Deduplicated by lemma — if "running" and "runs" appear in the same message, only one is selected
 - Capped at 5 targets per activity type per message (avoids overwhelming long messages)
 
-Selections are cached per message with a 1-day TTL in [`PracticeSelection`](../../lib/pangea/practice_activities/practice_selection.dart).
+Selections are cached per message for two days in [`PracticeSelectionRepo`](../../lib/routes/chat/toolbar/practice_exercises/practice_selection_repo.dart).
 
 Token priority within each message uses the scoring formula described in [Target Prioritization](#target-prioritization-which-words-first) above.
 
@@ -225,13 +225,13 @@ Token priority within each message uses the scoring formula described in [Target
 
 ## Activity Generation
 
-[`PracticeRepo`](../../lib/pangea/practice_activities/practice_generation_repo.dart) is the central dispatch for generating exercises. It:
+[`PracticeRepo`](../../lib/routes/chat/toolbar/practice_exercises/practice_generation_repo.dart) is the central dispatch for generating exercises: it takes a request carrying a `PracticeTarget` (tokens + exercise type + optional morph feature), routes it to that type's generator, and returns the exercise. It keeps no cache of its own.
 
-1. Receives a `MessageActivityRequest` with a `PracticeTarget` (tokens + activity type + optional morph feature)
-2. Routes to the correct generator based on activity type
-3. Caches results per-target with a 1-day TTL to avoid re-generating on re-render
-4. Message-practice types (`wordMeaning`, `emoji`, `morphId`, `wordFocusListening`) call the choreographer API
-5. Standalone types (`lemmaMeaning`, `lemmaAudio`, `grammarCategory`, `grammarError`) generate locally using lemma data and morph mappings
+Every exercise type in use is assembled on the device. The generators build on content that does come from the choreographer — lemma meanings and emoji from the lemma dictionary, morph tags from the grammar constructs provider — but each of those is cached where it is fetched, so generating an exercise is not a paid call in its own right. What regenerating costs is stability: generators shuffle their choices and re-pick their distractors, so a regenerated exercise is a different exercise.
+
+That stability is owned by the practice that asked for the exercise. [`PracticeController`](../../lib/routes/chat/toolbar/message_practice/practice_controller.dart) holds the exercises generated for one message in a [`PracticeExerciseMemo`](../../lib/routes/chat/toolbar/message_practice/practice_exercise_memo.dart), so leaving a word and coming back to it inside an open toolbar shows the same exercise; the memo dies with the toolbar. Reporting wrong lemma content drops that word's exercise, so the next fetch rebuilds it from the corrected content. Standalone practice generates each exercise once as it fills its session queue and needs no memo.
+
+Exercises are deliberately never cached across practices or written to disk: a shared, longer-lived cache serves one learner the same drill — same distractors, same order — in separate sittings, and can outlive corrections made to the content behind it.
 
 ### Model Hierarchy
 
@@ -249,6 +249,7 @@ All expose a `multipleChoiceContent` (choices + answers) and produce a `Practice
 ## Key Contracts
 
 - **Practice targets are deterministic per message.** For a given eventId + language + token set, the same targets are generated and cached. Don't introduce randomness that would change targets on re-render.
+- **An exercise the learner can return to doesn't change under them.** Inside one open toolbar, revisiting a word shows the exercise already generated for it. Closing the toolbar ends that guarantee: the next open generates fresh exercises, with freshly shuffled choices.
 - **Message practice never blocks on network.** Selection is local from cached token data; content fetches from choreo behind shimmer placeholders, never a blocking spinner.
 - **Standalone practice gates the UI only on the first exercise.** The loading screen covers target selection (local analytics reads) plus generation of the first exercise; the remaining exercises are prefetched eagerly in the background — their example-message, audio, and event resolution runs concurrently so they're ready when reached — but the UI never waits on the full set. Selection stays cheap and resolves no example messages, audio, or events (see [Loading & Generation Sequencing](#loading--generation-sequencing)).
 - **Emoji and meaning choices persist beyond the practice session.** They become the user's personal annotation on that lemma, visible in word cards and analytics.

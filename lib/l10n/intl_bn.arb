@@ -2900,9 +2900,7 @@
     "enableAutocorrectPopupTitle": "আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করুন: সেটিংসে যান",
     "enableAutocorrectPopupSteps": "  • সেটিংস\n  • সাধারণ\n  • কীবোর্ড\n  • কীবোর্ডসমূহ\n  • নতুন কীবোর্ড যোগ করুন",
     "enableAutocorrectPopupDescription": "একবার ভাষা নির্বাচন করলে, আপনি আপনার কীবোর্ডের নিচে বাম পাশে ছোট গ্লোব আইকনে ক্লিক করে নতুন ইনস্টলকৃত কীবোর্ডটি সক্রিয় করতে পারেন।",
-    "downloadGboardTitle": "অটোকারেক্ট এবং অন্যান্য কীবোর্ড বৈশিষ্ট্য সক্ষম করতে Google Play Store থেকে Gboard ডাউনলোড করুন:",
     "downloadGboardSteps": " • Gboard ডাউনলোড করুন\n  • অ্যাপ খুলুন\n  • ভাষা\n  • কীবোর্ড যোগ করুন\n  • ভাষা নির্বাচন করুন\n  • কীবোর্ডের ধরন নির্বাচন করুন\n  • শেষ",
-    "downloadGboardDescription": "একবার ভাষা নির্বাচন হয়ে গেলে, আপনি আপনার কীবোর্ডের নিচে বাম কোণে ছোট গ্লোব আইকনে ক্লিক করে নতুন ইনস্টলকৃত কীবোর্ডটি সক্রিয় করতে পারেন।",
     "enableAutocorrectWarning": "সতর্কতা! আপনার লক্ষ্য ভাষার কীবোর্ড যোগ করতে হবে",
     "displayName": "প্রদর্শন নাম",
     "leaveRoomDescription": "আপনি এই চ্যাট থেকে ছেড়ে যাচ্ছেন। অন্যান্য ব্যবহারকারীরা দেখবে যে আপনি চ্যাট ছেড়ে গেছেন।",
@@ -6017,15 +6015,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10388,5 +10378,8 @@
     "usersAreTryingToJoinCourse": "ব্যবহারকারীরা আপনার কোর্সে যোগদানের চেষ্টা করছেন",
     "denyAllUsers": "সমস্ত ব্যবহারকারীকে প্রত্যাখ্যান করুন",
     "denyAllKnocksDescription": "এই ব্যবহারকারীদের কোর্স থেকে প্রত্যাখ্যান করা হবে। তারা যেকোনো সময় আবার যোগদানের চেষ্টা করতে পারে।",
-    "inviteAFriend": "একজন বন্ধুকে আমন্ত্রণ জানান"
+    "inviteAFriend": "একজন বন্ধুকে আমন্ত্রণ জানান",
+    "autocorrectAndroidDialogTitle": "আপনার লক্ষ্য ভাষায় স্বয়ংক্রিয় সংশোধন",
+    "autocorrectAndroidDialogBody": "আপনি যখন চ্যাটে টাইপ করবেন, আপনার কীবোর্ড আপনার লক্ষ্য ভাষায় পরিবর্তিত হবে এবং সেই ভাষায় বানান সংশোধন করবে।",
+    "autocorrectAndroidFallbackTitle": "যদি আপনার কীবোর্ড আপনার লক্ষ্য ভাষা অফার না করে, তাহলে Gboard ইনস্টল করুন এবং সেখানে ভাষা যোগ করুন:"
 }

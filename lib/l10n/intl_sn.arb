@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Wedzera keyboard yemutauro wako wechinangwa nekuenda ku:",
     "enableAutocorrectPopupSteps": "  • Zvirongwa\n  • Zvakajairika\n  • Keyboard\n  • Keyboards\n  • Wedzera Keyboard Itsva",
     "enableAutocorrectPopupDescription": "Kana mutauro wasarudzwa, unogona kudzvanya icon diki yegirobhu pazasi kuruboshwe rwekeyboard yako kuti uvhure keyboard ichangobva kuiswa.",
-    "downloadGboardTitle": "Dhawunirodha Gboard kubva kuGoogle Play Store kuti ugonese autocorrect uye zvimwe zvinhu zvekeyboard:",
     "downloadGboardSteps": " • Dhawunirodha Gboard\n  • Vhura app\n  • Mitauro\n  • Wedzera keyboard\n  • Sarudza Mutauro\n  • Sarudza rudzi rwekeyboard\n  • Pedza",
-    "downloadGboardDescription": "Kana mutauro wasarudzwa, unogona kudzvanya icon diki yegirobhu pazasi kuruboshwe rwekeyboard yako kuti uvhure keyboard ichangobva kuiswa.",
     "enableAutocorrectWarning": "Yambiro! Inoda kuwedzera keyboard yemutauro wako wechinangwa",
     "displayName": "Zita rekuratidza",
     "leaveRoomDescription": "Wava kuda kusiya hurukuro iyi. Vamwe vashandisi vachaona kuti wasiya hurukuro.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Vashandisi vari kuedza kujoina kosi yako",
     "denyAllUsers": "Ramba vashandisi vese",
     "denyAllKnocksDescription": "Vashandisi ava vacharambwa kubva kukosi. Vanogona kuedza kujoina zvakare chero nguva.",
-    "inviteAFriend": "Koka shamwari"
+    "inviteAFriend": "Koka shamwari",
+    "autocorrectAndroidDialogTitle": "Autocorrect mumutauro wako waunoda",
+    "autocorrectAndroidDialogBody": "Paunonyora muchat, keyboard yako ichachinja kuenda kumutauro wako waunoda uye kugadzirisa zviperengo mumutauro iwoyo.",
+    "autocorrectAndroidFallbackTitle": "Kana keyboard yako isingapi mutauro wako waunoda, isa Gboard uye wedzera mutauro ikoko:"
 }

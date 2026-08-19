@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Füügt Är Zilssprooch-Tastatur bäi andeems Dir gitt op:",
     "enableAutocorrectPopupSteps": "  • Astellungen\n  • Allgemeng\n  • Tastatur\n  • Tastaturen\n  • Nei Tastatur derbäisetzen",
     "enableAutocorrectPopupDescription": "Wann d'Sprooch ausgewielt ass, kënnt Dir op dat klengt Globus-Symbol ënnen lénks op Ärer Tastatur klicken, fir déi nei installéiert Tastatur ze aktivéieren.",
-    "downloadGboardTitle": "Luet Gboard aus dem Google Play Store erof, fir Autokorrektur an aner Tastaturfunktiounen z'aktivéieren:",
     "downloadGboardSteps": " • Gboard eroflueden\n  • App opmaachen\n  • Sproochen\n  • Tastatur derbäisetzen\n  • Sprooch auswielen\n  • Tastaturtyp auswielen\n  • Fäerdeg",
-    "downloadGboardDescription": "Wann d'Sprooch ausgewielt ass, kënnt Dir op dat klengt Globus-Symbol ënnen lénks op Ärer Tastatur klicken, fir déi nei installéiert Tastatur ze aktivéieren.",
     "enableAutocorrectWarning": "Opgepasst! Erfuerdert d'Zousätzlech vun Ärer Zilssprooch-Tastatur",
     "displayName": "Affichëierten Numm",
     "leaveRoomDescription": "Dir sidd amgaang dësen Chat ze verloossen. Aner Benotzer wäerten gesinn, datt Dir den Chat verlooss hutt.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Benotzer probéieren Äre Cours ze bäitrieden",
     "denyAllUsers": "All Benotzer refuséieren",
     "denyAllKnocksDescription": "Dës Benotzer ginn aus dem Cours refuséiert. Si kënne jidderzäit nach eng Kéier probéieren bäizetrieden.",
-    "inviteAFriend": "Invitéier e Frënd"
+    "inviteAFriend": "Invitéier e Frënd",
+    "autocorrectAndroidDialogTitle": "Autokorrektur an Ärer Zilssprooch",
+    "autocorrectAndroidDialogBody": "Wann Dir an engem Chat tippt, wiesselt Är Tastatur op Är Zilssprooch a korrigéiert d'Schreifweis an där Sprooch.",
+    "autocorrectAndroidFallbackTitle": "Wann Är Tastatur Är Zilssprooch net ubitt, installéiert Gboard a füügt d'Sprooch do bäi:"
 }

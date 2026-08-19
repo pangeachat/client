@@ -3278,9 +3278,7 @@
     "enableAutocorrectPopupTitle": "Tambahkan keyboard bahasa target Anda dengan pergi ke:",
     "enableAutocorrectPopupSteps": "  • Pengaturan\n  • Umum\n  • Keyboard\n  • Keyboard\n  • Tambah Keyboard Baru",
     "enableAutocorrectPopupDescription": "Setelah bahasa dipilih, Anda dapat mengklik ikon globe kecil di kiri bawah keyboard Anda untuk mengaktifkan keyboard yang baru diinstal.",
-    "downloadGboardTitle": "Unduh Gboard dari Google Play Store untuk mengaktifkan koreksi otomatis dan fitur keyboard lainnya:",
     "downloadGboardSteps": " • Unduh Gboard\n  • Buka aplikasi\n  • Bahasa\n  • Tambah keyboard\n  • Pilih Bahasa\n  • Pilih jenis keyboard\n  • Selesai",
-    "downloadGboardDescription": "Setelah bahasa dipilih, Anda dapat mengklik ikon globe kecil di kiri bawah keyboard Anda untuk mengaktifkan keyboard yang baru diinstal.",
     "enableAutocorrectWarning": "Peringatan! Membutuhkan penambahan keyboard bahasa target Anda",
     "displayName": "Nama tampilan",
     "leaveRoomDescription": "Anda akan meninggalkan obrolan ini. Pengguna lain akan melihat bahwa Anda telah meninggalkan obrolan.",
@@ -5492,15 +5490,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9833,5 +9823,8 @@
     "usersAreTryingToJoinCourse": "Pengguna mencoba bergabung ke kursus Anda",
     "denyAllUsers": "Tolak semua pengguna",
     "denyAllKnocksDescription": "Pengguna ini akan ditolak dari kursus. Mereka dapat mencoba bergabung lagi kapan saja.",
-    "inviteAFriend": "Undang teman"
+    "inviteAFriend": "Undang teman",
+    "autocorrectAndroidDialogTitle": "Koreksi Otomatis dalam Bahasa Target Anda",
+    "autocorrectAndroidDialogBody": "Saat Anda mengetik di obrolan, keyboard Anda akan beralih ke bahasa target Anda dan mengoreksi ejaan dalam bahasa tersebut.",
+    "autocorrectAndroidFallbackTitle": "Jika keyboard Anda tidak menawarkan bahasa target Anda, instal Gboard dan tambahkan bahasa di sana:"
 }

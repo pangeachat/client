@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Ƙara maballin yaren da kake so ta hanyar zuwa:",
     "enableAutocorrectPopupSteps": "  • Saituna\n  • Gabaɗaya\n  • Maballi\n  • Maballai\n  • Ƙara Sabon Maballi",
     "enableAutocorrectPopupDescription": "Da zarar an zaɓi yaren, za ka iya danna ƙaramin gunkin duniya a ƙasan hagu na maballinka don kunna sabon maballin da aka shigar.",
-    "downloadGboardTitle": "Sauke Gboard daga Google Play Store don kunna gyaran rubutu da sauran fasalulluka na maballi:",
     "downloadGboardSteps": " • Sauke Gboard\n  • Bude manhaja\n  • Harsuna\n  • Ƙara maballi\n  • Zaɓi Harshe\n  • Zaɓi nau'in maballi\n  • An gama",
-    "downloadGboardDescription": "Da zarar an zaɓi yaren, za ka iya danna ƙaramin gunkin duniya a ƙasan hagu na maballinka don kunna sabon maballin da aka shigar.",
     "enableAutocorrectWarning": "Gargadi! Yana buƙatar ƙara maballin yaren da kake so",
     "displayName": "Sunan nuni",
     "leaveRoomDescription": "Kuna gab da barin wannan hira. Sauran masu amfani za su ga cewa kun bar hira.",
@@ -2148,5 +2146,8 @@
     "usersAreTryingToJoinCourse": "Masu amfani suna ƙoƙarin shiga kwas ɗinka",
     "denyAllUsers": "Ƙi duk masu amfani",
     "denyAllKnocksDescription": "Za a ƙi waɗannan masu amfani daga kwas ɗin. Suna iya sake ƙoƙarin shiga a kowane lokaci.",
-    "inviteAFriend": "Gayyaci aboki"
+    "inviteAFriend": "Gayyaci aboki",
+    "autocorrectAndroidDialogTitle": "Gyaran kai a harshen da kake so",
+    "autocorrectAndroidDialogBody": "Idan ka rubuta a cikin taɗi, madanninka zai canza zuwa harshen da kake so kuma ya gyara kuskuren rubutu a cikin wannan harshen.",
+    "autocorrectAndroidFallbackTitle": "Idan madanninka bai ba da harshen da kake so ba, shigar da Gboard kuma ƙara harshen a can:"
 }

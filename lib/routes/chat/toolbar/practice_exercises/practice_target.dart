@@ -72,9 +72,13 @@ class PracticeTarget {
         other.morphFeature == morphFeature;
   }
 
+  /// Hashed off the tokens' contents so equal targets hash equally, as `==`
+  /// (which compares them with `listEquals`) promises. A plain `List` hashes
+  /// by identity, so hashing [tokens] directly broke that contract for equal
+  /// targets rebuilt from storage (#8432).
   @override
   int get hashCode =>
-      tokens.hashCode ^ exerciseType.hashCode ^ morphFeature.hashCode;
+      Object.hash(Object.hashAll(tokens), exerciseType, morphFeature);
 
   static PracticeTarget fromJson(Map<String, dynamic> json) {
     final type = PracticeExerciseTypeEnum.values.firstWhereOrNull(

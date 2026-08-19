@@ -3243,9 +3243,7 @@
     "enableAutocorrectPopupTitle": "Afegeix el teclat del teu idioma objectiu anant a:",
     "enableAutocorrectPopupSteps": "  • Configuració\n  • General\n  • Teclat\n  • Teclats\n  • Afegeix un teclat nou",
     "enableAutocorrectPopupDescription": "Un cop seleccionat l'idioma, pots fer clic a la petita icona del globus a la part inferior esquerra del teclat per activar el teclat recentment instal·lat.",
-    "downloadGboardTitle": "Descarrega Gboard des de Google Play per habilitar la correcció automàtica i altres funcions del teclat:",
     "downloadGboardSteps": " • Descarrega Gboard\n  • Obre l'aplicació\n  • Idiomes\n  • Afegeix teclat\n  • Selecciona l'idioma\n  • Selecciona el tipus de teclat\n  • Fet",
-    "downloadGboardDescription": "Un cop seleccionat l'idioma, pots fer clic a la petita icona del globus a la part inferior esquerra del teclat per activar el teclat recentment instal·lat.",
     "enableAutocorrectWarning": "Avís! Requereix afegir el teclat del vostre idioma objectiu",
     "displayName": "Nom de visualització",
     "leaveRoomDescription": "Estàs a punt de sortir d'aquest xat. Els altres usuaris veuran que has sortit del xat.",
@@ -5516,15 +5514,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9887,5 +9877,8 @@
     "usersAreTryingToJoinCourse": "Els usuaris estan intentant unir-se al teu curs",
     "denyAllUsers": "Denegar tots els usuaris",
     "denyAllKnocksDescription": "Aquests usuaris seran rebutjats del curs. Poden intentar unir-se de nou en qualsevol moment.",
-    "inviteAFriend": "Convida un amic"
+    "inviteAFriend": "Convida un amic",
+    "autocorrectAndroidDialogTitle": "Autocorrecció en la teva llengua d'aprenentatge",
+    "autocorrectAndroidDialogBody": "Quan escriguis en un xat, el teu teclat canviarà a la teva llengua d'aprenentatge i corregirà l'ortografia en aquesta llengua.",
+    "autocorrectAndroidFallbackTitle": "Si el teu teclat no ofereix la teva llengua d'aprenentatge, instal·la Gboard i afegeix-hi la llengua:"
 }

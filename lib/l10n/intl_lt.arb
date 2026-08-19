@@ -2769,9 +2769,7 @@
     "enableAutocorrectPopupTitle": "Pridėkite savo tikslios kalbos klaviatūrą, eikite į:",
     "enableAutocorrectPopupSteps": "  • Nustatymai\n  • Bendra\n  • Klaviatūra\n  • Klaviatūros\n  • Pridėti naują klaviatūrą",
     "enableAutocorrectPopupDescription": "Pasirinkus kalbą, galite spustelėti mažą pasaulio ženklo piktogramą apatinėje kairėje klaviatūros dalyje, kad aktyvuotumėte naujai įdiegtą klaviatūrą.",
-    "downloadGboardTitle": "Parsisiųskite Gboard iš „Google Play“ parduotuvės, kad įgalintumėte automatinį taisymą ir kitas klaviatūros funkcijas:",
     "downloadGboardSteps": "• Atsisiųskite Gboard\n  • Atidarykite programėlę\n  • Kalbos\n  • Pridėti klaviatūrą\n  • Pasirinkite kalbą\n  • Pasirinkite klaviatūros tipą\n  • Baigta",
-    "downloadGboardDescription": "Kai kalba bus pasirinkta, galite spustelėti mažą pasaulio piktogramą apatiniame kairiajame klaviatūros kampe, kad aktyvuotumėte naujai įdiegtą klaviatūrą.",
     "enableAutocorrectWarning": "Įspėjimas! Reikia pridėti savo tikslo kalbos klaviatūrą",
     "displayName": "Rodomas vardas",
     "leaveRoomDescription": "Jūs ketinate išeiti iš šio pokalbio. Kiti vartotojai matys, kad išėjote iš pokalbio.",
@@ -6170,15 +6168,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10541,5 +10531,8 @@
     "usersAreTryingToJoinCourse": "Vartotojai bando prisijungti prie jūsų kurso",
     "denyAllUsers": "Atmesti visus vartotojus",
     "denyAllKnocksDescription": "Šie vartotojai bus pašalinti iš kurso. Jie gali bandyti prisijungti bet kuriuo metu.",
-    "inviteAFriend": "Pakviesti draugą"
+    "inviteAFriend": "Pakviesti draugą",
+    "autocorrectAndroidDialogTitle": "Automatinis taisymas jūsų mokomąja kalba",
+    "autocorrectAndroidDialogBody": "Kai rašote pokalbyje, klaviatūra persijungs į jūsų mokomąją kalbą ir taisys rašybą ta kalba.",
+    "autocorrectAndroidFallbackTitle": "Jei jūsų klaviatūra nepasiūlo jūsų mokomosios kalbos, įdiekite „Gboard“ ir pridėkite kalbą ten:"
 }

@@ -2350,9 +2350,7 @@
     "enableAutocorrectPopupTitle": "Adicione o teclado do seu idioma de destino indo para:",
     "enableAutocorrectPopupSteps": "  • Definições\n  • Geral\n  • Teclado\n  • Teclados\n  • Adicionar novo teclado",
     "enableAutocorrectPopupDescription": "Depois de selecionar o idioma, pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
-    "downloadGboardTitle": "Baixe o Gboard da Google Play Store para ativar a correção automática e outros recursos do teclado:",
     "downloadGboardSteps": " • Baixar Gboard\n  • Abrir o aplicativo\n  • Idiomas\n  • Adicionar teclado\n  • Selecionar idioma\n  • Selecionar tipo de teclado\n  • Concluído",
-    "downloadGboardDescription": "Depois de selecionar o idioma, pode clicar no pequeno ícone do globo na parte inferior esquerda do seu teclado para ativar o teclado recentemente instalado.",
     "enableAutocorrectWarning": "Atenção! É necessário adicionar o teclado do seu idioma de destino",
     "displayName": "Nome de exibição",
     "leaveRoomDescription": "Está prestes a sair deste chat. Outros utilizadores verão que saiu do chat.",
@@ -6317,15 +6315,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10677,5 +10667,8 @@
     "usersAreTryingToJoinCourse": "Os utilizadores estão a tentar aderir ao seu curso",
     "denyAllUsers": "Recusar todos os utilizadores",
     "denyAllKnocksDescription": "Estes utilizadores serão rejeitados do curso. Poderão tentar aderir novamente a qualquer momento.",
-    "inviteAFriend": "Convidar um amigo"
+    "inviteAFriend": "Convidar um amigo",
+    "autocorrectAndroidDialogTitle": "Correção automática na sua língua-alvo",
+    "autocorrectAndroidDialogBody": "Quando escrever numa conversa, o seu teclado mudará para a sua língua-alvo e corrigirá a ortografia nessa língua.",
+    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer a sua língua-alvo, instale o Gboard e adicione a língua lá:"
 }
