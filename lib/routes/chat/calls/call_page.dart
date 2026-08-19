@@ -68,7 +68,6 @@ class _CallPageState extends State<CallPage> {
   late final CallMedia _media;
   late final ActiveCall _call;
   late final CallRecord _record;
-  DateTime? _endedAt;
 
   /// Whether this device got as far as an established call. A call that failed
   /// to start is not written at all; one that rang out unanswered is, as a
@@ -82,11 +81,6 @@ class _CallPageState extends State<CallPage> {
   late bool _usedVideo;
   bool _muted = false;
   late bool _camera;
-
-  /// When the two sides were first both present. The screen shows a running
-  /// timer from here, so it is the moment the conversation started rather than
-  /// the moment this device opened the screen.
-  DateTime? _talkingSince;
 
   /// Redraws once a second so the timer advances. Nothing else on this screen
   /// changes on its own, so it runs only while a call is actually up.
@@ -161,14 +155,15 @@ class _CallPageState extends State<CallPage> {
   void _onCallChanged() {
     if (!mounted) return;
     setState(() {});
-    if (_call.stage == CallStage.connected) {
-      _reachedCall = true;
-      if (_call.hadPeer) {
-        _talkingSince ??= DateTime.now();
-        _tick ??= Timer.periodic(const Duration(seconds: 1), (_) {
-          if (mounted) setState(() {});
-        });
-      }
+    if (_call.stage == CallStage.connected) _reachedCall = true;
+    // Started on somebody arriving, not on reaching the connected stage. A peer
+    // who was already here when this device joined is present before the stage
+    // moves, and gating the timer on the stage left a call that ended in that
+    // window showing — and recording — no talking at all.
+    if (_call.hadPeer) {
+      _tick ??= Timer.periodic(const Duration(seconds: 1), (_) {
+        if (mounted) setState(() {});
+      });
     }
     // A call that ended or failed has nothing left to show. Closing here rather
     // than leaving a dead screen up means the user never has to dismiss a call
@@ -215,10 +210,6 @@ class _CallPageState extends State<CallPage> {
   /// the several entry points wait on one teardown and write once. Deliberately
   /// not awaited and not tied to this widget — it outlives the screen.
   void _finishRecording() {
-    // Stamped when the call ends, not when teardown finishes. Flushing the last
-    // chunk and transcribing it can take seconds, and none of that is time the
-    // learner spent talking.
-    _endedAt ??= DateTime.now();
     unawaited(
       // whenComplete, not then: a teardown that throws must not also cost the
       // call its record. The write is what turns a conversation into analytics,
@@ -252,9 +243,7 @@ class _CallPageState extends State<CallPage> {
           // Time actually spent talking, not time the screen was open. Ringing
           // and connecting are not conversation, and counting them made every
           // call read as longer than it was.
-          duration: _talkingSince == null
-              ? Duration.zero
-              : _endedAt!.difference(_talkingSince!),
+          duration: _call.talkDuration,
           video: _usedVideo,
           // Whether anyone was ever on the other end, read from the call
           // itself. Latching this on observing the connected stage dropped a
@@ -463,7 +452,7 @@ class _CallPageState extends State<CallPage> {
   }
 
   Duration _elapsed() {
-    final since = _talkingSince;
+    final since = _call.talkStartedAt;
     if (since == null) return Duration.zero;
     return DateTime.now().difference(since);
   }

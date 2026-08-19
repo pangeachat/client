@@ -105,6 +105,10 @@ class CallCaptureService {
              firstIndex: firstIndex,
            ));
 
+  /// Taps that refused to detach. A recording will not start while this has
+  /// anything in it.
+  final List<DetachTap> _unreleased = [];
+
   bool get isRecording => _running;
 
   /// Begins recording [track].
@@ -116,7 +120,7 @@ class CallCaptureService {
     if (_running) {
       throw StateError('A call recording is already running');
     }
-    if (_detach != null) {
+    if (_detach != null || _unreleased.isNotEmpty) {
       // A previous tap never detached. Refuse rather than stack a second tap on
       // the same track: losing this stretch of analytics is recoverable,
       // counting it twice is not.
@@ -137,15 +141,50 @@ class CallCaptureService {
     }
     if (_session != session) {
       // A stop landed while this was attaching. The tap belongs to a recording
-      // that is already over, so it is released here — storing it would leave it
-      // attached with nothing tracking it.
-      await detach?.call();
+      // that is already over, so it is released here rather than stored: by the
+      // time it arrived another recording may already own [_detach], and writing
+      // over that would leave the live tap untracked.
+      await _release(detach);
       return;
     }
     _detach = detach;
     if (detach == null) {
       // No tap on this device. Nothing is recorded, and the call is unaffected.
       _running = false;
+    }
+  }
+
+  /// Lets go of a tap, and does not lose it if it will not let go.
+  ///
+  /// The only way a tap is ever released. A detach that throws has left the tap
+  /// attached to the track, so it is kept rather than dropped: the next stop
+  /// tries it again, and until one succeeds no new recording may start over the
+  /// top of it — two taps feeding one chunker would count the learner's own
+  /// voice twice.
+  ///
+  /// Held in a list rather than back in [_detach] because there can genuinely be
+  /// more than one: a tap arriving late from an [start] that a stop overtook is
+  /// not the tap the current recording owns, and the two must not displace each
+  /// other.
+  Future<void> _release(DetachTap? detach) async {
+    if (detach == null) return;
+    try {
+      await detach();
+    } catch (e, s) {
+      _unreleased.add(detach);
+      Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
+    }
+  }
+
+  /// Tries the taps that would not let go before. Taken and cleared first, so a
+  /// failure adds itself back for next time rather than being retried forever
+  /// inside this loop.
+  Future<void> _releaseUnreleased() async {
+    if (_unreleased.isEmpty) return;
+    final pending = List.of(_unreleased);
+    _unreleased.clear();
+    for (final detach in pending) {
+      await _release(detach);
     }
   }
 
@@ -220,10 +259,17 @@ class CallCaptureService {
       _stopped ??= _stop().whenComplete(() => _stopped = null);
 
   Future<void> _stop() async {
-    // Checked against the tap as well as the chunker: a call can be attached
+    // Checked against the taps as well as the chunker: a call can be attached
     // with no chunker yet, because the chunker is not built until audio actually
-    // arrives, and returning early there would leave the tap attached.
-    if (!_running && _chunker == null && _detach == null) return;
+    // arrives, and returning early there would leave the tap attached. A tap
+    // that would not let go counts too — this is the only thing that ever comes
+    // back to one, so returning above it would strand it for good.
+    if (!_running &&
+        _chunker == null &&
+        _detach == null &&
+        _unreleased.isEmpty) {
+      return;
+    }
     _session++;
 
     // A tap that will not detach must not cost the tail. The frames it may still
@@ -234,19 +280,13 @@ class CallCaptureService {
     // let a second stop past the guard above and detach the same tap twice.
     final detach = _detach;
     _detach = null;
-    try {
-      // Audio is still accepted while this runs. Detaching is what makes a tap
-      // hand over the last of what it gathered, and that tail is the end of a
-      // sentence — refusing frames first would collect it and then throw it
-      // away.
-      await detach?.call();
-    } catch (e, s) {
-      // Put back, not discarded. A tap that would not detach is still attached,
-      // and starting again over the top of it would feed two taps into one
-      // chunker — the learner's own voice counted twice.
-      _detach = detach;
-      Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
-    }
+    // Audio is still accepted while this runs. Detaching is what makes a tap
+    // hand over the last of what it gathered, and that tail is the end of a
+    // sentence — refusing frames first would collect it and then throw it away.
+    await _release(detach);
+    // And another go at anything that would not let go earlier. A tap detaches
+    // on the next stop or not at all; nothing else ever comes back to it.
+    await _releaseUnreleased();
 
     // Only now: nothing more can arrive, so what is held is the whole of it.
     _stopping = true;

@@ -503,6 +503,31 @@ void main() {
       expect(sink.closes, 1);
     });
   });
+
+  group('a tap that will not let go', () {
+    test('is kept rather than dropped when it arrives too late', () async {
+      final tap = _StubbornSlowTap();
+      final capture = service(withTap: tap);
+      final starting = capture.start(track);
+      // The call ends while the tap is still attaching, so what arrives belongs
+      // to a recording that is already over.
+      await capture.stop();
+      tap.finishAttaching();
+      await starting;
+
+      expect(tap.detachAttempts, 1, reason: 'it was asked, and refused');
+      expect(tap.detached, isFalse);
+
+      // Still attached, so a second recording must not be laid over the top of
+      // it — two taps feeding one chunker would count the learner twice.
+      await expectLater(capture.start(track), throwsStateError);
+
+      // And the next stop comes back to it. Nothing else ever does.
+      await capture.stop();
+      expect(tap.detached, isTrue, reason: 'the tap was released in the end');
+      await capture.start(track);
+    });
+  });
 }
 
 /// A device that offers no point to read from after echo cancellation.
@@ -532,6 +557,27 @@ class _TailOnDetachTap implements CallAudioTap {
 }
 
 /// A tap that takes its time attaching, so a stop can land inside it.
+/// Attaches slowly, and will not let go the first time it is asked.
+class _StubbornSlowTap implements CallAudioTap {
+  final _attached = Completer<void>();
+  int detachAttempts = 0;
+  bool detached = false;
+
+  void finishAttaching() => _attached.complete();
+
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    await _attached.future;
+    return () async {
+      detachAttempts++;
+      if (detachAttempts == 1) {
+        throw StateError('the platform would not let go');
+      }
+      detached = true;
+    };
+  }
+}
+
 class _SlowToAttachTap implements CallAudioTap {
   final _attached = Completer<void>();
   bool detached = false;

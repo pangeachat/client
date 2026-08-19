@@ -180,7 +180,11 @@ class ActiveCall extends ChangeNotifier {
       ),
     ).shouldRecord;
 
-    _wanted = elected;
+    // Only once somebody is on the other end. A caller who talks while it is
+    // still ringing is not in a conversation, and crediting that audio to the
+    // call meant analytics for words nobody heard — as well as uploading and
+    // transcribing a ring nobody wanted.
+    _wanted = elected && _peerArrived;
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
     // stop is still unwinding would let that stop cancel the new tap and close
@@ -225,7 +229,27 @@ class ActiveCall extends ChangeNotifier {
   ///
   /// Their absence only means the call is over if they were ever there — before
   /// that it just means they have not answered yet.
-  bool _peerArrived = false;
+  /// When they arrived. This IS the latch: a call cannot have had somebody on
+  /// it without a moment they arrived, and keeping the two as separate fields is
+  /// what let a call be recorded as answered with a duration of zero.
+  DateTime? _talkStartedAt;
+
+  /// When the talking stopped — the moment the call was ended or they left, not
+  /// the moment teardown finished. Retracting the membership, flushing the last
+  /// chunk of audio and waiting for it to be transcribed take seconds, and none
+  /// of that is time anybody spent talking.
+  DateTime? _talkEndedAt;
+
+  bool get _peerArrived => _talkStartedAt != null;
+
+  /// Notes that somebody is on the other end. Every route to that fact goes
+  /// through here, so the moment is always recorded with it.
+  void _notePeerPresent() => _talkStartedAt ??= DateTime.now();
+
+  /// Notes that the talking is over. Called as the call starts to end rather
+  /// than when it has finished ending.
+  void _noteTalkEnded() => _talkEndedAt ??= DateTime.now();
+
   Timer? _waitingForPeer;
 
   /// How long a call waits for someone to be on the other end.
@@ -265,7 +289,7 @@ class ActiveCall extends ChangeNotifier {
     final peerHere = _roster?.hasPeer ?? false;
     if (peerHere) {
       final firstArrival = !_peerArrived;
-      _peerArrived = true;
+      _notePeerPresent();
       _waitingForPeer?.cancel();
       _waitingForPeer = null;
       // The screen decides whether this was a real call from this, so it has to
@@ -336,6 +360,22 @@ class ActiveCall extends ChangeNotifier {
   /// happened. A call that rang out unanswered is not a call, and writing one
   /// would credit a learner for talking to nobody.
   bool get hadPeer => _peerArrived;
+
+  /// When the conversation started, for the timer on screen. Null until
+  /// somebody is on the other end — ringing is not talking.
+  DateTime? get talkStartedAt => _talkStartedAt;
+
+  /// How long the two sides were actually both on the call.
+  ///
+  /// Kept here rather than measured by the screen because this is what knows
+  /// when they arrived and when the call began to end. The screen only sees
+  /// stage changes, and the last of those lands after teardown — so measuring
+  /// there charged the conversation for the flush and the upload that follow it.
+  Duration get talkDuration {
+    final from = _talkStartedAt;
+    if (from == null) return Duration.zero;
+    return (_talkEndedAt ?? DateTime.now()).difference(from);
+  }
 
   CallStage get stage => _stage;
   Object? get error => _error;
@@ -477,7 +517,7 @@ class ActiveCall extends ChangeNotifier {
       // while the first handover settles, and reading afterwards would have this
       // call believe nobody ever answered — no teardown when they left, and the
       // conversation recorded as unanswered.
-      _peerArrived = roster.hasPeer;
+      if (roster.hasPeer) _notePeerPresent();
 
       // Elect before announcing, so recording begins with the first word rather
       // than after a round-trip.
@@ -582,6 +622,7 @@ class ActiveCall extends ChangeNotifier {
   /// than starting a second one.
   Future<void> hangUp() {
     _ending = true;
+    _noteTalkEnded();
     return _hangUp ??= () async {
       try {
         await _tearDown();
@@ -642,6 +683,7 @@ class ActiveCall extends ChangeNotifier {
 
   Future<void> _unwind() async {
     _ending = true;
+    _noteTalkEnded();
     unawaited(_declines?.cancel());
     _declines = null;
     unawaited(_peerRings?.cancel());

@@ -405,6 +405,94 @@ void main() {
 
   matrix.Room roomStub(Client c) => matrix.Room(id: '!r:server', client: c);
 
+  group('how long the call is recorded as having lasted', () {
+    test('does not charge the conversation for its own teardown', () async {
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.hadPeer, isTrue);
+
+      // Teardown held open, standing in for the flush, the upload and the wait
+      // for a transcript that follow a real hangup.
+      final teardown = Completer<void>();
+      capture.holdStop = teardown;
+      final ending = call.hangUp();
+      await Future<void>.delayed(const Duration(milliseconds: 60));
+      teardown.complete();
+      await ending;
+
+      // The window closed when the call was asked to end. Measured after
+      // teardown instead, this reads at least the 60ms the flush was held for.
+      expect(call.talkDuration, lessThan(const Duration(milliseconds: 60)));
+    });
+
+    test('counts a peer who arrived and left before the stage moved', () async {
+      final (call, calls, media, _) = await build();
+      // Present before this device even looks: the ordinary case for whoever
+      // answers, since the caller is already in the room.
+      calls.remotePresent = true;
+      // Held at the announce so the call cannot reach connected, and they leave
+      // inside that window — somebody was genuinely on the call, but the stage
+      // never moved.
+      final announce = Completer<void>();
+      calls.holdAnnounce = announce;
+      final starting = call.start(
+        roomStub(calls.client),
+        video: false,
+        answering: true,
+      );
+      await Future<void>.delayed(Duration.zero);
+      calls.remotePresent = false;
+      announce.complete();
+      await starting;
+
+      // They were here, so this was a conversation and not a missed call —
+      // and it has to have lasted something, or it is written as answered with
+      // nothing in it.
+      expect(call.hadPeer, isTrue);
+      expect(call.talkStartedAt, isNotNull);
+      expect(call.talkDuration, greaterThan(Duration.zero));
+      expect(media, isNotNull);
+    });
+
+    test('a call nobody answered lasted no time at all', () async {
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      await call.hangUp();
+      expect(call.hadPeer, isFalse);
+      expect(call.talkStartedAt, isNull);
+      expect(call.talkDuration, Duration.zero);
+    });
+  });
+
+  group('what is recorded, and from when', () {
+    test('nothing is recorded while the call is still ringing', () async {
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      // Their phone is ringing. Anything said here is said to nobody, and
+      // crediting it to the call would put words in an analytics record that
+      // no learner ever heard.
+      expect(trace.steps, isNot(contains('capture.start')));
+    });
+
+    test('recording begins when they answer', () async {
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      calls.remotePresent = true;
+      await Future<void>.delayed(Duration.zero);
+      expect(trace.steps, contains('capture.start'));
+    });
+
+    test('whoever answers records from the first word', () async {
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false, answering: true);
+      // The caller is already there, so there is no waiting for an arrival that
+      // has already happened — the roster is read rather than listened for.
+      expect(trace.steps, contains('capture.start'));
+    });
+  });
+
   group('bringing a call up', () {
     test('placing into an empty call rings the other side', () async {
       final (call, calls, _, _) = await build();
@@ -489,14 +577,19 @@ void main() {
 
     test('media and recording start before the peer is told', () async {
       final (call, calls, _, _) = await build();
+      // Somebody is already on the call, so this is joining one rather than
+      // placing one — hence no ring — and there is somebody to record with from
+      // the first moment.
+      calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
 
+      // Recording is running before this device announces itself, so the peer
+      // never learns we are here ahead of us being able to hear them.
       expect(trace.steps, [
         'join',
         'connect(video: false)',
         'capture.start',
         'announce',
-        'ring',
       ]);
       expect(call.stage, CallStage.connected);
       expect(call.isRecording, isTrue);
@@ -550,6 +643,9 @@ void main() {
 
     test('a failure to announce tears the whole call down', () async {
       final (call, calls, _, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.announceError = StateError('state event rejected');
       await call.start(roomStub(calls.client), video: false);
 
@@ -570,6 +666,9 @@ void main() {
   group('hanging up', () {
     test('unwinds in reverse', () async {
       final (call, calls, _, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
       trace.steps.clear();
       await call.hangUp();
@@ -585,6 +684,9 @@ void main() {
 
     test('twice tears down once', () async {
       final (call, calls, _, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
       trace.steps.clear();
       await Future.wait([call.hangUp(), call.hangUp()]);
@@ -599,6 +701,9 @@ void main() {
     test('a recording that will not flush still frees the microphone '
         'and retracts the membership', () async {
       final (call, calls, _, capture) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
       capture.stopError = StateError('flush failed');
       trace.steps.clear();
@@ -615,6 +720,9 @@ void main() {
 
     test('media that will not close does not strand the rest', () async {
       final (call, calls, media, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       await call.start(roomStub(calls.client), video: false);
       media.disposeError = StateError('socket stuck');
       trace.steps.clear();
@@ -685,6 +793,9 @@ void main() {
     // has returned. Notifying then throws — on the ordinary path of closing the
     // call screen.
     final (call, calls, _, _) = await build();
+    // A call has to have somebody on it to be recorded: nothing is
+    // captured while it is still ringing.
+    calls.remotePresent = true;
     await call.start(roomStub(calls.client), video: false);
     trace.steps.clear();
 
@@ -706,6 +817,9 @@ void main() {
     // this device advertised as a participant the whole time, so the peer would
     // still see someone who had already hung up.
     final (call, calls, _, _) = await build();
+    // A call has to have somebody on it to be recorded: nothing is
+    // captured while it is still ringing.
+    calls.remotePresent = true;
     await call.start(roomStub(calls.client), video: false);
     trace.steps.clear();
 
@@ -897,6 +1011,9 @@ void main() {
   group('which device records', () {
     test('this one, when it is alone in the call', () async {
       final (call, calls, _, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
       expect(call.isRecording, isTrue);
@@ -920,6 +1037,9 @@ void main() {
 
     test('this one takes over when the other device leaves', () async {
       final (call, calls, _, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
       expect(call.isRecording, isFalse);
@@ -931,6 +1051,9 @@ void main() {
 
     test('this one stops when a device sorting lower arrives', () async {
       final (call, calls, _, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
       expect(call.isRecording, isTrue);
@@ -947,6 +1070,9 @@ void main() {
 
     test('a device sorting higher does not displace this one', () async {
       final (call, calls, _, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
       trace.steps.clear();
@@ -974,6 +1100,9 @@ void main() {
       // Starting the new recording while the old stop is still unwinding would
       // let that stop cancel the new tap and close its sink underneath it.
       final (call, calls, _, capture) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
       trace.steps.clear();
@@ -996,6 +1125,9 @@ void main() {
       // while it no longer counts as capturing. Finishing teardown then would
       // let the call be written before the last words were transcribed.
       final (call, calls, _, capture) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
 
@@ -1016,6 +1148,9 @@ void main() {
       // Recording state must follow what actually happened, not what was
       // intended, or a failed tap is remembered as open and never reattempted.
       final (call, calls, _, capture) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.devicesInCall = [calls.client.deviceID!];
       capture.startError = StateError('no renderer');
       await call.start(roomStub(calls.client), video: false);
@@ -1034,6 +1169,9 @@ void main() {
       // timer, not an event. This device deferred to it; the periodic tick is
       // what lets it notice the phantom is gone and take over recording.
       final (call, calls, _, _) = await build();
+      // A call has to have somebody on it to be recorded: nothing is
+      // captured while it is still ringing.
+      calls.remotePresent = true;
       calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
       await call.start(roomStub(calls.client), video: false);
       expect(call.isRecording, isFalse, reason: 'deferred to the lower id');
