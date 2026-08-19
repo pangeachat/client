@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-18 15:48:48.343466",
+    "@@last_modified": "2026-08-19 11:21:14.568013",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -2193,9 +2193,7 @@
     "enableAutocorrectPopupTitle": "Pridajte klávesnicu cieľového jazyka prechádzaním do:",
     "enableAutocorrectPopupSteps": "  • Nastavenia\n  • Všeobecné\n  • Klávesnica\n  • Klávesnice\n  • Pridať novú klávesnicu",
     "enableAutocorrectPopupDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
-    "downloadGboardTitle": "Stiahnite si Gboard z Obchodu Google Play na povolenie automatickej korekcie a ďalších funkcií klávesnice:",
     "downloadGboardSteps": " • Stiahnite si Gboard\n  • Otvorte aplikáciu\n  • Jazyky\n  • Pridať klávesnicu\n  • Vybrať jazyk\n  • Vybrať typ klávesnice\n  • Hotovo",
-    "downloadGboardDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
     "enableAutocorrectWarning": "Varovanie! Vyžaduje pridanie klávesnice cieľového jazyka",
     "displayName": "Zobrazované meno",
     "leaveRoomDescription": "Chystáte sa opustiť tento chat. Ostatní používatelia uvidia, že ste opustili chat.",
@@ -6334,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10704,5 +10694,8 @@
     "markAllRead": "Označiť všetko ako prečítané",
     "usersAreTryingToJoinCourse": "Používatelia sa snažia pripojiť k vášmu kurzu",
     "denyAllUsers": "Odmietnuť všetkých používateľov",
-    "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť."
+    "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť.",
+    "autocorrectAndroidDialogTitle": "Automatické opravy v cieľovom jazyku",
+    "autocorrectAndroidDialogBody": "Keď píšete v chate, klávesnica sa prepne na váš cieľový jazyk a opraví pravopis v tomto jazyku.",
+    "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:"
 }

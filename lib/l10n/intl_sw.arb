@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-18 15:48:49.146968",
+    "@@last_modified": "2026-08-19 11:21:16.722492",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Ongeza kibodi cha lugha unayolenga kwa kwenda kwenye:",
     "enableAutocorrectPopupSteps": "  • Mipangilio\n  • Jumla\n  • Kibodi\n  • Vibodi\n  • Ongeza Kibodi Mpya",
     "enableAutocorrectPopupDescription": "Mara tu lugha imechaguliwa, unaweza kubofya ikoni ndogo ya globu iliyo chini kushoto mwa kibodi chako ili kuwasha kibodi kipya kilichosakinishwa.",
-    "downloadGboardTitle": "Pakua Gboard kutoka Google Play Store ili kuwasha kusahihisha kiotomatiki na vipengele vingine vya kibodi:",
     "downloadGboardSteps": " • Pakua Gboard\n  • Fungua programu\n  • Lugha\n  • Ongeza kibodi\n  • Chagua Lugha\n  • Chagua aina ya kibodi\n  • Imekamilika",
-    "downloadGboardDescription": "Mara tu lugha imechaguliwa, unaweza kubofya ikoni ndogo ya globu iliyo chini kushoto mwa kibodi chako ili kuwasha kibodi kipya kilichosakinishwa.",
     "enableAutocorrectWarning": "Onyo! Inahitaji kuongeza kibodi cha lugha unayolenga",
     "displayName": "Jina la kuonyesha",
     "leaveRoomDescription": "Unakaribia kuondoka kwenye soga hii. Watumiaji wengine wataona kuwa umeondoka kwenye soga.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Weka zote kama zimesomwa",
     "usersAreTryingToJoinCourse": "Watumiaji wanajaribu kujiunga na kozi yako",
     "denyAllUsers": "Kataa watumiaji wote",
-    "denyAllKnocksDescription": "Watumiaji hawa watakataliwa kujiunga na kozi. Wanaweza kujaribu kujiunga tena wakati wowote."
+    "denyAllKnocksDescription": "Watumiaji hawa watakataliwa kujiunga na kozi. Wanaweza kujaribu kujiunga tena wakati wowote.",
+    "autocorrectAndroidDialogTitle": "Masahihisho ya kiotomatiki katika lugha unayolenga",
+    "autocorrectAndroidDialogBody": "Unapoandika kwenye gumzo, kibodi chako kitabadilika hadi lugha unayolenga na kusahihisha tahajia katika lugha hiyo.",
+    "autocorrectAndroidFallbackTitle": "Ikiwa kibodi chako hakitoi lugha unayolenga, sakinisha Gboard na uongeze lugha hapo:"
 }

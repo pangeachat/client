@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-18 15:48:45.148809",
+    "@@last_modified": "2026-08-19 11:21:10.591749",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Claviaturam linguae tuae addere, vade ad:",
     "enableAutocorrectPopupSteps": "  • Uncini\n  • Generalia\n  • Claviatura\n  • Claviaturae\n  • Novam Claviaturam Adde",
     "enableAutocorrectPopupDescription": "Lingua selecta, parvam iconem globi in parte inferiore sinistra claviaturæ premere potes ut novam claviaturam activam facias.",
-    "downloadGboardTitle": "Deprome Gboard ex Google Play Store ut emendationem automaticam et alias functiones claviaturæ actives:",
     "downloadGboardSteps": " • Deprome Gboard\n  • Aperi app\n  • Linguae\n  • Claviaturam adde\n  • Linguam elige\n  • Genus claviaturæ elige\n  • Factum",
-    "downloadGboardDescription": "Lingua selecta, parvam iconem globi in parte inferiore sinistra claviaturæ premere potes ut novam claviaturam activam facias.",
     "enableAutocorrectWarning": "Monitus! Addenda est claviatura linguae tuae discendae",
     "displayName": "Nomen ostensum",
     "leaveRoomDescription": "Hoc colloquium relicturus es. Alii usores te colloquio discessisse videbunt.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Omnia lecta nota",
     "usersAreTryingToJoinCourse": "Nonnulli ad cursum tuum accedere conantur",
     "denyAllUsers": "Omnes repelle",
-    "denyAllKnocksDescription": "Hi usores a cursu reicientur. Quovis tempore iterum accedere conari possunt."
+    "denyAllKnocksDescription": "Hi usores a cursu reicientur. Quovis tempore iterum accedere conari possunt.",
+    "autocorrectAndroidDialogTitle": "Emendatio automatica in lingua quam discis",
+    "autocorrectAndroidDialogBody": "Cum in colloquio scribis, claviatura tua ad linguam quam discis mutabit et orthographiam in illa lingua emendabit.",
+    "autocorrectAndroidFallbackTitle": "Si claviatura tua linguam quam discis non offert, Gboard institue et linguam illic adde:"
 }

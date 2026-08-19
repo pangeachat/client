@@ -3338,9 +3338,7 @@
     "enableAutocorrectPopupTitle": "Lisää kohdekielesi näppäimistö seuraavasti:",
     "enableAutocorrectPopupSteps": "  • Asetukset\n  • Yleiset\n  • Näppäimistö\n  • Näppäimistöt\n  • Lisää uusi näppäimistö",
     "enableAutocorrectPopupDescription": "Kun kieli on valittu, voit klikata pienen maapallon kuvaketta näppäimistön alakulmassa ottaaksesi käyttöön juuri asennetun näppäimistön.",
-    "downloadGboardTitle": "Lataa Gboard Google Play -kaupasta ottaaksesi automaattikorjauksen ja muut näppäimistötoiminnot käyttöön:",
     "downloadGboardSteps": " • Lataa Gboard\n  • Avaa sovellus\n  • Kielet\n  • Lisää näppäimistö\n  • Valitse kieli\n  • Valitse näppäimistötyyppi\n  • Valmis",
-    "downloadGboardDescription": "Kun kieli on valittu, voit klikata pienen maapallon kuvaketta näppäimistön alakulmassa ottaaksesi käyttöön juuri asennetun näppäimistön.",
     "enableAutocorrectWarning": "Varoitus! Vaatii kohdekielen näppäimistön lisäämisen",
     "displayName": "Näytön nimi",
     "leaveRoomDescription": "Olet poistumassa tästä keskustelusta. Muut käyttäjät näkevät, että olet poistunut keskustelusta.",
@@ -3541,7 +3539,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-18 15:48:41.961418",
+    "@@last_modified": "2026-08-19 11:21:05.898127",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -5557,15 +5555,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9796,5 +9786,8 @@
     "markAllRead": "Merkitse kaikki luetuiksi",
     "usersAreTryingToJoinCourse": "Käyttäjät yrittävät liittyä kurssillesi",
     "denyAllUsers": "Estä kaikki käyttäjät",
-    "denyAllKnocksDescription": "Nämä käyttäjät hylätään kurssilta. He voivat yrittää liittyä uudelleen milloin tahansa."
+    "denyAllKnocksDescription": "Nämä käyttäjät hylätään kurssilta. He voivat yrittää liittyä uudelleen milloin tahansa.",
+    "autocorrectAndroidDialogTitle": "Automaattinen korjaus kohdekielelläsi",
+    "autocorrectAndroidDialogBody": "Kun kirjoitat keskusteluun, näppäimistösi vaihtaa kohdekieleesi ja korjaa kirjoitusvirheet kyseisellä kielellä.",
+    "autocorrectAndroidFallbackTitle": "Jos näppäimistösi ei tarjoa kohdekieltäsi, asenna Gboard ja lisää kieli sinne:"
 }

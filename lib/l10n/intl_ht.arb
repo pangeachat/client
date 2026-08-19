@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-18 15:48:43.063742",
+    "@@last_modified": "2026-08-19 11:21:07.736127",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Ajoute klavye lang sib ou a lè w ale nan:",
     "enableAutocorrectPopupSteps": "  • Anviwònman\n  • Jeneral\n  • Klavye\n  • Klavye\n  • Ajoute Nouvo Klavye",
     "enableAutocorrectPopupDescription": "Yon fwa lang lan chwazi, ou ka klike sou ti ikòn glòb la sou bò gòch anba klavye ou a pou aktive klavye ki fèk enstale a.",
-    "downloadGboardTitle": "Telechaje Gboard nan Google Play Store pou aktive koreksyon otomatik ak lòt karakteristik klavye:",
     "downloadGboardSteps": " • Telechaje Gboard\n  • Louvri aplikasyon an\n  • Lang\n  • Ajoute klavye\n  • Chwazi Lang\n  • Chwazi tip klavye\n  • Fè",
-    "downloadGboardDescription": "Yon fwa lang lan chwazi, ou ka klike sou ti ikòn glòb la sou bò gòch anba klavye ou a pou aktive klavye ki fèk enstale a.",
     "enableAutocorrectWarning": "Avètisman! Mande pou ajoute klavye lang sib ou a",
     "displayName": "Non ekspozisyon",
     "leaveRoomDescription": "Ou pral kite chat sa a. Lòt itilizatè yo ap wè ou kite chat la.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Make tout li",
     "usersAreTryingToJoinCourse": "Itilizatè yo ap eseye antre nan kou ou a",
     "denyAllUsers": "Refize tout itilizatè yo",
-    "denyAllKnocksDescription": "Itilizatè sa yo pral rejte nan kou a. Yo ka eseye antre ankò nenpòt ki lè."
+    "denyAllKnocksDescription": "Itilizatè sa yo pral rejte nan kou a. Yo ka eseye antre ankò nenpòt ki lè.",
+    "autocorrectAndroidDialogTitle": "Koreksyon otomatik nan lang sib ou a",
+    "autocorrectAndroidDialogBody": "Lè w ap tape nan yon chat, klavye w ap chanje nan lang sib ou a epi l ap korije òtograf nan lang sa a.",
+    "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:"
 }

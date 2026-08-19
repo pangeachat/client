@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-18 15:48:40.903527",
+    "@@last_modified": "2026-08-19 11:21:04.657988",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -3381,9 +3381,7 @@
     "enableAutocorrectPopupTitle": "Fügen Sie Ihre Zielsprachentastatur hinzu, indem Sie zu gehen:",
     "enableAutocorrectPopupSteps": "  • Einstellungen\n  • Allgemein\n  • Tastatur\n  • Tastaturen\n  • Neue Tastatur hinzufügen",
     "enableAutocorrectPopupDescription": "Sobald die Sprache ausgewählt ist, können Sie auf das kleine Globus-Symbol unten links auf Ihrer Tastatur klicken, um die neu installierte Tastatur zu aktivieren.",
-    "downloadGboardTitle": "Laden Sie Gboard aus dem Google Play Store herunter, um Autokorrektur und andere Tastaturfunktionen zu aktivieren:",
     "downloadGboardSteps": " • Gboard herunterladen\n  • App öffnen\n  • Sprachen\n  • Tastatur hinzufügen\n  • Sprache auswählen\n  • Tastaturtyp auswählen\n  • Fertig",
-    "downloadGboardDescription": "Sobald die Sprache ausgewählt ist, können Sie auf das kleine Globus-Symbol unten links auf Ihrer Tastatur klicken, um die neu installierte Tastatur zu aktivieren.",
     "enableAutocorrectWarning": "Warnung! Erfordert das Hinzufügen Ihrer Zielsprachentastatur",
     "displayName": "Anzeigename",
     "leaveRoomDescription": "Sie sind dabei, diesen Chat zu verlassen. Andere Benutzer werden sehen, dass Sie den Chat verlassen haben.",
@@ -5590,15 +5588,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9746,5 +9736,8 @@
     "markAllRead": "Alle als gelesen markieren",
     "usersAreTryingToJoinCourse": "Nutzer versuchen, Ihrem Kurs beizutreten",
     "denyAllUsers": "Alle Nutzer ablehnen",
-    "denyAllKnocksDescription": "Diese Nutzer werden vom Kurs abgelehnt. Sie können jederzeit erneut versuchen beizutreten."
+    "denyAllKnocksDescription": "Diese Nutzer werden vom Kurs abgelehnt. Sie können jederzeit erneut versuchen beizutreten.",
+    "autocorrectAndroidDialogTitle": "Autokorrektur in Ihrer Zielsprache",
+    "autocorrectAndroidDialogBody": "Wenn Sie in einem Chat tippen, wechselt Ihre Tastatur zu Ihrer Zielsprache und korrigiert die Rechtschreibung in dieser Sprache.",
+    "autocorrectAndroidFallbackTitle": "Wenn Ihre Tastatur Ihre Zielsprache nicht anbietet, installieren Sie Gboard und fügen Sie die Sprache dort hinzu:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-18 15:48:47.282004",
+    "@@last_modified": "2026-08-19 11:21:13.352986",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3271,9 +3271,7 @@
     "enableAutocorrectPopupTitle": "Dodaj klawiaturę języka docelowego, przechodząc do:",
     "enableAutocorrectPopupSteps": "  • Ustawienia\n  • Ogólne\n  • Klawiatura\n  • Klawiatury\n  • Dodaj nową klawiaturę",
     "enableAutocorrectPopupDescription": "Po wybraniu języka możesz kliknąć małą ikonę globu w lewym dolnym rogu klawiatury, aby aktywować nowo zainstalowaną klawiaturę.",
-    "downloadGboardTitle": "Pobierz Gboard ze Sklepu Google Play, aby włączyć korektę automatyczną i inne funkcje klawiatury:",
     "downloadGboardSteps": " • Pobierz Gboard\n  • Otwórz aplikację\n  • Języki\n  • Dodaj klawiaturę\n  • Wybierz język\n  • Wybierz typ klawiatury\n  • Gotowe",
-    "downloadGboardDescription": "Po wybraniu języka możesz kliknąć małą ikonę globu w lewym dolnym rogu klawiatury, aby aktywować nowo zainstalowaną klawiaturę.",
     "enableAutocorrectWarning": "Uwaga! Wymaga dodania klawiatury języka docelowego",
     "displayName": "Nazwa wyświetlana",
     "leaveRoomDescription": "Zamierzasz opuścić ten czat. Inni użytkownicy zobaczą, że opuściłeś czat.",
@@ -5484,15 +5482,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9844,5 +9834,8 @@
     "markAllRead": "Oznacz wszystkie jako przeczytane",
     "usersAreTryingToJoinCourse": "Użytkownicy próbują dołączyć do Twojego kursu",
     "denyAllUsers": "Odrzuć wszystkich użytkowników",
-    "denyAllKnocksDescription": "Użytkownicy zostaną odrzuceni z kursu. Mogą próbować dołączyć ponownie w dowolnym momencie."
+    "denyAllKnocksDescription": "Użytkownicy zostaną odrzuceni z kursu. Mogą próbować dołączyć ponownie w dowolnym momencie.",
+    "autocorrectAndroidDialogTitle": "Autokorekta w języku docelowym",
+    "autocorrectAndroidDialogBody": "Gdy piszesz na czacie, klawiatura przełączy się na język docelowy i poprawi pisownię w tym języku.",
+    "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:"
 }

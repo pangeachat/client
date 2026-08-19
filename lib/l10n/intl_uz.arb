@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-18 15:48:50.158283",
+    "@@last_modified": "2026-08-19 11:21:18.411952",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -3364,9 +3364,7 @@
     "enableAutocorrectPopupTitle": "Maqsadli til klaviaturasini qo'shish uchun quyidagiga o'ting:",
     "enableAutocorrectPopupSteps": "  • Sozlamalar\n  • Umumiy\n  • Klaviatura\n  • Klaviaturalar\n  • Yangi klaviatura qo'shish",
     "enableAutocorrectPopupDescription": "Til tanlangandan so'ng, klaviaturangizning pastki chap tomonidagi kichik dunyo ikonkasini bosib, yangi o'rnatilgan klaviaturani faollashtirishingiz mumkin.",
-    "downloadGboardTitle": "Gboard-ni Google Play Store-dan yuklab oling va avtomatik to'g'rilash hamda boshqa klaviatura funksiyalarini yoqing:",
     "downloadGboardSteps": " • Gboard-ni yuklab oling\n  • Ilovani oching\n  • Tillar\n  • Klaviatura qo'shish\n  • Tilni tanlang\n  • Klaviatura turini tanlang\n  • Tayyor",
-    "downloadGboardDescription": "Til tanlangandan so'ng, klaviaturangizning pastki chap tomonidagi kichik dunyo ikonkasini bosib, yangi o'rnatilgan klaviaturani faollashtirishingiz mumkin.",
     "enableAutocorrectWarning": "Ogohlantirish! Maqsadli til klaviaturasini qo'shishni talab qiladi",
     "displayName": "Ko'rsatish nomi",
     "leaveRoomDescription": "Siz bu chatdan chiqmoqdasiz. Boshqa foydalanuvchilar siz chatdan chiqganingizni ko'radilar.",
@@ -5944,15 +5942,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9763,5 +9753,8 @@
     "markAllRead": "Barchasini oʻqilgan deb belgilash",
     "usersAreTryingToJoinCourse": "Foydalanuvchilar kursingizga qo‘shilishga harakat qilmoqda",
     "denyAllUsers": "Barcha foydalanuvchilarni rad etish",
-    "denyAllKnocksDescription": "Bu foydalanuvchilar kursdan rad etiladi. Ular istalgan vaqtda qayta qo‘shilishga urinishlari mumkin."
+    "denyAllKnocksDescription": "Bu foydalanuvchilar kursdan rad etiladi. Ular istalgan vaqtda qayta qo‘shilishga urinishlari mumkin.",
+    "autocorrectAndroidDialogTitle": "Maqsadli tilingizda avtomatik tuzatish",
+    "autocorrectAndroidDialogBody": "Suhbatda yozganingizda, klaviaturangiz maqsadli tilingizga o'tadi va imloni shu tilda to'g'irlaydi.",
+    "autocorrectAndroidFallbackTitle": "Agar klaviaturangiz maqsadli tilingizni taklif qilmasa, Gboard'ni o'rnating va tilni u yerga qo'shing:"
 }

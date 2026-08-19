@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-18 15:48:43.088786",
+    "@@last_modified": "2026-08-19 11:21:07.950067",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Ntxiv koj hom lus keyboard los ntawm kev mus rau:",
     "enableAutocorrectPopupSteps": "  • Chaw\n  • General\n  • Keyboard\n  • Keyboards\n  • Ntxiv Keyboard Tshiab",
     "enableAutocorrectPopupDescription": "Thaum xaiv hom lus, koj tuaj yeem nyem lub cim ntiaj teb me me nyob rau sab laug hauv qab ntawm koj lub keyboard kom qhib lub keyboard tshiab.",
-    "downloadGboardTitle": "Rub tawm Gboard los ntawm Google Play Store kom qhib kev kho lus tsis raug thiab lwm yam keyboard nta:",
     "downloadGboardSteps": " • Rub tawm Gboard\n  • Qhib app\n  • Lus\n  • Ntxiv keyboard\n  • Xaiv Lus\n  • Xaiv hom keyboard\n  • Ua tiav",
-    "downloadGboardDescription": "Thaum xaiv hom lus, koj tuaj yeem nyem lub cim ntiaj teb me me nyob rau sab laug hauv qab ntawm koj lub keyboard kom qhib lub keyboard tshiab.",
     "enableAutocorrectWarning": "Ceeb toom! Yuav tsum ntxiv koj hom lus keyboard",
     "displayName": "Npe qhia",
     "leaveRoomDescription": "Koj tab tom yuav tawm ntawm kev sib tham no. Lwm tus neeg siv yuav pom tias koj tau tawm ntawm kev sib tham.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Kos tag nrho tias nyeem lawm",
     "usersAreTryingToJoinCourse": "Cov neeg siv tab tom sim koom koj chav kawm",
     "denyAllUsers": "Tsis kam tag nrho cov neeg siv",
-    "denyAllKnocksDescription": "Cov neeg siv no yuav raug tsis lees paub los ntawm chav kawm. Lawv yuav sim koom dua txhua lub sijhawm."
+    "denyAllKnocksDescription": "Cov neeg siv no yuav raug tsis lees paub los ntawm chav kawm. Lawv yuav sim koom dua txhua lub sijhawm.",
+    "autocorrectAndroidDialogTitle": "Kho lus tsis yog rau koj hom lus",
+    "autocorrectAndroidDialogBody": "Thaum koj ntaus ntawv hauv kev sib tham, koj lub keyboard yuav hloov mus rau koj hom lus thiab kho cov lus tsis yog hauv hom lus ntawd.",
+    "autocorrectAndroidFallbackTitle": "Yog tias koj lub keyboard tsis muaj koj hom lus, nruab Gboard thiab ntxiv hom lus ntawd rau hauv:"
 }

@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/instructions/instruction_settings.dart';
@@ -210,7 +212,12 @@ class UserToolSettings {
   final bool audioChoices;
   final bool audioOnNewMessage;
   final bool audioOnMessageClick;
-  final bool enableAutocorrect;
+
+  /// The user's explicit autocorrect choice, or null when they have never
+  /// touched the toggle. Kept unresolved in storage so each device applies its
+  /// own [enableAutocorrectPlatformDefault] — resolving at write time would
+  /// sync an Android "on" to the same account's iOS devices.
+  final bool? enableAutocorrectChoice;
   final bool showDeveloperOptions;
 
   const UserToolSettings({
@@ -223,9 +230,19 @@ class UserToolSettings {
     this.audioChoices = true,
     this.audioOnNewMessage = true,
     this.audioOnMessageClick = true,
-    this.enableAutocorrect = false,
+    bool? enableAutocorrect,
     this.showDeveloperOptions = false,
-  });
+  }) : enableAutocorrectChoice = enableAutocorrect;
+
+  /// Device autocorrect defaults on only where the composer can tell the
+  /// keyboard which language to correct in — Android, via `hintLocales`
+  /// (#8466). iOS stays off until #8465 gives it a language-targeted keyboard.
+  /// Reads [defaultTargetPlatform] rather than dart:io so tests can override it.
+  static bool get enableAutocorrectPlatformDefault =>
+      !kIsWeb && defaultTargetPlatform == TargetPlatform.android;
+
+  bool get enableAutocorrect =>
+      enableAutocorrectChoice ?? enableAutocorrectPlatformDefault;
 
   factory UserToolSettings.fromJson(
     Map<String, dynamic> json,
@@ -244,7 +261,10 @@ class UserToolSettings {
     // everyone.
     audioOnNewMessage: json["audioOnNewMessage"] ?? true,
     audioOnMessageClick: json["audioOnMessageClick"] ?? true,
-    enableAutocorrect: json["enableAutocorrect"] ?? false,
+    // Before #8466 every saved profile carried this key (default-off was
+    // written back), so a stored false is kept as the user's choice — only
+    // profiles without the key pick up the platform default.
+    enableAutocorrect: json["enableAutocorrect"] as bool?,
     showDeveloperOptions: json["showDeveloperOptions"] ?? false,
   );
 
@@ -259,7 +279,9 @@ class UserToolSettings {
     data["audioChoices"] = audioChoices;
     data["audioOnNewMessage"] = audioOnNewMessage;
     data["audioOnMessageClick"] = audioOnMessageClick;
-    data["enableAutocorrect"] = enableAutocorrect;
+    if (enableAutocorrectChoice != null) {
+      data["enableAutocorrect"] = enableAutocorrectChoice;
+    }
     data["showDeveloperOptions"] = showDeveloperOptions;
     return data;
   }
@@ -318,7 +340,7 @@ class UserToolSettings {
       audioChoices: audioChoices ?? this.audioChoices,
       audioOnNewMessage: audioOnNewMessage ?? this.audioOnNewMessage,
       audioOnMessageClick: audioOnMessageClick ?? this.audioOnMessageClick,
-      enableAutocorrect: enableAutocorrect ?? this.enableAutocorrect,
+      enableAutocorrect: enableAutocorrect ?? enableAutocorrectChoice,
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
     );
   }
@@ -337,7 +359,7 @@ class UserToolSettings {
         other.audioChoices == audioChoices &&
         other.audioOnNewMessage == audioOnNewMessage &&
         other.audioOnMessageClick == audioOnMessageClick &&
-        other.enableAutocorrect == enableAutocorrect &&
+        other.enableAutocorrectChoice == enableAutocorrectChoice &&
         other.showDeveloperOptions == showDeveloperOptions;
   }
 
@@ -352,7 +374,7 @@ class UserToolSettings {
     audioChoices.hashCode,
     audioOnNewMessage.hashCode,
     audioOnMessageClick.hashCode,
-    enableAutocorrect.hashCode,
+    enableAutocorrectChoice.hashCode,
     showDeveloperOptions.hashCode,
   ]);
 }

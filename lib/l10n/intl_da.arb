@@ -1136,9 +1136,7 @@
     "enableAutocorrectPopupTitle": "Tilføj dit målsprog-tastatur ved at gå til:",
     "enableAutocorrectPopupSteps": "  • Indstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Tilføj nyt tastatur",
     "enableAutocorrectPopupDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
-    "downloadGboardTitle": "Download Gboard fra Google Play Butik for at aktivere automatisk rettelse og andre tastaturfunktioner:",
     "downloadGboardSteps": " • Download Gboard\n  • Åbn appen\n  • Sprog\n  • Tilføj tastatur\n  • Vælg sprog\n  • Vælg tastaturtype\n  • Udført",
-    "downloadGboardDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
     "enableAutocorrectWarning": "Advarsel! Kræver tilføjelse af dit målsprog-tastatur",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er ved at forlade denne chat. Andre brugere vil se, at du har forladt chatten.",
@@ -1339,7 +1337,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-18 15:48:40.709355",
+    "@@last_modified": "2026-08-19 11:21:04.571528",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -6309,15 +6307,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10679,5 +10669,8 @@
     "markAllRead": "Marker alt som læst",
     "usersAreTryingToJoinCourse": "Brugere prøver at deltage i dit kursus",
     "denyAllUsers": "Afvis alle brugere",
-    "denyAllKnocksDescription": "Disse brugere vil blive afvist fra kurset. De kan til enhver tid forsøge at deltage igen."
+    "denyAllKnocksDescription": "Disse brugere vil blive afvist fra kurset. De kan til enhver tid forsøge at deltage igen.",
+    "autocorrectAndroidDialogTitle": "Autokorrektur på dit målsprog",
+    "autocorrectAndroidDialogBody": "Når du skriver i en chat, skifter dit tastatur til dit målsprog og retter stavefejl på det sprog.",
+    "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-18 15:48:51.198518",
+    "@@last_modified": "2026-08-19 11:21:19.701175",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Engeza ikhibhodi yolimi oluqondile ngokuya ku:",
     "enableAutocorrectPopupSteps": "  • Izilungiselelo\n  • Okujwayelekile\n  • Ikhibhodi\n  • Amakhibhodi\n  • Engeza Ikhibhodi Entsha",
     "enableAutocorrectPopupDescription": "Uma ulimi selukhethiwe, ungachofoza isithonjana esincane seglobhu ngakwesokunxele esingezansi sekhibhodi yakho ukuze uvule ikhibhodi esanda kufakwa.",
-    "downloadGboardTitle": "Landa i-Gboard ku-Google Play Store ukuze uvule ukulungisa okuzenzakalelayo nezinye izici zekhibhodi:",
     "downloadGboardSteps": " • Landa i-Gboard\n  • Vula uhlelo lokusebenza\n  • Izilimi\n  • Engeza ikhibhodi\n  • Khetha Ulimi\n  • Khetha uhlobo lwekhibhodi\n  • Kwenziwe",
-    "downloadGboardDescription": "Uma ulimi selukhethiwe, ungachofoza isithonjana esincane seglobhu ngakwesokunxele esingezansi sekhibhodi yakho ukuze uvule ikhibhodi esanda kufakwa.",
     "enableAutocorrectWarning": "Isexwayiso! Kudinga ukwengeza ikhibhodi yolimi oluqondile",
     "displayName": "Igama lokubonisa",
     "leaveRoomDescription": "Ususondele ekushiyeni le ngxoxo. Abanye abasebenzisi bazobona ukuthi ushiye ingxoxo.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Maka konke kufundiwe",
     "usersAreTryingToJoinCourse": "Abasebenzisi bazama ukujoyina ikhosi yakho",
     "denyAllUsers": "Yenqaba bonke abasebenzisi",
-    "denyAllKnocksDescription": "Laba basebenzisi bazokwenqatshwa kule khosi. Bangazama ukujoyina futhi nganoma yisiphi isikhathi."
+    "denyAllKnocksDescription": "Laba basebenzisi bazokwenqatshwa kule khosi. Bangazama ukujoyina futhi nganoma yisiphi isikhathi.",
+    "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzakalelayo ngolimi olufundayo",
+    "autocorrectAndroidDialogBody": "Uma uthayipha engxoxweni, ikhibhodi yakho izoshintshela olimini olufundayo futhi ilungise amaphutha esipelingi ngalolo limi.",
+    "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:"
 }

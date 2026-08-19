@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-18 15:48:49.961476",
+    "@@last_modified": "2026-08-19 11:21:18.368021",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3360,9 +3360,7 @@
     "enableAutocorrectPopupTitle": "Додайте клавіатуру цільової мови, перейшовши до:",
     "enableAutocorrectPopupSteps": "  • Налаштування\n  • Загальні\n  • Клавіатура\n  • Клавіатури\n  • Додати нову клавіатуру",
     "enableAutocorrectPopupDescription": "Після вибору мови ви можете натиснути маленьку іконку глобуса в нижньому лівому куті клавіатури, щоб активувати нововстановлену клавіатуру.",
-    "downloadGboardTitle": "Завантажте Gboard з Google Play Store, щоб увімкнути автокорекцію та інші функції клавіатури:",
     "downloadGboardSteps": " • Завантажити Gboard\n  • Відкрити додаток\n  • Мови\n  • Додати клавіатуру\n  • Вибрати мову\n  • Вибрати тип клавіатури\n  • Готово",
-    "downloadGboardDescription": "Після вибору мови ви можете натиснути маленьку іконку глобуса в нижньому лівому куті клавіатури, щоб активувати нововстановлену клавіатуру.",
     "enableAutocorrectWarning": "Увага! Потрібно додати клавіатуру цільової мови",
     "displayName": "Відображуване ім'я",
     "leaveRoomDescription": "Ви збираєтеся покинути цей чат. Інші користувачі побачать, що ви покинули чат.",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,5 +9749,8 @@
     "markAllRead": "Позначити всі як прочитані",
     "usersAreTryingToJoinCourse": "Користувачі намагаються приєднатися до вашого курсу",
     "denyAllUsers": "Відхилити всіх користувачів",
-    "denyAllKnocksDescription": "Цим користувачам буде відмовлено в доступі до курсу. Вони можуть спробувати приєднатися знову в будь-який час."
+    "denyAllKnocksDescription": "Цим користувачам буде відмовлено в доступі до курсу. Вони можуть спробувати приєднатися знову в будь-який час.",
+    "autocorrectAndroidDialogTitle": "Автовиправлення цільовою мовою",
+    "autocorrectAndroidDialogBody": "Коли ви друкуєте в чаті, клавіатура перемикається на цільову мову та виправляє орфографію цією мовою.",
+    "autocorrectAndroidFallbackTitle": "Якщо ваша клавіатура не пропонує цільову мову, встановіть Gboard і додайте мову там:"
 }

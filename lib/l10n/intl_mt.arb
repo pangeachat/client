@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-18 15:48:46.557471",
+    "@@last_modified": "2026-08-19 11:21:12.048290",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Żid it-tastiera tal-lingwa fil-mira tiegħek billi tmur fuq:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • Ġenerali\n  • Tastiera\n  • Tastieri\n  • Żid Tastiera Ġdida",
     "enableAutocorrectPopupDescription": "Ladarba l-lingwa tkun magħżula, tista' tikklikkja l-ikona żgħira tal-globu fin-naħa t'isfel tax-xellug tat-tastiera tiegħek biex tattiva t-tastiera installata ġdida.",
-    "downloadGboardTitle": "Niżżel Gboard mill-Google Play Store biex tippermetti l-awtokorrezzjoni u karatteristiċi oħra tat-tastiera:",
     "downloadGboardSteps": " • Niżżel Gboard\n  • Iftaħ l-app\n  • Lingwi\n  • Żid tastiera\n  • Agħżel Lingwa\n  • Agħżel it-tip ta' tastiera\n  • Lest",
-    "downloadGboardDescription": "Ladarba l-lingwa tkun magħżula, tista' tikklikkja l-ikona żgħira tal-globu fin-naħa t'isfel tax-xellug tat-tastiera tiegħek biex tattiva t-tastiera installata ġdida.",
     "enableAutocorrectWarning": "Twissija! Jeħtieġ li żżid it-tastiera tal-lingwa fil-mira tiegħek",
     "displayName": "Isem tal-wiri",
     "leaveRoomDescription": "Int se titlaq minn din iċ-chat. Utenti oħra se jaraw li int ħallejt iċ-chat.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Immarka kollox bħala moqri",
     "usersAreTryingToJoinCourse": "Utenti qed jippruvaw jingħaqdu mal-kors tiegħek",
     "denyAllUsers": "Irrifjuta l-utenti kollha",
-    "denyAllKnocksDescription": "Dawn l-utenti se jiġu rrifjutati mill-kors. Jistgħu jippruvaw jingħaqdu mill-ġdid fi kwalunkwe ħin."
+    "denyAllKnocksDescription": "Dawn l-utenti se jiġu rrifjutati mill-kors. Jistgħu jippruvaw jingħaqdu mill-ġdid fi kwalunkwe ħin.",
+    "autocorrectAndroidDialogTitle": "Autocorrect fil-lingwa fil-mira tiegħek",
+    "autocorrectAndroidDialogBody": "Meta tittajpja fi chat, it-tastiera tiegħek tinbidel għal-lingwa fil-mira tiegħek u tikkoreġi l-ortografija f'dik il-lingwa.",
+    "autocorrectAndroidFallbackTitle": "Jekk it-tastiera tiegħek ma toffrix il-lingwa fil-mira tiegħek, installa Gboard u żid il-lingwa hemmhekk:"
 }

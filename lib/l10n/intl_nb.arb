@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:46.701058",
+    "@@last_modified": "2026-08-19 11:21:11.995183",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -3260,9 +3260,7 @@
     "enableAutocorrectPopupTitle": "Legg til tastaturet for målspråket ditt ved å gå til:",
     "enableAutocorrectPopupSteps": "  • Innstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Legg til nytt tastatur",
     "enableAutocorrectPopupDescription": "Når språket er valgt, kan du klikke på det lille globus-ikonet nederst til venstre på tastaturet for å aktivere det nylig installerte tastaturet.",
-    "downloadGboardTitle": "Last ned Gboard fra Google Play Store for å aktivere autokorrektur og andre tastaturfunksjoner:",
     "downloadGboardSteps": " • Last ned Gboard\n  • Åpne appen\n  • Språk\n  • Legg til tastatur\n  • Velg språk\n  • Velg tastaturtype\n  • Ferdig",
-    "downloadGboardDescription": "Når språket er valgt, kan du klikke på det lille globus-ikonet nederst til venstre på tastaturet for å aktivere det nylig installerte tastaturet.",
     "enableAutocorrectWarning": "Advarsel! Krever at du legger til tastaturet for målspråket ditt",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er i ferd med å forlate denne chatten. Andre brukere vil se at du har forlatt chatten.",
@@ -5625,15 +5623,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9816,5 +9806,8 @@
     "markAllRead": "Merk alle som lest",
     "usersAreTryingToJoinCourse": "Brukere prøver å bli med i kurset ditt",
     "denyAllUsers": "Avvis alle brukere",
-    "denyAllKnocksDescription": "Disse brukerne vil bli avvist fra kurset. De kan prøve å bli med igjen når som helst."
+    "denyAllKnocksDescription": "Disse brukerne vil bli avvist fra kurset. De kan prøve å bli med igjen når som helst.",
+    "autocorrectAndroidDialogTitle": "Autokorrektur på målspråket ditt",
+    "autocorrectAndroidDialogBody": "Når du skriver i en chat, vil tastaturet bytte til målspråket ditt og korrigere stavemåten på det språket.",
+    "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:"
 }

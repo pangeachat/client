@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-18 15:48:49.045130",
+    "@@last_modified": "2026-08-19 11:21:15.396634",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Shtoni tastierën e gjuhës tuaj të synuar duke shkuar te:",
     "enableAutocorrectPopupSteps": "  • Cilësimet\n  • Të përgjithshme\n  • Tastiera\n  • Tastierat\n  • Shto tastierë të re",
     "enableAutocorrectPopupDescription": "Pasi të jetë zgjedhur gjuha, mund të klikoni ikonën e vogël të globit në të majtë poshtë të tastierës suaj për të aktivizuar tastierën e sapo instaluar.",
-    "downloadGboardTitle": "Shkarkoni Gboard nga Google Play Store për të aktivizuar korrigjimin automatik dhe veçoritë e tjera të tastierës:",
     "downloadGboardSteps": " • Shkarkoni Gboard\n  • Hapni aplikacionin\n  • Gjuhët\n  • Shto tastierë\n  • Zgjidhni gjuhën\n  • Zgjidhni llojin e tastierës\n  • Kryer",
-    "downloadGboardDescription": "Pasi të jetë zgjedhur gjuha, mund të klikoni ikonën e vogël të globit në të majtë poshtë të tastierës suaj për të aktivizuar tastierën e sapo instaluar.",
     "enableAutocorrectWarning": "Paralajmërim! Kërkon shtimin e tastierës së gjuhës tuaj të synuar",
     "displayName": "Emri i shfaqur",
     "leaveRoomDescription": "Jeni gati të largoheni nga kjo bisedë. Përdoruesit e tjerë do të shohin që jeni larguar nga biseda.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Shëno të gjitha si të lexuara",
     "usersAreTryingToJoinCourse": "Përdoruesit po përpiqen t'i bashkohen kursit tuaj",
     "denyAllUsers": "Refuzo të gjithë përdoruesit",
-    "denyAllKnocksDescription": "Këta përdorues do të refuzohen nga kursi. Ata mund të provojnë t'i bashkohen sërish në çdo kohë."
+    "denyAllKnocksDescription": "Këta përdorues do të refuzohen nga kursi. Ata mund të provojnë t'i bashkohen sërish në çdo kohë.",
+    "autocorrectAndroidDialogTitle": "Autokorrektimi në gjuhën tuaj të synuar",
+    "autocorrectAndroidDialogBody": "Kur shkruani në një bisedë, tastiera juaj do të kalojë në gjuhën tuaj të synuar dhe do të korrigjojë drejtshkrimin në atë gjuhë.",
+    "autocorrectAndroidFallbackTitle": "Nëse tastiera juaj nuk ofron gjuhën tuaj të synuar, instaloni Gboard dhe shtoni gjuhën atje:"
 }
