@@ -6,6 +6,7 @@ import android.util.Log
 import java.util.concurrent.ArrayBlockingQueue
 import com.cloudwebrtc.webrtc.FlutterWebRTCPlugin
 import com.cloudwebrtc.webrtc.audio.AudioProcessingAdapter
+import com.cloudwebrtc.webrtc.audio.AudioProcessingController
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
@@ -43,7 +44,11 @@ class PangeaCallCapturePlugin :
 
   private val handler = Handler(Looper.getMainLooper())
   private val frames = PostEchoCancellationFrames(::deliver)
-  private var attached = false
+
+  /// Held from the moment we attach. Looking it up again to detach would leave
+  /// the processor registered if the plugin had gone in between — still being
+  /// called, with nothing left that could take it off.
+  private var attachedTo: AudioProcessingController? = null
 
   override fun onAttachedToEngine(binding: FlutterPlugin.FlutterPluginBinding) {
     methodChannel = MethodChannel(binding.binaryMessenger, METHOD_CHANNEL).also {
@@ -89,25 +94,22 @@ class PangeaCallCapturePlugin :
    * that is a better outcome than failing a call over it.
    */
   private fun attach(): Boolean {
-    if (attached) return true
+    if (attachedTo != null) return true
     val controller = FlutterWebRTCPlugin.sharedSingleton?.audioProcessingController
       ?: return false
     controller.capturePostProcessing.addProcessor(frames)
-    attached = true
+    attachedTo = controller
     return true
   }
 
   private fun detach() {
-    if (!attached) return
+    val controller = attachedTo ?: return
     // Detached first, so nothing is still arriving while the last of it is
     // handed on. Only then is what was gathered released — otherwise the tail
     // of the call is dropped, and what was left of it would be carried into
     // whatever attaches next as though the learner had said it then.
-    FlutterWebRTCPlugin.sharedSingleton
-      ?.audioProcessingController
-      ?.capturePostProcessing
-      ?.removeProcessor(frames)
-    attached = false
+    controller.capturePostProcessing.removeProcessor(frames)
+    attachedTo = null
     frames.finish()
   }
 
@@ -119,12 +121,22 @@ class PangeaCallCapturePlugin :
    * frame is due, and a channel send is not something to do while it is waiting.
    */
   private fun deliver(pcm: ByteArray, sampleRateHz: Int) {
-    handler.post {
-      events?.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
-      // Returned only once it has actually gone. The channel copies the bytes as
-      // it sends them, so the buffer is free to be filled again from here.
-      frames.handedOn(pcm)
+    // Sent straight out when we are already on the thread that sends: the last
+    // audio of a call is flushed while detaching, and queueing it there would
+    // let the reply to "stop" overtake it — the caller would then stop listening
+    // before the tail arrived and drop the end of the conversation.
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      send(pcm, sampleRateHz)
+      return
     }
+    handler.post { send(pcm, sampleRateHz) }
+  }
+
+  private fun send(pcm: ByteArray, sampleRateHz: Int) {
+    events?.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
+    // Returned only once it has actually gone. The channel copies the bytes as
+    // it sends them, so the buffer is free to be filled again from here.
+    frames.handedOn(pcm)
   }
 }
 
@@ -173,6 +185,11 @@ internal class PostEchoCancellationFrames(
   private var sampleRateHz: Int = 0
 
   private var batch: ByteArray = ByteArray(0)
+
+  /// The size every buffer is cut to for the rate in use. Read from the thread
+  /// that returns them, which is not the one that fills them.
+  @Volatile
+  private var batchBytes: Int = 0
   private var filled: Int = 0
   private var batchRateHz: Int = 0
   private var dropped: Long = 0
@@ -240,6 +257,7 @@ internal class PostEchoCancellationFrames(
       // Sized for the new rate, and the old spares with it: a buffer cut for one
       // rate holds the wrong amount of time at another.
       val size = bytesForBatch(rate)
+      batchBytes = size
       spares.clear()
       repeat(MAX_PENDING_BATCHES - 1) { spares.offer(ByteArray(size)) }
       batch = ByteArray(size)
@@ -286,8 +304,12 @@ internal class PostEchoCancellationFrames(
   }
 
   /** Called once a batch has been delivered, returning it to be filled again. */
-  fun handedOn(batch: ByteArray) {
-    spares.offer(batch)
+  fun handedOn(buffer: ByteArray) {
+    // Only if it is still the right size. A rate change re-cuts every buffer,
+    // and one handed back from before it holds the wrong amount of time — which
+    // would quietly change how much audio a batch carries and how much may be
+    // waiting.
+    if (buffer.size == batchBytes) spares.offer(buffer)
   }
 
   /**
