@@ -277,23 +277,33 @@ void main() {
     });
 
     test('a single word inside a long silence is kept', () {
-      // A chunk runs to a minute and a half. Judging it by its average level
-      // divides a word by all the silence around it — a second of speech inside
-      // a minute of nothing reads as quieter than the threshold, and the
-      // learner's words are thrown away before anything can read them. This is
-      // a pause in a conversation, not a corner case.
-      final c = chunker();
+      // At the sizes a real call uses: chunks run to forty-five seconds, and an
+      // ordinary word is a fraction of that. Judged by the chunk's average
+      // level, the word is divided by all the silence around it and reads as
+      // quieter than the threshold — so the learner's words are thrown away
+      // before anything can read them. This is a pause in a conversation, not a
+      // corner case.
+      final c = chunker(
+        target: const Duration(seconds: 45),
+        max: const Duration(seconds: 90),
+      );
       final emitted = <PcmChunk>[];
-      for (var i = 0; i < 30; i++) {
-        emitted.addAll(c.add(frame(100, amplitude: 0.0)));
+      for (var i = 0; i < 40; i++) {
+        emitted.addAll(c.add(frame(500, amplitude: 0.0)));
       }
-      emitted.addAll(c.add(frame(300))); // one word
-      for (var i = 0; i < 30; i++) {
-        emitted.addAll(c.add(frame(100, amplitude: 0.0)));
+      // Half a second at a conversational level, not a shout.
+      emitted.addAll(c.add(frame(500, amplitude: 0.1)));
+      for (var i = 0; i < 40; i++) {
+        emitted.addAll(c.add(frame(500, amplitude: 0.0)));
       }
       emitted.addAll([?c.flush()]);
 
       expect(emitted, isNotEmpty, reason: 'the word must survive the silence');
+      expect(
+        totalSamples(emitted),
+        greaterThan(0),
+        reason: 'and carry the audio it was spoken in',
+      );
     });
 
     test('a chunk with speech anywhere in it is still sent', () {
