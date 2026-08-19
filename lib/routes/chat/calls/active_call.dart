@@ -106,6 +106,13 @@ class ActiveCall extends ChangeNotifier {
   /// aside from writing the call to the room while the other side, not being in
   /// a call at all, never writes it either — so the call would vanish.
   void _onPeerRing(Event event) {
+    // Only while we are both still calling. Somebody who is in the call is not
+    // ringing us, so a ring arriving after they arrived belongs to some other
+    // call — and counting it here made this side believe the other had also
+    // placed THIS one. The write is then settled by comparing ids, and the one
+    // side that actually placed the call can end up standing aside: nobody
+    // writes it, and the call is missing from the conversation entirely.
+    if (_ending || _peerArrived) return;
     final ring = IncomingCallNotification(
       event: event,
       myUserId: calls.client.userID ?? '',

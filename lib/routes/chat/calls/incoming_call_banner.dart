@@ -73,8 +73,18 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
     _rings = matrixState.callService.incomingRings.listen((ring) {
       if (!mounted) return;
-      // One at a time, and never one already turned down.
-      if (_ringing != null || _declined.contains(ring.event.eventId)) return;
+      // Never one already turned down.
+      if (_declined.contains(ring.event.eventId)) return;
+      final showing = _ringing;
+      if (showing != null) {
+        if (showing.event.eventId == ring.event.eventId) return;
+        // One conversation at a time: a call from somebody else does not take
+        // the prompt away from the one the learner is looking at. A REDIAL
+        // does. The caller hung up and tried again, and a card still pointing
+        // at the first ring answers a call that is already over — and declines
+        // it to a caller who is no longer listening for that one.
+        if (showing.event.room.id != ring.event.room.id) return;
+      }
       setState(() => _ringing = ring);
       _watchForGiveUp(ring);
     });

@@ -135,6 +135,25 @@ void main() {
     await tester.pumpAndSettle();
   }
 
+  group('a caller who hangs up and tries again', () {
+    testWidgets('gets the prompt pointed at the new call', (tester) async {
+      final room = directChat();
+      await pumpBanner(tester);
+
+      client.onTimelineEvent.add(ring(room));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('\$ring')), findsOneWidget);
+
+      // The redial. A card still pointing at the first ring answers a call that
+      // is already over, and declines it to a caller no longer listening for
+      // that one.
+      client.onTimelineEvent.add(ring(room, id: '\$redial'));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey('\$redial')), findsOneWidget);
+      expect(find.byKey(const ValueKey('\$ring')), findsNothing);
+    });
+  });
+
   group('a call answered on another device', () {
     testWidgets('stops this one offering to answer it', (tester) async {
       final room = directChat();

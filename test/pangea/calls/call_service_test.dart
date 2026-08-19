@@ -246,6 +246,46 @@ void main() {
     });
   });
 
+  group('a join that was given up on', () {
+    // The session is fetched by ROOM, so the attempt that was abandoned and the
+    // one that is live can be holding the very same object. Handing it back
+    // then retracts the call that is actually up — a conversation dropped, to
+    // prevent a membership that would have expired by itself.
+    test('hands its session back only when nobody else holds it', () {
+      expect(
+        CallService.releasesAbandonedSession(
+          joinInFlight: false,
+          isCurrent: false,
+        ),
+        isTrue,
+        reason: 'nothing else wants it, so it must not be left advertised',
+      );
+      expect(
+        CallService.releasesAbandonedSession(
+          joinInFlight: false,
+          isCurrent: true,
+        ),
+        isFalse,
+        reason: 'this is the call that is up',
+      );
+      expect(
+        CallService.releasesAbandonedSession(
+          joinInFlight: true,
+          isCurrent: false,
+        ),
+        isFalse,
+        reason: 'a retry is about to claim it, and will clean up if it fails',
+      );
+      expect(
+        CallService.releasesAbandonedSession(
+          joinInFlight: true,
+          isCurrent: true,
+        ),
+        isFalse,
+      );
+    });
+  });
+
   group('CallService availability', () {
     test('is unavailable when the homeserver advertises no RTC focus', () async {
       // The ordinary state for a homeserver without MatrixRTC configured. Callers

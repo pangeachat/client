@@ -189,6 +189,23 @@ class CallService {
   /// so a test can prove the claim is released without waiting out the real one.
   final Duration _joinWithin;
 
+  /// Whether a join that was given up on should hand its session back.
+  ///
+  /// It must not, when anyone else could be using it. The session is fetched by
+  /// ROOM — one direct message holds at most one call — so a later attempt in
+  /// the same room is handed this very object, and leaving it would retract the
+  /// call that is actually up. That is worse than the leak it was meant to
+  /// prevent: a membership left behind expires by itself in minutes, while a
+  /// live call cut off is a conversation dropped.
+  ///
+  /// [joinInFlight] covers the attempt that has not claimed the session yet:
+  /// it will, and it will apply this same rule if it is abandoned in turn.
+  @visibleForTesting
+  static bool releasesAbandonedSession({
+    required bool joinInFlight,
+    required bool isCurrent,
+  }) => !joinInFlight && !isCurrent;
+
   /// Which join is the live one. A join that was given up on keeps running —
   /// there is no cancelling a request in flight — so it is told apart by this
   /// rather than left to install itself over the top of whatever came after.
@@ -224,15 +241,21 @@ class CallService {
       focusServiceUrl: f.serviceUrl,
     );
 
+    final isCurrent = identical(session, _current);
     if (_disposed || attempt != _joinAttempt) {
       // The account went away while this join was in flight, or the join itself
       // was given up on. Storing the session now would advertise a membership
       // that nothing is left to retract, and it would stand until it expired
       // minutes later.
-      try {
-        await session.leave();
-      } catch (e, st) {
-        Logs().w('Could not leave a call abandoned during teardown', e, st);
+      if (releasesAbandonedSession(
+        joinInFlight: _joining,
+        isCurrent: isCurrent,
+      )) {
+        try {
+          await session.leave();
+        } catch (e, st) {
+          Logs().w('Could not leave a call abandoned during teardown', e, st);
+        }
       }
       throw StateError('the call was abandoned while joining');
     }

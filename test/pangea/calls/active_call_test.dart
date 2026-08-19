@@ -1468,6 +1468,22 @@ void main() {
       expect(call.peerAlsoPlaced, isTrue);
     });
 
+    test('a ring after they joined is some other call, not this one', () async {
+      // They are in the call, so they are not ringing us. Counting it made this
+      // side believe the other had also placed this call; the write is then
+      // settled by comparing ids, and the side that actually placed it can end
+      // up standing aside — so nobody writes it and the call is missing from
+      // the conversation.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      calls.remotePresent = true;
+      await pumpEventQueue();
+      expect(call.hadPeer, isTrue);
+
+      await calls.peerAlsoCalls();
+      expect(call.peerAlsoPlaced, isFalse);
+    });
+
     test('an old call of theirs is not somebody calling now', () async {
       // Sync replays events. Counting a stale one would make this side stand
       // aside from writing the call, while the other side — not in a call at
