@@ -187,7 +187,7 @@ class OneConstructUse {
 
   Color pointValueColor(BuildContext context) {
     if (xp == 0) return Theme.of(context).colorScheme.primary;
-    return xp > 0 ? AppConfig.gold : Colors.red;
+    return xp > 0 ? AppConfig.goldByTheme(context) : Colors.red;
   }
 
   ConstructIdentifier get identifier => ConstructIdentifier(
