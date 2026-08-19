@@ -76,10 +76,6 @@ class ActiveCall extends ChangeNotifier {
 
   bool _placed = false;
 
-  /// When this call began. Used to tell an event about it from one replayed out
-  /// of the room's history.
-  final DateTime _startedAt = DateTime.now();
-
   /// Whether this device started the call rather than joining one.
   ///
   /// Decides which side writes the call to the timeline. Both sides run the
@@ -237,7 +233,8 @@ class ActiveCall extends ChangeNotifier {
   /// Covers both a callee who never answers and a caller who gave up moments
   /// before this device joined. Without it either leaves a learner sitting in an
   /// open call with an open microphone and nobody there.
-  static const _answerWithin = Duration(seconds: 60);
+  static final _answerWithin =
+      CallNotification.lifetime + const Duration(seconds: 15);
 
   /// How long someone answering waits for the caller they are answering. Short,
   /// because the caller should already be there; this only covers the moment it
@@ -301,20 +298,13 @@ class ActiveCall extends ChangeNotifier {
     if (target == null) return;
     final ours = _notificationId;
     if (ours == null) {
-      // We rang but never learned which event it was — the send can land and
-      // still not report its id back. In a direct message there is one call at a
-      // time, so a decline from the other person while we are the ones calling
-      // is a decline of this call.
-      //
-      // Only one sent since this call began, though. Sync replays history, and
-      // without that check a decline from a call an hour ago would arrive as
-      // this one started and end it on the spot — the learner would watch their
-      // call hang up by itself. The same rule as their ring: an event older than
-      // this call is not about this call.
-      if (_placed && event.originServerTs.isAfter(_startedAt)) {
-        _onDeclined();
-        return;
-      }
+      // Remembered, not acted on. Without our own ring's id there is no way to
+      // tell WHICH call a decline turned down, and guessing has now been wrong
+      // twice: first a decline replayed out of history ended a call as it
+      // started, then a decline of the previous ring ended a redial. The ring is
+      // sent with a stable id and tried twice, so losing that id is rare — and
+      // when it happens the caller rings out instead of being told, which is a
+      // far smaller price than a call that hangs itself up.
       _declinedBefore.add(target);
       return;
     }
@@ -684,20 +674,31 @@ class ActiveCall extends ChangeNotifier {
       await _handover;
     } catch (_) {}
 
-    // finish, not stop: this is the call ending, not recording moving to
-    // another of the learner's devices. Called whether or not this device was
-    // the one recording, so the sink is told the audio is complete exactly once.
+    // Stop first: the tap comes off and the last of the audio is handed to the
+    // uploader. Nothing more will be recorded after this returns.
     try {
-      await capture.finish();
+      await capture.stop();
     } catch (e, s) {
       Logs().e('Could not flush the call recording', e, s);
     }
     _capturing = false;
 
+    // Then the microphone and camera, BEFORE waiting on anything else. Finishing
+    // waits for uploads and transcription to settle, which can take a minute —
+    // and holding the devices open through it meant the learner hung up while
+    // still being heard. Nothing about sending audio needs a microphone.
     try {
       await media.dispose();
     } catch (e, s) {
       Logs().e('Could not release the call media', e, s);
+    }
+
+    // Last, with the devices already released: tell the recording the call is
+    // over and let what is in flight land.
+    try {
+      await capture.finish();
+    } catch (e, s) {
+      Logs().e('Could not settle the call recording', e, s);
     }
   }
 

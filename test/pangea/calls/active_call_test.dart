@@ -286,10 +286,20 @@ class FakeCapture extends CallCaptureService {
 
   @override
   Future<void> stop() async {
+    // Silent when there is nothing to stop, as the real one is. Tracing it
+    // regardless made teardown look like it was stopping a recording that had
+    // never started.
+    if (!_recording) return;
     trace('capture.stop');
     _recording = false;
     if (holdStop != null) await holdStop!.future;
     if (stopError != null) throw stopError!;
+  }
+
+  @override
+  Future<void> finish() async {
+    await stop();
+    trace('capture.finish');
   }
 }
 
@@ -516,8 +526,8 @@ void main() {
       expect(call.error, isStateError);
       expect(trace.steps, [
         'join',
-        'capture.stop',
         'media.dispose',
+        'capture.finish',
       ], reason: 'nothing was announced and no membership to retract');
     });
 
@@ -531,8 +541,8 @@ void main() {
         'join',
         'connect(video: false)',
         'retract',
-        'capture.stop',
         'media.dispose',
+        'capture.finish',
       ]);
     });
 
@@ -550,6 +560,7 @@ void main() {
         'retract',
         'capture.stop',
         'media.dispose',
+        'capture.finish',
       ], reason: 'the recording is flushed even on a failed call');
     });
   });
@@ -561,7 +572,12 @@ void main() {
       trace.steps.clear();
       await call.hangUp();
 
-      expect(trace.steps, ['retract', 'capture.stop', 'media.dispose']);
+      expect(trace.steps, [
+        'retract',
+        'capture.stop',
+        'media.dispose',
+        'capture.finish',
+      ]);
       expect(call.stage, CallStage.ended);
     });
 
@@ -570,7 +586,12 @@ void main() {
       await call.start(roomStub(calls.client), video: false);
       trace.steps.clear();
       await Future.wait([call.hangUp(), call.hangUp()]);
-      expect(trace.steps, ['retract', 'capture.stop', 'media.dispose']);
+      expect(trace.steps, [
+        'retract',
+        'capture.stop',
+        'media.dispose',
+        'capture.finish',
+      ]);
     });
 
     test('a recording that will not flush still frees the microphone '
@@ -581,7 +602,12 @@ void main() {
       trace.steps.clear();
       await call.hangUp();
 
-      expect(trace.steps, ['retract', 'capture.stop', 'media.dispose']);
+      expect(trace.steps, [
+        'retract',
+        'capture.stop',
+        'media.dispose',
+        'capture.finish',
+      ]);
       expect(call.stage, CallStage.ended);
     });
 
@@ -596,6 +622,7 @@ void main() {
         'retract',
         'capture.stop',
         'media.dispose',
+        'capture.finish',
       ], reason: 'a stuck socket must not strand the rest of teardown');
       expect(call.stage, CallStage.ended);
     });
@@ -662,7 +689,12 @@ void main() {
     call.dispose();
     await pumpEventQueue();
 
-    expect(trace.steps, ['retract', 'capture.stop', 'media.dispose']);
+    expect(trace.steps, [
+      'retract',
+      'capture.stop',
+      'media.dispose',
+      'capture.finish',
+    ]);
     expect(call.stage, CallStage.ended);
   });
 
@@ -1302,6 +1334,24 @@ void main() {
       expect(call.isRecording, isTrue);
     });
   });
+  group('when the microphone is released', () {
+    test('before anything waits on uploads or transcription', () async {
+      // Finishing waits for what has been recorded to be sent and transcribed,
+      // which can take a minute. Holding the devices through that meant the
+      // learner hung up and was still being heard.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      trace.steps.clear();
+      await call.hangUp();
+
+      expect(
+        trace.steps.indexOf('media.dispose'),
+        lessThan(trace.steps.indexOf('capture.finish')),
+        reason: 'the microphone goes first; sending audio does not need one',
+      );
+    });
+  });
+
   group('a hangup landing the instant a join returns', () {
     test('still gives the call back', () async {
       // The service holds the call from the moment joining returns. Giving up
