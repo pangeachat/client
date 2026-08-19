@@ -456,14 +456,28 @@ class ActiveCall extends ChangeNotifier {
       _roster = roster;
       roster.addListener(_onParticipantsChanged);
 
-      // Placing or joining. Someone who was RUNG is answering, whatever the
-      // room looks like by the time they get there — deriving it would make a
+      // Placing or joining. Someone who was RUNG is answering, whatever the room
+      // looks like by the time they get there — deriving that would make a
       // callee whose caller had already hung up look like a new caller and ring
       // them back. For everyone else it is read from the SFU rather than Matrix
       // membership, because a peer who crashed leaves a membership that reads as
       // live for about twelve minutes and would silence a genuine new call.
+      //
+      // Two people calling each other in the very same instant can each see the
+      // other arrive before they look, and both then take themselves for a
+      // joiner — so neither writes the call and it is missing from the
+      // conversation. Deciding this without the roster was tried and is worse:
+      // it makes a SECOND DEVICE of the same account, and anyone joining a call
+      // already under way, write a card of their own, which are the ordinary
+      // cases rather than a sub-millisecond overlap.
       final placing = !answering && roster.participants.isEmpty;
       _placed = placing;
+
+      // Read before anything is awaited. A peer who was already here can leave
+      // while the first handover settles, and reading afterwards would have this
+      // call believe nobody ever answered — no teardown when they left, and the
+      // conversation recorded as unanswered.
+      _peerArrived = roster.hasPeer;
 
       // Elect before announcing, so recording begins with the first word rather
       // than after a round-trip.
@@ -472,13 +486,6 @@ class ActiveCall extends ChangeNotifier {
       // running when the peer learns this device is here. Handovers are queued,
       // so without this the initial start would land a microtask later.
       await _step(() => _handover);
-
-      // Whether the peer is already here decides what their later absence
-      // means: gone, or simply not answered yet. Read from the roster rather
-      // than waited for as an event: someone already in the room when this
-      // device joined raises no join event, and that is exactly the person
-      // answering a call is joining.
-      _peerArrived = roster.hasPeer;
       if (!_peerArrived) {
         // Someone answering a call has somebody to answer; if nobody is there,
         // the caller has already gone and waiting a full minute only holds the

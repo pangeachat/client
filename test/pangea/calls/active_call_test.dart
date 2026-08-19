@@ -263,6 +263,7 @@ class FakeCapture extends CallCaptureService {
   Object? stopError;
   Object? startError;
   Completer<void>? holdStop;
+  Completer<void>? holdStart;
   FakeCapture(this.trace) : super(sink: _NullSink());
 
   /// Modelled, not assumed. The recorder reads this back after starting to
@@ -280,6 +281,7 @@ class FakeCapture extends CallCaptureService {
   @override
   Future<void> start(covariant Object track) async {
     trace('capture.start');
+    if (holdStart != null) await holdStart!.future;
     if (startError != null) throw startError!;
     _recording = !attachesNothing;
   }
@@ -1334,6 +1336,33 @@ void main() {
       expect(call.isRecording, isTrue);
     });
   });
+  group('a peer who leaves while the call is still coming up', () {
+    test('is still remembered as having been there', () async {
+      // Someone already here can go while the first handover settles. Reading
+      // their presence afterwards had this call believe nobody ever answered —
+      // no teardown when they left, and the conversation recorded as unanswered.
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      // Hold the first handover open, which is the window this is about.
+      final handover = Completer<void>();
+      capture.holdStart = handover;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      // They go while the first handover is still settling.
+      calls.remotePresent = false;
+      handover.complete();
+      await starting;
+      await call.settled;
+
+      expect(
+        call.hadPeer,
+        isTrue,
+        reason: 'they were here, so the call was answered',
+      );
+    });
+  });
+
   group('when the microphone is released', () {
     test('before anything waits on uploads or transcription', () async {
       // Finishing waits for what has been recorded to be sent and transcribed,
