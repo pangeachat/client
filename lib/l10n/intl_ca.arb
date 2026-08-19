@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:40.588581",
+    "@@last_modified": "2026-08-19 14:14:42.131374",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9886,5 +9886,8 @@
     "markAllRead": "Marca-ho tot com a llegit",
     "usersAreTryingToJoinCourse": "Els usuaris estan intentant unir-se al teu curs",
     "denyAllUsers": "Denegar tots els usuaris",
-    "denyAllKnocksDescription": "Aquests usuaris seran rebutjats del curs. Poden intentar unir-se de nou en qualsevol moment."
+    "denyAllKnocksDescription": "Aquests usuaris seran rebutjats del curs. Poden intentar unir-se de nou en qualsevol moment.",
+    "courseNameHint": "Nom del curs",
+    "typeCourseCodeToConfirm": "Per confirmar, escriu el codi del curs {code} a continuació.",
+    "typeCourseNameToConfirm": "Per confirmar, escriu el nom del curs {name} a continuació."
 }

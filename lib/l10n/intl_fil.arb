@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-18 15:48:41.740305",
+    "@@last_modified": "2026-08-19 14:14:42.783762",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10619,5 +10619,8 @@
     "markAllRead": "Markahan lahat bilang nabasa",
     "usersAreTryingToJoinCourse": "May mga user na gustong sumali sa iyong kurso",
     "denyAllUsers": "Tanggihan lahat ng user",
-    "denyAllKnocksDescription": "Ang mga user na ito ay tatanggihan sa kurso. Maaari silang sumubok sumali muli anumang oras."
+    "denyAllKnocksDescription": "Ang mga user na ito ay tatanggihan sa kurso. Maaari silang sumubok sumali muli anumang oras.",
+    "courseNameHint": "Pangalan ng kurso",
+    "typeCourseCodeToConfirm": "Para kumpirmahin, i-type ang course code na {code} sa ibaba.",
+    "typeCourseNameToConfirm": "Para kumpirmahin, i-type ang pangalan ng kurso na {name} sa ibaba."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-18 15:48:46.557471",
+    "@@last_modified": "2026-08-19 14:14:48.443046",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Immarka kollox bħala moqri",
     "usersAreTryingToJoinCourse": "Utenti qed jippruvaw jingħaqdu mal-kors tiegħek",
     "denyAllUsers": "Irrifjuta l-utenti kollha",
-    "denyAllKnocksDescription": "Dawn l-utenti se jiġu rrifjutati mill-kors. Jistgħu jippruvaw jingħaqdu mill-ġdid fi kwalunkwe ħin."
+    "denyAllKnocksDescription": "Dawn l-utenti se jiġu rrifjutati mill-kors. Jistgħu jippruvaw jingħaqdu mill-ġdid fi kwalunkwe ħin.",
+    "courseNameHint": "Isem tal-kors",
+    "typeCourseCodeToConfirm": "Biex tikkonferma, ittajpja l-kodiċi tal-kors {code} hawn taħt.",
+    "typeCourseNameToConfirm": "Biex tikkonferma, ittajpja l-isem tal-kors {name} hawn taħt."
 }

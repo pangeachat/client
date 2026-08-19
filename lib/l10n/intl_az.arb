@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-18 15:48:40.160332",
+    "@@last_modified": "2026-08-19 14:14:41.322750",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Hamısını oxunmuş kimi qeyd et",
     "usersAreTryingToJoinCourse": "İstifadəçilər kursunuza qoşulmağa çalışır",
     "denyAllUsers": "Bütün istifadəçiləri rədd et",
-    "denyAllKnocksDescription": "Bu istifadəçilər kursdan rədd ediləcək. Onlar istənilən vaxt yenidən qoşulmağa cəhd edə bilərlər."
+    "denyAllKnocksDescription": "Bu istifadəçilər kursdan rədd ediləcək. Onlar istənilən vaxt yenidən qoşulmağa cəhd edə bilərlər.",
+    "courseNameHint": "Kurs adı",
+    "typeCourseCodeToConfirm": "Təsdiqləmək üçün aşağıdakı {code} kurs kodunu daxil edin.",
+    "typeCourseNameToConfirm": "Təsdiqləmək üçün aşağıdakı {name} kurs adını daxil edin."
 }

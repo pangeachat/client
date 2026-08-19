@@ -3098,7 +3098,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-18 15:48:49.892432",
+    "@@last_modified": "2026-08-19 14:14:52.484461",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10391,5 +10391,8 @@
     "markAllRead": "ทำเครื่องหมายว่าอ่านแล้วทั้งหมด",
     "usersAreTryingToJoinCourse": "ผู้ใช้กำลังพยายามเข้าร่วมคอร์สของคุณ",
     "denyAllUsers": "ปฏิเสธผู้ใช้ทั้งหมด",
-    "denyAllKnocksDescription": "ผู้ใช้เหล่านี้จะถูกปฏิเสธไม่ให้เข้าร่วมคอร์ส พวกเขาอาจพยายามเข้าร่วมอีกครั้งได้ทุกเมื่อ"
+    "denyAllKnocksDescription": "ผู้ใช้เหล่านี้จะถูกปฏิเสธไม่ให้เข้าร่วมคอร์ส พวกเขาอาจพยายามเข้าร่วมอีกครั้งได้ทุกเมื่อ",
+    "courseNameHint": "ชื่อคอร์ส",
+    "typeCourseCodeToConfirm": "โปรดยืนยันโดยพิมพ์รหัสคอร์ส {code} ด้านล่าง",
+    "typeCourseNameToConfirm": "โปรดยืนยันโดยพิมพ์ชื่อคอร์ส {name} ด้านล่าง"
 }

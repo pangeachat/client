@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:41.777877",
+    "@@last_modified": "2026-08-19 14:14:42.507334",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9847,5 +9847,8 @@
     "markAllRead": "علامت‌گذاری همه به عنوان خوانده‌شده",
     "usersAreTryingToJoinCourse": "کاربران در تلاش برای پیوستن به دوره شما هستند",
     "denyAllUsers": "رد کردن همه کاربران",
-    "denyAllKnocksDescription": "این کاربران از دوره رد خواهند شد. آنها ممکن است در هر زمان دوباره برای پیوستن تلاش کنند."
+    "denyAllKnocksDescription": "این کاربران از دوره رد خواهند شد. آنها ممکن است در هر زمان دوباره برای پیوستن تلاش کنند.",
+    "courseNameHint": "نام دوره",
+    "typeCourseCodeToConfirm": "برای تأیید، کد دوره {code} را در زیر تایپ کنید.",
+    "typeCourseNameToConfirm": "برای تأیید، نام دوره {name} را در زیر تایپ کنید."
 }

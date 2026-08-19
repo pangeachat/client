@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-18 15:48:47.874297",
+    "@@last_modified": "2026-08-19 14:14:47.807392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2147,5 +2147,8 @@
     "markAllRead": "পুম্নমক পাজরে হায়না থম্নবা",
     "usersAreTryingToJoinCourse": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡꯅ ꯅꯍꯥꯛꯀꯤ ꯀꯣꯔꯁ ꯀꯥꯟꯅꯕꯥ ꯍꯣꯠꯅꯔꯤ",
     "denyAllUsers": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡ ꯄꯨꯝꯅꯃꯛ ꯀꯥꯟꯅꯕꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ",
-    "denyAllKnocksDescription": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡ ꯑꯁꯤ ꯀꯣꯔꯁ ꯑꯁꯤꯗꯒꯤ ꯀꯥꯟꯅꯕꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ꯫ ꯃꯈꯣꯌꯅ ꯀꯔꯤꯒꯨꯝꯕ ꯃꯇꯝ ꯑꯃꯗ ꯑꯃꯨꯛ ꯍꯟꯅ ꯀꯥꯟꯅꯕꯥ ꯍꯣꯠꯅꯕ ꯌꯥꯏ꯫"
+    "denyAllKnocksDescription": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡ ꯑꯁꯤ ꯀꯣꯔꯁ ꯑꯁꯤꯗꯒꯤ ꯀꯥꯟꯅꯕꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ꯫ ꯃꯈꯣꯌꯅ ꯀꯔꯤꯒꯨꯝꯕ ꯃꯇꯝ ꯑꯃꯗ ꯑꯃꯨꯛ ꯍꯟꯅ ꯀꯥꯟꯅꯕꯥ ꯍꯣꯠꯅꯕ ꯌꯥꯏ꯫",
+    "courseNameHint": "কোর্স মমিং",
+    "typeCourseCodeToConfirm": "কনফর্ম তৌনবা, মখাদা কোর্স কোড {code} অসি টাইপ তৌবীয়ু।",
+    "typeCourseNameToConfirm": "কনফর্ম তৌনবা, মখাদা কোর্স মমিং {name} অসি টাইপ তৌবীয়ু।"
 }

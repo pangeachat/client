@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:49.995793",
+    "@@last_modified": "2026-08-19 14:14:52.443177",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7035,5 +7035,8 @@
     "markAllRead": "Đánh dấu đã đọc tất cả",
     "usersAreTryingToJoinCourse": "Người dùng đang cố gắng tham gia khóa học của bạn",
     "denyAllUsers": "Từ chối tất cả người dùng",
-    "denyAllKnocksDescription": "Những người dùng này sẽ bị từ chối khỏi khóa học. Họ có thể thử tham gia lại bất cứ lúc nào."
+    "denyAllKnocksDescription": "Những người dùng này sẽ bị từ chối khỏi khóa học. Họ có thể thử tham gia lại bất cứ lúc nào.",
+    "courseNameHint": "Tên khóa học",
+    "typeCourseCodeToConfirm": "Để xác nhận, hãy nhập mã khóa học {code} bên dưới.",
+    "typeCourseNameToConfirm": "Để xác nhận, hãy nhập tên khóa học {name} bên dưới."
 }

@@ -1807,7 +1807,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-18 15:48:48.630285",
+    "@@last_modified": "2026-08-19 14:14:49.991712",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10704,5 +10704,8 @@
     "markAllRead": "Označi vse kot prebrano",
     "usersAreTryingToJoinCourse": "Uporabniki se poskušajo pridružiti vašemu tečaju",
     "denyAllUsers": "Zavrni vse uporabnike",
-    "denyAllKnocksDescription": "Ti uporabniki bodo zavrnjeni iz tečaja. Lahko se poskusijo znova pridružiti kadar koli."
+    "denyAllKnocksDescription": "Ti uporabniki bodo zavrnjeni iz tečaja. Lahko se poskusijo znova pridružiti kadar koli.",
+    "courseNameHint": "Ime tečaja",
+    "typeCourseCodeToConfirm": "Za potrditev spodaj vnesite kodo tečaja {code}.",
+    "typeCourseNameToConfirm": "Za potrditev spodaj vnesite ime tečaja {name}."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-18 15:48:40.886992",
+    "@@last_modified": "2026-08-19 14:14:41.600642",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10253,5 +10253,8 @@
     "markAllRead": "Označit vše jako přečtené",
     "usersAreTryingToJoinCourse": "Uživatelé se snaží připojit k vašemu kurzu",
     "denyAllUsers": "Odmítnout všechny uživatele",
-    "denyAllKnocksDescription": "Tito uživatelé budou z kurzu odmítnuti. Mohou se kdykoli pokusit znovu připojit."
+    "denyAllKnocksDescription": "Tito uživatelé budou z kurzu odmítnuti. Mohou se kdykoli pokusit znovu připojit.",
+    "courseNameHint": "Název kurzu",
+    "typeCourseCodeToConfirm": "Pro potvrzení zadejte kód kurzu {code} níže.",
+    "typeCourseNameToConfirm": "Pro potvrzení zadejte název kurzu {name} níže."
 }

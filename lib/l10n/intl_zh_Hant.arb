@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:50.693616",
+    "@@last_modified": "2026-08-19 14:14:53.639068",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9865,5 +9865,8 @@
     "markAllRead": "全部標記為已讀",
     "usersAreTryingToJoinCourse": "有用戶嘗試加入您的課程",
     "denyAllUsers": "拒絕所有用戶",
-    "denyAllKnocksDescription": "這些用戶將被拒絕加入課程。他們可以隨時再次嘗試加入。"
+    "denyAllKnocksDescription": "這些用戶將被拒絕加入課程。他們可以隨時再次嘗試加入。",
+    "courseNameHint": "課程名稱",
+    "typeCourseCodeToConfirm": "若要確認，請在下方輸入課程代碼 {code}。",
+    "typeCourseNameToConfirm": "若要確認，請在下方輸入課程名稱 {name}。"
 }

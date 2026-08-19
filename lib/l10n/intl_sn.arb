@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-18 15:48:48.686956",
+    "@@last_modified": "2026-08-19 14:14:50.900768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Maka zvese sekuverengwa",
     "usersAreTryingToJoinCourse": "Vashandisi vari kuedza kujoina kosi yako",
     "denyAllUsers": "Ramba vashandisi vese",
-    "denyAllKnocksDescription": "Vashandisi ava vacharambwa kubva kukosi. Vanogona kuedza kujoina zvakare chero nguva."
+    "denyAllKnocksDescription": "Vashandisi ava vacharambwa kubva kukosi. Vanogona kuedza kujoina zvakare chero nguva.",
+    "courseNameHint": "Zita rechikoro",
+    "typeCourseCodeToConfirm": "Kuti usimbise, nyora kodhi yechikoro {code} pazasi.",
+    "typeCourseNameToConfirm": "Kuti usimbise, nyora zita rechikoro {name} pazasi."
 }

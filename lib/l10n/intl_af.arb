@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-18 15:48:39.851747",
+    "@@last_modified": "2026-08-19 14:14:40.924479",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Merk alles as gelees",
     "usersAreTryingToJoinCourse": "Gebruikers probeer by jou kursus aansluit",
     "denyAllUsers": "Weier alle gebruikers",
-    "denyAllKnocksDescription": "Hierdie gebruikers sal van die kursus geweier word. Hulle mag enige tyd weer probeer aansluit."
+    "denyAllKnocksDescription": "Hierdie gebruikers sal van die kursus geweier word. Hulle mag enige tyd weer probeer aansluit.",
+    "courseNameHint": "Kursusnaam",
+    "typeCourseCodeToConfirm": "Om te bevestig, tik die kursuskode {code} hieronder in.",
+    "typeCourseNameToConfirm": "Om te bevestig, tik die kursusnaam {name} hieronder in."
 }

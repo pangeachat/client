@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-18 15:48:42.804478",
+    "@@last_modified": "2026-08-19 14:14:44.033049",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "E hōʻailona i nā mea a pau i heluhelu ʻia",
     "usersAreTryingToJoinCourse": "Ke hoʻāʻo nei nā mea hoʻohana e komo i kāu papa",
     "denyAllUsers": "Hōʻole i nā mea hoʻohana a pau",
-    "denyAllKnocksDescription": "E hōʻole ʻia kēia mau mea hoʻohana mai ka papa. Hiki iā lākou ke hoʻāʻo e komo hou i kēlā me kēia manawa."
+    "denyAllKnocksDescription": "E hōʻole ʻia kēia mau mea hoʻohana mai ka papa. Hiki iā lākou ke hoʻāʻo e komo hou i kēlā me kēia manawa.",
+    "courseNameHint": "Ka inoa papa",
+    "typeCourseCodeToConfirm": "No ka hōʻoia ʻana, e kikokiko i ke code papa {code} ma lalo.",
+    "typeCourseNameToConfirm": "No ka hōʻoia ʻana, e kikokiko i ka inoa papa {name} ma lalo."
 }

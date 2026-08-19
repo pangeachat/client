@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-18 15:48:42.758606",
+    "@@last_modified": "2026-08-19 14:14:43.592558",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Comharraich na h-uile mar a chaidh a leughadh",
     "usersAreTryingToJoinCourse": "Tha luchd-cleachdaidh a' feuchainn ris a' chùrsa agad a dhol a-steach",
     "denyAllUsers": "Diùlt a h-uile neach-cleachdaidh",
-    "denyAllKnocksDescription": "Thèid na cleachdaichean seo a dhiùltadh bhon chùrsa. Faodaidh iad feuchainn ri dhol a-steach a-rithist aig àm sam bith."
+    "denyAllKnocksDescription": "Thèid na cleachdaichean seo a dhiùltadh bhon chùrsa. Faodaidh iad feuchainn ri dhol a-steach a-rithist aig àm sam bith.",
+    "courseNameHint": "Ainm a' chùrsa",
+    "typeCourseCodeToConfirm": "Gus dearbhadh, sgrìobh an còd cùrsa {code} gu h-ìosal.",
+    "typeCourseNameToConfirm": "Gus dearbhadh, sgrìobh ainm a' chùrsa {name} gu h-ìosal."
 }

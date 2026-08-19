@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-18 15:48:43.096606",
+    "@@last_modified": "2026-08-19 14:14:44.784724",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,8 @@
     "markAllRead": "Mindet olvasottnak jelöli",
     "usersAreTryingToJoinCourse": "Felhasználók próbálnak csatlakozni a kurzusodhoz",
     "denyAllUsers": "Összes felhasználó elutasítása",
-    "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni."
+    "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni.",
+    "courseNameHint": "Tanfolyam neve",
+    "typeCourseCodeToConfirm": "A megerősítéshez írja be a {code} tanfolyamkódot alább.",
+    "typeCourseNameToConfirm": "A megerősítéshez írja be a {name} tanfolyamnevet alább."
 }

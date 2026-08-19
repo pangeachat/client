@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-18 15:48:45.780319",
+    "@@last_modified": "2026-08-19 14:14:47.850769",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Mariho ho voavaky avokoa",
     "usersAreTryingToJoinCourse": "Misy mpampiasa te hiditra amin'ny taranjao",
     "denyAllUsers": "Mandà ny mpampiasa rehetra",
-    "denyAllKnocksDescription": "Hesorina amin'ny taranja ireo mpampiasa ireo. Afaka manandrana miditra indray izy ireo amin'ny fotoana rehetra."
+    "denyAllKnocksDescription": "Hesorina amin'ny taranja ireo mpampiasa ireo. Afaka manandrana miditra indray izy ireo amin'ny fotoana rehetra.",
+    "courseNameHint": "Anaran'ny taranja",
+    "typeCourseCodeToConfirm": "Mba hanamafisana, soraty eto ambany ny kaody taranja {code}.",
+    "typeCourseNameToConfirm": "Mba hanamafisana, soraty eto ambany ny anaran'ny taranja {name}."
 }

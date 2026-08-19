@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-18 15:48:43.621942",
+    "@@last_modified": "2026-08-19 14:14:44.761492",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Նշել բոլորը կարդացված",
     "usersAreTryingToJoinCourse": "Օգտատերերը փորձում են միանալ Ձեր դասընթացին",
     "denyAllUsers": "Մերժել բոլոր օգտատերերին",
-    "denyAllKnocksDescription": "Այս օգտատերերը կմերժվեն դասընթացից։ Նրանք կարող են ցանկացած պահի նորից փորձել միանալ։"
+    "denyAllKnocksDescription": "Այս օգտատերերը կմերժվեն դասընթացից։ Նրանք կարող են ցանկացած պահի նորից փորձել միանալ։",
+    "courseNameHint": "Դասընթացի անվանումը",
+    "typeCourseCodeToConfirm": "Հաստատելու համար ներքևում մուտքագրեք {code} դասընթացի կոդը։",
+    "typeCourseNameToConfirm": "Հաստատելու համար ներքևում մուտքագրեք {name} դասընթացի անվանումը։"
 }

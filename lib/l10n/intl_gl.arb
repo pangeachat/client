@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-18 15:48:42.457646",
+    "@@last_modified": "2026-08-19 14:14:43.162680",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9759,5 +9759,8 @@
     "markAllRead": "Marcar todo como lido",
     "usersAreTryingToJoinCourse": "Os usuarios están a intentar unirse ao teu curso",
     "denyAllUsers": "Rexeitar todos os usuarios",
-    "denyAllKnocksDescription": "Estes usuarios serán rexeitados do curso. Poderán intentar unirse de novo en calquera momento."
+    "denyAllKnocksDescription": "Estes usuarios serán rexeitados do curso. Poderán intentar unirse de novo en calquera momento.",
+    "courseNameHint": "Nome do curso",
+    "typeCourseCodeToConfirm": "Para confirmar, escribe o código do curso {code} a continuación.",
+    "typeCourseNameToConfirm": "Para confirmar, escribe o nome do curso {name} a continuación."
 }

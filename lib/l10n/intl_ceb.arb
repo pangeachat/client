@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-18 15:48:41.193104",
+    "@@last_modified": "2026-08-19 14:14:41.822369",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Markahi tanan nga nabasa na",
     "usersAreTryingToJoinCourse": "Naay mga user nga naningkamot nga moapil sa imong kurso",
     "denyAllUsers": "Balibaran tanang user",
-    "denyAllKnocksDescription": "Kining mga user balibaran sa kurso. Mahimo silang mosulay pag-apil pag-usab bisan unsang orasa."
+    "denyAllKnocksDescription": "Kining mga user balibaran sa kurso. Mahimo silang mosulay pag-apil pag-usab bisan unsang orasa.",
+    "courseNameHint": "Ngalan sa kurso",
+    "typeCourseCodeToConfirm": "Aron makumpirma, i-type ang code sa kurso nga {code} sa ubos.",
+    "typeCourseNameToConfirm": "Aron makumpirma, i-type ang ngalan sa kurso nga {name} sa ubos."
 }

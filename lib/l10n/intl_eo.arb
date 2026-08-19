@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:41.321343",
+    "@@last_modified": "2026-08-19 14:14:43.536437",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10704,5 +10704,8 @@
     "markAllRead": "Marki ĉion kiel legitan",
     "usersAreTryingToJoinCourse": "Uzantoj provas aliĝi al via kurso",
     "denyAllUsers": "Malakcepti ĉiujn uzantojn",
-    "denyAllKnocksDescription": "Ĉi tiuj uzantoj estos malakceptitaj de la kurso. Ili rajtas provi aliĝi denove iam ajn."
+    "denyAllKnocksDescription": "Ĉi tiuj uzantoj estos malakceptitaj de la kurso. Ili rajtas provi aliĝi denove iam ajn.",
+    "courseNameHint": "Nomo de kurso",
+    "typeCourseCodeToConfirm": "Por konfirmi, tajpu la kurskodon {code} ĉi-sube.",
+    "typeCourseNameToConfirm": "Por konfirmi, tajpu la kursnomon {name} ĉi-sube."
 }

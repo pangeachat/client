@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-18 15:48:45.148809",
+    "@@last_modified": "2026-08-19 14:14:46.450852",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Omnia lecta nota",
     "usersAreTryingToJoinCourse": "Nonnulli ad cursum tuum accedere conantur",
     "denyAllUsers": "Omnes repelle",
-    "denyAllKnocksDescription": "Hi usores a cursu reicientur. Quovis tempore iterum accedere conari possunt."
+    "denyAllKnocksDescription": "Hi usores a cursu reicientur. Quovis tempore iterum accedere conari possunt.",
+    "courseNameHint": "Nomen cursus",
+    "typeCourseCodeToConfirm": "Ad confirmandum, typus codicis cursus {code} infra.",
+    "typeCourseNameToConfirm": "Ad confirmandum, typus nominis cursus {name} infra."
 }

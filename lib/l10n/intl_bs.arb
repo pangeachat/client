@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-18 15:48:39.884098",
+    "@@last_modified": "2026-08-19 14:14:40.893302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Označi sve kao pročitano",
     "usersAreTryingToJoinCourse": "Korisnici pokušavaju da se pridruže vašem kursu",
     "denyAllUsers": "Odbij sve korisnike",
-    "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku."
+    "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku.",
+    "courseNameHint": "Naziv kursa",
+    "typeCourseCodeToConfirm": "Za potvrdu, unesite kod kursa {code} ispod.",
+    "typeCourseNameToConfirm": "Za potvrdu, unesite naziv kursa {name} ispod."
 }

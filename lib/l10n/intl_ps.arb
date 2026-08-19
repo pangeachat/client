@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-18 15:48:47.775112",
+    "@@last_modified": "2026-08-19 14:14:49.866027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "ټول لوستل شوي په نښه کړئ",
     "usersAreTryingToJoinCourse": "کاروونکي هڅه کوي ستاسو کورس سره یوځای شي",
     "denyAllUsers": "ټول کاروونکي رد کړئ",
-    "denyAllKnocksDescription": "دا کاروونکي به له کورس څخه رد شي. دوی کولی شي په هر وخت کې بیا د یوځای کیدو هڅه وکړي."
+    "denyAllKnocksDescription": "دا کاروونکي به له کورس څخه رد شي. دوی کولی شي په هر وخت کې بیا د یوځای کیدو هڅه وکړي.",
+    "courseNameHint": "د کورس نوم",
+    "typeCourseCodeToConfirm": "د تایید لپاره، لاندې د کورس کوډ {code} ولیکئ.",
+    "typeCourseNameToConfirm": "د تایید لپاره، لاندې د کورس نوم {name} ولیکئ."
 }

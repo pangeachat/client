@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-18 15:48:39.841832",
+    "@@last_modified": "2026-08-19 14:14:41.117535",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10065,5 +10065,8 @@
     "markAllRead": "وضع الكل كمقروء",
     "usersAreTryingToJoinCourse": "يحاول المستخدمون الانضمام إلى دورتك التدريبية",
     "denyAllUsers": "رفض جميع المستخدمين",
-    "denyAllKnocksDescription": "سيتم رفض هؤلاء المستخدمين من الدورة التدريبية. وقد يحاولون الانضمام مرة أخرى في أي وقت."
+    "denyAllKnocksDescription": "سيتم رفض هؤلاء المستخدمين من الدورة التدريبية. وقد يحاولون الانضمام مرة أخرى في أي وقت.",
+    "courseNameHint": "اسم الدورة",
+    "typeCourseCodeToConfirm": "للتأكيد، اكتب رمز الدورة {code} أدناه.",
+    "typeCourseNameToConfirm": "للتأكيد، اكتب اسم الدورة {name} أدناه."
 }

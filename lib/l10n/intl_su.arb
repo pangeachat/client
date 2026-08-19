@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-18 15:48:49.353723",
+    "@@last_modified": "2026-08-19 14:14:50.828720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Tandaan sadayana parantos dibaca",
     "usersAreTryingToJoinCourse": "Pamaké nyobian ngagabung kursus anjeun",
     "denyAllUsers": "Tolak sadaya pamaké",
-    "denyAllKnocksDescription": "Pamaké ieu bakal ditolak ti kursus. Maranéhna tiasa nyobian ngagabung deui iraha waé."
+    "denyAllKnocksDescription": "Pamaké ieu bakal ditolak ti kursus. Maranéhna tiasa nyobian ngagabung deui iraha waé.",
+    "courseNameHint": "Ngaran kursus",
+    "typeCourseCodeToConfirm": "Pikeun mastikeun, ketik kode kursus {code} di handap.",
+    "typeCourseNameToConfirm": "Pikeun mastikeun, ketik ngaran kursus {name} di handap."
 }

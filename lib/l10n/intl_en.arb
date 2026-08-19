@@ -5078,5 +5078,22 @@
                 "type": "int"
             }
         }
+    },
+    "courseNameHint": "Course name",
+    "typeCourseCodeToConfirm": "To confirm, type the course code {code} below.",
+    "@typeCourseCodeToConfirm": {
+        "placeholders": {
+            "code": {
+                "type": "String"
+            }
+        }
+    },
+    "typeCourseNameToConfirm": "To confirm, type the course name {name} below.",
+    "@typeCourseNameToConfirm": {
+        "placeholders": {
+            "name": {
+                "type": "String"
+            }
+        }
     }
 }

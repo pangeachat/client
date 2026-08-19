@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-18 15:48:40.157236",
+    "@@last_modified": "2026-08-19 14:14:41.132756",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2147,5 +2147,8 @@
     "markAllRead": "ሁሉንም እንደተነበበ ምልክት አድርግ",
     "usersAreTryingToJoinCourse": "ተጠቃሚዎች ኮርስዎን ለመቀላቀል እየሞከሩ ነው",
     "denyAllUsers": "ሁሉንም ተጠቃሚዎች እምቢ በል",
-    "denyAllKnocksDescription": "እነዚህ ተጠቃሚዎች ከኮርሱ ውድቅ ይደረጋሉ። በማንኛውም ጊዜ እንደገና ለመቀላቀል ሊሞክሩ ይችላሉ።"
+    "denyAllKnocksDescription": "እነዚህ ተጠቃሚዎች ከኮርሱ ውድቅ ይደረጋሉ። በማንኛውም ጊዜ እንደገና ለመቀላቀል ሊሞክሩ ይችላሉ።",
+    "courseNameHint": "የኮርስ ስም",
+    "typeCourseCodeToConfirm": "ለማረጋገጥ፣ ከታች ያለውን የኮርስ ኮድ {code} ይተይቡ።",
+    "typeCourseNameToConfirm": "ለማረጋገጥ፣ ከታች ያለውን የኮርስ ስም {name} ይተይቡ።"
 }

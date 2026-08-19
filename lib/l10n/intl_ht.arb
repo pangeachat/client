@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-18 15:48:43.063742",
+    "@@last_modified": "2026-08-19 14:14:44.942802",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Make tout li",
     "usersAreTryingToJoinCourse": "Itilizatè yo ap eseye antre nan kou ou a",
     "denyAllUsers": "Refize tout itilizatè yo",
-    "denyAllKnocksDescription": "Itilizatè sa yo pral rejte nan kou a. Yo ka eseye antre ankò nenpòt ki lè."
+    "denyAllKnocksDescription": "Itilizatè sa yo pral rejte nan kou a. Yo ka eseye antre ankò nenpòt ki lè.",
+    "courseNameHint": "Non kou a",
+    "typeCourseCodeToConfirm": "Pou konfime, tape kòd kou a {code} anba a.",
+    "typeCourseNameToConfirm": "Pou konfime, tape non kou a {name} anba a."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-18 15:48:50.017533",
+    "@@last_modified": "2026-08-19 14:14:52.216351",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10060,5 +10060,8 @@
     "markAllRead": "Tümünü okundu olarak işaretle",
     "usersAreTryingToJoinCourse": "Kullanıcılar kursunuza katılmaya çalışıyor",
     "denyAllUsers": "Tüm kullanıcıları reddet",
-    "denyAllKnocksDescription": "Bu kullanıcılar kurstan reddedilecektir. İstediğiniz zaman tekrar katılmayı deneyebilirler."
+    "denyAllKnocksDescription": "Bu kullanıcılar kurstan reddedilecektir. İstediğiniz zaman tekrar katılmayı deneyebilirler.",
+    "courseNameHint": "Kurs adı",
+    "typeCourseCodeToConfirm": "Onaylamak için aşağıdaki alana {code} kurs kodunu yazın.",
+    "typeCourseNameToConfirm": "Onaylamak için aşağıdaki alana {name} kurs adını yazın."
 }

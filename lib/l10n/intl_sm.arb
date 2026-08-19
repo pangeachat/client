@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-18 15:48:49.041198",
+    "@@last_modified": "2026-08-19 14:14:50.620262",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2147,5 +2147,8 @@
     "markAllRead": "Faailoga uma ua faitauina",
     "usersAreTryingToJoinCourse": "O lo'o taumafai tagata fa'aoga e auai i lau kosi",
     "denyAllUsers": "Te'ena tagata fa'aoga uma",
-    "denyAllKnocksDescription": "O le a te'ena nei tagata fa'aoga mai le kosi. E mafai ona latou toe taumafai e auai i so'o se taimi."
+    "denyAllKnocksDescription": "O le a te'ena nei tagata fa'aoga mai le kosi. E mafai ona latou toe taumafai e auai i so'o se taimi.",
+    "courseNameHint": "Igoa o le kosi",
+    "typeCourseCodeToConfirm": "Ina ia faʻamaonia, tusi le code o le kosi {code} i lalo.",
+    "typeCourseNameToConfirm": "Ina ia faʻamaonia, tusi le igoa o le kosi {name} i lalo."
 }

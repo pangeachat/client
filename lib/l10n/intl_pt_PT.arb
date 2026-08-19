@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-18 15:48:47.814136",
+    "@@last_modified": "2026-08-19 14:14:50.028771",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10676,5 +10676,8 @@
     "markAllRead": "Marcar tudo como lido",
     "usersAreTryingToJoinCourse": "Os utilizadores estão a tentar aderir ao seu curso",
     "denyAllUsers": "Recusar todos os utilizadores",
-    "denyAllKnocksDescription": "Estes utilizadores serão rejeitados do curso. Poderão tentar aderir novamente a qualquer momento."
+    "denyAllKnocksDescription": "Estes utilizadores serão rejeitados do curso. Poderão tentar aderir novamente a qualquer momento.",
+    "courseNameHint": "Nome do curso",
+    "typeCourseCodeToConfirm": "Para confirmar, digite o código do curso {code} abaixo.",
+    "typeCourseNameToConfirm": "Para confirmar, digite o nome do curso {name} abaixo."
 }

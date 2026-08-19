@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:47.866643",
+    "@@last_modified": "2026-08-19 14:14:49.508385",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10491,5 +10491,8 @@
     "markAllRead": "Marchează tot ca citit",
     "usersAreTryingToJoinCourse": "Utilizatorii încearcă să se alăture cursului tău",
     "denyAllUsers": "Refuză toți utilizatorii",
-    "denyAllKnocksDescription": "Acești utilizatori vor fi refuzați de la curs. Ei pot încerca să se alăture din nou oricând."
+    "denyAllKnocksDescription": "Acești utilizatori vor fi refuzați de la curs. Ei pot încerca să se alăture din nou oricând.",
+    "courseNameHint": "Numele cursului",
+    "typeCourseCodeToConfirm": "Pentru a confirma, introduceți codul cursului {code} mai jos.",
+    "typeCourseNameToConfirm": "Pentru a confirma, introduceți numele cursului {name} mai jos."
 }

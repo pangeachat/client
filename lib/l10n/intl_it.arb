@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:43.848625",
+    "@@last_modified": "2026-08-19 14:14:45.428022",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9832,5 +9832,8 @@
     "markAllRead": "Segna tutto come letto",
     "usersAreTryingToJoinCourse": "Gli utenti stanno cercando di unirsi al tuo corso",
     "denyAllUsers": "Nega tutti gli utenti",
-    "denyAllKnocksDescription": "Questi utenti verranno rifiutati dal corso. Potranno tentare di unirsi di nuovo in qualsiasi momento."
+    "denyAllKnocksDescription": "Questi utenti verranno rifiutati dal corso. Potranno tentare di unirsi di nuovo in qualsiasi momento.",
+    "courseNameHint": "Nome del corso",
+    "typeCourseCodeToConfirm": "Per confermare, digita il codice del corso {code} qui sotto.",
+    "typeCourseNameToConfirm": "Per confermare, digita il nome del corso {name} qui sotto."
 }
