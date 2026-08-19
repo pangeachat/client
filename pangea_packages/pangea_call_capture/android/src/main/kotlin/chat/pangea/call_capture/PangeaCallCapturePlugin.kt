@@ -306,10 +306,10 @@ internal class PostEchoCancellationFrames(
       // its way in and landing in a set that has just been re-cut; discarding it
       // on the way out is what makes that harmless.
       var spare = spares.poll()
-      while (spare != null && spare.size != batchBytes) {
-        created--
-        spare = spares.poll()
-      }
+      // Discarded, not counted against this rate: a buffer cut for the previous
+      // one was never part of this set, and subtracting it would let the set
+      // grow past its limit.
+      while (spare != null && spare.size != batchBytes) spare = spares.poll()
       if (spare == null && created < MAX_PENDING_BATCHES) {
         // Grown one at a time, as the need appears. Cutting the whole set at
         // once put a burst of allocation on the module's thread at exactly the
@@ -348,10 +348,18 @@ internal class PostEchoCancellationFrames(
    * otherwise open the next recording.
    */
   fun finish() {
-    flush()
+    // Handed over whatever the state of the set. The ordinary path needs a spare
+    // to carry on filling and drops the audio when there is none; nothing
+    // carries on from here, so the end of a call is never the part that is lost.
+    if (filled > 0 && batchRateHz > 0) {
+      emit(batch.copyOf(filled), batchRateHz)
+    }
     filled = 0
     batchRateHz = 0
     sampleRateHz = 0
+    batchBytes = 0
+    created = 0
+    spares.clear()
   }
 
   private fun bytesForBatch(rateHz: Int): Int {
