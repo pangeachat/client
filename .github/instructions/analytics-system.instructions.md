@@ -34,7 +34,7 @@ Different interactions contribute different amounts of XP, reflecting effort. Ea
 
 - **Clicking a new word** in the toolbar (first view) — small XP (passive learning)
 - **Correct practice answers** (emoji matching, meaning selection, listening) — moderate XP
-- **Wrong practice answers** — reduced or zero XP (no punishment, but less reward)
+- **Wrong practice answers** — a small negative XP value, deliberately, to discourage guessing through a multiple-choice item. Skipped or unanswered items are worth 0. See `ConstructUseTypeEnum.pointValue` for the per-type values.
 - **Using a word in writing** (via the choreographer) — XP based on the construct use type
 
 Each data point is stored as a [`OneConstructUse`](../../lib/features/analytics/constructs_model.dart) which includes construct identifier, use type, timestamp, and messageId.
