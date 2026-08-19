@@ -246,6 +246,36 @@ void main() {
     });
   });
 
+  group('two calls that share a membership', () {
+    test('do not ring with the same transaction id', () async {
+      // A retract that failed leaves the membership in place, and the next call
+      // in that room reuses it. Ringing with the same transaction id makes the
+      // server hand back the FIRST call's ring — and a decline of that one,
+      // long since sent, then marks the new call as turned down.
+      final client = await bareClient();
+      final service = CallService(client);
+      final room = Room(id: '!r:server', client: client);
+      final sent = <String>[];
+
+      for (var i = 0; i < 2; i++) {
+        try {
+          await service.ring(
+            room,
+            membershipEventId: '\$membership',
+            video: false,
+          );
+        } catch (_) {
+          // The send itself cannot succeed against a fake server; the
+          // transaction id is what this is about.
+        }
+        sent.add(service.debugLastRingTxidForTest ?? '');
+      }
+
+      expect(sent.first, isNotEmpty);
+      expect(sent.first, isNot(sent.last));
+    });
+  });
+
   group('a leave that was given up on but is still running', () {
     test('is waited for before the next call, then let go of', () async {
       // The session is fetched by ROOM, so a redial lands on the very object

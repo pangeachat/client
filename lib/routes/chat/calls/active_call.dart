@@ -873,6 +873,12 @@ class ActiveCall extends ChangeNotifier {
       Logs().e('Could not release the call media', e, s);
     }
 
+    // One more look before the session goes. The echo can land at any point
+    // during teardown, and after the retract the membership can no longer be
+    // matched to this call — which is exactly when a device that joined one
+    // already under way has nothing else to anchor its learner's words to.
+    _rememberMembership();
+
     // The membership last. Nobody is waiting on it — the peer already saw us
     // leave — and it is the one step that can be retried later if the server
     // refuses, so it costs nothing to do it once the devices are free.

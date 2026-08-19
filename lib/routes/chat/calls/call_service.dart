@@ -221,6 +221,16 @@ class CallService {
   @visibleForTesting
   void setPendingLeaveForTest(Future<void> leaving) => _leaving = leaving;
 
+  /// Numbers each ring this session sends, so two calls sharing a membership
+  /// cannot share a transaction id.
+  int _ringSeq = 0;
+
+  String? _lastRingTxid;
+
+  /// The transaction id of the ring just sent, for tests.
+  @visibleForTesting
+  String? get debugLastRingTxidForTest => _lastRingTxid;
+
   /// How long one attempt to take the membership back may take.
   final Duration _leaveWithin;
 
@@ -407,12 +417,21 @@ class CallService {
     required String membershipEventId,
     required bool video,
   }) async {
-    // One transaction id across both attempts. A send whose response is lost may
-    // already have reached the server, and the ring's id is what a decline
-    // points back at — without it the caller sits through the whole ring and
-    // records the call as unanswered when it was turned down. Reusing the id
-    // makes the server hand back the event the first attempt created.
-    final txid = 'pangea.call.ring.$membershipEventId';
+    // One transaction id across both attempts, and a different one for every
+    // call. A send whose response is lost may already have reached the server,
+    // and the ring's id is what a decline points back at — without it the caller
+    // sits through the whole ring and records the call as unanswered when it was
+    // turned down. Reusing the id makes the server hand back the event the first
+    // attempt created.
+    //
+    // The membership alone is not enough to name a call. A retract that failed
+    // leaves the membership in place and the next call in that room reuses it,
+    // so the two calls would ring with the SAME transaction id: the server hands
+    // back the FIRST call's ring, and a decline of that one — long since sent —
+    // marks the new call as turned down. A decline landing on the wrong call has
+    // been paid for twice already.
+    final txid = _lastRingTxid =
+        'pangea.call.ring.$membershipEventId.${++_ringSeq}';
     final content = CallNotification(
       membershipEventId: membershipEventId,
       senderDeviceId: client.deviceID!,
