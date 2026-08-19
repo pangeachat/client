@@ -298,6 +298,10 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                         final liveState = widget.liveStateByActivity(
                           ref.activityId,
                         );
+                        // A completed activity drops its state colouring for
+                        // the check overlay, so the card and its ping bell
+                        // both read it from here.
+                        final pinState = complete ? null : liveState.state;
                         // Dim activities that can't be started yet: the course lacks
                         // enough members for their roles (tapping opens the start page's
                         // Invite CTA). A live (ongoing/joinable) session already filled
@@ -337,7 +341,7 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                                     fontSizeSmall: _isColumnMode ? 12.0 : 8.0,
                                     iconSize: _isColumnMode ? 12.0 : 8.0,
                                     starsEarned: starsEarned,
-                                    pinState: complete ? null : liveState.state,
+                                    pinState: pinState,
                                     openSessions: liveState.openSessions,
                                     participants: liveState.participants,
                                     openSlots: liveState.openSlots,
@@ -361,12 +365,13 @@ class ObjectiveSectionState extends State<ObjectiveSection> {
                                     ),
                                   ),
                                 // The course-ping bell, top-left so it shares
-                                // the banner's row without covering it (#8319).
+                                // the banner's row without covering it (#8319),
+                                // in the card's own state hue (#8481).
                                 if (ref.activityId == widget.pingedActivityId)
-                                  const Positioned(
+                                  Positioned(
                                     top: 8.0,
                                     left: 6.0,
-                                    child: CoursePingBadge(),
+                                    child: CoursePingBadge(pinState: pinState),
                                   ),
                               ],
                             ),
