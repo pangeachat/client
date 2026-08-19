@@ -124,7 +124,11 @@ class OneConstructUse {
   Map<String, dynamic> toJson() => {
     'useType': useType.name,
     'chatId': metadata.roomId,
-    'timeStamp': metadata.timeStamp.toIso8601String(),
+    // Serialize as an absolute UTC instant (…Z), NOT naive local. The server's
+    // analytics ts_parsed treats a zoneless stamp as UTC, so a naive local
+    // stamp shifted every non-UTC user's analytics by their offset and broke
+    // engagement-span corroboration. Mirrors every dosage emitter's .toUtc().
+    'timeStamp': metadata.timeStamp.toUtc().toIso8601String(),
     'form': form,
     'msgId': metadata.eventId,
     'lemma': lemma,
