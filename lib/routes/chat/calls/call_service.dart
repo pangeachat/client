@@ -304,19 +304,34 @@ class CallService {
     required String membershipEventId,
     required bool video,
   }) async {
-    try {
-      return await room.sendEvent(
-        CallNotification(
-          membershipEventId: membershipEventId,
-          senderDeviceId: client.deviceID!,
-          video: video,
-        ).toContent(DateTime.now()),
-        type: PangeaEventTypes.callNotification,
-      );
-    } catch (e, s) {
-      Logs().w('Could not ring the other side', e, s);
-      return null;
+    // One transaction id across both attempts. A send whose response is lost may
+    // already have reached the server, and the ring's id is what a decline
+    // points back at — without it the caller sits through the whole ring and
+    // records the call as unanswered when it was turned down. Reusing the id
+    // makes the server hand back the event the first attempt created.
+    final txid = 'pangea.call.ring.$membershipEventId';
+    final content = CallNotification(
+      membershipEventId: membershipEventId,
+      senderDeviceId: client.deviceID!,
+      video: video,
+    ).toContent(DateTime.now());
+
+    for (var attempt = 0; attempt < 2; attempt++) {
+      try {
+        return await room.sendEvent(
+          content,
+          type: PangeaEventTypes.callNotification,
+          txid: txid,
+        );
+      } catch (e, s) {
+        Logs().w(
+          'Could not ring the other side (attempt ${attempt + 1})',
+          e,
+          s,
+        );
+      }
     }
+    return null;
   }
 
   /// Our own membership's event id in [room]'s current call, or null.
@@ -325,7 +340,14 @@ class CallService {
   /// announcing is deliberately short so a caller is never left hanging, and a
   /// device that joined a call already under way has nothing else to anchor its
   /// analytics to.
-  String? membershipEventIdIn(Room room) => _myMembershipEventId(room);
+  String? membershipEventIdIn(Room room) {
+    // Answered only while the machinery that tracked the call is still here.
+    // Reading a membership goes through the SDK's VoIP instance, and asking
+    // after teardown would BUILD one — listeners and all — to answer a question
+    // about a call that no longer exists.
+    if (_disposed || _voip == null || _current == null) return null;
+    return _myMembershipEventId(room);
+  }
 
   String? _myMembershipEventId(Room room) {
     for (final m in room.getCallMembershipsForUser(

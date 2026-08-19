@@ -227,6 +227,11 @@ class ActiveCall extends ChangeNotifier {
   /// open call with an open microphone and nobody there.
   static const _answerWithin = Duration(seconds: 60);
 
+  /// How long someone answering waits for the caller they are answering. Short,
+  /// because the caller should already be there; this only covers the moment it
+  /// takes their presence to reach us.
+  static const _joinWithin = Duration(seconds: 10);
+
   /// Fires the give-up now instead of after the wait. Sixty seconds of real
   /// time in a test proves nothing the timer's own logic does not.
   @visibleForTesting
@@ -400,6 +405,10 @@ class ActiveCall extends ChangeNotifier {
     required bool answering,
   }) async {
     _room = room;
+    // Subscribed before anything else. Two people calling at the same moment is
+    // decided by seeing their ring, and the window this has to cover starts when
+    // ours does — not when our media happens to be ready.
+    _peerRings = calls.ringsIn(room).listen(_onPeerRing);
     try {
       final grant = await _step(() => calls.join(room));
       _joined = true;
@@ -450,7 +459,12 @@ class ActiveCall extends ChangeNotifier {
       // answering a call is joining.
       _peerArrived = roster.hasPeer;
       if (!_peerArrived) {
-        _waitingForPeer = Timer(_answerWithin, () {
+        // Someone answering a call has somebody to answer; if nobody is there,
+        // the caller has already gone and waiting a full minute only holds the
+        // microphone open in an empty call. Someone placing one is waiting for
+        // an answer, which is what the longer wait is for.
+        final wait = answering ? _joinWithin : _answerWithin;
+        _waitingForPeer = Timer(wait, () {
           if (_ending || _peerArrived) return;
           Logs().i('Nobody joined the call; ending it');
           unawaited(hangUp());
@@ -474,11 +488,6 @@ class ActiveCall extends ChangeNotifier {
       // that gap — the caller would then sit through the whole ring instead of
       // being told they were turned down.
       _declines = calls.declinesIn(room).listen(_onDeclineEvent);
-      // Their ring, if they are calling us at the same time. Subscribed
-      // alongside the declines and before our own ring goes out, so a
-      // simultaneous call is seen however the two sends interleave.
-      _peerRings = calls.ringsIn(room).listen(_onPeerRing);
-
       if (placing && membershipId != null) {
         // Assigned before the check, so a hangup landing here still knows the
         // other side was rung — their phone rang, and that is what makes this a
@@ -597,6 +606,13 @@ class ActiveCall extends ChangeNotifier {
       // unwind, leaving the membership advertised and the call unrecorded.
       Logs().w('Could not stop watching participants', e, s);
     }
+
+    // Read while the session is still here. Retracting releases it, and the
+    // membership can no longer be matched to this call afterwards — which is
+    // exactly when a device that joined one already under way needs it.
+    _membershipEventId ??= _room != null
+        ? calls.membershipEventIdIn(_room!)
+        : null;
 
     if (_joined) {
       try {

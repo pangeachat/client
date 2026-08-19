@@ -243,6 +243,7 @@ class _CallPageState extends State<CallPage> {
         // the caller left before the call finished coming up.
         final mattered =
             _reachedCall ||
+            _call.hadPeer ||
             _call.notificationEventId != null ||
             widget.notificationEventId != null;
         if (!mattered) return;

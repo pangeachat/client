@@ -168,6 +168,20 @@ class FakeCalls extends CallService {
     return const CallToken(jwt: 'jwt', url: 'ws://sfu');
   }
 
+  /// The membership this account holds, as the room would report it. Overridden
+  /// because the real one reaches into the SDK, which a unit test has no
+  /// business standing up.
+  bool _retracted = false;
+
+  /// What the ROOM reports, which is not the same as what announcing returned:
+  /// the wait for the echo is deliberately short, so it can time out while the
+  /// membership is perfectly well there a moment later.
+  String? roomMembershipId = '\$membership';
+
+  @override
+  String? membershipEventIdIn(matrix.Room room) =>
+      _retracted ? null : roomMembershipId;
+
   @override
   Future<String?> announce() async {
     trace('announce');
@@ -181,6 +195,7 @@ class FakeCalls extends CallService {
   @override
   Future<bool> retract() async {
     trace('retract');
+    _retracted = true;
     if (retractError != null) throw retractError!;
     return !retractFails;
   }
@@ -1264,6 +1279,48 @@ void main() {
         reason: 'a tap that did not attach must be attempted again',
       );
       expect(call.isRecording, isTrue);
+    });
+  });
+  group('the anchor a joining device credits its speech to', () {
+    test('is read before the call is given up, not after', () async {
+      // Retracting releases what identifies the call, and the membership can no
+      // longer be matched to it afterwards — which is exactly the device that
+      // needs it: one that joined a call already under way and so has no ring of
+      // its own to point at.
+      final (call, calls, _, _) = await build();
+      calls.remotePresent = true;
+      // The echo did not arrive in time, so announcing returned nothing — the
+      // case the late read exists for.
+      calls.membershipId = null;
+      await call.start(roomStub(calls.client), video: false);
+      await call.hangUp();
+
+      expect(call.placedCall, isFalse);
+      expect(call.notificationEventId, isNull);
+      expect(
+        call.membershipEventId,
+        isNotNull,
+        reason: 'without this the whole call goes uncredited',
+      );
+    });
+  });
+
+  group('a ring arriving before our media is up', () {
+    test('still counts as the two of us calling at once', () async {
+      // The window starts when our call does, not when our media happens to be
+      // ready. Watching only from there let a simultaneous call through, and
+      // both sides would write the call to the room.
+      final (call, calls, media, _) = await build();
+      final connecting = Completer<void>();
+      media.beforeConnect = connecting.future;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      await calls.peerAlsoCalls();
+      connecting.complete();
+      await starting;
+
+      expect(call.peerAlsoPlaced, isTrue);
     });
   });
 }
