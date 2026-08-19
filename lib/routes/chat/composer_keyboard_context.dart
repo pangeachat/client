@@ -9,16 +9,23 @@ import 'package:text_input_context/text_input_context.dart';
 /// `textInputContextIdentifier` it recognises; Flutter exposes no such hook,
 /// so the `text_input_context` plugin patches the engine's text input view to
 /// report the identifier set here. The identifier is set while the composer
-/// has focus and cleared when it loses focus, so every other field (search,
-/// display name, password) keeps the device default. It is keyed on the target
-/// language so switching L2 does not inherit the previous language's keyboard.
+/// has focus and cleared when it loses focus **or is unmounted**, so every
+/// other field (search, display name, password) keeps the device default. It
+/// is keyed on the target language so switching L2 does not inherit the
+/// previous language's keyboard.
 ///
-/// Create this right after the composer's [FocusNode], before any TextField
-/// using it is built: `EditableText` opens the platform connection from its
-/// own listener on the same node, and FocusNode notifies listeners in
-/// registration order, so ours must be first for the identifier to be in place
-/// when iOS reads it. A no-op off iOS.
-class ComposerKeyboardContext {
+/// Wrap the composer's TextField (or the Autocomplete that builds it) in this
+/// widget: its listener is registered in [State.initState], before the child
+/// `EditableText` registers its own on the same [FocusNode], and FocusNode
+/// notifies listeners in registration order — so the identifier is in place
+/// when iOS reads it on attach. Clearing on [State.dispose] matters because a
+/// FocusNode that is detached while focused (the composer being unmounted by
+/// a navigation to chat search or settings) never notifies its listeners, and
+/// without the clear the next field's text-input view would inherit the
+/// composer's identifier and record its keyboard switches under it.
+///
+/// A no-op off iOS.
+class ComposerKeyboardContext extends StatefulWidget {
   static const identifierPrefix = 'pangea.composer.';
 
   final FocusNode focusNode;
@@ -27,12 +34,14 @@ class ComposerKeyboardContext {
   /// language change between focuses is picked up without re-wiring.
   final String? Function() targetLanguageCode;
 
-  ComposerKeyboardContext({
+  final Widget child;
+
+  const ComposerKeyboardContext({
+    super.key,
     required this.focusNode,
     required this.targetLanguageCode,
-  }) {
-    focusNode.addListener(_onFocusChanged);
-  }
+    required this.child,
+  });
 
   /// The identifier for [langCode], or null when no target language is set —
   /// no language, no keyboard to remember.
@@ -41,13 +50,42 @@ class ComposerKeyboardContext {
       ? null
       : '$identifierPrefix$langCode';
 
+  @override
+  State<ComposerKeyboardContext> createState() =>
+      _ComposerKeyboardContextState();
+}
+
+class _ComposerKeyboardContextState extends State<ComposerKeyboardContext> {
+  @override
+  void initState() {
+    super.initState();
+    widget.focusNode.addListener(_onFocusChanged);
+  }
+
+  @override
+  void didUpdateWidget(ComposerKeyboardContext oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.focusNode != widget.focusNode) {
+      oldWidget.focusNode.removeListener(_onFocusChanged);
+      widget.focusNode.addListener(_onFocusChanged);
+    }
+  }
+
+  @override
+  void dispose() {
+    widget.focusNode.removeListener(_onFocusChanged);
+    TextInputContext.setIdentifier(null);
+    super.dispose();
+  }
+
   void _onFocusChanged() {
     TextInputContext.setIdentifier(
-      focusNode.hasFocus ? identifierFor(targetLanguageCode()) : null,
+      widget.focusNode.hasFocus
+          ? ComposerKeyboardContext.identifierFor(widget.targetLanguageCode())
+          : null,
     );
   }
 
-  void dispose() {
-    focusNode.removeListener(_onFocusChanged);
-  }
+  @override
+  Widget build(BuildContext context) => widget.child;
 }

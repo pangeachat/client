@@ -15,6 +15,7 @@ import 'package:fluffychat/routes/chat/choreographer/choreo_constants.dart';
 import 'package:fluffychat/routes/chat/choreographer/choreographer.dart';
 import 'package:fluffychat/routes/chat/choreographer/igc/pangea_match_state_model.dart';
 import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_controller.dart';
+import 'package:fluffychat/routes/chat/composer_keyboard_context.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/utils/markdown_context_builder.dart';
 import 'package:fluffychat/widgets/mxc_image.dart';
@@ -469,7 +470,10 @@ class InputBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return Autocomplete<Map<String, String?>>(
+    // #Pangea
+    // return Autocomplete<Map<String, String?>>(
+    final autocomplete = Autocomplete<Map<String, String?>>(
+      // Pangea#
       focusNode: focusNode,
       textEditingController: controller,
       optionsBuilder: getSuggestions,
@@ -580,5 +584,17 @@ class InputBar extends StatelessWidget {
       displayStringForOption: insertSuggestion,
       optionsViewOpenDirection: OptionsViewOpenDirection.up,
     );
+    // #Pangea
+    // Without a caller-owned FocusNode the composer's focus can't be observed,
+    // and there is nothing to key the keyboard language on.
+    final composerFocusNode = focusNode;
+    if (composerFocusNode == null) return autocomplete;
+    return ComposerKeyboardContext(
+      focusNode: composerFocusNode,
+      targetLanguageCode: () =>
+          MatrixState.pangeaController.userController.userL2Code,
+      child: autocomplete,
+    );
+    // Pangea#
   }
 }
