@@ -223,21 +223,35 @@ class PcmChunker {
     );
   }
 
-  /// Whether a whole chunk is below the level speech reaches.
+  /// Whether a chunk contains no speech ANYWHERE in it.
   ///
-  /// The same threshold the split points use, applied to everything at once.
+  /// Window by window, using the same size and threshold the split points use,
+  /// and it stops at the first window that is not quiet. Averaged across the
+  /// whole chunk instead — which is how this was first written — a word spoken
+  /// into a long silence is divided by the silence around it: a second of
+  /// speech inside a minute of nothing falls below the threshold and the
+  /// learner's words are thrown away before anything can read them. A chunk
+  /// runs to a minute and a half, so that is not a corner case, it is a pause
+  /// in a conversation.
+  ///
   /// Deliberately a low bar: it is there to recognise a microphone in a quiet
   /// room, not to judge how loudly somebody spoke.
   bool _hasNothingInIt(Uint8List pcm) {
     final samples = pcm.lengthInBytes ~/ 2;
     if (samples == 0) return true;
     final view = ByteData.sublistView(pcm);
-    var sumSquares = 0.0;
-    for (var i = 0; i < samples; i++) {
-      final v = view.getInt16(i * 2, Endian.little) / 32768.0;
-      sumSquares += v * v;
+    final perWindow = _framesPerWindow * channels;
+
+    for (var start = 0; start < samples; start += perWindow) {
+      final end = start + perWindow < samples ? start + perWindow : samples;
+      var sumSquares = 0.0;
+      for (var i = start; i < end; i++) {
+        final v = view.getInt16(i * 2, Endian.little) / 32768.0;
+        sumSquares += v * v;
+      }
+      if (sqrt(sumSquares / (end - start)) >= silenceThreshold) return false;
     }
-    return sqrt(sumSquares / samples) < silenceThreshold;
+    return true;
   }
 
   /// Extends or resets the tail quiet run over the newly added samples.

@@ -276,6 +276,26 @@ void main() {
       expect(spoken.first.index, 0, reason: 'the first thing SAID is chunk 0');
     });
 
+    test('a single word inside a long silence is kept', () {
+      // A chunk runs to a minute and a half. Judging it by its average level
+      // divides a word by all the silence around it — a second of speech inside
+      // a minute of nothing reads as quieter than the threshold, and the
+      // learner's words are thrown away before anything can read them. This is
+      // a pause in a conversation, not a corner case.
+      final c = chunker();
+      final emitted = <PcmChunk>[];
+      for (var i = 0; i < 30; i++) {
+        emitted.addAll(c.add(frame(100, amplitude: 0.0)));
+      }
+      emitted.addAll(c.add(frame(300))); // one word
+      for (var i = 0; i < 30; i++) {
+        emitted.addAll(c.add(frame(100, amplitude: 0.0)));
+      }
+      emitted.addAll([?c.flush()]);
+
+      expect(emitted, isNotEmpty, reason: 'the word must survive the silence');
+    });
+
     test('a chunk with speech anywhere in it is still sent', () {
       // Including speech that lands in the very last stretch, which the running
       // silence count has never looked at.
