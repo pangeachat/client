@@ -443,6 +443,16 @@ class CallCaptureService {
   Future<void> _finish() async {
     await stop();
     if (_finished) return;
+    // Everything still on its way, without a limit this time. Stopping bounds
+    // its wait so a stuck upload cannot hold up a handover mid-call; the END of
+    // a call has nothing to hold up, and closing before a retry lands would
+    // credit the learner from a transcript missing the words they were still
+    // waiting on.
+    try {
+      await Future.wait(List.of(_inFlight));
+    } catch (e, s) {
+      Logs().w('A call audio chunk never landed', e, s);
+    }
     // Marked only once it has actually happened. Marking first meant a close
     // that failed was remembered as done, and the retry that could have fixed
     // it skipped the work — the same mistake as clearing a handle before the

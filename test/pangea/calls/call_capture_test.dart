@@ -534,6 +534,36 @@ void main() {
     });
   });
 
+  group('the end of a call', () {
+    test('waits for a delivery that stopping gave up waiting on', () async {
+      // Stopping bounds its wait so a stuck upload cannot hold up a handover
+      // mid-call. The end of a call has nothing to hold up, and closing before
+      // a slow delivery lands would credit the learner from a transcript
+      // missing the words they were still waiting on.
+      final gate = Completer<void>();
+      final slow = RecordingSink()..block = gate;
+      final capture = service(withSink: slow);
+      await capture.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+      await pumpEventQueue();
+
+      var finished = false;
+      final finishing = capture.finish().then((_) => finished = true);
+      await pumpEventQueue();
+      expect(
+        finished,
+        isFalse,
+        reason: 'the call is not finished while its audio is still going',
+      );
+
+      gate.complete();
+      await finishing;
+      expect(slow.closes, 1);
+    });
+  });
+
   group('a detach that throws before it returns', () {
     test('is still retained, not lost', () async {
       // A DetachTap may run synchronously, and so may its failure. Called
