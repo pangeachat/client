@@ -109,6 +109,17 @@ class ActiveCall extends ChangeNotifier {
   /// at the same moment as us, however recently it was sent.
   DateTime? _startedAt;
 
+  /// How far before this call began a ring can have been sent and still be the
+  /// two of us calling at once.
+  ///
+  /// Not zero: a ring's timestamp is carried in whole milliseconds while this
+  /// clock reads in microseconds, so a genuinely simultaneous ring rounds down
+  /// to fractionally BEFORE the call it is simultaneous with. Wide enough to
+  /// absorb that and any ordinary clock granularity, and far narrower than the
+  /// minute and a half a ring stays valid for — which is the gap this is here
+  /// to exclude.
+  static const _glareWindow = Duration(seconds: 3);
+
   void _onPeerRing(Event event) {
     // Only while we are both still calling. Somebody who is in the call is not
     // ringing us, so a ring arriving after they arrived belongs to some other
@@ -130,7 +141,9 @@ class ActiveCall extends ChangeNotifier {
     // writing a call the other side is not writing either, and the call is
     // missing from the conversation.
     final began = _startedAt;
-    if (began != null && ring.sentAt.isBefore(began)) return;
+    if (began != null && ring.sentAt.isBefore(began.subtract(_glareWindow))) {
+      return;
+    }
     _peerAlsoPlaced = true;
   }
 
