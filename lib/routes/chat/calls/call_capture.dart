@@ -51,6 +51,12 @@ const _deliveryAttempts = 3;
 /// connection would hold the end of the call open indefinitely.
 const _deliveryTimeout = Duration(seconds: 30);
 
+/// How long a stop waits for chunks already handed over.
+///
+/// Long enough for an ordinary delivery and its first retry, short enough that
+/// a stuck upload cannot hold up the next stretch of recording.
+const _settleDeliveriesWithin = Duration(seconds: 10);
+
 /// How long a tap is given to come off before it is treated as stuck.
 ///
 /// Detaching is a platform call and should take no time at all, but teardown
@@ -405,7 +411,19 @@ class CallCaptureService {
       _nextIndex = chunker.nextIndex;
     }
 
-    await Future.wait(List.of(_inFlight));
+    // Waited for, so a stop does not abandon audio already handed over — but
+    // BOUNDED. A delivery retries for up to a minute and a half, and holding
+    // the stop open for all of it also holds open the next START: a recorder
+    // handover back to this device could not begin until an unrelated upload
+    // had finished, and everything the learner said in that window was never
+    // captured at all. Whatever is still going when this gives up is not
+    // dropped — closing the sink waits for it again, and closing is what the
+    // END of a call does.
+    try {
+      await Future.wait(List.of(_inFlight)).timeout(_settleDeliveriesWithin);
+    } catch (e, s) {
+      Logs().w('Chunks were still on their way when recording stopped', e, s);
+    }
   }
 
   /// Ends the call's recording for good.

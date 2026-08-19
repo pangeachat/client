@@ -90,6 +90,12 @@ class PcmChunker {
   /// upload cap, so it bounds the request rather than the conversation.
   final Duration maxDuration;
 
+  /// The same ceiling expressed in bytes, which is what the route actually
+  /// limits. The default is ninety seconds of the capture this app asks for —
+  /// 16 kHz, one channel, sixteen bits — so it changes nothing at that rate and
+  /// holds the line when a device gives us a higher one.
+  final int maxBytes;
+
   /// How long the audio must stay quiet to count as a pause rather than a
   /// breath between words.
   final Duration minSilence;
@@ -131,6 +137,7 @@ class PcmChunker {
     int firstIndex = 0,
     this.targetDuration = const Duration(seconds: 45),
     this.maxDuration = const Duration(seconds: 90),
+    this.maxBytes = 90 * 16000 * 2,
     this.minSilence = const Duration(milliseconds: 400),
     this.silenceThreshold = 0.02,
   }) : _nextIndex = firstIndex,
@@ -144,7 +151,20 @@ class PcmChunker {
 
   int get _framesPerWindow => max(1, sampleRate * _windowMs ~/ 1000);
   int get _targetFrames => sampleRate * targetDuration.inMilliseconds ~/ 1000;
-  int get _maxFrames => sampleRate * maxDuration.inMilliseconds ~/ 1000;
+
+  /// The ceiling, in frames, honouring BOTH the time limit and the size one.
+  ///
+  /// The duration alone was sized for capture at 16 kHz. Android hands over the
+  /// audio module's own rate, which is routinely 48 kHz — three times the bytes
+  /// for the same ninety seconds — and the route this is sent to caps a
+  /// request. Whichever limit is reached first is the one that applies, so the
+  /// cap holds at any rate the device happens to use.
+  int get _maxFrames {
+    final byTime = sampleRate * maxDuration.inMilliseconds ~/ 1000;
+    final bySize = maxBytes ~/ (2 * channels);
+    return byTime < bySize ? byTime : bySize;
+  }
+
   int get _minSilenceFrames => sampleRate * minSilence.inMilliseconds ~/ 1000;
 
   /// Adds captured audio, returning any chunks it completed.

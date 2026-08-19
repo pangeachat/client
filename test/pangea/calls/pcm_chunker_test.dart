@@ -243,6 +243,31 @@ void main() {
       expect(payload, f);
     });
   });
+  group('a device that captures at a higher rate', () {
+    test('still produces chunks the route will accept', () {
+      // The ninety-second ceiling was sized for the 16 kHz this app asks for.
+      // Android hands over the audio module's own rate, routinely 48 kHz, which
+      // is three times the bytes for the same ninety seconds — and the route
+      // caps a request by size, not by duration.
+      final c = PcmChunker(sampleRate: 48000, channels: 1, firstIndex: 0);
+      final emitted = <PcmChunk>[];
+      // Two minutes of unbroken speech at the higher rate.
+      for (var i = 0; i < 240; i++) {
+        emitted.addAll(c.add(frame(500, sampleRate: 48000)));
+      }
+      emitted.addAll([?c.flush()]);
+
+      expect(emitted, isNotEmpty);
+      for (final chunk in emitted) {
+        expect(
+          chunk.pcm.lengthInBytes,
+          lessThanOrEqualTo(90 * 16000 * 2),
+          reason: 'no chunk may exceed what the route accepts',
+        );
+      }
+    });
+  });
+
   group('a stretch of the call with nothing in it', () {
     test('is not emitted at all', () {
       // The learner is listening. There are no words in it, so uploading it
