@@ -171,10 +171,16 @@ void main() {
     expect(recorded, isEmpty);
   });
 
-  test('a failed credit is retried against the same call event', () async {
-    // The event write and the credit fail independently. Marking the whole
-    // record done when only the event landed would lose the learner's analytics
-    // permanently — and a retry must not post a second call to the timeline.
+  test('a credit that failed is not applied a second time', () async {
+    // Crediting is not safe to repeat. The analytics service writes the uses
+    // locally as its first act and only then does the work that can fail, so a
+    // second attempt does not retry the credit — it adds it again, and the
+    // learner is recorded as having said everything twice. Their construct
+    // counts, and the proficiency drawn from them, would be quietly wrong.
+    //
+    // What a retry would recover is only the part that already succeeded
+    // locally; sending it on to the analytics room is the analytics service's
+    // own job, on its own schedule, and it retries that itself.
     final transcripts = await sinkWith(() => spokenWord('hola'));
     var creditAttempts = 0;
     final r = CallRecord(
@@ -186,19 +192,21 @@ void main() {
       },
       analytics: (id, uses, lang) async {
         creditAttempts++;
-        if (creditAttempts == 1) throw StateError('analytics unavailable');
         recorded.add((eventId: id, uses: uses.length, lang: lang));
+        throw StateError('analytics unavailable after applying the uses');
       },
     );
 
+    // Once for the internal retry, and again because the ordinary lifecycle
+    // calls this twice.
+    await r.finish(duration: const Duration(seconds: 10), video: false);
     await r.finish(duration: const Duration(seconds: 10), video: false);
 
-    expect(creditAttempts, 2, reason: 'the credit was retried');
-    expect(recorded, hasLength(1));
+    expect(creditAttempts, 1, reason: 'the learner is credited once, or never');
     expect(
       written,
       hasLength(1),
-      reason: 'and the retry reused the call already in the timeline',
+      reason: 'and the second call reused the call already in the timeline',
     );
   });
 

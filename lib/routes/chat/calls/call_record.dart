@@ -170,12 +170,20 @@ class CallRecord {
       return;
     }
 
-    // Marked only on success. Recording the whole thing as done when the event
-    // was written but the credit was not would lose the learner's analytics
-    // permanently — and the ordinary lifecycle calls this twice, so the second
-    // call is the retry.
-    await analytics(eventId, uses, language!);
+    // Marked BEFORE the await, because crediting is not something that can be
+    // safely done twice. The analytics service writes the uses locally as its
+    // first act and only then does the work that can fail, so a second call
+    // after a failure does not retry the credit — it adds it again, and the
+    // learner is recorded as having said everything twice. Their counts and the
+    // proficiency drawn from them would be quietly wrong.
+    //
+    // What is lost by not retrying is only the part that already succeeded
+    // locally: sending it on to the analytics room is the analytics service's
+    // own job, on its own schedule, and it retries that itself. The ordinary
+    // lifecycle calls this twice, so without this the SECOND call was a
+    // duplicate rather than a retry.
     _credited = true;
+    await analytics(eventId, uses, language!);
   }
 
   /// What a client that cannot draw a call card shows instead.

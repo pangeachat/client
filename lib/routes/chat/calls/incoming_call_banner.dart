@@ -135,10 +135,14 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void _decline(IncomingCallNotification ring) {
     _declined.add(ring.event.eventId);
     unawaited(
-      Matrix.of(context).callService.decline(
-        ring.event.room,
-        notificationEventId: ring.event.eventId,
-      ),
+      Matrix.of(context).callService
+          .decline(ring.event.room, notificationEventId: ring.event.eventId)
+          // The prompt is already gone and nothing is waiting on this, so an
+          // ordinary network failure would surface as an unhandled async error
+          // rather than as the caller simply ringing out.
+          .catchError((Object e, StackTrace s) {
+            matrix.Logs().w('Could not tell the caller we declined', e, s);
+          }),
     );
     _dismiss();
   }
