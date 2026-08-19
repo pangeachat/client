@@ -261,11 +261,22 @@ class CallCaptureService {
   /// not the audio ending — and telling the sink otherwise, while chunks
   /// numbered on from there were still to come, was a promise this could not
   /// keep.
-  Future<void> finish() async {
+  Future<void> finish() =>
+      _finishing ??= _finish().whenComplete(() => _finishing = null);
+
+  /// The finish in flight, so two callers join one. Cleared on completion, so a
+  /// close that failed can still be retried.
+  Future<void>? _finishing;
+
+  Future<void> _finish() async {
     await stop();
     if (_finished) return;
-    _finished = true;
+    // Marked only once it has actually happened. Marking first meant a close
+    // that failed was remembered as done, and the retry that could have fixed
+    // it skipped the work — the same mistake as clearing a handle before the
+    // operation it stands for has succeeded.
     await sink.close();
+    _finished = true;
   }
 
   bool _finished = false;

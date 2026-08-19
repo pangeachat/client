@@ -173,10 +173,11 @@ internal class PostEchoCancellationFrames(
      * The most audio that may be waiting to be handed on.
      *
      * If whatever consumes these stalls, the audio behind it must not grow
-     * without limit. Two seconds is far more than any healthy consumer needs and
-     * small enough that the memory behind it never matters.
+     * without limit. Most of a second is far more than a healthy consumer needs
+     * — these are drained in milliseconds — and keeping the number small also
+     * keeps the number of buffers ever cut small.
      */
-    const val MAX_PENDING_BATCHES = 20
+    const val MAX_PENDING_BATCHES = 8
   }
 
   /**
@@ -300,7 +301,15 @@ internal class PostEchoCancellationFrames(
     val out = if (full) batch else batch.copyOf(filled)
     filled = 0
     if (full) {
+      // Checked here rather than only where they are returned. A buffer can be
+      // handed back at the very moment the rate changes, passing the check on
+      // its way in and landing in a set that has just been re-cut; discarding it
+      // on the way out is what makes that harmless.
       var spare = spares.poll()
+      while (spare != null && spare.size != batchBytes) {
+        created--
+        spare = spares.poll()
+      }
       if (spare == null && created < MAX_PENDING_BATCHES) {
         // Grown one at a time, as the need appears. Cutting the whole set at
         // once put a burst of allocation on the module's thread at exactly the

@@ -39,8 +39,17 @@ class RecordingSink implements CallAudioSink {
     delivered.add(chunk);
   }
 
+  /// How many times closing should fail before it goes through.
+  int closeFailures = 0;
+
   @override
-  Future<void> close() async => closes++;
+  Future<void> close() async {
+    if (closeFailures > 0) {
+      closeFailures--;
+      throw StateError('the sink refused to close');
+    }
+    closes++;
+  }
 }
 
 /// Stands in for a published track. [addAudioRenderer] is the only member the
@@ -432,6 +441,23 @@ void main() {
         reason: 'a tap that arrived after the stop must be released',
       );
       expect(s.isRecording, isFalse);
+    });
+  });
+
+  group('a close that fails', () {
+    test('is tried again rather than remembered as done', () async {
+      // Marking the call finished before the close had succeeded meant the one
+      // retry that could have fixed it skipped the work — the same mistake as
+      // clearing a handle before the operation it stands for has succeeded.
+      sink.closeFailures = 1;
+      final s = service();
+      await s.start(track);
+
+      await expectLater(s.finish(), throwsStateError);
+      expect(sink.closes, 0);
+
+      await s.finish();
+      expect(sink.closes, 1, reason: 'the retry must actually close it');
     });
   });
 
