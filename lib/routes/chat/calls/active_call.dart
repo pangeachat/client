@@ -842,9 +842,7 @@ class ActiveCall extends ChangeNotifier {
     // exactly when a device that joined one already under way needs it.
     _rememberMembership();
 
-    await _releaseCall();
-
-    // Drained unconditionally and AFTER retracting. A device displaced moments
+    // Drained unconditionally and BEFORE retracting. A device displaced moments
     // before the hangup has a stop still unwinding while [_capturing] is already
     // false, so waiting only when it is true would let teardown finish — and the
     // call be written — while that flush was still running.
@@ -862,15 +860,23 @@ class ActiveCall extends ChangeNotifier {
     }
     _capturing = false;
 
-    // Then the microphone and camera, BEFORE waiting on anything else. Finishing
-    // waits for uploads and transcription to settle, which can take a minute —
-    // and holding the devices open through it meant the learner hung up while
-    // still being heard. Nothing about sending audio needs a microphone.
+    // Then the microphone and camera — and this is also what the other person
+    // sees. Their client reads who is present from the SFU, not from Matrix
+    // room state, so leaving the SFU is what tells them we have gone; the
+    // membership below is bookkeeping they never look at. Retracting first, as
+    // this once did, left them still hearing a learner who had hung up for as
+    // long as that state write took, and finishing waits for uploads and
+    // transcription, which can take a minute.
     try {
       await media.dispose();
     } catch (e, s) {
       Logs().e('Could not release the call media', e, s);
     }
+
+    // The membership last. Nobody is waiting on it — the peer already saw us
+    // leave — and it is the one step that can be retried later if the server
+    // refuses, so it costs nothing to do it once the devices are free.
+    await _releaseCall();
 
     // Last, with the devices already released: tell the recording the call is
     // over and let what is in flight land.

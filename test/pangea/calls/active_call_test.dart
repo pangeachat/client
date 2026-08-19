@@ -778,8 +778,8 @@ void main() {
       expect(trace.steps, [
         'join',
         'connect(video: false)',
-        'retract',
         'media.dispose',
+        'retract',
         'capture.finish',
       ]);
     });
@@ -798,9 +798,9 @@ void main() {
         'connect(video: false)',
         'capture.start',
         'announce',
-        'retract',
         'capture.stop',
         'media.dispose',
+        'retract',
         'capture.finish',
       ], reason: 'the recording is flushed even on a failed call');
     });
@@ -817,9 +817,9 @@ void main() {
       await call.hangUp();
 
       expect(trace.steps, [
-        'retract',
         'capture.stop',
         'media.dispose',
+        'retract',
         'capture.finish',
       ]);
       expect(call.stage, CallStage.ended);
@@ -834,9 +834,9 @@ void main() {
       trace.steps.clear();
       await Future.wait([call.hangUp(), call.hangUp()]);
       expect(trace.steps, [
-        'retract',
         'capture.stop',
         'media.dispose',
+        'retract',
         'capture.finish',
       ]);
     });
@@ -853,9 +853,9 @@ void main() {
       await call.hangUp();
 
       expect(trace.steps, [
-        'retract',
         'capture.stop',
         'media.dispose',
+        'retract',
         'capture.finish',
       ]);
       expect(call.stage, CallStage.ended);
@@ -872,9 +872,9 @@ void main() {
       await call.hangUp();
 
       expect(trace.steps, [
-        'retract',
         'capture.stop',
         'media.dispose',
+        'retract',
         'capture.finish',
       ], reason: 'a stuck socket must not strand the rest of teardown');
       expect(call.stage, CallStage.ended);
@@ -946,19 +946,22 @@ void main() {
     await pumpEventQueue();
 
     expect(trace.steps, [
-      'retract',
       'capture.stop',
       'media.dispose',
+      'retract',
       'capture.finish',
     ]);
     expect(call.stage, CallStage.ended);
   });
 
-  test('the peer sees us leave before slow local cleanup runs', () async {
-    // Flushing a recording waits on chunk delivery, which with a real upload
-    // sink is the slowest part of hanging up. Retracting after it would leave
-    // this device advertised as a participant the whole time, so the peer would
-    // still see someone who had already hung up.
+  test('the peer stops hearing us before anything slow runs', () async {
+    // What the other person sees is the SFU, not Matrix room state: their
+    // client reads who is present from the roster. So leaving the media session
+    // is what tells them we have gone, and it is also what closes the
+    // microphone. Everything slow — retracting a membership nobody is watching,
+    // then waiting on uploads and transcription — belongs after it. The other
+    // way round, which is how this once was, left them hearing a learner who
+    // had already hung up for as long as a state write takes.
     final (call, calls, _, _) = await build();
     // A call has to have somebody on it to be recorded: nothing is
     // captured while it is still ringing.
@@ -967,8 +970,16 @@ void main() {
     trace.steps.clear();
 
     await call.hangUp();
-    expect(trace.steps.indexOf('retract'), 0);
-    expect(trace.steps.indexOf('capture.stop'), greaterThan(0));
+    expect(
+      trace.steps.indexOf('media.dispose'),
+      lessThan(trace.steps.indexOf('retract')),
+      reason: 'the peer sees us go before the bookkeeping',
+    );
+    expect(
+      trace.steps.indexOf('media.dispose'),
+      lessThan(trace.steps.indexOf('capture.finish')),
+      reason: 'and long before the uploads settle',
+    );
   });
 
   test('a hangup during connect stops the call coming up', () async {
