@@ -397,6 +397,44 @@ void main() {
     });
   });
 
+  group('the tail a tap hands over as it detaches', () {
+    test('is kept, not discarded', () async {
+      // Detaching is what makes a tap hand over the last of what it gathered,
+      // and that tail is the end of a sentence. Refusing frames before
+      // detaching collects it and then throws it away.
+      final tap = _TailOnDetachTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+      await s.stop();
+
+      expect(
+        sink.delivered.expand((c) => c.pcm).isNotEmpty,
+        isTrue,
+        reason: 'the audio handed over during detach must reach the sink',
+      );
+    });
+  });
+
+  group('a stop landing while the tap is still attaching', () {
+    test('leaves no tap attached behind it', () async {
+      final tap = _SlowToAttachTap();
+      final s = service(withTap: tap);
+
+      final starting = s.start(track);
+      await pumpEventQueue();
+      await s.stop();
+      tap.finishAttaching();
+      await starting;
+
+      expect(
+        tap.detached,
+        isTrue,
+        reason: 'a tap that arrived after the stop must be released',
+      );
+      expect(s.isRecording, isFalse);
+    });
+  });
+
   group('two stops arriving together', () {
     test('close the sink once, not twice', () async {
       // A hangup and a disconnect routinely land together. A guard followed by
@@ -427,4 +465,29 @@ class _SlowTap implements CallAudioTap {
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
       () async => Future<void>.delayed(const Duration(milliseconds: 20));
+}
+
+/// A tap that hands over its last audio only as it is detached, the way the
+/// platform one does.
+class _TailOnDetachTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    return () async {
+      onFrames(Int16List.fromList(List<int>.filled(8000, 1200)), 16000);
+    };
+  }
+}
+
+/// A tap that takes its time attaching, so a stop can land inside it.
+class _SlowToAttachTap implements CallAudioTap {
+  final _attached = Completer<void>();
+  bool detached = false;
+
+  void finishAttaching() => _attached.complete();
+
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    await _attached.future;
+    return () async => detached = true;
+  }
 }

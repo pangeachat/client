@@ -67,6 +67,11 @@ class CallCaptureService {
   /// is not known until audio actually arrives.
   bool _running = false;
 
+  /// Which stretch of recording this is. Attaching a tap takes a round trip and
+  /// a stop can land inside it; comparing this afterwards is how that stop is
+  /// noticed, rather than storing a tap nothing is left tracking.
+  int _session = 0;
+
   /// Chunks handed to the sink but not yet acknowledged. Awaited on [stop] so a
   /// hangup does not abandon audio the learner already spoke.
   final List<Future<void>> _inFlight = [];
@@ -109,16 +114,25 @@ class CallCaptureService {
     _stopping = false;
     _stopped = null;
     _running = true;
+    final session = ++_session;
+    final DetachTap? detach;
     try {
-      _detach = await tap.open(track, _onFrames);
+      detach = await tap.open(track, _onFrames);
     } catch (_) {
       // Left clear so a transient failure can be retried by the next election.
       // Recording as started forever would refuse every later attempt.
-      _running = false;
-      _detach = null;
+      if (_session == session) _running = false;
       rethrow;
     }
-    if (_detach == null) {
+    if (_session != session) {
+      // A stop landed while this was attaching. The tap belongs to a recording
+      // that is already over, so it is released here — storing it would leave it
+      // attached with nothing tracking it.
+      await detach?.call();
+      return;
+    }
+    _detach = detach;
+    if (detach == null) {
       // No tap on this device. Nothing is recorded, and the call is unaffected.
       _running = false;
     }
@@ -199,10 +213,7 @@ class CallCaptureService {
     // with no chunker yet, because the chunker is not built until audio actually
     // arrives, and returning early there would leave the tap attached.
     if (!_running && _chunker == null && _detach == null) return;
-    _stopping = true;
-    _running = false;
-    final chunker = _chunker;
-    _chunker = null;
+    _session++;
 
     // A tap that will not detach must not cost the tail. The frames it may still
     // deliver are already ignored, so the worst case is a tap left registered —
@@ -213,6 +224,10 @@ class CallCaptureService {
     final detach = _detach;
     _detach = null;
     try {
+      // Audio is still accepted while this runs. Detaching is what makes a tap
+      // hand over the last of what it gathered, and that tail is the end of a
+      // sentence — refusing frames first would collect it and then throw it
+      // away.
       await detach?.call();
     } catch (e, s) {
       // Put back, not discarded. A tap that would not detach is still attached,
@@ -221,6 +236,12 @@ class CallCaptureService {
       _detach = detach;
       Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
     }
+
+    // Only now: nothing more can arrive, so what is held is the whole of it.
+    _stopping = true;
+    _running = false;
+    final chunker = _chunker;
+    _chunker = null;
 
     if (chunker != null) {
       final tail = chunker.flush();
