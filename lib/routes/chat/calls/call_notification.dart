@@ -145,6 +145,16 @@ class IncomingCallNotification {
 
   DateTime get expiresAt => sentAt.add(lifetime);
 
+  /// Whether this ring has run out.
+  ///
+  /// Read against THIS device's clock, which is what the proposal prescribes —
+  /// and which means a device whose own clock runs fast reads valid rings as
+  /// expired and under-rings. Granting a skew allowance here was tried and is
+  /// worse: it makes a ring outlive its stated lifetime, and it makes a
+  /// notification whose lifetime is zero or negative — an explicit do-not-ring
+  /// — ring anyway. Both are behaviours this app deliberately has, and the
+  /// clock they would be traded for cannot be told apart from an old event
+  /// without a clock we already trust.
   bool hasExpiredBy(DateTime now) => !now.isBefore(expiresAt);
 
   /// Whether this device should ring.
