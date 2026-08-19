@@ -6,6 +6,7 @@ import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
+import 'sentry_capture_harness.dart';
 
 /// The severity a report reaches Sentry with, asserted where it is actually
 /// decided — [ErrorHandler.logError] — rather than on the table in isolation.
@@ -14,38 +15,23 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 /// repos that pass `level:` were applying it, so a routine 401 raised anywhere
 /// else still arrived as `error`. These tests pin the default to the table, and
 /// pin that an explicit level still wins — a caller with context may escalate,
-/// per repos-and-error-handling.instructions.md § The contract.
+/// per repos-and-error-handling.instructions.md § The contract. The grouping
+/// the same sink applies is pinned in error_handler_fingerprint_test.dart.
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  Completer<SentryEvent>? pending;
+  final harness = SentryCaptureHarness();
 
   setUp(() async {
     ErrorHandler.resetReportedOnceKeysForTest();
-    await Sentry.init((options) {
-      options.dsn = 'https://public@sentry.invalid/1';
-      options.beforeSend = (event, hint) {
-        pending?.complete(event);
-        // Dropped: the assertion is on the event, and nothing should leave
-        // the test.
-        return null;
-      };
-    });
+    await harness.init();
   });
 
-  tearDown(() async {
-    pending = null;
-    await Sentry.close();
-  });
+  tearDown(() => harness.close());
 
   /// The level of the single event [report] produces.
-  Future<SentryLevel?> levelOf(void Function() report) async {
-    final completer = Completer<SentryEvent>();
-    pending = completer;
-    report();
-    final event = await completer.future.timeout(const Duration(seconds: 5));
-    return event.level;
-  }
+  Future<SentryLevel?> levelOf(void Function() report) async =>
+      (await harness.capture(report)).level;
 
   PangeaHttpException http(int status) => PangeaHttpException.fromResponse(
     Response(

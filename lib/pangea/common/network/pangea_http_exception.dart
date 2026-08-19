@@ -113,6 +113,36 @@ class PangeaHttpException implements Exception {
     }
   }
 
+  /// Namespaces [fingerprintOf] so a Pangea HTTP failure can never collide
+  /// with another hand-set fingerprint, and so the group is identifiable as
+  /// this rule's rather than Sentry's.
+  static const String fingerprintNamespace = 'pangea-http';
+
+  /// The Sentry grouping key for [error] — status, method, and normalized
+  /// path — or null for anything else, which keeps Sentry's default grouping.
+  ///
+  /// Sentry groups by stack trace, and every [PangeaHttpException] is raised
+  /// through the same frame in `Requests`, so grouping collapsed every failure
+  /// on every endpoint into one catch-all issue regardless of status or
+  /// meaning: CLIENT-DWD held a routine 404 for a removed activity, a 401
+  /// token refresh, and a 5xx backend regression under one status, one
+  /// assignee, and one ignore switch (#8469). [toString] already reads per
+  /// endpoint; this makes the grouping match what the title says.
+  ///
+  /// [detail] is deliberately excluded: it embeds the resource id, as in
+  /// `No canonical activity found for activity_id='<uuid>'`, so fingerprinting
+  /// on it would split one endpoint into an issue per resource — the thing
+  /// [normalizePath] exists to prevent.
+  static List<String>? fingerprintOf(Object? error) {
+    if (error is! PangeaHttpException) return null;
+    return [
+      fingerprintNamespace,
+      '${error.statusCode}',
+      error.method,
+      error.path,
+    ];
+  }
+
   /// The one severity table for a repo-layer fetch failure
   /// (repos-and-error-handling.instructions.md § Severity policy). Severity is
   /// a property of the failure, not of the author's judgment at the call site:
