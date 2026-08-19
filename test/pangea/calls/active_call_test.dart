@@ -897,6 +897,35 @@ void main() {
       expect(call.stage, CallStage.ended);
     });
 
+    test('a recording that HANGS still frees the microphone at once', () async {
+      // Stopping the recording detaches the tap — a platform round-trip that can
+      // stall — and waits on chunks still uploading. The peer stops hearing us
+      // only when the media is released, and that must NOT wait behind any of
+      // it: gating the release behind a stalled stop kept the microphone live to
+      // the other side long after the learner had hung up.
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+
+      // The stop never completes. Teardown must reach the media release anyway.
+      capture.holdStop = Completer<void>();
+      trace.steps.clear();
+      final hangingUp = call.hangUp();
+
+      await pumpEventQueue();
+      expect(
+        trace.steps,
+        contains('media.dispose'),
+        reason: 'the peer is freed without waiting for the recording to stop',
+      );
+
+      // And once the recording does finish, the rest of teardown follows.
+      capture.holdStop!.complete();
+      await hangingUp;
+      expect(trace.steps, contains('capture.finish'));
+      expect(call.stage, CallStage.ended);
+    });
+
     test('media that will not close does not strand the rest', () async {
       final (call, calls, media, _) = await build();
       // A call has to have somebody on it to be recorded: nothing is

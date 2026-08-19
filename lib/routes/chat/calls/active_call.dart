@@ -884,27 +884,43 @@ class ActiveCall extends ChangeNotifier {
       await _handover;
     } catch (_) {}
 
-    // Stop first: the tap comes off and the last of the audio is handed to the
-    // uploader. Nothing more will be recorded after this returns.
-    try {
-      await capture.stop();
-    } catch (e, s) {
-      Logs().e('Could not flush the call recording', e, s);
-    }
-    _capturing = false;
+    // Started here, so the tap begins coming off and the chunker's buffered
+    // audio is flushed — but NOT waited for before the peer is freed below.
+    // Detaching the tap is a platform round-trip that can stall, and stopping
+    // also waits on chunks still uploading; gating the media release behind all
+    // of that once kept the microphone live to the other side for up to twenty
+    // seconds after the learner had hung up. The audio already gathered lives
+    // in the capture service, not the LiveKit room, so releasing the media does
+    // not lose it — the two simply run together.
+    //
+    // Its failure is caught inside the closure, not left on the bare future:
+    // stopping can complete with an error while the media release below is
+    // being awaited, and a future with no handler in that window surfaces as an
+    // unhandled async error.
+    final stopping = () async {
+      try {
+        await capture.stop();
+      } catch (e, s) {
+        Logs().e('Could not flush the call recording', e, s);
+      }
+    }();
 
-    // Then the microphone and camera — and this is also what the other person
-    // sees. Their client reads who is present from the SFU, not from Matrix
-    // room state, so leaving the SFU is what tells them we have gone; the
-    // membership below is bookkeeping they never look at. Retracting first, as
-    // this once did, left them still hearing a learner who had hung up for as
-    // long as that state write took, and finishing waits for uploads and
-    // transcription, which can take a minute.
+    // The peer stops hearing us HERE, and it must not wait on the recording.
+    // Their client reads who is present from the SFU, not from Matrix room
+    // state, so leaving the SFU is what tells them we have gone; the membership
+    // below is bookkeeping they never look at. Retracting first, as this once
+    // did, left them still hearing a learner who had hung up for as long as that
+    // state write took.
     try {
       await media.dispose();
     } catch (e, s) {
       Logs().e('Could not release the call media', e, s);
     }
+
+    // Now the recording teardown can finish, with the microphone already
+    // released to the peer. It is analytics; it may take the time it needs.
+    await stopping;
+    _capturing = false;
 
     // One more look before the session goes. The echo can land at any point
     // during teardown, and after the retract the membership can no longer be
