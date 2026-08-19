@@ -154,6 +154,13 @@ jobs:
           # (task_definition_staging.json). NOT set on production (release.yaml) until
           # validated on staging.
           echo "DOSAGE_SIGNALS_ENABLED=true" >> build/web/.env
+          # Staging only: enable the client-reported voice-message DURATIONS lane that
+          # populates speaking minutes / voice-messages-sent. The learner's own client
+          # is the only party that can supply info.duration for DM/1:1 rooms a teacher
+          # token cannot read. Requires the BFF to accept the voice_messages field
+          # (admin-dash-api #150, deployed). NOT set on production (release.yaml) until
+          # validated on staging.
+          echo "DOSAGE_VOICE_MESSAGES_ENABLED=true" >> build/web/.env
           # Staging only: turn on the live streaming-STT capture path so voice
           # messages transcribe over the choreo WebSocket relay instead of batch.
           # The choreo master flag (STREAMING_LIVE_ENABLED) is already on in staging;
