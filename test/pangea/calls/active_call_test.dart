@@ -1074,6 +1074,23 @@ void main() {
       expect(call.hadPeer, isTrue);
     });
 
+    test('landing as the call gives up is still a decline', () async {
+      // The wait a decline serves can be overtaken by the call ending on its
+      // own. Only the WAIT is abandoned then, not the fact: written as nobody
+      // answering, it says the learner was ignored when they were turned down.
+      final (call, calls, _, _) = await build();
+      calls.devicesInCall = [calls.client.deviceID!];
+      await call.start(roomStub(calls.client), video: false);
+
+      await calls.peerDeclines();
+      // Nobody answers, and the call gives up while the decline is still
+      // waiting to see whether anyone would.
+      await call.waitForPeerTimeoutForTest();
+
+      expect(call.wasDeclined, isTrue);
+      expect(call.stage, CallStage.declined);
+    });
+
     test('a decline after they answered is ignored', () async {
       // They are in the call. A stray decline event must not end a conversation
       // that is actually happening.

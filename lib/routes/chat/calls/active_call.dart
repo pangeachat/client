@@ -790,6 +790,11 @@ class ActiveCall extends ChangeNotifier {
     _peerRings = null;
     _waitingForPeer?.cancel();
     _waitingForPeer = null;
+    // A decline waiting out its grace when teardown arrives still happened.
+    // Only the WAIT is abandoned, not the fact — otherwise a decline landing in
+    // the last moment before the call gives up on its own is written as nobody
+    // answering, when somebody did answer: they said no.
+    if (_decliding != null && !_peerArrived) _declinedByPeer = true;
     _decliding?.cancel();
     _decliding = null;
     try {

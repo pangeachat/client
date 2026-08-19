@@ -95,7 +95,11 @@ class _CallPageState extends State<CallPage> {
   void initState() {
     super.initState();
     _camera = widget.video;
-    _usedVideo = widget.video;
+    // What HAPPENED, not what was asked for. Starting this from the request
+    // wrote a call as video when the camera never came up at all — permission
+    // refused, or the device busy — and the learner's timeline then showed a
+    // video call they never had. It is latched when a track actually appears.
+    _usedVideo = false;
     _media = CallMedia();
 
     // Everything the recording needs is captured HERE, while the screen is
