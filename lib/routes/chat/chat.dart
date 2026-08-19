@@ -1913,12 +1913,13 @@ class ChatController extends State<ChatPageWithRoom>
       return;
     }
 
-    // Best-effort dosage envelope for the voice send — the ONE client call site
-    // speaking needs (#104). NO DURATION CROSSES THE WIRE: the server reads
-    // `info.duration` out of the `m.audio` event it already fetches by id to
-    // verify the use's claimed room, and today discards. What the server cannot
-    // derive is that the message EXISTS: nothing enumerates a room's timeline,
-    // so it learns of a voice message only through a client-originated row.
+    // Best-effort dosage envelope for the voice send — the EXISTENCE half of
+    // speaking (#104). It reports only that the message exists (and, via the
+    // reporter below, that `voice_send` coverage may be declared): nothing
+    // enumerates a room's timeline, so this client-originated row is the only way
+    // the server learns a voice message happened at all. The DURATION half rides
+    // a separate, capability-gated `voice_messages` row emitted just after this
+    // (see the recordVoiceMessage call below).
     //
     // The other such row is a `pvm` construct use, and that has two holes this
     // envelope is immune to — a message whose tokens are all unsavable produces
@@ -1954,6 +1955,27 @@ class ChatController extends State<ChatPageWithRoom>
       onEnvelopeSettled: DosageAudioSignals.voiceSendReporter(
         userId: capturedClientUserId,
       ),
+    );
+
+    // The DURATION half of speaking (admin-dash-api#150 / #104). For a DM / 1:1 /
+    // bot room the server's OTHER populate path — a teacher-token read of the
+    // course session room's `m.audio` — cannot see this message, so the
+    // `content.info.duration` the client holds right here (`duration`, the same
+    // value embedded in `info` above) is the ONLY place that magnitude exists.
+    // Reported on the SAME audio-signals lane as a `voice_messages` row keyed by
+    // the SAME `m.audio` event id ([eventId]) the envelope above and the `pvm`
+    // uses carry, so the server dedups on `(sender, msg_id)` and never
+    // double-counts against the Matrix-resolved path. Capability-gated
+    // (Environment.dosageVoiceMessagesEnabled) so it can never post the field to
+    // a server that predates #150. Synchronous + allocation-only; the POST is
+    // unawaited on the analytics heartbeat, exactly like the envelope above, so
+    // the send path never waits on it.
+    DosageAudioSignals.recordVoiceMessage(
+      msgId: eventId,
+      roomId: capturedRoomId,
+      durationMs: duration,
+      userId: capturedClientUserId,
+      accessToken: capturedRoom.client.accessToken,
     );
 
     // The voice note is on the wire, so the learner is in a spoken exchange:

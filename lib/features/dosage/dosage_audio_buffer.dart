@@ -9,6 +9,7 @@ import 'package:fluffychat/features/dosage/dosage_audio_coverage.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_event.dart';
 import 'package:fluffychat/features/dosage/dosage_signal_identity.dart';
 import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
+import 'package:fluffychat/features/dosage/dosage_voice_message.dart';
 
 /// One undelivered POST: the playback events observed in a period, together
 /// with that period's coverage declarations.
@@ -21,10 +22,21 @@ import 'package:fluffychat/features/dosage/dosage_signals_repo.dart';
 /// declaration, withhold the counter" true by construction rather than by
 /// remembering.
 class DosageAudioBatch {
-  DosageAudioBatch({required this.events, required this.coverage});
+  DosageAudioBatch({
+    required this.events,
+    required this.coverage,
+    required this.voiceMessages,
+  });
 
   final List<DosageAudioEvent> events;
   final List<DosageAudioCoverage> coverage;
+
+  /// The learner's own voice messages sealed in this period, each carrying its
+  /// duration. They ride the SAME body — and are dropped by the SAME bounds — as
+  /// the playbacks and coverage, so a lost batch loses them too and the server
+  /// withholds rather than serves a short speaking total. Their `msg_id` is the
+  /// `m.audio` event id, so a retried batch dedups on `(sender, msg_id)`.
+  final List<DosageVoiceMessage> voiceMessages;
 
   /// Delivery attempts made so far.
   int attempts = 0;
@@ -32,7 +44,8 @@ class DosageAudioBatch {
   /// Flush ticks still to wait before the next attempt (exponential backoff).
   int backoffTicks = 0;
 
-  bool get isEmpty => events.isEmpty && coverage.isEmpty;
+  bool get isEmpty =>
+      events.isEmpty && coverage.isEmpty && voiceMessages.isEmpty;
 }
 
 /// One coverage row the ingest has WRITTEN for a category — the period the
@@ -160,10 +173,19 @@ class DosageAudioBuffer {
   /// route silently 413s.
   static const int maxCoverageItemsPerBatch = 7 * maxCoverageSegmentsPerSeal;
 
-  /// Playbacks accumulated before the accumulator seals. The route's cap minus
-  /// the room the same body's coverage needs, so a full batch plus its
-  /// declarations is still a body the route accepts — which is what the cap was
-  /// always for, and what counting only the events would quietly miss.
+  /// OBSERVATIONS — playbacks AND voice messages together — accumulated before
+  /// the accumulator seals. The route's cap minus the room the same body's
+  /// coverage needs, so a full batch plus its declarations is still a body the
+  /// route accepts — which is what the cap was always for, and what counting
+  /// only the events would quietly miss.
+  ///
+  /// The route caps all THREE lists together (playbacks + coverage + voice
+  /// messages), so the seal counts events and voice messages against this one
+  /// budget: `maxEventsPerBatch` observations + `maxCoverageItemsPerBatch`
+  /// declarations = `maxItemsPerBatch`, the exact ceiling and not a byte over.
+  /// Voice messages are rare next to playbacks, so sharing the budget costs the
+  /// event stream nothing in practice while keeping the 413 impossible by
+  /// construction.
   static const int maxEventsPerBatch =
       maxItemsPerBatch - maxCoverageItemsPerBatch;
 
@@ -265,6 +287,12 @@ class DosageAudioBuffer {
   }
 
   final List<DosageAudioEvent> _events = [];
+
+  /// Voice messages observed and not yet sealed. Shares the observation budget
+  /// with [_events] (see [maxEventsPerBatch]) and is sealed into the same batch,
+  /// so it can never be separated from the coverage that licenses it.
+  final List<DosageVoiceMessage> _voiceMessages = [];
+
   final List<DosageAudioBatch> _batches = [];
 
   /// Start of the interval this buffer has OBSERVED and not yet sealed.
@@ -297,6 +325,10 @@ class DosageAudioBuffer {
 
   @visibleForTesting
   List<DosageAudioEvent> get bufferedEvents => List.unmodifiable(_events);
+
+  @visibleForTesting
+  List<DosageVoiceMessage> get bufferedVoiceMessages =>
+      List.unmodifiable(_voiceMessages);
 
   @visibleForTesting
   DateTime? get observedFrom => _observedFrom;
@@ -332,8 +364,36 @@ class DosageAudioBuffer {
       // mid-session and a stale one would post under an expired bearer.
       _accessToken = accessToken;
     }
-    if (_events.length >= maxEventsPerBatch) _seal();
+    // Events and voice messages share ONE observation budget, because the route
+    // caps them together with coverage; see [maxEventsPerBatch].
+    if (_events.length + _voiceMessages.length >= maxEventsPerBatch) _seal();
     _events.add(event);
+  }
+
+  /// Records one sent voice message and its duration. Synchronous,
+  /// allocation-only and never throws: it runs on the SEND path and must be
+  /// invisible to the learner, so it only appends to an in-memory buffer and
+  /// returns — nothing is awaited and nothing is posted. Delivery happens later,
+  /// on the analytics heartbeat flush, exactly like a playback.
+  ///
+  /// No-op unless [DosageSignalsRepo.voiceMessagesEnabled] — the capability flag
+  /// is checked at RECORD time as well as at post time, so when the feature is
+  /// dark (the steady state until #150 is deployed) nothing is retained, the
+  /// shared observation budget is untouched, and the batch is byte-identical to
+  /// today's. A malformed row (blank id, out-of-bound duration) is dropped so it
+  /// can never 422 the batch it would ride in.
+  void recordVoiceMessage(
+    DosageVoiceMessage message, {
+    required String? accessToken,
+  }) {
+    if (!DosageSignalsRepo.voiceMessagesEnabled) return;
+    if (!message.isValid) return;
+    _observedFrom ??= _now().toUtc();
+    if (accessToken != null && accessToken.isNotEmpty) {
+      _accessToken = accessToken;
+    }
+    if (_events.length + _voiceMessages.length >= maxEventsPerBatch) _seal();
+    _voiceMessages.add(message);
   }
 
   /// A voice-send envelope has been posted and not yet acknowledged.
@@ -407,8 +467,10 @@ class DosageAudioBuffer {
     // one fact this class asserts — when the instrument was running — depend on
     // when a flush happened to fire. [start] and [record] and the explicit open
     // in [flush] are the three places that genuinely know, and they are the only
-    // places allowed to say so.
-    if (start == null && _events.isEmpty) return;
+    // places allowed to say so. A staged voice message always set [start] when it
+    // was recorded, so its presence with no start is impossible; guarding on it
+    // anyway means this can never silently drop one.
+    if (start == null && _events.isEmpty && _voiceMessages.isEmpty) return;
 
     final DateTime end = _now().toUtc();
     _observedFrom = end;
@@ -442,7 +504,7 @@ class DosageAudioBuffer {
               .where((declaration) => declaration.isValid)
               .toList();
 
-    if (_events.isEmpty && coverage.isEmpty) return;
+    if (_events.isEmpty && coverage.isEmpty && _voiceMessages.isEmpty) return;
 
     // Only a period that actually DECLARED something discharges a known voice
     // envelope loss. Clearing the flag on a seal that emitted no coverage — a
@@ -455,8 +517,10 @@ class DosageAudioBuffer {
     final batch = DosageAudioBatch(
       events: List.of(_events),
       coverage: coverage,
+      voiceMessages: List.of(_voiceMessages),
     );
     _events.clear();
+    _voiceMessages.clear();
 
     // Capacity: drop the OLDEST batch whole. Its events and the declaration that
     // licensed them go together, so the server sees an undeclared period and
@@ -709,6 +773,7 @@ class DosageAudioBuffer {
           await DosageSignalsRepo.postAudioSignals(
             events: batch.events,
             coverage: batch.coverage,
+            voiceMessages: batch.voiceMessages,
             accessToken: token,
             client: _httpClient,
           );
