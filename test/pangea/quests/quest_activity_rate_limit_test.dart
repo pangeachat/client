@@ -164,19 +164,25 @@ void main() {
       // nothing.
       QuestRepo.activityReadPause.recordFailure(http(429));
 
-      expect(await ActivityMapRepo.bboxPins(bounds: bounds), isNull);
+      expect(
+        (await ActivityMapRepo.bboxPins(bounds: bounds)).error,
+        isA<RateLimitedException>(),
+      );
     });
 
-    test('returns null, never an empty list, when suppressed', () async {
-      // Null means "we did not ask"; an empty list means "the viewport has no
-      // activities". Conflating them blanks the map for the whole pause, which
-      // is exactly the silent-empty failure #8360's TO TEST guards against.
+    test('errors, never an empty list, when suppressed', () async {
+      // An error means "we did not ask"; an empty list means "the viewport has
+      // no activities". Conflating them blanks the map for the whole pause,
+      // which is exactly the silent-empty failure #8360's TO TEST guards
+      // against. Since #8473 the "we did not ask" answer is a typed
+      // [RateLimitedException] on the Result rather than a bare null, so the
+      // same distinction now rides the one channel every other repo uses.
       QuestRepo.activityReadPause.recordFailure(http(429));
 
-      final pins = await ActivityMapRepo.bboxPins(bounds: bounds);
-      expect(pins, isNull);
+      final result = await ActivityMapRepo.bboxPins(bounds: bounds);
+      expect(result.error, isA<RateLimitedException>());
       expect(
-        pins,
+        result.result,
         isNot(const <QuestActivityCard>[]),
         reason: 'an empty list here would blank the map for the whole pause',
       );

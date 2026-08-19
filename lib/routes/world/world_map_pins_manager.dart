@@ -725,9 +725,16 @@ class WorldMapPinsManager {
     String? l2,
     String? l1,
   }) async {
-    final pins = await ActivityMapRepo.bboxPins(bounds: bounds, l2: l2);
-    // Null is "suppressed by the rate-limit pause", not "no activities here"
-    // (#8360) — keep the current pins rather than blanking the map.
+    final pins = (await ActivityMapRepo.bboxPins(
+      bounds: bounds,
+      l2: l2,
+    )).result;
+    // An error is "no fresh answer for this viewport", never "no activities
+    // here" — the read was suppressed by the rate-limit pause (#8360) or it
+    // failed (#8473). Keep the pins already on the map either way: blanking it
+    // on a transient network blip is worse than holding the last good
+    // viewport, and the next camera settle refetches. Only a successful empty
+    // list means the viewport is genuinely empty, and that still clears.
     if (pins == null) return;
     _pins = pins;
   }
