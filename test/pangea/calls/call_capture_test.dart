@@ -534,6 +534,23 @@ void main() {
     });
   });
 
+  group('a detach that throws before it returns', () {
+    test('is still retained, not lost', () async {
+      // A DetachTap may run synchronously, and so may its failure. Called
+      // outside the guard, that throw escaped the release path altogether and
+      // nothing ever came back to the tap — which stayed attached, silently.
+      final capture = service(withTap: _ThrowsOnDetachTap());
+      await capture.start(track);
+      await capture.stop();
+
+      await expectLater(
+        capture.start(track),
+        throwsStateError,
+        reason: 'a tap still attached must refuse a second recording',
+      );
+    });
+  });
+
   group('a detach that is still running', () {
     test('is waited for, not started a second time', () async {
       // Giving up waiting does not stop it. Asking the same tap again runs a
@@ -643,6 +660,13 @@ class _TailOnDetachTap implements CallAudioTap {
 
 /// A tap that takes its time attaching, so a stop can land inside it.
 /// Attaches slowly, and will not let go the first time it is asked.
+/// A tap whose detach throws before it returns anything at all.
+class _ThrowsOnDetachTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+      () => throw StateError('the platform refused, immediately');
+}
+
 /// A tap whose detach never comes back — a platform call that has gone away.
 class _SilentDetachTap implements CallAudioTap {
   int detachCalls = 0;

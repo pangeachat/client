@@ -189,9 +189,21 @@ class CallCaptureService {
   /// other.
   Future<void> _release(DetachTap? detach) async {
     if (detach == null) return;
-    // Through Future.value because a tap may detach synchronously — the
-    // renderer's cancel does — and a timeout needs something to wait on.
-    final running = Future.value(detach());
+    // Invoked inside a guard, and through Future.value because a tap may detach
+    // synchronously — the renderer's cancel does. It may also THROW
+    // synchronously, and called outside a guard that throw escaped this method
+    // altogether: the tap was never retained, so nothing ever came back to it
+    // and it stayed attached in silence.
+    final Future<void> running;
+    try {
+      running = Future.value(detach());
+    } catch (e, s) {
+      // It threw before it returned anything at all. Nothing is in flight, and
+      // the tap is certainly still attached.
+      _hold(_UnreleasedTap(detach, null));
+      Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
+      return;
+    }
     // Read from a flag rather than by catching TimeoutException. The LiveKit
     // package exports its own class of that name, and this file imports it for
     // AudioTrack, so `on TimeoutException` here binds to LiveKit's and silently
