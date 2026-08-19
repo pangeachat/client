@@ -244,6 +244,7 @@ class _CallPageState extends State<CallPage> {
         final mattered =
             _reachedCall ||
             _call.hadPeer ||
+            _call.placedCall ||
             _call.notificationEventId != null ||
             widget.notificationEventId != null;
         if (!mattered) return;

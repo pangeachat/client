@@ -127,6 +127,27 @@ class FakeCalls extends CallService {
   String? declineTarget(Event event) =>
       (event.content['m.relates_to'] as Map?)?['event_id'] as String?;
 
+  /// A decline from an earlier call, replayed out of the room's history the way
+  /// sync replays one.
+  Future<void> peerDeclinedLongAgo() async {
+    _declines.add(
+      Event(
+        type: 'decline',
+        content: const {
+          'm.relates_to': {
+            'rel_type': 'm.reference',
+            'event_id': '\$someoldcall',
+          },
+        },
+        eventId: '\$old',
+        senderId: '@peer:server',
+        originServerTs: DateTime.now().subtract(const Duration(hours: 1)),
+        room: matrix.Room(id: '!r:server', client: client),
+      ),
+    );
+    await pumpEventQueue();
+  }
+
   /// The other person turning down the call this device rang.
   Future<void> peerDeclines() async {
     _declines.add(
@@ -1346,6 +1367,26 @@ void main() {
       await starting;
 
       expect(call.peerAlsoPlaced, isTrue);
+    });
+  });
+  group('a decline replayed out of the room history', () {
+    test('does not end a call that has only just started', () async {
+      // Sync replays events. A decline from an earlier call arriving as this one
+      // begins would end it on the spot, and the learner would watch their call
+      // hang up by itself.
+      final (call, calls, _, _) = await build();
+      final ringGate = Completer<void>();
+      calls.holdRing = ringGate;
+
+      final starting = call.start(roomStub(calls.client), video: false);
+      await pumpEventQueue();
+      await calls.peerDeclinedLongAgo();
+      ringGate.complete();
+      await starting;
+      await call.settled;
+
+      expect(call.wasDeclined, isFalse);
+      expect(call.stage, CallStage.connected);
     });
   });
 }

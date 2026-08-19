@@ -76,6 +76,10 @@ class ActiveCall extends ChangeNotifier {
 
   bool _placed = false;
 
+  /// When this call began. Used to tell an event about it from one replayed out
+  /// of the room's history.
+  final DateTime _startedAt = DateTime.now();
+
   /// Whether this device started the call rather than joining one.
   ///
   /// Decides which side writes the call to the timeline. Both sides run the
@@ -300,9 +304,14 @@ class ActiveCall extends ChangeNotifier {
       // We rang but never learned which event it was — the send can land and
       // still not report its id back. In a direct message there is one call at a
       // time, so a decline from the other person while we are the ones calling
-      // is a decline of this call; treating it as unrelated left the caller
-      // ringing at somebody who had already said no.
-      if (_placed) {
+      // is a decline of this call.
+      //
+      // Only one sent since this call began, though. Sync replays history, and
+      // without that check a decline from a call an hour ago would arrive as
+      // this one started and end it on the spot — the learner would watch their
+      // call hang up by itself. The same rule as their ring: an event older than
+      // this call is not about this call.
+      if (_placed && event.originServerTs.isAfter(_startedAt)) {
         _onDeclined();
         return;
       }
