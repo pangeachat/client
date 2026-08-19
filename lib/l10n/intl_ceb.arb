@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-19 11:21:04.443747",
+    "@@last_modified": "2026-08-19 12:57:11.365355",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Naay mga user nga naningkamot nga moapil sa imong kurso",
     "denyAllUsers": "Balibaran tanang user",
     "denyAllKnocksDescription": "Kining mga user balibaran sa kurso. Mahimo silang mosulay pag-apil pag-usab bisan unsang orasa.",
+    "inviteAFriend": "Pag-imbitar og higala",
     "autocorrectAndroidDialogTitle": "Autocorrect sa imong target nga pinulongan",
     "autocorrectAndroidDialogBody": "Kung mag-type ka sa chat, ang imong keyboard mobalhin sa imong target nga pinulongan ug mokorektar sa spelling niana nga pinulongan.",
     "autocorrectAndroidFallbackTitle": "Kung ang imong keyboard dili mohatag sa imong target nga pinulongan, i-install ang Gboard ug idugang ang pinulongan didto:"

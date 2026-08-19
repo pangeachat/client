@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-19 11:21:12.290431",
+    "@@last_modified": "2026-08-19 12:57:14.885868",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Brukere prøver å bli med i kurset ditt",
     "denyAllUsers": "Avvis alle brukere",
     "denyAllKnocksDescription": "Disse brukerne vil bli avvist fra kurset. De kan prøve å bli med igjen når som helst.",
+    "inviteAFriend": "Inviter en venn",
     "autocorrectAndroidDialogTitle": "Autokorrektur på målspråket ditt",
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, vil tastaturet bytte til målspråket ditt og korrigere stavemåten på det språket.",
     "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:"

@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-19 11:21:08.458572",
+    "@@last_modified": "2026-08-19 12:57:12.847606",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Օգտատերերը փորձում են միանալ Ձեր դասընթացին",
     "denyAllUsers": "Մերժել բոլոր օգտատերերին",
     "denyAllKnocksDescription": "Այս օգտատերերը կմերժվեն դասընթացից։ Նրանք կարող են ցանկացած պահի նորից փորձել միանալ։",
+    "inviteAFriend": "Հրավիրել ընկերոջ",
     "autocorrectAndroidDialogTitle": "Ավտոուղղումը ձեր թիրախ լեզվով",
     "autocorrectAndroidDialogBody": "Երբ հաղորդագրություն եք գրում, ձեր ստեղնաշարը կանցնի ձեր թիրախ լեզվին և կուղղի ուղղագրությունը այդ լեզվով։",
     "autocorrectAndroidFallbackTitle": "Եթե ձեր ստեղնաշարը չի առաջարկում ձեր թիրախ լեզուն, տեղադրեք Gboard-ը և ավելացրեք լեզուն այնտեղ՝"

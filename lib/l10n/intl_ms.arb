@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-19 11:21:12.103541",
+    "@@last_modified": "2026-08-19 12:57:14.383325",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Pengguna cuba menyertai kursus anda",
     "denyAllUsers": "Tolak semua pengguna",
     "denyAllKnocksDescription": "Pengguna ini akan ditolak daripada kursus. Mereka boleh cuba menyertai semula pada bila-bila masa.",
+    "inviteAFriend": "Jemput rakan",
     "autocorrectAndroidDialogTitle": "Autocorreksi dalam bahasa sasaran anda",
     "autocorrectAndroidDialogBody": "Apabila anda menaip dalam sembang, papan kekunci anda akan bertukar kepada bahasa sasaran anda dan membetulkan ejaan dalam bahasa tersebut.",
     "autocorrectAndroidFallbackTitle": "Jika papan kekunci anda tidak menawarkan bahasa sasaran anda, pasang Gboard dan tambah bahasa di sana:"

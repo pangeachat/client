@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-19 11:21:03.690608",
+    "@@last_modified": "2026-08-19 12:57:10.854489",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "ተጠቃሚዎች ኮርስዎን ለመቀላቀል እየሞከሩ ነው",
     "denyAllUsers": "ሁሉንም ተጠቃሚዎች እምቢ በል",
     "denyAllKnocksDescription": "እነዚህ ተጠቃሚዎች ከኮርሱ ውድቅ ይደረጋሉ። በማንኛውም ጊዜ እንደገና ለመቀላቀል ሊሞክሩ ይችላሉ።",
+    "inviteAFriend": "ጓደኛ ይጋብዙ",
     "autocorrectAndroidDialogTitle": "በዒላማ ቋንቋዎ ራስ-አርም",
     "autocorrectAndroidDialogBody": "በውይይት ውስጥ ሲተይቡ፣ የቁልፍ ሰሌዳዎ ወደ ዒላማ ቋንቋዎ ይቀየራል እና በዚያ ቋንቋ የፊደል አጻጻፍን ያርማል።",
     "autocorrectAndroidFallbackTitle": "የቁልፍ ሰሌዳዎ ዒላማ ቋንቋዎን የማያቀርብ ከሆነ፣ Gboardን ይጫኑ እና ቋንቋውን እዚያ ያክሉ፦"

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-19 11:21:11.111241",
+    "@@last_modified": "2026-08-19 12:57:14.542772",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Misy mpampiasa te hiditra amin'ny taranjao",
     "denyAllUsers": "Mandà ny mpampiasa rehetra",
     "denyAllKnocksDescription": "Hesorina amin'ny taranja ireo mpampiasa ireo. Afaka manandrana miditra indray izy ireo amin'ny fotoana rehetra.",
+    "inviteAFriend": "Manasa namana",
     "autocorrectAndroidDialogTitle": "Fanitsiana mandeha ho azy amin'ny fiteny tianao hianarana",
     "autocorrectAndroidDialogBody": "Rehefa manoratra amin'ny chat ianao, dia hiova ho amin'ny fiteny tianao hianarana ny klavier-nao ary hanitsy ny tsipelina amin'izany fiteny izany.",
     "autocorrectAndroidFallbackTitle": "Raha tsy manolotra ny fiteny tianao hianarana ny klavier-nao, dia apetraho ny Gboard ary ampio ao ny fiteny:"

@@ -2873,7 +2873,7 @@
     "attribution": "Atributsiya",
     "@attribution": {},
     "@@locale": "uz",
-    "@@last_modified": "2026-08-19 11:21:18.411952",
+    "@@last_modified": "2026-08-19 12:57:16.646892",
     "noMoreResultsFound": "Boshqa natijalar topilmadi",
     "chatSearchedUntil": "Chat {time} gacha qidirildi",
     "federationBaseUrl": "Federatsiya Asos URL",
@@ -9754,6 +9754,7 @@
     "usersAreTryingToJoinCourse": "Foydalanuvchilar kursingizga qo‘shilishga harakat qilmoqda",
     "denyAllUsers": "Barcha foydalanuvchilarni rad etish",
     "denyAllKnocksDescription": "Bu foydalanuvchilar kursdan rad etiladi. Ular istalgan vaqtda qayta qo‘shilishga urinishlari mumkin.",
+    "inviteAFriend": "Do‘stni taklif qilish",
     "autocorrectAndroidDialogTitle": "Maqsadli tilingizda avtomatik tuzatish",
     "autocorrectAndroidDialogBody": "Suhbatda yozganingizda, klaviaturangiz maqsadli tilingizga o'tadi va imloni shu tilda to'g'irlaydi.",
     "autocorrectAndroidFallbackTitle": "Agar klaviaturangiz maqsadli tilingizni taklif qilmasa, Gboard'ni o'rnating va tilni u yerga qo'shing:"

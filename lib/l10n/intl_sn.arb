@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-19 11:21:15.919549",
+    "@@last_modified": "2026-08-19 12:57:15.813197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Vashandisi vari kuedza kujoina kosi yako",
     "denyAllUsers": "Ramba vashandisi vese",
     "denyAllKnocksDescription": "Vashandisi ava vacharambwa kubva kukosi. Vanogona kuedza kujoina zvakare chero nguva.",
+    "inviteAFriend": "Koka shamwari",
     "autocorrectAndroidDialogTitle": "Autocorrect mumutauro wako waunoda",
     "autocorrectAndroidDialogBody": "Paunonyora muchat, keyboard yako ichachinja kuenda kumutauro wako waunoda uye kugadzirisa zviperengo mumutauro iwoyo.",
     "autocorrectAndroidFallbackTitle": "Kana keyboard yako isingapi mutauro wako waunoda, isa Gboard uye wedzera mutauro ikoko:"

@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-19 11:21:12.383331",
+    "@@last_modified": "2026-08-19 12:57:14.209670",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Хэрэглэгчид таны хичээлд нэгдэхийг оролдож байна",
     "denyAllUsers": "Бүх хэрэглэгчдийг татгалзах",
     "denyAllKnocksDescription": "Эдгээр хэрэглэгчдийг хичээлээс хасна. Тэд хүссэн үедээ дахин нэгдэхийг оролдож болно.",
+    "inviteAFriend": "Найзаа урих",
     "autocorrectAndroidDialogTitle": "Таны сурч буй хэл дээрх автоматаар засах тохиргоо",
     "autocorrectAndroidDialogBody": "Та чат дээр бичих үед таны гар утасны гар нь таны сурч буй хэл рүү шилжиж, тухайн хэл дээрх үсгийн алдааг засна.",
     "autocorrectAndroidFallbackTitle": "Хэрэв таны гар утасны гар нь таны сурч буй хэлийг санал болгохгүй бол Gboard-г суулгаж, тэнд хэлээ нэмнэ үү:"

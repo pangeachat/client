@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-19 11:21:17.491213",
+    "@@last_modified": "2026-08-19 12:57:16.625694",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10051,6 +10051,7 @@
     "usersAreTryingToJoinCourse": "Kullanıcılar kursunuza katılmaya çalışıyor",
     "denyAllUsers": "Tüm kullanıcıları reddet",
     "denyAllKnocksDescription": "Bu kullanıcılar kurstan reddedilecektir. İstediğiniz zaman tekrar katılmayı deneyebilirler.",
+    "inviteAFriend": "Bir arkadaşını davet et",
     "autocorrectAndroidDialogTitle": "Hedef dilinizde otomatik düzeltme",
     "autocorrectAndroidDialogBody": "Bir sohbette yazdığınızda, klavyeniz hedef dilinize geçecek ve yazım hatalarını o dilde düzeltecektir.",
     "autocorrectAndroidFallbackTitle": "Klavyeniz hedef dilinizi sunmuyorsa, Gboard'u yükleyin ve dili oraya ekleyin:"

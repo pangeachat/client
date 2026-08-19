@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-19 11:21:10.201840",
+    "@@last_modified": "2026-08-19 12:57:13.887720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Benotzer probéieren Äre Cours ze bäitrieden",
     "denyAllUsers": "All Benotzer refuséieren",
     "denyAllKnocksDescription": "Dës Benotzer ginn aus dem Cours refuséiert. Si kënne jidderzäit nach eng Kéier probéieren bäizetrieden.",
+    "inviteAFriend": "Invitéier e Frënd",
     "autocorrectAndroidDialogTitle": "Autokorrektur an Ärer Zilssprooch",
     "autocorrectAndroidDialogBody": "Wann Dir an engem Chat tippt, wiesselt Är Tastatur op Är Zilssprooch a korrigéiert d'Schreifweis an där Sprooch.",
     "autocorrectAndroidFallbackTitle": "Wann Är Tastatur Är Zilssprooch net ubitt, installéiert Gboard a füügt d'Sprooch do bäi:"

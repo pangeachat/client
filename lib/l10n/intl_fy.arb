@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-19 11:21:06.370764",
+    "@@last_modified": "2026-08-19 12:57:11.945265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Brûkers besykje mei te dwaan oan dyn kursus",
     "denyAllUsers": "Alle brûkers wegerje",
     "denyAllKnocksDescription": "Dizze brûkers wurde wegere fan de kursus. Se kinne op elk momint opnij besykje mei te dwaan.",
+    "inviteAFriend": "Nûgje in freon út",
     "autocorrectAndroidDialogTitle": "Autokorreksje yn dyn doeltaal",
     "autocorrectAndroidDialogBody": "As jo yn in petear typst, sil dyn toetseboerd oerskeakelje nei dyn doeltaal en de stavering yn dy taal korrizjearje.",
     "autocorrectAndroidFallbackTitle": "As dyn toetseboerd dyn doeltaal net oanbiedt, ynstallearje dan Gboard en foegje de taal dêr ta:"

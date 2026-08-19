@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-19 11:21:07.244658",
+    "@@last_modified": "2026-08-19 12:57:12.186351",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Tha luchd-cleachdaidh a' feuchainn ris a' chùrsa agad a dhol a-steach",
     "denyAllUsers": "Diùlt a h-uile neach-cleachdaidh",
     "denyAllKnocksDescription": "Thèid na cleachdaichean seo a dhiùltadh bhon chùrsa. Faodaidh iad feuchainn ri dhol a-steach a-rithist aig àm sam bith.",
+    "inviteAFriend": "Thoir cuireadh do charaid",
     "autocorrectAndroidDialogTitle": "Ceartachadh fèin-obrachail sa chànan targaid agad",
     "autocorrectAndroidDialogBody": "Nuair a thaidhpicheas tu ann an còmhradh, atharraichidh am meur-chlàr agad chun a’ chànain targaid agad agus ceartaichidh e litreachadh sa chànan sin.",
     "autocorrectAndroidFallbackTitle": "Mura h-eil do mheur-chlàr a’ tabhann do chànan targaid, stàlaich Gboard agus cuir ris a’ chànan an sin:"

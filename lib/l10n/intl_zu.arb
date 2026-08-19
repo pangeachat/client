@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-19 11:21:19.701175",
+    "@@last_modified": "2026-08-19 12:57:17.494773",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Abasebenzisi bazama ukujoyina ikhosi yakho",
     "denyAllUsers": "Yenqaba bonke abasebenzisi",
     "denyAllKnocksDescription": "Laba basebenzisi bazokwenqatshwa kule khosi. Bangazama ukujoyina futhi nganoma yisiphi isikhathi.",
+    "inviteAFriend": "Mema umngane",
     "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzakalelayo ngolimi olufundayo",
     "autocorrectAndroidDialogBody": "Uma uthayipha engxoxweni, ikhibhodi yakho izoshintshela olimini olufundayo futhi ilungise amaphutha esipelingi ngalolo limi.",
     "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:"

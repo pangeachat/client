@@ -1337,7 +1337,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-19 11:21:04.571528",
+    "@@last_modified": "2026-08-19 12:57:11.413377",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10670,6 +10670,7 @@
     "usersAreTryingToJoinCourse": "Brugere prøver at deltage i dit kursus",
     "denyAllUsers": "Afvis alle brugere",
     "denyAllKnocksDescription": "Disse brugere vil blive afvist fra kurset. De kan til enhver tid forsøge at deltage igen.",
+    "inviteAFriend": "Inviter en ven",
     "autocorrectAndroidDialogTitle": "Autokorrektur på dit målsprog",
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, skifter dit tastatur til dit målsprog og retter stavefejl på det sprog.",
     "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:"

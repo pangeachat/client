@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-19 11:21:10.707677",
+    "@@last_modified": "2026-08-19 12:57:13.479129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Pipul de tray foh jɔyn yu kɔs",
     "denyAllUsers": "Denay ɔl pipul",
     "denyAllKnocksDescription": "Dɛn pipul ya nɔ go ebul jɔyn di kɔs. Dɛn go ebul tray fɔ jɔyn bak ɛnitaym.",
+    "inviteAFriend": "Kɔl wan padi",
     "autocorrectAndroidDialogTitle": "Autocorrect na yu tɔŋ we yu de lan",
     "autocorrectAndroidDialogBody": "Tɛm we yu de rayt na chat, yu keyboard go chenj to yu tɔŋ we yu de lan ɛn kɔrɛkt spɛlin na dat tɔŋ.",
     "autocorrectAndroidFallbackTitle": "If yu keyboard nɔ gɛt yu tɔŋ we yu de lan, instɔl Gboard ɛn ad di tɔŋ de:"

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 11:21:13.142585",
+    "@@last_modified": "2026-08-19 12:57:15.107020",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10694,6 +10694,7 @@
     "usersAreTryingToJoinCourse": "Usuários estão tentando entrar no seu curso",
     "denyAllUsers": "Recusar todos os usuários",
     "denyAllKnocksDescription": "Esses usuários serão rejeitados do curso. Eles podem tentar entrar novamente a qualquer momento.",
+    "inviteAFriend": "Convidar um amigo",
     "autocorrectAndroidDialogTitle": "Autocorreção no seu idioma de destino",
     "autocorrectAndroidDialogBody": "Quando você digita em um bate-papo, seu teclado mudará para o idioma de destino e corrigirá a ortografia nesse idioma.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma de destino, instale o Gboard e adicione o idioma lá:"

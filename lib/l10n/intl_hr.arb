@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-19 11:21:07.318206",
+    "@@last_modified": "2026-08-19 12:57:12.689371",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10186,6 +10186,7 @@
     "usersAreTryingToJoinCourse": "Korisnici se pokušavaju pridružiti vašem tečaju",
     "denyAllUsers": "Odbij sve korisnike",
     "denyAllKnocksDescription": "Ovi će korisnici biti odbijeni s tečaja. Mogu se pokušati ponovno pridružiti u bilo kojem trenutku.",
+    "inviteAFriend": "Pozovi prijatelja",
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada tipkate u chatu, vaša će se tipkovnica prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tipkovnica ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:"

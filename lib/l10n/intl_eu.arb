@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-19 11:21:05.877064",
+    "@@last_modified": "2026-08-19 12:57:11.924045",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9750,6 +9750,7 @@
     "usersAreTryingToJoinCourse": "Erabiltzaileak zure ikastarora sartzen saiatzen ari dira",
     "denyAllUsers": "Ukatu erabiltzaile guztiei",
     "denyAllKnocksDescription": "Erabiltzaile hauek ikastarotik baztertuko dira. Edonoiz saia daitezke berriro sartzen.",
+    "inviteAFriend": "Lagun bat gonbidatu",
     "autocorrectAndroidDialogTitle": "Zuzenketa automatikoa zure xede-hizkuntzan",
     "autocorrectAndroidDialogBody": "Txat batean idazten duzunean, teklatua zure xede-hizkuntzara aldatuko da eta hizkuntza horretako ortografia zuzenduko du.",
     "autocorrectAndroidFallbackTitle": "Zure teklatuak xede-hizkuntza eskaintzen ez badu, instalatu Gboard eta gehitu hizkuntza bertan:"

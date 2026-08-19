@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 11:21:16.677312",
+    "@@last_modified": "2026-08-19 12:57:16.106092",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10268,6 +10268,7 @@
     "usersAreTryingToJoinCourse": "Användare försöker gå med i din kurs",
     "denyAllUsers": "Neka alla användare",
     "denyAllKnocksDescription": "Dessa användare kommer att avvisas från kursen. De kan försöka gå med igen när som helst.",
+    "inviteAFriend": "Bjud in en vän",
     "autocorrectAndroidDialogTitle": "Autokorrigering på ditt målspråk",
     "autocorrectAndroidDialogBody": "När du skriver i en chatt växlar tangentbordet till ditt målspråk och korrigerar stavningen på det språket.",
     "autocorrectAndroidFallbackTitle": "Om ditt tangentbord inte erbjuder ditt målspråk, installera Gboard och lägg till språket där:"

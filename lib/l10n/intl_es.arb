@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-19 11:21:05.424837",
+    "@@last_modified": "2026-08-19 12:57:11.673850",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7961,6 +7961,7 @@
     "usersAreTryingToJoinCourse": "Los usuarios están intentando unirse a tu curso",
     "denyAllUsers": "Rechazar a todos los usuarios",
     "denyAllKnocksDescription": "Estos usuarios serán rechazados del curso. Pueden intentar unirse de nuevo en cualquier momento.",
+    "inviteAFriend": "Invita a un amigo",
     "autocorrectAndroidDialogTitle": "Autocorrección en tu idioma objetivo",
     "autocorrectAndroidDialogBody": "Cuando escribas en un chat, tu teclado cambiará a tu idioma objetivo y corregirá la ortografía en ese idioma.",
     "autocorrectAndroidFallbackTitle": "Si tu teclado no ofrece tu idioma objetivo, instala Gboard y añade el idioma allí:"

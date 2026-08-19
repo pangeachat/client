@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-19 11:21:07.736127",
+    "@@last_modified": "2026-08-19 12:57:12.853647",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Itilizatè yo ap eseye antre nan kou ou a",
     "denyAllUsers": "Refize tout itilizatè yo",
     "denyAllKnocksDescription": "Itilizatè sa yo pral rejte nan kou a. Yo ka eseye antre ankò nenpòt ki lè.",
+    "inviteAFriend": "Envite yon zanmi",
     "autocorrectAndroidDialogTitle": "Koreksyon otomatik nan lang sib ou a",
     "autocorrectAndroidDialogBody": "Lè w ap tape nan yon chat, klavye w ap chanje nan lang sib ou a epi l ap korije òtograf nan lang sa a.",
     "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:"

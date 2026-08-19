@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 11:21:07.923152",
+    "@@last_modified": "2026-08-19 12:57:12.933027",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9823,6 +9823,7 @@
     "usersAreTryingToJoinCourse": "Pengguna mencoba bergabung ke kursus Anda",
     "denyAllUsers": "Tolak semua pengguna",
     "denyAllKnocksDescription": "Pengguna ini akan ditolak dari kursus. Mereka dapat mencoba bergabung lagi kapan saja.",
+    "inviteAFriend": "Undang teman",
     "autocorrectAndroidDialogTitle": "Koreksi Otomatis dalam Bahasa Target Anda",
     "autocorrectAndroidDialogBody": "Saat Anda mengetik di obrolan, keyboard Anda akan beralih ke bahasa target Anda dan mengoreksi ejaan dalam bahasa tersebut.",
     "autocorrectAndroidFallbackTitle": "Jika keyboard Anda tidak menawarkan bahasa target Anda, instal Gboard dan tambahkan bahasa di sana:"

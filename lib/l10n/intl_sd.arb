@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-19 11:21:15.537904",
+    "@@last_modified": "2026-08-19 12:57:15.521617",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "استعمال ڪندڙ توهان جي ڪورس ۾ شامل ٿيڻ جي ڪوشش ڪري رهيا آهن",
     "denyAllUsers": "سڀني استعمال ڪندڙن کي رد ڪريو",
     "denyAllKnocksDescription": "انهن استعمال ڪندڙن کي ڪورس مان رد ڪيو ويندو. اهي ڪنهن به وقت ٻيهر شامل ٿيڻ جي ڪوشش ڪري سگهن ٿا.",
+    "inviteAFriend": "دوست کي دعوت ڏيو",
     "autocorrectAndroidDialogTitle": "توهان جي ٽارگيٽ ٻولي ۾ خودڪار درستي",
     "autocorrectAndroidDialogBody": "جڏهن توهان چيٽ ۾ ٽائيپ ڪندا، توهان جو ڪيبورڊ توهان جي ٽارگيٽ ٻولي ۾ تبديل ٿي ويندو ۽ ان ٻولي ۾ اسپيلنگ درست ڪندو.",
     "autocorrectAndroidFallbackTitle": "جيڪڏهن توهان جو ڪيبورڊ توهان جي ٽارگيٽ ٻولي پيش نٿو ڪري، Gboard انسٽال ڪريو ۽ اتي ٻولي شامل ڪريو:"

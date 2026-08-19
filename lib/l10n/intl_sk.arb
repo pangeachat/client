@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-19 11:21:14.568013",
+    "@@last_modified": "2026-08-19 12:57:15.536943",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10695,6 +10695,7 @@
     "usersAreTryingToJoinCourse": "Používatelia sa snažia pripojiť k vášmu kurzu",
     "denyAllUsers": "Odmietnuť všetkých používateľov",
     "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť.",
+    "inviteAFriend": "Pozvať priateľa",
     "autocorrectAndroidDialogTitle": "Automatické opravy v cieľovom jazyku",
     "autocorrectAndroidDialogBody": "Keď píšete v chate, klávesnica sa prepne na váš cieľový jazyk a opraví pravopis v tomto jazyku.",
     "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:"

@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-19 11:21:04.589015",
+    "@@last_modified": "2026-08-19 12:57:10.887440",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "İstifadəçilər kursunuza qoşulmağa çalışır",
     "denyAllUsers": "Bütün istifadəçiləri rədd et",
     "denyAllKnocksDescription": "Bu istifadəçilər kursdan rədd ediləcək. Onlar istənilən vaxt yenidən qoşulmağa cəhd edə bilərlər.",
+    "inviteAFriend": "Dostunu dəvət et",
     "autocorrectAndroidDialogTitle": "Hədəf dilinizdə avtodüzəliş",
     "autocorrectAndroidDialogBody": "Söhbətdə yazarkən klaviaturanız hədəf dilinizə keçəcək və həmin dildə orfoqrafiyanı düzəldəcək.",
     "autocorrectAndroidFallbackTitle": "Əgər klaviaturanız hədəf dilinizi təklif etmirsə, Gboard-u quraşdırın və dili oraya əlavə edin:"

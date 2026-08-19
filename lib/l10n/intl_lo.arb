@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-19 11:21:10.812236",
+    "@@last_modified": "2026-08-19 12:57:13.951069",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "ຜູ້ໃຊ້ກຳລັງພະຍາຍາມເຂົ້າຮ່ວມຫຼັກສູດຂອງທ່ານ",
     "denyAllUsers": "ປະຕິເສດຜູ້ໃຊ້ທັງໝົດ",
     "denyAllKnocksDescription": "ຜູ້ໃຊ້ເຫຼົ່ານີ້ຈະຖືກປະຕິເສດຈາກຫຼັກສູດ. ພວກເຂົາອາດຈະພະຍາຍາມເຂົ້າຮ່ວມອີກຄັ້ງໄດ້ທຸກເວລາ.",
+    "inviteAFriend": "ເຊີນໝູ່",
     "autocorrectAndroidDialogTitle": "ແກ້ໄຂອັດຕະໂນມັດໃນພາສາເປົ້າໝາຍຂອງທ່ານ",
     "autocorrectAndroidDialogBody": "ເມື່ອທ່ານພິມໃນການສົນທະນາ, ແປ້ນພິມຂອງທ່ານຈະປ່ຽນເປັນພາສາເປົ້າໝາຍຂອງທ່ານ ແລະ ແກ້ໄຂການສະກົດຄຳໃນພາສານັ້ນ.",
     "autocorrectAndroidFallbackTitle": "ຖ້າແປ້ນພິມຂອງທ່ານບໍ່ຮອງຮັບພາສາເປົ້າໝາຍຂອງທ່ານ, ໃຫ້ຕິດຕັ້ງ Gboard ແລະ ເພີ່ມພາສານັ້ນຢູ່ບ່ອນນັ້ນ:"

@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-19 11:21:07.837801",
+    "@@last_modified": "2026-08-19 12:57:12.703008",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9853,6 +9853,7 @@
     "usersAreTryingToJoinCourse": "Felhasználók próbálnak csatlakozni a kurzusodhoz",
     "denyAllUsers": "Összes felhasználó elutasítása",
     "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni.",
+    "inviteAFriend": "Hívj meg egy barátot",
     "autocorrectAndroidDialogTitle": "Automatikus javítás a célnyelven",
     "autocorrectAndroidDialogBody": "Amikor csevegésben gépel, a billentyűzet átvált a célnyelvre, és azon a nyelven javítja a helyesírást.",
     "autocorrectAndroidFallbackTitle": "Ha a billentyűzete nem kínálja fel a célnyelvet, telepítse a Gboardot, és adja hozzá ott a nyelvet:"

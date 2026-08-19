@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 11:21:05.330828",
+    "@@last_modified": "2026-08-19 12:57:11.877716",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10695,6 +10695,7 @@
     "usersAreTryingToJoinCourse": "Uzantoj provas aliĝi al via kurso",
     "denyAllUsers": "Malakcepti ĉiujn uzantojn",
     "denyAllKnocksDescription": "Ĉi tiuj uzantoj estos malakceptitaj de la kurso. Ili rajtas provi aliĝi denove iam ajn.",
+    "inviteAFriend": "Invitu amikon",
     "autocorrectAndroidDialogTitle": "Aŭtomata korekto en via cellingvo",
     "autocorrectAndroidDialogBody": "Kiam vi tajpas en babilejo, via klavaro ŝanĝos al via cellingvo kaj korektos literumadon en tiu lingvo.",
     "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:"

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 11:21:13.487880",
+    "@@last_modified": "2026-08-19 12:57:15.198183",
     "about": "Sobre",
     "@about": {
         "type": "String",
@@ -9750,6 +9750,7 @@
     "usersAreTryingToJoinCourse": "Usuários estão tentando entrar no seu curso",
     "denyAllUsers": "Recusar todos os usuários",
     "denyAllKnocksDescription": "Estes usuários serão rejeitados do curso. Eles podem tentar entrar novamente a qualquer momento.",
+    "inviteAFriend": "Convidar um amigo",
     "autocorrectAndroidDialogTitle": "Correção automática no seu idioma de destino",
     "autocorrectAndroidDialogBody": "Ao digitar em um chat, seu teclado mudará para o idioma de destino e corrigirá a ortografia nesse idioma.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o idioma de destino, instale o Gboard e adicione o idioma lá:"

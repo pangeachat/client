@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 11:21:17.962538",
+    "@@last_modified": "2026-08-19 12:57:16.659866",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7034,6 +7034,7 @@
     "usersAreTryingToJoinCourse": "Người dùng đang cố gắng tham gia khóa học của bạn",
     "denyAllUsers": "Từ chối tất cả người dùng",
     "denyAllKnocksDescription": "Những người dùng này sẽ bị từ chối khỏi khóa học. Họ có thể thử tham gia lại bất cứ lúc nào.",
+    "inviteAFriend": "Mời một người bạn",
     "autocorrectAndroidDialogTitle": "Tự động sửa lỗi bằng ngôn ngữ mục tiêu của bạn",
     "autocorrectAndroidDialogBody": "Khi bạn nhập tin nhắn trong cuộc trò chuyện, bàn phím của bạn sẽ chuyển sang ngôn ngữ mục tiêu và sửa lỗi chính tả bằng ngôn ngữ đó.",
     "autocorrectAndroidFallbackTitle": "Nếu bàn phím của bạn không hỗ trợ ngôn ngữ mục tiêu, hãy cài đặt Gboard và thêm ngôn ngữ đó tại đây:"

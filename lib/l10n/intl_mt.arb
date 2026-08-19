@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-19 11:21:12.048290",
+    "@@last_modified": "2026-08-19 12:57:14.406124",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2146,6 +2146,7 @@
     "usersAreTryingToJoinCourse": "Utenti qed jippruvaw jingħaqdu mal-kors tiegħek",
     "denyAllUsers": "Irrifjuta l-utenti kollha",
     "denyAllKnocksDescription": "Dawn l-utenti se jiġu rrifjutati mill-kors. Jistgħu jippruvaw jingħaqdu mill-ġdid fi kwalunkwe ħin.",
+    "inviteAFriend": "Stieden ħabib",
     "autocorrectAndroidDialogTitle": "Autocorrect fil-lingwa fil-mira tiegħek",
     "autocorrectAndroidDialogBody": "Meta tittajpja fi chat, it-tastiera tiegħek tinbidel għal-lingwa fil-mira tiegħek u tikkoreġi l-ortografija f'dik il-lingwa.",
     "autocorrectAndroidFallbackTitle": "Jekk it-tastiera tiegħek ma toffrix il-lingwa fil-mira tiegħek, installa Gboard u żid il-lingwa hemmhekk:"

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 11:21:09.463265",
+    "@@last_modified": "2026-08-19 12:57:13.424257",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9943,6 +9943,7 @@
     "usersAreTryingToJoinCourse": "사용자들이 회원님의 코스에 참여하려고 합니다",
     "denyAllUsers": "모든 사용자 거부",
     "denyAllKnocksDescription": "이 사용자들은 코스에서 거부됩니다. 언제든지 다시 참여를 시도할 수 있습니다.",
+    "inviteAFriend": "친구 초대",
     "autocorrectAndroidDialogTitle": "학습 언어로 자동 고침",
     "autocorrectAndroidDialogBody": "채팅을 입력할 때 키보드가 학습 언어로 전환되고 해당 언어로 맞춤법을 교정합니다.",
     "autocorrectAndroidFallbackTitle": "키보드에서 학습 언어를 지원하지 않는 경우 Gboard를 설치하고 언어를 추가하세요."

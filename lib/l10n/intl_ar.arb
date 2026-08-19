@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-19 11:21:03.189143",
+    "@@last_modified": "2026-08-19 12:57:10.844367",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10056,6 +10056,7 @@
     "usersAreTryingToJoinCourse": "يحاول المستخدمون الانضمام إلى دورتك التدريبية",
     "denyAllUsers": "رفض جميع المستخدمين",
     "denyAllKnocksDescription": "سيتم رفض هؤلاء المستخدمين من الدورة التدريبية. وقد يحاولون الانضمام مرة أخرى في أي وقت.",
+    "inviteAFriend": "ادعُ صديقًا",
     "autocorrectAndroidDialogTitle": "التصحيح التلقائي بلغتك المستهدفة",
     "autocorrectAndroidDialogBody": "عند الكتابة في الدردشة، ستتحول لوحة المفاتيح إلى لغتك المستهدفة وتصحح الأخطاء الإملائية في تلك اللغة.",
     "autocorrectAndroidFallbackTitle": "إذا كانت لوحة المفاتيح لا توفر لغتك المستهدفة، فقم بتثبيت Gboard وأضف اللغة هناك:"

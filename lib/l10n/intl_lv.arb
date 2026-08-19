@@ -3538,7 +3538,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-19 11:21:10.772151",
+    "@@last_modified": "2026-08-19 12:57:13.966443",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -9750,6 +9750,7 @@
     "usersAreTryingToJoinCourse": "Lietotāji mēģina pievienoties jūsu kursam",
     "denyAllUsers": "Noraidīt visus lietotājus",
     "denyAllKnocksDescription": "Šie lietotāji tiks noraidīti no kursa. Viņi jebkurā laikā var mēģināt pievienoties vēlreiz.",
+    "inviteAFriend": "Uzaicināt draugu",
     "autocorrectAndroidDialogTitle": "Automātiskā korekcija jūsu mērķa valodā",
     "autocorrectAndroidDialogBody": "Kad rakstīsiet tērzēšanā, tastatūra pārslēgsies uz jūsu mērķa valodu un labos pareizrakstību šajā valodā.",
     "autocorrectAndroidFallbackTitle": "Ja jūsu tastatūra nepiedāvā jūsu mērķa valodu, instalējiet Gboard un pievienojiet valodu tur:"
