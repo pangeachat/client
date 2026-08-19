@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/pangea/extensions/friend_dm_extension.dart';
 import 'package:fluffychat/routes/chat_list/chat_list.dart';
 import 'package:fluffychat/routes/chat_list/chat_list_item.dart';
 import 'package:fluffychat/routes/chat_list/course_chats_page.dart';
 import 'package:fluffychat/routes/chat_list/dm_list_tile.dart';
 import 'package:fluffychat/routes/chat_list/dummy_chat_list_item.dart';
+import 'package:fluffychat/routes/chat_list/friend_dm_prompt.dart';
 import 'package:fluffychat/routes/chat_list/pangea_chat_list_header.dart';
 import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/utils/stream_extension.dart';
@@ -305,6 +307,20 @@ class ChatListViewBody extends StatelessWidget {
                 child: DMListTile(visible: !controller.isSearchMode),
               ),
             const SliverToBoxAdapter(child: SizedBox(height: 8.0)),
+            // Until the user has a DM with another person, the list closes on
+            // the invite pitch. It fills what's left of the viewport so it sits
+            // at the panel's foot on a short list, and simply follows the last
+            // row once the list is long enough to scroll (#8395).
+            if (client.prevBatch != null &&
+                !controller.isSearchMode &&
+                !client.hasFriendDM)
+              const SliverFillRemaining(
+                hasScrollBody: false,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: FriendDMPrompt(),
+                ),
+              ),
             // Pangea#
           ],
         );

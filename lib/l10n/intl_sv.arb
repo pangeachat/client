@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:49.150370",
+    "@@last_modified": "2026-08-19 12:57:16.106092",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10277,5 +10277,6 @@
     "markAllRead": "Markera alla som lästa",
     "usersAreTryingToJoinCourse": "Användare försöker gå med i din kurs",
     "denyAllUsers": "Neka alla användare",
-    "denyAllKnocksDescription": "Dessa användare kommer att avvisas från kursen. De kan försöka gå med igen när som helst."
+    "denyAllKnocksDescription": "Dessa användare kommer att avvisas från kursen. De kan försöka gå med igen när som helst.",
+    "inviteAFriend": "Bjud in en vän"
 }

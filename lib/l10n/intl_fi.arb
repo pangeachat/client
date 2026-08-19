@@ -3541,7 +3541,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-18 15:48:41.961418",
+    "@@last_modified": "2026-08-19 12:57:11.987962",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9796,5 +9796,6 @@
     "markAllRead": "Merkitse kaikki luetuiksi",
     "usersAreTryingToJoinCourse": "Käyttäjät yrittävät liittyä kurssillesi",
     "denyAllUsers": "Estä kaikki käyttäjät",
-    "denyAllKnocksDescription": "Nämä käyttäjät hylätään kurssilta. He voivat yrittää liittyä uudelleen milloin tahansa."
+    "denyAllKnocksDescription": "Nämä käyttäjät hylätään kurssilta. He voivat yrittää liittyä uudelleen milloin tahansa.",
+    "inviteAFriend": "Kutsu ystävä"
 }

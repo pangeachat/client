@@ -1339,7 +1339,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-18 15:48:40.709355",
+    "@@last_modified": "2026-08-19 12:57:11.413377",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -10679,5 +10679,6 @@
     "markAllRead": "Marker alt som læst",
     "usersAreTryingToJoinCourse": "Brugere prøver at deltage i dit kursus",
     "denyAllUsers": "Afvis alle brugere",
-    "denyAllKnocksDescription": "Disse brugere vil blive afvist fra kurset. De kan til enhver tid forsøge at deltage igen."
+    "denyAllKnocksDescription": "Disse brugere vil blive afvist fra kurset. De kan til enhver tid forsøge at deltage igen.",
+    "inviteAFriend": "Inviter en ven"
 }

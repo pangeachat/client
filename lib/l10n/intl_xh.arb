@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-18 15:48:50.550761",
+    "@@last_modified": "2026-08-19 12:57:17.136319",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Phawula konke okufundiweyo",
     "usersAreTryingToJoinCourse": "Abasebenzisi bazama ukujoyina ikhosi yakho",
     "denyAllUsers": "Yala bonke abasebenzisi",
-    "denyAllKnocksDescription": "Aba basebenzisi baya kulahlwa kwikhosi. Bangazama ukujoyina kwakhona nangaliphi na ixesha."
+    "denyAllKnocksDescription": "Aba basebenzisi baya kulahlwa kwikhosi. Bangazama ukujoyina kwakhona nangaliphi na ixesha.",
+    "inviteAFriend": "Mema umhlobo"
 }

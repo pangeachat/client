@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-18 15:48:51.062117",
+    "@@last_modified": "2026-08-19 12:57:17.261213",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Samisi gbogbo rẹ bi o ti ka",
     "usersAreTryingToJoinCourse": "Àwọn olùmúlò n gbìyànjú láti darapọ̀ mọ́ ẹ̀kọ́ rẹ",
     "denyAllUsers": "Kọ gbogbo àwọn olùmúlò",
-    "denyAllKnocksDescription": "A ó kọ àwọn olùmúlò wọ̀nyí láti inú ẹ̀kọ́ náà. Wọ́n lè gbìyànjú láti darapọ̀ mọ́ra ní àkókò kankan."
+    "denyAllKnocksDescription": "A ó kọ àwọn olùmúlò wọ̀nyí láti inú ẹ̀kọ́ náà. Wọ́n lè gbìyànjú láti darapọ̀ mọ́ra ní àkókò kankan.",
+    "inviteAFriend": "Pe ọrẹ kan"
 }

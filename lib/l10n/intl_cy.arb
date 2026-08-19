@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-18 15:48:41.149138",
+    "@@last_modified": "2026-08-19 12:57:11.418831",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Marcio pob un fel rhai a ddarllenwyd",
     "usersAreTryingToJoinCourse": "Mae defnyddwyr yn ceisio ymuno â'ch cwrs",
     "denyAllUsers": "Gwrthod pob defnyddiwr",
-    "denyAllKnocksDescription": "Bydd y defnyddwyr hyn yn cael eu gwrthod o'r cwrs. Gallant geisio ymuno eto unrhyw bryd."
+    "denyAllKnocksDescription": "Bydd y defnyddwyr hyn yn cael eu gwrthod o'r cwrs. Gallant geisio ymuno eto unrhyw bryd.",
+    "inviteAFriend": "Gwahodd ffrind"
 }

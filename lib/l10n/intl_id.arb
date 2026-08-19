@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:43.394787",
+    "@@last_modified": "2026-08-19 12:57:12.933027",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9832,5 +9832,6 @@
     "markAllRead": "Tandai semua sudah dibaca",
     "usersAreTryingToJoinCourse": "Pengguna mencoba bergabung ke kursus Anda",
     "denyAllUsers": "Tolak semua pengguna",
-    "denyAllKnocksDescription": "Pengguna ini akan ditolak dari kursus. Mereka dapat mencoba bergabung lagi kapan saja."
+    "denyAllKnocksDescription": "Pengguna ini akan ditolak dari kursus. Mereka dapat mencoba bergabung lagi kapan saja.",
+    "inviteAFriend": "Undang teman"
 }

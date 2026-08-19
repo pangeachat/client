@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-18 15:48:43.088786",
+    "@@last_modified": "2026-08-19 12:57:12.520574",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Kos tag nrho tias nyeem lawm",
     "usersAreTryingToJoinCourse": "Cov neeg siv tab tom sim koom koj chav kawm",
     "denyAllUsers": "Tsis kam tag nrho cov neeg siv",
-    "denyAllKnocksDescription": "Cov neeg siv no yuav raug tsis lees paub los ntawm chav kawm. Lawv yuav sim koom dua txhua lub sijhawm."
+    "denyAllKnocksDescription": "Cov neeg siv no yuav raug tsis lees paub los ntawm chav kawm. Lawv yuav sim koom dua txhua lub sijhawm.",
+    "inviteAFriend": "Caw ib tug phooj ywg"
 }

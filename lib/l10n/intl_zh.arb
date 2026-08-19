@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-18 15:48:50.635926",
+    "@@last_modified": "2026-08-19 12:57:17.102250",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9759,5 +9759,6 @@
     "markAllRead": "全部标记为已读",
     "usersAreTryingToJoinCourse": "有用户正尝试加入您的课程",
     "denyAllUsers": "拒绝所有用户",
-    "denyAllKnocksDescription": "这些用户将被拒绝加入课程。他们可以随时再次尝试加入。"
+    "denyAllKnocksDescription": "这些用户将被拒绝加入课程。他们可以随时再次尝试加入。",
+    "inviteAFriend": "邀请好友"
 }

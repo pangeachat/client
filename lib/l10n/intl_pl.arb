@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-18 15:48:47.282004",
+    "@@last_modified": "2026-08-19 12:57:15.025591",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9844,5 +9844,6 @@
     "markAllRead": "Oznacz wszystkie jako przeczytane",
     "usersAreTryingToJoinCourse": "Użytkownicy próbują dołączyć do Twojego kursu",
     "denyAllUsers": "Odrzuć wszystkich użytkowników",
-    "denyAllKnocksDescription": "Użytkownicy zostaną odrzuceni z kursu. Mogą próbować dołączyć ponownie w dowolnym momencie."
+    "denyAllKnocksDescription": "Użytkownicy zostaną odrzuceni z kursu. Mogą próbować dołączyć ponownie w dowolnym momencie.",
+    "inviteAFriend": "Zaproś znajomego"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-18 15:48:41.476791",
+    "@@last_modified": "2026-08-19 12:57:11.741734",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,6 @@
     "markAllRead": "Märgi kõik loetuks",
     "usersAreTryingToJoinCourse": "Kasutajad proovivad teie kursusega liituda",
     "denyAllUsers": "Keeldu kõigist kasutajatest",
-    "denyAllKnocksDescription": "Need kasutajad lükatakse kursuselt tagasi. Nad võivad igal ajal uuesti liituda proovida."
+    "denyAllKnocksDescription": "Need kasutajad lükatakse kursuselt tagasi. Nad võivad igal ajal uuesti liituda proovida.",
+    "inviteAFriend": "Kutsu sõber"
 }

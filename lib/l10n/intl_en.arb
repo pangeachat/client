@@ -5078,5 +5078,6 @@
                 "type": "int"
             }
         }
-    }
+    },
+    "inviteAFriend": "Invite a friend"
 }

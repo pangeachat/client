@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-18 15:48:49.037527",
+    "@@last_modified": "2026-08-19 12:57:15.851866",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Dhammaan akhri",
     "usersAreTryingToJoinCourse": "Isticmaalayaashu waxay isku dayayaan inay ku soo biiraan koorsadaada",
     "denyAllUsers": "Diid dhammaan isticmaalayaasha",
-    "denyAllKnocksDescription": "Isticmaalayaashan waa laga diidi doonaa koorsada. Waxay isku dayi karaan inay mar kale soo biiraan wakhti kasta."
+    "denyAllKnocksDescription": "Isticmaalayaashan waa laga diidi doonaa koorsada. Waxay isku dayi karaan inay mar kale soo biiraan wakhti kasta.",
+    "inviteAFriend": "Saaxiib casuun"
 }

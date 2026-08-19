@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-18 15:48:43.096606",
+    "@@last_modified": "2026-08-19 12:57:12.703008",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,6 @@
     "markAllRead": "Mindet olvasottnak jelöli",
     "usersAreTryingToJoinCourse": "Felhasználók próbálnak csatlakozni a kurzusodhoz",
     "denyAllUsers": "Összes felhasználó elutasítása",
-    "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni."
+    "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni.",
+    "inviteAFriend": "Hívj meg egy barátot"
 }

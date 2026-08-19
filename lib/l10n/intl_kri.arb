@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-18 15:48:45.008186",
+    "@@last_modified": "2026-08-19 12:57:13.479129",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Mak ɔl dɛn rid",
     "usersAreTryingToJoinCourse": "Pipul de tray foh jɔyn yu kɔs",
     "denyAllUsers": "Denay ɔl pipul",
-    "denyAllKnocksDescription": "Dɛn pipul ya nɔ go ebul jɔyn di kɔs. Dɛn go ebul tray fɔ jɔyn bak ɛnitaym."
+    "denyAllKnocksDescription": "Dɛn pipul ya nɔ go ebul jɔyn di kɔs. Dɛn go ebul tray fɔ jɔyn bak ɛnitaym.",
+    "inviteAFriend": "Kɔl wan padi"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-18 15:48:45.780319",
+    "@@last_modified": "2026-08-19 12:57:14.542772",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Mariho ho voavaky avokoa",
     "usersAreTryingToJoinCourse": "Misy mpampiasa te hiditra amin'ny taranjao",
     "denyAllUsers": "Mandà ny mpampiasa rehetra",
-    "denyAllKnocksDescription": "Hesorina amin'ny taranja ireo mpampiasa ireo. Afaka manandrana miditra indray izy ireo amin'ny fotoana rehetra."
+    "denyAllKnocksDescription": "Hesorina amin'ny taranja ireo mpampiasa ireo. Afaka manandrana miditra indray izy ireo amin'ny fotoana rehetra.",
+    "inviteAFriend": "Manasa namana"
 }

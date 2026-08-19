@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-18 15:48:41.375130",
+    "@@last_modified": "2026-08-19 12:57:11.673850",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7962,5 +7962,6 @@
     "markAllRead": "Marcar todo como leído",
     "usersAreTryingToJoinCourse": "Los usuarios están intentando unirse a tu curso",
     "denyAllUsers": "Rechazar a todos los usuarios",
-    "denyAllKnocksDescription": "Estos usuarios serán rechazados del curso. Pueden intentar unirse de nuevo en cualquier momento."
+    "denyAllKnocksDescription": "Estos usuarios serán rechazados del curso. Pueden intentar unirse de nuevo en cualquier momento.",
+    "inviteAFriend": "Invita a un amigo"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-18 15:48:48.343466",
+    "@@last_modified": "2026-08-19 12:57:15.536943",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10704,5 +10704,6 @@
     "markAllRead": "Označiť všetko ako prečítané",
     "usersAreTryingToJoinCourse": "Používatelia sa snažia pripojiť k vášmu kurzu",
     "denyAllUsers": "Odmietnuť všetkých používateľov",
-    "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť."
+    "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť.",
+    "inviteAFriend": "Pozvať priateľa"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-18 15:48:42.045972",
+    "@@last_modified": "2026-08-19 12:57:11.945265",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Alles as lêzen markearje",
     "usersAreTryingToJoinCourse": "Brûkers besykje mei te dwaan oan dyn kursus",
     "denyAllUsers": "Alle brûkers wegerje",
-    "denyAllKnocksDescription": "Dizze brûkers wurde wegere fan de kursus. Se kinne op elk momint opnij besykje mei te dwaan."
+    "denyAllKnocksDescription": "Dizze brûkers wurde wegere fan de kursus. Se kinne op elk momint opnij besykje mei te dwaan.",
+    "inviteAFriend": "Nûgje in freon út"
 }

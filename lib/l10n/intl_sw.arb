@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-18 15:48:49.146968",
+    "@@last_modified": "2026-08-19 12:57:16.150583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Weka zote kama zimesomwa",
     "usersAreTryingToJoinCourse": "Watumiaji wanajaribu kujiunga na kozi yako",
     "denyAllUsers": "Kataa watumiaji wote",
-    "denyAllKnocksDescription": "Watumiaji hawa watakataliwa kujiunga na kozi. Wanaweza kujaribu kujiunga tena wakati wowote."
+    "denyAllKnocksDescription": "Watumiaji hawa watakataliwa kujiunga na kozi. Wanaweza kujaribu kujiunga tena wakati wowote.",
+    "inviteAFriend": "Mwalike rafiki"
 }

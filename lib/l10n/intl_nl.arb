@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:46.949492",
+    "@@last_modified": "2026-08-19 12:57:14.783925",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9759,5 +9759,6 @@
     "markAllRead": "Alles als gelezen markeren",
     "usersAreTryingToJoinCourse": "Gebruikers proberen deel te nemen aan je cursus",
     "denyAllUsers": "Alle gebruikers weigeren",
-    "denyAllKnocksDescription": "Deze gebruikers worden geweigerd voor de cursus. Ze kunnen op elk moment opnieuw proberen deel te nemen."
+    "denyAllKnocksDescription": "Deze gebruikers worden geweigerd voor de cursus. Ze kunnen op elk moment opnieuw proberen deel te nemen.",
+    "inviteAFriend": "Nodig een vriend uit"
 }

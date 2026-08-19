@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:go_router/go_router.dart';
 import 'package:material_symbols_icons/symbols.dart';
+import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/features/bot/bot_client_extension.dart';
@@ -20,6 +21,24 @@ class DMListTile extends StatefulWidget {
   final bool visible;
   const DMListTile({super.key, this.visible = true});
 
+  /// Whether the "Direct message Pangea Bot" tile renders for [client]: no bot
+  /// DM yet and the bot not blocked.
+  static bool showsBotTile(Client client) =>
+      !client.hasBotDM && !client.ignoredUsers.contains(BotName.byEnvironment);
+
+  /// Whether the "Chat with Support" tile renders for [client]: no support DM
+  /// yet, not dismissed, and the support account not blocked.
+  static bool showsSupportTile(Client client) =>
+      !client.hasSupportDM &&
+      !InstructionsEnum.dismissSupportChat.isToggledOff &&
+      !client.ignoredUsers.contains(Environment.supportUserId);
+
+  /// How many tiles render for [client] — what the mobile chats sheet's
+  /// content-fit estimate counts alongside the chat rows, since these tiles
+  /// take a row each without being rooms.
+  static int tileCount(Client client) =>
+      (showsBotTile(client) ? 1 : 0) + (showsSupportTile(client) ? 1 : 0);
+
   @override
   State<DMListTile> createState() => DMListTileState();
 }
@@ -29,13 +48,11 @@ class DMListTileState extends State<DMListTile> {
 
   @override
   Widget build(BuildContext context) {
-    final blockedUsers = Matrix.of(context).client.ignoredUsers;
+    final client = Matrix.of(context).client;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        if (!Matrix.of(context).client.hasBotDM &&
-            widget.visible &&
-            !blockedUsers.contains(BotName.byEnvironment))
+        if (widget.visible && DMListTile.showsBotTile(client))
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 1),
             child: Material(
@@ -75,10 +92,7 @@ class DMListTileState extends State<DMListTile> {
               ),
             ),
           ),
-        if (!Matrix.of(context).client.hasSupportDM &&
-            !InstructionsEnum.dismissSupportChat.isToggledOff &&
-            widget.visible &&
-            !blockedUsers.contains(Environment.supportUserId))
+        if (widget.visible && DMListTile.showsSupportTile(client))
           Stack(
             children: [
               Padding(

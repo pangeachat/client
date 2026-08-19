@@ -1268,7 +1268,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-18 15:48:50.612441",
+    "@@last_modified": "2026-08-19 12:57:17.092332",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10716,5 +10716,6 @@
     "markAllRead": "全部標記為已讀",
     "usersAreTryingToJoinCourse": "有用戶嘗試加入你的課程",
     "denyAllUsers": "拒絕所有用戶",
-    "denyAllKnocksDescription": "這些用戶將會被課程拒絕。他們可以隨時再次嘗試加入。"
+    "denyAllKnocksDescription": "這些用戶將會被課程拒絕。他們可以隨時再次嘗試加入。",
+    "inviteAFriend": "邀請朋友"
 }

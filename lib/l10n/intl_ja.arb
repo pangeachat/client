@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-18 15:48:43.831563",
+    "@@last_modified": "2026-08-19 12:57:13.150290",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10528,5 +10528,6 @@
     "markAllRead": "すべて既読にする",
     "usersAreTryingToJoinCourse": "ユーザーがコースへの参加をリクエストしています",
     "denyAllUsers": "すべてのユーザーを拒否",
-    "denyAllKnocksDescription": "これらのユーザーはコースから拒否されます。いつでも再参加を試みることができます。"
+    "denyAllKnocksDescription": "これらのユーザーはコースから拒否されます。いつでも再参加を試みることができます。",
+    "inviteAFriend": "友達を招待"
 }

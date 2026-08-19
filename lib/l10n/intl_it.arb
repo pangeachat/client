@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:43.848625",
+    "@@last_modified": "2026-08-19 12:57:12.925232",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9832,5 +9832,6 @@
     "markAllRead": "Segna tutto come letto",
     "usersAreTryingToJoinCourse": "Gli utenti stanno cercando di unirsi al tuo corso",
     "denyAllUsers": "Nega tutti gli utenti",
-    "denyAllKnocksDescription": "Questi utenti verranno rifiutati dal corso. Potranno tentare di unirsi di nuovo in qualsiasi momento."
+    "denyAllKnocksDescription": "Questi utenti verranno rifiutati dal corso. Potranno tentare di unirsi di nuovo in qualsiasi momento.",
+    "inviteAFriend": "Invita un amico"
 }

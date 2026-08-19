@@ -1,6 +1,6 @@
 {
     "@@locale": "tr",
-    "@@last_modified": "2026-08-18 15:48:50.017533",
+    "@@last_modified": "2026-08-19 12:57:16.625694",
     "about": "Hakkında",
     "@about": {
         "type": "String",
@@ -10060,5 +10060,6 @@
     "markAllRead": "Tümünü okundu olarak işaretle",
     "usersAreTryingToJoinCourse": "Kullanıcılar kursunuza katılmaya çalışıyor",
     "denyAllUsers": "Tüm kullanıcıları reddet",
-    "denyAllKnocksDescription": "Bu kullanıcılar kurstan reddedilecektir. İstediğiniz zaman tekrar katılmayı deneyebilirler."
+    "denyAllKnocksDescription": "Bu kullanıcılar kurstan reddedilecektir. İstediğiniz zaman tekrar katılmayı deneyebilirler.",
+    "inviteAFriend": "Bir arkadaşını davet et"
 }

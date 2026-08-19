@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-18 15:48:45.188583",
+    "@@last_modified": "2026-08-19 12:57:13.887720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Alles als gelies markéieren",
     "usersAreTryingToJoinCourse": "Benotzer probéieren Äre Cours ze bäitrieden",
     "denyAllUsers": "All Benotzer refuséieren",
-    "denyAllKnocksDescription": "Dës Benotzer ginn aus dem Cours refuséiert. Si kënne jidderzäit nach eng Kéier probéieren bäizetrieden."
+    "denyAllKnocksDescription": "Dës Benotzer ginn aus dem Cours refuséiert. Si kënne jidderzäit nach eng Kéier probéieren bäizetrieden.",
+    "inviteAFriend": "Invitéier e Frënd"
 }

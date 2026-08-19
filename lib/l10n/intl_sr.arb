@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:48.701907",
+    "@@last_modified": "2026-08-19 12:57:15.897642",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10708,5 +10708,6 @@
     "markAllRead": "Označi sve kao pročitano",
     "usersAreTryingToJoinCourse": "Korisnici pokušavaju da se pridruže vašem kursu",
     "denyAllUsers": "Odbij sve korisnike",
-    "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku."
+    "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku.",
+    "inviteAFriend": "Pozovi prijatelja"
 }

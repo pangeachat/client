@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-18 15:48:49.174922",
+    "@@last_modified": "2026-08-19 12:57:16.025645",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2147,5 +2147,6 @@
     "markAllRead": "Tšoaea tsohle e le tse baliloeng",
     "usersAreTryingToJoinCourse": "Basebelisi ba leka ho kenela thupelo ea hau",
     "denyAllUsers": "Hana basebelisi bohle",
-    "denyAllKnocksDescription": "Basebelisi bana ba tla hanoa ho kenela thupelo. Ba ka leka ho kenela hape neng kapa neng."
+    "denyAllKnocksDescription": "Basebelisi bana ba tla hanoa ho kenela thupelo. Ba ka leka ho kenela hape neng kapa neng.",
+    "inviteAFriend": "Mema motswalle"
 }
