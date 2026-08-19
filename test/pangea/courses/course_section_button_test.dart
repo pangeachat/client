@@ -84,6 +84,20 @@ void main() {
     expect(material.color, colors.primary);
   });
 
+  testWidgets('keeps a gap off the content above and below it', (tester) async {
+    await pump(
+      tester,
+      CourseSectionButton(label: 'All chats', onPressed: () {}),
+    );
+
+    // The sections inset horizontally only, so the vertical breathing room
+    // has to come from the button itself.
+    final outer = tester.getRect(find.byType(CourseSectionButton));
+    final button = tester.getRect(find.byType(FilledButton));
+    expect(button.top, greaterThan(outer.top));
+    expect(button.bottom, lessThan(outer.bottom));
+  });
+
   testWidgets('hugs its content and reports the tap', (tester) async {
     var taps = 0;
     await pump(

@@ -23,28 +23,38 @@ class CourseSectionButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Hug the content: the sections stretch their children, so without the
-    // Align the button would span the whole card width.
-    return Align(
-      alignment: AlignmentDirectional.centerStart,
-      child: FilledButton(
-        onPressed: onPressed,
-        style: FilledButton.styleFrom(
-          textStyle: Theme.of(context).textTheme.bodyMedium,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            // A long localization plus the button's own padding can outrun a
-            // narrow course column, so the label wraps instead of overflowing.
-            Flexible(child: Text(label)),
-            const Icon(Icons.chevron_right, size: 18.0),
-            if (trailing != null)
-              Padding(
-                padding: const EdgeInsetsDirectional.only(start: 8.0),
-                child: trailing,
-              ),
-          ],
+    // The sections carry no vertical inset of their own
+    // ([SpaceDetailsContent.sectionPadding] is horizontal), so the button
+    // holds the gap that keeps it off the content above and below it.
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0),
+      // Hug the content: the sections stretch their children, so without the
+      // Align the button would span the whole card width.
+      child: Align(
+        alignment: AlignmentDirectional.centerStart,
+        child: FilledButton(
+          onPressed: onPressed,
+          style: FilledButton.styleFrom(
+            // Tighter than Material's 24, so the pill stays close to its
+            // label rather than reading as a full-width action.
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            textStyle: Theme.of(context).textTheme.bodyMedium,
+          ),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              // A long localization plus the button's own padding can outrun
+              // a narrow course column, so the label wraps instead of
+              // overflowing.
+              Flexible(child: Text(label)),
+              const Icon(Icons.chevron_right, size: 18.0),
+              if (trailing != null)
+                Padding(
+                  padding: const EdgeInsetsDirectional.only(start: 8.0),
+                  child: trailing,
+                ),
+            ],
+          ),
         ),
       ),
     );
