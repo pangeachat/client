@@ -16,6 +16,7 @@ import 'package:fluffychat/routes/chat/calls/call_transcript_sink.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// The in-call screen.
@@ -46,20 +47,36 @@ class CallPage extends StatefulWidget {
     matrix.Room room, {
     required bool video,
     String? notificationEventId,
-    // The ROOT navigator, not the enclosing one. On a wide window the chat sits
-    // in a pane with its own navigator, and pushing there rendered the call
-    // inside that pane — clipped at the pane's edge, which cut the controls off
-    // the bottom. A call is modal for as long as it lasts; it takes the screen.
-  }) => Navigator.of(context, rootNavigator: true).push(
-    MaterialPageRoute(
-      fullscreenDialog: true,
-      builder: (_) => CallPage(
-        room: room,
-        video: video,
-        notificationEventId: notificationEventId,
+  }) {
+    // Pushed onto the ROUTER's own navigator, reached through the app's global
+    // key rather than the passed context.
+    //
+    // The two callers stand in different places in the tree. Placing a call
+    // happens inside a chat, well below the navigator, so its context could find
+    // one. ANSWERING happens from the incoming-call banner, which is mounted in
+    // MaterialApp.builder — ABOVE the router's navigator — so its context has no
+    // Navigator at all, and Navigator.of on it threw. On web a release build
+    // swallowed that as a bare "Error" and the banner simply dismissed with no
+    // call: answering did nothing. The same global key the app already uses to
+    // raise dialogs from above the router is what both callers go through now.
+    //
+    // rootNavigator: true keeps a call taking the whole screen rather than a
+    // side pane: on a wide window a chat sits in its own nested navigator, and
+    // pushing there clipped the call's controls at the pane's edge.
+    final navContext =
+        FluffyChatApp.router.routerDelegate.navigatorKey.currentContext ??
+        context;
+    return Navigator.of(navContext, rootNavigator: true).push(
+      MaterialPageRoute(
+        fullscreenDialog: true,
+        builder: (_) => CallPage(
+          room: room,
+          video: video,
+          notificationEventId: notificationEventId,
+        ),
       ),
-    ),
-  );
+    );
+  }
 
   @override
   State<CallPage> createState() => _CallPageState();
