@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-18 09:33:23.292611",
+    "@@last_modified": "2026-08-18 15:48:42.758606",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2144,5 +2144,8 @@
     "showMore": "Seall barrachd",
     "showLess": "Seall nas lugha",
     "countNewMessages": "{count, plural, =1{1 teachdaireachd ùr} other{{count} teachdaireachdan ùra}}",
-    "markAllRead": "Comharraich na h-uile mar a chaidh a leughadh"
+    "markAllRead": "Comharraich na h-uile mar a chaidh a leughadh",
+    "usersAreTryingToJoinCourse": "Tha luchd-cleachdaidh a' feuchainn ris a' chùrsa agad a dhol a-steach",
+    "denyAllUsers": "Diùlt a h-uile neach-cleachdaidh",
+    "denyAllKnocksDescription": "Thèid na cleachdaichean seo a dhiùltadh bhon chùrsa. Faodaidh iad feuchainn ri dhol a-steach a-rithist aig àm sam bith."
 }

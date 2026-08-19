@@ -2085,7 +2085,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-18 09:33:22.726156",
+    "@@last_modified": "2026-08-18 15:48:41.740305",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10616,5 +10616,8 @@
     "showMore": "Ipakita pa",
     "showLess": "Ipakita nang kaunti",
     "countNewMessages": "{count, plural, =1{1 bagong mensahe} other{{count} bagong mensahe}}",
-    "markAllRead": "Markahan lahat bilang nabasa"
+    "markAllRead": "Markahan lahat bilang nabasa",
+    "usersAreTryingToJoinCourse": "May mga user na gustong sumali sa iyong kurso",
+    "denyAllUsers": "Tanggihan lahat ng user",
+    "denyAllKnocksDescription": "Ang mga user na ito ay tatanggihan sa kurso. Maaari silang sumubok sumali muli anumang oras."
 }

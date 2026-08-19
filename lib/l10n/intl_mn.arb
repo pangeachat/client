@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-18 09:33:29.165920",
+    "@@last_modified": "2026-08-18 15:48:46.277077",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2144,5 +2144,8 @@
     "showMore": "Илүү ихийг харах",
     "showLess": "Бага харах",
     "countNewMessages": "{count, plural, =1{1 шинэ мессеж} other{{count} шинэ мессеж}}",
-    "markAllRead": "Бүгдийг уншсан гэж тэмдэглэх"
+    "markAllRead": "Бүгдийг уншсан гэж тэмдэглэх",
+    "usersAreTryingToJoinCourse": "Хэрэглэгчид таны хичээлд нэгдэхийг оролдож байна",
+    "denyAllUsers": "Бүх хэрэглэгчдийг татгалзах",
+    "denyAllKnocksDescription": "Эдгээр хэрэглэгчдийг хичээлээс хасна. Тэд хүссэн үедээ дахин нэгдэхийг оролдож болно."
 }

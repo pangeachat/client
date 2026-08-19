@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 09:33:30.935830",
+    "@@last_modified": "2026-08-18 15:48:43.394787",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9829,5 +9829,8 @@
     "showMore": "Tampilkan lebih banyak",
     "showLess": "Tampilkan lebih sedikit",
     "countNewMessages": "{count, plural, =1{1 pesan baru} other{{count} pesan baru}}",
-    "markAllRead": "Tandai semua sudah dibaca"
+    "markAllRead": "Tandai semua sudah dibaca",
+    "usersAreTryingToJoinCourse": "Pengguna mencoba bergabung ke kursus Anda",
+    "denyAllUsers": "Tolak semua pengguna",
+    "denyAllKnocksDescription": "Pengguna ini akan ditolak dari kursus. Mereka dapat mencoba bergabung lagi kapan saja."
 }

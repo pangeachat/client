@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-18 09:33:28.516956",
+    "@@last_modified": "2026-08-18 15:48:45.780319",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2144,5 +2144,8 @@
     "showMore": "Asehoy misimisy kokoa",
     "showLess": "Asehoy kely kokoa",
     "countNewMessages": "{count, plural, =1{1 hafatra vaovao} other{{count} hafatra vaovao}}",
-    "markAllRead": "Mariho ho voavaky avokoa"
+    "markAllRead": "Mariho ho voavaky avokoa",
+    "usersAreTryingToJoinCourse": "Misy mpampiasa te hiditra amin'ny taranjao",
+    "denyAllUsers": "Mandà ny mpampiasa rehetra",
+    "denyAllKnocksDescription": "Hesorina amin'ny taranja ireo mpampiasa ireo. Afaka manandrana miditra indray izy ireo amin'ny fotoana rehetra."
 }

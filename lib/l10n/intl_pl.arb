@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-18 09:33:30.947694",
+    "@@last_modified": "2026-08-18 15:48:47.282004",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9841,5 +9841,8 @@
     "showMore": "Pokaż więcej",
     "showLess": "Pokaż mniej",
     "countNewMessages": "{count, plural, =1{1 nowa wiadomość} other{{count} nowych wiadomości}}",
-    "markAllRead": "Oznacz wszystkie jako przeczytane"
+    "markAllRead": "Oznacz wszystkie jako przeczytane",
+    "usersAreTryingToJoinCourse": "Użytkownicy próbują dołączyć do Twojego kursu",
+    "denyAllUsers": "Odrzuć wszystkich użytkowników",
+    "denyAllKnocksDescription": "Użytkownicy zostaną odrzuceni z kursu. Mogą próbować dołączyć ponownie w dowolnym momencie."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-18 09:33:22.466781",
+    "@@last_modified": "2026-08-18 15:48:41.476791",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9753,5 +9753,8 @@
     "showMore": "Näita rohkem",
     "showLess": "Näita vähem",
     "countNewMessages": "{count, plural, =1{1 uus sõnum} other{{count} uut sõnumit}}",
-    "markAllRead": "Märgi kõik loetuks"
+    "markAllRead": "Märgi kõik loetuks",
+    "usersAreTryingToJoinCourse": "Kasutajad proovivad teie kursusega liituda",
+    "denyAllUsers": "Keeldu kõigist kasutajatest",
+    "denyAllKnocksDescription": "Need kasutajad lükatakse kursuselt tagasi. Nad võivad igal ajal uuesti liituda proovida."
 }

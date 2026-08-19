@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-18 09:33:28.114647",
+    "@@last_modified": "2026-08-18 15:48:45.633444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -2144,5 +2144,8 @@
     "showMore": "ສະແດງເພີ່ມເຕີມ",
     "showLess": "ສະແດງໜ້ອຍລົງ",
     "countNewMessages": "{count, plural, =1{1 ຂໍ້ຄວາມໃໝ່} other{{count} ຂໍ້ຄວາມໃໝ່}}",
-    "markAllRead": "ໝາຍວ່າອ່ານແລ້ວທັງໝົດ"
+    "markAllRead": "ໝາຍວ່າອ່ານແລ້ວທັງໝົດ",
+    "usersAreTryingToJoinCourse": "ຜູ້ໃຊ້ກຳລັງພະຍາຍາມເຂົ້າຮ່ວມຫຼັກສູດຂອງທ່ານ",
+    "denyAllUsers": "ປະຕິເສດຜູ້ໃຊ້ທັງໝົດ",
+    "denyAllKnocksDescription": "ຜູ້ໃຊ້ເຫຼົ່ານີ້ຈະຖືກປະຕິເສດຈາກຫຼັກສູດ. ພວກເຂົາອາດຈະພະຍາຍາມເຂົ້າຮ່ວມອີກຄັ້ງໄດ້ທຸກເວລາ."
 }

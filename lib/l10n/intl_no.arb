@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-18 09:33:29.998046",
+    "@@last_modified": "2026-08-18 15:48:47.010246",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2144,5 +2144,8 @@
     "showMore": "Vis mer",
     "showLess": "Vis mindre",
     "countNewMessages": "{count, plural, =1{1 ny melding} other{{count} nye meldinger}}",
-    "markAllRead": "Merk alle som lest"
+    "markAllRead": "Merk alle som lest",
+    "usersAreTryingToJoinCourse": "Brukere prøver å bli med i kurset ditt",
+    "denyAllUsers": "Avvis alle brukere",
+    "denyAllKnocksDescription": "Disse brukerne vil bli avvist fra kurset. De kan prøve å bli med igjen når som helst."
 }

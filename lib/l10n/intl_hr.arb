@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-18 09:33:24.589111",
+    "@@last_modified": "2026-08-18 15:48:42.888611",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10192,5 +10192,8 @@
     "showMore": "Prikaži više",
     "showLess": "Prikaži manje",
     "countNewMessages": "{count, plural, =1{1 nova poruka} other{{count} nove poruke}}",
-    "markAllRead": "Označi sve pročitano"
+    "markAllRead": "Označi sve pročitano",
+    "usersAreTryingToJoinCourse": "Korisnici se pokušavaju pridružiti vašem tečaju",
+    "denyAllUsers": "Odbij sve korisnike",
+    "denyAllKnocksDescription": "Ovi će korisnici biti odbijeni s tečaja. Mogu se pokušati ponovno pridružiti u bilo kojem trenutku."
 }

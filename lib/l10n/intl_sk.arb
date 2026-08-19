@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-18 09:33:31.622348",
+    "@@last_modified": "2026-08-18 15:48:48.343466",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,8 @@
     "showMore": "Zobraziť viac",
     "showLess": "Zobraziť menej",
     "countNewMessages": "{count, plural, =1{1 nová správa} other{{count} nových správ}}",
-    "markAllRead": "Označiť všetko ako prečítané"
+    "markAllRead": "Označiť všetko ako prečítané",
+    "usersAreTryingToJoinCourse": "Používatelia sa snažia pripojiť k vášmu kurzu",
+    "denyAllUsers": "Odmietnuť všetkých používateľov",
+    "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť."
 }

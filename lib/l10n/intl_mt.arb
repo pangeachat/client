@@ -1,6 +1,6 @@
 {
     "@@locale": "mt",
-    "@@last_modified": "2026-08-18 09:33:29.131009",
+    "@@last_modified": "2026-08-18 15:48:46.557471",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Irrepeti l-password",
     "notAnImage": "Mhux fajl ta' immaġni.",
@@ -2144,5 +2144,8 @@
     "showMore": "Uri aktar",
     "showLess": "Uri inqas",
     "countNewMessages": "{count, plural, =1{1 messaġġ ġdid} other{{count} messaġġi ġodda}}",
-    "markAllRead": "Immarka kollox bħala moqri"
+    "markAllRead": "Immarka kollox bħala moqri",
+    "usersAreTryingToJoinCourse": "Utenti qed jippruvaw jingħaqdu mal-kors tiegħek",
+    "denyAllUsers": "Irrifjuta l-utenti kollha",
+    "denyAllKnocksDescription": "Dawn l-utenti se jiġu rrifjutati mill-kors. Jistgħu jippruvaw jingħaqdu mill-ġdid fi kwalunkwe ħin."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-18 09:33:21.075372",
+    "@@last_modified": "2026-08-18 15:48:40.313709",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2144,5 +2144,8 @@
     "showMore": "আৰু দেখুৱাওক",
     "showLess": "কম দেখুৱাওক",
     "countNewMessages": "{count, plural, =1{১টা নতুন বাৰ্তা} other{{count}টা নতুন বাৰ্তা}}",
-    "markAllRead": "সকলো পঢ়া বুলি চিহ্নিত কৰক"
+    "markAllRead": "সকলো পঢ়া বুলি চিহ্নিত কৰক",
+    "usersAreTryingToJoinCourse": "ব্যৱহাৰকাৰীসকলে আপোনাৰ পাঠ্যক্ৰমত যোগদান কৰিবলৈ চেষ্টা কৰি আছে",
+    "denyAllUsers": "সকলো ব্যৱহাৰকাৰীক অস্বীকাৰ কৰক",
+    "denyAllKnocksDescription": "এই ব্যৱহাৰকাৰীসকলক পাঠ্যক্ৰমৰ পৰা প্ৰত্যাখ্যান কৰা হ'ব। তেওঁলোকে যিকোনো সময়ত পুনৰ যোগদান কৰিবলৈ চেষ্টা কৰিব পাৰে।"
 }

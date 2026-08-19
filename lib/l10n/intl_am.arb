@@ -1,6 +1,6 @@
 {
     "@@locale": "am",
-    "@@last_modified": "2026-08-18 09:33:20.936059",
+    "@@last_modified": "2026-08-18 15:48:40.157236",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "የይለፍ ቃል ይድገሙ",
     "notAnImage": "የምስል ፋይል አይደለም።",
@@ -2144,5 +2144,8 @@
     "showMore": "ተጨማሪ አሳይ",
     "showLess": "ጥቂት አሳይ",
     "countNewMessages": "{count, plural, =1{1 አዲስ መልእክት} other{{count} አዲስ መልእክቶች}}",
-    "markAllRead": "ሁሉንም እንደተነበበ ምልክት አድርግ"
+    "markAllRead": "ሁሉንም እንደተነበበ ምልክት አድርግ",
+    "usersAreTryingToJoinCourse": "ተጠቃሚዎች ኮርስዎን ለመቀላቀል እየሞከሩ ነው",
+    "denyAllUsers": "ሁሉንም ተጠቃሚዎች እምቢ በል",
+    "denyAllKnocksDescription": "እነዚህ ተጠቃሚዎች ከኮርሱ ውድቅ ይደረጋሉ። በማንኛውም ጊዜ እንደገና ለመቀላቀል ሊሞክሩ ይችላሉ።"
 }

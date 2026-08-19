@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 09:33:24.049486",
+    "@@last_modified": "2026-08-18 15:48:42.646546",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10670,5 +10670,8 @@
     "showMore": "הצג עוד",
     "showLess": "הצג פחות",
     "countNewMessages": "{count, plural, =1{הודעה חדשה אחת} other{{count} הודעות חדשות}}",
-    "markAllRead": "סמן הכל כנקרא"
+    "markAllRead": "סמן הכל כנקרא",
+    "usersAreTryingToJoinCourse": "משתמשים מנסים להצטרף לקורס שלך",
+    "denyAllUsers": "דחה את כל המשתמשים",
+    "denyAllKnocksDescription": "משתמשים אלה יידחו מהקורס. הם עשויים לנסות להצטרף שוב בכל עת."
 }

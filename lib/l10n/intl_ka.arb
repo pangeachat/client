@@ -1942,7 +1942,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-18 09:33:26.300563",
+    "@@last_modified": "2026-08-18 15:48:44.219308",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10656,5 +10656,8 @@
     "showMore": "მეტი",
     "showLess": "ნაკლები",
     "countNewMessages": "{count, plural, =1{1 ახალი შეტყობინება} other{{count} ახალი შეტყობინება}}",
-    "markAllRead": "ყველას წაკითხულად მონიშვნა"
+    "markAllRead": "ყველას წაკითხულად მონიშვნა",
+    "usersAreTryingToJoinCourse": "მომხმარებლები ცდილობენ თქვენს კურსზე გაწევრიანებას",
+    "denyAllUsers": "ყველა მომხმარებლის დაბლოკვა",
+    "denyAllKnocksDescription": "ეს მომხმარებლები დაბლოკილი იქნებიან კურსიდან. მათ შეუძლიათ ნებისმიერ დროს სცადონ ხელახლა გაწევრიანება."
 }

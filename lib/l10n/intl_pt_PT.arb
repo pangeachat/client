@@ -2564,7 +2564,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-18 09:33:31.075468",
+    "@@last_modified": "2026-08-18 15:48:47.814136",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10673,5 +10673,8 @@
     "showMore": "Mostrar mais",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
-    "markAllRead": "Marcar tudo como lido"
+    "markAllRead": "Marcar tudo como lido",
+    "usersAreTryingToJoinCourse": "Os utilizadores estão a tentar aderir ao seu curso",
+    "denyAllUsers": "Recusar todos os utilizadores",
+    "denyAllKnocksDescription": "Estes utilizadores serão rejeitados do curso. Poderão tentar aderir novamente a qualquer momento."
 }

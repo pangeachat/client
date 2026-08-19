@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 09:33:31.783810",
+    "@@last_modified": "2026-08-18 15:48:47.580492",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10700,5 +10700,8 @@
     "showMore": "Mostrar mais",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 nova mensagem} other{{count} novas mensagens}}",
-    "markAllRead": "Marcar tudo como lido"
+    "markAllRead": "Marcar tudo como lido",
+    "usersAreTryingToJoinCourse": "Usuários estão tentando entrar no seu curso",
+    "denyAllUsers": "Recusar todos os usuários",
+    "denyAllKnocksDescription": "Esses usuários serão rejeitados do curso. Eles podem tentar entrar novamente a qualquer momento."
 }

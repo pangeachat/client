@@ -2924,7 +2924,7 @@
     "loginToAccount": "ངའི་ཁུལ་གཅིག་ལ་སྤྱོད་ལམ་སྤྱོད་འབད།",
     "languages": "ཚོད་ལྟ",
     "@@locale": "bo",
-    "@@last_modified": "2026-08-18 09:33:25.439751",
+    "@@last_modified": "2026-08-18 15:48:40.601507",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -9367,5 +9367,8 @@
     "showMore": "མང་ཙམ་བསྟན་",
     "showLess": "ཉུང་ཙམ་བསྟན་",
     "countNewMessages": "{count, plural, =1{សារགསར་པ་ ༡} other{សារགསར་པ་ {count}}}",
-    "markAllRead": "ཚང་མ་བཀླགས་ཟིན་པར་མཚན་འཇོག་བྱེད་"
+    "markAllRead": "ཚང་མ་བཀླགས་ཟིན་པར་མཚན་འཇོག་བྱེད་",
+    "usersAreTryingToJoinCourse": "སློབ་མ་ཚོས་ཁྱེད་ཀྱི་སློབ་ཚན་ནང་ཞུགས་རྩིས་བྱེད་བཞིན་འདུག",
+    "denyAllUsers": "སློབ་མ་ཚང་མ་བཀག་འགོག",
+    "denyAllKnocksDescription": "སློབ་མ་འདི་ཚོ་སློབ་ཚན་ནས་བཀག་འགོག་བྱ་རྒྱུ་ཡིན། ཁོང་ཚོས་དུས་ནམ་ཡང་སླར་ཡང་ཞུགས་རྩིས་བྱེད་སྲིད།"
 }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 09:33:33.945837",
+    "@@last_modified": "2026-08-18 15:48:47.866643",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10488,5 +10488,8 @@
     "showMore": "Afișează mai mult",
     "showLess": "Afișează mai puțin",
     "countNewMessages": "{count, plural, =1{1 mesaj nou} other{{count} mesaje noi}}",
-    "markAllRead": "Marchează tot ca citit"
+    "markAllRead": "Marchează tot ca citit",
+    "usersAreTryingToJoinCourse": "Utilizatorii încearcă să se alăture cursului tău",
+    "denyAllUsers": "Refuză toți utilizatorii",
+    "denyAllKnocksDescription": "Acești utilizatori vor fi refuzați de la curs. Ei pot încerca să se alăture din nou oricând."
 }

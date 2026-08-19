@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 09:33:22.451507",
+    "@@last_modified": "2026-08-18 15:48:41.777877",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9844,5 +9844,8 @@
     "showMore": "نمایش بیشتر",
     "showLess": "نمایش کمتر",
     "countNewMessages": "{count, plural, =1{۱ پیام جدید} other{{count} پیام جدید}}",
-    "markAllRead": "علامت‌گذاری همه به عنوان خوانده‌شده"
+    "markAllRead": "علامت‌گذاری همه به عنوان خوانده‌شده",
+    "usersAreTryingToJoinCourse": "کاربران در تلاش برای پیوستن به دوره شما هستند",
+    "denyAllUsers": "رد کردن همه کاربران",
+    "denyAllKnocksDescription": "این کاربران از دوره رد خواهند شد. آنها ممکن است در هر زمان دوباره برای پیوستن تلاش کنند."
 }

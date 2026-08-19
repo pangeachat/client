@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-18 09:33:34.779083",
+    "@@last_modified": "2026-08-18 15:48:51.198518",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2144,5 +2144,8 @@
     "showMore": "Bonisa okwengeziwe",
     "showLess": "Bonisa okuncane",
     "countNewMessages": "{count, plural, =1{Umlayezo ongu-1 omusha} other{Imilayezo emisha engu-{count}}}",
-    "markAllRead": "Maka konke kufundiwe"
+    "markAllRead": "Maka konke kufundiwe",
+    "usersAreTryingToJoinCourse": "Abasebenzisi bazama ukujoyina ikhosi yakho",
+    "denyAllUsers": "Yenqaba bonke abasebenzisi",
+    "denyAllKnocksDescription": "Laba basebenzisi bazokwenqatshwa kule khosi. Bangazama ukujoyina futhi nganoma yisiphi isikhathi."
 }

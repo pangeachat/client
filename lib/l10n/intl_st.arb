@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-18 09:33:32.463614",
+    "@@last_modified": "2026-08-18 15:48:49.174922",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2144,5 +2144,8 @@
     "showMore": "Bontsha ho feta",
     "showLess": "Bontsha hanyane",
     "countNewMessages": "{count, plural, =1{1 molaetsa o motjha} other{melaetsa e metjha e {count}}}",
-    "markAllRead": "Tšoaea tsohle e le tse baliloeng"
+    "markAllRead": "Tšoaea tsohle e le tse baliloeng",
+    "usersAreTryingToJoinCourse": "Basebelisi ba leka ho kenela thupelo ea hau",
+    "denyAllUsers": "Hana basebelisi bohle",
+    "denyAllKnocksDescription": "Basebelisi bana ba tla hanoa ho kenela thupelo. Ba ka leka ho kenela hape neng kapa neng."
 }

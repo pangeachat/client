@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-18 09:33:23.323210",
+    "@@last_modified": "2026-08-18 15:48:42.457646",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9756,5 +9756,8 @@
     "showMore": "Mostrar máis",
     "showLess": "Mostrar menos",
     "countNewMessages": "{count, plural, =1{1 mensaxe nova} other{{count} mensaxes novas}}",
-    "markAllRead": "Marcar todo como lido"
+    "markAllRead": "Marcar todo como lido",
+    "usersAreTryingToJoinCourse": "Os usuarios están a intentar unirse ao teu curso",
+    "denyAllUsers": "Rexeitar todos os usuarios",
+    "denyAllKnocksDescription": "Estes usuarios serán rexeitados do curso. Poderán intentar unirse de novo en calquera momento."
 }

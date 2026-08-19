@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-18 09:33:28.951688",
+    "@@last_modified": "2026-08-18 15:48:46.332302",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2144,5 +2144,8 @@
     "showMore": "Tunjukkan lebih banyak",
     "showLess": "Tunjukkan lebih sedikit",
     "countNewMessages": "{count, plural, =1{1 mesej baharu} other{{count} mesej baharu}}",
-    "markAllRead": "Tandakan semua sudah dibaca"
+    "markAllRead": "Tandakan semua sudah dibaca",
+    "usersAreTryingToJoinCourse": "Pengguna cuba menyertai kursus anda",
+    "denyAllUsers": "Tolak semua pengguna",
+    "denyAllKnocksDescription": "Pengguna ini akan ditolak daripada kursus. Mereka boleh cuba menyertai semula pada bila-bila masa."
 }

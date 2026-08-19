@@ -1367,7 +1367,7 @@
     "playWithAI": "Joca con le IA pro ora",
     "courseStartDesc": "Pangea Bot es preste a comenzar a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ia",
-    "@@last_modified": "2026-08-18 09:33:24.886727",
+    "@@last_modified": "2026-08-18 15:48:46.229310",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10692,5 +10692,8 @@
     "showMore": "Monstrar plus",
     "showLess": "Monstrar minus",
     "countNewMessages": "{count, plural, =1{1 nove message} other{{count} nove messages}}",
-    "markAllRead": "Marcar tote legite"
+    "markAllRead": "Marcar tote legite",
+    "usersAreTryingToJoinCourse": "Usatores essaya unir se a tu curso",
+    "denyAllUsers": "Refusar tote le usatores",
+    "denyAllKnocksDescription": "Iste usatores essera rejectate del curso. Illes pote tentar unir se de novo in qualque momento."
 }

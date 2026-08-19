@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 09:33:26.746062",
+    "@@last_modified": "2026-08-18 15:48:44.558788",
     "about": "소개",
     "@about": {
         "type": "String",
@@ -9949,5 +9949,8 @@
     "showMore": "더 보기",
     "showLess": "간략히 보기",
     "countNewMessages": "{count, plural, =1{새 메시지 1개} other{새 메시지 {count}개}}",
-    "markAllRead": "모두 읽음으로 표시"
+    "markAllRead": "모두 읽음으로 표시",
+    "usersAreTryingToJoinCourse": "사용자들이 회원님의 코스에 참여하려고 합니다",
+    "denyAllUsers": "모든 사용자 거부",
+    "denyAllKnocksDescription": "이 사용자들은 코스에서 거부됩니다. 언제든지 다시 참여를 시도할 수 있습니다."
 }

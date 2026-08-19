@@ -12,6 +12,12 @@ import 'package:fluffychat/l10n/l10n.dart';
 /// `CourseAvatar` so the avatar doesn't shift as a course moves between
 /// states.
 class KnockingUsersBadge extends StatelessWidget {
+  /// The glyph a pending knock is drawn with, wherever it surfaces — this
+  /// badge and the course page's join-request card — so the two read as the
+  /// same alert. Distinct from the bell, which stays the course-ping mark
+  /// (#8462).
+  static const IconData icon = Icons.priority_high;
+
   final b.BadgePosition? position;
   final Widget? child;
 
@@ -27,7 +33,7 @@ class KnockingUsersBadge extends StatelessWidget {
         padding: const EdgeInsetsGeometry.all(2),
       ),
       badgeContent: Icon(
-        Icons.priority_high,
+        icon,
         color: Theme.of(context).colorScheme.onError,
         size: 12,
         semanticLabel: L10n.of(context).aUserIsKnocking,

@@ -3098,7 +3098,7 @@
     "playWithAI": "Joca con AI pro ora",
     "courseStartDesc": "Pangea Bot es preste a partir a qualunque momento!\n\n...ma apprender es melior con amicos!",
     "@@locale": "ie",
-    "@@last_modified": "2026-08-18 09:33:27.467525",
+    "@@last_modified": "2026-08-18 15:48:43.745839",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10388,5 +10388,8 @@
     "showMore": "Taispeáin níos mó",
     "showLess": "Taispeáin níos lú",
     "countNewMessages": "{count, plural, =1{1 teachtaireacht nua} other{{count} teachtaireachtaí nua}}",
-    "markAllRead": "Marcáil go léir mar léite"
+    "markAllRead": "Marcáil go léir mar léite",
+    "usersAreTryingToJoinCourse": "Tá úsáideoirí ag iarraidh dul isteach i do chúrsa",
+    "denyAllUsers": "Diúltaigh do gach úsáideoir",
+    "denyAllKnocksDescription": "Diúltófar do na húsáideoirí seo ón gcúrsa. Féadfaidh siad iarracht a dhéanamh dul isteach arís ag am ar bith."
 }

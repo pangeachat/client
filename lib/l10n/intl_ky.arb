@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-18 09:33:29.957301",
+    "@@last_modified": "2026-08-18 15:48:45.207792",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2144,5 +2144,8 @@
     "showMore": "Көбүрөөк көрсөтүү",
     "showLess": "Азыраак көрсөтүү",
     "countNewMessages": "{count, plural, =1{1 жаңы билдирүү} other{{count} жаңы билдирүүлөр}}",
-    "markAllRead": "Баарын окулган деп белгилөө"
+    "markAllRead": "Баарын окулган деп белгилөө",
+    "usersAreTryingToJoinCourse": "Колдонуучулар курсуңузга кошулууга аракет кылып жатышат",
+    "denyAllUsers": "Бардык колдонуучулардан баш тартуу",
+    "denyAllKnocksDescription": "Бул колдонуучулар курстан четтетилет. Алар каалаган убакта кайра кошулууга аракет кылышы мүмкүн."
 }

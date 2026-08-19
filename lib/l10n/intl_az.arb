@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-18 09:33:20.800080",
+    "@@last_modified": "2026-08-18 15:48:40.160332",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2144,5 +2144,8 @@
     "showMore": "Daha çox göstər",
     "showLess": "Daha az göstər",
     "countNewMessages": "{count, plural, =1{1 yeni mesaj} other{{count} yeni mesaj}}",
-    "markAllRead": "Hamısını oxunmuş kimi qeyd et"
+    "markAllRead": "Hamısını oxunmuş kimi qeyd et",
+    "usersAreTryingToJoinCourse": "İstifadəçilər kursunuza qoşulmağa çalışır",
+    "denyAllUsers": "Bütün istifadəçiləri rədd et",
+    "denyAllKnocksDescription": "Bu istifadəçilər kursdan rədd ediləcək. Onlar istənilən vaxt yenidən qoşulmağa cəhd edə bilərlər."
 }

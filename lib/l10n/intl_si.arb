@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-18 09:33:31.689214",
+    "@@last_modified": "2026-08-18 15:48:48.324352",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2144,5 +2144,8 @@
     "showMore": "තවත් පෙන්වන්න",
     "showLess": "අඩු පෙන්වන්න",
     "countNewMessages": "{count, plural, =1{නව පණිවිඩ 1ක්} other{නව පණිවිඩ {count}ක්}}",
-    "markAllRead": "සියල්ල කියවූ ලෙස සලකුණු කරන්න"
+    "markAllRead": "සියල්ල කියවූ ලෙස සලකුණු කරන්න",
+    "usersAreTryingToJoinCourse": "පරිශීලකයන් ඔබේ පාඨමාලාවට සම්බන්ධ වීමට උත්සාහ කරයි",
+    "denyAllUsers": "සියලුම පරිශීලකයන් ප්‍රතික්ෂේප කරන්න",
+    "denyAllKnocksDescription": "මෙම පරිශීලකයන් පාඨමාලාවෙන් ප්‍රතික්ෂේප කරනු ලැබේ. ඔවුන්ට ඕනෑම වේලාවක නැවත සම්බන්ධ වීමට උත්සාහ කළ හැක."
 }

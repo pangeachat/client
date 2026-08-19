@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-18 09:33:30.357446",
+    "@@last_modified": "2026-08-18 15:48:47.316042",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2144,5 +2144,8 @@
     "showMore": "Onjezani zambiri",
     "showLess": "Chepetsani",
     "countNewMessages": "{count, plural, =1{uthenga umodzi watsopano} other{mameseji {count} atsopano}}",
-    "markAllRead": "Chongani zonse kuti zaŵerengedwa"
+    "markAllRead": "Chongani zonse kuti zaŵerengedwa",
+    "usersAreTryingToJoinCourse": "Ogwiritsa ntchito akuyesera kulowa maphunziro anu",
+    "denyAllUsers": "Kana ogwiritsa ntchito onse",
+    "denyAllKnocksDescription": "Ogwiritsa ntchitowa adzakanidwa kulowa maphunzirowa. Atha kuyesanso kulowa nthawi iliyonse."
 }

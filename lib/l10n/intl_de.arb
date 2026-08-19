@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-18 09:33:21.781290",
+    "@@last_modified": "2026-08-18 15:48:40.903527",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9743,5 +9743,8 @@
     "showMore": "Mehr anzeigen",
     "showLess": "Weniger anzeigen",
     "countNewMessages": "{count, plural, =1{1 neue Nachricht} other{{count} neue Nachrichten}}",
-    "markAllRead": "Alle als gelesen markieren"
+    "markAllRead": "Alle als gelesen markieren",
+    "usersAreTryingToJoinCourse": "Nutzer versuchen, Ihrem Kurs beizutreten",
+    "denyAllUsers": "Alle Nutzer ablehnen",
+    "denyAllKnocksDescription": "Diese Nutzer werden vom Kurs abgelehnt. Sie können jederzeit erneut versuchen beizutreten."
 }

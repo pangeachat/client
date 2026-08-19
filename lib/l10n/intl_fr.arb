@@ -1,6 +1,6 @@
 {
     "@@locale": "fr",
-    "@@last_modified": "2026-08-18 09:33:23.164667",
+    "@@last_modified": "2026-08-18 15:48:41.761695",
     "about": "À propos",
     "@about": {
         "type": "String",
@@ -10111,5 +10111,8 @@
     "showMore": "Afficher plus",
     "showLess": "Afficher moins",
     "countNewMessages": "{count, plural, =1{1 nouveau message} other{{count} nouveaux messages}}",
-    "markAllRead": "Tout marquer comme lu"
+    "markAllRead": "Tout marquer comme lu",
+    "usersAreTryingToJoinCourse": "Des utilisateurs essaient de rejoindre votre cours",
+    "denyAllUsers": "Refuser tous les utilisateurs",
+    "denyAllKnocksDescription": "Ces utilisateurs seront rejetés du cours. Ils pourront tenter de le rejoindre à nouveau à tout moment."
 }

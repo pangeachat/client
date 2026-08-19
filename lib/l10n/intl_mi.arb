@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-18 09:33:28.196855",
+    "@@last_modified": "2026-08-18 15:48:46.199910",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2144,5 +2144,8 @@
     "showMore": "Whakaatu anō",
     "showLess": "Whakaatu iti iho",
     "countNewMessages": "{count, plural, =1{1 karere hou} other{{count} karere hou}}",
-    "markAllRead": "Tohua kua pānuitia katoatia"
+    "markAllRead": "Tohua kua pānuitia katoatia",
+    "usersAreTryingToJoinCourse": "Kei te ngana ngā kaiwhakamahi ki te uru ki tō akoranga",
+    "denyAllUsers": "Whakakāhore i ngā kaiwhakamahi katoa",
+    "denyAllKnocksDescription": "Ka whakahēhia ēnei kaiwhakamahi kia kaua e uru ki te akoranga. Ka taea e rātou te ngana anō ki te uru mai i ngā wā katoa."
 }
