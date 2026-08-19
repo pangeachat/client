@@ -470,15 +470,28 @@ class _CallPageState extends State<CallPage> {
   ///
   /// Audio needs no widget — LiveKit plays remote audio itself — so a voice call
   /// has none, and that is correct rather than a missing case.
-  List<lk.VideoTrack> _videoTracks() => <lk.VideoTrack>[
-    ..._media.room.remoteParticipants.values
-        .expand((p) => p.videoTrackPublications)
-        .map((p) => p.track)
-        .whereType<lk.VideoTrack>(),
-    ...?_media.room.localParticipant?.videoTrackPublications
-        .map((p) => p.track)
-        .whereType<lk.VideoTrack>(),
-  ];
+  /// Every video track on the call, ours and theirs.
+  ///
+  /// Latches [_usedVideo] on the way past. The timeline records what happened
+  /// rather than what was asked for, and the peer turning their camera on makes
+  /// this a video call just as surely as our own — reading only our own switch
+  /// wrote a call the two people watched each other on as a voice call. Asked
+  /// here because this is the one place that cannot miss it: there is no
+  /// notification for a remote camera, but nothing can appear on screen without
+  /// coming through this.
+  List<lk.VideoTrack> _videoTracks() {
+    final tracks = <lk.VideoTrack>[
+      ..._media.room.remoteParticipants.values
+          .expand((p) => p.videoTrackPublications)
+          .map((p) => p.track)
+          .whereType<lk.VideoTrack>(),
+      ...?_media.room.localParticipant?.videoTrackPublications
+          .map((p) => p.track)
+          .whereType<lk.VideoTrack>(),
+    ];
+    if (tracks.isNotEmpty) _usedVideo = true;
+    return tracks;
+  }
 
   /// The peer full-bleed with this device inset, the layout every video call
   /// uses — a two-up grid would give our own face equal billing with theirs.

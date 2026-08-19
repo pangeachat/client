@@ -180,11 +180,14 @@ class ActiveCall extends ChangeNotifier {
       ),
     ).shouldRecord;
 
-    // Only once somebody is on the other end. A caller who talks while it is
-    // still ringing is not in a conversation, and crediting that audio to the
-    // call meant analytics for words nobody heard — as well as uploading and
-    // transcribing a ring nobody wanted.
-    _wanted = elected && _peerArrived;
+    // Only while there is somebody who can actually hear it. A caller talking
+    // while it rings is talking to nobody, and so is one talking through a
+    // dropped connection — the roster deliberately holds its last picture
+    // across a reconnect so a blip does not end the call, which means presence
+    // alone still reads as somebody being there. Either way the words went
+    // nowhere, and crediting them would put speech in a learner's analytics
+    // that no one ever heard.
+    _wanted = elected && _peerArrived && (_roster?.isConnected ?? false);
     // Handovers are serialised. A device can be displaced and reinstated faster
     // than a flush completes, and starting a new recording while the previous
     // stop is still unwinding would let that stop cancel the new tap and close

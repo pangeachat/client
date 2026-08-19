@@ -317,11 +317,20 @@ class FakeRoster extends CallRoster {
   bool connected = true;
   bool disposed = false;
 
+  /// Modelled because the two ways of not being connected mean opposite things:
+  /// while the connection is coming back the roster holds its last picture, and
+  /// once it has gone for good it clears. A double with only one of them turned
+  /// a reconnect into everybody hanging up.
+  bool recovering = false;
+
   @override
   Iterable<String> get remoteIdentities => identities;
 
   @override
   bool get roomConnected => connected;
+
+  @override
+  bool get roomRecovering => !connected && recovering;
 
   @override
   void recompute() {
@@ -348,7 +357,7 @@ class FakeTrack implements AudioTrack {
 
 class _NullSink implements CallAudioSink {
   @override
-  Future<void> deliver(PcmChunk chunk) async {}
+  Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
   @override
   Future<void> close() async {}
 }
@@ -490,6 +499,34 @@ void main() {
       // The caller is already there, so there is no waiting for an arrival that
       // has already happened — the roster is read rather than listened for.
       expect(trace.steps, contains('capture.start'));
+    });
+  });
+
+  group('a connection that drops mid-call', () {
+    test('stops recording, and starts again when it comes back', () async {
+      final (call, calls, media, _) = await build();
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.isRecording, isTrue);
+
+      // The roster deliberately holds its last picture across a reconnect, so
+      // they still read as present — but nothing this learner says is reaching
+      // them, and none of it should be credited as call speech.
+      media.fakeRoster!.connected = false;
+      media.fakeRoster!.recovering = true;
+      media.fakeRoster!.recompute();
+      await pumpEventQueue();
+      expect(
+        call.isRecording,
+        isFalse,
+        reason: 'words that went nowhere are not part of the conversation',
+      );
+
+      media.fakeRoster!.connected = true;
+      media.fakeRoster!.recovering = false;
+      media.fakeRoster!.recompute();
+      await pumpEventQueue();
+      expect(call.isRecording, isTrue, reason: 'and it picks back up');
     });
   });
 

@@ -25,8 +25,14 @@ class RecordingSink implements CallAudioSink {
     : failuresLeft = failuresLeft ?? {};
 
   @override
-  Future<void> deliver(PcmChunk chunk) async {
-    if (block != null) await block!.future;
+  Future<void> deliver(PcmChunk chunk, {Duration? within}) async {
+    // Honoured, because the contract puts the limit on the attempt rather than
+    // on whoever is waiting for it. A double that ignored it could not show a
+    // hanging delivery being given up on at all.
+    final blocked = block;
+    if (blocked != null) {
+      await (within == null ? blocked.future : blocked.future.timeout(within));
+    }
     attempts.add(chunk.index);
     final left = failuresLeft[chunk.index] ?? 0;
     if (left > 0) {

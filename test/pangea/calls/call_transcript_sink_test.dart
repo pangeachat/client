@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:typed_data';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -69,6 +70,7 @@ void main() {
   CallTranscriptSink sink({
     SpeechToTextResponseModel Function(int call)? respond,
     Set<int> failOn = const {},
+    Set<int> hangOn = const {},
   }) {
     sent = [];
     return CallTranscriptSink(
@@ -78,10 +80,37 @@ void main() {
         final index = sent.length;
         sent.add(request);
         if (failOn.contains(index)) throw StateError('provider refused');
+        // Never answers, and is never cancelled — a request that has gone quiet
+        // rather than one that failed.
+        if (hangOn.contains(index)) await Completer<void>().future;
         return respond?.call(index) ?? silent;
       },
     );
   }
+
+  group('a request that goes quiet', () {
+    test('is given up on, and the next attempt is a real one', () async {
+      // The first request never answers. A limit that only stopped the CALLER
+      // waiting left it listed as in flight, so the retry joined the same dead
+      // request and all three attempts were one.
+      final s = sink(hangOn: {0}, respond: (_) => spoken);
+      final within = const Duration(milliseconds: 50);
+
+      await expectLater(
+        s.deliver(chunk(0), within: within),
+        throwsA(isA<TimeoutException>()),
+      );
+      expect(sent, hasLength(1));
+
+      await s.deliver(chunk(0), within: within);
+      expect(
+        sent,
+        hasLength(2),
+        reason: 'the retry has to reach the provider, not the abandoned call',
+      );
+      expect(s.hasTranscript, isTrue);
+    });
+  });
 
   group('CallTranscriptSink', () {
     test('sends each chunk as WAV at the rate it was captured', () async {

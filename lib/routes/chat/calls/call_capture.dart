@@ -18,7 +18,12 @@ abstract class CallAudioSink {
   /// Delivers one chunk. Safe to call again with the same chunk: the server keys
   /// a result by capture session and chunk index, so a redelivery credits
   /// nothing twice.
-  Future<void> deliver(PcmChunk chunk);
+  ///
+  /// [within] is how long the attempt itself may take. Given to the sink rather
+  /// than applied by the caller because it has to bound the WORK: a caller that
+  /// merely stopped waiting leaves the attempt running, and a retry that joins
+  /// it is not a second attempt at all.
+  Future<void> deliver(PcmChunk chunk, {Duration? within});
 
   /// Signals that no further chunks are coming for this call.
   Future<void> close();
@@ -229,7 +234,7 @@ class CallCaptureService {
     for (var attempt = 0; attempt < _deliveryAttempts; attempt++) {
       if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
       try {
-        await sink.deliver(chunk).timeout(deliveryTimeout);
+        await sink.deliver(chunk, within: deliveryTimeout);
         return;
       } catch (e, s) {
         Logs().w(

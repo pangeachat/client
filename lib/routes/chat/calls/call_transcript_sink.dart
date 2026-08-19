@@ -87,7 +87,7 @@ class CallTranscriptSink implements CallAudioSink {
   bool get hasTranscript => _byIndex.values.any((r) => r.hasUsableTranscript);
 
   @override
-  Future<void> deliver(PcmChunk chunk) {
+  Future<void> deliver(PcmChunk chunk, {Duration? within}) {
     // A redelivery of a chunk still being transcribed joins that work rather
     // than returning as though it were finished. The caller gives each attempt a
     // limit and retries; without this, the retry reported success while the
@@ -103,7 +103,7 @@ class CallTranscriptSink implements CallAudioSink {
     // A block, not an arrow. Removing from the map RETURNS the future being
     // removed, and whenComplete waits for a future its callback returns — so
     // the arrow form makes this future wait for itself and it never completes.
-    final work = _transcribeChunk(chunk).whenComplete(() {
+    final work = _transcribeChunk(chunk, within).whenComplete(() {
       _running.remove(chunk.index);
     });
     _running[chunk.index] = work;
@@ -115,9 +115,14 @@ class CallTranscriptSink implements CallAudioSink {
   /// missing from them.
   final Map<int, Future<void>> _running = {};
 
-  Future<void> _transcribeChunk(PcmChunk chunk) async {
+  Future<void> _transcribeChunk(PcmChunk chunk, Duration? within) async {
     try {
-      _byIndex[chunk.index] = await transcribe(
+      // Bounded here, where the request is, so that giving up on it is a
+      // failure of the attempt: the index is released below and the next
+      // attempt issues a genuinely new request. Bounded by the waiter instead,
+      // the abandoned one stayed listed as in flight and every retry waited on
+      // it again — three attempts that were only ever one.
+      final request = transcribe(
         SpeechToTextRequestModel(
           audioContent: chunk.toWav(),
           config: SpeechToTextAudioConfigModel(
@@ -128,6 +133,9 @@ class CallTranscriptSink implements CallAudioSink {
           ),
         ),
       );
+      _byIndex[chunk.index] = await (within == null
+          ? request
+          : request.timeout(within));
     } catch (e, s) {
       // Released and re-thrown, so the caller's retry can try again. Swallowing
       // this reported success to a caller whose whole purpose is to retry, and
