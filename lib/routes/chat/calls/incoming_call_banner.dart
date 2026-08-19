@@ -31,7 +31,6 @@ class IncomingCallBanner extends StatefulWidget {
 class _IncomingCallBannerState extends State<IncomingCallBanner> {
   StreamSubscription<IncomingCallNotification>? _rings;
   StreamSubscription<matrix.Event>? _ownDeclines;
-  StreamSubscription<String>? _ownJoins;
   Timer? _stillRinging;
   IncomingCallNotification? _ringing;
   String? _listeningTo;
@@ -68,7 +67,6 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
     _rings?.cancel();
     _ownDeclines?.cancel();
-    _ownJoins?.cancel();
     _listeningTo = account;
     // A prompt belonging to the account we just left is not this one's.
     if (_ringing != null) setState(() => _ringing = null);
@@ -89,18 +87,6 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       }
       setState(() => _ringing = ring);
       _watchForGiveUp(ring);
-    });
-
-    // Answered on another phone. The membership that device writes is the only
-    // thing that says so, and until this prompt goes it is still offering to
-    // join a call that has been picked up — and to decline one, which the
-    // caller can still act on in the moment before their own view catches up.
-    _ownJoins = matrixState.callService.ownCallJoins().listen((roomId) {
-      if (!mounted) return;
-      final showing = _ringing;
-      if (showing == null || showing.event.room.id != roomId) return;
-      _declined.add(showing.event.eventId);
-      _dismiss();
     });
 
     // Answering on one phone has to stop the others ringing. The decline this
@@ -135,7 +121,6 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void dispose() {
     _rings?.cancel();
     _ownDeclines?.cancel();
-    _ownJoins?.cancel();
     _stillRinging?.cancel();
     super.dispose();
   }

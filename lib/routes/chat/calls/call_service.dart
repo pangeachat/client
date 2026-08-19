@@ -494,33 +494,20 @@ class CallService {
         event.senderId != client.userID,
   );
 
-  /// This account joining a call, on whichever device.
-  ///
-  /// Read from room state rather than from the local session, because the whole
-  /// point is to hear about a DIFFERENT device. The membership is written by
-  /// whoever answers, so a phone still ringing learns the call was picked up
-  /// and can put its prompt away.
-  ///
-  /// Deliberately not routed through the SDK's VoIP helpers: asking those would
-  /// build a VoIP instance — listeners, a scan of every joined room — on a
-  /// device that is not in a call. A leave writes empty content, which is why
-  /// presence is read from the content rather than from the event existing.
-  Stream<String> ownCallJoins() => client.onRoomState.stream
-      .where(
-        (update) =>
-            update.state.type == EventTypes.GroupCallMember &&
-            (update.state.stateKey?.contains(client.userID ?? '\u0000') ??
-                false) &&
-            update.state.content.isNotEmpty,
-      )
-      .map((update) => update.roomId);
-
   /// Declines this account sent, from any of its devices.
   ///
   /// The mirror of [declinesIn], which deliberately leaves them out: a caller
   /// must never be hung up by its own decline. A device that is still ringing is
-  /// the opposite case — somebody has answered this call on another phone, and
-  /// this one should stop offering to answer it.
+  /// the opposite case — somebody has turned this call down on another phone,
+  /// and this one should stop offering to answer it.
+  ///
+  /// A decline is the only signal used for this. Answering elsewhere writes a
+  /// membership, and reading THAT would silence real calls: a device that
+  /// crashed leaves one behind that reads as live for about twelve minutes,
+  /// which is why this feature does not use membership for liveness anywhere.
+  /// The cost is a prompt that lingers on a second device until the ring lapses;
+  /// it cannot end the answered call, because a caller ignores a decline once
+  /// somebody is on the line.
   Stream<Event> ownDeclines() => client.onTimelineEvent.stream.where(
     (event) =>
         event.type == PangeaEventTypes.callDecline &&
