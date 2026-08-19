@@ -3360,9 +3360,7 @@
     "enableAutocorrectPopupTitle": "Додайте клавіатуру цільової мови, перейшовши до:",
     "enableAutocorrectPopupSteps": "  • Налаштування\n  • Загальні\n  • Клавіатура\n  • Клавіатури\n  • Додати нову клавіатуру",
     "enableAutocorrectPopupDescription": "Після вибору мови ви можете натиснути маленьку іконку глобуса в нижньому лівому куті клавіатури, щоб активувати нововстановлену клавіатуру.",
-    "downloadGboardTitle": "Завантажте Gboard з Google Play Store, щоб увімкнути автокорекцію та інші функції клавіатури:",
     "downloadGboardSteps": " • Завантажити Gboard\n  • Відкрити додаток\n  • Мови\n  • Додати клавіатуру\n  • Вибрати мову\n  • Вибрати тип клавіатури\n  • Готово",
-    "downloadGboardDescription": "Після вибору мови ви можете натиснути маленьку іконку глобуса в нижньому лівому куті клавіатури, щоб активувати нововстановлену клавіатуру.",
     "enableAutocorrectWarning": "Увага! Потрібно додати клавіатуру цільової мови",
     "displayName": "Відображуване ім'я",
     "leaveRoomDescription": "Ви збираєтеся покинути цей чат. Інші користувачі побачать, що ви покинули чат.",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9762,5 +9752,9 @@
     "denyAllKnocksDescription": "Цим користувачам буде відмовлено в доступі до курсу. Вони можуть спробувати приєднатися знову в будь-який час.",
     "courseNameHint": "Назва курсу",
     "typeCourseCodeToConfirm": "Для підтвердження введіть код курсу {code} нижче.",
-    "typeCourseNameToConfirm": "Для підтвердження введіть назву курсу {name} нижче."
+    "typeCourseNameToConfirm": "Для підтвердження введіть назву курсу {name} нижче.",
+    "inviteAFriend": "Запросити друга",
+    "autocorrectAndroidDialogTitle": "Автовиправлення цільовою мовою",
+    "autocorrectAndroidDialogBody": "Коли ви друкуєте в чаті, клавіатура перемикається на цільову мову та виправляє орфографію цією мовою.",
+    "autocorrectAndroidFallbackTitle": "Якщо ваша клавіатура не пропонує цільову мову, встановіть Gboard і додайте мову там:"
 }

@@ -3167,9 +3167,7 @@
     "enableAutocorrectPopupTitle": "أضف لوحة مفاتيح اللغة المستهدفة الخاصة بك عن طريق الذهاب إلى:",
     "enableAutocorrectPopupSteps": "  • الإعدادات\n  • عام\n  • لوحة المفاتيح\n  • لوحات المفاتيح\n  • أضف لوحة مفاتيح جديدة",
     "enableAutocorrectPopupDescription": "بمجرد اختيار اللغة، يمكنك النقر على أيقونة الكرة الأرضية الصغيرة في أسفل يسار لوحة المفاتيح لتفعيل لوحة المفاتيح المثبتة حديثًا.",
-    "downloadGboardTitle": "قم بتنزيل Gboard من متجر Google Play لتمكين التصحيح التلقائي وميزات لوحة المفاتيح الأخرى:",
     "downloadGboardSteps": " • قم بتنزيل Gboard\n  • افتح التطبيق\n  • اللغات\n  • أضف لوحة مفاتيح\n  • اختر اللغة\n  • اختر نوع لوحة المفاتيح\n  • تم",
-    "downloadGboardDescription": "بمجرد اختيار اللغة، يمكنك النقر على أيقونة الكرة الأرضية الصغيرة في أسفل يسار لوحة المفاتيح لتفعيل لوحة المفاتيح المثبتة حديثًا.",
     "enableAutocorrectWarning": "تحذير! يتطلب إضافة لوحة مفاتيح اللغة المستهدفة الخاصة بك",
     "displayName": "اسم العرض",
     "leaveRoomDescription": "أنت على وشك مغادرة هذه الدردشة. سيرى المستخدمون الآخرون أنك غادرت الدردشة.",
@@ -5699,15 +5697,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10068,5 +10058,9 @@
     "denyAllKnocksDescription": "سيتم رفض هؤلاء المستخدمين من الدورة التدريبية. وقد يحاولون الانضمام مرة أخرى في أي وقت.",
     "courseNameHint": "اسم الدورة",
     "typeCourseCodeToConfirm": "للتأكيد، اكتب رمز الدورة {code} أدناه.",
-    "typeCourseNameToConfirm": "للتأكيد، اكتب اسم الدورة {name} أدناه."
+    "typeCourseNameToConfirm": "للتأكيد، اكتب اسم الدورة {name} أدناه.",
+    "inviteAFriend": "ادعُ صديقًا",
+    "autocorrectAndroidDialogTitle": "التصحيح التلقائي بلغتك المستهدفة",
+    "autocorrectAndroidDialogBody": "عند الكتابة في الدردشة، ستتحول لوحة المفاتيح إلى لغتك المستهدفة وتصحح الأخطاء الإملائية في تلك اللغة.",
+    "autocorrectAndroidFallbackTitle": "إذا كانت لوحة المفاتيح لا توفر لغتك المستهدفة، فقم بتثبيت Gboard وأضف اللغة هناك:"
 }

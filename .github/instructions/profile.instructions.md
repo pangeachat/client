@@ -12,6 +12,7 @@ How profile settings are structured, stored, propagated, and surfaced to other u
 
 - **`UserSettings`** — learning prefs: target/source language, CEFR level, gender, voice, country, about, etc.
 - **`UserToolSettings`** — per-tool on/off toggles (interactive translator, grammar, immersion mode, definitions, auto-WA, autocorrect, and per-surface audio: words, choices, incoming messages).
+  - **Device autocorrect default is platform-conditional**: on for Android, where the composer also passes the target language to the keyboard (`hintLocales`) so corrections land in the L2; off on iOS until the keyboard language can be targeted there ([#8465](https://github.com/pangeachat/client/issues/8465)); never on web. The stored value stays unset until the user touches the toggle, so each device resolves its own default and an explicit choice, once made, syncs to every device. Profiles saved before the default flipped keep their stored value ([#8466](https://github.com/pangeachat/client/issues/8466)).
 - **`InstructionSettings`** — which instructional tooltips the user has dismissed.
 
 A separate **`PublicProfileModel`** (in [public_profile_model.dart](lib/pangea/user/public_profile_model.dart)) holds data visible to other users: analytics level/XP per language, country, and about. It lives on the Matrix user profile (public), not in account data.

@@ -3278,9 +3278,7 @@
     "enableAutocorrectPopupTitle": "Aggiungi la tastiera della lingua di destinazione andando su:",
     "enableAutocorrectPopupSteps": "  • Impostazioni\n  • Generali\n  • Tastiera\n  • Tastiere\n  • Aggiungi nuova tastiera",
     "enableAutocorrectPopupDescription": "Una volta selezionata la lingua, puoi cliccare sull'icona del globo in basso a sinistra della tastiera per attivare la tastiera appena installata.",
-    "downloadGboardTitle": "Scarica Gboard dal Google Play Store per abilitare la correzione automatica e altre funzioni della tastiera:",
     "downloadGboardSteps": " • Scarica Gboard\n  • Apri l'app\n  • Lingue\n  • Aggiungi tastiera\n  • Seleziona lingua\n  • Seleziona tipo di tastiera\n  • Fatto",
-    "downloadGboardDescription": "Una volta selezionata la lingua, puoi cliccare sull'icona del globo in basso a sinistra della tastiera per attivare la tastiera appena installata.",
     "enableAutocorrectWarning": "Attenzione! È necessario aggiungere la tastiera della lingua di destinazione",
     "displayName": "Nome visualizzato",
     "leaveRoomDescription": "Stai per uscire da questa chat. Gli altri utenti vedranno che hai lasciato la chat.",
@@ -5492,15 +5490,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9835,5 +9825,9 @@
     "denyAllKnocksDescription": "Questi utenti verranno rifiutati dal corso. Potranno tentare di unirsi di nuovo in qualsiasi momento.",
     "courseNameHint": "Nome del corso",
     "typeCourseCodeToConfirm": "Per confermare, digita il codice del corso {code} qui sotto.",
-    "typeCourseNameToConfirm": "Per confermare, digita il nome del corso {name} qui sotto."
+    "typeCourseNameToConfirm": "Per confermare, digita il nome del corso {name} qui sotto.",
+    "inviteAFriend": "Invita un amico",
+    "autocorrectAndroidDialogTitle": "Correzione automatica nella lingua di destinazione",
+    "autocorrectAndroidDialogBody": "Quando digiti in una chat, la tastiera passerà alla lingua di destinazione e correggerà l'ortografia in quella lingua.",
+    "autocorrectAndroidFallbackTitle": "Se la tastiera non offre la lingua di destinazione, installa Gboard e aggiungi la lingua lì:"
 }

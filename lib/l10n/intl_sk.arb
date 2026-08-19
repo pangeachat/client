@@ -2193,9 +2193,7 @@
     "enableAutocorrectPopupTitle": "Pridajte klávesnicu cieľového jazyka prechádzaním do:",
     "enableAutocorrectPopupSteps": "  • Nastavenia\n  • Všeobecné\n  • Klávesnica\n  • Klávesnice\n  • Pridať novú klávesnicu",
     "enableAutocorrectPopupDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
-    "downloadGboardTitle": "Stiahnite si Gboard z Obchodu Google Play na povolenie automatickej korekcie a ďalších funkcií klávesnice:",
     "downloadGboardSteps": " • Stiahnite si Gboard\n  • Otvorte aplikáciu\n  • Jazyky\n  • Pridať klávesnicu\n  • Vybrať jazyk\n  • Vybrať typ klávesnice\n  • Hotovo",
-    "downloadGboardDescription": "Po výbere jazyka môžete kliknúť na malú ikonu glóbusu v ľavom spodnom rohu klávesnice na aktiváciu novozaloženej klávesnice.",
     "enableAutocorrectWarning": "Varovanie! Vyžaduje pridanie klávesnice cieľového jazyka",
     "displayName": "Zobrazované meno",
     "leaveRoomDescription": "Chystáte sa opustiť tento chat. Ostatní používatelia uvidia, že ste opustili chat.",
@@ -6334,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10707,5 +10697,9 @@
     "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť.",
     "courseNameHint": "Názov kurzu",
     "typeCourseCodeToConfirm": "Pre potvrdenie zadajte kód kurzu {code} nižšie.",
-    "typeCourseNameToConfirm": "Pre potvrdenie zadajte názov kurzu {name} nižšie."
+    "typeCourseNameToConfirm": "Pre potvrdenie zadajte názov kurzu {name} nižšie.",
+    "inviteAFriend": "Pozvať priateľa",
+    "autocorrectAndroidDialogTitle": "Automatické opravy v cieľovom jazyku",
+    "autocorrectAndroidDialogBody": "Keď píšete v chate, klávesnica sa prepne na váš cieľový jazyk a opraví pravopis v tomto jazyku.",
+    "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:"
 }

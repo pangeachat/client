@@ -1604,9 +1604,7 @@
     "enableAutocorrectPopupTitle": "Dodajte tipkovnico za ciljni jezik tako, da greste na:",
     "enableAutocorrectPopupSteps": "  • Nastavitve\n  • Splošno\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novo tipkovnico",
     "enableAutocorrectPopupDescription": "Ko je jezik izbran, lahko kliknete na majhno ikono zemljevide na spodnjem levem delu tipkovnice, da aktivirate novo nameščeno tipkovnico.",
-    "downloadGboardTitle": "Prenesite Gboard iz trgovine Google Play, da omogočite samodejno popravljanje in druge funkcije tipkovnice:",
     "downloadGboardSteps": " • Prenesi Gboard\n  • Odpri aplikacijo\n  • Jezik\n  • Dodaj tipkovnico\n  • Izberi jezik\n  • Izberi vrsto tipkovnice\n  • Končano",
-    "downloadGboardDescription": "Ko je jezik izbran, lahko kliknete majhno ikono zemeljske globus na spodnjem levem delu vaše tipkovnice, da aktivirate novo nameščeno tipkovnico.",
     "enableAutocorrectWarning": "Opozorilo! Potrebno je dodati tipkovnico ciljanega jezika",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Približujete se izstopu iz tega klepeta. Drugi uporabniki bodo videli, da ste zapustili klepet.",
@@ -6334,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10707,5 +10697,9 @@
     "denyAllKnocksDescription": "Ti uporabniki bodo zavrnjeni iz tečaja. Lahko se poskusijo znova pridružiti kadar koli.",
     "courseNameHint": "Ime tečaja",
     "typeCourseCodeToConfirm": "Za potrditev spodaj vnesite kodo tečaja {code}.",
-    "typeCourseNameToConfirm": "Za potrditev spodaj vnesite ime tečaja {name}."
+    "typeCourseNameToConfirm": "Za potrditev spodaj vnesite ime tečaja {name}.",
+    "inviteAFriend": "Povabi prijatelja",
+    "autocorrectAndroidDialogTitle": "Samodejni popravek v vašem ciljnem jeziku",
+    "autocorrectAndroidDialogBody": "Ko tipkate v klepetu, se bo tipkovnica preklopila na vaš ciljni jezik in popravljala črkovanje v tem jeziku.",
+    "autocorrectAndroidFallbackTitle": "Če vaša tipkovnica ne ponuja vašega ciljnega jezika, namestite Gboard in dodajte jezik tam:"
 }

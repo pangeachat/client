@@ -3370,9 +3370,7 @@
     "enableAutocorrectPopupTitle": "Lisa oma sihtkeele klaviatuur, minnes aadressile:",
     "enableAutocorrectPopupSteps": "  • Seaded\n  • Üldine\n  • Klaviatuur\n  • Klaviatuurid\n  • Lisa uus klaviatuur",
     "enableAutocorrectPopupDescription": "Kui keel on valitud, saate klaviatuuri vasakus alumises nurgas oleva väikese globaalse ikooni klõpsates aktiveerida hiljuti installitud klaviatuuri.",
-    "downloadGboardTitle": "Laadige Gboard alla Google Play poest, et lubada automaatparandus ja teisi klaviatuuri funktsioone:",
     "downloadGboardSteps": " • Laadige Gboard alla\n  • Avage rakendus\n  • Keeled\n  • Lisa klaviatuur\n  • Valige keel\n  • Valige klaviatuuri tüüp\n  • Valmis",
-    "downloadGboardDescription": "Kui keel on valitud, saate klaviatuuri vasakus alumises nurgas oleva väikese globaalse ikooni klõpsates aktiveerida hiljuti installitud klaviatuuri.",
     "enableAutocorrectWarning": "Hoiatus! Vajalik on oma sihtkeele klaviatuuri lisamine",
     "displayName": "Nimi kuvatud",
     "leaveRoomDescription": "Oled sellest vestlusest lahkumas. Teised kasutajad näevad, et oled lahkunud vestlusest.",
@@ -5482,15 +5480,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,5 +9749,9 @@
     "denyAllKnocksDescription": "Need kasutajad lükatakse kursuselt tagasi. Nad võivad igal ajal uuesti liituda proovida.",
     "courseNameHint": "Kursuse nimi",
     "typeCourseCodeToConfirm": "Kinnitamiseks sisestage allolev kursuse kood {code}.",
-    "typeCourseNameToConfirm": "Kinnitamiseks sisestage allolev kursuse nimi {name}."
+    "typeCourseNameToConfirm": "Kinnitamiseks sisestage allolev kursuse nimi {name}.",
+    "inviteAFriend": "Kutsu sõber",
+    "autocorrectAndroidDialogTitle": "Automaatkorrektuur sihtkeeles",
+    "autocorrectAndroidDialogBody": "Vestluses tippides lülitub klaviatuur sihtkeelde ja parandab õigekirja selles keeles.",
+    "autocorrectAndroidFallbackTitle": "Kui teie klaviatuur ei paku sihtkeelt, installige Gboard ja lisage keel sinna:"
 }

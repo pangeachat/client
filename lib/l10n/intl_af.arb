@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Voeg jou teikentaal-sleutelbord by deur na die volgende te gaan:",
     "enableAutocorrectPopupSteps": "  • Instellings\n  • Algemeen\n  • Sleutelbord\n  • Sleutelborde\n  • Voeg Nuwe Sleutelbord by",
     "enableAutocorrectPopupDescription": "Sodra die taal gekies is, kan jy op die klein aardbol-ikoon links onder op jou sleutelbord klik om die nuut geïnstalleerde sleutelbord te aktiveer.",
-    "downloadGboardTitle": "Laai Gboard van die Google Play Winkel af om outokorreksie en ander sleutelbordkenmerke te aktiveer:",
     "downloadGboardSteps": " • Laai Gboard af\n  • Maak toepassing oop\n  • Tale\n  • Voeg sleutelbord by\n  • Kies Taal\n  • Kies sleutelbordtipe\n  • Klaar",
-    "downloadGboardDescription": "Sodra die taal gekies is, kan jy op die klein aardbol-ikoon links onder op jou sleutelbord klik om die nuut geïnstalleerde sleutelbord te aktiveer.",
     "enableAutocorrectWarning": "Waarskuwing! Vereis dat jy jou teikentaal-sleutelbord byvoeg",
     "displayName": "Wysnaam",
     "leaveRoomDescription": "Jy is op die punt om hierdie klets te verlaat. Ander gebruikers sal sien dat jy die klets verlaat het.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "Hierdie gebruikers sal van die kursus geweier word. Hulle mag enige tyd weer probeer aansluit.",
     "courseNameHint": "Kursusnaam",
     "typeCourseCodeToConfirm": "Om te bevestig, tik die kursuskode {code} hieronder in.",
-    "typeCourseNameToConfirm": "Om te bevestig, tik die kursusnaam {name} hieronder in."
+    "typeCourseNameToConfirm": "Om te bevestig, tik die kursusnaam {name} hieronder in.",
+    "inviteAFriend": "Nooi 'n vriend",
+    "autocorrectAndroidDialogTitle": "Outokorreksie in jou doeltaal",
+    "autocorrectAndroidDialogBody": "Wanneer jy in 'n klets tik, sal jou sleutelbord na jou doeltaal oorskakel en spelling in daardie taal korrigeer.",
+    "autocorrectAndroidFallbackTitle": "As jou sleutelbord nie jou doeltaal aanbied nie, installeer Gboard en voeg die taal daar by:"
 }

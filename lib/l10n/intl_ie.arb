@@ -2895,9 +2895,7 @@
     "enableAutocorrectPopupTitle": "Aggiungi tu teclado de lingua target per ir a:",
     "enableAutocorrectPopupSteps": "  • Configuration\n  • General\n  • Keyboard\n  • Keyboards\n  • Aggiungi Nove Keyboard",
     "enableAutocorrectPopupDescription": "Unu li lingue es electet, tu posse clicar la parve glob icon in le basso sinistre del tu clavier pro activar le nove installate clavier.",
-    "downloadGboardTitle": "Scarigar Gboard ex le Google Play Store pro activar autocorrect e alter caracteristicas del clavier:",
     "downloadGboardSteps": " • Scarigar Gboard\n  • Aperir le app\n  • Lingues\n  • Addar clavier\n  • Electer lingua\n  • Electer typa de clavier\n  • Finito",
-    "downloadGboardDescription": "Unu li lingue es electet, tu posse clicar la parve glob icon in le basso sinistre del tu clavier pro activar le nove installate clavier.",
     "enableAutocorrectWarning": "Aviso! Require addar le clavier de tu lingua de destino",
     "displayName": "Nomen de visualisation",
     "leaveRoomDescription": "Tu es sur le puncto de partir de iste chat. Altri usatores vide que tu ha partite le chat.",
@@ -6021,15 +6019,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10394,5 +10384,9 @@
     "denyAllKnocksDescription": "Diúltófar do na húsáideoirí seo ón gcúrsa. Féadfaidh siad iarracht a dhéanamh dul isteach arís ag am ar bith.",
     "courseNameHint": "Ainm an chúrsa",
     "typeCourseCodeToConfirm": "Chun a dheimhniú, clóscríobh an cód cúrsa {code} thíos.",
-    "typeCourseNameToConfirm": "Chun a dheimhniú, clóscríobh ainm an chúrsa {name} thíos."
+    "typeCourseNameToConfirm": "Chun a dheimhniú, clóscríobh ainm an chúrsa {name} thíos.",
+    "inviteAFriend": "Cuir cara cuireadh",
+    "autocorrectAndroidDialogTitle": "Autochorreção na sua língua-alvo",
+    "autocorrectAndroidDialogBody": "Quando você digita em um bate-papo, seu teclado mudará para o seu idioma-alvo e corrigirá a ortografia nesse idioma.",
+    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma-alvo, instale o Gboard e adicione o idioma lá:"
 }

@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Dodajte tastaturu ciljnog jezika tako što ćete otići na:",
     "enableAutocorrectPopupSteps": "  • Postavke\n  • Općenito\n  • Tastatura\n  • Tastature\n  • Dodaj novu tastaturu",
     "enableAutocorrectPopupDescription": "Nakon što je jezik odabran, možete kliknuti na malu ikonu globusa u donjem lijevom uglu tastature da biste aktivirali novoinstaliranu tastaturu.",
-    "downloadGboardTitle": "Preuzmite Gboard iz Google Play trgovine da biste omogućili automatsko ispravljanje i druge funkcije tastature:",
     "downloadGboardSteps": " • Preuzmite Gboard\n  • Otvorite aplikaciju\n  • Jezici\n  • Dodaj tastaturu\n  • Odaberite jezik\n  • Odaberite tip tastature\n  • Gotovo",
-    "downloadGboardDescription": "Nakon što je jezik odabran, možete kliknuti na malu ikonu globusa u donjem lijevom uglu tastature da biste aktivirali novoinstaliranu tastaturu.",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodati tastaturu ciljnog jezika",
     "displayName": "Ime za prikaz",
     "leaveRoomDescription": "Spremate se napustiti ovaj chat. Drugi korisnici će vidjeti da ste napustili chat.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku.",
     "courseNameHint": "Naziv kursa",
     "typeCourseCodeToConfirm": "Za potvrdu, unesite kod kursa {code} ispod.",
-    "typeCourseNameToConfirm": "Za potvrdu, unesite naziv kursa {name} ispod."
+    "typeCourseNameToConfirm": "Za potvrdu, unesite naziv kursa {name} ispod.",
+    "inviteAFriend": "Pozovi prijatelja",
+    "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
+    "autocorrectAndroidDialogBody": "Kada kucate u chatu, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
+    "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:"
 }

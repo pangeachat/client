@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "ወደሚከተለው በመሄድ የታለመውን ቋንቋ ኪቦርድዎን ያክሉ፦",
     "enableAutocorrectPopupSteps": "  • ሴቲንግስ (Settings)\n  • ጀነራል (General)\n  • ኪቦርድ (Keyboard)\n  • ኪቦርድስ (Keyboards)\n  • አዲስ ኪቦርድ አክል (Add New Keyboard)",
     "enableAutocorrectPopupDescription": "ቋንቋው ከተመረጠ በኋላ፣ አዲስ የተጫነውን ኪቦርድ ለማንቃት በኪቦርድዎ ታችኛው ግራ በኩል ያለውን ትንሽ የዓለም አዶ ጠቅ ማድረግ ይችላሉ።",
-    "downloadGboardTitle": "ራስ-ሰር ማስተካከያ እና ሌሎች የኪቦርድ ባህሪያትን ለማንቃት Gboardን ከGoogle Play Store ያውርዱ፦",
     "downloadGboardSteps": " • Gboardን ያውርዱ\n  • መተግበሪያውን ይክፈቱ\n  • ቋንቋዎች\n  • ኪቦርድ አክል\n  • ቋንቋ ይምረጡ\n  • የኪቦርድ አይነት ይምረጡ\n  • ተጠናቋል",
-    "downloadGboardDescription": "ቋንቋው ከተመረጠ በኋላ፣ አዲስ የተጫነውን ኪቦርድ ለማንቃት በኪቦርድዎ ታችኛው ግራ በኩል ያለውን ትንሽ የዓለም አዶ ጠቅ ማድረግ ይችላሉ።",
     "enableAutocorrectWarning": "ማስጠንቀቂያ! የታለመውን ቋንቋ ኪቦርድዎን መጨመር ይጠይቃል።",
     "displayName": "የሚታይ ስም",
     "leaveRoomDescription": "ይህን ቻት ሊለቁ ነው። ሌሎች ተጠቃሚዎች ቻቱን እንደለቀቁ ያያሉ።",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "እነዚህ ተጠቃሚዎች ከኮርሱ ውድቅ ይደረጋሉ። በማንኛውም ጊዜ እንደገና ለመቀላቀል ሊሞክሩ ይችላሉ።",
     "courseNameHint": "የኮርስ ስም",
     "typeCourseCodeToConfirm": "ለማረጋገጥ፣ ከታች ያለውን የኮርስ ኮድ {code} ይተይቡ።",
-    "typeCourseNameToConfirm": "ለማረጋገጥ፣ ከታች ያለውን የኮርስ ስም {name} ይተይቡ።"
+    "typeCourseNameToConfirm": "ለማረጋገጥ፣ ከታች ያለውን የኮርስ ስም {name} ይተይቡ።",
+    "inviteAFriend": "ጓደኛ ይጋብዙ",
+    "autocorrectAndroidDialogTitle": "በዒላማ ቋንቋዎ ራስ-አርም",
+    "autocorrectAndroidDialogBody": "በውይይት ውስጥ ሲተይቡ፣ የቁልፍ ሰሌዳዎ ወደ ዒላማ ቋንቋዎ ይቀየራል እና በዚያ ቋንቋ የፊደል አጻጻፍን ያርማል።",
+    "autocorrectAndroidFallbackTitle": "የቁልፍ ሰሌዳዎ ዒላማ ቋንቋዎን የማያቀርብ ከሆነ፣ Gboardን ይጫኑ እና ቋንቋውን እዚያ ያክሉ፦"
 }

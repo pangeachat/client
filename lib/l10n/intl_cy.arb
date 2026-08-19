@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Ychwanegwch eich bysellfwrdd iaith darged trwy fynd i:",
     "enableAutocorrectPopupSteps": "  • Gosodiadau\n  • Cyffredinol\n  • Bysellfwrdd\n  • Bysellfyrddau\n  • Ychwanegu Bysellfwrdd Newydd",
     "enableAutocorrectPopupDescription": "Unwaith y dewisir yr iaith, gallwch glicio ar yr eicon glôb bach ar waelod chwith eich bysellfwrdd i actifadu'r bysellfwrdd newydd ei osod.",
-    "downloadGboardTitle": "Lawrlwythwch Gboard o Google Play Store i alluogi awto-gywiro a nodweddion bysellfwrdd eraill:",
     "downloadGboardSteps": " • Lawrlwytho Gboard\n  • Agor ap\n  • Ieithoedd\n  • Ychwanegu bysellfwrdd\n  • Dewis Iaith\n  • Dewis math o fysellfwrdd\n  • Wedi'i wneud",
-    "downloadGboardDescription": "Unwaith y dewisir yr iaith, gallwch glicio ar yr eicon glôb bach ar waelod chwith eich bysellfwrdd i actifadu'r bysellfwrdd newydd ei osod.",
     "enableAutocorrectWarning": "Rhybudd! Angen ychwanegu eich bysellfwrdd iaith darged",
     "displayName": "Enw arddangos",
     "leaveRoomDescription": "Rydych ar fin gadael y sgwrs hon. Bydd defnyddwyr eraill yn gweld eich bod wedi gadael y sgwrs.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "Bydd y defnyddwyr hyn yn cael eu gwrthod o'r cwrs. Gallant geisio ymuno eto unrhyw bryd.",
     "courseNameHint": "Enw'r cwrs",
     "typeCourseCodeToConfirm": "I gadarnhau, teipiwch y cod cwrs {code} isod.",
-    "typeCourseNameToConfirm": "I gadarnhau, teipiwch enw'r cwrs {name} isod."
+    "typeCourseNameToConfirm": "I gadarnhau, teipiwch enw'r cwrs {name} isod.",
+    "inviteAFriend": "Gwahodd ffrind",
+    "autocorrectAndroidDialogTitle": "Awto-gywiro yn eich iaith darged",
+    "autocorrectAndroidDialogBody": "Pan fyddwch chi'n teipio mewn sgwrs, bydd eich bysellfwrdd yn newid i'ch iaith darged ac yn cywiro sillafu yn yr iaith honno.",
+    "autocorrectAndroidFallbackTitle": "Os nad yw eich bysellfwrdd yn cynnig eich iaith darged, gosodwch Gboard ac ychwanegwch yr iaith yno:"
 }

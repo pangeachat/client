@@ -3365,9 +3365,7 @@
     "enableAutocorrectPopupTitle": "Cuir do eochairfhocal teanga sprioc leis trí dul go:",
     "enableAutocorrectPopupSteps": "  • Socruithe\n  • Ginearálta\n  • Eochairfhocal\n  • Eochairfhocail\n  • Cuir Eochairfhocal Nua leis",
     "enableAutocorrectPopupDescription": "Nuair a roghnaítear an teanga, is féidir leat cliceáil ar an gcloch beag domhain ar chlé bun do do eochairfhocal chun an eochairfhocal nua a ghníomhachtú.",
-    "downloadGboardTitle": "Íoslódáil Gboard ón Siopa Súgartha Google chun uathoibriú ceartúcháin agus gnéithe eile den eochairfhocal a chumasú:",
     "downloadGboardSteps": " • Íoslódáil Gboard\n  • Oscail an aip\n  • Teangacha\n  • Cuir eochairfhocal leis\n  • Roghnaigh Teanga\n  • Roghnaigh cineál eochairfhocal\n  • Críochnaithe",
-    "downloadGboardDescription": "Nuair a roghnaítear an teanga, is féidir leat cliceáil ar an gcloch beag domhain ar chlé bun do do eochairfhocal chun an eochairfhocal nua a ghníomhachtú.",
     "enableAutocorrectWarning": "Rabhadh! Éilíonn sé do eochairfhocal teanga sprioc a chur leis",
     "displayName": "Ainm le feiceáil",
     "leaveRoomDescription": "Tá tú faoi láthair ag dul i dtaithí ar an gcomhrá seo. Feicfidh úsáideoirí eile go bhfuil tú imithe as an gcomhrá.",
@@ -5576,15 +5574,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9773,5 +9763,9 @@
     "denyAllKnocksDescription": "Diúltófar do na húsáideoirí seo ón gcúrsa. Féadfaidh siad iarracht a dhéanamh dul isteach arís am ar bith.",
     "courseNameHint": "Ainm an chúrsa",
     "typeCourseCodeToConfirm": "Chun é a dhearbhú, clóscríobh an cód cúrsa {code} thíos.",
-    "typeCourseNameToConfirm": "Chun é a dhearbhú, clóscríobh ainm an chúrsa {name} thíos."
+    "typeCourseNameToConfirm": "Chun é a dhearbhú, clóscríobh ainm an chúrsa {name} thíos.",
+    "inviteAFriend": "Tabhair cuireadh do chara",
+    "autocorrectAndroidDialogTitle": "Ceartú uathoibríoch i do sprioctheanga",
+    "autocorrectAndroidDialogBody": "Nuair a chlóscríobhann tú i gcomhrá, aistreoidh do mhéarchlár chuig do sprioctheanga agus ceartóidh sé an litriú sa teanga sin.",
+    "autocorrectAndroidFallbackTitle": "Mura dtugann do mhéarchlár do sprioctheanga, suiteáil Gboard agus cuir an teanga leis ansin:"
 }

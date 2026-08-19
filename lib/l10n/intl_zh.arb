@@ -3360,9 +3360,7 @@
     "enableAutocorrectPopupTitle": "通过以下步骤添加目标语言键盘：",
     "enableAutocorrectPopupSteps": "  • 设置\n  • 通用\n  • 键盘\n  • 键盘\n  • 添加新键盘",
     "enableAutocorrectPopupDescription": "选择语言后，可以点击键盘左下角的小地球图标，激活新安装的键盘。",
-    "downloadGboardTitle": "从Google Play商店下载Gboard以启用自动更正和其他键盘功能：",
     "downloadGboardSteps": " • 下载Gboard\n  • 打开应用\n  • 语言\n  • 添加键盘\n  • 选择语言\n  • 选择键盘类型\n  • 完成",
-    "downloadGboardDescription": "选择语言后，可以点击键盘左下角的小地球图标，激活新安装的键盘。",
     "enableAutocorrectWarning": "警告！需要添加目标语言键盘",
     "displayName": "显示名称",
     "leaveRoomDescription": "你即将离开此聊天。其他用户将看到你已离开聊天。",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9762,5 +9752,9 @@
     "denyAllKnocksDescription": "这些用户将被拒绝加入课程。他们可以随时再次尝试加入。",
     "courseNameHint": "课程名称",
     "typeCourseCodeToConfirm": "请在下方输入课程代码 {code} 以确认。",
-    "typeCourseNameToConfirm": "请在下方输入课程名称 {name} 以确认。"
+    "typeCourseNameToConfirm": "请在下方输入课程名称 {name} 以确认。",
+    "inviteAFriend": "邀请好友",
+    "autocorrectAndroidDialogTitle": "目标语言自动更正",
+    "autocorrectAndroidDialogBody": "在聊天中输入时，键盘将切换到您的目标语言并更正该语言的拼写。",
+    "autocorrectAndroidFallbackTitle": "如果您的键盘不提供目标语言，请安装 Gboard 并在其中添加该语言："
 }

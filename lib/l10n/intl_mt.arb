@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Żid it-tastiera tal-lingwa fil-mira tiegħek billi tmur fuq:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • Ġenerali\n  • Tastiera\n  • Tastieri\n  • Żid Tastiera Ġdida",
     "enableAutocorrectPopupDescription": "Ladarba l-lingwa tkun magħżula, tista' tikklikkja l-ikona żgħira tal-globu fin-naħa t'isfel tax-xellug tat-tastiera tiegħek biex tattiva t-tastiera installata ġdida.",
-    "downloadGboardTitle": "Niżżel Gboard mill-Google Play Store biex tippermetti l-awtokorrezzjoni u karatteristiċi oħra tat-tastiera:",
     "downloadGboardSteps": " • Niżżel Gboard\n  • Iftaħ l-app\n  • Lingwi\n  • Żid tastiera\n  • Agħżel Lingwa\n  • Agħżel it-tip ta' tastiera\n  • Lest",
-    "downloadGboardDescription": "Ladarba l-lingwa tkun magħżula, tista' tikklikkja l-ikona żgħira tal-globu fin-naħa t'isfel tax-xellug tat-tastiera tiegħek biex tattiva t-tastiera installata ġdida.",
     "enableAutocorrectWarning": "Twissija! Jeħtieġ li żżid it-tastiera tal-lingwa fil-mira tiegħek",
     "displayName": "Isem tal-wiri",
     "leaveRoomDescription": "Int se titlaq minn din iċ-chat. Utenti oħra se jaraw li int ħallejt iċ-chat.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "Dawn l-utenti se jiġu rrifjutati mill-kors. Jistgħu jippruvaw jingħaqdu mill-ġdid fi kwalunkwe ħin.",
     "courseNameHint": "Isem tal-kors",
     "typeCourseCodeToConfirm": "Biex tikkonferma, ittajpja l-kodiċi tal-kors {code} hawn taħt.",
-    "typeCourseNameToConfirm": "Biex tikkonferma, ittajpja l-isem tal-kors {name} hawn taħt."
+    "typeCourseNameToConfirm": "Biex tikkonferma, ittajpja l-isem tal-kors {name} hawn taħt.",
+    "inviteAFriend": "Stieden ħabib",
+    "autocorrectAndroidDialogTitle": "Autocorrect fil-lingwa fil-mira tiegħek",
+    "autocorrectAndroidDialogBody": "Meta tittajpja fi chat, it-tastiera tiegħek tinbidel għal-lingwa fil-mira tiegħek u tikkoreġi l-ortografija f'dik il-lingwa.",
+    "autocorrectAndroidFallbackTitle": "Jekk it-tastiera tiegħek ma toffrix il-lingwa fil-mira tiegħek, installa Gboard u żid il-lingwa hemmhekk:"
 }

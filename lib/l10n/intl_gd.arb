@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Cuir ris a' mheur-chlàr cànain targaid agad le bhith a' dol gu:",
     "enableAutocorrectPopupSteps": "  • Roghainnean\n  • Coitcheann\n  • Meur-chlàr\n  • Meur-chlàran\n  • Cuir Meur-chlàr Ùr ris",
     "enableAutocorrectPopupDescription": "Aon uair 's gu bheil an cànan air a thaghadh, faodaidh tu briogadh air an ìomhaigh bheag cruinne air taobh clì gu h-ìosal a' mheur-chlàir agad gus am meur-chlàr ùr a chaidh a stàladh a ghnìomhachadh.",
-    "downloadGboardTitle": "Luchdaich a-nuas Gboard bho Google Play Store gus fèin-cheartachadh agus feartan meur-chlàir eile a chomasachadh:",
     "downloadGboardSteps": " • Luchdaich a-nuas Gboard\n  • Fosgail an aplacaid\n  • Cànanan\n  • Cuir meur-chlàr ris\n  • Tagh Cànan\n  • Tagh seòrsa meur-chlàir\n  • Deiseil",
-    "downloadGboardDescription": "Aon uair 's gu bheil an cànan air a thaghadh, faodaidh tu briogadh air an ìomhaigh bheag cruinne air taobh clì gu h-ìosal a' mheur-chlàir agad gus am meur-chlàr ùr a chaidh a stàladh a ghnìomhachadh.",
     "enableAutocorrectWarning": "Rabhadh! Feumaidh seo am meur-chlàr cànain targaid agad a chur ris",
     "displayName": "Ainm taisbeanaidh",
     "leaveRoomDescription": "Tha thu an impis an còmhradh seo fhàgail. Chì luchd-cleachdaidh eile gu bheil thu air an còmhradh fhàgail.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "Thèid na cleachdaichean seo a dhiùltadh bhon chùrsa. Faodaidh iad feuchainn ri dhol a-steach a-rithist aig àm sam bith.",
     "courseNameHint": "Ainm a' chùrsa",
     "typeCourseCodeToConfirm": "Gus dearbhadh, sgrìobh an còd cùrsa {code} gu h-ìosal.",
-    "typeCourseNameToConfirm": "Gus dearbhadh, sgrìobh ainm a' chùrsa {name} gu h-ìosal."
+    "typeCourseNameToConfirm": "Gus dearbhadh, sgrìobh ainm a' chùrsa {name} gu h-ìosal.",
+    "inviteAFriend": "Thoir cuireadh do charaid",
+    "autocorrectAndroidDialogTitle": "Ceartachadh fèin-obrachail sa chànan targaid agad",
+    "autocorrectAndroidDialogBody": "Nuair a thaidhpicheas tu ann an còmhradh, atharraichidh am meur-chlàr agad chun a’ chànain targaid agad agus ceartaichidh e litreachadh sa chànan sin.",
+    "autocorrectAndroidFallbackTitle": "Mura h-eil do mheur-chlàr a’ tabhann do chànan targaid, stàlaich Gboard agus cuir ris a’ chànan an sin:"
 }

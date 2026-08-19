@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Tambihkeun kibor basa target anjeun ku cara ka:",
     "enableAutocorrectPopupSteps": "  • Setelan\n  • Umum\n  • Kibor\n  • Kibor\n  • Tambah Kibor Anyar",
     "enableAutocorrectPopupDescription": "Sakali basa dipilih, anjeun tiasa ngaklik ikon globe leutik di kénca handap kibor anjeun pikeun ngaktipkeun kibor nu nembé dipasang.",
-    "downloadGboardTitle": "Unduh Gboard tina Google Play Store pikeun ngaktipkeun autocorrect sareng fitur kibor sanesna:",
     "downloadGboardSteps": " • Unduh Gboard\n  • Buka aplikasi\n  • Basa\n  • Tambah kibor\n  • Pilih Basa\n  • Pilih jinis kibor\n  • Rengse",
-    "downloadGboardDescription": "Sakali basa dipilih, anjeun tiasa ngaklik ikon globe leutik di kénca handap kibor anjeun pikeun ngaktipkeun kibor nu nembé dipasang.",
     "enableAutocorrectWarning": "Perhatosan! Merlukeun nambihan kibor basa target anjeun",
     "displayName": "Ngaran tampilan",
     "leaveRoomDescription": "Anjeun bade ninggalkeun paguneman ieu. Pangguna sanes bakal ningali anjeun parantos kaluar tina paguneman.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "Pamaké ieu bakal ditolak ti kursus. Maranéhna tiasa nyobian ngagabung deui iraha waé.",
     "courseNameHint": "Ngaran kursus",
     "typeCourseCodeToConfirm": "Pikeun mastikeun, ketik kode kursus {code} di handap.",
-    "typeCourseNameToConfirm": "Pikeun mastikeun, ketik ngaran kursus {name} di handap."
+    "typeCourseNameToConfirm": "Pikeun mastikeun, ketik ngaran kursus {name} di handap.",
+    "inviteAFriend": "Ujang babaturan",
+    "autocorrectAndroidDialogTitle": "Autocorrect dina basa target anjeun",
+    "autocorrectAndroidDialogBody": "Nalika anjeun ngetik dina obrolan, kibor anjeun bakal robah kana basa target anjeun sarta ngabenerkeun éjahan dina basa éta.",
+    "autocorrectAndroidFallbackTitle": "Upami kibor anjeun henteu nawiskeun basa target anjeun, pasang Gboard sareng tambihan basa éta di dinya:"
 }

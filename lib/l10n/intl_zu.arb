@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Engeza ikhibhodi yolimi oluqondile ngokuya ku:",
     "enableAutocorrectPopupSteps": "  • Izilungiselelo\n  • Okujwayelekile\n  • Ikhibhodi\n  • Amakhibhodi\n  • Engeza Ikhibhodi Entsha",
     "enableAutocorrectPopupDescription": "Uma ulimi selukhethiwe, ungachofoza isithonjana esincane seglobhu ngakwesokunxele esingezansi sekhibhodi yakho ukuze uvule ikhibhodi esanda kufakwa.",
-    "downloadGboardTitle": "Landa i-Gboard ku-Google Play Store ukuze uvule ukulungisa okuzenzakalelayo nezinye izici zekhibhodi:",
     "downloadGboardSteps": " • Landa i-Gboard\n  • Vula uhlelo lokusebenza\n  • Izilimi\n  • Engeza ikhibhodi\n  • Khetha Ulimi\n  • Khetha uhlobo lwekhibhodi\n  • Kwenziwe",
-    "downloadGboardDescription": "Uma ulimi selukhethiwe, ungachofoza isithonjana esincane seglobhu ngakwesokunxele esingezansi sekhibhodi yakho ukuze uvule ikhibhodi esanda kufakwa.",
     "enableAutocorrectWarning": "Isexwayiso! Kudinga ukwengeza ikhibhodi yolimi oluqondile",
     "displayName": "Igama lokubonisa",
     "leaveRoomDescription": "Ususondele ekushiyeni le ngxoxo. Abanye abasebenzisi bazobona ukuthi ushiye ingxoxo.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "Laba basebenzisi bazokwenqatshwa kule khosi. Bangazama ukujoyina futhi nganoma yisiphi isikhathi.",
     "courseNameHint": "Igama lesifundo",
     "typeCourseCodeToConfirm": "Ukuqinisekisa, thayipha ikhodi yesifundo {code} ngezansi.",
-    "typeCourseNameToConfirm": "Ukuqinisekisa, thayipha igama lesifundo {name} ngezansi."
+    "typeCourseNameToConfirm": "Ukuqinisekisa, thayipha igama lesifundo {name} ngezansi.",
+    "inviteAFriend": "Mema umngane",
+    "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzakalelayo ngolimi olufundayo",
+    "autocorrectAndroidDialogBody": "Uma uthayipha engxoxweni, ikhibhodi yakho izoshintshela olimini olufundayo futhi ilungise amaphutha esipelingi ngalolo limi.",
+    "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:"
 }

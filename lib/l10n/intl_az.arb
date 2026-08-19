@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Hədəf dilinizin klaviaturasını əlavə etmək üçün bura daxil olun:",
     "enableAutocorrectPopupSteps": "  • Parametrlər\n  • Ümumi\n  • Klaviatura\n  • Klaviaturalar\n  • Yeni Klaviatura Əlavə Et",
     "enableAutocorrectPopupDescription": "Dil seçildikdən sonra, yeni quraşdırılmış klaviaturanı aktivləşdirmək üçün klaviaturanızın aşağı sol küncündəki kiçik qlobus işarəsinə klikləyə bilərsiniz.",
-    "downloadGboardTitle": "Avtomatik düzəliş və digər klaviatura funksiyalarını aktivləşdirmək üçün Gboard-u Google Play Store-dan yükləyin:",
     "downloadGboardSteps": " • Gboard-u yükləyin\n  • Tətbiqi açın\n  • Dillər\n  • Klaviatura əlavə edin\n  • Dil seçin\n  • Klaviatura növünü seçin\n  • Hazırdır",
-    "downloadGboardDescription": "Dil seçildikdən sonra, yeni quraşdırılmış klaviaturanı aktivləşdirmək üçün klaviaturanızın aşağı sol küncündəki kiçik qlobus işarəsinə klikləyə bilərsiniz.",
     "enableAutocorrectWarning": "Xəbərdarlıq! Hədəf dilinizin klaviaturasını əlavə etmək tələb olunur",
     "displayName": "Görünən ad",
     "leaveRoomDescription": "Siz bu çatı tərk etmək üzrəsiniz. Digər istifadəçilər sizin çatı tərk etdiyinizi görəcəklər.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "Bu istifadəçilər kursdan rədd ediləcək. Onlar istənilən vaxt yenidən qoşulmağa cəhd edə bilərlər.",
     "courseNameHint": "Kurs adı",
     "typeCourseCodeToConfirm": "Təsdiqləmək üçün aşağıdakı {code} kurs kodunu daxil edin.",
-    "typeCourseNameToConfirm": "Təsdiqləmək üçün aşağıdakı {name} kurs adını daxil edin."
+    "typeCourseNameToConfirm": "Təsdiqləmək üçün aşağıdakı {name} kurs adını daxil edin.",
+    "inviteAFriend": "Dostunu dəvət et",
+    "autocorrectAndroidDialogTitle": "Hədəf dilinizdə avtodüzəliş",
+    "autocorrectAndroidDialogBody": "Söhbətdə yazarkən klaviaturanız hədəf dilinizə keçəcək və həmin dildə orfoqrafiyanı düzəldəcək.",
+    "autocorrectAndroidFallbackTitle": "Əgər klaviaturanız hədəf dilinizi təklif etmirsə, Gboard-u quraşdırın və dili oraya əlavə edin:"
 }

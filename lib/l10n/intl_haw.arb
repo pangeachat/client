@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "E hoʻohui i kāu papa pihi ʻōlelo hou ma ka hele ʻana i:",
     "enableAutocorrectPopupSteps": "  • Nā Hoʻonohonoho\n  • Nui\n  • Papa Pihi\n  • Nā Papa Pihi\n  • Hoʻohui Papa Pihi Hou",
     "enableAutocorrectPopupDescription": "Ke koho ʻia ka ʻōlelo, hiki iā ʻoe ke kaomi i ke kiʻiona poepoe honua liʻiliʻi ma ka ʻaoʻao hema lalo o kāu papa pihi no ka hoʻā ʻana i ka papa pihi hou i hoʻokomo ʻia.",
-    "downloadGboardTitle": "E hoʻoiho iā Gboard mai ka Hale Kūʻai ʻo Google Play no ka hoʻā ʻana i ka hoʻopololei ʻakomi a me nā hiʻona papa pihi ʻē aʻe:",
     "downloadGboardSteps": " • Hoʻoiho iā Gboard\n  • Wehe i ka polokalamu\n  • Nā ʻŌlelo\n  • Hoʻohui papa pihi\n  • Koho ʻŌlelo\n  • Koho ʻano papa pihi\n  • Pau",
-    "downloadGboardDescription": "Ke koho ʻia ka ʻōlelo, hiki iā ʻoe ke kaomi i ke kiʻiona poepoe honua liʻiliʻi ma ka ʻaoʻao hema lalo o kāu papa pihi no ka hoʻā ʻana i ka papa pihi hou i hoʻokomo ʻia.",
     "enableAutocorrectWarning": "Aʻo! Pono e hoʻohui i kāu papa pihi ʻōlelo hou",
     "displayName": "Inoa hōʻike",
     "leaveRoomDescription": "E haʻalele ana ʻoe i kēia kamaʻilio. E ʻike ana nā mea hoʻohana ʻē aʻe ua haʻalele ʻoe i ke kamaʻilio.",
@@ -2150,5 +2148,9 @@
     "denyAllKnocksDescription": "E hōʻole ʻia kēia mau mea hoʻohana mai ka papa. Hiki iā lākou ke hoʻāʻo e komo hou i kēlā me kēia manawa.",
     "courseNameHint": "Ka inoa papa",
     "typeCourseCodeToConfirm": "No ka hōʻoia ʻana, e kikokiko i ke code papa {code} ma lalo.",
-    "typeCourseNameToConfirm": "No ka hōʻoia ʻana, e kikokiko i ka inoa papa {name} ma lalo."
+    "typeCourseNameToConfirm": "No ka hōʻoia ʻana, e kikokiko i ka inoa papa {name} ma lalo.",
+    "inviteAFriend": "Kono i kekahi hoaaloha",
+    "autocorrectAndroidDialogTitle": "Hoʻoponopono ʻakomi ma kāu ʻōlelo i manaʻo ai",
+    "autocorrectAndroidDialogBody": "Ke paʻi ʻoe ma ke kamaʻilio, e hoʻololi kāu papa kī i kāu ʻōlelo i manaʻo ai a e hoʻoponopono i ka pela ʻana ma ia ʻōlelo.",
+    "autocorrectAndroidFallbackTitle": "Inā ʻaʻole hāʻawi kāu papa kī i kāu ʻōlelo i manaʻo ai, e hoʻouka iā Gboard a hoʻohui i ka ʻōlelo ma laila:"
 }

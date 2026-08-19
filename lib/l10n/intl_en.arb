@@ -3682,9 +3682,10 @@
     "enableAutocorrectPopupTitle": "Add your target language keyboard by going to:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • General\n  • Keyboard\n  • Keyboards\n  • Add New Keyboard",
     "enableAutocorrectPopupDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
-    "downloadGboardTitle": "Download Gboard from the Google Play Store to enable autocorrect and other keyboard features:",
+    "autocorrectAndroidDialogTitle": "Autocorrect in your target language",
+    "autocorrectAndroidDialogBody": "When you type in a chat, your keyboard will switch to your target language and correct spelling in that language.",
+    "autocorrectAndroidFallbackTitle": "If your keyboard doesn't offer your target language, install Gboard and add the language there:",
     "downloadGboardSteps": " • Download Gboard\n  • Open app\n  • Languages\n  • Add keyboard\n  • Select Language\n  • Select keyboard type\n  • Done",
-    "downloadGboardDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
     "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard",
     "displayName": "Display name",
     "leaveRoomDescription": "You're about to leave this chat. Other users will see that you have left the chat.",
@@ -5095,5 +5096,6 @@
                 "type": "String"
             }
         }
-    }
+    },
+    "inviteAFriend": "Invite a friend"
 }

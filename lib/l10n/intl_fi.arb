@@ -3338,9 +3338,7 @@
     "enableAutocorrectPopupTitle": "Lisää kohdekielesi näppäimistö seuraavasti:",
     "enableAutocorrectPopupSteps": "  • Asetukset\n  • Yleiset\n  • Näppäimistö\n  • Näppäimistöt\n  • Lisää uusi näppäimistö",
     "enableAutocorrectPopupDescription": "Kun kieli on valittu, voit klikata pienen maapallon kuvaketta näppäimistön alakulmassa ottaaksesi käyttöön juuri asennetun näppäimistön.",
-    "downloadGboardTitle": "Lataa Gboard Google Play -kaupasta ottaaksesi automaattikorjauksen ja muut näppäimistötoiminnot käyttöön:",
     "downloadGboardSteps": " • Lataa Gboard\n  • Avaa sovellus\n  • Kielet\n  • Lisää näppäimistö\n  • Valitse kieli\n  • Valitse näppäimistötyyppi\n  • Valmis",
-    "downloadGboardDescription": "Kun kieli on valittu, voit klikata pienen maapallon kuvaketta näppäimistön alakulmassa ottaaksesi käyttöön juuri asennetun näppäimistön.",
     "enableAutocorrectWarning": "Varoitus! Vaatii kohdekielen näppäimistön lisäämisen",
     "displayName": "Näytön nimi",
     "leaveRoomDescription": "Olet poistumassa tästä keskustelusta. Muut käyttäjät näkevät, että olet poistunut keskustelusta.",
@@ -5557,15 +5555,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9799,5 +9789,9 @@
     "denyAllKnocksDescription": "Nämä käyttäjät hylätään kurssilta. He voivat yrittää liittyä uudelleen milloin tahansa.",
     "courseNameHint": "Kurssin nimi",
     "typeCourseCodeToConfirm": "Vahvista kirjoittamalla kurssikoodi {code} alle.",
-    "typeCourseNameToConfirm": "Vahvista kirjoittamalla kurssin nimi {name} alle."
+    "typeCourseNameToConfirm": "Vahvista kirjoittamalla kurssin nimi {name} alle.",
+    "inviteAFriend": "Kutsu ystävä",
+    "autocorrectAndroidDialogTitle": "Automaattinen korjaus kohdekielelläsi",
+    "autocorrectAndroidDialogBody": "Kun kirjoitat keskusteluun, näppäimistösi vaihtaa kohdekieleesi ja korjaa kirjoitusvirheet kyseisellä kielellä.",
+    "autocorrectAndroidFallbackTitle": "Jos näppäimistösi ei tarjoa kohdekieltäsi, asenna Gboard ja lisää kieli sinne:"
 }

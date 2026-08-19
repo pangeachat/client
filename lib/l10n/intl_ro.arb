@@ -2825,9 +2825,7 @@
     "enableAutocorrectPopupTitle": "Adaugă tastatura limbii tale țintă accesând:",
     "enableAutocorrectPopupSteps": "  • Setări\n  • General\n  • Tastatură\n  • Tastaturi\n  • Adaugă tastatură nouă",
     "enableAutocorrectPopupDescription": "Odată ce limba este selectată, poți face clic pe micuța pictogramă glob pe partea stângă jos a tastaturii pentru a activa tastatura recent instalată.",
-    "downloadGboardTitle": "Descarcă Gboard din Google Play Store pentru a activa corectarea automată și alte funcții ale tastaturii:",
     "downloadGboardSteps": " • Descarcă Gboard\n  • Deschide aplicația\n  • Limbi\n  • Adaugă tastatură\n  • Selectează limba\n  • Selectează tipul de tastatură\n  • Gata",
-    "downloadGboardDescription": "Odată ce limba este selectată, poți face clic pe micuța pictogramă glob pe partea stângă jos a tastaturii pentru a activa tastatura recent instalată.",
     "enableAutocorrectWarning": "Avertisment! Necesită adăugarea tastaturii limbii tale țintă",
     "displayName": "Nume afișat",
     "leaveRoomDescription": "Ești pe cale să părăsești acest chat. Alți utilizatori vor vedea că ai părăsit chat-ul.",
@@ -6121,15 +6119,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10494,5 +10484,9 @@
     "denyAllKnocksDescription": "Acești utilizatori vor fi refuzați de la curs. Ei pot încerca să se alăture din nou oricând.",
     "courseNameHint": "Numele cursului",
     "typeCourseCodeToConfirm": "Pentru a confirma, introduceți codul cursului {code} mai jos.",
-    "typeCourseNameToConfirm": "Pentru a confirma, introduceți numele cursului {name} mai jos."
+    "typeCourseNameToConfirm": "Pentru a confirma, introduceți numele cursului {name} mai jos.",
+    "inviteAFriend": "Invită un prieten",
+    "autocorrectAndroidDialogTitle": "Corectare automată în limba țintă",
+    "autocorrectAndroidDialogBody": "Când scrii într-un chat, tastatura ta va comuta la limba țintă și va corecta ortografia în acea limbă.",
+    "autocorrectAndroidFallbackTitle": "Dacă tastatura ta nu oferă limba țintă, instalează Gboard și adaugă limba acolo:"
 }

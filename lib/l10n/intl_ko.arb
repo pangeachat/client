@@ -3213,9 +3213,7 @@
     "enableAutocorrectPopupTitle": "목표 언어 키보드를 추가하려면 다음으로 이동하세요:",
     "enableAutocorrectPopupSteps": "  • 설정\n  • 일반\n  • 키보드\n  • 키보드\n  • 새 키보드 추가",
     "enableAutocorrectPopupDescription": "언어를 선택하면, 키보드 왼쪽 하단의 작은 지구본 아이콘을 클릭하여 새로 설치한 키보드를 활성화할 수 있습니다.",
-    "downloadGboardTitle": "구글 플레이 스토어에서 Gboard를 다운로드하여 자동 수정 및 기타 키보드 기능을 활성화하세요:",
     "downloadGboardSteps": " • Gboard 다운로드\n  • 앱 열기\n  • 언어\n  • 키보드 추가\n  • 언어 선택\n  • 키보드 유형 선택\n  • 완료",
-    "downloadGboardDescription": "언어를 선택하면, 키보드 왼쪽 하단의 작은 지구본 아이콘을 클릭하여 새로 설치한 키보드를 활성화할 수 있습니다.",
     "enableAutocorrectWarning": "경고! 목표 언어 키보드 추가가 필요합니다",
     "displayName": "표시 이름",
     "leaveRoomDescription": "이 채팅을 떠날 예정입니다. 다른 사용자는 당신이 채팅을 떠났음을 볼 수 있습니다.",
@@ -5582,15 +5580,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9955,5 +9945,9 @@
     "denyAllKnocksDescription": "이 사용자들은 코스에서 거부됩니다. 언제든지 다시 참여를 시도할 수 있습니다.",
     "courseNameHint": "코스 이름",
     "typeCourseCodeToConfirm": "확인하려면 아래에 코스 코드 {code}를 입력하세요.",
-    "typeCourseNameToConfirm": "확인하려면 아래에 코스 이름 {name}을 입력하세요."
+    "typeCourseNameToConfirm": "확인하려면 아래에 코스 이름 {name}을 입력하세요.",
+    "inviteAFriend": "친구 초대",
+    "autocorrectAndroidDialogTitle": "학습 언어로 자동 고침",
+    "autocorrectAndroidDialogBody": "채팅을 입력할 때 키보드가 학습 언어로 전환되고 해당 언어로 맞춤법을 교정합니다.",
+    "autocorrectAndroidFallbackTitle": "키보드에서 학습 언어를 지원하지 않는 경우 Gboard를 설치하고 언어를 추가하세요."
 }

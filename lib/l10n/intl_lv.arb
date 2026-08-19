@@ -3350,9 +3350,7 @@
     "enableAutocorrectPopupTitle": "Pievienojiet savu mērķvalodas tastatūru, dodoties uz:",
     "enableAutocorrectPopupSteps": "  • Iestatījumi\n  • Vispārīgi\n  • Tastatūra\n  • Tastatūras\n  • Pievienot jaunu tastatūru",
     "enableAutocorrectPopupDescription": "Kad valoda ir izvēlēta, jūs varat noklikšķināt uz mazās globusa ikonas apakšējā kreisajā stūrī, lai aktivizētu jauno instalēto tastatūru.",
-    "downloadGboardTitle": "Lejupielādējiet Gboard no Google Play veikala, lai iespējotu automātisko labošanu un citas tastatūras funkcijas:",
     "downloadGboardSteps": " • Lejupielādēt Gboard\n  • Atvērt lietotni\n  • Valodas\n  • Pievienot tastatūru\n  • Izvēlēties valodu\n  • Izvēlēties tastatūras veidu\n  • Gatavs",
-    "downloadGboardDescription": "Kad valoda ir izvēlēta, jūs varat noklikšķināt uz mazās globusa ikonas apakšējā kreisajā stūrī, lai aktivizētu jauno instalēto tastatūru.",
     "enableAutocorrectWarning": "Brīdinājums! Nepieciešams pievienot mērķvalodas tastatūru",
     "displayName": "Parādāmais vārds",
     "leaveRoomDescription": "Jūs parādīsiet, ka pametat šo čatu. Citi lietotāji redzēs, ka esat aizgājis no čata.",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9762,5 +9752,9 @@
     "denyAllKnocksDescription": "Šie lietotāji tiks noraidīti no kursa. Viņi jebkurā laikā var mēģināt pievienoties vēlreiz.",
     "courseNameHint": "Kursa nosaukums",
     "typeCourseCodeToConfirm": "Lai apstiprinātu, ievadiet kursa kodu {code} zemāk.",
-    "typeCourseNameToConfirm": "Lai apstiprinātu, ievadiet kursa nosaukumu {name} zemāk."
+    "typeCourseNameToConfirm": "Lai apstiprinātu, ievadiet kursa nosaukumu {name} zemāk.",
+    "inviteAFriend": "Uzaicināt draugu",
+    "autocorrectAndroidDialogTitle": "Automātiskā korekcija jūsu mērķa valodā",
+    "autocorrectAndroidDialogBody": "Kad rakstīsiet tērzēšanā, tastatūra pārslēgsies uz jūsu mērķa valodu un labos pareizrakstību šajā valodā.",
+    "autocorrectAndroidFallbackTitle": "Ja jūsu tastatūra nepiedāvā jūsu mērķa valodu, instalējiet Gboard un pievienojiet valodu tur:"
 }
