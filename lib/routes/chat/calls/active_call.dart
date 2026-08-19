@@ -708,11 +708,23 @@ class ActiveCall extends ChangeNotifier {
       // built is unwound here, once, for whichever step gave up.
       return _abandon();
     } on AlreadyInACall {
-      // Never held the account's claim, so it must not be given up here — that
-      // would cancel the join that DOES hold it, which is somebody else's call
-      // coming up.
+      // The account is already in a call. The claim this start tried to take is
+      // held by another call coming up, so nulling the attempt is what stops
+      // teardown from giving it back on this call's behalf — that would cancel
+      // the join that DOES hold it.
+      //
+      // But this start had already opened its own ring subscription, up at the
+      // very top before it reached the join, and THAT is this call's to close.
+      // Leaving it alive left a call that never began still listening — its
+      // stage stuck at connecting for as long as the screen stayed open, later
+      // rings still turning on peerAlsoPlaced. Failing it closes the screen and
+      // the subscription with it; nothing else was opened yet, so there is
+      // nothing else to unwind, and no _tearDown that might touch the claim.
       _joinAttempt = null;
-      rethrow;
+      unawaited(_peerRings?.cancel());
+      _peerRings = null;
+      Logs().w('Cannot start a call; this account is already in one');
+      _to(CallStage.failed, const AlreadyInACall());
     } catch (e, s) {
       if (_ending) {
         // Tearing down underneath a step in flight is what made it throw, so

@@ -773,6 +773,38 @@ void main() {
       ], reason: 'nothing was announced and no membership to retract');
     });
 
+    test('a call the account has no room for fails without stranding '
+        'itself or the call already up', () async {
+      final (call, calls, _, _) = await build();
+      // The account is already in a call, so the service refuses this join.
+      calls.joinError = const AlreadyInACall();
+      await call.start(roomStub(calls.client), video: false);
+
+      // The screen must be able to close. A start that leaves the stage at
+      // connecting is a call the user can only sit and stare at.
+      expect(call.stage, CallStage.failed);
+
+      // A ring landing after the failure must not stir the dead call: the
+      // subscription it opened before the join has to be gone.
+      await calls.peerAlsoCalls();
+      expect(
+        call.peerAlsoPlaced,
+        isFalse,
+        reason: 'a failed call must not keep listening for rings',
+      );
+
+      // And it must not have given back the claim it never held — that one
+      // belongs to the call already up. joinClaimed stands in for that claim;
+      // abandonJoin would clear it.
+      await call.hangUp();
+      await pumpEventQueue();
+      expect(
+        calls.joinClaimed,
+        isTrue,
+        reason: 'the other call still holds the account',
+      );
+    });
+
     test('media that will not connect retracts the join', () async {
       final (call, calls, media, _) = await build();
       media.connectError = StateError('sfu unreachable');

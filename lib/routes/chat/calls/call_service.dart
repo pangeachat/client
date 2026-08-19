@@ -620,12 +620,26 @@ class CallService {
     _stopIfDisposed();
     final session = _current;
     if (session == null) return null;
-    // A leave that failed part-way can leave the SDK's session still entered,
-    // and it is reused by the next join. Entering it again throws, which would
-    // make every later call in that room fail for a transient error the learner
-    // never saw. Already-entered is the state we wanted.
-    if (session.state != GroupCallState.entered &&
-        session.state != GroupCallState.entering) {
+    // An enter already in flight is waited for, never doubled. The signal for
+    // "in flight" is this future, not the session's state: with the LiveKit
+    // backend enter() runs straight from an initialized state to `entered` and
+    // never publishes an intermediate `entering`, so reading the state to spot
+    // a running enter would spot nothing. Starting a second enter double-writes
+    // the membership; going straight to the poll below let a slow-but-fine
+    // enter miss the fixed membership window, so the call connected and never
+    // rang. (Two announces racing one session needs two live calls on this
+    // account, which the join guard refuses well before here — so this is the
+    // honest invariant made safe rather than a reachable bug today.)
+    final inFlight = _entering;
+    if (inFlight != null) {
+      await inFlight.timeout(_announceWithin);
+    } else if (session.state != GroupCallState.entered) {
+      // A leave that failed part-way can leave the SDK's session still entered,
+      // and it is reused by the next join. Entering it again throws, which would
+      // make every later call in that room fail for a transient error the
+      // learner never saw. Already-entered is the state we wanted, and the check
+      // above is what skips it.
+
       // Held so a retract cannot overtake it. Leaving while the enter write is
       // still in flight let that write land afterwards, advertising a
       // membership with nothing left tracking it — and this SDK's memberships
