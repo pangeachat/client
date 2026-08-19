@@ -1608,6 +1608,19 @@ void main() {
       expect(call.peerAlsoPlaced, isFalse);
     });
 
+    test('names who else was calling, for deciding who writes', () async {
+      // The room cannot always say who the other person is — a direct chat
+      // whose peer has not resolved — and both sides then defaulted to writing,
+      // putting two cards in the conversation for one call. Their ring is proof
+      // of who it was, and it is only ever needed when that ring exists.
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      await calls.peerAlsoCalls();
+
+      expect(call.peerAlsoPlaced, isTrue);
+      expect(call.peerRingSenderId, '@peer:server');
+    });
+
     test('is noticed even when they get here before their ring', () async {
       // Each side joins the SFU before it rings, so in a genuine simultaneous
       // call their presence routinely reaches us BEFORE their ring does.

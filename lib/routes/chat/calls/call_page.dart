@@ -296,7 +296,13 @@ class _CallPageState extends State<CallPage> {
     if (!_call.placedCall) return false;
     if (!_call.peerAlsoPlaced) return true;
     final me = _myUserId;
-    final peer = _peerUserId;
+    // Their ring is where this comes from when the room cannot say: the only
+    // way both sides are placing is that we saw the other's ring, so whenever
+    // this tiebreak is needed the sender of that ring is known. Defaulting to
+    // writing when the room had no other member — a direct chat whose peer has
+    // not resolved — put TWO cards in the conversation for one call, which is
+    // exactly what this comparison exists to prevent.
+    final peer = _peerUserId ?? _call.peerRingSenderId;
     if (me == null || peer == null) return true;
     return me.compareTo(peer) < 0;
   }

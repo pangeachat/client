@@ -154,6 +154,7 @@ class ActiveCall extends ChangeNotifier {
       }
     }
     _peerAlsoPlaced = true;
+    _peerRingSenderId = event.senderId;
   }
 
   /// Whether the other person was calling us at the same moment we called them.
@@ -163,6 +164,15 @@ class ActiveCall extends ChangeNotifier {
   /// their ring rather than from an ordering means a call nobody answered,
   /// which only ever runs teardown on the caller's side, is still written.
   bool get peerAlsoPlaced => _peerAlsoPlaced;
+
+  /// Who sent the ring that told us they were calling too.
+  ///
+  /// The other side of a simultaneous call, named by the one event that proves
+  /// it happened. It settles which of the two writes the call when the room
+  /// itself cannot say who the other person is.
+  String? get peerRingSenderId => _peerRingSenderId;
+
+  String? _peerRingSenderId;
 
   String? _membershipEventId;
 

@@ -121,9 +121,14 @@ class CallCaptureService {
              firstIndex: firstIndex,
            ));
 
-  /// Taps that refused to detach. A recording will not start while this has
+  /// Taps that have not come off. A recording will not start while this has
   /// anything in it.
-  final List<DetachTap> _unreleased = [];
+  ///
+  /// Each carries what is still running, when something is: a detach that timed
+  /// out has NOT stopped, and asking the same closure again would run a second
+  /// stop over the top of the first. The next attempt waits for what is already
+  /// in flight instead, and only re-asks a detach that actually threw.
+  final List<_UnreleasedTap> _unreleased = [];
 
   bool get isRecording => _running;
 
@@ -184,18 +189,38 @@ class CallCaptureService {
   /// other.
   Future<void> _release(DetachTap? detach) async {
     if (detach == null) return;
+    // Through Future.value because a tap may detach synchronously — the
+    // renderer's cancel does — and a timeout needs something to wait on.
+    final running = Future.value(detach());
+    // Read from a flag rather than by catching TimeoutException. The LiveKit
+    // package exports its own class of that name, and this file imports it for
+    // AudioTrack, so `on TimeoutException` here binds to LiveKit's and silently
+    // never matches the one dart:async throws — every timeout took the path
+    // meant for a tap that threw, and the tap was asked to detach a second time
+    // while the first was still running. Any file in this feature that imports
+    // livekit_client has the same trap.
+    var stillRunning = false;
     try {
       // Bounded, because teardown waits on this. A platform call that never
       // came back left the hangup unfinished for good: the call was never
       // written and every word of it went uncredited, to protect a tap that
-      // was already lost either way. A timeout lands in the same place as a
-      // refusal — kept, and tried again by the next stop.
-      // Through Future.value because a tap may detach synchronously — the
-      // renderer's cancel does — and a timeout needs something to wait on.
-      await Future.value(detach()).timeout(detachTimeout);
+      // was already lost either way.
+      await running.timeout(
+        detachTimeout,
+        onTimeout: () => stillRunning = true,
+      );
     } catch (e, s) {
-      _unreleased.add(detach);
+      // It threw, so nothing is running and the tap is certainly still on. This
+      // one is worth asking again.
+      _unreleased.add(_UnreleasedTap(detach, null));
       Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
+      return;
+    }
+    if (stillRunning) {
+      // Kept along with what is running, so the next stop waits for THAT rather
+      // than starting a second detach over the top of it.
+      _unreleased.add(_UnreleasedTap(detach, running));
+      Logs().w('The call audio tap has not come off yet; it stays claimed');
     }
   }
 
@@ -206,8 +231,33 @@ class CallCaptureService {
     if (_unreleased.isEmpty) return;
     final pending = List.of(_unreleased);
     _unreleased.clear();
-    for (final detach in pending) {
-      await _release(detach);
+    for (final tap in pending) {
+      final running = tap.running;
+      if (running == null) {
+        // It threw last time; nothing is in flight, so ask again.
+        await _release(tap.detach);
+        continue;
+      }
+      var stillRunning = false;
+      try {
+        // Already running. Waiting is the only safe thing: asking again would
+        // stop the platform capture a second time while the first stop is
+        // still going.
+        await running.timeout(
+          detachTimeout,
+          onTimeout: () => stillRunning = true,
+        );
+      } catch (e, s) {
+        // It finally answered, with an error. Nothing is running now, so the
+        // next stop may ask again.
+        _unreleased.add(_UnreleasedTap(tap.detach, null));
+        Logs().w('The call audio tap refused to come off', e, s);
+        continue;
+      }
+      if (stillRunning) {
+        _unreleased.add(tap);
+        Logs().w('The call audio tap has still not come off');
+      }
     }
   }
 
@@ -358,4 +408,15 @@ class CallCaptureService {
   /// The frame's samples as 16-bit PCM. Lives with the tap that produces them.
   @visibleForTesting
   static Int16List pcmOf(AudioFrame frame) => pcmOfFrame(frame);
+}
+
+/// A tap that has not come off, and what is still trying, if anything is.
+class _UnreleasedTap {
+  final DetachTap detach;
+
+  /// The detach already in flight. Null when it threw rather than hung, which
+  /// is the only case where asking again is safe.
+  final Future<void>? running;
+
+  const _UnreleasedTap(this.detach, this.running);
 }

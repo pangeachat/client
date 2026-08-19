@@ -534,6 +534,36 @@ void main() {
     });
   });
 
+  group('a detach that is still running', () {
+    test('is waited for, not started a second time', () async {
+      // Giving up waiting does not stop it. Asking the same tap again runs a
+      // second stop over the top of the first — on Android that is the platform
+      // capture being torn down twice — and the tap can end up held for good,
+      // which stops this device recording anything ever again.
+      final tap = _SilentDetachTap();
+      final capture = service(
+        withTap: tap,
+        detach: const Duration(milliseconds: 50),
+      );
+      await capture.start(track);
+      await capture.stop();
+      expect(tap.detachCalls, 1);
+
+      // The next stop comes back to it and finds it still going.
+      await capture.stop();
+      expect(
+        tap.detachCalls,
+        1,
+        reason: 'a detach already in flight is waited for, never re-asked',
+      );
+
+      // Once it finally answers, the tap is free and recording can start again.
+      tap.finish.complete();
+      await capture.stop();
+      await capture.start(track);
+    });
+  });
+
   group('a tap that will not let go', () {
     test('is kept rather than dropped when it arrives too late', () async {
       final tap = _StubbornSlowTap();
@@ -590,9 +620,17 @@ class _TailOnDetachTap implements CallAudioTap {
 /// Attaches slowly, and will not let go the first time it is asked.
 /// A tap whose detach never comes back — a platform call that has gone away.
 class _SilentDetachTap implements CallAudioTap {
+  int detachCalls = 0;
+
+  /// Completed by a test to let the outstanding detach finally finish.
+  final finish = Completer<void>();
+
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
-      () => Completer<void>().future;
+      () {
+        detachCalls++;
+        return finish.future;
+      };
 }
 
 class _StubbornSlowTap implements CallAudioTap {
