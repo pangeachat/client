@@ -160,6 +160,14 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
   /// Turns the call down and says why, in the conversation itself.
   ///
+  /// If the learner answered on another phone a moment earlier, the caller's
+  /// side re-reads who is present and does not end the call — but this message
+  /// still goes to the room, so a "can't talk right now" can land in a
+  /// conversation that is happening. Knowing the call had been answered would
+  /// mean trusting a membership for liveness, and a device that crashed leaves
+  /// one that reads live for about twelve minutes; wired to a prompt, that
+  /// silences real calls. An odd line in the chat is the cheaper mistake.
+  ///
   /// The decline still goes out first: the caller's phone should stop ringing
   /// whether or not the message sends, and the message is the courtesy on top
   /// rather than the mechanism.
