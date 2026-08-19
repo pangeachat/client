@@ -14,8 +14,8 @@ import 'package:fluffychat/routes/chat/chat_details/course_overview/course_catch
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_chats_preview.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_knock_requests.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_participants_preview.dart';
+import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_button.dart';
 import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_header.dart';
-import 'package:fluffychat/routes/chat/chat_details/course_overview/course_section_link.dart';
 import 'package:fluffychat/routes/chat/chat_details/room_details_buttons.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details.dart';
 import 'package:fluffychat/routes/chat/chat_details/space_details_content.dart';
@@ -243,9 +243,9 @@ class _CourseOverviewState extends State<CourseOverview> {
                                 widget.controller.objectivesProvider,
                           ),
                           if (hasPlan)
-                            CourseSectionLink(
+                            CourseSectionButton(
                               label: l10n.seeFullCoursePlan,
-                              onTap: () =>
+                              onPressed: () =>
                                   _openSubpage(SpaceSettingsTabs.course),
                               trailing: pingLeadsToFullPlan
                                   ? const CoursePingBadge()
@@ -281,9 +281,9 @@ class _CourseOverviewState extends State<CourseOverview> {
                 ),
                 Padding(
                   padding: SpaceDetailsContent.sectionPadding,
-                  child: CourseSectionLink(
+                  child: CourseSectionButton(
                     label: l10n.allChats,
-                    onTap: () => _openSubpage(SpaceSettingsTabs.chat),
+                    onPressed: () => _openSubpage(SpaceSettingsTabs.chat),
                   ),
                 ),
               ],
@@ -315,9 +315,10 @@ class _CourseOverviewState extends State<CourseOverview> {
                         : null,
                   ),
                   CourseParticipantsPreview(room: room),
-                  CourseSectionLink(
+                  CourseSectionButton(
                     label: l10n.allParticipants,
-                    onTap: () => _openSubpage(SpaceSettingsTabs.participants),
+                    onPressed: () =>
+                        _openSubpage(SpaceSettingsTabs.participants),
                   ),
                 ],
               ),
