@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-18 15:48:49.041198",
+    "@@last_modified": "2026-08-19 11:21:14.969263",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Faʻaopoopo lau piano gagana e aʻoaʻoina e ala i le alu i:",
     "enableAutocorrectPopupSteps": "  • Faʻatulagaga\n  • Lautele\n  • Piano\n  • Piano\n  • Faʻaopoopo se Piano Fou",
     "enableAutocorrectPopupDescription": "O le taimi lava e filifilia ai le gagana, e mafai ona e kiliki le faʻailoga laʻititi o le lalolagi i le pito i lalo agavale o lau piano e faʻagaoioia ai le piano fou faʻapipiʻi.",
-    "downloadGboardTitle": "Lalotoso Gboard mai le Google Play Store e faʻaagaaga ai le autocorrect ma isi vaega o le piano:",
     "downloadGboardSteps": " • Lalotoso Gboard\n  • Tatala le app\n  • Gagana\n  • Faʻaopoopo piano\n  • Filifili Gagana\n  • Filifili ituaiga piano\n  • Faia",
-    "downloadGboardDescription": "O le taimi lava e filifilia ai le gagana, e mafai ona e kiliki le faʻailoga laʻititi o le lalolagi i le pito i lalo agavale o lau piano e faʻagaoioia ai le piano fou faʻapipiʻi.",
     "enableAutocorrectWarning": "Lapataʻiga! E manaʻomia le faʻaopoopoina o lau piano gagana e aʻoaʻoina",
     "displayName": "Igoa faʻaalia",
     "leaveRoomDescription": "O le a e tuʻua lenei talanoaga. O isi tagata faʻaoga o le a vaʻai ua e tuʻua le talanoaga.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Faailoga uma ua faitauina",
     "usersAreTryingToJoinCourse": "O lo'o taumafai tagata fa'aoga e auai i lau kosi",
     "denyAllUsers": "Te'ena tagata fa'aoga uma",
-    "denyAllKnocksDescription": "O le a te'ena nei tagata fa'aoga mai le kosi. E mafai ona latou toe taumafai e auai i so'o se taimi."
+    "denyAllKnocksDescription": "O le a te'ena nei tagata fa'aoga mai le kosi. E mafai ona latou toe taumafai e auai i so'o se taimi.",
+    "autocorrectAndroidDialogTitle": "Fa'asa'oga otometi i lau gagana e a'oa'oina",
+    "autocorrectAndroidDialogBody": "A e taina i se talatalanoaga, o le a fesuia'i lau piano i lau gagana e a'oa'oina ma fa'asa'o le sipelaga i lena gagana.",
+    "autocorrectAndroidFallbackTitle": "Afai e le ofoina mai e lau piano lau gagana e a'oa'oina, fa'apipi'i le Gboard ma fa'aopoopo le gagana iina:"
 }

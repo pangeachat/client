@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-18 15:48:50.550761",
+    "@@last_modified": "2026-08-19 11:21:19.075217",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Yongeza ikhibhodi yolwimi lwakho olujoliswe kulo ngokuya ku:",
     "enableAutocorrectPopupSteps": "  • Useto\n  • Ngokubanzi\n  • Ikhibhodi\n  • Iikhibhodi\n  • Yongeza Ikhibhodi Entsha",
     "enableAutocorrectPopupDescription": "Nje ukuba ulwimi lukhethiwe, ungacofa i-ayikhoni encinci yeglowubhu kwikona esezantsi ekhohlo yekhibhodi yakho ukuze uvule ikhibhodi esandula ukufakwa.",
-    "downloadGboardTitle": "Khuphela i-Gboard kwi-Google Play Store ukuze uvule i-autocorrect kunye nezinye iimpawu zekhibhodi:",
     "downloadGboardSteps": " • Khuphela i-Gboard\n  • Vula usetyenziso\n  • Iilwimi\n  • Yongeza ikhibhodi\n  • Khetha Ulwimi\n  • Khetha uhlobo lwekhibhodi\n  • Kwenzekile",
-    "downloadGboardDescription": "Nje ukuba ulwimi lukhethiwe, ungacofa i-ayikhoni encinci yeglowubhu kwikona esezantsi ekhohlo yekhibhodi yakho ukuze uvule ikhibhodi esandula ukufakwa.",
     "enableAutocorrectWarning": "Isilumkiso! Ifuna ukongeza ikhibhodi yolwimi lwakho olujoliswe kulo",
     "displayName": "Igama lokubonisa",
     "leaveRoomDescription": "Uza kushiya le ncoko. Abanye abasebenzisi baya kubona ukuba uyishiyile incoko.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Phawula konke okufundiweyo",
     "usersAreTryingToJoinCourse": "Abasebenzisi bazama ukujoyina ikhosi yakho",
     "denyAllUsers": "Yala bonke abasebenzisi",
-    "denyAllKnocksDescription": "Aba basebenzisi baya kulahlwa kwikhosi. Bangazama ukujoyina kwakhona nangaliphi na ixesha."
+    "denyAllKnocksDescription": "Aba basebenzisi baya kulahlwa kwikhosi. Bangazama ukujoyina kwakhona nangaliphi na ixesha.",
+    "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzekelayo ngolwimi olufundayo",
+    "autocorrectAndroidDialogBody": "Xa uchwetheza kwincoko, ikhibhodi yakho iya kutshintshela kulwimi olufundayo kwaye ilungise upelo ngolwimi olo.",
+    "autocorrectAndroidFallbackTitle": "Ukuba ikhibhodi yakho ayiluniki ulwimi olufundayo, faka iGboard kwaye ulongeze ulwimi apho:"
 }

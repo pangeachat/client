@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-18 15:48:43.096606",
+    "@@last_modified": "2026-08-19 11:21:07.837801",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -3263,9 +3263,7 @@
     "enableAutocorrectPopupTitle": "Adja hozzá a célnyelvi billentyűzetet a következő lépésekkel:",
     "enableAutocorrectPopupSteps": "  • Beállítások\n  • Általános\n  • Billentyűzet\n  • Billentyűzetek\n  • Új billentyűzet hozzáadása",
     "enableAutocorrectPopupDescription": "Miután kiválasztotta a nyelvet, kattintson a billentyűzet bal alsó sarkában lévő kis földgömb ikonra az újonnan telepített billentyűzet aktiválásához.",
-    "downloadGboardTitle": "Töltse le a Gboardot a Google Play Áruházból az automatikus javítás és más billentyűzet funkciók engedélyezéséhez:",
     "downloadGboardSteps": " • Töltse le a Gboardot\n  • Nyissa meg az alkalmazást\n  • Nyelvek\n  • Billentyűzet hozzáadása\n  • Nyelv kiválasztása\n  • Billentyűzet típusának kiválasztása\n  • Kész",
-    "downloadGboardDescription": "Miután kiválasztotta a nyelvet, kattintson a billentyűzet bal alsó sarkában lévő kis földgömb ikonra az újonnan telepített billentyűzet aktiválásához.",
     "enableAutocorrectWarning": "Figyelem! A célnyelvi billentyűzet hozzáadása szükséges",
     "displayName": "Megjelenítendő név",
     "leaveRoomDescription": "El fogja hagyni ezt a csevegést. A többi felhasználó látni fogja, hogy elhagyta a csevegést.",
@@ -5492,15 +5490,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9862,5 +9852,8 @@
     "markAllRead": "Mindet olvasottnak jelöli",
     "usersAreTryingToJoinCourse": "Felhasználók próbálnak csatlakozni a kurzusodhoz",
     "denyAllUsers": "Összes felhasználó elutasítása",
-    "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni."
+    "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni.",
+    "autocorrectAndroidDialogTitle": "Automatikus javítás a célnyelven",
+    "autocorrectAndroidDialogBody": "Amikor csevegésben gépel, a billentyűzet átvált a célnyelvre, és azon a nyelven javítja a helyesírást.",
+    "autocorrectAndroidFallbackTitle": "Ha a billentyűzete nem kínálja fel a célnyelvet, telepítse a Gboardot, és adja hozzá ott a nyelvet:"
 }

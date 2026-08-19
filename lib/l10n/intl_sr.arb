@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:48.701907",
+    "@@last_modified": "2026-08-19 11:21:15.795957",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -2536,9 +2536,7 @@
     "enableAutocorrectPopupTitle": "Dodajte tastaturu za ciljni jezik tako što ćete otići na:",
     "enableAutocorrectPopupSteps": "  • Podešavanja\n  • Opšte\n  • Tastatura\n  • Tastature\n  • Dodaj novu tastaturu",
     "enableAutocorrectPopupDescription": "Nakon što odaberete jezik, možete kliknuti na malu globus ikonu na donjem levom uglu vaše tastature da aktivirate novu tastaturu.",
-    "downloadGboardTitle": "Preuzmite Gboard sa Google Play prodavnice za omogućavanje automatske ispravke i drugih funkcija tastature:",
     "downloadGboardSteps": " • Preuzmi Gboard\n  • Otvori aplikaciju\n  • Jezici\n  • Dodaj tastaturu\n  • Izaberi jezik\n  • Izaberi tip tastature\n  • Gotovo",
-    "downloadGboardDescription": "Nakon što odaberete jezik, možete kliknuti na malu globus ikonu na donjem levom uglu vaše tastature da aktivirate novu tastaturu.",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodavanje tastature za ciljni jezik",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Upravo napuštate ovaj chat. Ostali korisnici će videti da ste napustili chat.",
@@ -6338,15 +6336,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10708,5 +10698,8 @@
     "markAllRead": "Označi sve kao pročitano",
     "usersAreTryingToJoinCourse": "Korisnici pokušavaju da se pridruže vašem kursu",
     "denyAllUsers": "Odbij sve korisnike",
-    "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku."
+    "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku.",
+    "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
+    "autocorrectAndroidDialogBody": "Kada kucate u ćaskanju, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
+    "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:"
 }

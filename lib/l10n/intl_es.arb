@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-18 15:48:41.375130",
+    "@@last_modified": "2026-08-19 11:21:05.424837",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3415,9 +3415,7 @@
     "enableAutocorrectPopupTitle": "Agrega el teclado de tu idioma objetivo yendo a:",
     "enableAutocorrectPopupSteps": "  • Configuración\n  • General\n  • Teclado\n  • Teclados\n  • Agregar nuevo teclado",
     "enableAutocorrectPopupDescription": "Una vez que se seleccione el idioma, puedes hacer clic en el pequeño ícono de globo en la esquina inferior izquierda de tu teclado para activar el teclado recién instalado.",
-    "downloadGboardTitle": "Descarga Gboard desde Google Play Store para habilitar la autocorrección y otras funciones del teclado:",
     "downloadGboardSteps": " • Descargar Gboard\n  • Abrir la aplicación\n  • Idiomas\n  • Agregar teclado\n  • Seleccionar idioma\n  • Seleccionar tipo de teclado\n  • Listo",
-    "downloadGboardDescription": "Una vez que se seleccione el idioma, puedes hacer clic en el pequeño ícono de globo en la esquina inferior izquierda de tu teclado para activar el teclado recién instalado.",
     "displayName": "Nombre para mostrar",
     "leaveRoomDescription": "Estás a punto de salir de este chat. Otros usuarios verán que has salido del chat.",
     "confirmUserId": "Por favor, confirma tu nombre de usuario de Pangea Chat para poder eliminar tu cuenta.",
@@ -7962,5 +7960,8 @@
     "markAllRead": "Marcar todo como leído",
     "usersAreTryingToJoinCourse": "Los usuarios están intentando unirse a tu curso",
     "denyAllUsers": "Rechazar a todos los usuarios",
-    "denyAllKnocksDescription": "Estos usuarios serán rechazados del curso. Pueden intentar unirse de nuevo en cualquier momento."
+    "denyAllKnocksDescription": "Estos usuarios serán rechazados del curso. Pueden intentar unirse de nuevo en cualquier momento.",
+    "autocorrectAndroidDialogTitle": "Autocorrección en tu idioma objetivo",
+    "autocorrectAndroidDialogBody": "Cuando escribas en un chat, tu teclado cambiará a tu idioma objetivo y corregirá la ortografía en ese idioma.",
+    "autocorrectAndroidFallbackTitle": "Si tu teclado no ofrece tu idioma objetivo, instala Gboard y añade el idioma allí:"
 }

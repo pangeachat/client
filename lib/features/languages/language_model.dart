@@ -368,6 +368,28 @@ class LanguageModel {
 
   String get langCodeShort => langCode.split('-').first;
 
+  /// This language as a Flutter [Locale], keeping any script and region
+  /// subtags (`es-MX` → es/MX, `zh-Hant` → zh/Hant) so a platform keyboard can
+  /// pick the matching regional pack. Unlike `LocaleProvider.localeFromLangCode`
+  /// this is not narrowed to the UI translations the app ships.
+  Locale get locale {
+    final subtags = langCode.replaceAll('_', '-').split('-');
+    String? scriptCode;
+    String? countryCode;
+    for (final subtag in subtags.skip(1)) {
+      if (subtag.length == 4) {
+        scriptCode = subtag;
+      } else if (subtag.length == 2 || subtag.length == 3) {
+        countryCode = subtag.toUpperCase();
+      }
+    }
+    return Locale.fromSubtags(
+      languageCode: subtags.first.toLowerCase(),
+      scriptCode: scriptCode,
+      countryCode: countryCode,
+    );
+  }
+
   TextDirection get _defaultTextDirection {
     return LanguageConstants.rtlLanguageCodes.contains(langCodeShort)
         ? TextDirection.rtl

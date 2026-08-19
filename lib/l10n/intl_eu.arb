@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-18 15:48:41.770667",
+    "@@last_modified": "2026-08-19 11:21:05.877064",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3360,9 +3360,7 @@
     "enableAutocorrectPopupTitle": "Gehitu zure hizkuntza helburuaren teklatua honetara joanez:",
     "enableAutocorrectPopupSteps": "  • Ezarpenak\n  • Orokorra\n  • Teklatu\n  • Teklatuak\n  • Gehitu teklatu berria",
     "enableAutocorrectPopupDescription": "Hizkuntza aukeratu ondoren, teklatuaren behealdean ezkerreko globe ikono txikia klik egin dezakezu teklatu berria aktibatzeko.",
-    "downloadGboardTitle": "Deskargatu Gboard Google Play Store-tik autokorreta eta beste teklatu ezaugarriak gaitzeko:",
     "downloadGboardSteps": " • Deskargatu Gboard\n  • Ireki aplikazioa\n  • Hizkuntzak\n  • Gehitu teklatua\n  • Aukeratu Hizkuntza\n  • Aukeratu teklatu mota\n  • Amaitu",
-    "downloadGboardDescription": "Hizkuntza aukeratu ondoren, teklatuaren behealdean ezkerreko globe ikono txikia klik egin dezakezu teklatu berria aktibatzeko.",
     "enableAutocorrectWarning": "Abisua! Zure hizkuntza helburuaren teklatua gehitzea eskatzen du",
     "displayName": "Erakutsi izena",
     "leaveRoomDescription": "Chat hau utzi nahi duzu. Beste erabiltzaileek ikusi ahal izango dute chatetik alde egin duzula.",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,5 +9749,8 @@
     "markAllRead": "Denak irakurritako gisa markatu",
     "usersAreTryingToJoinCourse": "Erabiltzaileak zure ikastarora sartzen saiatzen ari dira",
     "denyAllUsers": "Ukatu erabiltzaile guztiei",
-    "denyAllKnocksDescription": "Erabiltzaile hauek ikastarotik baztertuko dira. Edonoiz saia daitezke berriro sartzen."
+    "denyAllKnocksDescription": "Erabiltzaile hauek ikastarotik baztertuko dira. Edonoiz saia daitezke berriro sartzen.",
+    "autocorrectAndroidDialogTitle": "Zuzenketa automatikoa zure xede-hizkuntzan",
+    "autocorrectAndroidDialogBody": "Txat batean idazten duzunean, teklatua zure xede-hizkuntzara aldatuko da eta hizkuntza horretako ortografia zuzenduko du.",
+    "autocorrectAndroidFallbackTitle": "Zure teklatuak xede-hizkuntza eskaintzen ez badu, instalatu Gboard eta gehitu hizkuntza bertan:"
 }

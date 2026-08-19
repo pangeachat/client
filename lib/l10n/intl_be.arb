@@ -3350,9 +3350,7 @@
     "enableAutocorrectPopupTitle": "Дадайце клавіятуру мовы мэты, перайшоўшы ў:",
     "enableAutocorrectPopupSteps": "  • Налады\n  • Агульныя\n  • Клавіятура\n  • Клавіятуры\n  • Дадаць новую клавіятуру",
     "enableAutocorrectPopupDescription": "Пасля выбару мовы вы можаце націснуць на маленькую ікону глобуса ў ніжнім левым куце вашай клавіятуры, каб актываваць новую ўсталяваную клавіятуру.",
-    "downloadGboardTitle": "Загрузіце Gboard з Google Play Store, каб уключыць аўтаматычную карэкцыю і іншыя функцыі клавіятуры:",
     "downloadGboardSteps": " • Загрузіце Gboard\n  • Адкрыйце прыкладанне\n  • Мовы\n  • Дадаць клавіятуру\n  • Выбраць мову\n  • Выбраць тып клавіятуры\n  • Гатова",
-    "downloadGboardDescription": "Пасля выбару мовы вы можаце націснуць на маленькую ікону глобуса ў ніжнім левым куце вашай клавіятуры, каб актываваць новую ўсталяваную клавіятуру.",
     "enableAutocorrectWarning": "Увага! Патрабуецца дадаць клавіятуру мовы мэты",
     "displayName": "Імя для паказу",
     "leaveRoomDescription": "Вы збіраецеся пакінуць гэты чат. Іншыя карыстальнікі ўбачаць, што вы пакінулі чат.",
@@ -3553,7 +3551,7 @@
     "playWithAI": "Пакуль гуляйце з ШІ",
     "courseStartDesc": "Pangea Bot гатовы да працы ў любы час!\n\n...але навучанне лепш з сябрамі!",
     "@@locale": "be",
-    "@@last_modified": "2026-08-18 15:48:40.039371",
+    "@@last_modified": "2026-08-19 11:21:03.789219",
     "@ignore": {
         "type": "String",
         "placeholders": {}
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9773,5 +9763,8 @@
     "markAllRead": "Адзначыць усе прачытанымі",
     "usersAreTryingToJoinCourse": "Карыстальнікі спрабуюць далучыцца да вашага курса",
     "denyAllUsers": "Адхіліць усіх карыстальнікаў",
-    "denyAllKnocksDescription": "Гэтыя карыстальнікі будуць адхілены ад курса. Яны могуць паспрабаваць далучыцца зноў у любы час."
+    "denyAllKnocksDescription": "Гэтыя карыстальнікі будуць адхілены ад курса. Яны могуць паспрабаваць далучыцца зноў у любы час.",
+    "autocorrectAndroidDialogTitle": "Аўтавыпраўленне на вашай мэтавай мове",
+    "autocorrectAndroidDialogBody": "Калі вы друкуеце ў чаце, ваша клавіятура пераключыцца на мэтавую мову і выправіць арфаграфію на гэтай мове.",
+    "autocorrectAndroidFallbackTitle": "Калі ваша клавіятура не прапануе мэтавую мову, усталюйце Gboard і дадайце мову там:"
 }

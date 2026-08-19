@@ -62,24 +62,28 @@ class IOSEnableAutocorrectDialog extends StatelessWidget {
   }
 }
 
+/// On Android the composer passes the target language to the keyboard
+/// (`hintLocales`), so no manual keyboard switch is needed — the dialog just
+/// explains that, and keeps the Gboard walkthrough as the fallback for
+/// keyboards that have no pack for the language (#8466).
 class AndroidEnableAutocorrectDialog extends StatelessWidget {
   const AndroidEnableAutocorrectDialog({super.key});
 
   @override
   Widget build(BuildContext context) {
     return AlertDialog.adaptive(
-      title: Text(L10n.of(context).enableAutocorrectWarning),
+      title: Text(L10n.of(context).autocorrectAndroidDialogTitle),
       content: SingleChildScrollView(
         child: Column(
           spacing: 8.0,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(L10n.of(context).downloadGboardTitle),
+            Text(L10n.of(context).autocorrectAndroidDialogBody),
+            Text(L10n.of(context).autocorrectAndroidFallbackTitle),
             Text(
               L10n.of(context).downloadGboardSteps,
               textAlign: TextAlign.start,
             ),
-            Text(L10n.of(context).downloadGboardDescription),
           ],
         ),
       ),

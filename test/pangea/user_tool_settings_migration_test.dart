@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/user/user_model.dart';
@@ -109,6 +111,80 @@ void main() {
         settings.copyWith(audioOnMessageClick: false).audioOnMessageClick,
         isFalse,
       );
+    });
+  });
+
+  // #8466 — device autocorrect defaults on for Android only. The stored value
+  // stays unresolved (null) until the user chooses, so each device applies
+  // its own platform default; a stored false is always kept as a choice.
+  group('UserToolSettings enableAutocorrect default', () {
+    tearDown(() => debugDefaultTargetPlatformOverride = null);
+
+    test('resolves to on for Android when never chosen', () {
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      expect(const UserToolSettings().enableAutocorrect, isTrue);
+      expect(UserToolSettings.fromJson({}).enableAutocorrect, isTrue);
+    });
+
+    test('resolves to off for iOS when never chosen', () {
+      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+      expect(const UserToolSettings().enableAutocorrect, isFalse);
+      expect(UserToolSettings.fromJson({}).enableAutocorrect, isFalse);
+    });
+
+    test('a stored explicit off stays off on Android', () {
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      final settings = UserToolSettings.fromJson({'enableAutocorrect': false});
+      expect(settings.enableAutocorrect, isFalse);
+      expect(settings.enableAutocorrectChoice, isFalse);
+    });
+
+    test('a stored explicit on stays on regardless of platform', () {
+      debugDefaultTargetPlatformOverride = TargetPlatform.iOS;
+      expect(
+        UserToolSettings.fromJson({
+          'enableAutocorrect': true,
+        }).enableAutocorrect,
+        isTrue,
+      );
+    });
+
+    test('toJson omits the key until the user chooses', () {
+      expect(
+        const UserToolSettings().toJson().containsKey('enableAutocorrect'),
+        isFalse,
+      );
+      expect(
+        const UserToolSettings(enableAutocorrect: false).toJson(),
+        containsPair('enableAutocorrect', false),
+      );
+      expect(
+        const UserToolSettings(enableAutocorrect: true).toJson(),
+        containsPair('enableAutocorrect', true),
+      );
+    });
+
+    test('never-chosen round-trips as never-chosen', () {
+      final restored = UserToolSettings.fromJson(
+        const UserToolSettings().toJson(),
+      );
+      expect(restored.enableAutocorrectChoice, isNull);
+      expect(restored, equals(const UserToolSettings()));
+    });
+
+    test('copyWith of another toggle leaves the choice unresolved', () {
+      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      final updated = const UserToolSettings().copyWith(audioWords: false);
+      expect(updated.enableAutocorrectChoice, isNull);
+      expect(updated.toJson().containsKey('enableAutocorrect'), isFalse);
+    });
+
+    test('copyWith records an explicit choice', () {
+      final updated = const UserToolSettings().copyWith(
+        enableAutocorrect: false,
+      );
+      expect(updated.enableAutocorrectChoice, isFalse);
+      expect(updated.enableAutocorrect, isFalse);
     });
   });
 

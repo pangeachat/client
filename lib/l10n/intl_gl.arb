@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-18 15:48:42.457646",
+    "@@last_modified": "2026-08-19 11:21:06.626875",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -3360,9 +3360,7 @@
     "enableAutocorrectPopupTitle": "Engade o teu teclado de idioma obxectivo indo a:",
     "enableAutocorrectPopupSteps": "  • Configuración\n  • Xeral\n  • Teclado\n  • Teclados\n  • Engadir novo teclado",
     "enableAutocorrectPopupDescription": "Unha vez que se seleccione o idioma, podes facer clic na pequena icona do globo na parte inferior esquerda do teu teclado para activar o teclado recentemente instalado.",
-    "downloadGboardTitle": "Descarga Gboard desde a Google Play Store para activar a corrección automática e outras funcións do teclado:",
     "downloadGboardSteps": " • Descarga Gboard\n  • Abre a aplicación\n  • Idiomas\n  • Engadir teclado\n  • Seleccionar idioma\n  • Seleccionar tipo de teclado\n  • Listo",
-    "downloadGboardDescription": "Unha vez que se seleccione o idioma, podes facer clic na pequena icona do globo na parte inferior esquerda do teu teclado para activar o teclado recentemente instalado.",
     "enableAutocorrectWarning": "¡Advertencia! É necesario engadir o teclado do teu idioma obxectivo",
     "displayName": "Nome para amosar",
     "leaveRoomDescription": "Estás a piques de abandonar este chat. Outros usuarios verán que saíste do chat.",
@@ -5569,15 +5567,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -9759,5 +9749,8 @@
     "markAllRead": "Marcar todo como lido",
     "usersAreTryingToJoinCourse": "Os usuarios están a intentar unirse ao teu curso",
     "denyAllUsers": "Rexeitar todos os usuarios",
-    "denyAllKnocksDescription": "Estes usuarios serán rexeitados do curso. Poderán intentar unirse de novo en calquera momento."
+    "denyAllKnocksDescription": "Estes usuarios serán rexeitados do curso. Poderán intentar unirse de novo en calquera momento.",
+    "autocorrectAndroidDialogTitle": "Corrección automática no teu idioma de destino",
+    "autocorrectAndroidDialogBody": "Cando escribas nun chat, o teu teclado cambiará ao teu idioma de destino e corrixirá a ortografía nese idioma.",
+    "autocorrectAndroidFallbackTitle": "Se o teu teclado non ofrece o teu idioma de destino, instala Gboard e engade o idioma alí:"
 }

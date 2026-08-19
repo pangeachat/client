@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:fluffychat/features/languages/l2_support_enum.dart';
@@ -241,6 +243,35 @@ void main() {
         l2Support: L2SupportEnum.na,
       );
       expect(model.l2, isFalse);
+    });
+  });
+
+  // #8466 — the composer hands the target language to the keyboard as a
+  // Locale; region and script must survive so regional packs can match.
+  group('LanguageModel.locale', () {
+    LanguageModel lang(String code) =>
+        LanguageModel(langCode: code, displayName: code);
+
+    test('bare language code', () {
+      expect(lang('es').locale, const Locale('es'));
+      expect(lang('es').locale.toLanguageTag(), 'es');
+    });
+
+    test('keeps the region subtag', () {
+      expect(lang('es-MX').locale, const Locale('es', 'MX'));
+      expect(lang('pt-BR').locale.toLanguageTag(), 'pt-BR');
+    });
+
+    test('keeps the script subtag', () {
+      expect(
+        lang('zh-Hant').locale,
+        const Locale.fromSubtags(languageCode: 'zh', scriptCode: 'Hant'),
+      );
+      expect(lang('zh-Hant-TW').locale.toLanguageTag(), 'zh-Hant-TW');
+    });
+
+    test('normalizes underscores and case', () {
+      expect(lang('pt_br').locale, const Locale('pt', 'BR'));
     });
   });
 

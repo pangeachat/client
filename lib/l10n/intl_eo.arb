@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-18 15:48:41.321343",
+    "@@last_modified": "2026-08-19 11:21:05.330828",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -2607,9 +2607,7 @@
     "enableAutocorrectPopupTitle": "Aldoni vian celan lingvon-klavaron per irado al:",
     "enableAutocorrectPopupSteps": "  • Agordoj\n  • Ĝenerala\n  • Klavaro\n  • Klavaroj\n  • Aldoni novan klavaron",
     "enableAutocorrectPopupDescription": "Post kiam la lingvo estas elektita, vi povas klaki la malgrandan globan ikonon ĉe la maldekstra angulo de via klavaro por aktivigi la novan instalitan klavaron.",
-    "downloadGboardTitle": "Elŝuti Gboard de la Google Play Store por ebligi aŭtomatan korektadon kaj aliajn klavaraĵojn:",
     "downloadGboardSteps": " • Elŝuti Gboard\n  • Malfermi la aplikaĵon\n  • Lingvoj\n  • Aldoni klavaron\n  • Elekti lingvon\n  • Elekti klavartipo\n  • Fino",
-    "downloadGboardDescription": "Post kiam la lingvo estas elektita, vi povas klaki la malgrandan globan ikonon ĉe la maldekstra angulo de via klavaro por aktivigi la novan instalitan klavaron.",
     "enableAutocorrectWarning": "Averto! Postulas aldoni vian celan lingvon-klavaron",
     "displayName": "Montra nomo",
     "leaveRoomDescription": "Vi estas proksima forlasi ĉi tiun babilejon. Aliaj uzantoj vidos ke vi forlasis la babilejon.",
@@ -6334,15 +6332,7 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardTitle": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboardDescription": {
         "type": "String",
         "placeholders": {}
     },
@@ -10704,5 +10694,8 @@
     "markAllRead": "Marki ĉion kiel legitan",
     "usersAreTryingToJoinCourse": "Uzantoj provas aliĝi al via kurso",
     "denyAllUsers": "Malakcepti ĉiujn uzantojn",
-    "denyAllKnocksDescription": "Ĉi tiuj uzantoj estos malakceptitaj de la kurso. Ili rajtas provi aliĝi denove iam ajn."
+    "denyAllKnocksDescription": "Ĉi tiuj uzantoj estos malakceptitaj de la kurso. Ili rajtas provi aliĝi denove iam ajn.",
+    "autocorrectAndroidDialogTitle": "Aŭtomata korekto en via cellingvo",
+    "autocorrectAndroidDialogBody": "Kiam vi tajpas en babilejo, via klavaro ŝanĝos al via cellingvo kaj korektos literumadon en tiu lingvo.",
+    "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:"
 }

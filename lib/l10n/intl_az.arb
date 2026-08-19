@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-18 15:48:40.160332",
+    "@@last_modified": "2026-08-19 11:21:04.589015",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Hədəf dilinizin klaviaturasını əlavə etmək üçün bura daxil olun:",
     "enableAutocorrectPopupSteps": "  • Parametrlər\n  • Ümumi\n  • Klaviatura\n  • Klaviaturalar\n  • Yeni Klaviatura Əlavə Et",
     "enableAutocorrectPopupDescription": "Dil seçildikdən sonra, yeni quraşdırılmış klaviaturanı aktivləşdirmək üçün klaviaturanızın aşağı sol küncündəki kiçik qlobus işarəsinə klikləyə bilərsiniz.",
-    "downloadGboardTitle": "Avtomatik düzəliş və digər klaviatura funksiyalarını aktivləşdirmək üçün Gboard-u Google Play Store-dan yükləyin:",
     "downloadGboardSteps": " • Gboard-u yükləyin\n  • Tətbiqi açın\n  • Dillər\n  • Klaviatura əlavə edin\n  • Dil seçin\n  • Klaviatura növünü seçin\n  • Hazırdır",
-    "downloadGboardDescription": "Dil seçildikdən sonra, yeni quraşdırılmış klaviaturanı aktivləşdirmək üçün klaviaturanızın aşağı sol küncündəki kiçik qlobus işarəsinə klikləyə bilərsiniz.",
     "enableAutocorrectWarning": "Xəbərdarlıq! Hədəf dilinizin klaviaturasını əlavə etmək tələb olunur",
     "displayName": "Görünən ad",
     "leaveRoomDescription": "Siz bu çatı tərk etmək üzrəsiniz. Digər istifadəçilər sizin çatı tərk etdiyinizi görəcəklər.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Hamısını oxunmuş kimi qeyd et",
     "usersAreTryingToJoinCourse": "İstifadəçilər kursunuza qoşulmağa çalışır",
     "denyAllUsers": "Bütün istifadəçiləri rədd et",
-    "denyAllKnocksDescription": "Bu istifadəçilər kursdan rədd ediləcək. Onlar istənilən vaxt yenidən qoşulmağa cəhd edə bilərlər."
+    "denyAllKnocksDescription": "Bu istifadəçilər kursdan rədd ediləcək. Onlar istənilən vaxt yenidən qoşulmağa cəhd edə bilərlər.",
+    "autocorrectAndroidDialogTitle": "Hədəf dilinizdə avtodüzəliş",
+    "autocorrectAndroidDialogBody": "Söhbətdə yazarkən klaviaturanız hədəf dilinizə keçəcək və həmin dildə orfoqrafiyanı düzəldəcək.",
+    "autocorrectAndroidFallbackTitle": "Əgər klaviaturanız hədəf dilinizi təklif etmirsə, Gboard-u quraşdırın və dili oraya əlavə edin:"
 }

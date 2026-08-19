@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-18 15:48:42.045972",
+    "@@last_modified": "2026-08-19 11:21:06.370764",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Foegje dyn doeltaaltoetseboerd ta troch te gean nei:",
     "enableAutocorrectPopupSteps": "  • Ynstellingen\n  • Algemien\n  • Toetseboerd\n  • Toetseboerden\n  • Foegje nij toetseboerd ta",
     "enableAutocorrectPopupDescription": "Sadree't de taal selektearre is, kinst op it lytse wrâldbyldkaike linkûnder op dyn toetseboerd klikke om it nij ynstallearre toetseboerd te aktivearjen.",
-    "downloadGboardTitle": "Download Gboard út de Google Play Store om autokorreksje en oare toetseboerdfunksjes yn te skeakeljen:",
     "downloadGboardSteps": " • Download Gboard\n  • App iepenje\n  • Talen\n  • Toetseboerd tafoegje\n  • Taal selektearje\n  • Toetseboerdtype selektearje\n  • Klear",
-    "downloadGboardDescription": "Sadree't de taal selektearre is, kinst op it lytse wrâldbyldkaike linkûnder op dyn toetseboerd klikke om it nij ynstallearre toetseboerd te aktivearjen.",
     "enableAutocorrectWarning": "Warskôging! It tafoegjen fan dyn doeltaaltoetseboerd is fereaske",
     "displayName": "Werjeftenamme",
     "leaveRoomDescription": "Do stiest op it punt dit petear te ferlitten. Oare brûkers sille sjen datst it petear ferlitten hast.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Alles as lêzen markearje",
     "usersAreTryingToJoinCourse": "Brûkers besykje mei te dwaan oan dyn kursus",
     "denyAllUsers": "Alle brûkers wegerje",
-    "denyAllKnocksDescription": "Dizze brûkers wurde wegere fan de kursus. Se kinne op elk momint opnij besykje mei te dwaan."
+    "denyAllKnocksDescription": "Dizze brûkers wurde wegere fan de kursus. Se kinne op elk momint opnij besykje mei te dwaan.",
+    "autocorrectAndroidDialogTitle": "Autokorreksje yn dyn doeltaal",
+    "autocorrectAndroidDialogBody": "As jo yn in petear typst, sil dyn toetseboerd oerskeakelje nei dyn doeltaal en de stavering yn dy taal korrizjearje.",
+    "autocorrectAndroidFallbackTitle": "As dyn toetseboerd dyn doeltaal net oanbiedt, ynstallearje dan Gboard en foegje de taal dêr ta:"
 }

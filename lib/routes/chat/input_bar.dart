@@ -481,6 +481,11 @@ class InputBar extends StatelessWidget {
           choreographer.igcController.activeMatch,
         ]),
         builder: (context, _) {
+          final userController = MatrixState.pangeaController.userController;
+          final autocorrect = userController.isToolEnabled(
+            ToolSetting.enableAutocorrect,
+          );
+          final targetLanguage = userController.userL2;
           return TextField(
             // Pangea#
             controller: controller,
@@ -492,8 +497,16 @@ class InputBar extends StatelessWidget {
             contextMenuBuilder: (c, e) =>
                 markdownContextBuilder(c, e, controller!),
             onTap: () => _onInputTap(context),
-            autocorrect: MatrixState.pangeaController.userController
-                .isToolEnabled(ToolSetting.enableAutocorrect),
+            autocorrect: autocorrect,
+            // Tell the keyboard which language is being typed so its
+            // autocorrect and suggestions are in the learner's L2 rather than
+            // the device language. Android-only in Flutter (EditorInfo
+            // .hintLocales); a no-op on iOS and web. Tied to the autocorrect
+            // toggle so turning it off also stops forcing the keyboard
+            // language (#8466).
+            hintLocales: autocorrect && targetLanguage != null
+                ? [targetLanguage.locale]
+                : null,
             // Pangea#
             contentInsertionConfiguration: ContentInsertionConfiguration(
               onContentInserted: (KeyboardInsertedContent content) {

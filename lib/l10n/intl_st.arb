@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-18 15:48:49.174922",
+    "@@last_modified": "2026-08-19 11:21:16.094147",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -1180,9 +1180,7 @@
     "enableAutocorrectPopupTitle": "Kenya k'hiboto ea puo eo u e ithutang ka ho ea ho:",
     "enableAutocorrectPopupSteps": "  • Litlhophiso\n  • Kakaretso\n  • K'hiboto\n  • Lik'hiboto\n  • Kenya K'hiboto e Ncha",
     "enableAutocorrectPopupDescription": "Hang ha puo e khethiloe, o ka tobetsa aekhone e nyane ea lefatše ka tlase letsohong le letšehali la k'hiboto ea hau ho kenya tšebetsong k'hiboto e sa tsoa kengoa.",
-    "downloadGboardTitle": "Khoasolla Gboard ho tsoa ho Google Play Store ho bulela tokiso ea othomathike le likarolo tse ling tsa k'hiboto:",
     "downloadGboardSteps": " • Khoasolla Gboard\n  • Bula sesebelisoa\n  • Lipuo\n  • Kenya k'hiboto\n  • Khetha Puo\n  • Khetha mofuta oa k'hiboto\n  • Ho felile",
-    "downloadGboardDescription": "Hang ha puo e khethiloe, o ka tobetsa aekhone e nyane ea lefatše ka tlase letsohong le letšehali la k'hiboto ea hau ho kenya tšebetsong k'hiboto e sa tsoa kengoa.",
     "enableAutocorrectWarning": "Temoso! Ho hlokahala hore o kenye k'hiboto ea puo eo u e ithutang",
     "displayName": "Lebitso la pontšo",
     "leaveRoomDescription": "U mothating oa ho tlohela puisano ena. Basebelisi ba bang ba tla bona hore u tlohetse puisano.",
@@ -2147,5 +2145,8 @@
     "markAllRead": "Tšoaea tsohle e le tse baliloeng",
     "usersAreTryingToJoinCourse": "Basebelisi ba leka ho kenela thupelo ea hau",
     "denyAllUsers": "Hana basebelisi bohle",
-    "denyAllKnocksDescription": "Basebelisi bana ba tla hanoa ho kenela thupelo. Ba ka leka ho kenela hape neng kapa neng."
+    "denyAllKnocksDescription": "Basebelisi bana ba tla hanoa ho kenela thupelo. Ba ka leka ho kenela hape neng kapa neng.",
+    "autocorrectAndroidDialogTitle": "Ho lokisa ka boithaopo ka puo eo o e batlang",
+    "autocorrectAndroidDialogBody": "Ha o thaepa moqoqong, keyboard ya hao e tla fetohela puong eo o e batlang mme e lokise mopeleto ka puo eo.",
+    "autocorrectAndroidFallbackTitle": "Haeba keyboard ya hao e sa fane ka puo eo o e batlang, kenya Gboard mme o kenye puo eo moo:"
 }
