@@ -1,0 +1,25 @@
+name: text_input_context
+description: >-
+  iOS-only. Lets a Flutter text field carry a UIKit textInputContextIdentifier,
+  so iOS restores the keyboard language the user last chose for that field.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ">=3.10.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  plugin:
+    platforms:
+      ios:
+        pluginClass: TextInputContextPlugin

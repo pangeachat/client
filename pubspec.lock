@@ -2442,6 +2442,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.6.16"
+  text_input_context:
+    dependency: "direct main"
+    description:
+      path: "pangea_packages/text_input_context"
+      relative: true
+    source: path
+    version: "0.1.0"
   timezone:
     dependency: transitive
     description:
