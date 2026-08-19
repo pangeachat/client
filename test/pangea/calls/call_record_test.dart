@@ -374,4 +374,35 @@ void main() {
       );
     });
   });
+  group('a call that rang out', () {
+    test('is written with no talking time at all', () {
+      // Observed on a live homeserver: a call nobody answered was written with
+      // answered:false AND fifteen seconds of duration. Both come from the same
+      // fact — whether anybody was ever on the other end — so they cannot
+      // honestly disagree, and a learner's history should not show time spent
+      // talking to nobody.
+      final content = <String, Object?>{};
+      final r = CallRecord(
+        roomId: '!r:server',
+        transcripts: CallTranscriptSink(
+          userL1: 'en',
+          userL2: 'es',
+          transcribe: (_) async => SpeechToTextResponseModel(results: const []),
+        ),
+        sendEvent: (c, txid) async {
+          content.addAll(c);
+          return '\$call';
+        },
+        analytics: (id, uses, lang) async {},
+      );
+
+      return r
+          .finish(duration: Duration.zero, video: false, answered: false)
+          .then((_) {
+            expect(content['answered'], isFalse);
+            expect(content['duration_ms'], 0);
+            expect(content['body'], 'Missed call');
+          });
+    });
+  });
 }
