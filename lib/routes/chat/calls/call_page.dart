@@ -231,6 +231,19 @@ class _CallPageState extends State<CallPage> {
   /// `hangUp` is idempotent and returns the same teardown to every caller, so
   /// the several entry points wait on one teardown and write once. Deliberately
   /// not awaited and not tied to this widget — it outlives the screen.
+  /// Ends the call from a button, and closes the screen AT ONCE.
+  ///
+  /// The call is over the moment the user says so. The teardown, the last
+  /// upload and the record all outlive this screen by design, so there is
+  /// nothing here to wait for. Leaving the screen up until the stage reached
+  /// `ended` — which only happens after retract, flush and upload have all
+  /// finished — made the end button feel dead for seconds, and dead outright if
+  /// an upload was slow to answer.
+  void _endCall() {
+    _finishRecording();
+    Navigator.of(context).maybePop();
+  }
+
   void _finishRecording() {
     unawaited(
       // whenComplete, not then: a teardown that throws must not also cost the
@@ -434,7 +447,7 @@ class _CallPageState extends State<CallPage> {
     child: IconButton(
       icon: const Icon(Icons.expand_more, color: Colors.white),
       tooltip: l10n.callHangUp,
-      onPressed: _finishRecording,
+      onPressed: _endCall,
     ),
   );
 
@@ -589,7 +602,7 @@ class _CallPageState extends State<CallPage> {
             background: const Color(0xFFD32F2F),
             foreground: Colors.white,
             large: true,
-            onPressed: _finishRecording,
+            onPressed: _endCall,
           ),
           const SizedBox(width: 22),
           _CallButton(

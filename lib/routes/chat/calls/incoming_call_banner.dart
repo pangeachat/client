@@ -314,16 +314,18 @@ class _CallCardState extends State<_CallCard>
               children: [
                 _identity(theme, l10n, caller),
                 const SizedBox(height: 14),
-                AnimatedSize(
-                  duration: const Duration(milliseconds: 180),
-                  curve: Curves.easeOut,
-                  child: _choosingReply
-                      ? CallQuickReplyList(
-                          onPick: widget.onQuickReply,
-                          onBack: () => setState(() => _choosingReply = false),
-                        )
-                      : _actions(theme, l10n),
-                ),
+                // Swapped directly, NOT through AnimatedSize. Its clip repaints
+                // as an opaque grey box on Flutter web on any hover or repaint —
+                // the "grey thing" that covered the card the moment the pointer
+                // touched it. The card resizing in one frame when the quick
+                // replies open is unremarkable next to a phone that is ringing.
+                if (_choosingReply)
+                  CallQuickReplyList(
+                    onPick: widget.onQuickReply,
+                    onBack: () => setState(() => _choosingReply = false),
+                  )
+                else
+                  _actions(theme, l10n),
               ],
             ),
           ),
