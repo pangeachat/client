@@ -246,6 +246,57 @@ void main() {
     });
   });
 
+  group('a leave that was given up on but is still running', () {
+    test('is waited for before the next call, then let go of', () async {
+      // The session is fetched by ROOM, so a redial lands on the very object
+      // the old leave still holds. Answering after that, it would retract the
+      // membership the NEW call had just published — the peer would watch us
+      // walk out of a call we had only just joined.
+      final service = CallService(
+        await bareClient(),
+        leaveWithin: const Duration(milliseconds: 50),
+      );
+      final never = Completer<void>();
+      service.setPendingLeaveForTest(never.future);
+
+      // Bounded: a leave that never answers must not hold up a call the learner
+      // is asking for now.
+      await service.settlePendingLeave().timeout(
+        const Duration(seconds: 2),
+        onTimeout: () => fail('waiting for a stale leave must be bounded'),
+      );
+
+      // And let go of, so the call after this one does not wait again.
+      var waitedAgain = false;
+      final second = service.settlePendingLeave().whenComplete(
+        () => waitedAgain = true,
+      );
+      await second;
+      expect(waitedAgain, isTrue);
+    });
+
+    test('really is waited for, not merely noted', () async {
+      final service = CallService(
+        await bareClient(),
+        leaveWithin: const Duration(seconds: 30),
+      );
+      var left = false;
+      service.setPendingLeaveForTest(
+        Future<void>.delayed(
+          const Duration(milliseconds: 100),
+        ).then((_) => left = true),
+      );
+
+      await service.settlePendingLeave();
+
+      expect(
+        left,
+        isTrue,
+        reason: 'the new call must not be built over a leave still running',
+      );
+    });
+  });
+
   group('a membership that could not be taken back', () {
     test('does not go on suppressing calls to this account', () {
       // Retracting is given up on when the server will not take it: the

@@ -168,6 +168,10 @@ class CallService {
     }
     _joining = true;
     final attempt = ++_joinAttempt;
+    // Before anything is fetched. A leave still in flight from the last call
+    // holds this room's session, and starting over the top of it means the new
+    // membership is published into a session that is about to be left.
+    await settlePendingLeave();
     try {
       // Bounded, because this claim is what stands between the account and
       // every other call it could make or take. Three round-trips happen inside
@@ -186,6 +190,32 @@ class CallService {
       _joining = false;
     }
   }
+
+  /// A leave that was given up on but is still running. The next call in this
+  /// room waits for it rather than racing it.
+  Future<void>? _leaving;
+
+  /// Waits for a leave that was given up on to actually finish.
+  ///
+  /// Bounded, and then let go of either way. Waiting longer would hold up a call
+  /// the learner is asking for now; going ahead is the lesser risk, because
+  /// refusing outright costs a conversation for certain where this only might.
+  @visibleForTesting
+  Future<void> settlePendingLeave() async {
+    final leaving = _leaving;
+    if (leaving == null) return;
+    Logs().i('Waiting for the last call to finish leaving');
+    try {
+      await leaving.timeout(_leaveWithin);
+    } catch (_) {
+      // Waited as long as is reasonable.
+    }
+    if (identical(_leaving, leaving)) _leaving = null;
+  }
+
+  /// Puts a still-running leave in place, for tests.
+  @visibleForTesting
+  void setPendingLeaveForTest(Future<void> leaving) => _leaving = leaving;
 
   /// How long one attempt to take the membership back may take.
   final Duration _leaveWithin;
@@ -636,7 +666,16 @@ class CallService {
           // Bounded. Everything after this frees the microphone and the camera,
           // and a leave that never came back held them open for as long as it
           // hung — in a call the learner had already left.
-          await session.leave().timeout(_leaveWithin);
+          //
+          // Kept, not dropped: giving up waiting does not stop it. The session
+          // is fetched by ROOM, so a redial lands on this same object, and a
+          // leave that finally answered after that would retract the membership
+          // the NEW call had just published — the peer would watch us walk out
+          // of a call we had only just joined.
+          final leaving = session.leave();
+          _leaving = leaving;
+          await leaving.timeout(_leaveWithin);
+          _leaving = null;
           _abandonedMembership = false;
           return true;
         } on TimeoutException catch (e, s) {
