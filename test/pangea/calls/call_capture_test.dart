@@ -396,6 +396,22 @@ void main() {
       expect(sink.delivered, isEmpty);
     });
   });
+
+  group('two stops arriving together', () {
+    test('close the sink once, not twice', () async {
+      // A hangup and a disconnect routinely land together. A guard followed by
+      // an await lets both past, and the sink is then closed twice.
+      final s = service(withTap: _SlowTap());
+      await s.start(track);
+      for (var i = 0; i < 30; i++) {
+        track.emit(20);
+      }
+
+      await Future.wait([s.stop(), s.stop()]);
+
+      expect(sink.closes, 1);
+    });
+  });
 }
 
 /// A device that offers no point to read from after echo cancellation.
@@ -403,4 +419,12 @@ class _NoTap implements CallAudioTap {
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
       null;
+}
+
+/// A tap whose detach takes a moment, which is what opens the window for a
+/// second stop to arrive while the first is still unwinding.
+class _SlowTap implements CallAudioTap {
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
+      () async => Future<void>.delayed(const Duration(milliseconds: 20));
 }

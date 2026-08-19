@@ -99,11 +99,16 @@ class PangeaCallCapturePlugin :
 
   private fun detach() {
     if (!attached) return
+    // Detached first, so nothing is still arriving while the last of it is
+    // handed on. Only then is what was gathered released — otherwise the tail
+    // of the call is dropped, and what was left of it would be carried into
+    // whatever attaches next as though the learner had said it then.
     FlutterWebRTCPlugin.sharedSingleton
       ?.audioProcessingController
       ?.capturePostProcessing
       ?.removeProcessor(frames)
     attached = false
+    frames.finish()
   }
 
   /**
@@ -197,9 +202,12 @@ internal class PostEchoCancellationFrames(
   override fun process(numBands: Int, numFrames: Int, buffer: ByteBuffer) {
     if (numFrames <= 0) return
     // The module's own byte order, not Java's default. Reading these as
-    // big-endian produces samples that look like audio and are noise.
-    val samples = buffer.duplicate().order(ByteOrder.nativeOrder()).asFloatBuffer()
-    val count = minOf(numFrames, samples.remaining())
+    // big-endian produces samples that look like audio and are noise. Set on the
+    // buffer itself rather than on a copy of it: this one is made afresh for
+    // every call and read by nothing else, and wrapping it each time would be an
+    // allocation a hundred times a second on the module's own thread.
+    buffer.order(ByteOrder.nativeOrder())
+    val count = minOf(numFrames, buffer.remaining() / 4)
     if (count <= 0) return
 
     // The band count recovers the rate if audio arrives before the module has
@@ -216,7 +224,7 @@ internal class PostEchoCancellationFrames(
       if (filled + 2 > batch.size) flush()
       // The module's scale is already that of a signed 16-bit sample, so this
       // rounds rather than rescales.
-      val sample = samples.get(i).roundToInt().coerceIn(-32768, 32767)
+      val sample = buffer.getFloat(i * 4).roundToInt().coerceIn(-32768, 32767)
       batch[filled++] = (sample and 0xff).toByte()
       batch[filled++] = ((sample shr 8) and 0xff).toByte()
     }
@@ -248,6 +256,20 @@ internal class PostEchoCancellationFrames(
   /** Called when a batch has been handed on, so the next one may be gathered. */
   fun handedOn() {
     pending.decrementAndGet()
+  }
+
+  /**
+   * Hands on the last of what was gathered and forgets the rest.
+   *
+   * Called when the tap is detached, after it can no longer be called: the tail
+   * of a call is the end of a sentence, and whatever is left behind would
+   * otherwise open the next recording.
+   */
+  fun finish() {
+    flush()
+    filled = 0
+    batchRateHz = 0
+    sampleRateHz = 0
   }
 
   private fun bytesForBatch(rateHz: Int): Int {

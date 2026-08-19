@@ -9,7 +9,10 @@ import 'package:fluffychat/routes/chat/calls/call_audio_tap.dart';
 
 /// A platform side that can be made to behave the ways a real one does.
 class FakeCapture extends PangeaCallCapture {
-  final _frames = StreamController<CallAudioFrame>.broadcast();
+  late final StreamController<CallAudioFrame> _frames =
+      StreamController<CallAudioFrame>.broadcast(
+        onCancel: () => teardown.add('cancel'),
+      );
   final bool attaches;
   final Object? startThrows;
   int starts = 0;
@@ -27,8 +30,12 @@ class FakeCapture extends PangeaCallCapture {
     return attaches;
   }
 
+  /// The order teardown actually happened in.
+  final List<String> teardown = [];
+
   @override
   Future<void> stop() async {
+    teardown.add('stop');
     // Deferred on purpose. A stop that completes synchronously cannot tell a
     // detach that was awaited from one that was merely started.
     await Future<void>.delayed(Duration.zero);
@@ -94,6 +101,19 @@ void main() {
 
       expect(detach, isNull);
       expect(platform.watching, isFalse);
+    });
+
+    test('stops the platform before it stops listening', () async {
+      // Setup subscribes and then starts, so teardown stops and then cancels.
+      // Cancelling first throws away whatever has been handed over but not yet
+      // delivered, which at a hangup is the last thing the learner said.
+      final platform = FakeCapture();
+      final tap = PostEchoCancellationTap(capture: platform);
+
+      final detach = await tap.open(_noTrack, (_, _) {});
+      await detach!.call();
+
+      expect(platform.teardown.first, 'stop');
     });
 
     test('detaching stops the platform and the subscription', () async {

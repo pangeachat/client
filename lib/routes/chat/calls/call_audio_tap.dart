@@ -102,8 +102,12 @@ class PostEchoCancellationTap implements CallAudioTap {
     // tap still attached. Discarding these also turned any failure in them into
     // an unhandled async error, which the caller's own guard could never see.
     return () async {
-      await subscription.cancel();
+      // The platform side first, so nothing new is produced, and only then the
+      // subscription. The other order threw away whatever had already been
+      // handed over but not yet delivered — which at a hangup is the last thing
+      // the learner said.
       await capture.stop();
+      await subscription.cancel();
     };
   }
 

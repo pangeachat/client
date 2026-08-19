@@ -107,6 +107,7 @@ class CallCaptureService {
       throw StateError('The previous audio tap is still attached');
     }
     _stopping = false;
+    _stopped = null;
     _running = true;
     try {
       _detach = await tap.open(track, _onFrames);
@@ -185,7 +186,15 @@ class CallCaptureService {
   /// Idempotent, because a hangup and a disconnect can both land: the tap is
   /// cancelled and the chunker cleared before anything is awaited, so a second
   /// call has nothing left to flush and cannot emit a duplicate tail.
-  Future<void> stop() async {
+  /// The stop in flight, so two callers join one rather than both running it.
+  /// A hangup and a disconnect routinely arrive together, and a check followed
+  /// by an await lets both past.
+  Future<void>? _stopped;
+
+  Future<void> stop() =>
+      _stopped ??= _stop().whenComplete(() => _stopped = null);
+
+  Future<void> _stop() async {
     // Checked against the tap as well as the chunker: a call can be attached
     // with no chunker yet, because the chunker is not built until audio actually
     // arrives, and returning early there would leave the tap attached.
@@ -199,13 +208,17 @@ class CallCaptureService {
     // deliver are already ignored, so the worst case is a tap left registered —
     // losing the last seconds of what the learner said is the more expensive
     // failure.
+    // Taken and cleared BEFORE it is awaited. Leaving it set across the await
+    // let a second stop past the guard above and detach the same tap twice.
+    final detach = _detach;
+    _detach = null;
     try {
-      await _detach?.call();
-      _detach = null;
+      await detach?.call();
     } catch (e, s) {
-      // Kept, not discarded. A tap that would not detach is still attached, and
-      // starting again over the top of it would feed two taps into one chunker —
-      // the learner's own voice counted twice.
+      // Put back, not discarded. A tap that would not detach is still attached,
+      // and starting again over the top of it would feed two taps into one
+      // chunker — the learner's own voice counted twice.
+      _detach = detach;
       Logs().w('Could not detach the call audio tap; it stays claimed', e, s);
     }
 
