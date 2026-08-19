@@ -11,15 +11,6 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 import 'package:fluffychat/pangea/common/network/requests.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 
-class PangeaWarningError implements Exception {
-  final String message;
-  PangeaWarningError(String message)
-    : message = "Pangea Warning Error: $message";
-
-  @override
-  String toString() => message;
-}
-
 class ErrorHandler {
   ErrorHandler();
 
@@ -118,12 +109,7 @@ class ErrorHandler {
   }) async {
     if (!shouldReport(e)) return;
 
-    if (e is PangeaWarningError) {
-      // Custom handling for PangeaWarningError
-      debugPrint("PangeaWarningError: ${e.message}");
-    } else {
-      debugPrint("error message: ${m ?? e}");
-    }
+    debugPrint("error message: ${m ?? e}");
 
     Sentry.addBreadcrumb(Breadcrumb(data: data));
     debugPrint(data.toString());
