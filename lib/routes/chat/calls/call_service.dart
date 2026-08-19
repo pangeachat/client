@@ -210,11 +210,35 @@ class CallService {
   /// room waits for it rather than racing it.
   Future<void>? _leaving;
 
+  /// Records a leave still in flight, and forgets it the moment it finishes —
+  /// never before.
+  ///
+  /// The clearing is tied to the leave's OWN completion, not to any waiter
+  /// giving up on it. A waiter that cleared it on timeout let the next call stop
+  /// waiting for a leave still running, and — because the session is fetched by
+  /// room, so a redial lands on the very object that leave still holds — the
+  /// next call would then publish its membership straight into a session this
+  /// leave is about to retract.
+  void _setPendingLeave(Future<void> leaving) {
+    _leaving = leaving;
+    unawaited(
+      leaving
+          .whenComplete(() {
+            if (identical(_leaving, leaving)) _leaving = null;
+          })
+          .catchError((Object _, StackTrace _) {}),
+    );
+  }
+
   /// Waits for a leave that was given up on to actually finish.
   ///
-  /// Bounded, and then let go of either way. Waiting longer would hold up a call
-  /// the learner is asking for now; going ahead is the lesser risk, because
-  /// refusing outright costs a conversation for certain where this only might.
+  /// Bounded: waiting longer would hold up a call the learner is asking for now,
+  /// so after the window the call goes ahead. But the pending leave is NOT let
+  /// go of here — it clears itself when it completes — so every call that starts
+  /// while it is still running waits for it in turn rather than racing it. That
+  /// is the whole protection against a stale leave retracting a fresh call's
+  /// membership; dropping it on the first timeout threw that protection away for
+  /// every call after.
   @visibleForTesting
   Future<void> settlePendingLeave() async {
     final leaving = _leaving;
@@ -223,14 +247,19 @@ class CallService {
     try {
       await leaving.timeout(_leaveWithin);
     } catch (_) {
-      // Waited as long as is reasonable.
+      // Waited as long as is reasonable; the leave keeps running and is
+      // forgotten only when it finishes, not here.
     }
-    if (identical(_leaving, leaving)) _leaving = null;
   }
 
   /// Puts a still-running leave in place, for tests.
   @visibleForTesting
-  void setPendingLeaveForTest(Future<void> leaving) => _leaving = leaving;
+  void setPendingLeaveForTest(Future<void> leaving) =>
+      _setPendingLeave(leaving);
+
+  /// Whether a leave is still being waited for. For tests.
+  @visibleForTesting
+  bool get hasPendingLeaveForTest => _leaving != null;
 
   /// Numbers each ring this session sends, so two calls sharing a membership
   /// cannot share a transaction id.
@@ -733,9 +762,8 @@ class CallService {
           // the NEW call had just published — the peer would watch us walk out
           // of a call we had only just joined.
           final leaving = session.leave();
-          _leaving = leaving;
+          _setPendingLeave(leaving);
           await leaving.timeout(_leaveWithin);
-          _leaving = null;
           _abandonedMembership = false;
           return true;
         } on TimeoutException catch (e, s) {

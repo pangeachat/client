@@ -315,11 +315,13 @@ void main() {
   });
 
   group('a leave that was given up on but is still running', () {
-    test('is waited for before the next call, then let go of', () async {
-      // The session is fetched by ROOM, so a redial lands on the very object
-      // the old leave still holds. Answering after that, it would retract the
+    test('is bounded, but kept until it finishes — never dropped early', () async {
+      // The session is fetched by ROOM, so a redial lands on the very object the
+      // old leave still holds. Answering after that, it would retract the
       // membership the NEW call had just published — the peer would watch us
-      // walk out of a call we had only just joined.
+      // walk out of a call we had only just joined. So a leave that has not
+      // finished is still waited for by the next call; dropping it on the first
+      // timeout is what would let that redial race it.
       final service = CallService(
         await bareClient(),
         leaveWithin: const Duration(milliseconds: 50),
@@ -327,20 +329,24 @@ void main() {
       final never = Completer<void>();
       service.setPendingLeaveForTest(never.future);
 
-      // Bounded: a leave that never answers must not hold up a call the learner
-      // is asking for now.
+      // Bounded: a leave that has not answered must not hold up a call the
+      // learner is asking for now.
       await service.settlePendingLeave().timeout(
         const Duration(seconds: 2),
         onTimeout: () => fail('waiting for a stale leave must be bounded'),
       );
 
-      // And let go of, so the call after this one does not wait again.
-      var waitedAgain = false;
-      final second = service.settlePendingLeave().whenComplete(
-        () => waitedAgain = true,
+      // Still there after the bounded wait gave up: the next call waits too.
+      expect(
+        service.hasPendingLeaveForTest,
+        isTrue,
+        reason: 'a leave still running must keep being waited for',
       );
-      await second;
-      expect(waitedAgain, isTrue);
+
+      // Only its OWN completion lets it go, so no later call waits for nothing.
+      never.complete();
+      await pumpEventQueue();
+      expect(service.hasPendingLeaveForTest, isFalse);
     });
 
     test('really is waited for, not merely noted', () async {
