@@ -3,7 +3,7 @@ package chat.pangea.call_capture
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import java.util.concurrent.atomic.AtomicInteger
+import java.util.concurrent.ArrayBlockingQueue
 import com.cloudwebrtc.webrtc.FlutterWebRTCPlugin
 import com.cloudwebrtc.webrtc.audio.AudioProcessingAdapter
 import io.flutter.embedding.engine.plugins.FlutterPlugin
@@ -121,9 +121,9 @@ class PangeaCallCapturePlugin :
   private fun deliver(pcm: ByteArray, sampleRateHz: Int) {
     handler.post {
       events?.success(mapOf("pcm" to pcm, "sampleRate" to sampleRateHz))
-      // Counted back only once it has actually gone, so what is outstanding is
-      // what is really outstanding and the bound above means something.
-      frames.handedOn()
+      // Returned only once it has actually gone. The channel copies the bytes as
+      // it sends them, so the buffer is free to be filled again from here.
+      frames.handedOn(pcm)
     }
   }
 }
@@ -175,8 +175,19 @@ internal class PostEchoCancellationFrames(
   private var batch: ByteArray = ByteArray(0)
   private var filled: Int = 0
   private var batchRateHz: Int = 0
-  private val pending = AtomicInteger(0)
   private var dropped: Long = 0
+
+  /**
+   * Spare buffers to fill while earlier ones are on their way out.
+   *
+   * A batch is handed over as it stands and a spare taken in its place, so a
+   * running call allocates and copies nothing at all; each buffer comes back
+   * here once it has been delivered. The number of them IS the limit on how much
+   * audio may be waiting: when none is free the audio is dropped rather than
+   * queued, because a lost stretch of transcript is recoverable and a call that
+   * exhausts the device is not.
+   */
+  private val spares = ArrayBlockingQueue<ByteArray>(MAX_PENDING_BATCHES)
 
   override fun initialize(sampleRateHz: Int, numChannels: Int) {
     onRate(sampleRateHz)
@@ -201,12 +212,22 @@ internal class PostEchoCancellationFrames(
 
   override fun process(numBands: Int, numFrames: Int, buffer: ByteBuffer) {
     if (numFrames <= 0) return
-    // The module's own byte order, not Java's default. Reading these as
-    // big-endian produces samples that look like audio and are noise. Set on the
-    // buffer itself rather than on a copy of it: this one is made afresh for
-    // every call and read by nothing else, and wrapping it each time would be an
-    // allocation a hundred times a second on the module's own thread.
+    // The module's own byte order, not Java's default: read as big-endian these
+    // samples look like audio and are noise. Set on the buffer rather than on a
+    // wrapper, because wrapping it would allocate a hundred times a second on
+    // the module's own thread — but PUT BACK afterwards, because this same
+    // buffer is handed to every other processor registered alongside this one,
+    // and one that expects the default would then misread every sample.
+    val previousOrder = buffer.order()
     buffer.order(ByteOrder.nativeOrder())
+    try {
+      collect(numFrames, numBands, buffer)
+    } finally {
+      buffer.order(previousOrder)
+    }
+  }
+
+  private fun collect(numFrames: Int, numBands: Int, buffer: ByteBuffer) {
     val count = minOf(numFrames, buffer.remaining() / 4)
     if (count <= 0) return
 
@@ -216,7 +237,12 @@ internal class PostEchoCancellationFrames(
     if (rate != batchRateHz) {
       flush()
       batchRateHz = rate
-      batch = ByteArray(bytesForBatch(rate))
+      // Sized for the new rate, and the old spares with it: a buffer cut for one
+      // rate holds the wrong amount of time at another.
+      val size = bytesForBatch(rate)
+      spares.clear()
+      repeat(MAX_PENDING_BATCHES - 1) { spares.offer(ByteArray(size)) }
+      batch = ByteArray(size)
       filled = 0
     }
 
@@ -237,25 +263,31 @@ internal class PostEchoCancellationFrames(
   /** Hands on whatever has been gathered. */
   private fun flush() {
     if (filled <= 0 || batchRateHz <= 0) return
-    if (pending.get() >= MAX_PENDING_BATCHES) {
-      // Dropped rather than queued. Audio that cannot be kept up with is a lost
-      // stretch of transcript; audio queued without limit is a lost call.
-      dropped++
-      if (dropped % 10 == 1L) {
-        Log.w(TAG, "Dropped a stretch of call audio; $dropped so far")
-      }
-      filled = 0
-      return
-    }
-    val out = batch.copyOf(filled)
+    val full = filled == batch.size
+    // A full batch is handed over as it stands. A partial one — only ever the
+    // last of a call — is copied to its true length, since what is sent is the
+    // whole array.
+    val out = if (full) batch else batch.copyOf(filled)
     filled = 0
-    pending.incrementAndGet()
+    if (full) {
+      val spare = spares.poll()
+      if (spare == null) {
+        // Nothing free means everything handed over is still in flight. Keep
+        // filling the buffer we have rather than queue without limit.
+        dropped++
+        if (dropped % 10 == 1L) {
+          Log.w(TAG, "Dropped a stretch of call audio; $dropped so far")
+        }
+        return
+      }
+      batch = spare
+    }
     emit(out, batchRateHz)
   }
 
-  /** Called when a batch has been handed on, so the next one may be gathered. */
-  fun handedOn() {
-    pending.decrementAndGet()
+  /** Called once a batch has been delivered, returning it to be filled again. */
+  fun handedOn(batch: ByteArray) {
+    spares.offer(batch)
   }
 
   /**
