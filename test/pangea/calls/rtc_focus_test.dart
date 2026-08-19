@@ -1,7 +1,17 @@
+import 'dart:async';
+
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart' as http;
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
+
+/// A client whose request never answers, standing in for a stalled connection.
+class _HangingClient extends http.BaseClient {
+  @override
+  Future<http.StreamedResponse> send(http.BaseRequest request) =>
+      Completer<http.StreamedResponse>().future;
+}
 
 DiscoveryInformation _wellKnown(Map<String, Object?> extra) =>
     DiscoveryInformation.fromJson({
@@ -78,6 +88,22 @@ void main() {
       expect(backend.livekitServiceUrl, 'http://localhost:7980');
       expect(backend.livekitAlias, '!room:pangea.localhost');
       expect(backend.type, 'livekit');
+    });
+  });
+  group('RtcFocusDiscovery.discover', () {
+    test('a hung .well-known lookup times out rather than hanging', () async {
+      // The lookup is memoized while in flight, so a stalled connection that
+      // never answered would hold that memo for ever and every later call would
+      // hang on it. It must give up instead, which the caller treats as a
+      // transient failure and retries.
+      final discovery = RtcFocusDiscovery(
+        httpClient: _HangingClient(),
+        discoverWithin: const Duration(milliseconds: 50),
+      );
+      await expectLater(
+        discovery.discover(Uri.parse('http://localhost:8008')),
+        throwsA(isA<TimeoutException>()),
+      );
     });
   });
 }

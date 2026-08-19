@@ -81,9 +81,19 @@ class RtcFocusDiscovery {
   final http.Client _http;
   final bool _ownsHttp;
 
-  RtcFocusDiscovery({http.Client? httpClient})
+  /// How long the `.well-known` lookup may take before it counts as unknown.
+  ///
+  /// Bounded because the answer is memoized while it is in flight: a lookup that
+  /// hung on a stalled connection would otherwise hold that memo for ever, and
+  /// every later call — which waits on the focus before it can connect — would
+  /// hang with it until the app restarted. Past this it throws, which is treated
+  /// as "the network was down just then" and retried, not as "no focus here".
+  final Duration _within;
+
+  RtcFocusDiscovery({http.Client? httpClient, Duration? discoverWithin})
     : _http = httpClient ?? http.Client(),
-      _ownsHttp = httpClient == null;
+      _ownsHttp = httpClient == null,
+      _within = discoverWithin ?? const Duration(seconds: 10);
 
   /// Throws when the answer is unknown; returns null only when the homeserver
   /// definitively advertises no focus.
@@ -92,9 +102,9 @@ class RtcFocusDiscovery {
   /// for the rest of the session: "this deployment has no MatrixRTC" is worth
   /// remembering, "the network was down just then" is not.
   Future<RtcFocus?> discover(Uri homeserver) async {
-    final response = await _http.get(
-      homeserver.replace(path: '/.well-known/matrix/client'),
-    );
+    final response = await _http
+        .get(homeserver.replace(path: '/.well-known/matrix/client'))
+        .timeout(_within);
     if (response.statusCode == 404) {
       // The homeserver answered and serves no `.well-known`. That is a fact
       // about the deployment, not a hiccup.
