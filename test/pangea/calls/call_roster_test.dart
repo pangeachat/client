@@ -13,11 +13,17 @@ class TestRoster extends CallRoster {
   Set<String> identities = {};
   bool connected = true;
 
+  /// Whether the connection is still trying, as opposed to having given up.
+  bool recovering = true;
+
   @override
   Iterable<String> get remoteIdentities => identities;
 
   @override
   bool get roomConnected => connected;
+
+  @override
+  bool get roomRecovering => !connected && recovering;
 }
 
 void main() {
@@ -157,7 +163,7 @@ void main() {
       roster.recompute();
     });
 
-    test('holds the last picture instead of reporting everyone gone', () {
+    test('holds the last picture while the connection is coming back', () {
       // A full reconnect empties the participant list and reports every
       // participant as disconnected before silently refilling it. Believing
       // that would read as the other person hanging up, and would end a call
@@ -172,6 +178,16 @@ void main() {
         reason: 'a blip is not the other person leaving',
       );
       expect(roster.isConnected, isFalse);
+    });
+
+    test('lets it go once the connection has gone for good', () {
+      // Holding it then means the call is never seen to end, and the microphone
+      // stays open in a conversation that finished when the connection did.
+      roster.connected = false;
+      roster.recovering = false;
+      roster.recompute();
+
+      expect(roster.hasPeer, isFalse);
     });
 
     test('picks the truth back up once reconnected', () {

@@ -127,24 +127,30 @@ void main() {
       expect(s.constructs(roomId: '!r:server', eventId: '\$e'), isNotEmpty);
     });
 
-    test('a chunk that fails costs its own words and no more', () async {
+    test('a chunk that fails says so, and costs no other chunk', () async {
+      // The failure is reported rather than swallowed. The caller's whole
+      // purpose is to try again, and telling it everything went well meant one
+      // bad moment from the provider cost that chunk's words for good.
       final s = sink(failOn: {0});
-      await s.deliver(chunk(0));
+
+      await expectLater(s.deliver(chunk(0)), throwsA(isA<StateError>()));
       await s.deliver(chunk(1));
 
       expect(sent, hasLength(2), reason: 'the call carried on');
       expect(s.chunkCount, 1);
     });
 
-    test('a failed chunk is not retried into a double charge', () async {
+    test('a chunk that failed can be transcribed on a later attempt', () async {
+      // Only a chunk that was actually transcribed must never be transcribed
+      // again. One that was not has nothing to double-count, and holding its
+      // place made every retry a no-op.
       final s = sink(failOn: {0});
+
+      await expectLater(s.deliver(chunk(0)), throwsA(isA<StateError>()));
       await s.deliver(chunk(0));
-      await s.deliver(chunk(0));
-      expect(
-        sent,
-        hasLength(1),
-        reason: 'the index stays claimed, so a redelivery cannot bill again',
-      );
+
+      expect(sent, hasLength(2), reason: 'the second attempt really ran');
+      expect(s.chunkCount, 1, reason: 'and it landed');
     });
 
     test(

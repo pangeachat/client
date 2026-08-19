@@ -129,9 +129,16 @@ class CallTranscriptSink implements CallAudioSink {
         ),
       );
     } catch (e, s) {
-      // This chunk's words are lost and the rest of the call still counts.
-      // Releasing the index would let a retry double-count, so it stays claimed.
+      // Released and re-thrown, so the caller's retry can try again. Swallowing
+      // this reported success to a caller whose whole purpose is to retry, and
+      // one bad moment from the provider cost that chunk's words for good.
+      //
+      // The index is only kept once there is something to keep: a chunk that
+      // was transcribed must never be transcribed twice, but one that was not
+      // has nothing to double-count.
+      _transcribed.remove(chunk.index);
       Logs().w('Could not transcribe call chunk ${chunk.index}', e, s);
+      rethrow;
     }
   }
 

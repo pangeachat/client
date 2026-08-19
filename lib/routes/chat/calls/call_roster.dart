@@ -113,6 +113,15 @@ class CallRoster extends ChangeNotifier {
   bool get roomConnected =>
       _room.connectionState == lk.ConnectionState.connected;
 
+  /// Whether the connection is coming back, as opposed to gone.
+  ///
+  /// The SDK reports reconnecting while it is trying and disconnected once it
+  /// has given up. Only the first is worth holding a picture for.
+  @protected
+  bool get roomRecovering =>
+      _room.connectionState == lk.ConnectionState.connecting ||
+      _room.connectionState == lk.ConnectionState.reconnecting;
+
   /// Everyone else in the call, whichever account they belong to.
   Set<CallParticipant> get participants => _participants;
 
@@ -142,11 +151,22 @@ class CallRoster extends ChangeNotifier {
     final wasConnected = _connected;
     _connected = connected;
 
-    // While the connection is down the participant list is not evidence of
-    // anything — it is emptied on a full restart and refilled afterwards. The
-    // last picture taken while connected is the best available answer.
+    // While the connection is coming back the participant list is not evidence
+    // of anything — it is emptied on a full restart and refilled afterwards, so
+    // the last picture taken while connected is the best available answer.
+    //
+    // Once it has gone for good that stops being true. Holding the picture then
+    // means the call is never seen to end, and the microphone stays open in a
+    // conversation that finished when the connection did.
     if (!connected) {
-      if (wasConnected) notifyListeners();
+      if (roomRecovering) {
+        if (wasConnected) notifyListeners();
+        return;
+      }
+      if (wasConnected || _participants.isNotEmpty) {
+        _participants = const {};
+        notifyListeners();
+      }
       return;
     }
 

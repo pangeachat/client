@@ -289,6 +289,15 @@ class ActiveCall extends ChangeNotifier {
     if (target == null) return;
     final ours = _notificationId;
     if (ours == null) {
+      // We rang but never learned which event it was — the send can land and
+      // still not report its id back. In a direct message there is one call at a
+      // time, so a decline from the other person while we are the ones calling
+      // is a decline of this call; treating it as unrelated left the caller
+      // ringing at somebody who had already said no.
+      if (_placed) {
+        _onDeclined();
+        return;
+      }
       _declinedBefore.add(target);
       return;
     }
