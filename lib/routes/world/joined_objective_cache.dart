@@ -4,9 +4,49 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
+
+/// The ONE reporter for a course outline that failed during a rebuild — passed
+/// as [JoinedObjectiveCache.rebuildFromJoinedCourses]'s `onError` by every
+/// surface that rebuilds (the world map's pins manager and the course panel's
+/// progression resolve).
+///
+/// Shared rather than written per call site because the two are not
+/// independent: they use the SAME throttle key, so exactly one of them reports
+/// per course room per session — whichever surface the learner opens first.
+/// Two copies of this callback therefore don't produce two consistent reports,
+/// they produce one report whose severity depends on a race. That is what
+/// happened: #8094 taught the map to report a missing quest at `warning` and
+/// never reached the resolver's copy, which kept falling through to
+/// [PangeaHttpException.severityOf]'s `default:` and re-severitizing a benign
+/// condition to `error` (#8470).
+///
+/// Throttled to one report per course room per app session: a course that
+/// persistently fails re-fails on every rebuild — the map's self-heal retry,
+/// each course-panel open — and each repeat carries no new signal (#8083).
+/// Keyed per course ROOM, not per quest: two rooms of one quest can fail
+/// independently; [questId] keeps orphaned-quest reports diagnosable.
+///
+/// Returns whether this call actually reported (false when the key is already
+/// spent) — the seam the budget test asserts on. Passed straight into the
+/// `void`-typed `onError` slot; the future is fire-and-forget there, as it was
+/// when both call sites inlined [ErrorHandler.logErrorOnce] themselves.
+Future<bool> reportCourseOutlineFailure(
+  String roomId,
+  String questId,
+  Object error,
+  StackTrace stack,
+) => ErrorHandler.logErrorOnce(
+  key: 'course-outline-resolve:$roomId',
+  e: error,
+  s: stack,
+  m: 'course outline failed to resolve',
+  data: {'courseRoomId': roomId, 'questId': questId},
+  level: courseOutlineErrorLevel(error),
+);
 
 /// Holds the learner's joined-course quest outlines: each course's ordered
 /// learning-objective sequence and the activities that satisfy each objective.
