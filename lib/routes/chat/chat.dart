@@ -85,6 +85,7 @@ import 'package:fluffychat/routes/chat/choreographer/igc/writing_asssitance_popu
 import 'package:fluffychat/routes/chat/choreographer/text_editing/edit_type_enum.dart';
 import 'package:fluffychat/routes/chat/choreographer/text_editing/pangea_text_controller.dart';
 import 'package:fluffychat/routes/chat/choreographer/writing_assistance_room_extension.dart';
+import 'package:fluffychat/routes/chat/composer_keyboard_context.dart';
 import 'package:fluffychat/routes/chat/event_info_dialog.dart';
 import 'package:fluffychat/routes/chat/event_too_large_dialog.dart';
 import 'package:fluffychat/routes/chat/events/constants/message_constants.dart';
@@ -300,6 +301,9 @@ class ChatController extends State<ChatPageWithRoom>
   final AutoScrollController scrollController = AutoScrollController();
 
   late final FocusNode inputFocus;
+  // #Pangea
+  late final ComposerKeyboardContext _composerKeyboardContext;
+  // Pangea#
 
   Timer? typingCoolDown;
   Timer? typingTimeout;
@@ -604,6 +608,14 @@ class ChatController extends State<ChatPageWithRoom>
   @override
   void initState() {
     inputFocus = FocusNode(onKeyEvent: _customEnterKeyHandling);
+    // #Pangea
+    // Must be the first listener on inputFocus — see ComposerKeyboardContext.
+    _composerKeyboardContext = ComposerKeyboardContext(
+      focusNode: inputFocus,
+      targetLanguageCode: () =>
+          MatrixState.pangeaController.userController.userL2Code,
+    );
+    // Pangea#
 
     scrollController.addListener(_updateScrollController);
     // #Pangea
@@ -1335,6 +1347,7 @@ class ChatController extends State<ChatPageWithRoom>
     PanelFocusController.instance.removeListener(_onFocusChanged);
     _router.routeInformationProvider.removeListener(_onRouteChanged);
     scrollController.dispose();
+    _composerKeyboardContext.dispose();
     inputFocus.dispose();
     depressMessageButton.dispose();
     scrollableNotifier.dispose();
