@@ -9,8 +9,9 @@ import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
 /// The typed HTTP failure behind #8094: every ≥400 response used to be thrown
 /// as a raw [Response], whose missing `toString()` collapsed 66 distinct
 /// Sentry issues into one title, `Instance of 'Response'`. These tests pin the
-/// three things the exception exists for: a diagnosable `toString()`, path
-/// normalization so titles group per endpoint, and the one severity table.
+/// four things the exception exists for: a diagnosable `toString()`, path
+/// normalization so titles group per endpoint, the one severity table, and
+/// the Sentry fingerprint that makes grouping match the title (#8469).
 void main() {
   Response response(
     int status, {
@@ -118,6 +119,78 @@ void main() {
     test('is null for anything else', () {
       expect(PangeaHttpException.statusCodeOf(Exception('offline')), isNull);
       expect(PangeaHttpException.statusCodeOf(null), isNull);
+    });
+  });
+
+  group('PangeaHttpException.fingerprintOf — the Sentry grouping key', () {
+    test('is status, method, and normalized path under one namespace', () {
+      final e = PangeaHttpException.fromResponse(
+        response(
+          404,
+          url:
+              'https://api.pangea.chat/choreo/v2/activity/'
+              '98881d89-7195-4928-95ad-3aef0ec3228a',
+        ),
+      );
+      expect(PangeaHttpException.fingerprintOf(e), [
+        'pangea-http',
+        '404',
+        'GET',
+        '/choreo/v2/activity/{id}',
+      ]);
+    });
+
+    test('two resources under one endpoint group together', () {
+      List<String>? forActivity(String id) => PangeaHttpException.fingerprintOf(
+        PangeaHttpException.fromResponse(
+          response(404, url: 'https://api.pangea.chat/choreo/v2/activity/$id'),
+          detail: "No canonical activity found for activity_id='$id'",
+        ),
+      );
+      // The detail differs per resource, which is exactly why it is not in
+      // the fingerprint — including it would mint one issue per activity id.
+      expect(
+        forActivity('98881d89-7195-4928-95ad-3aef0ec3228a'),
+        forActivity('2a3c40b7-8a00-445e-8bea-18d13404fab9'),
+      );
+    });
+
+    test('status splits — a 5xx never hides inside the 404 group', () {
+      const url = 'https://api.pangea.chat/choreo/quests/{id}/activities';
+      expect(
+        PangeaHttpException.fingerprintOf(
+          PangeaHttpException.fromResponse(response(404, url: url)),
+        ),
+        isNot(
+          PangeaHttpException.fingerprintOf(
+            PangeaHttpException.fromResponse(response(503, url: url)),
+          ),
+        ),
+      );
+    });
+
+    test('method and endpoint split', () {
+      final get = PangeaHttpException.fingerprintOf(
+        PangeaHttpException.fromResponse(
+          response(401, url: 'https://api.pangea.chat/subscription/status'),
+        ),
+      );
+      final post = PangeaHttpException.fingerprintOf(
+        PangeaHttpException.fromResponse(
+          response(
+            401,
+            method: 'POST',
+            url: 'https://api.pangea.chat/choreo/grammar_constructs',
+          ),
+        ),
+      );
+      expect(get, isNot(post));
+    });
+
+    test('is null for anything else — Sentry default grouping stands', () {
+      expect(PangeaHttpException.fingerprintOf(Response('', 503)), isNull);
+      expect(PangeaHttpException.fingerprintOf(Exception('offline')), isNull);
+      expect(PangeaHttpException.fingerprintOf(null), isNull);
     });
   });
 
