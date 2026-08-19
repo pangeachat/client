@@ -107,4 +107,40 @@ void main() {
     await media.connect(grant, video: true);
     expect(media.steps, isEmpty);
   });
+
+  group('turning a device on mid-call obeys the same rule as coming up', () {
+    test('unmuting into a call that has already ended opens nothing', () async {
+      // The user taps unmute at the same moment the other side hangs up. The
+      // microphone must not come back on for a call that is over — the same
+      // leak the checks in connect() exist to prevent, on the toggle path.
+      final media = RecordingMedia();
+      await media.disconnect();
+      media.steps.clear();
+      await media.setMicrophoneEnabled(true);
+      expect(
+        media.steps,
+        isNot(contains('mic:true')),
+        reason: 'an ended call must not reopen the microphone',
+      );
+    });
+
+    test('an unmute racing a hangup releases the microphone it opened', () async {
+      // The check before cannot stop an enable already in flight. It opens the
+      // microphone anyway, so it must reconcile afterwards rather than leave it
+      // open with nothing left to close it.
+      final media = RecordingMedia()..releaseDuringMic = true;
+      await media.setMicrophoneEnabled(true);
+      expect(media.steps, ['mic:true', 'disconnect', 'disconnect']);
+    });
+
+    test('muting an ended call is a harmless no-op, never guarded', () async {
+      // Turning a device OFF only releases it, so it is always allowed — a mute
+      // after the call ended must still be attempted, not refused.
+      final media = RecordingMedia();
+      await media.disconnect();
+      media.steps.clear();
+      await media.setMicrophoneEnabled(false);
+      expect(media.steps, ['mic:false']);
+    });
+  });
 }

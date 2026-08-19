@@ -309,13 +309,30 @@ class _CallPageState extends State<CallPage> {
 
   Future<void> _toggleMute() async {
     final next = !_muted;
-    await _media.setMicrophoneEnabled(!next);
+    try {
+      await _media.setMicrophoneEnabled(!next);
+    } catch (e, s) {
+      // This runs from a button's onTap, which drops the future — so an error
+      // here has no caller to catch it and would surface as an unhandled async
+      // exception on a live call. Fail closed instead: leave the state as it
+      // was so the button keeps showing what the microphone is actually doing.
+      Logs().w('Could not ${next ? 'mute' : 'unmute'} the call', e, s);
+      return;
+    }
     if (mounted) setState(() => _muted = next);
   }
 
   Future<void> _toggleCamera() async {
     final next = !_camera;
-    await _media.setCameraEnabled(next);
+    try {
+      await _media.setCameraEnabled(next);
+    } catch (e, s) {
+      // Same dropped-future path as muting. Leave the camera state untouched
+      // rather than let a device or permission failure escape uncaught — and
+      // do not mark the call as video, because the camera did not come on.
+      Logs().w('Could not turn the camera ${next ? 'on' : 'off'}', e, s);
+      return;
+    }
     if (next) _usedVideo = true;
     if (mounted) setState(() => _camera = next);
   }

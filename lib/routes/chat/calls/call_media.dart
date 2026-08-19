@@ -101,9 +101,30 @@ class CallMedia {
   Future<void> enableCamera(bool on) async =>
       room.localParticipant?.setCameraEnabled(on);
 
-  Future<void> setMicrophoneEnabled(bool on) => enableMicrophone(on);
+  Future<void> setMicrophoneEnabled(bool on) =>
+      _setCapture(enableMicrophone, on);
 
-  Future<void> setCameraEnabled(bool on) => enableCamera(on);
+  Future<void> setCameraEnabled(bool on) => _setCapture(enableCamera, on);
+
+  /// Turns a capture device on or off during a call, on the same terms coming
+  /// up uses.
+  ///
+  /// Turning something ON opens a device, so it obeys exactly the rule
+  /// [connect] does: refuse once the call has been released, and reconcile
+  /// afterwards — because a hangup landing while the enable is in flight cannot
+  /// stop it, and a microphone re-opened after teardown is the precise leak the
+  /// checks in [connect] exist to prevent. Unmuting into a call that has just
+  /// ended is the ordinary way this happens: the user taps unmute at the same
+  /// moment the other side hangs up.
+  ///
+  /// Turning OFF only releases a device, so it is always safe and never guarded
+  /// — muting a call that has already ended is a no-op, not a leak.
+  Future<void> _setCapture(Future<void> Function(bool) enable, bool on) async {
+    if (!on) return enable(false);
+    if (_released) return;
+    await enable(true);
+    if (_released) return _releaseWhatOpened();
+  }
 
   /// Leaves the SFU and releases the capture devices.
   ///
