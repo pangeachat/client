@@ -72,7 +72,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     if (_ringing != null) setState(() => _ringing = null);
 
     _rings = matrixState.callService.incomingRings.listen((ring) {
-      if (!mounted) return;
+      // Checked against the account this subscription was made for. Cancelling
+      // does not unqueue what has already been handed over, so a ring for the
+      // account the learner just left could still raise a prompt here — and
+      // answering it would start a call in the old account's room using the new
+      // account's connection.
+      if (!mounted || _listeningTo != account) return;
       // Never one already turned down.
       if (_declined.contains(ring.event.eventId)) return;
       final showing = _ringing;
@@ -83,6 +88,12 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
         // does. The caller hung up and tried again, and a card still pointing
         // at the first ring answers a call that is already over — and declines
         // it to a caller who is no longer listening for that one.
+        //
+        // The second caller's ring is dropped rather than queued. Holding it
+        // would mean a prompt appearing for a call that may have been given up
+        // on while the learner dealt with the first, which reads as a phantom
+        // call; the cost is that a second caller during a call goes unanswered,
+        // as they would on a phone.
         if (showing.event.room.id != ring.event.room.id) return;
       }
       setState(() => _ringing = ring);

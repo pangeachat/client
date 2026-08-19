@@ -357,4 +357,21 @@ void main() {
     expect(attempts, greaterThan(1), reason: 'the write was retried');
     expect(txids.toSet(), hasLength(1));
   });
+  group('a call event written by somebody else', () {
+    test('renders when its duration is not a number', () {
+      // Other clients and older versions of this one write this event too. A
+      // cast that throws here takes down the whole timeline row rather than one
+      // number in it.
+      expect(
+        CallRecord.durationOf({'duration_ms': '90000'}),
+        const Duration(seconds: 90),
+      );
+      expect(CallRecord.durationOf({'duration_ms': 'soon'}), Duration.zero);
+      expect(CallRecord.durationOf(const {}), Duration.zero);
+      expect(
+        CallRecord.durationOf({'duration_ms': 1500}),
+        const Duration(milliseconds: 1500),
+      );
+    });
+  });
 }

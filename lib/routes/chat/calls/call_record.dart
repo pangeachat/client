@@ -186,6 +186,21 @@ class CallRecord {
     await analytics(eventId, uses, language!);
   }
 
+  /// How long a call in the timeline lasted, read from its content.
+  ///
+  /// Defensive because this event is written by other clients and by older
+  /// versions of this one: a cast that throws while drawing the timeline takes
+  /// down the whole row rather than one number in it.
+  static Duration durationOf(Map<String, Object?> content) {
+    final ms = content['duration_ms'];
+    if (ms is num) return Duration(milliseconds: ms.round());
+    if (ms is String) {
+      final parsed = num.tryParse(ms);
+      if (parsed != null) return Duration(milliseconds: parsed.round());
+    }
+    return Duration.zero;
+  }
+
   /// What a client that cannot draw a call card shows instead.
   ///
   /// Deliberately not translated: this is the interop fallback stored in the

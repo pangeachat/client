@@ -4,6 +4,7 @@ import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/l10n/l10n.dart';
+import 'package:fluffychat/routes/chat/calls/call_record.dart';
 
 /// One finished call, drawn in the timeline.
 ///
@@ -41,9 +42,9 @@ class CallTimelineEvent extends StatelessWidget {
   /// this one was a deliberate no.
   bool get _declined => event.content['declined'] == true;
 
-  Duration get _duration => Duration(
-    milliseconds: (event.content['duration_ms'] as num?)?.round() ?? 0,
-  );
+  /// Read through the record's own rule, so the card and the thing that wrote
+  /// it cannot disagree about what a duration is.
+  Duration get _duration => CallRecord.durationOf(event.content);
 
   @override
   Widget build(BuildContext context) {
