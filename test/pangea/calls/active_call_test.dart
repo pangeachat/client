@@ -834,8 +834,8 @@ void main() {
         'connect(video: false)',
         'capture.start',
         'announce',
-        'capture.stop',
         'media.dispose',
+        'capture.stop',
         'retract',
         'capture.finish',
       ], reason: 'the recording is flushed even on a failed call');
@@ -853,8 +853,8 @@ void main() {
       await call.hangUp();
 
       expect(trace.steps, [
-        'capture.stop',
         'media.dispose',
+        'capture.stop',
         'retract',
         'capture.finish',
       ]);
@@ -870,8 +870,8 @@ void main() {
       trace.steps.clear();
       await Future.wait([call.hangUp(), call.hangUp()]);
       expect(trace.steps, [
-        'capture.stop',
         'media.dispose',
+        'capture.stop',
         'retract',
         'capture.finish',
       ]);
@@ -889,8 +889,8 @@ void main() {
       await call.hangUp();
 
       expect(trace.steps, [
-        'capture.stop',
         'media.dispose',
+        'capture.stop',
         'retract',
         'capture.finish',
       ]);
@@ -926,6 +926,35 @@ void main() {
       expect(call.stage, CallStage.ended);
     });
 
+    test('a stalled recorder handover does not delay freeing the mic', () async {
+      // The recorder election runs on the handover chain, and a reconcile is a
+      // platform start/stop that can stall. Freeing the peer must not wait
+      // behind THAT either — not just behind the teardown's own stop.
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      calls.devicesInCall = [calls.client.deviceID!]; // this device records
+      await call.start(roomStub(calls.client), video: false);
+
+      // A sibling sorting lower arrives, so this device is displaced and its
+      // reconcile calls capture.stop — held here, so the handover is stuck.
+      capture.holdStop = Completer<void>();
+      await calls.participantsBecome(['AAAAAAAAAA', calls.client.deviceID!]);
+      await pumpEventQueue();
+
+      trace.steps.clear();
+      final hangingUp = call.hangUp();
+      await pumpEventQueue();
+      expect(
+        trace.steps,
+        contains('media.dispose'),
+        reason: 'the mic is freed even with the recorder handover stalled',
+      );
+
+      capture.holdStop!.complete();
+      await hangingUp;
+      expect(call.stage, CallStage.ended);
+    });
+
     test('media that will not close does not strand the rest', () async {
       final (call, calls, media, _) = await build();
       // A call has to have somebody on it to be recorded: nothing is
@@ -937,8 +966,8 @@ void main() {
       await call.hangUp();
 
       expect(trace.steps, [
-        'capture.stop',
         'media.dispose',
+        'capture.stop',
         'retract',
         'capture.finish',
       ], reason: 'a stuck socket must not strand the rest of teardown');
@@ -1011,8 +1040,8 @@ void main() {
     await pumpEventQueue();
 
     expect(trace.steps, [
-      'capture.stop',
       'media.dispose',
+      'capture.stop',
       'retract',
       'capture.finish',
     ]);

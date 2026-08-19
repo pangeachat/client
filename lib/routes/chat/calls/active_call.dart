@@ -880,24 +880,37 @@ class ActiveCall extends ChangeNotifier {
     // false, so waiting only when it is true would let teardown finish — and the
     // call be written — while that flush was still running.
     _wanted = false;
-    try {
-      await _handover;
-    } catch (_) {}
 
-    // Started here, so the tap begins coming off and the chunker's buffered
-    // audio is flushed — but NOT waited for before the peer is freed below.
-    // Detaching the tap is a platform round-trip that can stall, and stopping
-    // also waits on chunks still uploading; gating the media release behind all
-    // of that once kept the microphone live to the other side for up to twenty
-    // seconds after the learner had hung up. The audio already gathered lives
-    // in the capture service, not the LiveKit room, so releasing the media does
-    // not lose it — the two simply run together.
+    // The peer stops hearing us HERE, and NOTHING in the recording teardown may
+    // hold it up — not the election handover, not the tap detach, not the
+    // uploads. Their client reads who is present from the SFU, so leaving it
+    // (media.dispose) is what tells them we have gone; the membership below is
+    // bookkeeping they never look at. Two earlier orderings both left them
+    // hearing a learner who had hung up: retracting before this, for the length
+    // of a state write; and awaiting the recorder handover before this, for the
+    // length of a reconcile that had stalled on a platform call. So it goes
+    // first now, and alongside — not behind — everything the recording does.
+    final releasingMedia = () async {
+      try {
+        await media.dispose();
+      } catch (e, s) {
+        Logs().e('Could not release the call media', e, s);
+      }
+    }();
+
+    // The recorder teardown, running WITH the media release rather than before
+    // it. The handover is drained first so a reconcile in flight is not cut off
+    // mid-flush, then the tap comes off and the chunker's buffered audio — which
+    // lives in the capture service, not the LiveKit room, so the media release
+    // does not take it — is flushed.
     //
-    // Its failure is caught inside the closure, not left on the bare future:
-    // stopping can complete with an error while the media release below is
-    // being awaited, and a future with no handler in that window surfaces as an
-    // unhandled async error.
-    final stopping = () async {
+    // Caught inside the closure, not left on a bare future: it can complete with
+    // an error while the media release is being awaited, and a future with no
+    // handler in that window surfaces as an unhandled async error.
+    final stoppingRecorder = () async {
+      try {
+        await _handover;
+      } catch (_) {}
       try {
         await capture.stop();
       } catch (e, s) {
@@ -905,21 +918,8 @@ class ActiveCall extends ChangeNotifier {
       }
     }();
 
-    // The peer stops hearing us HERE, and it must not wait on the recording.
-    // Their client reads who is present from the SFU, not from Matrix room
-    // state, so leaving the SFU is what tells them we have gone; the membership
-    // below is bookkeeping they never look at. Retracting first, as this once
-    // did, left them still hearing a learner who had hung up for as long as that
-    // state write took.
-    try {
-      await media.dispose();
-    } catch (e, s) {
-      Logs().e('Could not release the call media', e, s);
-    }
-
-    // Now the recording teardown can finish, with the microphone already
-    // released to the peer. It is analytics; it may take the time it needs.
-    await stopping;
+    await releasingMedia;
+    await stoppingRecorder;
     _capturing = false;
 
     // One more look before the session goes. The echo can land at any point
