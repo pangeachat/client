@@ -449,10 +449,16 @@ class _CallPageState extends State<CallPage> {
 
   Widget _topBar(L10n l10n) => Align(
     alignment: Alignment.centerLeft,
-    child: IconButton(
-      icon: const Icon(Icons.expand_more, color: Colors.white),
-      tooltip: l10n.callHangUp,
-      onPressed: _endCall,
+    // Semantics, not the IconButton's tooltip: a tooltip overlay greys the
+    // screen on the CanvasKit web renderer on hover, and the accessible label
+    // does not need one.
+    child: Semantics(
+      label: l10n.callHangUp,
+      button: true,
+      child: IconButton(
+        icon: const Icon(Icons.expand_more, color: Colors.white),
+        onPressed: _endCall,
+      ),
     ),
   );
 

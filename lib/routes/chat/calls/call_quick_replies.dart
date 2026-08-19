@@ -43,13 +43,19 @@ class CallQuickReplyList extends StatelessWidget {
       children: [
         Row(
           children: [
-            IconButton(
-              onPressed: onBack,
-              icon: const Icon(Icons.arrow_back, size: 20),
-              tooltip: l10n.back,
-              visualDensity: VisualDensity.compact,
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+            // Semantics rather than the IconButton's tooltip: a tooltip overlay
+            // greys the card on the CanvasKit web renderer, and the label a
+            // screen reader needs does not have to come from one.
+            Semantics(
+              label: l10n.back,
+              button: true,
+              child: IconButton(
+                onPressed: onBack,
+                icon: const Icon(Icons.arrow_back, size: 20),
+                visualDensity: VisualDensity.compact,
+                padding: EdgeInsets.zero,
+                constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
+              ),
             ),
             const SizedBox(width: 6),
             Expanded(
@@ -69,8 +75,13 @@ class CallQuickReplyList extends StatelessWidget {
             child: Material(
               color: theme.colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(12),
-              clipBehavior: Clip.antiAlias,
+              // No clipBehavior. A clipped Material greys its whole area on the
+              // CanvasKit web renderer when a child repaints, which a hover does.
+              // The ripple is kept inside the rounded corners by the InkWell's
+              // own borderRadius instead, which bounds the splash without a clip
+              // layer to turn grey.
               child: InkWell(
+                borderRadius: BorderRadius.circular(12),
                 onTap: () => onPick(reply),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(

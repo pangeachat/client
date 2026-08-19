@@ -300,12 +300,25 @@ class _CallCardState extends State<_CallCard>
       ).animate(curve),
       child: FadeTransition(
         opacity: curve,
-        child: Material(
-          elevation: 12,
-          shadowColor: Colors.black.withValues(alpha: 0.4),
-          borderRadius: BorderRadius.circular(20),
-          color: theme.colorScheme.surfaceContainerHigh,
-          clipBehavior: Clip.antiAlias,
+        // A plain decorated box, NOT a Material with elevation and a clip. On
+        // the CanvasKit web renderer a clipped, elevated Material repaints its
+        // whole clip region as an opaque grey rectangle the instant any child
+        // inside it changes — which a hover does — and that grey box swallowed
+        // the answer and decline buttons. The rounded corners and the shadow
+        // come from the decoration instead, which has no clip layer to go grey,
+        // and the buttons carry their own Material for their ink.
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surfaceContainerHigh,
+            borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withValues(alpha: 0.4),
+                blurRadius: 24,
+                offset: const Offset(0, 8),
+              ),
+            ],
+          ),
           child: Padding(
             padding: const EdgeInsets.fromLTRB(16, 14, 16, 12),
             child: Column(
@@ -447,22 +460,23 @@ class _CircleAction extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) => Tooltip(
-    message: tooltip,
-    child: Semantics(
-      button: true,
-      label: tooltip,
-      child: Material(
-        color: background,
-        shape: const CircleBorder(),
-        child: InkWell(
-          customBorder: const CircleBorder(),
-          onTap: onPressed,
-          child: SizedBox(
-            width: 48,
-            height: 48,
-            child: Icon(icon, color: foreground, size: 22),
-          ),
+  Widget build(BuildContext context) => Semantics(
+    // No Tooltip. On the CanvasKit web renderer a Tooltip's overlay is the other
+    // widget that paints a grey rectangle over the card on hover, and a round
+    // answer or decline button does not need a hover hint — the icon says it,
+    // and the label a screen reader needs is carried here.
+    button: true,
+    label: tooltip,
+    child: Material(
+      color: background,
+      shape: const CircleBorder(),
+      child: InkWell(
+        customBorder: const CircleBorder(),
+        onTap: onPressed,
+        child: SizedBox(
+          width: 48,
+          height: 48,
+          child: Icon(icon, color: foreground, size: 22),
         ),
       ),
     ),
