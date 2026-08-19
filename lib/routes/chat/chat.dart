@@ -1275,22 +1275,30 @@ class ChatController extends State<ChatPageWithRoom>
         // .then((_) {
         //   _setReadMarkerFuture = null;
         // });
-        .then((_) {
-          _setReadMarkerFuture = null;
-        })
+        // One report, through the one sink: severity, the fingerprint and
+        // the UnsubscribedException guard are all applied in [ErrorHandler]
+        // (repos-and-error-handling.instructions.md § The contract), so a
+        // direct `Sentry.captureException` here both double-reported and
+        // opted out of them. `e` is passed unwrapped — the old
+        // `PangeaWarningError("...$e")` stringified the failure and destroyed
+        // the type the sink reads. What was a `where` tag rides in `data`.
         .catchError((e, s) {
           ErrorHandler.logError(
-            e: PangeaWarningError("Failed to set read marker: $e"),
+            e: e,
             s: s,
-            data: {'eventId': eventId, 'roomId': roomId},
-          );
-          Sentry.captureException(
-            e,
-            stackTrace: s,
-            withScope: (scope) {
-              scope.setTag('where', 'setReadMarker');
+            data: {
+              'where': 'setReadMarker',
+              'eventId': eventId,
+              'roomId': roomId,
             },
           );
+        })
+        // Cleared on both paths, not just success. The field is the in-flight
+        // guard read at the top of this method, so leaving it set after a
+        // failure disabled read markers for the rest of this controller's
+        // life — one dropped request and the chat stopped marking read.
+        .whenComplete(() {
+          _setReadMarkerFuture = null;
         });
     // Pangea#
     if (eventId == null || eventId == timeline.room.lastEvent?.eventId) {
