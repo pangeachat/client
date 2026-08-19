@@ -77,14 +77,24 @@ class CoursePlanFilterState<T> extends State<CoursePlanFilter<T>> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                widget.value != null
-                    ? (widget.selectedItemBuilder != null
-                          ? widget.selectedItemBuilder!(widget.value as T)
-                          : widget.displayname(widget.value as T))
-                    : Text(
-                        widget.defaultName,
-                        style: DefaultTextStyle.of(context).style,
-                      ),
+                // Flexible, because a Row lays its NON-flex children out with
+                // an unbounded main axis: a caller label that itself contains
+                // a Flexible/Expanded (the language name, which wraps rather
+                // than overflows at large device text sizes — #7719) then
+                // threw "RenderFlex children have non-zero flex but incoming
+                // width constraints are unbounded", and the failed layout
+                // propagated up to blank the whole hosting page (#8501).
+                // Bounding this slot is also what lets the label wrap at all.
+                Flexible(
+                  child: widget.value != null
+                      ? (widget.selectedItemBuilder != null
+                            ? widget.selectedItemBuilder!(widget.value as T)
+                            : widget.displayname(widget.value as T))
+                      : Text(
+                          widget.defaultName,
+                          style: DefaultTextStyle.of(context).style,
+                        ),
+                ),
                 const Icon(Icons.arrow_drop_down),
               ],
             ),
