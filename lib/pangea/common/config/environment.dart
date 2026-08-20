@@ -30,6 +30,29 @@ class Environment {
   static bool get isStagingEnvironment =>
       dotenv.env["ENVIRONMENT"] == "staging";
 
+  /// The Sentry-reportable environment for this build, per the allow-list in
+  /// sentry.instructions.md (only `staging`/`production` are valid; anything
+  /// else must not report). Deliberately NOT derived from
+  /// [isStagingEnvironment]'s `ENVIRONMENT` dotenv key: the production `.env`
+  /// secret never sets that key at all, so a build only reports `production`
+  /// by falling through a fallback, not by being positively identified as
+  /// one. [homeServer] is already the normalized host this build actually
+  /// talks to (used the same way for [supportUserId]), so a build is
+  /// `staging`/`production` only when it points at that env's real
+  /// homeserver; every other case — local dev, a misconfigured build, an
+  /// unrecognized override — returns null and must not report at all
+  /// (#8505).
+  static String? get sentryEnvironment {
+    switch (homeServer) {
+      case 'pangea.chat':
+        return 'production';
+      case 'staging.pangea.chat':
+        return 'staging';
+      default:
+        return null;
+    }
+  }
+
   /// Force Flutter's accessibility semantics tree always-on (opt-in).
   ///
   /// Flutter keeps semantics off until an assistive tech is detected or the
