@@ -95,6 +95,12 @@ class ActiveCall extends ChangeNotifier {
   /// The notification this call rang with, once it has been sent.
   String? get notificationEventId => _notificationId;
 
+  /// Whether this call ATTEMPTED to ring the other side — set the moment the
+  /// send begins, kept even if both responses are lost. See the record's
+  /// "mattered" decision.
+  bool get rangOut => _rangOut;
+  bool _rangOut = false;
+
   StreamSubscription? _peerRings;
 
   bool _peerAlsoPlaced = false;
@@ -708,6 +714,13 @@ class ActiveCall extends ChangeNotifier {
       // being told they were turned down.
       _declines = calls.declinesIn(room).listen(_onDeclineEvent);
       if (placing && membershipId != null) {
+        // Remembered as an ATTEMPT, separately from the id coming back. Both
+        // send responses can time out while the event itself lands — their
+        // phone rings — and keying "did this call matter" on holding the id
+        // would then skip the record entirely: a call that rang somebody would
+        // leave no missed-call card. The attempt is the truth the record needs;
+        // the id is only for matching a decline.
+        _rangOut = true;
         // Assigned before the check, so a hangup landing here still knows the
         // other side was rung — their phone rang, and that is what makes this a
         // call worth recording rather than nothing at all.

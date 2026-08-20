@@ -311,7 +311,11 @@ class CallSession extends ChangeNotifier {
             final mattered =
                 _reachedCall ||
                 call.hadPeer ||
-                call.notificationEventId != null ||
+                // The ATTEMPT, not the id: a ring whose responses were both
+                // lost still rang their phone, and that call must leave its
+                // missed-call card. A call whose announce failed never rang
+                // and correctly leaves nothing.
+                call.rangOut ||
                 notificationEventId != null;
             if (!mattered) return;
             return _record.finish(
