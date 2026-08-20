@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+
 import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
