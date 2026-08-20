@@ -33,8 +33,19 @@ class ContextLanguageSwitchTarget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final language = contentLanguage;
     final userController = MatrixState.pangeaController.userController;
+    // A completed switch fires languageStream (see UserController), which is
+    // the only thing that can change canSwitch for an already-built chip —
+    // without listening here, a chip stays tinted for the language the
+    // learner just switched away from until something unrelated rebuilds it.
+    return StreamBuilder<LanguageUpdate>(
+      stream: userController.languageStream.stream,
+      builder: (context, _) => _build(context, userController),
+    );
+  }
+
+  Widget _build(BuildContext context, UserController userController) {
+    final language = contentLanguage;
     final canSwitch =
         language != null &&
         UserController.canSwitchTo(
