@@ -36,14 +36,30 @@ class Environment {
   /// [isStagingEnvironment]'s `ENVIRONMENT` dotenv key: the production `.env`
   /// secret never sets that key at all, so a build only reports `production`
   /// by falling through a fallback, not by being positively identified as
-  /// one. [homeServer] is already the normalized host this build actually
-  /// talks to (used the same way for [supportUserId]), so a build is
-  /// `staging`/`production` only when it points at that env's real
-  /// homeserver; every other case — local dev, a misconfigured build, an
-  /// unrecognized override — returns null and must not report at all
-  /// (#8505).
+  /// one.
+  ///
+  /// Also deliberately NOT derived from [homeServer]: that getter returns the
+  /// raw, unnormalized `HOME_SERVER` dotenv override when set (no scheme or
+  /// `matrix.`-prefix stripping applies to it, unlike its `SYNAPSE_URL`
+  /// fallback path), so a build could carry a real prod/staging
+  /// `SYNAPSE_URL` and go dark here on an unrelated `HOME_SERVER` quirk.
+  /// [dev_login.dart]'s `devLoginHost()` hit this same trap and works around
+  /// it by reading [AppConfig.defaultHomeserverUri] instead — the host
+  /// [Client.login] actually authenticates against, derived straight from
+  /// [synapseURL]. This getter can't import `AppConfig` (it imports
+  /// [Environment], which would cycle), so it replicates that same
+  /// scheme-then-host parse locally.
   static String? get sentryEnvironment {
-    switch (homeServer) {
+    final url = synapseURL;
+    final hasScheme = url.startsWith('http://') || url.startsWith('https://');
+    final host = Uri.tryParse(
+      hasScheme ? url : 'https://$url',
+    )?.host.toLowerCase();
+    if (host == null || host.isEmpty) return null;
+    final normalized = host.startsWith('matrix.')
+        ? host.substring('matrix.'.length)
+        : host;
+    switch (normalized) {
       case 'pangea.chat':
         return 'production';
       case 'staging.pangea.chat':

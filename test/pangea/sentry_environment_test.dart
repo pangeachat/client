@@ -61,4 +61,44 @@ void main() {
     expect(Environment.isStagingEnvironment, isFalse);
     expect(Environment.sentryEnvironment, 'production');
   });
+
+  test('SYNAPSE_URL carrying an explicit scheme still resolves', () {
+    dotenv.testLoad(
+      mergeWith: {'SYNAPSE_URL': 'https://matrix.staging.pangea.chat'},
+    );
+    expect(Environment.sentryEnvironment, 'staging');
+  });
+
+  test('SYNAPSE_URL with no matrix. prefix still resolves', () {
+    dotenv.testLoad(mergeWith: {'SYNAPSE_URL': 'pangea.chat'});
+    expect(Environment.sentryEnvironment, 'production');
+  });
+
+  test('a divergent HOME_SERVER does not change the verdict either way', () {
+    // HOME_SERVER is an independent override dev_login.dart already treats
+    // as untrustworthy for env decisions (its devLoginHost() doc comment:
+    // "a prod SYNAPSE_URL paired with a non-prod HOME_SERVER would slip
+    // through"). sentryEnvironment must read SYNAPSE_URL only.
+    dotenv.testLoad(
+      mergeWith: {
+        'SYNAPSE_URL': 'matrix.pangea.chat',
+        'HOME_SERVER': 'https://matrix.local.pangea.chat',
+      },
+    );
+    expect(Environment.sentryEnvironment, 'production');
+
+    dotenv.testLoad(
+      mergeWith: {
+        'SYNAPSE_URL': 'matrix.local.pangea.chat',
+        'HOME_SERVER': 'pangea.chat',
+      },
+    );
+    expect(Environment.sentryEnvironment, isNull);
+  });
+
+  test('a malformed SYNAPSE_URL does not throw', () {
+    dotenv.testLoad(mergeWith: {'SYNAPSE_URL': 'not a valid url ::'});
+    expect(() => Environment.sentryEnvironment, returnsNormally);
+    expect(Environment.sentryEnvironment, isNull);
+  });
 }
