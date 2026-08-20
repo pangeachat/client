@@ -60,7 +60,10 @@ class ContextLanguageSwitchTarget extends StatelessWidget {
       excludeSemantics: true,
       child: canSwitch
           ? InkWell(
-              onTap: () => LanguageSwitcherSheet.show(context),
+              onTap: () => LanguageSwitcherSheet.show(
+                context,
+                targetedLanguage: language,
+              ),
               child: chip,
             )
           : chip,
