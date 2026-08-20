@@ -15,6 +15,10 @@ import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
 /// whether calling is offered at all, and that constructing the service does not
 /// itself start the SDK's VoIP machinery.
 void main() {
+  // Needed the moment a test builds the SDK's VoIP: its delegate reaches for
+  // flutter_webrtc's media devices, which goes through a platform channel.
+  TestWidgetsFlutterBinding.ensureInitialized();
+
   setUpAll(() {
     sqfliteFfiInit();
   });
@@ -549,6 +553,91 @@ void main() {
       reason: 'nothing may be built for an account that has gone',
     );
   });
+  group('a leave that throws after the membership is already gone', () {
+    // `GroupCallSession.leave()` writes the emptied membership FIRST and only
+    // then does its own teardown. When a later step throws, the peer has
+    // already watched us go, but the ended state and the session registry are
+    // never reached -- and a session left behind there is what makes the NEXT
+    // call in the room fail as though we were still in this one. In production
+    // the throw comes from the SDK's delayed-event bookkeeping; the shape that
+    // matters, and what is reproduced here, is a throw AFTER the write lands.
+    Future<(CallService, GroupCallSession, Room)> joinedService() async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final service = CallService(client);
+      final room = Room(id: '!left:fakeServer.notExisting', client: client);
+      final session = GroupCallSession(
+        client: client,
+        room: room,
+        voip: service.voip,
+        backend: _ThrowsAfterTheWrite(),
+        groupCallId: 'call-id',
+        application: 'm.call',
+        scope: 'm.room',
+      );
+      service.adoptSessionForTest(session);
+      return (service, session, room);
+    }
+
+    test(
+      'is reported as the success it is, and releases the session',
+      () async {
+        final (service, _, room) = await joinedService();
+        expect(
+          service.membershipEventIdIn(room),
+          isNull,
+          reason: 'precondition: nothing of ours is left in the room',
+        );
+
+        await expectLater(
+          service.retract(),
+          completion(isTrue),
+          reason:
+              'the membership is gone, which is the whole point of a retract',
+        );
+        expect(
+          service.hasJoinedSession,
+          isFalse,
+          reason: 'a session kept here refuses the next call in this room',
+        );
+      },
+    );
+
+    test('finishes the teardown the aborted leave skipped', () async {
+      final (service, session, _) = await joinedService();
+      expect(session.state, isNot(GroupCallState.ended));
+
+      await service.retract();
+
+      expect(
+        session.state,
+        GroupCallState.ended,
+        reason: 'leave() throws before it ends the session, so we must',
+      );
+    });
+  });
+}
+
+/// A backend whose release throws, so `leave()` fails at a step that runs
+/// AFTER the membership has already been written away.
+class _ThrowsAfterTheWrite extends LiveKitBackend {
+  _ThrowsAfterTheWrite()
+    : super(
+        livekitServiceUrl: 'http://sfu:7980',
+        livekitAlias: 'alias',
+        e2eeEnabled: false,
+      );
+
+  @override
+  Future<void> dispose(GroupCallSession groupCall) async =>
+      throw StateError('releasing the backend failed');
 }
 
 /// Discovery held open so a test can dispose the service mid-lookup.

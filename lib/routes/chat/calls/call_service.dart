@@ -803,6 +803,20 @@ class CallService {
           Logs().w('Retracting the call membership did not answer', e, s);
           break;
         } catch (e, s) {
+          // A leave is judged by the state it PRODUCED, not by whether every
+          // step of the SDK's sequence returned success. leave() writes the
+          // emptied membership first and only then does its own bookkeeping;
+          // when a later step throws, the write has already landed and the peer
+          // has already watched us go — but everything after the throw is
+          // skipped, and that unfinished teardown is what breaks the NEXT call
+          // in this room. Retrying cannot help: the write it would repeat is
+          // the part that already worked.
+          if (_myMembershipEventId(session.room) == null) {
+            Logs().w('Leave threw after the membership was already gone', e, s);
+            await _finishAbortedLeave(session);
+            _abandonedMembership = false;
+            return true;
+          }
           Logs().w('Retracting the call membership failed', e, s);
         }
       }
@@ -820,6 +834,40 @@ class CallService {
       _retracting = null;
     }
   }();
+
+  /// Finishes a `leave()` that wrote the membership away and then threw.
+  ///
+  /// Everything here is what `GroupCallSession.leave()` does AFTER the write —
+  /// release the media backend, forget the session, clear the current call. The
+  /// SDK skips all of it when its post-write bookkeeping throws, and a session
+  /// left in the registry is what makes the next call in this room fail as
+  /// though we were still busy in this one.
+  ///
+  /// Each step is guarded on its own: this runs because something already went
+  /// wrong, so one step failing must not stop the rest. Best effort by design —
+  /// the membership, which is what the peer actually reads, is already gone.
+  Future<void> _finishAbortedLeave(GroupCallSession session) async {
+    try {
+      await session.backend.dispose(session);
+    } catch (e, s) {
+      Logs().w(
+        'Releasing the call backend after an aborted leave failed',
+        e,
+        s,
+      );
+    }
+    try {
+      session.setState(GroupCallState.ended);
+    } catch (e, s) {
+      Logs().w('Ending the call session after an aborted leave failed', e, s);
+    }
+    // By identity rather than by key: it drops exactly this session however the
+    // registry happens to key it, and VoipId is not part of the SDK's exports.
+    voip.groupCalls.removeWhere((_, entry) => identical(entry, session));
+    if (voip.currentGroupCID?.roomId == session.room.id) {
+      voip.currentGroupCID = null;
+    }
+  }
 
   /// Tears the service down, retracting any membership it still holds.
   ///
@@ -852,6 +900,11 @@ class CallService {
 
   @visibleForTesting
   bool get hasJoinedSession => _current != null;
+
+  /// Installs a joined session without going through the network join, so a
+  /// test can exercise what retract does with one.
+  @visibleForTesting
+  void adoptSessionForTest(GroupCallSession session) => _current = session;
 
   @visibleForTesting
   bool get voipConstructed => _voip != null;
