@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'package:fluffychat/features/user/public_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/widgets/network_svg.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -14,7 +15,7 @@ import 'package:fluffychat/widgets/users/level_ribbon.dart';
 /// each of which is empty for its own reasons, so a chip that padded itself
 /// even while rendering nothing left a band of dead space under the profile
 /// (#8238).
-class LevelDisplayName extends StatelessWidget {
+class LevelDisplayName extends StatefulWidget {
   final String userId;
   final TextStyle? textStyle;
   final double? iconSize;
@@ -36,11 +37,38 @@ class LevelDisplayName extends StatelessWidget {
   });
 
   @override
+  State<LevelDisplayName> createState() => _LevelDisplayNameState();
+}
+
+class _LevelDisplayNameState extends State<LevelDisplayName> {
+  late Future<PublicProfileModel?> _profileFuture;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchProfile();
+  }
+
+  @override
+  void didUpdateWidget(covariant LevelDisplayName oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.userId != widget.userId) _fetchProfile();
+  }
+
+  void _fetchProfile() {
+    _profileFuture = MatrixState.pangeaController.userController
+        .getPublicProfile(widget.userId);
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final textStyle = widget.textStyle;
+    final iconSize = widget.iconSize;
+    final showFlags = widget.showFlags;
+    final padding = widget.padding;
+
     return FutureBuilder(
-      future: MatrixState.pangeaController.userController.getPublicProfile(
-        userId,
-      ),
+      future: _profileFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Padding(
