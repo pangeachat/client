@@ -64,8 +64,7 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
       context: context,
       future: () => userController.updateTargetLanguage(language),
     );
-    if (result.isError) return;
-
+    if (result.isError || !mounted) return;
     navigator.pop();
   }
 
@@ -139,7 +138,10 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
                       _LanguageSwitcherRow(
                         language: displayLanguages[i],
                         analytics: analyticsByLanguage?[displayLanguages[i]],
-                        isCurrent: displayLanguages[i] == currentLanguage,
+                        isCurrent: UserController.isCurrentTargetLanguage(
+                          displayLanguages[i],
+                          currentLanguage?.langCode,
+                        ),
                         isBaseLanguage: UserController.isBaseLanguage(
                           displayLanguages[i],
                           baseLanguage?.langCode,
