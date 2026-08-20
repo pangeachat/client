@@ -439,6 +439,10 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   StreamSubscription? _appLanguageSettingsListener;
   Future<void> _setLanguageListener() async {
     await pangeaController.userController.initialize();
+    // The initState call to _setAppLanguage ran before initialize() resolved,
+    // so it read Profile.emptyProfile and never saw the real user settings.
+    // Re-apply now that the actual profile (and the toggle) are loaded.
+    _setAppLanguage();
     GrammarConstructsProvider.fetchFeaturesAndTags();
 
     _languageListener?.cancel();

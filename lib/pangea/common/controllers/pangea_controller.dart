@@ -63,9 +63,11 @@ class PangeaController {
     initControllers(userID);
     _registerSubscriptions();
 
+    // Locale is set by MatrixState's toggle-aware _setAppLanguage() once the
+    // profile loads (see matrix.dart's _setLanguageListener) — setting it
+    // here too raced that call and always won with the hardcoded L1,
+    // ignoring the "show app in the language I'm learning" toggle (#8509).
     userController.reinitialize().then((_) {
-      final l1 = userController.profile.userSettings.sourceLanguage;
-      Provider.of<LocaleProvider>(context, listen: false).setLocale(l1);
       GrammarConstructsProvider.fetchFeaturesAndTags();
     });
 
