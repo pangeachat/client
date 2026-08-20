@@ -147,6 +147,29 @@ class UserController {
     return baseLangShort != null && language.langCodeShort == baseLangShort;
   }
 
+  /// True when [language] is already the learner's target language,
+  /// short-code compared the same way [isBaseLanguage] is.
+  static bool isCurrentTargetLanguage(
+    LanguageModel language,
+    String? targetLangCode,
+  ) {
+    final targetLangShort = targetLangCode?.split('-').first;
+    return targetLangShort != null && language.langCodeShort == targetLangShort;
+  }
+
+  /// Whether a content language chip should tint itself and offer a switch
+  /// to [language] (profile.instructions.md, "Switching from context",
+  /// point 6): not when it's already the learner's target, and not when
+  /// it's their base language — a switch there is refused, so there's
+  /// nothing to offer.
+  static bool canSwitchTo(
+    LanguageModel language, {
+    required String? targetLangCode,
+    required String? baseLangCode,
+  }) =>
+      !isCurrentTargetLanguage(language, targetLangCode) &&
+      !isBaseLanguage(language, baseLangCode);
+
   /// Switches the learner's target language — the one write every inline
   /// switch path shares (profile.instructions.md, "Switching from context"):
   /// the send-time mismatch popup, the reading-toolbar snackbar, and the
