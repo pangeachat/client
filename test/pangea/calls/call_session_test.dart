@@ -96,6 +96,38 @@ class _FakeMedia extends CallMedia {
   Future<void> dispose() async {}
 }
 
+/// A room that records what the session puts in the timeline, so a test can
+/// see the call card land without waiting on anything behind it.
+class _RecordingRoom extends matrix.Room {
+  _RecordingRoom({required super.id, required super.client});
+
+  final List<Map<String, dynamic>> sent = [];
+
+  @override
+  Future<String?> sendEvent(
+    Map<String, dynamic> content, {
+    String type = matrix.EventTypes.Message,
+    String? txid,
+    matrix.Event? inReplyTo,
+    String? editEventId,
+    String? threadRootEventId,
+    String? threadLastEventId,
+    bool displayPendingEvent = true,
+  }) async {
+    sent.add(content);
+    return '\$card';
+  }
+}
+
+/// Capture whose drain never finishes -- the shape of a call whose last chunks
+/// are still in speech-to-text when the learner hangs up.
+class _HangingCapture extends CallCaptureService {
+  _HangingCapture() : super(sink: _NullSink());
+
+  @override
+  Future<void> finish() => Completer<void>().future;
+}
+
 class _NullSink implements CallAudioSink {
   @override
   Future<void> deliver(PcmChunk chunk, {Duration? within}) async {}
@@ -148,6 +180,40 @@ void main() {
     await pumpEventQueue();
     return (session, calls, released);
   }
+
+  test('the call card is written at hangup, not after transcription', () async {
+    // The card states the duration, who called and whether it was answered --
+    // all of it known the instant the call ends. It used to be written in a
+    // whenComplete on hangUp, which drains every captured chunk through
+    // speech-to-text first: the card arrived 10-60s late, and was lost
+    // entirely if the learner closed the tab before the last chunk came back.
+    final client = await _bareClient();
+    final room = _RecordingRoom(id: '!r:server', client: client);
+    final neverTranscribes = Completer<SpeechToTextResponseModel>();
+    final session = CallSession.start(
+      room: room,
+      video: false,
+      callService: _FakeCalls(client),
+      transcribe: (request) => neverTranscribes.future,
+      userL1: 'en',
+      userL2: 'es',
+      analytics: (eventId, uses, language) async {},
+      onReleased: (_) {},
+      mediaOverride: _FakeMedia(),
+      captureOverride: _HangingCapture(),
+    );
+    await pumpEventQueue();
+
+    session.endCall();
+    await pumpEventQueue();
+
+    expect(
+      room.sent.map((e) => e['type'] ?? 'pangea.call'),
+      isNotEmpty,
+      reason: 'the card must not wait for speech-to-text that may never return',
+    );
+    expect(neverTranscribes.isCompleted, isFalse, reason: 'still transcribing');
+  });
 
   test('minimize, expand and fullscreen notify without overflowing', () async {
     // A blanket edit once made the session's notify helper call itself, and

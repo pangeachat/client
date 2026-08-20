@@ -68,6 +68,58 @@ class CallRecord {
   /// card belongs in the conversation — so the answering side anchors its
   /// analytics to [anchorEventId], the notification it was rung with, instead
   /// of posting a second identical call.
+  /// Puts the call in the timeline, NOW.
+  ///
+  /// Called the moment the call ends, before teardown and long before the
+  /// transcripts exist. Everything a card states — how long, answered, turned
+  /// down, video, who called — is known at that instant, and none of it depends
+  /// on speech-to-text. Waiting for the transcripts to write it (which is what
+  /// this used to do, because crediting and writing were one step at the end of
+  /// teardown) put the card 10-60 seconds behind the call and lost it entirely
+  /// whenever the learner closed the tab or navigated away in between.
+  ///
+  /// Idempotent, and the id it establishes is what [finish] later credits
+  /// against, so the two can never produce two cards.
+  Future<void> writeCard({
+    required Duration duration,
+    required bool video,
+    required bool answered,
+    required bool declined,
+    required bool writeTimelineEvent,
+    String? anchorEventId,
+    String? callerId,
+  }) async {
+    if (_eventId != null || _credited) return;
+    if (!writeTimelineEvent) {
+      // The answering side posts no card; its analytics anchor to the ring it
+      // was called with, which it already holds.
+      _eventId = anchorEventId;
+      return;
+    }
+    for (var attempt = 0; attempt < 3 && _eventId == null; attempt++) {
+      if (attempt > 0) await Future.delayed(Duration(seconds: attempt));
+      try {
+        _eventId = await _write(
+          duration: duration,
+          video: video,
+          answered: answered,
+          declined: declined,
+          callerId: callerId,
+        );
+      } catch (e, s) {
+        Logs().w(
+          'Writing the call to the timeline failed '
+          '(attempt ${attempt + 1})',
+          e,
+          s,
+        );
+      }
+    }
+    if (_eventId == null) {
+      Logs().e('Gave up putting the call in the timeline');
+    }
+  }
+
   Future<void> finish({
     required Duration duration,
     required bool video,

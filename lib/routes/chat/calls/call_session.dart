@@ -296,6 +296,9 @@ class CallSession extends ChangeNotifier {
     // immediate on both sides.
     final outcome = call.outcome;
     if (outcome == CallOutcome.ended || outcome == CallOutcome.declined) {
+      // The card FIRST and immediately: everything it states is known now, and
+      // it must not wait for teardown and transcription behind it.
+      _writeCard();
       _finishRecording();
       _release();
       return;
@@ -308,6 +311,39 @@ class CallSession extends ChangeNotifier {
       });
     }
     if (!_over) _notify();
+  }
+
+  /// Whether this call is worth a timeline entry at all: did it reach the SFU,
+  /// did it actually ring somebody, or was it itself an answer. A call that
+  /// rang nobody and connected to nothing leaves no trace, correctly.
+  bool get _mattered =>
+      _reachedCall ||
+      call.hadPeer ||
+      call.rangOut ||
+      notificationEventId != null;
+
+  /// Puts the call in the timeline the moment it ends — not after teardown,
+  /// and not after speech-to-text.
+  bool _cardStarted = false;
+
+  void _writeCard() {
+    if (_cardStarted || !_mattered) return;
+    _cardStarted = true;
+    unawaited(
+      _record
+          .writeCard(
+            duration: call.talkDuration,
+            video: _usedVideo,
+            answered: call.hadPeer,
+            declined: call.wasDeclined,
+            writeTimelineEvent: _writesTheCall,
+            callerId: call.placedCall ? _myUserId : _peerUserId,
+            anchorEventId: notificationEventId ?? call.membershipEventId,
+          )
+          .catchError((Object e, StackTrace s) {
+            Logs().e('Could not put the call in the timeline', e, s);
+          }),
+    );
   }
 
   /// Ends the call, then writes it and its analytics. Every way out goes
@@ -328,16 +364,12 @@ class CallSession extends ChangeNotifier {
             // other side, or was itself an answer. Placing alone is not enough:
             // a call whose announce failed rang nobody, and a card for it would
             // record a call that never began.
-            final mattered =
-                _reachedCall ||
-                call.hadPeer ||
-                // The ATTEMPT, not the id: a ring whose responses were both
-                // lost still rang their phone, and that call must leave its
-                // missed-call card. A call whose announce failed never rang
-                // and correctly leaves nothing.
-                call.rangOut ||
-                notificationEventId != null;
-            if (!mattered) return;
+            if (!_mattered) return;
+            // The card is normally already in the timeline by now (written the
+            // moment the call ended); this call credits the transcripts against
+            // it, and writes the card itself only if that earlier attempt had
+            // failed outright.
+
             return _record.finish(
               duration: call.talkDuration,
               video: _usedVideo,
