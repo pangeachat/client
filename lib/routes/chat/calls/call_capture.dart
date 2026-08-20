@@ -394,25 +394,26 @@ class CallCaptureService {
     }
     _session++;
 
-    // A tap that will not detach must not cost the tail. The frames it may still
-    // deliver are already ignored, so the worst case is a tap left registered —
-    // losing the last seconds of what the learner said is the more expensive
-    // failure.
+    // Stop taking frames NOW, before the detach, not after it. Detaching a tap
+    // is a platform round-trip that can take its bounded seconds to answer, and
+    // every frame that arrived while it ran used to be chunked — which after a
+    // hangup is post-hangup microphone audio, the learner's private
+    // conversation once they believed the call was over. That is the one place
+    // this feature must never leak, so frames are refused here first. The cost
+    // is at most the tap's last un-flushed batch; everything the learner said up
+    // to this line is already in the chunker and is flushed below.
+    _stopping = true;
+    _running = false;
+
     // Taken and cleared BEFORE it is awaited. Leaving it set across the await
     // let a second stop past the guard above and detach the same tap twice.
     final detach = _detach;
     _detach = null;
-    // Audio is still accepted while this runs. Detaching is what makes a tap
-    // hand over the last of what it gathered, and that tail is the end of a
-    // sentence — refusing frames first would collect it and then throw it away.
     await _release(detach);
     // And another go at anything that would not let go earlier. A tap detaches
     // on the next stop or not at all; nothing else ever comes back to it.
     await _releaseUnreleased();
 
-    // Only now: nothing more can arrive, so what is held is the whole of it.
-    _stopping = true;
-    _running = false;
     final chunker = _chunker;
     _chunker = null;
 

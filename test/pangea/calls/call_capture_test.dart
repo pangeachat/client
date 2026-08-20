@@ -416,22 +416,30 @@ void main() {
     });
   });
 
-  group('the tail a tap hands over as it detaches', () {
-    test('is kept, not discarded', () async {
-      // Detaching is what makes a tap hand over the last of what it gathered,
-      // and that tail is the end of a sentence. Refusing frames before
-      // detaching collects it and then throws it away.
-      final tap = _TailOnDetachTap();
-      final s = service(withTap: tap);
-      await s.start(track);
-      await s.stop();
+  group('frames a tap hands over WHILE it detaches', () {
+    test(
+      'are dropped — the microphone is off the record once a stop begins',
+      () async {
+        // This once kept them: the tap's tail is the end of a sentence, and it
+        // arrives during the detach. But a detach can stall for its bounded
+        // seconds, and everything delivered in that window after a hangup is
+        // post-hangup microphone audio — the learner's private conversation once
+        // they believed the call was over. There is no marker on a frame that
+        // tells the tail from that, so the safer of the two wins: nothing is
+        // recorded once the stop has begun. The cost is at most the tap's last
+        // un-flushed batch; everything up to the hangup is already in the chunker.
+        final tap = _TailOnDetachTap();
+        final s = service(withTap: tap);
+        await s.start(track);
+        await s.stop();
 
-      expect(
-        sink.delivered.expand((c) => c.pcm).isNotEmpty,
-        isTrue,
-        reason: 'the audio handed over during detach must reach the sink',
-      );
-    });
+        expect(
+          sink.delivered.expand((c) => c.pcm),
+          isEmpty,
+          reason: 'audio handed over during a detach must not be recorded',
+        );
+      },
+    );
   });
 
   group('a stop landing while the tap is still attaching', () {
@@ -507,6 +515,44 @@ void main() {
       }
       await s.stop();
       expect(sink.delivered, isNotEmpty, reason: 'speech after unmute records');
+    });
+  });
+
+  group('a hangup that catches the tap mid-detach', () {
+    test('drops frames that arrive after the stop has begun', () async {
+      // Detaching is a platform round-trip that can take its bounded seconds.
+      // Frames arriving in that window, after the learner hung up, are
+      // post-hangup microphone audio and must not be recorded.
+      final tap = _SlowDetachTap();
+      final s = service(withTap: tap);
+      await s.start(track);
+
+      int total() =>
+          sink.delivered.fold(0, (n, c) => n + c.pcm.lengthInBytes ~/ 2);
+
+      // Half a second of speech BEFORE the hangup.
+      final speech = Int16List(12000)..fillRange(0, 12000, 8000);
+      tap.onFrames!(speech, 24000);
+      await pumpEventQueue();
+
+      // Hang up: stop begins and the detach hangs.
+      final stopping = s.stop();
+      await pumpEventQueue();
+
+      // A full second of speech arrives WHILE the detach is stuck.
+      tap.onFrames!(speech, 24000);
+      tap.onFrames!(speech, 24000);
+      await pumpEventQueue();
+
+      tap.finishDetach();
+      await stopping;
+
+      // Only the pre-hangup half second was recorded; the rest was dropped.
+      expect(
+        total(),
+        lessThan(20000),
+        reason: 'post-hangup microphone audio must not be recorded',
+      );
     });
   });
 
@@ -694,6 +740,19 @@ void main() {
 }
 
 /// A device that offers no point to read from after echo cancellation.
+/// A tap whose detach hangs until released, and whose frame callback the test
+/// can drive by hand — to deliver frames WHILE the detach is stuck.
+class _SlowDetachTap implements CallAudioTap {
+  CallAudioFrames? onFrames;
+  final _detaching = Completer<void>();
+  void finishDetach() => _detaching.complete();
+  @override
+  Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async {
+    this.onFrames = onFrames;
+    return () => _detaching.future;
+  }
+}
+
 class _NoTap implements CallAudioTap {
   @override
   Future<DetachTap?> open(AudioTrack track, CallAudioFrames onFrames) async =>
