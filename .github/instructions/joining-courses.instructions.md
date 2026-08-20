@@ -23,6 +23,8 @@ How users join courses (Matrix spaces) through three routes: class link, class c
 
 All three routes converge on the user becoming a `Membership.join` member of the course space. Child rooms (announcements, introductions, activity chats) are joined separately afterward.
 
+A course carries its own target language — the quest's, the same field its info chips show — and a learner whose learning language differs can switch from the course's language chip, before joining and after. That behavior is [Switching from context](profile.instructions.md#switching-from-context); joining a course never changes what the learner is learning on its own.
+
 ---
 
 ## Route 1 — Class Link

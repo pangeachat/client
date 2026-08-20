@@ -16,6 +16,7 @@ import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 import 'package:fluffychat/routes/settings/settings_learning/language_level_type_enum.dart';
+import 'package:fluffychat/routes/settings/settings_learning/language_mismatch_popup.dart';
 import 'package:fluffychat/routes/settings/settings_learning/tool_settings_enum.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'user_model.dart';
@@ -132,6 +133,60 @@ class UserController {
     }
 
     await updatedProfile.saveProfileData(waitForDataInSync: waitForDataInSync);
+  }
+
+  /// True when [language] is the learner's base language, short-code
+  /// compared (so 'es' matches a base of 'es-MX') — the rule
+  /// [IdenticalLanguageException] enforces inside the profile write
+  /// (profile.instructions.md, "Switching to the learner's base language is
+  /// refused, not attempted"). Callers that offer a switch before it's
+  /// attempted — the language switcher sheet's row list — use this to know
+  /// up front, rather than reacting to the throw.
+  static bool isBaseLanguage(LanguageModel language, String? baseLangCode) {
+    final baseLangShort = baseLangCode?.split('-').first;
+    return baseLangShort != null && language.langCodeShort == baseLangShort;
+  }
+
+  /// True when [language] is already the learner's target language,
+  /// short-code compared the same way [isBaseLanguage] is.
+  static bool isCurrentTargetLanguage(
+    LanguageModel language,
+    String? targetLangCode,
+  ) {
+    final targetLangShort = targetLangCode?.split('-').first;
+    return targetLangShort != null && language.langCodeShort == targetLangShort;
+  }
+
+  /// Whether a content language chip should tint itself and offer a switch
+  /// to [language] (profile.instructions.md, "Switching from context",
+  /// point 6): not when it's already the learner's target, and not when
+  /// it's their base language — a switch there is refused, so there's
+  /// nothing to offer.
+  static bool canSwitchTo(
+    LanguageModel language, {
+    required String? targetLangCode,
+    required String? baseLangCode,
+  }) =>
+      !isCurrentTargetLanguage(language, targetLangCode) &&
+      !isBaseLanguage(language, baseLangCode);
+
+  /// Switches the learner's target language — the one write every inline
+  /// switch path shares (profile.instructions.md, "Switching from context"):
+  /// the send-time mismatch popup, the reading-toolbar snackbar, and the
+  /// language switcher sheet. Throws [IdenticalLanguageException] rather
+  /// than writing when [language] is the learner's base language.
+  Future<void> updateTargetLanguage(LanguageModel language) async {
+    await updateProfile((profile) {
+      if (isBaseLanguage(language, profile.userSettings.sourceLanguage)) {
+        throw IdenticalLanguageException();
+      }
+
+      return profile.copyWith(
+        userSettings: profile.userSettings.copyWith(
+          targetLanguage: language.langCode,
+        ),
+      );
+    }, waitForDataInSync: true);
   }
 
   /// A completer for the profile model of a user.

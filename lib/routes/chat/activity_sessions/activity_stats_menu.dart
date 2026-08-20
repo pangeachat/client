@@ -11,6 +11,8 @@ import 'package:fluffychat/features/activity_sessions/activity_roles_room_extens
 import 'package:fluffychat/features/activity_sessions/activity_room_extension.dart';
 import 'package:fluffychat/features/activity_sessions/activity_summary_room_extension.dart';
 import 'package:fluffychat/features/bot/utils/bot_name.dart';
+import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_dropdown_content.dart';
@@ -34,6 +36,13 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
     required this.activeGoalNotifier,
     super.key,
   });
+  LanguageModel? get _sessionLanguage {
+    final targetLanguage = room.activityPlan?.req.targetLanguage;
+    return targetLanguage == null
+        ? null
+        : PLanguageStore.byLangCode(targetLanguage);
+  }
+
   bool get _isTwoPersonBotActivity {
     final roles = room.activityRoles?.roles;
     final assignedRoles = room.assignedRoles;
@@ -127,6 +136,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                     isGoalCompleted: _isGoalCompleted,
                     onToggle: _toggleShowDropdown,
                     title: L10n.of(context).activityActions,
+                    contentLanguage: _sessionLanguage,
                   )
                 : ActivityDropdownHeader(
                     goals: goals,
@@ -134,6 +144,7 @@ class ActivityStatsMenu extends StatelessWidget with GoalProgressMixin {
                     onToggle: _toggleShowDropdown,
                     activeGoalId: ownRoleDone ? null : active?.id,
                     subtitle: subtitle,
+                    contentLanguage: _sessionLanguage,
                   );
 
             return Positioned(

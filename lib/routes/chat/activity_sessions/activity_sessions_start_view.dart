@@ -7,6 +7,7 @@ import 'package:fluffychat/config/app_config.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/activity_sessions/activity_plan_model.dart';
 import 'package:fluffychat/features/activity_sessions/activity_roles_room_extension.dart';
+import 'package:fluffychat/features/languages/context_language_switch_target.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/navigation/panel_types_enum.dart';
@@ -454,16 +455,22 @@ class _ActivityStartInfoRow extends StatelessWidget {
           ),
           const SizedBox(width: 8.0),
           // Never empty: the flag when the language resolves to one, else a
-          // langcode chip (shared with the analytics cluster's flag).
-          LanguageFlagChip(
-            language: language,
-            langCode: activity.req.targetLanguage,
-            width: 24.0,
-            height: 18.0,
-            fontSize: 12.0,
-            radius: 3.0,
-            borderWidth: 1.0,
-            alwaysShowCode: false,
+          // langcode chip (shared with the analytics cluster's flag). Doubles
+          // as the switch to that language when it isn't the learner's
+          // target (activity-start-page.instructions.md).
+          ContextLanguageSwitchTarget(
+            contentLanguage: language,
+            builder: (context, canSwitch) => LanguageFlagChip(
+              language: language,
+              langCode: activity.req.targetLanguage,
+              width: 24.0,
+              height: 18.0,
+              fontSize: 12.0,
+              radius: 3.0,
+              borderWidth: 1.0,
+              alwaysShowCode: false,
+              tintColor: canSwitch ? theme.colorScheme.tertiary : null,
+            ),
           ),
           const SizedBox(width: 12.0),
           _IconLabel(
