@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-20 13:11:40.355881",
+    "@@last_modified": "2026-08-20 15:18:45.291469",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -9747,5 +9747,8 @@
     "autocorrectAndroidDialogTitle": "Zuzenketa automatikoa zure xede-hizkuntzan",
     "autocorrectAndroidDialogBody": "Txat batean idazten duzunean, teklatua zure xede-hizkuntzara aldatuko da eta hizkuntza horretako ortografia zuzenduko du.",
     "autocorrectAndroidFallbackTitle": "Zure teklatuak xede-hizkuntza eskaintzen ez badu, instalatu Gboard eta gehitu hizkuntza bertan:",
-    "openKeyboardSettings": "Ireki teklatuaren ezarpenak"
+    "openKeyboardSettings": "Ireki teklatuaren ezarpenak",
+    "keyboardPromptAddKeyboardMessage": "Gehitu teklatua zure xede-hizkuntzarako, zuzenketa automatikoa funtziona dezan.",
+    "keyboardPromptAddKeyboardAction": "Gehitu teklatua",
+    "keyboardPromptSwitchKeyboardMessage": "Sakatu teklatuko globoaren ikonoa zure xede-hizkuntzara aldatzeko."
 }

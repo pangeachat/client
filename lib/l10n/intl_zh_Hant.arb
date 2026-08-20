@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:46.818262",
+    "@@last_modified": "2026-08-20 15:18:55.829192",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9853,5 +9853,8 @@
     "autocorrectAndroidDialogTitle": "目標語言自動校正",
     "autocorrectAndroidDialogBody": "當您在聊天中打字時，您的鍵盤將切換到您的目標語言並自動校正該語言的拼寫。",
     "autocorrectAndroidFallbackTitle": "如果您的鍵盤不支援您的目標語言，請安裝 Gboard 並在其中新增該語言：",
-    "openKeyboardSettings": "開啟鍵盤設定"
+    "openKeyboardSettings": "開啟鍵盤設定",
+    "keyboardPromptAddKeyboardMessage": "新增目標語言的鍵盤，以啟用自動校正功能。",
+    "keyboardPromptAddKeyboardAction": "新增鍵盤",
+    "keyboardPromptSwitchKeyboardMessage": "點擊鍵盤上的地球圖示，切換至您的目標語言。"
 }

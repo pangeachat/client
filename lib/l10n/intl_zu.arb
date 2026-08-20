@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-20 13:11:46.843932",
+    "@@last_modified": "2026-08-20 15:18:56.287483",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzakalelayo ngolimi olufundayo",
     "autocorrectAndroidDialogBody": "Uma uthayipha engxoxweni, ikhibhodi yakho izoshintshela olimini olufundayo futhi ilungise amaphutha esipelingi ngalolo limi.",
     "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:",
-    "openKeyboardSettings": "Vula Izilungiselelo Zekhibhodi"
+    "openKeyboardSettings": "Vula Izilungiselelo Zekhibhodi",
+    "keyboardPromptAddKeyboardMessage": "Faka ikhibhodi yolimi oluqondile ukuze i-autocorrect isebenze.",
+    "keyboardPromptAddKeyboardAction": "Faka Ikhibhodi",
+    "keyboardPromptSwitchKeyboardMessage": "Thepha isithonjana se-globe kukhibhodi yakho ukuze ushintshele olimini oluqondile."
 }

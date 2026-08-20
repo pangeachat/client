@@ -124,7 +124,12 @@ class UserController {
   }) async {
     await initialize();
     final prevHash = profile.hashCode;
-    final Profile updatedProfile = update(profile);
+    // Every path that changes the target language funnels through here, so
+    // this is the single place the autocorrect reset needs to be enforced.
+    final updatedProfile = Profile.resetAutocorrectIfLanguageChanged(
+      profile,
+      update(profile),
+    );
 
     if (updatedProfile.hashCode == prevHash) {
       // no changes were made, so don't save
@@ -447,7 +452,7 @@ class UserController {
       case ToolSetting.autoIGC:
         return profile.toolSettings.autoIGC;
       case ToolSetting.enableAutocorrect:
-        return profile.toolSettings.enableAutocorrect;
+        return profile.effectiveAutocorrect;
       case ToolSetting.audioWords:
         return profile.toolSettings.audioWords;
       case ToolSetting.audioChoices:

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:39.311895",
+    "@@last_modified": "2026-08-20 15:18:43.226434",
     "about": "সম্পর্কে",
     "@about": {
         "type": "String",
@@ -10375,5 +10375,8 @@
     "autocorrectAndroidDialogTitle": "আপনার লক্ষ্য ভাষায় স্বয়ংক্রিয় সংশোধন",
     "autocorrectAndroidDialogBody": "আপনি যখন চ্যাটে টাইপ করবেন, আপনার কীবোর্ড আপনার লক্ষ্য ভাষায় পরিবর্তিত হবে এবং সেই ভাষায় বানান সংশোধন করবে।",
     "autocorrectAndroidFallbackTitle": "যদি আপনার কীবোর্ড আপনার লক্ষ্য ভাষা অফার না করে, তাহলে Gboard ইনস্টল করুন এবং সেখানে ভাষা যোগ করুন:",
-    "openKeyboardSettings": "কিবোর্ড সেটিংস খুলুন"
+    "openKeyboardSettings": "কিবোর্ড সেটিংস খুলুন",
+    "keyboardPromptAddKeyboardMessage": "আপনার লক্ষ্য ভাষার জন্য একটি কীবোর্ড যোগ করুন যাতে স্বয়ংক্রিয় সংশোধন কাজ করে।",
+    "keyboardPromptAddKeyboardAction": "কীবোর্ড যোগ করুন",
+    "keyboardPromptSwitchKeyboardMessage": "আপনার লক্ষ্য ভাষায় পরিবর্তন করতে আপনার কীবোর্ডের গ্লোব আইকনে আলতো চাপুন।"
 }

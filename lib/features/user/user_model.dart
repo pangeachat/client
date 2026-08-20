@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/features/instructions/instruction_settings.dart';
+import 'package:fluffychat/features/keyboards/keyboard_prompt_local_store.dart';
 import 'package:fluffychat/features/user/user_constants.dart';
 import 'package:fluffychat/pangea/common/constants/model_keys.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
@@ -327,6 +328,13 @@ class UserToolSettings {
     bool? audioOnNewMessage,
     bool? audioOnMessageClick,
     bool? enableAutocorrect,
+
+    /// Resets the autocorrect choice to unresolved (null) rather than
+    /// keeping it — used when the target language changes, since a choice
+    /// made for one language says nothing about the next (see
+    /// target-language-keyboard.instructions.md). Ignored if
+    /// [enableAutocorrect] is also passed.
+    bool setEnableAutocorrectNull = false,
     bool? showDeveloperOptions,
   }) {
     return UserToolSettings(
@@ -340,7 +348,9 @@ class UserToolSettings {
       audioChoices: audioChoices ?? this.audioChoices,
       audioOnNewMessage: audioOnNewMessage ?? this.audioOnNewMessage,
       audioOnMessageClick: audioOnMessageClick ?? this.audioOnMessageClick,
-      enableAutocorrect: enableAutocorrect ?? enableAutocorrectChoice,
+      enableAutocorrect: setEnableAutocorrectNull
+          ? null
+          : (enableAutocorrect ?? enableAutocorrectChoice),
       showDeveloperOptions: showDeveloperOptions ?? this.showDeveloperOptions,
     );
   }
@@ -482,6 +492,41 @@ class Profile {
       userSettings: UserSettings(),
       toolSettings: UserToolSettings(),
       instructionSettings: InstructionSettings(),
+    );
+  }
+
+  /// Autocorrect, resolved for this device and the learner's current target
+  /// language: the explicit choice if they've made one, otherwise the
+  /// platform default — layering in the one case that default doesn't
+  /// already cover on its own. [UserToolSettings.enableAutocorrectPlatformDefault]
+  /// is already unconditionally true on Android (the composer redirects the
+  /// keyboard itself) and unconditionally false on iOS; here, an iOS device
+  /// that has been observed typing with a matching keyboard also resolves
+  /// true. See target-language-keyboard.instructions.md, "When autocorrect
+  /// turns on".
+  bool get effectiveAutocorrect =>
+      toolSettings.enableAutocorrectChoice ??
+      (UserToolSettings.enableAutocorrectPlatformDefault ||
+          ObservedKeyboardStore.hasObservedKeyboard(
+            userSettings.targetLanguage,
+          ));
+
+  /// Clears [updated]'s autocorrect choice when its target language differs
+  /// from [previous]'s — a choice made for one target language says nothing
+  /// about the next (target-language-keyboard.instructions.md, "When
+  /// autocorrect turns on"). A no-op when the target language is unchanged.
+  static Profile resetAutocorrectIfLanguageChanged(
+    Profile previous,
+    Profile updated,
+  ) {
+    if (updated.userSettings.targetLanguage ==
+        previous.userSettings.targetLanguage) {
+      return updated;
+    }
+    return updated.copyWith(
+      toolSettings: updated.toolSettings.copyWith(
+        setEnableAutocorrectNull: true,
+      ),
     );
   }
 

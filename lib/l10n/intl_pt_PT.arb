@@ -2560,7 +2560,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-20 13:11:44.365716",
+    "@@last_modified": "2026-08-20 15:18:52.617814",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10664,5 +10664,8 @@
     "autocorrectAndroidDialogTitle": "Correção automática na sua língua-alvo",
     "autocorrectAndroidDialogBody": "Quando escrever numa conversa, o seu teclado mudará para a sua língua-alvo e corrigirá a ortografia nessa língua.",
     "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer a sua língua-alvo, instale o Gboard e adicione a língua lá:",
-    "openKeyboardSettings": "Abrir Definições do Teclado"
+    "openKeyboardSettings": "Abrir Definições do Teclado",
+    "keyboardPromptAddKeyboardMessage": "Adicione um teclado para o seu idioma de destino para que a correção automática funcione.",
+    "keyboardPromptAddKeyboardAction": "Adicionar Teclado",
+    "keyboardPromptSwitchKeyboardMessage": "Toque no ícone do globo no seu teclado para mudar para o seu idioma de destino."
 }

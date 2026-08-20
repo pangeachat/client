@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-20 13:11:40.586665",
+    "@@last_modified": "2026-08-20 15:18:46.351926",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Autokorreksje yn dyn doeltaal",
     "autocorrectAndroidDialogBody": "As jo yn in petear typst, sil dyn toetseboerd oerskeakelje nei dyn doeltaal en de stavering yn dy taal korrizjearje.",
     "autocorrectAndroidFallbackTitle": "As dyn toetseboerd dyn doeltaal net oanbiedt, ynstallearje dan Gboard en foegje de taal dêr ta:",
-    "openKeyboardSettings": "Toetseboerdyntellingen iepenje"
+    "openKeyboardSettings": "Toetseboerdyntellingen iepenje",
+    "keyboardPromptAddKeyboardMessage": "Foegje in toetseboerd ta foar jo doeltaal, sadat autokorreksje wurket.",
+    "keyboardPromptAddKeyboardAction": "Toetseboerd tafoegje",
+    "keyboardPromptSwitchKeyboardMessage": "Tik op it wrâldbol-ikoantsje op jo toetseboerd om oer te skeakeljen nei jo doeltaal."
 }

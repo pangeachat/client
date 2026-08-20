@@ -1,6 +1,6 @@
 {
     "@@locale": "lb",
-    "@@last_modified": "2026-08-20 13:11:42.642115",
+    "@@last_modified": "2026-08-20 15:18:49.843683",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Passwuert widderhuelen",
     "notAnImage": "Net eng Bilddatei.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Autokorrektur an Ärer Zilssprooch",
     "autocorrectAndroidDialogBody": "Wann Dir an engem Chat tippt, wiesselt Är Tastatur op Är Zilssprooch a korrigéiert d'Schreifweis an där Sprooch.",
     "autocorrectAndroidFallbackTitle": "Wann Är Tastatur Är Zilssprooch net ubitt, installéiert Gboard a füügt d'Sprooch do bäi:",
-    "openKeyboardSettings": "Tastaturastellungen opmaachen"
+    "openKeyboardSettings": "Tastaturastellungen opmaachen",
+    "keyboardPromptAddKeyboardMessage": "Füügt eng Tastatur fir Är Zilssprooch derbäi, fir datt d'Autokorrektur funktionnéiert.",
+    "keyboardPromptAddKeyboardAction": "Tastatur derbäisetzen",
+    "keyboardPromptSwitchKeyboardMessage": "Tippt op d'Globus-Ikon op Ärer Tastatur, fir op Är Zilssprooch ze wiesselen."
 }

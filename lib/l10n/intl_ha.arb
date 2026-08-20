@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-20 13:11:40.935182",
+    "@@last_modified": "2026-08-20 15:18:46.469773",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Gyaran kai a harshen da kake so",
     "autocorrectAndroidDialogBody": "Idan ka rubuta a cikin taɗi, madanninka zai canza zuwa harshen da kake so kuma ya gyara kuskuren rubutu a cikin wannan harshen.",
     "autocorrectAndroidFallbackTitle": "Idan madanninka bai ba da harshen da kake so ba, shigar da Gboard kuma ƙara harshen a can:",
-    "openKeyboardSettings": "Bude Saitunan Allon Madanni"
+    "openKeyboardSettings": "Bude Saitunan Allon Madanni",
+    "keyboardPromptAddKeyboardMessage": "Ƙara madannai don yaren da kake so don gyaran kai ya yi aiki.",
+    "keyboardPromptAddKeyboardAction": "Ƙara Madannai",
+    "keyboardPromptSwitchKeyboardMessage": "Danna alamar duniya a kan madannai naka don canzawa zuwa yaren da kake so."
 }

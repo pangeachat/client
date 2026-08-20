@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-20 13:11:43.327302",
+    "@@last_modified": "2026-08-20 15:18:51.213234",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Таны сурч буй хэл дээрх автоматаар засах тохиргоо",
     "autocorrectAndroidDialogBody": "Та чат дээр бичих үед таны гар утасны гар нь таны сурч буй хэл рүү шилжиж, тухайн хэл дээрх үсгийн алдааг засна.",
     "autocorrectAndroidFallbackTitle": "Хэрэв таны гар утасны гар нь таны сурч буй хэлийг санал болгохгүй бол Gboard-г суулгаж, тэнд хэлээ нэмнэ үү:",
-    "openKeyboardSettings": "Гарын тохиргоог нээх"
+    "openKeyboardSettings": "Гарын тохиргоог нээх",
+    "keyboardPromptAddKeyboardMessage": "Автоматаар засах функцийг ашиглахын тулд сурах хэлнийхээ гарыг нэмнэ үү.",
+    "keyboardPromptAddKeyboardAction": "Гар нэмэх",
+    "keyboardPromptSwitchKeyboardMessage": "Сурах хэл рүүгээ шилжихийн тулд гарынхаа дэлхийн бөмбөрцөг дүрс дээр дарна уу."
 }

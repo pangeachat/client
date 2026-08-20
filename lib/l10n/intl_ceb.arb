@@ -1,6 +1,6 @@
 {
     "@@locale": "ceb",
-    "@@last_modified": "2026-08-20 13:11:39.997400",
+    "@@last_modified": "2026-08-20 15:18:44.230941",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sublia ang password",
     "notAnImage": "Dili file sa imahe.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Autocorrect sa imong target nga pinulongan",
     "autocorrectAndroidDialogBody": "Kung mag-type ka sa chat, ang imong keyboard mobalhin sa imong target nga pinulongan ug mokorektar sa spelling niana nga pinulongan.",
     "autocorrectAndroidFallbackTitle": "Kung ang imong keyboard dili mohatag sa imong target nga pinulongan, i-install ang Gboard ug idugang ang pinulongan didto:",
-    "openKeyboardSettings": "Ablihi ang Mga Setting sa Keyboard"
+    "openKeyboardSettings": "Ablihi ang Mga Setting sa Keyboard",
+    "keyboardPromptAddKeyboardMessage": "Pagdugang og keyboard para sa imong target nga pinulongan aron molihok ang autocorrect.",
+    "keyboardPromptAddKeyboardAction": "Pagdugang og Keyboard",
+    "keyboardPromptSwitchKeyboardMessage": "I-tap ang icon sa globo sa imong keyboard aron mobalhin sa imong target nga pinulongan."
 }

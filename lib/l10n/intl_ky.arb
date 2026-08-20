@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-20 13:11:42.616580",
+    "@@last_modified": "2026-08-20 15:18:49.726559",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Максаттуу тилиңиздеги автооңдоо",
     "autocorrectAndroidDialogBody": "Чатка тергениңизде, клавиатураңыз максаттуу тилиңизге которулуп, ошол тилдеги орфографияны оңдойт.",
     "autocorrectAndroidFallbackTitle": "Эгер клавиатураңыз максаттуу тилиңизди сунуштабаса, Gboard орнотуп, тилди ошол жерден кошуңуз:",
-    "openKeyboardSettings": "Баскычтоп жөндөөлөрүн ачуу"
+    "openKeyboardSettings": "Баскычтоп жөндөөлөрүн ачуу",
+    "keyboardPromptAddKeyboardMessage": "Автооңдоо иштеши үчүн максаттуу тилиңизге баскычтоп кошуңуз.",
+    "keyboardPromptAddKeyboardAction": "Баскычтоп кошуу",
+    "keyboardPromptSwitchKeyboardMessage": "Максаттуу тилиңизге өтүү үчүн баскычтобуңуздагы глобус сөлөкөтүн таптаңыз."
 }

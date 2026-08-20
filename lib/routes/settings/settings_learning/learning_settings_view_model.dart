@@ -172,7 +172,7 @@ class LearningSettingsViewModel extends ChangeNotifier {
       case ToolSetting.audioOnMessageClick:
         return _hasKnownGoodVoice && toolSettings.audioOnMessageClick;
       case ToolSetting.enableAutocorrect:
-        return toolSettings.enableAutocorrect;
+        return _updatedProfile.effectiveAutocorrect;
     }
   }
 
@@ -253,9 +253,16 @@ class LearningSettingsViewModel extends ChangeNotifier {
           voice: null,
           setVoiceNull: true,
         ),
+        // A device autocorrect choice made for one target language says
+        // nothing about the next (target-language-keyboard.instructions.md).
+        // UserController.updateProfile enforces this on save too, but doing
+        // it here as well keeps this page's live preview in sync with the
+        // freshly picked language rather than showing the previous
+        // language's stale choice until Save.
         toolSettings: _updatedProfile.toolSettings.copyWith(
           audioWords: true,
           audioChoices: true,
+          setEnableAutocorrectNull: true,
         ),
       );
     }

@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:45.434728",
+    "@@last_modified": "2026-08-20 15:18:54.209495",
     "about": "Om",
     "@about": {
         "type": "String",
@@ -10265,5 +10265,8 @@
     "autocorrectAndroidDialogTitle": "Autokorrigering på ditt målspråk",
     "autocorrectAndroidDialogBody": "När du skriver i en chatt växlar tangentbordet till ditt målspråk och korrigerar stavningen på det språket.",
     "autocorrectAndroidFallbackTitle": "Om ditt tangentbord inte erbjuder ditt målspråk, installera Gboard och lägg till språket där:",
-    "openKeyboardSettings": "Öppna tangentbordsinställningar"
+    "openKeyboardSettings": "Öppna tangentbordsinställningar",
+    "keyboardPromptAddKeyboardMessage": "Lägg till ett tangentbord för ditt målspråk så att autokorrigeringen fungerar.",
+    "keyboardPromptAddKeyboardAction": "Lägg till tangentbord",
+    "keyboardPromptSwitchKeyboardMessage": "Tryck på jordglobsikonen på tangentbordet för att växla till ditt målspråk."
 }

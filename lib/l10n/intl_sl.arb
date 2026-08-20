@@ -1803,7 +1803,7 @@
     "playWithAI": "Za zdaj igrajte z AI-jem",
     "courseStartDesc": "Pangea Bot je pripravljen kadarkoli!\n\n...ampak je bolje učiti se s prijatelji!",
     "@@locale": "sl",
-    "@@last_modified": "2026-08-20 13:11:44.974314",
+    "@@last_modified": "2026-08-20 15:18:53.271964",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10692,5 +10692,8 @@
     "autocorrectAndroidDialogTitle": "Samodejni popravek v vašem ciljnem jeziku",
     "autocorrectAndroidDialogBody": "Ko tipkate v klepetu, se bo tipkovnica preklopila na vaš ciljni jezik in popravljala črkovanje v tem jeziku.",
     "autocorrectAndroidFallbackTitle": "Če vaša tipkovnica ne ponuja vašega ciljnega jezika, namestite Gboard in dodajte jezik tam:",
-    "openKeyboardSettings": "Odpri nastavitve tipkovnice"
+    "openKeyboardSettings": "Odpri nastavitve tipkovnice",
+    "keyboardPromptAddKeyboardMessage": "Dodajte tipkovnico za ciljni jezik, da bo samodejni popravek deloval.",
+    "keyboardPromptAddKeyboardAction": "Dodaj tipkovnico",
+    "keyboardPromptSwitchKeyboardMessage": "Dotaknite se ikone globusa na tipkovnici, da preklopite na ciljni jezik."
 }

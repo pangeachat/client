@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:40.038085",
+    "@@last_modified": "2026-08-20 15:18:45.090596",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10692,5 +10692,8 @@
     "autocorrectAndroidDialogTitle": "Aŭtomata korekto en via cellingvo",
     "autocorrectAndroidDialogBody": "Kiam vi tajpas en babilejo, via klavaro ŝanĝos al via cellingvo kaj korektos literumadon en tiu lingvo.",
     "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:",
-    "openKeyboardSettings": "Malfermi Klavarajn Agordojn"
+    "openKeyboardSettings": "Malfermi Klavarajn Agordojn",
+    "keyboardPromptAddKeyboardMessage": "Aldonu klavaron por via cellingvo, por ke aŭtomata korekto funkciu.",
+    "keyboardPromptAddKeyboardAction": "Aldoni Klavaron",
+    "keyboardPromptSwitchKeyboardMessage": "Frapu la globusan ikonon sur via klavaro por ŝanĝi al via cellingvo."
 }

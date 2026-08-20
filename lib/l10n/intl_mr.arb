@@ -1,6 +1,6 @@
 {
     "@@locale": "mr",
-    "@@last_modified": "2026-08-20 13:11:43.508172",
+    "@@last_modified": "2026-08-20 15:18:50.947523",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड पुन्हा टाका",
     "notAnImage": "प्रतिमा फाइल नाही.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "तुमच्या लक्ष्यित भाषेमध्ये स्वयं-दुरुस्ती",
     "autocorrectAndroidDialogBody": "जेव्हा तुम्ही चॅटमध्ये टाइप करता, तेव्हा तुमचे कीबोर्ड तुमच्या लक्ष्यित भाषेमध्ये बदलेल आणि त्या भाषेतील स्पेलिंग दुरुस्त करेल.",
     "autocorrectAndroidFallbackTitle": "तुमच्या कीबोर्डमध्ये तुमची लक्ष्यित भाषा उपलब्ध नसल्यास, Gboard स्थापित करा आणि तेथे भाषा जोडा:",
-    "openKeyboardSettings": "कीबोर्ड सेटिंग्ज उघडा"
+    "openKeyboardSettings": "कीबोर्ड सेटिंग्ज उघडा",
+    "keyboardPromptAddKeyboardMessage": "तुमच्या लक्ष्य भाषेसाठी कीबोर्ड जोडा, जेणेकरून स्वयं-दुरुस्ती (autocorrect) काम करेल.",
+    "keyboardPromptAddKeyboardAction": "कीबोर्ड जोडा",
+    "keyboardPromptSwitchKeyboardMessage": "तुमच्या लक्ष्य भाषेत स्विच करण्यासाठी तुमच्या कीबोर्डवरील ग्लोब चिन्हावर टॅप करा."
 }

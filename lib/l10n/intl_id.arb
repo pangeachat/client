@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:59.850527",
+    "@@last_modified": "2026-08-20 15:18:47.597855",
     "setAsCanonicalAlias": "Atur sebagai alias utama",
     "@setAsCanonicalAlias": {
         "type": "String",
@@ -9820,5 +9820,8 @@
     "autocorrectAndroidDialogTitle": "Koreksi Otomatis dalam Bahasa Target Anda",
     "autocorrectAndroidDialogBody": "Saat Anda mengetik di obrolan, keyboard Anda akan beralih ke bahasa target Anda dan mengoreksi ejaan dalam bahasa tersebut.",
     "autocorrectAndroidFallbackTitle": "Jika keyboard Anda tidak menawarkan bahasa target Anda, instal Gboard dan tambahkan bahasa di sana:",
-    "openKeyboardSettings": "Buka Pengaturan Papan Ketik"
+    "openKeyboardSettings": "Buka Pengaturan Papan Ketik",
+    "keyboardPromptAddKeyboardMessage": "Tambahkan papan ketik untuk bahasa target Anda agar koreksi otomatis berfungsi.",
+    "keyboardPromptAddKeyboardAction": "Tambahkan Papan Ketik",
+    "keyboardPromptSwitchKeyboardMessage": "Ketuk ikon bola dunia di papan ketik Anda untuk beralih ke bahasa target Anda."
 }

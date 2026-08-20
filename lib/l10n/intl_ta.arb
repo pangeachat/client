@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:45.766164",
+    "@@last_modified": "2026-08-20 15:18:54.432829",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9839,5 +9839,8 @@
     "autocorrectAndroidDialogTitle": "உங்கள் இலக்கு மொழியில் தானியங்கு திருத்தம்",
     "autocorrectAndroidDialogBody": "நீங்கள் ஒரு அரட்டையில் தட்டச்சு செய்யும்போது, உங்கள் விசைப்பலகை உங்கள் இலக்கு மொழிக்கு மாறி, அந்த மொழியில் எழுத்துப்பிழையை சரிசெய்யும்.",
     "autocorrectAndroidFallbackTitle": "உங்கள் விசைப்பலகை உங்கள் இலக்கு மொழியை வழங்கவில்லை என்றால், Gboard ஐ நிறுவி, அங்கு மொழியைச் சேர்க்கவும்:",
-    "openKeyboardSettings": "விசைப்பலகை அமைப்புகளைத் திற"
+    "openKeyboardSettings": "விசைப்பலகை அமைப்புகளைத் திற",
+    "keyboardPromptAddKeyboardMessage": "உங்கள் இலக்கு மொழிக்கு விசைப்பலகையைச் சேர்க்கவும், இதனால் தானாகத் திருத்தும் வசதி செயல்படும்.",
+    "keyboardPromptAddKeyboardAction": "விசைப்பலகையைச் சேர்",
+    "keyboardPromptSwitchKeyboardMessage": "உங்கள் இலக்கு மொழிக்கு மாற, உங்கள் விசைப்பலகையில் உள்ள பூகோள ஐகானைத் தட்டவும்."
 }

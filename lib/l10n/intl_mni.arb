@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-20 13:11:43.279187",
+    "@@last_modified": "2026-08-20 15:18:52.357611",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "നംꯁꯤꯡগী ৱାঙुलোনদা ৱା-ꯁਹੀ",
     "autocorrectAndroidDialogBody": "നങ് ചാറ്റ് അമদা ടൈപ് തौदा, നംꯁിംങ്ഗി കീബോർഡ് നംസിംങ്ഗി ৱാങ്ഗുലോൺഡാ ലേങ്‌ഗനി അമദി അദൂം ৱാങ്ഗുലോൺഡാ സ്പെല്ലിംഗ് ശരി തൗഗനി.",
     "autocorrectAndroidFallbackTitle": "നംസിംങ്ഗി കീബോർഡ് നംസിംങ്ഗി ৱാങ്ഗുലോൺ പീദ്രബ്ദി, Gboard ഇൻസ്റ്റോൾ തൗവി അമദി അദൂം ৱാങ്ഗുലോൺ അദൂംദാ ഹാപ്ചിൻബിയു:",
-    "openKeyboardSettings": "Keyboard Settings Hangba"
+    "openKeyboardSettings": "Keyboard Settings Hangba",
+    "keyboardPromptAddKeyboardMessage": "नाओगी লোনগীদমক কীবোর্ড অমা থম্নু, মসিনা অটোকরেক্ট থবক তৌবা ঙমগনি।",
+    "keyboardPromptAddKeyboardAction": "কীবোর্ড থম্নু",
+    "keyboardPromptSwitchKeyboardMessage": "নাওগী কীবোর্ডদা লৈবা গ্লোব আইকন অদুদা থিহায়ু, মসিনা নাওগী লোনদা অহোংবা পুরক্নবা।"
 }

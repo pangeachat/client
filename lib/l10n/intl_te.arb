@@ -1325,7 +1325,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-20 13:11:45.622338",
+    "@@last_modified": "2026-08-20 15:18:54.472422",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10697,5 +10697,8 @@
     "autocorrectAndroidDialogTitle": "మీ లక్ష్య భాషలో స్వీయ దిద్దుబాటు",
     "autocorrectAndroidDialogBody": "మీరు చాట్‌లో టైప్ చేసినప్పుడు, మీ కీబోర్డ్ మీ లక్ష్య భాషకు మారుతుంది మరియు ఆ భాషలో స్పెల్లింగ్‌ను సరిచేస్తుంది.",
     "autocorrectAndroidFallbackTitle": "మీ కీబోర్డ్ మీ లక్ష్య భాషను అందించకపోతే, Gboardని ఇన్‌స్టాల్ చేసి, అక్కడ భాషను జోడించండి:",
-    "openKeyboardSettings": "కీబోర్డ్ సెట్టింగ్‌లను తెరవండి"
+    "openKeyboardSettings": "కీబోర్డ్ సెట్టింగ్‌లను తెరవండి",
+    "keyboardPromptAddKeyboardMessage": "ఆటోకరెక్ట్ పని చేయడానికి మీ లక్ష్య భాష కోసం కీబోర్డ్‌ను జోడించండి.",
+    "keyboardPromptAddKeyboardAction": "కీబోర్డ్‌ను జోడించండి",
+    "keyboardPromptSwitchKeyboardMessage": "మీ లక్ష్య భాషకు మారడానికి మీ కీబోర్డ్‌లోని గ్లోబ్ చిహ్నాన్ని నొక్కండి."
 }

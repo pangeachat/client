@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:41.944517",
+    "@@last_modified": "2026-08-20 15:18:48.432069",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9820,5 +9820,8 @@
     "autocorrectAndroidDialogTitle": "Correzione automatica nella lingua di destinazione",
     "autocorrectAndroidDialogBody": "Quando digiti in una chat, la tastiera passerà alla lingua di destinazione e correggerà l'ortografia in quella lingua.",
     "autocorrectAndroidFallbackTitle": "Se la tastiera non offre la lingua di destinazione, installa Gboard e aggiungi la lingua lì:",
-    "openKeyboardSettings": "Apri Impostazioni Tastiera"
+    "openKeyboardSettings": "Apri Impostazioni Tastiera",
+    "keyboardPromptAddKeyboardMessage": "Aggiungi una tastiera per la lingua che stai imparando, così la correzione automatica funzionerà.",
+    "keyboardPromptAddKeyboardAction": "Aggiungi tastiera",
+    "keyboardPromptSwitchKeyboardMessage": "Tocca l'icona del mappamondo sulla tastiera per passare alla lingua che stai imparando."
 }

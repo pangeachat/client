@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:44.458533",
+    "@@last_modified": "2026-08-20 15:18:52.641421",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10479,5 +10479,8 @@
     "autocorrectAndroidDialogTitle": "Corectare automată în limba țintă",
     "autocorrectAndroidDialogBody": "Când scrii într-un chat, tastatura ta va comuta la limba țintă și va corecta ortografia în acea limbă.",
     "autocorrectAndroidFallbackTitle": "Dacă tastatura ta nu oferă limba țintă, instalează Gboard și adaugă limba acolo:",
-    "openKeyboardSettings": "Deschide Setările Tastaturii"
+    "openKeyboardSettings": "Deschide Setările Tastaturii",
+    "keyboardPromptAddKeyboardMessage": "Adaugă o tastatură pentru limba țintă, astfel încât corectarea automată să funcționeze.",
+    "keyboardPromptAddKeyboardAction": "Adaugă tastatură",
+    "keyboardPromptSwitchKeyboardMessage": "Atinge pictograma glob de pe tastatură pentru a comuta la limba țintă."
 }

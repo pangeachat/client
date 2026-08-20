@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-20 13:11:45.661912",
+    "@@last_modified": "2026-08-20 15:18:54.359281",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Masahihisho ya kiotomatiki katika lugha unayolenga",
     "autocorrectAndroidDialogBody": "Unapoandika kwenye gumzo, kibodi chako kitabadilika hadi lugha unayolenga na kusahihisha tahajia katika lugha hiyo.",
     "autocorrectAndroidFallbackTitle": "Ikiwa kibodi chako hakitoi lugha unayolenga, sakinisha Gboard na uongeze lugha hapo:",
-    "openKeyboardSettings": "Fungua Mipangilio ya Kibodi"
+    "openKeyboardSettings": "Fungua Mipangilio ya Kibodi",
+    "keyboardPromptAddKeyboardMessage": "Ongeza kibodi kwa lugha unayolenga ili kusahihisha kiotomatiki kufanye kazi.",
+    "keyboardPromptAddKeyboardAction": "Ongeza Kibodi",
+    "keyboardPromptSwitchKeyboardMessage": "Gonga aikoni ya globu kwenye kibodi yako ili kubadilisha hadi lugha unayolenga."
 }

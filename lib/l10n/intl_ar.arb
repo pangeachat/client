@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-20 13:11:39.287947",
+    "@@last_modified": "2026-08-20 15:18:43.231573",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10053,5 +10053,8 @@
     "autocorrectAndroidDialogTitle": "التصحيح التلقائي بلغتك المستهدفة",
     "autocorrectAndroidDialogBody": "عند الكتابة في الدردشة، ستتحول لوحة المفاتيح إلى لغتك المستهدفة وتصحح الأخطاء الإملائية في تلك اللغة.",
     "autocorrectAndroidFallbackTitle": "إذا كانت لوحة المفاتيح لا توفر لغتك المستهدفة، فقم بتثبيت Gboard وأضف اللغة هناك:",
-    "openKeyboardSettings": "فتح إعدادات لوحة المفاتيح"
+    "openKeyboardSettings": "فتح إعدادات لوحة المفاتيح",
+    "keyboardPromptAddKeyboardMessage": "أضف لوحة مفاتيح للغتك المستهدفة ليعمل التصحيح التلقائي.",
+    "keyboardPromptAddKeyboardAction": "إضافة لوحة مفاتيح",
+    "keyboardPromptSwitchKeyboardMessage": "اضغط على أيقونة الكرة الأرضية في لوحة المفاتيح للتبديل إلى لغتك المستهدفة."
 }

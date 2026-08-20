@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:43.820857",
+    "@@last_modified": "2026-08-20 15:18:51.745454",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9747,5 +9747,8 @@
     "autocorrectAndroidDialogTitle": "Autocorrectie in je doeltaal",
     "autocorrectAndroidDialogBody": "Wanneer je typt in een chat, schakelt je toetsenbord over naar je doeltaal en corrigeert de spelling in die taal.",
     "autocorrectAndroidFallbackTitle": "Als je toetsenbord je doeltaal niet aanbiedt, installeer dan Gboard en voeg de taal daar toe:",
-    "openKeyboardSettings": "Toetsenbordinstellingen openen"
+    "openKeyboardSettings": "Toetsenbordinstellingen openen",
+    "keyboardPromptAddKeyboardMessage": "Voeg een toetsenbord toe voor je doeltaal, zodat autocorrectie werkt.",
+    "keyboardPromptAddKeyboardAction": "Toetsenbord toevoegen",
+    "keyboardPromptSwitchKeyboardMessage": "Tik op het wereldbolpictogram op je toetsenbord om over te schakelen naar je doeltaal."
 }

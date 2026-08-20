@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-20 13:11:44.555047",
+    "@@last_modified": "2026-08-20 15:18:52.275402",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Kukonza zolakwika zokha mu chilankhulo chanu",
     "autocorrectAndroidDialogBody": "Mukamalemba mu macheza, kiyibodi yanu idzasintha kupita ku chilankhulo chanu ndikukonza zolakwika zolemba mu chilankhulocho.",
     "autocorrectAndroidFallbackTitle": "Ngati kiyibodi yanu ilibe chilankhulo chanu, ikani Gboard ndikuwonjezera chilankhulocho kumeneko:",
-    "openKeyboardSettings": "Tsegulani Zokonda pa Kiyibodi"
+    "openKeyboardSettings": "Tsegulani Zokonda pa Kiyibodi",
+    "keyboardPromptAddKeyboardMessage": "Onjezani kiyibodi ya chilankhulo chanu kuti autocorrect igwire ntchito.",
+    "keyboardPromptAddKeyboardAction": "Onjezani Kiyibodi",
+    "keyboardPromptSwitchKeyboardMessage": "Dinani chizindikiro cha dziko lapansi pa kiyibodi yanu kuti musinthe ku chilankhulo chanu."
 }

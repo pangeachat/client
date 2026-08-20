@@ -1,6 +1,6 @@
 {
     "@@locale": "haw",
-    "@@last_modified": "2026-08-20 13:11:41.073208",
+    "@@last_modified": "2026-08-20 15:18:46.749351",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "E hana hou i ka ʻōlelo huna",
     "notAnImage": "ʻAʻole he waihona kiʻi.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Hoʻoponopono ʻakomi ma kāu ʻōlelo i manaʻo ai",
     "autocorrectAndroidDialogBody": "Ke paʻi ʻoe ma ke kamaʻilio, e hoʻololi kāu papa kī i kāu ʻōlelo i manaʻo ai a e hoʻoponopono i ka pela ʻana ma ia ʻōlelo.",
     "autocorrectAndroidFallbackTitle": "Inā ʻaʻole hāʻawi kāu papa kī i kāu ʻōlelo i manaʻo ai, e hoʻouka iā Gboard a hoʻohui i ka ʻōlelo ma laila:",
-    "openKeyboardSettings": "E wehe i nā hoʻonohonoho papa kī"
+    "openKeyboardSettings": "E wehe i nā hoʻonohonoho papa kī",
+    "keyboardPromptAddKeyboardMessage": "Hoʻohui i kahi kīpē no kāu ʻōlelo i manaʻo ʻia i hana pono ka hoʻoponopono ʻana.",
+    "keyboardPromptAddKeyboardAction": "Hoʻohui Kīpē",
+    "keyboardPromptSwitchKeyboardMessage": "Kaomi i ka ikona honua ma kāu kīpē e hoʻololi i kāu ʻōlelo i manaʻo ʻia."
 }

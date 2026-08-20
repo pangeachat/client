@@ -3537,7 +3537,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-20 13:11:40.546094",
+    "@@last_modified": "2026-08-20 15:18:45.915103",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9784,5 +9784,8 @@
     "autocorrectAndroidDialogTitle": "Automaattinen korjaus kohdekielelläsi",
     "autocorrectAndroidDialogBody": "Kun kirjoitat keskusteluun, näppäimistösi vaihtaa kohdekieleesi ja korjaa kirjoitusvirheet kyseisellä kielellä.",
     "autocorrectAndroidFallbackTitle": "Jos näppäimistösi ei tarjoa kohdekieltäsi, asenna Gboard ja lisää kieli sinne:",
-    "openKeyboardSettings": "Avaa näppäimistöasetukset"
+    "openKeyboardSettings": "Avaa näppäimistöasetukset",
+    "keyboardPromptAddKeyboardMessage": "Lisää kohdekielesi näppäimistö, jotta automaattinen korjaus toimii.",
+    "keyboardPromptAddKeyboardAction": "Lisää näppäimistö",
+    "keyboardPromptSwitchKeyboardMessage": "Vaihda kohdekieleen napauttamalla näppäimistön maapallokuvaketta."
 }

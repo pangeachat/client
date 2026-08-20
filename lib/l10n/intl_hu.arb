@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-20 13:11:41.216359",
+    "@@last_modified": "2026-08-20 15:18:47.409712",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9850,5 +9850,8 @@
     "autocorrectAndroidDialogTitle": "Automatikus javítás a célnyelven",
     "autocorrectAndroidDialogBody": "Amikor csevegésben gépel, a billentyűzet átvált a célnyelvre, és azon a nyelven javítja a helyesírást.",
     "autocorrectAndroidFallbackTitle": "Ha a billentyűzete nem kínálja fel a célnyelvet, telepítse a Gboardot, és adja hozzá ott a nyelvet:",
-    "openKeyboardSettings": "Billentyűzetbeállítások megnyitása"
+    "openKeyboardSettings": "Billentyűzetbeállítások megnyitása",
+    "keyboardPromptAddKeyboardMessage": "Adj hozzá billentyűzetet a célnyelvedhez, hogy működjön az automatikus javítás.",
+    "keyboardPromptAddKeyboardAction": "Billentyűzet hozzáadása",
+    "keyboardPromptSwitchKeyboardMessage": "Koppints a földgömb ikonra a billentyűzeteden, hogy átválts a célnyelvedre."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-20 13:11:42.651918",
+    "@@last_modified": "2026-08-20 15:18:49.253444",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Autocorrect na yu tɔŋ we yu de lan",
     "autocorrectAndroidDialogBody": "Tɛm we yu de rayt na chat, yu keyboard go chenj to yu tɔŋ we yu de lan ɛn kɔrɛkt spɛlin na dat tɔŋ.",
     "autocorrectAndroidFallbackTitle": "If yu keyboard nɔ gɛt yu tɔŋ we yu de lan, instɔl Gboard ɛn ad di tɔŋ de:",
-    "openKeyboardSettings": "Open Keyboard Setin dɛm"
+    "openKeyboardSettings": "Open Keyboard Setin dɛm",
+    "keyboardPromptAddKeyboardMessage": "Put in wan keyboard fɔ yu target langwej so autocorrect go wok.",
+    "keyboardPromptAddKeyboardAction": "Put in Keyboard",
+    "keyboardPromptSwitchKeyboardMessage": "Tap di glob icon na yu keyboard fɔ chenj to yu target langwej."
 }
