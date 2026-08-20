@@ -99,8 +99,10 @@ class CallSession extends ChangeNotifier {
     required CallAnalyticsSink analytics,
     required void Function(CallSession) onReleased,
     String? notificationEventId,
+    @visibleForTesting CallMedia? mediaOverride,
+    @visibleForTesting CallCaptureService? captureOverride,
   }) {
-    final media = CallMedia();
+    final media = mediaOverride ?? CallMedia();
     final transcripts = CallTranscriptSink(
       transcribe: transcribe,
       userL1: userL1,
@@ -121,7 +123,7 @@ class CallSession extends ChangeNotifier {
       call: ActiveCall(
         calls: callService,
         media: media,
-        capture: CallCaptureService(sink: transcripts),
+        capture: captureOverride ?? CallCaptureService(sink: transcripts),
       ),
       record: record,
       myUserId: callService.client.userID,
@@ -380,7 +382,7 @@ class CallSession extends ChangeNotifier {
   /// crash. Late work is silently absorbed instead.
   void _notify() {
     if (_disposing) return;
-    _notify();
+    notifyListeners();
   }
 
   @override
