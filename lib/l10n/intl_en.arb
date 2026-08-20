@@ -4519,54 +4519,7 @@
         }
     },
     "whatAreYouLearning": "What are you learning?",
-    "nowLearningLanguage": "You are now learning {language}.",
-    "@nowLearningLanguage": {
-        "placeholders": {
-            "language": {
-                "type": "String"
-            }
-        }
-    },
     "languageSwitcherBaseLanguageLabel": "Your base language",
-    "startLanguage": "Start {language}",
-    "@startLanguage": {
-        "placeholders": {
-            "language": {
-                "type": "String"
-            }
-        }
-    },
-    "notNow": "Not now",
-    "firstSwitchConfirmationTitle": "Start {newLanguage}?",
-    "@firstSwitchConfirmationTitle": {
-        "placeholders": {
-            "newLanguage": {
-                "type": "String"
-            }
-        }
-    },
-    "firstSwitchConfirmationMessage": "{newLanguage} starts at level 1. {previousLanguage} stays saved at level {previousLevel}.",
-    "@firstSwitchConfirmationMessage": {
-        "placeholders": {
-            "newLanguage": {
-                "type": "String"
-            },
-            "previousLanguage": {
-                "type": "String"
-            },
-            "previousLevel": {
-                "type": "int"
-            }
-        }
-    },
-    "firstSwitchConfirmationMessageNoPrevious": "{newLanguage} starts at level 1.",
-    "@firstSwitchConfirmationMessageNoPrevious": {
-        "placeholders": {
-            "newLanguage": {
-                "type": "String"
-            }
-        }
-    },
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
     "@welcomeBackLogin": {

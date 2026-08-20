@@ -61,7 +61,6 @@ void main() {
           (methodCall) async => tempDir.path,
         );
     await GetStorage.init('env_override');
-    await GetStorage.init('first_switch_confirmation');
     dotenv.testLoad(mergeWith: {'BOT_NAME': 'pangeabot'});
 
     SharedPreferences.setMockInitialValues({
