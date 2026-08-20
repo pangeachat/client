@@ -2,6 +2,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/world/joined_objective_cache.dart';
 
@@ -39,6 +40,20 @@ void main() {
         SentryLevel.error,
       );
     });
+
+    // CLIENT-EAG / #8507: a rate-limit pause suppressing the read is the
+    // repo's own deliberate, correct behavior — not breakage — but a pause
+    // still emptying the outline for that cycle warrants some signal, so it
+    // reports at info rather than being suppressed outright.
+    test(
+      'a rate-limited read reports at info — the pause is deliberate, not breakage',
+      () {
+        expect(
+          courseOutlineErrorLevel(RateLimitedException()),
+          SentryLevel.info,
+        );
+      },
+    );
   });
 
   group('reportCourseOutlineFailure', () {

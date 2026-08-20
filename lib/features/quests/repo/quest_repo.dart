@@ -41,8 +41,20 @@ class MissingQuestException implements Exception {
 /// panel renders it as a known state — so re-reporting it at `error`
 /// re-severitized a handled condition (CLIENT-DQC, #8094). It still reports at
 /// `warning` (once per course per session) because a dropped course blanks
-/// relevance banding with no other visible signal. Everything else keeps
-/// `error`: the outline read failing for any other reason is real breakage.
+/// relevance banding with no other visible signal.
+///
+/// [RateLimitedException] means the read was never attempted — the repo-wide
+/// pause suppressed it, and the 429 that started the pause was already
+/// captured once (`activityReadPause`, quest_repo.dart). Re-reporting the
+/// suppression itself at `error` turned the mitigation into a false alarm
+/// (~a quarter of apparent "429 cascade" volume was this, not real backend
+/// 429s — CLIENT-EAG, #8507). It reports at `info` rather than being
+/// suppressed outright: a pause still empties the outline for that cycle, and
+/// that needs SOME signal, just not one that competes with real errors in
+/// frequency-sorted triage.
+///
+/// Everything else keeps `error`: the outline read failing for any other
+/// reason is real breakage.
 ///
 /// Lives beside the exception it classifies, not at a call site: BOTH rebuild
 /// reporters — the world map's and the course panel's — share one throttle key,
@@ -51,8 +63,11 @@ class MissingQuestException implements Exception {
 /// `warning` or at `error` depending on which surface the learner opened first
 /// (#8470). Severity is a property of the failure, decided in the repo layer
 /// (repos-and-error-handling.instructions.md § Severity policy).
-SentryLevel courseOutlineErrorLevel(Object error) =>
-    error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
+SentryLevel courseOutlineErrorLevel(Object error) => switch (error) {
+  MissingQuestException() => SentryLevel.warning,
+  RateLimitedException() => SentryLevel.info,
+  _ => SentryLevel.error,
+};
 
 /// The single home of the per-course activity-pin rule (org quests doc,
 /// client#7748): which of a Mission's [available] activity ids count when the
