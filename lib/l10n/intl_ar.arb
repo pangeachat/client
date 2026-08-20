@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-19 14:14:41.117535",
+    "@@last_modified": "2026-08-20 13:11:39.287947",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -3167,14 +3167,12 @@
     "enableAutocorrectPopupTitle": "أضف لوحة مفاتيح اللغة المستهدفة الخاصة بك عن طريق الذهاب إلى:",
     "enableAutocorrectPopupSteps": "  • الإعدادات\n  • عام\n  • لوحة المفاتيح\n  • لوحات المفاتيح\n  • أضف لوحة مفاتيح جديدة",
     "enableAutocorrectPopupDescription": "بمجرد اختيار اللغة، يمكنك النقر على أيقونة الكرة الأرضية الصغيرة في أسفل يسار لوحة المفاتيح لتفعيل لوحة المفاتيح المثبتة حديثًا.",
-    "downloadGboardSteps": " • قم بتنزيل Gboard\n  • افتح التطبيق\n  • اللغات\n  • أضف لوحة مفاتيح\n  • اختر اللغة\n  • اختر نوع لوحة المفاتيح\n  • تم",
     "enableAutocorrectWarning": "تحذير! يتطلب إضافة لوحة مفاتيح اللغة المستهدفة الخاصة بك",
     "displayName": "اسم العرض",
     "leaveRoomDescription": "أنت على وشك مغادرة هذه الدردشة. سيرى المستخدمون الآخرون أنك غادرت الدردشة.",
     "confirmUserId": "يرجى تأكيد اسم مستخدم Pangea Chat الخاص بك من أجل حذف حسابك.",
     "paidSubscriptionStarts": "ابتداءً من {startDate}",
     "cancelInSubscriptionSettings": "• إلغاء في أي وقت في إعدادات الاشتراك",
-    "downloadGboard": "قم بتنزيل Gboard",
     "autocorrectNotAvailable": "للأسف، منصتك غير مدعومة حاليًا لهذه الميزة. ترقب المزيد من التطوير!",
     "pleaseUpdateApp": "يرجى تحديث التطبيق للمتابعة.",
     "chooseEmojiInstructionsBody": "طابق الرموز التعبيرية مع الكلمات التي تمثلها بشكل أفضل. لا تقلق! لا توجد نقاط سلبية للاختلاف. 😅",
@@ -5697,10 +5695,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5726,10 +5720,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10062,5 +10052,6 @@
     "inviteAFriend": "ادعُ صديقًا",
     "autocorrectAndroidDialogTitle": "التصحيح التلقائي بلغتك المستهدفة",
     "autocorrectAndroidDialogBody": "عند الكتابة في الدردشة، ستتحول لوحة المفاتيح إلى لغتك المستهدفة وتصحح الأخطاء الإملائية في تلك اللغة.",
-    "autocorrectAndroidFallbackTitle": "إذا كانت لوحة المفاتيح لا توفر لغتك المستهدفة، فقم بتثبيت Gboard وأضف اللغة هناك:"
+    "autocorrectAndroidFallbackTitle": "إذا كانت لوحة المفاتيح لا توفر لغتك المستهدفة، فقم بتثبيت Gboard وأضف اللغة هناك:",
+    "openKeyboardSettings": "فتح إعدادات لوحة المفاتيح"
 }

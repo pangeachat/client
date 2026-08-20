@@ -2895,14 +2895,12 @@
     "enableAutocorrectPopupTitle": "अपनी लक्षित भाषा की कीबोर्ड जोड़ने के लिए जाएं:",
     "enableAutocorrectPopupSteps": "  • सेटिंग्स\n  • सामान्य\n  • कीबोर्ड\n  • कीबोर्ड्स\n  • नया कीबोर्ड जोड़ें",
     "enableAutocorrectPopupDescription": "एक बार भाषा का चयन करने के बाद, आप अपने कीबोर्ड के नीचे बाएं कोने में छोटे ग्लोब आइकन पर क्लिक कर सकते हैं ताकि नए इंस्टॉल किए गए कीबोर्ड को सक्रिय किया जा सके।",
-    "downloadGboardSteps": " • Gboard डाउनलोड करें\n  • ऐप खोलें\n  • भाषाएँ\n  • कीबोर्ड जोड़ें\n  • भाषा चुनें\n  • कीबोर्ड प्रकार चुनें\n  • पूरा",
     "enableAutocorrectWarning": "चेतावनी! अपने लक्ष्य भाषा की कीबोर्ड जोड़ने की आवश्यकता है",
     "displayName": "प्रदर्शन नाम",
     "leaveRoomDescription": "आप इस चैट को छोड़ने वाले हैं। अन्य उपयोगकर्ता देखेंगे कि आपने चैट छोड़ दी है।",
     "confirmUserId": "कृपया अपना पांगेआ चैट उपयोगकर्ता नाम की पुष्टि करें ताकि आपना खाता हटा सकें।",
     "paidSubscriptionStarts": "{startDate} से शुरू",
     "cancelInSubscriptionSettings": "• सदस्यता सेटिंग्स में कभी भी रद्द करें",
-    "downloadGboard": "Gboard डाउनलोड करें",
     "autocorrectNotAvailable": "दुर्भाग्यवश, आपका प्लेटफ़ॉर्म इस सुविधा के लिए वर्तमान में समर्थित नहीं है। आगे के विकास के लिए जुड़े रहें!",
     "pleaseUpdateApp": "कृपया ऐप को अपडेट करें ताकि आप जारी रख सकें।",
     "chooseEmojiInstructionsBody": "इमोजी को उनके सबसे अच्छे प्रतिनिधित्व वाले शब्दों के साथ मिलाएं। चिंता मत करें! असहमत होने पर कोई अंक नहीं कटेगा। 😅",
@@ -3096,7 +3094,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-19 14:14:44.339114",
+    "@@last_modified": "2026-08-20 13:11:41.146587",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6019,10 +6017,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6048,10 +6042,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10388,5 +10378,6 @@
     "inviteAFriend": "किसी दोस्त को आमंत्रित करें",
     "autocorrectAndroidDialogTitle": "आपकी लक्ष्य भाषा में स्वतः सुधार",
     "autocorrectAndroidDialogBody": "जब आप चैट में टाइप करते हैं, तो आपका कीबोर्ड आपकी लक्ष्य भाषा में बदल जाएगा और उस भाषा में वर्तनी को सही करेगा।",
-    "autocorrectAndroidFallbackTitle": "यदि आपका कीबोर्ड आपकी लक्ष्य भाषा प्रदान नहीं करता है, तो Gboard इंस्टॉल करें और वहां भाषा जोड़ें:"
+    "autocorrectAndroidFallbackTitle": "यदि आपका कीबोर्ड आपकी लक्ष्य भाषा प्रदान नहीं करता है, तो Gboard इंस्टॉल करें और वहां भाषा जोड़ें:",
+    "openKeyboardSettings": "कीबोर्ड सेटिंग खोलें"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-19 14:14:51.807131",
+    "@@last_modified": "2026-08-20 13:11:45.975549",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -3360,14 +3360,12 @@
     "enableAutocorrectPopupTitle": "Додайте клавіатуру цільової мови, перейшовши до:",
     "enableAutocorrectPopupSteps": "  • Налаштування\n  • Загальні\n  • Клавіатура\n  • Клавіатури\n  • Додати нову клавіатуру",
     "enableAutocorrectPopupDescription": "Після вибору мови ви можете натиснути маленьку іконку глобуса в нижньому лівому куті клавіатури, щоб активувати нововстановлену клавіатуру.",
-    "downloadGboardSteps": " • Завантажити Gboard\n  • Відкрити додаток\n  • Мови\n  • Додати клавіатуру\n  • Вибрати мову\n  • Вибрати тип клавіатури\n  • Готово",
     "enableAutocorrectWarning": "Увага! Потрібно додати клавіатуру цільової мови",
     "displayName": "Відображуване ім'я",
     "leaveRoomDescription": "Ви збираєтеся покинути цей чат. Інші користувачі побачать, що ви покинули чат.",
     "confirmUserId": "Будь ласка, підтвердіть своє ім'я користувача Pangea Chat, щоб видалити свій обліковий запис.",
     "paidSubscriptionStarts": "Починається {startDate}",
     "cancelInSubscriptionSettings": "• Скасувати у будь-який час у налаштуваннях підписки",
-    "downloadGboard": "Завантажити Gboard",
     "autocorrectNotAvailable": "На жаль, ця функція наразі не підтримується вашою платформою. Залишайтеся з нами для подальшого розвитку!",
     "pleaseUpdateApp": "Будь ласка, оновіть додаток для продовження.",
     "chooseEmojiInstructionsBody": "Зіставте емодзі з словами, які вони найкраще представляють. Не хвилюйтеся! Немає штрафних очок за незгоду. 😅",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9756,5 +9746,6 @@
     "inviteAFriend": "Запросити друга",
     "autocorrectAndroidDialogTitle": "Автовиправлення цільовою мовою",
     "autocorrectAndroidDialogBody": "Коли ви друкуєте в чаті, клавіатура перемикається на цільову мову та виправляє орфографію цією мовою.",
-    "autocorrectAndroidFallbackTitle": "Якщо ваша клавіатура не пропонує цільову мову, встановіть Gboard і додайте мову там:"
+    "autocorrectAndroidFallbackTitle": "Якщо ваша клавіатура не пропонує цільову мову, встановіть Gboard і додайте мову там:",
+    "openKeyboardSettings": "Відкрити налаштування клавіатури"
 }

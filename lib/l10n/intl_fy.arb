@@ -1,6 +1,6 @@
 {
     "@@locale": "fy",
-    "@@last_modified": "2026-08-19 14:14:43.532232",
+    "@@last_modified": "2026-08-20 13:11:40.586665",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Wachtwurd werhelje",
     "notAnImage": "Gjin ôfbyldingsbestân.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Foegje dyn doeltaaltoetseboerd ta troch te gean nei:",
     "enableAutocorrectPopupSteps": "  • Ynstellingen\n  • Algemien\n  • Toetseboerd\n  • Toetseboerden\n  • Foegje nij toetseboerd ta",
     "enableAutocorrectPopupDescription": "Sadree't de taal selektearre is, kinst op it lytse wrâldbyldkaike linkûnder op dyn toetseboerd klikke om it nij ynstallearre toetseboerd te aktivearjen.",
-    "downloadGboardSteps": " • Download Gboard\n  • App iepenje\n  • Talen\n  • Toetseboerd tafoegje\n  • Taal selektearje\n  • Toetseboerdtype selektearje\n  • Klear",
     "enableAutocorrectWarning": "Warskôging! It tafoegjen fan dyn doeltaaltoetseboerd is fereaske",
     "displayName": "Werjeftenamme",
     "leaveRoomDescription": "Do stiest op it punt dit petear te ferlitten. Oare brûkers sille sjen datst it petear ferlitten hast.",
     "confirmUserId": "Befêstigje asjebleaft dyn Pangea Chat-brûkersnamme om dyn akkount te wiskjen.",
     "paidSubscriptionStarts": "Begjint op {startDate}",
     "cancelInSubscriptionSettings": "• Elts momint op te sizzen yn abonnemintsynstellingen",
-    "downloadGboard": "Download Gboard",
     "autocorrectNotAvailable": " Spitigernôch wurdt dyn platfoarm op it stuit net stipe foar dizze funksje. Hâld de fierdere ûntwikkeling yn 'e gaten!",
     "pleaseUpdateApp": "Fernij de app asjebleaft om troch te gean.",
     "chooseEmojiInstructionsBody": "Koppelje emoji's oan de wurden dy't se it bêste fertsjintwurdigje. Gjin soargen! Gjin punten ôf as wy it net iens binne. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Nûgje in freon út",
     "autocorrectAndroidDialogTitle": "Autokorreksje yn dyn doeltaal",
     "autocorrectAndroidDialogBody": "As jo yn in petear typst, sil dyn toetseboerd oerskeakelje nei dyn doeltaal en de stavering yn dy taal korrizjearje.",
-    "autocorrectAndroidFallbackTitle": "As dyn toetseboerd dyn doeltaal net oanbiedt, ynstallearje dan Gboard en foegje de taal dêr ta:"
+    "autocorrectAndroidFallbackTitle": "As dyn toetseboerd dyn doeltaal net oanbiedt, ynstallearje dan Gboard en foegje de taal dêr ta:",
+    "openKeyboardSettings": "Toetseboerdyntellingen iepenje"
 }

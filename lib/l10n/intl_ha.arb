@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-19 14:14:43.760291",
+    "@@last_modified": "2026-08-20 13:11:40.935182",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Ƙara maballin yaren da kake so ta hanyar zuwa:",
     "enableAutocorrectPopupSteps": "  • Saituna\n  • Gabaɗaya\n  • Maballi\n  • Maballai\n  • Ƙara Sabon Maballi",
     "enableAutocorrectPopupDescription": "Da zarar an zaɓi yaren, za ka iya danna ƙaramin gunkin duniya a ƙasan hagu na maballinka don kunna sabon maballin da aka shigar.",
-    "downloadGboardSteps": " • Sauke Gboard\n  • Bude manhaja\n  • Harsuna\n  • Ƙara maballi\n  • Zaɓi Harshe\n  • Zaɓi nau'in maballi\n  • An gama",
     "enableAutocorrectWarning": "Gargadi! Yana buƙatar ƙara maballin yaren da kake so",
     "displayName": "Sunan nuni",
     "leaveRoomDescription": "Kuna gab da barin wannan hira. Sauran masu amfani za su ga cewa kun bar hira.",
     "confirmUserId": "Da fatan za a tabbatar da sunan mai amfani na Pangea Chat don share asusunka.",
     "paidSubscriptionStarts": "Zai fara a {startDate}",
     "cancelInSubscriptionSettings": "• Soke a kowane lokaci a cikin saitunan biyan kuɗi",
-    "downloadGboard": "Sauke Gboard",
     "autocorrectNotAvailable": "Abin takaici, dandalinka ba ya goyon bayan wannan fasalin a halin yanzu. A jira ƙarin ci gaba!",
     "pleaseUpdateApp": "Da fatan za a sabunta manhajar don ci gaba.",
     "chooseEmojiInstructionsBody": "Haɗa emojis da kalmomin da suka fi wakilta. Kada ka damu! Ba za a cire maki ba don rashin yarda. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Gayyaci aboki",
     "autocorrectAndroidDialogTitle": "Gyaran kai a harshen da kake so",
     "autocorrectAndroidDialogBody": "Idan ka rubuta a cikin taɗi, madanninka zai canza zuwa harshen da kake so kuma ya gyara kuskuren rubutu a cikin wannan harshen.",
-    "autocorrectAndroidFallbackTitle": "Idan madanninka bai ba da harshen da kake so ba, shigar da Gboard kuma ƙara harshen a can:"
+    "autocorrectAndroidFallbackTitle": "Idan madanninka bai ba da harshen da kake so ba, shigar da Gboard kuma ƙara harshen a can:",
+    "openKeyboardSettings": "Bude Saitunan Allon Madanni"
 }

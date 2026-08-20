@@ -2769,14 +2769,12 @@
     "enableAutocorrectPopupTitle": "Pridėkite savo tikslios kalbos klaviatūrą, eikite į:",
     "enableAutocorrectPopupSteps": "  • Nustatymai\n  • Bendra\n  • Klaviatūra\n  • Klaviatūros\n  • Pridėti naują klaviatūrą",
     "enableAutocorrectPopupDescription": "Pasirinkus kalbą, galite spustelėti mažą pasaulio ženklo piktogramą apatinėje kairėje klaviatūros dalyje, kad aktyvuotumėte naujai įdiegtą klaviatūrą.",
-    "downloadGboardSteps": "• Atsisiųskite Gboard\n  • Atidarykite programėlę\n  • Kalbos\n  • Pridėti klaviatūrą\n  • Pasirinkite kalbą\n  • Pasirinkite klaviatūros tipą\n  • Baigta",
     "enableAutocorrectWarning": "Įspėjimas! Reikia pridėti savo tikslo kalbos klaviatūrą",
     "displayName": "Rodomas vardas",
     "leaveRoomDescription": "Jūs ketinate išeiti iš šio pokalbio. Kiti vartotojai matys, kad išėjote iš pokalbio.",
     "confirmUserId": "Patvirtinkite savo Pangea pokalbio vartotojo vardą, kad galėtumėte ištrinti savo paskyrą.",
     "paidSubscriptionStarts": "Pradedama {startDate}",
     "cancelInSubscriptionSettings": "• Atšaukite bet kuriuo metu prenumeratos nustatymuose",
-    "downloadGboard": "Atsisiųsti Gboard",
     "autocorrectNotAvailable": "Deja, jūsų platforma šiuo metu nepalaikoma šiai funkcijai. Sekite naujienas dėl tolimesnio vystymo!",
     "pleaseUpdateApp": "Prašome atnaujinti programėlę, kad galėtumėte tęsti.",
     "chooseEmojiInstructionsBody": "Suderinkite emocijas su žodžiais, kuriuos jos geriausiai atitinka. Nesijaudinkite! Nėra jokių taškų mažinimo už nesutikimą. 😅",
@@ -2970,7 +2968,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-19 14:14:46.685915",
+    "@@last_modified": "2026-08-20 13:11:43.141220",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6168,10 +6166,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6197,10 +6191,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10537,5 +10527,6 @@
     "inviteAFriend": "Pakviesti draugą",
     "autocorrectAndroidDialogTitle": "Automatinis taisymas jūsų mokomąja kalba",
     "autocorrectAndroidDialogBody": "Kai rašote pokalbyje, klaviatūra persijungs į jūsų mokomąją kalbą ir taisys rašybą ta kalba.",
-    "autocorrectAndroidFallbackTitle": "Jei jūsų klaviatūra nepasiūlo jūsų mokomosios kalbos, įdiekite „Gboard“ ir pridėkite kalbą ten:"
+    "autocorrectAndroidFallbackTitle": "Jei jūsų klaviatūra nepasiūlo jūsų mokomosios kalbos, įdiekite „Gboard“ ir pridėkite kalbą ten:",
+    "openKeyboardSettings": "Atidaryti klaviatūros nustatymus"
 }

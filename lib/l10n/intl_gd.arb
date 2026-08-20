@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-19 14:14:43.592558",
+    "@@last_modified": "2026-08-20 13:11:40.708463",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Cuir ris a' mheur-chlàr cànain targaid agad le bhith a' dol gu:",
     "enableAutocorrectPopupSteps": "  • Roghainnean\n  • Coitcheann\n  • Meur-chlàr\n  • Meur-chlàran\n  • Cuir Meur-chlàr Ùr ris",
     "enableAutocorrectPopupDescription": "Aon uair 's gu bheil an cànan air a thaghadh, faodaidh tu briogadh air an ìomhaigh bheag cruinne air taobh clì gu h-ìosal a' mheur-chlàir agad gus am meur-chlàr ùr a chaidh a stàladh a ghnìomhachadh.",
-    "downloadGboardSteps": " • Luchdaich a-nuas Gboard\n  • Fosgail an aplacaid\n  • Cànanan\n  • Cuir meur-chlàr ris\n  • Tagh Cànan\n  • Tagh seòrsa meur-chlàir\n  • Deiseil",
     "enableAutocorrectWarning": "Rabhadh! Feumaidh seo am meur-chlàr cànain targaid agad a chur ris",
     "displayName": "Ainm taisbeanaidh",
     "leaveRoomDescription": "Tha thu an impis an còmhradh seo fhàgail. Chì luchd-cleachdaidh eile gu bheil thu air an còmhradh fhàgail.",
     "confirmUserId": "Feuch an dearbhaich thu d' ainm-cleachdaiche Pangea Chat gus do chunntas a sguabadh às.",
     "paidSubscriptionStarts": "A' tòiseachadh {startDate}",
     "cancelInSubscriptionSettings": "• Sguir dheth aig àm sam bith ann an roghainnean fo-sgrìobhaidh",
-    "downloadGboard": "Luchdaich a-nuas Gboard",
     "autocorrectNotAvailable": "Gu mì-fhortanach chan eil an àrd-ùrlar agad a' faighinn taic an-dràsta airson an fheart seo. Cum sùil air airson tuilleadh leasachaidh!",
     "pleaseUpdateApp": "Feuch an ùraich thu an aplacaid gus leantainn air adhart.",
     "chooseEmojiInstructionsBody": "Ceangail emojis ris na faclan a tha iad a' riochdachadh as fheàrr. Na gabh dragh! Chan eil puingean air an toirt air falbh airson eas-aonta. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Thoir cuireadh do charaid",
     "autocorrectAndroidDialogTitle": "Ceartachadh fèin-obrachail sa chànan targaid agad",
     "autocorrectAndroidDialogBody": "Nuair a thaidhpicheas tu ann an còmhradh, atharraichidh am meur-chlàr agad chun a’ chànain targaid agad agus ceartaichidh e litreachadh sa chànan sin.",
-    "autocorrectAndroidFallbackTitle": "Mura h-eil do mheur-chlàr a’ tabhann do chànan targaid, stàlaich Gboard agus cuir ris a’ chànan an sin:"
+    "autocorrectAndroidFallbackTitle": "Mura h-eil do mheur-chlàr a’ tabhann do chànan targaid, stàlaich Gboard agus cuir ris a’ chànan an sin:",
+    "openKeyboardSettings": "Fosgail Roghainnean a’ Mheur-chlàir"
 }

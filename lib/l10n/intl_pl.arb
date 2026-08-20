@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-19 14:14:49.134341",
+    "@@last_modified": "2026-08-20 13:11:44.422477",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -3271,14 +3271,12 @@
     "enableAutocorrectPopupTitle": "Dodaj klawiaturę języka docelowego, przechodząc do:",
     "enableAutocorrectPopupSteps": "  • Ustawienia\n  • Ogólne\n  • Klawiatura\n  • Klawiatury\n  • Dodaj nową klawiaturę",
     "enableAutocorrectPopupDescription": "Po wybraniu języka możesz kliknąć małą ikonę globu w lewym dolnym rogu klawiatury, aby aktywować nowo zainstalowaną klawiaturę.",
-    "downloadGboardSteps": " • Pobierz Gboard\n  • Otwórz aplikację\n  • Języki\n  • Dodaj klawiaturę\n  • Wybierz język\n  • Wybierz typ klawiatury\n  • Gotowe",
     "enableAutocorrectWarning": "Uwaga! Wymaga dodania klawiatury języka docelowego",
     "displayName": "Nazwa wyświetlana",
     "leaveRoomDescription": "Zamierzasz opuścić ten czat. Inni użytkownicy zobaczą, że opuściłeś czat.",
     "confirmUserId": "Proszę potwierdź swoją nazwę użytkownika Pangea Chat, aby usunąć swoje konto.",
     "paidSubscriptionStarts": "Rozpoczyna się {startDate}",
     "cancelInSubscriptionSettings": "• Anuluj w dowolnym momencie w ustawieniach subskrypcji",
-    "downloadGboard": "Pobierz Gboard",
     "autocorrectNotAvailable": "Niestety, Twoja platforma nie jest obecnie obsługiwana dla tej funkcji. Bądź na bieżąco z dalszym rozwojem!",
     "pleaseUpdateApp": "Zaktualizuj aplikację, aby kontynuować.",
     "chooseEmojiInstructionsBody": "Dopasuj emotikony do słów, które najlepiej je reprezentują. Nie martw się! Brak punktów za niezgodę. 😅",
@@ -5482,10 +5480,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5511,10 +5505,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9841,5 +9831,6 @@
     "inviteAFriend": "Zaproś znajomego",
     "autocorrectAndroidDialogTitle": "Autokorekta w języku docelowym",
     "autocorrectAndroidDialogBody": "Gdy piszesz na czacie, klawiatura przełączy się na język docelowy i poprawi pisownię w tym języku.",
-    "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:"
+    "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:",
+    "openKeyboardSettings": "Otwórz ustawienia klawiatury"
 }

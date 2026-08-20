@@ -1136,14 +1136,12 @@
     "enableAutocorrectPopupTitle": "Tilføj dit målsprog-tastatur ved at gå til:",
     "enableAutocorrectPopupSteps": "  • Indstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Tilføj nyt tastatur",
     "enableAutocorrectPopupDescription": "Når sproget er valgt, kan du klikke på det lille globus-ikon nederst til venstre på dit tastatur for at aktivere det nyinstallerede tastatur.",
-    "downloadGboardSteps": " • Download Gboard\n  • Åbn appen\n  • Sprog\n  • Tilføj tastatur\n  • Vælg sprog\n  • Vælg tastaturtype\n  • Udført",
     "enableAutocorrectWarning": "Advarsel! Kræver tilføjelse af dit målsprog-tastatur",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er ved at forlade denne chat. Andre brugere vil se, at du har forladt chatten.",
     "confirmUserId": "Bekræft venligst dit Pangea Chat-brugernavn for at slette din konto.",
     "paidSubscriptionStarts": "Starter {startDate}",
     "cancelInSubscriptionSettings": "Afmeld når som helst i abonnementindstillinger",
-    "downloadGboard": "Download Gboard",
     "autocorrectNotAvailable": "Desværre understøttes din platform ikke i øjeblikket til denne funktion. Følg med for yderligere udvikling!",
     "pleaseUpdateApp": "Opdater venligst appen for at fortsætte.",
     "chooseEmojiInstructionsBody": "Match emojis med de ord, de bedst repræsenterer. Bare rolig! Der er ingen pointtab for uenighed. 😅",
@@ -1337,7 +1335,7 @@
     "playWithAI": "Leg med AI for nu",
     "courseStartDesc": "Pangea Bot er klar til at starte når som helst!\n\n...men læring er bedre med venner!",
     "@@locale": "da",
-    "@@last_modified": "2026-08-19 14:14:42.236827",
+    "@@last_modified": "2026-08-20 13:11:39.750160",
     "@aboutHomeserver": {
         "type": "String",
         "placeholders": {
@@ -6307,10 +6305,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6336,10 +6330,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10676,5 +10666,6 @@
     "inviteAFriend": "Inviter en ven",
     "autocorrectAndroidDialogTitle": "Autokorrektur på dit målsprog",
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, skifter dit tastatur til dit målsprog og retter stavefejl på det sprog.",
-    "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:"
+    "autocorrectAndroidFallbackTitle": "Hvis dit tastatur ikke tilbyder dit målsprog, skal du installere Gboard og tilføje sproget der:",
+    "openKeyboardSettings": "Åbn tastaturindstillinger"
 }
