@@ -913,14 +913,22 @@ class ActiveCall extends ChangeNotifier {
     // an error while the media release is being awaited, and a future with no
     // handler in that window surfaces as an unhandled async error.
     final stoppingRecorder = () async {
-      try {
-        await _handover;
-      } catch (_) {}
+      // stop() FIRST, before draining the handover. A reconcile's capture.start
+      // still in flight — this device was elected to record at the very moment
+      // of the hangup — would otherwise keep the recorder running and accepting
+      // post-hangup frames until it finished, because the handover awaits that
+      // start. stop() sets the no-more-frames gate at once and bumps the capture
+      // session, so that start releases its tap when it lands. Draining the
+      // handover afterwards lets it settle; nothing can restart it, _wanted is
+      // already false.
       try {
         await capture.stop();
       } catch (e, s) {
         Logs().e('Could not flush the call recording', e, s);
       }
+      try {
+        await _handover;
+      } catch (_) {}
     }();
 
     await releasingMedia;
