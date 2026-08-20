@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/languages/analytics_language_order.dart';
 import 'package:fluffychat/features/languages/l2_support_enum.dart';
 import 'package:fluffychat/features/languages/language_display_name_postfix_widget.dart';
 import 'package:fluffychat/features/languages/language_flag_chip.dart';
@@ -109,27 +110,12 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
               .languageAnalytics
         : null;
 
-    final List<LanguageModel> analyticsLanguages = analyticsByLanguage == null
-        ? []
-        : sortedLanguages
-              .where((lang) => analyticsByLanguage.containsKey(lang))
-              .toList();
-    final List<LanguageModel> remainingLanguages = analyticsLanguages.isEmpty
-        ? sortedLanguages
-        : sortedLanguages
-              .where((lang) => !analyticsLanguages.contains(lang))
-              .toList();
-    final List<LanguageModel> displayOrder = [
-      ...analyticsLanguages,
-      ...remainingLanguages,
-    ];
-    // -1 (never matches the loop index below) when there's nothing to divide:
-    // no analytics languages, or every option has analytics.
-    final int dividerIndex = analyticsLanguages.isNotEmpty
-        ? remainingLanguages.isNotEmpty
-              ? analyticsLanguages.length
-              : -1
-        : -1;
+    final order = AnalyticsLanguageOrder.of(
+      sortedLanguages,
+      analyticsByLanguage,
+    );
+    final List<LanguageModel> displayOrder = order.displayOrder;
+    final int dividerIndex = order.dividerIndex;
 
     final bool hasError = widget.error != null || widget.hasError;
 
