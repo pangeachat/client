@@ -776,6 +776,11 @@ class ActiveCall extends ChangeNotifier {
       unawaited(_peerRings?.cancel());
       _peerRings = null;
       Logs().w('Cannot start a call; this account is already in one');
+      // The outcome too, not only the stage: the session's failed state and
+      // the start-guard's "dismiss a dead call" both key off the outcome, and
+      // without it this refusal sat as a live-looking session that blocked
+      // every later start until somebody hung up a call that never existed.
+      _decide(CallOutcome.failed, const AlreadyInACall());
       _to(CallStage.failed, const AlreadyInACall());
     } catch (e, s) {
       if (_ending) {

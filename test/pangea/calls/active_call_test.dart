@@ -1533,6 +1533,16 @@ void main() {
       expect(call.stage, CallStage.ended);
     });
 
+    test('is failed when the account is already in a call', () async {
+      // The refusal must be a FAILED outcome, not a stage alone: the session
+      // and the start guard both key off the outcome, and without it this sat
+      // as a live-looking call that blocked every later start.
+      final (call, calls, _, _) = await build();
+      calls.joinError = const AlreadyInACall();
+      await call.start(roomStub(calls.client), video: false);
+      expect(call.outcome, CallOutcome.failed);
+    });
+
     test('is declined when the peer turned the call down', () async {
       final (call, calls, _, _) = await build();
       await call.start(roomStub(calls.client), video: false);

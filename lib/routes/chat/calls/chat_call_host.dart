@@ -60,6 +60,17 @@ class _ChatCallHostState extends State<ChatCallHost> {
   }
 
   @override
+  void didUpdateWidget(ChatCallHost old) {
+    super.didUpdateWidget(old);
+    // The framework can REUSE this State for a different room — same widget
+    // type, same position in the tree, new roomId — and nothing else would
+    // re-evaluate whose call this host presents. Without this, the old call
+    // kept a presenter registered while this host rendered nothing, and the
+    // global tile stood down too: a live call with no UI anywhere.
+    if (old.roomId != widget.roomId) _onSessionChanged();
+  }
+
+  @override
   void dispose() {
     _sessions?.removeListener(_onSessionChanged);
     _attachedTo?.detachPresenter();
