@@ -8,9 +8,12 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:fluffychat/config/themes.dart';
 import 'package:fluffychat/features/languages/l2_support_enum.dart';
 import 'package:fluffychat/features/languages/language_display_name_postfix_widget.dart';
+import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
+import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
 
 class PLanguageDropdown extends StatefulWidget {
@@ -43,6 +46,13 @@ class PLanguageDropdown extends StatefulWidget {
 
 class PLanguageDropdownState extends State<PLanguageDropdown> {
   final TextEditingController _searchController = TextEditingController();
+
+  // dropdown_button2 sizes every item to this height by default
+  // (kMinInteractiveDimension) unless customHeights is supplied; an analytics
+  // row's extra level line needs its own, taller slot.
+  static const double _itemHeight = 48.0;
+  static const double _analyticsItemHeight = 64.0;
+  static const double _dividerItemHeight = 17.0;
 
   @override
   void dispose() {
@@ -85,6 +95,42 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
 
     sortedLanguages.sort((a, b) => sortLanguages(a, b));
 
+    // Languages the learner already has analytics in sort to the top of the
+    // L2 list, so the two or three they actually move between are reachable
+    // without scrolling or searching — profile.instructions.md, "Switching
+    // from context". Left null for the base-language list.
+    final Map<LanguageModel, LanguageAnalyticsProfileEntry>?
+    analyticsByLanguage = widget.isL2List
+        ? MatrixState
+              .pangeaController
+              .userController
+              .publicProfile
+              ?.analytics
+              .languageAnalytics
+        : null;
+
+    final List<LanguageModel> analyticsLanguages = analyticsByLanguage == null
+        ? []
+        : sortedLanguages
+              .where((lang) => analyticsByLanguage.containsKey(lang))
+              .toList();
+    final List<LanguageModel> remainingLanguages = analyticsLanguages.isEmpty
+        ? sortedLanguages
+        : sortedLanguages
+              .where((lang) => !analyticsLanguages.contains(lang))
+              .toList();
+    final List<LanguageModel> displayOrder = [
+      ...analyticsLanguages,
+      ...remainingLanguages,
+    ];
+    // -1 (never matches the loop index below) when there's nothing to divide:
+    // no analytics languages, or every option has analytics.
+    final int dividerIndex = analyticsLanguages.isNotEmpty
+        ? remainingLanguages.isNotEmpty
+              ? analyticsLanguages.length
+              : -1
+        : -1;
+
     final bool hasError = widget.error != null || widget.hasError;
 
     return Column(
@@ -101,10 +147,19 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                     isL2List: widget.isL2List,
                     isDropdown: true,
                     enabled: widget.enabled,
+                    analytics: analyticsByLanguage?[widget.initialLanguage],
                   )
                 : null,
-            menuItemStyleData: const MenuItemStyleData(
+            menuItemStyleData: MenuItemStyleData(
               padding: EdgeInsets.zero,
+              customHeights: [
+                for (var i = 0; i < displayOrder.length; i++) ...[
+                  if (i == dividerIndex) _dividerItemHeight,
+                  analyticsByLanguage?[displayOrder[i]] != null
+                      ? _analyticsItemHeight
+                      : _itemHeight,
+                ],
+              ],
             ),
             decoration: InputDecoration(
               labelText: widget.decorationText,
@@ -137,11 +192,26 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
               ),
             ),
             items: [
-              ...sortedLanguages.map(
-                (languageModel) => DropdownMenuItem(
-                  value: languageModel,
+              for (var i = 0; i < displayOrder.length; i++) ...[
+                // Separates the analytics languages above from the rest of
+                // the list; dropped once a search is typed, since
+                // LanguageModel.search only matches a null item against an
+                // empty query — so a filtered result list never carries a
+                // stray rule.
+                if (i == dividerIndex)
+                  DropdownMenuItem(
+                    enabled: false,
+                    child: ExcludeSemantics(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 12),
+                        child: Divider(height: _dividerItemHeight),
+                      ),
+                    ),
+                  ),
+                DropdownMenuItem(
+                  value: displayOrder[i],
                   child: Container(
-                    color: widget.initialLanguage == languageModel
+                    color: widget.initialLanguage == displayOrder[i]
                         ? Theme.of(context).colorScheme.primary.withAlpha(20)
                         : Colors.transparent,
                     padding: const EdgeInsets.symmetric(
@@ -149,12 +219,13 @@ class PLanguageDropdownState extends State<PLanguageDropdown> {
                       horizontal: 12,
                     ),
                     child: LanguageDropDownEntry(
-                      languageModel: languageModel,
+                      languageModel: displayOrder[i],
                       isL2List: widget.isL2List,
+                      analytics: analyticsByLanguage?[displayOrder[i]],
                     ),
                   ),
                 ),
-              ),
+              ],
             ],
             onChanged: widget.enabled
                 ? (value) => widget.onChange(value!)
@@ -212,44 +283,75 @@ class LanguageDropDownEntry extends StatelessWidget {
   final bool isDropdown;
   final bool enabled;
 
+  /// This language's entry in the learner's analytics — level and XP earned
+  /// there. Non-null promotes the row's identity from the hashed-letter
+  /// [Avatar] to its flag ([LanguageFlagChip]) and adds a level caption
+  /// (profile.instructions.md, "Switching from context").
+  final LanguageAnalyticsProfileEntry? analytics;
+
   const LanguageDropDownEntry({
     super.key,
     required this.languageModel,
     required this.isL2List,
     this.isDropdown = false,
     this.enabled = true,
+    this.analytics,
   });
 
   @override
   Widget build(BuildContext context) {
+    final analytics = this.analytics;
     return Row(
       children: [
         Opacity(
           opacity: enabled ? 1 : 0.5,
           child: ExcludeSemantics(
-            child: Avatar(name: languageModel.langCode, size: 30),
+            child: analytics == null
+                ? Avatar(name: languageModel.langCode, size: 30)
+                : LanguageFlagChip(
+                    language: languageModel,
+                    langCode: languageModel.langCode,
+                    width: 30,
+                    height: 22,
+                    radius: 4,
+                    borderWidth: 1,
+                    alwaysShowCode: false,
+                  ),
           ),
         ),
         const SizedBox(width: 10),
         Expanded(
-          child: Row(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
             children: [
-              Flexible(
-                child: LanguageDisplayNamePostfixWidget(
-                  languageModel,
-                  style: TextStyle(
-                    color: enabled
-                        ? Theme.of(context).textTheme.bodyLarge!.color
-                        : Theme.of(context).disabledColor,
-                    fontSize: 14,
+              Row(
+                children: [
+                  Flexible(
+                    child: LanguageDisplayNamePostfixWidget(
+                      languageModel,
+                      style: TextStyle(
+                        color: enabled
+                            ? Theme.of(context).textTheme.bodyLarge!.color
+                            : Theme.of(context).disabledColor,
+                        fontSize: 14,
+                      ),
+                      iconSize: 14,
+                      spacing: 6.0,
+                    ),
                   ),
-                  iconSize: 14,
-                  spacing: 6.0,
-                ),
+                  const SizedBox(width: 10),
+                  if (isL2List && languageModel.l2Support != L2SupportEnum.full)
+                    languageModel.l2Support.toBadge(context),
+                ],
               ),
-              const SizedBox(width: 10),
-              if (isL2List && languageModel.l2Support != L2SupportEnum.full)
-                languageModel.l2Support.toBadge(context),
+              if (analytics != null)
+                Text(
+                  L10n.of(context).languageDropdownLevel(analytics.level),
+                  style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    color: Theme.of(context).colorScheme.onSurfaceVariant,
+                  ),
+                ),
             ],
           ),
         ),
