@@ -20,11 +20,20 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// learner already has analytics in sorted to the top. Picking one switches
 /// immediately and offers Undo in a snackbar.
 class LanguageSwitcherSheet extends StatefulWidget {
-  const LanguageSwitcherSheet({super.key});
+  /// The language the chip that opened this sheet was showing — pinned
+  /// first, above the analytics group, since it's the language the learner
+  /// almost certainly opened the sheet to switch to.
+  final LanguageModel? targetedLanguage;
 
-  static Future<void> show(BuildContext context) => showAdaptiveBottomSheet(
+  const LanguageSwitcherSheet({this.targetedLanguage, super.key});
+
+  static Future<void> show(
+    BuildContext context, {
+    LanguageModel? targetedLanguage,
+  }) => showAdaptiveBottomSheet(
     context: context,
-    builder: (context) => const LanguageSwitcherSheet(),
+    builder: (context) =>
+        LanguageSwitcherSheet(targetedLanguage: targetedLanguage),
   );
 
   @override
@@ -138,6 +147,21 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
     final currentLanguage = userController.userL2;
     final baseLanguage = userController.userL1;
 
+    // The targeted language leads the top group, ahead of the analytics
+    // languages it's drawn from or otherwise joins — see [targetedLanguage].
+    final targeted = widget.targetedLanguage;
+    final topGroup = [
+      if (targeted != null && languages.contains(targeted)) targeted,
+      ...order.analyticsLanguages.where((lang) => lang != targeted),
+    ];
+    final remainingGroup = order.remainingLanguages
+        .where((lang) => lang != targeted)
+        .toList();
+    final fullOrder = [...topGroup, ...remainingGroup];
+    final dividerIndex = topGroup.isNotEmpty && remainingGroup.isNotEmpty
+        ? topGroup.length
+        : -1;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(l10n.whatAreYouLearning),
@@ -161,10 +185,10 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
             child: ValueListenableBuilder(
               valueListenable: _query,
               builder: (context, query, _) {
-                final showDivider = query.isEmpty && order.dividerIndex != -1;
+                final showDivider = query.isEmpty && dividerIndex != -1;
                 final displayLanguages = query.isEmpty
-                    ? order.displayOrder
-                    : order.displayOrder
+                    ? fullOrder
+                    : fullOrder
                           .where(
                             (lang) =>
                                 LanguageModel.search(lang, query, context),
@@ -174,7 +198,7 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
                 return ListView(
                   children: [
                     for (var i = 0; i < displayLanguages.length; i++) ...[
-                      if (showDivider && i == order.dividerIndex)
+                      if (showDivider && i == dividerIndex)
                         const Padding(
                           padding: EdgeInsets.symmetric(horizontal: 16.0),
                           child: Divider(height: 1),

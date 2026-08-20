@@ -132,13 +132,16 @@ void main() {
     MatrixState.pangeaController = controller;
   }
 
-  Future<void> pumpSheet(WidgetTester tester) async {
+  Future<void> pumpSheet(
+    WidgetTester tester, {
+    LanguageModel? targetedLanguage,
+  }) async {
     await tester.pumpWidget(
       MaterialApp(
         locale: const Locale('en'),
         localizationsDelegates: L10n.localizationsDelegates,
         supportedLocales: L10n.supportedLocales,
-        home: const LanguageSwitcherSheet(),
+        home: LanguageSwitcherSheet(targetedLanguage: targetedLanguage),
       ),
     );
     await tester.pumpAndSettle();
@@ -152,6 +155,13 @@ void main() {
     ),
     matching: find.byType(InkWell),
   );
+
+  /// Every language, top to bottom, the open sheet renders — mirrors
+  /// p_language_dropdown_test.dart's helper of the same shape.
+  List<LanguageModel> rowOrder(WidgetTester tester) => tester
+      .widgetList<LanguageDropDownEntry>(find.byType(LanguageDropDownEntry))
+      .map((entry) => entry.languageModel)
+      .toList();
 
   testWidgets('the current language is checked and not tappable', (
     tester,
@@ -229,4 +239,42 @@ void main() {
     expect(rowFor(french), findsNothing);
     expect(find.byType(Divider), findsNothing);
   });
+
+  testWidgets('the targeted language leads, ahead of the analytics group', (
+    tester,
+  ) async {
+    seedController(
+      base: 'en',
+      target: 'fr',
+      languageAnalytics: {
+        spanish: LanguageAnalyticsProfileEntry(4, 0),
+        french: LanguageAnalyticsProfileEntry(7, 0),
+      },
+    );
+    await pumpSheet(tester, targetedLanguage: italian);
+
+    // Italian has no analytics of its own — it still leads, ahead of the
+    // French/Spanish analytics group it doesn't belong to, and the
+    // divider drops since nothing is left below it.
+    expect(rowOrder(tester), [italian, french, spanish]);
+    expect(find.byType(Divider), findsNothing);
+  });
+
+  testWidgets(
+    'a targeted language already in the analytics group is not duplicated',
+    (tester) async {
+      seedController(
+        base: 'en',
+        target: 'fr',
+        languageAnalytics: {
+          spanish: LanguageAnalyticsProfileEntry(4, 0),
+          french: LanguageAnalyticsProfileEntry(7, 0),
+        },
+      );
+      await pumpSheet(tester, targetedLanguage: spanish);
+
+      expect(rowOrder(tester), [spanish, french, italian]);
+      expect(find.byType(Divider), findsOneWidget);
+    },
+  );
 }
