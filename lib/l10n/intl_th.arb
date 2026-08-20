@@ -2896,14 +2896,12 @@
     "enableAutocorrectPopupTitle": "เพิ่มแป้นพิมพ์ภาษาที่คุณตั้งเป้าไว้โดยไปที่:",
     "enableAutocorrectPopupSteps": "  • การตั้งค่า\n  • ทั่วไป\n  • คีย์บอร์ด\n  • คีย์บอร์ด\n  • เพิ่มคีย์บอร์ดใหม่",
     "enableAutocorrectPopupDescription": "เมื่อเลือกภาษาแล้ว คุณสามารถคลิกไอคอนโลกเล็กที่มุมล่างซ้ายของคีย์บอร์ดเพื่อเปิดใช้งานคีย์บอร์ดที่ติดตั้งใหม่",
-    "downloadGboardSteps": " • ดาวน์โหลด Gboard\n  • เปิดแอป\n  • ภาษา\n  • เพิ่มคีย์บอร์ด\n  • เลือกภาษา\n  • เลือกประเภทคีย์บอร์ด\n  • เสร็จสิ้น",
     "enableAutocorrectWarning": "คำเตือน! ต้องเพิ่มคีย์บอร์ดภาษาที่คุณตั้งเป้าไว้",
     "displayName": "ชื่อแสดง",
     "leaveRoomDescription": "คุณกำลังจะออกจากแชทนี้ ผู้ใช้อื่นจะเห็นว่าคุณได้ออกจากแชทแล้ว",
     "confirmUserId": "กรุณายืนยันชื่อผู้ใช้ Pangea Chat ของคุณเพื่อทำการลบบัญชีของคุณ",
     "paidSubscriptionStarts": "เริ่มต้น {startDate}",
     "cancelInSubscriptionSettings": "• ยกเลิกได้ทุกเมื่อในการตั้งค่าการสมัครสมาชิก",
-    "downloadGboard": "ดาวน์โหลด Gboard",
     "autocorrectNotAvailable": "น่าเสียดายที่แพลตฟอร์มของคุณในปัจจุบันไม่รองรับคุณสมบัตินี้ โปรดติดตามการพัฒนาต่อไป!",
     "pleaseUpdateApp": "กรุณาอัปเดตแอปเพื่อดำเนินการต่อ",
     "chooseEmojiInstructionsBody": "จับคู่อีโมจิกับคำที่พวกมันแทนได้ดีที่สุด ไม่ต้องกังวล! ไม่มีการหักคะแนนหากไม่เห็นด้วย 😅",
@@ -3096,7 +3094,7 @@
     "playWithAI": "เล่นกับ AI ชั่วคราว",
     "courseStartDesc": "Pangea Bot พร้อมที่จะเริ่มต้นได้ทุกเมื่อ!\n\n...แต่การเรียนรู้ดีกว่ากับเพื่อน!",
     "@@locale": "th",
-    "@@last_modified": "2026-08-19 14:14:52.484461",
+    "@@last_modified": "2026-08-20 13:11:45.761901",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -6019,10 +6017,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6048,10 +6042,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10388,5 +10378,6 @@
     "inviteAFriend": "เชิญเพื่อน",
     "autocorrectAndroidDialogTitle": "การแก้ไขอัตโนมัติในภาษาเป้าหมายของคุณ",
     "autocorrectAndroidDialogBody": "เมื่อคุณพิมพ์ในแชท แป้นพิมพ์ของคุณจะเปลี่ยนเป็นภาษาเป้าหมายและแก้ไขการสะกดในภาษานั้น",
-    "autocorrectAndroidFallbackTitle": "หากแป้นพิมพ์ของคุณไม่มีภาษาเป้าหมาย ให้ติดตั้ง Gboard และเพิ่มภาษาที่นั่น:"
+    "autocorrectAndroidFallbackTitle": "หากแป้นพิมพ์ของคุณไม่มีภาษาเป้าหมาย ให้ติดตั้ง Gboard และเพิ่มภาษาที่นั่น:",
+    "openKeyboardSettings": "เปิดการตั้งค่าแป้นพิมพ์"
 }

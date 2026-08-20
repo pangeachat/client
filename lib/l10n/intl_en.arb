@@ -3684,8 +3684,8 @@
     "enableAutocorrectPopupDescription": "Once the language is selected, you can click the small globe icon on the bottom left of your keyboard to activate the newly installed keyboard.",
     "autocorrectAndroidDialogTitle": "Autocorrect in your target language",
     "autocorrectAndroidDialogBody": "When you type in a chat, your keyboard will switch to your target language and correct spelling in that language.",
-    "autocorrectAndroidFallbackTitle": "If your keyboard doesn't offer your target language, install Gboard and add the language there:",
-    "downloadGboardSteps": " • Download Gboard\n  • Open app\n  • Languages\n  • Add keyboard\n  • Select Language\n  • Select keyboard type\n  • Done",
+    "autocorrectAndroidFallbackTitle": "If your keyboard doesn't already support your target language, you can add it in your keyboard settings.",
+    "openKeyboardSettings": "Open Keyboard Settings",
     "enableAutocorrectWarning": "Warning! Requires adding your target language keyboard",
     "displayName": "Display name",
     "leaveRoomDescription": "You're about to leave this chat. Other users will see that you have left the chat.",
@@ -3700,7 +3700,6 @@
         }
     },
     "cancelInSubscriptionSettings": "• Cancel at any time in subscription settings",
-    "downloadGboard": "Download Gboard",
     "autocorrectNotAvailable": "Unfortunately your platform is not currently supported for this feature. Stay tuned for further development!",
     "pleaseUpdateApp": "Please update the app to continue.",
     "chooseEmojiInstructionsBody": "Match emojis with the words they best represent. Don't worry! No points off for disagreeing. 😅",

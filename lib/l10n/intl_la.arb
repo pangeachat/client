@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-19 14:14:46.450852",
+    "@@last_modified": "2026-08-20 13:11:42.722004",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Claviaturam linguae tuae addere, vade ad:",
     "enableAutocorrectPopupSteps": "  • Uncini\n  • Generalia\n  • Claviatura\n  • Claviaturae\n  • Novam Claviaturam Adde",
     "enableAutocorrectPopupDescription": "Lingua selecta, parvam iconem globi in parte inferiore sinistra claviaturæ premere potes ut novam claviaturam activam facias.",
-    "downloadGboardSteps": " • Deprome Gboard\n  • Aperi app\n  • Linguae\n  • Claviaturam adde\n  • Linguam elige\n  • Genus claviaturæ elige\n  • Factum",
     "enableAutocorrectWarning": "Monitus! Addenda est claviatura linguae tuae discendae",
     "displayName": "Nomen ostensum",
     "leaveRoomDescription": "Hoc colloquium relicturus es. Alii usores te colloquio discessisse videbunt.",
     "confirmUserId": "Quaeso, nomen tuum usoris Pangea Chat confirma ut rationem tuam deleas.",
     "paidSubscriptionStarts": "Incipiens {startDate}",
     "cancelInSubscriptionSettings": "• In uncinis subscriptionis quovis tempore cancella",
-    "downloadGboard": "Deprome Gboard",
     "autocorrectNotAvailable": "Infeliciter, suggestum tuum huic functioni nunc non favet. Exspecta progressus futuros!",
     "pleaseUpdateApp": "Quaeso, app renova ut pergas.",
     "chooseEmojiInstructionsBody": "Coniunge emoji cum verbis quae optime significant. Noli timere! Nulla puncta amittes si dissentis. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Amicum invita",
     "autocorrectAndroidDialogTitle": "Emendatio automatica in lingua quam discis",
     "autocorrectAndroidDialogBody": "Cum in colloquio scribis, claviatura tua ad linguam quam discis mutabit et orthographiam in illa lingua emendabit.",
-    "autocorrectAndroidFallbackTitle": "Si claviatura tua linguam quam discis non offert, Gboard institue et linguam illic adde:"
+    "autocorrectAndroidFallbackTitle": "Si claviatura tua linguam quam discis non offert, Gboard institue et linguam illic adde:",
+    "openKeyboardSettings": "Aperi Claviaturae Optiones"
 }

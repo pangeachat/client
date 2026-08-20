@@ -1,6 +1,6 @@
 {
     "@@locale": "eu",
-    "@@last_modified": "2026-08-19 14:14:42.515194",
+    "@@last_modified": "2026-08-20 13:11:40.355881",
     "about": "Honi buruz",
     "@about": {
         "type": "String",
@@ -3360,14 +3360,12 @@
     "enableAutocorrectPopupTitle": "Gehitu zure hizkuntza helburuaren teklatua honetara joanez:",
     "enableAutocorrectPopupSteps": "  • Ezarpenak\n  • Orokorra\n  • Teklatu\n  • Teklatuak\n  • Gehitu teklatu berria",
     "enableAutocorrectPopupDescription": "Hizkuntza aukeratu ondoren, teklatuaren behealdean ezkerreko globe ikono txikia klik egin dezakezu teklatu berria aktibatzeko.",
-    "downloadGboardSteps": " • Deskargatu Gboard\n  • Ireki aplikazioa\n  • Hizkuntzak\n  • Gehitu teklatua\n  • Aukeratu Hizkuntza\n  • Aukeratu teklatu mota\n  • Amaitu",
     "enableAutocorrectWarning": "Abisua! Zure hizkuntza helburuaren teklatua gehitzea eskatzen du",
     "displayName": "Erakutsi izena",
     "leaveRoomDescription": "Chat hau utzi nahi duzu. Beste erabiltzaileek ikusi ahal izango dute chatetik alde egin duzula.",
     "confirmUserId": "Mesedez, berretsi zure Pangea Chat erabiltzaile-izena zure kontua ezabatzeko",
     "paidSubscriptionStarts": "{startDate}tik aurrera",
     "cancelInSubscriptionSettings": "• Ezin duzu edozein momentutan bertan behera utzi harpidetza ezarpenetan",
-    "downloadGboard": "Deskargatu Gboard",
     "autocorrectNotAvailable": "Zoritxarrez, zure plataforma ez da oraindik ezagutzen ez duen ezaugarria. Egon adi aurrerago garapenean!",
     "pleaseUpdateApp": "Mesedez, eguneratu aplikazioa jarraitzeko.",
     "chooseEmojiInstructionsBody": "Baliokideak hitzak ondoen ordezkatzen dituzten emojiak parekatu. Ez kezkatu! Ez dago puntuazioaren zatiketarik adostasunik ez badago ere. 😅",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9756,5 +9746,6 @@
     "inviteAFriend": "Lagun bat gonbidatu",
     "autocorrectAndroidDialogTitle": "Zuzenketa automatikoa zure xede-hizkuntzan",
     "autocorrectAndroidDialogBody": "Txat batean idazten duzunean, teklatua zure xede-hizkuntzara aldatuko da eta hizkuntza horretako ortografia zuzenduko du.",
-    "autocorrectAndroidFallbackTitle": "Zure teklatuak xede-hizkuntza eskaintzen ez badu, instalatu Gboard eta gehitu hizkuntza bertan:"
+    "autocorrectAndroidFallbackTitle": "Zure teklatuak xede-hizkuntza eskaintzen ez badu, instalatu Gboard eta gehitu hizkuntza bertan:",
+    "openKeyboardSettings": "Ireki teklatuaren ezarpenak"
 }

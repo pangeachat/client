@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-19 14:14:44.942802",
+    "@@last_modified": "2026-08-20 13:11:41.275109",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Ajoute klavye lang sib ou a lè w ale nan:",
     "enableAutocorrectPopupSteps": "  • Anviwònman\n  • Jeneral\n  • Klavye\n  • Klavye\n  • Ajoute Nouvo Klavye",
     "enableAutocorrectPopupDescription": "Yon fwa lang lan chwazi, ou ka klike sou ti ikòn glòb la sou bò gòch anba klavye ou a pou aktive klavye ki fèk enstale a.",
-    "downloadGboardSteps": " • Telechaje Gboard\n  • Louvri aplikasyon an\n  • Lang\n  • Ajoute klavye\n  • Chwazi Lang\n  • Chwazi tip klavye\n  • Fè",
     "enableAutocorrectWarning": "Avètisman! Mande pou ajoute klavye lang sib ou a",
     "displayName": "Non ekspozisyon",
     "leaveRoomDescription": "Ou pral kite chat sa a. Lòt itilizatè yo ap wè ou kite chat la.",
     "confirmUserId": "Tanpri konfime non itilizatè Pangea Chat ou a pou efase kont ou.",
     "paidSubscriptionStarts": "Kòmanse {startDate}",
     "cancelInSubscriptionSettings": "• Anile nenpòt ki lè nan paramèt abònman",
-    "downloadGboard": "Telechaje Gboard",
     "autocorrectNotAvailable": "Malerezman platfòm ou a pa sipòte kounye a pou karakteristik sa a. Rete konekte pou plis devlopman!",
     "pleaseUpdateApp": "Tanpri mete ajou aplikasyon an pou kontinye.",
     "chooseEmojiInstructionsBody": "Matche emojis yo ak mo yo reprezante pi byen. Pa enkyete w! Pa gen pwen ki retire pou dezakò. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Envite yon zanmi",
     "autocorrectAndroidDialogTitle": "Koreksyon otomatik nan lang sib ou a",
     "autocorrectAndroidDialogBody": "Lè w ap tape nan yon chat, klavye w ap chanje nan lang sib ou a epi l ap korije òtograf nan lang sa a.",
-    "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:"
+    "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:",
+    "openKeyboardSettings": "Louvri Anviwònman Klavye"
 }

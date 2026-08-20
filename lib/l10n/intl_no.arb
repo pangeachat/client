@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-19 14:14:48.806835",
+    "@@last_modified": "2026-08-20 13:11:43.710543",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Legg til tastaturet for målspråket ditt ved å gå til:",
     "enableAutocorrectPopupSteps": "  • Innstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Legg til nytt tastatur",
     "enableAutocorrectPopupDescription": "Når språket er valgt, kan du klikke på det lille globusikonet nederst til venstre på tastaturet for å aktivere det nyinstallerte tastaturet.",
-    "downloadGboardSteps": " • Last ned Gboard\n  • Åpne appen\n  • Språk\n  • Legg til tastatur\n  • Velg språk\n  • Velg tastaturtype\n  • Ferdig",
     "enableAutocorrectWarning": "Advarsel! Krever at du legger til tastaturet for målspråket ditt",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er i ferd med å forlate denne chatten. Andre brukere vil se at du har forlatt chatten.",
     "confirmUserId": "Vennligst bekreft ditt Pangea Chat-brukernavn for å slette kontoen din.",
     "paidSubscriptionStarts": "Starter {startDate}",
     "cancelInSubscriptionSettings": "• Avbryt når som helst i abonnementsinnstillingene",
-    "downloadGboard": "Last ned Gboard",
     "autocorrectNotAvailable": "Dessverre støttes ikke plattformen din for denne funksjonen for øyeblikket. Følg med for videre utvikling!",
     "pleaseUpdateApp": "Vennligst oppdater appen for å fortsette.",
     "chooseEmojiInstructionsBody": "Match emojier med ordene de best representerer. Ikke bekymre deg! Ingen trekk for uenighet. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Inviter en venn",
     "autocorrectAndroidDialogTitle": "Autokorrektur på målspråket ditt",
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, vil tastaturet bytte til målspråket ditt og korrigere stavemåten på det språket.",
-    "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:"
+    "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:",
+    "openKeyboardSettings": "Åpne tastaturinnstillinger"
 }

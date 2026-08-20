@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-19 14:14:41.675608",
+    "@@last_modified": "2026-08-20 13:11:40.010231",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Aghjunghjite a tastiera di a vostra lingua di destinazione andendu in :",
     "enableAutocorrectPopupSteps": "  • Paràmetri\n  • Generale\n  • Tastiera\n  • Tastiere\n  • Aghjunghje una nova tastiera",
     "enableAutocorrectPopupDescription": "Una volta a lingua scelta, pudete cliccà nant'à a piccula icona di u mappamondu in bassu à manca di a vostra tastiera per attivà a nova tastiera stallata.",
-    "downloadGboardSteps": " • Scaricà Gboard\n  • Apre l'appiecazione\n  • Lingue\n  • Aghjunghje una tastiera\n  • Sceglie a lingua\n  • Sceglie u tippu di tastiera\n  • Fattu",
     "enableAutocorrectWarning": "Attenzione ! Richiede l'aghjunta di a tastiera di a vostra lingua di destinazione",
     "displayName": "Nome d'utilizatore",
     "leaveRoomDescription": "Site sopr'à lascià sta discussione. L'altri utilizatori videranu chì avete lasciatu a discussione.",
     "confirmUserId": "Cunfirmate u vostru nome d'utilizatore Pangea Chat per sguassà u vostru contu.",
     "paidSubscriptionStarts": "À partesi da u {startDate}",
     "cancelInSubscriptionSettings": "• Annullate à ogni mumentu in i paràmetri di l'abbunamentu",
-    "downloadGboard": "Scaricà Gboard",
     "autocorrectNotAvailable": "Sfurtunatamente, a vostra piattaforma ùn hè micca cumpatibile cù sta funziunalità per avà. State à sente per i sviluppi futuri !",
     "pleaseUpdateApp": "Aghjurnate l'appiecazione per cuntinuà.",
     "chooseEmojiInstructionsBody": "Assuciate l'emoji cù e parolle ch'elli riprisentanu megliu. Ùn v'inchietate ! Nisun puntu persu sì ùn site micca d'accunsentu. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Invità un amicu",
     "autocorrectAndroidDialogTitle": "Autucurrezzione in a vostra lingua di destinazione",
     "autocorrectAndroidDialogBody": "Quandu scrivite in una chjachjarata, a vostra tastiera cambierà à a vostra lingua di destinazione è curreggerà l'ortografia in quella lingua.",
-    "autocorrectAndroidFallbackTitle": "Se a vostra tastiera ùn offre micca a vostra lingua di destinazione, stallate Gboard è aghjunghjite a lingua quì:"
+    "autocorrectAndroidFallbackTitle": "Se a vostra tastiera ùn offre micca a vostra lingua di destinazione, stallate Gboard è aghjunghjite a lingua quì:",
+    "openKeyboardSettings": "Apre i Paràmetri di a Tastiera"
 }

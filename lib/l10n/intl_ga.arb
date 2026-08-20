@@ -3365,14 +3365,12 @@
     "enableAutocorrectPopupTitle": "Cuir do eochairfhocal teanga sprioc leis trí dul go:",
     "enableAutocorrectPopupSteps": "  • Socruithe\n  • Ginearálta\n  • Eochairfhocal\n  • Eochairfhocail\n  • Cuir Eochairfhocal Nua leis",
     "enableAutocorrectPopupDescription": "Nuair a roghnaítear an teanga, is féidir leat cliceáil ar an gcloch beag domhain ar chlé bun do do eochairfhocal chun an eochairfhocal nua a ghníomhachtú.",
-    "downloadGboardSteps": " • Íoslódáil Gboard\n  • Oscail an aip\n  • Teangacha\n  • Cuir eochairfhocal leis\n  • Roghnaigh Teanga\n  • Roghnaigh cineál eochairfhocal\n  • Críochnaithe",
     "enableAutocorrectWarning": "Rabhadh! Éilíonn sé do eochairfhocal teanga sprioc a chur leis",
     "displayName": "Ainm le feiceáil",
     "leaveRoomDescription": "Tá tú faoi láthair ag dul i dtaithí ar an gcomhrá seo. Feicfidh úsáideoirí eile go bhfuil tú imithe as an gcomhrá.",
     "confirmUserId": "Déan cinnte de do ainm úsáideora Pangea Chat chun do chuntas a scriosadh.",
     "paidSubscriptionStarts": "Ag tosú {startDate}",
     "cancelInSubscriptionSettings": "• Cuir ar ceal ag am ar bith sna socruithe síntiúis",
-    "downloadGboard": "Íoslódáil Gboard",
     "autocorrectNotAvailable": "Ar an drochuair, níl do chóras reatha tacaíocht don ghné seo faoi láthair. Fan ar an eolas le haghaidh forbairtí eile!",
     "pleaseUpdateApp": "Le do thoil, déan nuashonrú ar an aip chun leanúint ar aghaidh.",
     "chooseEmojiInstructionsBody": "Comhoiriúnigh na híomhánna le na focail is fearr a léiríonn iad. Ná bí buartha! Níl pointí caillte má aontaíonn tú nó nach n-aontaíonn tú. 😅",
@@ -3566,7 +3564,7 @@
     "playWithAI": "Imir le AI faoi láthair",
     "courseStartDesc": "Tá Bot Pangea réidh chun dul am ar bith!\n\n...ach is fearr foghlaim le cairde!",
     "@@locale": "ga",
-    "@@last_modified": "2026-08-19 14:14:43.506728",
+    "@@last_modified": "2026-08-20 13:11:40.798900",
     "@writeAMessageLangCodes": {
         "type": "String",
         "placeholders": {
@@ -5574,10 +5572,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5603,10 +5597,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9767,5 +9757,6 @@
     "inviteAFriend": "Tabhair cuireadh do chara",
     "autocorrectAndroidDialogTitle": "Ceartú uathoibríoch i do sprioctheanga",
     "autocorrectAndroidDialogBody": "Nuair a chlóscríobhann tú i gcomhrá, aistreoidh do mhéarchlár chuig do sprioctheanga agus ceartóidh sé an litriú sa teanga sin.",
-    "autocorrectAndroidFallbackTitle": "Mura dtugann do mhéarchlár do sprioctheanga, suiteáil Gboard agus cuir an teanga leis ansin:"
+    "autocorrectAndroidFallbackTitle": "Mura dtugann do mhéarchlár do sprioctheanga, suiteáil Gboard agus cuir an teanga leis ansin:",
+    "openKeyboardSettings": "Oscail Socruithe an Mhéarchláir"
 }

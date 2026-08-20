@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-19 14:14:51.772422",
+    "@@last_modified": "2026-08-20 13:11:45.661912",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Ongeza kibodi cha lugha unayolenga kwa kwenda kwenye:",
     "enableAutocorrectPopupSteps": "  • Mipangilio\n  • Jumla\n  • Kibodi\n  • Vibodi\n  • Ongeza Kibodi Mpya",
     "enableAutocorrectPopupDescription": "Mara tu lugha imechaguliwa, unaweza kubofya ikoni ndogo ya globu iliyo chini kushoto mwa kibodi chako ili kuwasha kibodi kipya kilichosakinishwa.",
-    "downloadGboardSteps": " • Pakua Gboard\n  • Fungua programu\n  • Lugha\n  • Ongeza kibodi\n  • Chagua Lugha\n  • Chagua aina ya kibodi\n  • Imekamilika",
     "enableAutocorrectWarning": "Onyo! Inahitaji kuongeza kibodi cha lugha unayolenga",
     "displayName": "Jina la kuonyesha",
     "leaveRoomDescription": "Unakaribia kuondoka kwenye soga hii. Watumiaji wengine wataona kuwa umeondoka kwenye soga.",
     "confirmUserId": "Tafadhali thibitisha jina lako la mtumiaji la Pangea Chat ili kufuta akaunti yako.",
     "paidSubscriptionStarts": "Inaanza {startDate}",
     "cancelInSubscriptionSettings": "• Ghairi wakati wowote katika mipangilio ya usajili",
-    "downloadGboard": "Pakua Gboard",
     "autocorrectNotAvailable": "Kwa bahati mbaya jukwaa lako halitumiki kwa kipengele hiki kwa sasa. Endelea kufuatilia maendeleo zaidi!",
     "pleaseUpdateApp": "Tafadhali sasisha programu ili kuendelea.",
     "chooseEmojiInstructionsBody": "Linganisha emoji na maneno yanayowakilisha vizuri zaidi. Usijali! Hakuna pointi zitakazopunguzwa kwa kutokubaliana. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Mwalike rafiki",
     "autocorrectAndroidDialogTitle": "Masahihisho ya kiotomatiki katika lugha unayolenga",
     "autocorrectAndroidDialogBody": "Unapoandika kwenye gumzo, kibodi chako kitabadilika hadi lugha unayolenga na kusahihisha tahajia katika lugha hiyo.",
-    "autocorrectAndroidFallbackTitle": "Ikiwa kibodi chako hakitoi lugha unayolenga, sakinisha Gboard na uongeze lugha hapo:"
+    "autocorrectAndroidFallbackTitle": "Ikiwa kibodi chako hakitoi lugha unayolenga, sakinisha Gboard na uongeze lugha hapo:",
+    "openKeyboardSettings": "Fungua Mipangilio ya Kibodi"
 }

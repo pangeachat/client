@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-19 14:14:40.893302",
+    "@@last_modified": "2026-08-20 13:11:39.302949",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Dodajte tastaturu ciljnog jezika tako što ćete otići na:",
     "enableAutocorrectPopupSteps": "  • Postavke\n  • Općenito\n  • Tastatura\n  • Tastature\n  • Dodaj novu tastaturu",
     "enableAutocorrectPopupDescription": "Nakon što je jezik odabran, možete kliknuti na malu ikonu globusa u donjem lijevom uglu tastature da biste aktivirali novoinstaliranu tastaturu.",
-    "downloadGboardSteps": " • Preuzmite Gboard\n  • Otvorite aplikaciju\n  • Jezici\n  • Dodaj tastaturu\n  • Odaberite jezik\n  • Odaberite tip tastature\n  • Gotovo",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodati tastaturu ciljnog jezika",
     "displayName": "Ime za prikaz",
     "leaveRoomDescription": "Spremate se napustiti ovaj chat. Drugi korisnici će vidjeti da ste napustili chat.",
     "confirmUserId": "Molimo potvrdite svoje Pangea Chat korisničko ime kako biste izbrisali svoj račun.",
     "paidSubscriptionStarts": "Počinje {startDate}",
     "cancelInSubscriptionSettings": "• Otkažite bilo kada u postavkama pretplate",
-    "downloadGboard": "Preuzmi Gboard",
     "autocorrectNotAvailable": "Nažalost, vaša platforma trenutno nije podržana za ovu funkciju. Pratite dalji razvoj!",
     "pleaseUpdateApp": "Molimo ažurirajte aplikaciju da biste nastavili.",
     "chooseEmojiInstructionsBody": "Povežite emotikone s riječima koje najbolje predstavljaju. Ne brinite! Nema negativnih bodova za neslaganje. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Pozovi prijatelja",
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada kucate u chatu, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
-    "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:"
+    "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
+    "openKeyboardSettings": "Otvori postavke tastature"
 }

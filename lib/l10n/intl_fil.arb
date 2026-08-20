@@ -1871,14 +1871,12 @@
     "enableAutocorrectPopupTitle": "Idagdag ang iyong target na keyboard sa wika sa pamamagitan ng pagpunta sa:",
     "enableAutocorrectPopupSteps": "  • Mga Setting\n  • Pangkalahatan\n  • Keyboard\n  • Mga Keyboard\n  • Magdagdag ng Bagong Keyboard",
     "enableAutocorrectPopupDescription": "Kapag napili na ang wika, maaari mong i-click ang maliit na icon ng globe sa ibabang kaliwa ng iyong keyboard upang i-activate ang bagong na-install na keyboard.",
-    "downloadGboardSteps": " • I-download ang Gboard\n  • Buksan ang app\n  • Mga Wika\n  • Magdagdag ng keyboard\n  • Piliin ang Wika\n  • Piliin ang uri ng keyboard\n  • Tapos na",
     "enableAutocorrectWarning": "Babala! Kailangan idagdag ang iyong target na keyboard sa wika",
     "displayName": "Pangalan na ipapakita",
     "leaveRoomDescription": "Malapit ka nang umalis sa chat na ito. Makikita ng ibang mga user na umalis ka na sa chat.",
     "confirmUserId": "Mangyaring kumpirmahin ang iyong Pangea Chat username upang ma-delete ang iyong account.",
     "paidSubscriptionStarts": "Nagsisimula {startDate}",
     "cancelInSubscriptionSettings": "• Kanselahin anumang oras sa mga setting ng subscription",
-    "downloadGboard": "I-download ang Gboard",
     "autocorrectNotAvailable": "Sa kasamaang palad, ang iyong platform ay kasalukuyang hindi sinusuportahan para sa tampok na ito. Abangan ang karagdagang pag-unlad!",
     "pleaseUpdateApp": "Mangyaring i-update ang app upang magpatuloy.",
     "chooseEmojiInstructionsBody": "Itugma ang mga emoji sa mga salitang pinakamahusay na kumakatawan dito. Huwag mag-alala! Walang puntos na mawawala kung hindi magkatugma. 😅",
@@ -2083,7 +2081,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-19 14:14:42.783762",
+    "@@last_modified": "2026-08-20 13:11:40.519422",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -6258,10 +6256,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6287,10 +6281,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10616,5 +10606,6 @@
     "inviteAFriend": "Mag-imbita ng kaibigan",
     "autocorrectAndroidDialogTitle": "Autocorrect sa iyong target na wika",
     "autocorrectAndroidDialogBody": "Kapag nagta-type ka sa chat, lilipat ang iyong keyboard sa target na wika mo at itatama ang spelling sa wikang iyon.",
-    "autocorrectAndroidFallbackTitle": "Kung hindi iniaalok ng iyong keyboard ang target na wika mo, i-install ang Gboard at idagdag ang wika doon:"
+    "autocorrectAndroidFallbackTitle": "Kung hindi iniaalok ng iyong keyboard ang target na wika mo, i-install ang Gboard at idagdag ang wika doon:",
+    "openKeyboardSettings": "Buksan ang Mga Setting ng Keyboard"
 }

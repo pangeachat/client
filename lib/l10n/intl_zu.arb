@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-19 14:14:54.599979",
+    "@@last_modified": "2026-08-20 13:11:46.843932",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Engeza ikhibhodi yolimi oluqondile ngokuya ku:",
     "enableAutocorrectPopupSteps": "  • Izilungiselelo\n  • Okujwayelekile\n  • Ikhibhodi\n  • Amakhibhodi\n  • Engeza Ikhibhodi Entsha",
     "enableAutocorrectPopupDescription": "Uma ulimi selukhethiwe, ungachofoza isithonjana esincane seglobhu ngakwesokunxele esingezansi sekhibhodi yakho ukuze uvule ikhibhodi esanda kufakwa.",
-    "downloadGboardSteps": " • Landa i-Gboard\n  • Vula uhlelo lokusebenza\n  • Izilimi\n  • Engeza ikhibhodi\n  • Khetha Ulimi\n  • Khetha uhlobo lwekhibhodi\n  • Kwenziwe",
     "enableAutocorrectWarning": "Isexwayiso! Kudinga ukwengeza ikhibhodi yolimi oluqondile",
     "displayName": "Igama lokubonisa",
     "leaveRoomDescription": "Ususondele ekushiyeni le ngxoxo. Abanye abasebenzisi bazobona ukuthi ushiye ingxoxo.",
     "confirmUserId": "Sicela uqinisekise igama lakho lomsebenzisi le-Pangea Chat ukuze ususe i-akhawunti yakho.",
     "paidSubscriptionStarts": "Iqala {startDate}",
     "cancelInSubscriptionSettings": "• Khansela nganoma yisiphi isikhathi kuzilungiselelo zokubhalisa",
-    "downloadGboard": "Landa i-Gboard",
     "autocorrectNotAvailable": "Ngeshwa inkundla yakho ayisekelwe okwamanje ngalesi sici. Hlala ubukele ukuze uthole intuthuko eyengeziwe!",
     "pleaseUpdateApp": "Sicela ubuyekeze uhlelo lokusebenza ukuze uqhubeke.",
     "chooseEmojiInstructionsBody": "Qondanisa ama-emoji namagama abamele kahle kakhulu. Ungakhathazeki! Azikho iziphambeko zokungavumelani. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Mema umngane",
     "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzakalelayo ngolimi olufundayo",
     "autocorrectAndroidDialogBody": "Uma uthayipha engxoxweni, ikhibhodi yakho izoshintshela olimini olufundayo futhi ilungise amaphutha esipelingi ngalolo limi.",
-    "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:"
+    "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:",
+    "openKeyboardSettings": "Vula Izilungiselelo Zekhibhodi"
 }

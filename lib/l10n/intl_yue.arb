@@ -1054,14 +1054,12 @@
     "enableAutocorrectPopupTitle": "通過以下方式添加您的目標語言鍵盤：",
     "enableAutocorrectPopupSteps": "  • 設置\n  • 常規\n  • 鍵盤\n  • 鍵盤\n  • 添加新鍵盤",
     "enableAutocorrectPopupDescription": "選擇語言後，您可以點擊鍵盤左下角的小地球圖標來啟用新安裝的鍵盤。",
-    "downloadGboardSteps": " • 下載Gboard\n  • 打開應用\n  • 語言\n  • 添加鍵盤\n  • 選擇語言\n  • 選擇鍵盤類型\n  • 完成",
     "enableAutocorrectWarning": "警告！需要添加您的目標語言鍵盤",
     "displayName": "顯示名稱",
     "leaveRoomDescription": "你即將離開此聊天。其他用戶將看到你已離開聊天。",
     "confirmUserId": "請確認你的 Pangea Chat 用戶名以刪除你的帳戶。",
     "paidSubscriptionStarts": "由 {startDate} 開始",
     "cancelInSubscriptionSettings": "• 可隨時在訂閱設定中取消",
-    "downloadGboard": "下載 Gboard",
     "autocorrectNotAvailable": "很抱歉，你的平台目前不支援此功能。請留意後續開發！",
     "pleaseUpdateApp": "請更新應用程式以繼續。",
     "chooseEmojiInstructionsBody": "將表情符號與它們最能代表的詞語配對。別擔心！不同意也不扣分。😅",
@@ -1266,7 +1264,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-19 14:14:53.167832",
+    "@@last_modified": "2026-08-20 13:11:46.888605",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -5975,10 +5973,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6004,10 +5998,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10713,5 +10703,6 @@
     "inviteAFriend": "邀請朋友",
     "autocorrectAndroidDialogTitle": "目標語言自動校正",
     "autocorrectAndroidDialogBody": "當您在聊天中輸入時，您的鍵盤將切換到您的目標語言並以該語言校正拼寫。",
-    "autocorrectAndroidFallbackTitle": "如果您的鍵盤不提供您的目標語言，請安裝 Gboard 並在那裡添加該語言："
+    "autocorrectAndroidFallbackTitle": "如果您的鍵盤不提供您的目標語言，請安裝 Gboard 並在那裡添加該語言：",
+    "openKeyboardSettings": "開啟鍵盤設定"
 }

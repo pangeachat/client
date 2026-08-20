@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-19 14:14:45.682758",
+    "@@last_modified": "2026-08-20 13:11:42.099167",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Tambah keyboard basa target sampeyan kanthi pindhah menyang:",
     "enableAutocorrectPopupSteps": "  • Setelan\n  • Umum\n  • Keyboard\n  • Keyboard\n  • Tambah Keyboard Anyar",
     "enableAutocorrectPopupDescription": "Sawise basa dipilih, sampeyan bisa ngeklik ikon globe cilik ing sisih ngisor kiwa keyboard kanggo ngaktifake keyboard sing mentas diinstal.",
-    "downloadGboardSteps": " • Unduh Gboard\n  • Bukak aplikasi\n  • Basa\n  • Tambah keyboard\n  • Pilih Basa\n  • Pilih jinis keyboard\n  • Rampung",
     "enableAutocorrectWarning": "Pènget! Mbutuhake nambah keyboard basa target sampeyan",
     "displayName": "Jeneng tampilan",
     "leaveRoomDescription": "Sampeyan arep ninggalake obrolan iki. Pangguna liyane bakal ngerti yen sampeyan wis ninggalake obrolan.",
     "confirmUserId": "Mangga konfirmasi jeneng pangguna Pangea Chat sampeyan kanggo mbusak akun sampeyan.",
     "paidSubscriptionStarts": "Miwiti {startDate}",
     "cancelInSubscriptionSettings": "• Batal kapan wae ing setelan langganan",
-    "downloadGboard": "Unduh Gboard",
     "autocorrectNotAvailable": "Sayange platform sampeyan saiki ora didhukung kanggo fitur iki. Tetep nganyari kanggo pangembangan luwih lanjut!",
     "pleaseUpdateApp": "Mangga nganyari aplikasi kanggo nerusake.",
     "chooseEmojiInstructionsBody": "Cocokake emoji karo tembung sing paling diwakili. Aja kuwatir! Ora ana poin sing dikurangi amarga ora setuju. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Ngunjuk kanca",
     "autocorrectAndroidDialogTitle": "Autocorrect ing basa targetmu",
     "autocorrectAndroidDialogBody": "Nalika ngetik ing obrolan, keyboard-mu bakal ganti menyang basa targetmu lan mbenerake ejaan ing basa kasebut.",
-    "autocorrectAndroidFallbackTitle": "Yen keyboard-mu ora nawakake basa targetmu, instal Gboard lan tambahake basa kasebut ing kana:"
+    "autocorrectAndroidFallbackTitle": "Yen keyboard-mu ora nawakake basa targetmu, instal Gboard lan tambahake basa kasebut ing kana:",
+    "openKeyboardSettings": "Setelan Papan Ketik Dibukak"
 }

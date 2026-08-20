@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-19 14:14:53.877130",
+    "@@last_modified": "2026-08-20 13:11:46.810743",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -3360,14 +3360,12 @@
     "enableAutocorrectPopupTitle": "通过以下步骤添加目标语言键盘：",
     "enableAutocorrectPopupSteps": "  • 设置\n  • 通用\n  • 键盘\n  • 键盘\n  • 添加新键盘",
     "enableAutocorrectPopupDescription": "选择语言后，可以点击键盘左下角的小地球图标，激活新安装的键盘。",
-    "downloadGboardSteps": " • 下载Gboard\n  • 打开应用\n  • 语言\n  • 添加键盘\n  • 选择语言\n  • 选择键盘类型\n  • 完成",
     "enableAutocorrectWarning": "警告！需要添加目标语言键盘",
     "displayName": "显示名称",
     "leaveRoomDescription": "你即将离开此聊天。其他用户将看到你已离开聊天。",
     "confirmUserId": "请确认您的Pangea聊天用户名以删除您的账户。",
     "paidSubscriptionStarts": "开始于 {startDate}",
     "cancelInSubscriptionSettings": "• 在订阅设置中随时取消",
-    "downloadGboard": "下载Gboard",
     "autocorrectNotAvailable": "很抱歉，您的平台目前不支持此功能。请关注后续开发！",
     "pleaseUpdateApp": "请更新应用以继续。",
     "chooseEmojiInstructionsBody": "将表情符号与它们最能代表的单词匹配。别担心！不同意也不会扣分。😊",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9756,5 +9746,6 @@
     "inviteAFriend": "邀请好友",
     "autocorrectAndroidDialogTitle": "目标语言自动更正",
     "autocorrectAndroidDialogBody": "在聊天中输入时，键盘将切换到您的目标语言并更正该语言的拼写。",
-    "autocorrectAndroidFallbackTitle": "如果您的键盘不提供目标语言，请安装 Gboard 并在其中添加该语言："
+    "autocorrectAndroidFallbackTitle": "如果您的键盘不提供目标语言，请安装 Gboard 并在其中添加该语言：",
+    "openKeyboardSettings": "打开键盘设置"
 }

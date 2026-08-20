@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-19 14:14:45.473711",
+    "@@last_modified": "2026-08-20 13:11:42.096330",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Tinye ahụigodo asụsụ ebumnuche gị site na ịga na:",
     "enableAutocorrectPopupSteps": "  • Ntọala\n  • Izugbe\n  • Ahụigodo\n  • Ahụigodo\n  • Tinye Ahụigodo Ọhụrụ",
     "enableAutocorrectPopupDescription": "Ozugbo ahọpụtara asụsụ ahụ, ị nwere ike pịa akara ngosi ụwa dị n'aka ekpe ala nke ahụigodo gị iji mee ka ahụigodo ọhụrụ ahụ arụnyere rụọ ọrụ.",
-    "downloadGboardSteps": " • Budata Gboard\n  • Mepee ngwa\n  • Asụsụ\n  • Tinye ahụigodo\n  • Họrọ Asụsụ\n  • Họrọ ụdị ahụigodo\n  • Emechaala",
     "enableAutocorrectWarning": "Ịdọ aka ná ntị! Achọrọ ịgbakwunye ahụigodo asụsụ ebumnuche gị",
     "displayName": "Aha ngosi",
     "leaveRoomDescription": "Ị na-achọ ịhapụ nkata a. Ndị ọrụ ndị ọzọ ga-ahụ na ị hapụla nkata ahụ.",
     "confirmUserId": "Biko kwado aha njirimara Pangea Chat gị iji hichapụ akaụntụ gị.",
     "paidSubscriptionStarts": "Na-amalite {startDate}",
     "cancelInSubscriptionSettings": "• Kagbuo n'oge ọ bụla na ntọala ndenye aha",
-    "downloadGboard": "Budata Gboard",
     "autocorrectNotAvailable": "Ndo, anaghị akwado ikpo okwu gị ugbu a maka atụmatụ a. Nọrọ na nche maka mmepe ọzọ!",
     "pleaseUpdateApp": "Biko melite ngwa ahụ ka ịga n'ihu.",
     "chooseEmojiInstructionsBody": "Dakọtara emojis na okwu ndị ha kacha nọchite anya. Echegbula! Enweghị isi ihe efu maka ekwekọghị. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "Kpọọ enyi",
     "autocorrectAndroidDialogTitle": "Ndozighie onwe ya n'asụsụ ị na-amụ",
     "autocorrectAndroidDialogBody": "Mgbe ị na-ede ihe na nkata, ahụigodo gị ga-agbanwe gaa n'asụsụ ị na-amụ ma dozie mkpoputa n'asụsụ ahụ.",
-    "autocorrectAndroidFallbackTitle": "Ọ bụrụ na ahụigodo gị anaghị enye asụsụ ị na-amụ, wụnye Gboard ma tinye asụsụ ahụ ebe ahụ:"
+    "autocorrectAndroidFallbackTitle": "Ọ bụrụ na ahụigodo gị anaghị enye asụsụ ị na-amụ, wụnye Gboard ma tinye asụsụ ahụ ebe ahụ:",
+    "openKeyboardSettings": "Mepee Ntọala Ahụigwe"
 }

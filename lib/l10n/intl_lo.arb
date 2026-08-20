@@ -1,6 +1,6 @@
 {
     "@@locale": "lo",
-    "@@last_modified": "2026-08-19 14:14:46.659155",
+    "@@last_modified": "2026-08-20 13:11:43.010678",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ຢືນຢັນລະຫັດຜ່ານ",
     "notAnImage": "ບໍ່ແມ່ນໄຟລ໌ຮູບພາບ.",
@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "ເພີ່ມແປ້ນພິມພາສາເປົ້າໝາຍຂອງທ່ານໂດຍການໄປທີ່:",
     "enableAutocorrectPopupSteps": "  • ການຕັ້ງຄ່າ\n  • ທົ່ວໄປ\n  • ແປ້ນພິມ\n  • ແປ້ນພິມຕ່າງໆ\n  • ເພີ່ມແປ້ນພິມໃໝ່",
     "enableAutocorrectPopupDescription": "ເມື່ອເລືອກພາສາແລ້ວ, ທ່ານສາມາດຄລິກໄອຄອນໂລກນ້ອຍໆຢູ່ເບື້ອງຊ້າຍລຸ່ມຂອງແປ້ນພິມຂອງທ່ານເພື່ອເປີດໃຊ້ແປ້ນພິມທີ່ຕິດຕັ້ງໃໝ່.",
-    "downloadGboardSteps": " • ດາວໂຫຼດ Gboard\n  • ເປີດແອັບ\n  • ພາສາ\n  • ເພີ່ມແປ້ນພິມ\n  • ເລືອກພາສາ\n  • ເລືອກປະເພດແປ້ນພິມ\n  • ສຳເລັດ",
     "enableAutocorrectWarning": "ຄຳເຕືອນ! ຕ້ອງເພີ່ມແປ້ນພິມພາສາເປົ້າໝາຍຂອງທ່ານ",
     "displayName": "ຊື່ທີ່ສະແດງ",
     "leaveRoomDescription": "ທ່ານກຳລັງຈະອອກຈາກການສົນທະນານີ້. ຜູ້ໃຊ້ອື່ນໆຈະເຫັນວ່າທ່ານໄດ້ອອກຈາກການສົນທະນາແລ້ວ.",
     "confirmUserId": "ກະລຸນາຢືນຢັນຊື່ຜູ້ໃຊ້ Pangea Chat ຂອງທ່ານເພື່ອລຶບບັນຊີຂອງທ່ານ.",
     "paidSubscriptionStarts": "ເລີ່ມຕົ້ນ {startDate}",
     "cancelInSubscriptionSettings": "• ຍົກເລີກໄດ້ທຸກເວລາໃນການຕັ້ງຄ່າການສະໝັກໃຊ້",
-    "downloadGboard": "ດາວໂຫຼດ Gboard",
     "autocorrectNotAvailable": "ຂໍອະໄພ, ແພລດຟອມຂອງທ່ານບໍ່ຮອງຮັບຄຸນສົມບັດນີ້ໃນປັດຈຸບັນ. ຕິດຕາມການພັດທະນາຕໍ່ໄປ!",
     "pleaseUpdateApp": "ກະລຸນາອັບເດດແອັບເພື່ອສືບຕໍ່.",
     "chooseEmojiInstructionsBody": "ຈັບຄູ່ອີໂມຈິກັບຄຳສັບທີ່ພວກມັນເປັນຕົວແທນໄດ້ດີທີ່ສຸດ. ຢ່າກັງວົນ! ບໍ່ມີການຫັກຄະແນນສຳລັບການບໍ່ເຫັນດີ. 😅",
@@ -2152,5 +2150,6 @@
     "inviteAFriend": "ເຊີນໝູ່",
     "autocorrectAndroidDialogTitle": "ແກ້ໄຂອັດຕະໂນມັດໃນພາສາເປົ້າໝາຍຂອງທ່ານ",
     "autocorrectAndroidDialogBody": "ເມື່ອທ່ານພິມໃນການສົນທະນາ, ແປ້ນພິມຂອງທ່ານຈະປ່ຽນເປັນພາສາເປົ້າໝາຍຂອງທ່ານ ແລະ ແກ້ໄຂການສະກົດຄຳໃນພາສານັ້ນ.",
-    "autocorrectAndroidFallbackTitle": "ຖ້າແປ້ນພິມຂອງທ່ານບໍ່ຮອງຮັບພາສາເປົ້າໝາຍຂອງທ່ານ, ໃຫ້ຕິດຕັ້ງ Gboard ແລະ ເພີ່ມພາສານັ້ນຢູ່ບ່ອນນັ້ນ:"
+    "autocorrectAndroidFallbackTitle": "ຖ້າແປ້ນພິມຂອງທ່ານບໍ່ຮອງຮັບພາສາເປົ້າໝາຍຂອງທ່ານ, ໃຫ້ຕິດຕັ້ງ Gboard ແລະ ເພີ່ມພາສານັ້ນຢູ່ບ່ອນນັ້ນ:",
+    "openKeyboardSettings": "ເປີດການຕັ້ງຄ່າແປ້ນພິມ"
 }

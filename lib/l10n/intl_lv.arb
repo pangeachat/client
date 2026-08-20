@@ -3350,14 +3350,12 @@
     "enableAutocorrectPopupTitle": "Pievienojiet savu mērķvalodas tastatūru, dodoties uz:",
     "enableAutocorrectPopupSteps": "  • Iestatījumi\n  • Vispārīgi\n  • Tastatūra\n  • Tastatūras\n  • Pievienot jaunu tastatūru",
     "enableAutocorrectPopupDescription": "Kad valoda ir izvēlēta, jūs varat noklikšķināt uz mazās globusa ikonas apakšējā kreisajā stūrī, lai aktivizētu jauno instalēto tastatūru.",
-    "downloadGboardSteps": " • Lejupielādēt Gboard\n  • Atvērt lietotni\n  • Valodas\n  • Pievienot tastatūru\n  • Izvēlēties valodu\n  • Izvēlēties tastatūras veidu\n  • Gatavs",
     "enableAutocorrectWarning": "Brīdinājums! Nepieciešams pievienot mērķvalodas tastatūru",
     "displayName": "Parādāmais vārds",
     "leaveRoomDescription": "Jūs parādīsiet, ka pametat šo čatu. Citi lietotāji redzēs, ka esat aizgājis no čata.",
     "confirmUserId": "Lūdzu, apstipriniet savu Pangea Chat lietotājvārdu, lai dzēstu savu kontu.",
     "paidSubscriptionStarts": "Sākas {startDate}",
     "cancelInSubscriptionSettings": "• Atcelt jebkurā laikā abonementa iestatījumos",
-    "downloadGboard": "Lejupielādēt Gboard",
     "autocorrectNotAvailable": "Diemžēl jūsu platforma šobrīd nav atbalstīta šai funkcijai. Sekojiet līdzi turpmākajiem attīstības posmiem!",
     "pleaseUpdateApp": "Lūdzu, atjauniniet lietotni, lai turpinātu.",
     "chooseEmojiInstructionsBody": "Saskaņojiet emocijas ar vārdiem, ko tās vislabāk pārstāv. Neuztraucieties! Par nesaskaņām nav punktu zaudējumu. 😅",
@@ -3538,7 +3536,7 @@
     "playWithAI": "Tagad spēlējiet ar AI",
     "courseStartDesc": "Pangea bots ir gatavs jebkurā laikā!\n\n...bet mācīties ir labāk ar draugiem!",
     "@@locale": "lv",
-    "@@last_modified": "2026-08-19 14:14:47.926279",
+    "@@last_modified": "2026-08-20 13:11:43.176695",
     "analyticsInactiveTitle": "Pieprasījumi neaktīviem lietotājiem nevar tikt nosūtīti",
     "analyticsInactiveDesc": "Neaktīvi lietotāji, kuri nav pieteikušies kopš šīs funkcijas ieviešanas, neredzēs jūsu pieprasījumu.\n\nPieprasījuma poga parādīsies, kad viņi atgriezīsies. Jūs varat atkārtoti nosūtīt pieprasījumu vēlāk, noklikšķinot uz pieprasījuma pogas viņu vārdā, kad tā būs pieejama.",
     "accessRequestedTitle": "Pieprasījums piekļūt analītikai",
@@ -5567,10 +5565,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5596,10 +5590,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9756,5 +9746,6 @@
     "inviteAFriend": "Uzaicināt draugu",
     "autocorrectAndroidDialogTitle": "Automātiskā korekcija jūsu mērķa valodā",
     "autocorrectAndroidDialogBody": "Kad rakstīsiet tērzēšanā, tastatūra pārslēgsies uz jūsu mērķa valodu un labos pareizrakstību šajā valodā.",
-    "autocorrectAndroidFallbackTitle": "Ja jūsu tastatūra nepiedāvā jūsu mērķa valodu, instalējiet Gboard un pievienojiet valodu tur:"
+    "autocorrectAndroidFallbackTitle": "Ja jūsu tastatūra nepiedāvā jūsu mērķa valodu, instalējiet Gboard un pievienojiet valodu tur:",
+    "openKeyboardSettings": "Atvērt tastatūras iestatījumus"
 }
