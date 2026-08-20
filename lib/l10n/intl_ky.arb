@@ -1,6 +1,6 @@
 {
     "@@locale": "ky",
-    "@@last_modified": "2026-08-19 12:57:13.630450",
+    "@@last_modified": "2026-08-19 14:14:47.710197",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Сырсөздү кайталаңыз",
     "notAnImage": "Сүрөт файлы эмес.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Колдонуучулар курсуңузга кошулууга аракет кылып жатышат",
     "denyAllUsers": "Бардык колдонуучулардан баш тартуу",
     "denyAllKnocksDescription": "Бул колдонуучулар курстан четтетилет. Алар каалаган убакта кайра кошулууга аракет кылышы мүмкүн.",
+    "courseNameHint": "Курстун аталышы",
+    "typeCourseCodeToConfirm": "Ырастоо үчүн, төмөндө {code} курс кодун териңиз.",
+    "typeCourseNameToConfirm": "Ырастоо үчүн, төмөндө {name} курстун аталышын териңиз.",
     "inviteAFriend": "Досуңузду чакырыңыз",
     "autocorrectAndroidDialogTitle": "Максаттуу тилиңиздеги автооңдоо",
     "autocorrectAndroidDialogBody": "Чатка тергениңизде, клавиатураңыз максаттуу тилиңизге которулуп, ошол тилдеги орфографияны оңдойт.",

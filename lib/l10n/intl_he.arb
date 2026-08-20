@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 12:57:12.386892",
+    "@@last_modified": "2026-08-19 14:14:43.546265",
     "about": "אודות",
     "@about": {
         "type": "String",
@@ -10664,6 +10664,9 @@
     "usersAreTryingToJoinCourse": "משתמשים מנסים להצטרף לקורס שלך",
     "denyAllUsers": "דחה את כל המשתמשים",
     "denyAllKnocksDescription": "משתמשים אלה יידחו מהקורס. הם עשויים לנסות להצטרף שוב בכל עת.",
+    "courseNameHint": "שם הקורס",
+    "typeCourseCodeToConfirm": "כדי לאשר, הקלד את קוד הקורס {code} למטה.",
+    "typeCourseNameToConfirm": "כדי לאשר, הקלד את שם הקורס {name} למטה.",
     "inviteAFriend": "הזמן חבר",
     "autocorrectAndroidDialogTitle": "תיקון שגיאות אוטומטי בשפת היעד שלך",
     "autocorrectAndroidDialogBody": "כשאתה מקליד בצ'אט, המקלדת שלך תעבור לשפת היעד שלך ותתקן שגיאות כתיב בשפה זו.",

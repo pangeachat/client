@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-19 12:57:12.703008",
+    "@@last_modified": "2026-08-19 14:14:44.784724",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9853,6 +9853,9 @@
     "usersAreTryingToJoinCourse": "Felhasználók próbálnak csatlakozni a kurzusodhoz",
     "denyAllUsers": "Összes felhasználó elutasítása",
     "denyAllKnocksDescription": "Ezeket a felhasználókat elutasítjuk a kurzusról. Bármikor újra megpróbálhatnak csatlakozni.",
+    "courseNameHint": "Tanfolyam neve",
+    "typeCourseCodeToConfirm": "A megerősítéshez írja be a {code} tanfolyamkódot alább.",
+    "typeCourseNameToConfirm": "A megerősítéshez írja be a {name} tanfolyamnevet alább.",
     "inviteAFriend": "Hívj meg egy barátot",
     "autocorrectAndroidDialogTitle": "Automatikus javítás a célnyelven",
     "autocorrectAndroidDialogBody": "Amikor csevegésben gépel, a billentyűzet átvált a célnyelvre, és azon a nyelven javítja a helyesírást.",

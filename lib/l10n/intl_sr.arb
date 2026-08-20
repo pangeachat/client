@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 12:57:15.897642",
+    "@@last_modified": "2026-08-19 14:14:50.569583",
     "about": "О програму",
     "@about": {
         "type": "String",
@@ -10699,6 +10699,9 @@
     "usersAreTryingToJoinCourse": "Korisnici pokušavaju da se pridruže vašem kursu",
     "denyAllUsers": "Odbij sve korisnike",
     "denyAllKnocksDescription": "Ovi korisnici će biti odbijeni sa kursa. Mogu pokušati da se ponovo pridruže u bilo kom trenutku.",
+    "courseNameHint": "Naziv kursa",
+    "typeCourseCodeToConfirm": "Da potvrdite, unesite kod kursa {code} ispod.",
+    "typeCourseNameToConfirm": "Da potvrdite, unesite naziv kursa {name} ispod.",
     "inviteAFriend": "Pozovi prijatelja",
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada kucate u ćaskanju, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",

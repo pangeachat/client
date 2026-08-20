@@ -2562,7 +2562,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-19 12:57:15.506909",
+    "@@last_modified": "2026-08-19 14:14:50.028771",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10667,6 +10667,9 @@
     "usersAreTryingToJoinCourse": "Os utilizadores estão a tentar aderir ao seu curso",
     "denyAllUsers": "Recusar todos os utilizadores",
     "denyAllKnocksDescription": "Estes utilizadores serão rejeitados do curso. Poderão tentar aderir novamente a qualquer momento.",
+    "courseNameHint": "Nome do curso",
+    "typeCourseCodeToConfirm": "Para confirmar, digite o código do curso {code} abaixo.",
+    "typeCourseNameToConfirm": "Para confirmar, digite o nome do curso {name} abaixo.",
     "inviteAFriend": "Convidar um amigo",
     "autocorrectAndroidDialogTitle": "Correção automática na sua língua-alvo",
     "autocorrectAndroidDialogBody": "Quando escrever numa conversa, o seu teclado mudará para a sua língua-alvo e corrigirá a ortografia nessa língua.",

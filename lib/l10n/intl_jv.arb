@@ -1,6 +1,6 @@
 {
     "@@locale": "jv",
-    "@@last_modified": "2026-08-19 12:57:13.235858",
+    "@@last_modified": "2026-08-19 14:14:45.682758",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Baleni sandi",
     "notAnImage": "Dudu file gambar.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Pangguna nyoba gabung kursusmu",
     "denyAllUsers": "Tolak kabeh pangguna",
     "denyAllKnocksDescription": "Pangguna iki bakal ditolak saka kursus. Dheweke bisa nyoba gabung maneh kapan wae.",
+    "courseNameHint": "Jeneng kursus",
+    "typeCourseCodeToConfirm": "Kanggo konfirmasi, ketik kode kursus {code} ing ngisor iki.",
+    "typeCourseNameToConfirm": "Kanggo konfirmasi, ketik jeneng kursus {name} ing ngisor iki.",
     "inviteAFriend": "Ngunjuk kanca",
     "autocorrectAndroidDialogTitle": "Autocorrect ing basa targetmu",
     "autocorrectAndroidDialogBody": "Nalika ngetik ing obrolan, keyboard-mu bakal ganti menyang basa targetmu lan mbenerake ejaan ing basa kasebut.",

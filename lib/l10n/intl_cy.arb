@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-19 12:57:11.418831",
+    "@@last_modified": "2026-08-19 14:14:41.818810",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Mae defnyddwyr yn ceisio ymuno â'ch cwrs",
     "denyAllUsers": "Gwrthod pob defnyddiwr",
     "denyAllKnocksDescription": "Bydd y defnyddwyr hyn yn cael eu gwrthod o'r cwrs. Gallant geisio ymuno eto unrhyw bryd.",
+    "courseNameHint": "Enw'r cwrs",
+    "typeCourseCodeToConfirm": "I gadarnhau, teipiwch y cod cwrs {code} isod.",
+    "typeCourseNameToConfirm": "I gadarnhau, teipiwch enw'r cwrs {name} isod.",
     "inviteAFriend": "Gwahodd ffrind",
     "autocorrectAndroidDialogTitle": "Awto-gywiro yn eich iaith darged",
     "autocorrectAndroidDialogBody": "Pan fyddwch chi'n teipio mewn sgwrs, bydd eich bysellfwrdd yn newid i'ch iaith darged ac yn cywiro sillafu yn yr iaith honno.",

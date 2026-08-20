@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-19 12:57:15.714431",
+    "@@last_modified": "2026-08-19 14:14:50.620262",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "O lo'o taumafai tagata fa'aoga e auai i lau kosi",
     "denyAllUsers": "Te'ena tagata fa'aoga uma",
     "denyAllKnocksDescription": "O le a te'ena nei tagata fa'aoga mai le kosi. E mafai ona latou toe taumafai e auai i so'o se taimi.",
+    "courseNameHint": "Igoa o le kosi",
+    "typeCourseCodeToConfirm": "Ina ia faʻamaonia, tusi le code o le kosi {code} i lalo.",
+    "typeCourseNameToConfirm": "Ina ia faʻamaonia, tusi le igoa o le kosi {name} i lalo.",
     "inviteAFriend": "Valaaulia se uo",
     "autocorrectAndroidDialogTitle": "Fa'asa'oga otometi i lau gagana e a'oa'oina",
     "autocorrectAndroidDialogBody": "A e taina i se talatalanoaga, o le a fesuia'i lau piano i lau gagana e a'oa'oina ma fa'asa'o le sipelaga i lena gagana.",

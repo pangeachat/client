@@ -1,6 +1,6 @@
 {
     "@@locale": "hmn",
-    "@@last_modified": "2026-08-19 12:57:12.520574",
+    "@@last_modified": "2026-08-19 14:14:44.468768",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Sau tus password dua",
     "notAnImage": "Tsis yog daim duab.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Cov neeg siv tab tom sim koom koj chav kawm",
     "denyAllUsers": "Tsis kam tag nrho cov neeg siv",
     "denyAllKnocksDescription": "Cov neeg siv no yuav raug tsis lees paub los ntawm chav kawm. Lawv yuav sim koom dua txhua lub sijhawm.",
+    "courseNameHint": "Lub npe kawm",
+    "typeCourseCodeToConfirm": "Txhawm rau kom paub tseeb, ntaus tus lej kawm {code} hauv qab no.",
+    "typeCourseNameToConfirm": "Txhawm rau kom paub tseeb, ntaus lub npe kawm {name} hauv qab no.",
     "inviteAFriend": "Caw ib tug phooj ywg",
     "autocorrectAndroidDialogTitle": "Kho lus tsis yog rau koj hom lus",
     "autocorrectAndroidDialogBody": "Thaum koj ntaus ntawv hauv kev sib tham, koj lub keyboard yuav hloov mus rau koj hom lus thiab kho cov lus tsis yog hauv hom lus ntawd.",

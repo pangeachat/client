@@ -1,6 +1,6 @@
 {
     "@@locale": "zh",
-    "@@last_modified": "2026-08-19 12:57:17.102250",
+    "@@last_modified": "2026-08-19 14:14:53.877130",
     "about": "关于",
     "@about": {
         "type": "String",
@@ -9750,6 +9750,9 @@
     "usersAreTryingToJoinCourse": "有用户正尝试加入您的课程",
     "denyAllUsers": "拒绝所有用户",
     "denyAllKnocksDescription": "这些用户将被拒绝加入课程。他们可以随时再次尝试加入。",
+    "courseNameHint": "课程名称",
+    "typeCourseCodeToConfirm": "请在下方输入课程代码 {code} 以确认。",
+    "typeCourseNameToConfirm": "请在下方输入课程名称 {name} 以确认。",
     "inviteAFriend": "邀请好友",
     "autocorrectAndroidDialogTitle": "目标语言自动更正",
     "autocorrectAndroidDialogBody": "在聊天中输入时，键盘将切换到您的目标语言并更正该语言的拼写。",

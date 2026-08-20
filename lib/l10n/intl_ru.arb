@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-19 12:57:15.423651",
+    "@@last_modified": "2026-08-19 14:14:49.559106",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10722,6 +10722,9 @@
     "usersAreTryingToJoinCourse": "Пользователи пытаются присоединиться к вашему курсу",
     "denyAllUsers": "Отклонить всех пользователей",
     "denyAllKnocksDescription": "Эти пользователи будут отклонены от курса. Они могут попытаться присоединиться снова в любое время.",
+    "courseNameHint": "Название курса",
+    "typeCourseCodeToConfirm": "Для подтверждения введите код курса {code} ниже.",
+    "typeCourseNameToConfirm": "Для подтверждения введите название курса {name} ниже.",
     "inviteAFriend": "Пригласить друга",
     "autocorrectAndroidDialogTitle": "Автокоррекция на целевом языке",
     "autocorrectAndroidDialogBody": "Когда вы печатаете в чате, клавиатура переключится на ваш целевой язык и будет исправлять орфографию на этом языке.",

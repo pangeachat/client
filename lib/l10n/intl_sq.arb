@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-19 12:57:16.162541",
+    "@@last_modified": "2026-08-19 14:14:50.363718",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Përdoruesit po përpiqen t'i bashkohen kursit tuaj",
     "denyAllUsers": "Refuzo të gjithë përdoruesit",
     "denyAllKnocksDescription": "Këta përdorues do të refuzohen nga kursi. Ata mund të provojnë t'i bashkohen sërish në çdo kohë.",
+    "courseNameHint": "Emri i kursit",
+    "typeCourseCodeToConfirm": "Për të konfirmuar, shkruani kodin e kursit {code} më poshtë.",
+    "typeCourseNameToConfirm": "Për të konfirmuar, shkruani emrin e kursit {name} më poshtë.",
     "inviteAFriend": "Fto një mik",
     "autocorrectAndroidDialogTitle": "Autokorrektimi në gjuhën tuaj të synuar",
     "autocorrectAndroidDialogBody": "Kur shkruani në një bisedë, tastiera juaj do të kalojë në gjuhën tuaj të synuar dhe do të korrigjojë drejtshkrimin në atë gjuhë.",

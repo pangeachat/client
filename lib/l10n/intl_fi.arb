@@ -3539,7 +3539,7 @@
     "playWithAI": "Leiki tekoälyn kanssa nyt",
     "courseStartDesc": "Pangea Bot on valmis milloin tahansa!\n\n...mutta oppiminen on parempaa ystävien kanssa!",
     "@@locale": "fi",
-    "@@last_modified": "2026-08-19 12:57:11.987962",
+    "@@last_modified": "2026-08-19 14:14:42.836739",
     "@notificationRuleJitsi": {
         "type": "String",
         "placeholders": {}
@@ -9787,6 +9787,9 @@
     "usersAreTryingToJoinCourse": "Käyttäjät yrittävät liittyä kurssillesi",
     "denyAllUsers": "Estä kaikki käyttäjät",
     "denyAllKnocksDescription": "Nämä käyttäjät hylätään kurssilta. He voivat yrittää liittyä uudelleen milloin tahansa.",
+    "courseNameHint": "Kurssin nimi",
+    "typeCourseCodeToConfirm": "Vahvista kirjoittamalla kurssikoodi {code} alle.",
+    "typeCourseNameToConfirm": "Vahvista kirjoittamalla kurssin nimi {name} alle.",
     "inviteAFriend": "Kutsu ystävä",
     "autocorrectAndroidDialogTitle": "Automaattinen korjaus kohdekielelläsi",
     "autocorrectAndroidDialogBody": "Kun kirjoitat keskusteluun, näppäimistösi vaihtaa kohdekieleesi ja korjaa kirjoitusvirheet kyseisellä kielellä.",

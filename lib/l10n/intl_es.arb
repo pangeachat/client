@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-19 12:57:11.673850",
+    "@@last_modified": "2026-08-19 14:14:42.454116",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7961,6 +7961,9 @@
     "usersAreTryingToJoinCourse": "Los usuarios están intentando unirse a tu curso",
     "denyAllUsers": "Rechazar a todos los usuarios",
     "denyAllKnocksDescription": "Estos usuarios serán rechazados del curso. Pueden intentar unirse de nuevo en cualquier momento.",
+    "courseNameHint": "Nombre del curso",
+    "typeCourseCodeToConfirm": "Para confirmar, escribe el código del curso {code} a continuación.",
+    "typeCourseNameToConfirm": "Para confirmar, escribe el nombre del curso {name} a continuación.",
     "inviteAFriend": "Invita a un amigo",
     "autocorrectAndroidDialogTitle": "Autocorrección en tu idioma objetivo",
     "autocorrectAndroidDialogBody": "Cuando escribas en un chat, tu teclado cambiará a tu idioma objetivo y corregirá la ortografía en ese idioma.",

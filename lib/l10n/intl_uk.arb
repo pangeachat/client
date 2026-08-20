@@ -1,6 +1,6 @@
 {
     "@@locale": "uk",
-    "@@last_modified": "2026-08-19 12:57:16.633982",
+    "@@last_modified": "2026-08-19 14:14:51.807131",
     "about": "Про застосунок",
     "@about": {
         "type": "String",
@@ -9750,6 +9750,9 @@
     "usersAreTryingToJoinCourse": "Користувачі намагаються приєднатися до вашого курсу",
     "denyAllUsers": "Відхилити всіх користувачів",
     "denyAllKnocksDescription": "Цим користувачам буде відмовлено в доступі до курсу. Вони можуть спробувати приєднатися знову в будь-який час.",
+    "courseNameHint": "Назва курсу",
+    "typeCourseCodeToConfirm": "Для підтвердження введіть код курсу {code} нижче.",
+    "typeCourseNameToConfirm": "Для підтвердження введіть назву курсу {name} нижче.",
     "inviteAFriend": "Запросити друга",
     "autocorrectAndroidDialogTitle": "Автовиправлення цільовою мовою",
     "autocorrectAndroidDialogBody": "Коли ви друкуєте в чаті, клавіатура перемикається на цільову мову та виправляє орфографію цією мовою.",

@@ -2083,7 +2083,7 @@
     "selectAll": "Piliin lahat",
     "deselectAll": "Huwag piliin lahat",
     "@@locale": "fil",
-    "@@last_modified": "2026-08-19 12:57:11.896703",
+    "@@last_modified": "2026-08-19 14:14:42.783762",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10610,6 +10610,9 @@
     "usersAreTryingToJoinCourse": "May mga user na gustong sumali sa iyong kurso",
     "denyAllUsers": "Tanggihan lahat ng user",
     "denyAllKnocksDescription": "Ang mga user na ito ay tatanggihan sa kurso. Maaari silang sumubok sumali muli anumang oras.",
+    "courseNameHint": "Pangalan ng kurso",
+    "typeCourseCodeToConfirm": "Para kumpirmahin, i-type ang course code na {code} sa ibaba.",
+    "typeCourseNameToConfirm": "Para kumpirmahin, i-type ang pangalan ng kurso na {name} sa ibaba.",
     "inviteAFriend": "Mag-imbita ng kaibigan",
     "autocorrectAndroidDialogTitle": "Autocorrect sa iyong target na wika",
     "autocorrectAndroidDialogBody": "Kapag nagta-type ka sa chat, lilipat ang iyong keyboard sa target na wika mo at itatama ang spelling sa wikang iyon.",

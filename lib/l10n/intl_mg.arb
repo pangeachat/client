@@ -1,6 +1,6 @@
 {
     "@@locale": "mg",
-    "@@last_modified": "2026-08-19 12:57:14.542772",
+    "@@last_modified": "2026-08-19 14:14:47.850769",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Hamerina ny tenimiafina",
     "notAnImage": "Tsy rakitra sary.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Misy mpampiasa te hiditra amin'ny taranjao",
     "denyAllUsers": "Mandà ny mpampiasa rehetra",
     "denyAllKnocksDescription": "Hesorina amin'ny taranja ireo mpampiasa ireo. Afaka manandrana miditra indray izy ireo amin'ny fotoana rehetra.",
+    "courseNameHint": "Anaran'ny taranja",
+    "typeCourseCodeToConfirm": "Mba hanamafisana, soraty eto ambany ny kaody taranja {code}.",
+    "typeCourseNameToConfirm": "Mba hanamafisana, soraty eto ambany ny anaran'ny taranja {name}.",
     "inviteAFriend": "Manasa namana",
     "autocorrectAndroidDialogTitle": "Fanitsiana mandeha ho azy amin'ny fiteny tianao hianarana",
     "autocorrectAndroidDialogBody": "Rehefa manoratra amin'ny chat ianao, dia hiova ho amin'ny fiteny tianao hianarana ny klavier-nao ary hanitsy ny tsipelina amin'izany fiteny izany.",

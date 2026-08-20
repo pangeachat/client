@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-19 12:57:11.197045",
+    "@@last_modified": "2026-08-19 14:14:40.800362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Потребители се опитват да се присъединят към курса Ви",
     "denyAllUsers": "Отказ на всички потребители",
     "denyAllKnocksDescription": "Тези потребители ще бъдат отхвърлени от курса. Те могат да опитат да се присъединят отново по всяко време.",
+    "courseNameHint": "Име на курса",
+    "typeCourseCodeToConfirm": "За да потвърдите, въведете кода на курса {code} по-долу.",
+    "typeCourseNameToConfirm": "За да потвърдите, въведете името на курса {name} по-долу.",
     "inviteAFriend": "Покани приятел",
     "autocorrectAndroidDialogTitle": "Автокорекция на целевия език",
     "autocorrectAndroidDialogBody": "Когато пишете в чат, клавиатурата ви ще превключи на целевия език и ще коригира правописа на този език.",

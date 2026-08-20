@@ -1,6 +1,6 @@
 {
     "@@locale": "st",
-    "@@last_modified": "2026-08-19 12:57:16.025645",
+    "@@last_modified": "2026-08-19 14:14:51.521148",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Pheta phasewete",
     "notAnImage": "Ha se faele ya setshwantsho.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Basebelisi ba leka ho kenela thupelo ea hau",
     "denyAllUsers": "Hana basebelisi bohle",
     "denyAllKnocksDescription": "Basebelisi bana ba tla hanoa ho kenela thupelo. Ba ka leka ho kenela hape neng kapa neng.",
+    "courseNameHint": "Lebitso la thupelo",
+    "typeCourseCodeToConfirm": "Ho netefatsa, thaepa khoutu ea thupelo {code} ka tlase.",
+    "typeCourseNameToConfirm": "Ho netefatsa, thaepa lebitso la thupelo {name} ka tlase.",
     "inviteAFriend": "Mema motswalle",
     "autocorrectAndroidDialogTitle": "Ho lokisa ka boithaopo ka puo eo o e batlang",
     "autocorrectAndroidDialogBody": "Ha o thaepa moqoqong, keyboard ya hao e tla fetohela puong eo o e batlang mme e lokise mopeleto ka puo eo.",

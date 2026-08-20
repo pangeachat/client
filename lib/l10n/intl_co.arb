@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-19 12:57:11.301589",
+    "@@last_modified": "2026-08-19 14:14:41.675608",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "L'utilizatori cercanu à unisce si à u vostru corsu",
     "denyAllUsers": "Ricusà tutti l'utilizatori",
     "denyAllKnocksDescription": "Questi utilizatori seranu ricusati da u corsu. Puderanu pruvà à unisce si di novu in ogni mumentu.",
+    "courseNameHint": "Nome di u corsu",
+    "typeCourseCodeToConfirm": "Per cunfirmà, scrivite u codice di u corsu {code} quì sottu.",
+    "typeCourseNameToConfirm": "Per cunfirmà, scrivite u nome di u corsu {name} quì sottu.",
     "inviteAFriend": "Invità un amicu",
     "autocorrectAndroidDialogTitle": "Autucurrezzione in a vostra lingua di destinazione",
     "autocorrectAndroidDialogBody": "Quandu scrivite in una chjachjarata, a vostra tastiera cambierà à a vostra lingua di destinazione è curreggerà l'ortografia in quella lingua.",

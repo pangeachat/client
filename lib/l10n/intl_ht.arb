@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-19 12:57:12.853647",
+    "@@last_modified": "2026-08-19 14:14:44.942802",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Itilizatè yo ap eseye antre nan kou ou a",
     "denyAllUsers": "Refize tout itilizatè yo",
     "denyAllKnocksDescription": "Itilizatè sa yo pral rejte nan kou a. Yo ka eseye antre ankò nenpòt ki lè.",
+    "courseNameHint": "Non kou a",
+    "typeCourseCodeToConfirm": "Pou konfime, tape kòd kou a {code} anba a.",
+    "typeCourseNameToConfirm": "Pou konfime, tape non kou a {name} anba a.",
     "inviteAFriend": "Envite yon zanmi",
     "autocorrectAndroidDialogTitle": "Koreksyon otomatik nan lang sib ou a",
     "autocorrectAndroidDialogBody": "Lè w ap tape nan yon chat, klavye w ap chanje nan lang sib ou a epi l ap korije òtograf nan lang sa a.",

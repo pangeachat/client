@@ -1,6 +1,6 @@
 {
     "@@locale": "is",
-    "@@last_modified": "2026-08-19 12:57:12.971744",
+    "@@last_modified": "2026-08-19 14:14:46.081914",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Endurtaka lykilorð",
     "notAnImage": "Ekki myndaskrá.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Notendur eru að reyna að taka þátt í námskeiðinu þínu",
     "denyAllUsers": "Hafna öllum notendum",
     "denyAllKnocksDescription": "Þessum notendum verður hafnað frá námskeiðinu. Þeir geta reynt að taka þátt aftur hvenær sem er.",
+    "courseNameHint": "Heiti námskeiðs",
+    "typeCourseCodeToConfirm": "Til að staðfesta, sláðu inn námskeiðskóðann {code} hér að neðan.",
+    "typeCourseNameToConfirm": "Til að staðfesta, sláðu inn heiti námskeiðsins {name} hér að neðan.",
     "inviteAFriend": "Bjóddu vini",
     "autocorrectAndroidDialogTitle": "Sjálfvirk leiðrétting á markmálinu þínu",
     "autocorrectAndroidDialogBody": "Þegar þú skrifar í spjalli mun lyklaborðið þitt skipta yfir í markmálið þitt og leiðrétta stafsetningu á því máli.",

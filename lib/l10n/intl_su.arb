@@ -1,6 +1,6 @@
 {
     "@@locale": "su",
-    "@@last_modified": "2026-08-19 12:57:16.163977",
+    "@@last_modified": "2026-08-19 14:14:50.828720",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Balikan deui sandi",
     "notAnImage": "Sanés file gambar.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Pamaké nyobian ngagabung kursus anjeun",
     "denyAllUsers": "Tolak sadaya pamaké",
     "denyAllKnocksDescription": "Pamaké ieu bakal ditolak ti kursus. Maranéhna tiasa nyobian ngagabung deui iraha waé.",
+    "courseNameHint": "Ngaran kursus",
+    "typeCourseCodeToConfirm": "Pikeun mastikeun, ketik kode kursus {code} di handap.",
+    "typeCourseNameToConfirm": "Pikeun mastikeun, ketik ngaran kursus {name} di handap.",
     "inviteAFriend": "Ujang babaturan",
     "autocorrectAndroidDialogTitle": "Autocorrect dina basa target anjeun",
     "autocorrectAndroidDialogBody": "Nalika anjeun ngetik dina obrolan, kibor anjeun bakal robah kana basa target anjeun sarta ngabenerkeun éjahan dina basa éta.",

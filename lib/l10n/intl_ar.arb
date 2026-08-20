@@ -1,6 +1,6 @@
 {
     "@@locale": "ar",
-    "@@last_modified": "2026-08-19 12:57:10.844367",
+    "@@last_modified": "2026-08-19 14:14:41.117535",
     "about": "حول",
     "@about": {
         "type": "String",
@@ -10056,6 +10056,9 @@
     "usersAreTryingToJoinCourse": "يحاول المستخدمون الانضمام إلى دورتك التدريبية",
     "denyAllUsers": "رفض جميع المستخدمين",
     "denyAllKnocksDescription": "سيتم رفض هؤلاء المستخدمين من الدورة التدريبية. وقد يحاولون الانضمام مرة أخرى في أي وقت.",
+    "courseNameHint": "اسم الدورة",
+    "typeCourseCodeToConfirm": "للتأكيد، اكتب رمز الدورة {code} أدناه.",
+    "typeCourseNameToConfirm": "للتأكيد، اكتب اسم الدورة {name} أدناه.",
     "inviteAFriend": "ادعُ صديقًا",
     "autocorrectAndroidDialogTitle": "التصحيح التلقائي بلغتك المستهدفة",
     "autocorrectAndroidDialogBody": "عند الكتابة في الدردشة، ستتحول لوحة المفاتيح إلى لغتك المستهدفة وتصحح الأخطاء الإملائية في تلك اللغة.",

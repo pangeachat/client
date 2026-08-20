@@ -1,6 +1,6 @@
 {
     "@@locale": "hr",
-    "@@last_modified": "2026-08-19 12:57:12.689371",
+    "@@last_modified": "2026-08-19 14:14:44.166401",
     "about": "Informacije",
     "@about": {
         "type": "String",
@@ -10186,6 +10186,9 @@
     "usersAreTryingToJoinCourse": "Korisnici se pokušavaju pridružiti vašem tečaju",
     "denyAllUsers": "Odbij sve korisnike",
     "denyAllKnocksDescription": "Ovi će korisnici biti odbijeni s tečaja. Mogu se pokušati ponovno pridružiti u bilo kojem trenutku.",
+    "courseNameHint": "Naziv tečaja",
+    "typeCourseCodeToConfirm": "Za potvrdu, upišite kod tečaja {code} ispod.",
+    "typeCourseNameToConfirm": "Za potvrdu, upišite naziv tečaja {name} ispod.",
     "inviteAFriend": "Pozovi prijatelja",
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada tipkate u chatu, vaša će se tipkovnica prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",

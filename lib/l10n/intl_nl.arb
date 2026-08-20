@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 12:57:14.783925",
+    "@@last_modified": "2026-08-19 14:14:48.646942",
     "about": "Over ons",
     "@about": {
         "type": "String",
@@ -9750,6 +9750,9 @@
     "usersAreTryingToJoinCourse": "Gebruikers proberen deel te nemen aan je cursus",
     "denyAllUsers": "Alle gebruikers weigeren",
     "denyAllKnocksDescription": "Deze gebruikers worden geweigerd voor de cursus. Ze kunnen op elk moment opnieuw proberen deel te nemen.",
+    "courseNameHint": "Cursusnaam",
+    "typeCourseCodeToConfirm": "Typ de cursuscode {code} hieronder ter bevestiging.",
+    "typeCourseNameToConfirm": "Typ de cursusnaam {name} hieronder ter bevestiging.",
     "inviteAFriend": "Nodig een vriend uit",
     "autocorrectAndroidDialogTitle": "Autocorrectie in je doeltaal",
     "autocorrectAndroidDialogBody": "Wanneer je typt in een chat, schakelt je toetsenbord over naar je doeltaal en corrigeert de spelling in die taal.",

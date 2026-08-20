@@ -1,6 +1,6 @@
 {
     "@@locale": "ja",
-    "@@last_modified": "2026-08-19 12:57:13.150290",
+    "@@last_modified": "2026-08-19 14:14:44.985774",
     "about": "このアプリについて",
     "@about": {
         "type": "String",
@@ -10519,6 +10519,9 @@
     "usersAreTryingToJoinCourse": "ユーザーがコースへの参加をリクエストしています",
     "denyAllUsers": "すべてのユーザーを拒否",
     "denyAllKnocksDescription": "これらのユーザーはコースから拒否されます。いつでも再参加を試みることができます。",
+    "courseNameHint": "コース名",
+    "typeCourseCodeToConfirm": "確認するには、コースコード「{code}」を以下に入力してください。",
+    "typeCourseNameToConfirm": "確認するには、コース名「{name}」を以下に入力してください。",
     "inviteAFriend": "友達を招待",
     "autocorrectAndroidDialogTitle": "目標言語の自動修正",
     "autocorrectAndroidDialogBody": "チャットで入力すると、キーボードが目標言語に切り替わり、その言語でスペルが修正されます。",

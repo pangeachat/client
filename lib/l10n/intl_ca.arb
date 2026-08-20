@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 12:57:11.296537",
+    "@@last_modified": "2026-08-19 14:14:42.131374",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9877,6 +9877,9 @@
     "usersAreTryingToJoinCourse": "Els usuaris estan intentant unir-se al teu curs",
     "denyAllUsers": "Denegar tots els usuaris",
     "denyAllKnocksDescription": "Aquests usuaris seran rebutjats del curs. Poden intentar unir-se de nou en qualsevol moment.",
+    "courseNameHint": "Nom del curs",
+    "typeCourseCodeToConfirm": "Per confirmar, escriu el codi del curs {code} a continuació.",
+    "typeCourseNameToConfirm": "Per confirmar, escriu el nom del curs {name} a continuació.",
     "inviteAFriend": "Convida un amic",
     "autocorrectAndroidDialogTitle": "Autocorrecció en la teva llengua d'aprenentatge",
     "autocorrectAndroidDialogBody": "Quan escriguis en un xat, el teu teclat canviarà a la teva llengua d'aprenentatge i corregirà l'ortografia en aquesta llengua.",

@@ -1,6 +1,6 @@
 {
     "@@locale": "ku",
-    "@@last_modified": "2026-08-19 12:57:13.605867",
+    "@@last_modified": "2026-08-19 14:14:46.377975",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "وشەی تێپەڕین دووبارە بکەوە",
     "notAnImage": "فایلی وێنە نییە.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "بەکارهێنەران هەوڵدەدەن بچنە ناو خولەکەت",
     "denyAllUsers": "ڕەتکردنەوەی هەموو بەکارهێنەران",
     "denyAllKnocksDescription": "ئەم بەکارهێنەرانە لە خولەکە ڕەتدەکرێنەوە. لەوانەیە لە هەر کاتێکدا بێت هەوڵبدەنەوە بۆ چوونە ژوورەوە.",
+    "courseNameHint": "ناوی خول",
+    "typeCourseCodeToConfirm": "بۆ پشتڕاستکردنەوە، کۆدی خولەکە {code} لە خوارەوە بنووسە.",
+    "typeCourseNameToConfirm": "بۆ پشتڕاستکردنەوە، ناوی خولەکە {name} لە خوارەوە بنووسە.",
     "inviteAFriend": "هاوڕێیەک بانگهێشت بکە",
     "autocorrectAndroidDialogTitle": "ڕاستکردنەوەی خۆکار لە زمانی ئامانجەکەتدا",
     "autocorrectAndroidDialogBody": "کاتێک لە چاتێکدا دەنووسیت، کیبۆردەکەت دەگۆڕێت بۆ زمانی ئامانجەکەت و هەڵەی ڕێنووسی لەو زمانەدا ڕاست دەکاتەوە.",

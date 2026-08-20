@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 12:57:11.877716",
+    "@@last_modified": "2026-08-19 14:14:43.536437",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10695,6 +10695,9 @@
     "usersAreTryingToJoinCourse": "Uzantoj provas aliĝi al via kurso",
     "denyAllUsers": "Malakcepti ĉiujn uzantojn",
     "denyAllKnocksDescription": "Ĉi tiuj uzantoj estos malakceptitaj de la kurso. Ili rajtas provi aliĝi denove iam ajn.",
+    "courseNameHint": "Nomo de kurso",
+    "typeCourseCodeToConfirm": "Por konfirmi, tajpu la kurskodon {code} ĉi-sube.",
+    "typeCourseNameToConfirm": "Por konfirmi, tajpu la kursnomon {name} ĉi-sube.",
     "inviteAFriend": "Invitu amikon",
     "autocorrectAndroidDialogTitle": "Aŭtomata korekto en via cellingvo",
     "autocorrectAndroidDialogBody": "Kiam vi tajpas en babilejo, via klavaro ŝanĝos al via cellingvo kaj korektos literumadon en tiu lingvo.",

@@ -1940,7 +1940,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-19 12:57:13.537282",
+    "@@last_modified": "2026-08-19 14:14:45.389655",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10650,6 +10650,9 @@
     "usersAreTryingToJoinCourse": "მომხმარებლები ცდილობენ თქვენს კურსზე გაწევრიანებას",
     "denyAllUsers": "ყველა მომხმარებლის დაბლოკვა",
     "denyAllKnocksDescription": "ეს მომხმარებლები დაბლოკილი იქნებიან კურსიდან. მათ შეუძლიათ ნებისმიერ დროს სცადონ ხელახლა გაწევრიანება.",
+    "courseNameHint": "კურსის სახელი",
+    "typeCourseCodeToConfirm": "დასადასტურებლად, ჩაწერეთ კურსის კოდი {code} ქვემოთ.",
+    "typeCourseNameToConfirm": "დასადასტურებლად, ჩაწერეთ კურსის სახელი {name} ქვემოთ.",
     "inviteAFriend": "მოიწვიე მეგობარი",
     "autocorrectAndroidDialogTitle": "ავტოკორექცია თქვენს სამიზნე ენაზე",
     "autocorrectAndroidDialogBody": "როდესაც ჩატში წერთ, თქვენი კლავიატურა გადაერთვება თქვენს სამიზნე ენაზე და შეასწორებს მართლწერას ამ ენაზე.",

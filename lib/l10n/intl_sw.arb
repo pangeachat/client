@@ -1,6 +1,6 @@
 {
     "@@locale": "sw",
-    "@@last_modified": "2026-08-19 12:57:16.150583",
+    "@@last_modified": "2026-08-19 14:14:51.772422",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Rudia nenosiri",
     "notAnImage": "Sio faili ya picha.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Watumiaji wanajaribu kujiunga na kozi yako",
     "denyAllUsers": "Kataa watumiaji wote",
     "denyAllKnocksDescription": "Watumiaji hawa watakataliwa kujiunga na kozi. Wanaweza kujaribu kujiunga tena wakati wowote.",
+    "courseNameHint": "Jina la kozi",
+    "typeCourseCodeToConfirm": "Ili kuthibitisha, andika msimbo wa kozi {code} hapa chini.",
+    "typeCourseNameToConfirm": "Ili kuthibitisha, andika jina la kozi {name} hapa chini.",
     "inviteAFriend": "Mwalike rafiki",
     "autocorrectAndroidDialogTitle": "Masahihisho ya kiotomatiki katika lugha unayolenga",
     "autocorrectAndroidDialogBody": "Unapoandika kwenye gumzo, kibodi chako kitabadilika hadi lugha unayolenga na kusahihisha tahajia katika lugha hiyo.",

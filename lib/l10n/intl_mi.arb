@@ -1,6 +1,6 @@
 {
     "@@locale": "mi",
-    "@@last_modified": "2026-08-19 12:57:14.045543",
+    "@@last_modified": "2026-08-19 14:14:48.394140",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Mea anō te kupuhipa",
     "notAnImage": "Ehara i te kōnae atahanga.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Kei te ngana ngā kaiwhakamahi ki te uru ki tō akoranga",
     "denyAllUsers": "Whakakāhore i ngā kaiwhakamahi katoa",
     "denyAllKnocksDescription": "Ka whakahēhia ēnei kaiwhakamahi kia kaua e uru ki te akoranga. Ka taea e rātou te ngana anō ki te uru mai i ngā wā katoa.",
+    "courseNameHint": "Ingoa akoranga",
+    "typeCourseCodeToConfirm": "Hei whakaū, patohia te waehere akoranga {code} ki raro.",
+    "typeCourseNameToConfirm": "Hei whakaū, patohia te ingoa akoranga {name} ki raro.",
     "inviteAFriend": "Pōwhiritia tētahi hoa",
     "autocorrectAndroidDialogTitle": "Whakatikatika-aunoa i tō reo whāinga",
     "autocorrectAndroidDialogBody": "Ka patopato koe i roto i te kōrerorero, ka huri tō papapātuhi ki tō reo whāinga, ā, ka whakatika i te takikupu i taua reo.",

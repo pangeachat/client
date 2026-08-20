@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-19 12:57:15.024066",
+    "@@last_modified": "2026-08-19 14:14:49.866027",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "کاروونکي هڅه کوي ستاسو کورس سره یوځای شي",
     "denyAllUsers": "ټول کاروونکي رد کړئ",
     "denyAllKnocksDescription": "دا کاروونکي به له کورس څخه رد شي. دوی کولی شي په هر وخت کې بیا د یوځای کیدو هڅه وکړي.",
+    "courseNameHint": "د کورس نوم",
+    "typeCourseCodeToConfirm": "د تایید لپاره، لاندې د کورس کوډ {code} ولیکئ.",
+    "typeCourseNameToConfirm": "د تایید لپاره، لاندې د کورس نوم {name} ولیکئ.",
     "inviteAFriend": "ملګري ته بلنه ورکړئ",
     "autocorrectAndroidDialogTitle": "ستاسو په هدف ژبه کې اتوماتیک سمون",
     "autocorrectAndroidDialogBody": "کله چې تاسو په چټ کې ټایپ کوئ، ستاسو کیبورډ به ستاسو هدف ژبې ته بدل شي او په هغې ژبې کې به املا سمه کړي.",

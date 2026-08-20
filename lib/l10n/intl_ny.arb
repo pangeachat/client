@@ -1,6 +1,6 @@
 {
     "@@locale": "ny",
-    "@@last_modified": "2026-08-19 12:57:15.297242",
+    "@@last_modified": "2026-08-19 14:14:48.744021",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Bwerezani mawu achinsinsi",
     "notAnImage": "Si fayilo ya chithunzi.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Ogwiritsa ntchito akuyesera kulowa maphunziro anu",
     "denyAllUsers": "Kana ogwiritsa ntchito onse",
     "denyAllKnocksDescription": "Ogwiritsa ntchitowa adzakanidwa kulowa maphunzirowa. Atha kuyesanso kulowa nthawi iliyonse.",
+    "courseNameHint": "Dzina la kosi",
+    "typeCourseCodeToConfirm": "Kuti mutsimikizire, lembani nambala ya kosi {code} pansipa.",
+    "typeCourseNameToConfirm": "Kuti mutsimikizire, lembani dzina la kosi {name} pansipa.",
     "inviteAFriend": "Itanani bwenzi",
     "autocorrectAndroidDialogTitle": "Kukonza zolakwika zokha mu chilankhulo chanu",
     "autocorrectAndroidDialogBody": "Mukamalemba mu macheza, kiyibodi yanu idzasintha kupita ku chilankhulo chanu ndikukonza zolakwika zolemba mu chilankhulocho.",

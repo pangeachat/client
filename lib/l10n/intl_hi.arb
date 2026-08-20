@@ -3096,7 +3096,7 @@
     "playWithAI": "अभी के लिए एआई के साथ खेलें",
     "courseStartDesc": "पैंजिया बॉट कभी भी जाने के लिए तैयार है!\n\n...लेकिन दोस्तों के साथ सीखना बेहतर है!",
     "@@locale": "hi",
-    "@@last_modified": "2026-08-19 12:57:12.442670",
+    "@@last_modified": "2026-08-19 14:14:44.339114",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10382,6 +10382,9 @@
     "usersAreTryingToJoinCourse": "उपयोगकर्ता आपके कोर्स में शामिल होने का प्रयास कर रहे हैं",
     "denyAllUsers": "सभी उपयोगकर्ताओं को अस्वीकार करें",
     "denyAllKnocksDescription": "इन उपयोगकर्ताओं को कोर्स से अस्वीकार कर दिया जाएगा। वे किसी भी समय फिर से शामिल होने का प्रयास कर सकते हैं।",
+    "courseNameHint": "कोर्स का नाम",
+    "typeCourseCodeToConfirm": "पुष्टि करने के लिए, नीचे कोर्स कोड {code} टाइप करें।",
+    "typeCourseNameToConfirm": "पुष्टि करने के लिए, नीचे कोर्स का नाम {name} टाइप करें।",
     "inviteAFriend": "किसी दोस्त को आमंत्रित करें",
     "autocorrectAndroidDialogTitle": "आपकी लक्ष्य भाषा में स्वतः सुधार",
     "autocorrectAndroidDialogBody": "जब आप चैट में टाइप करते हैं, तो आपका कीबोर्ड आपकी लक्ष्य भाषा में बदल जाएगा और उस भाषा में वर्तनी को सही करेगा।",

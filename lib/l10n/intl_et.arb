@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-19 12:57:11.741734",
+    "@@last_modified": "2026-08-19 14:14:42.577071",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9747,6 +9747,9 @@
     "usersAreTryingToJoinCourse": "Kasutajad proovivad teie kursusega liituda",
     "denyAllUsers": "Keeldu kõigist kasutajatest",
     "denyAllKnocksDescription": "Need kasutajad lükatakse kursuselt tagasi. Nad võivad igal ajal uuesti liituda proovida.",
+    "courseNameHint": "Kursuse nimi",
+    "typeCourseCodeToConfirm": "Kinnitamiseks sisestage allolev kursuse kood {code}.",
+    "typeCourseNameToConfirm": "Kinnitamiseks sisestage allolev kursuse nimi {name}.",
     "inviteAFriend": "Kutsu sõber",
     "autocorrectAndroidDialogTitle": "Automaatkorrektuur sihtkeeles",
     "autocorrectAndroidDialogBody": "Vestluses tippides lülitub klaviatuur sihtkeelde ja parandab õigekirja selles keeles.",

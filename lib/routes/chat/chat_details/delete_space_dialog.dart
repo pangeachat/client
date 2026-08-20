@@ -4,13 +4,15 @@ import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
 import 'package:fluffychat/config/themes.dart';
+import 'package:fluffychat/features/join_codes/join_rule_extension.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/extensions/pangea_room_extension.dart';
 import 'package:fluffychat/pangea/spaces/space_gone_gate.dart';
+import 'package:fluffychat/routes/chat/chat_details/confirm_delete_space_dialog.dart';
 import 'package:fluffychat/routes/chat/chat_details/delete_room_extension.dart';
+import 'package:fluffychat/utils/matrix_sdk_extensions/matrix_locals.dart';
 import 'package:fluffychat/widgets/adaptive_dialogs/adaptive_dialog_action.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
@@ -19,16 +21,19 @@ class DeleteSpaceDialog extends StatefulWidget {
   const DeleteSpaceDialog({super.key, required this.roomsChunks});
 
   static Future<void> show(Room room, BuildContext context) async {
-    final response = await showOkCancelAlertDialog(
+    final confirmed = await showAdaptiveDialog<bool>(
       context: context,
-      title: L10n.of(context).areYouSure,
-      message: room.spaceChildCount > 0
-          ? L10n.of(context).deleteSpaceDesc
-          : L10n.of(context).deleteEmptySpaceDesc,
-      isDestructive: true,
+      useRootNavigator: true,
+      builder: (context) => ConfirmDeleteSpaceDialog(
+        joinCode: room.joinCode,
+        displayname: room.getLocalizedDisplayname(
+          MatrixLocals(L10n.of(context)),
+        ),
+        hasSpaceChildren: room.spaceChildCount > 0,
+      ),
     );
 
-    if (response != OkCancelResult.ok) return;
+    if (confirmed != true) return;
 
     final resp = await showFutureLoadingDialog<List<SpaceRoomsChunk$2>>(
       context: context,
@@ -198,7 +203,6 @@ class DeleteSpaceDialogState extends State<DeleteSpaceDialog> {
         ),
         AdaptiveDialogAction(
           onPressed: () => Navigator.of(context).pop(_selectedRoomIds),
-          autofocus: true,
           child: Text(
             L10n.of(context).delete,
             style: TextStyle(color: Theme.of(context).colorScheme.error),

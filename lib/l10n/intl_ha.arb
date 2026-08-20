@@ -1,6 +1,6 @@
 {
     "@@locale": "ha",
-    "@@last_modified": "2026-08-19 12:57:12.509672",
+    "@@last_modified": "2026-08-19 14:14:43.760291",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Maimaita kalmar sirri",
     "notAnImage": "Wannan ba fayil ɗin hoto bane.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Masu amfani suna ƙoƙarin shiga kwas ɗinka",
     "denyAllUsers": "Ƙi duk masu amfani",
     "denyAllKnocksDescription": "Za a ƙi waɗannan masu amfani daga kwas ɗin. Suna iya sake ƙoƙarin shiga a kowane lokaci.",
+    "courseNameHint": "Sunan kwas",
+    "typeCourseCodeToConfirm": "Don tabbatarwa, rubuta lambar kwas {code} a ƙasa.",
+    "typeCourseNameToConfirm": "Don tabbatarwa, rubuta sunan kwas {name} a ƙasa.",
     "inviteAFriend": "Gayyaci aboki",
     "autocorrectAndroidDialogTitle": "Gyaran kai a harshen da kake so",
     "autocorrectAndroidDialogBody": "Idan ka rubuta a cikin taɗi, madanninka zai canza zuwa harshen da kake so kuma ya gyara kuskuren rubutu a cikin wannan harshen.",

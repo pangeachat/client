@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-19 12:57:15.536943",
+    "@@last_modified": "2026-08-19 14:14:50.109847",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10695,6 +10695,9 @@
     "usersAreTryingToJoinCourse": "Používatelia sa snažia pripojiť k vášmu kurzu",
     "denyAllUsers": "Odmietnuť všetkých používateľov",
     "denyAllKnocksDescription": "Títo používatelia budú z kurzu odmietnutí. Môžu sa kedykoľvek pokúsiť znova pripojiť.",
+    "courseNameHint": "Názov kurzu",
+    "typeCourseCodeToConfirm": "Pre potvrdenie zadajte kód kurzu {code} nižšie.",
+    "typeCourseNameToConfirm": "Pre potvrdenie zadajte názov kurzu {name} nižšie.",
     "inviteAFriend": "Pozvať priateľa",
     "autocorrectAndroidDialogTitle": "Automatické opravy v cieľovom jazyku",
     "autocorrectAndroidDialogBody": "Keď píšete v chate, klávesnica sa prepne na váš cieľový jazyk a opraví pravopis v tomto jazyku.",

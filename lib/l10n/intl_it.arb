@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 12:57:12.925232",
+    "@@last_modified": "2026-08-19 14:14:45.428022",
     "about": "Informazioni",
     "@about": {
         "type": "String",
@@ -9823,6 +9823,9 @@
     "usersAreTryingToJoinCourse": "Gli utenti stanno cercando di unirsi al tuo corso",
     "denyAllUsers": "Nega tutti gli utenti",
     "denyAllKnocksDescription": "Questi utenti verranno rifiutati dal corso. Potranno tentare di unirsi di nuovo in qualsiasi momento.",
+    "courseNameHint": "Nome del corso",
+    "typeCourseCodeToConfirm": "Per confermare, digita il codice del corso {code} qui sotto.",
+    "typeCourseNameToConfirm": "Per confermare, digita il nome del corso {name} qui sotto.",
     "inviteAFriend": "Invita un amico",
     "autocorrectAndroidDialogTitle": "Correzione automatica nella lingua di destinazione",
     "autocorrectAndroidDialogBody": "Quando digiti in una chat, la tastiera passerà alla lingua di destinazione e correggerà l'ortografia in quella lingua.",

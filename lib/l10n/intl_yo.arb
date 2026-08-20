@@ -1,6 +1,6 @@
 {
     "@@locale": "yo",
-    "@@last_modified": "2026-08-19 12:57:17.261213",
+    "@@last_modified": "2026-08-19 14:14:54.016937",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tun ọrọ igbaniwọle ṣe",
     "notAnImage": "Kii ṣe faili aworan.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Àwọn olùmúlò n gbìyànjú láti darapọ̀ mọ́ ẹ̀kọ́ rẹ",
     "denyAllUsers": "Kọ gbogbo àwọn olùmúlò",
     "denyAllKnocksDescription": "A ó kọ àwọn olùmúlò wọ̀nyí láti inú ẹ̀kọ́ náà. Wọ́n lè gbìyànjú láti darapọ̀ mọ́ra ní àkókò kankan.",
+    "courseNameHint": "Orukọ ẹ̀kọ́",
+    "typeCourseCodeToConfirm": "Lati fi idi rẹ múlẹ̀, tẹ koodu ẹ̀kọ́ {code} sí ìsàlẹ̀.",
+    "typeCourseNameToConfirm": "Lati fi idi rẹ múlẹ̀, tẹ orukọ ẹ̀kọ́ {name} sí ìsàlẹ̀.",
     "inviteAFriend": "Pe ọrẹ kan",
     "autocorrectAndroidDialogTitle": "Àtúnṣe-gbogbo-ara nínú èdè tí o fẹ́ kọ́",
     "autocorrectAndroidDialogBody": "Nígbàtí o bá ń tẹ́kì nínú ìfọ̀rọ̀wéránṣẹ́, kíbọ́ọ̀dù rẹ yóò yí sí èdè tí o fẹ́ kọ́, yóò sì tún àṣìṣe ìkọ̀wé ṣe nínú èdè náà.",

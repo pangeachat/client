@@ -2970,7 +2970,7 @@
     "playWithAI": "Žaiskite su dirbtiniu intelektu dabar",
     "courseStartDesc": "Pangea botas pasiruošęs bet kada pradėti!\n\n...bet mokymasis yra geresnis su draugais!",
     "@@locale": "lt",
-    "@@last_modified": "2026-08-19 12:57:13.908147",
+    "@@last_modified": "2026-08-19 14:14:46.685915",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10531,6 +10531,9 @@
     "usersAreTryingToJoinCourse": "Vartotojai bando prisijungti prie jūsų kurso",
     "denyAllUsers": "Atmesti visus vartotojus",
     "denyAllKnocksDescription": "Šie vartotojai bus pašalinti iš kurso. Jie gali bandyti prisijungti bet kuriuo metu.",
+    "courseNameHint": "Kurso pavadinimas",
+    "typeCourseCodeToConfirm": "Norėdami patvirtinti, žemiau įveskite kurso kodą {code}.",
+    "typeCourseNameToConfirm": "Norėdami patvirtinti, žemiau įveskite kurso pavadinimą {name}.",
     "inviteAFriend": "Pakviesti draugą",
     "autocorrectAndroidDialogTitle": "Automatinis taisymas jūsų mokomąja kalba",
     "autocorrectAndroidDialogBody": "Kai rašote pokalbyje, klaviatūra persijungs į jūsų mokomąją kalbą ir taisys rašybą ta kalba.",

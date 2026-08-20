@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-19 12:57:13.039025",
+    "@@last_modified": "2026-08-19 14:14:45.473711",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Ndị ọrụ na-anwa isonye na nkuzi gị",
     "denyAllUsers": "Jụ ndị ọrụ niile",
     "denyAllKnocksDescription": "A ga-ajụ ndị ọrụ a na nkuzi ahụ. Ha nwere ike ịnwale isonye ọzọ n'oge ọ bụla.",
+    "courseNameHint": "Aha ọmụmụ",
+    "typeCourseCodeToConfirm": "Iji kwado, pịnye koodu ọmụmụ {code} n'okpuru.",
+    "typeCourseNameToConfirm": "Iji kwado, pịnye aha ọmụmụ {name} n'okpuru.",
     "inviteAFriend": "Kpọọ enyi",
     "autocorrectAndroidDialogTitle": "Ndozighie onwe ya n'asụsụ ị na-amụ",
     "autocorrectAndroidDialogBody": "Mgbe ị na-ede ihe na nkata, ahụigodo gị ga-agbanwe gaa n'asụsụ ị na-amụ ma dozie mkpoputa n'asụsụ ahụ.",

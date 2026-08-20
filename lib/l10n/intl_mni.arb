@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-19 12:57:14.366068",
+    "@@last_modified": "2026-08-19 14:14:47.807392",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡꯅ ꯅꯍꯥꯛꯀꯤ ꯀꯣꯔꯁ ꯀꯥꯟꯅꯕꯥ ꯍꯣꯠꯅꯔꯤ",
     "denyAllUsers": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡ ꯄꯨꯝꯅꯃꯛ ꯀꯥꯟꯅꯕꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ",
     "denyAllKnocksDescription": "ꯁꯤꯟꯅꯔꯤꯕꯁꯤꯡ ꯑꯁꯤ ꯀꯣꯔꯁ ꯑꯁꯤꯗꯒꯤ ꯀꯥꯟꯅꯕꯥ ꯌꯥꯔꯣꯏꯗꯕꯥ꯫ ꯃꯈꯣꯌꯅ ꯀꯔꯤꯒꯨꯝꯕ ꯃꯇꯝ ꯑꯃꯗ ꯑꯃꯨꯛ ꯍꯟꯅ ꯀꯥꯟꯅꯕꯥ ꯍꯣꯠꯅꯕ ꯌꯥꯏ꯫",
+    "courseNameHint": "কোর্স মমিং",
+    "typeCourseCodeToConfirm": "কনফর্ম তৌনবা, মখাদা কোর্স কোড {code} অসি টাইপ তৌবীয়ু।",
+    "typeCourseNameToConfirm": "কনফর্ম তৌনবা, মখাদা কোর্স মমিং {name} অসি টাইপ তৌবীয়ু।",
     "inviteAFriend": "ꯑꯃꯠꯇꯥ ꯀꯧꯕꯤꯌꯨ",
     "autocorrectAndroidDialogTitle": "നംꯁꯤꯡগী ৱାঙुलোনদা ৱା-ꯁਹੀ",
     "autocorrectAndroidDialogBody": "നങ് ചാറ്റ് അമদা ടൈപ് തौदा, നംꯁിംങ്ഗി കീബോർഡ് നംസിംങ്ഗി ৱാങ്ഗുലോൺഡാ ലേങ്‌ഗനി അമദി അദൂം ৱാങ്ഗുലോൺഡാ സ്പെല്ലിംഗ് ശരി തൗഗനി.",

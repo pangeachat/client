@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-19 12:57:17.136319",
+    "@@last_modified": "2026-08-19 14:14:52.603783",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2146,6 +2146,9 @@
     "usersAreTryingToJoinCourse": "Abasebenzisi bazama ukujoyina ikhosi yakho",
     "denyAllUsers": "Yala bonke abasebenzisi",
     "denyAllKnocksDescription": "Aba basebenzisi baya kulahlwa kwikhosi. Bangazama ukujoyina kwakhona nangaliphi na ixesha.",
+    "courseNameHint": "Igama lekhosi",
+    "typeCourseCodeToConfirm": "Ukuqinisekisa, chwetheza ikhowudi yekhosi {code} apha ngezantsi.",
+    "typeCourseNameToConfirm": "Ukuqinisekisa, chwetheza igama lekhosi {name} apha ngezantsi.",
     "inviteAFriend": "Mema umhlobo",
     "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzekelayo ngolwimi olufundayo",
     "autocorrectAndroidDialogBody": "Xa uchwetheza kwincoko, ikhibhodi yakho iya kutshintshela kulwimi olufundayo kwaye ilungise upelo ngolwimi olo.",
