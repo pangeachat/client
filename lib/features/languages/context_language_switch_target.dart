@@ -21,7 +21,7 @@ import 'package:fluffychat/widgets/matrix.dart';
 /// language (a switch there is refused, so there's nothing to offer). An
 /// unresolved (null) [contentLanguage] is passed through entirely as
 /// [builder] drew it, semantics included.
-class ContextLanguageSwitchTarget extends StatelessWidget {
+class ContextLanguageSwitchTarget extends StatefulWidget {
   final LanguageModel? contentLanguage;
   final Widget Function(BuildContext context, bool canSwitch) builder;
 
@@ -32,12 +32,28 @@ class ContextLanguageSwitchTarget extends StatelessWidget {
   });
 
   @override
+  State<ContextLanguageSwitchTarget> createState() =>
+      _ContextLanguageSwitchTargetState();
+}
+
+class _ContextLanguageSwitchTargetState
+    extends State<ContextLanguageSwitchTarget> {
+  Future<void> _openSwitcher(LanguageModel language) async {
+    await LanguageSwitcherSheet.show(context, targetedLanguage: language);
+    // The sheet's own write already waits for the sync round-trip, so by the
+    // time it closes canSwitch has a fresh answer — but this widget doesn't
+    // otherwise know that happened. Rebuilding the chip that was actually
+    // tapped can't depend on languageStream firing correctly for it: it's
+    // the one thing we know for certain changed just now.
+    if (mounted) setState(() {});
+  }
+
+  @override
   Widget build(BuildContext context) {
     final userController = MatrixState.pangeaController.userController;
-    // A completed switch fires languageStream (see UserController), which is
-    // the only thing that can change canSwitch for an already-built chip —
-    // without listening here, a chip stays tinted for the language the
-    // learner just switched away from until something unrelated rebuilds it.
+    // A completed switch also fires languageStream (see UserController) —
+    // this covers every OTHER chip on screen showing the same language,
+    // which _openSwitcher's setState can't reach since it wasn't tapped.
     return StreamBuilder<LanguageUpdate>(
       stream: userController.languageStream.stream,
       builder: (context, _) => _build(context, userController),
@@ -45,7 +61,7 @@ class ContextLanguageSwitchTarget extends StatelessWidget {
   }
 
   Widget _build(BuildContext context, UserController userController) {
-    final language = contentLanguage;
+    final language = widget.contentLanguage;
     final canSwitch =
         language != null &&
         UserController.canSwitchTo(
@@ -54,7 +70,7 @@ class ContextLanguageSwitchTarget extends StatelessWidget {
           baseLangCode: userController.userL1?.langCode,
         );
 
-    final chip = builder(context, canSwitch);
+    final chip = widget.builder(context, canSwitch);
     // A resolved language always gets a proper spoken name here — several
     // callers' own chip otherwise reads only its abbreviated code — plus the
     // switch affordance when there's one to offer.
@@ -70,13 +86,7 @@ class ContextLanguageSwitchTarget extends StatelessWidget {
       label: label,
       excludeSemantics: true,
       child: canSwitch
-          ? InkWell(
-              onTap: () => LanguageSwitcherSheet.show(
-                context,
-                targetedLanguage: language,
-              ),
-              child: chip,
-            )
+          ? InkWell(onTap: () => _openSwitcher(language), child: chip)
           : chip,
     );
   }

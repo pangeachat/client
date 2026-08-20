@@ -4519,14 +4519,6 @@
         }
     },
     "whatAreYouLearning": "What are you learning?",
-    "nowLearningLanguage": "You are now learning {language}.",
-    "@nowLearningLanguage": {
-        "placeholders": {
-            "language": {
-                "type": "String"
-            }
-        }
-    },
     "languageSwitcherBaseLanguageLabel": "Your base language",
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",

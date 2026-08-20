@@ -7,7 +7,6 @@ import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
-import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import 'package:fluffychat/widgets/pangea_search_bar.dart';
@@ -16,7 +15,7 @@ import 'package:fluffychat/widgets/pangea_search_bar.dart';
 /// "Switching from context", point 7): one list of every target language —
 /// the same dropdown learning settings uses — with the languages the
 /// learner already has analytics in sorted to the top. Picking one switches
-/// immediately and offers Undo in a snackbar.
+/// immediately and closes the sheet.
 class LanguageSwitcherSheet extends StatefulWidget {
   /// The language the chip that opened this sheet was showing — pinned
   /// first, above the analytics group, since it's the language the learner
@@ -59,10 +58,7 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
 
   Future<void> _selectLanguage(LanguageModel language) async {
     final userController = MatrixState.pangeaController.userController;
-    final l10n = L10n.of(context);
-    final previous = userController.userL2;
     final navigator = Navigator.of(context, rootNavigator: false);
-    final messenger = ScaffoldMessenger.of(context);
 
     final result = await showFutureLoadingDialog(
       context: context,
@@ -71,17 +67,6 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
     if (result.isError) return;
 
     navigator.pop();
-    messenger.showSnackBarAnnounced(
-      SnackBar(
-        content: Text(l10n.nowLearningLanguage(language.getDisplayName(l10n))),
-        action: previous == null
-            ? null
-            : SnackBarAction(
-                label: l10n.undo,
-                onPressed: () => userController.updateTargetLanguage(previous),
-              ),
-      ),
-    );
   }
 
   @override
