@@ -44,6 +44,12 @@ class MissingQuestException implements Exception {
 /// relevance banding with no other visible signal. Everything else keeps
 /// `error`: the outline read failing for any other reason is real breakage.
 ///
+/// [RateLimitedException] never reaches this function: [reportCourseOutlineFailure]
+/// short-circuits on it before computing a level at all, because
+/// [activityReadPause] already reported that suppression once for this
+/// activation (client#8507) — deciding a severity here would just be for a
+/// report that never happens.
+///
 /// Lives beside the exception it classifies, not at a call site: BOTH rebuild
 /// reporters — the world map's and the course panel's — share one throttle key,
 /// so whichever runs first is the one that reports. While only the map applied
@@ -224,14 +230,21 @@ class QuestRepo {
   /// activities when [courseRoomId] names a course the caller has joined.
   ///
   /// Returns a [RateLimitedException] WITHOUT asking while
-  /// [activityReadPause] is running, and without reporting: the 429 that
-  /// started the pause was already captured once, and a second event for our
-  /// own deliberate suppression would be noise, not signal.
+  /// [activityReadPause] is running. The 429 that started the pause was
+  /// already captured once, so the suppression itself reports separately
+  /// at `info` via [RateLimitPause.reportSuppressionOnce] — once per
+  /// activation, not once per suppressed read (client#8507).
   static Future<Result<List<Map<String, dynamic>>>> _questActivityEntries(
     String questId, {
     String? courseRoomId,
   }) async {
-    if (activityReadPause.isPaused) return Result.error(RateLimitedException());
+    if (activityReadPause.isPaused) {
+      activityReadPause.reportSuppressionOnce({
+        'quest_id': questId,
+        'course_room_id': ?courseRoomId,
+      });
+      return Result.error(RateLimitedException());
+    }
     try {
       final uri = Uri.parse(PApiUrls.questActivities(questId)).replace(
         queryParameters: {
