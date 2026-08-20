@@ -3322,23 +3322,9 @@ class ChatController extends State<ChatPageWithRoom>
       context: context,
       future: () async {
         clearSelectedEvents();
-        await MatrixState.pangeaController.userController.updateProfile((
-          profile,
-        ) {
-          final baseLangShort = profile.userSettings.sourceLanguage
-              ?.split('-')
-              .first;
-
-          if (baseLangShort != null && baseLangShort == target.langCodeShort) {
-            throw IdenticalLanguageException();
-          }
-
-          return profile.copyWith(
-            userSettings: profile.userSettings.copyWith(
-              targetLanguage: target.langCode,
-            ),
-          );
-        }, waitForDataInSync: true);
+        await MatrixState.pangeaController.userController.updateTargetLanguage(
+          target,
+        );
       },
     );
     if (resp.isError) return;
