@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 14:14:51.183138",
+    "@@last_modified": "2026-08-20 14:15:54.641734",
     "acceptedTheInvitation": "👍 {username} அழைப்பை ஏற்றுக்கொண்டது",
     "@acceptedTheInvitation": {
         "type": "String",
@@ -9848,5 +9848,6 @@
     "inviteAFriend": "நண்பரை அழைக்கவும்",
     "autocorrectAndroidDialogTitle": "உங்கள் இலக்கு மொழியில் தானியங்கு திருத்தம்",
     "autocorrectAndroidDialogBody": "நீங்கள் ஒரு அரட்டையில் தட்டச்சு செய்யும்போது, உங்கள் விசைப்பலகை உங்கள் இலக்கு மொழிக்கு மாறி, அந்த மொழியில் எழுத்துப்பிழையை சரிசெய்யும்.",
-    "autocorrectAndroidFallbackTitle": "உங்கள் விசைப்பலகை உங்கள் இலக்கு மொழியை வழங்கவில்லை என்றால், Gboard ஐ நிறுவி, அங்கு மொழியைச் சேர்க்கவும்:"
+    "autocorrectAndroidFallbackTitle": "உங்கள் விசைப்பலகை உங்கள் இலக்கு மொழியை வழங்கவில்லை என்றால், Gboard ஐ நிறுவி, அங்கு மொழியைச் சேர்க்கவும்:",
+    "resendInSeconds": "மீண்டும் அனுப்பு ({seconds})"
 }

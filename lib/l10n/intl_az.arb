@@ -1,6 +1,6 @@
 {
     "@@locale": "az",
-    "@@last_modified": "2026-08-19 14:14:41.322750",
+    "@@last_modified": "2026-08-20 14:15:48.318507",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Şifrəni təkrarlayın",
     "notAnImage": "Şəkil faylı deyil.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Dostunu dəvət et",
     "autocorrectAndroidDialogTitle": "Hədəf dilinizdə avtodüzəliş",
     "autocorrectAndroidDialogBody": "Söhbətdə yazarkən klaviaturanız hədəf dilinizə keçəcək və həmin dildə orfoqrafiyanı düzəldəcək.",
-    "autocorrectAndroidFallbackTitle": "Əgər klaviaturanız hədəf dilinizi təklif etmirsə, Gboard-u quraşdırın və dili oraya əlavə edin:"
+    "autocorrectAndroidFallbackTitle": "Əgər klaviaturanız hədəf dilinizi təklif etmirsə, Gboard-u quraşdırın və dili oraya əlavə edin:",
+    "resendInSeconds": "Yenidən göndər ({seconds})"
 }

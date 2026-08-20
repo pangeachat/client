@@ -1,6 +1,6 @@
 {
     "@@locale": "mn",
-    "@@last_modified": "2026-08-19 14:14:47.825209",
+    "@@last_modified": "2026-08-20 14:15:52.017007",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Нууц үгээ давтана уу",
     "notAnImage": "Зураг файл биш байна.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Найзаа урих",
     "autocorrectAndroidDialogTitle": "Таны сурч буй хэл дээрх автоматаар засах тохиргоо",
     "autocorrectAndroidDialogBody": "Та чат дээр бичих үед таны гар утасны гар нь таны сурч буй хэл рүү шилжиж, тухайн хэл дээрх үсгийн алдааг засна.",
-    "autocorrectAndroidFallbackTitle": "Хэрэв таны гар утасны гар нь таны сурч буй хэлийг санал болгохгүй бол Gboard-г суулгаж, тэнд хэлээ нэмнэ үү:"
+    "autocorrectAndroidFallbackTitle": "Хэрэв таны гар утасны гар нь таны сурч буй хэлийг санал болгохгүй бол Gboard-г суулгаж, тэнд хэлээ нэмнэ үү:",
+    "resendInSeconds": "Дахин илгээх ({seconds})"
 }

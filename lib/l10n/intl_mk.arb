@@ -1,6 +1,6 @@
 {
     "@@locale": "mk",
-    "@@last_modified": "2026-08-19 14:14:47.804722",
+    "@@last_modified": "2026-08-20 14:15:52.148186",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете ја лозинката",
     "notAnImage": "Не е датотека со слика.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Покани пријател",
     "autocorrectAndroidDialogTitle": "Автоматска корекција на целниот јазик",
     "autocorrectAndroidDialogBody": "Кога пишувате во разговор, вашата тастатура ќе се префрли на целниот јазик и ќе го коригира правописот на тој јазик.",
-    "autocorrectAndroidFallbackTitle": "Ако вашата тастатура не го нуди целниот јазик, инсталирајте Gboard и додајте го јазикот таму:"
+    "autocorrectAndroidFallbackTitle": "Ако вашата тастатура не го нуди целниот јазик, инсталирајте Gboard и додајте го јазикот таму:",
+    "resendInSeconds": "Повторно испрати ({seconds})"
 }

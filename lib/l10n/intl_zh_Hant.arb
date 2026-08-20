@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 14:14:53.639068",
+    "@@last_modified": "2026-08-20 14:15:55.474120",
     "about": "關於",
     "@about": {
         "type": "String",
@@ -9862,5 +9862,6 @@
     "inviteAFriend": "邀請朋友",
     "autocorrectAndroidDialogTitle": "目標語言自動校正",
     "autocorrectAndroidDialogBody": "當您在聊天中打字時，您的鍵盤將切換到您的目標語言並自動校正該語言的拼寫。",
-    "autocorrectAndroidFallbackTitle": "如果您的鍵盤不支援您的目標語言，請安裝 Gboard 並在其中新增該語言："
+    "autocorrectAndroidFallbackTitle": "如果您的鍵盤不支援您的目標語言，請安裝 Gboard 並在其中新增該語言：",
+    "resendInSeconds": "重新發送 ({seconds})"
 }

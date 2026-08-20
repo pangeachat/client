@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 14:14:43.536437",
+    "@@last_modified": "2026-08-20 14:15:49.002269",
     "about": "Prio",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,6 @@
     "inviteAFriend": "Invitu amikon",
     "autocorrectAndroidDialogTitle": "Aŭtomata korekto en via cellingvo",
     "autocorrectAndroidDialogBody": "Kiam vi tajpas en babilejo, via klavaro ŝanĝos al via cellingvo kaj korektos literumadon en tiu lingvo.",
-    "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:"
+    "autocorrectAndroidFallbackTitle": "Se via klavaro ne ofertas vian cellingvon, instalu Gboard kaj aldonu la lingvon tie:",
+    "resendInSeconds": "Sendu denove ({seconds})"
 }

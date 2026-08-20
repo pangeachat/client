@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-19 14:14:46.450852",
+    "@@last_modified": "2026-08-20 14:15:51.416853",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Amicum invita",
     "autocorrectAndroidDialogTitle": "Emendatio automatica in lingua quam discis",
     "autocorrectAndroidDialogBody": "Cum in colloquio scribis, claviatura tua ad linguam quam discis mutabit et orthographiam in illa lingua emendabit.",
-    "autocorrectAndroidFallbackTitle": "Si claviatura tua linguam quam discis non offert, Gboard institue et linguam illic adde:"
+    "autocorrectAndroidFallbackTitle": "Si claviatura tua linguam quam discis non offert, Gboard institue et linguam illic adde:",
+    "resendInSeconds": "Iterum mitte ({seconds})"
 }

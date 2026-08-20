@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 14:14:49.508385",
+    "@@last_modified": "2026-08-20 14:15:53.513348",
     "about": "Despre",
     "@about": {
         "type": "String",
@@ -10488,5 +10488,6 @@
     "inviteAFriend": "Invită un prieten",
     "autocorrectAndroidDialogTitle": "Corectare automată în limba țintă",
     "autocorrectAndroidDialogBody": "Când scrii într-un chat, tastatura ta va comuta la limba țintă și va corecta ortografia în acea limbă.",
-    "autocorrectAndroidFallbackTitle": "Dacă tastatura ta nu oferă limba țintă, instalează Gboard și adaugă limba acolo:"
+    "autocorrectAndroidFallbackTitle": "Dacă tastatura ta nu oferă limba țintă, instalează Gboard și adaugă limba acolo:",
+    "resendInSeconds": "Retrimite ({seconds})"
 }

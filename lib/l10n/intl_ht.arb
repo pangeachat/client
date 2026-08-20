@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-19 14:14:44.942802",
+    "@@last_modified": "2026-08-20 14:15:50.149456",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Envite yon zanmi",
     "autocorrectAndroidDialogTitle": "Koreksyon otomatik nan lang sib ou a",
     "autocorrectAndroidDialogBody": "Lè w ap tape nan yon chat, klavye w ap chanje nan lang sib ou a epi l ap korije òtograf nan lang sa a.",
-    "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:"
+    "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:",
+    "resendInSeconds": "Voye ankò ({seconds})"
 }

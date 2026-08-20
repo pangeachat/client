@@ -4492,6 +4492,15 @@
     "clickOnEmailLinkDesc": "Please click on the link in the email and then proceed. Check your spam folder if the email hasn't arrived.",
     "didntReceiveEmail": "Didn't receive the email?",
     "resend": "Resend",
+    "resendInSeconds": "Resend ({seconds})",
+    "@resendInSeconds": {
+        "type": "text",
+        "placeholders": {
+            "seconds": {
+                "type": "int"
+            }
+        }
+    },
     "suggestedVocab": "Suggested vocab",
     "myGender": "My gender",
     "profile": "Profile",

@@ -1266,7 +1266,7 @@
     "selectAll": "全選",
     "deselectAll": "取消全選",
     "@@locale": "yue",
-    "@@last_modified": "2026-08-19 14:14:53.167832",
+    "@@last_modified": "2026-08-20 14:15:55.315879",
     "@ignoreUser": {
         "type": "String",
         "placeholders": {}
@@ -10713,5 +10713,6 @@
     "inviteAFriend": "邀請朋友",
     "autocorrectAndroidDialogTitle": "目標語言自動校正",
     "autocorrectAndroidDialogBody": "當您在聊天中輸入時，您的鍵盤將切換到您的目標語言並以該語言校正拼寫。",
-    "autocorrectAndroidFallbackTitle": "如果您的鍵盤不提供您的目標語言，請安裝 Gboard 並在那裡添加該語言："
+    "autocorrectAndroidFallbackTitle": "如果您的鍵盤不提供您的目標語言，請安裝 Gboard 並在那裡添加該語言：",
+    "resendInSeconds": "重新發送 ({seconds})"
 }

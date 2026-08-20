@@ -1,6 +1,6 @@
 {
     "@@locale": "es",
-    "@@last_modified": "2026-08-19 14:14:42.454116",
+    "@@last_modified": "2026-08-20 14:15:49.066066",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -7967,5 +7967,6 @@
     "inviteAFriend": "Invita a un amigo",
     "autocorrectAndroidDialogTitle": "Autocorrección en tu idioma objetivo",
     "autocorrectAndroidDialogBody": "Cuando escribas en un chat, tu teclado cambiará a tu idioma objetivo y corregirá la ortografía en ese idioma.",
-    "autocorrectAndroidFallbackTitle": "Si tu teclado no ofrece tu idioma objetivo, instala Gboard y añade el idioma allí:"
+    "autocorrectAndroidFallbackTitle": "Si tu teclado no ofrece tu idioma objetivo, instala Gboard y añade el idioma allí:",
+    "resendInSeconds": "Reenviar en ({seconds})"
 }

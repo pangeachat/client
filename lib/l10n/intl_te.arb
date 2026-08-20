@@ -1327,7 +1327,7 @@
     "playWithAI": "ఇప్పుడే AI తో ఆడండి",
     "courseStartDesc": "పాంజియా బాట్ ఎప్పుడైనా సిద్ధంగా ఉంటుంది!\n\n...కానీ స్నేహితులతో నేర్చుకోవడం మెరుగైనది!",
     "@@locale": "te",
-    "@@last_modified": "2026-08-19 14:14:51.352464",
+    "@@last_modified": "2026-08-20 14:15:54.384038",
     "@setCustomPermissionLevel": {
         "type": "String",
         "placeholders": {}
@@ -10706,5 +10706,6 @@
     "inviteAFriend": "స్నేహితుడిని ఆహ్వానించండి",
     "autocorrectAndroidDialogTitle": "మీ లక్ష్య భాషలో స్వీయ దిద్దుబాటు",
     "autocorrectAndroidDialogBody": "మీరు చాట్‌లో టైప్ చేసినప్పుడు, మీ కీబోర్డ్ మీ లక్ష్య భాషకు మారుతుంది మరియు ఆ భాషలో స్పెల్లింగ్‌ను సరిచేస్తుంది.",
-    "autocorrectAndroidFallbackTitle": "మీ కీబోర్డ్ మీ లక్ష్య భాషను అందించకపోతే, Gboardని ఇన్‌స్టాల్ చేసి, అక్కడ భాషను జోడించండి:"
+    "autocorrectAndroidFallbackTitle": "మీ కీబోర్డ్ మీ లక్ష్య భాషను అందించకపోతే, Gboardని ఇన్‌స్టాల్ చేసి, అక్కడ భాషను జోడించండి:",
+    "resendInSeconds": "మళ్ళీ పంపండి ({seconds})"
 }

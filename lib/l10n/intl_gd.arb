@@ -1,6 +1,6 @@
 {
     "@@locale": "gd",
-    "@@last_modified": "2026-08-19 14:14:43.592558",
+    "@@last_modified": "2026-08-20 14:15:49.521077",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dèan a-rithist am facal-faire",
     "notAnImage": "Chan e faidhle ìomhaigh a th' ann.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Thoir cuireadh do charaid",
     "autocorrectAndroidDialogTitle": "Ceartachadh fèin-obrachail sa chànan targaid agad",
     "autocorrectAndroidDialogBody": "Nuair a thaidhpicheas tu ann an còmhradh, atharraichidh am meur-chlàr agad chun a’ chànain targaid agad agus ceartaichidh e litreachadh sa chànan sin.",
-    "autocorrectAndroidFallbackTitle": "Mura h-eil do mheur-chlàr a’ tabhann do chànan targaid, stàlaich Gboard agus cuir ris a’ chànan an sin:"
+    "autocorrectAndroidFallbackTitle": "Mura h-eil do mheur-chlàr a’ tabhann do chànan targaid, stàlaich Gboard agus cuir ris a’ chànan an sin:",
+    "resendInSeconds": "Ath-chuir ({seconds})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "xh",
-    "@@last_modified": "2026-08-19 14:14:52.603783",
+    "@@last_modified": "2026-08-20 14:15:55.154777",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Ayisiyiyo ifayile yomfanekiso.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Mema umhlobo",
     "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzekelayo ngolwimi olufundayo",
     "autocorrectAndroidDialogBody": "Xa uchwetheza kwincoko, ikhibhodi yakho iya kutshintshela kulwimi olufundayo kwaye ilungise upelo ngolwimi olo.",
-    "autocorrectAndroidFallbackTitle": "Ukuba ikhibhodi yakho ayiluniki ulwimi olufundayo, faka iGboard kwaye ulongeze ulwimi apho:"
+    "autocorrectAndroidFallbackTitle": "Ukuba ikhibhodi yakho ayiluniki ulwimi olufundayo, faka iGboard kwaye ulongeze ulwimi apho:",
+    "resendInSeconds": "Phinda uthumele ({seconds})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "ne",
-    "@@last_modified": "2026-08-19 14:14:49.456445",
+    "@@last_modified": "2026-08-20 14:15:52.543395",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "पासवर्ड दोहोर्याउनुहोस्",
     "notAnImage": "छवि फाइल होइन।",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "साथीलाई आमन्त्रित गर्नुहोस्",
     "autocorrectAndroidDialogTitle": "तपाईंको लक्षित भाषामा स्वतः सच्याउने",
     "autocorrectAndroidDialogBody": "जब तपाईं च्याटमा टाइप गर्नुहुन्छ, तपाईंको किबोर्ड तपाईंको लक्षित भाषामा स्विच हुनेछ र त्यो भाषामा हिज्जे सच्याउनेछ।",
-    "autocorrectAndroidFallbackTitle": "यदि तपाईंको किबोर्डले तपाईंको लक्षित भाषा प्रदान गर्दैन भने, Gboard स्थापना गर्नुहोस् र त्यहाँ भाषा थप्नुहोस्:"
+    "autocorrectAndroidFallbackTitle": "यदि तपाईंको किबोर्डले तपाईंको लक्षित भाषा प्रदान गर्दैन भने, Gboard स्थापना गर्नुहोस् र त्यहाँ भाषा थप्नुहोस्:",
+    "resendInSeconds": "पुन: पठाउनुहोस् ({seconds})"
 }

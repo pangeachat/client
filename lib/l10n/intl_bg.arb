@@ -1,6 +1,6 @@
 {
     "@@locale": "bg",
-    "@@last_modified": "2026-08-19 14:14:40.800362",
+    "@@last_modified": "2026-08-20 14:15:48.294876",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Повторете паролата",
     "notAnImage": "Не е файл с изображение.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Покани приятел",
     "autocorrectAndroidDialogTitle": "Автокорекция на целевия език",
     "autocorrectAndroidDialogBody": "Когато пишете в чат, клавиатурата ви ще превключи на целевия език и ще коригира правописа на този език.",
-    "autocorrectAndroidFallbackTitle": "Ако клавиатурата ви не предлага целевия език, инсталирайте Gboard и добавете езика там:"
+    "autocorrectAndroidFallbackTitle": "Ако клавиатурата ви не предлага целевия език, инсталирайте Gboard и добавете езика там:",
+    "resendInSeconds": "Изпрати отново ({seconds})"
 }

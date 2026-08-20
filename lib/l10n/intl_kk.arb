@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-19 14:14:45.995124",
+    "@@last_modified": "2026-08-20 14:15:50.890481",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Досыңды шақыр",
     "autocorrectAndroidDialogTitle": "Мақсатты тіліңіздегі автотүзету",
     "autocorrectAndroidDialogBody": "Чатта теру кезінде пернетақтаңыз мақсатты тіліңізге ауысады және сол тілдегі емлені түзетеді.",
-    "autocorrectAndroidFallbackTitle": "Егер пернетақтаңызда мақсатты тіліңіз болмаса, Gboard орнатып, тілді сонда қосыңыз:"
+    "autocorrectAndroidFallbackTitle": "Егер пернетақтаңызда мақсатты тіліңіз болмаса, Gboard орнатып, тілді сонда қосыңыз:",
+    "resendInSeconds": "Қайта жіберу ({seconds})"
 }

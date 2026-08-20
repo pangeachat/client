@@ -1,6 +1,6 @@
 {
     "@@locale": "si",
-    "@@last_modified": "2026-08-19 14:14:52.388558",
+    "@@last_modified": "2026-08-20 14:15:53.517877",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "මුරපදය නැවත ඇතුළත් කරන්න",
     "notAnImage": "රූප ගොනුවක් නොවේ.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "මිතුරෙකුට ආරාධනා කරන්න",
     "autocorrectAndroidDialogTitle": "ඔබගේ ඉලක්ක භාෂාවෙන් ස්වයං නිවැරදි කිරීම",
     "autocorrectAndroidDialogBody": "ඔබ චැට් එකක ටයිප් කරන විට, ඔබගේ යතුරු පුවරුව ඔබගේ ඉලක්ක භාෂාවට මාරු වී එම භාෂාවේ අක්ෂර වින්‍යාසය නිවැරදි කරනු ඇත.",
-    "autocorrectAndroidFallbackTitle": "ඔබගේ යතුරු පුවරුව ඔබගේ ඉලක්ක භාෂාව ලබා නොදෙන්නේ නම්, Gboard ස්ථාපනය කර එහි භාෂාව එක් කරන්න:"
+    "autocorrectAndroidFallbackTitle": "ඔබගේ යතුරු පුවරුව ඔබගේ ඉලක්ක භාෂාව ලබා නොදෙන්නේ නම්, Gboard ස්ථාපනය කර එහි භාෂාව එක් කරන්න:",
+    "resendInSeconds": "නැවත යවන්න ({seconds})"
 }

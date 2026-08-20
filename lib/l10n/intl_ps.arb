@@ -1,6 +1,6 @@
 {
     "@@locale": "ps",
-    "@@last_modified": "2026-08-19 14:14:49.866027",
+    "@@last_modified": "2026-08-20 14:15:53.274542",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورډ بیا ولیکئ",
     "notAnImage": "د عکس فایل نه دی.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "ملګري ته بلنه ورکړئ",
     "autocorrectAndroidDialogTitle": "ستاسو په هدف ژبه کې اتوماتیک سمون",
     "autocorrectAndroidDialogBody": "کله چې تاسو په چټ کې ټایپ کوئ، ستاسو کیبورډ به ستاسو هدف ژبې ته بدل شي او په هغې ژبې کې به املا سمه کړي.",
-    "autocorrectAndroidFallbackTitle": "که ستاسو کیبورډ ستاسو هدف ژبه نه وړاندې کوي، Gboard نصب کړئ او ژبه هلته اضافه کړئ:"
+    "autocorrectAndroidFallbackTitle": "که ستاسو کیبورډ ستاسو هدف ژبه نه وړاندې کوي، Gboard نصب کړئ او ژبه هلته اضافه کړئ:",
+    "resendInSeconds": "بیا استول ({seconds})"
 }

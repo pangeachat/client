@@ -1,6 +1,6 @@
 {
     "@@locale": "ig",
-    "@@last_modified": "2026-08-19 14:14:45.473711",
+    "@@last_modified": "2026-08-20 14:15:50.558002",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tinyegharịa paswọọdụ",
     "notAnImage": "Ọ bụghị faịlụ onyonyo.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Kpọọ enyi",
     "autocorrectAndroidDialogTitle": "Ndozighie onwe ya n'asụsụ ị na-amụ",
     "autocorrectAndroidDialogBody": "Mgbe ị na-ede ihe na nkata, ahụigodo gị ga-agbanwe gaa n'asụsụ ị na-amụ ma dozie mkpoputa n'asụsụ ahụ.",
-    "autocorrectAndroidFallbackTitle": "Ọ bụrụ na ahụigodo gị anaghị enye asụsụ ị na-amụ, wụnye Gboard ma tinye asụsụ ahụ ebe ahụ:"
+    "autocorrectAndroidFallbackTitle": "Ọ bụrụ na ahụigodo gị anaghị enye asụsụ ị na-amụ, wụnye Gboard ma tinye asụsụ ahụ ebe ahụ:",
+    "resendInSeconds": "Zipụgharịa ({seconds})"
 }

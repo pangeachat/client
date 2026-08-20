@@ -1,6 +1,6 @@
 {
     "@@locale": "et",
-    "@@last_modified": "2026-08-19 14:14:42.577071",
+    "@@last_modified": "2026-08-20 14:15:49.317192",
     "about": "Rakenduse teave",
     "@about": {
         "type": "String",
@@ -9753,5 +9753,6 @@
     "inviteAFriend": "Kutsu sõber",
     "autocorrectAndroidDialogTitle": "Automaatkorrektuur sihtkeeles",
     "autocorrectAndroidDialogBody": "Vestluses tippides lülitub klaviatuur sihtkeelde ja parandab õigekirja selles keeles.",
-    "autocorrectAndroidFallbackTitle": "Kui teie klaviatuur ei paku sihtkeelt, installige Gboard ja lisage keel sinna:"
+    "autocorrectAndroidFallbackTitle": "Kui teie klaviatuur ei paku sihtkeelt, installige Gboard ja lisage keel sinna:",
+    "resendInSeconds": "Saada uuesti ({seconds})"
 }

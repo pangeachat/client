@@ -1,6 +1,6 @@
 {
     "@@locale": "af",
-    "@@last_modified": "2026-08-19 14:14:40.924479",
+    "@@last_modified": "2026-08-20 14:15:48.330968",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Herhaal wagwoord",
     "notAnImage": "Nie 'n beeldlêer nie.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Nooi 'n vriend",
     "autocorrectAndroidDialogTitle": "Outokorreksie in jou doeltaal",
     "autocorrectAndroidDialogBody": "Wanneer jy in 'n klets tik, sal jou sleutelbord na jou doeltaal oorskakel en spelling in daardie taal korrigeer.",
-    "autocorrectAndroidFallbackTitle": "As jou sleutelbord nie jou doeltaal aanbied nie, installeer Gboard en voeg die taal daar by:"
+    "autocorrectAndroidFallbackTitle": "As jou sleutelbord nie jou doeltaal aanbied nie, installeer Gboard en voeg die taal daar by:",
+    "resendInSeconds": "Herstuur ({seconds})"
 }
