@@ -32,23 +32,16 @@ class Environment {
 
   /// The Sentry-reportable environment for this build, per the allow-list in
   /// sentry.instructions.md (only `staging`/`production` are valid; anything
-  /// else must not report). Deliberately NOT derived from
-  /// [isStagingEnvironment]'s `ENVIRONMENT` dotenv key: the production `.env`
-  /// secret never sets that key at all, so a build only reports `production`
-  /// by falling through a fallback, not by being positively identified as
-  /// one.
+  /// else must not report).
   ///
-  /// Also deliberately NOT derived from [homeServer]: that getter returns the
-  /// raw, unnormalized `HOME_SERVER` dotenv override when set (no scheme or
-  /// `matrix.`-prefix stripping applies to it, unlike its `SYNAPSE_URL`
-  /// fallback path), so a build could carry a real prod/staging
-  /// `SYNAPSE_URL` and go dark here on an unrelated `HOME_SERVER` quirk.
-  /// [dev_login.dart]'s `devLoginHost()` hit this same trap and works around
-  /// it by reading [AppConfig.defaultHomeserverUri] instead — the host
-  /// [Client.login] actually authenticates against, derived straight from
-  /// [synapseURL]. This getter can't import `AppConfig` (it imports
-  /// [Environment], which would cycle), so it replicates that same
-  /// scheme-then-host parse locally.
+  /// Deliberately NOT derived from [isStagingEnvironment]: the production
+  /// `.env` secret never sets `ENVIRONMENT` at all, so that key can't
+  /// positively identify production.
+  ///
+  /// Deliberately NOT derived from [homeServer]: see the warning on that
+  /// getter. Replicates [AppConfig.defaultHomeserverUri]'s scheme-then-host
+  /// parse of [synapseURL] locally to avoid importing `AppConfig` (which
+  /// imports [Environment] and would cycle).
   static String? get sentryEnvironment {
     final url = synapseURL;
     final hasScheme = url.startsWith('http://') || url.startsWith('https://');
@@ -95,6 +88,12 @@ class Environment {
         'Synapse Url not found';
   }
 
+  /// Don't use this to decide which environment a build is: the `HOME_SERVER`
+  /// override, when set, is returned raw with none of the scheme/`matrix.`
+  /// stripping applied to the `SYNAPSE_URL` fallback below, so it can diverge
+  /// from the host the app actually talks to. Use [synapseURL] (or
+  /// [AppConfig.defaultHomeserverUri]) for that instead — see
+  /// [sentryEnvironment] and `dev_login.dart`'s `devLoginHost()`.
   static String get homeServer {
     String? homeServerFromSynapseURL =
         appConfigOverride?.synapseURL ?? dotenv.env['SYNAPSE_URL'];
