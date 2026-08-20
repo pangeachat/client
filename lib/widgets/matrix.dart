@@ -303,15 +303,25 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
               .first
               .then((_) async {
                 // #Pangea
+                // The `client` getter (and anything handleLoginStateChange
+                // reads through it, e.g. PangeaController._onLogin) must
+                // resolve to THIS candidate before handleLoginStateChange
+                // runs — added to Matrix.clients and made active first.
+                // Otherwise, on a fresh single-account login, Matrix.clients
+                // is still empty at this point and `client` falls back to
+                // the previous (already logged-out, torn-down) account, so
+                // _onLogin's network calls hang against a dead client and
+                // the login dialog never closes (#8514).
+                if (!widget.clients.contains(_loginClientCandidate)) {
+                  widget.clients.add(_loginClientCandidate!);
+                }
+                setActiveClient(_loginClientCandidate);
                 await MatrixState.pangeaController.handleLoginStateChange(
                   LoginState.loggedIn,
                   _loginClientCandidate!.userID,
                   context,
                 );
                 // Pangea#
-                if (!widget.clients.contains(_loginClientCandidate)) {
-                  widget.clients.add(_loginClientCandidate!);
-                }
                 ClientManager.addClientNameToStore(
                   _loginClientCandidate!.clientName,
                   store,
