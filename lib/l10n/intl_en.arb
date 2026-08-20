@@ -4502,6 +4502,14 @@
     "enableEmailNotifications": "Enable email notifications",
     "learningAnalytics": "Learning analytics",
     "searchLanguagesHint": "Search languages",
+    "languageDropdownLevel": "Level {level}",
+    "@languageDropdownLevel": {
+        "placeholders": {
+            "level": {
+                "type": "int"
+            }
+        }
+    },
     "alreadySpeak": "I already speak...",
     "welcomeBackLogin": "Welcome back! You previously signed in with {platform}.",
     "@welcomeBackLogin": {
