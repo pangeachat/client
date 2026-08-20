@@ -37,6 +37,8 @@ Tapping the header drops it down. The stars shift from a horizontal row into a v
 
 When a learner has earned every one of their stars, the whole header turns gold — background, border, and button — and in the collapsed state the active-goal label is replaced by a gold **"I'm done!"** button. Tapping that button ends the activity and shows the summary; tapping anywhere else on the header still drops it down to the full gold list, where "I'm done!" stays gold and clickable and "End for all" is there for admins.
 
+The header's left slot, opposite the chevron, carries the session's language chip when that language is not what the learner is learning — the one offer to switch that a running session has, since it has no Start or Join button to attach one to. The behavior is [Switching from context](profile.instructions.md#switching-from-context).
+
 A header with no goals to show falls back to a plain **"Activity actions"** title in the same spot — no stars, but it still opens to the same end-activity buttons. This covers the admin or teacher who joins a session without taking a role (no goals of their own, but they still need "End for all") and any case where a role's goals can't be resolved — a legacy plan, or a failure loading or generating them — so a learner is never stranded without a way to end the activity.
 
 ## Completion saves itself

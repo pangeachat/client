@@ -45,17 +45,25 @@ All four use the same `SettingsLearning` widget and the same save flow: write to
 
 5. **Bot member menu** — `BotChatSettingsDialog`, opened from the bot's member profile in a room. Updates the profile *and* immediately calls bot option propagation rather than waiting for the stream (avoids perceived lag in the room the user is looking at).
 
-### Inline language-switch prompts
+### Switching from context
 
-These bypass the full settings UI and only change `targetLanguage`:
+Course and activity content is language-specific, but the learner's language is one global setting. Power users in multiple courses can often encounter content outside of their L2. Switching out of that mismatch is meant to be easy and low-stakes, and it happens **from the surface the learner is already looking at** rather than from settings.
 
-6. **Activity session mismatch** — When the user tries to send a message in an activity room whose target language differs from their current L2, a popup offers to switch. Rate-limited to once per 30 minutes per room (via `LanguageMismatchRepo`) to avoid nagging. On confirm, updates the profile and auto-sends the pending message.
+6. **The language chip is the switch.** Every surface that shows what language its content is in draws that language already, and that drawing is the control: the [`LanguageFlagChip`](../../lib/features/languages/language_flag_chip.dart) in the activity start page's info row, the language chip among a course's info chips (both the course a learner has joined and one they are previewing), and the same chip in a running session's [goal header](activities.instructions.md#the-goal-header). When the content's language differs from the learner's L2 the chip is tinted to say so; tapping it opens the language switcher. Nothing fires on open — these panels re-open on nearly every move through the workspace, so an offer that appeared by itself would be a notification the learner cannot turn off.
 
-7. **Reading toolbar mismatch** — When the user taps a message in a language that doesn't match their L2 and the selected toolbar mode is unavailable, a snackbar offers a "Learn" button to switch their target language.
+7. **The language switcher** is one list of every target language — the same dropdown learning settings uses, so the control behaves identically wherever it is opened. The languages the learner already has analytics in (`publicProfile.analytics.languageAnalytics`) sort to the top, each showing its flag and its level, so the two or three languages a learner actually moves between are reachable without scrolling or searching; every other language follows in the usual order below them. Picking one switches immediately and offers **Undo** in a snackbar.
+
+8. **Send-time mismatch popup** (the backstop) — When the learner tries to send a message in an activity room whose target language differs from their L2, a popup offers to switch, rate-limited to once per 30 minutes per room (via `LanguageMismatchRepo`) to avoid nagging. On confirm it updates the profile and auto-sends the pending message. This stays because the chip is deliberately quiet: it is the only path that reaches a learner who never noticed the mismatch.
+
+9. **Reading toolbar mismatch** — When the user taps a message in a language that doesn't match their L2 and the selected toolbar mode is unavailable, a snackbar offers a "Learn" button to switch their target language.
+
+**Switching to the learner's base language is refused, not attempted.** `IdenticalLanguageException` is thrown inside the profile write, so every offer has to know before it asks: a chip whose language is the learner's L1 renders as a plain label — no tint, no tap — and the switcher shows that language as unavailable with the reason. The send-time popup already applies the same rule.
+
+**A switch is cheap and loses nothing.** Each language keeps its own analytics room and its own local partition ([analytics-system.instructions.md](analytics-system.instructions.md#per-language-isolation)), so switching away banks the current language rather than spending it, and switching back finds it intact; the work of switching is smallest for a language the learner has little history in, which is the common case here. The first switch into a language with no analytics at all says so once — the new language starts at level 1, the previous one keeps its level and XP — so an empty progress screen never reads as lost work.
 
 ### Contract all paths must satisfy
 
-Every path that changes settings **must** write to account data via `UserController.updateProfile`. The sync-driven stream is the canonical trigger for propagating changes to the bot and public profile. The only exception is the bot-settings dialog (path 5), which additionally calls bot propagation eagerly for responsiveness.
+Every path that changes settings **must** write to account data via `UserController.updateProfile` — the chip and the switcher included, however far they sit from the settings page. The sync-driven stream is the canonical trigger for propagating changes to the bot and public profile. The only exception is the bot-settings dialog (path 5), which additionally calls bot propagation eagerly for responsiveness.
 
 ## Bot Option Propagation
 
@@ -106,6 +114,7 @@ The activity-plan filter uses state event presence, but Matrix state events pers
 
 ## Future Work
 
+- **Per-language self-reported level** — `UserSettings.cefrLevel` is one value per learner while analytics level and XP are per language, so switching leaves a level asserted about the new language that the learner never claimed. The more switching we encourage from context, the more often that is wrong.
 - **Bio / about editing** — Users currently have no UI to set or edit their `about` field. Add an input to either the learning settings page or a dedicated public-profile editor.
 - **Bio / about display** — Decide where other users see the bio. Candidates: user profile sheet in a room, member list hover card, space member directory. Also resolve whether `about` should stay in `UserSettings` (private, synced to public) or move entirely to `PublicProfileModel`.
 - **Public learning stats** — Surface vocab count, grammar construct progress, and completed activities on a user's public profile so classmates and teachers can see learning outcomes, not just XP/level.
