@@ -75,6 +75,9 @@ class _ChatCallHostState extends State<ChatCallHost> {
       listenable: session,
       builder: (context, _) {
         if (session.isOver) return const SizedBox.shrink();
+        // In fullscreen the GLOBAL host paints the panel over the whole app;
+        // painting it here too would stack two copies.
+        if (session.fullscreen) return const SizedBox.shrink();
         if (session.minimized) {
           // Docked at the top of the pane; the chat stays interactive below.
           return Positioned(

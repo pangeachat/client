@@ -35,7 +35,13 @@ class GlobalCallTile extends StatelessWidget {
             ListenableBuilder(
               listenable: session,
               builder: (context, _) {
-                if (session.isOver || session.hasPresenter) {
+                if (session.isOver) return const SizedBox.shrink();
+                // Fullscreen covers the whole app from HERE, wherever the user
+                // is — the in-chat host stands down while it is on.
+                if (session.fullscreen) {
+                  return Positioned.fill(child: CallPanel(session: session));
+                }
+                if (session.hasPresenter) {
                   return const SizedBox.shrink();
                 }
                 final wide = FluffyThemes.isColumnMode(context);

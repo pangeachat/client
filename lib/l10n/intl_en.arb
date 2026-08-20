@@ -3603,6 +3603,8 @@
     "callDeclinedByPeer": "Call declined",
     "callRinging": "Ringing...",
     "callMinimize": "Minimize call",
+    "callFullscreen": "Full screen",
+    "callExitFullscreen": "Exit full screen",
     "callReconnecting": "Reconnecting...",
     "callFailedBusy": "You are already in a call",
     "callFailedService": "The calling service refused the connection",

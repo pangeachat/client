@@ -104,18 +104,33 @@ class CallPanel extends StatelessWidget {
     ),
   );
 
-  /// Minimize, not hang up: shrinking the call must never be the thing that
-  /// ends it.
-  Widget _topBar(L10n l10n) => Align(
-    alignment: Alignment.centerLeft,
-    child: Semantics(
-      label: l10n.callMinimize,
-      button: true,
-      child: IconButton(
-        icon: const Icon(Icons.expand_more, color: Colors.white),
-        onPressed: session.minimize,
+  /// Minimize on the left, fullscreen on the right — and neither is hang up:
+  /// resizing the call must never be the thing that ends it.
+  Widget _topBar(L10n l10n) => Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      Semantics(
+        label: l10n.callMinimize,
+        button: true,
+        child: IconButton(
+          icon: const Icon(Icons.expand_more, color: Colors.white),
+          onPressed: session.minimize,
+        ),
       ),
-    ),
+      Semantics(
+        label: session.fullscreen
+            ? l10n.callExitFullscreen
+            : l10n.callFullscreen,
+        button: true,
+        child: IconButton(
+          icon: Icon(
+            session.fullscreen ? Icons.fullscreen_exit : Icons.fullscreen,
+            color: Colors.white,
+          ),
+          onPressed: session.toggleFullscreen,
+        ),
+      ),
+    ],
   );
 
   Widget _peerPanel(BuildContext context, L10n l10n, ThemeData theme) {

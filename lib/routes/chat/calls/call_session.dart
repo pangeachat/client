@@ -133,6 +133,19 @@ class CallSession extends ChangeNotifier {
   // ---------------------------------------------------------------- state
 
   bool get minimized => _minimized;
+
+  /// Whether the call is showing over the whole app rather than inside its
+  /// chat pane. A choice, not the default: the pane is where the call lives,
+  /// and this is the "make it big" button every video product offers.
+  bool get fullscreen => _fullscreen;
+  bool _fullscreen = false;
+
+  void toggleFullscreen() {
+    _fullscreen = !_fullscreen;
+    if (_fullscreen) _minimized = false;
+    notifyListeners();
+  }
+
   bool get muted => _muted;
   bool get cameraOn => _camera;
   bool get isOver => _over;
@@ -178,8 +191,10 @@ class CallSession extends ChangeNotifier {
   // ---------------------------------------------------------------- actions
 
   void minimize() {
-    if (_minimized) return;
+    if (_minimized && !_fullscreen) return;
     _minimized = true;
+    // Minimizing IS leaving fullscreen; the tile takes over either way.
+    _fullscreen = false;
     notifyListeners();
   }
 
