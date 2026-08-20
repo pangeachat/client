@@ -1,6 +1,6 @@
 {
     "@@locale": "as",
-    "@@last_modified": "2026-08-20 13:11:39.339295",
+    "@@last_modified": "2026-08-20 15:18:43.761583",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "পাছৱৰ্ড পুনৰাবৃত্তি কৰক",
     "notAnImage": "এইটো এটা ছবি ফাইল নহয়।",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "আপোনাৰ লক্ষ্য ভাষাত স্বয়ংক্ৰিয় সংশোধন",
     "autocorrectAndroidDialogBody": "আপুনি যেতিয়া এটা চাটত টাইপ কৰে, আপোনাৰ কিব'ৰ্ড আপোনাৰ লক্ষ্য ভাষালৈ সলনি হ'ব আৰু সেই ভাষাত বানান শুদ্ধ কৰিব।",
     "autocorrectAndroidFallbackTitle": "যদি আপোনাৰ কিব'ৰ্ডে আপোনাৰ লক্ষ্য ভাষা আগবঢ়োৱা নাই, Gboard ইনষ্টল কৰক আৰু তাত ভাষা যোগ কৰক:",
-    "openKeyboardSettings": "কী-ব’ৰ্ড ছেটিংছ খোলক"
+    "openKeyboardSettings": "কী-ব’ৰ্ড ছেটিংছ খোলক",
+    "keyboardPromptAddKeyboardMessage": "আপোনাৰ লক্ষ্য ভাষাৰ বাবে এটা কিব'ৰ্ড যোগ কৰক যাতে স্বয়ংক্ৰিয় সংশোধন কাম কৰে।",
+    "keyboardPromptAddKeyboardAction": "কিব'ৰ্ড যোগ কৰক",
+    "keyboardPromptSwitchKeyboardMessage": "আপোনাৰ লক্ষ্য ভাষালৈ সলনি কৰিবলৈ আপোনাৰ কিব'ৰ্ডত গ্ল'ব আইকনত টেপ কৰক।"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-20 13:11:40.010231",
+    "@@last_modified": "2026-08-20 15:18:44.233177",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Autucurrezzione in a vostra lingua di destinazione",
     "autocorrectAndroidDialogBody": "Quandu scrivite in una chjachjarata, a vostra tastiera cambierà à a vostra lingua di destinazione è curreggerà l'ortografia in quella lingua.",
     "autocorrectAndroidFallbackTitle": "Se a vostra tastiera ùn offre micca a vostra lingua di destinazione, stallate Gboard è aghjunghjite a lingua quì:",
-    "openKeyboardSettings": "Apre i Paràmetri di a Tastiera"
+    "openKeyboardSettings": "Apre i Paràmetri di a Tastiera",
+    "keyboardPromptAddKeyboardMessage": "Aghjunghje una tastiera per a vostra lingua di destinazione per chì l'autucurrezzione funziona.",
+    "keyboardPromptAddKeyboardAction": "Aghjunghje Tastiera",
+    "keyboardPromptSwitchKeyboardMessage": "Toccate l'icona di u globu nantu à a vostra tastiera per cambià à a vostra lingua di destinazione."
 }

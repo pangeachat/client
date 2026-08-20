@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-20 13:11:46.814886",
+    "@@last_modified": "2026-08-20 15:18:55.236480",
     "about": "Giới thiệu",
     "@about": {
         "type": "String",
@@ -7039,5 +7039,8 @@
     "autocorrectAndroidDialogTitle": "Tự động sửa lỗi bằng ngôn ngữ mục tiêu của bạn",
     "autocorrectAndroidDialogBody": "Khi bạn nhập tin nhắn trong cuộc trò chuyện, bàn phím của bạn sẽ chuyển sang ngôn ngữ mục tiêu và sửa lỗi chính tả bằng ngôn ngữ đó.",
     "autocorrectAndroidFallbackTitle": "Nếu bàn phím của bạn không hỗ trợ ngôn ngữ mục tiêu, hãy cài đặt Gboard và thêm ngôn ngữ đó tại đây:",
-    "openKeyboardSettings": "Mở Cài đặt Bàn phím"
+    "openKeyboardSettings": "Mở Cài đặt Bàn phím",
+    "keyboardPromptAddKeyboardMessage": "Thêm bàn phím cho ngôn ngữ bạn muốn học để tính năng tự động sửa lỗi hoạt động.",
+    "keyboardPromptAddKeyboardAction": "Thêm bàn phím",
+    "keyboardPromptSwitchKeyboardMessage": "Nhấn vào biểu tượng quả địa cầu trên bàn phím để chuyển sang ngôn ngữ bạn muốn học."
 }

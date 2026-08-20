@@ -28,4 +28,22 @@ abstract final class KeyboardLanguages {
       return [];
     }
   }
+
+  /// The primary language of whatever keyboard mode is active on the
+  /// currently focused text input, or null when nothing is focused, the
+  /// platform doesn't implement this, or the call fails.
+  ///
+  /// iOS only — Android has no equivalent because the composer already
+  /// points the keyboard at the target language itself
+  /// (target-language-keyboard.instructions.md); on Android and every other
+  /// platform this simply resolves to null.
+  static Future<String?> getCurrentInputModeLanguage() async {
+    try {
+      return await _channel.invokeMethod<String>('getCurrentInputModeLanguage');
+    } on PlatformException {
+      return null;
+    } on MissingPluginException {
+      return null;
+    }
+  }
 }

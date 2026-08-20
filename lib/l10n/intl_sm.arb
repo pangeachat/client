@@ -1,6 +1,6 @@
 {
     "@@locale": "sm",
-    "@@last_modified": "2026-08-20 13:11:45.069962",
+    "@@last_modified": "2026-08-20 15:18:53.688310",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Toe faʻaulu le upu faʻalilolilo",
     "notAnImage": "E lē o se faila ata.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Fa'asa'oga otometi i lau gagana e a'oa'oina",
     "autocorrectAndroidDialogBody": "A e taina i se talatalanoaga, o le a fesuia'i lau piano i lau gagana e a'oa'oina ma fa'asa'o le sipelaga i lena gagana.",
     "autocorrectAndroidFallbackTitle": "Afai e le ofoina mai e lau piano lau gagana e a'oa'oina, fa'apipi'i le Gboard ma fa'aopoopo le gagana iina:",
-    "openKeyboardSettings": "Tatala Fa'atonuga o le Piano"
+    "openKeyboardSettings": "Tatala Fa'atonuga o le Piano",
+    "keyboardPromptAddKeyboardMessage": "Fa'aopoopo se piano mo lau gagana e a'oa'oina ina ia galue le autocorrect.",
+    "keyboardPromptAddKeyboardAction": "Fa'aopoopo le Piano",
+    "keyboardPromptSwitchKeyboardMessage": "Pa'i i le fa'ailoga lalolagi i luga o lau piano e sui ai i lau gagana e a'oa'oina."
 }

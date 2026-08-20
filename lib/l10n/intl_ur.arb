@@ -1,6 +1,6 @@
 {
     "@@locale": "ur",
-    "@@last_modified": "2026-08-20 13:11:46.020497",
+    "@@last_modified": "2026-08-20 15:18:55.045513",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاس ورڈ دہرائیں",
     "notAnImage": "تصویر کی فائل نہیں ہے۔",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "آپ کی ہدف کی زبان میں خودکار تصحیح",
     "autocorrectAndroidDialogBody": "جب آپ کسی چیٹ میں ٹائپ کرتے ہیں، تو آپ کا کی بورڈ آپ کی ہدف کی زبان میں تبدیل ہو جائے گا اور اس زبان میں ہجے کی تصحیح کرے گا۔",
     "autocorrectAndroidFallbackTitle": "اگر آپ کا کی بورڈ آپ کی ہدف کی زبان پیش نہیں کرتا ہے، تو Gboard انسٹال کریں اور وہاں زبان شامل کریں:",
-    "openKeyboardSettings": "کی بورڈ کی ترتیبات کھولیں"
+    "openKeyboardSettings": "کی بورڈ کی ترتیبات کھولیں",
+    "keyboardPromptAddKeyboardMessage": "آٹو کریکٹ کے کام کرنے کے لیے اپنی ہدف زبان کے لیے ایک کی بورڈ شامل کریں۔",
+    "keyboardPromptAddKeyboardAction": "کی بورڈ شامل کریں",
+    "keyboardPromptSwitchKeyboardMessage": "اپنی ہدف زبان پر سوئچ کرنے کے لیے اپنے کی بورڈ پر گلوب آئیکن کو تھپتھپائیں۔"
 }

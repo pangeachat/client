@@ -1,6 +1,6 @@
 {
     "@@locale": "ht",
-    "@@last_modified": "2026-08-20 13:11:41.275109",
+    "@@last_modified": "2026-08-20 15:18:47.533971",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repete modpas",
     "notAnImage": "Se pa yon fichye imaj.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Koreksyon otomatik nan lang sib ou a",
     "autocorrectAndroidDialogBody": "Lè w ap tape nan yon chat, klavye w ap chanje nan lang sib ou a epi l ap korije òtograf nan lang sa a.",
     "autocorrectAndroidFallbackTitle": "Si klavye w la pa ofri lang sib ou a, enstale Gboard epi ajoute lang nan la:",
-    "openKeyboardSettings": "Louvri Anviwònman Klavye"
+    "openKeyboardSettings": "Louvri Anviwònman Klavye",
+    "keyboardPromptAddKeyboardMessage": "Ajoute yon klavye pou lang sib ou pou koreksyon otomatik la mache.",
+    "keyboardPromptAddKeyboardAction": "Ajoute Klavye",
+    "keyboardPromptSwitchKeyboardMessage": "Tape ikòn glòb la sou klavye ou pou chanje nan lang sib ou."
 }

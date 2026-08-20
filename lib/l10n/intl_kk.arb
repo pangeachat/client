@@ -1,6 +1,6 @@
 {
     "@@locale": "kk",
-    "@@last_modified": "2026-08-20 13:11:42.426985",
+    "@@last_modified": "2026-08-20 15:18:49.009869",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Құпия сөзді қайталаңыз",
     "notAnImage": "Сурет файлы емес.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Мақсатты тіліңіздегі автотүзету",
     "autocorrectAndroidDialogBody": "Чатта теру кезінде пернетақтаңыз мақсатты тіліңізге ауысады және сол тілдегі емлені түзетеді.",
     "autocorrectAndroidFallbackTitle": "Егер пернетақтаңызда мақсатты тіліңіз болмаса, Gboard орнатып, тілді сонда қосыңыз:",
-    "openKeyboardSettings": "Пернетақта параметрлерін ашу"
+    "openKeyboardSettings": "Пернетақта параметрлерін ашу",
+    "keyboardPromptAddKeyboardMessage": "Автотүзету жұмыс істеуі үшін мақсатты тіліңізге арналған пернетақтаны қосыңыз.",
+    "keyboardPromptAddKeyboardAction": "Пернетақтаны қосу",
+    "keyboardPromptSwitchKeyboardMessage": "Мақсатты тіліңізге ауысу үшін пернетақтаңыздағы глобус белгішесін түртіңіз."
 }

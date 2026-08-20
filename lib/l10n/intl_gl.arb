@@ -1,6 +1,6 @@
 {
     "@@locale": "gl",
-    "@@last_modified": "2026-08-20 13:11:40.603195",
+    "@@last_modified": "2026-08-20 15:18:46.107245",
     "about": "Acerca de",
     "@about": {
         "type": "String",
@@ -9747,5 +9747,8 @@
     "autocorrectAndroidDialogTitle": "Corrección automática no teu idioma de destino",
     "autocorrectAndroidDialogBody": "Cando escribas nun chat, o teu teclado cambiará ao teu idioma de destino e corrixirá a ortografía nese idioma.",
     "autocorrectAndroidFallbackTitle": "Se o teu teclado non ofrece o teu idioma de destino, instala Gboard e engade o idioma alí:",
-    "openKeyboardSettings": "Abrir axustes do teclado"
+    "openKeyboardSettings": "Abrir axustes do teclado",
+    "keyboardPromptAddKeyboardMessage": "Engade un teclado para o teu idioma de destino para que funcione o autocorrector.",
+    "keyboardPromptAddKeyboardAction": "Engadir teclado",
+    "keyboardPromptSwitchKeyboardMessage": "Toca a icona do globo no teu teclado para cambiar ao teu idioma de destino."
 }

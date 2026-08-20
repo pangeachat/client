@@ -1938,7 +1938,7 @@
     "playWithAI": "ამ დროისთვის ითამაშეთ AI-თან",
     "courseStartDesc": "Pangea Bot მზადაა ნებისმიერ დროს გასასვლელად!\n\n...მაგრამ სწავლა უკეთესია მეგობრებთან ერთად!",
     "@@locale": "ka",
-    "@@last_modified": "2026-08-20 13:11:42.121117",
+    "@@last_modified": "2026-08-20 15:18:48.761647",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10647,5 +10647,8 @@
     "autocorrectAndroidDialogTitle": "ავტოკორექცია თქვენს სამიზნე ენაზე",
     "autocorrectAndroidDialogBody": "როდესაც ჩატში წერთ, თქვენი კლავიატურა გადაერთვება თქვენს სამიზნე ენაზე და შეასწორებს მართლწერას ამ ენაზე.",
     "autocorrectAndroidFallbackTitle": "თუ თქვენი კლავიატურა არ გთავაზობთ თქვენს სამიზნე ენას, დააინსტალირეთ Gboard და დაამატეთ ენა იქ:",
-    "openKeyboardSettings": "კლავიატურის პარამეტრების გახსნა"
+    "openKeyboardSettings": "კლავიატურის პარამეტრების გახსნა",
+    "keyboardPromptAddKeyboardMessage": "დაამატეთ კლავიატურა თქვენი სამიზნე ენისთვის, რათა ავტოკორექციამ იმუშაოს.",
+    "keyboardPromptAddKeyboardAction": "კლავიატურის დამატება",
+    "keyboardPromptSwitchKeyboardMessage": "შეეხეთ გლობუსის ხატულას თქვენს კლავიატურაზე, რათა გადახვიდეთ თქვენს სამიზნე ენაზე."
 }

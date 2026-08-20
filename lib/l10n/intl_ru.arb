@@ -1,6 +1,6 @@
 {
     "@@locale": "ru",
-    "@@last_modified": "2026-08-20 13:11:44.812127",
+    "@@last_modified": "2026-08-20 15:18:53.144813",
     "about": "О проекте",
     "@about": {
         "type": "String",
@@ -10719,5 +10719,8 @@
     "autocorrectAndroidDialogTitle": "Автокоррекция на целевом языке",
     "autocorrectAndroidDialogBody": "Когда вы печатаете в чате, клавиатура переключится на ваш целевой язык и будет исправлять орфографию на этом языке.",
     "autocorrectAndroidFallbackTitle": "Если ваша клавиатура не предлагает целевой язык, установите Gboard и добавьте язык там:",
-    "openKeyboardSettings": "Открыть настройки клавиатуры"
+    "openKeyboardSettings": "Открыть настройки клавиатуры",
+    "keyboardPromptAddKeyboardMessage": "Добавьте клавиатуру для целевого языка, чтобы автокоррекция работала.",
+    "keyboardPromptAddKeyboardAction": "Добавить клавиатуру",
+    "keyboardPromptSwitchKeyboardMessage": "Нажмите значок глобуса на клавиатуре, чтобы переключиться на целевой язык."
 }

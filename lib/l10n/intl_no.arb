@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-20 13:11:43.710543",
+    "@@last_modified": "2026-08-20 15:18:51.849352",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Autokorrektur på målspråket ditt",
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, vil tastaturet bytte til målspråket ditt og korrigere stavemåten på det språket.",
     "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:",
-    "openKeyboardSettings": "Åpne tastaturinnstillinger"
+    "openKeyboardSettings": "Åpne tastaturinnstillinger",
+    "keyboardPromptAddKeyboardMessage": "Legg til et tastatur for målspråket ditt slik at autokorrektur fungerer.",
+    "keyboardPromptAddKeyboardAction": "Legg til tastatur",
+    "keyboardPromptSwitchKeyboardMessage": "Trykk på globusikonet på tastaturet for å bytte til målspråket ditt."
 }

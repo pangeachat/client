@@ -26,14 +26,15 @@ bool hasKeyboardForLanguage(
   String targetLanguageCode,
   List<String> enabledTags,
 ) {
-  final target = _primarySubtag(targetLanguageCode);
+  final target = primaryLanguageSubtag(targetLanguageCode);
   if (target == null) return true;
-  return enabledTags.any((tag) => _primarySubtag(tag) == target);
+  return enabledTags.any((tag) => primaryLanguageSubtag(tag) == target);
 }
 
 /// The lowercase ISO 639 primary subtag of a BCP-47 tag (`es-419` → `es`),
-/// or null if the tag doesn't start with a 2-3 letter language code.
-String? _primarySubtag(String tag) {
+/// or null if the tag doesn't start with a 2-3 letter language code. Public
+/// so [ObservedKeyboardStore] can key its per-language state the same way.
+String? primaryLanguageSubtag(String tag) {
   final primary = tag.split('-').first.toLowerCase();
   return RegExp(r'^[a-z]{2,3}$').hasMatch(primary) ? primary : null;
 }

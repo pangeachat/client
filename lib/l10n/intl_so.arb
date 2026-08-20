@@ -1,6 +1,6 @@
 {
     "@@locale": "so",
-    "@@last_modified": "2026-08-20 13:11:45.285070",
+    "@@last_modified": "2026-08-20 15:18:53.705921",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ku celi erayga sirta ah",
     "notAnImage": "Fayl sawir maaha.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Sixitaanka tooska ah ee luqaddaada bartilmaameedka ah",
     "autocorrectAndroidDialogBody": "Markaad ku qorto sheekeysi, kiiboodhkaagu wuxuu u wareegi doonaa luqaddaada bartilmaameedka ah wuxuuna sixi doonaa higgaadda luqaddaas.",
     "autocorrectAndroidFallbackTitle": "Haddii kiiboodhkaagu uusan bixin luqaddaada bartilmaameedka ah, rakib Gboard oo ku dar luqadda halkaas:",
-    "openKeyboardSettings": "Fur Goobaha Kiiboodhka"
+    "openKeyboardSettings": "Fur Goobaha Kiiboodhka",
+    "keyboardPromptAddKeyboardMessage": "Ku dar kiiboodhka luqadda aad bartay si autocorrect-ku u shaqeeyo.",
+    "keyboardPromptAddKeyboardAction": "Ku dar Kiiboodhka",
+    "keyboardPromptSwitchKeyboardMessage": "Taabo astaanta caalamka ee kiiboodhkaaga si aad ugu beddesho luqadda aad bartay."
 }

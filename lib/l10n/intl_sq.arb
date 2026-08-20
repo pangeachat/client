@@ -1,6 +1,6 @@
 {
     "@@locale": "sq",
-    "@@last_modified": "2026-08-20 13:11:45.102387",
+    "@@last_modified": "2026-08-20 15:18:56.071383",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Përsërit fjalëkalimin",
     "notAnImage": "Nuk është skedar imazhi.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Autokorrektimi në gjuhën tuaj të synuar",
     "autocorrectAndroidDialogBody": "Kur shkruani në një bisedë, tastiera juaj do të kalojë në gjuhën tuaj të synuar dhe do të korrigjojë drejtshkrimin në atë gjuhë.",
     "autocorrectAndroidFallbackTitle": "Nëse tastiera juaj nuk ofron gjuhën tuaj të synuar, instaloni Gboard dhe shtoni gjuhën atje:",
-    "openKeyboardSettings": "Hap Cilësimet e Tastierës"
+    "openKeyboardSettings": "Hap Cilësimet e Tastierës",
+    "keyboardPromptAddKeyboardMessage": "Shto një tastierë për gjuhën tënde të synuar, që të funksionojë korrigjimi automatik.",
+    "keyboardPromptAddKeyboardAction": "Shto tastierë",
+    "keyboardPromptSwitchKeyboardMessage": "Prek ikonën e globit në tastierën tënde për të kaluar te gjuha jote e synuar."
 }

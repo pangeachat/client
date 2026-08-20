@@ -1,6 +1,6 @@
 {
     "@@locale": "cs",
-    "@@last_modified": "2026-08-20 13:11:39.845859",
+    "@@last_modified": "2026-08-20 15:18:44.112861",
     "about": "O aplikaci",
     "@about": {
         "type": "String",
@@ -10241,5 +10241,8 @@
     "autocorrectAndroidDialogTitle": "Automatické opravy v cílovém jazyce",
     "autocorrectAndroidDialogBody": "Když píšete do chatu, klávesnice se přepne na váš cílový jazyk a bude v něm opravovat pravopis.",
     "autocorrectAndroidFallbackTitle": "Pokud vaše klávesnice nenabízí váš cílový jazyk, nainstalujte Gboard a přidejte jazyk tam:",
-    "openKeyboardSettings": "Otevřít nastavení klávesnice"
+    "openKeyboardSettings": "Otevřít nastavení klávesnice",
+    "keyboardPromptAddKeyboardMessage": "Přidejte klávesnici pro váš cílový jazyk, aby fungovala automatická oprava.",
+    "keyboardPromptAddKeyboardAction": "Přidat klávesnici",
+    "keyboardPromptSwitchKeyboardMessage": "Klepněte na ikonu glóbu na klávesnici pro přepnutí na váš cílový jazyk."
 }

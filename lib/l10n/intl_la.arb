@@ -1,6 +1,6 @@
 {
     "@@locale": "la",
-    "@@last_modified": "2026-08-20 13:11:42.722004",
+    "@@last_modified": "2026-08-20 15:18:50.113351",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Tesseram itera",
     "notAnImage": "Non est fasciculus imaginis.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Emendatio automatica in lingua quam discis",
     "autocorrectAndroidDialogBody": "Cum in colloquio scribis, claviatura tua ad linguam quam discis mutabit et orthographiam in illa lingua emendabit.",
     "autocorrectAndroidFallbackTitle": "Si claviatura tua linguam quam discis non offert, Gboard institue et linguam illic adde:",
-    "openKeyboardSettings": "Aperi Claviaturae Optiones"
+    "openKeyboardSettings": "Aperi Claviaturae Optiones",
+    "keyboardPromptAddKeyboardMessage": "Claviaturae linguae tuae additae sunt, ut correctio automatica operetur.",
+    "keyboardPromptAddKeyboardAction": "Adde Claviaturam",
+    "keyboardPromptSwitchKeyboardMessage": "Tange iconem orbis terrarum in claviaturā tuā ut ad linguam tuam commutēs."
 }

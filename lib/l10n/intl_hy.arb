@@ -1,6 +1,6 @@
 {
     "@@locale": "hy",
-    "@@last_modified": "2026-08-20 13:11:42.095043",
+    "@@last_modified": "2026-08-20 15:18:47.898362",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Կրկնել գաղտնաբառը",
     "notAnImage": "Նկարի ֆայլ չէ։",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Ավտոուղղումը ձեր թիրախ լեզվով",
     "autocorrectAndroidDialogBody": "Երբ հաղորդագրություն եք գրում, ձեր ստեղնաշարը կանցնի ձեր թիրախ լեզվին և կուղղի ուղղագրությունը այդ լեզվով։",
     "autocorrectAndroidFallbackTitle": "Եթե ձեր ստեղնաշարը չի առաջարկում ձեր թիրախ լեզուն, տեղադրեք Gboard-ը և ավելացրեք լեզուն այնտեղ՝",
-    "openKeyboardSettings": "Բացել ստեղնաշարի կարգավորումները"
+    "openKeyboardSettings": "Բացել ստեղնաշարի կարգավորումները",
+    "keyboardPromptAddKeyboardMessage": "Ավելացրեք ստեղնաշար ձեր թիրախ լեզվի համար, որպեսզի ավտոուղղումն աշխատի։",
+    "keyboardPromptAddKeyboardAction": "Ավելացնել ստեղնաշար",
+    "keyboardPromptSwitchKeyboardMessage": "Հպեք ձեր ստեղնաշարի գլոբուսի պատկերակին՝ ձեր թիրախ լեզվին անցնելու համար։"
 }

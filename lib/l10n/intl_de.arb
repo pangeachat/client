@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-20 13:11:39.852756",
+    "@@last_modified": "2026-08-20 15:18:44.531020",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9734,5 +9734,8 @@
     "autocorrectAndroidDialogTitle": "Autokorrektur in Ihrer Zielsprache",
     "autocorrectAndroidDialogBody": "Wenn Sie in einem Chat tippen, wechselt Ihre Tastatur zu Ihrer Zielsprache und korrigiert die Rechtschreibung in dieser Sprache.",
     "autocorrectAndroidFallbackTitle": "Wenn Ihre Tastatur Ihre Zielsprache nicht anbietet, installieren Sie Gboard und fügen Sie die Sprache dort hinzu:",
-    "openKeyboardSettings": "Tastatureinstellungen öffnen"
+    "openKeyboardSettings": "Tastatureinstellungen öffnen",
+    "keyboardPromptAddKeyboardMessage": "Füge eine Tastatur für deine Zielsprache hinzu, damit die Autokorrektur funktioniert.",
+    "keyboardPromptAddKeyboardAction": "Tastatur hinzufügen",
+    "keyboardPromptSwitchKeyboardMessage": "Tippe auf das Globus-Symbol auf deiner Tastatur, um zu deiner Zielsprache zu wechseln."
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "bs",
-    "@@last_modified": "2026-08-20 13:11:39.302949",
+    "@@last_modified": "2026-08-20 15:18:43.237426",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ponovite lozinku",
     "notAnImage": "Nije slikovna datoteka.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Automatska ispravka na vašem ciljnom jeziku",
     "autocorrectAndroidDialogBody": "Kada kucate u chatu, vaša tastatura će se prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tastatura ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
-    "openKeyboardSettings": "Otvori postavke tastature"
+    "openKeyboardSettings": "Otvori postavke tastature",
+    "keyboardPromptAddKeyboardMessage": "Dodajte tastaturu za ciljni jezik kako bi automatska ispravka radila.",
+    "keyboardPromptAddKeyboardAction": "Dodaj tastaturu",
+    "keyboardPromptSwitchKeyboardMessage": "Dodirnite ikonu globusa na tastaturi da biste se prebacili na ciljni jezik."
 }

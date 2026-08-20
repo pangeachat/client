@@ -1,6 +1,6 @@
 {
     "@@locale": "sd",
-    "@@last_modified": "2026-08-20 13:11:44.851645",
+    "@@last_modified": "2026-08-20 15:18:53.545632",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "پاسورڊ ورجايو",
     "notAnImage": "تصويري فائل ناهي.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "توهان جي ٽارگيٽ ٻولي ۾ خودڪار درستي",
     "autocorrectAndroidDialogBody": "جڏهن توهان چيٽ ۾ ٽائيپ ڪندا، توهان جو ڪيبورڊ توهان جي ٽارگيٽ ٻولي ۾ تبديل ٿي ويندو ۽ ان ٻولي ۾ اسپيلنگ درست ڪندو.",
     "autocorrectAndroidFallbackTitle": "جيڪڏهن توهان جو ڪيبورڊ توهان جي ٽارگيٽ ٻولي پيش نٿو ڪري، Gboard انسٽال ڪريو ۽ اتي ٻولي شامل ڪريو:",
-    "openKeyboardSettings": "ڪي بورڊ سيٽنگون کوليو"
+    "openKeyboardSettings": "ڪي بورڊ سيٽنگون کوليو",
+    "keyboardPromptAddKeyboardMessage": "پنهنجي سکڻ واري ٻوليءَ لاءِ ڪي بورڊ شامل ڪريو ته جيئن آٽوڪرڪٽ ڪم ڪري.",
+    "keyboardPromptAddKeyboardAction": "ڪي بورڊ شامل ڪريو",
+    "keyboardPromptSwitchKeyboardMessage": "پنهنجي ڪي بورڊ تي گلوب آئڪن کي ٽيپ ڪريو ته جيئن پنهنجي سکڻ واري ٻوليءَ تي تبديل ڪري سگهو."
 }

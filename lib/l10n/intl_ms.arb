@@ -1,6 +1,6 @@
 {
     "@@locale": "ms",
-    "@@last_modified": "2026-08-20 13:11:43.678595",
+    "@@last_modified": "2026-08-20 15:18:51.087093",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ulang kata laluan",
     "notAnImage": "Bukan fail imej.",
@@ -2151,5 +2151,8 @@
     "autocorrectAndroidDialogTitle": "Autocorreksi dalam bahasa sasaran anda",
     "autocorrectAndroidDialogBody": "Apabila anda menaip dalam sembang, papan kekunci anda akan bertukar kepada bahasa sasaran anda dan membetulkan ejaan dalam bahasa tersebut.",
     "autocorrectAndroidFallbackTitle": "Jika papan kekunci anda tidak menawarkan bahasa sasaran anda, pasang Gboard dan tambah bahasa di sana:",
-    "openKeyboardSettings": "Buka Tetapan Papan Kekunci"
+    "openKeyboardSettings": "Buka Tetapan Papan Kekunci",
+    "keyboardPromptAddKeyboardMessage": "Tambah papan kekunci untuk bahasa sasaran anda supaya pembetulan automatik berfungsi.",
+    "keyboardPromptAddKeyboardAction": "Tambah Papan Kekunci",
+    "keyboardPromptSwitchKeyboardMessage": "Ketik ikon glob pada papan kekunci anda untuk bertukar kepada bahasa sasaran anda."
 }
