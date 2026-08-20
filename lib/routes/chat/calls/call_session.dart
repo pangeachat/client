@@ -143,7 +143,7 @@ class CallSession extends ChangeNotifier {
   void toggleFullscreen() {
     _fullscreen = !_fullscreen;
     if (_fullscreen) _minimized = false;
-    notifyListeners();
+    _notify();
   }
 
   bool get muted => _muted;
@@ -195,24 +195,24 @@ class CallSession extends ChangeNotifier {
     _minimized = true;
     // Minimizing IS leaving fullscreen; the tile takes over either way.
     _fullscreen = false;
-    notifyListeners();
+    _notify();
   }
 
   void expand() {
     if (!_minimized) return;
     _minimized = false;
-    notifyListeners();
+    _notify();
   }
 
   /// A view of this call for [room] came on screen (the in-chat panel/tile).
   void attachPresenter() {
     _presenters++;
-    notifyListeners();
+    _notify();
   }
 
   void detachPresenter() {
     _presenters--;
-    notifyListeners();
+    _notify();
   }
 
   Future<void> toggleMute() async {
@@ -232,8 +232,9 @@ class CallSession extends ChangeNotifier {
       return;
     }
     if (!next) call.setMuted(false);
+    if (_disposing || _over) return;
     _muted = next;
-    notifyListeners();
+    _notify();
   }
 
   Future<void> toggleCamera() async {
@@ -249,8 +250,9 @@ class CallSession extends ChangeNotifier {
     // alone wrote an ending voice call as a video call. The live connection is
     // the proof it took.
     if (next && media.isConnected) _usedVideo = true;
+    if (_disposing || _over) return;
     _camera = next;
-    notifyListeners();
+    _notify();
   }
 
   /// Ends the call from a button. The UI is released AT ONCE — the outcome
@@ -271,7 +273,22 @@ class CallSession extends ChangeNotifier {
 
   // ---------------------------------------------------------------- internals
 
+  /// Latches "this was a video call" from the ROOM, not from a view. The
+  /// panel's read covers the visible case; this covers a camera coming on
+  /// while the call is minimized or floating, where no view asks for tracks.
+  void _latchVideo() {
+    if (_usedVideo) return;
+    final room = media.room;
+    final any =
+        (room.localParticipant?.videoTrackPublications.isNotEmpty ?? false) ||
+        room.remoteParticipants.values.any(
+          (p) => p.videoTrackPublications.isNotEmpty,
+        );
+    if (any) _usedVideo = true;
+  }
+
   void _onCallChanged() {
+    _latchVideo();
     // The outcome is latched the instant the call's fate is decided, seconds
     // before the stage catches up — this is what makes hanging up feel
     // immediate on both sides.
@@ -284,10 +301,11 @@ class CallSession extends ChangeNotifier {
     if (call.stage == CallStage.connected) _reachedCall = true;
     if (call.hadPeer && _tick == null && !_over) {
       _tick = Timer.periodic(const Duration(seconds: 1), (_) {
-        if (!_over) notifyListeners();
+        _latchVideo();
+        if (!_over) _notify();
       });
     }
-    if (!_over) notifyListeners();
+    if (!_over) _notify();
   }
 
   /// Ends the call, then writes it and its analytics. Every way out goes
@@ -350,11 +368,20 @@ class CallSession extends ChangeNotifier {
     _over = true;
     _tick?.cancel();
     _tick = null;
-    notifyListeners();
+    _notify();
     _onReleased(this);
   }
 
   bool _disposing = false;
+
+  /// Every notification goes through here. Async work — a device toggle, a
+  /// late tick, a view detaching during teardown — can resume after the holder
+  /// has disposed this session, and notifying a disposed ChangeNotifier is a
+  /// crash. Late work is silently absorbed instead.
+  void _notify() {
+    if (_disposing) return;
+    _notify();
+  }
 
   @override
   void dispose() {
