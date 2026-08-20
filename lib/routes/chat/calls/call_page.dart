@@ -345,23 +345,27 @@ class _CallPageState extends State<CallPage> {
 
   Future<void> _toggleMute() async {
     final next = !_muted;
-    // The recorder is gated FIRST, before the publish mute is even asked for, so
-    // there is no window in which muted speech is still captured — on Android
-    // the tap runs upstream of the publish mute and would otherwise keep going.
-    _call.setMuted(next);
+    // The recorder gate goes up BEFORE muting and comes down only AFTER unmuting
+    // has actually taken — never while the microphone is still muted. Muting:
+    // gate first, so no frame of muted speech is captured in the window before
+    // the publish mute lands (on Android the tap runs upstream of it). Unmuting:
+    // the gate stays up until the microphone is genuinely back, or a failed
+    // unmute would leave the recorder capturing a mic the peer still cannot hear.
+    if (next) _call.setMuted(true);
     try {
       await _media.setMicrophoneEnabled(!next);
     } catch (e, s) {
       // This runs from a button's onTap, which drops the future — so an error
       // here has no caller to catch it and would surface as an unhandled async
-      // exception on a live call. Fail closed instead: put the recorder gate
-      // back to match the microphone that did not change, and leave the state as
-      // it was so the button keeps showing what the microphone is actually
-      // doing.
-      _call.setMuted(!next);
+      // exception on a live call. Fail closed: a mute that did not take must
+      // ungate again (the mic is still live), and an unmute that did not take
+      // leaves the gate up (still muted). Either way the state is not flipped,
+      // so the button keeps showing what the microphone is actually doing.
+      if (next) _call.setMuted(false);
       Logs().w('Could not ${next ? 'mute' : 'unmute'} the call', e, s);
       return;
     }
+    if (!next) _call.setMuted(false);
     if (mounted) setState(() => _muted = next);
   }
 
