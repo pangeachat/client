@@ -4,6 +4,7 @@ import 'package:fluffychat/features/course_plans/courses/course_plan_room_extens
 import 'package:fluffychat/features/quests/lo_progression.dart';
 import 'package:fluffychat/features/quests/quest_progression_resolver.dart';
 import 'package:fluffychat/features/quests/repo/quest_repo.dart';
+import 'package:fluffychat/pangea/common/network/rate_limit_pause.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/routes/chat/chat_details/teacher_mode_model.dart';
 import 'package:fluffychat/routes/world/world_map_client_extension.dart';
@@ -34,19 +35,29 @@ import 'package:fluffychat/widgets/future_loading_dialog.dart';
 /// spent) — the seam the budget test asserts on. Passed straight into the
 /// `void`-typed `onError` slot; the future is fire-and-forget there, as it was
 /// when both call sites inlined [ErrorHandler.logErrorOnce] themselves.
+///
+/// A [RateLimitedException] is never reported here: the repo that returned it
+/// already reported the suppression once for this pause activation
+/// ([RateLimitPause.reportSuppressionOnce], client#8507). Reporting it again
+/// per course room would multiply one suppression event by however many
+/// joined courses race the rebuild — exactly the volume this function's
+/// per-room throttle exists to prevent for every other error.
 Future<bool> reportCourseOutlineFailure(
   String roomId,
   String questId,
   Object error,
   StackTrace stack,
-) => ErrorHandler.logErrorOnce(
-  key: 'course-outline-resolve:$roomId',
-  e: error,
-  s: stack,
-  m: 'course outline failed to resolve',
-  data: {'courseRoomId': roomId, 'questId': questId},
-  level: courseOutlineErrorLevel(error),
-);
+) {
+  if (error is RateLimitedException) return Future.value(false);
+  return ErrorHandler.logErrorOnce(
+    key: 'course-outline-resolve:$roomId',
+    e: error,
+    s: stack,
+    m: 'course outline failed to resolve',
+    data: {'courseRoomId': roomId, 'questId': questId},
+    level: courseOutlineErrorLevel(error),
+  );
+}
 
 /// Holds the learner's joined-course quest outlines: each course's ordered
 /// learning-objective sequence and the activities that satisfy each objective.

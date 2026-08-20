@@ -41,20 +41,14 @@ class MissingQuestException implements Exception {
 /// panel renders it as a known state — so re-reporting it at `error`
 /// re-severitized a handled condition (CLIENT-DQC, #8094). It still reports at
 /// `warning` (once per course per session) because a dropped course blanks
-/// relevance banding with no other visible signal.
+/// relevance banding with no other visible signal. Everything else keeps
+/// `error`: the outline read failing for any other reason is real breakage.
 ///
-/// [RateLimitedException] means the read was never attempted — the repo-wide
-/// pause suppressed it, and the 429 that started the pause was already
-/// captured once (`activityReadPause`, quest_repo.dart). Re-reporting the
-/// suppression itself at `error` turned the mitigation into a false alarm
-/// (~a quarter of apparent "429 cascade" volume was this, not real backend
-/// 429s — CLIENT-EAG, #8507). It reports at `info` rather than being
-/// suppressed outright: a pause still empties the outline for that cycle, and
-/// that needs SOME signal, just not one that competes with real errors in
-/// frequency-sorted triage.
-///
-/// Everything else keeps `error`: the outline read failing for any other
-/// reason is real breakage.
+/// [RateLimitedException] never reaches this function: [reportCourseOutlineFailure]
+/// short-circuits on it before computing a level at all, because
+/// [activityReadPause] already reported that suppression once for this
+/// activation (client#8507) — deciding a severity here would just be for a
+/// report that never happens.
 ///
 /// Lives beside the exception it classifies, not at a call site: BOTH rebuild
 /// reporters — the world map's and the course panel's — share one throttle key,
@@ -63,11 +57,8 @@ class MissingQuestException implements Exception {
 /// `warning` or at `error` depending on which surface the learner opened first
 /// (#8470). Severity is a property of the failure, decided in the repo layer
 /// (repos-and-error-handling.instructions.md § Severity policy).
-SentryLevel courseOutlineErrorLevel(Object error) => switch (error) {
-  MissingQuestException() => SentryLevel.warning,
-  RateLimitedException() => SentryLevel.info,
-  _ => SentryLevel.error,
-};
+SentryLevel courseOutlineErrorLevel(Object error) =>
+    error is MissingQuestException ? SentryLevel.warning : SentryLevel.error;
 
 /// The single home of the per-course activity-pin rule (org quests doc,
 /// client#7748): which of a Mission's [available] activity ids count when the
@@ -239,14 +230,21 @@ class QuestRepo {
   /// activities when [courseRoomId] names a course the caller has joined.
   ///
   /// Returns a [RateLimitedException] WITHOUT asking while
-  /// [activityReadPause] is running, and without reporting: the 429 that
-  /// started the pause was already captured once, and a second event for our
-  /// own deliberate suppression would be noise, not signal.
+  /// [activityReadPause] is running. The 429 that started the pause was
+  /// already captured once, so the suppression itself reports separately
+  /// at `info` via [RateLimitPause.reportSuppressionOnce] — once per
+  /// activation, not once per suppressed read (client#8507).
   static Future<Result<List<Map<String, dynamic>>>> _questActivityEntries(
     String questId, {
     String? courseRoomId,
   }) async {
-    if (activityReadPause.isPaused) return Result.error(RateLimitedException());
+    if (activityReadPause.isPaused) {
+      activityReadPause.reportSuppressionOnce({
+        'quest_id': questId,
+        'course_room_id': ?courseRoomId,
+      });
+      return Result.error(RateLimitedException());
+    }
     try {
       final uri = Uri.parse(PApiUrls.questActivities(questId)).replace(
         queryParameters: {

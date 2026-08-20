@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
+import 'package:sentry_flutter/sentry_flutter.dart' show SentryLevel;
 
 import 'package:fluffychat/pangea/common/network/pangea_http_exception.dart';
+import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 
 /// A read that was suppressed by a [RateLimitPause] rather than attempted.
 ///
@@ -70,7 +72,48 @@ class RateLimitPause {
     }
   }
 
+  /// The [_until] this pause's suppression was last reported for. Distinct
+  /// from [_until] itself: a pause is armed and cleared many times over a
+  /// session (every 429 restarts it), and every read suppressed during ONE
+  /// window must collapse into a single Sentry event — reporting every
+  /// suppressed read would spend the event budget as fast as the reads that
+  /// got suppressed (a camera pan alone can hit this dozens of times), while
+  /// reporting once per app session would go silent across a whole session of
+  /// intermittent 429s (client#8507).
+  DateTime? _lastReportedUntil;
+
+  /// Reports this pause's OWN suppression to Sentry at `info` — visibility
+  /// that a read was deliberately skipped, not an error, since the 429 that
+  /// armed the pause was already captured once by [recordFailure]'s caller.
+  /// No-ops when not currently paused, or when this activation ([_until]) was
+  /// already reported. Returns whether this call actually reported — the seam
+  /// tests assert on, same pattern as `reportCourseOutlineFailure`.
+  ///
+  /// Call from inside the repo method at the exact point it returns
+  /// [RateLimitedException] instead of asking — that keeps this the repo's
+  /// report, not a caller's (repos-and-error-handling.instructions.md § the
+  /// repo reports, the caller does not). [data] is repo-specific context
+  /// (quest id, viewport bounds, ...) attached to the one event the
+  /// activation gets.
+  bool reportSuppressionOnce(Map<String, dynamic> data) {
+    final until = _until;
+    if (until == null || _lastReportedUntil == until) return false;
+    _lastReportedUntil = until;
+    ErrorHandler.logError(
+      e: RateLimitedException(),
+      s: StackTrace.current,
+      data: data,
+      level: SentryLevel.info,
+    );
+    return true;
+  }
+
   /// Drops the pause. For tests, and for an explicit user-initiated refresh,
-  /// which must never be suppressed.
-  void reset() => _until = null;
+  /// which must never be suppressed. Also clears the report gate so a fresh
+  /// activation after this point gets its own event rather than being read as
+  /// a repeat of whatever was last reported.
+  void reset() {
+    _until = null;
+    _lastReportedUntil = null;
+  }
 }

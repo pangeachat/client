@@ -100,6 +100,60 @@ void main() {
       expect(activities.isPaused, isTrue);
       expect(other.isPaused, isFalse);
     });
+
+    group('reportSuppressionOnce', () {
+      // client#8507: reporting every suppressed read would spend the Sentry
+      // event budget as fast as the reads that got suppressed (a camera pan
+      // alone can hit this dozens of times); reporting once per app session
+      // would go silent across a whole session of intermittent 429s. The
+      // return value is the seam: whether THIS call actually reported.
+      test('does nothing, and reports false, when not paused', () {
+        final pause = RateLimitPause();
+        expect(pause.reportSuppressionOnce({}), isFalse);
+      });
+
+      test('reports true the first time it is called for an activation', () {
+        final pause = RateLimitPause();
+        pause.recordFailure(http(429));
+        expect(pause.reportSuppressionOnce({}), isTrue);
+      });
+
+      test('every further call during the SAME activation reports false', () {
+        final pause = RateLimitPause(const Duration(seconds: 60));
+        pause.recordFailure(http(429));
+        expect(pause.reportSuppressionOnce({'call': 1}), isTrue);
+        expect(pause.reportSuppressionOnce({'call': 2}), isFalse);
+        expect(pause.reportSuppressionOnce({'call': 3}), isFalse);
+      });
+
+      test(
+        'a fresh 429 after the window lapses re-arms it for a new report',
+        () {
+          final pause = RateLimitPause(const Duration(seconds: 60));
+          pause.recordFailure(http(429));
+          expect(pause.reportSuppressionOnce({'call': 1}), isTrue);
+
+          clock = clock.add(const Duration(seconds: 61));
+          expect(pause.isPaused, isFalse);
+
+          pause.recordFailure(http(429));
+          expect(pause.reportSuppressionOnce({'call': 2}), isTrue);
+        },
+      );
+
+      test('reset clears the report gate along with the pause', () {
+        final pause = RateLimitPause();
+        pause.recordFailure(http(429));
+        expect(pause.reportSuppressionOnce({}), isTrue);
+        pause.reset();
+
+        // Without the reset also clearing `_lastReportedUntil`, a 429 that
+        // happens to land the pause on the exact same `_until` it reported
+        // before would silently stay gated shut.
+        pause.recordFailure(http(429));
+        expect(pause.reportSuppressionOnce({}), isTrue);
+      });
+    });
   });
 
   group('QuestRepo.questActivityCards', () {

@@ -37,9 +37,11 @@ class ActivityMapRepo {
   ///
   /// - [RateLimitedException] — choreo rate-limited us and
   ///   [QuestRepo.activityReadPause] is running (#8360), so the read was never
-  ///   made. Returned without reporting: the 429 that started the pause was
-  ///   already captured once. Panning is what fires this read, so a
-  ///   per-viewport backoff would be no backoff at all.
+  ///   made. Panning is what fires this read, so a per-viewport backoff would
+  ///   be no backoff at all; instead the pause itself reports the
+  ///   suppression once per activation via
+  ///   [RateLimitPause.reportSuppressionOnce] (client#8507), not once per
+  ///   suppressed viewport read.
   /// - anything else — the read was made and failed.
   ///
   /// Either way the caller must keep the pins it already has rather than blank
@@ -50,6 +52,13 @@ class ActivityMapRepo {
     int limit = 200,
   }) async {
     if (QuestRepo.activityReadPause.isPaused) {
+      QuestRepo.activityReadPause.reportSuppressionOnce({
+        'min_lat': bounds.south,
+        'min_lng': bounds.west,
+        'max_lat': bounds.north,
+        'max_lng': bounds.east,
+        if (l2 != null && l2.isNotEmpty) 'l2': l2,
+      });
       return Result.error(RateLimitedException());
     }
     final params = <String, String>{

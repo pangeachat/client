@@ -40,20 +40,6 @@ void main() {
         SentryLevel.error,
       );
     });
-
-    // CLIENT-EAG / #8507: a rate-limit pause suppressing the read is the
-    // repo's own deliberate, correct behavior — not breakage — but a pause
-    // still emptying the outline for that cycle warrants some signal, so it
-    // reports at info rather than being suppressed outright.
-    test(
-      'a rate-limited read reports at info — the pause is deliberate, not breakage',
-      () {
-        expect(
-          courseOutlineErrorLevel(RateLimitedException()),
-          SentryLevel.info,
-        );
-      },
-    );
   });
 
   group('reportCourseOutlineFailure', () {
@@ -105,5 +91,26 @@ void main() {
         isTrue,
       );
     });
+
+    // CLIENT-EAG / #8507: a rate-limit pause suppressing the read is the
+    // repo's own deliberate, correct behavior, and the repo that returned it
+    // already reported the suppression once for this activation
+    // (RateLimitPause.reportSuppressionOnce). Reporting it again here, per
+    // course room, would multiply one suppression event by however many
+    // joined courses race the rebuild.
+    test(
+      'never reports a RateLimitedException — the repo already reported the suppression',
+      () async {
+        expect(
+          await reportCourseOutlineFailure(
+            '!room:server',
+            'quest-1',
+            RateLimitedException(),
+            StackTrace.current,
+          ),
+          isFalse,
+        );
+      },
+    );
   });
 }
