@@ -269,10 +269,16 @@ class _CallPageState extends State<CallPage> {
             // side, which never rings and so never has a notification of its own —
             // checking only the outbound one lost its speaking analytics whenever
             // the caller left before the call finished coming up.
+            // Placing ALONE is not enough — a call that reached nobody is not a
+            // call. If announce could not get a membership id the ring is never
+            // sent, yet the placer still had placedCall set, so writing on that
+            // put a missed-call card in both timelines for a call nobody was
+            // ever notified of. The real signals are: did it reach the SFU, did
+            // we actually ring somebody (a notification id we hold only once the
+            // ring was sent), or were we rung.
             final mattered =
                 _reachedCall ||
                 _call.hadPeer ||
-                _call.placedCall ||
                 _call.notificationEventId != null ||
                 widget.notificationEventId != null;
             if (!mattered) return;
