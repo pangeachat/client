@@ -283,10 +283,15 @@ class LanguageDropDownEntry extends StatelessWidget {
   final bool isDropdown;
   final bool enabled;
 
-  /// This language's entry in the learner's analytics — level and XP earned
-  /// there. Non-null promotes the row's identity from the hashed-letter
-  /// [Avatar] to its flag ([LanguageFlagChip]) and adds a level caption
-  /// (profile.instructions.md, "Switching from context").
+  /// This language's entry in the learner's analytics. Non-null adds a level
+  /// caption below the name (profile.instructions.md, "Switching from
+  /// context") and, when [languageModel] also has a usable flag, promotes
+  /// the leading icon from [Avatar]'s hashed-letter circle to
+  /// [LanguageFlagChip]. A language with analytics but no usable flag (a
+  /// variant-disambiguated base language, or one lacking a flag asset) keeps
+  /// the circle rather than falling to [LanguageFlagChip]'s own two-letter
+  /// code badge, which reads as squished at this row's size next to a full
+  /// circle.
   final LanguageAnalyticsProfileEntry? analytics;
 
   const LanguageDropDownEntry({
@@ -306,9 +311,8 @@ class LanguageDropDownEntry extends StatelessWidget {
         Opacity(
           opacity: enabled ? 1 : 0.5,
           child: ExcludeSemantics(
-            child: analytics == null
-                ? Avatar(name: languageModel.langCode, size: 30)
-                : LanguageFlagChip(
+            child: analytics != null && languageModel.shouldShowFlag
+                ? LanguageFlagChip(
                     language: languageModel,
                     langCode: languageModel.langCode,
                     width: 30,
@@ -316,7 +320,8 @@ class LanguageDropDownEntry extends StatelessWidget {
                     radius: 4,
                     borderWidth: 1,
                     alwaysShowCode: false,
-                  ),
+                  )
+                : Avatar(name: languageModel.langCode, size: 30),
           ),
         ),
         const SizedBox(width: 10),

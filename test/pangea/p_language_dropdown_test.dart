@@ -13,6 +13,7 @@ import 'package:http/testing.dart';
 import 'package:matrix/matrix.dart' show Client;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:fluffychat/features/languages/language_flag_chip.dart';
 import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/languages/p_language_store.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
@@ -21,6 +22,7 @@ import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/svg_repo.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
+import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 import '../utils/test_client.dart';
 
@@ -46,6 +48,7 @@ void main() {
   late L10n enL10n;
   late LanguageModel french;
   late LanguageModel spanish;
+  late LanguageModel spanishMexico;
   late LanguageModel italian;
 
   setUpAll(() async {
@@ -76,6 +79,16 @@ void main() {
             'language_name': 'Spanish',
             'l2_support': 'full',
           },
+          // Gives plain Spanish a localized sibling, so
+          // LanguageModel.shouldShowFlag is false for it (#8495 review — an
+          // analytics row with no usable flag must keep Avatar's circle
+          // rather than falling to LanguageFlagChip's cramped two-letter
+          // code badge).
+          {
+            'language_code': 'es-MX',
+            'language_name': 'Spanish (Mexico)',
+            'l2_support': 'full',
+          },
           {
             'language_code': 'it',
             'language_name': 'Italian',
@@ -94,9 +107,10 @@ void main() {
     enL10n = await lookupL10n(const Locale('en'));
     french = PLanguageStore.byLangCode('fr')!;
     spanish = PLanguageStore.byLangCode('es')!;
+    spanishMexico = PLanguageStore.byLangCode('es-MX')!;
     italian = PLanguageStore.byLangCode('it')!;
 
-    // Every row renders its language's flag inline
+    // Every row whose language shows a flag renders it inline
     // (LanguageDisplayNamePostfixWidget / LanguageFlagChip), each an
     // NetworkSvg fetch. SvgRepo memoizes by URL for the session, so warming
     // it here — on setUpAll's real event loop, not a testWidgets body's fake
@@ -108,7 +122,7 @@ void main() {
     await http.runWithClient(
       () => Future.wait([
         SvgRepo.get(french.svgUrl.toString()),
-        SvgRepo.get(spanish.svgUrl.toString()),
+        SvgRepo.get(spanishMexico.svgUrl.toString()),
         SvgRepo.get(italian.svgUrl.toString()),
       ]),
       () => MockClient((_) async => http.Response(flagSvg, 200)),
@@ -219,4 +233,55 @@ void main() {
     expect(find.byType(Divider), findsNothing);
     expect(find.text(enL10n.languageDropdownLevel(7)), findsNothing);
   });
+
+  testWidgets(
+    'keeps the circle avatar for an analytics language with no usable flag',
+    (tester) async {
+      // Plain Spanish has a localized sibling (Spanish (Mexico)), so
+      // LanguageModel.shouldShowFlag is false for it — the row must not fall
+      // to LanguageFlagChip's own two-letter code badge, which reads as
+      // squished next to every other row's full circle or real flag.
+      MatrixState.pangeaController.userController.publicProfile =
+          PublicProfileModel(
+            analytics: AnalyticsProfileModel(
+              languageAnalytics: {
+                spanish: LanguageAnalyticsProfileEntry(15, 0),
+                spanishMexico: LanguageAnalyticsProfileEntry(3, 0),
+              },
+            ),
+          );
+
+      await openDropdown(tester);
+
+      final spanishEntry = find.byWidgetPredicate(
+        (w) => w is LanguageDropDownEntry && w.languageModel == spanish,
+      );
+      final spanishMexicoEntry = find.byWidgetPredicate(
+        (w) => w is LanguageDropDownEntry && w.languageModel == spanishMexico,
+      );
+
+      expect(
+        find.descendant(of: spanishEntry, matching: find.byType(Avatar)),
+        findsOneWidget,
+      );
+      expect(
+        find.descendant(
+          of: spanishEntry,
+          matching: find.byType(LanguageFlagChip),
+        ),
+        findsNothing,
+      );
+      expect(find.text(enL10n.languageDropdownLevel(15)), findsOneWidget);
+
+      // Spanish (Mexico) is unambiguous, so it keeps its flag.
+      expect(
+        find.descendant(
+          of: spanishMexicoEntry,
+          matching: find.byType(LanguageFlagChip),
+        ),
+        findsOneWidget,
+      );
+      expect(find.text(enL10n.languageDropdownLevel(3)), findsOneWidget);
+    },
+  );
 }
