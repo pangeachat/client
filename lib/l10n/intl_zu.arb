@@ -1,6 +1,6 @@
 {
     "@@locale": "zu",
-    "@@last_modified": "2026-08-19 14:14:54.599979",
+    "@@last_modified": "2026-08-20 14:15:55.279556",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Phinda iphasiwedi",
     "notAnImage": "Akuyona ifayela lesithombe.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Mema umngane",
     "autocorrectAndroidDialogTitle": "Ukulungisa okuzenzakalelayo ngolimi olufundayo",
     "autocorrectAndroidDialogBody": "Uma uthayipha engxoxweni, ikhibhodi yakho izoshintshela olimini olufundayo futhi ilungise amaphutha esipelingi ngalolo limi.",
-    "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:"
+    "autocorrectAndroidFallbackTitle": "Uma ikhibhodi yakho ingalunikezi ulimi olufundayo, faka i-Gboard bese wengeza ulimi lapho:",
+    "resendInSeconds": "Phinda uthumele ({seconds})"
 }

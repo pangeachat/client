@@ -1,6 +1,6 @@
 {
     "@@locale": "mni",
-    "@@last_modified": "2026-08-19 14:14:47.807392",
+    "@@last_modified": "2026-08-20 14:15:52.120938",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "ꯑꯃꯨꯛ ꯍꯟꯅ ꯄꯥꯁꯋꯥꯔꯗ ꯊꯝꯃꯨ",
     "notAnImage": "ꯁꯛꯇꯤ ꯐꯥꯏꯜ ꯅꯠꯇꯦ꯫",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "ꯑꯃꯠꯇꯥ ꯀꯧꯕꯤꯌꯨ",
     "autocorrectAndroidDialogTitle": "നംꯁꯤꯡগী ৱାঙुलোনদা ৱା-ꯁਹੀ",
     "autocorrectAndroidDialogBody": "നങ് ചാറ്റ് അമদা ടൈപ് തौदा, നംꯁിംങ്ഗി കീബോർഡ് നംസിംങ്ഗി ৱാങ്ഗുലോൺഡാ ലേങ്‌ഗനി അമദി അദൂം ৱാങ്ഗുലോൺഡാ സ്പെല്ലിംഗ് ശരി തൗഗനി.",
-    "autocorrectAndroidFallbackTitle": "നംസിംങ്ഗി കീബോർഡ് നംസിംങ്ഗി ৱാങ്ഗുലോൺ പീദ്രബ്ദി, Gboard ഇൻസ്റ്റോൾ തൗവി അമദി അദൂം ৱാങ്ഗുലോൺ അദൂംദാ ഹാപ്ചിൻബിയു:"
+    "autocorrectAndroidFallbackTitle": "നംസിംങ്ഗി കീബോർഡ് നംസിംങ്ഗി ৱാങ്ഗുലോൺ പീദ്രബ്ദി, Gboard ഇൻസ്റ്റോൾ തൗവി അമദി അദൂം ৱാങ്ഗുലോൺ അദൂംദാ ഹാപ്ചിൻബിയു:",
+    "resendInSeconds": "হন্না থা (সেকেন্ড {seconds})"
 }

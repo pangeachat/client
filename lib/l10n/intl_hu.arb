@@ -1,6 +1,6 @@
 {
     "@@locale": "hu",
-    "@@last_modified": "2026-08-19 14:14:44.784724",
+    "@@last_modified": "2026-08-20 14:15:50.141880",
     "about": "Névjegy",
     "@about": {
         "type": "String",
@@ -9859,5 +9859,6 @@
     "inviteAFriend": "Hívj meg egy barátot",
     "autocorrectAndroidDialogTitle": "Automatikus javítás a célnyelven",
     "autocorrectAndroidDialogBody": "Amikor csevegésben gépel, a billentyűzet átvált a célnyelvre, és azon a nyelven javítja a helyesírást.",
-    "autocorrectAndroidFallbackTitle": "Ha a billentyűzete nem kínálja fel a célnyelvet, telepítse a Gboardot, és adja hozzá ott a nyelvet:"
+    "autocorrectAndroidFallbackTitle": "Ha a billentyűzete nem kínálja fel a célnyelvet, telepítse a Gboardot, és adja hozzá ott a nyelvet:",
+    "resendInSeconds": "Újraküldés ({seconds})"
 }

@@ -1,6 +1,6 @@
 {
     "@@locale": "sn",
-    "@@last_modified": "2026-08-19 14:14:50.900768",
+    "@@last_modified": "2026-08-20 14:15:53.773331",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Dzokorora password",
     "notAnImage": "Haasi faira remufananidzo.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Koka shamwari",
     "autocorrectAndroidDialogTitle": "Autocorrect mumutauro wako waunoda",
     "autocorrectAndroidDialogBody": "Paunonyora muchat, keyboard yako ichachinja kuenda kumutauro wako waunoda uye kugadzirisa zviperengo mumutauro iwoyo.",
-    "autocorrectAndroidFallbackTitle": "Kana keyboard yako isingapi mutauro wako waunoda, isa Gboard uye wedzera mutauro ikoko:"
+    "autocorrectAndroidFallbackTitle": "Kana keyboard yako isingapi mutauro wako waunoda, isa Gboard uye wedzera mutauro ikoko:",
+    "resendInSeconds": "Tumira zvakare ({seconds})"
 }

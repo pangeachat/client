@@ -1,6 +1,6 @@
 {
     "@@locale": "ug",
-    "@@last_modified": "2026-08-19 14:14:52.463239",
+    "@@last_modified": "2026-08-20 14:15:54.824666",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "مەخپىي نومۇرنى قايتا كىرگۈزۈڭ",
     "notAnImage": "رەسىم ھۆججىتى ئەمەس.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "دوست تەكلىپ قىلىڭ",
     "autocorrectAndroidDialogTitle": "نىشان تىلىڭىزدىكى ئاپتوماتىك تۈزىتىش",
     "autocorrectAndroidDialogBody": "پارىڭىڭىزغا يازغاندا، كۇنۇپكا تاختىڭىز نىشان تىلىڭىزغا ئالماشتۇرۇلىدۇ ھەمدە شۇ تىلدىكى ئىملا خاتالىقىنى تۈزىتىدۇ.",
-    "autocorrectAndroidFallbackTitle": "ئەگەر كۇنۇپكا تاختىڭىز نىشان تىلىڭىزنى تەمىنلىمىسە، Gboard نى قاچىلاپ، شۇ يەرگە تىل قوشۇڭ:"
+    "autocorrectAndroidFallbackTitle": "ئەگەر كۇنۇپكا تاختىڭىز نىشان تىلىڭىزنى تەمىنلىمىسە، Gboard نى قاچىلاپ، شۇ يەرگە تىل قوشۇڭ:",
+    "resendInSeconds": "قايتا ئەۋەتىش ({seconds})"
 }

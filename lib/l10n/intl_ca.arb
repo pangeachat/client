@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 14:14:42.131374",
+    "@@last_modified": "2026-08-20 14:15:48.792918",
     "about": "Quant a",
     "@about": {
         "type": "String",
@@ -9883,5 +9883,6 @@
     "inviteAFriend": "Convida un amic",
     "autocorrectAndroidDialogTitle": "Autocorrecció en la teva llengua d'aprenentatge",
     "autocorrectAndroidDialogBody": "Quan escriguis en un xat, el teu teclat canviarà a la teva llengua d'aprenentatge i corregirà l'ortografia en aquesta llengua.",
-    "autocorrectAndroidFallbackTitle": "Si el teu teclat no ofereix la teva llengua d'aprenentatge, instal·la Gboard i afegeix-hi la llengua:"
+    "autocorrectAndroidFallbackTitle": "Si el teu teclat no ofereix la teva llengua d'aprenentatge, instal·la Gboard i afegeix-hi la llengua:",
+    "resendInSeconds": "Reenviar ({seconds})"
 }

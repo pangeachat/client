@@ -1,6 +1,6 @@
 {
     "@@locale": "co",
-    "@@last_modified": "2026-08-19 14:14:41.675608",
+    "@@last_modified": "2026-08-20 14:15:49.081961",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ripete a parolla d'intrata",
     "notAnImage": "Ùn hè micca un schedariu d'imagine.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Invità un amicu",
     "autocorrectAndroidDialogTitle": "Autucurrezzione in a vostra lingua di destinazione",
     "autocorrectAndroidDialogBody": "Quandu scrivite in una chjachjarata, a vostra tastiera cambierà à a vostra lingua di destinazione è curreggerà l'ortografia in quella lingua.",
-    "autocorrectAndroidFallbackTitle": "Se a vostra tastiera ùn offre micca a vostra lingua di destinazione, stallate Gboard è aghjunghjite a lingua quì:"
+    "autocorrectAndroidFallbackTitle": "Se a vostra tastiera ùn offre micca a vostra lingua di destinazione, stallate Gboard è aghjunghjite a lingua quì:",
+    "resendInSeconds": "Rinvialla ({seconds})"
 }

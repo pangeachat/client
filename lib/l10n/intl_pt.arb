@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 14:14:49.191057",
+    "@@last_modified": "2026-08-20 14:15:53.269240",
     "copiedToClipboard": "Copiada para a área de transferência",
     "@copiedToClipboard": {
         "type": "String",
@@ -10700,5 +10700,6 @@
     "inviteAFriend": "Convidar um amigo",
     "autocorrectAndroidDialogTitle": "Autocorreção no seu idioma de destino",
     "autocorrectAndroidDialogBody": "Quando você digita em um bate-papo, seu teclado mudará para o idioma de destino e corrigirá a ortografia nesse idioma.",
-    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma de destino, instale o Gboard e adicione o idioma lá:"
+    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer o seu idioma de destino, instale o Gboard e adicione o idioma lá:",
+    "resendInSeconds": "Reenviar ({seconds})"
 }

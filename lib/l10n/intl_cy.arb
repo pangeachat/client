@@ -1,6 +1,6 @@
 {
     "@@locale": "cy",
-    "@@last_modified": "2026-08-19 14:14:41.818810",
+    "@@last_modified": "2026-08-20 14:15:49.101878",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Ailadrodd cyfrinair",
     "notAnImage": "Nid yw'n ffeil ddelwedd.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Gwahodd ffrind",
     "autocorrectAndroidDialogTitle": "Awto-gywiro yn eich iaith darged",
     "autocorrectAndroidDialogBody": "Pan fyddwch chi'n teipio mewn sgwrs, bydd eich bysellfwrdd yn newid i'ch iaith darged ac yn cywiro sillafu yn yr iaith honno.",
-    "autocorrectAndroidFallbackTitle": "Os nad yw eich bysellfwrdd yn cynnig eich iaith darged, gosodwch Gboard ac ychwanegwch yr iaith yno:"
+    "autocorrectAndroidFallbackTitle": "Os nad yw eich bysellfwrdd yn cynnig eich iaith darged, gosodwch Gboard ac ychwanegwch yr iaith yno:",
+    "resendInSeconds": "Ail-anfon ({seconds})"
 }

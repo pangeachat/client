@@ -1,5 +1,5 @@
 {
-    "@@last_modified": "2026-08-19 14:14:42.507334",
+    "@@last_modified": "2026-08-20 14:15:49.462852",
     "repeatPassword": "تکرار گذرواژه",
     "@repeatPassword": {},
     "about": "درباره",
@@ -9844,5 +9844,6 @@
     "inviteAFriend": "دعوت از یک دوست",
     "autocorrectAndroidDialogTitle": "تصحیح خودکار در زبان مقصد شما",
     "autocorrectAndroidDialogBody": "هنگامی که در یک چت تایپ می‌کنید، صفحه‌کلید شما به زبان مقصدتان تغییر می‌کند و املای کلمات را در آن زبان تصحیح می‌کند.",
-    "autocorrectAndroidFallbackTitle": "اگر صفحه‌کلید شما زبان مقصدتان را ارائه نمی‌دهد، Gboard را نصب کنید و زبان را در آنجا اضافه کنید:"
+    "autocorrectAndroidFallbackTitle": "اگر صفحه‌کلید شما زبان مقصدتان را ارائه نمی‌دهد، Gboard را نصب کنید و زبان را در آنجا اضافه کنید:",
+    "resendInSeconds": "ارسال مجدد ({seconds})"
 }

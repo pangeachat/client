@@ -1,6 +1,6 @@
 {
     "@@locale": "kri",
-    "@@last_modified": "2026-08-19 14:14:45.932708",
+    "@@last_modified": "2026-08-20 14:15:51.217278",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Repeat password",
     "notAnImage": "Dis nɔt pikchɔ fayl.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Kɔl wan padi",
     "autocorrectAndroidDialogTitle": "Autocorrect na yu tɔŋ we yu de lan",
     "autocorrectAndroidDialogBody": "Tɛm we yu de rayt na chat, yu keyboard go chenj to yu tɔŋ we yu de lan ɛn kɔrɛkt spɛlin na dat tɔŋ.",
-    "autocorrectAndroidFallbackTitle": "If yu keyboard nɔ gɛt yu tɔŋ we yu de lan, instɔl Gboard ɛn ad di tɔŋ de:"
+    "autocorrectAndroidFallbackTitle": "If yu keyboard nɔ gɛt yu tɔŋ we yu de lan, instɔl Gboard ɛn ad di tɔŋ de:",
+    "resendInSeconds": "Send bak ({seconds})"
 }

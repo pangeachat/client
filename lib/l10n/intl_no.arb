@@ -1,6 +1,6 @@
 {
     "@@locale": "no",
-    "@@last_modified": "2026-08-19 14:14:48.806835",
+    "@@last_modified": "2026-08-20 14:15:52.618734",
     "alwaysUse24HourFormat": "false",
     "repeatPassword": "Gjenta passord",
     "notAnImage": "Ikke en bildefil.",
@@ -2152,5 +2152,6 @@
     "inviteAFriend": "Inviter en venn",
     "autocorrectAndroidDialogTitle": "Autokorrektur på målspråket ditt",
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, vil tastaturet bytte til målspråket ditt og korrigere stavemåten på det språket.",
-    "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:"
+    "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:",
+    "resendInSeconds": "Send på nytt om ({seconds})"
 }

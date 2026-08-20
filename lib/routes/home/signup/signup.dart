@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:matrix/matrix.dart';
 
+import 'package:fluffychat/features/authentication/email_address_policy.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
 import 'package:fluffychat/routes/home/signup/request_token_client_extension.dart';
@@ -132,7 +133,7 @@ class SignupPageController extends State<SignupPage> {
     if (value == null || value.isEmpty) {
       return L10n.of(context).pleaseEnterEmail;
     }
-    if (value.isNotEmpty && !value.contains('@')) {
+    if (!EmailAddressPolicy.isValid(value)) {
       return L10n.of(context).pleaseEnterValidEmail;
     }
     return null;

@@ -1,6 +1,6 @@
 {
     "@@locale": "pl",
-    "@@last_modified": "2026-08-19 14:14:49.134341",
+    "@@last_modified": "2026-08-20 14:15:53.332949",
     "about": "O aplikacji",
     "@about": {
         "type": "String",
@@ -9841,5 +9841,6 @@
     "inviteAFriend": "Zaproś znajomego",
     "autocorrectAndroidDialogTitle": "Autokorekta w języku docelowym",
     "autocorrectAndroidDialogBody": "Gdy piszesz na czacie, klawiatura przełączy się na język docelowy i poprawi pisownię w tym języku.",
-    "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:"
+    "autocorrectAndroidFallbackTitle": "Jeśli Twoja klawiatura nie oferuje języka docelowego, zainstaluj Gboard i dodaj tam język:",
+    "resendInSeconds": "Wyślij ponownie ({seconds})"
 }

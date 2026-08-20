@@ -1,6 +1,6 @@
 {
     "@@locale": "de",
-    "@@last_modified": "2026-08-19 14:14:42.098575",
+    "@@last_modified": "2026-08-20 14:15:49.038506",
     "alwaysUse24HourFormat": "true",
     "@alwaysUse24HourFormat": {
         "description": "Set to true to always display time of day in 24 hour format."
@@ -9743,5 +9743,6 @@
     "inviteAFriend": "Einen Freund einladen",
     "autocorrectAndroidDialogTitle": "Autokorrektur in Ihrer Zielsprache",
     "autocorrectAndroidDialogBody": "Wenn Sie in einem Chat tippen, wechselt Ihre Tastatur zu Ihrer Zielsprache und korrigiert die Rechtschreibung in dieser Sprache.",
-    "autocorrectAndroidFallbackTitle": "Wenn Ihre Tastatur Ihre Zielsprache nicht anbietet, installieren Sie Gboard und fügen Sie die Sprache dort hinzu:"
+    "autocorrectAndroidFallbackTitle": "Wenn Ihre Tastatur Ihre Zielsprache nicht anbietet, installieren Sie Gboard und fügen Sie die Sprache dort hinzu:",
+    "resendInSeconds": "Erneut senden ({seconds})"
 }

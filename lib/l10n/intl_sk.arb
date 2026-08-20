@@ -1,6 +1,6 @@
 {
     "@@locale": "sk",
-    "@@last_modified": "2026-08-19 14:14:50.109847",
+    "@@last_modified": "2026-08-20 14:15:53.328011",
     "about": "O aplikácii",
     "@about": {
         "type": "String",
@@ -10701,5 +10701,6 @@
     "inviteAFriend": "Pozvať priateľa",
     "autocorrectAndroidDialogTitle": "Automatické opravy v cieľovom jazyku",
     "autocorrectAndroidDialogBody": "Keď píšete v chate, klávesnica sa prepne na váš cieľový jazyk a opraví pravopis v tomto jazyku.",
-    "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:"
+    "autocorrectAndroidFallbackTitle": "Ak vaša klávesnica neponúka váš cieľový jazyk, nainštalujte si Gboard a pridajte tam jazyk:",
+    "resendInSeconds": "Znova odoslať o ({seconds})"
 }

@@ -2562,7 +2562,7 @@
     "selectAll": "Selecionar tudo",
     "deselectAll": "Desmarcar tudo",
     "@@locale": "pt_PT",
-    "@@last_modified": "2026-08-19 14:14:50.028771",
+    "@@last_modified": "2026-08-20 14:15:53.258034",
     "@alwaysUse24HourFormat": {
         "type": "String",
         "placeholders": {}
@@ -10673,5 +10673,6 @@
     "inviteAFriend": "Convidar um amigo",
     "autocorrectAndroidDialogTitle": "Correção automática na sua língua-alvo",
     "autocorrectAndroidDialogBody": "Quando escrever numa conversa, o seu teclado mudará para a sua língua-alvo e corrigirá a ortografia nessa língua.",
-    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer a sua língua-alvo, instale o Gboard e adicione a língua lá:"
+    "autocorrectAndroidFallbackTitle": "Se o seu teclado não oferecer a sua língua-alvo, instale o Gboard e adicione a língua lá:",
+    "resendInSeconds": "Reenviar ({seconds})"
 }
