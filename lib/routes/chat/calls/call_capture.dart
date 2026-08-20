@@ -57,6 +57,12 @@ const _deliveryTimeout = Duration(seconds: 30);
 /// a stuck upload cannot hold up the next stretch of recording.
 const _settleDeliveriesWithin = Duration(seconds: 10);
 
+/// How long the END of a call waits for deliveries still in flight. Generous —
+/// it covers a delivery's full retry budget — because this is the last chance
+/// for the words to land; but finite, because a record that never appears is
+/// worse than one slightly short.
+const _settleFinishWithin = Duration(minutes: 2);
+
 /// How long a tap is given to come off before it is treated as stuck.
 ///
 /// Detaching is a platform call and should take no time at all, but teardown
@@ -457,15 +463,22 @@ class CallCaptureService {
   Future<void> _finish() async {
     await stop();
     if (_finished) return;
-    // Everything still on its way, without a limit this time. Stopping bounds
-    // its wait so a stuck upload cannot hold up a handover mid-call; the END of
-    // a call has nothing to hold up, and closing before a retry lands would
-    // credit the learner from a transcript missing the words they were still
-    // waiting on.
+    // Everything still on its way — but BOUNDED, like every other wait in a
+    // call's life. The bound applies to the WAITING, never to the audio: each
+    // delivery keeps its own retry path, and nothing here truncates a chunk.
+    // Deliveries are individually bounded (attempts x deliveryTimeout), so this
+    // outer bound only fires if something violates that contract — and when it
+    // does, the record is still written with what landed, because a record
+    // slightly short is strictly better than one that never appears. The chunks
+    // still outstanding are logged as lost.
     try {
-      await Future.wait(List.of(_inFlight));
+      await Future.wait(List.of(_inFlight)).timeout(_settleFinishWithin);
     } catch (e, s) {
-      Logs().w('A call audio chunk never landed', e, s);
+      Logs().w(
+        'A call audio chunk never landed before the finish gave up',
+        e,
+        s,
+      );
     }
     // Marked only once it has actually happened. Marking first meant a close
     // that failed was remembered as done, and the retry that could have fixed

@@ -13,6 +13,15 @@ import 'package:fluffychat/routes/chat/calls/call_roster.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/capture_election.dart';
 
+/// How a call finished, latched the moment ending BEGINS rather than when
+/// teardown completes.
+///
+/// The stage only reaches its terminal value after the whole unwind — retract,
+/// tap detach, upload settling — which is seconds. A screen that waits for the
+/// stage therefore feels dead after the button is pressed and keeps counting
+/// after the peer has hung up. The outcome is the same fact, available at once.
+enum CallOutcome { ended, declined, failed }
+
 enum CallStage {
   /// The other person turned the call down. Distinct from ended so the caller
   /// is told why, rather than watching their call stop for no visible reason.
@@ -336,8 +345,19 @@ class ActiveCall extends ChangeNotifier {
     await hangUp();
   }
 
+  bool _wasRecovering = false;
+
   void _onParticipantsChanged() {
     if (_ending) return;
+
+    // Surfaced, not merely tolerated. The roster already freezes its picture
+    // while the connection recovers; the screen needs to SAY so, or the learner
+    // watches a ticking timer over dead media.
+    final recovering = _roster?.isRecovering ?? false;
+    if (recovering != _wasRecovering) {
+      _wasRecovering = recovering;
+      if (!_disposed) notifyListeners();
+    }
 
     // From the SFU, which is the only thing that knows who is actually here.
     // Matrix membership cannot answer this: it is room state on a multi-minute
@@ -466,6 +486,26 @@ class ActiveCall extends ChangeNotifier {
   /// happened. A call that rang out unanswered is not a call, and writing one
   /// would credit a learner for talking to nobody.
   bool get hadPeer => _peerArrived;
+
+  /// Set exactly once, at the moment the call's fate is decided — the user hung
+  /// up, the peer declined or left, or coming up failed — and notified at that
+  /// same moment. The UI closes (or shows the failure) off THIS, immediately,
+  /// while teardown finishes behind it.
+  CallOutcome? get outcome => _outcome;
+  CallOutcome? _outcome;
+
+  void _decide(CallOutcome o, [Object? error]) {
+    if (_outcome != null) return;
+    _outcome = o;
+    if (error != null) _error = error;
+    if (!_disposed) notifyListeners();
+  }
+
+  /// Whether the SFU connection is trying to come back mid-call. The roster
+  /// freezes its participant picture while this is true, so a network blip can
+  /// never read as the other person leaving; the screen shows it instead of a
+  /// ticking timer over dead media.
+  bool get isReconnecting => _roster?.isRecovering ?? false;
 
   /// When the conversation started, for the timer on screen. Null until
   /// somebody is on the other end — ringing is not talking.
@@ -746,6 +786,9 @@ class ActiveCall extends ChangeNotifier {
         return _abandon();
       }
       Logs().e('Could not start the call', e, s);
+      // Decided BEFORE teardown, error included, so the screen can show what
+      // went wrong the moment it went wrong rather than after the unwind.
+      _decide(CallOutcome.failed, e);
       await _tearDown();
       _to(CallStage.failed, e);
     }
@@ -775,6 +818,9 @@ class ActiveCall extends ChangeNotifier {
   Future<void> hangUp() {
     _ending = true;
     _noteTalkEnded();
+    // Decided NOW: a decline that led here was recorded before this call, so
+    // the outcome is already the right one, and the screen may close at once.
+    _decide(_declinedByPeer ? CallOutcome.declined : CallOutcome.ended);
     return _hangUp ??= () async {
       try {
         await _tearDown();

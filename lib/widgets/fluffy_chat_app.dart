@@ -15,6 +15,7 @@ import 'package:fluffychat/features/navigation/legacy_redirects.dart';
 import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/pangea/common/utils/firebase_analytics.dart';
+import 'package:fluffychat/routes/chat/calls/global_call_tile.dart';
 import 'package:fluffychat/routes/chat/calls/incoming_call_banner.dart';
 import 'package:fluffychat/widgets/app_lock.dart';
 import 'package:fluffychat/widgets/theme_builder.dart';
@@ -102,7 +103,9 @@ class FluffyChatApp extends StatelessWidget {
               // Inside Matrix, so the call service is resolvable; above the
               // router, so a call announces itself wherever the learner is
               // rather than only on the chat it belongs to.
-              child: IncomingCallBanner(child: testWidget ?? child),
+              child: IncomingCallBanner(
+                child: GlobalCallTile(child: testWidget ?? child),
+              ),
             ),
           ),
         ),

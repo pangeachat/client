@@ -4,11 +4,12 @@ import 'package:flutter/material.dart';
 
 import 'package:matrix/matrix.dart' as matrix show Event, Logs, Room, User;
 
+import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
-import 'package:fluffychat/routes/chat/calls/call_page.dart';
 import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
 import 'package:fluffychat/widgets/avatar.dart';
+import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
 
 /// Announces a call arriving for this account, wherever the learner happens to
@@ -192,14 +193,18 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     // moment someone tapped answer — and answering did nothing at all. The SFU
     // is the rendezvous point: join it, and let presence decide from there
     // whether anyone is actually on the other end.
-    await CallPage.show(
-      context,
+    Matrix.of(context).startCall(
       ring.event.room,
       video: ring.isVideo,
       // Anchors this side's speaking analytics: the answering device does not
       // write the call to the timeline, the caller does.
       notificationEventId: ring.event.eventId,
     );
+    // The call lives in its own chat's pane, so answering also goes there.
+    // Through the app's router directly: this banner is mounted above it.
+    final router = FluffyChatApp.router;
+    final uri = router.routeInformationProvider.value.uri;
+    router.go(WorkspaceNav.openRoomById(uri, ring.event.room.id));
   }
 
   @override

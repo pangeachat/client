@@ -1490,8 +1490,85 @@ void main() {
     call.addListener(() => notifications++);
     await call.start(roomStub(calls.client), video: false);
     await call.hangUp();
-    expect(notifications, 2, reason: 'connected, then ended');
+    expect(
+      notifications,
+      3,
+      reason:
+          'connected, then the outcome the moment ending begins, then '
+          'ended once teardown finishes',
+    );
   });
+  group('the outcome', () {
+    test('is decided and notified the INSTANT ending begins, not after '
+        'teardown', () async {
+      // The receiver's screen closes off this. The stage only reaches ended
+      // after the whole unwind — a held flush here stands in for the seconds
+      // of tap detach and upload settling — and waiting for it is exactly the
+      // 5-10s dead screen the user reported.
+      final (call, calls, _, capture) = await build();
+      calls.remotePresent = true;
+      await call.start(roomStub(calls.client), video: false);
+
+      CallOutcome? seenOutcome;
+      call.addListener(() => seenOutcome ??= call.outcome);
+
+      final teardown = Completer<void>();
+      capture.holdStop = teardown;
+      final hangingUp = call.hangUp();
+      expect(
+        seenOutcome,
+        CallOutcome.ended,
+        reason: 'the outcome must be known before teardown even starts',
+      );
+      expect(
+        call.stage,
+        isNot(CallStage.ended),
+        reason:
+            'stage lags — that '
+            'is the point of the outcome',
+      );
+
+      teardown.complete();
+      await hangingUp;
+      expect(call.stage, CallStage.ended);
+    });
+
+    test('is declined when the peer turned the call down', () async {
+      final (call, calls, _, _) = await build();
+      await call.start(roomStub(calls.client), video: false);
+      await calls.peerDeclines();
+      // A decline waits a beat for an answer on the peer's other device;
+      // nobody answers here, so it stands.
+      await call.declineTimeoutForTest();
+      expect(call.outcome, CallOutcome.declined);
+    });
+
+    test(
+      'is failed, with the error, before the failure teardown runs',
+      () async {
+        final (call, calls, _, _) = await build();
+        calls.remotePresent = true;
+        calls.announceError = StateError('state event rejected');
+
+        CallOutcome? seen;
+        Object? seenError;
+        call.addListener(() {
+          if (seen == null && call.outcome != null) {
+            seen = call.outcome;
+            seenError = call.error;
+          }
+        });
+        await call.start(roomStub(calls.client), video: false);
+        expect(seen, CallOutcome.failed);
+        expect(
+          seenError,
+          isStateError,
+          reason: 'the screen shows WHAT failed the moment it fails',
+        );
+      },
+    );
+  });
+
   group('a hangup landing while the call is still coming up', () {
     test('does not report the call connected after it was torn down', () async {
       // start() checks for a hangup after every await for a reason: without the
@@ -1604,8 +1681,14 @@ void main() {
       final starting = call.start(roomStub(calls.client), video: false);
       await pumpEventQueue();
 
-      // A sibling that outranks us appears, so the election queues a handover
-      // that the final step will wait on.
+      // The peer ANSWERS while our ring is still sending — recording starts
+      // (nothing records until somebody is on the call), and then a sibling
+      // that outranks us appears, so the election queues a held handover that
+      // the final step will wait on. Without the peer the displacement stops
+      // nothing and the race this test exists to arrange is not arranged (it
+      // passed vacuously for a while exactly that way).
+      calls.remotePresent = true;
+      await pumpEventQueue();
       calls.devicesInCall = ['AAAAAAAAAA', calls.client.deviceID!];
       await pumpEventQueue();
       ringGate.complete();

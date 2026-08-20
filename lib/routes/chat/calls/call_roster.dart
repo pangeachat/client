@@ -143,6 +143,11 @@ class CallRoster extends ChangeNotifier {
   /// Whether the SFU connection is currently up.
   bool get isConnected => _connected;
 
+  /// Whether the connection is down but coming back. The participant picture is
+  /// frozen while this is true, so callers reading presence also need to know
+  /// the freeze is on — a blip must show as "reconnecting", not as silence.
+  bool get isRecovering => !_connected && roomRecovering;
+
   /// Re-reads the participant list. Called on every notification from the room,
   /// and directly by tests.
   @visibleForTesting

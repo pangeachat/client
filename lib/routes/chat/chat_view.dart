@@ -19,7 +19,7 @@ import 'package:fluffychat/routes/chat/activity_sessions/activity_rating_card.da
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_popup_menu.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_session_start_page.dart';
 import 'package:fluffychat/routes/chat/activity_sessions/activity_stats_menu.dart';
-import 'package:fluffychat/routes/chat/calls/call_page.dart';
+import 'package:fluffychat/routes/chat/calls/chat_call_host.dart';
 import 'package:fluffychat/routes/chat/chat.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_list_tile.dart';
 import 'package:fluffychat/routes/chat/chat_app_bar_title.dart';
@@ -93,14 +93,16 @@ class ChatView extends StatelessWidget {
                     IconButton(
                       icon: const Icon(Icons.videocam_outlined),
                       tooltip: L10n.of(context).startVideoCall,
-                      onPressed: () =>
-                          CallPage.show(context, controller.room, video: true),
+                      onPressed: () => Matrix.of(
+                        context,
+                      ).startCall(controller.room, video: true),
                     ),
                     IconButton(
                       icon: const Icon(Icons.call_outlined),
                       tooltip: L10n.of(context).startCall,
-                      onPressed: () =>
-                          CallPage.show(context, controller.room, video: false),
+                      onPressed: () => Matrix.of(
+                        context,
+                      ).startCall(controller.room, video: false),
                     ),
                   ],
                 ),
@@ -578,6 +580,11 @@ class ChatView extends StatelessWidget {
                   //     alignment: Alignment.center,
                   //     child: const Icon(Icons.upload_outlined, size: 100),
                   //   ),
+                  // Pangea#
+                  // #Pangea
+                  // The active call, rendered inside this chat's pane —
+                  // expanded panel or minimized top tile.
+                  ChatCallHost(roomId: controller.room.id),
                   // Pangea#
                 ],
               ),

@@ -21,6 +21,7 @@ import 'package:fluffychat/features/activity_sessions/activity_auto_save_service
 import 'package:fluffychat/features/analytics_data/analytics_data_service.dart';
 import 'package:fluffychat/features/dosage/dosage_audio_buffer.dart';
 import 'package:fluffychat/features/dosage/dosage_engagement_tracker.dart';
+import 'package:fluffychat/features/languages/language_constants.dart';
 import 'package:fluffychat/features/languages/locale_provider.dart';
 import 'package:fluffychat/features/navigation/route_paths.dart';
 import 'package:fluffychat/features/overlay/any_state_holder.dart';
@@ -30,6 +31,8 @@ import 'package:fluffychat/pangea/common/controllers/pangea_controller.dart';
 import 'package:fluffychat/pangea/common/utils/error_handler.dart';
 import 'package:fluffychat/pangea/morphs/grammar_constructs_provider.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
+import 'package:fluffychat/routes/chat/calls/call_session.dart' as call_ui;
+import 'package:fluffychat/routes/chat/events/speech_to_text/speech_to_text_repo.dart';
 import 'package:fluffychat/utils/client_manager.dart';
 import 'package:fluffychat/utils/platform_infos.dart';
 import 'package:fluffychat/utils/uia_request_manager.dart';
@@ -209,6 +212,57 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   /// that point owns nothing that could outlive the account.
   CallService callServiceFor(String clientName) => _callServices[clientName] ??=
       CallService(widget.clients.firstWhere((c) => c.clientName == clientName));
+
+  /// The one call this app is in, if any. Panels and tiles listen here; the
+  /// session itself owns the call's lifecycle, so navigation never touches it.
+  final ValueNotifier<call_ui.CallSession?> activeCall = ValueNotifier(null);
+
+  /// Places or answers a call in [room], or brings the existing one back up.
+  ///
+  /// One call at a time is already the service's rule ([AlreadyInACall]); this
+  /// keeps the UI consistent with it: a second ask while a call is up expands
+  /// the call rather than failing, and a failed call still on screen is
+  /// dismissed to make way for the new one.
+  void startCall(
+    Room room, {
+    required bool video,
+    String? notificationEventId,
+  }) {
+    final existing = activeCall.value;
+    if (existing != null) {
+      if (existing.isFailed) {
+        existing.dismissFailed();
+      } else {
+        existing.expand();
+        return;
+      }
+    }
+    final user = pangeaController.userController;
+    activeCall.value = call_ui.CallSession.start(
+      room: room,
+      video: video,
+      notificationEventId: notificationEventId,
+      callService: callService,
+      // The repo answers with a Result; the sink's contract is a value or a
+      // throw, and it already treats a throw as "this chunk's words are lost".
+      transcribe: (request) async {
+        final result = await SpeechToTextRepo.instance.get(request);
+        final value = result.asValue;
+        if (value == null) {
+          throw result.asError?.error ?? StateError('speech-to-text failed');
+        }
+        return value.value;
+      },
+      userL1: user.userL1Code ?? LanguageKeys.unknownLanguage,
+      userL2: user.userL2Code ?? LanguageKeys.unknownLanguage,
+      analytics: (eventId, uses, language) => analyticsDataService.updateService
+          .addAnalytics(eventId, uses, language),
+      onReleased: (session) {
+        if (activeCall.value == session) activeCall.value = null;
+        session.dispose();
+      },
+    );
+  }
   // Pangea#
 
   bool get isMultiAccount => widget.clients.length > 1;
@@ -749,6 +803,13 @@ class MatrixState extends State<Matrix> with WidgetsBindingObserver {
   @override
   void dispose() {
     WidgetsBinding.instance.removeObserver(this);
+
+    // #Pangea
+    // A call must never outlive the account UI that owns it. Disposing the
+    // session hangs up (idempotent) and still writes the record.
+    activeCall.value?.dispose();
+    activeCall.value = null;
+    // Pangea#
 
     onRoomKeyRequestSub.values.map((s) => s.cancel());
     onKeyVerificationRequestSub.values.map((s) => s.cancel());

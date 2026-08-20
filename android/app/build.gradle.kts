@@ -84,6 +84,14 @@ android {
     }
 
     buildTypes {
+        debug {
+            // A distinct package so a debug/test build installs ALONGSIDE the
+            // store app instead of being refused with "app not installed": the
+            // two share applicationId but are signed with different keys, and
+            // Android will not install one over the other. Debug only — release
+            // keeps the real id.
+            applicationIdSuffix = ".debug"
+        }
         release {
             signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
