@@ -59,7 +59,7 @@ Course and activity content is language-specific, but the learner's language is 
 
 **Switching to the learner's base language is refused, not attempted.** `IdenticalLanguageException` is thrown inside the profile write, so every offer has to know before it asks: a chip whose language is the learner's L1 renders as a plain label — no tint, no tap — and the switcher shows that language as unavailable with the reason. The send-time popup already applies the same rule.
 
-**A switch is cheap and loses nothing.** Each language keeps its own analytics room and its own local partition ([analytics-system.instructions.md](analytics-system.instructions.md#per-language-isolation)), so switching away banks the current language rather than spending it, and switching back finds it intact; the work of switching is smallest for a language the learner has little history in, which is the common case here. The first switch into a language with no analytics at all says so once — the new language starts at level 1, the previous one keeps its level and XP — so an empty progress screen never reads as lost work.
+**A switch is cheap and loses nothing.** Each language keeps its own analytics room and its own local partition ([analytics-system.instructions.md](analytics-system.instructions.md#per-language-isolation)), so switching away banks the current language rather than spending it, and switching back finds it intact; the work of switching is smallest for a language the learner has little history in, which is the common case here. A switch takes effect immediately on tap, with no interstitial confirmation — that held for languages with analytics from the start, and now holds for every language.
 
 ### Contract all paths must satisfy
 
@@ -114,6 +114,7 @@ The activity-plan filter uses state event presence, but Matrix state events pers
 
 ## Future Work
 
+- **First-switch confirmation for analytics-less languages** — a switch into a language with no analytics currently behaves like any other: immediate, no interstitial. We may want to say once that the new language starts at level 1 and the previous one keeps its level and XP, so an empty progress screen never reads as lost work — deferred rather than built for the initial context-switching rollout.
 - **Per-language self-reported level** — `UserSettings.cefrLevel` is one value per learner while analytics level and XP are per language, so switching leaves a level asserted about the new language that the learner never claimed. The more switching we encourage from context, the more often that is wrong.
 - **Bio / about editing** — Users currently have no UI to set or edit their `about` field. Add an input to either the learning settings page or a dedicated public-profile editor.
 - **Bio / about display** — Decide where other users see the bio. Candidates: user profile sheet in a room, member list hover card, space member directory. Also resolve whether `about` should stay in `UserSettings` (private, synced to public) or move entirely to `PublicProfileModel`.

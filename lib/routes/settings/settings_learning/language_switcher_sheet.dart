@@ -5,10 +5,8 @@ import 'package:fluffychat/features/languages/language_model.dart';
 import 'package:fluffychat/features/user/analytics_profile_model.dart';
 import 'package:fluffychat/features/user/user_controller.dart';
 import 'package:fluffychat/l10n/l10n.dart';
-import 'package:fluffychat/routes/settings/settings_learning/first_switch_confirmation_repo.dart';
 import 'package:fluffychat/routes/settings/settings_learning/p_language_dropdown.dart';
 import 'package:fluffychat/utils/adaptive_bottom_sheet.dart';
-import 'package:fluffychat/widgets/adaptive_dialogs/show_ok_cancel_alert_dialog.dart';
 import 'package:fluffychat/widgets/announcing_snackbar.dart';
 import 'package:fluffychat/widgets/future_loading_dialog.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -59,58 +57,8 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
     super.dispose();
   }
 
-  Future<bool> _confirmFirstSwitch(
-    LanguageModel language,
-    LanguageModel? previous,
-    int? previousLevel,
-  ) async {
-    final l10n = L10n.of(context);
-    final message = previous != null && previousLevel != null
-        ? l10n.firstSwitchConfirmationMessage(
-            language.getDisplayName(l10n),
-            previous.getDisplayName(l10n),
-            previousLevel,
-          )
-        : l10n.firstSwitchConfirmationMessageNoPrevious(
-            language.getDisplayName(l10n),
-          );
-
-    final result = await showOkCancelAlertDialog(
-      context: context,
-      title: l10n.firstSwitchConfirmationTitle(language.getDisplayName(l10n)),
-      message: message,
-      okLabel: l10n.startLanguage(language.getDisplayName(l10n)),
-      cancelLabel: l10n.notNow,
-    );
-    return result == OkCancelResult.ok;
-  }
-
-  Future<void> _selectLanguage(
-    LanguageModel language,
-    LanguageAnalyticsProfileEntry? analytics,
-  ) async {
+  Future<void> _selectLanguage(LanguageModel language) async {
     final userController = MatrixState.pangeaController.userController;
-
-    if (analytics == null &&
-        !FirstSwitchConfirmationRepo.hasConfirmed(language.langCode)) {
-      final previous = userController.userL2;
-      final previousLevel = previous == null
-          ? null
-          : userController
-                .publicProfile
-                ?.analytics
-                .languageAnalytics?[previous]
-                ?.level;
-      final confirmed = await _confirmFirstSwitch(
-        language,
-        previous,
-        previousLevel,
-      );
-      if (!confirmed) return;
-      await FirstSwitchConfirmationRepo.setConfirmed(language.langCode);
-      if (!mounted) return;
-    }
-
     final l10n = L10n.of(context);
     final previous = userController.userL2;
     final navigator = Navigator.of(context, rootNavigator: false);
@@ -211,10 +159,7 @@ class _LanguageSwitcherSheetState extends State<LanguageSwitcherSheet> {
                           displayLanguages[i],
                           baseLanguage?.langCode,
                         ),
-                        onSelect: () => _selectLanguage(
-                          displayLanguages[i],
-                          analyticsByLanguage?[displayLanguages[i]],
-                        ),
+                        onSelect: () => _selectLanguage(displayLanguages[i]),
                       ),
                     ],
                   ],
