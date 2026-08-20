@@ -630,6 +630,120 @@ class CallService {
         event.senderId == client.userID,
   );
 
+  /// Whether [callerId] still claims a place in a call in [room].
+  ///
+  /// A caller who gives up before anybody answers sends nothing to say so —
+  /// retracting the membership is the whole of it — so the absence of that
+  /// membership is what tells a ringing device to stop offering a call nobody
+  /// is on the other end of.
+  ///
+  /// Read as room STATE, never accumulated from events, and only for PRESENCE.
+  /// Expiry is deliberately not read: a caller whose device died leaves a
+  /// membership that reads live for minutes, and the ring's own lifetime is
+  /// what bounds that case. Reading expiry here would restate SDK rules for no
+  /// gain and drift from them.
+  ///
+  /// Matched on the state event's SENDER rather than its state key, because the
+  /// key has three shapes across MSC3757 and per-device variants and only the
+  /// sender is the same in all of them.
+  bool callerStillInCall(Room room, String callerId) {
+    final memberStates = room.states[EventTypes.GroupCallMember];
+    if (memberStates == null) return false;
+    for (final state in memberStates.values) {
+      if (state.senderId != callerId) continue;
+      final memberships = state.content['memberships'];
+      if (memberships is List && memberships.isNotEmpty) return true;
+    }
+    return false;
+  }
+
+  /// Fires whenever [callerId]'s call membership in [room] is rewritten.
+  ///
+  /// The signal a ringing device watches to notice the caller has given up.
+  Stream<void> callerPresenceChanges(Room room, String callerId) =>
+      client.onRoomState.stream.where(
+        (update) =>
+            update.roomId == room.id &&
+            update.state.type == EventTypes.GroupCallMember &&
+            update.state.senderId == callerId,
+      );
+
+  /// Rings that arrived while this device was not listening.
+  ///
+  /// [incomingRings] is a LIVE stream. A ring that landed before the page was
+  /// reloaded never comes through it again — the learner could watch their
+  /// phone ring, reload, and have no way left to answer. This reads them back
+  /// out of the timeline that is already on disk.
+  ///
+  /// Bounded twice over: only direct rooms whose last event falls inside the
+  /// longest lifetime a ring may have are opened at all, and the scan of each
+  /// stops at the same cutoff. A ring is replayed only if it would still ring
+  /// now, this account did not already turn it down, and the caller is still
+  /// there — a ring whose caller has gone is a call that is already over.
+  Future<List<IncomingCallNotification>> ringsMissed() async {
+    final now = DateTime.now();
+    final cutoff = now.subtract(CallNotification.maxLifetime);
+    final missed = <IncomingCallNotification>[];
+    for (final room in client.rooms) {
+      if (!room.isDirectChat) continue;
+      // Only a room that is KNOWN to be too old is skipped. A room whose last
+      // event has not been worked out yet is still opened: treating unknown as
+      // old would silently drop the call this whole method exists to recover.
+      final last = room.lastEvent;
+      if (last != null && last.originServerTs.isBefore(cutoff)) continue;
+      // Call membership is state, and a room the learner has not opened is
+      // loaded only partially. Without this the caller would read as absent —
+      // and an absent caller is taken as a call already over, which would
+      // silence exactly the ring being recovered.
+      try {
+        await room.postLoad();
+      } catch (e, s) {
+        Logs().w('Could not load the state of ${room.id}', e, s);
+      }
+      Timeline timeline;
+      try {
+        timeline = await room.getTimeline();
+      } catch (e, s) {
+        Logs().w('Could not reread ${room.id} for missed calls', e, s);
+        continue;
+      }
+      try {
+        // Both are gathered in one pass, newest first, because a decline is
+        // only meaningful against a ring seen in the same window.
+        final declined = <String>{};
+        final rings = <IncomingCallNotification>[];
+        for (final event in timeline.events) {
+          if (event.originServerTs.isBefore(cutoff)) break;
+          if (event.type == PangeaEventTypes.callDecline &&
+              event.senderId == client.userID) {
+            final target = _declineRefersTo(event);
+            if (target != null) declined.add(target);
+            continue;
+          }
+          if (event.type != PangeaEventTypes.callNotification) continue;
+          rings.add(
+            IncomingCallNotification(
+              event: event,
+              myUserId: client.userID ?? '',
+              alreadyJoined: isBusy,
+            ),
+          );
+        }
+        for (final ring in rings) {
+          if (!ring.shouldRing(now)) continue;
+          if (declined.contains(ring.event.eventId)) continue;
+          if (!callerStillInCall(room, ring.event.senderId)) continue;
+          missed.add(ring);
+        }
+      } catch (e, s) {
+        Logs().w('Could not read missed calls out of ${room.id}', e, s);
+      } finally {
+        timeline.cancelSubscriptions();
+      }
+    }
+    return missed;
+  }
+
   /// The notification a decline points back at, or null if it points at nothing.
   String? declineTarget(Event event) => _declineRefersTo(event);
 

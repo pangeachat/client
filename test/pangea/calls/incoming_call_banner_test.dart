@@ -115,6 +115,34 @@ void main() {
     room: room,
   );
 
+  /// Writes the caller's call membership into room state, or empties it.
+  ///
+  /// Emptying is exactly what a caller who gives up does: there is no explicit
+  /// cancel event, only the membership going away.
+  void callerMembership(
+    Room room, {
+    required bool present,
+    String id = r'$mem',
+  }) {
+    room.setState(
+      Event(
+        type: EventTypes.GroupCallMember,
+        content: {
+          'memberships': present
+              ? [
+                  {'call_id': 'call-id', 'device_id': 'CALLERDEVICE'},
+                ]
+              : <Map<String, dynamic>>[],
+        },
+        senderId: caller,
+        eventId: id,
+        originServerTs: DateTime.now(),
+        room: room,
+        stateKey: caller,
+      ),
+    );
+  }
+
   /// Pumped twice: the banner subscribes in a post-frame callback, so nothing
   /// sent before that frame has run would reach it.
   Future<void> pumpBanner(WidgetTester tester) async {
@@ -188,6 +216,50 @@ void main() {
       client.onTimelineEvent.add(ring(room));
       await tester.pumpAndSettle();
       expect(find.byKey(const ValueKey('\$ring')), findsNothing);
+    });
+  });
+  group('a caller who gives up before anyone answers', () {
+    testWidgets('takes the prompt away with them', (tester) async {
+      // Cancelling an unanswered call sends nothing that says so. Without
+      // watching the membership, the prompt rang on for the rest of its
+      // lifetime and answering it joined a call already walked out of.
+      final room = directChat();
+      callerMembership(room, present: true);
+      await pumpBanner(tester);
+
+      client.onTimelineEvent.add(ring(room));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey(r'$ring')), findsOneWidget);
+
+      callerMembership(room, present: false, id: r'$mem2');
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey(r'$ring')),
+        findsNothing,
+        reason: 'the caller is gone, so there is nothing left to answer',
+      );
+    });
+
+    testWidgets('but a membership never seen present does not silence it', (
+      tester,
+    ) async {
+      // Room state may not have synced when a ring lands. Treating "not there
+      // yet" as "gone" would silence real calls -- the failure that matters
+      // most -- so absence only counts after presence was actually observed.
+      final room = directChat();
+      await pumpBanner(tester);
+
+      client.onTimelineEvent.add(ring(room));
+      await tester.pumpAndSettle();
+      expect(find.byKey(const ValueKey(r'$ring')), findsOneWidget);
+
+      callerMembership(room, present: false);
+      await tester.pumpAndSettle();
+      expect(
+        find.byKey(const ValueKey(r'$ring')),
+        findsOneWidget,
+        reason: 'never seen present, so this proves nothing about the caller',
+      );
     });
   });
 }

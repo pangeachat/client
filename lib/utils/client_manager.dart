@@ -144,6 +144,11 @@ abstract class ClientManager {
         PangeaEventTypes.courseSettings,
         PangeaEventTypes.orchestratorAwardedGoals,
         PangeaEventTypes.botParticipant,
+        // Who is in a call. An incoming call can be for ANY room, so this has
+        // to be known without that room having been opened — a ring is decided
+        // against it, and a room left partial would read as nobody being in
+        // the call at all.
+        EventTypes.GroupCallMember,
         // Pangea#
       },
       logLevel: kReleaseMode ? Level.warning : Level.verbose,

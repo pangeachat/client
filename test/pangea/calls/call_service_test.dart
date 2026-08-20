@@ -8,8 +8,10 @@ import 'package:http/testing.dart';
 import 'package:matrix/matrix.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
+import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/routes/chat/calls/rtc_focus.dart';
+import 'package:fluffychat/routes/chat/events/constants/pangea_event_types.dart';
 
 /// Covers what CallService decides before any network or SDK object is involved:
 /// whether calling is offered at all, and that constructing the service does not
@@ -621,6 +623,122 @@ void main() {
         GroupCallState.ended,
         reason: 'leave() throws before it ends the session, so we must',
       );
+    });
+  });
+
+  group('a ring that landed before the page was reloaded', () {
+    // incomingRings is a LIVE stream: a ring already delivered before a reload
+    // never comes through it again. Before this, refreshing while the phone was
+    // ringing lost the call outright, with no way left to answer it.
+    const caller = '@friend:fakeServer.notExisting';
+    const roomId = '!ringing:fakeServer.notExisting';
+
+    Future<CallService> synced({
+      required bool callerPresent,
+      Duration age = Duration.zero,
+      bool declinedByMe = false,
+    }) async {
+      final client = await bareClient();
+      await client.login(
+        LoginType.mLoginPassword,
+        token: 'abcd',
+        identifier: AuthenticationUserIdentifier(
+          user: '@test:fakeServer.notExisting',
+        ),
+        deviceId: 'GHTYAJCE',
+      );
+      final at = DateTime.now().subtract(age);
+      await client.handleSync(
+        SyncUpdate(
+          nextBatch: 'batch',
+          rooms: RoomsUpdate(
+            join: {
+              roomId: JoinedRoomUpdate(
+                state: [
+                  MatrixEvent(
+                    type: EventTypes.GroupCallMember,
+                    content: {
+                      'memberships': callerPresent
+                          ? [
+                              {'call_id': 'call-id', 'device_id': 'CALLERDEV'},
+                            ]
+                          : <Map<String, dynamic>>[],
+                    },
+                    senderId: caller,
+                    eventId: r'$mem',
+                    originServerTs: at,
+                    stateKey: caller,
+                  ),
+                ],
+                timeline: TimelineUpdate(
+                  events: [
+                    MatrixEvent(
+                      type: PangeaEventTypes.callNotification,
+                      content: const CallNotification(
+                        membershipEventId: r'$mem',
+                        senderDeviceId: 'CALLERDEV',
+                        video: false,
+                      ).toContent(at),
+                      senderId: caller,
+                      eventId: r'$ring',
+                      originServerTs: at,
+                    ),
+                    if (declinedByMe)
+                      MatrixEvent(
+                        type: PangeaEventTypes.callDecline,
+                        content: const {
+                          'm.relates_to': {
+                            'rel_type': 'm.reference',
+                            'event_id': r'$ring',
+                          },
+                        },
+                        senderId: '@test:fakeServer.notExisting',
+                        eventId: r'$decline',
+                        originServerTs: at,
+                      ),
+                  ],
+                ),
+              ),
+            },
+          ),
+        ),
+      );
+      client.accountData['m.direct'] = BasicEvent(
+        type: 'm.direct',
+        content: {
+          caller: [roomId],
+        },
+      );
+      return CallService(client);
+    }
+
+    test('is found again so the call can still be answered', () async {
+      final service = await synced(callerPresent: true);
+      final missed = await service.ringsMissed();
+      expect(missed.map((r) => r.event.eventId), [r'$ring']);
+    });
+
+    test('is not found when the caller has already gone', () async {
+      // A ring whose caller has left is a call that is already over; replaying
+      // it would offer to answer nobody.
+      final service = await synced(callerPresent: false);
+      expect(await service.ringsMissed(), isEmpty);
+    });
+
+    test('is not found once its lifetime has run out', () async {
+      // Inside the scan window (90s) but past the ring's own 30s lifetime, so
+      // this exercises the ring's expiry rather than the coarse timeline cutoff.
+      final service = await synced(
+        callerPresent: true,
+        age: const Duration(seconds: 60),
+      );
+      expect(await service.ringsMissed(), isEmpty);
+    });
+
+    test('is not found when this account already turned it down', () async {
+      // Declining then reloading must not put the prompt back up.
+      final service = await synced(callerPresent: true, declinedByMe: true);
+      expect(await service.ringsMissed(), isEmpty);
     });
   });
 }

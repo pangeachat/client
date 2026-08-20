@@ -8,6 +8,7 @@ import 'package:fluffychat/features/navigation/workspace_nav.dart';
 import 'package:fluffychat/l10n/l10n.dart';
 import 'package:fluffychat/routes/chat/calls/call_notification.dart';
 import 'package:fluffychat/routes/chat/calls/call_quick_replies.dart';
+import 'package:fluffychat/routes/chat/calls/call_service.dart';
 import 'package:fluffychat/widgets/avatar.dart';
 import 'package:fluffychat/widgets/fluffy_chat_app.dart';
 import 'package:fluffychat/widgets/matrix.dart';
@@ -32,6 +33,8 @@ class IncomingCallBanner extends StatefulWidget {
 class _IncomingCallBannerState extends State<IncomingCallBanner> {
   StreamSubscription<IncomingCallNotification>? _rings;
   StreamSubscription<matrix.Event>? _ownDeclines;
+  StreamSubscription<void>? _callerGone;
+  CallService? _service;
   Timer? _stillRinging;
   IncomingCallNotification? _ringing;
   String? _listeningTo;
@@ -68,38 +71,15 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
 
     _rings?.cancel();
     _ownDeclines?.cancel();
+    _callerGone?.cancel();
     _listeningTo = account;
+    _service = matrixState.callService;
     // A prompt belonging to the account we just left is not this one's.
     if (_ringing != null) setState(() => _ringing = null);
 
-    _rings = matrixState.callService.incomingRings.listen((ring) {
-      // Checked against the account this subscription was made for. Cancelling
-      // does not unqueue what has already been handed over, so a ring for the
-      // account the learner just left could still raise a prompt here — and
-      // answering it would start a call in the old account's room using the new
-      // account's connection.
-      if (!mounted || _listeningTo != account) return;
-      // Never one already turned down.
-      if (_declined.contains(ring.event.eventId)) return;
-      final showing = _ringing;
-      if (showing != null) {
-        if (showing.event.eventId == ring.event.eventId) return;
-        // One conversation at a time: a call from somebody else does not take
-        // the prompt away from the one the learner is looking at. A REDIAL
-        // does. The caller hung up and tried again, and a card still pointing
-        // at the first ring answers a call that is already over — and declines
-        // it to a caller who is no longer listening for that one.
-        //
-        // The second caller's ring is dropped rather than queued. Holding it
-        // would mean a prompt appearing for a call that may have been given up
-        // on while the learner dealt with the first, which reads as a phantom
-        // call; the cost is that a second caller during a call goes unanswered,
-        // as they would on a phone.
-        if (showing.event.room.id != ring.event.room.id) return;
-      }
-      setState(() => _ringing = ring);
-      _watchForGiveUp(ring);
-    });
+    _rings = matrixState.callService.incomingRings.listen(
+      (ring) => _offer(ring, account),
+    );
 
     // Answering on one phone has to stop the others ringing. The decline this
     // account sends carries the ring it refers to, so a device showing that ring
@@ -114,6 +94,64 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
       _declined.add(target);
       if (_ringing?.event.eventId == target) _dismiss();
     });
+
+    // A ring that landed before a reload is not on the live stream any more.
+    // Without this, refreshing the page while the phone was ringing lost the
+    // call outright, with no way left to answer it.
+    unawaited(_replayMissed(matrixState, account));
+  }
+
+  /// Puts back a ring that arrived while this device was not listening.
+  ///
+  /// Runs behind the live subscription deliberately: a ring that is still
+  /// arriving normally should come through that, and [_offer] keeps whichever
+  /// arrives first rather than letting the replay overwrite it.
+  Future<void> _replayMissed(MatrixState matrixState, String account) async {
+    final List<IncomingCallNotification> missed;
+    try {
+      missed = await matrixState.callService.ringsMissed();
+    } catch (e, s) {
+      matrix.Logs().w('Could not look for calls missed while away', e, s);
+      return;
+    }
+    if (!mounted || _listeningTo != account) return;
+    for (final ring in missed) {
+      _offer(ring, account);
+    }
+  }
+
+  /// The one gate every ring goes through, live or replayed.
+  ///
+  /// Both sources have to apply the same rules — a replayed ring that skipped
+  /// the redial rule, or the account check, would put up a prompt the live path
+  /// would have refused.
+  void _offer(IncomingCallNotification ring, String account) {
+    // Checked against the account this subscription was made for. Cancelling
+    // does not unqueue what has already been handed over, so a ring for the
+    // account the learner just left could still raise a prompt here — and
+    // answering it would start a call in the old account's room using the new
+    // account's connection.
+    if (!mounted || _listeningTo != account) return;
+    // Never one already turned down.
+    if (_declined.contains(ring.event.eventId)) return;
+    final showing = _ringing;
+    if (showing != null) {
+      if (showing.event.eventId == ring.event.eventId) return;
+      // One conversation at a time: a call from somebody else does not take
+      // the prompt away from the one the learner is looking at. A REDIAL
+      // does. The caller hung up and tried again, and a card still pointing
+      // at the first ring answers a call that is already over — and declines
+      // it to a caller who is no longer listening for that one.
+      //
+      // The second caller's ring is dropped rather than queued. Holding it
+      // would mean a prompt appearing for a call that may have been given up
+      // on while the learner dealt with the first, which reads as a phantom
+      // call; the cost is that a second caller during a call goes unanswered,
+      // as they would on a phone.
+      if (showing.event.room.id != ring.event.room.id) return;
+    }
+    setState(() => _ringing = ring);
+    _watchForGiveUp(ring);
   }
 
   /// Dismisses the prompt when the ring lifetime lapses.
@@ -127,12 +165,44 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
     _stillRinging = Timer(remaining.isNegative ? Duration.zero : remaining, () {
       if (mounted && _ringing?.event.eventId == ring.event.eventId) _dismiss();
     });
+    _watchCaller(ring);
+  }
+
+  /// Stops the prompt the moment the caller gives up.
+  ///
+  /// Cancelling an unanswered call sends nothing that says so — the caller just
+  /// retracts its membership — so this watches for that membership going away.
+  /// Without it the prompt kept ringing for the rest of the lifetime, and
+  /// answering it joined a call the caller had already walked out of.
+  ///
+  /// Strictly TRANSITION-based: the membership must have been SEEN present
+  /// before its absence counts. State may not have synced yet when a ring
+  /// arrives, and treating "not there yet" as "gone" would silence real calls —
+  /// the failure that matters most here. Never seeing it present simply leaves
+  /// the lifetime timer in charge, which is the behaviour this had before.
+  void _watchCaller(IncomingCallNotification ring) {
+    _callerGone?.cancel();
+    final service = _service;
+    if (service == null) return;
+    final room = ring.event.room;
+    final callerId = ring.event.senderId;
+    var wasPresent = service.callerStillInCall(room, callerId);
+    _callerGone = service.callerPresenceChanges(room, callerId).listen((_) {
+      if (!mounted || _ringing?.event.eventId != ring.event.eventId) return;
+      final present = service.callerStillInCall(room, callerId);
+      if (present) {
+        wasPresent = true;
+        return;
+      }
+      if (wasPresent) _dismiss();
+    });
   }
 
   @override
   void dispose() {
     _rings?.cancel();
     _ownDeclines?.cancel();
+    _callerGone?.cancel();
     _stillRinging?.cancel();
     super.dispose();
   }
@@ -140,6 +210,8 @@ class _IncomingCallBannerState extends State<IncomingCallBanner> {
   void _dismiss() {
     _stillRinging?.cancel();
     _stillRinging = null;
+    _callerGone?.cancel();
+    _callerGone = null;
     if (mounted) setState(() => _ringing = null);
   }
 
