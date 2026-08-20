@@ -114,6 +114,17 @@ class CallMedia {
   Future<void> connectRoom(String url, String jwt) => room.connect(url, jwt);
 
   @protected
+  // A note on failure, for both of these: livekit_client 2.11.0 creates the
+  // capture track and THEN publishes it, and if the publish throws it does not
+  // stop the track it just created — nor does room teardown, which only stops
+  // PUBLISHED tracks. The created track is never handed back, so there is no
+  // handle here to close it either. On a publish failure over an already
+  // connected room — rare, since the socket is up by the time these run — the
+  // device can stay claimed. This is upstream (the same on the SDK's main
+  // branch); closing it from here would mean publishing the track by hand
+  // instead of through these one-liners, which is not warranted for a failure
+  // this narrow. Recorded so it is a known limitation, not a surprise.
+  @protected
   Future<void> enableMicrophone(bool on) async => room.localParticipant
       ?.setMicrophoneEnabled(on, audioCaptureOptions: microphone);
 
