@@ -350,11 +350,20 @@ class CallSession extends ChangeNotifier {
     _onReleased(this);
   }
 
+  bool _disposing = false;
+
   @override
   void dispose() {
+    // Re-entrant by construction without this guard: disposing finishes the
+    // recording, finishing hangs up, hanging up notifies, the listener releases
+    // the session, and the holder's release callback disposes it AGAIN. The
+    // listener comes off FIRST so the cascade cannot start, and the guard stops
+    // a second disposal that is already on its way.
+    if (_disposing) return;
+    _disposing = true;
+    call.removeListener(_onCallChanged);
     _tick?.cancel();
     _finishRecording();
-    call.removeListener(_onCallChanged);
     // ActiveCall.dispose hangs up (idempotent), so a session discarded by its
     // holder — logout, app teardown — can never leave a call running headless.
     call.dispose();
