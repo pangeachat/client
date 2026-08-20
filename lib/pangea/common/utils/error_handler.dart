@@ -15,16 +15,17 @@ class ErrorHandler {
   ErrorHandler();
 
   static Future<void> initialize() async {
-    // Debug builds never init Sentry: local-dev errors are visible in the
-    // console already, and reporting them buries staging/production signal.
+    // Only a build positively identified as staging or production (see
+    // Environment.sentryEnvironment) inits Sentry: local-dev and
+    // misconfigured-build errors are visible in the console already, and
+    // reporting them mislabelled buries staging/production signal (#8505).
     // Every capture below no-ops without init.
-    if (!kDebugMode) {
+    final sentryEnvironment = Environment.sentryEnvironment;
+    if (sentryEnvironment != null) {
       await SentryFlutter.init((options) {
         options.dsn = Environment.sentryDsn;
         options.tracesSampleRate = 0.02;
-        options.environment = Environment.isStagingEnvironment
-            ? "staging"
-            : "production";
+        options.environment = sentryEnvironment;
       });
     }
 

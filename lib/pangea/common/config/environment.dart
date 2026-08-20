@@ -30,6 +30,38 @@ class Environment {
   static bool get isStagingEnvironment =>
       dotenv.env["ENVIRONMENT"] == "staging";
 
+  /// The Sentry-reportable environment for this build, per the allow-list in
+  /// sentry.instructions.md (only `staging`/`production` are valid; anything
+  /// else must not report).
+  ///
+  /// Deliberately NOT derived from [isStagingEnvironment]: the production
+  /// `.env` secret never sets `ENVIRONMENT` at all, so that key can't
+  /// positively identify production.
+  ///
+  /// Deliberately NOT derived from [userSearchDomain]: see the note on that
+  /// getter. Replicates [AppConfig.defaultHomeserverUri]'s scheme-then-host
+  /// parse of [synapseURL] locally to avoid importing `AppConfig` (which
+  /// imports [Environment] and would cycle).
+  static String? get sentryEnvironment {
+    final url = synapseURL;
+    final hasScheme = url.startsWith('http://') || url.startsWith('https://');
+    final host = Uri.tryParse(
+      hasScheme ? url : 'https://$url',
+    )?.host.toLowerCase();
+    if (host == null || host.isEmpty) return null;
+    final normalized = host.startsWith('matrix.')
+        ? host.substring('matrix.'.length)
+        : host;
+    switch (normalized) {
+      case 'pangea.chat':
+        return 'production';
+      case 'staging.pangea.chat':
+        return 'staging';
+      default:
+        return null;
+    }
+  }
+
   /// Force Flutter's accessibility semantics tree always-on (opt-in).
   ///
   /// Flutter keeps semantics off until an assistive tech is detected or the
@@ -56,7 +88,13 @@ class Environment {
         'Synapse Url not found';
   }
 
-  static String get homeServer {
+  /// The bare domain to complete a directory-search username into a full
+  /// Matrix ID (`@user:<domain>` — see `UserSearchExtension.searchUser`).
+  /// Single-purpose: NOT a general "which environment/host is this build"
+  /// signal, because the `HOME_SERVER` override below is returned raw,
+  /// unlike the scheme/`matrix.`-stripped `SYNAPSE_URL` fallback. Use
+  /// [synapseURL] for that instead (see [sentryEnvironment]).
+  static String get userSearchDomain {
     String? homeServerFromSynapseURL =
         appConfigOverride?.synapseURL ?? dotenv.env['SYNAPSE_URL'];
     if (homeServerFromSynapseURL != null) {

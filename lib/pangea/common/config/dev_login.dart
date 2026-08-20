@@ -34,8 +34,9 @@ Future<void> maybeDevLogin(MatrixState matrix) async {
   final password = Environment.testPassword;
   // Gate on the host login() actually authenticates against — the same value
   // getLoginClient() assigns to client.homeserver (AppConfig.defaultHomeserverUri,
-  // from SYNAPSE_URL) — NOT Environment.homeServer, which is a separate env var
-  // that can disagree and would let a prod SYNAPSE_URL slip past the guard.
+  // from SYNAPSE_URL) — NOT the HOME_SERVER env var (see
+  // Environment.userSearchDomain), which is separate and can disagree,
+  // letting a prod SYNAPSE_URL slip past the guard.
   final loginHost = devLoginHost();
 
   if (!shouldDevLogin(
