@@ -38,7 +38,7 @@ class Environment {
   /// `.env` secret never sets `ENVIRONMENT` at all, so that key can't
   /// positively identify production.
   ///
-  /// Deliberately NOT derived from [homeServer]: see the warning on that
+  /// Deliberately NOT derived from [userSearchDomain]: see the note on that
   /// getter. Replicates [AppConfig.defaultHomeserverUri]'s scheme-then-host
   /// parse of [synapseURL] locally to avoid importing `AppConfig` (which
   /// imports [Environment] and would cycle).
@@ -88,13 +88,13 @@ class Environment {
         'Synapse Url not found';
   }
 
-  /// Don't use this to decide which environment a build is: the `HOME_SERVER`
-  /// override, when set, is returned raw with none of the scheme/`matrix.`
-  /// stripping applied to the `SYNAPSE_URL` fallback below, so it can diverge
-  /// from the host the app actually talks to. Use [synapseURL] (or
-  /// [AppConfig.defaultHomeserverUri]) for that instead — see
-  /// [sentryEnvironment] and `dev_login.dart`'s `devLoginHost()`.
-  static String get homeServer {
+  /// The bare domain to complete a directory-search username into a full
+  /// Matrix ID (`@user:<domain>` — see `UserSearchExtension.searchUser`).
+  /// Single-purpose: NOT a general "which environment/host is this build"
+  /// signal, because the `HOME_SERVER` override below is returned raw,
+  /// unlike the scheme/`matrix.`-stripped `SYNAPSE_URL` fallback. Use
+  /// [synapseURL] for that instead (see [sentryEnvironment]).
+  static String get userSearchDomain {
     String? homeServerFromSynapseURL =
         appConfigOverride?.synapseURL ?? dotenv.env['SYNAPSE_URL'];
     if (homeServerFromSynapseURL != null) {
