@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "આના પર જઈને તમારી લક્ષ્ય ભાષાનું કીબોર્ડ ઉમેરો:",
     "enableAutocorrectPopupSteps": "  • સેટિંગ્સ\n  • સામાન્ય\n  • કીબોર્ડ\n  • કીબોર્ડ્સ\n  • નવું કીબોર્ડ ઉમેરો",
     "enableAutocorrectPopupDescription": "એકવાર ભાષા પસંદ થઈ જાય, પછી તમે નવા ઇન્સ્ટોલ કરેલા કીબોર્ડને સક્રિય કરવા માટે તમારા કીબોર્ડના નીચે ડાબી બાજુએ આવેલા નાના ગ્લોબ આઇકોન પર ક્લિક કરી શકો છો.",
-    "downloadGboardSteps": " • Gboard ડાઉનલોડ કરો\n  • એપ ખોલો\n  • ભાષાઓ\n  • કીબોર્ડ ઉમેરો\n  • ભાષા પસંદ કરો\n  • કીબોર્ડનો પ્રકાર પસંદ કરો\n  • થઈ ગયું",
     "enableAutocorrectWarning": "ચેતવણી! તમારી લક્ષ્ય ભાષાનું કીબોર્ડ ઉમેરવાની જરૂર છે",
     "displayName": "ડિસ્પ્લે નામ",
     "leaveRoomDescription": "તમે આ ચેટ છોડવા જઈ રહ્યા છો. અન્ય વપરાશકર્તાઓ જોશે કે તમે ચેટ છોડી દીધી છે.",
     "confirmUserId": "કૃપા કરીને તમારું એકાઉન્ટ ડિલીટ કરવા માટે તમારા Pangea Chat યુઝરનેમની પુષ્ટિ કરો.",
     "paidSubscriptionStarts": "{startDate} થી શરૂ થાય છે",
     "cancelInSubscriptionSettings": "• સબ્સ્ક્રિપ્શન સેટિંગ્સમાં ગમે ત્યારે રદ કરો",
-    "downloadGboard": "Gboard ડાઉનલોડ કરો",
     "autocorrectNotAvailable": "દુર્ભાગ્યે તમારું પ્લેટફોર્મ હાલમાં આ સુવિધા માટે સપોર્ટેડ નથી. વધુ વિકાસ માટે જોડાયેલા રહો!",
     "pleaseUpdateApp": "ચાલુ રાખવા માટે કૃપા કરીને એપ અપડેટ કરો.",
     "chooseEmojiInstructionsBody": "ઇમોજીને તે શબ્દો સાથે મેળવો જેનું તે શ્રેષ્ઠ રીતે પ્રતિનિધિત્વ કરે છે. ચિંતા કરશો નહીં! અસંમત થવા માટે કોઈ પોઈન્ટ કપાશે નહીં. 😅",
@@ -2154,5 +2152,9 @@
     "autocorrectAndroidDialogBody": "જ્યારે તમે ચેટમાં ટાઇપ કરો છો, ત્યારે તમારું કીબોર્ડ તમારી લક્ષ્ય ભાષામાં બદલાઈ જશે અને તે ભાષામાં જોડણી સુધારશે.",
     "autocorrectAndroidFallbackTitle": "જો તમારું કીબોર્ડ તમારી લક્ષ્ય ભાષા પ્રદાન કરતું નથી, તો Gboard ઇન્સ્ટોલ કરો અને ત્યાં ભાષા ઉમેરો:",
     "resendInSeconds": "ફરીથી મોકલો ({seconds})",
-    "mapLevelFallbackNotice": "હજુ સુધી કોઈ {selected} પ્રવૃત્તિઓ નથી — તેના બદલે {shown} બતાવી રહ્યા છીએ."
+    "mapLevelFallbackNotice": "હજુ સુધી કોઈ {selected} પ્રવૃત્તિઓ નથી — તેના બદલે {shown} બતાવી રહ્યા છીએ.",
+    "openKeyboardSettings": "કીબોર્ડ સેટિંગ્સ ખોલો",
+    "keyboardPromptAddKeyboardMessage": "તમારી ટાર્ગેટ ભાષા માટે કીબોર્ડ ઉમેરો જેથી સ્વતઃ સુધારણા કામ કરે.",
+    "keyboardPromptAddKeyboardAction": "કીબોર્ડ ઉમેરો",
+    "keyboardPromptSwitchKeyboardMessage": "તમારી ટાર્ગેટ ભાષા પર સ્વિચ કરવા માટે તમારા કીબોર્ડ પર ગ્લોબ આઇકનને ટેપ કરો."
 }

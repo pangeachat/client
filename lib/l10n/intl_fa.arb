@@ -3268,14 +3268,12 @@
     "enableAutocorrectPopupTitle": "با رفتن به تنظیمات صفحه کلید زبان هدف خود را اضافه کنید:",
     "enableAutocorrectPopupSteps": "  • تنظیمات\n  • عمومی\n  • صفحه کلید\n  • صفحه کلیدها\n  • افزودن صفحه کلید جدید",
     "enableAutocorrectPopupDescription": "پس از انتخاب زبان، می‌توانید روی آیکون کوچک کره در پایین سمت چپ صفحه کلید خود کلیک کنید تا صفحه کلید نصب شده جدید فعال شود.",
-    "downloadGboardSteps": " • دانلود Gboard\n  • باز کردن برنامه\n  • زبان‌ها\n  • افزودن صفحه کلید\n  • انتخاب زبان\n  • انتخاب نوع صفحه کلید\n  • انجام شد",
     "enableAutocorrectWarning": "هشدار! نیاز به افزودن صفحه کلید زبان هدف دارید",
     "displayName": "نام نمایشی",
     "leaveRoomDescription": "در حال خروج از این چت هستید. سایر کاربران خواهند دید که شما چت را ترک کرده‌اید.",
     "confirmUserId": "لطفاً نام کاربری چت پنگئا خود را تأیید کنید تا حساب کاربری خود را حذف کنید.",
     "paidSubscriptionStarts": "از {startDate} شروع می‌شود",
     "cancelInSubscriptionSettings": "• در هر زمان در تنظیمات اشتراک لغو کنید",
-    "downloadGboard": "دانلود Gboard",
     "autocorrectNotAvailable": "متأسفانه پلتفرم شما در حال حاضر برای این ویژگی پشتیبانی نمی‌شود. منتظر توسعه‌های بیشتر باشید!",
     "pleaseUpdateApp": "لطفاً برنامه را به‌روزرسانی کنید تا ادامه دهید.",
     "chooseEmojiInstructionsBody": "ایموجی‌ها را با کلماتی که بهترین نشان‌دهنده آن‌ها هستند، مطابقت دهید. نگران نباشید! برای مخالفت هیچ امتیازی کم نمی‌شود. 😅",
@@ -5480,10 +5478,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5509,10 +5503,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9846,5 +9836,9 @@
     "autocorrectAndroidDialogBody": "هنگامی که در یک چت تایپ می‌کنید، صفحه‌کلید شما به زبان مقصدتان تغییر می‌کند و املای کلمات را در آن زبان تصحیح می‌کند.",
     "autocorrectAndroidFallbackTitle": "اگر صفحه‌کلید شما زبان مقصدتان را ارائه نمی‌دهد، Gboard را نصب کنید و زبان را در آنجا اضافه کنید:",
     "resendInSeconds": "ارسال مجدد ({seconds})",
-    "mapLevelFallbackNotice": "هنوز هیچ فعالیت {selected} وجود ندارد — در عوض {shown} نمایش داده می‌شود."
+    "mapLevelFallbackNotice": "هنوز هیچ فعالیت {selected} وجود ندارد — در عوض {shown} نمایش داده می‌شود.",
+    "openKeyboardSettings": "باز کردن تنظیمات صفحه‌کلید",
+    "keyboardPromptAddKeyboardMessage": "برای زبان مقصدتان صفحه‌کلید اضافه کنید تا تصحیح خودکار کار کند.",
+    "keyboardPromptAddKeyboardAction": "افزودن صفحه‌کلید",
+    "keyboardPromptSwitchKeyboardMessage": "روی نماد کره زمین در صفحه‌کلید خود ضربه بزنید تا به زبان مقصدتان تغییر دهید."
 }

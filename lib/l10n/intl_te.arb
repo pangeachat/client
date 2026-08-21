@@ -1126,14 +1126,12 @@
     "enableAutocorrectPopupTitle": "మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించడానికి ఈ క్రింది దశలను అనుసరించండి:",
     "enableAutocorrectPopupSteps": "  • సెట్టింగ్స్\n  • జనరల్\n  • కీబోర్డ్\n  • కీబోర్డ్స్\n  • కొత్త కీబోర్డ్ జోడించండి",
     "enableAutocorrectPopupDescription": "భాషను ఎంచుకున్న తర్వాత, మీ కీబోర్డ్ దిగువ ఎడమ వైపు ఉన్న చిన్న గ్లోబ్ ఐకాన్ పై క్లిక్ చేసి కొత్తగా ఇన్‌స్టాల్ చేసిన కీబోర్డ్‌ను యాక్టివేట్ చేయవచ్చు.",
-    "downloadGboardSteps": " • Gboard డౌన్లోడ్ చేయండి\n  • యాప్‌ను తెరవండి\n  • భాషలు\n  • కీబోర్డ్ జోడించండి\n  • భాషను ఎంచుకోండి\n  • కీబోర్డ్ రకాన్ని ఎంచుకోండి\n  • పూర్తి",
     "enableAutocorrectWarning": "హెచ్చరిక! మీ లక్ష్య భాష కీబోర్డ్‌ను జోడించాల్సి ఉంటుంది",
     "displayName": "ప్రదర్శన పేరు",
     "leaveRoomDescription": "మీరు ఈ చాట్‌ను విడిచిపోతున్నారు. ఇతర వినియోగదారులు మీరు చాట్‌ను విడిచిపోవడాన్ని చూడగలుగుతారు.",
     "confirmUserId": "దయచేసి మీ పాంజియా చాట్ యూజర్‌నేమ్‌ను ధృవీకరించండి, తద్వారా మీ ఖాతాను తొలగించవచ్చు.",
     "paidSubscriptionStarts": "{startDate} నుండి ప్రారంభం",
     "cancelInSubscriptionSettings": " • సబ్‌స్క్రిప్షన్ సెట్టింగ్స్‌లో ఎప్పుడైనా రద్దు చేయండి",
-    "downloadGboard": "Gboard డౌన్లోడ్ చేయండి",
     "autocorrectNotAvailable": "దురదృష్టవశాత్తు, మీ ప్లాట్‌ఫారమ్ ప్రస్తుతం ఈ ఫీచర్‌కు మద్దతు ఇవ్వదు. మరింత అభివృద్ధి కోసం ఎదురుచూడండి!",
     "pleaseUpdateApp": "దయచేసి కొనసాగించడానికి యాప్‌ను నవీకరించండి.",
     "chooseEmojiInstructionsBody": "ఎమోజీలను వాటి ఉత్తమ ప్రతినిధులైన పదాలతో సరిపోల్చండి. ఆందోళన చెందవద్దు! విరుద్ధంగా ఉన్నందుకు పాయింట్లు తగ్గవు. 😅",
@@ -6337,10 +6335,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6366,10 +6360,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10708,5 +10698,9 @@
     "autocorrectAndroidDialogBody": "మీరు చాట్‌లో టైప్ చేసినప్పుడు, మీ కీబోర్డ్ మీ లక్ష్య భాషకు మారుతుంది మరియు ఆ భాషలో స్పెల్లింగ్‌ను సరిచేస్తుంది.",
     "autocorrectAndroidFallbackTitle": "మీ కీబోర్డ్ మీ లక్ష్య భాషను అందించకపోతే, Gboardని ఇన్‌స్టాల్ చేసి, అక్కడ భాషను జోడించండి:",
     "resendInSeconds": "మళ్ళీ పంపండి ({seconds})",
-    "mapLevelFallbackNotice": "ఇంకా {selected} కార్యకలాపాలు లేవు — బదులుగా {shown} చూపుతోంది."
+    "mapLevelFallbackNotice": "ఇంకా {selected} కార్యకలాపాలు లేవు — బదులుగా {shown} చూపుతోంది.",
+    "openKeyboardSettings": "కీబోర్డ్ సెట్టింగ్‌లను తెరవండి",
+    "keyboardPromptAddKeyboardMessage": "ఆటోకరెక్ట్ పని చేయడానికి మీ లక్ష్య భాష కోసం కీబోర్డ్‌ను జోడించండి.",
+    "keyboardPromptAddKeyboardAction": "కీబోర్డ్‌ను జోడించండి",
+    "keyboardPromptSwitchKeyboardMessage": "మీ లక్ష్య భాషకు మారడానికి మీ కీబోర్డ్‌లోని గ్లోబ్ చిహ్నాన్ని నొక్కండి."
 }

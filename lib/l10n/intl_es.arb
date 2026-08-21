@@ -3415,7 +3415,6 @@
     "enableAutocorrectPopupTitle": "Agrega el teclado de tu idioma objetivo yendo a:",
     "enableAutocorrectPopupSteps": "  • Configuración\n  • General\n  • Teclado\n  • Teclados\n  • Agregar nuevo teclado",
     "enableAutocorrectPopupDescription": "Una vez que se seleccione el idioma, puedes hacer clic en el pequeño ícono de globo en la esquina inferior izquierda de tu teclado para activar el teclado recién instalado.",
-    "downloadGboardSteps": " • Descargar Gboard\n  • Abrir la aplicación\n  • Idiomas\n  • Agregar teclado\n  • Seleccionar idioma\n  • Seleccionar tipo de teclado\n  • Listo",
     "displayName": "Nombre para mostrar",
     "leaveRoomDescription": "Estás a punto de salir de este chat. Otros usuarios verán que has salido del chat.",
     "confirmUserId": "Por favor, confirma tu nombre de usuario de Pangea Chat para poder eliminar tu cuenta.",
@@ -3429,7 +3428,6 @@
         }
     },
     "cancelInSubscriptionSettings": "• Cancela en cualquier momento en la configuración de suscripción",
-    "downloadGboard": "Descargar Gboard",
     "autocorrectNotAvailable": "Desafortunadamente, tu plataforma no es compatible actualmente con esta función. ¡Mantente atento a futuros desarrollos!",
     "constructUseGaDesc": "Asistencia gramatical",
     "constructUseTaDesc": "Asistencia de traducción",
@@ -7969,5 +7967,9 @@
     "autocorrectAndroidDialogBody": "Cuando escribas en un chat, tu teclado cambiará a tu idioma objetivo y corregirá la ortografía en ese idioma.",
     "autocorrectAndroidFallbackTitle": "Si tu teclado no ofrece tu idioma objetivo, instala Gboard y añade el idioma allí:",
     "resendInSeconds": "Reenviar en ({seconds})",
-    "mapLevelFallbackNotice": "Aún no hay actividades de {selected}; se muestran {shown} en su lugar."
+    "mapLevelFallbackNotice": "Aún no hay actividades de {selected}; se muestran {shown} en su lugar.",
+    "openKeyboardSettings": "Abrir la configuración del teclado",
+    "keyboardPromptAddKeyboardMessage": "Añade un teclado para tu idioma objetivo para que funcione la autocorrección.",
+    "keyboardPromptAddKeyboardAction": "Añadir teclado",
+    "keyboardPromptSwitchKeyboardMessage": "Toca el icono del globo en tu teclado para cambiar a tu idioma objetivo."
 }

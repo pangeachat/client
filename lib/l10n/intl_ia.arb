@@ -1164,14 +1164,12 @@
     "enableAutocorrectPopupTitle": "Adder tu clavier de lingua target per ir a:",
     "enableAutocorrectPopupSteps": "  • Configuration\n  • General\n  • Claviatura\n  • Claviaturas\n  • Adder nove clavier",
     "enableAutocorrectPopupDescription": "Post le selection de le lingua, tu pote cliccar le icono de globulo in le basso sinistre de tu clavier pro activar le clavier installate recentemente.",
-    "downloadGboardSteps": " • Downloadar Gboard\n  • Aperir le application\n  • Linguas\n  • Adder clavier\n  • Seliger lingua\n  • Seliger typologia de clavier\n  • Fin",
     "enableAutocorrectWarning": "Attention! Require adder le clavier de lingua target",
     "displayName": "Nom de display",
     "leaveRoomDescription": "Tu es circa de partir de iste chat. Altri usatores vide que tu ha partite le chat.",
     "confirmUserId": "Per favor confirma tu nomine de usator in Pangea Chat pro eliminar tu conto.",
     "paidSubscriptionStarts": "A partir de {startDate}",
     "cancelInSubscriptionSettings": "• Cancellar in le configuration de subscription",
-    "downloadGboard": "Downloadar Gboard",
     "autocorrectNotAvailable": "Infelicemente, tu piattaforma actualmente non es supportate pro iste function. Sta attentive pro ulteriore developpamento!",
     "pleaseUpdateApp": "Per favor, actualisa le application pro continuar.",
     "chooseEmojiInstructionsBody": "Compatra emojis con le parolas que illes meliormente representa. Non te preoccupa! Nulle puncto per disapprobar. 😅",
@@ -6323,10 +6321,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6352,10 +6346,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10694,5 +10684,9 @@
     "autocorrectAndroidDialogBody": "Quando tu scribe in un chat, tu claviero cambiara a tu lingua de destination e corrigera le orthographia in ille lingua.",
     "autocorrectAndroidFallbackTitle": "Si tu claviero non offere tu lingua de destination, installa Gboard e adde le lingua ibi:",
     "resendInSeconds": "Re-inviar ({seconds})",
-    "mapLevelFallbackNotice": "Ancora nulle activitates de {selected} — monstrante {shown} in su loco."
+    "mapLevelFallbackNotice": "Ancora nulle activitates de {selected} — monstrante {shown} in su loco.",
+    "openKeyboardSettings": "Aperi le Preferentias del Claviero",
+    "keyboardPromptAddKeyboardMessage": "Adde un claviero pro tu lingua de scopo a fin que le autocorrection functiona.",
+    "keyboardPromptAddKeyboardAction": "Adder Claviero",
+    "keyboardPromptSwitchKeyboardMessage": "Tocca le icone del globo in tu claviero pro cambiar a tu lingua de scopo."
 }

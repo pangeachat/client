@@ -1739,14 +1739,12 @@
     "enableAutocorrectPopupTitle": "დაამატეთ თქვენი მიზნობრივი ენის კლავიატურა შემდეგ მისამართზე გადასვლით:",
     "enableAutocorrectPopupSteps": "  • პარამეტრები\n  • ზოგადი\n  • კლავიატურა\n  • კლავიატურები\n  • ახალი კლავიატურის დამატება",
     "enableAutocorrectPopupDescription": "როდესაც ენა აირჩევა, შეგიძლიათ დააჭიროთ პატარა გლობუსის ხატულას კლავიატურის ქვედა მარცხენა მხარეს, რათა გააქტიუროთ ახალი ინსტალირებული კლავიატურა.",
-    "downloadGboardSteps": " • გადმოწერეთ Gboard\n  • გახსენით აპლიკაცია\n  • ენები\n  • კლავიატურის დამატება\n  • ენის არჩევა\n  • კლავიატურის ტიპის არჩევა\n  • დასრულება",
     "enableAutocorrectWarning": "გაფრთხილება! საჭიროა თქვენი სამიზნე ენის კლავიატურის დამატება",
     "displayName": "სახელის ჩვენება",
     "leaveRoomDescription": "თქვენ აპირებთ ამ ჩატის დატოვებას. სხვა მომხმარებლები იხილავენ, რომ თქვენ დატოვეთ ჩატი.",
     "confirmUserId": "გთხოვთ დაადასტუროთ თქვენი Pangea Chat-ის მომხმარებლის სახელი თქვენი ანგარიშის წაშლის მიზნით.",
     "paidSubscriptionStarts": "დაწყება {startDate}",
     "cancelInSubscriptionSettings": "• გაუქმება ნებისმიერ დროს გამოწერის პარამეტრებში",
-    "downloadGboard": "ჩამოტვირთეთ Gboard",
     "autocorrectNotAvailable": "სამწუხაროდ, თქვენი პლატფორმა ამ ფუნქციისთვის ამჟამად არ არის მხარდაჭერილი. დარჩით განახლებებისთვის!",
     "pleaseUpdateApp": "გთხოვთ განაახლოთ აპლიკაცია გაგრძელებისთვის.",
     "chooseEmojiInstructionsBody": "შეადარეთ ემოჯები მათ სიტყვებთან, რომლებიც საუკეთესოდ გამოხატავენ მათ. ნუ იდარდებთ! არ არის ქულები გამოთიშული წინააღმდეგობისთვის. 😅",
@@ -6287,10 +6285,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -6316,10 +6310,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10658,5 +10648,9 @@
     "autocorrectAndroidDialogBody": "როდესაც ჩატში წერთ, თქვენი კლავიატურა გადაერთვება თქვენს სამიზნე ენაზე და შეასწორებს მართლწერას ამ ენაზე.",
     "autocorrectAndroidFallbackTitle": "თუ თქვენი კლავიატურა არ გთავაზობთ თქვენს სამიზნე ენას, დააინსტალირეთ Gboard და დაამატეთ ენა იქ:",
     "resendInSeconds": "ხელახლა გაგზავნა ({seconds})",
-    "mapLevelFallbackNotice": "ჯერ არ არის {selected} აქტივობები — ნაცვლად ნაჩვენებია {shown}."
+    "mapLevelFallbackNotice": "ჯერ არ არის {selected} აქტივობები — ნაცვლად ნაჩვენებია {shown}.",
+    "openKeyboardSettings": "კლავიატურის პარამეტრების გახსნა",
+    "keyboardPromptAddKeyboardMessage": "დაამატეთ კლავიატურა თქვენი სამიზნე ენისთვის, რათა ავტოკორექციამ იმუშაოს.",
+    "keyboardPromptAddKeyboardAction": "კლავიატურის დამატება",
+    "keyboardPromptSwitchKeyboardMessage": "შეეხეთ გლობუსის ხატულას თქვენს კლავიატურაზე, რათა გადახვიდეთ თქვენს სამიზნე ენაზე."
 }

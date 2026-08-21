@@ -3263,14 +3263,12 @@
     "enableAutocorrectPopupTitle": "Adja hozzá a célnyelvi billentyűzetet a következő lépésekkel:",
     "enableAutocorrectPopupSteps": "  • Beállítások\n  • Általános\n  • Billentyűzet\n  • Billentyűzetek\n  • Új billentyűzet hozzáadása",
     "enableAutocorrectPopupDescription": "Miután kiválasztotta a nyelvet, kattintson a billentyűzet bal alsó sarkában lévő kis földgömb ikonra az újonnan telepített billentyűzet aktiválásához.",
-    "downloadGboardSteps": " • Töltse le a Gboardot\n  • Nyissa meg az alkalmazást\n  • Nyelvek\n  • Billentyűzet hozzáadása\n  • Nyelv kiválasztása\n  • Billentyűzet típusának kiválasztása\n  • Kész",
     "enableAutocorrectWarning": "Figyelem! A célnyelvi billentyűzet hozzáadása szükséges",
     "displayName": "Megjelenítendő név",
     "leaveRoomDescription": "El fogja hagyni ezt a csevegést. A többi felhasználó látni fogja, hogy elhagyta a csevegést.",
     "confirmUserId": "Kérjük, erősítse meg Pangea Chat felhasználónevét a fiók törléséhez.",
     "paidSubscriptionStarts": "Kezdete {startDate}",
     "cancelInSubscriptionSettings": "• Lemondás bármikor az előfizetési beállításokban",
-    "downloadGboard": "Gboard letöltése",
     "autocorrectNotAvailable": "Sajnáljuk, jelenleg nem támogatott ez a funkció a platformján. Maradjon velünk a további fejlesztésekért!",
     "pleaseUpdateApp": "Kérjük, frissítse az alkalmazást a folytatáshoz.",
     "chooseEmojiInstructionsBody": "Egyeztesse az emojikat a legjobban reprezentáló szavakkal. Ne aggódjon! Nincs pontlevonás, ha nem ért egyet. 😅",
@@ -5490,10 +5488,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5519,10 +5513,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9861,5 +9851,9 @@
     "autocorrectAndroidDialogBody": "Amikor csevegésben gépel, a billentyűzet átvált a célnyelvre, és azon a nyelven javítja a helyesírást.",
     "autocorrectAndroidFallbackTitle": "Ha a billentyűzete nem kínálja fel a célnyelvet, telepítse a Gboardot, és adja hozzá ott a nyelvet:",
     "resendInSeconds": "Újraküldés ({seconds})",
-    "mapLevelFallbackNotice": "Még nincsenek {selected} tevékenységek – helyette ezeket a {shown} tevékenységeket mutatjuk."
+    "mapLevelFallbackNotice": "Még nincsenek {selected} tevékenységek – helyette ezeket a {shown} tevékenységeket mutatjuk.",
+    "openKeyboardSettings": "Billentyűzetbeállítások megnyitása",
+    "keyboardPromptAddKeyboardMessage": "Adj hozzá billentyűzetet a célnyelvedhez, hogy működjön az automatikus javítás.",
+    "keyboardPromptAddKeyboardAction": "Billentyűzet hozzáadása",
+    "keyboardPromptSwitchKeyboardMessage": "Koppints a földgömb ikonra a billentyűzeteden, hogy átválts a célnyelvedre."
 }

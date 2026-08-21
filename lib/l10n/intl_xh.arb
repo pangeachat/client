@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Yongeza ikhibhodi yolwimi lwakho olujoliswe kulo ngokuya ku:",
     "enableAutocorrectPopupSteps": "  • Useto\n  • Ngokubanzi\n  • Ikhibhodi\n  • Iikhibhodi\n  • Yongeza Ikhibhodi Entsha",
     "enableAutocorrectPopupDescription": "Nje ukuba ulwimi lukhethiwe, ungacofa i-ayikhoni encinci yeglowubhu kwikona esezantsi ekhohlo yekhibhodi yakho ukuze uvule ikhibhodi esandula ukufakwa.",
-    "downloadGboardSteps": " • Khuphela i-Gboard\n  • Vula usetyenziso\n  • Iilwimi\n  • Yongeza ikhibhodi\n  • Khetha Ulwimi\n  • Khetha uhlobo lwekhibhodi\n  • Kwenzekile",
     "enableAutocorrectWarning": "Isilumkiso! Ifuna ukongeza ikhibhodi yolwimi lwakho olujoliswe kulo",
     "displayName": "Igama lokubonisa",
     "leaveRoomDescription": "Uza kushiya le ncoko. Abanye abasebenzisi baya kubona ukuba uyishiyile incoko.",
     "confirmUserId": "Nceda uqinisekise igama lakho lomsebenzisi le-Pangea Chat ukuze ucime iakhawunti yakho.",
     "paidSubscriptionStarts": "Iqala {startDate}",
     "cancelInSubscriptionSettings": "• Rhoxisa nanini na kuseto lobhaliso",
-    "downloadGboard": "Khuphela i-Gboard",
     "autocorrectNotAvailable": "Ngelishwa iqonga lakho alixhaswanga okwangoku ngale nto. Hlala ubukele uphuhliso olungaphezulu!",
     "pleaseUpdateApp": "Nceda uhlaziye usetyenziso ukuze uqhubeke.",
     "chooseEmojiInstructionsBody": "Tshatisa ii-emoji namagama azimele kakuhle. Ungakhathazeki! Akukho manqaku ancitshisiweyo ngokungavumelani. 😅",
@@ -2154,5 +2152,9 @@
     "autocorrectAndroidDialogBody": "Xa uchwetheza kwincoko, ikhibhodi yakho iya kutshintshela kulwimi olufundayo kwaye ilungise upelo ngolwimi olo.",
     "autocorrectAndroidFallbackTitle": "Ukuba ikhibhodi yakho ayiluniki ulwimi olufundayo, faka iGboard kwaye ulongeze ulwimi apho:",
     "resendInSeconds": "Phinda uthumele ({seconds})",
-    "mapLevelFallbackNotice": "Akukho misebenzi ye-{selected} okwangoku — endaweni yoko kuboniswa i-{shown}."
+    "mapLevelFallbackNotice": "Akukho misebenzi ye-{selected} okwangoku — endaweni yoko kuboniswa i-{shown}.",
+    "openKeyboardSettings": "Vula Useto Lwebhodi yezitshixo",
+    "keyboardPromptAddKeyboardMessage": "Yongeza ikhibhodi yolwimi ekujoliswe kulo ukuze kusebenze ukulungisa okuzenzekelayo.",
+    "keyboardPromptAddKeyboardAction": "Yongeza iKhibhodi",
+    "keyboardPromptSwitchKeyboardMessage": "Cofa i-ayikhoni yeglowubhu kwikhibhodi yakho ukuze utshintshele kulwimi ekujoliswe kulo."
 }

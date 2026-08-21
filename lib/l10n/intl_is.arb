@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Bættu við lyklaborði fyrir markmálið þitt með því að fara í:",
     "enableAutocorrectPopupSteps": "  • Stillingar\n  • Almennt\n  • Lyklaborð\n  • Lyklaborð\n  • Bæta við nýju lyklaborði",
     "enableAutocorrectPopupDescription": "Þegar tungumálið hefur verið valið geturðu smellt á litla hnöttstáknið neðst til vinstri á lyklaborðinu þínu til að virkja nýuppsett lyklaborð.",
-    "downloadGboardSteps": " • Sækja Gboard\n  • Opna forrit\n  • Tungumál\n  • Bæta við lyklaborði\n  • Velja tungumál\n  • Velja lyklaborðstegund\n  • Lokið",
     "enableAutocorrectWarning": "Viðvörun! Krefst þess að bæta við lyklaborði fyrir markmálið þitt",
     "displayName": "Birtingarnafn",
     "leaveRoomDescription": "Þú ert að fara að yfirgefa þetta spjall. Aðrir notendur munu sjá að þú hefur yfirgefið spjallið.",
     "confirmUserId": "Vinsamlegast staðfestu Pangea Chat notandanafnið þitt til að eyða reikningnum þínum.",
     "paidSubscriptionStarts": "Byrjar {startDate}",
     "cancelInSubscriptionSettings": "• Hætta við hvenær sem er í áskriftarstillingum",
-    "downloadGboard": "Sækja Gboard",
     "autocorrectNotAvailable": "Því miður er vettvangurinn þinn ekki studdur fyrir þennan eiginleika. Fylgstu með frekari þróun!",
     "pleaseUpdateApp": "Vinsamlegast uppfærðu forritið til að halda áfram.",
     "chooseEmojiInstructionsBody": "Passaðu emojis við orðin sem þau tákna best. Ekki hafa áhyggjur! Engin stig dregin frá fyrir ósamræmi. 😅",
@@ -2154,5 +2152,9 @@
     "autocorrectAndroidDialogBody": "Þegar þú skrifar í spjalli mun lyklaborðið þitt skipta yfir í markmálið þitt og leiðrétta stafsetningu á því máli.",
     "autocorrectAndroidFallbackTitle": "Ef lyklaborðið þitt býður ekki upp á markmálið þitt skaltu setja upp Gboard og bæta málinu við þar:",
     "resendInSeconds": "Senda aftur ({seconds})",
-    "mapLevelFallbackNotice": "Engin {selected} virkni ennþá — sýni {shown} í staðinn."
+    "mapLevelFallbackNotice": "Engin {selected} virkni ennþá — sýni {shown} í staðinn.",
+    "openKeyboardSettings": "Opna lyklaborðsstillingar",
+    "keyboardPromptAddKeyboardMessage": "Bættu við lyklaborði fyrir tungumálið sem þú ert að læra svo sjálfvirk leiðrétting virki.",
+    "keyboardPromptAddKeyboardAction": "Bæta við lyklaborði",
+    "keyboardPromptSwitchKeyboardMessage": "Pikkaðu á hnattartáknið á lyklaborðinu þínu til að skipta yfir í tungumálið sem þú ert að læra."
 }

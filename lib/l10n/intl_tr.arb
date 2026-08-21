@@ -3178,14 +3178,12 @@
     "enableAutocorrectPopupTitle": "Hedef dil klavyenizi eklemek için şu adımları izleyin:",
     "enableAutocorrectPopupSteps": "  • Ayarlar\n  • Genel\n  • Klavye\n  • Klavyeler\n  • Yeni Klavye Ekle",
     "enableAutocorrectPopupDescription": "Dil seçildikten sonra, klavyenizin sol alt köşesindeki küçük dünya simgesine tıklayarak yeni yüklenen klavyeyi etkinleştirebilirsiniz.",
-    "downloadGboardSteps": " • Gboard'u İndir\n  • Uygulamayı Aç\n  • Diller\n  • Klavye Ekle\n  • Dil Seç\n  • Klavye Türünü Seç\n  • Bitti",
     "enableAutocorrectWarning": "Uyarı! Hedef dil klavyenizi eklemeniz gerekiyor",
     "displayName": "Görünen isim",
     "leaveRoomDescription": "Bu sohbette ayrılmak üzeresiniz. Diğer kullanıcılar sizin ayrıldığınızı görecek.",
     "confirmUserId": "Lütfen hesabınızı silmek için Pangea Sohbet kullanıcı adınızı onaylayın.",
     "paidSubscriptionStarts": "{startDate} tarihinden itibaren başlar",
     "cancelInSubscriptionSettings": "• Abonelik ayarlarından istediğiniz zaman iptal edin",
-    "downloadGboard": "Gboard'u İndir",
     "autocorrectNotAvailable": "Maalesef, bu özellik şu anda platformunuzda desteklenmemektedir. Daha fazla geliştirme için bizi izlemeye devam edin!",
     "pleaseUpdateApp": "Devam etmek için lütfen uygulamayı güncelleyin.",
     "chooseEmojiInstructionsBody": "Emojileri en iyi temsil ettikleri kelimelerle eşleştirin. Endişelenmeyin! Anlaşmazlıklar için puan kesilmez. 😅",
@@ -5688,10 +5686,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5717,10 +5711,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10059,5 +10049,9 @@
     "autocorrectAndroidDialogBody": "Bir sohbette yazdığınızda, klavyeniz hedef dilinize geçecek ve yazım hatalarını o dilde düzeltecektir.",
     "autocorrectAndroidFallbackTitle": "Klavyeniz hedef dilinizi sunmuyorsa, Gboard'u yükleyin ve dili oraya ekleyin:",
     "resendInSeconds": "Tekrar gönder ({seconds})",
-    "mapLevelFallbackNotice": "Henüz {selected} aktivite yok — bunun yerine {shown} gösteriliyor."
+    "mapLevelFallbackNotice": "Henüz {selected} aktivite yok — bunun yerine {shown} gösteriliyor.",
+    "openKeyboardSettings": "Klavye Ayarlarını Aç",
+    "keyboardPromptAddKeyboardMessage": "Otomatik düzeltmenin çalışması için hedef diliniz için bir klavye ekleyin.",
+    "keyboardPromptAddKeyboardAction": "Klavye Ekle",
+    "keyboardPromptSwitchKeyboardMessage": "Hedef dilinize geçmek için klavyenizdeki dünya simgesine dokunun."
 }

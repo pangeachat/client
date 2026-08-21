@@ -3381,14 +3381,12 @@
     "enableAutocorrectPopupTitle": "Fügen Sie Ihre Zielsprachentastatur hinzu, indem Sie zu gehen:",
     "enableAutocorrectPopupSteps": "  • Einstellungen\n  • Allgemein\n  • Tastatur\n  • Tastaturen\n  • Neue Tastatur hinzufügen",
     "enableAutocorrectPopupDescription": "Sobald die Sprache ausgewählt ist, können Sie auf das kleine Globus-Symbol unten links auf Ihrer Tastatur klicken, um die neu installierte Tastatur zu aktivieren.",
-    "downloadGboardSteps": " • Gboard herunterladen\n  • App öffnen\n  • Sprachen\n  • Tastatur hinzufügen\n  • Sprache auswählen\n  • Tastaturtyp auswählen\n  • Fertig",
     "enableAutocorrectWarning": "Warnung! Erfordert das Hinzufügen Ihrer Zielsprachentastatur",
     "displayName": "Anzeigename",
     "leaveRoomDescription": "Sie sind dabei, diesen Chat zu verlassen. Andere Benutzer werden sehen, dass Sie den Chat verlassen haben.",
     "confirmUserId": "Bitte bestätigen Sie Ihren Pangea-Chat-Benutzernamen, um Ihr Konto zu löschen.",
     "paidSubscriptionStarts": "Beginnt am {startDate}",
     "cancelInSubscriptionSettings": "• Jederzeit in den Abonnement-Einstellungen kündigen",
-    "downloadGboard": "Gboard herunterladen",
     "autocorrectNotAvailable": "Leider wird diese Plattform derzeit nicht für diese Funktion unterstützt. Bleiben Sie dran für weitere Entwicklungen!",
     "pleaseUpdateApp": "Bitte aktualisieren Sie die App, um fortzufahren.",
     "chooseEmojiInstructionsBody": "Ordnen Sie Emojis den Wörtern zu, die sie am besten repräsentieren. Keine Sorge! Es gibt keine Punktabzüge bei Meinungsverschiedenheiten. 😅",
@@ -5588,10 +5586,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5617,10 +5611,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9745,5 +9735,9 @@
     "autocorrectAndroidDialogBody": "Wenn Sie in einem Chat tippen, wechselt Ihre Tastatur zu Ihrer Zielsprache und korrigiert die Rechtschreibung in dieser Sprache.",
     "autocorrectAndroidFallbackTitle": "Wenn Ihre Tastatur Ihre Zielsprache nicht anbietet, installieren Sie Gboard und fügen Sie die Sprache dort hinzu:",
     "resendInSeconds": "Erneut senden ({seconds})",
-    "mapLevelFallbackNotice": "Noch keine {selected} Aktivitäten – stattdessen werden {shown} angezeigt."
+    "mapLevelFallbackNotice": "Noch keine {selected} Aktivitäten – stattdessen werden {shown} angezeigt.",
+    "openKeyboardSettings": "Tastatureinstellungen öffnen",
+    "keyboardPromptAddKeyboardMessage": "Füge eine Tastatur für deine Zielsprache hinzu, damit die Autokorrektur funktioniert.",
+    "keyboardPromptAddKeyboardAction": "Tastatur hinzufügen",
+    "keyboardPromptSwitchKeyboardMessage": "Tippe auf das Globus-Symbol auf deiner Tastatur, um zu deiner Zielsprache zu wechseln."
 }

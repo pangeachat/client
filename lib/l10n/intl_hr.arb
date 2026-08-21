@@ -3067,14 +3067,12 @@
     "enableAutocorrectPopupTitle": "Dodajte tipkovnicu za ciljani jezik tako da odete na:",
     "enableAutocorrectPopupSteps": "  • Postavke\n  • Općenito\n  • Tipkovnica\n  • Tipkovnice\n  • Dodaj novu tipkovnicu",
     "enableAutocorrectPopupDescription": "Kad odaberete jezik, možete kliknuti na malu globus ikonu u donjem lijevom kutu vaše tipkovnice za aktiviranje nove instalirane tipkovnice.",
-    "downloadGboardSteps": " • Preuzmi Gboard\n  • Otvori aplikaciju\n  • Jezici\n  • Dodaj tipkovnicu\n  • Odaberi jezik\n  • Odaberi vrstu tipkovnice\n  • Gotovo",
     "enableAutocorrectWarning": "Upozorenje! Potrebno je dodati tipkovnicu za ciljani jezik",
     "displayName": "Prikazno ime",
     "leaveRoomDescription": "Upravo napuštate ovaj chat. Ostali korisnici će vidjeti da ste napustili chat.",
     "confirmUserId": "Molimo potvrdite svoje korisničko ime na Pangea Chatu kako biste izbrisali svoj račun.",
     "paidSubscriptionStarts": "Počinje {startDate}",
     "cancelInSubscriptionSettings": "• Otkažite u bilo kojem trenutku u postavkama pretplate",
-    "downloadGboard": "Preuzmi Gboard",
     "autocorrectNotAvailable": "Nažalost, vaša platforma trenutno nije podržana za ovu značajku. Ostanite s nama za daljnji razvoj!",
     "pleaseUpdateApp": "Molimo ažurirajte aplikaciju za nastavak.",
     "chooseEmojiInstructionsBody": "Uskladite emojije s riječima koje najbolje predstavljaju. Ne brinite! Nema bodova za neslaganje. 😅",
@@ -5823,10 +5821,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5852,10 +5846,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -10194,5 +10184,9 @@
     "autocorrectAndroidDialogBody": "Kada tipkate u chatu, vaša će se tipkovnica prebaciti na vaš ciljni jezik i ispravljati pravopis na tom jeziku.",
     "autocorrectAndroidFallbackTitle": "Ako vaša tipkovnica ne nudi vaš ciljni jezik, instalirajte Gboard i dodajte jezik tamo:",
     "resendInSeconds": "Ponovno pošalji ({seconds})",
-    "mapLevelFallbackNotice": "Još nema aktivnosti za {selected} — umjesto toga prikazuje se {shown}."
+    "mapLevelFallbackNotice": "Još nema aktivnosti za {selected} — umjesto toga prikazuje se {shown}.",
+    "openKeyboardSettings": "Otvori postavke tipkovnice",
+    "keyboardPromptAddKeyboardMessage": "Dodajte tipkovnicu za ciljni jezik kako bi automatska ispravka radila.",
+    "keyboardPromptAddKeyboardAction": "Dodaj tipkovnicu",
+    "keyboardPromptSwitchKeyboardMessage": "Dodirnite ikonu globusa na tipkovnici za prebacivanje na ciljni jezik."
 }

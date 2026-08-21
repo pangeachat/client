@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Idugang ang imong target language nga keyboard pinaagi sa pag-adto sa:",
     "enableAutocorrectPopupSteps": "  • Settings\n  • General\n  • Keyboard\n  • Keyboards\n  • Add New Keyboard",
     "enableAutocorrectPopupDescription": "Kung mapili na ang pinulongan, mahimo nimong i-klik ang gamay nga icon sa globe sa ubos sa wala sa imong keyboard aron ma-activate ang bag-ong gi-install nga keyboard.",
-    "downloadGboardSteps": " • I-download ang Gboard\n  • Ablihi ang app\n  • Mga Pinulongan\n  • Idugang ang keyboard\n  • Pilia ang Pinulongan\n  • Pilia ang tipo sa keyboard\n  • Nahuman",
     "enableAutocorrectWarning": "Pahibalo! Nagkinahanglan og pagdugang sa imong target language nga keyboard",
     "displayName": "Ngalan sa display",
     "leaveRoomDescription": "Hapit na ka mobiya niining chat. Makita sa ubang mga user nga mibiya ka sa chat.",
     "confirmUserId": "Palihug kumpirmahi ang imong Pangea Chat username aron mapapas ang imong account.",
     "paidSubscriptionStarts": "Magsugod sa {startDate}",
     "cancelInSubscriptionSettings": "• I-kansela bisan unsang orasa sa mga setting sa subscription",
-    "downloadGboard": "I-download ang Gboard",
     "autocorrectNotAvailable": "Ikasubo, ang imong plataporma dili pa suportado alang niini nga feature. Paghulat alang sa dugang nga kalamboan!",
     "pleaseUpdateApp": "Palihug i-update ang app aron makapadayon.",
     "chooseEmojiInstructionsBody": "Ipares ang mga emoji sa mga pulong nga labing haom nga nagrepresentar niini. Ayaw kabalaka! Walay puntos nga makuha kung dili magkauyon. 😅",
@@ -2154,5 +2152,9 @@
     "autocorrectAndroidDialogBody": "Kung mag-type ka sa chat, ang imong keyboard mobalhin sa imong target nga pinulongan ug mokorektar sa spelling niana nga pinulongan.",
     "autocorrectAndroidFallbackTitle": "Kung ang imong keyboard dili mohatag sa imong target nga pinulongan, i-install ang Gboard ug idugang ang pinulongan didto:",
     "resendInSeconds": "Ipadala pag-usab ({seconds})",
-    "mapLevelFallbackNotice": "Wala pay {selected} nga kalihokan — gipakita ang {shown} hinuon."
+    "mapLevelFallbackNotice": "Wala pay {selected} nga kalihokan — gipakita ang {shown} hinuon.",
+    "openKeyboardSettings": "Ablihi ang Mga Setting sa Keyboard",
+    "keyboardPromptAddKeyboardMessage": "Pagdugang og keyboard para sa imong target nga pinulongan aron molihok ang autocorrect.",
+    "keyboardPromptAddKeyboardAction": "Pagdugang og Keyboard",
+    "keyboardPromptSwitchKeyboardMessage": "I-tap ang icon sa globo sa imong keyboard aron mobalhin sa imong target nga pinulongan."
 }

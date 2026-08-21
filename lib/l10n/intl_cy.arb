@@ -1180,14 +1180,12 @@
     "enableAutocorrectPopupTitle": "Ychwanegwch eich bysellfwrdd iaith darged trwy fynd i:",
     "enableAutocorrectPopupSteps": "  • Gosodiadau\n  • Cyffredinol\n  • Bysellfwrdd\n  • Bysellfyrddau\n  • Ychwanegu Bysellfwrdd Newydd",
     "enableAutocorrectPopupDescription": "Unwaith y dewisir yr iaith, gallwch glicio ar yr eicon glôb bach ar waelod chwith eich bysellfwrdd i actifadu'r bysellfwrdd newydd ei osod.",
-    "downloadGboardSteps": " • Lawrlwytho Gboard\n  • Agor ap\n  • Ieithoedd\n  • Ychwanegu bysellfwrdd\n  • Dewis Iaith\n  • Dewis math o fysellfwrdd\n  • Wedi'i wneud",
     "enableAutocorrectWarning": "Rhybudd! Angen ychwanegu eich bysellfwrdd iaith darged",
     "displayName": "Enw arddangos",
     "leaveRoomDescription": "Rydych ar fin gadael y sgwrs hon. Bydd defnyddwyr eraill yn gweld eich bod wedi gadael y sgwrs.",
     "confirmUserId": "Cadarnhewch eich enw defnyddiwr Pangea Chat er mwyn dileu eich cyfrif.",
     "paidSubscriptionStarts": "Yn dechrau {startDate}",
     "cancelInSubscriptionSettings": "• Canslo unrhyw bryd yn y gosodiadau tanysgrifiad",
-    "downloadGboard": "Lawrlwytho Gboard",
     "autocorrectNotAvailable": "Yn anffodus nid yw eich platfform yn cael ei gefnogi ar gyfer y nodwedd hon ar hyn o bryd. Arhoswch yn tiwnio am ddatblygiadau pellach!",
     "pleaseUpdateApp": "Diweddarwch yr ap i barhau.",
     "chooseEmojiInstructionsBody": "Cydweddwch emojis â'r geiriau maen nhw'n eu cynrychioli orau. Peidiwch â phoeni! Dim pwyntiau i ffwrdd am anghytuno. 😅",
@@ -2154,5 +2152,9 @@
     "autocorrectAndroidDialogBody": "Pan fyddwch chi'n teipio mewn sgwrs, bydd eich bysellfwrdd yn newid i'ch iaith darged ac yn cywiro sillafu yn yr iaith honno.",
     "autocorrectAndroidFallbackTitle": "Os nad yw eich bysellfwrdd yn cynnig eich iaith darged, gosodwch Gboard ac ychwanegwch yr iaith yno:",
     "resendInSeconds": "Ail-anfon ({seconds})",
-    "mapLevelFallbackNotice": "Dim gweithgareddau {selected} eto — yn dangos {shown} yn lle hynny."
+    "mapLevelFallbackNotice": "Dim gweithgareddau {selected} eto — yn dangos {shown} yn lle hynny.",
+    "openKeyboardSettings": "Agor Gosodiadau Bysellfwrdd",
+    "keyboardPromptAddKeyboardMessage": "Ychwanegwch fysellfwrdd ar gyfer eich iaith darged fel bod awto-gywiro'n gweithio.",
+    "keyboardPromptAddKeyboardAction": "Ychwanegu Bysellfwrdd",
+    "keyboardPromptSwitchKeyboardMessage": "Tapiwch yr eicon glôb ar eich bysellfwrdd i newid i'ch iaith darged."
 }

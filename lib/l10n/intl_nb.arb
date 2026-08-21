@@ -3260,14 +3260,12 @@
     "enableAutocorrectPopupTitle": "Legg til tastaturet for målspråket ditt ved å gå til:",
     "enableAutocorrectPopupSteps": "  • Innstillinger\n  • Generelt\n  • Tastatur\n  • Tastaturer\n  • Legg til nytt tastatur",
     "enableAutocorrectPopupDescription": "Når språket er valgt, kan du klikke på det lille globus-ikonet nederst til venstre på tastaturet for å aktivere det nylig installerte tastaturet.",
-    "downloadGboardSteps": " • Last ned Gboard\n  • Åpne appen\n  • Språk\n  • Legg til tastatur\n  • Velg språk\n  • Velg tastaturtype\n  • Ferdig",
     "enableAutocorrectWarning": "Advarsel! Krever at du legger til tastaturet for målspråket ditt",
     "displayName": "Visningsnavn",
     "leaveRoomDescription": "Du er i ferd med å forlate denne chatten. Andre brukere vil se at du har forlatt chatten.",
     "confirmUserId": "Vennligst bekreft brukernavnet ditt i Pangea Chat for å slette kontoen din.",
     "paidSubscriptionStarts": "Starter {startDate}",
     "cancelInSubscriptionSettings": "• Avbryt når som helst i abonnementinnstillingene",
-    "downloadGboard": "Last ned Gboard",
     "autocorrectNotAvailable": "Dessverre er ikke plattformen din for tiden støttet for denne funksjonen. Følg med for videre utvikling!",
     "pleaseUpdateApp": "Vennligst oppdater appen for å fortsette.",
     "chooseEmojiInstructionsBody": "Match emojis med ordene de best representerer. Ikke bekymre deg! Ingen poeng fratrekk for uenighet. 😅",
@@ -5623,10 +5621,6 @@
         "type": "String",
         "placeholders": {}
     },
-    "@downloadGboardSteps": {
-        "type": "String",
-        "placeholders": {}
-    },
     "@enableAutocorrectWarning": {
         "type": "String",
         "placeholders": {}
@@ -5652,10 +5646,6 @@
         }
     },
     "@cancelInSubscriptionSettings": {
-        "type": "String",
-        "placeholders": {}
-    },
-    "@downloadGboard": {
         "type": "String",
         "placeholders": {}
     },
@@ -9815,5 +9805,9 @@
     "autocorrectAndroidDialogBody": "Når du skriver i en chat, vil tastaturet bytte til målspråket ditt og korrigere stavemåten på det språket.",
     "autocorrectAndroidFallbackTitle": "Hvis tastaturet ditt ikke tilbyr målspråket ditt, installer Gboard og legg til språket der:",
     "resendInSeconds": "Send på nytt om ({seconds})",
-    "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter ennå – viser {shown} i stedet."
+    "mapLevelFallbackNotice": "Ingen {selected}-aktiviteter ennå – viser {shown} i stedet.",
+    "openKeyboardSettings": "Åpne tastaturinnstillinger",
+    "keyboardPromptAddKeyboardMessage": "Legg til et tastatur for målspråket ditt, slik at autokorrektur fungerer.",
+    "keyboardPromptAddKeyboardAction": "Legg til tastatur",
+    "keyboardPromptSwitchKeyboardMessage": "Trykk på globusikonet på tastaturet for å bytte til målspråket ditt."
 }
