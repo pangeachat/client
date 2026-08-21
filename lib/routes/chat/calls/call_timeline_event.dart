@@ -46,8 +46,22 @@ class CallTimelineEvent extends StatelessWidget {
   /// it cannot disagree about what a duration is.
   Duration get _duration => CallRecord.durationOf(event.content);
 
+  /// Whether this card ever reached the homeserver.
+  ///
+  /// A send that failed is not dropped by the SDK: it keeps the optimistic echo
+  /// in the LOCAL timeline and marks it errored. Nothing ever retries it, and
+  /// the peer never receives it, so drawing it puts a call in one person's
+  /// history that is absent from the other's -- which is what a call card must
+  /// never do. It states a SHARED fact, and a copy only one side has is a claim
+  /// the other cannot see.
+  bool get _neverSent => event.status.isError;
+
   @override
   Widget build(BuildContext context) {
+    // Nothing, rather than a phantom. The call itself still happened; what
+    // failed is the record of it, and a record only one side holds is worse
+    // than no record -- it reads as an extra call that never took place.
+    if (_neverSent) return const SizedBox.shrink();
     final l10n = L10n.of(context);
     final theme = Theme.of(context);
     final missed = !_answered && !_declined;
