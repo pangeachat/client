@@ -98,23 +98,11 @@ class GoogleAnalytics {
     analytics?.setUserProperty(name: 'subscribed', value: "$subscribed");
   }
 
-  /// The learner's self-declared CEFR level, as the `user_cefr` user property
-  /// (the same key the request layer sends — [UserConstants.cefrLevel]).
-  ///
-  /// Set at session start AND on every profile write, because the level is
-  /// chosen DURING onboarding: a session-start-only property would record the
-  /// A1 profile default for exactly the new users whose real level we are
-  /// trying to see. Nothing else in the client reports the level, so without
-  /// this the size of each level's cohort — Pre-A1 above all, whose content
-  /// gap this measures — is unknowable.
-  static void updateUserCefrLevel(String cefrLevel) {
-    analytics?.setUserProperty(name: UserConstants.cefrLevel, value: cefrLevel);
-  }
-
   static void setUserProperties({
     required String targetLanguage,
     required String sourceLanguage,
     String? userType,
+    String? cefrLevel,
   }) {
     analytics?.setUserProperty(
       name: ModelKey.targetLanguage,
@@ -126,6 +114,12 @@ class GoogleAnalytics {
     );
     if (userType != null) {
       analytics?.setUserProperty(name: 'user_type', value: userType);
+    }
+    if (cefrLevel != null) {
+      analytics?.setUserProperty(
+        name: UserConstants.cefrLevel,
+        value: cefrLevel,
+      );
     }
   }
 

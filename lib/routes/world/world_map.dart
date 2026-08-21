@@ -591,6 +591,7 @@ class WorldMapController extends State<WorldMap>
           // Same as the world load: a fresh set decides whether the chosen
           // level has content, so re-resolve before the pins render.
           setState(_resolveCefrFallback);
+          viewRevision.value++;
 
           _fitToContext(debounce: debounceFit);
 
@@ -680,7 +681,11 @@ class WorldMapController extends State<WorldMap>
       _pinsManager.filteredPins(
         (c) =>
             c.point != null &&
-            _filterState.matchesIgnoringPills(c, applyLanguage: isWorld),
+            _filterState.matchesIgnoringCefr(
+              c,
+              _pinsManager.displayStateOf(c),
+              applyLanguage: isWorld,
+            ),
       ),
     );
   }

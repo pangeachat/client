@@ -96,9 +96,7 @@ class PangeaController {
       targetLanguage: userController.profile.userSettings.targetLanguage ?? '',
       sourceLanguage: userController.profile.userSettings.sourceLanguage ?? '',
       userType: isTeacher ? 'teacher' : 'learner',
-    );
-    GoogleAnalytics.updateUserCefrLevel(
-      userController.profile.userSettings.cefrLevel.string,
+      cefrLevel: userController.profile.userSettings.cefrLevel.string,
     );
 
     try {
@@ -165,7 +163,11 @@ class PangeaController {
       // Every path that writes the level — onboarding's picker, learning
       // settings, the bot dialog, a course join — lands here, so this is the
       // one place the analytics mirror can't drift from the profile.
-      GoogleAnalytics.updateUserCefrLevel(update.userSettings.cefrLevel.string);
+      GoogleAnalytics.setUserProperties(
+        targetLanguage: update.userSettings.targetLanguage ?? '',
+        sourceLanguage: update.userSettings.sourceLanguage ?? '',
+        cefrLevel: update.userSettings.cefrLevel.string,
+      );
       await matrixState.client.updateBotOptions(update.userSettings);
       await userController.updatePublicProfile();
     });
@@ -216,14 +218,7 @@ class PangeaController {
     GoogleAnalytics.setUserProperties(
       targetLanguage: update.targetLang.langCode,
       sourceLanguage: update.baseLang.langCode,
-    );
-    // A profile write that changes a language routes HERE and not to
-    // settingsUpdateStream ([UserController._onProfileUpdate] picks one), and
-    // the course-code onboarding step writes both languages and the CEFR level
-    // in a single update — so without this, the one path that sets a learner's
-    // level from their course would never report it.
-    GoogleAnalytics.updateUserCefrLevel(
-      userController.profile.userSettings.cefrLevel.string,
+      cefrLevel: userController.profile.userSettings.cefrLevel.string,
     );
 
     final exclude = [

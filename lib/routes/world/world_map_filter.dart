@@ -181,6 +181,16 @@ class WorldMapFilterState {
       (!applyLanguage || _langMatches(card)) &&
       card.matchesQuery(_filter.query);
 
+  bool matchesIgnoringCefr(
+    QuestActivityCard card,
+    ActivityPinState state, {
+    bool applyLanguage = true,
+  }) =>
+      (!applyLanguage || _langMatches(card)) &&
+      _partyMatches(card) &&
+      _statusMatches(state) &&
+      card.matchesQuery(_filter.query);
+
   bool _langMatches(QuestActivityCard card) {
     final filterL2 = _filter.l2;
     if (filterL2 == null) return true;
